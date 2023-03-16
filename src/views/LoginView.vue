@@ -16,15 +16,18 @@ export default {
           {
             login: this.login,
             passwd: this.passwd
-          },
-          {
-            headers: { 'crossDomain': true },
-        }
-        );
-
-        console.log(user)
+          }
+        )
+        console.log('got login creds')
+        console.log(user);
+        //console.log(user.response.status)
+        //console.log(user.data)
+        //console.log(user.status)
+        //console.log(user.response.status)
       } catch(e) {
-        console.log(e);
+        console.log('got error posting login creds')
+        console.log(e.response.status);
+        console.log(e.response.data);
       }
     },
     async getUsers() {
