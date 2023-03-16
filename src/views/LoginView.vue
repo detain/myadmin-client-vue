@@ -12,11 +12,14 @@ export default {
     async LoginUser() {
       try {
         const user = await axios.post(
-          "http://mystage.interserver.net/apiv2/login",
+          "https://mystage.interserver.net/apiv2/login",
           {
             login: this.login,
             passwd: this.passwd
-          }
+          },
+          {
+            headers: { 'crossDomain': true },
+        }
         );
 
         console.log(user)
