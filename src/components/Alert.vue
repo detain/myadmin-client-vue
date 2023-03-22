@@ -12,7 +12,7 @@ const { alert } = storeToRefs(alertStore);
         <div class="m-3">
             <div class="alert alert-dismissable" :class="alert.type">
                 <button @click="alertStore.clear()" class="btn btn-link close">&times;</button>
-                {{alert.message}}
+                {{ alert.message }}
             </div>
         </div>
     </div>

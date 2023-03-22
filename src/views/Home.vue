@@ -10,7 +10,7 @@ const { user } = storeToRefs(authStore);
 
 <template>
     <div v-if="user">
-    hello
+        hello
         <nav class="main-header navbar navbar-expand navbar-dark"><!-- Navbar -->
             <ul class="navbar-nav menu-collapse"><!-- Left navbar links -->
                 <li class="nav-item"><a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a></li>
@@ -42,8 +42,8 @@ const { user } = storeToRefs(authStore);
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex"><!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="gravatar" class="rounded-circle elevation-2" style="width: 3rem;" alt="DP"></div>
                     <div class="info">
-                        <a href="index.php?choice=none.contact_info" data-toggle="tooltip" title="Edit Personal Info" class="d-block">{{full_name}}&nbsp;<i class="fa fa-pencil text-xs text-bold"></i></a>
-                        <span style="color: #c2c7d0;"><b>{{user_name}}</b></span>
+                        <a href="index.php?choice=none.contact_info" data-toggle="tooltip" title="Edit Personal Info" class="d-block">{{ full_name }}&nbsp;<i class="fa fa-pencil text-xs text-bold"></i></a>
+                        <span style="color: #c2c7d0;"><b>{{ user_name }}</b></span>
                     </div>
                 </div>
                 <nav class="mt-2">
@@ -56,11 +56,11 @@ const { user } = storeToRefs(authStore);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="m-0 text-dark">{{page_heading}}</h1>
+                            <h1 class="m-0 text-dark">{{ page_heading }}</h1>
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
-                                <li v-for="(bName, bUrl, index) in breadcrums" :key="index" :class="{'active': index === breadcrums.length - 1}">
+                                <li v-for="(bName, bUrl, index) in breadcrums" :key="index" :class="{ 'active': index === breadcrums.length - 1 }">
                                     <template v-if="index === breadcrums.length - 1">{{ bName }}</template>
                                     <template v-else><a :href="bUrl">{{ bName }}</a></template>
                                 </li>
@@ -79,7 +79,7 @@ const { user } = storeToRefs(authStore);
         </div>
         <footer class="main-footer text-center">
             <strong>Copyright &copy;
-                {{new Date().getFullYear()}} <a href="https://interserver.net">InterServer Inc</a>.</strong> All rights reserved.
+                {{ new Date().getFullYear() }} <a href="https://interserver.net">InterServer Inc</a>.</strong> All rights reserved.
         </footer>
     </div>
 </template>
