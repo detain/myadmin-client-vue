@@ -18,9 +18,17 @@ export const useUsersStore = defineStore({
         async getAll() {
             this.users = { loading: true };
             try {
-                this.users = await fetchWrapper.get(baseUrl);    
+                this.users = await fetchWrapper.get(baseUrl);
             } catch (error) {
                 this.users = { error };
+            }
+        },
+        async getHome() {
+            this.home = { loading: true };
+            try {
+                this.home = await fetchWrapper.get('https://mystage.interserver.net/apiv2/home');
+            } catch (error) {
+                this.home = { error };
             }
         },
         async getById(id) {

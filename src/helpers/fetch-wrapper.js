@@ -29,7 +29,8 @@ function authHeader(url) {
   const isLoggedIn = !!user?.sessionid
   const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL)
   if (isLoggedIn && isApiUrl) {
-    return { Authorization: `Bearer ${user.sessionid}` }
+    //return { Authorization: `Bearer ${user.sessionid}` }
+    return { SessionId: `${user.sessionid}` }
   } else {
     return {}
   }
