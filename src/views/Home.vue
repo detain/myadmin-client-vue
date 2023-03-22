@@ -47,7 +47,7 @@ const { user } = storeToRefs(authStore);
                     </div>
                 </div>
                 <nav class="mt-2">
-                    <mainmenu></mainmenu>
+                    <MainMenu></MainMenu>
                 </nav>
             </div><!-- /.sidebar -->
         </aside><!-- Content Wrapper. Contains page content -->
@@ -69,7 +69,7 @@ const { user } = storeToRefs(authStore);
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <clienthome></clienthome>
+                            <ClientHome></ClientHome>
                         </div>
                     </div>
                 </div>

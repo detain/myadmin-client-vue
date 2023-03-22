@@ -1,13 +1,14 @@
 <script setup>
-const data = {        last_login_ip: "70.44.33.193",
-        last_login: "12:35:pm - 21 Feb, 2023",
-        currency: "$",
-        amount: "$1,862.37",
-        invoice_list: 25,
-        balance: "$6.60",
-        full_name: "Joe",
-        email: "email@user.net",
-        tickets: [
+import { ref } from 'vue'
+const last_login_ip = ref("70.44.33.193")
+const last_login = ref("12:35:pm - 21 Feb, 2023")
+const currency = ref("$")
+const amount = ref("$1,862.37")
+const invoice_list = ref(25)
+const balance = ref("$6.60")
+const full_name = ref("Joe")
+const email = ref("email@user.net")
+const tickets = ref([
             {
                 ticketid: "1105655",
                 ticketmaskid: "JHY-550-37315",
@@ -97,19 +98,17 @@ const data = {        last_login_ip: "70.44.33.193",
                 recurrencefromticketid: "0",
                 averageslaresponsetime: "0"
             }
-        ],
-        affiliateUrl: "https://www.interserver.net/r/2773",
-        pin: "123456",
-        ticket_Status: {
+        ])
+        const ticket_Status = ref({
             Open: 4,
             "On Hold": 5
-        },
-        ticketStatusView: {
+        })
+        const ticketStatusView = ref({
             4: "Open",
             5: "On Hold",
             6: "Closed"
-        },
-        details: {
+        })
+        const details = ref({
             modules: {
                 domains: {
                     icon: "globe",
@@ -161,8 +160,8 @@ const data = {        last_login_ip: "70.44.33.193",
                     list_link: "view_quickservers_list"
                 }
             }
-        },
-        services: {
+        })
+        const services = ref({
             domains: {
                 links: {
                     376503: "hostingenuity.com",
@@ -204,9 +203,11 @@ const data = {        last_login_ip: "70.44.33.193",
                 count_link: '<span class="badge bg-danger float-right">0</span>',
                 count: 0
             }
-        },
-        affiliateAmount: "100"
-        };
+        })
+
+const affiliateUrl = ref("https://www.interserver.net/r/2773")
+const pin = ref("123456")
+const affiliateAmount = ref("100")
     function $t(key) {
             // You need to implement your translation logic here
             return key;
