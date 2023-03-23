@@ -9,43 +9,32 @@ const { sidemenu } = storeToRefs(layoutStore);
 const admindir = ref('')
 const menus = ref({
     main: [
-        '<a class="nav-link active" href="home" ><i class="nav-icon fa fa-tachometer-alt" ></i><p>Dashboard</p></a>',
-        '<a class="nav-link " href="view_domains_list" ><i class="nav-icon fa fa-globe"></i><p>Domains</p></a>',
-        '<a class="nav-link " href="dns_manager" ><i class="nav-icon fa fa-atom"></i><p>DNS Manager</p></a>',
-        '<a class="nav-link " href="view_vps_list" ><i class="nav-icon fa fa-cloud-meatball"></i><p>VPS</p></a>',
-        '<a class="nav-link " href="view_backups_list" ><i class="nav-icon fa fa-warehouse"></i><p>Storage</p></a>',
-        '<a class="nav-link " href="view_mail_list" ><i class="nav-icon fa fa-envelope-open-text"></i><p>Mail</p></a>',
-        '<a class="nav-link " href="view_licenses_list" ><i class="nav-icon fa fa-id-card"></i><p>Licenses</p></a>',
-        ["ssl", "SSL <b class=\"caret\"></b>", "security-ssl.png", []],
-        '<a class="nav-link " href="view_websites_list" ><i  class="nav-icon far fa-window-maximize" ></i><p>Webhosting</p></a>',
-        ["quickservers", "Rapid Deploy Servers <b class=\"caret\"></b>", "server.png", []],
-        '<a class="nav-link " href="view_quickservers_list" ><i class="nav-icon fa fa-cloud" ></i><p>Rapid Deploy Servers</p></a>',
-        ["servers", "Servers <b class=\"caret\"></b>", "menus/servers.png", []],
-        '<a class="nav-link " href="view_servers_list" ><i class="nav-icon fa fa-server" ></i><p>Servers</p></a>',
-        '<a class="nav-link " href="affiliate" ><i class="nav-icon fa fa-handshake"></i><p>Affiliate System</p></a>',
-        [
-            "billing",
-            '<i class="nav-icon fa fa-file-invoice"></i><p>Billing<i class="right fas fa-angle-left"></i></p>',
-            ["cart", "view_invoices", "payment_types", "prepays"]
-        ],
-        '<a class="nav-link " href="tickets_list" ><i class="nav-icon fa fa-ticket" ></i><p>Tickets</p></a>',
-        [
-            "settings",
-            '<i class="nav-icon fa fa-gear" ></i><p>Settings<i class="right fas fa-angle-left"></i></p>',
-            ["account_settings", "change_username", "change_pass"]
-        ]
+        { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
+        { link: '/users', icon: 'fa fa-circle', text: 'Users (temp)' },
+        { link: '/view_domains_list', icon: 'fa fa-globe', text: 'Domains' },
+        { link: '/dns_manager', icon: 'fa fa-atom', text: 'DNS Manager' },
+        { link: '/view_vps_list', icon: 'fa fa-cloud-meatball', text: 'VPS' },
+        { link: '/view_backups_list', icon: 'fa fa-warehouse', text: 'Storage' },
+        { link: '/view_mail_list', icon: 'fa fa-envelope-open-text', text: 'Mail' },
+        { link: '/view_licenses_list', icon: 'fa fa-id-card', text: 'Licenses' },
+        { link: '/view_websites_list', icon: 'far fa-window-maximize', text: 'Webhosting' },
+        { link: '/view_quickservers_list', icon: 'fa fa-cloud', text: 'Rapid Deploy Servers' },
+        { link: '/view_servers_list', icon: 'fa fa-server', text: 'Servers' },
+        { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
+        { link: '/tickets_list', icon: 'fa fa-ticket', text: 'Tickets' },
+        { menu: '/billing', icon: 'fa fa-file-invoice', text: 'Billing' },
+        { menu: '/settings', icon: 'fa fa-gear', text: 'Settings' }
     ],
     billing: [
-        '<a class="nav-link " href="cart" ><i class="nav-icon far fa-circle"></i><p>Cart</p></a>',
-        '<a class="nav-link " href="view_invoices" ><i class="nav-icon far fa-circle"></i><p>View Invoices</p></a>',
-        '<a class="nav-link " href="payment_types" ><i class="nav-icon far fa-circle"></i><p>Credit Cards</p></a>',
-        '<a class="nav-link " href="prepays" ><i class="nav-icon far fa-circle"></i><p>Pre-Paid Funds / Credit</p></a>',
-        ["billingreports", "Reports <b class=\"caret\"></b>", "/images/myadmin/investment.png", []]
+        { link: '/cart', icon: 'far fa-circle', text: 'Cart' },
+        { link: '/view_invoices', icon: 'far fa-circle', text: 'View Invoices' },
+        { link: '/payment_types', icon: 'far fa-circle', text: 'Credit Cards' },
+        { link: '/prepays', icon: 'far fa-circle', text: 'Pre-Paid Funds / Credit' }
     ],
     settings: [
-        '<a class="nav-link " href="account_settings" ><i class="nav-icon far fa-circle"></i><p>Account Settings</p></a>',
-        '<a class="nav-link " href="change_username" ><i class="nav-icon far fa-circle"></i><p>Change Login</p></a>',
-        '<a class="nav-link " href="change_pass" ><i class="nav-icon far fa-circle"></i><p>Change Password</p></a>'
+        { link: '/account_settings', icon: 'far fa-circle', text: 'Account Settings' },
+        { link: '/change_username', icon: 'far fa-circle', text: 'Change Login' },
+        { link: '/change_pass', icon: 'far fa-circle', text: 'Change Password' }
     ]
 });
 const menu_names = ref(["main", "billing", "settings"])
@@ -82,16 +71,16 @@ function isActive(key) {
 
 <template>
     <ul class="nav nav-pills nav-sidebar flex-column nav-dark" :class="{ 'nav-justified': sidemenu }" data-widget="treeview" role="menu" data-accordion="false">
-        <li v-for="(link, index) in menus.main" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(link), 'menu-open': Array.isArray(link) && isActive(link[2]) }">
-            <a v-if="!Array.isArray(link)" href="#" class="nav-link" v-html="link"></a>
-            <a v-else-if="typeof menus[link[0]] !== 'undefined'" href="#" class="nav-link" :class="{ active: isActive(link[2]) }" @click.prevent="toggleActive(link[2])" v-html="link[1]"></a>
+        <li v-for="(link, index) in menus.main" :key="index" :class="{ 'nav-item': true, 'has-treeview': typeof link.menu != 'undefined' && typeof menus[link.menu] != 'undefined', 'menu-open': Array.isArray(link) && isActive(link[2]) }">
+            <router-link v-if="typeof link.link != 'undefined'" :to="link.link" class="nav-link"><i class="nav-icon" :class="link.icon"></i><p>{{ link.text }}</p></router-link>
+            <a v-else-if="typeof menus[link[0]] !== 'undefined'" href="#" class="nav-link" :class="{ active: isActive(link[2]) }" v-html="link[1]"></a>
             <ul v-if="Array.isArray(link) && typeof menus[link[0]] !== 'undefined'" class="nav nav-treeview" :class="{ 'menu-open': isActive(link[2]) }">
                 <li v-for="(sublink, index) in menus[link[0]]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(sublink), 'menu-open': Array.isArray(sublink) && isActive(sublink[2]) }">
-                    <a v-if="Array.isArray(sublink)" href="#" class="nav-link" :class="{ active: isActive(sublink[2]) }" @click.prevent="toggleActive(sublink[2])" v-html="sublink[1]"></a>
+                    <a v-if="Array.isArray(sublink)" href="#" class="nav-link" :class="{ active: isActive(sublink[2]) }" v-html="sublink[1]"></a>
                     <a v-else href="#" class="nav-link" v-html="sublink"></a>
                     <ul v-if="Array.isArray(sublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(sublink[2]) }">
                         <li v-for="(subsublink, index) in menus[sublink[0]]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subsublink), 'menu-open': Array.isArray(subsublink) && isActive(subsublink[2]) }">
-                            <a v-if="Array.isArray(subsublink)" href="#" class="nav-link" :class="{ active: isActive(subsublink[2]) }" @click.prevent="toggleActive(subsublink[2])" v-html="subsublink[1]"></a>
+                            <a v-if="Array.isArray(subsublink)" href="#" class="nav-link" :class="{ active: isActive(subsublink[2]) }" v-html="subsublink[1]"></a>
                             <a v-else href="#" class="nav-link" v-html="subsublink"></a>
                             <ul v-if="Array.isArray(subsublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subsublink[2]) }">
                                 <li v-for="(subsubsublink, index) in menus[subsublink[0]]" :key="index" v-html="subsubsublink"></li>
