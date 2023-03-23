@@ -48,10 +48,12 @@ async function handleResponse(response) {
       // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
       logout()
     }
+    console.log(data);
 
     // get error message from body or default to response status
     const error = (data && data.message) || response.status
-    return Promise.reject(error)
+    return Promise.reject(data)
+    //return Promise.reject(error)
   }
 
   return data

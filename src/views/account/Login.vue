@@ -1,19 +1,31 @@
 <script setup>
+import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useLayoutStore } from '@/stores';
 
-const use_tfa = false
+const layoutStore = useLayoutStore();
+const { opts } = storeToRefs(layoutStore);
+
 const schema = Yup.object().shape({
     tfa: Yup.string(),
-    username: Yup.string().required('Username is required'),
-    password: Yup.string().required('Password is required')
+    login: Yup.string().required('Username is required'),
+    passwd: Yup.string().required('Password is required')
 });
 
 async function onSubmit(values) {
     const authStore = useAuthStore();
-    const { username, password } = values;
-    await authStore.login(username, password);
+    const layoutStore = useLayoutStore();
+    console.log('Values:');
+    console.log(values);
+    const loginParams = {
+        login: values.login,
+        passwd: values.passwd
+    };
+    if (layoutStore.opts.tfa == true) {
+        loginParams.tfa = values.tfa;
+    }
+    await authStore.login(loginParams);
 }
 </script>
 
@@ -24,15 +36,15 @@ async function onSubmit(values) {
             <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
                 <div class="form-group">
                     <label>Username</label>
-                    <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
-                    <div class="invalid-feedback">{{ errors.username }}</div>
+                    <Field name="login" type="text" class="form-control" :class="{ 'is-invalid': errors.login }" />
+                    <div class="invalid-feedback">{{ errors.login }}</div>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
-                    <div class="invalid-feedback">{{ errors.password }}</div>
+                    <Field name="passwd" type="password" class="form-control" :class="{ 'is-invalid': errors.passwd }" />
+                    <div class="invalid-feedback">{{ errors.passwd }}</div>
                 </div>
-                <div class="form-group" v-if="use_tfa">
+                <div class="form-group" v-if="opts.tfa">
                     <label>2-Factor Authentication Code</label>
                     <Field name="tfa" type="text" class="form-control" :class="{ 'is-invalid': errors.tfa }" />
                     <div class="invalid-feedback">{{ errors.tfa }}</div>

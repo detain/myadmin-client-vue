@@ -13,99 +13,37 @@ const state = reactive({
     full_name: ref("Joe"),
     email: ref("email@user.net"),
     data: ref({}),
-    tickets: ref([
-        {
-            ticketid: "1105655",
-            ticketmaskid: "JHY-550-37315",
-            departmentid: "5",
-            departmenttitle: "General",
-            ticketstatusid: "4",
-            ticketstatustitle: "Open",
-            priorityid: "7",
-            prioritytitle: "Standard - 1 to 3 hour resolution",
-            emailqueueid: "0",
-            userid: "12558",
-            staffid: "0",
-            ownerstaffid: "149",
-            ownerstaffname: "",
-            assignstatus: "0",
-            fullname: "Joe Dude",
-            email: "me@user.com",
-            lastreplier: "Joe Dude",
-            replyto: "me@user.com",
-            subject: "test",
-            dateline: "1657896904",
-            lastactivity: "1677519418",
-            laststaffreplytime: "0",
-            lastuserreplytime: "1677519418",
-            slaplanid: "2",
-            ticketslaplanid: "0",
-            duetime: "1677606721",
-            totalreplies: "3",
-            ipaddress: "1.2.3.4",
-            flagtype: "0",
-            hasnotes: "0",
-            hasattachments: "1",
-            isemailed: "0",
-            edited: "0",
-            editedbystaffid: "0",
-            editeddateline: "0",
-            creator: "2",
-            charset: "",
-            transferencoding: "",
-            timeworked: "0",
-            timebilled: "0",
-            dateicon: "0",
-            lastpostid: "5649603",
-            firstpostid: "5107825",
-            tgroupid: "1",
-            messageid: "",
-            escalationruleid: "0",
-            hasdraft: "0",
-            hasbilling: "0",
-            isphonecall: "0",
-            isescalated: "0",
-            isescalatedvolatile: "0",
-            phoneno: "",
-            isautoclosed: "0",
-            autocloseruleid: "0",
-            autoclosestatus: "0",
-            autoclosetimeline: "0",
-            escalatedtime: "0",
-            followupcount: "0",
-            hasfollowup: "0",
-            hasratings: "0",
-            tickethash: "br9qkv83l3rv",
-            islinked: "0",
-            trasholddepartmentid: "0",
-            tickettype: "1",
-            tickettypeid: "1",
-            tickettypetitle: "Issue",
-            creationmode: "4",
-            isfirstcontactresolved: "1",
-            wasreopened: "1",
-            reopendateline: "1677519418",
-            resolutiondateline: "1660795905",
-            escalationlevelcount: "0",
-            resolutionseconds: "2899001",
-            resolutionlevel: "0",
-            repliestoresolution: "2",
-            averageresponsetime: "0",
-            averageresponsetimehits: "0",
-            firstresponsetime: "0",
-            resolutionduedateline: "1677781321",
-            isresolved: "0",
-            iswatched: "0",
-            oldeditemailaddress: "",
-            linkkbarticleid: "0",
-            linkticketmacroid: "0",
-            bayescategoryid: "1",
-            recurrencefromticketid: "0",
-            averageslaresponsetime: "0"
-        }
-    ]),
+    tickets: ref([]),
     affiliateUrl: ref("https://www.interserver.net/r/2773"),
     pin: ref("8675309"),
+    affiliateAmount: ref("100"),
+    services: ref({
+        domains: {
+            links: {},
+            count: 0
+        },
+        webhosting: {
+            links: {},
+            count: 0
+        },
+        vps: {
+            links: {},
+            count: 0
+        },
+        licenses: {
+            links: {},
+            count: 0
+        },
+        servers: {
+            links: {},
+            count: 0
+        },
+        backups: {
+            links: [],
+            count_link: '<span class="badge bg-danger float-right">0</span>',
+            count: 0
+        }
+    }),
     ticket_Status: ref({
         Open: 4,
         "On Hold": 5
@@ -168,51 +106,6 @@ const state = reactive({
             }
         }
     }),
-    services: ref({
-        domains: {
-            links: {
-                376503: "hostingenuity.com",
-                592337: "detain.dev",
-                376114: "pimpmy.website"
-            },
-            count: 5
-        },
-        webhosting: {
-            links: {
-                376359: "hussfamily.com",
-                376473: "fancytush.com",
-                386218: "admincoded.net"
-            },
-            count: 7
-        },
-        vps: {
-            links: {
-                242828: "vps242828 (vault3)",
-                2578866: "vps2578866 (my-web-2)",
-                2500081: "pdns3.is.cc (PowerDNS 3)"
-            },
-            count: 19
-        },
-        licenses: {
-            links: {
-                386522: "192.64.80.218"
-            },
-            count: 1
-        },
-        servers: {
-            links: {
-                16058: "mysqlcluster1.is.cc (1 x Six-Core E5-2620 64GB 10Tb (1Gb Port) 5 Vlan Ips (/29) Ubuntu 20.04 Linux No RAID Customers IP 70.44.33.193 plug it into the same rack that my-mysql1 is on.  if it has room for a 2nd network card could you add a 2nd 1gb port (one for a single live ip and one to plugin to the same private switch my-mysql1 uses))"
-            },
-            count: 1
-        },
-        backups: {
-            links: [],
-            count_link: '<span class="badge bg-danger float-right">0</span>',
-            count: 0
-        }
-    }),
-    affiliateAmount: ref("100"),
-
 });
 const loadHome = async (state) => {
     try {

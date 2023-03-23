@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
-import { useAlertStore } from '@/stores';
+import { useAlertStore, useLayoutStore } from '@/stores';
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -12,9 +12,9 @@ export const useAuthStore = defineStore({
         returnUrl: null
     }),
     actions: {
-        async login(login, passwd) {
+        async login(loginParams) {
             try {
-                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/login', { login, passwd });
+                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/login', loginParams );
                 // update pinia state
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
@@ -25,6 +25,10 @@ export const useAuthStore = defineStore({
                 console.log("error:");
                 console.log(error);
                 const alertStore = useAlertStore();
+                const layoutStore = useLayoutStore();
+                if (typeof error.field != "undefined") {
+                    layoutStore.useField(error.field);
+                }
                 alertStore.error(error);
             }
         },
