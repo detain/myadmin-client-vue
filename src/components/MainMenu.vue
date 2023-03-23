@@ -1,5 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia';
+import { useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const { sidemenu } = storeToRefs(layoutStore);
 
 const admindir = ref('')
 const menus = ref({

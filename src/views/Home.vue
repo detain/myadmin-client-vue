@@ -2,10 +2,13 @@
 import { ClientHome, MainMenu } from '@/components';
 import { storeToRefs } from 'pinia';
 
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useLayoutStore } from '@/stores';
 
 const authStore = useAuthStore();
+const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
+const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
+
 </script>
 
 <template>
@@ -28,7 +31,8 @@ const { user } = storeToRefs(authStore);
                     <a class="nav-link" href="cart" data-toggle="tooltip" title="Cart"><i class="fa fa-shopping-cart "></i></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="index.php?choice=none.logout" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i></a>
+                    <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
+                    <!-- <a class="nav-link" href="index.php?choice=none.logout" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i></a> -->
                 </li>
             </ul>
         </nav><!-- /.navbar -->

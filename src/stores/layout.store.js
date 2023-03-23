@@ -19,6 +19,15 @@ export const useLayoutStore = defineStore({
         }
     }),
     actions: {
+        setBreadcrums(value) {
+            this.breadcrums = value;
+        },
+        setPageHeader(value) {
+            this.page_header = value;
+        },
+        setSideMenu(value) {
+            this.sidemenu = value;
+        },
         useField(field) {
             this.opts[field] = true;
         },
