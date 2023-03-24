@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { storeToRefs } from 'pinia';
-import { ClientHome, MainMenu, Nav, Alert } from '@/components';
+import { MainMenu, Nav, Alert } from '@/components';
 import { useAuthStore, useLayoutStore } from '@/stores';
 
 const authStore = useAuthStore();

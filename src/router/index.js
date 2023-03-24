@@ -8,10 +8,10 @@ export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: ClientHome },
-    { path: '/changepass', ChangePass },
-    { path: '/change_pass', ChangePass },
-    { path: '/bugs', BugsSuck },
-    { path: '/account_settings', AccountSettings },
+    { path: '/changepass', component: ChangePass },
+    { path: '/change_pass', component: ChangePass },
+    { path: '/bugs', component: BugsSuck },
+    { path: '/account_settings', component: AccountSettings },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page

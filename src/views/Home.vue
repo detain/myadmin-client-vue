@@ -1,5 +1,5 @@
 <script setup>
-import { ClientHome, MainMenu } from '@/components';
+import { MainMenu } from '@/components';
 import { storeToRefs } from 'pinia';
 
 import { useAuthStore, useLayoutStore } from '@/stores';
