@@ -54,14 +54,14 @@ function changePassword() {
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="phone">{{ $t('Confirm Password') }}</label>
+              <label class="col-md-3 col-form-label" for="phone">Confirm Password</label>
               <div class="col-md-9">
-                <input type="password" class="form-control form-control-sm" v-model="password" placeholder="{{ $t('Confirm Password') }}">
+                <input type="password" class="form-control form-control-sm" v-model="password" placeholder="Confirm Password">
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="controls">
-                <button type="submit" class="btn btn-custom btn-sm">{{ $t('Update Password') }}</button>
+                <button type="submit" class="btn btn-custom btn-sm">Update Password</button>
               </div>
             </div>
           </form>
