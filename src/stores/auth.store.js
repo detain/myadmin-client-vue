@@ -15,12 +15,11 @@ export const useAuthStore = defineStore({
         async login(loginParams) {
             try {
                 const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/login', loginParams );
-                // update pinia state
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 // redirect to previous url or default to home page
-                router.push(this.returnUrl || '/');
+                await router.push(this.returnUrl || '/');
             } catch (error) {
                 console.log("error:");
                 console.log(error);
@@ -32,10 +31,10 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);
             }
         },
-        logout() {
+        async logout() {
             this.user = null;
             localStorage.removeItem('user');
-            router.push('/account/login');
+            await router.push('/account/login');
         }
     }
 });

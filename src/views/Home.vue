@@ -7,7 +7,7 @@ import { useAuthStore, useLayoutStore } from '@/stores';
 const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
 
 </script>
 
@@ -17,7 +17,7 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
             <ul class="navbar-nav menu-collapse"><!-- Left navbar links -->
                 <li class="nav-item"><a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a></li>
             </ul>
-            <template v-if="user.ima == 'admin'">
+            <template v-if="user.ima === 'admin'">
                 <form class="form-inline" action="index.php" style="width: 30%">
                     <input type="hidden" name="choice" value="none.search">
                     <div class="input-group input-group-sm" style="width: 100%">
@@ -28,7 +28,7 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
             </template>
             <ul class="navbar-nav ml-auto"><!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="cart" data-toggle="tooltip" title="Cart"><i class="fa fa-shopping-cart "></i></a>
+                    <router-link to="cart" title="Cart" class="nav-link"><i class="fa fa-shopping-cart "></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
@@ -37,7 +37,7 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
             </ul>
         </nav><!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4"><!-- Main Sidebar Container -->
-            <a :href="user.ima === 'client' ? '/' : '/admin'" class="brand-link"><!-- Brand Logo -->
+            <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link"><!-- Brand Logo -->
                 <img src="//mystage.interserver.net/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light">InterServer</span>
             </a>
