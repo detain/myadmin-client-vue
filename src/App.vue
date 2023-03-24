@@ -10,7 +10,7 @@ const authStore = useAuthStore();
   <div class="app-container" :class="authStore.user && 'bg-light'">
     <Nav />
     <div class="container-fluid">
-    <Alert />
+      <Alert />
       <router-view />
     </div>
   </div>

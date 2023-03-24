@@ -11,6 +11,8 @@ const menus = ref({
     main: [
         { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
         { link: '/users', icon: 'fa fa-circle', text: 'Users (temp)' },
+        { link: '/change_pass', icon: 'far fa-circle', text: 'Change Password' },
+        { link: '/bugs', icon: 'far fa-circle', text: 'Bugs Suck' },
         { link: '/view_domains_list', icon: 'fa fa-globe', text: 'Domains' },
         { link: '/dns_manager', icon: 'fa fa-atom', text: 'DNS Manager' },
         { link: '/view_vps_list', icon: 'fa fa-cloud-meatball', text: 'VPS' },
@@ -81,7 +83,7 @@ function isActive(key) {
                     <ul v-if="Array.isArray(sublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(sublink.activecheck) }">
                         <li v-for="(subsublink, index) in menus[sublink[0]]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subsublink), 'menu-open': Array.isArray(subsublink) && isActive(subsublink.activecheck) }">
                             <a v-if="Array.isArray(subsublink)" href="#" class="nav-link" :class="{ active: isActive(subsublink.activecheck) }" v-html="subsublink[1]"></a>
-                            <a v-else href="#" class="nav-link" v-html="subsublink"></a>
+                            <router-link v-else :to="subsublink.link" class="nav-link"><i class="nav-icon" :class="subsublink.icon"></i><p>{{ subsubsublink.text }}</p></router-link>
                             <ul v-if="Array.isArray(subsublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subsublink.activecheck) }">
                                 <li v-for="(subsubsublink, index) in menus[subsublink[0]]" :key="index" v-html="subsubsublink"></li>
                             </ul>
