@@ -1,64 +1,98 @@
 <script setup>
-import { ref, reactive } from 'vue'
-import { storeToRefs } from 'pinia';
-import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { ref, reactive } from "vue";
+import { storeToRefs } from "pinia";
+import { Form, Field } from "vee-validate";
+import * as Yup from "yup";
+import { useAuthStore, useLayoutStore } from "@/stores";
 
 const layoutStore = useLayoutStore();
 const { opts } = storeToRefs(layoutStore);
 
 const schema = Yup.object().shape({
     currentPassword: Yup.string(),
-    password: Yup.string().required('Password confirmation is required'),
-    newPassword: Yup.string().required('Password is required')
+    password: Yup.string().required("Password confirmation is required"),
+    newPassword: Yup.string().required("Password is required")
 });
 
 function changePassword() {
-  const url = 'change_pass';
-  const formData = new FormData();
-  formData.append('password2', this.password);
-  axios.post(url, formData)
-    .then(response => {
-      // handle success
-    })
-    .catch(error => {
-      // handle error
-    });
+    const url = "change_pass";
+    const formData = new FormData();
+    formData.append("password2", this.password);
+    axios
+        .post(url, formData)
+        .then((response) => {
+            // handle success
+        })
+        .catch((error) => {
+            // handle error
+        });
 }
 
-const isCollapsed = ref(false)
-const csrfToken = ref('')
+const custid = ref("277125412123");
+const ima = ref("client");
+const csrf_token = ref("12312312312312313123");
+const link = ref("account_settings?z=z");
+const data = reactive({
+    ssh_key: "ssh-dss123123123123123",
+    ssh_key_wrapped: "ssh-dss123123123123123",
+    api_key: "1324123123541244514",
+    api_key_wrapped: "436265235252345",
+    "2fa_google_key": "zzzzzz",
+    "2fa_google_enabled": true,
+    "2fa_google": 1,
+    "2fa_google_split": "4rt214 13 2132 ",
+    "2fa_google_qr": ""
+});
+const ip = ref({});
+const oauthproviders = ref({});
+const oauthconfig = {
+    callback: "https://my.interserver.net/oauth/callback.php",
+    providers: {
+        GitHub: {
+            enabled: true,
+            keys: {
+                id: "",
+                secret: ""
+            },
+            account: "",
+            url: "",
+            linked: true
+        }
+    }
+};
+const oauthadapters = ref([]);
+const limits = ref([
+    {
+        start: "1.2.3.4",
+        end: "1.2.3.100"
+    },
+    {
+        start: "107.77.194.166",
+        end: "107.77.194.166"
+    }
+]);
+
+const isCollapsed = ref(false);
+const csrfToken = ref("");
 const disableReinstall = ref(false);
 const disableReset = ref(false);
 const disableReinstallDisabled = true;
-const data = {
-    api_key: ref(''),
-    ssh_key: ref('')
-};
 const formData = {
-        twoFactorAuthEnabled: ref(false),
-        twoFactorAuthSplit: ref(''),
-        twoFactorAuthCode: ref('')
+    twoFactorAuthEnabled: ref(false),
+    twoFactorAuthSplit: ref(""),
+    twoFactorAuthCode: ref("")
 };
-const ip = ref('') // add the variable from PHP code
-const csrf_token = ref('') // add the variable from PHP code
-const limits = ref([]) // add the variable from PHP code
-const custid = ref('') // add the variable from PHP code
-const link = ref('') // add the variable from PHP code
 const newLimit = ref({
-    start: '',
-    end: ''
-})
-
+    start: "",
+    end: ""
+});
 
 function submitForm() {
-  // handle form submission here
+    // handle form submission here
 }
 function toggleCard() {
-      this.isCollapsed = !this.isCollapsed
-    }
-
+    this.isCollapsed = !this.isCollapsed;
+}
 </script>
 
 <template>
