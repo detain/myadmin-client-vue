@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
-import { Home, BugsSuck, AccountSettings, ChangePass } from '@/views'
+import { ClientHome, Home, BugsSuck, AccountSettings, ChangePass } from '@/views'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', component: Home },
+    { path: '/', component: ClientHome },
     { path: '/changepass', ChangePass },
     { path: '/change_pass', ChangePass },
     { path: '/bugs', BugsSuck },

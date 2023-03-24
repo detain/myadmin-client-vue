@@ -1,6 +1,8 @@
 <script setup>
 import { ref, reactive } from 'vue'
+import { useAuthStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
+const authStore = useAuthStore();
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),
     last_login: ref("12:35:pm - 21 Feb, 2023"),
@@ -300,8 +302,8 @@ function $t(key) {
                                         <h4 class="mx-2 aff-social">{{ $t("Share with:") }}</h4>
                                         <a class="mx-2" href="https://www.facebook.com/sharer/sharer.php?u={{ socialMediaUrl }}&amp;title=InterServer Web Hosting and VPS" title="InterServer Web Hosting and VPS" @click.prevent="shareOnFacebook"><img class="social" alt="Share on Facebook" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/Facebook.svg"></a>
                                         <a class="mx-2" href="https://twitter.com/intent/tweet?source=https%3A%2F%2Finterserver.net&amp;text=&quot;Write something here&quot; @interserver {{ socialMediaUrl }}&amp;" @click.prevent="shareOnTwitter" title="Tweet"><img class="social" alt="Tweet" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/Twitter.svg"></a>
-                                        <a class="mx-2" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ socialMediaUrl }}&amp;title=affiliate%20link%20{{ socialMediaUrl }}&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnLinkedIn" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/LinkedIn.svg"></a>
-                                        <a class="mx-2" href="https://pinterest.com/pin/create/button/?url={{ socialMediaUrl }}&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnPinterest" title="Pin it"><img class="social" alt="Pin it" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/Pinterest.svg"></a>
+                                        <a class="mx-2" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ socialMediaUrl }}&amp;title=affiliate%20link%20{{ socialMediaUrl }}&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnLinkedIn" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/LinkedIn.svg"></a>
+                                        <a class="mx-2" href="http://pinterest.com/pin/create/button/?url={{ socialMediaUrl }}&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnPinterest" title="Pin it"><img class="social" alt="Pin it" src="//mystage.interserver.net/images/social_flat_rounded_rects_svg/Pinterest.svg"></a>
                                     </div>
                                 </div>
                             </div>
