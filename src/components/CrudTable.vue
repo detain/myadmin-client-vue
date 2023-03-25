@@ -69,7 +69,7 @@ const props = {
   <div class="row">
     <div class="col-md-12">
       <div v-if="module && module === 'backups'" class="alert alert-default">
-        (For pricing and more information: 
+        (For pricing and more information:
         <a style="color: #004085;" target="_blank" href="https://www.interserver.net/storage/">
           https://www.interserver.net/storage/
         </a>)
@@ -258,7 +258,7 @@ const props = {
       </nav>
     </div>
   </div>
-
+</template>
 <script src="/lib/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/lib/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script>
