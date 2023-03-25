@@ -10,9 +10,6 @@ const admindir = ref('')
 const menus = ref({
     main: [
         { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
-        { link: '/users', icon: 'fa fa-circle', text: 'Users (temp)' },
-        { link: '/change_pass', icon: 'far fa-circle', text: 'Change Password' },
-        { link: '/bugs', icon: 'far fa-circle', text: 'Bugs Suck' },
         { link: '/view_domains_list', icon: 'fa fa-globe', text: 'Domains' },
         { link: '/dns_manager', icon: 'fa fa-atom', text: 'DNS Manager' },
         { link: '/view_vps_list', icon: 'fa fa-cloud-meatball', text: 'VPS' },
