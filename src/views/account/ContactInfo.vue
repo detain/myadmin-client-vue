@@ -1,87 +1,84 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
-  props: {
-    data: {
-      type: Object,
-      required: true,
+    props: {
+        data: {
+            type: Object,
+            required: true
+        },
+        csrf_token: {
+            type: String,
+            required: true
+        },
+        gravatar: {
+            type: String,
+            required: true
+        },
+        countries: {
+            type: Object,
+            required: true
+        }
     },
-    csrf_token: {
-      type: String,
-      required: true,
-    },
-    gravatar: {
-      type: String,
-      required: true,
-    },
-    countries: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
-    const formattedName = computed(() => props.data.name | htmlspecial);
+    setup(props) {
+        const formattedName = computed(() => props.data.name | htmlspecial);
+        function submitForm() {
+            // handle form submission
+        }
 
-    function submitForm() {
-      // handle form submission
+        const specialChars = (text) => {
+            return encodeURIComponent(text);
+        };
+
+        const data = ref({
+            name: "",
+            account_id: "",
+            country: "",
+            zip: "",
+            disable_reinstall: false
+        });
+        const gravatar = ref(
+            "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+        );
+        const csrf_token = ref("");
+        const countries = ref({
+            US: "United States",
+            CA: "Canada",
+            MX: "Mexico"
+        });
+        // Compute the value for the "zip" input based on the data.zip value
+        const zipValue = computed(() => {
+            if (data.value.zip) {
+                return htmlspecial(data.value.zip);
+            } else {
+                return "";
+            }
+        });
+        const route = useRoute();
+
+        const escape = (str) => {
+            const map = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+            return str.replace(/[&<>"']/g, (m) => map[m]);
+        };
+
+        return {
+            formattedName,
+            submitForm,
+            gravatar,
+            data,
+            csrf_token,
+            countries,
+            escape,
+            submitForm
+        };
     }
-
-    const specialChars = (text) => {
-        return encodeURIComponent(text);
-    }
-
-    const data = ref({
-      name: '',
-      account_id: '',
-      country: '',
-      zip: '',
-      disable_reinstall: false,
-    });
-    const gravatar = ref('https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y');
-    const csrf_token = ref('');
-    const countries = ref({
-      'US': 'United States',
-      'CA': 'Canada',
-      'MX': 'Mexico',
-    });
-
-    // Compute the value for the "zip" input based on the data.zip value
-    const zipValue = computed(() => {
-      if (data.value.zip) {
-        return htmlspecial(data.value.zip);
-      } else {
-        return '';
-      }
-    const route = useRoute()
-
-    const escape = (str) => {
-      const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      }
-      return str.replace(/[&<>"']/g, (m) => map[m])
-    }
-
-    const submitForm = () => {
-      // submit form data
-    }
-
-    return {
-      formattedName,
-      submitForm,
-      gravatar,
-      data,
-      csrf_token,
-      countries,
-      escape,
-      submitForm
-    }
-  },
 };
 </script>
 
