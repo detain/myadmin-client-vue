@@ -1,8 +1,38 @@
-<style scoped>
-  a.btn {
-    color: inherit !important;
-  }
-</style>
+<script setup>
+import { ref, computed, onMounted } from "vue";
+
+const countArray = {
+    'Open': ref(0),
+    'On Hold': ref(0),
+    'Closed': ref(0),
+};
+const view_text = ref("");
+const tickets = ref([]);
+const rows_offset = ref(0);
+const rows_total = ref(0);
+const limit = ref(0);
+const current_page = ref(0);
+const pages = ref(0);
+const view = ref("");
+const search = ref("");
+
+const statusText = computed(() => {
+    if (view_text) {
+        switch (view_text) {
+            case "open":
+                return "Open";
+            case "hold":
+                return "Awaiting Reply";
+            case "closed":
+                return "Closed";
+            default:
+                return "Inbox";
+        }
+    } else {
+        return "Inbox";
+    }
+});
+</script>
 
 <template>
 <div class="row">
@@ -51,7 +81,7 @@
         <form method="POST">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{ statusText() }}</h3>
+                    <h3 class="card-title">{{ statusText }}</h3>
                     <div class="card-tools" style="width: 40%;">
                         <form method="POST" action="">
                             <div class="input-group input-group-sm">
@@ -145,33 +175,8 @@
 <!-- /.row -->
 </template>
 
-<script setup>
-import { ref, computed, onMounted } from "vue";
-
-const view_text = ref("");
-const tickets = ref([]);
-const rows_offset = ref(0);
-const rows_total = ref(0);
-const limit = ref(0);
-const current_page = ref(0);
-const pages = ref(0);
-const view = ref("");
-const search = ref("");
-
-const statusText = computed(() => {
-    if (view_text) {
-        switch (view_text) {
-            case "open":
-                return "Open";
-            case "hold":
-                return "Awaiting Reply";
-            case "closed":
-                return "Closed";
-            default:
-                return "Inbox";
-        }
-    } else {
-        return "Inbox";
-    }
-});
-</script>
+<style scoped>
+  a.btn {
+    color: inherit !important;
+  }
+</style>

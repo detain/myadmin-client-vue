@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
-import { ClientHome, Home, BugsSuck, AccountSettings, ChangePass } from '@/views'
+import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
+import { TicketsList } from '@/views/tickets'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
 
@@ -8,10 +9,9 @@ export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: ClientHome },
-    { path: '/changepass', component: ChangePass },
     { path: '/change_pass', component: ChangePass },
-    { path: '/bugs', component: BugsSuck },
     { path: '/account_settings', component: AccountSettings },
+    { path: '/tickets_list', component: TicketsList },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page
