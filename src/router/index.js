@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
-import { PrePays } from '@/views/billing'
+import { PrePays, InvoicesList } from '@/views/billing'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
 
@@ -14,6 +14,7 @@ export const router = createRouter({
     { path: '/account_settings', component: AccountSettings },
     { path: '/tickets_list', component: TicketsList },
     { path: '/prepays', component: PrePays },
+    { path: '/view_invoices', component: InvoicesList },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page
