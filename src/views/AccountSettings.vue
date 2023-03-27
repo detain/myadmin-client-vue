@@ -72,7 +72,6 @@ const limits = ref([
     }
 ]);
 
-const isCollapsed = ref(false);
 const csrfToken = ref("");
 const disableReinstall = ref(false);
 const disableReset = ref(false);
@@ -89,9 +88,6 @@ const newLimit = ref({
 
 function submitForm() {
     // handle form submission here
-}
-function toggleCard() {
-    this.isCollapsed = !this.isCollapsed;
 }
 </script>
 
@@ -268,7 +264,6 @@ function toggleCard() {
             <div class="card-body">
                 <form @submit.prevent="submitForm">
                     <input type="hidden" name="csrf_token" :value="csrfToken">
-                    <input v-if="sessionId" type="hidden" name="sessionid" :value="sessionId">
                     <div class="row justify-content-center">
                         <div class="icheck-success d-inline">
                             <input type="checkbox" id="giChkSqr" value="1" name="2fa_google" v-model="formData.twoFactorAuthEnabled">
@@ -311,9 +306,9 @@ function toggleCard() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2" v-bind:title="tooltip">Account Features</h3>
+                    <h3 class="card-title py-2"  data-toggle="tooltip" title="">Account Features</h3>
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCard"><i :class="iconClass"></i></button>
+                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>

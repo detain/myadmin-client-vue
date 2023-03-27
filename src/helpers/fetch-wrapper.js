@@ -31,7 +31,7 @@ function authHeader(url) {
   const isApiUrl = true
   if (isLoggedIn && isApiUrl) {
     //return { Authorization: `Bearer ${user.sessionid}` }
-    return { SessionId: `${user.sessionid}` }
+    return { sessionid: `${user.sessionid}` }
   } else {
     return {}
   }
