@@ -82,9 +82,9 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-2">
                                     <div class="input-group">
-                                        <select v-model="selectedYear" class="select2 form-control form-control-sm" @change="submitForm">
+                                        <select v-model="year" class="select2 form-control form-control-sm" @change="submitForm">
                                             <option value="">All</option>
-                                            <option v-for="(text, val) in yearsArr" :key="val" :value="val" :selected="selectedYear === val">{{ text }}</option>
+                                            <option v-for="(text, val) in yearsArr" :key="val" :value="val" :selected="year === val">{{ text }}</option>
                                         </select>
                                     </div>
                                 </div>

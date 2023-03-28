@@ -1,3 +1,156 @@
+<script setup>
+import { ref, onMounted } from "vue";
+const country_select = ref('');
+const cc_arr = ref([]);
+const pymt_method = ref('paypal');
+const selected_cc = ref('');
+const trigger_click = ref(false);
+const current_cc_id = ref(0);
+const verify_display = ref(undefined);
+const csrf_token = ref('');
+const cc_auto_checked = ref(false);
+const cont_fields = {
+    name: ref('')
+};
+
+function mounted() {
+    if (trigger_click) {
+        $("#unver_{{ current_cc_id }}").attr("data-step", "{{ trigger_click }}").trigger('click');
+    }
+}
+
+function delete_card(cc_id = '0')
+{
+    $("#cc_idx").val(cc_id);
+    const { value: formValues } = Swal.fire({
+        type: "warning",
+        title: '<h3>Delete CreditCard</h3> ',
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: 'Yes, Delete it.',
+        html: '<p>Are you sure want to remove your creditcard <br><b>'+cc_arr[cc_id]['mask_cc']+'</b> ?</p>',
+        preConfirm: () => {
+            $('#deleteForm').submit();
+        }
+    });
+}
+
+function edit_card(cc_id = 0)
+{
+    $("#e_cc_idx").val(cc_id);
+    $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
+    $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+    $("#EditForm select[name='country']").attr('disabled','disabled');
+    $('#EditClick').trigger('click');
+}
+
+function verify_card(cc_id = 0)
+{
+    $(".v_cc_idx").val(cc_id);
+    verify_display = $('#unver_'+cc_id).attr("data-step");
+    if ( typeof verify_display === 'undefined') {
+        $('#VerifyFormStep1').trigger('click');
+    } else if(verify_display == 'step1') {
+        $('#VerifyFormStep1').trigger('click');
+    } else if(verify_display == 'step2') {
+        $('#VerifyClick').trigger('click');
+    }
+}
+
+function update_payment_method(cc_val, cc_auto = '0')
+{
+    if (cc_auto == 1) {
+        if ($('#customSwitch3').is(':checked')) {
+            $("#cc_auto_update").val(1);
+        } else {
+            $("#cc_auto_update").val(0);
+        }
+    } else {
+        $("#defaultpymt_method").val(cc_val);
+    }
+    $("#defaultpymt").submit();
+}
+
+function formatCardNum(e) {
+  if (e.target.value == e.target.lastValue) return;
+  var caretPosition = e.target.selectionStart;
+  var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+  var parts = [];
+  for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+    parts.push(sanitizedValue.substring(i, i + 4));
+  }
+  for (var i = caretPosition - 1; i >= 0; i--) {
+    var c = e.target.value[i];
+    if (c < '0' || c > '9') {
+      caretPosition--;
+    }
+  }
+  caretPosition += Math.floor(caretPosition / 4);
+  e.target.value = e.target.lastValue = parts.join('-');
+  e.target.selectionStart = e.target.selectionEnd = caretPosition;
+}
+
+function formatExpDate(e) {
+  if (e.target.value == e.target.lastValue) return;
+  var caretPosition = e.target.selectionStart;
+  var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+  var parts = [];
+  for (var i = 0; i < 2; i += 2) {
+    parts.push(sanitizedValue.substring(i, i + 2));
+  }
+  if (sanitizedValue.length >= 2) {
+    for (var j = 2; j < sanitizedValue.length; j += 5) {
+      parts.push(sanitizedValue.substring(j, j + 5));
+    }
+  }
+  for (var i = caretPosition - 1; i >= 0; i--) {
+    var c = e.target.value[i];
+    if (c < '0' || c > '9') {
+      caretPosition--;
+    }
+  }
+  caretPosition += Math.floor(caretPosition / 2);
+  e.target.value = e.target.lastValue = parts.join('/');
+  e.target.selectionStart = e.target.selectionEnd = caretPosition;
+}
+
+function onCardNumInput(e) {
+  formatCardNum(e);
+}
+
+function onExpDateInput(e) {
+  formatExpDate(e);
+}
+
+function deleteCard(cc_id = '0') {
+  $("#cc_idx").val(cc_id);
+  const { value: formValues } = Swal.fire({
+    type: "warning",
+    title: '<h3>Delete CreditCard</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Delete it.',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + cc_arr[cc_id]['mask_cc'] + '</b> ?</p>',
+    preConfirm: () => {
+      $('#deleteForm').submit();
+    }
+  });
+}
+
+function editCard(cc_id = 0) {
+  $("#e_cc_idx").val(cc_id);
+  $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
+  $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+  $("#EditForm select[name='country']").attr('disabled', 'disabled');
+  $('#EditClick').trigger('click');
+}
+
+
+
+
+</script>
+
+<template>
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card-body text-red px-0">
@@ -10,43 +163,46 @@
         <div class="d-flex mb-4">
             <h5 class="w-50">Select Preferred Payment Method</h5>
             <div class="w-50 text-right">
-                <a href="cart" class="btn btn-custom mr-2" ><i class="fa fa-money" aria-hidden="true"></i> Cart</a>
+                <a href="cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</a>
                 <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
             </div>
-        </div>
+        </div>`
         <div class="card shadow-sm shadow-hover">
             <div class="card-body icheck-success">
-                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" {if $pymt_method == 'paypal'}checked="checked"{/if} onchange="update_payment_method('paypal')">
+                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" :checked="pymt_method === 'paypal'" @change="update_payment_method('paypal')">
                 <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
             </div>
         </div>
-        {if !empty($cc_arr)}
-        {foreach $cc_arr as $cc_id => $cc_detail}
-        <div class="card shadow-sm shadow-hover">
-            <div class="card-body icheck-success row">
-                <input id="cc-{$cc_id}" name="r_pymt_method" value="cc_{$cc_id}" type="radio" class="form-check-input" {if $cc_detail.verified_cc == 'no'}disabled="disabled" data-toggle="tooltip" title="{$cc_detail.verified_text}"{/if}{if $pymt_method == 'cc' && isset($selected_cc) && $selected_cc == $cc_id}checked="checked"{/if} onchange="update_payment_method('cc'+{$cc_id})">
-                <label for="cc-{$cc_id}" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {$cc_detail.mask_cc}</label>
-                <div class="col-md-2 pb-2">
-                    <span class="pl-4 {if $cc_detail.verified_cc == 'yes'}text-green{else}text-red{/if}" data-toggle="tooltip" title="{$cc_detail.verified_text}"><i class="fa {if $cc_detail.verified_cc == 'yes'}fa-check{else}fa-times{/if}"></i> {$cc_detail.verified}</span>
-                </div>
-                <div class="col-md-6 pb-2">
-                    {if $cc_detail.verified_cc == 'no'}
-                    <a class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="{$cc_detail.unverified_text}" onclick="verify_card({$cc_id})" id="unver_{$cc_id}" data-step="{if isset($cc_detail.v_step)}{$cc_detail.v_step}{else}step1{/if}"><i class="fa fa-exclamation-triangle"></i> Verify</a>
-                    {/if}
-                    <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="{$cc_detail.edit_text}" onclick="edit_card({$cc_id})"><i class="fa fa-edit"></i> Edit</a>
-                    {if isset($selected_cc) && $selected_cc == $cc_id}
-                    {else}
-                    <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="{$cc_detail.delete_text}" onclick="delete_card({$cc_id})"><i class="fa fa-trash"></i> Delete</a>
-                    {/if}
+
+        <div v-if="cc_arr && cc_arr.length">
+            <div v-for="(cc_detail, cc_id) in cc_arr" :key="cc_id" class="card shadow-sm shadow-hover">
+                <div class="card-body icheck-success row">
+                    <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                    <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.mask_cc }}</label>
+                    <div class="col-md-2 pb-2">
+                        <span :class="{'text-green': cc_detail.verified_cc === 'yes', 'text-red': cc_detail.verified_cc === 'no'}" :title="cc_detail.verified_text" data-toggle="tooltip">
+                            <i :class="{'fa fa-check': cc_detail.verified_cc === 'yes', 'fa fa-times': cc_detail.verified_cc === 'no'}"></i> {{ cc_detail.verified }}
+                        </span>
+                    </div>
+                    <div class="col-md-6 pb-2">
+                        <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" data-toggle="tooltip" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id">
+                            <i class="fa fa-exclamation-triangle"></i> Verify
+                        </a>
+                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="tooltip" @click="editCard(cc_id)">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                        <a v-if="selected_cc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" data-toggle="tooltip" @click="deleteCard(cc_id)">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        {/foreach}
-        {/if}
+
         <div class="card shadow-sm shadow-hover">
             <div class="card-body">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" {$cc_auto_checked} onchange="update_payment_method(0,1)">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" :checked="cc_auto_checked" onchange="update_payment_method(0,1)">
                     <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
                 </div>
             </div>
@@ -62,7 +218,7 @@
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card">
-                    <input type="hidden" name="csrf_token" value="{$csrf_token}">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="add">
                     <div class="row justify-content-center">
                         <div class="col-12">
@@ -86,32 +242,32 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="name" value="{$cont_fields.name}" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')"> <label class="text-md">Name</label> </div>
+                            <div class="input-group"> <input type="text" name="name" v-model="cont_fields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')"> <label class="text-md">Name</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="address" value="{$cont_fields.address}" placeholder="Address line"> <label class="text-md">Address</label> </div>
+                            <div class="input-group"> <input type="text" name="address" v-model="cont_fields.address" placeholder="Address line"> <label class="text-md">Address</label> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="city" value="{$cont_fields.city}" placeholder="City"> <label class="text-md">City</label> </div>
+                            <div class="input-group"> <input type="text" name="city" v-model="cont_fields.city" placeholder="City"> <label class="text-md">City</label> </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="state" value="{$cont_fields.state}" placeholder="State"> <label class="text-md">State</label> </div>
+                            <div class="input-group"> <input type="text" name="state" v-model="cont_fields.state" placeholder="State"> <label class="text-md">State</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                {$country_select}
+                                {{ country_select }}
                                 <!-- <input type="text" name="Country" placeholder="Country"> -->
                                 <label class="text-md">Country</label>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="zip" value="{$cont_fields.zip}" placeholder="Zipcode"> <label class="text-md">Zipcode</label> </div>
+                            <div class="input-group"> <input type="text" name="zip" v-model="cont_fields.zip" placeholder="Zipcode"> <label class="text-md">Zipcode</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -133,7 +289,7 @@
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="EditForm">
-                    <input type="hidden" name="csrf_token" value="{$csrf_token}">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="edit">
                     <input id="e_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -158,32 +314,32 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="name" value="{$cont_fields.name}" placeholder="Name on card" disabled> <label class="text-md">Name</label> </div>
+                            <div class="input-group"> <input type="text" name="name" v-model="cont_fields.name" placeholder="Name on card" disabled> <label class="text-md">Name</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="address" value="{$cont_fields.address}" placeholder="Address line" disabled> <label class="text-md">Address</label> </div>
+                            <div class="input-group"> <input type="text" name="address" v-model="cont_fields.address" placeholder="Address line" disabled> <label class="text-md">Address</label> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="city" value="{$cont_fields.city}" placeholder="City" disabled> <label class="text-md">City</label> </div>
+                            <div class="input-group"> <input type="text" name="city" v-model="cont_fields.city" placeholder="City" disabled> <label class="text-md">City</label> </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="state" value="{$cont_fields.state}" placeholder="State" disabled> <label class="text-md">State</label> </div>
+                            <div class="input-group"> <input type="text" name="state" v-model="cont_fields.state" placeholder="State" disabled> <label class="text-md">State</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                {$country_select}
+                                {{ country_select }}
                                 <!-- <input type="text" name="Country" placeholder="Country"> -->
                                 <label class="text-md">Country</label>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="zip" value="{$cont_fields.zip}" placeholder="Zipcode" disabled> <label class="text-md">Zipcode</label> </div>
+                            <div class="input-group"> <input type="text" name="zip" v-model="cont_fields.zip" placeholder="Zipcode" disabled> <label class="text-md">Zipcode</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -206,7 +362,7 @@
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="VerifyForm">
-                    <input type="hidden" name="csrf_token" value="{$csrf_token}">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="verify">
                     <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -247,7 +403,7 @@
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="VerifyForm">
-                    <input type="hidden" name="csrf_token" value="{$csrf_token}">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="verify">
                     <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -284,26 +440,19 @@
 </div>
 <!-- END VERIFY CC FORM -->
 <form id="VerifyFormDefault" action="payment_types" method="post">
-    <input id="csrf_token" type="hidden" name="csrf_token" value="{$csrf_token}">
+    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="verify">
     <input class="v_cc_idx" type="hidden" name="idx" value="">
 </form>
 <form id="deleteForm" action="payment_types" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" value="{$csrf_token}">
+    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="delete">
     <input id="cc_idx" type="hidden" name="idx" value="">
 </form>
 <form id="defaultpymt" action="payment_types" method="post">
-    <input type="hidden" name="csrf_token" value="{$csrf_token}">
+    <input type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="default">
     <input id="defaultpymt_method" type="hidden" name="payment_method" value="">
     <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="">
 </form>
-<script src="/js/lt/payment_types.js?202209011009"></script>
-{if isset($trigger_click)}
-<script>
-    $(function(){
-        $("#unver_{$current_cc_id}").attr("data-step", "{$trigger_click}").trigger('click');
-    });
-</script>
-{/if}
+</template>
