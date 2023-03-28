@@ -3,6 +3,7 @@ import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
+import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
 
@@ -16,6 +17,7 @@ export const router = createRouter({
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
+    { path: '/affiliate', component: Affiliate },
     { path: '/view_invoices', component: InvoicesList },
     { ...accountRoutes },
     { ...usersRoutes },
