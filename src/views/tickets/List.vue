@@ -17,8 +17,8 @@ const view = ref("");
 const search = ref("");
 
 const statusText = computed(() => {
-    if (view_text) {
-        switch (view_text) {
+    if (view_text.value) {
+        switch (view_text.value) {
             case "open":
                 return "Open";
             case "hold":

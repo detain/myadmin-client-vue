@@ -14,7 +14,7 @@ const cont_fields = {
 };
 
 function mounted() {
-    if (trigger_click) {
+    if (trigger_click.value) {
         $("#unver_{{ current_cc_id }}").attr("data-step", "{{ trigger_click }}").trigger('click');
     }
 }
@@ -47,12 +47,12 @@ function edit_card(cc_id = 0)
 function verify_card(cc_id = 0)
 {
     $(".v_cc_idx").val(cc_id);
-    verify_display = $('#unver_'+cc_id).attr("data-step");
-    if ( typeof verify_display === 'undefined') {
+    verify_display.value = $('#unver_'+cc_id).attr("data-step");
+    if ( typeof verify_display.value === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display == 'step1') {
+    } else if(verify_display.value == 'step1') {
         $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display == 'step2') {
+    } else if(verify_display.value == 'step2') {
         $('#VerifyClick').trigger('click');
     }
 }

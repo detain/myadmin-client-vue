@@ -25,7 +25,7 @@
     "@vitejs/plugin-vue": "*",
     "@vue/eslint-config-prettier": "*",
     "autoprefixer": "*",
-    "eslint": "",
+    "eslint": "*",
     "eslint-plugin-vue": "*",
     "prettier": "*",
     "vite": "*"
