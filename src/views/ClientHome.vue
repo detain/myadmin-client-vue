@@ -1,8 +1,6 @@
 <script setup>
 import { ref, reactive } from 'vue'
-import { useAuthStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
-const authStore = useAuthStore();
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),
     last_login: ref("12:35:pm - 21 Feb, 2023"),
@@ -134,10 +132,8 @@ const loadHome = async (state) => {
         console.log(error);
     }
 };
-//if (authStore.user) {
-    //await loadHome(state)
-    loadHome(state)
-//}
+
+loadHome(state)
 </script>
 
 <template>

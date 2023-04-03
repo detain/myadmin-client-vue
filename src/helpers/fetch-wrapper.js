@@ -27,8 +27,7 @@ function authHeader(url) {
   // return auth header with jwt if user is logged in and request is to the api url
   const { user } = useAuthStore()
   const isLoggedIn = !!user?.sessionid
-  //const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL)
-  const isApiUrl = true
+  const isApiUrl = url.match('/apiv2/') != null
   if (isLoggedIn && isApiUrl) {
     //return { Authorization: `Bearer ${user.sessionid}` }
     return { sessionid: `${user.sessionid}` }
@@ -50,7 +49,7 @@ async function handleResponse(response) {
     console.log(data);
 
     // get error message from body or default to response status
-    const error = (data && data.message) || response.status
+    //const error = (data && data.message) || response.status
     return Promise.reject(data)
     //return Promise.reject(error)
   }
