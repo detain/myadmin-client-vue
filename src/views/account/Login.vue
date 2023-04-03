@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
 
 const layoutStore = useLayoutStore();
-const { opts } = storeToRefs(layoutStore);
+const { breadcrums, page_header, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
 
 const schema = Yup.object().shape({
     tfa: Yup.string(),

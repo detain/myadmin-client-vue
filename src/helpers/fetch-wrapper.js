@@ -40,7 +40,6 @@ function authHeader(url) {
 async function handleResponse(response) {
   const isJson = response.headers?.get('content-type')?.includes('application/json')
   const data = isJson ? await response.json() : null
-
   // check for error response
   if (!response.ok) {
     const { user, logout } = useAuthStore()

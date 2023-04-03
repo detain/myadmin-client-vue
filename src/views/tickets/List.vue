@@ -1,20 +1,10 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { useTicketsStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
 
-const countArray = {
-    'Open': ref(0),
-    'On Hold': ref(0),
-    'Closed': ref(0),
-};
-const view_text = ref("");
-const tickets = ref([]);
-const rows_offset = ref(0);
-const rows_total = ref(0);
-const limit = ref(0);
-const current_page = ref(0);
-const pages = ref(0);
-const view = ref("");
-const search = ref("");
+const ticketsStore = useTicketsStore();
+const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, view_text, rows_offset, rows_total, limit, current_page, pages, view, search } = storeToRefs(ticketsStore);
 
 const statusText = computed(() => {
     if (view_text.value) {
@@ -32,6 +22,8 @@ const statusText = computed(() => {
         return "Inbox";
     }
 });
+
+ticketsStore.getAll();
 </script>
 
 <template>
