@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
-//import { DomainsList } from '@/views/domains'
+import { DomainsList } from '@/views/domains'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
@@ -20,7 +20,7 @@ export const router = createRouter({
     { path: '/cart', component: Cart },
     { path: '/affiliate', component: Affiliate },
     { path: '/view_invoices', component: InvoicesList },
-    //{ path: '/view_domains_list', component: DomainsList },
+    { path: '/view_domains_list', component: DomainsList },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page
