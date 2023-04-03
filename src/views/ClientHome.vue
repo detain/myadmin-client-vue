@@ -5,16 +5,16 @@ const state = reactive({
     last_login_ip: ref("70.44.33.193"),
     last_login: ref("12:35:pm - 21 Feb, 2023"),
     currency: ref("$"),
-    amount: ref("$1,862.37"),
-    invoice_list: ref(25),
-    balance: ref("$6.60"),
-    full_name: ref("Joe"),
-    email: ref("email@user.net"),
+    amount: ref("$0"),
+    invoice_list: ref(0),
+    balance: ref("$0"),
+    full_name: ref(""),
+    email: ref(""),
     data: ref({}),
     tickets: ref([]),
-    affiliateUrl: ref("https://www.interserver.net/r/2773"),
-    pin: ref("8675309"),
-    affiliateAmount: ref("100"),
+    affiliateUrl: ref(""),
+    pin: ref(""),
+    affiliateAmount: ref(""),
     services: ref({
         domains: {
             links: {},
@@ -43,8 +43,8 @@ const state = reactive({
         }
     }),
     ticket_Status: ref({
-        Open: 4,
-        "On Hold": 5
+        Open: 0,
+        "On Hold": 0
     }),
     ticketStatusView: ref({
         4: "Open",

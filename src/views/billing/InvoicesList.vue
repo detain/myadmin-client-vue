@@ -1,15 +1,10 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { storeToRefs } from 'pinia';
+import { useInvoicesStore } from '@/stores';
+import { ref, computed, onMounted } from "vue";
 
-const month = ref("");
-const year = ref("");
-const monthsArr = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-const yearsArr = [2020, 2021, 2022];
-const rows = ref([
-  { id: 1, date: '2022-01-01', service: 'Service 1', description: 'Description 1', amount: 100, paid: 'Yes', payment_type: 'Card', payment_description: 'Payment Description 1', paid_on: '2022-01-02', module: 'module1' },
-  { id: 2, date: '2022-02-01', service: 'Service 2', description: 'Description 2', amount: 200, paid: 'No', payment_type: 'Cash', payment_description: 'Payment Description 2', paid_on: '', module: 'module2' },
-  { id: 3, date: '2022-03-01', service: 'Service 3', description: 'Description 3', amount: 300, paid: 'Yes', payment_type: 'Online', payment_description: 'Payment Description 3', paid_on: '2022-03-02', module: 'module3' },
-])
+const invoicesStore = useInvoicesStore();
+const { custid, month, year, months_arr, years_arr, rows, loading, error } = storeToRefs(invoicesStore);
 
 const submitForm = () => {
     console.log(`Selected month: ${month.value}`);
@@ -17,6 +12,7 @@ const submitForm = () => {
 };
 const invoicesTable = ref(null);
 
+invoicesStore.getAll();
 onMounted(() => {
     $(invoicesTable.value).DataTable({
         createdRow(row, data, index) {
@@ -68,7 +64,7 @@ onMounted(() => {
                                         <label class="mx-2">Filter </label>
                                         <select v-model="month" class="form-control form-control-sm select2" @change="submitForm">
                                             <option value="">All</option>
-                                            <option v-for="(text, val) in monthsArr" :key="val" :value="val" :selected="month === val">{{ text }}</option>
+                                            <option v-for="(text, val) in months_arr" :key="val" :value="val" :selected="month === val">{{ text }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -76,7 +72,7 @@ onMounted(() => {
                                     <div class="input-group">
                                         <select v-model="year" class="select2 form-control form-control-sm" @change="submitForm">
                                             <option value="">All</option>
-                                            <option v-for="(text, val) in yearsArr" :key="val" :value="val" :selected="year === val">{{ text }}</option>
+                                            <option v-for="(text, val) in years_arr" :key="val" :value="val" :selected="year === val">{{ text }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -105,7 +101,8 @@ onMounted(() => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(row, index) in rows" :key="index">
+                        <tr v-if="loading"><td colspan="10">Loading...</td></tr>
+                        <tr v-else v-for="(row, index) in rows" :key="index">
                             <td><a :href="'pdf.php?choice=view_invoice&module=' + row.module + '&id=' + row.id">{{ row.id }}</a></td>
                             <td>{{ row.date }}</td>
                             <td>{{ row.service }}</td>
