@@ -22,15 +22,7 @@ onMounted(() => {
         createdRow(row, data, index) {
             const invoiceId = $(row).find("td").eq(0).text();
             const hrefUrl = $(row).find("td:first a").attr("href");
-            $(row)
-                .find("td")
-                .eq(9)
-                .html(
-                    `<a href="${hrefUrl}" title="Download Invoice PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a> <a href="${hrefUrl.replace(
-                        /pdf\.php/g,
-                        "index.php"
-                    )}" title="View Invoice"><i class="icon-view-details"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-view-details"></use></svg></i></a>`
-                );
+            $(row).find("td").eq(9).html(`<a href="${hrefUrl}" title="Download Invoice PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a> <a href="${hrefUrl.replace(/pdf\.php/g,"index.php")}" title="View Invoice"><i class="icon-view-details"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-view-details"></use></svg></i></a>`);
         },
         order: [[0, "desc"]],
         pageLength: 50,
