@@ -5,7 +5,7 @@ import { ref, computed, onMounted } from "vue";
 
 const ticketsStore = useTicketsStore();
 const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
-
+const checkIcon = ref('far fa-square')
 const statusText = computed(() => {
     if (viewText.value) {
         switch (viewText.value) {
@@ -22,6 +22,12 @@ const statusText = computed(() => {
         return "Inbox";
     }
 });
+
+function toggleCheckboxes() {
+  const checked = tickets.value.every(ticket => ticket.checked)
+  tickets.value.forEach(ticket => ticket.checked = !checked)
+  checkIcon.value = checked ? 'far fa-square' : 'far fa-check-square'
+}
 
 ticketsStore.getAll();
 </script>
@@ -88,10 +94,11 @@ ticketsStore.getAll();
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <template v-if="tickets.length">
+                    <h4 v-if="loading" class="p-4">Loading...</h4>
+                    <template v-else-if="tickets.length">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                            <button type="button" class="btn btn-secondary btn-sm checkbox-toggle"><i class="far fa-square"></i></button>
+                            <button type="button" class="btn btn-secondary btn-sm checkbox-toggle" @click="toggleCheckboxes"><i :class="checkIcon"></i></button>
                             <div class="btn-group">
                                 <button id="close-ticket" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" data-toggle="tooltip" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
                             </div>
@@ -113,7 +120,7 @@ ticketsStore.getAll();
                                     <tr v-for="ticket in tickets" :key="ticket.ticketid">
                                         <td>
                                             <div class="icheck-primary" v-if="ticket.can_close === 'no'">
-                                                <input type="checkbox" value="1" :id="'check'+ticket.ticketid" :name="`tickets[${ticket.ticketid}]`">
+                                                <input type="checkbox" value="1" :id="'check'+ticket.ticketid" :name="`tickets[${ticket.ticketid}]`" v-model="ticket.checked">
                                                 <label :for="'check'+ticket.ticketid"></label>
                                             </div>
                                         </td>
@@ -122,10 +129,8 @@ ticketsStore.getAll();
                                             <i v-else-if="ticket.status_text === 'On Hold'" class="fa fa-pause text-warning"></i>
                                             <i v-else-if="ticket.status_text === 'Closed'" class="far fa-envelope text-danger"></i>
                                         </td>
-                                        <td class="mailbox-name">{{ ticket.lastreplier }}</td>
-                                        <td class="mailbox-subject">
-                                            <b>{{ ticket.ticketmaskid }}</b> - {{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + "..." : ticket.title }}
-                                        </td>
+                                        <td class="mailbox-name"><router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.lastreplier }}</router-link></td>
+                                        <td class="mailbox-subject"><b><router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b> - <router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + "..." : ticket.title }}</router-link></td>
                                         <td class="mailbox-attachment" v-if="ticket.attachments.length > 0"><i class="fas fa-paperclip"></i></td>
                                         <td class="mailbox-date">{{ ticket.lastactivity }}</td>
                                     </tr>
