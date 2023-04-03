@@ -20,13 +20,13 @@ export const useTicketsStore = defineStore({
             'Closed': 0
         },
         inboxCount: 0,
-        rows_offset: 0,
-        rows_total: 0,
+        rowsOffset: 0,
+        rowsTotal: 0,
         limit: 50,
-        current_page: 1,
+        currentPage: 1,
         pages: 1,
         view: 'Open',
-        view_text: 'Inbox',
+        viewText: 'Inbox',
         search: ''
 
     }),

@@ -4,11 +4,11 @@ import { useTicketsStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
 
 const ticketsStore = useTicketsStore();
-const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, view_text, rows_offset, rows_total, limit, current_page, pages, view, search } = storeToRefs(ticketsStore);
+const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
 
 const statusText = computed(() => {
-    if (view_text.value) {
-        switch (view_text.value) {
+    if (viewText.value) {
+        switch (viewText.value) {
             case "open":
                 return "Open";
             case "hold":
@@ -98,10 +98,10 @@ ticketsStore.getAll();
                             <div class="float-right">
                                 {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                                 <div class="btn-group">
-                                    <button v-if="current_page - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                    <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (current_page - 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-left"></i></a>
-                                    <button v-if="current_page + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + current_page + 1 + '&amp;limit=' + limit"><i class="fas fa-chevron-right"></i></a>
+                                    <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
+                                    <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (currentPage - 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-left"></i></a>
+                                    <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                    <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + currentPage + 1 + '&amp;limit=' + limit"><i class="fas fa-chevron-right"></i></a>
                                 </div>
                                 <!-- /.btn-group -->
                             </div>
@@ -148,10 +148,10 @@ ticketsStore.getAll();
                         <div class="float-right">
                             {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                             <div class="btn-group">
-                                <button v-if="current_page - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (current_page - 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-left"></i></a>
-                                <button v-if="current_page + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (current_page + 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-right"></i></a>
+                                <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
+                                <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (currentPage - 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-left"></i></a>
+                                <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                <a v-else class="btn btn-secondary btn-sm" :href="'index.php?choice=none.tickets_list&amp;view=' + view + '&amp;page=' + (currentPage + 1) + '&amp;limit=' + limit"><i class="fas fa-chevron-right"></i></a>
                             </div>
                             <!-- /.btn-group -->
                         </div>
