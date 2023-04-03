@@ -1,55 +1,55 @@
 <script setup>
-    import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed } from 'vue'
 
-    const title = ref('')
-    const titleButtons = ref([])
-    const selectMultiple = ref(false)
-    const tableHeaders = ref([])
-    const rowButtons = computed(() => typeof rowButtons !== 'undefined')
-    const tableRows = reactive({{ $table_rows|json_encode|raw }});
-    const selectMultiple = {{ $select_multiple ? 'true' : 'false' }};
-    const labelRep = reactive({{ $label_rep|json_encode|raw }});
-    const rowButtons = {{ isset($row_buttons) ? 'true' : 'false' }};
+const title = ref('')
+const titleButtons = ref([])
+const selectMultiple = ref(false)
+const tableHeaders = ref([])
+const rowButtons = computed(() => typeof rowButtons !== 'undefined')
+const tableRows = reactive({{ $table_rows|json_encode|raw }});
+const selectMultiple = {{ $select_multiple ? 'true' : 'false' }};
+const labelRep = reactive({{ $label_rep|json_encode|raw }});
+const rowButtons = {{ isset($row_buttons) ? 'true' : 'false' }};
 
-    function updateSort(col) {
-        // Your sorting logic here
-    }
-    const state = reactive({
-        page_links: Array.from({ length: props.total_pages }, (_, i) => i + 1),
-    })
+function updateSort(col) {
+    // Your sorting logic here
+}
+const state = reactive({
+    page_links: Array.from({ length: props.total_pages }, (_, i) => i + 1),
+})
 
-    const updatePageLimit = (limit) => {
-        emit('update:page_limit', limit)
-        emit('update:page', 1)
-    }
+const updatePageLimit = (limit) => {
+    emit('update:page_limit', limit)
+    emit('update:page', 1)
+}
 
-    const gotoPage = (page) => {
-        emit('update:page', page)
-    }
+const gotoPage = (page) => {
+    emit('update:page', page)
+}
 
-    onMounted(() => {
-        var crud_rows = {$rows|json_encode};
-        var crud_primary_key = "{$primary_key}";
-        var crud_page_offset = {$page_offset};
-        var crud_page_limit = {$page_limit};
-        var crud_order_dir = "{$order_dir}";
-        var crud_order_by = "{$order_by}";
-        var crud_total_pages = {$total_pages};
-        var crud_page = {$page};
-        var crud_search_terms = [];
-        var crud_total_count = "{$total_rows}";
-        $('#title_btns > .btn-group > a.active').trigger('click');
-        $('#title_btns > .btn-group > a').on('click', function(){
-            $('#title_btns > .btn-group > a').each(function(){
-                $(this).removeClass('active');
-            });
-            $(this).addClass('active');
+onMounted(() => {
+    var crud_rows = {$rows|json_encode};
+    var crud_primary_key = "{$primary_key}";
+    var crud_page_offset = {$page_offset};
+    var crud_page_limit = {$page_limit};
+    var crud_order_dir = "{$order_dir}";
+    var crud_order_by = "{$order_by}";
+    var crud_total_pages = {$total_pages};
+    var crud_page = {$page};
+    var crud_search_terms = [];
+    var crud_total_count = "{$total_rows}";
+    $('#title_btns > .btn-group > a.active').trigger('click');
+    $('#title_btns > .btn-group > a').on('click', function(){
+        $('#title_btns > .btn-group > a').each(function(){
+            $(this).removeClass('active');
         });
-        $('.row-counts > .active').addClass('btn-primary');
-        $('.row-counts > .btn').on('click', function(){
-            $(this).addClass('btn-primary');
-        });
+        $(this).addClass('active');
     });
+    $('.row-counts > .active').addClass('btn-primary');
+    $('.row-counts > .btn').on('click', function(){
+        $(this).addClass('btn-primary');
+    });
+});
 </script>
 
 <template>
@@ -181,7 +181,6 @@
               </div>
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-6">
               <form accept-charset="UTF-8" role="form" id="paginationForm" class="" :action="'ajax.php?choice=crud&crud=' + choice + '&action=list' + extra_url_args" autocomplete="on" method="GET" style="display:inline-flex;">
@@ -227,14 +226,14 @@
 </template>
 
 <style scoped>
-    a.btn-info:link, a.btn-info:active, a.btn-info:visited, a.btn-info:hover {
-        font-size: inherit;
-    }
-    div.dataTables_length label, div.dataTables_filter label {
-        text-align: left;
-        white-space: nowrap;
-    }
-    div.dataTables_filter {
-        text-align: right;
-    }
+a.btn-info:link, a.btn-info:active, a.btn-info:visited, a.btn-info:hover {
+    font-size: inherit;
+}
+div.dataTables_length label, div.dataTables_filter label {
+    text-align: left;
+    white-space: nowrap;
+}
+div.dataTables_filter {
+    text-align: right;
+}
 </style>
