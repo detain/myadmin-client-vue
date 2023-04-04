@@ -70,6 +70,24 @@ const rows = ref([
 const row_buttons = ref([
     "<button type=\"button\" alt=\"View Domain Registrations\" class=\"btn btn-primary btn-xs printer-hidden\" onclick=\"window.location='index.php?choice=none.view_domain&id='+get_crud_row_id(this);\" title=\"View Domain Registrations\" data-toggle=\"tooltip\" tooltip=\"View Domain Registrations\"><i class=\"fa fa-fw fa-cog\"></i></button>"
 ]);
+const themedir = ref("/templates/crud/");
+const titbgcolor = ref(null);
+const titcolspan = ref(6);
+const table_rows = ref([]);
+const tableopts = ref("");
+const widthplus2 = ref(8);
+const width = ref(6);
+const title = ref("Domain Registrations List");
+const table_headers = [{rowopts: ref("id=\"itemrowheader\""), cols:ref([
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"screenshot\" class=\"\"", colbgcolor: null, colalign:"center", text:"Screenshot<i class=\"sort-arrow fa fa-sort\" style=\"padding-left: 5px; opacity: 0.3; position: absolute;\"></i>", colspan:1},
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"domain_id\" class=\"\"", colbgcolor: null, colalign:"center", text:"Service ID<i class=\"sort-arrow fa fa-sort\" style=\"padding-left: 5px; opacity: 0.3; position: absolute;\"></i>", colspan:1},
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"domain_hostname\" class=\"\"",colbgcolor: null,colalign:"center",text:"Domain Name<i class=\"sort-arrow fa fa-sort\" style=\"padding-left: 5px; opacity: 0.3; position: absolute;\"></i>",colspan:1},
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"domain_expire_date\" class=\"\"",colbgcolor: null,colalign:"center",text:"Domain Expire Date<i class=\"sort-arrow fa fa-sort\" style=\"padding-left: 5px; opacity: 0.3; position: absolute;\"></i>",colspan:1},
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"cost\" class=\"\"",colbgcolor: null,colalign:"center",text:"Cost<i class=\"sort-arrow fa fa-sort\" style=\"padding-left: 5px; opacity: 0.3; position: absolute;\"></i>",colspan:1},
+    {colopts: "data-order-dir=\"asc\" data-order-by=\"domain_status\" class=\"\"",colbgcolor: null,colalign:"center",text:"Billing Status<i class=\"sort-arrow fa fa-sort-asc\" style=\"padding-left: 5px; opacity: 1; position: absolute;\"></i>",colspan:1}
+]) }];
+
+
 
 
 function updateSort(col) {
@@ -536,9 +554,9 @@ onMounted(() => {
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <ul v-if="export_button" class="dropdown-menu" role="menu">
-                <li v-for="(formatData, ext) in exportFormats" :key="ext" role="presentation" :data-type="ext">
+                <li v-for="(formatData, ext) in export_formats" :key="ext" role="presentation" :data-type="ext">
                   <a href="#" data-container="body" data-toggle="tooltip" :title="formatData.name" @click.prevent="crudExport($event, ext)">
-                    <img :src="`/images/crud/${ext}.png`" alt=""> {{ ext | uppercase }}
+                    <img :src="`https://mystage.interserver.net/images/crud/${ext}.png`" alt=""> {{ ext.toUpperCase() }}
                   </a>
                 </li>
               </ul>
