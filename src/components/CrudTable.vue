@@ -12,8 +12,6 @@ const labelRep = ref({
     expired: "danger",
     terminated: "danger"
 });
-const admin = ref(false);
-const fluidContainer = ref(true);
 const refreshButton = ref(true);
 const exportButton = ref(true);
 const printButton = ref(true);
@@ -21,6 +19,7 @@ const pageLinks = ref([1]);
 const totalRows = ref(5);
 const totalPages = ref(1);
 const pageLimits = ref([10,25,50,100,-1]);
+const validPageLimits = computed(() => { return pageLimits.filter(limit => limit === -1 || limit <= totalPages); });
 const page = ref(1);
 const pageLimit = ref(100);
 const pageOffset = ref(0);
@@ -173,7 +172,7 @@ const gotoPage = (page) => {
 
 function sortTable(table, order) {
     console.log("sort-table");
-    var asc   = order === 'asc',
+    let asc   = order === 'asc',
     tbody = table.find('tbody');
 
     tbody.find('tr').sort(function(a, b) {
@@ -186,10 +185,10 @@ function sortTable(table, order) {
 }
 
 function crud_submit_handler(what, that) {
-    var disabled = jQuery("#"+what+"ModalForm input[disabled], #"+what+"ModalForm select[disabled]");
+    let disabled = jQuery("#"+what+"ModalForm input[disabled], #"+what+"ModalForm select[disabled]");
     disabled.removeAttr("disabled");
-    var url = jQuery("#"+what+"ModalForm").attr("action");
-    var data = jQuery(that).serialize();
+    let url = jQuery("#"+what+"ModalForm").attr("action");
+    let data = jQuery(that).serialize();
     console.log("calling "+url+" with post data "+data);
     disabled.attr("disabled", "disabled");
     $.ajax({
@@ -230,9 +229,9 @@ function crud_submit_handler(what, that) {
 }
 
 function crud_editForm(that) {
-    var parent = get_crud_row_idx(that);
+    let parent = get_crud_row_idx(that);
     //console.log(get_crud_row_id(that));
-    var row = crudRows[parent], field, value;
+    let row = crudRows[parent], field, value;
     console.log(row);
     for (field in row) {
         value = row[field];
@@ -243,8 +242,8 @@ function crud_editForm(that) {
 }
 
 function crud_delete_form(that) {
-    var parent = get_crud_row_id(that);
-    var row = crudRows[parent], field, value;
+    let parent = get_crud_row_id(that);
+    let row = crudRows[parent], field, value;
     console.log(row);
     console.log(row[crudPrimaryKey]);
     jQuery("#primaryKey").val(row[crudPrimaryKey]);
@@ -257,8 +256,8 @@ function get_crud_row_idx(that) {
 }
 
 function get_crud_row_id(that) {
-    var parent = get_crud_row_idx(that);
-    var row = crudRows[parent], field, value;
+    let parent = get_crud_row_idx(that);
+    let row = crudRows[parent], field, value;
     return row[crudPrimaryKey];
 }
 
@@ -275,7 +274,7 @@ function crud_search(that, terms) {
 }
 
 function get_crud_url() {
-    var url = jQuery("#paginationForm").attr("action");
+    let url = jQuery("#paginationForm").attr("action");
     if (typeof url == undefined || typeof url == "undefined") {
         url = document.location.pathname.replace(/\/[^\/]*$/,'')+'/ajax.php'+document.location.search.replace('choice=none\.', 'choice=crud&crud=')+'&action=list';
         console.log("Got undefined action= contents from #pagionationForm so used fallback method and generated: "+url);
@@ -287,11 +286,11 @@ function get_crud_url() {
 }
 
 function crud_export(that) {
-    var obj = jQuery(that);
-    var parent = obj.parent();
-    var format = parent.attr('data-type');
+    let obj = jQuery(that);
+    let parent = obj.parent();
+    let format = parent.attr('data-type');
     console.log("Exporting to format "+format);
-    var url = get_crud_url() + "&format="+format;
+    let url = get_crud_url() + "&format="+format;
     url = url.replace("action=list","action=export");
     window.location = url;
     //$.ajax({ url: url });
@@ -301,14 +300,14 @@ function crud_export(that) {
 function crud_load_page(callback) {
     $.getJSON(get_crud_url(), { }, function(json) {
         crudRows.value = json;
-        var empty = document.getElementById('itemrowempty').innerHTML;
-        var x, row;
+        let empty = document.getElementById('itemrowempty').innerHTML;
+        let x, row;
         jQuery('#crud-table tbody').html('');
         jQuery('#crud-table tbody').append('<tr id="itemrowempty" style="display: none;">' + empty + '</tr>');
-        for(var x = 0; x < json.length; x++) {
+        for(let x = 0; x < json.length; x++) {
             //row = replaceAll(empty, 'display: none;','');
             row = empty;
-            for (var field in json[x]) {
+            for (let field in json[x]) {
                 row = replaceAll(row, '%'+field+'%', json[x][field]);
             }
             jQuery('#crud-table tbody').append('<tr id="itemrow'+x+'">' + row + '</tr>');
@@ -325,7 +324,7 @@ function crud_load_page(callback) {
 }
 
 function crud_update_pager() {
-    var x, first, pageLinks = [], page_html = '';
+    let x, first, pageLinks = [], page_html = '', pageOffset;
     crudPage.value = (crudPageOffset / crudPageLimit) + 1;
     //console.log(crudPage);
     //console.log(crudPageOffset);
@@ -349,7 +348,6 @@ function crud_update_pager() {
         if (pageLinks.indexOf(first + x) == -1 && first + x < crudTotalPages)
         pageLinks[pageLinks.length] = first + x;
     pageLinks[pageLinks.length] = crudTotalPages;
-    var page_html = '', pageOffset;
     for (x = 0; x < pageLinks.length; x++) {
         page_html = page_html + '<li class="page-item crud-page';
         pageOffset.value = ((pageLinks[x] - 1) * crudPageLimit);
@@ -394,21 +392,20 @@ function crud_setup_search_binds() {
 }
 
 function crud_update_sort(that) {
-    event.preventDefault();
-    var obj = jQuery(that);
-    var parent = obj.parent();
+    let obj = jQuery(that);
+    let parent = obj.parent();
     crudOrderDir.value = parent.attr('data-order-dir');
     crudOrderBy.value = parent.attr('data-order-by');
-    //console.log("got a click on "+crudOrderBy+" dir "+crudOrderDir);
-    if (crudOrderDir == 'asc')
+    //console.log("got a click on "+crudOrderBy+" dir "+crudOrderDir.value);
+    if (crudOrderDir.value == 'asc')
         parent.attr('data-order-dir', 'desc');
     else
         parent.attr('data-order-dir', 'asc');
     //jQuery('.crud #itemrowheader th').removeClass('active');
     jQuery('.crud #itemrowheader .header_link i').css('opacity', '0.3').removeClass('fa-sort-desc').removeClass('fa-sort-asc').addClass('fa-sort');
     //jQuery(this).parent().addClass('active');
-    //console.log("current classes "+obj.attr('class')+" setting to "+crudOrderDir);
-    obj.find('i').css('opacity', '1').removeClass('fa-sort').removeClass('fa-sort-desc').removeClass('fa-sort-asc').addClass('fa-sort-'+crudOrderDir);
+    //console.log("current classes "+obj.attr('class')+" setting to "+crudOrderDir.value);
+    obj.find('i').css('opacity', '1').removeClass('fa-sort').removeClass('fa-sort-desc').removeClass('fa-sort-asc').addClass('fa-sort-'+crudOrderDir.value);
     crud_load_page();
 }
 
@@ -452,7 +449,7 @@ function crud_setup_mass_binds() {
 
 function crud_setup_limit_binds() {
     jQuery('.crud .row-counts button').on('click', function(event) {
-        var obj = jQuery(this);
+        let obj = jQuery(this);
         crudPageLimit.value = obj.attr('data-limit');
         jQuery('.crud .row-counts button').removeClass('active');
         obj.addClass('active');
@@ -470,7 +467,7 @@ function crud_setup_binds() {
 }
 
 $.fn.refreshMe = function(opts){
-    var $this = this,
+    let $this = this,
     defaults = {
         panel: '.crud',
         refreshcontainer: '.refresh-container',
@@ -479,10 +476,10 @@ $.fn.refreshMe = function(opts){
     },
     settings = $.extend(defaults, opts);
 
-    var panelToRefresh = $this.parents(settings.panel).find(settings.refreshcontainer);
-    //var dataToRefresh = $this.parents(settings.panel).find('.refresh-data');
-    var started = settings.started;        //function before timeout
-    var completed = settings.completed;    //function after timeout
+    let panelToRefresh = $this.parents(settings.panel).find(settings.refreshcontainer);
+    //let dataToRefresh = $this.parents(settings.panel).find('.refresh-data');
+    let started = settings.started;        //function before timeout
+    let completed = settings.completed;    //function after timeout
 
     $this.click(function(event){
         $this.find('.fa').addClass("fa-spin");
@@ -508,15 +505,14 @@ function crud_setup_refresh() {
     });
 }
 
-function crud_print() {
-    event.preventDefault();
+function crudPrint() {
     jQuery('.printer-hidden').hide();
-    var oldPage = document.body.innerHTML;
+    let oldPage = document.body.innerHTML;
     jQuery("#crud-table td a").each(function() {
         jQuery(this).parent().text(jQuery(this).parent().text());
     });
-    var obj = jQuery('.crud .table-responsive');
-    var divElements = obj.html();
+    let obj = jQuery('.crud .table-responsive');
+    let divElements = obj.html();
     document.body.innerHTML = "<html><head><title></title></head><body>"+divElements+"</body>";
     setTimeout(function(oldpage) {
         window.print();
@@ -599,7 +595,7 @@ onMounted(() => {
           </div>
           <div v-if="printButton || exportButton" id="print_expo_btns" class="col-md-auto export float-right printer-hidden pl-2">
             <div class="btn-group">
-              <button v-if="printButton" class="btn btn-sm btn-secondary" type="button" title="Print" @click="crudPrint">
+              <button v-if="printButton" class="btn btn-sm btn-secondary" type="button" title="Print" @click.prevent="crudPrint">
                 <i class="fa fa-print crud-icon"></i>Print
               </button>
               <button v-if="exportButton" class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false">
@@ -641,7 +637,7 @@ onMounted(() => {
                     <tr>
                       <th v-if="selectMultiple"><input type="checkbox" id="checkall" /></th>
                       <th v-for="col in tableHeaders.cols" :key="col.id" :colspan="col.colspan" :bgcolor="col.bgcolor" :style="{ textAlign: col.align }" v-bind="col.opts">
-                        <span role="button" class="header_link" @click="updateSort(col)">
+                        <span role="button" class="header_link" @click.prevent="updateSort(col)">
                           {{ col.text }}
                         </span>
                       </th>
@@ -655,11 +651,11 @@ onMounted(() => {
                       </template>
                       <td v-for="(col, colIndex) in row" :key="colIndex" :colspan="col.colspan" :bgcolor="col.colbgcolor" :style="{textAlign: col.colalign}" :class="col.colopts">
                         <template v-if="col in labelRep"><span class="label label-sm label-{{ labelRep[col] }}">{{ col }}</span></template>
-                        <template v-else v-html="tableRows[row][col]"></template>
+                        <template v-else>{{ tableRows[rowIndex][colIndex] }}</template>
                       </td>
                       <template v-if="rowButtons">
                       <td>
-                        <template v-for="(button, buttonIndex) in rowButtons" :key="buttonIndex" v-html="button"></template>
+                        <template v-for="(button, buttonIndex) in rowButtons" :key="buttonIndex">{{ button }}</template>
                       </td>
                       </template>
                     </tr>
@@ -672,7 +668,7 @@ onMounted(() => {
             <div class="col-md-6">
               <form accept-charset="UTF-8" role="form" id="paginationForm" :action="'ajax.php?choice=crud&crud=' + choice + '&action=list' + extraUrlArgs" autocomplete="on" method="GET" style="display:inline-flex;">
                 <div v-if="totalPages > 1" class="btn-group row-counts" role="group" aria-label="Rows Per Page">
-                  <button v-for="limit in pageLimits" :key="limit" v-if="limit <= totalRows" type="button" class="btn btn-secondary btn-sm" :class="{ 'active': pageLimit === limit }" @click="updatePageLimit(limit)" :data-limit="limit">
+                  <button v-for="limit in validPageLimits" :key="limit" type="button" class="btn btn-secondary btn-sm" :class="{ 'active': pageLimit === limit }" @click="updatePageLimit(limit)" :data-limit="limit">
                     {{ limit === -1 ? 'All' : limit }}
                   </button>
                 </div>
