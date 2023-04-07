@@ -1,7 +1,8 @@
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { snakeToCamel } from '@/helpers';
 
+const emit = defineEmits(['update:page', 'update:pageLimit']);
 const labelRep = ref({
     active: "success",
     pending: "info",
@@ -122,8 +123,8 @@ function decorateField(field, row) {
             replace.push(row[rowField]);
         }
     }
-    if (filters.hasOwnProperty(field)) {
-        filters[field].forEach(filter => {
+    if (filters.value.hasOwnProperty(field)) {
+        filters.value[field].forEach(filter => {
             if (filter.type === 'string') {
                 value = filter.value.replace(new RegExp(search.join('|'), 'g'), match => replace[search.indexOf(match)]);
             } else if (filter.type === 'simple') {
