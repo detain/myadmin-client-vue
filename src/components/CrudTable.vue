@@ -211,7 +211,7 @@ function replaceAll(str, find, replace) {
 }
 
 function crud_search(that, terms) {
-    crudSearchTerms = terms;
+    crudSearchTerms.value = terms;
     jQuery('.crud-header-buttons a').removeClass('active');
     if (jQuery(that).attr('id') != 'crud_search_button')
         jQuery(that).addClass('active');
@@ -244,7 +244,7 @@ function crud_export(that) {
 
 function crud_load_page(callback) {
     $.getJSON(get_crud_url(), { }, function(json) {
-        crudRows = json;
+        crudRows.value = json;
         var empty = document.getElementById('itemrowempty').innerHTML;
         var x, row;
         jQuery('#crud-table tbody').html('');
@@ -270,12 +270,12 @@ function crud_load_page(callback) {
 
 function crud_update_pager() {
     var x, first, pageLinks = [], page_html = '';
-    crudPage = (crudPageOffset / crudPageLimit) + 1;
+    crudPage.value = (crudPageOffset / crudPageLimit) + 1;
     //console.log(crudPage);
     //console.log(crudPageOffset);
     //console.log(crudPageLimit);
     //console.log('crudTotalCounts'+crudTotalCount);
-    crudTotalPages = Math.ceil(crudTotalCount / crudPageLimit);
+    crudTotalPages.value = Math.ceil(crudTotalCount / crudPageLimit);
     //console.log("Offset "+crudPageOffset+" Limit "+crudPageLimit+" Page "+crudPage);
     if (crudPage > 1)
         jQuery('#crud-pager-prev').removeClass('disabled');
@@ -296,7 +296,7 @@ function crud_update_pager() {
     var page_html = '', pageOffset;
     for (x = 0; x < pageLinks.length; x++) {
         page_html = page_html + '<li class="page-item crud-page';
-        pageOffset = ((pageLinks[x] - 1) * crudPageLimit);
+        pageOffset.value = ((pageLinks[x] - 1) * crudPageLimit);
         if (crudPageOffset == pageOffset)
             page_html = page_html + ' active';
         page_html = page_html + '"><a href="" class="page-link" data-offset="'+pageOffset+'">'+pageLinks[x]+'</a></li>';
@@ -341,8 +341,8 @@ function crud_update_sort(that) {
     event.preventDefault();
     var obj = jQuery(that);
     var parent = obj.parent();
-    crudOrderDir = parent.attr('data-order-dir');
-    crudOrderBy = parent.attr('data-order-by');
+    crudOrderDir.value = parent.attr('data-order-dir');
+    crudOrderBy.value = parent.attr('data-order-by');
     //console.log("got a click on "+crudOrderBy+" dir "+crudOrderDir);
     if (crudOrderDir == 'asc')
         parent.attr('data-order-dir', 'desc');
@@ -359,23 +359,23 @@ function crud_update_sort(that) {
 function crud_setup_pager_binds() {
     jQuery('.crud .pagination .crud-page a').on('click', function(event) {
         event.preventDefault();
-        crudPageOffset = jQuery(this).attr('data-offset');
+        crudPageOffset.value = jQuery(this).attr('data-offset');
         jQuery('.crud .pagination li ').removeClass('active');
         jQuery(this).parent().addClass('active');
         crud_load_page();
     });
     jQuery('#crud-pager-prev a').on('click', function(event) {
         event.preventDefault();
-        crudPageOffset = crudPageOffset - crudPageLimit;
+        crudPageOffset.value = crudPageOffset - crudPageLimit;
         if (crudPageOffset < 0)
-            crudPageOffset = 0;
+            crudPageOffset.value = 0;
         crud_load_page();
     });
     jQuery('#crud-pager-next a').on('click', function(event) {
         event.preventDefault();
-        crudPageOffset = crudPageOffset + crudPageLimit;
+        crudPageOffset.value = crudPageOffset + crudPageLimit;
         if ((crudPageOffset / crudPageLimit) + 1 >  crudTotalPages)
-            crudPageOffset = (crudTotalPages - 1 ) * crudPageLimit;
+            crudPageOffset.value = (crudTotalPages - 1 ) * crudPageLimit;
         crud_load_page();
     });
 }
@@ -397,7 +397,7 @@ function crud_setup_mass_binds() {
 function crud_setup_limit_binds() {
     jQuery('.crud .row-counts button').on('click', function(event) {
         var obj = jQuery(this);
-        crudPageLimit = obj.attr('data-limit');
+        crudPageLimit.value = obj.attr('data-limit');
         jQuery('.crud .row-counts button').removeClass('active');
         obj.addClass('active');
         crud_load_page();
