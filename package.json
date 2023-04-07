@@ -31,6 +31,7 @@
     "eslint-plugin-vue": "*",
     "prettier": "*",
     "vite": "*",
-    "vite-plugin-i18n-resources": "*"
+    "vite-plugin-i18n-resources": "*",
+    "vite-plugin-inspect": "*"
   }
 }

@@ -105,6 +105,21 @@ const crudPage = ref(page);
 const crudSearchTerms = ref([]);
 const crudTotalCount = ref(totalRows);
 
+
+function listRecords() {
+    tableRows.value = [];
+    rows.value.forEach(row => {
+        const tableRow = {};
+        for (const field in row) {
+            if (Object.prototype.hasOwnProperty.call(row, field)) {
+                tableRow[field] = decorateField(field, row);
+                console.log("decorating field "+field+" changed '"+row[field]+"' to '"+tableRow[field]+"'");
+            }
+        }
+        tableRows.value.push(tableRow);
+    });
+}
+
 function decorateField(field, row) {
     let value = row[field];
     if (Array.isArray(value)) {
@@ -122,8 +137,8 @@ function decorateField(field, row) {
             replace.push(row[rowField]);
         }
     }
-    if (filters.hasOwnProperty(field)) {
-        filters[field].forEach(filter => {
+    if (filters.value.hasOwnProperty(field)) {
+        filters.value[field].forEach(filter => {
             if (filter.type === 'string') {
                 value = filter.value.replace(new RegExp(search.join('|'), 'g'), match => replace[search.indexOf(match)]);
             } else if (filter.type === 'simple') {
@@ -510,6 +525,7 @@ function crud_print() {
 }
 
 onMounted(() => {
+    listRecords();
     crud_setup_binds();
     crud_setup_refresh();
     sortTable(jQuery('.webhosting-list'),'asc');
@@ -543,7 +559,7 @@ onMounted(() => {
       <div class="card-header text-right">
         <div class="row float-right">
           <div v-if="totalPages > 1" id="search_btns" class="col-md-auto printer-hidden text-right pl-2">
-            <form accept-charset="UTF-8" role="form" id="paginationForm" class="" @submit.prevent="search" autocomplete="on" method="GET">
+            <form accept-charset="UTF-8" role="form" id="paginationForm" @submit.prevent="search" autocomplete="on" method="GET">
               <a id="crud-search" class="btn btn-sm btn-primary" href="" title="Search" data-tile="Search"><span class="fa fa-search fa-fw"></span> Search</a>
               <span id="crud-search-more" class="crud-search form-inline float-right" style="display: none;">
                 <input class="crud-searchdata crud-search-active form-control form-control-sm mr-1" name="search" data-type="text" type="text" v-model="searchTerm">
@@ -620,7 +636,7 @@ onMounted(() => {
             <div class="col-md-12">
               <div class="table">
                 <table id="crud-table" class="crud-table table table-bordred table-striped table-hover table-sm">
-                  <thead class="">
+                  <thead>
                     <tr>
                       <th v-if="selectMultiple"><input type="checkbox" id="checkall" /></th>
                       <th v-for="col in tableHeaders.cols" :key="col.id" :colspan="col.colspan" :bgcolor="col.bgcolor" :style="{ textAlign: col.align }" v-bind="col.opts">
@@ -636,20 +652,14 @@ onMounted(() => {
                       <template v-if="selectMultiple">
                         <td><input type="checkbox" class="checkthis" /></td>
                       </template>
-                      <td v-for="(col, colIndex) in row.cols" :key="colIndex" :colspan="col.colspan" :bgcolor="col.colbgcolor" :style="{textAlign: col.colalign}" :class="col.colopts">
-                        <template v-if="col.text in labelRep">
-                          <span class="label label-sm label-{{ labelRep[col.text] }}">{{ col.text }}</span>
-                        </template>
-                        <template v-else>
-                          {{ col.text }}
-                        </template>
+                      <td v-for="(col, colIndex) in row" :key="colIndex" :colspan="col.colspan" :bgcolor="col.colbgcolor" :style="{textAlign: col.colalign}" :class="col.colopts">
+                        <template v-if="col in labelRep"><span class="label label-sm label-{{ labelRep[col] }}">{{ col }}</span></template>
+                        <template v-else v-html="tableRows[row][col]"></template>
                       </td>
                       <template v-if="rowButtons">
-                        <td>
-                          <template v-for="(button, buttonIndex) in rowButtons" :key="buttonIndex">
-                            {{ button }}
-                          </template>
-                        </td>
+                      <td>
+                        <template v-for="(button, buttonIndex) in rowButtons" :key="buttonIndex" v-html="button"></template>
+                      </td>
                       </template>
                     </tr>
                   </tbody>
@@ -659,7 +669,7 @@ onMounted(() => {
           </div>
           <div class="row">
             <div class="col-md-6">
-              <form accept-charset="UTF-8" role="form" id="paginationForm" class="" :action="'ajax.php?choice=crud&crud=' + choice + '&action=list' + extraUrlArgs" autocomplete="on" method="GET" style="display:inline-flex;">
+              <form accept-charset="UTF-8" role="form" id="paginationForm" :action="'ajax.php?choice=crud&crud=' + choice + '&action=list' + extraUrlArgs" autocomplete="on" method="GET" style="display:inline-flex;">
                 <div v-if="totalPages > 1" class="btn-group row-counts" role="group" aria-label="Rows Per Page">
                   <button v-for="limit in pageLimits" :key="limit" v-if="limit <= totalRows" type="button" class="btn btn-secondary btn-sm" :class="{ 'active': pageLimit === limit }" @click="updatePageLimit(limit)" :data-limit="limit">
                     {{ limit === -1 ? 'All' : limit }}
