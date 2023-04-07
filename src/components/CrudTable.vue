@@ -24,6 +24,7 @@ const page = ref(1);
 const pageLimit = ref(100);
 const pageOffset = ref(0);
 const orderDir = ref("asc");
+const useHtmlFiltering = ref(true);
 const exportFormats = ref({
     xlsx: {name: "Excel 2007+", type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  read: "row", disposition: "attachment"},
     xls: {name: "Excel 2003/BIFF", type: "application/vnd.ms-excel", read: "row", disposition: "attachment"},
@@ -60,6 +61,11 @@ const labels = ref({
     domain_hostname: "Domain Name",
     domain_expire_date: "Domain Expire Date",
     domain_status: "Billing Status"
+});
+const filters = ref({
+    domain_hostname: [
+        {type: 'string', value: '<a href="index.php?choice=none.view_domain&id=%domain_id%" data-container="body" data-toggle="tooltip" title="View Domain Registrations">%value%</a>'}
+    ]
 });
 const rows = ref([
     {screenshot: "<a href=\"index.php?choice=none.view_domain&id=376503\"><img src=\"https://shot.sh?w=300&h=100&img=hostingenuity.com\"></a>", domain_id: "376503", domain_hostname: "hostingenuity.com", domain_expire_date: "2022-02-09 16:20:25", cost: "12.00", domain_status: "active"},
@@ -99,6 +105,40 @@ const crudPage = ref(page);
 const crudSearchTerms = ref([]);
 const crudTotalCount = ref(totalRows);
 
+function decorateField(field, row) {
+    let value = row[field];
+    if (Array.isArray(value)) {
+        console.log(`Field ${field} has array value ${JSON.stringify(value)}`);
+        return value;
+    }
+    if (useHtmlFiltering.value) {
+        value = value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+    const search = ['%field%', '%value%'];
+    const replace = [field, value];
+    for (const rowField in row) {
+        if (Object.prototype.hasOwnProperty.call(row, rowField)) {
+            search.push('%' + rowField + '%');
+            replace.push(row[rowField]);
+        }
+    }
+    if (filters.hasOwnProperty(field)) {
+        filters[field].forEach(filter => {
+            if (filter.type === 'string') {
+                value = filter.value.replace(new RegExp(search.join('|'), 'g'), match => replace[search.indexOf(match)]);
+            } else if (filter.type === 'simple') {
+                for (const key in filter.value) {
+                    if (Object.prototype.hasOwnProperty.call(filter.value, key)) {
+                        value = value.replace(new RegExp(key, 'g'), filter.value[key]);
+                    }
+                }
+            } else if (filter.type === 'function') {
+                value = filter.value(field, value);
+            }
+        });
+    }
+    return value;
+}
 
 
 function updateSort(col) {
