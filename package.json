@@ -10,11 +10,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@intlify/unplugin-vue-i18n": "*",
     "@vueuse/core": "*",
     "axios": "*",
     "mosha-vue-toastify": "*",
     "pinia": "*",
     "vee-validate": "*",
+  "unplugin-auto-import" :"*",
     "vue": ">=3.2.47",
     "vue-query": "*",
     "vue-router": "*",
@@ -28,6 +30,7 @@
     "eslint": "*",
     "eslint-plugin-vue": "*",
     "prettier": "*",
-    "vite": "*"
+    "vite": "*",
+    "vite-plugin-i18n-resources": "*"
   }
 }
