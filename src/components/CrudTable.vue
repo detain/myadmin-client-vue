@@ -1,7 +1,8 @@
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { snakeToCamel } from '@/helpers';
 
+const emit = defineEmits(['update:page', 'update:pageLimit']);
 const labelRep = ref({
     active: "success",
     pending: "info",
