@@ -71,16 +71,16 @@ function isActive(key) {
 <template>
     <ul class="nav nav-pills nav-sidebar flex-column nav-dark" :class="{ 'nav-justified': sidemenu }" data-widget="treeview" role="menu" data-accordion="false">
         <li v-for="(link, index) in menus.main" :key="index" :class="{ 'nav-item': true, 'has-treeview': typeof link.menu != 'undefined' && typeof menus[link.menu] != 'undefined', 'menu-open': Array.isArray(link) && isActive(link.activecheck) }">
-            <router-link v-if="typeof link.link != 'undefined'" :to="link.link" class="nav-link"><i class="nav-icon" :class="link.icon"></i><p>{{ link.text }}</p></router-link>
+            <router-link v-if="typeof link.link != 'undefined'" :to="link.link" class="nav-link" active-class="active"><i class="nav-icon" :class="link.icon"></i><p>{{ link.text }}</p></router-link>
             <a v-else-if="typeof link.menu != 'undefined' && typeof menus[link.menu] !== 'undefined'" href="#" class="nav-link" :class="{ active: isActive(link.activecheck) }"><i class="nav-icon" :class="link.icon"></i><p>{{ link.text }}<i class="right fas fa-angle-left"></i></p></a>
             <ul v-if="typeof link.menu != 'undefined' && typeof menus[link.menu] !== 'undefined'" class="nav nav-treeview" :class="{ 'menu-open': isActive(link.activecheck) }">
                 <li v-for="(sublink, index) in menus[link.menu]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(sublink), 'menu-open': Array.isArray(sublink) && isActive(sublink.activecheck) }">
                     <a v-if="typeof sublink.menu != 'undefined'" href="#" class="nav-link" :class="{ active: isActive(sublink.activecheck) }" v-html="sublink[1]"></a>
-                    <router-link v-else :to="sublink.link" class="nav-link"><i class="nav-icon" :class="sublink.icon"></i><p>{{ sublink.text }}</p></router-link>
+                    <router-link v-else :to="sublink.link" class="nav-link" active-class="active"><i class="nav-icon" :class="sublink.icon"></i><p>{{ sublink.text }}</p></router-link>
                     <ul v-if="Array.isArray(sublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(sublink.activecheck) }">
                         <li v-for="(subsublink, index) in menus[sublink[0]]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subsublink), 'menu-open': Array.isArray(subsublink) && isActive(subsublink.activecheck) }">
                             <a v-if="Array.isArray(subsublink)" href="#" class="nav-link" :class="{ active: isActive(subsublink.activecheck) }" v-html="subsublink[1]"></a>
-                            <router-link v-else :to="subsublink.link" class="nav-link"><i class="nav-icon" :class="subsublink.icon"></i><p>{{ subsubsublink.text }}</p></router-link>
+                            <router-link v-else :to="subsublink.link" class="nav-link" active-class="active"><i class="nav-icon" :class="subsublink.icon"></i><p>{{ subsubsublink.text }}</p></router-link>
                             <ul v-if="Array.isArray(subsublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subsublink.activecheck) }">
                                 <li v-for="(subsubsublink, index) in menus[subsublink[0]]" :key="index" v-html="subsubsublink"></li>
                             </ul>

@@ -54,6 +54,11 @@ onMounted(function () {
   dt = table.value.dt;
 });
 
+function setStatusLimit(event) {
+    limitStatus.value = event.target.getAttribute('status');
+}
+
+
 </script>
 
 <template>
@@ -90,10 +95,10 @@ onMounted(function () {
           </div>
           <div id="title_btns" class="col-md-auto printer-hidden pl-2">
             <div class="btn-group" id="limitStatusGroup">
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'all' }" @click.prevent="limitStatus = 'all'">All</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'active' }" status="active" @click.prevent="setStatusLimit">Active</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'pending' }" status="pending" @click.prevent="setStatusLimit">Pending</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'expired' }" status="expired" @click.prevent="setStatusLimit">Expired</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'all' }" status="all" @click.prevent="setStatusLimit">All</a>
             </div>
           </div>
         </div>
@@ -103,13 +108,18 @@ onMounted(function () {
         <div id="crud" class="crud">
           <div class="row">
             <div class="col-md-12">
-                <table
+                <DataTable
                   :options="options"
+                  :columns="columns"
+                  :data="filteredData"
                   class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
                   width="100%"
                   ref="table"
                   id="crud-table"
                 >
+                  <template v-slot:link="{ value }">
+                    <router-link :to="'view_domain?id=' + value" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                  </template>
                   <thead>
                     <tr>
                       <th>Service ID</th>
@@ -120,7 +130,7 @@ onMounted(function () {
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
+                  <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.domain_id }}</td>
                         <td><router-link :to="'view_domain?id=' + row.domain_id">{{ row.domain_hostname }}</router-link></td>
@@ -130,7 +140,7 @@ onMounted(function () {
                         <td><router-link :to="'view_domain?id=' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
-                </table>
+                </DataTable>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
+import { useRouter, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
@@ -9,6 +10,8 @@ import 'datatables.net-responsive';
 
 DataTable.use(DataTablesCore);
 
+const router = useRouter()
+const route = useRoute()
 let dt;
 const limitStatus = ref('active');
 const limitStatusMap = {
@@ -23,11 +26,11 @@ const table = ref();
 
 const columns = [
   { data: 'domain_id' },
-  { data: 'domain_hostname' },
+  { data: 'hostname' },
   { data: 'domain_expire_date' },
   { data: 'cost' },
   { data: 'domain_status' },
-  { name: 'link', data: 'link', sortable: false },
+  { name: 'Link', 'data': 'link', sortable: false },
 ];
 
 const options = {
@@ -35,24 +38,35 @@ const options = {
 };
 
 origData.value = [
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=376503\"><img src=\"https://shot.sh?w=300&h=100&img=hostingenuity.com\"></a>", domain_id: "376503", domain_hostname: "hostingenuity.com", domain_expire_date: "2022-02-09 16:20:25", cost: "12.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=592337\"><img src=\"https://shot.sh?w=300&h=100&img=detain.dev\"></a>", domain_id: "592337", domain_hostname: "detain.dev", domain_expire_date: "2023-08-14 00:59:38", cost: "18.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=418295\"><img src=\"https://shot.sh?w=300&h=100&img=unixsrv10.com\"></a>", domain_id: "418295", domain_hostname: "unixsrv10.com", domain_expire_date: "", cost: "11.00", domain_status: "canceled", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408615\"><img src=\"https://shot.sh?w=300&h=100&img=kirais.art\"></a>", domain_id: "408615", domain_hostname: "kirais.art", domain_expire_date: "", cost: "47.00", domain_status: "pending", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408918\"><img src=\"https://shot.sh?w=300&h=100&img=kiraart.bet\"></a>", domain_id: "408918", domain_hostname: "kiraart.bet", domain_expire_date: "", cost: "18.00", domain_status: "pending", link: "hi"}
+    {domain_id: "376503", domain_hostname: "hostingenuity.com", domain_expire_date: "2022-02-09 16:20:25", cost: "12.00", domain_status: "active"},
+    {domain_id: "592337", domain_hostname: "detain.dev", domain_expire_date: "2023-08-14 00:59:38", cost: "18.00", domain_status: "active"},
+    {domain_id: "418295", domain_hostname: "unixsrv10.com", domain_expire_date: "", cost: "11.00", domain_status: "canceled"},
+    {domain_id: "408615", domain_hostname: "kirais.art", domain_expire_date: "", cost: "47.00", domain_status: "pending"},
+    {domain_id: "408918", domain_hostname: "kiraart.bet", domain_expire_date: "", cost: "18.00", domain_status: "pending"}
 ];
+
 const filteredData = computed(() => {
-    if (limitStatus.value === 'all') {
-      return origData.value;
-    } else {
-      return origData.value.filter(item => limitStatusMap[limitStatus.value].includes(item.domain_status));
-    }
+  const activeDomains = [];
+  origData.value.forEach(row => {
+      row.link = '<router-link to="\'view_domain?id=' + row.domain_id + '\'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
+      row.link = row.domain_id;
+      row.hostname = '<router-link to="\'view_domain?id=' + row.domain_id + '\'">' + row.domain_hostname + '</router-link>';
+      if (limitStatus.value == 'all' || limitStatusMap[limitStatus.value].includes(row.domain_status)) {
+        activeDomains.push(row);
+      }
+  });
+  return activeDomains;
 })
 
 
 onMounted(function () {
   dt = table.value.dt;
 });
+
+function setStatusLimit(event) {
+    limitStatus.value = event.target.getAttribute('status');
+}
+
 
 </script>
 
@@ -90,10 +104,10 @@ onMounted(function () {
           </div>
           <div id="title_btns" class="col-md-auto printer-hidden pl-2">
             <div class="btn-group" id="limitStatusGroup">
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
-              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'all' }" @click.prevent="limitStatus = 'all'">All</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'active' }" status="active" @click.prevent="setStatusLimit">Active</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'pending' }" status="pending" @click.prevent="setStatusLimit">Pending</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'expired' }" status="expired" @click.prevent="setStatusLimit">Expired</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'all' }" status="all" @click.prevent="setStatusLimit">All</a>
             </div>
           </div>
         </div>
@@ -103,13 +117,18 @@ onMounted(function () {
         <div id="crud" class="crud">
           <div class="row">
             <div class="col-md-12">
-                <table
+                <DataTable
                   :options="options"
+                  :data="filteredData"
+                  :columns="columns"
                   class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
                   width="100%"
                   ref="table"
                   id="crud-table"
                 >
+                  <template v-slot:link="{ value }">
+                    <router-link :to="value" class="btn btn-primary btn-xs printer-hidden">{{ value }}<i class="fa fa-fw fa-cog"></i></router-link>
+                  </template>
                   <thead>
                     <tr>
                       <th>Service ID</th>
@@ -117,20 +136,10 @@ onMounted(function () {
                       <th>Domain Expiration Date</th>
                       <th>Cost</th>
                       <th>Billing Status</th>
-                      <th>&nbsp;</th>
+                      <th>Link</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
-                        <td>{{ row.domain_id }}</td>
-                        <td><router-link :to="'view_domain?id=' + row.domain_id">{{ row.domain_hostname }}</router-link></td>
-                        <td>{{ row.domain_expire_date }}</td>
-                        <td>{{ row.cost }}</td>
-                        <td>{{ row.domain_status }}</td>
-                        <td><router-link :to="'view_domain?id=' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
-                    </tr>
-                  </tbody>
-                </table>
+                </DataTable>
             </div>
           </div>
         </div>
