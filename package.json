@@ -10,6 +10,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "datatables.net-buttons": "*",
+    "datatables.net-buttons-bs4": "*",
+    "datatables.net-bs4": "*",
+    "datatables.net-responsive-bs4": "*",
+    "datatables.net-select": "*",
+    "datatables.net-select-bs4": "*",
+    "datatables.net-vue3": "*",
     "@intlify/unplugin-vue-i18n": "*",
     "@vueuse/core": "*",
     "axios": "*",
