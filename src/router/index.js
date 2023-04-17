@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
+import { DnsManager } from '@/views/dns'
 import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains'
 import { VpsList, ViewVps, OrderVps } from '@/views/vps'
 import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting'
@@ -13,6 +14,7 @@ import { ServersList, ViewServer, OrderServer } from '@/views/servers'
 import { SslList, ViewSsl, OrderSsl } from '@/views/ssl'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
+import { ContactInfo } from '@/views/account'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
 
@@ -20,9 +22,11 @@ export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: ClientHome },
+    { path: '/contact_info', component: ContactInfo },
     { path: '/change_pass', component: ChangePass },
     { path: '/account_settings', component: AccountSettings },
     { path: '/tickets_list', component: TicketsList },
+    { path: '/dns_manager', component: DnsManager },
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },

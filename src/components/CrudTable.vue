@@ -19,7 +19,7 @@ const pageLinks = ref([1]);
 const totalRows = ref(5);
 const totalPages = ref(1);
 const pageLimits = ref([10,25,50,100,-1]);
-const validPageLimits = computed(() => { return pageLimits.filter(limit => limit === -1 || limit <= totalPages); });
+const validPageLimits = computed(() => { return pageLimits.value.filter(limit => limit === -1 || limit <= totalPages.value); });
 const page = ref(1);
 const pageLimit = ref(100);
 const pageOffset = ref(0);
@@ -279,8 +279,8 @@ function get_crud_url() {
         url = document.location.pathname.replace(/\/[^\/]*$/,'')+'/ajax.php'+document.location.search.replace('choice=none\.', 'choice=crud&crud=')+'&action=list';
         console.log("Got undefined action= contents from #pagionationForm so used fallback method and generated: "+url);
     }
-    url = url+"&orderBy="+crudOrderBy+"&orderDir="+crudOrderDir+"&offset="+crudPageOffset+"&limit="+crudPageLimit;
-    if (crudSearchTerms.length > 0)
+    url = url+"&orderBy="+crudOrderBy.value+"&orderDir="+crudOrderDir.value+"&offset="+crudPageOffset.value+"&limit="+crudPageLimit.value;
+    if (crudSearchTerms.value.length > 0)
         url = url + "&search=" + JSON.stringify(crudSearchTerms);
     return url;
 }
@@ -315,7 +315,7 @@ function crud_load_page(callback) {
         crud_update_pager();
         //console.log(json);
         //jQuery("[data-toggle=tooltip]").tooltip();
-        console.log("page finished loading "+crudRows.length+" rows");
+        console.log("page finished loading "+crudRows.value.length+" rows");
         if (typeof callback != "undefined") {
             callback();
         }
@@ -325,33 +325,33 @@ function crud_load_page(callback) {
 
 function crud_update_pager() {
     let x, first, pageLinks = [], page_html = '', pageOffset;
-    crudPage.value = (crudPageOffset / crudPageLimit) + 1;
+    crudPage.value = (crudPageOffset.value / crudPageLimit.value) + 1;
     //console.log(crudPage);
     //console.log(crudPageOffset);
     //console.log(crudPageLimit);
     //console.log('crudTotalCounts'+crudTotalCount);
-    crudTotalPages.value = Math.ceil(crudTotalCount / crudPageLimit);
+    crudTotalPages.value = Math.ceil(crudTotalCount.value / crudPageLimit.value);
     //console.log("Offset "+crudPageOffset+" Limit "+crudPageLimit+" Page "+crudPage);
-    if (crudPage > 1)
+    if (crudPage.value > 1)
         jQuery('#crud-pager-prev').removeClass('disabled');
     else
         jQuery('#crud-pager-prev').addClass('disabled');
-    if (crudPage < crudTotalPages)
+    if (crudPage.value < crudTotalPages.value)
         jQuery('#crud-pager-next').removeClass('disabled');
     else
         jQuery('#crud-pager-next').addClass('disabled');
     pageLinks[0] = 1;
-    first = crudPage - 2;
+    first = crudPage.value - 2;
     if (first < 2)
         first = 2;
     for (x = 0; x < 4; x++)
-        if (pageLinks.indexOf(first + x) == -1 && first + x < crudTotalPages)
+        if (pageLinks.indexOf(first + x) == -1 && first + x < crudTotalPages.value)
         pageLinks[pageLinks.length] = first + x;
     pageLinks[pageLinks.length] = crudTotalPages;
     for (x = 0; x < pageLinks.length; x++) {
         page_html = page_html + '<li class="page-item crud-page';
-        pageOffset.value = ((pageLinks[x] - 1) * crudPageLimit);
-        if (crudPageOffset == pageOffset)
+        pageOffset.value = ((pageLinks[x] - 1) * crudPageLimit.value);
+        if (crudPageOffset.value == pageOffset)
             page_html = page_html + ' active';
         page_html = page_html + '"><a href="" class="page-link" data-offset="'+pageOffset+'">'+pageLinks[x]+'</a></li>';
     }
@@ -419,16 +419,16 @@ function crud_setup_pager_binds() {
     });
     jQuery('#crud-pager-prev a').on('click', function(event) {
         event.preventDefault();
-        crudPageOffset.value = crudPageOffset - crudPageLimit;
-        if (crudPageOffset < 0)
+        crudPageOffset.value = crudPageOffset.value - crudPageLimit.value;
+        if (crudPageOffset.value < 0)
             crudPageOffset.value = 0;
         crud_load_page();
     });
     jQuery('#crud-pager-next a').on('click', function(event) {
         event.preventDefault();
-        crudPageOffset.value = crudPageOffset + crudPageLimit;
-        if ((crudPageOffset / crudPageLimit) + 1 >  crudTotalPages)
-            crudPageOffset.value = (crudTotalPages - 1 ) * crudPageLimit;
+        crudPageOffset.value = crudPageOffset.value + crudPageLimit.value;
+        if ((crudPageOffset.value / crudPageLimit.value) + 1 >  crudTotalPages.value)
+            crudPageOffset.value = (crudTotalPages.value - 1 ) * crudPageLimit.value;
         crud_load_page();
     });
 }
