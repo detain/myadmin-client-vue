@@ -55,49 +55,49 @@ const state = reactive({
         modules: {
             domains: {
                 icon: "globe",
-                view_link: "view_domain",
+                view_link: "domains",
                 heading: "Domains",
                 buy_link: "domains/order",
                 list_link: "domains"
             },
             webhosting: {
                 icon: "window-maximize",
-                view_link: "view_website",
+                view_link: "websites",
                 heading: "Web Hosting",
                 buy_link: "websites/order",
                 list_link: "websites"
             },
             vps: {
                 icon: "cloud-meatball",
-                view_link: "view_vps",
+                view_link: "vps",
                 heading: "VPS",
                 buy_link: "vps/order",
                 list_link: "vps"
             },
             licenses: {
                 icon: "id-card",
-                view_link: "view_license",
+                view_link: "licenses",
                 heading: "Licenses",
                 buy_link: "licenses/order",
                 list_link: "licenses"
             },
             backups: {
                 icon: "warehouse",
-                view_link: "view_backup",
+                view_link: "backups",
                 heading: "Storages",
                 buy_link: "backups/order",
                 list_link: "backups"
             },
             servers: {
                 icon: "server",
-                view_link: "view_server",
+                view_link: "servers",
                 heading: "Dedicated Servers",
                 buy_link: "servers/order",
                 list_link: "servers"
             },
             quickservers: {
                 icon: "database",
-                view_link: "view_qs",
+                view_link: "quickservers",
                 heading: "Quick Servers",
                 buy_link: "quickservers/order",
                 list_link: "quickservers"
@@ -268,7 +268,7 @@ loadHome(state)
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap;">
-                                        <a :href="state.details.modules[module].view_link + '?id=' + serviceId">{{ serviceDesc }}</a>
+                                        <router-link :to="state.details.modules[module].view_link + '/' + serviceId">{{ serviceDesc }}</router-link>
                                     </li>
                                 </template>
                                 <li class="m-3 text-center order-button" style="list-style-type:none;">

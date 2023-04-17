@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home } from '@/views'
 import { TicketsList } from '@/views/tickets'
+import dnsRoutes from './dns.routes'
 import { DnsManager, DnsEditor } from '@/views/dns'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
@@ -32,8 +33,6 @@ export const router = createRouter({
   routes: [
     { path: '/', component: ClientHome },
     { path: '/tickets_list', component: TicketsList },
-    { path: '/dns_manager', component: DnsManager },
-    { path: '/dns_editor', component: DnsEditor },
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
@@ -44,6 +43,9 @@ export const router = createRouter({
     { path: '/contact_info', component: ContactInfo },
     { path: '/change_pass', component: ChangePass },
     { path: '/account_settings', component: AccountSettings },
+    { ...dnsRoutes },
+    { path: '/dns_manager', component: DnsManager },
+    { path: '/dns_editor', component: DnsEditor },
     { ...domainRoutes },
     { path: '/view_domains_list', component: DomainsList },
     { path: '/view_domain', component: ViewDomain },

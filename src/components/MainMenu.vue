@@ -11,7 +11,7 @@ const menus = ref({
     main: [
         { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
         { link: '/domains', icon: 'fa fa-globe', text: 'Domains' },
-        { link: '/dns_manager', icon: 'fa fa-atom', text: 'DNS Manager' },
+        { link: '/dns', icon: 'fa fa-atom', text: 'DNS Manager' },
         { link: '/vps', icon: 'fa fa-cloud-meatball', text: 'VPS' },
         { link: '/backups', icon: 'fa fa-warehouse', text: 'Storage' },
         { link: '/mail', icon: 'fa fa-envelope-open-text', text: 'Mail' },

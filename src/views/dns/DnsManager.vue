@@ -95,8 +95,7 @@ loadDns(data)
             <!-- /.card-header -->
             <div class="card-body">
                 <div id="crud" class="crud">
-                    <form>
-                        <input type="hidden" name="choice" value="none.crud_dns_manager">
+                    <form action="dns/new">
                         <input type="hidden" name="new" value="1">
                         <div class="row mb-4">
                             <div class="col-md-2 col-md-offset-2 text-right">
@@ -128,7 +127,8 @@ loadDns(data)
                     <div class="row">
                         <div class="col-md-12">
                             <table
-                              :options="options" :columns="columns"
+                              :options="options"
+                              :columns="columns"
                               class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
                               ref="table"
                               id="crud-table"
@@ -147,8 +147,8 @@ loadDns(data)
                                     <td>{{ row.name }}</td>
                                     <td>{{ row.content }}</td>
                                     <td>
-                                        <router-link :to="'dns_editor?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                                        <router-link :to="'dns_delete?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
+                                        <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
+                                        <router-link :to="'dns/delete/' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
                                     </td>
                                 </tr>
                               </tbody>
