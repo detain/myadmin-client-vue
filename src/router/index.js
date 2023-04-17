@@ -3,6 +3,7 @@ import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
 import { DomainsList, ViewDomain } from '@/views/domains'
+import { VpsList, ViewVps } from '@/views/vps'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
@@ -22,6 +23,8 @@ export const router = createRouter({
     { path: '/view_invoices', component: InvoicesList },
     { path: '/view_domains_list', component: DomainsList },
     { path: '/view_domain', component: ViewDomain },
+    { path: '/view_vps_list', component: VpsList },
+    { path: '/view_vps', component: ViewVps },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page
