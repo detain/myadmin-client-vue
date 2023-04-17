@@ -129,11 +129,11 @@ loadDomains(data)
                   <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.domain_id }}</td>
-                        <td><router-link :to="'view_domain?id=' + row.domain_id">{{ row.domain_hostname }}</router-link></td>
+                        <td><router-link :to="'domains/' + row.domain_id">{{ row.domain_hostname }}</router-link></td>
                         <td>{{ row.domain_expire_date }}</td>
                         <td>{{ row.cost }}</td>
                         <td>{{ row.domain_status }}</td>
-                        <td><router-link :to="'view_domain?id=' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'domains/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

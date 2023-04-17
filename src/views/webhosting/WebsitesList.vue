@@ -130,12 +130,12 @@ loadWebsites(data)
                   <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.website_id }}</td>
-                        <td><router-link :to="'view_website?id=' + row.website_id">{{ row.website_hostname }}</router-link></td>
+                        <td><router-link :to="'websites/' + row.website_id">{{ row.website_hostname }}</router-link></td>
                         <td>{{ row.repeat_invoices_cost }}</td>
                         <td>{{ row.website_status }}</td>
                         <td>{{ row.services_name }}</td>
                         <td>{{ row.website_comment }}</td>
-                        <td><router-link :to="'view_website?id=' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'websites/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

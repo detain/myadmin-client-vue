@@ -132,10 +132,10 @@ loadQuickservers(data)
                         <td>{{ row.qs_id }}</td>
                         <td>{{ row.qs_name }}</td>
                         <td>{{ row.cost }}</td>
-                        <td><router-link :to="'view_qs?id=' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
+                        <td><router-link :to="'quickservers/' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
                         <td>{{ row.qs_status }}</td>
                         <td>{{ row.qs_comment }}</td>
-                        <td><router-link :to="'view_qs?id=' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'quickservers/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

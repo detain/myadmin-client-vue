@@ -128,11 +128,11 @@ loadSsl(data)
                   <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.ssl_id }}</td>
-                        <td><router-link :to="'view_ssl?id=' + row.ssl_id">{{ row.ssl_hostname }}</router-link></td>
+                        <td><router-link :to="'ssl/' + row.ssl_id">{{ row.ssl_hostname }}</router-link></td>
                         <td>{{ row.ssl_expire_date }}</td>
                         <td>{{ row.cost }}</td>
                         <td>{{ row.ssl_status }}</td>
-                        <td><router-link :to="'view_ssl?id=' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'ssl/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

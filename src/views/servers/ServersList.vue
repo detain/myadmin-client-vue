@@ -127,9 +127,9 @@ loadServers(data)
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.server_id }}</td>
                         <td>{{ row.account_lid }}</td>
-                        <td><router-link :to="'view_server?id=' + row.server_id">{{ row.server_hostname }}</router-link></td>
+                        <td><router-link :to="'servers/' + row.server_id">{{ row.server_hostname }}</router-link></td>
                         <td>{{ row.server_status }}</td>
-                        <td><router-link :to="'view_server?id=' + row.server_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'servers/' + row.server_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

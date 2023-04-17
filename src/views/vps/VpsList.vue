@@ -177,12 +177,12 @@ loadVpsList(data)
                         <td>{{ row.vps_id }}</td>
                         <td>{{ row.vps_name }}</td>
                         <td>{{ row.repeat_invoices_cost }}</td>
-                        <td><router-link :to="'view_vps?id=' + row.vps_id">{{ row.vps_hostname }}</router-link></td>
+                        <td><router-link :to="'vps/' + row.vps_id">{{ row.vps_hostname }}</router-link></td>
                         <td>{{ row.vps_ip }}</td>
                         <td>{{ row.vps_status }}</td>
                         <td>{{ row.services_name }}</td>
                         <td>{{ row.vps_comment }}</td>
-                        <td><router-link :to="'view_vps?id=' + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'vps/' + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

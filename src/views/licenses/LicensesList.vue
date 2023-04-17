@@ -134,14 +134,14 @@ loadLicenses(data)
                   <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.license_id }}</td>
-                        <td><router-link :to="'view_license?id=' + row.license_id">{{ row.license_hostname }}</router-link></td>
-                        <td><router-link :to="'view_license?id=' + row.license_id">{{ row.license_ip }}</router-link></td>
+                        <td><router-link :to="'licenses/' + row.license_id">{{ row.license_hostname }}</router-link></td>
+                        <td><router-link :to="'licenses/' + row.license_id">{{ row.license_ip }}</router-link></td>
                         <td>{{ row.services_name }}</td>
                         <td>{{ row.cost }}</td>
                         <td>{{ row.license_status }}</td>
                         <td>{{ row.invoices_paid }}</td>
                         <td>{{ row.invoices_date }}</td>
-                        <td><router-link :to="'view_license?id=' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'licenses/' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

@@ -133,10 +133,10 @@ loadBackups(data)
                         <td>{{ row.backup_id }}</td>
                         <td>{{ row.backup_name }}</td>
                         <td>{{ row.backup_cost }}</td>
-                        <td><router-link :to="'view_backup?id=' + row.backup_id">{{ row.backup_username }}</router-link></td>
+                        <td><router-link :to="'backups/' + row.backup_id">{{ row.backup_username }}</router-link></td>
                         <td>{{ row.backup_status }}</td>
                         <td>{{ row.services_name }}</td>
-                        <td><router-link :to="'view_backup?id=' + row.backup_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'backups/' + row.backup_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>
