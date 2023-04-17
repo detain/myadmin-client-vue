@@ -24,9 +24,12 @@ const table = ref();
 const columns = [
   { data: 'license_id' },
   { data: 'license_hostname' },
-  { data: 'license_expire_date' },
+  { data: 'license_ip' },
+  { data: 'services_name' },
   { data: 'cost' },
   { data: 'license_status' },
+  { data: 'invoices_paid' },
+  { data: 'invoices_date' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -118,10 +121,13 @@ loadLicenses(data)
                   <thead>
                     <tr>
                       <th>Service ID</th>
-                      <th>License Name</th>
-                      <th>License Expiration Date</th>
+                      <th>Hostname tied to License</th>
+                      <th>IP Address tied to License</th>
+                      <th>Name of the Package</th>
                       <th>Cost</th>
                       <th>Billing Status</th>
+                      <th>Whether or not the Invoice was paid (if applicable)</th>
+                      <th>Date the Invoice was Created</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
@@ -129,9 +135,12 @@ loadLicenses(data)
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.license_id }}</td>
                         <td><router-link :to="'view_license?id=' + row.license_id">{{ row.license_hostname }}</router-link></td>
-                        <td>{{ row.license_expire_date }}</td>
+                        <td><router-link :to="'view_license?id=' + row.license_id">{{ row.license_ip }}</router-link></td>
+                        <td>{{ row.services_name }}</td>
                         <td>{{ row.cost }}</td>
                         <td>{{ row.license_status }}</td>
+                        <td>{{ row.invoices_paid }}</td>
+                        <td>{{ row.invoices_date }}</td>
                         <td><router-link :to="'view_license?id=' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>

@@ -10,6 +10,7 @@ import { MailList, ViewMail, OrderMail } from '@/views/mail'
 import { LicensesList, ViewLicense, OrderLicense } from '@/views/licenses'
 import { QuickserversList, ViewQs, OrderQs } from '@/views/quickservers'
 import { ServersList, ViewServer, OrderServer } from '@/views/servers'
+import { SslList, ViewSsl, OrderSsl } from '@/views/ssl'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
@@ -51,6 +52,9 @@ export const router = createRouter({
     { path: '/view_servers_list', component: ServersList },
     { path: '/view_server', component: ViewServer },
     { path: '/order_server', component: OrderServer },
+    { path: '/view_ssl_list', component: SslList },
+    { path: '/view_ssl', component: ViewSsl },
+    { path: '/order_ssl', component: OrderSsl },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page

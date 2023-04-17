@@ -22,12 +22,11 @@ const data = ref([]);
 const table = ref();
 
 const columns = [
-  { data: 'website_id' },
-  { data: 'website_hostname' },
-  { data: 'repeat_invoices_cost' },
-  { data: 'website_status' },
-  { data: 'services_name' },
-  { data: 'website_comment' },
+  { data: 'ssl_id' },
+  { data: 'ssl_hostname' },
+  { data: 'ssl_expire_date' },
+  { data: 'cost' },
+  { data: 'ssl_status' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -39,7 +38,7 @@ const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
       return data.value;
     } else {
-      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.website_status));
+      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.ssl_status));
     }
 })
 
@@ -47,9 +46,9 @@ onMounted(function () {
   dt = table.value.dt;
 });
 
-const loadWebsites = async (data) => {
+const loadSsl = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/ssl_certs_list');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -59,7 +58,7 @@ const loadWebsites = async (data) => {
     }
 };
 
-loadWebsites(data)
+loadSsl(data)
 </script>
 
 <template>
@@ -72,7 +71,7 @@ loadWebsites(data)
         <div class="row float-right">
           <div id="header_btns" class="col-md-auto printer-hidden text-right pl-2">
             <div class="btn-group">
-              <router-link class='btn btn-primary btn-sm printer-hidden' to='order_website' data-toggle="tooltip" title="Order Website Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
+              <router-link class='btn btn-primary btn-sm printer-hidden' to='order_ssl' data-toggle="tooltip" title="Order Ssl Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
             </div>
           </div>
           <div id="print_expo_btns" class="col-md-auto export float-right printer-hidden pl-2">
@@ -118,24 +117,22 @@ loadWebsites(data)
                 >
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Hostname</th>
+                      <th>Service ID</th>
+                      <th>Ssl Name</th>
+                      <th>Ssl Expiration Date</th>
                       <th>Cost</th>
-                      <th>Status</th>
-                      <th>Package</th>
-                      <th>Comments</th>
+                      <th>Billing Status</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody :data="filteredData">
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
-                        <td>{{ row.website_id }}</td>
-                        <td><router-link :to="'view_website?id=' + row.website_id">{{ row.website_hostname }}</router-link></td>
-                        <td>{{ row.repeat_invoices_cost }}</td>
-                        <td>{{ row.website_status }}</td>
-                        <td>{{ row.services_name }}</td>
-                        <td>{{ row.website_comment }}</td>
-                        <td><router-link :to="'view_website?id=' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td>{{ row.ssl_id }}</td>
+                        <td><router-link :to="'view_ssl?id=' + row.ssl_id">{{ row.ssl_hostname }}</router-link></td>
+                        <td>{{ row.ssl_expire_date }}</td>
+                        <td>{{ row.cost }}</td>
+                        <td>{{ row.ssl_status }}</td>
+                        <td><router-link :to="'view_ssl?id=' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

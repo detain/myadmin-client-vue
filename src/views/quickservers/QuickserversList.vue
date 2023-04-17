@@ -23,10 +23,11 @@ const table = ref();
 
 const columns = [
   { data: 'qs_id' },
+  { data: 'qs_name' },
+  { data: 'repeat_invoices_cost' },
   { data: 'qs_hostname' },
-  { data: 'qs_expire_date' },
-  { data: 'cost' },
   { data: 'qs_status' },
+  { data: 'qs_comment' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -118,20 +119,22 @@ loadQuickservers(data)
                   <thead>
                     <tr>
                       <th>Service ID</th>
-                      <th>Qs Name</th>
-                      <th>Qs Expiration Date</th>
+                      <th>Server Name</th>
                       <th>Cost</th>
+                      <th>Hostname</th>
                       <th>Billing Status</th>
+                      <th>Comments</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody :data="filteredData">
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.qs_id }}</td>
+                        <td>{{ row.qs_name }}</td>
+                        <td>{{ row.repeat_invoices_cost }}</td>
                         <td><router-link :to="'view_qs?id=' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
-                        <td>{{ row.qs_expire_date }}</td>
-                        <td>{{ row.cost }}</td>
                         <td>{{ row.qs_status }}</td>
+                        <td>{{ row.qs_comment }}</td>
                         <td><router-link :to="'view_qs?id=' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>

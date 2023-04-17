@@ -23,9 +23,8 @@ const table = ref();
 
 const columns = [
   { data: 'server_id' },
+  { data: 'account_lid' },
   { data: 'server_hostname' },
-  { data: 'server_expire_date' },
-  { data: 'cost' },
   { data: 'server_status' },
   { name: 'link', data: 'link', sortable: false },
 ];
@@ -117,20 +116,18 @@ loadServers(data)
                 >
                   <thead>
                     <tr>
-                      <th>Service ID</th>
+                      <th>ID</th>
+                      <th>Client</th>
                       <th>Server Name</th>
-                      <th>Server Expiration Date</th>
-                      <th>Cost</th>
-                      <th>Billing Status</th>
+                      <th>Status</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody :data="filteredData">
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.server_id }}</td>
+                        <td>{{ row.account_lid }}</td>
                         <td><router-link :to="'view_server?id=' + row.server_id">{{ row.server_hostname }}</router-link></td>
-                        <td>{{ row.server_expire_date }}</td>
-                        <td>{{ row.cost }}</td>
                         <td>{{ row.server_status }}</td>
                         <td><router-link :to="'view_server?id=' + row.server_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
