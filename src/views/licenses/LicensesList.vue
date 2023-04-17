@@ -131,7 +131,7 @@ loadLicenses(data)
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
+                  <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.license_id }}</td>
                         <td><router-link :to="'view_license?id=' + row.license_id">{{ row.license_hostname }}</router-link></td>

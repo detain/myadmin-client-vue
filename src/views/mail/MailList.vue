@@ -125,7 +125,7 @@ loadMail(data)
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
+                  <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.mail_id }}</td>
                         <td>{{ row.repeat_invoices_cost }}</td>

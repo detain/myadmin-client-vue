@@ -110,6 +110,7 @@ loadDomains(data)
             <div class="col-md-12">
                 <table
                   :options="options"
+                  :columns="columns"
                   class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
                   width="100%"
                   ref="table"
@@ -125,7 +126,7 @@ loadDomains(data)
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
+                  <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.domain_id }}</td>
                         <td><router-link :to="'view_domain?id=' + row.domain_id">{{ row.domain_hostname }}</router-link></td>

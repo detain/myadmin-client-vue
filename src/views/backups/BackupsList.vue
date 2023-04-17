@@ -127,7 +127,7 @@ loadBackups(data)
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody :data="filteredData">
+                  <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.backup_id }}</td>
                         <td>{{ row.backup_name }}</td>
