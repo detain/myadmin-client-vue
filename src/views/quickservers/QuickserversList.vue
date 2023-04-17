@@ -24,7 +24,7 @@ const table = ref();
 const columns = [
   { data: 'qs_id' },
   { data: 'qs_name' },
-  { data: 'repeat_invoices_cost' },
+  { data: 'cost' },
   { data: 'qs_hostname' },
   { data: 'qs_status' },
   { data: 'qs_comment' },
@@ -131,7 +131,7 @@ loadQuickservers(data)
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.qs_id }}</td>
                         <td>{{ row.qs_name }}</td>
-                        <td>{{ row.repeat_invoices_cost }}</td>
+                        <td>{{ row.cost }}</td>
                         <td><router-link :to="'view_qs?id=' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
                         <td>{{ row.qs_status }}</td>
                         <td>{{ row.qs_comment }}</td>
