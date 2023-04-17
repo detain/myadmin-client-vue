@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
-import { DomainsList, ViewDomain } from '@/views/domains'
-import { VpsList, ViewVps } from '@/views/vps'
+import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains'
+import { VpsList, ViewVps, OrderVps } from '@/views/vps'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
@@ -23,8 +23,10 @@ export const router = createRouter({
     { path: '/view_invoices', component: InvoicesList },
     { path: '/view_domains_list', component: DomainsList },
     { path: '/view_domain', component: ViewDomain },
+    { path: '/order_domain', component: OrderDomain },
     { path: '/view_vps_list', component: VpsList },
     { path: '/view_vps', component: ViewVps },
+    { path: '/order_vps', component: OrderVps },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page
