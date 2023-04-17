@@ -1,5 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
@@ -17,7 +18,6 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled']
 };
-const origData = ref([]);
 const data = ref([]);
 const table = ref();
 
@@ -34,26 +34,31 @@ const options = {
   responsive: true,
 };
 
-origData.value = [
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=376503\"><img src=\"https://shot.sh?w=300&h=100&img=hostingenuity.com\"></a>", domain_id: "376503", domain_hostname: "hostingenuity.com", domain_expire_date: "2022-02-09 16:20:25", cost: "12.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=592337\"><img src=\"https://shot.sh?w=300&h=100&img=detain.dev\"></a>", domain_id: "592337", domain_hostname: "detain.dev", domain_expire_date: "2023-08-14 00:59:38", cost: "18.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=418295\"><img src=\"https://shot.sh?w=300&h=100&img=unixsrv10.com\"></a>", domain_id: "418295", domain_hostname: "unixsrv10.com", domain_expire_date: "", cost: "11.00", domain_status: "canceled", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408615\"><img src=\"https://shot.sh?w=300&h=100&img=kirais.art\"></a>", domain_id: "408615", domain_hostname: "kirais.art", domain_expire_date: "", cost: "47.00", domain_status: "pending", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408918\"><img src=\"https://shot.sh?w=300&h=100&img=kiraart.bet\"></a>", domain_id: "408918", domain_hostname: "kiraart.bet", domain_expire_date: "", cost: "18.00", domain_status: "pending", link: "hi"}
-];
 const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
-      return origData.value;
+      return data.value;
     } else {
-      return origData.value.filter(item => limitStatusMap[limitStatus.value].includes(item.domain_status));
+      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.domain_status));
     }
 })
-
 
 onMounted(function () {
   dt = table.value.dt;
 });
 
+const loadDomains = async (data) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains_list');
+        console.log('api success');
+        console.log(response);
+        data.value = response;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadDomains(data)
 </script>
 
 <template>
