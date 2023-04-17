@@ -58,49 +58,49 @@ const state = reactive({
                 view_link: "view_domain",
                 heading: "Domains",
                 buy_link: "domains/order",
-                list_link: "view_domains_list"
+                list_link: "domains"
             },
             webhosting: {
                 icon: "window-maximize",
                 view_link: "view_website",
                 heading: "Web Hosting",
                 buy_link: "order_website",
-                list_link: "view_websites_list"
+                list_link: "websites"
             },
             vps: {
                 icon: "cloud-meatball",
                 view_link: "view_vps",
                 heading: "VPS",
                 buy_link: "order_vps",
-                list_link: "view_vps_list"
+                list_link: "vps"
             },
             licenses: {
                 icon: "id-card",
                 view_link: "view_license",
                 heading: "Licenses",
                 buy_link: "order_license",
-                list_link: "view_licenses_list"
+                list_link: "licenses"
             },
             backups: {
                 icon: "warehouse",
                 view_link: "view_backup",
                 heading: "Storages",
                 buy_link: "order_storage",
-                list_link: "view_backups_list"
+                list_link: "backups"
             },
             servers: {
                 icon: "server",
                 view_link: "view_server",
                 heading: "Dedicated Servers",
                 buy_link: "order_server",
-                list_link: "view_servers_list"
+                list_link: "servers"
             },
             quickservers: {
                 icon: "database",
                 view_link: "view_qs",
                 heading: "Quick Servers",
                 buy_link: "order_quickserver",
-                list_link: "view_quickservers_list"
+                list_link: "quickservers"
             }
         }
     }),
