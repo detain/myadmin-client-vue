@@ -38,10 +38,10 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
             </ul>
         </nav><!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4"><!-- Main Sidebar Container -->
-            <a :href="user.ima === 'client' ? '/' : '/admin'" class="brand-link"><!-- Brand Logo -->
+            <router-link to="/" class="brand-link"><!-- Brand Logo -->
                 <img src="//mystage.interserver.net/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light">InterServer</span>
-            </a>
+            </router-link>
             <div class="sidebar"><!-- Sidebar -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex"><!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem;" alt="DP"></div>
