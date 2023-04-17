@@ -4,6 +4,12 @@ import { ClientHome, Home, AccountSettings, ChangePass } from '@/views'
 import { TicketsList } from '@/views/tickets'
 import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains'
 import { VpsList, ViewVps, OrderVps } from '@/views/vps'
+import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting'
+import { BackupsList, ViewBackup, OrderBackup } from '@/views/backups'
+import { MailList, ViewMail, OrderMail } from '@/views/mail'
+import { LicensesList, ViewLicense, OrderLicense } from '@/views/licenses'
+import { QuickserversList, ViewQs, OrderQs } from '@/views/quickservers'
+import { ServersList, ViewServer, OrderServer } from '@/views/servers'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import { Affiliate  } from '@/views/billing/affiliates'
 import accountRoutes from './account.routes'
@@ -27,6 +33,24 @@ export const router = createRouter({
     { path: '/view_vps_list', component: VpsList },
     { path: '/view_vps', component: ViewVps },
     { path: '/order_vps', component: OrderVps },
+    { path: '/view_websites_list', component: WebsitesList },
+    { path: '/view_website', component: ViewWebsite },
+    { path: '/order_website', component: OrderWebsite },
+    { path: '/view_backups_list', component: BackupsList },
+    { path: '/view_backup', component: ViewBackup },
+    { path: '/order_backup', component: OrderBackup },
+    { path: '/view_mail_list', component: MailList },
+    { path: '/view_mail', component: ViewMail },
+    { path: '/order_mail', component: OrderMail },
+    { path: '/view_licenses_list', component: LicensesList },
+    { path: '/view_license', component: ViewLicense },
+    { path: '/order_license', component: OrderLicense },
+    { path: '/view_quickservers_list', component: QuickserversList },
+    { path: '/view_qs', component: ViewQs },
+    { path: '/order_qs', component: OrderQs },
+    { path: '/view_servers_list', component: ServersList },
+    { path: '/view_server', component: ViewServer },
+    { path: '/order_server', component: OrderServer },
     { ...accountRoutes },
     { ...usersRoutes },
     // catch all redirect to home page

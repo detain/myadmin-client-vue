@@ -1,5 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
@@ -17,16 +18,18 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled']
 };
-const origData = ref([]);
 const data = ref([]);
 const table = ref();
 
 const columns = [
-  { data: 'domain_id' },
-  { data: 'domain_hostname' },
-  { data: 'domain_expire_date' },
-  { data: 'cost' },
-  { data: 'domain_status' },
+  { data: 'vps_id' },
+  { data: 'vps_name' },
+  { data: 'repeat_invoices_cost' },
+  { data: 'vps_hostname' },
+  { data: 'vps_ip' },
+  { data: 'vps_status' },
+  { data: 'services_name' },
+  { data: 'vps_comment' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -34,26 +37,31 @@ const options = {
   responsive: true,
 };
 
-origData.value = [
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=376503\"><img src=\"https://shot.sh?w=300&h=100&img=hostingenuity.com\"></a>", domain_id: "376503", domain_hostname: "hostingenuity.com", domain_expire_date: "2022-02-09 16:20:25", cost: "12.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=592337\"><img src=\"https://shot.sh?w=300&h=100&img=detain.dev\"></a>", domain_id: "592337", domain_hostname: "detain.dev", domain_expire_date: "2023-08-14 00:59:38", cost: "18.00", domain_status: "active", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=418295\"><img src=\"https://shot.sh?w=300&h=100&img=unixsrv10.com\"></a>", domain_id: "418295", domain_hostname: "unixsrv10.com", domain_expire_date: "", cost: "11.00", domain_status: "canceled", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408615\"><img src=\"https://shot.sh?w=300&h=100&img=kirais.art\"></a>", domain_id: "408615", domain_hostname: "kirais.art", domain_expire_date: "", cost: "47.00", domain_status: "pending", link: "hi"},
-    {screenshot: "<a href=\"index.php?choice=none.view_domain&id=408918\"><img src=\"https://shot.sh?w=300&h=100&img=kiraart.bet\"></a>", domain_id: "408918", domain_hostname: "kiraart.bet", domain_expire_date: "", cost: "18.00", domain_status: "pending", link: "hi"}
-];
 const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
-      return origData.value;
+      return data.value;
     } else {
-      return origData.value.filter(item => limitStatusMap[limitStatus.value].includes(item.domain_status));
+      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.vps_status));
     }
 })
 
-
 onMounted(function () {
-//  dt = table.value.dt;
+  dt = table.value.dt;
 });
 
+const loadVpsList = async (data) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps_list');
+        console.log('api success');
+        console.log(response);
+        data.value = response;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadVpsList(data)
 </script>
 
 <template>
@@ -130,11 +138,11 @@ onMounted(function () {
             </div>
           </div>
           <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-            <div class="btn-group">
-              <a class='btn btn-info active btn-sm' onclick='crud_search(this, [["vps_status","=","active"]]);'>Active</a>
-              <a class='btn btn-info btn-sm' onclick='crud_search(this, [["vps_status","in",["pending","pending-setup","pend-approval"]]]);'>Pending</a>
-              <a class='btn btn-info btn-sm' onclick='crud_search(this, [["vps_status","in",["canceled","expired"]]]);'>Expired</a>
-              <a class='btn btn-info btn-sm' onclick='crud_search(this, []);'>All</a>
+            <div class="btn-group" id="limitStatusGroup">
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
+              <a class='btn btn-info btn-sm' :class="{ 'active': limitStatus === 'all' }" @click.prevent="limitStatus = 'all'">All</a>
             </div>
           </div>
         </div>
@@ -144,174 +152,40 @@ onMounted(function () {
         <div id="crud" class="crud">
           <div class="row">
             <div class="col-md-12">
-              <div class="refresh-container"><i class="refresh-spinner fa fa-spinner fa-spin fa-2x"></i></div>
-              <div class="table">
-                <table id="crud-table" class="crud-table table table-bordred table-striped table-hover table-sm">
-                  <thead class="">
-                    <tr id="itemrowheader">
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_id" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          ID<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_name" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Server<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="repeat_invoices_cost" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Cost<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_hostname" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Hostname<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_ip" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          IP<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_status" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Status<i class="sort-arrow fa fa-sort-asc" style="padding-left: 5px; opacity: 1; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="services_name" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Package<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th colspan="1" bgcolor="" style="text-align:center;" data-order-dir="asc" data-order-by="vps_comment" class="">
-                        <span role="button" class="header_link" onClick="crud_update_sort(this);">
-                          Comments<i class="sort-arrow fa fa-sort" style="padding-left: 5px; opacity: 0.3; position: absolute;"></i>
-                        </span>
-                      </th>
-                      <th></th>
+                <table
+                  :options="options"
+                  class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
+                  width="100%"
+                  ref="table"
+                  id="crud-table"
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Server</th>
+                      <th>Cost</th>
+                      <th>Hostname</th>
+                      <th>IP</th>
+                      <th>Status</th>
+                      <th>Package</th>
+                      <th>Comments</th>
+                      <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr id="itemrowempty" style="display: none;">
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %vps_id%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %vps_name%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %repeat_invoices_cost%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        <a href="index.php?choice=none.view_vps&id=%vps_id%" data-container="body" data-toggle="tooltip" title="View VPS">%vps_hostname%</a>
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %vps_ip%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %vps_status%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %services_name%
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        %vps_comment%
-                      </td>
-                      <td>
-                        <button type="button" alt="View VPS" class="btn btn-primary btn-xs printer-hidden" onclick="window.location='index.php?choice=none.view_vps&id='+get_crud_row_id(this);" title="View VPS" data-toggle="tooltip" tooltip="View VPS"><i class="fa fa-fw fa-cog"></i></button>
-                      </td>
-                    </tr>
-                    <tr id="itemrow97">
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        246242
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        KVM201
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        10.00
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        <a href="index.php?choice=none.view_vps&id=246242" data-container="body" data-toggle="tooltip" title="View VPS">vps246242</a>
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        209.159.153.39
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        expired
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        KVM Windows VPS Slice
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        &nbsp;
-                      </td>
-                      <td>
-                        <button type="button" alt="View VPS" class="btn btn-primary btn-xs printer-hidden" onclick="window.location='index.php?choice=none.view_vps&id='+get_crud_row_id(this);" title="View VPS" data-toggle="tooltip" tooltip="View VPS"><i class="fa fa-fw fa-cog"></i></button>
-                      </td>
-                    </tr>
-                    <tr id="itemrow98">
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        269124
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        OpenVZ62
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        6.00
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        <a href="index.php?choice=none.view_vps&id=269124" data-container="body" data-toggle="tooltip" title="View VPS">server.test.com</a>
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        64.20.50.11
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        expired
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        Virtuozzo VPS Slice
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        &nbsp;
-                      </td>
-                      <td>
-                        <button type="button" alt="View VPS" class="btn btn-primary btn-xs printer-hidden" onclick="window.location='index.php?choice=none.view_vps&id='+get_crud_row_id(this);" title="View VPS" data-toggle="tooltip" tooltip="View VPS"><i class="fa fa-fw fa-cog"></i></button>
-                      </td>
-                    </tr>
-                    <tr id="itemrow99">
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        2156542
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        OpenVZ1005
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        450.00
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        <a href="index.php?choice=none.view_vps&id=2156542" data-container="body" data-toggle="tooltip" title="View VPS">server.test.com</a>
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        &nbsp;
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        expired
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        Virtuozzo VPS Slice
-                      </td>
-                      <td colspan="1" bgcolor="" style="text-align:center;">
-                        &nbsp;
-                      </td>
-                      <td>
-                        <button type="button" alt="View VPS" class="btn btn-primary btn-xs printer-hidden" onclick="window.location='index.php?choice=none.view_vps&id='+get_crud_row_id(this);" title="View VPS" data-toggle="tooltip" tooltip="View VPS"><i class="fa fa-fw fa-cog"></i></button>
-                      </td>
+                  <tbody :data="filteredData">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                        <td>{{ row.vps_id }}</td>
+                        <td>{{ row.vps_name }}</td>
+                        <td>{{ row.repeat_invoices_cost }}</td>
+                        <td><router-link :to="'view_vps?id=' + row.vps_id">{{ row.vps_hostname }}</router-link></td>
+                        <td>{{ row.vps_ip }}</td>
+                        <td>{{ row.vps_status }}</td>
+                        <td>{{ row.services_name }}</td>
+                        <td>{{ row.vps_comment }}</td>
+                        <td><router-link :to="'view_vps?id=' + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
             </div>
           </div>
           <div class="row">

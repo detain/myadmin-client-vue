@@ -132,7 +132,7 @@
                 <td style="width: 75%;">
                   <div id="info-progress-lg" class="progress progress-sm mt-2">
                     <div class="progress-bar bg-gradient-blue
-                                                " style="width: 0.34%">
+                                                    " style="width: 0.34%">
                     </div>
                   </div>
                 </td>
@@ -191,6 +191,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="row">
   <div class="col">
     <div class="card">
       <div class="card-header">
@@ -224,131 +226,162 @@
     </div>
   </div>
 </div>
-<div class="col-md-12 px-0">
-  <div class="card">
-    <div class="card-header">
-      <div class="p-1">
-        <h3 class="card-title py-2"><i class="fa fa-dashboard"></i> &nbsp;Control Panel Add-on </h3>
-        <div class="card-tools float-right">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="row toggleTr">
-        <div class="col-md-12">
-          <div class="alert alert-danger">
-            <strong>Note:</strong>
-            <span id="warning-text"></span><br>
-            You can reinstall from left menu <b>Maintanance -&gt; Re-Install Operating System</b>
+<div class="row">
+  <div class="col-md-12 px-0">
+    <div class="card">
+      <div class="card-header">
+        <div class="p-1">
+          <h3 class="card-title py-2"><i class="fa fa-dashboard"></i> &nbsp;Control Panel Add-on </h3>
+          <div class="card-tools float-right">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col mr-1">
-          <a href="javascript:void(0);" class="img-a" onclick=" return toggleFunc('cp');">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 py-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                  <span class="text-sm">Starting From: <b></b>
-                  </span>
-                  <p class="text-sm m-0">
-                    <span style="font-size: 12px;" class="text-red text-center">
-                      ( Not Supported )</span>
-                  </p>
-                </span>
-              </div>
+      <div class="card-body">
+        <div class="row toggleTr">
+          <div class="col-md-12">
+            <div class="alert alert-danger">
+              <strong>Note:</strong>
+              <span id="warning-text"></span><br>
+              You can reinstall from left menu <b>Maintanance -&gt; Re-Install Operating System</b>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="col mr-1">
-          <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="8" data-name="DirectAdmin Standard License for VPS" data-ser="0" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 pb-2 pt-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                  <p class="text-sm my-1">
-                    ( <span class="text-center font-italic">Standard License</span>
-                    )
-                  </p>
-                  <span class="text-sm">Starting From: <b>$8.00/mo</b>
+        <div class="row">
+          <div class="col mr-1">
+            <a href="javascript:void(0);" class="img-a" onclick=" return toggleFunc('cp');">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 py-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold">cPanel</h5>
+                    <span class="text-sm">Starting From: <b></b>
+                    </span>
+                    <p class="text-sm m-0">
+                      <span style="font-size: 12px;" class="text-red text-center">
+                        ( Not Supported )</span>
+                    </p>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mr-1">
-          <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="0" data-name="DirectAdmin Personal License for VPS" data-ser="free" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 pb-2 pt-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                  <p class="text-sm my-1">
-                    ( <span class="text-center font-italic">Personal License</span>
-                    )
-                  </p>
-                  <span class="text-sm">Starting From: <b>$0.00/mo</b>
+            </a>
+          </div>
+          <div class="col mr-1">
+            <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="8" data-name="DirectAdmin Standard License for VPS" data-ser="0" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 pb-2 pt-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
+                    <p class="text-sm my-1">
+                      ( <span class="text-center font-italic">Standard License</span>
+                      )
+                    </p>
+                    <span class="text-sm">Starting From: <b>$8.00/mo</b>
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mr-1">
-          <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 py-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold">PLESK Admin </h5>
-                  <span class="text-sm">Starting From: <b>$12.00/mo</b>
+            </a>
+          </div>
+          <div class="col mr-1">
+            <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="0" data-name="DirectAdmin Personal License for VPS" data-ser="free" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 pb-2 pt-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
+                    <p class="text-sm my-1">
+                      ( <span class="text-center font-italic">Personal License</span>
+                      )
+                    </p>
+                    <span class="text-sm">Starting From: <b>$0.00/mo</b>
+                    </span>
                   </span>
-                  <p class="text-sm m-0">
-                    <span style="font-size: 12px;" class="text-red text-center">
-                      ( Not Supported )</span>
-                  </p>
-                </span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mr-1">
-          <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 py-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold">PLESK Pro </h5>
-                  <span class="text-sm">Starting From: <b>$19.00/mo</b>
+            </a>
+          </div>
+          <div class="col mr-1">
+            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 py-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold">PLESK Admin </h5>
+                    <span class="text-sm">Starting From: <b>$12.00/mo</b>
+                    </span>
+                    <p class="text-sm m-0">
+                      <span style="font-size: 12px;" class="text-red text-center">
+                        ( Not Supported )</span>
+                    </p>
                   </span>
-                  <p class="text-sm m-0">
-                    <span style="font-size: 12px;" class="text-red text-center">
-                      ( Not Supported )</span>
-                  </p>
-                </span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mr-1">
-          <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-              <div class="col-md-12 py-2">
-                <span class="text-center">
-                  <h5 aria-hidden="true" class="text-bold">PLESK Host </h5>
-                  <span class="text-sm">Starting From: <b>$29.00/mo</b>
+            </a>
+          </div>
+          <div class="col mr-1">
+            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 py-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold">PLESK Pro </h5>
+                    <span class="text-sm">Starting From: <b>$19.00/mo</b>
+                    </span>
+                    <p class="text-sm m-0">
+                      <span style="font-size: 12px;" class="text-red text-center">
+                        ( Not Supported )</span>
+                    </p>
                   </span>
-                  <p class="text-sm m-0">
-                    <span style="font-size: 12px;" class="text-red text-center">
-                      ( Not Supported )</span>
-                  </p>
-                </span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+          <div class="col mr-1">
+            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
+              <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                <div class="col-md-12 py-2">
+                  <span class="text-center">
+                    <h5 aria-hidden="true" class="text-bold">PLESK Host </h5>
+                    <span class="text-sm">Starting From: <b>$29.00/mo</b>
+                    </span>
+                    <p class="text-sm m-0">
+                      <span style="font-size: 12px;" class="text-red text-center">
+                        ( Not Supported )</span>
+                    </p>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="p-1">
+          <h3 class="card-title py-2"><i class="fa fa-plus">&nbsp;</i>Addons </h3>
+          <div class="card-tools float-right">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" style="height: 370px;">
+        <table class="table table-bordered">
+          <tr>
+            <th>Item</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td class="text-muted text-bold">
+              Additional HD Space </td>
+            <td class="text-success">
+              12,000 GB<a href="cancel_addon?module=vps&amp;r=19645797"><i class="fa fa-trash float-right pt-1 text-red"></i></a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
