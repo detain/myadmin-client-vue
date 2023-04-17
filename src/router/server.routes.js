@@ -1,20 +1,11 @@
-import { ServersList, ViewServer, OrderServer } from '@/views/servers';
+import { Layout, ServersList, ViewServer, OrderServer } from '@/views/servers';
 
 export default {
-    path: '/',
-    //component: Layout,
+    path: '/servers',
+    component: Layout,
     children: [
-        { path: 'view_servers_list', component: ServersList },
-        { path: 'view_server', component: ViewServer },
-        { path: 'order_server', component: OrderServer },
-        { path: 'server_order', component: OrderServer },
-        { path: 'servers',
-            //component: Layout,
-            children: [
-                { path: '', component: ServersList },
-                { path: 'order', component: OrderServer },
-                { path: ':id(\\d+)', component: ViewServer }
-            ]
-        }
+        { path: '', component: ServersList },
+        { path: 'order', component: OrderServer },
+        { path: ':id(\\d+)', component: ViewServer }
     ]
 };
