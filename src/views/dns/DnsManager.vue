@@ -130,7 +130,6 @@ loadDns(data)
                             <table
                               :options="options"
                               class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
-                              width="100%"
                               ref="table"
                               id="crud-table"
                             >
@@ -180,25 +179,25 @@ loadDns(data)
         </thead>
         <tbody class="ui-widget-content">
             <tr>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>Primary DNS</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>cdns1.interserver.net</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>216.158.228.164</span></td>
+                <td colspan="1" style="text-align:center;"><span>Primary DNS</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>cdns1.interserver.net</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>216.158.228.164</span></td>
             </tr>
             <tr>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>Secondary DNS</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>cdns2.interserver.net</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>216.158.234.243</span></td>
+                <td colspan="1" style="text-align:center;"><span>Secondary DNS</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>cdns2.interserver.net</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>216.158.234.243</span></td>
             </tr>
             <tr>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>Tertiary DNS</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>cdns3.interserver.net</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>&nbsp;</span></td>
-                <td colspan="1" bgcolor="" style="text-align:center;"><span>199.231.191.75</span></td>
+                <td colspan="1" style="text-align:center;"><span>Tertiary DNS</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>cdns3.interserver.net</span></td>
+                <td colspan="1" style="text-align:center;"><span>&nbsp;</span></td>
+                <td colspan="1" style="text-align:center;"><span>199.231.191.75</span></td>
             </tr>
         </tbody>
     </table>
