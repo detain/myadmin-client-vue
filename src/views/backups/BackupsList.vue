@@ -23,10 +23,11 @@ const table = ref();
 
 const columns = [
   { data: 'backup_id' },
-  { data: 'backup_hostname' },
-  { data: 'backup_expire_date' },
-  { data: 'cost' },
+  { data: 'backup_name' },
+  { data: 'backup_cost' },
+  { data: 'backup_username' },
   { data: 'backup_status' },
+  { data: 'services_name' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -117,21 +118,23 @@ loadBackups(data)
                 >
                   <thead>
                     <tr>
-                      <th>Service ID</th>
-                      <th>Backup Name</th>
-                      <th>Backup Expiration Date</th>
+                      <th>ID</th>
+                      <th>Server</th>
                       <th>Cost</th>
-                      <th>Billing Status</th>
+                      <th>Username</th>
+                      <th>Status</th>
+                      <th>Package</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody :data="filteredData">
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.backup_id }}</td>
-                        <td><router-link :to="'view_backup?id=' + row.backup_id">{{ row.backup_hostname }}</router-link></td>
-                        <td>{{ row.backup_expire_date }}</td>
-                        <td>{{ row.cost }}</td>
+                        <td>{{ row.backup_name }}</td>
+                        <td>{{ row.backup_cost }}</td>
+                        <td><router-link :to="'view_backup?id=' + row.backup_id">{{ row.backup_username }}</router-link></td>
                         <td>{{ row.backup_status }}</td>
+                        <td>{{ row.services_name }}</td>
                         <td><router-link :to="'view_backup?id=' + row.backup_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>

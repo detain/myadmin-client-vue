@@ -23,10 +23,10 @@ const table = ref();
 
 const columns = [
   { data: 'mail_id' },
-  { data: 'mail_hostname' },
-  { data: 'mail_expire_date' },
-  { data: 'cost' },
+  { data: 'repeat_invoices_cost' },
+  { data: 'mail_username' },
   { data: 'mail_status' },
+  { data: 'services_name' },
   { name: 'link', data: 'link', sortable: false },
 ];
 
@@ -117,21 +117,21 @@ loadMail(data)
                 >
                   <thead>
                     <tr>
-                      <th>Service ID</th>
-                      <th>Mail Name</th>
-                      <th>Mail Expiration Date</th>
+                      <th>ID</th>
                       <th>Cost</th>
-                      <th>Billing Status</th>
+                      <th>Username</th>
+                      <th>Status</th>
+                      <th>Package</th>
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody :data="filteredData">
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
                         <td>{{ row.mail_id }}</td>
-                        <td><router-link :to="'view_mail?id=' + row.mail_id">{{ row.mail_hostname }}</router-link></td>
-                        <td>{{ row.mail_expire_date }}</td>
-                        <td>{{ row.cost }}</td>
+                        <td>{{ row.repeat_invoices_cost }}</td>
+                        <td><router-link :to="'view_mail?id=' + row.mail_id">{{ row.mail_username }}</router-link></td>
                         <td>{{ row.mail_status }}</td>
+                        <td>{{ row.services_name }}</td>
                         <td><router-link :to="'view_mail?id=' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
