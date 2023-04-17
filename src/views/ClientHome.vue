@@ -57,7 +57,7 @@ const state = reactive({
                 icon: "globe",
                 view_link: "view_domain",
                 heading: "Domains",
-                buy_link: "domain_order",
+                buy_link: "domains/order",
                 list_link: "view_domains_list"
             },
             webhosting: {

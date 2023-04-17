@@ -5,7 +5,7 @@
 <div class="row justify-content-center mt-5">
   <div class="col-md-10 text-center">
     <h3 class="pb-2 text-capitalize">Find your domain and check availability.</h3>
-    <form method="post" action="domain_order" class="search-domain">
+    <form method="post" action="domains/order" class="search-domain">
       <input type="hidden" name="csrf_token" value="2f0b23ce49b8c42f3559107eb965b346987e5a1495492dd9cb9ae45a03b0c51e26eff52bf9ff9c38d02efb88150e61051fd123a93540674e36c46c92ae4a229d">
       <div class="form-group row justify-content-center">
         <div class="col-md-5 input-group pb-2">
