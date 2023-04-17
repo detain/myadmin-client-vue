@@ -115,7 +115,7 @@ loadVpsList(data)
           </div>
           <div id="header_btns" class="col-md-auto printer-hidden text-right pl-2">
             <div class="btn-group">
-              <router-link to="order_vps" class='btn btn-primary btn-sm printer-hidden' data-toggle="tooltip" title="Order VPS"><i class='fa fa-shopping-cart'></i> Order</router-link>
+              <router-link to="vps/order" class='btn btn-primary btn-sm printer-hidden' data-toggle="tooltip" title="Order VPS"><i class='fa fa-shopping-cart'></i> Order</router-link>
             </div>
           </div>
           <div id="print_expo_btns" class="col-md-auto export float-right printer-hidden pl-2">

@@ -127,7 +127,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form id="vps_form" method="POST" class="vps_form_init" action="order_vps">
+        <form id="vps_form" method="POST" class="vps_form_init" action="vps/order">
           <input type="hidden" name="csrf_token" value="10db0588e5fb1ab8d201c45cad1eacb9d8253f0dc80ff82f7a01d2726f3b6d448a085644cf4e9e5be06ef2efb8b7edf045a5b472ceebe7205989b8b4b4052051">
           <input type='hidden' id="total_cost_display" name='total_cost_display' value='6' />
           <input type='hidden' id="period" name='period' value=1 />
