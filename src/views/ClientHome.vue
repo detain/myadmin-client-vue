@@ -64,42 +64,42 @@ const state = reactive({
                 icon: "window-maximize",
                 view_link: "view_website",
                 heading: "Web Hosting",
-                buy_link: "order_website",
+                buy_link: "websites/order",
                 list_link: "websites"
             },
             vps: {
                 icon: "cloud-meatball",
                 view_link: "view_vps",
                 heading: "VPS",
-                buy_link: "order_vps",
+                buy_link: "vps/order",
                 list_link: "vps"
             },
             licenses: {
                 icon: "id-card",
                 view_link: "view_license",
                 heading: "Licenses",
-                buy_link: "order_license",
+                buy_link: "licenses/order",
                 list_link: "licenses"
             },
             backups: {
                 icon: "warehouse",
                 view_link: "view_backup",
                 heading: "Storages",
-                buy_link: "order_storage",
+                buy_link: "backups/order",
                 list_link: "backups"
             },
             servers: {
                 icon: "server",
                 view_link: "view_server",
                 heading: "Dedicated Servers",
-                buy_link: "order_server",
+                buy_link: "servers/order",
                 list_link: "servers"
             },
             quickservers: {
                 icon: "database",
                 view_link: "view_qs",
                 heading: "Quick Servers",
-                buy_link: "order_quickserver",
+                buy_link: "quickservers/order",
                 list_link: "quickservers"
             }
         }
@@ -122,7 +122,7 @@ const loadHome = async (state) => {
         state.tickets = response.tickets;
         state.ticket_Status = response.ticket_Status;
         state.ticketStatusView = response.ticketStatusView;
-        state.details = response.details;
+        //state.details = response.details;
         state.services = response.services;
         state.affiliateUrl = response.affiliateUrl;
         state.pin = response.data.pin;
@@ -257,7 +257,7 @@ loadHome(state)
                             </h2>
                             <div class="card-tools float-right">
                                 <span class="card-subtitle mb-2 text-muted float-right mt-2">
-                                    <a class="badge bg-success float-right" data-toggle="tooltip" title="View All" :href="state.details.modules[module].list_link">{{ value.count }}</a>
+                                    <router-link class="badge bg-success float-right" data-toggle="tooltip" title="View All" :to="state.details.modules[module].list_link">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
@@ -272,7 +272,7 @@ loadHome(state)
                                     </li>
                                 </template>
                                 <li class="m-3 text-center order-button" style="list-style-type:none;">
-                                    <a :href="state.details.modules[module].buy_link" class="btn order">Order Now</a>
+                                    <router-link :to="state.details.modules[module].buy_link" class="btn order">Order Now</router-link>
                                 </li>
                             </ul>
                         </div>

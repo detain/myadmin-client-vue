@@ -27,7 +27,6 @@ import { VpsList, ViewVps, OrderVps } from '@/views/vps';
 import websiteRoutes from './website.routes'
 import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
 
-
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
