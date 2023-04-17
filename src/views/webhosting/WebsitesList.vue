@@ -110,7 +110,7 @@ loadWebsites(data)
           <div class="row">
             <div class="col-md-12">
                 <table
-                  :options="options"
+                  :options="options" :columns="columns"
                   class="display nowrap crud-table table table-bordred table-striped table-hover table-sm"
                   width="100%"
                   ref="table"

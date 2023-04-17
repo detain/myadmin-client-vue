@@ -89,7 +89,6 @@
         </div>
       </div>
       <div class="card-body pt-0" style="height: 205px;">
-        <p>
         <div class="row">
           <div class="col-md-6 p-0">
             <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
@@ -102,7 +101,6 @@
             <h5 class="nameserver_heading">cdns3.interserver.net</h5>
           </div>
         </div>
-        </p>
       </div>
     </div>
   </div>
