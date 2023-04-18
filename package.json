@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf dist dist_electron",
     "dev": "vite --cors",
     "build:ts": "vue-tsc --noEmit && vite build",
     "build": "vite build",
