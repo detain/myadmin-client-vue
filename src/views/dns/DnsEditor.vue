@@ -69,7 +69,7 @@ loadDns(data)
                 <i class="fa fa-table"></i>&nbsp;DNS Records
             </h3>
             <div class="card-tools float-right">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Add Record" onclick="addDNSRecord();">
+                <button type="button" class="btn btn-primary btn-sm" title="Add Record" onclick="addDNSRecord();">
                     <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;
                 </button>
             </div>
@@ -138,8 +138,8 @@ loadDns(data)
                     <td>{{ row.priority }}</td>
                     <td>{{ row.ttl }}</td>
                     <td>
-                        <router-link :to="'dns_editor?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                        <router-link :to="'dns_delete?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" data-toggle="tooltip" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
+                        <router-link :to="'dns_editor?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
+                        <router-link :to="'dns_delete?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
                     </td>
                 </tr>
             </tbody>

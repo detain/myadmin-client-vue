@@ -180,18 +180,18 @@ function editCard(cc_id = 0) {
                     <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                     <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.mask_cc }}</label>
                     <div class="col-md-2 pb-2">
-                        <span :class="{'text-green': cc_detail.verified_cc === 'yes', 'text-red': cc_detail.verified_cc === 'no'}" :title="cc_detail.verified_text" data-toggle="tooltip">
+                        <span :class="{'text-green': cc_detail.verified_cc === 'yes', 'text-red': cc_detail.verified_cc === 'no'}" :title="cc_detail.verified_text">
                             <i :class="{'fa fa-check': cc_detail.verified_cc === 'yes', 'fa fa-times': cc_detail.verified_cc === 'no'}"></i> {{ cc_detail.verified }}
                         </span>
                     </div>
                     <div class="col-md-6 pb-2">
-                        <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" data-toggle="tooltip" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id">
+                        <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id">
                             <i class="fa fa-exclamation-triangle"></i> Verify
                         </a>
-                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="tooltip" @click="editCard(cc_id)">
+                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
-                        <a v-if="selected_cc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" data-toggle="tooltip" @click="deleteCard(cc_id)">
+                        <a v-if="selected_cc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)">
                             <i class="fa fa-trash"></i> Delete
                         </a>
                     </div>

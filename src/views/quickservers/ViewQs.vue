@@ -47,7 +47,7 @@
       </div>
       <span class="small-box-footer">
         Status: <b>Disabled</b>
-        <a class="btn p-0 text-white text-sm pl-1" href="view_qs?id=592337&link=whois" data-toggle="tooltip" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i>
+        <a class="btn p-0 text-white text-sm pl-1" href="view_qs?id=592337&link=whois" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i>
         </a>
       </span>
     </div>
@@ -82,7 +82,7 @@
             </button>
           </div>
           <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=nameservers" data-toggle="tooltip" title="Edit NameServers">
+            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=nameservers" title="Edit NameServers">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               Edit </a>
           </div>
@@ -118,7 +118,7 @@
             </button>
           </div>
           <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=contact" data-toggle="tooltip" title="Edit Contact Information">
+            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=contact" title="Edit Contact Information">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               Edit </a>
           </div>

@@ -217,7 +217,7 @@ function editCard(cc_id = 0) {
                                     </template>
                                 </div>
                                 <div class="col-md-12 text-right pr-3">
-                                    <a href="javascript:void(0);" class="btn btn-custom py-1 px-3 btn-sm" data-toggle="tooltip" title="Update Contact Info" @click="editInfo">
+                                    <a href="javascript:void(0);" class="btn btn-custom py-1 px-3 btn-sm" title="Update Contact Info" @click="editInfo">
                                         <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>EDIT
                                     </a>
                                 </div>
@@ -230,7 +230,7 @@ function editCard(cc_id = 0) {
                                 </h5>
                             </div>
                             <div class="card-body mx-auto my-2">
-                                <a href="/contact_info" class="btn btn-custom py-2 px-3" data-toggle="tooltip" title="Add Billing Address to continue">
+                                <a href="/contact_info" class="btn btn-custom py-2 px-3" title="Add Billing Address to continue">
                                     <i class="fa fa-plus"></i>&nbsp;Add Billing Address
                                 </a>
                             </div>
@@ -312,7 +312,7 @@ function editCard(cc_id = 0) {
                                 <td>{{ invrow.service_status }}</td>
                                 <td class="text-center">
                                     <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
-                                        <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" data-toggle="tooltip" title="Delete Invoice"><i class="fa fa-trash"></i></a>
+                                        <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
                                         <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
                                             <input type="hidden" name="inv_id" :value="invrow.invoices_id">
                                         </form>
@@ -387,17 +387,17 @@ function editCard(cc_id = 0) {
                                             </div>
 
                                             <div class="col-md-6 pl-4">
-                                                <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" data-toggle="tooltip" style="text-decoration: none;" :title="cc_detail.unverified_text">
+                                                <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
                                                     <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
                                                 </a>
-                                                <a v-else-if="cc_detail.verified_cc !== 'no' && (!selected_cc || (selected_cc && selected_cc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" data-toggle="tooltip" :title="cc_detail.edit_text" @click="editCard(cc_id)">
+                                                <a v-else-if="cc_detail.verified_cc !== 'no' && (!selected_cc || (selected_cc && selected_cc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
                                                     <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
                                                 </a>
                                                 <div v-else-if="pymt_method === 'cc' && selected_cc === cc_id" class="text-lg text-success" name="totalccamount"></div>
                                             </div>
 
                                             <div class="col-md-6 text-right">
-                                                <a v-if="(!$selected_cc || ($selected_cc != cc_id || cc_detail.verified_cc == 'no')) && $pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" data-toggle="tooltip" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
+                                                <a v-if="(!$selected_cc || ($selected_cc != cc_id || cc_detail.verified_cc == 'no')) && $pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
                                                     <i class="fa fa-trash"></i>&nbsp;Delete
                                                 </a>
                                                 <input v-else-if="$pymt_method == 'cc' && $selected_cc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">

@@ -97,7 +97,7 @@ function submitForm() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2" data-toggle="tooltip" title="This Provides a way to limit the IP Addresses your account can login to from adding additional security to your account.">Session IP Security Limits</h3>
+                    <h3 class="card-title py-2" title="This Provides a way to limit the IP Addresses your account can login to from adding additional security to your account.">Session IP Security Limits</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>
@@ -142,7 +142,7 @@ function submitForm() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2" data-toggle="tooltip" title="This Provides an alternative way to authenticate with the API. You can use the API Key in place of the account password for API Authentication.">API Access</h3>
+                    <h3 class="card-title py-2" title="This Provides an alternative way to authenticate with the API. You can use the API Key in place of the account password for API Authentication.">API Access</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>
@@ -210,7 +210,7 @@ function submitForm() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2" data-toggle="tooltip" title="Social accounts linked to be able to login using it.">Linked Accounts</h3>
+                    <h3 class="card-title py-2" title="Social accounts linked to be able to login using it.">Linked Accounts</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                             <i class="fa fas fa-minus" aria-hidden="true"></i>
@@ -255,7 +255,7 @@ function submitForm() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 id="2fa" class="card-title py-2" data-toggle="tooltip" title="Dual authentication for your account for security">Two Factor Authentication</h3>
+                    <h3 id="2fa" class="card-title py-2" title="Dual authentication for your account for security">Two Factor Authentication</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>
@@ -306,7 +306,7 @@ function submitForm() {
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2"  data-toggle="tooltip" title="">Account Features</h3>
+                    <h3 class="card-title py-2"  title="">Account Features</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>

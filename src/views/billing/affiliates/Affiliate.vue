@@ -142,17 +142,17 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-app mb-3" href="affiliate?link=sales_graph" data-toggle="tooltip" title="Sales Graph"><i class="fa fa-line-chart" aria-hidden="true"></i>Sales Graph</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=traffic_graph" data-toggle="tooltip" title="Web Traffic Graph"><i class="fa fa-line-chart" aria-hidden="true"></i>Web Traffic Graph</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=banners" data-toggle="tooltip" title="View Banners & Links"><i class="fa fa-picture-o" aria-hidden="true"></i>View Banners & Links</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=landing_pg" data-toggle="tooltip" title="Setup Landing page & Coupons"><i class="fa fa-ticket" aria-hidden="true"></i>Setup Landing page & Coupons</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=payment_method" data-toggle="tooltip" title="Setup Payment Method"><i class="fa fa-money" aria-hidden="true"></i>Setup Payment Method</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=rich_report" data-toggle="tooltip" title="Rich Report"><i class="fa fa-file-text-o" aria-hidden="true"></i>Rich Report</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=web_traffic" data-toggle="tooltip" title="Latest Web Traffic"><i class="fa fa-globe" aria-hidden="true"></i>Latest Web Traffic</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=status_legend" data-toggle="tooltip" title="Status Legend"><i class="fa fa-cc" aria-hidden="true"></i>Status Legend</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=faq" data-toggle="tooltip" title="Frequently Asked Questions"><i class="fa fa-question" aria-hidden="true"></i>Frequently Asked Questions</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=tos" data-toggle="tooltip" title="Terms Of Service"><i class="fa fa-file-text" aria-hidden="true"></i>Terms Of Service</a>
-                        <a class="btn btn-app mb-3" href="affiliate?link=sales_report" data-toggle="tooltip" title="Sales Report"><i class="fa fa-user-plus" aria-hidden="true"></i>Sales Report</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=sales_graph" title="Sales Graph"><i class="fa fa-line-chart" aria-hidden="true"></i>Sales Graph</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=traffic_graph" title="Web Traffic Graph"><i class="fa fa-line-chart" aria-hidden="true"></i>Web Traffic Graph</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=banners" title="View Banners & Links"><i class="fa fa-picture-o" aria-hidden="true"></i>View Banners & Links</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=landing_pg" title="Setup Landing page & Coupons"><i class="fa fa-ticket" aria-hidden="true"></i>Setup Landing page & Coupons</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=payment_method" title="Setup Payment Method"><i class="fa fa-money" aria-hidden="true"></i>Setup Payment Method</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=rich_report" title="Rich Report"><i class="fa fa-file-text-o" aria-hidden="true"></i>Rich Report</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=web_traffic" title="Latest Web Traffic"><i class="fa fa-globe" aria-hidden="true"></i>Latest Web Traffic</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=status_legend" title="Status Legend"><i class="fa fa-cc" aria-hidden="true"></i>Status Legend</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=faq" title="Frequently Asked Questions"><i class="fa fa-question" aria-hidden="true"></i>Frequently Asked Questions</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=tos" title="Terms Of Service"><i class="fa fa-file-text" aria-hidden="true"></i>Terms Of Service</a>
+                        <a class="btn btn-app mb-3" href="affiliate?link=sales_report" title="Sales Report"><i class="fa fa-user-plus" aria-hidden="true"></i>Sales Report</a>
                     </div>
                 </div>
             </div>

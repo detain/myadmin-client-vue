@@ -100,7 +100,7 @@ ticketsStore.getAll();
                             <!-- Check all button -->
                             <button type="button" class="btn btn-secondary btn-sm checkbox-toggle" @click="toggleCheckboxes"><i :class="checkIcon"></i></button>
                             <div class="btn-group">
-                                <button id="close-ticket" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" data-toggle="tooltip" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
+                                <button id="close-ticket" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
                             </div>
                             <div class="float-right">
                                 {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
@@ -148,7 +148,7 @@ ticketsStore.getAll();
                         <button type="button" class="btn btn-secondary btn-sm checkbox-toggle"><i class="far fa-square"></i>
                         </button>
                         <div class="btn-group">
-                            <button id="close-ticket-footer" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" data-toggle="tooltip" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
+                            <button id="close-ticket-footer" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
                         </div>
                         <div class="float-right">
                             {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}

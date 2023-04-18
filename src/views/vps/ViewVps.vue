@@ -206,22 +206,22 @@
         </div>
       </div>
       <div class="card-body">
-        <a class="btn btn-app mb-3" title="Invoice History" data-toggle="tooltip" href="view_vps?id=43773&link=invoices"><i class="fas fa-file-invoice-dollar fa-w-12"></i>Invoices</a>
-        <a class="btn btn-app mb-3" title="Cancel VPS" data-toggle="tooltip" href="view_vps?id=43773&link=cancel"><i class="fas fa-times"></i>Cancel VPS</a>
-        <a class="btn btn-app mb-3" title="Reinstall Operating System" data-toggle="tooltip" href="view_vps?id=43773&link=reinstall_os"><i class="fa fa-linux"></i>Reinstall OS</a>
-        <a class="btn btn-app mb-3" title="Reverse DNS" data-toggle="tooltip" href="view_vps?id=43773&link=reverse_dns"><i class="fa fa-atlas"></i>Reverse DNS</a>
-        <a class="btn btn-app mb-3" title="Bandwith/Traffic Usage" data-toggle="tooltip" href="view_vps?id=43773&link=traffic_usage"><i class="material-icons">speed</i>Bandwidth/Traffic Usage</a>
-        <a class="btn btn-app mb-3" title="Setup VNC" data-toggle="tooltip" href="view_vps?id=43773&link=queue&action=setup_vnc"><i class="fa fa-linux"></i>Setup VNC</a>
-        <a class="btn btn-app mb-3" title="VPS Slice Upgrade/Downgrade" data-toggle="tooltip" href="view_vps?id=43773&link=slices"><i class="fa fa-upload"></i>Up/Downgrade VPS Slices</a>
-        <a class="btn btn-app mb-3" title="Purchase Additional IP Address" data-toggle="tooltip" href="view_vps?id=43773&link=buy_ip"><i class="fa fa-map-marker-alt"></i>Buy IP</a>
-        <a class="btn btn-app mb-3" title="Change Root Password of your vps" data-toggle="tooltip" href="view_vps?id=43773&link=changeRootPassword"><i class="fa fa-key text-lg"></i>Change Root Password</a>
-        <a class="btn btn-app mb-3" title="Purchase Additional HD Space" data-toggle="tooltip" href="view_vps?id=43773&link=buy_hd_space"><i class="fa fa-server"></i>Buy HD Space</a>
-        <a class="btn btn-app mb-3" title="Change System Hostname" data-toggle="tooltip" href="view_vps?id=43773&link=changeHostname"><i class="material-icons">manage_accounts</i>Change System Hostname</a>
-        <a class="btn btn-app mb-3" title="Enable Quotas" data-toggle="tooltip" href="view_vps?link=queue&id=43773&action=enable_quota"><i class="material-icons">playlist_add_check</i>Enable Quotas</a>
-        <a class="btn btn-app mb-3" title="Disable Quotas" data-toggle="tooltip" href="view_vps?link=queue&id=43773&amp;action=disable_quota"><i class="material-icons">playlist_add</i>Disable Quotas</a>
-        <button onclick="openPopUp()" class="btn btn-app mb-3" title="View Desktop" data-toggle="tooltip"><i class="fa fa-tv"></i>View Desktop</button>
-        <a class="btn btn-app mb-3" title="Backup VPS" data-toggle="tooltip" href="view_vps?link=queue&id=43773&action=backup"><i class="material-icons">backup</i>Backup VPS</a>
-        <a class="btn btn-app mb-3" title="Download/Manage Backups" data-toggle="tooltip" href="view_vps?link=backups&id=43773"><i class="material-icons">cloud_download</i>Download/Manage Backups</a>
+        <a class="btn btn-app mb-3" title="Invoice History" href="view_vps?id=43773&link=invoices"><i class="fas fa-file-invoice-dollar fa-w-12"></i>Invoices</a>
+        <a class="btn btn-app mb-3" title="Cancel VPS" href="view_vps?id=43773&link=cancel"><i class="fas fa-times"></i>Cancel VPS</a>
+        <a class="btn btn-app mb-3" title="Reinstall Operating System" href="view_vps?id=43773&link=reinstall_os"><i class="fa fa-linux"></i>Reinstall OS</a>
+        <a class="btn btn-app mb-3" title="Reverse DNS" href="view_vps?id=43773&link=reverse_dns"><i class="fa fa-atlas"></i>Reverse DNS</a>
+        <a class="btn btn-app mb-3" title="Bandwith/Traffic Usage" href="view_vps?id=43773&link=traffic_usage"><i class="material-icons">speed</i>Bandwidth/Traffic Usage</a>
+        <a class="btn btn-app mb-3" title="Setup VNC" href="view_vps?id=43773&link=queue&action=setup_vnc"><i class="fa fa-linux"></i>Setup VNC</a>
+        <a class="btn btn-app mb-3" title="VPS Slice Upgrade/Downgrade" href="view_vps?id=43773&link=slices"><i class="fa fa-upload"></i>Up/Downgrade VPS Slices</a>
+        <a class="btn btn-app mb-3" title="Purchase Additional IP Address" href="view_vps?id=43773&link=buy_ip"><i class="fa fa-map-marker-alt"></i>Buy IP</a>
+        <a class="btn btn-app mb-3" title="Change Root Password of your vps" href="view_vps?id=43773&link=changeRootPassword"><i class="fa fa-key text-lg"></i>Change Root Password</a>
+        <a class="btn btn-app mb-3" title="Purchase Additional HD Space" href="view_vps?id=43773&link=buy_hd_space"><i class="fa fa-server"></i>Buy HD Space</a>
+        <a class="btn btn-app mb-3" title="Change System Hostname" href="view_vps?id=43773&link=changeHostname"><i class="material-icons">manage_accounts</i>Change System Hostname</a>
+        <a class="btn btn-app mb-3" title="Enable Quotas" href="view_vps?link=queue&id=43773&action=enable_quota"><i class="material-icons">playlist_add_check</i>Enable Quotas</a>
+        <a class="btn btn-app mb-3" title="Disable Quotas" href="view_vps?link=queue&id=43773&amp;action=disable_quota"><i class="material-icons">playlist_add</i>Disable Quotas</a>
+        <button onclick="openPopUp()" class="btn btn-app mb-3" title="View Desktop"><i class="fa fa-tv"></i>View Desktop</button>
+        <a class="btn btn-app mb-3" title="Backup VPS" href="view_vps?link=queue&id=43773&action=backup"><i class="material-icons">backup</i>Backup VPS</a>
+        <a class="btn btn-app mb-3" title="Download/Manage Backups" href="view_vps?link=backups&id=43773"><i class="material-icons">cloud_download</i>Download/Manage Backups</a>
       </div>
     </div>
   </div>

@@ -64,7 +64,7 @@ const labels = ref({
 });
 const filters = ref({
     domain_hostname: [
-        {type: 'string', value: '<a href="index.php?choice=none.view_domain&id=%domain_id%" data-container="body" data-toggle="tooltip" title="View Domain Registrations">%value%</a>'}
+        {type: 'string', value: '<a href="index.php?choice=none.view_domain&id=%domain_id%" data-container="body" title="View Domain Registrations">%value%</a>'}
     ]
 });
 const rows = ref([
@@ -606,7 +606,7 @@ onMounted(() => {
               </button>
               <ul v-if="exportButton" class="dropdown-menu" role="menu">
                 <li v-for="(formatData, ext) in exportFormats" :key="ext" role="presentation" :data-type="ext">
-                  <a href="#" data-container="body" data-toggle="tooltip" :title="formatData.name" @click.prevent="crudExport($event, ext)">
+                  <a href="#" data-container="body" :title="formatData.name" @click.prevent="crudExport($event, ext)">
                     <img :src="`https://mystage.interserver.net/images/crud/${ext}.png`" alt=""> {{ ext.toUpperCase() }}
                   </a>
                 </li>

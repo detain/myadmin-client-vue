@@ -32,7 +32,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
                 </li>
                 <li class="nav-item dropdown">
                     <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
-                    <!-- <a class="nav-link" href="index.php?choice=none.logout" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i></a> -->
+                    <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fa fa-power-off"></i></a> -->
                 </li>
             </ul>
         </nav><!-- /.navbar -->
@@ -45,7 +45,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex"><!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem;" alt="DP"></div>
                     <div class="info">
-                        <a href="index.php?choice=none.contact_info" data-toggle="tooltip" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-xs text-bold"></i></a>
+                        <a href="index.php?choice=none.contact_info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-xs text-bold"></i></a>
                         <span style="color: #c2c7d0;"><b>{{ user.account_lid }}</b></span>
                     </div>
                 </div>

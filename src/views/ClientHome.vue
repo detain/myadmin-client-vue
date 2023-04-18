@@ -168,7 +168,7 @@ loadHome(state)
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="small-box-footer">
-                        <a href="/prepays" class="text-bold text-white" data-toggle="tooltip" title="Manage Your PrePay Account">
+                        <a href="/prepays" class="text-bold text-white" title="Manage Your PrePay Account">
                             Manage Account&nbsp;<i class="fa fa-pencil text-sm"></i>
                         </a>
                     </div>
@@ -189,7 +189,7 @@ loadHome(state)
                         <i class="fas fa-file-invoice"></i>
                     </div>
                     <div class="small-box-footer">
-                        <a href="/cart?invoice_days=-1" class="text-bold text-white" data-toggle="tooltip" title="Pay Total Amount">
+                        <a href="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount">
                             <i class="fa fa-dollar text-sm"></i>&nbsp;Pay Now
                         </a>
                     </div>
@@ -212,7 +212,7 @@ loadHome(state)
                                 <i class="fa fa-ticket"></i>Recent Tickets
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="/tickets_list" class="btn btn-custom btn-sm" data-toggle="tooltip" title="View All Tickets">
+                                <a href="/tickets_list" class="btn btn-custom btn-sm" title="View All Tickets">
                                     <i class="fa fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp;
                                 </a>
                             </div>
@@ -236,7 +236,7 @@ loadHome(state)
                                     <td>{{ ticket.lastreplier }}</td>
                                     <td>{{ state.ticketStatusView[ticket.ticketstatusid] }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" data-toggle="tooltip" title="Edit Ticket" :href="'/view_ticket?ticket=' + ticket.ticketid">
+                                        <a class="btn btn-primary btn-sm" title="Edit Ticket" :href="'/view_ticket?ticket=' + ticket.ticketid">
                                             <i class="fa fa-pencil"></i>&nbsp;Edit
                                         </a>
                                     </td>
@@ -257,7 +257,7 @@ loadHome(state)
                         </h2>
                         <div class="card-tools float-right">
                             <span class="card-subtitle mb-2 text-muted float-right mt-2">
-                                <router-link class="badge bg-success float-right" data-toggle="tooltip" title="View All" :to="state.details.modules[module].list_link">{{ value.count }}</router-link>
+                                <router-link class="badge bg-success float-right" title="View All" :to="state.details.modules[module].list_link">{{ value.count }}</router-link>
                             </span>
                         </div>
                     </div>
