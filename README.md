@@ -2,6 +2,34 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## To-Do / Road-Map
+
+* [x] login / authentication handling
+* [x] CORS
+* [x] services list pages
+  * [x] datatables or equivalent
+    * [x] filtering
+    * [ ] sorting
+    * [ ] pagination
+  * [x] ajax loading via api calls
+  * [ ] print/export
+  * [x] convert links to router-links
+* [ ] view service pages
+  * [ ] load data via ajax api
+  * [ ] links and form handling
+* [ ] order service pages
+* [x] modern routes
+* [ ] loading / no entries messages
+* [ ] cache data in pinia stores
+* [ ] electron build
+  * [ ] local storage of config
+  * [ ] windows / linux / mac builds
+* [ ] fix all linter issues
+* [ ] api finalized
+* [ ] check out vue-query t see if we should be using it
+* [ ] utilize the form validation stuff
+* [ ] incorporate typescript
+
 ## Links
 
 * [Awesome Vite (vitejs/awesome-vite) Overview - Track Awesome List](https://www.trackawesomelist.com/vitejs/awesome-vite/readme/)
@@ -15,26 +43,11 @@ This template should help get you started developing with Vue 3 in Vite.
 * [Electron Vite: An Electron CLI integrated with Vite.](https://morioh.com/p/2f4af614d544)
 * [Getting Started - Electron Forge](https://www.electronforge.io/)
 * [How to create an Electron application with Vite - DEV Community](https://dev.to/olyno/how-to-create-an-electron-application-with-vite-im)
-
-## To-Do / Road-Map
-
-* [x] login / authentication handling
-* [x] CORS
-* [ ] services list pages
-  * [ ] datatables or equivalent
-    * [x] filtering
-    * [ ] sorting
-    * [ ] pagination
-  * [x] ajax loading via api calls
-  * [ ] print/export
-  * [x] convert links to router-links
-* [ ] view service pages
-  * [ ] links 
-* [ ] order service pages
-* [x] modern routes
-* [ ] loading / no entries messages
-* [ ] cache data in pinia stores
-* [ ] electron build
+* [Quick Start | Electron](https://www.electronjs.org/docs/latest/tutorial/quick-start)
+* [Deluze/electron-vue-template: Simple Vue3 + Electron starter template in TypeScript, including ViteJS and Electron Builder](https://github.com/Deluze/electron-vue-template)
+* [Vue 3 + Vite + TypeScript + ELECTRON (My Full Setup) - DEV Community](https://dev.to/brojenuel/vue-3-vite-typescript-electron-my-full-setup-kgm)
+* [Vite + Vue 3 + electron + TypeScript_vue.js_weixin_0010034-DevPress official community](https://devpress.csdn.net/vue/62f0cf7c7e668234661832a7.html)
+* [Getting Started | electron-vite](https://evite.netlify.app/guide/)
 
 ## Recommended IDE Setup
 
