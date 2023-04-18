@@ -6,6 +6,9 @@ This template should help get you started developing with Vue 3 in Vite.
 
 * [x] login / authentication handling
 * [x] CORS
+* [x] modern routes
+* [ ] loading / no entries messages
+* [ ] cache data in pinia stores
 * [x] services list pages
   * [x] datatables or equivalent
     * [x] filtering
@@ -18,12 +21,12 @@ This template should help get you started developing with Vue 3 in Vite.
   * [ ] load data via ajax api
   * [ ] links and form handling
 * [ ] order service pages
-* [x] modern routes
-* [ ] loading / no entries messages
-* [ ] cache data in pinia stores
-* [ ] electron build
+* [x] electron build
+  * [ ] js/css assets loaded locally
   * [ ] local storage of config
-  * [ ] windows / linux / mac builds
+  * [x] windows builds
+  * [ ] linux builds
+  * [ ] mac builds
 * [ ] fix all linter issues
 * [ ] api finalized
 * [ ] check out vue-query t see if we should be using it

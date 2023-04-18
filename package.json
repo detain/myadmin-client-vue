@@ -42,7 +42,9 @@
     }
   },
   "dependencies": {
-    "vue-tsc": "*",
+    "electron-updater": "^4.0",
+    "electron-store": "*",
+    "electron-log": "*",
     "@intlify/unplugin-vue-i18n": "*",
     "@vueuse/core": "*",
     "axios": "*",
@@ -68,6 +70,11 @@
     "electron": "*",
     "electron-builder": "*",
     "wait-on": "*",
+    "electron-devtools-installer": "*",
+    "nodemon": "*",
+    "vue-tsc": "*",
+    "typescript": "*",
+    "json": "*",
     "@rushstack/eslint-patch": "*",
     "@vitejs/plugin-vue": "*",
     "@vue/eslint-config-prettier": "*",
