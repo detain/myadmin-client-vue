@@ -21,7 +21,7 @@
     "app:build": "yarn build:for:electron && yarn electron:builder",
     "app:build:nots": "yarn build:for:electron:nots && yarn electron:builder"
   },
- "build": {
+  "build": {
     "appId": "com.my-website.my-app",
     "productName": "MyApp",
     "copyright": "Copyright © 2019 ${author}",
@@ -42,9 +42,6 @@
     }
   },
   "dependencies": {
-    "electron-updater": "^4.0",
-    "electron-store": "*",
-    "electron-log": "*",
     "@intlify/unplugin-vue-i18n": "*",
     "@vueuse/core": "*",
     "axios": "*",
@@ -55,6 +52,9 @@
     "datatables.net-select": "*",
     "datatables.net-select-bs4": "*",
     "datatables.net-vue3": "*",
+    "electron-log": "*",
+    "electron-store": "*",
+    "electron-updater": "^4.0",
     "mosha-vue-toastify": "*",
     "pinia": "*",
     "unplugin-auto-import": "*",
@@ -65,25 +65,25 @@
     "yup": "*"
   },
   "devDependencies": {
-    "concurrently": "*",
-    "cross-env": "*",
-    "electron": "*",
-    "electron-builder": "*",
-    "wait-on": "*",
-    "electron-devtools-installer": "*",
-    "nodemon": "*",
-    "vue-tsc": "*",
-    "typescript": "*",
-    "json": "*",
     "@rushstack/eslint-patch": "*",
     "@vitejs/plugin-vue": "*",
     "@vue/eslint-config-prettier": "*",
     "autoprefixer": "*",
+    "concurrently": "*",
+    "cross-env": "*",
+    "electron": "*",
+    "electron-builder": "*",
+    "electron-devtools-installer": "*",
     "eslint": "*",
     "eslint-plugin-vue": "*",
+    "json": "*",
+    "nodemon": "*",
     "prettier": "*",
+    "typescript": "*",
     "vite": "*",
     "vite-plugin-i18n-resources": "*",
-    "vite-plugin-inspect": "*"
+    "vite-plugin-inspect": "*",
+    "vue-tsc": "*",
+    "wait-on": "*"
   }
 }
