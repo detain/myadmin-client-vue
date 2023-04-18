@@ -60,7 +60,7 @@ loadDns(data)
 </script>
 
 <template>
-<link rel="stylesheet" href="https://mystage.interserver.net/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://mystage.interserver.net/css/crud_table5.css">
 <div id="records" class="card">
     <div class="card-header">
