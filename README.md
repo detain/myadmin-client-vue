@@ -27,6 +27,7 @@ This template should help get you started developing with Vue 3 in Vite.
 * [ ] fix all linter issues
 * [ ] api finalized
 * [ ] check out vue-query t see if we should be using it
+* [ ] check out vue-use t see if we should be using it
 * [ ] utilize the form validation stuff
 * [ ] incorporate typescript
 
