@@ -38,7 +38,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
         </nav><!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4"><!-- Main Sidebar Container -->
             <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link"><!-- Brand Logo -->
-                <img src="//mystage.interserver.net/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
+                <img src="/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light">InterServer</span>
             </a>
             <div class="sidebar"><!-- Sidebar -->

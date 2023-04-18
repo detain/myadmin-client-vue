@@ -1,0 +1,676 @@
+img.menu-icon {
+    border: 0;
+}
+
+i.menu-icon {
+    height: 24px !important;
+}
+
+.btn-secondary[value="Add DNS Entry"] {
+    padding: 0px;
+    font-size: 14px;
+}
+
+#smenubtn {
+    margin: 0 auto !important;
+    font-size: 20px;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    cursor: pointer;
+    display: none;
+    border-radius: 5px;
+}
+
+.extra_rows .row {
+    margin: 5px 0px !important;
+
+}
+
+ul#sidemenu-content {
+    background: #666;
+    border: 1px solid #a6acb1;
+}
+
+.services_menu .nav-side-menu {
+    border: none !important;
+    background: none !important;
+}
+
+.custom-select {
+    width: 80px !important;
+}
+
+.extra_rows table td i {
+    width: 27px !important;
+    height: 27px !important;
+}
+
+.wh_pkg_table,
+.wh_migration {
+    width: 100% !important;
+    max-width: 800px !important;
+}
+
+.wh_pkg_table input[type="submit"],
+.wh_migration input[type="submit"] {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+}
+
+.wh_pkg_table input[type="submit"]:hover,
+.wh_migration input[type="submit"] {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.extra_rows #histtable,
+.extra_rows #histtable th {
+    width: 100%;
+    margin-bottom: 0 !important;
+    max-width: 100% !important;
+}
+
+.extra_rows #histtable th.fa-chevron-down:nth-child(1)::before {
+    display: none;
+}
+
+.extra_rows #histmainelement {
+    padding: 0 15px;
+}
+
+@media screen and (min-width:550px) and (max-width:1198px) {
+
+    .wh_pkg_table tbody,
+    .wh_migration tbody,
+    #gbox_renewalsTable table tbody {
+        width: 100% !important;
+        display: inline-table;
+    }
+
+    .extra_rows .col-md-6,
+    .extra_rows .col-sm-6 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    #crud-table thead,
+    #crud-table tbody {
+        width: 100% !important;
+        display: table !important;
+    }
+}
+
+@media screen and (min-width:670px) {
+    .domaindns {
+        padding: 0;
+        font-size: 14px;
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+
+    .domaininput,
+    .ipinput {
+        flex: 0 0 29% !important;
+        max-width: 29% !important;
+    }
+
+    .dnsbtn {
+        flex: 0 0 22% !important;
+        max-width: 22% !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    form .bg-white.table.table-bordered {
+        display: table-caption;
+        overflow: scroll;
+        text-align: left;
+    }
+
+    .services_menu {
+        width: 93% !important;
+        margin: 0 auto;
+    }
+
+    .breadcrumb {
+        justify-content: center;
+        display: flex;
+    }
+
+    .nav-side-menu {
+        border: none !important;
+    }
+}
+
+#vpsremovtableelement {
+    display: table-caption;
+    overflow: scroll;
+    max-width: 100% !important;
+}
+
+@media screen and (max-width:1199px) {
+
+    .ui-jqgrid-view,
+    .ui-jqgrid-hdiv,
+    .ui-jqgrid-bdiv,
+    .ui-widget-content,
+    table.ui-common-table {
+        width: 100% !important;
+    }
+
+    .services_menu #submenu-links a {
+        font-size: 15px;
+    }
+
+    .row5 #copyright {
+        display: block !important;
+        text-align: center !important;
+    }
+
+    .row5 #copyright a {
+        font-size: 13px !important;
+    }
+
+    .row5 #copyright .fl_right {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .wrapper.row5 {
+        position: relative !important;
+    }
+
+    #crud-table,
+    .extra_rows table,
+    .wh_pkg_table,
+    #webhostingremovtableelement,
+    .wh_migration,
+    table.ui-common-table {
+        display: table-caption;
+        overflow: scroll;
+        text-align: left;
+    }
+
+    table.ui-common-table tbody {
+        width: 100% !important;
+        display: inline-table;
+    }
+
+    #crud-table th .header_link,
+    #crud-table td {
+        font-size: 14px;
+    }
+
+    #crud-table td button.printer-hidden {
+        padding: .15rem .40rem !important;
+    }
+
+    #crud-table td button.printer-hidden:nth-child(2) {
+        margin-top: 5px;
+    }
+
+    #crud-table th:nth-child(1) .header_link i.sort-arrow {
+        bottom: 3px;
+    }
+
+    #crud-table th .header_link i.sort-arrow {
+        position: relative !important;
+    }
+}
+
+.menu-icon {
+    width: 24px !important;
+    margin-top: -5px;
+    margin-left: -15px;
+    margin-right: 15px;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th div {
+    line-height: normal;
+}
+
+.wrap span.ui-selectmenu-item-header,
+.wrap ul.ui-selectmenu-menu li a {
+    text-decoration: underline !important;
+}
+
+/* Styles related to the PHP Layers Menu System begin here */
+
+.tableborder {
+    border-collapse: collapse;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+    font-size: 16px;
+}
+
+.scHdr {
+    background: url('titleback.png') #E6E6E6;
+    font-weight: bold;
+    border-left: solid 1px #CCCCCC;
+    border-top: solid 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
+}
+
+.TabSlct {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: solid 1px #FFFFFF;
+    background: url('menuselected.png') #FFFFFF;
+    border-top: solid 1px #000000;
+    border-right: solid 1px #000000;
+    padding: 4px 7px 4px 7px;
+}
+
+.Tab,
+.TabDsbl,
+.TabHvr {
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-top: solid 1px #000000;
+    border-right: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    padding: 4px 7px 4px 7px;
+    background: url('menu.png') #6699CC;
+}
+
+.Tab div,
+.TabHvr div {
+    text-align: left;
+    padding: 4px 7px 4px 7px;
+}
+
+.TabDsbl div {
+    text-align: left;
+    color: white;
+    white-space: nowrap;
+}
+
+.TabSlctfont {
+    color: black;
+}
+
+.TabDsblfont {
+    color: white;
+}
+
+.TabSlct div {
+    text-align: left;
+    color: black;
+    white-space: nowrap;
+}
+
+.options {
+    color: #FFFFFF;
+    text-align: right;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.NoTabs {
+    white-space: nowrap;
+    border-bottom: solid 1px #000000;
+}
+
+.header {
+    color: white;
+}
+
+.subheader {
+    color: white;
+}
+
+.topback {
+    background-image: url('topback.png');
+}
+
+
+.tablemiddle {
+    border-left: solid 1px #CCCCCC;
+}
+
+.tablecell {
+    border-left: solid 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
+}
+
+.menucell {
+    border-bottom: solid 1px #CCCCCC;
+}
+
+
+.tablebottom {
+    border-left: solid 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
+}
+
+.treemenudiv {
+    display: block;
+    white-space: nowrap;
+}
+
+
+.ivorybodytable {
+    font-family: "luxi sans", verdana, geneva, arial, helvetica, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.darkbordertable {
+    background-color: #726461;
+}
+
+.blackbordertable {
+    background-color: #000000;
+}
+
+.greenbordertable {
+    background-color: #839983;
+}
+
+.darkgreenbordertable {
+    background-color: #839983;
+}
+
+.redbordertable {
+    background-color: #aa5859;
+}
+
+.orangebordertable {
+    background-color: #df9500;
+}
+
+/* Styles related to the PHP Layers Menu System end here */
+
+/* Form elements */
+input {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #666;
+    padding: 4px;
+    border: 1px solid #c8c8c8;
+    text-indent: 2px;
+}
+
+textarea {
+    border-color: black;
+    color: black;
+}
+
+select {
+    border: 1px solid #c8c8c8;
+    background-color: #F0F0F0;
+    color: black;
+    padding: 1px;
+    font: normal 16px Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+    background-color: #99CCFF;
+}
+
+/* The main submit button option */
+input.mainoption {
+    background-color: #99CCFF;
+    font-weight: bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+    background-color: #99CCFF;
+    font-weight: normal;
+}
+
+/* This is the line in the posting page which shows the rollover
+help line. This is actually a text box,but if set to be the same
+colour as the background no one will know;)
+*/
+.helpline {
+    background: #99CCFF;
+    border-style: none;
+}
+
+/* Quote & Code blocks */
+.code {
+    background: #D4EAFE;
+    border: 1px solid #99CCFF;
+    color: black;
+    font: 11px Courier, 'Courier New', sans-serif;
+}
+
+.quote {
+    background: #D4EAFE;
+    border: 1px solid #99CCFF;
+    color: black;
+    font: 11px/125% Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Old background color: #99CCFF */
+.bodyline {
+    background: #EFEFEF;
+    border: 4px double black;
+}
+
+body {
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    margin-right: 0;
+    color: black;
+}
+
+a:link,
+a:active,
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #6699CC;
+    text-decoration: underline;
+}
+
+a.btn-sm:link,
+a.btn-sm:active,
+a.btn-sm:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+a.btn-sm:hover {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* a.btn-secondary:link,a.btn-secondary:active,a.btn-secondary:visited,a.btn-secondary:hover, */
+a.btn-primary:link,
+a.btn-primary:active,
+a.btn-primary:visited,
+a.btn-primary:hover,
+a.btn-success:link,
+a.btn-success:active,
+a.btn-success:visited,
+a.btn-success:hover,
+a.btn-info:link,
+a.btn-info:active,
+a.btn-info:visited,
+a.btn-info:hover,
+a.btn-warning:link,
+a.btn-warning:active,
+a.btn-warning:visited,
+a.btn-warning:hover,
+a.btn-danger:link,
+a.btn-danger:active,
+a.btn-danger:visited,
+a.btn-danger:hover {
+    color: white !important;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.title {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: Verdana, Helvetica, Sans-Serif;
+    TEXT-DECORATION: none;
+}
+
+.content {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-FAMILY: Verdana, Helvetica;
+}
+
+.block-title {
+    BACKGROUND: none;
+    COLOR: #99CCFF;
+}
+
+.storytitle {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+}
+
+.storycat {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline;
+}
+
+.boxtitle {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+}
+
+.boxcontent {
+    BACKGROUND: none;
+    COLOR: black;
+}
+
+.option {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+}
+
+.tiny {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+}
+
+.small {
+    BACKGROUND: none;
+    COLOR: black;
+    FONT-WEIGHT: normal;
+    FONT-FAMILY: Verdana, Helvetica, Sans-Serif;
+    TEXT-DECORATION: none;
+}
+
+.iframe_center {
+    width: 100%;
+    display: table;
+}
+
+
+/*Footer Css Start*/
+
+.wrapper {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+    clear: both;
+    bottom: 0;
+    overflow: hidden;
+}
+
+body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-height: 100%;
+    position: relative;
+}
+
+.row5 {
+    border-color: #000000;
+    height: 22px;
+}
+
+.row5,
+.row5 a {
+    background-color: #161616;
+    color: white;
+}
+
+.fl_left,
+.imgl {
+    float: left;
+}
+
+#copyright p {
+    margin: 0;
+    padding: 0;
+}
+
+.center_foot {
+    display: inline-block;
+    /*    float: left; */
+    text-align: center;
+    width: 20%;
+}
+
+.center_foot>a:first-child {
+    border-left: medium none;
+}
+
+.center_foot>a {
+    display: table-cell;
+    /*    float: left; */
+    border-left: 1px solid;
+    line-height: 12px;
+    padding: 0 10px;
+}
+
+.fl_right,
+.imgr {
+    /*    float: right; */
+    font-family: arial;
+
+    line-height: 1.4em;
+    margin-right: 30px !important;
+}
+
+/*Footer Css Ends*/
+
+/*Ends*/

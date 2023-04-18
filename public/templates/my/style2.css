@@ -1,0 +1,212 @@
+.Top_container_b {
+/*    width: 1000px; */
+/*    float: right; */
+    display: inline-table;
+}
+.sub_links {
+}
+.sub_links ul {
+    float: right;
+    margin: 5px 35px 0 0;
+    display: table-row;
+}
+.sub_links li {
+    color: #868686;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 7px 0 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+.sub_links li img {
+    margin-top: 2px;
+    float: left;
+}
+.sub_links li a {
+    color: #868686;
+    float: left;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 12pt;
+    text-decoration: none;
+    line-height: 16px;
+}
+.sub_links li a:hover {
+    color: #9EBA0E;
+}
+.sub_links .selected_link a {
+    color: #9EBA0E;
+}
+.logo_wrapper {
+}
+.logo_wrapper .logo {
+    background-image: url("logo-new-gray.png?202103250919");
+    background-repeat: no-repeat;
+    background-size: 240px 50px;
+    float: left;
+    height: 50px;
+    margin-left: 25px;
+    padding: 0;
+    width: 235px;
+}
+@media (max-width: 1000px) {
+    .logo_wrapper .logo {
+        margin-left: 15px;
+    }
+}
+@media (max-width: 899px) {
+    .logo_wrapper .logo {
+        margin-left: 5px;
+    }
+}
+.mishaico a {
+    background-image: url("mishaIco.png");
+    background-repeat: no-repeat;
+    height: 23px;
+    text-decoration: none;
+    width: 54px;
+}
+.mishaico a:hover {
+    background-image: url("mishaIcoH.png");
+}
+.Homeico a {
+    background-image: url("homeIco.png");
+    background-repeat: no-repeat;
+    height: 23px;
+    text-decoration: none;
+    width: 23px;
+}
+.Homeico a:hover {
+    background-image: url("homeIcoH.png");
+}
+.contact_ico a {
+    background-image: url("contactIco.png");
+    background-repeat: no-repeat;
+    height: 23px;
+    text-decoration: none;
+    width: 23px;
+}
+.contact_ico a:hover {
+    background-image: url("contactIcoH.png");
+}
+.customer_ico a {
+    background-image: url("Customerlounge.png");
+    background-repeat: no-repeat;
+    height: 23px;
+    text-decoration: none;
+    width: 23px;
+}
+.customer_ico a:hover {
+    background-image: url("CustomerloungeH.png");
+    background-repeat: no-repeat;
+    height: 23px;
+    width: 23px;
+}
+.footer_Ulist {
+    float: left;
+    height: auto;
+    margin: 5px 0 0 25px;
+    padding: 0;
+    width: 220px;
+}
+.footer_Ulist li {
+    display: inline;
+    float: left;
+    height: auto;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 170px;
+}
+.footer_Ulist li a {
+    background-image: url("footer_bullet.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #888888;
+    float: left;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 12pt;
+    height: auto;
+    padding: 4px 0 4px 10px;
+    text-decoration: none;
+    width: auto;
+    white-space: nowrap;
+}
+.footer_Ulist li a:hover {
+    color: #778F04;
+}
+.footer_Ulist li h4.footer_list_header {
+    color: #778F04;
+    float: left;
+    font-family: "Museo300";
+    font-size: 17px;
+    height: auto;
+    width: auto;
+}
+.contact_number {
+    color: #778F04;
+    float: left;
+    font-family: "Museo300";
+    font-size: 18px;
+    height: auto;
+    margin-top: 70px;
+    width: 180px;
+}
+.contact_number span {
+    clear: left;
+    float: left;
+    font-size: 26px;
+    width: 100%;
+}
+#footer {
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+.footer-new {
+    background: url("footer_bg.jpg") repeat-x scroll left top transparent;
+    float: left;
+    height: 175px;
+    margin-top: 3px;
+    width: 100%;
+}
+
+.scHdr {
+    background:#E6E6E6 url("../vps/titleback.png");
+    font-weight:bold;
+    border-left:1px solid #CCCCCC;
+    border-top:1px solid #CCCCCC;
+    border-bottom:1px solid #CCCCCC;
+    font-family:Verdana,sans-serif;
+    font-size:13px;
+}
+
+.tablecell {
+    border-left:solid 1px #CCCCCC;
+    border-bottom:solid 1px #CCCCCC;
+    font-family:Verdana,sans-serif;
+    font-size:13px;
+}
+
+.tablemiddle {
+    border-left:solid 1px #CCCCCC;
+}
+
+.style2 {
+    font-size:12pt;
+}
+
+body {
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+}
+
+.bgimage45 {
+    background-image:url("../../images/header_BSeparatorBg.gif");
+}
+
+.footer {
+    vertical-align:bottom;
+}

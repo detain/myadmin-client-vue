@@ -66,7 +66,7 @@ loadLicenses(data)
 
 <template>
 <link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://mystage.interserver.net/css/crud_table5.css">
+<link rel="stylesheet" href="/css/crud_table5.css">
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -82,17 +82,17 @@ loadLicenses(data)
               <button class="btn btn-sm btn-secondary" type="button" title="Print" onClick="crud_print();"><i class="fa fa-print crud-icon"></i>Print </button>
               <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
               <ul class="dropdown-menu" role="menu">
-                <li role="presentation" data-type="xlsx"><a href="#" data-container="body" title="Excel 2007+" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/xlsx.png" alt=""> XLSX</a></li>
-                <li role="presentation" data-type="xls"><a href="#" data-container="body" title="Excel 2003/BIFF" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/xls.png" alt=""> XLS</a></li>
-                <li role="presentation" data-type="ods"><a href="#" data-container="body" title="OpenDocument SpreadSheet" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/ods.png" alt=""> ODS</a></li>
-                <li role="presentation" data-type="pdf"><a href="#" data-container="body" title="Adobe Portable Document Format" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/pdf.png" alt=""> PDF</a></li>
-                <li role="presentation" data-type="xml"><a href="#" data-container="body" title="Extensible Markup Language" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/xml.png" alt=""> XML</a></li>
-                <li role="presentation" data-type="php"><a href="#" data-container="body" title="PHP Array" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/php.png" alt=""> PHP</a></li>
-                <li role="presentation" data-type="csv"><a href="#" data-container="body" title="Comma-Seperated Values" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/csv.png" alt=""> CSV</a></li>
-                <li role="presentation" data-type="json"><a href="#" data-container="body" title="JSON" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/json.png" alt=""> JSON</a></li>
-                <li role="presentation" data-type="bbcode"><a href="#" data-container="body" title="BBcode" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/bbcode.png" alt=""> BBCODE</a></li>
-                <li role="presentation" data-type="wiki"><a href="#" data-container="body" title="WikiCode" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/wiki.png" alt=""> WIKI</a></li>
-                <li role="presentation" data-type="markdown"><a href="#" data-container="body" title="MarkDown" onClick="crud_export(this); this.preventDefault();"><img src="https://mystage.interserver.net/images/crud/markdown.png" alt=""> MARKDOWN</a></li>
+                <li role="presentation" data-type="xlsx"><a href="#" data-container="body" title="Excel 2007+" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/xlsx.png" alt=""> XLSX</a></li>
+                <li role="presentation" data-type="xls"><a href="#" data-container="body" title="Excel 2003/BIFF" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/xls.png" alt=""> XLS</a></li>
+                <li role="presentation" data-type="ods"><a href="#" data-container="body" title="OpenDocument SpreadSheet" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/ods.png" alt=""> ODS</a></li>
+                <li role="presentation" data-type="pdf"><a href="#" data-container="body" title="Adobe Portable Document Format" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/pdf.png" alt=""> PDF</a></li>
+                <li role="presentation" data-type="xml"><a href="#" data-container="body" title="Extensible Markup Language" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/xml.png" alt=""> XML</a></li>
+                <li role="presentation" data-type="php"><a href="#" data-container="body" title="PHP Array" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/php.png" alt=""> PHP</a></li>
+                <li role="presentation" data-type="csv"><a href="#" data-container="body" title="Comma-Seperated Values" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/csv.png" alt=""> CSV</a></li>
+                <li role="presentation" data-type="json"><a href="#" data-container="body" title="JSON" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/json.png" alt=""> JSON</a></li>
+                <li role="presentation" data-type="bbcode"><a href="#" data-container="body" title="BBcode" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/bbcode.png" alt=""> BBCODE</a></li>
+                <li role="presentation" data-type="wiki"><a href="#" data-container="body" title="WikiCode" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/wiki.png" alt=""> WIKI</a></li>
+                <li role="presentation" data-type="markdown"><a href="#" data-container="body" title="MarkDown" onClick="crud_export(this); this.preventDefault();"><img src="/images/crud/markdown.png" alt=""> MARKDOWN</a></li>
               </ul>
             </div>
           </div>

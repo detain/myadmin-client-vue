@@ -546,7 +546,7 @@ onMounted(() => {
 
 <template>
 <link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://mystage.interserver.net/css/crud_table5.css">
+<link rel="stylesheet" href="/css/crud_table5.css">
 <div class="row">
   <div class="col-md-12">
     <div v-if="module && module === 'backups'" class="alert alert-default">
@@ -607,7 +607,7 @@ onMounted(() => {
               <ul v-if="exportButton" class="dropdown-menu" role="menu">
                 <li v-for="(formatData, ext) in exportFormats" :key="ext" role="presentation" :data-type="ext">
                   <a href="#" data-container="body" :title="formatData.name" @click.prevent="crudExport($event, ext)">
-                    <img :src="`https://mystage.interserver.net/images/crud/${ext}.png`" alt=""> {{ ext.toUpperCase() }}
+                    <img :src="`/images/crud/${ext}.png`" alt=""> {{ ext.toUpperCase() }}
                   </a>
                 </li>
               </ul>

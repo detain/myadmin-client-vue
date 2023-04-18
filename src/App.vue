@@ -39,7 +39,7 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
         </nav><!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4"><!-- Main Sidebar Container -->
             <router-link to="/" class="brand-link"><!-- Brand Logo -->
-                <img src="//mystage.interserver.net/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
+                <img src="/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light">InterServer</span>
             </router-link>
             <div class="sidebar"><!-- Sidebar -->

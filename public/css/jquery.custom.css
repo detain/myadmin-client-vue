@@ -1,0 +1,75 @@
+.tos,
+.tos a,
+.tos a:visited,
+.tos a:hover,
+.tos a:active,
+.tos a:link
+{
+    color: midnightblue !important;
+}
+.csvicon
+ {
+    background-image:url('https://my.interserver.net/images/icons/icon_csv.png') !important;
+    height: 16px;
+    width: 16px;
+}
+
+.ui-jqgrid .ui-userdata {
+    height: auto !important;
+}
+
+.ui-accordion .ui-accordion-header {
+    padding: 0px 0px 0px 0px;
+}
+.ui-accordion {
+    max-width: 95%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ui-autocomplete-category {
+    font-weight:bold;
+    padding:.2em .4em;
+    margin:.8em 0 .2em;
+    line-height:1.5;
+}
+#accordion div {
+    padding: 3px 5px 3px 5px;
+}
+.ui-accordion-header {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: start;
+    vertical-align: middle;
+    height: 32px;
+}
+.ui-accordion-header img {
+    clear: both;
+    display: block;
+    border: 0;
+    width: 24px;
+    height: 24px;
+    padding-top: 4px;
+    padding-left: 30px;
+    padding-right: 10px;
+    float: left;
+    margin: 0px 0px 0px 0px;
+    vertical-align: middle;
+}
+
+.custicons {
+    width: 21px;
+    height: 21px;
+    border: 0;
+}
+.boxMenu {
+    border-top-width: 0px !important;
+}
+.ui-jqgrid .ui-jqgrid-pager div {
+    font-size: 11px;
+}
