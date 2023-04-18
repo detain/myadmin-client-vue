@@ -1,13 +1,43 @@
 {
   "name": "myadmin-client-vue",
+  "author": "detain",
+  "main": "electron/electron.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "vite --cors",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:nots": "vite build",
+    "serve": "vite preview",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
+    "electron:pack": "electron-builder --dir",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
+    "electron:builder": "electron-builder",
+    "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
+    "app:build": "yarn build:for:electron && yarn electron:builder"
+  },
+ "build": {
+    "appId": "com.my-website.my-app",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    }
   },
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "*",
@@ -30,6 +60,11 @@
     "yup": "*"
   },
   "devDependencies": {
+    "concurrently": "*",
+    "cross-env": "*",
+    "electron": "*",
+    "electron-builder": "*",
+    "wait-on": "*",
     "@rushstack/eslint-patch": "*",
     "@vitejs/plugin-vue": "*",
     "@vue/eslint-config-prettier": "*",
