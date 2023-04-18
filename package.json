@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "vite --cors",
-    "build": "vue-tsc --noEmit && vite build",
-    "build:nots": "vite build",
+    "build:ts": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
@@ -17,7 +17,9 @@
     "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
     "electron:builder": "electron-builder",
     "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
-    "app:build": "yarn build:for:electron && yarn electron:builder"
+    "build:for:electron:nots": "cross-env ELECTRON=true vite build",
+    "app:build": "yarn build:for:electron && yarn electron:builder",
+    "app:build:nots": "yarn build:for:electron:nots && yarn electron:builder"
   },
  "build": {
     "appId": "com.my-website.my-app",
@@ -40,6 +42,7 @@
     }
   },
   "dependencies": {
+    "vue-tsc": "*",
     "@intlify/unplugin-vue-i18n": "*",
     "@vueuse/core": "*",
     "axios": "*",
