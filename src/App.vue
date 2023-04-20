@@ -93,6 +93,19 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
     </div>
 </template>
 
+<style>
+@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+@import '/node_modules/daterangepicker/daterangepicker.css';
+@import '/node_modules/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
+@import '/node_modules/summernote/dist/summernote-bs4.min.css';
+@import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
+@import '/node_modules/admin-lte/dist/css/adminlte.min.css';
+@import '/node_modules/jsgrid/dist/jsgrid.min.css';
+@import '/node_modules/select2/dist/css/select2.min.css';
+@import '/node_modules/tablesorter/dist/css/theme.default.min.css';
+</style>
 
 <style scoped>
 @import '@/assets/base.css';
