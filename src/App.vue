@@ -94,6 +94,7 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 </template>
 
 <style>
+/*
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
 @import 'jquery-ui/dist/themes/smoothness/jquery-ui.min.css';
@@ -126,6 +127,6 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 @import 'tablesorter/dist/css/theme.jui.min.css';
 @import 'tablesorter/dist/css/theme.blue.min.css';
 @import 'tablesorter/dist/css/jquery.tablesorter.pager.min.css';
-@import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+@import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';*/
 /*@import '@/assets/base.css';*/
 </style>
