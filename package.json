@@ -43,6 +43,7 @@
     }
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@vueuse/core": "*",
     "axios": "*",
     "datatables.net-bs": "^*",
