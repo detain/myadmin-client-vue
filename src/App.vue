@@ -94,76 +94,38 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 </template>
 
 <style>
-@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '/node_modules/@fortawesome/fontawesome-free/css/all.css';
-@import '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css';
-@import '/node_modules/daterangepicker/daterangepicker.css';
-@import '/node_modules/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
-@import '/node_modules/summernote/dist/summernote-bs4.min.css';
-@import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
-@import '/node_modules/admin-lte/dist/css/adminlte.min.css';
-@import '/node_modules/jsgrid/dist/jsgrid.min.css';
-@import '/node_modules/select2/dist/css/select2.min.css';
-@import '/node_modules/tablesorter/dist/css/theme.default.min.css';
-</style>
-
-<style scoped>
-@import '@/assets/base.css';
-
-header {
-    line-height: 1.5;
-    max-height: 100vh;
-}
-
-.logo {
-    display: block;
-    margin: 0 auto 2rem;
-}
-
-nav {
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-}
-
-nav a.router-link-exact-active {
-    color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-    background-color: transparent;
-}
-
-nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-    border: 0;
-}
-
-@media (min-width: 1024px) {
-    header {
-        display: flex;
-        place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
-    }
-
-    .logo {
-        margin: 0 2rem 0 0;
-    }
-
-    header .wrapper {
-        display: flex;
-        place-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    nav {
-        text-align: left;
-        font-size: 1rem;
-    }
-}
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
+@import 'jquery-ui/dist/themes/smoothness/jquery-ui.min.css';
+@import '/css/misha-theme/jquery-ui.css';
+@import 'jquery-simple-pass-meter/simplePassMeter.css';
+@import '/css/jquery.custom.css';
+@import '/css/home_new.css?20180104';
+@import '/css/home.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'jqvmap/dist/jqvmap.min.css';
+@import 'admin-lte/dist/css/adminlte.min.css';
+@import '/templates/menu/dark/menu.css';
+@import '/css/hide_printed_links.css';
+@import '/images/myadmin/css/styles.css?20180101';
+@import 'tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
+@import 'icheck-bootstrap/icheck-bootstrap.min.css';
+@import 'select2/dist/css/select2.min.css';
+@import 'select2-bootstrap-theme/dist/select2-bootstrap.min.css';
+@import 'overlayscrollbars/css/OverlayScrollbars.min.css';
+@import 'daterangepicker/daterangepicker.css';
+@import 'summernote/dist/summernote-bs4.min.css';
+@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
+@import 'jsgrid/dist/jsgrid.min.css';
+@import 'jsgrid/dist/jsgrid-theme.min.css';
+@import '/templates/adminlte/custom_styles.css';
+@import '/templates/adminlte/jquery.passwordRequirements.css';
+@import '/templates/my/style.css?202211190107';
+@import '/templates/my/style2.css';
+@import '/css/view_service.css';
+@import 'tablesorter/dist/css/theme.jui.min.css';
+@import 'tablesorter/dist/css/theme.blue.min.css';
+@import 'tablesorter/dist/css/jquery.tablesorter.pager.min.css';
+@import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+/*@import '@/assets/base.css';*/
 </style>
