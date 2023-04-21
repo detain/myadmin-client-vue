@@ -52,6 +52,7 @@
     "overlayscrollbars": "^1.13.1",
     "select2": "select2/select2#*",
     "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
+    "sweetalert2": "11.4.8",
     "tablesorter": "Mottie/tablesorter#*",
     "tempusdominus-bootstrap-4": "*",
     "toastr": "^2.1.4"
@@ -94,6 +95,7 @@
     "has-flag": "4.0.0",
     "lru-cache": "6.0.0",
     "yallist": "4.0.0",
-    "jquery-ui-dist": "1.13.2"
+    "jquery-ui-dist": "1.13.2",
+    "sweetalert2": "11.4.8"
   }
 }
