@@ -24,7 +24,7 @@
     "datatables.net-select-bs": "^*",
     "datatables.net-select-bs4": "*",
     "datatables.net-vue3": "*",
-    "jquery": "*",
+    "jquery": ">=3.6.0",
     "jquery-migrate": "appleboy/jquery-migrate#*",
     "jquery-simple-pass-meter": "jakerella/jquerySimplePassMeter#master",
     "jquery-sortable": "johnny/jquery-sortable#*",
