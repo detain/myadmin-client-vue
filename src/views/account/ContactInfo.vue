@@ -1,5 +1,7 @@
 <script setup>
-import { ref, computed } from "vue";
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 function submitForm() {
@@ -11,14 +13,26 @@ const specialChars = (text) => {
 const data = ref({
     name: "",
     account_id: "",
+    account_lid: "",
+    company: "",
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
     country: "",
     zip: "",
+    phone: "",
+    email_invoices: "",
+    email_abuse: "",
+    gstin: "",
+    disable_email_notifications: false,
+    disable_reset: false,
+    disable_server_notifications: false,
     disable_reinstall: false
 });
 const gravatar = ref(
     "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
 );
-const csrf_token = ref("");
 const countries = ref({
     US: "United States",
     CA: "Canada",
@@ -45,6 +59,21 @@ const escape = (str) => {
     return str.replace(/[&<>"']/g, (m) => map[m]);
 };
 
+const loadContactInfo = async (data,gravatar,countries) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/contact_info');
+        console.log('api success');
+        console.log(response);
+        data.value = response.data;
+        countries.value = response.countries;
+        gravatar.value = response.gravatar;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadContactInfo(data,gravatar,countries)
 </script>
 
 <template>
