@@ -22,12 +22,9 @@ if (id) {
 }
 
 const schema = Yup.object().shape({
-    firstName: Yup.string()
-        .required('First Name is required'),
-    lastName: Yup.string()
-        .required('Last Name is required'),
-    username: Yup.string()
-        .required('Username is required'),
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
+    username: Yup.string().required('Username is required'),
     password: Yup.string()
         .transform(x => x === '' ? undefined : x)
         // password optional in edit mode

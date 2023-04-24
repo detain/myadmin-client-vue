@@ -3,6 +3,16 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const alertStore = useAlertStore();
+const authStore = useAuthStore();
+const layoutStore = useLayoutStore();
+const { user } = storeToRefs(authStore);
+const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
+
+layoutStore.setPageHeading('Contact Info');
+layoutStore.setBreadcrums({'home': 'Home', '': 'Contact Info'});
 
 function submitForm() {
     // handle form submission
@@ -30,9 +40,6 @@ const data = ref({
     disable_server_notifications: false,
     disable_reinstall: false
 });
-const gravatar = ref(
-    "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
-);
 const countries = ref({
     US: "United States",
     CA: "Canada",
@@ -66,7 +73,7 @@ const loadContactInfo = async (data,gravatar,countries) => {
         console.log(response);
         data.value = response.data;
         countries.value = response.countries;
-        gravatar.value = response.gravatar;
+        //gravatar.value = response.gravatar;
     } catch (error) {
         console.log('api failed');
         console.log(error);
@@ -77,137 +84,158 @@ loadContactInfo(data,gravatar,countries)
 </script>
 
 <template>
-<div class="card-body">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="text-center mb-4">
-                <img :src="gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10%!important; max-width: 250px;" />
-            </div>
-            <h4 class="mb-2 text-center">{{ data.name }}&nbsp;({{ data.account_id }})</h4>
-            <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="callout callout-danger text-red text-sm">
+            <i class="fa fa-bullhorn">&nbsp;</i><strong>Heads up!&nbsp;</strong>Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your <strong>Risk % Score</strong> giving your quicker and more convenient access to parts of the site (such as not having to authenticate a credit-card).
         </div>
-        <div class="col">
-            <form @submit.prevent="submitForm" method="POST" action="contact_info">
-                <h4 class="mb-4">Personal Information</h4>
-                <input type="hidden" name="csrf_token" :value="csrf_token" />
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="name">Name</label>
-                    <div class="col-md-6">
-                        <input v-model="data.name" type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Joe Cool" required autofocus />
+        <div class="card">
+            <div class="card-header">
+                <div class="p-1">
+                    <h3 class="card-title py-2 float-left">
+                        <i class="fa fa-id-card-o"></i>&nbsp;Update Contact Info
+                    </h3>
+                    <div class="card-tools float-right">
+                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="company">Company</label>
-                    <div class="col-md-6">
-                        <input v-model="data.company" type="text" class="form-control form-control-sm" name="company" id="company" placeholder="Company" required />
-                    </div>
-                </div>
-                <div v-if="data.country === 'IN'" class="form-group row" style="display:flex;">
-                    <label class="col-md-3 col-form-label" for="company">GSTIN</label>
-                    <div class="col-md-6">
-                        <input v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" id="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="address">Address Line 1</label>
-                    <div class="col-md-6">
-                        <input v-model="data.address" type="text" class="form-control form-control-sm" name="address" id="address" placeholder="Address Line 1" required />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="address2">Address Line 2</label>
-                    <div class="col-md-6">
-                        <input v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" id="address2" placeholder="Address Line 2" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="city">City, State</label>
-                    <div class="col-md-3">
-                        <input v-model="data.city" type="text" class="form-control form-control-sm" name="city" id="city" placeholder="City" required>
-                    </div>
-                    <div class="col-md-3">
-                        <input v-model="data.state" type="text" class="form-control form-control-sm" name="state" id="state" placeholder="State" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="">Country</label>
-                    <div class="col-md-6">
-                        <select v-model="data.country" name="country" class="form-control select2 form-control-sm">
-                            <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
-                                {{ country_name }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="zip">Zipcode</label>
-                    <div class="col-md-6">
-                        <input v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" id="zip" placeholder="Zipcode" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="phone">Phone No</label>
-                    <div class="col-md-6">
-                        <input v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="Phone Number" required>
-                    </div>
-                </div>
-                <hr>
-                <h4 class="mb-4">Other Settings</h4>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label"></label>
-                    <div class="col-md-8">
-                        <div class="icheck-success d-inline">
-                            <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" value="1">
-                            <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center mb-4">
+                            <img :src="user.gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10%!important; max-width: 250px;" />
                         </div>
+                        <h4 class="mb-2 text-center">{{ data.name }}&nbsp;({{ data.account_id }})</h4>
+                        <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
+                    </div>
+                    <div class="col">
+                        <form @submit.prevent="submitForm" method="POST" action="contact_info">
+                            <h4 class="mb-4">Personal Information</h4>
+                            <input type="hidden" name="csrf_token" :value="csrf_token" />
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="name">Name</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.name" type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Joe Cool" required autofocus />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="company">Company</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.company" type="text" class="form-control form-control-sm" name="company" id="company" placeholder="Company" required />
+                                </div>
+                            </div>
+                            <div v-if="data.country === 'IN'" class="form-group row" style="display:flex;">
+                                <label class="col-md-3 col-form-label" for="company">GSTIN</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" id="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="address">Address Line 1</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.address" type="text" class="form-control form-control-sm" name="address" id="address" placeholder="Address Line 1" required />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="address2">Address Line 2</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" id="address2" placeholder="Address Line 2" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="city">City, State</label>
+                                <div class="col-md-3">
+                                    <input v-model="data.city" type="text" class="form-control form-control-sm" name="city" id="city" placeholder="City" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <input v-model="data.state" type="text" class="form-control form-control-sm" name="state" id="state" placeholder="State" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="">Country</label>
+                                <div class="col-md-6">
+                                    <select v-model="data.country" name="country" class="form-control select2 form-control-sm">
+                                        <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
+                                            {{ country_name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="zip">Zipcode</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" id="zip" placeholder="Zipcode" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="phone">Phone No</label>
+                                <div class="col-md-6">
+                                    <input v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                            <hr>
+                            <h4 class="mb-4">Other Settings</h4>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <div class="icheck-success d-inline">
+                                        <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" value="1">
+                                        <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <div class="icheck-success d-inline">
+                                        <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1">
+                                        <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <div class="icheck-success d-inline">
+                                        <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications">
+                                        <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <div class="icheck-success d-inline">
+                                        <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall">
+                                        <label for="disable_reinstall">Disable Reinstalls.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="email_invoices">Alternate Email for Invoices</label>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-sm" name="email_invoices" id="email_invoices" placeholder="Alternative email for sending invoices" v-model="data.email_invoices">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="email_abuse">Alternate Email for Abuse Reports</label>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-sm" name="email_abuse" id="email_abuse" placeholder="Alternate Email for Abuse Reports" v-model="data.email_abuse">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="save_settings">&nbsp;</label>
+                                <div class="controls col-md-6">
+                                    <input id="save_settings" type="submit" name="Submit" value="Update Info" class="btn btn-custom btn-sm">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label"></label>
-                    <div class="col-md-8">
-                        <div class="icheck-success d-inline">
-                            <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1">
-                            <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label"></label>
-                    <div class="col-md-8">
-                        <div class="icheck-success d-inline">
-                            <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications">
-                            <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label"></label>
-                    <div class="col-md-8">
-                        <div class="icheck-success d-inline">
-                            <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall">
-                            <label for="disable_reinstall">Disable Reinstalls.</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="email_invoices">Alternate Email for Invoices</label>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control form-control-sm" name="email_invoices" id="email_invoices" placeholder="Alternative email for sending invoices" v-model="data.email_invoices">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="email_abuse">Alternate Email for Abuse Reports</label>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control form-control-sm" name="email_abuse" id="email_abuse" placeholder="Alternate Email for Abuse Reports" v-model="data.email_abuse">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="save_settings">&nbsp;</label>
-                    <div class="controls col-md-6">
-                        <input id="save_settings" type="submit" name="Submit" value="Update Info" class="btn btn-custom btn-sm">
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

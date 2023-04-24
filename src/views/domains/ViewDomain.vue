@@ -1,7 +1,17 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View Domain');
+layoutStore.setBreadcrums({'home': 'Home', 'domains': 'Domains'})
+layoutStore.addBreadcrum('domain/'+id, 'View Domain '+id);
+
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -295,19 +305,21 @@ const locked = ref("Inactive");
 const whoisPrivacy = ref("disabled");
 const autoRenew = ref("Disabled");
 
-const loadDomain = async (data) => {
+const loadDomain = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_domain?id=' + id);
         console.log('api success');
         console.log(response);
-        data.value = response;
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
     } catch (error) {
         console.log('api failed');
         console.log(error);
     }
 };
 
-//loadDomain(data)
+loadDomain(id, serviceType, settings, serviceInfo)
 </script>
 
 <template>

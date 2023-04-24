@@ -3,10 +3,10 @@ export const useLayoutStore = defineStore({
     id: 'layout',
     state: () => ({
         // initialize state from local storage to enable user to stay logged in
-        breadcrums: '',
-        page_header: '',
+        breadcrums: {},
+        page_heading: '',
         sidemenu: '',
-        gravatar: '',
+        gravatar: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
         opts: {
             tfa: false,
             verify: false,
@@ -17,8 +17,11 @@ export const useLayoutStore = defineStore({
         setBreadcrums(value) {
             this.breadcrums = value;
         },
-        setPageHeader(value) {
-            this.page_header = value;
+        addBreadcrum(key, value) {
+            this.breadcrums[key] = value;
+        },
+        setPageHeading(value) {
+            this.page_heading = value;
         },
         setSideMenu(value) {
             this.sidemenu = value;

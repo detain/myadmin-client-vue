@@ -7,7 +7,7 @@ import { useAuthStore, useLayoutStore } from '@/stores';
 const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
 </script>
 
 <template>
@@ -64,8 +64,8 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
-                                <li v-for="(bName, bUrl, index) in breadcrums" :key="index" :class="{ 'active': index === breadcrums.length - 1 }">
-                                    <template v-if="index === breadcrums.length - 1">{{ bName }}</template>
+                                <li v-for="(bName, bUrl, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ 'active': index === Object.keys(breadcrums).length - 1 }">
+                                    <template v-if="index === Object.keys(breadcrums).length - 1">{{ bName }}</template>
                                     <template v-else><a :href="bUrl">{{ bName }}</a></template>
                                 </li>
                             </ol>
