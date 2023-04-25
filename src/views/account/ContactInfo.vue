@@ -14,9 +14,45 @@ const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layou
 layoutStore.setPageHeading('Contact Info');
 layoutStore.setBreadcrums({'home': 'Home', '': 'Contact Info'});
 
-function submitForm() {
-    // handle form submission
+async function onSubmit(values) {
+    try {
+        let message;
+        console.log({
+            name: data.value.name,
+            account_id: data.value.account_id,
+            account_lid: data.value.account_lid,
+            company: data.value.company,
+            address: data.value.address,
+            address2: data.value.address2,
+            city: data.value.city,
+            state: data.value.state,
+            country: data.value.country,
+            zip: data.value.zip,
+            phone: data.value.phone,
+            email_invoices: data.value.email_invoices,
+            email_abuse: data.value.email_abuse,
+            gstin: data.value.gstin,
+            disable_email_notifications: data.value.disable_email_notifications,
+            disable_reset: data.value.disable_reset,
+            disable_server_notifications: data.value.disable_server_notifications,
+            disable_reinstall: data.value.disable_reinstall
+        });
+        /*
+        if (user) {
+            await usersStore.update(user.value.id, values)
+            message = 'User updated';
+        } else {
+            await usersStore.register(values);
+            message = 'User added';
+        }
+        await router.push('/users');
+        alertStore.success(message);
+        */
+    } catch (error) {
+        alertStore.error(error);
+    }
 }
+
 const specialChars = (text) => {
     return encodeURIComponent(text);
 };
@@ -71,7 +107,26 @@ const loadContactInfo = async (data,gravatar,countries) => {
         const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/contact_info');
         console.log('api success');
         console.log(response);
-        data.value = response.data;
+        data.value = {
+            name: response.data.name,
+            account_id: response.data.account_id,
+            account_lid: response.data.account_lid,
+            company: response.data.company,
+            address: response.data.address,
+            address2: response.data.address2,
+            city: response.data.city,
+            state: response.data.state,
+            country: response.data.country,
+            zip: response.data.zip,
+            phone: response.data.phone,
+            email_invoices: response.data.email_invoices,
+            email_abuse: response.data.email_abuse,
+            gstin: response.data.gstin,
+            disable_email_notifications: response.data.disable_email_notifications,
+            disable_reset: response.data.disable_reset,
+            disable_server_notifications: response.data.disable_server_notifications,
+            disable_reinstall: response.data.disable_reinstall
+        };
         countries.value = response.countries;
         //gravatar.value = response.gravatar;
     } catch (error) {
@@ -112,7 +167,7 @@ loadContactInfo(data,gravatar,countries)
                         <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
                     </div>
                     <div class="col">
-                        <form @submit.prevent="submitForm" method="POST" action="contact_info">
+                        <form @submit.prevent="onSubmit" method="POST" action="contact_info">
                             <h4 class="mb-4">Personal Information</h4>
                             <input type="hidden" name="csrf_token" :value="csrf_token" />
                             <div class="form-group row">
@@ -182,7 +237,7 @@ loadContactInfo(data,gravatar,countries)
                                 <label class="col-md-3 col-form-label"></label>
                                 <div class="col-md-8">
                                     <div class="icheck-success d-inline">
-                                        <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" value="1">
+                                        <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset == 1" value="1">
                                         <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
                                     </div>
                                 </div>
@@ -191,7 +246,7 @@ loadContactInfo(data,gravatar,countries)
                                 <label class="col-md-3 col-form-label"></label>
                                 <div class="col-md-8">
                                     <div class="icheck-success d-inline">
-                                        <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1">
+                                        <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications == 1" value="1">
                                         <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
                                     </div>
                                 </div>
@@ -200,7 +255,7 @@ loadContactInfo(data,gravatar,countries)
                                 <label class="col-md-3 col-form-label"></label>
                                 <div class="col-md-8">
                                     <div class="icheck-success d-inline">
-                                        <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications">
+                                        <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications == 1" value="1">
                                         <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
                                     </div>
                                 </div>
@@ -209,7 +264,7 @@ loadContactInfo(data,gravatar,countries)
                                 <label class="col-md-3 col-form-label"></label>
                                 <div class="col-md-8">
                                     <div class="icheck-success d-inline">
-                                        <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall">
+                                        <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall == 1" value="1">
                                         <label for="disable_reinstall">Disable Reinstalls.</label>
                                     </div>
                                 </div>
