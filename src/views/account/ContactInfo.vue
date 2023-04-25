@@ -17,10 +17,8 @@ layoutStore.setBreadcrums({'home': 'Home', '': 'Contact Info'});
 async function onSubmit(values) {
     try {
         let message;
-        console.log({
+        const response = await fetchWrapper.post('https://mystage.interserver.net/apiv2/contact_info', {
             name: data.value.name,
-            account_id: data.value.account_id,
-            account_lid: data.value.account_lid,
             company: data.value.company,
             address: data.value.address,
             address2: data.value.address2,
@@ -37,6 +35,7 @@ async function onSubmit(values) {
             disable_server_notifications: data.value.disable_server_notifications,
             disable_reinstall: data.value.disable_reinstall
         });
+        console.log(response);
         /*
         if (user) {
             await usersStore.update(user.value.id, values)
@@ -49,7 +48,8 @@ async function onSubmit(values) {
         alertStore.success(message);
         */
     } catch (error) {
-        alertStore.error(error);
+        console.log(error);
+        //alertStore.error(error);
     }
 }
 
@@ -212,7 +212,7 @@ loadContactInfo(data,gravatar,countries)
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="">Country</label>
                                 <div class="col-md-6">
-                                    <select v-model="data.country" name="country" class="form-control select2 form-control-sm">
+                                    <select v-model="data.country" id="country" name="country" class="form-control select2 form-control-sm">
                                         <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
                                             {{ country_name }}
                                         </option>
