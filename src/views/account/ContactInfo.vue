@@ -9,7 +9,7 @@ const alertStore = useAlertStore();
 const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
+const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 
 layoutStore.setPageHeading('Contact Info');
 layoutStore.setBreadcrums({'home': 'Home', '': 'Contact Info'});

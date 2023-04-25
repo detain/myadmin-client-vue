@@ -32,6 +32,7 @@ export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: ClientHome },
+    { path: '/home', component: ClientHome },
     { path: '/tickets_list', component: TicketsList },
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },

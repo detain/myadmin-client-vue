@@ -7,6 +7,11 @@ import DataTablesCore from 'datatables.net';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
+layoutStore.setPageHeading('Dedicated Servers List');
+layoutStore.setBreadcrums({'home': 'Home', '': 'Servers'});
 
 DataTable.use(DataTablesCore);
 

@@ -4,9 +4,10 @@ import { storeToRefs } from "pinia";
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
 import { useAuthStore, useLayoutStore } from "@/stores";
-
 const layoutStore = useLayoutStore();
-const { opts } = storeToRefs(layoutStore);
+const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
+layoutStore.setPageHeading('Account Settings');
+layoutStore.setBreadcrums({'home': 'Home', '': 'Account Settings'});
 
 const schema = Yup.object().shape({
     currentPassword: Yup.string(),

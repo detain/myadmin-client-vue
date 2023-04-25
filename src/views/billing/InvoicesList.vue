@@ -1,7 +1,11 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useInvoicesStore } from '@/stores';
+import { useInvoicesStore, useLayoutStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
+const layoutStore = useLayoutStore();
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
+layoutStore.setPageHeading('Invoice List');
+layoutStore.setBreadcrums({'home': 'Home', '': 'Invoices'});
 
 const invoicesStore = useInvoicesStore();
 const { custid, month, year, months_arr, years_arr, rows, loading, error } = storeToRefs(invoicesStore);

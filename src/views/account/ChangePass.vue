@@ -4,9 +4,10 @@ import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
-
 const layoutStore = useLayoutStore();
-const { opts } = storeToRefs(layoutStore);
+const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
+layoutStore.setPageHeading('Change Password');
+layoutStore.setBreadcrums({'home': 'Home', '': 'Change Password'});
 
 const password = ref('')
 const newPassword = ref('')

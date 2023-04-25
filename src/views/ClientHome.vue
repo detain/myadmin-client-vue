@@ -1,6 +1,13 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { fetchWrapper } from '@/helpers';
+import { storeToRefs } from 'pinia';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
+layoutStore.setPageHeading('Dashboard');
+layoutStore.setBreadcrums({'': 'Home'});
+
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),
     last_login: ref("12:35:pm - 21 Feb, 2023"),
