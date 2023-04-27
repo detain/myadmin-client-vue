@@ -1,4 +1,243 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View VPS');
+layoutStore.setBreadcrums({'home': 'Home', 'domains': 'VPS'})
+layoutStore.addBreadcrum('vps/'+id, 'View VPS '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "domain.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "Domain Registrations",
+    MENUNAME: "Domains",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Domains",
+    TABLE: "domains",
+    TITLE_FIELD: "vps_hostname",
+    PREFIX: "domain"
+});
+const serviceInfo = ref({
+    vps_id: "592337",
+    vps_hostname: "detain.dev",
+    vps_username: "detaindev",
+    vps_password: "12315688fgfasghs",
+    vps_type: "10673",
+    vps_currency: "USD",
+    vps_expire_date: "2023-08-14 00:59:38",
+    vps_order_date: "2022-08-13 20:58:58",
+    vps_custid: "2773",
+    vps_status: "active",
+    vps_invoice: "19917286",
+    vps_coupon: "0",
+    vps_firstname: "Real",
+    vps_lastname: "Person",
+    vps_email: "realperson@mydomain.com",
+    vps_address: "91 Mullberry St.",
+    vps_address2: "",
+    vps_address3: "",
+    vps_city: "Area 51",
+    vps_state: "PA",
+    vps_zip: "00001",
+    vps_country: "US",
+    vps_phone: "8675309",
+    vps_fax: "",
+    vps_company: "InterServer Secaucus",
+});
+const client_links = ref([
+    {
+        label: "Invoices",
+        link: "view_domain?id=592337&link=invoices",
+        image: '<i class="fas fa-file-invoice-dollar fa-w-12"></i>',
+        help_text: "Invoice History"
+    },
+    {
+        label: "Cancel Domains",
+        link: "view_domain?id=592337&link=cancel",
+        image: '<i class="fas fa-times"></i>',
+        help_text: "Cancel Domains"
+    },
+    {
+        label: "Renew",
+        link: "view_domain?id=592337&link=renew",
+        image: '<i class="fa fa-hourglass"></i>',
+        help_text: "Renew Domain"
+    },
+    {
+        label: "DNSSEC",
+        link: "view_domain?id=592337&link=dnssec",
+        image: '<i class="fa fa-lock"></i>',
+        help_text: "DNS Security Details"
+    },
+    {
+        label: "Email EPP Code",
+        link: "view_domain?id=592337&link=authepp",
+        image: '<i class="fa fa-envelope"></i>',
+        help_text: "Email Auth/EPP Code"
+    },
+    {
+        label: "Lock / Unlock",
+        link: "view_domain?id=592337&link=lock",
+        image: '<i class="fa fa-lock"></i>',
+        help_text: "Lock / Unlock Domain"
+    }
+]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {
+        order: {
+            _OPS_version: "0.9",
+            protocol: "XCP",
+            is_success: "1",
+            action: "REPLY",
+            attributes: { id: "311873405", admin_email: "realperson@mydomain.com" },
+            response_text: "Order created",
+            object: "DOMAIN",
+            response_code: "200"
+        },
+        order_id: "311873405",
+        vps_id: "65006148",
+        provProcessPending: {
+            _OPS_version: "0.9",
+            response_text: "Domain registration successfully completed.",
+            protocol: "XCP",
+            response_code: "200",
+            action: "REPLY",
+            object: "DOMAIN",
+            is_success: "1",
+            attributes: {
+                id: "65006148",
+                order_id: "311873405",
+                "registration expiration date": "2023-08-14 00:59:38",
+                f_auto_renew: "N"
+            }
+        },
+        email: "realperson@mydomain.com",
+        firstname: "Real",
+        lastname: "Person",
+        company: "InterServer Secaucus",
+        address: "91 Mullberry St.",
+        address2: "",
+        address3: "",
+        city: "Area 51",
+        state: "PA",
+        zip: "00001",
+        country: "US",
+        phone: "8675309",
+        fax: ""
+    }
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({
+    order: {
+        _OPS_version: "0.9",
+        protocol: "XCP",
+        is_success: "1",
+        action: "REPLY",
+        attributes: { id: "311873405", admin_email: "realperson@mydomain.com" },
+        response_text: "Order created",
+        object: "DOMAIN",
+        response_code: "200"
+    },
+    order_id: "311873405",
+    vps_id: "65006148",
+    provProcessPending: {
+        _OPS_version: "0.9",
+        response_text: "Domain registration successfully completed.",
+        protocol: "XCP",
+        response_code: "200",
+        action: "REPLY",
+        object: "DOMAIN",
+        is_success: "1",
+        attributes: {
+            id: "65006148",
+            order_id: "311873405",
+            "registration expiration date": "2023-08-14 00:59:38",
+            f_auto_renew: "N"
+        }
+    },
+    email: "realperson@mydomain.com",
+    firstname: "Real",
+    lastname: "Person",
+    company: "InterServer Secaucus",
+    address: "91 Mullberry St.",
+    address2: "",
+    address3: "",
+    city: "Area 51",
+    state: "PA",
+    zip: "00001",
+    country: "US",
+    phone: "8675309",
+    fax: ""
+});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev Domain Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "domains"
+});
+const contact_details = ref({
+    postal_code: "00001",
+    fax: "",
+    status: "active",
+    first_name: "Real",
+    address1: "91 Mullberry St.",
+    state: "PA",
+    address3: "",
+    phone: "8675309",
+    city: "Area 51",
+    email: "realperson@mydomain.com",
+    org_name: "InterServer Secaucus",
+    country: "US",
+    address2: "",
+    last_name: "Person"
+});
+const errors = ref(false);
+const vps_logs = ref([]);
+
+const loadVps = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_vps?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadVps(id, serviceType, settings, serviceInfo)
 </script>
 
 <template>
@@ -7,7 +246,7 @@
     <div class="small-box bg-secondary">
       <div class="inner pt-3 pb-1 px-3">
         <h3>Package</h3>
-        <p class="py-2 m-0">OpenVZ VPS Slice (Ubuntu 8 Slices)</p>
+        <p class="py-2 m-0">{{ serviceType.services_name }} (Ubuntu {{ serviceInfo.vps_slices }} Slices)</p>
         <p>Next Invoice Date: <b>May 12, 2023</b>
         </p>
       </div>
@@ -29,7 +268,7 @@
       <div class="icon">
         <i class="fas fa-dollar-sign"></i>
       </div>
-      <span class="small-box-footer">VPS Status is: <b>Active</b></span>
+      <span class="small-box-footer">VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span>
     </div>
   </div>
   <div class="col-md-4">
@@ -37,14 +276,14 @@
       <div class="inner pt-3 pb-2 px-3">
         <h3>Host Server: <b>IntVPS3</b></h3>
         <p class="py-3 my-3">
-          IP is: <b>66.45.240.202</b>
+          IP is: <b>{{ serviceInfo.vps_ip }}</b>
         </p>
       </div>
       <div class="icon">
         <i class="fas fa-info-circle"></i>
       </div>
       <span class="small-box-footer">
-        Vzid: <b>43773</b>
+        Vzid: <b>{{ serviceInfo.vps_vzid }}</b>
       </span>
     </div>
   </div>
@@ -65,15 +304,13 @@
         <div class="row">
           <div class="col-md-12">
             <h5 class="text-md m-0 p-2 text-center">
-              Power Status is: <span class="text-bold text-capitalize text-bold
-                                                            text-success">
-                running</span>
+              Power Status is: <span class="text-bold text-capitalize text-bold text-success">{{ serviceInfo.vps_server_status }}</span>
             </h5>
           </div>
           <div class="col-md-12 text-center pt-2 pr-4 mr-3">
             <div class="btn-group">
-              <button type="button" class="btn                                 btn-success">Select Action</button>
-              <button type="button" class="btn                                 btn-success dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+              <button type="button" class="btn btn-success">Select Action</button>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu" role="menu">
@@ -89,7 +326,7 @@
             <span class="info-box-text">
               <hr>
               <h5 class="text-center mt-5">
-                Comment: Mirror and Proxy Server (Apt/Rpm/Cygwin/etc) <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i>
+                Comment: {{ serviceInfo.vps_comment }} <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i>
                 </span>
               </h5>
             </span>
@@ -441,13 +678,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <input type="hidden" name="id" value="43773">
+          <input type="hidden" name="id" value="{{ serviceInfo.vps_id }}">
           <input type="hidden" name="link" value="update_comment">
           <input type="hidden" name="csrf_token" value="6bc7c6cb18cf66d5fbdc4b227f4bb6995626e467cc4a6d2e021edc11fa3bc0949a67113892572d91efbf5ae243f9cb5fb08b0947d8230a420e66c069d8d5fe31">
           <input type="hidden" name="edit_comment" value="2">
           <div class="form-group">
             <label for="message-text" class="col-form-label">Comment:</label>
-            <textarea class="form-control" id="message-text" rows="5" name="vps_comment"> Mirror and Proxy Server (Apt/Rpm/Cygwin/etc)</textarea>
+            <textarea class="form-control" id="message-text" rows="5" name="vps_comment"> {{ serviceInfo.vps_comment }}</textarea>
           </div>
         </div>
         <div class="modal-footer">
