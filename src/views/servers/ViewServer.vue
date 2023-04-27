@@ -1,5 +1,107 @@
 <script setup>
-import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View Server');
+layoutStore.setBreadcrums({'home': 'Home', 'Servers': 'Servers'})
+layoutStore.addBreadcrum('server/'+id, 'View Server '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "server.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "Server Registrations",
+    MENUNAME: "Servers",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Servers",
+    TABLE: "Servers",
+    TITLE_FIELD: "server_hostname",
+    PREFIX: "server"
+});
+const serviceInfo = ref({
+    server_id: "592337",
+    server_hostname: "detain.dev",
+    server_username: "detaindev",
+    server_password: "12315688fgfasghs",
+    server_type: "10673",
+    server_currency: "USD",
+    server_expire_date: "2023-08-14 00:59:38",
+    server_order_date: "2022-08-13 20:58:58",
+    server_custid: "2773",
+    server_status: "active",
+    server_invoice: "19917286",
+    server_coupon: "0",
+    server_firstname: "Real",
+    server_lastname: "Person",
+    server_email: "realperson@myserver.com",
+    server_address: "91 Mullberry St.",
+    server_address2: "",
+    server_address3: "",
+    server_city: "Area 51",
+    server_state: "PA",
+    server_zip: "00001",
+    server_country: "US",
+    server_phone: "8675309",
+    server_fax: "",
+    server_company: "InterServer Secaucus",
+});
+const client_links = ref([]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {}
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev Server Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "Servers"
+});
+const errors = ref(false);
+
+const loadServer = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_server?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadServer(id, serviceType, settings, serviceInfo)
 
 const filteredSwitchports = computed(() => {
   if (

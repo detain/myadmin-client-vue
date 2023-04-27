@@ -1,15 +1,109 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View Mail');
+layoutStore.setBreadcrums({'home': 'Home', 'Mail': 'Mail'})
+layoutStore.addBreadcrum('mail/'+id, 'View Mail '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "mail.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "Mail Registrations",
+    MENUNAME: "Mail",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Mail",
+    TABLE: "Mail",
+    TITLE_FIELD: "mail_hostname",
+    PREFIX: "mail"
+});
+const serviceInfo = ref({
+    mail_id: "592337",
+    mail_hostname: "detain.dev",
+    mail_username: "detaindev",
+    mail_password: "12315688fgfasghs",
+    mail_type: "10673",
+    mail_currency: "USD",
+    mail_expire_date: "2023-08-14 00:59:38",
+    mail_order_date: "2022-08-13 20:58:58",
+    mail_custid: "2773",
+    mail_status: "active",
+    mail_invoice: "19917286",
+    mail_coupon: "0",
+    mail_firstname: "Real",
+    mail_lastname: "Person",
+    mail_email: "realperson@mymail.com",
+    mail_address: "91 Mullberry St.",
+    mail_address2: "",
+    mail_address3: "",
+    mail_city: "Area 51",
+    mail_state: "PA",
+    mail_zip: "00001",
+    mail_country: "US",
+    mail_phone: "8675309",
+    mail_fax: "",
+    mail_company: "InterServer Secaucus",
+});
+const client_links = ref([]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {}
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev Mail Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "Mail"
+});
+const errors = ref(false);
+
+const loadMail = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_mail?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadMail(id, serviceType, settings, serviceInfo)
 
 const pkg = ref(''); // set your package value here
-const billingDetails = ref({}); // set your billingDetails object here
-const serviceInfo = ref({}); // set your serviceInfo object here
-const settings = ref({ TITLE_FIELD: 'titleField', PREFIX: 'prefix' }); // set your settings object here
-const client_links = ref([]); // add client_links data here
-const extraInfoTables = ref({
-    mail: { rows: [] }, // add mail data here
-    tutorials: { rows: [] } // add tutorials data here
-});
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
   const statusValue = serviceInfo.value[status.value];

@@ -1,5 +1,107 @@
 <script setup>
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View Qs');
+layoutStore.setBreadcrums({'home': 'Home', 'Rapid Deploy Servers': 'Rapid Deploy Servers'})
+layoutStore.addBreadcrum('qs/'+id, 'View Qs '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "qs.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "Qs Registrations",
+    MENUNAME: "Rapid Deploy Servers",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Rapid Deploy Servers",
+    TABLE: "Rapid Deploy Servers",
+    TITLE_FIELD: "qs_hostname",
+    PREFIX: "qs"
+});
+const serviceInfo = ref({
+    qs_id: "592337",
+    qs_hostname: "detain.dev",
+    qs_username: "detaindev",
+    qs_password: "12315688fgfasghs",
+    qs_type: "10673",
+    qs_currency: "USD",
+    qs_expire_date: "2023-08-14 00:59:38",
+    qs_order_date: "2022-08-13 20:58:58",
+    qs_custid: "2773",
+    qs_status: "active",
+    qs_invoice: "19917286",
+    qs_coupon: "0",
+    qs_firstname: "Real",
+    qs_lastname: "Person",
+    qs_email: "realperson@myqs.com",
+    qs_address: "91 Mullberry St.",
+    qs_address2: "",
+    qs_address3: "",
+    qs_city: "Area 51",
+    qs_state: "PA",
+    qs_zip: "00001",
+    qs_country: "US",
+    qs_phone: "8675309",
+    qs_fax: "",
+    qs_company: "InterServer Secaucus",
+});
+const client_links = ref([]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {}
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev Qs Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "Rapid Deploy Servers"
+});
+const errors = ref(false);
+
+const loadQs = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_qs?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadQs(id, serviceType, settings, serviceInfo)
 
 const isCollapsed = ref(false);
 

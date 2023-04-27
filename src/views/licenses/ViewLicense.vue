@@ -1,4 +1,107 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View License');
+layoutStore.setBreadcrums({'home': 'Home', 'Licenses': 'Licenses'})
+layoutStore.addBreadcrum('license/'+id, 'View License '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "license.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "License Registrations",
+    MENUNAME: "Licenses",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Licenses",
+    TABLE: "Licenses",
+    TITLE_FIELD: "license_hostname",
+    PREFIX: "license"
+});
+const serviceInfo = ref({
+    license_id: "592337",
+    license_hostname: "detain.dev",
+    license_username: "detaindev",
+    license_password: "12315688fgfasghs",
+    license_type: "10673",
+    license_currency: "USD",
+    license_expire_date: "2023-08-14 00:59:38",
+    license_order_date: "2022-08-13 20:58:58",
+    license_custid: "2773",
+    license_status: "active",
+    license_invoice: "19917286",
+    license_coupon: "0",
+    license_firstname: "Real",
+    license_lastname: "Person",
+    license_email: "realperson@mylicense.com",
+    license_address: "91 Mullberry St.",
+    license_address2: "",
+    license_address3: "",
+    license_city: "Area 51",
+    license_state: "PA",
+    license_zip: "00001",
+    license_country: "US",
+    license_phone: "8675309",
+    license_fax: "",
+    license_company: "InterServer Secaucus",
+});
+const client_links = ref([]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {}
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev License Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "Licenses"
+});
+const errors = ref(false);
+
+const loadLicense = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_license?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadLicense(id, serviceType, settings, serviceInfo)
 </script>
 
 <template>

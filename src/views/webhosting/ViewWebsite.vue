@@ -1,4 +1,107 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+
+const layoutStore = useLayoutStore();
+const route = useRoute();
+const id = route.params.id;
+layoutStore.setPageHeading('View Website');
+layoutStore.setBreadcrums({'home': 'Home', 'Websites': 'Websites'})
+layoutStore.addBreadcrum('website/'+id, 'View Website '+id);
+
+const settings = ref({
+    SERVICE_ID_OFFSET: 10000,
+    USE_REPEAT_INVOICE: true,
+    USE_PACKAGES: true,
+    BILLING_DAYS_OFFSET: 45,
+    IMGNAME: "website.png",
+    REPEAT_BILLING_METHOD: 2,
+    DELETE_PENDING_DAYS: 45,
+    SUSPEND_DAYS: 14,
+    SUSPEND_WARNING_DAYS: 7,
+    TITLE: "Website Registrations",
+    MENUNAME: "Websites",
+    EMAIL_FROM: "support@interserver.net",
+    TBLNAME: "Websites",
+    TABLE: "Websites",
+    TITLE_FIELD: "website_hostname",
+    PREFIX: "website"
+});
+const serviceInfo = ref({
+    website_id: "592337",
+    website_hostname: "detain.dev",
+    website_username: "detaindev",
+    website_password: "12315688fgfasghs",
+    website_type: "10673",
+    website_currency: "USD",
+    website_expire_date: "2023-08-14 00:59:38",
+    website_order_date: "2022-08-13 20:58:58",
+    website_custid: "2773",
+    website_status: "active",
+    website_invoice: "19917286",
+    website_coupon: "0",
+    website_firstname: "Real",
+    website_lastname: "Person",
+    website_email: "realperson@mywebsite.com",
+    website_address: "91 Mullberry St.",
+    website_address2: "",
+    website_address3: "",
+    website_city: "Area 51",
+    website_state: "PA",
+    website_zip: "00001",
+    website_country: "US",
+    website_phone: "8675309",
+    website_fax: "",
+    website_company: "InterServer Secaucus",
+});
+const client_links = ref([]);
+const billingDetails = ref({
+    service_last_invoice_date: "August 13, 2022",
+    service_payment_status: "Paid",
+    service_frequency: "Yearly",
+    next_date: "2023-08-14 00:59:38",
+    service_next_invoice_date: "August 14, 2023",
+    service_currency: "USD",
+    service_currency_symbol: "$",
+    service_cost_info: "18.00",
+    service_extra: {}
+});
+const custCurrency = ref("USD");
+const custCurrencySymbol = ref("$");
+const serviceExtra = ref({});
+const extraInfoTables = ref([]);
+const serviceType = ref({
+    services_id: "10673",
+    services_name: ".dev Website Name Registration",
+    services_cost: "18.00",
+    services_category: "100",
+    services_ourcost: "15.00",
+    services_buyable: "1",
+    services_type: "100",
+    services_field1: ".dev",
+    services_field2: "",
+    services_module: "Websites"
+});
+const errors = ref(false);
+
+const loadWebsite = async (id, serviceType, settings, serviceInfo) => {
+    try {
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_website?id=' + id);
+        console.log('api success');
+        console.log(response);
+        serviceType.value = response.serviceType;
+        serviceInfo.value = response.serviceInfo;
+        settings.value = response.settings;
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadWebsite(id, serviceType, settings, serviceInfo)
 </script>
 
 <template>

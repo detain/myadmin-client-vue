@@ -216,7 +216,7 @@ function isEmpty(table) {
 
 function docReady() {
   $('[data-toggle="tooltip"]').tooltip();
-  const service_id = serviceInfo.vps_id;
+  const service_id = serviceInfo.value.vps_id;
   $('.img-a').on('click', function () {
     const cp = $(this).attr('data-cp');
     if (cp === 'cp') {
