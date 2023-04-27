@@ -4,6 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -223,6 +224,90 @@ const contact_details = ref({
 const errors = ref(false);
 const vps_logs = ref([]);
 
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function getDiskClass() {
+  if (this.disk_percentage <= 80) {
+    return 'bg-gradient-blue';
+  } else if (80 > this.disk_percentage && this.disk_percentage <= 90) {
+    return 'bg-gradient-yellow';
+  } else {
+    return 'bg-gradient-red';
+  }
+}
+
+const openCommentForm = () => {
+    $('#commentForm').modal('show');
+};
+
+const numberFormat = (value, decimals = 2, separator = '.') => {
+  if (!value) return '0.00';
+  const number = parseFloat(value);
+  const sign = number < 0 ? '-' : '';
+  const strNumber = Math.abs(number).toFixed(decimals);
+  const parts = strNumber.split('.');
+  const integerPart = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${separator}`);
+  const decimalPart = parts.length > 1 ? separator + parts[1] : '';
+  return `${sign}${integerPart}${decimalPart}`;
+};
+
+const webuzoTableExists = computed(() => {
+  return (
+    props.extraInfoTables.hasOwnProperty('webuzo') &&
+    !isEmpty(props.extraInfoTables.webuzo)
+  );
+});
+
+const addonsTableExists = computed(() => {
+  return (
+    props.extraInfoTables.hasOwnProperty('addons') &&
+    !isEmpty(props.extraInfoTables.addons)
+  );
+});
+
+function isEmpty(table) {
+  return table === null || table === undefined || table.rows.length === 0;
+}
+
+function docReady() {
+  $('[data-toggle="tooltip"]').tooltip();
+  const service_id = serviceInfo.vps_id;
+  $('.img-a').on('click', function () {
+    const cp = $(this).attr('data-cp');
+    if (cp === 'cp') {
+      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
+      $("#cp-name").text($(this).attr('data-name'));
+      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+    } else if (cp === 'da') {
+      const lic_cost_type = $(this).attr('data-ser');
+      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
+      $("#cp-name").text($(this).attr('data-name'));
+      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+    } else if (cp === 'pp') {
+      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
+      $("#cp-name").text($(this).attr('data-name'));
+      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+    } else if (cp === 'rs') {
+      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
+      $("#cp-name").text($(this).attr('data-name'));
+      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+    }
+  });
+}
+
+function toggleFunc(cp) {
+  if (cp === 'cp') {
+    $("#warning-text").html("cPanel is not supported by your operating system. To use this control panel you should reinstall <b>\"CentOS 7 Cpanel\" or \"CentOS\"</b> operating system.");
+  } else if (cp === 'da') {
+    $("#warning-text").html("Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>\"Linux\"</b> operating system.");
+  } else if (cp === 'pp') {
+    $("#warning-text").html("Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>\"Windows\"</b> operating system.");
+  }
+  $(".toggleTr").show();
+}
+
 const loadVps = async (id, serviceType, settings, serviceInfo) => {
     try {
         const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_vps?id=' + id);
@@ -246,35 +331,45 @@ loadVps(id, serviceType, settings, serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-2 m-0">{{ serviceType.services_name }} (Ubuntu {{ serviceInfo.vps_slices }} Slices)</p>
-                    <p>Next Invoice Date: <b>May 12, 2023</b>
-                    </p>
+                    <p class="py-2 m-0">{{ package }}</p>
+                    <template v-if="billingDetails.service_next_invoice_date">
+                        <p>Next Invoice Date:
+                            <b>{{ billingDetails.service_next_invoice_date }}</b>
+                        </p>
+                    </template>
                 </div>
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">repo.interserver.net</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo.vps_hostname }}</span>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-success">
+            <div :class="{
+        'small-box': true,
+        'bg-success': serviceInfo.vps_status === 'active',
+        'bg-warning text-white': serviceInfo.vps_status === 'pending',
+        'bg-danger': serviceInfo.vps_status !== 'active' && serviceInfo.vps_status !== 'pending'
+      }">
                 <div class="inner pt-3 pb-2 px-3">
                     <h3>Billing</h3>
                     <p class="py-3 my-3">
-                        <b>$0.00</b>
-                        billed <b>Monthly</b><br>
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
+                        billed
+                        <b>{{ billingDetails.service_frequency }}</b><br>
                     </p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer">VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span>
+                <span class="small-box-footer">VPS Status is:
+                    <b>{{ serviceInfo.vps_status | capitalize }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="small-box bg-info">
                 <div class="inner pt-3 pb-2 px-3">
-                    <h3>Host Server: <b>IntVPS3</b></h3>
+                    <h3>Host Server: <b>{{ serviceMaster.vps_name }}</b></h3>
                     <p class="py-3 my-3">
                         IP is: <b>{{ serviceInfo.vps_ip }}</b>
                     </p>
@@ -288,407 +383,559 @@ loadVps(id, serviceType, settings, serviceInfo)
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;VPS Information</h3>
-                        <div class="card-tools float-right pt-1 pl-3">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" style="height: 270px;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="text-md m-0 p-2 text-center">
-                                Power Status is: <span class="text-bold text-capitalize text-bold text-success">{{ serviceInfo.vps_server_status }}</span>
-                            </h5>
-                        </div>
-                        <div class="col-md-12 text-center pt-2 pr-4 mr-3">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success">Select Action</button>
-                                <button type="button" class="btn btn-success dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" href="view_vps?id=43773&link=queue&action=start">Start</a>
-                                    <a class="dropdown-item" href="view_vps?id=43773&link=queue&action=restart">Restart</a>
-                                    <a class="dropdown-item" href="view_vps?id=43773&link=queue&action=stop">Stop</a>
-                                </div>
+    <div v-if="link_display" class="row">
+        <div class="col">
+            {{ link_display }}
+        </div>
+    </div>
+    <template v-else>
+        <div class="row">
+            <div v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;VPS Information</h3>
+                            <div class="card-tools float-right pt-1 pl-3">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 py-2">
-                            <span class="info-box-text">
-                                <hr>
-                                <h5 class="text-center mt-5">
-                                    Comment: {{ serviceInfo.vps_comment }} <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i>
-                                    </span>
+                    <div class="card-body" style="height: 270px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-md m-0 p-2 text-center">
+                                    Power Status is:
+                                    <span :class="{
+              'text-success': serviceInfo.vps_server_status === 'running',
+              'text-warning':
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
+              'text-danger':
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
+              'text-info': !(
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
+              )
+            }">{{ serviceInfo.vps_server_status }}</span>
                                 </h5>
-                            </span>
+                            </div>
+                            <div class="col-md-12 text-center pt-2 pr-4 mr-3">
+                                <div class="btn-group">
+                                    <button type="button" :class="{
+              'btn-success': serviceInfo.vps_server_status === 'running',
+              'btn-warning':
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
+              'btn-danger':
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
+              'btn-info': !(
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
+              )
+            }">Select Action</button>
+                                    <button type="button" :class="{
+              'btn-success': serviceInfo.vps_server_status === 'running',
+              'btn-warning':
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
+              'btn-danger':
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
+              'btn-info': !(
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
+              )
+            }" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=start'">Start</a>
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=restart'">Restart</a>
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=stop'">Stop</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 py-2">
+                                <span class="info-box-text">
+                                    <hr>
+                                    <h5 class="text-center mt-5">Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span @click="openCommentForm()" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i></span></h5>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="service_disk_total" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-hdd">&nbsp;</i>&nbsp;Disk</h3>
+                            <div class="card-tools float-right pt-1 pl-3">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0" style="height: 270px;">
+                        <div class="row">
+                            <div class="col-md-12 py-3 mb-1">
+                                <table class="table table-bordered my-3">
+                                    <tr>
+                                        <td class="text-muted text-bold">Total Space:</td>
+                                        <td class="text-bold text-capitalize">{{ service_disk_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">Used Space:</td>
+                                        <td class="text-bold text-capitalize">{{ service_disk_used }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">Remaining Space:</td>
+                                        <td class="text-bold text-capitalize">
+                                            {{ parseFloat(service_disk_total) - parseFloat(service_disk_used) }} GB
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 75%;">
+                                            <div id="info-progress-lg" class="progress progress-sm mt-2">
+                                                <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-bold text-capitalize text-md" style="vertical-align: middle;">
+                                            {{ disk_percentage }}%
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="osTemplate">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-microchip">&nbsp;</i>&nbsp;System Information</h3>
+                            <div class="card-tools float-right pt-1 pl-3">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0" style="height: 270px;">
+                        <div class="row">
+                            <div class="col-md-12 py-3 mb-1">
+                                <table class="table table-bordered my-3">
+                                    <tr class="col">
+                                        <td class="text-muted text-bold">Memory:</td>
+                                        <td class="text-bold text-capitalize">{{ memory }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">Disk Drive:</td>
+                                        <td class="text-bold text-capitalize">{{ hdd }}</td>
+                                    </tr>
+                                    <tr class="col">
+                                        <td class="text-muted text-bold">CPU Cores:</td>
+                                        <td class="text-bold text-capitalize">{{ serviceInfo.vps_slices }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">OS:</td>
+                                        <td class="text-bold text-capitalize">{{ osTemplate }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i> Links</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div v-for="client_link in clientLinks" :key="client_link.link">
+                            <template v-if="client_link.label != 'View Desktop'">
+                                <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-bind="client_link.other_attr">{{ client_link.image }}{{ client_link.label }}</a>
+                            </template>
+                            <template v-else>
+                                <button class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" v-bind="client_link.other_attr" @click="openPopUp">{{ client_link.image }}{{ client_link.label }}</button>
+                            </template>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-hdd">&nbsp;</i>&nbsp;Disk</h3>
-                        <div class="card-tools float-right pt-1 pl-3">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-                            </button>
+    </template>
+
+    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
+        <template v-if="cp_link || da_link || sr_link || pp_link">
+            <div class="col-md-12 px-0">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-dashboard"></i> &nbsp;Control Panel Add-on</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body pt-0" style="height: 270px;">
-                    <div class="row">
-                        <div class="col-md-12 py-3 mb-1">
-                            <table class="table table-bordered my-3">
-                                <tr>
-                                    <td class="text-muted text-bold">Total Space:</td>
-                                    <td class="text-bold text-capitalize">
-                                        236.11 GB </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-muted text-bold">Used Space:</td>
-                                    <td class="text-bold text-capitalize">
-                                        0.81 GB </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-muted text-bold">Remaining Space:</td>
-                                    <td class="text-bold text-capitalize">
-                                        235.3 GB </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%;">
-                                        <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                            <div class="progress-bar bg-gradient-blue
-                                                    " style="width: 0.34%">
+                    <div class="card-body">
+                        <div class="row toggleTr">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger">
+                                    <strong>Note:</strong>
+                                    <span id="warning-text"></span><br>
+                                    You can reinstall from left menu
+                                    <b>Maintanance -> Re-Install Operating System</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mr-1">
+                                <a v-if="cp_link" class="img-a" href="javascript:void(0);" @click="showCPModal">
+                                    <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                        <div class="col-md-12 py-3 mb-1">
+                                            <span class="text-center">
+                                                <h5 aria-hidden="true" class="text-bold">cPanel</h5>
+                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a v-else href="javascript:void(0);" class="img-a" @click="toggleCP">
+                                    <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                        <div class="col-md-12 py-2">
+                                            <span class="text-center">
+                                                <h5 aria-hidden="true" class="text-bold">cPanel</h5>
+                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
+                                                <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <template v-if="daLink">
+                                <div v-for="(daDetails, index) in daData" :key="index" class="col mr-1">
+                                    <a class="img-a" @click="openModal('da', daDetails.cost, daDetails.name, index)" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+                                        <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                            <div class="col-md-12 pb-2 pt-2">
+                                                <span class="text-center">
+                                                    <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
+                                                    <p class="text-sm my-1">( <span class="text-center font-italic">{{ daDetails.sub_name }}</span>)</p>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                </span>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td class="text-bold text-capitalize text-md" style="vertical-align: middle;">
-                                        0.34%
-                                    </td>
-                                </tr>
-                            </table>
+                                    </a>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div v-for="(daDetails, index) in daData" :key="index" class="col mr-1">
+                                    <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('da')">
+                                        <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                            <div class="col-md-12 pt-1">
+                                                <span class="text-center">
+                                                    <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
+                                                    <p class="text-sm m-0">( <span class="text-center font-italic">{{ daDetails.sub_name }}</span>)</p>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                    <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </template>
+                            <template v-if="sr_data">
+                                <template v-if="sr_link">
+                                    <div v-for="(rs_details, index) in sr_data" :key="index" class="col mr-1">
+                                        <a class="img-a" data-cp="rs" :data-cur-sym="custCurrencySymbol" :data-cost="rs_details.cost" :data-name="rs_details.name" :data-ser="index" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+                                            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                                <div class="col-md-12 py-3 mb-1">
+                                                    <span class="text-center">
+                                                        <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <div v-for="(rs_details, index) in sr_data" :key="index" class="col mr-1">
+                                        <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('sr')">
+                                            <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                                <div class="col-md-12 py-2">
+                                                    <span class="text-center">
+                                                        <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
+                                                        <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </template>
+                            </template>
+                            <template v-if="ppLink">
+                                <div v-for="(details, type) in plesk12Data" :key="type" class="col mr-1">
+                                    <a class="img-a" @click="showModal('pp', custCurrencySymbol, details.cost, details.name, details.id)" href="javascript:void(0);">
+                                        <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                            <div class="col-md-12 py-3 mb-1">
+                                                <span class="text-center">
+                                                    <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div v-for="(details, type) in plesk12Data" :key="type" class="col mr-1">
+                                    <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('pp');">
+                                        <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
+                                            <div class="col-md-12 py-2">
+                                                <span class="text-center">
+                                                    <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                    <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </template>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-microchip">&nbsp;</i>&nbsp;System Information </h3>
-                        <div class="card-tools float-right pt-1 pl-3">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
+            <div class="modal fade" id="cpModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Order Confirmation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$emit('close')">
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    </div>
-                </div>
-                <div class="card-body pt-0" style="height: 270px;">
-                    <div class="row">
-                        <div class="col-md-12 py-3 mb-1">
-                            <table class="table table-bordered my-3">
-                                <tr class="col">
-                                    <td class="text-muted text-bold">Memory:</td>
-                                    <td class="text-bold text-capitalize">
-                                        16 GB
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-muted text-bold">Disk Drive:</td>
-                                    <td class="text-bold text-capitalize">
-                                        240 GB
-                                    </td>
-                                </tr>
-                                <tr class="col">
-                                    <td class="text-muted text-bold">CPU Cores:</td>
-                                    <td class="text-bold text-capitalize">
-                                        8
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-muted text-bold">OS:</td>
-                                    <td class="text-bold text-capitalize">
-                                        Ubuntu 14.04
-                                    </td>
-                                </tr>
-                            </table>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-4 text-right">
+                                    <h5>Package</h5>
+                                </div>
+                                <div class="col text-left"><strong>
+                                        <h4 id="cp-name">{{ packageName }}</h4>
+                                    </strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-4 text-right">
+                                    <h5>Cost</h5>
+                                </div>
+                                <div class="col text-left"><strong>
+                                        <h4 id="cp-cost">{{ formattedCost }}/mo</h4>
+                                    </strong></div>
+                            </div>
+                            <div class="alert alert-warning">
+                                <strong>Note:</strong> Control panel needs to be installed on a clean OS install with no modifications. If there is any data it will be lost.
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <a id="cp-order-link" class="btn btn-primary btn-block" :href="orderLink">Place Order</a>
+                                </div>
+                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i> Links</h3>
-                        <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <a class="btn btn-app mb-3" title="Invoice History" href="view_vps?id=43773&link=invoices"><i class="fas fa-file-invoice-dollar fa-w-12"></i>Invoices</a>
-                    <a class="btn btn-app mb-3" title="Cancel VPS" href="view_vps?id=43773&link=cancel"><i class="fas fa-times"></i>Cancel VPS</a>
-                    <a class="btn btn-app mb-3" title="Reinstall Operating System" href="view_vps?id=43773&link=reinstall_os"><i class="fa fa-linux"></i>Reinstall OS</a>
-                    <a class="btn btn-app mb-3" title="Reverse DNS" href="view_vps?id=43773&link=reverse_dns"><i class="fa fa-atlas"></i>Reverse DNS</a>
-                    <a class="btn btn-app mb-3" title="Bandwith/Traffic Usage" href="view_vps?id=43773&link=traffic_usage"><i class="material-icons">speed</i>Bandwidth/Traffic Usage</a>
-                    <a class="btn btn-app mb-3" title="Setup VNC" href="view_vps?id=43773&link=queue&action=setup_vnc"><i class="fa fa-linux"></i>Setup VNC</a>
-                    <a class="btn btn-app mb-3" title="VPS Slice Upgrade/Downgrade" href="view_vps?id=43773&link=slices"><i class="fa fa-upload"></i>Up/Downgrade VPS Slices</a>
-                    <a class="btn btn-app mb-3" title="Purchase Additional IP Address" href="view_vps?id=43773&link=buy_ip"><i class="fa fa-map-marker-alt"></i>Buy IP</a>
-                    <a class="btn btn-app mb-3" title="Change Root Password of your vps" href="view_vps?id=43773&link=changeRootPassword"><i class="fa fa-key text-lg"></i>Change Root Password</a>
-                    <a class="btn btn-app mb-3" title="Purchase Additional HD Space" href="view_vps?id=43773&link=buy_hd_space"><i class="fa fa-server"></i>Buy HD Space</a>
-                    <a class="btn btn-app mb-3" title="Change System Hostname" href="view_vps?id=43773&link=changeHostname"><i class="material-icons">manage_accounts</i>Change System Hostname</a>
-                    <a class="btn btn-app mb-3" title="Enable Quotas" href="view_vps?link=queue&id=43773&action=enable_quota"><i class="material-icons">playlist_add_check</i>Enable Quotas</a>
-                    <a class="btn btn-app mb-3" title="Disable Quotas" href="view_vps?link=queue&id=43773&amp;action=disable_quota"><i class="material-icons">playlist_add</i>Disable Quotas</a>
-                    <button onclick="openPopUp()" class="btn btn-app mb-3" title="View Desktop"><i class="fa fa-tv"></i>View Desktop</button>
-                    <a class="btn btn-app mb-3" title="Backup VPS" href="view_vps?link=queue&id=43773&action=backup"><i class="material-icons">backup</i>Backup VPS</a>
-                    <a class="btn btn-app mb-3" title="Download/Manage Backups" href="view_vps?link=backups&id=43773"><i class="material-icons">cloud_download</i>Download/Manage Backups</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 px-0">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-dashboard"></i> &nbsp;Control Panel Add-on </h3>
-                        <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row toggleTr">
-                        <div class="col-md-12">
-                            <div class="alert alert-danger">
-                                <strong>Note:</strong>
-                                <span id="warning-text"></span><br>
-                                You can reinstall from left menu <b>Maintanance -&gt; Re-Install Operating System</b>
+        </template>
+        <div v-if="cpuGraphData" class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-chart-bar">&nbsp;</i>CPU Usage</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col mr-1">
-                            <a href="javascript:void(0);" class="img-a" onclick=" return toggleFunc('cp');">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 py-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                            <span class="text-sm">Starting From: <b></b>
-                                            </span>
-                                            <p class="text-sm m-0">
-                                                <span style="font-size: 12px;" class="text-red text-center">
-                                                    ( Not Supported )</span>
-                                            </p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col mr-1">
-                            <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="8" data-name="DirectAdmin Standard License for VPS" data-ser="0" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 pb-2 pt-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                                            <p class="text-sm my-1">
-                                                ( <span class="text-center font-italic">Standard License</span>
-                                                )
-                                            </p>
-                                            <span class="text-sm">Starting From: <b>$8.00/mo</b>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col mr-1">
-                            <a class="img-a" data-cp="da" data-cur-sym="$" data-cost="0" data-name="DirectAdmin Personal License for VPS" data-ser="free" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 pb-2 pt-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                                            <p class="text-sm my-1">
-                                                ( <span class="text-center font-italic">Personal License</span>
-                                                )
-                                            </p>
-                                            <span class="text-sm">Starting From: <b>$0.00/mo</b>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col mr-1">
-                            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 py-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold">PLESK Admin </h5>
-                                            <span class="text-sm">Starting From: <b>$12.00/mo</b>
-                                            </span>
-                                            <p class="text-sm m-0">
-                                                <span style="font-size: 12px;" class="text-red text-center">
-                                                    ( Not Supported )</span>
-                                            </p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col mr-1">
-                            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 py-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold">PLESK Pro </h5>
-                                            <span class="text-sm">Starting From: <b>$19.00/mo</b>
-                                            </span>
-                                            <p class="text-sm m-0">
-                                                <span style="font-size: 12px;" class="text-red text-center">
-                                                    ( Not Supported )</span>
-                                            </p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col mr-1">
-                            <a class="img-a toggleClass" href="javascript:void(0);" onclick=" return toggleFunc('pp');">
-                                <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
-                                    <div class="col-md-12 py-2">
-                                        <span class="text-center">
-                                            <h5 aria-hidden="true" class="text-bold">PLESK Host </h5>
-                                            <span class="text-sm">Starting From: <b>$29.00/mo</b>
-                                            </span>
-                                            <p class="text-sm m-0">
-                                                <span style="font-size: 12px;" class="text-red text-center">
-                                                    ( Not Supported )</span>
-                                            </p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="card-body">
+                        <canvas id="myChart" width="400" height="100"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-plus">&nbsp;</i>Addons </h3>
-                        <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        <div class="row">
+            <div v-if="extraInfoTables.cp && extraInfoTables.cp.rows[2].value !== 'canceled'" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 v-if="extraInfoTables.cp.rows[0].value === 'cPanel Autoscale Cloud (Internal)'" class="card-title py-1">
+                            <i class="fab fa-cpanel text-orange pl-2 text-xl" style="border-radius: 50%;border: 2px solid #ccc;">&nbsp;</i>
+                            <span style="position: relative;top: -5px;">&nbsp;{{extraInfoTables.cp.title}}</span>
+                        </h3>
+                        <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Free DirectAdmin for CentOS 8 64-bit VPS' || extraInfoTables.cp.rows[0].value === 'DirectAdmin for Debian 8.0 64-bit'" class="card-title py-2 mt-1">
+                            <b class="text-black text-md px-2 py-1" style="border-radius: 50%;border: 1px solid #ccc;">D A</b>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
+                        </h3>
+                        <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Softaculous Remote'" class="card-title py-2 mt-1">
+                            <b class="text-blue text-md px-3 py-1 font-italic" style="border-radius: 50%;border: 1px solid #ccc;">Soft</b>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
+                        </h3>
+                        <h3 v-else class="card-title py-2 mt-1">
+                            <b class="text-dark text-md px-3 py-1 font-italic" style="border-radius: 50%;border: 1px solid #ccc;">Plesk</b>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
+                        </h3>
+                        <div class="card-tools float-right pt-1 pl-3">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                <div class="card-body" style="height: 370px;">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Item</th>
-                            <th>Value</th>
-                        </tr>
-                        <tr>
-                            <td class="text-muted text-bold">
-                                Additional HD Space </td>
-                            <td class="text-success">
-                                12,000 GB<a href="cancel_addon?module=vps&amp;r=19645797"><i class="fa fa-trash float-right pt-1 text-red"></i></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="cpModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Order Confirmation</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-4 text-right">
-                            <h5>Package</h5>
-                        </div>
-                        <div class="col text-left"><strong>
-                                <h4 id="cp-name">cPanel Autoscale (Internal)</h4>
-                            </strong></div>
+                    <div class="card-body" style="height: 370px;">
+                        <table class="table table-bordered">
+                            <tr v-for="itemvalue in extraInfoTables.cp.rows" :key="itemvalue.desc">
+                                <td class="text-muted text-bold text-capitalize">{{itemvalue.desc}}</td>
+                                <td class="text-bold text-capitalize">{{itemvalue.value}}</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-4 text-right">
-                            <h5>Cost</h5>
-                        </div>
-                        <div class="col text-left"><strong>
-                                <h4 id="cp-cost"> </h4>
-                            </strong></div>
-                    </div>
-                    <div class="alert alert-warning">
-                        <strong>Note:</strong> Control panel needs to be installed on a clean OS install with no modifications. If there is any data it will be lost.
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <a id="cp-order-link" class="btn btn-primary btn-block" href="view_vps?link=add_control_panel&id=43773&cp=cp">Place Order</a>
-                        </div>
-                    </div>
-                    <br>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-    </div>
+            <template v-if="webuzoTableExists">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="p-1">
+                                <h3 class="card-title py-2">
+                                    <i class="fa fa-tachometer-alt">&nbsp;</i>&nbsp;{{extraInfoTables.webuzo.title}}
+                                </h3>
+                                <div class="card-tools float-right">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr v-for="row in extraInfoTables.webuzo.rows" :key="row.desc">
+                                        <td class="text-muted text-bold" style="width: 50%;">Tickets {{row.desc}}</td>
+                                        <td class="text-muted text-xs">{{row.value}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-if="addonsTableExists">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="p-1">
+                                <h3 class="card-title py-2">
+                                    <i class="fa fa-plus">&nbsp;</i>{{extraInfoTables.addons.title}}
+                                </h3>
+                                <div class="card-tools float-right">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="height: 370px;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="row in extraInfoTables.addons.rows" :key="row.desc">
+                                        <td class="text-muted text-bold">{{row.desc}}</td>
+                                        <td class="text-success">{{row.value}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div v-if="extraInfoTables.note && extraInfoTables.note.rows.length">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="p-1">
+                                <h3 class="card-title py-2"><i class="fa fa-info-circle text-red">&nbsp;</i>Attention</h3>
+                                <div class="card-tools float-right pt-1 pl-3">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="height: 370px;">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>{{extraInfoTables.note.rows[0].value}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Modal -->
+        </div>
+    </template>
     <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form class="inline" method="post" action="view_vps?id=43773">
+                <form class="inline" method="post" @submit.prevent="onSubmit" action="#">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id" value="{{ serviceInfo.vps_id }}">
+                        <input type="hidden" name="id" :value="serviceInfo.vps_id">
                         <input type="hidden" name="link" value="update_comment">
-                        <input type="hidden" name="csrf_token" value="6bc7c6cb18cf66d5fbdc4b227f4bb6995626e467cc4a6d2e021edc11fa3bc0949a67113892572d91efbf5ae243f9cb5fb08b0947d8230a420e66c069d8d5fe31">
+                        <input type="hidden" name="csrf_token" :value="csrf">
                         <input type="hidden" name="edit_comment" value="2">
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="vps_comment"> {{ serviceInfo.vps_comment }}</textarea>
+                            <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
