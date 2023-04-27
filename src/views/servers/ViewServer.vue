@@ -1,169 +1,270 @@
 <script setup>
+import { computed } from 'vue';
+
+const filteredSwitchports = computed(() => {
+  if (
+    !props.networkInfo ||
+    !props.networkInfo.switchports ||
+    props.networkInfo.switchports.length === 0
+  ) {
+    return [];
+  }
+
+  return props.networkInfo.switchports.filter(
+    (switchport) => switchport.assetId === props.assetId && switchport.vlanId in props.asset.vlans
+  );
+});
+
+const vlans = computed(() => props.networkInfo.vlans || {});
+
+const ipv6VlansNetworks = computed(() => {
+  if (!props.networkInfo.vlans6 || props.networkInfo.vlans6.length === 0) {
+    return '<i>Null</i>';
+  }
+
+  return props.networkInfo.vlans6
+    .map((ipv6) => ipv6.vlans6Networks)
+    .join(',');
+});
 </script>
 
 <template>
-<div class="row my-4">
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-info">
-      <div class="inner pt-3 pb-1 px-3">
-        <h3>Package</h3>
-        <p>.dev Server Name Registration</p>
-        <p>Next Invoice Date: <b>August 14, 2023</b></p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-briefcase"></i>
-      </div>
-      <span class="small-box-footer">detain.dev</span>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-success">
-      <div class="inner pt-3 pb-1 px-3">
-        <h3>Billing</h3>
-        <p>
-          <b>$18.00</b>
-          billed <b>Yearly</b>
-        </p>
-        <p>
-          Expire Date: <b> August 14, 2023 </b>
-        </p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-dollar-sign"></i>
-      </div>
-      <span class="small-box-footer">Server Status: <b>Active</b></span>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-warning">
-      <div class="inner text-white pb-2 px-3 mb-1">
-        <h3>Whois Privacy</h3>
-        <p style="padding-top: 1.3rem;padding-bottom: 1rem;">
-          Whois Privacy is: <b class="text-md">Disabled</b>
-        </p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-user-secret"></i>
-      </div>
-      <span class="small-box-footer">
-        Status: <b>Disabled</b>
-        <a class="btn p-0 text-white text-sm pl-1" href="view_server?id=592337&link=whois" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i>
-        </a>
-      </span>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-link">&nbsp;</i> Links</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="small-box bg-secondary">
+                <div class="inner pt-3 pb-1 px-3">
+                    <h3>Package</h3>
+                    <p class="m-0">
+                        {{ package.value || 'Dedicated Server' }}
+                    </p>
+                    <p>
+                        Next Invoice Date: <b>
+                            {{ billingDetails.service_next_invoice_date || 'Un-billed' }}
+                        </b>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="small-box-footer text-bold">
+                    {{ serviceInfo[settings.TITLE_FIELD] }}
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body py-5 text-center my-4" style="height: auto;">
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=invoices"><i class="fas fa-file-invoice-dollar fa-w-12"></i>Invoices</a>
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=cancel"><i class="fas fa-times"></i>Cancel Servers</a>
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=renew"><i class="fa fa-hourglass"></i>Renew</a>
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=dnssec"><i class="fa fa-lock"></i>DNSSEC</a>
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=authepp"><i class="fa fa-envelope"></i>Email EPP Code</a>
-        <a class="btn btn-app b-radius" href="view_server?id=592337&link=lock"><i class="fa fa-lock"></i>Lock / Unlock</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <div class="p-1">
-          <h3 class="card-title pt-2"><i class="fas fa-globe">&nbsp;</i>Nameservers</h3>
-          <div class="card-tools float-right pt-1 pl-3">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_server?id=592337&link=nameservers" title="Edit NameServers">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-              Edit </a>
-          </div>
+        <div class="col-md-4">
+            {{ status = `${settings.PREFIX}_status` }}
+            <div :class="`small-box bg-${serviceInfo[status] === 'active' ? 'success' : serviceInfo[status] === 'pending' ? 'orange' : (serviceInfo[status] === 'expired' || serviceInfo[status] === 'canceled') ? 'red' : ''}`">
+                <div class="inner pt-3 pb-1 px-3">
+                    <h3>Billing</h3>
+                    <p class="py-3 my-2">
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
+                        billed: <b>{{ billingDetails.service_frequency }}</b>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <span class="small-box-footer">
+                    Status is: <b>{{ serviceInfo[status] | capitalize }}</b>
+                </span>
+            </div>
         </div>
-      </div>
-      <div class="card-body pt-0" style="height: 205px;">
-        <p>
-        <div class="row">
-          <div class="col-md-6 p-0">
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-          </div>
-          <div class="col-md-6 p-0">
-            <h5 class="nameserver_heading">cdns1.interserver.net</h5>
-            <h5 class="nameserver_heading">cdns2.interserver.net</h5>
-            <h5 class="nameserver_heading">cdns3.interserver.net</h5>
-          </div>
+        <div class="col-md-4">
+            <div class="small-box bg-info">
+                <div class="inner pt-3 pb-1 px-3">
+                    <h3>Order Info</h3>
+                    <p class="py-3 my-2">
+                        Order ID: <b>{{ serviceInfo.server_id }}</b>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+                <div class="small-box-footer">
+                    Ordered on: <b>{{ new Date(serviceInfo.server_date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) }}</b>
+                </div>
+            </div>
         </div>
-        </p>
-      </div>
     </div>
-  </div>
-</div>
-<div class="row my-2">
-  <div class="col-12 col-sm-6 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <div class="p-1">
-          <h3 class="card-title pt-2"><i class="fas fa-id-card">&nbsp;</i>Contact Information</h3>
-          <div class="card-tools float-right pt-1 pl-3">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_server?id=592337&link=contact" title="Edit Contact Information">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-              Edit </a>
-          </div>
+    <div v-if="link_display" class="row shadow-none">
+        <div class="col">{{ link_display }}</div>
+    </div>
+    <div v-if="!link_display || (link_function && link_function.includes('cancel'))" class="row justify-content-center">
+        <template v-if="ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;Server Information</h3>
+                            <div class="card-tools float-right pt-1 pl-3">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height: 270px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-md m-0 p-2 text-center">Power Status is: <span class="text-bold text-capitalize text-bold" :class="{ 'text-success': ipmiLease.power == true, 'text-danger': ipmiLease.power == false }">{{ ipmiLease.power ? 'On' : 'Off' }}</span></h5>
+                            </div>
+                            <div class="col-md-12 text-center pt-2 pr-4 mr-3">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 py-2">
+                                    <span class="info-box-text">
+                                        <hr>
+                                        <h5 class="text-center mt-5">
+                                            Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : '<span>none</span>' }}
+                                            <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i></span>
+                                        </h5>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <div :class="`${ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true ? 'col-md-8' : 'col-md-4'}`">
+            <div class="card">
+                <div class="card-header">
+                    <div class="p-1">
+                        <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
+                        <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <template v-for="(client_link, index) in clientLinks" :key="index">
+                        <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.image">
+                            <img :src="client_link.image" alt="Link image">
+                            {{ client_link.label }}
+                        </a>
+                        <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-else>
+                            {{ client_link.label }}
+                        </a>
+                    </template>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body pt-5" style="height: 250px;">
-        <p>
-          Name: Joe Huss <br>
-          Address: 221 Duke St. <br>
-          Ephrata, PA<br>
-          US - 17522<br>
-          Ph: <a href="tel:+1.2012308833"> +1.2012308833</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-newspaper">&nbsp;</i> Server Registry logs</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-          </button>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="p-1">
+                        <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>Server Information</h3>
+                        <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                    </div>
+                </div>
+                <div class="card-body" style="overflow: scroll;">
+                    <template v-if="assets && assets.length">
+                        <template v-for="(asset, index) in assets" :key="asset.id">
+                            <table class="table table-sm table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Hostname</th>
+                                    <th>Primary IP</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
+                                    <th>Rack</th>
+                                    <template v-if="ipmiAuth">
+                                        <th>Power</th>
+                                    </template>
+                                    <th>More Info</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ asset.id }}</td>
+                                    <td>{{ asset.hostname }}</td>
+                                    <td>{{ asset.primary_ipv4 }}</td>
+                                    <td>{{ serviceInfo.server_status.toUpperCase() }}</td>
+                                    <td>{{ locations[asset.datacenter].location_name }}</td>
+                                    <td>{{ asset.rack_name }}</td>
+                                    <template v-if="ipmiAuth">
+                                        <template v-if="asset.lease">
+                                            <template v-if="asset.lease.authenticated">
+                                                <td>
+                                                    {{ asset.lease.power ? 'On' : 'Off' }}<br>
+                                                    <div class="btn-group">
+                                                        <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">Select Action</button>
+                                                        <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger' + ' dropdown-toggle dropdown-hover dropdown-icon'" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + index + '&link=ipmi_power&action=cycle'">Cycle</a>
+                                                            <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + index + '&link=ipmi_power&action=reset'">Reset</a>
+                                                            <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + index + '&link=ipmi_power&action=on'">On</a>
+                                                            <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + index + '&link=ipmi_power&action=off'">Off</a>
+                                                            <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + index + '&link=ipmi_power&action=soft'">Soft Reboot</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </template>
+                                            <template v-else>
+                                                <td>Unknown</td>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <td>No Lease</td>
+                                        </template>
+                                    </template>
+                                    <td>{{ asset.description.replace(/\n/g, '<br>') }}</td>
+                                </tr>
+                            </table>
+                        </template>
+                    </template>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body" style="height:250px;margin: 0 auto;display: flex;align-items: center;">
-        <span class="text-secondary text-md">No server log found.</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-times">&nbsp;</i> Errors in Contact Info</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-          </button>
+        <div v-if="asset.vlans && asset.vlans.length && asset.switchports && asset.switchports.length" class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="p-1">
+                        <h3 class="card-title py-2">
+                            <i class="fa fa-sitemap">&nbsp;</i>Network Information
+                        </h3>
+                        <div class="card-tools float-right">
+                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="overflow: scroll;">
+                    <table class="table table-sm table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-3xl font-bold underline">Network</th>
+                                <th>Primary IP</th>
+                                <th>IPv6</th>
+                                <th>Netmask</th>
+                                <th>Gateway</th>
+                                <th>Hostmax</th>
+                                <th>Switch</th>
+                                <th>Port</th>
+                                <th>Is Primary?</th>
+                                <th>Bandwidth Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="switchport in filteredSwitchports" :key="switchport.id">
+                                <td>{{ vlans[switchport.vlanId].network }}</td>
+                                <td>{{ vlans[switchport.vlanId].firstUsable }}</td>
+                                <td v-if="switchport.vlanId === filteredSwitchports[0].vlanId" :rowspan="filteredSwitchports.length" :style="{ verticalAlign: filteredSwitchports.length > 1 ? 'middle' : 'inherit' }">
+                                    {{ ipv6VlansNetworks }}
+                                </td>
+                                <td>{{ vlans[switchport.vlanId].netmask }}</td>
+                                <td>{{ vlans[switchport.vlanId].gateway }}</td>
+                                <td>{{ vlans[switchport.vlanId].hostmax }}</td>
+                                <td>{{ switchport.switch }}</td>
+                                <td>{{ switchport.port }}</td>
+                                <td>{{ vlans[switchport.vlanId].primary ? 'Yes' : 'No' }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a :href="'/view_server?id=' + serviceInfo.serverId + '&link=bandwidth_graph&graph_id=' + switchport.graphId" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip">
+                                            <i class="fa fa-line-chart"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body" style="height:250px;margin: 0 auto;display: flex;align-items: center;">
-        <span class="text-success text-md">All good! no errors in Contact Information!</span>
-      </div>
     </div>
-  </div>
-</div>
 </template>
 
 <style scoped>

@@ -22,146 +22,145 @@ const statusClass = computed(() => {
 </script>
 
 <template>
-  <div class="row mt-2">
-    <div class="col-md-4">
-      <div class="small-box bg-secondary b-radius">
-        <div class="inner pt-3 pb-1 px-3">
-          <h3>Package</h3>
-          <p class="py-2 m-0">{{ pkg }}</p>
-          <p>
-            Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
-          </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-briefcase"></i>
-        </div>
-        <span class="small-box-footer text-bold">{{ serviceInfo[titleField] }}</span>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div :class="statusClass">
-        <div class="inner pt-3 pb-2 px-3">
-          <h3>Billing</h3>
-          <p class="py-3 my-3">
-            <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
-            billed: <b>{{ billingDetails.service_frequency }}</b>
-          </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-dollar-sign"></i>
-        </div>
-        <span class="small-box-footer">Mail Status is: <b>{{ status }}</b></span>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="small-box bg-danger b-radius">
-        <div class="inner pt-3 pb-2 px-3">
-          <h3>Mail API</h3>
-          <p class="py-3 my-3">
-            For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-white text-bold">Click Here</a>
-          </p>
-        </div>
-        <div class="icon">
-          <i class="material-icons">api</i>
-        </div>
-        <span class="small-box-footer">
-          For API Key: <a class="text-white text-bold" target="_blank" href="account_settings">Account Settings</a>
-        </span>
-      </div>
-    </div>
-  </div>
-  <template v-if="link_display">
-   <div v-if="link_display" class="row shadow-none">
-      <div class="col-md-12">{{ link_display }}</div>
-    </div>
-  </template>
-    <template v-else>
-    <div>
-      <div class="col-md-12">
-        <blockquote style="border-left: 0.4rem solid dimgray;height: 70px;padding-top: 20px;box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);" class="pl-4 mx-0">
-          <p style="font-size: 20px;vertical-align: middle;"><i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong></p>
-        </blockquote>
-      </div>
-    </div>
-  <div class="row row-flex py-4">
-    <div class="col-md-5">
-      <div class="card">
-        <div class="card-header">
-          <div class="p-1">
-            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
-            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
-          </div>
-        </div>
-        <div class="card-body py-4 my-3">
-          <a v-for="client_link in client_links" :key="client_link.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{client_link.image}}{{client_link.label}}</a>
-        </div>
-      </div>
-    </div>
-    <div v-if="extraInfoTables.mail" class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <div class="p-1">
-            <h3 class="card-title py-2"><i class="fa fa-plug">&nbsp;</i>Connection Information</h3>
-            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered">
-            <tr v-for="itemvalue in extraInfoTables.mail.rows" :key="itemvalue.id">
-              <td>{{itemvalue.desc}}</td>
-              <td class="text-success">{{itemvalue.value}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div v-if="extraInfoTables.tutorials" class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          <div class="p-1">
-            <h3 class="card-title py-2"><i class="fa fa-video">&nbsp;</i>{{extraInfoTables.tutorials.title}}</h3>
-            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered">
-            <tr v-for="itemvalue in extraInfoTables.tutorials.rows" :key="itemvalue.id">
-              <td>{{itemvalue.desc}}</td>
-              <td class="text-success">{{itemvalue.value}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  </template>
-  <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-       aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.mail_id}`">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" name="id" :value="serviceInfo.mail_id">
-            <input type="hidden" name="link" value="update_comment">
-            <input type="hidden" name="csrf_token" :value="csrf">
-            <input type="hidden" name="edit_comment" value="2">
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Comment:</label>
-              <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="comment"></textarea>
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="small-box bg-secondary b-radius">
+                <div class="inner pt-3 pb-1 px-3">
+                    <h3>Package</h3>
+                    <p class="py-2 m-0">{{ pkg }}</p>
+                    <p>
+                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <span class="small-box-footer text-bold">{{ serviceInfo[titleField] }}</span>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
-            <button type="submit" class="btn btn-primary" @click.prevent="submitForm">Save changes</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="col-md-4">
+            <div :class="statusClass">
+                <div class="inner pt-3 pb-2 px-3">
+                    <h3>Billing</h3>
+                    <p class="py-3 my-3">
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
+                        billed: <b>{{ billingDetails.service_frequency }}</b>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <span class="small-box-footer">Mail Status is: <b>{{ status }}</b></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="small-box bg-danger b-radius">
+                <div class="inner pt-3 pb-2 px-3">
+                    <h3>Mail API</h3>
+                    <p class="py-3 my-3">
+                        For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-white text-bold">Click Here</a>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="material-icons">api</i>
+                </div>
+                <span class="small-box-footer">
+                    For API Key: <a class="text-white text-bold" target="_blank" href="account_settings">Account Settings</a>
+                </span>
+            </div>
+        </div>
     </div>
-  </div>
+    <template v-if="link_display">
+        <div v-if="link_display" class="row shadow-none">
+            <div class="col-md-12">{{ link_display }}</div>
+        </div>
+    </template>
+    <template v-else>
+        <div>
+            <div class="col-md-12">
+                <blockquote style="border-left: 0.4rem solid dimgray;height: 70px;padding-top: 20px;box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);" class="pl-4 mx-0">
+                    <p style="font-size: 20px;vertical-align: middle;"><i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong></p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="row row-flex py-4">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
+                            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="card-body py-4 my-3">
+                        <a v-for="client_link in client_links" :key="client_link.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{client_link.image}}{{client_link.label}}</a>
+                    </div>
+                </div>
+            </div>
+            <div v-if="extraInfoTables.mail" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-plug">&nbsp;</i>Connection Information</h3>
+                            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tr v-for="itemvalue in extraInfoTables.mail.rows" :key="itemvalue.id">
+                                <td>{{itemvalue.desc}}</td>
+                                <td class="text-success">{{itemvalue.value}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div v-if="extraInfoTables.tutorials" class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-video">&nbsp;</i>{{extraInfoTables.tutorials.title}}</h3>
+                            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tr v-for="itemvalue in extraInfoTables.tutorials.rows" :key="itemvalue.id">
+                                <td>{{itemvalue.desc}}</td>
+                                <td class="text-success">{{itemvalue.value}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.mail_id}`">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" :value="serviceInfo.mail_id">
+                        <input type="hidden" name="link" value="update_comment">
+                        <input type="hidden" name="csrf_token" :value="csrf">
+                        <input type="hidden" name="edit_comment" value="2">
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Comment:</label>
+                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                        <button type="submit" class="btn btn-primary" @click.prevent="submitForm">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>

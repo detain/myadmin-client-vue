@@ -1,169 +1,388 @@
 <script setup>
+import { ref } from 'vue';
+
+const isCollapsed = ref(false);
+
+const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.serviceMaster.qs_hdsize) * 100);
 </script>
 
 <template>
-<div class="row my-4">
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-info">
-      <div class="inner pt-3 pb-1 px-3">
-        <h3>Package</h3>
-        <p>.dev Qs Name Registration</p>
-        <p>Next Invoice Date: <b>August 14, 2023</b></p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-briefcase"></i>
-      </div>
-      <span class="small-box-footer">detain.dev</span>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-success">
-      <div class="inner pt-3 pb-1 px-3">
-        <h3>Billing</h3>
-        <p>
-          <b>$18.00</b>
-          billed <b>Yearly</b>
-        </p>
-        <p>
-          Expire Date: <b> August 14, 2023 </b>
-        </p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-dollar-sign"></i>
-      </div>
-      <span class="small-box-footer">Qs Status: <b>Active</b></span>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-warning">
-      <div class="inner text-white pb-2 px-3 mb-1">
-        <h3>Whois Privacy</h3>
-        <p style="padding-top: 1.3rem;padding-bottom: 1rem;">
-          Whois Privacy is: <b class="text-md">Disabled</b>
-        </p>
-      </div>
-      <div class="icon">
-        <i class="fas fa-user-secret"></i>
-      </div>
-      <span class="small-box-footer">
-        Status: <b>Disabled</b>
-        <a class="btn p-0 text-white text-sm pl-1" href="view_qs?id=592337&link=whois" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i>
-        </a>
-      </span>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-link">&nbsp;</i> Links</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="small-box bg-secondary">
+                <div class="inner pt-2 pb-1 px-3">
+                    <h3>Package</h3>
+                    <p class="py-1 m-0">{{ package }}</p>
+                    <p class="m-0">Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="small-box-footer">
+                    <b>{{ serviceInfo.qs_hostname }}</b>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body py-5 text-center my-4" style="height: auto;">
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=invoices"><i class="fas fa-file-invoice-dollar fa-w-12"></i>Invoices</a>
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=cancel"><i class="fas fa-times"></i>Cancel Quickservers</a>
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=renew"><i class="fa fa-hourglass"></i>Renew</a>
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=dnssec"><i class="fa fa-lock"></i>DNSSEC</a>
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=authepp"><i class="fa fa-envelope"></i>Email EPP Code</a>
-        <a class="btn btn-app b-radius" href="view_qs?id=592337&link=lock"><i class="fa fa-lock"></i>Lock / Unlock</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <div class="p-1">
-          <h3 class="card-title pt-2"><i class="fas fa-globe">&nbsp;</i>Nameservers</h3>
-          <div class="card-tools float-right pt-1 pl-3">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=nameservers" title="Edit NameServers">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-              Edit </a>
-          </div>
+        <div class="col-md-4">
+            <div :class="['small-box', 'bg-' + getStatusColor()]">
+                <div class="inner pt-2 pb-1 px-3">
+                    <h3>Billing</h3>
+                    <p class="py-1 m-0">
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
+                        billed: <b>{{ billingDetails.service_frequency }}</b>
+                    </p>
+                    <p class="m-0">Payment Status: <b>{{ billingDetails.service_payment_status }}</b></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="small-box-footer">
+                    Status is: <b>{{ serviceInfo.qs_status | capitalize }}</b>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body pt-0" style="height: 205px;">
-        <p>
+        <div class="col-md-4">
+            <div class="small-box bg-info">
+                <div class="inner pt-3 pb-1 px-3">
+                    <h3>Host Server: <b>{{ serviceMaster.qs_name }}</b></h3>
+                    <p class="my-2 py-2">IP is: <b>{{ serviceInfo.qs_ip }}</b></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="small-box-footer">
+                    Vzid: <b>{{ serviceInfo.qs_vzid }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row my-2">
+        <div class="row my-2">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;QuickServer Information</h3>
+                            <div class="card-tools float-right pt-1 pl-3">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height: 270px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-md m-0 p-2 text-center">
+                                    Power Status is:
+                                    <span :class="{
+                  'text-success': serviceInfo.qs_server_status === 'running',
+                  'text-warning': ['Paused', 'suspended'].includes(serviceInfo.qs_server_status),
+                  'text-danger': ['stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status),
+                  'text-info': !['running', 'Paused', 'suspended', 'stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status)
+                }">
+                                        {{ serviceInfo.qs_server_status }}
+                                    </span>
+                                </h5>
+                            </div>
+                            <div class="col-md-12 text-center pt-2 pr-4 mr-3">
+                                <div class="btn-group">
+                                    <button type="button" :class="{
+                  'btn-success': serviceInfo.qs_server_status === 'running',
+                  'btn-warning': ['Paused', 'suspended'].includes(serviceInfo.qs_server_status),
+                  'btn-danger': ['stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status),
+                  'btn-info': !['running', 'Paused', 'suspended', 'stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status)
+                }">Select Action</button>
+                                    <button type="button" :class="{
+                  'btn-success': serviceInfo.qs_server_status === 'running',
+                  'btn-warning': ['Paused', 'suspended'].includes(serviceInfo.qs_server_status),
+                  'btn-danger': ['stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status),
+                  'btn-info': !['running', 'Paused', 'suspended', 'stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status)
+                }" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=start`">Start</a>
+                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=restart`">Restart</a>
+                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=stop`">Stop</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 py-2">
+                                <span class="info-box-text">
+                                    <hr>
+                                    <h5 class="text-center mt-5">
+                                        Comment:
+                                        <span v-if="serviceInfo.qs_comment">{{ serviceInfo.qs_comment }}</span>
+                                        <span v-else>none</span>
+                                        <span @click="openCommentForm" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i></span>
+                                    </h5>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="serviceDiskTotal" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-hdd">&nbsp;</i>Disk</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0" :style="{ height: '270px' }">
+                        <div class="row">
+                            <div class="col-md-12 py-3 mb-1">
+                                <table class="table table-bordered my-3">
+                                    <tr>
+                                        <td class="text-muted text-bold">Total Space:</td>
+                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">Free Space:</td>
+                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdfree }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted text-bold">Remaining Space:</td>
+                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize - serviceMaster.qs_hdfree }} GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 75%;">
+                                            <div id="info-progress-lg" class="progress progress-sm mt-2">
+                                                <div class="progress-bar" :class="[
+                        { 'bg-gradient-blue': diskPercentage <= 80 },
+                        { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 },
+                        { 'bg-gradient-red': diskPercentage > 90 },
+                      ]" :style="{ width: diskPercentage + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-bold text-capitalize text-md" style="vertical-align: middle;">{{ diskPercentage }}%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="serviceOverviewExtra" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Connections</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height: 270px;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td><b>VNC Info</b></td>
+                                <td>
+                                    <template v-if="serviceOverviewExtra.vnc_information">
+                                        <b class="text-muted">{{ serviceOverviewExtra.vnc_information }}</b>
+                                    </template>
+                                    <template v-else>
+                                        <b class="text-muted font-italic">No data to show</b>
+                                    </template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Spice Info</b></td>
+                                <td>
+                                    <template v-if="serviceOverviewExtra.spice_information">
+                                        <b class="text-muted">{{ serviceOverviewExtra.spice_information }}</b>
+                                    </template>
+                                    <template v-else>
+                                        <b class="text-muted font-italic">No data to show</b>
+                                    </template>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div v-if="osTemplate" class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2">
+                                <i class="fa fa-microchip">&nbsp;</i>System Information
+                            </h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height:270px;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td><b>OS</b></td>
+                                <td><b class="text-muted">{{ osTemplate }}</b></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2">
+                                <i class="fas fa-link">&nbsp;</i>Links
+                            </h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a v-for="client_link in clientLinks" :key="client_link.label" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.label">
+                            <img :src="client_link.image" alt="">
+                            {{ client_link.label }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
-          <div class="col-md-6 p-0">
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-          </div>
-          <div class="col-md-6 p-0">
-            <h5 class="nameserver_heading">cdns1.interserver.net</h5>
-            <h5 class="nameserver_heading">cdns2.interserver.net</h5>
-            <h5 class="nameserver_heading">cdns3.interserver.net</h5>
-          </div>
+            <template v-if="extraInfoTables.ip_info">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="p-1">
+                                <h3 class="card-title py-2"><i class="fa fa-map-marker-alt">&nbsp;</i>IP Information</h3>
+                                <div class="card-tools float-right">
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <template v-for="itemvalue in extraInfoTables.ip_info.rows">
+                                    <tr>
+                                        <td><b>{{ itemvalue.desc }}</b></td>
+                                        <td><b class="text-muted">{{ itemvalue.value }}</b></td>
+                                    </tr>
+                                </template>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-if="extraInfoTables.cp">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="p-1">
+                                <h3 class="card-title py-2"><i class="fa fa-tachometer-alt">&nbsp;</i>{{ extraInfoTables.cp.title }}</h3>
+                                <div class="card-tools float-right">
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <template v-for="itemvalue in extraInfoTables.cp.rows">
+                                    <tr>
+                                        <td><b>{{ itemvalue.desc }}</b></td>
+                                        <td><b class="text-muted">{{ itemvalue.value }}</b></td>
+                                    </tr>
+                                </template>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div v-if="extraInfoTables.addons" class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2">
+                                <i class="fa fa-plus">&nbsp;</i>
+                                {{ extraInfoTables.addons.title }}
+                            </h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tr v-for="itemvalue in extraInfoTables.addons.rows">
+                                <td><b>{{ itemvalue.desc }}</b></td>
+                                <td><b class="text-muted">{{ itemvalue.value }}</b></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div v-if="extraInfoTables.note" class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2">
+                                <i class="fa fa-exclamation">&nbsp;</i>
+                                {{ extraInfoTables.note.title }}
+                            </h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">{{ extraInfoTables.note.rows[0].value }}</table>
+                    </div>
+                </div>
+            </div>
         </div>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row my-2">
-  <div class="col-12 col-sm-6 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <div class="p-1">
-          <h3 class="card-title pt-2"><i class="fas fa-id-card">&nbsp;</i>Contact Information</h3>
-          <div class="card-tools float-right pt-1 pl-3">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="btn-group float-right">
-            <a class="btn btn-custom btn-sm" href="view_qs?id=592337&link=contact" title="Edit Contact Information">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-              Edit </a>
-          </div>
+        <!-- Modal -->
+        <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form class="inline" @submit.prevent="submitComment">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="id" :value="serviceInfo.qs_id">
+                            <input type="hidden" name="link" value="update_comment">
+                            <input type="hidden" name="csrf_token" :value="csrf">
+                            <input type="hidden" name="edit_comment" value="2">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Comment:</label>
+                                <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body pt-5" style="height: 250px;">
-        <p>
-          Name: Joe Huss <br>
-          Address: 221 Duke St. <br>
-          Ephrata, PA<br>
-          US - 17522<br>
-          Ph: <a href="tel:+1.2012308833"> +1.2012308833</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-newspaper">&nbsp;</i> Qs Registry logs</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card-body" style="height:250px;margin: 0 auto;display: flex;align-items: center;">
-        <span class="text-secondary text-md">No qs log found.</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card p-2">
-      <div class="card-header border-0">
-        <h3 class="card-title"><i class="fas fa-times">&nbsp;</i> Errors in Contact Info</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card-body" style="height:250px;margin: 0 auto;display: flex;align-items: center;">
-        <span class="text-success text-md">All good! no errors in Contact Information!</span>
-      </div>
-    </div>
-  </div>
-</div>
+    </template>
 </template>
 
 <style scoped>
