@@ -69,7 +69,7 @@
                                 <label class="col-md-3"></label>
                                 <div class="col-md-9">
                                     <button class="btn bg-secondary btn-sm mt-1 mr-2" @click="checkAvailability()">Check availability</button>
-                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" id="couponimg" height=20 width=20>
+                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" id="couponimg" height="20" width="20" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -183,7 +183,7 @@
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ orderData.coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height=20 width=20></div>
+                                            <div class="text-bold text-md">{{ orderData.coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt=""></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none;">

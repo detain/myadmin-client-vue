@@ -31,7 +31,7 @@ const periods = [
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10 input-group">
                                     <select v-model="selectedPackage" class="form-control form-control-sm select2">
-                                        <option v-for="package in packages" :key="package.value" :value="package.value">{{ package.label }}</option>
+                                        <option v-for="pkg in packages" :key="pkg.value" :value="pkg.value">{{ pkg.label }}</option>
                                     </select>
                                 </div>
                             </div>

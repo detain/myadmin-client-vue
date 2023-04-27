@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 
 const packageName = computed(() => {
   if (props.package) {
-    return props.package.services_name
+    return props.pkg.services_name
   } else {
     return ':'
   }
@@ -210,7 +210,7 @@ const totalCost = computed(() => {
                                 <label class="col-sm-3 col-form-label">Coupon Code</label>
                                 <div class="input-group col-md-9">
                                     <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="formValues.coupon" @keyup="updateCoupon" @change="updateCoupon" />
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height=20 width=20></span>
+                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt=""></span>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -452,7 +452,7 @@ const totalCost = computed(() => {
                                             </td>
                                             <td>
                                                 <div class="text-bold text-md">{{ orderData.coupon }}
-                                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px;" id="couponimg" height=20 width=20>
+                                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt="">
                                                 </div>
                                             </td>
                                         </tr>

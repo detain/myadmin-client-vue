@@ -36,7 +36,7 @@
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" v-model="coupon" @input="update_coupon()" placeholder="Coupon Code">
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height=20 width=20></span>
+                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt=""></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -152,7 +152,7 @@
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{orderData.data.coupon}} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height=20 width=20></div>
+                                            <div class="text-bold text-md">{{orderData.data.coupon}} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt=""></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none;">

@@ -235,7 +235,7 @@
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ package.services_name }}</div>
+                            <div class="col-md-8">{{ pkg.services_name }}</div>
                             <div class="col text-right text-bold">1 Year</div>
                         </div>
                         <div class="row mb-3">
@@ -291,7 +291,7 @@
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative;top:5px;">
-                                                {{ package.services_name }}
+                                                {{ pkg.services_name }}
                                             </div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="edit_form" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit
                                             </button>
