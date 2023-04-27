@@ -150,48 +150,7 @@ const billingDetails = ref({
 });
 const custCurrency = ref("USD");
 const custCurrencySymbol = ref("$");
-const serviceExtra = ref({
-    order: {
-        _OPS_version: "0.9",
-        protocol: "XCP",
-        is_success: "1",
-        action: "REPLY",
-        attributes: { id: "311873405", admin_email: "realperson@mydomain.com" },
-        response_text: "Order created",
-        object: "DOMAIN",
-        response_code: "200"
-    },
-    order_id: "311873405",
-    vps_id: "65006148",
-    provProcessPending: {
-        _OPS_version: "0.9",
-        response_text: "Domain registration successfully completed.",
-        protocol: "XCP",
-        response_code: "200",
-        action: "REPLY",
-        object: "DOMAIN",
-        is_success: "1",
-        attributes: {
-            id: "65006148",
-            order_id: "311873405",
-            "registration expiration date": "2023-08-14 00:59:38",
-            f_auto_renew: "N"
-        }
-    },
-    email: "realperson@mydomain.com",
-    firstname: "Real",
-    lastname: "Person",
-    company: "InterServer Secaucus",
-    address: "91 Mullberry St.",
-    address2: "",
-    address3: "",
-    city: "Area 51",
-    state: "PA",
-    zip: "00001",
-    country: "US",
-    phone: "8675309",
-    fax: ""
-});
+const serviceExtra = ref({});
 const extraInfoTables = ref([]);
 const serviceType = ref({
     services_id: "10673",
@@ -204,22 +163,6 @@ const serviceType = ref({
     services_field1: ".dev",
     services_field2: "",
     services_module: "domains"
-});
-const contact_details = ref({
-    postal_code: "00001",
-    fax: "",
-    status: "active",
-    first_name: "Real",
-    address1: "91 Mullberry St.",
-    state: "PA",
-    address3: "",
-    phone: "8675309",
-    city: "Area 51",
-    email: "realperson@mydomain.com",
-    org_name: "InterServer Secaucus",
-    country: "US",
-    address2: "",
-    last_name: "Person"
 });
 const errors = ref(false);
 const vps_logs = ref([]);
