@@ -6,7 +6,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
 </script>
 
 <template>
-    <template v-if="step == 'orderform'">
+    <template v-if="!step || step == 'orderform'">
         <form id="website_form" method="post" class="website_form_init" :action="formAction">
             <div class="row justify-content-center">
                 <div class="col-md-7">

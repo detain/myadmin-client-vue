@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div v-if="display === 'step1'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
+    <div v-if="!display || display === 'step1'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
         <div class="col-md-10 text-center">
             <h3 class="pb-2 text-capitalize">Find your domain and check availability.</h3>
             <form @submit.prevent="submitDomain" class="search-domain">
@@ -57,7 +57,7 @@
                 </div>
             </template>
 
-            <div v-if="suggestions.items || lookups.items" class="row">
+            <div v-if="(suggestions && suggestions.items) || (lookups && lookups.items)" class="row">
                 <div class="col-md-6">
                     <div class="card card-outline card-secondary shadow-none">
                         <div class="card-body">

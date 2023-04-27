@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <template v-if="step == 'order_form'">
+    <template v-if="!step || step == 'order_form'">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">

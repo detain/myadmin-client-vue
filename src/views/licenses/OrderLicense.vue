@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <template v-if="step == 'license_types'">
+    <template v-if="!step || step == 'license_types'">
         <div class="card-columns">
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">

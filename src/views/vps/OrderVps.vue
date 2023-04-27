@@ -1,16 +1,18 @@
 <script setup>
 import { ref, computed } from 'vue'
 
+const pkg = ref('');
+const totalCostDisplay = ref(0.00);
 const packageName = computed(() => {
-  if (props.package) {
-    return props.pkg.services_name
+  if (pkg) {
+    return pkg.services_name
   } else {
     return ':'
   }
 });
 
 const totalCost = computed(() => {
-  return props.currencySymbol + props.totalCostDisplay.toFixed(2)
+  return currencySymbol + totalCostDisplay.toFixed(2)
 });
   var currencySymbol = "$";
   var templates = {
@@ -87,6 +89,9 @@ const totalCost = computed(() => {
   var bw_slice = 2000;
   var hd_slice = 30;
   var ram_slice = 2048;
+  const formValues = ref({
+      platform: ''
+  });
   var cur_location = Number(jQuery("select[name=location]").val());
   var cur_period = Number(jQuery("#period").val());
   var cur_platform = jQuery("select[name=platform]").val();
@@ -125,7 +130,7 @@ const totalCost = computed(() => {
 </script>
 
 <template>
-    <template v-if="step == 'orderform'">
+    <template v-if="!step || step == 'orderform'">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">

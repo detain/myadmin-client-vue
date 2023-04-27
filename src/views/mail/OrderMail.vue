@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <template v-if="step == 'orderform'">
+    <template v-if="!step || step == 'orderform'">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div id="package_name" class="col-md-8" v-if="service_detail.service_name">{{ service_detail.service_name }}</div>
+                            <div id="package_name" class="col-md-8" v-if="service_detail && service_detail.service_name">{{ service_detail.service_name }}</div>
                             <div id="package_period" class="col text-right text-bold">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
