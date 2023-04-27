@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -12,6 +14,9 @@ layoutStore.setPageHeading('View Server');
 layoutStore.setBreadcrums({'home': 'Home', 'Servers': 'Servers'})
 layoutStore.addBreadcrum('server/'+id, 'View Server '+id);
 
+const ipmiLease = ref({});
+const asset = ref({});
+const assets = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -57,7 +62,7 @@ const serviceInfo = ref({
     server_fax: "",
     server_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -105,26 +110,26 @@ loadServer(id, serviceType, settings, serviceInfo)
 
 const filteredSwitchports = computed(() => {
   if (
-    !props.networkInfo ||
-    !props.networkInfo.switchports ||
-    props.networkInfo.switchports.length === 0
+    !networkInfo ||
+    !networkInfo.switchports ||
+    networkInfo.switchports.length === 0
   ) {
     return [];
   }
 
-  return props.networkInfo.switchports.filter(
-    (switchport) => switchport.assetId === props.assetId && switchport.vlanId in props.asset.vlans
+  return networkInfo.switchports.filter(
+    (switchport) => switchport.assetId === assetId && switchport.vlanId in asset.vlans
   );
 });
 
-const vlans = computed(() => props.networkInfo.vlans || {});
+const vlans = computed(() => networkInfo.vlans || {});
 
 const ipv6VlansNetworks = computed(() => {
-  if (!props.networkInfo.vlans6 || props.networkInfo.vlans6.length === 0) {
+  if (!networkInfo.vlans6 || networkInfo.vlans6.length === 0) {
     return '<i>Null</i>';
   }
 
-  return props.networkInfo.vlans6
+  return networkInfo.vlans6
     .map((ipv6) => ipv6.vlans6Networks)
     .join(',');
 });
@@ -137,7 +142,7 @@ const ipv6VlansNetworks = computed(() => {
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
                     <p class="m-0">
-                        {{ package.value || 'Dedicated Server' }}
+                        {{ pkg.value || 'Dedicated Server' }}
                     </p>
                     <p>
                         Next Invoice Date: <b>
@@ -167,7 +172,7 @@ const ipv6VlansNetworks = computed(() => {
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">
-                    Status is: <b>{{ serviceInfo[status] | capitalize }}</b>
+                    Status is: <b>{{ serviceInfo[status] }}</b>
                 </span>
             </div>
         </div>

@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -57,7 +59,7 @@ const serviceInfo = ref({
     ssl_fax: "",
     ssl_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -110,7 +112,7 @@ loadSsl(id, serviceType, settings, serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-2 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-1 m-0 text-bold">{{ package }}</p>
+                    <p class="py-1 m-0 text-bold">{{ pkg }}</p>
                     <p class="m-0">Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
                 </div>
                 <div class="icon">
@@ -182,7 +184,7 @@ loadSsl(id, serviceType, settings, serviceInfo)
                     </div>
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
-                    <a v-for="client_link in client_links" :key="client_link.link" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{ client_link.image }}{{ client_link.label }}</a>
+                    <a v-for="client_link in clientLinks" :key="client_link.link" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{ client_link.image }}{{ client_link.label }}</a>
                 </div>
             </div>
         </div>

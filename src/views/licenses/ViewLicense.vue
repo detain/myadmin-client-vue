@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const link_display = ref(false);
+const pkg = ref('');
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -12,6 +14,7 @@ layoutStore.setPageHeading('View License');
 layoutStore.setBreadcrums({'home': 'Home', 'Licenses': 'Licenses'})
 layoutStore.addBreadcrum('license/'+id, 'View License '+id);
 
+const serviceOverviewExtra = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -57,7 +60,7 @@ const serviceInfo = ref({
     license_fax: "",
     license_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -110,7 +113,7 @@ loadLicense(id, serviceType, settings, serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-1 my-2">{{ package }}</p>
+                    <p class="py-1 my-2">{{ pkg }}</p>
                     <p class="m-0">
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
@@ -123,7 +126,7 @@ loadLicense(id, serviceType, settings, serviceInfo)
                 </div>
             </div>
         </div>
-        <div class="col-md-{{ service_overview_extra ? '3' : '4' }}">
+        <div class="col-md-{{ serviceOverviewExtra ? '3' : '4' }}">
             <div :class="[
         'small-box',
         serviceInfo[`${settings.PREFIX}_status`] === 'active' ? 'bg-success' : '',
@@ -141,16 +144,16 @@ loadLicense(id, serviceType, settings, serviceInfo)
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="small-box-footer">
-                    Status is: <b>{{ serviceInfo[`${settings.PREFIX}_status`].capitalize() }}</b>
+                    Status is: <b>{{ serviceInfo.license_status }}</b>
                 </div>
             </div>
         </div>
-        <div class="col-md-{{ service_overview_extra ? '3' : '4' }}">
+        <div class="col-md-{{ serviceOverviewExtra ? '3' : '4' }}">
             <div class="small-box bg-info">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>License Info</h3>
                     <template v-if="serviceInfo.license_hostname">
-                        <p class="{{ service_overview_extra ? 'mt-0' : 'py-3 my-2' }}">
+                        <p class="{{ serviceOverviewExtra ? 'mt-0' : 'py-3 my-2' }}">
                             Hostname is:<br />
                             <b>{{ serviceInfo.license_hostname }}</b>
                         </p>
@@ -169,14 +172,14 @@ loadLicense(id, serviceType, settings, serviceInfo)
                 </div>
             </div>
         </div>
-        <template v-if="service_overview_extra">
+        <template v-if="serviceOverviewExtra">
             <div class="col-md-3">
                 <div class="small-box bg-orange">
                     <div class="inner pt-3 pb-1 px-3 text-white">
                         <h3>cPanel Info</h3>
-                        <template v-if="service_overview_extra.cPanel_Accounts">
+                        <template v-if="serviceOverviewExtra.cPanel_Accounts">
                             <p class="py-3 my-2">
-                                Total Accounts are: <b>{{ service_overview_extra.cPanel_Accounts }}</b>
+                                Total Accounts are: <b>{{ serviceOverviewExtra.cPanel_Accounts }}</b>
                             </p>
                         </template>
                     </div>
@@ -184,7 +187,7 @@ loadLicense(id, serviceType, settings, serviceInfo)
                         <i class="fab fa-cpanel"></i>
                     </div>
                     <div class="small-box-footer text-white">
-                        Status is: <b>{{ service_overview_extra.cPanel_Status }}</b>
+                        Status is: <b>{{ serviceOverviewExtra.cPanel_Status }}</b>
                     </div>
                 </div>
             </div>
@@ -233,12 +236,14 @@ loadLicense(id, serviceType, settings, serviceInfo)
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <a v-for="client_link in client_links" :key="client_link.label" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.other_attr" :other_attr="client_link.other_attr">
+                    <template v-for="client_link in clientLinks">
+                    <a :key="client_link.label" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.other_attr" :other_attr="client_link.other_attr">
                         {{ client_link.image }}{{ client_link.label }}
                     </a>
                     <a v-else :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" class="btn btn-app mb-3">
                         {{ client_link.image }}{{ client_link.label }}
                     </a>
+                    </template>
                 </div>
             </div>
         </div>

@@ -57,7 +57,7 @@ const serviceInfo = ref({
     domain_fax: "",
     domain_company: "InterServer Secaucus",
 });
-const client_links = ref([
+const clientLinks = ref([
     {
         label: "Invoices",
         link: "view_domain?id=592337&link=invoices",

@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -12,6 +14,8 @@ layoutStore.setPageHeading('View Qs');
 layoutStore.setBreadcrums({'home': 'Home', 'Rapid Deploy Servers': 'Rapid Deploy Servers'})
 layoutStore.addBreadcrum('qs/'+id, 'View Qs '+id);
 
+const serviceMaster = ref({});
+const serviceOverviewExtra = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -57,7 +61,7 @@ const serviceInfo = ref({
     qs_fax: "",
     qs_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -105,7 +109,7 @@ loadQs(id, serviceType, settings, serviceInfo)
 
 const isCollapsed = ref(false);
 
-const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.serviceMaster.qs_hdsize) * 100);
+const diskPercentage = Math.round((serviceMaster.qs_hdfree / serviceMaster.qs_hdsize) * 100);
 </script>
 
 <template>
@@ -114,7 +118,7 @@ const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.service
             <div class="small-box bg-secondary">
                 <div class="inner pt-2 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-1 m-0">{{ package }}</p>
+                    <p class="py-1 m-0">{{ pkg }}</p>
                     <p class="m-0">Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
                 </div>
                 <div class="icon">
@@ -126,7 +130,12 @@ const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.service
             </div>
         </div>
         <div class="col-md-4">
-            <div :class="['small-box', 'bg-' + getStatusColor()]">
+            <div :class="{
+        'small-box': true,
+        'bg-success': serviceInfo.vps_status === 'active',
+        'bg-warning text-white': serviceInfo.vps_status === 'pending',
+        'bg-danger': serviceInfo.vps_status !== 'active' && serviceInfo.vps_status !== 'pending'
+      }">
                 <div class="inner pt-2 pb-1 px-3">
                     <h3>Billing</h3>
                     <p class="py-1 m-0">
@@ -139,7 +148,7 @@ const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.service
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="small-box-footer">
-                    Status is: <b>{{ serviceInfo.qs_status | capitalize }}</b>
+                    Status is: <b>{{ serviceInfo.qs_status }}</b>
                 </div>
             </div>
         </div>
@@ -348,10 +357,12 @@ const diskPercentage = Math.round((props.serviceMaster.qs_hdfree / props.service
                         </div>
                     </div>
                     <div class="card-body">
-                        <a v-for="client_link in clientLinks" :key="client_link.label" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.label">
+                        <template v-for="client_link in clientLinks">
+                        <a :key="client_link.label" class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-if="client_link.label">
                             <img :src="client_link.image" alt="">
                             {{ client_link.label }}
                         </a>
+                        </template>
                     </div>
                 </div>
             </div>

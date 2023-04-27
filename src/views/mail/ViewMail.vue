@@ -57,7 +57,7 @@ const serviceInfo = ref({
     mail_fax: "",
     mail_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -104,6 +104,7 @@ const loadMail = async (id, serviceType, settings, serviceInfo) => {
 loadMail(id, serviceType, settings, serviceInfo)
 
 const pkg = ref(''); // set your package value here
+const link_display = ref(false);
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
   const statusValue = serviceInfo.value[status.value];
@@ -187,7 +188,7 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body py-4 my-3">
-                        <a v-for="client_link in client_links" :key="client_link.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{client_link.image}}{{client_link.label}}</a>
+                        <a v-for="client_link in clientLinks" :key="client_link.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{client_link.image}}{{client_link.label}}</a>
                     </div>
                 </div>
             </div>

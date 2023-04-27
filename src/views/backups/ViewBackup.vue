@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -12,6 +14,7 @@ layoutStore.setPageHeading('View Backup');
 layoutStore.setBreadcrums({'home': 'Home', 'Storage': 'Storage'})
 layoutStore.addBreadcrum('backup/'+id, 'View Backup '+id);
 
+const serviceMaster = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -57,7 +60,7 @@ const serviceInfo = ref({
     backup_fax: "",
     backup_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -103,16 +106,16 @@ const loadBackup = async (id, serviceType, settings, serviceInfo) => {
 
 loadBackup(id, serviceType, settings, serviceInfo)
 
-const titleField = ref(props.settings.TITLE_FIELD);
+const titleField = ref(settings.TITLE_FIELD);
 const billingStatus = computed(() => {
-  const status = props.serviceInfo[`${props.settings.PREFIX}_status`];
+  const status = serviceInfo[`${settings.PREFIX}_status`];
   if (status === 'active') return 'Active';
   if (status === 'pending') return 'Pending';
   if (status === 'expired' || status === 'canceled') return 'Expired/Canceled';
   return '';
 });
 const billingStatusClass = computed(() => {
-  const status = props.serviceInfo[`${props.settings.PREFIX}_status`];
+  const status = serviceInfo[`${settings.PREFIX}_status`];
   if (status === 'active') return 'bg-green';
   if (status === 'pending') return 'bg-orange';
   if (status === 'expired' || status === 'canceled') return 'bg-red';
@@ -126,7 +129,7 @@ const billingStatusClass = computed(() => {
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-2 m-0">{{ package }}</p>
+                    <p class="py-2 m-0">{{ pkg }}</p>
                     <p>Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
                 </div>
                 <div class="icon">

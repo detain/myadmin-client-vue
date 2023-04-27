@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -12,6 +14,7 @@ layoutStore.setPageHeading('View Website');
 layoutStore.setBreadcrums({'home': 'Home', 'Websites': 'Websites'})
 layoutStore.addBreadcrum('website/'+id, 'View Website '+id);
 
+const serviceMaster = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -57,7 +60,7 @@ const serviceInfo = ref({
     website_fax: "",
     website_company: "InterServer Secaucus",
 });
-const client_links = ref([]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -87,6 +90,10 @@ const serviceType = ref({
 });
 const errors = ref(false);
 
+function isEmpty(table) {
+  return table === null || table === undefined || table.length === 0;
+}
+
 const loadWebsite = async (id, serviceType, settings, serviceInfo) => {
     try {
         const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_website?id=' + id);
@@ -110,7 +117,7 @@ loadWebsite(id, serviceType, settings, serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-2 m-0">{{ package }}</p>
+                    <p class="py-2 m-0">{{ pkg }}</p>
                     <p>Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
                 </div>
                 <div class="icon">
@@ -139,7 +146,7 @@ loadWebsite(id, serviceType, settings, serviceInfo)
                 </div>
                 <span class="small-box-footer">
                     Billing Status is:
-                    <b>{{ serviceInfo.website_status | capitalize }}</b>
+                    <b>{{ serviceInfo.website_status }}</b>
                 </span>
             </div>
         </div>
@@ -185,7 +192,7 @@ loadWebsite(id, serviceType, settings, serviceInfo)
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;</i>&nbsp;{{ package }} Login</h3>
+                        <h3 class="card-title py-2"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;</i>&nbsp;{{ pkg }} Login</h3>
                         <div class="card-tools float-right">
                             <button class="btn btn-tool mt-0" type="button" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
@@ -199,15 +206,15 @@ loadWebsite(id, serviceType, settings, serviceInfo)
                                     <th>Types:</th>
                                     <th>Links:</th>
                                 </tr>
-                                <template v-if="extraInfoTables.links.rows[0] && extraInfoTables.links.rows[0].value">
+                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows[0] && extraInfoTables.links.rows[0].value">
                                     <tr>
                                         <td>Manual Login</td>
                                         <td><a :href="extraInfoTables.links.rows[0].value" target="__blank" class="link">Click Here</a></td>
                                     </tr>
                                 </template>
-                                <tr>
+                                <tr v-if="clientLinks[3]">
                                     <td>Automatic Login</td>
-                                    <td><a :href="client_links[3].link" target="__blank" class="link">Click Here</a></td>
+                                    <td><a :href="clientLinks[3].link" target="__blank" class="link">Click Here</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -234,8 +241,8 @@ loadWebsite(id, serviceType, settings, serviceInfo)
                         <tr>
                             <th>Nameservers:</th>
                         </tr>
-                        <template v-for="nameserver in extraInfoTables.dns.rows">
-                            <tr>
+                        <template v-if="extraInfoTables.dns && extraInfoTables.dns.rows">
+                            <tr v-for="nameserver in extraInfoTables.dns.rows">
                                 <td>{{ nameserver.desc }}</td>
                             </tr>
                         </template>

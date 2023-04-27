@@ -6,6 +6,8 @@ import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
 
+const pkg = ref('');
+const link_display = ref(false);
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -13,6 +15,7 @@ layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'home': 'Home', 'domains': 'VPS'})
 layoutStore.addBreadcrum('vps/'+id, 'View VPS '+id);
 
+const serviceMaster = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
     USE_REPEAT_INVOICE: true,
@@ -58,7 +61,7 @@ const serviceInfo = ref({
     vps_fax: "",
     vps_company: "InterServer Secaucus",
 });
-const client_links = ref([
+const clientLinks = ref([
     {
         label: "Invoices",
         link: "view_domain?id=592337&link=invoices",
@@ -198,15 +201,15 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
 
 const webuzoTableExists = computed(() => {
   return (
-    props.extraInfoTables.hasOwnProperty('webuzo') &&
-    !isEmpty(props.extraInfoTables.webuzo)
+    extraInfoTables.hasOwnProperty('webuzo') &&
+    !isEmpty(extraInfoTables.webuzo)
   );
 });
 
 const addonsTableExists = computed(() => {
   return (
-    props.extraInfoTables.hasOwnProperty('addons') &&
-    !isEmpty(props.extraInfoTables.addons)
+    extraInfoTables.hasOwnProperty('addons') &&
+    !isEmpty(extraInfoTables.addons)
   );
 });
 
@@ -274,7 +277,7 @@ loadVps(id, serviceType, settings, serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-2 m-0">{{ package }}</p>
+                    <p class="py-2 m-0">{{ pkg }}</p>
                     <template v-if="billingDetails.service_next_invoice_date">
                         <p>Next Invoice Date:
                             <b>{{ billingDetails.service_next_invoice_date }}</b>
@@ -306,7 +309,7 @@ loadVps(id, serviceType, settings, serviceInfo)
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">VPS Status is:
-                    <b>{{ serviceInfo.vps_status | capitalize }}</b></span>
+                    <b>{{ serviceInfo.vps_status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
