@@ -2,12 +2,231 @@
 </script>
 
 <template>
-<template v-if="step == 'license_types'">
-</template>
-<template v-else-if="step == 'order_form'">
-</template>
-<template v-else-if="step == 'order_confirm'">
-</template>
+    <template v-if="step == 'license_types'">
+        <div class="card-columns">
+            <div v-for="(details, key) in getLicenses" :key="key" class="card">
+                <div class="card-header">
+                    <div class="p-1">
+                        <img class="card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1;width: 40% !important;height:50px;">
+                        <h3 class="card-title"></h3>
+                        <div class="card-tools float-right">
+                            <button style="position: relative;top: 10px;" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body text-center" style="height: 270px;">
+                    <h4><u>{{ details.name }}</u></h4>
+                    <p class="card-text text-left text-sm">{{ details.description }}</p>
+                    <div class="license_footer">
+                        <div class="order-button">
+                            <a :href="'order_license?lic=' + key" class="btn order">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template v-else-if="step == 'order_form'">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2">
+                                <i class="material-icons" style="position: relative;top: 5px;">card_membership</i>
+                                Order {{ licenses[lic].name }} License
+                            </h3>
+                            <div class="card-tools float-right">
+                                <a href="order_license" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative;top: 5px;"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm" action="order_license?lic={{ lic }}">
+                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9 input-group">
+                                    <div v-for="(package_details, id) in packages" :key="id" class="form-group w-100">
+                                        <div class="icheck-success d-inline">
+                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" :checked="package_id === id" @change="updatePrice(true)">
+                                            <label class="more-info font-weight-normal" :for="package_details.services_name">{{ package_details.services_name }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label text-right">IP Address<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9 input-group">
+                                    <input type="text" name="ip" class="form-control form-control-sm" @change="updatePrice()" placeholder="IP Address" v-model="ip" required>
+                                </div>
+                            </div>
+                            <div v-if="licenses[lic].name !== 'cPanel'" id="coupon_row" class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">Coupon Code</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" name="coupon" id="coupon" @change="updateCoupon()" placeholder="Coupon Code" v-model="coupon">
+                                </div>
+                                <label class="col-md-3"></label>
+                                <div class="col-md-9">
+                                    <button class="btn bg-secondary btn-sm mt-1 mr-2" @click="checkAvailability()">Check availability</button>
+                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" id="couponimg" height=20 width=20>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="controls col-md-12 text-center">
+                                    <button type="submit" name="Submit" class="btn btn-order px-3 py-2 text-sm">Continue</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-md">
+                        <div class="row mb-3">
+                            <div class="col-md-6 package_name"></div>
+                            <div class="col text-right text-bold">1 Month</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div id="hostname_display" class="col-md-6">Package Cost</div>
+                            <div class="col text-right package_cost text-bold"></div>
+                        </div>
+                        <div id="couponpricerownew" class="row mb-3 coupon-display">
+                            <div id="couponpricetext" class="col-md-6"></div>
+                            <div id="couponprice" class="col text-right text-bold"></div>
+                        </div>
+                        <hr>
+                        <div class="row mb-3">
+                            <div class="col-md-8 text-lg">Total</div>
+                            <div id="totalprice" class="col text-lg text-bold text-right total_cost"></div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="lic === 'litespeed'" class="card">
+                    <div class="p-1">
+                        <div class="card-header py-2">
+                            <h3 class="card-title"><i class="fa fa-suitcase">&nbsp;</i>Package Details</h3>
+                        </div>
+                    </div>
+                    <div class="card-body text-md">
+                        <div class="row mb-3">
+                            <div class="col-md-12 pkg_det">{{ packages[package_id].services_details }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="lic === 'cpanel'" class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title"><i class="fas fa-lightbulb">&nbsp;</i>Important Note</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Internal use licenses only. External use will result in cancellation.</p>
+                        <p>If you wish to purchase licenses for use outside our network please visit the license partners website directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template v-else-if="step == 'order_confirm'">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" ref="editOrderForm" @submit.prevent="submitEditOrderForm">
+                            <input type="hidden" name="csrf_token" :value="csrfToken" />
+                            <input v-for="(fieldValue, field) in orderData" :key="field" v-if="field !== 'Submit'" :id="field" type="hidden" :name="field" :value="fieldValue" />
+                        </form>
+                        <form method="post" class="license_form_confirm" ref="licenseForm" @submit.prevent="submitLicenseForm">
+                            <input type="hidden" name="csrf_token" :value="csrfToken" />
+                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ packages[packageId].services_name }}</div>
+                                            <button type="button" class="btn btn-custom float-right btn-sm" name="update_values" @click="editForm()" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                        </th>
+                                        <th>
+                                            <div class="text-bold text-md package_cost"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">{{ ip }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-md text-bold">1 Month(s)</div>
+                                        </td>
+                                    </tr>
+                                    <tr v-if="orderData.coupon">
+                                        <td>
+                                            <div class="text-md">Coupon Used</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ orderData.coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height=20 width=20></div>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <div id="couponpricetext" class="text-md">Coupon Discount</div>
+                                        </td>
+                                        <td>
+                                            <div id="couponprice" class="text-bold text-md"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-lg">Total</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-lg text-bold" id="totalprice"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class="pb-1 pt-3">
+                                <h4 class="text-center"><u>Agree to the offer terms</u></h4>
+                                <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
+                                <p class="text-muted text-xs">
+                                    By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
+                                </p>
+                                <p class="icheck-success text-bold text-center">
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline;" value="yes">
+                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="controls col-md-12 text-center">
+                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 </template>
 
 <style scoped>
