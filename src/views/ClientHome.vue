@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { fetchWrapper } from '@/helpers';
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
@@ -7,6 +7,38 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dashboard');
 layoutStore.setBreadcrums({'': 'Home'});
+import $ from 'jquery';
+import jQuery from 'jquery';
+window.$ = window.jQuery = $;
+
+const copyToClipboard = (element) => {
+  const $temp = document.createElement('input')
+  document.body.appendChild($temp)
+  $temp.value = element.innerText
+  $temp.select()
+  document.execCommand('copy')
+  document.body.removeChild($temp)
+}
+
+onMounted(() => {
+    //$('.column').sortable({ connectWith: '.column' });
+    $('.portlet')
+        .addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all')
+        .find('.portlet-header')
+        .addClass('ui-widget-header ui-corner-all')
+        .prepend('<span class="float-right glyphicon glyphicon-minus" aria-hidden="true"></span>')
+        .end()
+        .find('.portlet-content');
+    $('.portlet-header .ui-icon').click(function () {
+        $(this).toggleClass('ui-icon-minusthick').toggleClass('ui-icon-plusthick')
+        $(this).parents('.portlet:first').find('.portlet-content').toggle()
+    });
+    $('.portlet-header .glyphicon').click(function () {
+        $(this).toggleClass('glyphicon-minus').toggleClass('glyphicon-plus')
+        $(this).parents('.portlet:first').find('.portlet-content').toggle()
+    });
+    //$('.column').disableSelection();
+})
 
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),
