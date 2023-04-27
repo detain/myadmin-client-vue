@@ -1,4 +1,17 @@
 <script setup>
+import { ref, computed } from 'vue'
+
+const packageName = computed(() => {
+  if (props.package) {
+    return props.package.services_name
+  } else {
+    return ':'
+  }
+});
+
+const totalCost = computed(() => {
+  return props.currencySymbol + props.totalCostDisplay.toFixed(2)
+});
   var currencySymbol = "$";
   var templates = {
     "openvz": {
@@ -112,10 +125,383 @@
 </script>
 
 <template>
-<template v-if="step == 'orderform'">
-</template>
-<template v-else-if="step == 'order_confirm'">
-</template>
+    <template v-if="step == 'orderform'">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order VPS</h3>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="vps_form" class="vps_form_init" @submit.prevent="submitForm">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
+                            <input type="hidden" id="total_cost_display" name="total_cost_display" :value="totalCostDisplay" />
+                            <input type="hidden" id="period" name="period" :value="period" />
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">VPS Details</label>
+                                <div class="col-sm-9 form-control bg-gradient-gray text-center b-radius">
+                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage"></span></div>
+                                    <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended"></span></div>
+                                    <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth"></span></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
+                                <div class="col-sm-9">
+                                    <select v-model="formValues.platform" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in platformArr" :key="value" :value="value" :selected="formValues.platform === value || value === getPlatform">{{ label }}</option>
+                                    </select>
+                                    <small id="slicecost" class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9 input-group">
+                                    <select v-model="formValues.location" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="formValues.location === value || value === get_location">{{ label }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9">
+                                    <select id="slices_sel" v-model="formValues.slices" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="formValues.slices === value || value === get_slices">{{ label }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9">
+                                    <select v-model="formValues.version" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="formValues.version === value || value === get_version">{{ label }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
+                                <div class="input-group col-md-9">
+                                    <select class="form-control select2" v-model="formValues.os" @change="updateVpsChoices">
+                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="formValues.os === value || value === get_vpsos">{{ desc }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="hostnamerownew" class="form-group row">
+                                <label class="col-sm-3 col-form-label">Hostname</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="formValues.hostname" @keyup="updateHostname" @change="updateHostname" />
+                                </div>
+                            </div>
+                            <div id="rootpassrownew" class="row">
+                                <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
+                                <div class="form-group col-md-9">
+                                    <input type="text" name="rootpass" class="form-control text-sm" v-model="formValues.rootpass" />
+                                    <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Coupon Code</label>
+                                <div class="input-group col-md-9">
+                                    <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="formValues.coupon" @keyup="updateCoupon" @change="updateCoupon" />
+                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height=20 width=20></span>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="controls">
+                                    <input type="submit" name="Submit" value="Continue" class="btn btn-order px-3 py-2 text-sm">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <!-- Order Summary -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="p-1">
+                                    <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                                    <div class="card-tools float-right">
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pb-0">
+                                <div class="row mb-3">
+                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ packageName }}</div>
+                                    <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
+                                    <div class="col text-md text-right totalcost_display">{{ currencySymbol }}{{ totalCostDisplay }}</div>
+                                </div>
+                                <div id="cyclediscountrownew" class="row mb-3">
+                                    <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
+                                    <div id="cyclediscount" class="col text-right"></div>
+                                </div>
+                                <div id="couponpricerownew" class="row mb-3">
+                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
+                                    <div id="couponprice" class="col text-right"></div>
+                                </div>
+                                <hr>
+                                <div class="row mb-3">
+                                    <div class="col-md-8 text-md text-bold text-muted">Total:</div>
+                                    <div id="totalcost" class="col text-md text-right total_cost">{{ currencySymbol }}{{ totalCost }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Order Summary -->
+                    <!-- VPS Recommendations -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="p-1">
+                                    <h4 class="card-title py-2"><i class="fa fa-thumbs-up">&nbsp;</i>Recommendations</h4>
+                                    <div class="card-tools float-right">
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body py-2">
+                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius mr-1 my-2 px-3"><i class="fa fa-linux">&nbsp;</i>Linux&nbsp;</a>
+                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius mr-1 my-2 px-3"><i class="fa fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
+                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius mr-1 my-2"><i class="fa fa-windows">&nbsp;</i>Windows&nbsp;</a>
+                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px;"><i class="fa fa-server">&nbsp;</i>cPanel&nbsp;</a>
+                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius mr-1 my-2" style="padding: 3px 10px 3px 10px;"><i class="fa fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
+                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px;"><i class="fa fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End VPS Recommendations -->
+                    <div class="col">
+                        <!-- VPS Location availability -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="p-1">
+                                    <h4 class="card-title py-2"><i class="fa fa-map-pin"></i>&nbsp;Location Availability</h4>
+                                    <div class="card-tools float-right">
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Location / Platform</th>
+                                            <!--<th>Virtuozzo</th>-->
+                                            <th>KVM Linux</th>
+                                            <!--<th>KVM Windows</th>-->
+                                            <th>HyperV</th>
+                                            <th>KVM Storage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(statusArr, location) in stockStatus" :key="location">
+                                            <td class="text-center">{{ location }}</td>
+                                            <td v-for="(status, platform) in statusArr" :key="platform" class="text-center">{{ status }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End VPS Location availability -->
+                </div>
+            </div>
+        </div>
+    </template>
+    <template v-else-if="step == 'order_confirm'">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form ref="editOrderForm" method="post" action="order_vps">
+                            <input type="hidden" name="csrf_token" :value="csrfToken" />
+                            <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
+                        </form>
+
+                        <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="submitForm">
+                            <input type="hidden" name="csrf_token" :value="csrfToken" />
+                            <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
+
+                            <div v-if="serversel">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label text-right">
+                                        Select Server<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group col-md-8">
+                                        <select class="form-control form-control-sm select2" name="server" v-model="formValues.server">
+                                            <option v-for="(desc, value) in serversel" :key="value" :value="value">
+                                                {{ desc }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-right">Comment</label>
+                                    <div class="form-group input-group col-md-8">
+                                        <textarea rows="5" class="form-control form-control-sm" name="comment" v-model="formValues.comment"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label text-right">Paid<span class="text-danger">*</span></label>
+                                    <div class="input-group col-md-8">
+                                        <select name="paid" class="form-control a-inp-class" v-model="formValues.paid">
+                                            <option value="no">No</option>
+                                            <option value="setup">Not Paid, But Set It Up A While</option>
+                                            <option value="yes">Yes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ formValues.hostname }}</div>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                        </th>
+                                        <th>
+                                            <div class="text-md text-bold">{{ formValues.period }} month(s)</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">{{ packagesArr[formValues.serviceType] }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md" id="slicecost">{{ formValues.sliceCost }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">VPS Location</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ locations[orderData.location] }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">Slices</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ orderData.slices }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">Memory</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ memory }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">HD Space</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ hdSpace }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">Bandwidth</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ bandwidth }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-md">Operating System</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ images[orderData.version] }} {{ tempVersion }}</div>
+                                        </td>
+                                    </tr>
+                                    <template v-if="orderData.coupon">
+                                        <tr>
+                                            <td>
+                                                <div class="text-md">Coupon Used</div>
+                                            </td>
+                                            <td>
+                                                <div class="text-bold text-md">{{ orderData.coupon }}
+                                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px;" id="couponimg" height=20 width=20>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <div id="couponpricetext" class="text-md">Coupon Discount</div>
+                                        </td>
+                                        <td>
+                                            <div id="couponprice" class="text-bold text-md"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            <div class="text-lg">Total</div>
+                                        </th>
+                                        <th>
+                                            <div class="text-lg text-bold" id="total_cost_display">${{ formValues.serviceCost }}</div>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <hr>
+                            <div class="p-1">
+                                <h4 class="text-center"><u>Agree to the offer terms</u></h4>
+                                <p class="text-center text-sm">
+                                    The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ form_values.service_cost }}</span> until canceled.
+                                </p>
+                                <p class="text-muted text-xs">
+                                    By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
+                                </p>
+                                <div class="icheck-success text-bold text-center">
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline;" value="yes">
+                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="controls col-md-12" style="text-align: center;">
+                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-green btn-sm px-3 py-2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 </template>
 
 <style scoped>
