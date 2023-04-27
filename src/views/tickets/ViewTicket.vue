@@ -1,9 +1,8 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { formatDate } from '@/helpers/date';
 import { useTicketsStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
-//import $ from 'jquery';
+import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 
 const showToggle = ref(false);
@@ -80,7 +79,7 @@ function bs_input_file() {
       <div class="row">
         <div class="col-md-3">
           <div class="info-box p-0">
-            <span class="info-box-icon" :class="{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' } border-rad-zero"><i class="fas fa-ticket-alt"></i></span>
+            <span class="info-box-icon border-rad-zero" :class="{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' }"><i class="fas fa-ticket-alt"></i></span>
             <div class="info-box-content">
               <!-- <span class="info-box-text">{{ ticket.ticketmaskid }}</span> -->
               <span class="info-box-number">{{ ticket.status }}</span>
