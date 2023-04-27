@@ -3,8 +3,8 @@ import { storeToRefs } from 'pinia';
 import { formatDate } from '@/helpers/date';
 import { useTicketsStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
-import $ from 'jquery';
-import from '/lib/select2/dist/js/select2.full.min.js';
+//import $ from 'jquery';
+//import from '/lib/select2/dist/js/select2.full.min.js';
 
 const showToggle = ref(false);
 
