@@ -201,15 +201,15 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
 
 const webuzoTableExists = computed(() => {
   return (
-    extraInfoTables.hasOwnProperty('webuzo') &&
-    !isEmpty(extraInfoTables.webuzo)
+    extraInfoTables.value.hasOwnProperty('webuzo') &&
+    !isEmpty(extraInfoTables.value.webuzo)
   );
 });
 
 const addonsTableExists = computed(() => {
   return (
-    extraInfoTables.hasOwnProperty('addons') &&
-    !isEmpty(extraInfoTables.addons)
+    extraInfoTables.value.hasOwnProperty('addons') &&
+    !isEmpty(extraInfoTables.value.addons)
   );
 });
 

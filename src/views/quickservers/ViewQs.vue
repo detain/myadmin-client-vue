@@ -109,7 +109,7 @@ loadQs(id, serviceType, settings, serviceInfo)
 
 const isCollapsed = ref(false);
 
-const diskPercentage = Math.round((serviceMaster.qs_hdfree / serviceMaster.qs_hdsize) * 100);
+const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster.value.qs_hdsize) * 100);
 </script>
 
 <template>

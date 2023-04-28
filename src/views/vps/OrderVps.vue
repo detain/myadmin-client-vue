@@ -4,15 +4,15 @@ import { ref, computed } from 'vue'
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
 const packageName = computed(() => {
-  if (pkg) {
-    return pkg.services_name
+  if (pkg.value) {
+    return pkg.value.services_name
   } else {
     return ':'
   }
 });
 
 const totalCost = computed(() => {
-  return currencySymbol + totalCostDisplay.toFixed(2)
+  return currencySymbol + totalCostDisplay.value.toFixed(2)
 });
   var currencySymbol = "$";
   var templates = {

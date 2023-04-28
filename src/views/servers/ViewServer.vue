@@ -118,7 +118,7 @@ const filteredSwitchports = computed(() => {
   }
 
   return networkInfo.switchports.filter(
-    (switchport) => switchport.assetId === assetId && switchport.vlanId in asset.vlans
+    (switchport) => switchport.assetId === assetId && switchport.vlanId in asset.value.vlans
   );
 });
 

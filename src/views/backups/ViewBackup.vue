@@ -106,16 +106,16 @@ const loadBackup = async (id, serviceType, settings, serviceInfo) => {
 
 loadBackup(id, serviceType, settings, serviceInfo)
 
-const titleField = ref(settings.TITLE_FIELD);
+const titleField = ref(settings.value.TITLE_FIELD);
 const billingStatus = computed(() => {
-  const status = serviceInfo[`${settings.PREFIX}_status`];
+  const status = serviceInfo[`${settings.value.PREFIX}_status`];
   if (status === 'active') return 'Active';
   if (status === 'pending') return 'Pending';
   if (status === 'expired' || status === 'canceled') return 'Expired/Canceled';
   return '';
 });
 const billingStatusClass = computed(() => {
-  const status = serviceInfo[`${settings.PREFIX}_status`];
+  const status = serviceInfo[`${settings.value.PREFIX}_status`];
   if (status === 'active') return 'bg-green';
   if (status === 'pending') return 'bg-orange';
   if (status === 'expired' || status === 'canceled') return 'bg-red';
