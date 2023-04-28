@@ -7,7 +7,7 @@ const custid = ref("2773");
 const ima = ref("client");
 const step = ref("order_form");
 const cpu = ref(34);
-const cpu_li = ref({
+const cpuLi = ref({
     34: {
         id: "34",
         price: 500,
@@ -414,8 +414,8 @@ const cpu_li = ref({
         monthly_price_display: "$425.00"
     }
 });
-const config_li = ref({
-    cpu_li: {
+const configLi = ref({
+    cpuLi: {
         34: {
             id: "34",
             price: 500,
@@ -3142,7 +3142,7 @@ const config_li = ref({
         }
     ]
 });
-const field_label = ref({
+const fieldLabel = ref({
     bandwidth: {
         name: "Bandwidth",
         active: 1
@@ -3169,7 +3169,7 @@ const field_label = ref({
         name: "Hard Drives"
     }
 });
-const cpu_cores = ref({
+const cpuCores = ref({
     4: {
         34: {
             id: "34",
@@ -3930,7 +3930,7 @@ const cpu_cores = ref({
                             <div class="form-group row">
                                 <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-11">
-                                    <div v-for="(cpu_details, id) in cpu_li" :key="id" class="icheck-success d-inline w-100">
+                                    <div v-for="(cpu_details, id) in cpuLi" :key="id" class="icheck-success d-inline w-100">
                                         <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" :checked="cpu === id" @change="updatePrice">
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
@@ -4001,7 +4001,7 @@ const cpu_cores = ref({
                         </div>
                     </div>
                     <div class="card-body">
-                        <div v-for="(cpu_det, core) in cpu_cores" :key="core">
+                        <div v-for="(cpu_det, core) in cpuCores" :key="core">
                             <a href="javascript:void(0);" :id="'core-' + core" data-toggle="modal" :data-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px;">{{ core }}-Cores</a>
                             <div :id="'coreM-' + core" class="modal fade">
                                 <div class="modal-dialog modal-lg">
@@ -4072,7 +4072,7 @@ const cpu_cores = ref({
                             <input id="cpu" type="hidden" name="cpu" :value="form_values.cpu">
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order">
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
-                                <template v-if="inputName !== 'cpu_li'">
+                                <template v-if="inputName !== 'cpuLi'">
                                     <template v-if="['memory_li', 'hd_li'].includes(inputName)">
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-right">

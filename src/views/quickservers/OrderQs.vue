@@ -6,7 +6,7 @@ const currency = ref("USD");
 const currencySymbol = ref("$");
 const custid = ref(2773);
 const ima = ref("client");
-const qs_id = ref("383");
+const qsId = ref("383");
 const serverDetails = ref({
     383: {
         cpu: "Intel(R) Xeon(R) CPU E3-1270 V2 @ 3.50GHz",

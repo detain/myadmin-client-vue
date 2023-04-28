@@ -6,9 +6,7 @@ const currency = ref("USD");
 const currencySymbol = ref("$");
 const custid = ref(2773);
 const ima = ref("client");
-const select_package = ref(
-    '<select id="backupselect" name="backup" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10831" >Storage ST 100</option><option value="10838" >Storage ST 200</option><option value="10845" >Storage ST 300</option><option value="10852" >Storage ST 400</option><option value="10859" >Storage ST 500</option><option value="10866" >Storage ST 600</option><option value="11006" >Storage ST 700</option></select>'
-);
+const selectPackage = ref('<select id="backupselect" name="backup" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10831" >Storage ST 100</option><option value="10838" >Storage ST 200</option><option value="10845" >Storage ST 300</option><option value="10852" >Storage ST 400</option><option value="10859" >Storage ST 500</option><option value="10866" >Storage ST 600</option><option value="11006" >Storage ST 700</option></select>');
 const rootpass = ref("4*MXXb&f");
 const period = ref(1);
 const coupon = ref("");

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const step = ref("order_form");
-const package_id = ref("");
+const packageId = ref("");
 const packages = ref({
     1001: {
         services_id: "1001",
@@ -215,7 +215,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
 </script>
 
 <template>
-    <template v-if="!step || step == 'orderform'">
+    <template v-if="!step || step == 'order_form'">
         <form id="website_form" method="post" class="website_form_init" :action="formAction">
             <div class="row justify-content-center">
                 <div class="col-md-7">
@@ -246,7 +246,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
                                                                     <div class="icheck-success">
-                                                                        <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" :name="pkg.services_name" :value="pkg.services_id" :checked="package_id === pkg.services_id" @change="updatePrice(true)" />
+                                                                        <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" :name="pkg.services_name" :value="pkg.services_id" :checked="packageId === pkg.services_id" @change="updatePrice(true)" />
                                                                         <label :for="pkg.services_name">
                                                                             {{ pkg.services_name }}<br />
                                                                             <div class="text-sm text-muted font-italic mt-1">
@@ -305,7 +305,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
                                                                 <div class="icheck-success">
-                                                                    <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="(package_id && package_id === pkg.services_id)" @change="updatePrice(true)">
+                                                                    <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="(packageId && packageId === pkg.services_id)" @change="updatePrice(true)">
                                                                     <label :for="pkg.services_name">
                                                                         {{ pkg.services_name }}<br>
                                                                         <div class="text-sm text-muted font-italic mt-1">
@@ -341,14 +341,14 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                             </div>
                             <template v-else>
                                 <template v-for="pkg in packages">
-                                    <div v-if="pkg.services_id == package_id" class="form-group row" :key="pkg.services_id">
+                                    <div v-if="pkg.services_id == packageId" class="form-group row" :key="pkg.services_id">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="package_id == pkg.services_id" @change="updatePrice(true)">
+                                                            <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="packageId == pkg.services_id" @change="updatePrice(true)">
                                                             <label :for="pkg.services_name">
                                                                 {{ pkg.services_name }}<br>
                                                                 <div class="text-sm text-muted font-italic mt-1">
@@ -393,7 +393,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                         </div>
                         <div class="card-body text-md">
                             <div class="row mb-3">
-                                <div class="col-md-6 package_name">{{ pkg.services_name }}</div>
+                                <div class="col-md-6 package_name"><template v-if="packages[web]">{{ packages[web].services_name }}</template></div>
                                 <div class="col text-right period">1 Month</div>
                             </div>
                             <div class="row mb-3">
@@ -420,7 +420,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                         <div class="card-body text-md">
                             <div class="form-group row">
                                 <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
-                                <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="formValues.hostname" required @keyup="updateDomain" @change="updateDomain" />
+                                <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="updateDomain" @change="updateDomain" />
                                     <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                 </div>
                             </div>
@@ -435,7 +435,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                             <div class="form-group row">
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
-                                    <select name="period" id="period" class="form-control form-control-sm select2" v-model="formValues.period" @change="updatePrice">
+                                    <select name="period" id="period" class="form-control form-control-sm select2" v-model="period" @change="updatePrice">
                                         <option value="1">Monthly</option>
                                         <option value="3">3 Months</option>
                                         <option value="6">6 Months (5% off)</option>
@@ -447,7 +447,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                             </div>
                             <div id="coupon_row" class="form-group row">
                                 <label class="col-md-12">Coupon Code</label>
-                                <div class="col-md-12"><input type="text" class="form-control form-control-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="formValues.coupon" @change="updateCoupon" v-if="formValues.coupon" /></div>
+                                <div class="col-md-12"><input type="text" class="form-control form-control-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @change="updateCoupon" v-if="coupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="">
                                     <span class="text-sm text-muted" id="coupon_text" style="position: relative;top: 2px;"></span>
