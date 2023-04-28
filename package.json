@@ -166,7 +166,6 @@
     "buffer-equal": "1.0.0",
     "type": "2.7.2",
     "type-fest": "2.19.0",
-    "ajv": "8.12.0",
     "json-schema-traverse": "1.0.0",
     "mimic-fn": "3.1.0",
     "find-up": "5.0.0",
@@ -186,6 +185,7 @@
     "minipass": "4.2.8",
     "mkdirp": "1.0.4",
     "espree": "9.5.1",
-    "yaml": "2.2.2"
+    "yaml": "2.2.2",
+    "ajv": "6.12.6"
   }
 }
