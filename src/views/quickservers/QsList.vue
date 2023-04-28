@@ -54,7 +54,7 @@ onMounted(function () {
 
 const loadQuickservers = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/quickservers');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/qs');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -138,10 +138,10 @@ loadQuickservers(data)
                         <td>{{ row.qs_id }}</td>
                         <td>{{ row.qs_name }}</td>
                         <td>{{ row.cost }}</td>
-                        <td><router-link :to="'quickservers/' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
+                        <td><router-link :to="'/qs/' + row.qs_id">{{ row.qs_hostname }}</router-link></td>
                         <td>{{ row.qs_status }}</td>
                         <td>{{ row.qs_comment }}</td>
-                        <td><router-link :to="'quickservers/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'/qs/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>
