@@ -74,7 +74,7 @@
     "datatables.net-vue3": "*",
     "electron-log": "*",
     "electron-store": "*",
-    "electron-updater": "*",
+    "electron-updater": "^4.0",
     "font-awesome": "FortAwesome/Font-Awesome#^4.7",
     "font-awesome-animation": "l-lin/font-awesome-animation#master",
     "jquery": ">=3.6.0",
