@@ -9,8 +9,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Mail');
-layoutStore.setBreadcrums({'home': 'Home', 'Mail': 'Mail'})
-layoutStore.addBreadcrum('mail/'+id, 'View Mail '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
+layoutStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
 
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,

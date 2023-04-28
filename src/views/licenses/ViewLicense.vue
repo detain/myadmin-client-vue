@@ -11,8 +11,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View License');
-layoutStore.setBreadcrums({'home': 'Home', 'Licenses': 'Licenses'})
-layoutStore.addBreadcrum('license/'+id, 'View License '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
+layoutStore.addBreadcrum('/licenses/'+id, 'View License '+id);
 
 const serviceOverviewExtra = ref({});
 const settings = ref({
@@ -92,7 +92,7 @@ const errors = ref(false);
 
 const loadLicense = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/license/' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

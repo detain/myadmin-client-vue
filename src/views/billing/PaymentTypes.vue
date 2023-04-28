@@ -5,7 +5,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Payment Types');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Payment Types'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
 const country_select = ref('');
 const cc_arr = ref([]);
 const pymt_method = ref('paypal');

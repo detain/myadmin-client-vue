@@ -11,8 +11,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Qs');
-layoutStore.setBreadcrums({'home': 'Home', 'Rapid Deploy Servers': 'Rapid Deploy Servers'})
-layoutStore.addBreadcrum('qs/'+id, 'View Qs '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
+layoutStore.addBreadcrum('/qs/'+id, 'View Qs '+id);
 
 const serviceMaster = ref({});
 const serviceOverviewExtra = ref({});

@@ -12,7 +12,7 @@ const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 
 layoutStore.setPageHeading('Contact Info');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Contact Info'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
 
 async function onSubmit(values) {
     try {

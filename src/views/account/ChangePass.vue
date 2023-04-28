@@ -7,7 +7,7 @@ import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Change Password');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Change Password'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});
 
 const password = ref('')
 const newPassword = ref('')

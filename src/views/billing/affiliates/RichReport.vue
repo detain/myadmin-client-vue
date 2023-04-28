@@ -5,7 +5,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - RichReport');
-layoutStore.setBreadcrums({'home': 'Home', '/affiliate': 'Affiliate', '': 'RichReport'});
+layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'RichReport'});
 
 
 onMounted(() => {

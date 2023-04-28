@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Mail Services List');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Mail'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Mail'});
 
 DataTable.use(DataTablesCore);
 

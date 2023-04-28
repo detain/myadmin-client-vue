@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Storage / Backup List');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Storage'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Storage'});
 
 DataTable.use(DataTablesCore);
 

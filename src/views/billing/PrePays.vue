@@ -5,7 +5,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('PrePaid Funds');
-layoutStore.setBreadcrums({'home': 'Home', '': 'PrePays'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'PrePays'});
 
 const page = ref(1);
 const csrf_token = ref('');

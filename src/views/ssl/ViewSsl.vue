@@ -11,8 +11,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Ssl');
-layoutStore.setBreadcrums({'home': 'Home', 'SSL': 'SSL'})
-layoutStore.addBreadcrum('ssl/'+id, 'View Ssl '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
+layoutStore.addBreadcrum('/ssl/'+id, 'View Ssl '+id);
 
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,

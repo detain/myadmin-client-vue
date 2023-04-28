@@ -11,7 +11,7 @@ import 'datatables.net-responsive';
 
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Domain Registrations List');
-layoutStore.setBreadcrums({'home': 'Home', 'domains': 'Domains'})
+layoutStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
 
 DataTable.use(DataTablesCore);
 

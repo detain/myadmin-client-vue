@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('VPS List');
-layoutStore.setBreadcrums({'home': 'Home', '': 'VPS List'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
 
 DataTable.use(DataTablesCore);
 

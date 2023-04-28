@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Rapid Deploy Servers List');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Quickservers'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Quickservers'});
 
 DataTable.use(DataTablesCore);
 

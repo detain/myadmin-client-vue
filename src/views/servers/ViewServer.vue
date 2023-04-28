@@ -11,8 +11,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Server');
-layoutStore.setBreadcrums({'home': 'Home', 'Servers': 'Servers'})
-layoutStore.addBreadcrum('server/'+id, 'View Server '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
+layoutStore.addBreadcrum('/servers/'+id, 'View Server '+id);
 
 const ipmiLease = ref({});
 const asset = ref({});

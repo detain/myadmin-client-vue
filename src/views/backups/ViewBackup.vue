@@ -11,8 +11,8 @@ const pkg = ref('');
 const link_display = ref(false);
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('View Backup');
-layoutStore.setBreadcrums({'home': 'Home', 'Storage': 'Storage'})
-layoutStore.addBreadcrum('backup/'+id, 'View Backup '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
+layoutStore.addBreadcrum('/backups/'+id, 'View Backup '+id);
 
 const serviceMaster = ref({});
 const settings = ref({

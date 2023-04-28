@@ -11,8 +11,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Website');
-layoutStore.setBreadcrums({'home': 'Home', 'Websites': 'Websites'})
-layoutStore.addBreadcrum('website/'+id, 'View Website '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
+layoutStore.addBreadcrum('/websites/'+id, 'View Website '+id);
 
 const serviceMaster = ref({});
 const settings = ref({

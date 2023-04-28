@@ -9,8 +9,8 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Domain');
-layoutStore.setBreadcrums({'home': 'Home', 'domains': 'Domains'})
-layoutStore.addBreadcrum('domain/'+id, 'View Domain '+id);
+layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
+layoutStore.addBreadcrum('/domain/'+id, 'View Domain '+id);
 
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
@@ -307,7 +307,7 @@ const autoRenew = ref("Disabled");
 
 const loadDomain = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domain/' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

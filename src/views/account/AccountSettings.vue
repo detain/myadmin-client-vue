@@ -7,7 +7,7 @@ import { useAuthStore, useLayoutStore } from "@/stores";
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Account Settings');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Account Settings'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
 
 const schema = Yup.object().shape({
     currentPassword: Yup.string(),

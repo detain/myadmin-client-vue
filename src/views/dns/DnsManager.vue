@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('DNS Manager');
-layoutStore.setBreadcrums({'home': 'Home', '': 'DNS Manager'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});
 
 DataTable.use(DataTablesCore);
 

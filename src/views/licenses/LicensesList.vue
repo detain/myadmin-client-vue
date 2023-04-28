@@ -11,7 +11,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Licensing List');
-layoutStore.setBreadcrums({'home': 'Home', '': 'Licenses'});
+layoutStore.setBreadcrums({'/home': 'Home', '': 'Licenses'});
 
 DataTable.use(DataTablesCore);
 
