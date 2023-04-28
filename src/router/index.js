@@ -5,10 +5,10 @@ import { TicketsList } from '@/views/tickets'
 import dnsRoutes from './dns.routes'
 import { DnsManager, DnsEditor } from '@/views/dns'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
-import { Affiliate  } from '@/views/billing/affiliates'
 import { ContactInfo, AccountSettings, ChangePass } from '@/views/account'
 import accountRoutes from './account.routes'
 import usersRoutes from './users.routes'
+import affiliateRoutes from './affiliate.routes'
 import domainRoutes from './domain.routes'
 import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains';
 import backupRoutes from './backup.routes'
@@ -37,8 +37,8 @@ export const router = createRouter({
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
-    { path: '/affiliate', component: Affiliate },
     { path: '/view_invoices', component: InvoicesList },
+    { ...affiliateRoutes },
     { ...usersRoutes },
     { ...accountRoutes },
     { path: '/contact_info', component: ContactInfo },
