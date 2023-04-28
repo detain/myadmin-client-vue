@@ -17,7 +17,7 @@ const menus = ref({
         { link: '/mail', icon: 'fa fa-envelope-open-text', text: 'Mail' },
         { link: '/licenses', icon: 'fa fa-id-card', text: 'Licenses' },
         { link: '/websites', icon: 'far fa-window-maximize', text: 'Webhosting' },
-        { link: '/quickservers', icon: 'fa fa-cloud', text: 'Rapid Deploy Servers' },
+        { link: '/qs', icon: 'fa fa-cloud', text: 'Rapid Deploy Servers' },
         { link: '/servers', icon: 'fa fa-server', text: 'Servers' },
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
         { link: '/tickets_list', icon: 'fa fa-ticket', text: 'Tickets' },

@@ -18,7 +18,7 @@ import { LicensesList, ViewLicense, OrderLicense } from '@/views/licenses';
 import mailRoutes from './mail.routes'
 import { MailList, ViewMail, OrderMail } from '@/views/mail';
 import qsRoutes from './qs.routes'
-import { QuickserversList, ViewQs, OrderQs } from '@/views/quickservers';
+import { QsList, ViewQs, OrderQs } from '@/views/quickservers';
 import serverRoutes from './server.routes'
 import { ServersList, ViewServer, OrderServer } from '@/views/servers';
 import sslRoutes from './ssl.routes'
@@ -68,7 +68,7 @@ export const router = createRouter({
     { path: '/order_mail', component: OrderMail },
     { path: '/mail_order', component: OrderMail },
     { ...qsRoutes },
-    { path: '/view_quickservers_list', component: QuickserversList },
+    { path: '/view_quickservers_list', component: QsList },
     { path: '/view_qs', component: ViewQs },
     { path: '/order_qs', component: OrderQs },
     { path: '/qs_order', component: OrderQs },
