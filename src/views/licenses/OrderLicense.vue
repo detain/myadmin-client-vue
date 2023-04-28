@@ -1,4 +1,48 @@
 <script setup>
+import { ref, computed } from 'vue'
+
+const ima = ref("client");
+const step = ref("license_types");
+const getLicenses = ref({
+    directadmin: {
+        name: "DirectAdmin",
+        description: "DirectAdmin is a graphical web-based web hosting control panel allowing administration of websites through a web browser. The software is configurable to enable standalone, reseller, and shared web hosting from a single instance.",
+        image: "images/directadmin.png",
+        order: 1
+    },
+    softaculous: {
+        name: "Softaculous",
+        description: "Softaculous is a commercial script library that automates the installation of commercial and open source web applications to a website. Softaculous scripts are executed from the administration area of a website control panel, typically via an interface tool such as cPanel, Plesk, H-Sphere, DirectAdmin and InterWorx.",
+        image: "images/softaculous.png",
+        order: 2
+    },
+    parallels: {
+        name: "Parallel Plesk",
+        description: "Professional control panel that gives web-designers, web-masters and website owners tools to manage their servers, sites and applications. The only hosting solution that will grow with your business from a single site and servers to a multi-server cloud solution and millions of users. The professionals choice for growing businesses.",
+        image: "images/plesk12.png",
+        order: 3
+    },
+    cloudlinux: {
+        name: "CloudLinux",
+        description: "CloudLinux OS is a commercial Linux distribution marketed to shared hosting providers. It is developed by software company CloudLinux, Inc. CloudLinux OS is based on the CentOS operating system; it uses the OpenVZ kernel and the rpm package manager.",
+        image: "images/cloudlinux.png",
+        order: 4
+    },
+    cpanel: {
+        name: "cPanel",
+        description:
+            'cPanel is a web hosting control panel software developed by cPanel, LLC. It provides a graphical interface and automation tools designed to simplify the process of hosting a web site to the website owner or the "end user". It enables administration through a standard web browser using a three-tier structure.',
+        image: "images/cpanel.png",
+        order: 5
+    },
+    litespeed: {
+        name: "LiteSpeed",
+        description: "LiteSpeed Web Server, is a proprietary web server software. It is the 4th most popular web server, estimated to be used by 10% of websites as of July 2021. LSWS is developed by privately held LiteSpeed Technologies.",
+        image: "images/litespeed.png",
+        order: 6
+    }
+});
+const csrf_token = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719df40b426a61ab0b4fd8a968520eb1bdd89569c89440310ff80897c5fbedde1d196258a307");
 </script>
 
 <template>

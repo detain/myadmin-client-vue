@@ -1,4 +1,6 @@
+
 $(document).ready(function() {
+    /*
     $(".pr-password").passwordRequirements({});
     $('.select2').select2();
     //Initialize Select2 Elements
@@ -8,6 +10,7 @@ $(document).ready(function() {
     });
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
+    */
     //Onhover add shaddow
     $(".shadow-hover").hover(function() {
         $(this).removeClass('shadow-sm');

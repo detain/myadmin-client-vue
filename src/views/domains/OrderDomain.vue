@@ -1,4 +1,11 @@
 <script setup>
+import { ref, computed } from 'vue'
+
+const display = ref("step1");
+const csrfToken = ref( "8e8105873dbba7b1fbe115499cea96e17aecb5194610d3d9815fdb380105dc5e0775943e54b577b387e5aef13f1b62d2a136ba26da80eb8870f2bd115679b1a5");
+const hostname = ref("");
+const ima = ref("client");
+const custid = ref("2773");
 </script>
 
 <template>
@@ -164,7 +171,7 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname + (ima === 'admin' ? '&custid=' + custid : '')">
-                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <template v-if="whois_cost">
                                 <div class="form-group row">
                                     <label for="create_as" class="col-sm-5 col-form-label">
@@ -278,13 +285,13 @@
                     </div>
                     <div class="card-body">
                         <form method="post" :action="`domain_order?hostname=${hostname}&type=${domain_result.status === 'available' ? 'register' : domain_result.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
-                            <input type="hidden" name="csrf_token" :value="csrf_token" />
+                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <template v-for="(field_value, field) in final_post">
                                 <input type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
                             </template>
                         </form>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname + (ima === 'admin' ? '&custid=' + custid : '')">
-                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input v-for="(value, key) in final_post" :key="key" type="hidden" :name="key" :value="value">
                             <table class="table table-sm table-bordered">
                                 <thead>

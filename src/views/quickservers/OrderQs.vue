@@ -1,4 +1,90 @@
 <script setup>
+import { ref, computed } from 'vue'
+
+const step = ref("orderform");
+const currency = ref("USD");
+const currencySymbol = ref("$");
+const custid = ref(2773);
+const ima = ref("client");
+const qs_id = ref("383");
+const serverDetails = ref({
+    383: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1270 V2 @ 3.50GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$49.00"
+    },
+    384: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1270 V2 @ 3.50GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$49.00"
+    },
+    386: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1270 V2 @ 3.50GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$49.00"
+    },
+    387: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1270 V2 @ 3.50GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$49.00"
+    },
+    385: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1230 v3 @ 3.30GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$54.00"
+    },
+    235: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1230 V2 @ 3.30GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$60.00"
+    },
+    377: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1230 v5 @ 3.40GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$79.00"
+    },
+    378: {
+        cpu: "Intel(R) Xeon(R) CPU E3-1230 v5 @ 3.40GHz",
+        ram: "30GB",
+        hd: "1760GB",
+        cores: "8",
+        cost: "$79.00"
+    },
+    374: {
+        cpu: "Intel(R) Xeon(R) CPU E5-1620 v4 @ 3.50GHz",
+        ram: "60GB",
+        hd: "3632GB",
+        cores: "8",
+        cost: "$130.00"
+    }
+});
+const version = ref({ "centosstream-8": "8 Stream (64 bits)", "centos-7.7": "7.7 (64 bits)"
+});
+const distroSel = ref({
+    Almalinux: "Almalinux",
+    CentOS: "CentOS",
+    Debian: "Debian",
+    Fedora: "Fedora",
+    FreePBX: "FreePBX", "Empty Disk": "Empty Disk",
+    OpenSUSE: "OpenSUSE",
+    Ubuntu: "Ubuntu"
+});
+const rootpass = ref("KcmGt%b8");
+const csrfToken = ref( "7892f61c1ce4897a5a418b2cd40cb869f4657c2c430fe3ca06045a8a101b3abf05957ca65d6e727b6cb85c9222ed771432aeec2860837049fc070c5609e22122");
 </script>
 
 <template>
@@ -20,7 +106,7 @@
                     <div class="card-body">
                         <form id="quickserver_form" method="post" class="quickserver_form_init" @submit.prevent="submitForm">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <input type="hidden" name="rootpass" v-model="rootPass">
+                            <input type="hidden" name="rootpass" v-model="rootpass">
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <table v-if="serverDetails.length > 0" class="table table-sm text-center">
@@ -76,7 +162,7 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Root Password</label>
-                                <input type="password" class="form-control form-control-sm" name="rootpass" id="mypassword" placeholder="Root Password" v-model="rootPass" />
+                                <input type="password" class="form-control form-control-sm" name="rootpass" id="mypassword" placeholder="Root Password" v-model="rootpass" />
                                 <small class="form-text text-muted">
                                     Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.
                                 </small>

@@ -1,7 +1,216 @@
 <script setup>
 import { ref } from 'vue'
 
-const web = ref('');
+const step = ref("order_form");
+const package_id = ref("");
+const packages = ref({
+    1001: {
+        services_id: "1001",
+        services_name: "cPanel Boost 2 Cores",
+        services_cost: "9.95",
+        services_category: "200",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "200",
+        services_field1: "",
+        services_field2: "plan=IS Boost 2 Cores",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "cPanel Web hosting package with 2x more resources over our standard web hosting package. ",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
+    },
+    1002: {
+        services_id: "1002",
+        services_name: "cPanel Boost 4 Cores",
+        services_cost: "19.95",
+        services_category: "200",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "200",
+        services_field1: "",
+        services_field2: "plan=IS Boost 4 Cores",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "cPanel Web hosting package with 4x more resources over our standard web hosting package. ",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
+    },
+    1026: {
+        services_id: "1026",
+        services_name: "ASP.NET Web Hosting",
+        services_cost: "8.00",
+        services_category: "202",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "202",
+        services_field1: "",
+        services_field2: "",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Windows web hosting package for running .NET and Microsoft SQL applications.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/windows-hosting.html"
+    },
+    1052: {
+        services_id: "1052",
+        services_name: "Web Hosting - cpanel",
+        services_cost: "2.50",
+        services_category: "200",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "200",
+        services_field1: "",
+        services_field2: "quota=unlimited,maxftp=unlimited,maxpark=unlimited,maxaddon=unlimited,bwlimit=unlimited",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "This Web hosting package comes with the cPanel control panel. We recommend using the Direct Admin control panel instead.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/cpanel-hosting.html"
+    },
+    11363: {
+        services_id: "11363",
+        services_name: "Web Hosting Direct Admin",
+        services_cost: "2.50",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "",
+        services_field2: "Standard",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Standard web hosting package powered by the Direct Admin control panel. This is the recommended package for WordPress and any other application.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/"
+    },
+    11370: {
+        services_id: "11370",
+        services_name: "DA BOOST 2 Cores",
+        services_cost: "9.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "",
+        services_field2: "Boost2",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Direct Admin Web hosting package with 2x more resources over our standard web hosting package.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
+    },
+    11377: {
+        services_id: "11377",
+        services_name: "DA BOOST 4 Cores",
+        services_cost: "19.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "",
+        services_field2: "Boost4",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Direct Admin Web hosting package with 4x more resources over our standard web hosting package.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
+    },
+    11384: {
+        services_id: "11384",
+        services_name: "DirectAdmin RS ONE",
+        services_cost: "19.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "reseller",
+        services_field2: "RSONE",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
+    },
+    11391: {
+        services_id: "11391",
+        services_name: "DirectAdmin RS TWO",
+        services_cost: "29.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "reseller",
+        services_field2: "RSTWO",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
+    },
+    11398: {
+        services_id: "11398",
+        services_name: "DirectAdmin RS THREE",
+        services_cost: "39.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "reseller",
+        services_field2: "RSTHREE",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
+    },
+    11405: {
+        services_id: "11405",
+        services_name: "DirectAdmin RS FOUR",
+        services_cost: "49.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "reseller",
+        services_field2: "RSFOUR",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
+    },
+    11412: {
+        services_id: "11412",
+        services_name: "DirectAdmin RS FIVE",
+        services_cost: "69.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "reseller",
+        services_field2: "RSFIVE",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
+        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
+    },
+    11440: {
+        services_id: "11440",
+        services_name: "DA BOOST X",
+        services_cost: "69.95",
+        services_category: "204",
+        services_ourcost: "0.00",
+        services_buyable: "1",
+        services_type: "206",
+        services_field1: "",
+        services_field2: "BoostX",
+        services_module: "webhosting",
+        services_html: "",
+        services_description: "Direct Admin Web hosting package with 10x more resources over our standard web hosting package.",
+        services_moreinfo_url: ""
+    }
+});
+const web = ref("");
+const currency = ref("USD");
+const currencySymbol = ref("$");
+const custid = ref(2773);
+const ima = ref("client");
+const hostname = ref("");
+const rootpass = ref("M5%ju3z4");
+const period = ref(1);
+const coupon = ref("");
+const csrfToken = ref( "a1001333715c3ed418e9e0ba87f28880f0f9864844a23c88b9316b2b10ed75093232b0022ce9c14ae1819d1986f90a89044b13584d577bee74cdcd8bdd3e634a");
+
 const formAction = web.value === '' ? 'order_website' : `order_website?website=${encodeURIComponent(web.value)}`
 </script>
 
@@ -264,11 +473,11 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                     </div>
                     <div class="card-body">
                         <form method="post" :action="'order_website' + (web ? '?website=' + web : '')" id="edit_order_form">
-                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input v-for="(field_value, field) in order_data.data" :key="field" :id="field" :type="(field === 'website' ? 'hidden' : 'hidden')" :name="field" :value="field_value">
                         </form>
                         <form method="post" class="website_form_confirm" :action="'order_website' + (web ? '?website=' + web : '')">
-                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input v-for="(field_value, field) in order_data.data" :key="field" :id="field" :type="(field === 'website' ? 'hidden' : 'hidden')" :name="field" :value="field_value">
                             <table class="table table-sm table-bordered">
                                 <thead>

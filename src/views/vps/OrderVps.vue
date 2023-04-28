@@ -1,6 +1,86 @@
 <script setup>
 import { ref, computed } from 'vue'
 
+const custid = ref("2773");
+const ima = ref("client");
+const platformArr = ref({
+    kvm: "KVM",
+    kvmstorage: "KVM Storage",
+    hyperv: "HyperV"
+});
+const getSlices = ref("");
+const getPlatform = ref("");
+const getLocation = ref("");
+const getVersion = ref("");
+const getVpsos = ref("");
+const hostname = ref("");
+const getCoupon = ref("");
+const stockStatus = ref({ "New Jersey": { "KVM Linux": '<span style="color:green;">✔</span>',
+        HyperV: '<span style="color:green;">✔</span>', "KVM Storage": '<span style="color:green;">✔</span>'
+    }, "Los Angeles": { "KVM Linux": '<span style="color:green;">✔</span>',
+        HyperV: '<span style="color:green;">✔</span>', "KVM Storage": '<span style="font-weight:bold;color:red;">X</span>'
+    }, "Equinix NY4": { "KVM Linux": '<span style="font-weight:bold;color:red;">X</span>',
+        HyperV: '<span style="font-weight:bold;color:red;">X</span>', "KVM Storage": '<span style="font-weight:bold;color:red;">X</span>'
+    }
+});
+const locations = ref({
+    1: "New Jersey",
+    2: "Los Angeles",
+    3: "Equinix NY4"
+});
+const slices = ref({
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
+    12: 12,
+    13: 13,
+    14: 14,
+    15: 15,
+    16: 16
+});
+const step = ref("orderform");
+const images = ref({
+    centos: "CentOS",
+    debian: "Debian",
+    fedora: "Fedora",
+    opensuse: "OpenSUSE",
+    oracle: "Oracle",
+    ubuntu: "Ubuntu",
+    windows: "Windows",
+    almalinux: "Almalinux",
+    none: "Empty Disk",
+    freepbx: "FreePBX"
+});
+const versionsel = ref({ "centosstream-8": "8 Stream", "centos-7.7": "7.7"
+});
+const billingCycle = ref({
+    1: "Monthly",
+    3: "3 Months",
+    6: "6 Months (5% off)",
+    12: "Yearly (10% off)",
+    24: "24 Months (15% off)",
+    36: "36 Months (20% off)"
+});
+const controlpanel = ref({
+    none: "None",
+    da: "DirectAdmin",
+    cpanel: "CPanel"
+});
+const ssdPrice = ref("3 per slice");
+const currencySymbol = ref("$");
+const rootpass = ref("%J2vak$5");
+const csrfToken = ref( "f0c400cae90dd374b7e7fd4c0fa36ca943922277de1be3eedb9f9d8c10e8204231feaa4303cbff563e69f4c8dd5f485c7a9e563cdfccf768b7e2a09401d65a68");
+const period = ref(1);
+
+
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
 const packageName = computed(() => {
@@ -14,7 +94,6 @@ const packageName = computed(() => {
 const totalCost = computed(() => {
   return currencySymbol + totalCostDisplay.value.toFixed(2)
 });
-  var currencySymbol = "$";
   var templates = {
     "openvz": {
       "centos": "<option value=\"centos-7-x86_64.tar.gz\">7 64bit<\/option><option value=\"centos-7-x86_64-minimal.tar.gz\">7 minimal 64bit<\/option><option value=\"centos-7-x86_64-cpanel.tar.gz\">7 cpanel 64bit<\/option><option value=\"centos-7-x86_64-breadbasket.tar.gz\">7 Webuzo 64bit<\/option>",
@@ -170,7 +249,7 @@ const totalCost = computed(() => {
                                 <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
                                     <select v-model="formValues.location" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="formValues.location === value || value === get_location">{{ label }}</option>
+                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="formValues.location === value || value === getLocation">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -178,7 +257,7 @@ const totalCost = computed(() => {
                                 <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select id="slices_sel" v-model="formValues.slices" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="formValues.slices === value || value === get_slices">{{ label }}</option>
+                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="formValues.slices === value || value === getSlices">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -186,7 +265,7 @@ const totalCost = computed(() => {
                                 <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="formValues.version" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="formValues.version === value || value === get_version">{{ label }}</option>
+                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="formValues.version === value || value === getVersion">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -194,7 +273,7 @@ const totalCost = computed(() => {
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select class="form-control select2" v-model="formValues.os" @change="updateVpsChoices">
-                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="formValues.os === value || value === get_vpsos">{{ desc }}</option>
+                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="formValues.os === value || value === getVpsos">{{ desc }}</option>
                                     </select>
                                 </div>
                             </div>
