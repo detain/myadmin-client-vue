@@ -92,7 +92,7 @@ const packageName = computed(() => {
 });
 
 const totalCost = computed(() => {
-  return currencySymbol + totalCostDisplay.value.toFixed(2)
+  return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
   var templates = {
     "openvz": {
