@@ -729,9 +729,9 @@
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*", "@types/node@^18.11.18":
-  version "18.16.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.1.tgz#5db121e9c5352925bb1f1b892c4ae620e3526799"
-  integrity sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==
+  version "18.16.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.2.tgz#2f610ea71034b3971c312192377f8a7178eb57f1"
+  integrity sha512-GQW/JL/5Fz/0I8RpeBG9lKp0+aNcXEaVL71c0D2Q0QHDTFvlYKT7an0onCUXj85anv7b4/WesqdfchLc0jtsCg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -836,10 +836,10 @@
   dependencies:
     "@volar/language-core" "1.4.1"
 
-"@volar/vue-language-core@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@volar/vue-language-core/-/vue-language-core-1.6.0.tgz#c21c758825c56977f65ab44b0e486587fd017b66"
-  integrity sha512-oyX+A4vclBlDB7UQtfAPraD6tt3nE+y9YNXdH+xjDi//Cokdx65PZnwLaiG+hURI6WgDn1ZQffTE1OeJtr786A==
+"@volar/vue-language-core@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@volar/vue-language-core/-/vue-language-core-1.6.1.tgz#41bcce44d543e461a4e1aa912af677ef862933a2"
+  integrity sha512-lIuxzvIx5U8MfoF+vrXNG1aZgmk8T0uyPEwI8g3EUJdESuU0qIKM84o+L4TUw77IQCYXiSefaJmsSSY87/VWnA==
   dependencies:
     "@volar/language-core" "1.4.1"
     "@volar/source-map" "1.4.1"
@@ -851,13 +851,13 @@
     muggle-string "^0.2.2"
     vue-template-compiler "^2.7.14"
 
-"@volar/vue-typescript@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@volar/vue-typescript/-/vue-typescript-1.6.0.tgz#e9929aec949a6c21c6052e79d8b037c61c166d3b"
-  integrity sha512-Ob5X/XICtwCFwHDo9zUhQuCIH4QmiDWX7DgQkuPBZkO18mirp27ymRJk2Q5EtHKedGQnTce/NRsoqjn8DnyLKw==
+"@volar/vue-typescript@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@volar/vue-typescript/-/vue-typescript-1.6.1.tgz#788b7d454e9ba66ff83695ecc2e17939e5ac9222"
+  integrity sha512-5mhG6Lv2niq/AGNvHy4RSAGlJhkR+EcH7zRQ19JlffzhWDVXEdDp8luSSabCkrJzejXIMh0rsTGlKy2EFYy7vQ==
   dependencies:
     "@volar/typescript" "1.4.1"
-    "@volar/vue-language-core" "1.6.0"
+    "@volar/vue-language-core" "1.6.1"
 
 "@vue/compiler-core@3.2.47":
   version "3.2.47"
@@ -1297,9 +1297,9 @@ autoprefixer@*:
     postcss-value-parser "^4.2.0"
 
 axios@*:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.6.tgz#1ace9a9fb994314b5f6327960918406fa92c6646"
-  integrity sha512-PEcdkk7JcdPiMDkvM4K6ZBRYq9keuVJsToxm2zQIM70Qqo2WHTdJZMXcG9X+RmRp2VPNUQC8W1RAGbgt6b1yMg==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.4.0.tgz#38a7bf1224cd308de271146038b551d725f0be1f"
+  integrity sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -2547,9 +2547,9 @@ electron-store@*:
     type-fest "^2.17.0"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.374"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.374.tgz#091b2de9d80b970f9b5e689675ea62622cd1d74b"
-  integrity sha512-dNP9tQNTrjgVlSXMqGaj0BdrCS+9pcUvy5/emB6x8kh0YwCoDZ0Z4ce1+7aod+KhybHUd5o5LgKrc5al4kVmzQ==
+  version "1.4.376"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.376.tgz#a771d6c4db028634df126348a4f94075e07e7f65"
+  integrity sha512-TFeOKd98TpJzRHkr4Aorn16QkMnuCQuGAE6IZ0wYF+qkbSfMPqjplvRppR02tMUpVxZz8nyBNvVm9lIZsqrbPQ==
 
 electron-updater@^4.0:
   version "4.6.5"
@@ -3771,24 +3771,12 @@ jquery@^2.1.2:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
   integrity sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==
 
-jquery@~1.11.3:
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.11.3.tgz#dd8b74278b27102d29df63eae28308a8cfa1b583"
-  integrity sha512-pHM/XLofp0FJc0/0AsRm8q/5ob+a1kno+vfclXGozaMBPv3qD7Xq19loECVcBB4MOLdygnyneQMPTsH5QiVNBQ==
-
-jqvmap-novulnerability@^1.5.1:
+jqvmap-novulnerability@>=1.5.1, jqvmap-novulnerability@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/jqvmap-novulnerability/-/jqvmap-novulnerability-1.5.1.tgz#140c42623ebbe9b9076ea2dd3b8d155fe9f38ae7"
   integrity sha512-O6Jr7AGiut9iNJMelPdy8pH83tNXadOqmhJm5FZy9gtaZ5uuhZK3VNu+YLFuTpXeZI8YXUvlFUYbJJi5XHA+tw==
   dependencies:
     jquery "^3.4.0"
-
-jqvmap@*:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/jqvmap/-/jqvmap-1.5.1.tgz#1670a731d02386373da4cfaebd4db0eb634d4cfb"
-  integrity sha512-Pb3KiNsjd4oAcVyO5WDTsSYvozPx1XXdcYZMP7piZLs8hJ74PDwF4TiWGeaAnWAkTc8i+IDMXk0U/A/ATOsYwQ==
-  dependencies:
-    jquery "~1.11.3"
 
 js-sdsl@^4.1.4:
   version "4.4.0"
@@ -5849,12 +5837,12 @@ vue-template-compiler@^2.7.14:
     he "^1.2.0"
 
 vue-tsc@*:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.6.0.tgz#42b582ddb0d5093e02b02484dee806d518bbe559"
-  integrity sha512-JO8Hmc/ZL8pEXtYsUuMFHIvpu5zqtBLtKBp6CRq2O0JVgrRGqYmVIq9v2R7LMVhMo1LhJEvPBWcE24w30mUvXQ==
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.6.1.tgz#9fbc3ee8ba643c41e051c4f04b3af847b7b6ef59"
+  integrity sha512-cKKKrv98MdU9kgd434fkjcIpU7a5bUflhklF9usf/GzebjmZpaht7tYGm/MNdBz7V9icySceCzCr3RiG02mOJg==
   dependencies:
-    "@volar/vue-language-core" "1.6.0"
-    "@volar/vue-typescript" "1.6.0"
+    "@volar/vue-language-core" "1.6.1"
+    "@volar/vue-typescript" "1.6.1"
     semver "^7.3.8"
 
 vue@>=3.2.47:
@@ -5998,9 +5986,9 @@ yargs-parser@^21.1.1:
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
 yargs@^17.5.1, yargs@^17.7.1:
-  version "17.7.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
-  integrity sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==
+  version "17.7.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.2.tgz#991df39aca675a192b816e1e0363f9d75d2aa269"
+  integrity sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
   dependencies:
     cliui "^8.0.1"
     escalade "^3.1.1"

@@ -104,7 +104,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 @import '/css/home_new.css?20180104';
 @import '/css/home.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'jqvmap/dist/jqvmap.min.css';
+@import 'jqvmap-novulnerability/dist/jqvmap.min.css';
 @import 'admin-lte/dist/css/adminlte.min.css';
 @import '/templates/menu/dark/menu.css';
 @import '/css/hide_printed_links.css';
