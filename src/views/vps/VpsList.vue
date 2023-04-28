@@ -56,7 +56,7 @@ onMounted(function () {
 
 const loadVpsList = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps');
         console.log('api success');
         console.log(response);
         data.value = response;

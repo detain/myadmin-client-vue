@@ -51,7 +51,7 @@ onMounted(function () {
 
 const loadDns = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns_manager');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns');
         console.log('api success');
         console.log(response);
         data.value = response;

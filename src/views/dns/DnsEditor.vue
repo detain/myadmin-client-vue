@@ -7,6 +7,10 @@ import DataTablesCore from 'datatables.net';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const id = route.params.id;
 
 DataTable.use(DataTablesCore);
 
@@ -44,9 +48,9 @@ onMounted(function () {
   dt = table.value.dt;
 });
 
-const loadDns = async (data) => {
+const loadDns = async (id, data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns_manager');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns/'+id);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -56,7 +60,7 @@ const loadDns = async (data) => {
     }
 };
 
-loadDns(data)
+loadDns(id, data)
 </script>
 
 <template>

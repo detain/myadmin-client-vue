@@ -54,7 +54,7 @@ onMounted(function () {
 
 const loadQuickservers = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/quickservers_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/quickservers');
         console.log('api success');
         console.log(response);
         data.value = response;

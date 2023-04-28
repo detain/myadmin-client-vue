@@ -53,7 +53,7 @@ onMounted(function () {
 
 const loadSsl = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/ssl_certs_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/ssl');
         console.log('api success');
         console.log(response);
         data.value = response;

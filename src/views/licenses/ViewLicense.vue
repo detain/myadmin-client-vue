@@ -92,7 +92,7 @@ const errors = ref(false);
 
 const loadLicense = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_license?id=' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/license/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

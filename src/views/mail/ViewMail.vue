@@ -89,7 +89,7 @@ const errors = ref(false);
 
 const loadMail = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_mail?id=' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

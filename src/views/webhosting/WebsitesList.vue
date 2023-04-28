@@ -54,7 +54,7 @@ onMounted(function () {
 
 const loadWebsites = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites');
         console.log('api success');
         console.log(response);
         data.value = response;

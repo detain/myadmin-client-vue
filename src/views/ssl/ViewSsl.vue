@@ -91,7 +91,7 @@ const errors = ref(false);
 
 const loadSsl = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_ssl?id=' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/ssl/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

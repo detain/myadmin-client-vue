@@ -53,7 +53,7 @@ onMounted(function () {
 
 const loadMail = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail');
         console.log('api success');
         console.log(response);
         data.value = response;

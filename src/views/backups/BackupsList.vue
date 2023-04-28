@@ -54,7 +54,7 @@ onMounted(function () {
 
 const loadBackups = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backups_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backups');
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -1,15 +1,15 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+const id = route.params.id;
 const pkg = ref('');
 const link_display = ref(false);
 const layoutStore = useLayoutStore();
-const route = useRoute();
-const id = route.params.id;
 layoutStore.setPageHeading('View Backup');
 layoutStore.setBreadcrums({'home': 'Home', 'Storage': 'Storage'})
 layoutStore.addBreadcrum('backup/'+id, 'View Backup '+id);
@@ -92,7 +92,7 @@ const errors = ref(false);
 
 const loadBackup = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_backup?id=' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backup/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;

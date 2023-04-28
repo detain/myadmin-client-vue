@@ -56,7 +56,7 @@ onMounted(function () {
 
 const loadLicenses = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses_list');
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses');
         console.log('api success');
         console.log(response);
         data.value = response;

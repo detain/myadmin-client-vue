@@ -93,7 +93,7 @@ const errors = ref(false);
 
 const loadQs = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_qs?id=' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/qs/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;
