@@ -130,7 +130,7 @@ loadServers(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.server_id }}</td>
                         <td>{{ row.account_lid }}</td>
                         <td><router-link :to="'servers/' + row.server_id">{{ row.server_hostname }}</router-link></td>

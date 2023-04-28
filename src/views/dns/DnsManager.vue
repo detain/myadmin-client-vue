@@ -147,7 +147,7 @@ loadDns(data)
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr v-for="(row, rowIndex) in data" :key="rowIndex">
+                                <tr v-for="(row, rowIndex) in data" :key="rowIndex" style="text-align: center;">
                                     <td>{{ row.id }}</td>
                                     <td>{{ row.name }}</td>
                                     <td>{{ row.content }}</td>

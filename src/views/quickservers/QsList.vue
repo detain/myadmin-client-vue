@@ -134,7 +134,7 @@ loadQuickservers(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.qs_id }}</td>
                         <td>{{ row.qs_name }}</td>
                         <td>{{ row.cost }}</td>

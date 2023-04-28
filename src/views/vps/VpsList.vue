@@ -179,7 +179,7 @@ loadVpsList(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.vps_id }}</td>
                         <td>{{ row.vps_name }}</td>
                         <td>{{ row.repeat_invoices_cost }}</td>

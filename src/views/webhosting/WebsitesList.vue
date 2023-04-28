@@ -134,7 +134,7 @@ loadWebsites(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.website_id }}</td>
                         <td><router-link :to="'websites/' + row.website_id">{{ row.website_hostname }}</router-link></td>
                         <td>{{ row.repeat_invoices_cost }}</td>

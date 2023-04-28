@@ -131,7 +131,7 @@ function setStatusLimit(event) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.domain_id }}</td>
                         <td><router-link :to="'domains/' + row.domain_id">{{ row.domain_hostname }}</router-link></td>
                         <td>{{ row.domain_expire_date }}</td>

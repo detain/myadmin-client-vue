@@ -138,7 +138,7 @@ loadLicenses(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.license_id }}</td>
                         <td><router-link :to="'licenses/' + row.license_id">{{ row.license_hostname }}</router-link></td>
                         <td><router-link :to="'licenses/' + row.license_id">{{ row.license_ip }}</router-link></td>

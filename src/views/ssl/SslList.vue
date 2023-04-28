@@ -132,7 +132,7 @@ loadSsl(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.ssl_id }}</td>
                         <td><router-link :to="'ssl/' + row.ssl_id">{{ row.ssl_hostname }}</router-link></td>
                         <td>{{ row.ssl_expire_date }}</td>

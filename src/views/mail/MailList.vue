@@ -132,7 +132,7 @@ loadMail(data)
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex">
+                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
                         <td>{{ row.mail_id }}</td>
                         <td>{{ row.repeat_invoices_cost }}</td>
                         <td><router-link :to="'mail/' + row.mail_id">{{ row.mail_username }}</router-link></td>
