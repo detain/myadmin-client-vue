@@ -53,28 +53,28 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@intlify/unplugin-vue-i18n": "*",
-    "@sweetalert2/theme-bootstrap-4": "^5.0.8",
-    "@ttskch/select2-bootstrap4-theme": "^1.5.2",
+    "@sweetalert2/theme-bootstrap-4": "*",
+    "@ttskch/select2-bootstrap4-theme": "*",
     "@vueuse/core": "*",
-    "admin-lte": "^3.0.1",
+    "admin-lte": "*",
     "axios": "*",
     "bootstrap": "^4.6.2",
-    "datatables.net-bs": "^*",
+    "datatables.net-bs": "*",
     "datatables.net-bs4": "*",
     "datatables.net-buttons": "*",
-    "datatables.net-buttons-bs": "^*",
+    "datatables.net-buttons-bs": "*",
     "datatables.net-buttons-bs4": "*",
     "datatables.net-dt": "*",
-    "datatables.net-responsive-bs": "^*",
+    "datatables.net-responsive-bs": "*",
     "datatables.net-responsive-bs4": "*",
-    "datatables.net-searchpanes-bs": "^*",
+    "datatables.net-searchpanes-bs": "*",
     "datatables.net-select": "*",
-    "datatables.net-select-bs": "^*",
+    "datatables.net-select-bs": "*",
     "datatables.net-select-bs4": "*",
     "datatables.net-vue3": "*",
     "electron-log": "*",
     "electron-store": "*",
-    "electron-updater": "^4.0",
+    "electron-updater": "*",
     "font-awesome": "FortAwesome/Font-Awesome#^4.7",
     "font-awesome-animation": "l-lin/font-awesome-animation#master",
     "jquery": ">=3.6.0",
@@ -87,7 +87,7 @@
     "moment": "moment/moment#>=2.29.4",
     "moment-timezone": ">=0.5.38",
     "mosha-vue-toastify": "*",
-    "overlayscrollbars": "^1.13.1",
+    "overlayscrollbars": "^1.0",
     "pinia": "*",
     "select2": "select2/select2#*",
     "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
@@ -100,6 +100,7 @@
     "vue": ">=3.2.47",
     "vue-query": "*",
     "vue-router": "*",
+    "yaml": ">=2.2.2",
     "yup": "*"
   },
   "devDependencies": {
@@ -125,7 +126,7 @@
     "wait-on": "*"
   },
   "suggest": {
-    "datatables.net-plugins": "^*"
+    "datatables.net-plugins": "*"
   },
   "resolutions": {
     "axios": "1.4.0",
@@ -134,7 +135,7 @@
     "jquery-ui-dist": "1.13.2",
     "moment": "2.29.4",
     "select2": "4.0.13",
-    "sweetalert2": "11.7.3",
+    "sweetalert2": "11.4.8",
     "@fortawesome/fontawesome-common-types": "6.4.0",
     "debug": "2.6.9",
     "source-map": "0.6.1",
@@ -184,6 +185,7 @@
     "commander": "5.1.0",
     "minipass": "4.2.8",
     "mkdirp": "1.0.4",
-    "espree": "9.5.1"
+    "espree": "9.5.1",
+    "yaml": "2.2.2"
   }
 }
