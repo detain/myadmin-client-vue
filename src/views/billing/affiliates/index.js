@@ -1,1 +1,12 @@
 export { default as Affiliate } from './Affiliate.vue';
+export { default as Faq } from './Faq.vue';
+export { default as PaymentSetup } from './PaymentSetup.vue';
+export { default as RichReport } from './RichReport.vue';
+export { default as SalesGraph } from './SalesGraph.vue';
+export { default as Signups } from './Signups.vue';
+export { default as Status } from './Status.vue';
+export { default as Tos } from './Tos.vue';
+export { default as TrafficGraph } from './TrafficGraph.vue';
+export { default as WebTraffic } from './WebTraffic.vue';
+export { default as Banners } from './Banners.vue';
+export { default as ViewBanner } from './ViewBanner.vue';
