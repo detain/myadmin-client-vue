@@ -10,7 +10,7 @@ const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Domain');
 layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
-layoutStore.addBreadcrum('/domain/'+id, 'View Domain '+id);
+layoutStore.addBreadcrum('/domains/'+id, 'View Domain '+id);
 
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,

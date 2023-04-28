@@ -15,6 +15,7 @@ layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 
+const osTemplate = ref('');
 const serviceMaster = ref({});
 const settings = ref({
     SERVICE_ID_OFFSET: 10000,
@@ -61,44 +62,7 @@ const serviceInfo = ref({
     vps_fax: "",
     vps_company: "InterServer Secaucus",
 });
-const clientLinks = ref([
-    {
-        label: "Invoices",
-        link: "view_domain?id=592337&link=invoices",
-        image: '<i class="fas fa-file-invoice-dollar fa-w-12"></i>',
-        help_text: "Invoice History"
-    },
-    {
-        label: "Cancel Domains",
-        link: "view_domain?id=592337&link=cancel",
-        image: '<i class="fas fa-times"></i>',
-        help_text: "Cancel Domains"
-    },
-    {
-        label: "Renew",
-        link: "view_domain?id=592337&link=renew",
-        image: '<i class="fa fa-hourglass"></i>',
-        help_text: "Renew Domain"
-    },
-    {
-        label: "DNSSEC",
-        link: "view_domain?id=592337&link=dnssec",
-        image: '<i class="fa fa-lock"></i>',
-        help_text: "DNS Security Details"
-    },
-    {
-        label: "Email EPP Code",
-        link: "view_domain?id=592337&link=authepp",
-        image: '<i class="fa fa-envelope"></i>',
-        help_text: "Email Auth/EPP Code"
-    },
-    {
-        label: "Lock / Unlock",
-        link: "view_domain?id=592337&link=lock",
-        image: '<i class="fa fa-lock"></i>',
-        help_text: "Lock / Unlock Domain"
-    }
-]);
+const clientLinks = ref([]);
 const billingDetails = ref({
     service_last_invoice_date: "August 13, 2022",
     service_payment_status: "Paid",
@@ -167,9 +131,16 @@ const serviceType = ref({
     services_field2: "",
     services_module: "domains"
 });
+const da_link = ref(0);
+const sr_link = ref(0);
+const cp_data = ref({});
+const da_data = ref({});
+const plesk12_data = ref({});
+const token = ref('');
+const csrf = ref('');
 const errors = ref(false);
 const vps_logs = ref([]);
-
+const cpuGraphData = ref(null);
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
