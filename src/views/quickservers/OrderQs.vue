@@ -109,7 +109,7 @@ const csrfToken = ref( "7892f61c1ce4897a5a418b2cd40cb869f4657c2c430fe3ca06045a8a
                             <input type="hidden" name="rootpass" v-model="rootpass">
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <table v-if="serverDetails.length > 0" class="table table-sm text-center">
+                                    <table v-if="Object.keys(serverDetails).length > 0" class="table table-sm text-center">
                                         <tbody>
                                             <tr>
                                                 <th>Select Server</th>

@@ -3935,7 +3935,7 @@ const cpuCores = ref({
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <img class="pr-2" :src="`/images/v2-images/${cpu_details.img}`" style="max-width: 100px;">
+                                                    <img class="pr-2" :src="'/images/v2-images/'+cpu_details.img" style="max-width: 100px;">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="text-sm text-bold">{{ cpu_details.short_desc }}</div>

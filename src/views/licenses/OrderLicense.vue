@@ -42,7 +42,7 @@ const getLicenses = ref({
         order: 6
     }
 });
-const csrf_token = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719df40b426a61ab0b4fd8a968520eb1bdd89569c89440310ff80897c5fbedde1d196258a307");
+const csrfToken = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719df40b426a61ab0b4fd8a968520eb1bdd89569c89440310ff80897c5fbedde1d196258a307");
 </script>
 
 <template>
@@ -51,7 +51,7 @@ const csrf_token = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1;width: 40% !important;height:50px;">
+                        <img class="card-img-top" :src="'/'+details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1;width: 40% !important;height:50px;">
                         <h3 class="card-title"></h3>
                         <div class="card-tools float-right">
                             <button style="position: relative;top: 10px;" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -87,7 +87,7 @@ const csrf_token = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719
                     </div>
                     <div class="card-body">
                         <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm" action="order_license?lic={{ lic }}">
-                            <input type="hidden" name="csrf_token" :value="csrf_token">
+                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
