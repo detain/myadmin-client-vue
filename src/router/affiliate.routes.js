@@ -1,4 +1,4 @@
-import { Affiliate, Faq, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, WebTraffic, Banners, ViewBanner  } from '@/views/billing/affiliates'
+import { Layout, Affiliate, Faq, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, WebTraffic, Banners, ViewBanner  } from '@/views/billing/affiliates'
 
 export default {
     path: '/affiliate',

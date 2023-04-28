@@ -59,5 +59,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import '/lib/chart.js/dist/Chart.min.css';
+@import '/node_modules/chart.js/dist/Chart.min.css';
 </style>

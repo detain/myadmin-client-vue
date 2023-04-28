@@ -1,3 +1,4 @@
+export { default as Layout } from './Layout.vue';
 export { default as Affiliate } from './Affiliate.vue';
 export { default as Faq } from './Faq.vue';
 export { default as PaymentSetup } from './PaymentSetup.vue';

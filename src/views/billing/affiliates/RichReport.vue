@@ -1,4 +1,4 @@
-cript setup>
+<script setup>
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';

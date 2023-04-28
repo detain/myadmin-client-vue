@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
 import Chart from "chart.js";
-import "chart.js/dist/Chart.min.css";
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - SalesGraph');
@@ -78,5 +77,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('/lib/chart.js/dist/Chart.min.css');
+@import url('/node_modules/chart.js/dist/Chart.min.css');
 </style>
