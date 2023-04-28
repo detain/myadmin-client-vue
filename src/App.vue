@@ -66,7 +66,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
                             <ol class="breadcrumb">
                                 <li v-for="(bName, bUrl, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ 'active': index === Object.keys(breadcrums).length - 1 }">
                                     <template v-if="index === Object.keys(breadcrums).length - 1">{{ bName }}</template>
-                                    <template v-else><a :href="bUrl">{{ bName }}</a></template>
+                                    <template v-else><router-link :to="bUrl">{{ bName }}</router-link></template>
                                 </li>
                             </ol>
                         </div>

@@ -5,7 +5,7 @@
     const layoutStore = useLayoutStore();
     const { breadcrums, page_heading } = storeToRefs(layoutStore);
     layoutStore.setPageHeading('Affiliate - Tos');
-    layoutStore.setBreadcrums({'home': 'Home', 'affiliate': 'Affiliate', '': 'Tos'});
+    layoutStore.setBreadcrums({'home': 'Home', '/affiliate': 'Affiliate', '': 'Tos'});
 
 
     onMounted(() => {

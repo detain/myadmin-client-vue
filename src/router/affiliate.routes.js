@@ -15,6 +15,6 @@ export default {
         { path: 'traffic_graph', component: TrafficGraph },
         { path: 'web_traffic', component: WebTraffic },
         { path: 'banners', component: Banners },
-        { path: 'banner/:id', component: ViewBanner }
+        { path: 'banner/:id(\\d+)', component: ViewBanner }
     ]
 };
