@@ -1,8 +1,12 @@
 <script setup>
+import { ref, computed, onMounted } from "vue";
 import { RouterLink, RouterView } from 'vue-router'
 import { storeToRefs } from 'pinia';
 import { MainMenu, Nav, Alert } from '@/components';
 import { useAuthStore, useLayoutStore } from '@/stores';
+
+onMounted(function () {
+});
 
 const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
