@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/license`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/licenses`;
 
 export const useLicenseStore = defineStore({
     id: 'license',
@@ -105,7 +105,7 @@ export const useLicenseStore = defineStore({
                 ]
             }
         },
-        service_overview_extra: "",
+        serviceOverviewExtra: "",
         serviceType: {
             services_id: "5034",
             services_name: "KernelCare License",
@@ -126,7 +126,7 @@ export const useLicenseStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/license');
+                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -149,7 +149,7 @@ export const useLicenseStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/license/' + id);
+                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses/' + id);
                 this.$reset();
                 let key, value;
                 console.log('api success');

@@ -14,7 +14,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
 layoutStore.addBreadcrum('/licenses/'+id, 'View License '+id);
 
 const licenseStore = useLicenseStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, service_overview_extra, serviceType } = storeToRefs(licenseStore);
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
 licenseStore.getById(id)
 
