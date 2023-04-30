@@ -14,7 +14,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+id, 'View Website '+id);
 
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, admin_links, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
 
 websiteStore.getById(id)
 
@@ -184,10 +184,12 @@ function isEmpty(table) {
                             <th>Names:</th>
                             <th>Links:</th>
                         </tr>
-                        <tr v-for="link in extraInfoTables.links.rows" :key="link.value" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
-                            <td>{{ link.desc }}</td>
-                            <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
-                        </tr>
+                        <template v-for="link, index in extraInfoTables.links.rows">
+                            <tr :key="link.value" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
+                                <td>{{ link.desc }}</td>
+                                <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
+                            </tr>
+                        </template>
                         <tr>
                             <td>Website Preview</td>
                             <td><a :href="extraInfoTables.preview.rows[0].value" target="__blank" class="link">Click Here</a></td>
@@ -197,7 +199,7 @@ function isEmpty(table) {
             </div>
         </div>
     </div>
-    <div v-else-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row row-flex">
+    <div v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row row-flex">
         <div class="col">
             <div class="card">
                 <div class="card-header">
