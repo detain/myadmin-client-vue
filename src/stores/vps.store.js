@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/tickets`;
@@ -69,74 +69,37 @@ export const useVpsStore = defineStore({
             service_currency: "USD",
             service_currency_symbol: "$",
             service_cost_info: "18.00",
-            service_extra: {
-                order: {
-                    _OPS_version: "0.9",
-                    protocol: "XCP",
-                    is_success: "1",
-                    action: "REPLY",
-                    attributes: { id: "311873405", admin_email: "realperson@mydomain.com" },
-                    response_text: "Order created",
-                    object: "DOMAIN",
-                    response_code: "200"
-                },
-                order_id: "311873405",
-                vps_id: "65006148",
-                provProcessPending: {
-                    _OPS_version: "0.9",
-                    response_text: "Domain registration successfully completed.",
-                    protocol: "XCP",
-                    response_code: "200",
-                    action: "REPLY",
-                    object: "DOMAIN",
-                    is_success: "1",
-                    attributes: {
-                        id: "65006148",
-                        order_id: "311873405",
-                        "registration expiration date": "2023-08-14 00:59:38",
-                        f_auto_renew: "N"
-                    }
-                },
-                email: "realperson@mydomain.com",
-                firstname: "Real",
-                lastname: "Person",
-                company: "InterServer Secaucus",
-                address: "91 Mullberry St.",
-                address2: "",
-                address3: "",
-                city: "Area 51",
-                state: "PA",
-                zip: "00001",
-                country: "US",
-                phone: "8675309",
-                fax: ""
-            }
+            service_extra: {}
         },
         custCurrency: "USD",
         custCurrencySymbol: "$",
+        disk_percentage: 0,
+        memory: '',
+        hdd: '',
         serviceExtra: {},
         extraInfoTables: [],
         serviceType: {
-            services_id: "10673",
-            services_name: ".dev Domain Name Registration",
-            services_cost: "18.00",
-            services_category: "100",
-            services_ourcost: "15.00",
-            services_buyable: "1",
-            services_type: "100",
-            services_field1: ".dev",
+            services_id: "",
+            services_name: "",
+            services_cost: "",
+            services_category: "",
+            services_ourcost: "",
+            services_buyable: "",
+            services_type: "",
+            services_field1: "",
             services_field2: "",
-            services_module: "domains"
+            services_module: "vps"
         },
         service_disk_used: null,
         service_disk_total: null,
-        da_link: 0,
-        sr_link: 0,
-        cp_link: 0,
-        pp_link: 0,
-        cp_data: {},
-        da_data: {},
-        plesk12_data: {},
+        daLink: 0,
+        srLink: 0,
+        cpLink: 0,
+        ppLink: 0,
+        srData: {},
+        cpData: {},
+        daData: {},
+        plesk12Data: {},
         token: '',
         csrf: '',
         errors: false,
@@ -161,6 +124,9 @@ export const useVpsStore = defineStore({
             this.loading = false;
         },
         async getById(id) {
+            const keyMap = {
+                'package': 'pkg',
+            };
             /*
             this.user = { loading: true };
             try {
@@ -171,14 +137,20 @@ export const useVpsStore = defineStore({
             */
             try {
                 const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id);
+                this.$reset();
                 let key, value;
                 console.log('api success');
                 console.log(response);
-                for (key in Object.keys(response)) {
-                    value = response[key]
+                for (key in response) {
+                    value = response[key];
                     if (typeof this[key] != 'undefined') {
-                        console.log("setting "+key+" to "+value);
                         this[key] = value;
+                    } else if (typeof this[snakeToCamel(key)] != 'undefined') {
+                        this[snakeToCamel(key)] = value;
+                    } else if (typeof keyMap[key] != 'undefined') {
+                        this[keyMap[key]] = value;
+                    } else {
+                        console.log("no key '"+key+"' with value '"+value+"'");
                     }
                 }
             } catch (error) {

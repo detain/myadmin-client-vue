@@ -15,7 +15,7 @@ layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 
-const { pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, da_link, sr_link, cp_link, pp_link, cp_data, da_data, plesk12_data, token, csrf, errors, vps_logs, cpuGraphData } = storeToRefs(vpsStore);
+const { pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -307,7 +307,7 @@ vpsStore.getById(id)
                     </div>
                 </div>
             </div>
-            <div v-if="osTemplate">
+            <div v-if="osTemplate" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -358,14 +358,14 @@ vpsStore.getById(id)
                         </div>
                     </div>
                     <div class="card-body">
-                        <div v-for="client_link in clientLinks" :key="client_link.link">
+                        <template v-for="client_link in clientLinks" :key="client_link.link">
                             <template v-if="client_link.label != 'View Desktop'">
-                                <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-bind="client_link.other_attr">{{ client_link.image }}{{ client_link.label }}</a>
+                                <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-bind="client_link.other_attr"><i :class="client_link.icon" aria-hidden="true">{{ client_link.icon_text }}</i>{{ client_link.label }}</a>
                             </template>
                             <template v-else>
-                                <button class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" v-bind="client_link.other_attr" @click="openPopUp">{{ client_link.image }}{{ client_link.label }}</button>
+                                <button class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" v-bind="client_link.other_attr" @click="openPopUp"><i :class="client_link.icon" aria-hidden="true">{{ client_link.icon_text }}</i>{{ client_link.label }}</button>
                             </template>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -373,7 +373,7 @@ vpsStore.getById(id)
     </template>
 
     <template v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
-        <template v-if="cp_link || da_link || sr_link || pp_link">
+        <template v-if="cpLink || daLink || srLink || ppLink">
             <div class="col-md-12 px-0">
                 <div class="card">
                     <div class="card-header">
@@ -397,12 +397,12 @@ vpsStore.getById(id)
                         </div>
                         <div class="row">
                             <div class="col mr-1">
-                                <a v-if="cp_link" class="img-a" href="javascript:void(0);" @click="showCPModal">
+                                <a v-if="cpLink" class="img-a" href="javascript:void(0);" @click="showCPModal">
                                     <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
                                         <div class="col-md-12 py-3 mb-1">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
                                             </span>
                                         </div>
                                     </div>
@@ -412,7 +412,7 @@ vpsStore.getById(id)
                                         <div class="col-md-12 py-2">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
                                                 <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                             </span>
                                         </div>
@@ -450,9 +450,9 @@ vpsStore.getById(id)
                                     </a>
                                 </div>
                             </template>
-                            <template v-if="sr_data">
-                                <template v-if="sr_link">
-                                    <div v-for="(rs_details, index) in sr_data" :key="index" class="col mr-1">
+                            <template v-if="srData">
+                                <template v-if="srLink">
+                                    <div v-for="(rs_details, index) in srData" :key="index" class="col mr-1">
                                         <a class="img-a" data-cp="rs" :data-cur-sym="custCurrencySymbol" :data-cost="rs_details.cost" :data-name="rs_details.name" :data-ser="index" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
                                             <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
                                                 <div class="col-md-12 py-3 mb-1">
@@ -466,7 +466,7 @@ vpsStore.getById(id)
                                     </div>
                                 </template>
                                 <template v-else>
-                                    <div v-for="(rs_details, index) in sr_data" :key="index" class="col mr-1">
+                                    <div v-for="(rs_details, index) in srData" :key="index" class="col mr-1">
                                         <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('sr')">
                                             <div class="row b-radius cp_bg py-1 justify-content-center" style="border: 1px solid #ccc;">
                                                 <div class="col-md-12 py-2">
@@ -530,7 +530,7 @@ vpsStore.getById(id)
                                     <h5>Package</h5>
                                 </div>
                                 <div class="col text-left"><strong>
-                                        <h4 id="cp-name">{{ packageName }}</h4>
+                                        <h4 id="cp-name">cPanel Autoscale (Internal)</h4>
                                     </strong></div>
                             </div>
                             <div class="row">
@@ -538,7 +538,7 @@ vpsStore.getById(id)
                                     <h5>Cost</h5>
                                 </div>
                                 <div class="col text-left"><strong>
-                                        <h4 id="cp-cost">{{ formattedCost }}/mo</h4>
+                                        <h4 id="cp-cost">{{ custCurrencySymbol }}{{ cpData.cost }}/mo</h4>
                                     </strong></div>
                             </div>
                             <div class="alert alert-warning">
@@ -547,7 +547,7 @@ vpsStore.getById(id)
                             <br>
                             <div class="row">
                                 <div class="col">
-                                    <a id="cp-order-link" class="btn btn-primary btn-block" :href="orderLink">Place Order</a>
+                                    <a id="cp-order-link" class="btn btn-primary btn-block" :href="'view_vps?link=add_control_panel&id='+serviceInfo.vps_id+'&cp=cp'">Place Order</a>
                                 </div>
                             </div>
                             <br>
