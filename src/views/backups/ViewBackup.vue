@@ -92,7 +92,7 @@ const errors = ref(false);
 
 const loadBackup = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backup/' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backups/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;
@@ -177,10 +177,10 @@ const billingStatusClass = computed(() => {
             </div>
         </div>
     </div>
-    <div v-if="linkDisplay" class="row shadow-none">
-        <div class="col">{{ linkDisplay }}</div>
+    <div v-if="link_display" class="row shadow-none">
+        <div class="col">{{ link_display }}</div>
     </div>
-    <div v-else-if="!linkDisplay || (linkFunction && ['cancel', 'welcome_email'].includes(linkFunction))" class="row justify-content-center">
+    <div v-else-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">

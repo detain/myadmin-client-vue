@@ -96,7 +96,7 @@ function isEmpty(table) {
 
 const loadWebsite = async (id, serviceType, settings, serviceInfo) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/website/' + id);
+        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites/' + id);
         console.log('api success');
         console.log(response);
         serviceType.value = response.serviceType;
