@@ -1,110 +1,23 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { ref, computed, onMounted } from "vue";
-import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import { useRoute } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { useBackupStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 
+const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
-const pkg = ref('');
-const link_display = ref(false);
-const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('View Backup');
 layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
 layoutStore.addBreadcrum('/backups/'+id, 'View Backup '+id);
 
-const serviceMaster = ref({});
-const settings = ref({
-    SERVICE_ID_OFFSET: 10000,
-    USE_REPEAT_INVOICE: true,
-    USE_PACKAGES: true,
-    BILLING_DAYS_OFFSET: 45,
-    IMGNAME: "backup.png",
-    REPEAT_BILLING_METHOD: 2,
-    DELETE_PENDING_DAYS: 45,
-    SUSPEND_DAYS: 14,
-    SUSPEND_WARNING_DAYS: 7,
-    TITLE: "Backup Registrations",
-    MENUNAME: "Storage",
-    EMAIL_FROM: "support@interserver.net",
-    TBLNAME: "Storage",
-    TABLE: "Storage",
-    TITLE_FIELD: "backup_hostname",
-    PREFIX: "backup"
-});
-const serviceInfo = ref({
-    backup_id: "592337",
-    backup_hostname: "detain.dev",
-    backup_username: "detaindev",
-    backup_password: "12315688fgfasghs",
-    backup_type: "10673",
-    backup_currency: "USD",
-    backup_expire_date: "2023-08-14 00:59:38",
-    backup_order_date: "2022-08-13 20:58:58",
-    backup_custid: "2773",
-    backup_status: "active",
-    backup_invoice: "19917286",
-    backup_coupon: "0",
-    backup_firstname: "Real",
-    backup_lastname: "Person",
-    backup_email: "realperson@mybackup.com",
-    backup_address: "91 Mullberry St.",
-    backup_address2: "",
-    backup_address3: "",
-    backup_city: "Area 51",
-    backup_state: "PA",
-    backup_zip: "00001",
-    backup_country: "US",
-    backup_phone: "8675309",
-    backup_fax: "",
-    backup_company: "InterServer Secaucus",
-});
-const clientLinks = ref([]);
-const billingDetails = ref({
-    service_last_invoice_date: "August 13, 2022",
-    service_payment_status: "Paid",
-    service_frequency: "Yearly",
-    next_date: "2023-08-14 00:59:38",
-    service_next_invoice_date: "August 14, 2023",
-    service_currency: "USD",
-    service_currency_symbol: "$",
-    service_cost_info: "18.00",
-    service_extra: {}
-});
-const custCurrency = ref("USD");
-const custCurrencySymbol = ref("$");
-const serviceExtra = ref({});
-const extraInfoTables = ref([]);
-const serviceType = ref({
-    services_id: "10673",
-    services_name: ".dev Backup Name Registration",
-    services_cost: "18.00",
-    services_category: "100",
-    services_ourcost: "15.00",
-    services_buyable: "1",
-    services_type: "100",
-    services_field1: ".dev",
-    services_field2: "",
-    services_module: "Storage"
-});
-const errors = ref(false);
+const backupStore = useBackupStore();
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(backupStore);
 
-const loadBackup = async (id, serviceType, settings, serviceInfo) => {
-    try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backups/' + id);
-        console.log('api success');
-        console.log(response);
-        serviceType.value = response.serviceType;
-        serviceInfo.value = response.serviceInfo;
-        settings.value = response.settings;
-    } catch (error) {
-        console.log('api failed');
-        console.log(error);
-    }
-};
+backupStore.getById(id)
 
-loadBackup(id, serviceType, settings, serviceInfo)
 
 const titleField = ref(settings.value.TITLE_FIELD);
 const billingStatus = computed(() => {
@@ -195,7 +108,7 @@ const billingStatusClass = computed(() => {
                 </div>
                 <div class="card-body text-center">
                     <a v-for="clientLink in clientLinks" :key="clientLink.label" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" :attr="clientLink.other_attr">
-                        <span v-if="clientLink.image">{{ clientLink.image }}</span>
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>
                         {{ clientLink.label }}
                     </a>
                 </div>

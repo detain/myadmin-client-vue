@@ -7,15 +7,15 @@ import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stor
 import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
-const vpsStore = useVpsStore();
-const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
+const vpsStore = useVpsStore();
+const { loading, error, pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 
-const { pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+vpsStore.getById(id)
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -100,8 +100,6 @@ function toggleFunc(cp) {
   }
   $(".toggleTr").show();
 }
-
-vpsStore.getById(id)
 </script>
 
 <template>
@@ -358,12 +356,12 @@ vpsStore.getById(id)
                         </div>
                     </div>
                     <div class="card-body">
-                        <template v-for="client_link in clientLinks" :key="client_link.link">
-                            <template v-if="client_link.label != 'View Desktop'">
-                                <a class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" v-bind="client_link.other_attr"><i :class="client_link.icon" aria-hidden="true">{{ client_link.icon_text }}</i>{{ client_link.label }}</a>
+                        <template v-for="clientLink in clientLinks" :key="clientLink.link">
+                            <template v-if="clientLink.label != 'View Desktop'">
+                                <a class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</a>
                             </template>
                             <template v-else>
-                                <button class="btn btn-app mb-3" :title="client_link.help_text" data-toggle="tooltip" v-bind="client_link.other_attr" @click="openPopUp"><i :class="client_link.icon" aria-hidden="true">{{ client_link.icon_text }}</i>{{ client_link.label }}</button>
+                                <button class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr" @click="openPopUp"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</button>
                             </template>
                         </template>
                     </div>

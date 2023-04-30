@@ -3,7 +3,8 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useMailStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -12,99 +13,13 @@ layoutStore.setPageHeading('View Mail');
 layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
 layoutStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
 
-const settings = ref({
-    SERVICE_ID_OFFSET: 10000,
-    USE_REPEAT_INVOICE: true,
-    USE_PACKAGES: true,
-    BILLING_DAYS_OFFSET: 45,
-    IMGNAME: "mail.png",
-    REPEAT_BILLING_METHOD: 2,
-    DELETE_PENDING_DAYS: 45,
-    SUSPEND_DAYS: 14,
-    SUSPEND_WARNING_DAYS: 7,
-    TITLE: "Mail Registrations",
-    MENUNAME: "Mail",
-    EMAIL_FROM: "support@interserver.net",
-    TBLNAME: "Mail",
-    TABLE: "Mail",
-    TITLE_FIELD: "mail_hostname",
-    PREFIX: "mail"
-});
-const serviceInfo = ref({
-    mail_id: "592337",
-    mail_hostname: "detain.dev",
-    mail_username: "detaindev",
-    mail_password: "12315688fgfasghs",
-    mail_type: "10673",
-    mail_currency: "USD",
-    mail_expire_date: "2023-08-14 00:59:38",
-    mail_order_date: "2022-08-13 20:58:58",
-    mail_custid: "2773",
-    mail_status: "active",
-    mail_invoice: "19917286",
-    mail_coupon: "0",
-    mail_firstname: "Real",
-    mail_lastname: "Person",
-    mail_email: "realperson@mymail.com",
-    mail_address: "91 Mullberry St.",
-    mail_address2: "",
-    mail_address3: "",
-    mail_city: "Area 51",
-    mail_state: "PA",
-    mail_zip: "00001",
-    mail_country: "US",
-    mail_phone: "8675309",
-    mail_fax: "",
-    mail_company: "InterServer Secaucus",
-});
-const clientLinks = ref([]);
-const billingDetails = ref({
-    service_last_invoice_date: "August 13, 2022",
-    service_payment_status: "Paid",
-    service_frequency: "Yearly",
-    next_date: "2023-08-14 00:59:38",
-    service_next_invoice_date: "August 14, 2023",
-    service_currency: "USD",
-    service_currency_symbol: "$",
-    service_cost_info: "18.00",
-    service_extra: {}
-});
-const custCurrency = ref("USD");
-const custCurrencySymbol = ref("$");
-const serviceExtra = ref({});
-const extraInfoTables = ref([]);
-const serviceType = ref({
-    services_id: "10673",
-    services_name: ".dev Mail Name Registration",
-    services_cost: "18.00",
-    services_category: "100",
-    services_ourcost: "15.00",
-    services_buyable: "1",
-    services_type: "100",
-    services_field1: ".dev",
-    services_field2: "",
-    services_module: "Mail"
-});
-const errors = ref(false);
+const mailStore = useMailStore();
+const { loading, error, pkg } = storeToRefs(mailStore);
 
-const loadMail = async (id, serviceType, settings, serviceInfo) => {
-    try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail/' + id);
-        console.log('api success');
-        console.log(response);
-        serviceType.value = response.serviceType;
-        serviceInfo.value = response.serviceInfo;
-        settings.value = response.settings;
-    } catch (error) {
-        console.log('api failed');
-        console.log(error);
-    }
-};
+mailStore.getById(id)
 
-loadMail(id, serviceType, settings, serviceInfo)
 
-const pkg = ref(''); // set your package value here
-const link_display = ref(false);
+
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
   const statusValue = serviceInfo.value[status.value];
@@ -188,7 +103,7 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body py-4 my-3">
-                        <a v-for="client_link in clientLinks" :key="client_link.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="client_link.help_text" data-toggle="tooltip" :href="client_link.link" :other_attr="client_link.other_attr">{{client_link.image}}{{client_link.label}}</a>
+                        <a v-for="clientLink in clientLinks" :key="clientLink.id" class="btn btn-app" :style="'margin:0px 0px 10px 6px !important;'" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" :other_attr="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{clientLink.label}}</a>
                     </div>
                 </div>
             </div>

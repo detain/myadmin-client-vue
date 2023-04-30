@@ -2,11 +2,12 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/tickets`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/vps`;
 
 export const useVpsStore = defineStore({
     id: 'vps',
     state: () => ({
+        vpsList: [],
         loading: false,
         error: false,
 
@@ -113,7 +114,7 @@ export const useVpsStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/tickets_list');
+                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -176,18 +177,12 @@ export const useVpsStore = defineStore({
         },
         async delete(id) {
             // add isDeleting prop to user being deleted
-            this.tickets.find(x => x.id === id).isDeleting = true;
+            this.vpsList.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.tickets = this.tickets.filter(x => x.id !== id);
-
-            // auto logout if the logged in user deleted their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                authStore.logout();
-            }
-        }
+            this.vpsList = this.vpsList.filter(x => x.id !== id);
+Z        }
     }
 });
