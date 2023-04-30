@@ -15,7 +15,7 @@ layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 
-const state = storeToRefs(vpsStore);
+const { pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, da_link, sr_link, cp_link, pp_link, cp_data, da_data, plesk12_data, token, csrf, errors, vps_logs, cpuGraphData } = storeToRefs(vpsStore);
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -48,15 +48,15 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
 
 const webuzoTableExists = computed(() => {
   return (
-    state.extraInfoTables.value.hasOwnProperty('webuzo') &&
-    !isEmpty(state.extraInfoTables.value.webuzo)
+    extraInfoTables.value.hasOwnProperty('webuzo') &&
+    !isEmpty(extraInfoTables.value.webuzo)
   );
 });
 
 const addonsTableExists = computed(() => {
   return (
-    state.extraInfoTables.value.hasOwnProperty('addons') &&
-    !isEmpty(state.extraInfoTables.value.addons)
+    extraInfoTables.value.hasOwnProperty('addons') &&
+    !isEmpty(extraInfoTables.value.addons)
   );
 });
 
@@ -66,7 +66,7 @@ function isEmpty(table) {
 
 function docReady() {
   $('[data-toggle="tooltip"]').tooltip();
-  const service_id = state.serviceInfo.value.vps_id;
+  const service_id = serviceInfo.value.vps_id;
   $('.img-a').on('click', function () {
     const cp = $(this).attr('data-cp');
     if (cp === 'cp') {
@@ -101,21 +101,7 @@ function toggleFunc(cp) {
   $(".toggleTr").show();
 }
 
-const loadVps = async (id, serviceType, settings, serviceInfo) => {
-    try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id);
-        console.log('api success');
-        console.log(response);
-        for (let idx in Object.keys(response)) {
-            let value = response[idx];
-        }
-    } catch (error) {
-        console.log('api failed');
-        console.log(error);
-    }
-};
-
-loadVps(id, state.serviceType, state.settings, state.serviceInfo)
+vpsStore.getById(id)
 </script>
 
 <template>
@@ -124,64 +110,64 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
             <div class="small-box bg-secondary">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>Package</h3>
-                    <p class="py-2 m-0">{{ state.pkg }}</p>
-                    <template v-if="state.billingDetails.service_next_invoice_date">
-                        <p>Next Invoice Date:<b>{{ state.billingDetails.service_next_invoice_date }}</b></p>
+                    <p class="py-2 m-0">{{ pkg }}</p>
+                    <template v-if="billingDetails.service_next_invoice_date">
+                        <p>Next Invoice Date:<b>{{ billingDetails.service_next_invoice_date }}</b></p>
                     </template>
                 </div>
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">{{ state.serviceInfo.vps_hostname }}</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo.vps_hostname }}</span>
             </div>
         </div>
         <div class="col-md-4">
             <div :class="{
         'small-box': true,
-        'bg-success': state.serviceInfo.vps_status === 'active',
-        'bg-warning text-white': state.serviceInfo.vps_status === 'pending',
-        'bg-danger': state.serviceInfo.vps_status !== 'active' && state.serviceInfo.vps_status !== 'pending'
+        'bg-success': serviceInfo.vps_status === 'active',
+        'bg-warning text-white': serviceInfo.vps_status === 'pending',
+        'bg-danger': serviceInfo.vps_status !== 'active' && serviceInfo.vps_status !== 'pending'
       }">
                 <div class="inner pt-3 pb-2 px-3">
                     <h3>Billing</h3>
                     <p class="py-3 my-3">
-                        <b>{{ state.billingDetails.service_currency_symbol }}{{ state.billingDetails.service_cost_info }}</b>
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
                         billed
-                        <b>{{ state.billingDetails.service_frequency }}</b><br>
+                        <b>{{ billingDetails.service_frequency }}</b><br>
                     </p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">VPS Status is:
-                    <b>{{ state.serviceInfo.vps_status }}</b></span>
+                    <b>{{ serviceInfo.vps_status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="small-box bg-info">
                 <div class="inner pt-3 pb-2 px-3">
-                    <h3>Host Server: <b>{{ state.serviceMaster.vps_name }}</b></h3>
+                    <h3>Host Server: <b>{{ serviceMaster.vps_name }}</b></h3>
                     <p class="py-3 my-3">
-                        IP is: <b>{{ state.serviceInfo.vps_ip }}</b>
+                        IP is: <b>{{ serviceInfo.vps_ip }}</b>
                     </p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <span class="small-box-footer">
-                    Vzid: <b>{{ state.serviceInfo.vps_vzid }}</b>
+                    Vzid: <b>{{ serviceInfo.vps_vzid }}</b>
                 </span>
             </div>
         </div>
     </div>
-    <div v-if="state.link_display" class="row">
+    <div v-if="link_display" class="row">
         <div class="col">
-            {{ state.link_display }}
+            {{ link_display }}
         </div>
     </div>
     <template v-else>
         <div class="row">
-            <div v-if="!state.link_display || (state.link_function && ['cancel', 'welcome_email', 'vnc'].includes(state.link_function))" class="col-md-4">
+            <div v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -197,69 +183,69 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                 <h5 class="text-md m-0 p-2 text-center">
                                     Power Status is:
                                     <span :class="{
-              'text-success': state.serviceInfo.vps_server_status === 'running',
+              'text-success': serviceInfo.vps_server_status === 'running',
               'text-warning':
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended',
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
               'text-danger':
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut',
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
               'text-info': !(
-                state.serviceInfo.vps_server_status === 'running' ||
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended' ||
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut'
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
               )
-            }">{{ state.serviceInfo.vps_server_status }}</span>
+            }">{{ serviceInfo.vps_server_status }}</span>
                                 </h5>
                             </div>
                             <div class="col-md-12 text-center pt-2 pr-4 mr-3">
                                 <div class="btn-group">
                                     <button type="button" :class="{
-              'btn-success': state.serviceInfo.vps_server_status === 'running',
+              'btn-success': serviceInfo.vps_server_status === 'running',
               'btn-warning':
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended',
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
               'btn-danger':
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut',
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
               'btn-info': !(
-                state.serviceInfo.vps_server_status === 'running' ||
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended' ||
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut'
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
               )
             }">Select Action</button>
                                     <button type="button" :class="{
-              'btn-success': state.serviceInfo.vps_server_status === 'running',
+              'btn-success': serviceInfo.vps_server_status === 'running',
               'btn-warning':
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended',
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended',
               'btn-danger':
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut',
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut',
               'btn-info': !(
-                state.serviceInfo.vps_server_status === 'running' ||
-                state.serviceInfo.vps_server_status === 'Paused' ||
-                state.serviceInfo.vps_server_status === 'suspended' ||
-                state.serviceInfo.vps_server_status === 'stopped' ||
-                state.serviceInfo.vps_server_status === 'deleted' ||
-                state.serviceInfo.vps_server_status === 'shut'
+                serviceInfo.vps_server_status === 'running' ||
+                serviceInfo.vps_server_status === 'Paused' ||
+                serviceInfo.vps_server_status === 'suspended' ||
+                serviceInfo.vps_server_status === 'stopped' ||
+                serviceInfo.vps_server_status === 'deleted' ||
+                serviceInfo.vps_server_status === 'shut'
               )
             }" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" :href="'view_vps?id=' + state.serviceInfo.vps_id + '&link=queue&action=start'">Start</a>
-                                        <a class="dropdown-item" :href="'view_vps?id=' + state.serviceInfo.vps_id + '&link=queue&action=restart'">Restart</a>
-                                        <a class="dropdown-item" :href="'view_vps?id=' + state.serviceInfo.vps_id + '&link=queue&action=stop'">Stop</a>
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=start'">Start</a>
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=restart'">Restart</a>
+                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=stop'">Stop</a>
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +254,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                             <div class="col-md-12 py-2">
                                 <span class="info-box-text">
                                     <hr>
-                                    <h5 class="text-center mt-5">Comment: {{ state.serviceInfo.vps_comment ? state.serviceInfo.vps_comment : 'none' }} <span @click="openCommentForm()" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i></span></h5>
+                                    <h5 class="text-center mt-5">Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span @click="openCommentForm()" title="Edit Comment" style="cursor: pointer;"><i class="fa fa-pencil text-sm my-2"></i></span></h5>
                                 </span>
                             </div>
                         </div>
@@ -293,11 +279,11 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                 <table class="table table-bordered my-3">
                                     <tr>
                                         <td class="text-muted text-bold">Total Space:</td>
-                                        <td class="text-bold text-capitalize">{{ state.service_disk_total }}</td>
+                                        <td class="text-bold text-capitalize">{{ service_disk_total }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted text-bold">Used Space:</td>
-                                        <td class="text-bold text-capitalize">{{ state.service_disk_used }}</td>
+                                        <td class="text-bold text-capitalize">{{ service_disk_used }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted text-bold">Remaining Space:</td>
@@ -347,11 +333,11 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                     </tr>
                                     <tr class="col">
                                         <td class="text-muted text-bold">CPU Cores:</td>
-                                        <td class="text-bold text-capitalize">{{ state.serviceInfo.vps_slices }}</td>
+                                        <td class="text-bold text-capitalize">{{ serviceInfo.vps_slices }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted text-bold">OS:</td>
-                                        <td class="text-bold text-capitalize">{{ state.osTemplate }}</td>
+                                        <td class="text-bold text-capitalize">{{ osTemplate }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -386,7 +372,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
         </div>
     </template>
 
-    <template v-if="!state.link_display || (state.link_function && ['cancel', 'welcome_email', 'vnc'].includes(state.link_function))">
+    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
         <template v-if="cp_link || da_link || sr_link || pp_link">
             <div class="col-md-12 px-0">
                 <div class="card">
@@ -416,7 +402,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                         <div class="col-md-12 py-3 mb-1">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From: <b>{{ state.custCurrencySymbol }}{{ state.cp_data.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
                                             </span>
                                         </div>
                                     </div>
@@ -426,7 +412,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                         <div class="col-md-12 py-2">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ state.cp_data.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cp_data.cost.toFixed(2) }}/mo</b></span>
                                                 <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                             </span>
                                         </div>
@@ -440,8 +426,8 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                             <div class="col-md-12 pb-2 pt-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                                                    <p class="text-sm my-1">( <span class="text-center font-italic">{{ state.daDetails.sub_name }}</span>)</p>
-                                                    <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ state.daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                    <p class="text-sm my-1">( <span class="text-center font-italic">{{ daDetails.sub_name }}</span>)</p>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -455,8 +441,8 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                             <div class="col-md-12 pt-1">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
-                                                    <p class="text-sm m-0">( <span class="text-center font-italic">{{ state.daDetails.sub_name }}</span>)</p>
-                                                    <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ state.daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                    <p class="text-sm m-0">( <span class="text-center font-italic">{{ daDetails.sub_name }}</span>)</p>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
                                                     <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>
@@ -472,7 +458,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                                 <div class="col-md-12 py-3 mb-1">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ state.rs_details.cost }}/mo</b></span>
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -486,7 +472,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                                 <div class="col-md-12 py-2">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ state.rs_details.cost }}/mo</b></span>
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
                                                         <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                                     </span>
                                                 </div>
@@ -502,7 +488,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                             <div class="col-md-12 py-3 mb-1">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -516,7 +502,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                             <div class="col-md-12 py-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ state.custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
                                                     <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>
@@ -544,7 +530,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                     <h5>Package</h5>
                                 </div>
                                 <div class="col text-left"><strong>
-                                        <h4 id="cp-name">{{ state.packageName }}</h4>
+                                        <h4 id="cp-name">{{ packageName }}</h4>
                                     </strong></div>
                             </div>
                             <div class="row">
@@ -590,24 +576,24 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
             </div>
         </div>
         <div class="row">
-            <div v-if="state.extraInfoTables.cp && state.extraInfoTables.cp.rows[2].value !== 'canceled'" class="col-md-4">
+            <div v-if="extraInfoTables.cp && extraInfoTables.cp.rows[2].value !== 'canceled'" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h3 v-if="state.extraInfoTables.cp.rows[0].value === 'cPanel Autoscale Cloud (Internal)'" class="card-title py-1">
+                        <h3 v-if="extraInfoTables.cp.rows[0].value === 'cPanel Autoscale Cloud (Internal)'" class="card-title py-1">
                             <i class="fab fa-cpanel text-orange pl-2 text-xl" style="border-radius: 50%;border: 2px solid #ccc;">&nbsp;</i>
-                            <span style="position: relative;top: -5px;">&nbsp;{{state.extraInfoTables.cp.title}}</span>
+                            <span style="position: relative;top: -5px;">&nbsp;{{extraInfoTables.cp.title}}</span>
                         </h3>
-                        <h3 v-else-if="state.extraInfoTables.cp.rows[0].value === 'Free DirectAdmin for CentOS 8 64-bit VPS' || state.extraInfoTables.cp.rows[0].value === 'DirectAdmin for Debian 8.0 64-bit'" class="card-title py-2 mt-1">
+                        <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Free DirectAdmin for CentOS 8 64-bit VPS' || extraInfoTables.cp.rows[0].value === 'DirectAdmin for Debian 8.0 64-bit'" class="card-title py-2 mt-1">
                             <b class="text-black text-md px-2 py-1" style="border-radius: 50%;border: 1px solid #ccc;">D A</b>
-                            <span>&nbsp;{{state.extraInfoTables.cp.title}}</span>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
                         </h3>
-                        <h3 v-else-if="state.extraInfoTables.cp.rows[0].value === 'Softaculous Remote'" class="card-title py-2 mt-1">
+                        <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Softaculous Remote'" class="card-title py-2 mt-1">
                             <b class="text-blue text-md px-3 py-1 font-italic" style="border-radius: 50%;border: 1px solid #ccc;">Soft</b>
-                            <span>&nbsp;{{state.extraInfoTables.cp.title}}</span>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
                         </h3>
                         <h3 v-else class="card-title py-2 mt-1">
                             <b class="text-dark text-md px-3 py-1 font-italic" style="border-radius: 50%;border: 1px solid #ccc;">Plesk</b>
-                            <span>&nbsp;{{state.extraInfoTables.cp.title}}</span>
+                            <span>&nbsp;{{extraInfoTables.cp.title}}</span>
                         </h3>
                         <div class="card-tools float-right pt-1 pl-3">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -617,7 +603,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                     </div>
                     <div class="card-body" style="height: 370px;">
                         <table class="table table-bordered">
-                            <tr v-for="itemvalue in state.extraInfoTables.cp.rows" :key="itemvalue.desc">
+                            <tr v-for="itemvalue in extraInfoTables.cp.rows" :key="itemvalue.desc">
                                 <td class="text-muted text-bold text-capitalize">{{itemvalue.desc}}</td>
                                 <td class="text-bold text-capitalize">{{itemvalue.value}}</td>
                             </tr>
@@ -631,7 +617,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2">
-                                    <i class="fa fa-tachometer-alt">&nbsp;</i>&nbsp;{{state.extraInfoTables.webuzo.title}}
+                                    <i class="fa fa-tachometer-alt">&nbsp;</i>&nbsp;{{extraInfoTables.webuzo.title}}
                                 </h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -641,7 +627,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <tbody>
-                                    <tr v-for="row in state.extraInfoTables.webuzo.rows" :key="row.desc">
+                                    <tr v-for="row in extraInfoTables.webuzo.rows" :key="row.desc">
                                         <td class="text-muted text-bold" style="width: 50%;">Tickets {{row.desc}}</td>
                                         <td class="text-muted text-xs">{{row.value}}</td>
                                     </tr>
@@ -657,7 +643,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2">
-                                    <i class="fa fa-plus">&nbsp;</i>{{state.extraInfoTables.addons.title}}
+                                    <i class="fa fa-plus">&nbsp;</i>{{extraInfoTables.addons.title}}
                                 </h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -673,7 +659,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="row in state.extraInfoTables.addons.rows" :key="row.desc">
+                                    <tr v-for="row in extraInfoTables.addons.rows" :key="row.desc">
                                         <td class="text-muted text-bold">{{row.desc}}</td>
                                         <td class="text-success">{{row.value}}</td>
                                     </tr>
@@ -683,7 +669,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                     </div>
                 </div>
             </template>
-            <div v-if="state.extraInfoTables.note && state.extraInfoTables.note.rows.length">
+            <div v-if="extraInfoTables.note && extraInfoTables.note.rows.length">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
@@ -697,7 +683,7 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                         <div class="card-body" style="height: 370px;">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>{{state.extraInfoTables.note.rows[0].value}}</td>
+                                    <td>{{extraInfoTables.note.rows[0].value}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -716,13 +702,13 @@ loadVps(id, state.serviceType, state.settings, state.serviceInfo)
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id" :value="state.serviceInfo.vps_id">
+                        <input type="hidden" name="id" :value="serviceInfo.vps_id">
                         <input type="hidden" name="link" value="update_comment">
-                        <input type="hidden" name="csrf_token" :value="state.csrf">
+                        <input type="hidden" name="csrf_token" :value="csrf">
                         <input type="hidden" name="edit_comment" value="2">
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="state.serviceInfo.vps_comment"></textarea>
+                            <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

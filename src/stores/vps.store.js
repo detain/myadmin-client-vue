@@ -141,9 +141,7 @@ export const useVpsStore = defineStore({
         csrf: '',
         errors: false,
         vps_logs: [],
-        cpuGraphData: null,
-
-
+        cpuGraphData: null
     }),
     actions: {
         async register(user) {
@@ -171,7 +169,6 @@ export const useVpsStore = defineStore({
                 this.user = { error };
             }
             */
-
             try {
                 const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id);
                 let key, value;
