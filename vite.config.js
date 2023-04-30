@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { splitVendorChunkPlugin } from 'vite'
-import Inspect from 'vite-plugin-inspect'
+//import Inspect from 'vite-plugin-inspect'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import i18nResources from "vite-plugin-i18n-resources"
@@ -16,7 +16,7 @@ export default defineConfig({
     i18nResources({
       path: resolve(__dirname, "src/locales"),
     }),
-    Inspect(),
+    //Inspect(),
     AutoImport({
       imports: ['vue', '@vueuse/core']  ,
       resolvers: [
