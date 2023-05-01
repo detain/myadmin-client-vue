@@ -14,11 +14,9 @@ layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
 layoutStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
 
 const mailStore = useMailStore();
-const { loading, error, pkg } = storeToRefs(mailStore);
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
 
 mailStore.getById(id)
-
-
 
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
@@ -45,7 +43,7 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">{{ serviceInfo[titleField] }}</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo[settings.TITLE_FIELD] }}</span>
             </div>
         </div>
         <div class="col-md-4">
@@ -160,7 +158,7 @@ const statusClass = computed(() => {
                         <input type="hidden" name="edit_comment" value="2">
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="comment"></textarea>
+                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.mail_comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
