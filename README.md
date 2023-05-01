@@ -33,6 +33,39 @@ This template should help get you started developing with Vue 3 in Vite.
 * [x] CORS
 * [x] modern routes
 
+
+| Link| Modern Route | Vue Template Setup | Backend API Setup | API Data Loading | Form Submission Handling | API Calls Condensed | Utilize Pinia State |
+| ---- | ---- | ------------------ | ----------------- | ---------------- | ------------------------ | ------------------- | ------------------- |
+| view_domains_list | domains | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_domain | domains/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_domain| domains/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_backups_list | backups | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_backup | backups/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_backup| backups/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_websites_list | websites | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_website | websites/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_website| websites/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_vpss_list | vpss | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_vps | vpss/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_vps| vpss/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_qs_list | qs | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_qs | qs/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_qs | qs/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_ssl_list | ssl | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_ssl | ssl/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_ss l| ssl/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_servers_list | servers | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_server | servers/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_server| servers/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_licenses_list | licenses | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_license | licenses/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_license| licenses/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_mail_list | mail | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+| view_mail | mail/id | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+| order_mail| mail/order | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
+|  |  |  |  |  |  |  |  |
+
+
 ## Links
 
 * [Awesome Vite (vitejs/awesome-vite) Overview - Track Awesome List](https://www.trackawesomelist.com/vitejs/awesome-vite/readme/)
