@@ -5,8 +5,8 @@ import { TicketsList } from '@/views/tickets'
 import dnsRoutes from './dns.routes'
 import { DnsManager, DnsEditor } from '@/views/dns'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
-import { ContactInfo, AccountSettings, ChangePass } from '@/views/account'
 import accountRoutes from './account.routes'
+import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'
 import usersRoutes from './users.routes'
 import affiliateRoutes from './affiliate.routes'
 import domainRoutes from './domain.routes'
@@ -43,6 +43,7 @@ export const router = createRouter({
     { ...accountRoutes },
     { path: '/contact_info', component: ContactInfo },
     { path: '/change_pass', component: ChangePass },
+    { path: '/change_username', component: ChangeUsername },
     { path: '/account_settings', component: AccountSettings },
     { ...dnsRoutes },
     { path: '/dns_manager', component: DnsManager },
