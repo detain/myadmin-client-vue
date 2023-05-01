@@ -1,6 +1,7 @@
 export { default as Layout } from './Layout.vue';
 export { default as Affiliate } from './Affiliate.vue';
 export { default as Faq } from './Faq.vue';
+export { default as DockSetup } from './DockSetup.vue';
 export { default as PaymentSetup } from './PaymentSetup.vue';
 export { default as RichReport } from './RichReport.vue';
 export { default as SalesGraph } from './SalesGraph.vue';

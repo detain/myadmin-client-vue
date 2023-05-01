@@ -9,9 +9,9 @@ layoutStore.setPageHeading('Affiliate - TrafficGraph');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'TrafficGraph'});
 
 const selectedPeriod = ref(30);
-
+const canvas = ref(null);
 function createGraph() {
-  const ctx = graph.value.getContext('2d');
+  const ctx = canvas.value.getContext('2d');
   new Chart(ctx, {
     // your chart configuration here
   });
@@ -40,17 +40,17 @@ onMounted(() => {
                             <label class="col-sm-2 col-form-label text-right">Select<span class="text-danger"> *</span></label>
                             <div class="col-sm-7 input-group">
                                 <select v-model="selectedPeriod" @change="anotherPeriod" id="graph_period" name="graph_period" class="form-control form-control-sm select2">
-                                    <option value="30" :selected="trafficDays == 30">Last 30 Days</option>
-                                    <option value="90" :selected="trafficDays == 90">Last 3 months</option>
-                                    <option value="180" :selected="trafficDays == 180">Last 6 months</option>
-                                    <option value="270" :selected="trafficDays == 270">Last 9 months</option>
-                                    <option value="365" :selected="trafficDays == 365">Last 1 year</option>
+                                    <option value="30" :selected="selectedPeriod == 30">Last 30 Days</option>
+                                    <option value="90" :selected="selectedPeriod == 90">Last 3 months</option>
+                                    <option value="180" :selected="selectedPeriod == 180">Last 6 months</option>
+                                    <option value="270" :selected="selectedPeriod == 270">Last 9 months</option>
+                                    <option value="365" :selected="selectedPeriod == 365">Last 1 year</option>
                                 </select>
                             </div>
                         </div>
                     </form>
                     <div>
-                        <canvas ref="graph" width="400" height="100"></canvas>
+                        <canvas ref="canvas" width="400" height="100"></canvas>
                     </div>
                 </div>
             </div>

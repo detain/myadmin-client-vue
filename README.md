@@ -5,12 +5,14 @@ This template should help get you started developing with Vue 3 in Vite.
 ## To-Do / Road-Map
 
 * [ ] loading / no entries messages
-* [ ] cache data in pinia stores
+* [x] cache data in pinia stores
 * [ ] fix all linter issues
-* [ ] view service pages
-  * [ ] load data via ajax api
+* [x] view service pages
+  * [x] load data via ajax api
   * [ ] links and form handling
-* [ ] order service pages
+* [x] order service pages
+  * [x] layout / design implemented
+  * [ ] form and api submission handling
 * [x] services list pages
   * [x] ajax loading via api calls
   * [x] convert links to router-links

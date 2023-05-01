@@ -84,8 +84,7 @@ loadDns(id, data)
             <input type="hidden" name="id" id="domain_id" value="35626">
             <input type="hidden" name="csrf_token" value="56019e5cb028b2d7c1201120debd53393809cf510b384d2a7a0fefd07c95ffc7cef92bf0f3bbaf46029f0bdecd91a6431b746fc22d34ecc9a76f82da941d05a9">
         </form>
-        <table :options="options"
-                              :columns="columns" class="display nowrap crud-table table table-bordered table-striped table-hover table-sm" width="100%" ref="table" id="crud-table">
+        <table :options="options" :columns="columns" class="display nowrap crud-table table table-bordered table-striped table-hover table-sm" width="100%" ref="table" id="crud-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -97,8 +96,8 @@ loadDns(id, data)
                             </div>
                         </form>
                     </th>
-                    <th>
                     <th>Type</th>
+                    <th>
                     <form class="form-inline">
                         <div class="form-group content">
                             Content:&nbsp;&nbsp;
@@ -139,7 +138,7 @@ loadDns(id, data)
                     <td>{{ row.name }}</td>
                     <td>{{ row.type }}</td>
                     <td>{{ row.content }}</td>
-                    <td>{{ row.priority }}</td>
+                    <td>{{ row.prio }}</td>
                     <td>{{ row.ttl }}</td>
                     <td>
                         <router-link :to="'dns_editor?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>

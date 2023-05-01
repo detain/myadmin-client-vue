@@ -8,9 +8,9 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - SalesGraph');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'SalesGraph'});
 
+const canvas = ref(null);
 const selectedPeriod = ref(30);
 onMounted(() => {
-      const canvas = Vue.ref(this.$refs.chart);
       const ctx = canvas.value.getContext("2d");
       const chart = new Chart(ctx, {
         type: "line",
@@ -68,7 +68,7 @@ onMounted(() => {
                         </div>
                     </form>
                     <div>
-                        <canvas ref="chart" width="400" height="100"></canvas>
+                        <canvas ref="canvas" width="400" height="100"></canvas>
                     </div>
                 </div>
             </div>
