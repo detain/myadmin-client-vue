@@ -12,10 +12,6 @@ export default defineConfig({
     base: process.env.ELECTRON=="true" ? './' : "/",
   plugins: [
     vue(),
-    splitVendorChunkPlugin(),
-    i18nResources({
-      path: resolve(__dirname, "src/locales"),
-    }),
     //Inspect(),
     AutoImport({
       imports: ['vue', '@vueuse/core']  ,
@@ -26,6 +22,10 @@ export default defineConfig({
       ],
       vueTemplate: true,
       cache: true,
+    }),
+    splitVendorChunkPlugin(),
+    i18nResources({
+      path: resolve(__dirname, "src/locales"),
     })
   ],
   resolve: {
