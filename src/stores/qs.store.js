@@ -263,7 +263,7 @@ export const useQsStore = defineStore({
             qs_cpu_flags:
                 "acpi aes aperfmperf apic arat arch_perfmon avx bts clflush cmov constant_tsc cpuid cpuid_fault cx16 cx8 de ds_cpl dtes64 dtherm dts epb ept erms est f16c flexpriority flush_l1d fpu fsgsbase fxsr ht ibpb ibrs ida lahf_lm lm mca mce md_clear mmx monitor msr mtrr nonstop_tsc nopl nx pae pat pbe pcid pclmulqdq pdcm pebs pge pln pni popcnt pse pse36 pti pts rdrand rdtscp rep_good sep smep smx ss ssbd sse sse2 sse4_1 sse4_2 ssse3 stibp syscall tm tm2 tpr_shadow tsc tsc_deadline_timer vme vmx vnmi vpid x2apic xsave xsaveopt xtopology xtpr"
         },
-        os_template: "Ubuntu 18.04",
+        osTemplate: "Ubuntu 18.04",
         serviceExtra: {
             platform: "kvm",
             spice: 5903

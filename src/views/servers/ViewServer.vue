@@ -14,7 +14,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
 layoutStore.addBreadcrum('/servers/'+id, 'View Server '+id);
 
 const serverStore = useServerStore();
-const { loading, error, pkg, link_display, ipmiAuth, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
 serverStore.getById(id)
 
@@ -30,7 +30,7 @@ const filteredSwitchports = computed(() => {
   }
 
   return networkInfo.switchports.filter(
-    (switchport) => switchport.assetId === assetId && switchport.vlanId in asset.value.vlans
+    (switchport) => switchport.asset_id === assetId && switchport.vlan_id in asset.value.vlans
   );
 });
 
@@ -109,7 +109,6 @@ const ipv6VlansNetworks = computed(() => {
         <div class="col">{{ link_display }}</div>
     </div>
     <div v-if="!link_display || (link_function && link_function.includes('cancel'))" class="row justify-content-center">
-        <template v-if="ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
@@ -122,9 +121,11 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                     <div class="card-body" style="height: 270px;">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h5 class="text-md m-0 p-2 text-center">Power Status is: <span class="text-bold text-capitalize text-bold" :class="{ 'text-success': ipmiLease.power == true, 'text-danger': ipmiLease.power == false }">{{ ipmiLease.power ? 'On' : 'Off' }}</span></h5>
-                            </div>
+                            <template v-if="ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true">
+                                <div class="col-md-12">
+                                    <h5 class="text-md m-0 p-2 text-center">Power Status is: <span class="text-bold text-capitalize text-bold" :class="{ 'text-success': ipmiLease.power == true, 'text-danger': ipmiLease.power == false }">{{ ipmiLease.power ? 'On' : 'Off' }}</span></h5>
+                                </div>
+                            </template>
                             <div class="col-md-12 text-center pt-2 pr-4 mr-3">
                             </div>
                             <div class="row">
@@ -142,7 +143,6 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
             </div>
-        </template>
         <div :class="`${ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true ? 'col-md-8' : 'col-md-4'}`">
             <div class="card">
                 <div class="card-header">
@@ -173,8 +173,8 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
                 <div class="card-body" style="overflow: scroll;">
-                    <template v-if="assets && assets.length">
-                        <template v-for="(asset, index) in assets" :key="asset.id">
+                    <template v-if="networkInfo.assets && networkInfo.assets.length">
+                        <template v-for="(asset, index) in networkInfo.assets" :key="asset.id">
                             <table class="table table-sm table-bordered">
                                 <tr>
                                     <th>ID</th>
@@ -229,7 +229,7 @@ const ipv6VlansNetworks = computed(() => {
                 </div>
             </div>
         </div>
-        <div v-if="asset.vlans && asset.vlans.length && asset.switchports && asset.switchports.length" class="col-md-12">
+        <div v-if="networkInfo.assets[Object.keys(networkInfo.assets)[0]].vlans && networkInfo.assets[Object.keys(networkInfo.assets)[0]].vlans.length && networkInfo.assets[Object.keys(networkInfo.assets)[0]].switchports && networkInfo.assets[Object.keys(networkInfo.assets)[0]].switchports.length" class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
@@ -257,27 +257,57 @@ const ipv6VlansNetworks = computed(() => {
                                 <th>Bandwidth Info</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr v-for="switchport in filteredSwitchports" :key="switchport.id">
-                                <td>{{ vlans[switchport.vlanId].network }}</td>
-                                <td>{{ vlans[switchport.vlanId].firstUsable }}</td>
-                                <td v-if="switchport.vlanId === filteredSwitchports[0].vlanId" :rowspan="filteredSwitchports.length" :style="{ verticalAlign: filteredSwitchports.length > 1 ? 'middle' : 'inherit' }">
-                                    {{ ipv6VlansNetworks }}
-                                </td>
-                                <td>{{ vlans[switchport.vlanId].netmask }}</td>
-                                <td>{{ vlans[switchport.vlanId].gateway }}</td>
-                                <td>{{ vlans[switchport.vlanId].hostmax }}</td>
-                                <td>{{ switchport.switch }}</td>
-                                <td>{{ switchport.port }}</td>
-                                <td>{{ vlans[switchport.vlanId].primary ? 'Yes' : 'No' }}</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a :href="'/view_server?id=' + serviceInfo.serverId + '&link=bandwidth_graph&graph_id=' + switchport.graphId" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip">
-                                            <i class="fa fa-line-chart"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody v-if="networkInfo && networkInfo.switchports.length > 0">
+                            <template v-for="(switchport, switchport_id) in networkInfo.switchports">
+                                <template v-if="switchport.asset_id == asset_id">
+                                    <template v-if="switchport.vlans && switchport.vlans.length > 0">
+                                        <template v-for="(vlan_id, index) in switchport.vlans">
+                                            <template v-if="networkInfo.assets[Object.keys(networkInfo.assets)[0]].vlans.includes(vlan_id)">
+                                                <tr :key="vlan_id">
+                                                    <td>{{ networkInfo.vlans[vlan_id].network }}</td>
+                                                    <td>{{ networkInfo.vlans[vlan_id].first_usable }}</td>
+                                                    <template v-if="index === 0">
+                                                        <td :rowspan="switchport.vlans.length" v-bind:class="{'vertical-align': switchport.vlans.length > 1}">
+                                                            <template v-if="networkInfo.vlans6 && networkInfo.vlans6.length > 0">
+                                                                <template v-for="(ipv6, ipv6_index) in networkInfo.vlans6">
+                                                                    {{ ipv6.vlans6_networks }}
+                                                                </template>
+                                                            </template>
+                                                            <template v-else>
+                                                                <i>Null</i>
+                                                            </template>
+                                                        </td>
+                                                    </template>
+                                                    <td>{{ networkInfo.vlans[vlan_id].netmask }}</td>
+                                                    <td>{{ networkInfo.vlans[vlan_id].gateway }}</td>
+                                                    <td>{{ networkInfo.vlans[vlan_id].hostmax }}</td>
+                                                    <td>{{ switchport.switch }}</td>
+                                                    <td>{{ switchport.port }}</td>
+                                                    <td>{{ networkInfo.vlans[vlan_id].primary ? 'Yes' : 'No' }}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a :href="`/view_server?id=${serviceInfo.server_id}&link=bandwidth_graph&graph_id=${switchport.graph_id}`" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="fa fa-line-chart"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </template>
+                                    </template>
+                                    <template v-else>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{{ switchport.switch }}</td>
+                                            <td>{{ switchport.port }}</td>
+                                            <td>{{ (vlan_id && networkInfo.vlans[vlan_id] && networkInfo.vlans[vlan_id].primary) ? 'Yes' : 'No' }}
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </template>
+                            </template>
                         </tbody>
                     </table>
                 </div>

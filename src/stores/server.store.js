@@ -14,6 +14,7 @@ export const useServerStore = defineStore({
         pkg: '',
         link_display: false,
         ipmiAuth: false,
+        ipmiLease: false,
         settings: {
             SERVICE_ID_OFFSET: 4000,
             USE_REPEAT_INVOICE: true,

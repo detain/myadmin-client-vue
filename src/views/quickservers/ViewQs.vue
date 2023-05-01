@@ -14,7 +14,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
 layoutStore.addBreadcrum('/qs/'+id, 'View Qs '+id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, os_template, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, module, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, module, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
 
 qsStore.getById(id)
 
@@ -397,7 +397,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                             <input type="hidden" name="edit_comment" value="2">
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
-                                <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="comment"></textarea>
+                                <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.qs_comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
