@@ -1,4 +1,5 @@
 export * from './alert.store';
+export * from './account.store';
 export * from './auth.store';
 export * from './backup.store';
 export * from './domain.store';

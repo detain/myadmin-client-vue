@@ -1,87 +1,23 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
-import { useAuthStore, useLayoutStore } from "@/stores";
+import { useAccountStore, useAuthStore, useLayoutStore } from "@/stores";
 const layoutStore = useLayoutStore();
+const accountStore = useAccountStore();
 const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Account Settings');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
 
-const schema = Yup.object().shape({
-    currentPassword: Yup.string(),
-    password: Yup.string().required("Password confirmation is required"),
-    newPassword: Yup.string().required("Password is required")
-});
+const { loading, error, custid, ima, csrf_token, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
 
-function changePassword() {
-    const url = "change_pass";
-    const formData = new FormData();
-    formData.append("password2", this.password);
-    axios
-        .post(url, formData)
-        .then((response) => {
-            // handle success
-        })
-        .catch((error) => {
-            // handle error
-        });
-}
-
-const custid = ref("277125412123");
-const ima = ref("client");
-const csrf_token = ref("12312312312312313123");
-const link = ref("account_settings?z=z");
-const data = reactive({
-    ssh_key: "ssh-dss123123123123123",
-    ssh_key_wrapped: "ssh-dss123123123123123",
-    api_key: "1324123123541244514",
-    api_key_wrapped: "436265235252345",
-    "2fa_google_key": "zzzzzz",
-    "2fa_google_enabled": true,
-    "2fa_google": 1,
-    "2fa_google_split": "4rt214 13 2132 ",
-    "2fa_google_qr": ""
-});
-const ip = ref({});
-const oauthproviders = ref({});
-const oauthconfig = {
-    callback: "https://my.interserver.net/oauth/callback.php",
-    providers: {
-        GitHub: {
-            enabled: true,
-            keys: {
-                id: "",
-                secret: ""
-            },
-            account: "",
-            url: "",
-            linked: true
-        }
-    }
-};
-const oauthadapters = ref([]);
-const limits = ref([
-    {
-        start: "1.2.3.4",
-        end: "1.2.3.100"
-    },
-    {
-        start: "107.77.194.166",
-        end: "107.77.194.166"
-    }
-]);
-
-const csrfToken = ref("");
-const disableReinstall = ref(false);
-const disableReset = ref(false);
-const disableReinstallDisabled = true;
 const formData = {
     twoFactorAuthEnabled: ref(false),
     twoFactorAuthSplit: ref(""),
     twoFactorAuthCode: ref("")
 };
+
 const newLimit = ref({
     start: "",
     end: ""
@@ -90,6 +26,7 @@ const newLimit = ref({
 function submitForm() {
     // handle form submission here
 }
+accountStore.getSettings();
 </script>
 
 <template>
@@ -152,7 +89,7 @@ function submitForm() {
             <div class="card-body">
                 <form @submit.prevent="generateApiKey" enctype="multipart/form-data" action="account_settings">
                     <input type="hidden" id="action" name="action" value="api">
-                    <input type="hidden" name="csrf_token" :value="csrfToken">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <div class="row">
                         <textarea rows="8" id="api_key" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : 'No API Key Setup Yet'" v-model="data.api_key"></textarea>
                     </div>
@@ -264,7 +201,7 @@ function submitForm() {
             </div>
             <div class="card-body">
                 <form @submit.prevent="submitForm">
-                    <input type="hidden" name="csrf_token" :value="csrfToken">
+                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <div class="row justify-content-center">
                         <div class="icheck-success d-inline">
                             <input type="checkbox" id="giChkSqr" value="1" name="2fa_google" v-model="formData.twoFactorAuthEnabled">
@@ -316,16 +253,16 @@ function submitForm() {
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="submitForm">
                     <input type="hidden" id="action" name="action" value="features">
-                    <input type="hidden" name="csrf_token" v-bind:value="csrfToken">
+                    <input type="hidden" name="csrf_token" v-bind:value="csrf_token">
                     <div class="row pl-5 ml-5">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" name="disable_reinstall" value="1" id="disreins" v-bind:checked="disableReinstall" :disabled="disableReinstallDisabled">
+                            <input type="checkbox" name="disable_reinstall" value="1" id="disreins" v-bind:checked="data.disable_reinstall">
                             <label for="disreins">Disable Reinstalls<div style="font-weight: normal;">Note: To disable reinstall create new ticket, our support team will help</div></label>
                         </div>
                     </div>
                     <div class="row pl-5 ml-5">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" name="disable_reset" value="1" id="disreset" v-bind:checked="disableReset">
+                            <input type="checkbox" name="disable_reset" value="1" id="disreset" v-bind:checked="data.disable_reset">
                             <label for="disreset">Disable (Forgot your Password) Password Resets.</label>
                         </div>
                     </div>
