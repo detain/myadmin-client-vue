@@ -184,7 +184,7 @@ accountStore.getSettings();
             <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-sm shadow-hover">
                 <div class="card-body icheck-success row">
                     <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
-                    <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.mask_cc }}</label>
+                    <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                     <div class="col-md-2 pb-2">
                         <span :class="{'text-green': cc_detail.verified_cc === 'yes', 'text-red': cc_detail.verified_cc === 'no'}" :title="cc_detail.verified_text">
                             <i :class="{'fa fa-check': cc_detail.verified_cc === 'yes', 'fa fa-times': cc_detail.verified_cc === 'no'}"></i> {{ cc_detail.verified }}
