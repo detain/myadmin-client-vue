@@ -10,7 +10,6 @@ layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
 
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const country_select = ref('');
-const cc_arr = ref([]);
 const pymt_method = ref('paypal');
 const selected_cc = ref('');
 const trigger_click = ref(false);

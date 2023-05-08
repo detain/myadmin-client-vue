@@ -7,7 +7,7 @@ const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Cart');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Cart'});
-const cc_arr = ref([]);
+const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref('paypal');
 const selected_cc = ref('');
 const csrf_token = ref('');
@@ -50,7 +50,7 @@ function delete_card(cc_id = '0')
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>'+cc_arr[cc_id]['mask_cc']+'</b> ?</p>',
+        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['mask_cc']+'</b> ?</p>',
         preConfirm: () => {
             $('#deleteForm').submit();
         }
@@ -60,8 +60,8 @@ function delete_card(cc_id = '0')
 function edit_card(cc_id = 0)
 {
     $("#e_cc_idx").val(cc_id);
-    $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
-    $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+    $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
+    $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
     $("#EditForm select[name='country']").attr('disabled','disabled');
     $('#EditClick').trigger('click');
 }
@@ -152,7 +152,7 @@ function deleteCard(cc_id = '0') {
     showCancelButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + cc_arr[cc_id]['mask_cc'] + '</b> ?</p>',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
     preConfirm: () => {
       $('#deleteForm').submit();
     }
@@ -161,12 +161,13 @@ function deleteCard(cc_id = '0') {
 
 function editCard(cc_id = 0) {
   $("#e_cc_idx").val(cc_id);
-  $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
-  $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+  $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
+  $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
   $("#EditForm select[name='country']").attr('disabled', 'disabled');
   $('#EditClick').trigger('click');
 }
 
+accountStore.load();
 </script>
 
 <template>
@@ -363,8 +364,8 @@ function editCard(cc_id = 0) {
                                 </div>
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
-                                <div v-if="cc_arr && cc_arr.length">
-                                    <div v-for="(cc_detail, cc_id) in cc_arr" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + (($pymt_method == 'cc' && $selected_cc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
+                                <div v-if="data.ccs">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + (($pymt_method == 'cc' && $selected_cc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
                                         <div v-if="$pymt_method == 'cc' && $selected_cc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>

@@ -4,14 +4,13 @@ import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useAccountStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
-
+const layoutStore = useLayoutStore();
 const alertStore = useAlertStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
-const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
-
+const { loading, error, custid, ima, csrf_token, link, data, ip } = storeToRefs(accountStore);
 layoutStore.setPageHeading('Contact Info');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
 
@@ -57,26 +56,7 @@ async function onSubmit(values) {
 const specialChars = (text) => {
     return encodeURIComponent(text);
 };
-const data = ref({
-    name: "",
-    account_id: "",
-    account_lid: "",
-    company: "",
-    address: "",
-    address2: "",
-    city: "",
-    state: "",
-    country: "",
-    zip: "",
-    phone: "",
-    email_invoices: "",
-    email_abuse: "",
-    gstin: "",
-    disable_email_notifications: false,
-    disable_reset: false,
-    disable_server_notifications: false,
-    disable_reinstall: false
-});
+
 const countries = ref({
     US: "United States",
     CA: "Canada",
@@ -90,6 +70,7 @@ const zipValue = computed(() => {
         return "";
     }
 });
+
 const route = useRoute();
 
 const escape = (str) => {
@@ -108,26 +89,6 @@ const loadContactInfo = async (data,gravatar,countries) => {
         const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/contact_info');
         console.log('api success');
         console.log(response);
-        data.value = {
-            name: response.data.name,
-            account_id: response.data.account_id,
-            account_lid: response.data.account_lid,
-            company: response.data.company,
-            address: response.data.address,
-            address2: response.data.address2,
-            city: response.data.city,
-            state: response.data.state,
-            country: response.data.country,
-            zip: response.data.zip,
-            phone: response.data.phone,
-            email_invoices: response.data.email_invoices,
-            email_abuse: response.data.email_abuse,
-            gstin: response.data.gstin,
-            disable_email_notifications: response.data.disable_email_notifications,
-            disable_reset: response.data.disable_reset,
-            disable_server_notifications: response.data.disable_server_notifications,
-            disable_reinstall: response.data.disable_reinstall
-        };
         countries.value = response.countries;
         //gravatar.value = response.gravatar;
     } catch (error) {
@@ -136,6 +97,7 @@ const loadContactInfo = async (data,gravatar,countries) => {
     }
 };
 
+accountStore.load();
 loadContactInfo(data,gravatar,countries)
 </script>
 
@@ -170,7 +132,6 @@ loadContactInfo(data,gravatar,countries)
                     <div class="col">
                         <form @submit.prevent="onSubmit" method="POST" action="contact_info">
                             <h4 class="mb-4">Personal Information</h4>
-                            <input type="hidden" name="csrf_token" :value="csrf_token" />
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="name">Name</label>
                                 <div class="col-md-6">
