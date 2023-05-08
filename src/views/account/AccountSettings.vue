@@ -23,9 +23,37 @@ const newLimit = ref({
     end: ""
 });
 
-function submitForm() {
-    // handle form submission here
+async function updateFeatures() {
+
 }
+
+async function update2fa() {
+
+}
+
+async function updateSshPublicKey() {
+
+}
+
+async function generateApiKey() {
+
+}
+
+async function submitAddRange(values) {
+    try {
+        let message;
+        console.log(newLimit.value.start);
+        console.log(newLimit.value.end);
+        /*const response = await fetchWrapper.post('https://mystage.interserver.net/apiv2/account_settings', {
+        });
+        console.log(response);
+        */
+    } catch (error) {
+        console.log(error);
+        //alertStore.error(error);
+    }
+}
+
 accountStore.getSettings();
 </script>
 
@@ -46,8 +74,7 @@ accountStore.getSettings();
                     Your Remote IP: <b>{{ip}}</b><br>
                     Enabling IP limits will prevent anyone that is not listed below from logging in. Make sure your IP address is static and will not change in the future.
                 </div>
-                <form @submit.prevent="submitForm" enctype="multipart/form-data">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
+                <form @submit.prevent="submitAddRange" enctype="multipart/form-data">
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -88,8 +115,6 @@ accountStore.getSettings();
             </div>
             <div class="card-body">
                 <form @submit.prevent="generateApiKey" enctype="multipart/form-data" action="account_settings">
-                    <input type="hidden" id="action" name="action" value="api">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <div class="row">
                         <textarea rows="8" id="api_key" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : 'No API Key Setup Yet'" v-model="data.api_key"></textarea>
                     </div>
@@ -117,9 +142,7 @@ accountStore.getSettings();
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" enctype="multipart/form-data" action="account_settings">
-                    <input type="hidden" id="action" name="action" value="ssh">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
+                <form method="post" @submit.prevent="updateSshPublicKey" enctype="multipart/form-data" action="account_settings">
                     <div class="row">
                         <template v-if="data.ssh_key">
                             <textarea class="form-control" rows="6" id="ssh_key" name="ssh_key" v-model="data.ssh_key"></textarea>
@@ -200,7 +223,7 @@ accountStore.getSettings();
                 </div>
             </div>
             <div class="card-body">
-                <form @submit.prevent="submitForm">
+                <form @submit.prevent="update2fa">
                     <input type="hidden" name="csrf_token" :value="csrf_token">
                     <div class="row justify-content-center">
                         <div class="icheck-success d-inline">
@@ -251,7 +274,7 @@ accountStore.getSettings();
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="submitForm">
+                <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateFeatures">
                     <input type="hidden" id="action" name="action" value="features">
                     <input type="hidden" name="csrf_token" v-bind:value="csrf_token">
                     <div class="row pl-5 ml-5">
