@@ -1,11 +1,14 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useAccountStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
+const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Payment Types');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
+
+const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const country_select = ref('');
 const cc_arr = ref([]);
 const pymt_method = ref('paypal');
@@ -13,7 +16,6 @@ const selected_cc = ref('');
 const trigger_click = ref(false);
 const current_cc_id = ref(0);
 const verify_display = ref(undefined);
-const csrf_token = ref('');
 const cc_auto_checked = ref(false);
 const cont_fields = {
     name: ref('')
@@ -34,7 +36,7 @@ function delete_card(cc_id = '0')
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>'+cc_arr[cc_id]['mask_cc']+'</b> ?</p>',
+        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['mask_cc']+'</b> ?</p>',
         preConfirm: () => {
             $('#deleteForm').submit();
         }
@@ -44,8 +46,8 @@ function delete_card(cc_id = '0')
 function edit_card(cc_id = 0)
 {
     $("#e_cc_idx").val(cc_id);
-    $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
-    $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+    $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
+    $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
     $("#EditForm select[name='country']").attr('disabled','disabled');
     $('#EditClick').trigger('click');
 }
@@ -136,7 +138,7 @@ function deleteCard(cc_id = '0') {
     showCancelButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + cc_arr[cc_id]['mask_cc'] + '</b> ?</p>',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
     preConfirm: () => {
       $('#deleteForm').submit();
     }
@@ -145,15 +147,13 @@ function deleteCard(cc_id = '0') {
 
 function editCard(cc_id = 0) {
   $("#e_cc_idx").val(cc_id);
-  $("#e_cr_no").val(cc_arr[cc_id]['mask_cc']);
-  $("#e_exp").val(cc_arr[cc_id]['cc_exp']);
+  $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
+  $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
   $("#EditForm select[name='country']").attr('disabled', 'disabled');
   $('#EditClick').trigger('click');
 }
 
-
-
-
+accountStore.getSettings();
 </script>
 
 <template>
@@ -180,8 +180,8 @@ function editCard(cc_id = 0) {
             </div>
         </div>
 
-        <div v-if="cc_arr && cc_arr.length">
-            <div v-for="(cc_detail, cc_id) in cc_arr" :key="cc_id" class="card shadow-sm shadow-hover">
+        <div v-if="data.ccs">
+            <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-sm shadow-hover">
                 <div class="card-body icheck-success row">
                     <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                     <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.mask_cc }}</label>
@@ -224,7 +224,6 @@ function editCard(cc_id = 0) {
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="add">
                     <div class="row justify-content-center">
                         <div class="col-12">
@@ -295,7 +294,6 @@ function editCard(cc_id = 0) {
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="EditForm">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="edit">
                     <input id="e_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -368,7 +366,6 @@ function editCard(cc_id = 0) {
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="VerifyForm">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="verify">
                     <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -409,7 +406,6 @@ function editCard(cc_id = 0) {
             </div>
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="VerifyForm">
-                    <input type="hidden" name="csrf_token" :value="csrf_token">
                     <input type="hidden" name="action" value="verify">
                     <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="">
                     <div class="row justify-content-center">
@@ -446,17 +442,14 @@ function editCard(cc_id = 0) {
 </div>
 <!-- END VERIFY CC FORM -->
 <form id="VerifyFormDefault" action="payment_types" method="post">
-    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="verify">
     <input class="v_cc_idx" type="hidden" name="idx" value="">
 </form>
 <form id="deleteForm" action="payment_types" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="delete">
     <input id="cc_idx" type="hidden" name="idx" value="">
 </form>
 <form id="defaultpymt" action="payment_types" method="post">
-    <input type="hidden" name="csrf_token" :value="csrf_token">
     <input type="hidden" name="action" value="default">
     <input id="defaultpymt_method" type="hidden" name="payment_method" value="">
     <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="">
