@@ -12,12 +12,6 @@ layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
 
 const { loading, error, custid, ima, csrf_token, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
 
-const formData = {
-    twoFactorAuthEnabled: ref(false),
-    twoFactorAuthSplit: ref(""),
-    twoFactorAuthCode: ref("")
-};
-
 const newLimit = ref({
     start: "",
     end: ""
@@ -32,7 +26,7 @@ async function update2fa() {
 }
 
 async function updateSshPublicKey() {
-
+    console.log(data.value.ssh_key);
 }
 
 async function generateApiKey() {
@@ -144,12 +138,7 @@ accountStore.getSettings();
             <div class="card-body">
                 <form method="post" @submit.prevent="updateSshPublicKey" enctype="multipart/form-data" action="account_settings">
                     <div class="row">
-                        <template v-if="data.ssh_key">
-                            <textarea class="form-control" rows="6" id="ssh_key" name="ssh_key" v-model="data.ssh_key"></textarea>
-                        </template>
-                        <template v-else>
-                            <textarea class="form-control" rows="6" id="ssh_key" name="ssh_key" placeholder="No SSH Key Setup Yet"></textarea>
-                        </template>
+                        <textarea class="form-control" rows="6" id="ssh_key" name="ssh_key" placeholder="No SSH Key Setup Yet" v-model="data.ssh_key"></textarea>
                     </div>
                     <hr />
                     <div class="row">
@@ -227,12 +216,12 @@ accountStore.getSettings();
                     <input type="hidden" name="csrf_token" :value="csrf_token">
                     <div class="row justify-content-center">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" id="giChkSqr" value="1" name="2fa_google" v-model="formData.twoFactorAuthEnabled">
+                            <input type="checkbox" id="giChkSqr" value="1" name="2fa_google" v-model="data['2fa_google_enabled']">
                             <label for="giChkSqr">Enable Google Two Factor Authentication</label>
                         </div>
                     </div>
                     <hr />
-                    <div v-if="formData.twoFactorAuthEnabled">
+                    <div v-if="data['2fa_google_enabled']">
                         <p class="text-success text-center mt-4">
                             <strong><i class="fa fa-check-square" style="">&nbsp;</i>Two Factor Authentication Enabled</strong>
                         </p>
@@ -242,15 +231,15 @@ accountStore.getSettings();
                             <p>Install and Register the <a target="_blank" class="link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><i class="fa fa-cloud-download"></i> Google Authenticator</a> by entering the code below or scanning the QR image</p>
                         </blockquote>
                         <div class="col-md-8 mt-3">
-                            <h3 class="py-3"><span class="badge badge-primary">{{ formData.twoFactorAuthSplit }}</span></h3>
+                            <h3 class="py-3"><span class="badge badge-primary">{{ data['2fa_google_split'] }}</span></h3>
                             <div class="alert alert-warning mt-2" role="alert">
                                 <i class="fa fas fa-file-export">&nbsp;</i>
                                 You should backup this code for recovery.
                             </div>
-                            <input v-if="!formData.twoFactorAuthEnabled" v-model="formData.twoFactorAuthCode" type="text" class="form-control mt-4" name="2fa_google_code" id="2fa_google_code" placeholder="Enter Code from Authenticator">
+                            <input v-if="!data['2fa_google_enabled']" v-model="data['2fa_google_key']" type="text" class="form-control mt-4" name="2fa_google_code" id="2fa_google_code" placeholder="Enter Code from Authenticator">
                         </div>
                         <div class="col-md-3 text-center">
-                            <img :src="formData.twoFactorAuthQr">
+                            <img :src="data['2fa_google_qr']" alt="Google QR Code">
                         </div>
                     </div>
                     <hr />
@@ -267,7 +256,7 @@ accountStore.getSettings();
         <div class="card">
             <div class="card-header">
                 <div class="p-1">
-                    <h3 class="card-title py-2"  title="">Account Features</h3>
+                    <h3 class="card-title py-2" title="">Account Features</h3>
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                     </div>
@@ -275,17 +264,15 @@ accountStore.getSettings();
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateFeatures">
-                    <input type="hidden" id="action" name="action" value="features">
-                    <input type="hidden" name="csrf_token" v-bind:value="csrf_token">
                     <div class="row pl-5 ml-5">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" name="disable_reinstall" value="1" id="disreins" v-bind:checked="data.disable_reinstall">
+                            <input type="checkbox" name="disable_reinstall" value="1" id="disreins" v-model="data.disable_reinstall">
                             <label for="disreins">Disable Reinstalls<div style="font-weight: normal;">Note: To disable reinstall create new ticket, our support team will help</div></label>
                         </div>
                     </div>
                     <div class="row pl-5 ml-5">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" name="disable_reset" value="1" id="disreset" v-bind:checked="data.disable_reset">
+                            <input type="checkbox" name="disable_reset" value="1" id="disreset" v-model="data.disable_reset">
                             <label for="disreset">Disable (Forgot your Password) Password Resets.</label>
                         </div>
                     </div>

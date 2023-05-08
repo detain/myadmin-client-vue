@@ -1,9 +1,11 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, computed, reactive, onMounted } from 'vue'
 import { fetchWrapper } from '@/helpers';
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dashboard');
 layoutStore.setBreadcrums({'': 'Home'});
@@ -39,6 +41,12 @@ onMounted(() => {
     });
     //$('.column').disableSelection();
 })
+
+const affiliateUrl = computed(() => {
+    return 'https://www.interserver.net/r/'+user.value.account_id;
+});
+
+
 
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),
@@ -326,7 +334,7 @@ loadHome(state)
                             <div class="col-md-12">
                                 <div class="d-flex aff-main">
                                     <div class="text-md my-2 aff-heading">Earn {{ `$${state.affiliateAmount}` }} Per Sale:</div>
-                                    <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" placeholder="Affiliate URL" :value="state.affiliateUrl"></div>
+                                    <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" placeholder="Affiliate URL" :value="affiliateUrl"></div>
                                     <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard">Copy to Clipboard</button>
                                 </div>
                                 <div class="m-2 aff-share">
@@ -347,4 +355,6 @@ loadHome(state)
 </template>
 
 <style scoped>
+/* @import '/css/home_new.css';
+@import '/css/home.css'; */
 </style>
