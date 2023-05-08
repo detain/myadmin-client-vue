@@ -3,10 +3,11 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useAccountStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 
 const alertStore = useAlertStore();
 const authStore = useAuthStore();
+const accountStore = useAccountStore();
 const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);

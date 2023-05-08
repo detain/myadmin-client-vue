@@ -153,7 +153,7 @@ function editCard(cc_id = 0) {
   $('#EditClick').trigger('click');
 }
 
-accountStore.getSettings();
+accountStore.load();
 </script>
 
 <template>

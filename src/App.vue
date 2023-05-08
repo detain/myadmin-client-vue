@@ -33,11 +33,10 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
             </template>
             <ul class="navbar-nav ml-auto"><!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="cart" title="Cart"><i class="fa fa-shopping-cart "></i></a>
+                    <router-link to="/cart" class="nav-link" title="Cart"><i class="fa fa-shopping-cart "></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
-                    <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fa fa-power-off"></i></a> -->
                 </li>
             </ul>
         </nav><!-- /.navbar -->

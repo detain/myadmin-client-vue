@@ -48,7 +48,7 @@ async function submitAddRange(values) {
     }
 }
 
-accountStore.getSettings();
+accountStore.load();
 </script>
 
 <template>

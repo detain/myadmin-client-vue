@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useAccountStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
+const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Cart');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Cart'});
