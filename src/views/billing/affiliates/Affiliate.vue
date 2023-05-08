@@ -152,7 +152,7 @@ onMounted(() => {
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><i class="fa fa-line-chart" aria-hidden="true"></i>Web Traffic Graph</router-link>
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><i class="fa fa-picture-o" aria-hidden="true"></i>View Banners & Links</router-link>
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><i class="fa fa-ticket" aria-hidden="true"></i>Setup Landing page & Coupons</router-link>
-                        <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_method'" title="Setup Payment Method"><i class="fa fa-money" aria-hidden="true"></i>Setup Payment Method</router-link>
+                        <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><i class="fa fa-money" aria-hidden="true"></i>Setup Payment Method</router-link>
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><i class="fa fa-file-text-o" aria-hidden="true"></i>Rich Report</router-link>
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" title="Latest Web Traffic"><i class="fa fa-globe" aria-hidden="true"></i>Latest Web Traffic</router-link>
                         <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><i class="fa fa-cc" aria-hidden="true"></i>Status Legend</router-link>
