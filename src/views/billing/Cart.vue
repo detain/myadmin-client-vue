@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
+import { RouterLink } from 'vue-router';
 import { useAccountStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
@@ -238,9 +239,9 @@ accountStore.load();
                                 </h5>
                             </div>
                             <div class="card-body mx-auto my-2">
-                                <a href="/contact_info" class="btn btn-custom py-2 px-3" title="Add Billing Address to continue">
+                                <router-link to="/account/info" class="btn btn-custom py-2 px-3" title="Add Billing Address to continue">
                                     <i class="fa fa-plus"></i>&nbsp;Add Billing Address
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>

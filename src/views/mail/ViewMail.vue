@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useMailStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
@@ -73,7 +73,7 @@ const statusClass = computed(() => {
                     <i class="material-icons">api</i>
                 </div>
                 <span class="small-box-footer">
-                    For API Key: <a class="text-white text-bold" target="_blank" href="account_settings">Account Settings</a>
+                    For API Key: <router-link to="/account/settings" class="text-white text-bold">Account Settings</router-link>
                 </span>
             </div>
         </div>

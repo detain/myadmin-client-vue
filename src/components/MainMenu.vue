@@ -22,7 +22,7 @@ const menus = ref({
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
         { link: '/tickets_list', icon: 'fa fa-ticket', text: 'Tickets' },
         { menu: 'billing', icon: 'fa fa-file-invoice', text: 'Billing', activecheck: ['cart', 'view_invoices', 'payment_types', 'prepays'] },
-        { menu: 'settings', icon: 'fa fa-gear', text: 'Settings', activecheck: ['account_settings', 'change_username', 'change_pass'] }
+        { menu: 'settings', icon: 'fa fa-gear', text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] }
     ],
     billing: [
         { link: '/cart', icon: 'far fa-circle', text: 'Cart' },
@@ -31,9 +31,9 @@ const menus = ref({
         { link: '/prepays', icon: 'far fa-circle', text: 'Pre-Paid Funds / Credit' }
     ],
     settings: [
-        { link: '/account_settings', icon: 'far fa-circle', text: 'Account Settings' },
-        { link: '/change_username', icon: 'far fa-circle', text: 'Change Login' },
-        { link: '/change_pass', icon: 'far fa-circle', text: 'Change Password' }
+        { link: '/account/settings', icon: 'far fa-circle', text: 'Account Settings' },
+        { link: '/account/username', icon: 'far fa-circle', text: 'Change Login' },
+        { link: '/account/pass', icon: 'far fa-circle', text: 'Change Password' }
     ]
 });
 const menu_names = ref(["main", "billing", "settings"])

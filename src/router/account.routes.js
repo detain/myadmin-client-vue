@@ -1,11 +1,15 @@
-import { Layout, Login, Register } from '@/views/account';
+import { Layout, Login, Register, ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account';
 
 export default {
     path: '/account',
     component: Layout,
     children: [
-        { path: '', redirect: 'login' },
+        //{ path: '', component: ContactInfo },
         { path: 'login', component: Login },
-        { path: 'register', component: Register }
+        { path: 'register', component: Register },
+        { path: 'info', component: ContactInfo },
+        { path: 'pass', component: ChangePass },
+        { path: 'username', component: ChangeUsername },
+        { path: 'settings', component: AccountSettings },
     ]
 };

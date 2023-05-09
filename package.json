@@ -104,6 +104,7 @@
     "yup": "*"
   },
   "devDependencies": {
+    "@rollup/plugin-inject": "*",
     "@rushstack/eslint-patch": "*",
     "@vitejs/plugin-vue": "*",
     "@vue/eslint-config-prettier": "*",
@@ -210,6 +211,14 @@
     "tmp": "0.2.1",
     "slice-ansi": "3.0.0",
     "astral-regex": "2.0.0",
-    "eslint-scope": "5.1.1"
+    "eslint-scope": "5.1.1",
+    "@vue/compiler-sfc": "3.3.0-beta.5",
+    "@vue/compiler-core": "3.3.0-beta.5",
+    "@vue/compiler-dom": "3.3.0-beta.5",
+    "@vue/compiler-ssr": "3.3.0-beta.5",
+    "@vue/reactivity-transform": "3.3.0-beta.5",
+    "@vue/shared": "3.3.0-beta.5",
+    "@vue/reactivity": "3.3.0-beta.5",
+    "@types/node": "20.1.1"
   }
 }

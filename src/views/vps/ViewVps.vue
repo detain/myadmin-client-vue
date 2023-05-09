@@ -1,10 +1,9 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
-import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -237,13 +236,13 @@ function toggleFunc(cp) {
                 serviceInfo.vps_server_status === 'deleted' ||
                 serviceInfo.vps_server_status === 'shut'
               )
-            }" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+            }" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown" aria-expanded="false">
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=start'">Start</a>
-                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=restart'">Restart</a>
-                                        <a class="dropdown-item" :href="'view_vps?id=' + serviceInfo.vps_id + '&link=queue&action=stop'">Stop</a>
+                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -545,7 +544,7 @@ function toggleFunc(cp) {
                             <br>
                             <div class="row">
                                 <div class="col">
-                                    <a id="cp-order-link" class="btn btn-primary btn-block" :href="'view_vps?link=add_control_panel&id='+serviceInfo.vps_id+'&cp=cp'">Place Order</a>
+                                    <router-link to="'/vps/'+serviceInfo.vps_id+'/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br>
