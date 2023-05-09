@@ -37,7 +37,7 @@ export const useTicketsStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/tickets_list');
+                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/tickets');
                 for (const field in response) {
                     this[field] = response[field];
                 }

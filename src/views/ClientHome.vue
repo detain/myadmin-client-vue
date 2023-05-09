@@ -236,9 +236,9 @@ loadHome(state)
                         <i class="fas fa-file-invoice"></i>
                     </div>
                     <div class="small-box-footer">
-                        <a href="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount">
+                        <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount">
                             <i class="fa fa-dollar text-sm"></i>&nbsp;Pay Now
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -259,9 +259,9 @@ loadHome(state)
                                 <i class="fa fa-ticket"></i>Recent Tickets
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="/tickets_list" class="btn btn-custom btn-sm" title="View All Tickets">
+                                <router-link to="/tickets_list" class="btn btn-custom btn-sm" title="View All Tickets">
                                     <i class="fa fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp;
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
