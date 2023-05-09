@@ -215,9 +215,9 @@ loadHome(state)
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="small-box-footer">
-                        <a href="/prepays" class="text-bold text-white" title="Manage Your PrePay Account">
+                        <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account">
                             Manage Account&nbsp;<i class="fa fa-pencil text-sm"></i>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>

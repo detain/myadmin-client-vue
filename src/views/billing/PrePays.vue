@@ -1,26 +1,13 @@
 <script setup>
 import { ref, reactive, defineComponent } from "vue";
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { usePrePayStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
+const prepayStore = usePrePayStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
+const { loading, error, custid, ima, csrf_token, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 layoutStore.setPageHeading('PrePaid Funds');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'PrePays'});
-
-const page = ref(1);
-const csrf_token = ref('');
-const total_pages = ref(1);
-const curr_page_records = ref(0);
-const total_records = ref(0);
-const modules = ref({
-    // replace with actual data
-    default: "Select a module",
-    module1: "Module 1",
-    module2: "Module 2",
-    module3: "Module 3"
-});
-const allInfo = ref({});
-const prepays = ref([]);
 
 function addPrepayUpdates(module) {
     if (module === "default") {
@@ -41,9 +28,7 @@ function addPrepayUpdates(module) {
         $(".typerow").show();
     }
 }
-</script>
 
-<script>
 function add_amount(prepay_id, module) {
     $("#prepay_hiddenid").val(prepay_id);
     $("#prep_id").val(prepay_id);
@@ -66,6 +51,8 @@ function delete_prepay(prepay_id) {
         }
     });
 }
+
+prepayStore.load();
 </script>
 
 <template>
@@ -75,13 +62,13 @@ function delete_prepay(prepay_id) {
             <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" aria-hidden="true"></i> Add New Prepay</a>
         </div>
 
-        <template v-if="prepays.length > 0">
+        <template v-if="prepays">
             <div v-for="(p_details, p_id) in prepays" :key="p_id" class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
                             <p>Prepay ID : {{ p_details.prepay.prepay_id }}</p>
-                            <p>Module: {{ p_details.prepay.prepay_module ? p_details.prepay.prepay_module.capitalize() : 'All' }}</p>
+                            <p>Module: {{ p_details.prepay.prepay_module ? p_details.prepay.prepay_module : 'All' }}</p>
                             <p>Balance: {{ p_details.prepay.prepay_remaining_disp }}</p>
                             <p>Automatically use on Invoices: {{ p_details.prepay.prepay_automatic_use === '1' ? 'Yes' : 'No' }}</p>
                         </div>
