@@ -259,7 +259,7 @@ loadHome(state)
                                 <i class="fa fa-ticket"></i>Recent Tickets
                             </h3>
                             <div class="card-tools float-right">
-                                <router-link to="/tickets_list" class="btn btn-custom btn-sm" title="View All Tickets">
+                                <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets">
                                     <i class="fa fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp;
                                 </router-link>
                             </div>
@@ -283,9 +283,9 @@ loadHome(state)
                                     <td>{{ ticket.lastreplier }}</td>
                                     <td>{{ state.ticketStatusView[ticket.ticketstatusid] }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" title="Edit Ticket" :href="'/view_ticket?ticket=' + ticket.ticketid">
+                                        <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid">
                                             <i class="fa fa-pencil"></i>&nbsp;Edit
-                                        </a>
+                                        </router-link>
                                     </td>
                                 </tr>
                             </tbody>

@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home } from '@/views'
-import { TicketsList } from '@/views/tickets'
 import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
 import affiliateRoutes from './affiliate.routes'
 import usersRoutes from './users.routes'
 import accountRoutes from './account.routes'
+import ticketRoutes from './ticket.routes'
 import dnsRoutes from './dns.routes'
 import domainRoutes from './domain.routes'
 import backupRoutes from './backup.routes'
@@ -35,7 +35,6 @@ export const router = createRouter({
   routes: [
     { path: '/', component: ClientHome },
     { path: '/home', component: ClientHome },
-    { path: '/tickets_list', component: TicketsList },
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
@@ -43,6 +42,7 @@ export const router = createRouter({
     { ...affiliateRoutes },
     { ...usersRoutes },
     { ...accountRoutes },
+    { ...ticketRoutes },
     { ...dnsRoutes },
     { ...domainRoutes },
     { ...backupRoutes },

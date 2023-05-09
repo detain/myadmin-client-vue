@@ -59,25 +59,25 @@ ticketsStore.getAll();
             <div class="card-body p-0">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item" :class="{ active: viewType == 'all' }">
-                        <router-link to="tickets_list" class="nav-link">
+                        <router-link to="tickets" class="nav-link">
                             <i class="fas fa-inbox text-primary">&nbsp;</i> Inbox
                             <!-- <span class="badge bg-primary float-right">{{ inboxCount }}</span> -->
                         </router-link>
                     </li>
                     <li class="nav-item" :class="{ active: viewType == 'open' }">
-                        <router-link to="tickets_list?view=open" class="nav-link">
+                        <router-link to="tickets?view=open" class="nav-link">
                             <i class="far fa-envelope-open text-success">&nbsp;</i> Open
                             <span class="badge bg-success float-right">{{ countArray['Open'] }}</span>
                         </router-link>
                     </li>
                     <li class="nav-item" :class="{ active: viewType == 'hold' }">
-                        <router-link to="tickets_list?view=hold" class="nav-link">
+                        <router-link to="tickets?view=hold" class="nav-link">
                             <i class="fa fa-pause text-warning">&nbsp;</i> Awaiting Reply
                             <span class="badge bg-warning float-right">{{ countArray['On Hold'] }}</span>
                         </router-link>
                     </li>
                     <li class="nav-item" :class="{ active: viewType == 'closed' }">
-                        <router-link to="tickets_list?view=closed" class="nav-link">
+                        <router-link to="tickets?view=closed" class="nav-link">
                             <i class="far fa-envelope text-danger">&nbsp;</i> Closed
                             <span class="badge bg-danger float-right">{{ countArray['Closed'] }}</span>
                         </router-link>
@@ -119,9 +119,9 @@ ticketsStore.getAll();
                                 {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                                 <div class="btn-group">
                                     <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets_list?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
+                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
                                     <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets_list?view=' + view + '&page=' + currentPage + 1 + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
+                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + currentPage + 1 + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
                                 </div>
                                 <!-- /.btn-group -->
                             </div>
@@ -167,9 +167,9 @@ ticketsStore.getAll();
                             {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                             <div class="btn-group">
                                 <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets_list?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
+                                <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
                                 <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets_list?view=' + view + '&page=' + (currentPage + 1) + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
+                                <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage + 1) + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
                             </div>
                             <!-- /.btn-group -->
                         </div>

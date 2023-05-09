@@ -20,7 +20,7 @@ const menus = ref({
         { link: '/qs', icon: 'fa fa-cloud', text: 'Rapid Deploy Servers' },
         { link: '/servers', icon: 'fa fa-server', text: 'Servers' },
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
-        { link: '/tickets_list', icon: 'fa fa-ticket', text: 'Tickets' },
+        { link: '/tickets', icon: 'fa fa-ticket', text: 'Tickets' },
         { menu: 'billing', icon: 'fa fa-file-invoice', text: 'Billing', activecheck: ['cart', 'view_invoices', 'payment_types', 'prepays'] },
         { menu: 'settings', icon: 'fa fa-gear', text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] }
     ],
