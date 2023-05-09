@@ -1,4 +1,4 @@
-import { Layout, Login, Register, ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account';
+import { Layout, LoginOld, Login, Register, ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account';
 
 export default {
     path: '/account',
@@ -6,6 +6,7 @@ export default {
     children: [
         //{ path: '', component: ContactInfo },
         { path: 'login', component: Login },
+        { path: 'login_old', component: LoginOld },
         { path: 'register', component: Register },
         { path: 'info', component: ContactInfo },
         { path: 'pass', component: ChangePass },
