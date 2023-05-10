@@ -11,6 +11,7 @@ const { logo, captcha, language, counts } = storeToRefs(loginStore);
 const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
 
 const isLogin = ref(true);
+const isPasswordVisible = ref(false);
 const tos = ref(false);
 const login = ref('');
 const password = ref('');
@@ -20,6 +21,14 @@ const emailCode = ref('');
 
 const isTosCheked = computed(() => {
     return tos == true || login != '';
+});
+
+const passwordType = computed(() => {
+    if (isPasswordVisible.value == true) {
+        return 'text';
+    } else {
+        return 'password';
+    }
 });
 
 const schema = Yup.object().shape({
@@ -584,9 +593,9 @@ loginStore.load();
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="loginpassword" type="password" class="login_info form-control" v-model="password" placeholder="Password" autocomplete="off" required>
+                                            <input id="loginpassword" :type="passwordType" class="login_info form-control" v-model="password" placeholder="Password" autocomplete="off" required>
                                             <div class="input-group-append">
-                                                <div class="input-group-text"><button type="button" @click="togglePasswordVisibility" aria-hidden="true"><i class="fa fa-eye"></i></button></div>
+                                                <div class="input-group-text"><button type="button" @click.prevent="isPasswordVisible = !isPasswordVisible" aria-hidden="true"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button></div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -774,9 +783,9 @@ loginStore.load();
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="signuppassword" type="password" class="form-control" v-model="password" placeholder="Password" autocomplete="off" required>
+                                            <input id="signuppassword" :type="passwordType" class="form-control" v-model="password" placeholder="Password" autocomplete="off" required>
                                             <div class="input-group-append">
-                                                <div class="input-group-text"><button type="button" @click="togglePasswordVisibility" aria-hidden="true"><i class="fa fa-eye"></i></button></div>
+                                                <div class="input-group-text"><button type="button" @click.prevent="isPasswordVisible = !isPasswordVisible" aria-hidden="true"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button></div>
                                             </div>
                                             <div id="pswd_info">
                                                 <p class="pp"><b>Password must have:</b></p>
