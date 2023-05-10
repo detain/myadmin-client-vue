@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue'
-import { Form, Field } from 'vee-validate';
+//import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore, useLoginStore } from '@/stores';
 
@@ -31,15 +31,30 @@ const passwordType = computed(() => {
     }
 });
 
-function reloadCaptcha() {
-    loginStore.reloadCaptcha();
-}
-
-const schema = Yup.object().shape({
+const loginSchema = Yup.object().shape({
     tfa: Yup.string(),
     login: Yup.string().required('Username is required'),
     passwd: Yup.string().required('Password is required')
 });
+
+async function onLoginSubmit() {
+    const authStore = useAuthStore();
+    const layoutStore = useLayoutStore();
+    const loginParams = {
+        login: login.value,
+        passwd: password.value
+    };
+    if (layoutStore.opts.tfa == true) {
+        loginParams.tfa = values.tfa;
+    }
+    console.log('Login Params:');
+    console.log(loginParams);
+    await authStore.login(loginParams);
+}
+
+function reloadCaptcha() {
+    loginStore.reloadCaptcha();
+}
 
 onMounted(function () {
     jQuery(document).ready(function () {
@@ -125,21 +140,6 @@ onMounted(function () {
     });
 });
 
-async function onSubmit(values) {
-    const authStore = useAuthStore();
-    const layoutStore = useLayoutStore();
-    console.log('Values:');
-    console.log(values);
-    const loginParams = {
-        login: values.login,
-        passwd: values.passwd
-    };
-    if (layoutStore.opts.tfa == true) {
-        loginParams.tfa = values.tfa;
-    }
-    await authStore.login(loginParams);
-}
-
 var signup_running = 0;
 
 function setModalMaxHeight(element) {
@@ -196,18 +196,6 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
         }
         timer = setInterval(run, stepTime);
         run();
-    }
-}
-
-function enter_handler(e) {
-    if (e.keyCode == 13) {
-        //jQuery('#loginForm').submit();
-        e.preventDefault();
-        if (login_type == "signup") {
-            signup_handler(e);
-        } else {
-            login_handler(e);
-        }
     }
 }
 
@@ -536,7 +524,7 @@ loginStore.load();
                                     <h3 class="card-title ml-3 mt-2 text-bold">Sign in to start your session</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="submitForm">
+                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="onLoginSubmit" :validation-schema="loginSchema">
                                         <div class="input-group mb-3">
                                             <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                             <div class="input-group-append">
@@ -583,7 +571,7 @@ loginStore.load();
                                                 </div>
                                             </div>
                                             <div class="col-4">
-                                                <button id="" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="signIn">Sign In</button>
+                                                <button id="" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
                                             </div>
                                         </div>
                                         <div class="poppup hidden login_email_popup fixed inset-0 z-10 flex items-center justify-center">
@@ -781,7 +769,7 @@ loginStore.load();
                                             </div>
                                             <div class="col-12">
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" required :v-model="tos">
+                                                    <input type="checkbox" id="tos" required v-model="tos">
                                                     <label for="tos">I agree to the <span class="underline font-bold text-sm text-blue-500 hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a></span></label>
                                                 </div>
                                             </div>
@@ -996,24 +984,6 @@ loginStore.load();
 body {
     height: 100vh;
 }
-@media screen and (max-width:390px) {
-    .captcha_main iframe,
-    .captcha_main_signup iframe,
-    #gcaptcha-2 div,
-    #gcaptcha-1 div {
-        width: 100% !important;
-    }
-}
-@media screen and (max-width:660px) {
-    .container-main {
-        min-height: 90vh !important;
-    }
-}
-@media screen and (min-width:767px) {
-    .container-main {
-        flex-direction: row !important;
-    }
-}
 .marketing-content {
     font-family: 'Bebas Neue', cursive;
     background: url('/images/main.jpg');
@@ -1125,6 +1095,24 @@ body {
 @media screen and (max-width:660px) {
     .login-box {
         width:100% !important;
+    }
+}
+@media screen and (max-width:390px) {
+    .captcha_main iframe,
+    .captcha_main_signup iframe,
+    #gcaptcha-2 div,
+    #gcaptcha-1 div {
+        width: 100% !important;
+    }
+}
+@media screen and (max-width:660px) {
+    .container-main {
+        min-height: 90vh !important;
+    }
+}
+@media screen and (min-width:767px) {
+    .container-main {
+        flex-direction: row !important;
     }
 }
 </style>
