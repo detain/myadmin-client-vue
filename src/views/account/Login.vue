@@ -12,12 +12,12 @@ const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layou
 
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
-const tos = ref(false);
 const login = ref('');
 const password = ref('');
 const captchaCode = ref('');
-const remember = ref(false);
 const emailCode = ref('');
+const tos = ref(false);
+const remember = ref(false);
 
 const isTosCheked = computed(() => {
     return tos == true || login != '';
@@ -31,6 +31,10 @@ const passwordType = computed(() => {
     }
 });
 
+function reloadCaptcha() {
+    loginStore.reloadCaptcha();
+}
+
 const schema = Yup.object().shape({
     tfa: Yup.string(),
     login: Yup.string().required('Username is required'),
@@ -42,20 +46,10 @@ onMounted(function () {
         $("#tosModal").on("shown.bs.modal", function (e) {
             setModalMaxHeight(this);
         });
-        jQuery(".captcha_alt").css("display", "none");
-        jQuery(".captcha_alt_signup").css("display", "none");
         animateValue(document.getElementById("count-v"));
         animateValue(document.getElementById("count-w"));
         animateValue(document.getElementById("count-s"));
-        reloadCaptcha(0);
-        jQuery(".btn-captcha-reload").click(function (e) {
-            e.preventDefault();
-            reloadCaptcha();
-        });
-        jQuery(".btn-captcha-reloadFP").click(function (e) {
-            e.preventDefault();
-            reloadCaptcha(1);
-        });
+        //reloadCaptcha(0);
         jQuery("#captcha_alt_link, #captcha_main_link").click(function (e) {
             e.preventDefault();
             jQuery(".captcha_main, .captcha_alt").toggle(500);
@@ -63,13 +57,6 @@ onMounted(function () {
         jQuery("#captcha_alt_link_signup, #captcha_main_link_signup").click(function (e) {
             e.preventDefault();
             jQuery(".captcha_main_signup, .captcha_alt_signup").toggle(500);
-        });
-        jQuery(".btn-password-show").click(function (e) {
-            if (jQuery(e.currentTarget.dataset.target).attr("type") == "password") {
-                jQuery(e.currentTarget.dataset.target).attr("type", "text");
-            } else {
-                jQuery(e.currentTarget.dataset.target).attr("type", "password");
-            }
         });
         jQuery("#forgot_link").click(function (e) {
             e.preventDefault();
@@ -81,30 +68,9 @@ onMounted(function () {
             jQuery('.sign-up-txt.signup').show();
             jQuery("div.myadmin_login").toggle("500");
         });
-        var rememberMe = localStorage.rememberMe === "true" ? true : false;
-        jQuery("#remember").prop("checked", rememberMe || false);
-        jQuery("#remember").on("change", function () {
-            localStorage.rememberMe = jQuery("#remember").prop("checked");
-        });
-        jQuery("#loginForm input").keydown(function (e) {
-            enter_handler(e);
-        });
-        jQuery(".loginsubmit").click(function (e) {
-            login_handler(e);
-            return false;
-        });
-        jQuery(".signupsubmit").click(function (e) {
-            signup_handler(e);
-            return false;
-        });
         jQuery("#btn-forgot").click(function (e) {
             forgot_password(e);
             return false;
-        });
-        jQuery("#login_id").on("change", "", function () {
-            var login_id_val = jQuery(this).val().toLowerCase();
-            login_id_val = login_id_val.trim();
-            jQuery(this).val(login_id_val);
         });
         $('input[type=password]').keyup(function () {
             $('#password_confirmation').on('keyup', function () {
@@ -175,21 +141,6 @@ async function onSubmit(values) {
 }
 
 var signup_running = 0;
-
-function reloadCaptcha(fp) {
-    if (fp != 0 && fp != "0") {
-        fp = 0;
-    }
-    $.ajax({
-        url: "ajax_captcha.php",
-        data: "fp=" + fp,
-        success: function (src) {
-            jQuery("#captcha-imgFP").attr("src", src);
-            jQuery("#captcha-img").attr("src", src);
-            jQuery("#captcha-img-signup").attr("src", src);
-        }
-    });
-}
 
 function setModalMaxHeight(element) {
     element = $(element);

@@ -27,6 +27,16 @@ export const useLoginStore = defineStore({
                 console.log("error:");
                 console.log(error);
             }
+        },
+        async reloadCaptcha() {
+            try {
+                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/captcha');
+                this.captcha = response.captcha;
+            } catch (error) {
+                console.log("error:");
+                console.log(error);
+            }
         }
+
     }
 });
