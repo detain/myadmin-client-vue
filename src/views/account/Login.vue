@@ -14,10 +14,11 @@ const isLogin = ref(true);
 const isPasswordVisible = ref(false);
 const login = ref('');
 const password = ref('');
-const captchaCode = ref('');
-const emailCode = ref('');
 const tos = ref(false);
 const remember = ref(false);
+const captchaCode = ref('');
+const emailCode = ref('');
+const twoFactorAuthCode = ref('');
 
 const isTosCheked = computed(() => {
     return tos == true || login != '';
@@ -45,7 +46,7 @@ async function onLoginSubmit() {
         passwd: password.value
     };
     if (layoutStore.opts.tfa == true) {
-        loginParams.tfa = values.tfa;
+        loginParams.tfa = twoFactorAuthCode.value;
     }
     console.log('Login Params:');
     console.log(loginParams);
@@ -600,13 +601,13 @@ loginStore.load();
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button id="" type="submit" class="loginsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Sign In</button>
+                                                            <button type="submit" @click.prevent="onLoginSubmit" class="loginsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Sign In</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="poppup hidden popup fixed inset-0 z-10 flex items-center justify-center">
+                                        <div class="poppup popup fixed inset-0 z-10 flex items-center justify-center" v-if="opts.tfa">
                                             <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                             <div class="relative bg-white w-full max-w-3xl mx-auto rounded-lg shadow-lg z-10 py-4">
                                                 <i class="close text-lg fa fa-close float-right px-4 cursor-pointer" @click="closePopup"></i>
@@ -619,7 +620,7 @@ loginStore.load();
                                                     </p>
                                                     <form>
                                                         <div class="mb-4 signup_toggle twofactorauth">
-                                                            <input type="text" id="2fa_code" name="2fa_code" placeholder="Enter Code from Authenticator" class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50">
+                                                            <input type="text" v-model="twoFactorAuthCode" placeholder="Enter Code from Authenticator" class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50">
                                                         </div>
                                                         <div class="mb-4">
                                                             <div class="error-box bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" style="display:none;">
@@ -633,14 +634,12 @@ loginStore.load();
                                                         </div>
                                                         <div class="mb-4">
                                                             <label class="flex items-center">
-                                                                <input type="checkbox" name="remember" id="2fa-remember" class="form-checkbox rounded-sm text-indigo-500 h-4 w-4">
+                                                                <input type="checkbox" name="remember" id="2fa-remember" class="form-checkbox rounded-sm text-indigo-500 h-4 w-4" v-model="remember">
                                                                 <span class="ml-2 text-gray-800">Remember me</span>
                                                             </label>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button id="" type="submit" class="loginsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">
-                                                                Sign In
-                                                            </button>
+                                                            <button type="submit" @click.prevent="onLoginSubmit" class="loginsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Sign In</button>
                                                         </div>
                                                     </form>
                                                 </div>
