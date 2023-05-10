@@ -16,7 +16,7 @@ const counts = {
 const tos = ref(false);
 const login = ref('');
 
-const tosCheked = computed(() => {
+const isTosCheked = computed(() => {
     return tos == true || login != '';
 });
 
@@ -765,17 +765,17 @@ function signup_handler(e) {
                                     <h3 class="card-title ml-3 mt-2 text-bold">Sign in to start your session</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" method="POST" accept-charset="UTF-8" role="form" id="loginForm" action="https://mystage.interserver.net/ajax_check_login.php" autocomplete="on" enctype="multipart/form-data">
+                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="submitForm">>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="login_info form-control" name="login_id" id="login_id" placeholder="Email Address" required autofocus autocomplete="off" value="{if isset($login) && $login != ''}{$login|htmlentities}{/if}">
+                                            <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="loginpassword" type="password" class="login_info form-control" name="passwd" placeholder="Password" value="{if isset($password) && $password != ''}{$password|htmlentities}{/if}" autocomplete="off" required>
+                                            <input id="loginpassword" type="password" class="login_info form-control" v-model="password" placeholder="Password" autocomplete="off" required>
                                             <div class="input-group-append">
-                                                <div class="input-group-text"><button type="button" id="show-hide-pass" onclick="togglePasswordVisibility()" aria-hidden="true"><i class="fa fa-eye"></i></button></div>
+                                                <div class="input-group-text"><button type="button" @click="togglePasswordVisibility" aria-hidden="true"><i class="fa fa-eye"></i></button></div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -789,46 +789,46 @@ function signup_handler(e) {
                                                 </div>
                                                 <div class="mb-6 captcha_alt">
                                                     <div class="flex">
-                                                        <img id="captcha-img" style="max-width:75%;" src="{$captcha}" alt="" />
-                                                        <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reload" type="button" data-target="#captcha-img" data-toggle="button" title="Reload Captcha" tabindex="-1" aria-pressed="false">
+                                                        <img :src="captcha" style="max-width:75%;" alt="" />
+                                                        <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reload" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false">
                                                             <span class="fa fa-refresh fa-fw"></span>
                                                         </button>
                                                     </div>
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" name="captcha" id="captcha" placeholder="Captcha" autofocus autocomplete="off">
+                                                        <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off">
                                                         <div class="input-group-append">
                                                             <div class="input-group-text">
                                                                 <span class="fa fa-robot" aria-hidden="true"></span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" id="captcha_main_link" href="#">Primary Captcha Method</a>
+                                                    <a class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
                                                 </div>
                                             </div>
                                             <div class="col-8">
                                                 <div class="icheck-primary">
-                                                    <input class="login_info" type="checkbox" id="remember" name="remember" value="yes" />
+                                                    <input class="login_info" type="checkbox" id="remember" v-model="remember" />
                                                     <label for="remember">Remember Me</label>
                                                 </div>
                                             </div>
                                             <div class="col-4">
-                                                <button id="" type="submit" class="loginsubmit btn btn-primary btn-block text-bold">Sign In</button>
+                                                <button id="" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="signIn">Sign In</button>
                                             </div>
                                         </div>
                                         <div class="poppup hidden login_email_popup fixed inset-0 z-10 flex items-center justify-center">
                                             <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                             <div class="relative bg-white w-full max-w-3xl mx-auto rounded-lg shadow-lg z-10 py-4">
-                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer"></i>
+                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer" @click="closePopup"></i>
                                                 <div class="p-6">
                                                     <h2 class="text-2xl font-bold mb-4 text-center"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                     <p class="text-gray-600 text-center mb-8"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
                                                     <form>
                                                         <div class="mb-4">
-                                                            <input type="text" class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" id="email_confirmation" name="email_confirmation" placeholder="Security Code" value="{if isset($code) && $code != ''}{$code|htmlentities}{/if}" autocomplete="off" required>
+                                                            <input type="text" class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" id="email_confirmation" name="email_confirmation" placeholder="Security Code" v-model="emailCode" autocomplete="off" required>
                                                         </div>
                                                         <div class="col-8">
                                                             <div class="icheck-primary">
-                                                                <input class="login_info" type="checkbox" id="code-remember" name="remember" value="yes" />
+                                                                <input class="login_info" type="checkbox" id="code-remember" v-model="remember" />
                                                                 <label for="remember">Remember Me</label>
                                                             </div>
                                                         </div>
@@ -850,7 +850,7 @@ function signup_handler(e) {
                                         <div class="poppup hidden popup fixed inset-0 z-10 flex items-center justify-center">
                                             <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                             <div class="relative bg-white w-full max-w-3xl mx-auto rounded-lg shadow-lg z-10 py-4">
-                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer"></i>
+                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer" @click="closePopup"></i>
                                                 <div class="p-6">
                                                     <h2 class="text-2xl font-bold mb-4 text-center">
                                                         <i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>Enter Two Factor Authorization Code!
@@ -911,9 +911,9 @@ function signup_handler(e) {
                                     Enter the Email address you use to log in to your account<br>
                                     We'll send you an email with instructions to choose a new password.
                                 </div>
-                                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" accept-charset="UTF-8" role="form" action="https://mystage.interserver.net/password.php" autocomplete="off" method="post" enctype="multipart/form-data">
+                                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="submitForgotPassForm">
                                     <div class="input-group mb-3">
-                                        <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                                        <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-envelope" aria-hidden="true"></span>
@@ -922,11 +922,11 @@ function signup_handler(e) {
                                     </div>
                                     <div class="mb-6 captcha_main">
                                         <div class="flex">
-                                            <img id="captcha-imgFP" src="{$captchaFP}" style="max-width: 75%;" alt="" />
-                                            <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reloadFP" type="button" data-target="#captcha-imgFP" data-toggle="button" title="Reload Captcha" tabindex="-1" aria-pressed="false"><span class="fa fa-refresh fa-fw"></span></button>
+                                            <img :src="captcha" style="max-width: 75%;" alt="" />
+                                            <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reloadFP" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false"><span class="fa fa-refresh fa-fw"></span></button>
                                         </div>
                                         <div class="input-group my-3">
-                                            <input type="text" class="form-control" name="captcha" id="captchaFP" placeholder="Captcha" autofocus autocomplete="off">
+                                            <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off">
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
                                             </div>
@@ -953,9 +953,9 @@ function signup_handler(e) {
                                     <h3 class="card-title ml-3 mt-2 text-bold">Create Your Account Now</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" method="POST" accept-charset="UTF-8" role="form" id="signupForm" action="https://mystage.interserver.net/ajax_check_signup.php" autocomplete="on" enctype="multipart/form-data">
+                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="signupForm">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="login_id" id="signup_login_id" placeholder="Email Address" required autofocus autocomplete="off" value="{if isset($login) && $login != ''}{$login|htmlentities}{/if}">
+                                            <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span class="fas fa-envelope" aria-hidden="true"></span>
@@ -963,11 +963,9 @@ function signup_handler(e) {
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="signuppassword" type="password" class="form-control" name="passwd" placeholder="Password" value="{if isset($password) && $password != ''}{$password|htmlentities}{/if}" autocomplete="off" required>
+                                            <input id="signuppassword" type="password" class="form-control" v-model="password" placeholder="Password" autocomplete="off" required>
                                             <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <button type="button" id="show-hide-pass-signup" onclick="togglePasswordVisibility()" aria-hidden="true"><i class="fa fa-eye"></i></button>
-                                                </div>
+                                                <div class="input-group-text"><button type="button" @click="togglePasswordVisibility" aria-hidden="true"><i class="fa fa-eye"></i></button></div>
                                             </div>
                                             <div id="pswd_info">
                                                 <p class="pp"><b>Password must have:</b></p>
@@ -996,23 +994,23 @@ function signup_handler(e) {
                                                 </div>
                                                 <div class="mb-6 captcha_alt_signup">
                                                     <div class="flex">
-                                                        <img id="captcha-img-signup" style="max-width:75%;" src="{$captchaSignup}" alt="" />
-                                                        <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reload" type="button" data-target="#captcha-img-signup" data-toggle="button" title="Reload Captcha" tabindex="-1" aria-pressed="false">
+                                                        <img :src="captcha" style="max-width:75%;" alt="" />
+                                                        <button class="block ml-4 bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-captcha-reload" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false">
                                                             <span class="fa fa-refresh fa-fw"></span>
                                                         </button>
                                                     </div>
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" name="captcha" id="captcha_signup" placeholder="Captcha" autofocus autocomplete="off">
+                                                        <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off">
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
                                                         </div>
                                                     </div>
-                                                    <a class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" id="captcha_main_link_signup" href="#">Primary Captcha Method</a>
+                                                    <a class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" id="tos" name="tos" value="yes" required  :v-model="tosChecked">
+                                                    <input type="checkbox" id="tos" name="tos" value="yes" required :checked="isTosChecked" @change="toggleTosCheck">
                                                     <label for="tos">I agree to the <span class="underline font-bold text-sm text-blue-500 hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank">Terms of Service</a></span></label>
                                                 </div>
                                             </div>
@@ -1023,13 +1021,13 @@ function signup_handler(e) {
                                         <div class="poppup hidden email_popup fixed inset-0 z-10 flex items-center justify-center">
                                             <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                             <div class="relative bg-white w-full max-w-3xl mx-auto rounded-lg shadow-lg z-10 py-4">
-                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer"></i>
+                                                <i class="close text-lg fa fa-close float-right px-4 cursor-pointer" @click="closePopup"></i>
                                                 <div class="p-6">
                                                     <h2 class="text-2xl font-bold mb-4 text-center"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                     <p class="text-gray-600 text-center mb-8"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
                                                     <form>
                                                         <div class="mb-4">
-                                                            <input type="text" id="signup_email_confirmation" name="email_confirmation" placeholder="Security Code" value="{if isset($code) && $code != ''}{$code|htmlentities}{/if}" autocomplete="off" required class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                            <input type="text" id="signup_email_confirmation" name="email_confirmation" placeholder="Security Code" v-model="emailCode" autocomplete="off" required class="border block w-full px-4 py-3 rounded-lg shadow-sm border-gray-300 focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                         </div>
                                                         <div class="mb-4">
                                                             <div class="error-box bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" style="display:none;">
@@ -1063,7 +1061,7 @@ function signup_handler(e) {
                 </div>
                 <div class="text-center text-gray-600 sign-up-txt signup pb-5">Don't have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Sign Up</a></div>
                 <div class="text-center text-gray-600 sign-up-txt pb-5 hidden">Already have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Login</a></div>
-                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy {$year} - All Rights Reserved.</div>
+                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy {{ year }} - All Rights Reserved.</div>
             </div>
         </div>
     </div>
