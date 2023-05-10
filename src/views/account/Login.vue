@@ -3,18 +3,20 @@ import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue'
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { useAuthStore, useLayoutStore, useLoginStore } from '@/stores';
 
 const layoutStore = useLayoutStore();
+const loginStore = useLoginStore();
+const { logo, captcha, language, counts } = storeToRefs(loginStore);
 const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
 
-const counts = {
-    vps: ref(0),
-    webhosting: ref(0),
-    servers: ref(0),
-};
+const isLogin = ref(true);
 const tos = ref(false);
 const login = ref('');
+const password = ref('');
+const captchaCode = ref('');
+const remember = ref(false);
+const emailCode = ref('');
 
 const isTosCheked = computed(() => {
     return tos == true || login != '';
@@ -51,27 +53,6 @@ onMounted(function () {
                 setModalMaxHeight($("#tosModal.in"));
             }
         });
-        //console.log(qe);
-        if (qe != "") {
-            $.ajax({
-                type: "POST",
-                url: "ajax_order_queue_display.php",
-                data: qe.substring(1),
-                success: function (html) {
-                    if (html.trim != "") {
-                        jQuery("#order_summary_dropdown").css("display", "inherit");
-                        jQuery(".myadmin_login .myadmin_authTitle").css("line-height", "150%");
-                    }
-                    jQuery("#order_summary").html(html);
-                },
-                beforeSend: function () {
-                    jQuery("#order_summary").html(
-                        "<p class='text-center loading-spinner'><img src='images/ajax-loader.gif'></p>"
-                    );
-                }
-            });
-        }
-
         reloadCaptcha(0);
 
         jQuery(".btn-captcha-reload").click(function (e) {
@@ -103,10 +84,10 @@ onMounted(function () {
             // since its called before the toggle, logic needsd to be backwords
             if (login_type == "signup") {
                 login_type = "login";
-                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_login.php" + qe);
+                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_login.php");
             } else {
                 login_type = "signup";
-                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_signup.php" + qe);
+                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_signup.php");
             }
             jQuery(".signup_toggle").toggle("500");
             jQuery(".twofactorauth").hide();
@@ -164,7 +145,7 @@ onMounted(function () {
             }
             if (login_type == "login") {
                 login_type = "signup";
-                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_signup.php" + qe);
+                jQuery("#loginForm").attr("action", "https://" + window.location.host + newPath + "ajax_check_signup.php");
             } else {
                 login_type = "login";
             }
@@ -376,8 +357,6 @@ function login_handler(e) {
                 encodeURIComponent(username) +
                 "&passwd=" +
                 encodeURIComponent(password) +
-                "&" +
-                qe.substring(1) +
                 "&captcha=" +
                 encodeURIComponent(captcha) +
                 "&2fa_code=" +
@@ -390,8 +369,6 @@ function login_handler(e) {
                 encodeURIComponent(username) +
                 "&passwd=" +
                 encodeURIComponent(password) +
-                "&" +
-                qe.substring(1) +
                 "&captcha=" +
                 encodeURIComponent(captcha);
         }
@@ -529,8 +506,6 @@ function forgot_password(e) {
             data:
                 "ajax=1&email=" +
                 encodeURIComponent(username) +
-                "&" +
-                qe.substring(1) +
                 "&g-recaptcha-response=" +
                 encodeURIComponent(grecaptcha.getResponse()) +
                 "&captcha=" +
@@ -721,6 +696,7 @@ function signup_handler(e) {
     return false;
 }
 
+loginStore.load();
 </script>
 
 <template>
@@ -743,7 +719,7 @@ function signup_handler(e) {
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="/images/website.png" alt=""></div>
-                    <div class="text-white tracking-widest text-4xl text-center" id="count-w">{{ counts.webhosting }}</div>
+                    <div class="text-white tracking-widest text-4xl text-center" id="count-w">{{ counts.websites }}</div>
                     <div class="text-3xl text-yellow-600 tracking-widest text-center uppercase">Websites</div>
                 </div>
                 <div class="mx-auto">
@@ -756,7 +732,7 @@ function signup_handler(e) {
         <div class="w-full lg:w-7/12">
             <div class="p-2"></div>
             <div class="block mx-auto lg:my-auto">
-                <div class="w-full wrapper">
+                <div class="w-full wrapper" v-show="isLogin">
                     <div class="w-full myadmin_login">
                         <div class="login-box m-auto" style="width: 400px;">
                             <div class="card card-outline card-primary">
@@ -765,7 +741,7 @@ function signup_handler(e) {
                                     <h3 class="card-title ml-3 mt-2 text-bold">Sign in to start your session</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="submitForm">>
+                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="submitForm">
                                         <div class="input-group mb-3">
                                             <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                             <div class="input-group-append">
@@ -944,7 +920,7 @@ function signup_handler(e) {
                         </div>
                     </div>
                 </div>
-                <div class="w-full mx-auto wrapper-signup hidden">
+                <div class="w-full mx-auto wrapper-signup" v-show="!isLogin">
                     <div class="w-full myadmin_login">
                         <div class="login-box m-auto" style="width: 400px;">
                             <div class="card card-outline card-primary">
@@ -1010,7 +986,7 @@ function signup_handler(e) {
                                             </div>
                                             <div class="col-12">
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" id="tos" name="tos" value="yes" required :checked="isTosChecked" @change="toggleTosCheck">
+                                                    <input type="checkbox" required :v-model="tos">
                                                     <label for="tos">I agree to the <span class="underline font-bold text-sm text-blue-500 hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank">Terms of Service</a></span></label>
                                                 </div>
                                             </div>
@@ -1059,9 +1035,9 @@ function signup_handler(e) {
                         </div>
                     </div>
                 </div>
-                <div class="text-center text-gray-600 sign-up-txt signup pb-5">Don't have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Sign Up</a></div>
-                <div class="text-center text-gray-600 sign-up-txt pb-5 hidden">Already have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Login</a></div>
-                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy {{ year }} - All Rights Reserved.</div>
+                <div class="text-center text-gray-600 sign-up-txt signup pb-5" v-show="isLogin">Don't have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
+                <div class="text-center text-gray-600 sign-up-txt pb-5 hidden" v-show="!isLogin">Already have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
+                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
     </div>
