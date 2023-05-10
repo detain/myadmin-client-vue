@@ -5,10 +5,15 @@ import { ref, reactive, computed, onMounted } from 'vue'
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore, useLoginStore } from '@/stores';
 
+import $ from 'jquery';
+import jQuery from 'jquery';
+import Swal from 'sweetalert2';
+
 const layoutStore = useLayoutStore();
 const loginStore = useLoginStore();
 const { logo, captcha, language, counts } = storeToRefs(loginStore);
 const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
+
 
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
