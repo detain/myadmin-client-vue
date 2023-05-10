@@ -9,6 +9,7 @@
     "@sweetalert2/theme-bootstrap-4": "*",
     "@ttskch/select2-bootstrap4-theme": "*",
     "admin-lte": "*",
+    "autoprefixer": "*",
     "bootstrap": "^4.6.2",
     "datatables.net-bs": "*",
     "datatables.net-bs4": "*",
@@ -34,10 +35,12 @@
     "moment-timezone": ">=0.5.38",
     "mosha-vue-toastify": "*",
     "overlayscrollbars": "^1.0",
+    "postcss": "*",
     "select2": "select2/select2#*",
     "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
     "sweetalert2": "11.4.8",
     "tablesorter": "Mottie/tablesorter#*",
+    "tailwindcss": "*",
     "tempusdominus-bootstrap-4": "*",
     "toastr": "^2.1.4",
     "yaml": ">=2.2.2"
@@ -100,7 +103,8 @@
     "minipass": "4.2.8",
     "mkdirp": "1.0.4",
     "espree": "9.5.1",
-    "yaml": "2.2.2"
+    "yaml": "2.2.2",
+    "@jridgewell/sourcemap-codec": "1.4.15"
   },
   "suggest": {
     "datatables.net-plugins": "*"
