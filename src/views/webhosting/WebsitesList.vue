@@ -2,18 +2,20 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
+/*
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
+*/
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Web Hosting List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Webhosting'});
 
-DataTable.use(DataTablesCore);
+/*DataTable.use(DataTablesCore);*/
 
 let dt;
 const limitStatus = ref('active');
@@ -155,9 +157,11 @@ loadWebsites(data)
 </template>
 
 <style scoped>
+/*
 @import 'datatables.net-bs4';
 @import 'datatables.net-buttons-bs4';
 @import 'datatables.net-responsive-bs4';
+*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

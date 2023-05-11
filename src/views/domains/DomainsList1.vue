@@ -1,13 +1,15 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from "vue";
+/*
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
+*/
 
-DataTable.use(DataTablesCore);
+/*DataTable.use(DataTablesCore);*/
 
 let dt;
 const limitStatus = ref('active');
@@ -151,9 +153,11 @@ function setStatusLimit(event) {
 </template>
 
 <style scoped>
+/*
 @import 'datatables.net-bs4';
 @import 'datatables.net-buttons-bs4';
 @import 'datatables.net-responsive-bs4';
+*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

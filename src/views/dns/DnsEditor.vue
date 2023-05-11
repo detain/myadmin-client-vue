@@ -2,17 +2,19 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
+/*
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
+*/
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const id = route.params.id;
 
-DataTable.use(DataTablesCore);
+/*DataTable.use(DataTablesCore);*/
 
 let dt;
 const limitStatus = ref('active');
@@ -152,9 +154,11 @@ loadDns(id, data)
 </template>
 
 <style scoped>
+/*
 @import 'datatables.net-bs4';
 @import 'datatables.net-buttons-bs4';
 @import 'datatables.net-responsive-bs4';
+*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

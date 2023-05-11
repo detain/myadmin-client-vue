@@ -6,18 +6,18 @@ import App from './App.vue'
 import { router } from './router'
 
 import $ from 'jquery';
-//window.jQuery = window.$ = $;
 import 'jquery';
-//import jQuery from 'jQuery';
 import jQuery from 'jquery';
-//import 'jquery-ui'
-//import 'jquery-ui/ui/widgets/datepicker'; // import the specific jQuery UI widget(s) you need
-//import 'jquery-ui/dist/themes/smoothness/jquery-ui.css'
 import 'jquery-ui/dist/jquery-ui.js';
 import Popper from 'popper.js';
 import 'jquery-simple-pass-meter';
-//import '/templates/adminlte/js/jquery.passwordRequirements.js';
 import 'bootstrap';
+//window.jQuery = window.$ = $;
+//import jQuery from 'jQuery';
+//import 'jquery-ui'
+//import 'jquery-ui/ui/widgets/datepicker'; // import the specific jQuery UI widget(s) you need
+//import 'jquery-ui/dist/themes/smoothness/jquery-ui.css'
+//import '/templates/adminlte/js/jquery.passwordRequirements.js';
 /*
 import Swal from 'sweetalert2';
 import toastr from 'toastr';

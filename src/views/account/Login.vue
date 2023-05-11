@@ -3,15 +3,15 @@ import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue'
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore, useLoginStore } from '@/stores';
+import { useAuthStore, useLayoutStore } from '@/stores';
 
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 
 const layoutStore = useLayoutStore();
-const loginStore = useLoginStore();
-const { logo, captcha, language, counts } = storeToRefs(loginStore);
+const authStore = useAuthStore();
+const { logo, captcha, language, counts } = storeToRefs(authStore);
 const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
 
 
@@ -44,8 +44,8 @@ const loginSchema = Yup.object().shape({
 });
 
 async function onLoginSubmit() {
-    const authStore = useAuthStore();
-    const layoutStore = useLayoutStore();
+    //const authStore = useAuthStore();
+    //const layoutStore = useLayoutStore();
     const loginParams = {
         login: login.value,
         passwd: password.value
@@ -59,7 +59,7 @@ async function onLoginSubmit() {
 }
 
 function reloadCaptcha() {
-    loginStore.reloadCaptcha();
+    authStore.reloadCaptcha();
 }
 
 onMounted(function () {
@@ -485,7 +485,7 @@ function signup_handler(e) {
     return false;
 }
 
-loginStore.load();
+authStore.load();
 </script>
 
 <template>
