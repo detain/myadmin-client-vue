@@ -5,13 +5,7 @@ export const useLayoutStore = defineStore({
         // initialize state from local storage to enable user to stay logged in
         breadcrums: {},
         page_heading: '',
-        sidemenu: '',
-        gravatar: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-        opts: {
-            tfa: false,
-            verify: false,
-            captcha: true
-        }
+        sidemenu: ''
     }),
     actions: {
         setBreadcrums(value) {
@@ -25,9 +19,6 @@ export const useLayoutStore = defineStore({
         },
         setSideMenu(value) {
             this.sidemenu = value;
-        },
-        useField(field) {
-            this.opts[field] = true;
         },
     }
 });

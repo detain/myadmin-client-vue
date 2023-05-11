@@ -1,11 +1,16 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
-import { useAlertStore, useLayoutStore } from '@/stores';
+import { useAlertStore } from '@/stores';
 
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
+        opts: {
+            tfa: false,
+            verify: false,
+            captcha: true
+        },
         logo: '//my.interserver.net/templates/my/logo.png',
         captcha: '',
         language: 'en-US',
@@ -51,11 +56,10 @@ export const useAuthStore = defineStore({
             } catch (error) {
                 console.log("error:");
                 console.log(error);
-                const alertStore = useAlertStore();
-                const layoutStore = useLayoutStore();
                 if (typeof error.field != "undefined") {
-                    layoutStore.useField(error.field);
+                    this.opts[field] = true;
                 }
+                const alertStore = useAlertStore();
                 alertStore.error(error);
             }
         },

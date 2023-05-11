@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 
 const layoutStore = useLayoutStore();
 const authStore = useAuthStore();
-const { logo, captcha, language, counts } = storeToRefs(authStore);
-const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
+const { logo, captcha, language, counts, opts } = storeToRefs(authStore);
+const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
 
 
 const isLogin = ref(true);
@@ -44,13 +44,12 @@ const loginSchema = Yup.object().shape({
 });
 
 async function onLoginSubmit() {
-    //const authStore = useAuthStore();
-    //const layoutStore = useLayoutStore();
+    const authStore = useAuthStore();
     const loginParams = {
         login: login.value,
         passwd: password.value
     };
-    if (layoutStore.opts.tfa == true) {
+    if (authStore.opts.tfa == true) {
         loginParams.tfa = twoFactorAuthCode.value;
     }
     console.log('Login Params:');

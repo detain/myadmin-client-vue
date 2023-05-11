@@ -5,7 +5,9 @@ import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
 
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading, sidemenu, gravatar, opts } = storeToRefs(layoutStore);
+const authStore = useAuthStore();
+const { logo, captcha, language, counts, opts } = storeToRefs(authStore);
+const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
 
 const schema = Yup.object().shape({
     tfa: Yup.string(),
@@ -22,7 +24,7 @@ async function onSubmit(values) {
         login: values.login,
         passwd: values.passwd
     };
-    if (layoutStore.opts.tfa == true) {
+    if (authStore.opts.tfa == true) {
         loginParams.tfa = values.tfa;
     }
     await authStore.login(loginParams);

@@ -5,7 +5,7 @@ import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading, opts } = storeToRefs(layoutStore);
+const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Change Username');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Username'});
 
