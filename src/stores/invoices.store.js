@@ -23,7 +23,7 @@ export const useInvoicesStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/view_invoices');
+                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/invoices');
                 for (const field in response) {
                     this[field] = response[field];
                 }
