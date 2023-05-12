@@ -4,18 +4,8 @@ import { ref, reactive, computed, onMounted } from 'vue'
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useVpsOrderStore } from '@/stores';
-
 const vpsOrderStore = useVpsOrderStore();
 const { maxSlices, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
-
-const slices = ref("");
-const platform = ref("");
-const location = ref("");
-const version = ref("");
-const os = ref("");
-const hostname = ref("");
-const coupon = ref("");
-const step = ref("orderform");
 const billingCycle = ref({
     1: "Monthly",
     3: "3 Months",
@@ -29,30 +19,38 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
+const slices = ref("");
+const platform = ref("");
+const location = ref("");
+const version = ref("");
+const os = ref("");
+const hostname = ref("");
+const coupon = ref("");
+const step = ref("orderform");
 const currencySymbol = ref("$");
 const rootpass = ref("");
 const csrfToken = ref( "");
 const period = ref(1);
-
-
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
+var ipv6_only_discount = 1;
+var hd_slice_storage = 1000;
+var cpanel_cost = 20;
+var da_cost = 8;
+var bw_type = 2;
+var bw_total = 2;
+var bw_slice = 2000;
+var hd_slice = 30;
+var ram_slice = 2048;
+var control_cost = 0;
+var coupon_info = 0;
+var last_coupon = "";
 
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
-  var ipv6_only_discount = 1;
-  var hd_slice_storage = 1000;
-  var cpanel_cost = 20;
-  var da_cost = 8;
-  var bw_type = 2;
-  var bw_total = 2;
-  var bw_slice = 2000;
-  var hd_slice = 30;
-  var ram_slice = 2048;
-  var control_cost = 0;
-  var coupon_info = 0;
-  var last_coupon = "";
+
+vpsOrderStore.load();
 </script>
 
 <template>
@@ -238,9 +236,16 @@ const totalCost = computed(() => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(statusArr, location) in stockStatus" :key="location">
-                                            <td class="text-center">{{ location }}</td>
-                                            <td v-for="(status, platform) in statusArr" :key="platform" class="text-center" v-html="status"></td>
+                                        <tr v-for="(stockArr, locationId) in locationStock" :key="location">
+                                            <td class="text-center">{{ locationNames[locationId] }}</td>
+                                            <td v-for="(status, platformId) in stockArr" :key="platform" class="text-center">
+                                                <template v-if="status">
+                                                    <span style="color:green;">✔</span>
+                                                </template>
+                                                <template v-else>
+                                                    <span style="font-weight:bold;color:red;">❌</span>
+                                                </template>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
