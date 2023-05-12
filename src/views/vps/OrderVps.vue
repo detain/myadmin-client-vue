@@ -1,66 +1,21 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { storeToRefs } from 'pinia';
+import { ref, reactive, computed, onMounted } from 'vue'
+//import { Form, Field } from 'vee-validate';
+import * as Yup from 'yup';
+import { useVpsOrderStore } from '@/stores';
 
-const custid = ref("2773");
-const ima = ref("client");
-const platformArr = ref({
-    kvm: "KVM",
-    kvmstorage: "KVM Storage",
-    hyperv: "HyperV"
-});
-const getSlices = ref("");
-const getPlatform = ref("");
-const getLocation = ref("");
-const getVersion = ref("");
-const getVpsos = ref("");
+const vpsOrderStore = useVpsOrderStore();
+const { maxSlices, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
+
+const slices = ref("");
+const platform = ref("");
+const location = ref("");
+const version = ref("");
+const os = ref("");
 const hostname = ref("");
-const getCoupon = ref("");
-const stockStatus = ref({ "New Jersey": { "KVM Linux": '<span style="color:green;">✔</span>',
-        HyperV: '<span style="color:green;">✔</span>', "KVM Storage": '<span style="color:green;">✔</span>'
-    }, "Los Angeles": { "KVM Linux": '<span style="color:green;">✔</span>',
-        HyperV: '<span style="color:green;">✔</span>', "KVM Storage": '<span style="font-weight:bold;color:red;">X</span>'
-    }, "Equinix NY4": { "KVM Linux": '<span style="font-weight:bold;color:red;">X</span>',
-        HyperV: '<span style="font-weight:bold;color:red;">X</span>', "KVM Storage": '<span style="font-weight:bold;color:red;">X</span>'
-    }
-});
-const locations = ref({
-    1: "New Jersey",
-    2: "Los Angeles",
-    3: "Equinix NY4"
-});
-const slices = ref({
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
-    6: 6,
-    7: 7,
-    8: 8,
-    9: 9,
-    10: 10,
-    11: 11,
-    12: 12,
-    13: 13,
-    14: 14,
-    15: 15,
-    16: 16
-});
+const coupon = ref("");
 const step = ref("orderform");
-const images = ref({
-    centos: "CentOS",
-    debian: "Debian",
-    fedora: "Fedora",
-    opensuse: "OpenSUSE",
-    oracle: "Oracle",
-    ubuntu: "Ubuntu",
-    windows: "Windows",
-    almalinux: "Almalinux",
-    none: "Empty Disk",
-    freepbx: "FreePBX"
-});
-const versionsel = ref({ "centosstream-8": "8 Stream", "centos-7.7": "7.7"
-});
 const billingCycle = ref({
     1: "Monthly",
     3: "3 Months",
@@ -74,92 +29,19 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
-const ssdPrice = ref("3 per slice");
 const currencySymbol = ref("$");
-const rootpass = ref("%J2vak$5");
-const csrfToken = ref( "f0c400cae90dd374b7e7fd4c0fa36ca943922277de1be3eedb9f9d8c10e8204231feaa4303cbff563e69f4c8dd5f485c7a9e563cdfccf768b7e2a09401d65a68");
+const rootpass = ref("");
+const csrfToken = ref( "");
 const period = ref(1);
 
 
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
-const packageName = computed(() => {
-  if (pkg.value) {
-    return pkg.value.services_name
-  } else {
-    return ':'
-  }
-});
 
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
-  var templates = {
-    "openvz": {
-      "centos": "<option value=\"centos-7-x86_64.tar.gz\">7 64bit<\/option><option value=\"centos-7-x86_64-minimal.tar.gz\">7 minimal 64bit<\/option><option value=\"centos-7-x86_64-cpanel.tar.gz\">7 cpanel 64bit<\/option><option value=\"centos-7-x86_64-breadbasket.tar.gz\">7 Webuzo 64bit<\/option>",
-      "debian": "<option value=\"debian-8.0-x86_64.tar.gz\">8.0 64bit<\/option><option value=\"debian-8.0-x86_64-minimal.tar.gz\">8.0 minimal 64bit<\/option><option value=\"debian-7.0-x86_64.tar.gz\">7.0 64bit<\/option><option value=\"debian-7.0-x86_64-minimal.tar.gz\">7.0 minimal 64bit<\/option>",
-      "fedora": "<option value=\"fedora-23-x86_64.tar.gz\">23 64bit<\/option><option value=\"fedora-22-x86_64.tar.gz\">22 64bit<\/option><option value=\"fedora-21-x86_64.tar.gz\">21 64bit<\/option><option value=\"fedora-20-x86_64.tar.gz\">20 64bit<\/option>",
-      "ubuntu": "<option value=\"ubuntu-16.04-x86_64.tar.gz\">16.04 64bit<\/option><option value=\"ubuntu-15.04-x86_64.tar.gz\">15.04 64bit<\/option><option value=\"ubuntu-15.04-x86_64-minimal.tar.gz\">15.04 minimal 64bit<\/option><option value=\"ubuntu-14.04-x86_64.tar.gz\">14.04 64bit<\/option><option value=\"ubuntu-14.04-x86_64-minimal.tar.gz\">14.04 minimal 64bit<\/option><option value=\"ubuntu-12.04-x86_64.tar.gz\">12.04 64bit<\/option><option value=\"ubuntu-12.04-x86_64-minimal.tar.gz\">12.04 minimal 64bit<\/option><option value=\"ubuntu-15.10-x86_64-minimal.tar.gz\">15.10 minimal 64bit<\/option><option value=\"ubuntu-15.04-x86_64-xrdp.tar.gz\">15.04 xrdp 64bit<\/option>"
-    },
-    "kvm": {
-      "almalinux": "<option value=\"cpanel\">cPanel Alma 8 64bit<\/option><option value=\"almalinux9\">9 64bit<\/option><option value=\"almalinux-8.3\">8.3 64bit<\/option><option value=\"da\">8 + DirectAdmin 64bit<\/option><option value=\"webuzo\">8 + Webuzo  64bit<\/option>",
-      "centos": "<option value=\"centosstream-8\">8 Stream 64bit<\/option><option value=\"centos-7.7\">7.7 64bit<\/option>",
-      "debian": "<option value=\"debian-9\">9 64bit<\/option><option value=\"debian-11\">11 64bit<\/option><option value=\"debian-10\">10 64bit<\/option>",
-      "fedora": "<option value=\"fedora-36\">36 64bit<\/option>",
-      "freepbx": "<option value=\"freepbx\">7 64bit<\/option>",
-      "none": "<option value=\"empty\">1.0 64bit<\/option>",
-      "opensuse": "<option value=\"opensuse-42.1\">42.1 64bit<\/option><option value=\"opensuse-13.2\">13.2 64bit<\/option><option value=\"opensuse-13.1\">13.1 64bit<\/option><option value=\"opensuse-tumbleweed\">1.0 64bit<\/option>",
-      "ubuntu": "<option value=\"ubuntu-22.04\">22.04 64bit<\/option><option value=\"ubuntu-20.04\">20.04 64bit<\/option><option value=\"ubuntudesktop\">20.04 Desktop 64bit<\/option><option value=\"ubuntu-18.04\">18.04 64bit<\/option><option value=\"ubuntu-16.04\">16.04 64bit<\/option>",
-      "windows": "<option value=\"windows2019\">2019 64bit<\/option><option value=\"windowsr2\">2016 64bit<\/option><option value=\"windows2012\">2012 64bit<\/option><option value=\"windows10\">10 64bit<\/option>"
-    },
-    "kvmstorage": {
-      "almalinux": "<option value=\"almalinux9\">9 64bit<\/option><option value=\"almalinux-8.3\">8 64bit<\/option><option value=\"da\">8 64bit<\/option>",
-      "debian": "<option value=\"debian-11\">11 64bit<\/option>",
-      "none": "<option value=\"empty\">1.0 64bit<\/option>",
-      "ubuntu": "<option value=\"ubuntu-22.04\">22.04 64bit<\/option><option value=\"ubuntu-20.04\">20.04 64bit<\/option>"
-    },
-    "lxc": {
-      "centos": "<option value=\"centos\/7\">7 64bit<\/option>",
-      "debian": "<option value=\"debian\/10\">1.0 64bit<\/option><option value=\"debian\/8\">1.0 64bit<\/option><option value=\"debian\/sid\">1.0 64bit<\/option><option value=\"debian\/9\">1.0 64bit<\/option><option value=\"debian\/7\">1.0 64bit<\/option>",
-      "fedora": "<option value=\"fedora\/28\">28 64bit<\/option><option value=\"fedora\/27\">27 64bit<\/option><option value=\"fedora\/26\">26 64bit<\/option>",
-      "opensuse": "<option value=\"opensuse\/42.3\">42.3 64bit<\/option><option value=\"opensuse\/15.0\">15.0 64bit<\/option>",
-      "oracle": "<option value=\"oracle\/7\">7 64bit<\/option><option value=\"oracle\/6\">6 64bit<\/option>",
-      "ubuntu": "<option value=\"ubuntu\/focal\">20.04 64bit<\/option><option value=\"ubuntu\/18.10\">18.10 64bit<\/option><option value=\"ubuntu\/18.04\">18.04 64bit<\/option><option value=\"wordpress\">18.04 WordPress 64bit<\/option><option value=\"ubuntu\/16.04\">16.04 64bit<\/option><option value=\"ubuntu\/14.04\">14.04 64bit<\/option>"
-    },
-    "xen": [],
-    "vmware": [],
-    "hyperv": {
-      "windows": "<option value=\"Windows2022\">2022 64bit<\/option><option value=\"Windows2019Standard\">2019 Standard 64bit<\/option>"
-    },
-    "virtuozzo": {
-      "almalinux": "<option value=\"almalinux-8-x86_64\">8 64bit<\/option>",
-      "centos": "<option value=\"centos-stream-9-x86_64\">9 Stream 64bit<\/option><option value=\"centos-8.stream-x86_64\">8 Stream 64bit<\/option><option value=\"centos-7-x86_64\">7 64bit<\/option><option value=\"centos-7-x86_64-cpanel\">7 cPanel 64bit<\/option><option value=\"centos-7-x86_64-breadbasket\">7 Webuzo 64bit<\/option>",
-      "debian": "<option value=\"debian-9.0-x86_64\">9.0 64bit<\/option><option value=\"debian-7.0-x86_64\">7.0 64bit<\/option><option value=\"debian-11.0-x86_64\">11.0 64bit<\/option><option value=\"debian-10.0-x86_64\">10.0 64bit<\/option><option value=\"debian-8.0-x86_64\">8.0 64bit<\/option>",
-      "fedora": "<option value=\"fedora-23-x86_64\">23 64bit<\/option>",
-      "suse": "<option value=\"suse-42.3-x86_64\">42.3 64bit<\/option><option value=\"suse-42.1-x86_64\">42.1 64bit<\/option>",
-      "ubuntu": "<option value=\"ubuntu-22.04-x86_64\">22.04 64bit<\/option><option value=\"ubuntu-20.04-x86_64\">20.04 64bit<\/option><option value=\"ubuntu-18.04-x86_64\">18.04 64bit<\/option><option value=\"ubuntu-16.04-x86_64\">16.04 64bit<\/option><option value=\"ubuntu-14.04-x86_64\">14.04 64bit<\/option>",
-      "vzlinux": "<option value=\"vzlinux-stream-9-x86_64\">9 Stream 64bit<\/option><option value=\"vzlinux-8-x86_64\">8 64bit<\/option><option value=\"vzlinux-8.stream-x86_64\">8 Stream 64bit<\/option><option value=\"vzlinux-7-x86_64\">7 64bit<\/option><option value=\"vzlinux-6-x86_64\">6 64bit<\/option>"
-    },
-    "platforms": {
-      "lxc": "<option value=\"centos\" selected=\"selected\">CentOS<\/option><option value=\"debian\" >Debian<\/option><option value=\"fedora\" >Fedora<\/option><option value=\"opensuse\" >OpenSUSE<\/option><option value=\"oracle\" >Oracle<\/option><option value=\"ubuntu\" >Ubuntu<\/option>",
-      "kvm": "<option value=\"debian\" >Debian<\/option><option value=\"opensuse\" >OpenSUSE<\/option><option value=\"ubuntu\" >Ubuntu<\/option><option value=\"centos\" selected=\"selected\">CentOS<\/option><option value=\"almalinux\" >Almalinux<\/option><option value=\"none\" >Empty Disk<\/option><option value=\"freepbx\" >FreePBX<\/option><option value=\"fedora\" >Fedora<\/option><option value=\"windows\" disabled=\"disabled\">Windows (only on HyperV)<\/option>",
-      "hyperv": "<option value=\"windows\" >Windows<\/option>",
-      "kvmstorage": "<option value=\"ubuntu\" >Ubuntu<\/option><option value=\"none\" >Empty Disk<\/option><option value=\"debian\" >Debian<\/option><option value=\"almalinux\" >Almalinux<\/option>"
-    }
-  };
-  var virtuozzo_slice_cost = 6;
-  var ssd_virtuozzo_slice_cost = 9;
-  var hyperv_slice_cost = 10;
-  var xen_slice_cost = 6;
-  var lxc_slice_cost = 6;
-  var vmware_slice_cost = 10;
-  var ssd_slice_cost = 9;
-  var ovz_slice_cost = 6;
-  var kvm_l_slice_cost = 6;
-  var kvm_storage_slice_cost = 6;
-  var ny_cost = 3;
   var ipv6_only_discount = 1;
-  var kvm_w_slice_cost = 10;
   var hd_slice_storage = 1000;
   var cpanel_cost = 20;
   var da_cost = 8;
@@ -168,44 +50,9 @@ const totalCost = computed(() => {
   var bw_slice = 2000;
   var hd_slice = 30;
   var ram_slice = 2048;
-  const formValues = ref({
-      platform: ''
-  });
-  var cur_location = Number(jQuery("select[name=location]").val());
-  var cur_period = Number(jQuery("#period").val());
-  var cur_platform = jQuery("select[name=platform]").val();
-  var cur_image = jQuery("select[name=version]").val();
-  var cur_ssd = jQuery("select[name=ssd]").val();
-  var cur_control = jQuery("select[name=controlpanel]").val();
-  var cur_slices = Number(jQuery("select[name=slices]").val());
-  var slice_cost = ovz_slice_cost;
   var control_cost = 0;
   var coupon_info = 0;
   var last_coupon = "";
-  var currency = "USD";
-  var packages = {
-    "0": "Select A VPS Type",
-    "31": "OpenVZ VPS Slice",
-    "32": "KVM Windows VPS Slice",
-    "33": "KVM Linux VPS Slice",
-    "34": "Cloud KVM Windows VPS Slice",
-    "35": "Cloud KVM Linux VPS Slice",
-    "36": "SSD OpenVZ VPS Slice",
-    "49": "LXC VPS Slice",
-    "51": "Xen Windows VPS Slice",
-    "52": "Xen Linux VPS Slice",
-    "53": "VMware VPS Slice",
-    "54": "Hyper-V VPS Slice",
-    "55": "Virtuozzo VPS Slice",
-    "56": "SSD Virtuozzo VPS Slice",
-    "57": "KVM Storage",
-    "58": "OpenVZ IPv6 Only VPS Slice",
-    "59": "KVM Windows IPv6 Only VPS Slice",
-    "60": "KVM Linux IPv6 Only VPS Slice",
-    "61": "Hyper-V IPv6 Only VPS Slice",
-    "62": "Virtuozzo IPv6 Only VPS Slice",
-    "63": "KVM IPv6 Only Storage"
-  };
 </script>
 
 <template>
@@ -239,8 +86,8 @@ const totalCost = computed(() => {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="formValues.platform" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in platformArr" :key="value" :value="value" :selected="formValues.platform === value || value === getPlatform">{{ label }}</option>
+                                    <select v-model="platform" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in platformArr" :key="value" :value="value" :selected="platform">{{ label }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
                                 </div>
@@ -248,52 +95,52 @@ const totalCost = computed(() => {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <select v-model="formValues.location" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="formValues.location === value || value === getLocation">{{ label }}</option>
+                                    <select v-model="location" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="location === value">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select id="slices_sel" v-model="formValues.slices" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="formValues.slices === value || value === getSlices">{{ label }}</option>
+                                    <select id="slices_sel" v-model="slices" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="slices === value">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="formValues.version" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="formValues.version === value || value === getVersion">{{ label }}</option>
+                                    <select v-model="version" @change="updateVpsChoices" class="form-control select2">
+                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="version === value">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="formValues.os" @change="updateVpsChoices">
-                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="formValues.os === value || value === getVpsos">{{ desc }}</option>
+                                    <select class="form-control select2" v-model="os" @change="updateVpsChoices">
+                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="os === value">{{ desc }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div id="hostnamerownew" class="form-group row">
                                 <label class="col-sm-3 col-form-label">Hostname</label>
                                 <div class="col-md-9">
-                                    <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="formValues.hostname" @keyup="updateHostname" @change="updateHostname" />
+                                    <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="hostname" @keyup="updateHostname" @change="updateHostname" />
                                 </div>
                             </div>
                             <div id="rootpassrownew" class="row">
                                 <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
                                 <div class="form-group col-md-9">
-                                    <input type="text" name="rootpass" class="form-control text-sm" v-model="formValues.rootpass" />
+                                    <input type="text" name="rootpass" class="form-control text-sm" v-model="rootpass" />
                                     <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Coupon Code</label>
                                 <div class="input-group col-md-9">
-                                    <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="formValues.coupon" @keyup="updateCoupon" @change="updateCoupon" />
+                                    <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @keyup="updateCoupon" @change="updateCoupon" />
                                     <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt=""></span>
                                 </div>
                             </div>
@@ -433,7 +280,7 @@ const totalCost = computed(() => {
                                         Select Server<span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group col-md-8">
-                                        <select class="form-control form-control-sm select2" name="server" v-model="formValues.server">
+                                        <select class="form-control form-control-sm select2" name="server" v-model="server">
                                             <option v-for="(desc, value) in serversel" :key="value" :value="value">
                                                 {{ desc }}
                                             </option>
@@ -444,14 +291,14 @@ const totalCost = computed(() => {
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-right">Comment</label>
                                     <div class="form-group input-group col-md-8">
-                                        <textarea rows="5" class="form-control form-control-sm" name="comment" v-model="formValues.comment"></textarea>
+                                        <textarea rows="5" class="form-control form-control-sm" name="comment" v-model="comment"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label text-right">Paid<span class="text-danger">*</span></label>
                                     <div class="input-group col-md-8">
-                                        <select name="paid" class="form-control a-inp-class" v-model="formValues.paid">
+                                        <select name="paid" class="form-control a-inp-class" v-model="paid">
                                             <option value="no">No</option>
                                             <option value="setup">Not Paid, But Set It Up A While</option>
                                             <option value="yes">Yes</option>
@@ -464,21 +311,21 @@ const totalCost = computed(() => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ formValues.hostname }}</div>
+                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ hostname }}</div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
-                                            <div class="text-md text-bold">{{ formValues.period }} month(s)</div>
+                                            <div class="text-md text-bold">{{ period }} month(s)</div>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div class="text-md">{{ packagesArr[formValues.serviceType] }}</div>
+                                            <div class="text-md">{{ packagesArr[serviceType] }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md" id="slicecost">{{ formValues.sliceCost }}</div>
+                                            <div class="text-bold text-md" id="slicecost">{{ sliceCost }}</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -556,7 +403,7 @@ const totalCost = computed(() => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-lg text-bold" id="total_cost_display">${{ formValues.serviceCost }}</div>
+                                            <div class="text-lg text-bold" id="total_cost_display">${{ serviceCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
