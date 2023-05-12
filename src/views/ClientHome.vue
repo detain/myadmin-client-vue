@@ -43,10 +43,8 @@ onMounted(() => {
 })
 
 const affiliateUrl = computed(() => {
-    return 'https://www.interserver.net/r/'+user.value.account_id;
+    return (user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null) ? 'https://www.interserver.net/r/' + user.value.account_id : '';
 });
-
-
 
 const state = reactive({
     last_login_ip: ref("70.44.33.193"),

@@ -57,7 +57,7 @@ export const useAuthStore = defineStore({
                 console.log("error:");
                 console.log(error);
                 if (typeof error.field != "undefined") {
-                    this.opts[field] = true;
+                    this.opts[error.field] = true;
                 }
                 const alertStore = useAlertStore();
                 alertStore.error(error);
@@ -75,8 +75,13 @@ export const useAuthStore = defineStore({
                 console.log("error:");
                 console.log(error);
                 if (typeof error.field != "undefined") {
-                    this.opts[field] = true;
+                    this.opts[error.field] = true;
                 }
+                /*Swal.fire({
+                    icon: 'warning',
+                    title: 'Error',
+                    html: error.message
+                });*/
                 const alertStore = useAlertStore();
                 alertStore.error(error);
             }

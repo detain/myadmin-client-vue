@@ -78,7 +78,8 @@ async function onSignupSubmit() {
     const authStore = useAuthStore();
     const signupParams = {
         login: login.value,
-        passwd: password.value
+        passwd: password.value,
+        tos: tos.value
     };
     if (authStore.opts.tfa == true) {
         signupParams.tfa = twoFactorAuthCode.value;
