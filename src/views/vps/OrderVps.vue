@@ -6,6 +6,14 @@ import * as Yup from 'yup';
 import { useVpsOrderStore } from '@/stores';
 const vpsOrderStore = useVpsOrderStore();
 const { maxSlices, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
+
+const slicesRange = computed(() => {
+    const arr = []
+    for (let i = 1; i <= maxSlices; i++) {
+        arr.push(i)
+    }
+    return arr
+})
 const billingCycle = ref({
     1: "Monthly",
     3: "3 Months",
@@ -19,9 +27,9 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
-const slices = ref("");
-const platform = ref("");
-const location = ref("");
+const slices = ref(1);
+const platform = ref('kvm');
+const location = ref(1);
 const version = ref("");
 const os = ref("");
 const hostname = ref("");
@@ -84,8 +92,8 @@ vpsOrderStore.load();
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="platform" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in platformArr" :key="value" :value="value" :selected="platform">{{ label }}</option>
+                                    <select class="form-control select2" v-model="platform">
+                                        <option v-for="(platformName, platformId) in platformNames" :key="platformId" :value="platformId">{{ platformName }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
                                 </div>
@@ -93,32 +101,32 @@ vpsOrderStore.load();
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <select v-model="location" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in locations" :key="value" :value="value" :selected="location === value">{{ label }}</option>
+                                    <select class="form-control select2" v-model="location">
+                                        <option v-for="(locationName, locationId) in locationNames" :key="locationId" :value="locationId">{{ locationName }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select id="slices_sel" v-model="slices" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in slices" :key="value" :value="value" :selected="slices === value">{{ label }}</option>
+                                    <select class="form-control select2" v-model="slices">
+                                        <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="version" @change="updateVpsChoices" class="form-control select2">
-                                        <option v-for="(label, value) in images" :key="value" :value="value" :selected="version === value">{{ label }}</option>
+                                    <select class="form-control select2" v-model="version">
+                                        <option v-for="(label, value) in images" :key="value" :value="value">{{ label }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="os" @change="updateVpsChoices">
-                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value" :selected="os === value">{{ desc }}</option>
+                                    <select class="form-control select2" v-model="os">
+                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value">{{ desc }}</option>
                                     </select>
                                 </div>
                             </div>
