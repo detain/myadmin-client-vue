@@ -393,7 +393,7 @@ const totalCost = computed(() => {
                                     <tbody>
                                         <tr v-for="(statusArr, location) in stockStatus" :key="location">
                                             <td class="text-center">{{ location }}</td>
-                                            <td v-for="(status, platform) in statusArr" :key="platform" class="text-center">{{ status }}</td>
+                                            <td v-for="(status, platform) in statusArr" :key="platform" class="text-center" v-html="status"></td>
                                         </tr>
                                     </tbody>
                                 </table>
