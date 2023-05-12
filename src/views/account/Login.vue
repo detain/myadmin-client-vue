@@ -44,6 +44,14 @@ const loginSchema = Yup.object().shape({
 });
 
 async function onLoginSubmit() {
+    var loading = Swal.fire({
+        title: 'Please wait',
+        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+    });
     const authStore = useAuthStore();
     const loginParams = {
         login: login.value,
@@ -55,6 +63,30 @@ async function onLoginSubmit() {
     console.log('Login Params:');
     console.log(loginParams);
     await authStore.login(loginParams);
+    loading.close();
+}
+
+async function onSignupSubmit() {
+    var loading = Swal.fire({
+        title: 'Please wait',
+        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+    });
+    const authStore = useAuthStore();
+    const signupParams = {
+        login: login.value,
+        passwd: password.value
+    };
+    if (authStore.opts.tfa == true) {
+        signupParams.tfa = twoFactorAuthCode.value;
+    }
+    console.log('Signup Params:');
+    console.log(signupParams);
+    await authStore.signup(signupParams);
+    loading.close();
 }
 
 function reloadCaptcha() {
@@ -205,14 +237,6 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
 }
 
 function login_handler(e) {
-    var loading = Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false
-    });
     var username = jQuery("#login_id").val();
     var twofactor = jQuery("#2fa_code").val();
     var password = jQuery("#loginpassword").val();
@@ -715,7 +739,7 @@ authStore.load();
                                     <h3 class="card-title ml-3 mt-2 text-bold">Create Your Account Now</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="signupForm">
+                                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 myadmin_loginForm" @submit.prevent="onSignupSubmit">
                                         <div class="input-group mb-3">
                                             <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off">
                                             <div class="input-group-append">
@@ -802,7 +826,7 @@ authStore.load();
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button id="" type="submit" class="signupsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Create Account</button>
+                                                            <button type="submit" class="signupsubmit bg-indigo-500 text-white py-2 px-6 rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Create Account</button>
                                                         </div>
                                                     </form>
                                                 </div>

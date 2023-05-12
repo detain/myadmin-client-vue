@@ -6,7 +6,11 @@ import * as Yup from 'yup';
 import { useVpsOrderStore } from '@/stores';
 const vpsOrderStore = useVpsOrderStore();
 const { maxSlices, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
-
+const getOsVersions = computed(() => {
+    console.log("Platform: "+platform.value);
+    console.log("Os: "+templateOs.value);
+   return templates.value[platform.value][templateOs.value];
+});
 const slicesRange = computed(() => {
     const arr = []
     for (let i = 1; i <= maxSlices; i++) {
@@ -31,7 +35,7 @@ const slices = ref(1);
 const platform = ref('kvm');
 const location = ref(1);
 const version = ref("");
-const os = ref("");
+const templateOs = ref("ubuntu");
 const hostname = ref("");
 const coupon = ref("");
 const step = ref("orderform");
@@ -117,8 +121,8 @@ vpsOrderStore.load();
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="version">
-                                        <option v-for="(label, value) in images" :key="value" :value="value">{{ label }}</option>
+                                    <select class="form-control select2" v-model="templateOs">
+                                        <option v-for="(osTemplates, osId) in templates[platform]" :key="osId" :value="osId">{{ osNames[osId] }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -126,7 +130,7 @@ vpsOrderStore.load();
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select class="form-control select2" v-model="os">
-                                        <option v-for="(desc, value) in versionsel" :key="value" :value="value">{{ desc }}</option>
+                                        <option v-for="(templateVersion, templateFile) in getOsVersions" :key="templateFile" :value="templateFile">{{ templateVersion }}</option>
                                     </select>
                                 </div>
                             </div>

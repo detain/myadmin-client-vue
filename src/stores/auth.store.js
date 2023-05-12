@@ -63,6 +63,24 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);
             }
         },
+        async signup(signupParms) {
+            try {
+                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/signup', signupParms );
+                this.user = user;
+                // store user details and jwt in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                // redirect to previous url or default to home page
+                await router.push(this.returnUrl || '/');
+            } catch (error) {
+                console.log("error:");
+                console.log(error);
+                if (typeof error.field != "undefined") {
+                    this.opts[field] = true;
+                }
+                const alertStore = useAlertStore();
+                alertStore.error(error);
+            }
+        },
         async logout() {
             this.user = null;
             localStorage.removeItem('user');
