@@ -6,6 +6,15 @@ import { useAlertStore } from '@/stores';
 export const useVpsOrderStore = defineStore({
     id: 'vps_order',
     state: () => ({
+        maxSlices: 16,
+        hdStorageSlice: 1000,
+        cpanelCost: 20,
+        daCost: 8,
+        bwType: 2,
+        bwTotal: 2,
+        bwSlice: 2000,
+        hdSlice: 30,
+        ramSlice: 2048,
         platformPackages: {
             kvm: 32,
             kvmstorage: 57,
@@ -49,6 +58,14 @@ export const useVpsOrderStore = defineStore({
             try {
                 const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/order');
                 this.maxSlices = response.maxSlices;
+                this.hdStorageSlice = response.hdStorageSlice;
+                this.cpanelCost = response.cpanelCost;
+                this.daCost = response.daCost;
+                this.bwType = response.bwType;
+                this.bwTotal = response.bwTotal;
+                this.bwSlice = response.bwSlice;
+                this.hdSlice = response.hdSlice;
+                this.ramSlice = response.ramSlice;
                 this.platformPackages = response.platformPackages;
                 this.platformNames = response.platformNames;
                 this.packageCosts = response.packageCosts;

@@ -5,7 +5,7 @@ import { ref, reactive, computed, onMounted } from 'vue'
 import * as Yup from 'yup';
 import { useVpsOrderStore } from '@/stores';
 const vpsOrderStore = useVpsOrderStore();
-const { maxSlices, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
+const { maxSlices, hdStorageSlice, cpanelCost, daCost, bwType, bwTotal, bwSlice, hdSlice, ramSlice, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
 const getOsVersions = computed(() => {
     console.log("Platform: "+platform.value);
     console.log("Os: "+templateOs.value);
@@ -13,7 +13,7 @@ const getOsVersions = computed(() => {
 });
 const slicesRange = computed(() => {
     const arr = []
-    for (let i = 1; i <= maxSlices; i++) {
+    for (let i = 1; i <= maxSlices.value; i++) {
         arr.push(i)
     }
     return arr
@@ -45,18 +45,10 @@ const csrfToken = ref( "");
 const period = ref(1);
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
-var ipv6_only_discount = 1;
-var hd_slice_storage = 1000;
-var cpanel_cost = 20;
-var da_cost = 8;
-var bw_type = 2;
-var bw_total = 2;
-var bw_slice = 2000;
-var hd_slice = 30;
-var ram_slice = 2048;
-var control_cost = 0;
-var coupon_info = 0;
-var last_coupon = "";
+const ipv6_only_discount = ref(1);
+const control_cost = ref(0);
+const coupon_info = ref(0);
+const last_coupon = ref("");
 
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
