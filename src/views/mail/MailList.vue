@@ -78,7 +78,7 @@ loadMail(data)
         <div class="row float-right">
           <div id="header_btns" class="col-md-auto printer-hidden text-right pl-2">
             <div class="btn-group">
-              <router-link class='btn btn-primary btn-sm printer-hidden' to='order_mail' title="Order Mail Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
+              <router-link class='btn btn-primary btn-sm printer-hidden' to='/mail/order' title="Order Mail Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
             </div>
           </div>
           <div id="print_expo_btns" class="col-md-auto export float-right printer-hidden pl-2">
