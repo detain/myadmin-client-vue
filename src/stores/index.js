@@ -8,6 +8,7 @@ export * from './invoices.store';
 export * from './layout.store';
 export * from './license.store';
 export * from './mail.store';
+export * from './mail_order.store';
 export * from './qs.store';
 export * from './server.store';
 export * from './ssl.store';

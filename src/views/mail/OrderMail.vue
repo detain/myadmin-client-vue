@@ -1,13 +1,18 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
+import { useMailOrderStore } from '@/stores';
+const mailOrderStore = useMailOrderStore();
+const { packageCosts, serviceTypes } = storeToRefs(mailOrderStore);
 
 const step = ref("orderform");
-const custid = ref(2773);
-const ima = ref("client");
 const select_package = ref('<select id="mailselect" name="mail" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10880" selected>MailBaby Mail</option></select>');
 const coupon = ref("");
-const rootpass = ref("zhWGjDMgVJYSpvyFUtP2");
-const csrfToken = ref( "5903120f95f9bf15dde38750b9141f58332adae0968e077ffec34e917ff73894f827ff6ce016e1a14203bddab21bd21cb95a7236ac84925e0da73046fec54828");
+const csrfToken = ref("");
+const pkg = ref(10880);
+
+mailOrderStore.load();
 </script>
 
 <template>
@@ -28,15 +33,14 @@ const csrfToken = ref( "5903120f95f9bf15dde38750b9141f58332adae0968e077ffec34e91
                     <div class="card-body">
                         <form id="mail_form" method="post" class="mail_form_init" action="order_mail">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <input type="hidden" name="rootpass" :value="rootpass">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">
-                                    <select v-model="selected_package">
-                                        <option v-for="pkg in packages" :value="pkg.id">
-                                            {{ pkg.name }}
+                                    <select v-model="pkg">
+                                        <option v-for="serviceType in serviceTypes" :value="serviceType.services_id">
+                                            {{ serviceType.services_name }}
                                         </option>
                                     </select>
                                 </div>
