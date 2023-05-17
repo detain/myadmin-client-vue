@@ -11,6 +11,7 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 
+const baseUrl = import.meta.env.VITE_API_URL;
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Domain Registrations List');
 layoutStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
@@ -55,7 +56,7 @@ onMounted(function () {
 
 const loadDomains = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains');
+        const response = await fetchWrapper.get(baseUrl + '/domains');
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -3,6 +3,8 @@ import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAlertStore } from '@/stores';
 
+const baseUrl = import.meta.env.VITE_API_URL;
+
 export const useVpsOrderStore = defineStore({
     id: 'vps_order',
     state: () => ({
@@ -56,7 +58,7 @@ export const useVpsOrderStore = defineStore({
     actions: {
         async load() {
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/order');
+                const response = await fetchWrapper.get(baseUrl + '/vps/order');
                 this.maxSlices = response.maxSlices;
                 this.hdStorageSlice = response.hdStorageSlice;
                 this.cpanelCost = response.cpanelCost;
@@ -81,7 +83,7 @@ export const useVpsOrderStore = defineStore({
         },
         async reloadCaptcha() {
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/captcha');
+                const response = await fetchWrapper.get(baseUrl + '/captcha');
                 this.captcha = response.captcha;
             } catch (error) {
                 console.log("error:");
@@ -90,7 +92,7 @@ export const useVpsOrderStore = defineStore({
         },
         async login(loginParams) {
             try {
-                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/login', loginParams );
+                const user = await fetchWrapper.post(baseUrl + '/login', loginParams );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));

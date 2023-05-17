@@ -13,11 +13,12 @@ const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 const { loading, error, custid, ima, csrf_token, link, data, ip } = storeToRefs(accountStore);
 layoutStore.setPageHeading('Contact Info');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 async function onSubmit(values) {
     try {
         let message;
-        const response = await fetchWrapper.post('https://mystage.interserver.net/apiv2/contact_info', {
+        const response = await fetchWrapper.post(baseUrl + '/contact_info', {
             name: data.value.name,
             company: data.value.company,
             address: data.value.address,
@@ -86,7 +87,7 @@ const escape = (str) => {
 
 const loadContactInfo = async (data,gravatar,countries) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/contact_info');
+        const response = await fetchWrapper.get(baseUrl + '/contact_info');
         console.log('api success');
         console.log(response);
         countries.value = response.countries;

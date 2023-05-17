@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/websites`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useWebsiteStore = defineStore({
     id: 'website',
@@ -176,7 +176,7 @@ export const useWebsiteStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites');
+                let response = await fetchWrapper.get(baseUrl + '/websites');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -199,7 +199,7 @@ export const useWebsiteStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/websites/' + id);
                 this.$reset();
                 let key, value;
                 console.log('api success');

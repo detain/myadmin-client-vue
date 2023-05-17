@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/accounts`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useAccountStore = defineStore({
     id: 'account',
@@ -101,7 +101,7 @@ export const useAccountStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/account_settings');
+                const response = await fetchWrapper.get(baseUrl + '/account_settings');
                 this.$reset();
                 let key, value;
                 console.log('api success');

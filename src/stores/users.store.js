@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useUsersStore = defineStore({
     id: 'users',
@@ -26,7 +26,7 @@ export const useUsersStore = defineStore({
         async getHome() {
             this.home = { loading: true };
             try {
-                this.home = await fetchWrapper.get('https://mystage.interserver.net/apiv2/home');
+                this.home = await fetchWrapper.get(baseUrl + '/home');
             } catch (error) {
                 this.home = { error };
             }

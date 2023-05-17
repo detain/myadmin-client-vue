@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Mail Services List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Mail'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -55,7 +56,7 @@ onMounted(function () {
 
 const loadMail = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail');
+        const response = await fetchWrapper.get(baseUrl + '/mail');
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -11,6 +11,7 @@ import 'datatables.net-responsive';
 */
 import { useRoute } from 'vue-router';
 
+const baseUrl = import.meta.env.VITE_API_URL;
 const route = useRoute();
 const id = route.params.id;
 
@@ -52,7 +53,7 @@ onMounted(function () {
 
 const loadDns = async (id, data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns/'+id);
+        const response = await fetchWrapper.get(baseUrl + '/dns/'+id);
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('DNS Manager');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -53,7 +54,7 @@ onMounted(function () {
 
 const loadDns = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/dns');
+        const response = await fetchWrapper.get(baseUrl + '/dns');
         console.log('api success');
         console.log(response);
         data.value = response;

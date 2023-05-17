@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Storage / Backup List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Storage'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -56,7 +57,7 @@ onMounted(function () {
 
 const loadBackups = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/backups');
+        const response = await fetchWrapper.get(baseUrl + '/backups');
         console.log('api success');
         console.log(response);
         data.value = response;

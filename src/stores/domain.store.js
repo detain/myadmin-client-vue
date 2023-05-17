@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/domains`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useDomainStore = defineStore({
     id: 'domain',
@@ -123,7 +123,7 @@ export const useDomainStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains');
+                let response = await fetchWrapper.get(baseUrl + '/domains');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -146,7 +146,7 @@ export const useDomainStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/domains/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/domains/' + id);
                 this.$reset();
                 let key, value;
                 console.log('api success');

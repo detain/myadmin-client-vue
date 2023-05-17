@@ -9,6 +9,7 @@ const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dashboard');
 layoutStore.setBreadcrums({'': 'Home'});
+const baseUrl = import.meta.env.VITE_API_URL;
 import $ from 'jquery';
 import jQuery from 'jquery';
 window.$ = window.jQuery = $;
@@ -152,7 +153,7 @@ const state = reactive({
 });
 const loadHome = async (state) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/home');
+        const response = await fetchWrapper.get(baseUrl + '/home');
         console.log('api success');
         console.log(response);
         state.data = response.data;

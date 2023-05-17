@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Web Hosting List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Webhosting'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -56,7 +57,7 @@ onMounted(function () {
 
 const loadWebsites = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/websites');
+        const response = await fetchWrapper.get(baseUrl + '/websites');
         console.log('api success');
         console.log(response);
         data.value = response;

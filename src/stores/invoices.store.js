@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/invoices`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useInvoicesStore = defineStore({
     id: 'invoices',
@@ -23,7 +23,7 @@ export const useInvoicesStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/invoices');
+                let response = await fetchWrapper.get(baseUrl + '/invoices');
                 for (const field in response) {
                     this[field] = response[field];
                 }

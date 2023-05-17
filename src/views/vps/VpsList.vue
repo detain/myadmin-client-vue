@@ -18,6 +18,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('VPS List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -62,7 +63,7 @@ onMounted(function () {
 
 const loadVpsList = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps');
+        const response = await fetchWrapper.get(baseUrl + '/vps');
         console.log('api success');
         console.log(response);
         data.value = response;

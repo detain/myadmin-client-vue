@@ -8,17 +8,17 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate System');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Affiliate'});
-
+const myUrl = 'https://my.interserver.net';
 const body = ref('');
 const custid = ref()
 const affiliate_amount = ref(0);
 
 
 function replace_url(st) {
-    $("#ex_xlsx").attr("href", "https://mystage.interserver.net/ajax.php?choice=affiliate_download&ex=xlsx&st="+st);
-    $("#ex_csv").attr("href", "https://mystage.interserver.net/ajax.php?choice=affiliate_download&ex=csv&st="+st);
-    $("#ex_xls").attr("href", "https://mystage.interserver.net/ajax.php?choice=affiliate_download&ex=xls&st="+st);
-    $("#ex_pdf").attr("href", "https://mystage.interserver.net/ajax.php?choice=affiliate_download&ex=pdf&st="+st);
+    $("#ex_xlsx").attr("href", myUrl + "ajax.php?choice=affiliate_download&ex=xlsx&st="+st);
+    $("#ex_csv").attr("href", myUrl + "ajax.php?choice=affiliate_download&ex=csv&st="+st);
+    $("#ex_xls").attr("href", myUrl + "ajax.php?choice=affiliate_download&ex=xls&st="+st);
+    $("#ex_pdf").attr("href", myUrl + "ajax.php?choice=affiliate_download&ex=pdf&st="+st);
 }
 
 onMounted(() => {
@@ -37,25 +37,25 @@ onMounted(() => {
     });
     //$.fn.dataTable.render.moment( 'HH:mm MMM D, YY' );
     var table_default = $('#table_default').DataTable({
-        "https://mystage.interserver.net/ajax": "https://mystage.interserver.net/ajax.php?choice=affiliates_clientside&st=default",
+        "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=default",
         "order": [[ 3, "desc" ]],
         "pageLength": 25,
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
     var table_pending = $('#table_pending').DataTable({
-        "https://mystage.interserver.net/ajax": "https://mystage.interserver.net/ajax.php?choice=affiliates_clientside&st=pending",
+        "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=pending",
         "pageLength": 50,
         "order": [[ 3, "desc" ]],
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
     var table_paid = $('#table_paid').DataTable({
-        "https://mystage.interserver.net/ajax": "https://mystage.interserver.net/ajax.php?choice=affiliates_clientside&st=paid",
+        "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=paid",
         "order": [[ 3, "desc" ]],
         "pageLength": 50,
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
     var table_failed = $('#table_failed').DataTable({
-        "https://mystage.interserver.net/ajax": "https://mystage.interserver.net/ajax.php?choice=affiliates_clientside&st=failed",
+        "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=failed",
         "order": [[ 3, "desc" ]],
         "pageLength": 50,
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]

@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('SSL Certificates List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'SSL'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -55,7 +56,7 @@ onMounted(function () {
 
 const loadSsl = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/ssl');
+        const response = await fetchWrapper.get(baseUrl + '/ssl');
         console.log('api success');
         console.log(response);
         data.value = response;

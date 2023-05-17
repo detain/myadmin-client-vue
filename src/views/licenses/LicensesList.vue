@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Licensing List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Licenses'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -58,7 +59,7 @@ onMounted(function () {
 
 const loadLicenses = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/licenses');
+        const response = await fetchWrapper.get(baseUrl + '/licenses');
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -3,6 +3,8 @@ import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAlertStore } from '@/stores';
 
+const baseUrl = import.meta.env.VITE_API_URL;
+
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
@@ -26,7 +28,7 @@ export const useAuthStore = defineStore({
     actions: {
         async load() {
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/login');
+                const response = await fetchWrapper.get(baseUrl + '/login');
                 this.logo = response.logo;
                 this.captcha = response.captcha;
                 this.language = response.language;
@@ -38,7 +40,7 @@ export const useAuthStore = defineStore({
         },
         async reloadCaptcha() {
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/captcha');
+                const response = await fetchWrapper.get(baseUrl + '/captcha');
                 this.captcha = response.captcha;
             } catch (error) {
                 console.log("error:");
@@ -47,7 +49,7 @@ export const useAuthStore = defineStore({
         },
         async login(loginParams) {
             try {
-                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/login', loginParams );
+                const user = await fetchWrapper.post(baseUrl + '/login', loginParams );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -65,7 +67,7 @@ export const useAuthStore = defineStore({
         },
         async signup(signupParms) {
             try {
-                const user = await fetchWrapper.post('https://mystage.interserver.net/apiv2/signup', signupParms );
+                const user = await fetchWrapper.post(baseUrl + '/signup', signupParms );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));

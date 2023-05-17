@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Rapid Deploy Servers List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Quickservers'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -56,7 +57,7 @@ onMounted(function () {
 
 const loadQuickservers = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/qs');
+        const response = await fetchWrapper.get(baseUrl + '/qs');
         console.log('api success');
         console.log(response);
         data.value = response;

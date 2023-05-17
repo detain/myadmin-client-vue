@@ -9,6 +9,7 @@ const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Account Settings');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const { loading, error, custid, ima, csrf_token, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
 
@@ -38,7 +39,7 @@ async function submitAddRange(values) {
         let message;
         console.log(newLimit.value.start);
         console.log(newLimit.value.end);
-        /*const response = await fetchWrapper.post('https://mystage.interserver.net/apiv2/account_settings', {
+        /*const response = await fetchWrapper.post(baseUrl + '/account_settings', {
         });
         console.log(response);
         */

@@ -14,6 +14,7 @@ const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dedicated Servers List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Servers'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
@@ -54,7 +55,7 @@ onMounted(function () {
 
 const loadServers = async (data) => {
     try {
-        const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/servers');
+        const response = await fetchWrapper.get(baseUrl + '/servers');
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/accounts`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const usePrePayStore = defineStore({
     id: 'prepay',
@@ -37,7 +37,7 @@ export const usePrePayStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/billing/prepays');
+                const response = await fetchWrapper.get(baseUrl + '/billing/prepays');
                 this.$reset();
                 let key, value;
                 console.log('api success');

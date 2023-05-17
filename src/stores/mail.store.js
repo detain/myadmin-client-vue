@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/mail`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useMailStore = defineStore({
     id: 'mail',
@@ -134,7 +134,7 @@ export const useMailStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail');
+                let response = await fetchWrapper.get(baseUrl + '/mail');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -157,7 +157,7 @@ export const useMailStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/mail/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/mail/' + id);
                 this.$reset();
                 let key, value;
                 console.log('api success');

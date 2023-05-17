@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/vps`;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const useVpsStore = defineStore({
     id: 'vps',
@@ -114,7 +114,7 @@ export const useVpsStore = defineStore({
         async getAll() {
             this.loading = true;
             try {
-                let response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps');
+                let response = await fetchWrapper.get(baseUrl + '/vps');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -127,7 +127,7 @@ export const useVpsStore = defineStore({
         async start(id) {
             this.loading = true;
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id + '/start');
+                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/start');
                 this.linkDisplay = response.text;
             } catch (error) {
                 console.log("got error response"+error);
@@ -148,7 +148,7 @@ export const useVpsStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/vps/' + id);
                 this.$reset();
                 let key, value;
                 console.log('api success');
