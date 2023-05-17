@@ -43,29 +43,35 @@ function mounted() {
     }
 }
 
-function delete_card(cc_id = '0')
-{
-    $("#cc_idx").val(cc_id);
-    const { value: formValues } = Swal.fire({
-        type: "warning",
-        title: '<h3>Delete CreditCard</h3> ',
-        showCancelButton: true,
-        showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['mask_cc']+'</b> ?</p>',
-        preConfirm: () => {
-            $('#deleteForm').submit();
-        }
-    });
+
+function deleteCard(cc_id = '0') {
+  $("#cc_idx").val(cc_id);
+  const { value: formValues } = Swal.fire({
+    type: "warning",
+    title: '<h3>Delete CreditCard</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Delete it.',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
+    preConfirm: () => {
+      $('#deleteForm').submit();
+    }
+  });
 }
 
-function edit_card(cc_id = 0)
-{
-    $("#e_cc_idx").val(cc_id);
-    $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
-    $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
-    $("#EditForm select[name='country']").attr('disabled','disabled');
-    $('#EditClick').trigger('click');
+function editCard(cc_id = 0) {
+    editCcIdx.value = cc_id;
+    for (var key in contFields) {
+        if (data.value.ccs[editCcIdx.value][key]) {
+            contFields[key] = data.value.ccs[editCcIdx.value][key];
+        } else if (data.value[key]) {
+            contFields[key] = data.value[key];
+        } else {
+            contFields[key] = '';
+        }
+    }
+  $("#EditForm select[name='country']").attr('disabled', 'disabled');
+  $('#EditClick').trigger('click');
 }
 
 function verify_card(cc_id = 0)
@@ -144,29 +150,6 @@ function onCardNumInput(e) {
 
 function onExpDateInput(e) {
   formatExpDate(e);
-}
-
-function deleteCard(cc_id = '0') {
-  $("#cc_idx").val(cc_id);
-  const { value: formValues } = Swal.fire({
-    type: "warning",
-    title: '<h3>Delete CreditCard</h3> ',
-    showCancelButton: true,
-    showLoaderOnConfirm: true,
-    confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
-    preConfirm: () => {
-      $('#deleteForm').submit();
-    }
-  });
-}
-
-function editCard(cc_id = 0) {
-  $("#e_cc_idx").val(cc_id);
-  $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
-  $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
-  $("#EditForm select[name='country']").attr('disabled', 'disabled');
-  $('#EditClick').trigger('click');
 }
 
 accountStore.load();

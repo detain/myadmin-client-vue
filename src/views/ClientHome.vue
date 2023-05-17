@@ -6,7 +6,6 @@ import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dashboard');
 layoutStore.setTitle('Dashboard');
 layoutStore.setBreadcrums({'': 'Home'});

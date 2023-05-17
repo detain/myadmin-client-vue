@@ -5,7 +5,6 @@ import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Change Password');
 layoutStore.setTitle('Change Password');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});

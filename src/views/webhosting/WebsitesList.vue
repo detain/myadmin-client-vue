@@ -11,7 +11,6 @@ import 'datatables.net-responsive';
 */
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Web Hosting List');
 layoutStore.setTitle('Web Hosting List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Webhosting'});

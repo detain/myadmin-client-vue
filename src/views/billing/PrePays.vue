@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import { usePrePayStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const prepayStore = usePrePayStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 const { loading, error, custid, ima, csrf_token, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 layoutStore.setPageHeading('PrePaid Funds');
 layoutStore.setTitle('PrePaid Funds');

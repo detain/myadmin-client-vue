@@ -11,7 +11,6 @@ import 'datatables.net-responsive';
 */
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('DNS Manager');
 layoutStore.setTitle('DNS Manager');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});

@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia';
 import { useInvoicesStore, useLayoutStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Invoice List');
 layoutStore.setTitle('Invoice List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Invoices'});

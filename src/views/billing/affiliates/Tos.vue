@@ -3,8 +3,7 @@
     import { storeToRefs } from 'pinia';
     import { useLayoutStore } from '@/stores';
     const layoutStore = useLayoutStore();
-    const { breadcrums, page_heading } = storeToRefs(layoutStore);
-    layoutStore.setPageHeading('Affiliate - Tos');
+        layoutStore.setPageHeading('Affiliate - Tos');
 layoutStore.setTitle('Affiliate - Tos');
     layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Tos'});
 

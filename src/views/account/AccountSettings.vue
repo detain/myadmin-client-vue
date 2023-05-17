@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import { useAccountStore, useAuthStore, useLayoutStore } from "@/stores";
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Account Settings');
 layoutStore.setTitle('Account Settings');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});

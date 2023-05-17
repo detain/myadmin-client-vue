@@ -6,7 +6,6 @@ import $ from 'jquery';
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-bs4';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate System');
 layoutStore.setTitle('Affiliate System');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Affiliate'});

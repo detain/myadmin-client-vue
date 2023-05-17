@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
 import Chart from 'chart.js';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - TrafficGraph');
 layoutStore.setTitle('Affiliate - TrafficGraph');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'TrafficGraph'});

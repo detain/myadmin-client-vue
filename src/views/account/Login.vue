@@ -26,7 +26,7 @@ const emailCode = ref('');
 const twoFactorAuthCode = ref('');
 
 const isTosCheked = computed(() => {
-    return tos == true || login != '';
+    return tos.value == true || login.value != '';
 });
 
 const passwordType = computed(() => {

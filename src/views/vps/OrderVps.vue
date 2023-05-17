@@ -441,13 +441,13 @@ function update_vps_choices_order() {
         slice_cost = slice_cost * ny_cost;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
-        jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
+        jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     }
     else {
         jQuery("#controlpanelcost").text("");
     }
-    jQuery("#slicecost").text(currencySymbol + slice_cost + " Per Slice");
-    jQuery("#slicecosttb").text(currencySymbol + slice_cost);
+    jQuery("#slicecost").text(currencySymbol.value + slice_cost + " Per Slice");
+    jQuery("#slicecosttb").text(currencySymbol.value + slice_cost);
     // later month slice costs
     var service_cost = slice_cost;
     // first month slice cost
@@ -461,13 +461,13 @@ function update_vps_choices_order() {
             jQuery("#couponpricerownew").show();
             jQuery("#slicecost").html("<del style=\"color: red;\">$" + slice_cost + "</del> Per Slice");
             couponpricetext = "Price";
-            jQuery("#couponprice").html(currencySymbol + couponInfo.value.amount + " per slice");
+            jQuery("#couponprice").html(currencySymbol.value + couponInfo.value.amount + " per slice");
             jQuery("#couponpricenew").val(couponInfo.value.amount + " per slice");
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
-            jQuery("#couponprice").text("-" + currencySymbol + couponInfo.value.amount);
+            jQuery("#couponprice").text("-" + currencySymbol.value + couponInfo.value.amount);
             couponpricetext = "Discount";
             jQuery("#couponpricenew").val("-(" + couponInfo.value.amount + ")");
             first_slice = first_slice - Number(couponInfo.value.amount);
@@ -552,7 +552,7 @@ function update_vps_choices_order() {
         total_cost = total_cost + (controlCost.value * cur_period);
     }
     total_cost = total_cost.toFixed(2);
-    jQuery("#totalcost11").text(currencySymbol + total_cost);
+    jQuery("#totalcost11").text(currencySymbol.value + total_cost);
     jQuery("#totalcostnew").val(total_cost);
     if ($("#total_cost_display").length > 0) {
         $("#total_cost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
@@ -602,7 +602,7 @@ function recomended_cpanel() {
     jQuery("select[name=vpsos]").val("centos-7-x86_64-cpanel");
     jQuery("select[name=controlpanel]").val(cur_control);
     controlCost.value = cpanel_cost;
-    jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
+    jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -624,7 +624,7 @@ function recomended_directadmin() {
     jQuery("select[name=vpsos]").val("da");
     jQuery("select[name=controlpanel]").val(cur_control);
     controlCost.value = da_cost;
-    jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
+    jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -712,35 +712,35 @@ function slice_warning() {
 
 function get_package_id() {
     os = $("select[name='version']").val();
-    if (platform == 'openvz') { // OpenVZ
+    if (platform.value == 'openvz') { // OpenVZ
         service_type = 31;
-    } else if (platform == 'ssdopenvz') { // OpenVZ
+    } else if (platform.value == 'ssdopenvz') { // OpenVZ
         service_type = 36;
-    } else if (platform == 'cloudkvm') { // Cloud
+    } else if (platform.value == 'cloudkvm') { // Cloud
         if (os == 5 || 0 === os.indexOf('windows')) {
             service_type = 34;
         } else {
             $service_type = 35;
         }
-    } else if (platform == 'kvm') { // KVM
+    } else if (platform.value == 'kvm') { // KVM
         if (os == 5 || 0 === os.indexOf('windows')) {
             service_type = 32;
         } else {
             service_type = 33;
         }
-    } else if (platform == 'kvmstorage') {
+    } else if (platform.value == 'kvmstorage') {
         service_type = 57;
-    } else if (platform == 'xen') {
+    } else if (platform.value == 'xen') {
         service_type = 52;
-    } else if (platform == 'lxc') {
+    } else if (platform.value == 'lxc') {
         service_type = 49;
-    } else if (platform == 'vmware') {
+    } else if (platform.value == 'vmware') {
         service_type = 53;
-    } else if (platform == 'hyperv') {
+    } else if (platform.value == 'hyperv') {
         service_type = 54;
-    } else if (platform == 'virtuozzo') {
+    } else if (platform.value == 'virtuozzo') {
         service_type = 55;
-    } else if (platform == 'ssdvirtuozzo') {
+    } else if (platform.value == 'ssdvirtuozzo') {
         service_type = 56;
     } else {
         service_type = -1;
