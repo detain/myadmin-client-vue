@@ -10,6 +10,7 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Backup');
+layoutStore.setTitle('View Backup');
 layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
 layoutStore.addBreadcrum('/backups/'+id, 'View Backup '+id);
 

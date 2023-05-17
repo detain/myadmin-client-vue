@@ -11,6 +11,7 @@ const id = route.params.id;
 const link = ref(route.params.link);
 console.log(route.params);
 layoutStore.setPageHeading('View VPS');
+layoutStore.setTitle('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 const vpsStore = useVpsStore();

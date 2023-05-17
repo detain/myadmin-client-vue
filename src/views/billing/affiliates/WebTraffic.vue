@@ -5,6 +5,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - WebTraffic');
+layoutStore.setTitle('Affiliate - WebTraffic');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'WebTraffic'});
 
 

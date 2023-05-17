@@ -9,6 +9,7 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Ssl');
+layoutStore.setTitle('View Ssl');
 layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
 layoutStore.addBreadcrum('/ssl/'+id, 'View Ssl '+id);
 

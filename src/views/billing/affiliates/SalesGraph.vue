@@ -6,6 +6,7 @@ import Chart from "chart.js";
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - SalesGraph');
+layoutStore.setTitle('Affiliate - SalesGraph');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'SalesGraph'});
 
 const canvas = ref(null);

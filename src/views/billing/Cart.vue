@@ -7,6 +7,7 @@ const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Cart');
+layoutStore.setTitle('Cart');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Cart'});
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref('paypal');

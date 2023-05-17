@@ -8,6 +8,7 @@ const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Account Settings');
+layoutStore.setTitle('Account Settings');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

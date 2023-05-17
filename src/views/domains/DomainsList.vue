@@ -14,6 +14,7 @@ import 'datatables.net-responsive';
 const baseUrl = import.meta.env.VITE_API_URL;
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Domain Registrations List');
+layoutStore.setTitle('Domain Registrations List');
 layoutStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
 
 /*DataTable.use(DataTablesCore);*/

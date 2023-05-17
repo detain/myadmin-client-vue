@@ -13,6 +13,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dedicated Servers List');
+layoutStore.setTitle('Dedicated Servers List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Servers'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

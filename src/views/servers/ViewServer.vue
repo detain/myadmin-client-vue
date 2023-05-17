@@ -10,6 +10,7 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Server');
+layoutStore.setTitle('View Server');
 layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
 layoutStore.addBreadcrum('/servers/'+id, 'View Server '+id);
 

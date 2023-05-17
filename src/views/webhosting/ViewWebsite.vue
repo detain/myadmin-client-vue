@@ -10,6 +10,7 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View Website');
+layoutStore.setTitle('View Website');
 layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+id, 'View Website '+id);
 

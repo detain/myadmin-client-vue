@@ -17,6 +17,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('VPS List');
+layoutStore.setTitle('VPS List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

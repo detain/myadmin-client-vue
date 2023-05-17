@@ -10,6 +10,7 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 layoutStore.setPageHeading('View License');
+layoutStore.setTitle('View License');
 layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
 layoutStore.addBreadcrum('/licenses/'+id, 'View License '+id);
 

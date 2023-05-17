@@ -12,6 +12,7 @@ const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading, gravatar } = storeToRefs(layoutStore);
 const { loading, error, custid, ima, csrf_token, link, data, ip } = storeToRefs(accountStore);
 layoutStore.setPageHeading('Contact Info');
+layoutStore.setTitle('Contact Info');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

@@ -13,6 +13,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Mail Services List');
+layoutStore.setTitle('Mail Services List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Mail'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

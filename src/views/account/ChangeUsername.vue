@@ -7,6 +7,7 @@ import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Change Username');
+layoutStore.setTitle('Change Username');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Username'});
 
 

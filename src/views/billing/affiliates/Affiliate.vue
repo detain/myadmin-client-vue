@@ -8,6 +8,7 @@ import 'datatables.net-bs4';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate System');
+layoutStore.setTitle('Affiliate System');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Affiliate'});
 const myUrl = 'https://my.interserver.net';
 const body = ref('');

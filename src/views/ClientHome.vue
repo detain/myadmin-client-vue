@@ -8,6 +8,7 @@ const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Dashboard');
+layoutStore.setTitle('Dashboard');
 layoutStore.setBreadcrums({'': 'Home'});
 const baseUrl = import.meta.env.VITE_API_URL;
 import $ from 'jquery';

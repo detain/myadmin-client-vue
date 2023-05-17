@@ -13,6 +13,7 @@ import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('SSL Certificates List');
+layoutStore.setTitle('SSL Certificates List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'SSL'});
 const baseUrl = import.meta.env.VITE_API_URL;
 

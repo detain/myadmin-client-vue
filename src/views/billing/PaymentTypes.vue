@@ -6,6 +6,8 @@ const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Payment Types');
+layoutStore.setTitle('Payment Types');
+layoutStore.setTitle('Payment Types');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const country_select = ref('');

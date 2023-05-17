@@ -5,7 +5,8 @@ export const useLayoutStore = defineStore({
         // initialize state from local storage to enable user to stay logged in
         breadcrums: {},
         page_heading: '',
-        sidemenu: ''
+        sidemenu: '',
+        title: ''
     }),
     actions: {
         setBreadcrums(value) {
@@ -16,6 +17,10 @@ export const useLayoutStore = defineStore({
         },
         setPageHeading(value) {
             this.page_heading = value;
+        },
+        setTitle(value) {
+            this.title = value;
+            document.title = this.title + ' | My InterServer';
         },
         setSideMenu(value) {
             this.sidemenu = value;

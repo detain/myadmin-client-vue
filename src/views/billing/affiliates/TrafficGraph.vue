@@ -6,6 +6,7 @@ import Chart from 'chart.js';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Affiliate - TrafficGraph');
+layoutStore.setTitle('Affiliate - TrafficGraph');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'TrafficGraph'});
 
 const selectedPeriod = ref(30);
