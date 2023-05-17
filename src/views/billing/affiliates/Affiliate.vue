@@ -2,7 +2,8 @@
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
-import 'datatables.net';
+import $ from 'jquery';
+import DataTable from 'datatables.net-dt';
 import 'datatables.net-bs4';
 const layoutStore = useLayoutStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
@@ -36,25 +37,25 @@ onMounted(() => {
       });
     });
     //$.fn.dataTable.render.moment( 'HH:mm MMM D, YY' );
-    var table_default = $('#table_default').DataTable({
+    let table_default = new DataTable('#table_default', {
         "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=default",
         "order": [[ 3, "desc" ]],
         "pageLength": 25,
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
-    var table_pending = $('#table_pending').DataTable({
+    let table_pending = new DataTable('#table_pending', {
         "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=pending",
         "pageLength": 50,
         "order": [[ 3, "desc" ]],
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
-    var table_paid = $('#table_paid').DataTable({
+    let table_paid = new DataTable('#table_paid', {
         "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=paid",
         "order": [[ 3, "desc" ]],
         "pageLength": 50,
         "lengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]]
     });
-    var table_failed = $('#table_failed').DataTable({
+    let table_failed = new DataTable('#table_failed', {
         "ajax": myUrl + "ajax.php?choice=affiliates_clientside&st=failed",
         "order": [[ 3, "desc" ]],
         "pageLength": 50,
