@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import { useAccountStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Payment Types');
 layoutStore.setTitle('Payment Types');
 layoutStore.setTitle('Payment Types');

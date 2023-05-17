@@ -1,29 +1,25 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { useAccountStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Cart');
 layoutStore.setTitle('Cart');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Cart'});
+const baseUrl = import.meta.env.VITE_API_URL;
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref('paypal');
-const selected_cc = ref('');
+const modules = ref({});
+const editCcIdx = ref(0);
+const selectedCc = ref('');
 const csrf_token = ref('');
 const cc_id = ref(0);
 const r_pymt_method = ref('');
-const name = ref('');
 const cc_detail = ref({});
 const country_select = ref('');
-const address = ref('');
-const city = ref('');
-const state = ref('');
-const zip = ref('');
-const country = ref('');
-const phone = ref('');
 const invrows = ref([]);
 const currency = ref('USD');
 const currencyArr = ref([]);
@@ -32,9 +28,15 @@ const order_msg = ref('');
 const total_display = ref(0.00);
 const displayPrepay = ref(true);
 const total_invoices = ref(0);
-
-const cont_fields = {
-    name: ref('')
+const contFields = {
+    cc: ref(''),
+    cc_exp: ref(''),
+    name: ref(''),
+    address: ref(''),
+    city: ref(''),
+    state: ref(''),
+    zip: ref(''),
+    country: ref('')
 };
 
 function mounted() {
@@ -153,6 +155,12 @@ function onExpDateInput(e) {
 }
 
 accountStore.load();
+fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
+    console.log(response);
+    invrows.value = response.invrows;
+    modules.value = response.modules;
+});
+
 </script>
 
 <template>
@@ -180,7 +188,7 @@ accountStore.load();
                             <span class="text-bold mr-1" style="border: 1px solid black;border-radius:50%;padding: 6px 12px;font-size: 18px;">1</span>
                             <b class="text-lg">Billing Address</b>
                         </div>
-                        <div v-if="address && address !== ' '" class="col-md-4 p-4 mt-4 ml-5 b-radius card" style="border: 1px solid rgba(204, 204, 204, 0.397);">
+                        <div v-if="data.address && data.address !== ' '" class="col-md-4 p-4 mt-4 ml-5 b-radius card" style="border: 1px solid rgba(204, 204, 204, 0.397);">
                             <div class="row">
                                 <div class="col-md-2 mb-3">
                                     <div class="icheck-success">
@@ -190,23 +198,23 @@ accountStore.load();
                                 </div>
                                 <div class="col-md-10 mb-3">
                                     <b class="text-lg">Home</b><br>
-                                    <template v-if="name && name !== ''">
-                                        <b class="mb-2 text-md">{{ name }}</b><br>
+                                    <template v-if="data.name && data.name !== ''">
+                                        <b class="mb-2 text-md">{{ data.name }}</b><br>
                                     </template>
-                                    <template v-if="address && address !== ''">
-                                        {{ address }}<br>
+                                    <template v-if="data.address && data.address !== ''">
+                                        {{ data.address }}<br>
                                     </template>
-                                    <template v-if="city && zip && country">
-                                        {{ city }}, {{ zip }}, {{ state }}, {{ country }}<br>
+                                    <template v-if="data.city && data.zip && data.country">
+                                        {{ data.city }}, {{ data.zip }}, {{ data.state }}, {{ data.country }}<br>
                                     </template>
-                                    <template v-else-if="city && zip && !country">
-                                        {{ city }}, {{ zip }}, {{ state }}<br>
+                                    <template v-else-if="data.city && data.zip && !data.country">
+                                        {{ data.city }}, {{ data.zip }}, {{ data.state }}<br>
                                     </template>
                                     <template v-else>
-                                        {{ city }}, {{ state }}<br>
+                                        {{ data.city }}, {{ data.state }}<br>
                                     </template>
-                                    <template v-if="phone !== ''">
-                                        <span class="mt-2">{{ phone }}</span>
+                                    <template v-if="data.phone !== ''">
+                                        <span class="mt-2">{{ data.phone }}</span>
                                     </template>
                                 </div>
                                 <div class="col-md-12 text-right pr-3">
@@ -350,15 +358,15 @@ accountStore.load();
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
                                 <div v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + (($pymt_method == 'cc' && $selected_cc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
-                                        <div v-if="$pymt_method == 'cc' && $selected_cc == cc_id" class="ribbon-wrapper">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + ((pymt_method == 'cc' && selectedCc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
+                                        <div v-if="pymt_method == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
                                         <form action="cart" method="post" id="paymentform">
 
                                             <div class="col-md-12 mb-3">
                                                 <div class="icheck-success">
-                                                    <input :id="'cc-' + cc_id" :name="r_pymt_method" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                    <input :id="'cc-' + cc_id" :name="r_pymt_method" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                                                     <label :for="'cc-' + cc_id" class="text-lg pb-2" style="letter-spacing: 4px;">{{ cc_detail.mask_cc }}</label>
                                                 </div>
                                                 <div class="pl-4 ml-2">
@@ -367,7 +375,7 @@ accountStore.load();
                                                     </div>
                                                     <div class="text-sm text-muted">Expires on {{ cc_detail.cc_exp }}</div>
                                                     <div class="my-2">
-                                                        <template v-if="pymt_method === 'cc' && selected_cc === cc_id">
+                                                        <template v-if="pymt_method === 'cc' && selectedCc === cc_id">
                                                             <div id="selected_services"></div>
                                                             <input type="hidden" name="balance" value="1" />
                                                             <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%;" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
@@ -383,17 +391,17 @@ accountStore.load();
                                                 <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
                                                     <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
                                                 </a>
-                                                <a v-else-if="cc_detail.verified_cc !== 'no' && (!selected_cc || (selected_cc && selected_cc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
+                                                <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
                                                     <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
                                                 </a>
-                                                <div v-else-if="pymt_method === 'cc' && selected_cc === cc_id" class="text-lg text-success" name="totalccamount"></div>
+                                                <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-lg text-success" name="totalccamount"></div>
                                             </div>
 
                                             <div class="col-md-6 text-right">
-                                                <a v-if="(!$selected_cc || ($selected_cc != cc_id || cc_detail.verified_cc == 'no')) && $pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
+                                                <a v-if="(!selectedCc || (selectedCc != cc_id || cc_detail.verified_cc == 'no')) && pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
                                                     <i class="fa fa-trash"></i>&nbsp;Delete
                                                 </a>
-                                                <input v-else-if="$pymt_method == 'cc' && $selected_cc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">
+                                                <input v-else-if="pymt_method == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">
                                             </div>
                                         </form>
                                     </div>
@@ -587,7 +595,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" :value="cont_fields.name" placeholder="You Name">
+                                    <input type="text" name="name" :value="contFields.name" placeholder="You Name">
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -595,7 +603,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" :value="cont_fields.address" placeholder="Address line">
+                                    <input type="text" name="address" :value="contFields.address" placeholder="Address line">
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -611,13 +619,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" :value="cont_fields.city" placeholder="City">
+                                    <input type="text" name="city" :value="contFields.city" placeholder="City">
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" :value="cont_fields.state" placeholder="State">
+                                    <input type="text" name="state" :value="contFields.state" placeholder="State">
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -632,7 +640,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" :value="cont_fields.zip" placeholder="Zipcode">
+                                    <input type="text" name="zip" :value="contFields.zip" placeholder="Zipcode">
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -679,13 +687,13 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="name" :value="cont_fields.name" placeholder="Name on card" disabled>
+                                    <input style="border: none;" type="text" name="name" :value="contFields.name" placeholder="Name on card" disabled>
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="address" :value="cont_fields.address" placeholder="Address line" disabled>
+                                    <input style="border: none;" type="text" name="address" :value="contFields.address" placeholder="Address line" disabled>
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -693,13 +701,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="city" :value="cont_fields.city" placeholder="City" disabled>
+                                    <input style="border: none;" type="text" name="city" :value="contFields.city" placeholder="City" disabled>
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="state" :value="cont_fields.state" placeholder="State" disabled>
+                                    <input style="border: none;" type="text" name="state" :value="contFields.state" placeholder="State" disabled>
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -707,13 +715,13 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" :value="cont_fields.country" type="text" name="Country" placeholder="Country">
+                                    <input style="border: none;" :value="contFields.country" type="text" name="Country" placeholder="Country">
                                     <label class="text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="zip" :value="cont_fields.zip" placeholder="Zipcode" disabled>
+                                    <input style="border: none;" type="text" name="zip" :value="contFields.zip" placeholder="Zipcode" disabled>
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>

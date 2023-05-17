@@ -15,7 +15,6 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';*/
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('VPS List');
 layoutStore.setTitle('VPS List');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
