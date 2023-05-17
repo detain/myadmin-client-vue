@@ -8,6 +8,11 @@ This template should help get you started developing with Vue 3 in Vite.
 
 * [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)  Install this in your browser(s).  When you open up the Inspection//Console there wil be a Vue button that shows up if you are on a Vue backed site.   You can use this to examine and go through all the data and stuff.
 
+### Notes
+
+* The site is essentially loaded in a single page and uses js to navigate without actual reloading
+* 'stores' are sets of data and functions that can be carried over between pages, the best example is using it to to store sessionid so its known throughout the site
+* most variables are handled by ref(erence) which are basically pointers.  in the JS code the data itself is accesed via .value  ie variable.value
 
 
 ### To-Do / Road-Map
@@ -34,6 +39,7 @@ This template should help get you started developing with Vue 3 in Vite.
 * [ ] check out vue-use t see if we should be using it
 * [ ] utilize the form validation stuff
 * [ ] incorporate typescript
+* [ ] replace jquery type calls with built in template handling and such
 * [x] electron build
   * [x] windows/linux/mac builds
   * [ ] js/css assets loaded locally
