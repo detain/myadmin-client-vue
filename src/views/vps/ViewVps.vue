@@ -19,6 +19,7 @@ const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, s
 vpsStore.getById(id)
 console.log(link.value);
 if (link.value == 'start') {
+    layoutStore.addBreadcrum('/vps/'+id+'/start', 'Start');
     vpsStore.start(id);
 }
 
@@ -163,7 +164,7 @@ function toggleFunc(cp) {
             </div>
         </div>
     </div>
-    <div v-if="linkDisplay" class="row">
+    <div v-if="link" class="row">
         <div class="col">
             {{ linkDisplay }}
         </div>
