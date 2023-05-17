@@ -8,13 +8,19 @@ import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stor
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = ref(route.params.link);
+console.log(route.params);
 layoutStore.setPageHeading('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 const vpsStore = useVpsStore();
-const { loading, error, pkg, link_display, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 
 vpsStore.getById(id)
+console.log(link.value);
+if (link.value == 'start') {
+    vpsStore.start(id);
+}
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -157,14 +163,14 @@ function toggleFunc(cp) {
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row">
+    <div v-if="linkDisplay" class="row">
         <div class="col">
-            {{ link_display }}
+            {{ linkDisplay }}
         </div>
     </div>
     <template v-else>
         <div class="row">
-            <div v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))" class="col-md-4">
+            <div v-if="!linkDisplay || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -369,7 +375,7 @@ function toggleFunc(cp) {
         </div>
     </template>
 
-    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
+    <template v-if="!linkDisplay || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
         <template v-if="cpLink || daLink || srLink || ppLink">
             <div class="col-md-12 px-0">
                 <div class="card">

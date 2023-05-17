@@ -12,7 +12,6 @@ export const useVpsStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
         osTemplate: '',
         serviceMaster: {},
         settings: {
@@ -91,6 +90,7 @@ export const useVpsStore = defineStore({
             services_field2: "",
             services_module: "vps"
         },
+        linkDisplay: false,
         service_disk_used: null,
         service_disk_total: null,
         daLink: 0,
@@ -118,6 +118,17 @@ export const useVpsStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
+            } catch (error) {
+                console.log("got error response"+error);
+                this.error = error;
+            }
+            this.loading = false;
+        },
+        async start(id) {
+            this.loading = true;
+            try {
+                const response = await fetchWrapper.get('https://mystage.interserver.net/apiv2/vps/' + id + '/start');
+                this.linkDisplay = response.text;
             } catch (error) {
                 console.log("got error response"+error);
                 this.error = error;
