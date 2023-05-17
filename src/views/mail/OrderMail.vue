@@ -38,7 +38,7 @@ mailOrderStore.load();
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">
-                                    <select v-model="pkg">
+                                    <select v-model="pkg" class="form-control form-control-sm select2 valid" >
                                         <option v-for="serviceType in serviceTypes" :value="serviceType.services_id">
                                             {{ serviceType.services_name }}
                                         </option>
@@ -84,12 +84,12 @@ mailOrderStore.load();
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div id="package_name" class="col-md-8" v-if="service_detail && service_detail.service_name">{{ service_detail.service_name }}</div>
+                            <div id="package_name" class="col-md-8" v-if="serviceTypes && serviceTypes[pkg]">{{ serviceTypes[pkg].services_name }}</div>
                             <div id="package_period" class="col text-right text-bold">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">Package Cost</div>
-                            <div class="col text-bold text-right package_cost"></div>
+                            <div class="col text-bold text-right package_cost">{{ serviceTypes[pkg].services_cost }}</div>
                         </div>
                         <div id="couponpricerownew" class="row mb-3">
                             <div id="couponpricetextnew" class="col-md-8">Coupon Discount</div>
