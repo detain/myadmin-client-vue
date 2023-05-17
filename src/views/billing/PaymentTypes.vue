@@ -7,17 +7,24 @@ const accountStore = useAccountStore();
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 layoutStore.setPageHeading('Payment Types');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
-
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const country_select = ref('');
 const pymt_method = ref('paypal');
-const selected_cc = ref('');
+const selectedCc = ref('');
+const editCcIdx = ref(0);
 const trigger_click = ref(false);
 const current_cc_id = ref(0);
 const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
-const cont_fields = {
-    name: ref('')
+const contFields = {
+    cc: ref(''),
+    cc_exp: ref(''),
+    name: ref(''),
+    address: ref(''),
+    city: ref(''),
+    state: ref(''),
+    zip: ref(''),
+    country: ref('')
 };
 
 function mounted() {
@@ -26,32 +33,37 @@ function mounted() {
     }
 }
 
-function delete_card(cc_id = '0')
-{
-    $("#cc_idx").val(cc_id);
-    const { value: formValues } = Swal.fire({
-        type: "warning",
-        title: '<h3>Delete CreditCard</h3> ',
-        showCancelButton: true,
-        showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['mask_cc']+'</b> ?</p>',
-        preConfirm: () => {
-            $('#deleteForm').submit();
+function deleteCard(cc_id = '0') {
+  $("#cc_idx").val(cc_id);
+  const { value: formValues } = Swal.fire({
+    type: "warning",
+    title: '<h3>Delete CreditCard</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Delete it.',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
+    preConfirm: () => {
+      $('#deleteForm').submit();
+    }
+  });
+}
+
+function editCard(cc_id = 0) {
+    editCcIdx.value = cc_id;
+    for (var key in contFields) {
+        if (data.value.ccs[editCcIdx.value][key]) {
+            contFields[key] = data.value.ccs[editCcIdx.value][key];
+        } else if (data.value[key]) {
+            contFields[key] = data.value[key];
+        } else {
+            contFields[key] = '';
         }
-    });
+    }
+  $("#EditForm select[name='country']").attr('disabled', 'disabled');
+  $('#EditClick').trigger('click');
 }
 
-function edit_card(cc_id = 0)
-{
-    $("#e_cc_idx").val(cc_id);
-    $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
-    $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
-    $("#EditForm select[name='country']").attr('disabled','disabled');
-    $('#EditClick').trigger('click');
-}
-
-function verify_card(cc_id = 0)
+function verifyCard(cc_id = 0)
 {
     $(".v_cc_idx").val(cc_id);
     verify_display.value = $('#unver_'+cc_id).attr("data-step");
@@ -64,7 +76,7 @@ function verify_card(cc_id = 0)
     }
 }
 
-function update_payment_method(cc_val, cc_auto = '0')
+function updatePaymentMethod(cc_val, cc_auto = '0')
 {
     if (cc_auto == 1) {
         if ($('#customSwitch3').is(':checked')) {
@@ -129,29 +141,6 @@ function onExpDateInput(e) {
   formatExpDate(e);
 }
 
-function deleteCard(cc_id = '0') {
-  $("#cc_idx").val(cc_id);
-  const { value: formValues } = Swal.fire({
-    type: "warning",
-    title: '<h3>Delete CreditCard</h3> ',
-    showCancelButton: true,
-    showLoaderOnConfirm: true,
-    confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
-    preConfirm: () => {
-      $('#deleteForm').submit();
-    }
-  });
-}
-
-function editCard(cc_id = 0) {
-  $("#e_cc_idx").val(cc_id);
-  $("#e_cr_no").val(data.value.ccs[cc_id]['mask_cc']);
-  $("#e_exp").val(data.value.ccs[cc_id]['cc_exp']);
-  $("#EditForm select[name='country']").attr('disabled', 'disabled');
-  $('#EditClick').trigger('click');
-}
-
 accountStore.load();
 </script>
 
@@ -174,7 +163,7 @@ accountStore.load();
         </div>`
         <div class="card shadow-sm shadow-hover">
             <div class="card-body icheck-success">
-                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" :checked="pymt_method === 'paypal'" @change="update_payment_method('paypal')">
+                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" :checked="pymt_method === 'paypal'" @change="updatePaymentMethod('paypal')">
                 <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
             </div>
         </div>
@@ -182,7 +171,7 @@ accountStore.load();
         <div v-if="data.ccs">
             <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-sm shadow-hover">
                 <div class="card-body icheck-success row">
-                    <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selected_cc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                    <input :id="'cc-' + cc_id" :name="'r_pymt_method'" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                     <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                     <div class="col-md-2 pb-2">
                         <span :class="{'text-green': cc_detail.verified_cc === 'yes', 'text-red': cc_detail.verified_cc === 'no'}" :title="cc_detail.verified_text">
@@ -196,7 +185,7 @@ accountStore.load();
                         <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
-                        <a v-if="selected_cc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)">
+                        <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)">
                             <i class="fa fa-trash"></i> Delete
                         </a>
                     </div>
@@ -207,7 +196,7 @@ accountStore.load();
         <div class="card shadow-sm shadow-hover">
             <div class="card-body">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" :checked="cc_auto_checked" onchange="update_payment_method(0,1)">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" :checked="cc_auto_checked" onchange="updatePaymentMethod(0,1)">
                     <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
                 </div>
             </div>
@@ -236,30 +225,48 @@ accountStore.load();
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="text" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')"> <label class="text-md">Expiry Date</label> </div>
+                                    <div class="input-group">
+                                        <input type="text" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                        <label class="text-md">Expiry Date</label>
+                                    </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')"> <label class="text-md">CVV</label> </div>
+                                    <div class="input-group">
+                                        <input type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')">
+                                        <label class="text-md">CVV</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="name" v-model="cont_fields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')"> <label class="text-md">Name</label> </div>
+                            <div class="input-group">
+                                        <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
+                                        <label class="text-md">Name</label>
+                                    </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="address" v-model="cont_fields.address" placeholder="Address line"> <label class="text-md">Address</label> </div>
+                            <div class="input-group">
+                                        <input type="text" name="address" v-model="contFields.address" placeholder="Address line">
+                                        <label class="text-md">Address</label>
+                                    </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="city" v-model="cont_fields.city" placeholder="City"> <label class="text-md">City</label> </div>
+                            <div class="input-group">
+                                        <input type="text" name="city" v-model="contFields.city" placeholder="City">
+                                        <label class="text-md">City</label>
+                                    </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="state" v-model="cont_fields.state" placeholder="State"> <label class="text-md">State</label> </div>
+                            <div class="input-group">
+                                        <input type="text" name="state" v-model="contFields.state" placeholder="State">
+                                        <label class="text-md">State</label>
+                                    </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -271,7 +278,10 @@ accountStore.load();
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="zip" v-model="cont_fields.zip" placeholder="Zipcode"> <label class="text-md">Zipcode</label> </div>
+                            <div class="input-group">
+                                        <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode">
+                                        <label class="text-md">Zipcode</label>
+                                    </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -294,11 +304,11 @@ accountStore.load();
             <div class="modal-body">
                 <form action="payment_types" method="post" class="form-card" id="EditForm">
                     <input type="hidden" name="action" value="edit">
-                    <input id="e_cc_idx" type="hidden" name="idx" value="">
+                    <input id="e_cc_idx" type="hidden" name="idx" v-model="editCcIdx">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" id="e_cr_no" name="cc" required readonly disabled>
+                                <input type="text" v-model="contFields.cc" id="e_cr_no" name="cc" required readonly disabled>
                                 <label class="text-md">Card Number</label>
                             </div>
                         </div>
@@ -307,30 +317,48 @@ accountStore.load();
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="text" id="e_exp" name="cc_exp" value="" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')"> <label class="text-md">Expiry Date</label> </div>
+                                    <div class="input-group">
+                                        <input type="text" v-model="contFields.cc_exp" id="e_exp" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                        <label class="text-md">Expiry Date</label>
+                                    </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="input-group"> <input id="ccv2" type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')" disabled> <label class="text-md">CVV</label> </div>
+                                    <div class="input-group">
+                                        <input id="ccv2" type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')" disabled>
+                                        <label class="text-md">CVV</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="name" v-model="cont_fields.name" placeholder="Name on card" disabled> <label class="text-md">Name</label> </div>
+                            <div class="input-group">
+                                <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" disabled>
+                                <label class="text-md">Name</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="address" v-model="cont_fields.address" placeholder="Address line" disabled> <label class="text-md">Address</label> </div>
+                            <div class="input-group">
+                                <input type="text" name="address" v-model="contFields.address" placeholder="Address line" disabled>
+                                <label class="text-md">Address</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="city" v-model="cont_fields.city" placeholder="City" disabled> <label class="text-md">City</label> </div>
+                            <div class="input-group">
+                                <input type="text" name="city" v-model="contFields.city" placeholder="City" disabled>
+                                <label class="text-md">City</label>
+                            </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="state" v-model="cont_fields.state" placeholder="State" disabled> <label class="text-md">State</label> </div>
+                            <div class="input-group">
+                                <input type="text" name="state" v-model="contFields.state" placeholder="State" disabled>
+                                <label class="text-md">State</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -342,7 +370,10 @@ accountStore.load();
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group"> <input type="text" name="zip" v-model="cont_fields.zip" placeholder="Zipcode" disabled> <label class="text-md">Zipcode</label> </div>
+                            <div class="input-group">
+                                <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" disabled>
+                                <label class="text-md">Zipcode</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -376,7 +407,10 @@ accountStore.load();
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')"> <label class="text-md">Card Security Code (CVV / CSV)</label> </div>
+                            <div class="input-group">
+                                        <input type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')">
+                                        <label class="text-md">Card Security Code (CVV / CSV)</label>
+                                    </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -418,10 +452,16 @@ accountStore.load();
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="text" name="cc_amount1"> <label class="text-md">Amount 1</label> </div>
+                                    <div class="input-group">
+                                        <input type="text" name="cc_amount1">
+                                        <label class="text-md">Amount 1</label>
+                                    </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="text" name="cc_amount2" > <label class="text-md">Amount 2</label> </div>
+                                    <div class="input-group">
+                                        <input type="text" name="cc_amount2" >
+                                        <label class="text-md">Amount 2</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
