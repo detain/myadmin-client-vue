@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.14",
     "@sweetalert2/theme-bootstrap-4": "*",
     "@ttskch/select2-bootstrap4-theme": "*",
     "admin-lte": "*",

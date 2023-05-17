@@ -4,7 +4,7 @@ import { VueQueryPlugin } from "vue-query"
 
 import App from './App.vue'
 import { router } from './router'
-
+/*
 import $ from 'jquery';
 import 'jquery';
 import jQuery from 'jquery';
@@ -12,6 +12,7 @@ import 'jquery-ui/dist/jquery-ui.js';
 import Popper from 'popper.js';
 import 'jquery-simple-pass-meter';
 import 'bootstrap';
+*/
 //window.jQuery = window.$ = $;
 //import jQuery from 'jQuery';
 //import 'jquery-ui'

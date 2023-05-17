@@ -4015,7 +4015,7 @@ const cpuCores = ref({
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
-                                                    <div class="col"><img :src="'images/v2-images/' + cpu_details.img" style="max-width: 100px;"></div>
+                                                    <div class="col"><img :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px;"></div>
                                                     <div class="col">
                                                         <div class="text-lg font-weight-light">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-sm text-green">{{ cpu_details.monthly_price_display }}</div>
