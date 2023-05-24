@@ -143,10 +143,10 @@ const state = reactive({
             },
             quickservers: {
                 icon: "database",
-                view_link: "quickservers",
+                view_link: "qs",
                 heading: "Quick Servers",
-                buy_link: "quickservers/order",
-                list_link: "quickservers"
+                buy_link: "qs/order",
+                list_link: "qs"
             }
         }
     }),
