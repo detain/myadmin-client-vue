@@ -355,7 +355,10 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                             <div class="col-md-12 mt-4 px-5 py-3 b-radius" style="background: #f4f4f4;">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
-                                    <router-link v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId" :to="'/pay/' + methodId" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style"></router-link>
+                                    <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
+                                      <a v-if="paymentMethod.text == 'Select Credit Card'" @click.prevent="pymt_method = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style"></a>
+                                      <router-link v-else :to="'/pay/' + methodId" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style"></router-link>
+                                    </span>
                                 </span>
                             </div>
                         </div>
@@ -369,7 +372,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 </div>
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
-                                <div v-if="data.ccs">
+                                <template v-if="data.ccs">
                                     <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + ((pymt_method == 'cc' && selectedCc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
                                         <div v-if="pymt_method == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
@@ -417,7 +420,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                </template>
                                 <div v-else class="col-md-12 mt-4 px-5 py-3 b-radius" style="background: #f4f4f4;">
                                     <h5 class="text-bold text-md text-capitalize">You Have 0 Credit Cards</h5>
                                     <span class="text-red">To Add a Credit Card, Please Click on the Add New Card Button.</span>
