@@ -8,6 +8,15 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-prettier/skip-formatting'
   ],
+  overrides: [
+    {
+      files: ['src/**/*.vue', 'src/**/*.js'],
+      rules: {
+        'no-unused-vars': 'warn',
+        'vue/multi-word-component-names': 'warn'
+      }
+    }
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
