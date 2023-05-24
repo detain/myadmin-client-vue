@@ -2,6 +2,9 @@
 import { storeToRefs } from 'pinia';
 import { useInvoicesStore, useLayoutStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
+import 'datatables.net';
+import 'datatables.net-bs4';
+import DataTable from 'datatables.net-dt';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Invoice List');
 layoutStore.setTitle('Invoice List');
@@ -18,7 +21,8 @@ const invoicesTable = ref(null);
 
 invoicesStore.getAll();
 onMounted(() => {
-    $(invoicesTable.value).DataTable({
+    /*
+    invoicesTable.value = new DataTable('#invoices_table', {
         createdRow(row, data, index) {
             const invoiceId = $(row).find("td").eq(0).text();
             const hrefUrl = $(row).find("td:first a").attr("href");
@@ -30,10 +34,7 @@ onMounted(() => {
             [10, 25, 50, 100, 500, -1],
             [10, 25, 50, 100, 500, "All"]
         ],
-        ajax: {
-            url: "api/invoices",
-            dataSrc: "data"
-        },
+        data: rows,
         columns: [
             { data: "id" },
             { data: "date" },
@@ -47,6 +48,7 @@ onMounted(() => {
             { data: null, defaultContent: "" }
         ]
     });
+    */
 });
 
 </script>
@@ -139,3 +141,7 @@ onMounted(() => {
     </div>
 </div>
 </template>
+
+<style scoped>
+@import 'datatables.net-bs4';
+</style>
