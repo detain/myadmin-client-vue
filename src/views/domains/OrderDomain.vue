@@ -14,6 +14,36 @@ const csrfToken = ref("");
 const hostname = ref("");
 const ima = ref("client");
 const custid = ref("2773");
+const domainResult = ref(null);
+const domainType = ref('register');
+const lookups = ref({});
+const suggestions = ref({})
+const packageInfo = ref({});
+const errors = ref({});
+const searchResponse = ref(null);
+async function searchDomain() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+    fetchWrapper.post(baseUrl + '/domains/order', {
+        hostname: hostname.value
+    }).then(response => {
+        loading.close();
+        searchResponse.value = response;
+        console.log('Response:');
+        console.log(response);
+        domainResult.value = response.domain_result;
+        suggestions.value = response.suggestions;
+        lookups.value = response.lookups;
+        errors.value = response.errors
+        domainType.value = response.domain_type;
+        packageInfo.value = response.package_info;
+    });
+}
+
 </script>
 
 <template>
@@ -28,7 +58,7 @@ const custid = ref("2773");
                 </div>
                 <div class="form-group row">
                     <div class="controls col-md-12" style="text-align: center;">
-                        <button type="submit" class="btn btn-custom mr-2 px-4 py-2 text-sm">Search</button>
+                        <button type="submit" class="btn btn-custom mr-2 px-4 py-2 text-sm" @click.prevent="searchDomain">Search</button>
                         <a target="_blank" href="https://interserver.net/domains" class="btn btn-order px-3 py-2 text-sm">Check Prices</a>
                     </div>
                 </div>
@@ -254,9 +284,9 @@ const custid = ref("2773");
                             <div class="col text-right text-bold">1 Year</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ domain_result.domain }}</div>
+                            <div class="col-md-8">{{ domainResult.domain }}</div>
                             <div class="col text-right text-bold">
-                                {{ domain_result.status == 'taken' ? domain_result.transfer : domain_result.new }}
+                                {{ domainResult.status == 'taken' ? domainResult.transfer : domainResult.new }}
                             </div>
                         </div>
                         <div class="whois-row row mb-3 d-none">
@@ -267,7 +297,7 @@ const custid = ref("2773");
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
                             <div class="col text-lg text-bold text-right total_cost">
-                                {{ domain_result.status == 'taken' ? domain_result.transfer : domain_result.new }}
+                                {{ domainResult.status == 'taken' ? domainResult.transfer : domainResult.new }}
                             </div>
                         </div>
                     </div>
@@ -292,7 +322,7 @@ const custid = ref("2773");
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domain_result.status === 'available' ? 'register' : domain_result.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
+                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult.status === 'available' ? 'register' : domainResult.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <template v-for="(field_value, field) in final_post">
                                 <input type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
@@ -323,16 +353,16 @@ const custid = ref("2773");
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">
-                                                {{ domain_result.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}
+                                                {{ domainResult.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">{{ domain_result.domain }}</div>
+                                            <div class="text-md">{{ domainResult.domain }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ domain_result.status === 'taken' ? domain_result.transfer : domain_result.new }}</div>
+                                            <div class="text-bold text-md">{{ domainResult.status === 'taken' ? domainResult.transfer : domainResult.new }}</div>
                                         </td>
                                     </tr>
                                     <template v-if="final_post.whois_privacy === 'enable'">
@@ -353,7 +383,7 @@ const custid = ref("2773");
                                         </th>
                                         <th>
                                             <div class="text-lg">
-                                                <div class="text-lg text-bold total_cost">{{ domain_result.status === 'taken' ? domain_result.transfer : domain_result.new }}</div>
+                                                <div class="text-lg text-bold total_cost">{{ domainResult.status === 'taken' ? domainResult.transfer : domainResult.new }}</div>
                                             </div>
                                         </th>
                                     </tr>
