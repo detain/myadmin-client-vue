@@ -1,11 +1,13 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Domain');
 layoutStore.setTitle('Order Domain');
 layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const display = ref("step1");
 const csrfToken = ref("");

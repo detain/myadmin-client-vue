@@ -1,14 +1,16 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order License');
 layoutStore.setTitle('Order License');
 layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Order License'});
-
+const baseUrl = import.meta.env.VITE_API_URL;
 const ima = ref("client");
 const step = ref("license_types");
+const lic = ref(null);
 const getLicenses = ref({
     directadmin: {
         name: "DirectAdmin",
@@ -48,6 +50,11 @@ const getLicenses = ref({
         order: 6
     }
 });
+
+function orderLicenseType(type) {
+    lic.value = type;
+    step.value = 'order_form';
+}
 const csrfToken = ref("");
 </script>
 
@@ -69,7 +76,7 @@ const csrfToken = ref("");
                     <p class="card-text text-left text-sm">{{ details.description }}</p>
                     <div class="license_footer">
                         <div class="order-button">
-                            <a :href="'order_license?lic=' + key" class="btn order">Order Now</a>
+                            <a href="#" @click.prevent="orderLicenseType(key)" class="btn order">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +91,7 @@ const csrfToken = ref("");
                         <div class="p-1">
                             <h3 class="card-title py-2">
                                 <i class="material-icons" style="position: relative;top: 5px;">card_membership</i>
-                                Order {{ licenses[lic].name }} License
+                                Order {{ getLicenses[lic].name }} License
                             </h3>
                             <div class="card-tools float-right">
                                 <a href="order_license" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative;top: 5px;"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</a>
@@ -111,7 +118,7 @@ const csrfToken = ref("");
                                     <input type="text" name="ip" class="form-control form-control-sm" @change="updatePrice()" placeholder="IP Address" v-model="ip" required>
                                 </div>
                             </div>
-                            <div v-if="licenses[lic].name !== 'cPanel'" id="coupon_row" class="form-group row">
+                            <div v-if="getLicenses[lic].name !== 'cPanel'" id="coupon_row" class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" name="coupon" id="coupon" @change="updateCoupon()" placeholder="Coupon Code" v-model="coupon">

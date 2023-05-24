@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Website');
 layoutStore.setTitle('Order Website');
 layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref("order_form");
 const packageId = ref("");
@@ -240,12 +242,9 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <div v-for="pkg in packages" :key="pkg.services_id">
+                                            <template v-for="pkg in packages" :key="pkg.services_id">
                                                 <template v-if="pkg.services_field1 === '' || pkg.services_field1 === 'webhosting'">
-                                                    <div class="card mx-1" :style="{
-                                                    width: '48%',
-                                                    border: pkg.services_id === '11363' ? '4px solid #007bff' : ''
-                                                  }">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: pkg.services_id === '11363' ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
@@ -291,7 +290,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                         </div>
                                                     </div>
                                                 </template>
-                                            </div>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>
@@ -303,7 +302,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <div v-for="pkg in packages" :key="pkg.services_id">
+                                            <template v-for="pkg in packages" :key="pkg.services_id">
                                                 <div v-if="pkg.services_field1 === 'reseller'" class="card mx-1" :style="{width: '48%', border: pkg.services_id === '11363' ? '4px solid #007bff' : ''}">
                                                     <div class="card-header">
                                                         <div class="p-1">
@@ -338,7 +337,7 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>

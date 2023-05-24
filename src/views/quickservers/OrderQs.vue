@@ -7,6 +7,7 @@ const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Rapid Deploy Server');
 layoutStore.setTitle('Order Rapid Deploy Server');
 layoutStore.setBreadcrums({'/home': 'Home', '/qs': 'Rapid Deploy Servers List', '/qs/order': 'Order Rapid Deploy Server'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref("orderform");
 const currency = ref("USD");
@@ -18,15 +19,23 @@ const serverDetails = ref({});
 const version = ref({});
 const rootpass = ref("");
 const csrfToken = ref("");
-const distroSel = ref({
-    Almalinux: "Almalinux",
-    CentOS: "CentOS",
-    Debian: "Debian",
-    Fedora: "Fedora",
-    FreePBX: "FreePBX",
-    "Empty Disk": "Empty Disk",
-    OpenSUSE: "OpenSUSE",
-    Ubuntu: "Ubuntu"
+const templates = ref({});
+const distroSel = ref({});
+
+let loading = Swal.fire({
+    title: '',
+    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+    allowOutsideClick: false,
+    showConfirmButton: false
+});
+fetchWrapper.get(baseUrl + '/qs/order').then(response => {
+    loading.close();
+    console.log('Response:');
+    console.log(response);
+    serverDetails.value = response.server_details;
+    distroSel.value = response.distro_sel;
+    qsId.value = response.qs_id;
+    templates.value = response.templates;
 });
 </script>
 

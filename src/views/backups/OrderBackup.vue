@@ -1,18 +1,20 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Backup');
 layoutStore.setTitle('Order Backup');
 layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup'});
+const baseUrl = import.meta.env.VITE_API_URL;
 
-const step = ref("order_form");
+const step = ref("orderform");
 const currency = ref("USD");
 const currencySymbol = ref("$");
 const custid = ref(2773);
 const ima = ref("client");
-const selectPackage = ref('<select id="backupselect" name="backup" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10831" >Storage ST 100</option><option value="10838" >Storage ST 200</option><option value="10845" >Storage ST 300</option><option value="10852" >Storage ST 400</option><option value="10859" >Storage ST 500</option><option value="10866" >Storage ST 600</option><option value="11006" >Storage ST 700</option></select>');
+const pkg = ref(null);
 const rootpass = ref("");
 const period = ref(1);
 const coupon = ref("");
@@ -26,6 +28,19 @@ const periods = [
   { label: '24 Months (15% off)', value: 24 },
   { label: '36 Months (20% off)', value: 36 },
 ];
+
+let loading = Swal.fire({
+    title: '',
+    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+    allowOutsideClick: false,
+    showConfirmButton: false
+});
+fetchWrapper.get(baseUrl + '/backups/order').then(response => {
+    loading.close();
+    console.log('Response:');
+    console.log(response);
+});
+
 </script>
 
 <template>
@@ -48,16 +63,16 @@ const periods = [
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10 input-group">
-                                    <select v-model="selectedPackage" class="form-control form-control-sm select2">
-                                        <option v-for="pkg in packages" :key="pkg.value" :value="pkg.value">{{ pkg.label }}</option>
+                                    <select v-model="pkg" class="form-control form-control-sm select2">
+                                        <option v-for="row in packages" :key="row.value" :value="row.value">{{ row.label }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Billing Cycle&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select v-model="selectedPeriod" class="form-control form-control-sm select2" @change="updatePrice">
-                                        <option v-for="period in periods" :key="period.value" :value="period.value" :selected="selectedPeriod === period.value">{{ period.label }}</option>
+                                    <select v-model="period" class="form-control form-control-sm select2" @change="updatePrice">
+                                        <option v-for="row in periods" :key="row.value" :value="row.value">{{ row.label }}</option>
                                     </select>
                                 </div>
                             </div>
