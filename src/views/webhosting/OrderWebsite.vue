@@ -1,5 +1,11 @@
 <script setup>
 import { ref } from 'vue'
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order Website');
+layoutStore.setTitle('Order Website');
+layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
 
 const step = ref("order_form");
 const packageId = ref("");

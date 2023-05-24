@@ -6,6 +6,12 @@ import * as Yup from 'yup';
 import { useVpsOrderStore } from '@/stores';
 import $ from 'jquery';
 import jQuery from 'jquery';
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order VPS');
+layoutStore.setTitle('Order VPS');
+layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS'});
 const vpsOrderStore = useVpsOrderStore();
 const { maxSlices, hdStorageSlice, cpanelCost, daCost, bwType, bwTotal, bwSlice, hdSlice, ramSlice, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
 const getOsVersions = computed(() => {

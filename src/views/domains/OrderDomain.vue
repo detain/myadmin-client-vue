@@ -1,5 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order Domain');
+layoutStore.setTitle('Order Domain');
+layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
 
 const display = ref("step1");
 const csrfToken = ref( "8e8105873dbba7b1fbe115499cea96e17aecb5194610d3d9815fdb380105dc5e0775943e54b577b387e5aef13f1b62d2a136ba26da80eb8870f2bd115679b1a5");

@@ -1,5 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order Backup');
+layoutStore.setTitle('Order Backup');
+layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup'});
 
 const step = ref("order_form");
 const currency = ref("USD");

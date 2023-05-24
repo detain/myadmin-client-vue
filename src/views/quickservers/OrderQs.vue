@@ -1,5 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order Rapid Deploy Server');
+layoutStore.setTitle('Order Rapid Deploy Server');
+layoutStore.setBreadcrums({'/home': 'Home', '/qs': 'Rapid Deploy Servers List', '/qs/order': 'Order Rapid Deploy Server'});
 
 const step = ref("orderform");
 const currency = ref("USD");

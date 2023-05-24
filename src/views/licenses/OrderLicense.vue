@@ -1,5 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Swal from 'sweetalert2';
+import { useLayoutStore } from '@/stores';
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('Order License');
+layoutStore.setTitle('Order License');
+layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Order License'});
 
 const ima = ref("client");
 const step = ref("license_types");
