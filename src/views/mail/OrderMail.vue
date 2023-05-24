@@ -3,14 +3,62 @@ import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useMailOrderStore } from '@/stores';
+import Swal from 'sweetalert2';
 const mailOrderStore = useMailOrderStore();
 const { packageCosts, serviceTypes } = storeToRefs(mailOrderStore);
-
+const baseUrl = import.meta.env.VITE_API_URL;
 const step = ref("orderform");
-const select_package = ref('<select id="mailselect" name="mail" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10880" selected>MailBaby Mail</option></select>');
 const coupon = ref("");
 const csrfToken = ref("");
 const pkg = ref(10880);
+const validateResponse = ref({});
+const tos = ref(false);
+
+async function editForm() {
+    step.value = 'orderform';
+}
+
+async function onSubmit(values) {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+    fetchWrapper.post(baseUrl + '/mail/order', {
+        validateOnly: true,
+        serviceType: pkg.value,
+        coupon: coupon.value
+    }).then(response => {
+        loading.close();
+        validateResponse.value = response;
+        console.log('Response:');
+        console.log(response);
+        pkg.value = response.serviceType;
+        if (response.continue == true) {
+            step.value = 'order_confirm';
+        }
+    });
+}
+
+async function placeOrder(values) {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+    fetchWrapper.post(baseUrl + '/mail/order', {
+        validateOnly: false,
+        serviceType: pkg.value,
+        coupon: coupon.value
+    }).then(response => {
+        loading.close();
+        validateResponse.value = response;
+        console.log('Response:');
+        console.log(response);
+    });
+}
 
 mailOrderStore.load();
 </script>
@@ -31,7 +79,7 @@ mailOrderStore.load();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="mail_form" method="post" class="mail_form_init" action="order_mail">
+                        <form id="mail_form" method="post" class="mail_form_init" action="order_mail" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package
@@ -84,12 +132,12 @@ mailOrderStore.load();
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div id="package_name" class="col-md-8" v-if="serviceTypes && serviceTypes[pkg]">{{ serviceTypes[pkg].services_name }}</div>
+                            <div id="package_name" class="col-md-8" v-if="serviceTypes && serviceTypes[pkg]">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_name : '' }}</div>
                             <div id="package_period" class="col text-right text-bold">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">Package Cost</div>
-                            <div class="col text-bold text-right package_cost">{{ serviceTypes[pkg].services_cost }}</div>
+                            <div class="col text-bold text-right package_cost">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
                         <div id="couponpricerownew" class="row mb-3">
                             <div id="couponpricetextnew" class="col-md-8">Coupon Discount</div>
@@ -122,32 +170,19 @@ mailOrderStore.load();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="edit_order_form" action="order_mail">
-                            <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <template v-for="(field_value, field) in order_data.data">
-                                <template v-if="field === 'mail'">
-                                    <input id="mailselect" type="hidden" :name="field" :value="field_value">
-                                </template>
-                                <template v-else-if="field !== 'Submit'">
-                                    <input :id="field" type="hidden" :name="field" :value="field_value">
-                                </template>
-                            </template>
-                        </form>
                         <form method="post" class="mail_form_confirm" action="order_mail">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <div v-for="(value, key) in orderData.data" :key="key">
-                                <input v-if="key === 'mail'" id="mailselect" type="hidden" :name="key" :value="value" />
-                                <input v-else-if="key !== 'Submit'" :id="key" type="hidden" :name="key" :value="value" />
-                            </div>
+                            <input type="hidden" name="serviceType" :value="pkg">
+                            <input type="hidden" name="coupon" :value="coupon">
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative;top:5px">{{serviceDetail.services_name}}</div>
+                                            <div class="text-md float-left" style="position: relative;top:5px">{{ serviceTypes[pkg].services_name }}</div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
-                                            <div class="text-bold text-md package_cost"></div>
+                                            <div class="text-bold text-md package_cost">{{ validateResponse.originalCost }}</div>
                                         </th>
                                     </tr>
                                 </thead>
@@ -160,12 +195,12 @@ mailOrderStore.load();
                                             <div class="text-md text-bold">Month</div>
                                         </td>
                                     </tr>
-                                    <tr v-if="orderData.data.coupon">
+                                    <tr v-if="coupon">
                                         <td>
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{orderData.data.coupon}} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt=""></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img src="{ 'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon }" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt=""></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none;">
@@ -181,7 +216,7 @@ mailOrderStore.load();
                                             <div class="text-lg text-bold">Total</div>
                                         </td>
                                         <td>
-                                            <div class="text-lg text-bold" id="totalprice"></div>
+                                            <div class="text-lg text-bold" id="totalprice">{{ validateResponse.serviceCost }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -195,13 +230,13 @@ mailOrderStore.load();
                                     By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
                                 </p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline;" value="yes" v-model="tosAgreed">
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline;" value="yes" v-model="tos">
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tosAgreed" @click="placeOrder">Place Order</button>
+                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click="placeOrder">Place Order</button>
                                 </div>
                             </div>
                         </form>
@@ -213,4 +248,5 @@ mailOrderStore.load();
 </template>
 
 <style scoped>
+@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 </style>
