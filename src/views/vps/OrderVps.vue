@@ -143,18 +143,18 @@ function update_vps_choices() {
     if (curControl.value != jQuery("select[name=controlpanel]").val()) {
         curControl.value = jQuery("select[name=controlpanel]").val();
         if (curControl.value == "cpanel") {
-            controlCost.value = cpanel_cost;
+            controlCost.value = cpanelCost.value;
         } else if (curControl.value == "da") {
-            controlCost.value = da_cost;
+            controlCost.value = daCost.value;
         } else {
             controlCost.value = 0;
         }
     }
-    if (cur_period != jQuery("#period").val()) {
-        cur_period = Number(jQuery("#period").val());
+    if (period.value != jQuery("#period").val()) {
+        period.value = Number(jQuery("#period").val());
     }
-    if (cur_location != jQuery("select[name=location]").val()) {
-        cur_location = Number(jQuery("select[name=location]").val());
+    if (location.value != jQuery("select[name=location]").val()) {
+        location.value = Number(jQuery("select[name=location]").val());
     }
     if (templateOs.value != jQuery("select[name=version]").val()) {
         templateOs.value = jQuery("select[name=version]").val();
@@ -226,7 +226,7 @@ function update_vps_choices() {
             sliceCost.value = ssd_virtuozzo_slice_cost;
         else
             sliceCost.value = virtuozzo_slice_cost;
-    if (cur_location == 3)
+    if (location.value == 3)
         sliceCost.value = sliceCost.value * ny_cost;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
@@ -302,28 +302,28 @@ function update_vps_choices() {
     }
     service_cost = first_slice + (sliceCost.value * (slices.value - 1));
     monthly_service_cost = monthly_slice_cost * slices.value;
-    if (cur_period >= 36) {
+    if (period.value >= 36) {
         jQuery("#cyclediscount").text("20% Off");
         jQuery("#cyclediscountnew").text("20% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.80;
         monthly_service_cost = monthly_service_cost * 0.80;
-    } else if (cur_period >= 24) {
+    } else if (period.value >= 24) {
         jQuery("#cyclediscount").text("15% Off");
         jQuery("#cyclediscountnew").text("15% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.85;
         monthly_service_cost = monthly_service_cost * 0.85;
-    } else if (cur_period >= 12) {
+    } else if (period.value >= 12) {
         jQuery("#cyclediscount").text("10% Off");
         jQuery("#cyclediscountnew").text("10% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.90;
         monthly_service_cost = monthly_service_cost * 0.90;
-    } else if (cur_period >= 6) {
+    } else if (period.value >= 6) {
         jQuery("#cyclediscount").text("5% Off");
         jQuery("#cyclediscountnew").text("5% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
@@ -336,13 +336,13 @@ function update_vps_choices() {
         jQuery("#cyclediscount").text("");
         jQuery("#cyclediscountnew").text("");
     }
-    if (cur_period > 1) {
-        service_cost = service_cost + ((cur_period - 1) * monthly_service_cost);
+    if (period.value > 1) {
+        service_cost = service_cost + ((period.value - 1) * monthly_service_cost);
     }
 
     var total_cost = new Number(service_cost);
     if (controlCost.value > 0) {
-        total_cost = total_cost + (controlCost.value * cur_period);
+        total_cost = total_cost + (controlCost.value * period.value);
     }
     total_cost = total_cost.toFixed(2);
     jQuery("#totalcost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
@@ -383,18 +383,18 @@ function update_vps_choices_order() {
     if (curControl.value != jQuery("#controlpanel").val()) {
         curControl.value = jQuery("#controlpanel").val();
         if (curControl.value == "cpanel") {
-            controlCost.value = cpanel_cost;
+            controlCost.value = cpanelCost.value;
         } else if (curControl.value == "da") {
-            controlCost.value = da_cost;
+            controlCost.value = daCost.value;
         } else {
             controlCost.value = 0;
         }
     }
-    if (cur_period != jQuery("#period").val()) {
-        cur_period = Number(jQuery("#period").val());
+    if (period.value != jQuery("#period").val()) {
+        period.value = Number(jQuery("#period").val());
     }
-    if (cur_location != jQuery("#location").val()) {
-        cur_location = Number(jQuery("#location").val());
+    if (location.value != jQuery("#location").val()) {
+        location.value = Number(jQuery("#location").val());
     }
     if (curSsd.value != jQuery("#ssd").val()) {
         curSsd.value = jQuery("#ssd").val();
@@ -447,7 +447,7 @@ function update_vps_choices_order() {
             sliceCost.value = ssd_virtuozzo_slice_cost;
         else
             sliceCost.value = virtuozzo_slice_cost;
-    if (cur_location == 3)
+    if (location.value == 3)
         sliceCost.value = sliceCost.value * ny_cost;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
@@ -519,28 +519,28 @@ function update_vps_choices_order() {
     }
     service_cost = first_slice + (sliceCost.value * (slices.value - 1));
     monthly_service_cost = monthly_slice_cost * slices.value;
-    if (cur_period >= 36) {
+    if (period.value >= 36) {
         jQuery("#cyclediscount").text("20% Off");
         jQuery("#cyclediscountnew").text("20% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.80;
         monthly_service_cost = monthly_service_cost * 0.80;
-    } else if (cur_period >= 24) {
+    } else if (period.value >= 24) {
         jQuery("#cyclediscount").text("15% Off");
         jQuery("#cyclediscountnew").text("15% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.85;
         monthly_service_cost = monthly_service_cost * 0.85;
-    } else if (cur_period >= 12) {
+    } else if (period.value >= 12) {
         jQuery("#cyclediscount").text("10% Off");
         jQuery("#cyclediscountnew").text("10% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
         jQuery("#cyclediscountrownew").show();
         service_cost = service_cost * 0.90;
         monthly_service_cost = monthly_service_cost * 0.90;
-    } else if (cur_period >= 6) {
+    } else if (period.value >= 6) {
         jQuery("#cyclediscount").text("5% Off");
         jQuery("#cyclediscountnew").text("5% Off");
         jQuery("#cyclediscountrow").css("display", "table-row");
@@ -553,13 +553,13 @@ function update_vps_choices_order() {
         jQuery("#cyclediscount").text("");
         jQuery("#cyclediscountnew").text("");
     }
-    if (cur_period > 1) {
-        service_cost = service_cost + ((cur_period - 1) * monthly_service_cost);
+    if (period.value > 1) {
+        service_cost = service_cost + ((period.value - 1) * monthly_service_cost);
     }
 
     var total_cost = new Number(service_cost);
     if (controlCost.value > 0) {
-        total_cost = total_cost + (controlCost.value * cur_period);
+        total_cost = total_cost + (controlCost.value * period.value);
     }
     total_cost = total_cost.toFixed(2);
     jQuery("#totalcost11").text(currencySymbol.value + total_cost);
@@ -611,7 +611,7 @@ function recomended_cpanel() {
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("centos-7-x86_64-cpanel");
     jQuery("select[name=controlpanel]").val(curControl.value);
-    controlCost.value = cpanel_cost;
+    controlCost.value = cpanelCost.value;
     jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
@@ -633,7 +633,7 @@ function recomended_directadmin() {
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=vpsos]").val("da");
     jQuery("select[name=controlpanel]").val(curControl.value);
-    controlCost.value = da_cost;
+    controlCost.value = daCost.value;
     jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
@@ -711,8 +711,8 @@ function recomended_webuzo() {
 
 function slice_warning() {
     slices.value = $("select[name='slices']").val();
-    image = $("select[name=version]").val();
-    if (slices.value == 1 && image == 'windows') {
+    platform.value = $("select[name=version]").val();
+    if (slices.value == 1 && platform.value == 'windows') {
         //$('#update_msg').html('<div class="alert alert-warning" role="alert"><strong>Warning!</strong> running windows on only 1GB memory is not recommended. The minimum requirement for Windows Server is 4GB of ram</div>');
         $('#update_msg').html('');
     } else {
@@ -721,19 +721,19 @@ function slice_warning() {
 }
 
 function get_package_id() {
-    os = $("select[name='version']").val();
+    templateOs.value = $("select[name='version']").val();
     if (platform.value == 'openvz') { // OpenVZ
         serviceType.value = 31;
     } else if (platform.value == 'ssdopenvz') { // OpenVZ
         serviceType.value = 36;
     } else if (platform.value == 'cloudkvm') { // Cloud
-        if (os == 5 || 0 === os.indexOf('windows')) {
+        if (templateOs.value == 5 || 0 === templateOs.value.indexOf('windows')) {
             serviceType.value = 34;
         } else {
             serviceType.value = 35;
         }
     } else if (platform.value == 'kvm') { // KVM
-        if (os == 5 || 0 === os.indexOf('windows')) {
+        if (templateOs.value == 5 || 0 === templateOs.value.indexOf('windows')) {
             serviceType.value = 32;
         } else {
             serviceType.value = 33;

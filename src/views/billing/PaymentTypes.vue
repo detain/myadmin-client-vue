@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
 import { useAccountStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import Swal from 'sweetalert2';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 layoutStore.setPageHeading('Payment Types');
@@ -97,10 +98,11 @@ function formatCardNum(e) {
   var caretPosition = e.target.selectionStart;
   var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
   var parts = [];
-  for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+  var i, len;
+  for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
     parts.push(sanitizedValue.substring(i, i + 4));
   }
-  for (var i = caretPosition - 1; i >= 0; i--) {
+  for (i = caretPosition - 1; i >= 0; i--) {
     var c = e.target.value[i];
     if (c < '0' || c > '9') {
       caretPosition--;
@@ -116,7 +118,8 @@ function formatExpDate(e) {
   var caretPosition = e.target.selectionStart;
   var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
   var parts = [];
-  for (var i = 0; i < 2; i += 2) {
+  var i;
+  for (i = 0; i < 2; i += 2) {
     parts.push(sanitizedValue.substring(i, i + 2));
   }
   if (sanitizedValue.length >= 2) {
@@ -124,7 +127,7 @@ function formatExpDate(e) {
       parts.push(sanitizedValue.substring(j, j + 5));
     }
   }
-  for (var i = caretPosition - 1; i >= 0; i--) {
+  for (i = caretPosition - 1; i >= 0; i--) {
     var c = e.target.value[i];
     if (c < '0' || c > '9') {
       caretPosition--;
