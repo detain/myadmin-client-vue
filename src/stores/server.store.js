@@ -189,6 +189,6 @@ export const useServerStore = defineStore({
 
             // remove user from list after deleted
             this.serverList = this.serverList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

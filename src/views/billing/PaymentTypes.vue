@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
 import { useAccountStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 layoutStore.setPageHeading('Payment Types');

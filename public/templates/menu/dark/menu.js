@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import jQuery from 'jquery';
+
 $(document).ready(function() {
 	$('.navbar a.dropdown-toggle').on('click', function(e) {
 		var $el = $(this);

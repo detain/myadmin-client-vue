@@ -2,6 +2,7 @@
 import { ref, reactive, defineComponent } from "vue";
 import { storeToRefs } from 'pinia';
 import { usePrePayStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const prepayStore = usePrePayStore();
 const { loading, error, custid, ima, csrf_token, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);

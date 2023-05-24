@@ -208,6 +208,6 @@ export const useBackupStore = defineStore({
 
             // remove user from list after deleted
             this.backupList = this.backupList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

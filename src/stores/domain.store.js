@@ -192,6 +192,6 @@ export const useDomainStore = defineStore({
 
             // remove user from list after deleted
             this.domainList = this.domainList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

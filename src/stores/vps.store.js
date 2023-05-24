@@ -194,6 +194,6 @@ export const useVpsStore = defineStore({
 
             // remove user from list after deleted
             this.vpsList = this.vpsList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

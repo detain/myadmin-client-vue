@@ -19,6 +19,7 @@ const getOsVersions = computed(() => {
     console.log("Os: "+templateOs.value);
    return templates.value[platform.value][templateOs.value];
 });
+const serviceType = ref(null);
 const slicesRange = computed(() => {
     const arr = []
     for (let i = 1; i <= maxSlices.value; i++) {
@@ -51,6 +52,8 @@ const currencySymbol = ref("$");
 const rootpass = ref("");
 const csrfToken = ref("");
 const curHdSlice = ref(0);
+const curSsd = ref(0);
+const curControl = ref("");
 const period = ref(1);
 const pkg = ref('');
 const totalCostDisplay = ref(0.00);
@@ -58,6 +61,7 @@ const ipv6_only_discount = ref(1);
 const controlCost = ref(0);
 const couponInfo = ref(0);
 const last_coupon = ref("");
+const sliceCost = ref(0);
 
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
@@ -136,11 +140,11 @@ function update_vps_choices() {
     //Latest code ends
     /*
 
-    if (cur_control != jQuery("select[name=controlpanel]").val()) {
-        cur_control = jQuery("select[name=controlpanel]").val();
-        if (cur_control == "cpanel") {
+    if (curControl.value != jQuery("select[name=controlpanel]").val()) {
+        curControl.value = jQuery("select[name=controlpanel]").val();
+        if (curControl.value == "cpanel") {
             controlCost.value = cpanel_cost;
-        } else if (cur_control == "da") {
+        } else if (curControl.value == "da") {
             controlCost.value = da_cost;
         } else {
             controlCost.value = 0;
@@ -157,15 +161,15 @@ function update_vps_choices() {
         jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
         jQuery("select[name=vpsos]").parent().find("span>span").html(jQuery("select[name=vpsos] > option[selected]").html())
     }
-    if (cur_ssd != jQuery("select[name=ssd]").val()) {
-        cur_ssd = jQuery("select[name=ssd]").val();
+    if (curSsd.value != jQuery("select[name=ssd]").val()) {
+        curSsd.value = jQuery("select[name=ssd]").val();
     }
     if (platform.value == "openvz" || platform.value == "virtuozzo") {
         jQuery("#hostnamerow").css("display", "table-row");
         jQuery("#ssdrow").css("display", "table-row");
         jQuery("#hostnamerownew").show();
         jQuery("#ssdrownew").show();
-        if (cur_ssd == 1) {
+        if (curSsd.value == 1) {
             jQuery("#ssdpricerow").css("display", "table-row");
             jQuery("#ssdpricerownew").show();
         } else {
@@ -179,8 +183,8 @@ function update_vps_choices() {
         jQuery("#ssdrownew").hide();
         jQuery("#ssdpricerownew").hide();
         jQuery("#ssdpricerow").css("display", "none");
-        if (cur_ssd == 1) {
-            cur_ssd = 0;
+        if (curSsd.value == 1) {
+            curSsd.value = 0;
         }
     }
     if (templateOs.value == "windows") {
@@ -198,32 +202,32 @@ function update_vps_choices() {
         jQuery("#rootpassrownew").show();
     }
     if (platform.value == "openvz")
-        if (cur_ssd == 1)
-            slice_cost = ssd_slice_cost;
+        if (curSsd.value == 1)
+            sliceCost.value = ssd_slice_cost;
         else
-            slice_cost = ovz_slice_cost;
+            sliceCost.value = ovz_slice_cost;
     else if (platform.value == 'kvm')
         if (templateOs.value == "windows")
-            slice_cost = kvm_w_slice_cost;
+            sliceCost.value = kvm_w_slice_cost;
         else
-            slice_cost = kvm_l_slice_cost;
+            sliceCost.value = kvm_l_slice_cost;
     else if (platform.value == "kvmstorage")
-        slice_cost = kvm_storage_slice_cost;
+        sliceCost.value = kvm_storage_slice_cost;
     else if (platform.value == "xen")
-        slice_cost = xen_slice_cost;
+        sliceCost.value = xen_slice_cost;
     else if (platform.value == "lxc")
-        slice_cost = lxc_slice_cost;
+        sliceCost.value = lxc_slice_cost;
     else if (platform.value == "vmware")
-        slice_cost = vmware_slice_cost;
+        sliceCost.value = vmware_slice_cost;
     else if (platform.value == "hyperv")
-        slice_cost = hyperv_slice_cost;
+        sliceCost.value = hyperv_slice_cost;
     else if (platform.value == "virtuozzo")
-        if (cur_ssd == 1)
-            slice_cost = ssd_virtuozzo_slice_cost;
+        if (curSsd.value == 1)
+            sliceCost.value = ssd_virtuozzo_slice_cost;
         else
-            slice_cost = virtuozzo_slice_cost;
+            sliceCost.value = virtuozzo_slice_cost;
     if (cur_location == 3)
-        slice_cost = slice_cost * ny_cost;
+        sliceCost.value = sliceCost.value * ny_cost;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
         jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
@@ -235,20 +239,20 @@ function update_vps_choices() {
         jQuery("#controlpanelcostnew").text("");
         jQuery("#controlpanelpricerownew").hide();
     }
-    jQuery("#slicecost").text(currencySymbol + slice_cost + " Per Slice");
-    jQuery("#slicecosttb").text(currencySymbol + slice_cost);
+    jQuery("#slicecost").text(currencySymbol + sliceCost.value + " Per Slice");
+    jQuery("#slicecosttb").text(currencySymbol + sliceCost.value);
     // later month slice costs
-    var service_cost = slice_cost;
+    var service_cost = sliceCost.value;
     // first month slice cost
-    var first_slice = slice_cost;
-    var monthly_slice_cost = slice_cost;
+    var first_slice = sliceCost.value;
+    var monthly_slice_cost = sliceCost.value;
     var monthly_service_cost = service_cost;
     var couponpricetext;
     if (typeof couponInfo.value.applies != undefined) {
         if (couponInfo.value.type == 3) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
-            jQuery("#slicecost").html("<del style=\"color: red;\">" + currencySymbol + slice_cost + "</del> Per Slice");
+            jQuery("#slicecost").html("<del style=\"color: red;\">" + currencySymbol + sliceCost.value + "</del> Per Slice");
             couponpricetext = "Price";
             jQuery("#couponprice").html(currencySymbol + couponInfo.value.amount + " per slice");
             jQuery("#couponpricenew").val(couponInfo.value.amount + " per slice");
@@ -277,14 +281,14 @@ function update_vps_choices() {
             first_slice = 0.01;
         }
         if (couponInfo.value.amount != 0.01) {
-            slice_cost = first_slice;
+            sliceCost.value = first_slice;
         } else if (platform.value == "kvm" || platform.value == "hyperv") {
-            first_slice = slice_cost * 0.50;
+            first_slice = sliceCost.value * 0.50;
             jQuery("#couponprice").text("50% Off");
             jQuery("#couponpricenew").val("50% Off");
         }
         if (couponInfo.value.onetime == 0) {
-            monthly_slice_cost = slice_cost;
+            monthly_slice_cost = sliceCost.value;
         } else {
             couponpricetext = "First Month " + couponpricetext;
         }
@@ -296,7 +300,7 @@ function update_vps_choices() {
         jQuery("#couponprice").text("");
         jQuery("#couponpricenew").val("");
     }
-    service_cost = first_slice + (slice_cost * (slices.value - 1));
+    service_cost = first_slice + (sliceCost.value * (slices.value - 1));
     monthly_service_cost = monthly_slice_cost * slices.value;
     if (cur_period >= 36) {
         jQuery("#cyclediscount").text("20% Off");
@@ -376,11 +380,11 @@ function update_vps_choices_order() {
     jQuery("#Transfer_bandwidth").text(bandWidthProvidedd);
     //Latest code ends
 
-    if (cur_control != jQuery("#controlpanel").val()) {
-        cur_control = jQuery("#controlpanel").val();
-        if (cur_control == "cpanel") {
+    if (curControl.value != jQuery("#controlpanel").val()) {
+        curControl.value = jQuery("#controlpanel").val();
+        if (curControl.value == "cpanel") {
             controlCost.value = cpanel_cost;
-        } else if (cur_control == "da") {
+        } else if (curControl.value == "da") {
             controlCost.value = da_cost;
         } else {
             controlCost.value = 0;
@@ -392,15 +396,15 @@ function update_vps_choices_order() {
     if (cur_location != jQuery("#location").val()) {
         cur_location = Number(jQuery("#location").val());
     }
-    if (cur_ssd != jQuery("#ssd").val()) {
-        cur_ssd = jQuery("#ssd").val();
+    if (curSsd.value != jQuery("#ssd").val()) {
+        curSsd.value = jQuery("#ssd").val();
     }
     if (platform.value == "openvz" || platform.value == "virtuozzo") {
         jQuery("#hostnamerow").css("display", "table-row");
         jQuery("#ssdrow").css("display", "table-row");
         jQuery("#hostnamerownew").show();
         jQuery("#ssdrownew").show();
-        if (cur_ssd == 1) {
+        if (curSsd.value == 1) {
             jQuery("#ssdpricerow").css("display", "table-row");
             jQuery("#ssdpricerownew").show();
         } else {
@@ -414,37 +418,37 @@ function update_vps_choices_order() {
         jQuery("#ssdrownew").hide();
         jQuery("#ssdpricerownew").hide();
         jQuery("#ssdpricerow").css("display", "none");
-        if (cur_ssd == 1) {
-            cur_ssd = 0;
+        if (curSsd.value == 1) {
+            curSsd.value = 0;
         }
     }
     if (platform.value == "openvz")
-        if (cur_ssd == 1)
-            slice_cost = ssd_slice_cost;
+        if (curSsd.value == 1)
+            sliceCost.value = ssd_slice_cost;
         else
-            slice_cost = ovz_slice_cost;
+            sliceCost.value = ovz_slice_cost;
     else if (platform.value == 'kvm')
         if (templateOs.value == "windows")
-            slice_cost = kvm_w_slice_cost;
+            sliceCost.value = kvm_w_slice_cost;
         else
-            slice_cost = kvm_l_slice_cost;
+            sliceCost.value = kvm_l_slice_cost;
     else if (platform.value == "kvmstorage")
-        slice_cost = kvm_storage_slice_cost;
+        sliceCost.value = kvm_storage_slice_cost;
     else if (platform.value == "xen")
-        slice_cost = xen_slice_cost;
+        sliceCost.value = xen_slice_cost;
     else if (platform.value == "lxc")
-        slice_cost = lxc_slice_cost;
+        sliceCost.value = lxc_slice_cost;
     else if (platform.value == "vmware")
-        slice_cost = vmware_slice_cost;
+        sliceCost.value = vmware_slice_cost;
     else if (platform.value == "hyperv")
-        slice_cost = hyperv_slice_cost;
+        sliceCost.value = hyperv_slice_cost;
     else if (platform.value == "virtuozzo")
-        if (cur_ssd == 1)
-            slice_cost = ssd_virtuozzo_slice_cost;
+        if (curSsd.value == 1)
+            sliceCost.value = ssd_virtuozzo_slice_cost;
         else
-            slice_cost = virtuozzo_slice_cost;
+            sliceCost.value = virtuozzo_slice_cost;
     if (cur_location == 3)
-        slice_cost = slice_cost * ny_cost;
+        sliceCost.value = sliceCost.value * ny_cost;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
         jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
@@ -452,20 +456,20 @@ function update_vps_choices_order() {
     else {
         jQuery("#controlpanelcost").text("");
     }
-    jQuery("#slicecost").text(currencySymbol.value + slice_cost + " Per Slice");
-    jQuery("#slicecosttb").text(currencySymbol.value + slice_cost);
+    jQuery("#slicecost").text(currencySymbol.value + sliceCost.value + " Per Slice");
+    jQuery("#slicecosttb").text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-    var service_cost = slice_cost;
+    var service_cost = sliceCost.value;
     // first month slice cost
-    var first_slice = slice_cost;
-    var monthly_slice_cost = slice_cost;
+    var first_slice = sliceCost.value;
+    var monthly_slice_cost = sliceCost.value;
     var monthly_service_cost = service_cost;
     var couponpricetext;
     if (typeof couponInfo.value.applies != undefined) {
         if (couponInfo.value.type == 3) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
-            jQuery("#slicecost").html("<del style=\"color: red;\">$" + slice_cost + "</del> Per Slice");
+            jQuery("#slicecost").html("<del style=\"color: red;\">$" + sliceCost.value + "</del> Per Slice");
             couponpricetext = "Price";
             jQuery("#couponprice").html(currencySymbol.value + couponInfo.value.amount + " per slice");
             jQuery("#couponpricenew").val(couponInfo.value.amount + " per slice");
@@ -494,14 +498,14 @@ function update_vps_choices_order() {
             first_slice = 0.01;
         }
         if (couponInfo.value.amount != 0.01) {
-            slice_cost = first_slice;
+            sliceCost.value = first_slice;
         } else if (platform.value == "kvm" || platform.value == "kvmstorage" || platform.value == "hyperv") {
-            first_slice = slice_cost * 0.50;
+            first_slice = sliceCost.value * 0.50;
             jQuery("#couponprice").text("50% Off");
             jQuery("#couponpricenew").val("50% Off");
         }
         if (couponInfo.value.onetime == 0) {
-            monthly_slice_cost = slice_cost;
+            monthly_slice_cost = sliceCost.value;
         } else {
             couponpricetext = "First Month " + couponpricetext;
         }
@@ -513,7 +517,7 @@ function update_vps_choices_order() {
         jQuery("#couponprice").text("");
         jQuery("#couponpricenew").val("");
     }
-    service_cost = first_slice + (slice_cost * (slices.value - 1));
+    service_cost = first_slice + (sliceCost.value * (slices.value - 1));
     monthly_service_cost = monthly_slice_cost * slices.value;
     if (cur_period >= 36) {
         jQuery("#cyclediscount").text("20% Off");
@@ -567,7 +571,7 @@ function update_vps_choices_order() {
     $(document).ready(function () {
         if ($("#renew_cost").length > 0) {
             $("#renew_cost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
-                .format(parseFloat(slices.value * slice_cost).toFixed(2)));
+                .format(parseFloat(slices.value * sliceCost.value).toFixed(2)));
         }
     })
 
@@ -579,13 +583,13 @@ function recomended_linux() {
     platform.value = "kvm";
     templateOs.value = "ubuntu";
     slices.value = "1";
-    cur_control = "none";
+    curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
     jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -600,13 +604,13 @@ function recomended_cpanel() {
     platform.value = "kvm";
     templateOs.value = "centos";
     slices.value = "2";
-    cur_control = "cpanel";
+    curControl.value = "cpanel";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("centos-7-x86_64-cpanel");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = cpanel_cost;
     jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -621,14 +625,14 @@ function recomended_directadmin() {
     platform.value = "kvm";
     templateOs.value = "almalinux";
     slices.value = "4";
-    cur_control = "da";
+    curControl.value = "da";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=vpsos]").val("da");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = da_cost;
     jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -643,14 +647,14 @@ function recomended_windows() {
     platform.value = "hyperv";
     templateOs.value = "windows";
     slices.value = "2";
-    cur_control = "none";
+    curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("Windows2022");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
     jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -665,14 +669,14 @@ function recomended_linux_desktop() {
     platform.value = "kvm";
     templateOs.value = "ubuntu";
     slices.value = "2";
-    cur_control = "none";
+    curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("ubuntudesktop");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
     jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -687,14 +691,14 @@ function recomended_webuzo() {
     platform.value = "kvm";
     templateOs.value = "centos";
     slices.value = "1";
-    cur_control = "none";
+    curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
     jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("centos-7-x86_64-breadbasket");
-    jQuery("select[name=controlpanel]").val(cur_control);
+    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
     jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
@@ -719,39 +723,39 @@ function slice_warning() {
 function get_package_id() {
     os = $("select[name='version']").val();
     if (platform.value == 'openvz') { // OpenVZ
-        service_type = 31;
+        serviceType.value = 31;
     } else if (platform.value == 'ssdopenvz') { // OpenVZ
-        service_type = 36;
+        serviceType.value = 36;
     } else if (platform.value == 'cloudkvm') { // Cloud
         if (os == 5 || 0 === os.indexOf('windows')) {
-            service_type = 34;
+            serviceType.value = 34;
         } else {
-            $service_type = 35;
+            serviceType.value = 35;
         }
     } else if (platform.value == 'kvm') { // KVM
         if (os == 5 || 0 === os.indexOf('windows')) {
-            service_type = 32;
+            serviceType.value = 32;
         } else {
-            service_type = 33;
+            serviceType.value = 33;
         }
     } else if (platform.value == 'kvmstorage') {
-        service_type = 57;
+        serviceType.value = 57;
     } else if (platform.value == 'xen') {
-        service_type = 52;
+        serviceType.value = 52;
     } else if (platform.value == 'lxc') {
-        service_type = 49;
+        serviceType.value = 49;
     } else if (platform.value == 'vmware') {
-        service_type = 53;
+        serviceType.value = 53;
     } else if (platform.value == 'hyperv') {
-        service_type = 54;
+        serviceType.value = 54;
     } else if (platform.value == 'virtuozzo') {
-        service_type = 55;
+        serviceType.value = 55;
     } else if (platform.value == 'ssdvirtuozzo') {
-        service_type = 56;
+        serviceType.value = 56;
     } else {
-        service_type = -1;
+        serviceType.value = -1;
     }
-    return service_type;
+    return serviceType.value;
 }
 
 function update_hostname() {

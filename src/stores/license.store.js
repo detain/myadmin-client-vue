@@ -195,6 +195,6 @@ export const useLicenseStore = defineStore({
 
             // remove user from list after deleted
             this.licenseList = this.licenseList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

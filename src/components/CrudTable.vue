@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { snakeToCamel } from '@/helpers';
+import $ from 'jquery';
+import jQuery from 'jquery';
 
 const emit = defineEmits(['update:page', 'update:pageLimit']);
 const labelRep = ref({

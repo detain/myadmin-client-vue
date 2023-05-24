@@ -397,6 +397,6 @@ export const useQsStore = defineStore({
 
             // remove user from list after deleted
             this.qsList = this.qsList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

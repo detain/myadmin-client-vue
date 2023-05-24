@@ -83,6 +83,6 @@ export const usePrePayStore = defineStore({
 
             // remove user from list after deleted
             this.accountList = this.accountList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

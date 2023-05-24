@@ -90,6 +90,6 @@ export const useSslStore = defineStore({
 
             // remove user from list after deleted
             this.sslList = this.sslList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

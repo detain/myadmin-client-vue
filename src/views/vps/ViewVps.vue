@@ -4,6 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
 const route = useRoute();

@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
+import $ from 'jquery';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Affiliate - Banners');
 layoutStore.setTitle('Affiliate - Banners');

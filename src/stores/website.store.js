@@ -245,6 +245,6 @@ export const useWebsiteStore = defineStore({
 
             // remove user from list after deleted
             this.websiteList = this.websiteList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

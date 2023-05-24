@@ -203,6 +203,6 @@ export const useMailStore = defineStore({
 
             // remove user from list after deleted
             this.mailList = this.mailList.filter(x => x.id !== id);
-Z        }
+        }
     }
 });

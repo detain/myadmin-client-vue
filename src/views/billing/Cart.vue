@@ -4,6 +4,7 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { useAccountStore, useLayoutStore } from '@/stores';
+import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
 layoutStore.setPageHeading('Cart');

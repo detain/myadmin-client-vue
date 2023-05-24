@@ -272,6 +272,7 @@ function login_handler(e) {
         }
         var pathArray = window.location.pathname.split('/');
         var newPath = "/";
+        var i;
         for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
             newPath += "/";
@@ -366,6 +367,7 @@ function forgot_password(e) {
     } else {
         var pathArray = window.location.pathname.split('/');
         var newPath = "/";
+        var i;
         for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
             newPath += "/";
@@ -408,6 +410,7 @@ function signup_handler(e) {
     var captchaSignup = jQuery("#captcha_signup").val();
     var data_string = "ajax=1";
     var errors = "";
+    var i;
     for (i = 0, n = items.length; i < n; i++) {
         if (
             items[i].name != "remember" &&
