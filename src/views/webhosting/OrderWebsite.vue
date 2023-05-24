@@ -210,10 +210,10 @@ const web = ref("");
 const currency = ref("USD");
 const currencySymbol = ref("$");
 const hostname = ref("");
-const rootpass = ref("M5%ju3z4");
+const rootpass = ref("");
 const period = ref(1);
 const coupon = ref("");
-const csrfToken = ref( "a1001333715c3ed418e9e0ba87f28880f0f9864844a23c88b9316b2b10ed75093232b0022ce9c14ae1819d1986f90a89044b13584d577bee74cdcd8bdd3e634a");
+const csrfToken = ref("");
 
 const formAction = web.value === '' ? 'order_website' : `order_website?website=${encodeURIComponent(web.value)}`
 </script>

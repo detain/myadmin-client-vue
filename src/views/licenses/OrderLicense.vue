@@ -48,7 +48,7 @@ const getLicenses = ref({
         order: 6
     }
 });
-const csrfToken = ref( "aa64b0e4170782c7c70d6196103ad403f7c035588fbde36cebe4719df40b426a61ab0b4fd8a968520eb1bdd89569c89440310ff80897c5fbedde1d196258a307");
+const csrfToken = ref("");
 </script>
 
 <template>

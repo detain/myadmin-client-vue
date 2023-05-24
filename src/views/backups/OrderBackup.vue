@@ -13,10 +13,10 @@ const currencySymbol = ref("$");
 const custid = ref(2773);
 const ima = ref("client");
 const selectPackage = ref('<select id="backupselect" name="backup" class="form-control form-control-sm select2 valid" onChange="update_price();"><option value="10831" >Storage ST 100</option><option value="10838" >Storage ST 200</option><option value="10845" >Storage ST 300</option><option value="10852" >Storage ST 400</option><option value="10859" >Storage ST 500</option><option value="10866" >Storage ST 600</option><option value="11006" >Storage ST 700</option></select>');
-const rootpass = ref("4*MXXb&f");
+const rootpass = ref("");
 const period = ref(1);
 const coupon = ref("");
-const csrfToken = ref( "8bf7f1144493ed4a98c0a9e5be7c3edcaf8d9e2a7eaf10e18e0751d68b8d68ddd88c41cff45b8c8c0012f5ed3cd07b218bb2fcbc954eb5e93233b0069c4faca7");
+const csrfToken = ref("");
 
 const periods = [
   { label: 'Monthly', value: 1 },
