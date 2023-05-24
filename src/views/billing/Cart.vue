@@ -29,6 +29,7 @@ const order_msg = ref('');
 const total_display = ref(0.00);
 const displayPrepay = ref(true);
 const total_invoices = ref(0);
+const paymentMethodsData = ref({});
 const contFields = {
     cc: ref(''),
     cc_exp: ref(''),
@@ -158,6 +159,7 @@ function onExpDateInput(e) {
 accountStore.load();
 fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
     console.log(response);
+    paymentMethodsData.value = response.paymentMethodsData
     invrows.value = response.invrows;
     modules.value = response.modules;
 });
@@ -345,7 +347,9 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                             </div>
                             <div class="col-md-12 mt-4 px-5 py-3 b-radius" style="background: #f4f4f4;">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
-                                <span id="payments-section"></span>
+                                <span id="payments-section">
+                                    <router-link v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId" :to="'/pay/' + methodId" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style"></router-link>
+                                </span>
                             </div>
                         </div>
                         <hr>
