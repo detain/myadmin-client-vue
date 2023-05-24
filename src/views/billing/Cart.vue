@@ -57,7 +57,7 @@ function deleteCard(cc_id = '0') {
     showCancelButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
     preConfirm: () => {
       $('#deleteForm').submit();
     }
@@ -373,50 +373,51 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-4 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + ((pymt_method == 'cc' && selectedCc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + ((pymt_method == 'cc' && selectedCc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
                                         <div v-if="pymt_method == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
                                         <form action="cart" method="post" id="paymentform">
-
-                                            <div class="col-md-12 mb-3">
-                                                <div class="icheck-success">
-                                                    <input :id="'cc-' + cc_id" :name="r_pymt_method" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
-                                                    <label :for="'cc-' + cc_id" class="text-lg pb-2" style="letter-spacing: 4px;">{{ cc_detail.mask_cc }}</label>
-                                                </div>
-                                                <div class="pl-4 ml-2">
-                                                    <div class="my-2 text-sm">
-                                                        <b class="text-md">{{ name }}</b>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <div class="icheck-success">
+                                                        <input :id="'cc-' + cc_id" :name="r_pymt_method" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <label :for="'cc-' + cc_id" class="text-lg pb-2" style="letter-spacing: 4px;">{{ cc_detail.cc }}</label>
                                                     </div>
-                                                    <div class="text-sm text-muted">Expires on {{ cc_detail.cc_exp }}</div>
-                                                    <div class="my-2">
-                                                        <template v-if="pymt_method === 'cc' && selectedCc === cc_id">
-                                                            <div id="selected_services"></div>
-                                                            <input type="hidden" name="balance" value="1" />
-                                                            <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%;" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
-                                                        </template>
-                                                        <template v-else>
-                                                            &nbsp;
-                                                        </template>
+                                                    <div class="pl-4 ml-2">
+                                                        <div class="my-2 text-sm">
+                                                            <b class="text-md">{{ cc_detail.name }}</b>
+                                                        </div>
+                                                        <div class="text-sm text-muted">Expires on {{ cc_detail.cc_exp }}</div>
+                                                        <div class="my-2">
+                                                            <template v-if="pymt_method === 'cc' && selectedCc === cc_id">
+                                                                <div id="selected_services"></div>
+                                                                <input type="hidden" name="balance" value="1" />
+                                                                <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%;" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
+                                                            </template>
+                                                            <template v-else>
+                                                                &nbsp;
+                                                            </template>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-md-6 pl-4">
-                                                <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
-                                                    <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
-                                                </a>
-                                                <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
-                                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
-                                                </a>
-                                                <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-lg text-success" name="totalccamount"></div>
-                                            </div>
+                                                <div class="col-md-6 pl-4">
+                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
+                                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
+                                                    </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
+                                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
+                                                    </a>
+                                                    <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-lg text-success" name="totalccamount"></div>
+                                                </div>
 
-                                            <div class="col-md-6 text-right">
-                                                <a v-if="(!selectedCc || (selectedCc != cc_id || cc_detail.verified_cc == 'no')) && pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
-                                                    <i class="fa fa-trash"></i>&nbsp;Delete
-                                                </a>
-                                                <input v-else-if="pymt_method == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">
+                                                <div class="col-md-6 text-right">
+                                                    <a v-if="(!selectedCc || (selectedCc != cc_id || cc_detail.verified_cc == 'no')) && pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
+                                                        <i class="fa fa-trash"></i>&nbsp;Delete
+                                                    </a>
+                                                    <input v-else-if="pymt_method == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
