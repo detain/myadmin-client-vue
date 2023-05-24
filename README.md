@@ -23,9 +23,199 @@ This template should help get you started developing with Vue 3 in Vite.
 * [x] view service pages
   * [x] load data via ajax api
   * [ ] links and form handling
+  * [ ] floating_ips view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] domains view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] vps view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] backups view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] mail view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] licenses view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] ssl view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] webhosting view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] quickservers view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] servers view servivce page
+    * [x] route added
+    * [x] template converted
+    * [ ] links
+      * [ ] view invoices
+      * [ ] cancel service
+    * [ ] minimize api fields in requests/responses and filter them for security
 * [x] order service pages
   * [x] layout / design implemented
   * [ ] form and api submission handling
+ * [ ] floating_ips order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] domains order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] vps order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] backups order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] mail order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] licenses order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] ssl order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] webhosting order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] quickservers order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
+ * [ ] servers order servivce page
+   * [x] route added
+   * [x] template converted
+   * [ ] validate order ajax handling function
+   * [ ] error response handling
+   * [ ] loading poups
+   * [ ] coupon handling
+   * [ ] form validation
+   * [ ] summary display/price updating
+   * [ ] forwarding to cart page
+   * [ ] place order ajax handling function
+   * [ ] minimize api fields in requests/responses and filter them for security
 * [x] services list pages
   * [x] ajax loading via api calls
   * [x] convert links to router-links
@@ -34,6 +224,96 @@ This template should help get you started developing with Vue 3 in Vite.
     * [ ] sorting
     * [ ] pagination
   * [ ] print/export
+  * [ ] floating_ips servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] domains servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] vps servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] backups servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] mail servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] licenses servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] ssl servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] webhosting servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] quickservers servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] servers servivces list page
+    * [x] route added
+    * [x] template converted
+    * [ ] pagination
+    * [ ] sorting
+    * [ ] searching/filtering
+    * [ ] DataTables or equivalent
+    * [ ] links properly routing with router/router-link calls/tags
+    * [ ] minimize api fields in requests/responses and filter them for security
 * [ ] api finalized
 * [ ] check out vue-query t see if we should be using it
 * [ ] check out vue-use t see if we should be using it
