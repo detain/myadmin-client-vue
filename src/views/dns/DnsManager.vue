@@ -48,6 +48,17 @@ const filteredData = computed(() => {
     }
 })
 
+const domain = ref('');
+const ip = ref('');
+
+async function addDomain(event) {
+    console.log(event);
+}
+
+async function deleteDomain(event) {
+    console.log(event);
+}
+
 onMounted(function () {
   dt = table.value.dt;
 });
@@ -114,20 +125,20 @@ loadDns(data)
                             <div class="col-md-3">
                                 <div class="printer-hidden">
                                     <div class="input-group">
-                                        <input class="form-control form-control-sm" aria-label="Domain Name" placeholder="Domain like mycoolsite.com" name="domain" value="">
+                                        <input class="form-control form-control-sm" aria-label="Domain Name" placeholder="Domain like mycoolsite.com" v-model="domain">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="printer-hidden">
                                     <div class="input-group">
-                                        <input class="form-control form-control-sm" aria-label="IP Address" placeholder="IP Address like 0.0.0.0" name="ip" value="">
+                                        <input class="form-control form-control-sm" aria-label="IP Address" placeholder="IP Address like 0.0.0.0" v-model="ip">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="printer-hidden">
-                                    <input class="form-control form-control-sm btn btn-secondary btn-sm" type="submit" value="Add DNS Entry">
+                                    <input class="form-control form-control-sm btn btn-secondary btn-sm" type="submit" value="Add DNS Entry" @click.prevent="addDomain">
                                 </div>
                             </div>
                         </div>
@@ -156,7 +167,7 @@ loadDns(data)
                                     <td>{{ row.content }}</td>
                                     <td>
                                         <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                                        <router-link :to="'dns/delete/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
+                                        <a href="#" @click.prevent="deleteDomain" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></a>
                                     </td>
                                 </tr>
                               </tbody>
