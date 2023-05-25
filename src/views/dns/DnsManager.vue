@@ -48,15 +48,67 @@ const filteredData = computed(() => {
     }
 })
 
+const domainId = ref(0);
 const domain = ref('');
 const ip = ref('');
 
 async function addDomain(event) {
-    console.log(event);
+    let response;
+    try {
+        fetchWrapper.post(baseUrl + '/dns', {
+            domain: domain.value,
+            ip: ip.value
+        }).then(response => {
+            console.log('api success');
+            console.log(response);
+            loadDns(data)
+            Swal.fire({
+              icon: 'success',
+              html: response.message
+            });
+        });
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+    }
 }
 
 async function deleteDomain(event) {
-    console.log(event);
+    domainId.value = event.target.getAttribute("data-id");
+    console.log(domainId.value);
+    Swal.fire({
+        icon: "error",
+        title: "<h3>Delete Domain</h3> ",
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: "Yes, Delete it.",
+        html: "<p>Are you sure want to delete your domain?</p>",
+        preConfirm: () => {
+            console.log("got to this plce fro deleteDomain preConfirm");
+            try {
+                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then(response => {
+                    console.log('api success');
+                    console.log(response);
+                    loadDns(data)
+                    Swal.fire({
+                      icon: 'success',
+                      html: response.message
+                    });
+                });
+            } catch (error) {
+                console.log('api failed');
+                console.log(error);
+                Swal.fire({
+                  icon: 'error',
+                  html: 'Got error '+error.message
+                });
+            }
+        }
+    });
 }
 
 onMounted(function () {
@@ -167,7 +219,7 @@ loadDns(data)
                                     <td>{{ row.content }}</td>
                                     <td>
                                         <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                                        <a href="#" @click.prevent="deleteDomain" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></a>
+                                        <a href="#" @click.prevent="deleteDomain" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                                     </td>
                                 </tr>
                               </tbody>
