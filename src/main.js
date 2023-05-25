@@ -31,8 +31,6 @@ import 'tempusdominus-bootstrap-4';
 //import 'summernote/dist/summernote-bs4.min.js';
 import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 import 'overlayscrollbars/js/jquery.overlayScrollbars.min.js';
-import 'jsgrid/dist/jsgrid.min.css';
-import 'jsgrid/dist/jsgrid.min.js';
 import 'select2/dist/css/select2.min.css';
 import 'select2/dist/js/select2.min.js';
 import 'tablesorter/dist/css/theme.bootstrap.min.css';

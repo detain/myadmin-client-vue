@@ -120,8 +120,6 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 @import 'daterangepicker/daterangepicker.css';
 @import 'summernote/dist/summernote-bs4.min.css';
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
-@import 'jsgrid/dist/jsgrid.min.css';
-@import 'jsgrid/dist/jsgrid-theme.min.css';
 @import '/templates/adminlte/custom_styles.css';
 @import '/templates/adminlte/jquery.passwordRequirements.css';
 @import '/templates/my/style.css?202211190107';
