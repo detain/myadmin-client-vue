@@ -23,7 +23,7 @@ export default defineConfig({
       resolvers: [
       ],
       dirs: [
-        './composables/**',
+        './composables/'+'**',
       ],
       vueTemplate: true,
       cache: true,
@@ -34,15 +34,15 @@ export default defineConfig({
     })
   ],
   optimizeDeps: {
-      //disabled: false,
+      disabled: false,
       include: ["jquery"],
 /*      esbuildOptions: {
         plugins: [globalExternals({ jquery: { type: "cjs", varName: "jQuery" } })]
       }*/
   },
-  //build: {
-      //commonjsOptions: { include: [] }
-  //},
+  build: {
+      commonjsOptions: { include: [] }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
