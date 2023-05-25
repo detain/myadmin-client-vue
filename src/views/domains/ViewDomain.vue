@@ -46,7 +46,7 @@ domainStore.getById(id)
                         billed <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                     <p>
-                        Expire Date: <b>{{ allInfo.attributes.expiredate }}</b>
+                        Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? allInfo.attributes.expiredate : serviceInfo.domain_expire_date }}</b>
                     </p>
                 </div>
                 <div class="icon">
@@ -88,7 +88,7 @@ domainStore.getById(id)
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6">
+        <div v-if="allInfo.attributes" class="col-12 col-sm-6 col-md-6">
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
