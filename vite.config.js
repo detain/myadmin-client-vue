@@ -1,20 +1,27 @@
 import { defineConfig } from 'vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import { splitVendorChunkPlugin } from 'vite'
-//import Inspect from 'vite-plugin-inspect'
 import vue from '@vitejs/plugin-vue'
+import Inspect from 'vite-plugin-inspect'
+import Inspector from 'vite-plugin-vue-inspector'
+//import Inspector from 'unplugin-vue-inspector/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import progress from 'vite-plugin-progress'
 import i18nResources from "vite-plugin-i18n-resources"
 import { resolve } from "path"
 import { fileURLToPath, URL } from 'node:url'
 import inject from '@rollup/plugin-inject';
+import { VitePWA } from 'vite-plugin-pwa'
 //import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 
 // https://vitejs.dev/config/
 export default defineConfig({
     base: process.env.ELECTRON=="true" ? './' : "/",
   plugins: [
+    VueDevTools(),
     vue(),
-    //Inspect(),
+    Inspect(),
+    Inspector(),
     inject({
         jQuery: 'jquery',
     }),
@@ -29,6 +36,8 @@ export default defineConfig({
       cache: true,
     }),
     splitVendorChunkPlugin(),
+    VitePWA({ registerType: 'autoUpdate' }),
+    progress(),
     i18nResources({
       path: resolve(__dirname, "src/locales"),
     })
