@@ -118,7 +118,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 @import 'select2-bootstrap-theme/dist/select2-bootstrap.min.css';
 @import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 @import 'daterangepicker/daterangepicker.css';
-@import 'summernote/dist/summernote-bs4.min.css';
+//@import 'summernote/dist/summernote-bs4.min.css';
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 @import '/templates/adminlte/custom_styles.css';
 @import '/templates/adminlte/jquery.passwordRequirements.css';
