@@ -10,10 +10,15 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useRoute } from 'vue-router';
-
-const baseUrl = import.meta.env.VITE_API_URL;
+import { useLayoutStore } from '@/stores';
 const route = useRoute();
 const id = route.params.id;
+const layoutStore = useLayoutStore();
+layoutStore.setPageHeading('DNS Editor');
+layoutStore.setTitle('DNS Editor');
+layoutStore.setBreadcrums({ '/home': 'Home', '/dns': 'DNS Manager'});
+layoutStore.addBreadcrum("/dns/"+id, 'DNS Editor');
+const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/
 
