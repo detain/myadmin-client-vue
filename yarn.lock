@@ -1667,7 +1667,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@20.1.1", "@types/node@^10.3.6", "@types/node@^18.11.18":
+"@types/node@*", "@types/node@20.1.1", "@types/node@^18.11.18":
   version "20.1.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.1.tgz#afc492e8dbe7f672dd3a13674823522b467a45ad"
   integrity sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==
@@ -5559,13 +5559,6 @@ randombytes@^2.1.0:
   dependencies:
     eve-raphael "0.5.0"
 
-rd@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rd/-/rd-2.0.1.tgz#e18a8af5b2f7440c0db1523ca04c6e0f9660003f"
-  integrity sha512-/XdKU4UazUZTXFmI0dpABt8jSXPWcEyaGdk340KdHnsEOdkTctlX23aAK7ChQDn39YGNlAJr1M5uvaKt4QnpNw==
-  dependencies:
-    "@types/node" "^10.3.6"
-
 react-query@^3.39.0:
   version "3.39.3"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.3.tgz#4cea7127c6c26bdea2de5fb63e51044330b03f35"
@@ -6648,15 +6641,6 @@ vite-plugin-inspect@*, vite-plugin-inspect@^0.7.26:
     open "^9.1.0"
     picocolors "^1.0.0"
     sirv "^2.0.3"
-
-vite-plugin-progress@*:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/vite-plugin-progress/-/vite-plugin-progress-0.0.7.tgz#10979d2195b4dd1960ad0ec9347ce844fc13b97d"
-  integrity sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==
-  dependencies:
-    picocolors "^1.0.0"
-    progress "^2.0.3"
-    rd "^2.0.1"
 
 vite-plugin-pwa@*:
   version "0.15.1"

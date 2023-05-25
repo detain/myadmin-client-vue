@@ -6,7 +6,6 @@ import Inspect from 'vite-plugin-inspect'
 import Inspector from 'vite-plugin-vue-inspector'
 //import Inspector from 'unplugin-vue-inspector/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import progress from 'vite-plugin-progress'
 import i18nResources from "vite-plugin-i18n-resources"
 import { resolve } from "path"
 import { fileURLToPath, URL } from 'node:url'
@@ -37,7 +36,6 @@ export default defineConfig({
     }),
     splitVendorChunkPlugin(),
     VitePWA({ registerType: 'autoUpdate' }),
-    progress(),
     i18nResources({
       path: resolve(__dirname, "src/locales"),
     })

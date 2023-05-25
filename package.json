@@ -125,7 +125,6 @@
     "vite": "*",
     "vite-plugin-i18n-resources": "*",
     "vite-plugin-inspect": "*",
-    "vite-plugin-progress": "*",
     "vite-plugin-pwa": "*",
     "vite-plugin-vue-devtools": "*",
     "vite-plugin-vue-inspector": "*",
