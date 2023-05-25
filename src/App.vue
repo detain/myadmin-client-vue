@@ -102,7 +102,7 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
 @import 'jquery-ui/dist/themes/smoothness/jquery-ui.min.css';
 @import '/css/misha-theme/jquery-ui.css';
-@import 'jquery-simple-pass-meter/simplePassMeter.css';
+//@import 'jquery-simple-pass-meter/simplePassMeter.css';
 @import '/css/jquery.custom.css';
 @import '/css/home_new.css?20180104';
 @import '/css/home.css';
@@ -125,9 +125,9 @@ const { breadcrums, page_heading } = storeToRefs(layoutStore);
 @import '/templates/my/style.css?202211190107';
 @import '/templates/my/style2.css';
 @import '/css/view_service.css';
-@import 'tablesorter/dist/css/theme.jui.min.css';
-@import 'tablesorter/dist/css/theme.blue.min.css';
-@import 'tablesorter/dist/css/jquery.tablesorter.pager.min.css';
+//@import 'tablesorter/dist/css/theme.jui.min.css';
+//@import 'tablesorter/dist/css/theme.blue.min.css';
+//@import 'tablesorter/dist/css/jquery.tablesorter.pager.min.css';
 @import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';*/
 /*@import '@/assets/base.css';*/
 </style>
