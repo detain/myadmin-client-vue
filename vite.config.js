@@ -30,6 +30,7 @@ export default defineConfig({
       ],
       dirs: [
         './composables/'+'**',
+        './views/'+'**'
       ],
       vueTemplate: true,
       cache: true,
