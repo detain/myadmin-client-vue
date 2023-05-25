@@ -44,6 +44,8 @@ const options = {
   responsive: true,
 };
 
+const recordTypes = ref(['A', 'A6', 'AAAA', 'AFSDB', 'ALIAS', 'CAA', 'CDNSKEY', 'CDS', 'CERT', 'CNAME', 'DHCID', 'DLV', 'DNSKEY', 'DNAME', 'DS', 'EUI48', 'EUI64', 'HINFO', 'IPSECKEY', 'KEY', 'KX', 'LOC', 'MAILA', 'MAILB', 'MINFO', 'MR', 'MX', 'NAPTR', 'NS', 'NSEC', 'NSEC3', 'NSEC3PARAM', 'OPENPGPKEY', 'OPT', 'PTR', 'RKEY', 'RP', 'RRSIG', 'SIG', 'SOA', 'SPF', 'SRV', 'SSHFP', 'TLSA', 'TKEY', 'TSIG', 'TXT', 'WKS', 'URI']);
+
 const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
       return data.value;
@@ -51,6 +53,31 @@ const filteredData = computed(() => {
       return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.backup_status));
     }
 })
+
+const recordId = ref(0);
+const recordRow = ref({});
+
+function cancelEditRecord(event) {
+    recordId.value = 0;
+}
+
+function editRecord(event) {
+    recordId.value = event.target.getAttribute("data-id");
+    var row, rowIdx;
+    for (rowIdx in data.value) {
+        console.log(data.value);
+        row = data.value[rowIdx];
+        console.log(row);
+        if (row.id == recordId.value) {
+            recordRow.value = row;
+        }
+    }
+}
+
+function deleteRecord(event) {
+    var record = event.target.getAttribute("data-id");
+
+}
 
 onMounted(function () {
   dt = table.value.dt;
@@ -142,16 +169,39 @@ loadDns(id, data)
                     </td>
                 </tr>
                 <tr v-for="(row, rowIndex) in data" :key="rowIndex">
-                    <td>{{ row.id }}</td>
-                    <td>{{ row.name }}</td>
-                    <td>{{ row.type }}</td>
-                    <td>{{ row.content }}</td>
-                    <td>{{ row.prio }}</td>
-                    <td>{{ row.ttl }}</td>
-                    <td>
-                        <router-link :to="'dns_editor?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                        <router-link :to="'dns_delete?id=' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash"></i></router-link>
-                    </td>
+                    <template v-if="recordId == row.id">
+                        <td>{{ recordRow.id }}</td>
+                        <td>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="recordRow.name">
+                                <input class="form-control form-control-sm" value="" disabled="" readonly="">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control " style="width:100% !important;" v-model="recordRow.type">
+                                <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="recordRow.content"></td>
+                        <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="recordRow.prio"></td>
+                        <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="recordRow.ttl"></td>
+                        <td>
+                            <a href="#" @click.prevent="updateRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
+                            <a href="#" @click.prevent="cancelEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>
+                        </td>
+                    </template>
+                    <template v-else>
+                        <td>{{ row.id }}</td>
+                        <td>{{ row.name }}</td>
+                        <td>{{ row.type }}</td>
+                        <td>{{ row.content }}</td>
+                        <td>{{ row.prio }}</td>
+                        <td>{{ row.ttl }}</td>
+                        <td>
+                            <a href="#" @click.prevent="editRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog" :data-id="row.id"></i></a>
+                            <a href="#" @click.prevent="deleteRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
+                        </td>
+                    </template>
                 </tr>
             </tbody>
         </table>
