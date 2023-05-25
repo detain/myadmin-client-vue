@@ -21,7 +21,7 @@ import 'bootstrap';
 //import '/templates/adminlte/js/jquery.passwordRequirements.js';
 /*
 import Swal from 'sweetalert2';
-import toastr from 'toastr';
+//import toastr from 'toastr';
 import 'datatables.net';
 import 'datatables.net-bs4';
 import moment from 'moment';
