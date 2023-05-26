@@ -15,5 +15,4 @@ export * from './ssl.store';
 export * from './tickets.store';
 export * from './users.store';
 export * from './vps.store';
-export * from './vps_order.store';
 export * from './website.store';

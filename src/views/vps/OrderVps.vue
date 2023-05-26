@@ -3,30 +3,16 @@ import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue'
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useVpsOrderStore } from '@/stores';
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order VPS');
 layoutStore.setTitle('Order VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS'});
-const vpsOrderStore = useVpsOrderStore();
-const { maxSlices, hdStorageSlice, cpanelCost, daCost, bwType, bwTotal, bwSlice, hdSlice, ramSlice, platformPackages, platformNames, packageCosts, locationStock, osNames, locationNames, templates } = storeToRefs(vpsOrderStore);
-const getOsVersions = computed(() => {
-    console.log("Platform: "+platform.value);
-    console.log("Os: "+templateOs.value);
-   return templates.value[platform.value][templateOs.value];
-});
-const serviceType = ref(null);
-const slicesRange = computed(() => {
-    const arr = []
-    for (let i = 1; i <= maxSlices.value; i++) {
-        arr.push(i)
-    }
-    return arr
-})
+const baseUrl = import.meta.env.VITE_API_URL;
 const billingCycle = ref({
     1: "Monthly",
     3: "3 Months",
@@ -39,6 +25,51 @@ const controlpanel = ref({
     none: "None",
     da: "DirectAdmin",
     cpanel: "CPanel"
+});
+const maxSlices = ref(16);
+const hdStorageSlice = ref(1000);
+const cpanelCost = ref(20);
+const daCost = ref(8);
+const bwType = ref(2);
+const bwTotal = ref(2);
+const bwSlice = ref(2000);
+const hdSlice = ref(30);
+const ramSlice = ref(2048);
+const platformPackages = ref({
+    kvm: 32,
+    kvmstorage: 57,
+    hyperv: 54
+});
+const platformNames = ref({
+    kvm: "KVM",
+    kvmstorage: "KVM Storage",
+    hyperv: "HyperV"
+});
+const packageCosts = ref({
+    32: 10,
+    54: 10,
+    57: 6
+});
+const locationStock = ref({
+    1: { kvm: true, kvmstorage: true, hyperv: true },
+    2: { kvm: true, kvmstorage: false, hyperv: true },
+    3: { kvm: false, kvmstorage: false, hyperv: false }
+});
+const locationNames = ref({
+    1: "New Jersey",
+    2: "Los Angeles",
+    3: "Equinix NY4"
+});
+const osNames = ref({
+    windows: "Windows",
+    almalinux: "Almalinux"
+});
+const templates = ref({
+    hyperv: {
+        windows: { Windows2019Standard: "2019 Standard", Windows2022: "2022" }
+    },
+    kvm: {},
+    kvmstorage: {}
 });
 const slices = ref(1);
 const platform = ref('kvm');
@@ -62,7 +93,19 @@ const controlCost = ref(0);
 const couponInfo = ref(0);
 const last_coupon = ref("");
 const sliceCost = ref(0);
-
+const getOsVersions = computed(() => {
+    console.log("Platform: "+platform.value);
+    console.log("Os: "+templateOs.value);
+   return templates.value[platform.value][templateOs.value];
+});
+const serviceType = ref(null);
+const slicesRange = computed(() => {
+    const arr = []
+    for (let i = 1; i <= maxSlices.value; i++) {
+        arr.push(i)
+    }
+    return arr
+})
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
@@ -762,9 +805,31 @@ function update_hostname() {
     $("#hostname_display").text($('input[name="hostname"]').val());
 }
 
+try {
+    fetchWrapper.get(baseUrl + '/vps/order').then(response => {
+        maxSlices.value = response.maxSlices;
+        hdStorageSlice.value = response.hdStorageSlice;
+        cpanelCost.value = response.cpanelCost;
+        daCost.value = response.daCost;
+        bwType.value = response.bwType;
+        bwTotal.value = response.bwTotal;
+        bwSlice.value = response.bwSlice;
+        hdSlice.value = response.hdSlice;
+        ramSlice.value = response.ramSlice;
+        platformPackages.value = response.platformPackages;
+        platformNames.value = response.platformNames;
+        packageCosts.value = response.packageCosts;
+        locationStock.value = response.locationStock;
+        locationNames.value = response.locationNames;
+        osNames.value = response.osNames;
+        locationNames.value = response.locationNames;
+        templates.value = response.templates;
+    });
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
 
-
-vpsOrderStore.load();
 </script>
 
 <template>

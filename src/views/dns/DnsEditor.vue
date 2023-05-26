@@ -65,9 +65,7 @@ function editRecord(event) {
     recordId.value = event.target.getAttribute("data-id");
     var row, rowIdx;
     for (rowIdx in data.value) {
-        console.log(data.value);
         row = data.value[rowIdx];
-        console.log(row);
         if (row.id == recordId.value) {
             recordRow.value = row;
         }
