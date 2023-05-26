@@ -2,7 +2,6 @@
 import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useMailOrderStore } from '@/stores';
 import Swal from 'sweetalert2';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
@@ -10,14 +9,14 @@ layoutStore.setPageHeading('Order Mail');
 layoutStore.setTitle('Order Mail');
 layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail'});
 const baseUrl = import.meta.env.VITE_API_URL;
-const mailOrderStore = useMailOrderStore();
-const { packageCosts, serviceTypes } = storeToRefs(mailOrderStore);
 const step = ref("orderform");
 const coupon = ref("");
 const csrfToken = ref("");
 const pkg = ref(10880);
 const validateResponse = ref({});
 const tos = ref(false);
+const packageCosts = ref({});
+const serviceTypes = ref({});
 
 async function editForm() {
     step.value = 'orderform';
@@ -65,7 +64,15 @@ async function placeOrder(values) {
     });
 }
 
-mailOrderStore.load();
+try {
+    fetchWrapper.get(baseUrl + '/mail/order').then(response => {
+        packageCosts.value = response.packageCosts;
+        serviceTypes.value = response.serviceTypes;
+    });
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
 </script>
 
 <template>
