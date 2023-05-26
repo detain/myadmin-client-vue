@@ -26,6 +26,7 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
+const serviceTypes = ref([]);
 const maxSlices = ref(16);
 const hdStorageSlice = ref(1000);
 const cpanelCost = ref(20);
@@ -824,6 +825,7 @@ try {
         osNames.value = response.osNames;
         locationNames.value = response.locationNames;
         templates.value = response.templates;
+        serviceTypes.value = response.serviceTypes;
     });
 } catch (error) {
     console.log("error:");
@@ -896,7 +898,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="os">
+                                    <select class="form-control select2" v-model="version">
                                         <option v-for="(templateVersion, templateFile) in getOsVersions" :key="templateFile" :value="templateFile">{{ templateVersion }}</option>
                                     </select>
                                 </div>
@@ -945,7 +947,7 @@ try {
                             </div>
                             <div class="card-body pb-0">
                                 <div class="row mb-3">
-                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ packageName }}</div>
+                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[platform] && serviceTypes && serviceTypes[platformPackages[platform]] ? serviceTypes[platformPackages[platform]].services_name : '' }}</div>
                                     <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
                                 </div>
                                 <div class="row mb-3">
