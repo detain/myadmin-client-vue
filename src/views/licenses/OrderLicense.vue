@@ -209,7 +209,7 @@ const csrfToken = ref("");
                     <div class="card-body">
                         <form method="post" ref="editOrderForm" @submit.prevent="submitEditOrderForm">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(fieldValue, field) in orderData" :key="field" v-if="field !== 'Submit'" :id="field" type="hidden" :name="field" :value="fieldValue" />
+                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
                         </form>
                         <form method="post" class="license_form_confirm" ref="licenseForm" @submit.prevent="submitLicenseForm">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />

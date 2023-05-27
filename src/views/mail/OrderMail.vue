@@ -99,9 +99,7 @@ try {
                                 </label>
                                 <div class="col-sm-9">
                                     <select v-model="pkg" class="form-control form-control-sm select2 valid" >
-                                        <option v-for="serviceType in serviceTypes" :value="serviceType.services_id">
-                                            {{ serviceType.services_name }}
-                                        </option>
+                                        <option v-for="(serviceType, index) in serviceTypes" :key="index" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
                                     </select>
                                 </div>
                             </div>

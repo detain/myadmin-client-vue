@@ -100,7 +100,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                 <label class="col-md-3 col-form-label">Operating System</label>
                                 <div class="form-group input-group col-md-9">
                                     <select id="distro" name="distro" class="form-control form-control-sm select2" @change="vpsUpdate">
-                                        <option v-for="(d2, d1) in distroSel" :value="d1">{{ d2 }}</option>
+                                        <option v-for="(d2, d1, index) in distroSel" :key="index" :value="d1">{{ d2 }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                 <label class="col-md-3 col-form-label">Version</label>
                                 <div class="input-group col-md-9">
                                     <select id="os" name="os" class="form-control form-control-sm select2">
-                                        <option v-for="(v1, val) in version" :value="val">{{ v1 }}</option>
+                                        <option v-for="(v1, val, index) in version" :key="index" :value="val">{{ v1 }}</option>
                                     </select>
                                 </div>
                             </div>

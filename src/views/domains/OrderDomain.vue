@@ -246,7 +246,7 @@ async function searchDomain() {
                                 <div class="col-sm-9 input-group">
                                     <input v-if="domainFields[field].input === 'text'" type="text" :name="field" class="form-control" :value="domainFields[field].value" :tabindex="++tabindex" />
                                     <select v-else-if="domainFields[field].input && domainFields[field].input[0] === 'select'" :name="field" :tabindex="++tabindex" class="form-control select2">
-                                        <option v-for="(displayName, val) in domainFields[field].input[1]" :value="val" :selected="domainFields[field].value === val">{{ displayName }}</option>
+                                        <option v-for="(displayName, val, index) in domainFields[field].input[1]" :key="index" :value="val" :selected="domainFields[field].value === val">{{ displayName }}</option>
                                     </select>
                                     <div v-if="domainFields[field].tip" class="input-group-append">
                                         <span style="cursor: pointer;" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainFields[field].tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainFields[field].label + '</div>'">
@@ -305,7 +305,7 @@ async function searchDomain() {
             </div>
         </div>
     </template>
-    <template v-else-if="display == 'step2'">
+    <template v-else-if="display == 'step3'">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
@@ -324,8 +324,8 @@ async function searchDomain() {
                     <div class="card-body">
                         <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult.status === 'available' ? 'register' : domainResult.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <template v-for="(field_value, field) in final_post">
-                                <input type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
+                            <template v-for="(field_value, field, index) in final_post">
+                                <input :key="index" type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
                             </template>
                         </form>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname + (ima === 'admin' ? '&custid=' + custid : '')">

@@ -150,13 +150,15 @@ licenseStore.getById(id)
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <template v-for="clientLink in clientLinks">
-                    <a :key="clientLink.label" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-if="clientLink.other_attr" :other_attr="clientLink.other_attr">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
-                    </a>
-                    <a v-else :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" class="btn btn-app mb-3">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
-                    </a>
+                    <template v-for="(clientLink, index) in clientLinks">
+                        <a v-if="clientLink.other_attr" :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" :other_attr="clientLink.other_attr">
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                        </a>
+                    </template>
+                    <template v-for="(clientLink, index) in clientLinks">
+                        <a v-if="!clientLink.other_attr" :key="index" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" class="btn btn-app mb-3">
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                        </a>
                     </template>
                 </div>
             </div>
