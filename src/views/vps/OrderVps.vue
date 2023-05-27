@@ -118,24 +118,6 @@ const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
 
-onMounted(() => {
-    update_coupon();
-    update_vps_choices();
-    if (jQuery(window).width() > 1720) {
-        jQuery('.buy_vps_container').css('width', '730px');
-    }
-    $("select[name='platform']").on('change', '', function () {
-        if ($(this).val() == 'kvm' || $(this).val() == 'hyperv') {
-            //slice_warning();
-        } else {
-            $('#update_msg').html('');
-        }
-    });
-    $("select[name='slices']").on('change', '', function () {
-        //slice_warning();
-    });
-});
-
 function update_coupon() {
     var coupon_text = document.getElementById("coupon").value;
     if (last_coupon.value != coupon_text) {
@@ -174,8 +156,6 @@ function edit_form() {
 }
 
 function update_vps_choices() {
-    /*
-
     if (curControl.value != jQuery("select[name=controlpanel]").val()) {
         curControl.value = jQuery("select[name=controlpanel]").val();
         if (curControl.value == "cpanel") {
@@ -186,15 +166,7 @@ function update_vps_choices() {
             controlCost.value = 0;
         }
     }
-    if (period.value != jQuery("#period").val()) {
-        period.value = Number(jQuery("#period").val());
-    }
-    if (location.value != jQuery("select[name=location]").val()) {
-        location.value = Number(jQuery("select[name=location]").val());
-    }
     if (templateOs.value != jQuery("select[name=version]").val()) {
-        templateOs.value = jQuery("select[name=version]").val();
-        jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
         jQuery("select[name=vpsos]").parent().find("span>span").html(jQuery("select[name=vpsos] > option[selected]").html())
     }
     if (curSsd.value != jQuery("select[name=ssd]").val()) {
@@ -266,8 +238,8 @@ function update_vps_choices() {
         sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
-        jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
-        jQuery("#controlpanelcostnew").text(currencySymbol + controlCost.value);
+        jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
+        jQuery("#controlpanelcostnew").text(currencySymbol.value + controlCost.value);
         jQuery("#controlpanelpricerownew").show();
     }
     else {
@@ -275,8 +247,8 @@ function update_vps_choices() {
         jQuery("#controlpanelcostnew").text("");
         jQuery("#controlpanelpricerownew").hide();
     }
-    jQuery("#slicecost").text(currencySymbol + sliceCost.value + " Per Slice");
-    jQuery("#slicecosttb").text(currencySymbol + sliceCost.value);
+    jQuery("#slicecost").text(currencySymbol.value + sliceCost.value + " Per Slice");
+    jQuery("#slicecosttb").text(currencySymbol.value + sliceCost.value);
     // later month slice costs
     var service_cost = sliceCost.value;
     // first month slice cost
@@ -288,15 +260,15 @@ function update_vps_choices() {
         if (couponInfo.value.type == 3) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
-            jQuery("#slicecost").html("<del style=\"color: red;\">" + currencySymbol + sliceCost.value + "</del> Per Slice");
+            jQuery("#slicecost").html("<del style=\"color: red;\">" + currencySymbol.value + sliceCost.value + "</del> Per Slice");
             couponpricetext = "Price";
-            jQuery("#couponprice").html(currencySymbol + couponInfo.value.amount + " per slice");
+            jQuery("#couponprice").html(currencySymbol.value + couponInfo.value.amount + " per slice");
             jQuery("#couponpricenew").val(couponInfo.value.amount + " per slice");
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
-            jQuery("#couponprice").text("-" + currencySymbol + couponInfo.value.amount);
+            jQuery("#couponprice").text("-" + currencySymbol.value + couponInfo.value.amount);
             couponpricetext = "Discount";
             jQuery("#couponpricenew").val("-(" + couponInfo.value.amount + ")");
             first_slice = first_slice - Number(couponInfo.value.amount);
@@ -381,17 +353,13 @@ function update_vps_choices() {
         total_cost = total_cost + (controlCost.value * period.value);
     }
     total_cost = total_cost.toFixed(2);
-    jQuery("#totalcost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
-        .format(parseFloat(total_cost).toFixed(2)));
-    jQuery(".totalcost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
-        .format(parseFloat(total_cost).toFixed(2)));
+    jQuery("#totalcost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
+    jQuery(".totalcost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
     jQuery("#totalcostnew").val(total_cost);
     jQuery("#total_cost_displa").val(total_cost);
     if ($("#package_name").length > 0 && typeof packages != 'undefined') {
         $("#package_name").text(packages[get_package_id()]);
     }
-    slice_warning();
-    */
 }
 
 
@@ -410,12 +378,6 @@ function update_vps_choices_order() {
         } else {
             controlCost.value = 0;
         }
-    }
-    if (period.value != jQuery("#period").val()) {
-        period.value = Number(jQuery("#period").val());
-    }
-    if (location.value != jQuery("#location").val()) {
-        location.value = Number(jQuery("#location").val());
     }
     if (curSsd.value != jQuery("#ssd").val()) {
         curSsd.value = jQuery("#ssd").val();
@@ -586,33 +548,23 @@ function update_vps_choices_order() {
     jQuery("#totalcost11").text(currencySymbol.value + total_cost);
     jQuery("#totalcostnew").val(total_cost);
     if ($("#total_cost_display").length > 0) {
-        $("#total_cost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
-            .format(parseFloat(total_cost).toFixed(2)));
+        $("#total_cost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
     }
     $(document).ready(function () {
         if ($("#renew_cost").length > 0) {
-            $("#renew_cost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency })
-                .format(parseFloat(slices.value * sliceCost.value).toFixed(2)));
+            $("#renew_cost").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(slices.value * sliceCost.value).toFixed(2)));
         }
     })
 
 
 }
 
-
 function recomended_linux() {
     platform.value = "kvm";
     templateOs.value = "ubuntu";
     slices.value = "1";
     curControl.value = "none";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
-    jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -626,14 +578,7 @@ function recomended_cpanel() {
     templateOs.value = "centos";
     slices.value = "2";
     curControl.value = "cpanel";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=vpsos]").val("centos-7-x86_64-cpanel");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = cpanelCost.value;
-    jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -647,15 +592,7 @@ function recomended_directadmin() {
     templateOs.value = "almalinux";
     slices.value = "4";
     curControl.value = "da";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=vpsos]").val("da");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = daCost.value;
-    jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -669,15 +606,7 @@ function recomended_windows() {
     templateOs.value = "windows";
     slices.value = "2";
     curControl.value = "none";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=vpsos]").val("Windows2022");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
-    jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -691,15 +620,7 @@ function recomended_linux_desktop() {
     templateOs.value = "ubuntu";
     slices.value = "2";
     curControl.value = "none";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=vpsos]").val("ubuntudesktop");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
-    jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
         if ("select[name=" + inp_name + "].select2".length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
@@ -713,32 +634,13 @@ function recomended_webuzo() {
     templateOs.value = "centos";
     slices.value = "1";
     curControl.value = "none";
-    jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
-    jQuery("select[name=version]").val(templateOs.value);
-    jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
-    jQuery("select[name=vpsos]").val("centos-7-x86_64-breadbasket");
-    jQuery("select[name=controlpanel]").val(curControl.value);
     controlCost.value = 0;
-    jQuery("#controlpanelcost").text("");
     $.each(['platform', 'slices'], function (index, inp_name) {
         if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
             jQuery("select[name=" + inp_name + "]").select2().trigger('change');
         }
     });
     update_vps_choices();
-}
-
-function slice_warning() {
-    slices.value = $("select[name='slices']").val();
-    platform.value = $("select[name=version]").val();
-    if (slices.value == 1 && platform.value == 'windows') {
-        //$('#update_msg').html('<div class="alert alert-warning" role="alert"><strong>Warning!</strong> running windows on only 1GB memory is not recommended. The minimum requirement for Windows Server is 4GB of ram</div>');
-        $('#update_msg').html('');
-    } else {
-        $('#update_msg').html('');
-    }
 }
 
 function get_package_id() {
@@ -779,9 +681,11 @@ function get_package_id() {
     return serviceType.value;
 }
 
-function update_hostname() {
-    $("#hostname_display").text($('input[name="hostname"]').val());
-}
+onMounted(() => {
+    if (jQuery(window).width() > 1720) {
+        jQuery('.buy_vps_container').css('width', '730px');
+    }
+});
 
 try {
     fetchWrapper.get(baseUrl + '/vps/order').then(response => {
@@ -817,6 +721,8 @@ try {
         vpsSliceKvmWCost.value = response.vpsSliceKvmWCost;
         currency.value = response.currency;
         currencySymbol.value = response.currencySymbol;
+        update_coupon();
+        update_vps_choices();
     });
 } catch (error) {
     console.log("error:");
