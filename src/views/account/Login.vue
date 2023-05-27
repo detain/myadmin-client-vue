@@ -139,21 +139,18 @@ onMounted(function () {
             } else {
                 $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
             }
-
             //validate letter
             if (pswd.match(/[a-z]/)) {
                 $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
             } else {
                 $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1')
             }
-
             //validate capital letter
             if (pswd.match(/[A-Z]/)) {
                 $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
             } else {
                 $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1')
             }
-
             //validate number
             if (pswd.match(/\d/)) {
                 $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
@@ -165,7 +162,6 @@ onMounted(function () {
             } else {
                 $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1')
             }
-
         }).focus(function () {
             $('#pswd_info').show();
         }).blur(function () {
@@ -412,37 +408,23 @@ function signup_handler(e) {
     var errors = "";
     var i;
     for (i = 0, n = items.length; i < n; i++) {
-        if (
-            items[i].name != "remember" &&
-            items[i].name != "email_confirmation" &&
-            items[i].name != "captcha" &&
-            items[i].value == ""
-        ) {
+        if (items[i].name != "remember" && items[i].name != "email_confirmation" && items[i].name != "captcha" && items[i].value == "") {
             if (items[i].name == "login_id") {
-                errors =
-                    errors + "<strong>Error!</strong> Please enter an email address<br>";
+                errors = errors + "<strong>Error!</strong> Please enter an email address<br>";
             } else if (items[i].name == "passwd" || items[i].name == "password") {
                 errors = errors + "<strong>Error!</strong> Please enter a password<br>";
             } else if (items[i].name == "giftcard_number") {
-                errors =
-                    errors + "<strong>Error!</strong> Please enter a giftcard number<br>";
+                errors = errors + "<strong>Error!</strong> Please enter a giftcard number<br>";
             } else if (items[i].name == "2fa_code") {
-            } else if (
-                items[i].name == "captcha" ||
-                items[i].name == "g-recaptcha-response"
-            ) {
+                // do something
+            } else if (items[i].name == "captcha" || items[i].name == "g-recaptcha-response") {
+                // do something
             } else {
-                errors =
-                    errors +     "<strong>Error!</strong> Please enter a " +     items[i].name +     " (got a blank value)<br>";
+                errors =errors + "<strong>Error!</strong> Please enter a " + items[i].name + " (got a blank value)<br>";
             }
         }
-        if (
-            items[i].value != "" &&
-            items[i].name != "captcha" &&
-            items[i].name != "g-recaptcha-response"
-        ) {
-            data_string =
-                data_string + "&" + items[i].name + "=" + encodeURIComponent(items[i].value);
+        if (items[i].value != "" && items[i].name != "captcha" && items[i].name != "g-recaptcha-response") {
+            data_string = data_string + "&" + items[i].name + "=" + encodeURIComponent(items[i].value);
         }
     }
     if (errors != "") {
@@ -452,8 +434,7 @@ function signup_handler(e) {
         })
     } else {
         if (email_conf == "") {
-            data_string =
-                data_string + "&captcha=" + encodeURIComponent(captchaSignup) + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget2));
+            data_string = data_string + "&captcha=" + encodeURIComponent(captchaSignup) + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget2));
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -851,7 +832,7 @@ authStore.load();
                 </div>
                 <div class="text-center text-gray-600 sign-up-txt signup pb-5" v-show="isLogin">Don't have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
                 <div class="text-center text-gray-600 sign-up-txt pb-5" v-show="!isLogin">Already have an account? <a class="sign-up font-bold text-sm text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
-                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy {{ new Date().getFullYear() }} - All Rights Reserved.</div>
+                <div class="p-1 text-gray-500 text-sm text-center">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
     </div>
@@ -869,7 +850,7 @@ authStore.load();
                 </div>
                 <!--body-->
                 <div class="relative p-6 flex-auto">
-                    <p class="my-4 text-gray-600 text-lg leading-relaxed h-64 modal-content overflow-y-auto">
+                    <div class="my-4 text-gray-600 text-lg leading-relaxed h-64 modal-content overflow-y-auto">
                         <div class="modal-body text-black">
                             <div class="container clear" style="display: inline;">
                                 <div class="other_main">
@@ -994,9 +975,7 @@ authStore.load();
                                 <div class="clear"></div>
                             </div>
                         </div>
-
-
-                    </p>
+                    </div>
                 </div>
                 <!--footer-->
                 <div class="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">

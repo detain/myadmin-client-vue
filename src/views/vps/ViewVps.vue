@@ -494,7 +494,7 @@ function toggleFunc(cp) {
                                             <div class="col-md-12 py-3 mb-1">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -508,7 +508,7 @@ function toggleFunc(cp) {
                                             <div class="col-md-12 py-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost | numberFormat(2) }}/mo</b></span>
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
                                                     <p class="text-sm m-0"><span style="font-size: 12px;" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>

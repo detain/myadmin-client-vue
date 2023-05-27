@@ -288,7 +288,7 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                                                                     </template>
                                                                     <span class="ml-2 text-bold text-sm">{{ details.short_desc }}</span>
                                                                     <template v-if="inputName === 'hd_li'">
-                                                                        <span class="ml-2 badge bg-info">{{ details.drive_type | upper }}</span>
+                                                                        <span class="ml-2 badge bg-info">{{ details.drive_type }}</span>
                                                                     </template>
                                                                 </div>
                                                             </div>
