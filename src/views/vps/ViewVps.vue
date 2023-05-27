@@ -4,22 +4,20 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { ReverseDns } from '@/components/vps';
 import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
-const link = ref(route.params.link);
-console.log(route.params);
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View VPS');
 layoutStore.setTitle('View VPS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
-
 vpsStore.getById(id)
-console.log(link.value);
 if (link.value == 'start') {
     layoutStore.addBreadcrum('/vps/'+id+'/start', 'Start');
     vpsStore.start(id);
@@ -167,9 +165,10 @@ function toggleFunc(cp) {
         </div>
     </div>
     <div v-if="link" class="row">
-        <div class="col">
-            {{ linkDisplay }}
+        <div v-if="link == 'reverse_dns'" class="col">
+            <ReverseDns :id="id"></ReverseDns>
         </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <template v-else>
         <div class="row">
@@ -364,21 +363,20 @@ function toggleFunc(cp) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <template v-for="clientLink in clientLinks" :key="clientLink.link">
+                        <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <a class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</a>
+                                <router-link :key="index" :to="'/vps/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                             </template>
-                            <template v-else>
-                                <button class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr" @click="openPopUp"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</button>
+                        </template>
+                        <template v-for="(clientLink, index) in clientLinks">
+                            <template v-if="clientLink.label == 'View Desktop'">
+                                <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr" @click="openPopUp"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</button>
                             </template>
                         </template>
                     </div>
                 </div>
             </div>
         </div>
-    </template>
-
-    <template v-if="!linkDisplay || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))">
         <template v-if="cpLink || daLink || srLink || ppLink">
             <div class="col-md-12 px-0">
                 <div class="card">
@@ -553,7 +551,7 @@ function toggleFunc(cp) {
                             <br>
                             <div class="row">
                                 <div class="col">
-                                    <router-link to="'/vps/'+serviceInfo.vps_id+'/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link :to="'/vps/'+serviceInfo.vps_id+'/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br>
@@ -698,33 +696,33 @@ function toggleFunc(cp) {
             </div>
 
         </div>
-    </template>
-    <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form class="inline" method="post" @submit.prevent="onSubmit" action="#">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="id" :value="serviceInfo.vps_id">
-                        <input type="hidden" name="link" value="update_comment">
-                        <input type="hidden" name="csrf_token" :value="csrf">
-                        <input type="hidden" name="edit_comment" value="2">
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>
+        <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form class="inline" method="post" @submit.prevent="onSubmit" action="#">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                        <div class="modal-body">
+                            <input type="hidden" name="id" :value="serviceInfo.vps_id">
+                            <input type="hidden" name="link" value="update_comment">
+                            <input type="hidden" name="csrf_token" :value="csrf">
+                            <input type="hidden" name="edit_comment" value="2">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Comment:</label>
+                                <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </template>
 </template>
 
 <style scoped>
