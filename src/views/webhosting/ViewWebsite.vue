@@ -157,7 +157,7 @@ function isEmpty(table) {
                             <th>Nameservers:</th>
                         </tr>
                         <template v-if="extraInfoTables.dns && extraInfoTables.dns.rows">
-                            <tr v-for="nameserver in extraInfoTables.dns.rows">
+                            <tr v-for="(nameserver, idx) in extraInfoTables.dns.rows" :key="idx">
                                 <td>{{ nameserver.desc }}</td>
                             </tr>
                         </template>
@@ -185,8 +185,8 @@ function isEmpty(table) {
                             <th>Names:</th>
                             <th>Links:</th>
                         </tr>
-                        <template v-for="link, index in extraInfoTables.links.rows">
-                            <tr :key="link.value" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
+                        <template v-for="(link, index) in extraInfoTables.links.rows">
+                            <tr :key="index" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
                                 <td>{{ link.desc }}</td>
                                 <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
                             </tr>

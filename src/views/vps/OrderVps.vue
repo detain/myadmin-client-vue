@@ -1042,9 +1042,9 @@ try {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(stockArr, locationId) in locationStock" :key="location">
+                                        <tr v-for="(stockArr, locationId) in locationStock" :key="locationId">
                                             <td class="text-center">{{ locationNames[locationId] }}</td>
-                                            <td v-for="(status, platformId) in stockArr" :key="platform" class="text-center">
+                                            <td v-for="(status, platformId) in stockArr" :key="platformId" class="text-center">
                                                 <template v-if="status">
                                                     <span style="color:green;">✔</span>
                                                 </template>

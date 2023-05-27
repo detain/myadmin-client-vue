@@ -81,7 +81,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
             </div>
         </div>
     </div>
-    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row my-2">
+    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))">
         <div class="row my-2">
             <div class="col-md-4">
                 <div class="card">
@@ -297,12 +297,10 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
-                                <template v-for="itemvalue in extraInfoTables.ip_info.rows">
-                                    <tr>
-                                        <td><b>{{ itemvalue.desc }}</b></td>
-                                        <td><b class="text-muted">{{ itemvalue.value }}</b></td>
-                                    </tr>
-                                </template>
+                                <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
+                                    <td><b>{{ itemvalue.desc }}</b></td>
+                                    <td><b class="text-muted">{{ itemvalue.value }}</b></td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -323,12 +321,10 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
-                                <template v-for="itemvalue in extraInfoTables.cp.rows">
-                                    <tr>
-                                        <td><b>{{ itemvalue.desc }}</b></td>
-                                        <td><b class="text-muted">{{ itemvalue.value }}</b></td>
-                                    </tr>
-                                </template>
+                                <tr v-for="(itemvalue, index) in extraInfoTables.cp.rows" :key="index">
+                                    <td><b>{{ itemvalue.desc }}</b></td>
+                                    <td><b class="text-muted">{{ itemvalue.value }}</b></td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -351,7 +347,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <tr v-for="itemvalue in extraInfoTables.addons.rows">
+                            <tr v-for="(itemvalue, index) in extraInfoTables.addons.rows" :key="index">
                                 <td><b>{{ itemvalue.desc }}</b></td>
                                 <td><b class="text-muted">{{ itemvalue.value }}</b></td>
                             </tr>
