@@ -429,12 +429,16 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                     </div>
                     <div class="card-body">
                         <form id="edit_order_form" method="post" action="order_server">
-                            <input v-for="(field_value, field) in form_values" :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                            <template v-for="(field_value, field) in form_values">
+                                <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                            </template>
                             <input v-for="(hd_val, indexx) in hd_values" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
                         <form method="post" class="dserver_form_confirm" action="order_server">
-                            <input v-for="(field_value, field) in form_values" :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                            <template v-for="(field_value, field) in form_values">
+                                <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                            </template>
                             <input v-for="(hd_val, indexx) in hd_values" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <div class="form-group row">

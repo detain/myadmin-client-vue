@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
 
 import $ from 'jquery';
-import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 
 const layoutStore = useLayoutStore();
@@ -95,7 +94,7 @@ function reloadCaptcha() {
 }
 
 onMounted(function () {
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
         $("#tosModal").on("shown.bs.modal", function (e) {
             setModalMaxHeight(this);
         });
@@ -103,25 +102,25 @@ onMounted(function () {
         animateValue(document.getElementById("count-w"));
         animateValue(document.getElementById("count-s"));
         //reloadCaptcha(0);
-        jQuery("#captcha_alt_link, #captcha_main_link").click(function (e) {
+        $("#captcha_alt_link, #captcha_main_link").click(function (e) {
             e.preventDefault();
-            jQuery(".captcha_main, .captcha_alt").toggle(500);
+            $(".captcha_main, .captcha_alt").toggle(500);
         });
-        jQuery("#captcha_alt_link_signup, #captcha_main_link_signup").click(function (e) {
+        $("#captcha_alt_link_signup, #captcha_main_link_signup").click(function (e) {
             e.preventDefault();
-            jQuery(".captcha_main_signup, .captcha_alt_signup").toggle(500);
+            $(".captcha_main_signup, .captcha_alt_signup").toggle(500);
         });
-        jQuery("#forgot_link").click(function (e) {
+        $("#forgot_link").click(function (e) {
             e.preventDefault();
-            jQuery('.sign-up-txt').hide();
-            jQuery("div.myadmin_login").toggle("500");
+            $('.sign-up-txt').hide();
+            $("div.myadmin_login").toggle("500");
         });
-        jQuery("#access_link").click(function (e) {
+        $("#access_link").click(function (e) {
             e.preventDefault();
-            jQuery('.sign-up-txt.signup').show();
-            jQuery("div.myadmin_login").toggle("500");
+            $('.sign-up-txt.signup').show();
+            $("div.myadmin_login").toggle("500");
         });
-        jQuery("#btn-forgot").click(function (e) {
+        $("#btn-forgot").click(function (e) {
             forgot_password(e);
             return false;
         });
@@ -218,7 +217,7 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
         var startTime = new Date().getTime();
         var endTime = startTime + duration;
         var timer;
-        function run() {
+        var run = (() => {
             var now = new Date().getTime();
             var remaining = Math.max((endTime - now) / duration, 0);
             var value = Math.round(end - remaining * range);
@@ -227,18 +226,18 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
             if (value == end) {
                 clearInterval(timer);
             }
-        }
+        });
         timer = setInterval(run, stepTime);
         run();
     }
 }
 
 function login_handler(e) {
-    var username = jQuery("#login_id").val();
-    var twofactor = jQuery("#2fa_code").val();
-    var password = jQuery("#loginpassword").val();
-    var captcha = jQuery("#captcha").val();
-    var emailconf = jQuery("input[name=email_confirmation]").val();
+    var username = $("#login_id").val();
+    var twofactor = $("#2fa_code").val();
+    var password = $("#loginpassword").val();
+    var captcha = $("#captcha").val();
+    var emailconf = $("input[name=email_confirmation]").val();
     e.preventDefault();
     var remember = localStorage.rememberMe === "true" ? "yes" : "no";
     if (username == "") {
@@ -254,14 +253,12 @@ function login_handler(e) {
             html: password
         });
     } else {
+        var loginCheckData = "ajax=1&remember=" + remember + "&login_id=" + encodeURIComponent(username) + "&passwd=" + encodeURIComponent(password) + "&captcha=" + encodeURIComponent(captcha);
         if (twofactor) {
-            var loginCheckData = "ajax=1&remember=" + remember + "&login_id=" + encodeURIComponent(username) + "&passwd=" + encodeURIComponent(password) + "&captcha=" + encodeURIComponent(captcha) + "&2fa_code=" + encodeURIComponent(twofactor);
-        } else {
-            var loginCheckData = "ajax=1&remember=" + remember + "&login_id=" + encodeURIComponent(username) + "&passwd=" + encodeURIComponent(password) + "&captcha=" + encodeURIComponent(captcha);
+            loginCheckData = loginCheckData + "&2fa_code=" + encodeURIComponent(twofactor);
         }
         if (host != "cn.interserver.net") {
-            loginCheckData =
-                loginCheckData + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget1));
+            loginCheckData = loginCheckData + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget1));
         }
         if (emailconf != "") {
             loginCheckData = loginCheckData + "&email_confirmation=" + encodeURIComponent(emailconf);
@@ -288,10 +285,10 @@ function login_handler(e) {
                         window.location = html.substring(4);
                     }
                 } else if (html.substring(0, 8) == "2fa_auth") {
-                    jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
-                    jQuery(".twofactorauth").show(500);
-                    jQuery(".captcha_main").hide();
-                    jQuery(".captcha_alt").hide();
+                    $(".loginsubmit, .signupsubmit").attr("disabled", false);
+                    $(".twofactorauth").show(500);
+                    $(".captcha_main").hide();
+                    $(".captcha_alt").hide();
                     if ($('.popup').hasClass('hidden')) {
                         $('.popup').removeClass('hidden');
                     } else {
@@ -299,28 +296,28 @@ function login_handler(e) {
                         $('.popup #error-message').text('Invalid Code, Please Enter correct code.');
                     }
                 } else if (html.substring(0, 6) == "verify") {
-                    jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
+                    $(".loginsubmit, .signupsubmit").attr("disabled", false);
                     if ($('.login_email_popup').hasClass('hidden')) {
                         $('.login_email_popup').removeClass('hidden');
                     } else {
                         $('.login_email_popup .error-box').show();
                         $('.login_email_popup #error-message').text('Invalid Code, Please Enter correct code.');
                     }
-                    jQuery(".captcha_main_signup").hide();
-                    jQuery(".captcha_alt_signup").hide();
+                    $(".captcha_main_signup").hide();
+                    $(".captcha_alt_signup").hide();
                 } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                    jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
+                    $(".loginsubmit, .signupsubmit").attr("disabled", false);
                     $('.login_email_popup .error-box').show();
                     $('.login_email_popup #error-message').html(html);
-                    jQuery(".captcha_main_signup").hide();
-                    jQuery(".captcha_alt_signup").hide();
+                    $(".captcha_main_signup").hide();
+                    $(".captcha_alt_signup").hide();
                 } else {
                     if (host != "cn.interserver.net") {
                         grecaptcha.reset(gcaptchaWidget1);
                     }
                     reloadCaptcha(0);
-                    jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
-                    // jQuery("#message").html(html);
+                    $(".loginsubmit, .signupsubmit").attr("disabled", false);
+                    // $("#message").html(html);
                     Swal.fire({
                         icon: 'warning',
                         title: 'Error',
@@ -330,7 +327,7 @@ function login_handler(e) {
             },
             error: function () {
                 loading.close();
-                jQuery(".loginsubmit, .signupsubmit").prop("disabled", false);
+                $(".loginsubmit, .signupsubmit").prop("disabled", false);
                 grecaptcha.reset(gcaptchaWidget1);
                 Swal.fire({
                     icon: 'warning',
@@ -338,7 +335,7 @@ function login_handler(e) {
                 });
             },
             beforeSend: function () {
-                jQuery(".loginsubmit, .signupsubmit").attr("disabled", true);
+                $(".loginsubmit, .signupsubmit").attr("disabled", true);
                 loading;
 
             }
@@ -349,17 +346,13 @@ function login_handler(e) {
 
 function forgot_password(e) {
     e.preventDefault();
-    var username = jQuery("input[name='email']").val();
+    var username = $("input[name='email']").val();
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var captcha = jQuery("#captchaFP").val();
+    var captcha = $("#captchaFP").val();
     if (username == "") {
-        jQuery("#forgot-password-message").html(
-            '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>'
-        );
+        $("#forgot-password-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
     } else if (regex.test(username) == false) {
-        jQuery("#forgot-password-message").html(
-            '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>'
-        );
+        $("#forgot-password-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
     } else {
         var pathArray = window.location.pathname.split('/');
         var newPath = "/";
@@ -373,19 +366,15 @@ function forgot_password(e) {
             url: "https://" + window.location.host + newPath + "password.php",
             data: "ajax=1&email=" + encodeURIComponent(username) + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse()) + "&captcha=" + encodeURIComponent(captcha),
             success: function (html) {
-                jQuery("#forgot-password-message").html("");
-                jQuery("#forgot-password-message").html(html);
+                $("#forgot-password-message").html("");
+                $("#forgot-password-message").html(html);
             },
             error: function () {
-                jQuery("#btn-forgot").prop("disabled", false);
-                jQuery("#forgot-password-message").html(
-                    '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>'
-                );
+                $("#btn-forgot").prop("disabled", false);
+                $("#forgot-password-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>');
             },
             beforeSend: function () {
-                jQuery("#forgot-password-message").html(
-                    '<div style="margin: 15px; text-align: center;"><i class="fa fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>'
-                );
+                $("#forgot-password-message").html('<div style="margin: 15px; text-align: center;"><i class="fa fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
             }
         });
     }
@@ -401,9 +390,9 @@ function signup_handler(e) {
         allowOutsideClick: false,
         allowEscapeKey: false
     });
-    var items = jQuery("#loginForm input:not(.login_info), #loginForm select:not(.login_info)").serializeArray();
-    var email_conf = jQuery("input[name=email_confirmation]").val();
-    var captchaSignup = jQuery("#captcha_signup").val();
+    var items = $("#loginForm input:not(.login_info), #loginForm select:not(.login_info)").serializeArray();
+    var email_conf = $("input[name=email_confirmation]").val();
+    var captchaSignup = $("#captcha_signup").val();
     var data_string = "ajax=1";
     var errors = "";
     var i;
@@ -440,7 +429,7 @@ function signup_handler(e) {
             signup_running = 1;
             $.ajax({
                 type: "POST",
-                url: jQuery("#loginForm").attr("action"),
+                url: $("#loginForm").attr("action"),
                 data: data_string,
                 success: function (html) {
                     loading.close();
@@ -451,21 +440,21 @@ function signup_handler(e) {
                             window.location = html.substring(4);
                         }
                     } else if (html.substring(0, 6) == "verify") {
-                        jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
+                        $(".loginsubmit, .signupsubmit").attr("disabled", false);
                         if ($('.email_popup').hasClass('hidden')) {
                             $('.email_popup').removeClass('hidden');
                         } else {
                             $('.email_popup .error-box').show();
                             $('.email_popup #error-message').text('Invalid Code, Please Enter correct code.');
                         }
-                        jQuery(".captcha_main_signup").hide();
-                        jQuery(".captcha_alt_signup").hide();
+                        $(".captcha_main_signup").hide();
+                        $(".captcha_alt_signup").hide();
                     } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                        jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
+                        $(".loginsubmit, .signupsubmit").attr("disabled", false);
                         $('.email_popup .error-box').show();
                         $('.email_popup #error-message').html(html);
                     } else {
-                        jQuery(".loginsubmit, .signupsubmit").attr("disabled", false);
+                        $(".loginsubmit, .signupsubmit").attr("disabled", false);
                         grecaptcha.reset(gcaptchaWidget2);
                         Swal.fire({
                             icon: 'warning',
@@ -476,7 +465,7 @@ function signup_handler(e) {
                 },
                 error: function () {
                     loading.close();
-                    jQuery(".loginsubmit, .signupsubmit").prop("disabled", false);
+                    $(".loginsubmit, .signupsubmit").prop("disabled", false);
                     grecaptcha.reset(gcaptchaWidget2);
                     Swal.fire({
                         icon: 'warning',
@@ -484,7 +473,7 @@ function signup_handler(e) {
                     });
                 },
                 beforeSend: function () {
-                    jQuery(".loginsubmit, .signupsubmit").attr("disabled", true);
+                    $(".loginsubmit, .signupsubmit").attr("disabled", true);
                     loading;
                 }
             });
