@@ -26,30 +26,6 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
-const currency = ref('USD');
-const currencySymbol = ref('$');
-const serviceTypes = ref([]);
-const maxSlices = ref(16);
-const hdStorageSlice = ref(1000);
-const cpanelCost = ref(20);
-const daCost = ref(8);
-const bwType = ref(2);
-const bwTotal = ref(2);
-const bwSlice = ref(2000);
-const hdSlice = ref(30);
-const ramSlice = ref(2048);
-const vpsSliceSsdOvzCost = ref(0);
-const vpsSliceOvzCost = ref(0);
-const vpsSliceSsdVirtuozzoCost = ref(0);
-const vpsSliceVirtuozzoCost = ref(0);
-const vpsSliceHypervCost = ref(0);
-const vpsSliceVmwareCost = ref(0);
-const vpsSliceLxcCost = ref(0);
-const vpsSliceXenCost = ref(0);
-const vpsSliceKvmLCost = ref(0);
-const vpsSliceKvmStorageCost = ref(0);
-const vpsNyCost = ref(0);
-const vpsSliceKvmWCost = ref(0);
 const platformPackages = ref({
     kvm: 32,
     kvmstorage: 57,
@@ -86,6 +62,30 @@ const templates = ref({
     kvm: {},
     kvmstorage: {}
 });
+const currency = ref('USD');
+const currencySymbol = ref('$');
+const serviceTypes = ref([]);
+const maxSlices = ref(16);
+const hdStorageSlice = ref(1000);
+const cpanelCost = ref(20);
+const daCost = ref(8);
+const bwType = ref(2);
+const bwTotal = ref(2);
+const bwSlice = ref(2000);
+const hdSlice = ref(30);
+const ramSlice = ref(2048);
+const vpsSliceSsdOvzCost = ref(0);
+const vpsSliceOvzCost = ref(0);
+const vpsSliceSsdVirtuozzoCost = ref(0);
+const vpsSliceVirtuozzoCost = ref(0);
+const vpsSliceHypervCost = ref(0);
+const vpsSliceVmwareCost = ref(0);
+const vpsSliceLxcCost = ref(0);
+const vpsSliceXenCost = ref(0);
+const vpsSliceKvmLCost = ref(0);
+const vpsSliceKvmStorageCost = ref(0);
+const vpsNyCost = ref(0);
+const vpsSliceKvmWCost = ref(0);
 const slices = ref(1);
 const platform = ref('kvm');
 const location = ref(1);
