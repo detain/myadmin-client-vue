@@ -106,11 +106,6 @@ const controlCost = ref(0);
 const couponInfo = ref(0);
 const last_coupon = ref("");
 const sliceCost = ref(0);
-const getOsVersions = computed(() => {
-    console.log("Platform: "+platform.value);
-    console.log("Os: "+templateOs.value);
-   return templates.value[platform.value][templateOs.value];
-});
 const serviceType = ref(null);
 const slicesRange = computed(() => {
     const arr = []
@@ -847,12 +842,11 @@ try {
                     <div class="card-body">
                         <form id="vps_form" class="vps_form_init" @submit.prevent="submitForm">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <input type="hidden" id="total_cost_display" name="total_cost_display" :value="totalCostDisplay" />
                             <input type="hidden" id="period" name="period" :value="period" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray text-center b-radius">
-                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ platform == 'kvmstorage' ? hdStorageslice * slices : hdSlice * slices }} GB</span></div>
+                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ platform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span></div>
                                     <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span></div>
                                     <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth(slices) }}</span></div>
                                 </div>
@@ -862,7 +856,7 @@ try {
                                 <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select class="form-control select2" v-model="platform">
-                                        <option v-for="(platformName, platformId) in platformNames" :key="platformId" :value="platformId">{{ platformName }}</option>
+                                        <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
                                 </div>
@@ -871,7 +865,7 @@ try {
                                 <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
                                     <select class="form-control select2" v-model="location">
-                                        <option v-for="(locationName, locationId) in locationNames" :key="locationId" :value="locationId">{{ locationName }}</option>
+                                        <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -887,7 +881,7 @@ try {
                                 <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select class="form-control select2" v-model="templateOs">
-                                        <option v-for="(osTemplates, osId) in templates[platform]" :key="osId" :value="osId">{{ osNames[osId] }}</option>
+                                        <option v-for="(osTemplates, osId, index) in templates[platform]" :key="index" :value="osId">{{ osNames[osId] }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -895,7 +889,7 @@ try {
                                 <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select class="form-control select2" v-model="version">
-                                        <option v-for="(templateVersion, templateFile) in getOsVersions" :key="templateFile" :value="templateFile">{{ templateVersion }}</option>
+                                        <option v-for="(templateVersion, templateFile, index) in templates[platform][templateOs]" :key="index" :value="templateFile">{{ templateVersion }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -948,7 +942,7 @@ try {
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md text-right totalcost_display">{{ currencySymbol }}{{ totalCostDisplay }}</div>
+                                    <div class="col text-md text-right totalcost_display">{{ currencySymbol }}{{ platformPackages[platform] ? packageCosts[platformPackages[platform]] : 0 }}</div>
                                 </div>
                                 <div id="cyclediscountrownew" class="row mb-3">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
