@@ -357,8 +357,8 @@ function update_vps_choices() {
     jQuery(".totalcost_display").text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
     jQuery("#totalcostnew").val(total_cost);
     jQuery("#total_cost_displa").val(total_cost);
-    if ($("#package_name").length > 0 && typeof packages != 'undefined') {
-        $("#package_name").text(packages[get_package_id()]);
+    if ($("#package_name").length > 0) {
+        $("#package_name").text(serviceTypes.value[get_package_id()].services_name);
     }
 }
 
