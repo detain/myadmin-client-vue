@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
@@ -24,7 +25,7 @@ function changePassword() {
   const url = 'change_pass';
   const formData = new FormData();
   formData.append('password2', this.password);
-  axios.post(url, formData)
+  fetchWrapper.post(url, formData)
     .then(response => {
       // handle success
     })
