@@ -53,17 +53,11 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
 };
 
 const webuzoTableExists = computed(() => {
-  return (
-    extraInfoTables.value.hasOwnProperty('webuzo') &&
-    !isEmpty(extraInfoTables.value.webuzo)
-  );
+  return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo));
 });
 
 const addonsTableExists = computed(() => {
-  return (
-    extraInfoTables.value.hasOwnProperty('addons') &&
-    !isEmpty(extraInfoTables.value.addons)
-  );
+  return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
 });
 
 function isEmpty(table) {

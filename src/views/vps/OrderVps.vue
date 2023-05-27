@@ -656,7 +656,7 @@ function get_package_id() {
             serviceType.value = 35;
         }
     } else if (platform.value == 'kvm') { // KVM
-        if (templateOs.value = 'windows') {
+        if (templateOs.value == 'windows') {
             serviceType.value = 32;
         } else {
             serviceType.value = 33;

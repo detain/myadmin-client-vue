@@ -32,6 +32,8 @@ const displayPrepay = ref(true);
 const total_invoices = ref(0);
 const paymentMethodsData = ref({});
 const triggerClick = ref(null);
+const isChecked = ref(false);
+const modulesCounts = ref({});
 const contFields = {
     cc: ref(''),
     cc_exp: ref(''),
@@ -166,6 +168,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
     paymentMethodsData.value = response.paymentMethodsData
     invrows.value = response.invrows;
     modules.value = response.modules;
+    modulesCounts.value = response.modules_counts;
 });
 
 </script>
@@ -542,7 +545,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" :value="name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
+                                    <input type="text" name="name" :value="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -550,7 +553,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" :value="address" placeholder="Address line">
+                                    <input type="text" name="address" :value="contFields.address" placeholder="Address line">
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -558,13 +561,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" :value="city" placeholder="City">
+                                    <input type="text" name="city" :value="contFields.city" placeholder="City">
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" :value="state" placeholder="State">
+                                    <input type="text" name="state" :value="contFields.state" placeholder="State">
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -579,7 +582,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" :value="zip" placeholder="Zipcode">
+                                    <input type="text" name="zip" :value="contFields.zip" placeholder="Zipcode">
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -624,7 +627,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="phone" :value="phone" placeholder="Phone Number" required>
+                                    <input type="text" name="phone" :value="contFields.phone" placeholder="Phone Number" required>
                                     <label class="text-md">Phone</label>
                                 </div>
                             </div>
