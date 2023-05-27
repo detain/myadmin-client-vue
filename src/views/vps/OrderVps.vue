@@ -26,6 +26,8 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
+const currency = ref('USD');
+const currencySymbol = ref('$');
 const serviceTypes = ref([]);
 const maxSlices = ref(16);
 const hdStorageSlice = ref(1000);
@@ -36,6 +38,18 @@ const bwTotal = ref(2);
 const bwSlice = ref(2000);
 const hdSlice = ref(30);
 const ramSlice = ref(2048);
+const vpsSliceSsdOvzCost = ref(0);
+const vpsSliceOvzCost = ref(0);
+const vpsSliceSsdVirtuozzoCost = ref(0);
+const vpsSliceVirtuozzoCost = ref(0);
+const vpsSliceHypervCost = ref(0);
+const vpsSliceVmwareCost = ref(0);
+const vpsSliceLxcCost = ref(0);
+const vpsSliceXenCost = ref(0);
+const vpsSliceKvmLCost = ref(0);
+const vpsSliceKvmStorageCost = ref(0);
+const vpsNyCost = ref(0);
+const vpsSliceKvmWCost = ref(0);
 const platformPackages = ref({
     kvm: 32,
     kvmstorage: 57,
@@ -80,10 +94,8 @@ const templateOs = ref("ubuntu");
 const hostname = ref("");
 const coupon = ref("");
 const step = ref("orderform");
-const currencySymbol = ref("$");
 const rootpass = ref("");
 const csrfToken = ref("");
-const curHdSlice = ref(0);
 const curSsd = ref(0);
 const curControl = ref("");
 const period = ref(1);
@@ -129,7 +141,6 @@ onMounted(() => {
     });
 });
 
-
 function update_coupon() {
     var coupon_text = document.getElementById("coupon").value;
     if (last_coupon.value != coupon_text) {
@@ -172,7 +183,7 @@ function update_vps_choices() {
     var sliceText = jQuery("select[name=slices] option:selected").text();
     var curHdSlice = hdSlice.value;
     if (platform.value == "kvmstorage") {
-        curHdSlice = hdSlice.value_storage;
+        curHdSlice = hdStorageSlice.value;
     }
     var memoryProvidedd = ramSlice.value * sliceText;
     var spaceProvidedd = curHdSlice * sliceText;
@@ -247,31 +258,31 @@ function update_vps_choices() {
     }
     if (platform.value == "openvz")
         if (curSsd.value == 1)
-            sliceCost.value = ssd_slice_cost;
+            sliceCost.value = vpsSliceSsdOvzCost.value;
         else
-            sliceCost.value = ovz_slice_cost;
+            sliceCost.value = vpsSliceOvzCost.value;
     else if (platform.value == 'kvm')
         if (templateOs.value == "windows")
-            sliceCost.value = kvm_w_slice_cost;
+            sliceCost.value = vpsSliceKvmWCost.value;
         else
-            sliceCost.value = kvm_l_slice_cost;
+            sliceCost.value = vpsSliceKvmLCost.value;
     else if (platform.value == "kvmstorage")
-        sliceCost.value = kvm_storage_slice_cost;
+        sliceCost.value = vpsSliceKvmStorageCost.value;
     else if (platform.value == "xen")
-        sliceCost.value = xen_slice_cost;
+        sliceCost.value = vpsSliceXenCost.value;
     else if (platform.value == "lxc")
-        sliceCost.value = lxc_slice_cost;
+        sliceCost.value = vpsSliceLxcCost.value;
     else if (platform.value == "vmware")
-        sliceCost.value = vmware_slice_cost;
+        sliceCost.value = vpsSliceVmwareCost.value;
     else if (platform.value == "hyperv")
-        sliceCost.value = hyperv_slice_cost;
+        sliceCost.value = vpsSliceHypervCost.value;
     else if (platform.value == "virtuozzo")
         if (curSsd.value == 1)
-            sliceCost.value = ssd_virtuozzo_slice_cost;
+            sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
         else
-            sliceCost.value = virtuozzo_slice_cost;
+            sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3)
-        sliceCost.value = sliceCost.value * ny_cost;
+        sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
         jQuery("#controlpanelcost").text(currencySymbol + controlCost.value);
@@ -408,12 +419,12 @@ function update_vps_choices_order() {
     var sliceText = jQuery("#slices").val();
     if (platform.value != jQuery("#platform").val()) {
         platform.value = jQuery("#platform").val();
-        jQuery("#version").html(templates["platforms"][platform.value]).trigger("render");
+        jQuery("#version").html(templates.value["platforms"][platform.value]).trigger("render");
         templateOs.value = jQuery("#version").val();
     }
     var curHdSlice = hdSlice.value;
     if (platform.value == "kvmstorage") {
-        curHdSlice = hdSlice.value_storage;
+        curHdSlice = hdStorageSlice.value;
     }
     var memoryProvidedd = ramSlice.value * sliceText;
     var spaceProvidedd = curHdSlice * sliceText;
@@ -468,31 +479,31 @@ function update_vps_choices_order() {
     }
     if (platform.value == "openvz")
         if (curSsd.value == 1)
-            sliceCost.value = ssd_slice_cost;
+            sliceCost.value = vpsSliceSsdOvzCost.value;
         else
-            sliceCost.value = ovz_slice_cost;
+            sliceCost.value = vpsSliceOvzCost.value;
     else if (platform.value == 'kvm')
         if (templateOs.value == "windows")
-            sliceCost.value = kvm_w_slice_cost;
+            sliceCost.value = vpsSliceKvmWCost.value;
         else
-            sliceCost.value = kvm_l_slice_cost;
+            sliceCost.value = vpsSliceKvmLCost.value;
     else if (platform.value == "kvmstorage")
-        sliceCost.value = kvm_storage_slice_cost;
+        sliceCost.value = vpsSliceKvmStorageCost.value;
     else if (platform.value == "xen")
-        sliceCost.value = xen_slice_cost;
+        sliceCost.value = vpsSliceXenCost.value;
     else if (platform.value == "lxc")
-        sliceCost.value = lxc_slice_cost;
+        sliceCost.value = vpsSliceLxcCost.value;
     else if (platform.value == "vmware")
-        sliceCost.value = vmware_slice_cost;
+        sliceCost.value = vpsSliceVmwareCost.value;
     else if (platform.value == "hyperv")
-        sliceCost.value = hyperv_slice_cost;
+        sliceCost.value = vpsSliceHypervCost.value;
     else if (platform.value == "virtuozzo")
         if (curSsd.value == 1)
-            sliceCost.value = ssd_virtuozzo_slice_cost;
+            sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
         else
-            sliceCost.value = virtuozzo_slice_cost;
+            sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3)
-        sliceCost.value = sliceCost.value * ny_cost;
+        sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
         jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
@@ -630,7 +641,7 @@ function recomended_linux() {
     curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=controlpanel]").val(curControl.value);
@@ -650,7 +661,7 @@ function recomended_cpanel() {
     slices.value = "2";
     curControl.value = "cpanel";
     jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("centos-7-x86_64-cpanel");
@@ -671,7 +682,7 @@ function recomended_directadmin() {
     slices.value = "4";
     curControl.value = "da";
     jQuery("select[name=platform]").val(platform.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=slices]").val(slices.value);
@@ -694,7 +705,7 @@ function recomended_windows() {
     curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("Windows2022");
@@ -716,7 +727,7 @@ function recomended_linux_desktop() {
     curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("ubuntudesktop");
@@ -738,7 +749,7 @@ function recomended_webuzo() {
     curControl.value = "none";
     jQuery("select[name=platform]").val(platform.value);
     jQuery("select[name=slices]").val(slices.value);
-    jQuery("select[name=version]").html(templates["platforms"][platform.value]).trigger("render");
+    jQuery("select[name=version]").html(templates.value["platforms"][platform.value]).trigger("render");
     jQuery("select[name=version]").val(templateOs.value);
     jQuery("select[name=vpsos]").html(templates[platform.value][templateOs.value]).trigger("render");
     jQuery("select[name=vpsos]").val("centos-7-x86_64-breadbasket");
@@ -826,6 +837,20 @@ try {
         locationNames.value = response.locationNames;
         templates.value = response.templates;
         serviceTypes.value = response.serviceTypes;
+        vpsSliceSsdOvzCost.value = response.vpsSliceSsdOvzCost;
+        vpsSliceOvzCost.value = response.vpsSliceOvzCost;
+        vpsSliceSsdVirtuozzoCost.value = response.vpsSliceSsdVirtuozzoCost;
+        vpsSliceVirtuozzoCost.value = response.vpsSliceVirtuozzoCost;
+        vpsSliceHypervCost.value = response.vpsSliceHypervCost;
+        vpsSliceVmwareCost.value = response.vpsSliceVmwareCost;
+        vpsSliceLxcCost.value = response.vpsSliceLxcCost;
+        vpsSliceXenCost.value = response.vpsSliceXenCost;
+        vpsSliceKvmLCost.value = response.vpsSliceKvmLCost;
+        vpsSliceKvmStorageCost.value = response.vpsSliceKvmStorageCost;
+        vpsNyCost.value = response.vpsNyCost;
+        vpsSliceKvmWCost.value = response.vpsSliceKvmWCost;
+        currency.value = response.currency;
+        currencySymbol.value = response.currencySymbol;
     });
 } catch (error) {
     console.log("error:");

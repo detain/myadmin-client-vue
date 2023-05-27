@@ -12,8 +12,10 @@ module.exports = {
     {
       files: ['src/**/*.vue', 'src/**/*.js'],
       rules: {
-        'no-unused-vars': 'warn',
-        'vue/multi-word-component-names': 'warn'
+//        'no-unused-vars': 'warn',
+//        'vue/multi-word-component-names': 'warn'
+        'no-unused-vars': 'off',
+        'vue/multi-word-component-names': 'off'
       }
     }
   ],
