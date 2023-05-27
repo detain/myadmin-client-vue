@@ -650,13 +650,13 @@ function get_package_id() {
     } else if (platform.value == 'ssdopenvz') { // OpenVZ
         serviceType.value = 36;
     } else if (platform.value == 'cloudkvm') { // Cloud
-        if (templateOs.value == 5 || 0 === templateOs.value.indexOf('windows')) {
+        if (templateOs.value == 'windows') {
             serviceType.value = 34;
         } else {
             serviceType.value = 35;
         }
     } else if (platform.value == 'kvm') { // KVM
-        if (templateOs.value == 5 || 0 === templateOs.value.indexOf('windows')) {
+        if (templateOs.value = 'windows') {
             serviceType.value = 32;
         } else {
             serviceType.value = 33;
