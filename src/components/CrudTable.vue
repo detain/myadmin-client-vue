@@ -278,7 +278,7 @@ function crud_search(that, terms) {
 function get_crud_url() {
     let url = jQuery("#paginationForm").attr("action");
     if (typeof url == undefined || typeof url == "undefined") {
-        url = document.location.pathname.replace(/\/[^\/]*$/,'')+'/ajax.php'+document.location.search.replace('choice=none\.', 'choice=crud&crud=')+'&action=list';
+        url = document.location.pathname.replace('/[^/]*$','')+'/ajax.php'+document.location.search.replace('choice=none.', 'choice=crud&crud=')+'&action=list';
         console.log("Got undefined action= contents from #pagionationForm so used fallback method and generated: "+url);
     }
     url = url+"&orderBy="+crudOrderBy.value+"&orderDir="+crudOrderDir.value+"&offset="+crudPageOffset.value+"&limit="+crudPageLimit.value;
