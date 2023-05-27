@@ -7,50 +7,51 @@ layoutStore.setPageHeading('Affiliate - ViewBanner');
 layoutStore.setTitle('Affiliate - ViewBanner');
 layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'ViewBanner'});
 
-   const url = ref('{$url}')
-    const vpsUrl = ref('{$vps_url}')
-    const webhostingUrl = ref('{$webhosting_url}')
-    const imgDetail = reactive({ b: '' })
-    const sid = ref('')
-    const landing = ref('vps')
-    const customUrl = ref('')
-    const custUrlVisible = ref(false)
+const url = ref('{$url}')
+const vpsUrl = ref('{$vps_url}')
+const webhostingUrl = ref('{$webhosting_url}')
+const imgDetail = ref({ b: '' })
+const sid = ref('')
+const landing = ref('vps')
+const customUrl = ref('')
+const custUrlVisible = ref(false)
+const htmlCode = ref('');
 
-    function updateCode() {
-      custUrlVisible.value = false
-      let urlValue = url.value
-      if (landing.value === 'vps') {
-        urlValue = vpsUrl.value
-        if (sid.value) {
-          urlValue = `${vpsUrl.value}&sid=${sid.value}`
-        }
-      } else if (landing.value === 'webhosting') {
-        urlValue = webhostingUrl.value
-        if (sid.value) {
-          urlValue = `${webhostingUrl.value}&sid=${sid.value}`
-        }
-      } else if (landing.value === 'custom') {
-        const custUrlValue = customUrl.value
-        if (sid.value) {
-          urlValue = `${urlValue}?sid=${sid.value}&url=${custUrlValue}`
-        } else {
-          urlValue = `${urlValue}?url=${custUrlValue}`
-        }
-        custUrlVisible.value = true
-      } else {
-        if (sid.value) {
-          urlValue = `${urlValue}?sid=${sid.value}`
-        }
-      }
-      htmlcode.value = `<a href="${urlValue}"><img src="https://www.interserver.net/logos/${imgDetail.b}" alt="InterServer Web Hosting and VPS"></a>`
+function updateCode() {
+  custUrlVisible.value = false
+  let urlValue = url.value
+  if (landing.value === 'vps') {
+    urlValue = vpsUrl.value
+    if (sid.value) {
+      urlValue = `${vpsUrl.value}&sid=${sid.value}`
     }
+  } else if (landing.value === 'webhosting') {
+    urlValue = webhostingUrl.value
+    if (sid.value) {
+      urlValue = `${webhostingUrl.value}&sid=${sid.value}`
+    }
+  } else if (landing.value === 'custom') {
+    const custUrlValue = customUrl.value
+    if (sid.value) {
+      urlValue = `${urlValue}?sid=${sid.value}&url=${custUrlValue}`
+    } else {
+      urlValue = `${urlValue}?url=${custUrlValue}`
+    }
+    custUrlVisible.value = true
+  } else {
+    if (sid.value) {
+      urlValue = `${urlValue}?sid=${sid.value}`
+    }
+  }
+  htmlCode.value = `<a href="${urlValue}"><img src="https://www.interserver.net/logos/${imgDetail.value.b}" alt="InterServer Web Hosting and VPS"></a>`
+}
 
-    function copyCode() {
-      const copyText = document.querySelector('#htmcode')
-      copyText.select()
-      document.execCommand('copy')
-      alert('HTML Code copied.')
-    }
+function copyCode() {
+  const copyText = document.querySelector('#htmcode')
+  copyText.select()
+  document.execCommand('copy')
+  alert('HTML Code copied.')
+}
 
 onMounted(() => {
 })

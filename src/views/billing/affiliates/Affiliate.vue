@@ -89,7 +89,9 @@ onMounted(() => {
 <template>
 <div class="row mt-2 justify-content-center">
     <div class="col">
-  <template v-if="body" v-html="body"></template>
+  <template v-if="body">
+    <div v-html="body"></div>
+  </template>
   <template v-else>
         <div class="card shadow-none w-100 bg-white p-2 mb-4" style="border-left: 4px solid red;display: block ruby;">
             <p class="m-0 text-md">

@@ -31,6 +31,7 @@ const total_display = ref(0.00);
 const displayPrepay = ref(true);
 const total_invoices = ref(0);
 const paymentMethodsData = ref({});
+const triggerClick = ref(null);
 const contFields = {
     cc: ref(''),
     cc_exp: ref(''),
@@ -43,8 +44,8 @@ const contFields = {
 };
 
 function mounted() {
-    if (trigger_click) {
-        $("#unver_{{ current_cc_id }}").attr("data-step", "{{ trigger_click }}").trigger('click');
+    if (triggerClick.value) {
+        $("#unver_{{ current_cc_id }}").attr("data-step", "{{ triggerClick.value }}").trigger('click');
     }
 }
 
@@ -82,12 +83,12 @@ function editCard(cc_id = 0) {
 function verify_card(cc_id = 0)
 {
     $(".v_cc_idx").val(cc_id);
-    verify_display = $('#unver_'+cc_id).attr("data-step");
-    if ( typeof verify_display === 'undefined') {
+    var verifyDisplay = $('#unver_'+cc_id).attr("data-step");
+    if ( typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display == 'step1') {
+    } else if(verifyDisplay == 'step1') {
         $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display == 'step2') {
+    } else if(verifyDisplay == 'step2') {
         $('#VerifyClick').trigger('click');
     }
 }
@@ -124,10 +125,6 @@ function formatCardNum(e) {
   caretPosition += Math.floor(caretPosition / 4);
   e.target.value = e.target.lastValue = parts.join('-');
   e.target.selectionStart = e.target.selectionEnd = caretPosition;
-}
-
-function verify_display() {
-
 }
 
 function formatExpDate(e) {
@@ -274,7 +271,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 <div class="form-group row">
                                     <label for="currency_select" class="col-md-6 col-form-label">Currency</label>
                                     <select id="currency_select" class="col-md-6 select2 form-control text-left" name="currency" v-model="currency" @change="submitForm()">
-                                        <option v-for="(value, name) in currencyArr" :value="value">{{ name }}</option>
+                                        <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
                                 </div>
                             </form>

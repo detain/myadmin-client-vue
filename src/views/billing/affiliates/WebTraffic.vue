@@ -17,7 +17,7 @@ onMounted(() => {
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <div class="p-1" ?>
+                    <div class="p-1">
                         <h3 class="card-title py-2">
                             <i class="fa fa-globe">&nbsp;</i>Web Traffic
                         </h3>

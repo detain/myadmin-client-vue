@@ -9,6 +9,7 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
+import Swal from 'sweetalert2';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('DNS Manager');
