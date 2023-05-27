@@ -160,7 +160,7 @@ function update_coupon() {
 
 function getBandwidth(Slicess) {
     var VPS_SLICE_BW_TEMP = bwSlice.value;
-    var bandwidthamount = VPS_SLICE_BW_TEMP * Slicess;
+    var bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
     var VPS_BW_TYPE_TEMP = bwType.value;
     var VPS_BW_TOTAL_TEMP = bwTotal.value;
     var slice_amount = "Mbps";
@@ -179,20 +179,6 @@ function edit_form() {
 }
 
 function update_vps_choices() {
-    //Latest code starts
-    var sliceText = jQuery("select[name=slices] option:selected").text();
-    var curHdSlice = hdSlice.value;
-    if (platform.value == "kvmstorage") {
-        curHdSlice = hdStorageSlice.value;
-    }
-    var memoryProvidedd = ramSlice.value * sliceText;
-    var spaceProvidedd = curHdSlice * sliceText;
-    var bandWidthProvidedd = getBandwidth(sliceText);
-    jQuery("#no_of_slices").text(sliceText);
-    jQuery("#memory_recommended").text(memoryProvidedd + " MB");
-    jQuery("#storage").text(spaceProvidedd + " GB");
-    jQuery("#Transfer_bandwidth").text(bandWidthProvidedd);
-    //Latest code ends
     /*
 
     if (curControl.value != jQuery("select[name=controlpanel]").val()) {
@@ -415,26 +401,11 @@ function update_vps_choices() {
 
 
 function update_vps_choices_order() {
-    //Latest code starts
-    var sliceText = jQuery("#slices").val();
     if (platform.value != jQuery("#platform").val()) {
         platform.value = jQuery("#platform").val();
         jQuery("#version").html(templates.value["platforms"][platform.value]).trigger("render");
         templateOs.value = jQuery("#version").val();
     }
-    var curHdSlice = hdSlice.value;
-    if (platform.value == "kvmstorage") {
-        curHdSlice = hdStorageSlice.value;
-    }
-    var memoryProvidedd = ramSlice.value * sliceText;
-    var spaceProvidedd = curHdSlice * sliceText;
-    var bandWidthProvidedd = getBandwidth(sliceText);
-    jQuery("#no_of_slices").text(sliceText);
-    jQuery("#memory_recommended").text(memoryProvidedd + " MB");
-    jQuery("#storage").text(spaceProvidedd + " GB");
-    jQuery("#Transfer_bandwidth").text(bandWidthProvidedd);
-    //Latest code ends
-
     if (curControl.value != jQuery("#controlpanel").val()) {
         curControl.value = jQuery("#controlpanel").val();
         if (curControl.value == "cpanel") {
@@ -881,9 +852,9 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray text-center b-radius">
-                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage"></span></div>
-                                    <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended"></span></div>
-                                    <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth"></span></div>
+                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ platform == 'kvmstorage' ? hdStorageslice * slices : hdSlice * slices }} GB</span></div>
+                                    <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span></div>
+                                    <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth(slices) }}</span></div>
                                 </div>
                             </div>
                             <hr>
