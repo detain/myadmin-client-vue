@@ -82,7 +82,7 @@ function editCard(cc_id = 0) {
   $('#EditClick').trigger('click');
 }
 
-function verify_card(cc_id = 0)
+function verifyCard(cc_id = 0)
 {
     $(".v_cc_idx").val(cc_id);
     var verifyDisplay = $('#unver_'+cc_id).attr("data-step");
@@ -95,7 +95,7 @@ function verify_card(cc_id = 0)
     }
 }
 
-function update_payment_method(cc_val, cc_auto = '0')
+function updatePaymentMethod(cc_val, cc_auto = '0')
 {
     if (cc_auto == 1) {
         if ($('#customSwitch3').is(':checked')) {
@@ -308,7 +308,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         ]" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                 <td>
                                     <div class="icheck-success d-inline">
-                                        <input :id="invrow.service_label" :type="invrow.service_line === 1 ? 'checkbox' : 'radio'" :name="invrow.service_line === 1 ? 'services[]' : 'invoices[]'" :value="invrow.service_label" :checked="!invrow.prepay_invoice" class="inv_checkbox" @change="updateTotal(invrow.service_label)">
+                                        <input :id="invrow.service_label" :type="invrow.service_line === 1 ? 'checkbox' : 'radio'" :name="invrow.service_line === 1 ? 'services[]' : 'invoices[]'" :model="invrow.service_label" :checked="!invrow.prepay_invoice" class="inv_checkbox" @change="updateTotal(invrow.service_label)">
                                         <label :for="invrow.service_label"> </label>
                                     </div>
                                 </td>
@@ -325,7 +325,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                     <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
                                         <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
                                         <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
-                                            <input type="hidden" name="inv_id" :value="invrow.invoices_id">
+                                            <input type="hidden" name="inv_id" :model="invrow.invoices_id">
                                         </form>
                                     </template>
                                     <template v-else>
@@ -381,7 +381,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_pymt_method" :value="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <input :id="'cc-' + cc_id" :name="r_pymt_method" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                                                         <label :for="'cc-' + cc_id" class="text-lg pb-2" style="letter-spacing: 4px;">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="pl-4 ml-2">
@@ -514,7 +514,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card">
-                        <input type="hidden" name="csrf_token" :value="csrf_token">
+                        <input type="hidden" name="csrf_token" :model="csrf_token">
                         <input type="hidden" name="action" value="add">
                         <div class="row justify-content-center">
                             <div class="col-12">
@@ -545,7 +545,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" :value="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
+                                    <input type="text" name="name" :model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -553,7 +553,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" :value="contFields.address" placeholder="Address line">
+                                    <input type="text" name="address" :model="contFields.address" placeholder="Address line">
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -561,13 +561,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" :value="contFields.city" placeholder="City">
+                                    <input type="text" name="city" :nodel="contFields.city" placeholder="City">
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" :value="contFields.state" placeholder="State">
+                                    <input type="text" name="state" :model="contFields.state" placeholder="State">
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -582,7 +582,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" :value="contFields.zip" placeholder="Zipcode">
+                                    <input type="text" name="zip" :model="contFields.zip" placeholder="Zipcode">
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -606,12 +606,12 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card" id="EditInfo">
-                        <input type="hidden" name="csrf_token" :value="csrf_token">
+                        <input type="hidden" name="csrf_token" :model="csrf_token">
                         <input type="hidden" name="action" value="edit_info">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" :value="contFields.name" placeholder="You Name">
+                                    <input type="text" name="name" :model="contFields.name" placeholder="You Name">
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -619,7 +619,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" :value="contFields.address" placeholder="Address line">
+                                    <input type="text" name="address" :model="contFields.address" placeholder="Address line">
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -627,7 +627,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="phone" :value="contFields.phone" placeholder="Phone Number" required>
+                                    <input type="text" name="phone" :model="contFields.phone" placeholder="Phone Number" required>
                                     <label class="text-md">Phone</label>
                                 </div>
                             </div>
@@ -635,13 +635,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" :value="contFields.city" placeholder="City">
+                                    <input type="text" name="city" :model="contFields.city" placeholder="City">
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" :value="contFields.state" placeholder="State">
+                                    <input type="text" name="state" :model="contFields.state" placeholder="State">
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -656,7 +656,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" :value="contFields.zip" placeholder="Zipcode">
+                                    <input type="text" name="zip" :model="contFields.zip" placeholder="Zipcode">
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -681,7 +681,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card" id="EditForm">
-                        <input type="hidden" name="csrf_token" :value="csrf_token">
+                        <input type="hidden" name="csrf_token" :model="csrf_token">
                         <input type="hidden" name="action" value="edit">
                         <input id="e_cc_idx" type="hidden" name="idx" value="">
                         <div class="row justify-content-center">
@@ -703,13 +703,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="name" :value="contFields.name" placeholder="Name on card" disabled>
+                                    <input style="border: none;" type="text" name="name" :model="contFields.name" placeholder="Name on card" disabled>
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="address" :value="contFields.address" placeholder="Address line" disabled>
+                                    <input style="border: none;" type="text" name="address" :model="contFields.address" placeholder="Address line" disabled>
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -717,13 +717,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="city" :value="contFields.city" placeholder="City" disabled>
+                                    <input style="border: none;" type="text" name="city" :model="contFields.city" placeholder="City" disabled>
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="state" :value="contFields.state" placeholder="State" disabled>
+                                    <input style="border: none;" type="text" name="state" :model="contFields.state" placeholder="State" disabled>
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -731,13 +731,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" :value="contFields.country" type="text" name="Country" placeholder="Country">
+                                    <input style="border: none;" :model="contFields.country" type="text" name="Country" placeholder="Country">
                                     <label class="text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="zip" :value="contFields.zip" placeholder="Zipcode" disabled>
+                                    <input style="border: none;" type="text" name="zip" :model="contFields.zip" placeholder="Zipcode" disabled>
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -753,13 +753,13 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
         </div>
     </div>
     <form id="defaultpymt" action="cart" method="post">
-        <input type="hidden" name="csrf_token" :value="csrf_token">
+        <input type="hidden" name="csrf_token" :model="csrf_token">
         <input type="hidden" name="action" value="default">
         <input id="defaultpymt_method" type="hidden" name="payment_method" value="">
         <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="">
     </form>
     <form id="deleteForm" action="cart" method="POST">
-        <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
+        <input id="csrf_token" type="hidden" name="csrf_token" :model="csrf_token">
         <input type="hidden" name="action" value="delete">
         <input id="cc_idx" type="hidden" name="idx" value="">
     </form>
