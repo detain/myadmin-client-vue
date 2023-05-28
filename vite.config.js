@@ -7,10 +7,12 @@ import Inspector from 'vite-plugin-vue-inspector'
 //import Inspector from 'unplugin-vue-inspector/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import i18nResources from "vite-plugin-i18n-resources"
+import checker from 'vite-plugin-checker'
 import { resolve } from "path"
 import { fileURLToPath, URL } from 'node:url'
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa'
+import legacy from '@vitejs/plugin-legacy'
 //import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 
 // https://vitejs.dev/config/
@@ -23,6 +25,10 @@ export default defineConfig({
     Inspector(),
     inject({
         jQuery: 'jquery',
+    }),
+    checker({
+	vueTsc: true,
+      typescript: true,
     }),
     AutoImport({
       imports: ['vue', '@vueuse/core']  ,
@@ -37,9 +43,12 @@ export default defineConfig({
     }),
     splitVendorChunkPlugin(),
     VitePWA({ registerType: 'autoUpdate' }),
-    i18nResources({
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
+    /* i18nResources({
       path: resolve(__dirname, "src/locales"),
-    })
+    }) */
   ],
   optimizeDeps: {
       disabled: false,

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
@@ -18,7 +18,6 @@ const modules = ref({});
 const editCcIdx = ref(0);
 const selectedCc = ref('');
 const csrf_token = ref('');
-const cc_id = ref(0);
 const r_pymt_method = ref('');
 const cc_detail = ref({});
 const country_select = ref('');
@@ -34,16 +33,17 @@ const paymentMethodsData = ref({});
 const triggerClick = ref(null);
 const isChecked = ref(false);
 const modulesCounts = ref({});
-const contFields = {
-    cc: ref(''),
-    cc_exp: ref(''),
-    name: ref(''),
-    address: ref(''),
-    city: ref(''),
-    state: ref(''),
-    zip: ref(''),
-    country: ref('')
-};
+const contFields = ref({
+    cc: '',
+    cc_exp: '',
+    name: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    phone: ''
+});
 
 function mounted() {
     if (triggerClick.value) {
@@ -69,17 +69,21 @@ function deleteCard(cc_id = '0') {
 
 function editCard(cc_id = 0) {
     editCcIdx.value = cc_id;
-    for (var key in contFields) {
-        if (data.value.ccs[editCcIdx.value][key]) {
-            contFields[key] = data.value.ccs[editCcIdx.value][key];
+    console.log("Editing CC "+cc_id);
+    console.log(data.value.ccs[cc_id]);
+    for (var key in contFields.value) {
+        console.log("testing key "+key);
+        console.log(data.value.ccs[cc_id][key]);
+        if (data.value.ccs[cc_id][key]) {
+            contFields.value[key] = data.value.ccs[cc_id][key];
         } else if (data.value[key]) {
-            contFields[key] = data.value[key];
+            contFields.value[key] = data.value[key];
         } else {
-            contFields[key] = '';
+            contFields.value[key] = '';
         }
     }
   $("#EditForm select[name='country']").attr('disabled', 'disabled');
-  $('#EditClick').trigger('click');
+  //$('#editcard-modal-'+cc_id).trigger('click');
 }
 
 function verifyCard(cc_id = 0)
@@ -106,7 +110,7 @@ function updatePaymentMethod(cc_val, cc_auto = '0')
     } else {
         $("#defaultpymt_method").val(cc_val);
     }
-    $("#defaultpymt").submit();
+    //$("#defaultpymt").submit();
 }
 
 function formatCardNum(e) {
@@ -373,7 +377,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 p-4 mt-4 ml-5 b-radius card" :style="'border: 1px solid rgba(204, 204, 204, 0.397);' + ((pymt_method == 'cc' && selectedCc == cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : '')">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 p-4 mt-4 ml-5 b-radius card" style="border: 1px solid rgba(204, 204, 204, 0.397);" :style="pymt_method == 'cc' && selectedCc == cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
                                         <div v-if="pymt_method == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
@@ -406,7 +410,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
                                                     </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)" :id="'editcard-modal-'+cc_id"  data-toggle="modal" data-target="#edit-card">
                                                         <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
                                                     </a>
                                                     <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-lg text-success" name="totalccamount"></div>
@@ -683,11 +687,11 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                     <form action="cart" method="post" class="form-card" id="EditForm">
                         <input type="hidden" name="csrf_token" :model="csrf_token">
                         <input type="hidden" name="action" value="edit">
-                        <input id="e_cc_idx" type="hidden" name="idx" value="">
+                        <input id="e_cc_idx" type="hidden" name="idx" :model="editCcIdx">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" id="e_exp" name="cc_exp" value="" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                    <input type="text" id="e_exp" name="cc_exp" :model="contFields.cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
                                     <label class="text-md">Expiry Date</label>
                                 </div>
                             </div>
@@ -695,7 +699,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input style="border: none;letter-spacing: 19.5px;font-weight: bold;" type="text" id="e_cr_no" name="cc" required readonly disabled>
+                                    <input style="border: none;letter-spacing: 19.5px;font-weight: bold;" type="text" id="e_cr_no" name="cc" :model="contFields.cc" required readonly disabled>
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -703,7 +707,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none;" type="text" name="name" :model="contFields.name" placeholder="Name on card" disabled>
+                                    <input style="border: none;" type="text" name="name" :model="contFields.name" placeholder="Name on card">
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
