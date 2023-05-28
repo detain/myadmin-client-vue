@@ -42,7 +42,12 @@ export default defineConfig({
       cache: true,
     }),
     splitVendorChunkPlugin(),
-    VitePWA({ registerType: 'autoUpdate' }),
+    VitePWA({ 
+	registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      }
+    }),
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
