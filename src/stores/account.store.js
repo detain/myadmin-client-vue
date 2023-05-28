@@ -104,7 +104,6 @@ export const useAccountStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/account_settings');
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

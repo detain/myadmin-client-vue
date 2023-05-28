@@ -149,7 +149,6 @@ export const useDomainStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/domains/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

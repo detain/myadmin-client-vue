@@ -41,7 +41,6 @@ export const usePrePayStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/billing/prepays');
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

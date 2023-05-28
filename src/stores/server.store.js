@@ -146,7 +146,6 @@ export const useServerStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/servers/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

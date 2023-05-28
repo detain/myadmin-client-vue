@@ -247,31 +247,31 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                        <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
-                                        <label class="text-md">Name</label>
-                                    </div>
+                                <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
+                                <label class="text-md">Name</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                        <input type="text" name="address" v-model="contFields.address" placeholder="Address line">
-                                        <label class="text-md">Address</label>
-                                    </div>
+                                <input type="text" name="address" v-model="contFields.address" placeholder="Address line">
+                                <label class="text-md">Address</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group">
-                                        <input type="text" name="city" v-model="contFields.city" placeholder="City">
-                                        <label class="text-md">City</label>
-                                    </div>
+                                <input type="text" name="city" v-model="contFields.city" placeholder="City">
+                                <label class="text-md">City</label>
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                        <input type="text" name="state" v-model="contFields.state" placeholder="State">
-                                        <label class="text-md">State</label>
-                                    </div>
+                                <input type="text" name="state" v-model="contFields.state" placeholder="State">
+                                <label class="text-md">State</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -284,9 +284,9 @@ accountStore.load();
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                        <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode">
-                                        <label class="text-md">Zipcode</label>
-                                    </div>
+                                <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode">
+                                <label class="text-md">Zipcode</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -413,9 +413,9 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                        <input type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')">
-                                        <label class="text-md">Card Security Code (CVV / CSV)</label>
-                                    </div>
+                                <input type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')">
+                                <label class="text-md">Card Security Code (CVV / CSV)</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">

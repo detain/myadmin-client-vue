@@ -151,7 +151,6 @@ export const useVpsStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/vps/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

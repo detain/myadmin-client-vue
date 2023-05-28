@@ -202,7 +202,6 @@ export const useWebsiteStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/websites/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

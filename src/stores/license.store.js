@@ -152,7 +152,6 @@ export const useLicenseStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/licenses/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

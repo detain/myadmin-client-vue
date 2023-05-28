@@ -354,7 +354,6 @@ export const useQsStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/qs/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

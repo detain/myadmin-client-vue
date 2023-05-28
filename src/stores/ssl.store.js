@@ -47,7 +47,6 @@ export const useSslStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/ssl/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];

@@ -165,7 +165,6 @@ export const useBackupStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/backups/' + id);
                 this.$reset();
                 let key, value;
-                console.log('api success');
                 console.log(response);
                 for (key in response) {
                     value = response[key];
