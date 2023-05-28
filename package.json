@@ -57,7 +57,6 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@intlify/unplugin-vue-i18n": "*",
     "@sweetalert2/theme-bootstrap-4": "*",
-    "@ttskch/select2-bootstrap4-theme": "*",
     "@unhead/vue": "*",
     "@vueuse/core": "*",
     "admin-lte": "*",
@@ -139,13 +138,16 @@
     "vite-plugin-i18n-resources": "*",
     "vite-plugin-inspect": "*",
     "vite-plugin-pwa": "*",
+    "vite-plugin-chunk-split": "*",
     "vite-plugin-vue-devtools": "*",
     "vite-plugin-vue-inspector": "*",
     "vitest": "latest",
+    "vue-i18n": "*",
     "vue-tsc": "latest",
     "wait-on": "*"
   },
   "suggest": {
+    "@ttskch/select2-bootstrap4-theme": "*",
     "datatables.net-plugins": "*"
   },
   "resolutions": {
