@@ -268,9 +268,6 @@ function login_handler(e) {
         if (twofactor) {
             loginCheckData = loginCheckData + "&2fa_code=" + encodeURIComponent(twofactor);
         }
-        if (host != "cn.interserver.net") {
-            loginCheckData = loginCheckData + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget1));
-        }
         if (emailconf != "") {
             loginCheckData = loginCheckData + "&email_confirmation=" + encodeURIComponent(emailconf);
         }
@@ -286,7 +283,6 @@ function login_handler(e) {
             url: "https://" + window.location.host + newPath + "ajax_check_login.php",
             data: loginCheckData,
             success: function (html) {
-                loading.close();
                 console.log(loginCheckData);
                 console.log(html.substring(0, 8) + " got " + html);
                 if (html.substring(0, 4) == "true") {
@@ -323,8 +319,9 @@ function login_handler(e) {
                     $(".captcha_main_signup").hide();
                     $(".captcha_alt_signup").hide();
                 } else {
-                    if (host != "cn.interserver.net") {
-                        grecaptcha.reset(gcaptchaWidget1);
+                    if (window.location.host != "cn.interserver.net") {
+                        gresponse.value = '';
+                        gresponse2.value = '';
                     }
                     reloadCaptcha(0);
                     $(".loginsubmit, .signupsubmit").attr("disabled", false);
@@ -337,9 +334,9 @@ function login_handler(e) {
                 }
             },
             error: function () {
-                loading.close();
                 $(".loginsubmit, .signupsubmit").prop("disabled", false);
-                grecaptcha.reset(gcaptchaWidget1);
+                gresponse.value = '';
+                gresponse2.value = '';
                 Swal.fire({
                     icon: 'warning',
                     title: 'Error occurred!'
@@ -347,8 +344,6 @@ function login_handler(e) {
             },
             beforeSend: function () {
                 $(".loginsubmit, .signupsubmit").attr("disabled", true);
-                loading;
-
             }
         });
     }
@@ -358,7 +353,7 @@ function login_handler(e) {
 function forgot_password(e) {
     e.preventDefault();
     var username = $("input[name='email']").val();
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var captcha = $("#captchaFP").val();
     if (username == "") {
         $("#forgot-password-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
@@ -375,7 +370,7 @@ function forgot_password(e) {
         $.ajax({
             type: "POST",
             url: "https://" + window.location.host + newPath + "password.php",
-            data: "ajax=1&email=" + encodeURIComponent(username) + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse()) + "&captcha=" + encodeURIComponent(captcha),
+            data: "ajax=1&email=" + encodeURIComponent(username) + "&g-recaptcha-response=" + encodeURIComponent(gresponse) + "&captcha=" + encodeURIComponent(captcha),
             success: function (html) {
                 $("#forgot-password-message").html("");
                 $("#forgot-password-message").html(html);
@@ -406,7 +401,7 @@ function signup_handler(e) {
     var captchaSignup = $("#captcha_signup").val();
     var data_string = "ajax=1";
     var errors = "";
-    var i;
+    var i, n;
     for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != "remember" && items[i].name != "email_confirmation" && items[i].name != "captcha" && items[i].value == "") {
             if (items[i].name == "login_id") {
@@ -434,7 +429,7 @@ function signup_handler(e) {
         })
     } else {
         if (email_conf == "") {
-            data_string = data_string + "&captcha=" + encodeURIComponent(captchaSignup) + "&g-recaptcha-response=" + encodeURIComponent(grecaptcha.getResponse(gcaptchaWidget2));
+            data_string = data_string + "&captcha=" + encodeURIComponent(captchaSignup) + "&g-recaptcha-response=" + encodeURIComponent(gresponse2.value);
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -466,7 +461,8 @@ function signup_handler(e) {
                         $('.email_popup #error-message').html(html);
                     } else {
                         $(".loginsubmit, .signupsubmit").attr("disabled", false);
-                        grecaptcha.reset(gcaptchaWidget2);
+                        gresponse.value = '';
+                        gresponse2.value = '';
                         Swal.fire({
                             icon: 'warning',
                             html: html
@@ -477,7 +473,8 @@ function signup_handler(e) {
                 error: function () {
                     loading.close();
                     $(".loginsubmit, .signupsubmit").prop("disabled", false);
-                    grecaptcha.reset(gcaptchaWidget2);
+                    gresponse.value = '';
+                    gresponse2.value = '';
                     Swal.fire({
                         icon: 'warning',
                         title: 'Error occurred!'

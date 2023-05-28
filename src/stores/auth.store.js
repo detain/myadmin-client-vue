@@ -53,7 +53,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', remember);
+                localStorage.setItem('remember', this.remember);
                 localStorage.setItem('user', JSON.stringify(user));
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
@@ -72,7 +72,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', remember);
+                localStorage.setItem('remember', this.remember);
                 localStorage.setItem('user', JSON.stringify(user));
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
