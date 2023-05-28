@@ -12,7 +12,7 @@ import { resolve } from "path"
 import { fileURLToPath, URL } from 'node:url'
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa'
-import legacy from '@vitejs/plugin-legacy'
+//import legacy from '@vitejs/plugin-legacy'
 //import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 
 // https://vitejs.dev/config/
@@ -27,8 +27,8 @@ export default defineConfig({
         jQuery: 'jquery',
     }),
     checker({
-	vueTsc: true,
-      typescript: true,
+//	vueTsc: true,
+//      typescript: true,
     }),
     AutoImport({
       imports: ['vue', '@vueuse/core']  ,
@@ -44,13 +44,11 @@ export default defineConfig({
     splitVendorChunkPlugin(),
     VitePWA({ 
 	registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      }
+//      devOptions: {
+//        enabled: true
+//      }
     }),
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
+    //legacy({ targets: ['defaults', 'not IE 11'] }),
     /* i18nResources({
       path: resolve(__dirname, "src/locales"),
     }) */

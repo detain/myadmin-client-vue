@@ -1,4 +1,4 @@
-import { createApp, watch } from "vue"
+import { createApp } from "vue"
 import { createPinia } from 'pinia'
 import { VueQueryPlugin } from "vue-query"
 import { createHead } from "@unhead/vue"
