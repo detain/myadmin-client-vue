@@ -1,6 +1,8 @@
 import { createApp, watch } from "vue"
 import { createPinia } from 'pinia'
 import { VueQueryPlugin } from "vue-query"
+import { createHead } from "@unhead/vue"
+import { VueRecaptchaPlugin } from 'vue-recaptcha'
 
 import App from './App.vue'
 import { router } from './router'
@@ -44,9 +46,14 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 
 const app = createApp(App)
 const pinia = createPinia()
+const head = createHead()
 
 app.use(pinia)
 app.use(router)
 app.use(VueQueryPlugin)
-
+app.use(head)
+app.use(VueRecaptchaPlugin, {
+  v2SiteKey: '6LeYMVkUAAAAAOW7Nw0e9rhAxIfH5T9k-JN9pMr2',
+//  v3SiteKey: 'YOUR_V3_SITEKEY_HERE',
+})
 app.mount('#app')

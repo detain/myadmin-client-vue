@@ -14,7 +14,6 @@ const layoutStore = useLayoutStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(layoutStore);
 
-
 $(document).ready(function() {
     /*
     $(".pr-password").passwordRequirements({});

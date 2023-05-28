@@ -4,6 +4,7 @@ import { ref, reactive, computed, onMounted } from 'vue'
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore, useLayoutStore } from '@/stores';
+import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha'
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -13,7 +14,8 @@ const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts } = storeToRefs(authStore);
 const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
 
-
+const gresponse = ref('');
+const gresponse2 = ref('');
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
 const login = ref('');
@@ -482,17 +484,18 @@ function signup_handler(e) {
     return false;
 }
 
+useRecaptchaProvider();
 authStore.load();
 </script>
 
 <template>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="/css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap">
+    <link rel="stylesheet" href="/css/tailwind.min.css">
     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-    <link href="/css/login_new.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login_new.css">
     <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css">
-    <link rel="stylesheet" type="text/css" href="/templates/adminlte/custom_styles.css">
+    <link rel="stylesheet" href="/templates/adminlte/custom_styles.css">
     <div class="p-3 px-3 bg-black"><img src="/images/logo_new.png" alt=""></div>
     <div class="flex flex-grow flex-col-reverse lg:flex-row min-h-screen container-main">
         <div class="w-full lg:w-5/12 lg:block  min-h-full bg-blue-700 marketing-content">
@@ -546,6 +549,7 @@ authStore.load();
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-6 captcha_main">
+                                                    <Checkbox v-model="gresponse" />
                                                     <div id="gcaptcha-1"></div>
                                                     <a href="#" class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" id="captcha_alt_link">Alternate Captcha</a>
                                                 </div>
@@ -749,6 +753,7 @@ authStore.load();
                                                     </div>
                                                 </div>
                                                 <div class="mb-6 captcha_main_signup">
+                                                    <Checkbox v-model="gresponse2" />
                                                     <div id="gcaptcha-2"></div>
                                                     <a href="#" class="font-bold text-sm text-blue-500 hover:text-blue-800 underline" id="captcha_alt_link_signup">Alternate Captcha</a>
                                                 </div>

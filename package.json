@@ -55,6 +55,7 @@
     "@intlify/unplugin-vue-i18n": "*",
     "@sweetalert2/theme-bootstrap-4": "*",
     "@ttskch/select2-bootstrap4-theme": "*",
+    "@unhead/vue": "*",
     "@vueuse/core": "*",
     "admin-lte": "*",
     "axios": "*",
@@ -99,6 +100,7 @@
     "vee-validate": "*",
     "vue": ">=3.2.47",
     "vue-query": "*",
+    "vue-recaptcha": "^3.0.0-alpha.2",
     "vue-router": "*",
     "yaml": ">=2.2.2",
     "yup": "*"
