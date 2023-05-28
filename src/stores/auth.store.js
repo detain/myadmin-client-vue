@@ -22,6 +22,7 @@ export const useAuthStore = defineStore({
             servers: 0
         },
         // initialize state from local storage to enable user to stay logged in
+        remember: localStorage.getItem('remember'),
         user: JSON.parse(localStorage.getItem('user')),
         returnUrl: null
     }),
@@ -52,6 +53,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
+                localStorage.setItem('remember', remember);
                 localStorage.setItem('user', JSON.stringify(user));
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
@@ -70,6 +72,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms );
                 this.user = user;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
+                localStorage.setItem('remember', remember);
                 localStorage.setItem('user', JSON.stringify(user));
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');

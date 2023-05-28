@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 
 const layoutStore = useLayoutStore();
 const authStore = useAuthStore();
-const { logo, captcha, language, counts, opts } = storeToRefs(authStore);
+const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
 const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
 
 const gresponse = ref('');
@@ -21,7 +21,6 @@ const isPasswordVisible = ref(false);
 const login = ref('');
 const password = ref('');
 const tos = ref(false);
-const remember = ref(false);
 const captchaCode = ref('');
 const emailCode = ref('');
 const twoFactorAuthCode = ref('');
@@ -56,15 +55,20 @@ async function onLoginSubmit() {
     const authStore = useAuthStore();
     const loginParams = {
         login: login.value,
-        passwd: password.value
+        passwd: password.value,
+        remember: remember.value
     };
     if (authStore.opts.tfa == true) {
         loginParams.tfa = twoFactorAuthCode.value;
     }
+    if (window.location.host != "cn.interserver.net") {
+        loginParams['g-recaptcha-response'] =  gresponse;
+    }
     console.log('Login Params:');
     console.log(loginParams);
-    await authStore.login(loginParams);
-    loading.close();
+    await authStore.login(loginParams).then(response => {
+        loading.close();
+    });
 }
 
 async function onSignupSubmit() {
@@ -80,15 +84,20 @@ async function onSignupSubmit() {
     const signupParams = {
         login: login.value,
         passwd: password.value,
-        tos: tos.value
+        tos: tos.value,
+        remember: remember.value
     };
     if (authStore.opts.tfa == true) {
         signupParams.tfa = twoFactorAuthCode.value;
     }
+    if (window.location.host != "cn.interserver.net") {
+        signupParams['g-recaptcha-response'] =  gresponse2;
+    }
     console.log('Signup Params:');
     console.log(signupParams);
-    await authStore.signup(signupParams);
-    loading.close();
+    authStore.signup(signupParams).then(response => {
+        loading.close();
+    })
 }
 
 function reloadCaptcha() {
