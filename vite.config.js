@@ -8,7 +8,7 @@ import Inspector from 'vite-plugin-vue-inspector'
 //import Inspector from 'unplugin-vue-inspector/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 //import i18nResources from "vite-plugin-i18n-resources"
-//import checker from 'vite-plugin-checker'
+import checker from 'vite-plugin-checker'
 import { resolve } from "path"
 import { fileURLToPath, URL } from 'node:url'
 import inject from '@rollup/plugin-inject';
@@ -37,11 +37,11 @@ export default defineConfig({
     //i18nResources({
       //path: resolve(__dirname, "src/locales"),
     //}),
-//    checker({
+    checker({
 //	vueTsc: true,
 //      typescript: true,
-//    }), 
-    AutoImport({
+    }), 
+/*    AutoImport({
       imports: ['vue', '@vueuse/core']  ,
       resolvers: [
       ],
@@ -51,22 +51,22 @@ export default defineConfig({
       ],
       vueTemplate: true,
       cache: true,
-    }),
+    }), */
     Inspect(),
     Inspector(),
     VueDevTools(),
-
+/*
     chunkSplitPlugin({
       strategy: 'default', // 'single-vendor','all-in-one', 'unbundle', 'default'
       customChunk: (args)=>{
         // files into pages directory is export in single files
-        let { file, id, moduleId, root } = args;
+        let { file, id, moduleId, root } = args; */
 		//file = file.replace(/^[\.\/]*/, '');
 		//console.log('root:'+root+' file:'+file);
 	//if (file.startsWith('src/views/billing/affiliates/Tos.vue')) {
 		//return 'views-billing-affilites-tos';
 	//} else 
-	if (file.startsWith('src/views/billing/affiliates/')) {
+/*	if (file.startsWith('src/views/billing/affiliates/')) {
 		return 'views-billing-affilites';
         } else if(file.startsWith('src/')){
 		return file.match('src/views/.*'+'/') ? 'views-'+file.split('/')[2] : (file.match('/.*'+'/') ? file.split('/')[1] : 'src');
@@ -85,14 +85,14 @@ export default defineConfig({
         //'utils': [/src\/utils/]
       }
     }),
-
-    splitVendorChunkPlugin(),
+*/
+    //splitVendorChunkPlugin(),
     //legacy({ targets: ['defaults', 'not IE 11'] })
     VitePWA({ 
 	registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      }
+      //devOptions: {
+        //enabled: true
+      //}
     }),
   ],
   optimizeDeps: {
@@ -125,34 +125,19 @@ export default defineConfig({
 */
         manualChunks: {
           datatables: ['datatables.net-bs', 'datatables.net-bs4', 'datatables.net-buttons', 'datatables.net-buttons-bs', 'datatables.net-buttons-bs4', 'datatables.net-dt', 'datatables.net-responsive-bs', 'datatables.net-responsive-bs4', 'datatables.net-searchpanes-bs', 'datatables.net-select', 'datatables.net-select-bs', 'datatables.net-select-bs4', 'datatables.net-vue3', ],
-	jquery: ['jquery', 'jquery-migrate', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 'jquery-ui-dist', ],
-	vite: ['vite', '@vitejs/plugin-legacy', '@vitejs/plugin-vue', 'vite-plugin-checker', 'vite-plugin-chunk-split', 'vite-plugin-i18n-resources', 'vite-plugin-inspect', 'vite-plugin-pwa', 'vite-plugin-vue-devtools', 'vite-plugin-vue-inspector', 'vitest', '@vitest/coverage-c8', '@vitest/ui', ],
-	vue: ['eslint-plugin-vue', '@fortawesome/vue-fontawesome', '@intlify/unplugin-vue-i18n', 'mosha-vue-toastify', '@unhead/vue', 'vue', '@vue/eslint-config-prettier', 'vue-i18n', 'vue-query', 'vue-recaptcha', 'vue-router', '@vue/test-utils', 'vue-tsc', '@vueuse/core', ],
-	bootstrap: ['admin-lte', 'bootstrap', 'select2', 'select2-bootstrap-theme', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', ],
+	jquery: ['jquery', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 
+		//'jquery-ui-dist', 
+	],
+//	vite: ['vite', '@vitejs/plugin-legacy', '@vitejs/plugin-vue', 'vite-plugin-checker', 'vite-plugin-chunk-split','vite-plugin-inspect', 'vite-plugin-pwa', 'vite-plugin-vue-devtools', 'vite-plugin-vue-inspector' ],
+//	vue: ['@fortawesome/vue-fontawesome', 'mosha-vue-toastify', '@unhead/vue', 'vue', 'vue-query', 'vue-recaptcha', 'vue-router',  '@vueuse/core', ],
+	bootstrap: ['admin-lte', 'bootstrap', 'select2', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', ],
 //          ...renderChunks(dependencies),
         },
       },
     },
-      commonjsOptions: { 
-	include: [] 
+      commonjsOptions: {
+	include: []
       }
-  },
-  output: { 
-        manualChunks: (path) => {
-          if (path.includes('datatables.net')) {
-		return 'vendor-datatables';
-	}
-          if (path.includes('jquery')) {
-		return 'vendor-jquery';
-	}
-          if (path.includes('vue')) {
-		return 'vendor-vue';
-	}
-          if (path.includes('node_modules')) {
-		return 'vendor';
-	}
-	return "index";
-	}
   },
   resolve: {
     alias: {
