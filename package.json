@@ -1,7 +1,7 @@
 {
   "name": "myadmin-client-vue",
   "author": "detain",
-  "main": "electron/electron.js",
+  "main": "electron/electron.cjs",
   "version": "0.0.0",
   "private": true,
   "type": "module",
