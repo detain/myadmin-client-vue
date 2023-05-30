@@ -135,7 +135,6 @@
     "typescript": "*",
     "vite": "latest",
     "vite-plugin-checker": "*",
-    "vite-plugin-chunk-split": "*",
     "vite-plugin-i18n-resources": "*",
     "vite-plugin-inspect": "*",
     "vite-plugin-pwa": "*",

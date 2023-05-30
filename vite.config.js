@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { splitVendorChunkPlugin } from 'vite'
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import vue from '@vitejs/plugin-vue'
 import Inspect from 'vite-plugin-inspect'
 import Inspector from 'vite-plugin-vue-inspector'
@@ -14,7 +13,6 @@ import { fileURLToPath, URL } from 'node:url'
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa'
 //import legacy from '@vitejs/plugin-legacy'
-//import { globalExternals } from '@fal-works/esbuild-plugin-global-externals'
 import { dependencies } from './package.json';
 
 function renderChunks(deps) {
@@ -57,37 +55,6 @@ export default defineConfig({
     Inspect(),
     Inspector(),
     VueDevTools(),
-/*
-    chunkSplitPlugin({
-      strategy: 'default', // 'single-vendor','all-in-one', 'unbundle', 'default'
-      customChunk: (args)=>{
-        // files into pages directory is export in single files
-        let { file, id, moduleId, root } = args; */
-		//file = file.replace(/^[\.\/]*/, '');
-		//console.log('root:'+root+' file:'+file);
-	//if (file.startsWith('src/views/billing/affiliates/Tos.vue')) {
-		//return 'views-billing-affilites-tos';
-	//} else 
-/*	if (file.startsWith('src/views/billing/affiliates/')) {
-		return 'views-billing-affilites';
-        } else if(file.startsWith('src/')){
-		return file.match('src/views/.*'+'/') ? 'views-'+file.split('/')[2] : (file.match('/.*'+'/') ? file.split('/')[1] : 'src');
-	//file = file.substring(4);
-          //file = file.replace(/\.[^.$]+$/, '');
-         // return file;
-        } else if (file.match('node_modules/datatables')) {
-		return 'datatables';
-	}
-        return null;
-      }, 
-      customSplitting: {
-        // `react` and `react-dom` will be bundled together in the `react-vendor` chunk (with their dependencies, such as object-assign)
-        'datatables': ['datatables.net', 'datatables.net-dt', 'datatables.net-bs4'],
-        // Any file that includes `utils` in src dir will be bundled in the `utils` chunk
-        //'utils': [/src\/utils/]
-      }
-    }),
-*/
     //splitVendorChunkPlugin(),
     //legacy({ targets: ['defaults', 'not IE 11'] })
     VitePWA({ 
