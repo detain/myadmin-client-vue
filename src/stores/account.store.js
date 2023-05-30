@@ -10,10 +10,8 @@ export const useAccountStore = defineStore({
         accountList: [],
         loading: false,
         error: false,
-        custid: "",
+        custid: 0,
         ima: "client",
-        csrf_token: "",
-        link: "",
         data: {
             account_id: "",
             account_lid: "",
@@ -83,18 +81,13 @@ export const useAccountStore = defineStore({
         },
         oauthadapters: [],
         limits: [],
-        countries: {}
+        gravatar: '',
+        language: 'en-US',
+        countryCurrencies: {},
+        enableLocales: true,
+        enableCurrencies: false, // whether to show the currency dropdown on the contact info page
     }),
     actions: {
-        async getCountries() {
-            try {
-                const response = await fetchWrapper.get(baseUrl + '/account/countries');
-                this.countries = response;
-            } catch (error) {
-                console.log("error:");
-                console.log(error);
-            }
-        },
         async register(user) {
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
@@ -111,7 +104,7 @@ export const useAccountStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/account_settings');
+                const response = await fetchWrapper.get(baseUrl + '/account');
                 this.$reset();
                 let key, value;
                 console.log(response);

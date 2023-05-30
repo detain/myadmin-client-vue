@@ -19,33 +19,119 @@ const newLimit = ref({
 });
 
 async function updateFeatures() {
-
+    try {
+        fetchWrapper.post(`${baseUrl}/account/features`, {
+            disable_reinstall: data.value.disable_reinstall,
+            disable_reset: data.value.disable_reset,
+        }).then(response => {
+            console.log('updateFeatures success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('updateFeatures failed');
+        console.log(error);
+    }
 }
 
 async function update2fa() {
+    try {
+        fetchWrapper.post(`${baseUrl}/account/2fa`, {
+            enableGoogle2fa: data.value['2fa_google_enabled'],
+        }).then(response => {
+            console.log('update2fa success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('update2fa failed');
+        console.log(error);
+    }
 
+}
+
+async function logOutOauth(type) {
+    try {
+        fetchWrapper.get(`${baseUrl}/account/oauth/logout`, {
+            type: type
+        }).then(response => {
+            console.log('unlinkOauth success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('unlinkOauth failed');
+        console.log(error);
+    }
+}
+
+async function unlinkOauth(type) {
+    try {
+        fetchWrapper.delete(`${baseUrl}/account/oauth`, {
+            type: type
+        }).then(response => {
+            console.log('unlinkOauth success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('unlinkOauth failed');
+        console.log(error);
+    }
 }
 
 async function updateSshPublicKey() {
     console.log(data.value.ssh_key);
+    try {
+        fetchWrapper.post(`${baseUrl}/account/sshkey`, {
+            sshKey: data.value.ssh_key
+        }).then(response => {
+            console.log('updateSshPublicKey success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('updateSshPublicKey failed');
+        console.log(error);
+    }
 }
 
 async function generateApiKey() {
-
+    try {
+        fetchWrapper.post(`${baseUrl}/account/apikey`).then(response => {
+            console.log('generateApiKey success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('generateApiKey failed');
+        console.log(error);
+    }
 }
 
-async function submitAddRange(values) {
+async function deleteRange(start, end) {
     try {
-        let message;
-        console.log(newLimit.value.start);
-        console.log(newLimit.value.end);
-        /*const response = await fetchWrapper.post(baseUrl + '/account_settings', {
+        fetchWrapper.delete(`${baseUrl}/account/iplimits`, {
+            start: start,
+            end: end
+        }).then(response => {
+            console.log('delete range success');
+            console.log(response);
         });
-        console.log(response);
-        */
     } catch (error) {
+        console.log('delete range failed');
         console.log(error);
-        //alertStore.error(error);
+    }
+}
+
+
+
+async function addRangeSubmit() {
+    try {
+        fetchWrapper.post(`${baseUrl}/account/iplimits`, {
+            start: newLimit.value.start,
+            end: newLimit.value.end
+        }).then(response => {
+            console.log('add range success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('add range failed');
+        console.log(error);
     }
 }
 
@@ -69,7 +155,7 @@ accountStore.load();
                     Your Remote IP: <b>{{ip}}</b><br>
                     Enabling IP limits will prevent anyone that is not listed below from logging in. Make sure your IP address is static and will not change in the future.
                 </div>
-                <form @submit.prevent="submitAddRange" enctype="multipart/form-data">
+                <form @submit.prevent="addRangeSubmit" enctype="multipart/form-data">
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -83,8 +169,7 @@ accountStore.load();
                                 <td>{{limit.start}}</td>
                                 <td>{{limit.end}}</td>
                                 <td>
-                                    <a v-if="custid" :href="`${link}&csrf_token=${csrf_token}&action=remove&custid=${custid}&start=${limit.start}&end=${limit.end}`" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Remove</a>
-                                    <a v-else :href="`${link}&csrf_token=${csrf_token}&action=remove&start=${limit.start}&end=${limit.end}`" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Remove</a>
+                                    <a @click.prevent="deleteRange(limit.start, limit.end)" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Remove</a>
                                 </td>
                             </tr>
                             <tr>
@@ -187,8 +272,8 @@ accountStore.load();
                             <td>
                                 <span v-if="provider.url">
                                     <a :href="provider.url" target="_blank">{{ provider.url }}</a>
-                                    (<a :href="`?choice=none.account_settings&unlink=${name}&csrf_token=${csrf_token}`">Unlink</a>)
-                                    <span v-if="oauthadapters[name]">(<a :href="`${oauthconfig.callback}?logout=${name}`">Log Out</a>)</span>
+                                    (<a @click.prevent="unlinkOauth(name)">Unlink</a>)
+                                    <span v-if="oauthadapters[name]">(<a @click.prevent="logOutOauth(name)">Log Out</a>)</span>
                                 </span>
                                 <span v-else>
                                     {{ provider.account || '' }}

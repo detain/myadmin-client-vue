@@ -233,7 +233,7 @@ accountStore.load();
             <h5 class="w-50">Select Preferred Payment Method</h5>
             <div class="w-50 text-right">
                 <a href="cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</a>
-                <a href="javascript:void(0);" class="btn btn-custom" @click.prevent="addCardModal()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
+                <a href="javascript:void(0);" class="btn btn-custom" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
             </div>
         </div>`
         <div class="card shadow-sm shadow-hover">
@@ -362,7 +362,7 @@ accountStore.load();
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-12"> <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit()"> </div>
+                        <div class="col-md-12"> <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit"> </div>
                     </div>
                 </form>
             </div>
@@ -455,7 +455,7 @@ accountStore.load();
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-12"> <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit()"> </div>
+                        <div class="col-md-12"> <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit"> </div>
                     </div>
                 </form>
             </div>

@@ -331,7 +331,7 @@ accountStore.load();
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="form-group row">
                                     <label for="invoice_days" class="col-md-4 col-form-label">Filter</label>
-                                    <select id="invoice_days" class="col-md-8 select2 form-control text-left" name="invoice_days" v-model="invoiceDays" @change="submitForm()">
+                                    <select id="invoice_days" class="col-md-8 select2 form-control text-left" name="invoice_days" v-model="invoiceDays" @change="submitForm">
                                         <option value="-1">All Days</option>
                                         <option value="30">30 Days</option>
                                         <option value="60">60 Days</option>
@@ -345,7 +345,7 @@ accountStore.load();
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="form-group row">
                                     <label for="currency_select" class="col-md-6 col-form-label">Currency</label>
-                                    <select id="currency_select" class="col-md-6 select2 form-control text-left" name="currency" v-model="currency" @change="submitForm()">
+                                    <select id="currency_select" class="col-md-6 select2 form-control text-left" name="currency" v-model="currency" @change="submitForm">
                                         <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
                                 </div>
@@ -440,7 +440,7 @@ accountStore.load();
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black;border-radius:50%;padding: 6px 12px;font-size: 18px;">4</span>
                                     <b class="text-lg">Select / Add Credit Card</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" @click.prevent="addCardModal()"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-right" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
                                 </div>
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
@@ -663,7 +663,7 @@ accountStore.load();
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit()">
+                                <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit">
                             </div>
                         </div>
                     </form>
@@ -738,7 +738,7 @@ accountStore.load();
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" @click.prevent="updateInfoSubmit()">
+                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" @click.prevent="updateInfoSubmit">
                             </div>
                         </div>
                     </form>
@@ -819,7 +819,7 @@ accountStore.load();
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit()">
+                                <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit">
                             </div>
                         </div>
                     </form>

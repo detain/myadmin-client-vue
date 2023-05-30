@@ -15,11 +15,27 @@ layoutStore.setPageHeading('Contact Info');
 layoutStore.setTitle('Contact Info');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
 const baseUrl = import.meta.env.VITE_API_URL;
+const route = useRoute();
+const countries = ref({});
+const specialChars = (text) => {
+    return encodeURIComponent(text);
+};
+const zipValue = computed(() => { // Compute the value for the "zip" input based on the data.zip value
+    if (data.value.zip) {
+        return data.value.zip;
+    } else {
+        return "";
+    }
+});
+const escape = (str) => {
+    const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
+    return str.replace(/[&<>"']/g, (m) => map[m]);
+};
 
 async function onSubmit(values) {
     try {
         let message;
-        const response = await fetchWrapper.post(baseUrl + '/contact_info', {
+        const response = await fetchWrapper.post(baseUrl + '/account', {
             name: data.value.name,
             company: data.value.company,
             address: data.value.address,
@@ -55,52 +71,15 @@ async function onSubmit(values) {
     }
 }
 
-const specialChars = (text) => {
-    return encodeURIComponent(text);
-};
-
-const countries = ref({
-    US: "United States",
-    CA: "Canada",
-    MX: "Mexico"
-});
-// Compute the value for the "zip" input based on the data.zip value
-const zipValue = computed(() => {
-    if (data.value.zip) {
-        return data.value.zip;
-    } else {
-        return "";
-    }
-});
-
-const route = useRoute();
-
-const escape = (str) => {
-    const map = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-    };
-    return str.replace(/[&<>"']/g, (m) => map[m]);
-};
-
-const loadContactInfo = async (data,gravatar,countries) => {
-    try {
-        const response = await fetchWrapper.get(baseUrl + '/contact_info');
-        console.log('api success');
-        console.log(response);
-        countries.value = response.countries;
-        //gravatar.value = response.gravatar;
-    } catch (error) {
-        console.log('api failed');
-        console.log(error);
-    }
-};
-
+try {
+    fetchWrapper.get(baseUrl + '/account/countries').then(response => {
+        countries.value = response;
+    })
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
 accountStore.load();
-loadContactInfo(data,gravatar,countries)
 </script>
 
 <template>
