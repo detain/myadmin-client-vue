@@ -46,7 +46,7 @@ function deleteCardModal(cc_id = '0') {
     showCancelButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
+    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
     preConfirm: () => {
         try {
             fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then(response => {
@@ -215,7 +215,6 @@ try {
     console.log("error:");
     console.log(error);
 }
-
 accountStore.load();
 //accountStore.getCountries();
 </script>
@@ -279,6 +278,7 @@ accountStore.load();
         </div>
     </div>
 </div>
+<div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
 <!--ADD CC FORM IN MODAL-->
 <div class="modal fade" id="add-card" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
@@ -369,7 +369,6 @@ accountStore.load();
         </div>
     </div>
 </div>
-<div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
 <!--ADD CC FORM IN MODAL-->
 <div class="d-none" id="EditClick" data-toggle="modal" data-target="#edit-card"></div>
 <!--EDIT CC FORM IN MODAL-->

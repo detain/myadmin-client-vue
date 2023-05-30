@@ -33,7 +33,8 @@ const paymentMethodsData = ref({});
 const triggerClick = ref(null);
 const isChecked = ref(false);
 const modulesCounts = ref({});
-const contFields = ref({
+const countries = ref({});
+const contFields = reactive({
     cc: '',
     cc_exp: '',
     name: '',
@@ -41,8 +42,7 @@ const contFields = ref({
     city: '',
     state: '',
     zip: '',
-    country: '',
-    phone: ''
+    country: 'US'
 });
 
 function mounted() {
@@ -52,7 +52,7 @@ function mounted() {
 }
 
 
-function deleteCard(cc_id = '0') {
+function deleteCardModal(cc_id = '0') {
   $("#cc_idx").val(cc_id);
   const { value: formValues } = Swal.fire({
     type: "warning",
@@ -62,28 +62,82 @@ function deleteCard(cc_id = '0') {
     confirmButtonText: 'Yes, Delete it.',
     html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
     preConfirm: () => {
+        try {
+            fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then(response => {
+                console.log('delete cc success');
+                console.log(response);
+            });
+        } catch (error) {
+            console.log('delete cc failed');
+            console.log(error);
+        }
       $('#deleteForm').submit();
     }
   });
 }
 
-function editCard(cc_id = 0) {
+function addCardSubmit() {
+    try {
+        fetchWrapper.post(`${baseUrl}/account/ccs/add`, {
+            cc: contFields.cc,
+            cc_exp: contFields.cc_exp,
+            name: contFields.name,
+            addresss: contFields.address,
+            city: contFields.city,
+            state: contFields.state,
+            zip: contFields.zip,
+            country: contFields.country,
+        }).then(response => {
+            console.log('add cc success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('add cc failed');
+        console.log(error);
+    }
+}
+
+function editCardSubmit() {
+    try {
+        fetchWrapper.post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
+        cc: contFields.cc,
+        cc_exp: contFields.cc_exp,
+        name: contFields.name,
+        addresss: contFields.address,
+        city: contFields.city,
+        state: contFields.state,
+        zip: contFields.zip,
+        country: contFields.country,
+    }).then(response => {
+            console.log('edit cc success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('edit cc failed');
+        console.log(error);
+    }
+
+}
+
+function addCardModal() {
+    for (var key in contFields) {
+        contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
+    }
+  $('#AddClick').trigger('click');
+}
+
+function editCardModal(cc_id = 0) {
     editCcIdx.value = cc_id;
-    console.log("Editing CC "+cc_id);
-    console.log(data.value.ccs[cc_id]);
-    for (var key in contFields.value) {
-        console.log("testing key "+key);
-        console.log(data.value.ccs[cc_id][key]);
-        if (data.value.ccs[cc_id][key]) {
-            contFields.value[key] = data.value.ccs[cc_id][key];
+    for (var key in contFields) {
+        if (data.value.ccs[editCcIdx.value][key]) {
+            contFields[key] = data.value.ccs[editCcIdx.value][key];
         } else if (data.value[key]) {
-            contFields.value[key] = data.value[key];
+            contFields[key] = data.value[key];
         } else {
-            contFields.value[key] = '';
+            contFields[key] = '';
         }
     }
-  $("#EditForm select[name='country']").attr('disabled', 'disabled');
-  //$('#editcard-modal-'+cc_id).trigger('click');
+  $('#EditClick').trigger('click');
 }
 
 function verifyCard(cc_id = 0)
@@ -166,14 +220,28 @@ function onExpDateInput(e) {
   formatExpDate(e);
 }
 
+
+try {
+    fetchWrapper.get(baseUrl + '/account/countries').then(response => {
+        countries.value = response;
+    })
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
+try {
+    fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
+        console.log(response);
+        paymentMethodsData.value = response.paymentMethodsData
+        invrows.value = response.invrows;
+        modules.value = response.modules;
+        modulesCounts.value = response.modules_counts;
+    });
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
 accountStore.load();
-fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
-    console.log(response);
-    paymentMethodsData.value = response.paymentMethodsData
-    invrows.value = response.invrows;
-    modules.value = response.modules;
-    modulesCounts.value = response.modules_counts;
-});
 
 </script>
 
@@ -372,7 +440,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black;border-radius:50%;padding: 6px 12px;font-size: 18px;">4</span>
                                     <b class="text-lg">Select / Add Credit Card</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-right" @click.prevent="addCardModal()"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
                                 </div>
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
@@ -410,14 +478,14 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom py-1 px-3 btn-xs ml-2" href="payment_types?action=verify" style="text-decoration: none;" :title="cc_detail.unverified_text">
                                                         <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify
                                                     </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)" :id="'editcard-modal-'+cc_id"  data-toggle="modal" data-target="#edit-card">
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom py-1 px-3 btn-sm ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)" :id="'editcard-modal-'+cc_id"  data-toggle="modal" data-target="#edit-card">
                                                         <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit
                                                     </a>
                                                     <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-lg text-success" name="totalccamount"></div>
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || (selectedCc != cc_id || cc_detail.verified_cc == 'no')) && pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)" style="text-decoration: none;">
+                                                    <a v-if="(!selectedCc || (selectedCc != cc_id || cc_detail.verified_cc == 'no')) && pymt_method == 'cc'" class="btn btn-outline-custom py-1 px-3 btn-xs" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none;">
                                                         <i class="fa fa-trash"></i>&nbsp;Delete
                                                     </a>
                                                     <input v-else-if="pymt_method == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px;" value="Pay Now">
@@ -510,6 +578,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
             </div>
         </div>
     </div>
+    <div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
     <div class="modal fade" id="add-card" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -523,7 +592,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')">
+                                    <input type="text" :model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')">
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -533,7 +602,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                            <input type="text" :model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -579,8 +648,9 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    {{ country_select }}
-                                    <!-- <input type="text" name="Country" placeholder="Country"> -->
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;" disabled>
+                                        <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
+                                    </select>
                                     <label class="text-md">Country</label>
                                 </div>
                             </div>
@@ -593,7 +663,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon">
+                                <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit()">
                             </div>
                         </div>
                     </form>
@@ -653,8 +723,9 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    {{ country_select }}
-                                    <!-- <input type="text" name="Country" placeholder="Country"> -->
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;" disabled>
+                                        <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
+                                    </select>
                                     <label class="text-md">Country</label>
                                 </div>
                             </div>
@@ -667,7 +738,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Info" class="btn btn-pay placeicon">
+                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" @click.prevent="updateInfoSubmit()">
                             </div>
                         </div>
                     </form>
@@ -748,7 +819,7 @@ fetchWrapper.get(baseUrl + '/billing/cart').then(response => {
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Card" class="btn btn-pay placeicon">
+                                <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit()">
                             </div>
                         </div>
                     </form>
