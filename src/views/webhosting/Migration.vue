@@ -14,48 +14,23 @@ layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+props.id, 'View Website '+props.id);
 layoutStore.addBreadcrum('/websites/'+props.id+'/', '');
 
-import { ref } from 'vue';
+const csrfToken = ref('');
+const custPortal = ref('');
+const regEmail = ref('');
+const password = ref('');
+const ctrlPanel = ref('');
+const ftpUsername = ref('');
+const ftpPassword = ref('');
+const siteBusyMig = ref('yes');
+const splReqMig = ref('no');
+const domainReg = ref('yes');
+const dataMig = ref('yes');
+const domainRegPortal = ref('');
+const domainRegEmail = ref('');
+const domainRegPassword = ref('');
 
-export default {
-  name: 'MigrationForm',
-  setup() {
-    const csrfToken = ref('');
-    const custPortal = ref('');
-    const regEmail = ref('');
-    const password = ref('');
-    const ctrlPanel = ref('');
-    const ftpUsername = ref('');
-    const ftpPassword = ref('');
-    const siteBusyMig = ref('yes');
-    const splReqMig = ref('no');
-    const domainReg = ref('yes');
-    const dataMig = ref('yes');
-    const domainRegPortal = ref('');
-    const domainRegEmail = ref('');
-    const domainRegPassword = ref('');
-
-    const submitForm = () => {
-      // Handle form submission here
-    };
-
-    return {
-      csrfToken,
-      custPortal,
-      regEmail,
-      password,
-      ctrlPanel,
-      ftpUsername,
-      ftpPassword,
-      siteBusyMig,
-      splReqMig,
-      domainReg,
-      dataMig,
-      domainRegPortal,
-      domainRegEmail,
-      domainRegPassword,
-      submitForm,
-    };
-  },
+const submitForm = () => {
+  // Handle form submission here
 };
 </script>
 

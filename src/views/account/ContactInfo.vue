@@ -17,21 +17,6 @@ layoutStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
 const baseUrl = import.meta.env.VITE_API_URL;
 const route = useRoute();
 const countries = ref({});
-const specialChars = (text) => {
-    return encodeURIComponent(text);
-};
-const zipValue = computed(() => { // Compute the value for the "zip" input based on the data.zip value
-    if (data.value.zip) {
-        return data.value.zip;
-    } else {
-        return "";
-    }
-});
-const escape = (str) => {
-    const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
-    return str.replace(/[&<>"']/g, (m) => map[m]);
-};
-
 async function onSubmit(values) {
     try {
         let message;

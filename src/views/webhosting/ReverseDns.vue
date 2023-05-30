@@ -4,6 +4,8 @@ import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
 const props = defineProps(['id']);
+//const id = ref('');
+const csrf = ref('');
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -13,23 +15,9 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+props.id, 'View Website '+props.id);
 layoutStore.addBreadcrum('/websites/'+props.id+'/', '');
-
-export default {
-  data() {
-    return {
-      id: '', // Replace with appropriate data or pass as props
-      csrf: '', // Replace with appropriate data or pass as props
-      success_msg: '', // Replace with appropriate data or pass as props
-      cancel_queue: '', // Replace with appropriate data or pass as props
-      fields: {}, // Replace with appropriate data or pass as props
-    };
-  },
-  methods: {
-    submitForm() {
-      // Perform necessary form submission logic here
-    },
-  },
-};
+function submitForm() {
+  // Perform necessary form submission logic here
+}
 </script>
 
 <template>
@@ -47,13 +35,13 @@ export default {
           </div>
         </div>
         <div class="card-body">
-          <template v-if="success_msg">
-            <div class="alert alert-success">{{ success_msg }} {{ cancel_queue }}</div>
+          <template v-if="successMsg">
+            <div class="alert alert-success">{{ successMsg }} {{ cancelQueue }}</div>
           </template>
           <form @submit.prevent="submitForm" action="view_website?id={{ id }}&link=reverse_dns" method="POST">
             <input type="hidden" name="link" value="reverse_dns">
             <input type="hidden" name="csrf_token" :value="csrf">
-            <template v-for="(field_details, field_name) in fields">
+            <template v-for="(field_details, field_name, index) in fields" :key="index">
               <template v-if="field_details.help_text">
                 <div class="alert alert-success">{{ field_details.help_text }}</div>
               </template>

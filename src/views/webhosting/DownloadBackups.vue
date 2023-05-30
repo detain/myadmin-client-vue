@@ -3,7 +3,6 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -14,9 +13,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+props.id, 'View Website '+props.id);
 layoutStore.addBreadcrum('/websites/'+props.id+'/', '');
 
-export default {
-  name: 'DownloadBackups',
-  props: {
+const props = defineProps({
     id: {
       type: String,
       required: true,
@@ -25,17 +22,10 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  setup(props) {
-    const isEmpty = (rows) => {
+  });
+  const isEmpty = (rows) => {
       return rows.length === 0;
     };
-
-    return {
-      isEmpty: computed(() => isEmpty(props.rows)),
-    };
-  },
-};
 </script>
 
 <template>
