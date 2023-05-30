@@ -12,7 +12,7 @@ layoutStore.setTitle('Payment Types');
 layoutStore.setTitle('Payment Types');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
 const baseUrl = import.meta.env.VITE_API_URL;
-const { loading, error, custid, ima, link, data, ip, countries} = storeToRefs(accountStore);
+const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref('paypal');
 const selectedCc = ref('');
 const editCcIdx = ref(0);
@@ -20,6 +20,7 @@ const trigger_click = ref(false);
 const current_cc_id = ref(0);
 const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
+const countries = ref({});
 const contFields = reactive({
     cc: '',
     cc_exp: '',
@@ -62,18 +63,17 @@ function deleteCardModal(cc_id = '0') {
 }
 
 function addCardSubmit() {
-    let params = {
-        cc: contFields.cc,
-        cc_exp: contFields.cc_exp,
-        name: contFields.name,
-        addresss: contFields.address,
-        city: contFields.city,
-        state: contFields.state,
-        zip: contFields.zip,
-        country: contFields.country,
-    }
     try {
-        fetchWrapper.post(`${baseUrl}/account/ccs/add`, params).then(response => {
+        fetchWrapper.post(`${baseUrl}/account/ccs/add`, {
+            cc: contFields.cc,
+            cc_exp: contFields.cc_exp,
+            name: contFields.name,
+            addresss: contFields.address,
+            city: contFields.city,
+            state: contFields.state,
+            zip: contFields.zip,
+            country: contFields.country,
+        }).then(response => {
             console.log('add cc success');
             console.log(response);
         });
@@ -84,7 +84,8 @@ function addCardSubmit() {
 }
 
 function editCardSubmit() {
-    let params = {
+    try {
+        fetchWrapper.post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
         cc: contFields.cc,
         cc_exp: contFields.cc_exp,
         name: contFields.name,
@@ -93,9 +94,7 @@ function editCardSubmit() {
         state: contFields.state,
         zip: contFields.zip,
         country: contFields.country,
-    }
-    try {
-        fetchWrapper.post(`${baseUrl}/account/ccs/${editCcIdx.value}`, params).then(response => {
+    }).then(response => {
             console.log('edit cc success');
             console.log(response);
         });
@@ -124,7 +123,6 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
-  $("#EditForm select[name='country']").attr('disabled', 'disabled');
   $('#EditClick').trigger('click');
 }
 
@@ -208,8 +206,18 @@ function onExpDateInput(e) {
   formatExpDate(e);
 }
 
+
+try {
+    fetchWrapper.get(baseUrl + '/account/countries').then(response => {
+        countries.value = response;
+    })
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
+
 accountStore.load();
-accountStore.getCountries();
+//accountStore.getCountries();
 </script>
 
 <template>
@@ -284,7 +292,7 @@ accountStore.getCountries();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit creditcard number')" oninput="setCustomValidity('')">
+                                <input type="text" v-model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit creditcard number')" oninput="setCustomValidity('')">
                                 <label class="text-md">Card Number</label>
                             </div>
                         </div>
@@ -294,7 +302,7 @@ accountStore.getCountries();
                             <div class="row">
                                 <div class="col-6">
                                     <div class="input-group">
-                                        <input type="text" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                        <input type="text" v-model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
                                         <label class="text-md">Expiry Date</label>
                                     </div>
                                 </div>
@@ -340,7 +348,7 @@ accountStore.getCountries();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                <select name="country" v-model="contFields.country" class="form-control" id="country" tabindex=9 style="padding-right: 5px; vertical-align: middle: float: right;">
+                                <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;">
                                     <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                 </select>
                                 <label class="text-md">Country</label>
@@ -434,7 +442,7 @@ accountStore.getCountries();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;">
+                                <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;" disabled>
                                     <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                 </select>
                                 <label class="text-md">Country</label>
