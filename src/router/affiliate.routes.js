@@ -1,4 +1,3 @@
-//import { Layout, Affiliate, Faq, DockSetup, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, WebTraffic, Banners, ViewBanner  from '@/views/billing/affiliates'
 import Layout from '@/views/billing/affiliates/Layout.vue';
 import Affiliate from '@/views/billing/affiliates/Affiliate.vue';
 import Faq from '@/views/billing/affiliates/Faq.vue';
