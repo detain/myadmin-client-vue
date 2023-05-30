@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { storeToRefs } from 'pinia';
+import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAccountStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -10,8 +11,8 @@ layoutStore.setPageHeading('Payment Types');
 layoutStore.setTitle('Payment Types');
 layoutStore.setTitle('Payment Types');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
-const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
-const country_select = ref('');
+const baseUrl = import.meta.env.VITE_API_URL;
+const { loading, error, custid, ima, link, data, ip, countries} = storeToRefs(accountStore);
 const pymt_method = ref('paypal');
 const selectedCc = ref('');
 const editCcIdx = ref(0);
@@ -19,16 +20,16 @@ const trigger_click = ref(false);
 const current_cc_id = ref(0);
 const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
-const contFields = {
-    cc: ref(''),
-    cc_exp: ref(''),
-    name: ref(''),
-    address: ref(''),
-    city: ref(''),
-    state: ref(''),
-    zip: ref(''),
-    country: ref('')
-};
+const contFields = reactive({
+    cc: '',
+    cc_exp: '',
+    name: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: 'US'
+});
 
 function mounted() {
     if (trigger_click.value) {
@@ -36,7 +37,7 @@ function mounted() {
     }
 }
 
-function deleteCard(cc_id = '0') {
+function deleteCardModal(cc_id = '0') {
   $("#cc_idx").val(cc_id);
   const { value: formValues } = Swal.fire({
     type: "warning",
@@ -46,12 +47,73 @@ function deleteCard(cc_id = '0') {
     confirmButtonText: 'Yes, Delete it.',
     html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['mask_cc'] + '</b> ?</p>',
     preConfirm: () => {
+        try {
+            fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then(response => {
+                console.log('delete cc success');
+                console.log(response);
+            });
+        } catch (error) {
+            console.log('delete cc failed');
+            console.log(error);
+        }
       $('#deleteForm').submit();
     }
   });
 }
 
-function editCard(cc_id = 0) {
+function addCardSubmit() {
+    let params = {
+        cc: contFields.cc,
+        cc_exp: contFields.cc_exp,
+        name: contFields.name,
+        addresss: contFields.address,
+        city: contFields.city,
+        state: contFields.state,
+        zip: contFields.zip,
+        country: contFields.country,
+    }
+    try {
+        fetchWrapper.post(`${baseUrl}/account/ccs/add`, params).then(response => {
+            console.log('add cc success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('add cc failed');
+        console.log(error);
+    }
+}
+
+function editCardSubmit() {
+    let params = {
+        cc: contFields.cc,
+        cc_exp: contFields.cc_exp,
+        name: contFields.name,
+        addresss: contFields.address,
+        city: contFields.city,
+        state: contFields.state,
+        zip: contFields.zip,
+        country: contFields.country,
+    }
+    try {
+        fetchWrapper.post(`${baseUrl}/account/ccs/${editCcIdx.value}`, params).then(response => {
+            console.log('edit cc success');
+            console.log(response);
+        });
+    } catch (error) {
+        console.log('edit cc failed');
+        console.log(error);
+    }
+
+}
+
+function addCardModal() {
+    for (var key in contFields) {
+        contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
+    }
+  $('#AddClick').trigger('click');
+}
+
+function editCardModal(cc_id = 0) {
     editCcIdx.value = cc_id;
     for (var key in contFields) {
         if (data.value.ccs[editCcIdx.value][key]) {
@@ -147,6 +209,7 @@ function onExpDateInput(e) {
 }
 
 accountStore.load();
+accountStore.getCountries();
 </script>
 
 <template>
@@ -163,7 +226,7 @@ accountStore.load();
             <h5 class="w-50">Select Preferred Payment Method</h5>
             <div class="w-50 text-right">
                 <a href="cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</a>
-                <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
+                <a href="javascript:void(0);" class="btn btn-custom" @click.prevent="addCardModal()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
             </div>
         </div>`
         <div class="card shadow-sm shadow-hover">
@@ -187,10 +250,10 @@ accountStore.load();
                         <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id">
                             <i class="fa fa-exclamation-triangle"></i> Verify
                         </a>
-                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click="editCard(cc_id)">
+                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
-                        <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click="deleteCard(cc_id)">
+                        <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)">
                             <i class="fa fa-trash"></i> Delete
                         </a>
                     </div>
@@ -277,8 +340,9 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                {{ country_select }}
-                                <!-- <input type="text" name="Country" placeholder="Country"> -->
+                                <select name="country" v-model="contFields.country" class="form-control" id="country" tabindex=9 style="padding-right: 5px; vertical-align: middle: float: right;">
+                                    <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
+                                </select>
                                 <label class="text-md">Country</label>
                             </div>
                         </div>
@@ -290,13 +354,14 @@ accountStore.load();
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-12"> <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon"> </div>
+                        <div class="col-md-12"> <input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit()"> </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
 <!--ADD CC FORM IN MODAL-->
 <div class="d-none" id="EditClick" data-toggle="modal" data-target="#edit-card"></div>
 <!--EDIT CC FORM IN MODAL-->
@@ -369,8 +434,9 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                {{ country_select }}
-                                <!-- <input type="text" name="Country" placeholder="Country"> -->
+                                <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;">
+                                    <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
+                                </select>
                                 <label class="text-md">Country</label>
                             </div>
                         </div>
@@ -382,7 +448,7 @@ accountStore.load();
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-12"> <input type="submit" value="Update Card" class="btn btn-pay placeicon"> </div>
+                        <div class="col-md-12"> <input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit()"> </div>
                     </div>
                 </form>
             </div>
@@ -488,10 +554,6 @@ accountStore.load();
 <form id="VerifyFormDefault" action="payment_types" method="post">
     <input type="hidden" name="action" value="verify">
     <input class="v_cc_idx" type="hidden" name="idx" value="">
-</form>
-<form id="deleteForm" action="payment_types" method="POST">
-    <input type="hidden" name="action" value="delete">
-    <input id="cc_idx" type="hidden" name="idx" value="">
 </form>
 <form id="defaultpymt" action="payment_types" method="post">
     <input type="hidden" name="action" value="default">

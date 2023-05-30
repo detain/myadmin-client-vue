@@ -82,9 +82,19 @@ export const useAccountStore = defineStore({
             providers: {}
         },
         oauthadapters: [],
-        limits: []
+        limits: [],
+        countries: {}
     }),
     actions: {
+        async getCountries() {
+            try {
+                const response = await fetchWrapper.get(baseUrl + '/account/countries');
+                this.countries = response;
+            } catch (error) {
+                console.log("error:");
+                console.log(error);
+            }
+        },
         async register(user) {
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
