@@ -13,53 +13,41 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
-
-export default {
-  data() {
-    return {
-      distroSelect: {},
-      bitsSelect: {},
-      templateSelect: {},
-      currentOS: "",
-      successMsg: "",
-      cancelQueue: "",
-      checkVpsPassword: true,
-      checkAccountPassword: true,
-      csrf: ""
-    };
-  },
-  computed: {
-    goBackLink() {
+const vps_templates = ref({});
+const distroSelect = ref({});
+const bitsSelect = ref({});
+const templateSelect = ref({});
+const currentOS = ref('');
+const checkVpsPassword = ref(true);
+const checkAccountPassword = ref(true);
+const csrf = ref('');
+const goBackLink = computed(() => {
       if (this.module === "vps") {
         return `view_${this.module}`;
       } else {
         return "view_qs";
       }
-    },
-    formAction() {
+    });
+const formAction = computed(() => {
       return `${this.module === "vps" ? "view_vps" : "view_qs"}?id=${this.id}&link=reinstall_os`;
-    }
-  },
-  mounted() {
-    this.distroSelect = vps_templates.distroSelect;
-    this.bitsSelect = vps_templates.bitsSelect;
-    this.templateSelect = vps_templates.templateSelect;
-    this.currentOS = vps_templates.currentOS;
-    this.successMsg = vps_templates.success_msg;
-    this.cancelQueue = vps_templates.cancel_queue;
-    this.checkVpsPassword = vps_templates.checkVpsPassword === true;
-    this.checkAccountPassword = vps_templates.checkAccountPassword === true;
-    this.csrf = vps_templates.csrf;
-  },
-  methods: {
-    updateVPS() {
+    });
+onMounted(() => {
+    this.distroSelect = vps_templates.value.distroSelect;
+    this.bitsSelect = vps_templates.value.bitsSelect;
+    this.templateSelect = vps_templates.value.templateSelect;
+    this.currentOS = vps_templates.value.currentOS;
+    this.successMsg = vps_templates.value.success_msg;
+    this.cancelQueue = vps_templates.value.cancel_queue;
+    this.checkVpsPassword = vps_templates.value.checkVpsPassword === true;
+    this.checkAccountPassword = vps_templates.value.checkAccountPassword === true;
+    this.csrf = vps_templates.value.csrf;
+  });
+function updateVPS() {
       // Perform logic for updating VPS based on selected values
-    },
-    submitForm() {
+    }
+function submitForm() {
       // Handle form submission
     }
-  }
-};
 </script>
 
 <template>
@@ -123,7 +111,7 @@ export default {
                   <label class="col-md-3 col-form-label" for="vps_distro">Operating System Distribution</label>
                   <div class="col-sm-9 input-group">
                     <select id="vps_distro" name="vps_distro" class="form-control form-control-sm select2" @change="updateVPS">
-                      <option v-for="(distro, ky) in distroSelect" :value="ky" :selected="distro.selected">{{ distro.val }}</option>
+                      <option v-for="(distro, ky, index) in distroSelect" :key="index" :value="ky" :selected="distro.selected">{{ distro.val }}</option>
                     </select>
                   </div>
                 </div>
@@ -131,7 +119,7 @@ export default {
                   <label class="col-md-3 col-form-label" for="bits">Architecture</label>
                   <div class="col-sm-9 input-group">
                     <select id="bits" name="bits" @change="updateVPS" class="form-control form-control-sm select2">
-                      <option v-for="(bit, ky) in bitsSelect" :value="ky" :selected="bit.selected">{{ bit.val }}</option>
+                      <option v-for="(bit, ky, index) in bitsSelect" :key="index" :value="ky" :selected="bit.selected">{{ bit.val }}</option>
                     </select>
                   </div>
                 </div>
@@ -139,7 +127,7 @@ export default {
                   <label class="col-md-3 col-form-label" for="template">Version</label>
                   <div class="col-sm-9 input-group">
                     <select id="template" name="template" class="form-control form-control-sm select2">
-                      <option v-for="(template, ky) in templateSelect" :value="ky" :selected="template.selected">{{ template.val }}</option>
+                      <option v-for="(template, ky, index) in templateSelect" :key="index" :value="ky" :selected="template.selected">{{ template.val }}</option>
                     </select>
                   </div>
                 </div>

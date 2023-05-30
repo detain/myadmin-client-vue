@@ -14,36 +14,30 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      additional_hd: "{$additional_hd}",
-      module: "{$module}",
-      id: "{$id}",
-      csrf: "{$csrf}",
-      currency_symbol: "{$currency_symbol}",
-      gbCost: {$gbcost},
-      selectedSpace: 0,
-    };
-  },
-  methods: {
-    getLink() {
+const additional_hd = ref('');
+const module = ref('');
+//const id = ref('');
+const csrf = ref('');
+const currency_symbol = ref('');
+const gbCost = ref('');
+const selectedSpace = ref(0);
+function getLink() {
       if (this.module === "vps") {
         return `view_${this.module}?id=${this.id}`;
       } else {
         return "view_qs";
       }
-    },
-    getAmount() {
+    }
+function getAmount() {
       return (this.selectedSpace * this.gbCost).toFixed(2);
-    },
-    submitForm() {
+    }
+function submitForm() {
       // Process the form submission or make an API request here
-    },
-  },
-  mounted() {
+    }
+onMounted(() => {
     this.selectedSpace = 1;
-  },
+  });
+  /*
   watch: {
     selectedSpace() {
       const sizeInput = document.getElementById("size");
@@ -52,7 +46,7 @@ export default {
       amountInput.value = (this.selectedSpace * this.gbCost).toFixed(2);
     },
   },
-};
+  */
 </script>
 
 <template>

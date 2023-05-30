@@ -14,28 +14,15 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      module: "",
-      goBackLink: "",
-      csrfToken: "",
-      hostname: "",
-    };
-  },
-  mounted() {
-    this.module = "<?php echo $module; ?>";
-    this.goBackLink = this.module === "vps" ? `view_${this.module}` : "view_qs";
-    this.csrfToken = "<?php echo $csrf; ?>";
-    this.hostname = "<?php echo $hostname; ?>";
-  },
-  methods: {
-    submitForm(event) {
-      event.preventDefault();
-      // Perform form submission logic
-    },
-  },
-};
+const module = ref('');
+const goBackLink = ref('');
+const csrfToken = ref('');
+const hostname = ref('');
+
+function submitForm(event) {
+  event.preventDefault();
+  // Perform form submission logic
+}
 </script>
 
 <template>

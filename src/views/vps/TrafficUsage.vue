@@ -3,7 +3,8 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
+import Chart from 'chart.js';
+const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -13,47 +14,30 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
-
-export default {
-  name: 'BandwidthUsage',
-  props: {
-    module: String,
-    id: Number,
-  },
-  computed: {
-    goBackLink() {
-      return this.module === 'vps'
-        ? `view_${this.module}`
-        : 'view_qs';
-    },
-  },
-  setup(props) {
     const todayGraph = ref(null);
     const hourGraph = ref(null);
     const monthGraph = ref(null);
 
-    onMounted(() => {
-      // Initialize and configure the charts
-      const todayChart = new Chart(todayGraph.value.getContext('2d'), { /* Chart configuration */ });
-      const hourChart = new Chart(hourGraph.value.getContext('2d'), { /* Chart configuration */ });
-      const monthChart = new Chart(monthGraph.value.getContext('2d'), { /* Chart configuration */ });
-
-      // Rest of the chart setup code
-      // ...
-
-      // Remember to import any required libraries before using them in the setup
-
-      // Example:
-      // import Chart from 'chart.js';
+const goBackLink = computed(() => {
+      return this.module === 'vps'
+        ? `view_${this.module}`
+        : 'view_qs';
     });
+onMounted(() => {
+  // Initialize and configure the charts
+  const todayChart = new Chart(todayGraph.value.getContext('2d'), { /* Chart configuration */ });
+  const hourChart = new Chart(hourGraph.value.getContext('2d'), { /* Chart configuration */ });
+  const monthChart = new Chart(monthGraph.value.getContext('2d'), { /* Chart configuration */ });
 
-    return {
-      todayGraph,
-      hourGraph,
-      monthGraph,
-    };
-  },
-};
+  // Rest of the chart setup code
+  // ...
+
+  // Remember to import any required libraries before using them in the setup
+
+  // Example:
+  // import Chart from 'chart.js';
+});
+
 </script>
 
 <template>

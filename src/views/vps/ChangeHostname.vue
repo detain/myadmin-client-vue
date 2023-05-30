@@ -13,35 +13,27 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+const hostname = ref('');
+const newHostname = ref('');
+const module = ref('');
+//const id = ref('');
+const csrf = ref('');
 
-export default {
-  data() {
-    return {
-      hostname: "{$hostname}",
-      newHostname: "",
-      module: "{$module}",
-      id: "{$id}",
-      csrf: "{$csrf}"
-    };
-  },
-  methods: {
-    getLink() {
-      if (this.module === "vps") {
-        return `view_${this.module}?id=${this.id}`;
-      } else {
-        return "view_qs";
-      }
-    },
-    submitForm() {
-      const formData = {
-        link: "changeHostname",
-        csrf_token: this.csrf,
-        hostname: this.newHostname
-      };
-      // Process the form submission or make an API request here
-    }
+function getLink() {
+  if (this.module === "vps") {
+    return `view_${this.module}?id=${this.id}`;
+  } else {
+    return "view_qs";
   }
-};
+}
+function submitForm() {
+  const formData = {
+    link: "changeHostname",
+    csrf_token: this.csrf,
+    hostname: this.newHostname
+  };
+  // Process the form submission or make an API request here
+}
 </script>
 
 <template>

@@ -14,35 +14,18 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      action: "",
-      module: "",
-      id: "",
-      goBackLink: "",
-      csrfToken: "",
-      protocols: "",
-      links: [],
-    };
-  },
-  mounted() {
-    this.action = "<?php echo $action; ?>";
-    this.module = "<?php echo $module; ?>";
-    this.id = "<?php echo $id; ?>";
-    this.goBackLink = this.module === "vps" ? `view_${this.module}` : "view_qs";
-    this.csrfToken = "<?php echo $csrf_token; ?>";
-    this.protocols = "<?php echo $protocols; ?>";
-    this.links = <?php echo json_encode($links); ?>;
-  },
-  methods: {
-    submitForm(event) {
+const action = ref('');
+const module = ref('');
+//const id = ref('');
+const goBackLink = ref('');
+const csrfToken = ref('');
+const protocols = ref('');
+const links = ref([]);
+function submitForm(event) {
       // Handle form submission
       event.preventDefault();
       // Perform logic for form submission
-    },
-  },
-};
+    }
 </script>
 
 <template>
@@ -86,7 +69,7 @@ export default {
               </div>
               <div class="col-sm-9 input-group">
                 <select id="image" name="image" class="form-control form-control-sm select2">
-                  <option v-for="link in links" :value="link">{{ link }}</option>
+                  <option v-for="(link,index) in links" :key="index" :value="link">{{ link }}</option>
                 </select>
               </div>
             </div>

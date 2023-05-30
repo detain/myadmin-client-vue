@@ -3,7 +3,14 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
+const props = defineProps({
+    module: String,
+    id: Number,
+    csrf: String,
+    currency_symbol: String,
+    memory: String,
+    hdd: String
+});
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -13,53 +20,35 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+const slices = ref(0);
+const goBackLink = computed(() => {
+  return `${this.module === 'vps' ? 'view_vps' : 'view_qs'}?id=${this.id}`;
+});
+const nowCost = computed(() => {
+  // Calculate and return the now_cost value based on the slices value
+  // Replace the placeholders with the actual calculation logic
+  const baseCost = 0; // Replace with the actual base cost
+  const slicesMultiplier = 1; // Replace with the actual slices multiplier
+  return (baseCost * slicesMultiplier).toFixed(2);
+});
+const diffCost = computed(() => {
+  // Calculate and return the diff_cost value based on the slices value
+  // Replace the placeholders with the actual calculation logic
+  const baseCost = 0; // Replace with the actual base cost
+  const slicesMultiplier = 1; // Replace with the actual slices multiplier
+  return (baseCost * slicesMultiplier).toFixed(2);
+});
+const repeatCost = computed(() => {
+  // Calculate and return the repeat_cost value based on the slices value
+  // Replace the placeholders with the actual calculation logic
+  const baseCost = 0; // Replace with the actual base cost
+  const slicesMultiplier = 1; // Replace with the actual slices multiplier
+  return (baseCost * slicesMultiplier).toFixed(2);
+});
+function submitForm() {
+  // Handle form submission
+}
 
-export default {
-  data() {
-    return {
-      slices: 0,
-    };
-  },
-  computed: {
-    goBackLink() {
-      return `${this.module === 'vps' ? 'view_vps' : 'view_qs'}?id=${this.id}`;
-    },
-    nowCost() {
-      // Calculate and return the now_cost value based on the slices value
-      // Replace the placeholders with the actual calculation logic
-      const baseCost = 0; // Replace with the actual base cost
-      const slicesMultiplier = 1; // Replace with the actual slices multiplier
-      return (baseCost * slicesMultiplier).toFixed(2);
-    },
-    diffCost() {
-      // Calculate and return the diff_cost value based on the slices value
-      // Replace the placeholders with the actual calculation logic
-      const baseCost = 0; // Replace with the actual base cost
-      const slicesMultiplier = 1; // Replace with the actual slices multiplier
-      return (baseCost * slicesMultiplier).toFixed(2);
-    },
-    repeatCost() {
-      // Calculate and return the repeat_cost value based on the slices value
-      // Replace the placeholders with the actual calculation logic
-      const baseCost = 0; // Replace with the actual base cost
-      const slicesMultiplier = 1; // Replace with the actual slices multiplier
-      return (baseCost * slicesMultiplier).toFixed(2);
-    },
-  },
-  props: {
-    module: String,
-    id: Number,
-    csrf: String,
-    currency_symbol: String,
-    memory: String,
-    hdd: String,
-  },
-  methods: {
-    submitForm() {
-      // Handle form submission
-    },
-  },
-};
 </script>
 
 <template>

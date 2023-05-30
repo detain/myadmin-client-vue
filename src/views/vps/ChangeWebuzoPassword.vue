@@ -14,35 +14,20 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      module: "",
-      id: "",
-      goBackLink: "",
-      csrfToken: "",
-      hostname: "",
-      ip: "",
-      ima: "",
-    };
-  },
-  mounted() {
-    this.module = "<?php echo $module; ?>";
-    this.id = "<?php echo $id; ?>";
-    this.goBackLink = this.module === "vps" ? `view_${this.module}` : "view_qs";
-    this.csrfToken = "<?php echo $csrf; ?>";
-    this.hostname = "<?php echo $hostname; ?>";
-    this.ip = "<?php echo $ip; ?>";
-    this.ima = "<?php echo $ima; ?>";
-  },
-  methods: {
-    submitForm(event) {
+const module = ref('');
+//const id = ref('');
+const goBackLink = ref('');
+const csrfToken = ref('');
+const hostname = ref('');
+const ip = ref('');
+const ima = ref('');
+onMounted(() => {
+});
+function submitForm(event) {
       // Handle form submission
       event.preventDefault();
       // Perform logic for form submission
-    },
-  },
-};
+    }
 </script>
 
 <template>

@@ -14,31 +14,17 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      module: 'vps',
-      id: 'your-id',
-      vpsScreenshot: null,
-      setupVncLink: null,
-      novncLink: null
-    };
-  },
-  computed: {
-    moduleLink() {
-      if (this.module === 'vps') {
-        return `view_${this.module}`;
-      } else {
-        return 'view_qs';
-      }
-    }
-  },
-  created() {
-    this.vpsScreenshot = this.$data.vps_screenshot || null;
-    this.setupVncLink = this.$data.setup_vnc_link || null;
-    this.novncLink = this.$data.novnc_link || null;
+const module = ref('vps');
+const vpsScreenshot = ref(null);
+const setupVncLink = ref(null);
+const novncLink = ref(null);
+const moduleLink = computed(() => {
+  if (this.module === 'vps') {
+    return `view_${this.module}`;
+  } else {
+    return 'view_qs';
   }
-};
+});
 </script>
 
 <template>

@@ -14,28 +14,14 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      module: "",
-      goBackLink: "",
-      csrfToken: "",
-      zones: [],
-    };
-  },
-  mounted() {
-    this.module = "<?php echo $module; ?>";
-    this.goBackLink = this.module === "vps" ? `view_${this.module}` : "view_qs";
-    this.csrfToken = "<?php echo $csrf; ?>";
-    this.zones = <?php echo json_encode($zones); ?>;
-  },
-  methods: {
-    submitForm(event) {
-      event.preventDefault();
-      // Perform form submission logic
-    },
-  },
-};
+const module = ref('');
+const goBackLink = ref('');
+const csrfToken = ref('');
+const zones = ref([]);
+function submitForm(event) {
+  event.preventDefault();
+  // Perform form submission logic
+}
 </script>
 
 <template>
@@ -98,7 +84,7 @@ export default {
                 <label class="col-md-3 col-form-label text-right" for="os">Select Timezone</label>
                 <div class="col-sm-9 input-group">
                   <select name="timezone" class="form-control select2">
-                    <option v-for="zone in zones" :value="zone" :selected="zone === 'America/New_York'">{{ zone }}</option>
+                    <option v-for="(zone,index) in zones" :key="index" :value="zone" :selected="zone === 'America/New_York'">{{ zone }}</option>
                   </select>
                 </div>
               </div>

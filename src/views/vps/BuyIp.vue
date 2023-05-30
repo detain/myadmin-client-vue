@@ -14,35 +14,27 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      ipsDetails: {$ips_details|json_encode},
-      buyForm: {$buy_form|json_encode},
-      module: "{$module}",
-      id: "{$id}",
-      csrf: "{$csrf}",
-      ip_currency: "{$ip_currency}",
-      ip_cost: "{$ip_cost}"
-    };
-  },
-  methods: {
-    getLink() {
+const ipsDetails = ref(null);
+const buyForm = ref(null);
+const module = ref(null);
+//const id = ref(null);
+const csrf = ref(null);
+const ip_currency = ref(null);
+const ip_cost = ref(null);
+function getLink() {
       if (this.module === "vps") {
         return `view_${this.module}?id=${this.id}`;
       } else {
         return "view_qs";
       }
-    },
-    submitForm() {
+    }
+function submitForm() {
       const formData = {
         link: "buy_ip",
         csrf_token: this.csrf
       };
       // Process the form submission or make an API request here
     }
-  }
-};
 </script>
 
 <template>

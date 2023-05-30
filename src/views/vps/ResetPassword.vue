@@ -3,7 +3,11 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
+const props = defineProps({
+    module: String,
+    id: Number,
+    csrf: String,
+  });
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -13,29 +17,13 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
-
-export default {
-  data() {
-    return {
-      server: '', // Set the initial value for the server field
-    };
-  },
-  computed: {
-    goBackLink() {
-      return `${this.module === 'vps' ? 'view_' + this.module : 'view_qs'}?id=${this.id}`;
-    },
-  },
-  props: {
-    module: String,
-    id: Number,
-    csrf: String,
-  },
-  methods: {
-    submitForm() {
-      // Handle form submission
-    },
-  },
-};
+const server = ref('');
+const goBackLink = computed(() => {
+  return `${this.module === 'vps' ? 'view_' + this.module : 'view_qs'}?id=${this.id}`;
+});
+function submitForm() {
+  // Handle form submission
+}
 </script>
 
 <template>
