@@ -18,6 +18,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { dependencies } from './package.json';
 
 function renderChunks(deps) {
+console.log("Deps:");
+console.log(deps);
   let chunks = {};
   Object.keys(deps).forEach((key) => {
     if (['react', 'react-router-dom', 'react-dom'].includes(key)) return;
@@ -124,13 +126,10 @@ export default defineConfig({
 	return "index";
 */
         manualChunks: {
-          datatables: ['datatables.net-bs', 'datatables.net-bs4', 'datatables.net-buttons', 'datatables.net-buttons-bs', 'datatables.net-buttons-bs4', 'datatables.net-dt', 'datatables.net-responsive-bs', 'datatables.net-responsive-bs4', 'datatables.net-searchpanes-bs', 'datatables.net-select', 'datatables.net-select-bs', 'datatables.net-select-bs4', 'datatables.net-vue3', ],
-	jquery: ['jquery', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 
-		//'jquery-ui-dist', 
-	],
+          datatables: ['datatables.net-bs', 'datatables.net-bs4', 'datatables.net-dt', 'datatables.net-responsive-bs', 'datatables.net-responsive-bs4', 'datatables.net-select', 'datatables.net-select-bs', 'datatables.net-select-bs4', 'datatables.net-vue3', ],
+	bootstrap: ['admin-lte', 'bootstrap', 'select2', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', 'jquery', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 'vue', 'vue-query', 'vue-recaptcha', 'vue-router',  '@vueuse/core', 'pinia', 'vee-validate'],
+	chartjs: ['chart.js'],
 //	vite: ['vite', '@vitejs/plugin-legacy', '@vitejs/plugin-vue', 'vite-plugin-checker', 'vite-plugin-chunk-split','vite-plugin-inspect', 'vite-plugin-pwa', 'vite-plugin-vue-devtools', 'vite-plugin-vue-inspector' ],
-//	vue: ['@fortawesome/vue-fontawesome', 'mosha-vue-toastify', '@unhead/vue', 'vue', 'vue-query', 'vue-recaptcha', 'vue-router',  '@vueuse/core', ],
-	bootstrap: ['admin-lte', 'bootstrap', 'select2', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', ],
 //          ...renderChunks(dependencies),
         },
       },
