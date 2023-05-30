@@ -4,7 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
-import { ReverseDns } from '@/components/vps';
+import ReverseDns from '@/views/vps/ReverseDns.vue';
 import $ from 'jquery';
 
 const layoutStore = useLayoutStore();
