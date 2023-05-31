@@ -47,21 +47,21 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome": "*",
-    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-free": "*",
     "@fortawesome/fontawesome-free-brands": "*",
     "@fortawesome/fontawesome-free-regular": "*",
     "@fortawesome/fontawesome-free-solid": "*",
     "@fortawesome/fontawesome-free-webfonts": "*",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@fortawesome/fontawesome-svg-core": "*",
+    "@fortawesome/free-solid-svg-icons": "*",
+    "@fortawesome/vue-fontawesome": "*",
     "@intlify/unplugin-vue-i18n": "*",
     "@sweetalert2/theme-bootstrap-4": "*",
     "@unhead/vue": "*",
     "@vueuse/core": "*",
     "admin-lte": "*",
     "axios": "*",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^4.6",
     "datatables.net-bs": "*",
     "datatables.net-bs4": "*",
     "datatables.net-buttons": "*",
@@ -122,7 +122,7 @@
     "electron": "*",
     "electron-builder": "*",
     "electron-devtools-installer": "*",
-    "eslint": "^6.7",
+    "eslint": "*",
     "eslint-plugin-vue": "*",
     "jsdom": "latest",
     "json": "*",
@@ -140,7 +140,7 @@
     "vite-plugin-pwa": "*",
     "vite-plugin-vue-devtools": "*",
     "vite-plugin-vue-inspector": "*",
-    "vitest": "latest",
+    "vitest": "^0.31",
     "vue-i18n": "*",
     "vue-tsc": "latest",
     "wait-on": "*"
@@ -148,16 +148,6 @@
   "suggest": {
     "@ttskch/select2-bootstrap4-theme": "*",
     "datatables.net-plugins": "*"
-  },
-  "resolutions": {
-    "axios": "1.4.0",
-    "bootstrap": "4.6.2",
-    "jquery": "3.6.4",
-    "jquery-ui-dist": "1.13.2",
-    "minimatch": "9.0.1",
-    "moment": "2.29.4",
-    "select2": "4.0.13",
-    "sweetalert2": "11.4.8"
   },
   "stackblitz": {
     "startCommand": "npm run test"
