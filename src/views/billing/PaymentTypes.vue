@@ -1,20 +1,20 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
-import { storeToRefs } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
-import { useAccountStore, useLayoutStore } from '@/stores';
-import $ from 'jquery';
-import Swal from 'sweetalert2';
+import { storeToRefs } from "pinia";
+import { fetchWrapper, snakeToCamel } from "@/helpers";
+import { useAccountStore, useLayoutStore } from "@/stores";
+import $ from "jquery";
+import Swal from "sweetalert2";
 const layoutStore = useLayoutStore();
 const accountStore = useAccountStore();
-layoutStore.setPageHeading('Payment Types');
-layoutStore.setTitle('Payment Types');
-layoutStore.setTitle('Payment Types');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Payment Types'});
+layoutStore.setPageHeading("Payment Types");
+layoutStore.setTitle("Payment Types");
+layoutStore.setTitle("Payment Types");
+layoutStore.setBreadcrums({ "/home": "Home", "": "Payment Types" });
 const baseUrl = import.meta.env.VITE_API_URL;
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
-const pymt_method = ref('paypal');
-const selectedCc = ref('');
+const pymt_method = ref("paypal");
+const selectedCc = ref("");
 const editCcIdx = ref(0);
 const trigger_click = ref(false);
 const current_cc_id = ref(0);
@@ -22,94 +22,103 @@ const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
 const countries = ref({});
 const contFields = reactive({
-    cc: '',
-    cc_exp: '',
-    name: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: 'US'
+    cc: "",
+    cc_exp: "",
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "US"
 });
 
 function mounted() {
     if (trigger_click.value) {
-        $("#unver_{{ current_cc_id }}").attr("data-step", "{{ trigger_click }}").trigger('click');
+        $("#unver_{{ current_cc_id }}")
+            .attr("data-step", "{{ trigger_click }}")
+            .trigger("click");
     }
 }
 
-function deleteCardModal(cc_id = '0') {
-  $("#cc_idx").val(cc_id);
-  const { value: formValues } = Swal.fire({
-    type: "warning",
-    title: '<h3>Delete CreditCard</h3> ',
-    showCancelButton: true,
-    showLoaderOnConfirm: true,
-    confirmButtonText: 'Yes, Delete it.',
-    html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
-    preConfirm: () => {
-        try {
-            fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then(response => {
-                console.log('delete cc success');
-                console.log(response);
-            });
-        } catch (error) {
-            console.log('delete cc failed');
-            console.log(error);
+function deleteCardModal(cc_id = "0") {
+    $("#cc_idx").val(cc_id);
+    const { value: formValues } = Swal.fire({
+        type: "warning",
+        title: "<h3>Delete CreditCard</h3> ",
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: "Yes, Delete it.",
+        html:
+            "<p>Are you sure want to remove your creditcard <br><b>" +
+            data.value.ccs[cc_id]["cc"] +
+            "</b> ?</p>",
+        preConfirm: () => {
+            try {
+                fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then((response) => {
+                    console.log("delete cc success");
+                    console.log(response);
+                });
+            } catch (error) {
+                console.log("delete cc failed");
+                console.log(error);
+            }
+            $("#deleteForm").submit();
         }
-      $('#deleteForm').submit();
-    }
-  });
+    });
 }
 
 function addCardSubmit() {
     try {
-        fetchWrapper.post(`${baseUrl}/account/ccs/add`, {
-            cc: contFields.cc,
-            cc_exp: contFields.cc_exp,
-            name: contFields.name,
-            addresss: contFields.address,
-            city: contFields.city,
-            state: contFields.state,
-            zip: contFields.zip,
-            country: contFields.country,
-        }).then(response => {
-            console.log('add cc success');
-            console.log(response);
-        });
+        fetchWrapper
+            .post(`${baseUrl}/account/ccs/add`, {
+                cc: contFields.cc,
+                cc_exp: contFields.cc_exp,
+                name: contFields.name,
+                addresss: contFields.address,
+                city: contFields.city,
+                state: contFields.state,
+                zip: contFields.zip,
+                country: contFields.country
+            })
+            .then((response) => {
+                console.log("add cc success");
+                console.log(response);
+            });
     } catch (error) {
-        console.log('add cc failed');
+        console.log("add cc failed");
         console.log(error);
     }
 }
 
 function editCardSubmit() {
     try {
-        fetchWrapper.post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
-        cc: contFields.cc,
-        cc_exp: contFields.cc_exp,
-        name: contFields.name,
-        addresss: contFields.address,
-        city: contFields.city,
-        state: contFields.state,
-        zip: contFields.zip,
-        country: contFields.country,
-    }).then(response => {
-            console.log('edit cc success');
-            console.log(response);
-        });
+        fetchWrapper
+            .post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
+                cc: contFields.cc,
+                cc_exp: contFields.cc_exp,
+                name: contFields.name,
+                addresss: contFields.address,
+                city: contFields.city,
+                state: contFields.state,
+                zip: contFields.zip,
+                country: contFields.country
+            })
+            .then((response) => {
+                console.log("edit cc success");
+                console.log(response);
+            });
     } catch (error) {
-        console.log('edit cc failed');
+        console.log("edit cc failed");
         console.log(error);
     }
-
 }
 
 function addCardModal() {
     for (var key in contFields) {
-        contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
+        contFields[key] =
+            data.value[key] && key != "cc" && key != "cc_exp" ? data.value[key] : "";
     }
-  $('#AddClick').trigger('click');
+    $("#AddClick").trigger("click");
 }
 
 function editCardModal(cc_id = 0) {
@@ -120,29 +129,27 @@ function editCardModal(cc_id = 0) {
         } else if (data.value[key]) {
             contFields[key] = data.value[key];
         } else {
-            contFields[key] = '';
+            contFields[key] = "";
         }
     }
-  $('#EditClick').trigger('click');
+    $("#EditClick").trigger("click");
 }
 
-function verifyCard(cc_id = 0)
-{
+function verifyCard(cc_id = 0) {
     $(".v_cc_idx").val(cc_id);
-    verify_display.value = $('#unver_'+cc_id).attr("data-step");
-    if ( typeof verify_display.value === 'undefined') {
-        $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display.value == 'step1') {
-        $('#VerifyFormStep1').trigger('click');
-    } else if(verify_display.value == 'step2') {
-        $('#VerifyClick').trigger('click');
+    verify_display.value = $("#unver_" + cc_id).attr("data-step");
+    if (typeof verify_display.value === "undefined") {
+        $("#VerifyFormStep1").trigger("click");
+    } else if (verify_display.value == "step1") {
+        $("#VerifyFormStep1").trigger("click");
+    } else if (verify_display.value == "step2") {
+        $("#VerifyClick").trigger("click");
     }
 }
 
-function updatePaymentMethod(cc_val, cc_auto = '0')
-{
+function updatePaymentMethod(cc_val, cc_auto = "0") {
     if (cc_auto == 1) {
-        if ($('#customSwitch3').is(':checked')) {
+        if ($("#customSwitch3").is(":checked")) {
             $("#cc_auto_update").val(1);
         } else {
             $("#cc_auto_update").val(0);
@@ -154,63 +161,62 @@ function updatePaymentMethod(cc_val, cc_auto = '0')
 }
 
 function formatCardNum(e) {
-  if (e.target.value == e.target.lastValue) return;
-  var caretPosition = e.target.selectionStart;
-  var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  var parts = [];
-  var i, len;
-  for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
-    parts.push(sanitizedValue.substring(i, i + 4));
-  }
-  for (i = caretPosition - 1; i >= 0; i--) {
-    var c = e.target.value[i];
-    if (c < '0' || c > '9') {
-      caretPosition--;
+    if (e.target.value == e.target.lastValue) return;
+    var caretPosition = e.target.selectionStart;
+    var sanitizedValue = e.target.value.replace(/[^0-9]/gi, "");
+    var parts = [];
+    var i, len;
+    for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
+        parts.push(sanitizedValue.substring(i, i + 4));
     }
-  }
-  caretPosition += Math.floor(caretPosition / 4);
-  e.target.value = e.target.lastValue = parts.join('-');
-  e.target.selectionStart = e.target.selectionEnd = caretPosition;
+    for (i = caretPosition - 1; i >= 0; i--) {
+        var c = e.target.value[i];
+        if (c < "0" || c > "9") {
+            caretPosition--;
+        }
+    }
+    caretPosition += Math.floor(caretPosition / 4);
+    e.target.value = e.target.lastValue = parts.join("-");
+    e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
 function formatExpDate(e) {
-  if (e.target.value == e.target.lastValue) return;
-  var caretPosition = e.target.selectionStart;
-  var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  var parts = [];
-  var i;
-  for (i = 0; i < 2; i += 2) {
-    parts.push(sanitizedValue.substring(i, i + 2));
-  }
-  if (sanitizedValue.length >= 2) {
-    for (var j = 2; j < sanitizedValue.length; j += 5) {
-      parts.push(sanitizedValue.substring(j, j + 5));
+    if (e.target.value == e.target.lastValue) return;
+    var caretPosition = e.target.selectionStart;
+    var sanitizedValue = e.target.value.replace(/[^0-9]/gi, "");
+    var parts = [];
+    var i;
+    for (i = 0; i < 2; i += 2) {
+        parts.push(sanitizedValue.substring(i, i + 2));
     }
-  }
-  for (i = caretPosition - 1; i >= 0; i--) {
-    var c = e.target.value[i];
-    if (c < '0' || c > '9') {
-      caretPosition--;
+    if (sanitizedValue.length >= 2) {
+        for (var j = 2; j < sanitizedValue.length; j += 5) {
+            parts.push(sanitizedValue.substring(j, j + 5));
+        }
     }
-  }
-  caretPosition += Math.floor(caretPosition / 2);
-  e.target.value = e.target.lastValue = parts.join('/');
-  e.target.selectionStart = e.target.selectionEnd = caretPosition;
+    for (i = caretPosition - 1; i >= 0; i--) {
+        var c = e.target.value[i];
+        if (c < "0" || c > "9") {
+            caretPosition--;
+        }
+    }
+    caretPosition += Math.floor(caretPosition / 2);
+    e.target.value = e.target.lastValue = parts.join("/");
+    e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
 function onCardNumInput(e) {
-  formatCardNum(e);
+    formatCardNum(e);
 }
 
 function onExpDateInput(e) {
-  formatExpDate(e);
+    formatExpDate(e);
 }
 
-
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then(response => {
+    fetchWrapper.get(baseUrl + "/account/countries").then((response) => {
         countries.value = response;
-    })
+    });
 } catch (error) {
     console.log("error:");
     console.log(error);
@@ -537,7 +543,7 @@ accountStore.load();
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group">
-                                        <input type="text" name="cc_amount2" >
+                                        <input type="text" name="cc_amount2">
                                         <label class="text-md">Amount 2</label>
                                     </div>
                                 </div>

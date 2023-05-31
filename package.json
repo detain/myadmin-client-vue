@@ -6,7 +6,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "rm -rf dist dist_electron",
+    "clean": "rm -rf dist dist_electron dev-dist",
     "dev": "vite --cors",
     "build:ts": "vue-tsc --noEmit && vite build",
     "build": "vite build",
@@ -108,6 +108,13 @@
     "yup": "*"
   },
   "devDependencies": {
+    "@types/toastr": "*",
+    "@types/jquery": "*",
+    "@types/select2": "*",
+    "@types/tablesorter": "*",
+    "@types/jqueryui": "*",
+    "@types/bootstrap": "*",
+    "@types/overlayscrollbars": "*",
     "@rollup/plugin-inject": "*",
     "@rushstack/eslint-patch": "*",
     "@vitejs/plugin-legacy": "latest",

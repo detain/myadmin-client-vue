@@ -1686,6 +1686,11 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
+"@popperjs/core@^2.9.2":
+  version "2.11.8"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
@@ -1800,6 +1805,13 @@
   resolved "https://registry.yarnpkg.com/@ttskch/select2-bootstrap4-theme/-/select2-bootstrap4-theme-1.5.2.tgz#3b4519b349f3e7831c28752a1e9617312a192656"
   integrity sha512-gAj8qNy/VYwQDBkACm0USM66kxFai8flX83ayRXPNhzZckEgSqIBB9sM74SCM3ssgeX+ZVy4BifTnLis+KpIyg==
 
+"@types/bootstrap@*":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@types/bootstrap/-/bootstrap-5.2.6.tgz#e861b3aa1f4a1434da0bf50fbaa372b6f7e64d2f"
+  integrity sha512-BlAc3YATdasbHoxMoBWODrSF6qwQO/E9X8wVxCCSa6rWjnaZfpkr2N6pUMCY6jj2+wf0muUtLySbvU9etX6YqA==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
+
 "@types/cacheable-request@^6.0.1":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@types/cacheable-request/-/cacheable-request-6.0.3.tgz#a430b3260466ca7b5ca5bfd735693b36e7a9d183"
@@ -1821,6 +1833,11 @@
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.5.tgz#ae69bcbb1bebb68c4ac0b11e9d8ed04526b3562b"
   integrity sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==
+
+"@types/cldrjs@*":
+  version "0.4.24"
+  resolved "https://registry.yarnpkg.com/@types/cldrjs/-/cldrjs-0.4.24.tgz#50ee2f072231468cb8982d97856d967b217dadc6"
+  integrity sha512-IXH0rekSjPD0ZDz4gb5U52PW/Fi64vE7C1Q8p2aYAAuzxkGhqux1BZlm+BA5vpV2MmpXhT80MsvYFJxJ+6zNrg==
 
 "@types/debug@^4.1.6":
   version "4.1.8"
@@ -1854,6 +1871,13 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/globalize@*":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@types/globalize/-/globalize-1.5.2.tgz#facc6b0e03ae257f9a5c488b74f477eb9fd1e5d6"
+  integrity sha512-h4+lLnsttn12wOuUs0WuVJie5Lg+H/0WMaOSSgwycOOmA2Ukj/fX+GkvNcjw1OY5CtViCCEBc3xClsXInL/r9g==
+  dependencies:
+    "@types/cldrjs" "*"
+
 "@types/http-cache-semantics@*":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
@@ -1863,6 +1887,20 @@
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
   integrity sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==
+
+"@types/jquery@*":
+  version "3.5.16"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.16.tgz#632131baf30951915b0317d48c98e9890bdf051d"
+  integrity sha512-bsI7y4ZgeMkmpG9OM710RRzDFp+w4P1RGiIt30C1mSBT+ExCleeh4HObwgArnDFELmRrOpXgSYN9VF1hj+f1lw==
+  dependencies:
+    "@types/sizzle" "*"
+
+"@types/jqueryui@*":
+  version "1.12.17"
+  resolved "https://registry.yarnpkg.com/@types/jqueryui/-/jqueryui-1.12.17.tgz#afc9b3c12456995989a8562c67c9f631e79b60fc"
+  integrity sha512-rqiCaZO7d1rAcJVXNSV6MYwt42oB4ArTRr0QbU3f4+Siv0d6m9uRkhiKHpc6oL9NFJKDxzIIDvUeMXTtlJFFaA==
+  dependencies:
+    "@types/jquery" "*"
 
 "@types/keyv@^3.1.4":
   version "3.1.4"
@@ -1891,6 +1929,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.16.tgz#3b64862856c7874ccf7439e6bab872d245c86d8e"
   integrity sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==
 
+"@types/overlayscrollbars@*":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@types/overlayscrollbars/-/overlayscrollbars-1.12.1.tgz#fb637071b545834fb12aea94ee309a2ff4cdc0a8"
+  integrity sha512-V25YHbSoKQN35UasHf0EKD9U2vcmexRSp78qa8UglxFH8H3D+adEa9zGZwrqpH4TdvqeMrgMqVqsLB4woAryrQ==
+
 "@types/plist@^3.0.1":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@types/plist/-/plist-3.0.2.tgz#61b3727bba0f5c462fe333542534a0c3e19ccb01"
@@ -1913,10 +1956,39 @@
   dependencies:
     "@types/node" "*"
 
+"@types/select2@*":
+  version "4.0.57"
+  resolved "https://registry.yarnpkg.com/@types/select2/-/select2-4.0.57.tgz#367b8d014634cb6efda48751983f6846709bfb64"
+  integrity sha512-PHb583xz2buudAxR2ztkBe7GhxgLQOXJ9rzIpglGOMnrwn58Ph7lG933fYdzJfWbfW57iA1upXDOv4wzNJRHRQ==
+  dependencies:
+    "@types/jquery" "*"
+
 "@types/semver@^7.3.6":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.0.tgz#591c1ce3a702c45ee15f47a42ade72c2fd78978a"
   integrity sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==
+
+"@types/sizzle@*":
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.3.tgz#ff5e2f1902969d305225a047c8a0fd5c915cebef"
+  integrity sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==
+
+"@types/tablesorter@*":
+  version "2.31.2"
+  resolved "https://registry.yarnpkg.com/@types/tablesorter/-/tablesorter-2.31.2.tgz#ee329db7260dc0eeedd2bb04a2a219db12e21d8d"
+  integrity sha512-LFWafP8klqcttMBfrL/WTo3mR8SHI5sHXh9MaHKaDgR/Uu5OomktM2VBaX472AvDAJNUBYrnWDLuqnBlS9kdIw==
+  dependencies:
+    "@types/globalize" "*"
+    "@types/jquery" "*"
+    "@types/jqueryui" "*"
+    "@types/select2" "*"
+
+"@types/toastr@*":
+  version "2.1.40"
+  resolved "https://registry.yarnpkg.com/@types/toastr/-/toastr-2.1.40.tgz#96d006198ff70285c52a6fb675d129b8ae6b4bc0"
+  integrity sha512-i/AL6/g8Jiraz/Ev1jG4oYw95kshz4yLbP7GvY5T0cfUrs1mbsE7v4DpOYdg54wCMmcWrCGzQOOWW5upIogMrQ==
+  dependencies:
+    "@types/jquery" "*"
 
 "@types/trusted-types@^2.0.2":
   version "2.0.3"
@@ -8316,7 +8388,7 @@ vite-plugin-vue-inspector@*, vite-plugin-vue-inspector@^3.4.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@^0.31.2:
+vitest@^0.31:
   version "0.31.2"
   resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.31.2.tgz#7db9232161b782eed80cb2957687daf852589046"
   integrity sha512-O0qKHDbI+zXxwq1WOeqFjxP5v1mDqqM6gllPuOUJkK2YFyQ2nEo8CELR4Mg68ryTSSh527ysBmEN69bDvL2LkQ==
