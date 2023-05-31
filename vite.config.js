@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import VueDevTools from "vite-plugin-vue-devtools";
-import { splitVendorChunkPlugin } from "vite";
 import vue from "@vitejs/plugin-vue";
 import Inspect from "vite-plugin-inspect";
 import Inspector from "vite-plugin-vue-inspector";
@@ -13,9 +12,11 @@ import { fileURLToPath, URL } from "node:url";
 import inject from "@rollup/plugin-inject";
 import { VitePWA } from "vite-plugin-pwa";
 //import legacy from '@vitejs/plugin-legacy'
-import { dependencies } from "./package.json";
+//import { dependencies } from "./package.json";
+import webfontDownload from 'vite-plugin-webfont-dl';
+//import { splitVendorChunkPlugin } from "vite";
 
-function renderChunks(deps) {
+/*function renderChunks(deps) {
     console.log("Deps:");
     console.log(deps);
     let chunks = {};
@@ -24,7 +25,7 @@ function renderChunks(deps) {
         chunks[key] = [key];
     });
     return chunks;
-}
+}*/
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +36,8 @@ export default defineConfig({
                 defineModel: true
             }
         }),
+        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
+        webfontDownload(),
         inject({
             jQuery: "jquery"
         }),
