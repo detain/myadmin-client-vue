@@ -14,32 +14,18 @@ layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
 layoutStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
 layoutStore.addBreadcrum('/domains/'+props.id+'/', '');
 
-export default {
-  setup() {
-    const id = ref('{$id}');
-    const ima = ref('{$ima}');
-    const custid = ref('{$custid}');
-    const csrfToken = ref('{$csrf_token}');
-    const tabIndex = ref(0);
-    const formFields = ref({$form_fields});
-    const domainFields = ref({$domain_fields});
+//const id = ref('');
+const ima = ref('');
+const custid = ref('');
+const csrfToken = ref('');
+const tabIndex = ref(0);
+const formFields = ref({});
+const domainFields = ref({});
 
-    const updateContact = () => {
-      // Handle contact update logic here
-    };
-
-    return {
-      id,
-      ima,
-      custid,
-      csrfToken,
-      tabIndex,
-      formFields,
-      domainFields,
-      updateContact
-    };
-  }
+const updateContact = () => {
+  // Handle contact update logic here
 };
+
 </script>
 
 <template>
@@ -73,7 +59,7 @@ export default {
                 </template>
                 <template v-else-if="domainFields[fieldName].input && domainFields[fieldName].input[0] === 'select'">
                   <select :name="fieldName" class="form-control form-control-sm select2" :tabindex="++tabIndex">
-                    <option v-for="(displayName, val) in domainFields[fieldName].input[1]" :value="val" :selected="domainFields[fieldName].value === val">{{ displayName }}</option>
+                    <option v-for="(displayName, val, index) in domainFields[fieldName].input[1]" :key="index" :value="val" :selected="domainFields[fieldName].value === val">{{ displayName }}</option>
                   </select>
                 </template>
                 <template v-if="domainFields[fieldName].tip">

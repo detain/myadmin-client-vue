@@ -3,6 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
+import Swal from 'sweetalert2';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,25 +15,17 @@ layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
 layoutStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
 layoutStore.addBreadcrum('/domains/'+props.id+'/', '');
 
-import Swal from 'sweetalert2';
-
-export default {
-  data() {
-    return {
-      id: "{$id}",
-      suggested: "{$suggested}",
-      nameservers: "{$nameservers}",
-      registered_nameservers: "{$registered_nameservers}",
-      domain_id: "{$domain_id}",
-      csrf_token: "{$csrf_token}",
-      csrf_token1: "{$csrf_token1}",
-    };
-  },
-  mounted() {
+//const id = ref("{$id}");
+const suggested = ref("{$suggested}");
+const nameservers = ref("{$nameservers}");
+const registered_nameservers = ref("{$registered_nameservers}");
+const domain_id = ref("{$domain_id}");
+const csrf_token = ref("{$csrf_token}");
+const csrf_token1 = ref("{$csrf_token1}");
+onMounted(() => {
     this.initializeToast();
-  },
-  methods: {
-    initializeToast() {
+  });
+function initializeToast() {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-middle',
@@ -54,14 +47,14 @@ export default {
           });
         }
       });
-    },
-    updateNameservers() {
+    }
+function updateNameservers() {
       // Handle update nameservers form submission
-    },
-    saveNameservers() {
+    }
+function saveNameservers() {
       // Handle save nameservers form submission
-    },
-    confirmDeleteDialog(domain_id, nameserver_id) {
+    }
+function confirmDeleteDialog(domain_id, nameserver_id) {
       Swal.fire({
         type: "error",
         title: '<h3>Delete nameserver</h3>',
@@ -76,9 +69,7 @@ export default {
           window.location.href = `view_domain?id=${domain_id}&link=nameservers&delete_registered=${nameserver_id}`;
         }
       });
-    },
-  },
-};
+    }
 </script>
 
 <template>

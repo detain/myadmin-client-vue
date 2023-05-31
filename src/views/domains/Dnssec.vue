@@ -3,6 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
+import Swal from 'sweetalert2';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,11 +15,9 @@ layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
 layoutStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
 layoutStore.addBreadcrum('/domains/'+props.id+'/', '');
 
-export default {
-  setup() {
-    const id = ref('{$id}');
-    const domainId = ref('{$domain_id}');
-    const csrfToken = ref('{$csrf_token}');
+//const id = ref('{$id}');
+const domainId = ref('{$domain_id}');
+const csrfToken = ref('{$csrf_token}');
 
     const confirmDialog = (e) => {
       e.preventDefault();
@@ -48,16 +47,6 @@ export default {
       document.getElementById(displayId).innerHTML = `Characters left: <b>${limit - event.target.value.length}</b>`;
     };
 
-    return {
-      id,
-      domainId,
-      csrfToken,
-      confirmDialog,
-      showAddDnsContent,
-      checkCharacterLimit
-    };
-  }
-};
 </script>
 
 <template>

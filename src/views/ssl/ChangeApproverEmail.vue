@@ -14,25 +14,14 @@ layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
 layoutStore.addBreadcrum('/ssl/'+props.id, 'View SSL '+props.id);
 layoutStore.addBreadcrum('/ssl/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      id: '', // Replace with appropriate data or pass as props
-      csrf_token: '', // Replace with appropriate data or pass as props
-      service_info: {
-        ssl_hostname: '', // Replace with appropriate data or pass as props
-        ssl_approver_email: '', // Replace with appropriate data or pass as props
-      },
-      approver_select: [], // Replace with appropriate data or pass as props
-      selectedApproverEmail: '', // Stores the selected approver email
-    };
-  },
-  methods: {
-    submitForm() {
+//const id = ref(''); // Replace with appropriate data or pass as props
+const csrf_token = ref(''); // Replace with appropriate data or pass as props
+const approver_select = ref([]); // Replace with appropriate data or pass as props
+const selectedApproverEmail = ref(''); // Stores the selected approver email
+const service_info = ref({});
+function submitForm() {
       // Perform necessary form submission logic here
-    },
-  },
-};
+    }
 </script>
 
 <template>

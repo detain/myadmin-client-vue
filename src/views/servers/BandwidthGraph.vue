@@ -14,28 +14,15 @@ layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
 layoutStore.addBreadcrum('/servers/'+props.id, 'View Server '+props.id);
 layoutStore.addBreadcrum('/servers/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      errorMsg: '', // Replace with actual data property
-      id: '', // Replace with actual data property
-      graphs: {}, // Replace with actual data property
-      graphTitle: '', // Replace with actual data property
-      graphLink: '', // Replace with actual data property
-      ranges: {}, // Replace with actual data property
-    };
-  },
-  methods: {
-    toggleCollapse(name) {
+const errorMsg = ref('');
+//const id = ref('');
+const graphs = ref({});
+const graphTitle = ref('');
+const graphLink = ref('');
+const ranges = ref({});
+function toggleCollapse(name) {
       // Add the toggle collapse logic here
-    },
-  },
-  filters: {
-    capitalize(value) {
-      // Add the capitalize filter logic here
-    },
-  },
-};
+    }
 </script>
 
 <template>
@@ -59,7 +46,7 @@ export default {
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title py-2">
-                    <i class="fa fa-line-chart">&nbsp;</i>{{ name | capitalize }} {{ graphTitle }}
+                    <i class="fa fa-line-chart">&nbsp;</i>{{ name }} {{ graphTitle }}
                   </h3>
                   <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCollapse(name)">

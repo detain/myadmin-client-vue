@@ -14,33 +14,18 @@ layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
 layoutStore.addBreadcrum('/licenses/'+props.id, 'View License '+props.id);
 layoutStore.addBreadcrum('/licenses/'+props.id+'/', '');
 
+//const id = ref('');
+const csrfToken = ref('');
+const licenseType = ref('');
+const lid = ref('');
+const osList = ref({});
+const existingOS = ref('');
+const selectedOS = ref(existingOS.value);
 
-export default {
-  setup() {
-    const id = ref('{$id}');
-    const csrfToken = ref('{$csrf_token}');
-    const licenseType = ref('{$license_type}');
-    const lid = ref('{$lid}');
-    const osList = ref({$os_list});
-    const existingOS = ref('{$existing_os}');
-    const selectedOS = ref(existingOS.value);
+function submitForm() {
+  // Handle form submission logic here
+}
 
-    const submitForm = () => {
-      // Handle form submission logic here
-    };
-
-    return {
-      id,
-      csrfToken,
-      licenseType,
-      lid,
-      osList,
-      existingOS,
-      selectedOS,
-      submitForm
-    };
-  }
-};
 </script>
 
 <template>

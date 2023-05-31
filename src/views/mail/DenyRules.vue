@@ -14,17 +14,14 @@ layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
 layoutStore.addBreadcrum('/mail/'+props.id, 'View Mail '+props.id);
 layoutStore.addBreadcrum('/mail/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      id: '', // Initialize with the appropriate value
-      csrfToken: '', // Initialize with the appropriate value
-      spam: [], // Initialize with the appropriate value
-      blockAction: '',
-      blockId: '',
-      blockData: '',
-      modalTitle: '',
-      blockTypes: [
+//const id = ref('');
+const csrfToken = ref('');
+const spam = ref([]);
+const blockAction = ref('');
+const blockId = ref('');
+const blockData = ref('');
+const modalTitle = ref('');
+const blockTypes = ref([
         {
           label: 'Sender Domain',
           value: 'domain',
@@ -45,14 +42,11 @@ export default {
           value: 'destination',
           example: 'example: noreply@domain.com',
         },
-      ],
-    };
-  },
-  methods: {
-    empty(value) {
+      ]);
+function empty(value) {
       return value.length === 0;
-    },
-    editBlock(action, id, type, data) {
+    }
+function editBlock(action, id, type, data) {
       this.blockAction = action;
       this.blockId = id;
       this.blockData = data;
@@ -61,15 +55,13 @@ export default {
       if (typeInput) {
         typeInput.checked = true;
       }
-    },
-    loadEmail(id) {
+    }
+function loadEmail(id) {
       // Implement the loadEmail functionality
-    },
-    submitBlock() {
+    }
+function submitBlock() {
       // Implement the submitBlock functionality
-    },
-  },
-};
+    }
 </script>
 
 <template>

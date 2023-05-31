@@ -14,23 +14,15 @@ layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
 layoutStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
 layoutStore.addBreadcrum('/domains/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      currencySymbol: '{$currencySymbol}',
-      whoisCost: {$whoisCost|round:"2"|number_format:"2"},
-      domain: '{$domain}',
-      id: '{$id}',
-      contactPrivacyCost: '$5.00',
-    };
-  },
-  methods: {
-    placeOrder() {
+const currencySymbol = ref('$');
+const whoisCost = ref(0);
+const domain = ref('');
+//const id = ref('');
+const contactPrivacyCost = ref(5.00);
+function placeOrder() {
       // Handle the form submission
       // ...
-    },
-  },
-};
+    }
 </script>
 
 <template>

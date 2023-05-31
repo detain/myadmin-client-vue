@@ -3,6 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
+import $ from 'jquery';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,32 +15,24 @@ layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
 layoutStore.addBreadcrum('/mail/'+props.id, 'View Mail '+props.id);
 layoutStore.addBreadcrum('/mail/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      alerts: [], // Replace with actual data
-      types_sel: {}, // Replace with actual data
-      id: '', // Replace with actual data
-      csrfToken: '', // Replace with actual data
-      defaultTo: '', // Replace with actual data
-      action: '',
-      alertId: '',
-      selectedType: '',
-      value: '',
-      to: '',
-      enabled: false,
-    };
-  },
-  computed: {
-    modalTitle() {
+const alerts = ref([]);
+const types_sel = ref({});
+//const id = ref('');
+const csrfToken = ref('');
+const defaultTo = ref('');
+const action = ref('');
+const alertId = ref('');
+const selectedType = ref('');
+const value = ref('');
+const to = ref('');
+const enabled = ref(false);
+const modalTitle = computed(() => {
       return this.action === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
-    },
-    isEmpty() {
+    });
+const isEmpty = computed(() => {
       return this.alerts.length === 0;
-    },
-  },
-  methods: {
-    editAlert(act, id, type, value, to, enabled = false) {
+    });
+function editAlert(act, id, type, value, to, enabled = false) {
       this.action = act;
       this.alertId = id;
       this.selectedType = type;
@@ -48,12 +41,10 @@ export default {
       this.enabled = enabled === 1;
 
       $("#type").select2().trigger('change');
-    },
-    submitBlock() {
+    }
+function submitBlock() {
       // Handle form submission here
-    },
-  },
-};
+    }
 </script>
 
 <template>

@@ -14,79 +14,69 @@ layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
 layoutStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
 layoutStore.addBreadcrum('/domains/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      renewCost: "{$formValues.renewCost}",
-      whoisCost: "{$formValues.whoisCost}",
-      formValues: {
+const renewCost = ref("{$formValues.renewCost}");
+const whoisCost = ref("{$formValues.whoisCost}");
+const whoisPrivacy = ref("{$whoisPrivacy}");
+const currencySymbol = ref("{$currencySymbol}");
+const csrfToken = ref("{$csrf_token}");
+const formValues = ref({
         serviceInfo: {
           domain_hostname: "{$formValues.serviceInfo.domain_hostname}",
         },
         expireDate: "{if !is_null($formValues.expireDate)}{$formValues.expireDate}{/if}",
         domain_id: "{$formValues.domain_id}",
-      },
-      tldInfo: {
+      });
+const tldInfo = ref({
         tld_grace_period: "{$tldInfo.tld_grace_period}",
         tld_whois_privacy_available: "{$tldInfo.tld_whois_privacy_available}",
-      },
-      whoisPrivacy: "{$whoisPrivacy}",
-      currencySymbol: "{$currencySymbol}",
-      csrfToken: "{$csrf_token}",
-    };
-  },
-  computed: {
-    renewCostFormatted() {
+      });
+const renewCostFormatted = computed(() => {
       return parseFloat(this.renewCost).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    whoisCostFormatted() {
+    });
+const whoisCostFormatted = computed(() => {
       return parseFloat(this.whoisCost).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-  },
-  methods: {
-    placeOrder() {
+});
+function placeOrder() {
       // Handle form submission
-    },
-    renewCalculate() {
+    }
+function renewCalculate() {
       // Calculate renew cost
-    },
-  },
-};
+    }
 </script>
 
 <template>
   <div class="row">
     <div class="col-md-12">
       <div class="card shadow-none w-100 bg-white p-2 mb-2" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
-        <p class="m-0 text-md">
+        <div class="m-0 text-md">
           <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #1:</b>&nbsp;Domain should be renewed on or before expiry date.
           <div class="card-tools float-right">
             <button type="button" class="btn btn-tool" data-card-widget="remove">
               <i class="fas fa-times"></i>
             </button>
           </div>
-        </p>
+        </div>
       </div>
       <div class="card shadow-none w-100 bg-white p-2 mb-2" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
-        <p class="m-0 text-md">
+        <div class="m-0 text-md">
           <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired and have grace period of <b>{{ tldInfo.tld_grace_period }} days</b> from expiry date to renew.
           <div class="card-tools float-right">
             <button type="button" class="btn btn-tool" data-card-widget="remove">
               <i class="fas fa-times"></i>
             </button>
           </div>
-        </p>
+        </div>
       </div>
       <template v-if="tldInfo.tld_whois_privacy_available == 'Y'">
         <div class="card shadow-none w-100 bg-white p-2 mb-2" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
-          <p class="m-0 text-md">
+          <div class="m-0 text-md">
             <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant’s domain.
             <div class="card-tools float-right">
               <button type="button" class="btn btn-tool" data-card-widget="remove">
                 <i class="fas fa-times"></i>
               </button>
             </div>
-          </p>
+          </div>
         </div>
       </template>
     </div>

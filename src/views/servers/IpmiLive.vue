@@ -14,34 +14,24 @@ layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
 layoutStore.addBreadcrum('/servers/'+props.id, 'View Server '+props.id);
 layoutStore.addBreadcrum('/servers/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      id: '', // Replace with actual data property
-      aId: '', // Replace with actual data property
-      assetInfo: {}, // Replace with actual data property
-      clientIP: '', // Replace with actual data property
-      success: '', // Replace with actual data property
-      info: '', // Replace with actual data property
-      error: '', // Replace with actual data property
-      csrfToken: '', // Replace with actual data property
-    };
-  },
-  computed: {
-    emailIPMILink() {
+//const id = ref('');
+const aId = ref('');
+const assetInfo = ref({});
+const clientIP = ref('');
+const success = ref('');
+const info = ref('');
+const error = ref('');
+const csrfToken = ref('');
+const emailIPMILink = computed(() => {
       // Replace with the computed property logic to generate the link
       return `view_server?id=${this.id}&link=ipmi_live&a_id=${this.aId}&email_ipmi_cred=1`;
-    },
-  },
-  methods: {
-    submitForm() {
+    });
+function submitForm() {
       // Add the form submission logic here
-    },
-    removeCard() {
+    }
+function removeCard() {
       // Add the remove card logic here
-    },
-  },
-};
+    }
 </script>
 
 <template>

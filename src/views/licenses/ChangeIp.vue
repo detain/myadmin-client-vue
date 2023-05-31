@@ -14,23 +14,15 @@ layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
 layoutStore.addBreadcrum('/licenses/'+props.id, 'View License '+props.id);
 layoutStore.addBreadcrum('/licenses/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      id: '', // Initialize with the appropriate value
-      csrfToken: '', // Initialize with the appropriate value
-      ip: '', // Initialize with the appropriate value
-      newIp: '', // Data binding for the "new_ip" input field
-    };
-  },
-  methods: {
-    handleSubmit(event) {
+//const id = ref('');
+const csrfToken = ref('');
+const ip = ref('');
+const newIp = ref(''); // Data binding for the "new_ip" input field
+function handleSubmit(event) {
       event.preventDefault();
       // Handle the form submission here
       // You can access the submitted values using this.id, this.csrfToken, and this.newIp
-    },
-  },
-};
+    }
 </script>
 
 <template>

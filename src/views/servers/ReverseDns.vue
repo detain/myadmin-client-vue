@@ -14,18 +14,12 @@ layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
 layoutStore.addBreadcrum('/servers/'+props.id, 'View Server '+props.id);
 layoutStore.addBreadcrum('/servers/'+props.id+'/', '');
 
-export default {
-  data() {
-    return {
-      id: '', // Replace with actual data
-      csrfToken: '', // Replace with actual data
-      ipLabelListSet: {}, // Replace with actual data
-      ipInputNameSet: {}, // Replace with actual data
-      ipInputValueSet: {}, // Replace with actual data
-      ipInputListUpdated: '', // Replace with actual data
-    };
-  },
-};
+//const id = ref('');
+const csrfToken = ref('');
+const ipLabelListSet = ref({});
+const ipInputNameSet = ref({});
+const ipInputValueSet = ref({});
+const ipInputListUpdated = ref('');
 </script>
 
 <template>
