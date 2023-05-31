@@ -48,7 +48,7 @@ ticketsStore.getAll();
 <template>
 <div class="row">
     <div class="col-md-2">
-        <router-link to="new_ticket" class="btn btn-primary btn-block mb-3">New Ticket</router-link>
+        <router-link to="/tickets/new" class="btn btn-primary btn-block mb-3">New Ticket</router-link>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Folders</h3>
@@ -142,8 +142,8 @@ ticketsStore.getAll();
                                             <i v-else-if="ticket.status_text === 'On Hold'" class="fa fa-pause text-warning"></i>
                                             <i v-else-if="ticket.status_text === 'Closed'" class="far fa-envelope text-danger"></i>
                                         </td>
-                                        <td class="mailbox-name"><router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.lastreplier }}</router-link></td>
-                                        <td class="mailbox-subject"><b><router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b> - <router-link :to="'view_ticket?ticket=' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + "..." : ticket.title }}</router-link></td>
+                                        <td class="mailbox-name"><router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link></td>
+                                        <td class="mailbox-subject"><b><router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b> - <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + "..." : ticket.title }}</router-link></td>
                                         <td class="mailbox-attachment" v-if="ticket.attachments.length > 0"><i class="fas fa-paperclip"></i></td>
                                         <td class="mailbox-date">{{ ticket.lastactivity }}</td>
                                     </tr>

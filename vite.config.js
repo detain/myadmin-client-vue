@@ -37,10 +37,10 @@ export default defineConfig({
     //i18nResources({
       //path: resolve(__dirname, "src/locales"),
     //}),
-//    checker({
-//	vueTsc: true,
-//      typescript: true,
-//    }), 
+    checker({
+	vueTsc: false,
+      typescript: false,
+    }), 
 /*    AutoImport({
       imports: ['vue', '@vueuse/core']  ,
       resolvers: [

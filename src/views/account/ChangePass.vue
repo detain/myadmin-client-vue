@@ -9,7 +9,7 @@ const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Change Password');
 layoutStore.setTitle('Change Password');
 layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});
-
+const baseUrl = import.meta.env.VITE_API_URL;
 const password = ref('')
 const newPassword = ref('')
 const currentPassword = ref('')
@@ -25,7 +25,7 @@ function changePassword() {
   const url = 'change_pass';
   const formData = new FormData();
   formData.append('password2', this.password);
-  fetchWrapper.post(url, formData)
+  fetchWrapper.post(`${baseUrl}/account/password`, formData)
     .then(response => {
       // handle success
     })
