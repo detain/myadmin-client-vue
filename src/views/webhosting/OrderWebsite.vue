@@ -31,7 +31,6 @@ const formData = reactive({
     step: step,
     packageId: packageId,
     period: period,
-    serviceOfferId: serviceOfferId,
     enableDomainRegistering: enableDomainRegistering,
     web: web,
     currency: currency,
@@ -40,12 +39,13 @@ const formData = reactive({
     rootpass: rootpass,
     coupon: coupon,
     csrfToken: csrfToken,
-    jsonServices: jsonServices,
-    jsonServiceOffers: jsonServiceOffers,
-    serviceTypes: serviceTypes,
+    serviceOfferId: serviceOfferId,
     serviceOffers: serviceOffers,
-    packges: packges,
-    packages: packages,
+    serviceTypes: serviceTypes,
+//    jsonServices: jsonServices,
+//    jsonServiceOffers: jsonServiceOffers,
+//    packges: packges,
+//    packages: packages,
 });
 const formAction = web.value === '' ? 'order_website' : `order_website?website=${encodeURIComponent(web.value)}`
 
@@ -95,8 +95,8 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <template v-for="(serviceData, servicesId) in packages" :key="servicesId">
-                                                <template v-if="serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting'">
+                                            <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
+                                                <template v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && (serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting')">
                                                     <div class="card mx-1" :style="{ width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
@@ -155,8 +155,8 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <template v-for="(serviceData, servicesId) in packages" :key="servicesId">
-                                                <div v-if="serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : ''}">
+                                            <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
+                                                <div v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : ''}">
                                                     <div class="card-header">
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
