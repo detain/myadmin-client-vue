@@ -160,6 +160,21 @@ const osVersionSelect = computed(() => {
     }
     return osTemplates.value[vpsPlatform.value][osDistro.value];
 });
+const getBandwidth = computed(() => {
+    var VPS_SLICE_BW_TEMP = bwSlice.value;
+    var bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
+    var VPS_BW_TYPE_TEMP = bwType.value;
+    var VPS_BW_TOTAL_TEMP = bwTotal.value;
+    var slice_amount = "Mbps";
+    if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
+        if (bandwidthamount >= 1000)
+            slice_amount = " Gb";
+        else
+            slice_amount = " Mb";
+    else
+        slice_amount = " Mbps";
+    return bandwidthamount + slice_amount;
+});
 
 async function onSubmit() {
     try {
@@ -204,6 +219,7 @@ async function onSubmit() {
                 sliceCost.value = response.slice_cost;
                 slices.value = response.slices;
                 osVersion.value = response.version;
+                step.value = 'order_confirm';
             });
     } catch (error) {
         console.log("vps order validation failed");
@@ -231,21 +247,7 @@ async function update_coupon() {
     }
 }
 
-async function getBandwidth(Slicess) {
-    var VPS_SLICE_BW_TEMP = bwSlice.value;
-    var bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
-    var VPS_BW_TYPE_TEMP = bwType.value;
-    var VPS_BW_TOTAL_TEMP = bwTotal.value;
-    var slice_amount = "Mbps";
-    if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
-        if (bandwidthamount >= 1000)
-            slice_amount = " Gb";
-        else
-            slice_amount = " Mb";
-    else
-        slice_amount = " Mbps";
-    return bandwidthamount + slice_amount;
-}
+
 
 async function edit_form() {
     document.getElementById("edit_order_form").submit();
@@ -811,7 +813,7 @@ try {
                                 <div class="col-sm-9 form-control bg-gradient-gray text-center b-radius">
                                     <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span></div>
                                     <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span></div>
-                                    <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth(slices) }}</span></div>
+                                    <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth }}</span></div>
                                 </div>
                             </div>
                             <hr>
@@ -1005,54 +1007,14 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form ref="editOrderForm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
-                        </form>
-
                         <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
-
-                            <div v-if="serversel">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label text-right">
-                                        Select Server<span class="text-danger">*</span>
-                                    </label>
-                                    <div class="input-group col-md-8">
-                                        <select class="form-control form-control-sm select2" name="server" v-model="server">
-                                            <option v-for="(desc, value) in serversel" :key="value" :value="value">
-                                                {{ desc }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-right">Comment</label>
-                                    <div class="form-group input-group col-md-8">
-                                        <textarea rows="5" class="form-control form-control-sm" name="comment" v-model="comment"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label text-right">Paid<span class="text-danger">*</span></label>
-                                    <div class="input-group col-md-8">
-                                        <select name="paid" class="form-control a-inp-class" v-model="paid">
-                                            <option value="no">No</option>
-                                            <option value="setup">Not Paid, But Set It Up A While</option>
-                                            <option value="yes">Yes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr />
-                            </div>
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative;top:5px;">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click.prevent="step = 'orderform'" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-md text-bold">{{ period }} month(s)</div>
@@ -1062,7 +1024,7 @@ try {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div class="text-md">{{ packagesArr[serviceType] }}</div>
+                                            <div class="text-md">{{ serviceTypes[platformPackages[vpsPlatform]].services_name }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md" id="slicecost">{{ sliceCost }}</div>
@@ -1073,7 +1035,7 @@ try {
                                             <div class="text-md">VPS Location</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ locations[orderData.location] }}</div>
+                                            <div class="text-bold text-md">{{ locationNames[location] }}</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1081,7 +1043,7 @@ try {
                                             <div class="text-md">Slices</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ orderData.slices }}</div>
+                                            <div class="text-bold text-md">{{ slices }}</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1089,7 +1051,7 @@ try {
                                             <div class="text-md">Memory</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ memory }}</div>
+                                            <div class="text-bold text-md">{{ ramSlice * slices }} MB</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1097,7 +1059,7 @@ try {
                                             <div class="text-md">HD Space</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ hdSpace }}</div>
+                                            <div class="text-bold text-md">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1105,7 +1067,7 @@ try {
                                             <div class="text-md">Bandwidth</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ bandwidth }}</div>
+                                            <div class="text-bold text-md">{{ getBandwidth }}</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1116,13 +1078,13 @@ try {
                                             <div class="text-bold text-md">{{ osNames[osDistro] }} {{ osTemplates[vpsPlatform][osDistro][osVersion] }}</div>
                                         </td>
                                     </tr>
-                                    <template v-if="orderData.coupon">
+                                    <template v-if="coupon">
                                         <tr>
                                             <td>
                                                 <div class="text-md">Coupon Used</div>
                                             </td>
                                             <td>
-                                                <div class="text-bold text-md">{{ orderData.coupon }}
+                                                <div class="text-bold text-md">{{ coupon }}
                                                     <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px;" id="couponimg" height="20" width="20" alt="">
                                                 </div>
                                             </td>
@@ -1152,7 +1114,7 @@ try {
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
                                 <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ form_values.service_cost }}</span> until canceled.
+                                    The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ serviceCost }}</span> until canceled.
                                 </p>
                                 <p class="text-muted text-xs">
                                     By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
