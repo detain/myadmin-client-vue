@@ -55,6 +55,12 @@ const fieldLabel = ref({
     }
 });
 
+async function onSubmitCpu() {
+    step.value='step2';
+}
+
+
+
 let loading = Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -90,12 +96,12 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="dserver_form" method="post" class="dserver_form_init" action="order_server">
+                        <form id="dserver_form" method="post" class="dserver_form_init" action="order_server" @submit.prevent="onSubmitCpu">
                             <div class="form-group row">
                                 <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-11">
                                     <div v-for="(cpu_details, id) in cpuLi" :key="id" class="icheck-success d-inline w-100">
-                                        <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" :checked="cpu === id" @change="updatePrice">
+                                        <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" v-model="cpu">
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
@@ -141,13 +147,13 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                             <div id="package_period" class="col text-right">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8 cpu_name">CPU</div>
-                            <div class="col text-lg text-right cpu_cost"></div>
+                            <div class="col-md-8 cpu_name">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : 'CPU' }}</div>
+                            <div class="col text-lg text-right cpu_cost">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : '' }}</div>
                         </div>
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-lg text-right total_cost"></div>
+                            <div id="totalcost" class="col text-lg text-right total_cost">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -165,7 +171,7 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <div v-for="(cpu_det, core) in cpuCores" :key="core">
+                        <template v-for="(cpu_det, core) in cpuCores" :key="core">
                             <a href="javascript:void(0);" :id="'core-' + core" data-toggle="modal" :data-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px;">{{ core }}-Cores</a>
                             <div :id="'coreM-' + core" class="modal fade">
                                 <div class="modal-dialog modal-lg">
@@ -208,7 +214,7 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
                 <!-- End Server Recommendations -->
