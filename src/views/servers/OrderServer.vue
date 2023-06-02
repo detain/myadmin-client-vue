@@ -16,6 +16,8 @@ const ima = ref("client");
 const step = ref("order_form");
 const cpu = ref(34);
 const cpuLi = ref({});
+const configIds = ref({});
+const formValues = ref({});
 const configLi = ref({
     cpuLi: {},
     memory_li: {},
@@ -56,28 +58,34 @@ const fieldLabel = ref({
 });
 
 async function onSubmitCpu() {
-    step.value='step2';
+    serverOrderRequest(true);
 }
 
+async function serverOrderRequest(addCpu) {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then(response => {
+        loading.close();
+        console.log('Response:');
+        console.log(response);
+        configIds.value = response.config_ids;
+        configLi.value = response.config_li;
+        cpuLi.value = response.cpu_li;
+        fieldLabel.value = response.field_label;
+        cpuCores.value = response.cpu_cores;
+        formValues.value = response.form_values;
+        cpu.value = response.cpu;
+        if (addCpu) {
+            step.value = 'step2';
+        }
+    });
+}
 
-
-let loading = Swal.fire({
-    title: '',
-    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
-    allowOutsideClick: false,
-    showConfirmButton: false
-});
-fetchWrapper.get(baseUrl + '/servers/order').then(response => {
-    loading.close();
-    console.log('Response:');
-    console.log(response);
-    configLi.value = response.config_li;
-    cpuLi.value = response.cpu_li;
-    fieldLabel.value = response.field_label;
-    cpuCores.value = response.cpu_cores;
-    cpu.value = response.cpu;
-});
-
+serverOrderRequest(false);
 </script>
 
 <template>
@@ -239,7 +247,7 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                     </div>
                     <div class="card-body">
                         <form id="dserver_form" method="post" class="dserver_form_init" action="order_server">
-                            <input id="cpu" type="hidden" name="cpu" :value="form_values.cpu">
+                            <input id="cpu" type="hidden" name="cpu" :value="formValues.cpu">
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order">
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
                                 <template v-if="inputName !== 'cpuLi'">
@@ -435,14 +443,14 @@ fetchWrapper.get(baseUrl + '/servers/order').then(response => {
                     </div>
                     <div class="card-body">
                         <form id="edit_order_form" method="post" action="order_server">
-                            <template v-for="(field_value, field) in form_values">
+                            <template v-for="(field_value, field) in formValues">
                                 <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
                             </template>
                             <input v-for="(hd_val, indexx) in hd_values" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
                         <form method="post" class="dserver_form_confirm" action="order_server">
-                            <template v-for="(field_value, field) in form_values">
+                            <template v-for="(field_value, field) in formValues">
                                 <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
                             </template>
                             <input v-for="(hd_val, indexx) in hd_values" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
