@@ -6,99 +6,94 @@ import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import ReverseDns from '@/views/vps/ReverseDns.vue';
 import $ from 'jquery';
-
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View VPS');
 layoutStore.setTitle('View VPS');
-layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-layoutStore.addBreadcrum('/vps/'+id, 'View VPS '+id);
+layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' })
+layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 vpsStore.getById(id)
 if (link.value == 'start') {
-    layoutStore.addBreadcrum('/vps/'+id+'/start', 'Start');
+    layoutStore.addBreadcrum('/vps/' + id + '/start', 'Start');
     vpsStore.start(id);
 }
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function getDiskClass() {
-  if (this.disk_percentage <= 80) {
-    return 'bg-gradient-blue';
-  } else if (80 > this.disk_percentage && this.disk_percentage <= 90) {
-    return 'bg-gradient-yellow';
-  } else {
-    return 'bg-gradient-red';
-  }
-}
-
 const openCommentForm = () => {
     $('#commentForm').modal('show');
 };
-
 const numberFormat = (value, decimals = 2, separator = '.') => {
-  if (!value) return '0.00';
-  const number = parseFloat(value);
-  const sign = number < 0 ? '-' : '';
-  const strNumber = Math.abs(number).toFixed(decimals);
-  const parts = strNumber.split('.');
-  const integerPart = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${separator}`);
-  const decimalPart = parts.length > 1 ? separator + parts[1] : '';
-  return `${sign}${integerPart}${decimalPart}`;
+    if (!value) return '0.00';
+    const number = parseFloat(value);
+    const sign = number < 0 ? '-' : '';
+    const strNumber = Math.abs(number).toFixed(decimals);
+    const parts = strNumber.split('.');
+    const integerPart = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${separator}`);
+    const decimalPart = parts.length > 1 ? separator + parts[1] : '';
+    return `${sign}${integerPart}${decimalPart}`;
 };
-
 const webuzoTableExists = computed(() => {
-  return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo));
+    return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo));
+});
+const addonsTableExists = computed(() => {
+    return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
 });
 
-const addonsTableExists = computed(() => {
-  return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
-});
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function getDiskClass() {
+    if (this.disk_percentage <= 80) {
+        return 'bg-gradient-blue';
+    } else if (80 > this.disk_percentage && this.disk_percentage <= 90) {
+        return 'bg-gradient-yellow';
+    } else {
+        return 'bg-gradient-red';
+    }
+}
 
 function isEmpty(table) {
-  return table === null || table === undefined || table.rows.length === 0;
+    return table === null || table === undefined || table.rows.length === 0;
 }
 
 function docReady() {
-  $('[data-toggle="tooltip"]').tooltip();
-  const service_id = serviceInfo.value.vps_id;
-  $('.img-a').on('click', function () {
-    const cp = $(this).attr('data-cp');
-    if (cp === 'cp') {
-      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
-      $("#cp-name").text($(this).attr('data-name'));
-      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
-    } else if (cp === 'da') {
-      const lic_cost_type = $(this).attr('data-ser');
-      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
-      $("#cp-name").text($(this).attr('data-name'));
-      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
-    } else if (cp === 'pp') {
-      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
-      $("#cp-name").text($(this).attr('data-name'));
-      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
-    } else if (cp === 'rs') {
-      $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
-      $("#cp-name").text($(this).attr('data-name'));
-      $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
-    }
-  });
+    $('[data-toggle="tooltip"]').tooltip();
+    const service_id = serviceInfo.value.vps_id;
+    $('.img-a').on('click', function () {
+        const cp = $(this).attr('data-cp');
+        if (cp === 'cp') {
+            $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
+            $("#cp-name").text($(this).attr('data-name'));
+            $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+        } else if (cp === 'da') {
+            const lic_cost_type = $(this).attr('data-ser');
+            $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
+            $("#cp-name").text($(this).attr('data-name'));
+            $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+        } else if (cp === 'pp') {
+            $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
+            $("#cp-name").text($(this).attr('data-name'));
+            $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+        } else if (cp === 'rs') {
+            $("#cp-order-link").attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
+            $("#cp-name").text($(this).attr('data-name'));
+            $("#cp-cost").text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+        }
+    });
 }
 
 function toggleFunc(cp) {
-  if (cp === 'cp') {
-    $("#warning-text").html("cPanel is not supported by your operating system. To use this control panel you should reinstall <b>\"CentOS 7 Cpanel\" or \"CentOS\"</b> operating system.");
-  } else if (cp === 'da') {
-    $("#warning-text").html("Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>\"Linux\"</b> operating system.");
-  } else if (cp === 'pp') {
-    $("#warning-text").html("Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>\"Windows\"</b> operating system.");
-  }
-  $(".toggleTr").show();
+    if (cp === 'cp') {
+        $("#warning-text").html("cPanel is not supported by your operating system. To use this control panel you should reinstall <b>\"CentOS 7 Cpanel\" or \"CentOS\"</b> operating system.");
+    } else if (cp === 'da') {
+        $("#warning-text").html("Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>\"Linux\"</b> operating system.");
+    } else if (cp === 'pp') {
+        $("#warning-text").html("Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>\"Windows\"</b> operating system.");
+    }
+    $(".toggleTr").show();
 }
 </script>
 

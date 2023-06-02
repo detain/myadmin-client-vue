@@ -86,6 +86,26 @@ const vpsSliceKvmLCost = ref(0);
 const vpsSliceKvmStorageCost = ref(0);
 const vpsNyCost = ref(0);
 const vpsSliceKvmWCost = ref(0);
+const totalCostDisplay = ref(0.00);
+const ipv6_only_discount = ref(1);
+const controlCost = ref(0);
+const couponInfo = ref(0);
+const lastCoupon = ref("");
+const step = ref("orderform");
+// validation response extra fields
+const validationSuccess = ref(false);
+const couponCode = ref('');
+const custid = ref(0);
+const errors = ref([]);
+const monthlyServiceCost = ref(0);
+const originalCost = ref(0);
+const originalSliceCost = ref(0);
+const repeatServiceCost = ref(0);
+const repeatSliceCost = ref(0);
+const serviceCost = ref(0);
+const sliceCost = ref(0);
+// form fields
+const serviceType = ref(null);
 const slices = ref(1);
 const vpsPlatform = ref('kvm');
 const location = ref(1);
@@ -93,20 +113,11 @@ const osVersion = ref("");
 const osDistro = ref("ubuntu");
 const hostname = ref("server.domain.com");
 const coupon = ref("");
-const step = ref("orderform");
 const rootpass = ref("");
 const csrfToken = ref("");
 const curSsd = ref(0);
 const curControl = ref("");
 const period = ref(1);
-const pkg = ref('');
-const totalCostDisplay = ref(0.00);
-const ipv6_only_discount = ref(1);
-const controlCost = ref(0);
-const couponInfo = ref(0);
-const last_coupon = ref("");
-const sliceCost = ref(0);
-const serviceType = ref(null);
 const slicesRange = computed(() => {
     const arr = []
     for (let i = 1; i <= maxSlices.value; i++) {
@@ -150,12 +161,65 @@ const osVersionSelect = computed(() => {
     return osTemplates.value[vpsPlatform.value][osDistro.value];
 });
 
-function update_coupon() {
-    var coupon_text = document.getElementById("coupon").value;
-    if (last_coupon.value != coupon_text) {
-        last_coupon.value = coupon_text;
-        document.getElementById("couponimg").src = "validate_coupon.php?module=vps&coupon=" + coupon_text;
-        $.getJSON("https://my.interserver.net/coupon_info.php?module=vps&coupon=" + coupon_text, {}, function (json) {
+async function onSubmit() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/vps/order`, {
+                serviceType: serviceType.value,
+                slices: slices.value,
+                vpsPlatform: vpsPlatform.value,
+                location: location.value,
+                osVersion: osVersion.value,
+                osDistro: osDistro.value,
+                hostname: hostname.value,
+                coupon: coupon.value,
+                rootpass: rootpass.value,
+                csrfToken: csrfToken.value,
+                curSsd: curSsd.value,
+                curControl: curControl.value,
+                period: period.value,
+            })
+            .then((response) => {
+                console.log("edit cc success");
+                console.log(response);
+                validationSuccess.value = response['continue'];
+                controlpanel.value = response.controlpanel;
+                coupon.value = response.coupon;
+                couponCode.value = response.coupon_code;
+                custid.value = response.custid;
+                errors.value = response.errors;
+                hostname.value = response.hostname;
+                location.value = response.location;
+                monthlyServiceCost.value = response.monthly_service_cost;
+                originalCost.value = response.original_cost;
+                originalSliceCost.value = response.original_slice_cost;
+                osDistro.value = response.os;
+                period.value = response.period;
+                vpsPlatform.value = response.platform;
+                repeatServiceCost.value = response.repeat_service_cost;
+                repeatSliceCost.value = response.repeat_slice_cost;
+                rootpass.value = response.rootpass;
+                serviceCost.value = response.service_cost;
+                serviceType.value = response.service_type;
+                sliceCost.value = response.slice_cost;
+                slices.value = response.slices;
+                osVersion.value = response.version;
+            });
+    } catch (error) {
+        console.log("vps order validation failed");
+        console.log(error);
+    }
+}
+
+async function onSubmitConfirmation() {
+
+}
+
+async function update_coupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        document.getElementById("couponimg").src = "validate_coupon.php?module=vps&coupon=" + coupon.value;
+        $.getJSON("https://my.interserver.net/coupon_info.php?module=vps&coupon=" + coupon.value, {}, function (json) {
             couponInfo.value = json;
             if (typeof json.applies != undefined) {
                 //update_vps_choices();
@@ -167,7 +231,7 @@ function update_coupon() {
     }
 }
 
-function getBandwidth(Slicess) {
+async function getBandwidth(Slicess) {
     var VPS_SLICE_BW_TEMP = bwSlice.value;
     var bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
     var VPS_BW_TYPE_TEMP = bwType.value;
@@ -183,11 +247,11 @@ function getBandwidth(Slicess) {
     return bandwidthamount + slice_amount;
 }
 
-function edit_form() {
+async function edit_form() {
     document.getElementById("edit_order_form").submit();
 }
 
-function update_vps_choices() {
+async function update_vps_choices() {
     if (curControl.value != jQuery("select[name=controlpanel]").val()) {
         curControl.value = jQuery("select[name=controlpanel]").val();
         if (curControl.value == "cpanel") {
@@ -388,7 +452,7 @@ function update_vps_choices() {
 }
 
 
-function update_vps_choices_order() {
+async function update_vps_choices_order() {
     if (curControl.value != jQuery("#controlpanel").val()) {
         curControl.value = jQuery("#controlpanel").val();
         if (curControl.value == "cpanel") {
@@ -579,7 +643,7 @@ function update_vps_choices_order() {
 
 }
 
-function recomended_linux() {
+async function recomended_linux() {
     vpsPlatform.value = "kvm";
     osDistro.value = "ubuntu";
     slices.value = "1";
@@ -588,7 +652,7 @@ function recomended_linux() {
     //update_vps_choices();
 }
 
-function recomended_cpanel() {
+async function recomended_cpanel() {
     vpsPlatform.value = "kvm";
     osDistro.value = "centos";
     slices.value = "2";
@@ -597,7 +661,7 @@ function recomended_cpanel() {
     //update_vps_choices();
 }
 
-function recomended_directadmin() {
+async function recomended_directadmin() {
     console.log('recommended direct admin');
     vpsPlatform.value = "kvm";
     osDistro.value = "almalinux";
@@ -609,7 +673,7 @@ function recomended_directadmin() {
     console.log(osDistro.value);
 }
 
-function recomended_windows() {
+async function recomended_windows() {
     vpsPlatform.value = "hyperv";
     osDistro.value = "windows";
     slices.value = "2";
@@ -618,7 +682,7 @@ function recomended_windows() {
     //update_vps_choices();
 }
 
-function recomended_linux_desktop() {
+async function recomended_linux_desktop() {
     vpsPlatform.value = "kvm";
     osDistro.value = "ubuntu";
     slices.value = "2";
@@ -627,7 +691,7 @@ function recomended_linux_desktop() {
     //update_vps_choices();
 }
 
-function recomended_webuzo() {
+async function recomended_webuzo() {
     vpsPlatform.value = "kvm";
     osDistro.value = "centos";
     slices.value = "1";
@@ -636,7 +700,7 @@ function recomended_webuzo() {
     //update_vps_choices();
 }
 
-function get_package_id() {
+async function get_package_id() {
     osDistro.value = $("select[name='osVersion']").val();
     if (vpsPlatform.value == 'openvz') { // OpenVZ
         serviceType.value = 31;
@@ -739,7 +803,7 @@ try {
                     </div>
 
                     <div class="card-body">
-                        <form id="vps_form" class="vps_form_init" @submit.prevent="submitForm">
+                        <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input type="hidden" id="period" name="period" :value="period" />
                             <div class="form-group row">
@@ -941,12 +1005,12 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form ref="editOrderForm" method="post" action="order_vps">
+                        <form ref="editOrderForm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
                         </form>
 
-                        <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="submitForm">
+                        <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, field) in orderData" :key="field" type="hidden" :id="field" :name="field" :value="value" />
 
