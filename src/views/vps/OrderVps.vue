@@ -26,6 +26,16 @@ const controlpanel = ref({
     da: "DirectAdmin",
     cpanel: "CPanel"
 });
+const locationNames = ref({
+    1: "New Jersey",
+    2: "Los Angeles",
+    3: "Equinix NY4"
+});
+const locationStock = ref({
+    1: { kvm: true, kvmstorage: true, hyperv: true },
+    2: { kvm: true, kvmstorage: false, hyperv: true },
+    3: { kvm: false, kvmstorage: false, hyperv: false }
+});
 const platformPackages = ref({
     kvm: 32,
     kvmstorage: 57,
@@ -41,21 +51,11 @@ const packageCosts = ref({
     54: 10,
     57: 6
 });
-const locationStock = ref({
-    1: { kvm: true, kvmstorage: true, hyperv: true },
-    2: { kvm: true, kvmstorage: false, hyperv: true },
-    3: { kvm: false, kvmstorage: false, hyperv: false }
-});
-const locationNames = ref({
-    1: "New Jersey",
-    2: "Los Angeles",
-    3: "Equinix NY4"
-});
 const osNames = ref({
     windows: "Windows",
     almalinux: "Almalinux"
 });
-const templates = ref({
+const osTemplates = ref({
     hyperv: {
         windows: { Windows2019Standard: "2019 Standard", Windows2022: "2022" }
     },
@@ -87,11 +87,11 @@ const vpsSliceKvmStorageCost = ref(0);
 const vpsNyCost = ref(0);
 const vpsSliceKvmWCost = ref(0);
 const slices = ref(1);
-const platform = ref('kvm');
+const vpsPlatform = ref('kvm');
 const location = ref(1);
-const version = ref("");
-const templateOs = ref("ubuntu");
-const hostname = ref("");
+const osVersion = ref("");
+const osDistro = ref("ubuntu");
+const hostname = ref("server.domain.com");
 const coupon = ref("");
 const step = ref("orderform");
 const rootpass = ref("");
@@ -117,6 +117,38 @@ const slicesRange = computed(() => {
 const totalCost = computed(() => {
   return currencySymbol.value + totalCostDisplay.value.toFixed(2)
 });
+const osVersionSelect = computed(() => {
+    var entries, lastEntry, lastKey, lastValue;
+    entries = Object.entries(osTemplates.value[vpsPlatform.value]);
+    console.log(entries);
+    if (entries.length == 0) {
+        //osDistro.value == '';
+        return {};
+    }
+    if (typeof osTemplates.value[vpsPlatform.value][osDistro.value] == 'undefined') {
+        console.log(osTemplates.value[vpsPlatform.value]);
+        lastEntry = entries[entries.length - 1];
+        console.log(lastEntry);
+        [lastKey, lastValue] = lastEntry;
+        console.log([lastKey, lastValue]);
+        osDistro.value = lastKey;
+    }
+    entries = Object.entries(osTemplates.value[vpsPlatform.value][osDistro.value]);
+    console.log(entries);
+    if (entries.length == 0) {
+        //osVersion.value == '';
+        return {};
+    }
+    if (typeof osTemplates.value[vpsPlatform.value][osDistro.value][osVersion.value] == 'undefined') {
+        console.log(osTemplates.value[vpsPlatform.value][osVersion.value]);
+        lastEntry = entries[entries.length - 1];
+        console.log(lastEntry);
+        [lastKey, lastValue] = lastEntry;
+        console.log([lastKey, lastValue]);
+        osVersion.value = lastKey;
+    }
+    return osTemplates.value[vpsPlatform.value][osDistro.value];
+});
 
 function update_coupon() {
     var coupon_text = document.getElementById("coupon").value;
@@ -126,7 +158,7 @@ function update_coupon() {
         $.getJSON("https://my.interserver.net/coupon_info.php?module=vps&coupon=" + coupon_text, {}, function (json) {
             couponInfo.value = json;
             if (typeof json.applies != undefined) {
-                update_vps_choices();
+                //update_vps_choices();
                 if (couponInfo.value.onetime == "0") {
                     update_vps_choices_order();
                 }
@@ -166,13 +198,7 @@ function update_vps_choices() {
             controlCost.value = 0;
         }
     }
-    if (templateOs.value != jQuery("select[name=version]").val()) {
-        jQuery("select[name=vpsos]").parent().find("span>span").html(jQuery("select[name=vpsos] > option[selected]").html())
-    }
-    if (curSsd.value != jQuery("select[name=ssd]").val()) {
-        curSsd.value = jQuery("select[name=ssd]").val();
-    }
-    if (platform.value == "openvz" || platform.value == "virtuozzo") {
+    if (vpsPlatform.value == "openvz" || vpsPlatform.value == "virtuozzo") {
         jQuery("#hostnamerow").css("display", "table-row");
         jQuery("#ssdrow").css("display", "table-row");
         jQuery("#hostnamerownew").show();
@@ -195,41 +221,41 @@ function update_vps_choices() {
             curSsd.value = 0;
         }
     }
-    if (templateOs.value == "windows") {
+    if (osDistro.value == "windows") {
         jQuery("#controlpanelrow").css("display", "none");
         jQuery("#controlpanelrownew").hide();
     } else {
         jQuery("#controlpanelrow").css("display", "table-row");
         jQuery("#controlpanelrownew").show();
     }
-    if (templateOs.value == "windows" && platform.value != "hyperv") {
+    if (osDistro.value == "windows" && vpsPlatform.value != "hyperv") {
         jQuery("#rootpassrow").css("display", "none");
         jQuery("#rootpassrownew").hide();
     } else {
         jQuery("#rootpassrow").css("display", "table-row");
         jQuery("#rootpassrownew").show();
     }
-    if (platform.value == "openvz")
+    if (vpsPlatform.value == "openvz")
         if (curSsd.value == 1)
             sliceCost.value = vpsSliceSsdOvzCost.value;
         else
             sliceCost.value = vpsSliceOvzCost.value;
-    else if (platform.value == 'kvm')
-        if (templateOs.value == "windows")
+    else if (vpsPlatform.value == 'kvm')
+        if (osDistro.value == "windows")
             sliceCost.value = vpsSliceKvmWCost.value;
         else
             sliceCost.value = vpsSliceKvmLCost.value;
-    else if (platform.value == "kvmstorage")
+    else if (vpsPlatform.value == "kvmstorage")
         sliceCost.value = vpsSliceKvmStorageCost.value;
-    else if (platform.value == "xen")
+    else if (vpsPlatform.value == "xen")
         sliceCost.value = vpsSliceXenCost.value;
-    else if (platform.value == "lxc")
+    else if (vpsPlatform.value == "lxc")
         sliceCost.value = vpsSliceLxcCost.value;
-    else if (platform.value == "vmware")
+    else if (vpsPlatform.value == "vmware")
         sliceCost.value = vpsSliceVmwareCost.value;
-    else if (platform.value == "hyperv")
+    else if (vpsPlatform.value == "hyperv")
         sliceCost.value = vpsSliceHypervCost.value;
-    else if (platform.value == "virtuozzo")
+    else if (vpsPlatform.value == "virtuozzo")
         if (curSsd.value == 1)
             sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
         else
@@ -241,8 +267,7 @@ function update_vps_choices() {
         jQuery("#controlpanelcost").text(currencySymbol.value + controlCost.value);
         jQuery("#controlpanelcostnew").text(currencySymbol.value + controlCost.value);
         jQuery("#controlpanelpricerownew").show();
-    }
-    else {
+    } else {
         jQuery("#controlpanelcost").text("");
         jQuery("#controlpanelcostnew").text("");
         jQuery("#controlpanelpricerownew").hide();
@@ -290,7 +315,7 @@ function update_vps_choices() {
         }
         if (couponInfo.value.amount != 0.01) {
             sliceCost.value = first_slice;
-        } else if (platform.value == "kvm" || platform.value == "hyperv") {
+        } else if (vpsPlatform.value == "kvm" || vpsPlatform.value == "hyperv") {
             first_slice = sliceCost.value * 0.50;
             jQuery("#couponprice").text("50% Off");
             jQuery("#couponpricenew").val("50% Off");
@@ -364,11 +389,6 @@ function update_vps_choices() {
 
 
 function update_vps_choices_order() {
-    if (platform.value != jQuery("#platform").val()) {
-        platform.value = jQuery("#platform").val();
-        jQuery("#version").html(templates.value["platforms"][platform.value]).trigger("render");
-        templateOs.value = jQuery("#version").val();
-    }
     if (curControl.value != jQuery("#controlpanel").val()) {
         curControl.value = jQuery("#controlpanel").val();
         if (curControl.value == "cpanel") {
@@ -382,7 +402,7 @@ function update_vps_choices_order() {
     if (curSsd.value != jQuery("#ssd").val()) {
         curSsd.value = jQuery("#ssd").val();
     }
-    if (platform.value == "openvz" || platform.value == "virtuozzo") {
+    if (vpsPlatform.value == "openvz" || vpsPlatform.value == "virtuozzo") {
         jQuery("#hostnamerow").css("display", "table-row");
         jQuery("#ssdrow").css("display", "table-row");
         jQuery("#hostnamerownew").show();
@@ -405,27 +425,27 @@ function update_vps_choices_order() {
             curSsd.value = 0;
         }
     }
-    if (platform.value == "openvz")
+    if (vpsPlatform.value == "openvz")
         if (curSsd.value == 1)
             sliceCost.value = vpsSliceSsdOvzCost.value;
         else
             sliceCost.value = vpsSliceOvzCost.value;
-    else if (platform.value == 'kvm')
-        if (templateOs.value == "windows")
+    else if (vpsPlatform.value == 'kvm')
+        if (osDistro.value == "windows")
             sliceCost.value = vpsSliceKvmWCost.value;
         else
             sliceCost.value = vpsSliceKvmLCost.value;
-    else if (platform.value == "kvmstorage")
+    else if (vpsPlatform.value == "kvmstorage")
         sliceCost.value = vpsSliceKvmStorageCost.value;
-    else if (platform.value == "xen")
+    else if (vpsPlatform.value == "xen")
         sliceCost.value = vpsSliceXenCost.value;
-    else if (platform.value == "lxc")
+    else if (vpsPlatform.value == "lxc")
         sliceCost.value = vpsSliceLxcCost.value;
-    else if (platform.value == "vmware")
+    else if (vpsPlatform.value == "vmware")
         sliceCost.value = vpsSliceVmwareCost.value;
-    else if (platform.value == "hyperv")
+    else if (vpsPlatform.value == "hyperv")
         sliceCost.value = vpsSliceHypervCost.value;
-    else if (platform.value == "virtuozzo")
+    else if (vpsPlatform.value == "virtuozzo")
         if (curSsd.value == 1)
             sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
         else
@@ -482,7 +502,7 @@ function update_vps_choices_order() {
         }
         if (couponInfo.value.amount != 0.01) {
             sliceCost.value = first_slice;
-        } else if (platform.value == "kvm" || platform.value == "kvmstorage" || platform.value == "hyperv") {
+        } else if (vpsPlatform.value == "kvm" || vpsPlatform.value == "kvmstorage" || vpsPlatform.value == "hyperv") {
             first_slice = sliceCost.value * 0.50;
             jQuery("#couponprice").text("50% Off");
             jQuery("#couponpricenew").val("50% Off");
@@ -560,120 +580,93 @@ function update_vps_choices_order() {
 }
 
 function recomended_linux() {
-    platform.value = "kvm";
-    templateOs.value = "ubuntu";
+    vpsPlatform.value = "kvm";
+    osDistro.value = "ubuntu";
     slices.value = "1";
     curControl.value = "none";
     controlCost.value = 0;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    //update_vps_choices();
 }
 
 function recomended_cpanel() {
-    platform.value = "kvm";
-    templateOs.value = "centos";
+    vpsPlatform.value = "kvm";
+    osDistro.value = "centos";
     slices.value = "2";
     curControl.value = "cpanel";
     controlCost.value = cpanelCost.value;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    //update_vps_choices();
 }
 
 function recomended_directadmin() {
-    platform.value = "kvm";
-    templateOs.value = "almalinux";
+    console.log('recommended direct admin');
+    vpsPlatform.value = "kvm";
+    osDistro.value = "almalinux";
     slices.value = "4";
     curControl.value = "da";
     controlCost.value = daCost.value;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    console.log(osDistro.value);
+    //update_vps_choices();
+    console.log(osDistro.value);
 }
 
 function recomended_windows() {
-    platform.value = "hyperv";
-    templateOs.value = "windows";
+    vpsPlatform.value = "hyperv";
+    osDistro.value = "windows";
     slices.value = "2";
     curControl.value = "none";
     controlCost.value = 0;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    //update_vps_choices();
 }
 
 function recomended_linux_desktop() {
-    platform.value = "kvm";
-    templateOs.value = "ubuntu";
+    vpsPlatform.value = "kvm";
+    osDistro.value = "ubuntu";
     slices.value = "2";
     curControl.value = "none";
     controlCost.value = 0;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if ("select[name=" + inp_name + "].select2".length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    //update_vps_choices();
 }
 
 function recomended_webuzo() {
-    platform.value = "kvm";
-    templateOs.value = "centos";
+    vpsPlatform.value = "kvm";
+    osDistro.value = "centos";
     slices.value = "1";
     curControl.value = "none";
     controlCost.value = 0;
-    $.each(['platform', 'slices'], function (index, inp_name) {
-        if (jQuery("select[name=" + inp_name + "].select2").length > 0) {
-            jQuery("select[name=" + inp_name + "]").select2().trigger('change');
-        }
-    });
-    update_vps_choices();
+    //update_vps_choices();
 }
 
 function get_package_id() {
-    templateOs.value = $("select[name='version']").val();
-    if (platform.value == 'openvz') { // OpenVZ
+    osDistro.value = $("select[name='osVersion']").val();
+    if (vpsPlatform.value == 'openvz') { // OpenVZ
         serviceType.value = 31;
-    } else if (platform.value == 'ssdopenvz') { // OpenVZ
+    } else if (vpsPlatform.value == 'ssdopenvz') { // OpenVZ
         serviceType.value = 36;
-    } else if (platform.value == 'cloudkvm') { // Cloud
-        if (templateOs.value == 'windows') {
+    } else if (vpsPlatform.value == 'cloudkvm') { // Cloud
+        if (osDistro.value == 'windows') {
             serviceType.value = 34;
         } else {
             serviceType.value = 35;
         }
-    } else if (platform.value == 'kvm') { // KVM
-        if (templateOs.value == 'windows') {
+    } else if (vpsPlatform.value == 'kvm') { // KVM
+        if (osDistro.value == 'windows') {
             serviceType.value = 32;
         } else {
             serviceType.value = 33;
         }
-    } else if (platform.value == 'kvmstorage') {
+    } else if (vpsPlatform.value == 'kvmstorage') {
         serviceType.value = 57;
-    } else if (platform.value == 'xen') {
+    } else if (vpsPlatform.value == 'xen') {
         serviceType.value = 52;
-    } else if (platform.value == 'lxc') {
+    } else if (vpsPlatform.value == 'lxc') {
         serviceType.value = 49;
-    } else if (platform.value == 'vmware') {
+    } else if (vpsPlatform.value == 'vmware') {
         serviceType.value = 53;
-    } else if (platform.value == 'hyperv') {
+    } else if (vpsPlatform.value == 'hyperv') {
         serviceType.value = 54;
-    } else if (platform.value == 'virtuozzo') {
+    } else if (vpsPlatform.value == 'virtuozzo') {
         serviceType.value = 55;
-    } else if (platform.value == 'ssdvirtuozzo') {
+    } else if (vpsPlatform.value == 'ssdvirtuozzo') {
         serviceType.value = 56;
     } else {
         serviceType.value = -1;
@@ -705,7 +698,7 @@ try {
         locationNames.value = response.locationNames;
         osNames.value = response.osNames;
         locationNames.value = response.locationNames;
-        templates.value = response.templates;
+        osTemplates.value = response.templates;
         serviceTypes.value = response.serviceTypes;
         vpsSliceSsdOvzCost.value = response.vpsSliceSsdOvzCost;
         vpsSliceOvzCost.value = response.vpsSliceOvzCost;
@@ -722,7 +715,7 @@ try {
         currency.value = response.currency;
         currencySymbol.value = response.currencySymbol;
         update_coupon();
-        update_vps_choices();
+        //update_vps_choices();
     });
 } catch (error) {
     console.log("error:");
@@ -752,7 +745,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray text-center b-radius">
-                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ platform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span></div>
+                                    <div class="d-inline pr-3"><span>Storage: </span> <span class="text-bold" id="storage">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span></div>
                                     <div class="d-inline pr-3"><span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span></div>
                                     <div class="d-inline"><span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth(slices) }}</span></div>
                                 </div>
@@ -761,7 +754,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="platform">
+                                    <select class="form-control select2" v-model="vpsPlatform">
                                         <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
@@ -784,18 +777,19 @@ try {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Image<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="templateOs">
-                                        <option v-for="(osTemplates, osId, index) in templates[platform]" :key="index" :value="osId">{{ osNames[osId] }}</option>
+                                    <select class="form-control select2" v-model="osDistro">
+                                        <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
+                                        <option v-if="vpsPlatform != 'hyperv'" disabled='disabled'>Windows (only on HyperV)</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Version<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="version">
-                                        <option v-for="(templateVersion, templateFile, index) in templates[platform][templateOs]" :key="index" :value="templateFile">{{ templateVersion }}</option>
+                                    <select class="form-control select2" v-model="osVersion">
+                                        <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -843,12 +837,12 @@ try {
                             </div>
                             <div class="card-body pb-0">
                                 <div class="row mb-3">
-                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[platform] && serviceTypes && serviceTypes[platformPackages[platform]] ? serviceTypes[platformPackages[platform]].services_name : '' }}</div>
+                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[vpsPlatform] && serviceTypes && serviceTypes[platformPackages[vpsPlatform]] ? serviceTypes[platformPackages[vpsPlatform]].services_name : '' }}</div>
                                     <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md text-right totalcost_display">{{ currencySymbol }}{{ platformPackages[platform] ? packageCosts[platformPackages[platform]] : 0 }}</div>
+                                    <div class="col text-md text-right totalcost_display">{{ currencySymbol }}{{ platformPackages[vpsPlatform] ? packageCosts[platformPackages[vpsPlatform]] : 0 }}</div>
                                 </div>
                                 <div id="cyclediscountrownew" class="row mb-3">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
@@ -1055,7 +1049,7 @@ try {
                                             <div class="text-md">Operating System</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ images[orderData.version] }} {{ tempVersion }}</div>
+                                            <div class="text-bold text-md">{{ osNames[osDistro] }} {{ osTemplates[vpsPlatform][osDistro][osVersion] }}</div>
                                         </td>
                                     </tr>
                                     <template v-if="orderData.coupon">
