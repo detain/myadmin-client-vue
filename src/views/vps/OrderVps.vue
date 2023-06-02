@@ -195,7 +195,7 @@ async function onSubmit() {
                 period: period.value,
             })
             .then((response) => {
-                console.log("edit cc success");
+                console.log("vps order validation success");
                 console.log(response);
                 validationSuccess.value = response['continue'];
                 controlpanel.value = response.controlpanel;

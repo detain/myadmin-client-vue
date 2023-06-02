@@ -16,11 +16,59 @@ const custid = ref(2773);
 const ima = ref("client");
 const qsId = ref(0);
 const serverDetails = ref({});
+const osVersion = ref("");
+const osDistro = ref("Ubuntu");
 const version = ref({});
 const rootpass = ref("");
 const csrfToken = ref("");
-const templates = ref({});
-const distroSel = ref({});
+const osTemplates = ref({});
+const osVersionSelect = computed(() => {
+    var entries, lastEntry, lastKey, lastValue;
+    console.log(osTemplates.value);
+    console.log(osDistro.value);
+    if (Object.entries(osTemplates.value).length == 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length == 0 || osTemplates.value[osDistro.value][64].length == 0) {
+        return {};
+    }
+    var templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
+      acc[key] = value;
+      return acc;
+    }, {});;
+    if (typeof templates[osVersion.value] == 'undefined') {
+        console.log(templates);
+        entries = Object.entries(templates);
+        console.log(entries);
+        lastEntry = entries[entries.length - 1];
+        console.log(lastEntry);
+        osVersion.value = lastEntry[0];
+    }
+    return templates;
+});
+
+
+async function onSubmit() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/qs/order`, {
+                osVersion: osVersion.value,
+                osDistro: osDistro.value,
+                hostname: hostname.value,
+                rootpass: rootpass.value,
+                csrfToken: csrfToken.value,
+                qsId: qsId.value
+            })
+            .then((response) => {
+                console.log("qs order validated");
+                console.log(response);
+            });
+    } catch (error) {
+        console.log("qs order validation failed");
+        console.log(error);
+    }
+}
+
+async function onSubmitConfirmation() {
+
+}
 
 let loading = Swal.fire({
     title: '',
@@ -33,9 +81,8 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
     console.log('Response:');
     console.log(response);
     serverDetails.value = response.server_details;
-    distroSel.value = response.distro_sel;
     qsId.value = response.qs_id;
-    templates.value = response.templates;
+    osTemplates.value = response.templates;
 });
 </script>
 
@@ -56,7 +103,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="quickserver_form" method="post" class="quickserver_form_init" @submit.prevent="submitForm">
+                        <form id="quickserver_form" method="post" class="quickserver_form_init" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input type="hidden" name="rootpass" v-model="rootpass">
                             <div class="form-group row">
@@ -74,7 +121,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                             <tr v-for="(details, value) in serverDetails" :key="value">
                                                 <td>
                                                     <div class="icheck-success d-inline">
-                                                        <input :id="'qs-' + value" type="radio" class="form-check-input" name="quickserver" :value="value" :checked="qsId === value" @change="updatePrice" />
+                                                        <input :id="'qs-' + value" type="radio" class="form-check-input" name="quickserver" v-model="qsId" :value="value" />
                                                         <label class="text-bold my-1" :for="'qs-' + value">&nbsp;</label>
                                                     </div>
                                                 </td>
@@ -97,27 +144,25 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Operating System</label>
-                                <div class="form-group input-group col-md-9">
-                                    <select id="distro" name="distro" class="form-control form-control-sm select2" @change="vpsUpdate">
-                                        <option v-for="(d2, d1, index) in distroSel" :key="index" :value="d1">{{ d2 }}</option>
+                                <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select2" v-model="osDistro">
+                                        <option v-for="(templateData, templateDistro, index) in osTemplates" :key="index" :value="templateDistro">{{ templateDistro }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Version</label>
+                                <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select id="os" name="os" class="form-control form-control-sm select2">
-                                        <option v-for="(v1, val, index) in version" :key="index" :value="val">{{ v1 }}</option>
+                                    <select class="form-control select2" v-model="osVersion">
+                                        <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Root Password</label>
-                                <input type="password" class="form-control form-control-sm" name="rootpass" id="mypassword" placeholder="Root Password" v-model="rootpass" />
-                                <small class="form-text text-muted">
-                                    Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.
-                                </small>
+                                <input type="password" class="form-control form-control-sm col-md-9" name="rootpass" id="mypassword" placeholder="Root Password" v-model="rootpass" />
+                                <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12 text-center"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order px-3 py-2">
@@ -147,12 +192,12 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">Package Cost</div>
-                            <div class="col text-bold text-right package_cost"></div>
+                            <div class="col text-bold text-right package_cost">{{ serverDetails[qsId] ? serverDetails[qsId].cost : '' }}</div>
                         </div>
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-lg text-bold text-right total_cost"></div>
+                            <div id="totalcost" class="col text-lg text-bold text-right total_cost">{{ serverDetails[qsId] ? serverDetails[qsId].cost : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +224,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="value" />
                         </form>
-                        <form method="post" class="quickserver_form_confirm" :action="orderUrl">
+                        <form method="post" class="quickserver_form_confirm" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="value" />
                             <table class="table table-sm table-bordered">
@@ -210,7 +255,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                             <div class="text-sm">Operating System</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold">{{ distroSel[orderData.distro] }} {{ version[orderData.os] }}</div>
+                                            <div class="text-bold">{{ orderData.distro }} {{ version[orderData.os] }}</div>
                                         </td>
                                     </tr>
                                     <tr>
