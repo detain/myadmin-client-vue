@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
@@ -9,215 +9,68 @@ layoutStore.setTitle('Order Website');
 layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
-const step = ref("order_form");
-const packageId = ref("");
-const packages = ref({
-    1001: {
-        services_id: "1001",
-        services_name: "cPanel Boost 2 Cores",
-        services_cost: "9.95",
-        services_category: "200",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "200",
-        services_field1: "",
-        services_field2: "plan=IS Boost 2 Cores",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "cPanel Web hosting package with 2x more resources over our standard web hosting package. ",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
-    },
-    1002: {
-        services_id: "1002",
-        services_name: "cPanel Boost 4 Cores",
-        services_cost: "19.95",
-        services_category: "200",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "200",
-        services_field1: "",
-        services_field2: "plan=IS Boost 4 Cores",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "cPanel Web hosting package with 4x more resources over our standard web hosting package. ",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
-    },
-    1026: {
-        services_id: "1026",
-        services_name: "ASP.NET Web Hosting",
-        services_cost: "8.00",
-        services_category: "202",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "202",
-        services_field1: "",
-        services_field2: "",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Windows web hosting package for running .NET and Microsoft SQL applications.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/windows-hosting.html"
-    },
-    1052: {
-        services_id: "1052",
-        services_name: "Web Hosting - cpanel",
-        services_cost: "2.50",
-        services_category: "200",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "200",
-        services_field1: "",
-        services_field2: "quota=unlimited,maxftp=unlimited,maxpark=unlimited,maxaddon=unlimited,bwlimit=unlimited",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "This Web hosting package comes with the cPanel control panel. We recommend using the Direct Admin control panel instead.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/cpanel-hosting.html"
-    },
-    11363: {
-        services_id: "11363",
-        services_name: "Web Hosting Direct Admin",
-        services_cost: "2.50",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "",
-        services_field2: "Standard",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Standard web hosting package powered by the Direct Admin control panel. This is the recommended package for WordPress and any other application.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/"
-    },
-    11370: {
-        services_id: "11370",
-        services_name: "DA BOOST 2 Cores",
-        services_cost: "9.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "",
-        services_field2: "Boost2",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Direct Admin Web hosting package with 2x more resources over our standard web hosting package.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
-    },
-    11377: {
-        services_id: "11377",
-        services_name: "DA BOOST 4 Cores",
-        services_cost: "19.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "",
-        services_field2: "Boost4",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Direct Admin Web hosting package with 4x more resources over our standard web hosting package.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/boost.html"
-    },
-    11384: {
-        services_id: "11384",
-        services_name: "DirectAdmin RS ONE",
-        services_cost: "19.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "reseller",
-        services_field2: "RSONE",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
-    },
-    11391: {
-        services_id: "11391",
-        services_name: "DirectAdmin RS TWO",
-        services_cost: "29.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "reseller",
-        services_field2: "RSTWO",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
-    },
-    11398: {
-        services_id: "11398",
-        services_name: "DirectAdmin RS THREE",
-        services_cost: "39.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "reseller",
-        services_field2: "RSTHREE",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
-    },
-    11405: {
-        services_id: "11405",
-        services_name: "DirectAdmin RS FOUR",
-        services_cost: "49.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "reseller",
-        services_field2: "RSFOUR",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
-    },
-    11412: {
-        services_id: "11412",
-        services_name: "DirectAdmin RS FIVE",
-        services_cost: "69.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "reseller",
-        services_field2: "RSFIVE",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Web Hosting Reseller plans allow you to create unlimited sub accounts.",
-        services_moreinfo_url: "https://www.interserver.net/webhosting/reseller-hosting.html"
-    },
-    11440: {
-        services_id: "11440",
-        services_name: "DA BOOST X",
-        services_cost: "69.95",
-        services_category: "204",
-        services_ourcost: "0.00",
-        services_buyable: "1",
-        services_type: "206",
-        services_field1: "",
-        services_field2: "BoostX",
-        services_module: "webhosting",
-        services_html: "",
-        services_description: "Direct Admin Web hosting package with 10x more resources over our standard web hosting package.",
-        services_moreinfo_url: ""
-    }
-});
+const step = ref('order_form');
+const packageId = ref(0);
+const period = ref(1);
+const serviceOfferId = ref(0);
+const enableDomainRegistering = ref({});
 const web = ref("");
 const currency = ref("USD");
 const currencySymbol = ref("$");
 const hostname = ref("");
 const rootpass = ref("");
-const period = ref(1);
 const coupon = ref("");
 const csrfToken = ref("");
-
+const serviceTypes = ref({});
+const serviceOffers = ref({});
+const packges = ref({});
+const packages = ref({});
+const jsonServices = ref({});
+const jsonServiceOffers = ref({});
+const formData = reactive({
+    step: step,
+    packageId: packageId,
+    period: period,
+    serviceOfferId: serviceOfferId,
+    enableDomainRegistering: enableDomainRegistering,
+    web: web,
+    currency: currency,
+    currencySymbol: currencySymbol,
+    hostname: hostname,
+    rootpass: rootpass,
+    coupon: coupon,
+    csrfToken: csrfToken,
+    jsonServices: jsonServices,
+    jsonServiceOffers: jsonServiceOffers,
+    serviceTypes: serviceTypes,
+    serviceOffers: serviceOffers,
+    packges: packges,
+    packages: packages,
+});
 const formAction = web.value === '' ? 'order_website' : `order_website?website=${encodeURIComponent(web.value)}`
+
+let loading = Swal.fire({
+    title: '',
+    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+    allowOutsideClick: false,
+    showConfirmButton: false
+});
+fetchWrapper.get(baseUrl + '/websites/order').then(response => {
+    loading.close();
+    console.log('Response:');
+    console.log(response);
+    step.value = response.step;
+    packageId.value = response.website;
+    period.value = response.period;
+    serviceOfferId.value = response.serviceOfferId;
+    serviceTypes.value = response.serviceTypes;
+    serviceOffers.value = response.serviceOffers;
+    packges.value = response.packges;
+    packages.value = response.packages;
+    enableDomainRegistering.value = response.enableDomainRegistering;
+    jsonServices.value = response.jsonServices;
+    jsonServiceOffers.value = response.jsonServiceOffers;
+});
 </script>
 
 <template>
@@ -242,24 +95,24 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <template v-for="pkg in packages" :key="pkg.services_id">
-                                                <template v-if="pkg.services_field1 === '' || pkg.services_field1 === 'webhosting'">
-                                                    <div class="card mx-1" :style="{ width: '48%', border: pkg.services_id === '11363' ? '4px solid #007bff' : '' }">
+                                            <template v-for="(serviceData, servicesId) in packages" :key="servicesId">
+                                                <template v-if="serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting'">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
                                                                     <div class="icheck-success">
-                                                                        <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" :name="pkg.services_name" :value="pkg.services_id" :checked="packageId === pkg.services_id" @change="updatePrice(true)" />
-                                                                        <label :for="pkg.services_name">
-                                                                            {{ pkg.services_name }}<br />
+                                                                        <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" :checked="packageId === serviceData.services_id" @change="updatePrice(true)" />
+                                                                        <label :for="serviceData.services_name">
+                                                                            {{ serviceData.services_name }}<br />
                                                                             <div class="text-sm text-muted font-italic mt-1">
-                                                                                <template v-if="pkg.services_category === '200'">
+                                                                                <template v-if="serviceData.services_category === '200'">
                                                                                     ( cPanel )
                                                                                 </template>
-                                                                                <template v-else-if="pkg.services_category === '204'">
+                                                                                <template v-else-if="serviceData.services_category === '204'">
                                                                                     ( DirectAdmin )
                                                                                 </template>
-                                                                                <template v-else-if="pkg.services_category === '202'">
+                                                                                <template v-else-if="serviceData.services_category === '202'">
                                                                                     ( Plesk )
                                                                                 </template>
                                                                             </div>
@@ -270,20 +123,20 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="service_details">
-                                                                <template v-if="pkg.services_id === '11363'">
+                                                                <template v-if="serviceData.services_id === '11363'">
                                                                     <div class="ribbon-wrapper">
                                                                         <div class="ribbon bg-primary">Popular</div>
                                                                     </div>
                                                                 </template>
-                                                                {{ pkg.services_description }}
+                                                                {{ serviceData.services_description }}
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
                                                             <div class="service_cost float-left">
-                                                                Starting From: <b>{{ currencySymbol }}{{ pkg.services_cost }}</b>
+                                                                Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                             </div>
                                                             <div class="float-right">
-                                                                <a :href="pkg.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info">
+                                                                <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info">
                                                                     <i class="fa fa-external-link"></i>
                                                                 </a>
                                                             </div>
@@ -302,19 +155,19 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                             </div>
                                         </div>
                                         <div class="card-body row">
-                                            <template v-for="pkg in packages" :key="pkg.services_id">
-                                                <div v-if="pkg.services_field1 === 'reseller'" class="card mx-1" :style="{width: '48%', border: pkg.services_id === '11363' ? '4px solid #007bff' : ''}">
+                                            <template v-for="(serviceData, servicesId) in packages" :key="servicesId">
+                                                <div v-if="serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : ''}">
                                                     <div class="card-header">
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
                                                                 <div class="icheck-success">
-                                                                    <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="(packageId && packageId === pkg.services_id)" @change="updatePrice(true)">
-                                                                    <label :for="pkg.services_name">
-                                                                        {{ pkg.services_name }}<br>
+                                                                    <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="(packageId && packageId === serviceData.services_id)" @change="updatePrice(true)">
+                                                                    <label :for="serviceData.services_name">
+                                                                        {{ serviceData.services_name }}<br>
                                                                         <div class="text-sm text-muted font-italic mt-1">
-                                                                            <span v-if="pkg.services_category === '200'">( cPanel )</span>
-                                                                            <span v-else-if="pkg.services_category === '204'">( DirectAdmin )</span>
-                                                                            <span v-else-if="pkg.services_category === '202'">( Plesk )</span>
+                                                                            <span v-if="serviceData.services_category === '200'">( cPanel )</span>
+                                                                            <span v-else-if="serviceData.services_category === '204'">( DirectAdmin )</span>
+                                                                            <span v-else-if="serviceData.services_category === '202'">( Plesk )</span>
                                                                         </div>
                                                                     </label>
                                                                 </div>
@@ -323,15 +176,15 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="service_details">
-                                                            {{ pkg.services_description }}
+                                                            {{ serviceData.services_description }}
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
                                                         <div class="service_cost float-left">
-                                                            Starting From: <b>{{ currencySymbol }}{{ pkg.services_cost }}</b>
+                                                            Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                         </div>
                                                         <div class="float-right">
-                                                            <a :href="pkg.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info">
+                                                            <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info">
                                                                 <i class="fa fa-external-link"></i>
                                                             </a>
                                                         </div>
@@ -343,21 +196,21 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                 </div>
                             </div>
                             <template v-else>
-                                <template v-for="pkg in packages">
-                                    <div v-if="pkg.services_id == packageId" class="form-group row" :key="pkg.services_id">
+                                <template v-for="(serviceData, servicesId) in packages">
+                                    <div v-if="serviceData.services_id == packageId" class="form-group row" :key="serviceData.services_id">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="pkg.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="pkg.services_id" :checked="packageId == pkg.services_id" @change="updatePrice(true)">
-                                                            <label :for="pkg.services_name">
-                                                                {{ pkg.services_name }}<br>
+                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice(true)">
+                                                            <label :for="serviceData.services_name">
+                                                                {{ serviceData.services_name }}<br>
                                                                 <div class="text-sm text-muted font-italic mt-1">
-                                                                    <template v-if="pkg.services_category == '200'">( cPanel )</template>
-                                                                    <template v-else-if="pkg.services_category == '204'">( DirectAdmin )</template>
-                                                                    <template v-else-if="pkg.services_category == '202'">( Plesk )</template>
+                                                                    <template v-if="serviceData.services_category == '200'">( cPanel )</template>
+                                                                    <template v-else-if="serviceData.services_category == '204'">( DirectAdmin )</template>
+                                                                    <template v-else-if="serviceData.services_category == '202'">( Plesk )</template>
                                                                 </div>
                                                             </label>
                                                         </div>
@@ -366,18 +219,18 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                                             </div>
                                             <div class="card-body">
                                                 <div class="service_details">
-                                                    <template v-if="pkg.services_id == '11363'">
+                                                    <template v-if="serviceData.services_id == '11363'">
                                                         <div class="ribbon-wrapper">
                                                             <div class="ribbon bg-primary">Popular</div>
                                                         </div>
                                                     </template>
-                                                    {{ pkg.services_description }}
+                                                    {{ serviceData.services_description }}
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <div class="service_cost float-left">Starting From: <b>{{ currencySymbol }}{{ pkg.services_cost }}</b></div>
+                                                <div class="service_cost float-left">Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b></div>
                                                 <div class="float-right">
-                                                    <a :href="pkg.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info"><i class="fa fa-external-link"></i></a>
+                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px;" data-toggle="tooltip" title="More Info"><i class="fa fa-external-link"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -458,6 +311,9 @@ const formAction = web.value === '' ? 'order_website' : `order_website?website=$
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center;"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order py-2 px-3"></div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="controls col-md-12" style="text-align: left;"><pre>{{ formData }}</pre></div>
                             </div>
                         </div>
                     </div>
