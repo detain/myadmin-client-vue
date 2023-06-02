@@ -46,6 +46,10 @@ const osVersionSelect = computed(() => {
 
 
 async function onSubmit() {
+    step.value='order_confirm';
+}
+
+async function onSubmitConfirmation() {
     try {
         fetchWrapper
             .post(`${baseUrl}/qs/order`, {
@@ -64,9 +68,6 @@ async function onSubmit() {
         console.log("qs order validation failed");
         console.log(error);
     }
-}
-
-async function onSubmitConfirmation() {
 
 }
 
@@ -220,13 +221,8 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="edit_order_form" :action="orderUrl">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(value, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="value" />
-                        </form>
                         <form method="post" class="quickserver_form_confirm" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(value, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="value" />
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
@@ -255,7 +251,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                             <div class="text-sm">Operating System</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold">{{ orderData.distro }} {{ version[orderData.os] }}</div>
+                                            <div class="text-bold">{{ osDistro }} {{ osTemplates[osDistro][osVersion] }}</div>
                                         </td>
                                     </tr>
                                     <tr>
