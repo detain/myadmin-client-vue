@@ -42,10 +42,10 @@ coverage
 !.yarn/versions
 
 # Non Zero nstalls
-#.pnp.*
-#.yarn/*
-#!.yarn/patches
-#!.yarn/plugins
-#!.yarn/releases
-#!.yarn/sdks
-#!.yarn/versions
+public/.pnp.*
+public/.yarn/*
+!public/.yarn/patches
+!public/.yarn/plugins
+!public/.yarn/releases
+!public/.yarn/sdks
+!public/.yarn/versions
