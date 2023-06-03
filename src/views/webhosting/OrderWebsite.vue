@@ -10,7 +10,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/webs
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref('order_form');
-const packageId = ref(0);
+const packageId = ref('');
 const period = ref(1);
 const serviceOfferId = ref(0);
 const enableDomainRegistering = ref({});
@@ -40,15 +40,21 @@ const formData = reactive({
     coupon: coupon,
     csrfToken: csrfToken,
     serviceOfferId: serviceOfferId,
-    serviceOffers: serviceOffers,
-    serviceTypes: serviceTypes,
+    'serviceOffers[packageId]': serviceOffers[packageId] ? serviceOffers[packageId] : {},
+    'serviceTypes[packageId]': serviceTypes[packageId] ? serviceTypes[packageId] : {},
 //    jsonServices: jsonServices,
 //    jsonServiceOffers: jsonServiceOffers,
 //    packges: packges,
 //    packages: packages,
 });
-const formAction = web.value === '' ? 'order_website' : `order_website?website=${encodeURIComponent(web.value)}`
-
+const totalCost = computed(() => {
+    let total = 0;
+    if (!serviceTypes[packageId]) {
+        return total;
+    }
+    total = serviceTypes[packageId].services_cost;
+    return total;
+});
 let loading = Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -70,12 +76,15 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
     enableDomainRegistering.value = response.enableDomainRegistering;
     jsonServices.value = response.jsonServices;
     jsonServiceOffers.value = response.jsonServiceOffers;
+    if (packageId.value == '') {
+        packageId.value = 11363;
+    }
 });
 </script>
 
 <template>
     <template v-if="!step || step == 'order_form'">
-        <form id="website_form" method="post" class="website_form_init" :action="formAction">
+        <form id="website_form" method="post" class="website_form_init" @submit.prevent="onSubmit">
             <div class="row justify-content-center">
                 <div class="col-md-7">
                     <div class="card">
@@ -97,12 +106,12 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
                                                 <template v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && (serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting')">
-                                                    <div class="card mx-1" :style="{ width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : '' }">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === '11363' ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
                                                                     <div class="icheck-success">
-                                                                        <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" :checked="packageId === serviceData.services_id" @change="updatePrice(true)" />
+                                                                        <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" v-model="packageId" :value="serviceData.services_id" />
                                                                         <label :for="serviceData.services_name">
                                                                             {{ serviceData.services_name }}<br />
                                                                             <div class="text-sm text-muted font-italic mt-1">
@@ -197,7 +206,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                             </div>
                             <template v-else>
                                 <template v-for="(serviceData, servicesId) in packages">
-                                    <div v-if="serviceData.services_id == packageId" class="form-group row" :key="serviceData.services_id">
+                                    <div v-if="serviceData.services_id == packageId" class="form-group row" :key="servicesId">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
@@ -249,7 +258,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                         </div>
                         <div class="card-body text-md">
                             <div class="row mb-3">
-                                <div class="col-md-6 package_name"><template v-if="packages[web]">{{ packages[web].services_name }}</template></div>
+                                <div class="col-md-6 package_name"><template v-if="serviceTypes[packageId]">{{ serviceTypes[packageId].services_name }}</template></div>
                                 <div class="col text-right period">1 Month</div>
                             </div>
                             <div class="row mb-3">
@@ -259,66 +268,68 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                             <div id="couponpricerownew" class="row mb-3 coupon-display d-none">
                                 <div id="couponpricetext" class="col-md-6"></div>
                                 <div id="couponprice" class="col text-right"></div>
-                            </div>
-                            <hr>
-                            <div class="row mb-3">
-                                <div class="col-md-8 text-lg">Total</div>
-                                <div id="totalprice" class="col text-lg text-right total_cost"></div>
+                                </div>
+                                <hr>
+                                <div class="row mb-3">
+                                    <div class="col-md-8 text-lg">Total</div>
+                                    <div id="totalprice" class="col text-lg text-right total_cost">{{ totalCost }}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="p-1">
-                                <h4 class="card-title py-2"><i class="fas fa-globe">&nbsp;</i>Select Domain & Billing Cycle</h4>
-                            </div>
-                        </div>
-                        <div class="card-body text-md">
-                            <div class="form-group row">
-                                <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
-                                <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="updateDomain" @change="updateDomain" />
-                                    <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="p-1">
+                                    <h4 class="card-title py-2"><i class="fas fa-globe">&nbsp;</i>Select Domain & Billing Cycle</h4>
                                 </div>
                             </div>
-                            <div id="registerrow" class="form-group row d-none d-status mb-0">
-                                <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
-                                <div class="col-md-12">
-                                    <small id="registertext" class="form-text text-warning text-sm mb-0"></small>
+                            <div class="card-body text-md">
+                                <div class="form-group row">
+                                    <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
+                                    <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="updateDomain" @change="updateDomain" />
+                                        <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
+                                    </div>
                                 </div>
-                                <label id="registerdesc" class="col-md-12 col-form-label"></label>
-                                <span class="form-text"></span>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
-                                <div class="col-sm-12">
-                                    <select name="period" id="period" class="form-control form-control-sm select2" v-model="period" @change="updatePrice">
-                                        <option value="1">Monthly</option>
-                                        <option value="3">3 Months</option>
-                                        <option value="6">6 Months (5% off)</option>
-                                        <option value="12">Yearly (10% off)</option>
-                                        <option value="24">24 Months (15% off)</option>
-                                        <option value="36">36 Months (20% off)</option>
-                                    </select>
+                                <div id="registerrow" class="form-group row d-none d-status mb-0">
+                                    <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
+                                    <div class="col-md-12">
+                                        <small id="registertext" class="form-text text-warning text-sm mb-0"></small>
+                                    </div>
+                                    <label id="registerdesc" class="col-md-12 col-form-label"></label>
+                                    <span class="form-text"></span>
                                 </div>
-                            </div>
-                            <div id="coupon_row" class="form-group row">
-                                <label class="col-md-12">Coupon Code</label>
-                                <div class="col-md-12"><input type="text" class="form-control form-control-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @change="updateCoupon" v-if="coupon" /></div>
-                                <div class="col-md-12"></div>
-                                <div class="col-md-12"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="">
-                                    <span class="text-sm text-muted" id="coupon_text" style="position: relative;top: 2px;"></span>
+                                <div class="form-group row">
+                                    <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
+                                    <div class="col-sm-12">
+                                        <select name="period" id="period" class="form-control form-control-sm select2" v-model="period" @change="updatePrice">
+                                            <option value="1">Monthly</option>
+                                            <option value="3">3 Months</option>
+                                            <option value="6">6 Months (5% off)</option>
+                                            <option value="12">Yearly (10% off)</option>
+                                            <option value="24">24 Months (15% off)</option>
+                                            <option value="36">36 Months (20% off)</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="controls col-md-12" style="text-align: center;"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order py-2 px-3"></div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="controls col-md-12" style="text-align: left;"><pre>{{ formData }}</pre></div>
+                                <div id="coupon_row" class="form-group row">
+                                    <label class="col-md-12">Coupon Code</label>
+                                    <div class="col-md-12"><input type="text" class="form-control form-control-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @change="updateCoupon" v-if="coupon" /></div>
+                                    <div class="col-md-12"></div>
+                                    <div class="col-md-12"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="">
+                                        <span class="text-sm text-muted" id="coupon_text" style="position: relative;top: 2px;"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="controls col-md-12" style="text-align: center;"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order py-2 px-3"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="controls col-md-12" style="text-align: left;">
+                                        <pre>{{ formData }}</pre>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </form>
     </template>
     <template v-else-if="step == 'order_confirm'">
@@ -331,11 +342,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="'order_website' + (web ? '?website=' + web : '')" id="edit_order_form">
-                            <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <input v-for="(field_value, field) in order_data.data" :key="field" :id="field" :type="(field === 'website' ? 'hidden' : 'hidden')" :name="field" :value="field_value">
-                        </form>
-                        <form method="post" class="website_form_confirm" :action="'order_website' + (web ? '?website=' + web : '')">
+                        <form method="post" class="website_form_confirm" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input v-for="(field_value, field) in order_data.data" :key="field" :id="field" :type="(field === 'website' ? 'hidden' : 'hidden')" :name="field" :value="field_value">
                             <table class="table table-sm table-bordered">
