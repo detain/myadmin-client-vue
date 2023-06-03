@@ -49,12 +49,70 @@ const formData = reactive({
 });
 const totalCost = computed(() => {
     let total = 0;
-    if (!serviceTypes[packageId]) {
+    if (!serviceTypes.value[packageId.value]) {
         return total;
     }
-    total = serviceTypes[packageId].services_cost;
+    total = serviceTypes.value[packageId.value].services_cost;
     return total;
 });
+
+async function onSubmit() {
+
+    try {
+        let loading = Swal.fire({
+            title: '',
+            html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+            allowOutsideClick: false,
+            showConfirmButton: false
+        });
+        fetchWrapper
+            .post(`${baseUrl}/websites/order`, {
+                web: packageId.value,
+                packageId: packageId.value,
+                hostname: hostname.value,
+                rootpass: rootpass.value,
+                period: period.value,
+                coupon: coupon.value,
+                csrfToken: csrfToken.value
+            })
+            .then((response) => {
+                loading.close();
+                step.value='order_confirm';
+                console.log("website order validated");
+                console.log(response);
+            });
+    } catch (error) {
+        console.log("website order validation failed");
+        console.log(error);
+    }
+}
+
+async function onSubmitConfirmation() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/websites/order`, {
+                web: packageId.value,
+                packageId: packageId.value,
+                hostname: hostname.value,
+                rootpass: rootpass.value,
+                period: period.value,
+                coupon: coupon.value,
+                csrfToken: csrfToken.value,
+                csrfToken: csrfToken.value,
+                serviceType: serviceType.value
+            })
+            .then((response) => {
+                console.log("website order validated");
+                console.log(response);
+            });
+    } catch (error) {
+        console.log("website order validation failed");
+        console.log(error);
+    }
+
+}
+
+
 let loading = Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -344,18 +402,17 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                     <div class="card-body">
                         <form method="post" class="website_form_confirm" @submit.prevent="onSubmitConfirmation">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <input v-for="(field_value, field) in order_data.data" :key="field" :id="field" :type="(field === 'website' ? 'hidden' : 'hidden')" :name="field" :value="field_value">
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
                                             <button type="button" style="" name="update_values" @click="edit_form" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details">
-                                                <div style="display: inline;" class="text-md float-left">{{ order_data.data.hostname }}</div>
+                                                <div style="display: inline;" class="text-md float-left">{{ hostname }}</div>
                                                 <i style="padding-top: 4px;padding-left: 4px;" aria-hidden="true" class="fa fa-pencil float-right"></i>
                                             </button>
                                         </th>
                                         <th>
-                                            <div class="text-md">{{ frequency }} Month(s)</div>
+                                            <div class="text-md">{{ period }} Month(s)</div>
                                         </th>
                                     </tr>
                                 </thead>
@@ -372,19 +429,19 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-md-8 text-md">{{ service_detail.services_name }}</div>
+                                            <div class="col-md-8 text-md">{{ serviceTypes[packageId].services_name }}</div>
                                         </td>
                                         <td>
                                             <div class="text-md package_cost"></div>
                                         </td>
                                     </tr>
-                                    <template v-if="order_data.data.coupon && order_data.data.coupon !== ''">
+                                    <template v-if="coupon && coupon !== ''">
                                         <tr>
                                             <td>
                                                 <div class="text-md">Coupon Used</div>
                                             </td>
                                             <td>
-                                                <div class="text-md text-bold">{{ order_data.data.coupon }} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg2" height="20" width="20" alt=""></div>
+                                                <div class="text-md text-bold">{{ coupon }} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px;" id="couponimg2" height="20" width="20" alt=""></div>
                                             </td>
                                         </tr>
                                     </template>
@@ -403,14 +460,14 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-lg text-bold" id="totalprice2">{{ service_cost }}</div>
+                                            <div class="text-lg text-bold" id="totalprice2">{{ totalCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
                             </table>
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
-                                <p class="text-sm text-center">The subscription will automatically renew every <b>{{ frequency }} month(s) at {{ order_data.data.renewal_cost ? currencySymbol + order_data.data.renewal_cost : currencySymbol + tos_repeat_service_cost }}</b> until canceled.</p>
+                                <p class="text-sm text-center">The subscription will automatically renew every <b>{{ period }} month(s) at {{ renewal_cost ? currencySymbol + renewal_cost : currencySymbol + tos_repeat_service_cost }}</b> until canceled.</p>
                                 <p class="text-muted text-xs">
                                     By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
                                 </p>
