@@ -9,6 +9,7 @@ import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Backup');
 layoutStore.setTitle('View Backup');
 layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
@@ -94,7 +95,7 @@ const billingStatusClass = computed(() => {
     <div v-if="link_display" class="row shadow-none">
         <div class="col">{{ link_display }}</div>
     </div>
-    <div v-else-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row justify-content-center">
+    <div v-else-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">

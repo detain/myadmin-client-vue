@@ -10,6 +10,7 @@ import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains'
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Domain');
 layoutStore.setTitle('View Domain');
 layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
@@ -76,19 +77,19 @@ domainStore.getById(id)
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div v-if="link_function == 'contact'" class="col">
+        <div v-if="link == 'contact'" class="col">
             <Contact :id="id"></Contact>
         </div>
-        <div v-else-if="link_function == 'dnssec'" class="col">
+        <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>
         </div>
-        <div v-else-if="link_function == 'nameservers'" class="col">
+        <div v-else-if="link == 'nameservers'" class="col">
             <Nameservers :id="id"></Nameservers>
         </div>
-        <div v-else-if="link_function == 'renew'" class="col">
+        <div v-else-if="link == 'renew'" class="col">
             <Renew :id="id"></Renew>
         </div>
-        <div v-else-if="link_function == 'whois'" class="col">
+        <div v-else-if="link == 'whois'" class="col">
             <Whois :id="id"></Whois>
         </div>
         <div v-else class="col">{{ link_display }}</div>

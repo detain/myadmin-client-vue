@@ -9,6 +9,7 @@ import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Qs');
 layoutStore.setTitle('View Qs');
 layoutStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
@@ -81,7 +82,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
             </div>
         </div>
     </div>
-    <template v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))">
+    <template v-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))">
         <div class="row my-2">
             <div class="col-md-4">
                 <div class="card">

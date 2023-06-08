@@ -197,7 +197,7 @@ function toggleFunc(cp) {
     </div>
     <template v-else>
         <div class="row">
-            <div v-if="!linkDisplay || (link_function && ['cancel', 'welcome_email', 'vnc'].includes(link_function))" class="col-md-4">
+            <div v-if="!linkDisplay || (link && ['cancel', 'welcome_email', 'vnc'].includes(link))" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">

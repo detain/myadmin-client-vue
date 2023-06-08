@@ -10,11 +10,12 @@ import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhostin
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Website');
 layoutStore.setTitle('View Website');
 layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
 layoutStore.addBreadcrum('/websites/'+id, 'View Website '+id);
-
+console.log(link.value);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
 
@@ -99,23 +100,23 @@ function isEmpty(table) {
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div v-if="link_function == 'buy_ip'" class="col">
+        <div v-if="link == 'buy_ip'" class="col">
             <BuyIp :id="id"></BuyIp>
         </div>
-        <div v-else-if="link_function == 'download_backups'" class="col">
+        <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id"></DownloadBackups>
         </div>
-        <div v-else-if="link_function == 'migration'" class="col">
+        <div v-else-if="link == 'migration'" class="col">
             <Migration :id="id"></Migration>
         </div>
-        <div v-else-if="link_function == 'reverse_dns'" class="col">
+        <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
         <div v-else class="col">
             {{ link_display }}
         </div>
     </div>
-    <div v-else-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row mt-2">
+    <div v-else-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row mt-2">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
@@ -213,7 +214,7 @@ function isEmpty(table) {
             </div>
         </div>
     </div>
-    <div v-if="!link_display || (link_function && ['cancel', 'welcome_email'].includes(link_function))" class="row row-flex">
+    <div v-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row row-flex">
         <div class="col">
             <div class="card">
                 <div class="card-header">

@@ -10,6 +10,7 @@ import { Alerts, DenyRules } from '@/views/mail'
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Mail');
 layoutStore.setTitle('View Mail');
 layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
@@ -81,10 +82,10 @@ const statusClass = computed(() => {
         </div>
     </div>
     <template v-if="link_display">
-        <div v-if="link_function == 'alerts'" class="col">
+        <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
-        <div v-else-if="link_function == 'deny_rules'" class="col">
+        <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
         <div v-else class="row shadow-none">

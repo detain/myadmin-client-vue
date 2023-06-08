@@ -10,6 +10,7 @@ import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers'
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View Server');
 layoutStore.setTitle('View Server');
 layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
@@ -99,18 +100,18 @@ const ipv6VlansNetworks = computed(() => {
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div v-if="link_function == 'bandwidth_graph'" class="col">
+        <div v-if="link == 'bandwidth_graph'" class="col">
             <BandwidthGraph :id="id"></BandwidthGraph>
         </div>
-        <div v-else-if="link_function == 'ipmi_live'" class="col">
+        <div v-else-if="link == 'ipmi_live'" class="col">
             <IpmiLive :id="id"></IpmiLive>
         </div>
-        <div v-else-if="link_function == 'reverse_dns'" class="col">
+        <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
         <div v-else class="col">{{ link_display }}</div>
     </div>
-    <div v-if="!link_display || (link_function && link_function.includes('cancel'))" class="row justify-content-center">
+    <div v-if="!link_display || (link && link.includes('cancel'))" class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">

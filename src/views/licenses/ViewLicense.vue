@@ -10,6 +10,7 @@ import { ChangeIp, ChangeOs } from '@/views/licenses'
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
+const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View License');
 layoutStore.setTitle('View License');
 layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
@@ -109,15 +110,15 @@ licenseStore.getById(id)
         </template>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div v-if="link_function == 'change_ip'" class="col">
+        <div v-if="link == 'change_ip'" class="col">
             <ChangeIp :id="id"></ChangeIp>
         </div>
-        <div v-else-if="link_function == 'change_os'" class="col">
+        <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>
         </div>
         <div v-else class="col">{{ link_display }}</div>
     </div>
-    <div v-else-if="!link_display || (link_function && link_function.includes('cancel'))" class="row row-flex">
+    <div v-else-if="!link_display || (link && link.includes('cancel'))" class="row row-flex">
         <template v-if="extraInfoTables.ip_info">
             <div class="col-md-3">
                 <div class="card">
