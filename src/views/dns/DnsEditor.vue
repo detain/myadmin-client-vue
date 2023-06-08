@@ -19,8 +19,13 @@ layoutStore.setTitle('DNS Editor');
 layoutStore.setBreadcrums({ '/home': 'Home', '/dns': 'DNS Manager'});
 layoutStore.addBreadcrum("/dns/"+id, 'DNS Editor');
 const baseUrl = import.meta.env.VITE_API_URL;
-
+const showingAddRecord = ref(false);
 /*DataTable.use(DataTablesCore);*/
+const name = ref('');
+const type = ref('');
+const content = ref('');
+const prio = ref('');
+const ttl = ref('');
 
 let dt;
 const limitStatus = ref('active');
@@ -57,11 +62,69 @@ const filteredData = computed(() => {
 const recordId = ref(0);
 const recordRow = ref({});
 
-function cancelEditRecord(event) {
+async function cancelEditRecord(event) {
     recordId.value = 0;
 }
 
-function editRecord(event) {
+async function cancelAddRecord(event) {
+    showingAddRecord.value = false;
+}
+
+async function showAddDnsRecord(event) {
+    showingAddRecord.value = true;
+}
+
+async function editDnsRecord(event) {
+    let response;
+    try {
+        fetchWrapper.post(baseUrl + '/dns/'+id, recordRow.value).then(response => {
+            console.log('api success');
+            console.log(response);
+            loadDns(data)
+            Swal.fire({
+              icon: 'success',
+              html: response.message
+            });
+        });
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+    }
+}
+
+async function addDnsRecord(event) {
+    let response;
+    try {
+        fetchWrapper.post(baseUrl + '/dns/'+id, {
+            name: name.value,
+            type: type.value,
+            content: content.value,
+            prio: prio.value,
+            ttl: ttl.value,
+        }).then(response => {
+            console.log('api success');
+            console.log(response);
+            loadDns(data)
+            Swal.fire({
+              icon: 'success',
+              html: response.message
+            });
+        });
+    } catch (error) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+    }
+}
+
+async function showEditRecord(event) {
     recordId.value = event.target.getAttribute("data-id");
     var row, rowIdx;
     for (rowIdx in data.value) {
@@ -72,8 +135,38 @@ function editRecord(event) {
     }
 }
 
-function deleteRecord(event) {
+async function deleteRecord(event) {
     var record = event.target.getAttribute("data-id");
+    console.log(record);
+    Swal.fire({
+        icon: "error",
+        title: "<h3>Delete Domain</h3> ",
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: "Yes, Delete it.",
+        html: "<p>Are you sure want to delete this record?</p>",
+        preConfirm: () => {
+            console.log("got to this place from deleteRecord preConfirm");
+            try {
+                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then(response => {
+                    console.log('api success');
+                    console.log(response);
+                    loadDns(data)
+                    Swal.fire({
+                      icon: 'success',
+                      html: response.message
+                    });
+                });
+            } catch (error) {
+                console.log('api failed');
+                console.log(error);
+                Swal.fire({
+                  icon: 'error',
+                  html: 'Got error '+error.message
+                });
+            }
+        }
+    });
 
 }
 
@@ -106,7 +199,7 @@ loadDns(id, data)
                 <i class="fa fa-table"></i>&nbsp;DNS Records
             </h3>
             <div class="card-tools float-right">
-                <button type="button" class="btn btn-primary btn-sm" title="Add Record" onclick="addDNSRecord();">
+                <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord">
                     <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;
                 </button>
             </div>
@@ -147,23 +240,26 @@ loadDns(id, data)
                 <tr>
                     <td class="p-0"></td>
                 </tr>
-                <tr id="add_record" style="display: none;">
+                <tr id="add_record" style="display: none;" v-show="showingAddRecord">
                     <td>New</td>
                     <td>
                         <div class="input-group">
-                            <input id="addName" type="text" class="form-control form-control-sm" data-regex="^([^.]+\.)*[^.]*$">
+                            <input id="addName" type="text" class="form-control form-control-sm" data-regex="^([^.]+\.)*[^.]*$" v-model="name">
                             <input id="add-domain-name" class="form-control form-control-sm" type="text" readonly disabled />
                         </div>
                     </td>
                     <td>
-                        <select id="addType" class="form-control"></select>
+                        <select id="addType" class="form-control" v-model="type">
+                            <option v-for="(type, index) in recordTypes" :key="index" :value="type">{{ type }}</option>
+                        </select>
                     </td>
-                    <td><input id="addContent" type="text" class="form-control form-control-sm" data-regex="^.+$">
+                    <td><input id="addContent" type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="content">
                     </td>
-                    <td><input id="addPrio" type="text" class="form-control form-control-sm" placeholder="0" size="1" data-regex="^[0-9]*$"></td>
-                    <td><input id="addTtl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$"></td>
+                    <td><input id="addPrio" type="text" class="form-control form-control-sm" placeholder="0" size="1" data-regex="^[0-9]*$" v-model="prio"></td>
+                    <td><input id="addTtl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$"  v-model="ttl"></td>
                     <td colspan="3" class="text-center">
-                        <button id="addButton" class="btn btn-success btn-sm">&nbsp;Add&nbsp;</button>
+                        <button @click.prevent="addDnsRecord" class="btn btn-success btn-sm">&nbsp;Add&nbsp;</button>
+                        <button @click.prevent="cancelAddRecord" class="btn btn-danger btn-xs printer-hidden" title="Cancel Add"><i class="fa fa-fw fa-times"></i></button>
                     </td>
                 </tr>
                 <tr v-for="(row, rowIndex) in data" :key="rowIndex">
@@ -184,7 +280,7 @@ loadDns(id, data)
                         <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="recordRow.prio"></td>
                         <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="recordRow.ttl"></td>
                         <td>
-                            <a href="#" @click.prevent="updateRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
+                            <a href="#" @click.prevent="editDnsRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
                             <a href="#" @click.prevent="cancelEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>
                         </td>
                     </template>
@@ -196,7 +292,7 @@ loadDns(id, data)
                         <td>{{ row.prio }}</td>
                         <td>{{ row.ttl }}</td>
                         <td>
-                            <a href="#" @click.prevent="editRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog" :data-id="row.id"></i></a>
+                            <a href="#" @click.prevent="showEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog" :data-id="row.id"></i></a>
                             <a href="#" @click.prevent="deleteRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                         </td>
                     </template>
