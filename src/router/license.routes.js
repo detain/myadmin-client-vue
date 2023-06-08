@@ -5,7 +5,9 @@ export default {
     component: Layout,
     children: [
         { path: '', component: LicensesList },
-        { path: 'order/:catTag?', component: OrderLicense },
+        //{ path: 'order/:catTag?', component: OrderLicense },
+        { path: 'order', component: OrderLicense },
+        { path: 'order/:catTag', component: OrderLicense },
         { path: ':id(\\d+)', component: ViewLicense }
     ]
 };
