@@ -45,5 +45,20 @@
     "tempusdominus-bootstrap-4": "^5.39.2",
     "toastr": "^2.1.4",
     "yaml": "^2.3.1"
+  },
+  "resolutions": {
+    "jquery": "3.7.0",
+    "select2": "4.1.0-rc.0",
+    "color-name": "1.1.4",
+    "pako": "1.0.11",
+    "base64-js": "1.5.1",
+    "resolve": "1.22.2",
+    "escodegen": "1.14.3",
+    "estraverse": "4.3.0",
+    "esutils": "2.0.3",
+    "esprima": "4.0.1",
+    "source-map": "0.6.1",
+    "type": "2.7.2",
+    "glob-parent": "6.0.2"
   }
 }
