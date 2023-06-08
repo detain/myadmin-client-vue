@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useWebsiteStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -98,7 +99,19 @@ function isEmpty(table) {
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div class="col">
+        <div v-if="link_function == 'buy_ip'" class="col">
+            <BuyIp :id="id"></BuyIp>
+        </div>
+        <div v-else-if="link_function == 'download_backups'" class="col">
+            <DownloadBackups :id="id"></DownloadBackups>
+        </div>
+        <div v-else-if="link_function == 'migration'" class="col">
+            <Migration :id="id"></Migration>
+        </div>
+        <div v-else-if="link_function == 'reverse_dns'" class="col">
+            <ReverseDns :id="id"></ReverseDns>
+        </div>
+        <div v-else class="col">
             {{ link_display }}
         </div>
     </div>

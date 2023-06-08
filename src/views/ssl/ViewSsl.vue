@@ -4,6 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useSslStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { ChangeApproverEmail } from '@/views/ssl'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -80,7 +81,10 @@ sslStore.getById(id)
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div class="col">{{ link_display }}</div>
+        <div v-if="link_function == 'change_approver_email'" class="col">
+            <ChangeApproverEmail :id="id"></ChangeApproverEmail>
+        </div>
+        <div v-else class="col">{{ link_display }}</div>
     </div>
     <div v-else-if="!link_display || (link_function && ['cancel', 'resend_approver_email', 'reissue_cert'].includes(link_function))" class="row row-flex">
         <div class="col-md-6">

@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useServerStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -98,7 +99,16 @@ const ipv6VlansNetworks = computed(() => {
         </div>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div class="col">{{ link_display }}</div>
+        <div v-if="link_function == 'bandwidth_graph'" class="col">
+            <BandwidthGraph :id="id"></BandwidthGraph>
+        </div>
+        <div v-else-if="link_function == 'ipmi_live'" class="col">
+            <IpmiLive :id="id"></IpmiLive>
+        </div>
+        <div v-else-if="link_function == 'reverse_dns'" class="col">
+            <ReverseDns :id="id"></ReverseDns>
+        </div>
+        <div v-else class="col">{{ link_display }}</div>
     </div>
     <div v-if="!link_display || (link_function && link_function.includes('cancel'))" class="row justify-content-center">
         <div class="col-md-4">

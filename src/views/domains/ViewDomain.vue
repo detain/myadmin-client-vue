@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useDomainStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -74,7 +75,25 @@ domainStore.getById(id)
             </div>
         </div>
     </div>
-    <div class="row">
+    <div v-if="link_display" class="row shadow-none">
+        <div v-if="link_function == 'contact'" class="col">
+            <Contact :id="id"></Contact>
+        </div>
+        <div v-else-if="link_function == 'dnssec'" class="col">
+            <Dnssec :id="id"></Dnssec>
+        </div>
+        <div v-else-if="link_function == 'nameservers'" class="col">
+            <Nameservers :id="id"></Nameservers>
+        </div>
+        <div v-else-if="link_function == 'renew'" class="col">
+            <Renew :id="id"></Renew>
+        </div>
+        <div v-else-if="link_function == 'whois'" class="col">
+            <Whois :id="id"></Whois>
+        </div>
+        <div v-else class="col">{{ link_display }}</div>
+    </div>
+    <div v-else class="row">
         <div class="col-md-6">
             <div class="card p-2">
                 <div class="card-header border-0">

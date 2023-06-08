@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLicenseStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import { ChangeIp, ChangeOs } from '@/views/licenses'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -108,7 +109,13 @@ licenseStore.getById(id)
         </template>
     </div>
     <div v-if="link_display" class="row shadow-none">
-        <div class="col">{{ link_display }}</div>
+        <div v-if="link_function == 'change_ip'" class="col">
+            <ChangeIp :id="id"></ChangeIp>
+        </div>
+        <div v-else-if="link_function == 'change_os'" class="col">
+            <ChangeOs :id="id"></ChangeOs>
+        </div>
+        <div v-else class="col">{{ link_display }}</div>
     </div>
     <div v-else-if="!link_display || (link_function && link_function.includes('cancel'))" class="row row-flex">
         <template v-if="extraInfoTables.ip_info">

@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useMailStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
+import { Alerts, DenyRules } from '@/views/mail'
 
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -80,7 +81,13 @@ const statusClass = computed(() => {
         </div>
     </div>
     <template v-if="link_display">
-        <div v-if="link_display" class="row shadow-none">
+        <div v-if="link_function == 'alerts'" class="col">
+            <Alerts :id="id"></Alerts>
+        </div>
+        <div v-else-if="link_function == 'deny_rules'" class="col">
+            <DenyRules :id="id"></DenyRules>
+        </div>
+        <div v-else class="row shadow-none">
             <div class="col-md-12">{{ link_display }}</div>
         </div>
     </template>

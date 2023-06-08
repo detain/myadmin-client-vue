@@ -4,7 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
-import ReverseDns from '@/views/vps/ReverseDns.vue';
+import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const layoutStore = useLayoutStore();
 const route = useRoute();
@@ -154,8 +154,44 @@ function toggleFunc(cp) {
         </div>
     </div>
     <div v-if="link" class="row">
-        <div v-if="link == 'reverse_dns'" class="col">
+        <div v-if="link == 'buy_hd_space'" class="col">
+            <BuyHdSpace :id="id"></BuyHdSpace>
+        </div>
+        <div v-else-if="link == 'buy_ip'" class="col">
+            <BuyIp :id="id"></BuyIp>
+        </div>
+        <div v-else-if="link == 'change_hostname'" class="col">
+            <ChangeHostname :id="id"></ChangeHostname>
+        </div>
+        <div v-else-if="link == 'change_root_password'" class="col">
+            <ChangeRootPassword :id="id"></ChangeRootPassword>
+        </div>
+        <div v-else-if="link == 'change_timezone'" class="col">
+            <ChangeTimezone :id="id"></ChangeTimezone>
+        </div>
+        <div v-else-if="link == 'change_webuzo_password'" class="col">
+            <ChangeWebuzoPassword :id="id"></ChangeWebuzoPassword>
+        </div>
+        <div v-else-if="link == 'insert_cd'" class="col">
+            <InsertCd :id="id"></InsertCd>
+        </div>
+        <div v-else-if="link == 'reinstall_os'" class="col">
+            <ReinstallOs :id="id"></ReinstallOs>
+        </div>
+        <div v-else-if="link == 'reset_password'" class="col">
+            <ResetPassword :id="id"></ResetPassword>
+        </div>
+        <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
+        </div>
+        <div v-else-if="link == 'slices'" class="col">
+            <Slices :id="id"></Slices>
+        </div>
+        <div v-else-if="link == 'traffic_usage'" class="col">
+            <TrafficUsage :id="id"></TrafficUsage>
+        </div>
+        <div v-else-if="link == 'vnc'" class="col">
+            <Vnc :id="id"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>
