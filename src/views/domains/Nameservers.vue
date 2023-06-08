@@ -77,9 +77,9 @@ function confirmDeleteDialog(domain_id, nameserver_id) {
     <div class="card-header">
       <h3 class="card-title text-lg mt-1">
         <i class="m-0">
-          <svg style="width: 40px; height: 40px;">
+<!--          <svg style="width: 40px; height: 40px;">
             <use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-dns"></use>
-          </svg>
+          </svg> -->
         </i>
         Domain Name Servers
       </h3>
