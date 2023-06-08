@@ -180,5 +180,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url("/lib/chart.js/dist/Chart.min.css");
+@import url("/node_modules/chart.js/dist/Chart.min.css");
 </style>
