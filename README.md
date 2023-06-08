@@ -28,7 +28,7 @@ This template should help get you started developing with Vue 3 in Vite.
 
 * [ ] loading / no entries messages
 * [x] cache data in pinia stores
-* [ ] fix all linter issues
+* [x ] fix all linter issues
 * [x] view service pages
   * [x] load data via ajax api
   * [ ] links and form handling
@@ -36,12 +36,12 @@ This template should help get you started developing with Vue 3 in Vite.
   * [x] layout / design implemented
   * [x] route added
   * [x] template converted
-  * [ ] validate order ajax handling function
-  * [ ] error response handling
+  * [x] validate order ajax handling function
+  * [x] error response handling
   * [ ] loading poups
   * [ ] coupon handling
   * [ ] form validation
-  * [ ] summary display/price updating
+  * [x] summary display/price updating
   * [ ] forwarding to cart page
   * [ ] place order ajax handling function
 * [x] services list pages
