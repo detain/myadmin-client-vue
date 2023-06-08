@@ -6,6 +6,7 @@ export default {
     children: [
         { path: '', component: BackupsList },
         { path: 'order', component: OrderBackup },
-        { path: ':id(\\d+)', component: ViewBackup }
+        { path: ':id(\\d+)', component: ViewBackup },
+        { path: ':id(\\d+)/:link(welcome_email|cancel|invoices)', component: ViewBackup }
     ]
 };

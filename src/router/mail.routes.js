@@ -6,6 +6,7 @@ export default {
     children: [
         { path: '', component: MailList },
         { path: 'order', component: OrderMail },
-        { path: ':id(\\d+)', component: ViewMail }
+        { path: ':id(\\d+)', component: ViewMail },
+        { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|alerts|deny_rules)', component: ViewMail }
     ]
 };

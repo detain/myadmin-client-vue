@@ -6,6 +6,7 @@ export default {
     children: [
         { path: '', component: SslList },
         { path: 'order', component: OrderSsl },
-        { path: ':id(\\d+)', component: ViewSsl }
+        { path: ':id(\\d+)', component: ViewSsl },
+        { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|change_approver_email|resend_approver_email)', component: ViewSsl }
     ]
 };
