@@ -3,14 +3,27 @@ import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
+import { useRoute, useRouter } from 'vue-router';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order License');
 layoutStore.setTitle('Order License');
-layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Order License'});
+const route = useRoute();
+const router = useRouter();
+const catTag = ref(route.params.catTag);
+const step = ref("license_types");
+updateBreadcrums();
 const baseUrl = import.meta.env.VITE_API_URL;
 const ima = ref("client");
-const step = ref("license_types");
-const lic = ref(null);
+const ip = ref("");
+const coupon = ref("");
+const csrfToken = ref("");
+function updateBreadcrums() {
+    if (step.value == 'license_types') {
+        layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type'});
+    } else {
+        layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type', ['/licenses/order/'+catTag.value]: 'Order License'});
+    }
+}
 const getLicenses = ref({
     directadmin: {
         name: "DirectAdmin",
@@ -50,12 +63,44 @@ const getLicenses = ref({
         order: 6
     }
 });
-
+const packageCosts = ref({});
+const serviceTypes = ref({});
+const serviceCategories = ref({});
+const packageId = ref(0);
+const getCatId = computed(() => {
+    for (const catId in serviceCategories.value) {
+        if (serviceCategories.value[catId].category_tag == catTag.value) {
+            return catId;
+        }
+    }
+    return 0;
+});
+const getServiceTypes = computed(() => {
+    const catId = getCatId.value;
+    console.log(catId);
+    let types = {};
+    for (const serviceId in serviceTypes.value) {
+        if (serviceTypes.value[serviceId].services_category == catId) {
+            types[serviceId] = serviceTypes.value[serviceId];
+        }
+    }
+    return types;
+});
 function orderLicenseType(type) {
-    lic.value = type;
+    catTag.value = type;
     step.value = 'order_form';
+    updateBreadcrums();
+    router.push('/licenses/order/'+catTag.value)
 }
-const csrfToken = ref("");
+
+fetchWrapper.get(baseUrl + '/licenses/order').then(response => {
+    console.log('Response:');
+    console.log(response);
+    packageCosts.value = response.packageCosts;
+    serviceTypes.value = response.serviceTypes;
+    serviceCategories.value = response.serviceCategories;
+});
+
 </script>
 
 <template>
@@ -91,7 +136,7 @@ const csrfToken = ref("");
                         <div class="p-1">
                             <h3 class="card-title py-2">
                                 <i class="material-icons" style="position: relative;top: 5px;">card_membership</i>
-                                Order {{ getLicenses[lic].name }} License
+                                Order {{ getLicenses[catTag].name }} License
                             </h3>
                             <div class="card-tools float-right">
                                 <a href="order_license" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative;top: 5px;"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</a>
@@ -99,14 +144,14 @@ const csrfToken = ref("");
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm" action="order_license?lic={{ lic }}">
+                        <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm" action="order_license?catTag={{ catTag }}">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <div v-for="(package_details, id) in packages" :key="id" class="form-group w-100">
+                                    <div v-for="(package_details, id) in getServiceTypes" :key="id" class="form-group w-100">
                                         <div class="icheck-success d-inline">
-                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" :checked="package_id === id" @change="updatePrice(true)">
+                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" :checked="packageId === id" @change="updatePrice(true)">
                                             <label class="more-info font-weight-normal" :for="package_details.services_name">{{ package_details.services_name }}</label>
                                         </div>
                                     </div>
@@ -118,7 +163,7 @@ const csrfToken = ref("");
                                     <input type="text" name="ip" class="form-control form-control-sm" @change="updatePrice()" placeholder="IP Address" v-model="ip" required>
                                 </div>
                             </div>
-                            <div v-if="getLicenses[lic].name !== 'cPanel'" id="coupon_row" class="form-group row">
+                            <div v-if="getLicenses[catTag].name !== 'cPanel'" id="coupon_row" class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" name="coupon" id="coupon" @change="updateCoupon()" placeholder="Coupon Code" v-model="coupon">
@@ -168,7 +213,7 @@ const csrfToken = ref("");
                         </div>
                     </div>
                 </div>
-                <div v-if="lic === 'litespeed'" class="card">
+                <div v-if="catTag === 'litespeed'" class="card">
                     <div class="p-1">
                         <div class="card-header py-2">
                             <h3 class="card-title"><i class="fa fa-suitcase">&nbsp;</i>Package Details</h3>
@@ -176,11 +221,11 @@ const csrfToken = ref("");
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-12 pkg_det">{{ packages[package_id].services_details }}</div>
+                            <div class="col-md-12 pkg_det">{{ serviceTypes[packageId].services_details }}</div>
                         </div>
                     </div>
                 </div>
-                <div v-if="lic === 'cpanel'" class="card">
+                <div v-if="catTag === 'cpanel'" class="card">
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title"><i class="fas fa-lightbulb">&nbsp;</i>Important Note</h3>
@@ -218,7 +263,7 @@ const csrfToken = ref("");
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ packages[packageId].services_name }}</div>
+                                            <div class="text-md float-left" style="position: relative;top:5px;">{{ serviceTypes[packageId].services_name }}</div>
                                             <button type="button" class="btn btn-custom float-right btn-sm" name="update_values" @click="editForm()" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
