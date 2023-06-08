@@ -495,12 +495,12 @@ authStore.load();
 </script>
 
 <template>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap">
     <link rel="stylesheet" href="/css/tailwind.min.css">
-    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/css/login_new.css">
-    <link rel="stylesheet" href="./node_modules/admin-lte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/templates/adminlte/custom_styles.css">
     <div class="p-3 px-3 bg-black"><img src="/images/logo_new.png" alt=""></div>
     <div class="flex flex-grow flex-col-reverse lg:flex-row min-h-screen container-main">
