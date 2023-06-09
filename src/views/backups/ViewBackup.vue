@@ -92,7 +92,7 @@ const billingStatusClass = computed(() => {
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div class="col">{{ link_display }}</div>
     </div>
     <div v-else-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row justify-content-center">

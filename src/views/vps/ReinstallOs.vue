@@ -3,7 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
+const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -13,6 +13,8 @@ layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+const id = ref(props.id);
+const module = ref(props.module);
 const vps_templates = ref({});
 const distroSelect = ref({});
 const bitsSelect = ref({});
@@ -22,25 +24,25 @@ const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
 const csrf = ref('');
 const goBackLink = computed(() => {
-      if (this.module === "vps") {
-        return `view_${this.module}`;
+      if (module.value === "vps") {
+        return `view_${module.value}`;
       } else {
         return "view_qs";
       }
     });
 const formAction = computed(() => {
-      return `${this.module === "vps" ? "view_vps" : "view_qs"}?id=${this.id}&link=reinstall_os`;
+      return `${module.value === "vps" ? "view_vps" : "view_qs"}?id=${id.value}&link=reinstall_os`;
     });
 onMounted(() => {
-    this.distroSelect = vps_templates.value.distroSelect;
-    this.bitsSelect = vps_templates.value.bitsSelect;
-    this.templateSelect = vps_templates.value.templateSelect;
-    this.currentOS = vps_templates.value.currentOS;
-    this.successMsg = vps_templates.value.success_msg;
-    this.cancelQueue = vps_templates.value.cancel_queue;
-    this.checkVpsPassword = vps_templates.value.checkVpsPassword === true;
-    this.checkAccountPassword = vps_templates.value.checkAccountPassword === true;
-    this.csrf = vps_templates.value.csrf;
+    distroSelect.value = vps_templates.value.distroSelect;
+    bitsSelect.value = vps_templates.value.bitsSelect;
+    templateSelect.value = vps_templates.value.templateSelect;
+    currentOS.value = vps_templates.value.currentOS;
+    successMsg.value = vps_templates.value.success_msg;
+    cancelQueue.value = vps_templates.value.cancel_queue;
+    checkVpsPassword.value = vps_templates.value.checkVpsPassword === true;
+    checkAccountPassword.value = vps_templates.value.checkAccountPassword === true;
+    csrf.value = vps_templates.value.csrf;
   });
 function updateVPS() {
       // Perform logic for updating VPS based on selected values

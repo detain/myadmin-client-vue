@@ -109,7 +109,7 @@ licenseStore.getById(id)
             </div>
         </template>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div v-if="link == 'change_ip'" class="col">
             <ChangeIp :id="id"></ChangeIp>
         </div>

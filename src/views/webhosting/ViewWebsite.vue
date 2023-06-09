@@ -99,7 +99,7 @@ function isEmpty(table) {
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
             <BuyIp :id="id"></BuyIp>
         </div>

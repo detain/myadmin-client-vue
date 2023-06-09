@@ -71,8 +71,7 @@ console.log(link.value);
                 </div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
-                    <a class="btn p-0 text-white text-sm pl-1" href="view_domain?id=592337&link=whois" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i>
-                    </a>
+                    <router-link class="btn p-0 text-white text-sm pl-1" :to="'/domains/'+id+'/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
                 </span>
             </div>
         </div>
@@ -119,9 +118,9 @@ console.log(link.value);
                             </button>
                         </div>
                         <div class="btn-group float-right">
-                            <a class="btn btn-custom btn-sm" href="view_domain?id=592337&link=nameservers" title="Edit NameServers">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                Edit </a>
+                            <router-link :to="'/domains/'+id+'/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>Edit
+                            </router-link>
                         </div>
                     </div>
                 </div>

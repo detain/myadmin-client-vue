@@ -4,8 +4,9 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useQsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
-
+const module = ref('quickservers');
 const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
@@ -16,7 +17,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
 layoutStore.addBreadcrum('/qs/'+id, 'View Qs '+id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, module, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
+const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
 
 qsStore.getById(id)
 
@@ -82,7 +83,49 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
             </div>
         </div>
     </div>
-    <template v-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))">
+    <div v-if="link" class="row">
+        <div v-if="link == 'buy_hd_space'" class="col">
+            <BuyHdSpace :id="id" :module="module"></BuyHdSpace>
+        </div>
+        <div v-else-if="link == 'buy_ip'" class="col">
+            <BuyIp :id="id" :module="module"></BuyIp>
+        </div>
+        <div v-else-if="link == 'change_hostname'" class="col">
+            <ChangeHostname :id="id" :module="module"></ChangeHostname>
+        </div>
+        <div v-else-if="link == 'change_root_password'" class="col">
+            <ChangeRootPassword :id="id" :module="module"></ChangeRootPassword>
+        </div>
+        <div v-else-if="link == 'change_timezone'" class="col">
+            <ChangeTimezone :id="id" :module="module"></ChangeTimezone>
+        </div>
+        <div v-else-if="link == 'change_webuzo_password'" class="col">
+            <ChangeWebuzoPassword :id="id" :module="module"></ChangeWebuzoPassword>
+        </div>
+        <div v-else-if="link == 'insert_cd'" class="col">
+            <InsertCd :id="id" :module="module"></InsertCd>
+        </div>
+        <div v-else-if="link == 'reinstall_os'" class="col">
+            <ReinstallOs :id="id" :module="module"></ReinstallOs>
+        </div>
+        <div v-else-if="link == 'reset_password'" class="col">
+            <ResetPassword :id="id" :module="module"></ResetPassword>
+        </div>
+        <div v-else-if="link == 'reverse_dns'" class="col">
+            <ReverseDns :id="id" :module="module"></ReverseDns>
+        </div>
+        <div v-else-if="link == 'slices'" class="col">
+            <Slices :id="id" :module="module"></Slices>
+        </div>
+        <div v-else-if="link == 'traffic_usage'" class="col">
+            <TrafficUsage :id="id" :module="module"></TrafficUsage>
+        </div>
+        <div v-else-if="link == 'vnc'" class="col">
+            <Vnc :id="id" :module="module"></Vnc>
+        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
+    </div>
+    <template v-if="!link || (link && ['cancel', 'welcome_email'].includes(link))">
         <div class="row my-2">
             <div class="col-md-4">
                 <div class="card">

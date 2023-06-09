@@ -81,7 +81,7 @@ sslStore.getById(id)
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div v-if="link == 'change_approver_email'" class="col">
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>

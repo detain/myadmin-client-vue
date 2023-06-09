@@ -99,7 +99,7 @@ const ipv6VlansNetworks = computed(() => {
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div v-if="link == 'bandwidth_graph'" class="col">
             <BandwidthGraph :id="id"></BandwidthGraph>
         </div>

@@ -307,7 +307,6 @@ export const useQsStore = defineStore({
         cpu_graph_data: '{"labels":[],"value":[]}',
         bandwidth_xaxis: "[]",
         bandwidth_yaxis: "[]",
-        module: "quickservers",
         token: "%3Ftoken%",
         csrf:
             "dc773d6f19a0c5702cf250327da047bb8c2cb7e54fcc8be52315594acda4e3aab9a8b9c8050a15016cc28da639ebb2f68d5c6129b6b7465b4c9aef51adcc3385",
