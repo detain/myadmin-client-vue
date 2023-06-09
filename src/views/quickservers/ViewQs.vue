@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useQsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
@@ -272,12 +272,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                         </div>
                     </div>
                     <div class="card-body">
-                        <template v-for="clientLink in clientLinks">
-                        <a :key="clientLink.label" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-if="clientLink.label">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>
-                            {{ clientLink.label }}
-                        </a>
-                        </template>
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/qs/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                     </div>
                 </div>
             </div>

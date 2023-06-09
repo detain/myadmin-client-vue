@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useDomainStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
@@ -20,7 +20,8 @@ const domainStore = useDomainStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, csrf, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
 
 domainStore.getById(id)
-
+console.log('link:')
+console.log(link.value);
 
 </script>
 
@@ -76,7 +77,7 @@ domainStore.getById(id)
             </div>
         </div>
     </div>
-    <div v-if="link_display" class="row shadow-none">
+    <div v-if="link" class="row shadow-none">
         <div v-if="link == 'contact'" class="col">
             <Contact :id="id"></Contact>
         </div>
@@ -104,7 +105,7 @@ domainStore.getById(id)
                     </div>
                 </div>
                 <div class="card-body py-5 text-center my-4" style="height: auto;">
-                    <a v-for="clientLink in clientLinks" :key="clientLink.id" class="btn btn-app b-radius" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" :other-attr="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</a>
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/domains/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                 </div>
             </div>
         </div>
@@ -152,9 +153,9 @@ domainStore.getById(id)
                             </button>
                         </div>
                         <div class="btn-group float-right">
-                            <a class="btn btn-custom btn-sm" href="view_domain?id=592337&link=contact" title="Edit Contact Information">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                Edit </a>
+                            <router-link :to="'/domains/'+id+'/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>Edit
+                            </router-link>
                         </div>
                     </div>
                 </div>

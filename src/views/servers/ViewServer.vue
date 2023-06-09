@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useServerStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import $ from 'jquery';
@@ -152,15 +152,7 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <template v-for="(clientLink, index) in clientLinks" :key="index">
-                        <a class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-if="clientLink.icon">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>
-                            {{ clientLink.label }}
-                        </a>
-                        <a class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" :href="clientLink.link" v-else>
-                            {{ clientLink.label }}
-                        </a>
-                    </template>
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/servers/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                 </div>
             </div>
         </div>
