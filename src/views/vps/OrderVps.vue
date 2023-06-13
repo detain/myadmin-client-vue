@@ -217,11 +217,24 @@ async function onSubmit() {
                 sliceCost.value = response.slice_cost;
                 slices.value = response.slices;
                 osVersion.value = response.version;
-                step.value = 'order_confirm';
+                if (response.continue == false) {
+                    Swal.fire({
+                      icon: 'error',
+                      html: 'Got error '+response.errors.join('<br>')
+                    });
+                } else {
+                    step.value = 'order_confirm';
+                }
             });
+
     } catch (error) {
         console.log("vps order validation failed");
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+
     }
 }
 
@@ -250,11 +263,19 @@ async function onSubmitConfirmation() {
                     // forward to cart or w/e
                 } else {
                     // display 'message'
+                    Swal.fire({
+                      icon: 'error',
+                      html: 'Got error '+response.message
+                    });
                 }
             });
     } catch (error) {
         console.log("vps order  failed");
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
     }
 
 }

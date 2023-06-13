@@ -38,6 +38,7 @@ export const router = createRouter({
     { path: '/prepays', component: PrePays },
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
+    { path: '/cart/:module(backups|domains|licenses|mail|quickservers|server|ssl|vps|webhosting|floating_ips)/:id(\\d+)', component: Cart },
     { path: '/view_invoices', component: InvoicesList },
     { ...affiliateRoutes },
     { ...usersRoutes },
