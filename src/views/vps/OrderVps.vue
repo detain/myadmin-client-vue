@@ -179,7 +179,7 @@ const getBandwidth = computed(() => {
 async function onSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/vps/order`, {
+            .put(`${baseUrl}/vps/order`, {
                 serviceType: serviceType.value,
                 slices: slices.value,
                 vpsPlatform: vpsPlatform.value,
@@ -228,6 +228,37 @@ async function onSubmit() {
 }
 
 async function onSubmitConfirmation() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/vps/order`, {
+                serviceType: serviceType.value,
+                slices: slices.value,
+                vpsPlatform: vpsPlatform.value,
+                location: location.value,
+                osVersion: osVersion.value,
+                osDistro: osDistro.value,
+                hostname: hostname.value,
+                coupon: coupon.value,
+                rootpass: rootpass.value,
+                csrfToken: csrfToken.value,
+                curSsd: curSsd.value,
+                curControl: curControl.value,
+                period: period.value,
+            })
+            .then((response) => {
+                console.log("vps order validation success");
+                console.log(response);
+                // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
+                if (response.success == true) {
+                    // forward to cart or w/e
+                } else {
+                    // display 'message'
+                }
+            });
+    } catch (error) {
+        console.log("vps order  failed");
+        console.log(error);
+    }
 
 }
 
