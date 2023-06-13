@@ -217,6 +217,9 @@ function formatExpDate(e) {
     e.target.value = e.target.lastValue = parts.join("/");
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
+function toggleCheckBox() {
+
+}
 function checkClass() {
 
 }
@@ -368,7 +371,7 @@ accountStore.load();
                         <tr>
                             <th style="width: 5%;">
                                 <div class="icheck-success d-inline">
-                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" onChange="toggleCheckbox();" checked>
+                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" checked>
                                     <label for="checkboxtoggle"> </label>
                                 </div>
                             </th>
@@ -517,7 +520,7 @@ accountStore.load();
                         <tr>
                             <th style="width: 5%;">
                                 <div class="icheck-success d-inline">
-                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" onChange="toggleCheckbox();">
+                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox">
                                     <label for="checkboxtoggle"> </label>
                                 </div>
                             </th>

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore, useAlertStore } from '@/stores'
 import { ClientHome, Home } from '@/views'
-import { PrePays, PaymentTypes, InvoicesList, Cart } from '@/views/billing'
+import { PrePays, PaymentTypes, InvoicesList, Cart, Pay } from '@/views/billing'
 import affiliateRoutes from './affiliate.routes'
 import usersRoutes from './users.routes'
 import accountRoutes from './account.routes'
@@ -39,7 +39,8 @@ export const router = createRouter({
     { path: '/payment_types', component: PaymentTypes },
     { path: '/cart', component: Cart },
     { path: '/cart/:module(backups|domains|licenses|mail|quickservers|server|ssl|vps|webhosting|floating_ips)/:id(\\d+)', component: Cart },
-    { path: '/view_invoices', component: InvoicesList },
+    { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)', component: Pay },
+    { path: '/invoices', component: InvoicesList },
     { ...affiliateRoutes },
     { ...usersRoutes },
     { ...accountRoutes },
