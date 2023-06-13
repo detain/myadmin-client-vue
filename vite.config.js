@@ -15,6 +15,7 @@ import { VitePWA } from "vite-plugin-pwa";
 //import { dependencies } from "./package.json";
 import webfontDownload from 'vite-plugin-webfont-dl';
 //import { splitVendorChunkPlugin } from "vite";
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 /*function renderChunks(deps) {
     console.log("Deps:");
@@ -36,6 +37,7 @@ export default defineConfig({
                 defineModel: true
             }
         }),
+        basicSsl(),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         webfontDownload(),
         inject({
