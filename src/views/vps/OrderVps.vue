@@ -114,7 +114,6 @@ const osDistro = ref("ubuntu");
 const hostname = ref("server.domain.com");
 const coupon = ref("");
 const rootpass = ref("");
-const csrfToken = ref("");
 const curSsd = ref(0);
 const curControl = ref("");
 const period = ref(1);
@@ -189,7 +188,6 @@ async function onSubmit() {
                 hostname: hostname.value,
                 coupon: coupon.value,
                 rootpass: rootpass.value,
-                csrfToken: csrfToken.value,
                 curSsd: curSsd.value,
                 curControl: curControl.value,
                 period: period.value,
@@ -240,7 +238,6 @@ async function onSubmitConfirmation() {
                 hostname: hostname.value,
                 coupon: coupon.value,
                 rootpass: rootpass.value,
-                csrfToken: csrfToken.value,
                 curSsd: curSsd.value,
                 curControl: curControl.value,
                 period: period.value,
@@ -837,7 +834,6 @@ try {
 
                     <div class="card-body">
                         <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input type="hidden" id="period" name="period" :value="period" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
@@ -1039,7 +1035,6 @@ try {
                     </div>
                     <div class="card-body">
                         <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>

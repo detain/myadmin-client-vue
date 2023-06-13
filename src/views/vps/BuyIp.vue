@@ -16,7 +16,7 @@ layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
 const ipsDetails = ref(null);
 const buyForm = ref(null);
-const module = ref(null);
+const module = ref(props.module);
 //const id = ref(null);
 const csrf = ref(null);
 const ip_currency = ref(null);

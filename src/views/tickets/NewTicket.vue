@@ -72,8 +72,8 @@ const getActionUrl = () => {
             <div class="form-group row" v-if="ima === 'admin'">
               <label for="department" class="col-sm-4 col-form-label">Department</label>
               <div class="col-sm-8">
-                <select name="department" class="form-control form-control-sm select2" style="width: 100%;">
-                  <option v-for="(dept_name, dept) in departments" :value="dept" :selected="kyDept === dept">{{ dept_name }}</option>
+                <select name="department" class="form-control form-control-sm select2" style="width: 100%;" v-model="kyDept">
+                  <option v-for="(dept_name, dept, index) in departments" :key="index" :value="dept">{{ dept_name }}</option>
                 </select>
               </div>
             </div>
@@ -82,7 +82,7 @@ const getActionUrl = () => {
               <div class="col-sm-8">
                 <select name="product" class="form-control form-control-sm select2" style="width: 100%;">
                   <option value="">Select Product</option>
-                  <option v-for="(product, value) in products" :value="value">{{ product }}</option>
+                  <option v-for="(product, value, index) in products" :key="index" :value="value">{{ product }}</option>
                 </select>
               </div>
             </div>

@@ -15,7 +15,7 @@ layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
 const additional_hd = ref('');
-const module = ref('');
+const module = ref(props.module);
 //const id = ref('');
 const csrf = ref('');
 const currency_symbol = ref('');

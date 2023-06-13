@@ -14,7 +14,7 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-const module = ref('');
+const module = ref(props.module);
 const goBackLink = ref('');
 const csrfToken = ref('');
 const zones = ref([]);

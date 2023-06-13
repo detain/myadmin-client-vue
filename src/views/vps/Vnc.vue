@@ -14,13 +14,13 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 
-const module = ref('vps');
+const module = ref(props.module);
 const vpsScreenshot = ref(null);
 const setupVncLink = ref(null);
 const novncLink = ref(null);
 const moduleLink = computed(() => {
-  if (this.module === 'vps') {
-    return `view_${this.module}`;
+  if (module.value === 'vps') {
+    return `view_${module.value}`;
   } else {
     return 'view_qs';
   }
