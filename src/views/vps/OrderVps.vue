@@ -114,7 +114,6 @@ const osDistro = ref("ubuntu");
 const hostname = ref("server.domain.com");
 const coupon = ref("");
 const rootpass = ref("");
-const csrfToken = ref("");
 const curSsd = ref(0);
 const curControl = ref("");
 const period = ref(1);
@@ -179,7 +178,7 @@ const getBandwidth = computed(() => {
 async function onSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/vps/order`, {
+            .put(`${baseUrl}/vps/order`, {
                 serviceType: serviceType.value,
                 slices: slices.value,
                 vpsPlatform: vpsPlatform.value,
@@ -189,7 +188,6 @@ async function onSubmit() {
                 hostname: hostname.value,
                 coupon: coupon.value,
                 rootpass: rootpass.value,
-                csrfToken: csrfToken.value,
                 curSsd: curSsd.value,
                 curControl: curControl.value,
                 period: period.value,
@@ -219,15 +217,66 @@ async function onSubmit() {
                 sliceCost.value = response.slice_cost;
                 slices.value = response.slices;
                 osVersion.value = response.version;
-                step.value = 'order_confirm';
+                if (response.continue == false) {
+                    Swal.fire({
+                      icon: 'error',
+                      html: 'Got error '+response.errors.join('<br>')
+                    });
+                } else {
+                    step.value = 'order_confirm';
+                }
             });
+
     } catch (error) {
         console.log("vps order validation failed");
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+
     }
 }
 
 async function onSubmitConfirmation() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/vps/order`, {
+                serviceType: serviceType.value,
+                slices: slices.value,
+                vpsPlatform: vpsPlatform.value,
+                location: location.value,
+                osVersion: osVersion.value,
+                osDistro: osDistro.value,
+                hostname: hostname.value,
+                coupon: coupon.value,
+                rootpass: rootpass.value,
+                curSsd: curSsd.value,
+                curControl: curControl.value,
+                period: period.value,
+            })
+            .then((response) => {
+                console.log("vps order validation success");
+                console.log(response);
+                // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
+                if (response.success == true) {
+                    // forward to cart or w/e
+                } else {
+                    // display 'message'
+                    Swal.fire({
+                      icon: 'error',
+                      html: 'Got error '+response.message
+                    });
+                }
+            });
+    } catch (error) {
+        console.log("vps order  failed");
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          html: 'Got error '+error.message
+        });
+    }
 
 }
 
@@ -806,7 +855,6 @@ try {
 
                     <div class="card-body">
                         <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input type="hidden" id="period" name="period" :value="period" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
@@ -1008,7 +1056,6 @@ try {
                     </div>
                     <div class="card-body">
                         <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>

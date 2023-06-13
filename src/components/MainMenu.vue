@@ -21,12 +21,12 @@ const menus = ref({
         { link: '/servers', icon: 'fa fa-server', text: 'Servers' },
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
         { link: '/tickets', icon: 'fa fa-ticket', text: 'Tickets' },
-        { menu: 'billing', icon: 'fa fa-file-invoice', text: 'Billing', activecheck: ['cart', 'view_invoices', 'payment_types', 'prepays'] },
+        { menu: 'billing', icon: 'fa fa-file-invoice', text: 'Billing', activecheck: ['cart', 'invoices', 'payment_types', 'prepays'] },
         { menu: 'settings', icon: 'fa fa-gear', text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] }
     ],
     billing: [
         { link: '/cart', icon: 'far fa-circle', text: 'Cart' },
-        { link: '/view_invoices', icon: 'far fa-circle', text: 'View Invoices' },
+        { link: '/invoices', icon: 'far fa-circle', text: 'View Invoices' },
         { link: '/payment_types', icon: 'far fa-circle', text: 'Credit Cards' },
         { link: '/prepays', icon: 'far fa-circle', text: 'Pre-Paid Funds / Credit' }
     ],

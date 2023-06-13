@@ -217,6 +217,15 @@ function formatExpDate(e) {
     e.target.value = e.target.lastValue = parts.join("/");
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
+function toggleCheckBox() {
+
+}
+function checkClass() {
+
+}
+function delete_invoice() {
+
+}
 
 function onCardNumInput(e) {
     formatCardNum(e);
@@ -362,7 +371,7 @@ accountStore.load();
                         <tr>
                             <th style="width: 5%;">
                                 <div class="icheck-success d-inline">
-                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" onChange="toggleCheckbox();" checked>
+                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" checked>
                                     <label for="checkboxtoggle"> </label>
                                 </div>
                             </th>
@@ -391,7 +400,7 @@ accountStore.load();
                             <td>
                                 <template v-if="invrow.invoices_module === 'default'">{{ invrow.service }}</template>
                                 <template v-else-if="invrow.collapse !== 1">
-                                    <a class="text-primary" :href="`index.php?choice=none.view_${modules[invrow.invoices_module]}&id=${invrow.invoices_service}`">{{ invrow.service }}</a>
+                                    <a class="text-primary" :href="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</a>
                                 </template>
                             </td>
                             <td>{{ invrow.invoices_description }}</td>
@@ -511,7 +520,7 @@ accountStore.load();
                         <tr>
                             <th style="width: 5%;">
                                 <div class="icheck-success d-inline">
-                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" onChange="toggleCheckbox();">
+                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox">
                                     <label for="checkboxtoggle"> </label>
                                 </div>
                             </th>
