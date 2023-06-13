@@ -228,7 +228,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
                                                                 <div class="icheck-success">
-                                                                    <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="(packageId && packageId === serviceData.services_id)" @change="updatePrice(true)">
+                                                                    <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" v-model="packageId" >
                                                                     <label :for="serviceData.services_name">
                                                                         {{ serviceData.services_name }}<br>
                                                                         <div class="text-sm text-muted font-italic mt-1">
@@ -406,7 +406,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <button type="button" style="" name="update_values" @click="edit_form" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details">
+                                            <button type="button" style="" name="update_values" @click="step = 'order_form'" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details">
                                                 <div style="display: inline;" class="text-md float-left">{{ hostname }}</div>
                                                 <i style="padding-top: 4px;padding-left: 4px;" aria-hidden="true" class="fa fa-pencil float-right"></i>
                                             </button>
@@ -467,9 +467,9 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                             </table>
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
-                                <p class="text-sm text-center">The subscription will automatically renew every <b>{{ period }} month(s) at {{ renewal_cost ? currencySymbol + renewal_cost : currencySymbol + tos_repeat_service_cost }}</b> until canceled.</p>
+                                <p class="text-sm text-center">The subscription will automatically renew every <b>{{ period }} month(s) at {{ currencySymbol + totalCost }}</b> until canceled.</p>
                                 <p class="text-muted text-xs">
-                                    By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
+                                    By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.
                                 </p>
                                 <p class="icheck-success text-bold text-center"><input type="checkbox" name="tos" id="tos" class="d-inline" style="margin:0 5px;" value="yes">
                                     <label for="tos" style="display: inline;text-align: center;">I have read the terms above and I agree.</label>
