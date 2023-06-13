@@ -17,6 +17,7 @@ layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' })
 layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+
 vpsStore.getById(id)
 if (link.value == 'start') {
     layoutStore.addBreadcrum('/vps/' + id + '/start', 'Start');
@@ -177,7 +178,7 @@ function toggleFunc(cp) {
             <InsertCd :id="id" :module="module"></InsertCd>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="id" :module="module"></ResetPassword>

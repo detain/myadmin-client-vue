@@ -3,7 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id', 'module']);
+const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -12,44 +12,94 @@ layoutStore.setTitle('');
 layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+layoutStore.addBreadcrum('/vps/'+props.id+'/reinstall_os', 'Reinstall OS');
+const baseUrl = import.meta.env.VITE_API_URL;
 const id = ref(props.id);
 const module = ref(props.module);
-const vps_templates = ref({});
-const distroSelect = ref({});
-const bitsSelect = ref({});
+const settings = ref(props.settings);
+const serviceInfo = ref(props.serviceInfo);
+const serviceMaster = ref(props.serviceMaster);
+const vpsTemplates = ref({});
+const osDistro = ref('');
+const osVersion = ref('');
 const templateSelect = ref({});
 const currentOS = ref('');
 const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
 const csrf = ref('');
 const goBackLink = computed(() => {
-      if (module.value === "vps") {
-        return `view_${module.value}`;
-      } else {
-        return "view_qs";
-      }
-    });
+  if (module.value === "vps") {
+    return `view_${module.value}`;
+  } else {
+    return "view_qs";
+  }
+});
 const formAction = computed(() => {
-      return `${module.value === "vps" ? "view_vps" : "view_qs"}?id=${id.value}&link=reinstall_os`;
-    });
+  return `${module.value === "vps" ? "view_vps" : "view_qs"}?id=${id.value}&link=reinstall_os`;
+});
+const osDistroSelect = computed(() => {
+    var distros = {};
+    for (var idx in vpsTemplates.value) {
+        var template = vpsTemplates.value[idx];
+        distros[template.template_os] = template.template_name;
+    }
+    return distros;
+});
+const getOsDistro = computed(() => {
+    if (vpsTemplates.value.length > 0 && osDistro.value == '') {
+        if (typeof serviceInfo.value.vps_os != "undefined") {
+            for (var idx in vpsTemplates.value) {
+                var template = vpsTemplates.value[idx];
+                if (template.template_file == serviceInfo.value.vps_os) {
+                    return template.template_os;
+                }
+            }
+        }
+        return vpsTemplates.value[0].template_os;
+    } else {
+        return osDistro.value;
+    }
+});
+
+const osVersionSelect = computed(() => {
+    var versions = {};
+    for (var idx in vpsTemplates.value) {
+        var template = vpsTemplates.value[idx];
+        if (template.template_os == osDistro.value) {
+            versions[template.template_file] = template.template_version;
+        }
+    }
+    return versions;
+});
+
 onMounted(() => {
-    distroSelect.value = vps_templates.value.distroSelect;
-    bitsSelect.value = vps_templates.value.bitsSelect;
-    templateSelect.value = vps_templates.value.templateSelect;
-    currentOS.value = vps_templates.value.currentOS;
-    successMsg.value = vps_templates.value.success_msg;
-    cancelQueue.value = vps_templates.value.cancel_queue;
-    checkVpsPassword.value = vps_templates.value.checkVpsPassword === true;
-    checkAccountPassword.value = vps_templates.value.checkAccountPassword === true;
-    csrf.value = vps_templates.value.csrf;
-  });
+    console.log(serviceInfo.value);
+});
+
 function updateVPS() {
-      // Perform logic for updating VPS based on selected values
-    }
+  // Perform logic for updating VPS based on selected values
+}
 function submitForm() {
-      // Handle form submission
-    }
+  // Handle form submission
+}
+try {
+    fetchWrapper.get(baseUrl + "/vps/"+id.value+"/reinstall_os").then((response) => {
+        console.log(response);
+        vpsTemplates.value = response.templates;
+        for (var idx in vpsTemplates.value) {
+            var template = vpsTemplates.value[idx];
+            if (template.template_file == serviceInfo.value.vps_os) {
+                osDistro.value = template.template_os;
+                osVersion.value = template.template_file;
+            }
+
+        }
+    });
+} catch (error) {
+    console.log("error:");
+    console.log(error);
+}
+
 </script>
 
 <template>
@@ -112,24 +162,16 @@ function submitForm() {
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="vps_distro">Operating System Distribution</label>
                   <div class="col-sm-9 input-group">
-                    <select id="vps_distro" name="vps_distro" class="form-control form-control-sm select2" @change="updateVPS">
-                      <option v-for="(distro, ky, index) in distroSelect" :key="index" :value="ky" :selected="distro.selected">{{ distro.val }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-3 col-form-label" for="bits">Architecture</label>
-                  <div class="col-sm-9 input-group">
-                    <select id="bits" name="bits" @change="updateVPS" class="form-control form-control-sm select2">
-                      <option v-for="(bit, ky, index) in bitsSelect" :key="index" :value="ky" :selected="bit.selected">{{ bit.val }}</option>
+                    <select id="vps_distro" name="vps_distro" class="form-control form-control-sm select2" v-model="osDistro">
+                      <option v-for="(distro, ky, index) in osDistroSelect" :key="index" :value="ky">{{ distro }}</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="template">Version</label>
                   <div class="col-sm-9 input-group">
-                    <select id="template" name="template" class="form-control form-control-sm select2">
-                      <option v-for="(template, ky, index) in templateSelect" :key="index" :value="ky" :selected="template.selected">{{ template.val }}</option>
+                    <select id="template" name="template" class="form-control form-control-sm select2" v-model="osVersion">
+                      <option v-for="(template, ky, index) in osVersionSelect" :key="index" :value="ky">{{ template }}</option>
                     </select>
                   </div>
                 </div>
