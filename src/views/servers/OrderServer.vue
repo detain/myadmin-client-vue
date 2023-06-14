@@ -258,66 +258,66 @@ serverOrderRequest(false);
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
-                                                <div v-for="(details, id) in inputDetails[cpu]" :key="id">
-                                                    <div v-if="inputName === 'memory_li'" class="icheck-success d-inline w-100">
-                                                        <input :id="'ds-' + inputName.replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] === id" @change="updatePrice()" />
-                                                    </div>
-                                                    <label v-if="details.index === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
-                                                        <div class="row mb-2">
-                                                            <div class="col-md-12">
-                                                                <table class="table table-sm table-bordered">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Drive Type</th>
-                                                                            <th>LFF</th>
-                                                                            <th>SFF</th>
-                                                                            <th>NVE</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>Max Drives</td>
-                                                                            <td id="drives-lff">0/4</td>
-                                                                            <td id="drives-sff">0/4</td>
-                                                                            <td id="drives-nve">0/2</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                    </label>
-                                                    <label v-if="details.index !== 0 || inputName !== 'hd_li'" :for="'ds-' + inputName.replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
-                                                        <div class="row mb-2">
-                                                            <div class="col-md-8">
-                                                                <div class="text-md font-weight-light">
-                                                                    <template v-if="inputName === 'hd_li'">
-                                                                        <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(id, details.drive_type)">
-                                                                            <i class="fa fa-minus"></i>
-                                                                        </button>
-                                                                        <b>/</b>
-                                                                        <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(id, details.drive_type, details.short_desc, details.monthly_price)">
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </button>
-                                                                    </template>
-                                                                    <span class="ml-2 text-bold text-sm">{{ details.short_desc }}</span>
-                                                                    <template v-if="inputName === 'hd_li'">
-                                                                        <span class="ml-2 badge bg-info">{{ details.drive_type }}</span>
-                                                                    </template>
+                                                <template v-for="(details, id) in inputDetails[cpu]" :key="id">
+                                                    <div class="icheck-success d-inline w-100">
+                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + inputName.replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] === id" @change="updatePrice()" />
+                                                        <label v-if="details.index === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
+                                                            <div class="row mb-2">
+                                                                <div class="col-md-12">
+                                                                    <table class="table table-sm table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Drive Type</th>
+                                                                                <th>LFF</th>
+                                                                                <th>SFF</th>
+                                                                                <th>NVE</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Max Drives</td>
+                                                                                <td id="drives-lff">0/4</td>
+                                                                                <td id="drives-sff">0/4</td>
+                                                                                <td id="drives-nve">0/2</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-4 text-right">
-                                                                <span class="text-md text-bold pl-2 text-green">{{ details.monthly_price_display }}</span>
+
+                                                        </label>
+                                                        <label v-if="details.index !== 0 || inputName !== 'hd_li'" :for="'ds-' + inputName.replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                            <div class="row mb-2">
+                                                                <div class="col-md-8">
+                                                                    <div class="text-md font-weight-light">
+                                                                        <template v-if="inputName === 'hd_li'">
+                                                                            <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(id, details.drive_type)">
+                                                                                <i class="fa fa-minus"></i>
+                                                                            </button>
+                                                                            <b>/</b>
+                                                                            <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(id, details.drive_type, details.short_desc, details.monthly_price)">
+                                                                                <i class="fa fa-plus"></i>
+                                                                            </button>
+                                                                        </template>
+                                                                        <span class="ml-2 text-bold text-sm">{{ details.short_desc }}</span>
+                                                                        <template v-if="inputName === 'hd_li'">
+                                                                            <span class="ml-2 badge bg-info">{{ details.drive_type }}</span>
+                                                                        </template>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 text-right">
+                                                                    <span class="text-md text-bold pl-2 text-green">{{ details.monthly_price_display }}</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
+                                                        </label>
+                                                    </div>
+                                                </template>
                                             </div>
                                         </div>
                                     </template>
-                                    <div v-else class="form-group row">
+                                    <div v-else-if="fieldLabel[inputName.replace('_li', '')]" class="form-group row">
                                         <label class="col-md-3 col-form-label text-right">
-                                            {{ fieldLabel }}
+                                            {{ fieldLabel[inputName.replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
                                         <div class="input-group col-md-9 {{ inputName }}-row">
