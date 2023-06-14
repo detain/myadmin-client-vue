@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
-import { useRoute, useRouter } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order License');
 layoutStore.setTitle('Order License');
@@ -63,6 +63,7 @@ const getLicenses = ref({
         order: 6
     }
 });
+const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
 const packageCosts = ref({});
 const serviceTypes = ref({});
 const serviceCategories = ref({});
@@ -80,7 +81,7 @@ const getServiceTypes = computed(() => {
     console.log(catId);
     let types = {};
     for (const serviceId in serviceTypes.value) {
-        if (serviceTypes.value[serviceId].services_category == catId) {
+        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId))) {
             types[serviceId] = serviceTypes.value[serviceId];
         }
     }
@@ -139,7 +140,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then(response => {
                                 Order {{ getLicenses[catTag].name }} License
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="order_license" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative;top: 5px;"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</a>
+                                <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative;top: 5px;"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
