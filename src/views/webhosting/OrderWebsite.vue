@@ -66,7 +66,7 @@ async function onSubmit() {
             showConfirmButton: false
         });
         fetchWrapper
-            .post(`${baseUrl}/websites/order`, {
+            .put(`${baseUrl}/websites/order`, {
                 web: packageId.value,
                 packageId: packageId.value,
                 hostname: hostname.value,
