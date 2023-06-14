@@ -112,6 +112,13 @@ async function onSubmitConfirmation() {
 
 }
 
+async function searchDomain() {
+    console.log("searching for "+hostname.value);
+    fetchWrapper.get(baseUrl + '/domains/lookup/'+hostname.value).then(response => {
+        console.log('Response:');
+        console.log(response);
+    });
+}
 
 let loading = Swal.fire({
     title: '',
@@ -343,7 +350,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then(response => {
                             <div class="card-body text-md">
                                 <div class="form-group row">
                                     <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
-                                    <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="updateDomain" @change="updateDomain" />
+                                    <div class="col-md-12"><input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="searchDomain" @change="searchDomain" />
                                         <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                     </div>
                                 </div>

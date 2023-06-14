@@ -4773,9 +4773,10 @@ font-awesome-animation@l-lin/font-awesome-animation#master:
   version "1.1.1"
   resolved "https://codeload.github.com/l-lin/font-awesome-animation/tar.gz/0f8fcfbd2d9028ce2e747324d370048d94956263"
 
-font-awesome@FortAwesome/Font-Awesome#^4.7:
+font-awesome@^4.7:
   version "4.7.0"
-  resolved "https://codeload.github.com/FortAwesome/Font-Awesome/tar.gz/a8386aae19e200ddb0f6845b5feeee5eb7013687"
+  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+  integrity sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -5646,7 +5647,7 @@ jquery-sortable@johnny/jquery-sortable#master:
   version "0.9.13"
   resolved "https://codeload.github.com/johnny/jquery-sortable/tar.gz/4d31eeaf0136307c4d70e9e2252bee001384cf72"
   dependencies:
-    jquery "^2.1.2 || ^3.0.0"
+    jquery "^2.1.2"
 
 jquery-ui-dist@^1.13.0:
   version "1.13.2"
