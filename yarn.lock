@@ -1876,9 +1876,9 @@
   integrity sha512-8o2XkyAw2HZoVD5KpIoUJmEgZ7BPVv33p7rY1jmn/wJUbugtQUc44vNMDTguUNUGiLv+oqgtyYmiYctHDZEzdQ==
 
 "@types/eslint@*":
-  version "8.40.1"
-  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.40.1.tgz#92edc592c3575b52a8e790cd5ec04efe28f3d24c"
-  integrity sha512-vRb792M4mF1FBT+eoLecmkpLXwxsBHvWWRGJjzbYANBM6DtiJc6yETyv4rqDA6QNjF1pkj1U7LMA6dGb3VYlHw==
+  version "8.40.2"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.40.2.tgz#2833bc112d809677864a4b0e7d1de4f04d7dac2d"
+  integrity sha512-PRVjQ4Eh9z9pmmtaq8nTjZjQwKFk7YIHIud3lRoKRBgUQjgjRmoGxxGEPXQkF+lH7QkHJRNr5F4aBgYCW0lqpQ==
   dependencies:
     "@types/estree" "*"
     "@types/json-schema" "*"
@@ -3952,9 +3952,9 @@ datatables.net-select@*, datatables.net-select@>=1.4.0:
     jquery ">=1.7"
 
 datatables.net-vue3@*:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/datatables.net-vue3/-/datatables.net-vue3-2.1.0.tgz#9648898145c4e3118023bc8d44e83cafeb1b3f17"
-  integrity sha512-1SUyco6ZaA41egobTVmD0BtcnMeBn1LlqfBksGO2WCo9m9dMt+i2Yo8jy25Z1YBjbW/ACXt5i+Q9cfJY1Nh0Uw==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/datatables.net-vue3/-/datatables.net-vue3-2.1.1.tgz#029f500a94430635e2c1e2630629ed5077fa06f0"
+  integrity sha512-OrxzWVFb52dy3fNB6AUumVuBqVS6052a1VjIT+mVQFrzBwNr9zNSVSSRnhFnLA+BZQhTuxyfap42BFyLyCQJbw==
   dependencies:
     datatables.net-responsive-dt "^2.4.0"
 
@@ -4322,9 +4322,9 @@ electron-store@*:
     type-fest "^2.17.0"
 
 electron-to-chromium@^1.4.428:
-  version "1.4.428"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.428.tgz#c31fc88e854f49d8305cdabf6ec934ff1588a902"
-  integrity sha512-L7uUknyY286of0AYC8CKfgWstD0Smk2DvHDi9F0GWQhSH90Bzi7iDrmCbZKz75tYJxeGSAc7TYeKpmbjMDoh1w==
+  version "1.4.430"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.430.tgz#52693c812a81800fafb5b312c1a850142e2fc9eb"
+  integrity sha512-FytjTbGwz///F+ToZ5XSeXbbSaXalsVRXsz2mHityI5gfxft7ieW3HqFLkU5V1aIrY42aflICqbmFoDxW10etg==
 
 electron-updater@^4.0:
   version "4.6.5"
@@ -8503,9 +8503,9 @@ v8-to-istanbul@^9.0.0:
     convert-source-map "^1.6.0"
 
 vanilla-jsoneditor@^0.17.5:
-  version "0.17.6"
-  resolved "https://registry.yarnpkg.com/vanilla-jsoneditor/-/vanilla-jsoneditor-0.17.6.tgz#95a0141f3d5d8c6ff88dd9d53d47445168edf191"
-  integrity sha512-tETNuvJROnzaX0Rp/ugxmZP5nZRmUg9FChPuffjO/d8Kmim7/IvHN+33GxPWkd7R/qOjg/H+WpiXIQhzHU1gHg==
+  version "0.17.7"
+  resolved "https://registry.yarnpkg.com/vanilla-jsoneditor/-/vanilla-jsoneditor-0.17.7.tgz#1643d19ebac1ba8ad0186230ed53560e1955ddb1"
+  integrity sha512-p+h1eAuo2EYR1fme2aDoEzqlHAqxdM+pV/AqT9I7o61IWmT7MxSfZZ/XYkf4vfEtjkC5ZLjORhttyjbtGuN8+w==
 
 vee-validate@*:
   version "4.9.6"
@@ -8594,9 +8594,9 @@ vite-plugin-pwa@*:
     workbox-window "^7.0.0"
 
 vite-plugin-vue-devtools@*:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-0.1.7.tgz#51124d85269f77dc42c34135475c257416f376f3"
-  integrity sha512-j216lJOe5VUyDB5UJlMJkbkUM8KDe0VzKK/HGRiLN9lAc9QaiXJi13Raqq7iSCn0vVra4tof88NyAKUb9xZWsw==
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-0.2.0.tgz#dab5bf9c16254e04b3ec4768422c576a1b0ab82c"
+  integrity sha512-Q3i/V/+sbLVgz+eEuTXxvqcVArqK7xkJ86iaPRqPF+zLja9IG5mQpSHvXmb4ntlzCsdZvriGdhFpQAQsBoHbxg==
   dependencies:
     "@vueuse/core" "^10.1.2"
     "@webfansplz/vuedoc-parser" "^0.0.2"
