@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
+import { RouterLink } from 'vue-router';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Rapid Deploy Server');
 layoutStore.setTitle('Order Rapid Deploy Server');
@@ -98,8 +99,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                 <i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Rapid Deploy Server
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="view_quickservers_list" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-                                </a>
+                                <router-link to="/qs" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -228,7 +228,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then(response => {
                                     <tr>
                                         <th>
                                             <div class="text-bold float-left" style="position:relative;top:5px;">Server Name</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details">
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="step = 'orderform'" data-toggle="tooltip" title="Edit details">
                                                 <i class="fa fa-pencil"></i>&nbsp;Edit
                                             </button>
                                         </th>
