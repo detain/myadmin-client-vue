@@ -1,6 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
@@ -11,21 +11,25 @@ const layoutStore = useLayoutStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
+const webuzoTableExists = computed(() => { return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo)); });
+const addonsTableExists = computed(() => { return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons)); });
+const vpsStore = useVpsStore();
+const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'destroy', 'restart', 'block_smtp'];
 layoutStore.setPageHeading('View VPS');
 layoutStore.setTitle('View VPS');
 layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' })
 layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
-const vpsStore = useVpsStore();
-const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 
 vpsStore.getById(id)
-if (link.value == 'start') {
-    layoutStore.addBreadcrum('/vps/' + id + '/start', 'Start');
-    vpsStore.start(id);
+
+if (noForm.includes(link.value)) {
+    layoutStore.addBreadcrum('/vps/' + id + '/'+link.value, ucwords(link.value.replace('_', ' ')));
+    vpsStore.queue(id, link.value);
 }
-const openCommentForm = () => {
-    $('#commentForm').modal('show');
-};
+
+const openCommentForm = () => { $('#commentForm').modal('show'); };
+
 const numberFormat = (value, decimals = 2, separator = '.') => {
     if (!value) return '0.00';
     const number = parseFloat(value);
@@ -36,12 +40,6 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
     const decimalPart = parts.length > 1 ? separator + parts[1] : '';
     return `${sign}${integerPart}${decimalPart}`;
 };
-const webuzoTableExists = computed(() => {
-    return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo));
-});
-const addonsTableExists = computed(() => {
-    return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
-});
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);

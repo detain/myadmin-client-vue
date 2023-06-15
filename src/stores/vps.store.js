@@ -124,10 +124,10 @@ export const useVpsStore = defineStore({
             }
             this.loading = false;
         },
-        async start(id) {
+        async queue(id, action) {
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/start');
+                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/'+action);
                 this.linkDisplay = response.text;
             } catch (error) {
                 console.log("got error response"+error);
