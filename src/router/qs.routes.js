@@ -1,8 +1,8 @@
-import { Layout, QsList, ViewQs, OrderQs } from '@/views/quickservers';
+import { QsList, ViewQs, OrderQs } from '@/views/quickservers';
 
 export default {
     path: '/qs',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: QsList },
         { path: 'order', component: OrderQs },

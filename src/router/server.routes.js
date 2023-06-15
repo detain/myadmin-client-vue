@@ -1,8 +1,8 @@
-import { Layout, ServersList, ViewServer, OrderServer } from '@/views/servers';
+import { ServersList, ViewServer, OrderServer } from '@/views/servers';
 
 export default {
     path: '/servers',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: ServersList },
         { path: 'order', component: OrderServer },

@@ -1,8 +1,8 @@
-import { Layout, TicketsList, ViewTicket, NewTicket } from '@/views/tickets';
+import { TicketsList, ViewTicket, NewTicket } from '@/views/tickets';
 
 export default {
     path: '/tickets',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: TicketsList },
         { path: 'new', component: NewTicket },

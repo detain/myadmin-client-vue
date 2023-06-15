@@ -1,4 +1,3 @@
-import Layout from '@/views/billing/affiliates/Layout.vue';
 import Affiliate from '@/views/billing/affiliates/Affiliate.vue';
 import Faq from '@/views/billing/affiliates/Faq.vue';
 import DockSetup from '@/views/billing/affiliates/DockSetup.vue';
@@ -16,7 +15,7 @@ import ViewBanner from '@/views/billing/affiliates/ViewBanner.vue';
 
 export default {
     path: '/affiliate',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: Affiliate },
         { path: 'faq', component: Faq },

@@ -1,8 +1,8 @@
-import { Layout, BackupsList, ViewBackup, OrderBackup } from '@/views/backups';
+import { BackupsList, ViewBackup, OrderBackup } from '@/views/backups';
 
 export default {
     path: '/backups',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: BackupsList },
         { path: 'order', component: OrderBackup },

@@ -1,8 +1,8 @@
-import { Layout, LicensesList, ViewLicense, OrderLicense } from '@/views/licenses';
+import { LicensesList, ViewLicense, OrderLicense } from '@/views/licenses';
 
 export default {
     path: '/licenses',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: LicensesList },
         //{ path: 'order/:catTag?', component: OrderLicense },

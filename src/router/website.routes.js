@@ -1,8 +1,8 @@
-import { Layout, WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
+import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
 
 export default {
     path: '/websites',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: WebsitesList },
         { path: 'order', component: OrderWebsite },

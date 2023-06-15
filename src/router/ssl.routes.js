@@ -1,8 +1,8 @@
-import { Layout, SslList, ViewSsl, OrderSsl } from '@/views/ssl';
+import { SslList, ViewSsl, OrderSsl } from '@/views/ssl';
 
 export default {
     path: '/ssl_certs',
-    component: Layout,
+    //component: Layout,
     children: [
         { path: '', component: SslList },
         { path: 'order', component: OrderSsl },

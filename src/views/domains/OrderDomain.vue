@@ -25,7 +25,6 @@ const errors = ref({});
 const searchResponse = ref(null);
 const services = ref({});
 const tldServices = ref({});
-const formFields = ref({});
 const domainFields = ref({});
 const domain = computed(() => { return route.params.domain; });
 const type = computed(() => { return route.params.type; });
@@ -97,7 +96,6 @@ async function getDomainFields() {
         searchResponse.value = response;
         console.log('Response:');
         console.log(response);
-        formFields.value = response.domainFields;
         domainFields.value = response.domainFields;
     });
 }
