@@ -3,17 +3,19 @@ import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useLayoutStore } from '@/stores';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 const layoutStore = useLayoutStore();
 layoutStore.setPageHeading('Order Domain');
 layoutStore.setTitle('Order Domain');
 layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
 const baseUrl = import.meta.env.VITE_API_URL;
-
-const display = ref("step1");
+const route = useRoute();
+const router = useRouter();
 const csrfToken = ref("");
 const hostname = ref("");
 const ima = ref("client");
 const custid = ref("2773");
+const whoisPrivacyCost = ref(0);
 const domainResult = ref(null);
 const domainType = ref('register');
 const lookups = ref({});
@@ -21,6 +23,33 @@ const suggestions = ref({})
 const packageInfo = ref({});
 const errors = ref({});
 const searchResponse = ref(null);
+const services = ref({});
+const tldServices = ref({});
+const domain = computed(() => { return route.params.domain; });
+const type = computed(() => { return route.params.type; });
+const display = computed(() => {
+    if (typeof domain.value == 'undefined') {
+        return 'step1';
+    }
+    hostname.value = domain.value;
+    if (searchResponse?.domain != hostname.value) {
+        searchDomain();
+    }
+    if (typeof type.value == 'undefined') {
+        return 'step1b';
+    }
+    domainType.value = type.value;
+    return 'step2';
+});
+
+fetchWrapper.get(baseUrl + '/domains/order').then(response => {
+    console.log('Response:');
+    console.log(response);
+    whoisPrivacyCost.value = response.whoisPrivacyCost;
+    services.value = response.services;
+    tldServices.value = response.tldServices;
+});
+
 async function searchDomain() {
     let loading = Swal.fire({
         title: '',
@@ -44,13 +73,14 @@ async function searchDomain() {
     });
 }
 
+
 </script>
 
 <template>
     <div v-if="!display || display === 'step1'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
         <div class="col-md-10 text-center">
             <h3 class="pb-2 text-capitalize">Find your domain and check availability.</h3>
-            <form @submit.prevent="submitDomain" class="search-domain">
+            <form @submit.prevent="searchDomain" class="search-domain">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
                         <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus="autofocus" @focus="clearInput" autocomplete="off" style="border-radius: 5px;">
@@ -58,7 +88,7 @@ async function searchDomain() {
                 </div>
                 <div class="form-group row">
                     <div class="controls col-md-12" style="text-align: center;">
-                        <button type="submit" class="btn btn-custom mr-2 px-4 py-2 text-sm" @click.prevent="searchDomain">Search</button>
+                        <button type="submit" class="btn btn-custom mr-2 px-4 py-2 text-sm">Search</button>
                         <a target="_blank" href="https://interserver.net/domains" class="btn btn-order px-3 py-2 text-sm">Check Prices</a>
                     </div>
                 </div>
@@ -87,7 +117,7 @@ async function searchDomain() {
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
                                     <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult.domain }}</b> is available! you can register it for {{ domainResult.new }}. Renewal cost will be {{ domainResult.renewal }}.
                                 </div>
-                                <a class="ml-2 btn btn-green px-4 py-2 text-sm" :href="'domain_order?hostname=' + domainResult.domain + '&type=register'">Register</a>
+                                <router-link :to="'/domains/order/'+domainResult.domain+'/register'" class="ml-2 btn btn-green px-4 py-2 text-sm">Register</router-link>
                             </div>
                         </template>
                         <template v-else-if="domainResult.status === 'taken'">
@@ -95,7 +125,7 @@ async function searchDomain() {
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
                                     <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult.transfer }}. Renewal cost will be {{ domainResult.renewal }}.
                                 </div>
-                                <a class="ml-2 btn btn-yellow px-4 py-2 text-sm" :href="'domain_order?hostname=' + domainResult.domain + '&type=transfer'">Transfer</a>
+                                <router-link :to="'/domains/order/'+domainResult.domain+'/transfer'" class="ml-2 btn btn-yellow px-4 py-2 text-sm">Transfer</router-link>
                             </div>
                         </template>
                     </template>
@@ -124,13 +154,13 @@ async function searchDomain() {
                                         </template>
                                         <template v-else>
                                             <template v-if="suggestion.status === 'available'">
-                                                <a class="btn btn-green px-3 py-2 text-sm" :href="`domain_order?hostname=${suggestion.domain}&type=register`">Register</a>
+                                                <router-link :to="'/domains/order/'+suggestion.domain+'/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="suggestion.status === 'taken'">
-                                                <a class="btn btn-yellow px-3 py-2 text-sm" :href="`domain_order?hostname=${suggestion.domain}&type=transfer`">Transfer</a>
+                                                <router-link :to="'/domains/order/'+suggestion.domain+'/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <a class="btn btn-green px-3 py-2 text-sm" :href="`domain_order?hostname=${suggestion.domain}&type=undefined`">{{ suggestion.status }}</a>
+                                                <router-link :to="'/domains/order/'+suggestion.domain+'/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -154,25 +184,17 @@ async function searchDomain() {
                                     <td>{{ lookup.cost }}</td>
                                     <td>
                                         <template v-if="lookup.premium === 'yes'">
-                                            <a class="btn btn-order px-3 py-2 text-sm" href="mailto:sales@interserver.net">
-                                                Contact Sales
-                                            </a>
+                                            <a class="btn btn-order px-3 py-2 text-sm" href="mailto:sales@interserver.net">Contact Sales</a>
                                         </template>
                                         <template v-else>
                                             <template v-if="lookup.status === 'available'">
-                                                <a class="btn btn-green px-3 py-2 text-sm" :href="`domain_order?hostname=${lookup.domain}&type=register`">
-                                                    Register
-                                                </a>
+                                                <router-link :to="'/domains/order/'+lookup.domain+'/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="lookup.status === 'taken'">
-                                                <a class="btn btn-yellow px-3 py-2 text-sm" :href="`domain_order?hostname=${lookup.domain}&type=transfer`">
-                                                    Transfer
-                                                </a>
+                                                <router-link :to="'/domains/order/'+lookup.domain+'/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <a class="btn btn-green px-3 py-2 text-sm" :href="`domain_order?hostname=${lookup.domain}&type=undefined`">
-                                                    {{ lookup.status }}
-                                                </a>
+                                                <router-link :to="'/domains/order/'+lookup.domain+'/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -187,11 +209,11 @@ async function searchDomain() {
     <template v-else-if="display == 'step2'">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h4 class="mb-4">{{ d_details.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4>
+                <h4 class="mb-4">{{ domainResult.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4>
             </div>
             <div class="col-md-4">&nbsp;&nbsp;</div>
         </div>
-        <!-- <h4 class="text-center mb-4">{{ d_details.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4> -->
+        <!-- <h4 class="text-center mb-4">{{ domainResult.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4> -->
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -210,10 +232,10 @@ async function searchDomain() {
                     <div class="card-body">
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname + (ima === 'admin' ? '&custid=' + custid : '')">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
-                            <template v-if="whois_cost">
+                            <template v-if="whoisPrivacyCost">
                                 <div class="form-group row">
                                     <label for="create_as" class="col-sm-5 col-form-label">
-                                        Whois Privacy for {{ whois_cost }} / year
+                                        Whois Privacy for {{ whoisPrivacyCost }} / year
                                     </label>
                                     <div class="controls col-sm-7 ">
                                         <div class="form-group clearfix">
@@ -280,7 +302,7 @@ async function searchDomain() {
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ pkg.services_name }}</div>
+                            <div class="col-md-8">{{ packageInfo.services_name }}</div>
                             <div class="col text-right text-bold">1 Year</div>
                         </div>
                         <div class="row mb-3">
@@ -291,7 +313,7 @@ async function searchDomain() {
                         </div>
                         <div class="whois-row row mb-3 d-none">
                             <div class="col-md-8">Whois Privacy</div>
-                            <div class="col text-right text-bold">{{ whois_cost }}</div>
+                            <div class="col text-right text-bold">{{ whoisPrivacyCost }}</div>
                         </div>
                         <hr>
                         <div class="row mb-3">
@@ -336,7 +358,7 @@ async function searchDomain() {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative;top:5px;">
-                                                {{ pkg.services_name }}
+                                                {{ packageInfo.services_name }}
                                             </div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="edit_form" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit
                                             </button>
@@ -371,7 +393,7 @@ async function searchDomain() {
                                                 <div class="text-md">Whois Privacy</div>
                                             </td>
                                             <td>
-                                                <div class="text-bold text-md">{{ whois_cost }}</div>
+                                                <div class="text-bold text-md">{{ whoisPrivacyCost }}</div>
                                             </td>
                                         </tr>
                                     </template>
