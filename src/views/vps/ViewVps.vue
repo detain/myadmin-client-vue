@@ -6,22 +6,21 @@ import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
 import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
-const props = defineProps(['id', 'module']);
-const module = ref(props.module);
+const module = ref('vps');
 const layoutStore = useLayoutStore();
 const route = useRoute();
-const id = ref(props.id);
+const id = route.params.id;
 const link = computed(() => { return route.params.link; });
 layoutStore.setPageHeading('View VPS');
 layoutStore.setTitle('View VPS');
 layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' })
-layoutStore.addBreadcrum('/vps/' + id.value, 'View VPS ' + id.value);
+layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 
 vpsStore.getById(id)
 if (link.value == 'start') {
-    layoutStore.addBreadcrum('/vps/' + id.value + '/start', 'Start');
+    layoutStore.addBreadcrum('/vps/' + id + '/start', 'Start');
     vpsStore.start(id);
 }
 const openCommentForm = () => {
