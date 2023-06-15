@@ -3,23 +3,20 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id']);
+const props = defineProps(['id', 'settings', 'backupsTable']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const layoutStore = useLayoutStore();
+const settings = computed(() => { return props.settings; });
+const id = computed(() => { return props.id; });
+const backupsTable = computed(() => { return props.backupsTable; });
+
 layoutStore.setTitle('');
 layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
-export default {
-  props: {
-    settings: Object,
-    id: Number,
-    backupsTable: String
-  }
-};
+layoutStore.addBreadcrum('/vps/'+props.id+'/backups', 'Manage Backups');
 </script>
 
 <template>

@@ -12,28 +12,21 @@ layoutStore.setTitle('');
 layoutStore.setPageHeading('');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+layoutStore.addBreadcrum('/vps/'+props.id+'/backup', 'Backup');
 
-export default {
-  data() {
-    return {
-      module_name: '',
-      module: '',
-      id: '',
-      backup: '',
-      hostname: '',
-      confirm: false,
-      note_text: '',
-      backupsArr: []
-    };
-  },
-  methods: {
-    submitForm() {
-      // Handle form submission
-      // You can access the form data using `this.module_name`, `this.module`, etc.
-    }
-  }
-};
+const module_name = ref('');
+const module = ref('');
+const id = ref('');
+const backup = ref('');
+const hostname = ref('');
+const confirm = ref(false);
+const note_text = ref('');
+const backupsArr = ref([]);
+
+function submitForm() {
+  // Handle form submission
+  // You can access the form data using `this.module_name`, `this.module`, etc.
+}
 </script>
 
 <template>

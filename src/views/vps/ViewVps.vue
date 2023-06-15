@@ -4,7 +4,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
-import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
+import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const module = ref('vps');
 const layoutStore = useLayoutStore();
@@ -156,7 +156,13 @@ function toggleFunc(cp) {
         </div>
     </div>
     <div v-if="link" class="row">
-        <div v-if="link == 'buy_hd_space'" class="col">
+        <div v-if="link == 'backup'" class="col">
+            <Backup :id="id" :module="module"></Backup>
+        </div>
+        <div v-else-if="link == 'backups'" class="col">
+            <Backups :id="id" :module="module" :settings="settings"></Backups>
+        </div>
+        <div v-else-if="link == 'buy_hd_space'" class="col">
             <BuyHdSpace :id="id" :module="module"></BuyHdSpace>
         </div>
         <div v-else-if="link == 'buy_ip'" class="col">
@@ -192,7 +198,7 @@ function toggleFunc(cp) {
         <div v-else-if="link == 'traffic_usage'" class="col">
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
         </div>
-        <div v-else-if="link == 'vnc'" class="col">
+        <div v-else-if="link == 'setup_vnc'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
