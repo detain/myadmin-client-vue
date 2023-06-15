@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
 import { storeToRefs } from "pinia";
+import { RouterLink } from 'vue-router';
 import { fetchWrapper, snakeToCamel } from "@/helpers";
 import { useAccountStore, useLayoutStore } from "@/stores";
 import $ from "jquery";
@@ -238,7 +239,7 @@ accountStore.load();
         <div class="d-flex mb-4">
             <h5 class="w-50">Select Preferred Payment Method</h5>
             <div class="w-50 text-right">
-                <a href="cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</a>
+                <router-link to="/cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</router-link>
                 <a href="javascript:void(0);" class="btn btn-custom" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
             </div>
         </div>`
