@@ -1,2 +1,6 @@
 
-export const snakeToCamel = s => s.replace(/(_\w)/g, k => k[1].toUpperCase())
+export const snakeToCamel = (s) => {
+    return s.replace(/_(\w)/g, (match, p1) => {
+        return p1.toUpperCase();
+    });
+};
