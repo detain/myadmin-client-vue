@@ -25,20 +25,29 @@ const errors = ref({});
 const searchResponse = ref(null);
 const services = ref({});
 const tldServices = ref({});
+const formFields = ref({});
+const domainFields = ref({});
 const domain = computed(() => { return route.params.domain; });
 const type = computed(() => { return route.params.type; });
 const display = computed(() => {
+    layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
     if (typeof domain.value == 'undefined') {
         return 'step1';
     }
     hostname.value = domain.value;
+    layoutStore.addBreadcrum('/domains/order/'+domain.value, 'Domain Search');
     if (searchResponse?.domain != hostname.value) {
+        console.log("currently hostname is "+searchResponse?.domain);
+        console.log(searchResponse?.domain);
+        console.log("new domain is "+hostname.value);
         searchDomain();
     }
     if (typeof type.value == 'undefined') {
         return 'step1b';
     }
     domainType.value = type.value;
+    layoutStore.addBreadcrum('/domains/order/'+domain.value+'/'+type.value, 'Domain Details');
+    getDomainFields();
     return 'step2';
 });
 
@@ -57,7 +66,7 @@ async function searchDomain() {
         allowOutsideClick: false,
         showConfirmButton: false
     });
-    fetchWrapper.post(baseUrl + '/domains/order', {
+    fetchWrapper.put(baseUrl + '/domains/order', {
         hostname: hostname.value
     }).then(response => {
         loading.close();
@@ -73,14 +82,34 @@ async function searchDomain() {
     });
 }
 
+async function getDomainFields() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+    fetchWrapper.patch(baseUrl + '/domains/order', {
+        hostname: hostname.value,
+        type: domainType.value,
+    }).then(response => {
+        loading.close();
+        searchResponse.value = response;
+        console.log('Response:');
+        console.log(response);
+        formFields.value = response.domainFields;
+        domainFields.value = response.domainFields;
+    });
+}
+
 
 </script>
 
 <template>
-    <div v-if="!display || display === 'step1'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
+    <div v-if="!display || display === 'step1' || display == 'step1b'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
         <div class="col-md-10 text-center">
             <h3 class="pb-2 text-capitalize">Find your domain and check availability.</h3>
-            <form @submit.prevent="searchDomain" class="search-domain">
+            <form @submit.prevent="router.push(`/domains/order/${hostname}`);" class="search-domain">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
                         <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus="autofocus" @focus="clearInput" autocomplete="off" style="border-radius: 5px;">
@@ -95,37 +124,37 @@ async function searchDomain() {
             </form>
             <template v-if="domainResult">
                 <div class="row my-4">
-                    <template v-if="domainResult.premium === 'yes'">
-                        <template v-if="domainResult.status === 'available'">
+                    <template v-if="domainResult?.premium === 'yes'">
+                        <template v-if="domainResult?.status === 'available'">
                             <div class="info-success-box mx-2 b-radius">
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
-                                    <span class="text-warning text-bold">Yes!</span> your domain <b>{{ domainResult.domain }}</b> is available and it's a premium domain. Automatic registration is disabled. Email <a class="text-primary" href="mailto:sales@interserver.net">sales@interserver.net</a> if you would like to purchase this domain for {{ domainResult.cost }} per year
+                                    <span class="text-warning text-bold">Yes!</span> your domain <b>{{ domainResult?.domain }}</b> is available and it's a premium domain. Automatic registration is disabled. Email <a class="text-primary" href="mailto:sales@interserver.net">sales@interserver.net</a> if you would like to purchase this domain for {{ domainResult?.cost }} per year
                                 </div>
                             </div>
                         </template>
                         <template v-else>
                             <div class="info-danger-box mx-2 b-radius">
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
-                                    <span class="text-red text-bold">Sorry! </span> your domain <b>{{ domainResult.domain }}</b> already taken! You already own it ? can transfer it and a it's premium domain. Automatic registration is disabled. Email <a class="text-primary" href="mailto:sales@interserver.net">sales@interserver.net</a> if you would like to purchase this domain for {{ domainResult.cost }} per year.
+                                    <span class="text-red text-bold">Sorry! </span> your domain <b>{{ domainResult?.domain }}</b> already taken! You already own it ? can transfer it and a it's premium domain. Automatic registration is disabled. Email <a class="text-primary" href="mailto:sales@interserver.net">sales@interserver.net</a> if you would like to purchase this domain for {{ domainResult?.cost }} per year.
                                 </div>
                             </div>
                         </template>
                     </template>
                     <template v-else>
-                        <template v-if="domainResult.status === 'available'">
+                        <template v-if="domainResult?.status === 'available'">
                             <div class="info-success-box mx-2 b-radius">
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
-                                    <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult.domain }}</b> is available! you can register it for {{ domainResult.new }}. Renewal cost will be {{ domainResult.renewal }}.
+                                    <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult?.domain }}</b> is available! you can register it for {{ domainResult?.new }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/domains/order/'+domainResult.domain+'/register'" class="ml-2 btn btn-green px-4 py-2 text-sm">Register</router-link>
+                                <router-link :to="'/domains/order/'+domainResult?.domain+'/register'" class="ml-2 btn btn-green px-4 py-2 text-sm">Register</router-link>
                             </div>
                         </template>
-                        <template v-else-if="domainResult.status === 'taken'">
+                        <template v-else-if="domainResult?.status === 'taken'">
                             <div class="info-danger-box mx-2 b-radius">
                                 <div class="text-md ml-2" style="position: relative;top: 4px;">
-                                    <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult.transfer }}. Renewal cost will be {{ domainResult.renewal }}.
+                                    <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult?.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult?.transfer }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/domains/order/'+domainResult.domain+'/transfer'" class="ml-2 btn btn-yellow px-4 py-2 text-sm">Transfer</router-link>
+                                <router-link :to="'/domains/order/'+domainResult?.domain+'/transfer'" class="ml-2 btn btn-yellow px-4 py-2 text-sm">Transfer</router-link>
                             </div>
                         </template>
                     </template>
@@ -209,11 +238,11 @@ async function searchDomain() {
     <template v-else-if="display == 'step2'">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h4 class="mb-4">{{ domainResult.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4>
+                <h4 class="mb-4">{{ domainResult?.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4>
             </div>
             <div class="col-md-4">&nbsp;&nbsp;</div>
         </div>
-        <!-- <h4 class="text-center mb-4">{{ domainResult.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4> -->
+        <!-- <h4 class="text-center mb-4">{{ domainResult?.status === 'taken' ? 'Transfer' : 'Register' }} Domain ({{ hostname }})</h4> -->
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -260,18 +289,18 @@ async function searchDomain() {
                                 </div>
                                 <hr>
                             </template>
-                            <div v-for="(field, fieldName) in formFields" :key="fieldName" class="form-group row">
-                                <label v-if="domainFields[field].label" class="col-sm-3 col-form-label">
-                                    {{ domainFields[field].label }}
-                                    <span v-if="domainFields[field].required" class="text-danger">*</span>
+                            <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
+                                <label v-if="domainField.label" class="col-sm-3 col-form-label">
+                                    {{ domainField.label }}
+                                    <span v-if="domainField.required" class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-9 input-group">
-                                    <input v-if="domainFields[field].input === 'text'" type="text" :name="field" class="form-control" :value="domainFields[field].value" :tabindex="++tabindex" />
-                                    <select v-else-if="domainFields[field].input && domainFields[field].input[0] === 'select'" :name="field" :tabindex="++tabindex" class="form-control select2">
-                                        <option v-for="(displayName, val, index) in domainFields[field].input[1]" :key="index" :value="val" :selected="domainFields[field].value === val">{{ displayName }}</option>
+                                    <input v-if="domainField.input === 'text'" type="text" :name="fieldName" class="form-control" :value="domainField.value" />
+                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName" class="form-control select2">
+                                        <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val" :selected="domainField.value === val">{{ displayName }}</option>
                                     </select>
-                                    <div v-if="domainFields[field].tip" class="input-group-append">
-                                        <span style="cursor: pointer;" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainFields[field].tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainFields[field].label + '</div>'">
+                                    <div v-if="domainField.tip" class="input-group-append">
+                                        <span style="cursor: pointer;" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
                                             <i class="fa text-info fa-question"></i>
                                         </span>
                                     </div>
@@ -306,9 +335,9 @@ async function searchDomain() {
                             <div class="col text-right text-bold">1 Year</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ domainResult.domain }}</div>
+                            <div class="col-md-8">{{ domainResult?.domain }}</div>
                             <div class="col text-right text-bold">
-                                {{ domainResult.status == 'taken' ? domainResult.transfer : domainResult.new }}
+                                {{ domainResult?.status == 'taken' ? domainResult?.transfer : domainResult?.new }}
                             </div>
                         </div>
                         <div class="whois-row row mb-3 d-none">
@@ -319,7 +348,7 @@ async function searchDomain() {
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
                             <div class="col text-lg text-bold text-right total_cost">
-                                {{ domainResult.status == 'taken' ? domainResult.transfer : domainResult.new }}
+                                {{ domainResult?.status == 'taken' ? domainResult?.transfer : domainResult?.new }}
                             </div>
                         </div>
                     </div>
@@ -344,7 +373,7 @@ async function searchDomain() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult.status === 'available' ? 'register' : domainResult.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
+                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult?.status === 'available' ? 'register' : domainResult?.status === 'taken' ? 'transfer' : ''}${ima === 'admin' ? '&custid=' + custid : ''}`" id="edit_order_form">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <template v-for="(field_value, field, index) in final_post">
                                 <input :key="index" type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
@@ -375,16 +404,16 @@ async function searchDomain() {
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">
-                                                {{ domainResult.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}
+                                                {{ domainResult?.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">{{ domainResult.domain }}</div>
+                                            <div class="text-md">{{ domainResult?.domain }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ domainResult.status === 'taken' ? domainResult.transfer : domainResult.new }}</div>
+                                            <div class="text-bold text-md">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
                                         </td>
                                     </tr>
                                     <template v-if="final_post.whois_privacy === 'enable'">
@@ -405,7 +434,7 @@ async function searchDomain() {
                                         </th>
                                         <th>
                                             <div class="text-lg">
-                                                <div class="text-lg text-bold total_cost">{{ domainResult.status === 'taken' ? domainResult.transfer : domainResult.new }}</div>
+                                                <div class="text-lg text-bold total_cost">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
                                             </div>
                                         </th>
                                     </tr>
