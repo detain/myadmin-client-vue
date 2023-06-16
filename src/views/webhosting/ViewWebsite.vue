@@ -205,7 +205,7 @@ websiteStore.getById(id)
                         </template>
                         <tr>
                             <td>Website Preview</td>
-                            <td><a :href="extraInfoTables.preview.rows[0].value" target="__blank" class="link">Click Here</a></td>
+                            <td><a :href="extraInfoTables.preview.rows[0]?.value" target="__blank" class="link">Click Here</a></td>
                         </tr>
                     </table>
                 </div>
@@ -224,7 +224,7 @@ websiteStore.getById(id)
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                 </div>
             </div>
         </div>

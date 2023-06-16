@@ -398,12 +398,12 @@ function toggleFunc(cp) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/vps/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
+                                <router-link :key="index" :to="'/vps/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                             </template>
                         </template>
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
-                                <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr" @click="openPopUp"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</button>
+                                <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</button>
                             </template>
                         </template>
                     </div>

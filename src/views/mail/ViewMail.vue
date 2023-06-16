@@ -110,7 +110,7 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body py-4 my-3">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/mail/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" v-bind="clientLink.other_attr"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/mail/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                     </div>
                 </div>
             </div>
