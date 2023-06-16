@@ -15,10 +15,10 @@ const webuzoTableExists = computed(() => { return (typeof extraInfoTables.value.
 const addonsTableExists = computed(() => { return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons)); });
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
-const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'destroy', 'restart', 'block_smtp'];
+const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 layoutStore.setPageHeading('View VPS');
 layoutStore.setTitle('View VPS');
-layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' })
+layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
 layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
 
 vpsStore.getById(id)
@@ -28,9 +28,11 @@ if (noForm.includes(link.value)) {
     vpsStore.queue(id, link.value);
 }
 
-const openCommentForm = () => { $('#commentForm').modal('show'); };
+function openCommentForm() {
+    $('#commentForm').modal('show');
+}
 
-const numberFormat = (value, decimals = 2, separator = '.') => {
+function numberFormat(value, decimals = 2, separator = '.') {
     if (!value) return '0.00';
     const number = parseFloat(value);
     const sign = number < 0 ? '-' : '';
@@ -39,7 +41,7 @@ const numberFormat = (value, decimals = 2, separator = '.') => {
     const integerPart = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${separator}`);
     const decimalPart = parts.length > 1 ? separator + parts[1] : '';
     return `${sign}${integerPart}${decimalPart}`;
-};
+}
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
