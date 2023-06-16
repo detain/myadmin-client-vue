@@ -38,9 +38,7 @@ function submitForm(event) {
           <div class="p-1">
             <h3 class="card-title py-2"><i class="fa fa-key">&nbsp;</i>Change Webuzo Admin Password</h3>
             <div class="card-tools text-right">
-              <a :href="goBackLink" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

@@ -39,15 +39,11 @@ function removeCard() {
     <div class="card shadow-none w-100 bg-white p-2 mb-4" style="border-left: 4px solid #17a2b8;display: block ruby;">
       <p class="m-0 text-md">
         <i class="fas fa-info-circle text-info" aria-hidden="true">&nbsp;</i>
-        <b class="text-info">
-          What this does?
-        </b>
+        <b class="text-info">What this does?</b>
         Give live IP to IPMI controller restricted to your IP and limited to 24 hours of use.
       </p>
       <div class="card-tools float-right">
-        <button type="button" class="btn btn-tool" data-card-widget="remove" @click="removeCard">
-          <i class="fas fa-times" aria-hidden="true"></i>
-        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" @click="removeCard"><i class="fas fa-times" aria-hidden="true"></i></button>
       </div>
       <p></p>
     </div>
@@ -55,14 +51,10 @@ function removeCard() {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h3 class="card-title py-2">
-              <i class="fa fa-connectdevelop">&nbsp;</i>IPMI IP
-            </h3>
+            <h3 class="card-title py-2"><i class="fa fa-connectdevelop">&nbsp;</i>IPMI IP</h3>
             <div class="card-tools float-right">
               <a class="btn btn-custom mr-3" :href="emailIPMILink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
-              <a href="index.php?choice=none.view_server&id={{ id }}" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/servers/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

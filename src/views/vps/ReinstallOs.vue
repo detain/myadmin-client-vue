@@ -112,9 +112,7 @@ try {
               Important Note #1:</b>&nbsp;Re-installing the operating system will delete all data.
           </p>
           <div class="card-tools float-right">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
           </div>
           <p></p>
         </div>
@@ -124,9 +122,7 @@ try {
               Important Note #2:</b>&nbsp;Before Re-installing the operating system kindly take a backup.
           </p>
           <div class="card-tools float-right">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
           </div>
           <p></p>
         </div>
@@ -140,9 +136,7 @@ try {
             <div class="p-1">
               <h3 class="card-title py-2"><i class="fa fa-linux">&nbsp;</i>Reinstall OS</h3>
               <div class="card-tools text-right">
-                <a :href="goBackLink" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                  <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-                </a>
+                <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
               </div>
             </div>
           </div>

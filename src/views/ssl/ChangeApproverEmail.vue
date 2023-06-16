@@ -34,9 +34,7 @@ function submitForm() {
               <i class="fa fa-envelope">&nbsp;</i>Change Approver Email
             </h3>
             <div class="card-tools float-right">
-              <a href="view_ssl?id={{ id }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/ssl/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

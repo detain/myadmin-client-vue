@@ -34,9 +34,7 @@ function submitForm() {
           <div class="p-1">
             <h3 class="card-title py-2 d-flex"><i class="material-icons">password&nbsp;</i> Reset VPS Password</h3>
             <div class="card-tools text-right">
-              <a class="btn btn-custom btn-sm" :href="goBackLink" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

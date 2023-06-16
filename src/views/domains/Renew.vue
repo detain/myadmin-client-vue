@@ -51,9 +51,7 @@ function renewCalculate() {
         <div class="m-0 text-md">
           <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #1:</b>&nbsp;Domain should be renewed on or before expiry date.
           <div class="card-tools float-right">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times"></i>
-            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
@@ -61,9 +59,7 @@ function renewCalculate() {
         <div class="m-0 text-md">
           <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired and have grace period of <b>{{ tldInfo.tld_grace_period }} days</b> from expiry date to renew.
           <div class="card-tools float-right">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times"></i>
-            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
@@ -72,9 +68,7 @@ function renewCalculate() {
           <div class="m-0 text-md">
             <i class="fas fa-lightbulb" style="color: greenyellow;"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant’s domain.
             <div class="card-tools float-right">
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
             </div>
           </div>
         </div>
@@ -87,9 +81,7 @@ function renewCalculate() {
         <div class="card-header">
           <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Renew</h3>
           <div class="card-tools m-0">
-            <a href="view_domain?id={{ id }}" class="btn-outline-custom py-1 px-2" data-toggle="tooltip" title="Go Back">
-              <i class="fas fa-arrow-left text-sm"></i>&nbsp;Back
-            </a>
+            <router-link :to="'/domains/'+props.id" class="btn-outline-custom py-1 px-2" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
           </div>
         </div>
         <div class="card-body">

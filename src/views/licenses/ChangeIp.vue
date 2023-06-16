@@ -35,9 +35,7 @@ function handleSubmit(event) {
               <i class="fa fa-map-marker-alt">&nbsp;</i>Change IP Address
             </h3>
             <div class="card-tools float-right">
-              <a href="view_license?id={{ id }}" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/licenses/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

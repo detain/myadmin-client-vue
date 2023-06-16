@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { fetchWrapper } from '@/helpers';
+import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
@@ -99,7 +100,7 @@ serverOrderRequest(false);
                                 <i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="view_servers_list" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</a>
+                                <router-link :to="'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

@@ -41,9 +41,7 @@ function placeOrder() {
         <div class="card-header">
           <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Whois Privacy</h3>
           <div class="card-tools m-0">
-            <a href="view_domain?id={{ id }}" class="btn-outline-custom py-1 px-2" data-toggle="tooltip" title="Go Back">
-              <i class="fas fa-arrow-left text-sm"></i>&nbsp;Back
-            </a>
+            <router-link :to="'/domains/'+props.id" class="btn-outline-custom py-1 px-2" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
           </div>
         </div>
         <div class="card-body">

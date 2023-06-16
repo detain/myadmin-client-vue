@@ -32,26 +32,18 @@ function toggleCollapse(name) {
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title py-2">
-              <i class="fa fa-line-chart">&nbsp;</i>Bandwidth Graphs
-            </h3>
+            <h3 class="card-title py-2"><i class="fa fa-line-chart">&nbsp;</i>Bandwidth Graphs</h3>
             <div class="card-tools float-right">
-              <a href="index.php?choice=none.view_server&id={{ id }}" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/servers/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
           <div class="card-body">
             <div v-for="(period, name) in graphs" :key="name">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title py-2">
-                    <i class="fa fa-line-chart">&nbsp;</i>{{ name }} {{ graphTitle }}
-                  </h3>
+                  <h3 class="card-title py-2"><i class="fa fa-line-chart">&nbsp;</i>{{ name }} {{ graphTitle }}</h3>
                   <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCollapse(name)">
-                      <i class="fas fa-minus" aria-hidden="true"></i>
-                    </button>
+                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCollapse(name)"><i class="fas fa-minus" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="card-body justify-content-center mx-auto">

@@ -35,9 +35,7 @@ const moduleLink = computed(() => {
           <div class="p-1">
             <h3 class="card-title py-2">Microsoft Remote Desktop Connection</h3>
             <div class="card-tools float-right">
-              <a v-bind:href="moduleLink" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/vps/'+props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

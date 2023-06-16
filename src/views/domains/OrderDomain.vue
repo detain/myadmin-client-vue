@@ -250,9 +250,7 @@ async function getDomainFields() {
                                 <i class="fas fa-address-card">&nbsp;</i>Contact Information
                             </h3>
                             <div class="card-tools float-right">
-                                <a href="domain_order?hostname={{ hostname }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                                    <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-                                </a>
+                                <router-link :to="'/domains/order/'+hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

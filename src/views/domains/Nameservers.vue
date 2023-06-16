@@ -84,9 +84,7 @@ function confirmDeleteDialog(domain_id, nameserver_id) {
         Domain Name Servers
       </h3>
       <div class="card-tools mr-4 mt-2">
-        <a href="view_domain?id={{ id }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-          <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-        </a>
+        <router-link :to="'/domains/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
       </div>
     </div>
     <div class="card-body">
@@ -95,9 +93,7 @@ function confirmDeleteDialog(domain_id, nameserver_id) {
           <div class="card-header border-0">
             <h3 class="card-title text-lg"> Nameservers</h3>
             <div class="card-tools">
-              <button v-if="suggested && suggested.length" type="button" class="btn btn-sm bg-gradient-info" id="suggestedNameserver" @click="handleSuggestedNameserver">
-                Suggested Nameserver
-              </button>
+              <button v-if="suggested && suggested.length" type="button" class="btn btn-sm bg-gradient-info" id="suggestedNameserver" @click="handleSuggestedNameserver">Suggested Nameserver</button>
             </div>
           </div>
           <div class="card-body">

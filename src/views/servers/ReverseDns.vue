@@ -32,14 +32,7 @@ const ipInputListUpdated = ref('');
               <i class="fa fa-atlas">&nbsp;</i>Reverse DNS Settings
             </h3>
             <div class="card-tools float-right">
-              <a
-                href="index.php?choice=none.view_server&id={{ id }}"
-                class="btn btn-custom btn-sm"
-                data-toggle="tooltip"
-                title="Go Back"
-              >
-                <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/servers/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
