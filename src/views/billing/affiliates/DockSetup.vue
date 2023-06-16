@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore, useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
@@ -46,7 +47,7 @@ onMounted(() => {
                             (<a :href="`https://www.interserver.net/dock/vps-${user.account_id}.html`" class="link mt-0" target="_blank">View Landing Page</a>)
                         </h3>
                         <div class="card-tools float-right">
-                            <a href="affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</a>
+                            <router-link to="/affiliate" class=" btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

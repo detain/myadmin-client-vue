@@ -28,9 +28,7 @@ function submitForm() {
           <div class="p-1">
             <h3 class="card-title py-2"><i class="fa fa-atlas">&nbsp;</i>Reverse DNS</h3>
             <div class="card-tools text-right">
-              <a href="view_website?id={{ id }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/websites/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
@@ -48,15 +46,13 @@ function submitForm() {
               <div class="form-group row">
                 <label class="col-md-3 col-form-label">{{ field_name }}</label>
                 <div class="col-sm-9 input-group">
-                  <input type="text" class="form-control form-control-sm" :id="field_details.name"
-                    name="host_name" :value="field_details.value" required>
+                  <input type="text" class="form-control form-control-sm" :id="field_details.name" name="host_name" :value="field_details.value" required>
                 </div>
               </div>
             </template>
             <div class="form-group row justify-content-center m-0">
               <div class="controls">
-                <input type="submit" name="Submit" value="Update Reverse DNS"
-                  class="btn btn-order px-3 py-2 text-sm" />
+                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-order px-3 py-2 text-sm" />
               </div>
             </div>
           </form>

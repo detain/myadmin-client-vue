@@ -38,9 +38,7 @@ const props = defineProps({
               <i style="vertical-align: middle; margin-top: -5px;" class="material-icons">cloud_download</i>&nbsp;Download Backups
             </h3>
             <div class="card-tools float-right">
-              <a href="view_website?id={{ id }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/websites/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>

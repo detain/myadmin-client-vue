@@ -171,9 +171,9 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=start`">Start</a>
-                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=restart`">Restart</a>
-                                        <a class="dropdown-item" :href="`view_qs?id=${serviceInfo.qs_id}&link=queue&action=stop`">Stop</a>
+                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>

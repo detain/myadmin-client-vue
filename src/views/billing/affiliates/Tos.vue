@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useLayoutStore } from '@/stores';
 const layoutStore = useLayoutStore();
@@ -19,7 +20,9 @@ onMounted(() => {
             <div class="card-header">
                 <div class="p-1">
                     <h3 class="card-title py-2"><i class="fa fa-file-text" aria-hidden="true">&nbsp;</i>Welcome to InterServer Affiliate Program </h3>
-                    <div class="card-tools float-right"><a href="affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back&nbsp;&nbsp; </a></div>
+                    <div class="card-tools float-right">
+                        <router-link to="/affiliate" class=" btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                    </div>
                 </div>
             </div>
             <div class="card-body">

@@ -55,17 +55,11 @@ const ipsDetailsExist = computed(() => props.ips_details.length > 0);
           <div class="p-1">
             <h3 class="card-title py-2">
               <i class="fa fa-map-marker-alt">&nbsp;</i>
-              <template v-if="ipsDetailsExist">
-                Existing Addon IPs
-              </template>
-              <template v-else-if="buyForm">
-                Buy Additional IP Addon
-              </template>
+              <template v-if="ipsDetailsExist">Existing Addon IPs</template>
+              <template v-else-if="buyForm">Buy Additional IP Addon</template>
             </h3>
             <div class="card-tools float-right">
-              <a href="view_website?id={{ id }}" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/websites/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
@@ -94,9 +88,7 @@ const ipsDetailsExist = computed(() => props.ips_details.length > 0);
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-3">
-                    <label for="amount" class="col-form-label">
-                      Immediate Cost ({{ ip_currency }})
-                    </label>
+                    <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
                   </div>
                   <div class="col-md-9">
                     <input type="hidden" id="amount" class="form-control" value="1">
@@ -107,16 +99,12 @@ const ipsDetailsExist = computed(() => props.ips_details.length > 0);
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-3">
-                    <label for="amount" class="col-form-label">
-                      Renewal Cost
-                    </label>
+                    <label for="amount" class="col-form-label">Renewal Cost</label>
                   </div>
                   <div class="col-md-9">
                     <input type="hidden" id="amount" class="form-control" value="1">
                     <input class="form-control form-control-sm" name="now_cost" type="text" disabled="disabled" :value="ip_cost">
-                    <small class="form-text text-muted">
-                      Cost ({{ ip_currency }}) every month as your website invoiced
-                    </small>
+                    <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
                   </div>
                 </div>
               </div>
