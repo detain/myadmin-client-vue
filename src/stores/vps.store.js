@@ -11,9 +11,10 @@ export const useVpsStore = defineStore({
         loading: false,
         error: false,
 
-        pkg: '',
-        osTemplate: '',
+        pkg          : '',
+        osTemplate   : '',
         serviceMaster: {},
+        serviceAddons: {},
         settings: {
             SERVICE_ID_OFFSET: 10000,
             USE_REPEAT_INVOICE: true,

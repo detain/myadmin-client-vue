@@ -3,16 +3,27 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
 import { useLayoutStore } from '@/stores';
-const props = defineProps(['id', 'module']);
-const successMsg = ref('');
+const props       = defineProps(['id', 'module']);
+const successMsg  = ref('');
 const cancelQueue = ref('');
-const fields = ref({});
+const fields      = ref({});
 const layoutStore = useLayoutStore();
+const ips         = ref({});
+const baseUrl     = import.meta.env.VITE_API_URL;
+
 layoutStore.setTitle('Reverse DNS');
 layoutStore.setPageHeading('Reverse DNS');
 layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/reverse_dns', 'Reverse DNS');
+
+
+fetchWrapper.get(baseUrl + '/vps/'+props.id+'/reverse_dns').then(response => {
+    console.log('Response:');
+    console.log(response);
+    ips.value = response.ips;
+});
+
 </script>
 
 <template>
@@ -36,14 +47,11 @@ layoutStore.addBreadcrum('/vps/'+props.id+'/reverse_dns', 'Reverse DNS');
           </template>
           <form @submit.prevent="submitForm" action="view_vps" method="POST">
             <input type="hidden" name="link" value="reverse_dns">
-            <template v-for="(fieldDetails, fieldName) in fields" :key="fieldName">
-              <template v-if="fieldDetails.helpText">
-                <div class="alert alert-success">{{ fieldDetails.helpText }}</div>
-              </template>
+            <template v-for="(host, ip, index) in ips" :key="index">
               <div class="form-group row">
-                <label class="col-md-3 col-form-label">{{ fieldName }}</label>
+                <label class="col-md-3 col-form-label">{{ ip }}</label>
                 <div class="col-sm-9 input-group">
-                  <input type="text" class="form-control form-control-sm" :id="fieldDetails.name" :name="fieldDetails.name" :value="fieldDetails.value" required>
+                  <input type="text" class="form-control form-control-sm" :id="ip" :name="ip" v-model="ips[ip]">
                 </div>
               </div>
             </template>
