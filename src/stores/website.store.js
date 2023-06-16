@@ -10,7 +10,6 @@ export const useWebsiteStore = defineStore({
         websiteList: [],
         loading: false,
         error: false,
-
         pkg: '',
         link_display: false,
         settings: {
@@ -50,62 +49,7 @@ export const useWebsiteStore = defineStore({
             website_username: "vintagev",
             website_server_status: ""
         },
-        clientLinks: [
-            {
-                label: "Invoices",
-                link: "view_website?id=1196829&link=invoices",
-                icon: "fas fa-file-invoice-dollar fa-w-12",
-                icon_text: "",
-                help_text: "Invoice History"
-            },
-            {
-                label: "Cancel Websites",
-                link: "view_website?id=1196829&link=cancel",
-                icon: "fas fa-times",
-                icon_text: "",
-                help_text: "Cancel Websites"
-            },
-            {
-                label: "Send Welcome Email",
-                link: "view_website?id=1196829&link=welcome_email",
-                icon: "material-icons",
-                icon_text: "send",
-                help_text: "Resend Welcome Email",
-                other_attr: ""
-            },
-            {
-                label: "Login to DirectAdmin",
-                link: "auto_directadmin_login?id=1196829",
-                icon: "fa fa-sign-in",
-                icon_text: "",
-                help_text: "Login to DirectAdmin",
-                other_attr: 'target="__blank"'
-            },
-            {
-                label: "Download Backups",
-                link: "view_website?id=1196829&link=download_backups",
-                icon: "material-icons",
-                icon_text: "cloud_download",
-                help_text: "Download Backups",
-                other_attr: ""
-            },
-            {
-                label: "Migrate Website",
-                link: "view_website?id=1196829&link=migration",
-                icon: "material-icons",
-                icon_text: "transfer_within_a_station",
-                help_text: "Website Migration Request",
-                other_attr: ""
-            },
-            {
-                label: "Buy matching domain",
-                link: "view_website?id=1196829&link=order_domain",
-                icon: "fa fa-globe",
-                icon_text: "",
-                help_text: "Order Matching Domain",
-                other_attr: ""
-            }
-        ],
+        clientLinks: [],
         billingDetails: {
             service_last_invoice_date: "April 16, 2023",
             service_payment_status: "Paid",
@@ -146,25 +90,11 @@ export const useWebsiteStore = defineStore({
             },
             preview: {
                 title: "Website Preview",
-                rows: [
-                    {
-                        desc: "Website Preview",
-                        value: "https://wh1196829.ispot.cc"
-                    }
-                ]
+                rows: []
             },
             dns: {
                 title: "Default DNS Servers",
-                rows: [
-                    {
-                        desc: "vda4200a.trouble-free.net",
-                        value: "74.50.80.15"
-                    },
-                    {
-                        desc: "vda4200b.trouble-free.net",
-                        value: "74.50.80.15"
-                    }
-                ]
+                rows: []
             }
         },
         csrf: "e17ff0a12111c2cf2d22272a9fbdddd64f164b48276a5bdd5f95338403ebc23578aa2d48563e27d88fab60d1580834eb201e9bcbf2afd4d0be1f0d2c7ae17257"
@@ -219,8 +149,6 @@ export const useWebsiteStore = defineStore({
                 console.log('api failed');
                 console.log(error);
             }
-
-
         },
         async update(id, params) {
             await fetchWrapper.put(`${baseUrl}/${id}`, params);

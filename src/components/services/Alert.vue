@@ -10,9 +10,9 @@ import CancelStorage from '@components/alerts/CancelStorage.vue';
 import CancelVps from '@components/alerts/CancelVps.vue';
 import CancelWebsite from '@components/alerts/CancelWebsite.vue';
 import Confirm from '@components/alerts/Confirm.vue';
-import EppCode from '@components/alerts/EppCode.vue';
-import Lock from '@components/alerts/Lock.vue';
-import Whois from '@components/alerts/Whois.vue';
+//import EppCode from '@components/alerts/EppCode.vue';
+//import Lock from '@components/alerts/Lock.vue';
+//import Whois from '@components/alerts/Whois.vue';
 
 export default {
   props: {
@@ -72,9 +72,9 @@ export default {
     CancelVps,
     CancelWebsite,
     Confirm,
-    EppCode,
-    Lock,
-    Whois,
+    //EppCode,
+    //Lock,
+    //Whois,
   },
 };
 </script>
@@ -82,10 +82,10 @@ export default {
 <template>
   <div>
     <template v-if="display === 'yes' && action === 'eppcode'">
-      <EppCode :url="url" :csrf_token="csrf_token" :domain="domain" />
+      <!-- <EppCode :url="url" :csrf_token="csrf_token" :domain="domain" /> -->
     </template>
     <template v-else-if="display === 'yes' && action === 'lock'">
-      <Lock :url="url" :csrf_token="csrf_token" :status="status" />
+      <!-- <Lock :url="url" :csrf_token="csrf_token" :status="status" /> -->
     </template>
     <template v-else-if="display === 'yes' && action === 'cancel_domain'">
       <CancelDomain :url="url" :csrf_token="csrf_token" :domain="domain" />
@@ -112,7 +112,7 @@ export default {
       <CancelSsl :url="url" :csrf_token="csrf_token" :order_id="order_id" />
     </template>
     <template v-else-if="display === 'yes' && action === 'whois'">
-      <Whois :url="url" :csrf_token="csrf_token" :funct="funct" :domain="domain" />
+      <!-- <Whois :url="url" :csrf_token="csrf_token" :funct="funct" :domain="domain" /> -->
     </template>
     <template v-else-if="display === 'yes' && action === 'buy_ip'">
       <BuyIp :url="url" :csrf_token="csrf_token" :domain="domain" />

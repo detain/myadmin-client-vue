@@ -19,13 +19,11 @@ console.log(link.value);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
 
-websiteStore.getById(id)
-
-
-
 function isEmpty(table) {
   return table === null || table === undefined || table.length === 0;
 }
+
+websiteStore.getById(id)
 </script>
 
 <template>
