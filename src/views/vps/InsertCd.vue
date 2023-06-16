@@ -19,8 +19,8 @@ const module = ref(props.module);
 //const id = ref('');
 const goBackLink = ref('');
 const csrfToken = ref('');
-const protocols = ref('');
-const links = ref([]);
+const protocols = ref('https');
+const links = ref(['https://templates.is.cc/knoppix/KNOPPIX_V9.1CD-2021-01-25-EN.iso', 'https://templates.is.cc/systemrescuecd/systemrescue-7.01-amd64.iso']);
 function submitForm(event) {
       // Handle form submission
       event.preventDefault();
@@ -39,9 +39,7 @@ function submitForm(event) {
               {{ action === 'enable_cd' ? 'Enable CDROM Drive' : 'Insert ISO Image In CDROM Drive' }}
             </h3>
             <div class="card-tools text-right">
-              <a class="btn btn-custom btn-sm" :href="goBackLink" data-toggle="tooltip" title="Go Back">
-                <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
@@ -52,9 +50,7 @@ function submitForm(event) {
             <div class="form-group">
               <div class="row">
                 <div class="col-md-3">
-                  <label for="slices" class="col-form-label">
-                    Allowed Protocols
-                  </label>
+                  <label for="slices" class="col-form-label">Allowed Protocols</label>
                 </div>
                 <div class="col-md-9">
                   <input type="text" class="form-control form-control-sm" readonly :value="protocols">
@@ -63,9 +59,7 @@ function submitForm(event) {
             </div>
             <div class="form-group row">
               <div class="col-md-3">
-                <label for="image" class="col-form-label">
-                  Choose Image
-                </label>
+                <label for="image" class="col-form-label">Choose Image</label>
               </div>
               <div class="col-sm-9 input-group">
                 <select id="image" name="image" class="form-control form-control-sm select2">
@@ -79,9 +73,7 @@ function submitForm(event) {
             <div class="form-group">
               <div class="row">
                 <div class="col-md-3">
-                  <label for="slices" class="col-form-label">
-                    Enter URL
-                  </label>
+                  <label for="slices" class="col-form-label">Enter URL</label>
                 </div>
                 <div class="col-md-9">
                   <input type="text" name="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL">
@@ -99,9 +91,7 @@ function submitForm(event) {
             </div>
             <div class="row justify-content-center">
               <div class="controls">
-                <button name="insert_cd" type="submit" class="btn btn-sm btn-order px-3 py-2">
-                  Continue
-                </button>
+                <button name="insert_cd" type="submit" class="btn btn-sm btn-order px-3 py-2">Continue</button>
               </div>
             </div>
           </form>

@@ -42,14 +42,9 @@ function submitForm() {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h3 class="card-title">
-              <i class="material-icons pr-1" style="vertical-align: bottom;">manage_accounts</i>
-              Change VPS Hostname
-            </h3>
+            <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom;">manage_accounts</i>Change VPS Hostname</h3>
             <div class="card-tools float-right">
-              <a v-bind:href="getLink()" class="btn btn-custom btn-sm">
-                <i class="fa fa-arrow-left"></i> Back
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
             </div>
           </div>
         </div>

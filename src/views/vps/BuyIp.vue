@@ -47,9 +47,7 @@ function submitForm() {
               <i class="fa fa-map-marker-alt"></i> Additional IP Addon for your VPS
             </h3>
             <div class="card-tools text-right">
-              <a v-bind:href="getLink()" class="btn btn-custom btn-sm">
-                <i class="fa fa-arrow-left"></i> Back
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
             </div>
           </div>
         </div>

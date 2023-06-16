@@ -27,9 +27,6 @@ layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
 const slices = ref(0);
-const goBackLink = computed(() => {
-  return `${this.module === 'vps' ? 'view_vps' : 'view_qs'}?id=${this.id}`;
-});
 const nowCost = computed(() => {
   // Calculate and return the now_cost value based on the slices value
   // Replace the placeholders with the actual calculation logic
@@ -65,9 +62,7 @@ function submitForm() {
           <div class="p-1">
             <h3 class="card-title py-2"><i class="fa fa-upload"></i>&nbsp;Upgrade / Downgrade Slices</h3>
             <div class="card-tools text-right">
-              <a :href="goBackLink" class="btn btn-custom btn-sm">
-                <i class="fa fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;
-              </a>
+              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
