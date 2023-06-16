@@ -100,7 +100,7 @@ export default defineConfig({
                 },*/
                 manualChunks: {
                     datatables: ['datatables.net-bs', 'datatables.net-bs4', 'datatables.net-dt', 'datatables.net-responsive-bs', 'datatables.net-responsive-bs4', 'datatables.net-select', 'datatables.net-select-bs', 'datatables.net-select-bs4', 'datatables.net-vue3', ],
-                    bootstrap: ['admin-lte', 'bootstrap', 'select2', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', 'jquery', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 'vue', 'vue-query', 'vue-recaptcha', 'vue-router',  '@vueuse/core', 'pinia', 'vee-validate'],
+                    bootstrap: ['admin-lte', 'bootstrap', 'select2', 'sweetalert2', '@sweetalert2/theme-bootstrap-4', 'tempusdominus-bootstrap-4', 'jquery', 'jquery-simple-pass-meter', 'jquery-sortable', 'jquery-ui', 'vue', '@tanstack/vue-query', 'vue-recaptcha', 'vue-router',  '@vueuse/core', 'pinia', 'vee-validate'],
                     chartjs: ["chart.js"]
                     //vite: ['vite', '@vitejs/plugin-legacy', '@vitejs/plugin-vue', 'vite-plugin-checker', 'vite-plugin-chunk-split','vite-plugin-inspect', 'vite-plugin-pwa', 'vite-plugin-vue-devtools', 'vite-plugin-vue-inspector' ],
                     //...renderChunks(dependencies)
