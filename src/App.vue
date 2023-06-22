@@ -3,16 +3,16 @@ import { ref, computed, onMounted } from "vue";
 import { RouterLink, RouterView } from 'vue-router'
 import { storeToRefs } from 'pinia';
 import { MainMenu, Nav, Alert } from '@/components';
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
 onMounted(function () {
 });
 
 const authStore = useAuthStore();
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
+const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 $(document).ready(function() {
     /*

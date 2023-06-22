@@ -10,11 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import Swal from 'sweetalert2';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('DNS Manager');
-layoutStore.setTitle('DNS Manager');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('DNS Manager');
+siteStore.setTitle('DNS Manager');
+siteStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

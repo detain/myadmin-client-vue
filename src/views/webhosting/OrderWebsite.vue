@@ -2,11 +2,11 @@
 import { ref, reactive, computed, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Website');
-layoutStore.setTitle('Order Website');
-layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Website');
+siteStore.setTitle('Order Website');
+siteStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref('order_form');

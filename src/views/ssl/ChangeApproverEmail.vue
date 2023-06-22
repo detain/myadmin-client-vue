@@ -2,17 +2,17 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
-layoutStore.addBreadcrum('/ssl/'+props.id, 'View SSL '+props.id);
-layoutStore.addBreadcrum('/ssl/'+props.id+'/', '');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
+siteStore.addBreadcrum('/ssl/'+props.id, 'View SSL '+props.id);
+siteStore.addBreadcrum('/ssl/'+props.id+'/', '');
 
 //const id = ref(''); // Replace with appropriate data or pass as props
 const csrf_token = ref(''); // Replace with appropriate data or pass as props

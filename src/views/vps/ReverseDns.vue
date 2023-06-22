@@ -2,20 +2,20 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props       = defineProps(['id', 'module']);
 const successMsg  = ref('');
 const cancelQueue = ref('');
 const fields      = ref({});
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const ips         = ref({});
 const baseUrl     = import.meta.env.VITE_API_URL;
 
-layoutStore.setTitle('Reverse DNS');
-layoutStore.setPageHeading('Reverse DNS');
-layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/reverse_dns', 'Reverse DNS');
+siteStore.setTitle('Reverse DNS');
+siteStore.setPageHeading('Reverse DNS');
+siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
+siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
+siteStore.addBreadcrum('/vps/'+props.id+'/reverse_dns', 'Reverse DNS');
 
 
 fetchWrapper.get(baseUrl + '/vps/'+props.id+'/reverse_dns').then(response => {

@@ -2,11 +2,11 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useAuthStore, useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Affiliate - Dock Setup');
-layoutStore.setTitle('Affiliate - Dock Setup');
-layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Dock Setup'});
+import { useAuthStore, useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Affiliate - Dock Setup');
+siteStore.setTitle('Affiliate - Dock Setup');
+siteStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Dock Setup'});
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);

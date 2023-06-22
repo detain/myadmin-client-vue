@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLicenseStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useLicenseStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { ChangeIp, ChangeOs } from '@/views/licenses'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View License');
-layoutStore.setTitle('View License');
-layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
-layoutStore.addBreadcrum('/licenses/'+id, 'View License '+id);
+siteStore.setPageHeading('View License');
+siteStore.setTitle('View License');
+siteStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
+siteStore.addBreadcrum('/licenses/'+id, 'View License '+id);
 
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);

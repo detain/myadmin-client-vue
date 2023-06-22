@@ -3,11 +3,11 @@ import { ref, reactive } from 'vue'
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Change Username');
-layoutStore.setTitle('Change Username');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Username'});
+import { useAuthStore, useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Change Username');
+siteStore.setTitle('Change Username');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Change Username'});
 
 
 </script>

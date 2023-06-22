@@ -2,13 +2,13 @@
 import { ref, computed, reactive, onMounted } from 'vue'
 import { fetchWrapper } from '@/helpers';
 import { storeToRefs } from 'pinia';
-import { useAuthStore, useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
+import { useAuthStore, useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
-layoutStore.setPageHeading('Dashboard');
-layoutStore.setTitle('Dashboard');
-layoutStore.setBreadcrums({'': 'Home'});
+siteStore.setPageHeading('Dashboard');
+siteStore.setTitle('Dashboard');
+siteStore.setBreadcrums({'': 'Home'});
 const baseUrl = import.meta.env.VITE_API_URL;
 import $ from 'jquery';
 import jQuery from 'jquery';

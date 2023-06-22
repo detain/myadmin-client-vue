@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useMailStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useMailStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Alerts, DenyRules } from '@/views/mail'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Mail');
-layoutStore.setTitle('View Mail');
-layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
-layoutStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
+siteStore.setPageHeading('View Mail');
+siteStore.setTitle('View Mail');
+siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
+siteStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
 
 const mailStore = useMailStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);

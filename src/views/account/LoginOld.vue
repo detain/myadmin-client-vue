@@ -2,12 +2,12 @@
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { useAuthStore, useSiteStore } from '@/stores';
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts } = storeToRefs(authStore);
-const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
+const { breadcrums, page_heading, sidemenu } = storeToRefs(siteStore);
 
 const schema = Yup.object().shape({
     tfa: Yup.string(),
@@ -17,7 +17,7 @@ const schema = Yup.object().shape({
 
 async function onSubmit(values) {
     const authStore = useAuthStore();
-    const layoutStore = useLayoutStore();
+    const siteStore = useSiteStore();
     console.log('Values:');
     console.log(values);
     const loginParams = {

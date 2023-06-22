@@ -3,16 +3,16 @@ import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue'
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { useAuthStore, useSiteStore } from '@/stores';
 import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha'
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
-const { breadcrums, page_heading, sidemenu } = storeToRefs(layoutStore);
+const { breadcrums, page_heading, sidemenu } = storeToRefs(siteStore);
 
 const gresponse = ref('');
 const gresponse2 = ref('');

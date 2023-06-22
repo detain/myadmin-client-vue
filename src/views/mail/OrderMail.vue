@@ -3,11 +3,11 @@ import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Mail');
-layoutStore.setTitle('Order Mail');
-layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Mail');
+siteStore.setTitle('Order Mail');
+siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail'});
 const baseUrl = import.meta.env.VITE_API_URL;
 const step = ref("orderform");
 const coupon = ref("");

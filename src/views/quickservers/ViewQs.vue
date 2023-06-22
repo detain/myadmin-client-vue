@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useQsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useQsStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const module = ref('quickservers');
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Qs');
-layoutStore.setTitle('View Qs');
-layoutStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
-layoutStore.addBreadcrum('/qs/'+id, 'View Qs '+id);
+siteStore.setPageHeading('View Qs');
+siteStore.setTitle('View Qs');
+siteStore.setBreadcrums({'/home': 'Home', '/qs/': 'Rapid Deploy Servers'})
+siteStore.addBreadcrum('/qs/'+id, 'View Qs '+id);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);

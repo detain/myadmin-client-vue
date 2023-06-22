@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useWebsiteStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useWebsiteStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Website');
-layoutStore.setTitle('View Website');
-layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
-layoutStore.addBreadcrum('/websites/'+id, 'View Website '+id);
+siteStore.setPageHeading('View Website');
+siteStore.setTitle('View Website');
+siteStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
+siteStore.addBreadcrum('/websites/'+id, 'View Website '+id);
 console.log(link.value);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);

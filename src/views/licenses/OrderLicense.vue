@@ -2,11 +2,11 @@
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order License');
-layoutStore.setTitle('Order License');
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order License');
+siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
 const catTag = ref(route.params.catTag);
@@ -19,9 +19,9 @@ const coupon = ref("");
 const csrfToken = ref("");
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type'});
+        siteStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type'});
     } else {
-        layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type', ['/licenses/order/'+catTag.value]: 'Order License'});
+        siteStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type', ['/licenses/order/'+catTag.value]: 'Order License'});
     }
 }
 const getLicenses = ref({

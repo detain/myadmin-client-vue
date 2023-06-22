@@ -2,15 +2,15 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-bs4';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Affiliate System');
-layoutStore.setTitle('Affiliate System');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Affiliate'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Affiliate System');
+siteStore.setTitle('Affiliate System');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Affiliate'});
 const myUrl = 'https://my.interserver.net';
 const body = ref('');
 const custid = ref()

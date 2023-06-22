@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import Chart from "chart.js";
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Affiliate - SalesGraph');
-layoutStore.setTitle('Affiliate - SalesGraph');
-layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'SalesGraph'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Affiliate - SalesGraph');
+siteStore.setTitle('Affiliate - SalesGraph');
+siteStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'SalesGraph'});
 
 const canvas = ref(null);
 const selectedPeriod = ref(30);

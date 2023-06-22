@@ -9,11 +9,11 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Storage / Backup List');
-layoutStore.setTitle('Storage / Backup List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Storage'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Storage / Backup List');
+siteStore.setTitle('Storage / Backup List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Storage'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

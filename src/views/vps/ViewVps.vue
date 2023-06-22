@@ -3,28 +3,28 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useVpsStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useVpsStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const vpsStore = useVpsStore();
 const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = ref('vps');
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
 const webuzoTableExists = computed(() => { return (typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo)); });
 const addonsTableExists = computed(() => { return (typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons)); });
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
-layoutStore.setPageHeading('View VPS');
-layoutStore.setTitle('View VPS');
-layoutStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-layoutStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
+siteStore.setPageHeading('View VPS');
+siteStore.setTitle('View VPS');
+siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
 
 vpsStore.getById(id)
 
 if (noForm.includes(link.value)) {
-    layoutStore.addBreadcrum('/vps/' + id + '/'+link.value, ucwords(link.value.replace('_', ' ')));
+    siteStore.addBreadcrum('/vps/' + id + '/'+link.value, ucwords(link.value.replace('_', ' ')));
     vpsStore.queue(id, link.value);
 }
 

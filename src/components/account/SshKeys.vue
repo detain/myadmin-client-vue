@@ -3,14 +3,14 @@ import { ref, reactive, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
-import { useAccountStore, useAuthStore, useLayoutStore } from "@/stores";
+import { useAccountStore, useAuthStore, useSiteStore } from "@/stores";
 const props = defineProps(['data']);
 const data = computed(() => { return props.data; });
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const accountStore = useAccountStore();
-layoutStore.setPageHeading('Account Settings');
-layoutStore.setTitle('Account Settings');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
+siteStore.setPageHeading('Account Settings');
+siteStore.setTitle('Account Settings');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 async function updateSshPublicKey() {

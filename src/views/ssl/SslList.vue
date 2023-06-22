@@ -9,11 +9,11 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('SSL Certificates List');
-layoutStore.setTitle('SSL Certificates List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'SSL'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('SSL Certificates List');
+siteStore.setTitle('SSL Certificates List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'SSL'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

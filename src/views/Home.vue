@@ -3,12 +3,12 @@ import { MainMenu } from '@/components';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
-import { useAuthStore, useLayoutStore } from '@/stores';
+import { useAuthStore, useSiteStore } from '@/stores';
 
 const authStore = useAuthStore();
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading } = storeToRefs(layoutStore);
+const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 </script>
 

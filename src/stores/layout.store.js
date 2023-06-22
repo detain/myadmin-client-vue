@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-export const useLayoutStore = defineStore({
-    id: 'layout',
+export const useSiteStore = defineStore({
+    id: 'site',
     state: () => ({
         // initialize state from local storage to enable user to stay logged in
         breadcrums: {},

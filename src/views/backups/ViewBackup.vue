@@ -3,17 +3,17 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useBackupStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useBackupStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Backup');
-layoutStore.setTitle('View Backup');
-layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
-layoutStore.addBreadcrum('/backups/'+id, 'View Backup '+id);
+siteStore.setPageHeading('View Backup');
+siteStore.setTitle('View Backup');
+siteStore.setBreadcrums({'/home': 'Home', '/backups': 'Storage'})
+siteStore.addBreadcrum('/backups/'+id, 'View Backup '+id);
 
 const backupStore = useBackupStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(backupStore);

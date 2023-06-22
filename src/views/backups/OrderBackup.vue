@@ -2,11 +2,11 @@
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Backup');
-layoutStore.setTitle('Order Backup');
-layoutStore.setBreadcrums({'/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Backup');
+siteStore.setTitle('Order Backup');
+siteStore.setBreadcrums({'/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref("orderform");

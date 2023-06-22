@@ -3,11 +3,11 @@ import { ref, computed, onMounted } from 'vue'
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Server');
-layoutStore.setTitle('Order Server');
-layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers List', '/servers/order': 'Order Server'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Server');
+siteStore.setTitle('Order Server');
+siteStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers List', '/servers/order': 'Order Server'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const currency = ref("USD");

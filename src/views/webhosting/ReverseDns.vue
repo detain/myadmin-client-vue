@@ -2,19 +2,19 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 //const id = ref('');
 const csrf = ref('');
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
-layoutStore.addBreadcrum('/websites/'+props.id, 'View Website '+props.id);
-layoutStore.addBreadcrum('/websites/'+props.id+'/', '');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites'})
+siteStore.addBreadcrum('/websites/'+props.id, 'View Website '+props.id);
+siteStore.addBreadcrum('/websites/'+props.id+'/', '');
 function submitForm() {
   // Perform necessary form submission logic here
 }

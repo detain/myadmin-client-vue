@@ -2,18 +2,18 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import Chart from 'chart.js';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/', '');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
+siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
+siteStore.addBreadcrum('/vps/'+props.id+'/', '');
     const todayGraph = ref(null);
     const hourGraph = ref(null);
     const monthGraph = ref(null);

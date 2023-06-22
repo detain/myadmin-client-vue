@@ -1,14 +1,14 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useInvoicesStore, useLayoutStore } from '@/stores';
+import { useInvoicesStore, useSiteStore } from '@/stores';
 import { ref, computed, onMounted } from "vue";
 import 'datatables.net';
 import 'datatables.net-bs4';
 import DataTable from 'datatables.net-dt';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Invoice List');
-layoutStore.setTitle('Invoice List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Invoices'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Invoice List');
+siteStore.setTitle('Invoice List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Invoices'});
 
 const invoicesStore = useInvoicesStore();
 const { custid, month, year, months_arr, years_arr, rows, loading, error } = storeToRefs(invoicesStore);

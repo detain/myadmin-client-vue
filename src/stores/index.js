@@ -5,7 +5,7 @@ export * from './auth.store';
 export * from './backup.store';
 export * from './domain.store';
 export * from './invoices.store';
-export * from './layout.store';
+export * from './site.store';
 export * from './license.store';
 export * from './mail.store';
 export * from './qs.store';

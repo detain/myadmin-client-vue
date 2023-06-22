@@ -2,12 +2,12 @@
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Domain');
-layoutStore.setTitle('Order Domain');
-layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Domain');
+siteStore.setTitle('Order Domain');
+siteStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
 const baseUrl = import.meta.env.VITE_API_URL;
 const route = useRoute();
 const router = useRouter();
@@ -29,12 +29,12 @@ const domainFields = ref({});
 const domain = computed(() => { return route.params.domain; });
 const type = computed(() => { return route.params.type; });
 const display = computed(() => {
-    layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
+    siteStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
     if (typeof domain.value == 'undefined') {
         return 'step1';
     }
     hostname.value = domain.value;
-    layoutStore.addBreadcrum('/domains/order/'+domain.value, 'Domain Search');
+    siteStore.addBreadcrum('/domains/order/'+domain.value, 'Domain Search');
     if (searchResponse?.domain != hostname.value) {
         console.log("currently hostname is "+searchResponse?.domain);
         console.log(searchResponse?.domain);
@@ -45,7 +45,7 @@ const display = computed(() => {
         return 'step1b';
     }
     domainType.value = type.value;
-    layoutStore.addBreadcrum('/domains/order/'+domain.value+'/'+type.value, 'Domain Details');
+    siteStore.addBreadcrum('/domains/order/'+domain.value+'/'+type.value, 'Domain Details');
     getDomainFields();
     return 'step2';
 });

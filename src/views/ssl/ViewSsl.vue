@@ -3,17 +3,17 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useSslStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useSslStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Ssl');
-layoutStore.setTitle('View Ssl');
-layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
-layoutStore.addBreadcrum('/ssl/'+id, 'View Ssl '+id);
+siteStore.setPageHeading('View Ssl');
+siteStore.setTitle('View Ssl');
+siteStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL'})
+siteStore.addBreadcrum('/ssl/'+id, 'View Ssl '+id);
 
 const sslStore = useSslStore();
 const { loading, error, pkg, link_display } = storeToRefs(sslStore);

@@ -9,11 +9,11 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Licensing List');
-layoutStore.setTitle('Licensing List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Licenses'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Licensing List');
+siteStore.setTitle('Licensing List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Licenses'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

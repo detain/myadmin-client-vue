@@ -2,12 +2,12 @@
 import { ref, computed } from 'vue'
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import { RouterLink } from 'vue-router';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order Rapid Deploy Server');
-layoutStore.setTitle('Order Rapid Deploy Server');
-layoutStore.setBreadcrums({'/home': 'Home', '/qs': 'Rapid Deploy Servers List', '/qs/order': 'Order Rapid Deploy Server'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order Rapid Deploy Server');
+siteStore.setTitle('Order Rapid Deploy Server');
+siteStore.setBreadcrums({'/home': 'Home', '/qs': 'Rapid Deploy Servers List', '/qs/order': 'Order Rapid Deploy Server'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const step = ref("orderform");

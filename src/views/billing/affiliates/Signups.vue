@@ -2,11 +2,11 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Affiliate - Signups');
-layoutStore.setTitle('Affiliate - Signups');
-layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Signups'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Affiliate - Signups');
+siteStore.setTitle('Affiliate - Signups');
+siteStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Signups'});
 
 
 onMounted(() => {

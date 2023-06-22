@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import $ from 'jquery';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Affiliate - Banners');
-layoutStore.setTitle('Affiliate - Banners');
-layoutStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Banners'});
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Affiliate - Banners');
+siteStore.setTitle('Affiliate - Banners');
+siteStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Banners'});
 
 
 onMounted(() => {

@@ -7,11 +7,11 @@ import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order VPS');
-layoutStore.setTitle('Order VPS');
-layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order VPS');
+siteStore.setTitle('Order VPS');
+siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS'});
 const baseUrl = import.meta.env.VITE_API_URL;
 const billingCycle = ref({
     1: "Monthly",

@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useDomainStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useDomainStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Domain');
-layoutStore.setTitle('View Domain');
-layoutStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
-layoutStore.addBreadcrum('/domains/'+id, 'View Domain '+id);
+siteStore.setPageHeading('View Domain');
+siteStore.setTitle('View Domain');
+siteStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
+siteStore.addBreadcrum('/domains/'+id, 'View Domain '+id);
 
 const domainStore = useDomainStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, csrf, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);

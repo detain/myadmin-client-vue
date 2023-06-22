@@ -1,15 +1,15 @@
 <script setup>
 import { ref, reactive, defineComponent } from "vue";
 import { storeToRefs } from 'pinia';
-import { usePrePayStore, useLayoutStore } from '@/stores';
+import { usePrePayStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const prepayStore = usePrePayStore();
 const { loading, error, custid, ima, csrf_token, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
-layoutStore.setPageHeading('PrePaid Funds');
-layoutStore.setTitle('PrePaid Funds');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'PrePays'});
+siteStore.setPageHeading('PrePaid Funds');
+siteStore.setTitle('PrePaid Funds');
+siteStore.setBreadcrums({'/home': 'Home', '': 'PrePays'});
 
 function addPrepayUpdates(module) {
     if (module === "default") {

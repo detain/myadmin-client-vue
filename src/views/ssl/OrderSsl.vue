@@ -1,10 +1,10 @@
 <script setup>
 import Swal from 'sweetalert2';
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Order SSL');
-layoutStore.setTitle('Order SSL');
-layoutStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL List', '/ssl/order': 'Order SSL'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Order SSL');
+siteStore.setTitle('Order SSL');
+siteStore.setBreadcrums({'/home': 'Home', '/ssl': 'SSL List', '/ssl/order': 'Order SSL'});
 
 </script>
 

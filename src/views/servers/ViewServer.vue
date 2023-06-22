@@ -3,18 +3,18 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useServerStore, useAuthStore, useAlertStore, useLayoutStore } from '@/stores';
+import { useServerStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers'
 
-const layoutStore = useLayoutStore();
+const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-layoutStore.setPageHeading('View Server');
-layoutStore.setTitle('View Server');
-layoutStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
-layoutStore.addBreadcrum('/servers/'+id, 'View Server '+id);
+siteStore.setPageHeading('View Server');
+siteStore.setTitle('View Server');
+siteStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
+siteStore.addBreadcrum('/servers/'+id, 'View Server '+id);
 
 const serverStore = useServerStore();
 const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);

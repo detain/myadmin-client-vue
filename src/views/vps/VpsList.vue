@@ -17,11 +17,11 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 import DataTable from 'datatables.net-dt';
 
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('VPS List');
-layoutStore.setTitle('VPS List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('VPS List');
+siteStore.setTitle('VPS List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

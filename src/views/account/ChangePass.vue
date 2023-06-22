@@ -4,11 +4,11 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Change Password');
-layoutStore.setTitle('Change Password');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});
+import { useAuthStore, useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Change Password');
+siteStore.setTitle('Change Password');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});
 const baseUrl = import.meta.env.VITE_API_URL;
 const password = ref('')
 const newPassword = ref('')

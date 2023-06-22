@@ -9,11 +9,11 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import { useLayoutStore } from '@/stores';
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Rapid Deploy Servers List');
-layoutStore.setTitle('Rapid Deploy Servers List');
-layoutStore.setBreadcrums({'/home': 'Home', '': 'Quickservers'});
+import { useSiteStore } from '@/stores';
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Rapid Deploy Servers List');
+siteStore.setTitle('Rapid Deploy Servers List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Quickservers'});
 const baseUrl = import.meta.env.VITE_API_URL;
 
 /*DataTable.use(DataTablesCore);*/

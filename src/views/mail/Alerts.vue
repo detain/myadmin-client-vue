@@ -2,18 +2,18 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 import $ from 'jquery';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
-layoutStore.addBreadcrum('/mail/'+props.id, 'View Mail '+props.id);
-layoutStore.addBreadcrum('/mail/'+props.id+'/', '');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
+siteStore.addBreadcrum('/mail/'+props.id, 'View Mail '+props.id);
+siteStore.addBreadcrum('/mail/'+props.id+'/', '');
 
 const alerts = ref([]);
 const types_sel = ref({});

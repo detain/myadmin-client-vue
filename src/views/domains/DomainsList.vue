@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 /*
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
@@ -12,10 +12,10 @@ import 'datatables.net-responsive';
 */
 
 const baseUrl = import.meta.env.VITE_API_URL;
-const layoutStore = useLayoutStore();
-layoutStore.setPageHeading('Domain Registrations List');
-layoutStore.setTitle('Domain Registrations List');
-layoutStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
+const siteStore = useSiteStore();
+siteStore.setPageHeading('Domain Registrations List');
+siteStore.setTitle('Domain Registrations List');
+siteStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
 
 /*DataTable.use(DataTablesCore);*/
 

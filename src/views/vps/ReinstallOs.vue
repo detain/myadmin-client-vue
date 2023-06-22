@@ -2,17 +2,17 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-layoutStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-layoutStore.addBreadcrum('/vps/'+props.id+'/reinstall_os', 'Reinstall OS');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
+siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
+siteStore.addBreadcrum('/vps/'+props.id+'/reinstall_os', 'Reinstall OS');
 const baseUrl = import.meta.env.VITE_API_URL;
 const id = ref(props.id);
 const module = ref(props.module);

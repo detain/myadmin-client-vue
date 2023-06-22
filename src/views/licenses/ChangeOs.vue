@@ -2,17 +2,17 @@
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from "vue";
-import { useLayoutStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const layoutStore = useLayoutStore();
-layoutStore.setTitle('');
-layoutStore.setPageHeading('');
-layoutStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
-layoutStore.addBreadcrum('/licenses/'+props.id, 'View License '+props.id);
-layoutStore.addBreadcrum('/licenses/'+props.id+'/', '');
+const siteStore = useSiteStore();
+siteStore.setTitle('');
+siteStore.setPageHeading('');
+siteStore.setBreadcrums({'/home': 'Home', '/licenses': 'Licenses'})
+siteStore.addBreadcrum('/licenses/'+props.id, 'View License '+props.id);
+siteStore.addBreadcrum('/licenses/'+props.id+'/', '');
 
 //const id = ref('');
 const csrfToken = ref('');
