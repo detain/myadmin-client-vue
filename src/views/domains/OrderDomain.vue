@@ -35,9 +35,9 @@ const display = computed(() => {
     }
     hostname.value = domain.value;
     siteStore.addBreadcrum('/domains/order/'+domain.value, 'Domain Search');
-    if (searchResponse?.domain != hostname.value) {
-        console.log("currently hostname is "+searchResponse?.domain);
-        console.log(searchResponse?.domain);
+    if (searchResponse.value?.domain != hostname.value) {
+        console.log("currently hostname is "+searchResponse.value?.domain);
+        console.log(searchResponse.value?.domain);
         console.log("new domain is "+hostname.value);
         searchDomain();
     }
