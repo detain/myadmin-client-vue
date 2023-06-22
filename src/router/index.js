@@ -11,6 +11,7 @@ import domainRoutes from './domain.routes'
 import backupRoutes from './backup.routes'
 import licenseRoutes from './license.routes'
 import mailRoutes from './mail.routes'
+import floatingIpRoutes from './floating_ip.routes'
 import qsRoutes from './qs.routes'
 import serverRoutes from './server.routes'
 import sslRoutes from './ssl.routes'
@@ -50,6 +51,7 @@ export const router = createRouter({
     { ...backupRoutes },
     { ...licenseRoutes },
     { ...mailRoutes },
+    { ...floatingIpRoutes },
     { ...qsRoutes },
     { ...serverRoutes },
     { ...sslRoutes },
