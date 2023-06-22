@@ -80,6 +80,10 @@ function deleteCardModal(cc_id = "0") {
     });
 }
 
+function editInfo() {
+    $("#EditInfo").trigger("click");
+}
+
 function addCardSubmit() {
     try {
         fetchWrapper
@@ -400,7 +404,7 @@ accountStore.load();
                             <td>
                                 <template v-if="invrow.invoices_module === 'default'">{{ invrow.service }}</template>
                                 <template v-else-if="invrow.collapse !== 1">
-                                    <a class="text-primary" :href="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</a>
+                                    <router-link class="text-primary" :to="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</router-link>
                                 </template>
                             </td>
                             <td>{{ invrow.invoices_description }}</td>
