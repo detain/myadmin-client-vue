@@ -42,7 +42,7 @@ licenseStore.getById(id)
                 </div>
             </div>
         </div>
-        <div class="col-md-{{ serviceOverviewExtra ? '3' : '4' }}">
+        <div :class="`col-md-${serviceOverviewExtra ? '3' : '4'}`">
             <div :class="[
         'small-box',
         serviceInfo[`${settings.PREFIX}_status`] === 'active' ? 'bg-success' : '',
@@ -64,12 +64,12 @@ licenseStore.getById(id)
                 </div>
             </div>
         </div>
-        <div class="col-md-{{ serviceOverviewExtra ? '3' : '4' }}">
+        <div :class="`col-md-${serviceOverviewExtra ? '3' : '4'}`">
             <div class="small-box bg-info">
                 <div class="inner pt-3 pb-1 px-3">
                     <h3>License Info</h3>
                     <template v-if="serviceInfo.license_hostname">
-                        <p class="{{ serviceOverviewExtra ? 'mt-0' : 'py-3 my-2' }}">
+                        <p :class="serviceOverviewExtra ? 'mt-0' : 'py-3 my-2'">
                             Hostname is:<br />
                             <b>{{ serviceInfo.license_hostname }}</b>
                         </p>

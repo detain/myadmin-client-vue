@@ -36,7 +36,7 @@ function submitForm() {
           <template v-if="successMsg">
             <div class="alert alert-success">{{ successMsg }} {{ cancelQueue }}</div>
           </template>
-          <form @submit.prevent="submitForm" action="view_website?id={{ id }}&link=reverse_dns" method="POST">
+          <form @submit.prevent="submitForm" method="POST">
             <input type="hidden" name="link" value="reverse_dns">
             <input type="hidden" name="csrf_token" :value="csrf">
             <template v-for="(field_details, field_name, index) in fields" :key="index">

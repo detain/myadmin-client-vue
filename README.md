@@ -28,7 +28,7 @@ This template should help get you started developing with Vue 3 in Vite.
 
 * [ ] loading / no entries messages
 * [x] cache data in pinia stores
-* [x ] fix all linter issues
+* [x] fix all linter issues
 * [x] view service pages
   * [x] load data via ajax api
   * [ ] links and form handling

@@ -145,7 +145,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then(response => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm" action="order_license?catTag={{ catTag }}">
+                        <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>

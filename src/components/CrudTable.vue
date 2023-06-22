@@ -652,7 +652,7 @@ onMounted(() => {
                         <td><input type="checkbox" class="checkthis" /></td>
                       </template>
                       <td v-for="(col, colIndex) in row" :key="colIndex" :colspan="col.colspan" :bgcolor="col.colbgcolor" :style="{textAlign: col.colalign}" :class="col.colopts">
-                        <template v-if="col in labelRep"><span class="label label-sm label-{{ labelRep[col] }}">{{ col }}</span></template>
+                        <template v-if="col in labelRep"><span class="label label-sm" :class="'label-' + labelRep[col]">{{ col }}</span></template>
                         <template v-else>{{ tableRows[rowIndex][colIndex] }}</template>
                       </td>
                       <template v-if="rowButtons">

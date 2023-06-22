@@ -321,7 +321,7 @@ serverOrderRequest(false);
                                             {{ fieldLabel[inputName.replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
-                                        <div class="input-group col-md-9 {{ inputName }}-row">
+                                        <div class="input-group col-md-9" :class="inputName + '-row'">
                                             <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
                                                 <input :id="'ds-' + inputName.replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] == id" @change="updatePrice()" />
                                                 <label :for="'ds-' + inputName.replace('_li', '') + '-' + id" class="font-weight-normal w-100">

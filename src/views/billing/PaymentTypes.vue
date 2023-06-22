@@ -17,7 +17,7 @@ const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore
 const pymt_method = ref("paypal");
 const selectedCc = ref("");
 const editCcIdx = ref(0);
-const trigger_click = ref(false);
+const triggerClick = ref(false);
 const current_cc_id = ref(0);
 const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
@@ -34,9 +34,9 @@ const contFields = reactive({
 });
 
 function mounted() {
-    if (trigger_click.value) {
-        $("#unver_{{ current_cc_id }}")
-            .attr("data-step", "{{ trigger_click }}")
+    if (triggerClick.value) {
+        $("#unver_"+current_cc_id)
+            .attr("data-step", triggerClick.value)
             .trigger("click");
     }
 }

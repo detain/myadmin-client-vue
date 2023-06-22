@@ -30,6 +30,7 @@ const total_display = ref(0.0);
 const displayPrepay = ref(true);
 const total_invoices = ref(0);
 const paymentMethodsData = ref({});
+const current_cc_id = ref(0);
 const triggerClick = ref(null);
 const isChecked = ref(false);
 const modulesCounts = ref({});
@@ -48,8 +49,8 @@ const contFields = reactive({
 
 function mounted() {
     if (triggerClick.value) {
-        $("#unver_{{ current_cc_id }}")
-            .attr("data-step", "{{ triggerClick.value }}")
+        $("#unver_"+current_cc_id)
+            .attr("data-step", triggerClick.value)
             .trigger("click");
     }
 }

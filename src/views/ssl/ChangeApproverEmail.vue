@@ -39,7 +39,7 @@ function submitForm() {
           </div>
         </div>
         <div class="card-body">
-          <form @submit.prevent="submitForm" action="view_ssl?id={{ id }}&link=change_approver_email" method="POST">
+          <form @submit.prevent="submitForm" method="POST">
             <input type="hidden" name="link" value="change_approver_email">
             <input type="hidden" name="csrf_token" :value="csrf_token">
             <div class="form-group row">
