@@ -43,7 +43,7 @@ const updateContact = () => {
           </div>
         </div>
         <div class="card-body">
-          <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id=' + id + '&link=contact' + (ima === 'admin' ? '&custid=' + custid : '')">
+          <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id=' + id + '&link=contact'">
             <input type="hidden" name="csrf_token" :value="csrfToken">
             <div v-for="(field, fieldName) in formFields" :key="fieldName" class="form-group row">
               <template v-if="domainFields[fieldName].label && domainFields[fieldName].label">

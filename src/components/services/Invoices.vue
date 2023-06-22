@@ -70,39 +70,6 @@ export default {
               </tr>
             </thead>
           </table>
-          <div v-if="ima === 'admin'" class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <form accept-charset="UTF-8" role="form" id="editModalForm" class="form" action="ajax.php?choice=invoices_update" autocomplete="on" method="POST" enctype="multipart/form-data" _lpchecked="1">
-                  <input type="hidden" name="id" id="invoices_id" :value="invoicesId">
-                  <div class="modal-header">
-                    <h4 class="modal-title custom_align" id="editModalLabel">Edit Invoice <strong id="invoices_id_text">{{ invoicesId }}</strong></h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">×</span></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-6 col-sm-9">
-                        <div class="form-group">
-                          <label class="col-form-label" for="invoices_description">Description</label>
-                          <input type="text" class="form-control" name="invoices_description" id="invoices_description" v-model="invoicesDescription" placeholder="What the Invoice was for" autocomplete="off">
-                        </div>
-                      </div>
-                      <!-- Rest of the form fields -->
-                    </div>
-                    <div class="error_message"></div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" id="editModalUpdateButton" class="btn btn-primary btn-lg" @click="submitForm">
-                      <span class="fa fa-check-circle"></span> Update
-                    </button>
-                    <button type="button" id="editModalCancelButton" class="btn btn-danger btn-lg" data-dismiss="modal" @click="closeModal">
-                      <span class="fa fa-remove"></span> Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

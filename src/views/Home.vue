@@ -18,15 +18,6 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <ul class="navbar-nav menu-collapse"><!-- Left navbar links -->
                 <li class="nav-item"><a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a></li>
             </ul>
-            <template v-if="user.ima === 'admin'">
-                <form class="form-inline" action="index.php" style="width: 30%">
-                    <input type="hidden" name="choice" value="none.search">
-                    <div class="input-group input-group-sm" style="width: 100%">
-                        <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search" aria-label="Search" value="">
-                        <div class="input-group-append"><button class="btn btn-navbar" type="submit"><i class="fas fa-search"></i></button></div>
-                    </div>
-                </form>
-            </template>
             <ul class="navbar-nav ml-auto"><!-- Right navbar links -->
                 <li class="nav-item dropdown">
                     <router-link to="cart" title="Cart" class="nav-link"><i class="fa fa-shopping-cart "></i></router-link>

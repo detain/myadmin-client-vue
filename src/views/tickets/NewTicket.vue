@@ -50,33 +50,6 @@ const getActionUrl = () => {
             </div>
           </div>
           <div class="card-body">
-            <div v-if="ima === 'admin'" class="form-group row">
-              <label for="create_as" class="col-sm-4 col-form-label">Create As</label>
-              <div class="controls col-sm-8">
-                <div class="form-group clearfix">
-                  <div class="icheck-success d-inline">
-                    <input id="customer" type="radio" name="create_as" value="customer" v-model="createAs">
-                    <label for="customer">Customer</label>
-                  </div>
-                  <div class="icheck-success d-inline px-2">
-                    <input id="tech" type="radio" name="create_as" value="tech" v-model="createAs">
-                    <label for="tech">As Tech</label>
-                  </div>
-                  <div class="icheck-success d-inline px-2">
-                    <input id="phone_call" type="radio" name="create_as" value="phone_call">
-                    <label for="phone_call">Phone Call Ticket</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row" v-if="ima === 'admin'">
-              <label for="department" class="col-sm-4 col-form-label">Department</label>
-              <div class="col-sm-8">
-                <select name="department" class="form-control form-control-sm select2" style="width: 100%;" v-model="kyDept">
-                  <option v-for="(dept_name, dept, index) in departments" :key="index" :value="dept">{{ dept_name }}</option>
-                </select>
-              </div>
-            </div>
             <div class="form-group row">
               <label for="product" class="col-sm-4 col-form-label">Product</label>
               <div class="col-sm-8">
