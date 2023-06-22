@@ -3,6 +3,7 @@ import { ref, reactive, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
+import { fetchWrapper } from '@/helpers';
 import { useAccountStore, useAuthStore, useSiteStore } from "@/stores";
 const props = defineProps(['data']);
 const data = computed(() => { return props.data; });

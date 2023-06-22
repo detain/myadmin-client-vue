@@ -21,6 +21,7 @@ const osVersion = ref("");
 const osDistro = ref("Ubuntu");
 const version = ref({});
 const rootpass = ref("");
+const hostname = ref("");
 const csrfToken = ref("");
 const osTemplates = ref({});
 const osVersionSelect = computed(() => {

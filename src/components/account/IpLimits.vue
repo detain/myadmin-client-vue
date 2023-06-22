@@ -4,6 +4,7 @@ import { storeToRefs } from "pinia";
 import { Form, Field } from "vee-validate";
 import * as Yup from "yup";
 import { useAccountStore, useAuthStore, useSiteStore } from "@/stores";
+import { fetchWrapper } from '@/helpers';
 const props = defineProps(['data', 'limits', 'ip']);
 const data = computed(() => { return props.data; });
 const limits = computed(() => { return props.limits; });

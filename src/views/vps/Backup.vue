@@ -16,7 +16,6 @@ siteStore.addBreadcrum('/vps/'+props.id+'/backup', 'Backup');
 
 const module_name = ref('');
 const module = ref('');
-const id = ref('');
 const backup = ref('');
 const hostname = ref('');
 const confirm = ref(false);

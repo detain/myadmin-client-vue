@@ -11,6 +11,7 @@ import 'datatables.net-responsive';
 */
 import { useRoute } from 'vue-router';
 import { useSiteStore } from '@/stores';
+import Swal from 'sweetalert2';
 const route = useRoute();
 const id = route.params.id;
 const siteStore = useSiteStore();
@@ -148,7 +149,7 @@ async function deleteRecord(event) {
         preConfirm: () => {
             console.log("got to this place from deleteRecord preConfirm");
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then(response => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id.value).then(response => {
                     console.log('api success');
                     console.log(response);
                     loadDns(data)

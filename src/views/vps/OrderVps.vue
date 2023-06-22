@@ -286,7 +286,7 @@ async function update_coupon() {
         document.getElementById("couponimg").src = "validate_coupon.php?module=vps&coupon=" + coupon.value;
         $.getJSON("https://my.interserver.net/coupon_info.php?module=vps&coupon=" + coupon.value, {}, function (json) {
             couponInfo.value = json;
-            if (typeof json.applies != undefined) {
+            if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
                 if (couponInfo.value.onetime == "0") {
                     update_vps_choices_order();
@@ -396,7 +396,7 @@ async function update_vps_choices() {
     var monthly_slice_cost = sliceCost.value;
     var monthly_service_cost = service_cost;
     var couponpricetext;
-    if (typeof couponInfo.value.applies != undefined) {
+    if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();
@@ -583,7 +583,7 @@ async function update_vps_choices_order() {
     var monthly_slice_cost = sliceCost.value;
     var monthly_service_cost = service_cost;
     var couponpricetext;
-    if (typeof couponInfo.value.applies != undefined) {
+    if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery("#couponpricerow").css("display", "table-row");
             jQuery("#couponpricerownew").show();

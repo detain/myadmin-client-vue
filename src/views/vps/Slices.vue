@@ -15,7 +15,7 @@ const id = computed(() => { return props.id; });
 const currency_symbol = computed(() => { return props.currency_symbol; });
 const memory = computed(() => { return props.memory; });
 const hdd = computed(() => { return props.hdd; });
-const module = ref('vps');
+const module = computed(() => { return props.module; });
 
 const successMsg = ref('');
 const cancelQueue = ref('');

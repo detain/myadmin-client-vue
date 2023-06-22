@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
-import { useAlertStore } from '@/stores';
+import { useAlertStore, useSiteStore } from '@/stores';
 
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();

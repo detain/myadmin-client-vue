@@ -98,8 +98,7 @@ async function onSubmitConfirmation() {
                 period: period.value,
                 coupon: coupon.value,
                 csrfToken: csrfToken.value,
-                csrfToken: csrfToken.value,
-                serviceType: serviceType.value
+                serviceType: packageId.value
             })
             .then((response) => {
                 console.log("website order validated");
