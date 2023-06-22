@@ -141,7 +141,7 @@ websiteStore.getById(id)
                                 </template>
                                 <tr v-if="clientLinks[3]">
                                     <td>Automatic Login</td>
-                                    <td><a :href="clientLinks[3].link" target="__blank" class="link">Click Here</a></td>
+                                    <td><router-link :to="'/websites/'+id+'/login'" target="__blank" class="link">Click Here</router-link></td>
                                 </tr>
                             </table>
                         </div>
@@ -224,7 +224,7 @@ websiteStore.getById(id)
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/'+id+'/'+(clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}</router-link>
                 </div>
             </div>
         </div>
