@@ -39,6 +39,7 @@ const contFields = reactive({
     cc_exp: "",
     name: "",
     address: "",
+    phone: "",
     city: "",
     state: "",
     zip: "",
@@ -81,6 +82,13 @@ function deleteCardModal(cc_id = "0") {
 }
 
 function editInfo() {
+    for (var key in contFields) {
+        if (data.value[key]) {
+            contFields[key] = data.value[key];
+        } else {
+            contFields[key] = "";
+        }
+    }
     $("#EditInfo").trigger("click");
 }
 
@@ -397,7 +405,7 @@ accountStore.load();
                         ]" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                             <td>
                                 <div class="icheck-success d-inline">
-                                    <input :id="invrow.service_label" :type="invrow.service_line === 1 ? 'checkbox' : 'radio'" :name="invrow.service_line === 1 ? 'services[]' : 'invoices[]'" :model="invrow.service_label" :checked="!invrow.prepay_invoice" class="inv_checkbox" @change="updateTotal(invrow.service_label)">
+                                    <input :id="invrow.service_label" :type="invrow.service_line === 1 ? 'checkbox' : 'radio'" :name="invrow.service_line === 1 ? 'services[]' : 'invoices[]'" v-model="invrow.service_label" :checked="!invrow.prepay_invoice" class="inv_checkbox" @change="updateTotal(invrow.service_label)">
                                     <label :for="invrow.service_label"> </label>
                                 </div>
                             </td>
@@ -414,7 +422,7 @@ accountStore.load();
                                 <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
                                     <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
                                     <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
-                                        <input type="hidden" name="inv_id" :model="invrow.invoices_id">
+                                        <input type="hidden" name="inv_id" v-model="invrow.invoices_id">
                                     </form>
                                 </template>
                                 <template v-else>
@@ -604,12 +612,12 @@ accountStore.load();
             </div>
             <div class="modal-body">
                 <form action="cart" method="post" class="form-card">
-                    <input type="hidden" name="csrf_token" :model="csrf_token">
+                    <input type="hidden" name="csrf_token" v-model="csrf_token">
                     <input type="hidden" name="action" value="add">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" :model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')">
+                                <input type="text" v-model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')">
                                 <label class="text-md">Card Number</label>
                             </div>
                         </div>
@@ -619,7 +627,7 @@ accountStore.load();
                             <div class="row">
                                 <div class="col-6">
                                     <div class="input-group">
-                                        <input type="text" :model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                        <input type="text" v-model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
                                         <label class="text-md">Expiry Date</label>
                                     </div>
                                 </div>
@@ -635,7 +643,7 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" name="name" :model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
+                                <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')">
                                 <label class="text-md">Name</label>
                             </div>
                         </div>
@@ -643,7 +651,7 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" name="address" :model="contFields.address" placeholder="Address line">
+                                <input type="text" name="address" v-model="contFields.address" placeholder="Address line">
                                 <label class="text-md">Address</label>
                             </div>
                         </div>
@@ -657,7 +665,7 @@ accountStore.load();
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="text" name="state" :model="contFields.state" placeholder="State">
+                                <input type="text" name="state" v-model="contFields.state" placeholder="State">
                                 <label class="text-md">State</label>
                             </div>
                         </div>
@@ -673,7 +681,7 @@ accountStore.load();
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="text" name="zip" :model="contFields.zip" placeholder="Zipcode">
+                                <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode">
                                 <label class="text-md">Zipcode</label>
                             </div>
                         </div>
@@ -697,12 +705,12 @@ accountStore.load();
             </div>
             <div class="modal-body">
                 <form action="cart" method="post" class="form-card" id="EditInfo">
-                    <input type="hidden" name="csrf_token" :model="csrf_token">
+                    <input type="hidden" name="csrf_token" v-model="csrf_token">
                     <input type="hidden" name="action" value="edit_info">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" name="name" :model="contFields.name" placeholder="You Name">
+                                <input type="text" name="name" v-model="contFields.name" placeholder="You Name">
                                 <label class="text-md">Name</label>
                             </div>
                         </div>
@@ -710,7 +718,7 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" name="address" :model="contFields.address" placeholder="Address line">
+                                <input type="text" name="address" v-model="contFields.address" placeholder="Address line">
                                 <label class="text-md">Address</label>
                             </div>
                         </div>
@@ -718,7 +726,7 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" name="phone" :model="contFields.phone" placeholder="Phone Number" required>
+                                <input type="text" name="phone" v-model="contFields.phone" placeholder="Phone Number" required>
                                 <label class="text-md">Phone</label>
                             </div>
                         </div>
@@ -726,13 +734,13 @@ accountStore.load();
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="text" name="city" :model="contFields.city" placeholder="City">
+                                <input type="text" name="city" v-model="contFields.city" placeholder="City">
                                 <label class="text-md">City</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="text" name="state" :model="contFields.state" placeholder="State">
+                                <input type="text" name="state" v-model="contFields.state" placeholder="State">
                                 <label class="text-md">State</label>
                             </div>
                         </div>
@@ -748,7 +756,7 @@ accountStore.load();
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="text" name="zip" :model="contFields.zip" placeholder="Zipcode">
+                                <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode">
                                 <label class="text-md">Zipcode</label>
                             </div>
                         </div>
@@ -773,13 +781,13 @@ accountStore.load();
             </div>
             <div class="modal-body">
                 <form action="cart" method="post" class="form-card" id="EditForm">
-                    <input type="hidden" name="csrf_token" :model="csrf_token">
+                    <input type="hidden" name="csrf_token" v-model="csrf_token">
                     <input type="hidden" name="action" value="edit">
-                    <input id="e_cc_idx" type="hidden" name="idx" :model="editCcIdx">
+                    <input id="e_cc_idx" type="hidden" name="idx" v-model="editCcIdx">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input type="text" id="e_exp" name="cc_exp" :model="contFields.cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
+                                <input type="text" id="e_exp" name="cc_exp" v-model="contFields.cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')">
                                 <label class="text-md">Expiry Date</label>
                             </div>
                         </div>
@@ -787,7 +795,7 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="input-group">
-                                <input style="border: none;letter-spacing: 19.5px;font-weight: bold;" type="text" id="e_cr_no" name="cc" :model="contFields.cc" required readonly disabled>
+                                <input style="border: none;letter-spacing: 19.5px;font-weight: bold;" type="text" id="e_cr_no" name="cc" v-model="contFields.cc" required readonly disabled>
                                 <label class="text-md">Card Number</label>
                             </div>
                         </div>
@@ -795,13 +803,13 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" type="text" name="name" :model="contFields.name" placeholder="Name on card">
+                                <input style="border: none;" type="text" name="name" v-model="contFields.name" placeholder="Name on card">
                                 <label class="text-md">Name</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" type="text" name="address" :model="contFields.address" placeholder="Address line" disabled>
+                                <input style="border: none;" type="text" name="address" v-model="contFields.address" placeholder="Address line" disabled>
                                 <label class="text-md">Address</label>
                             </div>
                         </div>
@@ -809,13 +817,13 @@ accountStore.load();
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" type="text" name="city" :model="contFields.city" placeholder="City" disabled>
+                                <input style="border: none;" type="text" name="city" v-model="contFields.city" placeholder="City" disabled>
                                 <label class="text-md">City</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" type="text" name="state" :model="contFields.state" placeholder="State" disabled>
+                                <input style="border: none;" type="text" name="state" v-model="contFields.state" placeholder="State" disabled>
                                 <label class="text-md">State</label>
                             </div>
                         </div>
@@ -823,13 +831,13 @@ accountStore.load();
                     <div class="row justify-content-center">
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" :model="contFields.country" type="text" name="Country" placeholder="Country">
+                                <input style="border: none;" v-model="contFields.country" type="text" name="Country" placeholder="Country">
                                 <label class="text-md">Country</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input style="border: none;" type="text" name="zip" :model="contFields.zip" placeholder="Zipcode" disabled>
+                                <input style="border: none;" type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" disabled>
                                 <label class="text-md">Zipcode</label>
                             </div>
                         </div>
@@ -845,13 +853,13 @@ accountStore.load();
     </div>
 </div>
 <form id="defaultpymt" action="cart" method="post">
-    <input type="hidden" name="csrf_token" :model="csrf_token">
+    <input type="hidden" name="csrf_token" v-model="csrf_token">
     <input type="hidden" name="action" value="default">
     <input id="defaultpymt_method" type="hidden" name="payment_method" value="">
     <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="">
 </form>
 <form id="deleteForm" action="cart" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" :model="csrf_token">
+    <input id="csrf_token" type="hidden" name="csrf_token" v-model="csrf_token">
     <input type="hidden" name="action" value="delete">
     <input id="cc_idx" type="hidden" name="idx" value="">
 </form>
