@@ -8,7 +8,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers List', '/servers/order': 'Order Server'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 const currency = ref("USD");
 const currencySymbol = ref("$");

@@ -9,7 +9,7 @@ const { user } = storeToRefs(authStore);
 siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
 siteStore.setBreadcrums({'': 'Home'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 import $ from 'jquery';
 import jQuery from 'jquery';
 window.$ = window.jQuery = $;

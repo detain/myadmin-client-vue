@@ -12,7 +12,7 @@ siteStore.setPageHeading("Payment Types");
 siteStore.setTitle("Payment Types");
 siteStore.setTitle("Payment Types");
 siteStore.setBreadcrums({ "/home": "Home", "": "Payment Types" });
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref("paypal");
 const selectedCc = ref("");

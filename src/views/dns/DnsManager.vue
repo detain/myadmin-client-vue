@@ -15,7 +15,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Manager');
 siteStore.setTitle('DNS Manager');
 siteStore.setBreadcrums({'/home': 'Home', '': 'DNS Manager'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

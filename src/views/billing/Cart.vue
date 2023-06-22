@@ -11,7 +11,7 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading("Cart");
 siteStore.setTitle("Cart");
 siteStore.setBreadcrums({ "/home": "Home", "": "Cart" });
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const pymt_method = ref("paypal");
 const modules = ref({});

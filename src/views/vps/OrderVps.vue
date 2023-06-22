@@ -12,7 +12,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order VPS');
 siteStore.setTitle('Order VPS');
 siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const billingCycle = ref({
     1: "Monthly",
     3: "3 Months",

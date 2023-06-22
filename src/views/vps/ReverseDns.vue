@@ -9,7 +9,7 @@ const cancelQueue = ref('');
 const fields      = ref({});
 const siteStore = useSiteStore();
 const ips         = ref({});
-const baseUrl     = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 siteStore.setTitle('Reverse DNS');
 siteStore.setPageHeading('Reverse DNS');

@@ -11,7 +11,7 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Domain Registrations List');
 siteStore.setTitle('Domain Registrations List');

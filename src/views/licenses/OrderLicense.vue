@@ -12,7 +12,7 @@ const router = useRouter();
 const catTag = ref(route.params.catTag);
 const step = ref("license_types");
 updateBreadcrums();
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const ima = ref("client");
 const ip = ref("");
 const coupon = ref("");

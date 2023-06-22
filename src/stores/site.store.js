@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia';
+
+const baseUrl = import.meta.env.VITE_API_URL;
+
 export const useSiteStore = defineStore({
     id: 'site',
     state: () => ({
@@ -9,6 +12,9 @@ export const useSiteStore = defineStore({
         title: ''
     }),
     actions: {
+        getBaseUrl() {
+            return baseUrl;
+        },
         setBreadcrums(value) {
             this.breadcrums = value;
         },

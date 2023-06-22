@@ -22,7 +22,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
 siteStore.setTitle('VPS List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'VPS List'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

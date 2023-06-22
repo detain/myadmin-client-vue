@@ -9,7 +9,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Change Password');
 siteStore.setTitle('Change Password');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Change Password'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const password = ref('')
 const newPassword = ref('')
 const currentPassword = ref('')

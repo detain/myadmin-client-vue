@@ -7,7 +7,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
 siteStore.setBreadcrums({'/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('order_form');
 const packageId = ref('');

@@ -14,7 +14,7 @@ const { loading, error, custid, ima, csrf_token, link, data, ip } = storeToRefs(
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Contact Info'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const countries = ref({});
 async function onSubmit(values) {

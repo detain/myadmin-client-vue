@@ -3,7 +3,8 @@ import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAlertStore } from '@/stores';
 
-const baseUrl = import.meta.env.VITE_API_URL;
+const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 
 export const useAuthStore = defineStore({
     id: 'auth',

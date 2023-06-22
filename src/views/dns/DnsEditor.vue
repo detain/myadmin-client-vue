@@ -18,7 +18,7 @@ siteStore.setPageHeading('DNS Editor');
 siteStore.setTitle('DNS Editor');
 siteStore.setBreadcrums({ '/home': 'Home', '/dns': 'DNS Manager'});
 siteStore.addBreadcrum("/dns/"+id, 'DNS Editor');
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);
 /*DataTable.use(DataTablesCore);*/
 const name = ref('');

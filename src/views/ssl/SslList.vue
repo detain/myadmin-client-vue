@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'SSL'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

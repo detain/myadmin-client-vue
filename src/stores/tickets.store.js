@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useSiteStore } from '@/stores';
 
-const baseUrl = import.meta.env.VITE_API_URL;
+const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 
 export const useTicketsStore = defineStore({
     id: 'tickets',

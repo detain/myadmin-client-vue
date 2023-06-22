@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Storage / Backup List');
 siteStore.setTitle('Storage / Backup List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Storage'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

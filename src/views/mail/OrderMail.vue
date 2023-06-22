@@ -8,7 +8,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Mail');
 siteStore.setTitle('Order Mail');
 siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const step = ref("orderform");
 const coupon = ref("");
 const csrfToken = ref("");

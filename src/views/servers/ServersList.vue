@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Dedicated Servers List');
 siteStore.setTitle('Dedicated Servers List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Servers'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Mail Services List');
 siteStore.setTitle('Mail Services List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Mail'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

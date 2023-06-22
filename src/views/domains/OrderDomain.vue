@@ -8,7 +8,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
 siteStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
 const csrfToken = ref("");

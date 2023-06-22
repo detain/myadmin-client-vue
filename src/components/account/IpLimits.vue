@@ -13,7 +13,7 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Account Settings'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 
 const newLimit = ref({

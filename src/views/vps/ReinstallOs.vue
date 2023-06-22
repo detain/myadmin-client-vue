@@ -13,7 +13,7 @@ siteStore.setPageHeading('');
 siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
 siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 siteStore.addBreadcrum('/vps/'+props.id+'/reinstall_os', 'Reinstall OS');
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 const id = ref(props.id);
 const module = ref(props.module);
 const settings = ref(props.settings);

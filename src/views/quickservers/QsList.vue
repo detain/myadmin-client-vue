@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Rapid Deploy Servers List');
 siteStore.setTitle('Rapid Deploy Servers List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Quickservers'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 

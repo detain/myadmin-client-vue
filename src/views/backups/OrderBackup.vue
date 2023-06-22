@@ -7,7 +7,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
 siteStore.setTitle('Order Backup');
 siteStore.setBreadcrums({'/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 const step = ref("orderform");
 const currency = ref("USD");

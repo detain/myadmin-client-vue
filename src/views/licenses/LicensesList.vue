@@ -14,7 +14,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Licensing List');
 siteStore.setTitle('Licensing List');
 siteStore.setBreadcrums({'/home': 'Home', '': 'Licenses'});
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 
