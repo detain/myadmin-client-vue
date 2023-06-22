@@ -2,35 +2,25 @@
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
-export default {
-  setup() {
-    const id = ref(''); // Assign the value of `$id` here
-    const csrf_token = ref(''); // Assign the value of `$csrf_token` here
-    const ip = ref(''); // Assign the value of `$ip` here
+const id = ref(''); // Assign the value of `$id` here
+const csrf_token = ref(''); // Assign the value of `$csrf_token` here
+const ip = ref(''); // Assign the value of `$ip` here
 
-    onMounted(() => {
-      Swal.fire({
-        type: 'error',
-        title: '<h3>Cancel License</h3> ',
-        showCancelButton: true,
-        showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Cancel it.',
-        html: `
-          <p>Are you sure want to cancel your license <span class="text-2lg">${ip.value}</span>?</p>
-        `,
-        preConfirm: () => {
-          document.getElementById('cancelForm').submit();
-        },
-      });
-    });
-
-    return {
-      id,
-      csrf_token,
-      ip,
-    };
-  },
-};
+onMounted(() => {
+  Swal.fire({
+    type: 'error',
+    title: '<h3>Cancel License</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Cancel it.',
+    html: `
+      <p>Are you sure want to cancel your license <span class="text-2lg">${ip.value}</span>?</p>
+    `,
+    preConfirm: () => {
+      document.getElementById('cancelForm').submit();
+    },
+  });
+});
 </script>
 
 <template>

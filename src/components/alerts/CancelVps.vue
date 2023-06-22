@@ -1,38 +1,26 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
+const id = ref(''); // Assign the value of `$id` here
+const csrf_token = ref(''); // Assign the value of `$csrf_token` here
+const hostname = ref(''); // Assign the value of `$hostname` here
+const addons = ref([]); // Assign the value of `$addons` here
 
-export default {
-  setup() {
-    const id = ref(''); // Assign the value of `$id` here
-    const csrf_token = ref(''); // Assign the value of `$csrf_token` here
-    const hostname = ref(''); // Assign the value of `$hostname` here
-    const addons = ref([]); // Assign the value of `$addons` here
-
-    onMounted(() => {
-      Swal.fire({
-        type: 'error',
-        title: '<h3>Cancel VPS Service</h3> ',
-        showCancelButton: true,
-        showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Cancel it.',
-        html: `
-          <p>Are you sure want to cancel your vps <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
-        `,
-        preConfirm: () => {
-          document.getElementById('cancelForm').submit();
-        },
-      });
-    });
-
-    return {
-      id,
-      csrf_token,
-      hostname,
-      addons,
-    };
-  },
-};
+onMounted(() => {
+  Swal.fire({
+    type: 'error',
+    title: '<h3>Cancel VPS Service</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Cancel it.',
+    html: `
+      <p>Are you sure want to cancel your vps <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
+    `,
+    preConfirm: () => {
+      document.getElementById('cancelForm').submit();
+    },
+  });
+});
 </script>
 
 <template>

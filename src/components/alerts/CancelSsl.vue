@@ -2,35 +2,25 @@
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
-export default {
-  setup() {
-    const id = ref(''); // Assign the value of `$id` here
-    const csrf_token = ref(''); // Assign the value of `$csrf_token` here
-    const order_id = ref(''); // Assign the value of `$order_id` here
+const id = ref(''); // Assign the value of `$id` here
+const csrf_token = ref(''); // Assign the value of `$csrf_token` here
+const order_id = ref(''); // Assign the value of `$order_id` here
 
-    onMounted(() => {
-      Swal.fire({
-        type: 'error',
-        title: '<h3>Cancel SSL</h3> ',
-        showCancelButton: true,
-        showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Cancel it.',
-        html: `
-          <p>Are you sure want to cancel your ssl <span class="text-2lg">${order_id.value}</span>?</p>
-        `,
-        preConfirm: () => {
-          document.getElementById('cancelForm').submit();
-        },
-      });
-    });
-
-    return {
-      id,
-      csrf_token,
-      order_id,
-    };
-  },
-};
+onMounted(() => {
+  Swal.fire({
+    type: 'error',
+    title: '<h3>Cancel SSL</h3> ',
+    showCancelButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: 'Yes, Cancel it.',
+    html: `
+      <p>Are you sure want to cancel your ssl <span class="text-2lg">${order_id.value}</span>?</p>
+    `,
+    preConfirm: () => {
+      document.getElementById('cancelForm').submit();
+    },
+  });
+});
 </script>
 
 <template>

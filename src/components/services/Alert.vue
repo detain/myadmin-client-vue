@@ -14,8 +14,7 @@ import Confirm from '@components/alerts/Confirm.vue';
 //import Lock from '@components/alerts/Lock.vue';
 //import Whois from '@components/alerts/Whois.vue';
 
-export default {
-  props: {
+const props = defineProps({
     display: {
       type: String,
       required: true,
@@ -60,23 +59,7 @@ export default {
     html: {
       type: String,
     },
-  },
-  components: {
-    BuyIp,
-    CancelDomain,
-    CancelLicense,
-    CancelMail,
-    CancelQs,
-    CancelSsl,
-    CancelStorage,
-    CancelVps,
-    CancelWebsite,
-    Confirm,
-    //EppCode,
-    //Lock,
-    //Whois,
-  },
-};
+});
 </script>
 
 <template>

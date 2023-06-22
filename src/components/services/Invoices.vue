@@ -15,32 +15,20 @@ siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
 siteStore.addBreadcrum('/vps/'+props.id+'/', '');
 
 
-export default {
-  name: 'Invoices',
-  data() {
-    return {
-      dataSets: JSON.parse('<?php echo json_encode($invoices_array.invoices); ?>'),
-      eDataSet: JSON.parse('<?php echo json_encode($invoices_array.one_array); ?>'),
-      prefixes: JSON.parse('<?php echo json_encode($invoices_array.prefixes); ?>'),
-      post_location: 'index.php',
-      login_ima: '<?php echo $ima; ?>',
-      invoicesId: '',
-      invoicesDescription: '',
-      // Rest of the data properties
-    };
-  },
-  methods: {
-    previous() {
-      // Handle previous button click
-    },
-    closeModal() {
-      // Handle modal close button click
-    },
-    submitForm() {
-      // Handle form submission
-    },
-  },
-};
+const dataSets = ref({});
+const eDataSet = ref({});
+const prefixes = ref({});
+const invoicesId = ref(0);
+const invoicesDescription = ref('');
+function previous() {
+  // Handle previous button click
+}
+function closeModal() {
+  // Handle modal close button click
+}
+function submitForm() {
+  // Handle form submission
+}
 </script>
 
 <template>

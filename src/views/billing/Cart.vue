@@ -49,7 +49,7 @@ const contFields = reactive({
 
 function mounted() {
     if (triggerClick.value) {
-        $("#unver_"+current_cc_id)
+        $("#unver_"+current_cc_id.value)
             .attr("data-step", triggerClick.value)
             .trigger("click");
     }
