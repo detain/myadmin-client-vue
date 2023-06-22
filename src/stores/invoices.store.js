@@ -2,9 +2,6 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
-
 export const useInvoicesStore = defineStore({
     id: 'invoices',
     state: () => ({
@@ -19,9 +16,13 @@ export const useInvoicesStore = defineStore({
     }),
     actions: {
         async register(user) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
         async getAll() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
                 let response = await fetchWrapper.get(baseUrl + '/invoices');
@@ -35,6 +36,8 @@ export const useInvoicesStore = defineStore({
             this.loading = false;
         },
         async getById(id) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
@@ -43,6 +46,8 @@ export const useInvoicesStore = defineStore({
             }
         },
         async update(id, params) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
             // update stored user if the logged in user updated their own record
@@ -58,6 +63,8 @@ export const useInvoicesStore = defineStore({
         },
         async delete(id) {
             // add isDeleting prop to user being deleted
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.invoices.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);

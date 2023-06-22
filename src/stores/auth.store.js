@@ -3,9 +3,6 @@ import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAlertStore, useSiteStore } from '@/stores';
 
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
-
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
@@ -29,6 +26,8 @@ export const useAuthStore = defineStore({
     }),
     actions: {
         async load() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             try {
                 const response = await fetchWrapper.get(baseUrl + '/login');
                 this.logo = response.logo;
@@ -41,6 +40,8 @@ export const useAuthStore = defineStore({
             }
         },
         async reloadCaptcha() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             try {
                 const response = await fetchWrapper.get(baseUrl + '/captcha');
                 this.captcha = response.captcha;
@@ -50,6 +51,8 @@ export const useAuthStore = defineStore({
             }
         },
         async login(loginParams) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             try {
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams );
                 this.user = user;
@@ -69,6 +72,8 @@ export const useAuthStore = defineStore({
             }
         },
         async signup(signupParms) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             try {
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms );
                 this.user = user;

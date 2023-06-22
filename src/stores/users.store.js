@@ -1,10 +1,6 @@
 import { defineStore } from 'pinia';
-
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
-
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
 
 export const useUsersStore = defineStore({
     id: 'users',
@@ -14,9 +10,13 @@ export const useUsersStore = defineStore({
     }),
     actions: {
         async register(user) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
         async getAll() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.users = { loading: true };
             try {
                 this.users = await fetchWrapper.get(baseUrl);
@@ -25,6 +25,8 @@ export const useUsersStore = defineStore({
             }
         },
         async getHome() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.home = { loading: true };
             try {
                 this.home = await fetchWrapper.get(baseUrl + '/home');
@@ -33,6 +35,8 @@ export const useUsersStore = defineStore({
             }
         },
         async getById(id) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
@@ -41,6 +45,8 @@ export const useUsersStore = defineStore({
             }
         },
         async update(id, params) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
             // update stored user if the logged in user updated their own record
@@ -56,6 +62,8 @@ export const useUsersStore = defineStore({
         },
         async delete(id) {
             // add isDeleting prop to user being deleted
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.users.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);

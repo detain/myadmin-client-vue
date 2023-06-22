@@ -2,9 +2,6 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
-
 export const useWebsiteStore = defineStore({
     id: 'website',
     state: () => ({
@@ -102,9 +99,13 @@ export const useWebsiteStore = defineStore({
     }),
     actions: {
         async register(user) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
         async getAll() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
                 let response = await fetchWrapper.get(baseUrl + '/websites');
@@ -118,6 +119,8 @@ export const useWebsiteStore = defineStore({
             this.loading = false;
         },
         async getById(id) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
                 'package': 'pkg',
             };
@@ -152,6 +155,8 @@ export const useWebsiteStore = defineStore({
             }
         },
         async update(id, params) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
             // update stored user if the logged in user updated their own record
@@ -167,6 +172,8 @@ export const useWebsiteStore = defineStore({
         },
         async delete(id) {
             // add isDeleting prop to user being deleted
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             this.websiteList.find(x => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);

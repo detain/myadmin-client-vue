@@ -2,9 +2,6 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
-
 export const useAccountStore = defineStore({
     id: 'account',
     state: () => ({
@@ -90,9 +87,13 @@ export const useAccountStore = defineStore({
     }),
     actions: {
         async register(user) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
         async load() {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
                 'package': 'pkg',
             };
@@ -129,6 +130,8 @@ export const useAccountStore = defineStore({
 
         },
         async update(id, params) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
             // update stored user if the logged in user updated their own record
@@ -143,6 +146,8 @@ export const useAccountStore = defineStore({
             }
         },
         async delete(id) {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             // add isDeleting prop to user being deleted
             this.accountList.find(x => x.id === id).isDeleting = true;
 
