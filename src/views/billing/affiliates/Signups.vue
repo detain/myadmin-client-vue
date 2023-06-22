@@ -272,14 +272,6 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <template v-if="adminDisp">
-                <div v-for="(displ, panelName) in adminDisp" :key="panelName" class="card">
-                    <div class="card-header">
-                        <h4>{{ panelName }}</h4>
-                    </div>
-                    <div class="card-body">{{ displ }}</div>
-                </div>
-            </template>
         </div>
     </div>
 </template>

@@ -11,7 +11,7 @@ siteStore.setBreadcrums({'/home': 'Home', '/affiliate': 'Affiliate', '': 'Banner
 
 
 onMounted(() => {
-    $('#freetile').freetile({});
+    //$('#freetile').freetile({});
 })
 </script>
 
