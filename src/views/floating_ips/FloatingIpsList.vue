@@ -11,9 +11,9 @@ import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Mail Services List');
-siteStore.setTitle('Mail Services List');
-siteStore.setBreadcrums({'/home': 'Home', '': 'Mail'});
+siteStore.setPageHeading('Floating IPs Services List');
+siteStore.setTitle('Floating IPs Services List');
+siteStore.setBreadcrums({'/home': 'Home', '': 'Floating IPs'});
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -30,10 +30,10 @@ const data = ref([]);
 const table = ref();
 
 const columns = [
-  { data: 'mail_id' },
+  { data: 'floating_ip_id' },
   { data: 'repeat_invoices_cost' },
-  { data: 'mail_username' },
-  { data: 'mail_status' },
+  { data: 'floating_ip_username' },
+  { data: 'floating_ip_status' },
   { data: 'services_name' },
   { name: 'link', data: 'link', sortable: false },
 ];
@@ -46,7 +46,7 @@ const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
       return data.value;
     } else {
-      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.mail_status));
+      return data.value.filter(item => limitStatusMap[limitStatus.value].includes(item.floating_ip_status));
     }
 })
 
@@ -79,7 +79,7 @@ loadMail(data)
         <div class="row float-right">
           <div id="header_btns" class="col-md-auto printer-hidden text-right pl-2">
             <div class="btn-group">
-              <router-link class='btn btn-primary btn-sm printer-hidden' to='/mail/order' title="Order Mail Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
+              <router-link class='btn btn-primary btn-sm printer-hidden' to='/mail/order' title="Order Floating IPs Registrations"><i class='fa fa-shopping-cart'></i> Order</router-link>
             </div>
           </div>
           <div id="print_expo_btns" class="col-md-auto export float-right printer-hidden pl-2">
@@ -136,12 +136,12 @@ loadMail(data)
                   </thead>
                   <tbody>
                     <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center;">
-                        <td>{{ row.mail_id }}</td>
+                        <td>{{ row.floating_ip_id }}</td>
                         <td>{{ row.repeat_invoices_cost }}</td>
-                        <td><router-link :to="'mail/' + row.mail_id">{{ row.mail_username }}</router-link></td>
-                        <td>{{ row.mail_status }}</td>
+                        <td><router-link :to="'mail/' + row.floating_ip_id">{{ row.floating_ip_username }}</router-link></td>
+                        <td>{{ row.floating_ip_status }}</td>
                         <td>{{ row.services_name }}</td>
-                        <td><router-link :to="'mail/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
+                        <td><router-link :to="'mail/' + row.floating_ip_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link></td>
                     </tr>
                   </tbody>
                 </table>

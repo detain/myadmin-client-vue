@@ -5,9 +5,9 @@ import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order Mail');
-siteStore.setTitle('Order Mail');
-siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail'});
+siteStore.setPageHeading('Order Floating IPs');
+siteStore.setTitle('Order Floating IPs');
+siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Floating IPs List', '/mail/order': 'Order Floating IPs'});
 const baseUrl = siteStore.getBaseUrl();
 const step = ref("orderform");
 const coupon = ref("");
@@ -83,7 +83,7 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2">
-                                <i class="fa fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Mail
+                                <i class="fa fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Floating IPs
                             </h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -91,7 +91,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="mail_form" method="post" class="mail_form_init" action="order_mail" @submit.prevent="onSubmit">
+                        <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_mail" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package
@@ -180,7 +180,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" class="mail_form_confirm" action="order_mail">
+                        <form method="post" class="floating_ip_form_confirm" action="order_mail">
                             <input type="hidden" name="csrf_token" :value="csrfToken">
                             <input type="hidden" name="serviceType" :value="pkg">
                             <input type="hidden" name="coupon" :value="coupon">

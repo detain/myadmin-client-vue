@@ -11,10 +11,10 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
-siteStore.setPageHeading('View Mail');
-siteStore.setTitle('View Mail');
-siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Mail'})
-siteStore.addBreadcrum('/mail/'+id, 'View Mail '+id);
+siteStore.setPageHeading('View Floating IPs');
+siteStore.setTitle('View Floating IPs');
+siteStore.setBreadcrums({'/home': 'Home', '/mail': 'Floating IPs'})
+siteStore.addBreadcrum('/mail/'+id, 'View Floating IPs '+id);
 
 const mailStore = useMailStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
@@ -61,13 +61,13 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer">Mail Status is: <b>{{ status }}</b></span>
+                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="small-box bg-danger b-radius">
                 <div class="inner pt-3 pb-2 px-3">
-                    <h3>Mail API</h3>
+                    <h3>Floating IPs API</h3>
                     <p class="py-3 my-3">
                         For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-white text-bold">Click Here</a>
                     </p>
@@ -96,7 +96,7 @@ const statusClass = computed(() => {
         <div>
             <div class="col-md-12">
                 <blockquote style="border-left: 0.4rem solid dimgray;height: 70px;padding-top: 20px;box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);" class="pl-4 mx-0">
-                    <p style="font-size: 20px;vertical-align: middle;"><i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong></p>
+                    <p style="font-size: 20px;vertical-align: middle;"><i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Floating IPs Usage Count: <strong>{{ usage_count }}</strong></p>
                 </blockquote>
             </div>
         </div>
@@ -155,19 +155,19 @@ const statusClass = computed(() => {
     <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.mail_id}`">
+                <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.floating_ip_id}`">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id" :value="serviceInfo.mail_id">
+                        <input type="hidden" name="id" :value="serviceInfo.floating_ip_id">
                         <input type="hidden" name="link" value="update_comment">
                         <input type="hidden" name="csrf_token" :value="csrf">
                         <input type="hidden" name="edit_comment" value="2">
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.mail_comment"></textarea>
+                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.floating_ip_comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
