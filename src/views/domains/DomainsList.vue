@@ -11,8 +11,8 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 
-const baseUrl = siteStore.getBaseUrl();
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 siteStore.setPageHeading('Domain Registrations List');
 siteStore.setTitle('Domain Registrations List');
 siteStore.setBreadcrums({'/home': 'Home', 'domains': 'Domains'})
