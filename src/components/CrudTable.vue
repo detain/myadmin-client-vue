@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { snakeToCamel } from '@/helpers';
 import $ from 'jquery';

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';

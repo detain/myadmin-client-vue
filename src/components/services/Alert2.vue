@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 import BuyIp from '@components/alerts/BuyIp.vue';

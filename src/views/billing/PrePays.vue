@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, defineComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { usePrePayStore, useSiteStore } from '@/stores';

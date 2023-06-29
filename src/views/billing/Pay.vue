@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { storeToRefs } from 'pinia';

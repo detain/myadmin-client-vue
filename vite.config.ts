@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import VueDevTools from 'vite-plugin-vue-devtools';
 import vue from '@vitejs/plugin-vue';
+import dts from 'vite-plugin-dts';
 import Inspect from 'vite-plugin-inspect';
 import Inspector from 'vite-plugin-vue-inspector';
 //import Inspector from 'unplugin-vue-inspector/vite'
 //import AutoImport from "unplugin-auto-import/vite";
 //import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
-//import { resolve } from "path";
+import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -36,6 +37,9 @@ export default defineConfig({
             script: {
                 defineModel: true,
             },
+        }),
+        dts({
+            insertTypesEntry: true,
         }),
         // basicSsl(),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
@@ -113,7 +117,8 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@': path.resolve(__dirname, './src'),
+            //            "@": fileURLToPath(new URL("./src", import.meta.url))
         },
     },
 });

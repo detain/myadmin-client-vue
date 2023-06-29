@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';

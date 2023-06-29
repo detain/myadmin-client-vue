@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { MainMenu } from '@/components';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';

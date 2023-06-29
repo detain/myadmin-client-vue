@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 const id = ref(''); // Assign the value of `$id` here

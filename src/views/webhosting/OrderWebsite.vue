@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';

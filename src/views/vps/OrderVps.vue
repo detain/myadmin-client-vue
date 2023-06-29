@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { ref, reactive, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';

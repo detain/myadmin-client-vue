@@ -49,3 +49,7 @@ public/.yarn/*
 !public/.yarn/releases
 !public/.yarn/sdks
 !public/.yarn/versions
+
+# Vitest related files
+__snapshots__/
+coverage/

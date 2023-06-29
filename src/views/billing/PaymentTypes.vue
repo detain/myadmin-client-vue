@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';

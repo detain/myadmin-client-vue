@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
