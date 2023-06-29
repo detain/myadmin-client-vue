@@ -1,0 +1,7 @@
+coverage/
+dist/
+__snapshots__/
+pnpm-lock.yaml
+*.md
+.yarn/releases/
+public/css/*.min.css

@@ -7,7 +7,7 @@
   "printWidth": 9999,
   "trailingComma": "es5",
   "bracketSpacing": true,
-  "bracketSameLine": false,
+  "bracketSameLine": true,
   "arrowParens": "always",
   "endOfLine": "lf",
   "singleAttributePerLine": false
