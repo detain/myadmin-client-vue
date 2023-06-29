@@ -328,7 +328,8 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                     </div>
                     <div class="card-body">
                         <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/qs/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                            >{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>
@@ -437,7 +438,9 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            {{ extraInfoTables.note.rows[0].value }}
+                            {{
+                                extraInfoTables.note.rows[0].value
+                            }}
                         </table>
                     </div>
                 </div>
