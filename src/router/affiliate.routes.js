@@ -1,7 +1,7 @@
 import { Affiliate, Banners, DockSetup, Faq, Layout, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, ViewBanner, WebTraffic } from '@/views/billing/affiliates';
 
 export default {
-    path: '/affiliates',
+    path: '/affiliate',
     //component: Layout,
     children: [
         { path: '', component: Affiliate },
