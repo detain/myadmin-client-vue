@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useVpsStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
@@ -22,12 +22,33 @@ const addonsTableExists = computed(() => {
     return typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons);
 });
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
-siteStore.setPageHeading('View VPS');
-siteStore.setTitle('View VPS');
-siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
+
+
+function loadLink(newLink) {
+  console.log(`link is now ${newLink}`)
+    siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+    siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
+  if (typeof newLink == 'undefined') {
+    siteStore.setPageHeading('View VPS ' + id);
+    siteStore.setTitle('View VPS ' + id);
+  } else {
+    siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+    siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+      siteStore.addBreadcrum('/vps/' + id + '/'+newLink, ucwords(newLink.replace('_', ' ')));
+      if (newLink == 'login') {
+      }
+  }
+}
+
+watch(
+  () => route.params.link,
+  (newLink) => {
+      loadLink(newLink);
+  }
+)
 
 vpsStore.getById(id);
+loadLink(route.params.link);
 
 if (noForm.includes(link.value)) {
     siteStore.addBreadcrum('/vps/' + id + '/' + link.value, ucwords(link.value.replace('_', ' ')));

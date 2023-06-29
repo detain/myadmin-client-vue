@@ -31,11 +31,6 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-siteStore.setTitle('');
-siteStore.setPageHeading('');
-siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
-siteStore.addBreadcrum('/vps/' + props.id + '/', '');
 const slices = ref(0);
 const nowCost = computed(() => {
     // Calculate and return the now_cost value based on the slices value

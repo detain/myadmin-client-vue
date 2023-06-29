@@ -18,11 +18,6 @@ const backupsTable = computed(() => {
     return props.backupsTable;
 });
 
-siteStore.setTitle('');
-siteStore.setPageHeading('');
-siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
-siteStore.addBreadcrum('/vps/' + props.id + '/backups', 'Manage Backups');
 </script>
 
 <template>
