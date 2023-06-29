@@ -38,7 +38,6 @@ This template should help get you started developing with Vue 3 in Vite.
   * [x] template converted
   * [x] validate order ajax handling function
   * [x] error response handling
-  * [ ] loading poups
   * [ ] coupon handling
   * [ ] form validation
   * [x] summary display/price updating

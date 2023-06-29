@@ -55,7 +55,7 @@ function deleteCardModal(cc_id = "0") {
             "</b> ?</p>",
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
                     console.log("delete cc success");
                     console.log(response);
                 });
@@ -71,7 +71,7 @@ function deleteCardModal(cc_id = "0") {
 function addCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/account/ccs/add`, {
+            .post(`${baseUrl}/billing/ccs/add`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
@@ -94,7 +94,7 @@ function addCardSubmit() {
 function editCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
+            .post(`${baseUrl}/billing/ccs/${editCcIdx.value}`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
@@ -245,11 +245,10 @@ accountStore.load();
         </div>`
         <div class="card shadow-sm shadow-hover">
             <div class="card-body icheck-success">
-                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" :checked="pymt_method === 'paypal'" @change="updatePaymentMethod('paypal')">
+                <input id="paypal" name="r_pymt_method" value="paypal" class="form-check-input" type="radio" v-model="pymt_method" @change="updatePaymentMethod('paypal')">
                 <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
             </div>
         </div>
-
         <div v-if="data.ccs">
             <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-sm shadow-hover">
                 <div class="card-body icheck-success row">
@@ -261,24 +260,17 @@ accountStore.load();
                         </span>
                     </div>
                     <div class="col-md-6 pb-2">
-                        <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id">
-                            <i class="fa fa-exclamation-triangle"></i> Verify
-                        </a>
-                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)">
-                            <i class="fa fa-edit"></i> Edit
-                        </a>
-                        <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)">
-                            <i class="fa fa-trash"></i> Delete
-                        </a>
+                        <a v-if="cc_detail.verified_cc === 'no'" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id"><i class="fa fa-exclamation-triangle"></i> Verify</a>
+                        <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)"><i class="fa fa-edit"></i> Edit</a>
+                        <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)"><i class="fa fa-trash"></i> Delete</a>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="card shadow-sm shadow-hover">
             <div class="card-body">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" :checked="cc_auto_checked" onchange="updatePaymentMethod(0,1)">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" v-model="cc_auto_checked" onchange="updatePaymentMethod(0,1)">
                     <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
                 </div>
             </div>

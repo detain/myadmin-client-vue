@@ -69,7 +69,7 @@ function deleteCardModal(cc_id = "0") {
             "</b> ?</p>",
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/account/ccs/${cc_id}`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
                     console.log("delete cc success");
                     console.log(response);
                 });
@@ -96,7 +96,7 @@ function editInfo() {
 function addCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/account/ccs/add`, {
+            .post(`${baseUrl}/billing/ccs/add`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
@@ -119,7 +119,7 @@ function addCardSubmit() {
 function editCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/account/ccs/${editCcIdx.value}`, {
+            .post(`${baseUrl}/billing/ccs/${editCcIdx.value}`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
