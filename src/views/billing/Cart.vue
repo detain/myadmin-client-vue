@@ -295,8 +295,8 @@ accountStore.load();
                                 <div class="col-md-10 mb-3">
                                     <b class="text-lg">Home</b><br />
                                     <template v-if="data.name && data.name !== ''">
-                                        <b class="text-md mb-2">{{ data.name }}</b
-                                        ><br />
+                                        <b class="text-md mb-2">{{ data.name }}</b>
+                                        <br />
                                     </template>
                                     <template v-if="data.address && data.address !== ''"> {{ data.address }}<br /> </template>
                                     <template v-if="data.city && data.zip && data.country"> {{ data.city }}, {{ data.zip }}, {{ data.state }}, {{ data.country }}<br /> </template>

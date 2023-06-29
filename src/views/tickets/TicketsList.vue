@@ -146,8 +146,8 @@ ticketsStore.getAll();
                                                 <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link>
                                             </td>
                                             <td class="mailbox-subject">
-                                                <b
-                                                    ><router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b
+                                                <b>
+                                                    <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b
                                                 >
                                                 - <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + '...' : ticket.title }}</router-link>
                                             </td>

@@ -225,10 +225,10 @@ websiteStore.getById(id);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"
-                        ><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}</router-link
-                    >
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
+                    </router-link>
                 </div>
             </div>
         </div>

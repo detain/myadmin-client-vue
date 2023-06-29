@@ -74,8 +74,8 @@ async function addRangeSubmit() {
         </div>
         <div class="card-body">
             <div class="alert alert-info">
-                Your Remote IP: <b>{{ ip }}</b
-                ><br />
+                Your Remote IP: <b>{{ ip }}</b>
+                <br />
                 Enabling IP limits will prevent anyone that is not listed below from logging in. Make sure your IP address is static and will not change in the future.
             </div>
             <form @submit.prevent="addRangeSubmit" enctype="multipart/form-data">

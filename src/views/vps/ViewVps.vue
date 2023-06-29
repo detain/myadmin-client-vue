@@ -137,8 +137,8 @@ function toggleFunc(cp) {
                     <p class="my-3 py-3">
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
                         billed
-                        <b>{{ billingDetails.service_frequency }}</b
-                        ><br />
+                        <b>{{ billingDetails.service_frequency }}</b>
+                        <br />
                     </p>
                 </div>
                 <div class="icon">
@@ -385,10 +385,10 @@ function toggleFunc(cp) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/vps/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"
-                                    ><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                                    >{{ clientLink.label }}</router-link
-                                >
+                                <router-link :key="index" :to="'/vps/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    >{{ clientLink.label }}
+                                </router-link>
                             </template>
                         </template>
                         <template v-for="(clientLink, index) in clientLinks">
