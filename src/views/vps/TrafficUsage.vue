@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 import Chart from 'chart.js';
 const props = defineProps(['id', 'module']);
@@ -11,23 +11,27 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-siteStore.addBreadcrum('/vps/'+props.id+'/', '');
-    const todayGraph = ref(null);
-    const hourGraph = ref(null);
-    const monthGraph = ref(null);
+siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
+siteStore.addBreadcrum('/vps/' + props.id + '/', '');
+const todayGraph = ref(null);
+const hourGraph = ref(null);
+const monthGraph = ref(null);
 
 const goBackLink = computed(() => {
-      return this.module === 'vps'
-        ? `view_${this.module}`
-        : 'view_qs';
-    });
+  return this.module === 'vps' ? `view_${this.module}` : 'view_qs';
+});
 onMounted(() => {
   // Initialize and configure the charts
-  const todayChart = new Chart(todayGraph.value.getContext('2d'), { /* Chart configuration */ });
-  const hourChart = new Chart(hourGraph.value.getContext('2d'), { /* Chart configuration */ });
-  const monthChart = new Chart(monthGraph.value.getContext('2d'), { /* Chart configuration */ });
+  const todayChart = new Chart(todayGraph.value.getContext('2d'), {
+    /* Chart configuration */
+  });
+  const hourChart = new Chart(hourGraph.value.getContext('2d'), {
+    /* Chart configuration */
+  });
+  const monthChart = new Chart(monthGraph.value.getContext('2d'), {
+    /* Chart configuration */
+  });
 
   // Rest of the chart setup code
   // ...
@@ -37,7 +41,6 @@ onMounted(() => {
   // Example:
   // import Chart from 'chart.js';
 });
-
 </script>
 
 <template>
@@ -46,7 +49,7 @@ onMounted(() => {
       <div class="p-1">
         <h3 class="card-title py-2"><i class="fa fa-tachometer-alt"></i> &nbsp;Bandwidth / Traffic Usage</h3>
         <div class="card-tools text-right">
-          <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+          <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
         </div>
       </div>
     </div>
@@ -72,13 +75,13 @@ onMounted(() => {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h5 class="card-title py-2 text-bold"><i class="fa fa-bar-chart">&nbsp;</i>&nbsp;Statistics</h5>
+            <h5 class="card-title text-bold py-2"><i class="fa fa-bar-chart">&nbsp;</i>&nbsp;Statistics</h5>
           </div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <table class="table table-bordered">
+              <table class="table-bordered table">
                 <thead>
                   <tr>
                     <th>History</th>
@@ -127,7 +130,7 @@ onMounted(() => {
               </table>
             </div>
             <div class="col">
-              <table class="table table-bordered">
+              <table class="table-bordered table">
                 <thead>
                   <tr>
                     <th>Usage</th>
@@ -178,5 +181,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url("/node_modules/chart.js/dist/Chart.min.css");
+@import url('/node_modules/chart.js/dist/Chart.min.css');
 </style>

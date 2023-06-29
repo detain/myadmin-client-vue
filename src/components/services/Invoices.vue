@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
@@ -10,10 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-siteStore.addBreadcrum('/vps/'+props.id+'/', '');
-
+siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
+siteStore.addBreadcrum('/vps/' + props.id + '/', '');
 
 const dataSets = ref({});
 const eDataSet = ref({});
@@ -38,13 +37,11 @@ function submitForm() {
         <div class="card-header">
           <h3 class="card-title"><i class="fa fa-file-invoice-dollar">&nbsp;</i>Invoices</h3>
           <div class="card-tools">
-            <button class="btn-custom text-sm" @click="previous" data-toggle="tooltip" title="Go Back">
-              <i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-            </button>
+            <button class="btn-custom text-sm" @click="previous" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</button>
           </div>
         </div>
         <div class="card-body row justify-content-center">
-          <table id="invoice_table" class="table table-bordered mt-2">
+          <table id="invoice_table" class="table-bordered mt-2 table">
             <thead>
               <tr>
                 <th>More Details</th>
@@ -64,5 +61,4 @@ function submitForm() {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

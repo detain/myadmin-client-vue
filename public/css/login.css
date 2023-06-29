@@ -5,307 +5,309 @@ For .myadmin_spanOr use @body-bg instead of white.
 */
 
 body {
-    padding-top: 50px;
-    padding-bottom: 40px;
-    /*  background-color: #eee; */
+  padding-top: 50px;
+  padding-bottom: 40px;
+  /*  background-color: #eee; */
 }
 .common_paragraph {
-    color: #333;
-    float: left;
-    height: auto;
-    font-family: Segoe UI;
-    font-size: 15px;
-    text-align: justify;
-    width: 100%;
+  color: #333;
+  float: left;
+  height: auto;
+  font-family: Segoe UI;
+  font-size: 15px;
+  text-align: justify;
+  width: 100%;
 }
 .press_details {
-    background-color: #f3f3f3;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    float: left;
-    width: 100%;
-    height: 37px;
+  background-color: #f3f3f3;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  float: left;
+  width: 100%;
+  height: 37px;
 }
 .press_details p {
-    color: #424242;
-    font-size: 16px;
-    font-weight: bold;
-    padding-left: 10px;
-    padding-top: 12px;
+  color: #424242;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 12px;
 }
 .navbar-logo {
-    float: left;
-    background-repeat: no-repeat;
-    width:234px;
-    height:44px;
-    margin-top:3px;
+  float: left;
+  background-repeat: no-repeat;
+  width: 234px;
+  height: 44px;
+  margin-top: 3px;
 }
-.navbar-logo>.navbar-brand {
-    width: 234px;
-    height: 44px;
+.navbar-logo > .navbar-brand {
+  width: 234px;
+  height: 44px;
 }
 div.signup_toggle {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 #message .alert {
-    margin: 15px;
+  margin: 15px;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {
-    position: relative;
-    top: -10px;
-    right: -21px;
-    color: inherit;
+  position: relative;
+  top: -10px;
+  right: -21px;
+  color: inherit;
 }
 .close {
-    font-size: 45px;
+  font-size: 45px;
 }
 .modal .close {
-    font-size: 36px;
+  font-size: 36px;
 }
 .captcha_alt,
 .twofactorauth,
 .signup {
-    display: none;
+  display: none;
 }
 .form-signin {
-    max-width: 360px;
-    padding: 15px;
-    margin: 0 auto;
+  max-width: 360px;
+  padding: 15px;
+  margin: 0 auto;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .form-signin .checkbox {
-    font-weight: normal;
+  font-weight: normal;
 }
 .form-signin .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
 }
-a.nav-link:hover{
-    color: #ccc;
-    transition:0.2s;
+a.nav-link:hover {
+  color: #ccc;
+  transition: 0.2s;
 }
-a.nav-link{
-    color: #fff;
-    transition: 0.2s;
+a.nav-link {
+  color: #fff;
+  transition: 0.2s;
 }
-.nav-link.active{
-    color: #ccc !important;
+.nav-link.active {
+  color: #ccc !important;
 }
 .form-signin .form-control:focus {
-    z-index: 2;
+  z-index: 2;
 }
-.form-signin input[type="email"] {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+.form-signin input[type='email'] {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+.form-signin input[type='password'] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 @media (min-width: 768px) {
-    .myadmin_row-sm-offset-3 div:first-child[class*="col-"] {
-        margin-left: 25%;
-    }
+  .myadmin_row-sm-offset-3 div:first-child[class*='col-'] {
+    margin-left: 25%;
+  }
 }
 .myadmin_login .myadmin_authTitle {
-    text-align: center;
-    /* line-height: 300%; */
-    /*    margin: 0px; */
-    padding: 25px;
+  text-align: center;
+  /* line-height: 300%; */
+  /*    margin: 0px; */
+  padding: 25px;
 }
 .myadmin_login .myadmin_socialButtons a {
-    color: white;
-    /* In yourUse @body-bg */
+  color: white;
+  /* In yourUse @body-bg */
 
-    opacity: 0.9;
+  opacity: 0.9;
 }
 .myadmin_login .myadmin_socialButtons a:hover {
-    color: white;
-    opacity: 1;
+  color: white;
+  opacity: 1;
 }
 .myadmin_login .myadmin_socialButtons .myadmin_btn-facebook {
-    background: #3b5998;
+  background: #3b5998;
 }
 .myadmin_login .myadmin_socialButtons .myadmin_btn-twitter {
-    background: #00aced;
+  background: #00aced;
 }
 .myadmin_login .myadmin_socialButtons .myadmin_btn-google {
-    background: #c32f10;
+  background: #c32f10;
 }
 .myadmin_login .myadmin_socialButtons a.myadmin_btn-facebook.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-facebook.christmas {
-    padding: 0;
-    background: #20304c;
-    background-color: #000;
+  padding: 0;
+  background: #20304c;
+  background-color: #000;
 }
 
 .myadmin_login .myadmin_socialButtons a.myadmin_btn-twitter.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-twitter.christmas {
-    padding: 0;
-    background: #345d66;
-    background-color: #000;
+  padding: 0;
+  background: #345d66;
+  background-color: #000;
 }
 
 .myadmin_login .myadmin_socialButtons .myadmin_btn-google.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-google.christmas {
-    padding: 0;
-    background: #dda8a8;
-    background-color: #000;
+  padding: 0;
+  background: #dda8a8;
+  background-color: #000;
 }
 
 .myadmin_login .myadmin_loginOr {
-    position: relative;
-    font-size: 1.5em;
-    color: #aaa;
-    /* margin-top: 1em; */
+  position: relative;
+  font-size: 1.5em;
+  color: #aaa;
+  /* margin-top: 1em; */
 
-    margin-bottom: 1em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 .myadmin_login .myadmin_loginOr .myadmin_hrOr {
-    background-color: #cdcdcd;
-    height: 1px;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 .myadmin_login .myadmin_loginOr .myadmin_spanOr {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: -0.3em;
-    margin-left: -4em;
-    background-color: white;
-    width: 8em;
-    text-align: center;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -0.3em;
+  margin-left: -4em;
+  background-color: white;
+  width: 8em;
+  text-align: center;
 }
 .myadmin_login .myadmin_loginOr .myadmin_old {
-    display: block;
-    position: absolute;
-    top: 1.30em;
-    margin-left: -4em;
-    background-color: white;
-    text-align: center;
+  display: block;
+  position: absolute;
+  top: 1.3em;
+  margin-left: -4em;
+  background-color: white;
+  text-align: center;
 }
 .myadmin_login .myadmin_loginForm .input-group.i {
-    width: 2em;
+  width: 2em;
 }
 .myadmin_login .myadmin_loginForm .help-block {
-    color: red;
+  color: red;
 }
 @media (max-width: 549px) {
-    .myadmin_login .myadmin_loginOr .myadmin_old {
-        left: 50%;
-    }
-    div.hidden-xs-inline-block {
-        display: none;
-    }
-    a.signup_toggler,
-    span.signup_toggler {
-        font-size: 18px;
-    }
-    .myadmin_old span {
-        display: none;
-    }
+  .myadmin_login .myadmin_loginOr .myadmin_old {
+    left: 50%;
+  }
+  div.hidden-xs-inline-block {
+    display: none;
+  }
+  a.signup_toggler,
+  span.signup_toggler {
+    font-size: 18px;
+  }
+  .myadmin_old span {
+    display: none;
+  }
 }
 @media (min-width: 550px) {
-    .myadmin_login .myadmin_loginOr .myadmin_old {
-        left: 30%;
-    }
-    div.hidden-xs-inline-block {
-        display: inline-block;
-    }
-    a.signup_toggler,
-    span.signup_toggler {
-        font-size: 36px;
-    }
-    .myadmin_old span {
-        display: inline;
-    }
+  .myadmin_login .myadmin_loginOr .myadmin_old {
+    left: 30%;
+  }
+  div.hidden-xs-inline-block {
+    display: inline-block;
+  }
+  a.signup_toggler,
+  span.signup_toggler {
+    font-size: 36px;
+  }
+  .myadmin_old span {
+    display: inline;
+  }
 }
 @media (min-width: 768px) {
-    .modal-dialog {
-        margin-left: 12%;
-    }
+  .modal-dialog {
+    margin-left: 12%;
+  }
 }
 @media (min-width: 968px) {
-    .modal-dialog {
-        margin-left: 22%;
-    }
+  .modal-dialog {
+    margin-left: 22%;
+  }
 }
 @media (min-width: 768px) {
-    .myadmin_login .myadmin_forgotPwd {
-        text-align: right;
-        margin-top: 10px;
-    }
+  .myadmin_login .myadmin_forgotPwd {
+    text-align: right;
+    margin-top: 10px;
+  }
 }
 .row {
-    margin-right: 15px;
-    margin-left: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 .wrapper {
-    display: block;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    width: 100%;
-    word-wrap: break-word;
-    clear: both;
-    bottom: 0;
-    overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  clear: both;
+  bottom: 0;
+  overflow: hidden;
 }
 .row5 {
-    border-color: #000000;
-    height: 30px;
+  border-color: #000000;
+  height: 30px;
 }
-.row5, .row5 a {
-    background-color: #161616;
-    color: #888888;
+.row5,
+.row5 a {
+  background-color: #161616;
+  color: #888888;
 }
 #copyright {
-    padding: 10px 0;
+  padding: 10px 0;
 }
-.fl_left, .imgl {
-    float: left;
+.fl_left,
+.imgl {
+  float: left;
 }
 
 #copyright p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .center_foot {
-    display: inline-block;
-    /*    float: left; */
-    text-align: center;
-    width: 20%;
+  display: inline-block;
+  /*    float: left; */
+  text-align: center;
+  width: 20%;
 }
 .center_foot a:first-child {
-    border-left: medium none;
+  border-left: medium none;
 }
 .center_foot a {
-    display: table-cell;
-    /*    float: left; */
-    border-left: 1px solid;
-    font-size: 12px;
-    line-height: 12px;
-    padding: 0 10px;
+  display: table-cell;
+  /*    float: left; */
+  border-left: 1px solid;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0 10px;
 }
-.footer{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 .imgr {
-    font-family: arial;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin-right: 30px !important;
+  font-family: arial;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin-right: 30px !important;
 }

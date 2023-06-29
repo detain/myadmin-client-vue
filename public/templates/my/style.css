@@ -1,437 +1,431 @@
 img.menu-icon {
-    border: 0;
+  border: 0;
 }
 
 i.menu-icon {
-    height: 24px !important;
+  height: 24px !important;
 }
 
-.btn-secondary[value="Add DNS Entry"] {
-    padding: 0px;
-    font-size: 14px;
+.btn-secondary[value='Add DNS Entry'] {
+  padding: 0px;
+  font-size: 14px;
 }
 
 #smenubtn {
-    margin: 0 auto !important;
-    font-size: 20px;
-    border: 1px solid #000;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    margin-top: -20px;
-    cursor: pointer;
-    display: none;
-    border-radius: 5px;
+  margin: 0 auto !important;
+  font-size: 20px;
+  border: 1px solid #000;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  margin-top: -20px;
+  cursor: pointer;
+  display: none;
+  border-radius: 5px;
 }
 
 .extra_rows .row {
-    margin: 5px 0px !important;
-
+  margin: 5px 0px !important;
 }
 
 ul#sidemenu-content {
-    background: #666;
-    border: 1px solid #a6acb1;
+  background: #666;
+  border: 1px solid #a6acb1;
 }
 
 .services_menu .nav-side-menu {
-    border: none !important;
-    background: none !important;
+  border: none !important;
+  background: none !important;
 }
 
 .custom-select {
-    width: 80px !important;
+  width: 80px !important;
 }
 
 .extra_rows table td i {
-    width: 27px !important;
-    height: 27px !important;
+  width: 27px !important;
+  height: 27px !important;
 }
 
 .wh_pkg_table,
 .wh_migration {
-    width: 100% !important;
-    max-width: 800px !important;
+  width: 100% !important;
+  max-width: 800px !important;
 }
 
-.wh_pkg_table input[type="submit"],
-.wh_migration input[type="submit"] {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    border-radius: .25rem;
+.wh_pkg_table input[type='submit'],
+.wh_migration input[type='submit'] {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
 }
 
-.wh_pkg_table input[type="submit"]:hover,
-.wh_migration input[type="submit"] {
-    background-color: #0069d9;
-    border-color: #0062cc;
+.wh_pkg_table input[type='submit']:hover,
+.wh_migration input[type='submit'] {
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 .extra_rows #histtable,
 .extra_rows #histtable th {
-    width: 100%;
-    margin-bottom: 0 !important;
-    max-width: 100% !important;
+  width: 100%;
+  margin-bottom: 0 !important;
+  max-width: 100% !important;
 }
 
 .extra_rows #histtable th.fa-chevron-down:nth-child(1)::before {
-    display: none;
+  display: none;
 }
 
 .extra_rows #histmainelement {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
-@media screen and (min-width:550px) and (max-width:1198px) {
+@media screen and (min-width: 550px) and (max-width: 1198px) {
+  .wh_pkg_table tbody,
+  .wh_migration tbody,
+  #gbox_renewalsTable table tbody {
+    width: 100% !important;
+    display: inline-table;
+  }
 
-    .wh_pkg_table tbody,
-    .wh_migration tbody,
-    #gbox_renewalsTable table tbody {
-        width: 100% !important;
-        display: inline-table;
-    }
+  .extra_rows .col-md-6,
+  .extra_rows .col-sm-6 {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
 
-    .extra_rows .col-md-6,
-    .extra_rows .col-sm-6 {
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
-    }
-
-    #crud-table thead,
-    #crud-table tbody {
-        width: 100% !important;
-        display: table !important;
-    }
+  #crud-table thead,
+  #crud-table tbody {
+    width: 100% !important;
+    display: table !important;
+  }
 }
 
-@media screen and (min-width:670px) {
-    .domaindns {
-        padding: 0;
-        font-size: 14px;
-        flex: 0 0 20% !important;
-        max-width: 20% !important;
-    }
+@media screen and (min-width: 670px) {
+  .domaindns {
+    padding: 0;
+    font-size: 14px;
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+  }
 
-    .domaininput,
-    .ipinput {
-        flex: 0 0 29% !important;
-        max-width: 29% !important;
-    }
+  .domaininput,
+  .ipinput {
+    flex: 0 0 29% !important;
+    max-width: 29% !important;
+  }
 
-    .dnsbtn {
-        flex: 0 0 22% !important;
-        max-width: 22% !important;
-    }
+  .dnsbtn {
+    flex: 0 0 22% !important;
+    max-width: 22% !important;
+  }
 }
 
-@media screen and (max-width:500px) {
-    form .bg-white.table.table-bordered {
-        display: table-caption;
-        overflow: scroll;
-        text-align: left;
-    }
+@media screen and (max-width: 500px) {
+  form .bg-white.table.table-bordered {
+    display: table-caption;
+    overflow: scroll;
+    text-align: left;
+  }
 
-    .services_menu {
-        width: 93% !important;
-        margin: 0 auto;
-    }
+  .services_menu {
+    width: 93% !important;
+    margin: 0 auto;
+  }
 
-    .breadcrumb {
-        justify-content: center;
-        display: flex;
-    }
+  .breadcrumb {
+    justify-content: center;
+    display: flex;
+  }
 
-    .nav-side-menu {
-        border: none !important;
-    }
+  .nav-side-menu {
+    border: none !important;
+  }
 }
 
 #vpsremovtableelement {
-    display: table-caption;
-    overflow: scroll;
-    max-width: 100% !important;
+  display: table-caption;
+  overflow: scroll;
+  max-width: 100% !important;
 }
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width: 1199px) {
+  .ui-jqgrid-view,
+  .ui-jqgrid-hdiv,
+  .ui-jqgrid-bdiv,
+  .ui-widget-content,
+  table.ui-common-table {
+    width: 100% !important;
+  }
 
-    .ui-jqgrid-view,
-    .ui-jqgrid-hdiv,
-    .ui-jqgrid-bdiv,
-    .ui-widget-content,
-    table.ui-common-table {
-        width: 100% !important;
-    }
+  .services_menu #submenu-links a {
+    font-size: 15px;
+  }
 
-    .services_menu #submenu-links a {
-        font-size: 15px;
-    }
+  .row5 #copyright {
+    display: block !important;
+    text-align: center !important;
+  }
 
-    .row5 #copyright {
-        display: block !important;
-        text-align: center !important;
-    }
+  .row5 #copyright a {
+    font-size: 13px !important;
+  }
 
-    .row5 #copyright a {
-        font-size: 13px !important;
-    }
+  .row5 #copyright .fl_right {
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+  }
 
-    .row5 #copyright .fl_right {
-        text-align: center !important;
-        display: block !important;
-        width: 100% !important;
-    }
+  .wrapper.row5 {
+    position: relative !important;
+  }
 
-    .wrapper.row5 {
-        position: relative !important;
-    }
+  #crud-table,
+  .extra_rows table,
+  .wh_pkg_table,
+  #webhostingremovtableelement,
+  .wh_migration,
+  table.ui-common-table {
+    display: table-caption;
+    overflow: scroll;
+    text-align: left;
+  }
 
-    #crud-table,
-    .extra_rows table,
-    .wh_pkg_table,
-    #webhostingremovtableelement,
-    .wh_migration,
-    table.ui-common-table {
-        display: table-caption;
-        overflow: scroll;
-        text-align: left;
-    }
+  table.ui-common-table tbody {
+    width: 100% !important;
+    display: inline-table;
+  }
 
-    table.ui-common-table tbody {
-        width: 100% !important;
-        display: inline-table;
-    }
+  #crud-table th .header_link,
+  #crud-table td {
+    font-size: 14px;
+  }
 
-    #crud-table th .header_link,
-    #crud-table td {
-        font-size: 14px;
-    }
+  #crud-table td button.printer-hidden {
+    padding: 0.15rem 0.4rem !important;
+  }
 
-    #crud-table td button.printer-hidden {
-        padding: .15rem .40rem !important;
-    }
+  #crud-table td button.printer-hidden:nth-child(2) {
+    margin-top: 5px;
+  }
 
-    #crud-table td button.printer-hidden:nth-child(2) {
-        margin-top: 5px;
-    }
+  #crud-table th:nth-child(1) .header_link i.sort-arrow {
+    bottom: 3px;
+  }
 
-    #crud-table th:nth-child(1) .header_link i.sort-arrow {
-        bottom: 3px;
-    }
-
-    #crud-table th .header_link i.sort-arrow {
-        position: relative !important;
-    }
+  #crud-table th .header_link i.sort-arrow {
+    position: relative !important;
+  }
 }
 
 .menu-icon {
-    width: 24px !important;
-    margin-top: -5px;
-    margin-left: -15px;
-    margin-right: 15px;
+  width: 24px !important;
+  margin-top: -5px;
+  margin-left: -15px;
+  margin-right: 15px;
 }
 
 .ui-jqgrid .ui-jqgrid-htable th div {
-    line-height: normal;
+  line-height: normal;
 }
 
 .wrap span.ui-selectmenu-item-header,
 .wrap ul.ui-selectmenu-menu li a {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 
 /* Styles related to the PHP Layers Menu System begin here */
 
 .tableborder {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .error {
-    font-weight: bold;
-    color: red;
-    font-size: 16px;
+  font-weight: bold;
+  color: red;
+  font-size: 16px;
 }
 
 .scHdr {
-    background: url('titleback.png') #E6E6E6;
-    font-weight: bold;
-    border-left: solid 1px #CCCCCC;
-    border-top: solid 1px #CCCCCC;
-    border-bottom: solid 1px #CCCCCC;
+  background: url('titleback.png') #e6e6e6;
+  font-weight: bold;
+  border-left: solid 1px #cccccc;
+  border-top: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
 }
 
 .TabSlct {
-    margin: 0;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border-bottom: solid 1px #FFFFFF;
-    background: url('menuselected.png') #FFFFFF;
-    border-top: solid 1px #000000;
-    border-right: solid 1px #000000;
-    padding: 4px 7px 4px 7px;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-bottom: solid 1px #ffffff;
+  background: url('menuselected.png') #ffffff;
+  border-top: solid 1px #000000;
+  border-right: solid 1px #000000;
+  padding: 4px 7px 4px 7px;
 }
 
 .Tab,
 .TabDsbl,
 .TabHvr {
-    margin: 0;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    border-top: solid 1px #000000;
-    border-right: solid 1px #000000;
-    border-bottom: solid 1px #000000;
-    padding: 4px 7px 4px 7px;
-    background: url('menu.png') #6699CC;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-top: solid 1px #000000;
+  border-right: solid 1px #000000;
+  border-bottom: solid 1px #000000;
+  padding: 4px 7px 4px 7px;
+  background: url('menu.png') #6699cc;
 }
 
 .Tab div,
 .TabHvr div {
-    text-align: left;
-    padding: 4px 7px 4px 7px;
+  text-align: left;
+  padding: 4px 7px 4px 7px;
 }
 
 .TabDsbl div {
-    text-align: left;
-    color: white;
-    white-space: nowrap;
+  text-align: left;
+  color: white;
+  white-space: nowrap;
 }
 
 .TabSlctfont {
-    color: black;
+  color: black;
 }
 
 .TabDsblfont {
-    color: white;
+  color: white;
 }
 
 .TabSlct div {
-    text-align: left;
-    color: black;
-    white-space: nowrap;
+  text-align: left;
+  color: black;
+  white-space: nowrap;
 }
 
 .options {
-    color: #FFFFFF;
-    text-align: right;
-    padding-right: 12px;
-    padding-left: 12px;
+  color: #ffffff;
+  text-align: right;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 .NoTabs {
-    white-space: nowrap;
-    border-bottom: solid 1px #000000;
+  white-space: nowrap;
+  border-bottom: solid 1px #000000;
 }
 
 .header {
-    color: white;
+  color: white;
 }
 
 .subheader {
-    color: white;
+  color: white;
 }
 
 .topback {
-    background-image: url('topback.png');
+  background-image: url('topback.png');
 }
 
-
 .tablemiddle {
-    border-left: solid 1px #CCCCCC;
+  border-left: solid 1px #cccccc;
 }
 
 .tablecell {
-    border-left: solid 1px #CCCCCC;
-    border-bottom: solid 1px #CCCCCC;
+  border-left: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
 }
 
 .menucell {
-    border-bottom: solid 1px #CCCCCC;
+  border-bottom: solid 1px #cccccc;
 }
 
-
 .tablebottom {
-    border-left: solid 1px #CCCCCC;
-    border-bottom: solid 1px #CCCCCC;
+  border-left: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
 }
 
 .treemenudiv {
-    display: block;
-    white-space: nowrap;
+  display: block;
+  white-space: nowrap;
 }
 
-
 .ivorybodytable {
-    font-family: "luxi sans", verdana, geneva, arial, helvetica, sans-serif;
-    background-color: #f5f5f5;
+  font-family: 'luxi sans', verdana, geneva, arial, helvetica, sans-serif;
+  background-color: #f5f5f5;
 }
 
 .darkbordertable {
-    background-color: #726461;
+  background-color: #726461;
 }
 
 .blackbordertable {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 .greenbordertable {
-    background-color: #839983;
+  background-color: #839983;
 }
 
 .darkgreenbordertable {
-    background-color: #839983;
+  background-color: #839983;
 }
 
 .redbordertable {
-    background-color: #aa5859;
+  background-color: #aa5859;
 }
 
 .orangebordertable {
-    background-color: #df9500;
+  background-color: #df9500;
 }
 
 /* Styles related to the PHP Layers Menu System end here */
 
 /* Form elements */
 input {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #666;
-    padding: 4px;
-    border: 1px solid #c8c8c8;
-    text-indent: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  padding: 4px;
+  border: 1px solid #c8c8c8;
+  text-indent: 2px;
 }
 
 textarea {
-    border-color: black;
-    color: black;
+  border-color: black;
+  color: black;
 }
 
 select {
-    border: 1px solid #c8c8c8;
-    background-color: #F0F0F0;
-    color: black;
-    padding: 1px;
-    font: normal 16px Verdana, Arial, Helvetica, sans-serif;
+  border: 1px solid #c8c8c8;
+  background-color: #f0f0f0;
+  color: black;
+  padding: 1px;
+  font: normal 16px Verdana, Arial, Helvetica, sans-serif;
 }
 
 /* The buttons used for bbCode styling in message post */
 input.button {
-    background-color: #99CCFF;
+  background-color: #99ccff;
 }
 
 /* The main submit button option */
 input.mainoption {
-    background-color: #99CCFF;
-    font-weight: bold;
+  background-color: #99ccff;
+  font-weight: bold;
 }
 
 /* None-bold submit button */
 input.liteoption {
-    background-color: #99CCFF;
-    font-weight: normal;
+  background-color: #99ccff;
+  font-weight: normal;
 }
 
 /* This is the line in the posting page which shows the rollover
@@ -439,67 +433,67 @@ help line. This is actually a text box,but if set to be the same
 colour as the background no one will know;)
 */
 .helpline {
-    background: #99CCFF;
-    border-style: none;
+  background: #99ccff;
+  border-style: none;
 }
 
 /* Quote & Code blocks */
 .code {
-    background: #D4EAFE;
-    border: 1px solid #99CCFF;
-    color: black;
-    font: 11px Courier, 'Courier New', sans-serif;
+  background: #d4eafe;
+  border: 1px solid #99ccff;
+  color: black;
+  font: 11px Courier, 'Courier New', sans-serif;
 }
 
 .quote {
-    background: #D4EAFE;
-    border: 1px solid #99CCFF;
-    color: black;
-    font: 11px/125% Verdana, Arial, Helvetica, sans-serif;
+  background: #d4eafe;
+  border: 1px solid #99ccff;
+  color: black;
+  font: 11px/125% Verdana, Arial, Helvetica, sans-serif;
 }
 
 /* Old background color: #99CCFF */
 .bodyline {
-    background: #EFEFEF;
-    border: 4px double black;
+  background: #efefef;
+  border: 4px double black;
 }
 
 body {
-    margin-top: 0;
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-    padding-right: 0;
-    margin-right: 0;
-    color: black;
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  margin-right: 0;
+  color: black;
 }
 
 a:link,
 a:active,
 a:visited {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #6699CC;
-    text-decoration: underline;
+  color: #6699cc;
+  text-decoration: underline;
 }
 
 a.btn-sm:link,
 a.btn-sm:active,
 a.btn-sm:visited {
-    color: white;
-    text-decoration: none;
-    font-weight: normal;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 a.btn-sm:hover {
-    color: white;
-    text-decoration: none;
-    font-weight: normal;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 /* a.btn-secondary:link,a.btn-secondary:active,a.btn-secondary:visited,a.btn-secondary:hover, */
@@ -523,152 +517,151 @@ a.btn-danger:link,
 a.btn-danger:active,
 a.btn-danger:visited,
 a.btn-danger:hover {
-    color: white !important;
-    text-decoration: none;
-    font-weight: normal;
+  color: white !important;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 .title {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: bold;
-    FONT-FAMILY: Verdana, Helvetica, Sans-Serif;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: bold;
+  font-family: Verdana, Helvetica, Sans-Serif;
+  text-decoration: none;
 }
 
 .content {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-FAMILY: Verdana, Helvetica;
+  background: none;
+  color: black;
+  font-family: Verdana, Helvetica;
 }
 
 .block-title {
-    BACKGROUND: none;
-    COLOR: #99CCFF;
+  background: none;
+  color: #99ccff;
 }
 
 .storytitle {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: bold;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .storycat {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: bold;
-    TEXT-DECORATION: underline;
+  background: none;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .boxtitle {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: bold;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .boxcontent {
-    BACKGROUND: none;
-    COLOR: black;
+  background: none;
+  color: black;
 }
 
 .option {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: bold;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .tiny {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: normal;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
 }
 
 .small {
-    BACKGROUND: none;
-    COLOR: black;
-    FONT-WEIGHT: normal;
-    FONT-FAMILY: Verdana, Helvetica, Sans-Serif;
-    TEXT-DECORATION: none;
+  background: none;
+  color: black;
+  font-weight: normal;
+  font-family: Verdana, Helvetica, Sans-Serif;
+  text-decoration: none;
 }
 
 .iframe_center {
-    width: 100%;
-    display: table;
+  width: 100%;
+  display: table;
 }
-
 
 /*Footer Css Start*/
 
 .wrapper {
-    display: block;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    width: 100%;
-    word-wrap: break-word;
-    clear: both;
-    bottom: 0;
-    overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  clear: both;
+  bottom: 0;
+  overflow: hidden;
 }
 
 body {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    min-height: 100%;
-    position: relative;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  min-height: 100%;
+  position: relative;
 }
 
 .row5 {
-    border-color: #000000;
-    height: 22px;
+  border-color: #000000;
+  height: 22px;
 }
 
 .row5,
 .row5 a {
-    background-color: #161616;
-    color: white;
+  background-color: #161616;
+  color: white;
 }
 
 .fl_left,
 .imgl {
-    float: left;
+  float: left;
 }
 
 #copyright p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .center_foot {
-    display: inline-block;
-    /*    float: left; */
-    text-align: center;
-    width: 20%;
+  display: inline-block;
+  /*    float: left; */
+  text-align: center;
+  width: 20%;
 }
 
-.center_foot>a:first-child {
-    border-left: medium none;
+.center_foot > a:first-child {
+  border-left: medium none;
 }
 
-.center_foot>a {
-    display: table-cell;
-    /*    float: left; */
-    border-left: 1px solid;
-    line-height: 12px;
-    padding: 0 10px;
+.center_foot > a {
+  display: table-cell;
+  /*    float: left; */
+  border-left: 1px solid;
+  line-height: 12px;
+  padding: 0 10px;
 }
 
 .fl_right,
 .imgr {
-    /*    float: right; */
-    font-family: arial;
+  /*    float: right; */
+  font-family: arial;
 
-    line-height: 1.4em;
-    margin-right: 30px !important;
+  line-height: 1.4em;
+  margin-right: 30px !important;
 }
 
 /*Footer Css Ends*/

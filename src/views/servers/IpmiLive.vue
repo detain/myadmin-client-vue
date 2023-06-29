@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
@@ -10,9 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
-siteStore.addBreadcrum('/servers/'+props.id, 'View Server '+props.id);
-siteStore.addBreadcrum('/servers/'+props.id+'/', '');
+siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
+siteStore.addBreadcrum('/servers/' + props.id, 'View Server ' + props.id);
+siteStore.addBreadcrum('/servers/' + props.id + '/', '');
 
 //const id = ref('');
 const aId = ref('');
@@ -23,21 +23,21 @@ const info = ref('');
 const error = ref('');
 const csrfToken = ref('');
 const emailIPMILink = computed(() => {
-      // Replace with the computed property logic to generate the link
-      return `view_server?id=${this.id}&link=ipmi_live&a_id=${this.aId}&email_ipmi_cred=1`;
-    });
+  // Replace with the computed property logic to generate the link
+  return `view_server?id=${this.id}&link=ipmi_live&a_id=${this.aId}&email_ipmi_cred=1`;
+});
 function submitForm() {
-      // Add the form submission logic here
-    }
+  // Add the form submission logic here
+}
 function removeCard() {
-      // Add the remove card logic here
-    }
+  // Add the remove card logic here
+}
 </script>
 
 <template>
   <div class="row justify-content-center">
-    <div class="card shadow-none w-100 bg-white p-2 mb-4" style="border-left: 4px solid #17a2b8;display: block ruby;">
-      <p class="m-0 text-md">
+    <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid #17a2b8; display: block ruby">
+      <p class="text-md m-0">
         <i class="fas fa-info-circle text-info" aria-hidden="true">&nbsp;</i>
         <b class="text-info">What this does?</b>
         Give live IP to IPMI controller restricted to your IP and limited to 24 hours of use.
@@ -54,7 +54,7 @@ function removeCard() {
             <h3 class="card-title py-2"><i class="fa fa-connectdevelop">&nbsp;</i>IPMI IP</h3>
             <div class="card-tools float-right">
               <a class="btn btn-custom mr-3" :href="emailIPMILink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
-              <router-link :to="'/servers/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+              <router-link :to="'/servers/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
@@ -75,40 +75,40 @@ function removeCard() {
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Asset ID</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" id="asset_id" name="asset_id" :value="aId" disabled>
+                <input type="text" class="form-control form-control-sm" id="asset_id" name="asset_id" :value="aId" disabled />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Server ID</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" id="server_id" name="server_id" :value="assetInfo.order_id" disabled>
+                <input type="text" class="form-control form-control-sm" id="server_id" name="server_id" :value="assetInfo.order_id" disabled />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Hostname</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="assetInfo.hostname" disabled>
+                <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="assetInfo.hostname" disabled />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Server IP</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" id="primary_ipv4" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled>
+                <input type="text" class="form-control form-control-sm" id="primary_ipv4" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Server IPMI</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" id="ipmi" name="ipmi" :value="assetInfo.ipmi_ip" disabled>
+                <input type="text" class="form-control form-control-sm" id="ipmi" name="ipmi" :value="assetInfo.ipmi_ip" disabled />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label text-right">Your IP Address</label>
               <div class="col-sm-9 input-group">
-                <input type="text" class="form-control form-control-sm" placeholder="1.2.3.4" id="ip" name="ip" v-model="clientIP">
+                <input type="text" class="form-control form-control-sm" placeholder="1.2.3.4" id="ip" name="ip" v-model="clientIP" />
               </div>
             </div>
-            <hr>
+            <hr />
             <div class="row">
               <div class="controls col-md-12 text-center">
                 <input type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" />
@@ -121,5 +121,4 @@ function removeCard() {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

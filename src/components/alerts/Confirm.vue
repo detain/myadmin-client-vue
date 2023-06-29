@@ -19,15 +19,12 @@ onMounted(() => {
     },
   });
 });
-
 </script>
 
 <template>
   <form id="confirmDialog" :action="url" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
+    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token" />
   </form>
 </template>
 
-<style scoped>
-</style>
-
+<style scoped></style>

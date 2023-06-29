@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
@@ -10,9 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/servers': 'Servers'})
-siteStore.addBreadcrum('/servers/'+props.id, 'View Server '+props.id);
-siteStore.addBreadcrum('/servers/'+props.id+'/', '');
+siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
+siteStore.addBreadcrum('/servers/' + props.id, 'View Server ' + props.id);
+siteStore.addBreadcrum('/servers/' + props.id + '/', '');
 
 const errorMsg = ref('');
 //const id = ref('');
@@ -21,8 +21,8 @@ const graphTitle = ref('');
 const graphLink = ref('');
 const ranges = ref({});
 function toggleCollapse(name) {
-      // Add the toggle collapse logic here
-    }
+  // Add the toggle collapse logic here
+}
 </script>
 
 <template>
@@ -34,7 +34,7 @@ function toggleCollapse(name) {
           <div class="card-header">
             <h3 class="card-title py-2"><i class="fa fa-line-chart">&nbsp;</i>Bandwidth Graphs</h3>
             <div class="card-tools float-right">
-              <router-link :to="'/servers/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+              <router-link :to="'/servers/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
           <div class="card-body">
@@ -63,5 +63,4 @@ function toggleCollapse(name) {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -26,11 +26,9 @@ onMounted(() => {
 
 <template>
   <form id="lockForm" :action="`view_domain?id=${id}&link=lock`" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
-    <input id="status" type="hidden" name="status" :value="domain_lock_status === 'Active' ? '0' : '1'">
+    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token" />
+    <input id="status" type="hidden" name="status" :value="domain_lock_status === 'Active' ? '0' : '1'" />
   </form>
 </template>
 
-<style scoped>
-</style>
-
+<style scoped></style>

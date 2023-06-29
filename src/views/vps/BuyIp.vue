@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
@@ -10,9 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-siteStore.addBreadcrum('/vps/'+props.id+'/', '');
+siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
+siteStore.addBreadcrum('/vps/' + props.id + '/', '');
 
 const ipsDetails = ref(null);
 const buyForm = ref(null);
@@ -22,19 +22,19 @@ const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);
 function getLink() {
-      if (this.module === "vps") {
-        return `view_${this.module}?id=${this.id}`;
-      } else {
-        return "view_qs";
-      }
-    }
+  if (this.module === 'vps') {
+    return `view_${this.module}?id=${this.id}`;
+  } else {
+    return 'view_qs';
+  }
+}
 function submitForm() {
-      const formData = {
-        link: "buy_ip",
-        csrf_token: this.csrf
-      };
-      // Process the form submission or make an API request here
-    }
+  const formData = {
+    link: 'buy_ip',
+    csrf_token: this.csrf,
+  };
+  // Process the form submission or make an API request here
+}
 </script>
 
 <template>
@@ -43,18 +43,16 @@ function submitForm() {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h3 class="card-title py-2">
-              <i class="fa fa-map-marker-alt"></i> Additional IP Addon for your VPS
-            </h3>
+            <h3 class="card-title py-2"><i class="fa fa-map-marker-alt"></i> Additional IP Addon for your VPS</h3>
             <div class="card-tools text-right">
-              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+              <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
             </div>
           </div>
         </div>
         <div class="card-body">
           <template v-if="ipsDetails.length > 0">
             <h4>Existing Addon IPs</h4>
-            <table class="table table-sm">
+            <table class="table-sm table">
               <tr v-for="vpsDetail in ipsDetails" :key="vpsDetail.ip">
                 <td>Additional IP</td>
                 <td v-if="vpsDetail.ip">{{ vpsDetail.ip }}</td>
@@ -74,13 +72,7 @@ function submitForm() {
                   </div>
                   <div class="col-md-9">
                     <input type="hidden" id="amount" class="form-control" value="1" />
-                    <input
-                      class="form-control form-control-sm"
-                      name="now_cost"
-                      type="text"
-                      disabled
-                      :value="ip_cost"
-                    />
+                    <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
                   </div>
                 </div>
               </div>
@@ -98,5 +90,4 @@ function submitForm() {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -104,16 +104,14 @@ const getData = (action) => {
       return null;
   }
 };
-
 </script>
 
 <template>
- <div>
+  <div>
     <template v-if="display === 'yes' && actions.includes(action)">
       <component :is="getComponent(action)" :data="getData(action)" />
     </template>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

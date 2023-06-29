@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 const successMsg = ref('');
@@ -10,9 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/domains': 'Domains'})
-siteStore.addBreadcrum('/domains/'+props.id, 'View Domain '+props.id);
-siteStore.addBreadcrum('/domains/'+props.id+'/', '');
+siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
+siteStore.addBreadcrum('/domains/' + props.id, 'View Domain ' + props.id);
+siteStore.addBreadcrum('/domains/' + props.id + '/', '');
 
 //const id = ref('');
 const ima = ref('');
@@ -25,7 +25,6 @@ const domainFields = ref({});
 const updateContact = () => {
   // Handle contact update logic here
 };
-
 </script>
 
 <template>
@@ -34,24 +33,22 @@ const updateContact = () => {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h3 class="card-title py-2">
-              <i class="fas fa-address-card"></i>&nbsp;Contact Information
-            </h3>
+            <h3 class="card-title py-2"><i class="fas fa-address-card"></i>&nbsp;Contact Information</h3>
             <div class="card-tools float-right">
-              <router-link :to="'/domains/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+              <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
           </div>
         </div>
         <div class="card-body">
           <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id=' + id + '&link=contact'">
-            <input type="hidden" name="csrf_token" :value="csrfToken">
+            <input type="hidden" name="csrf_token" :value="csrfToken" />
             <div v-for="(field, fieldName) in formFields" :key="fieldName" class="form-group row">
               <template v-if="domainFields[fieldName].label && domainFields[fieldName].label">
                 <label class="col-sm-3 col-form-label" :for="fieldName">{{ domainFields[fieldName].label }}<span v-if="domainFields[fieldName].required" class="text-danger"> *</span></label>
               </template>
               <div class="col-sm-9 input-group">
                 <template v-if="domainFields[fieldName].input === 'text'">
-                  <input type="text" :name="fieldName" class="form-control form-control-sm" :value="domainFields[fieldName].value" :tabindex="++tabIndex">
+                  <input type="text" :name="fieldName" class="form-control form-control-sm" :value="domainFields[fieldName].value" :tabindex="++tabIndex" />
                 </template>
                 <template v-else-if="domainFields[fieldName].input && domainFields[fieldName].input[0] === 'select'">
                   <select :name="fieldName" class="form-control form-control-sm select2" :tabindex="++tabIndex">
@@ -60,9 +57,7 @@ const updateContact = () => {
                 </template>
                 <template v-if="domainFields[fieldName].tip">
                   <div class="input-group-append">
-                    <span style="cursor: pointer;" class="input-group-text" data-toggle="popover" data-container="body" data-html="true"
-                      :data-content="`<p style='text-align: left;'>${domainFields[fieldName].tip}</p>`"
-                      :data-original-title="`<div style='text-align: left; font-weight: bold;'>Tip for ${domainFields[fieldName].label}</div>`">
+                    <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" data-html="true" :data-content="`<p style='text-align: left;'>${domainFields[fieldName].tip}</p>`" :data-original-title="`<div style='text-align: left; font-weight: bold;'>Tip for ${domainFields[fieldName].label}</div>`">
                       <i class="fa text-info fa-question"></i>
                     </span>
                   </div>
@@ -71,7 +66,7 @@ const updateContact = () => {
             </div>
             <div class="row">
               <div class="col-sm-12 text-center">
-                <input type="submit" name="Submit" value="Update" class="btn btn-custom btn-md py-2 px-4">
+                <input type="submit" name="Submit" value="Update" class="btn btn-custom btn-md px-4 py-2" />
               </div>
             </div>
           </form>
@@ -81,5 +76,4 @@ const updateContact = () => {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

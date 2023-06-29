@@ -1,22 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthStore, useAlertStore } from '@/stores'
-import { ClientHome, Home } from '@/views'
-import { PrePays, PaymentTypes, InvoicesList, Cart, Pay } from '@/views/billing'
-import affiliateRoutes from './affiliate.routes'
-import usersRoutes from './users.routes'
-import accountRoutes from './account.routes'
-import ticketRoutes from './ticket.routes'
-import dnsRoutes from './dns.routes'
-import domainRoutes from './domain.routes'
-import backupRoutes from './backup.routes'
-import licenseRoutes from './license.routes'
-import mailRoutes from './mail.routes'
-import floatingIpRoutes from './floating_ip.routes'
-import qsRoutes from './qs.routes'
-import serverRoutes from './server.routes'
-import sslRoutes from './ssl.routes'
-import vpsRoutes from './vps.routes'
-import websiteRoutes from './website.routes'
+import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore, useAlertStore } from '@/stores';
+import { ClientHome, Home } from '@/views';
+import { PrePays, PaymentTypes, InvoicesList, Cart, Pay } from '@/views/billing';
+import affiliateRoutes from './affiliate.routes';
+import usersRoutes from './users.routes';
+import accountRoutes from './account.routes';
+import ticketRoutes from './ticket.routes';
+import dnsRoutes from './dns.routes';
+import domainRoutes from './domain.routes';
+import backupRoutes from './backup.routes';
+import licenseRoutes from './license.routes';
+import mailRoutes from './mail.routes';
+import floatingIpRoutes from './floating_ip.routes';
+import qsRoutes from './qs.routes';
+import serverRoutes from './server.routes';
+import sslRoutes from './ssl.routes';
+import vpsRoutes from './vps.routes';
+import websiteRoutes from './website.routes';
 /*
 import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'
 import { DnsManager, DnsEditor } from '@/views/dns'
@@ -102,20 +102,20 @@ export const router = createRouter({
     { path: '/website_order', component: OrderWebsite },
     */
     // catch all redirect to home page
-    { path: '/:pathMatch(.*)*', redirect: '/' }
-  ]
-})
+    { path: '/:pathMatch(.*)*', redirect: '/' },
+  ],
+});
 
 router.beforeEach(async (to) => {
-    // clear alert on route change
-    const alertStore = useAlertStore()
-    alertStore.clear()
-    // redirect to login page if not logged in and trying to access a restricted page
-    const publicPages = ['/account/login', '/account/login_old', '/account/register']
-    const authRequired = !publicPages.includes(to.path)
-    const authStore = useAuthStore()
-    if (authRequired && !authStore.user) {
-        authStore.returnUrl = to.fullPath
-        return '/account/login'
-    }
-})
+  // clear alert on route change
+  const alertStore = useAlertStore();
+  alertStore.clear();
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/account/login', '/account/login_old', '/account/register'];
+  const authRequired = !publicPages.includes(to.path);
+  const authStore = useAuthStore();
+  if (authRequired && !authStore.user) {
+    authStore.returnUrl = to.fullPath;
+    return '/account/login';
+  }
+});

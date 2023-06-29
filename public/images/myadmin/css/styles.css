@@ -450,11 +450,11 @@
 .icon-heart-monitor,
 .icon-ecg,
 .icon-sleep-mode-2 {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    vertical-align: -0.1em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.1em;
 }
 
 .icon-coupon > svg,
@@ -909,10 +909,9 @@
 .icon-heart-monitor > svg,
 .icon-ecg > svg,
 .icon-sleep-mode-2 > svg {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
-    vertical-align: -0.1em;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  vertical-align: -0.1em;
 }
-

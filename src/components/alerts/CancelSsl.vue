@@ -25,10 +25,8 @@ onMounted(() => {
 
 <template>
   <form id="cancelForm" :action="`view_ssl?id=${id}&link=cancel`" method="POST">
-    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token">
+    <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token" />
   </form>
 </template>
 
-<style scoped>
-</style>
-
+<style scoped></style>

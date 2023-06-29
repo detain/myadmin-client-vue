@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
@@ -10,9 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 siteStore.setTitle('');
 siteStore.setPageHeading('');
-siteStore.setBreadcrums({'/home': 'Home', '/vps': 'VPS'})
-siteStore.addBreadcrum('/vps/'+props.id, 'View VPS '+props.id);
-siteStore.addBreadcrum('/vps/'+props.id+'/', '');
+siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
+siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
+siteStore.addBreadcrum('/vps/' + props.id + '/', '');
 
 const additional_hd = ref('');
 const module = ref(props.module);
@@ -22,22 +22,22 @@ const currency_symbol = ref('');
 const gbCost = ref('');
 const selectedSpace = ref(0);
 function getLink() {
-      if (this.module === "vps") {
-        return `view_${this.module}?id=${this.id}`;
-      } else {
-        return "view_qs";
-      }
-    }
+  if (this.module === 'vps') {
+    return `view_${this.module}?id=${this.id}`;
+  } else {
+    return 'view_qs';
+  }
+}
 function getAmount() {
-      return (this.selectedSpace * this.gbCost).toFixed(2);
-    }
+  return (this.selectedSpace * this.gbCost).toFixed(2);
+}
 function submitForm() {
-      // Process the form submission or make an API request here
-    }
+  // Process the form submission or make an API request here
+}
 onMounted(() => {
-    this.selectedSpace = 1;
-  });
-  /*
+  this.selectedSpace = 1;
+});
+/*
   watch: {
     selectedSpace() {
       const sizeInput = document.getElementById("size");
@@ -55,11 +55,9 @@ onMounted(() => {
       <div class="card">
         <div class="card-header">
           <div class="p-1">
-            <h3 class="card-title py-2">
-              <i class="fa fa-server"></i> Additional VPS Drive Space
-            </h3>
+            <h3 class="card-title py-2"><i class="fa fa-server"></i> Additional VPS Drive Space</h3>
             <div class="card-tools text-right">
-              <router-link :to="'/vps/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
+              <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
             </div>
           </div>
         </div>
@@ -74,7 +72,9 @@ onMounted(() => {
                 </div>
                 <div class="col-md-9">
                   <input type="text" id="hdamount" class="form-control form-control-sm" readonly="true" :value="getAmount()" />
-                  <span class="text-muted text-sm">{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span>
+                  <span class="text-muted text-sm"
+                    >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
+                  >
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@ onMounted(() => {
             </div>
             <div class="row justify-content-center">
               <div class="controls">
-                <button name="buy_space" type="submit" class="btn btn-sm btn-order px-3 py-2" >Confirm Order</button>
+                <button name="buy_space" type="submit" class="btn btn-sm btn-order px-3 py-2">Confirm Order</button>
               </div>
             </div>
           </form>
@@ -111,5 +111,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

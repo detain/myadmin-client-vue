@@ -15,50 +15,50 @@ import Confirm from '@components/alerts/Confirm.vue';
 //import Whois from '@components/alerts/Whois.vue';
 
 const props = defineProps({
-    display: {
-      type: String,
-      required: true,
-    },
-    action: {
-      type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
-    },
-    csrf_token: {
-      type: String,
-      required: true,
-    },
-    domain: {
-      type: String,
-    },
-    status: {
-      type: String,
-    },
-    hostname: {
-      type: String,
-    },
-    addons: {
-      type: Array,
-      default: () => [],
-    },
-    username: {
-      type: String,
-    },
-    ip: {
-      type: String,
-    },
-    order_id: {
-      type: String,
-    },
-    funct: {
-      type: String,
-    },
-    html: {
-      type: String,
-    },
+  display: {
+    type: String,
+    required: true,
+  },
+  action: {
+    type: String,
+    required: true,
+  },
+  url: {
+    type: String,
+    required: true,
+  },
+  csrf_token: {
+    type: String,
+    required: true,
+  },
+  domain: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
+  hostname: {
+    type: String,
+  },
+  addons: {
+    type: Array,
+    default: () => [],
+  },
+  username: {
+    type: String,
+  },
+  ip: {
+    type: String,
+  },
+  order_id: {
+    type: String,
+  },
+  funct: {
+    type: String,
+  },
+  html: {
+    type: String,
+  },
 });
 </script>
 
@@ -106,5 +106,4 @@ const props = defineProps({
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
