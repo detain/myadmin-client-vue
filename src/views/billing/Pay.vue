@@ -16,22 +16,22 @@ const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore
 const pymt_method = ref('paypal');
 
 try {
-  fetchWrapper.get(baseUrl + '/pay').then((response) => {
-    console.log(response);
-  });
+    fetchWrapper.get(baseUrl + '/pay').then((response) => {
+        console.log(response);
+    });
 } catch (error) {
-  console.log('error:');
-  console.log(error);
+    console.log('error:');
+    console.log(error);
 }
 </script>
 
 <template>
-  <div class="row justify-content-center mt-2">
-    <div class="col-md-12">
-      <div class="callout callout-success">
-        <h5>Creating Payment Request...</h5>
-        <p class="text-md">You will be automatically redirected.</p>
-      </div>
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-12">
+            <div class="callout callout-success">
+                <h5>Creating Payment Request...</h5>
+                <p class="text-md">You will be automatically redirected.</p>
+            </div>
+        </div>
     </div>
-  </div>
 </template>

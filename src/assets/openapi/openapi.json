@@ -1,2490 +1,2490 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "InterServer myAdmin Host Management API",
-    "description": "**Introducing the InterServers myadmin Host Management API – Your Gateway to Seamless Service Management**\n\n# 📌 Overview\n  InterServers is thrilled to present the myadmin Host Management API, a cutting-edge solution designed to simplify and streamline the management of our comprehensive range of services. Whether you're in need of [dedicated server hosting](), [web hosting](), [VPS hosting](), [backups](), [domain registrations](), [Mail Delivery services](), or our innovative hybrid VPS-bare metal product [Rapid Deploy Servers](), our API offers a user-friendly and efficient approach to managing your services.\n\nWith the myadmin Host Management API, you can now harness the power of modern [REST]() and [WebSocket]() interfaces to effortlessly maintain and control your InterServers services. Say goodbye to complex and time-consuming manual configurations – our API empowers you to execute a wide range of operations with simple, easy-to-use calls, ensuring that service management becomes a hassle-free experience.\n\nOne of the standout features of the myadmin Host Management API is its extensive language support. We have [code samples]() available in every modern programming language, allowing developers to quickly integrate our API into their existing systems. Whether you prefer [Python](), [JavaScript](), [Ruby](), [PHP](), or any other language, we have you covered. Our goal is to ensure that you can seamlessly integrate and automate your InterServers services, regardless of your preferred programming language.\n\nTo further enhance the user experience, we offer interactive [documentation]() that makes it a breeze to navigate and understand the myadmin Host Management API. Our comprehensive documentation provides detailed explanations, along with interactive code examples, giving you a hands-on approach to learning and implementing the API's functionalities. Whether you're a seasoned developer or just starting your journey, our user-friendly documentation will be your go-to resource for all your service management needs.\n\nThe myadmin Host Management API from InterServers revolutionizes the way you manage your dedicated server hosting, web hosting, VPS hosting, backups, domain registrations, Mail Delivery services, and Rapid Deploy Servers. It empowers you with a straightforward, intuitive interface, enabling you to perform complex tasks effortlessly. Take full control of your services with ease, thanks to our modern REST and WebSocket interfaces, and unlock a new level of efficiency and productivity.\n\nExperience the power of the myadmin Host Management API today and enjoy seamless service management at your fingertips. Trust InterServers to deliver unparalleled convenience and reliability as we continue to pave the way for the future of hosting and datacenter solutions.\n\n  # 🔐 Authentication\n\nIn order to use most of the API calls you must pass credentials from the [my.interserver.net](https://my.interserver.net/) site.  \n\nWe support several different authentication methods but the preferred method is to use the **API Key** which you can get from the [Account Security](https://my.interserver.net/account_security) page.",
-    "termsOfService": "https://www.interserver.net/terms-of-service.html",
-    "contact": {
-      "name": "InterServer Support Staff",
-      "url": "https://www.interserver.net/contact-us.html",
-      "email": "support@interserver.net"
+    "openapi": "3.0.3",
+    "info": {
+        "title": "InterServer myAdmin Host Management API",
+        "description": "**Introducing the InterServers myadmin Host Management API – Your Gateway to Seamless Service Management**\n\n# 📌 Overview\n  InterServers is thrilled to present the myadmin Host Management API, a cutting-edge solution designed to simplify and streamline the management of our comprehensive range of services. Whether you're in need of [dedicated server hosting](), [web hosting](), [VPS hosting](), [backups](), [domain registrations](), [Mail Delivery services](), or our innovative hybrid VPS-bare metal product [Rapid Deploy Servers](), our API offers a user-friendly and efficient approach to managing your services.\n\nWith the myadmin Host Management API, you can now harness the power of modern [REST]() and [WebSocket]() interfaces to effortlessly maintain and control your InterServers services. Say goodbye to complex and time-consuming manual configurations – our API empowers you to execute a wide range of operations with simple, easy-to-use calls, ensuring that service management becomes a hassle-free experience.\n\nOne of the standout features of the myadmin Host Management API is its extensive language support. We have [code samples]() available in every modern programming language, allowing developers to quickly integrate our API into their existing systems. Whether you prefer [Python](), [JavaScript](), [Ruby](), [PHP](), or any other language, we have you covered. Our goal is to ensure that you can seamlessly integrate and automate your InterServers services, regardless of your preferred programming language.\n\nTo further enhance the user experience, we offer interactive [documentation]() that makes it a breeze to navigate and understand the myadmin Host Management API. Our comprehensive documentation provides detailed explanations, along with interactive code examples, giving you a hands-on approach to learning and implementing the API's functionalities. Whether you're a seasoned developer or just starting your journey, our user-friendly documentation will be your go-to resource for all your service management needs.\n\nThe myadmin Host Management API from InterServers revolutionizes the way you manage your dedicated server hosting, web hosting, VPS hosting, backups, domain registrations, Mail Delivery services, and Rapid Deploy Servers. It empowers you with a straightforward, intuitive interface, enabling you to perform complex tasks effortlessly. Take full control of your services with ease, thanks to our modern REST and WebSocket interfaces, and unlock a new level of efficiency and productivity.\n\nExperience the power of the myadmin Host Management API today and enjoy seamless service management at your fingertips. Trust InterServers to deliver unparalleled convenience and reliability as we continue to pave the way for the future of hosting and datacenter solutions.\n\n  # 🔐 Authentication\n\nIn order to use most of the API calls you must pass credentials from the [my.interserver.net](https://my.interserver.net/) site.  \n\nWe support several different authentication methods but the preferred method is to use the **API Key** which you can get from the [Account Security](https://my.interserver.net/account_security) page.",
+        "termsOfService": "https://www.interserver.net/terms-of-service.html",
+        "contact": {
+            "name": "InterServer Support Staff",
+            "url": "https://www.interserver.net/contact-us.html",
+            "email": "support@interserver.net"
+        },
+        "license": {
+            "name": "Proprietary"
+        },
+        "version": "0.9.0"
     },
-    "license": {
-      "name": "Proprietary"
+    "externalDocs": {
+        "description": "Tips",
+        "url": "https://www.interserver.net/tips/"
     },
-    "version": "0.9.0"
-  },
-  "externalDocs": {
-    "description": "Tips",
-    "url": "https://www.interserver.net/tips/"
-  },
-  "servers": [
-    {
-      "url": "https://api.mailbaby.net",
-      "description": "Live API Endpoint"
-    },
-    {
-      "url": "http://mystage.interserver.net:8787",
-      "description": "Temporary API Endpoint"
-    },
-    {
-      "url": "https://virtserver.swaggerhub.com/InterServer/MyAPI/0.9.0",
-      "description": "SwaggerHub API Auto Mocking"
-    }
-  ],
-  "security": [
-    {
-      "apiKeyAuth": []
-    }
-  ],
-  "tags": [
-    {
-      "name": "account",
-      "description": "Account related items"
-    },
-    {
-      "name": "billing",
-      "description": "Billing related items"
-    },
-    {
-      "name": "backups",
-      "description": "Backup related services"
-    },
-    {
-      "name": "domains",
-      "description": "Domain Registration related services"
-    },
-    {
-      "name": "licenses",
-      "description": "Licensing related services"
-    },
-    {
-      "name": "quickservers",
-      "description": "Rapid Deploy Servers related services"
-    },
-    {
-      "name": "servers",
-      "description": "Dedicated Servers related services"
-    },
-    {
-      "name": "ssl",
-      "description": "SSL Certificates related services"
-    },
-    {
-      "name": "vps",
-      "description": "VPS related services"
-    },
-    {
-      "name": "webhosting",
-      "description": "Webhosting related services"
-    }
-  ],
-  "paths": {
-    "/invoices": {
-      "get": {
-        "tags": ["billing"],
-        "summary": "get a listing of invoices",
-        "operationId": "getInvoices",
-        "parameters": [
-          {
-            "name": "searchString",
-            "in": "query",
-            "description": "pass an optional search string for looking up inventory",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "maximum": 50,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "search results matching criteria",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Invoice"
-                  }
+    "servers": [
+        {
+            "url": "https://api.mailbaby.net",
+            "description": "Live API Endpoint"
+        },
+        {
+            "url": "http://mystage.interserver.net:8787",
+            "description": "Temporary API Endpoint"
+        },
+        {
+            "url": "https://virtserver.swaggerhub.com/InterServer/MyAPI/0.9.0",
+            "description": "SwaggerHub API Auto Mocking"
+        }
+    ],
+    "security": [
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "account",
+            "description": "Account related items"
+        },
+        {
+            "name": "billing",
+            "description": "Billing related items"
+        },
+        {
+            "name": "backups",
+            "description": "Backup related services"
+        },
+        {
+            "name": "domains",
+            "description": "Domain Registration related services"
+        },
+        {
+            "name": "licenses",
+            "description": "Licensing related services"
+        },
+        {
+            "name": "quickservers",
+            "description": "Rapid Deploy Servers related services"
+        },
+        {
+            "name": "servers",
+            "description": "Dedicated Servers related services"
+        },
+        {
+            "name": "ssl",
+            "description": "SSL Certificates related services"
+        },
+        {
+            "name": "vps",
+            "description": "VPS related services"
+        },
+        {
+            "name": "webhosting",
+            "description": "Webhosting related services"
+        }
+    ],
+    "paths": {
+        "/invoices": {
+            "get": {
+                "tags": ["billing"],
+                "summary": "get a listing of invoices",
+                "operationId": "getInvoices",
+                "parameters": [
+                    {
+                        "name": "searchString",
+                        "in": "query",
+                        "description": "pass an optional search string for looking up inventory",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "description": "number of records to skip for pagination",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of records to return",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "maximum": 50,
+                            "minimum": 0,
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "search results matching criteria",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Invoice"
+                                    }
+                                }
+                            }
+                        },
+                        "links": {
+                            "sendMailByIdLink": {
+                                "operationId": "sendMail",
+                                "parameters": {
+                                    "id": "$response.body#/0/id"
+                                },
+                                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /mail/advsend`."
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            },
-            "links": {
-              "sendMailByIdLink": {
+            }
+        },
+        "/old/mail": {
+            "get": {
+                "summary": "displays a list of mail service orders",
+                "operationId": "getMailOrders",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/inline_response_200"
+                                    }
+                                }
+                            }
+                        },
+                        "links": {
+                            "sendMailByIdLink": {
+                                "operationId": "sendMail",
+                                "parameters": {
+                                    "id": "$response.body#/0/id"
+                                },
+                                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /mail/advsend`."
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/old/mail/send": {
+            "post": {
+                "summary": "Sends an Email",
+                "description": "Sends an email through one of your mail orders.\n\n*Note*: If you want to send to multiple recipients or use file attachments use the advsend (Advanced Send) call instead.\n",
                 "operationId": "sendMail",
-                "parameters": {
-                  "id": "$response.body#/0/id"
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendMail"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendMail"
+                            }
+                        }
+                    },
+                    "required": true
                 },
-                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /mail/advsend`."
-              }
-            }
-          },
-          "400": {
-            "description": "bad input parameter"
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+                "responses": {
+                    "200": {
+                        "description": "search results matching criteria",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The specified resource was not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/old/mail": {
-      "get": {
-        "summary": "displays a list of mail service orders",
-        "operationId": "getMailOrders",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/inline_response_200"
-                  }
-                }
-              }
-            },
-            "links": {
-              "sendMailByIdLink": {
-                "operationId": "sendMail",
-                "parameters": {
-                  "id": "$response.body#/0/id"
+        },
+        "/old/mail/advsend": {
+            "post": {
+                "summary": "Sends an Email with Advanced Options",
+                "description": "Sends An email through one of your mail orders allowing additional options such as file attachments, cc, bcc, etc.",
+                "operationId": "sendAdvMail",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendMailAdv"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendMailAdv"
+                            }
+                        }
+                    },
+                    "required": true
                 },
-                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /mail/advsend`."
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+                "responses": {
+                    "200": {
+                        "description": "search results matching criteria",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The specified resource was not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+        },
+        "/old/mail/log": {
+            "get": {
+                "summary": "displays the mail log",
+                "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+                "operationId": "viewMailLog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of your mail order this will be sent through.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "pass an optional search string for looking up inventory",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "description": "number of records to skip for pagination",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of records to return",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "maximum": 10000,
+                            "minimum": 1,
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "search results matching criteria",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MailLog"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/old/mail/send": {
-      "post": {
-        "summary": "Sends an Email",
-        "description": "Sends an email through one of your mail orders.\n\n*Note*: If you want to send to multiple recipients or use file attachments use the advsend (Advanced Send) call instead.\n",
-        "operationId": "sendMail",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/SendMail"
-              }
+        },
+        "/ping": {
+            "get": {
+                "summary": "Checks if the server is running",
+                "operationId": "pingServer",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Server is up and running"
+                    },
+                    "default": {
+                        "description": "Something is wrong"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/account": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
             },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SendMail"
-              }
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
             }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "search results matching criteria",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenericResponse"
+        "/account/2fa": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "The specified resource was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+        },
+        "/account/apikey": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
                 }
-              }
             }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+        },
+        "/account/countries": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "The specified resource was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+        },
+        "/account/creditcards": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/old/mail/advsend": {
-      "post": {
-        "summary": "Sends an Email with Advanced Options",
-        "description": "Sends An email through one of your mail orders allowing additional options such as file attachments, cc, bcc, etc.",
-        "operationId": "sendAdvMail",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SendMailAdv"
-              }
+        },
+        "/account/creditcards/{id}": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
             },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/SendMailAdv"
-              }
+            "delete": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
             }
-          },
-          "required": true
+        },
+        "/account/features": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/iplimits": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/oauth": {
+            "delete": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/oauth/logout": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/password": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/settings": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/account/sshkey": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/backups": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/backups/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/backups/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/billing/cart": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/billing/prepays": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/captcha": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/dns": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/dns/{domainId}/{recordId}": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "The domain ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "recordId",
+                        "in": "path",
+                        "description": "The domain record ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "The domain ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "recordId",
+                        "in": "path",
+                        "description": "The domain record ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/dns/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/domains": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/domains/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/domains/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/floating_ip": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/floating_ips/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/floating_ips/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/home": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/licenses": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/licenses/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/licenses/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/mail": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/mail/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/mail/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/qs": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/qs/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/qs/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/servers": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/servers/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/servers/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/ssl": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/ssl/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/ssl/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/tickets": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/tickets/new": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/tickets/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps/{id}/restart": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps/{id}/start": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/vps/{id}/stop": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/websites": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/websites/order": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        },
+        "/websites/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The order ID number.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GenericResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "example": "ok"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "The command completed successfully."
+                    }
+                }
+            },
+            "MailLog": {
+                "required": ["emails", "limit", "skip", "total"],
+                "type": "object",
+                "properties": {
+                    "total": {
+                        "type": "integer",
+                        "description": "total number of mail log entries",
+                        "example": 10234
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "description": "number of emails skipped in listing",
+                        "example": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "number of emails to return",
+                        "example": 100
+                    },
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MailLogEntry"
+                        }
+                    }
+                },
+                "description": "Mail log records"
+            },
+            "MailLogEntry": {
+                "required": ["_id", "_lock", "assigned", "bodySize", "connectionKey", "created", "date", "domain", "from", "id", "interface", "lockTime", "locked", "logger", "md5Match", "messageId", "mxHostname", "mxPort", "origin", "originhost", "queued", "recipient", "sendingZone", "sentBodyHash", "sentBodySize", "seq", "sourceMd5", "subject", "time", "to", "transhost", "transtype", "user"],
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "integer",
+                        "description": "internal db id",
+                        "example": 103172
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "mail id",
+                        "example": "17c7eda538e0005d03"
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "from address",
+                        "example": "person@mysite.com"
+                    },
+                    "to": {
+                        "type": "string",
+                        "description": "to address",
+                        "example": "client@isp.com"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "email subject",
+                        "example": "sell 0.005 shares"
+                    },
+                    "messageId": {
+                        "type": "string",
+                        "description": "message id"
+                    },
+                    "created": {
+                        "type": "string",
+                        "description": "creation date",
+                        "example": "2021-10-14T08:50:10.000Z"
+                    },
+                    "time": {
+                        "type": "integer",
+                        "description": "creation timestamp",
+                        "example": 1634215809
+                    },
+                    "user": {
+                        "type": "string",
+                        "description": "user account",
+                        "example": "mb5658"
+                    },
+                    "transtype": {
+                        "type": "string",
+                        "description": "transaction type",
+                        "example": "ESMTPSA"
+                    },
+                    "transhost": {
+                        "type": "string",
+                        "description": "transaction host",
+                        "example": "relay0.mailbaby.net"
+                    },
+                    "originhost": {
+                        "type": "string",
+                        "description": "origin host",
+                        "example": "199.231.189.154"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "description": "origin ip",
+                        "example": "199.231.189.154"
+                    },
+                    "interface": {
+                        "type": "string",
+                        "description": "interface name",
+                        "example": "feeder"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "date processed",
+                        "example": "Thu, 14 Oct 2021 08:50:09 -0400"
+                    },
+                    "sendingZone": {
+                        "type": "string",
+                        "description": "sending zone",
+                        "example": "interserver"
+                    },
+                    "bodySize": {
+                        "type": "integer",
+                        "description": "email body size in bytes",
+                        "example": 63
+                    },
+                    "sourceMd5": {
+                        "type": "string",
+                        "description": "md5 sum of the email",
+                        "example": "1d7058e6a30369f200b0c34fab2fac92"
+                    },
+                    "seq": {
+                        "type": "integer",
+                        "description": "delivery sequency",
+                        "example": 1
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "to address domain",
+                        "example": "interserver.net"
+                    },
+                    "recipient": {
+                        "type": "string",
+                        "description": "email receiver address",
+                        "example": "client@isp.com"
+                    },
+                    "locked": {
+                        "type": "integer",
+                        "description": "locked status",
+                        "example": 1
+                    },
+                    "lockTime": {
+                        "type": "integer",
+                        "description": "lock timestamp",
+                        "example": 1634215818533
+                    },
+                    "assigned": {
+                        "type": "string",
+                        "description": "assigned server",
+                        "example": "relay1"
+                    },
+                    "queued": {
+                        "type": "string",
+                        "description": "queued timestamp",
+                        "example": "2021-10-14T12:50:15.487Z"
+                    },
+                    "_lock": {
+                        "type": "string",
+                        "description": "lock id",
+                        "example": "lock 17c7eda538e0005d03 001"
+                    },
+                    "logger": {
+                        "type": "string",
+                        "description": "logger"
+                    },
+                    "mxPort": {
+                        "type": "integer",
+                        "description": "mx port number",
+                        "example": 25
+                    },
+                    "connectionKey": {
+                        "type": "string",
+                        "description": "connection key",
+                        "example": "206.72.200.46:interserver.net:25"
+                    },
+                    "mxHostname": {
+                        "type": "string",
+                        "description": "mx hostname",
+                        "example": "mx.j.is.cc"
+                    },
+                    "sentBodyHash": {
+                        "type": "string",
+                        "description": "body hash",
+                        "example": "1d7058e6a30369f200b0c34fab2fac92"
+                    },
+                    "sentBodySize": {
+                        "type": "integer",
+                        "description": "sent body size in bytes",
+                        "example": 63
+                    },
+                    "md5Match": {
+                        "type": "integer",
+                        "description": "md5 checksum matching result",
+                        "example": 1
+                    }
+                },
+                "description": "An email record"
+            },
+            "SendMail": {
+                "required": ["body", "from", "subject", "to"],
+                "type": "object",
+                "properties": {
+                    "to": {
+                        "type": "string",
+                        "description": "The Contact whom is the primary recipient of this email.",
+                        "example": "johndoe@company.com"
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "The contact whom is the this email is from.",
+                        "example": "janedoe@company.com"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "The subject or title of the email",
+                        "example": "Attention Client"
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "The main email contents.",
+                        "example": "This is an email to inform you that something noteworthy happened."
+                    }
+                },
+                "description": "Details for an Email"
+            },
+            "SendMailAdv": {
+                "title": "Email details",
+                "required": ["body", "from", "subject", "to"],
+                "type": "object",
+                "properties": {
+                    "subject": {
+                        "type": "string",
+                        "description": "The subject or title of the email",
+                        "example": "Your Package has been Delivered!"
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "The main email contents.",
+                        "example": "The package you ordered on 2021-01-23 has been delivered. If the package is broken into many pieces, please blaim someone else."
+                    },
+                    "from": {
+                        "$ref": "#/components/schemas/SendMailAdv_from"
+                    },
+                    "to": {
+                        "type": "array",
+                        "description": "A list of destionation email addresses to send this to",
+                        "items": {
+                            "$ref": "#/components/schemas/SendMailAdv_to"
+                        }
+                    },
+                    "replyto": {
+                        "type": "array",
+                        "description": "(optional) A list of email addresses that specify where replies to the email should be sent instead of the _from_ address.",
+                        "items": {
+                            "$ref": "#/components/schemas/SendMailAdv_replyto"
+                        }
+                    },
+                    "cc": {
+                        "type": "array",
+                        "description": "(optional) A list of email addresses to carbon copy this message to.  They are listed on the email and anyone getting the email can see this full list of Contacts who received the email as well.",
+                        "items": {
+                            "$ref": "#/components/schemas/SendMailAdv_cc"
+                        }
+                    },
+                    "bcc": {
+                        "type": "array",
+                        "description": "(optional) list of email addresses that should receive copies of the email.  They are hidden on the email and anyone gettitng the email would not see the other people getting the email in this list.",
+                        "items": {
+                            "$ref": "#/components/schemas/SendMailAdv_bcc"
+                        }
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "(optional) File attachments to include in the email.  The file contents must be base64 encoded!",
+                        "items": {
+                            "$ref": "#/components/schemas/SendMailAdv_attachments"
+                        }
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "(optional)  ID of the Mail order within our system to use as the Mail Account.",
+                        "format": "int64",
+                        "example": 5000
+                    }
+                },
+                "description": "Details for an Email"
+            },
+            "Invoices": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "description": "Listing of invoices"
+            },
+            "Invoice": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "description": "An invoice record"
+            },
+            "Schema": {
+                "description": "An invoice record"
+            },
+            "inline_response_401": {
+                "required": ["code", "message"],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "inline_response_200": {
+                "required": ["id", "status", "username"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1234
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "active"
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "mb1234"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "guest123"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "example": "main mail account"
+                    }
+                }
+            },
+            "SendMailAdv_from": {
+                "required": ["email"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address",
+                        "example": "business@company.com"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(optional) Name to use for the sending contact.",
+                        "example": "The Man"
+                    }
+                },
+                "description": "The information to use for the From address in the email. from."
+            },
+            "SendMailAdv_to": {
+                "required": ["email"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address",
+                        "example": "johndoe@isp.com"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(optional) Name to use for the destination contact.",
+                        "example": "John Doe"
+                    }
+                },
+                "description": "An Email Contact"
+            },
+            "SendMailAdv_replyto": {
+                "required": ["email"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address",
+                        "example": "support@company.com"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(optional) Name to use for the sending contact.",
+                        "example": "Support Staff"
+                    }
+                },
+                "description": "An Email Contact"
+            },
+            "SendMailAdv_cc": {
+                "required": ["email"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address",
+                        "example": "janedoe@isp.com"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(optional) Name to use for the CC contact.",
+                        "example": "Jane Doe"
+                    }
+                },
+                "description": "An Email Contact"
+            },
+            "SendMailAdv_bcc": {
+                "required": ["email"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address",
+                        "example": "records@company.com"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(optional) Name to use for the BCC contact.",
+                        "example": "Records Department"
+                    }
+                },
+                "description": "An Email Contact"
+            },
+            "SendMailAdv_attachments": {
+                "required": ["data"],
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "type": "string",
+                        "description": "(optional) Filename to specify for the attachment.",
+                        "example": "company_logo.png"
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "Contents of the attached file (must be base64 encoded)",
+                        "format": "binary"
+                    }
+                },
+                "description": "A File attachment for an email"
+            }
         },
         "responses": {
-          "200": {
-            "description": "search results matching criteria",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenericResponse"
+            "BadInput": {
+                "description": "The specified resource was not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/inline_response_401"
+                        }
+                    }
                 }
-              }
-            }
-          },
-          "400": {
-            "description": "The specified resource was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+            },
+            "AlreadyExists": {
+                "description": "The specified resource was not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": ["code", "message"],
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+            },
+            "NotFound": {
+                "description": "The specified resource was not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/inline_response_401"
+                        }
+                    }
                 }
-              }
-            }
-          },
-          "404": {
-            "description": "The specified resource was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_401"
+            },
+            "Unauthorized": {
+                "description": "Unauthorized",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/inline_response_401"
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/old/mail/log": {
-      "get": {
-        "summary": "displays the mail log",
-        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
-        "operationId": "viewMailLog",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "description": "The ID of your mail order this will be sent through.",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "pass an optional search string for looking up inventory",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip for pagination",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32",
-              "default": 0
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "maximum number of records to return",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "maximum": 10000,
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32",
-              "default": 100
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "search results matching criteria",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MailLog"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "bad input parameter"
-          }
-        }
-      }
-    },
-    "/ping": {
-      "get": {
-        "summary": "Checks if the server is running",
-        "operationId": "pingServer",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Server is up and running"
-          },
-          "default": {
-            "description": "Something is wrong"
-          }
         },
-        "security": []
-      }
-    },
-    "/account": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/2fa": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/apikey": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/countries": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/creditcards": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/creditcards/{id}": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
+        "parameters": {
+            "offsetParam": {
+                "name": "offset",
+                "in": "query",
+                "description": "Number of items to skip before returning the results.",
+                "required": false,
+                "style": "form",
+                "explode": true,
+                "schema": {
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                }
+            },
+            "limitParam": {
+                "name": "limit",
+                "in": "query",
+                "description": "Maximum number of items to return.",
+                "required": false,
+                "style": "form",
+                "explode": true,
+                "schema": {
+                    "maximum": 100,
+                    "minimum": 1,
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 20
+                }
             }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "delete": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
+        },
+        "examples": {},
+        "requestBodies": {},
+        "headers": {},
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
             }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/features": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/iplimits": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "delete": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/oauth": {
-      "delete": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/oauth/logout": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/password": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/settings": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/account/sshkey": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/backups": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/backups/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/backups/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/billing/cart": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/billing/prepays": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/captcha": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/dns": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/dns/{domainId}/{recordId}": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "domainId",
-            "in": "path",
-            "description": "The domain ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "recordId",
-            "in": "path",
-            "description": "The domain record ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "delete": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "domainId",
-            "in": "path",
-            "description": "The domain ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "recordId",
-            "in": "path",
-            "description": "The domain record ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/dns/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "delete": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/domains": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/domains/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/domains/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/floating_ip": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/floating_ips/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/floating_ips/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/home": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/licenses": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/licenses/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/licenses/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/login": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/mail": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/mail/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/mail/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/qs": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/qs/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/qs/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/servers": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/servers/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/servers/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/signup": {
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/ssl": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/ssl/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/ssl/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/tickets": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/tickets/new": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/tickets/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps/{id}/restart": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps/{id}/start": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/vps/{id}/stop": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/websites": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/websites/order": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
-    },
-    "/websites/{id}": {
-      "get": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      },
-      "post": {
-        "summary": "",
-        "description": "",
-        "operationId": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The order ID number.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Default response"
-          }
-        }
-      }
+        },
+        "links": {},
+        "callbacks": {}
     }
-  },
-  "components": {
-    "schemas": {
-      "GenericResponse": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "example": "ok"
-          },
-          "text": {
-            "type": "string",
-            "example": "The command completed successfully."
-          }
-        }
-      },
-      "MailLog": {
-        "required": ["emails", "limit", "skip", "total"],
-        "type": "object",
-        "properties": {
-          "total": {
-            "type": "integer",
-            "description": "total number of mail log entries",
-            "example": 10234
-          },
-          "skip": {
-            "type": "integer",
-            "description": "number of emails skipped in listing",
-            "example": 0
-          },
-          "limit": {
-            "type": "integer",
-            "description": "number of emails to return",
-            "example": 100
-          },
-          "emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MailLogEntry"
-            }
-          }
-        },
-        "description": "Mail log records"
-      },
-      "MailLogEntry": {
-        "required": ["_id", "_lock", "assigned", "bodySize", "connectionKey", "created", "date", "domain", "from", "id", "interface", "lockTime", "locked", "logger", "md5Match", "messageId", "mxHostname", "mxPort", "origin", "originhost", "queued", "recipient", "sendingZone", "sentBodyHash", "sentBodySize", "seq", "sourceMd5", "subject", "time", "to", "transhost", "transtype", "user"],
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "integer",
-            "description": "internal db id",
-            "example": 103172
-          },
-          "id": {
-            "type": "string",
-            "description": "mail id",
-            "example": "17c7eda538e0005d03"
-          },
-          "from": {
-            "type": "string",
-            "description": "from address",
-            "example": "person@mysite.com"
-          },
-          "to": {
-            "type": "string",
-            "description": "to address",
-            "example": "client@isp.com"
-          },
-          "subject": {
-            "type": "string",
-            "description": "email subject",
-            "example": "sell 0.005 shares"
-          },
-          "messageId": {
-            "type": "string",
-            "description": "message id"
-          },
-          "created": {
-            "type": "string",
-            "description": "creation date",
-            "example": "2021-10-14T08:50:10.000Z"
-          },
-          "time": {
-            "type": "integer",
-            "description": "creation timestamp",
-            "example": 1634215809
-          },
-          "user": {
-            "type": "string",
-            "description": "user account",
-            "example": "mb5658"
-          },
-          "transtype": {
-            "type": "string",
-            "description": "transaction type",
-            "example": "ESMTPSA"
-          },
-          "transhost": {
-            "type": "string",
-            "description": "transaction host",
-            "example": "relay0.mailbaby.net"
-          },
-          "originhost": {
-            "type": "string",
-            "description": "origin host",
-            "example": "199.231.189.154"
-          },
-          "origin": {
-            "type": "string",
-            "description": "origin ip",
-            "example": "199.231.189.154"
-          },
-          "interface": {
-            "type": "string",
-            "description": "interface name",
-            "example": "feeder"
-          },
-          "date": {
-            "type": "string",
-            "description": "date processed",
-            "example": "Thu, 14 Oct 2021 08:50:09 -0400"
-          },
-          "sendingZone": {
-            "type": "string",
-            "description": "sending zone",
-            "example": "interserver"
-          },
-          "bodySize": {
-            "type": "integer",
-            "description": "email body size in bytes",
-            "example": 63
-          },
-          "sourceMd5": {
-            "type": "string",
-            "description": "md5 sum of the email",
-            "example": "1d7058e6a30369f200b0c34fab2fac92"
-          },
-          "seq": {
-            "type": "integer",
-            "description": "delivery sequency",
-            "example": 1
-          },
-          "domain": {
-            "type": "string",
-            "description": "to address domain",
-            "example": "interserver.net"
-          },
-          "recipient": {
-            "type": "string",
-            "description": "email receiver address",
-            "example": "client@isp.com"
-          },
-          "locked": {
-            "type": "integer",
-            "description": "locked status",
-            "example": 1
-          },
-          "lockTime": {
-            "type": "integer",
-            "description": "lock timestamp",
-            "example": 1634215818533
-          },
-          "assigned": {
-            "type": "string",
-            "description": "assigned server",
-            "example": "relay1"
-          },
-          "queued": {
-            "type": "string",
-            "description": "queued timestamp",
-            "example": "2021-10-14T12:50:15.487Z"
-          },
-          "_lock": {
-            "type": "string",
-            "description": "lock id",
-            "example": "lock 17c7eda538e0005d03 001"
-          },
-          "logger": {
-            "type": "string",
-            "description": "logger"
-          },
-          "mxPort": {
-            "type": "integer",
-            "description": "mx port number",
-            "example": 25
-          },
-          "connectionKey": {
-            "type": "string",
-            "description": "connection key",
-            "example": "206.72.200.46:interserver.net:25"
-          },
-          "mxHostname": {
-            "type": "string",
-            "description": "mx hostname",
-            "example": "mx.j.is.cc"
-          },
-          "sentBodyHash": {
-            "type": "string",
-            "description": "body hash",
-            "example": "1d7058e6a30369f200b0c34fab2fac92"
-          },
-          "sentBodySize": {
-            "type": "integer",
-            "description": "sent body size in bytes",
-            "example": 63
-          },
-          "md5Match": {
-            "type": "integer",
-            "description": "md5 checksum matching result",
-            "example": 1
-          }
-        },
-        "description": "An email record"
-      },
-      "SendMail": {
-        "required": ["body", "from", "subject", "to"],
-        "type": "object",
-        "properties": {
-          "to": {
-            "type": "string",
-            "description": "The Contact whom is the primary recipient of this email.",
-            "example": "johndoe@company.com"
-          },
-          "from": {
-            "type": "string",
-            "description": "The contact whom is the this email is from.",
-            "example": "janedoe@company.com"
-          },
-          "subject": {
-            "type": "string",
-            "description": "The subject or title of the email",
-            "example": "Attention Client"
-          },
-          "body": {
-            "type": "string",
-            "description": "The main email contents.",
-            "example": "This is an email to inform you that something noteworthy happened."
-          }
-        },
-        "description": "Details for an Email"
-      },
-      "SendMailAdv": {
-        "title": "Email details",
-        "required": ["body", "from", "subject", "to"],
-        "type": "object",
-        "properties": {
-          "subject": {
-            "type": "string",
-            "description": "The subject or title of the email",
-            "example": "Your Package has been Delivered!"
-          },
-          "body": {
-            "type": "string",
-            "description": "The main email contents.",
-            "example": "The package you ordered on 2021-01-23 has been delivered. If the package is broken into many pieces, please blaim someone else."
-          },
-          "from": {
-            "$ref": "#/components/schemas/SendMailAdv_from"
-          },
-          "to": {
-            "type": "array",
-            "description": "A list of destionation email addresses to send this to",
-            "items": {
-              "$ref": "#/components/schemas/SendMailAdv_to"
-            }
-          },
-          "replyto": {
-            "type": "array",
-            "description": "(optional) A list of email addresses that specify where replies to the email should be sent instead of the _from_ address.",
-            "items": {
-              "$ref": "#/components/schemas/SendMailAdv_replyto"
-            }
-          },
-          "cc": {
-            "type": "array",
-            "description": "(optional) A list of email addresses to carbon copy this message to.  They are listed on the email and anyone getting the email can see this full list of Contacts who received the email as well.",
-            "items": {
-              "$ref": "#/components/schemas/SendMailAdv_cc"
-            }
-          },
-          "bcc": {
-            "type": "array",
-            "description": "(optional) list of email addresses that should receive copies of the email.  They are hidden on the email and anyone gettitng the email would not see the other people getting the email in this list.",
-            "items": {
-              "$ref": "#/components/schemas/SendMailAdv_bcc"
-            }
-          },
-          "attachments": {
-            "type": "array",
-            "description": "(optional) File attachments to include in the email.  The file contents must be base64 encoded!",
-            "items": {
-              "$ref": "#/components/schemas/SendMailAdv_attachments"
-            }
-          },
-          "id": {
-            "type": "integer",
-            "description": "(optional)  ID of the Mail order within our system to use as the Mail Account.",
-            "format": "int64",
-            "example": 5000
-          }
-        },
-        "description": "Details for an Email"
-      },
-      "Invoices": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "description": "Listing of invoices"
-      },
-      "Invoice": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "description": "An invoice record"
-      },
-      "Schema": {
-        "description": "An invoice record"
-      },
-      "inline_response_401": {
-        "required": ["code", "message"],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "inline_response_200": {
-        "required": ["id", "status", "username"],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "example": 1234
-          },
-          "status": {
-            "type": "string",
-            "example": "active"
-          },
-          "username": {
-            "type": "string",
-            "example": "mb1234"
-          },
-          "password": {
-            "type": "string",
-            "example": "guest123"
-          },
-          "comment": {
-            "type": "string",
-            "example": "main mail account"
-          }
-        }
-      },
-      "SendMailAdv_from": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address",
-            "example": "business@company.com"
-          },
-          "name": {
-            "type": "string",
-            "description": "(optional) Name to use for the sending contact.",
-            "example": "The Man"
-          }
-        },
-        "description": "The information to use for the From address in the email. from."
-      },
-      "SendMailAdv_to": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address",
-            "example": "johndoe@isp.com"
-          },
-          "name": {
-            "type": "string",
-            "description": "(optional) Name to use for the destination contact.",
-            "example": "John Doe"
-          }
-        },
-        "description": "An Email Contact"
-      },
-      "SendMailAdv_replyto": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address",
-            "example": "support@company.com"
-          },
-          "name": {
-            "type": "string",
-            "description": "(optional) Name to use for the sending contact.",
-            "example": "Support Staff"
-          }
-        },
-        "description": "An Email Contact"
-      },
-      "SendMailAdv_cc": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address",
-            "example": "janedoe@isp.com"
-          },
-          "name": {
-            "type": "string",
-            "description": "(optional) Name to use for the CC contact.",
-            "example": "Jane Doe"
-          }
-        },
-        "description": "An Email Contact"
-      },
-      "SendMailAdv_bcc": {
-        "required": ["email"],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address",
-            "example": "records@company.com"
-          },
-          "name": {
-            "type": "string",
-            "description": "(optional) Name to use for the BCC contact.",
-            "example": "Records Department"
-          }
-        },
-        "description": "An Email Contact"
-      },
-      "SendMailAdv_attachments": {
-        "required": ["data"],
-        "type": "object",
-        "properties": {
-          "filename": {
-            "type": "string",
-            "description": "(optional) Filename to specify for the attachment.",
-            "example": "company_logo.png"
-          },
-          "data": {
-            "type": "string",
-            "description": "Contents of the attached file (must be base64 encoded)",
-            "format": "binary"
-          }
-        },
-        "description": "A File attachment for an email"
-      }
-    },
-    "responses": {
-      "BadInput": {
-        "description": "The specified resource was not found",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/inline_response_401"
-            }
-          }
-        }
-      },
-      "AlreadyExists": {
-        "description": "The specified resource was not found",
-        "content": {
-          "application/json": {
-            "schema": {
-              "required": ["code", "message"],
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "string"
-                },
-                "message": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "NotFound": {
-        "description": "The specified resource was not found",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/inline_response_401"
-            }
-          }
-        }
-      },
-      "Unauthorized": {
-        "description": "Unauthorized",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/inline_response_401"
-            }
-          }
-        }
-      }
-    },
-    "parameters": {
-      "offsetParam": {
-        "name": "offset",
-        "in": "query",
-        "description": "Number of items to skip before returning the results.",
-        "required": false,
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "minimum": 0,
-          "type": "integer",
-          "format": "int32",
-          "default": 0
-        }
-      },
-      "limitParam": {
-        "name": "limit",
-        "in": "query",
-        "description": "Maximum number of items to return.",
-        "required": false,
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "maximum": 100,
-          "minimum": 1,
-          "type": "integer",
-          "format": "int32",
-          "default": 20
-        }
-      }
-    },
-    "examples": {},
-    "requestBodies": {},
-    "headers": {},
-    "securitySchemes": {
-      "apiKeyAuth": {
-        "type": "apiKey",
-        "name": "X-API-KEY",
-        "in": "header"
-      }
-    },
-    "links": {},
-    "callbacks": {}
-  }
 }

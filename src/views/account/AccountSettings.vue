@@ -18,28 +18,28 @@ accountStore.load();
 </script>
 
 <template>
-  <div class="row">
-    <div class="col-md-6">
-      <IpLimits :data="data" :limits="limits" :ip="ip"></IpLimits>
+    <div class="row">
+        <div class="col-md-6">
+            <IpLimits :data="data" :limits="limits" :ip="ip"></IpLimits>
+        </div>
+        <div class="col-md-6">
+            <ApiAccess :data="data"></ApiAccess>
+        </div>
     </div>
-    <div class="col-md-6">
-      <ApiAccess :data="data"></ApiAccess>
+    <div class="row">
+        <div class="col-md-6">
+            <SshKeys :data="data"></SshKeys>
+        </div>
+        <div class="col-md-6">
+            <LinkedAccounts :data="data" :oauthproviders="oauthproviders" :oauthconfig="oauthconfig" :oauthadapters="oauthadapters"></LinkedAccounts>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <SshKeys :data="data"></SshKeys>
+    <div class="row">
+        <div class="col-md-6">
+            <TwoFactorAuth :data="data"></TwoFactorAuth>
+        </div>
+        <div class="col-md-6">
+            <AccountFeatures :data="data"></AccountFeatures>
+        </div>
     </div>
-    <div class="col-md-6">
-      <LinkedAccounts :data="data" :oauthproviders="oauthproviders" :oauthconfig="oauthconfig" :oauthadapters="oauthadapters"></LinkedAccounts>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <TwoFactorAuth :data="data"></TwoFactorAuth>
-    </div>
-    <div class="col-md-6">
-      <AccountFeatures :data="data"></AccountFeatures>
-    </div>
-  </div>
 </template>

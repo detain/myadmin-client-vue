@@ -11,7 +11,7 @@ siteStore.setBreadcrums({ '/home': 'Home', '': 'Change Username' });
 </script>
 
 <template>
-  <div class="row justify-content-center">
-    <div class="col-md-7">Username changes have been temporarily disabled.</div>
-  </div>
+    <div class="row justify-content-center">
+        <div class="col-md-7">Username changes have been temporarily disabled.</div>
+    </div>
 </template>

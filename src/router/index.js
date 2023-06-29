@@ -32,32 +32,32 @@ import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
 */
 
 export const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    { path: '/', component: ClientHome },
-    { path: '/home', component: ClientHome },
-    { path: '/prepays', component: PrePays },
-    { path: '/payment_types', component: PaymentTypes },
-    { path: '/cart', component: Cart },
-    { path: '/cart/:module(backups|domains|licenses|mail|quickservers|server|ssl|vps|webhosting|floating_ips)/:id(\\d+)', component: Cart },
-    { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)', component: Pay },
-    { path: '/invoices', component: InvoicesList },
-    { ...affiliateRoutes },
-    { ...usersRoutes },
-    { ...accountRoutes },
-    { ...ticketRoutes },
-    { ...dnsRoutes },
-    { ...domainRoutes },
-    { ...backupRoutes },
-    { ...licenseRoutes },
-    { ...mailRoutes },
-    { ...floatingIpRoutes },
-    { ...qsRoutes },
-    { ...serverRoutes },
-    { ...sslRoutes },
-    { ...vpsRoutes },
-    { ...websiteRoutes },
-    /*
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        { path: '/', component: ClientHome },
+        { path: '/home', component: ClientHome },
+        { path: '/prepays', component: PrePays },
+        { path: '/payment_types', component: PaymentTypes },
+        { path: '/cart', component: Cart },
+        { path: '/cart/:module(backups|domains|licenses|mail|quickservers|server|ssl|vps|webhosting|floating_ips)/:id(\\d+)', component: Cart },
+        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)', component: Pay },
+        { path: '/invoices', component: InvoicesList },
+        { ...affiliateRoutes },
+        { ...usersRoutes },
+        { ...accountRoutes },
+        { ...ticketRoutes },
+        { ...dnsRoutes },
+        { ...domainRoutes },
+        { ...backupRoutes },
+        { ...licenseRoutes },
+        { ...mailRoutes },
+        { ...floatingIpRoutes },
+        { ...qsRoutes },
+        { ...serverRoutes },
+        { ...sslRoutes },
+        { ...vpsRoutes },
+        { ...websiteRoutes },
+        /*
     { path: '/contact_info', component: ContactInfo },
     { path: '/change_pass', component: ChangePass },
     { path: '/change_username', component: ChangeUsername },
@@ -101,21 +101,21 @@ export const router = createRouter({
     { path: '/order_website', component: OrderWebsite },
     { path: '/website_order', component: OrderWebsite },
     */
-    // catch all redirect to home page
-    { path: '/:pathMatch(.*)*', redirect: '/' },
-  ],
+        // catch all redirect to home page
+        { path: '/:pathMatch(.*)*', redirect: '/' },
+    ],
 });
 
 router.beforeEach(async (to) => {
-  // clear alert on route change
-  const alertStore = useAlertStore();
-  alertStore.clear();
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/account/login', '/account/login_old', '/account/register'];
-  const authRequired = !publicPages.includes(to.path);
-  const authStore = useAuthStore();
-  if (authRequired && !authStore.user) {
-    authStore.returnUrl = to.fullPath;
-    return '/account/login';
-  }
+    // clear alert on route change
+    const alertStore = useAlertStore();
+    alertStore.clear();
+    // redirect to login page if not logged in and trying to access a restricted page
+    const publicPages = ['/account/login', '/account/login_old', '/account/register'];
+    const authRequired = !publicPages.includes(to.path);
+    const authStore = useAuthStore();
+    if (authRequired && !authStore.user) {
+        authStore.returnUrl = to.fullPath;
+        return '/account/login';
+    }
 });

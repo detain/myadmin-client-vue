@@ -20,63 +20,63 @@ const module = ref(props.module);
 const csrf = ref('');
 
 function getLink() {
-  if (this.module === 'vps') {
-    return `view_${this.module}?id=${this.id}`;
-  } else {
-    return 'view_qs';
-  }
+    if (this.module === 'vps') {
+        return `view_${this.module}?id=${this.id}`;
+    } else {
+        return 'view_qs';
+    }
 }
 function submitForm() {
-  const formData = {
-    link: 'changeHostname',
-    csrf_token: this.csrf,
-    hostname: this.newHostname,
-  };
-  // Process the form submission or make an API request here
+    const formData = {
+        link: 'changeHostname',
+        csrf_token: this.csrf,
+        hostname: this.newHostname,
+    };
+    // Process the form submission or make an API request here
 }
 </script>
 
 <template>
-  <div class="row justify-content-center py-4">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <div class="p-1">
-            <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom">manage_accounts</i>Change VPS Hostname</h3>
-            <div class="card-tools float-right">
-              <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+    <div class="row justify-content-center py-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="p-1">
+                        <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom">manage_accounts</i>Change VPS Hostname</h3>
+                        <div class="card-tools float-right">
+                            <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form v-on:submit.prevent="submitForm" class="change_hostname">
+                        <input type="hidden" name="link" value="changeHostname" />
+                        <input type="hidden" name="csrf_token" :value="csrf" />
+                        <div class="form-group mb-0">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>
+                                <div class="col-sm-9 input-group">
+                                    <input type="text" class="form-control form-control-sm" id="oldhostname" name="oldhostname" :value="hostname" disabled />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="hostname">New Hostname</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" placeholder="your.server.com" v-model="newHostname" />
+                                    <span class="text-muted text-sm">For Example: your.server.com</span>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="controls">
+                                    <input type="submit" name="Submit" value="Update Hostname" class="btn btn-sm btn-order px-3 py-2" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="card-body">
-          <form v-on:submit.prevent="submitForm" class="change_hostname">
-            <input type="hidden" name="link" value="changeHostname" />
-            <input type="hidden" name="csrf_token" :value="csrf" />
-            <div class="form-group mb-0">
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>
-                <div class="col-sm-9 input-group">
-                  <input type="text" class="form-control form-control-sm" id="oldhostname" name="oldhostname" :value="hostname" disabled />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="hostname">New Hostname</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" placeholder="your.server.com" v-model="newHostname" />
-                  <span class="text-muted text-sm">For Example: your.server.com</span>
-                </div>
-              </div>
-              <div class="row justify-content-center">
-                <div class="controls">
-                  <input type="submit" name="Submit" value="Update Hostname" class="btn btn-sm btn-order px-3 py-2" />
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <style scoped></style>
