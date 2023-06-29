@@ -13,12 +13,12 @@ siteStore.setTitle('Cart');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
-const pymt_method = ref('paypal');
+const paymentMethod = ref('paypal');
 const modules = ref({});
 const editCcIdx = ref(0);
 const selectedCc = ref('');
 const csrf_token = ref('');
-const r_pymt_method = ref('');
+const r_paymentMethod = ref('');
 const cc_detail = ref({});
 const country_select = ref('');
 const invrows = ref([]);
@@ -177,7 +177,7 @@ function updatePaymentMethod(cc_val, cc_auto = '0') {
             $('#cc_auto_update').val(0);
         }
     } else {
-        $('#defaultpymt_method').val(cc_val);
+        $('#defaultpaymentMethod').val(cc_val);
     }
     //$("#defaultpymt").submit();
 }
@@ -422,14 +422,14 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="paymentMethod.text == 'Select Credit Card'" @click.prevent="pymt_method = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
+                                        <a v-if="paymentMethod.text == 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
                                         <router-link v-else :to="'/pay/' + methodId" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
                         </div>
                         <hr />
-                        <div :style="{ display: pymt_method !== 'cc' ? 'none' : '' }" id="select_card">
+                        <div :style="{ display: paymentMethod !== 'cc' ? 'none' : '' }" id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -439,15 +439,15 @@ accountStore.load();
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="pymt_method == 'cc' && selectedCc == cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
-                                        <div v-if="pymt_method == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="paymentMethod == 'cc' && selectedCc == cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
+                                        <div v-if="paymentMethod == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
                                         <form action="cart" method="post" id="paymentform">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_pymt_method" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="pymt_method === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                                                         <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="ml-2 pl-4">
@@ -456,7 +456,7 @@ accountStore.load();
                                                         </div>
                                                         <div class="text-muted text-sm">Expires on {{ cc_detail.cc_exp }}</div>
                                                         <div class="my-2">
-                                                            <template v-if="pymt_method === 'cc' && selectedCc === cc_id">
+                                                            <template v-if="paymentMethod === 'cc' && selectedCc === cc_id">
                                                                 <div id="selected_services"></div>
                                                                 <input type="hidden" name="balance" value="1" />
                                                                 <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
@@ -469,12 +469,12 @@ accountStore.load();
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
                                                     <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)" :id="'editcard-modal-' + cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
-                                                    <div v-else-if="pymt_method === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
+                                                    <div v-else-if="paymentMethod === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc != cc_id || cc_detail.verified_cc == 'no') && pymt_method == 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
-                                                    <input v-else-if="pymt_method == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
+                                                    <a v-if="(!selectedCc || selectedCc != cc_id || cc_detail.verified_cc == 'no') && paymentMethod == 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <input v-else-if="paymentMethod == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
                                         </form>
@@ -811,7 +811,7 @@ accountStore.load();
     <form id="defaultpymt" action="cart" method="post">
         <input type="hidden" name="csrf_token" v-model="csrf_token" />
         <input type="hidden" name="action" value="default" />
-        <input id="defaultpymt_method" type="hidden" name="payment_method" value="" />
+        <input id="defaultpaymentMethod" type="hidden" name="payment_method" value="" />
         <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="" />
     </form>
     <form id="deleteForm" action="cart" method="POST">

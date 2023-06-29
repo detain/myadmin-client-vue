@@ -2,12 +2,13 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useWebsiteStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
 
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => {
@@ -25,7 +26,32 @@ function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;
 }
 
+function loadLink(newLink) {
+  console.log(`link is now ${newLink}`)
+  if (newLink == 'login') {
+    try {
+        fetchWrapper.get(baseUrl + '/websites/'+id+'/login').then((response) => {
+            console.log('response:');
+            console.log(response);
+            window.location = response.location;
+        });
+    } catch (error) {
+        console.log('error:');
+        console.log(error);
+    }
+  }
+}
+
+watch(
+  () => route.params.link,
+  (newLink) => {
+      loadLink(newLink);
+  }
+)
+
+
 websiteStore.getById(id);
+loadLink(route.params.link);
 </script>
 
 <template>
