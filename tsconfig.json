@@ -3,7 +3,9 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "module": "ESNext",
+        "checkJS": true,
         "moduleResolution": "Node",
+        "sourceMap": true,
         "strict": true,
         "jsx": "preserve",
         "resolveJsonModule": true,
@@ -15,7 +17,11 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "noEmit": true
+        "noEmit": true,
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["src/*"]
+        }
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
     "references": [{ "path": "./tsconfig.node.json" }]
