@@ -437,9 +437,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            {{
-                                extraInfoTables.note.rows[0].value
-                            }}
+                            {{ extraInfoTables.note.rows[0].value }}
                         </table>
                     </div>
                 </div>
