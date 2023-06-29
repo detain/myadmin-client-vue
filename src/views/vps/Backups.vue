@@ -17,7 +17,6 @@ const id = computed(() => {
 const backupsTable = computed(() => {
     return props.backupsTable;
 });
-
 </script>
 
 <template>

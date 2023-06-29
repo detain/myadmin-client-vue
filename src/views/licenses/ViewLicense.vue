@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useLicenseStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { ChangeIp, ChangeOs } from '@/views/licenses';
@@ -13,13 +13,33 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View License');
-siteStore.setTitle('View License');
-siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses' });
-siteStore.addBreadcrum('/licenses/' + id, 'View License ' + id);
-
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
+
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'License' });
+    siteStore.addBreadcrum('/licenses/' + id, 'View License ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View License ' + id);
+        siteStore.setTitle('View License ' + id);
+    } else {
+        siteStore.setPageHeading('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/licenses/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
+loadLink(route.params.link);
 
 licenseStore.getById(id);
 </script>

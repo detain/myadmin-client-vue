@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useDomainStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains';
@@ -13,13 +13,34 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Domain');
-siteStore.setTitle('View Domain');
-siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
-siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
 
 const domainStore = useDomainStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, csrf, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
+
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
+    siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Domain ' + id);
+        siteStore.setTitle('View Domain ' + id);
+    } else {
+        siteStore.setPageHeading('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/domains/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
+loadLink(route.params.link);
 
 domainStore.getById(id);
 console.log('link:');
@@ -58,9 +79,9 @@ console.log(link.value);
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >Domain Status: <b>{{ serviceInfo.domain_status }}</b></span
-                >
+                <span class="small-box-footer">
+                    Domain Status: <b>{{ serviceInfo.domain_status }}</b>
+                </span>
             </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4">

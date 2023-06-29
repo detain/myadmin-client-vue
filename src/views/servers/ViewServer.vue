@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useServerStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
@@ -13,13 +13,34 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Server');
-siteStore.setTitle('View Server');
-siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
-siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);
 
 const serverStore = useServerStore();
 const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
+    siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Server ' + id);
+        siteStore.setTitle('View Server ' + id);
+    } else {
+        siteStore.setPageHeading('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/servers/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
+loadLink(route.params.link);
 
 serverStore.getById(id);
 

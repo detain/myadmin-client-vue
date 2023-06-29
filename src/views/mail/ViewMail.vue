@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useMailStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Alerts, DenyRules } from '@/views/mail';
@@ -13,13 +13,34 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Mail');
-siteStore.setTitle('View Mail');
-siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
-siteStore.addBreadcrum('/mail/' + id, 'View Mail ' + id);
 
 const mailStore = useMailStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
+
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
+    siteStore.addBreadcrum('/mail/' + id, 'View Mail ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Mail ' + id);
+        siteStore.setTitle('View Mail ' + id);
+    } else {
+        siteStore.setPageHeading('Mail ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Mail ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/mail/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
+loadLink(route.params.link);
 
 mailStore.getById(id);
 

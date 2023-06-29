@@ -14,10 +14,6 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Website');
-siteStore.setTitle('View Website');
-siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Websites' });
-siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
 console.log(link.value);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
@@ -27,28 +23,37 @@ function isEmpty(table) {
 }
 
 function loadLink(newLink) {
-  console.log(`link is now ${newLink}`)
-  if (newLink == 'login') {
-    try {
-        fetchWrapper.get(baseUrl + '/websites/'+id+'/login').then((response) => {
-            console.log('response:');
-            console.log(response);
-            window.location = response.location;
-        });
-    } catch (error) {
-        console.log('error:');
-        console.log(error);
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Website' });
+    siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Website ' + id);
+        siteStore.setTitle('View Website ' + id);
+    } else {
+        siteStore.setPageHeading('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/websites/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+            try {
+                fetchWrapper.get(baseUrl + '/websites/' + id + '/login').then((response) => {
+                    console.log('response:');
+                    console.log(response);
+                    window.location = response.location;
+                });
+            } catch (error) {
+                console.log('error:');
+                console.log(error);
+            }
+        }
     }
-  }
 }
 
 watch(
-  () => route.params.link,
-  (newLink) => {
-      loadLink(newLink);
-  }
-)
-
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
 
 websiteStore.getById(id);
 loadLink(route.params.link);
