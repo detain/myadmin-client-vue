@@ -75,7 +75,6 @@ const moduleLink = computed(() => {
               </td>
               <td>
                 <p class="px-4 pt-3 mx-3">VNC allows you to connect to the virtual machine's desktop. VNC can be run in the browser or as a stand-alone client. Your computer's IP address must be granted access before the connection can be established.</p>
-                <p>
                 <ul>
                   <li>
                     <b>Step 1</b>: Click link to grant your IP Access to VNC.
@@ -85,7 +84,6 @@ const moduleLink = computed(() => {
                     <b>Step 2</b>: You can also download one of the many VNC clients available on the internet. We recommend TightVNC. Connect using your VPS IP address. Password is not required after your remote IP address has been granted in step 1.&nbsp;<span class="Apple-converted-space"></span>
                   </li>
                 </ul>
-                </p>
               </td>
             </tr>
           </table>

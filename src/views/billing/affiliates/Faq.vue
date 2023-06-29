@@ -270,6 +270,7 @@ onMounted(() => {
                                     <p>Rejected means the commission has failed permanently.</p>
                                     <p>
                                         Some reasons for this could be:
+                                    </p>
                                     <ul style="padding-left: 25px;">
                                         <li>The customer has already signed up with us in the past.</li>
                                         <li>The same payment method was used as another account.</li>
@@ -278,7 +279,6 @@ onMounted(() => {
                                             customer's account.
                                         </li>
                                     </ul>
-                                    </p>
                                     <p>
                                         Since our payout of $100 per sale is often way more then we recover
                                         from the customer even after 1 year. We have strict policy in place
