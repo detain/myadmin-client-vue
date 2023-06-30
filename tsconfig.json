@@ -3,6 +3,7 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "module": "ESNext",
+        "allowJS": true,
         "checkJS": true,
         "moduleResolution": "Node",
         "sourceMap": true,
