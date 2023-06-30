@@ -48,8 +48,8 @@ export default defineConfig({
             jQuery: 'jquery',
         }),
         checker({
-            vueTsc: false,
-            typescript: false,
+            vueTsc: true,
+            typescript: true,
         }),
         /*
         i18nResources({
