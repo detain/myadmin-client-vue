@@ -6,17 +6,49 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Development
 
-### Setting up your dev environment
+### How it Works
 
-* [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)  Install this in your browser(s).  When you open up the Inspection//Console there wil be a Vue button that shows up if you are on a Vue backed site.   You can use this to examine and go through all the data and stuff.
+We use Vue 3 with the Composition API to provide an entire website/application in a single page.  This is done using a combination of Vue SFC's (Single File Components) which and the Vue Router to change the url in the browser without actually navigating to a new page.
 
-### Notes
+Variables are mostly handled by reference (like a pointer).  This allows us to pass around variables that are ukept up to date when changed in other sections of the site.
 
-* The site is essentially loaded in a single page and uses js to navigate without actual reloading
-* 'stores' are sets of data and functions that can be carried over between pages, the best example is using it to to store sessionid so its known throughout the site
-* most variables are handled by ref(erence) which are basically pointers.  in the JS code the data itself is accesed via .value  ie variable.value
+#### Core Functionality
 
-### HTTP Methods to use when building out API
+These are the libs which power the majority of the sites functionality.  You should at least breifly read opver each of them.
+
+* [**Vue 3**](https://vuejs.org/guide/introduction.html) is the **Template Engine** with all the modern bells and whistles like automatically updating the display render as data changes.
+* [**Pinia**](https://pinia.vuejs.org/introduction.html) is used to provide **Data Stores** which allow us to load data that is reusable between pages without having to reload the data.
+* [**Vue Router**](https://router.vuejs.org/installation.html) is used for **Routing** to trigger calling pages based on the url while all being in a single page).
+
+#### Additional Functionality
+
+This stuff provides good features but does not require you to really be famiiar with it.  Skip over these unless you find you need to know more about one of them for some reason.
+
+* [**Vite**](https://vitejs.dev/guide/) is our **Frontend Tooling** system which provides a nice dev setup and handles building the project for production use.
+* [**Vite PWA**](https://vite-pwa-org.netlify.app/guide/) automatically generates the the files needed so we are a [**PWA**](https://web.dev/learn/pwa/) (**Progressive Web App**).
+* [**Electron**](https://www.electronjs.org/) allows us to build a **Desktop App** for macOS, Windows, Linux, as well as Mobile Device versions.
+* [**ESLint**](https://eslint.org/) is our **Linter** which can detect a wide range of problems your code.
+* [**Prettier**](https://prettier.io/) is our **Code Formatter** allowing automatic formatting of code based on our set of predefined rules.
+* [**Vitest**](https://vitest.dev/guide/) is our **Unit Testing** framework.
+* [**VeeValidate**](https://vee-validate.logaretm.com/v4/guide/overview/) is installed for **Form Validation**
+* [**Vue-i18n**](https://vue-i18n.intlify.dev/guide/introduction.html) is our **Translation** lib.
+
+#### Inspecting and Debugging The Live Data
+
+There are several Developer Console type interfaces setup which we can use to view and modify the live variables generating the site.
+
+Browser Extension [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)
+![vue-devtools-extension](https://github.com/detain/myadmin-client-vue/assets/1364504/536e05be-9653-43ff-acce-2b2080f76a94)
+
+The other way is
+![vue-devtools-popup](https://github.com/detain/myadmin-client-vue/assets/1364504/9b502a69-09c4-48b7-ac88-2fe50d4ab15c)
+
+
+### Updated OpenAPI API
+
+While building out this I am creating an OpenAPI based API and utilizing its calls in the client.
+
+#### Notes for HTTP Request Methods cmommonly used when building an API
 
 | HTTP Verb | CRUD | Entire Collection (e.g. /vps) | Specific Item (e.g. /vps/{id}) |
 | --- | --- | --- | --- |
@@ -25,6 +57,7 @@ This template should help get you started developing with Vue 3 in Vite.
 | PUT | Update/Replace | 405 (Method Not Allowed), unless you want to update/replace every resource in the entire collection. | 200 (OK) or 204 (No Content). 404 (Not Found), if ID not found or invalid. |
 | PATCH | Update/Modify | 405 (Method Not Allowed), unless you want to modify the collection itself. | 200 (OK) or 204 (No Content). 404 (Not Found), if ID not found or invalid. |
 | DELETE | Delete | 405 (Method Not Allowed), unless you want to delete the whole collection---not often desirable. | 200 (OK). 404 (Not Found), if ID not found or invalid. |
+
 
 ### To-Do / Road-Map
 
@@ -67,9 +100,9 @@ This template should help get you started developing with Vue 3 in Vite.
 * [x] CORS
 * [x] modern routes
 
-### Links
+## Links
 
-#### Electron Links
+### Electron Links
 
 * [alex8088/electron-vite: Next generation Electron build tooling based on Vite 新一代 Electron 开发构建工具，支持源代码保护](https://github.com/alex8088/electron-vite)
 * [alex8088/vite-plugin-electron-config: Electron plugin for Vite](https://github.com/alex8088/vite-plugin-electron-config)
@@ -97,7 +130,7 @@ This template should help get you started developing with Vue 3 in Vite.
 * [Vite Plugin - Electron Forge](https://www.electronforge.io/config/plugins/vite)
 * [Vue 3 + Vite + TypeScript + ELECTRON (My Full Setup) - DEV Community](https://dev.to/brojenuel/vue-3-vite-typescript-electron-my-full-setup-kgm)
 
-#### Vue Links
+### Vue Links
 
 * [AlbanCrepel/compiiile: The most convenient way to render a folder containing markdown files. Previewing and searching markdown files has never been that easy.](https://github.com/AlbanCrepel/compiiile)
 * [antfu/unplugin-auto-import: Auto import APIs on-demand for Vite, Webpack and Rollup](https://github.com/antfu/unplugin-auto-import)
@@ -133,7 +166,7 @@ This template should help get you started developing with Vue 3 in Vite.
 * [vuejs/awesome-vue: 🎉 A curated list of awesome things related to Vue.js](https://github.com/vuejs/awesome-vue)
 * [vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3](https://github.com/vuesomedev/awesome-vue-3)
 
-#### Vite Links
+### Vite Links
 
 * [antfu/vite-plugin-inspect: Inspect the intermediate state of Vite plugins](https://github.com/antfu/vite-plugin-inspect)
 * [Awesome Vite (vitejs/awesome-vite) Overview - Track Awesome List](https://www.trackawesomelist.com/vitejs/awesome-vite/readme/)
