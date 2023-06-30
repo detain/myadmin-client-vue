@@ -100,7 +100,7 @@ export const useAuthStore = defineStore({
         async logout() {
             this.user = null;
             localStorage.removeItem('user');
-            await router.push('/account/login');
+            await router.push('/login');
         },
     },
 });
