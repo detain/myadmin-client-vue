@@ -1,5 +1,5 @@
 export { default as Affiliate } from './Affiliate.vue';
-export { default as Banners } from './Banners.vue';
+export { default as ViewBanners } from './ViewBanners.vue';
 export { default as DockSetup } from './DockSetup.vue';
 export { default as Faq } from './Faq.vue';
 export { default as Layout } from './Layout.vue';

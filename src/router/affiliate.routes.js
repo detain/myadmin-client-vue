@@ -1,4 +1,4 @@
-import { Affiliate, Banners, DockSetup, Faq, Layout, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, ViewBanner, WebTraffic } from '@/views/billing/affiliates';
+import { Affiliate, ViewBanners, DockSetup, Faq, Layout, PaymentSetup, RichReport, SalesGraph, Signups, Status, Tos, TrafficGraph, ViewBanner, WebTraffic } from '@/views/billing/affiliates';
 
 export default {
     path: '/affiliate',
@@ -15,7 +15,7 @@ export default {
         { path: 'tos', component: Tos },
         { path: 'traffic_graph', component: TrafficGraph },
         { path: 'web_traffic', component: WebTraffic },
-        { path: 'banners', component: Banners },
+        { path: 'banners', component: ViewBanners },
         { path: 'banner/:id(\\d+)', component: ViewBanner },
     ],
 };
