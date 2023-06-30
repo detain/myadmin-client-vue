@@ -11,12 +11,6 @@ const siteStore = useSiteStore();
 const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
 
-siteStore.setTitle('Reverse DNS');
-siteStore.setPageHeading('Reverse DNS');
-siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
-siteStore.addBreadcrum('/vps/' + props.id + '/reverse_dns', 'Reverse DNS');
-
 fetchWrapper.get(baseUrl + '/vps/' + props.id + '/reverse_dns').then((response) => {
     console.log('Response:');
     console.log(response);

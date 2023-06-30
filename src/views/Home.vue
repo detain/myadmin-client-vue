@@ -35,8 +35,8 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
         <!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Main Sidebar Container -->
-            <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link"
-                ><!-- Brand Logo -->
+            <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link">
+                <!-- Brand Logo -->
                 <img src="/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">InterServer</span>
             </a>
@@ -47,8 +47,8 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0"
-                            ><b>{{ user.account_lid }}</b></span
+                        <span style="color: #c2c7d0">
+                            <b>{{ user.account_lid }}</b></span
                         >
                     </div>
                 </div>
@@ -71,8 +71,8 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                             <ol class="breadcrumb">
                                 <li v-for="(bName, bUrl, index) in breadcrums" :key="index" :class="{ active: index === breadcrums.length - 1 }">
                                     <template v-if="index === breadcrums.length - 1">{{ bName }}</template>
-                                    <template v-else
-                                        ><a :href="bUrl">{{ bName }}</a></template
+                                    <template v-else>
+                                        <a :href="bUrl">{{ bName }}</a></template
                                     >
                                 </li>
                             </ol>

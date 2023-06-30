@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore, useAlertStore } from '@/stores';
-import { ClientHome, Home } from '@/views';
+import { ClientHome, Home, Login, LoginOld, Register } from '@/views';
 import { PrePays, PaymentTypes, InvoicesList, Cart, Pay } from '@/views/billing';
 import affiliateRoutes from './affiliate.routes';
 import usersRoutes from './users.routes';
@@ -35,6 +35,9 @@ export const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         { path: '/', component: ClientHome },
+        { path: '/login', component: Login },
+        { path: '/login_old', component: LoginOld },
+        { path: '/register', component: Register },
         { path: '/home', component: ClientHome },
         { path: '/prepays', component: PrePays },
         { path: '/payment_types', component: PaymentTypes },
@@ -111,11 +114,11 @@ router.beforeEach(async (to) => {
     const alertStore = useAlertStore();
     alertStore.clear();
     // redirect to login page if not logged in and trying to access a restricted page
-    const publicPages = ['/account/login', '/account/login_old', '/account/register'];
+    const publicPages = ['/login', '/login_old', '/register'];
     const authRequired = !publicPages.includes(to.path);
     const authStore = useAuthStore();
     if (authRequired && !authStore.user) {
         authStore.returnUrl = to.fullPath;
-        return '/account/login';
+        return '/login';
     }
 });

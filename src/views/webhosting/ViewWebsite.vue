@@ -2,21 +2,18 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useWebsiteStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
 
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Website');
-siteStore.setTitle('View Website');
-siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Websites' });
-siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
 console.log(link.value);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
@@ -25,7 +22,41 @@ function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;
 }
 
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Website' });
+    siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Website ' + id);
+        siteStore.setTitle('View Website ' + id);
+    } else {
+        siteStore.setPageHeading('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/websites/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+            try {
+                fetchWrapper.get(baseUrl + '/websites/' + id + '/login').then((response) => {
+                    console.log('response:');
+                    console.log(response);
+                    window.location = response.location;
+                });
+            } catch (error) {
+                console.log('error:');
+                console.log(error);
+            }
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
 websiteStore.getById(id);
+loadLink(route.params.link);
 </script>
 
 <template>
@@ -225,10 +256,10 @@ websiteStore.getById(id);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"
-                        ><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}</router-link
-                    >
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
+                    </router-link>
                 </div>
             </div>
         </div>

@@ -8,11 +8,6 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-siteStore.setTitle('');
-siteStore.setPageHeading('');
-siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
-siteStore.addBreadcrum('/mail/' + props.id, 'View Mail ' + props.id);
-siteStore.addBreadcrum('/mail/' + props.id + '/', '');
 
 //const id = ref('');
 const csrfToken = ref('');

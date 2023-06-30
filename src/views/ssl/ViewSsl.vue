@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useSslStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl';
 
@@ -12,13 +12,34 @@ const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
-siteStore.setPageHeading('View Ssl');
-siteStore.setTitle('View Ssl');
-siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL' });
-siteStore.addBreadcrum('/ssl/' + id, 'View Ssl ' + id);
 
 const sslStore = useSslStore();
 const { loading, error, pkg, link_display } = storeToRefs(sslStore);
+
+function loadLink(newLink) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL Certificates' });
+    siteStore.addBreadcrum('/ssl/' + id, 'View SSL Certificate ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View SSL Certificate ' + id);
+        siteStore.setTitle('View SSL Certificate ' + id);
+    } else {
+        siteStore.setPageHeading('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/ssl/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'login') {
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink);
+    }
+);
+
+loadLink(route.params.link);
 
 sslStore.getById(id);
 </script>
@@ -113,10 +134,10 @@ sslStore.getById(id);
                     </div>
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/ssl/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip"
-                        ><i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}</router-link
-                    >
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/ssl/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
+                    </router-link>
                 </div>
             </div>
         </div>

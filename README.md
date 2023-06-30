@@ -1,5 +1,7 @@
 # myadmin-static-client
 
+*If you get a blank page when loading the site, check your adblocker, you might need to disable it*
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Development
