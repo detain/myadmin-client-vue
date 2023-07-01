@@ -1,9 +1,9 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted, watch } from 'vue';
-import { useVpsStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { ref, computed, watch } from 'vue';
+import { useVpsStore, useSiteStore } from '@/stores';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const vpsStore = useVpsStore();

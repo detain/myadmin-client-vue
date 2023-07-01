@@ -1,7 +1,7 @@
 <script setup>
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
 const successMsg = ref('');
 const cancelQueue = ref('');

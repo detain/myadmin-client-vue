@@ -8,7 +8,7 @@ module.exports = {
         {
             files: ['src/**/*.vue', 'src/**/*.js'],
             rules: {
-                'no-unused-vars': 'off', // warn
+                //'no-unused-vars': 'off', // warn
                 'vue/multi-word-component-names': 'off', // warn
             },
         },

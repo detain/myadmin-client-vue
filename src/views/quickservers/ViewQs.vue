@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
-import { useQsStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { ref, computed } from 'vue';
+import { useQsStore, useSiteStore } from '@/stores';
 import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const module = ref('quickservers');

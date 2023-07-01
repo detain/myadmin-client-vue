@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
-import { useBackupStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { ref, computed } from 'vue';
+import { useBackupStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
 const siteStore = useSiteStore();
