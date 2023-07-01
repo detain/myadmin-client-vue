@@ -39,7 +39,7 @@
         "postcss": "^8.4.24",
         "select2": "^4.1.0-rc.0",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
-        "sweetalert2": "11.4.8",
+        "sweetalert2": ">=11.0.0,<=11.4.8",
         "tablesorter": "^2.31.3",
         "tailwindcss": "^3.3.2",
         "tempusdominus-bootstrap-4": "^5.39.2",
@@ -59,6 +59,9 @@
         "esprima": "4.0.1",
         "source-map": "0.6.1",
         "type": "2.7.2",
-        "glob-parent": "6.0.2"
+        "sweetalert2": "11.4.8",
+        "glob-parent": "6.0.2",
+        "@jridgewell/sourcemap-codec": "1.4.15",
+        "bootstrap": "4.6.2"
     }
 }
