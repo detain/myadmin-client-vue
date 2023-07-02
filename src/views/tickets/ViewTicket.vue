@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '@/stores';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 

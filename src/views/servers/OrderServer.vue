@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';

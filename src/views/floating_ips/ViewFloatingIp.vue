@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted, watch } from 'vue';
-import { useMailStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { computed, watch } from 'vue';
+import { useMailStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Alerts, DenyRules } from '@/views/mail';
 

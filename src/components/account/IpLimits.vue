@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue';
-import { storeToRefs } from 'pinia';
-import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
-import { useAccountStore, useAuthStore, useSiteStore } from '@/stores';
+import { ref, computed } from 'vue';
+import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
 const props = defineProps(['data', 'limits', 'ip']);
 const data = computed(() => {

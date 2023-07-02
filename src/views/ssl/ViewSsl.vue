@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted, watch } from 'vue';
-import { useSslStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { computed, watch } from 'vue';
+import { useSslStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl';
 
 const siteStore = useSiteStore();

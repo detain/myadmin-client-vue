@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted, watch } from 'vue';
-import { useLicenseStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { computed, watch } from 'vue';
+import { useLicenseStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { ChangeIp, ChangeOs } from '@/views/licenses';
 

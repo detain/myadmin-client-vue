@@ -3,7 +3,7 @@ import { ref, reactive, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAccountStore, useAuthStore, useSiteStore } from '@/stores';
+import { useAccountStore, useSiteStore } from '@/stores';
 import { AccountFeatures, ApiAccess, IpLimits, LinkedAccounts, SshKeys, TwoFactorAuth } from '@/components/account';
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();

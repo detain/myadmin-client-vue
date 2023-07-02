@@ -6,17 +6,49 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Development
 
-### Setting up your dev environment
+### How it Works
 
-* [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)  Install this in your browser(s).  When you open up the Inspection//Console there wil be a Vue button that shows up if you are on a Vue backed site.   You can use this to examine and go through all the data and stuff.
+We use Vue 3 with the Composition API to provide an entire website/application in a single page.  This is done using a combination of Vue SFC's (Single File Components) which and the Vue Router to change the url in the browser without actually navigating to a new page.
 
-### Notes
+Variables are mostly handled by reference (like a pointer).  This allows us to pass around variables that are ukept up to date when changed in other sections of the site.
 
-* The site is essentially loaded in a single page and uses js to navigate without actual reloading
-* 'stores' are sets of data and functions that can be carried over between pages, the best example is using it to to store sessionid so its known throughout the site
-* most variables are handled by ref(erence) which are basically pointers.  in the JS code the data itself is accesed via .value  ie variable.value
+#### Core Functionality
 
-### HTTP Methods to use when building out API
+These are the libs which power the majority of the sites functionality.  You should at least breifly read opver each of them.
+
+* [**Vue 3**](https://vuejs.org/guide/introduction.html) is the **Template Engine** with all the modern bells and whistles like automatically updating the display render as data changes.
+* [**Pinia**](https://pinia.vuejs.org/introduction.html) is used to provide **Data Stores** which allow us to load data that is reusable between pages without having to reload the data.
+* [**Vue Router**](https://router.vuejs.org/installation.html) is used for **Routing** to trigger calling pages based on the url while all being in a single page).
+
+#### Additional Functionality
+
+This stuff provides good features but does not require you to really be famiiar with it.  Skip over these unless you find you need to know more about one of them for some reason.
+
+* [**Vite**](https://vitejs.dev/guide/) is our **Frontend Tooling** system which provides a nice dev setup and handles building the project for production use.
+* [**Vite PWA**](https://vite-pwa-org.netlify.app/guide/) automatically generates the the files needed so we are a [**PWA**](https://web.dev/learn/pwa/) (**Progressive Web App**).
+* [**Electron**](https://www.electronjs.org/) allows us to build a **Desktop App** for macOS, Windows, Linux, as well as Mobile Device versions.
+* [**ESLint**](https://eslint.org/) is our **Linter** which can detect a wide range of problems your code.
+* [**Prettier**](https://prettier.io/) is our **Code Formatter** allowing automatic formatting of code based on our set of predefined rules.
+* [**Vitest**](https://vitest.dev/guide/) is our **Unit Testing** framework.
+* [**VeeValidate**](https://vee-validate.logaretm.com/v4/guide/overview/) is installed for **Form Validation**
+* [**Vue-i18n**](https://vue-i18n.intlify.dev/guide/introduction.html) is our **Translation** lib.
+
+#### Inspecting and Debugging The Live Data
+
+There are several Developer Console type interfaces setup which we can use to view and modify the live variables generating the site.
+
+Browser Extension [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)
+![vue-devtools-extension](https://github.com/detain/myadmin-client-vue/assets/1364504/536e05be-9653-43ff-acce-2b2080f76a94)
+
+The other way is
+![vue-devtools-popup](https://github.com/detain/myadmin-client-vue/assets/1364504/9b502a69-09c4-48b7-ac88-2fe50d4ab15c)
+
+
+### Updated OpenAPI API
+
+While building out this I am creating an OpenAPI based API and utilizing its calls in the client.
+
+#### Notes for HTTP Request Methods cmommonly used when building an API
 
 | HTTP Verb | CRUD | Entire Collection (e.g. /vps) | Specific Item (e.g. /vps/{id}) |
 | --- | --- | --- | --- |
@@ -25,6 +57,7 @@ This template should help get you started developing with Vue 3 in Vite.
 | PUT | Update/Replace | 405 (Method Not Allowed), unless you want to update/replace every resource in the entire collection. | 200 (OK) or 204 (No Content). 404 (Not Found), if ID not found or invalid. |
 | PATCH | Update/Modify | 405 (Method Not Allowed), unless you want to modify the collection itself. | 200 (OK) or 204 (No Content). 404 (Not Found), if ID not found or invalid. |
 | DELETE | Delete | 405 (Method Not Allowed), unless you want to delete the whole collection---not often desirable. | 200 (OK). 404 (Not Found), if ID not found or invalid. |
+
 
 ### To-Do / Road-Map
 
@@ -66,108 +99,6 @@ This template should help get you started developing with Vue 3 in Vite.
 * [x] login / authentication handling
 * [x] CORS
 * [x] modern routes
-
-### Links
-
-#### Electron Links
-
-* [alex8088/electron-vite: Next generation Electron build tooling based on Vite 新一代 Electron 开发构建工具，支持源代码保护](https://github.com/alex8088/electron-vite)
-* [alex8088/vite-plugin-electron-config: Electron plugin for Vite](https://github.com/alex8088/vite-plugin-electron-config)
-* [ArcherGu/fast-vite-electron: Vite + Electron with esbuild, so fast! ⚡](https://github.com/ArcherGu/fast-vite-electron)
-* [ArcherGu/fast-vite-nestjs-electron: Vite + Electron + Nestjs with esbuild, crazy fast! ⚡](https://github.com/ArcherGu/fast-vite-nestjs-electron)
-* [BroJenuel/vue-3-vite-electron-typescript: This is a template to be used when developing an electron](https://github.com/BroJenuel/vue-3-vite-electron-typescript)
-* [caoxiemeihao/electron-forge-vite: For test "electron-forge" Vite template.](https://github.com/caoxiemeihao/electron-forge-vite)
-* [caoxiemeihao/vite-electron-plugin: High-performance, esbuild-based Vite Electron plugin](https://github.com/caoxiemeihao/vite-electron-plugin)
-* [cawa-93/vite-electron-builder: Secure boilerplate for Electron app based on Vite. TypeScript + Vue/React/Angular/Svelte/Vanilla](https://github.com/cawa-93/vite-electron-builder)
-* [Common Configuration - electron-builder](https://www.electron.build/configuration/configuration.html)
-* [Deluze/electron-vue-template: Simple Vue3 + Electron starter template in TypeScript, including ViteJS and Electron Builder](https://github.com/Deluze/electron-vue-template)
-* [electron-builder](https://www.electron.build/)
-* [electron-vite/create-electron-vite: Scaffolding Your Electron + Vite Project](https://github.com/electron-vite/create-electron-vite)
-* [electron-vite/electron-vite-boilerplate: 📚 Really simple Electron + Vite boilerplate.](https://github.com/electron-vite/electron-vite-boilerplate)
-* [electron-vite/electron-vite-vue: 🥳 Really simple Electron + Vite + Vue boilerplate.](https://github.com/electron-vite/electron-vite-vue)
-* [electron-vite/vite-plugin-electron: 🔗 ⚡️](https://github.com/electron-vite/vite-plugin-electron)
-* [electron-vite/vite-plugin-electron-renderer: Support use Node.js API in Electron-Renderer](https://github.com/electron-vite/vite-plugin-electron-renderer)
-* [Getting Started - Electron Forge](https://www.electronforge.io/)
-* [hydrati/vitectron: Powerful Vue Desktop Application Template](https://github.com/hydrati/vitectron)
-* [jooy2/vutron: 💚 Quick Start Templates for Vite + Electron + Vue 3 + Vuetify + TypeScript. Vutron is a preconfigured template for developing Electron cross-platform desktop apps. It uses Vue 3 and allows you to build a fast development environment with little effort.](https://github.com/jooy2/vutron)
-* [Next Generation Electron Build Tooling | electron-vite](https://evite.netlify.app/)
-* [sindresorhus/awesome-electron: Useful resources for creating apps with Electron](https://github.com/sindresorhus/awesome-electron)
-* [tada5hi/vitron: This is a library to build beautiful (win, linux, mac) desktop apps for modern web projects with vite and electron.](https://github.com/tada5hi/vitron)
-* [umbrella22/electron-vite-template: This project is a vue3 + Vite + electron project template composed of Vite and rollup. It has the same functions as my previous electron+Vue+template project](https://github.com/umbrella22/electron-vite-template)
-* [Vite Plugin - Electron Forge](https://www.electronforge.io/config/plugins/vite)
-* [Vue 3 + Vite + TypeScript + ELECTRON (My Full Setup) - DEV Community](https://dev.to/brojenuel/vue-3-vite-typescript-electron-my-full-setup-kgm)
-
-#### Vue Links
-
-* [AlbanCrepel/compiiile: The most convenient way to render a folder containing markdown files. Previewing and searching markdown files has never been that easy.](https://github.com/AlbanCrepel/compiiile)
-* [antfu/unplugin-auto-import: Auto import APIs on-demand for Vite, Webpack and Rollup](https://github.com/antfu/unplugin-auto-import)
-* [antfu/unplugin-vue-components: 📲 On-demand components auto importing for Vue](https://github.com/antfu/unplugin-vue-components)
-* [antfu/vueuse: Collection of essential Vue Composition Utilities for Vue 2 and 3](https://github.com/antfu/vueuse)
-* [bundle-tools/packages/unplugin-vue-i18n at main · intlify/bundle-tools · GitHub](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n)
-* [carlospccarvalho/starter-vue3-adminlte3: AdminLTE 3 theme integration with Vue 3](https://github.com/carlospccarvalho/starter-vue3-adminlte3)
-* [cssninjaStudio/unplugin-fonts: Universal Webfont loader - Unfonts - based on https://web.dev/optimize-webfont-loading/](https://github.com/cssninjaStudio/unplugin-fonts)
-* [erdkse/adminlte-3-vue: Vue 3.2.39 start-up project with AdminLTE 3.2.0 template](https://github.com/erdkse/adminlte-3-vue)
-* [Examples | Awesome Vue.js](https://awesome-vue.js.org/resources/examples.html)
-* [Functions | VueUse](https://vueuse.org/functions.html)
-* [intlify/bundle-tools: bundling for intlify i18n tools](https://github.com/intlify/bundle-tools/tree/main)
-* [jfet97/vue-use-infinite-scroll: A Vue composition function that makes infinite scroll a breeze.](https://github.com/jfet97/vue-use-infinite-scroll)
-* [jfet97/vue-use-switch-map: A Vue composition that let you compose a ref with a function from values to refs.](https://github.com/jfet97/vue-use-switch-map)
-* [jsbroks/vuehooks: Extensive collection of composition functions for Vue](https://github.com/jsbroks/vuehooks)
-* [kefranabg/awesome-vue-composition-api: 🚀 A curated list of awesome things related to vue composition api](https://github.com/kefranabg/awesome-vue-composition-api)
-* [kirklin/unplugin-config: 🔧 Configuration file generator for web apps, allowing external customization of global variables without repackaging.](https://github.com/kirklin/unplugin-config)
-* [LinusBorg/composition-api-demos: A Vue.js app demonstarting various use cases for the new composition API](https://github.com/LinusBorg/composition-api-demos)
-* [logaretm/vue-use-form: ✅ A Vue.js composition API function to validate forms](https://github.com/logaretm/vue-use-form)
-* [microcipcip/vue-use-kit: 🛠️Useful collection of Vue composition API functions https://microcipcip.github.io/vue-use-kit/](https://github.com/microcipcip/vue-use-kit)
-* [mutoe/vue3-realworld-example-app: Explore the charm of Vue composition API! Vite?](https://github.com/mutoe/vue3-realworld-example-app)
-* [openfext/vue-use: Use Vue Composition API Right Now (WIP)](https://github.com/openfext/vue-use)
-* [pd4d10/npmview: A web application to view npm package files](https://github.com/pd4d10/npmview)
-* [pikax/vue-composable: Vue composition-api composable components. i18n, validation, pagination, fetch, etc. +50 different composables](https://github.com/pikax/vue-composable)
-* [posva/vue-compose-promise: 💝 Promises using vue composition api](https://github.com/posva/vue-compose-promise)
-* [Scaffold | Awesome Vue.js](https://awesome-vue.js.org/components-and-libraries/scaffold.html)
-* [starter-vue3-adminlte3/package.json at main · carlospccarvalho/starter-vue3-adminlte3 · GitHub](https://github.com/carlospccarvalho/starter-vue3-adminlte3/blob/main/package.json)
-* [Tarektouati/vue-use-web: 🕸 Web APIs implemented as Vue.js composition functions](https://github.com/Tarektouati/vue-use-web)
-* [VeeValidate: Painless Vue.js forms](https://vee-validate.logaretm.com/v4)
-* [Vue-cli3+adminlte quickly builds a background management template..._adminlte vue_Chasing ぢ's Blog-CSDN Blog](https://blog.csdn.net/weixin_43330752/article/details/88073837)
-* [vue-composable](https://pikax.me/vue-composable/#introduction)
-* [vue-composable](https://pikax.me/vue-composable/#state)
-* [vuejs/awesome-vue: 🎉 A curated list of awesome things related to Vue.js](https://github.com/vuejs/awesome-vue)
-* [vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3](https://github.com/vuesomedev/awesome-vue-3)
-
-#### Vite Links
-
-* [antfu/vite-plugin-inspect: Inspect the intermediate state of Vite plugins](https://github.com/antfu/vite-plugin-inspect)
-* [Awesome Vite (vitejs/awesome-vite) Overview - Track Awesome List](https://www.trackawesomelist.com/vitejs/awesome-vite/readme/)
-* [bundle-tools/CHANGELOG.md at main · intlify/bundle-tools · GitHub](https://github.com/intlify/bundle-tools/blob/main/packages/vite-plugin-vue-i18n/CHANGELOG.md)
-* [chenxch/vite-plugin-dynamic-base: Resolve all resource files dynamic publicpath, like Webpack's __webpack_public_path__](https://github.com/chenxch/vite-plugin-dynamic-base)
-* [Configuring Vite | Vite](https://v2.vitejs.dev/config/#resolve-alias)
-* [crcong/vite-plugin-externals: use to external resources](https://github.com/crcong/vite-plugin-externals)
-* [Dunqing/vite-plugin-dynamic-import-module: A vite plugin to support variables in dynamic imports module in Vite](https://github.com/Dunqing/vite-plugin-dynamic-import-module)
-* [ebeloded/vite-plugin-redirect](https://github.com/ebeloded/vite-plugin-redirect)
-* [feat-agency/vite-plugin-webfont-dl: ⚡ Webfont Download Vite Plugin - Make your Vite site load faster](https://github.com/feat-agency/vite-plugin-webfont-dl)
-* [fi3ework/vite-plugin-checker: 💬 Vite plugin that provide checks of TypeScript, ESLint, vue-tsc, Stylelint and more.](https://github.com/fi3ework/vite-plugin-checker)
-* [Geocld/vite-plugin-importus: Modularly import plugin, compatible with antd, lodash, material-ui and so on.](https://github.com/Geocld/vite-plugin-importus)
-* [Getting Started | Vite](https://vitejs.dev/guide/)
-* [IndexXuan/vue-cli-plugin-vite: Use vite today, with vue-cli.](https://github.com/IndexXuan/vue-cli-plugin-vite)
-* [KesionX/vite-plugin-head: Modify, add, delete Metadata in the head element.](https://github.com/KesionX/vite-plugin-head)
-* [onebay/vite-plugin-imp: A vite plugin for import library component style automatic.](https://github.com/onebay/vite-plugin-imp)
-* [Plugin API | Vite](https://vitejs.dev/guide/api-plugin.html)
-* [sanyuan0704/vite-plugin-chunk-split: A vite plugin for better chunk splitting. 一个简单易用的 Vite 拆包插件](https://github.com/sanyuan0704/vite-plugin-chunk-split)
-* [unimorphic / vite-plugin-linter — Bitbucket](https://bitbucket.org/unimorphic/vite-plugin-linter/src/master/)
-* [vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js](https://github.com/vitejs/awesome-vite)
-* [vite-plugins/packages/vite-plugin-external at main · fengxinming/vite-plugins · GitHub](https://github.com/fengxinming/vite-plugins/tree/main/packages/vite-plugin-external)
-* [vite-plugin/vite-plugin-dynamic-import: Enhance Vite builtin dynamic import](https://github.com/vite-plugin/vite-plugin-dynamic-import)
-* [vite-plugin/vite-plugin-optimizer: Manually Pre-Bundling of Vite](https://github.com/vite-plugin/vite-plugin-optimizer)
-* [vite-plugin/vite-plugin-resolve: Custom resolve module content](https://github.com/vite-plugin/vite-plugin-resolve)
-* [vite-plugin/vite-plugin-target: Make Vite support Electron, Node.js, etc.](https://github.com/vite-plugin/vite-plugin-target)
-* [vite-pwa/vite-plugin-pwa: Zero-config PWA for Vite](https://github.com/vite-pwa/vite-plugin-pwa)
-* [vuejs/vitepress: Vite & Vue powered static site generator.](https://github.com/vuejs/vitepress)
-* [wangzongming/vite-plugin-require: vite projects to support require](https://github.com/wangzongming/vite-plugin-require)
-* [WarrenJones/vite-plugin-require-transform: A plugin for vite that convert from require syntax to import](https://github.com/WarrenJones/vite-plugin-require-transform)
-* [XiSenao/vite-plugin-externals-extension: External links plugin which supports ESM and UMD for vite.](https://github.com/XiSenao/vite-plugin-externals-extension)
-* [yingpengsha/vite-plugin-tips: 🏷 Provide better development server status tips on the page.](https://github.com/yingpengsha/vite-plugin-tips)
-* [yracnet/vite-plugin-api: Create API routes from path directory like to Nextjs](https://github.com/yracnet/vite-plugin-api)
-* [z-ti/vite-plugin-clean: A vite plugin to remove/clean your build folder(s).](https://github.com/z-ti/vite-plugin-clean)
-
 
 ## Recommended IDE Setup
 

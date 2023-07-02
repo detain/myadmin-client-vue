@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed, onMounted, watch } from 'vue';
-import { useServerStore, useAuthStore, useAlertStore, useSiteStore } from '@/stores';
+import { computed, watch } from 'vue';
+import { useServerStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
 
