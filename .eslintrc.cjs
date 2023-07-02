@@ -23,19 +23,19 @@ module.exports = {
   env: { node: true },
   extends: [
     'eslint:recommended', // this maybe causes errors in defineEmits<{}>() ???
-    'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
-    'prettier',
-    'plugin:vue/vue3-essential',
+    //'plugin:vue/vue3-strongly-recommended ',
+    'plugin:@typescript-eslint/recommended',
     '@vue/eslint-config-prettier/skip-formatting',
+    'prettier'
   ],
 //   globals: {
 //    defineEmits: 'readonly',
 //    defineProps: 'readonly',
 //  },
-  parser: '@typescript-eslint/parser',
-  //  parser: 'vue-eslint-parser',
+    parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaFeatures: {
       jsx: false,
     },

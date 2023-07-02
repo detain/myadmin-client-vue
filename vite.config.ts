@@ -8,9 +8,9 @@ import Inspector from 'vite-plugin-vue-inspector';
 //import AutoImport from "unplugin-auto-import/vite";
 //import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
-import * as path from 'path';
+//import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
-import inject from '@rollup/plugin-inject';
+//import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
 //import legacy from '@vitejs/plugin-legacy'
 //import { dependencies } from "./package.json";
@@ -44,9 +44,9 @@ export default defineConfig({
         // basicSsl(),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         webfontDownload(),
-        inject({
-            jQuery: 'jquery',
-        }),
+//        inject({
+//            jQuery: 'jquery',
+//        }),
         checker({
             vueTsc: true,
             typescript: true,
@@ -117,8 +117,8 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src'),
-            //            "@": fileURLToPath(new URL("./src", import.meta.url))
+            //'@': path.resolve(__dirname, './src'),
+            "@": fileURLToPath(new URL("./src", import.meta.url))
         },
     },
 });

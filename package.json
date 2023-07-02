@@ -100,7 +100,7 @@
         "pinia": "*",
         "select2": "select2/select2#*",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
-        "sweetalert2": ">=11.0.0,<=11.4.8",
+        "sweetalert2": "11.4.8",
         "tablesorter": "Mottie/tablesorter#*",
         "tempusdominus-bootstrap-4": "*",
         "toastr": "^2.1.4",
