@@ -1,8 +1,5 @@
 <script setup>
 import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
-import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers';
 import { useAccountStore, useSiteStore } from '@/stores';
 const props = defineProps(['data']);

@@ -6,7 +6,6 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);
 
-const admindir = ref('');
 const menus = ref({
     main: [
         { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
@@ -36,32 +35,6 @@ const menus = ref({
         { link: '/account/username', icon: 'far fa-circle', text: 'Change Login' },
         { link: '/account/pass', icon: 'far fa-circle', text: 'Change Password' },
     ],
-});
-const menu_names = ref(['main', 'billing', 'settings']);
-const menu_images = ref({
-    main: false,
-    billing: true,
-    settings: false,
-});
-const menu_orientation = ref('horizontal');
-const menu_url_g = ref('');
-const boxmenu = ref(true);
-const prefix = ref('sidemenu');
-const session_cookies = ref(true);
-const ima = ref('client');
-const fa = ref({
-    admin: 'cogs',
-    billing: 'cart-arrow-down',
-    monitoring: 'heartbeat',
-    products: 'basket',
-    servers: 'server',
-    support: 'life-ring',
-    licenses: 'drivers-license',
-    vps: 'tasks',
-    backups: 'hdd-o',
-    webhosting: 'sitemap',
-    quickservers: 'server',
-    ssl: 'key',
 });
 function isActive(key) {
     // You need to implement your translation logic here

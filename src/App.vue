@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { MainMenu, Nav, Alert } from '@/components';
+import { MainMenu, Alert } from '@/components';
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
@@ -37,9 +37,6 @@ $(document).ready(function () {
         }
     );
 });
-function Previous() {
-    window.history.back();
-}
 $.AdminLTESidebarTweak = {};
 $.AdminLTESidebarTweak.options = {
     EnableRemember: true,
