@@ -105,12 +105,15 @@ export const useVpsStore = defineStore({
         errors: false,
         vps_logs: [],
         cpuGraphData: null,
+        responseText: '',
+        queueId: null
     }),
+
     actions: {
         async register(user) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.post(`${baseUrl}/register`, user);
+            await fetchWrapper.post(baseUrl+'/register', user);
         },
         async getAll() {
             const siteStore = useSiteStore();
@@ -131,14 +134,20 @@ export const useVpsStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
+            let success = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/' + action);
                 this.linkDisplay = response.text;
+                this.responseText = response.text;
+                this.queueId  = response.queueId;
             } catch (error) {
                 console.log('got error response' + error);
                 this.error = error;
+                this.responseText;
+                success = false;
             }
             this.loading = false;
+            return success;
         },
         async getById(id) {
             const siteStore = useSiteStore();

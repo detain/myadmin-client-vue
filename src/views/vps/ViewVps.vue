@@ -7,7 +7,7 @@ import { useVpsStore, useSiteStore } from '@/stores';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const vpsStore = useVpsStore();
-const { loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = ref('vps');
 const siteStore = useSiteStore();
 const route = useRoute();
@@ -34,6 +34,19 @@ function loadLink(newLink) {
         siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/vps/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (noForm.includes(newLink)) {
+            if (vpsStore.queue(id, newLink)) {
+                Swal.fire({
+                    icon: 'success',
+                    html: responseText.value,
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    html: responseText.value,
+                });
+            }
+        }
         if (newLink == 'login') {
         }
     }
@@ -49,10 +62,6 @@ watch(
 loadLink(route.params.link);
 vpsStore.getById(id);
 
-if (noForm.includes(link.value)) {
-    siteStore.addBreadcrum('/vps/' + id + '/' + link.value, ucwords(link.value.replace('_', ' ')));
-    vpsStore.queue(id, link.value);
-}
 
 function openCommentForm() {
     $('#commentForm').modal('show');
