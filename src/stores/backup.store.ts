@@ -139,7 +139,7 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/backups', {});
+                let response = await fetchWrapper.get(baseUrl + '/backups');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -164,7 +164,7 @@ export const useBackupStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/backups/' + id, {});
+                const response = await fetchWrapper.get(baseUrl + '/backups/' + id);
                 this.$reset();
                 let key, value;
                 console.log(response);

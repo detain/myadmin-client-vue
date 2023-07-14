@@ -35,7 +35,7 @@ function loadLink(newLink) {
         siteStore.addBreadcrum('/websites/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             try {
-                fetchWrapper.get(baseUrl + '/websites/' + id + '/login', {}).then((response) => {
+                fetchWrapper.get(baseUrl + '/websites/' + id + '/login').then((response) => {
                     console.log('response:');
                     console.log(response);
                     window.location = response.location;

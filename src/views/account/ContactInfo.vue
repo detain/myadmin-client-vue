@@ -57,7 +57,7 @@ async function onSubmit(values) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries', {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
         countries.value = response;
     });
 } catch (error) {

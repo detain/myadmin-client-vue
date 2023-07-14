@@ -54,7 +54,7 @@ const display = computed(() => {
     return 'step2';
 });
 
-fetchWrapper.get(baseUrl + '/domains/order', {}).then((response) => {
+fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     console.log('Response:');
     console.log(response);
     whoisPrivacyCost.value = response.whoisPrivacyCost;

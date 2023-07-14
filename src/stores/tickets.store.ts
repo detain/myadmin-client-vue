@@ -38,7 +38,7 @@ export const useTicketsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/tickets', {});
+                let response = await fetchWrapper.get(baseUrl + '/tickets');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -53,7 +53,7 @@ export const useTicketsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.user = { loading: true };
             try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`, {});
+                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error) {
                 this.user = { error };
             }

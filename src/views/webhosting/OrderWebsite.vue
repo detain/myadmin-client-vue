@@ -111,7 +111,7 @@ async function onSubmitConfirmation() {
 
 async function searchDomain() {
     console.log('searching for ' + hostname.value);
-    fetchWrapper.get(baseUrl + '/domains/lookup/' + hostname.value, {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/domains/lookup/' + hostname.value).then((response) => {
         console.log('Response:');
         console.log(response);
     });
@@ -123,7 +123,7 @@ let loading = Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/websites/order', {}).then((response) => {
+fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
     loading.close();
     console.log('Response:');
     console.log(response);

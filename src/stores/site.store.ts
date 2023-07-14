@@ -22,7 +22,7 @@ export const useSiteStore = defineStore({
         },
         loadInfo() {
             fetchWrapper
-                .get(baseUrl + '/info', {})
+                .get(baseUrl + '/info')
                 .then((response) => {
                     console.log('add cc success');
                     console.log(response);

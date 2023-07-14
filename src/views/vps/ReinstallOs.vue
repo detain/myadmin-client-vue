@@ -78,7 +78,7 @@ function submitForm() {
     // Handle form submission
 }
 try {
-    fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os', {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response) => {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (var idx in vpsTemplates.value) {

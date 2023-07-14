@@ -147,7 +147,7 @@ const state = reactive({
 });
 const loadHome = async (state) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/home', {});
+        const response = await fetchWrapper.get(baseUrl + '/home');
         console.log('api success');
         console.log(response);
         state.data = response.data;

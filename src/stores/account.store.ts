@@ -106,7 +106,7 @@ export const useAccountStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/account', {});
+                const response = await fetchWrapper.get(baseUrl + '/account');
                 this.$reset();
                 let key, value;
                 console.log(response);

@@ -115,7 +115,7 @@ onMounted(function () {
 
 const loadDns = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns', {});
+        const response = await fetchWrapper.get(baseUrl + '/dns');
         console.log('api success');
         console.log(response);
         data.value = response;
