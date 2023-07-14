@@ -27,13 +27,13 @@ const modalTitle = computed(() => {
 const isEmpty = computed(() => {
     return alerts.value.length === 0;
 });
-function editAlert(act, id, type, value, to, enabled = false) {
-    action.value = act;
-    alertId.value = id;
-    selectedType.value = type;
-    value = value;
-    to = to;
-    enabled = enabled === 1;
+function editAlert(formAct, formId, formType, formValue, formTo, formEnabled = false) {
+    action.value = formAct;
+    alertId.value = formId;
+    selectedType.value = formType;
+    value.value = formValue;
+    to.value = formTo;
+    enabled.value = formEnabled === 1;
 
     $('#type').select2().trigger('change');
 }
