@@ -77,7 +77,7 @@ let loading = Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/qs/order', {}).then((response) => {
+fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
     loading.close();
     console.log('Response:');
     console.log(response);

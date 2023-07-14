@@ -125,7 +125,7 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/domains', {});
+                let response = await fetchWrapper.get(baseUrl + '/domains');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -150,7 +150,7 @@ export const useDomainStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/domains/' + id, {});
+                const response = await fetchWrapper.get(baseUrl + '/domains/' + id);
                 this.$reset();
                 let key, value;
                 console.log(response);

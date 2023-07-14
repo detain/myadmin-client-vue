@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadSsl = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/ssl', {});
+        const response = await fetchWrapper.get(baseUrl + '/ssl');
         console.log('api success');
         console.log(response);
         data.value = response;

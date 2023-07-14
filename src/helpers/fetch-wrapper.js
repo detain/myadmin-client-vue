@@ -14,8 +14,8 @@ function request(method) {
             method,
             headers: authHeader(url),
         };
-        if (body) {
-            requestOptions.headers['Content-Type'] = 'application/json';
+        requestOptions.headers['Content-Type'] = 'application/json';
+        if (body && method != 'GET') {
             requestOptions.body = JSON.stringify(body);
         }
         return fetch(url, requestOptions).then(handleResponse);

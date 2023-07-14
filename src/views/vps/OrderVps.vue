@@ -764,7 +764,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/order', {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/vps/order').then((response) => {
         maxSlices.value = response.maxSlices;
         hdStorageSlice.value = response.hdStorageSlice;
         cpanelCost.value = response.cpanelCost;

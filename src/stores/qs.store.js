@@ -324,7 +324,7 @@ export const useQsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/qs', {});
+                let response = await fetchWrapper.get(baseUrl + '/qs');
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -349,7 +349,7 @@ export const useQsStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/qs/' + id, {});
+                const response = await fetchWrapper.get(baseUrl + '/qs/' + id);
                 this.$reset();
                 let key, value;
                 console.log(response);

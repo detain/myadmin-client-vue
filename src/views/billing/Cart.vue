@@ -239,7 +239,7 @@ function onExpDateInput(e) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries', {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
         countries.value = response;
     });
 } catch (error) {
@@ -247,7 +247,7 @@ try {
     console.log(error);
 }
 try {
-    fetchWrapper.get(baseUrl + '/billing/cart', {}).then((response) => {
+    fetchWrapper.get(baseUrl + '/billing/cart').then((response) => {
         console.log(response);
         paymentMethodsData.value = response.paymentMethodsData;
         invrows.value = response.invrows;

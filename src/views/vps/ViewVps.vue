@@ -50,7 +50,7 @@ function loadLink(newLink) {
         if (newLink == 'login') {
             try {
                 fetchWrapper
-                    .get(`${baseUrl}/vps/${id}/login`, {})
+                    .get(`${baseUrl}/vps/${id}/login`)
                     .then((response) => {
                         console.log('login success');
                         console.log(response);
