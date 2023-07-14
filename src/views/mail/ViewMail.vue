@@ -29,6 +29,7 @@ function loadLink(newLink) {
         siteStore.setTitle('Mail ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/mail/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
+		// do something here
         }
     }
 }

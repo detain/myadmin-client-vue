@@ -29,6 +29,7 @@ function loadLink(newLink) {
         siteStore.setTitle('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/domains/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
+		// do something here
         }
     }
 }

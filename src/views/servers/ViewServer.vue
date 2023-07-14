@@ -29,6 +29,7 @@ function loadLink(newLink) {
         siteStore.setTitle('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/servers/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
+		// do something here
         }
     }
 }

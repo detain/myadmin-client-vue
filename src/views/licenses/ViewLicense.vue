@@ -28,6 +28,7 @@ function loadLink(newLink) {
         siteStore.setTitle('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/licenses/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
+		// do something here
         }
     }
 }
