@@ -44,7 +44,7 @@ export default defineConfig({
             },
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-        webfontDownload(),
+        //webfontDownload(),
         inject({
             jQuery: 'jquery',
         }),
