@@ -93,7 +93,7 @@ function orderLicenseType(type) {
     router.push('/licenses/order/' + catTag.value);
 }
 
-fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
+fetchWrapper.get(baseUrl + '/licenses/order', {}).then((response) => {
     console.log('Response:');
     console.log(response);
     packageCosts.value = response.packageCosts;

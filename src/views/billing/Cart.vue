@@ -66,7 +66,7 @@ function deleteCardModal(cc_id = '0') {
         html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`, {}).then((response) => {
                     console.log('delete cc success');
                     console.log(response);
                 });
@@ -239,7 +239,7 @@ function onExpDateInput(e) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
+    fetchWrapper.get(baseUrl + '/account/countries', {}).then((response) => {
         countries.value = response;
     });
 } catch (error) {
@@ -247,7 +247,7 @@ try {
     console.log(error);
 }
 try {
-    fetchWrapper.get(baseUrl + '/billing/cart').then((response) => {
+    fetchWrapper.get(baseUrl + '/billing/cart', {}).then((response) => {
         console.log(response);
         paymentMethodsData.value = response.paymentMethodsData;
         invrows.value = response.invrows;

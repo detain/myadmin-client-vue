@@ -40,7 +40,7 @@ export const usePrePayStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/billing/prepays');
+                const response = await fetchWrapper.get(baseUrl + '/billing/prepays', {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -83,7 +83,7 @@ export const usePrePayStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.accountList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.accountList = this.accountList.filter((x) => x.id !== id);

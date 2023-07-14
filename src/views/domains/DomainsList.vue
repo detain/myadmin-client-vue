@@ -50,7 +50,7 @@ onMounted(function () {
 
 const loadDomains = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/domains');
+        const response = await fetchWrapper.get(baseUrl + '/domains', {});
         console.log('api success');
         console.log(response);
         data.value = response;

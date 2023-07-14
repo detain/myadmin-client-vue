@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadWebsites = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/websites');
+        const response = await fetchWrapper.get(baseUrl + '/websites', {});
         console.log('api success');
         console.log(response);
         data.value = response;

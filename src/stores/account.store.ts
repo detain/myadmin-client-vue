@@ -106,7 +106,7 @@ export const useAccountStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/account');
+                const response = await fetchWrapper.get(baseUrl + '/account', {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -149,7 +149,7 @@ export const useAccountStore = defineStore({
             // add isDeleting prop to user being deleted
             this.accountList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.accountList = this.accountList.filter((x) => x.id !== id);

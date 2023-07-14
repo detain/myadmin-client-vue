@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadLicenses = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/licenses');
+        const response = await fetchWrapper.get(baseUrl + '/licenses', {});
         console.log('api success');
         console.log(response);
         data.value = response;

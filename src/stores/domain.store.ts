@@ -125,7 +125,7 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/domains');
+                let response = await fetchWrapper.get(baseUrl + '/domains', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -150,7 +150,7 @@ export const useDomainStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/domains/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/domains/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -193,7 +193,7 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.domainList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.domainList = this.domainList.filter((x) => x.id !== id);

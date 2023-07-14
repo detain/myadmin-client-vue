@@ -120,7 +120,7 @@ export const useVpsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/vps');
+                let response = await fetchWrapper.get(baseUrl + '/vps', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -136,7 +136,7 @@ export const useVpsStore = defineStore({
             this.loading = true;
             let success = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/' + action);
+                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/' + action, {});
                 this.linkDisplay = response.text;
                 this.responseText = response.text;
                 this.queueId  = response.queueId;
@@ -164,7 +164,7 @@ export const useVpsStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/vps/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -207,7 +207,7 @@ export const useVpsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.vpsList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.vpsList = this.vpsList.filter((x) => x.id !== id);

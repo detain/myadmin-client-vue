@@ -19,7 +19,7 @@ export const useUsersStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.users = { loading: true };
             try {
-                this.users = await fetchWrapper.get(baseUrl);
+                this.users = await fetchWrapper.get(baseUrl, {});
             } catch (error) {
                 this.users = { error };
             }
@@ -29,7 +29,7 @@ export const useUsersStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.home = { loading: true };
             try {
-                this.home = await fetchWrapper.get(baseUrl + '/home');
+                this.home = await fetchWrapper.get(baseUrl + '/home', {});
             } catch (error) {
                 this.home = { error };
             }
@@ -39,7 +39,7 @@ export const useUsersStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.user = { loading: true };
             try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
+                this.user = await fetchWrapper.get(`${baseUrl}/${id}`, {});
             } catch (error) {
                 this.user = { error };
             }
@@ -66,7 +66,7 @@ export const useUsersStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.users.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.users = this.users.filter((x) => x.id !== id);

@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadServers = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/servers');
+        const response = await fetchWrapper.get(baseUrl + '/servers', {});
         console.log('api success');
         console.log(response);
         data.value = response;
