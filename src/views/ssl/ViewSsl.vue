@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
@@ -28,6 +28,7 @@ function loadLink(newLink) {
         siteStore.setTitle('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/ssl/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
+		// do something here
         }
     }
 }

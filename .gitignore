@@ -1,3 +1,7 @@
+#SSL Certs
+privkey.pem
+fullchain.pem
+
 # Logs
 logs
 *.log

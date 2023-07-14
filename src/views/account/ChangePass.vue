@@ -24,7 +24,7 @@ const schema = Yup.object().shape({
 function changePassword() {
     const url = 'change_pass';
     const formData = new FormData();
-    formData.append('password2', this.password);
+    formData.append('password2', password);
     fetchWrapper
         .post(`${baseUrl}/account/password`, formData)
         .then((response) => {

@@ -7,7 +7,8 @@
     "type": "module",
     "scripts": {
         "clean": "rm -rf dist dist_electron dev-dist",
-        "dev": "vite --cors",
+        "dev": "vite --cors --logLevel info ",
+        "dev:https": "vite --cors --https --logLevel info ",
         "build": "vue-tsc --noEmit && vite build",
         "build:nots": "vite build",
         "serve": "vite preview",
@@ -100,7 +101,7 @@
         "pinia": "*",
         "select2": "select2/select2#*",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
-        "sweetalert2": "11.4.8",
+        "sweetalert2": "*",
         "tablesorter": "Mottie/tablesorter#*",
         "tempusdominus-bootstrap-4": "*",
         "toastr": "^2.1.4",
@@ -163,7 +164,7 @@
         "tailwindcss": "*",
         "terser": "*",
         "typescript": "5.0.4",
-        "vite": "*",
+        "vite": "^4.4.4",
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-inspect": "*",
@@ -181,7 +182,6 @@
         "sweetalert2": "11.4.8"
     },
     "suggest": {
-        "@vitejs/plugin-basic-ssl": "*",
         "@vitejs/plugin-legacy": "latest",
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",

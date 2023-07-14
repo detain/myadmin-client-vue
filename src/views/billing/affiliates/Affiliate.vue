@@ -83,16 +83,16 @@ onMounted(() => {
             $(this).removeAttr('class aria-controls aria-label rowspan colspan style');
             var title = $(this).text();
             $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
-            $('input', this).on('keyup change', function () {
+            $('input', this).on('keyup change', function (value) {
                 var table_name = $(this).parents('table').attr('id');
-                if (table_name == 'table_default' && table_default.column(i).search() !== this.value) {
-                    table_default.column(i).search(this.value).draw();
+                if (table_name == 'table_default' && table_default.column(i).search() !== value) {
+                    table_default.column(i).search(value).draw();
                 } else if (table_name == 'table_pending') {
-                    table_pending.column(i).search(this.value).draw();
+                    table_pending.column(i).search(value).draw();
                 } else if (table_name == 'table_paid') {
-                    table_paid.column(i).search(this.value).draw();
+                    table_paid.column(i).search(value).draw();
                 } else if (table_name == 'table_failed') {
-                    table_failed.column(i).search(this.value).draw();
+                    table_failed.column(i).search(value).draw();
                 }
             });
         });

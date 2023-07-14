@@ -6,20 +6,19 @@ import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 
 const showToggle = ref(false);
+const inputFile = ref('');
 
 function toggleToggle() {
     showToggle.value = !showToggle.value;
 }
 
 function chooseFile() {
-    const inputFile = this.$refs.inputFile;
-    inputFile.click();
+    inputFile.value.click();
 }
 
 function resetFile() {
-    const inputFile = this.$refs.inputFile;
     inputFile.value = null;
-    inputFile.previousSibling.value = '';
+    inputFile.value.previousSibling.value = '';
 }
 
 $(document).ready(function () {
@@ -185,7 +184,7 @@ function bs_input_file() {
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
                                     </span>
-                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
+                                    <input type="text" name="file_attachment" v-model="inputFile" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
                                     <span class="input-group-btn">
                                         <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
                                     </span>

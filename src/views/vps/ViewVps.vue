@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ucwords } from '@/helpers';
+import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useVpsStore, useSiteStore } from '@/stores';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
+import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
 const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = ref('vps');
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => { return route.params.link; });
 const webuzoTableExists = computed(() => {
     return typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo);
 });
@@ -48,6 +48,17 @@ function loadLink(newLink) {
             }
         }
         if (newLink == 'login') {
+            try {
+                fetchWrapper
+                    .get(`${baseUrl}/vps/${id}/login`, {})
+                    .then((response) => {
+                        console.log('login success');
+                        console.log(response);
+                    });
+            } catch (error) {
+                console.log('login failed');
+                console.log(error);
+            }
         }
     }
 }
@@ -82,9 +93,9 @@ function capitalize(str) {
 }
 
 function getDiskClass() {
-    if (this.disk_percentage <= 80) {
+    if (disk_percentage <= 80) {
         return 'bg-gradient-blue';
-    } else if (80 > this.disk_percentage && this.disk_percentage <= 90) {
+    } else if (80 > disk_percentage && disk_percentage <= 90) {
         return 'bg-gradient-yellow';
     } else {
         return 'bg-gradient-red';

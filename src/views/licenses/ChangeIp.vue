@@ -16,7 +16,7 @@ const newIp = ref(''); // Data binding for the "new_ip" input field
 function handleSubmit(event) {
     event.preventDefault();
     // Handle the form submission here
-    // You can access the submitted values using this.id, this.csrfToken, and this.newIp
+    // You can access the submitted values using id, csrfToken, and newIp
 }
 </script>
 
