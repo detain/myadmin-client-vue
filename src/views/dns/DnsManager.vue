@@ -88,7 +88,7 @@ async function deleteDomain(event) {
         preConfirm: () => {
             console.log('got to this plce fro deleteDomain preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value, {}).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns(data);
@@ -115,7 +115,7 @@ onMounted(function () {
 
 const loadDns = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns');
+        const response = await fetchWrapper.get(baseUrl + '/dns', {});
         console.log('api success');
         console.log(response);
         data.value = response;

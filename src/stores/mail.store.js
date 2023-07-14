@@ -132,7 +132,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/mail');
+                let response = await fetchWrapper.get(baseUrl + '/mail', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -157,7 +157,7 @@ export const useMailStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/mail/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/mail/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -200,7 +200,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.mailList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.mailList = this.mailList.filter((x) => x.id !== id);

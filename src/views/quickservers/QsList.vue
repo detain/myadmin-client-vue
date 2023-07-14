@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadQuickservers = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/qs');
+        const response = await fetchWrapper.get(baseUrl + '/qs', {});
         console.log('api success');
         console.log(response);
         data.value = response;

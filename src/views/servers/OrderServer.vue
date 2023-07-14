@@ -69,7 +69,7 @@ async function serverOrderRequest(addCpu) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response) => {
+    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order', {}).then((response) => {
         loading.close();
         console.log('Response:');
         console.log(response);

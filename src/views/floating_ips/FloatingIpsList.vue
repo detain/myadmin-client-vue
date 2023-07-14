@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadMail = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/mail');
+        const response = await fetchWrapper.get(baseUrl + '/mail', {});
         console.log('api success');
         console.log(response);
         data.value = response;

@@ -11,7 +11,7 @@ const siteStore = useSiteStore();
 const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
 
-fetchWrapper.get(baseUrl + '/vps/' + props.id + '/reverse_dns').then((response) => {
+fetchWrapper.get(baseUrl + '/vps/' + props.id + '/reverse_dns', {}).then((response) => {
     console.log('Response:');
     console.log(response);
     ips.value = response.ips;

@@ -108,7 +108,7 @@ export const useWebsiteStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/websites');
+                let response = await fetchWrapper.get(baseUrl + '/websites', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -133,7 +133,7 @@ export const useWebsiteStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/websites/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/websites/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -176,7 +176,7 @@ export const useWebsiteStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.websiteList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.websiteList = this.websiteList.filter((x) => x.id !== id);

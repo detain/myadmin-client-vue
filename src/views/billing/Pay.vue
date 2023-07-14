@@ -16,7 +16,7 @@ const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore
 const pymt_method = ref('paypal');
 
 try {
-    fetchWrapper.get(baseUrl + '/pay').then((response) => {
+    fetchWrapper.get(baseUrl + '/pay', {}).then((response) => {
         console.log(response);
     });
 } catch (error) {

@@ -76,7 +76,7 @@ async function editDnsRecord(event) {
         fetchWrapper.post(baseUrl + '/dns/' + id, recordRow.value).then((response) => {
             console.log('api success');
             console.log(response);
-            loadDns(data);
+            loadDns(data, {});
             Swal.fire({
                 icon: 'success',
                 html: response.message,
@@ -106,7 +106,7 @@ async function addDnsRecord(event) {
             .then((response) => {
                 console.log('api success');
                 console.log(response);
-                loadDns(data);
+                loadDns(data, {});
                 Swal.fire({
                     icon: 'success',
                     html: response.message,
@@ -146,10 +146,10 @@ async function deleteRecord(event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id.value).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id.value, {}).then((response) => {
                     console.log('api success');
                     console.log(response);
-                    loadDns(data);
+                    loadDns(data, {});
                     Swal.fire({
                         icon: 'success',
                         html: response.message,
@@ -173,7 +173,7 @@ onMounted(function () {
 
 const loadDns = async (id, data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns/' + id);
+        const response = await fetchWrapper.get(baseUrl + '/dns/' + id, {});
         console.log('api success');
         console.log(response);
         data.value = response;

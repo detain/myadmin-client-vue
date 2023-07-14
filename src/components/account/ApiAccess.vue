@@ -15,7 +15,7 @@ const baseUrl = siteStore.getBaseUrl();
 
 async function generateApiKey() {
     try {
-        fetchWrapper.post(`${baseUrl}/account/apikey`).then((response) => {
+        fetchWrapper.post(`${baseUrl}/account/apikey`, {}).then((response) => {
             console.log('generateApiKey success');
             console.log(response);
         });

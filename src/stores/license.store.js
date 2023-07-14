@@ -128,7 +128,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/licenses');
+                let response = await fetchWrapper.get(baseUrl + '/licenses', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -153,7 +153,7 @@ export const useLicenseStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/licenses/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/licenses/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -196,7 +196,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.licenseList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.licenseList = this.licenseList.filter((x) => x.id !== id);

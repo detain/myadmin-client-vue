@@ -56,7 +56,7 @@ onMounted(function () {});
 const loadVpsList = async (data) => {
     try {
         const useDT = false;
-        const response = await fetchWrapper.get(baseUrl + '/vps');
+        const response = await fetchWrapper.get(baseUrl + '/vps', {});
         console.log('api success');
         console.log(response);
         if (useDT === false) {

@@ -69,7 +69,7 @@ async function placeOrder(values) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/mail/order').then((response) => {
+    fetchWrapper.get(baseUrl + '/mail/order', {}).then((response) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });

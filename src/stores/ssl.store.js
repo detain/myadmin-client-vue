@@ -23,7 +23,7 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/ssl');
+                let response = await fetchWrapper.get(baseUrl + '/ssl', {});
                 for (const field in response) {
                     this[field] = response[field];
                 }
@@ -48,7 +48,7 @@ export const useSslStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/ssl/' + id);
+                const response = await fetchWrapper.get(baseUrl + '/ssl/' + id, {});
                 this.$reset();
                 let key, value;
                 console.log(response);
@@ -91,7 +91,7 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.sslList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
 
             // remove user from list after deleted
             this.sslList = this.sslList.filter((x) => x.id !== id);

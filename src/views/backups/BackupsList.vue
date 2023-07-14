@@ -49,7 +49,7 @@ onMounted(function () {
 
 const loadBackups = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/backups');
+        const response = await fetchWrapper.get(baseUrl + '/backups', {});
         console.log('api success');
         console.log(response);
         data.value = response;

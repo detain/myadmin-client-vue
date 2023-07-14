@@ -29,7 +29,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const response = await fetchWrapper.get(baseUrl + '/login');
+                const response = await fetchWrapper.get(baseUrl + '/login', {});
                 this.logo = response.logo;
                 this.captcha = response.captcha;
                 this.language = response.language;
@@ -43,7 +43,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const response = await fetchWrapper.get(baseUrl + '/captcha');
+                const response = await fetchWrapper.get(baseUrl + '/captcha', {});
                 this.captcha = response.captcha;
             } catch (error) {
                 console.log('error:');
