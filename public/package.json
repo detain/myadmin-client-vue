@@ -39,7 +39,7 @@
         "postcss": "^8.4.24",
         "select2": "^4.1.0-rc.0",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
-        "sweetalert2": ">=11.0.0,<=11.4.8",
+        "sweetalert2": "*",
         "tablesorter": "^2.31.3",
         "tailwindcss": "^3.3.2",
         "tempusdominus-bootstrap-4": "^5.39.2",
