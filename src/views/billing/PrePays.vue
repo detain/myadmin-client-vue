@@ -17,13 +17,13 @@ function addPrepayUpdates(module) {
         $('.typerow').hide();
     } else {
         let service_options = '<option value="0">All</option>';
-        for (let key in this.allInfo[module]['services']) {
-            service_options += `<option value="${key}">${this.allInfo[module]['services'][key]}</option>`;
+        for (let key in allInfo[module]['services']) {
+            service_options += `<option value="${key}">${allInfo[module]['services'][key]}</option>`;
         }
         $('#service-select').html(service_options).trigger('render');
         let types_option = '<option value="0">All</option>';
-        for (let key in this.allInfo[module]['service_types']) {
-            types_option += `<option value="${key}">${this.allInfo[module]['service_types'][key]['services_name']}</option>`;
+        for (let key in allInfo[module]['service_types']) {
+            types_option += `<option value="${key}">${allInfo[module]['service_types'][key]['services_name']}</option>`;
         }
         $('#type-select').html(types_option).trigger('render');
         $('.servicerow').show();

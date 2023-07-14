@@ -83,9 +83,9 @@ function capitalize(str) {
 }
 
 function getDiskClass() {
-    if (this.disk_percentage <= 80) {
+    if (disk_percentage <= 80) {
         return 'bg-gradient-blue';
-    } else if (80 > this.disk_percentage && this.disk_percentage <= 90) {
+    } else if (80 > disk_percentage && disk_percentage <= 90) {
         return 'bg-gradient-yellow';
     } else {
         return 'bg-gradient-red';

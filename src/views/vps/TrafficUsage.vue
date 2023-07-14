@@ -14,7 +14,7 @@ const hourGraph = ref(null);
 const monthGraph = ref(null);
 
 const goBackLink = computed(() => {
-    return this.module === 'vps' ? `view_${this.module}` : 'view_qs';
+    return module === 'vps' ? `view_${module}` : 'view_qs';
 });
 onMounted(() => {
     // Initialize and configure the charts

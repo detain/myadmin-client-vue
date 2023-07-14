@@ -22,18 +22,18 @@ const value = ref('');
 const to = ref('');
 const enabled = ref(false);
 const modalTitle = computed(() => {
-    return this.action === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
+    return action === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
 });
 const isEmpty = computed(() => {
-    return this.alerts.length === 0;
+    return alerts.length === 0;
 });
 function editAlert(act, id, type, value, to, enabled = false) {
-    this.action = act;
-    this.alertId = id;
-    this.selectedType = type;
-    this.value = value;
-    this.to = to;
-    this.enabled = enabled === 1;
+    action = act;
+    alertId = id;
+    selectedType = type;
+    value = value;
+    to = to;
+    enabled = enabled === 1;
 
     $('#type').select2().trigger('change');
 }

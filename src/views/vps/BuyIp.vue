@@ -17,8 +17,8 @@ const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);
 function getLink() {
-    if (this.module === 'vps') {
-        return `view_${this.module}?id=${this.id}`;
+    if (module === 'vps') {
+        return `view_${module}?id=${id}`;
     } else {
         return 'view_qs';
     }
@@ -26,7 +26,7 @@ function getLink() {
 function submitForm() {
     const formData = {
         link: 'buy_ip',
-        csrf_token: this.csrf,
+        csrf_token: csrf,
     };
     // Process the form submission or make an API request here
 }

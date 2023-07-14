@@ -17,28 +17,28 @@ const currency_symbol = ref('');
 const gbCost = ref('');
 const selectedSpace = ref(0);
 function getLink() {
-    if (this.module === 'vps') {
-        return `view_${this.module}?id=${this.id}`;
+    if (module === 'vps') {
+        return `view_${module}?id=${id}`;
     } else {
         return 'view_qs';
     }
 }
 function getAmount() {
-    return (this.selectedSpace * this.gbCost).toFixed(2);
+    return (selectedSpace * gbCost).toFixed(2);
 }
 function submitForm() {
     // Process the form submission or make an API request here
 }
 onMounted(() => {
-    this.selectedSpace = 1;
+    selectedSpace = 1;
 });
 /*
   watch: {
     selectedSpace() {
       const sizeInput = document.getElementById("size");
-      sizeInput.value = `${this.selectedSpace} GB`;
+      sizeInput.value = `${selectedSpace} GB`;
       const amountInput = document.getElementById("hdamount");
-      amountInput.value = (this.selectedSpace * this.gbCost).toFixed(2);
+      amountInput.value = (selectedSpace * gbCost).toFixed(2);
     },
   },
   */

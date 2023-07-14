@@ -26,12 +26,12 @@ const tldInfo = ref({
     tld_whois_privacy_available: '{$tldInfo.tld_whois_privacy_available}',
 });
 const renewCostFormatted = computed(() => {
-    return parseFloat(this.renewCost)
+    return parseFloat(renewCost)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
 const whoisCostFormatted = computed(() => {
-    return parseFloat(this.whoisCost)
+    return parseFloat(whoisCost)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });

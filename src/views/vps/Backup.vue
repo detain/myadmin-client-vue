@@ -19,7 +19,7 @@ const backupsArr = ref([]);
 
 function submitForm() {
     // Handle form submission
-    // You can access the form data using `this.module_name`, `this.module`, etc.
+    // You can access the form data using `module_name`, `module`, etc.
 }
 </script>
 

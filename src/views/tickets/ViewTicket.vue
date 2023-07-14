@@ -12,12 +12,12 @@ function toggleToggle() {
 }
 
 function chooseFile() {
-    const inputFile = this.$refs.inputFile;
+    const inputFile = $refs.inputFile;
     inputFile.click();
 }
 
 function resetFile() {
-    const inputFile = this.$refs.inputFile;
+    const inputFile = $refs.inputFile;
     inputFile.value = null;
     inputFile.previousSibling.value = '';
 }

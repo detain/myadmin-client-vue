@@ -15,8 +15,8 @@ const module = ref(props.module);
 const csrf = ref('');
 
 function getLink() {
-    if (this.module === 'vps') {
-        return `view_${this.module}?id=${this.id}`;
+    if (module === 'vps') {
+        return `view_${module}?id=${id}`;
     } else {
         return 'view_qs';
     }
@@ -24,8 +24,8 @@ function getLink() {
 function submitForm() {
     const formData = {
         link: 'changeHostname',
-        csrf_token: this.csrf,
-        hostname: this.newHostname,
+        csrf_token: csrf,
+        hostname: newHostname,
     };
     // Process the form submission or make an API request here
 }
