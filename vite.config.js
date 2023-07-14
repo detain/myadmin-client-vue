@@ -11,7 +11,7 @@ import checker from 'vite-plugin-checker';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
-import fs from 'fs';
+//import fs from 'fs';
 //import legacy from '@vitejs/plugin-legacy'
 //import { dependencies } from "./package.json";
 import webfontDownload from 'vite-plugin-webfont-dl';
@@ -30,7 +30,7 @@ import webfontDownload from 'vite-plugin-webfont-dl';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: process.env.ELECTRON == 'true' ? './' : '/',
+    base: import.meta.env?.ELECTRON == 'true' ? './' : '/',
     server: {
         /* https: {
             key: fs.readFileSync('fullchain.pem'),

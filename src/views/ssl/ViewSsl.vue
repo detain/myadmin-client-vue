@@ -1,6 +1,6 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
