@@ -11,6 +11,7 @@
         "dev:https": "vite --cors --https --logLevel info ",
         "build": "vue-tsc --noEmit && vite build",
         "build:nots": "vite build",
+        "copy": "rsync -avpP --delete dist/ ../mystage2/public",
         "serve": "vite preview",
         "preview": "vite preview",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

@@ -114,20 +114,20 @@ function docReady() {
         if (cp === 'cp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
             $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
         } else if (cp === 'da') {
             const lic_cost_type = $(this).attr('data-ser');
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
             $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
         } else if (cp === 'pp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
             $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
         } else if (cp === 'rs') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
             $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost')).toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
         }
     });
 }
