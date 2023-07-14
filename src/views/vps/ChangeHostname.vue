@@ -15,8 +15,8 @@ const module = ref(props.module);
 const csrf = ref('');
 
 function getLink() {
-    if (module === 'vps') {
-        return `view_${module}?id=${id}`;
+    if (module.value === 'vps') {
+        return `view_${module.value}?id=${id}`;
     } else {
         return 'view_qs';
     }

@@ -22,15 +22,15 @@ const value = ref('');
 const to = ref('');
 const enabled = ref(false);
 const modalTitle = computed(() => {
-    return action === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
+    return action.value === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
 });
 const isEmpty = computed(() => {
-    return alerts.length === 0;
+    return alerts.value.length === 0;
 });
 function editAlert(act, id, type, value, to, enabled = false) {
-    action = act;
-    alertId = id;
-    selectedType = type;
+    action.value = act;
+    alertId.value = id;
+    selectedType.value = type;
     value = value;
     to = to;
     enabled = enabled === 1;

@@ -42,10 +42,10 @@ function empty(value) {
     return value.length === 0;
 }
 function editBlock(action, id, type, data) {
-    blockAction = action;
-    blockId = id;
-    blockData = data;
-    modalTitle = action === 'edit' ? 'Update Block' : 'Add New Block';
+    blockAction.value = action;
+    blockId.value = id;
+    blockData.value = data;
+    modalTitle.value = action === 'edit' ? 'Update Block' : 'Add New Block';
     const typeInput = document.getElementById(type);
     if (typeInput) {
         typeInput.checked = true;

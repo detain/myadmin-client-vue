@@ -17,20 +17,20 @@ const currency_symbol = ref('');
 const gbCost = ref('');
 const selectedSpace = ref(0);
 function getLink() {
-    if (module === 'vps') {
-        return `view_${module}?id=${id}`;
+    if (module.value === 'vps') {
+        return `view_${module.value}?id=${id}`;
     } else {
         return 'view_qs';
     }
 }
 function getAmount() {
-    return (selectedSpace * gbCost).toFixed(2);
+    return (selectedSpace.value * gbCost.value).toFixed(2);
 }
 function submitForm() {
     // Process the form submission or make an API request here
 }
 onMounted(() => {
-    selectedSpace = 1;
+    selectedSpace.value = 1;
 });
 /*
   watch: {

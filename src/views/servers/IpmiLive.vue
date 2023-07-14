@@ -19,7 +19,7 @@ const error = ref('');
 const csrfToken = ref('');
 const emailIPMILink = computed(() => {
     // Replace with the computed property logic to generate the link
-    return `view_server?id=${id}&link=ipmi_live&a_id=${aId}&email_ipmi_cred=1`;
+    return `view_server?id=${id}&link=ipmi_live&a_id=${aId.value}&email_ipmi_cred=1`;
 });
 function submitForm() {
     // Add the form submission logic here

@@ -17,8 +17,8 @@ const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);
 function getLink() {
-    if (module === 'vps') {
-        return `view_${module}?id=${id}`;
+    if (module.value === 'vps') {
+        return `view_${module.value}?id=${id}`;
     } else {
         return 'view_qs';
     }
