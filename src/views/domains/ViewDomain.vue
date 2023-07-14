@@ -17,7 +17,7 @@ const link = computed(() => {
 const domainStore = useDomainStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, csrf, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
     siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);

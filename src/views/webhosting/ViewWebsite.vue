@@ -22,7 +22,7 @@ function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;
 }
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Website' });
     siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);

@@ -17,7 +17,7 @@ const link = computed(() => {
 const serverStore = useServerStore();
 const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
     siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);

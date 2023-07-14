@@ -17,7 +17,7 @@ const link = computed(() => {
 const mailStore = useMailStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
     siteStore.addBreadcrum('/mail/' + id, 'View Mail ' + id);

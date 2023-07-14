@@ -16,7 +16,7 @@ const link = computed(() => {
 const sslStore = useSslStore();
 const { loading, error, pkg, link_display } = storeToRefs(sslStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL Certificates' });
     siteStore.addBreadcrum('/ssl/' + id, 'View SSL Certificate ' + id);

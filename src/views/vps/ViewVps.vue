@@ -23,7 +23,7 @@ const addonsTableExists = computed(() => {
 });
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
     siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);

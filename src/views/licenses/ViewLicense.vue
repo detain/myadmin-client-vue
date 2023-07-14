@@ -16,7 +16,7 @@ const link = computed(() => {
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'License' });
     siteStore.addBreadcrum('/licenses/' + id, 'View License ' + id);
