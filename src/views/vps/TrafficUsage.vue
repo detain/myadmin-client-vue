@@ -12,9 +12,11 @@ const siteStore = useSiteStore();
 const todayGraph = ref(null);
 const hourGraph = ref(null);
 const monthGraph = ref(null);
+const id = ref(props.id);
+const module = ref(props.module);
 
 const goBackLink = computed(() => {
-    return module === 'vps' ? `view_${module}` : 'view_qs';
+    return module.value === 'vps' ? `view_${module.value}` : 'view_qs';
 });
 onMounted(() => {
     // Initialize and configure the charts

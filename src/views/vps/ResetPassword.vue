@@ -8,13 +8,15 @@ const props = defineProps({
     id: Number,
     csrf: String,
 });
+const id = ref(props.id);
+const module = ref(props.module);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const server = ref('');
 const goBackLink = computed(() => {
-    return `${module === 'vps' ? 'view_' + module : 'view_qs'}?id=${id}`;
+    return `${module.value === 'vps' ? 'view_' + module.value : 'view_qs'}?id=${id.value}`;
 });
 function submitForm() {
     // Handle form submission

@@ -11,14 +11,14 @@ const siteStore = useSiteStore();
 
 const ipsDetails = ref(null);
 const buyForm = ref(null);
+const id = ref(props.id);
 const module = ref(props.module);
-//const id = ref(null);
 const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);
 function getLink() {
     if (module.value === 'vps') {
-        return `view_${module.value}?id=${id}`;
+        return `view_${module.value}?id=${id.value}`;
     } else {
         return 'view_qs';
     }

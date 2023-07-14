@@ -10,13 +10,13 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const hostname = ref('');
 const newHostname = ref('');
+const id = ref(props.id);
 const module = ref(props.module);
-//const id = ref('');
 const csrf = ref('');
 
 function getLink() {
     if (module.value === 'vps') {
-        return `view_${module.value}?id=${id}`;
+        return `view_${module.value}?id=${id.value}`;
     } else {
         return 'view_qs';
     }

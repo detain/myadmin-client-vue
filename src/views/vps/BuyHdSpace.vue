@@ -10,15 +10,15 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 const additional_hd = ref('');
+const id = ref(props.id);
 const module = ref(props.module);
-//const id = ref('');
 const csrf = ref('');
 const currency_symbol = ref('');
 const gbCost = ref('');
 const selectedSpace = ref(0);
 function getLink() {
     if (module.value === 'vps') {
-        return `view_${module.value}?id=${id}`;
+        return `view_${module.value}?id=${id.value}`;
     } else {
         return 'view_qs';
     }
