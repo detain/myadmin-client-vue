@@ -9,8 +9,8 @@ export const fetchWrapper = {
 };
 
 function request(method: string) {
-    return (url, body) => {
-        const requestOptions = {
+    return (url: string, body?: any) => {
+        const requestOptions: any = {
             method,
             headers: authHeader(url),
         };
@@ -23,7 +23,7 @@ function request(method: string) {
 }
 
 // helper functions
-function authHeader(url: string) {
+function authHeader(url: string): any {
     // return auth header with jwt if user is logged in and request is to the api url
     const { user } = useAuthStore();
     const isLoggedIn = !!user?.sessionid;

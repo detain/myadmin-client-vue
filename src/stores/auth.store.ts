@@ -22,7 +22,7 @@ export const useAuthStore = defineStore({
         // initialize state from local storage to enable user to stay logged in
         remember: localStorage.getItem('remember'),
         user: JSON.parse(localStorage.getItem('user')),
-        returnUrl: null,
+        returnUrl: null as string | null,
     }),
     actions: {
         async load() {
@@ -50,7 +50,7 @@ export const useAuthStore = defineStore({
                 console.log(error);
             }
         },
-        async login(loginParams) {
+        async login(loginParams: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -71,7 +71,7 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);
             }
         },
-        async signup(signupParms) {
+        async signup(signupParms: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
