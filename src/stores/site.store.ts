@@ -32,20 +32,20 @@ export const useSiteStore = defineStore({
                     console.log(response);
                 });
         },
-        setBreadcrums(value) {
+        setBreadcrums(value: any) {
             this.breadcrums = value;
         },
-        addBreadcrum(key, value) {
+        addBreadcrum(key: string, value: string) {
             this.breadcrums[key] = value;
         },
-        setPageHeading(value) {
+        setPageHeading(value: string) {
             this.page_heading = value;
         },
-        setTitle(value) {
+        setTitle(value: string) {
             this.title = value;
             document.title = this.title + ' | My InterServer';
         },
-        setSideMenu(value) {
+        setSideMenu(value: string) {
             this.sidemenu = value;
         },
     },

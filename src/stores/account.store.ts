@@ -86,7 +86,7 @@ export const useAccountStore = defineStore({
         enableCurrencies: false, // whether to show the currency dropdown on the contact info page
     }),
     actions: {
-        async register(user) {
+        async register(user: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
@@ -127,7 +127,7 @@ export const useAccountStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -143,7 +143,7 @@ export const useAccountStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             // add isDeleting prop to user being deleted

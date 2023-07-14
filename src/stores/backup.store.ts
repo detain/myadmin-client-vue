@@ -129,7 +129,7 @@ export const useBackupStore = defineStore({
         csrf: '4ae9d56076b6e5e0c2fb71d2ed518299ee41d0fa923f877f6b14a10dfac970fd4dd9f2e677e1842bf08336856f527fdaab70c25205d06c1c45d17a4d5547c313',
     }),
     actions: {
-        async register(user) {
+        async register(user: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
@@ -149,7 +149,7 @@ export const useBackupStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
@@ -185,7 +185,7 @@ export const useBackupStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -201,7 +201,7 @@ export const useBackupStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number) {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

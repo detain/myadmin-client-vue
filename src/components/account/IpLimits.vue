@@ -24,7 +24,7 @@ const newLimit = ref({
     end: '',
 });
 
-async function deleteRange(start, end) {
+async function deleteRange(start: string, end: string) {
     try {
         fetchWrapper
             .delete(`${baseUrl}/account/iplimits`, {

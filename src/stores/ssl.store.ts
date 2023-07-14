@@ -13,7 +13,7 @@ export const useSslStore = defineStore({
         link_display: false,
     }),
     actions: {
-        async register(user) {
+        async register(user: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
@@ -33,7 +33,7 @@ export const useSslStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
@@ -69,7 +69,7 @@ export const useSslStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -85,7 +85,7 @@ export const useSslStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number) {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

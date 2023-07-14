@@ -122,7 +122,7 @@ export const useMailStore = defineStore({
         csrf: '',
     }),
     actions: {
-        async register(user) {
+        async register(user: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
@@ -142,7 +142,7 @@ export const useMailStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
@@ -178,7 +178,7 @@ export const useMailStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any) {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -194,7 +194,7 @@ export const useMailStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number) {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
