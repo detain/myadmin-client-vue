@@ -19,7 +19,7 @@ const method = computed(() => { return route.params.method; });
 const invoices = computed(() => { return route.params.invoices; });
 
 try {
-    fetchWrapper.get(baseUrl + '/pay/' + method.value + '/' + invoices.value).then((response) => {
+    fetchWrapper.get(baseUrl + '/pay/' + method.value + '/' + invoices.value + '?redirectUrl=' + encodeURIComponent('https://' + window.location.hostname + '/pay/' + method.value + '/' + invoices.value) + '?cancelUrl=' + encodeURIComponent('https://' + window.location.hostname + '/pay/' + method.value + '/' + invoices.value)).then((response) => {
         console.log(response);
     });
 } catch (error) {
