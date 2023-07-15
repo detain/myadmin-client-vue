@@ -14,6 +14,7 @@ siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
+const invoices = ref([]);
 const modules = ref({});
 const editCcIdx = ref(0);
 const selectedCc = ref('');
@@ -253,6 +254,15 @@ try {
         invrows.value = response.invrows;
         modules.value = response.modules;
         modulesCounts.value = response.modules_counts;
+        let checkedInvoices = [];
+        for (const idx in response.invrows) {
+            let row = response.invrows[idx];
+            if (typeof row.prepay_invoice == 'undefined') {
+                checkedInvoices.push(row.service_label);
+            }
+        }
+        console.log(checkedInvoices);
+        invoices.value = checkedInvoices;
     });
 } catch (error) {
     console.log('error:');
@@ -372,8 +382,8 @@ accountStore.load();
                             <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                 <td>
                                     <div class="icheck-success d-inline">
-                                        <input :id="invrow.service_label" :type="invrow.service_line === 1 ? 'checkbox' : 'radio'" :name="invrow.service_line === 1 ? 'services[]' : 'invoices[]'" v-model="invrow.service_label" :checked="!invrow.prepay_invoice" class="inv_checkbox" @change="updateTotal(invrow.service_label)" />
-                                        <label :for="invrow.service_label"> </label>
+                                        <input :id="'check'+invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
+                                        <label :for="'check'+invrow.invoices_id"> </label>
                                     </div>
                                 </td>
                                 <td>
@@ -423,7 +433,7 @@ accountStore.load();
                                 <span id="payments-section">
                                     <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
                                         <a v-if="paymentMethod.text == 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>

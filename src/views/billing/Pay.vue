@@ -16,9 +16,10 @@ const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 const route = useRoute();
 const method = computed(() => { return route.params.method; });
+const invoices = computed(() => { return route.params.invoices; });
 
 try {
-    fetchWrapper.get(baseUrl + '/pay/' + method.value ).then((response) => {
+    fetchWrapper.get(baseUrl + '/pay/' + method.value + '/' + invoices.value).then((response) => {
         console.log(response);
     });
 } catch (error) {
