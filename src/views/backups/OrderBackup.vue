@@ -19,6 +19,8 @@ const rootpass = ref('');
 const period = ref(1);
 const coupon = ref('');
 const csrfToken = ref('');
+const packageCosts = ref({});
+const serviceTypes = ref({});
 
 const periods = [
     { label: 'Monthly', value: 1 },
@@ -39,6 +41,8 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
     loading.close();
     console.log('Response:');
     console.log(response);
+    packageCosts.value = response.packageCosts;
+    serviceTypes.value = response.serviceTypes;
 });
 </script>
 
@@ -63,7 +67,9 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10 input-group">
                                     <select v-model="pkg" class="form-control form-control-sm select2">
-                                        <option v-for="row in packages" :key="row.value" :value="row.value">{{ row.label }}</option>
+                                        <template v-for="(row, index) in serviceTypes">
+                                            <option v-if="row.services_buyable == 1" :key="index" :value="index">{{ row.services_name }}</option>
+                                        </template>
                                     </select>
                                 </div>
                             </div>
@@ -78,7 +84,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                             <div id="coupon_row" class="row">
                                 <label class="col-md-2 col-form-label">Coupon Code</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control form-control-sm" v-model="couponCode" @change="updateCoupon" placeholder="Coupon Code" />
+                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @change="updateCoupon" placeholder="Coupon Code" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
                                     <img :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
