@@ -29,22 +29,28 @@ async function onSubmit(values) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper
-        .post(baseUrl + '/mail/order', {
-            validateOnly: true,
-            serviceType: pkg.value,
-            coupon: coupon.value,
-        })
-        .then((response) => {
-            loading.close();
-            validateResponse.value = response;
-            console.log('Response:');
-            console.log(response);
-            pkg.value = response.serviceType;
-            if (response.continue == true) {
-                step.value = 'order_confirm';
-            }
-        });
+    try {
+        fetchWrapper
+            .put(baseUrl + '/mail/order', {
+                validateOnly: true,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                validateResponse.value = response;
+                console.log('Response:');
+                console.log(response);
+                pkg.value = response.serviceType;
+                if (response.continue == true) {
+                    step.value = 'order_confirm';
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
 }
 
 async function placeOrder(values) {
@@ -54,18 +60,26 @@ async function placeOrder(values) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper
-        .post(baseUrl + '/mail/order', {
-            validateOnly: false,
-            serviceType: pkg.value,
-            coupon: coupon.value,
-        })
-        .then((response) => {
-            loading.close();
-            validateResponse.value = response;
-            console.log('Response:');
-            console.log(response);
-        });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/mail/order', {
+                validateOnly: false,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                console.log('Response:');
+                console.log(response);
+                if (response['continue'] == true) {
+                    // redirect to cart/<iids.join(',')>
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
 }
 
 try {
@@ -93,13 +107,10 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="mail_form" method="post" class="mail_form_init" action="order_mail" @submit.prevent="onSubmit">
+                        <form id="mail_form" method="post" class="mail_form_init" action="/mail/order" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label text-right"
-                                    >Package
-                                    <span class="text-danger"> *</span>
-                                </label>
+                                <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="pkg" class="form-control form-control-sm select2 valid">
                                         <option v-for="(serviceType, index) in serviceTypes" :key="index" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
@@ -179,8 +190,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" class="mail_form_confirm" action="order_mail">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
+                        <form method="post" class="mail_form_confirm" action="/mail/order" @submit.prevent="placeOrder">
                             <input type="hidden" name="serviceType" :value="pkg" />
                             <input type="hidden" name="coupon" :value="coupon" />
                             <table class="table-sm table-bordered table">
@@ -234,7 +244,7 @@ try {
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
                                 <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold">{{ packageCost }}</span> until canceled.
+                                    The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold">{{ packageCosts[pkg] }}</span> until canceled.
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
@@ -244,7 +254,7 @@ try {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click="placeOrder">Place Order</button>
+                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos">Place Order</button>
                                 </div>
                             </div>
                         </form>
