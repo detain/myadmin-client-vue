@@ -46,11 +46,49 @@ const osVersionSelect = computed(() => {
     return templates;
 });
 
+
+
+async function editForm() {
+    step.value = 'orderform';
+}
+
 async function onSubmit() {
-    step.value = 'order_confirm';
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .put(`${baseUrl}/qs/order`, {
+                osVersion: osVersion.value,
+                osDistro: osDistro.value,
+                hostname: hostname.value,
+                rootpass: rootpass.value,
+                csrfToken: csrfToken.value,
+                qsId: qsId.value,
+            })
+            .then((response) => {
+                step.value = 'order_confirm';
+                loading.close();
+                console.log('qs order validated');
+                console.log(response);
+            });
+    } catch (error) {
+        loading.close();
+        console.log('qs order validation failed');
+        console.log(error);
+    }
 }
 
 async function onSubmitConfirmation() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
     try {
         fetchWrapper
             .post(`${baseUrl}/qs/order`, {
@@ -62,10 +100,12 @@ async function onSubmitConfirmation() {
                 qsId: qsId.value,
             })
             .then((response) => {
+                loading.close();
                 console.log('qs order validated');
                 console.log(response);
             });
     } catch (error) {
+        loading.close();
         console.log('qs order validation failed');
         console.log(error);
     }
