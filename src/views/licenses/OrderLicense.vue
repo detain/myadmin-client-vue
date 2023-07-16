@@ -86,6 +86,11 @@ const getServiceTypes = computed(() => {
     }
     return types;
 });
+
+function updatePrice() {
+
+}
+
 function orderLicenseType(type) {
     catTag.value = type;
     step.value = 'order_form';
