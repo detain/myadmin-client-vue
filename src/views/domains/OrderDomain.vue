@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
@@ -29,33 +29,40 @@ const domainFields = ref({});
 const domain = computed(() => {
     return route.params.domain;
 });
-const type = computed(() => {
-    return route.params.type;
+const regType = computed(() => {
+    return route.params.regType;
 });
-const display = computed(() => {
+const display = ref('step1');
+
+async function updateStep() {
     siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
     if (typeof domain.value == 'undefined') {
-        return 'step1';
+        display.value ='step1';
+    } else {
+        hostname.value = domain.value;
+        siteStore.addBreadcrum('/domains/order/' + domain.value, 'Domain Search');
+        if (searchResponse.value?.domain != hostname.value) {
+            console.log('currently hostname is ' + searchResponse.value?.domain);
+            console.log(searchResponse.value?.domain);
+            console.log('new domain is ' + hostname.value);
+            searchDomain();
+        }
+        if (typeof regType.value == 'undefined') {
+            display.value = 'step1b';
+        }
+        domainType.value = regType.value;
+        siteStore.addBreadcrum('/domains/order/' + domain.value + '/' + regType.value, 'Domain Details');
+        getDomainFields();
+        display.value ='step2';
     }
-    hostname.value = domain.value;
-    siteStore.addBreadcrum('/domains/order/' + domain.value, 'Domain Search');
-    if (searchResponse.value?.domain != hostname.value) {
-        console.log('currently hostname is ' + searchResponse.value?.domain);
-        console.log(searchResponse.value?.domain);
-        console.log('new domain is ' + hostname.value);
-        searchDomain();
-    }
-    if (typeof type.value == 'undefined') {
-        return 'step1b';
-    }
-    domainType.value = type.value;
-    siteStore.addBreadcrum('/domains/order/' + domain.value + '/' + type.value, 'Domain Details');
-    getDomainFields();
-    return 'step2';
+}
+
+watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+    updateStep();
 });
 
 fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
-    console.log('Response:');
+    console.log('GET Response:');
     console.log(response);
     whoisPrivacyCost.value = response.whoisPrivacyCost;
     services.value = response.services;
@@ -76,7 +83,7 @@ async function searchDomain() {
         .then((response) => {
             loading.close();
             searchResponse.value = response;
-            console.log('Response:');
+            console.log('PUT Response:');
             console.log(response);
             domainResult.value = response.domain_result;
             suggestions.value = response.suggestions;
@@ -102,11 +109,13 @@ async function getDomainFields() {
         .then((response) => {
             loading.close();
             searchResponse.value = response;
-            console.log('Response:');
+            console.log('PATCH Response:');
             console.log(response);
             domainFields.value = response.domainFields;
         });
 }
+
+updateStep();
 </script>
 
 <template>
