@@ -7,8 +7,8 @@
     "type": "module",
     "scripts": {
         "clean": "rm -rf dist dist_electron dev-dist",
-        "dev": "vite --cors --logLevel info ",
-        "dev:https": "vite --cors --https --logLevel info ",
+        "dev": "vite --cors",
+        "dev:https": "vite --cors --https",
         "build": "vue-tsc --noEmit && vite build",
         "build:nots": "vite build",
         "copy": "rsync -avpP --delete dist/ ../mystage2/public",

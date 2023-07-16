@@ -48,10 +48,10 @@ export default defineConfig({
             insertTypesEntry: true,
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-        webfontDownload(),
-//        inject({
-//            jQuery: 'jquery',
-//        }),
+        //webfontDownload(),
+        inject({
+            jQuery: 'jquery',
+        }),
         checker({
             vueTsc: true,
             typescript: true,

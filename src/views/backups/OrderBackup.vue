@@ -12,13 +12,13 @@ const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const currency = ref('USD');
 const currencySymbol = ref('$');
-const custid = ref(2773);
-const ima = ref('client');
-const pkg = ref(null);
+const pkg = ref(10831);
 const rootpass = ref('');
 const period = ref(1);
 const coupon = ref('');
 const csrfToken = ref('');
+const packageCosts = ref({});
+const serviceTypes = ref({});
 
 const periods = [
     { label: 'Monthly', value: 1 },
@@ -28,6 +28,70 @@ const periods = [
     { label: '24 Months (15% off)', value: 24 },
     { label: '36 Months (20% off)', value: 36 },
 ];
+
+async function editForm() {
+    step.value = 'orderform';
+}
+
+async function onSubmit(values) {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .put(baseUrl + '/backups/order', {
+                validateOnly: true,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                validateResponse.value = response;
+                console.log('Response:');
+                console.log(response);
+                pkg.value = response.serviceType;
+                if (response.continue == true) {
+                    step.value = 'order_confirm';
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
+}
+
+async function placeOrder(values) {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/backups]/order', {
+                validateOnly: false,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                console.log('Response:');
+                console.log(response);
+                if (response['continue'] == true) {
+                    // redirect to cart/<iids.join(',')>
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
+}
 
 let loading = Swal.fire({
     title: '',
@@ -39,6 +103,8 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
     loading.close();
     console.log('Response:');
     console.log(response);
+    packageCosts.value = response.packageCosts;
+    serviceTypes.value = response.serviceTypes;
 });
 </script>
 
@@ -56,14 +122,16 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="storage_form" method="post" class="storage_form_init" @submit.prevent="handleSubmit">
+                        <form id="storage_form" method="post" class="storage_form_init" @submit.prevent="onSubmit">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input type="hidden" name="rootpass" :value="rootpass" />
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10 input-group">
                                     <select v-model="pkg" class="form-control form-control-sm select2">
-                                        <option v-for="row in packages" :key="row.value" :value="row.value">{{ row.label }}</option>
+                                        <template v-for="(row, index) in serviceTypes">
+                                            <option v-if="row.services_buyable == 1" :key="index" :value="index">{{ row.services_name }}</option>
+                                        </template>
                                     </select>
                                 </div>
                             </div>
@@ -78,7 +146,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                             <div id="coupon_row" class="row">
                                 <label class="col-md-2 col-form-label">Coupon Code</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control form-control-sm" v-model="couponCode" @change="updateCoupon" placeholder="Coupon Code" />
+                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @change="updateCoupon" placeholder="Coupon Code" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
                                     <img :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
@@ -148,7 +216,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, key) in orderData" :key="key" type="hidden" :id="key" :name="key" :value="value" />
                         </form>
-                        <form method="post" class="storage_form_confirm" :action="orderStorageUrl">
+                        <form method="post" class="storage_form_confirm" :action="orderStorageUrl" @submit.prevent="placeOrder">
                             <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, key) in orderData.data" :key="key" :id="key == 'backup' ? 'backupselect' : key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">

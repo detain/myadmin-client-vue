@@ -58,6 +58,10 @@ const fieldLabel = ref({
     },
 });
 
+function addDrive() {
+
+}
+
 async function onSubmitCpu() {
     serverOrderRequest(true);
 }
