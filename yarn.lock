@@ -5928,7 +5928,7 @@ jquery-sortable@johnny/jquery-sortable#master:
   version "0.9.13"
   resolved "https://codeload.github.com/johnny/jquery-sortable/tar.gz/4d31eeaf0136307c4d70e9e2252bee001384cf72"
   dependencies:
-    jquery "^2.1.2"
+    jquery "^2.1.2 || ^3.0.0"
 
 jquery-ui-dist@^1.13.0:
   version "1.13.2"
