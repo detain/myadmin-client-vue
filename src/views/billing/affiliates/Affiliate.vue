@@ -85,13 +85,13 @@ onMounted(() => {
             $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
             $('input', this).on('keyup change', function (value) {
                 var table_name = $(this).parents('table').attr('id');
-                if (table_name == 'table_default' && table_default.column(i).search() !== value) {
+                if (table_name === 'table_default' && table_default.column(i).search() !== value) {
                     table_default.column(i).search(value).draw();
-                } else if (table_name == 'table_pending') {
+                } else if (table_name === 'table_pending') {
                     table_pending.column(i).search(value).draw();
-                } else if (table_name == 'table_paid') {
+                } else if (table_name === 'table_paid') {
                     table_paid.column(i).search(value).draw();
-                } else if (table_name == 'table_failed') {
+                } else if (table_name === 'table_failed') {
                     table_failed.column(i).search(value).draw();
                 }
             });

@@ -49,7 +49,7 @@ async function onSubmit(values) {
             })
             .then((response) => {
                 loading.close();
-                validateResponse.value = response;
+                //validateResponse.value = response;
                 console.log('Response:');
                 console.log(response);
                 pkg.value = response.serviceType;

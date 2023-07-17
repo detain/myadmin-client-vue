@@ -37,7 +37,7 @@
         "mosha-vue-toastify": "^1.0.23",
         "overlayscrollbars": "^1.0",
         "postcss": "^8.4.24",
-        "select2": "^4.1.0-rc.0",
+        "select2": "4.1.0-beta.0",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
         "sweetalert2": "*",
         "tablesorter": "^2.31.3",

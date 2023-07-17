@@ -5928,7 +5928,7 @@ jquery-sortable@johnny/jquery-sortable#master:
   version "0.9.13"
   resolved "https://codeload.github.com/johnny/jquery-sortable/tar.gz/4d31eeaf0136307c4d70e9e2252bee001384cf72"
   dependencies:
-    jquery "^2.1.2 || ^3.0.0"
+    jquery "^2.1.2"
 
 jquery-ui-dist@^1.13.0:
   version "1.13.2"
@@ -7661,14 +7661,15 @@ select2-bootstrap-theme@select2/select2-bootstrap-theme#master:
   version "0.1.0-beta.10"
   resolved "https://codeload.github.com/select2/select2-bootstrap-theme/tar.gz/8f833863dc3bf5c0d8d7113a8da43acb2c7c7c91"
 
+select2@4.1.0-beta.0:
+  version "4.1.0-beta.0"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.1.0-beta.0.tgz#7d46dafcb9764949288da1b0b7986bc90e09d8fa"
+  integrity sha512-lDzY6Uw5fizaksQzLHr8r2uDtcNtCdXluDVzRjqsrL1oag9Pf90Bs2wVO+oM6sManO81romEBkvw050TmXXtEw==
+
 select2@^4.0.13:
   version "4.0.13"
   resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.13.tgz#0dbe377df3f96167c4c1626033e924372d8ef44d"
   integrity sha512-1JeB87s6oN/TDxQQYCvS5EFoQyvV6eYMZZ0AeA4tdFDYWN3BAGZ8npr17UBFddU0lgAt3H0yjX3X6/ekOj1yjw==
-
-select2@select2/select2#*:
-  version "4.0.13"
-  resolved "https://codeload.github.com/select2/select2/tar.gz/45f2b83ceed5231afa7b3d5b12b58ad335edd82e"
 
 semver-compare@^1.0.0:
   version "1.0.0"

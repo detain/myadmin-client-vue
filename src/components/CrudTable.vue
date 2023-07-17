@@ -203,10 +203,10 @@ function crud_submit_handler(what, that) {
                 } else {
                     window.location = html.substring(4);
                 }
-            } else if (html == 'error') {
+            } else if (html === 'error') {
                 $('#' + what + 'Modal .btn').attr('disabled', false);
                 jQuery('#' + what + 'Modal .error_message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error Charging the Credit-Card</div>');
-            } else if (html == 'ok') {
+            } else if (html === 'ok') {
                 $('#' + what + 'Modal .btn').attr('disabled', false);
             } else {
                 $('#' + what + 'Modal .btn').attr('disabled', false);
@@ -271,7 +271,7 @@ function replaceAll(str, find, replace) {
 function crud_search(that, terms) {
     crudSearchTerms.value = terms;
     jQuery('.crud-header-buttons a').removeClass('active');
-    if (jQuery(that).attr('id') != 'crud_search_button') jQuery(that).addClass('active');
+    if (jQuery(that).attr('id') !== 'crud_search_button') jQuery(that).addClass('active');
     crud_load_page();
 }
 
@@ -343,12 +343,12 @@ function crud_update_pager() {
     pageLinks[0] = 1;
     first = crudPage.value - 2;
     if (first < 2) first = 2;
-    for (x = 0; x < 4; x++) if (pageLinks.indexOf(first + x) == -1 && first + x < crudTotalPages.value) pageLinks[pageLinks.length] = first + x;
+    for (x = 0; x < 4; x++) if (pageLinks.indexOf(first + x) === -1 && first + x < crudTotalPages.value) pageLinks[pageLinks.length] = first + x;
     pageLinks[pageLinks.length] = crudTotalPages;
     for (x = 0; x < pageLinks.length; x++) {
         page_html = page_html + '<li class="page-item crud-page';
         pageOffset.value = (pageLinks[x] - 1) * crudPageLimit.value;
-        if (crudPageOffset.value == pageOffset) page_html = page_html + ' active';
+        if (crudPageOffset.value === pageOffset) page_html = page_html + ' active';
         page_html = page_html + '"><a href="" class="page-link" data-offset="' + pageOffset + '">' + pageLinks[x] + '</a></li>';
     }
     jQuery('.crud .pagination li.crud-page').remove();
@@ -393,7 +393,7 @@ function crud_update_sort(that) {
     crudOrderDir.value = parent.attr('data-order-dir');
     crudOrderBy.value = parent.attr('data-order-by');
     //console.log("got a click on "+crudOrderBy+" dir "+crudOrderDir.value);
-    if (crudOrderDir.value == 'asc') parent.attr('data-order-dir', 'desc');
+    if (crudOrderDir.value === 'asc') parent.attr('data-order-dir', 'desc');
     else parent.attr('data-order-dir', 'asc');
     //jQuery('.crud #itemrowheader th').removeClass('active');
     jQuery('.crud #itemrowheader .header_link i').css('opacity', '0.3').removeClass('fa-sort-desc').removeClass('fa-sort-asc').addClass('fa-sort');

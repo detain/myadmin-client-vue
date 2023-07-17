@@ -100,7 +100,7 @@
         "mosha-vue-toastify": "*",
         "overlayscrollbars": "^1.0",
         "pinia": "*",
-        "select2": "select2/select2#*",
+        "select2": "4.1.0-beta.0",
         "select2-bootstrap-theme": "select2/select2-bootstrap-theme#master",
         "sweetalert2": "*",
         "tablesorter": "Mottie/tablesorter#*",

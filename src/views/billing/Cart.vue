@@ -139,7 +139,7 @@ function editCardSubmit() {
 
 function addCardModal() {
     for (var key in contFields) {
-        contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
+        contFields[key] = data.value[key] && key !== 'cc' && key !== 'cc_exp' ? data.value[key] : '';
     }
     $('#AddClick').trigger('click');
 }
@@ -163,9 +163,9 @@ function verifyCard(cc_id = 0) {
     var verifyDisplay = $('#unver_' + cc_id).attr('data-step');
     if (typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
-    } else if (verifyDisplay == 'step1') {
+    } else if (verifyDisplay === 'step1') {
         $('#VerifyFormStep1').trigger('click');
-    } else if (verifyDisplay == 'step2') {
+    } else if (verifyDisplay === 'step2') {
         $('#VerifyClick').trigger('click');
     }
 }
@@ -432,7 +432,7 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="paymentMethod.text == 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
+                                        <a v-if="paymentMethod.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
                                         <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
                                     </span>
                                 </span>
@@ -449,8 +449,8 @@ accountStore.load();
                                 <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="paymentMethod == 'cc' && selectedCc == cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
-                                        <div v-if="paymentMethod == 'cc' && selectedCc == cc_id" class="ribbon-wrapper">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="paymentMethod === 'cc' && selectedCc === cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
+                                        <div v-if="paymentMethod === 'cc' && selectedCc === cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
                                         <form action="cart" method="post" id="paymentform">
@@ -483,8 +483,8 @@ accountStore.load();
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc != cc_id || cc_detail.verified_cc == 'no') && paymentMethod == 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
-                                                    <input v-else-if="paymentMethod == 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
+                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <input v-else-if="paymentMethod === 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
                                         </form>
@@ -519,7 +519,7 @@ accountStore.load();
                             </tr>
                         </table>
                     </template>
-                    <div v-if="currency == 'INR'" class="col-md-12 alert alert-info b-radius mb-0 mt-4 text-sm">
+                    <div v-if="currency === 'INR'" class="col-md-12 alert alert-info b-radius mb-0 mt-4 text-sm">
                         <h4 class="text-bold text-capitalize text-lg">Manual Bank Payment Option:</h4>
                         <p class="form-text m-0">
                             <b>Name:</b> ROCKSOLID INTERSERVER PRIVATE LIMITED<br />

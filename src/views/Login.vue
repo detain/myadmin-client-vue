@@ -955,7 +955,10 @@ authStore.load();
                                         <li>Messages must include details on how the user subscribed. These details must be provided to Interserver on our request.</li>
                                         <li>Excessive complaints may result in account termination.</li>
                                         <li>Interserver reserves the right to charge $100 fee for IPs which are blacklisted due to failing to adhere to Interserver policies.</li>
-                                        <li>Operating an account on behalf of, or in connection with, or reselling any service to, persons or firms listed in the Spamhaus Register of Known Spam Operations (ROKSO) database at: http://www.spamhaus.org will result in immediate account termination.</li>
+                                        <li>Operating an account on behalf of, or in connection with, or reselling any
+                                          service to, persons or firms listed in the Spamhaus Register of Known Spam
+                                          Operations (ROKSO) database at: https://www.spamhaus.org will result in
+                                          immediate account termination.</li>
                                     </ul>
                                     <div class="press_details bg-gray-200 p-3">
                                         <p class="font-semibold text-black">Abuse Complaints</p>

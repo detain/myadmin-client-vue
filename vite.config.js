@@ -30,7 +30,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: import.meta.env?.ELECTRON == 'true' ? './' : '/',
+    //base: import.meta.env?.ELECTRON == 'true' ? './' : '/',
     server: {
         /* https: {
             key: fs.readFileSync('fullchain.pem'),
