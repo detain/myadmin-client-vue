@@ -223,7 +223,7 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
       // no timer shorter than 50ms (not really visible any way)
       const minTimer = 50;
       // calc step time to show all interediate values
-      const stepTime = Math.abs(Math.floor(duration / range));
+      let stepTime = Math.abs(Math.floor(duration / range));
       // never go below minTimer
         stepTime = Math.max(stepTime, minTimer);
         // get current time and calculate desired end time
@@ -266,7 +266,7 @@ function login_handler(e) {
             html: password,
         });
     } else {
-      const loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
+      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
       if (twofactor) {
             loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
         }
@@ -274,7 +274,7 @@ function login_handler(e) {
             loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailconf);
         }
       const pathArray = window.location.pathname.split('/');
-      const newPath = '/';
+      let newPath = '/';
       let i;
       for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
@@ -363,7 +363,7 @@ function forgot_password(e) {
         $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
     } else {
       const pathArray = window.location.pathname.split('/');
-      const newPath = '/';
+      let newPath = '/';
       let i;
       for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
@@ -401,8 +401,8 @@ function signup_handler(e) {
   const items = $('#loginForm input:not(.login_info), #loginForm select:not(.login_info)').serializeArray();
   const email_conf = $('input[name=email_confirmation]').val();
   const captchaSignup = $('#captcha_signup').val();
-  const data_string = 'ajax=1';
-  const errors = '';
+  let data_string = 'ajax=1';
+  let errors = '';
   let i, n;
   for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != 'remember' && items[i].name != 'email_confirmation' && items[i].name != 'captcha' && items[i].value == '') {
@@ -484,7 +484,7 @@ function signup_handler(e) {
                 },
                 beforeSend: function () {
                     $('.loginsubmit, .signupsubmit').attr('disabled', true);
-                    loading;
+                    loading.close();
                 },
             });
         }
@@ -1088,7 +1088,7 @@ body {
 }
 .pp {
     font-size: 12px;
-    font-style: bold;
+    font-weight: bold;
 }
 #pswd_info ul {
     padding: 0px;

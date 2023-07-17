@@ -370,11 +370,11 @@ async function update_vps_choices() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-  const service_cost = sliceCost.value;
+  let service_cost = sliceCost.value;
   // first month slice cost
-  const first_slice = sliceCost.value;
-  const monthly_slice_cost = sliceCost.value;
-  const monthly_service_cost = service_cost;
+  let first_slice = sliceCost.value;
+  let monthly_slice_cost = sliceCost.value;
+  let monthly_service_cost = service_cost;
   let couponpricetext;
   if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
@@ -543,11 +543,11 @@ async function update_vps_choices_order() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-  const service_cost = sliceCost.value;
+  let service_cost = sliceCost.value;
   // first month slice cost
-  const first_slice = sliceCost.value;
-  const monthly_slice_cost = sliceCost.value;
-  const monthly_service_cost = service_cost;
+  let first_slice = sliceCost.value;
+  let monthly_slice_cost = sliceCost.value;
+  let monthly_service_cost = service_cost;
   let couponpricetext;
   if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {

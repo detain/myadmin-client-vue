@@ -163,7 +163,7 @@ function updatePaymentMethod() {
 
 function formatCardNum(e) {
     if (e.target.value == e.target.lastValue) return;
-  const caretPosition = e.target.selectionStart;
+  let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
   const parts = [];
   let i, len;
@@ -183,7 +183,7 @@ function formatCardNum(e) {
 
 function formatExpDate(e) {
     if (e.target.value == e.target.lastValue) return;
-  const caretPosition = e.target.selectionStart;
+  let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
   const parts = [];
   let i;
@@ -191,7 +191,7 @@ function formatExpDate(e) {
         parts.push(sanitizedValue.substring(i, i + 2));
     }
     if (sanitizedValue.length >= 2) {
-        for (const j = 2; j < sanitizedValue.length; j += 5) {
+        for (let j = 2; j < sanitizedValue.length; j += 5) {
             parts.push(sanitizedValue.substring(j, j + 5));
         }
     }

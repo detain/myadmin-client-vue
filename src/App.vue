@@ -55,7 +55,7 @@ $('.collapse_menu').on('click', function () {
 if ($.AdminLTESidebarTweak.options.EnableRemember) {
   const re = new RegExp('toggleState' + '=([^;]+)');
   const value = re.exec(document.cookie);
-  var toggleState = value != null ? unescape(value[1]) : null;
+  let toggleState = value != null ? unescape(value[1]) : null;
     if (toggleState == 'closed') {
         if ($.AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')

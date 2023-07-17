@@ -75,7 +75,7 @@ onMounted(() => {
         ],
     });
   const tables = ['table_default', 'table_pending', 'table_paid', 'table_failed'];
-  for (const j = tables.length - 1; j >= 0; j--) {
+  for (let j = tables.length - 1; j >= 0; j--) {
         $('#' + tables[j] + ' thead tr')
             .clone(true)
             .appendTo('#' + tables[j] + ' thead');
