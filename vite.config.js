@@ -10,7 +10,7 @@ import checker from 'vite-plugin-checker';
 //import { resolve } from "path";
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
-import { VitePWA } from 'vite-plugin-pwa';
+//import { VitePWA } from 'vite-plugin-pwa';
 //import fs from 'fs';
 //import legacy from '@vitejs/plugin-legacy'
 //import { dependencies } from "./package.json";
@@ -65,12 +65,12 @@ export default defineConfig({
         }),
         splitVendorChunkPlugin(),
         legacy({ targets: ["defaults", "not IE 11"] }), */
-        VitePWA({
+        /*VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }),
+        }),*/
         Inspect(),
         Inspector(),
         VueDevTools(),
