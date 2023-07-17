@@ -7,10 +7,10 @@ import Inspector from 'vite-plugin-vue-inspector';
 //import Inspector from 'unplugin-vue-inspector/vite'
 //import AutoImport from "unplugin-auto-import/vite";
 //import i18nResources from "vite-plugin-i18n-resources"
-import checker from 'vite-plugin-checker';
+//import checker from 'vite-plugin-checker';
 //import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
-//import inject from '@rollup/plugin-inject';
+import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
 //import fs from 'fs';
 //import legacy from '@vitejs/plugin-legacy'
@@ -52,10 +52,10 @@ export default defineConfig({
         inject({
             jQuery: 'jquery',
         }),
-        checker({
+        /*checker({
             vueTsc: true,
-            typescript: true,
-        }),
+            typescript: false,
+        })*/,
         /*
         i18nResources({
             path: resolve(__dirname, "src/locales"),
