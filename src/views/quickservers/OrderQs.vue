@@ -25,17 +25,17 @@ const hostname = ref('');
 const csrfToken = ref('');
 const osTemplates = ref({});
 const osVersionSelect = computed(() => {
-    var entries, lastEntry, lastKey, lastValue;
-    console.log(osTemplates.value);
+  let entries, lastEntry, lastKey, lastValue;
+  console.log(osTemplates.value);
     console.log(osDistro.value);
     if (Object.entries(osTemplates.value).length == 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length == 0 || osTemplates.value[osDistro.value][64].length == 0) {
         return {};
     }
-    var templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
-        acc[key] = value;
-        return acc;
-    }, {});
-    if (typeof templates[osVersion.value] == 'undefined') {
+  const templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
+    acc[key] = value;
+    return acc;
+  }, {});
+  if (typeof templates[osVersion.value] == 'undefined') {
         console.log(templates);
         entries = Object.entries(templates);
         console.log(entries);

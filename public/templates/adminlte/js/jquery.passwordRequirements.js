@@ -13,7 +13,7 @@ import jQuery from 'jquery';
     $.fn.extend({
         passwordRequirements: function (options) {
             // options for the plugin
-            var defaults = {
+            const defaults = {
                 numCharacters: 8,
                 useLowercase: true,
                 useUppercase: true,
@@ -28,12 +28,12 @@ import jQuery from 'jquery';
             options = $.extend(defaults, options);
 
             return this.each(function () {
-                var o = options;
+                const o = options;
 
                 o.infoMessage = 'The minimum password length is ' + o.numCharacters + ' characters and must contain at least 1 lowercase letter, 1 capital letter, 1 number, and 1 special character.';
                 // Add Variables for the li elements
-                var numCharactersUI = '<li class="pr-numCharacters"><span></span># of characters</li>',
-                    useLowercaseUI = '',
+                const numCharactersUI = '<li class="pr-numCharacters"><span></span># of characters</li>';
+                let useLowercaseUI = '',
                     useUppercaseUI = '',
                     useNumbersUI = '',
                     matchPassUI = '',
@@ -56,10 +56,10 @@ import jQuery from 'jquery';
                 }
 
                 // Append password hint div
-                var messageDiv = '<div id="pr-box"><i></i><div id="pr-box-inner"><p>' + o.infoMessage + '</p><ul>' + numCharactersUI + useLowercaseUI + matchPassUI + useUppercaseUI + useNumbersUI + useSpecialUI + '</ul></div></div>';
+                const messageDiv = '<div id="pr-box"><i></i><div id="pr-box-inner"><p>' + o.infoMessage + '</p><ul>' + numCharactersUI + useLowercaseUI + matchPassUI + useUppercaseUI + useNumbersUI + useSpecialUI + '</ul></div></div>';
 
                 // Set campletion vatiables
-                var numCharactersDone = true,
+                let numCharactersDone = true,
                     useLowercaseDone = true,
                     useUppercaseDone = true,
                     useNumbersDone = true,
@@ -67,17 +67,17 @@ import jQuery from 'jquery';
                     useSpecialDone = true;
 
                 // Show Message reusable function
-                var showMessage = function () {
+                const showMessage = function () {
                     if (numCharactersDone === false || matchPassDone === false || useLowercaseDone === false || useUppercaseDone === false || useNumbersDone === false || useSpecialDone === false) {
                         $('.pr-password').each(function () {
                             // Find the position of element
-                            var posH = $(this).offset().top,
+                            const posH = $(this).offset().top,
                                 itemH = $(this).innerHeight(),
                                 totalH = posH + itemH,
                                 itemL = $(this).offset().left;
                             // Append info box tho the body
                             $('body').append(messageDiv);
-                            $('#pr-box').addClass(o.style).fadeIn(o.fadeTime).css({ top: totalH, left: itemL });
+                            $('#pr-box').addClass(o.style).fadeIn(o.fadeTime).css({top: totalH, left: itemL});
                         });
                     }
                 };
@@ -88,15 +88,15 @@ import jQuery from 'jquery';
                 });
 
                 // Delete Message reusable function
-                var deleteMessage = function () {
-                    var targetMessage = $('#pr-box');
+                const deleteMessage = function () {
+                    const targetMessage = $('#pr-box');
                     targetMessage.fadeOut(o.fadeTime, function () {
                         $(this).remove();
                     });
                 };
 
                 // Show / Delete Message when completed requirements function
-                var checkCompleted = function () {
+                const checkCompleted = function () {
                     if (numCharactersDone === true && matchPassDone === true && useLowercaseDone === true && useUppercaseDone === true && useNumbersDone === true && useSpecialDone === true) {
                         deleteMessage();
                     } else {
@@ -111,14 +111,14 @@ import jQuery from 'jquery';
 
                 // Show or Hide password hint based on user's event
                 // Set variables
-                var lowerCase = new RegExp('[a-z]'),
+                const lowerCase = new RegExp('[a-z]'),
                     upperCase = new RegExp('[A-Z]'),
                     numbers = new RegExp('[0-9]'),
                     specialCharacter = new RegExp('[!,%,&,@,#,$,^,*,?,_,~]');
 
                 // Show or Hide password hint based on keyup
                 $(this).on('keyup focus', function () {
-                    var thisVal = $(this).val();
+                    const thisVal = $(this).val();
 
                     checkCompleted();
 

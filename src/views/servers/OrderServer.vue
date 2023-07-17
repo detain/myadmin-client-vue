@@ -116,7 +116,7 @@ serverOrderRequest(false);
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <img class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
+                                                    <img alt=""  class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="text-bold text-sm">{{ cpu_details.short_desc }}</div>
@@ -192,7 +192,7 @@ serverOrderRequest(false);
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
-                                                    <div class="col"><img :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" /></div>
+                                                    <div class="col"><img alt="" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" /></div>
                                                     <div class="col">
                                                         <div class="font-weight-light text-lg">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-green text-sm">{{ cpu_details.monthly_price_display }}</div>

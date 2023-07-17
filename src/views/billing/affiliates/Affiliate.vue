@@ -29,8 +29,8 @@ onMounted(() => {
         document.location.href = $(this).attr('href');
     });
     $('#copy_url').click(function () {
-        var copyText = $('#affiliateinput');
-        copyText.select();
+      const copyText = $('#affiliateinput');
+      copyText.select();
         document.execCommand('copy');
         Swal.fire({
             type: 'success',
@@ -74,18 +74,18 @@ onMounted(() => {
             [10, 25, 50, 100, 500, 'All'],
         ],
     });
-    var tables = ['table_default', 'table_pending', 'table_paid', 'table_failed'];
-    for (var j = tables.length - 1; j >= 0; j--) {
+  const tables = ['table_default', 'table_pending', 'table_paid', 'table_failed'];
+  for (const j = tables.length - 1; j >= 0; j--) {
         $('#' + tables[j] + ' thead tr')
             .clone(true)
             .appendTo('#' + tables[j] + ' thead');
         $('#' + tables[j] + ' thead tr:eq(1) td').each(function (i) {
             $(this).removeAttr('class aria-controls aria-label rowspan colspan style');
-            var title = $(this).text();
-            $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
+          const title = $(this).text();
+          $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
             $('input', this).on('keyup change', function (value) {
-                var table_name = $(this).parents('table').attr('id');
-                if (table_name === 'table_default' && table_default.column(i).search() !== value) {
+              const table_name = $(this).parents('table').attr('id');
+              if (table_name === 'table_default' && table_default.column(i).search() !== value) {
                     table_default.column(i).search(value).draw();
                 } else if (table_name === 'table_pending') {
                     table_pending.column(i).search(value).draw();

@@ -41,7 +41,7 @@ async function updateStep() {
     } else {
         hostname.value = domain.value;
         siteStore.addBreadcrum('/domains/order/' + domain.value, 'Domain Search');
-        if (searchResponse.value?.domain != hostname.value) {
+        if (searchResponse.value?.domain !== hostname.value) {
             console.log('currently hostname is ' + searchResponse.value?.domain);
             console.log(searchResponse.value?.domain);
             console.log('new domain is ' + hostname.value);
@@ -58,6 +58,7 @@ async function updateStep() {
 }
 
 watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+    console.log('domain old '+domainOld+' new '+domainNew+' regType old '+regTypeOld+' new '+regTypeNew);
     updateStep();
 });
 

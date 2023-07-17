@@ -33,19 +33,19 @@ const formAction = computed(() => {
     return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
 });
 const osDistroSelect = computed(() => {
-    var distros = {};
-    for (var idx in vpsTemplates.value) {
-        var template = vpsTemplates.value[idx];
-        distros[template.template_os] = template.template_name;
+  const distros = {};
+  for (let idx in vpsTemplates.value) {
+      const template = vpsTemplates.value[idx];
+      distros[template.template_os] = template.template_name;
     }
     return distros;
 });
 const getOsDistro = computed(() => {
     if (vpsTemplates.value.length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
-            for (var idx in vpsTemplates.value) {
-                var template = vpsTemplates.value[idx];
-                if (template.template_file == serviceInfo.value.vps_os) {
+            for (let idx in vpsTemplates.value) {
+              const template = vpsTemplates.value[idx];
+              if (template.template_file == serviceInfo.value.vps_os) {
                     return template.template_os;
                 }
             }
@@ -57,10 +57,10 @@ const getOsDistro = computed(() => {
 });
 
 const osVersionSelect = computed(() => {
-    var versions = {};
-    for (var idx in vpsTemplates.value) {
-        var template = vpsTemplates.value[idx];
-        if (template.template_os == osDistro.value) {
+  const versions = {};
+  for (let idx in vpsTemplates.value) {
+      const template = vpsTemplates.value[idx];
+      if (template.template_os == osDistro.value) {
             versions[template.template_file] = template.template_version;
         }
     }
@@ -81,9 +81,9 @@ try {
     fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response) => {
         console.log(response);
         vpsTemplates.value = response.templates;
-        for (var idx in vpsTemplates.value) {
-            var template = vpsTemplates.value[idx];
-            if (template.template_file == serviceInfo.value.vps_os) {
+        for (let idx in vpsTemplates.value) {
+          const template = vpsTemplates.value[idx];
+          if (template.template_file == serviceInfo.value.vps_os) {
                 osDistro.value = template.template_os;
                 osVersion.value = template.template_file;
             }

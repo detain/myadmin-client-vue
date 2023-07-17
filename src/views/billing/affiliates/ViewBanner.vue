@@ -102,7 +102,7 @@ onMounted(() => {});
                     <tr>
                         <td>HTML Code</td>
                         <td>
-                            <textarea id="htmcode" class="form-control" readonly="true" editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
+                            <textarea id="htmcode" class="form-control" readonly="readonly" editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
                         </td>
                         <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
                     </tr>

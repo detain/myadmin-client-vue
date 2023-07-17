@@ -66,7 +66,7 @@ onMounted(() => {
                                     <label for="slices" class="col-form-label">Cost Per Month ({{ currency_symbol }})</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" id="hdamount" class="form-control form-control-sm" readonly="true" :value="getAmount()" />
+                                    <input type="text" id="hdamount" class="form-control form-control-sm" readonly="readonly" :value="getAmount()" />
                                     <span class="text-muted text-sm"
                                         >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
                                     >
@@ -79,7 +79,7 @@ onMounted(() => {
                                     <label for="slices" class="col-form-label">Additional Space</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input name="size" id="size" type="text" class="form-control form-control-sm" readonly="true" :value="additional_hd ? additional_hd : ''" />
+                                    <input name="size" id="size" type="text" class="form-control form-control-sm" readonly="readonly" :value="additional_hd ? additional_hd : ''" />
                                 </div>
                             </div>
                         </div>

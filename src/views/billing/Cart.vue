@@ -81,7 +81,7 @@ function deleteCardModal(cc_id = '0') {
 }
 
 function editInfo() {
-    for (var key in contFields) {
+    for (let key in contFields) {
         if (data.value[key]) {
             contFields[key] = data.value[key];
         } else {
@@ -138,7 +138,7 @@ function editCardSubmit() {
 }
 
 function addCardModal() {
-    for (var key in contFields) {
+    for (let key in contFields) {
         contFields[key] = data.value[key] && key !== 'cc' && key !== 'cc_exp' ? data.value[key] : '';
     }
     $('#AddClick').trigger('click');
@@ -146,7 +146,7 @@ function addCardModal() {
 
 function editCardModal(cc_id = 0) {
     editCcIdx.value = cc_id;
-    for (var key in contFields) {
+    for (let key in contFields) {
         if (data.value.ccs[editCcIdx.value][key]) {
             contFields[key] = data.value.ccs[editCcIdx.value][key];
         } else if (data.value[key]) {
@@ -160,8 +160,8 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-    var verifyDisplay = $('#unver_' + cc_id).attr('data-step');
-    if (typeof verifyDisplay === 'undefined') {
+  const verifyDisplay = $('#unver_' + cc_id).attr('data-step');
+  if (typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verifyDisplay === 'step1') {
         $('#VerifyFormStep1').trigger('click');
@@ -185,16 +185,16 @@ function updatePaymentMethod(cc_val, cc_auto = '0') {
 
 function formatCardNum(e) {
     if (e.target.value == e.target.lastValue) return;
-    var caretPosition = e.target.selectionStart;
-    var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    var parts = [];
-    var i, len;
-    for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
+  const caretPosition = e.target.selectionStart;
+  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+  const parts = [];
+  let i, len;
+  for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-        var c = e.target.value[i];
-        if (c < '0' || c > '9') {
+      const c = e.target.value[i];
+      if (c < '0' || c > '9') {
             caretPosition--;
         }
     }
@@ -205,21 +205,21 @@ function formatCardNum(e) {
 
 function formatExpDate(e) {
     if (e.target.value == e.target.lastValue) return;
-    var caretPosition = e.target.selectionStart;
-    var sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    var parts = [];
-    var i;
-    for (i = 0; i < 2; i += 2) {
+  const caretPosition = e.target.selectionStart;
+  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+  const parts = [];
+  let i;
+  for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
     }
     if (sanitizedValue.length >= 2) {
-        for (var j = 2; j < sanitizedValue.length; j += 5) {
+        for (const j = 2; j < sanitizedValue.length; j += 5) {
             parts.push(sanitizedValue.substring(j, j + 5));
         }
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-        var c = e.target.value[i];
-        if (c < '0' || c > '9') {
+      const c = e.target.value[i];
+      if (c < '0' || c > '9') {
             caretPosition--;
         }
     }
@@ -432,8 +432,8 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="paymentMethod.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
+                                        <a v-if="paymentMethod.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img alt="" :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img alt=""  :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
@@ -639,7 +639,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;" disabled>
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -714,7 +714,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle: float: right;" disabled>
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
