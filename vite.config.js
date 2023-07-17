@@ -14,7 +14,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 //import fs from 'fs';
 //import legacy from '@vitejs/plugin-legacy'
 //import { dependencies } from "./package.json";
-import webfontDownload from 'vite-plugin-webfont-dl';
+//import webfontDownload from 'vite-plugin-webfont-dl';
 //import { splitVendorChunkPlugin } from "vite";
 
 /*function renderChunks(deps) {
