@@ -28,7 +28,7 @@ const osVersionSelect = computed(() => {
   let entries, lastEntry, lastKey, lastValue;
   console.log(osTemplates.value);
     console.log(osDistro.value);
-    if (Object.entries(osTemplates.value).length == 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length == 0 || osTemplates.value[osDistro.value][64].length == 0) {
+    if (Object.entries(osTemplates.value).length === 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length === 0 || osTemplates.value[osDistro.value][64].length === 0) {
         return {};
     }
   const templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
@@ -128,7 +128,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
 </script>
 
 <template>
-    <template v-if="!step || step == 'orderform'">
+    <template v-if="!step || step === 'orderform'">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -238,7 +238,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
             </div>
         </div>
     </template>
-    <template v-else-if="step == 'order_confirm'">
+    <template v-else-if="step === 'order_confirm'">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
