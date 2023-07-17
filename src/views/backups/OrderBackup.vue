@@ -49,7 +49,7 @@ async function onSubmit(values) {
             })
             .then((response) => {
                 loading.close();
-                validateResponse.value = response;
+                //validateResponse.value = response;
                 console.log('Response:');
                 console.log(response);
                 pkg.value = response.serviceType;
@@ -149,7 +149,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                                     <input type="text" class="form-control form-control-sm" v-model="coupon" @change="updateCoupon" placeholder="Coupon Code" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
-                                    <img :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
+                                    <img alt=""  :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
                                 </div>
                             </div>
                             <hr class="mt-0" />
@@ -243,7 +243,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                                             <td class="text-md">Coupon Used</td>
                                             <td class="text-bold text-md">
                                                 {{ orderData.data.coupon }}
-                                                <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
+                                                <img alt=""  src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
                                             </td>
                                         </tr>
                                     </template>

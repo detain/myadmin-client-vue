@@ -45,17 +45,17 @@ $.AdminLTESidebarTweak.options = {
 };
 $('.collapse_menu').on('click', function () {
     if ($.AdminLTESidebarTweak.options.EnableRemember) {
-        var toggleState = 'closed';
-        if ($('body').hasClass('sidebar-collapse')) {
+      let toggleState = 'closed';
+      if ($('body').hasClass('sidebar-collapse')) {
             toggleState = 'opened';
         }
         document.cookie = 'toggleState=' + toggleState;
     }
 });
 if ($.AdminLTESidebarTweak.options.EnableRemember) {
-    var re = new RegExp('toggleState' + '=([^;]+)');
-    var value = re.exec(document.cookie);
-    var toggleState = value != null ? unescape(value[1]) : null;
+  const re = new RegExp('toggleState' + '=([^;]+)');
+  const value = re.exec(document.cookie);
+  let toggleState = value != null ? unescape(value[1]) : null;
     if (toggleState == 'closed') {
         if ($.AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')

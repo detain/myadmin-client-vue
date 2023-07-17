@@ -11,11 +11,11 @@ import Inspector from 'vite-plugin-vue-inspector';
 //import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
-import { VitePWA } from 'vite-plugin-pwa';
+//import { VitePWA } from 'vite-plugin-pwa';
 //import fs from 'fs';
 //import legacy from '@vitejs/plugin-legacy'
 //import { dependencies } from "./package.json";
-import webfontDownload from 'vite-plugin-webfont-dl';
+//import webfontDownload from 'vite-plugin-webfont-dl';
 //import { splitVendorChunkPlugin } from "vite";
 
 /*function renderChunks(deps) {
@@ -31,7 +31,7 @@ import webfontDownload from 'vite-plugin-webfont-dl';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: import.meta.env?.ELECTRON == 'true' ? './' : '/',
+    //base: import.meta.env?.ELECTRON == 'true' ? './' : '/',
     server: {
         /* https: {
             key: fs.readFileSync('fullchain.pem'),
@@ -69,12 +69,12 @@ export default defineConfig({
         }),
         splitVendorChunkPlugin(),
         legacy({ targets: ["defaults", "not IE 11"] }), */
-        VitePWA({
+        /*VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }),
+        }),*/
         Inspect(),
         Inspector(),
         VueDevTools(),

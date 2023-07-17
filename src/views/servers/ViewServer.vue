@@ -169,7 +169,7 @@ const ipv6VlansNetworks = computed(() => {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : '<span>none</span>' }}
+                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }}
                                         <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer"><i class="fa fa-pencil my-2 text-sm"></i></span>
                                     </h5>
                                 </span>

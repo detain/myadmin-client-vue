@@ -44,15 +44,15 @@ const loginSchema = Yup.object().shape({
 });
 
 async function onLoginSubmit() {
-    var loading = Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-    });
-    const authStore = useAuthStore();
+  const loading = Swal.fire({
+    title: 'Please wait',
+    html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
+  const authStore = useAuthStore();
     const loginParams = {
         login: login.value,
         passwd: password.value,
@@ -72,15 +72,15 @@ async function onLoginSubmit() {
 }
 
 async function onSignupSubmit() {
-    var loading = Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-    });
-    const authStore = useAuthStore();
+  const loading = Swal.fire({
+    title: 'Please wait',
+    html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
+  const authStore = useAuthStore();
     const signupParams = {
         login: login.value,
         passwd: password.value,
@@ -143,8 +143,8 @@ onMounted(function () {
         $('#signuppassword')
             .keyup(function () {
                 // keyup code here
-                var pswd = $(this).val();
-                //validate the length
+              const pswd = $(this).val();
+              //validate the length
                 if (pswd.length < 8) {
                     $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 } else {
@@ -186,18 +186,18 @@ onMounted(function () {
     });
 });
 
-var signup_running = 0;
+let signup_running = 0;
 
 function setModalMaxHeight(element) {
     element = $(element);
-    var content = element.find('.modal-content');
-    var borderWidth = content.outerHeight() - content.innerHeight();
-    var dialogMargin = $(window).width() < 768 ? 20 : 60;
-    var contentHeight = $(window).height() - (dialogMargin + borderWidth);
-    var headerHeight = element.find('.modal-header').outerHeight() || 0;
-    var footerHeight = element.find('.modal-footer').outerHeight() || 0;
-    var maxHeight = contentHeight - (headerHeight + footerHeight);
-    content.css({
+  const content = element.find('.modal-content');
+  const borderWidth = content.outerHeight() - content.innerHeight();
+  const dialogMargin = $(window).width() < 768 ? 20 : 60;
+  const contentHeight = $(window).height() - (dialogMargin + borderWidth);
+  const headerHeight = element.find('.modal-header').outerHeight() || 0;
+  const footerHeight = element.find('.modal-footer').outerHeight() || 0;
+  const maxHeight = contentHeight - (headerHeight + footerHeight);
+  content.css({
         overflow: 'hidden',
     });
     element.find('.modal-body').css({
@@ -216,44 +216,44 @@ function toggleModal(modalID) {
 function animateValue(obj, start = 0, end = null, duration = 1000) {
     if (obj) {
         // save starting text for later (and as a fallback text if JS not running and/or google)
-        var textStarting = obj.innerHTML;
-        // remove non-numeric from starting text if not specified
+      const textStarting = obj.innerHTML;
+      // remove non-numeric from starting text if not specified
         end = end || parseInt(textStarting.replace(/\D/g, ''));
-        var range = end - start;
-        // no timer shorter than 50ms (not really visible any way)
-        var minTimer = 50;
-        // calc step time to show all interediate values
-        var stepTime = Math.abs(Math.floor(duration / range));
-        // never go below minTimer
+      const range = end - start;
+      // no timer shorter than 50ms (not really visible any way)
+      const minTimer = 50;
+      // calc step time to show all interediate values
+      let stepTime = Math.abs(Math.floor(duration / range));
+      // never go below minTimer
         stepTime = Math.max(stepTime, minTimer);
         // get current time and calculate desired end time
-        var startTime = new Date().getTime();
-        var endTime = startTime + duration;
-        var timer;
-        var run = () => {
-            var now = new Date().getTime();
-            var remaining = Math.max((endTime - now) / duration, 0);
-            var value = Math.round(end - remaining * range);
-            // replace numeric digits only in the original string
-            obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
-            if (value == end) {
-                clearInterval(timer);
-            }
-        };
-        timer = setInterval(run, stepTime);
+      const startTime = new Date().getTime();
+      const endTime = startTime + duration;
+      let timer;
+      const run = () => {
+        const now = new Date().getTime();
+        const remaining = Math.max((endTime - now) / duration, 0);
+        const value = Math.round(end - remaining * range);
+        // replace numeric digits only in the original string
+        obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
+        if (value == end) {
+          clearInterval(timer);
+        }
+      };
+      timer = setInterval(run, stepTime);
         run();
     }
 }
 
 function login_handler(e) {
-    var username = $('#login_id').val();
-    var twofactor = $('#2fa_code').val();
-    var password = $('#loginpassword').val();
-    var captcha = $('#captcha').val();
-    var emailconf = $('input[name=email_confirmation]').val();
-    e.preventDefault();
-    var remember = localStorage.rememberMe === 'true' ? 'yes' : 'no';
-    if (username == '') {
+  const username = $('#login_id').val();
+  const twofactor = $('#2fa_code').val();
+  const password = $('#loginpassword').val();
+  const captcha = $('#captcha').val();
+  const emailconf = $('input[name=email_confirmation]').val();
+  e.preventDefault();
+  const remember = localStorage.rememberMe === 'true' ? 'yes' : 'no';
+  if (username == '') {
         Swal.fire({
             icon: 'warning',
             title: 'Please enter a username',
@@ -266,17 +266,17 @@ function login_handler(e) {
             html: password,
         });
     } else {
-        var loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
-        if (twofactor) {
+      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
+      if (twofactor) {
             loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
         }
         if (emailconf != '') {
             loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailconf);
         }
-        var pathArray = window.location.pathname.split('/');
-        var newPath = '/';
-        var i;
-        for (i = 1; i < pathArray.length - 1; i++) {
+      const pathArray = window.location.pathname.split('/');
+      let newPath = '/';
+      let i;
+      for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
             newPath += '/';
         }
@@ -354,18 +354,18 @@ function login_handler(e) {
 
 function forgot_password(e) {
     e.preventDefault();
-    var username = $("input[name='email']").val();
-    var regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var captcha = $('#captchaFP').val();
-    if (username == '') {
+  const username = $("input[name='email']").val();
+  const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  const captcha = $('#captchaFP').val();
+  if (username == '') {
         $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
     } else if (regex.test(username) == false) {
         $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
     } else {
-        var pathArray = window.location.pathname.split('/');
-        var newPath = '/';
-        var i;
-        for (i = 1; i < pathArray.length - 1; i++) {
+      const pathArray = window.location.pathname.split('/');
+      let newPath = '/';
+      let i;
+      for (i = 1; i < pathArray.length - 1; i++) {
             newPath += pathArray[i];
             newPath += '/';
         }
@@ -374,7 +374,6 @@ function forgot_password(e) {
             url: 'https://' + window.location.host + newPath + 'password.php',
             data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse) + '&captcha=' + encodeURIComponent(captcha),
             success: function (html) {
-                $('#forgot-password-message').html('');
                 $('#forgot-password-message').html(html);
             },
             error: function () {
@@ -390,21 +389,21 @@ function forgot_password(e) {
 
 function signup_handler(e) {
     e.preventDefault();
-    var loading = Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-    });
-    var items = $('#loginForm input:not(.login_info), #loginForm select:not(.login_info)').serializeArray();
-    var email_conf = $('input[name=email_confirmation]').val();
-    var captchaSignup = $('#captcha_signup').val();
-    var data_string = 'ajax=1';
-    var errors = '';
-    var i, n;
-    for (i = 0, n = items.length; i < n; i++) {
+  const loading = Swal.fire({
+    title: 'Please wait',
+    html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
+  const items = $('#loginForm input:not(.login_info), #loginForm select:not(.login_info)').serializeArray();
+  const email_conf = $('input[name=email_confirmation]').val();
+  const captchaSignup = $('#captcha_signup').val();
+  let data_string = 'ajax=1';
+  let errors = '';
+  let i, n;
+  for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != 'remember' && items[i].name != 'email_confirmation' && items[i].name != 'captcha' && items[i].value == '') {
             if (items[i].name == 'login_id') {
                 errors = errors + '<strong>Error!</strong> Please enter an email address<br>';
@@ -484,7 +483,7 @@ function signup_handler(e) {
                 },
                 beforeSend: function () {
                     $('.loginsubmit, .signupsubmit').attr('disabled', true);
-                    loading;
+                    loading.close();
                 },
             });
         }
@@ -955,7 +954,10 @@ authStore.load();
                                         <li>Messages must include details on how the user subscribed. These details must be provided to Interserver on our request.</li>
                                         <li>Excessive complaints may result in account termination.</li>
                                         <li>Interserver reserves the right to charge $100 fee for IPs which are blacklisted due to failing to adhere to Interserver policies.</li>
-                                        <li>Operating an account on behalf of, or in connection with, or reselling any service to, persons or firms listed in the Spamhaus Register of Known Spam Operations (ROKSO) database at: http://www.spamhaus.org will result in immediate account termination.</li>
+                                        <li>Operating an account on behalf of, or in connection with, or reselling any
+                                          service to, persons or firms listed in the Spamhaus Register of Known Spam
+                                          Operations (ROKSO) database at: https://www.spamhaus.org will result in
+                                          immediate account termination.</li>
                                     </ul>
                                     <div class="press_details bg-gray-200 p-3">
                                         <p class="font-semibold text-black">Abuse Complaints</p>
@@ -1085,7 +1087,7 @@ body {
 }
 .pp {
     font-size: 12px;
-    font-style: bold;
+    font-weight: bold;
 }
 #pswd_info ul {
     padding: 0px;

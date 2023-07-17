@@ -124,8 +124,8 @@ async function addDnsRecord(event) {
 
 async function showEditRecord(event) {
     recordId.value = event.target.getAttribute('data-id');
-    var row, rowIdx;
-    for (rowIdx in data.value) {
+  let row, rowIdx;
+  for (rowIdx in data.value) {
         row = data.value[rowIdx];
         if (row.id == recordId.value) {
             recordRow.value = row;
@@ -134,8 +134,8 @@ async function showEditRecord(event) {
 }
 
 async function deleteRecord(event) {
-    var record = event.target.getAttribute('data-id');
-    console.log(record);
+  const record = event.target.getAttribute('data-id');
+  console.log(record);
     Swal.fire({
         icon: 'error',
         title: '<h3>Delete Domain</h3> ',

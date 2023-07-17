@@ -128,8 +128,8 @@ const totalCost = computed(() => {
     return currencySymbol.value + totalCostDisplay.value.toFixed(2);
 });
 const osVersionSelect = computed(() => {
-    var entries, lastEntry, lastKey, lastValue;
-    entries = Object.entries(osTemplates.value[vpsPlatform.value]);
+  let entries, lastEntry, lastKey, lastValue;
+  entries = Object.entries(osTemplates.value[vpsPlatform.value]);
     console.log(entries);
     if (entries.length == 0) {
         //osDistro.value == '';
@@ -160,12 +160,12 @@ const osVersionSelect = computed(() => {
     return osTemplates.value[vpsPlatform.value][osDistro.value];
 });
 const getBandwidth = computed(() => {
-    var VPS_SLICE_BW_TEMP = bwSlice.value;
-    var bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
-    var VPS_BW_TYPE_TEMP = bwType.value;
-    var VPS_BW_TOTAL_TEMP = bwTotal.value;
-    var slice_amount = 'Mbps';
-    if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
+  const VPS_SLICE_BW_TEMP = bwSlice.value;
+  const bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
+  const VPS_BW_TYPE_TEMP = bwType.value;
+  const VPS_BW_TOTAL_TEMP = bwTotal.value;
+  let slice_amount = 'Mbps';
+  if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
         if (bandwidthamount >= 1000) slice_amount = ' Gb';
         else slice_amount = ' Mb';
     else slice_amount = ' Mbps';
@@ -370,13 +370,13 @@ async function update_vps_choices() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-    var service_cost = sliceCost.value;
-    // first month slice cost
-    var first_slice = sliceCost.value;
-    var monthly_slice_cost = sliceCost.value;
-    var monthly_service_cost = service_cost;
-    var couponpricetext;
-    if (typeof couponInfo.value.applies != 'undefined') {
+  let service_cost = sliceCost.value;
+  // first month slice cost
+  let first_slice = sliceCost.value;
+  let monthly_slice_cost = sliceCost.value;
+  let monthly_service_cost = service_cost;
+  let couponpricetext;
+  if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
@@ -468,8 +468,8 @@ async function update_vps_choices() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-    var total_cost = new Number(service_cost);
-    if (controlCost.value > 0) {
+  let total_cost = Number(service_cost);
+  if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
     total_cost = total_cost.toFixed(2);
@@ -543,13 +543,13 @@ async function update_vps_choices_order() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-    var service_cost = sliceCost.value;
-    // first month slice cost
-    var first_slice = sliceCost.value;
-    var monthly_slice_cost = sliceCost.value;
-    var monthly_service_cost = service_cost;
-    var couponpricetext;
-    if (typeof couponInfo.value.applies != 'undefined') {
+  let service_cost = sliceCost.value;
+  // first month slice cost
+  let first_slice = sliceCost.value;
+  let monthly_slice_cost = sliceCost.value;
+  let monthly_service_cost = service_cost;
+  let couponpricetext;
+  if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
@@ -641,8 +641,8 @@ async function update_vps_choices_order() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-    var total_cost = new Number(service_cost);
-    if (controlCost.value > 0) {
+  let total_cost = Number(service_cost);
+  if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
     total_cost = total_cost.toFixed(2);

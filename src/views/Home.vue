@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
 import { useAuthStore, useSiteStore } from '@/stores';
+import ClientHome from "@/views/ClientHome.vue";
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();

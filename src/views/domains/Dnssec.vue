@@ -48,7 +48,7 @@ const checkCharacterLimit = (event, limit, displayId) => {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <router-link :to="'/domains/' + props.id" style="float: inline-start" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                    <router-link :to="'/domains/' + props.id" style="float: right" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     <h3 class="card-title ml-2 mt-1"><i class="fas fa-lock">&nbsp;</i>DNSSEC Infomation</h3>
                     <div class="card-tools m-0">
                         <a id="add-new" class="btn btn-custom px-3 py-2 text-sm" href="javascript:void(0);" @click="showAddDNSContent"><i class="fa fa-plus-circle">&nbsp;</i>Add New Record</a>
