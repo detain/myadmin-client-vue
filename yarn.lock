@@ -6489,7 +6489,7 @@ jquery-sortable@johnny/jquery-sortable#master:
   version "0.9.13"
   resolved "https://codeload.github.com/johnny/jquery-sortable/tar.gz/4d31eeaf0136307c4d70e9e2252bee001384cf72"
   dependencies:
-    jquery "^2.1.2"
+    jquery "^2.1.2 || ^3.0.0"
 
 jquery-ui-dist@^1.13.0:
   version "1.13.2"
@@ -9481,9 +9481,9 @@ vite-plugin-checker@*:
     vscode-uri "^3.0.2"
 
 vite-plugin-dts@*:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-3.3.0.tgz#e98c11471ddb0e034d0f922b15db1de14e3fb7b9"
-  integrity sha512-9jm7wV8fkA4JaKmZdeg/X71dMi8l9SbdmzQRafW4ea1fOfd/LHBDKuwFuxKpK8h1h8O7abKycXS087EP7EL8Hw==
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-3.3.1.tgz#7d9e3c9ebadf4a00515f975add491cca44af1944"
+  integrity sha512-RFebFGg6GWKkZqRQ5n6ls8giSiygKMBriJTFp8N+CRbYgI4lMXBxXEx0z2bthfeQv/xB53Wmhn/LNOOqb9OQHQ==
   dependencies:
     "@microsoft/api-extractor" "^7.36.0"
     "@rollup/pluginutils" "^5.0.2"
