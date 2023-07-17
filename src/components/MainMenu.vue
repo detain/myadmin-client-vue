@@ -38,7 +38,7 @@ const menus = ref({
 });
 function isActive(key) {
     // You need to implement your translation logic here
-    key.includes(window.location.pathname.split('/')[1]);
+    return key.includes(window.location.pathname.split('/')[1]);
 }
 </script>
 

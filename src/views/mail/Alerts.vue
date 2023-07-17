@@ -33,7 +33,7 @@ function editAlert(formAct, formId, formType, formValue, formTo, formEnabled = f
     selectedType.value = formType;
     value.value = formValue;
     to.value = formTo;
-    enabled.value = formEnabled == 1;
+    enabled.value = formEnabled == true;
 
     $('#type').select2().trigger('change');
 }

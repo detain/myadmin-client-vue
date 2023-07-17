@@ -302,8 +302,7 @@ function crud_load_page(callback) {
         crudRows.value = json;
         let empty = document.getElementById('itemrowempty').innerHTML;
         let x, row;
-        jQuery('#crud-table tbody').html('');
-        jQuery('#crud-table tbody').append('<tr id="itemrowempty" style="display: none;">' + empty + '</tr>');
+        jQuery('#crud-table tbody').html('').append('<tr id="itemrowempty" style="display: none;">' + empty + '</tr>');
         for (let x = 0; x < json.length; x++) {
             //row = replaceAll(empty, 'display: none;','');
             row = empty;

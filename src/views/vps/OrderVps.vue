@@ -468,7 +468,7 @@ async function update_vps_choices() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-  let total_cost = new Number(service_cost);
+  let total_cost = Number(service_cost);
   if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
@@ -641,7 +641,7 @@ async function update_vps_choices_order() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-  let total_cost = new Number(service_cost);
+  let total_cost = Number(service_cost);
   if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }

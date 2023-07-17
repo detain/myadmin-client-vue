@@ -374,7 +374,6 @@ function forgot_password(e) {
             url: 'https://' + window.location.host + newPath + 'password.php',
             data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse) + '&captcha=' + encodeURIComponent(captcha),
             success: function (html) {
-                $('#forgot-password-message').html('');
                 $('#forgot-password-message').html(html);
             },
             error: function () {
