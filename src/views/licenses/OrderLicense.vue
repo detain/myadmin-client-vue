@@ -13,7 +13,6 @@ const catTag = ref(route.params.catTag);
 const step = ref('license_types');
 updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
-const ima = ref('client');
 const ip = ref('');
 const coupon = ref('');
 const csrfToken = ref('');
@@ -91,11 +90,78 @@ function updatePrice() {
 
 }
 
+function checkAvailability() {
+
+}
+
 function orderLicenseType(type) {
     catTag.value = type;
+    packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
     router.push('/licenses/order/' + catTag.value);
+}
+
+function submitForm() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .put(baseUrl + '/licenses/order', {
+                validateOnly: true,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                validateResponse.value = response;
+                console.log('Response:');
+                console.log(response);
+                pkg.value = response.serviceType;
+                if (response.continue == true) {
+                    step.value = 'order_confirm';
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
+
+}
+
+function submitLicenseForm() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/licenses/order', {
+                validateOnly: false,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                loading.close();
+                console.log('Response:');
+                console.log(response);
+                if (response['continue'] == true) {
+                    // redirect to cart/<iids.join(',')>
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
+
 }
 
 fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
@@ -104,6 +170,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
     packageCosts.value = response.packageCosts;
     serviceTypes.value = response.serviceTypes;
     serviceCategories.value = response.serviceCategories;
+
 });
 </script>
 
@@ -157,7 +224,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <div class="col-sm-9 input-group">
                                     <div v-for="(package_details, id) in getServiceTypes" :key="id" class="form-group w-100">
                                         <div class="icheck-success d-inline">
-                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" :checked="packageId === id" @change="updatePrice(true)" />
+                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" v-model="packageId" />
                                             <label class="more-info font-weight-normal" :for="package_details.services_name">{{ package_details.services_name }}</label>
                                         </div>
                                     </div>
