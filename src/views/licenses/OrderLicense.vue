@@ -15,7 +15,6 @@ updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');
 const coupon = ref('');
-const csrfToken = ref('');
 function updateBreadcrums() {
     if (step.value == 'license_types') {
         siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type' });
@@ -66,6 +65,7 @@ const packageCosts = ref({});
 const serviceTypes = ref({});
 const serviceCategories = ref({});
 const packageId = ref(0);
+const validateResponse = ref({});
 const getCatId = computed(() => {
     for (const catId in serviceCategories.value) {
         if (serviceCategories.value[catId].category_tag == catTag.value) {
@@ -103,35 +103,7 @@ function orderLicenseType(type) {
 }
 
 function submitForm() {
-    let loading = Swal.fire({
-        title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-    });
-    try {
-        fetchWrapper
-            .put(baseUrl + '/licenses/order', {
-                validateOnly: true,
-                serviceType: pkg.value,
-                coupon: coupon.value,
-            })
-            .then((response) => {
-                loading.close();
-                validateResponse.value = response;
-                console.log('Response:');
-                console.log(response);
-                pkg.value = response.serviceType;
-                if (response.continue == true) {
-                    step.value = 'order_confirm';
-                }
-            });
-    } catch (error) {
-        loading.close();
-        console.log('error:');
-        console.log(error);
-    }
-
+    step.value = 'order_confirm';
 }
 
 function submitLicenseForm() {
@@ -145,8 +117,9 @@ function submitLicenseForm() {
         fetchWrapper
             .post(baseUrl + '/licenses/order', {
                 validateOnly: false,
-                serviceType: pkg.value,
+                serviceType: packageId.value,
                 coupon: coupon.value,
+                ip: ip.value,
             })
             .then((response) => {
                 loading.close();
@@ -218,7 +191,6 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                     </div>
                     <div class="card-body">
                         <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
@@ -325,13 +297,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" ref="editOrderForm" @submit.prevent="submitEditOrderForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
-                        </form>
                         <form method="post" class="license_form_confirm" ref="licenseForm" @submit.prevent="submitLicenseForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
@@ -353,12 +319,12 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                             <div class="text-md text-bold">1 Month(s)</div>
                                         </td>
                                     </tr>
-                                    <tr v-if="orderData.coupon">
+                                    <tr v-if="coupon">
                                         <td>
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ orderData.coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">
