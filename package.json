@@ -9,8 +9,9 @@
         "clean": "rm -rf dist dist_electron dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
-        "build": "vue-tsc --noEmit && vite build",
-        "build:nots": "vite build",
+        "build:ts": "vue-tsc --noEmit && vite build",
+        "build:copy": "run-s build copy",
+        "build": "vite build",
         "copy": "rsync -avpP --delete dist/ ../mystage2/public",
         "serve": "vite preview",
         "preview": "vite preview",
@@ -114,6 +115,7 @@
         "yup": "*"
     },
     "devDependencies": {
+        "npm-run-all": "*",
         "@rollup/plugin-inject": "*",
         "@rushstack/eslint-patch": "*",
         "@types/bootstrap": "*",

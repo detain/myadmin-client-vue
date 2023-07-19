@@ -23,12 +23,13 @@ const version = ref({});
 const rootpass = ref('');
 const hostname = ref('');
 const csrfToken = ref('');
+const tos = ref(false);
 const osTemplates = ref({});
 const osVersionSelect = computed(() => {
   let entries, lastEntry, lastKey, lastValue;
   console.log(osTemplates.value);
     console.log(osDistro.value);
-    if (Object.entries(osTemplates.value).length == 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length == 0 || osTemplates.value[osDistro.value][64].length == 0) {
+    if (Object.entries(osTemplates.value).length === 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length === 0 || osTemplates.value[osDistro.value][64].length === 0) {
         return {};
     }
   const templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
@@ -53,33 +54,7 @@ async function editForm() {
 }
 
 async function onSubmit() {
-    let loading = Swal.fire({
-        title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-    });
-    try {
-        fetchWrapper
-            .put(`${baseUrl}/qs/order`, {
-                osVersion: osVersion.value,
-                osDistro: osDistro.value,
-                hostname: hostname.value,
-                rootpass: rootpass.value,
-                csrfToken: csrfToken.value,
-                qsId: qsId.value,
-            })
-            .then((response) => {
-                step.value = 'order_confirm';
-                loading.close();
-                console.log('qs order validated');
-                console.log(response);
-            });
-    } catch (error) {
-        loading.close();
-        console.log('qs order validation failed');
-        console.log(error);
-    }
+    step.value = 'order_confirm';
 }
 
 async function onSubmitConfirmation() {
@@ -92,21 +67,20 @@ async function onSubmitConfirmation() {
     try {
         fetchWrapper
             .post(`${baseUrl}/qs/order`, {
-                osVersion: osVersion.value,
-                osDistro: osDistro.value,
+                template: osVersion.value,
                 hostname: hostname.value,
-                rootpass: rootpass.value,
-                csrfToken: csrfToken.value,
-                qsId: qsId.value,
+                password: rootpass.value,
+                server: qsId.value,
+                tos: tos.value,
             })
             .then((response) => {
                 loading.close();
-                console.log('qs order validated');
+                console.log('qs order placed');
                 console.log(response);
             });
     } catch (error) {
         loading.close();
-        console.log('qs order validation failed');
+        console.log('qs order place failed');
         console.log(error);
     }
 }
@@ -128,7 +102,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
 </script>
 
 <template>
-    <template v-if="!step || step == 'orderform'">
+    <template v-if="!step || step === 'orderform'">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -238,7 +212,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
             </div>
         </div>
     </template>
-    <template v-else-if="step == 'order_confirm'">
+    <template v-else-if="step === 'order_confirm'">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
@@ -324,7 +298,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span id="totalprice" class="total_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>

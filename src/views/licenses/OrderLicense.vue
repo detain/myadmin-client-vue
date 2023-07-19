@@ -13,10 +13,8 @@ const catTag = ref(route.params.catTag);
 const step = ref('license_types');
 updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
-const ima = ref('client');
 const ip = ref('');
 const coupon = ref('');
-const csrfToken = ref('');
 function updateBreadcrums() {
     if (step.value == 'license_types') {
         siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type' });
@@ -67,6 +65,7 @@ const packageCosts = ref({});
 const serviceTypes = ref({});
 const serviceCategories = ref({});
 const packageId = ref(0);
+const validateResponse = ref({});
 const getCatId = computed(() => {
     for (const catId in serviceCategories.value) {
         if (serviceCategories.value[catId].category_tag == catTag.value) {
@@ -91,11 +90,51 @@ function updatePrice() {
 
 }
 
+function checkAvailability() {
+
+}
+
 function orderLicenseType(type) {
     catTag.value = type;
+    packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
     router.push('/licenses/order/' + catTag.value);
+}
+
+function submitForm() {
+    step.value = 'order_confirm';
+}
+
+function submitLicenseForm() {
+    let loading = Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/licenses/order', {
+                validateOnly: false,
+                serviceType: packageId.value,
+                coupon: coupon.value,
+                ip: ip.value,
+            })
+            .then((response) => {
+                loading.close();
+                console.log('Response:');
+                console.log(response);
+                if (response['continue'] == true) {
+                    // redirect to cart/<iids.join(',')>
+                }
+            });
+    } catch (error) {
+        loading.close();
+        console.log('error:');
+        console.log(error);
+    }
+
 }
 
 fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
@@ -104,6 +143,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
     packageCosts.value = response.packageCosts;
     serviceTypes.value = response.serviceTypes;
     serviceCategories.value = response.serviceCategories;
+
 });
 </script>
 
@@ -151,13 +191,12 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                     </div>
                     <div class="card-body">
                         <form id="license_form" method="post" class="license_form_init" @submit.prevent="submitForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
                                     <div v-for="(package_details, id) in getServiceTypes" :key="id" class="form-group w-100">
                                         <div class="icheck-success d-inline">
-                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" :checked="packageId === id" @change="updatePrice(true)" />
+                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" v-model="packageId" />
                                             <label class="more-info font-weight-normal" :for="package_details.services_name">{{ package_details.services_name }}</label>
                                         </div>
                                     </div>
@@ -258,13 +297,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" ref="editOrderForm" @submit.prevent="submitEditOrderForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
-                        </form>
                         <form method="post" class="license_form_confirm" ref="licenseForm" @submit.prevent="submitLicenseForm">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
-                            <input v-for="(fieldValue, field) in orderData" :key="field" :id="field" type="hidden" :name="field" :value="fieldValue" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
@@ -286,12 +319,12 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                             <div class="text-md text-bold">1 Month(s)</div>
                                         </td>
                                     </tr>
-                                    <tr v-if="orderData.coupon">
+                                    <tr v-if="coupon">
                                         <td>
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ orderData.coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">
