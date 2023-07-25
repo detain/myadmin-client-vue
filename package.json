@@ -111,6 +111,7 @@
         "vue": "latest",
         "vue-recaptcha": "^3.0.0-alpha.2",
         "vue-router": "*",
+        "word-wrap": ">=1.2.4",
         "yaml": ">=2.2.2",
         "yup": "*"
     },
