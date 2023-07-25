@@ -15,6 +15,9 @@ updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');
 const coupon = ref('');
+const tos = ref(false);
+const comment = ref('');
+const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
         siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type' });
@@ -116,22 +119,24 @@ function submitLicenseForm() {
     try {
         fetchWrapper
             .post(baseUrl + '/licenses/order', {
-                validateOnly: false,
-                serviceType: packageId.value,
+                tos: tos.value,
+                frequency: frequency.value,
+                comment: comment.value,
                 coupon: coupon.value,
                 ip: ip.value,
+                'package': packageId.value,
             })
             .then((response) => {
                 loading.close();
                 console.log('Response:');
                 console.log(response);
-                if (response['continue'] == true) {
+                if (response['success'] == true) {
                     // redirect to cart/<iids.join(',')>
                 }
             });
     } catch (error) {
         loading.close();
-        console.log('error:');
+        console.log('caught error:');
         console.log(error);
     }
 
@@ -143,7 +148,6 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
     packageCosts.value = response.packageCosts;
     serviceTypes.value = response.serviceTypes;
     serviceCategories.value = response.serviceCategories;
-
 });
 </script>
 
@@ -351,7 +355,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos"/>
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
