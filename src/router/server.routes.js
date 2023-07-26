@@ -1,4 +1,6 @@
-import { ServersList, ViewServer, OrderServer } from '@/views/servers';
+const ServersList = () => import(/* webpackChunkName: "servers" */ '@/views/servers/ServersList.vue');
+const ViewServer = () => import(/* webpackChunkName: "servers" */ '@/views/servers/ViewServer.vue');
+const OrderServer = () => import(/* webpackChunkName: "servers" */ '@/views/servers/OrderServer.vue');
 
 export default {
     path: '/servers',

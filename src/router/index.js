@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore, useAlertStore } from '@/stores';
-import { ClientHome, Home, Login, LoginOld, Register } from '@/views';
-import { PrePays, PaymentTypes, InvoicesList, Cart, Pay } from '@/views/billing';
 import affiliateRoutes from './affiliate.routes';
 import usersRoutes from './users.routes';
 import accountRoutes from './account.routes';
@@ -17,6 +15,18 @@ import serverRoutes from './server.routes';
 import sslRoutes from './ssl.routes';
 import vpsRoutes from './vps.routes';
 import websiteRoutes from './website.routes';
+const ClientHome = () => import(/* webpackChunkName: "main" */ '@/views/ClientHome.vue');
+const Home = () => import(/* webpackChunkName: "main" */ '@/views/Home.vue');
+const Login = () => import(/* webpackChunkName: "main" */ '@/views/Login.vue');
+const LoginOld = () => import(/* webpackChunkName: "main" */ '@/views/LoginOld.vue');
+const Register = () => import(/* webpackChunkName: "main" */ '@/views/Register.vue');
+const PrePays = () => import(/* webpackChunkName: "main" */ '@/views/billing/PrePays.vue');
+const PaymentTypes = () => import(/* webpackChunkName: "main" */ '@/views/billing/PaymentTypes.vue');
+const InvoicesList = () => import(/* webpackChunkName: "main" */ '@/views/billing/InvoicesList.vue');
+const Cart = () => import(/* webpackChunkName: "main" */ '@/views/billing/Cart.vue');
+const Pay = () => import(/* webpackChunkName: "main" */ '@/views/billing/Pay.vue');
+
+
 /*
 import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'
 import { DnsManager, DnsEditor } from '@/views/dns'
