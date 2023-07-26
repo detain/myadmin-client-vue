@@ -74,7 +74,7 @@ export const useUsersStore = defineStore({
             // auto logout if the logged in user deleted their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
-                authStore.logout();
+                await authStore.logout();
             }
         },
     },

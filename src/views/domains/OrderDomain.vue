@@ -34,7 +34,7 @@ const regType = computed(() => {
 });
 const display = ref('step1');
 
-async function updateStep() {
+function updateStep() {
     siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
     if (typeof domain.value == 'undefined') {
         display.value ='step1';
@@ -70,7 +70,7 @@ fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     tldServices.value = response.tldServices;
 });
 
-async function searchDomain() {
+function searchDomain() {
     let loading = Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
@@ -95,7 +95,7 @@ async function searchDomain() {
         });
 }
 
-async function getDomainFields() {
+function getDomainFields() {
     let loading = Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
