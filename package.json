@@ -146,6 +146,7 @@
         "vite-plugin-checker": "*",
         "vite-plugin-inspect": "*",
         "vite-plugin-pwa": "*",
+        "vite-plugin-turbo-console": "*",
         "vite-plugin-vue-devtools": "*",
         "vite-plugin-vue-inspector": "*",
         "vite-plugin-webfont-dl": "*",
