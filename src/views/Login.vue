@@ -1090,7 +1090,7 @@ body {
     font-weight: bold;
 }
 #pswd_info ul {
-    padding: 0px;
+    padding: 0;
 }
 #pswd_info li {
     list-style: none;

@@ -88,7 +88,7 @@ svg {
 
 [class*='icheck-'] > input[type='checkbox']:first-child:checked + label::after {
     top: -0.14rem !important;
-    left: 0rem !important;
+    left: 0 !important;
     width: 0.4rem !important;
     height: 0.85rem !important;
 }
@@ -262,11 +262,11 @@ table.tablesorter tbody td {
 }
 
 #title_btns .btn-info:nth-child(1) {
-    border-radius: 0.35rem 0rem 0rem 0.35rem;
+    border-radius: 0.35rem 0 0 0.35rem;
 }
 
 #title_btns .btn-info:nth-child(4) {
-    border-radius: 0rem 0.35rem 0.35rem 0rem;
+    border-radius: 0 0.35rem 0.35rem 0;
 }
 
 #title_btns .btn-info:hover {
@@ -464,8 +464,8 @@ tr.shown td.details-control {
 
 .comment:before {
     content: '';
-    width: 0rem;
-    height: 0rem;
+    width: 0;
+    height: 0;
     position: absolute;
     border-left: 0.7rem solid transparent;
     border-right: 0.7rem solid #343a40;
@@ -477,8 +477,8 @@ tr.shown td.details-control {
 
 .comment:after {
     content: '';
-    width: 0rem;
-    height: 0rem;
+    width: 0;
+    height: 0;
     position: absolute;
     border-left: 0.5rem solid transparent;
     border-right: 0.5rem solid #fff;
@@ -819,9 +819,9 @@ tr.shown td.details-control {
 .form-card input:focus,
 .form-card textarea:focus,
 .form-card select:focus {
-    -moz-box-shadow: 0rem 0rem 0rem 0.1rem lightgreen !important;
-    -webkit-box-shadow: 0rem 0rem 0rem 0.1rem lightgreen !important;
-    box-shadow: 0rem 0rem 0rem 0.1rem lightgreen !important;
+    -moz-box-shadow: 0 0 0 0.1rem lightgreen !important;
+    -webkit-box-shadow: 0 0 0 0.1rem lightgreen !important;
+    box-shadow: 0 0 0 0.1rem lightgreen !important;
     font-weight: bold;
     border: 0.07rem solid #33723d;
     outline-width: 0;
@@ -887,8 +887,7 @@ tr.shown td.details-control {
 
     .aff-share {
         display: block ruby;
-        margin: 0rem;
-        margin-top: 0.35rem;
+        margin: 0.35rem 0rem 0rem;
     }
 
     .aff-social {

@@ -144,22 +144,19 @@ a.nav-link {
 .myadmin_login .myadmin_socialButtons a.myadmin_btn-facebook.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-facebook.christmas {
     padding: 0;
-    background: #20304c;
-    background-color: #000;
+    background: #000;
 }
 
 .myadmin_login .myadmin_socialButtons a.myadmin_btn-twitter.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-twitter.christmas {
     padding: 0;
-    background: #345d66;
-    background-color: #000;
+    background: #000;
 }
 
 .myadmin_login .myadmin_socialButtons .myadmin_btn-google.christmas,
 .myadmin_login .myadmin_socialButtons .myadmin_btn-google.christmas {
     padding: 0;
-    background: #dda8a8;
-    background-color: #000;
+    background: #000;
 }
 
 .myadmin_login .myadmin_loginOr {

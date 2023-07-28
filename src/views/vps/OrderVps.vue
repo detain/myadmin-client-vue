@@ -164,8 +164,8 @@ const getBandwidth = computed(() => {
   const bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
   const VPS_BW_TYPE_TEMP = bwType.value;
   const VPS_BW_TOTAL_TEMP = bwTotal.value;
-  let slice_amount = 'Mbps';
-  if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
+  let slice_amount;
+  if (VPS_BW_TYPE_TEMP === VPS_BW_TOTAL_TEMP)
         if (bandwidthamount >= 1000) slice_amount = ' Gb';
         else slice_amount = ' Mb';
     else slice_amount = ' Mbps';
@@ -374,7 +374,6 @@ function update_vps_choices() {
   // first month slice cost
   let first_slice = sliceCost.value;
   let monthly_slice_cost = sliceCost.value;
-  let monthly_service_cost = service_cost;
   let couponpricetext;
   if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
@@ -429,7 +428,7 @@ function update_vps_choices() {
         jQuery('#couponpricenew').val('');
     }
     service_cost = first_slice + sliceCost.value * (slices.value - 1);
-    monthly_service_cost = monthly_slice_cost * slices.value;
+    let monthly_service_cost = monthly_slice_cost * slices.value;
     if (period.value >= 36) {
         jQuery('#cyclediscount').text('20% Off');
         jQuery('#cyclediscountnew').text('20% Off');

@@ -1,3 +1,5 @@
+@import url('//my.interserver.net/lib/font-awesome/css/font-awesome.min.css');
+
 .clear {
     clear: both;
 }
@@ -340,8 +342,6 @@ a.join {
     padding: 35px 0;
 }
 
-@import url('//my.interserver.net/lib/font-awesome/css/font-awesome.min.css');
-
 .isa_info,
 .isa_success,
 .isa_warning,
@@ -472,7 +472,7 @@ div#floating {
     border-radius: 5px;
     float: right;
     height: auto;
-    margin: 13px 0px 0 0;
+    margin: 13px 0 0 0;
     padding: 0 0 14px;
     width: 100%;
 }

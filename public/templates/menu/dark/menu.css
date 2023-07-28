@@ -136,10 +136,7 @@
 
 .navbar-dark .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
     margin-bottom: 0;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 4px 4px 0 0;
 }
 
 .navbar-dark .nav-item {
@@ -175,7 +172,7 @@
 }
 
 .admin-links input#tags1 {
-    border-radius: 0px !important;
+    border-radius: 0 !important;
 }
 
 @media screen and (min-width: 677px) and (max-width: 1199px) {
@@ -333,7 +330,7 @@
 }
 
 .main_links li {
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .Top_container .navbar-nav > li {
@@ -342,19 +339,19 @@
 }
 
 .Top_container .navbar-nav > li > a {
-    padding: 0px 5px 0px 10px !important;
+    padding: 0 5px 0 10px !important;
 }
 
 .Top_container {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .Top_container .container-fluid {
-    padding: 0px;
+    padding: 0;
 }
 
 .Top_container .container-fluid .navbar-collapse {
-    padding: 0px;
+    padding: 0;
 }
 
 .Top_container .container-fluid .Top_container_b {
