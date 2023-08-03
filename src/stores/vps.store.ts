@@ -143,7 +143,6 @@ export const useVpsStore = defineStore({
             } catch (error) {
                 console.log('got error response' + error);
                 this.error = error;
-                this.responseText;
                 success = false;
             }
             this.loading = false;

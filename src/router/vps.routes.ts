@@ -1,4 +1,6 @@
-import { VpsList, ViewVps, OrderVps } from '@/views/vps';
+const VpsList = () => import(/* webpackChunkName: "vps" */ '@/views/vps/VpsList.vue');
+const ViewVps = () => import(/* webpackChunkName: "vps" */ '@/views/vps/ViewVps.vue');
+const OrderVps = () => import(/* webpackChunkName: "vps" */ '@/views/vps/OrderVps.vue');
 
 export default {
     path: '/vps',

@@ -16,13 +16,6 @@ const body = ref('');
 const custid = ref();
 const affiliate_amount = ref(0);
 
-function replace_url(st) {
-    $('#ex_xlsx').attr('href', myUrl + 'ajax.php?choice=affiliate_download&ex=xlsx&st=' + st);
-    $('#ex_csv').attr('href', myUrl + 'ajax.php?choice=affiliate_download&ex=csv&st=' + st);
-    $('#ex_xls').attr('href', myUrl + 'ajax.php?choice=affiliate_download&ex=xls&st=' + st);
-    $('#ex_pdf').attr('href', myUrl + 'ajax.php?choice=affiliate_download&ex=pdf&st=' + st);
-}
-
 onMounted(() => {
     $('.export').click(function (e) {
         e.preventDefault();

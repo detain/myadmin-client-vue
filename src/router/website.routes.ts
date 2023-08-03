@@ -1,4 +1,6 @@
-import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
+const WebsitesList = () => import(/* webpackChunkName: "webhosting" */ '@/views/webhosting/WebsitesList.vue');
+const ViewWebsite = () => import(/* webpackChunkName: "webhosting" */ '@/views/webhosting/ViewWebsite.vue');
+const OrderWebsite = () => import(/* webpackChunkName: "webhosting" */ '@/views/webhosting/OrderWebsite.vue');
 
 export default {
     path: '/websites',

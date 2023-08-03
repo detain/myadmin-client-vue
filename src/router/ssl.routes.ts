@@ -1,4 +1,6 @@
-import { SslList, ViewSsl, OrderSsl } from '@/views/ssl';
+const SslList = () => import(/* webpackChunkName: "ssl" */ '@/views/ssl/SslList.vue');
+const ViewSsl = () => import(/* webpackChunkName: "ssl" */ '@/views/ssl/ViewSsl.vue');
+const OrderSsl = () => import(/* webpackChunkName: "ssl" */ '@/views/ssl/OrderSsl.vue');
 
 export default {
     path: '/ssl_certs',

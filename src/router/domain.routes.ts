@@ -1,4 +1,6 @@
-import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains';
+const DomainsList = () => import(/* webpackChunkName: "domains" */ '@/views/domains/DomainsList.vue');
+const ViewDomain = () => import(/* webpackChunkName: "domains" */ '@/views/domains/ViewDomain.vue');
+const OrderDomain = () => import(/* webpackChunkName: "domains" */ '@/views/domains/OrderDomain.vue');
 
 export default {
     path: '/domains',

@@ -62,11 +62,11 @@ function addDrive() {
 
 }
 
-async function onSubmitCpu() {
+function onSubmitCpu() {
     serverOrderRequest(true);
 }
 
-async function serverOrderRequest(addCpu) {
+function serverOrderRequest(addCpu) {
     let loading = Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',

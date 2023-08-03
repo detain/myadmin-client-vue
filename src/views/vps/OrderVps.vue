@@ -164,15 +164,15 @@ const getBandwidth = computed(() => {
   const bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
   const VPS_BW_TYPE_TEMP = bwType.value;
   const VPS_BW_TOTAL_TEMP = bwTotal.value;
-  let slice_amount = 'Mbps';
-  if (VPS_BW_TYPE_TEMP == VPS_BW_TOTAL_TEMP)
+  let slice_amount;
+  if (VPS_BW_TYPE_TEMP === VPS_BW_TOTAL_TEMP)
         if (bandwidthamount >= 1000) slice_amount = ' Gb';
         else slice_amount = ' Mb';
     else slice_amount = ' Mbps';
     return bandwidthamount + slice_amount;
 });
 
-async function onSubmit() {
+function onSubmit() {
     try {
         fetchWrapper
             .put(`${baseUrl}/vps/order`, {
@@ -233,7 +233,7 @@ async function onSubmit() {
     }
 }
 
-async function onSubmitConfirmation() {
+function onSubmitConfirmation() {
     try {
         fetchWrapper
             .post(`${baseUrl}/vps/order`, {
@@ -274,7 +274,7 @@ async function onSubmitConfirmation() {
     }
 }
 
-async function update_coupon() {
+function update_coupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         document.getElementById('couponimg').src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
@@ -290,11 +290,11 @@ async function update_coupon() {
     }
 }
 
-async function edit_form() {
+function edit_form() {
     document.getElementById('edit_order_form').submit();
 }
 
-async function update_vps_choices() {
+function update_vps_choices() {
     if (curControl.value != jQuery('select[name=controlpanel]').val()) {
         curControl.value = jQuery('select[name=controlpanel]').val();
         if (curControl.value == 'cpanel') {
@@ -374,7 +374,6 @@ async function update_vps_choices() {
   // first month slice cost
   let first_slice = sliceCost.value;
   let monthly_slice_cost = sliceCost.value;
-  let monthly_service_cost = service_cost;
   let couponpricetext;
   if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
@@ -429,7 +428,7 @@ async function update_vps_choices() {
         jQuery('#couponpricenew').val('');
     }
     service_cost = first_slice + sliceCost.value * (slices.value - 1);
-    monthly_service_cost = monthly_slice_cost * slices.value;
+    let monthly_service_cost = monthly_slice_cost * slices.value;
     if (period.value >= 36) {
         jQuery('#cyclediscount').text('20% Off');
         jQuery('#cyclediscountnew').text('20% Off');
@@ -482,7 +481,7 @@ async function update_vps_choices() {
     }
 }
 
-async function update_vps_choices_order() {
+function update_vps_choices_order() {
     if (curControl.value != jQuery('#controlpanel').val()) {
         curControl.value = jQuery('#controlpanel').val();
         if (curControl.value == 'cpanel') {
@@ -658,7 +657,7 @@ async function update_vps_choices_order() {
     });
 }
 
-async function recomended_linux() {
+function recomended_linux() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'ubuntu';
     slices.value = '1';
@@ -667,7 +666,7 @@ async function recomended_linux() {
     //update_vps_choices();
 }
 
-async function recomended_cpanel() {
+function recomended_cpanel() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'centos';
     slices.value = '2';
@@ -676,7 +675,7 @@ async function recomended_cpanel() {
     //update_vps_choices();
 }
 
-async function recomended_directadmin() {
+function recomended_directadmin() {
     console.log('recommended direct admin');
     vpsPlatform.value = 'kvm';
     osDistro.value = 'almalinux';
@@ -688,7 +687,7 @@ async function recomended_directadmin() {
     console.log(osDistro.value);
 }
 
-async function recomended_windows() {
+function recomended_windows() {
     vpsPlatform.value = 'hyperv';
     osDistro.value = 'windows';
     slices.value = '2';
@@ -697,7 +696,7 @@ async function recomended_windows() {
     //update_vps_choices();
 }
 
-async function recomended_linux_desktop() {
+function recomended_linux_desktop() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'ubuntu';
     slices.value = '2';
@@ -706,7 +705,7 @@ async function recomended_linux_desktop() {
     //update_vps_choices();
 }
 
-async function recomended_webuzo() {
+function recomended_webuzo() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'centos';
     slices.value = '1';
@@ -715,7 +714,7 @@ async function recomended_webuzo() {
     //update_vps_choices();
 }
 
-async function get_package_id() {
+function get_package_id() {
     osDistro.value = $("select[name='osVersion']").val();
     if (vpsPlatform.value == 'openvz') {
         // OpenVZ

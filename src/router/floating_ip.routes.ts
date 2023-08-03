@@ -1,4 +1,6 @@
-import { FloatingIpsList, ViewFloatingIp, OrderFloatingIp } from '@/views/floating_ips';
+const FloatingIpsList = () => import(/* webpackChunkName: "floating_ips" */ '@/views/floating_ips/FloatingIpsList.vue');
+const ViewFloatingIp = () => import(/* webpackChunkName: "floating_ips" */ '@/views/floating_ips/ViewFloatingIp.vue');
+const OrderFloatingIp = () => import(/* webpackChunkName: "floating_ips" */ '@/views/floating_ips/OrderFloatingIp.vue');
 
 export default {
     path: '/floating_ips',

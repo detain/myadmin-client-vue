@@ -219,10 +219,7 @@
 .ui-progressbar {
     position: relative;
     text-align: right;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     height: 1.5em;
 }
 .progress_label {
@@ -272,7 +269,7 @@
     padding: 5px 15px;
 }
 .panel {
-    border-radius: 0px;
+    border-radius: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .panel:hover {
