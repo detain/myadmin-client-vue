@@ -116,6 +116,8 @@
         "yup": "*"
     },
     "devDependencies": {
+        "@commitlint/cli": "*",
+        "@commitlint/config-conventional": "*",
         "@rollup/plugin-inject": "*",
         "@rushstack/eslint-patch": "*",
         "@vitejs/plugin-vue": "latest",
@@ -132,8 +134,10 @@
         "eslint": "*",
         "eslint-config-prettier": "*",
         "eslint-plugin-vue": "*",
+        "husky": "*",
         "jsdom": "latest",
         "json": "*",
+        "lint-staged": "*",
         "minimatch": "*",
         "nodemon": "*",
         "npm-run-all": "*",
@@ -186,11 +190,17 @@
         "@ttskch/select2-bootstrap4-theme": "*",
         "datatables.net-plugins": "*"
     },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
     "stackblitz": {
         "startCommand": "npm run test"
     },
     "packageManager": "yarn@1.22.19",
     "engines": {
+        "node": ">=16.0.0",
         "yarn": ">= 1.0.0"
     }
 }
