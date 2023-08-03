@@ -134,7 +134,7 @@ function decorateField(field, row) {
             replace.push(row[rowField]);
         }
     }
-    if (filters.value.hasOwnProperty(field)) {
+    if (Object.prototype.hasOwnProperty.call(filters.value, field)) {
         filters.value[field].forEach((filter) => {
             if (filter.type === 'string') {
                 value = filter.value.replace(new RegExp(search.join('|'), 'g'), (match) => replace[search.indexOf(match)]);
@@ -277,7 +277,7 @@ function crud_search(that, terms) {
 
 function get_crud_url() {
     let url = jQuery('#paginationForm').attr('action');
-    if (typeof url == undefined || typeof url == 'undefined') {
+    if (typeof url == 'undefined') {
         url = document.location.pathname.replace('/[^/]*$', '') + '/ajax.php' + document.location.search.replace('choice=none.', 'choice=crud&crud=') + '&action=list';
         console.log('Got undefined action= contents from #pagionationForm so used fallback method and generated: ' + url);
     }
