@@ -8,8 +8,8 @@ const props = defineProps({
     id: Number,
     csrf: String,
 });
-const id = ref(props.id);
-const module = ref(props.module);
+const id = computed(() => { return props.id; });
+const module = computed(() => { return props.module; });
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

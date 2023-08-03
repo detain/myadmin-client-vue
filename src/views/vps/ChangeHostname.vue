@@ -10,8 +10,8 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const hostname = ref('');
 const newHostname = ref('');
-const id = ref(props.id);
-const module = ref(props.module);
+const id = computed(() => { return props.id; });
+const module = computed(() => { return props.module; });
 const csrf = ref('');
 
 function getLink() {

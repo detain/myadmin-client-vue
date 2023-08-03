@@ -7,7 +7,7 @@ const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const id = ref(props.id);
+const id = computed(() => { return props.id; });
 const siteStore = useSiteStore();
 const aId = ref('');
 const assetInfo = ref({});

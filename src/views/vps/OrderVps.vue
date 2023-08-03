@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ref, computed, onMounted } from 'vue';
+import { ref, watch, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import $ from 'jquery';
@@ -112,6 +112,7 @@ const location = ref(1);
 const osVersion = ref('');
 const osDistro = ref('ubuntu');
 const hostname = ref('server.domain.com');
+const osVersionSelect = ref({});
 const coupon = ref('');
 const rootpass = ref('');
 const curSsd = ref(0);
@@ -127,45 +128,47 @@ const slicesRange = computed(() => {
 const totalCost = computed(() => {
     return currencySymbol.value + totalCostDisplay.value.toFixed(2);
 });
-const osVersionSelect = computed(() => {
-  let entries, lastEntry, lastKey, lastValue;
-  entries = Object.entries(osTemplates.value[vpsPlatform.value]);
+watch([osTemplates, vpsPlatform, osDistro, osVersion], ([newTemplates, newPlatform, newDistro, newVersion], [oldTemplates, oldPlatform, oldDistro, oldVersion]) => {
+    let entries, lastEntry, lastKey, lastValue;
+    entries = Object.entries(newTemplates[newPlatform]);
     console.log(entries);
     if (entries.length == 0) {
-        //osDistro.value == '';
-        return {};
+        //newDistro == '';
+        osVersionSelect.value = {};
+        return;
     }
-    if (typeof osTemplates.value[vpsPlatform.value][osDistro.value] == 'undefined') {
-        console.log(osTemplates.value[vpsPlatform.value]);
+    if (typeof newTemplates[newPlatform][newDistro] == 'undefined') {
+        console.log(newTemplates[newPlatform]);
         lastEntry = entries[entries.length - 1];
         console.log(lastEntry);
         [lastKey, lastValue] = lastEntry;
         console.log([lastKey, lastValue]);
+        newDistro = lastKey;
         osDistro.value = lastKey;
     }
-    entries = Object.entries(osTemplates.value[vpsPlatform.value][osDistro.value]);
+    entries = Object.entries(newTemplates[newPlatform][newDistro]);
     console.log(entries);
     if (entries.length == 0) {
-        //osVersion.value == '';
-        return {};
+        osVersionSelect.value = {};
     }
-    if (typeof osTemplates.value[vpsPlatform.value][osDistro.value][osVersion.value] == 'undefined') {
-        console.log(osTemplates.value[vpsPlatform.value][osVersion.value]);
+    if (typeof newTemplates[newPlatform][newDistro][newVersion] == 'undefined') {
+        console.log(newTemplates[newPlatform][newVersion]);
         lastEntry = entries[entries.length - 1];
         console.log(lastEntry);
         [lastKey, lastValue] = lastEntry;
         console.log([lastKey, lastValue]);
+        newVersion = lastKey;
         osVersion.value = lastKey;
     }
-    return osTemplates.value[vpsPlatform.value][osDistro.value];
+    osVersionSelect.value = newTemplates[newPlatform][newDistro];
 });
 const getBandwidth = computed(() => {
-  const VPS_SLICE_BW_TEMP = bwSlice.value;
-  const bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
-  const VPS_BW_TYPE_TEMP = bwType.value;
-  const VPS_BW_TOTAL_TEMP = bwTotal.value;
-  let slice_amount;
-  if (VPS_BW_TYPE_TEMP === VPS_BW_TOTAL_TEMP)
+    const VPS_SLICE_BW_TEMP = bwSlice.value;
+    const bandwidthamount = VPS_SLICE_BW_TEMP * slices.value;
+    const VPS_BW_TYPE_TEMP = bwType.value;
+    const VPS_BW_TOTAL_TEMP = bwTotal.value;
+    let slice_amount;
+    if (VPS_BW_TYPE_TEMP === VPS_BW_TOTAL_TEMP)
         if (bandwidthamount >= 1000) slice_amount = ' Gb';
         else slice_amount = ' Mb';
     else slice_amount = ' Mbps';
@@ -175,54 +178,54 @@ const getBandwidth = computed(() => {
 function onSubmit() {
     try {
         fetchWrapper
-            .put(`${baseUrl}/vps/order`, {
-                serviceType: serviceType.value,
-                slices: slices.value,
-                vpsPlatform: vpsPlatform.value,
-                location: location.value,
-                osVersion: osVersion.value,
-                osDistro: osDistro.value,
-                hostname: hostname.value,
-                coupon: coupon.value,
-                rootpass: rootpass.value,
-                curSsd: curSsd.value,
-                curControl: curControl.value,
-                period: period.value,
-            })
-            .then((response) => {
-                console.log('vps order validation success');
-                console.log(response);
-                validationSuccess.value = response['continue'];
-                controlpanel.value = response.controlpanel;
-                coupon.value = response.coupon;
-                couponCode.value = response.coupon_code;
-                custid.value = response.custid;
-                errors.value = response.errors;
-                hostname.value = response.hostname;
-                location.value = response.location;
-                monthlyServiceCost.value = response.monthly_service_cost;
-                originalCost.value = response.original_cost;
-                originalSliceCost.value = response.original_slice_cost;
-                osDistro.value = response.os;
-                period.value = response.period;
-                vpsPlatform.value = response.platform;
-                repeatServiceCost.value = response.repeat_service_cost;
-                repeatSliceCost.value = response.repeat_slice_cost;
-                rootpass.value = response.rootpass;
-                serviceCost.value = response.service_cost;
-                serviceType.value = response.service_type;
-                sliceCost.value = response.slice_cost;
-                slices.value = response.slices;
-                osVersion.value = response.version;
-                if (response.continue == false) {
-                    Swal.fire({
-                        icon: 'error',
-                        html: 'Got error ' + response.errors.join('<br>'),
-                    });
-                } else {
-                    step.value = 'order_confirm';
-                }
-            });
+        .put(`${baseUrl}/vps/order`, {
+            serviceType: serviceType.value,
+            slices: slices.value,
+            vpsPlatform: vpsPlatform.value,
+            location: location.value,
+            osVersion: osVersion.value,
+            osDistro: osDistro.value,
+            hostname: hostname.value,
+            coupon: coupon.value,
+            rootpass: rootpass.value,
+            curSsd: curSsd.value,
+            curControl: curControl.value,
+            period: period.value,
+        })
+        .then((response) => {
+            console.log('vps order validation success');
+            console.log(response);
+            validationSuccess.value = response['continue'];
+            controlpanel.value = response.controlpanel;
+            coupon.value = response.coupon;
+            couponCode.value = response.coupon_code;
+            custid.value = response.custid;
+            errors.value = response.errors;
+            hostname.value = response.hostname;
+            location.value = response.location;
+            monthlyServiceCost.value = response.monthly_service_cost;
+            originalCost.value = response.original_cost;
+            originalSliceCost.value = response.original_slice_cost;
+            osDistro.value = response.os;
+            period.value = response.period;
+            vpsPlatform.value = response.platform;
+            repeatServiceCost.value = response.repeat_service_cost;
+            repeatSliceCost.value = response.repeat_slice_cost;
+            rootpass.value = response.rootpass;
+            serviceCost.value = response.service_cost;
+            serviceType.value = response.service_type;
+            sliceCost.value = response.slice_cost;
+            slices.value = response.slices;
+            osVersion.value = response.version;
+            if (response.continue == false) {
+                Swal.fire({
+                    icon: 'error',
+                    html: 'Got error ' + response.errors.join('<br>'),
+                });
+            } else {
+                step.value = 'order_confirm';
+            }
+        });
     } catch (error) {
         console.log('vps order validation failed');
         console.log(error);
@@ -236,34 +239,34 @@ function onSubmit() {
 function onSubmitConfirmation() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/vps/order`, {
-                serviceType: serviceType.value,
-                slices: slices.value,
-                vpsPlatform: vpsPlatform.value,
-                location: location.value,
-                osVersion: osVersion.value,
-                osDistro: osDistro.value,
-                hostname: hostname.value,
-                coupon: coupon.value,
-                rootpass: rootpass.value,
-                curSsd: curSsd.value,
-                curControl: curControl.value,
-                period: period.value,
-            })
-            .then((response) => {
-                console.log('vps order validation success');
-                console.log(response);
-                // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
-                if (response.success == true) {
-                    // forward to cart or w/e
-                } else {
-                    // display 'message'
-                    Swal.fire({
-                        icon: 'error',
-                        html: 'Got error ' + response.message,
-                    });
-                }
-            });
+        .post(`${baseUrl}/vps/order`, {
+            serviceType: serviceType.value,
+            slices: slices.value,
+            vpsPlatform: vpsPlatform.value,
+            location: location.value,
+            osVersion: osVersion.value,
+            osDistro: osDistro.value,
+            hostname: hostname.value,
+            coupon: coupon.value,
+            rootpass: rootpass.value,
+            curSsd: curSsd.value,
+            curControl: curControl.value,
+            period: period.value,
+        })
+        .then((response) => {
+            console.log('vps order validation success');
+            console.log(response);
+            // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
+            if (response.success == true) {
+                // forward to cart or w/e
+            } else {
+                // display 'message'
+                Swal.fire({
+                    icon: 'error',
+                    html: 'Got error ' + response.message,
+                });
+            }
+        });
     } catch (error) {
         console.log('vps order  failed');
         console.log(error);
@@ -348,14 +351,14 @@ function update_vps_choices() {
     else if (vpsPlatform.value == 'kvm')
         if (osDistro.value == 'windows') sliceCost.value = vpsSliceKvmWCost.value;
         else sliceCost.value = vpsSliceKvmLCost.value;
-    else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
-    else if (vpsPlatform.value == 'xen') sliceCost.value = vpsSliceXenCost.value;
-    else if (vpsPlatform.value == 'lxc') sliceCost.value = vpsSliceLxcCost.value;
-    else if (vpsPlatform.value == 'vmware') sliceCost.value = vpsSliceVmwareCost.value;
-    else if (vpsPlatform.value == 'hyperv') sliceCost.value = vpsSliceHypervCost.value;
-    else if (vpsPlatform.value == 'virtuozzo')
-        if (curSsd.value == 1) sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
-        else sliceCost.value = vpsSliceVirtuozzoCost.value;
+        else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
+            else if (vpsPlatform.value == 'xen') sliceCost.value = vpsSliceXenCost.value;
+                else if (vpsPlatform.value == 'lxc') sliceCost.value = vpsSliceLxcCost.value;
+                    else if (vpsPlatform.value == 'vmware') sliceCost.value = vpsSliceVmwareCost.value;
+                        else if (vpsPlatform.value == 'hyperv') sliceCost.value = vpsSliceHypervCost.value;
+                            else if (vpsPlatform.value == 'virtuozzo')
+                                if (curSsd.value == 1) sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
+                                else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
@@ -370,12 +373,12 @@ function update_vps_choices() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-  let service_cost = sliceCost.value;
-  // first month slice cost
-  let first_slice = sliceCost.value;
-  let monthly_slice_cost = sliceCost.value;
-  let couponpricetext;
-  if (typeof couponInfo.value.applies != 'undefined') {
+    let service_cost = sliceCost.value;
+    // first month slice cost
+    let first_slice = sliceCost.value;
+    let monthly_slice_cost = sliceCost.value;
+    let couponpricetext;
+    if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
@@ -467,8 +470,8 @@ function update_vps_choices() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-  let total_cost = Number(service_cost);
-  if (controlCost.value > 0) {
+    let total_cost = Number(service_cost);
+    if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
     total_cost = total_cost.toFixed(2);
@@ -524,14 +527,14 @@ function update_vps_choices_order() {
     else if (vpsPlatform.value == 'kvm')
         if (osDistro.value == 'windows') sliceCost.value = vpsSliceKvmWCost.value;
         else sliceCost.value = vpsSliceKvmLCost.value;
-    else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
-    else if (vpsPlatform.value == 'xen') sliceCost.value = vpsSliceXenCost.value;
-    else if (vpsPlatform.value == 'lxc') sliceCost.value = vpsSliceLxcCost.value;
-    else if (vpsPlatform.value == 'vmware') sliceCost.value = vpsSliceVmwareCost.value;
-    else if (vpsPlatform.value == 'hyperv') sliceCost.value = vpsSliceHypervCost.value;
-    else if (vpsPlatform.value == 'virtuozzo')
-        if (curSsd.value == 1) sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
-        else sliceCost.value = vpsSliceVirtuozzoCost.value;
+        else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
+            else if (vpsPlatform.value == 'xen') sliceCost.value = vpsSliceXenCost.value;
+                else if (vpsPlatform.value == 'lxc') sliceCost.value = vpsSliceLxcCost.value;
+                    else if (vpsPlatform.value == 'vmware') sliceCost.value = vpsSliceVmwareCost.value;
+                        else if (vpsPlatform.value == 'hyperv') sliceCost.value = vpsSliceHypervCost.value;
+                            else if (vpsPlatform.value == 'virtuozzo')
+                                if (curSsd.value == 1) sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
+                                else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
         controlCost.value = parseFloat(controlCost.value).toFixed(2);
@@ -542,13 +545,13 @@ function update_vps_choices_order() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-  let service_cost = sliceCost.value;
-  // first month slice cost
-  let first_slice = sliceCost.value;
-  let monthly_slice_cost = sliceCost.value;
-  let monthly_service_cost = service_cost;
-  let couponpricetext;
-  if (typeof couponInfo.value.applies != 'undefined') {
+    let service_cost = sliceCost.value;
+    // first month slice cost
+    let first_slice = sliceCost.value;
+    let monthly_slice_cost = sliceCost.value;
+    let monthly_service_cost = service_cost;
+    let couponpricetext;
+    if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
@@ -640,8 +643,8 @@ function update_vps_choices_order() {
         service_cost = service_cost + (period.value - 1) * monthly_service_cost;
     }
 
-  let total_cost = Number(service_cost);
-  if (controlCost.value > 0) {
+    let total_cost = Number(service_cost);
+    if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
     total_cost = total_cost.toFixed(2);
@@ -806,217 +809,112 @@ try {
 </script>
 
 <template>
-    <template v-if="!step || step == 'orderform'">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order VPS</h3>
-                            <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" id="period" name="period" :value="period" />
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">VPS Details</label>
-                                <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
-                                    <div class="d-inline pr-3">
-                                        <span>Storage: </span> <span class="text-bold" id="storage">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
-                                    </div>
-                                    <div class="d-inline pr-3">
-                                        <span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span>
-                                    </div>
-                                    <div class="d-inline">
-                                        <span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="vpsPlatform">
-                                        <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
-                                    </select>
-                                    <small id="slicecost" class="form-text text-muted"></small>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
-                                <div class="col-sm-9 input-group">
-                                    <select class="form-control select2" v-model="location">
-                                        <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="slices">
-                                        <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
-                                <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="osDistro">
-                                        <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
-                                        <option v-if="vpsPlatform != 'hyperv'" disabled="disabled">Windows (only on HyperV)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
-                                <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="osVersion">
-                                        <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="hostnamerownew" class="form-group row">
-                                <label class="col-sm-3 col-form-label">Hostname</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="hostname" @keyup="updateHostname" @change="updateHostname" />
-                                </div>
-                            </div>
-                            <div id="rootpassrownew" class="row">
-                                <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
-                                <div class="form-group col-md-9">
-                                    <input type="text" name="rootpass" class="form-control text-sm" v-model="rootpass" />
-                                    <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Coupon Code</label>
-                                <div class="input-group col-md-9">
-                                    <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @keyup="updateCoupon" @change="updateCoupon" />
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="" /></span>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="controls">
-                                    <input type="submit" name="Submit" value="Continue" class="btn btn-order px-3 py-2 text-sm" />
-                                </div>
-                            </div>
-                        </form>
+<template v-if="!step || step == 'orderform'">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="p-1">
+                    <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order VPS</h3>
+                    <div class="card-tools float-right">
+                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <!-- Order Summary -->
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
-                                    <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
+
+            <div class="card-body">
+                <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
+                    <input type="hidden" id="period" name="period" :value="period" />
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">VPS Details</label>
+                        <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
+                            <div class="d-inline pr-3">
+                                <span>Storage: </span> <span class="text-bold" id="storage">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
                             </div>
-                            <div class="card-body pb-0">
-                                <div class="row mb-3">
-                                    <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[vpsPlatform] && serviceTypes && serviceTypes[platformPackages[vpsPlatform]] ? serviceTypes[platformPackages[vpsPlatform]].services_name : '' }}</div>
-                                    <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md totalcost_display text-right">{{ currencySymbol }}{{ platformPackages[vpsPlatform] ? packageCosts[platformPackages[vpsPlatform]] : 0 }}</div>
-                                </div>
-                                <div id="cyclediscountrownew" class="row mb-3">
-                                    <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
-                                    <div id="cyclediscount" class="col text-right"></div>
-                                </div>
-                                <div id="couponpricerownew" class="row mb-3">
-                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
-                                    <div id="couponprice" class="col text-right"></div>
-                                </div>
-                                <hr />
-                                <div class="row mb-3">
-                                    <div class="col-md-8 text-md text-bold text-muted">Total:</div>
-                                    <div id="totalcost" class="col text-md total_cost text-right">{{ currencySymbol }}{{ totalCost }}</div>
-                                </div>
+                            <div class="d-inline pr-3">
+                                <span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span>
+                            </div>
+                            <div class="d-inline">
+                                <span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth }}</span>
                             </div>
                         </div>
                     </div>
-                    <!-- End Order Summary -->
-                    <!-- VPS Recommendations -->
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="fa fa-thumbs-up">&nbsp;</i>Recommendations</h4>
-                                    <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body py-2">
-                                <a id="rec_linux" href="javascript:void(0);" @click.prevent="recomended_linux" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-linux">&nbsp;</i>Linux&nbsp;</a>
-                                <a id="rec_directadmin" href="javascript:void(0);" @click.prevent="recomended_directadmin" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
-                                <a id="rec_windows" href="javascript:void(0);" @click.prevent="recomended_windows" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1"><i class="fa fa-windows">&nbsp;</i>Windows&nbsp;</a>
-                                <a id="rec_cPanel" href="javascript:void(0);" @click.prevent="recomended_cpanel" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px"><i class="fa fa-server">&nbsp;</i>cPanel&nbsp;</a>
-                                <a id="rec_linux_desktop" href="javascript:void(0);" @click.prevent="recomended_linux_desktop" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px"><i class="fa fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
-                                <a id="rec_webuzo" href="javascript:void(0);" @click.prevent="recomended_webuzo" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px"><i class="fa fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
-                            </div>
+                    <hr />
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" v-model="vpsPlatform">
+                                <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
+                            </select>
+                            <small id="slicecost" class="form-text text-muted"></small>
                         </div>
                     </div>
-                    <!-- End VPS Recommendations -->
-                    <div class="col">
-                        <!-- VPS Location availability -->
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="fa fa-map-pin"></i>&nbsp;Location Availability</h4>
-                                    <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <table class="table-hover table-bordered table">
-                                    <thead>
-                                        <tr>
-                                            <th>Location / Platform</th>
-                                            <!--<th>Virtuozzo</th>-->
-                                            <th>KVM Linux</th>
-                                            <!--<th>KVM Windows</th>-->
-                                            <th>HyperV</th>
-                                            <th>KVM Storage</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(stockArr, locationId) in locationStock" :key="locationId">
-                                            <td class="text-center">{{ locationNames[locationId] }}</td>
-                                            <td v-for="(status, platformId) in stockArr" :key="platformId" class="text-center">
-                                                <template v-if="status">
-                                                    <span style="color: green">✔</span>
-                                                </template>
-                                                <template v-else>
-                                                    <span style="font-weight: bold; color: red">❌</span>
-                                                </template>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
+                        <div class="col-sm-9 input-group">
+                            <select class="form-control select2" v-model="location">
+                                <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
+                            </select>
                         </div>
                     </div>
-                    <!-- End VPS Location availability -->
-                </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" v-model="slices">
+                                <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" v-model="osDistro">
+                                <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
+                                <option v-if="vpsPlatform != 'hyperv'" disabled="disabled">Windows (only on HyperV)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
+                        <div class="input-group col-md-9">
+                            <select class="form-control select2" v-model="osVersion">
+                                <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="hostnamerownew" class="form-group row">
+                        <label class="col-sm-3 col-form-label">Hostname</label>
+                        <div class="col-md-9">
+                            <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="hostname" @keyup="updateHostname" @change="updateHostname" />
+                        </div>
+                    </div>
+                    <div id="rootpassrownew" class="row">
+                        <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
+                        <div class="form-group col-md-9">
+                            <input type="text" name="rootpass" class="form-control text-sm" v-model="rootpass" />
+                            <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Coupon Code</label>
+                        <div class="input-group col-md-9">
+                            <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @keyup="updateCoupon" @change="updateCoupon" />
+                            <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="" /></span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="controls">
+                            <input type="submit" name="Submit" value="Continue" class="btn btn-order px-3 py-2 text-sm" />
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </template>
-    <template v-else-if="step == 'order_confirm'">
-        <div class="row justify-content-center">
-            <div class="col-md-7">
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <!-- Order Summary -->
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -1026,133 +924,238 @@ try {
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
-                            <table class="table-sm table-bordered table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click.prevent="step = 'orderform'" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
-                                        </th>
-                                        <th>
-                                            <div class="text-md text-bold">{{ period }} month(s)</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">{{ serviceTypes[platformPackages[vpsPlatform]].services_name }}</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md" id="slicecost">{{ sliceCost }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">VPS Location</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ locationNames[location] }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">Slices</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ slices }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">Memory</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ ramSlice * slices }} MB</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">HD Space</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">Bandwidth</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ getBandwidth }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="text-md">Operating System</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ osNames[osDistro] }} {{ osTemplates[vpsPlatform][osDistro][osVersion] }}</div>
-                                        </td>
-                                    </tr>
-                                    <template v-if="coupon">
-                                        <tr>
-                                            <td>
-                                                <div class="text-md">Coupon Used</div>
-                                            </td>
-                                            <td>
-                                                <div class="text-bold text-md">
-                                                    {{ coupon }}
-                                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </template>
-                                    <tr style="display: none">
-                                        <td>
-                                            <div id="couponpricetext" class="text-md">Coupon Discount</div>
-                                        </td>
-                                        <td>
-                                            <div id="couponprice" class="text-bold text-md"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>
-                                            <div class="text-lg">Total</div>
-                                        </th>
-                                        <th>
-                                            <div class="text-bold text-lg" id="total_cost_display">${{ serviceCost }}</div>
-                                        </th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                            <hr />
-                            <div class="p-1">
-                                <h4 class="text-center"><u>Agree to the offer terms</u></h4>
-                                <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ serviceCost }}</span> until canceled.
-                                </p>
-                                <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
-                                <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
-                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="controls col-md-12" style="text-align: center">
-                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-green btn-sm px-3 py-2" />
-                                </div>
-                            </div>
-                        </form>
+                    <div class="card-body pb-0">
+                        <div class="row mb-3">
+                            <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[vpsPlatform] && serviceTypes && serviceTypes[platformPackages[vpsPlatform]] ? serviceTypes[platformPackages[vpsPlatform]].services_name : '' }}</div>
+                            <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
+                            <div class="col text-md totalcost_display text-right">{{ currencySymbol }}{{ platformPackages[vpsPlatform] ? packageCosts[platformPackages[vpsPlatform]] : 0 }}</div>
+                        </div>
+                        <div id="cyclediscountrownew" class="row mb-3">
+                            <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
+                            <div id="cyclediscount" class="col text-right"></div>
+                        </div>
+                        <div id="couponpricerownew" class="row mb-3">
+                            <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
+                            <div id="couponprice" class="col text-right"></div>
+                        </div>
+                        <hr />
+                        <div class="row mb-3">
+                            <div class="col-md-8 text-md text-bold text-muted">Total:</div>
+                            <div id="totalcost" class="col text-md total_cost text-right">{{ currencySymbol }}{{ totalCost }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- End Order Summary -->
+            <!-- VPS Recommendations -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h4 class="card-title py-2"><i class="fa fa-thumbs-up">&nbsp;</i>Recommendations</h4>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-2">
+                        <a id="rec_linux" href="javascript:void(0);" @click.prevent="recomended_linux" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-linux">&nbsp;</i>Linux&nbsp;</a>
+                        <a id="rec_directadmin" href="javascript:void(0);" @click.prevent="recomended_directadmin" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
+                        <a id="rec_windows" href="javascript:void(0);" @click.prevent="recomended_windows" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1"><i class="fa fa-windows">&nbsp;</i>Windows&nbsp;</a>
+                        <a id="rec_cPanel" href="javascript:void(0);" @click.prevent="recomended_cpanel" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px"><i class="fa fa-server">&nbsp;</i>cPanel&nbsp;</a>
+                        <a id="rec_linux_desktop" href="javascript:void(0);" @click.prevent="recomended_linux_desktop" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px"><i class="fa fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
+                        <a id="rec_webuzo" href="javascript:void(0);" @click.prevent="recomended_webuzo" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px"><i class="fa fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End VPS Recommendations -->
+            <div class="col">
+                <!-- VPS Location availability -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h4 class="card-title py-2"><i class="fa fa-map-pin"></i>&nbsp;Location Availability</h4>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table-hover table-bordered table">
+                            <thead>
+                                <tr>
+                                    <th>Location / Platform</th>
+                                    <!--<th>Virtuozzo</th>-->
+                                    <th>KVM Linux</th>
+                                    <!--<th>KVM Windows</th>-->
+                                    <th>HyperV</th>
+                                    <th>KVM Storage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(stockArr, locationId) in locationStock" :key="locationId">
+                                    <td class="text-center">{{ locationNames[locationId] }}</td>
+                                    <td v-for="(status, platformId) in stockArr" :key="platformId" class="text-center">
+                                        <template v-if="status">
+                                        <span style="color: green">✔</span>
+                                        </template>
+                                        <template v-else>
+                                        <span style="font-weight: bold; color: red">❌</span>
+                                        </template>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End VPS Location availability -->
         </div>
-    </template>
+    </div>
+</div>
+</template>
+<template v-else-if="step == 'order_confirm'">
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+                <div class="p-1">
+                    <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                    <div class="card-tools float-right">
+                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="vps_form_confirm" method="post" action="order_vps" @submit.prevent="onSubmitConfirmation">
+                    <table class="table-sm table-bordered table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
+                                    <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click.prevent="step = 'orderform'" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                </th>
+                                <th>
+                                    <div class="text-md text-bold">{{ period }} month(s)</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="text-md">{{ serviceTypes[platformPackages[vpsPlatform]].services_name }}</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md" id="slicecost">{{ sliceCost }}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">VPS Location</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ locationNames[location] }}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">Slices</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ slices }}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">Memory</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ ramSlice * slices }} MB</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">HD Space</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">Bandwidth</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ getBandwidth }}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-md">Operating System</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">{{ osNames[osDistro] }} {{ osTemplates[vpsPlatform][osDistro][osVersion] }}</div>
+                                </td>
+                            </tr>
+                            <template v-if="coupon">
+                            <tr>
+                                <td>
+                                    <div class="text-md">Coupon Used</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold text-md">
+                                        {{ coupon }}
+                                        <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" />
+                                    </div>
+                                </td>
+                            </tr>
+                            </template>
+                            <tr style="display: none">
+                                <td>
+                                    <div id="couponpricetext" class="text-md">Coupon Discount</div>
+                                </td>
+                                <td>
+                                    <div id="couponprice" class="text-bold text-md"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    <div class="text-lg">Total</div>
+                                </th>
+                                <th>
+                                    <div class="text-bold text-lg" id="total_cost_display">${{ serviceCost }}</div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <hr />
+                    <div class="p-1">
+                        <h4 class="text-center"><u>Agree to the offer terms</u></h4>
+                        <p class="text-center text-sm">
+                            The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ serviceCost }}</span> until canceled.
+                        </p>
+                        <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
+                        <div class="icheck-success text-bold text-center">
+                            <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                            <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="controls col-md-12" style="text-align: center">
+                            <input type="submit" name="Submit" value="Place Order" class="btn btn-green btn-sm px-3 py-2" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
 </template>
 
 <style scoped></style>
