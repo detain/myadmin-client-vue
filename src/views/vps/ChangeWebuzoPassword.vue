@@ -9,7 +9,7 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 
-const module = ref(props.module);
+const module = computed(() => { return props.module; });
 //const id = ref('');
 const goBackLink = ref('');
 const csrfToken = ref('');

@@ -10,8 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
+const id = computed(() => { return props.id; });
 
-fetchWrapper.get(baseUrl + '/vps/' + props.id + '/reverse_dns').then((response) => {
+fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) => {
     console.log('Response:');
     console.log(response);
     ips.value = response.ips;

@@ -8,11 +8,12 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const id = computed(() => { return props.id; });
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
-siteStore.addBreadcrum('/vps/' + props.id, 'View VPS ' + props.id);
-siteStore.addBreadcrum('/vps/' + props.id + '/', '');
+siteStore.addBreadcrum('/vps/' + id.value, 'View VPS ' + id.value);
+siteStore.addBreadcrum('/vps/' + id.value + '/', '');
 </script>
 
 <template>

@@ -12,8 +12,8 @@ const siteStore = useSiteStore();
 const todayGraph = ref(null);
 const hourGraph = ref(null);
 const monthGraph = ref(null);
-const id = ref(props.id);
-const module = ref(props.module);
+const id = computed(() => { return props.id; });
+const module = computed(() => { return props.module; });
 
 const goBackLink = computed(() => {
     return module.value === 'vps' ? `view_${module.value}` : 'view_qs';

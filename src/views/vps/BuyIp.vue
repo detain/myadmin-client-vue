@@ -11,8 +11,8 @@ const siteStore = useSiteStore();
 
 const ipsDetails = ref(null);
 const buyForm = ref(null);
-const id = ref(props.id);
-const module = ref(props.module);
+const id = computed(() => { return props.id; });
+const module = computed(() => { return props.module; });
 const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);

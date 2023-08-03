@@ -8,8 +8,7 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-
-const module = ref(props.module);
+const module = computed(() => { return props.module; });
 const vpsScreenshot = ref(null);
 const setupVncLink = ref(null);
 const novncLink = ref(null);
