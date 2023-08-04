@@ -514,8 +514,9 @@
         }
       },
       "post" : {
+        "tags" : [ "account" ],
         "summary" : "",
-        "description" : "",
+        "description" : "Updates the stored contact and billing information we have in our system with the provided data.",
         "operationId" : "updateAccountInfo",
         "responses" : {
           "default" : {
@@ -600,6 +601,7 @@
         }
       },
       "delete" : {
+        "tags" : [ "account", "billing" ],
         "summary" : "",
         "description" : "",
         "operationId" : "deleteAccountCreditCard",
@@ -647,6 +649,7 @@
         }
       },
       "delete" : {
+        "tags" : [ "account" ],
         "summary" : "",
         "description" : "",
         "operationId" : "deleteAccountIpLimits",
@@ -709,6 +712,7 @@
         }
       },
       "post" : {
+        "tags" : [ "account" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateAccountSettings",
@@ -734,6 +738,7 @@
     },
     "/billing/cart" : {
       "get" : {
+        "tags" : [ "account", "billing" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getBillingCart",
@@ -746,6 +751,7 @@
     },
     "/billing/prepays" : {
       "get" : {
+        "tags" : [ "account", "billing" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getBillingPrePays",
@@ -758,6 +764,7 @@
     },
     "/dns" : {
       "get" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getDnsList",
@@ -768,6 +775,7 @@
         }
       },
       "post" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addDnsDomain",
@@ -780,6 +788,7 @@
     },
     "/dns/{domainId}/{recordId}" : {
       "post" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateDnsRecord",
@@ -811,6 +820,7 @@
         }
       },
       "delete" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "deleteDnsRecord",
@@ -844,6 +854,7 @@
     },
     "/dns/{id}" : {
       "get" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getDnsDomain",
@@ -865,6 +876,7 @@
         }
       },
       "delete" : {
+        "tags" : [ "dns" ],
         "summary" : "",
         "description" : "",
         "operationId" : "deleteDnsDomain",
@@ -888,6 +900,7 @@
     },
     "/tickets" : {
       "get" : {
+        "tags" : [ "tickets" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getTicketsList",
@@ -900,6 +913,7 @@
     },
     "/tickets/new" : {
       "get" : {
+        "tags" : [ "tickets" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewTicket",
@@ -910,6 +924,7 @@
         }
       },
       "post" : {
+        "tags" : [ "tickets" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addNewTicket",
@@ -922,6 +937,7 @@
     },
     "/tickets/{id}" : {
       "get" : {
+        "tags" : [ "tickets" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getTicketInfo",
@@ -943,6 +959,7 @@
         }
       },
       "post" : {
+        "tags" : [ "tickets" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateTicketInfo",
@@ -966,6 +983,7 @@
     },
     "/backups" : {
       "get" : {
+        "tags" : [ "backups" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getBackupsList",
@@ -978,6 +996,7 @@
     },
     "/backups/order" : {
       "get" : {
+        "tags" : [ "backups" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewBackup",
@@ -988,6 +1007,7 @@
         }
       },
       "post" : {
+        "tags" : [ "backups" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addBackup",
@@ -1000,6 +1020,7 @@
     },
     "/backups/{id}" : {
       "get" : {
+        "tags" : [ "backups" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getBackupInfo",
@@ -1021,6 +1042,7 @@
         }
       },
       "post" : {
+        "tags" : [ "backups" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateBackupInfo",
@@ -1044,6 +1066,7 @@
     },
     "/domains" : {
       "get" : {
+        "tags" : [ "domains" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getDomainsList",
@@ -1056,6 +1079,7 @@
     },
     "/domains/order" : {
       "get" : {
+        "tags" : [ "domains" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewDomain",
@@ -1066,6 +1090,7 @@
         }
       },
       "post" : {
+        "tags" : [ "domains" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addDomain",
@@ -1078,6 +1103,7 @@
     },
     "/domains/{id}" : {
       "get" : {
+        "tags" : [ "domains" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getDomainInfo",
@@ -1099,6 +1125,7 @@
         }
       },
       "post" : {
+        "tags" : [ "domains" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateDomainInfo",
@@ -1122,6 +1149,7 @@
     },
     "/floating_ip" : {
       "get" : {
+        "tags" : [ "floating_ips" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getFloatingIpsList",
@@ -1134,6 +1162,7 @@
     },
     "/floating_ips/order" : {
       "get" : {
+        "tags" : [ "floating_ips" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewFloatingIp",
@@ -1144,6 +1173,7 @@
         }
       },
       "post" : {
+        "tags" : [ "floating_ips" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addFloatingIp",
@@ -1156,6 +1186,7 @@
     },
     "/floating_ips/{id}" : {
       "get" : {
+        "tags" : [ "floating_ips" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getFloatingIpInfo",
@@ -1177,6 +1208,7 @@
         }
       },
       "post" : {
+        "tags" : [ "floating_ips" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateFloatingIpInfo",
@@ -1200,6 +1232,7 @@
     },
     "/licenses" : {
       "get" : {
+        "tags" : [ "licenses" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getLicenseList",
@@ -1212,6 +1245,7 @@
     },
     "/licenses/order" : {
       "get" : {
+        "tags" : [ "licenses" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewLicense",
@@ -1222,6 +1256,7 @@
         }
       },
       "post" : {
+        "tags" : [ "licenses" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addLicense",
@@ -1234,6 +1269,7 @@
     },
     "/licenses/{id}" : {
       "get" : {
+        "tags" : [ "licenses" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getLicenseInfo",
@@ -1255,6 +1291,7 @@
         }
       },
       "post" : {
+        "tags" : [ "licenses" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateLicenseInfo",
@@ -1278,6 +1315,7 @@
     },
     "/mail" : {
       "get" : {
+        "tags" : [ "mail" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getMailList",
@@ -1290,6 +1328,7 @@
     },
     "/mail/order" : {
       "get" : {
+        "tags" : [ "mail" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewMail",
@@ -1300,6 +1339,7 @@
         }
       },
       "post" : {
+        "tags" : [ "mail" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addMail",
@@ -1312,6 +1352,7 @@
     },
     "/mail/{id}" : {
       "get" : {
+        "tags" : [ "mail" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getMailInfo",
@@ -1333,6 +1374,7 @@
         }
       },
       "post" : {
+        "tags" : [ "mail" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateMailInfo",
@@ -1356,6 +1398,7 @@
     },
     "/qs" : {
       "get" : {
+        "tags" : [ "quickservers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getQsList",
@@ -1368,6 +1411,7 @@
     },
     "/qs/order" : {
       "get" : {
+        "tags" : [ "quickservers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewQs",
@@ -1378,6 +1422,7 @@
         }
       },
       "post" : {
+        "tags" : [ "quickservers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addQs",
@@ -1390,6 +1435,7 @@
     },
     "/qs/{id}" : {
       "get" : {
+        "tags" : [ "quickservers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getQsInfo",
@@ -1411,6 +1457,7 @@
         }
       },
       "post" : {
+        "tags" : [ "quickservers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateQsInfo",
@@ -1434,6 +1481,7 @@
     },
     "/servers" : {
       "get" : {
+        "tags" : [ "servers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getServerList",
@@ -1446,6 +1494,7 @@
     },
     "/servers/order" : {
       "get" : {
+        "tags" : [ "servers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewServer",
@@ -1456,6 +1505,7 @@
         }
       },
       "post" : {
+        "tags" : [ "servers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addServer",
@@ -1468,6 +1518,7 @@
     },
     "/servers/{id}" : {
       "get" : {
+        "tags" : [ "servers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getServerInfo",
@@ -1489,6 +1540,7 @@
         }
       },
       "post" : {
+        "tags" : [ "servers" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateServerInfo",
@@ -1512,6 +1564,7 @@
     },
     "/ssl" : {
       "get" : {
+        "tags" : [ "ssl" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getSslList",
@@ -1524,6 +1577,7 @@
     },
     "/ssl/order" : {
       "get" : {
+        "tags" : [ "ssl" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewSsl",
@@ -1534,6 +1588,7 @@
         }
       },
       "post" : {
+        "tags" : [ "ssl" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addSsl",
@@ -1546,6 +1601,7 @@
     },
     "/ssl/{id}" : {
       "get" : {
+        "tags" : [ "ssl" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getSslInfo",
@@ -1567,6 +1623,7 @@
         }
       },
       "post" : {
+        "tags" : [ "ssl" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateSslInfo",
@@ -1590,6 +1647,7 @@
     },
     "/vps" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getVpsList",
@@ -1602,6 +1660,7 @@
     },
     "/vps/order" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewVps",
@@ -1612,6 +1671,7 @@
         }
       },
       "post" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addVps",
@@ -1624,6 +1684,7 @@
     },
     "/vps/{id}" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getVpsInfo",
@@ -1645,6 +1706,7 @@
         }
       },
       "post" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateVpsInfo",
@@ -1668,6 +1730,7 @@
     },
     "/vps/{id}/restart" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "doVpsRestart",
@@ -1691,6 +1754,7 @@
     },
     "/vps/{id}/start" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "doVpsStart",
@@ -1714,6 +1778,7 @@
     },
     "/vps/{id}/stop" : {
       "get" : {
+        "tags" : [ "vps" ],
         "summary" : "",
         "description" : "",
         "operationId" : "doVpsStop",
@@ -1737,6 +1802,7 @@
     },
     "/websites" : {
       "get" : {
+        "tags" : [ "webhosting" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getWebsiteList",
@@ -1749,6 +1815,7 @@
     },
     "/websites/order" : {
       "get" : {
+        "tags" : [ "webhosting" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getNewWebsite",
@@ -1759,6 +1826,7 @@
         }
       },
       "post" : {
+        "tags" : [ "webhosting" ],
         "summary" : "",
         "description" : "",
         "operationId" : "addWebsite",
@@ -1771,6 +1839,7 @@
     },
     "/websites/{id}" : {
       "get" : {
+        "tags" : [ "webhosting" ],
         "summary" : "",
         "description" : "",
         "operationId" : "getWebsiteInfo",
@@ -1792,6 +1861,7 @@
         }
       },
       "post" : {
+        "tags" : [ "webhosting" ],
         "summary" : "",
         "description" : "",
         "operationId" : "updateWebsiteInfo",
