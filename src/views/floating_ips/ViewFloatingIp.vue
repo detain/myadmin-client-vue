@@ -50,7 +50,7 @@ loadLink(route.params.link);
 
 mailStore.getById(id);
 
-const status = computed(() => `${settings.PREFIX}_status`); // compute your status value here
+const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
     const statusValue = serviceInfo.value[status.value];
     if (statusValue === 'active') return 'small-box b-radius bg-success';

@@ -23,14 +23,14 @@ const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDeta
 backupStore.getById(id);
 
 const billingStatus = computed(() => {
-    const status = serviceInfo[`${settings.PREFIX}_status`];
+    const status = serviceInfo[`${settings.value.PREFIX}_status`];
     if (status === 'active') return 'Active';
     if (status === 'pending') return 'Pending';
     if (status === 'expired' || status === 'canceled') return 'Expired/Canceled';
     return '';
 });
 const billingStatusClass = computed(() => {
-    const status = serviceInfo[`${settings.PREFIX}_status`];
+    const status = serviceInfo[`${settings.value.PREFIX}_status`];
     if (status === 'active') return 'bg-green';
     if (status === 'pending') return 'bg-orange';
     if (status === 'expired' || status === 'canceled') return 'bg-red';
