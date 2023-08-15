@@ -9,6 +9,5 @@ export default {
         { path: '', component: TicketsList },
         { path: 'new', component: NewTicket },
         { path: ':id(\\d+)', component: ViewTicket },
-        //{ path: 'settings', component: AccountSettings },
     ],
 };

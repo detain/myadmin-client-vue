@@ -8,13 +8,14 @@ import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword,
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
-const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
-const module = ref('vps');
+const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
+const settings = siteStore.getSettings(module);
 const webuzoTableExists = computed(() => {
     return typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo);
 });

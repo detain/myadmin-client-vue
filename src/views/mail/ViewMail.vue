@@ -7,6 +7,7 @@ import { useMailStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Alerts, DenyRules } from '@/views/mail';
 
+const module = 'mail';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
@@ -14,8 +15,9 @@ const link = computed(() => {
     return route.params.link;
 });
 
+const settings = siteStore.getSettings(module);
 const mailStore = useMailStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
@@ -45,7 +47,7 @@ loadLink(route.params.link);
 
 mailStore.getById(id);
 
-const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
+const status = computed(() => `${settings.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
     const statusValue = serviceInfo.value[status.value];
     if (statusValue === 'active') return 'small-box b-radius bg-success';

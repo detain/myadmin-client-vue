@@ -7,6 +7,7 @@ import { useWebsiteStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
 
+const module = 'webhosting';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
@@ -15,8 +16,9 @@ const link = computed(() => {
     return route.params.link;
 });
 console.log(link.value);
+const settings = siteStore.getSettings(module);
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
 
 function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;

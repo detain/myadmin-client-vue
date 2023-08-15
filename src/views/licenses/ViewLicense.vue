@@ -7,14 +7,16 @@ import { useLicenseStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { ChangeIp, ChangeOs } from '@/views/licenses';
 
+const module = 'licenses';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
+const settings = siteStore.getSettings(module);
 const licenseStore = useLicenseStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);

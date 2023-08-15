@@ -20,6 +20,9 @@ export const useSiteStore = defineStore({
         getBaseUrl() {
             return baseUrl;
         },
+        getSettings(module) {
+            return this.modules[module];
+        },
         async checkInfoLoaded() {
             if (Object.keys(this.modules).length == 0) {
                 this.loadInfo();

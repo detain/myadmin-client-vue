@@ -6,32 +6,33 @@ import { ref, computed } from 'vue';
 import { useBackupStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
+const module = 'backups';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
+const settings = siteStore.getSettings(module);
 siteStore.setPageHeading('View Backup');
 siteStore.setTitle('View Backup');
 siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Storage' });
 siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(backupStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(backupStore);
 
 backupStore.getById(id);
 
-const titleField = ref(settings.value.TITLE_FIELD);
 const billingStatus = computed(() => {
-    const status = serviceInfo[`${settings.value.PREFIX}_status`];
+    const status = serviceInfo[`${settings.PREFIX}_status`];
     if (status === 'active') return 'Active';
     if (status === 'pending') return 'Pending';
     if (status === 'expired' || status === 'canceled') return 'Expired/Canceled';
     return '';
 });
 const billingStatusClass = computed(() => {
-    const status = serviceInfo[`${settings.value.PREFIX}_status`];
+    const status = serviceInfo[`${settings.PREFIX}_status`];
     if (status === 'active') return 'bg-green';
     if (status === 'pending') return 'bg-orange';
     if (status === 'expired' || status === 'canceled') return 'bg-red';
@@ -54,7 +55,7 @@ const billingStatusClass = computed(() => {
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">
-                    {{ serviceInfo[titleField] }}
+                    {{ serviceInfo[settings.TITLE_FIELD] }}
                 </span>
             </div>
         </div>

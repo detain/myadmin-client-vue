@@ -7,6 +7,7 @@ import { useServerStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
 
+const module = 'servers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
@@ -14,8 +15,9 @@ const link = computed(() => {
     return route.params.link;
 });
 
+const settings = siteStore.getSettings(module);
 const serverStore = useServerStore();
-const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
