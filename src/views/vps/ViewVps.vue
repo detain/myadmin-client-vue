@@ -8,13 +8,15 @@ import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword,
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
-const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, settings, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, csrf, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
-const module = ref('vps');
+const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
 const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 const webuzoTableExists = computed(() => {
     return typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo);
 });
@@ -790,8 +792,7 @@ function toggleFunc(cp) {
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.vps_id" />
                             <input type="hidden" name="link" value="update_comment" />
-                            <input type="hidden" name="csrf_token" :value="csrf" />
-                            <input type="hidden" name="edit_comment" value="2" />
+                                <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
                                 <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>

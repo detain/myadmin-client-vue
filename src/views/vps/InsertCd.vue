@@ -13,7 +13,6 @@ const action = ref('');
 const module = computed(() => { return props.module; });
 //const id = ref('');
 const goBackLink = ref('');
-const csrfToken = ref('');
 const protocols = ref('https');
 const links = ref(['https://templates.is.cc/knoppix/KNOPPIX_V9.1CD-2021-01-25-EN.iso', 'https://templates.is.cc/systemrescuecd/systemrescue-7.01-amd64.iso']);
 function submitForm(event) {
@@ -41,7 +40,6 @@ function submitForm(event) {
                 <div class="card-body">
                     <form @submit="submitForm">
                         <input type="hidden" name="link" value="insert_cd" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">

@@ -5,7 +5,6 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 //const id = ref('');
-const csrf = ref('');
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -33,7 +32,6 @@ function submitForm() {
                     </template>
                     <form @submit.prevent="submitForm" method="POST">
                         <input type="hidden" name="link" value="reverse_dns" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <template v-for="(field_details, field_name, index) in fields" :key="index">
                             <template v-if="field_details.help_text">
                                 <div class="alert alert-success">{{ field_details.help_text }}</div>

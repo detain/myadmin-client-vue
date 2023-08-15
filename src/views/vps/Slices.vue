@@ -6,7 +6,6 @@ import { useSiteStore } from '@/stores';
 const props = defineProps({
     module: String,
     id: Number,
-    csrf: String,
     currency_symbol: String,
     memory: String,
     hdd: String,
@@ -73,7 +72,6 @@ function submitForm() {
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="slices" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
 
                         <div class="form-group">
                             <div class="row">

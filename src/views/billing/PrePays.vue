@@ -6,7 +6,7 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const prepayStore = usePrePayStore();
-const { loading, error, custid, ima, csrf_token, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
+const { loading, error, custid, ima, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'PrePays' });
@@ -152,7 +152,6 @@ prepayStore.load();
                 </div>
                 <div class="modal-body">
                     <form action="prepays" method="post" class="">
-                        <input type="hidden" name="csrf_token" :value="csrf_token" />
                         <input type="hidden" name="action" value="addfunds" />
                         <input id="prepay_hiddenid" type="hidden" name="prepay_id" value="" />
                         <input type="hidden" id="p_module" name="prepay_module" value="" />
@@ -187,7 +186,6 @@ prepayStore.load();
                 </div>
                 <div class="modal-body">
                     <form action="prepays" method="post" class="">
-                        <input type="hidden" name="csrf_token" :value="csrf_token" />
                         <input type="hidden" name="action" value="addnewprepay" />
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label" for="module-select">Select Module to use this prepay for</label>
@@ -230,7 +228,6 @@ prepayStore.load();
     <form id="deleteForm" action="prepays" method="POST">
         <input type="hidden" name="p_id" value="" id="p_id" />
         <input type="hidden" name="action" value="delete" />
-        <input type="hidden" name="csrf_token" :value="csrf_token" id="csrf_token" />
     </form>
 </template>
 

@@ -12,7 +12,7 @@ siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Account Settings' });
 const baseUrl = siteStore.getBaseUrl();
 
-const { loading, error, custid, ima, csrf_token, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
+const { loading, error, custid, ima, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
 
 accountStore.load();
 </script>

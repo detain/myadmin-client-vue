@@ -11,7 +11,6 @@ siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs List', '/mail/
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const coupon = ref('');
-const csrfToken = ref('');
 const pkg = ref(10880);
 const validateResponse = ref({});
 const tos = ref(false);
@@ -94,7 +93,6 @@ try {
                     </div>
                     <div class="card-body">
                         <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_mail" @submit.prevent="onSubmit">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right"
                                     >Package
@@ -180,7 +178,6 @@ try {
                     </div>
                     <div class="card-body">
                         <form method="post" class="floating_ip_form_confirm" action="order_mail">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input type="hidden" name="serviceType" :value="pkg" />
                             <input type="hidden" name="coupon" :value="coupon" />
                             <table class="table-sm table-bordered table">

@@ -12,7 +12,6 @@ const siteStore = useSiteStore();
 const module = computed(() => { return props.module; });
 //const id = ref('');
 const goBackLink = ref('');
-const csrfToken = ref('');
 const hostname = ref('');
 const ip = ref('');
 const ima = ref('');
@@ -39,7 +38,6 @@ function submitForm(event) {
                 <div class="card-body">
                     <form @submit="submitForm" class="change_rootpass">
                         <input type="hidden" name="link" value="change_webuzo_password" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="os">Hostname</label>

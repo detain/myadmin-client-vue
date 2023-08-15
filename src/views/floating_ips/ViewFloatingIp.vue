@@ -7,19 +7,20 @@ import { useMailStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { Alerts, DenyRules } from '@/views/mail';
 
+const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
 siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs' });
 siteStore.addBreadcrum('/mail/' + id, 'View Floating IPs ' + id);
 
 const mailStore = useMailStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -49,7 +50,7 @@ loadLink(route.params.link);
 
 mailStore.getById(id);
 
-const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
+const status = computed(() => `${settings.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
     const statusValue = serviceInfo.value[status.value];
     if (statusValue === 'active') return 'small-box b-radius bg-success';
@@ -199,7 +200,6 @@ const statusClass = computed(() => {
                     <div class="modal-body">
                         <input type="hidden" name="id" :value="serviceInfo.floating_ip_id" />
                         <input type="hidden" name="link" value="update_comment" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <input type="hidden" name="edit_comment" value="2" />
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>

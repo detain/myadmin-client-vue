@@ -10,13 +10,12 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const csrfToken = ref('');
 const ip = ref('');
 const newIp = ref(''); // Data binding for the "new_ip" input field
 function handleSubmit(event) {
     event.preventDefault();
     // Handle the form submission here
-    // You can access the submitted values using id, csrfToken, and newIp
+    // You can access the submitted values using id and newIp
 }
 </script>
 
@@ -35,7 +34,6 @@ function handleSubmit(event) {
                 <div class="card-body">
                     <form @submit="handleSubmit">
                         <input type="hidden" name="link" value="change_ip" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div class="form-group">
                             <div class="form-group row">
                                 <label class="col-md-2" for="os">Current IP</label>

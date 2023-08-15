@@ -49,7 +49,6 @@ onMounted(() => {});
                 </div>
                 <div class="card-body">
                     <form id="dockform" method="post" enctype="multipart/form-data" action="index.php?choice=none.affiliate_dock_setup">
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">

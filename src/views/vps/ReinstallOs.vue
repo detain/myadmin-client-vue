@@ -21,7 +21,6 @@ const templateSelect = ref({});
 const currentOS = ref('');
 const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
-const csrf = ref('');
 const goBackLink = computed(() => {
     if (module.value === 'vps') {
         return `view_${module.value}`;
@@ -133,7 +132,6 @@ try {
                         </div>
                         <form @submit.prevent="submitForm" :action="formAction" class="reinstall_os">
                             <input type="hidden" name="link" value="reinstall_os" />
-                            <input type="hidden" name="csrf_token" :value="csrf" />
 
                             <div class="form-group">
                                 <div class="form-group row">

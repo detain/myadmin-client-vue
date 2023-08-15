@@ -11,25 +11,6 @@ export const useBackupStore = defineStore({
 
         pkg: '',
         link_display: false,
-        settings: {
-            SERVICE_ID_OFFSET: 2000,
-            USE_REPEAT_INVOICE: true,
-            USE_PACKAGES: true,
-            BILLING_DAYS_OFFSET: 0,
-            IMGNAME: 'network-drive.png',
-            REPEAT_BILLING_METHOD: 2,
-            DELETE_PENDING_DAYS: 45,
-            SUSPEND_DAYS: 14,
-            SUSPEND_WARNING_DAYS: 7,
-            TITLE: 'Backup Services',
-            MENUNAME: 'Storage',
-            EMAIL_FROM: 'support@interserver.net',
-            TBLNAME: 'Storage',
-            TABLE: 'backups',
-            TITLE_FIELD: 'backup_username',
-            TITLE_FIELD2: 'backup_ip',
-            PREFIX: 'backup',
-        },
         serviceInfo: {
             backup_id: '21163',
             backup_server: '38',
@@ -126,7 +107,6 @@ export const useBackupStore = defineStore({
                 ],
             },
         },
-        csrf: '4ae9d56076b6e5e0c2fb71d2ed518299ee41d0fa923f877f6b14a10dfac970fd4dd9f2e677e1842bf08336856f527fdaab70c25205d06c1c45d17a4d5547c313',
     }),
     actions: {
         async register(user: any) {

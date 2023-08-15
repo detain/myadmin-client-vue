@@ -6,20 +6,20 @@ import { ref, computed } from 'vue';
 import { useQsStore, useSiteStore } from '@/stores';
 import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
-const module = ref('quickservers');
+const module = 'quickservers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
 siteStore.setBreadcrums({ '/home': 'Home', '/qs/': 'Rapid Deploy Servers' });
 siteStore.addBreadcrum('/qs/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, link_display, settings, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, csrf, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
 
 qsStore.getById(id);
 
@@ -460,8 +460,7 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.qs_id" />
                             <input type="hidden" name="link" value="update_comment" />
-                            <input type="hidden" name="csrf_token" :value="csrf" />
-                            <input type="hidden" name="edit_comment" value="2" />
+                                <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
                                 <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.qs_comment"></textarea>

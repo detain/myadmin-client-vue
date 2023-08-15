@@ -11,25 +11,6 @@ export const useMailStore = defineStore({
 
         pkg: '',
         link_display: false,
-        settings: {
-            SERVICE_ID_OFFSET: 11000,
-            USE_REPEAT_INVOICE: true,
-            USE_PACKAGES: true,
-            BILLING_DAYS_OFFSET: 0,
-            IMGNAME: 'e-mail.png',
-            REPEAT_BILLING_METHOD: 2,
-            DELETE_PENDING_DAYS: 45,
-            SUSPEND_DAYS: 14,
-            SUSPEND_WARNING_DAYS: 7,
-            TITLE: 'Mail Services',
-            MENUNAME: 'Mail',
-            EMAIL_FROM: 'support@interserver.net',
-            TBLNAME: 'Mail',
-            TABLE: 'mail',
-            TITLE_FIELD: 'mail_username',
-            TITLE_FIELD2: 'mail_ip',
-            PREFIX: 'mail',
-        },
         serviceInfo: {
             mail_id: '5652',
             mail_username: 'mb5652',
@@ -119,7 +100,6 @@ export const useMailStore = defineStore({
             services_module: 'mail',
         },
         usage_count: '0',
-        csrf: '',
     }),
     actions: {
         async register(user: any) {

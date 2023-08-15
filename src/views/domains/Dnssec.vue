@@ -12,7 +12,6 @@ const siteStore = useSiteStore();
 
 //const id = ref('{$id}');
 const domainId = ref('{$domain_id}');
-const csrfToken = ref('{$csrf_token}');
 
 const confirmDialog = (e) => {
     e.preventDefault();
@@ -54,7 +53,6 @@ const checkCharacterLimit = (event, limit, displayId) => {
                         <a id="add-new" class="btn btn-custom px-3 py-2 text-sm" href="javascript:void(0);" @click="showAddDNSContent"><i class="fa fa-plus-circle">&nbsp;</i>Add New Record</a>
                         <template v-if="dnssec_records && dnssec_records.length">
                             <form id="removethem" method="POST" :action="'view_domain?id=' + domain_id + '&link=dnssec'" class="d-inline">
-                                <input type="hidden" name="csrf_token" :value="csrf_token" />
                                 <input type="hidden" name="action" value="delete" />
                                 <button type="submit" class="btn btn-sm bg-gradient-red text-white" @click.prevent="confirmDialog"><i class="fa fa-times-circle">&nbsp;</i>Remove All DNSSEC Records</button>
                             </form>
@@ -95,7 +93,6 @@ const checkCharacterLimit = (event, limit, displayId) => {
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="saveDNSSEC" method="post" :action="'view_domain?id=' + domain_id + '&link=dnssec'">
-                                <input type="hidden" name="csrf_token" :value="csrf_token" />
                                 <input type="hidden" name="action" value="add" />
                                 <div v-for="foo in 3" :key="foo">
                                     <div class="form-group row">

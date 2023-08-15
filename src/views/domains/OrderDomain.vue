@@ -11,7 +11,6 @@ siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
-const csrfToken = ref('');
 const hostname = ref('');
 const ima = ref('client');
 const custid = ref('2773');
@@ -270,7 +269,6 @@ updateStep();
                     </div>
                     <div class="card-body">
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <template v-if="whoisPrivacyCost">
                                 <div class="form-group row">
                                     <label for="create_as" class="col-sm-5 col-form-label"> Whois Privacy for {{ whoisPrivacyCost }} / year </label>
@@ -384,13 +382,11 @@ updateStep();
                     </div>
                     <div class="card-body">
                         <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult?.status === 'available' ? 'register' : domainResult?.status === 'taken' ? 'transfer' : ''}`" id="edit_order_form">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <template v-for="(field_value, field, index) in final_post">
                                 <input :key="index" type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
                             </template>
                         </form>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, key) in final_post" :key="key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>

@@ -13,7 +13,6 @@ const ipsDetails = ref(null);
 const buyForm = ref(null);
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
-const csrf = ref(null);
 const ip_currency = ref(null);
 const ip_cost = ref(null);
 function getLink() {
@@ -26,7 +25,6 @@ function getLink() {
 function submitForm() {
     const formData = {
         link: 'buy_ip',
-        csrf_token: csrf,
     };
     // Process the form submission or make an API request here
 }
@@ -59,8 +57,7 @@ function submitForm() {
                     <template v-if="buyForm">
                         <form v-on:submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
-                            <input type="hidden" name="csrf_token" :value="csrf" />
-                            <div class="form-group">
+                                <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>

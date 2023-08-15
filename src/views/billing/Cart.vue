@@ -18,7 +18,6 @@ const invoices = ref([]);
 const modules = ref({});
 const editCcIdx = ref(0);
 const selectedCc = ref('');
-const csrf_token = ref('');
 const r_paymentMethod = ref('');
 const cc_detail = ref({});
 const country_select = ref('');
@@ -578,7 +577,6 @@ accountStore.load();
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card">
-                        <input type="hidden" name="csrf_token" v-model="csrf_token" />
                         <input type="hidden" name="action" value="add" />
                         <div class="row justify-content-center">
                             <div class="col-12">
@@ -671,7 +669,6 @@ accountStore.load();
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card" id="EditInfo">
-                        <input type="hidden" name="csrf_token" v-model="csrf_token" />
                         <input type="hidden" name="action" value="edit_info" />
                         <div class="row justify-content-center">
                             <div class="col-12">
@@ -747,7 +744,6 @@ accountStore.load();
                 </div>
                 <div class="modal-body">
                     <form action="cart" method="post" class="form-card" id="EditForm">
-                        <input type="hidden" name="csrf_token" v-model="csrf_token" />
                         <input type="hidden" name="action" value="edit" />
                         <input id="e_cc_idx" type="hidden" name="idx" v-model="editCcIdx" />
                         <div class="row justify-content-center">
@@ -819,13 +815,11 @@ accountStore.load();
         </div>
     </div>
     <form id="defaultpymt" action="cart" method="post">
-        <input type="hidden" name="csrf_token" v-model="csrf_token" />
         <input type="hidden" name="action" value="default" />
         <input id="defaultpaymentMethod" type="hidden" name="payment_method" value="" />
         <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="" />
     </form>
     <form id="deleteForm" action="cart" method="POST">
-        <input id="csrf_token" type="hidden" name="csrf_token" v-model="csrf_token" />
         <input type="hidden" name="action" value="delete" />
         <input id="cc_idx" type="hidden" name="idx" value="" />
     </form>

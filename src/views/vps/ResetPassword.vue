@@ -6,7 +6,6 @@ import { useSiteStore } from '@/stores';
 const props = defineProps({
     module: String,
     id: Number,
-    csrf: String,
 });
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
@@ -38,7 +37,6 @@ function submitForm() {
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="reset_password" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
 
                         <div class="form-group">
                             <div class="row">

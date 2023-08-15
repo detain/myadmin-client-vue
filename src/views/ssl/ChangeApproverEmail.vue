@@ -10,7 +10,6 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref(''); // Replace with appropriate data or pass as props
-const csrf_token = ref(''); // Replace with appropriate data or pass as props
 const approver_select = ref([]); // Replace with appropriate data or pass as props
 const selectedApproverEmail = ref(''); // Stores the selected approver email
 const service_info = ref({});
@@ -34,7 +33,6 @@ function submitForm() {
                 <div class="card-body">
                     <form @submit.prevent="submitForm" method="POST">
                         <input type="hidden" name="link" value="change_approver_email" />
-                        <input type="hidden" name="csrf_token" :value="csrf_token" />
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-right" for="hostname">Hostname</label>
                             <div class="col-sm-8">
