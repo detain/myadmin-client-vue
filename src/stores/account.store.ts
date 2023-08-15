@@ -2,9 +2,93 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface AccountData {
+  account_id: string;
+  account_lid: string;
+  status: string;
+  pin: string;
+  name: string;
+  address: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone: string;
+  country: string;
+  payment_method: string;
+  ima: string;
+  company: string;
+  currency: string;
+  locale: string;
+  disable_cc: string;
+  fraudrecord_score: string;
+  maxmind_riskscore: any;
+  fraudrecord: any[];
+  maxmind: any;
+  maxmind_score: string;
+  group: string;
+  cc: string;
+  cc_auto: string;
+  cc_exp: string;
+  cc_type: string;
+  cc_whitelist: string;
+  ccs: any[];
+  ccs_added: string;
+  disable_reinstall: string;
+  disable_reset: string;
+  email: string;
+  email_abuse: string;
+  email_settings: any;
+  extra: any;
+  picture: string;
+  affiliate_dock_description: string;
+  affiliate_dock_title: string;
+  affiliate_payment_method: string;
+  affiliate_paypal: string;
+  referrer_coupon: string;
+  reseller_markup: string;
+  facebook_id: string;
+  facebook_url: string;
+  github_id: string;
+  github_url: string;
+  google_id: string;
+  google_url: string;
+  ssh_key: string;
+  ssh_key_wrapped: string;
+  api_key: string;
+  api_key_wrapped: string;
+  '2fa_google_key': string;
+  '2fa_google_enabled': boolean;
+  '2fa_google': number;
+  '2fa_google_split': string;
+  '2fa_google_qr': string;
+}
+
+interface AccountState {
+  accountList: any[];
+  loading: boolean;
+  error: boolean;
+  custid: number;
+  ima: string;
+  data: AccountData;
+  ip: any;
+  oauthproviders: any;
+  oauthconfig: {
+    callback: string;
+    providers: any;
+  };
+  oauthadapters: any[];
+  limits: any[];
+  gravatar: string;
+  language: string;
+  countryCurrencies: any;
+  enableLocales: boolean;
+  enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
+}
+
 export const useAccountStore = defineStore({
     id: 'account',
-    state: () => ({
+    state: (): AccountState => ({
         accountList: [],
         loading: false,
         error: false,
@@ -86,15 +170,15 @@ export const useAccountStore = defineStore({
         enableCurrencies: false, // whether to show the currency dropdown on the contact info page
     }),
     actions: {
-        async register(user: any) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async load() {
+        async load(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
+            const keyMap: { [key: string]: string } = {
                 package: 'pkg',
             };
             /*
@@ -106,9 +190,9 @@ export const useAccountStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/account');
+                const response: any = await fetchWrapper.get(baseUrl + '/account');
                 this.$reset();
-                let key, value;
+                let key: string, value: any;
                 console.log(response);
                 for (key in response) {
                     value = response[key];
@@ -127,7 +211,7 @@ export const useAccountStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id: number, params: any) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -143,7 +227,7 @@ export const useAccountStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id: number) {
+        async delete(id: number): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             // add isDeleting prop to user being deleted
