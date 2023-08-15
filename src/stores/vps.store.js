@@ -83,7 +83,6 @@ export const useVpsStore = defineStore({
         daData: {},
         plesk12Data: {},
         token: '',
-        csrf: '',
         errors: false,
         vps_logs: [],
         cpuGraphData: null,

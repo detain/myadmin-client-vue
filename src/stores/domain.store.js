@@ -42,7 +42,6 @@ export const useDomainStore = defineStore({
             services_field2: '',
             services_module: 'domains',
         },
-        csrf: '7fe6bab890ea3c81248a47f294754e89447a9c2c460501259dbbe8aa525460210116c3cd728e3543eea3c86328db5256ce52e9703166746e1e44be8fcccf28bd',
         contact_details: {},
         pwarning: '',
         transfer_info: '',

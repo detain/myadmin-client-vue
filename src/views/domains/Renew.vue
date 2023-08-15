@@ -13,7 +13,6 @@ const renewCost = ref('{$formValues.renewCost}');
 const whoisCost = ref('{$formValues.whoisCost}');
 const whoisPrivacy = ref('{$whoisPrivacy}');
 const currencySymbol = ref('{$currencySymbol}');
-const csrfToken = ref('{$csrf_token}');
 const formValues = ref({
     serviceInfo: {
         domain_hostname: '{$formValues.serviceInfo.domain_hostname}',
@@ -85,7 +84,6 @@ function renewCalculate() {
                 </div>
                 <div class="card-body">
                     <form @submit.prevent="placeOrder">
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="domain">Domain</label>
                             <div class="col-sm-9 input-group">

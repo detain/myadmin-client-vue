@@ -22,7 +22,6 @@ const osDistro = ref('Ubuntu');
 const version = ref({});
 const rootpass = ref('');
 const hostname = ref('');
-const csrfToken = ref('');
 const tos = ref(false);
 const osTemplates = ref({});
 const osVersionSelect = ref({});
@@ -135,7 +134,6 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
             </div>
             <div class="card-body">
                 <form id="quickserver_form" method="post" class="quickserver_form_init" @submit.prevent="onSubmit">
-                    <input type="hidden" name="csrf_token" :value="csrfToken" />
                     <input type="hidden" name="rootpass" v-model="rootpass" />
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -245,7 +243,6 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
             </div>
             <div class="card-body">
                 <form method="post" class="quickserver_form_confirm" @submit.prevent="onSubmitConfirmation">
-                    <input type="hidden" name="csrf_token" :value="csrfToken" />
                     <table class="table-sm table-bordered table">
                         <thead>
                             <tr>

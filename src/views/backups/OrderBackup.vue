@@ -16,7 +16,6 @@ const pkg = ref(10831);
 const rootpass = ref('');
 const period = ref(1);
 const coupon = ref('');
-const csrfToken = ref('');
 const packageCosts = ref({});
 const serviceTypes = ref({});
 
@@ -123,7 +122,6 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                     </div>
                     <div class="card-body">
                         <form id="storage_form" method="post" class="storage_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input type="hidden" name="rootpass" :value="rootpass" />
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
@@ -213,11 +211,9 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                     </div>
                     <div class="card-body">
                         <form method="post" id="edit_order_form" :action="orderStorageUrl">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, key) in orderData" :key="key" type="hidden" :id="key" :name="key" :value="value" />
                         </form>
                         <form method="post" class="storage_form_confirm" :action="orderStorageUrl" @submit.prevent="placeOrder">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <input v-for="(value, key) in orderData.data" :key="key" :id="key == 'backup' ? 'backupselect' : key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>

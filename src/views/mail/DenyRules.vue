@@ -10,7 +10,6 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const csrfToken = ref('');
 const spam = ref([]);
 const blockAction = ref('');
 const blockId = ref('');
@@ -128,7 +127,6 @@ function submitBlock() {
                 </div>
                 <div class="modal-body mx-4">
                     <form id="block-form" @submit.prevent="submitBlock">
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <input id="action" type="hidden" name="action" :value="blockAction" />
                         <input id="rule_id" type="hidden" name="rule_id" :value="blockId" />
                         <div class="form-group row mx-auto">

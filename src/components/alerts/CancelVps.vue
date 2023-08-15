@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 const id = ref(''); // Assign the value of `$id` here
-const csrf_token = ref(''); // Assign the value of `$csrf_token` here
 const hostname = ref(''); // Assign the value of `$hostname` here
 const addons = ref([]); // Assign the value of `$addons` here
 
@@ -25,7 +24,6 @@ onMounted(() => {
 
 <template>
     <form id="cancelForm" :action="`view_vps?id=${id}&link=cancel`" method="POST">
-        <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token" />
     </form>
 </template>
 

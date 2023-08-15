@@ -10,18 +10,16 @@ const module = 'backups';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
-const settings = siteStore.getSettings(module);
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Backup');
 siteStore.setTitle('View Backup');
 siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Storage' });
 siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(backupStore);
-
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
 backupStore.getById(id);
 
 const billingStatus = computed(() => {

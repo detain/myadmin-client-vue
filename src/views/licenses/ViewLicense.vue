@@ -11,10 +11,9 @@ const module = 'licenses';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
-const settings = siteStore.getSettings(module);
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 

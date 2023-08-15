@@ -10,7 +10,6 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const csrfToken = ref('');
 const licenseType = ref('');
 const lid = ref('');
 const osList = ref({});
@@ -37,7 +36,6 @@ function submitForm() {
                 <div class="card-body">
                     <form @submit.prevent="submitForm" method="POST" :action="'view_licenses?id=' + id">
                         <input type="hidden" name="link" value="change_os" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <input type="hidden" name="license_type" :value="licenseType" />
                         <input type="hidden" name="lid" :value="lid" />
                         <div class="form-group row">

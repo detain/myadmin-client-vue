@@ -10,7 +10,6 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const csrfToken = ref('');
 const ipLabelListSet = ref({});
 const ipInputNameSet = ref({});
 const ipInputValueSet = ref({});
@@ -33,7 +32,6 @@ const ipInputListUpdated = ref('');
                     <div class="alert alert-warning" role="alert">Changes to reverse dns take up to an hour to show up.</div>
                     <form id="reverse_dns_form" accept-charset="UTF-8" role="form" :action="`view_server?id=${id}&link=reverse_dns`" method="POST">
                         <input type="hidden" name="choice" value="none.view_dedicated_server" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <input type="hidden" name="link" value="reverse_dns" />
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">IP Addresses</label>

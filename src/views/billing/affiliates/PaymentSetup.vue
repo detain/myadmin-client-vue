@@ -25,7 +25,6 @@ onMounted(() => {});
                 </div>
                 <div class="card-body">
                     <form method="post" id="" action="/affiliate?link=payment_method">
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right"> Select Payment Method<span class="text-danger"> *</span> </label>
                             <div class="col-sm-9 input-group">

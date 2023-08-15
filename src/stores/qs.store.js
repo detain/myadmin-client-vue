@@ -283,7 +283,6 @@ export const useQsStore = defineStore({
         bandwidth_xaxis: '[]',
         bandwidth_yaxis: '[]',
         token: '%3Ftoken%',
-        csrf: 'dc773d6f19a0c5702cf250327da047bb8c2cb7e54fcc8be52315594acda4e3aab9a8b9c8050a15016cc28da639ebb2f68d5c6129b6b7465b4c9aef51adcc3385',
         service_disk_used: '0.00 GB',
         service_disk_total: '0.00 GB',
         disk_percentage: 8.98,

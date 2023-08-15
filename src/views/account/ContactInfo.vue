@@ -10,7 +10,7 @@ const authStore = useAuthStore();
 const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading, gravatar } = storeToRefs(siteStore);
-const { loading, error, custid, ima, csrf_token, link, data, ip } = storeToRefs(accountStore);
+const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Contact Info' });

@@ -9,7 +9,6 @@ export const usePrePayStore = defineStore({
         error: false,
         custid: '',
         ima: 'client',
-        csrf_token: '',
         modules: {},
         prepays: {},
         total_pages: 0,

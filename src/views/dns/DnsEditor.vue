@@ -201,7 +201,6 @@ loadDns(id, data);
         <div class="card-body">
             <form method="post">
                 <input type="hidden" name="id" id="domain_id" value="35626" />
-                <input type="hidden" name="csrf_token" value="56019e5cb028b2d7c1201120debd53393809cf510b384d2a7a0fefd07c95ffc7cef92bf0f3bbaf46029f0bdecd91a6431b746fc22d34ecc9a76f82da941d05a9" />
             </form>
             <table :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
                 <thead>

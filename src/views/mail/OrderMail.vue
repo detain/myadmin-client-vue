@@ -11,7 +11,6 @@ siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail List', '/mail/order': 
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const coupon = ref('');
-const csrfToken = ref('');
 const pkg = ref(10880);
 const validateResponse = ref({});
 const tos = ref(false);
@@ -108,7 +107,6 @@ try {
                     </div>
                     <div class="card-body">
                         <form id="mail_form" method="post" class="mail_form_init" action="/mail/order" @submit.prevent="onSubmit">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">

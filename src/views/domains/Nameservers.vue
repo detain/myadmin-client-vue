@@ -15,8 +15,6 @@ const suggested = ref('{$suggested}');
 const nameservers = ref('{$nameservers}');
 const registered_nameservers = ref('{$registered_nameservers}');
 const domain_id = ref('{$domain_id}');
-const csrf_token = ref('{$csrf_token}');
-const csrf_token1 = ref('{$csrf_token1}');
 onMounted(() => {
     initializeToast();
 });
@@ -88,7 +86,6 @@ function confirmDeleteDialog(domain_id, nameserver_id) {
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="updateNameservers" method="post" :action="`view_domain?id=${domain_id}&link=nameservers`">
-                            <input type="hidden" name="csrf_token" :value="csrf_token" />
                             <input type="hidden" name="action" value="add" />
                             <div v-for="foo in 3" :key="foo" class="form-group row">
                                 <label class="col-md-3 col-form-label" :for="`nameserver${foo}`">Nameserver #{{ foo + 1 }}</label>
@@ -111,7 +108,6 @@ function confirmDeleteDialog(domain_id, nameserver_id) {
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="saveNameservers" method="post" :action="`view_domain?id=${domain_id}&link=nameservers`">
-                            <input type="hidden" name="csrf_token" :value="csrf_token1" />
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="name">Hostname</label>
                                 <div class="col-sm-9 input-group">

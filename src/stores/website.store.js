@@ -75,7 +75,6 @@ export const useWebsiteStore = defineStore({
                 rows: [],
             },
         },
-        csrf: 'e17ff0a12111c2cf2d22272a9fbdddd64f164b48276a5bdd5f95338403ebc23578aa2d48563e27d88fab60d1580834eb201e9bcbf2afd4d0be1f0d2c7ae17257',
     }),
     actions: {
         async register(user) {

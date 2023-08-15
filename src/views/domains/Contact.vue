@@ -12,7 +12,6 @@ const siteStore = useSiteStore();
 //const id = ref('');
 const ima = ref('');
 const custid = ref('');
-const csrfToken = ref('');
 const tabIndex = ref(0);
 const formFields = ref({});
 const domainFields = ref({});
@@ -36,7 +35,6 @@ const updateContact = () => {
                 </div>
                 <div class="card-body">
                     <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id=' + id + '&link=contact'">
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <div v-for="(field, fieldName) in formFields" :key="fieldName" class="form-group row">
                             <template v-if="domainFields[fieldName].label && domainFields[fieldName].label">
                                 <label class="col-sm-3 col-form-label" :for="fieldName">{{ domainFields[fieldName].label }}<span v-if="domainFields[fieldName].required" class="text-danger"> *</span></label>

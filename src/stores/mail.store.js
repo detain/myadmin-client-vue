@@ -100,7 +100,6 @@ export const useMailStore = defineStore({
             services_module: 'mail',
         },
         usage_count: '0',
-        csrf: '',
     }),
     actions: {
         async register(user) {

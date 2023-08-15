@@ -101,7 +101,6 @@ function bs_input_file() {
         <div class="row">
             <div class="col-md-6">
                 <form method="POST" action="view_ticket?ticket={$ticket.ticketid}">
-                    <input type="hidden" name="csrf_token" value="{$csrf}" />
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Update Ticket</h3>
@@ -162,7 +161,6 @@ function bs_input_file() {
             </div>
             <div class="col-md-6">
                 <form method="post" role="form" action="view_ticket?ticket={$ticket.ticketid}" enctype="multipart/form-data">
-                    <input type="hidden" name="csrf_token" value="{$csrf1}" />
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Reply Post</h3>

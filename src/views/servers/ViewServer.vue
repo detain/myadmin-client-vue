@@ -11,11 +11,9 @@ const module = 'servers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
-
-const settings = siteStore.getSettings(module);
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 const serverStore = useServerStore();
 const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 

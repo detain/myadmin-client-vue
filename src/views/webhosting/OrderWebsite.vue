@@ -20,7 +20,6 @@ const currencySymbol = ref('$');
 const hostname = ref('');
 const rootpass = ref('');
 const coupon = ref('');
-const csrfToken = ref('');
 const serviceTypes = ref({});
 const serviceOffers = ref({});
 const packges = ref({});
@@ -38,7 +37,6 @@ const formData = reactive({
     hostname: hostname,
     rootpass: rootpass,
     coupon: coupon,
-    csrfToken: csrfToken,
     serviceOfferId: serviceOfferId,
     'serviceOffers[packageId]': serviceOffers[packageId] ? serviceOffers[packageId] : {},
     'serviceTypes[packageId]': serviceTypes[packageId] ? serviceTypes[packageId] : {},
@@ -72,7 +70,6 @@ async function onSubmit() {
                 rootpass: rootpass.value,
                 period: period.value,
                 coupon: coupon.value,
-                csrfToken: csrfToken.value,
             })
             .then((response) => {
                 loading.close();
@@ -96,7 +93,6 @@ async function onSubmitConfirmation() {
                 rootpass: rootpass.value,
                 period: period.value,
                 coupon: coupon.value,
-                csrfToken: csrfToken.value,
                 serviceType: packageId.value,
             })
             .then((response) => {
@@ -156,7 +152,6 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                             </div>
                         </div>
                         <div class="card-body">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <div v-if="!web" class="form-group row">
                                 <div class="col-md-12 input-group">
                                     <div class="card">
@@ -405,7 +400,6 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                     </div>
                     <div class="card-body">
                         <form method="post" class="website_form_confirm" @submit.prevent="onSubmitConfirmation">
-                            <input type="hidden" name="csrf_token" :value="csrfToken" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>

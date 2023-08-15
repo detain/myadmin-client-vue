@@ -23,7 +23,6 @@ const products = {
 };
 const kyDept = ref('');
 const ima = ref('admin');
-const csrf = 'your-csrf-token';
 const abuse = '';
 
 const getActionUrl = () => {
@@ -36,7 +35,6 @@ const getActionUrl = () => {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form method="POST" class="new-ticket" enctype="multipart/form-data" :action="getActionUrl">
-                <input type="hidden" name="csrf_token" :value="csrf" />
                 <input v-if="abuse" type="hidden" name="abuse" :value="abuse" />
                 <div class="card card-outline card-success">
                     <div class="card-header">

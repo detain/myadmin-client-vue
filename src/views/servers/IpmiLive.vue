@@ -15,7 +15,6 @@ const clientIP = ref('');
 const success = ref('');
 const info = ref('');
 const error = ref('');
-const csrfToken = ref('');
 const emailIPMILink = computed(() => {
     // Replace with the computed property logic to generate the link
     return `view_server?id=${id.value}&link=ipmi_live&a_id=${aId.value}&email_ipmi_cred=1`;
@@ -64,7 +63,6 @@ function removeCard() {
                     </div>
                     <form v-if="!error" @submit.prevent="submitForm">
                         <input type="hidden" name="choice" value="none.view_dedicated_server" />
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <input type="hidden" name="link" value="ipmi_live" />
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Asset ID</label>

@@ -27,10 +27,6 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    csrf_token: {
-        type: String,
-        required: true,
-    },
     domain: {
         type: String,
     },
@@ -65,43 +61,43 @@ const props = defineProps({
 <template>
     <div>
         <template v-if="display === 'yes' && action === 'eppcode'">
-            <!-- <EppCode :url="url" :csrf_token="csrf_token" :domain="domain" /> -->
+            <!-- <EppCode :url="url" :domain="domain" /> -->
         </template>
         <template v-else-if="display === 'yes' && action === 'lock'">
-            <!-- <Lock :url="url" :csrf_token="csrf_token" :status="status" /> -->
+            <!-- <Lock :url="url" :status="status" /> -->
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_domain'">
-            <CancelDomain :url="url" :csrf_token="csrf_token" :domain="domain" />
+            <CancelDomain :url="url" :domain="domain" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_vps'">
-            <CancelVps :url="url" :csrf_token="csrf_token" :hostname="hostname" :addons="addons" />
+            <CancelVps :url="url" :hostname="hostname" :addons="addons" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_website'">
-            <CancelWebsite :url="url" :csrf_token="csrf_token" :hostname="hostname" :addons="addons" />
+            <CancelWebsite :url="url" :hostname="hostname" :addons="addons" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_qs'">
-            <CancelQs :url="url" :csrf_token="csrf_token" :hostname="hostname" :addons="addons" />
+            <CancelQs :url="url" :hostname="hostname" :addons="addons" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_storage'">
-            <CancelStorage :url="url" :csrf_token="csrf_token" :username="username" />
+            <CancelStorage :url="url" :username="username" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_license'">
-            <CancelLicense :url="url" :csrf_token="csrf_token" :ip="ip" />
+            <CancelLicense :url="url" :ip="ip" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_mail'">
-            <CancelMail :url="url" :csrf_token="csrf_token" :username="username" />
+            <CancelMail :url="url" :username="username" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_ssl'">
-            <CancelSsl :url="url" :csrf_token="csrf_token" :order_id="order_id" />
+            <CancelSsl :url="url" :order_id="order_id" />
         </template>
         <template v-else-if="display === 'yes' && action === 'whois'">
-            <!-- <Whois :url="url" :csrf_token="csrf_token" :funct="funct" :domain="domain" /> -->
+            <!-- <Whois :url="url" :funct="funct" :domain="domain" /> -->
         </template>
         <template v-else-if="display === 'yes' && action === 'buy_ip'">
-            <BuyIp :url="url" :csrf_token="csrf_token" :domain="domain" />
+            <BuyIp :url="url" :domain="domain" />
         </template>
         <template v-else-if="display === 'yes' && action === 'confirm'">
-            <Confirm :url="url" :csrf_token="csrf_token" :html="html" />
+            <Confirm :url="url" :html="html" />
         </template>
     </div>
 </template>

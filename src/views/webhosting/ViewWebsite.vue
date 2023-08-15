@@ -12,13 +12,12 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => { return route.params.link; });
 console.log(link.value);
-const settings = siteStore.getSettings(module);
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables, csrf } = storeToRefs(websiteStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 
 function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;

@@ -13,7 +13,6 @@ const siteStore = useSiteStore();
 const alerts = ref([]);
 const types_sel = ref({});
 //const id = ref('');
-const csrfToken = ref('');
 const defaultTo = ref('');
 const action = ref('');
 const alertId = ref('');
@@ -84,7 +83,7 @@ function submitBlock() {
                                     <td>{{ alert.alert_updated }}</td>
                                     <td style="max-width: 300px; overflow: hidden; white-space: nowrap">
                                         <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-new" @click="editAlert('edit', alert.alert_id, alert.alert_type, alert.alert_value, alert.alert_to, alert.alert_enabled)"> Edit </a>
-                                        <a :href="'view_mail?id=' + id + '&link=alerts&action=delete&alert_id=' + alert.alert_id + '&csrf_token=' + csrfToken" class="btn btn-sm btn-primary"> Delete </a>
+                                        <a :href="'view_mail?id=' + id + '&link=alerts&action=delete&alert_id=' + alert.alert_id" class="btn btn-sm btn-primary"> Delete </a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -109,7 +108,6 @@ function submitBlock() {
                 </div>
                 <div class="modal-body mx-4">
                     <form @submit.prevent="submitBlock" id="block-form">
-                        <input type="hidden" name="csrf_token" :value="csrfToken" />
                         <input id="action" type="hidden" name="action" :value="action" />
                         <input id="alert_id" type="hidden" name="alert_id" v-model="alertId" />
                         <div class="form-group row mx-auto">

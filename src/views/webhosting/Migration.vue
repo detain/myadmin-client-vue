@@ -9,7 +9,6 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 
-const csrfToken = ref('');
 const custPortal = ref('');
 const regEmail = ref('');
 const password = ref('');
@@ -50,7 +49,6 @@ const submitForm = () => {
                                 </div>
                             </div>
                             <div class="card-body pb-0">
-                                <input type="hidden" name="csrf_token" :value="csrfToken" />
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="cust_portal">Customer Portal URL</label>
                                     <div class="col-md-6">

@@ -11,13 +11,11 @@ const module = 'mail';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => {
-    return route.params.link;
-});
-
-const settings = siteStore.getSettings(module);
+const link = computed(() => { return route.params.link; });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => { return modules.value[module]; });
 const mailStore = useMailStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count, csrf } = storeToRefs(mailStore);
+const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
@@ -197,7 +195,6 @@ const statusClass = computed(() => {
                     <div class="modal-body">
                         <input type="hidden" name="id" :value="serviceInfo.mail_id" />
                         <input type="hidden" name="link" value="update_comment" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <input type="hidden" name="edit_comment" value="2" />
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>

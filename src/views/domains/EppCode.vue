@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
 const id = ref(''); // Assign the value of `$id` here
-const csrf_token = ref(''); // Assign the value of `$csrf_token` here
 
 onMounted(() => {
     Swal.fire({
@@ -22,7 +21,6 @@ onMounted(() => {
 
 <template>
     <form id="eppcodeForm" :action="`view_domain?id=${id}`" method="POST">
-        <input id="csrf_token" type="hidden" name="csrf_token" :value="csrf_token" />
         <input type="hidden" name="link" value="eppcode" />
     </form>
 </template>

@@ -107,7 +107,6 @@ export const useBackupStore = defineStore({
                 ],
             },
         },
-        csrf: '4ae9d56076b6e5e0c2fb71d2ed518299ee41d0fa923f877f6b14a10dfac970fd4dd9f2e677e1842bf08336856f527fdaab70c25205d06c1c45d17a4d5547c313',
     }),
     actions: {
         async register(user) {

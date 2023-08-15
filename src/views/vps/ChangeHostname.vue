@@ -12,7 +12,6 @@ const hostname = ref('');
 const newHostname = ref('');
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
-const csrf = ref('');
 
 function getLink() {
     if (module.value === 'vps') {
@@ -24,7 +23,6 @@ function getLink() {
 function submitForm() {
     const formData = {
         link: 'changeHostname',
-        csrf_token: csrf,
         hostname: newHostname,
     };
     // Process the form submission or make an API request here
@@ -46,7 +44,6 @@ function submitForm() {
                 <div class="card-body">
                     <form v-on:submit.prevent="submitForm" class="change_hostname">
                         <input type="hidden" name="link" value="changeHostname" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>

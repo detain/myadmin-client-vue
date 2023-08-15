@@ -12,7 +12,6 @@ const siteStore = useSiteStore();
 const additional_hd = ref('');
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
-const csrf = ref('');
 const currency_symbol = ref('');
 const gbCost = ref('');
 const selectedSpace = ref(0);
@@ -59,7 +58,6 @@ onMounted(() => {
                 <div class="card-body">
                     <form v-on:submit.prevent="submitForm">
                         <input type="hidden" name="link" value="buy_hd_space" />
-                        <input type="hidden" name="csrf_token" :value="csrf" />
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 p-0">
