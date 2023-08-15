@@ -20,15 +20,20 @@ export const useSiteStore = defineStore({
         getBaseUrl() {
             return baseUrl;
         },
-        loadInfo() {
+        async checkInfoLoaded() {
+            if (Object.keys(this.modules).length == 0) {
+                this.loadInfo();
+            }
+        },
+        async loadInfo() {
             fetchWrapper
                 .get(baseUrl + '/info')
                 .then((response) => {
-                    console.log('add cc success');
-                    console.log(response);
-                })
-                .error((response) => {
-                    console.log('add cc failed');
+                    this.modules = response.modules;
+                    this.services = response.services;
+                    this.serviceTypes = response.serviceTypes;
+                    this.serviceCategories = response.serviceCategories;
+                    console.log('info success');
                     console.log(response);
                 });
         },

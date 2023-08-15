@@ -13,6 +13,7 @@ const siteStore = useSiteStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(siteStore);
 
+siteStore.checkInfoLoaded();
 $(document).ready(function () {
     /*
     $(".pr-password").passwordRequirements({});
