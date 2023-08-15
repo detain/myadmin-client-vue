@@ -1,0 +1,98 @@
+import { defineStore } from 'pinia';
+import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { useAuthStore, useSiteStore } from '@/stores';
+
+interface AccountData {
+  account_id: string;
+  account_lid: string;
+  // ... (other properties omitted for brevity)
+}
+
+interface AccountState {
+  accountList: any[];
+  loading: boolean;
+  error: boolean;
+  custid: number;
+  ima: string;
+  data: AccountData;
+  // ... (other properties omitted for brevity)
+}
+
+export const useAccountStore = defineStore({
+  id: 'account',
+  state: (): AccountState => ({
+    accountList: [],
+    loading: false,
+    error: false,
+    custid: 0,
+    ima: 'client',
+    data: {
+      account_id: '',
+      account_lid: '',
+      // ... (other properties omitted for brevity)
+    },
+    // ... (other properties omitted for brevity)
+  }),
+  actions: {
+    async register(user: any): Promise<void> {
+      const siteStore = useSiteStore();
+      const baseUrl = siteStore.getBaseUrl();
+      await fetchWrapper.post(`${baseUrl}/register`, user);
+    },
+    async load(): Promise<void> {
+      const siteStore = useSiteStore();
+      const baseUrl = siteStore.getBaseUrl();
+      const keyMap: { [key: string]: string } = {
+        package: 'pkg',
+      };
+      try {
+        const response: any = await fetchWrapper.get(baseUrl + '/account');
+        this.$reset();
+        let key: string, value: any;
+        console.log(response);
+        for (key in response) {
+          value = response[key];
+          if (typeof this[key] !== 'undefined') {
+            this[key] = value;
+          } else if (typeof this[snakeToCamel(key)] !== 'undefined') {
+            this[snakeToCamel(key)] = value;
+          } else if (typeof keyMap[key] !== 'undefined') {
+            this[keyMap[key]] = value;
+          } else {
+            console.log("no key '" + key + "' with value '" + value + "'");
+          }
+        }
+      } catch (error) {
+        console.log('api failed');
+        console.log(error);
+      }
+    },
+    async update(id: number, params: any): Promise<void> {
+      const siteStore = useSiteStore();
+      const baseUrl = siteStore.getBaseUrl();
+      await fetchWrapper.put(`${baseUrl}/${id}`, params);
+
+      // update stored user if the logged-in user updated their own record
+      const authStore = useAuthStore();
+      if (id === authStore.user.id) {
+        // update local storage
+        const user = { ...authStore.user, ...params };
+        localStorage.setItem('user', JSON.stringify(user));
+
+        // update auth user in pinia state
+        authStore.user = user;
+      }
+    },
+    async delete(id: number): Promise<void> {
+      const siteStore = useSiteStore();
+      const baseUrl = siteStore.getBaseUrl();
+      // add isDeleting prop to the user being deleted
+      this.accountList.find((x) => x.id === id).isDeleting = true;
+
+      await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+
+      // remove the user from the list after deleted
+      this.accountList = this.accountList.filter((x) => x.id !== id);
+    },
+  },
+});
