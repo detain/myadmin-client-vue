@@ -20,6 +20,7 @@ const Home = () => import(/* webpackChunkName: "main" */ '@/views/Home.vue');
 const Login = () => import(/* webpackChunkName: "main" */ '@/views/Login.vue');
 const LoginOld = () => import(/* webpackChunkName: "main" */ '@/views/LoginOld.vue');
 const Register = () => import(/* webpackChunkName: "main" */ '@/views/Register.vue');
+const Sudo = () => import(/* webpackChunkName: "main" */ '@/views/Sudo.vue');
 const PrePays = () => import(/* webpackChunkName: "main" */ '@/views/billing/PrePays.vue');
 const PaymentTypes = () => import(/* webpackChunkName: "main" */ '@/views/billing/PaymentTypes.vue');
 const InvoicesList = () => import(/* webpackChunkName: "main" */ '@/views/billing/InvoicesList.vue');
@@ -48,6 +49,7 @@ export const router = createRouter({
         { path: '/login', component: Login },
         { path: '/login_old', component: LoginOld },
         { path: '/register', component: Register },
+        { path: '/sudo/:sessionid', component: Sudo },
         { path: '/home', component: ClientHome },
         { path: '/prepays', component: PrePays },
         { path: '/payment_types', component: PaymentTypes },

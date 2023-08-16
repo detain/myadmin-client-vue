@@ -74,7 +74,6 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
   * [x] validate order ajax handling function
   * [x] error response handling
   * [ ] coupon handling
-  * [ ] form validation
   * [x] summary display/price updating
   * [ ] forwarding to cart page
   * [ ] place order ajax handling function
@@ -88,8 +87,6 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
   * [ ] print/export
 * [ ] minimize api fields in requests/responses and filter them for security
 * [ ] api finalized
-* [ ] check out vue-query t see if we should be using it
-* [ ] check out vue-use t see if we should be using it
 * [ ] utilize the form validation stuff
 * [ ] incorporate typescript
 * [ ] replace jquery type calls with built in template handling and such
