@@ -12,6 +12,7 @@ export const useSiteStore = defineStore({
         sidemenu: '',
         title: '',
         modules: {
+            /*
             domains: {
                 SERVICE_ID_OFFSET: 10000,
                 USE_REPEAT_INVOICE: true,
@@ -203,6 +204,7 @@ export const useSiteStore = defineStore({
                 TITLE_FIELD: "server_hostname",
                 PREFIX: "server"
             }
+            */
         },
         services: {},
         serviceTypes: {},

@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
+import { storeToRefs, defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
-import { useAlertStore, useSiteStore } from '@/stores';
+import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -19,13 +19,42 @@ export const useAuthStore = defineStore({
             websites: 0,
             servers: 0,
         },
+        //apiKey: JSON.parse(localStorage.getItem('apiKey')), // your api key
+        apiKey: null, // your api key
+        sessionId: localStorage.getItem('sessionId'), // your session id
+        useHeaders: true, // whether to send auth via headers or cookie
         // initialize state from local storage to enable user to stay logged in
         remember: localStorage.getItem('remember'),
         user: JSON.parse(localStorage.getItem('user')),
         returnUrl: null as string | null,
     }),
     actions: {
+        async sudo(sessionId) {
+            //console.log("Starting sudo session with sessionId "+sessionId)
+            const accountStore = useAccountStore();
+            if (this.user == null) {
+                this.user = {};
+            }
+            this.user.sessionId = sessionId;
+            this.sessionId = sessionId;
+            localStorage.setItem('user', JSON.stringify(this.user));
+            localStorage.setItem('sessionId', this.sessionId);
+            //localStorage.setItem('apiKey', this.apiKey);
+            accountStore.load().then((response) => {
+                //console.log("starting .then handler for accountStore.load trying to utilize the data");
+                this.user.account_id = accountStore.data.account_id;
+                this.user.account_lid = accountStore.data.account_lid;
+                this.user.gravatar = accountStore.gravatar;
+                this.user.ima = 'client'; // accountStore.data.ima;
+                this.user.name = accountStore.data.name;
+                localStorage.setItem('user', JSON.stringify(this.user));
+                // redirect to previous url or default to home page
+                console.log("Trying to load a different URL");
+                router.push(this.returnUrl || '/');
+            });
+        },
         async load() {
+            //console.log("Trying to load account/info user info");
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -56,9 +85,12 @@ export const useAuthStore = defineStore({
             try {
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams);
                 this.user = user;
+                this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('remember', this.remember);
                 localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('sessionId', this.sessionId);
+                //localStorage.setItem('apiKey', this.apiKey);
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
             } catch (error) {
@@ -77,9 +109,11 @@ export const useAuthStore = defineStore({
             try {
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms);
                 this.user = user;
+                this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('remember', this.remember);
                 localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('sessionId', this.sessionId);
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
             } catch (error) {
@@ -99,7 +133,10 @@ export const useAuthStore = defineStore({
         },
         async logout() {
             this.user = null;
+            this.sessionId = null;
+            this.apiKey = null;
             localStorage.removeItem('user');
+            localStorage.removeItem('sessionId');
             await router.push('/login');
         },
     },

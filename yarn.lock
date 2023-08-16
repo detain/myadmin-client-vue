@@ -2677,38 +2677,38 @@
     "@typescript-eslint/types" "6.4.0"
     eslint-visitor-keys "^3.4.1"
 
-"@unhead/dom@1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.3.3.tgz#db16c1266944b1ae1fe3451015d80c78a57422b2"
-  integrity sha512-lagqp2dAAE//WSe5WcCAkI19snMJrLcc0QBWLsFIUXhbKQOR3Y6gr4PeCqwIHGEggEIuAkvaDzJwRd5L/CtqvQ==
+"@unhead/dom@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.3.4.tgz#0645ccee9e041a3b04a2ad63f0ece081a3eb0b99"
+  integrity sha512-wQK31cqjcZHqmMLI0PEDbzigp0KwQjG4P/H8BybcARvGQoaWdgZkiOu+iYmW0sl7e5V08CBL+PXiyiJ1TU6K3Q==
   dependencies:
-    "@unhead/schema" "1.3.3"
-    "@unhead/shared" "1.3.3"
+    "@unhead/schema" "1.3.4"
+    "@unhead/shared" "1.3.4"
 
-"@unhead/schema@1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.3.3.tgz#dc40b6e92c324bfd9f5524288f70bfb06993b6a3"
-  integrity sha512-5P3Aff/EM5Y4WnJBvvXQqB6CsBq3zdAiK+pf7m0ZXjerc5K5UqKomOtCZ0GXwr10mait7nbca5JaOUiMv2YWjg==
+"@unhead/schema@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.3.4.tgz#596590a5192ef33f00651d972757e007f1bb2b01"
+  integrity sha512-9a/5l6YpyW36ud0AKRkHzIVc9mWBxFqvE/ASFLjef2trmHhIVNewu5hjegotAO3uNSxC32AX4FoeJBgTDpYmHA==
   dependencies:
     hookable "^5.5.3"
     zhead "^2.0.10"
 
-"@unhead/shared@1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.3.3.tgz#d7b7365034f7626880183b0baf94eb4e26eeec04"
-  integrity sha512-xcrcKJy/4xE/IFJ4TF43HtGLONfkoedihtV8oR/OKFeeL4DshioZ2X1pmLh7U+Mc+QR3cX027BngWVXaGFOOaw==
+"@unhead/shared@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.3.4.tgz#23803244a91856ed9d9afc6a943664d3f2473b6a"
+  integrity sha512-cBi6gIdSxl5kNrVWJS3zTXsyTeF6JQmub2SQEWzLnCy/+S/1K0pmrbj5d1B01AKBVKgJ4UVS+AaAfKfXKyv4tg==
   dependencies:
-    "@unhead/schema" "1.3.3"
+    "@unhead/schema" "1.3.4"
 
 "@unhead/vue@*":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.3.3.tgz#6fb96db92f05ce6d10f1ca019acf35b9e6f2dd83"
-  integrity sha512-arkHRSsexQGLIC255w9zNfPs8gC1P3l4YHB1ZOa1E/30kiEhgq/Z1G3wHaegN0TfM6ODKnTMpxiOQr0mPIiZqQ==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.3.4.tgz#66e580dc89336bc47e154857630d8ebf72a38cb8"
+  integrity sha512-+LIQ/2W2Kyo0+Z3OvdpOh54tx+LOVURt9dbudHdol2wpioZ6JN6VJlOBBaesIrHqj48fSQP10GdaZDqrIkNUgw==
   dependencies:
-    "@unhead/schema" "1.3.3"
-    "@unhead/shared" "1.3.3"
+    "@unhead/schema" "1.3.4"
+    "@unhead/shared" "1.3.4"
     hookable "^5.5.3"
-    unhead "1.3.3"
+    unhead "1.3.4"
 
 "@vitejs/plugin-basic-ssl@*":
   version "1.0.1"
@@ -3841,9 +3841,9 @@ camelcase@^6.3.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001517, caniuse-lite@^1.0.30001520:
-  version "1.0.30001520"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001520.tgz#62e2b7a1c7b35269594cf296a80bdf8cb9565006"
-  integrity sha512-tahF5O9EiiTzwTUqAeFjIZbn4Dnqxzz7ktrgGlMYNLH43Ul26IgTMH/zvL3DG0lZxBYnlT04axvInszUsZULdA==
+  version "1.0.30001521"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001521.tgz#e9930cf499f7c1e80334b6c1fbca52e00d889e56"
+  integrity sha512-fnx1grfpEOvDGH+V17eccmNjucGUnCbP6KL+l5KqBIerp26WK/+RQ7CIDE37KGJjaPyqWXXlFUyKiWmvdNNKmQ==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -4645,9 +4645,9 @@ datatables.net-select@*, datatables.net-select@>=1.6.2:
     jquery ">=1.7"
 
 datatables.net-vue3@*:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/datatables.net-vue3/-/datatables.net-vue3-2.1.2.tgz#f761f4d12a1cd21d5d70a9810a0cbc74ce64aadb"
-  integrity sha512-LRPg/hhy1fvzpQEdML/xMkMpxu9/U4CzBdLO6GxiKnRv/Q8ncMjAzjeNHMiD6YjQLF45eFJI8SAtJ13kEwORIg==
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/datatables.net-vue3/-/datatables.net-vue3-2.1.3.tgz#e5a027a36758be351f534ddfed3819c29a80e0d6"
+  integrity sha512-9A81RiszsaH5sia01+E8tusagXbzeYVMSD0I+tzqx7V2iqVVZJgVVZM+4hwGa5skSJiHOUCRl3kp2TLF9uLf9A==
   dependencies:
     datatables.net-responsive-dt "^2.4.0"
 
@@ -5021,9 +5021,9 @@ electron-store@*:
     type-fest "^2.17.0"
 
 electron-to-chromium@^1.4.477:
-  version "1.4.491"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.491.tgz#53de4625bde1e75b5b7804a36c68b2c39f6a0c1f"
-  integrity sha512-ZzPqGKghdVzlQJ+qpfE+r6EB321zed7e5JsvHIlMM4zPFF8okXUkF5Of7h7F3l3cltPL0rG7YVmlp5Qro7RQLA==
+  version "1.4.492"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.492.tgz#83fed8beb64ec60578069e15dddd17b13a77ca56"
+  integrity sha512-36K9b/6skMVwAIEsC7GiQ8I8N3soCALVSHqWHzNDtGemAcI9Xu8hP02cywWM0A794rTHm0b0zHPeLJHtgFVamQ==
 
 electron-updater@^4.0:
   version "4.6.5"
@@ -6686,7 +6686,7 @@ jquery-sortable@johnny/jquery-sortable#master:
   version "0.9.13"
   resolved "https://codeload.github.com/johnny/jquery-sortable/tar.gz/4d31eeaf0136307c4d70e9e2252bee001384cf72"
   dependencies:
-    jquery "^2.1.2 || ^3.0.0"
+    jquery "^2.1.2"
 
 jquery-ui-dist@^1.13.0:
   version "1.13.2"
@@ -8048,9 +8048,9 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@*, postcss@^8.1.10, postcss@^8.4.23, postcss@^8.4.27:
-  version "8.4.27"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
-  integrity sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==
+  version "8.4.28"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.28.tgz#c6cc681ed00109072816e1557f889ef51cf950a5"
+  integrity sha512-Z7V5j0cq8oEKyejIKfpD8b4eBy9cwW2JWPk0+fB1HOAMsfHbnAXLLS+PfVWlzMSLQaWttKDt607I0XHmpE67Vw==
   dependencies:
     nanoid "^3.3.6"
     picocolors "^1.0.0"
@@ -8079,9 +8079,9 @@ prettier-plugin-tailwindcss@*:
   integrity sha512-M5K80V21yM+CTm/FEFYRv9/9LyInYbCSXpIoPAKMm8zy89IOwdiA2e4JVbcO7tvRtAQWz32zdj7/WKcsmFyAVg==
 
 prettier@*:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.1.tgz#65271fc9320ce4913c57747a70ce635b30beaa40"
-  integrity sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.2.tgz#78fcecd6d870551aa5547437cdae39d4701dca5b"
+  integrity sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==
 
 pretty-bytes@^5.3.0:
   version "5.6.0"
@@ -9644,14 +9644,14 @@ undefsafe@^2.0.5:
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.5.tgz#38733b9327bdcd226db889fb723a6efd162e6e2c"
   integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
 
-unhead@1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.3.3.tgz#3c9b9353ee4bb52971581d3c90f2eae21e738d7e"
-  integrity sha512-4lGYtrwqsvlw1Grkvyz9vV5H/1ttU/ApqXQwAPpQ4WX/S54QHZNNVD/DjqYR+7QEGkWHxyQgxYoqaeeE0pUlRw==
+unhead@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.3.4.tgz#bf069e0bb1ddb3a72bd67b053de7753ab53fea84"
+  integrity sha512-cSl5Xsmb99JzV0lE0D9TQxU9sU2vu3ZMdeIBy48Y0J6XVVY4WXVAyhbeSzhLVRaBfjYn7O43BGsgN7TjxSCSrg==
   dependencies:
-    "@unhead/dom" "1.3.3"
-    "@unhead/schema" "1.3.3"
-    "@unhead/shared" "1.3.3"
+    "@unhead/dom" "1.3.4"
+    "@unhead/schema" "1.3.4"
+    "@unhead/shared" "1.3.4"
     hookable "^5.5.3"
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
@@ -9854,9 +9854,9 @@ validator@^13.7.0:
   integrity sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==
 
 vanilla-jsoneditor@^0.17.8:
-  version "0.17.9"
-  resolved "https://registry.yarnpkg.com/vanilla-jsoneditor/-/vanilla-jsoneditor-0.17.9.tgz#e9071bd2d345b731f306ffefdbca9219fdce75a9"
-  integrity sha512-t5CxzqRpjpDhrNEWtRunUiEl3H9reeTP6mNfDAhTNxxurL+F90kvNe9PRVsr6Hz0cdzyv0k2b1SXsbYWXtHl+Q==
+  version "0.17.10"
+  resolved "https://registry.yarnpkg.com/vanilla-jsoneditor/-/vanilla-jsoneditor-0.17.10.tgz#ee1fac43b10586cb740ba2250dba3e0615472220"
+  integrity sha512-2ScoLNqq3kRSJ1+sG8rzbh4YtetrgEXbRX0OYxOk1Lqlg6tSkELGPsTA4KADFwk1s84oPj2ozMmFY6SwbZRJhg==
 
 vee-validate@*:
   version "4.11.1"
