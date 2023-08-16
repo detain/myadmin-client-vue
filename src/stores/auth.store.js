@@ -30,30 +30,31 @@ export const useAuthStore = defineStore({
     }),
     actions: {
         async sudo(sessionId) {
-            console.log("Starting sudo session with sessionId "+sessionId)
+            //console.log("Starting sudo session with sessionId "+sessionId)
             const accountStore = useAccountStore();
-            const { gravatar, data } = storeToRefs(accountStore);
+            if (this.user == null) {
+                this.user = {};
+            }
             this.user.sessionId = sessionId;
             this.sessionId = sessionId;
             localStorage.setItem('user', JSON.stringify(this.user));
             localStorage.setItem('sessionId', this.sessionId);
             //localStorage.setItem('apiKey', this.apiKey);
-            console.log("Trying to load account/info user info");
             accountStore.load().then((response) => {
-                console.log("starting .then handler for accountStore.load trying to utilize the data");
-                console.log(data.value);
-                this.user.account_id = data.value.account_id;
-                this.user.account_lid = data.value.account_lid;
-                this.user.gravatar = gravatar.value;
-                this.user.ima = data.value.ima;
-                this.user.name = data.value.name;
+                //console.log("starting .then handler for accountStore.load trying to utilize the data");
+                this.user.account_id = accountStore.data.account_id;
+                this.user.account_lid = accountStore.data.account_lid;
+                this.user.gravatar = accountStore.gravatar;
+                this.user.ima = 'client'; // accountStore.data.ima;
+                this.user.name = accountStore.data.name;
                 localStorage.setItem('user', JSON.stringify(this.user));
                 // redirect to previous url or default to home page
                 console.log("Trying to load a different URL");
-                //router.push(this.returnUrl || '/');
+                router.push(this.returnUrl || '/');
             });
         },
         async load() {
+            //console.log("Trying to load account/info user info");
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -132,9 +133,10 @@ export const useAuthStore = defineStore({
         },
         async logout() {
             this.user = null;
-            this.sessionid = null;
+            this.sessionId = null;
             this.apiKey = null;
             localStorage.removeItem('user');
+            localStorage.removeItem('sessionId');
             await router.push('/login');
         },
     },

@@ -122,13 +122,21 @@ export const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
+    //console.log("We are here:"+to.path);
+    const publicPages = ['/login', '/login_old', '/register', '/sudo'];
+    const parts = to.path.split('/');
+    if (parts.length >= 3) {
+        parts.splice(2);
+    }
+    const checkUrl = parts.join('/');
+    const authRequired = !publicPages.includes(checkUrl);
+    const authStore = useAuthStore();
+
     // clear alert on route change
     const alertStore = useAlertStore();
     alertStore.clear();
+
     // redirect to login page if not logged in and trying to access a restricted page
-    const publicPages = ['/login', '/login_old', '/register'];
-    const authRequired = !publicPages.includes(to.path);
-    const authStore = useAuthStore();
     if (authRequired && !authStore.sessionId && !authStore.apiKey) {
         authStore.returnUrl = to.fullPath;
         return '/login';
