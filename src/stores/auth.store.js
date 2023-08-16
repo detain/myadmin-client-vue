@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
+import { storeToRefs, defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
-import { useAlertStore, useSiteStore } from '@/stores';
+import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -29,6 +29,30 @@ export const useAuthStore = defineStore({
         returnUrl: null,
     }),
     actions: {
+        async sudo(sessionId) {
+            console.log("Starting sudo session with sessionId "+sessionId)
+            const accountStore = useAccountStore();
+            const { gravatar, data } = storeToRefs(accountStore);
+            this.user.sessionId = sessionId;
+            this.sessionId = sessionId;
+            localStorage.setItem('user', JSON.stringify(this.user));
+            localStorage.setItem('sessionId', this.sessionId);
+            //localStorage.setItem('apiKey', this.apiKey);
+            console.log("Trying to load account/info user info");
+            accountStore.load().then((response) => {
+                console.log("starting .then handler for accountStore.load trying to utilize the data");
+                console.log(data.value);
+                this.user.account_id = data.value.account_id;
+                this.user.account_lid = data.value.account_lid;
+                this.user.gravatar = gravatar.value;
+                this.user.ima = data.value.ima;
+                this.user.name = data.value.name;
+                localStorage.setItem('user', JSON.stringify(this.user));
+                // redirect to previous url or default to home page
+                console.log("Trying to load a different URL");
+                //router.push(this.returnUrl || '/');
+            });
+        },
         async load() {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
