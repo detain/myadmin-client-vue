@@ -38,14 +38,15 @@ $(document).ready(function () {
         }
     );
 });
-$.AdminLTESidebarTweak = {};
-$.AdminLTESidebarTweak.options = {
-    EnableRemember: true,
-    NoTransitionAfterReload: false,
-    //Removes the transition after page reload.
+let AdminLTESidebarTweak = {
+    options: {
+        EnableRemember: true,
+        NoTransitionAfterReload: false,
+        //Removes the transition after page reload.
+    }
 };
 $('.collapse_menu').on('click', function () {
-    if ($.AdminLTESidebarTweak.options.EnableRemember) {
+    if (AdminLTESidebarTweak.options.EnableRemember) {
       let toggleState = 'closed';
       if ($('body').hasClass('sidebar-collapse')) {
             toggleState = 'opened';
@@ -53,12 +54,12 @@ $('.collapse_menu').on('click', function () {
         document.cookie = 'toggleState=' + toggleState;
     }
 });
-if ($.AdminLTESidebarTweak.options.EnableRemember) {
+if (AdminLTESidebarTweak.options.EnableRemember) {
   const re = new RegExp('toggleState' + '=([^;]+)');
   const value = re.exec(document.cookie);
   let toggleState = value != null ? unescape(value[1]) : null;
     if (toggleState == 'closed') {
-        if ($.AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')
                 .addClass('sidebar-collapse hold-transition')
                 .delay(100)
@@ -78,7 +79,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 
 <template>
     <Alert />
-    <div v-if="user" class="app-container" :class="authStore.user && 'bg-light'">
+    <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="app-container bg-light">
         <!-- <Nav /> -->
         <nav class="main-header navbar navbar-expand navbar-dark">
             <!-- Navbar -->
@@ -110,11 +111,11 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                 <!-- Sidebar -->
                 <div class="user-panel d-flex mb-3 mt-3 pb-3">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
+                    <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
-                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
+                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
-                            <b>{{ user.account_lid }}</b></span
+                            <b>{{ user?.account_lid }}</b></span
                         >
                     </div>
                 </div>

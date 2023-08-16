@@ -10,6 +10,7 @@ export const fetchWrapper = {
 
 function request(method) {
     return (url, body) => {
+        console.log("sending a "+method+" request to "+url);
         const requestOptions = {
             method,
             headers: authHeader(url),
@@ -24,6 +25,7 @@ function request(method) {
 
 function requestGet(method) {
     return (url) => {
+        console.log("sending a "+method+" request to "+url);
         const requestOptions = {
             method,
             headers: authHeader(url),
@@ -37,6 +39,8 @@ function requestGet(method) {
 function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
     const { user, apiKey, sessionId } = useAuthStore();
+    console.log("session id:");
+    console.log(sessionId);
     const isSessionIdLoggedIn = !!sessionId;
     const isApiKeyLoggedIn = !!apiKey;
     const isLoggedIn = isSessionIdLoggedIn || isApiKeyLoggedIn;
@@ -55,6 +59,7 @@ async function handleResponse(response) {
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     // check for error response
+    console.log("Got "+response.status+" response");
     if (!response.ok) {
         const authStore = useAuthStore();
         if ([401, 403].includes(response.status) && authStore.user) {
