@@ -36,12 +36,16 @@ function requestGet(method) {
 // helper functions
 function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
-    const { user } = useAuthStore();
-    const isLoggedIn = !!user?.sessionid;
+    const { user, apiKey, sessionId } = useAuthStore();
+    const isSessionIdLoggedIn = !!sessionId;
+    const isApiKeyLoggedIn = !!apiKey;
+    const isLoggedIn = isSessionIdLoggedIn || isApiKeyLoggedIn;
     const isApiUrl = url.match('/apiv2/') != null;
-    if (isLoggedIn && isApiUrl) {
+    if (isSessionIdLoggedIn && isApiUrl) {
         //return { Authorization: `Bearer ${user.sessionid}` }
-        return { sessionid: `${user.sessionid}` };
+        return { sessionid: `${sessionId}` };
+    } else if (isApiKeyLoggedIn && isApiUrl) {
+        return { 'X-API-KEY': `${apiKey}` };
     } else {
         return {};
     }
