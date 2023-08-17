@@ -180,7 +180,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.mailList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.mailList = this.mailList.filter((x) => x.id !== id);

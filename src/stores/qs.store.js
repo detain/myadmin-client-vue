@@ -371,7 +371,7 @@ export const useQsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.qsList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.qsList = this.qsList.filter((x) => x.id !== id);

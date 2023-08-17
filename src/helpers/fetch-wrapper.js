@@ -1,14 +1,14 @@
 import { useAuthStore } from '@/stores';
 
 export const fetchWrapper = {
-    get: requestGet('GET'),
-    post: request('POST'),
-    put: request('PUT'),
-    patch: request('PATCH'),
     delete: request('DELETE'),
+    get:    request('GET'),
+    patch:  requestHasBody('PATCH'),
+    post:   requestHasBody('POST'),
+    put:    requestHasBody('PUT'),
 };
 
-function request(method) {
+function requestHasBody(method) {
     return (url, body) => {
         console.log("sending a "+method+" request to "+url);
         const requestOptions = {
@@ -23,9 +23,9 @@ function request(method) {
     };
 }
 
-function requestGet(method) {
+function request(method) {
     return (url) => {
-        //console.log("sending a "+method+" request to "+url);
+        console.log("sending a "+method+" request to "+url);
         const requestOptions = {
             method,
             headers: authHeader(url),

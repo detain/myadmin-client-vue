@@ -146,7 +146,7 @@ async function deleteRecord(event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id.value, {}).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id.value).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns(data, {});

@@ -80,7 +80,7 @@ export const useTicketsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.tickets.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.tickets = this.tickets.filter((x) => x.id !== id);

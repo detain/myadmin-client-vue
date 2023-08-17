@@ -176,7 +176,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.licenseList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.licenseList = this.licenseList.filter((x) => x.id !== id);
