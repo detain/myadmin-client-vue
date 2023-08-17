@@ -82,7 +82,7 @@ const state = reactive({
             count: 0,
         },
     }),
-    ticket_Status: ref({
+    ticketStatus: ref({
         Open: 0,
         'On Hold': 0,
     }),
@@ -160,7 +160,7 @@ const loadHome = async (state) => {
         state.full_name = response.full_name;
         state.email = response.email;
         state.tickets = response.tickets;
-        state.ticket_Status = response.ticket_Status;
+        state.ticketStatus = response.ticketStatus;
         state.ticketStatusView = response.ticketStatusView;
         //state.details = response.details;
         state.services = response.services;
