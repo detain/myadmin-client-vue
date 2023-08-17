@@ -27,13 +27,14 @@ const newLimit = ref({
 async function deleteRange(start, end) {
     try {
         fetchWrapper
-            .delete(`${baseUrl}/account/iplimits`, {
+            .patch(`${baseUrl}/account/iplimits`, {
                 start: start,
                 end: end,
             })
             .then((response) => {
                 console.log('delete range success');
                 console.log(response);
+                accountStore.load();
             });
     } catch (error) {
         console.log('delete range failed');
@@ -51,6 +52,7 @@ async function addRangeSubmit() {
             .then((response) => {
                 console.log('add range success');
                 console.log(response);
+                accountStore.load();
             });
     } catch (error) {
         console.log('add range failed');
