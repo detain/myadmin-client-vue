@@ -8,7 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 import Inspector from 'vite-plugin-vue-inspector';
-import TurboConsole from "vite-plugin-turbo-console";
+//import TurboConsole from "vite-plugin-turbo-console";
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -21,7 +21,6 @@ export default defineConfig({
         inject({
             jQuery: 'jquery',
         }),
-        TurboConsole(),
         checker({
             vueTsc: false,
             typescript: false,
@@ -35,7 +34,9 @@ export default defineConfig({
         Inspect(),
         Inspector(),
         VueDevTools(),
+//        TurboConsole(),
     ],
+/*
     optimizeDeps: {
         disabled: false,
         include: ['jquery'],
@@ -71,6 +72,7 @@ export default defineConfig({
             include: [],
         },
     },
+*/
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
