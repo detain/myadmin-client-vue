@@ -61,6 +61,8 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
 
 ### To-Do / Road-Map
 
+* [ ] prepays .length problem
+* [ ] empty string passed in getElementsById on /account/info contact info page
 * [ ] switch fromk authstore.user to accountstore.data
 * [ ] update response codes to match table above
 * [ ] finish /account/*
