@@ -6,44 +6,6 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Development
 
-### How it Works
-
-We use Vue 3 with the Composition API to provide an entire website/application in a single page.  This is done using a combination of Vue SFC's (Single File Components) which and the Vue Router to change the url in the browser without actually navigating to a new page.
-
-Variables are mostly handled by reference (like a pointer).  This allows us to pass around variables that are ukept up to date when changed in other sections of the site.
-
-#### Core Functionality
-
-These are the libs which power the majority of the sites functionality.  You should at least breifly read opver each of them.
-
-* [**Vue 3**](https://vuejs.org/guide/introduction.html) is the **Template Engine** with all the modern bells and whistles like automatically updating the display render as data changes.
-* [**Pinia**](https://pinia.vuejs.org/introduction.html) is used to provide **Data Stores** which allow us to load data that is reusable between pages without having to reload the data.
-* [**Vue Router**](https://router.vuejs.org/installation.html) is used for **Routing** to trigger calling pages based on the url while all being in a single page).
-
-#### Additional Functionality
-
-This stuff provides good features but does not require you to really be famiiar with it.  Skip over these unless you find you need to know more about one of them for some reason.
-
-* [**Vite**](https://vitejs.dev/guide/) is our **Frontend Tooling** system which provides a nice dev setup and handles building the project for production use.
-* [**Vite PWA**](https://vite-pwa-org.netlify.app/guide/) automatically generates the the files needed so we are a [**PWA**](https://web.dev/learn/pwa/) (**Progressive Web App**).
-* [**Electron**](https://www.electronjs.org/) allows us to build a **Desktop App** for macOS, Windows, Linux, as well as Mobile Device versions.
-* [**ESLint**](https://eslint.org/) is our **Linter** which can detect a wide range of problems your code.
-* [**Prettier**](https://prettier.io/) is our **Code Formatter** allowing automatic formatting of code based on our set of predefined rules.
-* [**Vitest**](https://vitest.dev/guide/) is our **Unit Testing** framework.
-* [**VeeValidate**](https://vee-validate.logaretm.com/v4/guide/overview/) is installed for **Form Validation**
-* [**Vue-i18n**](https://vue-i18n.intlify.dev/guide/introduction.html) is our **Translation** lib.
-
-#### Inspecting and Debugging The Live Data
-
-There are several Developer Console type interfaces setup which we can use to view and modify the live variables generating the site.
-
-Browser Extension [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)
-![vue-devtools-extension](https://github.com/detain/myadmin-client-vue/assets/1364504/536e05be-9653-43ff-acce-2b2080f76a94)
-
-The other way is
-![vue-devtools-popup](https://github.com/detain/myadmin-client-vue/assets/1364504/9b502a69-09c4-48b7-ac88-2fe50d4ab15c)
-
-
 ### Updated OpenAPI API
 
 While building out this I am creating an OpenAPI based API and utilizing its calls in the client.
@@ -61,7 +23,6 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
 
 ### To-Do / Road-Map
 
-* [ ] prepays .length problem
 * [ ] empty string passed in getElementsById on /account/info contact info page
 * [ ] switch fromk authstore.user to accountstore.data
 * [ ] update response codes to match table above
@@ -101,6 +62,43 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
 * [x] login / authentication handling
 * [x] CORS
 * [x] modern routes
+
+### How it Works
+
+We use Vue 3 with the Composition API to provide an entire website/application in a single page.  This is done using a combination of Vue SFC's (Single File Components) which and the Vue Router to change the url in the browser without actually navigating to a new page.
+
+Variables are mostly handled by reference (like a pointer).  This allows us to pass around variables that are ukept up to date when changed in other sections of the site.
+
+#### Core Functionality
+
+These are the libs which power the majority of the sites functionality.  You should at least breifly read opver each of them.
+
+* [**Vue 3**](https://vuejs.org/guide/introduction.html) is the **Template Engine** with all the modern bells and whistles like automatically updating the display render as data changes.
+* [**Pinia**](https://pinia.vuejs.org/introduction.html) is used to provide **Data Stores** which allow us to load data that is reusable between pages without having to reload the data.
+* [**Vue Router**](https://router.vuejs.org/installation.html) is used for **Routing** to trigger calling pages based on the url while all being in a single page).
+
+#### Additional Functionality
+
+This stuff provides good features but does not require you to really be famiiar with it.  Skip over these unless you find you need to know more about one of them for some reason.
+
+* [**Vite**](https://vitejs.dev/guide/) is our **Frontend Tooling** system which provides a nice dev setup and handles building the project for production use.
+* [**Vite PWA**](https://vite-pwa-org.netlify.app/guide/) automatically generates the the files needed so we are a [**PWA**](https://web.dev/learn/pwa/) (**Progressive Web App**).
+* [**Electron**](https://www.electronjs.org/) allows us to build a **Desktop App** for macOS, Windows, Linux, as well as Mobile Device versions.
+* [**ESLint**](https://eslint.org/) is our **Linter** which can detect a wide range of problems your code.
+* [**Prettier**](https://prettier.io/) is our **Code Formatter** allowing automatic formatting of code based on our set of predefined rules.
+* [**Vitest**](https://vitest.dev/guide/) is our **Unit Testing** framework.
+* [**VeeValidate**](https://vee-validate.logaretm.com/v4/guide/overview/) is installed for **Form Validation**
+* [**Vue-i18n**](https://vue-i18n.intlify.dev/guide/introduction.html) is our **Translation** lib.
+
+#### Inspecting and Debugging The Live Data
+
+There are several Developer Console type interfaces setup which we can use to view and modify the live variables generating the site.
+
+Browser Extension [Vue Devtools](https://devtools.vuejs.org/guide/installation.html)
+![vue-devtools-extension](https://github.com/detain/myadmin-client-vue/assets/1364504/536e05be-9653-43ff-acce-2b2080f76a94)
+
+The other way is
+![vue-devtools-popup](https://github.com/detain/myadmin-client-vue/assets/1364504/9b502a69-09c4-48b7-ac88-2fe50d4ab15c)
 
 ## Recommended IDE Setup
 

@@ -30,14 +30,6 @@ export const usePrePayStore = defineStore({
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/billing/prepays');
                 this.$reset();
