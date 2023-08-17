@@ -107,7 +107,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div v-if="data.country === 'IN'" class="form-group row" style="display: flex">
-                                    <label class="col-md-3 col-form-label" for="company">GSTIN</label>
+                                    <label class="col-md-3 col-form-label" for="gstin">GSTIN</label>
                                     <div class="col-md-6">
                                         <input v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" id="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
                                     </div>
@@ -134,7 +134,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="">Country</label>
+                                    <label class="col-md-3 col-form-label" for="country">Country</label>
                                     <div class="col-md-6">
                                         <select v-model="data.country" id="country" name="country" class="form-control select2 form-control-sm">
                                             <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
@@ -158,7 +158,7 @@ accountStore.load();
                                 <hr />
                                 <h4 class="mb-4">Other Settings</h4>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label"></label>
+                                    <label class="col-md-3 col-form-label" for="disable_reset"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset == 1" value="1" />
@@ -167,7 +167,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label"></label>
+                                    <label class="col-md-3 col-form-label" for="disable_email_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications == 1" value="1" />
@@ -176,7 +176,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label"></label>
+                                    <label class="col-md-3 col-form-label" for="disable_server_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications == 1" value="1" />
@@ -185,7 +185,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label"></label>
+                                    <label class="col-md-3 col-form-label" for="disable_reinstall"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall == 1" value="1" />
