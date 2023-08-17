@@ -187,7 +187,7 @@ export const useVpsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.vpsList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.vpsList = this.vpsList.filter((x) => x.id !== id);

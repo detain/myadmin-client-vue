@@ -41,9 +41,7 @@ async function logOutOauth(type) {
 async function unlinkOauth(type) {
     try {
         fetchWrapper
-            .delete(`${baseUrl}/account/oauth`, {
-                type: type,
-            })
+            .delete(`${baseUrl}/account/oauth/${type}`)
             .then((response) => {
                 console.log('unlinkOauth success');
                 console.log(response);

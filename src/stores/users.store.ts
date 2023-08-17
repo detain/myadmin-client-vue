@@ -66,7 +66,7 @@ export const useUsersStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.users.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.users = this.users.filter((x) => x.id !== id);

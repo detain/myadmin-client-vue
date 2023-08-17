@@ -174,7 +174,7 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.domainList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.domainList = this.domainList.filter((x) => x.id !== id);

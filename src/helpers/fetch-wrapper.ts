@@ -1,14 +1,14 @@
 import { useAuthStore } from '@/stores';
 
 export const fetchWrapper = {
-    get: requestGet('GET'),
-    post: request('POST'),
-    put: request('PUT'),
-    patch: request('PATCH'),
     delete: request('DELETE'),
+    get:    request('GET'),
+    patch:  requestHasBody('PATCH'),
+    post:   requestHasBody('POST'),
+    put:    requestHasBody('PUT'),
 };
 
-function request(method: string) {
+function requestHasBody(method: string) {
     return (url: string, body?: any) => {
         console.log("sending a "+method+" request to "+url);
         const requestOptions: any = {
@@ -23,7 +23,7 @@ function request(method: string) {
     };
 }
 
-function requestGet(method) {
+function request(method) {
     return (url) => {
         console.log("sending a "+method+" request to "+url);
         const requestOptions = {
@@ -39,8 +39,8 @@ function requestGet(method) {
 function authHeader(url: string): any {
     // return auth header with jwt if user is logged in and request is to the api url
     const { user, apiKey, sessionId } = useAuthStore();
-    console.log("session id:");
-    console.log(sessionId);
+    //console.log("session id:");
+    //console.log(sessionId);
     const isSessionIdLoggedIn = !!sessionId;
     const isApiKeyLoggedIn = !!apiKey;
     const isLoggedIn = isSessionIdLoggedIn || isApiKeyLoggedIn;
@@ -59,7 +59,7 @@ async function handleResponse(response: any) {
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     // check for error response
-    console.log("Got "+response.status+" response");
+    //console.log("Got "+response.status+" response");
     if (!response.ok) {
         const authStore = useAuthStore();
         if ([401, 403].includes(response.status) && authStore.user) {

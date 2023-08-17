@@ -12,7 +12,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 import Inspector from 'vite-plugin-vue-inspector';
-import TurboConsole from "vite-plugin-turbo-console";
+//import TurboConsole from "vite-plugin-turbo-console";
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -30,11 +30,11 @@ export default defineConfig({
         inject({
             jQuery: 'jquery',
         }),
-        /*checker({
+/*
+        checker({
             vueTsc: true,
             typescript: false,
-        })*/,
-        /*
+        }),
         TurboConsole(),
         i18nResources({
             path: resolve(__dirname, "src/locales"),
@@ -47,7 +47,8 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }), */
+        legacy({ targets: ["defaults", "not IE 11"] }),
+*/
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
@@ -57,7 +58,9 @@ export default defineConfig({
         Inspect(),
         Inspector(),
         VueDevTools(),
+//        TurboConsole(),
     ],
+/*
     optimizeDeps: {
         disabled: false,
         include: ['jquery'],
@@ -93,6 +96,7 @@ export default defineConfig({
             include: [],
         },
     },
+*/
     resolve: {
         alias: {
             //'@': path.resolve(__dirname, './src'),

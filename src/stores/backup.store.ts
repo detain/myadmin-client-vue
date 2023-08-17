@@ -187,7 +187,7 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.backupList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.backupList = this.backupList.filter((x) => x.id !== id);

@@ -66,7 +66,7 @@ function deleteCardModal(cc_id = '0') {
         html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`, {}).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
                     console.log('delete cc success');
                     console.log(response);
                 });

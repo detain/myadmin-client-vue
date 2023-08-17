@@ -163,7 +163,7 @@ export const useServerStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.serverList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.serverList = this.serverList.filter((x) => x.id !== id);

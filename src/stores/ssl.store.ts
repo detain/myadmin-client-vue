@@ -91,7 +91,7 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.sslList.find((x) => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`, {});
+            await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.sslList = this.sslList.filter((x) => x.id !== id);
