@@ -64,46 +64,34 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
 | DELETE    | Delete         | 405 (Method Not Allowed), unless you want to delete the whole collection---not often desirable.      | 200 (OK). 404 (Not Found), if ID not found or invalid.                     |
 
 
-### To-Do / Road-Map
+### TODO Road-Map
 
-* [ ] switch fromk authstore.user to accountstore.data
-* [ ] update response codes to match table above
-* [ ] finish /account/*
-* [ ] loading / no entries messages
-* [x] cache data in pinia stores
-* [x] fix all linter issues
-* [x] view service pages
-  * [x] load data via ajax api
-  * [ ] links and form handling
-* [x] order service pages
-  * [x] layout / design implemented
-  * [x] route added
-  * [x] template converted
-  * [x] validate order ajax handling function
-  * [x] error response handling
-  * [ ] coupon handling
-  * [x] summary display/price updating
-  * [ ] forwarding to cart page
-  * [ ] place order ajax handling function
-* [x] services list pages
-  * [x] ajax loading via api calls
-  * [x] convert links to router-links
-  * [x] datatables or equivalent
-    * [x] filtering
-    * [ ] sorting
-    * [ ] pagination
-  * [ ] print/export
-* [ ] minimize api fields in requests/responses and filter them for security
-* [ ] api finalized
-* [ ] utilize the form validation stuff
-* [ ] incorporate typescript
-* [ ] replace jquery type calls with built in template handling and such
-* [x] electron build
-  * [x] windows/linux/mac builds
-  * [ ] js/css assets loaded locally
-* [x] login / authentication handling
-* [x] CORS
-* [x] modern routes
+* Needed for Stable Release
+  * [ ] switch fromk authstore.user to accountstore.data
+  * [ ] update response codes to match table above
+  * [ ] finish /account/*
+  * [ ] loading / no entries messages
+  * view service pages
+    * [ ] links and form handling
+  * order service pages
+    * [ ] coupon handling
+    * [ ] forwarding to cart page
+    * [ ] place order ajax handling function
+  * services list pages
+    * datatables or equivalent
+      * [x] filtering
+      * [ ] sorting
+      * [ ] pagination
+    * [ ] print/export
+* Future Improvements
+  * [ ] minimize api fields in requests/responses and filter them for security
+  * [ ] api finalized
+  * [ ] utilize the form validation stuff
+  * [ ] incorporate typescript
+  * [ ] replace jquery type calls with built in template handling and such
+  * [ ] electron build
+    * [x] windows/linux/mac builds
+    * [ ] js/css assets loaded locally
 
 ### How it Works
 
