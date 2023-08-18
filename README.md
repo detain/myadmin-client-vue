@@ -5,6 +5,28 @@
 * All links load/show instantly.  Its a SPA (single page app) where the site is loaded in a single page and navigation/routing handled via js.
 * Desktop/Mobile standalone app built with Electron
 * PWA
+* Lower Server Load
+* Seperation of Frontend/Backend
+  * Makes it easier to change or replace parts of the frontend
+* Testability
+* Early Error Detection and Prevention via TypeScript
+* DevTools/Inspector for better debugging the data on the site
+* Modern Route/URL Paths
+* **Enhanced User Experience**: Vue/Vite provides a reactive and dynamic frontend that can greatly enhance the user experience by enabling real-time updates, interactive components, and smooth animations.
+* **Performance Optimization**: Vue/Vite's reactive rendering model and efficient update mechanism can result in improved frontend performance, reducing the need for full-page reloads and optimizing resource usage.
+* **Scalability and Modularity**: Separating the frontend and backend allows for better scalability. You can independently scale the frontend and backend components based on their respective resource requirements.
+* **Code Maintainability**: Vue/Vite's component-based architecture promotes code reusability and modularity. This makes it easier to manage and maintain your codebase as it grows.
+* **Developer Productivity**: Vue's declarative syntax and component-based approach can lead to increased developer productivity. Hot-reloading in development mode speeds up the iteration process.
+* **Improved SEO**: Server-side rendering (SSR) capabilities in Vue can improve search engine optimization (SEO) by providing pre-rendered content that search engines can index.
+* **API Standardization**: By utilizing OpenAPI for API requests, you establish a clear and standardized way of interacting with your backend services, improving consistency and reducing integration complexity.
+* **Security Enhancements**: Separating the frontend from the backend can provide security benefits by limiting direct access to sensitive backend logic and data.
+* **Faster User Interactions**: Vue's reactive updates enable quicker user interactions as changes are reflected in the UI without full page reloads, leading to a more responsive application.
+* **Flexibility in UI Design**: Vue/Vite offers more flexibility in designing user interfaces, enabling you to create sophisticated and customizable UI components and layouts.
+* **Future-Proofing**: Vue/Vite's active community and regular updates ensure that your frontend technology stack remains up-to-date and adaptable to future requirements.
+* **Easier Prototyping and Iteration**: Vue/Vite's component-based architecture and rapid development cycle allow for quicker prototyping and iteration, facilitating experimentation and innovation.
+* **Cross-Platform Compatibility**: Vue/Vite can help ensure cross-browser compatibility and smooth user experiences across various devices, enhancing your application's accessibility.
+* **Integration Possibilities**: Vue/Vite can be integrated with various third-party libraries and tools, allowing you to leverage a wide range of functionalities and services.
+* **Reduced Server Load**: With frontend rendering in Vue/Vite, some of the processing load shifts to the client side, reducing the server load and enhancing server efficiency.
 
 ## FAQ
 
