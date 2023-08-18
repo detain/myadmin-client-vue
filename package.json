@@ -96,7 +96,6 @@
         "jquery": "^3.7",
         "jquery-migrate": "appleboy/jquery-migrate#master",
         "jquery-simple-pass-meter": "jakerella/jquerySimplePassMeter#master",
-        "jquery-sortable": "johnny/jquery-sortable#master",
         "jquery-ui": "jquery/jquery-ui#>=1.13.2",
         "jquery-ui-dist": "jquery/jquery-ui#>=1.13.2",
         "jqvmap-novulnerability": ">=1.5.1",
@@ -170,6 +169,7 @@
         "sweetalert2": "11.4.8"
     },
     "suggest": {
+        "jquery-sortable": "johnny/jquery-sortable#master",
         "@vitejs/plugin-legacy": "latest",
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",
