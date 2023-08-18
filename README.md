@@ -74,7 +74,7 @@ Do not simplify or skip any of the output. Show everything (the full output).
 ### TODO Road-Map
 
 * Needed for Stable Release
-  * [ ] switch fromk authstore.user to accountstore.data
+  * [ ] switch from authstore.user to accountstore.data
   * [ ] update response codes to match table above
   * [ ] finish /account/*
   * [ ] loading / no entries messages
