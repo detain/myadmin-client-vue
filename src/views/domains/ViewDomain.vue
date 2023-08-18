@@ -159,9 +159,9 @@ console.log(link.value);
                             <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
                         </div>
                         <div class="col-md-6 p-0">
-                            <h5 class="nameserver_heading">{{ allInfo.attributes.nameserver_list[0].name }}</h5>
-                            <h5 class="nameserver_heading">{{ allInfo.attributes.nameserver_list[1].name }}</h5>
-                            <h5 class="nameserver_heading">{{ allInfo.attributes.nameserver_list[2].name }}</h5>
+                            <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[0]?.name ?? '&nbsp;' }}</h5>
+                            <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[1]?.name ?? '&nbsp;' }}</h5>
+                            <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[2]?.name ?? '&nbsp;' }}</h5>
                         </div>
                     </div>
                 </div>

@@ -82,7 +82,7 @@ prepayStore.load();
               -->
                             </div>
                             <div class="col-md-6">
-                                <div v-if="p_details.history.length > 0" class="card card-secondary collapsed-card">
+                                <div v-if="typeof p_details.history != 'undefined' && Array.isArray(p_details.history) && p_details.history.length > 0" class="card card-secondary collapsed-card">
                                     <div class="card-header">
                                         <h3 class="card-title">History Log</h3>
                                         <div class="card-tools">
