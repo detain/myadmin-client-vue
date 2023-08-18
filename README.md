@@ -1,8 +1,16 @@
-# myadmin-static-client
+# InterServer MyAdmin Client Interface
 
-*If you get a blank page when loading the site, check your adblocker, you might need to disable it*
+## Features not present on current client interface
 
-This template should help get you started developing with Vue 3 in Vite.
+* All links load/show instantly.  Its a SPA (single page app) where the site is loaded in a single page and navigation/routing handled via js.
+* Desktop/Mobile standalone app built with Electron
+* PWA
+
+## FAQ
+
+#### Getting a blank page when loading the site
+
+Check your ad blocker or privacy addons, they might need to be disabled for this site.
 
 ## Development
 
@@ -23,7 +31,6 @@ While building out this I am creating an OpenAPI based API and utilizing its cal
 
 ### To-Do / Road-Map
 
-* [ ] empty string passed in getElementsById on /account/info contact info page
 * [ ] switch fromk authstore.user to accountstore.data
 * [ ] update response codes to match table above
 * [ ] finish /account/*
