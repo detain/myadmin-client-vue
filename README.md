@@ -53,7 +53,14 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 
 While building out this I am creating an OpenAPI based API and utilizing its calls in the client.
 
-#### Notes for HTTP Request Methods cmommonly used when building an API
+### Generating OpenAPI Schema Objects with ChatGPT
+
+Generate an OpenAPI yaml schema object named 'ServerOrder' from the sample JSON data below.
+All nested objects should be thier own Schema with a name prefixed by 'ServerOrder' followed by the field or object name generated from thier parent elemnts followed by the objects own name.
+Everything should have examples set using the included data, a description set based on the field name, be marked as required.
+Do not simplify or skip any of the output. Show everything (the full output).
+
+### Notes for HTTP Request Methods cmommonly used when building an API
 
 | HTTP Verb | CRUD           | Entire Collection (e.g. /vps)                                                                        | Specific Item (e.g. /vps/{id})                                             |
 |-----------|----------------|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
