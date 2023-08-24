@@ -23,12 +23,12 @@ export const useSiteStore = defineStore({
         getSettings(module) {
             return this.modules[module];
         },
-        async checkInfoLoaded() {
+        async checkInfoLoaded(): Promise<void> {
             if (Object.keys(this.modules).length == 0) {
                 this.loadInfo();
             }
         },
-        async loadInfo() {
+        async loadInfo(): Promise<void> {
             fetchWrapper
                 .get(baseUrl + '/info')
                 .then((response) => {

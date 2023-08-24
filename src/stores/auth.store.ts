@@ -36,7 +36,7 @@ export const useAuthStore = defineStore({
                 return false;
             }
         },
-        async sudo(sessionId) {
+        async sudo(sessionId): Promise<void> {
             //console.log("Starting sudo session with sessionId "+sessionId)
             const accountStore = useAccountStore();
             if (this.user == null) {
@@ -60,7 +60,7 @@ export const useAuthStore = defineStore({
                 router.push(this.returnUrl || '/');
             });
         },
-        async load() {
+        async load(): Promise<void> {
             //console.log("Trying to load account/info user info");
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
@@ -75,7 +75,7 @@ export const useAuthStore = defineStore({
                 console.log(error);
             }
         },
-        async reloadCaptcha() {
+        async reloadCaptcha(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -86,7 +86,7 @@ export const useAuthStore = defineStore({
                 console.log(error);
             }
         },
-        async login(loginParams: any) {
+        async login(loginParams: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -110,7 +110,7 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);
             }
         },
-        async signup(signupParms: any) {
+        async signup(signupParms: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -138,7 +138,7 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);
             }
         },
-        async logout() {
+        async logout(): Promise<void> {
             this.user = null;
             this.sessionId = null;
             this.apiKey = null;

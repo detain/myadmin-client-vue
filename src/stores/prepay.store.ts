@@ -19,12 +19,12 @@ export const usePrePayStore = defineStore({
         allInfo: {},
     }),
     actions: {
-        async register(user: any) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async load() {
+        async load(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
@@ -52,7 +52,7 @@ export const usePrePayStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id: number, params: any) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -68,7 +68,7 @@ export const usePrePayStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id: number) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

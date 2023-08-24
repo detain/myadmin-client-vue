@@ -85,12 +85,12 @@ export const useServerStore = defineStore({
         locations: {},
     }),
     actions: {
-        async register(user: any) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async getAll() {
+        async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
@@ -105,7 +105,7 @@ export const useServerStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id: number) {
+        async getById(id: number): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
@@ -141,7 +141,7 @@ export const useServerStore = defineStore({
                 console.log(error);
             }
         },
-        async update(id: number, params: any) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -157,7 +157,7 @@ export const useServerStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id: number) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

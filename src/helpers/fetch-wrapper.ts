@@ -23,8 +23,8 @@ function requestHasBody(method: string) {
     };
 }
 
-function request(method) {
-    return (url) => {
+function request(method: string) {
+    return (url: string) => {
         console.log("sending a "+method+" request to "+url);
         const requestOptions = {
             method,
