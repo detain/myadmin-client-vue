@@ -83,7 +83,7 @@ async function unlinkOauth(type) {
                         <td>
                             <span v-if="provider.url">
                                 <a :href="provider.url" target="_blank">{{ provider.url }}</a>
-                                (<a @click.prevent="unlinkOauth(name)">Unlink</a>)
+                                (<a href="" @click.prevent="unlinkOauth(name)">Unlink</a>)
                                 <span v-if="oauthadapters[name]">(<a @click.prevent="logOutOauth(name)">Log Out</a>)</span>
                             </span>
                             <span v-else>
