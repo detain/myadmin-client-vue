@@ -64,6 +64,13 @@ interface AccountData {
   '2fa_google_qr': string;
 }
 
+interface OauthProvider {
+    account: string;
+    enabled: boolean;
+    linked: boolean;
+    url: string;
+}
+
 interface AccountState {
   accountList: any[];
   loading: boolean;
@@ -75,7 +82,7 @@ interface AccountState {
   oauthproviders: any;
   oauthconfig: {
     callback: string;
-    providers: any;
+    providers: OauthProvider[];
   };
   oauthadapters: any[];
   limits: any[];
