@@ -54,7 +54,7 @@ export const router = createRouter({
         { path: '/prepays', component: PrePays },
         { path: '/payment_types', component: PaymentTypes },
         { path: '/cart', component: Cart },
-        { path: '/cart/:module(backups|domains|licenses|mail|quickservers|server|ssl|vps|webhosting|floating_ips)/:id(\\d+)', component: Cart },
+        { path: '/cart/:iids([\\d,]+)', component: Cart },
         { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)/:invoices', component: Pay },
         { path: '/invoices', component: InvoicesList },
         { ...affiliateRoutes },
