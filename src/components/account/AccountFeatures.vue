@@ -21,11 +21,11 @@ async function updateFeatures() {
                 disable_reset: data.value.disable_reset,
             })
             .then((response) => {
-                console.log('updateFeatures success');
+                console.log('update Features success');
                 console.log(response);
             });
     } catch (error) {
-        console.log('updateFeatures failed');
+        console.log('update Features failed');
         console.log(error);
     }
 }
