@@ -1,18 +1,27 @@
 import { defineStore } from 'pinia';
 
+interface AlertMessage {
+    message: string;
+    type: string;
+}
+
+interface AlertState {
+    alert: AlertMessage | null;
+}
+
 export const useAlertStore = defineStore({
     id: 'alert',
-    state: () => ({
+    state: (): AlertState => ({
         alert: null,
     }),
     getters: {
 
     },
     actions: {
-        success(message) {
+        success(message: string) {
             this.alert = { message, type: 'alert-success' };
         },
-        error(message) {
+        error(message: string) {
             this.alert = { message, type: 'alert-danger' };
         },
         clear() {

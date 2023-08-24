@@ -3,7 +3,7 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface AccountData {
-  account_id: string;
+  account_id: number | null;
   account_lid: string;
   status: string;
   pin: string;
@@ -23,8 +23,8 @@ interface AccountData {
   disable_cc: string;
   fraudrecord_score: string;
   maxmind_riskscore: any;
-  fraudrecord: any[];
-  maxmind: any;
+  fraudrecord: FraudRecordResponse | {};
+  maxmind: MaxMindResponse | {};
   maxmind_score: string;
   group: string;
   cc: string;
@@ -32,14 +32,18 @@ interface AccountData {
   cc_exp: string;
   cc_type: string;
   cc_whitelist: string;
-  ccs: any[];
+  ccs: CCsData | {};
   ccs_added: string;
   disable_reinstall: string;
   disable_reset: string;
   email: string;
   email_abuse: string;
-  email_settings: any;
-  extra: any;
+  email_settings: {
+      [key: string]: string;
+  };
+  extra: {
+      [key: string]: any;
+  };
   picture: string;
   affiliate_dock_description: string;
   affiliate_dock_title: string;
@@ -64,6 +68,11 @@ interface AccountData {
   '2fa_google_qr': string;
 }
 
+interface AccountLimit {
+    start: string;
+    end: string;
+}
+
 interface OauthProvider {
     account: string;
     enabled: boolean;
@@ -71,24 +80,104 @@ interface OauthProvider {
     url: string;
 }
 
+interface CCsData {
+    [key: string]: CCData;
+}
+
+interface CCData {
+    cc: string;
+    cc_exp: string;
+    country: string;
+    name: string;
+    address: string;
+    city: string;
+    maxmind: MaxMindResponse;
+    maxmind_riskscore: string;
+    state: string;
+    verified: boolean;
+    zip: string;
+}
+
+interface FraudRecordResponse {
+    code: string;
+    count: string;
+    reliability: string;
+    score: string;
+}
+
+interface MaxMindResponse {
+    anonymousProxy: string;
+    binCountry: string;
+    binMatch: string;
+    binNameMatch: string;
+    binName: string;
+    binPhoneMatch: string;
+    binPhone: string;
+    carderEmail: string;
+    cityPostalMatch: string;
+    countryCode: string;
+    countryMatch: string;
+    custPhoneInBillingLoc: string;
+    distance: string;
+    err: string;
+    explanation: string;
+    female_name: string;
+    freeMail: string;
+    highRiskCountry: string;
+    highRiskUsername: string;
+    ip_accuracyRadius: string;
+    ip_areaCode: string;
+    ip_asnum: string;
+    ip_cityConf: string;
+    ip_city: string;
+    ip_continentCode: string;
+    ip_corporateProxy: string;
+    ip_countryConf: string;
+    ip_countryName: string;
+    ip_domain: string;
+    ip_isp: string;
+    ip_latitude: string;
+    ip_longitude: string;
+    ip_metroCode: string;
+    ip_netSpeedCell: string;
+    ip_org: string;
+    ip_postalCode: string;
+    ip_postalConf: string;
+    ip_regionConf: string;
+    ip_regionName: string;
+    ip_region: string;
+    ip_timeZone: string;
+    ip_userType: string;
+    maxmindID: string;
+    proxyScore: string;
+    queriesRemaining: string;
+    riskScore: string;
+    score: string;
+    shipCityPostalMatch: string;
+}
+
 interface AccountState {
-  accountList: any[];
+  accountList: AccountData[];
   loading: boolean;
   error: boolean;
   custid: number;
   ima: string;
   data: AccountData;
-  ip: any;
-  oauthproviders: any;
+  ip: string;
+  oauthproviders: any[];
   oauthconfig: {
     callback: string;
-    providers: OauthProvider[];
+    providers: {
+        [key: string]: OauthProvider;
+    }
   };
   oauthadapters: any[];
-  limits: any[];
+  limits: AccountLimit[];
   gravatar: string;
   language: string;
-  countryCurrencies: any;
+  countryCurrencies: {
+      [key: string]: string[];
+  };
   enableLocales: boolean;
   enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
 }
@@ -102,7 +191,7 @@ export const useAccountStore = defineStore({
         custid: 0,
         ima: 'client',
         data: {
-            account_id: '',
+            account_id: null,
             account_lid: '',
             status: 'active',
             pin: '',
@@ -122,7 +211,7 @@ export const useAccountStore = defineStore({
             disable_cc: '0',
             fraudrecord_score: '0',
             maxmind_riskscore: null,
-            fraudrecord: [],
+            fraudrecord: {},
             maxmind: {},
             maxmind_score: '0',
             group: '',
@@ -162,8 +251,8 @@ export const useAccountStore = defineStore({
             '2fa_google_split': '',
             '2fa_google_qr': '',
         },
-        ip: {},
-        oauthproviders: {},
+        ip: '',
+        oauthproviders: [],
         oauthconfig: {
             callback: 'https://my.interserver.net/oauth/callback.php',
             providers: {},
@@ -191,34 +280,29 @@ export const useAccountStore = defineStore({
             const keyMap: { [key: string]: string } = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
+            this.loading = true;
             try {
                 const response: any = await fetchWrapper.get(baseUrl + '/account');
                 this.$reset();
-                let key: string, value: any;
                 console.log(response);
-                for (key in response) {
-                    value = response[key];
-                    if (typeof this[key] != 'undefined') {
-                        this[key] = value;
-                    } else if (typeof this[snakeToCamel(key)] != 'undefined') {
-                        this[snakeToCamel(key)] = value;
-                    } else if (typeof keyMap[key] != 'undefined') {
-                        this[keyMap[key]] = value;
-                    } else {
-                        console.log("no key '" + key + "' with value '" + value + "'");
-                    }
-                }
+                this.countryCurrencies = response.countryCurrencies;
+                this.custid = response.custid;
+                this.data = response.data;
+                this.enableCurrencies = response.enableCurrencies;
+                this.enableLocales = response.enableLocales;
+                this.gravatar = response.gravatar;
+                this.ima = response.ima;
+                this.ip = response.ip;
+                this.language = response.language;
+                this.limits = response.limits;
+                this.oauthadapters = response.oauthadapters;
+                this.oauthconfig = response.oauthconfig;
+                this.oauthproviders = response.oauthproviders;
+                this.loading = false;
             } catch (error) {
                 console.log('api failed');
                 console.log(error);
+                this.loading = false;
             }
         },
         async update(id: number, params: any): Promise<void> {
@@ -241,12 +325,12 @@ export const useAccountStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             // add isDeleting prop to user being deleted
-            this.accountList.find((x) => x.id === id).isDeleting = true;
+            //this.accountList.find((x) => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.accountList = this.accountList.filter((x) => x.id !== id);
+            this.accountList = this.accountList.filter((x) => x.account_id !== id);
         },
     },
 });
