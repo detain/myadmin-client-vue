@@ -14,6 +14,9 @@ export const useInvoicesStore = defineStore({
         loading: false,
         error: false,
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

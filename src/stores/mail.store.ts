@@ -101,6 +101,9 @@ export const useMailStore = defineStore({
         },
         usage_count: '0',
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

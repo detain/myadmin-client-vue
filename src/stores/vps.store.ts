@@ -89,7 +89,9 @@ export const useVpsStore = defineStore({
         responseText: '',
         queueId: null
     }),
+    getters: {
 
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

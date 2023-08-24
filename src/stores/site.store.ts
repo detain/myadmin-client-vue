@@ -16,6 +16,9 @@ export const useSiteStore = defineStore({
         serviceTypes: {},
         serviceCategories: {}
     }),
+    getters: {
+
+    },
     actions: {
         getBaseUrl() {
             return baseUrl;

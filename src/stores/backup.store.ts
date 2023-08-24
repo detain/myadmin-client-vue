@@ -108,6 +108,9 @@ export const useBackupStore = defineStore({
             },
         },
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

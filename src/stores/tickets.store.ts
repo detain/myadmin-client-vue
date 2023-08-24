@@ -27,6 +27,9 @@ export const useTicketsStore = defineStore({
         viewText: 'Inbox',
         search: '',
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

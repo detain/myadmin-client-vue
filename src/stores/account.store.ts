@@ -169,6 +169,9 @@ export const useAccountStore = defineStore({
         enableLocales: true,
         enableCurrencies: false, // whether to show the currency dropdown on the contact info page
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

@@ -28,6 +28,9 @@ export const useAuthStore = defineStore({
         user: JSON.parse(localStorage.getItem('user')),
         returnUrl: null as string | null,
     }),
+    getters: {
+
+    },
     actions: {
         loggedIn() {
             if (this.sessionId != null || this.apiKey != null) {

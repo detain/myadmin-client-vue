@@ -76,6 +76,9 @@ export const useWebsiteStore = defineStore({
             },
         },
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

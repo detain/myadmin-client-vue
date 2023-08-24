@@ -8,6 +8,9 @@ export const useUsersStore = defineStore({
         users: {},
         user: {},
     }),
+    getters: {
+
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
