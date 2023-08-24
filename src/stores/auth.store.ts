@@ -29,6 +29,13 @@ export const useAuthStore = defineStore({
         returnUrl: null as string | null,
     }),
     actions: {
+        loggedIn() {
+            if (this.sessionId != null || this.apiKey != null) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         async sudo(sessionId) {
             //console.log("Starting sudo session with sessionId "+sessionId)
             const accountStore = useAccountStore();

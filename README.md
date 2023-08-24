@@ -68,11 +68,12 @@ Do not simplify or skip any of the output. Show everything (the full output).
   * view service pages
     * [ ] links and form handling
   * order service pages
+    * [ ] server
+    * [ ] domain
     * [ ] coupon handling
-    * [ ] forwarding to cart page
-    * [ ] place order ajax handling function
+  * [ ] cart/iids parsed and handled
 * **1.0-beta** MileStone
-  * [ ] update response codes to match table above
+  * [ ] update response codes to match table below
   * [ ] loading / no entries messages
   * services list pages
     * datatables or equivalent

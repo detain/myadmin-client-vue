@@ -4,6 +4,8 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
 siteStore.setTitle('Order Floating IPs');
@@ -64,6 +66,9 @@ async function placeOrder(values) {
             validateResponse.value = response;
             console.log('Response:');
             console.log(response);
+            if (response['continue'] == true) {
+                route.push('/cart/'+response.iids.join(','));
+            }
         });
 }
 

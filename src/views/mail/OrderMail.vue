@@ -4,6 +4,8 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Mail');
 siteStore.setTitle('Order Mail');
@@ -16,6 +18,7 @@ const validateResponse = ref({});
 const tos = ref(false);
 const packageCosts = ref({});
 const serviceTypes = ref({});
+
 
 async function editForm() {
     step.value = 'orderform';
@@ -71,7 +74,7 @@ async function placeOrder(values) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    // redirect to cart/<iids.join(',')>
+                    route.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error) {
