@@ -97,6 +97,9 @@ export const useLicenseStore = defineStore({
             services_module: 'licenses',
         },
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();

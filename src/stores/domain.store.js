@@ -95,6 +95,9 @@ export const useDomainStore = defineStore({
         whoisPrivacy: 'disabled',
         autoRenew: 'Disabled',
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();

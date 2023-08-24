@@ -18,6 +18,9 @@ export const usePrePayStore = defineStore({
         curr_page_records: 0,
         allInfo: {},
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();

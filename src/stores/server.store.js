@@ -84,6 +84,9 @@ export const useServerStore = defineStore({
         },
         locations: {},
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();

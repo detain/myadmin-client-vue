@@ -12,6 +12,9 @@ export const useSslStore = defineStore({
         pkg: '',
         link_display: false,
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();

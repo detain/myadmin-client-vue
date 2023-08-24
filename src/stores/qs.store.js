@@ -292,6 +292,9 @@ export const useQsStore = defineStore({
             spice_information: '<a href="spice://66.45.235.194:5903/">66.45.235.194:5903</a>  (<a href="view_qs?link=queue&amp;id=19504&amp;action=setup_vnc"  target="SERVICEFrame1">Authorize New IP</a>)',
         },
     }),
+    getters: {
+
+    },
     actions: {
         async register(user) {
             const siteStore = useSiteStore();
