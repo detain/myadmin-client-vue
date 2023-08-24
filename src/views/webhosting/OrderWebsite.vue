@@ -3,6 +3,8 @@ import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
@@ -98,6 +100,10 @@ async function onSubmitConfirmation() {
             .then((response) => {
                 console.log('website order validated');
                 console.log(response);
+                if (response['success'] == true) {
+                    route.push('/cart/'+response.iids.join(','));
+                }
+
             });
     } catch (error) {
         console.log('website order validation failed');

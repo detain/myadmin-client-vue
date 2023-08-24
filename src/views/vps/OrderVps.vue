@@ -8,6 +8,8 @@ import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order VPS');
 siteStore.setTitle('Order VPS');
@@ -258,6 +260,7 @@ function onSubmitConfirmation() {
             console.log(response);
             // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
             if (response.success == true) {
+                route.push('/cart/'+response.iids.join(','));
                 // forward to cart or w/e
             } else {
                 // display 'message'

@@ -131,7 +131,7 @@ function submitLicenseForm() {
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
-                    // redirect to cart/<iids.join(',')>
+                    route.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error) {
