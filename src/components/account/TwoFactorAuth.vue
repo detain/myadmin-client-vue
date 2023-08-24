@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
 const props = defineProps(['data']);
@@ -12,19 +12,47 @@ siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Account Settings' });
 const baseUrl = siteStore.getBaseUrl();
+const googleKey = ref('');
+const googleSplit = ref('');
+const googleCode = ref('');
 
 async function update2fa() {
     try {
-        fetchWrapper
-            .post(`${baseUrl}/account/2fa`, {
-                enableGoogle2fa: data.value['2fa_google_enabled'],
-            })
-            .then((response) => {
+        fetchWrapper.post(`${baseUrl}/account/2fa`, { '2fa_google_code': googleCode.value }).then((response) => {
                 console.log('update2fa success');
                 console.log(response);
+
             });
     } catch (error) {
         console.log('update2fa failed');
+        console.log(error);
+    }
+}
+
+async function delete2fa() {
+    try {
+        fetchWrapper
+            .delete(`${baseUrl}/account/2fa`).then((response) => {
+                console.log('delete2fa success');
+                console.log(response);
+
+            });
+    } catch (error) {
+        console.log('delete2fa failed');
+        console.log(error);
+    }
+}
+
+async function get2faKey() {
+    try {
+        fetchWrapper.get(`${baseUrl}/account/2fa`).then((response) => {
+            console.log('get2faKey success');
+            console.log(response);
+            googleKey.value = response['2fa_google_key'];
+            googleSplit.value = response['2fa_google_split'];
+        });
+    } catch (error) {
+        console.log('get2faKey failed');
         console.log(error);
     }
 }
@@ -68,7 +96,7 @@ async function update2fa() {
                             <i class="fa fas fa-file-export">&nbsp;</i>
                             You should backup this code for recovery.
                         </div>
-                        <input v-if="!data['2fa_google_enabled']" v-model="data['2fa_google_key']" type="text" class="form-control mt-4" name="2fa_google_code" id="2fa_google_code" placeholder="Enter Code from Authenticator" />
+                        <input v-if="!data['2fa_google_enabled']" v-model="googleCode" type="text" class="form-control mt-4" name="2fa_google_code" id="2fa_google_code" placeholder="Enter Code from Authenticator" />
                     </div>
                     <div class="col-md-3 text-center">
                         <img :src="data['2fa_google_qr']" alt="Google QR Code" />
