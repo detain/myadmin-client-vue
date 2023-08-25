@@ -62,6 +62,7 @@
         "esutils": "2.0.3",
         "source-map": "0.6.1",
         "type": "2.7.2",
-        "glob-parent": "6.0.2"
+        "glob-parent": "6.0.2",
+        "chart.js": "4.4.0"
     }
 }
