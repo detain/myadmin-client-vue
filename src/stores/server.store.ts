@@ -114,31 +114,21 @@ export const useServerStore = defineStore({
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/servers/' + id);
                 this.$reset();
-                let key, value;
                 console.log(response);
-                for (key in response) {
-                    value = response[key];
-                    if (typeof this[key] != 'undefined') {
-                        this[key] = value;
-                    } else if (typeof this[snakeToCamel(key)] != 'undefined') {
-                        this[snakeToCamel(key)] = value;
-                    } else if (typeof keyMap[key] != 'undefined') {
-                        this[keyMap[key]] = value;
-                    } else {
-                        console.log("no key '" + key + "' with value '" + value + "'");
-                    }
-                }
+                this.ipmiAuth = response.ipmiAuth;
+                this.serviceInfo = response.serviceInfo;
+                this.clientLinks = response.client_links;
+                this.billingDetails = response.billingDetails;
+                this.custCurrency = response.custCurrency;
+                this.custCurrencySymbol = response.custCurrencySymbol;
+                this.pkg = response.package;
+                this.serviceExtra = response.serviceExtra;
+                this.extraInfoTables = response.extraInfoTables;
+                this.networkInfo = response.networkInfo;
+                this.locations = response.locations;
             } catch (error) {
                 console.log('api failed');
                 console.log(error);

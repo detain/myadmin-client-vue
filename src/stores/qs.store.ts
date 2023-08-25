@@ -322,19 +322,32 @@ export const useQsStore = defineStore({
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/qs/' + id);
                 this.$reset();
-                let key, value;
                 console.log(response);
+                this.serviceInfo = response.serviceInfo;
+                this.clientLinks = response.client_links;
+                this.billingDetails = response.billingDetails;
+                this.custCurrency = response.custCurrency;
+                this.custCurrencySymbol = response.custCurrencySymbol;
+                this.serviceMaster = response.serviceMaster;
+                this.pkg = response.package;
+                this.osTemplate = response.os_template;
+                this.serviceExtra = response.serviceExtra;
+                this.extraInfoTables = response.extraInfoTables;
+                this.cpu_graph_data = response.cpu_graph_data;
+                this.bandwidth_xaxis = response.bandwidth_xaxis;
+                this.bandwidth_yaxis = response.bandwidth_yaxis;
+                this.module = response.module;
+                this.token = response.token;
+                this.service_disk_used = response.service_disk_used;
+                this.service_disk_total = response.service_disk_total;
+                this.disk_percentage = response.disk_percentage;
+                this.memory = response.memory;
+                this.hdd = response.hdd;
+                this.serviceOverviewExtra = response.service_overview_extra;
+                /*
                 for (key in response) {
                     value = response[key];
                     if (typeof this[key] != 'undefined') {
@@ -347,6 +360,7 @@ export const useQsStore = defineStore({
                         console.log("no key '" + key + "' with value '" + value + "'");
                     }
                 }
+                */
             } catch (error) {
                 console.log('api failed');
                 console.log(error);
