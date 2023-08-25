@@ -14,18 +14,18 @@ export const useBackupStore = defineStore({
         serviceInfo: {
             backup_id: 0,
             backup_server: 0,
-            backup_username: 'st21163',
+            backup_username: '',
             backup_type: 0,
             backup_currency: 'USD',
-            backup_order_date: '2021-12-29 14:09:57',
+            backup_order_date: '',
             backup_custid: 0,
-            backup_quota: '0',
-            backup_ip: '64.20.55.234',
-            backup_status: 'canceled',
+            backup_quota: 0,
+            backup_ip: '',
+            backup_status: '',
             backup_invoice: 0,
             backup_coupon: 0,
             backup_extra: '[]',
-            backup_server_status: 'deleted',
+            backup_server_status: '',
             backup_comment: '',
         },
         clientLinks: [
@@ -93,15 +93,15 @@ export const useBackupStore = defineStore({
                 rows: [
                     {
                         desc: 'Netmask',
-                        value: '255.255.255.248',
+                        value: '',
                     },
                     {
                         desc: 'Gateway',
-                        value: '64.20.55.233',
+                        value: '',
                     },
                     {
                         desc: 'Broadcast',
-                        value: '64.20.55.239',
+                        value: '',
                     },
                 ],
             },

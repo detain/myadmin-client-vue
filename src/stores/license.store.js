@@ -14,10 +14,10 @@ export const useLicenseStore = defineStore({
             license_id: 0,
             license_type: 0,
             license_currency: 'USD',
-            license_order_date: '2020-01-14 10:48:14',
+            license_order_date: '',
             license_custid: 0,
-            license_ip: '192.64.80.218',
-            license_status: 'active',
+            license_ip: '',
+            license_status: '',
             license_hostname: '',
             license_key: '',
             license_invoice: 0,
@@ -69,15 +69,15 @@ export const useLicenseStore = defineStore({
                 rows: [
                     {
                         desc: 'Netmask',
-                        value: '255.255.255.248',
+                        value: '',
                     },
                     {
                         desc: 'Gateway',
-                        value: '192.64.80.217',
+                        value: '',
                     },
                     {
                         desc: 'Broadcast',
-                        value: '192.64.80.223',
+                        value: '',
                     },
                 ],
             },
