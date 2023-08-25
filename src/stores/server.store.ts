@@ -156,12 +156,12 @@ export const useServerStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.serverList.find((x) => x.id === id).isDeleting = true;
+            this.serverList.find((x) => x.server_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.serverList = this.serverList.filter((x) => x.id !== id);
+            this.serverList = this.serverList.filter((x) => x.server_id !== id);
         },
     },
 });

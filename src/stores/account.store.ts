@@ -325,7 +325,7 @@ export const useAccountStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             // add isDeleting prop to user being deleted
-            //this.accountList.find((x) => x.id === id).isDeleting = true;
+            //this.accountList.find((x) => x.account_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 

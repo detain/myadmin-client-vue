@@ -213,12 +213,12 @@ export const useQsStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.qsList.find((x) => x.id === id).isDeleting = true;
+            this.qsList.find((x) => x.qs_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.qsList = this.qsList.filter((x) => x.id !== id);
+            this.qsList = this.qsList.filter((x) => x.qs_id !== id);
         },
     },
 });

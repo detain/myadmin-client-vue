@@ -174,7 +174,7 @@ export const useWebsiteStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            //this.websiteList.find((x) => x.id === id).isDeleting = true;
+            //this.websiteList.find((x) => x.website_id === id).isDeleting = true;
             await fetchWrapper.delete(`${baseUrl}/${id}`);
             // remove user from list after deleted
             this.websiteList = this.websiteList.filter((x) => x.website_id !== id);
