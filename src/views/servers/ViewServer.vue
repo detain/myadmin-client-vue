@@ -99,7 +99,7 @@ const ipv6VlansNetworks = computed(() => {
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <div class="small-box-footer text-bold">{{ serviceInfo[settings.TITLE_FIELD] }}</div>
+                <div class="small-box-footer text-bold">{{ serviceInfo[settings?.TITLE_FIELD] }}</div>
             </div>
         </div>
         <div class="col-md-4">
