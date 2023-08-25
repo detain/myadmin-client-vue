@@ -140,7 +140,7 @@ export const useAuthStore = defineStore({
                 }
                 /*Swal.fire({
                     icon: 'warning',
-                    title: 'Error',
+n,
                     html: error.message
                 });*/
                 const alertStore = useAlertStore();
