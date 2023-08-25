@@ -16,6 +16,17 @@ siteStore.setTitle('Licensing List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Licenses' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface licensesRow {
+    license_id: number;
+    license_hostname: string;
+    license_ip: string;
+    services_name: string;
+    cost: number;
+    license_status: string;
+    invoices_paid: boolean;
+    invoices_date: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
@@ -26,7 +37,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<licensesRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'license_id' }, { data: 'license_hostname' }, { data: 'license_ip' }, { data: 'services_name' }, { data: 'cost' }, { data: 'license_status' }, { data: 'invoices_paid' }, { data: 'invoices_date' }, { name: 'link', data: 'link', sortable: false }];

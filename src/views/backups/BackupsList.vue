@@ -16,6 +16,15 @@ siteStore.setTitle('Storage / Backup List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Storage' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface backupsRow {
+    backup_id: number;
+    backup_name: string;
+    backup_cost: number;
+    backup_username: string;
+    backup_status: string;
+    services_name: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
@@ -26,7 +35,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<backupsRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'backup_id' }, { data: 'backup_name' }, { data: 'backup_cost' }, { data: 'backup_username' }, { data: 'backup_status' }, { data: 'services_name' }, { name: 'link', data: 'link', sortable: false }];

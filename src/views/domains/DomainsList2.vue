@@ -10,6 +10,14 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 
+interface domainsRow {
+    domain_id: number;
+    domain_hostname: string;
+    domain_expire_date: string;
+    cost: number;
+    domain_status: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 const router = useRouter();
@@ -22,8 +30,8 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const origData = ref([]);
-const data = ref([]);
+const origData = ref<domainsRow[]>([]);
+const data = ref<domainsRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'domain_id' }, { data: 'hostname' }, { data: 'domain_expire_date' }, { data: 'cost' }, { data: 'domain_status' }, { name: 'Link', data: 'link', sortable: false }];

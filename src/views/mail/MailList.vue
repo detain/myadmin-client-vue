@@ -16,6 +16,14 @@ siteStore.setTitle('Mail Services List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Mail' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface mailRow {
+    mail_id: number;
+    repeat_invoices_cost: number;
+    mail_username: string;
+    mail_status: string;
+    services_name: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
@@ -26,7 +34,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<mailRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'mail_id' }, { data: 'repeat_invoices_cost' }, { data: 'mail_username' }, { data: 'mail_status' }, { data: 'services_name' }, { name: 'link', data: 'link', sortable: false }];

@@ -24,6 +24,17 @@ siteStore.setTitle('VPS List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'VPS List' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface vpsRow {
+    vps_id: number;
+    vps_name: string;
+    repeat_invoices_cost: number;
+    vps_hostname: string;
+    vps_ip: string;
+    vps_status: string;
+    services_name: string;
+    vps_comment: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 const limitStatus = ref('active');
@@ -33,7 +44,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<vpsRow[]>([]);
 const table = ref();
 const dt = ref(null);
 

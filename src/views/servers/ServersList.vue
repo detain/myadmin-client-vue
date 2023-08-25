@@ -16,6 +16,13 @@ siteStore.setTitle('Dedicated Servers List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Servers' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface serversRow {
+    server_id: number;
+    account_lid: string;
+    server_hostname: string;
+    server_status: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
@@ -26,7 +33,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<serversRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'server_id' }, { data: 'account_lid' }, { data: 'server_hostname' }, { data: 'server_status' }, { name: 'link', data: 'link', sortable: false }];

@@ -18,7 +18,7 @@ const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
 
-export interface WebsiteRow {
+export interface webhostingRow {
     repeat_invoices_cost: number;
     services_name: string;
     website_comment: string;
@@ -35,7 +35,7 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref<WebsiteRow[]>([]);
+const data = ref<webhostingRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'website_id' }, { data: 'website_hostname' }, { data: 'repeat_invoices_cost' }, { data: 'website_status' }, { data: 'services_name' }, { data: 'website_comment' }, { name: 'link', data: 'link', sortable: false }];

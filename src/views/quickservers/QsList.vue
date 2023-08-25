@@ -16,6 +16,15 @@ siteStore.setTitle('Rapid Deploy Servers List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Quickservers' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface quickserversRow {
+    qs_id: number;
+    qs_name: string;
+    cost: number;
+    qs_hostname: string;
+    qs_status: string;
+    qs_comment: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
@@ -26,7 +35,8 @@ const limitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+
+const data = ref<quickserversRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'qs_id' }, { data: 'qs_name' }, { data: 'cost' }, { data: 'qs_hostname' }, { data: 'qs_status' }, { data: 'qs_comment' }, { name: 'link', data: 'link', sortable: false }];
