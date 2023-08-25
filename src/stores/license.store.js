@@ -24,30 +24,7 @@ export const useLicenseStore = defineStore({
             license_coupon: 0,
             license_extra: '',
         },
-        clientLinks: [
-            {
-                label: 'Invoices',
-                link: 'view_license?id=386522&link=invoices',
-                icon: 'fas fa-file-invoice-dollar fa-w-12',
-                icon_text: '',
-                help_text: 'Invoice History',
-            },
-            {
-                label: 'Cancel Licenses',
-                link: 'view_license?id=386522&link=cancel',
-                icon: 'fas fa-times',
-                icon_text: '',
-                help_text: 'Cancel Licenses',
-            },
-            {
-                label: 'Change IP',
-                link: 'view_license?id=386522&link=change_ip',
-                icon: 'fa fa-map-marker-alt',
-                icon_text: '',
-                help_text: 'Change License IP Address',
-                other_attr: '',
-            },
-        ],
+        clientLinks: [],
         billingDetails: {
             service_last_invoice_date: '',
             service_payment_status: '',
@@ -66,20 +43,7 @@ export const useLicenseStore = defineStore({
         extraInfoTables: {
             ip_info: {
                 title: 'IP Information',
-                rows: [
-                    {
-                        desc: 'Netmask',
-                        value: '',
-                    },
-                    {
-                        desc: 'Gateway',
-                        value: '',
-                    },
-                    {
-                        desc: 'Broadcast',
-                        value: '',
-                    },
-                ],
+                rows: [],
             },
         },
         serviceOverviewExtra: '',
