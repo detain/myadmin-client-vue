@@ -115,7 +115,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/mail');
+                const response = await fetchWrapper.get(baseUrl + '/mail');
                 for (const field in response) {
                     this[field] = response[field];
                 }

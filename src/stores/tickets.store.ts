@@ -41,7 +41,7 @@ export const useTicketsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/tickets');
+                const response = await fetchWrapper.get(baseUrl + '/tickets');
                 for (const field in response) {
                     this[field] = response[field];
                 }

@@ -28,7 +28,7 @@ export const useInvoicesStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/invoices');
+                const response = await fetchWrapper.get(baseUrl + '/invoices');
                 for (const field in response) {
                     this[field] = response[field];
                 }

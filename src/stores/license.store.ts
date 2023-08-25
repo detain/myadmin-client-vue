@@ -111,7 +111,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/licenses');
+                const response = await fetchWrapper.get(baseUrl + '/licenses');
                 for (const field in response) {
                     this[field] = response[field];
                 }

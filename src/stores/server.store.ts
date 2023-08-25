@@ -98,7 +98,7 @@ export const useServerStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/servers');
+                const response = await fetchWrapper.get(baseUrl + '/servers');
                 for (const field in response) {
                     this[field] = response[field];
                 }

@@ -47,7 +47,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-const loadWebsites = async (data) => {
+const loadWebsites = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/websites');
         console.log('api success');
@@ -59,7 +59,7 @@ const loadWebsites = async (data) => {
     }
 };
 
-loadWebsites(data);
+loadWebsites();
 </script>
 
 <template>

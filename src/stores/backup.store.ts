@@ -122,7 +122,7 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/backups');
+                const response = await fetchWrapper.get(baseUrl + '/backups');
                 for (const field in response) {
                     this[field] = response[field];
                 }

@@ -109,7 +109,7 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/domains');
+                const response = await fetchWrapper.get(baseUrl + '/domains');
                 for (const field in response) {
                     this[field] = response[field];
                 }

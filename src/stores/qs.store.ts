@@ -306,7 +306,7 @@ export const useQsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/qs');
+                const response = await fetchWrapper.get(baseUrl + '/qs');
                 for (const field in response) {
                     this[field] = response[field];
                 }
