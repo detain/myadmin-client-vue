@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 export const useLicenseStore = defineStore({

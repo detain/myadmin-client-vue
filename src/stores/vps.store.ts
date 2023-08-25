@@ -1,14 +1,7 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
-
-interface ClientLink {
-    label: string;
-    link: string;
-    icon: string;
-    icon_text: string;
-    help_text: string;
-}
 
 interface VpsInfo {
     vps_comment      : string;
@@ -29,7 +22,7 @@ interface VpsInfo {
     vps_os           : string;
     vps_platform     : string;
     vps_rootpass     : string;
-    vps_server       : string;
+    vps_server       : number;
     vps_server_status: string;
     vps_slices       : number;
     vps_status       : string;
@@ -39,32 +32,6 @@ interface VpsInfo {
     vps_vnc_port     : number;
     vps_vzid         : string;
 
-}
-
-interface ServiceType {
-    services_id: number;
-    services_name: string;
-    services_cost: number;
-    services_category: number;
-    services_buyable: boolean;
-    services_type: number;
-    services_field1: string;
-    services_field2: string;
-    services_module: string;
-}
-
-interface BillingDetails {
-    service_last_invoice_date: string;
-    service_payment_status: string;
-    service_frequency: string;
-    next_date: string;
-    service_next_invoice_date: string;
-    service_currency: string;
-    service_currency_symbol: string;
-    service_cost_info: string;
-    service_extra: {
-        [key: string]: any;
-    };
 }
 
 interface VpsServiceMaster {
@@ -110,18 +77,6 @@ interface VpsServiceAddons {
     ips6: string[];
     rdata: string[];
     unpaid_ips: string[];
-}
-
-interface ExtraInfoTableRow {
-    desc: string;
-    value: string;
-}
-
-interface ExtraInfoTables {
-    [key: string]: {
-        rows: ExtraInfoTableRow[];
-        title: string;
-    };
 }
 
 interface VpsState {
@@ -191,7 +146,7 @@ export const useVpsStore = defineStore({
             vps_available: 0,
             vps_cores: 0,
             vps_iowait: 0,
-            vps_raid_status: 0,
+            vps_raid_status: '',
             vps_mounts: '',
             vps_server_max: 0,
             vps_server_max_slices: 0,
@@ -307,9 +262,7 @@ export const useVpsStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/vps');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.vpsList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
