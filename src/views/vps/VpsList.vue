@@ -53,7 +53,7 @@ const filteredData = computed(() => {
 
 onMounted(function () {});
 
-function crud_print(): void {
+function crud_print() {
 
 }
 

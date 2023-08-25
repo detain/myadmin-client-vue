@@ -57,7 +57,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
+function crud_print() {
 
 }
 

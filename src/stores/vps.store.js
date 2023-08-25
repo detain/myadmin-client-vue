@@ -148,8 +148,28 @@ export const useVpsStore = defineStore({
             try {
                 const response = await fetchWrapper.get(baseUrl + '/vps/' + id);
                 this.$reset();
-                let key, value;
+                //let key, value;
                 console.log(response);
+                this.serviceInfo = response.serviceInfo;
+                this.clientLinks = response.client_links;
+                this.billingDetails = response.billingDetails;
+                this.custCurrency = response.custCurrency;
+                this.custCurrencySymbol = response.custCurrencySymbol;
+                this.serviceMaster = response.serviceMaster;
+                this.pkg = response.package;
+                this.osTemplate = response.os_template;
+                this.serviceExtra = response.serviceExtra;
+                this.extraInfoTables = response.extraInfoTables;
+                this.cpuGraphData = response.cpu_graph_data;
+                this.module = response.module;
+                this.token = response.token;
+                this.daLink = response.da_link;
+                this.srLink = response.sr_link;
+                this.cpData = response.cp_data;
+                this.daData = response.da_data;
+                this.plesk12Data = response.plesk12_data;
+                this.serviceAddons = response.serviceAddons;
+                /*
                 for (key in response) {
                     value = response[key];
                     if (typeof this[key] != 'undefined') {
@@ -162,6 +182,7 @@ export const useVpsStore = defineStore({
                         console.log("no key '" + key + "' with value '" + value + "'");
                     }
                 }
+                */
             } catch (error) {
                 console.log('api failed');
                 console.log(error);
