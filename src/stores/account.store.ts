@@ -216,7 +216,7 @@ export const useAccountStore = defineStore({
             maxmind_score: 0,
             group: '',
             cc: '',
-            cc_auto: ',
+            cc_auto: 0,
             cc_exp: '',
             cc_type: '',
             cc_whitelist: 0,
