@@ -11,33 +11,33 @@ interface ClientLink {
 }
 
 interface VpsInfo {
-    vps_comment: string;
-    vps_coupon: number;
-    vps_currency: string;
-    vps_custid: number;
-    vps_diskmax: number;
-    vps_diskused: number;
-    vps_extra: string;
-    vps_hostname: string;
-    vps_id: number;
-    vps_invoice: number;
-    vps_ip: string;
-    vps_ipv6: string | null;
-    vps_location: number;
-    vps_mac: string;
-    vps_order_date: string;
-    vps_os: string;
-    vps_platform: string;
-    vps_rootpass: string;
-    vps_server: string;
+    vps_comment      : string;
+    vps_coupon       : number;
+    vps_currency     : string;
+    vps_custid       : number;
+    vps_diskmax      : number;
+    vps_diskused     : number;
+    vps_extra        : string;
+    vps_hostname     : string;
+    vps_id           : number;
+    vps_invoice      : number;
+    vps_ip           : string;
+    vps_ipv6         : string | null;
+    vps_location     : number;
+    vps_mac          : string;
+    vps_order_date   : string;
+    vps_os           : string;
+    vps_platform     : string;
+    vps_rootpass     : string;
+    vps_server       : string;
     vps_server_status: string;
-    vps_slices: number;
-    vps_status: string;
-    vps_type: number;
-    vps_version: string;
-    vps_vnc: string;
-    vps_vnc_port: number;
-    vps_vzid: string;
+    vps_slices       : number;
+    vps_status       : string;
+    vps_type         : number;
+    vps_version      : string;
+    vps_vnc          : string;
+    vps_vnc_port     : number;
+    vps_vzid         : string;
 
 }
 
@@ -218,8 +218,8 @@ export const useVpsStore = defineStore({
         custCurrency: 'USD',
         custCurrencySymbol: '$',
         disk_percentage: 0,
-        memory: '',
-        hdd: '',
+        memory: 0,
+        hdd: 0,
         serviceExtra: {},
         extraInfoTables: [],
         serviceType: {
@@ -227,7 +227,7 @@ export const useVpsStore = defineStore({
             services_name: '',
             services_cost: 0,
             services_category: 0,
-            services_buyable: 0,
+            services_buyable: false,
             services_type: 0,
             services_field1: '',
             services_field2: '',
