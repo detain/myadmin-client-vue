@@ -2,9 +2,170 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface ClientLink {
+    label: string;
+    link: string;
+    icon: string;
+    icon_text: string;
+    help_text: string;
+}
+
+interface VpsInfo {
+    vps_comment: string;
+    vps_coupon: number;
+    vps_currency: string;
+    vps_custid: number;
+    vps_diskmax: number;
+    vps_diskused: number;
+    vps_extra: string;
+    vps_hostname: string;
+    vps_id: number;
+    vps_invoice: number;
+    vps_ip: string;
+    vps_ipv6: string | null;
+    vps_location: number;
+    vps_mac: string;
+    vps_order_date: string;
+    vps_os: string;
+    vps_platform: string;
+    vps_rootpass: string;
+    vps_server: string;
+    vps_server_status: string;
+    vps_slices: number;
+    vps_status: string;
+    vps_type: number;
+    vps_version: string;
+    vps_vnc: string;
+    vps_vnc_port: number;
+    vps_vzid: string;
+
+}
+
+interface ServiceType {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_category: number;
+    services_buyable: boolean;
+    services_type: number;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+}
+
+interface BillingDetails {
+    service_last_invoice_date: string;
+    service_payment_status: string;
+    service_frequency: string;
+    next_date: string;
+    service_next_invoice_date: string;
+    service_currency: string;
+    service_currency_symbol: string;
+    service_cost_info: string;
+    service_extra: {
+        [key: string]: any;
+    };
+}
+
+interface VpsServiceMaster {
+    vps_available: number;
+    vps_bits: number;
+    vps_cores: number;
+    vps_cpu_mhz: number;
+    vps_cpu_model: string;
+    vps_drive_type: string;
+    vps_hdfree: number;
+    vps_hdsize: number;
+    vps_id: number;
+    vps_iowait: number;
+    vps_ip: string;
+    vps_kernel: string;
+    vps_last_update: string;
+    vps_load: number;
+    vps_location: number;
+    vps_mounts: string;
+    vps_name: string;
+    vps_order: number;
+    vps_raid_building: number;
+    vps_raid_status: string;
+    vps_ram: number;
+    vps_server_max: number;
+    vps_server_max_slices: number;
+    vps_type: number;
+}
+
+interface VpsServiceAddons {
+    cost: number;
+    cpanel_id: number;
+    dedicated_ip: boolean;
+    extra_ips: string[];
+    extra_ips6: string[];
+    has_cpanel: boolean;
+    has_directadmin: boolean;
+    has_fantastico: boolean;
+    has_hdspace: boolean;
+    has_softaculous: boolean;
+    ids: string[];
+    ips: string[];
+    ips6: string[];
+    rdata: string[];
+    unpaid_ips: string[];
+}
+
+interface ExtraInfoTableRow {
+    desc: string;
+    value: string;
+}
+
+interface ExtraInfoTables {
+    [key: string]: {
+        rows: ExtraInfoTableRow[];
+        title: string;
+    };
+}
+
+interface VpsState {
+    vpsList: VpsInfo[];
+    loading: boolean;
+    error: boolean;
+    module: string;
+    pkg: string;
+    osTemplate: string;
+    serviceInfo: VpsInfo;
+    serviceMaster: VpsServiceMaster;
+    serviceAddons: VpsServiceAddons;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    disk_percentage: number;
+    memory: number;
+    hdd: number;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    serviceType: ServiceType;
+    linkDisplay: string | boolean;
+    service_disk_used: number | null;
+    service_disk_total: number | null;
+    daLink: number;
+    srLink: number;
+    cpLink: number;
+    ppLink: number;
+    srData: any;
+    cpData: any;
+    daData: any;
+    plesk12Data: any;
+    token: string;
+    errors: boolean;
+    vps_logs: [];
+    cpuGraphData: any;
+    responseText: string;
+    queueId: number | null;
+}
+
 export const useVpsStore = defineStore({
     id: 'vps',
-    state: () => ({
+    state: (): VpsState => ({
         vpsList: [],
         loading: false,
         error: false,
@@ -13,45 +174,17 @@ export const useVpsStore = defineStore({
         osTemplate: '',
         serviceMaster: {},
         serviceAddons: {},
-        serviceInfo: {
-            vps_comment: 'my-web-2',
-            vps_coupon: 3646,
-            vps_currency: 'USD',
-            vps_custid: 123,
-            vps_diskmax: 0,
-            vps_diskused: 0,
-            vps_extra: '',
-            vps_hostname: 'vps2578866',
-            vps_id: 2578866,
-            vps_invoice: 20130799,
-            vps_ip: '2.3.4.5',
-            vps_ipv6: null,
-            vps_location: 1,
-            vps_mac: '00:16:3e:27:aa:bb',
-            vps_order_date: '2022-12-26 20:14:59',
-            vps_os: 'ubuntu-22.04',
-            vps_platform: 'kvm',
-            vps_rootpass: 'myserverpass',
-            vps_server: 2439,
-            vps_server_status: 'running',
-            vps_slices: 16,
-            vps_status: 'active',
-            vps_type: 33,
-            vps_version: 'ubuntu',
-            vps_vnc: '1.2.3.4',
-            vps_vnc_port: 5902,
-            vps_vzid: 'vps2578866',
-        },
+        serviceInfo: {},
         clientLinks: [],
         billingDetails: {
-            service_last_invoice_date: 'August 13, 2022',
-            service_payment_status: 'Paid',
-            service_frequency: 'Yearly',
-            next_date: '2023-08-14 00:59:38',
-            service_next_invoice_date: 'August 14, 2023',
-            service_currency: 'USD',
-            service_currency_symbol: '$',
-            service_cost_info: '18.00',
+            service_last_invoice_date: '',
+            service_payment_status: '',
+            service_frequency: '',
+            next_date: '',
+            service_next_invoice_date: '',
+            service_currency: '',
+            service_currency_symbol: '',
+            service_cost_info: '',
             service_extra: {},
         },
         custCurrency: 'USD',
