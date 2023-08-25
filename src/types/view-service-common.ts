@@ -5,6 +5,7 @@ export interface ClientLink {
     icon: string;
     icon_text: string;
     help_text: string;
+    other_attr: string;
 }
 
 export interface ServiceType {
@@ -42,5 +43,8 @@ export interface ExtraInfoTables {
     [key: string]: {
         rows: ExtraInfoTableRow[];
         title: string;
+        header?: string;
+        size?: number;
+        type?: string;
     };
 }

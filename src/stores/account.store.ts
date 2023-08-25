@@ -6,7 +6,7 @@ interface AccountData {
   account_id: number | null;
   account_lid: string;
   status: string;
-  pin: string;
+  pin: number;
   name: string;
   address: string;
   address2: string;
@@ -20,7 +20,7 @@ interface AccountData {
   company: string;
   currency: string;
   locale: string;
-  disable_cc: string;
+  disable_cc: number;
   fraudrecord_score: string;
   maxmind_riskscore: any;
   fraudrecord: FraudRecordResponse | {};
