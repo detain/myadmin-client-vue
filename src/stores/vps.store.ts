@@ -8,7 +8,7 @@ export const useVpsStore = defineStore({
         vpsList: [],
         loading: false,
         error: false,
-
+        module: 'vps',
         pkg: '',
         osTemplate: '',
         serviceMaster: {},
@@ -103,17 +103,17 @@ export const useVpsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/vps');
+                const response = await fetchWrapper.get(baseUrl + '/vps');
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
             this.loading = false;
         },
-        async queue(id: number, action: string): Promise<void> {
+        async queue(id: number, action: string): Promise<boolean> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
@@ -123,7 +123,7 @@ export const useVpsStore = defineStore({
                 this.linkDisplay = response.text;
                 this.responseText = response.text;
                 this.queueId  = response.queueId;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
                 success = false;
@@ -175,7 +175,7 @@ export const useVpsStore = defineStore({
                     }
                 }
                 */
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
@@ -200,12 +200,12 @@ export const useVpsStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.vpsList.find((x) => x.id === id).isDeleting = true;
+            //this.vpsList.find((x) => x.vps_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.vpsList = this.vpsList.filter((x) => x.id !== id);
+            this.vpsList = this.vpsList.filter((x) => x.vps_id !== id);
         },
     },
 });

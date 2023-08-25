@@ -113,7 +113,7 @@ export const useDomainStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -148,7 +148,7 @@ export const useDomainStore = defineStore({
                 this.locked = response.locked;
                 this.whoisPrivacy = response.whoisPrivacy;
                 this.autoRenew = response.autoRenew;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

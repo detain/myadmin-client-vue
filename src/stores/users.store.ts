@@ -23,7 +23,7 @@ export const useUsersStore = defineStore({
             this.users = { loading: true };
             try {
                 this.users = await fetchWrapper.get(baseUrl);
-            } catch (error) {
+            } catch (error: any) {
                 this.users = { error };
             }
         },
@@ -33,7 +33,7 @@ export const useUsersStore = defineStore({
             this.home = { loading: true };
             try {
                 this.home = await fetchWrapper.get(baseUrl + '/home');
-            } catch (error) {
+            } catch (error: any) {
                 this.home = { error };
             }
         },
@@ -43,7 +43,7 @@ export const useUsersStore = defineStore({
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
+            } catch (error: any) {
                 this.user = { error };
             }
         },

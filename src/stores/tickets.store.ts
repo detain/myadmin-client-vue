@@ -45,7 +45,7 @@ export const useTicketsStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -57,7 +57,7 @@ export const useTicketsStore = defineStore({
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
+            } catch (error: any) {
                 this.user = { error };
             }
         },

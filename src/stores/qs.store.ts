@@ -310,7 +310,7 @@ export const useQsStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -361,7 +361,7 @@ export const useQsStore = defineStore({
                     }
                 }
                 */
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

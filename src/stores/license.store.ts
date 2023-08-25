@@ -115,7 +115,7 @@ export const useLicenseStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -142,7 +142,7 @@ export const useLicenseStore = defineStore({
                 this.service_overview_extra = response.service_overview_extra;
                 this.serviceType = response.serviceType;
                 //this.license_key = response.license_key;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

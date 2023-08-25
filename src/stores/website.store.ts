@@ -2,6 +2,24 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface WebsiteInfo {
+    website_id: number;
+    website_server: number;
+    website_type: number;
+    website_currency: string;
+    website_order_date: string;
+    website_custid: number;
+    website_ip: string;
+    website_status: string;
+    website_invoice: number;
+    website_coupon: number;
+    website_extra: string;
+    website_hostname: string;
+    website_comment: string;
+    website_username: string;
+    website_server_status: string;
+}
+
 export const useWebsiteStore = defineStore({
     id: 'website',
     state: () => ({
@@ -90,11 +108,11 @@ export const useWebsiteStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/websites');
+                const response = await fetchWrapper.get(baseUrl + '/websites');
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -134,7 +152,7 @@ export const useWebsiteStore = defineStore({
                     }
                 }
                 */
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
@@ -143,14 +161,12 @@ export const useWebsiteStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
-
             // update stored user if the logged in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage
                 const user = { ...authStore.user, ...params };
                 localStorage.setItem('user', JSON.stringify(user));
-
                 // update auth user in pinia state
                 authStore.user = user;
             }
@@ -159,12 +175,10 @@ export const useWebsiteStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.websiteList.find((x) => x.id === id).isDeleting = true;
-
+            //this.websiteList.find((x) => x.id === id).isDeleting = true;
             await fetchWrapper.delete(`${baseUrl}/${id}`);
-
             // remove user from list after deleted
-            this.websiteList = this.websiteList.filter((x) => x.id !== id);
+            this.websiteList = this.websiteList.filter((x) => x.website_id !== id);
         },
     },
 });

@@ -299,7 +299,7 @@ export const useAccountStore = defineStore({
                 this.oauthconfig = response.oauthconfig;
                 this.oauthproviders = response.oauthproviders;
                 this.loading = false;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
                 this.loading = false;

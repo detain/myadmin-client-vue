@@ -3,6 +3,11 @@ import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
 
+interface ErrorMessage {
+    code   : number;
+    message: string;
+}
+
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
@@ -25,7 +30,7 @@ export const useAuthStore = defineStore({
         useHeaders: true, // whether to send auth via headers or cookie
         // initialize state from local storage to enable user to stay logged in
         remember: localStorage.getItem('remember'),
-        user: JSON.parse(localStorage.getItem('user')),
+        user: JSON.parse(localStorage.getItem('user') || '{}'),
         returnUrl: null as string | null,
     }),
     getters: {
@@ -39,7 +44,7 @@ export const useAuthStore = defineStore({
                 return false;
             }
         },
-        async sudo(sessionId): Promise<void> {
+        async sudo(sessionId: string): Promise<void> {
             //console.log("Starting sudo session with sessionId "+sessionId)
             const accountStore = useAccountStore();
             if (this.user == null) {
@@ -48,7 +53,7 @@ export const useAuthStore = defineStore({
             this.user.sessionId = sessionId;
             this.sessionId = sessionId;
             localStorage.setItem('user', JSON.stringify(this.user));
-            localStorage.setItem('sessionId', this.sessionId);
+            localStorage.setItem('sessionId', this.sessionId || '');
             //localStorage.setItem('apiKey', this.apiKey);
             accountStore.load().then((response) => {
                 //console.log("starting .then handler for accountStore.load trying to utilize the data");
@@ -73,7 +78,7 @@ export const useAuthStore = defineStore({
                 this.captcha = response.captcha;
                 this.language = response.language;
                 this.counts = response.counts;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
             }
@@ -84,7 +89,7 @@ export const useAuthStore = defineStore({
             try {
                 const response = await fetchWrapper.get(baseUrl + '/captcha');
                 this.captcha = response.captcha;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
             }
@@ -97,13 +102,13 @@ export const useAuthStore = defineStore({
                 this.user = user;
                 this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', this.remember);
+                localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('sessionId', this.sessionId);
+                localStorage.setItem('sessionId', this.sessionId || '');
                 //localStorage.setItem('apiKey', this.apiKey);
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {
@@ -121,12 +126,12 @@ export const useAuthStore = defineStore({
                 this.user = user;
                 this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', this.remember);
+                localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('sessionId', this.sessionId);
+                localStorage.setItem('sessionId', this.sessionId || '');
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {

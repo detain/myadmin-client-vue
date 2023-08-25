@@ -50,7 +50,7 @@ export const usePrePayStore = defineStore({
                         console.log("no key '" + key + "' with value '" + value + "'");
                     }
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

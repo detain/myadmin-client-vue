@@ -30,7 +30,7 @@ export const useSslStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -46,7 +46,7 @@ export const useSslStore = defineStore({
             this.user = { loading: true };
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
+            } catch (error: any) {
                 this.user = { error };
             }
             */
@@ -67,7 +67,7 @@ export const useSslStore = defineStore({
                         console.log("no key '" + key + "' with value '" + value + "'");
                     }
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

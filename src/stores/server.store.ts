@@ -102,7 +102,7 @@ export const useServerStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -129,7 +129,7 @@ export const useServerStore = defineStore({
                 this.extraInfoTables = response.extraInfoTables;
                 this.networkInfo = response.networkInfo;
                 this.locations = response.locations;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

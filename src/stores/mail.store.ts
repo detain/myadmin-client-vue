@@ -119,7 +119,7 @@ export const useMailStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -145,7 +145,7 @@ export const useMailStore = defineStore({
                 this.extraInfoTables = response.extraInfoTables;
                 this.serviceType = response.serviceType;
                 this.usage_count = response.usage_count;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

@@ -126,7 +126,7 @@ export const useBackupStore = defineStore({
                 for (const field in response) {
                     this[field] = response[field];
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
@@ -151,7 +151,7 @@ export const useBackupStore = defineStore({
                 this.pkg = response.package;
                 this.serviceExtra = response.serviceExtra;
                 this.extraInfoTables = response.extraInfoTables;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
