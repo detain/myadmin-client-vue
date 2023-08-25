@@ -3,7 +3,7 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
-import Chart from 'chart.js';
+//import Chart from 'chart.js';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -178,5 +178,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('/node_modules/chart.js/dist/Chart.min.css');
 </style>
