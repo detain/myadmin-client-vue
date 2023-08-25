@@ -46,45 +46,11 @@ export const useMailStore = defineStore({
         extraInfoTables: {
             mail: {
                 title: 'Connection Information',
-                rows: [
-                    {
-                        desc: 'SMTP Server',
-                        value: 'relay.mailbaby.net',
-                    },
-                    {
-                        desc: 'SMTP Port',
-                        value: '25, 587, 2525 (any of these will work)',
-                    },
-                    {
-                        desc: 'Username',
-                        value: 'guest',
-                    },
-                    {
-                        desc: 'Password',
-                        value: 'guest',
-                    },
-                ],
+                rows: [],
             },
             tutorials: {
                 title: 'Tutorials',
-                rows: [
-                    {
-                        desc: 'cPanel Tutorial',
-                        value: '<a class="link" href="https://mail.baby/cpanel/" target="_blank">Click Here</a>',
-                    },
-                    {
-                        desc: 'DirectAdmin Tutorial',
-                        value: '<a class="link" href="https://mail.baby/direct-admin/" target="_blank">Click Here</a>',
-                    },
-                    {
-                        desc: 'Exchange Tutorial',
-                        value: '<a class="link" href="https://mail.baby/exchange/" target="_blank">Click Here</a>',
-                    },
-                    {
-                        desc: 'Plesk Tutorial',
-                        value: '<a class="link" href="https://mail.baby/plesk/" target="_blank">Click Here</a>',
-                    },
-                ],
+                rows: [],
             },
         },
         serviceType: {
@@ -98,7 +64,7 @@ export const useMailStore = defineStore({
             services_field2: '',
             services_module: 'mail',
         },
-        usage_count: '0',
+        usage_count: 0,
     }),
     getters: {
 

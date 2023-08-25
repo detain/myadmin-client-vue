@@ -105,7 +105,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams);
                 this.resetStores();
                 this.user = user;
-                this.sessionId = user.sessionid;
+                this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
@@ -130,7 +130,7 @@ export const useAuthStore = defineStore({
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms);
                 this.resetStores();
                 this.user = user;
-                this.sessionId = user.sessionid;
+                this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));

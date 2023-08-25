@@ -28,38 +28,7 @@ export const useBackupStore = defineStore({
             backup_server_status: '',
             backup_comment: '',
         },
-        clientLinks: [
-            {
-                label: 'Invoices',
-                link: 'view_backup?id=21163&link=invoices',
-                icon: 'fas fa-file-invoice-dollar fa-w-12',
-                icon_text: '',
-                help_text: 'Invoice History',
-            },
-            {
-                label: 'Cancel Storage',
-                link: 'view_backup?id=21163&link=cancel',
-                icon: 'fas fa-times',
-                icon_text: '',
-                help_text: 'Cancel Storage',
-            },
-            {
-                label: 'Login to Storage',
-                link: 'auto_storage_login?id=21163',
-                icon: 'fa fa-sign-in',
-                icon_text: '',
-                help_text: 'Login to Storage Portal',
-                other_attr: 'target="__blank"',
-            },
-            {
-                label: 'Send Welcome Email',
-                link: 'view_backup?id=21163&link=welcome_email',
-                icon: 'material-icons',
-                icon_text: 'send',
-                help_text: 'Send welcome email',
-                other_attr: '',
-            },
-        ],
+        clientLinks: [],
         billingDetails: {
             service_last_invoice_date: '',
             service_payment_status: '',
@@ -90,20 +59,7 @@ export const useBackupStore = defineStore({
         extraInfoTables: {
             ip_info: {
                 title: 'IP Information',
-                rows: [
-                    {
-                        desc: 'Netmask',
-                        value: '',
-                    },
-                    {
-                        desc: 'Gateway',
-                        value: '',
-                    },
-                    {
-                        desc: 'Broadcast',
-                        value: '',
-                    },
-                ],
+                rows: [],
             },
         },
     }),
