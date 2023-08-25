@@ -117,6 +117,7 @@ export const useServerStore = defineStore({
             try {
                 const response = await fetchWrapper.get(baseUrl + '/servers/' + id);
                 this.$reset();
+                //let key, value;
                 console.log(response);
                 this.ipmiAuth = response.ipmiAuth;
                 this.serviceInfo = response.serviceInfo;

@@ -325,6 +325,7 @@ export const useQsStore = defineStore({
             try {
                 const response = await fetchWrapper.get(baseUrl + '/qs/' + id);
                 this.$reset();
+                //let key, value;
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;
                 this.clientLinks = response.client_links;

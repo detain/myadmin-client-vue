@@ -1,4 +1,4 @@
-import { storeToRefs, defineStore } from 'pinia';
+import { storeToRefs, defineStore, getActivePinia } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
@@ -44,8 +44,12 @@ export const useAuthStore = defineStore({
                 return false;
             }
         },
+        resetStores(): void {
+            getActivePinia()._s.forEach(store => store.$reset());
+        },
         async sudo(sessionId: string): Promise<void> {
             //console.log("Starting sudo session with sessionId "+sessionId)
+            this.resetStores();
             const accountStore = useAccountStore();
             if (this.user == null) {
                 this.user = {};
@@ -99,6 +103,7 @@ export const useAuthStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             try {
                 const user = await fetchWrapper.post(baseUrl + '/login', loginParams);
+                this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
@@ -123,6 +128,7 @@ export const useAuthStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             try {
                 const user = await fetchWrapper.post(baseUrl + '/signup', signupParms);
+                this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionid;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
