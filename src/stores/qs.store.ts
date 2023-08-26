@@ -133,9 +133,7 @@ export const useQsStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/qs');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.qsList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
@@ -166,7 +164,6 @@ export const useQsStore = defineStore({
                 this.cpu_graph_data = response.cpu_graph_data;
                 this.bandwidth_xaxis = response.bandwidth_xaxis;
                 this.bandwidth_yaxis = response.bandwidth_yaxis;
-                this.module = response.module;
                 this.token = response.token;
                 this.service_disk_used = response.service_disk_used;
                 this.service_disk_total = response.service_disk_total;

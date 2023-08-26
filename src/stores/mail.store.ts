@@ -82,9 +82,7 @@ export const useMailStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/mail');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.mailList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

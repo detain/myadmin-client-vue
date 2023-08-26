@@ -27,9 +27,7 @@ export const useSslStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/ssl');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.sslList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

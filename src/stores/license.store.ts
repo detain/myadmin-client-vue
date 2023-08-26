@@ -75,9 +75,7 @@ export const useLicenseStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/licenses');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.licenseList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
@@ -102,7 +100,7 @@ export const useLicenseStore = defineStore({
                 this.pkg = response.package;
                 this.serviceExtra = response.serviceExtra;
                 this.extraInfoTables = response.extraInfoTables;
-                this.service_overview_extra = response.service_overview_extra;
+                this.serviceOverviewExtra = response.service_overview_extra;
                 this.serviceType = response.serviceType;
                 //this.license_key = response.license_key;
             } catch (error: any) {

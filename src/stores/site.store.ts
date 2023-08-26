@@ -23,7 +23,7 @@ export const useSiteStore = defineStore({
         getBaseUrl() {
             return baseUrl;
         },
-        getSettings(module) {
+        getSettings(module: string) {
             return this.modules[module];
         },
         async checkInfoLoaded(): Promise<void> {

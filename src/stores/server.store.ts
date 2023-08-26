@@ -100,9 +100,7 @@ export const useServerStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/servers');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.serverList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
