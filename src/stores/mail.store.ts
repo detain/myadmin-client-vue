@@ -3,18 +3,6 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-interface ServiceType {
-    services_id: number;
-    services_name: string;
-    services_cost: number;
-    services_category: number;
-    services_buyable: number;
-    services_type: number;
-    services_field1: string;
-    services_field2: string;
-    services_module: string;
-}
-
 interface MailInfo {
     mail_id: number;
     mail_username: string;
