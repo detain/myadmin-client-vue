@@ -28,14 +28,14 @@ interface AccountData {
   maxmind_score: string;
   group: string;
   cc: string;
-  cc_auto: string;
+  cc_auto: number;
   cc_exp: string;
   cc_type: string;
-  cc_whitelist: string;
+  cc_whitelist: number;
   ccs: CCsData | {};
-  ccs_added: string;
-  disable_reinstall: string;
-  disable_reset: string;
+  ccs_added: number;
+  disable_reinstall: number;
+  disable_reset: number;
   email: string;
   email_abuse: string;
   email_settings: {
@@ -194,7 +194,7 @@ export const useAccountStore = defineStore({
             account_id: 0,
             account_lid: '',
             status: '',
-            pin: '',
+            pin: 0,
             name: '',
             address: '',
             address2: '',
@@ -209,11 +209,11 @@ export const useAccountStore = defineStore({
             currency: 'USD',
             locale: 'auto',
             disable_cc: 0,
-            fraudrecord_score: 0,
+            fraudrecord_score: '',
             maxmind_riskscore: null,
             fraudrecord: {},
             maxmind: {},
-            maxmind_score: 0,
+            maxmind_score: '',
             group: '',
             cc: '',
             cc_auto: 0,

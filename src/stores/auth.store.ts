@@ -1,11 +1,16 @@
-import { storeToRefs, defineStore, getActivePinia } from 'pinia';
+import { storeToRefs, defineStore, getActivePinia, Store, Pinia } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
 
 interface ErrorMessage {
-    code   : number;
+    code: number;
     message: string;
+    field?: string;
+}
+
+interface ExtendedPinia extends Pinia {
+  _s: Map<string, Store>;
 }
 
 export const useAuthStore = defineStore({
@@ -45,7 +50,10 @@ export const useAuthStore = defineStore({
             }
         },
         resetStores(): void {
-            getActivePinia()._s.forEach(store => store.$reset());
+            const pinia = getActivePinia() as ExtendedPinia;
+            if (pinia) {
+                pinia._s.forEach((store) => store.$reset());
+            }
         },
         async sudo(sessionId: string): Promise<void> {
             //console.log("Starting sudo session with sessionId "+sessionId)
@@ -117,7 +125,13 @@ export const useAuthStore = defineStore({
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {
-                    this.opts[error.field] = true;
+                    if (error.field == 'tfa') {
+                        this.opts.tfa = true;
+                    } else if (error.field == 'verify') {
+                        this.opts.verify = true;
+                    } else if (error.field == 'captcha') {
+                        this.opts.captcha = true;
+                    }
                 }
                 const alertStore = useAlertStore();
                 alertStore.error(error);
@@ -141,7 +155,13 @@ export const useAuthStore = defineStore({
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {
-                    this.opts[error.field] = true;
+                    if (error.field == 'tfa') {
+                        this.opts.tfa = true;
+                    } else if (error.field == 'verify') {
+                        this.opts.verify = true;
+                    } else if (error.field == 'captcha') {
+                        this.opts.captcha = true;
+                    }
                 }
                 /*Swal.fire({
                     icon: 'warning',
