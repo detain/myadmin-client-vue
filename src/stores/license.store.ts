@@ -130,7 +130,7 @@ export const useLicenseStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.licenseList.find((x) => x.license_id === id).isDeleting = true;
+            //this.licenseList.find((x) => x.license_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 

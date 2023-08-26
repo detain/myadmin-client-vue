@@ -136,7 +136,7 @@ export const useMailStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.mailList.find((x) => x.mail_id === id).isDeleting = true;
+            //this.mailList.find((x) => x.mail_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 

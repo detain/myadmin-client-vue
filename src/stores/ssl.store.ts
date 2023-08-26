@@ -92,7 +92,7 @@ export const useSslStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.sslList.find((x) => x.ssl_id === id).isDeleting = true;
+            //this.sslList.find((x) => x.ssl_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 

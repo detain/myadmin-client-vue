@@ -79,9 +79,7 @@ export const useBackupStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/backups');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.backupList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
@@ -132,7 +130,7 @@ export const useBackupStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.backupList.find((x) => x.backup_id === id).isDeleting = true;
+            //this.backupList.find((x) => x.backup_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
