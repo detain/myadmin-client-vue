@@ -60,7 +60,7 @@ function crud_print(): void {
 
 }
 
-function crud_export(event): void {
+function crud_export(event: any): void {
     const exportType = event.currentTarget.parentElement.getAttribute('data-type');
     console.log(exportType);
 

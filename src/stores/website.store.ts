@@ -21,9 +21,41 @@ interface WebsiteInfo {
     website_server_status: string;
 }
 
+interface WebsiteServiceMaster {
+    website_id: number;
+    website_name: string;
+    website_ip: string;
+    website_type: number;
+    website_available: number;
+    website_hdsize: number;
+    website_hdfree: number;
+    website_load: number;
+    website_last_update: string;
+    website_max_sites: number;
+    website_order: number;
+    website_partitions: string;
+    website_dns1: string;
+    website_dns2: string;
+}
+
+interface WebsiteState {
+    websiteList: WebsiteInfo[];
+    serviceInfo: WebsiteInfo;
+    serviceMaster: WebsiteServiceMaster;
+    loading: boolean;
+    error: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+}
+
 export const useWebsiteStore = defineStore({
     id: 'website',
-    state: () => ({
+    state: (): WebsiteState => ({
         websiteList: [],
         loading: false,
         error: false,

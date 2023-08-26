@@ -19,7 +19,7 @@ const settings = computed(() => { return modules.value[module]; });
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 
-function isEmpty(table) {
+function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
 }
 
@@ -170,7 +170,7 @@ loadLink(route.params.link);
                                     <th>Types:</th>
                                     <th>Links:</th>
                                 </tr>
-                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows[0] && extraInfoTables.links.rows[0].value">
+                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows.length > 0 && extraInfoTables.links.rows[0].value">
                                     <tr>
                                         <td>Manual Login</td>
                                         <td><a :href="extraInfoTables.links.rows[0].value" target="__blank" class="link">Click Here</a></td>

@@ -3,9 +3,91 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface ServiceType {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_category: number;
+    services_buyable: number;
+    services_type: number;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+}
+
+interface DomainInfo {
+    domain_id: number;
+    domain_hostname: string;
+    domain_username: string;
+    domain_password: string;
+    domain_type: number;
+    domain_expire_date: string;
+    domain_order_date: string;
+    domain_custid: number;
+    domain_invoice: number;
+    domain_coupon: number;
+    domain_firstname: string;
+    domain_lastname: string;
+    domain_email: string;
+    domain_address: string;
+    domain_address2: string;
+    domain_address3: string;
+    domain_city: string;
+    domain_state: string;
+    domain_zip: string;
+    domain_country: string;
+    domain_phone: string;
+    domain_fax: string;
+    domain_company: string;
+}
+
+interface DomainState {
+    domainList: DomainInfo[];
+    serviceInfo: DomainInfo;
+    loading: boolean;
+    error: boolean;
+    link_display: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    serviceType: serviceType;
+    serviceTypes: {
+        [key: string]: serviceType;
+    }
+    contact_details: {
+        first_name: string;
+        last_name: string;
+        org_name: string;
+        status: string;
+        email: string;
+        address1: string;
+        address2: string;
+        address3: string;
+        city: string;
+        state: string;
+        postal_code: string;
+        country: string;
+        phone: string;
+        fax: string;
+    },
+    pwarning: string;
+    transfer_info: string;
+    errors: boolean,
+    domain_logs: [],
+    allInfo: any,
+    registrarStatus: string;
+    locked: string;
+    whoisPrivacy: string;
+    autoRenew: string;
+}
+
 export const useDomainStore = defineStore({
     id: 'domain',
-    state: () => ({
+    state: (): DomainState => ({
         domainList: [],
         loading: false,
         error: false,

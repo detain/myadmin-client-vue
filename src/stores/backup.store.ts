@@ -3,9 +3,56 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface BackupInfo {
+    backup_id: number;
+    backup_server: number;
+    backup_username: string;
+    backup_type: number;
+    backup_currency: string;
+    backup_order_date: string;
+    backup_custid: number;
+    backup_quota: number;
+    backup_ip: string;
+    backup_status: string;
+    backup_invoice: number;
+    backup_coupon: number;
+    backup_extra: string;
+    backup_server_status: string;
+    backup_comment: string;
+}
+
+interface BackupServiceMaster {
+    backup_id: number;
+    backup_name: string;
+    backup_ip: string;
+    backup_type: number;
+    backup_hdsize: number;
+    backup_hdfree: number;
+    backup_last_update: string;
+    backup_available: number;
+    backup_iowait: number;
+    backup_order: number;
+}
+
+interface BackupState {
+    backupList: BackupInfo[];
+    serviceInfo: BackupInfo;
+    serviceMaster: BackupServiceMaster;
+    loading: boolean;
+    link_display: boolean;
+    error: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+}
+
 export const useBackupStore = defineStore({
     id: 'backup',
-    state: () => ({
+    state: (): BackupState => ({
         backupList: [],
         loading: false,
         error: false,

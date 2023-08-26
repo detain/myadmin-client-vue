@@ -3,17 +3,78 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface ServerInfo {
+    server_id: number;
+    server_hostname: string;
+    server_custid: number;
+    server_type: number;
+    server_currency: string;
+    server_order_date: string;
+    server_invoice: number;
+    server_coupon: number;
+    server_status: string;
+    server_root: string;
+    server_dedicated_tag: string;
+    server_custom_tag: string;
+    server_comment: string;
+    server_initial_bill: number;
+    server_hardware: number;
+    server_ips: number;
+    server_monthly_bill: number;
+    server_setup: number;
+    server_discount: string | null,
+    server_rep: number;
+    server_date: number;
+    server_total_cost: number;
+    server_location: string | null,
+    server_hardware_ordered: number;
+    server_billed: number;
+    server_welcome_email: number;
+    server_dedicated_cpu: number;
+    server_dedicated_memory: number;
+    server_dedicated_hd1: number;
+    server_dedicated_hd2: number | null,
+    server_dedicated_bandwidth: number;
+    server_dedicated_ips: number;
+    server_dedicated_os: number;
+    server_dedicated_cp: number | null,
+    server_dedicated_raid: number;
+    server_extra: string;
+}
+
+interface ServerState {
+    serverList: ServerInfo[];
+    serviceInfo: ServerInfo;
+    loading: boolean;
+    error: boolean;
+    link_display: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    ipmiAuth: boolean;
+    ipmiLease: any;
+    networkInfo: {
+        vlans: any;
+        vlans6: any;
+        assets: any;
+        switchports: any;
+    },
+    locations: any;
+}
+
 export const useServerStore = defineStore({
     id: 'server',
-    state: () => ({
+    state: (): ServerState => ({
         serverList: [],
         loading: false,
         error: false,
 
         pkg: '',
         link_display: false,
-        ipmiAuth: false,
-        ipmiLease: false,
         serviceInfo: {
             server_id: 0,
             server_hostname: '',
@@ -77,6 +138,8 @@ export const useServerStore = defineStore({
                 rows: [],
             },
         },
+        ipmiAuth: false,
+        ipmiLease: false,
         networkInfo: {
             vlans: {},
             vlans6: [],

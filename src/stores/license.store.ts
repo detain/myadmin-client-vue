@@ -3,9 +3,52 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface ServiceType {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_category: number;
+    services_buyable: number;
+    services_type: number;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+}
+
+interface LicenseInfo {
+    license_id: number;
+    license_type: number;
+    license_currency: string;
+    license_order_date: string;
+    license_custid: number;
+    license_ip: string;
+    license_status: string;
+    license_hostname: string;
+    license_key: string;
+    license_invoice: number;
+    license_coupon: number;
+    license_extra: string;
+}
+
+interface LicenseState {
+    licenseList: LicenseInfo[];
+    serviceInfo: LicenseInfo;
+    loading: boolean;
+    error: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    serverOverviewExtra: string;
+    serviceType: serviceType;
+}
+
 export const useLicenseStore = defineStore({
     id: 'license',
-    state: () => ({
+    state: (): LicenseState => ({
         licenseList: [],
         loading: false,
         error: false,

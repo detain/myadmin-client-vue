@@ -3,9 +3,55 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface ServiceType {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_category: number;
+    services_buyable: number;
+    services_type: number;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+}
+
+interface MailInfo {
+    mail_id: number;
+    mail_username: string;
+    mail_type: number;
+    mail_currency: string;
+    mail_order_date: string;
+    mail_custid: number;
+    mail_quota: number;
+    mail_ip: string;
+    mail_status: string;
+    mail_invoice: number;
+    mail_coupon: number;
+    mail_extra: string;
+    mail_server_status: string;
+    mail_comment: string;
+}
+
+interface MailState {
+    mailList: MailInfo[];
+    serviceInfo: MailInfo;
+    loading: boolean;
+    error: boolean;
+    link_display: boolean;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    serviceType: serviceType;
+    usage_count: number;
+}
+
 export const useMailStore = defineStore({
     id: 'mail',
-    state: () => ({
+    state: (): MailState => ({
         mailList: [],
         loading: false,
         error: false,
