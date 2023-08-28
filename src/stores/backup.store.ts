@@ -58,7 +58,7 @@ export const useBackupStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         serviceInfo: {
             backup_id: 0,
             backup_server: 0,

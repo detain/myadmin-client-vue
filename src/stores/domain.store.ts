@@ -81,7 +81,7 @@ export const useDomainStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         serviceInfo: {
             domain_id: 0,
             domain_hostname: '',

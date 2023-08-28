@@ -45,7 +45,7 @@ export const useMailStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         serviceInfo: {
             mail_id: 0,
             mail_username: '',

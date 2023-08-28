@@ -14,7 +14,7 @@ const link = computed(() => {
 });
 
 const sslStore = useSslStore();
-const { loading, error, pkg, link_display } = storeToRefs(sslStore);
+const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -119,9 +119,9 @@ sslStore.getById(id);
         <div v-if="link == 'change_approver_email'" class="col">
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>
-        <div v-else class="col">{{ link_display }}</div>
+        <div v-else class="col">{{ linkDisplay }}</div>
     </div>
-    <div v-else-if="!link_display || (link && ['cancel', 'resend_approver_email', 'reissue_cert'].includes(link))" class="row row-flex">
+    <div v-else-if="!linkDisplay || (link && ['cancel', 'resend_approver_email', 'reissue_cert'].includes(link))" class="row row-flex">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">

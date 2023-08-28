@@ -15,7 +15,7 @@ const link = computed(() => { return route.params.link; });
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 const domainStore = useDomainStore();
-const { loading, error, pkg, link_display, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -119,7 +119,7 @@ console.log(link.value);
         <div v-else-if="link == 'whois'" class="col">
             <Whois :id="id"></Whois>
         </div>
-        <div v-else class="col">{{ link_display }}</div>
+        <div v-else class="col">{{ linkDisplay }}</div>
     </div>
     <div v-else class="row">
         <div class="col-md-6">

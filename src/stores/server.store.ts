@@ -72,9 +72,10 @@ export const useServerStore = defineStore({
         serverList: [],
         loading: false,
         error: false,
-
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
+        ipmiAuth: false,
+        ipmiLease: false,
         serviceInfo: {
             server_id: 0,
             server_hostname: '',
