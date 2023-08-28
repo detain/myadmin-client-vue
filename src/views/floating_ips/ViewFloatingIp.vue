@@ -20,7 +20,7 @@ siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs' });
 siteStore.addBreadcrum('/mail/' + id, 'View Floating IPs ' + id);
 
 const mailStore = useMailStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
@@ -107,7 +107,7 @@ const statusClass = computed(() => {
             </div>
         </div>
     </div>
-    <template v-if="link_display">
+    <template v-if="linkDisplay">
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
@@ -115,7 +115,7 @@ const statusClass = computed(() => {
             <DenyRules :id="id"></DenyRules>
         </div>
         <div v-else class="row shadow-none">
-            <div class="col-md-12">{{ link_display }}</div>
+            <div class="col-md-12">{{ linkDisplay }}</div>
         </div>
     </template>
     <template v-else>

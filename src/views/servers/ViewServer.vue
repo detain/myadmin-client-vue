@@ -15,7 +15,7 @@ const link = computed(() => { return route.params.link; });
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 const serverStore = useServerStore();
-const { loading, error, pkg, link_display, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
@@ -141,9 +141,9 @@ const ipv6VlansNetworks = computed(() => {
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
-        <div v-else class="col">{{ link_display }}</div>
+        <div v-else class="col">{{ linkDisplay }}</div>
     </div>
-    <div v-if="!link_display || (link && link.includes('cancel'))" class="row justify-content-center">
+    <div v-if="!linkDisplay || (link && link.includes('cancel'))" class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">

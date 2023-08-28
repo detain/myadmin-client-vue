@@ -17,7 +17,7 @@ console.log(link.value);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 
 function isEmpty(table) {
     return table === null || table === undefined || table.length === 0;
@@ -148,10 +148,10 @@ loadLink(route.params.link);
             <ReverseDns :id="id"></ReverseDns>
         </div>
         <div v-else class="col">
-            {{ link_display }}
+            {{ linkDisplay }}
         </div>
     </div>
-    <div v-else-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row mt-2">
+    <div v-else-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row mt-2">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
@@ -245,7 +245,7 @@ loadLink(route.params.link);
             </div>
         </div>
     </div>
-    <div v-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row row-flex">
+    <div v-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row row-flex">
         <div class="col">
             <div class="card">
                 <div class="card-header">

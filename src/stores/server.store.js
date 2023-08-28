@@ -10,7 +10,7 @@ export const useServerStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         ipmiAuth: false,
         ipmiLease: false,
         serviceInfo: {

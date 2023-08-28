@@ -15,7 +15,7 @@ const link = computed(() => { return route.params.link; });
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 const licenseStore = useLicenseStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
 function loadLink(newLink) {
     console.log(`link is now ${newLink}`);
@@ -134,9 +134,9 @@ licenseStore.getById(id);
         <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>
         </div>
-        <div v-else class="col">{{ link_display }}</div>
+        <div v-else class="col">{{ linkDisplay }}</div>
     </div>
-    <div v-else-if="!link_display || (link && link.includes('cancel'))" class="row row-flex">
+    <div v-else-if="!linkDisplay || (link && link.includes('cancel'))" class="row row-flex">
         <template v-if="extraInfoTables.ip_info">
             <div class="col-md-3">
                 <div class="card">

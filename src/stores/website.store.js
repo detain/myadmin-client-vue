@@ -9,7 +9,7 @@ export const useWebsiteStore = defineStore({
         loading: false,
         error: false,
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         serviceInfo: {
             website_id: 0,
             website_server: 0,

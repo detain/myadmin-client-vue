@@ -19,7 +19,7 @@ siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Storage' });
 siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
-const { loading, error, pkg, link_display, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
 backupStore.getById(id);
 
 const billingStatus = computed(() => {
@@ -95,9 +95,9 @@ const billingStatusClass = computed(() => {
         </div>
     </div>
     <div v-if="link" class="row shadow-none">
-        <div class="col">{{ link_display }}</div>
+        <div class="col">{{ linkDisplay }}</div>
     </div>
-    <div v-else-if="!link_display || (link && ['cancel', 'welcome_email'].includes(link))" class="row justify-content-center">
+    <div v-else-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">

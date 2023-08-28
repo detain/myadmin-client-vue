@@ -10,7 +10,7 @@ export const useSslStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
     }),
     getters: {
 

@@ -10,7 +10,7 @@ export const useQsStore = defineStore({
         error: false,
 
         pkg: '',
-        link_display: false,
+        linkDisplay: false,
         serviceInfo: {
             qs_id: 0,
             qs_custid: 0,
