@@ -43,7 +43,8 @@ interface WebsiteState {
     serviceInfo: WebsiteInfo;
     serviceMaster: WebsiteServiceMaster;
     loading: boolean;
-    error: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;

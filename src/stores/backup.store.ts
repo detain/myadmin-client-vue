@@ -39,8 +39,8 @@ interface BackupState {
     serviceInfo: BackupInfo;
     serviceMaster: BackupServiceMaster;
     loading: boolean;
-    link_display: boolean;
-    error: boolean;
+    linkDisplay: boolean | string;
+    error: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
@@ -56,7 +56,6 @@ export const useBackupStore = defineStore({
         backupList: [],
         loading: false,
         error: false,
-
         pkg: '',
         linkDisplay: false,
         serviceInfo: {

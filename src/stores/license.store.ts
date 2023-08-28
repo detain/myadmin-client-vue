@@ -22,7 +22,8 @@ interface LicenseState {
     licenseList: LicenseInfo[];
     serviceInfo: LicenseInfo;
     loading: boolean;
-    error: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
@@ -40,7 +41,7 @@ export const useLicenseStore = defineStore({
         licenseList: [],
         loading: false,
         error: false,
-
+        linkDisplay: false,
         pkg: '',
         serviceInfo: {
             license_id: 0,

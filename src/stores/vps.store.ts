@@ -82,7 +82,8 @@ interface VpsServiceAddons {
 interface VpsState {
     vpsList: VpsInfo[];
     loading: boolean;
-    error: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     module: string;
     pkg: string;
     osTemplate: string;
@@ -99,7 +100,6 @@ interface VpsState {
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
     serviceType: ServiceType;
-    linkDisplay: string | boolean;
     service_disk_used: number | null;
     service_disk_total: number | null;
     daLink: number;
@@ -111,7 +111,6 @@ interface VpsState {
     daData: any;
     plesk12Data: any;
     token: string;
-    errors: boolean;
     vps_logs: [];
     cpuGraphData: any;
     responseText: string;

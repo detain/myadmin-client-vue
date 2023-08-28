@@ -46,8 +46,8 @@ interface ServerState {
     serverList: ServerInfo[];
     serviceInfo: ServerInfo;
     loading: boolean;
-    error: boolean;
-    link_display: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
@@ -74,8 +74,6 @@ export const useServerStore = defineStore({
         error: false,
         pkg: '',
         linkDisplay: false,
-        ipmiAuth: false,
-        ipmiLease: false,
         serviceInfo: {
             server_id: 0,
             server_hostname: '',

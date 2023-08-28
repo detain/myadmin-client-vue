@@ -75,8 +75,8 @@ interface QsState {
     serviceInfo: QsInfo;
     serviceMaster: QsServiceMaster;
     loading: boolean;
-    error: boolean;
-    link_display: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;

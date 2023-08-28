@@ -24,8 +24,8 @@ interface MailState {
     mailList: MailInfo[];
     serviceInfo: MailInfo;
     loading: boolean;
-    error: boolean;
-    link_display: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;

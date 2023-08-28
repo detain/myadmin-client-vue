@@ -33,8 +33,8 @@ interface DomainState {
     domainList: DomainInfo[];
     serviceInfo: DomainInfo;
     loading: boolean;
-    error: boolean;
-    link_display: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
@@ -79,7 +79,6 @@ export const useDomainStore = defineStore({
         domainList: [],
         loading: false,
         error: false,
-
         pkg: '',
         linkDisplay: false,
         serviceInfo: {
