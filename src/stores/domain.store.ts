@@ -42,9 +42,9 @@ interface DomainState {
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
-    serviceType: serviceType;
+    serviceType: ServiceType;
     serviceTypes: {
-        [key: string]: serviceType;
+        [key: string]: ServiceType;
     }
     contact_details: {
         first_name: string;

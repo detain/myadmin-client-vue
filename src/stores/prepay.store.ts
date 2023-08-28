@@ -2,9 +2,68 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface PrepayRow {
+    prepay_amount: number;
+    prepay_automatic_use: number;
+    prepay_created: string;
+    prepay_currency: string;
+    prepay_custid: number;
+    prepay_date: string;
+    prepay_deleted: number;
+    prepay_id: number;
+    prepay_module: string;
+    prepay_remaining: number;
+    prepay_remaining_disp: string;
+    prepay_service: number;
+    prepay_status: string;
+    prepay_type: number;
+}
+
+interface PrePayHistoryRow {
+    amt_used: string;
+    desc: string;
+    history_creator: number;
+    history_id: number;
+    history_new_value: number;
+    history_old_value: number;
+    history_owner: number;
+    history_section: number;
+    history_sid: string;
+    history_timesetamp: string;
+    history_tiomestamp_disp: string;
+    history_type: number;
+}
+
+interface PrepayState {
+    modules: {
+        [key: string]: string;
+    }
+    ima: string;
+    custid: number;
+    prepays: {
+        [key: number]: {
+            history: PrePayHistoryRow[];
+            prepay: PrePayRow;
+        }
+    }
+    total_pages: number;
+    total_records: number;
+    limit: number;
+    page: number;
+    curr_page_records: 2;
+    allInfo: {
+        [key: string]: {
+            module_name: string;
+            services: {
+                [key: number]: string;
+            }
+        }
+    }
+}
+
 export const usePrePayStore = defineStore({
     id: 'prepay',
-    state: () => ({
+    state: (): PrePayState => ({
         loading: false,
         error: false,
         custid: '',

@@ -2,10 +2,49 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface TicketRow {
+    title: string;
+    ticketmaskid: string;
+    lastreplier: string;
+    status: string;
+    priority: string;
+    total_replies: number;
+    lastactivity: string;
+    departmenttitle: string;
+    ticketid: number;
+    can_close: string;
+    attachments: any;
+    status_text: string;
+    checked: boolean;
+}
+
+interface TicketState {
+    loading: boolean;
+    error: boolean | string;
+    tickets: TicketRow[];
+    ima: string;
+    custid: number;
+    view: string;
+    currentPage: number;
+    limit: number;
+    sortcol: number;
+    sortdir: number;
+    rowsOffset: number;
+    pages: number;
+    rowsTotal: number;
+    inboxCount: number;
+    countArray: {
+        Open: number;
+        Closed: number;
+        'On Hold': number;
+    }
+    viewText: string;
+}
+
 export const useTicketsStore = defineStore({
     id: 'tickets',
-    state: () => ({
-        tickets: {},
+    state: (): TicketState => ({
+        tickets: [],
         loading: false,
         error: false,
         ima: 'client',
@@ -31,11 +70,6 @@ export const useTicketsStore = defineStore({
 
     },
     actions: {
-        async register(user: any): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.post(`${baseUrl}/register`, user);
-        },
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
@@ -50,49 +84,6 @@ export const useTicketsStore = defineStore({
                 this.error = error;
             }
             this.loading = false;
-        },
-        async getById(id: number): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error: any) {
-                this.user = { error };
-            }
-        },
-        async update(id: number, params: any): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.put(`${baseUrl}/${id}`, params);
-
-            // update stored user if the logged in user updated their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                // update local storage
-                const user = { ...authStore.user, ...params };
-                localStorage.setItem('user', JSON.stringify(user));
-
-                // update auth user in pinia state
-                authStore.user = user;
-            }
-        },
-        async delete(id: number): Promise<void> {
-            // add isDeleting prop to user being deleted
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            this.tickets.find((x) => x.id === id).isDeleting = true;
-
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
-
-            // remove user from list after deleted
-            this.tickets = this.tickets.filter((x) => x.id !== id);
-
-            // auto logout if the logged in user deleted their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                await authStore.logout();
-            }
         },
     },
 });
