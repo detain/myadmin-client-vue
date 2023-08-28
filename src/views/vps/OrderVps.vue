@@ -8,6 +8,7 @@ import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
+import { ServiceType, ServiceTypes } from '@/types';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const siteStore = useSiteStore();
@@ -66,7 +67,7 @@ const osTemplates = ref({
 });
 const currency = ref('USD');
 const currencySymbol = ref('$');
-const serviceTypes = ref([]);
+const serviceTypes = ref<ServiceTypes>({});
 const maxSlices = ref(16);
 const hdStorageSlice = ref(1000);
 const cpanelCost = ref(20);

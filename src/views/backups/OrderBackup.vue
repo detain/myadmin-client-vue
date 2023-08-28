@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { useRoute } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types';
 const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
@@ -19,7 +20,7 @@ const rootpass = ref('');
 const period = ref(1);
 const coupon = ref('');
 const packageCosts = ref({});
-const serviceTypes = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 
 const periods = [
     { label: 'Monthly', value: 1 },

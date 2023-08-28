@@ -3,6 +3,7 @@ import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
+import { ServiceType, ServiceTypes } from '@/types';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const siteStore = useSiteStore();
@@ -22,7 +23,7 @@ const currencySymbol = ref('$');
 const hostname = ref('');
 const rootpass = ref('');
 const coupon = ref('');
-const serviceTypes = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 const serviceOffers = ref({});
 const packges = ref({});
 const packages = ref({});
@@ -40,8 +41,8 @@ const formData = reactive({
     rootpass: rootpass,
     coupon: coupon,
     serviceOfferId: serviceOfferId,
-    'serviceOffers[packageId]': serviceOffers[packageId] ? serviceOffers[packageId] : {},
-    'serviceTypes[packageId]': serviceTypes[packageId] ? serviceTypes[packageId] : {},
+    'serviceOffers[packageId]': serviceOffers.value[packageId.value] ? serviceOffers.value[packageId.value] : {},
+    'serviceTypes[packageId]': serviceTypes.value[packageId.value] ? serviceTypes.value[packageId.value] : {},
     //    jsonServices: jsonServices,
     //    jsonServiceOffers: jsonServiceOffers,
     //    packges: packges,

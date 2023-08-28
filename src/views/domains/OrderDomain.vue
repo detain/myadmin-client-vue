@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
@@ -22,7 +23,7 @@ const suggestions = ref({});
 const packageInfo = ref({});
 const errors = ref({});
 const searchResponse = ref(null);
-const services = ref({});
+const services = ref<ServiceTypes>({});
 const tldServices = ref({});
 const domainFields = ref({});
 const domain = computed(() => {

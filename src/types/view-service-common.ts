@@ -20,6 +20,10 @@ export interface ServiceType {
     services_module: string;
 }
 
+export interface ServiceTypes {
+    [key: number]: ServiceType;
+}
+
 export interface BillingDetails {
     service_last_invoice_date: string;
     service_payment_status: string;

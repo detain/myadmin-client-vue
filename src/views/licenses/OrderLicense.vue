@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');
@@ -65,7 +66,7 @@ const getLicenses = ref({
 });
 const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
 const packageCosts = ref({});
-const serviceTypes = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 const serviceCategories = ref({});
 const packageId = ref(0);
 const validateResponse = ref({});

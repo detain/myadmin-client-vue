@@ -5,6 +5,7 @@ import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
 import { useRoute } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types';
 const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
@@ -17,7 +18,7 @@ const pkg = ref(10880);
 const validateResponse = ref({});
 const tos = ref(false);
 const packageCosts = ref({});
-const serviceTypes = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 
 async function editForm() {
     step.value = 'orderform';
