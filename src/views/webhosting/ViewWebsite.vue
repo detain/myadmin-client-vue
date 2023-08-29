@@ -52,12 +52,12 @@ function loadLink(newLink: string) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
 websiteStore.getById(id as string);
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 </script>
 
 <template>

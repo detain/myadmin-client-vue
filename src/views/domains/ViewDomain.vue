@@ -37,7 +37,7 @@ function loadLink(newLink: string) {
 watch(
     () => route.params.link as string,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 

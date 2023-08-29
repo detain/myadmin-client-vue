@@ -42,17 +42,17 @@ function loadLink(newLink: string) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
 mailStore.getById(id as string);
 
-const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
+const status = computed(() => serviceInfo.value.floating_ip_status); // compute your status value here
 const statusClass = computed(() => {
-    const statusValue = serviceInfo.value[status.value];
+    const statusValue = serviceInfo.value.floating_ip_status;
     if (statusValue === 'active') return 'small-box b-radius bg-success';
     if (statusValue === 'pending') return 'small-box b-radius bg-orange';
     if (statusValue === 'expired' || statusValue === 'canceled') return 'small-box b-radius bg-red';

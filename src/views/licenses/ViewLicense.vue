@@ -37,11 +37,11 @@ function loadLink(newLink: string) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
 licenseStore.getById(id as string);
 </script>
@@ -61,12 +61,12 @@ licenseStore.getById(id as string);
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
-                    <b>{{ serviceInfo[settings.TITLE_FIELD] }}</b>
+                    <b>{{ serviceInfo.license_ip }}</b>
                 </div>
             </div>
         </div>
         <div :class="`col-md-${serviceOverviewExtra ? '3' : '4'}`">
-            <div :class="['small-box', serviceInfo[`${settings.PREFIX}_status`] === 'active' ? 'bg-success' : '', serviceInfo[`${settings.PREFIX}_status`] === 'pending' ? 'bg-orange' : '', serviceInfo[`${settings.PREFIX}_status`] === 'expired' || serviceInfo[`${settings.PREFIX}_status`] === 'canceled' ? 'bg-red' : '']">
+            <div :class="['small-box', serviceInfo.license_status === 'active' ? 'bg-success' : '', serviceInfo.license_status === 'pending' ? 'bg-orange' : '', serviceInfo.license_status === 'expired' || serviceInfo.license_status === 'canceled' ? 'bg-red' : '']">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Billing</h3>
                     <p class="my-2 py-3">
