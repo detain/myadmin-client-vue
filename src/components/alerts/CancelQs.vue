@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your Rapid Deploy Server <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            document.getElementById('cancelForm')?.submit();
         },
     });
 });

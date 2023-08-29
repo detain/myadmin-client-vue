@@ -17,7 +17,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your domain <span class="text-2lg">${domain.value}</span>${addons.value.length ? ` and its addon <span class="text-2lg">Whois Privacy</span>` : ''}?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            document.getElementById('cancelForm')?.submit();
         },
     });
 });

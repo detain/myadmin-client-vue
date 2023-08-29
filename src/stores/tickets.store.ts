@@ -77,9 +77,20 @@ export const useTicketsStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/tickets');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
+                this.ima = response.ima;
+                this.custid = response.custid;
+                this.view = response.view;
+                this.currentPage = response.currentPage;
+                this.limit = response.limit;
+                this.sortcol = response.sortcol;
+                this.sortdir = response.sortdir;
+                this.rowsOffset = response.rowsOffset;
+                this.tickets = response.tickets;
+                this.pages = response.pages;
+                this.rowsTotal = response.rowsTotal;
+                this.inboxCount = response.inboxCount;
+                this.countArray = response.countArray;
+                this.viewText = response.viewText;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

@@ -171,7 +171,9 @@ interface AccountState {
         [key: string]: OauthProvider;
     }
   };
-  oauthadapters: any[];
+  oauthadapters: {
+    [key: string]: any;
+  };
   limits: AccountLimit[];
   gravatar: string;
   language: string;

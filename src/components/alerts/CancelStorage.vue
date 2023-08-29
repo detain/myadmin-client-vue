@@ -15,7 +15,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your storage <span class="text-2lg">${username.value}</span>?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            document.getElementById('cancelForm')?.submit();
         },
     });
 });

@@ -31,8 +31,8 @@ interface LicenseState {
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
-    serverOverviewExtra: string;
-    serviceType: serviceType;
+    serviceOverviewExtra: string;
+    serviceType: ServiceType;
 }
 
 export const useLicenseStore = defineStore({
