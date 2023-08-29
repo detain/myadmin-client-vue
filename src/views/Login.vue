@@ -136,7 +136,7 @@ onMounted(function () {
         animateValue(document.getElementById('count-v'));
         animateValue(document.getElementById('count-w'));
         animateValue(document.getElementById('count-s'));
-        //reloadCaptcha(0);
+        //reloadCaptcha();
         $('#captcha_alt_link, #captcha_main_link').click(function (e) {
             e.preventDefault();
             $('.captcha_main, .captcha_alt').toggle(500);
@@ -156,7 +156,7 @@ onMounted(function () {
             $('div.myadmin_login').toggle('500');
         });
         $('#btn-forgot').click(function (e) {
-            forgot_password(e);
+            forgot_password();
             return false;
         });
         $('input[type=password]').keyup(function () {
@@ -214,9 +214,9 @@ let signup_running = 0;
 function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
   const content = element.find('.modal-content');
-  const borderWidth = content.outerHeight() - content.innerHeight();
-  const dialogMargin = $(window).width() < 768 ? 20 : 60;
-  const contentHeight = $(window).height() - (dialogMargin + borderWidth);
+  const borderWidth = (content.outerHeight() as number) - (content.innerHeight() as number);
+  const dialogMargin = $(window).width() as number < 768 ? 20 : 60;
+  const contentHeight = $(window).height() as number - (dialogMargin + borderWidth);
   const headerHeight = element.find('.modal-header').outerHeight() || 0;
   const footerHeight = element.find('.modal-footer').outerHeight() || 0;
   const maxHeight = contentHeight - (headerHeight + footerHeight);
@@ -236,7 +236,7 @@ function toggleModal(modalID: string) {
     document.getElementById(modalID + '-backdrop')?.classList.toggle('flex');
 }
 
-function animateValue(obj, start = 0, end: null | number = null, duration = 1000) {
+function animateValue(obj: any, start = 0, end: null | number = null, duration = 1000) {
     if (obj) {
         // save starting text for later (and as a fallback text if JS not running and/or google)
       const textStarting = obj.innerHTML;
@@ -256,7 +256,7 @@ function animateValue(obj, start = 0, end: null | number = null, duration = 1000
       const run = () => {
         const now = new Date().getTime();
         const remaining = Math.max((endTime - now) / duration, 0);
-        const value = Math.round(end - remaining * range);
+        const value = Math.round(end as number - remaining * range);
         // replace numeric digits only in the original string
         obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
         if (value == end) {
@@ -269,11 +269,9 @@ function animateValue(obj, start = 0, end: null | number = null, duration = 1000
 }
 
 function login_handler() {
-  const username = $('#login_id').val();
+  const username = login.value;
   const twofactor = twoFactorAuthCode.value;
-  const password = $('#loginpassword').val();
-  const captcha = $('#captcha').val();
-  const emailconf = $('input[name=email_confirmation]').val();
+  const captcha = captchaCode.value;
   const remember = localStorage.rememberMe === 'true' ? 'yes' : 'no';
   if (username == '') {
         Swal.fire({
@@ -281,19 +279,19 @@ function login_handler() {
             title: 'Please enter a username',
             html: username,
         });
-    } else if (password == '') {
+    } else if (password.value == '') {
         Swal.fire({
             icon: 'warning',
             title: 'Please enter a password',
-            html: password,
+            html: password.value,
         });
     } else {
-      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
+      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password.value) + '&captcha=' + encodeURIComponent(captcha);
       if (twofactor) {
             loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
         }
-        if (emailconf != '') {
-            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailconf);
+        if (emailCode.value != '') {
+            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailCode.value);
         }
       const pathArray = window.location.pathname.split('/');
       let newPath = '/';
@@ -316,7 +314,7 @@ function login_handler() {
                         window.location = html.substring(4);
                     }
                 } else if (html.substring(0, 8) == '2fa_auth') {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     $('.twofactorauth').show(500);
                     $('.captcha_main').hide();
                     $('.captcha_alt').hide();
@@ -327,7 +325,7 @@ function login_handler() {
                         $('.popup #error-message').text('Invalid Code, Please Enter correct code.');
                     }
                 } else if (html.substring(0, 6) == 'verify') {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     if ($('.login_email_popup').hasClass('hidden')) {
                         $('.login_email_popup').removeClass('hidden');
                     } else {
@@ -337,7 +335,7 @@ function login_handler() {
                     $('.captcha_main_signup').hide();
                     $('.captcha_alt_signup').hide();
                 } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     $('.login_email_popup .error-box').show();
                     $('.login_email_popup #error-message').html(html);
                     $('.captcha_main_signup').hide();
@@ -347,8 +345,8 @@ function login_handler() {
                         gresponse.value = '';
                         gresponse2.value = '';
                     }
-                    reloadCaptcha(0);
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    reloadCaptcha();
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     // $("#message").html(html);
                     Swal.fire({
                         icon: 'warning',
@@ -368,6 +366,7 @@ function login_handler() {
             },
             beforeSend: function () {
                 $('.loginsubmit, .signupsubmit').attr('disabled', true);
+
             },
         });
     }
@@ -375,9 +374,9 @@ function login_handler() {
 }
 
 function forgot_password() {
-  const username = $("input[name='email']").val();
+  const username = $("input[name='email']").val() as string;
   const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  const captcha = $('#captchaFP').val();
+  const captcha = captchaCode.value;
   if (username == '') {
         $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
     } else if (regex.test(username) == false) {
@@ -393,7 +392,7 @@ function forgot_password() {
         $.ajax({
             type: 'POST',
             url: 'https://' + window.location.host + newPath + 'password.php',
-            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse) + '&captcha=' + encodeURIComponent(captcha),
+            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value) + '&captcha=' + encodeURIComponent(captcha),
             success: function (html) {
                 $('#forgot-password-message').html(html);
             },
@@ -450,7 +449,7 @@ function signup_handler() {
         });
     } else {
         if (email_conf == '') {
-            data_string = data_string + '&captcha=' + encodeURIComponent(captchaSignup) + '&g-recaptcha-response=' + encodeURIComponent(gresponse2.value);
+            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse2.value);
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -467,7 +466,7 @@ function signup_handler() {
                             window.location = html.substring(4);
                         }
                     } else if (html.substring(0, 6) == 'verify') {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         if ($('.email_popup').hasClass('hidden')) {
                             $('.email_popup').removeClass('hidden');
                         } else {
@@ -477,11 +476,11 @@ function signup_handler() {
                         $('.captcha_main_signup').hide();
                         $('.captcha_alt_signup').hide();
                     } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         $('.email_popup .error-box').show();
                         $('.email_popup #error-message').html(html);
                     } else {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         gresponse.value = '';
                         gresponse2.value = '';
                         Swal.fire({

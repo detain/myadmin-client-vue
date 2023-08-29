@@ -12,12 +12,11 @@ siteStore.setBreadcrums({ '': 'Home' });
 const baseUrl = siteStore.getBaseUrl();
 import $ from 'jquery';
 import jQuery from 'jquery';
-window.$ = window.jQuery = $;
 
-const copyToClipboard = (element) => {
+const copyToClipboard = (value: string) => {
     const $temp = document.createElement('input');
     document.body.appendChild($temp);
-    $temp.value = element.innerText;
+    $temp.value = value;
     $temp.select();
     document.execCommand('copy');
     document.body.removeChild($temp);
@@ -145,7 +144,7 @@ const state = reactive({
         },
     }),
 });
-const loadHome = async (state) => {
+const loadHome = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/home');
         console.log('api success');
@@ -173,7 +172,7 @@ const loadHome = async (state) => {
     }
 };
 
-loadHome(state);
+loadHome();
 </script>
 
 <template>
@@ -308,7 +307,7 @@ loadHome(state);
                                     <div class="d-flex aff-main">
                                         <div class="text-md aff-heading my-2">Earn {{ `$${state.affiliateAmount}` }} Per Sale:</div>
                                         <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" placeholder="Affiliate URL" :value="affiliateUrl" /></div>
-                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard">Copy to Clipboard</button>
+                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard(document.getElementById('affiliateinput').innerText)">Copy to Clipboard</button>
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
