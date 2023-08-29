@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '@/stores';
@@ -7,7 +7,8 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - PaymentSetup');
 siteStore.setTitle('Affiliate - PaymentSetup');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'PaymentSetup' });
-
+const payment_method = ref('');
+const affiliate_paypal = ref('');
 onMounted(() => {});
 </script>
 

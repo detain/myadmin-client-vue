@@ -9,6 +9,10 @@ siteStore.setPageHeading('Affiliate - Banners');
 siteStore.setTitle('Affiliate - Banners');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'Banners' });
 
+function copyLink(index) {
+
+}
+
 onMounted(() => {
     //$('#freetile').freetile({});
 });

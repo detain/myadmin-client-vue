@@ -76,7 +76,7 @@ onMounted(() => {
             $(this).removeAttr('class aria-controls aria-label rowspan colspan style');
           const title = $(this).text();
           $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
-            $('input', this).on('keyup change', function (value) {
+            $('input', this).on('keyup change', function (event, value) {
               const table_name = $(this).parents('table').attr('id');
               if (table_name === 'table_default' && table_default.column(i).search() !== value) {
                     table_default.column(i).search(value).draw();

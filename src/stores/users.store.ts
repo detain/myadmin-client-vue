@@ -27,16 +27,6 @@ export const useUsersStore = defineStore({
                 this.users = { error };
             }
         },
-        async getHome(): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            this.home = { loading: true };
-            try {
-                this.home = await fetchWrapper.get(baseUrl + '/home');
-            } catch (error: any) {
-                this.home = { error };
-            }
-        },
         async getById(id: number): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

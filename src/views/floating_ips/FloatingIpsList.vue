@@ -58,9 +58,9 @@ function crud_print(): void {
 function crud_export(exportType: string): void {
     console.log(exportType);
 }
-const loadMail = async (data) => {
+const loadFloatingIp = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/mail');
+        const response = await fetchWrapper.get(baseUrl + '/floating_ip');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -70,7 +70,7 @@ const loadMail = async (data) => {
     }
 };
 
-loadMail(data);
+loadFloatingIp();
 </script>
 
 <template>

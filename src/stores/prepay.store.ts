@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-interface PrepayRow {
+interface PrePayRow {
     prepay_amount: number;
     prepay_automatic_use: number;
     prepay_created: string;
@@ -34,7 +34,9 @@ interface PrePayHistoryRow {
     history_type: number;
 }
 
-interface PrepayState {
+interface PrePayState {
+    loading: boolean;
+    error: boolean;
     modules: {
         [key: string]: string;
     }
@@ -50,7 +52,7 @@ interface PrepayState {
     total_records: number;
     limit: number;
     page: number;
-    curr_page_records: 2;
+    curr_page_records: number;
     allInfo: {
         [key: string]: {
             module_name: string;
@@ -66,7 +68,7 @@ export const usePrePayStore = defineStore({
     state: (): PrePayState => ({
         loading: false,
         error: false,
-        custid: '',
+        custid: 0,
         ima: 'client',
         modules: {},
         prepays: {},
@@ -97,18 +99,17 @@ export const usePrePayStore = defineStore({
                 this.$reset();
                 let key, value;
                 console.log(response);
-                for (key in response) {
-                    value = response[key];
-                    if (typeof this[key] != 'undefined') {
-                        this[key] = value;
-                    } else if (typeof this[snakeToCamel(key)] != 'undefined') {
-                        this[snakeToCamel(key)] = value;
-                    } else if (typeof keyMap[key] != 'undefined') {
-                        this[keyMap[key]] = value;
-                    } else {
-                        console.log("no key '" + key + "' with value '" + value + "'");
-                    }
-                }
+                this.error = response.error;
+                this.custid = response.custid;
+                this.ima = response.ima;
+                this.modules = response.modules;
+                this.prepays = response.prepays;
+                this.total_pages = response.total_pages;
+                this.total_records = response.total_records;
+                this.limit = response.limit;
+                this.page = response.page;
+                this.curr_page_records = response.curr_page_records;
+                this.allInfo = response.allInfo;
             } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
@@ -134,12 +135,12 @@ export const usePrePayStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.accountList.find((x) => x.prepay_id === id).isDeleting = true;
+            //this.accountList.find((x) => x.prepay_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.accountList = this.accountList.filter((x) => x.prepay_id !== id);
+            //this.accountList = this.accountList.filter((x) => x.prepay_id !== id);
         },
     },
 });

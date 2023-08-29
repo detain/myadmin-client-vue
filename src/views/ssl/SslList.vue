@@ -30,7 +30,16 @@ const limitStatusMap: LimitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+
+interface SslListRow {
+    ssl_id      : number;
+    ssl_hostname: string;
+    services_name: string;
+    ssl_status  : string;
+    ssl_company: string;
+}
+
+const data = ref<SslListRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'ssl_id' }, { data: 'ssl_hostname' }, { data: 'ssl_expire_date' }, { data: 'cost' }, { data: 'ssl_status' }, { name: 'link', data: 'link', sortable: false }];
@@ -58,7 +67,7 @@ function crud_print(): void {
 function crud_export(exportType: string): void {
     console.log(exportType);
 }
-const loadSsl = async (data) => {
+const loadSsl = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/ssl');
         console.log('api success');
@@ -70,7 +79,7 @@ const loadSsl = async (data) => {
     }
 };
 
-loadSsl(data);
+loadSsl();
 </script>
 
 <template>
@@ -147,8 +156,8 @@ loadSsl(data);
                                         <tr>
                                             <th>Service ID</th>
                                             <th>Ssl Name</th>
-                                            <th>Ssl Expiration Date</th>
-                                            <th>Cost</th>
+                                            <th>Company</th>
+                                            <th>Package</th>
                                             <th>Billing Status</th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -159,8 +168,8 @@ loadSsl(data);
                                             <td>
                                                 <router-link :to="'ssl/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
                                             </td>
-                                            <td>{{ row.ssl_expire_date }}</td>
-                                            <td>{{ row.cost }}</td>
+                                            <td>{{ row.ssl_company }}</td>
+                                            <td>{{ row.services_name }}</td>
                                             <td>{{ row.ssl_status }}</td>
                                             <td>
                                                 <router-link :to="'ssl/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
