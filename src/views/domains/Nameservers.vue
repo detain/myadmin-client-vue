@@ -63,7 +63,7 @@ function handleSuggestedNameserver() {
 
 function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Delete nameserver</h3>',
         showCancelButton: true,
         showLoaderOnConfirm: true,

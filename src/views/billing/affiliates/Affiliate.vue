@@ -26,7 +26,7 @@ onMounted(() => {
       copyText.select();
         document.execCommand('copy');
         Swal.fire({
-            type: 'success',
+            icon: 'success',
             title: 'Copied to clipboard.',
         });
     });

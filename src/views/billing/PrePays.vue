@@ -39,7 +39,7 @@ function add_amount(prepay_id, module) {
 function delete_prepay(prepay_id) {
     $('#p_id').val(prepay_id);
     const { value: formValues } = Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Delete Prepay</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

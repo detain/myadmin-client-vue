@@ -259,7 +259,7 @@ function mounted() {
 function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
     Swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: '<h3>Delete CreditCard</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

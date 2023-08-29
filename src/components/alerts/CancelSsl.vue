@@ -7,7 +7,7 @@ const order_id = ref(''); // Assign the value of `$order_id` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel SSL</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

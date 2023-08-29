@@ -8,7 +8,7 @@ const domain = ref(''); // Assign the value of `$domain` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Whois Privacy Addon</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

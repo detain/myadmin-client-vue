@@ -7,7 +7,7 @@ const username = ref(''); // Assign the value of `$username` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel Mail</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

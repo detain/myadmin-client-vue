@@ -7,12 +7,12 @@ const addons = ref([]); // Assign the value of `$addons` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
-        title: '<h3>Cancel Rapid Deploy Server Service</h3> ',
-        showCancelButton: true,
+        icon               : 'error',
+        title              : '<h3>Cancel Rapid Deploy Server Service</h3> ',
+        showCancelButton   : true,
         showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Cancel it.',
-        html: `
+        confirmButtonText  : 'Yes, Cancel it.',
+        html               : `
       <p>Are you sure want to cancel your Rapid Deploy Server <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
     `,
         preConfirm: () => {

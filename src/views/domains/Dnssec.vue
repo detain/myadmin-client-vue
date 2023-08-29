@@ -17,7 +17,7 @@ const confirmDialog = () => {
     Swal.fire({
         title: 'Are you sure want to remove all DNSSEC records?',
         text: '',
-        type: 'warning',
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',

@@ -7,7 +7,7 @@ const addons = ref([]); // Assign the value of `$addons` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel VPS Service</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

@@ -6,7 +6,7 @@ const id = ref(''); // Assign the value of `$id` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'question',
+        icon: 'question',
         title: '<h3>Email EPP Code</h3>',
         showCancelButton: true,
         showLoaderOnConfirm: true,

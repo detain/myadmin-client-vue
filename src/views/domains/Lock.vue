@@ -7,7 +7,7 @@ const domain_lock_status = ref(''); // Assign the value of `$domain_lock_status`
 
 onMounted(() => {
     Swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: '<h3>Domain Lock/Unlock</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,

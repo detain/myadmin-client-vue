@@ -7,7 +7,7 @@ const ip = ref(''); // Assign the value of `$ip` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel License</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
