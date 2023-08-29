@@ -169,7 +169,7 @@ export const useServerStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id: number): Promise<void> {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {

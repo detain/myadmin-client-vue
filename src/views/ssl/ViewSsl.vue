@@ -42,7 +42,7 @@ watch(
 
 loadLink(route.params.link);
 
-sslStore.getById(id);
+sslStore.getById(id as string);
 </script>
 
 <template>

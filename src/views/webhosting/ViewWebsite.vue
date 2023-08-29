@@ -56,7 +56,7 @@ watch(
     }
 );
 
-websiteStore.getById(id);
+websiteStore.getById(id as string);
 loadLink(route.params.link);
 </script>
 

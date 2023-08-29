@@ -48,7 +48,7 @@ watch(
 
 loadLink(route.params.link);
 
-mailStore.getById(id);
+mailStore.getById(id as string);
 
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {
@@ -74,7 +74,7 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">{{ serviceInfo[settings.TITLE_FIELD] }}</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo[floating_ip_ip] }}</span>
             </div>
         </div>
         <div class="col-md-4">

@@ -43,7 +43,7 @@ watch(
 
 loadLink(route.params.link);
 
-mailStore.getById(id);
+mailStore.getById(id as string);
 
 const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
 const statusClass = computed(() => {

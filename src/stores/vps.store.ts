@@ -287,7 +287,7 @@ export const useVpsStore = defineStore({
             this.loading = false;
             return success;
         },
-        async getById(id: number): Promise<void> {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {

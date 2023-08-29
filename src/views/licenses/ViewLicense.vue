@@ -43,7 +43,7 @@ watch(
 
 loadLink(route.params.link);
 
-licenseStore.getById(id);
+licenseStore.getById(id as string);
 </script>
 
 <template>

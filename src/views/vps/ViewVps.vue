@@ -73,7 +73,7 @@ watch(
 );
 
 loadLink(route.params.link);
-vpsStore.getById(id);
+vpsStore.getById(id as string);
 
 function openCommentForm() {
     $('#commentForm').modal('show');

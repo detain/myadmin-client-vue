@@ -21,7 +21,7 @@ siteStore.addBreadcrum('/qs/' + id, 'View Qs ' + id);
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
 
-qsStore.getById(id);
+qsStore.getById(id as string);
 
 const isCollapsed = ref(false);
 

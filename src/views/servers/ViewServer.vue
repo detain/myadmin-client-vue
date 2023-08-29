@@ -43,7 +43,7 @@ watch(
 
 loadLink(route.params.link);
 
-serverStore.getById(id);
+serverStore.getById(id as string);
 
 const hasAssetVlanSwitchport = computed(() => {
     let ret = false;

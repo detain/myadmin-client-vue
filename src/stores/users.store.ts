@@ -27,7 +27,7 @@ export const useUsersStore = defineStore({
                 this.users = { error };
             }
         },
-        async getById(id: number): Promise<void> {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.user = { loading: true };

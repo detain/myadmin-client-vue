@@ -4,16 +4,16 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface BackupInfo {
-    backup_id: number;
-    backup_server: number;
+    backup_id      : number;
+    backup_server  : number;
     backup_username: string;
+    backup_status: string;
     backup_type: number;
     backup_currency: string;
     backup_order_date: string;
     backup_custid: number;
     backup_quota: number;
     backup_ip: string;
-    backup_status: string;
     backup_invoice: number;
     backup_coupon: number;
     backup_extra: string;
@@ -59,8 +59,8 @@ export const useBackupStore = defineStore({
         pkg: '',
         linkDisplay: false,
         serviceInfo: {
-            backup_id: 0,
-            backup_server: 0,
+            backup_id      : 0,
+            backup_server  : 0,
             backup_username: '',
             backup_type: 0,
             backup_currency: 'USD',
@@ -132,7 +132,7 @@ export const useBackupStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id: number): Promise<void> {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {

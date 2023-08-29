@@ -18,7 +18,7 @@ if (id) {
     // edit mode
     title = 'Edit User';
     ({ user } = storeToRefs(usersStore));
-    usersStore.getById(id);
+    usersStore.getById(id as string);
 }
 
 const schema = Yup.object().shape({
