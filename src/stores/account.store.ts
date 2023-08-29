@@ -32,7 +32,7 @@ interface AccountData {
   cc_exp           : string;
   cc_type          : string;
   cc_whitelist     : number;
-  ccs              : CCsData | {};
+  ccs              : CCsData;
   ccs_added        : number;
   disable_reinstall: number;
   disable_reset    : number;
@@ -85,26 +85,28 @@ interface OauthProvider {
 }
 
 interface CCsData {
-    [key: string]: CCData;
+    [key: number | string]: CCData;
 }
 
 interface CCData {
-    cc: string;
-    cc_exp: string;
-    country: string;
-    name: string;
-    address: string;
-    city: string;
-    maxmind: MaxMindResponse;
-    maxmind_riskscore: string;
-    state: string;
-    verified: boolean;
-    zip: string;
-    delete_text  ?: string;
-    edit_text    ?: string;
-    mask_cc ?: string;
-    verified_cc?: string;
-    verified_text?: string;
+    cc                : string;
+    cc_exp            : string;
+    country           : string;
+    name              : string;
+    address           : string;
+    city              : string;
+    maxmind           : MaxMindResponse;
+    maxmind_riskscore : string;
+    state             : string;
+    verified          : boolean;
+    zip               : string;
+    delete_text      ?: string;
+    edit_text        ?: string;
+    mask_cc          ?: string;
+    verified_cc      ?: string;
+    verified_text    ?: string;
+    unverified_text  ?: string;
+    v_step?: number;
 }
 
 interface FraudRecordResponse {
@@ -234,7 +236,7 @@ export const useAccountStore = defineStore({
             cc_exp                    : '',
             cc_type                   : '',
             cc_whitelist              : 0,
-            ccs                       : [],
+            ccs                       : {},
             ccs_added                 : 0,
             disable_reinstall         : 0,
             disable_reset             : 0,
