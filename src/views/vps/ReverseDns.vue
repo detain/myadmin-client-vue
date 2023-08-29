@@ -12,6 +12,10 @@ const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => { return props.id; });
 
+function submitForm() {
+
+}
+
 fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) => {
     console.log('Response:');
     console.log(response);

@@ -14,7 +14,7 @@ export interface ServiceType {
     services_cost: number;
     services_curency?: string;
     services_category: number;
-    services_buyable: boolean;
+    services_buyable: number | boolean;
     services_type: number;
     services_field1: string;
     services_field2: string;
@@ -51,7 +51,7 @@ export interface ExtraInfoTables {
     [key: string]: {
         rows: ExtraInfoTableRow[];
         title: string;
-        header?: string;
+        header?: string | string[];
         size?: number;
         type?: string;
     };

@@ -16,9 +16,7 @@ const hostname = ref('');
 const ip = ref('');
 const ima = ref('');
 onMounted(() => {});
-function submitForm(event) {
-    // Handle form submission
-    event.preventDefault();
+function submitForm() {
     // Perform logic for form submission
 }
 </script>
@@ -36,7 +34,7 @@ function submitForm(event) {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit="submitForm" class="change_rootpass">
+                    <form @submit.prevent="submitForm" class="change_rootpass">
                         <input type="hidden" name="link" value="change_webuzo_password" />
                         <div class="form-group mb-0">
                             <div class="form-group row">

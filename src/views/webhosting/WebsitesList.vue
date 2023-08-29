@@ -29,7 +29,12 @@ export interface webhostingRow {
 
 let dt;
 const limitStatus = ref('active');
-const limitStatusMap = {
+
+interface LimitStatusMap {
+    [key: string]: string[];
+}
+
+const limitStatusMap: LimitStatusMap = {
     active: ['active'],
     pending: ['pending', 'pending-setup', 'pend-approval'],
     expired: ['expired', 'canceled'],

@@ -106,7 +106,7 @@ export const useWebsiteStore = defineStore({
             website_last_update: '',
             website_max_sites: 300,
             website_order: 0,
-            website_partitions: null,
+            website_partitions: '',
             website_dns1: '',
             website_dns2: '',
         },

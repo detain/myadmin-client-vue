@@ -13,8 +13,7 @@ const module = computed(() => { return props.module; });
 const goBackLink = ref('');
 const hostname = ref('');
 
-function submitForm(event) {
-    event.preventDefault();
+function submitForm() {
     // Perform form submission logic
 }
 </script>
@@ -32,7 +31,7 @@ function submitForm(event) {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit="submitForm" class="change_rootpass">
+                    <form @submit.prevent="submitForm" class="change_rootpass">
                         <input type="hidden" name="link" value="changeRootPassword" />
                         <div class="form-group mb-0">
                             <div class="form-group row">

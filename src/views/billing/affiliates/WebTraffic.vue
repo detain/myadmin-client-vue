@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '@/stores';
@@ -7,7 +7,7 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - WebTraffic');
 siteStore.setTitle('Affiliate - WebTraffic');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'WebTraffic' });
-
+const table = ref('');
 onMounted(() => {});
 </script>
 

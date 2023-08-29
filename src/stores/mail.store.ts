@@ -33,7 +33,7 @@ interface MailState {
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
-    serviceType: serviceType;
+    serviceType: ServiceType;
     usage_count: number;
 }
 
