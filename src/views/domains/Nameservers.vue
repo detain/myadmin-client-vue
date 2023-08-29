@@ -11,13 +11,21 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref("{$id}");
-const suggested = ref('{$suggested}');
-const nameservers = ref('{$nameservers}');
-const registered_nameservers = ref('{$registered_nameservers}');
+const suggested = ref<string[]>([]);
+const nameservers = ref<Nameservers>([]);
+const registered_nameservers = ref<Nameservers>([]);
 const domain_id = ref('{$domain_id}');
 onMounted(() => {
     initializeToast();
 });
+
+type Nameservers = NameserverRow[];
+
+interface NameserverRow {
+    name     : string;
+    ipaddress: string;
+    can_delete: number;
+}
 
 function initializeToast() {
     const Toast = Swal.mixin({
@@ -27,7 +35,7 @@ function initializeToast() {
         timer: 5000,
     });
     if (suggested.value && suggested.value.length) {
-        document.getElementById('suggestedNameserver').addEventListener('click', () => {
+        document.getElementById('suggestedNameserver')?.addEventListener('click', () => {
             if (suggested.value) {
                 suggested.value.forEach((suggestion, idx) => {
                     document.getElementById(`nameserver${idx}`).value = suggestion;
@@ -49,7 +57,11 @@ function saveNameservers() {
     // Handle save nameservers form submission
 }
 
-function confirmDeleteDialog(domain_id, nameserver_id) {
+function handleSuggestedNameserver() {
+
+}
+
+function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) {
     Swal.fire({
         type: 'error',
         title: '<h3>Delete nameserver</h3>',
