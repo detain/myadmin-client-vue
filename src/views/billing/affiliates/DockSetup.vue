@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore, useSiteStore } from '@/stores';
@@ -8,8 +8,11 @@ siteStore.setPageHeading('Affiliate - Dock Setup');
 siteStore.setTitle('Affiliate - Dock Setup');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'Dock Setup' });
 
-const authStore = useAuthStore();
-const { user } = storeToRefs(authStore);
+const authStore                = useAuthStore();
+const { user }                 = storeToRefs(authStore);
+const referrerCoupon           = ref('');
+const affiliateDockTitle       = ref('');
+const affiliateDockDescription = ref('');
 
 onMounted(() => {});
 </script>

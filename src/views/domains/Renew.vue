@@ -11,7 +11,7 @@ const siteStore = useSiteStore();
 
 const renewCost = ref('{$formValues.renewCost}');
 const whoisCost = ref('{$formValues.whoisCost}');
-const whoisPrivacy = ref('{$whoisPrivacy}');
+const whoisPrivacy = ref<string | boolean>(false);
 const currencySymbol = ref('{$currencySymbol}');
 const formValues = ref({
     serviceInfo: {
@@ -25,12 +25,12 @@ const tldInfo = ref({
     tld_whois_privacy_available: '{$tldInfo.tld_whois_privacy_available}',
 });
 const renewCostFormatted = computed(() => {
-    return parseFloat(renewCost)
+    return parseFloat(renewCost.value)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
 const whoisCostFormatted = computed(() => {
-    return parseFloat(whoisCost)
+    return parseFloat(whoisCost.value)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });

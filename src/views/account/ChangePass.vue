@@ -24,7 +24,7 @@ const schema = Yup.object().shape({
 function changePassword() {
     const url = 'change_pass';
     const formData = new FormData();
-    formData.append('password2', password);
+    formData.append('password2', password.value);
     fetchWrapper
         .post(`${baseUrl}/account/password`, formData)
         .then((response) => {
@@ -49,7 +49,7 @@ function changePassword() {
                     </div>
                 </div>
                 <div class="card-body" :class="{ collapse: isCollapsed }">
-                    <form @submit.prevent="updatePassword">
+                    <form @submit.prevent="changePassword">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="currentpassword">Current Password</label>
                             <div class="col-md-9">
