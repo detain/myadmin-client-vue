@@ -30,6 +30,16 @@ const ttl = ref('');
 
 let dt;
 const limitStatus = ref('active');
+
+interface DnsRecordRow {
+    id     : number;
+    name   : string;
+    type   : string;
+    content: string;
+    prio   : string;
+    ttl    : string;
+}
+
 interface LimitStatusMap {
     [key: string]: string[];
 }
@@ -40,7 +50,7 @@ const limitStatusMap: LimitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<DnsRecordRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'id' }, { data: 'name' }, { data: 'content' }, { name: 'link', data: 'link', sortable: false }];

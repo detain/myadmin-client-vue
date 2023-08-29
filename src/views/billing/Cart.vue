@@ -431,6 +431,13 @@ function toggleCheckBox() {}
 function checkClass() {}
 function delete_invoice() {}
 
+function toggleCheckbox() {
+
+}
+function updateInfoSubmit() {
+
+}
+
 function onCardNumInput(e) {
     formatCardNum(e);
 }
@@ -683,7 +690,7 @@ accountStore.load();
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModel(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="paymentMethod === 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>

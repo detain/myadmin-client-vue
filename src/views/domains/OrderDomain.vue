@@ -9,28 +9,30 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
 siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
-const baseUrl = siteStore.getBaseUrl();
-const route = useRoute();
-const router = useRouter();
-const hostname = ref('');
-const ima = ref('client');
-const custid = ref('2773');
+const baseUrl          = siteStore.getBaseUrl();
+const route            = useRoute();
+const router           = useRouter();
+const hostname         = ref('');
+const ima              = ref('client');
+const custid           = ref('2773');
 const whoisPrivacyCost = ref(0);
-const domainResult = ref<DomainResult | null>(null);
-const domainType = ref('register');
-const lookups = ref<Lookups>({});
-const suggestions = ref<Suggestions>({});
-const packageInfo = ref<ServiceType>({});
-const errors = ref([]);
-const searchResponse = ref<SearchDomainResult | null>(null);
-const services = ref<ServiceTypes>({});
-const tldServices = ref({});
-const domainFields = ref({});
+const domainResult     = ref<DomainResult | null>(null);
+const domainType       = ref('register');
+const lookups          = ref<Lookups>({ items: {} });
+const suggestions      = ref<Suggestions>({ items: [] });
+const packageInfo      = ref<ServiceType | null>(null);
+const errors           = ref<string[]>([]);
+const searchResponse   = ref<SearchDomainResult | null>(null);
+const services         = ref<ServiceTypes>({});
+const tldServices      = ref({});
+const domainFields     = ref<DomainFields>({});
+const domainCost       = ref(0);
+const termsAgreed = ref(false);
 const domain = computed(() => {
-    return route.params.domain;
+    return route.params.domain as string;
 });
 const regType = computed(() => {
-    return route.params.regType;
+    return route.params.regType as string;
 });
 const display = ref('step1');
 
@@ -77,7 +79,7 @@ interface SearchDomainResult {
     domain_type: string;
     domain_result: DomainResult;
     errors: string[];
-    lookups: Lookupsr;
+    lookups: Lookups;
     lookups_old: LookupsOld;
     package_info: ServiceType;
     suggestions: Suggestions;
@@ -113,14 +115,38 @@ interface Suggestions {
 }
 
 interface SuggestionRow {
-    cost: string;
-    domain: string;
-    id: number;
-    'new': string;
-    renewal: string;
-    status: string;
-    tld: string;
-    transfer: string;
+    cost     : string;
+    domain   : string;
+    id       : number;
+    'new'    : string;
+    renewal  : string;
+    status   : string;
+    tld      : string;
+    transfer : string;
+    premium ?: string;
+}
+
+interface DomainFieldsResponse {
+    domainFields: DomainFields;
+}
+
+interface DomainFields {
+    [key: string]: DomainField;
+}
+
+interface DomainField {
+    validations : string[];
+    value       : string;
+    label       : string;
+    input       : string | DomainFieldInputArray;
+    required    : boolean;
+    tip        ?: string;
+}
+
+type DomainFieldInputArray = [string, DomainFieldSelectValues];
+
+interface DomainFieldSelectValues {
+    [key: string]: string;
 }
 
 function searchDomain() {
@@ -148,6 +174,10 @@ function searchDomain() {
         });
 }
 
+function clearInput() {
+
+}
+
 function getDomainFields() {
     Swal.fire({
         title: '',
@@ -160,13 +190,20 @@ function getDomainFields() {
             hostname: hostname.value,
             type: domainType.value,
         })
-        .then((response) => {
+        .then((response: DomainFieldsResponse) => {
             Swal.close();
-            searchResponse.value = response;
             console.log('PATCH Response:');
             console.log(response);
             domainFields.value = response.domainFields;
         });
+}
+
+function edit_form() {
+
+}
+
+function placeOrder() {
+
 }
 
 updateStep();
@@ -395,7 +432,7 @@ updateStep();
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ packageInfo.services_name }}</div>
+                            <div class="col-md-8">{{ packageInfo?.services_name }}</div>
                             <div class="col text-bold text-right">1 Year</div>
                         </div>
                         <div class="row mb-3">
@@ -447,7 +484,7 @@ updateStep();
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">
-                                                {{ packageInfo.services_name }}
+                                                {{ packageInfo?.services_name }}
                                             </div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="edit_form" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
