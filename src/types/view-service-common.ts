@@ -19,7 +19,7 @@ export interface ServiceType {
     services_field1   : string;
     services_field2   : string;
     services_module   : string;
-    services_hidden  ?: boolean;
+    services_hidden  ?: boolean | number;
     services_details?: string;
 }
 

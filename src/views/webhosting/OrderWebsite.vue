@@ -92,6 +92,14 @@ const totalCost = computed(() => {
     return total;
 });
 
+function updateCoupon() {
+
+}
+
+function updatePrice(event: Event, force: boolean = false) {
+
+}
+
 async function onSubmit() {
     try {
         Swal.fire({
@@ -206,7 +214,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
                                                 <template v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && (serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting')">
-                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === '11363' ? '4px solid #007bff' : '' }">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === 11363 ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
@@ -215,9 +223,9 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                                         <label :for="serviceData.services_name">
                                                                             {{ serviceData.services_name }}<br />
                                                                             <div class="text-muted font-italic mt-1 text-sm">
-                                                                                <template v-if="serviceData.services_category === '200'"> ( cPanel ) </template>
-                                                                                <template v-else-if="serviceData.services_category === '204'"> ( DirectAdmin ) </template>
-                                                                                <template v-else-if="serviceData.services_category === '202'"> ( Plesk ) </template>
+                                                                                <template v-if="serviceData.services_category == 200"> ( cPanel ) </template>
+                                                                                <template v-else-if="serviceData.services_category == 204"> ( DirectAdmin ) </template>
+                                                                                <template v-else-if="serviceData.services_category == 202"> ( Plesk ) </template>
                                                                             </div>
                                                                         </label>
                                                                     </div>
@@ -226,7 +234,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="service_details">
-                                                                <template v-if="serviceData.services_id === '11363'">
+                                                                <template v-if="serviceData.services_id == 11363">
                                                                     <div class="ribbon-wrapper">
                                                                         <div class="ribbon bg-primary">Popular</div>
                                                                     </div>
@@ -259,7 +267,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                         </div>
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
-                                                <div v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{ width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : '' }">
+                                                <div v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{ width: '48%', border: serviceData.services_id == 11363 ? '4px solid #007bff' : '' }">
                                                     <div class="card-header">
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
@@ -268,9 +276,9 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                                     <label :for="serviceData.services_name">
                                                                         {{ serviceData.services_name }}<br />
                                                                         <div class="text-muted font-italic mt-1 text-sm">
-                                                                            <span v-if="serviceData.services_category === '200'">( cPanel )</span>
-                                                                            <span v-else-if="serviceData.services_category === '204'">( DirectAdmin )</span>
-                                                                            <span v-else-if="serviceData.services_category === '202'">( Plesk )</span>
+                                                                            <span v-if="serviceData.services_category == 200">( cPanel )</span>
+                                                                            <span v-else-if="serviceData.services_category == 204">( DirectAdmin )</span>
+                                                                            <span v-else-if="serviceData.services_category == 202">( Plesk )</span>
                                                                         </div>
                                                                     </label>
                                                                 </div>
@@ -307,13 +315,13 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice(true)" />
+                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice($event, true)" />
                                                             <label :for="serviceData.services_name">
                                                                 {{ serviceData.services_name }}<br />
                                                                 <div class="text-muted font-italic mt-1 text-sm">
-                                                                    <template v-if="serviceData.services_category == '200'">( cPanel )</template>
-                                                                    <template v-else-if="serviceData.services_category == '204'">( DirectAdmin )</template>
-                                                                    <template v-else-if="serviceData.services_category == '202'">( Plesk )</template>
+                                                                    <template v-if="serviceData.services_category == 200">( cPanel )</template>
+                                                                    <template v-else-if="serviceData.services_category == 204">( DirectAdmin )</template>
+                                                                    <template v-else-if="serviceData.services_category == 202">( Plesk )</template>
                                                                 </div>
                                                             </label>
                                                         </div>
@@ -322,7 +330,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                             </div>
                                             <div class="card-body">
                                                 <div class="service_details">
-                                                    <template v-if="serviceData.services_id == '11363'">
+                                                    <template v-if="serviceData.services_id == 11363">
                                                         <div class="ribbon-wrapper">
                                                             <div class="ribbon bg-primary">Popular</div>
                                                         </div>
