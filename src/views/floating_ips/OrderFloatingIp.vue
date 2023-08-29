@@ -114,7 +114,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @input="update_coupon()" placeholder="Coupon Code" />
+                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @input="updateCoupon()" placeholder="Coupon Code" />
                                     <span class="input-group-addon" style="padding: 0"><img src="https://mystage.interserver.net/validate_coupon.php?module=vps" id="couponimg" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>

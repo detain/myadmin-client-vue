@@ -362,7 +362,7 @@ function onSubmitConfirmation() {
     }
 }
 
-function update_coupon() {
+function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         document.getElementById('couponimg').src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
@@ -880,7 +880,7 @@ try {
         vpsSliceKvmWCost.value = response.vpsSliceKvmWCost;
         currency.value = response.currency;
         currencySymbol.value = response.currencySymbol;
-        update_coupon();
+        updateCoupon();
         //update_vps_choices();
     });
 } catch (error: any) {

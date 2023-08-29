@@ -24,7 +24,7 @@ const addonsTableExists = computed(() => {
     return typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons);
 });
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
-
+const collapsed = ref(false);
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
@@ -73,11 +73,11 @@ function onSubmit() {
 
 }
 
-function openModal(type, cost, name, index) {
+function openModal(type: string, cost: string, name: string, index: number | string) {
 
 }
 
-function showModal(type, currencySymbol, cost, name, index) {
+function showModal(type: string, currencySymbol: string, cost: string, name: string, index: number | string) {
 
 }
 
@@ -90,10 +90,6 @@ function toggleCP() {
 }
 
 function openPopUp() {
-
-}
-
-function collapsed() {
 
 }
 
