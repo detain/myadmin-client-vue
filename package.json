@@ -10,6 +10,7 @@
         "ts:tsc": "npx vue-tsc --noEmit|tee buildts.txt",
         "ts:cycle": "mv buildts.txt buildts.txt.old",
         "ts:breakdown": "cat buildts.txt|grep \"^src\"|cut -d\"(\" -f1|uniq -c|sort -n",
+        "ts:breakdown:error": "cat buildts.txt|grep \"^src\"|cut -d: -f2-|sort|uniq -c|sort -n",
         "ts:count:old": "grep '^src/' buildts.txt.old |wc",
         "ts:count": "grep '^src/' buildts.txt |wc",
         "clean": "rm -rf dist dist_electron dev-dist",
