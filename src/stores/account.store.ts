@@ -100,6 +100,11 @@ interface CCData {
     state: string;
     verified: boolean;
     zip: string;
+    delete_text  ?: string;
+    edit_text    ?: string;
+    mask_cc ?: string;
+    verified_cc?: string;
+    verified_text?: string;
 }
 
 interface FraudRecordResponse {

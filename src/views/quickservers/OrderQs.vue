@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { useRoute, RouterLink } from 'vue-router';
+import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
@@ -17,14 +18,14 @@ const currencySymbol = ref('$');
 const custid = ref(2773);
 const ima = ref('client');
 const qsId = ref(0);
-const serverDetails = ref({});
+const serverDetails = ref<ServerDetails>({});
 const osVersion = ref('');
 const osDistro = ref('Ubuntu');
 const version = ref({});
 const rootpass = ref('');
 const hostname = ref('');
 const tos = ref(false);
-const osTemplates = ref({});
+const osTemplates = ref<Templates>({});
 const osVersionSelect = ref({});
 watch([osTemplates, osDistro, osVersion], ([newTemplates, newDistro, newVersion], [oldTemplates, oldDistro, oldVersion]) => {
     let entries, lastEntry, lastKey, lastValue;
@@ -107,13 +108,45 @@ async function onSubmitConfirmation() {
     }
 }
 
+interface ServerDetails {
+    [key: number]: {
+        cpu  : string;
+        ram  : string;
+        hd   : string;
+        cores: number;
+        cost: string;
+    }
+}
+
+interface Templates {
+    [key: string]: {
+        64: [string, string][];
+    }
+}
+
+interface Version {
+    [key: string]: string;
+}
+
+interface DistroSel {
+    [key: string]: string;
+}
+
+interface QsOrderResponse {
+    qs_id: number;
+    server_details: ServerDetails;
+    templates: Templates;
+    version: Version;
+    distro_sel: DistroSel;
+}
+
 Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
+fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
