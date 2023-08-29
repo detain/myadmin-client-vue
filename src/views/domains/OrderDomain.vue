@@ -179,7 +179,7 @@ updateStep();
             <form @submit.prevent="router.push(`/domains/order/${hostname}`)" class="search-domain">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
-                        <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus="autofocus" @focus="clearInput" autocomplete="off" style="border-radius: 5px" />
+                        <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus @focus="clearInput" autocomplete="off" style="border-radius: 5px" />
                     </div>
                 </div>
                 <div class="form-group row">

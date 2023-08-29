@@ -11,14 +11,15 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
 siteStore.setTitle('Order Floating IPs');
 siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs List', '/mail/order': 'Order Floating IPs' });
-const baseUrl = siteStore.getBaseUrl();
-const step = ref('orderform');
-const coupon = ref('');
-const pkg = ref(10880);
+const baseUrl          = siteStore.getBaseUrl();
+const step             = ref('orderform');
+const coupon           = ref('');
+const pkg              = ref(10880);
 const validateResponse = ref({});
-const tos = ref(false);
-const packageCosts = ref({});
-const serviceTypes = ref<ServiceTypes>({});
+const tos              = ref(false);
+const packageCosts     = ref({});
+const serviceTypes     = ref<ServiceTypes>({});
+const packageCost = ref(0);
 
 async function editForm() {
     step.value = 'orderform';

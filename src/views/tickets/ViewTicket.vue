@@ -23,7 +23,7 @@ function resetFile() {
 
 $(document).ready(function () {
     $('.ssh-toggle').hide();
-    $('.ssh-root').click(function (event) {
+    $('.ssh-root').click(function (event: Event) {
         event.preventDefault();
         $('.ssh-toggle').toggle();
     });
@@ -114,7 +114,7 @@ function bs_input_file() {
                                 <label for="status" class="col-sm-4 col-form-label">Status</label>
                                 <div class="col-sm-8">
                                     <select name="status" class="form-control form-control-sm select2" style="width: 100%">
-                                        <option value="4" selected="selected">Open</option>
+                                        <option value="4" selected>Open</option>
                                         <option value="5">On Hold</option>
                                         <option value="6">Close</option>
                                     </select>

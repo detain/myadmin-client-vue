@@ -52,7 +52,7 @@ const domainId = ref(0);
 const domain = ref('');
 const ip = ref('');
 
-async function addDomain(event) {
+async function addDomain(event: Event) {
     let response;
     try {
         fetchWrapper
@@ -79,8 +79,8 @@ async function addDomain(event) {
     }
 }
 
-async function deleteDomain(event) {
-    domainId.value = event.target.getAttribute('data-id');
+async function deleteDomain(event: Event) {
+    domainId.value = event.target?.getAttribute('data-id');
     console.log(domainId.value);
     Swal.fire({
         icon: 'error',

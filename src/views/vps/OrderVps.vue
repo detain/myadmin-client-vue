@@ -951,7 +951,7 @@ try {
                         <div class="col-sm-9">
                             <select class="form-control select2" v-model="osDistro">
                                 <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
-                                <option v-if="vpsPlatform != 'hyperv'" disabled="disabled">Windows (only on HyperV)</option>
+                                <option v-if="vpsPlatform != 'hyperv'" disabled>Windows (only on HyperV)</option>
                             </select>
                         </div>
                     </div>

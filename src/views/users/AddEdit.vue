@@ -13,7 +13,7 @@ const route = useRoute();
 const id = route.params.id;
 
 let title = 'Add User';
-let user = null;
+let user: any = null;
 if (id) {
     // edit mode
     title = 'Edit User';

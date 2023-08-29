@@ -158,7 +158,7 @@ prepayStore.load();
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-right" for="prep_id">Prepay ID</label>
                             <div class="col-sm-6 input-group">
-                                <input type="text" class="form-control form-control-sm" id="prep_id" name="prep_id" value="" disabled="disabled" />
+                                <input type="text" class="form-control form-control-sm" id="prep_id" name="prep_id" value="" disabled />
                             </div>
                         </div>
                         <div class="form-group row">

@@ -62,19 +62,19 @@ const filteredData = computed(() => {
 const recordId = ref(0);
 const recordRow = ref({});
 
-async function cancelEditRecord(event) {
+async function cancelEditRecord(event: Event) {
     recordId.value = 0;
 }
 
-async function cancelAddRecord(event) {
+async function cancelAddRecord(event: Event) {
     showingAddRecord.value = false;
 }
 
-async function showAddDnsRecord(event) {
+async function showAddDnsRecord(event: Event) {
     showingAddRecord.value = true;
 }
 
-async function editDnsRecord(event) {
+async function editDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper.post(baseUrl + '/dns/' + id, recordRow.value).then((response) => {
@@ -96,7 +96,7 @@ async function editDnsRecord(event) {
     }
 }
 
-async function addDnsRecord(event) {
+async function addDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper
@@ -126,8 +126,8 @@ async function addDnsRecord(event) {
     }
 }
 
-async function showEditRecord(event) {
-    recordId.value = event.target.getAttribute('data-id');
+async function showEditRecord(event: Event) {
+    recordId.value = event.target?.getAttribute('data-id');
   let row, rowIdx;
   for (rowIdx in data.value) {
         row = data.value[rowIdx];
@@ -137,8 +137,8 @@ async function showEditRecord(event) {
     }
 }
 
-async function deleteRecord(event) {
-  const record = event.target.getAttribute('data-id');
+async function deleteRecord(event: Event) {
+  const record = event.target?.getAttribute('data-id');
   console.log(record);
     Swal.fire({
         icon: 'error',
@@ -150,7 +150,7 @@ async function deleteRecord(event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id.value).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns(data, {});
@@ -263,7 +263,7 @@ loadDns(id, data);
                             <td>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="recordRow.name" />
-                                    <input class="form-control form-control-sm" value="" disabled="" readonly="" />
+                                    <input class="form-control form-control-sm" value="" disabled readonly />
                                 </div>
                             </td>
                             <td>

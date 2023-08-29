@@ -4,10 +4,11 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface DomainInfo {
-    domain_id: number;
+    domain_id      : number;
     domain_hostname: string;
     domain_username: string;
     domain_password: string;
+    domain_status: string;
     domain_type: number;
     domain_expire_date: string;
     domain_order_date: string;
@@ -82,10 +83,11 @@ export const useDomainStore = defineStore({
         pkg: '',
         linkDisplay: false,
         serviceInfo: {
-            domain_id: 0,
+            domain_id      : 0,
             domain_hostname: '',
             domain_username: '',
             domain_password: '',
+            domain_status: '',
             domain_type: 0,
             domain_expire_date: '',
             domain_order_date: '',
@@ -183,7 +185,7 @@ export const useDomainStore = defineStore({
             }
             this.loading = false;
         },
-        async getById(id: number): Promise<void> {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {

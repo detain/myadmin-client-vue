@@ -35,15 +35,15 @@ function loadLink(newLink: string) {
 }
 
 watch(
-    () => route.params.link,
+    () => route.params.link as string,
     (newLink) => {
         loadLink(newLink);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
-domainStore.getById(id);
+domainStore.getById(id as string);
 console.log('link:');
 console.log(link.value);
 </script>
