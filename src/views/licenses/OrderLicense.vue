@@ -65,10 +65,23 @@ const getLicenses = ref({
     },
 });
 const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
-const packageCosts = ref({});
-const serviceTypes = ref<ServiceTypes>({});
-const serviceCategories = ref({});
-const packageId = ref(0);
+const packageCosts    = ref({});
+const serviceTypes    = ref<ServiceTypes>({});
+
+
+interface ServiceCategory {
+    category_id: number;
+    category_name: string;
+    category_tag: string;
+    category_module: string;
+}
+
+interface ServiceCategories {
+    [key: string]: ServiceCategory;
+}
+
+const serviceCategories = ref<ServiceCategories>({});
+const packageId = ref<number | string>(0);
 const validateResponse = ref({});
 const getCatId = computed(() => {
     for (const catId in serviceCategories.value) {
@@ -81,7 +94,7 @@ const getCatId = computed(() => {
 const getServiceTypes = computed(() => {
     const catId = getCatId.value;
     console.log(catId);
-    let types = {};
+    let types: ServiceTypes = {};
     for (const serviceId in serviceTypes.value) {
         if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId))) {
             types[serviceId] = serviceTypes.value[serviceId];
@@ -98,7 +111,7 @@ function checkAvailability() {
 
 }
 
-function orderLicenseType(type) {
+function orderLicenseType(type: string) {
     catTag.value = type;
     packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
