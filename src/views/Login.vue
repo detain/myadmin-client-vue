@@ -116,6 +116,18 @@ function reloadCaptcha() {
     authStore.reloadCaptcha();
 }
 
+function toggleCaptchaMethod() {
+
+}
+
+function closePopup() {
+
+}
+
+function submitForgotPassForm() {
+
+}
+
 onMounted(function () {
     $(document).ready(function () {
         $('#tosModal').on('shown.bs.modal', function (e) {

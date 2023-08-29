@@ -378,10 +378,6 @@ function update_coupon() {
     }
 }
 
-function edit_form() {
-    document.getElementById('edit_order_form').submit();
-}
-
 function update_vps_choices() {
     if (curControl.value != jQuery('select[name=controlpanel]').val()) {
         curControl.value = jQuery('select[name=controlpanel]').val();

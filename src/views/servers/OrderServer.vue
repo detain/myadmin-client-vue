@@ -58,7 +58,15 @@ const fieldLabel = ref({
     },
 });
 
-function addDrive() {
+function addDrive(id: number, driveType: string, description: string, price: number) {
+
+}
+
+function updatePrice() {
+
+}
+
+function removeDrive(id: number, driveType: string) {
 
 }
 
