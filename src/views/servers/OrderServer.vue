@@ -15,12 +15,12 @@ const currencySymbol = ref('$');
 const custid = ref('2773');
 const ima = ref('client');
 const step = ref('order_form');
-const cpu = ref(34);
-const cpuLi = ref({});
-const configIds = ref({});
-const formValues = ref({});
-const configLi = ref({
-    cpuLi: {},
+const cpu = ref<number>(34);
+const cpu_li = ref<CpuLi>({});
+const configIds = ref<ConfigIds>({});
+const formValues = ref<FormValues>({});
+const configLi = ref<ConfigLi>({
+    cpu_li: {},
     memory_li: {},
     hd_li: {},
     bandwidth_li: {},
@@ -29,8 +29,8 @@ const configLi = ref({
     cp_li: {},
     raid_li: [],
 });
-const cpuCores = ref({});
-const fieldLabel = ref({
+const cpuCores = ref<CpuCores>({});
+const fieldLabel = ref<FieldLabel>({
     bandwidth: {
         name: 'Bandwidth',
         active: 1,
@@ -74,24 +74,219 @@ function onSubmitCpu() {
     serverOrderRequest(true);
 }
 
-function serverOrderRequest(addCpu) {
+interface ServerOrderResponse {
+    cpu: number;
+    cpu_li: CpuLi
+    cpu_cores: CpuCores;
+    config_ids: ConfigIds;
+    config_li: ConfigLi;
+    field_label: FieldLabel;
+    form_values: FormValues;
+}
+
+interface CpuCores {
+    [key: number]: {
+        [key: number]: CpuCoresRow;
+    }
+}
+
+interface ConfigIds {
+    [key: string]: number;
+}
+
+interface FormValues {
+    [key: string]: number;
+}
+
+interface FieldLabel {
+    [key: string]: {
+        name: string;
+        active?: number;
+    }
+}
+
+interface ConfigLi {
+    cpu_li: CpuLi;
+    memory_li: MemoryLi;
+    hd_li: HdLi;
+    bandwidth_li: BandwidthLi;
+    ips_li: IpsLi;
+    os_li: OsLi;
+    cp_li: CpLi;
+    raid_li: RaidLi;
+}
+
+interface CpuLi {
+    [key: number]: CpuRow;
+}
+
+interface MemoryLi {
+    [key: number]: {
+        [key: number]: MemoryRow;
+    }
+}
+
+interface HdLi {
+    [key: number]: {
+        [key: number]: HdRow;
+    }
+}
+
+interface BandwidthLi {
+    [key: number]: BandwidthRow;
+}
+
+interface IpsLi {
+    [key: number]: IpsRow;
+}
+
+interface OsLi {
+    [key: number]: OsRow;
+}
+
+interface CpLi {
+    [key: number]: CpRow;
+}
+
+type RaidLi = RaidRow[];
+
+interface CpuRow {
+    active               : string;
+    benchmark            : string;
+    cache                : string;
+    fsb                  : string;
+    hd_ids               : string;
+    id                   : string;
+    img                  : string;
+    location             : string;
+    long_desc            : string;
+    manu                 : string;
+    max_lff              : string;
+    max_nve              : string;
+    max_ram              : string;
+    max_sff              : string;
+    min_ram              : string;
+    monthly_price        : number;
+    monthly_price_display: string;
+    num_cores            : string;
+    num_cpus             : string;
+    price                : number;
+    price_display        : string;
+    short_desc           : string;
+    speed                : string;
+    type                 : string;
+    visible              : string;
+}
+
+interface CpuCoresRow extends CpuRow {
+    memory_det: MemoryRow;
+    hd_det    : HdRow;
+    monthly_fee: string;
+}
+
+interface MemoryRow {
+    id: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    short_desc: string;
+}
+
+interface HdRow {
+    drive_type: string;
+    hidden: string;
+    id: string;
+    img: string;
+    long_desc: string;
+    manu: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    price: string;
+    short_desc: string;
+    size: string;
+    type: string;
+}
+
+interface BandwidthRow {
+    active: string;
+    id: string;
+    img: string;
+    long_desc: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    price: string;
+    price_display: string;
+    qty: string;
+    short_desc: string;
+    type: string;
+}
+
+interface IpsRow {
+    id: string;
+    img: string;
+    long_desc: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    price: string;
+    price_display: string;
+    qty: string;
+    short_desc: string;
+}
+
+interface OsRow {
+    active: string;
+    id: string;
+    img: string;
+    long_desc: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    price: string;
+    price_display: string;
+    short_desc: string;
+}
+
+interface CpRow {
+    id: string;
+    img: string;
+    long_desc: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    os_type: string;
+    price: string;
+    price_display: string;
+    short_desc: string;
+    types: string;
+}
+
+interface RaidRow {
+    active: string;
+    id: string;
+    img: string;
+    long_desc: string;
+    monthly_price: string;
+    monthly_price_display: string;
+    price: string;
+    price_display: string;
+    short_desc: string;
+}
+
+function serverOrderRequest(addCpu: boolean) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response) => {
+    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response: ServerOrderResponse) => {
         Swal.close();
         console.log('Response:');
         console.log(response);
-        configIds.value = response.config_ids;
-        configLi.value = response.config_li;
-        cpuLi.value = response.cpu_li;
+        configIds.value  = response.config_ids;
+        configLi.value   = response.config_li;
+        cpu.value        = response.cpu;
+        cpu_li.value      = response.cpu_li;
+        cpuCores.value   = response.cpu_cores;
         fieldLabel.value = response.field_label;
-        cpuCores.value = response.cpu_cores;
         formValues.value = response.form_values;
-        cpu.value = response.cpu;
         if (addCpu) {
             step.value = 'step2';
         }
@@ -119,7 +314,7 @@ serverOrderRequest(false);
                             <div class="form-group row">
                                 <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-11">
-                                    <div v-for="(cpu_details, id) in cpuLi" :key="id" class="icheck-success d-inline w-100">
+                                    <div v-for="(cpu_details, id) in cpu_li" :key="id" class="icheck-success d-inline w-100">
                                         <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" v-model="cpu" />
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
@@ -164,13 +359,13 @@ serverOrderRequest(false);
                             <div id="package_period" class="col text-right">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8 cpu_name">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : 'CPU' }}</div>
-                            <div class="col cpu_cost text-right text-lg">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : '' }}</div>
+                            <div class="col-md-8 cpu_name">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : 'CPU' }}</div>
+                            <div class="col cpu_cost text-right text-lg">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : '' }}</div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col total_cost text-right text-lg">{{ cpuLi[cpu] ? cpuLi[cpu].monthly_price_display : '' }}</div>
+                            <div id="totalcost" class="col total_cost text-right text-lg">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -253,7 +448,7 @@ serverOrderRequest(false);
                             <input id="cpu" type="hidden" name="cpu" :value="formValues.cpu" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
-                                <template v-if="inputName !== 'cpuLi'">
+                                <template v-if="inputName !== 'cpu_li'">
                                     <template v-if="['memory_li', 'hd_li'].includes(inputName)">
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-right">
@@ -261,10 +456,10 @@ serverOrderRequest(false);
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
-                                                <template v-for="(details, id) in inputDetails[cpu]" :key="id">
+                                                <template v-for="(details, id, detIndex) in inputDetails[cpu]" :key="detIndex">
                                                     <div class="icheck-success d-inline w-100">
                                                         <input v-if="inputName === 'memory_li'" :id="'ds-' + inputName.replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] === id" @change="updatePrice()" />
-                                                        <label v-if="details.index === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
+                                                        <label v-if="detIndex === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
                                                                     <table class="table-sm table-bordered table">
@@ -288,7 +483,7 @@ serverOrderRequest(false);
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="details.index !== 0 || inputName !== 'hd_li'" :for="'ds-' + inputName.replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label v-if="detIndex !== 0 || inputName !== 'hd_li'" :for="'ds-' + inputName.replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
