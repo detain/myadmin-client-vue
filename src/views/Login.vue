@@ -252,7 +252,7 @@ function animateValue(obj, start = 0, end: null | number = null, duration = 1000
         // get current time and calculate desired end time
       const startTime = new Date().getTime();
       const endTime = startTime + duration;
-      let timer;
+      let timer: NodeJS.Timeout;
       const run = () => {
         const now = new Date().getTime();
         const remaining = Math.max((endTime - now) / duration, 0);
