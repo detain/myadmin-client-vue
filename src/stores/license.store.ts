@@ -31,7 +31,7 @@ interface LicenseState {
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
-    serviceOverviewExtra: string;
+    serviceOverviewExtra: any;
     serviceType: ServiceType;
 }
 

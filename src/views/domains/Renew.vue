@@ -102,7 +102,7 @@ function renewCalculate() {
                                 <div class="col-sm-9 input-group">
                                     <select name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl" id="whois_privacy" @change="renewCalculate">
                                         <option value="enable" :selected="whoisPrivacy === 'enabled'">Enable</option>
-                                        <option value="disable" :selected="!whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === '' || whoisPrivacy === false">Disable</option>
+                                        <option value="disable" :selected="whoisPrivacy === false || !whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === ''">Disable</option>
                                     </select>
                                 </div>
                             </div>

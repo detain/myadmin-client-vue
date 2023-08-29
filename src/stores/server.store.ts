@@ -42,6 +42,13 @@ interface ServerInfo {
     server_extra: string;
 }
 
+interface NetworkInfo {
+    vlans: any;
+    vlans6: any;
+    assets: any;
+    switchports: any;
+}
+
 interface ServerState {
     serverList: ServerInfo[];
     serviceInfo: ServerInfo;
@@ -57,12 +64,7 @@ interface ServerState {
     extraInfoTables: ExtraInfoTables;
     ipmiAuth: boolean;
     ipmiLease: any;
-    networkInfo: {
-        vlans: any;
-        vlans6: any;
-        assets: any;
-        switchports: any;
-    },
+    networkInfo: NetworkInfo;
     locations: any;
 }
 
@@ -141,7 +143,7 @@ export const useServerStore = defineStore({
         ipmiLease: false,
         networkInfo: {
             vlans: {},
-            vlans6: [],
+            vlans6: {},
             assets: {},
             switchports: {},
         },

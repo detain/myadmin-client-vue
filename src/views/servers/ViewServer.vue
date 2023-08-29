@@ -70,20 +70,20 @@ const switchports = computed(() => {
     return networkInfo.value.switchports ? networkInfo.value.switchports : {};
 });
 
-function nl2br(text) {
+function nl2br(text: string) {
     return text.replace(/\n/g, '<br>');
 }
 
-function locationName(assetId) {
+function locationName(assetId: number | string) {
     return locations.value[networkInfo.value.assets[assetId].datacenter].location_name;
 }
 
 const ipv6VlansNetworks = computed(() => {
-    if (!networkInfo.vlans6 || networkInfo.vlans6.length === 0) {
+    if (!networkInfo.value.vlans6 || networkInfo.value.vlans6.length === 0) {
         return '<i>Null</i>';
     }
 
-    return networkInfo.vlans6.map((ipv6) => ipv6.vlans6Networks).join(',');
+    return networkInfo.value.vlans6.map((ipv6: any) => ipv6.vlans6Networks).join(',');
 });
 </script>
 
@@ -93,13 +93,13 @@ const ipv6VlansNetworks = computed(() => {
             <div class="small-box bg-secondary">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Package</h3>
-                    <p class="m-0">{{ pkg.value || 'Dedicated Server' }}</p>
+                    <p class="m-0">Dedicated Server</p>
                     <p>
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date || 'Un-billed' }}</b>
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <div class="small-box-footer text-bold">{{ serviceInfo[settings?.TITLE_FIELD] }}</div>
+                <div class="small-box-footer text-bold">{{ serviceInfo.server_hostname }}</div>
             </div>
         </div>
         <div class="col-md-4">
@@ -169,7 +169,7 @@ const ipv6VlansNetworks = computed(() => {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }}
+                                        Comment: {{ serviceInfo.server_comment ? serviceInfo.server_comment : 'none' }}
                                         <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer"><i class="fa fa-pencil my-2 text-sm"></i></span>
                                     </h5>
                                 </span>

@@ -92,7 +92,7 @@ licenseStore.getById(id as string);
                             <b>{{ serviceInfo.license_hostname }}</b>
                         </p>
                     </template>
-                    <template v-if="serviceExtra && serviceType.services_category === '507'">
+                    <template v-if="serviceExtra && serviceType.services_category === 507">
                         <p>
                             Activation Key: <b>{{ serviceExtra[1] }}</b>
                         </p>
@@ -153,7 +153,7 @@ licenseStore.getById(id as string);
                     <div class="card-body">
                         <table class="table-bordered table">
                             <tbody>
-                                <tr v-for="itemvalue in extraInfoTables.ip_info.rows" :key="itemvalue">
+                                <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
                                     <td>{{ itemvalue.desc }}</td>
                                     <td class="text-success">{{ itemvalue.value }}</td>
                                 </tr>

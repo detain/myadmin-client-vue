@@ -9,17 +9,18 @@ export interface ClientLink {
 }
 
 export interface ServiceType {
-    services_id: number;
-    services_name: string;
-    services_cost: number;
-    services_curency?: string;
-    services_category: number;
-    services_buyable: number | boolean;
-    services_type: number;
-    services_field1: string;
-    services_field2: string;
-    services_module: string;
-    services_hidden?: boolean;
+    services_id       : number;
+    services_name     : string;
+    services_cost     : number;
+    services_curency ?: string;
+    services_category : number;
+    services_buyable  : number | boolean;
+    services_type     : number;
+    services_field1   : string;
+    services_field2   : string;
+    services_module   : string;
+    services_hidden  ?: boolean;
+    services_details?: string;
 }
 
 export interface ServiceTypes {
