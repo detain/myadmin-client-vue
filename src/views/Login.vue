@@ -43,6 +43,18 @@ const loginSchema = Yup.object().shape({
     passwd: Yup.string().required('Password is required'),
 });
 
+interface LoginParams {
+    login: string;
+    passwd: string;
+    remember: string;
+    tfa?: string;
+    'g-recaptcha-response'?: string;
+}
+
+interface SignupParams extends LoginParams {
+    tos?: boolean;
+}
+
 async function onLoginSubmit() {
   const loading = Swal.fire({
     title: 'Please wait',
@@ -53,7 +65,7 @@ async function onLoginSubmit() {
     allowEscapeKey: false,
   });
   const authStore = useAuthStore();
-    const loginParams = {
+    let loginParams: LoginParams = {
         login: login.value,
         passwd: password.value,
         remember: remember.value,
@@ -81,7 +93,7 @@ async function onSignupSubmit() {
     allowEscapeKey: false,
   });
   const authStore = useAuthStore();
-    const signupParams = {
+    let signupParams: SignupParams = {
         login: login.value,
         passwd: password.value,
         tos: tos.value,
