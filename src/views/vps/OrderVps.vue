@@ -29,36 +29,36 @@ const controlpanel = ref({
     da: 'DirectAdmin',
     cpanel: 'CPanel',
 });
-const locationNames = ref({
+const locationNames = ref<LocationNames>({
     1: 'New Jersey',
     2: 'Los Angeles',
     3: 'Equinix NY4',
 });
-const locationStock = ref({
+const locationStock = ref<LocationStock>({
     1: { kvm: true, kvmstorage: true, hyperv: true },
     2: { kvm: true, kvmstorage: false, hyperv: true },
     3: { kvm: false, kvmstorage: false, hyperv: false },
 });
-const platformPackages = ref({
+const platformPackages = ref<PlatformPackages>({
     kvm: 32,
     kvmstorage: 57,
     hyperv: 54,
 });
-const platformNames = ref({
+const platformNames = ref<PlatformNames>({
     kvm: 'KVM',
     kvmstorage: 'KVM Storage',
     hyperv: 'HyperV',
 });
-const packageCosts = ref({
+const packageCosts = ref<PackageCosts>({
     32: 10,
     54: 10,
     57: 6,
 });
-const osNames = ref({
+const osNames = ref<OsNames>({
     windows: 'Windows',
     almalinux: 'Almalinux',
 });
-const osTemplates = ref({
+const osTemplates = ref<Templates>({
     hyperv: {
         windows: { Windows2019Standard: '2019 Standard', Windows2022: '2022' },
     },
@@ -92,7 +92,7 @@ const vpsSliceKvmWCost = ref(0);
 const totalCostDisplay = ref(0.0);
 const ipv6_only_discount = ref(1);
 const controlCost = ref(0);
-const couponInfo = ref(0);
+const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const step = ref('orderform');
 // validation response extra fields
@@ -108,7 +108,7 @@ const repeatSliceCost = ref(0);
 const serviceCost = ref(0);
 const sliceCost = ref(0);
 // form fields
-const serviceType = ref(null);
+const serviceType = ref(0);
 const slices = ref(1);
 const vpsPlatform = ref('kvm');
 const location = ref(1);
@@ -121,6 +121,53 @@ const rootpass = ref('');
 const curSsd = ref(0);
 const curControl = ref('');
 const period = ref(1);
+
+interface CouponInfo {
+    applies?: number;
+    type?: number;
+    amount?: number;
+    onetime?: number;
+    usable?: number;
+    used?: number;
+    amounts?: {
+        [key: string]: number;
+    }
+}
+
+interface VpsOrderResponse {
+    bwSlice: number;
+    bwTotal: number;
+    bwType: number;
+    cpanelCost: number;
+    currency: number;
+    currencySymbol: number;
+    daCost: number;
+    hdSlice: number;
+    hdStorageSlice: number;
+    locationNames: LocationNames;
+    locationStock: LocationStock;
+    maxSlices: number;
+    osNames: OsNames;
+    packageCosts: PackageCosts;
+    platformNames: PlatformNames;
+    platformPackages: PlatformPackages;
+    ramSlice: number;
+    serviceTypes: ServiceTypes;
+    templates: Templates;
+    vpsNyCost: number;
+    vpsSliceHypervCost: number;
+    vpsSliceKvmLCost: number;
+    vpsSliceKvmStorageCost: number;
+    vpsSliceKvmWCost: number;
+    vpsSliceLxcCost: number;
+    vpsSliceOvzCost: number;
+    vpsSliceSsdOvzCost: number;
+    vpsSliceSsdVirtuozzoCost: number;
+    vpsSliceVirtuozzoCost: number;
+    vpsSliceVmwareCost: number;
+    vpsSliceXenCost: number;
+}
+
 const slicesRange = computed(() => {
     const arr = [];
     for (let i = 1; i <= maxSlices.value; i++) {
@@ -178,6 +225,40 @@ const getBandwidth = computed(() => {
     return bandwidthamount + slice_amount;
 });
 
+interface PlatformPackages {
+    [key: string]: number;
+}
+
+interface PlatformNames {
+    [key: string]: string;
+}
+
+interface PackageCosts {
+    [key: number]: number;
+}
+
+interface LocationStock {
+    [key: number]: {
+        [key: string]: boolean;
+    }
+}
+
+interface LocationNames {
+    [key: number]: string;
+}
+
+interface OsNames {
+    [key: string]: string;
+}
+
+interface Templates {
+    [key: string]: {
+        [key: string]: {
+            [key: string]: string;
+        }
+    }
+}
+
 function onSubmit() {
     try {
         fetchWrapper
@@ -229,7 +310,7 @@ function onSubmit() {
                 step.value = 'order_confirm';
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('vps order validation failed');
         console.log(error);
         Swal.fire({
@@ -271,7 +352,7 @@ function onSubmitConfirmation() {
                 });
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('vps order  failed');
         console.log(error);
         Swal.fire({
@@ -285,7 +366,7 @@ function update_coupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         document.getElementById('couponimg').src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
-        $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json) {
+        $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
@@ -770,7 +851,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/order').then((response) => {
+    fetchWrapper.get(baseUrl + '/vps/order').then((response: VpsOrderResponse) => {
         maxSlices.value = response.maxSlices;
         hdStorageSlice.value = response.hdStorageSlice;
         cpanelCost.value = response.cpanelCost;
@@ -806,7 +887,7 @@ try {
         update_coupon();
         //update_vps_choices();
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }
