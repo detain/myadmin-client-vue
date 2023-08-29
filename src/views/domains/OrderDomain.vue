@@ -16,13 +16,13 @@ const hostname = ref('');
 const ima = ref('client');
 const custid = ref('2773');
 const whoisPrivacyCost = ref(0);
-const domainResult = ref(null);
+const domainResult = ref<DomainResult | null>(null);
 const domainType = ref('register');
-const lookups = ref({});
-const suggestions = ref({});
-const packageInfo = ref({});
-const errors = ref({});
-const searchResponse = ref(null);
+const lookups = ref<Lookups>({});
+const suggestions = ref<Suggestions>({});
+const packageInfo = ref<ServiceType>({});
+const errors = ref([]);
+const searchResponse = ref<SearchDomainResult | null>(null);
 const services = ref<ServiceTypes>({});
 const tldServices = ref({});
 const domainFields = ref({});
@@ -70,6 +70,59 @@ fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     tldServices.value = response.tldServices;
 });
 
+interface SearchDomainResult {
+    'continue': boolean;
+    currencySymbol: string;
+    domain: string;
+    domain_type: string;
+    domain_result: DomainResult;
+    errors: string[];
+    lookups: Lookupsr;
+    lookups_old: LookupsOld;
+    package_info: ServiceType;
+    suggestions: Suggestions;
+}
+
+interface DomainResult extends SuggestionRow {
+    raw: {
+        cost: number;
+        'new': number;
+        renewal: number;
+        transfer: number;
+    }
+}
+
+interface Lookups {
+    items: {
+        [key: number]: SuggestionRow;
+    }
+}
+
+interface LookupsOld {
+    count: number;
+    is_success: number;
+    items: {
+        [key: number]: SuggestionRow;
+    }
+    response_code: number;
+    response_text: string;
+}
+
+interface Suggestions {
+    items: SuggestionRow[];
+}
+
+interface SuggestionRow {
+    cost: string;
+    domain: string;
+    id: number;
+    'new': string;
+    renewal: string;
+    status: string;
+    tld: string;
+    transfer: string;
+}
+
 function searchDomain() {
     let loading = Swal.fire({
         title: '',
@@ -81,7 +134,7 @@ function searchDomain() {
         .put(baseUrl + '/domains/order', {
             hostname: hostname.value,
         })
-        .then((response) => {
+        .then((response: SearchDomainResult) => {
             loading.close();
             searchResponse.value = response;
             console.log('PUT Response:');
