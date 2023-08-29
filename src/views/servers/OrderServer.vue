@@ -67,14 +67,14 @@ function onSubmitCpu() {
 }
 
 function serverOrderRequest(addCpu) {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
     fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response) => {
-        loading.close();
+        Swal.close();
         console.log('Response:');
         console.log(response);
         configIds.value = response.config_ids;

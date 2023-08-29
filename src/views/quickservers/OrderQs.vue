@@ -77,7 +77,7 @@ async function onSubmit() {
 }
 
 async function onSubmitConfirmation() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -93,7 +93,7 @@ async function onSubmitConfirmation() {
             tos: tos.value,
         })
         .then((response) => {
-            loading.close();
+            Swal.close();
             console.log('qs order placed');
             console.log(response);
             if (response['success'] == true) {
@@ -101,20 +101,20 @@ async function onSubmitConfirmation() {
             }
         });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('qs order place failed');
         console.log(error);
     }
 }
 
-let loading = Swal.fire({
+Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
 fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
-    loading.close();
+    Swal.close();
     console.log('Response:');
     console.log(response);
     serverDetails.value = response.server_details;

@@ -124,7 +124,7 @@ interface SuggestionRow {
 }
 
 function searchDomain() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
         allowOutsideClick: false,
@@ -135,7 +135,7 @@ function searchDomain() {
             hostname: hostname.value,
         })
         .then((response: SearchDomainResult) => {
-            loading.close();
+            Swal.close();
             searchResponse.value = response;
             console.log('PUT Response:');
             console.log(response);
@@ -149,7 +149,7 @@ function searchDomain() {
 }
 
 function getDomainFields() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
         allowOutsideClick: false,
@@ -161,7 +161,7 @@ function getDomainFields() {
             type: domainType.value,
         })
         .then((response) => {
-            loading.close();
+            Swal.close();
             searchResponse.value = response;
             console.log('PATCH Response:');
             console.log(response);

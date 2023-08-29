@@ -94,7 +94,7 @@ const totalCost = computed(() => {
 
 async function onSubmit() {
     try {
-        let loading = Swal.fire({
+        Swal.fire({
             title: '',
             html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
             allowOutsideClick: false,
@@ -110,7 +110,7 @@ async function onSubmit() {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 step.value = 'order_confirm';
                 console.log('website order validated');
                 console.log(response);
@@ -155,14 +155,14 @@ async function searchDomain() {
     });
 }
 
-let loading = Swal.fire({
+Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
 fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
-    loading.close();
+    Swal.close();
     console.log('Response:');
     console.log(response);
     step.value = response.step;

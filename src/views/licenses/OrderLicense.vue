@@ -111,7 +111,7 @@ function submitForm() {
 }
 
 function submitLicenseForm() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -128,7 +128,7 @@ function submitLicenseForm() {
                 'package': packageId.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
@@ -136,7 +136,7 @@ function submitLicenseForm() {
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('caught error:');
         console.log(error);
     }

@@ -26,7 +26,7 @@ async function editForm() {
 }
 
 async function onSubmit(values) {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
         allowOutsideClick: false,
@@ -40,7 +40,7 @@ async function onSubmit(values) {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 validateResponse.value = response;
                 console.log('Response:');
                 console.log(response);
@@ -50,14 +50,14 @@ async function onSubmit(values) {
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('error:');
         console.log(error);
     }
 }
 
 async function placeOrder(values) {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -71,7 +71,7 @@ async function placeOrder(values) {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
@@ -79,7 +79,7 @@ async function placeOrder(values) {
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('error:');
         console.log(error);
     }
