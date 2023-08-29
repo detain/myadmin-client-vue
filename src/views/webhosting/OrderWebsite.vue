@@ -12,8 +12,44 @@ siteStore.setTitle('Order Website');
 siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface Package extends ServiceType {
+    services_html: string;
+    services_description: string;
+    services_moreinfo_url: string;
+}
+
+interface Packages {
+    [key: number]: Package;
+}
+
+interface ServiceOffers {
+    [key: number]: ServiceOffer[];
+}
+
+interface PackageIds {
+    [key: number]: string;
+}
+
+interface JsonServices {
+    [key: number]: string;
+}
+
+interface ServiceOffer {
+    service_offer_id: number;
+    service_id: number;
+    intro_cost: number;
+    renewal_cost: number;
+    intro_frequency: number;
+    renewal_frequency: number;
+    allow_coupon: number;
+    service_module: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
+}
+
 const step = ref('order_form');
-const packageId = ref('');
+const packageId = ref(11363);
 const period = ref(1);
 const serviceOfferId = ref(0);
 const enableDomainRegistering = ref({});
@@ -23,12 +59,11 @@ const currencySymbol = ref('$');
 const hostname = ref('');
 const rootpass = ref('');
 const coupon = ref('');
-const serviceTypes = ref<ServiceTypes>({});
-const serviceOffers = ref({});
-const packges = ref({});
-const packages = ref({});
-const jsonServices = ref({});
-const jsonServiceOffers = ref({});
+const serviceTypes = ref<Packages>({});
+const serviceOffers = ref<ServiceOffers>({});
+const packages = ref<Packages>({});
+const jsonServices = ref<JsonServices>({});
+const jsonServiceOffers = ref<ServiceOffers>({});
 const formData = reactive({
     step: step,
     packageId: packageId,
@@ -131,19 +166,20 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
     console.log('Response:');
     console.log(response);
     step.value = response.step;
-    packageId.value = response.website;
+    if (response.website == '') {
+        packageId.value = 11363;
+    } else {
+        packageId.value = response.website;
+    }
     period.value = response.period;
     serviceOfferId.value = response.serviceOfferId;
     serviceTypes.value = response.serviceTypes;
     serviceOffers.value = response.serviceOffers;
-    packges.value = response.packges;
-    packages.value = response.packages;
+    packages.value = response.packges;
+    //packages.value = response.packages;
     enableDomainRegistering.value = response.enableDomainRegistering;
     jsonServices.value = response.jsonServices;
     jsonServiceOffers.value = response.jsonServiceOffers;
-    if (packageId.value == '') {
-        packageId.value = 11363;
-    }
 });
 </script>
 

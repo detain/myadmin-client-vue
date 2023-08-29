@@ -12,7 +12,7 @@ siteStore.setPageHeading('Cart');
 siteStore.setTitle('Cart');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
 const baseUrl = siteStore.getBaseUrl();
-const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
+const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
 const invoices = ref([]);
 const modules = ref({});
@@ -55,9 +55,9 @@ function mounted() {
     }
 }
 
-function deleteCardModal(cc_id = '0') {
+function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
-    const { value: formValues } = Swal.fire({
+    Swal.fire({
         type: 'warning',
         title: '<h3>Delete CreditCard</h3> ',
         showCancelButton: true,

@@ -12,12 +12,14 @@ export interface ServiceType {
     services_id: number;
     services_name: string;
     services_cost: number;
+    services_curency?: string;
     services_category: number;
     services_buyable: boolean;
     services_type: number;
     services_field1: string;
     services_field2: string;
     services_module: string;
+    services_hidden?: boolean;
 }
 
 export interface ServiceTypes {
