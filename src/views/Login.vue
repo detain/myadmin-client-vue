@@ -268,13 +268,12 @@ function animateValue(obj, start = 0, end: null | number = null, duration = 1000
     }
 }
 
-function login_handler(e) {
+function login_handler() {
   const username = $('#login_id').val();
   const twofactor = twoFactorAuthCode.value;
   const password = $('#loginpassword').val();
   const captcha = $('#captcha').val();
   const emailconf = $('input[name=email_confirmation]').val();
-  e.preventDefault();
   const remember = localStorage.rememberMe === 'true' ? 'yes' : 'no';
   if (username == '') {
         Swal.fire({
@@ -375,8 +374,7 @@ function login_handler(e) {
     return false;
 }
 
-function forgot_password(e) {
-    e.preventDefault();
+function forgot_password() {
   const username = $("input[name='email']").val();
   const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   const captcha = $('#captchaFP').val();
@@ -410,8 +408,7 @@ function forgot_password(e) {
     }
 }
 
-function signup_handler(e) {
-    e.preventDefault();
+function signup_handler() {
   Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',

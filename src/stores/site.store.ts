@@ -51,8 +51,12 @@ interface ServiceCategory {
     category_module: string;
 }
 
+interface BreadCrums {
+    [key: string]: string;
+}
+
 interface SiteState {
-    breadcrums: any;
+    breadcrums: BreadCrums;
     page_heading: string;
     sidemenu: string;
     title: string;
@@ -110,7 +114,7 @@ export const useSiteStore = defineStore({
                     console.log(response);
                 });
         },
-        setBreadcrums(value: any) {
+        setBreadcrums(value: BreadCrums) {
             this.breadcrums = value;
         },
         addBreadcrum(key: string, value: string) {
