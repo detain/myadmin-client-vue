@@ -36,11 +36,11 @@ function loadLink(newLink: string) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
 sslStore.getById(id as string);
 </script>
