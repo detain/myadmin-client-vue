@@ -9,12 +9,11 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-
+const dnssec_records = ref([]);
 //const id = ref('{$id}');
 const domainId = ref('{$domain_id}');
 
-const confirmDialog = (e) => {
-    e.preventDefault();
+const confirmDialog = () => {
     Swal.fire({
         title: 'Are you sure want to remove all DNSSEC records?',
         text: '',
@@ -25,21 +24,37 @@ const confirmDialog = (e) => {
         confirmButtonText: 'Yes, remove them!',
     }).then((result) => {
         if (result.value) {
-            document.getElementById('removethem').submit();
+            document.getElementById('removethem')?.submit();
         }
     });
 };
 
 const showAddDnsContent = () => {
-    document.getElementById('add-dns-content').style.display = 'block';
+    const obj = document.getElementById('add-dns-content') as HTMLElement;
+    obj.style.display = 'block';
 };
 
-const checkCharacterLimit = (event, limit, displayId) => {
-    if (event.target.value.length > limit) {
+const checkCharacterLimit = (event: Event, limit: number, displayId: string) => {
+    if (event.target?.value.length > limit) {
         event.preventDefault();
     }
-    document.getElementById(displayId).innerHTML = `Characters left: <b>${limit - event.target.value.length}</b>`;
+    const obj = document.getElementById(displayId) as HTMLElement;
+    obj.innerHTML = `Characters left: <b>${limit - event.target?.value.length}</b>`;
 };
+
+function showAddDNSContent() {
+
+}
+
+function hideAddDNSContent() {
+
+}
+
+function saveDNSSEC() {
+
+}
+
+
 </script>
 
 <template>
@@ -52,7 +67,7 @@ const checkCharacterLimit = (event, limit, displayId) => {
                     <div class="card-tools m-0">
                         <a id="add-new" class="btn btn-custom px-3 py-2 text-sm" href="javascript:void(0);" @click="showAddDNSContent"><i class="fa fa-plus-circle">&nbsp;</i>Add New Record</a>
                         <template v-if="dnssec_records && dnssec_records.length">
-                            <form id="removethem" method="POST" :action="'view_domain?id=' + domain_id + '&link=dnssec'" class="d-inline">
+                            <form id="removethem" method="POST" :action="'view_domain?id=' + props.id + '&link=dnssec'" class="d-inline">
                                 <input type="hidden" name="action" value="delete" />
                                 <button type="submit" class="btn btn-sm bg-gradient-red text-white" @click.prevent="confirmDialog"><i class="fa fa-times-circle">&nbsp;</i>Remove All DNSSEC Records</button>
                             </form>
@@ -92,7 +107,7 @@ const checkCharacterLimit = (event, limit, displayId) => {
                             </div>
                         </div>
                         <div class="card-body">
-                            <form @submit.prevent="saveDNSSEC" method="post" :action="'view_domain?id=' + domain_id + '&link=dnssec'">
+                            <form @submit.prevent="saveDNSSEC" method="post" :action="'view_domain?id=' + props.id + '&link=dnssec'">
                                 <input type="hidden" name="action" value="add" />
                                 <div v-for="foo in 3" :key="foo">
                                     <div class="form-group row">

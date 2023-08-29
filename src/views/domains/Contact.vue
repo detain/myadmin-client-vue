@@ -3,6 +3,8 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,7 +16,7 @@ const ima = ref('');
 const custid = ref('');
 const tabIndex = ref(0);
 const formFields = ref({});
-const domainFields = ref({});
+const domainFields = ref<DomainFields>({});
 
 const updateContact = () => {
     // Handle contact update logic here

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface LicenseInfo {

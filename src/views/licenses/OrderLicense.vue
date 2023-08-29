@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '@/types';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');

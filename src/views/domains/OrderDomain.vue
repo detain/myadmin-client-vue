@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '@/types';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
@@ -72,82 +73,6 @@ fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     tldServices.value = response.tldServices;
 });
 
-interface SearchDomainResult {
-    'continue': boolean;
-    currencySymbol: string;
-    domain: string;
-    domain_type: string;
-    domain_result: DomainResult;
-    errors: string[];
-    lookups: Lookups;
-    lookups_old: LookupsOld;
-    package_info: ServiceType;
-    suggestions: Suggestions;
-}
-
-interface DomainResult extends SuggestionRow {
-    raw: {
-        cost: number;
-        'new': number;
-        renewal: number;
-        transfer: number;
-    }
-}
-
-interface Lookups {
-    items: {
-        [key: number]: SuggestionRow;
-    }
-}
-
-interface LookupsOld {
-    count: number;
-    is_success: number;
-    items: {
-        [key: number]: SuggestionRow;
-    }
-    response_code: number;
-    response_text: string;
-}
-
-interface Suggestions {
-    items: SuggestionRow[];
-}
-
-interface SuggestionRow {
-    cost     : string;
-    domain   : string;
-    id       : number;
-    'new'    : string;
-    renewal  : string;
-    status   : string;
-    tld      : string;
-    transfer : string;
-    premium ?: string;
-}
-
-interface DomainFieldsResponse {
-    domainFields: DomainFields;
-}
-
-interface DomainFields {
-    [key: string]: DomainField;
-}
-
-interface DomainField {
-    validations : string[];
-    value       : string;
-    label       : string;
-    input       : string | DomainFieldInputArray;
-    required    : boolean;
-    tip        ?: string;
-}
-
-type DomainFieldInputArray = [string, DomainFieldSelectValues];
-
-interface DomainFieldSelectValues {
-    [key: string]: string;
-}
 
 function searchDomain() {
     Swal.fire({

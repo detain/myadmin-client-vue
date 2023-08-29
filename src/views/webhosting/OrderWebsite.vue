@@ -3,7 +3,7 @@ import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { ServiceType, ServiceTypes } from '@/types';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const siteStore = useSiteStore();
