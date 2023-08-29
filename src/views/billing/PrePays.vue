@@ -11,19 +11,19 @@ siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'PrePays' });
 
-function addPrepayUpdates(module) {
+function addPrepayUpdates(module: string) {
     if (module === 'default') {
         $('.servicerow').hide();
         $('.typerow').hide();
     } else {
         let service_options = '<option value="0">All</option>';
-        for (let key in allInfo[module]['services']) {
-            service_options += `<option value="${key}">${allInfo[module]['services'][key]}</option>`;
+        for (let key in allInfo.value[module]['services']) {
+            service_options += `<option value="${key}">${allInfo.value[module]['services'][key]}</option>`;
         }
         $('#service-select').html(service_options).trigger('render');
         let types_option = '<option value="0">All</option>';
-        for (let key in allInfo[module]['service_types']) {
-            types_option += `<option value="${key}">${allInfo[module]['service_types'][key]['services_name']}</option>`;
+        for (let key in allInfo.value[module]['service_types']) {
+            types_option += `<option value="${key}">${allInfo.value[module]['service_types'][key]['services_name']}</option>`;
         }
         $('#type-select').html(types_option).trigger('render');
         $('.servicerow').show();
@@ -31,14 +31,14 @@ function addPrepayUpdates(module) {
     }
 }
 
-function add_amount(prepay_id, module) {
+function add_amount(prepay_id: string | number, module: string) {
     $('#prepay_hiddenid').val(prepay_id);
     $('#prep_id').val(prepay_id);
     $('#p_module').val(module);
 }
-function delete_prepay(prepay_id) {
+function delete_prepay(prepay_id: string | number) {
     $('#p_id').val(prepay_id);
-    const { value: formValues } = Swal.fire({
+    Swal.fire({
         icon: 'error',
         title: '<h3>Delete Prepay</h3> ',
         showCancelButton: true,

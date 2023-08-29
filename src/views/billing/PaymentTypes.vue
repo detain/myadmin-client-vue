@@ -23,13 +23,13 @@ const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
 const countries = ref({});
 const contFields = reactive({
-    cc: '',
-    cc_exp: '',
-    name: '',
+    cc     : '',
+    cc_exp : '',
+    name   : '',
     address: '',
-    city: '',
-    state: '',
-    zip: '',
+    city   : '',
+    state  : '',
+    zip    : '',
     country: 'US',
 });
 

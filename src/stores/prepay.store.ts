@@ -29,8 +29,8 @@ interface PrePayHistoryRow {
     history_owner: number;
     history_section: number;
     history_sid: string;
-    history_timesetamp: string;
-    history_tiomestamp_disp: string;
+    history_timestamp: string;
+    history_timestamp_disp: string;
     history_type: number;
 }
 
