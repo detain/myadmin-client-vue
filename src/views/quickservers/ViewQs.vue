@@ -26,6 +26,18 @@ qsStore.getById(id as string);
 const isCollapsed = ref(false);
 
 const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster.value.qs_hdsize) * 100);
+
+function openCommentForm() {
+
+}
+
+function submitComment() {
+
+}
+
+function closeModal() {
+
+}
 </script>
 
 <template>
@@ -51,9 +63,9 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
             <div
                 :class="{
                     'small-box': true,
-                    'bg-success': serviceInfo.vps_status === 'active',
-                    'bg-warning text-white': serviceInfo.vps_status === 'pending',
-                    'bg-danger': serviceInfo.vps_status !== 'active' && serviceInfo.vps_status !== 'pending',
+                    'bg-success': serviceInfo.qs_status === 'active',
+                    'bg-warning text-white': serviceInfo.qs_status === 'pending',
+                    'bg-danger': serviceInfo.qs_status !== 'active' && serviceInfo.qs_status !== 'pending',
                 }">
                 <div class="inner px-3 pb-1 pt-2">
                     <h3>Billing</h3>
@@ -189,9 +201,9 @@ const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/qs/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>

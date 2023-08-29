@@ -34,6 +34,13 @@ function loadLink(newLink: string) {
     }
 }
 
+function submitForm() {
+
+}
+
+function closeModal() {
+
+}
 watch(
     () => route.params.link,
     (newLink) => {

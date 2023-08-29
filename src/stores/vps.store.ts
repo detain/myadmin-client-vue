@@ -269,7 +269,7 @@ export const useVpsStore = defineStore({
             }
             this.loading = false;
         },
-        async queue(id: number, action: string): Promise<boolean> {
+        async queue(id: number | string, action: string): Promise<boolean> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
