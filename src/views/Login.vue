@@ -56,7 +56,7 @@ interface SignupParams extends LoginParams {
 }
 
 async function onLoginSubmit() {
-  const loading = Swal.fire({
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
     showCancelButton: false,
@@ -79,12 +79,12 @@ async function onLoginSubmit() {
     console.log('Login Params:');
     console.log(loginParams);
     await authStore.login(loginParams).then((response) => {
-        loading.close();
+        Swal.close();
     });
 }
 
 async function onSignupSubmit() {
-  const loading = Swal.fire({
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
     showCancelButton: false,
@@ -108,7 +108,7 @@ async function onSignupSubmit() {
     console.log('Signup Params:');
     console.log(signupParams);
     authStore.signup(signupParams).then((response) => {
-        loading.close();
+        Swal.close();
     });
 }
 
@@ -400,7 +400,7 @@ function forgot_password(e) {
 
 function signup_handler(e) {
     e.preventDefault();
-  const loading = Swal.fire({
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
     showCancelButton: false,
@@ -450,7 +450,7 @@ function signup_handler(e) {
                 url: $('#loginForm').attr('action'),
                 data: data_string,
                 success: function (html) {
-                    loading.close();
+                    Swal.close();
                     if (html.substring(0, 4) == 'true') {
                         if (html.length == 4) {
                             window.location = 'index.php';
@@ -483,7 +483,7 @@ function signup_handler(e) {
                     signup_running = 0;
                 },
                 error: function () {
-                    loading.close();
+                    Swal.close();
                     $('.loginsubmit, .signupsubmit').prop('disabled', false);
                     gresponse.value = '';
                     gresponse2.value = '';
@@ -494,7 +494,7 @@ function signup_handler(e) {
                 },
                 beforeSend: function () {
                     $('.loginsubmit, .signupsubmit').attr('disabled', true);
-                    loading.close();
+                    Swal.close();
                 },
             });
         }
@@ -764,7 +764,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="signup_toggle twofactorauth mb-6 hidden">
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-mode="twoFactorAuthCode" placeholder="Enter Code from Authenticator" value="" autocomplete="off" />
+                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-mode="twoFactorAuthCode" placeholder="Enter Code from Authenticator" autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
                                                         </div>
