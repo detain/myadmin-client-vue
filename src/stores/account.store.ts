@@ -3,56 +3,60 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface AccountData {
-  account_id: number | null;
-  account_lid: string;
-  status: string;
-  pin: number;
-  name: string;
-  address: string;
-  address2: string;
-  city: string;
-  state: string;
-  zip: string;
-  phone: string;
-  country: string;
-  payment_method: string;
-  ima: string;
-  company: string;
-  currency: string;
-  locale: string;
-  disable_cc: number;
+  account_id       : number | null;
+  account_lid      : string;
+  status           : string;
+  pin              : number;
+  name             : string;
+  address          : string;
+  address2         : string;
+  city             : string;
+  state            : string;
+  zip              : string;
+  phone            : string;
+  country          : string;
+  payment_method   : string;
+  ima              : string;
+  company          : string;
+  currency         : string;
+  locale           : string;
+  disable_cc       : number;
   fraudrecord_score: string;
   maxmind_riskscore: any;
-  fraudrecord: FraudRecordResponse | {};
-  maxmind: MaxMindResponse | {};
-  maxmind_score: string;
-  group: string;
-  cc: string;
-  cc_auto: number;
-  cc_exp: string;
-  cc_type: string;
-  cc_whitelist: number;
-  ccs: CCsData | {};
-  ccs_added: number;
+  fraudrecord      : FraudRecordResponse | {};
+  maxmind          : MaxMindResponse | {};
+  maxmind_score    : string;
+  group            : string;
+  cc               : string;
+  cc_auto          : number;
+  cc_exp           : string;
+  cc_type          : string;
+  cc_whitelist     : number;
+  ccs              : CCsData | {};
+  ccs_added        : number;
   disable_reinstall: number;
-  disable_reset: number;
-  email: string;
-  email_abuse: string;
-  email_settings: {
+  disable_reset    : number;
+  disable_email_notifications: number;
+  disable_server_notifications: number;
+  email            : string;
+  email_abuse      : string;
+  email_invoices   : string;
+  email_settings   : {
       [key: string]: string;
   };
   extra: {
       [key: string]: any;
   };
-  picture: string;
+  picture                   : string;
   affiliate_dock_description: string;
-  affiliate_dock_title: string;
-  affiliate_payment_method: string;
-  affiliate_paypal: string;
-  referrer_coupon: string;
-  reseller_markup: string;
-  facebook_id: string;
-  facebook_url: string;
+  affiliate_dock_title      : string;
+  affiliate_payment_method  : string;
+  affiliate_paypal          : string;
+  referrer_coupon           : string;
+  reseller_markup           : string;
+  facebook_id               : string;
+  facebook_url              : string;
+  gstin?: string;
   github_id: string;
   github_url: string;
   google_id: string;
@@ -193,65 +197,69 @@ export const useAccountStore = defineStore({
         custid: 0,
         ima: 'client',
         data: {
-            account_id: 0,
-            account_lid: '',
-            status: '',
-            pin: 0,
-            name: '',
-            address: '',
-            address2: '',
-            city: '',
-            state: '',
-            zip: '',
-            phone: '',
-            country: '',
-            payment_method: 'paypal',
-            ima: 'client',
-            company: '',
-            currency: 'USD',
-            locale: 'auto',
-            disable_cc: 0,
+            account_id                  : 0,
+            account_lid                 : '',
+            status                      : '',
+            pin                         : 0,
+            name                        : '',
+            address                     : '',
+            address2                    : '',
+            city                        : '',
+            state                       : '',
+            zip                         : '',
+            phone                       : '',
+            country                     : '',
+            payment_method              : 'paypal',
+            ima                         : 'client',
+            company                     : '',
+            currency                    : 'USD',
+            locale                      : 'auto',
+            disable_cc                  : 0,
+            disable_email_notifications : 0,
+            disable_server_notifications: 0,
             fraudrecord_score: '',
             maxmind_riskscore: null,
-            fraudrecord: {},
-            maxmind: {},
-            maxmind_score: '',
-            group: '',
-            cc: '',
-            cc_auto: 0,
-            cc_exp: '',
-            cc_type: '',
-            cc_whitelist: 0,
-            ccs: [],
-            ccs_added: 0,
-            disable_reinstall: 0,
-            disable_reset: 0,
-            email: '',
-            email_abuse: '',
-            email_settings: {},
-            extra: {},
-            picture: '',
+            fraudrecord      : {},
+            maxmind          : {},
+            maxmind_score    : '',
+            gstin: '',
+            group                     : '',
+            cc                        : '',
+            cc_auto                   : 0,
+            cc_exp                    : '',
+            cc_type                   : '',
+            cc_whitelist              : 0,
+            ccs                       : [],
+            ccs_added                 : 0,
+            disable_reinstall         : 0,
+            disable_reset             : 0,
+            email                     : '',
+            email_abuse               : '',
+            email_invoices            : '',
+            email_settings            : {},
+            extra                     : {},
+            picture                   : '',
             affiliate_dock_description: '',
-            affiliate_dock_title: '',
-            affiliate_payment_method: '',
-            affiliate_paypal: '',
-            referrer_coupon: '',
-            reseller_markup: '',
-            facebook_id: '',
-            facebook_url: '',
-            github_id: '',
-            github_url: '',
-            google_id: '',
-            google_url: '',
-            ssh_key: '',
-            ssh_key_wrapped: '',
-            api_key: '',
-            api_key_wrapped: '',
-            '2fa_google_key': '',
-            '2fa_google_enabled': false,
-            '2fa_google': 1,
-            '2fa_google_split': '',
-            '2fa_google_qr': '',
+            affiliate_dock_title      : '',
+            affiliate_payment_method  : '',
+            affiliate_paypal          : '',
+            referrer_coupon           : '',
+            reseller_markup           : '',
+            facebook_id               : '',
+            facebook_url              : '',
+            github_id                 : '',
+            github_url                : '',
+            google_id                 : '',
+            google_url                : '',
+            ssh_key                   : '',
+            ssh_key_wrapped           : '',
+            api_key                   : '',
+            api_key_wrapped           : '',
+            '2fa_google_key'          : '',
+            '2fa_google_enabled'      : false,
+            '2fa_google'              : 1,
+            '2fa_google_split'        : '',
+            '2fa_google_qr'           : '',
         },
         ip: '',
         oauthproviders: [],

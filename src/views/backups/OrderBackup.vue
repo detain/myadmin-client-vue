@@ -35,7 +35,7 @@ async function editForm() {
     step.value = 'orderform';
 }
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
@@ -66,7 +66,7 @@ async function onSubmit(values) {
     }
 }
 
-async function placeOrder(values) {
+async function placeOrder(values: any) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -93,6 +93,14 @@ async function placeOrder(values) {
         console.log('error:');
         console.log(error);
     }
+}
+
+function updatePrice() {
+
+}
+
+function updateCoupon() {
+
 }
 
 Swal.fire({
@@ -213,10 +221,10 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="edit_order_form" :action="orderStorageUrl">
+                        <form method="post" id="edit_order_form" action="">
                             <input v-for="(value, key) in orderData" :key="key" type="hidden" :id="key" :name="key" :value="value" />
                         </form>
-                        <form method="post" class="storage_form_confirm" :action="orderStorageUrl" @submit.prevent="placeOrder">
+                        <form method="post" class="storage_form_confirm" action="" @submit.prevent="placeOrder">
                             <input v-for="(value, key) in orderData.data" :key="key" :id="key == 'backup' ? 'backupselect' : key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>

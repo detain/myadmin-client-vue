@@ -12,7 +12,7 @@ const schema = Yup.object().shape({
     password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
 });
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     const usersStore = useUsersStore();
     const alertStore = useAlertStore();
     try {

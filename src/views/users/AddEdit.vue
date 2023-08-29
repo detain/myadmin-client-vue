@@ -32,7 +32,7 @@ const schema = Yup.object().shape({
         .min(6, 'Password must be at least 6 characters'),
 });
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     try {
         let message;
         if (user) {

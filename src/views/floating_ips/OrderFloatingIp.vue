@@ -25,7 +25,7 @@ async function editForm() {
     step.value = 'orderform';
 }
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
@@ -50,7 +50,7 @@ async function onSubmit(values) {
         });
 }
 
-async function placeOrder(values) {
+async function placeOrder(values: any) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
