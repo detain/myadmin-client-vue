@@ -38,7 +38,11 @@ interface vpsRow {
 /*DataTable.use(DataTablesCore);*/
 
 const limitStatus = ref('active');
-const limitStatusMap = {
+interface LimitStatusMap {
+    [key: string]: string[];
+}
+
+const limitStatusMap: LimitStatusMap = {
     active: ['active'],
     pending: ['pending', 'pending-setup', 'pend-approval'],
     expired: ['expired', 'canceled'],
