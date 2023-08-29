@@ -59,6 +59,8 @@ function crud_print(): void {
 }
 
 function crud_export(event): void {
+    console.log(event);
+    console.log(typeof event);
     const exportType = event.currentTarget.parentElement.getAttribute('data-type');
     console.log(exportType);
 
@@ -68,6 +70,7 @@ const loadServers = async (data) => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/servers');
         console.log('api success');
+        console.log(typeof data);
         console.log(response);
         data.value = response;
     } catch (error) {

@@ -9,10 +9,73 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 
-//const id = ref(''); // Replace with appropriate data or pass as props
-const approver_select = ref([]); // Replace with appropriate data or pass as props
-const selectedApproverEmail = ref(''); // Stores the selected approver email
-const service_info = ref({});
+                                        //const id = ref(''); // Replace with appropriate data or pass as props
+const approver_select = ref([]);        // Replace with appropriate data or pass as props
+const selectedApproverEmail = ref('');  // Stores the selected approver email
+
+interface SslServiceInfo {
+    ssl_id: number;
+    ssl_hostname: string;
+    ssl_order_id: number;
+    ssl_type: number;
+    ssl_currency: string;
+    ssl_order_date: string;
+    ssl_custid: number;
+    ssl_status: string;
+    ssl_invoice: number;
+    ssl_coupon: number;
+    ssl_firstname: string;
+    ssl_lastname: string;
+    ssl_phone: string;
+    ssl_email: string;
+    ssl_company: string;
+    ssl_address: string;
+    ssl_city: string;
+    ssl_state: string;
+    ssl_zip: string;
+    ssl_country: string;
+    ssl_department: string;
+    ssl_extra: string;
+    ssl_approver_email: string;
+    ssl_csr: string;
+    ssl_private_key: string;
+    ssl_x509: string;
+    ssl_ca_root: string;
+    ssl_ca_inter: string;
+}
+
+
+const service_info = ref<SslServiceInfo>({
+    ssl_id: 0,
+    ssl_hostname: '',
+    ssl_order_id: 0,
+    ssl_type: 0,
+    ssl_currency: '',
+    ssl_order_date: '',
+    ssl_custid: 0,
+    ssl_status: '',
+    ssl_invoice: 0,
+    ssl_coupon: 0,
+    ssl_firstname: '',
+    ssl_lastname: '',
+    ssl_phone: '',
+    ssl_email: '',
+    ssl_company: '',
+    ssl_address: '',
+    ssl_city: '',
+    ssl_state: '',
+    ssl_zip: '',
+    ssl_country: '',
+    ssl_department: '',
+    ssl_extra: '',
+    ssl_approver_email: '',
+    ssl_csr: '',
+    ssl_private_key: '',
+    ssl_x509: '',
+    ssl_ca_root: '',
+    ssl_ca_inter: '',
+});
+
 function submitForm() {
     // Perform necessary form submission logic here
 }

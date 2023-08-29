@@ -39,6 +39,7 @@ interface TicketState {
         'On Hold': number;
     }
     viewText: string;
+    search: string;
 }
 
 export const useTicketsStore = defineStore({

@@ -8,9 +8,8 @@ const route = useRoute();
 console.log('Route Query View:');
 console.log(route.query.view);
 const ticketsStore = useTicketsStore();
-const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, currentPage, pages, view } = storeToRefs(ticketsStore);
+const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, search, currentPage, pages, view } = storeToRefs(ticketsStore);
 const checkIcon = ref('far fa-square');
-const search = ref('');
 const viewType = computed(() => {
     if (route.query.view) {
         return route.query.view;
