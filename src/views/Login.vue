@@ -46,7 +46,7 @@ const loginSchema = Yup.object().shape({
 interface LoginParams {
     login: string;
     passwd: string;
-    remember: string;
+    remember: string | null;
     tfa?: string;
     'g-recaptcha-response'?: string;
 }
@@ -74,7 +74,7 @@ async function onLoginSubmit() {
         loginParams.tfa = twoFactorAuthCode.value;
     }
     if (window.location.host != 'cn.interserver.net') {
-        loginParams['g-recaptcha-response'] = gresponse;
+        loginParams['g-recaptcha-response'] = gresponse.value;
     }
     console.log('Login Params:');
     console.log(loginParams);
@@ -103,7 +103,7 @@ async function onSignupSubmit() {
         signupParams.tfa = twoFactorAuthCode.value;
     }
     if (window.location.host != 'cn.interserver.net') {
-        signupParams['g-recaptcha-response'] = gresponse2;
+        signupParams['g-recaptcha-response'] = gresponse2.value;
     }
     console.log('Signup Params:');
     console.log(signupParams);
@@ -155,32 +155,31 @@ onMounted(function () {
         $('#signuppassword')
             .keyup(function () {
                 // keyup code here
-              const pswd = $(this).val();
               //validate the length
-                if (pswd.length < 8) {
+                if (password.value.length < 8) {
                     $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 } else {
                     $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 }
                 //validate letter
-                if (pswd.match(/[a-z]/)) {
+                if (password.value.match(/[a-z]/)) {
                     $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
                 //validate capital letter
-                if (pswd.match(/[A-Z]/)) {
+                if (password.value.match(/[A-Z]/)) {
                     $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
                 //validate number
-                if (pswd.match(/\d/)) {
+                if (password.value.match(/\d/)) {
                     $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#number .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
-                if (/^[a-zA-Z0-9- ]*$/.test(pswd) == false) {
+                if (/^[a-zA-Z0-9- ]*$/.test(password.value) == false) {
                     $('#special .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
@@ -200,7 +199,7 @@ onMounted(function () {
 
 let signup_running = 0;
 
-function setModalMaxHeight(element) {
+function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
   const content = element.find('.modal-content');
   const borderWidth = content.outerHeight() - content.innerHeight();
@@ -218,14 +217,14 @@ function setModalMaxHeight(element) {
     });
 }
 
-function toggleModal(modalID) {
-    document.getElementById(modalID).classList.toggle('hidden');
-    document.getElementById(modalID + '-backdrop').classList.toggle('hidden');
-    document.getElementById(modalID).classList.toggle('flex');
-    document.getElementById(modalID + '-backdrop').classList.toggle('flex');
+function toggleModal(modalID: string) {
+    document.getElementById(modalID)?.classList.toggle('hidden');
+    document.getElementById(modalID + '-backdrop')?.classList.toggle('hidden');
+    document.getElementById(modalID)?.classList.toggle('flex');
+    document.getElementById(modalID + '-backdrop')?.classList.toggle('flex');
 }
 
-function animateValue(obj, start = 0, end = null, duration = 1000) {
+function animateValue(obj, start = 0, end: null | number = null, duration = 1000) {
     if (obj) {
         // save starting text for later (and as a fallback text if JS not running and/or google)
       const textStarting = obj.innerHTML;
@@ -259,7 +258,7 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
 
 function login_handler(e) {
   const username = $('#login_id').val();
-  const twofactor = $('#2fa_code').val();
+  const twofactor = twoFactorAuthCode.value;
   const password = $('#loginpassword').val();
   const captcha = $('#captcha').val();
   const emailconf = $('input[name=email_confirmation]').val();
@@ -765,7 +764,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="signup_toggle twofactorauth mb-6 hidden">
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" placeholder="Enter Code from Authenticator" value="" autocomplete="off" />
+                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-mode="twoFactorAuthCode" placeholder="Enter Code from Authenticator" value="" autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
                                                         </div>
