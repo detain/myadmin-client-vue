@@ -27,15 +27,17 @@ export interface ServiceTypes {
 }
 
 export interface BillingDetails {
-    service_last_invoice_date: string;
-    service_payment_status: string;
-    service_frequency: string;
-    next_date: string;
-    service_next_invoice_date: string;
-    service_currency: string;
-    service_currency_symbol: string;
-    service_cost_info: string;
-    service_extra: {
+    service_last_invoice_date : string;
+    service_payment_status    : string;
+    service_frequency         : string;
+    next_date                 : string;
+    service_next_invoice_date : string;
+    service_currency          : string;
+    service_currency_symbol   : string;
+    service_cost_info         : string;
+    service_coupon           ?: string;
+    service_module?: string;
+    service_extra?: {
         [key: string]: any;
     };
 }

@@ -82,7 +82,8 @@ interface VpsServiceAddons {
 interface VpsState {
     vpsList: VpsInfo[];
     loading: boolean;
-    error: boolean | string;
+    error  : boolean | string;
+    errors: boolean |  string[];
     linkDisplay: boolean | string;
     module: string;
     pkg: string;
