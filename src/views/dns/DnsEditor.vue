@@ -137,7 +137,7 @@ async function addDnsRecord(event: Event) {
 }
 
 async function showEditRecord(event: Event) {
-    recordId.value = event.target?.getAttribute('data-id');
+    recordId.value = Number((event.target as HTMLElement).getAttribute('data-id'));
   let row, rowIdx;
   for (rowIdx in data.value) {
         row = data.value[rowIdx];
@@ -148,7 +148,7 @@ async function showEditRecord(event: Event) {
 }
 
 async function deleteRecord(event: Event) {
-  const record = event.target?.getAttribute('data-id');
+  const record = (event.target as HTMLElement).getAttribute('data-id');
   console.log(record);
     Swal.fire({
         icon: 'error',
@@ -269,21 +269,21 @@ loadDns(id, data);
                     </tr>
                     <tr v-for="(row, rowIndex) in data" :key="rowIndex">
                         <template v-if="recordId == row.id">
-                            <td>{{ recordRow.id }}</td>
+                            <td>{{ row.id }}</td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="recordRow.name" />
+                                    <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="row.name" />
                                     <input class="form-control form-control-sm" value="" disabled readonly />
                                 </div>
                             </td>
                             <td>
-                                <select class="form-control" style="width: 100% !important" v-model="recordRow.type">
+                                <select class="form-control" style="width: 100% !important" v-model="row.type">
                                     <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
                                 </select>
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="recordRow.content" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="recordRow.prio" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="recordRow.ttl" /></td>
+                            <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="row.content" /></td>
+                            <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="row.prio" /></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="row.ttl" /></td>
                             <td>
                                 <a href="#" @click.prevent="editDnsRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
                                 <a href="#" @click.prevent="cancelEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>

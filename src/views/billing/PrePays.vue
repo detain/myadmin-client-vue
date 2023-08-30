@@ -11,7 +11,8 @@ siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'PrePays' });
 
-function addPrepayUpdates(module: string) {
+function addPrepayUpdates(event: Event) {
+    const module = (event.target as HTMLInputElement).value;
     if (module === 'default') {
         $('.servicerow').hide();
         $('.typerow').hide();
@@ -190,7 +191,7 @@ prepayStore.load();
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label" for="module-select">Select Module to use this prepay for</label>
                             <div class="col-sm-6 input-group">
-                                <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event.target.value)">
+                                <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event)">
                                     <option v-for="(module_name, module) in modules" :value="module" :key="module">{{ module_name }}</option>
                                 </select>
                             </div>
