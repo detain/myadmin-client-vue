@@ -10,7 +10,7 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Account Settings' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Account Settings' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 async function updateFeatures() {
