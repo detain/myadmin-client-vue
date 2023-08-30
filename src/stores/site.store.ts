@@ -51,12 +51,10 @@ interface ServiceCategory {
     category_module: string;
 }
 
-interface BreadCrums {
-    [key: string]: string;
-}
+type BreadCrum = [string, string];
 
 interface SiteState {
-    breadcrums: BreadCrums;
+    breadcrums: BreadCrum[];
     page_heading: string;
     sidemenu: string;
     title: string;
@@ -78,7 +76,7 @@ export const useSiteStore = defineStore({
     id: 'site',
     state: (): SiteState => ({
         // initialize state from local storage to enable user to stay logged in
-        breadcrums: {},
+        breadcrums: [],
         page_heading: '',
         sidemenu: '',
         title: '',
@@ -114,11 +112,11 @@ export const useSiteStore = defineStore({
                     console.log(response);
                 });
         },
-        setBreadcrums(value: BreadCrums) {
+        setBreadcrums(value: BreadCrum) {
             this.breadcrums = value;
         },
         addBreadcrum(key: string, value: string) {
-            this.breadcrums[key] = value;
+            this.breadcrums.push([key, value]);
         },
         setPageHeading(value: string) {
             this.page_heading = value;
