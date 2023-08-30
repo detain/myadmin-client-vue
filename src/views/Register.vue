@@ -19,8 +19,9 @@ async function onSubmit(values: any) {
         await usersStore.register(values);
         await router.push('/account/login');
         alertStore.success('Registration successful');
-    } catch (error) {
-        alertStore.error(error);
+    } catch (error: any) {
+        console.log()
+        alertStore.error(error.message);
     }
 }
 </script>

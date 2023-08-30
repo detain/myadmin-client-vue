@@ -44,8 +44,9 @@ async function onSubmit(values: any) {
         }
         await router.push('/users');
         alertStore.success(message);
-    } catch (error) {
-        alertStore.error(error);
+    } catch (error: any) {
+        console.log()
+        alertStore.error(error.message);
     }
 }
 </script>
