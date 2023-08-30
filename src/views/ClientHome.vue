@@ -12,8 +12,81 @@ siteStore.setBreadcrums({ '': 'Home' });
 const baseUrl = siteStore.getBaseUrl();
 import $ from 'jquery';
 import jQuery from 'jquery';
+const last_login_ip    = ref('');
+const last_login       = ref('');
+const currency         = ref('');
+const amount           = ref('');
+const invoice_list     = ref('');
+const balance          = ref('');
+const full_name        = ref('');
+const email            = ref('');
+const tickets          = ref<HomeTicket[]>([]);
+const data             = ref<any>({});
+const ticketStatus     = ref<HomeTicketStatus>({});
+const ticketStatusView = ref<HomeTicketStatusView>({});
+const details          = ref<HomeDetails>({ modules: {} });
+const services         = ref<HomeServices>({});
+const AFFILIATE_AMOUNT = ref('');
 
-const copyToClipboard = (value: string) => {
+interface HomeResponse {
+    last_login_ip: string;
+    last_login: string;
+    currency: string;
+    amount: string;
+    invoice_list: string;
+    balance: string;
+    full_name: string;
+    email: string;
+    tickets: HomeTicket[];
+    data: any;
+    ticketStatus: HomeTicketStatus;
+    ticketStatusView: HomeTicketStatusView;
+    details: HomeDetails;
+    services: HomeServices;
+    AFFILIATE_AMOUNT: string;
+}
+
+interface HomeDetails {
+    modules: {
+        [key: string]: {
+            icon     : string;
+            view_link: string;
+            heading  : string;
+            buy_link : string;
+            list_link: string;
+        }
+    }
+}
+
+interface HomeTicket {
+    ticketid       : string;
+    ticketsetatusid: string;
+    subject        : string;
+    lastreplier    : string;
+
+}
+
+interface HomeTicketStatus {
+    [key: string]: number;
+}
+
+interface HomeTicketStatusView {
+    [key: number]: string;
+}
+
+interface HomeServices {
+    [key: string]: HomeServices;
+}
+
+interface HomeService {
+    links: {
+        [key: number]: string;
+    }
+    count: number;
+}
+
+const copyToClipboard = () => {
+    const value = (document.getElementById('affiliateinput') as HTMLElement).innerText
     const $temp = document.createElement('input');
     document.body.appendChild($temp);
     $temp.value = value;
@@ -40,132 +113,43 @@ const affiliateUrl = computed(() => {
     return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? 'https://www.interserver.net/r/' + user.value.account_id : '';
 });
 
-const state = reactive({
-    last_login_ip: ref('70.44.33.193'),
-    last_login: ref('12:35:pm - 21 Feb, 2023'),
-    currency: ref('$'),
-    amount: ref('$0'),
-    invoice_list: ref(0),
-    balance: ref('$0'),
-    full_name: ref(''),
-    email: ref(''),
-    data: ref({}),
-    tickets: ref([]),
-    affiliateUrl: ref(''),
-    pin: ref(''),
-    affiliateAmount: ref(''),
-    services: ref({
-        domains: {
-            links: {},
-            count: 0,
-        },
-        webhosting: {
-            links: {},
-            count: 0,
-        },
-        vps: {
-            links: {},
-            count: 0,
-        },
-        licenses: {
-            links: {},
-            count: 0,
-        },
-        servers: {
-            links: {},
-            count: 0,
-        },
-        backups: {
-            links: [],
-            count_link: '<span class="badge bg-danger float-right">0</span>',
-            count: 0,
-        },
-    }),
-    ticketStatus: ref({
-        Open: 0,
-        'On Hold': 0,
-    }),
-    ticketStatusView: ref({
-        4: 'Open',
-        5: 'On Hold',
-        6: 'Closed',
-    }),
-    details: ref({
-        modules: {
-            domains: {
-                icon: 'globe',
-                view_link: 'domains',
-                heading: 'Domains',
-                buy_link: 'domains/order',
-                list_link: 'domains',
-            },
-            webhosting: {
-                icon: 'window-maximize',
-                view_link: 'websites',
-                heading: 'Web Hosting',
-                buy_link: 'websites/order',
-                list_link: 'websites',
-            },
-            vps: {
-                icon: 'cloud-meatball',
-                view_link: 'vps',
-                heading: 'VPS',
-                buy_link: 'vps/order',
-                list_link: 'vps',
-            },
-            licenses: {
-                icon: 'id-card',
-                view_link: 'licenses',
-                heading: 'Licenses',
-                buy_link: 'licenses/order',
-                list_link: 'licenses',
-            },
-            backups: {
-                icon: 'warehouse',
-                view_link: 'backups',
-                heading: 'Storages',
-                buy_link: 'backups/order',
-                list_link: 'backups',
-            },
-            servers: {
-                icon: 'server',
-                view_link: 'servers',
-                heading: 'Dedicated Servers',
-                buy_link: 'servers/order',
-                list_link: 'servers',
-            },
-            quickservers: {
-                icon: 'database',
-                view_link: 'qs',
-                heading: 'Quick Servers',
-                buy_link: 'qs/order',
-                list_link: 'qs',
-            },
-        },
-    }),
-});
+function shareOnPinterest() {
+
+}
+
+function shareOnTwitter() {
+
+}
+
+function shareOnLinkedIn() {
+
+}
+
+function shareOnFacebook() {
+
+}
+
 const loadHome = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/home');
-        console.log('api success');
-        console.log(response);
-        state.data = response.data;
-        state.last_login_ip = response.last_login_ip;
-        state.last_login = response.last_login;
-        state.currency = response.currency;
-        state.amount = response.amount;
-        state.invoice_list = response.invoice_list;
-        state.balance = response.balance;
-        state.full_name = response.full_name;
-        state.email = response.email;
-        state.tickets = response.tickets;
-        state.ticketStatus = response.ticketStatus;
-        state.ticketStatusView = response.ticketStatusView;
-        //state.details = response.details;
-        state.services = response.services;
-        state.affiliateUrl = response.affiliateUrl;
-        state.pin = response.data.pin;
-        state.affiliateAmount = response.AFFILIATE_AMOUNT;
+        fetchWrapper.get(baseUrl + '/home').then((response: HomeResponse) => {
+            console.log('api success');
+            console.log(response);
+            last_login_ip.value = response.last_login_ip;
+            last_login.value = response.last_login;
+            currency.value = response.currency;
+            amount.value = response.amount;
+            invoice_list.value = response.invoice_list;
+            balance.value = response.balance;
+            full_name.value = response.full_name;
+            email.value = response.email;
+            tickets.value = response.tickets;
+            data.value = response.data;
+            ticketStatus.value = response.ticketStatus;
+            ticketStatusView.value = response.ticketStatusView;
+            details.value = response.details;
+            services.value = response.services;
+            AFFILIATE_AMOUNT.value = response.AFFILIATE_AMOUNT;
+        });
     } catch (error) {
         console.log('api failed');
         console.log(error);
@@ -182,20 +166,20 @@ loadHome();
                 <div class="col-md-4">
                     <div class="small-box bg-yellow">
                         <div class="inner px-3 pb-2 pt-3 text-white">
-                            <h3>Welcome, {{ state.full_name }}</h3>
-                            <p class="mb-2 mt-3 py-3"><b>Last Login: </b>{{ state.last_login }}</p>
+                            <h3>Welcome, {{ full_name }}</h3>
+                            <p class="mb-2 mt-3 py-3"><b>Last Login: </b>{{ last_login }}</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-id-card"></i>
                         </div>
-                        <div class="small-box-footer"><b>Last Login IP: </b>{{ state.last_login_ip }}</div>
+                        <div class="small-box-footer"><b>Last Login IP: </b>{{ last_login_ip }}</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="small-box bg-success">
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>PrePay Balance</h3>
-                            <p class="mb-2 mt-3 py-3" v-if="state.balance"><b>Prepay Remaining Balance: </b>{{ state.balance }}</p>
+                            <p class="mb-2 mt-3 py-3" v-if="balance"><b>Prepay Remaining Balance: </b>{{ balance }}</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-dollar-sign"></i>
@@ -209,8 +193,8 @@ loadHome();
                     <div class="small-box bg-info">
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>Unpaid Invoices</h3>
-                            <div class="pt-2"><b>Total Unpaid Invoices: </b>{{ state.invoice_list }}</div>
-                            <div class="mb-2 mt-2"><b>Total Amount To Be Paid: </b>{{ state.amount }}</div>
+                            <div class="pt-2"><b>Total Unpaid Invoices: </b>{{ invoice_list }}</div>
+                            <div class="mb-2 mt-2"><b>Total Amount To Be Paid: </b>{{ amount }}</div>
                         </div>
                         <div class="icon">
                             <i class="fas fa-file-invoice"></i>
@@ -225,10 +209,10 @@ loadHome();
                 <i class="fas fa-key" style="font-size: 20px; padding: 5px"></i>
                 <h5 style="position: relative; top: 5px; left: 10px">Call in Pin:</h5>
                 <h5 style="position: relative; left: 15px; top: 5px; font-weight: bold; font-size: 20px">
-                    {{ state.pin }}
+                    {{ data.pin }}
                 </h5>
             </div>
-            <div v-if="state.tickets.length > 0" class="row">
+            <div v-if="tickets.length > 0" class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -251,11 +235,11 @@ loadHome();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="ticket in state.tickets" :key="ticket.ticketid">
+                                    <tr v-for="ticket in tickets" :key="ticket.ticketid">
                                         <td>{{ ticket.ticketmaskid }}</td>
                                         <td>{{ ticket.subject }}</td>
                                         <td>{{ ticket.lastreplier }}</td>
-                                        <td>{{ state.ticketStatusView[ticket.ticketstatusid] }}</td>
+                                        <td>{{ ticketStatusView[ticket.ticketstatusid] }}</td>
                                         <td>
                                             <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <i class="fa fa-pencil"></i>&nbsp;Edit </router-link>
                                         </td>
@@ -267,16 +251,16 @@ loadHome();
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div v-for="(value, module) in state.services" :key="module" class="col-md-4 b-radius mb-3 px-3">
+                <div v-for="(value, module) in services" :key="module" class="col-md-4 b-radius mb-3 px-3">
                     <div class="card">
                         <div class="card-header home-card" style="background-color: rgba(0, 0, 0, 0.03) !important">
                             <h2 class="card-title mt-2 text-lg">
-                                <i :class="'fa fa-' + state.details.modules[module].icon"></i>
-                                <span>{{ state.details.modules[module].heading }}</span>
+                                <i :class="'fa fa-' + details.modules[module].icon"></i>
+                                <span>{{ details.modules[module].heading }}</span>
                             </h2>
                             <div class="card-tools float-right">
                                 <span class="card-subtitle text-muted float-right mb-2 mt-2">
-                                    <router-link class="badge bg-success float-right" title="View All" :to="state.details.modules[module].list_link">{{ value.count }}</router-link>
+                                    <router-link class="badge bg-success float-right" title="View All" :to="details.modules[module].list_link">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
@@ -287,11 +271,11 @@ loadHome();
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
-                                        <router-link :to="state.details.modules[module].view_link + '/' + serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link :to="details.modules[module].view_link + '/' + serviceId">{{ serviceDesc }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
-                                    <router-link :to="state.details.modules[module].buy_link" class="btn order">Order Now</router-link>
+                                    <router-link :to="details.modules[module].buy_link" class="btn order">Order Now</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -305,9 +289,9 @@ loadHome();
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex aff-main">
-                                        <div class="text-md aff-heading my-2">Earn {{ `$${state.affiliateAmount}` }} Per Sale:</div>
+                                        <div class="text-md aff-heading my-2">Earn {{ `$${AFFILIATE_AMOUNT}` }} Per Sale:</div>
                                         <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" placeholder="Affiliate URL" :value="affiliateUrl" /></div>
-                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard(document.getElementById('affiliateinput').innerText)">Copy to Clipboard</button>
+                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard()">Copy to Clipboard</button>
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
