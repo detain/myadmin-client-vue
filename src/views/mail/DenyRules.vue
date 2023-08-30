@@ -57,10 +57,7 @@ function editBlock(action: string, id: number, type: string, data: any) {
     blockId.value = id;
     blockData.value = data;
     modalTitle.value = action === 'edit' ? 'Update Block' : 'Add New Block';
-    const typeInput = document.getElementById(type);
-    if (typeInput) {
-        typeInput.checked = true;
-    }
+    ((document.getElementById(type) as unknown) as HTMLInputElement).checked = true;
 }
 function loadEmail(id: number) {
     // Implement the loadEmail functionality

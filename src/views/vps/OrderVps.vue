@@ -370,7 +370,7 @@ function onSubmitConfirmation() {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        document.getElementById('couponimg').src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
+        ((document.getElementById('couponimg') as unknown) as HTMLImageElement).src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
         $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {

@@ -44,6 +44,7 @@ export interface BillingDetails {
 }
 
 export interface ExtraInfoTableRow {
+    id: number;
     desc: string;
     value: string;
 }

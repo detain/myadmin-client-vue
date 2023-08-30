@@ -30,7 +30,7 @@ interface NameserverRow {
 function initializeToast() {
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-middle',
+        position: 'top',
         showConfirmButton: false,
         timer: 5000,
     });
@@ -38,10 +38,10 @@ function initializeToast() {
         document.getElementById('suggestedNameserver')?.addEventListener('click', () => {
             if (suggested.value) {
                 suggested.value.forEach((suggestion, idx) => {
-                    document.getElementById(`nameserver${idx}`).value = suggestion;
+                    ((document.getElementById(`nameserver${idx}`) as unknown) as HTMLInputElement).value = suggestion;
                 });
                 Toast.fire({
-                    type: 'info',
+                    icon: 'info',
                     title: 'Suggested nameservers are shown in the nameservers textboxes. Click submit to update nameservers.',
                 });
             }
