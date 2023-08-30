@@ -3,9 +3,10 @@ import { ref, watch, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
@@ -98,7 +99,7 @@ async function onSubmitConfirmation() {
             console.log('qs order placed');
             console.log(response);
             if (response['success'] == true) {
-                route.push('/cart/'+response.iids.join(','));
+                router.push('/cart/'+response.iids.join(','));
             }
         });
     } catch (error) {

@@ -4,8 +4,9 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
@@ -145,7 +146,7 @@ async function onSubmitConfirmation() {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    route.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
 
             });

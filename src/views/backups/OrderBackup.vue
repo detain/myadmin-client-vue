@@ -3,9 +3,10 @@ import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute } from 'vue-router';
+import { useRoute,  useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
 siteStore.setTitle('Order Backup');
@@ -85,7 +86,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    route.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error) {
