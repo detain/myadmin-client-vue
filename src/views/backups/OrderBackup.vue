@@ -46,7 +46,7 @@ function updateCoupon() {
 }
 
 const serviceDetail = computed(() => {
-    return serviceTypes.value[pkg.value] as ServiceType;;
+    return serviceTypes.value[pkg.value] as ServiceType;
 });
 
 async function placeOrder(values: any) {
