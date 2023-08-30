@@ -85,8 +85,8 @@ interface ServerOrderResponse {
 }
 
 interface CpuCores {
-    [key: number]: {
-        [key: number]: CpuCoresRow;
+    [key: string]: {
+        [key: string]: CpuCoresRow;
     }
 }
 
@@ -117,35 +117,35 @@ interface ConfigLi {
 }
 
 interface CpuLi {
-    [key: number]: CpuRow;
+    [key: string]: CpuRow;
 }
 
 interface MemoryLi {
-    [key: number]: {
-        [key: number]: MemoryRow;
+    [key: string]: {
+        [key: string]: MemoryRow;
     }
 }
 
 interface HdLi {
-    [key: number]: {
-        [key: number]: HdRow;
+    [key: string]: {
+        [key: string]: HdRow;
     }
 }
 
 interface BandwidthLi {
-    [key: number]: BandwidthRow;
+    [key: string]: BandwidthRow;
 }
 
 interface IpsLi {
-    [key: number]: IpsRow;
+    [key: string]: IpsRow;
 }
 
 interface OsLi {
-    [key: number]: OsRow;
+    [key: string]: OsRow;
 }
 
 interface CpLi {
-    [key: number]: CpRow;
+    [key: string]: CpRow;
 }
 
 type RaidLi = RaidRow[];

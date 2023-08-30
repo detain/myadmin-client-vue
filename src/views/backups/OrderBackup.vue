@@ -13,15 +13,16 @@ siteStore.setTitle('Order Backup');
 siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup' });
 const baseUrl = siteStore.getBaseUrl();
 
-const step = ref('orderform');
-const currency = ref('USD');
-const currencySymbol = ref('$');
-const pkg = ref(10831);
-const rootpass = ref('');
-const period = ref(1);
-const coupon = ref('');
-const packageCosts = ref({});
-const serviceTypes = ref<ServiceTypes>({});
+const step              = ref('orderform');
+const currency          = ref('USD');
+const currencySymbol    = ref('$');
+const pkg               = ref(10831);
+const rootpass          = ref('');
+const period            = ref(1);
+const coupon            = ref('');
+const packageCosts      = ref<PackageCosts>({});
+const serviceTypes      = ref<ServiceTypes>({});
+const repeatServiceCost = ref(0);
 
 const periods = [
     { label: 'Monthly', value: 1 },
@@ -36,36 +37,17 @@ async function editForm() {
     step.value = 'orderform';
 }
 
-async function onSubmit(values: any) {
-    Swal.fire({
-        title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-    });
-    try {
-        fetchWrapper
-            .put(baseUrl + '/backups/order', {
-                validateOnly: true,
-                serviceType: pkg.value,
-                coupon: coupon.value,
-            })
-            .then((response) => {
-                Swal.close();
-                //validateResponse.value = response;
-                console.log('Response:');
-                console.log(response);
-                pkg.value = response.serviceType;
-                if (response.continue == true) {
-                    step.value = 'order_confirm';
-                }
-            });
-    } catch (error) {
-        Swal.close();
-        console.log('error:');
-        console.log(error);
-    }
+function updatePrice() {
+
 }
+
+function updateCoupon() {
+
+}
+
+const serviceDetail = computed(() => {
+    return serviceTypes.value[pkg.value] as ServiceType;;
+});
 
 async function placeOrder(values: any) {
     Swal.fire({
@@ -96,12 +78,60 @@ async function placeOrder(values: any) {
     }
 }
 
-function updatePrice() {
-
+async function onSubmit(values: any) {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .put(baseUrl + '/backups/order', {
+                validateOnly: true,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response: BackupOrderValidateResponse) => {
+                Swal.close();
+                //validateResponse.value = response;
+                console.log('Response:');
+                console.log(response);
+                pkg.value      = response.serviceType;
+                rootpass.value = response.password;
+                coupon.value   = response.coupon;
+                repeatServiceCost.value = response.repeatServiceCost;
+                if (response.continue == true) {
+                    step.value = 'order_confirm';
+                }
+            });
+    } catch (error) {
+        Swal.close();
+        console.log('error:');
+        console.log(error);
+    }
 }
 
-function updateCoupon() {
+interface BackupOrderValidateResponse {
+    continue         : boolean;
+    coupon           : string;
+    couponCode       : number;
+    errors           : string[];
+    hostname         : string;
+    originalCost     : number;
+    password         : string;
+    repeatServiceCost: number;
+    serviceCost      : number;
+    serviceType      : number;
+}
 
+interface BackupOrderResponse {
+    packageCosts: PackageCosts;
+    serviceTypes: ServiceTypes;
+}
+
+interface PackageCosts {
+    [key: number]: number;
 }
 
 Swal.fire({
@@ -110,7 +140,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
+fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
@@ -232,7 +262,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                                             </div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
-                                        <th class="text-md">{{ orderData.data.period }} Month(s)</th>
+                                        <th class="text-md">{{ period }} Month(s)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -242,11 +272,11 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                                             <div class="text-bold text-md package_cost"></div>
                                         </td>
                                     </tr>
-                                    <template v-if="orderData.data.coupon">
+                                    <template v-if="coupon">
                                         <tr>
                                             <td class="text-md">Coupon Used</td>
                                             <td class="text-bold text-md">
-                                                {{ orderData.data.coupon }}
+                                                {{ coupon }}
                                                 <img alt=""  src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
                                             </td>
                                         </tr>
@@ -279,7 +309,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
                                 <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every month at</b> <span class="text-bold">{{ currencySymbol }}{{ orderData.data.renewal_cost || tosRepeatServiceCost }}</span> until canceled.
+                                    The subscription will automatically renew after <b>every month at</b> <span class="text-bold">{{ currencySymbol }}{{ repeatServiceCost }}</span> until canceled.
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
