@@ -22,7 +22,7 @@ usersStore.getAll();
             </tr>
         </thead>
         <tbody>
-            <template v-if="users.length">
+            <template v-if="usersStore.users.length">
                 <tr v-for="user in users" :key="user.id">
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>

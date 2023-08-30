@@ -35,11 +35,11 @@ const showAddDnsContent = () => {
 };
 
 const checkCharacterLimit = (event: Event, limit: number, displayId: string) => {
-    if (event.target?.value.length > limit) {
+    if (((event.target as unknown) as HTMLInputElement).value.length > limit) {
         event.preventDefault();
     }
     const obj = document.getElementById(displayId) as HTMLElement;
-    obj.innerHTML = `Characters left: <b>${limit - event.target?.value.length}</b>`;
+    obj.innerHTML = `Characters left: <b>${limit - ((event.target as unknown) as HTMLInputElement).value.length}</b>`;
 };
 
 function showAddDNSContent() {

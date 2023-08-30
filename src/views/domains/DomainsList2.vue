@@ -78,7 +78,7 @@ function crud_export(exportType: string): void {
     console.log(exportType);
 }
 function setStatusLimit(event: Event) {
-    limitStatus.value = event.target?.getAttribute('status');
+    limitStatus.value = (event.target as HTMLElement).getAttribute('status') as string;
 }
 </script>
 

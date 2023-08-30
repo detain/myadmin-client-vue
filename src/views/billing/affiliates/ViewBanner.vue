@@ -49,8 +49,7 @@ function updateCode() {
 }
 
 function copyCode() {
-    const copyText = document.querySelector('#htmcode');
-    copyText?.select();
+    const copyText = ((document.querySelector('#htmcode') as unknown) as HTMLInputElement).select();
     document.execCommand('copy');
     alert('HTML Code copied.');
 }

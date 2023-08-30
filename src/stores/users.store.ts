@@ -2,10 +2,27 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
+interface UserRow {
+    id         ?: number;
+    firstName  ?: string;
+    lastName   ?: string;
+    username   ?: string;
+    isDeleting ?: boolean;
+}
+
+interface UserState {
+    loading?: boolean;
+    error  ?: string | boolean;
+    users   : UserRow[];
+    user    : UserRow;
+}
+
 export const useUsersStore = defineStore({
     id: 'users',
-    state: () => ({
-        users: {},
+    state: (): UserState => ({
+        loading: false,
+        error: false,
+        users: [],
         user: {},
     }),
     getters: {
@@ -20,21 +37,21 @@ export const useUsersStore = defineStore({
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.users = { loading: true };
+            this.loading = true;
             try {
                 this.users = await fetchWrapper.get(baseUrl);
             } catch (error: any) {
-                this.users = { error };
+                this.error = error;
             }
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.user = { loading: true };
+            this.loading = true;
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error: any) {
-                this.user = { error };
+                this.error = error;
             }
         },
         async update(id: number, params: any): Promise<void> {
@@ -57,12 +74,12 @@ export const useUsersStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.users.find((x: any) => x.id === id).isDeleting = true;
+            //this.users.find((x: any) => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.users = this.users.filter((x: any) => x.id !== id);
+            //this.users = this.users.filter((x: any) => x.id !== id);
 
             // auto logout if the logged in user deleted their own record
             const authStore = useAuthStore();
