@@ -274,7 +274,7 @@ function deleteCardModal(cc_id = 0) {
                     console.log('delete cc success');
                     console.log(response);
                 });
-            } catch (error) {
+            } catch (error: any) {
                 console.log('delete cc failed');
                 console.log(error);
             }
@@ -311,7 +311,7 @@ function addCardSubmit() {
                 console.log('add cc success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('add cc failed');
         console.log(error);
     }
@@ -334,7 +334,7 @@ function editCardSubmit() {
                 console.log('edit cc success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('edit cc failed');
         console.log(error);
     }
@@ -469,7 +469,7 @@ try {
     fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
         countries.value = response;
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }
@@ -490,7 +490,7 @@ try {
         console.log(checkedInvoices);
         invoices.value = checkedInvoices;
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }

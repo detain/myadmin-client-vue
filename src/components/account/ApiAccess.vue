@@ -20,7 +20,7 @@ async function generateApiKey() {
             console.log(response);
             accountStore.data.api_key = response;
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('generateApiKey failed');
         console.log(error);
     }

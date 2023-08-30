@@ -110,7 +110,7 @@ const loadVpsList = async (data: any) => {
                 ],
             });
         }
-    } catch (error) {
+    } catch (error: any) {
         console.log('api failed');
         console.log(error);
     }

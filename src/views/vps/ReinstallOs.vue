@@ -110,7 +110,7 @@ try {
             }
         }
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }

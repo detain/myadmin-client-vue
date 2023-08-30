@@ -71,7 +71,7 @@ async function placeOrder(values: any) {
                     router.push('/cart/'+response.iids.join(','));
                 }
             });
-    } catch (error) {
+    } catch (error: any) {
         Swal.close();
         console.log('error:');
         console.log(error);
@@ -105,7 +105,7 @@ async function onSubmit(values: any) {
                     step.value = 'order_confirm';
                 }
             });
-    } catch (error) {
+    } catch (error: any) {
         Swal.close();
         console.log('error:');
         console.log(error);

@@ -102,7 +102,7 @@ async function onSubmitConfirmation() {
                 router.push('/cart/'+response.iids.join(','));
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         Swal.close();
         console.log('qs order place failed');
         console.log(error);

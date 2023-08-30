@@ -41,7 +41,7 @@ function loadLink(newLink: string) {
                     console.log(response);
                     window.location = response.location;
                 });
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
             }

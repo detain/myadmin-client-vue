@@ -9,8 +9,8 @@ import $ from 'jquery';
 const module = 'quickservers';
 const siteStore = useSiteStore();
 const route = useRoute();
-const id = route.params.id;
-const link = computed(() => { return route.params.link; });
+const id = Number(route.params.id);
+const link = computed(() => { return route.params.link as string; });
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Qs');
@@ -21,7 +21,7 @@ siteStore.addBreadcrum('/qs/' + id, 'View Qs ' + id);
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
 
-qsStore.getById(id as string);
+qsStore.getById(id);
 
 const isCollapsed = ref(false);
 

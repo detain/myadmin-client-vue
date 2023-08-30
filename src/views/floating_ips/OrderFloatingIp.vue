@@ -84,7 +84,7 @@ try {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }

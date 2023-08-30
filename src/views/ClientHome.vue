@@ -150,7 +150,7 @@ const loadHome = async () => {
             services.value = response.services;
             AFFILIATE_AMOUNT.value = response.AFFILIATE_AMOUNT;
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('api failed');
         console.log(error);
     }

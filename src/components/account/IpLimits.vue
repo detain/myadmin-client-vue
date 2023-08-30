@@ -36,7 +36,7 @@ async function deleteRange(start: string, end: string) {
                 console.log(response);
                 accountStore.load();
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('delete range failed');
         console.log(error);
     }
@@ -54,7 +54,7 @@ async function addRangeSubmit() {
                 console.log(response);
                 accountStore.load();
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('add range failed');
         console.log(error);
     }

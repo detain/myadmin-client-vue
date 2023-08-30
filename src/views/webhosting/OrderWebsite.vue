@@ -124,7 +124,7 @@ async function onSubmit() {
                 console.log('website order validated');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('website order validation failed');
         console.log(error);
     }
@@ -150,7 +150,7 @@ async function onSubmitConfirmation() {
                 }
 
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('website order validation failed');
         console.log(error);
     }

@@ -24,7 +24,7 @@ async function updateFeatures() {
                 console.log('update Features success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('update Features failed');
         console.log(error);
     }

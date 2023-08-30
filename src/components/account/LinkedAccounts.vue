@@ -30,7 +30,7 @@ async function logOutOauth(type: string) {
                 console.log('unlinkOauth success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('unlinkOauth failed');
         console.log(error);
     }
@@ -44,7 +44,7 @@ async function unlinkOauth(type: string) {
                 console.log('unlinkOauth success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('unlinkOauth failed');
         console.log(error);
     }

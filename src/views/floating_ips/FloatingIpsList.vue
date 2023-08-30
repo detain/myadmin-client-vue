@@ -76,7 +76,7 @@ const loadFloatingIp = async () => {
         console.log('api success');
         console.log(response);
         data.value = response;
-    } catch (error) {
+    } catch (error: any) {
         console.log('api failed');
         console.log(error);
     }

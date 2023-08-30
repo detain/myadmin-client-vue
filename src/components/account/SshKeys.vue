@@ -24,7 +24,7 @@ async function updateSshPublicKey() {
                 console.log('updateSshPublicKey success');
                 console.log(response);
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('updateSshPublicKey failed');
         console.log(error);
     }

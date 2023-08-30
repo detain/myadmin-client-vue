@@ -161,7 +161,7 @@ function submitLicenseForm() {
                     router.push('/cart/'+response.iids.join(','));
                 }
             });
-    } catch (error) {
+    } catch (error: any) {
         Swal.close();
         console.log('caught error:');
         console.log(error);

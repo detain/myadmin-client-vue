@@ -69,7 +69,7 @@ async function addDomain(event: Event) {
                     html: response.message,
                 });
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('api failed');
         console.log(error);
         Swal.fire({
@@ -101,7 +101,7 @@ async function deleteDomain(event: Event) {
                         html: response.message,
                     });
                 });
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
                 Swal.fire({
@@ -142,7 +142,7 @@ const loadDns = async (data) => {
         console.log('api success');
         console.log(response);
         data.value = response;
-    } catch (error) {
+    } catch (error: any) {
         console.log('api failed');
         console.log(error);
     }

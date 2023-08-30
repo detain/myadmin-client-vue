@@ -50,7 +50,7 @@ async function onSubmit(values: any) {
         await router.push('/users');
         alertStore.success(message);
         */
-    } catch (error) {
+    } catch (error: any) {
         console.log(error);
         //alertStore.error(error);
     }
@@ -60,7 +60,7 @@ try {
     fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
         countries.value = response;
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }

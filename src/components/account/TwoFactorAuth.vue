@@ -23,7 +23,7 @@ async function update2fa() {
                 console.log(response);
 
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('update2fa failed');
         console.log(error);
     }
@@ -37,7 +37,7 @@ async function delete2fa() {
                 console.log(response);
 
             });
-    } catch (error) {
+    } catch (error: any) {
         console.log('delete2fa failed');
         console.log(error);
     }
@@ -51,7 +51,7 @@ async function get2faKey() {
             googleKey.value = response['2fa_google_key'];
             googleSplit.value = response['2fa_google_split'];
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('get2faKey failed');
         console.log(error);
     }

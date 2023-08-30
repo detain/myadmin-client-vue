@@ -57,7 +57,7 @@ function loadLink(newLink: string) {
                         console.log('login success');
                         console.log(response);
                     });
-            } catch (error) {
+            } catch (error: any) {
                 console.log('login failed');
                 console.log(error);
             }
