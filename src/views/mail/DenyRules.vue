@@ -11,7 +11,7 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const spam = ref<SpamRows>([]);
+const spam = ref<SpamRow[]>([]);
 const blockAction = ref('');
 const blockId = ref(0);
 const blockData = ref('');
@@ -84,7 +84,7 @@ function submitBlock() {
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
-                    <template v-if="!empty(spam)">
+                    <template v-if="spam.length > 0">
                         <table class="table-sm table">
                             <thead>
                                 <tr>
