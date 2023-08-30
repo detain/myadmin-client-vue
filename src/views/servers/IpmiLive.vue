@@ -10,7 +10,43 @@ const fields = ref({});
 const id = computed(() => { return props.id; });
 const siteStore = useSiteStore();
 const aId = ref('');
-const assetInfo = ref<AssetRow | null>(null);
+const assetInfo = ref<AssetRow>({
+    id                  : 0,
+    order_id            : 0,
+    hostname            : '',
+    status              : '',
+    primary_ipv4        : '',
+    primary_ipv6        : '',
+    mac                 : '',
+    datacenter          : 0,
+    type_id             : 0,
+    asset_tag           : '',
+    rack                : '',
+    row                 : '',
+    col                 : '',
+    unit_start          : '',
+    unit_end            : '',
+    unit_sub            : 0,
+    ipmi_mac            : '',
+    ipmi_ip             : '',
+    ipmi_admin_username : '',
+    ipmi_admin_password : '',
+    ipmi_client_username: '',
+    ipmi_client_password: '',
+    ipmi_updated        : '',
+    ipmi_working        : 0,
+    company             : '',
+    comments            : '',
+    make                : '',
+    model               : '',
+    description         : '',
+    customer_id         : '',
+    external_id         : 0,
+    billing_status      : '',
+    overdue             : 0,
+    create_timestamp    : '',
+    update_timestamp    : '',
+});
 const clientIP = ref('');
 const success = ref('');
 const info = ref('');
