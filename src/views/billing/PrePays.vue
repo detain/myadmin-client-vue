@@ -116,7 +116,7 @@ prepayStore.load();
                         </div>
                     </div>
                 </div>
-                <div class="row py-3" v-if="prepays.length > 0">
+                <div class="row py-3" v-if="Object.keys(prepays).length > 0">
                     <div class="col text-left">
                         <h6 class="pl-3">
                             <small>Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }}</small>

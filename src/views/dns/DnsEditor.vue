@@ -65,7 +65,7 @@ const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
         return data.value;
     } else {
-        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.backup_status));
+        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.content));
     }
 });
 

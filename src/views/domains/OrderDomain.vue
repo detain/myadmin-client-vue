@@ -17,6 +17,7 @@ const hostname         = ref('');
 const ima              = ref('client');
 const custid           = ref('2773');
 const whoisPrivacyCost = ref(0);
+const whoisPrivacy     = ref('disable');
 const domainResult     = ref<DomainResult | null>(null);
 const domainType       = ref('register');
 const lookups          = ref<Lookups>({ items: {} });
@@ -291,11 +292,11 @@ updateStep();
                                     <div class="controls col-sm-7">
                                         <div class="form-group clearfix">
                                             <div class="icheck-success d-inline">
-                                                <input id="enabled" type="radio" class="whois_radio" name="whois_privacy" value="enable" />
+                                                <input id="enabled" type="radio" class="whois_radio" name="whois_privacy" value="enable" v-model="whoisPrivacy" />
                                                 <label for="enabled">Enabled</label>
                                             </div>
                                             <div class="icheck-success d-inline px-2">
-                                                <input id="disabled" type="radio" class="whois_radio" name="whois_privacy" value="disable" checked />
+                                                <input id="disabled" type="radio" class="whois_radio" name="whois_privacy" value="disable" checked v-model="whoisPrivacy" />
                                                 <label for="disabled">Disabled</label>
                                             </div>
                                             <br />
@@ -397,13 +398,7 @@ updateStep();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult?.status === 'available' ? 'register' : domainResult?.status === 'taken' ? 'transfer' : ''}`" id="edit_order_form">
-                            <template v-for="(field_value, field, index) in final_post">
-                                <input :key="index" type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
-                            </template>
-                        </form>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
-                            <input v-for="(value, key) in final_post" :key="key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
@@ -437,7 +432,7 @@ updateStep();
                                             <div class="text-bold text-md">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
                                         </td>
                                     </tr>
-                                    <template v-if="final_post.whois_privacy === 'enable'">
+                                    <template v-if="whoisPrivacy === 'enable'">
                                         <tr>
                                             <td>
                                                 <div class="text-md">Whois Privacy</div>
