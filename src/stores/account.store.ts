@@ -167,6 +167,9 @@ interface MaxMindResponse {
     shipCityPostalMatch: string;
 }
 
+interface OAuthProviders {
+    [key: string]: OauthProvider;
+}
 interface AccountState {
   accountList: AccountData[];
   loading: boolean;
@@ -175,12 +178,10 @@ interface AccountState {
   ima: string;
   data: AccountData;
   ip: string;
-  oauthproviders: any[];
+  oauthproviders: OAuthProviders;
   oauthconfig: {
     callback: string;
-    providers: {
-        [key: string]: OauthProvider;
-    }
+    providers: OAuthProviders;
   };
   oauthadapters: {
     [key: string]: any;
@@ -269,7 +270,7 @@ export const useAccountStore = defineStore({
             '2fa_google_qr'           : '',
         },
         ip: '',
-        oauthproviders: [],
+        oauthproviders: {},
         oauthconfig: {
             callback: 'https://my.interserver.net/oauth/callback.php',
             providers: {},
