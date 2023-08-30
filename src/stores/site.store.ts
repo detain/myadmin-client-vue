@@ -104,15 +104,15 @@ export const useSiteStore = defineStore({
             fetchWrapper
                 .get(baseUrl + '/info')
                 .then((response) => {
-                    this.modules = response.modules;
-                    this.services = response.services;
-                    this.serviceTypes = response.serviceTypes;
+                    this.modules           = response.modules;
+                    this.services          = response.services;
+                    this.serviceTypes      = response.serviceTypes;
                     this.serviceCategories = response.serviceCategories;
                     console.log('info success');
                     console.log(response);
                 });
         },
-        setBreadcrums(value: BreadCrum) {
+        setBreadcrums(value: BreadCrum[]) {
             this.breadcrums = value;
         },
         addBreadcrum(key: string, value: string) {
