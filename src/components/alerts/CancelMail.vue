@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your mail <span class="text-2lg">${username.value}</span>?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm')?.submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

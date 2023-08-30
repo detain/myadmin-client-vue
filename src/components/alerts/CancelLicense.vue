@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your license <span class="text-2lg">${ip.value}</span>?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm')?.submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

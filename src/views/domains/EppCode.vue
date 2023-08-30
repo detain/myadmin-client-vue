@@ -13,7 +13,7 @@ onMounted(() => {
         confirmButtonText: 'Yes, Send Me',
         html: '<p>Are you sure want to send <span class="text-2lg">EPP Code</span> to registered email ?</p>',
         preConfirm: () => {
-            document.getElementById('eppcodeForm').submit();
+            ((document.getElementById('eppcodeForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

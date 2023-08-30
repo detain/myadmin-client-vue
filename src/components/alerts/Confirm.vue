@@ -14,7 +14,7 @@ onMounted(() => {
         confirmButtonText: 'Yes',
         html: html.value,
         preConfirm: () => {
-            document.getElementById('confirmDialog')?.submit();
+            ((document.getElementById('confirmDialog') as unknown) as HTMLFormElement).submit();
         },
     });
 });

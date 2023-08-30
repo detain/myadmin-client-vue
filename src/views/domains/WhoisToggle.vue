@@ -18,7 +18,7 @@ onMounted(() => {
       <p>Are you sure want to ${funct.value === 'disableCancel' ? 'Disable & Cancel it.' : 'Enable Whois'} it?</p>
     `,
         preConfirm: () => {
-            document.getElementById('whoisDisableForm').submit();
+            ((document.getElementById('whoisDisableForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

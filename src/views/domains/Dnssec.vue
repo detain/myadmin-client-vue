@@ -24,7 +24,7 @@ const confirmDialog = () => {
         confirmButtonText: 'Yes, remove them!',
     }).then((result) => {
         if (result.value) {
-            document.getElementById('removethem')?.submit();
+            ((document.getElementById('removethem') as unknown) as HTMLFormElement).submit();
         }
     });
 };

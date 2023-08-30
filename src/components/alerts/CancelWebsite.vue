@@ -17,7 +17,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your website <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm')?.submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });
