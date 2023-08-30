@@ -9,7 +9,11 @@ const showToggle = ref(false);
 const inputFile  = ref('');
 const success    = ref<string | boolean>(false);
 const failed     = ref<string | boolean>(false);
-const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
+const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
+
+function formatDate(date: string) {
+
+}
 
 function toggleToggle() {
     showToggle.value = !showToggle.value;
@@ -79,18 +83,18 @@ function bs_input_file() {
     <div v-if="failed" class="row">
         <div class="alert alert-danger mainbox col-md-12" style="padding: 5px">{{ failed }}</div>
     </div>
-    <template v-if="display === 'yes'">
-        <link rel="stylesheet" href="/lib/select2/dist/css/select2.min.css" />
-        <link rel="stylesheet" href="/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
-        <div class="row">
-            <div class="col-md-3">
-                <div class="info-box p-0">
-                    <span class="info-box-icon border-rad-zero" :class="{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' }"><i class="fas fa-ticket-alt"></i></span>
-                    <div class="info-box-content">
-                        <!-- <span class="info-box-text">{{ ticket.ticketmaskid }}</span> -->
-                        <span class="info-box-number">{{ ticket.status }}</span>
-                        <span class="info-box-text">{{ ticket.priority }}</span>
-                        <span class="info-box-text">{{ ticket.department }} Department</span>
+    <template v-if        = "display === 'yes'">
+    <link     rel         = "stylesheet" href                      = "/lib/select2/dist/css/select2.min.css" />
+    <link     rel         = "stylesheet" href                      = "/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
+    <div      class       = "row">
+    <div      class       = "col-md-3">
+    <div      class       = "info-box p-0">
+    <span     class       = "info-box-icon border-rad-zero" :class = "{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' }"><i class = "fas fa-ticket-alt"></i></span>
+    <div      class       = "info-box-content">
+    <!--      <span class = "info-box-text">{{ ticket.ticketmaskid }}</span> -->
+    <span     class       = "info-box-number">{{ ticket.status }}</span>
+    <span     class       = "info-box-text">{{ ticket.priority }}</span>
+    <span     class       = "info-box-text">{{ ticket.department }} Department</span>
                     </div>
                 </div>
             </div>
@@ -217,8 +221,8 @@ function bs_input_file() {
                         </div>
                     </div>
                     <div class="card-footer card-comments">
-                        <div v-if="ticket_posts">
-                            <div v-for="post in ticket_posts" :key="post.id" class="card-comment">
+                        <div v-if="ticket.ticket_posts">
+                            <div v-for="post in ticket.ticket_posts" :key="post.id" class="card-comment">
                                 <div class="comment-text ml-4">
                                     <span class="username">
                                         {{ post.fullname }} <span :class="post.staffid ? 'b-radius bg-green ml-1 px-2 py-1 text-xs' : 'b-radius bg-green ml-1 px-2 py-1 text-xs'"> {{ post.staffid ? 'Staff' : 'User' }}</span>

@@ -3,25 +3,29 @@ import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface TicketRow {
-    title: string;
-    ticketmaskid: string;
-    lastreplier: string;
-    status: string;
-    priority: string;
-    total_replies: number;
-    lastactivity: string;
+    title          : string;
+    ticketmaskid   : string;
+    lastreplier    : string;
+    status         : string;
+    priority       : string;
+    total_replies  : number;
+    lastactivity   : string;
     departmenttitle: string;
-    ticketid: number;
-    can_close: string;
-    attachments: any;
-    status_text: string;
-    checked: boolean;
+    ticketid       : number;
+    can_close      : string;
+    attachments    : any;
+    status_text    : string;
+    checked        : boolean;
+    subject        : string;
+    ticket_posts   : any;
+    department: string;
 }
 
 interface TicketState {
     loading: boolean;
-    error: boolean | string;
+    error  : boolean | string;
     tickets: TicketRow[];
+    ticket: TicketRow;
     ima: string;
     custid: number;
     view: string;
@@ -46,6 +50,24 @@ export const useTicketsStore = defineStore({
     id: 'tickets',
     state: (): TicketState => ({
         tickets: [],
+        ticket: {
+            title          : '',
+            ticketmaskid   : '',
+            lastreplier    : '',
+            status         : '',
+            priority       : '',
+            total_replies  : 0,
+            lastactivity   : '',
+            departmenttitle: '',
+            ticketid       : 0,
+            can_close      : '',
+            attachments    : [],
+            status_text    : '',
+            checked        : false,
+            subject        : '',
+            department     : '',
+            ticket_posts: [],
+        },
         loading: false,
         error: false,
         ima: 'client',
