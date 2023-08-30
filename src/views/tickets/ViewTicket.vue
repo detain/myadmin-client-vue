@@ -4,11 +4,12 @@ import { useTicketsStore } from '@/stores';
 import { ref, computed } from 'vue';
 import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
-
+const ticketsStore = useTicketsStore();
 const showToggle = ref(false);
 const inputFile  = ref('');
 const success    = ref<string | boolean>(false);
 const failed     = ref<string | boolean>(false);
+const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
 
 function toggleToggle() {
     showToggle.value = !showToggle.value;
