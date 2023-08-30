@@ -32,85 +32,23 @@ const actions = ref([
     'buy_ip',
     'confirm',
 ]);
-
-const getComponent = (action: string) => {
-    switch (action) {
-        case 'eppcode':
-            return 'EppCode';
-        case 'lock':
-            return 'Lock';
-        case 'cancel_domain':
-            return 'CancelDomain';
-        case 'cancel_vps':
-            return 'CancelVps';
-        case 'cancel_website':
-            return 'CancelWebsite';
-        case 'cancel_qs':
-            return 'CancelQs';
-        case 'cancel_storage':
-            return 'CancelStorage';
-        case 'cancel_license':
-            return 'CancelLicense';
-        case 'cancel_mail':
-            return 'CancelMail';
-        case 'cancel_ssl':
-            return 'CancelSsl';
-        case 'whois':
-            return 'Whois';
-        case 'buy_ip':
-            return 'BuyIp';
-        case 'confirm':
-            return 'Confirm';
-        default:
-            return null;
-    }
-};
-
-const getData = (action: string) => {
-    // Implement the logic to get and return the appropriate data
-    // based on the action
-    // You can define and return an object with the required variables
-    // for each component
-
-    // Example:
-    switch (action) {
-        case 'eppcode':
-            return { domain: 'example.com' };
-        case 'lock':
-            return { domain: 'example.com' };
-        case 'cancel_domain':
-            return { domain: 'example.com' };
-        case 'cancel_vps':
-            return { vpsId: 123 };
-        case 'cancel_website':
-            return { websiteId: 456 };
-        case 'cancel_qs':
-            return { qsId: 789 };
-        case 'cancel_storage':
-            return { storageId: 987 };
-        case 'cancel_license':
-            return { licenseId: 654 };
-        case 'cancel_mail':
-            return { username: 'example' };
-        case 'cancel_ssl':
-            return { orderId: 321 };
-        case 'whois':
-            return { domain: 'example.com' };
-        case 'buy_ip':
-            return { domain: 'example.com' };
-        case 'confirm':
-            return { url: 'example.com', html: '<p>Confirmation message</p>' };
-        default:
-            return null;
-    }
-};
 </script>
 
 <template>
-    <div>
-        <template v-if="display === 'yes' && actions.includes(action)">
-            <component :is="getComponent(action)" :data="getData(action)" />
-        </template>
+    <div v-if="display == 'yes'">
+        <EppCode       v-if      = "action == 'eppcode'" data= "{ domain: 'example.com' }" />
+        <Lock          v-else-if = "action == 'lock'" data           = "{ domain: 'example.com' }" />
+        <CancelDomain  v-else-if = "action == 'cancel_domain'" data  = "{ domain: 'example.com' }" />
+        <CancelVps     v-else-if = "action == 'cancel_vps'" data     = "{ vpsId: 123 }" />
+        <CancelWebsite v-else-if = "action == 'cancel_website'" data = "{ websiteId: 456 }" />
+        <CancelQs      v-else-if = "action == 'cancel_qs'" data      = "{ qsId: 789 }" />
+        <CancelStorage v-else-if = "action == 'cancel_storage'" data = "{ storageId: 987 }" />
+        <CancelLicense v-else-if = "action == 'cancel_license'" data = "{ licenseId: 654 }" />
+        <CancelMail    v-else-if = "action == 'cancel_mail'" data    = "{ username: 'example' }" />
+        <CancelSsl     v-else-if = "action == 'cancel_ssl'" data     = "{ orderId: 321 }" />
+        <Whois         v-else-if = "action == 'whois'" data          = "{ domain: 'example.com' }" />
+        <BuyIp         v-else-if = "action == 'buy_ip'" data         = "{ domain: 'example.com' }" />
+        <Confirm       v-else-if = "action == 'confirm'" data        = "{ url: 'example.com', html: '<p>Confirmation message</p>' }" />
     </div>
 </template>
 

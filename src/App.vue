@@ -136,11 +136,9 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
-                                <li v-for="(bName, bUrl, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ active: index === Object.keys(breadcrums).length - 1 }">
-                                    <template v-if="index === Object.keys(breadcrums).length - 1">{{ bName }}</template>
-                                    <template v-else>
-                                        <router-link :to="bUrl">{{ bName }}</router-link></template
-                                    >
+                                <li v-for="(bData, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ active: index === breadcrums.length - 1 }">
+                                    <template v-if="index === breadcrums.length - 1">{{ bData[1] }}</template>
+                                    <template v-else><router-link :to="bData[0]">{{ bData[1] }}</router-link></template>
                                 </li>
                             </ol>
                         </div>
