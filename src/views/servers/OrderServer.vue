@@ -27,9 +27,13 @@ const configLi = ref<ConfigLi>({
     ips_li: {},
     os_li: {},
     cp_li: {},
-    raid_li: [],
+    raid_li: {},
 });
+const servername = ref('');
+const rootpass   = ref('');
+const comment = ref('');
 const cpuCores = ref<CpuCores>({});
+const hdValues = computed(() => { return configLi.value.hd_li; });
 const fieldLabel = ref<FieldLabel>({
     bandwidth: {
         name: 'Bandwidth',
@@ -74,6 +78,10 @@ function onSubmitCpu() {
     serverOrderRequest(true);
 }
 
+interface SimpleStringObj {
+    [key: string]: any;
+}
+
 interface ServerOrderResponse {
     cpu: number;
     cpu_li: CpuLi
@@ -105,7 +113,7 @@ interface FieldLabel {
     }
 }
 
-interface ConfigLi {
+interface ConfigLi extends SimpleStringObj {
     cpu_li: CpuLi;
     memory_li: MemoryLi;
     hd_li: HdLi;
@@ -116,39 +124,41 @@ interface ConfigLi {
     raid_li: RaidLi;
 }
 
-interface CpuLi {
+interface CpuLi extends SimpleStringObj {
     [key: string]: CpuRow;
 }
 
-interface MemoryLi {
+interface MemoryLi extends SimpleStringObj {
     [key: string]: {
         [key: string]: MemoryRow;
     }
 }
 
-interface HdLi {
+interface HdLi extends SimpleStringObj {
     [key: string]: {
         [key: string]: HdRow;
     }
 }
 
-interface BandwidthLi {
+interface BandwidthLi extends SimpleStringObj {
     [key: string]: BandwidthRow;
 }
 
-interface IpsLi {
+interface IpsLi extends SimpleStringObj {
     [key: string]: IpsRow;
 }
 
-interface OsLi {
+interface OsLi extends SimpleStringObj {
     [key: string]: OsRow;
 }
 
-interface CpLi {
+interface CpLi extends SimpleStringObj {
     [key: string]: CpRow;
 }
 
-type RaidLi = RaidRow[];
+interface RaidLi extends SimpleStringObj {
+    [key: string]: RaidRow;
+}
 
 interface CpuRow {
     active               : string;
@@ -449,16 +459,16 @@ serverOrderRequest(false);
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
                                 <template v-if="inputName !== 'cpu_li'">
-                                    <template v-if="['memory_li', 'hd_li'].includes(inputName)">
+                                    <template v-if="['memory_li', 'hd_li'].includes(inputName as string)">
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label text-right">
-                                                {{ fieldLabel[inputName.replace('_li', '')].name }}
+                                                {{ fieldLabel[(inputName as string).replace('_li', '')].name }}
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
-                                                <template v-for="(details, id, detIndex) in inputDetails[cpu]" :key="detIndex">
+                                                <template v-for="(details, id, detIndex) in inputDetails[cpu.toString()]" :key="detIndex">
                                                     <div class="icheck-success d-inline w-100">
-                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + inputName.replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] === id" @change="updatePrice()" />
+                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
                                                         <label v-if="detIndex === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
@@ -483,7 +493,7 @@ serverOrderRequest(false);
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="detIndex !== 0 || inputName !== 'hd_li'" :for="'ds-' + inputName.replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label v-if="detIndex !== 0 || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
@@ -512,15 +522,15 @@ serverOrderRequest(false);
                                             </div>
                                         </div>
                                     </template>
-                                    <div v-else-if="fieldLabel[inputName.replace('_li', '')]" class="form-group row">
+                                    <div v-else-if="fieldLabel[(inputName as string).replace('_li', '')]" class="form-group row">
                                         <label class="col-md-3 col-form-label text-right">
-                                            {{ fieldLabel[inputName.replace('_li', '')]?.name }}
+                                            {{ fieldLabel[(inputName as string).replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
                                         <div class="input-group col-md-9" :class="inputName + '-row'">
                                             <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
-                                                <input :id="'ds-' + inputName.replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="inputName.replace('_li', '')" :value="id" :checked="formValues[inputName.replace('_li', '')] == id" @change="updatePrice()" />
-                                                <label :for="'ds-' + inputName.replace('_li', '') + '-' + id" class="font-weight-normal w-100">
+                                                <input :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
+                                                <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="font-weight-normal w-100">
                                                     <div class="row mb-2">
                                                         <div class="col-md-8">
                                                             <div class="text-bold text-sm">{{ details.short_desc }}</div>
@@ -636,16 +646,16 @@ serverOrderRequest(false);
                     <div class="card-body">
                         <form id="edit_order_form" method="post" action="order_server">
                             <template v-for="(field_value, field) in formValues">
-                                <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                                <input :key="field" type="hidden" :id="field as string" :name="(field as string)" :value="field_value" v-if="field !== 'hd'" />
                             </template>
-                            <input v-for="(hd_val, indexx) in hd_values" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
+                            <input v-for="(hd_val, indexx) in hdValues" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
                         <form method="post" class="dserver_form_confirm" action="order_server">
                             <template v-for="(field_value, field) in formValues">
-                                <input :key="field" type="hidden" :id="field" :name="field" :value="field_value" v-if="field !== 'hd'" />
+                                <input :key="field" type="hidden" :id="field as string" :name="field as string" :value="field_value" v-if="field !== 'hd'" />
                             </template>
-                            <input v-for="(hd_val, indexx) in hd_values" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
+                            <input v-for="(hd_val, indexx) in hdValues" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label text-right">Server Hostname<span class="text-danger"> *</span></label>
@@ -702,13 +712,13 @@ serverOrderRequest(false);
                                             <div class="text-bold memory_cost"></div>
                                         </td>
                                     </tr>
-                                    <tr v-for="(hd_value, index) in hdValues" :key="index">
+                                    <tr v-for="(hdValue, index) in hdValues" :key="index">
                                         <td>
-                                            <span class="hd_name">{{ configLi['hd_li'][cpu][hdValue]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][hdValue]['short_desc'] }}</span>
+                                            <span class="hd_name">{{ configLi['hd_li'][cpu][index]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][index]['short_desc'] }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">HDD</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][hdValue]['monthly_price_display'] }}</div>
+                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][index]['monthly_price_display'] }}</div>
                                         </td>
                                     </tr>
                                     <tr>

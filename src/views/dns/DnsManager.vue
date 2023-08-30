@@ -63,7 +63,7 @@ async function addDomain(event: Event) {
             .then((response) => {
                 console.log('api success');
                 console.log(response);
-                loadDns(data);
+                loadDns();
                 Swal.fire({
                     icon: 'success',
                     html: response.message,
@@ -95,7 +95,7 @@ async function deleteDomain(event: Event) {
                 fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then((response) => {
                     console.log('api success');
                     console.log(response);
-                    loadDns(data);
+                    loadDns();
                     Swal.fire({
                         icon: 'success',
                         html: response.message,
@@ -136,7 +136,7 @@ interface DomainRow {
     content: string;
 }
 
-const loadDns = async (data) => {
+const loadDns = async () => {
     try {
         const response: DomainRow[] = await fetchWrapper.get(baseUrl + '/dns');
         console.log('api success');
@@ -148,7 +148,7 @@ const loadDns = async (data) => {
     }
 };
 
-loadDns(data);
+loadDns();
 </script>
 
 <template>
