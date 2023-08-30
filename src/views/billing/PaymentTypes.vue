@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
@@ -13,9 +13,9 @@ siteStore.setTitle('Payment Types');
 siteStore.setTitle('Payment Types');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Payment Types' });
 const baseUrl = siteStore.getBaseUrl();
-const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
+const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
-const selectedCc = ref('');
+const selectedCc = ref(0);
 const editCcIdx = ref(0);
 const triggerClick = ref(false);
 const current_cc_id = ref(0);
@@ -23,13 +23,13 @@ const verify_display = ref(undefined);
 const cc_auto_checked = ref(false);
 const countries = ref({});
 const contFields = reactive({
-    cc: '',
-    cc_exp: '',
-    name: '',
+    cc     : '',
+    cc_exp : '',
+    name   : '',
     address: '',
-    city: '',
-    state: '',
-    zip: '',
+    city   : '',
+    state  : '',
+    zip    : '',
     country: 'US',
 });
 
@@ -41,10 +41,10 @@ function mounted() {
     }
 }
 
-function deleteCardModal(cc_id = '0') {
+function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
-    const { value: formValues } = Swal.fire({
-        type: 'warning',
+    Swal.fire({
+        icon: 'warning',
         title: '<h3>Delete CreditCard</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -161,7 +161,7 @@ function updatePaymentMethod() {
     }
 }
 
-function formatCardNum(e) {
+function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
   let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -181,7 +181,7 @@ function formatCardNum(e) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function formatExpDate(e) {
+function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
   let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -206,11 +206,11 @@ function formatExpDate(e) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function onCardNumInput(e) {
+function onCardNumInput(e: any) {
     formatCardNum(e);
 }
 
-function onExpDateInput(e) {
+function onExpDateInput(e: any) {
     formatExpDate(e);
 }
 
@@ -246,7 +246,7 @@ accountStore.load();
             `
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body icheck-success">
-                    <input id="paypal" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" v-model="paymentMethod" @change="updatePaymentMethod('paypal')" />
+                    <input id="paypal" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" v-model="paymentMethod" @change="updatePaymentMethod()" />
                     <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
                 </div>
             </div>

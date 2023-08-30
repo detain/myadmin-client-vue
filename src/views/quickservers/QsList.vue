@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
@@ -16,17 +16,31 @@ siteStore.setTitle('Rapid Deploy Servers List');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Quickservers' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface quickserversRow {
+    qs_id: number;
+    qs_name: string;
+    cost: number;
+    qs_hostname: string;
+    qs_status: string;
+    qs_comment: string;
+}
+
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
 const limitStatus = ref('active');
-const limitStatusMap = {
+interface LimitStatusMap {
+    [key: string]: string[];
+}
+
+const limitStatusMap: LimitStatusMap = {
     active: ['active'],
     pending: ['pending', 'pending-setup', 'pend-approval'],
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+
+const data = ref<quickserversRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'qs_id' }, { data: 'qs_name' }, { data: 'cost' }, { data: 'qs_hostname' }, { data: 'qs_status' }, { data: 'qs_comment' }, { name: 'link', data: 'link', sortable: false }];
@@ -47,17 +61,14 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print() {
+function crud_print(): void {
 
 }
 
-function crud_export(event) {
-    const exportType = event.currentTarget.parentElement.getAttribute('data-type');
+function crud_export(exportType: string): void {
     console.log(exportType);
-
 }
-
-const loadQuickservers = async (data) => {
+const loadQuickservers = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/qs');
         console.log('api success');
@@ -69,7 +80,7 @@ const loadQuickservers = async (data) => {
     }
 };
 
-loadQuickservers(data);
+loadQuickservers();
 </script>
 
 <template>
@@ -91,37 +102,37 @@ loadQuickservers(data);
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
-                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export($event)"><img src="/images/crud/xlsx.png" alt="" /> XLSX</a>
+                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="/images/crud/xlsx.png" alt="" /> XLSX</a>
                                     </li>
                                     <li role="presentation" data-type="xls">
-                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export($event)"><img src="/images/crud/xls.png" alt="" /> XLS</a>
+                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export('xls')"><img src="/images/crud/xls.png" alt="" /> XLS</a>
                                     </li>
                                     <li role="presentation" data-type="ods">
-                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export($event)"><img src="/images/crud/ods.png" alt="" /> ODS</a>
+                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export('ods')"><img src="/images/crud/ods.png" alt="" /> ODS</a>
                                     </li>
                                     <li role="presentation" data-type="pdf">
-                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export($event)"><img src="/images/crud/pdf.png" alt="" /> PDF</a>
+                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export('pdf')"><img src="/images/crud/pdf.png" alt="" /> PDF</a>
                                     </li>
                                     <li role="presentation" data-type="xml">
-                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export($event)"><img src="/images/crud/xml.png" alt="" /> XML</a>
+                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export('xml')"><img src="/images/crud/xml.png" alt="" /> XML</a>
                                     </li>
                                     <li role="presentation" data-type="php">
-                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export($event)"><img src="/images/crud/php.png" alt="" /> PHP</a>
+                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export('php')"><img src="/images/crud/php.png" alt="" /> PHP</a>
                                     </li>
                                     <li role="presentation" data-type="csv">
-                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export($event)"><img src="/images/crud/csv.png" alt="" /> CSV</a>
+                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export('csv')"><img src="/images/crud/csv.png" alt="" /> CSV</a>
                                     </li>
                                     <li role="presentation" data-type="json">
-                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export($event)"><img src="/images/crud/json.png" alt="" /> JSON</a>
+                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export('json')"><img src="/images/crud/json.png" alt="" /> JSON</a>
                                     </li>
                                     <li role="presentation" data-type="bbcode">
-                                        <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export($event)"><img src="/images/crud/bbcode.png" alt="" /> BBCODE</a>
+                                        <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export('bbcode')"><img src="/images/crud/bbcode.png" alt="" /> BBCODE</a>
                                     </li>
                                     <li role="presentation" data-type="wiki">
-                                        <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export($event)"><img src="/images/crud/wiki.png" alt="" /> WIKI</a>
+                                        <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export('wiki')"><img src="/images/crud/wiki.png" alt="" /> WIKI</a>
                                     </li>
                                     <li role="presentation" data-type="markdown">
-                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export($event)"><img src="/images/crud/markdown.png" alt="" /> MARKDOWN</a>
+                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export('markdown')"><img src="/images/crud/markdown.png" alt="" /> MARKDOWN</a>
                                     </li>
                                 </ul>
                             </div>

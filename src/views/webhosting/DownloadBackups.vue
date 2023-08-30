@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -18,7 +18,7 @@ const props = defineProps({
         default: () => [],
     },
 });
-const isEmpty = (rows) => {
+const isEmpty = (rows: any) => {
     return rows.length === 0;
 };
 </script>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -79,7 +79,7 @@ const ipsDetailsExist = computed(() => props.ips_details.length > 0);
                                     </div>
                                     <div class="col-md-9">
                                         <input type="hidden" id="amount" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled="disabled" :value="im_cost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="im_cost" />
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@ const ipsDetailsExist = computed(() => props.ips_details.length > 0);
                                     </div>
                                     <div class="col-md-9">
                                         <input type="hidden" id="amount" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled="disabled" :value="ip_cost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
                                         <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
                                     </div>
                                 </div>

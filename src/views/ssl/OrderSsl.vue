@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
@@ -14,7 +14,7 @@ siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL List', '/ssl/order': 'Or
             <form method="post" action="ssl_order" class="search-ssl">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
-                        <input id="ssl_search" type="text" class="form-control" name="hostname" value="" autofocus="autofocus" onfocus=" let value = this.value; this.value = null; this.value=value" autocomplete="off" style="border-radius: 5px" />
+                        <input id="ssl_search" type="text" class="form-control" name="hostname" value="" autofocus onfocus=" let value = this.value; this.value = null; this.value=value" autocomplete="off" style="border-radius: 5px" />
                     </div>
                 </div>
                 <div class="form-group row">

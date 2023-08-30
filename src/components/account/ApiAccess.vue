@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
@@ -18,7 +18,7 @@ async function generateApiKey() {
         fetchWrapper.post(`${baseUrl}/account/apikey`, {}).then((response) => {
             console.log('generateApiKey success');
             console.log(response);
-            accountStore.apiKey = response;
+            accountStore.data.api_key = response;
         });
     } catch (error) {
         console.log('generateApiKey failed');

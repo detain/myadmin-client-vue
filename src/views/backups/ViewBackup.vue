@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -20,17 +20,17 @@ siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
-backupStore.getById(id);
+backupStore.getById(id as string);
 
 const billingStatus = computed(() => {
-    const status = serviceInfo[`${settings.value.PREFIX}_status`];
+    const status = serviceInfo.value.backup_status;
     if (status === 'active') return 'Active';
     if (status === 'pending') return 'Pending';
     if (status === 'expired' || status === 'canceled') return 'Expired/Canceled';
     return '';
 });
 const billingStatusClass = computed(() => {
-    const status = serviceInfo[`${settings.value.PREFIX}_status`];
+    const status = serviceInfo.value.backup_status;
     if (status === 'active') return 'bg-green';
     if (status === 'pending') return 'bg-orange';
     if (status === 'expired' || status === 'canceled') return 'bg-red';
@@ -53,7 +53,7 @@ const billingStatusClass = computed(() => {
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">
-                    {{ serviceInfo[settings.TITLE_FIELD] }}
+                    {{ serviceInfo.backup_ip }}
                 </span>
             </div>
         </div>

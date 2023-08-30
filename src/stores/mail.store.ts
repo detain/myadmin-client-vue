@@ -1,10 +1,45 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import { useAuthStore, useSiteStore } from '@/stores';
+
+interface MailInfo {
+    mail_id: number;
+    mail_username: string;
+    mail_type: number;
+    mail_currency: string;
+    mail_order_date: string;
+    mail_custid: number;
+    mail_quota: number;
+    mail_ip: string;
+    mail_status: string;
+    mail_invoice: number;
+    mail_coupon: number;
+    mail_extra: string;
+    mail_server_status: string;
+    mail_comment: string;
+}
+
+interface MailState {
+    mailList: MailInfo[];
+    serviceInfo: MailInfo;
+    loading: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    serviceType: ServiceType;
+    usage_count: number;
+}
 
 export const useMailStore = defineStore({
     id: 'mail',
-    state: () => ({
+    state: (): MailState => ({
         mailList: [],
         loading: false,
         error: false,
@@ -70,40 +105,30 @@ export const useMailStore = defineStore({
 
     },
     actions: {
-        async register(user) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async getAll() {
+        async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/mail');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
-            } catch (error) {
+                const response = await fetchWrapper.get(baseUrl + '/mail');
+                this.mailList = response;
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/mail/' + id);
                 this.$reset();
@@ -118,12 +143,12 @@ export const useMailStore = defineStore({
                 this.extraInfoTables = response.extraInfoTables;
                 this.serviceType = response.serviceType;
                 this.usage_count = response.usage_count;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -139,16 +164,16 @@ export const useMailStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.mailList.find((x) => x.id === id).isDeleting = true;
+            //this.mailList.find((x) => x.mail_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.mailList = this.mailList.filter((x) => x.id !== id);
+            this.mailList = this.mailList.filter((x) => x.mail_id !== id);
         },
     },
 });

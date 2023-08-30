@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 import BuyIp from '@components/alerts/BuyIp.vue';
@@ -33,7 +33,7 @@ const actions = ref([
     'confirm',
 ]);
 
-const getComponent = (action) => {
+const getComponent = (action: string) => {
     switch (action) {
         case 'eppcode':
             return 'EppCode';
@@ -66,7 +66,7 @@ const getComponent = (action) => {
     }
 };
 
-const getData = (action) => {
+const getData = (action: string) => {
     // Implement the logic to get and return the appropriate data
     // based on the action
     // You can define and return an object with the required variables

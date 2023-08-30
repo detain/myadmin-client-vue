@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -116,7 +116,7 @@ function submitForm() {
                                 </div>
                                 <div class="col-md-9">
                                     <input type="hidden" id="amount" class="form-control" value="1" />
-                                    <input class="price lead form-control form-control-sm text-bold" name="now_cost" type="text" id="now_cost" disabled="disabled" :value="nowCost" />
+                                    <input class="price lead form-control form-control-sm text-bold" name="now_cost" type="text" id="now_cost" disabled :value="nowCost" />
                                     <span class="text-muted text-sm">Prorated amount to be paid now.</span>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ function submitForm() {
                                     <label for="amount" class="col-form-label">Additional Fees ( {{ currency_symbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" id="diff_cost" disabled="disabled" :value="diffCost" />
+                                    <input class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" id="diff_cost" disabled :value="diffCost" />
                                     <span class="text-muted text-sm">Recurring Bill will change by this much</span>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ function submitForm() {
                                     <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currency_symbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" id="repeat_cost" disabled="disabled" :value="repeatCost" />
+                                    <input class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" id="repeat_cost" disabled :value="repeatCost" />
                                     <span class="text-muted text-sm">New invoices will cost this much</span>
                                 </div>
                             </div>

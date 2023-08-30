@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -7,7 +7,7 @@ const domain_lock_status = ref(''); // Assign the value of `$domain_lock_status`
 
 onMounted(() => {
     Swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: '<h3>Domain Lock/Unlock</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -17,7 +17,7 @@ onMounted(() => {
       <p>Do you want to <span class="text-2lg">${domain_lock_status.value === 'Active' ? 'Inactivate' : 'Activate'}</span> domain lock?</p>
     `,
         preConfirm: () => {
-            document.getElementById('lockForm').submit();
+            ((document.getElementById('lockForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

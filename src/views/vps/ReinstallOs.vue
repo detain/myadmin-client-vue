@@ -1,26 +1,27 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
-const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
-const siteStore = useSiteStore();
-const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
-const settings = computed(() => { return props.settings; });
-const serviceInfo = computed(() => { return props.serviceInfo; });
-const serviceMaster = computed(() => { return props.serviceMaster; });
-const vpsTemplates = ref({});
-const osDistro = ref('');
-const osVersion = ref('');
-const templateSelect = ref({});
-const currentOS = ref('');
-const checkVpsPassword = ref(true);
+const props                = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
+const successMsg           = ref('');
+const cancelQueue          = ref('');
+const fields               = ref({});
+const siteStore            = useSiteStore();
+const baseUrl              = siteStore.getBaseUrl();
+const id                   = computed(() => { return props.id; });
+const module               = computed(() => { return props.module; });
+const settings             = computed(() => { return props.settings; });
+const serviceInfo          = computed(() => { return props.serviceInfo; });
+const serviceMaster        = computed(() => { return props.serviceMaster; });
+const vpsTemplates         = ref<VpsTemplates>({});
+const osDistro             = ref('');
+const osVersion            = ref('');
+const templateSelect       = ref({});
+const currentOS            = ref('');
+const checkVpsPassword     = ref(true);
 const checkAccountPassword = ref(true);
+
 const goBackLink = computed(() => {
     if (module.value === 'vps') {
         return `view_${module.value}`;
@@ -28,19 +29,21 @@ const goBackLink = computed(() => {
         return 'view_qs';
     }
 });
+
 const formAction = computed(() => {
     return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
 });
+
 const osDistroSelect = computed(() => {
   const distros = {};
   for (let idx in vpsTemplates.value) {
-      const template = vpsTemplates.value[idx];
+      let template = vpsTemplates.value[idx];
       distros[template.template_os] = template.template_name;
     }
     return distros;
 });
 const getOsDistro = computed(() => {
-    if (vpsTemplates.value.length > 0 && osDistro.value == '') {
+    if (Object.keys(vpsTemplates.value).length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
             for (let idx in vpsTemplates.value) {
               const template = vpsTemplates.value[idx];
@@ -73,9 +76,27 @@ onMounted(() => {
 function updateVPS() {
     // Perform logic for updating VPS based on selected values
 }
+
 function submitForm() {
     // Handle form submission
 }
+
+interface VpsTemplates {
+    [key: string | number]: VpsTemplateRow;
+}
+
+interface VpsTemplateRow {
+    template_id       : number;
+    template_type     : number;
+    template_os       : string;
+    template_version  : string;
+    template_bits     : number;
+    template_file     : string;
+    template_available: number;
+    template_name     : string;
+    template_dir      : string;
+}
+
 try {
     fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response) => {
         console.log(response);

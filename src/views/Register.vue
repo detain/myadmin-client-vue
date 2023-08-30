@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 
@@ -12,7 +12,7 @@ const schema = Yup.object().shape({
     password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
 });
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     const usersStore = useUsersStore();
     const alertStore = useAlertStore();
     try {

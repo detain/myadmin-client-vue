@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -7,7 +7,7 @@ const ip = ref(''); // Assign the value of `$ip` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel License</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your license <span class="text-2lg">${ip.value}</span>?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

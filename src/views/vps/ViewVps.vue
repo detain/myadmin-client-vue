@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -24,8 +24,8 @@ const addonsTableExists = computed(() => {
     return typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons);
 });
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
-
-function loadLink(newLink) {
+const collapsed = ref(false);
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS' });
     siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
@@ -37,7 +37,7 @@ function loadLink(newLink) {
         siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/vps/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
-            if (vpsStore.queue(id, newLink)) {
+            if (vpsStore.queue(id as string, newLink)) {
                 Swal.fire({
                     icon: 'success',
                     html: responseText.value,
@@ -65,22 +65,49 @@ function loadLink(newLink) {
     }
 }
 
+function hideModal() {
+
+}
+
+function onSubmit() {
+
+}
+
+function openModal(type: string, cost: string, name: string, index: number | string) {
+
+}
+
+function showModal(type: string, currencySymbol: string, cost: string, name: string, index: number | string) {
+
+}
+
+function showCPModal() {
+
+}
+
+function toggleCP() {
+
+}
+
+function openPopUp() {
+
+}
+
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
-vpsStore.getById(id);
-
+loadLink(route.params.link as string);
+vpsStore.getById(id as string);
 
 function openCommentForm() {
     $('#commentForm').modal('show');
 }
 
-function numberFormat(value, decimals = 2, separator = '.') {
+function numberFormat(value: string, decimals = 2, separator = '.') {
     if (!value) return '0.00';
     const number = parseFloat(value);
     const sign = number < 0 ? '-' : '';
@@ -91,21 +118,21 @@ function numberFormat(value, decimals = 2, separator = '.') {
     return `${sign}${integerPart}${decimalPart}`;
 }
 
-function capitalize(str) {
+function capitalize(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function getDiskClass() {
-    if (disk_percentage <= 80) {
+    if (disk_percentage.value <= 80) {
         return 'bg-gradient-blue';
-    } else if (80 > disk_percentage && disk_percentage <= 90) {
+    } else if (80 > disk_percentage.value && disk_percentage.value <= 90) {
         return 'bg-gradient-yellow';
     } else {
         return 'bg-gradient-red';
     }
 }
 
-function isEmpty(table) {
+function isEmpty(table: any) {
     return table === null || table === undefined || table.rows.length === 0;
 }
 
@@ -116,26 +143,26 @@ function docReady() {
         const cp = $(this).attr('data-cp');
         if (cp === 'cp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
-            $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
+            $('#cp-name').text($(this).attr('data-name') as string);
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
         } else if (cp === 'da') {
             const lic_cost_type = $(this).attr('data-ser');
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
-            $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
+            $('#cp-name').text($(this).attr('data-name') as string);
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
         } else if (cp === 'pp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
-            $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
+            $('#cp-name').text($(this).attr('data-name') as string);
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
         } else if (cp === 'rs') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
-            $('#cp-name').text($(this).attr('data-name'));
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') : 0).toFixed(2) + ' /mo');
+            $('#cp-name').text($(this).attr('data-name') as string);
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
         }
     });
 }
 
-function toggleFunc(cp) {
+function toggleFunc(cp: string) {
     if (cp === 'cp') {
         $('#warning-text').html('cPanel is not supported by your operating system. To use this control panel you should reinstall <b>"CentOS 7 Cpanel" or "CentOS"</b> operating system.');
     } else if (cp === 'da') {

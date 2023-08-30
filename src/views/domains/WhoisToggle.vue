@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,7 @@ const domain = ref(''); // Assign the value of `$domain` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Whois Privacy Addon</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -18,7 +18,7 @@ onMounted(() => {
       <p>Are you sure want to ${funct.value === 'disableCancel' ? 'Disable & Cancel it.' : 'Enable Whois'} it?</p>
     `,
         preConfirm: () => {
-            document.getElementById('whoisDisableForm').submit();
+            ((document.getElementById('whoisDisableForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

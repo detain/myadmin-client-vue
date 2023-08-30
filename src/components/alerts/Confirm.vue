@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -7,14 +7,14 @@ const html = ref(''); // Assign the value of `$html` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'question',
+        icon: 'question',
         title: '<h3>Are you sure?</h3>',
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes',
         html: html.value,
         preConfirm: () => {
-            document.getElementById('confirmDialog').submit();
+            ((document.getElementById('confirmDialog') as unknown) as HTMLFormElement).submit();
         },
     });
 });

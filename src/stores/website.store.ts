@@ -1,10 +1,62 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import { useAuthStore, useSiteStore } from '@/stores';
+
+interface WebsiteInfo {
+    website_id: number;
+    website_server: number;
+    website_type: number;
+    website_currency: string;
+    website_order_date: string;
+    website_custid: number;
+    website_ip: string;
+    website_status: string;
+    website_invoice: number;
+    website_coupon: number;
+    website_extra: string;
+    website_hostname: string;
+    website_comment: string;
+    website_username: string;
+    website_server_status: string;
+}
+
+interface WebsiteServiceMaster {
+    website_id: number;
+    website_name: string;
+    website_ip: string;
+    website_type: number;
+    website_available: number;
+    website_hdsize: number;
+    website_hdfree: number;
+    website_load: number;
+    website_last_update: string;
+    website_max_sites: number;
+    website_order: number;
+    website_partitions: string;
+    website_dns1: string;
+    website_dns2: string;
+}
+
+interface WebsiteState {
+    websiteList: WebsiteInfo[];
+    serviceInfo: WebsiteInfo;
+    serviceMaster: WebsiteServiceMaster;
+    loading: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+}
 
 export const useWebsiteStore = defineStore({
     id: 'website',
-    state: () => ({
+    state: (): WebsiteState => ({
         websiteList: [],
         loading: false,
         error: false,
@@ -54,7 +106,7 @@ export const useWebsiteStore = defineStore({
             website_last_update: '',
             website_max_sites: 300,
             website_order: 0,
-            website_partitions: null,
+            website_partitions: '',
             website_dns1: '',
             website_dns2: '',
         },
@@ -78,40 +130,30 @@ export const useWebsiteStore = defineStore({
 
     },
     actions: {
-        async register(user) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async getAll() {
+        async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/websites');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
-            } catch (error) {
+                const response = await fetchWrapper.get(baseUrl + '/websites');
+                this.websiteList = response;
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/websites/' + id);
                 this.$reset();
@@ -140,37 +182,33 @@ export const useWebsiteStore = defineStore({
                     }
                 }
                 */
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
-
             // update stored user if the logged in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage
                 const user = { ...authStore.user, ...params };
                 localStorage.setItem('user', JSON.stringify(user));
-
                 // update auth user in pinia state
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.websiteList.find((x) => x.id === id).isDeleting = true;
-
+            //this.websiteList.find((x) => x.website_id === id).isDeleting = true;
             await fetchWrapper.delete(`${baseUrl}/${id}`);
-
             // remove user from list after deleted
-            this.websiteList = this.websiteList.filter((x) => x.id !== id);
+            this.websiteList = this.websiteList.filter((x) => x.website_id !== id);
         },
     },
 });

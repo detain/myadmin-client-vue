@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
@@ -14,13 +14,17 @@ const schema = Yup.object().shape({
     login: Yup.string().required('Username is required'),
     passwd: Yup.string().required('Password is required'),
 });
-
-async function onSubmit(values) {
+interface LoginParams {
+    login : string;
+    passwd: string;
+    tfa?: string;
+}
+async function onSubmit(values: any) {
     const authStore = useAuthStore();
     const siteStore = useSiteStore();
     console.log('Values:');
     console.log(values);
-    const loginParams = {
+    const loginParams: LoginParams = {
         login: values.login,
         passwd: values.passwd,
     };

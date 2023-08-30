@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
@@ -22,12 +22,10 @@ siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Account Settings' });
 const baseUrl = siteStore.getBaseUrl();
 
-async function logOutOauth(type) {
+async function logOutOauth(type: string) {
     try {
         fetchWrapper
-            .get(`${baseUrl}/account/oauth/logout`, {
-                type: type,
-            })
+            .get(`${baseUrl}/account/oauth/${type}/logout`)
             .then((response) => {
                 console.log('unlinkOauth success');
                 console.log(response);
@@ -38,7 +36,7 @@ async function logOutOauth(type) {
     }
 }
 
-async function unlinkOauth(type) {
+async function unlinkOauth(type: string) {
     try {
         fetchWrapper
             .delete(`${baseUrl}/account/oauth/${type}`)

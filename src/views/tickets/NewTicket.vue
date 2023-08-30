@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '@/stores';
 import { ref, computed } from 'vue';
@@ -21,6 +21,7 @@ const products = {
     2: 'Product 2',
     // add more products as needed
 };
+const subject = ref('');
 const kyDept = ref('');
 const ima = ref('admin');
 const abuse = '';

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
@@ -30,13 +30,27 @@ const ttl = ref('');
 
 let dt;
 const limitStatus = ref('active');
-const limitStatusMap = {
+
+interface DnsRecordRow {
+    id     : number;
+    name   : string;
+    type   : string;
+    content: string;
+    prio   : string;
+    ttl    : string;
+}
+
+interface LimitStatusMap {
+    [key: string]: string[];
+}
+
+const limitStatusMap: LimitStatusMap = {
     active: ['active'],
     pending: ['pending', 'pending-setup', 'pend-approval'],
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<DnsRecordRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'id' }, { data: 'name' }, { data: 'content' }, { name: 'link', data: 'link', sortable: false }];
@@ -51,26 +65,26 @@ const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
         return data.value;
     } else {
-        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.backup_status));
+        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.content));
     }
 });
 
 const recordId = ref(0);
 const recordRow = ref({});
 
-async function cancelEditRecord(event) {
+async function cancelEditRecord(event: Event) {
     recordId.value = 0;
 }
 
-async function cancelAddRecord(event) {
+async function cancelAddRecord(event: Event) {
     showingAddRecord.value = false;
 }
 
-async function showAddDnsRecord(event) {
+async function showAddDnsRecord(event: Event) {
     showingAddRecord.value = true;
 }
 
-async function editDnsRecord(event) {
+async function editDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper.post(baseUrl + '/dns/' + id, recordRow.value).then((response) => {
@@ -92,7 +106,7 @@ async function editDnsRecord(event) {
     }
 }
 
-async function addDnsRecord(event) {
+async function addDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper
@@ -122,8 +136,8 @@ async function addDnsRecord(event) {
     }
 }
 
-async function showEditRecord(event) {
-    recordId.value = event.target.getAttribute('data-id');
+async function showEditRecord(event: Event) {
+    recordId.value = Number((event.target as HTMLElement).getAttribute('data-id'));
   let row, rowIdx;
   for (rowIdx in data.value) {
         row = data.value[rowIdx];
@@ -133,8 +147,8 @@ async function showEditRecord(event) {
     }
 }
 
-async function deleteRecord(event) {
-  const record = event.target.getAttribute('data-id');
+async function deleteRecord(event: Event) {
+  const record = (event.target as HTMLElement).getAttribute('data-id');
   console.log(record);
     Swal.fire({
         icon: 'error',
@@ -146,7 +160,7 @@ async function deleteRecord(event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id.value).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns(data, {});
@@ -255,21 +269,21 @@ loadDns(id, data);
                     </tr>
                     <tr v-for="(row, rowIndex) in data" :key="rowIndex">
                         <template v-if="recordId == row.id">
-                            <td>{{ recordRow.id }}</td>
+                            <td>{{ row.id }}</td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="recordRow.name" />
-                                    <input class="form-control form-control-sm" value="" disabled="" readonly="" />
+                                    <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="row.name" />
+                                    <input class="form-control form-control-sm" value="" disabled readonly />
                                 </div>
                             </td>
                             <td>
-                                <select class="form-control" style="width: 100% !important" v-model="recordRow.type">
+                                <select class="form-control" style="width: 100% !important" v-model="row.type">
                                     <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
                                 </select>
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="recordRow.content" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="recordRow.prio" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="recordRow.ttl" /></td>
+                            <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="row.content" /></td>
+                            <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="row.prio" /></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="row.ttl" /></td>
                             <td>
                                 <a href="#" @click.prevent="editDnsRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
                                 <a href="#" @click.prevent="cancelEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>

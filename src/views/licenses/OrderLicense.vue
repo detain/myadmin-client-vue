@@ -1,15 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
-const catTag = ref(route.params.catTag);
+const catTag = ref<string>(route.params.catTag as string);
 const step = ref('license_types');
 updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
@@ -25,7 +26,16 @@ function updateBreadcrums() {
         siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type', ['/licenses/order/' + catTag.value]: 'Order License' });
     }
 }
-const getLicenses = ref({
+interface GetLicensesRow {
+    name       : string;
+    description: string;
+    image: string;
+    order: number;
+}
+interface GetLicenses {
+    [key: string]: GetLicensesRow;
+}
+const getLicenses = ref<GetLicenses>({
     directadmin: {
         name: 'DirectAdmin',
         description: 'DirectAdmin is a graphical web-based web hosting control panel allowing administration of websites through a web browser. The software is configurable to enable standalone, reseller, and shared web hosting from a single instance.',
@@ -64,10 +74,23 @@ const getLicenses = ref({
     },
 });
 const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
-const packageCosts = ref({});
-const serviceTypes = ref({});
-const serviceCategories = ref({});
-const packageId = ref(0);
+const packageCosts    = ref({});
+const serviceTypes    = ref<ServiceTypes>({});
+
+
+interface ServiceCategory {
+    category_id: number;
+    category_name: string;
+    category_tag: string;
+    category_module: string;
+}
+
+interface ServiceCategories {
+    [key: string]: ServiceCategory;
+}
+
+const serviceCategories = ref<ServiceCategories>({});
+const packageId = ref<number | string>(0);
 const validateResponse = ref({});
 const getCatId = computed(() => {
     for (const catId in serviceCategories.value) {
@@ -80,7 +103,7 @@ const getCatId = computed(() => {
 const getServiceTypes = computed(() => {
     const catId = getCatId.value;
     console.log(catId);
-    let types = {};
+    let types: ServiceTypes = {};
     for (const serviceId in serviceTypes.value) {
         if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId))) {
             types[serviceId] = serviceTypes.value[serviceId];
@@ -88,6 +111,10 @@ const getServiceTypes = computed(() => {
     }
     return types;
 });
+
+function updateCoupon() {
+
+}
 
 function updatePrice() {
 
@@ -97,8 +124,8 @@ function checkAvailability() {
 
 }
 
-function orderLicenseType(type) {
-    catTag.value = type;
+function orderLicenseType(type: string | number) {
+    catTag.value = type as string;
     packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
@@ -110,7 +137,7 @@ function submitForm() {
 }
 
 function submitLicenseForm() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -127,18 +154,22 @@ function submitLicenseForm() {
                 'package': packageId.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
-                    route.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('caught error:');
         console.log(error);
     }
+
+}
+
+function editForm() {
 
 }
 
@@ -270,7 +301,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-12 pkg_det">{{ serviceTypes[packageId].services_details }}</div>
+                            <div class="col-md-12 pkg_det">{{ serviceTypes[Number(packageId)].services_details }}</div>
                         </div>
                     </div>
                 </div>
@@ -306,7 +337,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[packageId].services_name }}</div>
+                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[Number(packageId)].services_name }}</div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm()" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>

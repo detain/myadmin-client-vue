@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
@@ -12,7 +12,7 @@ siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Account Settings' });
 const baseUrl = siteStore.getBaseUrl();
 
-const { loading, error, custid, ima, link, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
+const { loading, error, custid, ima, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
 
 accountStore.load();
 </script>

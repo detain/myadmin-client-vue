@@ -1,18 +1,56 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
 siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website' });
 const baseUrl = siteStore.getBaseUrl();
 
+interface Package extends ServiceType {
+    services_html: string;
+    services_description: string;
+    services_moreinfo_url: string;
+}
+
+interface Packages {
+    [key: number]: Package;
+}
+
+interface ServiceOffers {
+    [key: number]: ServiceOffer[];
+}
+
+interface PackageIds {
+    [key: number]: string;
+}
+
+interface JsonServices {
+    [key: number]: string;
+}
+
+interface ServiceOffer {
+    service_offer_id: number;
+    service_id: number;
+    intro_cost: number;
+    renewal_cost: number;
+    intro_frequency: number;
+    renewal_frequency: number;
+    allow_coupon: number;
+    service_module: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
+}
+
 const step = ref('order_form');
-const packageId = ref('');
+const packageId = ref(11363);
 const period = ref(1);
 const serviceOfferId = ref(0);
 const enableDomainRegistering = ref({});
@@ -22,12 +60,11 @@ const currencySymbol = ref('$');
 const hostname = ref('');
 const rootpass = ref('');
 const coupon = ref('');
-const serviceTypes = ref({});
-const serviceOffers = ref({});
-const packges = ref({});
-const packages = ref({});
-const jsonServices = ref({});
-const jsonServiceOffers = ref({});
+const serviceTypes = ref<Packages>({});
+const serviceOffers = ref<ServiceOffers>({});
+const packages = ref<Packages>({});
+const jsonServices = ref<JsonServices>({});
+const jsonServiceOffers = ref<ServiceOffers>({});
 const formData = reactive({
     step: step,
     packageId: packageId,
@@ -40,8 +77,8 @@ const formData = reactive({
     rootpass: rootpass,
     coupon: coupon,
     serviceOfferId: serviceOfferId,
-    'serviceOffers[packageId]': serviceOffers[packageId] ? serviceOffers[packageId] : {},
-    'serviceTypes[packageId]': serviceTypes[packageId] ? serviceTypes[packageId] : {},
+    'serviceOffers[packageId]': serviceOffers.value[packageId.value] ? serviceOffers.value[packageId.value] : {},
+    'serviceTypes[packageId]': serviceTypes.value[packageId.value] ? serviceTypes.value[packageId.value] : {},
     //    jsonServices: jsonServices,
     //    jsonServiceOffers: jsonServiceOffers,
     //    packges: packges,
@@ -56,9 +93,17 @@ const totalCost = computed(() => {
     return total;
 });
 
+function updateCoupon() {
+
+}
+
+function updatePrice(event: Event, force: boolean = false) {
+
+}
+
 async function onSubmit() {
     try {
-        let loading = Swal.fire({
+        Swal.fire({
             title: '',
             html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
             allowOutsideClick: false,
@@ -74,7 +119,7 @@ async function onSubmit() {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 step.value = 'order_confirm';
                 console.log('website order validated');
                 console.log(response);
@@ -101,7 +146,7 @@ async function onSubmitConfirmation() {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    route.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
 
             });
@@ -119,30 +164,31 @@ async function searchDomain() {
     });
 }
 
-let loading = Swal.fire({
+Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
 fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
-    loading.close();
+    Swal.close();
     console.log('Response:');
     console.log(response);
     step.value = response.step;
-    packageId.value = response.website;
+    if (response.website == '') {
+        packageId.value = 11363;
+    } else {
+        packageId.value = response.website;
+    }
     period.value = response.period;
     serviceOfferId.value = response.serviceOfferId;
     serviceTypes.value = response.serviceTypes;
     serviceOffers.value = response.serviceOffers;
-    packges.value = response.packges;
-    packages.value = response.packages;
+    packages.value = response.packges;
+    //packages.value = response.packages;
     enableDomainRegistering.value = response.enableDomainRegistering;
     jsonServices.value = response.jsonServices;
     jsonServiceOffers.value = response.jsonServiceOffers;
-    if (packageId.value == '') {
-        packageId.value = 11363;
-    }
 });
 </script>
 
@@ -169,7 +215,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
                                                 <template v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && (serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting')">
-                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === '11363' ? '4px solid #007bff' : '' }">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === 11363 ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
@@ -178,9 +224,9 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                                         <label :for="serviceData.services_name">
                                                                             {{ serviceData.services_name }}<br />
                                                                             <div class="text-muted font-italic mt-1 text-sm">
-                                                                                <template v-if="serviceData.services_category === '200'"> ( cPanel ) </template>
-                                                                                <template v-else-if="serviceData.services_category === '204'"> ( DirectAdmin ) </template>
-                                                                                <template v-else-if="serviceData.services_category === '202'"> ( Plesk ) </template>
+                                                                                <template v-if="serviceData.services_category == 200"> ( cPanel ) </template>
+                                                                                <template v-else-if="serviceData.services_category == 204"> ( DirectAdmin ) </template>
+                                                                                <template v-else-if="serviceData.services_category == 202"> ( Plesk ) </template>
                                                                             </div>
                                                                         </label>
                                                                     </div>
@@ -189,7 +235,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="service_details">
-                                                                <template v-if="serviceData.services_id === '11363'">
+                                                                <template v-if="serviceData.services_id == 11363">
                                                                     <div class="ribbon-wrapper">
                                                                         <div class="ribbon bg-primary">Popular</div>
                                                                     </div>
@@ -222,7 +268,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                         </div>
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
-                                                <div v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{ width: '48%', border: serviceData.services_id === '11363' ? '4px solid #007bff' : '' }">
+                                                <div v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && serviceData.services_field1 === 'reseller'" class="card mx-1" :style="{ width: '48%', border: serviceData.services_id == 11363 ? '4px solid #007bff' : '' }">
                                                     <div class="card-header">
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
@@ -231,9 +277,9 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                                     <label :for="serviceData.services_name">
                                                                         {{ serviceData.services_name }}<br />
                                                                         <div class="text-muted font-italic mt-1 text-sm">
-                                                                            <span v-if="serviceData.services_category === '200'">( cPanel )</span>
-                                                                            <span v-else-if="serviceData.services_category === '204'">( DirectAdmin )</span>
-                                                                            <span v-else-if="serviceData.services_category === '202'">( Plesk )</span>
+                                                                            <span v-if="serviceData.services_category == 200">( cPanel )</span>
+                                                                            <span v-else-if="serviceData.services_category == 204">( DirectAdmin )</span>
+                                                                            <span v-else-if="serviceData.services_category == 202">( Plesk )</span>
                                                                         </div>
                                                                     </label>
                                                                 </div>
@@ -270,13 +316,13 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice(true)" />
+                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice($event, true)" />
                                                             <label :for="serviceData.services_name">
                                                                 {{ serviceData.services_name }}<br />
                                                                 <div class="text-muted font-italic mt-1 text-sm">
-                                                                    <template v-if="serviceData.services_category == '200'">( cPanel )</template>
-                                                                    <template v-else-if="serviceData.services_category == '204'">( DirectAdmin )</template>
-                                                                    <template v-else-if="serviceData.services_category == '202'">( Plesk )</template>
+                                                                    <template v-if="serviceData.services_category == 200">( cPanel )</template>
+                                                                    <template v-else-if="serviceData.services_category == 204">( DirectAdmin )</template>
+                                                                    <template v-else-if="serviceData.services_category == 202">( Plesk )</template>
                                                                 </div>
                                                             </label>
                                                         </div>
@@ -285,7 +331,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                             </div>
                                             <div class="card-body">
                                                 <div class="service_details">
-                                                    <template v-if="serviceData.services_id == '11363'">
+                                                    <template v-if="serviceData.services_id == 11363">
                                                         <div class="ribbon-wrapper">
                                                             <div class="ribbon bg-primary">Popular</div>
                                                         </div>

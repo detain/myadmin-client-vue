@@ -1,10 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, useRouter, RouterLink } from 'vue-router';
+import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
@@ -17,14 +19,14 @@ const currencySymbol = ref('$');
 const custid = ref(2773);
 const ima = ref('client');
 const qsId = ref(0);
-const serverDetails = ref({});
+const serverDetails = ref<ServerDetails>({});
 const osVersion = ref('');
 const osDistro = ref('Ubuntu');
 const version = ref({});
 const rootpass = ref('');
 const hostname = ref('');
 const tos = ref(false);
-const osTemplates = ref({});
+const osTemplates = ref<Templates>({});
 const osVersionSelect = ref({});
 watch([osTemplates, osDistro, osVersion], ([newTemplates, newDistro, newVersion], [oldTemplates, oldDistro, oldVersion]) => {
     let entries, lastEntry, lastKey, lastValue;
@@ -77,7 +79,7 @@ async function onSubmit() {
 }
 
 async function onSubmitConfirmation() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -93,28 +95,60 @@ async function onSubmitConfirmation() {
             tos: tos.value,
         })
         .then((response) => {
-            loading.close();
+            Swal.close();
             console.log('qs order placed');
             console.log(response);
             if (response['success'] == true) {
-                route.push('/cart/'+response.iids.join(','));
+                router.push('/cart/'+response.iids.join(','));
             }
         });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('qs order place failed');
         console.log(error);
     }
 }
 
-let loading = Swal.fire({
+interface ServerDetails {
+    [key: number]: {
+        cpu  : string;
+        ram  : string;
+        hd   : string;
+        cores: number;
+        cost: string;
+    }
+}
+
+interface Templates {
+    [key: string]: {
+        64: [string, string][];
+    }
+}
+
+interface Version {
+    [key: string]: string;
+}
+
+interface DistroSel {
+    [key: string]: string;
+}
+
+interface QsOrderResponse {
+    qs_id: number;
+    server_details: ServerDetails;
+    templates: Templates;
+    version: Version;
+    distro_sel: DistroSel;
+}
+
+Swal.fire({
     title: '',
     html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/qs/order').then((response) => {
-    loading.close();
+fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
+    Swal.close();
     console.log('Response:');
     console.log(response);
     serverDetails.value = response.server_details;

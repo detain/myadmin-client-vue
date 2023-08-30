@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '@/stores';
 import { ref, computed } from 'vue';
@@ -6,7 +6,9 @@ import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 
 const showToggle = ref(false);
-const inputFile = ref('');
+const inputFile  = ref('');
+const success    = ref<string | boolean>(false);
+const failed     = ref<string | boolean>(false);
 
 function toggleToggle() {
     showToggle.value = !showToggle.value;
@@ -23,7 +25,7 @@ function resetFile() {
 
 $(document).ready(function () {
     $('.ssh-toggle').hide();
-    $('.ssh-root').click(function (event) {
+    $('.ssh-root').click(function (event: Event) {
         event.preventDefault();
         $('.ssh-toggle').toggle();
     });
@@ -114,7 +116,7 @@ function bs_input_file() {
                                 <label for="status" class="col-sm-4 col-form-label">Status</label>
                                 <div class="col-sm-8">
                                     <select name="status" class="form-control form-control-sm select2" style="width: 100%">
-                                        <option value="4" selected="selected">Open</option>
+                                        <option value="4" selected>Open</option>
                                         <option value="5">On Hold</option>
                                         <option value="6">Close</option>
                                     </select>

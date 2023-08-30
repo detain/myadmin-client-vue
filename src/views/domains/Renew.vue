@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -11,7 +11,7 @@ const siteStore = useSiteStore();
 
 const renewCost = ref('{$formValues.renewCost}');
 const whoisCost = ref('{$formValues.whoisCost}');
-const whoisPrivacy = ref('{$whoisPrivacy}');
+const whoisPrivacy = ref<string | boolean>(false);
 const currencySymbol = ref('{$currencySymbol}');
 const formValues = ref({
     serviceInfo: {
@@ -25,12 +25,12 @@ const tldInfo = ref({
     tld_whois_privacy_available: '{$tldInfo.tld_whois_privacy_available}',
 });
 const renewCostFormatted = computed(() => {
-    return parseFloat(renewCost)
+    return parseFloat(renewCost.value)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
 const whoisCostFormatted = computed(() => {
-    return parseFloat(whoisCost)
+    return parseFloat(whoisCost.value)
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
@@ -102,7 +102,7 @@ function renewCalculate() {
                                 <div class="col-sm-9 input-group">
                                     <select name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl" id="whois_privacy" @change="renewCalculate">
                                         <option value="enable" :selected="whoisPrivacy === 'enabled'">Enable</option>
-                                        <option value="disable" :selected="!whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === '' || whoisPrivacy === false">Disable</option>
+                                        <option value="disable" :selected="whoisPrivacy === false || !whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === ''">Disable</option>
                                     </select>
                                 </div>
                             </div>

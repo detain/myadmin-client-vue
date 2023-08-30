@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -15,9 +15,7 @@ const module = computed(() => { return props.module; });
 const goBackLink = ref('');
 const protocols = ref('https');
 const links = ref(['https://templates.is.cc/knoppix/KNOPPIX_V9.1CD-2021-01-25-EN.iso', 'https://templates.is.cc/systemrescuecd/systemrescue-7.01-amd64.iso']);
-function submitForm(event) {
-    // Handle form submission
-    event.preventDefault();
+function submitForm() {
     // Perform logic for form submission
 }
 </script>
@@ -38,7 +36,7 @@ function submitForm(event) {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit="submitForm">
+                    <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="insert_cd" />
                         <div class="form-group">
                             <div class="row">

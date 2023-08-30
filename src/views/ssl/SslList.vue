@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
@@ -20,13 +20,26 @@ const baseUrl = siteStore.getBaseUrl();
 
 let dt;
 const limitStatus = ref('active');
-const limitStatusMap = {
+interface LimitStatusMap {
+    [key: string]: string[];
+}
+
+const limitStatusMap: LimitStatusMap = {
     active: ['active'],
     pending: ['pending', 'pending-setup', 'pend-approval'],
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+
+interface SslListRow {
+    ssl_id      : number;
+    ssl_hostname: string;
+    services_name: string;
+    ssl_status  : string;
+    ssl_company: string;
+}
+
+const data = ref<SslListRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'ssl_id' }, { data: 'ssl_hostname' }, { data: 'ssl_expire_date' }, { data: 'cost' }, { data: 'ssl_status' }, { name: 'link', data: 'link', sortable: false }];
@@ -47,17 +60,14 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print() {
+function crud_print(): void {
 
 }
 
-function crud_export(event) {
-    const exportType = event.currentTarget.parentElement.getAttribute('data-type');
+function crud_export(exportType: string): void {
     console.log(exportType);
-
 }
-
-const loadSsl = async (data) => {
+const loadSsl = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/ssl');
         console.log('api success');
@@ -69,7 +79,7 @@ const loadSsl = async (data) => {
     }
 };
 
-loadSsl(data);
+loadSsl();
 </script>
 
 <template>
@@ -91,37 +101,37 @@ loadSsl(data);
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
-                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export($event)"><img src="/images/crud/xlsx.png" alt="" /> XLSX</a>
+                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="/images/crud/xlsx.png" alt="" /> XLSX</a>
                                     </li>
                                     <li role="presentation" data-type="xls">
-                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export($event)"><img src="/images/crud/xls.png" alt="" /> XLS</a>
+                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export('xls')"><img src="/images/crud/xls.png" alt="" /> XLS</a>
                                     </li>
                                     <li role="presentation" data-type="ods">
-                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export($event)"><img src="/images/crud/ods.png" alt="" /> ODS</a>
+                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export('ods')"><img src="/images/crud/ods.png" alt="" /> ODS</a>
                                     </li>
                                     <li role="presentation" data-type="pdf">
-                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export($event)"><img src="/images/crud/pdf.png" alt="" /> PDF</a>
+                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export('pdf')"><img src="/images/crud/pdf.png" alt="" /> PDF</a>
                                     </li>
                                     <li role="presentation" data-type="xml">
-                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export($event)"><img src="/images/crud/xml.png" alt="" /> XML</a>
+                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export('xml')"><img src="/images/crud/xml.png" alt="" /> XML</a>
                                     </li>
                                     <li role="presentation" data-type="php">
-                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export($event)"><img src="/images/crud/php.png" alt="" /> PHP</a>
+                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export('php')"><img src="/images/crud/php.png" alt="" /> PHP</a>
                                     </li>
                                     <li role="presentation" data-type="csv">
-                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export($event)"><img src="/images/crud/csv.png" alt="" /> CSV</a>
+                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export('csv')"><img src="/images/crud/csv.png" alt="" /> CSV</a>
                                     </li>
                                     <li role="presentation" data-type="json">
-                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export($event)"><img src="/images/crud/json.png" alt="" /> JSON</a>
+                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export('json')"><img src="/images/crud/json.png" alt="" /> JSON</a>
                                     </li>
                                     <li role="presentation" data-type="bbcode">
-                                        <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export($event)"><img src="/images/crud/bbcode.png" alt="" /> BBCODE</a>
+                                        <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export('bbcode')"><img src="/images/crud/bbcode.png" alt="" /> BBCODE</a>
                                     </li>
                                     <li role="presentation" data-type="wiki">
-                                        <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export($event)"><img src="/images/crud/wiki.png" alt="" /> WIKI</a>
+                                        <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export('wiki')"><img src="/images/crud/wiki.png" alt="" /> WIKI</a>
                                     </li>
                                     <li role="presentation" data-type="markdown">
-                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export($event)"><img src="/images/crud/markdown.png" alt="" /> MARKDOWN</a>
+                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export('markdown')"><img src="/images/crud/markdown.png" alt="" /> MARKDOWN</a>
                                     </li>
                                 </ul>
                             </div>
@@ -146,8 +156,8 @@ loadSsl(data);
                                         <tr>
                                             <th>Service ID</th>
                                             <th>Ssl Name</th>
-                                            <th>Ssl Expiration Date</th>
-                                            <th>Cost</th>
+                                            <th>Company</th>
+                                            <th>Package</th>
                                             <th>Billing Status</th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -158,8 +168,8 @@ loadSsl(data);
                                             <td>
                                                 <router-link :to="'ssl/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
                                             </td>
-                                            <td>{{ row.ssl_expire_date }}</td>
-                                            <td>{{ row.cost }}</td>
+                                            <td>{{ row.ssl_company }}</td>
+                                            <td>{{ row.services_name }}</td>
                                             <td>{{ row.ssl_status }}</td>
                                             <td>
                                                 <router-link :to="'ssl/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>

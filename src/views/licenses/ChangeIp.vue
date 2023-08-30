@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -12,9 +12,7 @@ const siteStore = useSiteStore();
 //const id = ref('');
 const ip = ref('');
 const newIp = ref(''); // Data binding for the "new_ip" input field
-function handleSubmit(event) {
-    event.preventDefault();
-    // Handle the form submission here
+function handleSubmit() {
     // You can access the submitted values using id and newIp
 }
 </script>
@@ -32,7 +30,7 @@ function handleSubmit(event) {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit="handleSubmit">
+                    <form @submit.prevent="handleSubmit">
                         <input type="hidden" name="link" value="change_ip" />
                         <div class="form-group">
                             <div class="form-group row">

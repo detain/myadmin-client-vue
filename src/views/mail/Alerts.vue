@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -10,12 +10,12 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 
-const alerts = ref([]);
+const alerts = ref<AlertRow[]>([]);
 const types_sel = ref({});
 //const id = ref('');
 const defaultTo = ref('');
 const action = ref('');
-const alertId = ref('');
+const alertId = ref(0);
 const selectedType = ref('');
 const value = ref('');
 const to = ref('');
@@ -26,7 +26,7 @@ const modalTitle = computed(() => {
 const isEmpty = computed(() => {
     return alerts.value.length === 0;
 });
-function editAlert(formAct, formId, formType, formValue, formTo, formEnabled = false) {
+function editAlert(formAct: string, formId: number, formType: string, formValue: string, formTo: string, formEnabled: boolean = false) {
     action.value = formAct;
     alertId.value = formId;
     selectedType.value = formType;
@@ -39,6 +39,21 @@ function editAlert(formAct, formId, formType, formValue, formTo, formEnabled = f
 function submitBlock() {
     // Handle form submission here
 }
+
+interface AlertRow {
+    alert_id      : number;
+    alert_module  : string;
+    alert_service : number;
+    alert_enabled : number;
+    alert_type    : string;
+    alert_value   : string;
+    alert_notifier: string;
+    alert_to      : string;
+    alert_created : string;
+    alert_updated : string;
+    alert_used    : string;
+}
+
 </script>
 
 <template>
@@ -48,7 +63,7 @@ function submitBlock() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fa fa-bell"></i> Alerts</h3>
                     <div class="card-tools">
-                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', '', '', '', defaultTo, '')"> <i class="fa fa-plus"></i> Add New </a>
+                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', '', '', '', defaultTo)"> <i class="fa fa-plus"></i> Add New </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -58,7 +73,7 @@ function submitBlock() {
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
-                    <template v-if="!isEmpty(alerts)">
+                    <template v-if="alerts.length > 0">
                         <table class="table-sm table">
                             <thead>
                                 <tr>

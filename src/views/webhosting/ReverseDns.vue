@@ -1,14 +1,23 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 //const id = ref('');
-const successMsg = ref('');
+const successMsg  = ref('');
 const cancelQueue = ref('');
-const fields = ref({});
-const siteStore = useSiteStore();
+const fields      = ref<Fields>({});
+const siteStore   = useSiteStore();
+
+interface Fields {
+    [key: string]: {
+        help_text: string;
+        name     : string;
+        value    : string;
+    }
+}
+
 function submitForm() {
     // Perform necessary form submission logic here
 }

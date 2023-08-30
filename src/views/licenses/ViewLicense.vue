@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -17,7 +17,7 @@ const settings = computed(() => { return modules.value[module]; });
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'License' });
     siteStore.addBreadcrum('/licenses/' + id, 'View License ' + id);
@@ -37,13 +37,13 @@ function loadLink(newLink) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
-licenseStore.getById(id);
+licenseStore.getById(id as string);
 </script>
 
 <template>
@@ -61,12 +61,12 @@ licenseStore.getById(id);
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
-                    <b>{{ serviceInfo[settings.TITLE_FIELD] }}</b>
+                    <b>{{ serviceInfo.license_ip }}</b>
                 </div>
             </div>
         </div>
         <div :class="`col-md-${serviceOverviewExtra ? '3' : '4'}`">
-            <div :class="['small-box', serviceInfo[`${settings.PREFIX}_status`] === 'active' ? 'bg-success' : '', serviceInfo[`${settings.PREFIX}_status`] === 'pending' ? 'bg-orange' : '', serviceInfo[`${settings.PREFIX}_status`] === 'expired' || serviceInfo[`${settings.PREFIX}_status`] === 'canceled' ? 'bg-red' : '']">
+            <div :class="['small-box', serviceInfo.license_status === 'active' ? 'bg-success' : '', serviceInfo.license_status === 'pending' ? 'bg-orange' : '', serviceInfo.license_status === 'expired' || serviceInfo.license_status === 'canceled' ? 'bg-red' : '']">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Billing</h3>
                     <p class="my-2 py-3">
@@ -92,7 +92,7 @@ licenseStore.getById(id);
                             <b>{{ serviceInfo.license_hostname }}</b>
                         </p>
                     </template>
-                    <template v-if="serviceExtra && serviceType.services_category === '507'">
+                    <template v-if="serviceExtra && serviceType.services_category === 507">
                         <p>
                             Activation Key: <b>{{ serviceExtra[1] }}</b>
                         </p>
@@ -153,7 +153,7 @@ licenseStore.getById(id);
                     <div class="card-body">
                         <table class="table-bordered table">
                             <tbody>
-                                <tr v-for="itemvalue in extraInfoTables.ip_info.rows" :key="itemvalue">
+                                <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
                                     <td>{{ itemvalue.desc }}</td>
                                     <td class="text-success">{{ itemvalue.value }}</td>
                                 </tr>

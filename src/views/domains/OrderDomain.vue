@@ -1,35 +1,40 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
 siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
-const baseUrl = siteStore.getBaseUrl();
-const route = useRoute();
-const router = useRouter();
-const hostname = ref('');
-const ima = ref('client');
-const custid = ref('2773');
+const baseUrl          = siteStore.getBaseUrl();
+const route            = useRoute();
+const router           = useRouter();
+const hostname         = ref('');
+const ima              = ref('client');
+const custid           = ref('2773');
 const whoisPrivacyCost = ref(0);
-const domainResult = ref(null);
-const domainType = ref('register');
-const lookups = ref({});
-const suggestions = ref({});
-const packageInfo = ref({});
-const errors = ref({});
-const searchResponse = ref(null);
-const services = ref({});
-const tldServices = ref({});
-const domainFields = ref({});
+const whoisPrivacy     = ref('disable');
+const domainResult     = ref<DomainResult | null>(null);
+const domainType       = ref('register');
+const lookups          = ref<Lookups>({ items: {} });
+const suggestions      = ref<Suggestions>({ items: [] });
+const packageInfo      = ref<ServiceType | null>(null);
+const errors           = ref<string[]>([]);
+const searchResponse   = ref<SearchDomainResult | null>(null);
+const services         = ref<ServiceTypes>({});
+const tldServices      = ref({});
+const domainFields     = ref<DomainFields>({});
+const domainCost       = ref(0);
+const termsAgreed = ref(false);
 const domain = computed(() => {
-    return route.params.domain;
+    return route.params.domain as string;
 });
 const regType = computed(() => {
-    return route.params.regType;
+    return route.params.regType as string;
 });
 const display = ref('step1');
 
@@ -69,8 +74,9 @@ fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     tldServices.value = response.tldServices;
 });
 
+
 function searchDomain() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
         allowOutsideClick: false,
@@ -80,8 +86,8 @@ function searchDomain() {
         .put(baseUrl + '/domains/order', {
             hostname: hostname.value,
         })
-        .then((response) => {
-            loading.close();
+        .then((response: SearchDomainResult) => {
+            Swal.close();
             searchResponse.value = response;
             console.log('PUT Response:');
             console.log(response);
@@ -94,8 +100,12 @@ function searchDomain() {
         });
 }
 
+function clearInput() {
+
+}
+
 function getDomainFields() {
-    let loading = Swal.fire({
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
         allowOutsideClick: false,
@@ -106,13 +116,20 @@ function getDomainFields() {
             hostname: hostname.value,
             type: domainType.value,
         })
-        .then((response) => {
-            loading.close();
-            searchResponse.value = response;
+        .then((response: DomainFieldsResponse) => {
+            Swal.close();
             console.log('PATCH Response:');
             console.log(response);
             domainFields.value = response.domainFields;
         });
+}
+
+function edit_form() {
+
+}
+
+function placeOrder() {
+
 }
 
 updateStep();
@@ -125,7 +142,7 @@ updateStep();
             <form @submit.prevent="router.push(`/domains/order/${hostname}`)" class="search-domain">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
-                        <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus="autofocus" @focus="clearInput" autocomplete="off" style="border-radius: 5px" />
+                        <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus @focus="clearInput" autocomplete="off" style="border-radius: 5px" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -275,11 +292,11 @@ updateStep();
                                     <div class="controls col-sm-7">
                                         <div class="form-group clearfix">
                                             <div class="icheck-success d-inline">
-                                                <input id="enabled" type="radio" class="whois_radio" name="whois_privacy" value="enable" />
+                                                <input id="enabled" type="radio" class="whois_radio" name="whois_privacy" value="enable" v-model="whoisPrivacy" />
                                                 <label for="enabled">Enabled</label>
                                             </div>
                                             <div class="icheck-success d-inline px-2">
-                                                <input id="disabled" type="radio" class="whois_radio" name="whois_privacy" value="disable" checked />
+                                                <input id="disabled" type="radio" class="whois_radio" name="whois_privacy" value="disable" checked v-model="whoisPrivacy" />
                                                 <label for="disabled">Disabled</label>
                                             </div>
                                             <br />
@@ -341,7 +358,7 @@ updateStep();
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-8">{{ packageInfo.services_name }}</div>
+                            <div class="col-md-8">{{ packageInfo?.services_name }}</div>
                             <div class="col text-bold text-right">1 Year</div>
                         </div>
                         <div class="row mb-3">
@@ -381,19 +398,13 @@ updateStep();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="`domain_order?hostname=${hostname}&type=${domainResult?.status === 'available' ? 'register' : domainResult?.status === 'taken' ? 'transfer' : ''}`" id="edit_order_form">
-                            <template v-for="(field_value, field, index) in final_post">
-                                <input :key="index" type="hidden" v-if="field !== 'Submit'" :name="field" :value="field_value" />
-                            </template>
-                        </form>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
-                            <input v-for="(value, key) in final_post" :key="key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">
-                                                {{ packageInfo.services_name }}
+                                                {{ packageInfo?.services_name }}
                                             </div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="edit_form" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
@@ -421,7 +432,7 @@ updateStep();
                                             <div class="text-bold text-md">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
                                         </td>
                                     </tr>
-                                    <template v-if="final_post.whois_privacy === 'enable'">
+                                    <template v-if="whoisPrivacy === 'enable'">
                                         <tr>
                                             <td>
                                                 <div class="text-md">Whois Privacy</div>

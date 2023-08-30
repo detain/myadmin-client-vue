@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -16,7 +16,7 @@ const link = computed(() => {
 const sslStore = useSslStore();
 const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL Certificates' });
     siteStore.addBreadcrum('/ssl/' + id, 'View SSL Certificate ' + id);
@@ -36,13 +36,13 @@ function loadLink(newLink) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
-sslStore.getById(id);
+sslStore.getById(id as string);
 </script>
 
 <template>

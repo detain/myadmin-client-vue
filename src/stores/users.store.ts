@@ -2,53 +2,59 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-export const useInvoicesStore = defineStore({
-    id: 'invoices',
-    state: () => ({
-        custid: 0,
-        month: '',
-        year: '',
-        months_arr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        years_arr: [2020, 2021, 2022],
-        rows: [],
+interface UserRow {
+    id         ?: number;
+    firstName  ?: string;
+    lastName   ?: string;
+    username   ?: string;
+    isDeleting ?: boolean;
+}
+
+interface UserState {
+    loading?: boolean;
+    error  ?: string | boolean;
+    users   : UserRow[];
+    user    : UserRow;
+}
+
+export const useUsersStore = defineStore({
+    id: 'users',
+    state: (): UserState => ({
         loading: false,
         error: false,
+        users: [],
+        user: {},
     }),
     getters: {
 
     },
     actions: {
-        async register(user) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async getAll() {
+        async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/invoices');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
-            } catch (error) {
-                console.log('got error response' + error);
+                this.users = await fetchWrapper.get(baseUrl);
+            } catch (error: any) {
                 this.error = error;
             }
-            this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.user = { loading: true };
+            this.loading = true;
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
+            } catch (error: any) {
+                this.error = error;
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -64,16 +70,16 @@ export const useInvoicesStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.invoices.find((x) => x.id === id).isDeleting = true;
+            //this.users.find((x: any) => x.id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.invoices = this.invoices.filter((x) => x.id !== id);
+            //this.users = this.users.filter((x: any) => x.id !== id);
 
             // auto logout if the logged in user deleted their own record
             const authStore = useAuthStore();

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -15,7 +15,7 @@ const graphs = ref({});
 const graphTitle = ref('');
 const graphLink = ref('');
 const ranges = ref({});
-function toggleCollapse(name) {
+function toggleCollapse() {
     // Add the toggle collapse logic here
 }
 </script>
@@ -38,7 +38,7 @@ function toggleCollapse(name) {
                                 <div class="card-header">
                                     <h3 class="card-title py-2"><i class="fa fa-line-chart">&nbsp;</i>{{ name }} {{ graphTitle }}</h3>
                                     <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCollapse(name)"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse" @click="toggleCollapse()"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body justify-content-center mx-auto">

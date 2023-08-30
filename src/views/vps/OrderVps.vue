@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { ref, watch, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
@@ -8,8 +8,10 @@ import jQuery from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order VPS');
 siteStore.setTitle('Order VPS');
@@ -28,36 +30,36 @@ const controlpanel = ref({
     da: 'DirectAdmin',
     cpanel: 'CPanel',
 });
-const locationNames = ref({
+const locationNames = ref<LocationNames>({
     1: 'New Jersey',
     2: 'Los Angeles',
     3: 'Equinix NY4',
 });
-const locationStock = ref({
+const locationStock = ref<LocationStock>({
     1: { kvm: true, kvmstorage: true, hyperv: true },
     2: { kvm: true, kvmstorage: false, hyperv: true },
     3: { kvm: false, kvmstorage: false, hyperv: false },
 });
-const platformPackages = ref({
+const platformPackages = ref<PlatformPackages>({
     kvm: 32,
     kvmstorage: 57,
     hyperv: 54,
 });
-const platformNames = ref({
+const platformNames = ref<PlatformNames>({
     kvm: 'KVM',
     kvmstorage: 'KVM Storage',
     hyperv: 'HyperV',
 });
-const packageCosts = ref({
+const packageCosts = ref<PackageCosts>({
     32: 10,
     54: 10,
     57: 6,
 });
-const osNames = ref({
+const osNames = ref<OsNames>({
     windows: 'Windows',
     almalinux: 'Almalinux',
 });
-const osTemplates = ref({
+const osTemplates = ref<Templates>({
     hyperv: {
         windows: { Windows2019Standard: '2019 Standard', Windows2022: '2022' },
     },
@@ -66,7 +68,7 @@ const osTemplates = ref({
 });
 const currency = ref('USD');
 const currencySymbol = ref('$');
-const serviceTypes = ref([]);
+const serviceTypes = ref<ServiceTypes>({});
 const maxSlices = ref(16);
 const hdStorageSlice = ref(1000);
 const cpanelCost = ref(20);
@@ -91,7 +93,7 @@ const vpsSliceKvmWCost = ref(0);
 const totalCostDisplay = ref(0.0);
 const ipv6_only_discount = ref(1);
 const controlCost = ref(0);
-const couponInfo = ref(0);
+const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const step = ref('orderform');
 // validation response extra fields
@@ -107,7 +109,7 @@ const repeatSliceCost = ref(0);
 const serviceCost = ref(0);
 const sliceCost = ref(0);
 // form fields
-const serviceType = ref(null);
+const serviceType = ref(0);
 const slices = ref(1);
 const vpsPlatform = ref('kvm');
 const location = ref(1);
@@ -120,6 +122,53 @@ const rootpass = ref('');
 const curSsd = ref(0);
 const curControl = ref('');
 const period = ref(1);
+
+interface CouponInfo {
+    applies?: number | string;
+    type?: number | string;
+    amount?: number | string;
+    onetime?: number | string;
+    usable?: number | string;
+    used?: number | string;
+    amounts?: {
+        [key: string]: number | string;
+    }
+}
+
+interface VpsOrderResponse {
+    bwSlice: number;
+    bwTotal: number;
+    bwType: number;
+    cpanelCost: number;
+    currency: string;
+    currencySymbol: string;
+    daCost: number;
+    hdSlice: number;
+    hdStorageSlice: number;
+    locationNames: LocationNames;
+    locationStock: LocationStock;
+    maxSlices: number;
+    osNames: OsNames;
+    packageCosts: PackageCosts;
+    platformNames: PlatformNames;
+    platformPackages: PlatformPackages;
+    ramSlice: number;
+    serviceTypes: ServiceTypes;
+    templates: Templates;
+    vpsNyCost: number;
+    vpsSliceHypervCost: number;
+    vpsSliceKvmLCost: number;
+    vpsSliceKvmStorageCost: number;
+    vpsSliceKvmWCost: number;
+    vpsSliceLxcCost: number;
+    vpsSliceOvzCost: number;
+    vpsSliceSsdOvzCost: number;
+    vpsSliceSsdVirtuozzoCost: number;
+    vpsSliceVirtuozzoCost: number;
+    vpsSliceVmwareCost: number;
+    vpsSliceXenCost: number;
+}
+
 const slicesRange = computed(() => {
     const arr = [];
     for (let i = 1; i <= maxSlices.value; i++) {
@@ -177,6 +226,44 @@ const getBandwidth = computed(() => {
     return bandwidthamount + slice_amount;
 });
 
+interface PlatformPackages {
+    [key: string]: number;
+}
+
+interface PlatformNames {
+    [key: string]: string;
+}
+
+interface PackageCosts {
+    [key: number]: number;
+}
+
+interface LocationStock {
+    [key: number]: {
+        [key: string]: boolean;
+    }
+}
+
+interface LocationNames {
+    [key: number]: string;
+}
+
+interface OsNames {
+    [key: string]: string;
+}
+
+interface Templates {
+    [key: string]: {
+        [key: string]: {
+            [key: string]: string;
+        }
+    }
+}
+
+function updateHostname() {
+
+}
+
 function onSubmit() {
     try {
         fetchWrapper
@@ -228,7 +315,7 @@ function onSubmit() {
                 step.value = 'order_confirm';
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('vps order validation failed');
         console.log(error);
         Swal.fire({
@@ -260,7 +347,7 @@ function onSubmitConfirmation() {
             console.log(response);
             // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
             if (response.success == true) {
-                route.push('/cart/'+response.iids.join(','));
+                router.push('/cart/'+response.iids.join(','));
                 // forward to cart or w/e
             } else {
                 // display 'message'
@@ -270,7 +357,7 @@ function onSubmitConfirmation() {
                 });
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         console.log('vps order  failed');
         console.log(error);
         Swal.fire({
@@ -280,11 +367,11 @@ function onSubmitConfirmation() {
     }
 }
 
-function update_coupon() {
+function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        document.getElementById('couponimg').src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
-        $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json) {
+        ((document.getElementById('couponimg') as unknown) as HTMLImageElement).src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
+        $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
@@ -296,13 +383,9 @@ function update_coupon() {
     }
 }
 
-function edit_form() {
-    document.getElementById('edit_order_form').submit();
-}
-
 function update_vps_choices() {
     if (curControl.value != jQuery('select[name=controlpanel]').val()) {
-        curControl.value = jQuery('select[name=controlpanel]').val();
+        curControl.value = jQuery('select[name=controlpanel]').val() as string;
         if (curControl.value == 'cpanel') {
             controlCost.value = cpanelCost.value;
         } else if (curControl.value == 'da') {
@@ -364,7 +447,7 @@ function update_vps_choices() {
                                 else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
-        controlCost.value = parseFloat(controlCost.value).toFixed(2);
+        controlCost.value = Number(parseFloat(controlCost.value.toString()).toFixed(2));
         jQuery('#controlpanelcost').text(currencySymbol.value + controlCost.value);
         jQuery('#controlpanelcostnew').text(currencySymbol.value + controlCost.value);
         jQuery('#controlpanelpricerownew').show();
@@ -477,9 +560,9 @@ function update_vps_choices() {
     if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
-    total_cost = total_cost.toFixed(2);
-    jQuery('#totalcost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
-    jQuery('.totalcost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
+    total_cost = Number(total_cost.toFixed(2));
+    jQuery('#totalcost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
+    jQuery('.totalcost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
     jQuery('#totalcostnew').val(total_cost);
     jQuery('#total_cost_displa').val(total_cost);
     if ($('#package_name').length > 0) {
@@ -489,7 +572,7 @@ function update_vps_choices() {
 
 function update_vps_choices_order() {
     if (curControl.value != jQuery('#controlpanel').val()) {
-        curControl.value = jQuery('#controlpanel').val();
+        curControl.value = jQuery('#controlpanel').val() as string;
         if (curControl.value == 'cpanel') {
             controlCost.value = cpanelCost.value;
         } else if (curControl.value == 'da') {
@@ -499,7 +582,7 @@ function update_vps_choices_order() {
         }
     }
     if (curSsd.value != jQuery('#ssd').val()) {
-        curSsd.value = jQuery('#ssd').val();
+        curSsd.value = jQuery('#ssd').val() as number;
     }
     if (vpsPlatform.value == 'openvz' || vpsPlatform.value == 'virtuozzo') {
         jQuery('#hostnamerow').css('display', 'table-row');
@@ -540,7 +623,7 @@ function update_vps_choices_order() {
                                 else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
-        controlCost.value = parseFloat(controlCost.value).toFixed(2);
+        controlCost.value = Number(parseFloat(controlCost.value.toString()).toFixed(2));
         jQuery('#controlpanelcost').text(currencySymbol.value + controlCost.value);
     } else {
         jQuery('#controlpanelcost').text('');
@@ -650,15 +733,15 @@ function update_vps_choices_order() {
     if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
-    total_cost = total_cost.toFixed(2);
+    total_cost = Number(total_cost.toFixed(2));
     jQuery('#totalcost11').text(currencySymbol.value + total_cost);
     jQuery('#totalcostnew').val(total_cost);
     if ($('#total_cost_display').length > 0) {
-        $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(total_cost).toFixed(2)));
+        $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
     }
     $(document).ready(function () {
         if ($('#renew_cost').length > 0) {
-            $('#renew_cost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(parseFloat(slices.value * sliceCost.value).toFixed(2)));
+            $('#renew_cost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat((slices.value * sliceCost.value).toString()).toFixed(2))));
         }
     });
 }
@@ -666,7 +749,7 @@ function update_vps_choices_order() {
 function recomended_linux() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'ubuntu';
-    slices.value = '1';
+    slices.value = 1;
     curControl.value = 'none';
     controlCost.value = 0;
     //update_vps_choices();
@@ -675,7 +758,7 @@ function recomended_linux() {
 function recomended_cpanel() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'centos';
-    slices.value = '2';
+    slices.value = 2;
     curControl.value = 'cpanel';
     controlCost.value = cpanelCost.value;
     //update_vps_choices();
@@ -685,7 +768,7 @@ function recomended_directadmin() {
     console.log('recommended direct admin');
     vpsPlatform.value = 'kvm';
     osDistro.value = 'almalinux';
-    slices.value = '4';
+    slices.value = 4;
     curControl.value = 'da';
     controlCost.value = daCost.value;
     console.log(osDistro.value);
@@ -696,7 +779,7 @@ function recomended_directadmin() {
 function recomended_windows() {
     vpsPlatform.value = 'hyperv';
     osDistro.value = 'windows';
-    slices.value = '2';
+    slices.value = 2;
     curControl.value = 'none';
     controlCost.value = 0;
     //update_vps_choices();
@@ -705,7 +788,7 @@ function recomended_windows() {
 function recomended_linux_desktop() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'ubuntu';
-    slices.value = '2';
+    slices.value = 2;
     curControl.value = 'none';
     controlCost.value = 0;
     //update_vps_choices();
@@ -714,14 +797,14 @@ function recomended_linux_desktop() {
 function recomended_webuzo() {
     vpsPlatform.value = 'kvm';
     osDistro.value = 'centos';
-    slices.value = '1';
+    slices.value = 1;
     curControl.value = 'none';
     controlCost.value = 0;
     //update_vps_choices();
 }
 
 function get_package_id() {
-    osDistro.value = $("select[name='osVersion']").val();
+    osDistro.value = osVersion.value;
     if (vpsPlatform.value == 'openvz') {
         // OpenVZ
         serviceType.value = 31;
@@ -763,13 +846,13 @@ function get_package_id() {
 }
 
 onMounted(() => {
-    if (jQuery(window).width() > 1720) {
+    if (jQuery(window).width() as number > 1720) {
         jQuery('.buy_vps_container').css('width', '730px');
     }
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/order').then((response) => {
+    fetchWrapper.get(baseUrl + '/vps/order').then((response: VpsOrderResponse) => {
         maxSlices.value = response.maxSlices;
         hdStorageSlice.value = response.hdStorageSlice;
         cpanelCost.value = response.cpanelCost;
@@ -802,10 +885,10 @@ try {
         vpsSliceKvmWCost.value = response.vpsSliceKvmWCost;
         currency.value = response.currency;
         currencySymbol.value = response.currencySymbol;
-        update_coupon();
-        //update_vps_choices();
+        updateCoupon();
+          //update_vps_choices();
     });
-} catch (error) {
+} catch (error: any) {
     console.log('error:');
     console.log(error);
 }
@@ -873,7 +956,7 @@ try {
                         <div class="col-sm-9">
                             <select class="form-control select2" v-model="osDistro">
                                 <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
-                                <option v-if="vpsPlatform != 'hyperv'" disabled="disabled">Windows (only on HyperV)</option>
+                                <option v-if="vpsPlatform != 'hyperv'" disabled>Windows (only on HyperV)</option>
                             </select>
                         </div>
                     </div>

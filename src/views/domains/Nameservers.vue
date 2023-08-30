@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
@@ -11,29 +11,37 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref("{$id}");
-const suggested = ref('{$suggested}');
-const nameservers = ref('{$nameservers}');
-const registered_nameservers = ref('{$registered_nameservers}');
+const suggested = ref<string[]>([]);
+const nameservers = ref<Nameservers>([]);
+const registered_nameservers = ref<Nameservers>([]);
 const domain_id = ref('{$domain_id}');
 onMounted(() => {
     initializeToast();
 });
 
+type Nameservers = NameserverRow[];
+
+interface NameserverRow {
+    name     : string;
+    ipaddress: string;
+    can_delete: number;
+}
+
 function initializeToast() {
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-middle',
+        position: 'top',
         showConfirmButton: false,
         timer: 5000,
     });
     if (suggested.value && suggested.value.length) {
-        document.getElementById('suggestedNameserver').addEventListener('click', () => {
+        document.getElementById('suggestedNameserver')?.addEventListener('click', () => {
             if (suggested.value) {
                 suggested.value.forEach((suggestion, idx) => {
-                    document.getElementById(`nameserver${idx}`).value = suggestion;
+                    ((document.getElementById(`nameserver${idx}`) as unknown) as HTMLInputElement).value = suggestion;
                 });
                 Toast.fire({
-                    type: 'info',
+                    icon: 'info',
                     title: 'Suggested nameservers are shown in the nameservers textboxes. Click submit to update nameservers.',
                 });
             }
@@ -49,9 +57,13 @@ function saveNameservers() {
     // Handle save nameservers form submission
 }
 
-function confirmDeleteDialog(domain_id, nameserver_id) {
+function handleSuggestedNameserver() {
+
+}
+
+function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Delete nameserver</h3>',
         showCancelButton: true,
         showLoaderOnConfirm: true,

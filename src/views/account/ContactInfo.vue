@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { ref, computed } from 'vue';
@@ -9,15 +9,15 @@ const alertStore = useAlertStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading, gravatar } = storeToRefs(siteStore);
-const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
+const { breadcrums, page_heading } = storeToRefs(siteStore);
+const { loading, error, custid, ima, data, ip, gravatar } = storeToRefs(accountStore);
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Contact Info' });
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const countries = ref({});
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     try {
         let message;
         const response = await fetchWrapper.post(baseUrl + '/account', {

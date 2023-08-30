@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -19,11 +19,11 @@ const settings = computed(() => { return modules.value[module]; });
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 
-function isEmpty(table) {
+function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
 }
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Website' });
     siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
@@ -52,12 +52,12 @@ function loadLink(newLink) {
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-websiteStore.getById(id);
-loadLink(route.params.link);
+websiteStore.getById(id as string);
+loadLink(route.params.link as string);
 </script>
 
 <template>
@@ -170,7 +170,7 @@ loadLink(route.params.link);
                                     <th>Types:</th>
                                     <th>Links:</th>
                                 </tr>
-                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows[0] && extraInfoTables.links.rows[0].value">
+                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows.length > 0 && extraInfoTables.links.rows[0].value">
                                     <tr>
                                         <td>Manual Login</td>
                                         <td><a :href="extraInfoTables.links.rows[0].value" target="__blank" class="link">Click Here</a></td>

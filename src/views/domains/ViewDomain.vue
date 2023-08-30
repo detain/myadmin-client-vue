@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -17,7 +17,7 @@ const settings = computed(() => { return modules.value[module]; });
 const domainStore = useDomainStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
     siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
@@ -35,15 +35,15 @@ function loadLink(newLink) {
 }
 
 watch(
-    () => route.params.link,
+    () => route.params.link as string,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
-domainStore.getById(id);
+domainStore.getById(id as string);
 console.log('link:');
 console.log(link.value);
 </script>

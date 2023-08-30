@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
@@ -24,7 +24,7 @@ const newLimit = ref({
     end: '',
 });
 
-async function deleteRange(start, end) {
+async function deleteRange(start: string, end: string) {
     try {
         fetchWrapper
             .patch(`${baseUrl}/account/iplimits`, {

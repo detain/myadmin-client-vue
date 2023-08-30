@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 const id = ref(''); // Assign the value of `$id` here
@@ -7,7 +7,7 @@ const addons = ref([]); // Assign the value of `$addons` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel VPS Service</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your vps <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, defineComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { usePrePayStore, useSiteStore } from '@/stores';
@@ -11,19 +11,20 @@ siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'PrePays' });
 
-function addPrepayUpdates(module) {
+function addPrepayUpdates(event: Event) {
+    const module = (event.target as HTMLInputElement).value;
     if (module === 'default') {
         $('.servicerow').hide();
         $('.typerow').hide();
     } else {
         let service_options = '<option value="0">All</option>';
-        for (let key in allInfo[module]['services']) {
-            service_options += `<option value="${key}">${allInfo[module]['services'][key]}</option>`;
+        for (let key in allInfo.value[module]['services']) {
+            service_options += `<option value="${key}">${allInfo.value[module]['services'][key]}</option>`;
         }
         $('#service-select').html(service_options).trigger('render');
         let types_option = '<option value="0">All</option>';
-        for (let key in allInfo[module]['service_types']) {
-            types_option += `<option value="${key}">${allInfo[module]['service_types'][key]['services_name']}</option>`;
+        for (let key in allInfo.value[module]['service_types']) {
+            types_option += `<option value="${key}">${allInfo.value[module]['service_types'][key]['services_name']}</option>`;
         }
         $('#type-select').html(types_option).trigger('render');
         $('.servicerow').show();
@@ -31,15 +32,15 @@ function addPrepayUpdates(module) {
     }
 }
 
-function add_amount(prepay_id, module) {
+function add_amount(prepay_id: string | number, module: string) {
     $('#prepay_hiddenid').val(prepay_id);
     $('#prep_id').val(prepay_id);
     $('#p_module').val(module);
 }
-function delete_prepay(prepay_id) {
+function delete_prepay(prepay_id: string | number) {
     $('#p_id').val(prepay_id);
-    const { value: formValues } = Swal.fire({
-        type: 'error',
+    Swal.fire({
+        icon: 'error',
         title: '<h3>Delete Prepay</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -115,7 +116,7 @@ prepayStore.load();
                         </div>
                     </div>
                 </div>
-                <div class="row py-3" v-if="prepays.length > 0">
+                <div class="row py-3" v-if="Object.keys(prepays).length > 0">
                     <div class="col text-left">
                         <h6 class="pl-3">
                             <small>Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }}</small>
@@ -158,7 +159,7 @@ prepayStore.load();
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-right" for="prep_id">Prepay ID</label>
                             <div class="col-sm-6 input-group">
-                                <input type="text" class="form-control form-control-sm" id="prep_id" name="prep_id" value="" disabled="disabled" />
+                                <input type="text" class="form-control form-control-sm" id="prep_id" name="prep_id" value="" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -190,7 +191,7 @@ prepayStore.load();
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label" for="module-select">Select Module to use this prepay for</label>
                             <div class="col-sm-6 input-group">
-                                <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event.target.value)">
+                                <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event)">
                                     <option v-for="(module_name, module) in modules" :value="module" :key="module">{{ module_name }}</option>
                                 </select>
                             </div>

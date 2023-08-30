@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useRoute } from 'vue-router';
@@ -13,12 +13,12 @@ const route = useRoute();
 const id = route.params.id;
 
 let title = 'Add User';
-let user = null;
+let user: any = null;
 if (id) {
     // edit mode
     title = 'Edit User';
     ({ user } = storeToRefs(usersStore));
-    usersStore.getById(id);
+    usersStore.getById(id as string);
 }
 
 const schema = Yup.object().shape({
@@ -32,7 +32,7 @@ const schema = Yup.object().shape({
         .min(6, 'Password must be at least 6 characters'),
 });
 
-async function onSubmit(values) {
+async function onSubmit(values: any) {
     try {
         let message;
         if (user) {

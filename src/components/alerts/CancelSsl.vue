@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -7,7 +7,7 @@ const order_id = ref(''); // Assign the value of `$order_id` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel SSL</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -16,7 +16,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your ssl <span class="text-2lg">${order_id.value}</span>?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

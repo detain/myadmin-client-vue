@@ -8,10 +8,10 @@ export const fetchWrapper = {
     put:    requestHasBody('PUT'),
 };
 
-function requestHasBody(method) {
-    return (url, body) => {
+function requestHasBody(method: string) {
+    return (url: string, body?: any) => {
         console.log("sending a "+method+" request to "+url);
-        const requestOptions = {
+        const requestOptions: any = {
             method,
             headers: authHeader(url),
         };
@@ -23,8 +23,8 @@ function requestHasBody(method) {
     };
 }
 
-function request(method) {
-    return (url) => {
+function request(method: string) {
+    return (url: string) => {
         console.log("sending a "+method+" request to "+url);
         const requestOptions = {
             method,
@@ -36,7 +36,7 @@ function request(method) {
 }
 
 // helper functions
-function authHeader(url) {
+function authHeader(url: string): any {
     // return auth header with jwt if user is logged in and request is to the api url
     const { user, apiKey, sessionId } = useAuthStore();
     //console.log("session id:");
@@ -55,7 +55,7 @@ function authHeader(url) {
     }
 }
 
-async function handleResponse(response) {
+async function handleResponse(response: any) {
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     // check for error response

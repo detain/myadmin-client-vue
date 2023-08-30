@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -11,6 +11,10 @@ const siteStore = useSiteStore();
 const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => { return props.id; });
+
+function submitForm() {
+
+}
 
 fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) => {
     console.log('Response:');

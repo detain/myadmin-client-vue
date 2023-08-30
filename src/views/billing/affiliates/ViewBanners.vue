@@ -1,5 +1,5 @@
-<script setup>
-import { onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '@/stores';
@@ -8,6 +8,30 @@ const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Banners');
 siteStore.setTitle('Affiliate - Banners');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'Banners' });
+const banners     = ref<Banner[]>([]);
+const usefulLinks = ref<UsefulLink[]>([]);
+
+function copyLink(index: any) {
+
+}
+
+interface AffiliateBanners {
+    banners: Banner[];
+    usefulLinks: UsefulLink[];
+}
+
+interface Banner {
+    image : string;
+    width : number;
+    height: number;
+    folder?: string;
+}
+
+interface UsefulLink {
+    page: string
+    link: string;
+}
+
 
 onMounted(() => {
     //$('#freetile').freetile({});
@@ -33,12 +57,12 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row justify-content-center">
-                        <div v-for="(linkDet, index) in usefulLinks" :key="index" class="col-md-12">
-                            <div class="col-md-2 text-bold px-0">{{ linkDet.page }}</div>
-                            <div class="col-md-4">
-                                <input class="inp b-radius form-control form-control-sm" type="text" :value="linkDet.link" readonly disabled />
+                <div   class = "card-body">
+                <div   class = "row justify-content-center">
+                <div   v-for = "(linkDet, index) in usefulLinks" :key           = "index" class = "col-md-12">
+                <div   class = "col-md-2 text-bold px-0">{{ linkDet.page }}</div>
+                <div   class = "col-md-4">
+                <input class = "inp b-radius form-control form-control-sm" type = "text" :value = "linkDet.link" readonly disabled />
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-custom btn-sm mb-3" @click="copyLink(index)">Copy Link To Clipboard</button>

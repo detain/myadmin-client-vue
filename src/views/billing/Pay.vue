@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { storeToRefs } from 'pinia';
@@ -13,7 +13,7 @@ siteStore.setPageHeading('Cart');
 siteStore.setTitle('Cart');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
 const baseUrl = siteStore.getBaseUrl();
-const { loading, error, custid, ima, link, data, ip } = storeToRefs(accountStore);
+const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const route = useRoute();
 const method = computed(() => { return route.params.method; });
 const invoices = computed(() => { return route.params.invoices; });

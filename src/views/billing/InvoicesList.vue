@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useInvoicesStore, useSiteStore } from '@/stores';
 import { ref, computed, onMounted } from 'vue';

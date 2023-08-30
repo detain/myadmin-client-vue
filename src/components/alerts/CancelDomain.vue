@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,7 @@ const addons = ref([]); // Assign the value of `$addons` here
 
 onMounted(() => {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: '<h3>Cancel Domain Service</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -17,7 +17,7 @@ onMounted(() => {
       <p>Are you sure want to cancel your domain <span class="text-2lg">${domain.value}</span>${addons.value.length ? ` and its addon <span class="text-2lg">Whois Privacy</span>` : ''}?</p>
     `,
         preConfirm: () => {
-            document.getElementById('cancelForm').submit();
+            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
         },
     });
 });

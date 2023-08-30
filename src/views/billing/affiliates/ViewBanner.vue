@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
@@ -8,15 +8,16 @@ siteStore.setPageHeading('Affiliate - ViewBanner');
 siteStore.setTitle('Affiliate - ViewBanner');
 siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'ViewBanner' });
 
-const url = ref('{$url}');
-const vpsUrl = ref('{$vps_url}');
-const webhostingUrl = ref('{$webhosting_url}');
-const imgDetail = ref({ b: '' });
-const sid = ref('');
-const landing = ref('vps');
-const customUrl = ref('');
+const url            = ref('{$url}');
+const vpsUrl         = ref('{$vps_url}');
+const webhostingUrl  = ref('{$webhosting_url}');
+const imgDetail      = ref({ b: '', h: 0, w: 0 });
+const sid            = ref('');
+const landing        = ref('vps');
+const customUrl      = ref('');
 const custUrlVisible = ref(false);
-const htmlCode = ref('');
+const htmlCode       = ref('');
+const landingUrl     = ref('');
 
 function updateCode() {
     custUrlVisible.value = false;
@@ -48,8 +49,7 @@ function updateCode() {
 }
 
 function copyCode() {
-    const copyText = document.querySelector('#htmcode');
-    copyText.select();
+    const copyText = ((document.querySelector('#htmcode') as unknown) as HTMLInputElement).select();
     document.execCommand('copy');
     alert('HTML Code copied.');
 }
@@ -102,7 +102,7 @@ onMounted(() => {});
                     <tr>
                         <td>HTML Code</td>
                         <td>
-                            <textarea id="htmcode" class="form-control" readonly="readonly" editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
+                            <textarea id="htmcode" class="form-control" readonly editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
                         </td>
                         <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
                     </tr>

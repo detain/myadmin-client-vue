@@ -1,11 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const route = useRoute();
+const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Mail');
 siteStore.setTitle('Order Mail');
@@ -17,15 +19,15 @@ const pkg = ref(10880);
 const validateResponse = ref({});
 const tos = ref(false);
 const packageCosts = ref({});
-const serviceTypes = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 
 
 async function editForm() {
     step.value = 'orderform';
 }
 
-async function onSubmit(values) {
-    let loading = Swal.fire({
+async function onSubmit(values: any) {
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
         allowOutsideClick: false,
@@ -39,7 +41,7 @@ async function onSubmit(values) {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 validateResponse.value = response;
                 console.log('Response:');
                 console.log(response);
@@ -49,14 +51,14 @@ async function onSubmit(values) {
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('error:');
         console.log(error);
     }
 }
 
-async function placeOrder(values) {
-    let loading = Swal.fire({
+async function placeOrder(values: any) {
+    Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -70,15 +72,15 @@ async function placeOrder(values) {
                 coupon: coupon.value,
             })
             .then((response) => {
-                loading.close();
+                Swal.close();
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    route.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error) {
-        loading.close();
+        Swal.close();
         console.log('error:');
         console.log(error);
     }
@@ -121,7 +123,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @input="update_coupon()" placeholder="Coupon Code" />
+                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @input="updateCoupon()" placeholder="Coupon Code" />
                                     <span class="input-group-addon" style="padding: 0"><img src="https://mystage.interserver.net/validate_coupon.php?module=vps" id="couponimg" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>

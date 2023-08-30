@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -9,9 +9,9 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const module = computed(() => { return props.module; });
-const vpsScreenshot = ref(null);
-const setupVncLink = ref(null);
-const novncLink = ref(null);
+const vpsScreenshot = ref('');
+const setupVncLink = ref('');
+const novncLink = ref('');
 const moduleLink = computed(() => {
     if (module.value === 'vps') {
         return `view_${module.value}`;

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
@@ -17,7 +17,7 @@ const settings = computed(() => { return modules.value[module]; });
 const mailStore = useMailStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
-function loadLink(newLink) {
+function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
     siteStore.addBreadcrum('/mail/' + id, 'View Mail ' + id);
@@ -34,20 +34,27 @@ function loadLink(newLink) {
     }
 }
 
+function submitForm() {
+
+}
+
+function closeModal() {
+
+}
 watch(
     () => route.params.link,
     (newLink) => {
-        loadLink(newLink);
+        loadLink(newLink as string);
     }
 );
 
-loadLink(route.params.link);
+loadLink(route.params.link as string);
 
-mailStore.getById(id);
+mailStore.getById(id as string);
 
-const status = computed(() => `${settings.value.PREFIX}_status`); // compute your status value here
+const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
 const statusClass = computed(() => {
-    const statusValue = serviceInfo.value[status.value];
+    const statusValue = serviceInfo.value.mail_status;
     if (statusValue === 'active') return 'small-box b-radius bg-success';
     if (statusValue === 'pending') return 'small-box b-radius bg-orange';
     if (statusValue === 'expired' || statusValue === 'canceled') return 'small-box b-radius bg-red';
@@ -69,7 +76,7 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">{{ serviceInfo[settings.TITLE_FIELD] }}</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo.mail_username }}</span>
             </div>
         </div>
         <div class="col-md-4">

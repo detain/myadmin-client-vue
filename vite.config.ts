@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import checker from 'vite-plugin-checker';
+import dts from 'vite-plugin-dts';
+//import AutoImport from "unplugin-auto-import/vite";
+//import i18nResources from "vite-plugin-i18n-resources"
+//import checker from 'vite-plugin-checker';
+//import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
 import fs from 'fs';
 import inject from '@rollup/plugin-inject';
@@ -18,13 +22,33 @@ export default defineConfig({
                 defineModel: true,
             },
         }),
+        dts({
+            insertTypesEntry: true,
+        }),
+        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
+        //webfontDownload(),
         inject({
             jQuery: 'jquery',
         }),
+/*
         checker({
-            vueTsc: false,
+            vueTsc: true,
             typescript: false,
         }),
+        TurboConsole(),
+        i18nResources({
+            path: resolve(__dirname, "src/locales"),
+        }),
+        AutoImport({
+            imports: ["vue", "@vueuse/core"],
+            resolvers: [],
+            dirs: ["./composables/" + "**", "./views/" + "**"],
+            vueTemplate: true,
+            cache: true
+        }),
+        splitVendorChunkPlugin(),
+        legacy({ targets: ["defaults", "not IE 11"] }),
+*/
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
@@ -75,7 +99,8 @@ export default defineConfig({
 */
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            //'@': path.resolve(__dirname, './src'),
+            "@": fileURLToPath(new URL("./src", import.meta.url))
         },
     },
 });

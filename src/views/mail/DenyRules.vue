@@ -1,8 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
+import { number } from 'yup';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -10,9 +11,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 //const id = ref('');
-const spam = ref([]);
+const spam = ref<SpamRows>([]);
 const blockAction = ref('');
-const blockId = ref('');
+const blockId = ref(0);
 const blockData = ref('');
 const modalTitle = ref('');
 const blockTypes = ref([
@@ -37,20 +38,28 @@ const blockTypes = ref([
         example: 'example: noreply@domain.com',
     },
 ]);
-function empty(value) {
+
+type SpamRows = SpamRow[];
+
+interface SpamRow  {
+    id          : number;
+    created     : string;
+    type_display: string;
+    data        : any;
+    type: string;
+}
+
+function empty(value: string) {
     return value.length === 0;
 }
-function editBlock(action, id, type, data) {
+function editBlock(action: string, id: number, type: string, data: any) {
     blockAction.value = action;
     blockId.value = id;
     blockData.value = data;
     modalTitle.value = action === 'edit' ? 'Update Block' : 'Add New Block';
-    const typeInput = document.getElementById(type);
-    if (typeInput) {
-        typeInput.checked = true;
-    }
+    ((document.getElementById(type) as unknown) as HTMLInputElement).checked = true;
 }
-function loadEmail(id) {
+function loadEmail(id: number) {
     // Implement the loadEmail functionality
 }
 function submitBlock() {
@@ -65,7 +74,7 @@ function submitBlock() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fa fa-mail-bulk"></i> Mail Deny Rules</h3>
                     <div class="card-tools">
-                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editBlock('add', '0', 'domain', '')"> <i class="fa fa-plus"></i> Add New </a>
+                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editBlock('add', 0, 'domain', '')"> <i class="fa fa-plus"></i> Add New </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>

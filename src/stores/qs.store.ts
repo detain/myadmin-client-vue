@@ -1,10 +1,105 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import { useAuthStore, useSiteStore } from '@/stores';
+
+interface QsInfo {
+    qs_id: number;
+    qs_custid: number;
+    qs_server: number;
+    qs_ip: string;
+    qs_ipv6: string | null,
+    qs_vzid: string;
+    qs_currency: string;
+    qs_type: number;
+    qs_order_date: string;
+    qs_status: string;
+    qs_invoice: number;
+    qs_coupon: number;
+    qs_extra: string;
+    qs_hostname: string;
+    qs_server_status: string;
+    qs_comment: string;
+    qs_slices: string;
+    qs_vnc: string;
+    qs_vnc_port: string | null,
+    qs_rootpass: string;
+    qs_mac: string;
+    qs_os: string;
+    qs_version: string;
+    qs_location: string;
+    qs_platform: string | null,
+
+}
+
+interface QsServiceMaster {
+    qs_id: number;
+    qs_name: string;
+    qs_ip: string;
+    qs_type: number;
+    qs_hdsize: number;
+    qs_hdfree: number;
+    qs_bits: number;
+    qs_load: number;
+    qs_ram: number;
+    qs_cpu_model: string;
+    qs_cpu_mhz: number;
+    qs_location: number;
+    qs_available: number;
+    qs_cost: number;
+    qs_last_update: string;
+    qs_cores: number;
+    qs_iowait: number;
+    qs_raid_status: string;
+    qs_mounts: string;
+    qs_drive_type: string;
+    qs_order: number;
+    qs_raid_building: number;
+    qs_kernel: string;
+    qs_ioping: number;
+    qs_speed: number;
+    qs_distro: string;
+    qs_distro_version: string;
+    qs_bytes_sec_in: number;
+    qs_bytes_sec_out: number;
+    qs_packets_sec_in: number;
+    qs_packets_sec_out: number;
+    qs_last_install_time: string | null,
+    qs_partitions: string | null,
+    qs_cpu_flags: string;
+
+}
+
+interface QsState {
+    qsList: QsInfo[];
+    serviceInfo: QsInfo;
+    serviceMaster: QsServiceMaster;
+    loading: boolean;
+    error: boolean | string;
+    linkDisplay: boolean | string;
+    pkg: string;
+    clientLinks: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string
+    custCurrencySymbol: string;
+    serviceExtra: any;
+    extraInfoTables: ExtraInfoTables;
+    osTemplate: string;
+    cpu_graph_data: string;
+    bandwidth_xaxis: string;
+    bandwidth_yaxis: string;
+    token: string;
+    service_disk_used: string;
+    service_disk_total: string;
+    disk_percentage: number;
+    memory: string;
+    hdd: string;
+    serviceOverviewExtra: any;
+}
 
 export const useQsStore = defineStore({
     id: 'qs',
-    state: () => ({
+    state: (): QsState => ({
         qsList: [],
         loading: false,
         error: false,
@@ -89,7 +184,6 @@ export const useQsStore = defineStore({
             qs_partitions: null,
             qs_cpu_flags: '',
         },
-        osTemplate: '',
         serviceExtra: {
             platform: 'kvm',
             spice: 0,
@@ -104,6 +198,7 @@ export const useQsStore = defineStore({
                 rows: [],
             },
         },
+        osTemplate: '',
         cpu_graph_data: '{"labels":[],"value":[]}',
         bandwidth_xaxis: '[]',
         bandwidth_yaxis: '[]',
@@ -121,40 +216,30 @@ export const useQsStore = defineStore({
 
     },
     actions: {
-        async register(user) {
+        async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async getAll() {
+        async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                let response = await fetchWrapper.get(baseUrl + '/qs');
-                for (const field in response) {
-                    this[field] = response[field];
-                }
-            } catch (error) {
+                const response = await fetchWrapper.get(baseUrl + '/qs');
+                this.qsList = response;
+            } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
             }
             this.loading = false;
         },
-        async getById(id) {
+        async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             const keyMap = {
                 package: 'pkg',
             };
-            /*
-            this.user = { loading: true };
-            try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
-            } catch (error) {
-                this.user = { error };
-            }
-            */
             try {
                 const response = await fetchWrapper.get(baseUrl + '/qs/' + id);
                 this.$reset();
@@ -173,7 +258,6 @@ export const useQsStore = defineStore({
                 this.cpu_graph_data = response.cpu_graph_data;
                 this.bandwidth_xaxis = response.bandwidth_xaxis;
                 this.bandwidth_yaxis = response.bandwidth_yaxis;
-                this.module = response.module;
                 this.token = response.token;
                 this.service_disk_used = response.service_disk_used;
                 this.service_disk_total = response.service_disk_total;
@@ -195,12 +279,12 @@ export const useQsStore = defineStore({
                     }
                 }
                 */
-            } catch (error) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }
         },
-        async update(id, params) {
+        async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
@@ -216,16 +300,16 @@ export const useQsStore = defineStore({
                 authStore.user = user;
             }
         },
-        async delete(id) {
+        async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            this.qsList.find((x) => x.id === id).isDeleting = true;
+            //this.qsList.find((x) => x.qs_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.qsList = this.qsList.filter((x) => x.id !== id);
+            this.qsList = this.qsList.filter((x) => x.qs_id !== id);
         },
     },
 });

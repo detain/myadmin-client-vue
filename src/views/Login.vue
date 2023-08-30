@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
@@ -43,8 +43,20 @@ const loginSchema = Yup.object().shape({
     passwd: Yup.string().required('Password is required'),
 });
 
+interface LoginParams {
+    login: string;
+    passwd: string;
+    remember: string | null;
+    tfa?: string;
+    'g-recaptcha-response'?: string;
+}
+
+interface SignupParams extends LoginParams {
+    tos?: boolean;
+}
+
 async function onLoginSubmit() {
-  const loading = Swal.fire({
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
     showCancelButton: false,
@@ -53,7 +65,7 @@ async function onLoginSubmit() {
     allowEscapeKey: false,
   });
   const authStore = useAuthStore();
-    const loginParams = {
+    let loginParams: LoginParams = {
         login: login.value,
         passwd: password.value,
         remember: remember.value,
@@ -62,17 +74,17 @@ async function onLoginSubmit() {
         loginParams.tfa = twoFactorAuthCode.value;
     }
     if (window.location.host != 'cn.interserver.net') {
-        loginParams['g-recaptcha-response'] = gresponse;
+        loginParams['g-recaptcha-response'] = gresponse.value;
     }
     console.log('Login Params:');
     console.log(loginParams);
     await authStore.login(loginParams).then((response) => {
-        loading.close();
+        Swal.close();
     });
 }
 
 async function onSignupSubmit() {
-  const loading = Swal.fire({
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
     showCancelButton: false,
@@ -81,7 +93,7 @@ async function onSignupSubmit() {
     allowEscapeKey: false,
   });
   const authStore = useAuthStore();
-    const signupParams = {
+    let signupParams: SignupParams = {
         login: login.value,
         passwd: password.value,
         tos: tos.value,
@@ -91,17 +103,29 @@ async function onSignupSubmit() {
         signupParams.tfa = twoFactorAuthCode.value;
     }
     if (window.location.host != 'cn.interserver.net') {
-        signupParams['g-recaptcha-response'] = gresponse2;
+        signupParams['g-recaptcha-response'] = gresponse2.value;
     }
     console.log('Signup Params:');
     console.log(signupParams);
     authStore.signup(signupParams).then((response) => {
-        loading.close();
+        Swal.close();
     });
 }
 
 function reloadCaptcha() {
     authStore.reloadCaptcha();
+}
+
+function toggleCaptchaMethod() {
+
+}
+
+function closePopup() {
+
+}
+
+function submitForgotPassForm() {
+
 }
 
 onMounted(function () {
@@ -112,7 +136,7 @@ onMounted(function () {
         animateValue(document.getElementById('count-v'));
         animateValue(document.getElementById('count-w'));
         animateValue(document.getElementById('count-s'));
-        //reloadCaptcha(0);
+        //reloadCaptcha();
         $('#captcha_alt_link, #captcha_main_link').click(function (e) {
             e.preventDefault();
             $('.captcha_main, .captcha_alt').toggle(500);
@@ -132,7 +156,7 @@ onMounted(function () {
             $('div.myadmin_login').toggle('500');
         });
         $('#btn-forgot').click(function (e) {
-            forgot_password(e);
+            forgot_password();
             return false;
         });
         $('input[type=password]').keyup(function () {
@@ -143,32 +167,31 @@ onMounted(function () {
         $('#signuppassword')
             .keyup(function () {
                 // keyup code here
-              const pswd = $(this).val();
               //validate the length
-                if (pswd.length < 8) {
+                if (password.value.length < 8) {
                     $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 } else {
                     $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 }
                 //validate letter
-                if (pswd.match(/[a-z]/)) {
+                if (password.value.match(/[a-z]/)) {
                     $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
                 //validate capital letter
-                if (pswd.match(/[A-Z]/)) {
+                if (password.value.match(/[A-Z]/)) {
                     $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
                 //validate number
-                if (pswd.match(/\d/)) {
+                if (password.value.match(/\d/)) {
                     $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#number .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
                 }
-                if (/^[a-zA-Z0-9- ]*$/.test(pswd) == false) {
+                if (/^[a-zA-Z0-9- ]*$/.test(password.value) == false) {
                     $('#special .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
                 } else {
                     $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
@@ -188,12 +211,12 @@ onMounted(function () {
 
 let signup_running = 0;
 
-function setModalMaxHeight(element) {
+function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
   const content = element.find('.modal-content');
-  const borderWidth = content.outerHeight() - content.innerHeight();
-  const dialogMargin = $(window).width() < 768 ? 20 : 60;
-  const contentHeight = $(window).height() - (dialogMargin + borderWidth);
+  const borderWidth = (content.outerHeight() as number) - (content.innerHeight() as number);
+  const dialogMargin = $(window).width() as number < 768 ? 20 : 60;
+  const contentHeight = $(window).height() as number - (dialogMargin + borderWidth);
   const headerHeight = element.find('.modal-header').outerHeight() || 0;
   const footerHeight = element.find('.modal-footer').outerHeight() || 0;
   const maxHeight = contentHeight - (headerHeight + footerHeight);
@@ -206,14 +229,14 @@ function setModalMaxHeight(element) {
     });
 }
 
-function toggleModal(modalID) {
-    document.getElementById(modalID).classList.toggle('hidden');
-    document.getElementById(modalID + '-backdrop').classList.toggle('hidden');
-    document.getElementById(modalID).classList.toggle('flex');
-    document.getElementById(modalID + '-backdrop').classList.toggle('flex');
+function toggleModal(modalID: string) {
+    document.getElementById(modalID)?.classList.toggle('hidden');
+    document.getElementById(modalID + '-backdrop')?.classList.toggle('hidden');
+    document.getElementById(modalID)?.classList.toggle('flex');
+    document.getElementById(modalID + '-backdrop')?.classList.toggle('flex');
 }
 
-function animateValue(obj, start = 0, end = null, duration = 1000) {
+function animateValue(obj: any, start = 0, end: null | number = null, duration = 1000) {
     if (obj) {
         // save starting text for later (and as a fallback text if JS not running and/or google)
       const textStarting = obj.innerHTML;
@@ -229,11 +252,11 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
         // get current time and calculate desired end time
       const startTime = new Date().getTime();
       const endTime = startTime + duration;
-      let timer;
+      let timer: NodeJS.Timeout;
       const run = () => {
         const now = new Date().getTime();
         const remaining = Math.max((endTime - now) / duration, 0);
-        const value = Math.round(end - remaining * range);
+        const value = Math.round(end as number - remaining * range);
         // replace numeric digits only in the original string
         obj.innerHTML = textStarting.replace(/([0-9]+)/g, value);
         if (value == end) {
@@ -245,13 +268,10 @@ function animateValue(obj, start = 0, end = null, duration = 1000) {
     }
 }
 
-function login_handler(e) {
-  const username = $('#login_id').val();
-  const twofactor = $('#2fa_code').val();
-  const password = $('#loginpassword').val();
-  const captcha = $('#captcha').val();
-  const emailconf = $('input[name=email_confirmation]').val();
-  e.preventDefault();
+function login_handler() {
+  const username = login.value;
+  const twofactor = twoFactorAuthCode.value;
+  const captcha = captchaCode.value;
   const remember = localStorage.rememberMe === 'true' ? 'yes' : 'no';
   if (username == '') {
         Swal.fire({
@@ -259,19 +279,19 @@ function login_handler(e) {
             title: 'Please enter a username',
             html: username,
         });
-    } else if (password == '') {
+    } else if (password.value == '') {
         Swal.fire({
             icon: 'warning',
             title: 'Please enter a password',
-            html: password,
+            html: password.value,
         });
     } else {
-      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password) + '&captcha=' + encodeURIComponent(captcha);
+      let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password.value) + '&captcha=' + encodeURIComponent(captcha);
       if (twofactor) {
             loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
         }
-        if (emailconf != '') {
-            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailconf);
+        if (emailCode.value != '') {
+            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailCode.value);
         }
       const pathArray = window.location.pathname.split('/');
       let newPath = '/';
@@ -294,7 +314,7 @@ function login_handler(e) {
                         window.location = html.substring(4);
                     }
                 } else if (html.substring(0, 8) == '2fa_auth') {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     $('.twofactorauth').show(500);
                     $('.captcha_main').hide();
                     $('.captcha_alt').hide();
@@ -305,7 +325,7 @@ function login_handler(e) {
                         $('.popup #error-message').text('Invalid Code, Please Enter correct code.');
                     }
                 } else if (html.substring(0, 6) == 'verify') {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     if ($('.login_email_popup').hasClass('hidden')) {
                         $('.login_email_popup').removeClass('hidden');
                     } else {
@@ -315,7 +335,7 @@ function login_handler(e) {
                     $('.captcha_main_signup').hide();
                     $('.captcha_alt_signup').hide();
                 } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     $('.login_email_popup .error-box').show();
                     $('.login_email_popup #error-message').html(html);
                     $('.captcha_main_signup').hide();
@@ -325,8 +345,8 @@ function login_handler(e) {
                         gresponse.value = '';
                         gresponse2.value = '';
                     }
-                    reloadCaptcha(0);
-                    $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                    reloadCaptcha();
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     // $("#message").html(html);
                     Swal.fire({
                         icon: 'warning',
@@ -346,17 +366,17 @@ function login_handler(e) {
             },
             beforeSend: function () {
                 $('.loginsubmit, .signupsubmit').attr('disabled', true);
+
             },
         });
     }
     return false;
 }
 
-function forgot_password(e) {
-    e.preventDefault();
-  const username = $("input[name='email']").val();
+function forgot_password() {
+  const username = $("input[name='email']").val() as string;
   const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  const captcha = $('#captchaFP').val();
+  const captcha = captchaCode.value;
   if (username == '') {
         $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
     } else if (regex.test(username) == false) {
@@ -372,7 +392,7 @@ function forgot_password(e) {
         $.ajax({
             type: 'POST',
             url: 'https://' + window.location.host + newPath + 'password.php',
-            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse) + '&captcha=' + encodeURIComponent(captcha),
+            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value) + '&captcha=' + encodeURIComponent(captcha),
             success: function (html) {
                 $('#forgot-password-message').html(html);
             },
@@ -387,9 +407,8 @@ function forgot_password(e) {
     }
 }
 
-function signup_handler(e) {
-    e.preventDefault();
-  const loading = Swal.fire({
+function signup_handler() {
+  Swal.fire({
     title: 'Please wait',
     html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
     showCancelButton: false,
@@ -430,7 +449,7 @@ function signup_handler(e) {
         });
     } else {
         if (email_conf == '') {
-            data_string = data_string + '&captcha=' + encodeURIComponent(captchaSignup) + '&g-recaptcha-response=' + encodeURIComponent(gresponse2.value);
+            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse2.value);
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -439,7 +458,7 @@ function signup_handler(e) {
                 url: $('#loginForm').attr('action'),
                 data: data_string,
                 success: function (html) {
-                    loading.close();
+                    Swal.close();
                     if (html.substring(0, 4) == 'true') {
                         if (html.length == 4) {
                             window.location = 'index.php';
@@ -447,7 +466,7 @@ function signup_handler(e) {
                             window.location = html.substring(4);
                         }
                     } else if (html.substring(0, 6) == 'verify') {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         if ($('.email_popup').hasClass('hidden')) {
                             $('.email_popup').removeClass('hidden');
                         } else {
@@ -457,11 +476,11 @@ function signup_handler(e) {
                         $('.captcha_main_signup').hide();
                         $('.captcha_alt_signup').hide();
                     } else if (html.indexOf('Max Tries') !== -1 || html.indexOf('Invalid Email Confirmation') !== -1) {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         $('.email_popup .error-box').show();
                         $('.email_popup #error-message').html(html);
                     } else {
-                        $('.loginsubmit, .signupsubmit').attr('disabled', false);
+                        $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         gresponse.value = '';
                         gresponse2.value = '';
                         Swal.fire({
@@ -472,7 +491,7 @@ function signup_handler(e) {
                     signup_running = 0;
                 },
                 error: function () {
-                    loading.close();
+                    Swal.close();
                     $('.loginsubmit, .signupsubmit').prop('disabled', false);
                     gresponse.value = '';
                     gresponse2.value = '';
@@ -483,7 +502,7 @@ function signup_handler(e) {
                 },
                 beforeSend: function () {
                     $('.loginsubmit, .signupsubmit').attr('disabled', true);
-                    loading.close();
+                    Swal.close();
                 },
             });
         }
@@ -753,7 +772,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="signup_toggle twofactorauth mb-6 hidden">
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" placeholder="Enter Code from Authenticator" value="" autocomplete="off" />
+                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-mode="twoFactorAuthCode" placeholder="Enter Code from Authenticator" autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
                                                         </div>

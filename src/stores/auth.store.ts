@@ -1,7 +1,17 @@
-import { storeToRefs, defineStore, getActivePinia } from 'pinia';
+import { storeToRefs, defineStore, getActivePinia, Store, Pinia } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import { router } from '@/router';
 import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
+
+interface ErrorMessage {
+    code: number;
+    message: string;
+    field?: string;
+}
+
+interface ExtendedPinia extends Pinia {
+  _s: Map<string, Store>;
+}
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -25,8 +35,8 @@ export const useAuthStore = defineStore({
         useHeaders: true, // whether to send auth via headers or cookie
         // initialize state from local storage to enable user to stay logged in
         remember: localStorage.getItem('remember'),
-        user: JSON.parse(localStorage.getItem('user')),
-        returnUrl: null,
+        user: JSON.parse(localStorage.getItem('user') || '{}'),
+        returnUrl: null as string | null,
     }),
     getters: {
 
@@ -39,10 +49,13 @@ export const useAuthStore = defineStore({
                 return false;
             }
         },
-        resetStores() {
-            getActivePinia()._s.forEach(store => store.$reset());
+        resetStores(): void {
+            const pinia = getActivePinia() as ExtendedPinia;
+            if (pinia) {
+                pinia._s.forEach((store) => store.$reset());
+            }
         },
-        async sudo(sessionId) {
+        async sudo(sessionId: string): Promise<void> {
             //console.log("Starting sudo session with sessionId "+sessionId)
             this.resetStores();
             const accountStore = useAccountStore();
@@ -52,7 +65,7 @@ export const useAuthStore = defineStore({
             this.user.sessionId = sessionId;
             this.sessionId = sessionId;
             localStorage.setItem('user', JSON.stringify(this.user));
-            localStorage.setItem('sessionId', this.sessionId);
+            localStorage.setItem('sessionId', this.sessionId || '');
             //localStorage.setItem('apiKey', this.apiKey);
             accountStore.load().then((response) => {
                 //console.log("starting .then handler for accountStore.load trying to utilize the data");
@@ -67,7 +80,7 @@ export const useAuthStore = defineStore({
                 router.push(this.returnUrl || '/');
             });
         },
-        async load() {
+        async load(): Promise<void> {
             //console.log("Trying to load account/info user info");
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
@@ -77,23 +90,23 @@ export const useAuthStore = defineStore({
                 this.captcha = response.captcha;
                 this.language = response.language;
                 this.counts = response.counts;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
             }
         },
-        async reloadCaptcha() {
+        async reloadCaptcha(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
                 const response = await fetchWrapper.get(baseUrl + '/captcha');
                 this.captcha = response.captcha;
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
             }
         },
-        async login(loginParams) {
+        async login(loginParams: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -102,23 +115,29 @@ export const useAuthStore = defineStore({
                 this.user = user;
                 this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', this.remember);
+                localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('sessionId', this.sessionId);
+                localStorage.setItem('sessionId', this.sessionId || '');
                 //localStorage.setItem('apiKey', this.apiKey);
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {
-                    this.opts[error.field] = true;
+                    if (error.field == 'tfa') {
+                        this.opts.tfa = true;
+                    } else if (error.field == 'verify') {
+                        this.opts.verify = true;
+                    } else if (error.field == 'captcha') {
+                        this.opts.captcha = true;
+                    }
                 }
                 const alertStore = useAlertStore();
                 alertStore.error(error);
             }
         },
-        async signup(signupParms) {
+        async signup(signupParms: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
@@ -127,16 +146,22 @@ export const useAuthStore = defineStore({
                 this.user = user;
                 this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('remember', this.remember);
+                localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('sessionId', this.sessionId);
+                localStorage.setItem('sessionId', this.sessionId || '');
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
-            } catch (error) {
+            } catch (error: any) {
                 console.log('error:');
                 console.log(error);
                 if (typeof error.field != 'undefined') {
-                    this.opts[error.field] = true;
+                    if (error.field == 'tfa') {
+                        this.opts.tfa = true;
+                    } else if (error.field == 'verify') {
+                        this.opts.verify = true;
+                    } else if (error.field == 'captcha') {
+                        this.opts.captcha = true;
+                    }
                 }
                 /*Swal.fire({
                     icon: 'warning',
@@ -147,7 +172,7 @@ n,
                 alertStore.error(error);
             }
         },
-        async logout() {
+        async logout(): Promise<void> {
             this.user = null;
             this.sessionId = null;
             this.apiKey = null;
