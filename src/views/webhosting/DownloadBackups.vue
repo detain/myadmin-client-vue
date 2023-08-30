@@ -18,7 +18,7 @@ const props = defineProps({
         default: () => [],
     },
 });
-const isEmpty = (rows) => {
+const isEmpty = (rows: any) => {
     return rows.length === 0;
 };
 </script>

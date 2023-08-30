@@ -75,7 +75,7 @@ function crud_print(): void {
 function crud_export(exportType: string): void {
     console.log(exportType);
 }
-const loadVpsList = async (data) => {
+const loadVpsList = async (data: any) => {
     try {
         const useDT = false;
         const response = await fetchWrapper.get(baseUrl + '/vps');
