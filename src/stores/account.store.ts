@@ -2,7 +2,10 @@ import { defineStore } from 'pinia';
 import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
-interface AccountData {
+interface SimpleStringObj {
+    [key: string]: any;
+}
+interface AccountData extends SimpleStringObj {
   account_id       : number | null;
   account_lid      : string;
   status           : string;
@@ -88,7 +91,7 @@ interface CCsData {
     [key: number | string]: CCData;
 }
 
-interface CCData {
+interface CCData extends SimpleStringObj {
     cc                : string;
     cc_exp            : string;
     country           : string;

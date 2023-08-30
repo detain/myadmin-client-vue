@@ -14,7 +14,7 @@ siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Cart' ]]);
 const baseUrl                                   = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod                             = ref('paypal');
-const invoices                                  = ref([]);
+const invoices                                  = ref<string[]>([]);
 const modules                                   = ref<Modules>({});
 const editCcIdx                                 = ref(0);
 const selectedCc                                = ref('');
@@ -36,7 +36,7 @@ const isChecked                                 = ref(false);
 const modulesCounts                             = ref<ModuleCounts>({});
 const countries                                 = ref({});
 const st = ref<null | string>(null);
-const contFields = reactive({
+const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
     name: '',
@@ -47,6 +47,10 @@ const contFields = reactive({
     zip: '',
     country: 'US',
 });
+
+interface SimpleStringObj {
+    [key: string]: any;
+}
 
 interface CartResponse {
     modules_counts: ModuleCounts;
@@ -373,7 +377,7 @@ function verifyCard(cc_id = 0) {
     }
 }
 
-function updatePaymentMethod(cc_val, cc_auto = '0') {
+function updatePaymentMethod(cc_val: string, cc_auto = 0) {
     if (cc_auto == 1) {
         if ($('#customSwitch3').is(':checked')) {
             $('#cc_auto_update').val(1);
@@ -386,7 +390,7 @@ function updatePaymentMethod(cc_val, cc_auto = '0') {
     //$("#defaultpymt").submit();
 }
 
-function formatCardNum(e) {
+function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
   let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -406,7 +410,7 @@ function formatCardNum(e) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function formatExpDate(e) {
+function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
   let caretPosition = e.target.selectionStart;
   const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -430,9 +434,18 @@ function formatExpDate(e) {
     e.target.value = e.target.lastValue = parts.join('/');
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
-function toggleCheckBox() {}
-function checkClass() {}
-function delete_invoice() {}
+
+function toggleCheckBox() {
+
+}
+
+function checkClass(idx: string) {
+
+}
+
+function delete_invoice(invId: number) {
+
+}
 
 function toggleCheckbox() {
 
@@ -445,6 +458,10 @@ function checkAll() {
 
 }
 
+function uncheckAll() {
+
+}
+
 function checkRecent() {
 
 }
@@ -453,15 +470,15 @@ function checkActive() {
 
 }
 
-function onCardNumInput(e) {
+function onCardNumInput(e: any) {
     formatCardNum(e);
 }
 
-function onExpDateInput(e) {
+function onExpDateInput(e: any) {
     formatExpDate(e);
 }
 
-function submitForm(value: string) {
+function submitForm(value: any) {
 
 }
 
@@ -657,9 +674,9 @@ accountStore.load();
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
-                                    <span v-for="(paymentMethod, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="paymentMethod.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img alt="" :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentMethod.link_class" :style="paymentMethod.link_style">{{ paymentMethod.text }} <img alt=""  :src="'https://mystage.interserver.net' + paymentMethod.image" border="" :style="paymentMethod.image_style" /></router-link>
+                                    <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
+                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt=""  :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
@@ -683,7 +700,7 @@ accountStore.load();
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : null" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
                                                         <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="ml-2 pl-4">
