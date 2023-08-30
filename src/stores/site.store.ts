@@ -76,13 +76,13 @@ export const useSiteStore = defineStore({
     id: 'site',
     state: (): SiteState => ({
         // initialize state from local storage to enable user to stay logged in
-        breadcrums: [],
-        page_heading: '',
-        sidemenu: '',
-        title: '',
-        modules: {},
-        services: {},
-        serviceTypes: {},
+        breadcrums       : [],
+        page_heading     : '',
+        sidemenu         : '',
+        title            : '',
+        modules          : {},
+        services         : {},
+        serviceTypes     : {},
         serviceCategories: {}
     }),
     getters: {

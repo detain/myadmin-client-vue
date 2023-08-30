@@ -551,27 +551,27 @@ datatables.net-bs@>=1.13.4, datatables.net-bs@^1.13.4:
     jquery ">=1.7"
 
 datatables.net-buttons-bs4@^2.2.2, datatables.net-buttons-bs4@^2.3.6:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs4/-/datatables.net-buttons-bs4-2.4.1.tgz#30b4163ff4c7c37fb9ba940b45d795b635186343"
-  integrity sha512-RhOKkQ9aCmCi6a5sAKh3zOZGvLxkvjPmvUwAhtWlE9VblaPpObQ/GRP7kBcv7qzweZdVOJHmTPLto6JLwou5qQ==
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs4/-/datatables.net-buttons-bs4-2.4.2.tgz#346df3bea95789f273c85c7beed2f5c8487da1c3"
+  integrity sha512-88hkV28w2IUeh4yvCGG6Y1KZi4DlnJXl/veY3z5BeM7Zr8tthyOl/QovuCC0jpWYfd18cpHGpSwMhFKUVPtesw==
   dependencies:
     datatables.net-bs4 ">=1.13.4"
     datatables.net-buttons ">=2.3.6"
     jquery ">=1.7"
 
 datatables.net-buttons-bs@^2.3.6:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs/-/datatables.net-buttons-bs-2.4.1.tgz#945c43d9ea05466192f96361d7a099cd4160cb4b"
-  integrity sha512-7UrFP4Hez0FpRKYkRJJOr9hIZUhr2PnwvcCKr3FRyzdlz3ntViMJbZZv+L97YmNeiRAom7gmnO1Nt9eAYtxuiw==
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs/-/datatables.net-buttons-bs-2.4.2.tgz#b231c779e571b6e70b8322c6f44579c9835f71e0"
+  integrity sha512-C05bt3LUgxBoPzQrn10kTl7Q9Qoy5rxrREzbykEoNQhyu0tlaYYT8mrA7PTe/xUIog6h82zQaFQGjAodrUQI7g==
   dependencies:
     datatables.net-bs ">=1.13.4"
     datatables.net-buttons ">=2.3.6"
     jquery ">=1.7"
 
 datatables.net-buttons@>=2.3.6, datatables.net-buttons@^2.3.6:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-2.4.1.tgz#a548943494a37b0b7907c7b9afcf3ebaa29c17aa"
-  integrity sha512-Z788xsbGW+YqJWgQYCzE5IsbY8MNIihhDP/LOefijEn7MM1/jf4sQdf/KRNHr/CWTFGfojGPz+GNdJh8appeQQ==
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-2.4.2.tgz#ceb7204697a1a7932c6dd4e476fd9c9bed81a610"
+  integrity sha512-ps88Wk6yju8hPyqIPhHZ9xhL+pAfgoiI1nZsyPswvqk84kzcqgj1nmulSSLMYNwFG8awsU8C94gF+Pf+JhDh7g==
   dependencies:
     datatables.net ">=1.13.4"
     jquery ">=1.7"
@@ -1062,9 +1062,9 @@ flot@^4.2.2:
   integrity sha512-Iz4HCet1ZBQnjGwECz4jseD1zMnh7m2XJIMI6A62l8h2SeceLYOEmYGNQto1XhkSM9fUmqzyKhWwJ+RolWLydg==
 
 fraction.js@^4.2.0:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.1.tgz#828c46dce1c8ad270e1c4170b3d06a2761e997d3"
-  integrity sha512-nx0cki48JBA6ThPeUpeKCNpdhEl/9bRS+dAEYnRUod+Z1jhFfC3K/mBLorZZntqHM+GTH3/dkkpfoT3QITYe7g==
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.2.tgz#ea144a08ed23a284bf9067153075f212771a92d9"
+  integrity sha512-9VLF466MqX1OUP7/d9r7/Vsvu6Hpp+taXBLmiR5x6mEYfT0BDkGVBt5TyA1aDu1WzIE1sF8F66evOFaz7iAEGQ==
 
 fs-extra@^10.0.0:
   version "10.1.0"
@@ -1232,7 +1232,7 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-core-module@^2.11.0:
+is-core-module@^2.11.0, is-core-module@^2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.13.0.tgz#bb52aa6e2cbd49a30c2ba68c42bf3435ba6072db"
   integrity sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==
