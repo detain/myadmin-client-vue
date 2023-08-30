@@ -16,11 +16,14 @@ const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const coupon = ref('');
 const pkg = ref(10880);
-const validateResponse = ref({});
+const validateResponse = ref<ValiateResponse | null>(null);
 const tos = ref(false);
 const packageCosts = ref({});
 const serviceTypes = ref<ServiceTypes>({});
 
+function updateCoupon() {
+
+}
 
 async function editForm() {
     step.value = 'orderform';
@@ -84,6 +87,19 @@ async function placeOrder(values: any) {
         console.log('error:');
         console.log(error);
     }
+}
+
+interface ValiateResponse {
+    continue: boolean;
+    coupon: string;
+    couponCode: number;
+    errors: string[];
+    introFrequency: number;
+    originalCost: number;
+    password: string;
+    repeatServiceCost: number;
+    serviceCost: number;
+    serviceType: number;
 }
 
 try {

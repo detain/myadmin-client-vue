@@ -11,30 +11,31 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading('Cart');
 siteStore.setTitle('Cart');
 siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
-const baseUrl = siteStore.getBaseUrl();
+const baseUrl                                   = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
-const paymentMethod = ref('paypal');
-const invoices = ref([]);
-const modules = ref<Modules>({});
-const editCcIdx = ref(0);
-const selectedCc = ref('');
-const r_paymentMethod = ref('');
-const cc_detail = ref({});
-const country_select = ref('');
-const invrows = ref<InvRow[]>([]);
-const currency = ref('USD');
-const currencyArr = ref<CurrencyArr>({});
-const invoiceDays = ref(0);
-const order_msg = ref(false);
-const total_display = ref(0.0);
-const displayPrepay = ref(true);
-const total_invoices = ref(0);
-const paymentMethodsData = ref<PaymentMethodsData>({});
-const current_cc_id = ref(0);
-const triggerClick = ref(null);
-const isChecked = ref(false);
-const modulesCounts = ref<ModuleCounts>({});
-const countries = ref({});
+const paymentMethod                             = ref('paypal');
+const invoices                                  = ref([]);
+const modules                                   = ref<Modules>({});
+const editCcIdx                                 = ref(0);
+const selectedCc                                = ref('');
+const r_paymentMethod                           = ref('');
+const cc_detail                                 = ref({});
+const country_select                            = ref('');
+const invrows                                   = ref<InvRow[]>([]);
+const currency                                  = ref('USD');
+const currencyArr                               = ref<CurrencyArr>({});
+const invoiceDays                               = ref(0);
+const order_msg                                 = ref(false);
+const total_display                             = ref(0.0);
+const displayPrepay                             = ref(true);
+const total_invoices                            = ref(0);
+const paymentMethodsData                        = ref<PaymentMethodsData>({});
+const current_cc_id                             = ref(0);
+const triggerClick                              = ref(null);
+const isChecked                                 = ref(false);
+const modulesCounts                             = ref<ModuleCounts>({});
+const countries                                 = ref({});
+const st = ref<null | string>(null);
 const contFields = reactive({
     cc: '',
     cc_exp: '',
@@ -117,6 +118,7 @@ interface CurrencyArr {
 interface PaymentMethodsData {
     [key: string]: {
         link_class: string;
+        link_style: string
         text: string;
         image: string;
         image_style: string;
@@ -145,43 +147,44 @@ interface ModuleSettings {
 }
 
 interface InvRow {
-    collapse: number;
-    currency_display: string;
-    date: string;
-    days_old: number;
-    invoices_amount: number;
-    invoices_currency: string;
-    invoices_custid: number;
-    invoices_date: string;
-    invoices_deleted: number;
-    invoices_description: string;
-    invoices_due_date: string;
-    invoices_extra: number;
-    invoices_group: number;
-    invoices_id: number;
-    invoices_module: string;
-    invoices_paid: number;
-    invoices_service: number;
-    invoices_type: number;
-    repeat_invoices_cost: number;
-    repeat_invoices_currency: string;
-    repeat_invoices_custid: number;
-    repeat_invoices_date: string;
-    repeat_invoices_deleted: number;
-    repeat_invoices_description: string;
-    repeat_invoices_frequency: number;
-    repeat_invoices_group: number;
-    repeat_invoices_id: number;
-    repeat_invoices_last_date: string;
-    repeat_invoices_module: string;
-    repeat_invoices_next_date: string;
-    repeat_invoices_service: number;
-    repeat_invoices_type: number;
-    service: string;
-    service_invoice: boolean;
-    service_label: string;
-    service_line: number;
-    service_status: string;
+    collapse                    : number;
+    currency_display            : string;
+    date                        : string;
+    days_old                    : number;
+    invoices_amount             : number;
+    invoices_currency           : string;
+    invoices_custid             : number;
+    invoices_date               : string;
+    invoices_deleted            : number;
+    invoices_description        : string;
+    invoices_due_date           : string;
+    invoices_extra              : number;
+    invoices_group              : number;
+    invoices_id                 : number;
+    invoices_module             : string;
+    invoices_paid               : number;
+    invoices_service            : number;
+    invoices_type               : number;
+    repeat_invoices_cost        : number;
+    repeat_invoices_currency    : string;
+    repeat_invoices_custid      : number;
+    repeat_invoices_date        : string;
+    repeat_invoices_deleted     : number;
+    repeat_invoices_description : string;
+    repeat_invoices_frequency   : number;
+    repeat_invoices_group       : number;
+    repeat_invoices_id          : number;
+    repeat_invoices_last_date   : string;
+    repeat_invoices_module      : string;
+    repeat_invoices_next_date   : string;
+    repeat_invoices_service     : number;
+    repeat_invoices_type        : number;
+    service                     : string;
+    service_invoice             : boolean;
+    service_label               : string;
+    service_line                : number;
+    service_status              : string;
+    prepay_invoice             ?: number;
 }
 
 interface CCRow {
@@ -438,12 +441,28 @@ function updateInfoSubmit() {
 
 }
 
+function checkAll() {
+
+}
+
+function checkRecent() {
+
+}
+
+function checkActive() {
+
+}
+
 function onCardNumInput(e) {
     formatCardNum(e);
 }
 
 function onExpDateInput(e) {
     formatExpDate(e);
+}
+
+function submitForm(value: string) {
+
 }
 
 try {
@@ -624,7 +643,7 @@ accountStore.load();
                                     <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
                                     <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
                                     <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module + 'row')">
-                                        {{ module.charAt(0).toUpperCase() + module.slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
+                                        {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                     </button>
                                 </td>
                             </tr>
