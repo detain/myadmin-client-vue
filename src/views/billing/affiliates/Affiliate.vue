@@ -19,7 +19,7 @@ const affiliate_amount = ref(0);
 onMounted(() => {
     $('.export').click(function (e) {
         e.preventDefault();
-        document.location.href = $(this).attr('href');
+        document.location.href = $(this).attr('href') as string;
     });
     $('#copy_url').click(function () {
       const copyText = $('#affiliateinput');

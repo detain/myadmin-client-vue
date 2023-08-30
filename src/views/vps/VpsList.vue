@@ -50,7 +50,7 @@ const limitStatusMap: LimitStatusMap = {
 };
 const data = ref<vpsRow[]>([]);
 const table = ref();
-const dt = ref(null);
+const dt = ref<any>(null);
 
 const columns = [{ data: 'vps_id' }, { data: 'vps_name' }, { data: 'repeat_invoices_cost' }, { data: 'vps_hostname' }, { data: 'vps_ip' }, { data: 'vps_status' }, { data: 'services_name' }, { data: 'vps_comment' }, { name: 'link', data: 'link', sortable: false }];
 
@@ -103,7 +103,6 @@ const loadVpsList = async (data: any) => {
                     {
                         name: 'link',
                         data: null,
-                        sortable: false,
                         render: (data, type, row, meta) => {
                             return '<router-link :to="\'vps/' + row.vps_id + '\'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
                         },
