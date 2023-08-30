@@ -221,11 +221,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="edit_order_form" action="">
-                            <input v-for="(value, key) in orderData" :key="key" type="hidden" :id="key" :name="key" :value="value" />
-                        </form>
                         <form method="post" class="storage_form_confirm" action="" @submit.prevent="placeOrder">
-                            <input v-for="(value, key) in orderData.data" :key="key" :id="key == 'backup' ? 'backupselect' : key" type="hidden" :name="key" :value="value" />
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
