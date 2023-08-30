@@ -31,7 +31,7 @@ const limitStatusMap: LimitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<DomainRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'id' }, { data: 'name' }, { data: 'content' }, { name: 'link', data: 'link', sortable: false }];
@@ -44,7 +44,7 @@ const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
         return data.value;
     } else {
-        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.backup_status));
+        return data.value.filter((item) => limitStatusMap[limitStatus.value].includes(item.content));
     }
 });
 
@@ -80,7 +80,7 @@ async function addDomain(event: Event) {
 }
 
 async function deleteDomain(event: Event) {
-    domainId.value = event.target?.getAttribute('data-id');
+    domainId.value = Number((event.target as HTMLElement).getAttribute('data-id'));
     console.log(domainId.value);
     Swal.fire({
         icon: 'error',
@@ -124,9 +124,21 @@ function crud_print(): void {
 function crud_export(exportType: string): void {
     console.log(exportType);
 }
+
+interface DomainRow {
+    id             : number;
+    name           : string;
+    master         : string;
+    last_check     : number;
+    type           : string;
+    notified_serial: number;
+    account        : string;
+    content: string;
+}
+
 const loadDns = async (data) => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns');
+        const response: DomainRow[] = await fetchWrapper.get(baseUrl + '/dns');
         console.log('api success');
         console.log(response);
         data.value = response;
