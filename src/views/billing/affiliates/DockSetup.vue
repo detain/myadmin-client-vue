@@ -6,7 +6,7 @@ import { useAuthStore, useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Dock Setup');
 siteStore.setTitle('Affiliate - Dock Setup');
-siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'Dock Setup' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'Dock Setup' ]]);
 
 const authStore                = useAuthStore();
 const { user }                 = storeToRefs(authStore);

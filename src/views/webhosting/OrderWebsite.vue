@@ -10,7 +10,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
-siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Websites List', '/websites/order': 'Order Website' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/websites', 'Websites List'],[ '/websites/order', 'Order Website' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface Package extends ServiceType {

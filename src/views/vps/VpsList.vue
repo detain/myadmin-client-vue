@@ -21,7 +21,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
 siteStore.setTitle('VPS List');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'VPS List' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'VPS List' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface vpsRow {

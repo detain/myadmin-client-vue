@@ -20,7 +20,7 @@ const clientLinks = ref<ClientLink[]>([]);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/ssl': 'SSL Certificates' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/ssl', 'SSL Certificates' ]]);
     siteStore.addBreadcrum('/ssl/' + id, 'View SSL Certificate ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View SSL Certificate ' + id);

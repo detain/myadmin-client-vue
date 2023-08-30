@@ -10,7 +10,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
 siteStore.setTitle('Order Backup');
-siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Backup List', '/backups/order': 'Order Backup' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/backups', 'Backup List'],[ '/backups/order', 'Order Backup' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step              = ref('orderform');

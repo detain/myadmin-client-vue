@@ -17,7 +17,7 @@ const id = route.params.id;
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Editor');
 siteStore.setTitle('DNS Editor');
-siteStore.setBreadcrums({ '/home': 'Home', '/dns': 'DNS Manager' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/dns', 'DNS Manager' ]]);
 siteStore.addBreadcrum('/dns/' + id, 'DNS Editor');
 const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);

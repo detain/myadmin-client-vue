@@ -21,9 +21,9 @@ const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type' });
+        siteStore.setBreadcrums([[ '/home', 'Home'],[ '/licenses', 'Licenses List'],[ '/licenses/order', 'Select License Type' ]]);
     } else {
-        siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'Licenses List', '/licenses/order': 'Select License Type', ['/licenses/order/' + catTag.value]: 'Order License' });
+        siteStore.setBreadcrums([[ '/home', 'Home'],[ '/licenses', 'Licenses List'],[ '/licenses/order', 'Select License Type'],[ ['/licenses/order/' + catTag.value], 'Order License' ]]);
     }
 }
 interface GetLicensesRow {

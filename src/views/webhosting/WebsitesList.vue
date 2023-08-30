@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Web Hosting List');
 siteStore.setTitle('Web Hosting List');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Webhosting' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Webhosting' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/

@@ -15,7 +15,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
-siteStore.setBreadcrums({ '/home': 'Home', '/qs/': 'Rapid Deploy Servers' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/qs/', 'Rapid Deploy Servers' ]]);
 siteStore.addBreadcrum('/qs/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();

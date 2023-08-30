@@ -8,7 +8,7 @@ const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
-siteStore.setBreadcrums({ '': 'Home' });
+siteStore.setBreadcrums([[ '', 'Home' ]]);
 const baseUrl = siteStore.getBaseUrl();
 import $ from 'jquery';
 import jQuery from 'jquery';

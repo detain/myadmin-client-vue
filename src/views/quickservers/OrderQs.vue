@@ -10,7 +10,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
-siteStore.setBreadcrums({ '/home': 'Home', '/qs': 'Rapid Deploy Servers List', '/qs/order': 'Order Rapid Deploy Server' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/qs', 'Rapid Deploy Servers List'],[ '/qs/order', 'Order Rapid Deploy Server' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('orderform');

@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains' ]]);
     siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Domain ' + id);

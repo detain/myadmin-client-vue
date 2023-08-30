@@ -11,7 +11,7 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Cart');
 siteStore.setTitle('Cart');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Cart' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Cart' ]]);
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const route = useRoute();

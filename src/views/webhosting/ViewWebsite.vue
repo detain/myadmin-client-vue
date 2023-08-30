@@ -25,7 +25,7 @@ function isEmpty(table: any) {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/websites': 'Website' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/websites', 'Website' ]]);
     siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Website ' + id);

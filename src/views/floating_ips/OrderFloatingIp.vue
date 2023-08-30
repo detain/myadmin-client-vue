@@ -11,7 +11,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
 siteStore.setTitle('Order Floating IPs');
-siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs List', '/mail/order': 'Order Floating IPs' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Floating IPs List'],[ '/mail/order', 'Order Floating IPs' ]]);
 const baseUrl          = siteStore.getBaseUrl();
 const step             = ref('orderform');
 const coupon           = ref('');

@@ -15,7 +15,7 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 siteStore.setPageHeading('Domain Registrations List');
 siteStore.setTitle('Domain Registrations List');
-siteStore.setBreadcrums({ '/home': 'Home', domains: 'Domains' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ domains, 'Domains' ]]);
 
 interface domainsRow {
     domain_id: number;

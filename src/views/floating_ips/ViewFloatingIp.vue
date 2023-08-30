@@ -16,7 +16,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
-siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Floating IPs' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Floating IPs' ]]);
 siteStore.addBreadcrum('/mail/' + id, 'View Floating IPs ' + id);
 
 const mailStore = useMailStore();
@@ -29,7 +29,7 @@ function closeModal() {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/floating_ips': 'Floating IPs' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ips', 'Floating IPs' ]]);
     siteStore.addBreadcrum('/floating_ips/' + id, 'View Floating IP ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Floating IP ' + id);

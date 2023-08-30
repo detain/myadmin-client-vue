@@ -7,7 +7,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - SalesGraph');
 siteStore.setTitle('Affiliate - SalesGraph');
-siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'SalesGraph' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'SalesGraph' ]]);
 
 const canvas         = ref(null);
 const selectedPeriod = ref(30);

@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Storage / Backup List');
 siteStore.setTitle('Storage / Backup List');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Storage' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Storage' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface backupsRow {

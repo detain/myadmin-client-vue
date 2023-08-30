@@ -14,7 +14,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Manager');
 siteStore.setTitle('DNS Manager');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'DNS Manager' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'DNS Manager' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/

@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clie
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/servers': 'Servers' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/servers', 'Servers' ]]);
     siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Server ' + id);

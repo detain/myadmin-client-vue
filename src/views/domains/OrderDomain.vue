@@ -9,7 +9,7 @@ import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, Sug
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
-siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains List'],[ '/domains/order', 'Order Domain' ]]);
 const baseUrl          = siteStore.getBaseUrl();
 const route            = useRoute();
 const router           = useRouter();
@@ -39,7 +39,7 @@ const regType = computed(() => {
 const display = ref('step1');
 
 function updateStep() {
-    siteStore.setBreadcrums({ '/home': 'Home', '/domains': 'Domains List', '/domains/order': 'Order Domain' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains List'],[ '/domains/order', 'Order Domain' ]]);
     if (typeof domain.value == 'undefined') {
         display.value ='step1';
     } else {

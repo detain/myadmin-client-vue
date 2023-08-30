@@ -15,7 +15,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Backup');
 siteStore.setTitle('View Backup');
-siteStore.setBreadcrums({ '/home': 'Home', '/backups': 'Storage' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/backups', 'Storage' ]]);
 siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();

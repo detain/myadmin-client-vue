@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetai
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Mail' ]]);
     siteStore.addBreadcrum('/mail/' + id, 'View Mail ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Mail ' + id);

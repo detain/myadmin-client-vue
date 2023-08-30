@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetai
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums({ '/home': 'Home', '/licenses': 'License' });
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/licenses', 'License' ]]);
     siteStore.addBreadcrum('/licenses/' + id, 'View License ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View License ' + id);

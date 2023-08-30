@@ -6,7 +6,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - ViewBanner');
 siteStore.setTitle('Affiliate - ViewBanner');
-siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'ViewBanner' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'ViewBanner' ]]);
 
 const url            = ref('{$url}');
 const vpsUrl         = ref('{$vps_url}');

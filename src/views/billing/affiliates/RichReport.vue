@@ -6,7 +6,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - RichReport');
 siteStore.setTitle('Affiliate - RichReport');
-siteStore.setBreadcrums({ '/home': 'Home', '/affiliate': 'Affiliate', '': 'RichReport' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'RichReport' ]]);
 const table = ref('');
 onMounted(() => {});
 </script>

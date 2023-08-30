@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Floating IPs Services List');
 siteStore.setTitle('Floating IPs Services List');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Floating IPs' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Floating IPs' ]]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/

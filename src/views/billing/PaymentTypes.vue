@@ -11,7 +11,7 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading('Payment Types');
 siteStore.setTitle('Payment Types');
 siteStore.setTitle('Payment Types');
-siteStore.setBreadcrums({ '/home': 'Home', '': 'Payment Types' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Payment Types' ]]);
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');

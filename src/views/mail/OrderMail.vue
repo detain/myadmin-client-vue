@@ -11,7 +11,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Mail');
 siteStore.setTitle('Order Mail');
-siteStore.setBreadcrums({ '/home': 'Home', '/mail': 'Mail List', '/mail/order': 'Order Mail' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Mail List'],[ '/mail/order', 'Order Mail' ]]);
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const coupon = ref('');

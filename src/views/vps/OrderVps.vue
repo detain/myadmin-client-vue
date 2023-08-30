@@ -15,7 +15,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order VPS');
 siteStore.setTitle('Order VPS');
-siteStore.setBreadcrums({ '/home': 'Home', '/vps': 'VPS List', '/vps/order': 'Order VPS' });
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/vps', 'VPS List'],[ '/vps/order', 'Order VPS' ]]);
 const baseUrl = siteStore.getBaseUrl();
 const billingCycle = ref({
     1: 'Monthly',
