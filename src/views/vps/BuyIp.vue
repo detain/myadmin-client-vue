@@ -8,13 +8,12 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-
-const ipsDetails = ref(null);
+const ipsDetails = ref<IpDetails[]>([]);
 const buyForm = ref(null);
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
-const ip_currency = ref(null);
-const ip_cost = ref(null);
+const ip_currency = ref('USD');
+const ip_cost = ref(0);
 function getLink() {
     if (module.value === 'vps') {
         return `view_${module.value}?id=${id.value}`;
@@ -28,6 +27,47 @@ function submitForm() {
     };
     // Process the form submission or make an API request here
 }
+
+interface BuyIpResponse {
+    ipsDetails: IpDetails[];
+    ips       : number;
+    maxIps    : number;
+    ipCost: number;
+}
+
+interface IpDetails {
+    invoices_id: string;
+    invoices_description: string;
+    invoices_amount: string;
+    invoices_custid: string;
+    invoices_type: string;
+    invoices_date: string;
+    invoices_group: string;
+    invoices_extra: string;
+    invoices_paid: string;
+    invoices_module: string;
+    invoices_due_date: string;
+    invoices_service: string;
+    invoices_deleted: string;
+    invoices_currency: string;
+    repeat_invoices_id: string;
+    repeat_invoices_description: string;
+    repeat_invoices_type: string;
+    repeat_invoices_cost: string;
+    repeat_invoices_custid: string;
+    repeat_invoices_frequency: string;
+    repeat_invoices_date: string;
+    repeat_invoices_group: string;
+    repeat_invoices_module: string;
+    repeat_invoices_service: string;
+    repeat_invoices_last_date: string;
+    repeat_invoices_next_date: string;
+    repeat_invoices_deleted: string;
+    repeat_invoices_currency: string;
+    cancel_link: string;
+    ip: string;
+}
+
 </script>
 
 <template>

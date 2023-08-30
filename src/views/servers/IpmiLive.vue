@@ -10,7 +10,7 @@ const fields = ref({});
 const id = computed(() => { return props.id; });
 const siteStore = useSiteStore();
 const aId = ref('');
-const assetInfo = ref({});
+const assetInfo = ref<AssetRow | null>(null);
 const clientIP = ref('');
 const success = ref('');
 const info = ref('');
@@ -25,6 +25,46 @@ function submitForm() {
 function removeCard() {
     // Add the remove card logic here
 }
+
+interface AssetRow {
+    id: number;
+    order_id: number;
+    hostname: string;
+    status: string;
+    primary_ipv4: string;
+    primary_ipv6: string;
+    mac: string;
+    datacenter: number;
+    type_id: number;
+    asset_tag: string;
+    rack: string;
+    row: string;
+    col: string;
+    unit_start: string;
+    unit_end: string;
+    unit_sub: number;
+    ipmi_mac: string;
+    ipmi_ip: string;
+    ipmi_admin_username: string;
+    ipmi_admin_password: string;
+    ipmi_client_username: string;
+    ipmi_client_password: string;
+    ipmi_updated: string;
+    ipmi_working: number;
+    company: string;
+    comments: string;
+    make: string;
+    model: string;
+    description: string;
+    customer_id: string;
+    external_id: number;
+    billing_status: string;
+    overdue: number;
+    create_timestamp: string;
+    update_timestamp: string;
+}
+
+
 </script>
 
 <template>
