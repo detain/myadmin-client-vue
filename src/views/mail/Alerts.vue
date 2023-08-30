@@ -26,7 +26,7 @@ const modalTitle = computed(() => {
 const isEmpty = computed(() => {
     return alerts.value.length === 0;
 });
-function editAlert(formAct: string, formId: number, formType: string, formValue: string, formTo: string, formEnabled: boolean = false) {
+function editAlert(formAct: string, formId: number, formType: string, formValue: string, formTo: string, formEnabled: number | boolean = false) {
     action.value = formAct;
     alertId.value = formId;
     selectedType.value = formType;
@@ -63,7 +63,7 @@ interface AlertRow {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fa fa-bell"></i> Alerts</h3>
                     <div class="card-tools">
-                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', '', '', '', defaultTo)"> <i class="fa fa-plus"></i> Add New </a>
+                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', 0, '', '', defaultTo)"> <i class="fa fa-plus"></i> Add New </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>

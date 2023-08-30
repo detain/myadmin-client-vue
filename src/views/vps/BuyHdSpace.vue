@@ -13,7 +13,7 @@ const additional_hd = ref('');
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
 const currency_symbol = ref('');
-const gbCost = ref('');
+const gbCost = ref(0);
 const selectedSpace = ref(0);
 function getLink() {
     if (module.value === 'vps') {

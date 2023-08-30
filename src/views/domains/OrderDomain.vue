@@ -324,8 +324,8 @@ updateStep();
                                     <span v-if="domainField.required" class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-9 input-group">
-                                    <input v-if="domainField.input === 'text'" type="text" :name="fieldName" class="form-control" :value="domainField.value" />
-                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName" class="form-control select2">
+                                    <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
+                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName as string" class="form-control select2">
                                         <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val" :selected="domainField.value === val">{{ displayName }}</option>
                                     </select>
                                     <div v-if="domainField.tip" class="input-group-append">
