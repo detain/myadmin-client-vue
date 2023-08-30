@@ -13,8 +13,10 @@ const link = computed(() => {
     return route.params.link;
 });
 
-const sslStore = useSslStore();
+const sslStore                             = useSslStore();
 const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
+const isCollapsed                          = ref(false);
+const clientLinks = ref<ClientLink[]>([]);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
