@@ -30,7 +30,7 @@ const limitStatusMap: LimitStatusMap = {
     expired: ['expired', 'canceled'],
     all: ['active', 'pending', 'pending-setup', 'pend-approval', 'expired', 'canceled'],
 };
-const data = ref([]);
+const data = ref<FloatingIpRow[]>([]);
 const table = ref();
 
 const columns = [{ data: 'floating_ip_id' }, { data: 'repeat_invoices_cost' }, { data: 'floating_ip_username' }, { data: 'floating_ip_status' }, { data: 'services_name' }, { name: 'link', data: 'link', sortable: false }];
@@ -58,6 +58,18 @@ function crud_print(): void {
 function crud_export(exportType: string): void {
     console.log(exportType);
 }
+
+interface FloatingIpRow {
+    floating_ip_id      : number;
+    repeat_invoices_cost: number;
+    floating_ip_username: string;
+    floating_ip_status  : string;
+    services_name       : string;
+    link                : string;
+    sortable            : boolean;
+}
+
+
 const loadFloatingIp = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/floating_ip');

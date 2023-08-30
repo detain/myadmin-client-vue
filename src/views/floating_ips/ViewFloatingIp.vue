@@ -22,6 +22,11 @@ siteStore.addBreadcrum('/mail/' + id, 'View Floating IPs ' + id);
 const mailStore = useMailStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
+
+function closeModal() {
+
+}
+
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums({ '/home': 'Home', '/floating_ips': 'Floating IPs' });
