@@ -3,9 +3,9 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useMailStore, useSiteStore } from '@/stores';
+import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-import { Alerts, DenyRules } from '@/views/mail';
+//import { Alerts, DenyRules } from '@/views/mail';
 
 const module = 'floating_ips';
 const siteStore = useSiteStore();
@@ -16,11 +16,11 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Floating IPs' ]]);
-siteStore.addBreadcrum('/mail/' + id, 'View Floating IPs ' + id);
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ip', 'Floating IPs' ]]);
+siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IPs ' + id);
 
-const mailStore = useMailStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
+const floatingIpStore = useFloatingIpStore();
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 
 
 function closeModal() {
@@ -29,15 +29,15 @@ function closeModal() {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ips', 'Floating IPs' ]]);
-    siteStore.addBreadcrum('/floating_ips/' + id, 'View Floating IP ' + id);
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ip', 'Floating IPs' ]]);
+    siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IP ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Floating IP ' + id);
         siteStore.setTitle('View Floating IP ' + id);
     } else {
         siteStore.setPageHeading('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/floating_ips/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/floating_ip/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
 		// do something here
         }
