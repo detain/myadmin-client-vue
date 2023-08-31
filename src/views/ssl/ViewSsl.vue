@@ -18,6 +18,45 @@ const sslStore                             = useSslStore();
 const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
 const isCollapsed                          = ref(false);
 const clientLinks = ref<ClientLink[]>([]);
+const serviceInfo = ref<ServiceInfo>({
+    ssl_id: '',
+    ssl_hostname: '',
+    ssl_order_id: '',
+    ssl_type: '',
+    ssl_currency: '',
+    ssl_order_date: '',
+    ssl_custid: '',
+    ssl_status: '',
+    ssl_invoice: '',
+    ssl_coupon: '',
+    ssl_firstname: '',
+    ssl_lastname: '',
+    ssl_phone: '',
+    ssl_email: '',
+    ssl_company: '',
+    ssl_address: '',
+    ssl_city: '',
+    ssl_state: '',
+    ssl_zip: '',
+    ssl_country: '',
+    ssl_department: '',
+    ssl_extra: '',
+    ssl_approver_email: null,
+    ssl_csr: null,
+    ssl_private_key: null,
+    ssl_x509: null,
+    ssl_ca_root: null,
+    ssl_ca_inter: null,
+});
+const billingDetails = ref<BillingDetails>({
+    service_last_invoice_date: '',
+    service_frequency: '',
+    service_currency: '',
+    service_currency_symbol: '',
+    service_cost_info: '',
+    service_extra: '',
+});
+const serviceStatusColor = ref('');
 
 interface ViewSslResponse {
     serviceInfo: ServiceInfo;
@@ -137,7 +176,7 @@ sslStore.getById(id as string);
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer"
-                    >Status is: <b>{{ serviceStatus }}</b></span
+                    >Status is: <b>{{ serviceInfo.ssl_status }}</b></span
                 >
             </div>
         </div>
@@ -146,14 +185,14 @@ sslStore.getById(id as string);
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Order Info</h3>
                     <p class="my-2 py-2">
-                        Order ID: <b>{{ orderId }}</b>
+                        Order ID: <b>{{ serviceInfo.ssl_order_id }}</b>
                     </p>
                 </div>
                 <div class="icon">
                     <i class="material-icons" style="user-select: none">policy</i>
                 </div>
                 <span class="small-box-footer"
-                    >Order Status: <b>{{ orderStatus }}</b></span
+                    >Order Status: <b>{{ serviceInfo.ssl_status }}</b></span
                 >
             </div>
         </div>
@@ -167,7 +206,7 @@ sslStore.getById(id as string);
                     <i class="material-icons" style="user-select: none">admin_panel_settings</i>
                 </div>
                 <span class="small-box-footer"
-                    >Cert Status: <b>{{ certStatus }}</b></span
+                    >Cert Status: <b>{{ serviceInfo.ssl_order_id }}</b></span
                 >
             </div>
         </div>
