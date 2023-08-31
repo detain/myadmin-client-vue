@@ -15,6 +15,7 @@ function formatDate(date: string) {
 
 }
 
+/*
 function toggleToggle() {
     showToggle.value = !showToggle.value;
 }
@@ -27,13 +28,10 @@ function resetFile() {
     inputFile.value = null;
     inputFile.value.previousSibling.value = '';
 }
+*/
 
 $(document).ready(function () {
     $('.ssh-toggle').hide();
-    $('.ssh-root').click(function (event: Event) {
-        event.preventDefault();
-        $('.ssh-toggle').toggle();
-    });
     bs_input_file();
     //Initialize Select2 Elements
     $('.select2').select2();
@@ -45,6 +43,7 @@ $(document).ready(function () {
 });
 
 function bs_input_file() {
+    /*
     $('.input-file').after(function () {
         if (!$(this).prev().hasClass('input-ghost')) {
           const element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
@@ -73,6 +72,7 @@ function bs_input_file() {
             return element;
         }
     });
+    */
 }
 </script>
 
@@ -83,7 +83,7 @@ function bs_input_file() {
     <div v-if="failed" class="row">
         <div class="alert alert-danger mainbox col-md-12" style="padding: 5px">{{ failed }}</div>
     </div>
-    <template v-if        = "display === 'yes'">
+    <template v-else>
     <link     rel         = "stylesheet" href                      = "/lib/select2/dist/css/select2.min.css" />
     <link     rel         = "stylesheet" href                      = "/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
     <div      class       = "row">
@@ -142,7 +142,7 @@ function bs_input_file() {
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label">Is SSH root restricted ?</label>
-                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm">Click here</button></div>
+                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm" @click.prevent="$('.ssh-toggle').toggle();">Click here</button></div>
                             </div>
                             <div class="form-group row ssh-toggle">
                                 <label for="sudo_user" class="col-sm-4 col-form-label">Sudo User</label>

@@ -24,7 +24,7 @@ function addPrepayUpdates(event: Event) {
         $('#service-select').html(service_options).trigger('render');
         let types_option = '<option value="0">All</option>';
         for (let key in allInfo.value[module].services) {
-            types_option += `<option value="${key}">${allInfo.value[module].services[key]['services_name']}</option>`;
+            types_option += `<option value="${key}">${allInfo.value[module].services[key]['services_name' as any]}</option>`;
         }
         $('#type-select').html(types_option).trigger('render');
         $('.servicerow').show();
