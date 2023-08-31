@@ -4,24 +4,24 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface FloatingIpInfo {
-    mail_id: number;
-    mail_username: string;
-    mail_type: number;
-    mail_currency: string;
-    mail_order_date: string;
-    mail_custid: number;
-    mail_quota: number;
-    mail_ip: string;
-    mail_status: string;
-    mail_invoice: number;
-    mail_coupon: number;
-    mail_extra: string;
-    mail_server_status: string;
-    mail_comment: string;
+    floating_ip_id: number;
+    floating_ip_type: number;
+    floating_ip_currency: string;
+    floating_ip_order_date: string;
+    floating_ip_custid: number;
+    floating_ip_quota: string;
+    floating_ip_ip: string;
+    floating_ip_target_ip: string;
+    floating_ip_status: string;
+    floating_ip_invoice: number;
+    floating_ip_coupon: number;
+    floating_ip_extra: string;
+    floating_ip_server_status: string;
+    floating_ip_comment: string;
 }
 
 interface FloatingIpState {
-    mailList: FloatingIpInfo[];
+    floatingIpList: FloatingIpInfo[];
     serviceInfo: FloatingIpInfo;
     loading: boolean;
     error: boolean | string;
@@ -38,29 +38,29 @@ interface FloatingIpState {
 }
 
 export const useFloatingIpStore = defineStore({
-    id: 'mail',
+    id: 'floating_ip',
     state: (): FloatingIpState => ({
-        mailList: [],
+        floatingIpList: [],
         loading: false,
         error: false,
 
         pkg: '',
         linkDisplay: false,
         serviceInfo: {
-            mail_id: 0,
-            mail_username: '',
-            mail_type: 0,
-            mail_currency: '',
-            mail_order_date: '',
-            mail_custid: 0,
-            mail_quota: 0,
-            mail_ip: '',
-            mail_status: '',
-            mail_invoice: 0,
-            mail_coupon: 0,
-            mail_extra: '[]',
-            mail_server_status: '',
-            mail_comment: '',
+            floating_ip_id: 0,
+            floating_ip_type: 0,
+            floating_ip_currency: '',
+            floating_ip_order_date: '',
+            floating_ip_custid: 0,
+            floating_ip_quota: '',
+            floating_ip_ip: '',
+            floating_ip_target_ip: '',
+            floating_ip_status: '',
+            floating_ip_invoice: 0,
+            floating_ip_coupon: 0,
+            floating_ip_extra: '',
+            floating_ip_server_status: '',
+            floating_ip_comment: '',
         },
         clientLinks: [],
         billingDetails: {
@@ -79,7 +79,7 @@ export const useFloatingIpStore = defineStore({
         custCurrencySymbol: '$',
         serviceExtra: [],
         extraInfoTables: {
-            mail: {
+            floating_ip: {
                 title: 'Connection Information',
                 rows: [],
             },
@@ -97,7 +97,7 @@ export const useFloatingIpStore = defineStore({
             services_type: 0,
             services_field1: '',
             services_field2: '',
-            services_module: 'mail',
+            services_module: 'floating_ips',
         },
         usage_count: 0,
     }),
@@ -116,7 +116,7 @@ export const useFloatingIpStore = defineStore({
             this.loading = true;
             try {
                 const response = await fetchWrapper.get(baseUrl + '/floating_ip');
-                this.mailList = response;
+                this.floatingIpList = response;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
@@ -168,12 +168,12 @@ export const useFloatingIpStore = defineStore({
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            //this.mailList.find((x) => x.mail_id === id).isDeleting = true;
+            //this.floatingIpList.find((x) => x.floating_ip_id === id).isDeleting = true;
 
             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
-            this.mailList = this.mailList.filter((x) => x.mail_id !== id);
+            this.floatingIpList = this.floatingIpList.filter((x) => x.floating_ip_id !== id);
         },
     },
 });

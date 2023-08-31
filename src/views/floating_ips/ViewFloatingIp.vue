@@ -5,7 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-//import { Alerts, DenyRules } from '@/views/mail';
+//import { Alerts, DenyRules } from '@/views/floating_ip';
 
 const module = 'floating_ips';
 const siteStore = useSiteStore();
@@ -22,6 +22,9 @@ siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IPs ' + id);
 const floatingIpStore = useFloatingIpStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 
+function submitForm() {
+
+}
 
 function closeModal() {
 
@@ -53,7 +56,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-mailStore.getById(id as string);
+floatingIpStore.getById(id as string);
 
 const status = computed(() => serviceInfo.value.floating_ip_status); // compute your status value here
 const statusClass = computed(() => {
@@ -79,7 +82,7 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <span class="small-box-footer text-bold">{{ serviceInfo[floating_ip_ip] }}</span>
+                <span class="small-box-footer text-bold">{{ serviceInfo.floating_ip_ip }}</span>
             </div>
         </div>
         <div class="col-md-4">
@@ -145,14 +148,14 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/mail/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/floating_ip/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>
             </div>
-            <div v-if="extraInfoTables.mail" class="col-md-4">
+            <div v-if="extraInfoTables.floating_ip" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -164,7 +167,7 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            <tr v-for="itemvalue in extraInfoTables.mail.rows" :key="itemvalue.id">
+                            <tr v-for="itemvalue in extraInfoTables.floating_ip.rows" :key="itemvalue.id">
                                 <td>{{ itemvalue.desc }}</td>
                                 <td class="text-success">{{ itemvalue.value }}</td>
                             </tr>
