@@ -59,8 +59,9 @@ interface HomeDetails {
 }
 
 interface HomeTicket {
-    ticketid       : string;
-    ticketsetatusid: string;
+    ticketid      : number;
+    ticketstatusid: number;
+    ticketmaskid  : string;
     subject        : string;
     lastreplier    : string;
 
@@ -266,7 +267,7 @@ loadHome();
                         </div>
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
-                                <template v-if="value.links.length === 0">
+                                <template v-if="Object.keys(value.links).length === 0">
                                     <li class="list-group-item">No Active Services</li>
                                 </template>
                                 <template v-else>

@@ -90,7 +90,7 @@ async function editDnsRecord(event: Event) {
         fetchWrapper.post(baseUrl + '/dns/' + id, recordRow.value).then((response) => {
             console.log('api success');
             console.log(response);
-            loadDns(data, {});
+            loadDns();
             Swal.fire({
                 icon: 'success',
                 html: response.message,
@@ -120,7 +120,7 @@ async function addDnsRecord(event: Event) {
             .then((response) => {
                 console.log('api success');
                 console.log(response);
-                loadDns(data, {});
+                loadDns();
                 Swal.fire({
                     icon: 'success',
                     html: response.message,
@@ -163,7 +163,7 @@ async function deleteRecord(event: Event) {
                 fetchWrapper.delete(baseUrl + '/dns/' + id).then((response) => {
                     console.log('api success');
                     console.log(response);
-                    loadDns(data, {});
+                    loadDns();
                     Swal.fire({
                         icon: 'success',
                         html: response.message,
@@ -185,7 +185,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-const loadDns = async (id, data) => {
+const loadDns = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/dns/' + id);
         console.log('api success');
@@ -197,7 +197,7 @@ const loadDns = async (id, data) => {
     }
 };
 
-loadDns(id, data);
+loadDns();
 </script>
 
 <template>

@@ -37,17 +37,11 @@ function loadLink(newLink: string) {
         siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/vps/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
-            if (vpsStore.queue(id as string, newLink)) {
-                Swal.fire({
-                    icon: 'success',
-                    html: responseText.value,
-                });
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    html: responseText.value,
-                });
-            }
+            vpsStore.queue(id as string, newLink);
+            Swal.fire({
+                icon: 'success',
+                html: responseText.value,
+            });
         }
         if (newLink == 'login') {
             try {
