@@ -3,7 +3,7 @@ const ViewFloatingIp = () => import(/* webpackChunkName: "floating_ips" */ '@/vi
 const OrderFloatingIp = () => import(/* webpackChunkName: "floating_ips" */ '@/views/floating_ips/OrderFloatingIp.vue');
 
 export default {
-    path: '/floating_ips',
+    path: '/floating_ip',
     //component: Layout,
     children: [
         { path: '', component: FloatingIpsList },

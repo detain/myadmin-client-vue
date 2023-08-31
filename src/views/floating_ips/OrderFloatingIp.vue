@@ -33,22 +33,28 @@ async function onSubmit(values: any) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper
-        .post(baseUrl + '/mail/order', {
-            validateOnly: true,
-            serviceType: pkg.value,
-            coupon: coupon.value,
-        })
-        .then((response) => {
-            Swal.close();
-            validateResponse.value = response;
-            console.log('Response:');
-            console.log(response);
-            pkg.value = response.serviceType;
-            if (response.continue == true) {
-                step.value = 'order_confirm';
-            }
-        });
+    try {
+        fetchWrapper
+            .put(baseUrl + '/floating_ip/order', {
+                validateOnly: true,
+                serviceType: pkg.value,
+                coupon: coupon.value,
+            })
+            .then((response) => {
+                Swal.close();
+                validateResponse.value = response;
+                console.log('Response:');
+                console.log(response);
+                pkg.value = response.serviceType;
+                if (response.continue == true) {
+                    step.value = 'order_confirm';
+                }
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('error:');
+        console.log(error);
+    }
 }
 
 function updateCoupon() {
@@ -63,7 +69,7 @@ async function placeOrder(values: any) {
         showConfirmButton: false,
     });
     fetchWrapper
-        .post(baseUrl + '/mail/order', {
+        .post(baseUrl + '/floating_ip/order', {
             validateOnly: false,
             serviceType: pkg.value,
             coupon: coupon.value,
@@ -80,7 +86,7 @@ async function placeOrder(values: any) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/mail/order').then((response) => {
+    fetchWrapper.get(baseUrl + '/floating_ip/order').then((response) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
