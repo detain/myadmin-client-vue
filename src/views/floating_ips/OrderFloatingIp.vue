@@ -16,7 +16,15 @@ const baseUrl          = siteStore.getBaseUrl();
 const step             = ref('orderform');
 const coupon           = ref('');
 const pkg              = ref(10880);
-const validateResponse = ref({});
+const validateResponse = ref<ValidateFloatingIpOrderResponse>({
+    continue: false,
+    coupon: '',
+    couponCode: null,
+    errors: false,
+});
+
+
+
 const tos              = ref(false);
 const packageCosts     = ref({});
 const serviceTypes     = ref<ServiceTypes>({});
@@ -40,7 +48,7 @@ async function onSubmit(values: any) {
                 serviceType: pkg.value,
                 coupon: coupon.value,
             })
-            .then((response) => {
+            .then((response: ValidateFloatingIpOrderResponse) => {
                 Swal.close();
                 validateResponse.value = response;
                 console.log('Response:');
@@ -55,6 +63,19 @@ async function onSubmit(values: any) {
         console.log('error:');
         console.log(error);
     }
+}
+
+interface ValidateFloatingIpOrderResponse {
+    continue: boolean;
+    errors: string[];
+    serviceType: number;
+    serviceCost: null;;
+    originalCost: null;
+    repeatServiceCost: null;
+    password: number;
+    introFrequency: null;
+    coupon: string;
+    couponCode: null | number;
 }
 
 function updateCoupon() {
