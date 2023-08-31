@@ -10,7 +10,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/websites', 'Websites List'],[ '/websites/order', 'Order Website' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/websites', 'Websites List'], ['/websites/order', 'Order Website']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface Package extends ServiceType {
@@ -146,7 +146,7 @@ async function onSubmitConfirmation() {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/' + response.iids.join(','));
                 }
 
             });

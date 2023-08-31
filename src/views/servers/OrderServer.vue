@@ -7,7 +7,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/servers', 'Servers List'],[ '/servers/order', 'Order Server' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/servers', 'Servers List'], ['/servers/order', 'Order Server']]);
 const baseUrl = siteStore.getBaseUrl();
 
 const currency = ref('USD');
@@ -30,7 +30,7 @@ const configLi = ref<ConfigLi>({
     raid_li: {},
 });
 const servername = ref('');
-const rootpass   = ref('');
+const rootpass = ref('');
 const comment = ref('');
 const cpuCores = ref<CpuCores>({});
 const hdValues = computed(() => { return configLi.value.hd_li; });
@@ -161,36 +161,36 @@ interface RaidLi extends SimpleStringObj {
 }
 
 interface CpuRow {
-    active               : string;
-    benchmark            : string;
-    cache                : string;
-    fsb                  : string;
-    hd_ids               : string;
-    id                   : string;
-    img                  : string;
-    location             : string;
-    long_desc            : string;
-    manu                 : string;
-    max_lff              : string;
-    max_nve              : string;
-    max_ram              : string;
-    max_sff              : string;
-    min_ram              : string;
-    monthly_price        : number;
+    active: string;
+    benchmark: string;
+    cache: string;
+    fsb: string;
+    hd_ids: string;
+    id: string;
+    img: string;
+    location: string;
+    long_desc: string;
+    manu: string;
+    max_lff: string;
+    max_nve: string;
+    max_ram: string;
+    max_sff: string;
+    min_ram: string;
+    monthly_price: number;
     monthly_price_display: string;
-    num_cores            : string;
-    num_cpus             : string;
-    price                : number;
-    price_display        : string;
-    short_desc           : string;
-    speed                : string;
-    type                 : string;
-    visible              : string;
+    num_cores: string;
+    num_cpus: string;
+    price: number;
+    price_display: string;
+    short_desc: string;
+    speed: string;
+    type: string;
+    visible: string;
 }
 
 interface CpuCoresRow extends CpuRow {
     memory_det: MemoryRow;
-    hd_det    : HdRow;
+    hd_det: HdRow;
     monthly_fee: string;
 }
 
@@ -290,11 +290,11 @@ function serverOrderRequest(addCpu: boolean) {
         Swal.close();
         console.log('Response:');
         console.log(response);
-        configIds.value  = response.config_ids;
-        configLi.value   = response.config_li;
-        cpu.value        = response.cpu;
-        cpu_li.value      = response.cpu_li;
-        cpuCores.value   = response.cpu_cores;
+        configIds.value = response.config_ids;
+        configLi.value = response.config_li;
+        cpu.value = response.cpu;
+        cpu_li.value = response.cpu_li;
+        cpuCores.value = response.cpu_cores;
         fieldLabel.value = response.field_label;
         formValues.value = response.form_values;
         if (addCpu) {
@@ -329,7 +329,7 @@ serverOrderRequest(false);
                                         <label class="font-weight-normal w-100" :for="'ds-' + id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <img alt=""  class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
+                                                    <img alt="" class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="text-bold text-sm">{{ cpu_details.short_desc }}</div>

@@ -5,16 +5,16 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
 const props = defineProps(['id']);
 //const id = ref('');
-const successMsg  = ref('');
+const successMsg = ref('');
 const cancelQueue = ref('');
-const fields      = ref<Fields>({});
-const siteStore   = useSiteStore();
+const fields = ref<Fields>({});
+const siteStore = useSiteStore();
 
 interface Fields {
     [key: string]: {
         help_text: string;
-        name     : string;
-        value    : string;
+        name: string;
+        value: string;
     }
 }
 

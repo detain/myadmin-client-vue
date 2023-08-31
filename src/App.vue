@@ -6,7 +6,7 @@ import { MainMenu, Alert } from '@/components';
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
-onMounted(function () {});
+onMounted(function () { });
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -47,17 +47,17 @@ let AdminLTESidebarTweak = {
 };
 $('.collapse_menu').on('click', function () {
     if (AdminLTESidebarTweak.options.EnableRemember) {
-      let toggleState = 'closed';
-      if ($('body').hasClass('sidebar-collapse')) {
+        let toggleState = 'closed';
+        if ($('body').hasClass('sidebar-collapse')) {
             toggleState = 'opened';
         }
         document.cookie = 'toggleState=' + toggleState;
     }
 });
 if (AdminLTESidebarTweak.options.EnableRemember) {
-  const re = new RegExp('toggleState' + '=([^;]+)');
-  const value = re.exec(document.cookie);
-  let toggleState = value != null ? unescape(value[1]) : null;
+    const re = new RegExp('toggleState' + '=([^;]+)');
+    const value = re.exec(document.cookie);
+    let toggleState = value != null ? unescape(value[1]) : null;
     if (toggleState == 'closed') {
         if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')
@@ -115,8 +115,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
-                            <b>{{ user?.account_lid }}</b></span
-                        >
+                            <b>{{ user?.account_lid }}</b></span>
                     </div>
                 </div>
                 <nav class="mt-2">

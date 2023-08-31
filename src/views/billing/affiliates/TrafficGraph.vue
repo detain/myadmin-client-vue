@@ -7,12 +7,12 @@ import Chart from 'chart.js/auto';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - TrafficGraph');
 siteStore.setTitle('Affiliate - TrafficGraph');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'TrafficGraph' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'TrafficGraph']]);
 
 const selectedPeriod = ref(30);
 function createGraph() {
     const canvas = ((document.getElementById('canvasGraph') as unknown) as HTMLCanvasElement);
-    const ctx    = canvas.getContext("2d") as CanvasRenderingContext2D;
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     new Chart(ctx, {
         type: 'line',
         data: {
@@ -67,5 +67,4 @@ onMounted(() => {
     </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

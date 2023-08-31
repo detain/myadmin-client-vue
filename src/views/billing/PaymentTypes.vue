@@ -11,7 +11,7 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading('Payment Types');
 siteStore.setTitle('Payment Types');
 siteStore.setTitle('Payment Types');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Payment Types' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Payment Types']]);
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
@@ -23,14 +23,14 @@ const verify_display = ref('');
 const cc_auto_checked = ref(false);
 const countries = ref({});
 const contFields = reactive<SimpleStringObj>({
-    cc     : '',
-    cc_exp : '',
-    name   : '',
+    cc: '',
+    cc_exp: '',
+    name: '',
     address: '',
-    phone  : '',
-    city   : '',
-    state  : '',
-    zip    : '',
+    phone: '',
+    city: '',
+    state: '',
+    zip: '',
     country: 'US',
 });
 
@@ -168,16 +168,16 @@ function updatePaymentMethod() {
 
 function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
-  let caretPosition = e.target.selectionStart;
-  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  const parts = [];
-  let i, len;
-  for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
+    let caretPosition = e.target.selectionStart;
+    const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+    const parts = [];
+    let i, len;
+    for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-      const c = e.target.value[i];
-      if (c < '0' || c > '9') {
+        const c = e.target.value[i];
+        if (c < '0' || c > '9') {
             caretPosition--;
         }
     }
@@ -188,11 +188,11 @@ function formatCardNum(e: any) {
 
 function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
-  let caretPosition = e.target.selectionStart;
-  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  const parts = [];
-  let i;
-  for (i = 0; i < 2; i += 2) {
+    let caretPosition = e.target.selectionStart;
+    const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+    const parts = [];
+    let i;
+    for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
     }
     if (sanitizedValue.length >= 2) {
@@ -201,8 +201,8 @@ function formatExpDate(e: any) {
         }
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-      const c = e.target.value[i];
-      if (c < '0' || c > '9') {
+        const c = e.target.value[i];
+        if (c < '0' || c > '9') {
             caretPosition--;
         }
     }

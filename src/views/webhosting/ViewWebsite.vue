@@ -25,7 +25,7 @@ function isEmpty(table: any) {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/websites', 'Website' ]]);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/websites', 'Website']]);
     siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Website ' + id);
@@ -78,14 +78,13 @@ loadLink(route.params.link as string);
             </div>
         </div>
         <div class="col-md-4">
-            <div
-                :class="{
-                    'small-box': true,
-                    'bg-success': serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active',
-                    'bg-orange': serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended',
-                    'bg-danger': serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled',
-                    'bg-info': !(serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active' || serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended' || serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled'),
-                }">
+            <div :class="{
+                'small-box': true,
+                'bg-success': serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active',
+                'bg-orange': serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended',
+                'bg-danger': serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled',
+                'bg-info': !(serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active' || serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended' || serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled'),
+            }">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>Billing</h3>
                     <p class="my-3 py-3">
@@ -258,8 +257,7 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body text-center">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

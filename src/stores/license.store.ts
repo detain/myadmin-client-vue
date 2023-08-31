@@ -27,7 +27,7 @@ interface LicenseState {
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
@@ -92,9 +92,7 @@ export const useLicenseStore = defineStore({
             services_module: 'licenses',
         },
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

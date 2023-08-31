@@ -6,9 +6,9 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - WebTraffic');
 siteStore.setTitle('Affiliate - WebTraffic');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'WebTraffic' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'WebTraffic']]);
 const table = ref('');
-onMounted(() => {});
+onMounted(() => { });
 </script>
 
 <template>

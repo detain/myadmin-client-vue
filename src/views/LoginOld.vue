@@ -15,7 +15,7 @@ const schema = Yup.object().shape({
     passwd: Yup.string().required('Password is required'),
 });
 interface LoginParams {
-    login : string;
+    login: string;
     passwd: string;
     tfa?: string;
 }

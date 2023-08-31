@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains' ]]);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains']]);
     siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Domain ' + id);
@@ -29,7 +29,7 @@ function loadLink(newLink: string) {
         siteStore.setTitle('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/domains/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
-		// do something here
+            // do something here
         }
     }
 }
@@ -132,8 +132,7 @@ console.log(link.value);
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/domains/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

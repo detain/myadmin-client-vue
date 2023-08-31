@@ -19,7 +19,7 @@ const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clie
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/servers', 'Servers' ]]);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/servers', 'Servers']]);
     siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Server ' + id);
@@ -29,7 +29,7 @@ function loadLink(newLink: string) {
         siteStore.setTitle('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/servers/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
-		// do something here
+            // do something here
         }
     }
 }
@@ -111,9 +111,7 @@ const ipv6VlansNetworks = computed(() => {
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-dollar-sign"></i></div>
-                <span class="small-box-footer"
-                    >Status is: <b>{{ serviceInfo.server_status }}</b></span
-                >
+                <span class="small-box-footer">Status is: <b>{{ serviceInfo.server_status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -191,8 +189,7 @@ const ipv6VlansNetworks = computed(() => {
                 </div>
                 <div class="card-body text-center">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/servers/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

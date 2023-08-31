@@ -4,34 +4,33 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface VpsInfo {
-    vps_comment      : string;
-    vps_coupon       : number;
-    vps_currency     : string;
-    vps_custid       : number;
-    vps_diskmax      : number;
-    vps_diskused     : number;
-    vps_extra        : string;
-    vps_hostname     : string;
-    vps_id           : number;
-    vps_invoice      : number;
-    vps_ip           : string;
-    vps_ipv6         : string | null;
-    vps_location     : number;
-    vps_mac          : string;
-    vps_order_date   : string;
-    vps_os           : string;
-    vps_platform     : string;
-    vps_rootpass     : string;
-    vps_server       : number;
+    vps_comment: string;
+    vps_coupon: number;
+    vps_currency: string;
+    vps_custid: number;
+    vps_diskmax: number;
+    vps_diskused: number;
+    vps_extra: string;
+    vps_hostname: string;
+    vps_id: number;
+    vps_invoice: number;
+    vps_ip: string;
+    vps_ipv6: string | null;
+    vps_location: number;
+    vps_mac: string;
+    vps_order_date: string;
+    vps_os: string;
+    vps_platform: string;
+    vps_rootpass: string;
+    vps_server: number;
     vps_server_status: string;
-    vps_slices       : number;
-    vps_status       : string;
-    vps_type         : number;
-    vps_version      : string;
-    vps_vnc          : string;
-    vps_vnc_port     : number;
-    vps_vzid         : string;
-
+    vps_slices: number;
+    vps_status: string;
+    vps_type: number;
+    vps_version: string;
+    vps_vnc: string;
+    vps_vnc_port: number;
+    vps_vzid: string;
 }
 
 interface VpsServiceMaster {
@@ -82,8 +81,8 @@ interface VpsServiceAddons {
 interface VpsState {
     vpsList: VpsInfo[];
     loading: boolean;
-    error  : boolean | string;
-    errors: boolean |  string[];
+    error: boolean | string;
+    errors: boolean | string[];
     linkDisplay: boolean | string;
     module: string;
     pkg: string;
@@ -93,7 +92,7 @@ interface VpsState {
     serviceAddons: VpsServiceAddons;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     disk_percentage: number;
     memory: number;
@@ -168,7 +167,7 @@ export const useVpsStore = defineStore({
             cpanel_id: 0,
             cost: 0,
             ids: [],
-            rdata: []
+            rdata: [],
         },
         serviceInfo: {
             vps_comment: '',
@@ -219,15 +218,15 @@ export const useVpsStore = defineStore({
         serviceExtra: {},
         extraInfoTables: {},
         serviceType: {
-            services_id      : 0,
-            services_name    : '',
-            services_cost    : 0,
+            services_id: 0,
+            services_name: '',
+            services_cost: 0,
             services_category: 0,
-            services_buyable : false,
-            services_type    : 0,
-            services_field1  : '',
-            services_field2  : '',
-            services_module  : 'vps',
+            services_buyable: false,
+            services_type: 0,
+            services_field1: '',
+            services_field2: '',
+            services_module: 'vps',
         },
         linkDisplay: false,
         service_disk_used: 0,
@@ -245,16 +244,14 @@ export const useVpsStore = defineStore({
         vps_logs: [],
         cpuGraphData: null,
         responseText: '',
-        queueId: null
+        queueId: null,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.post(baseUrl+'/register', user);
+            await fetchWrapper.post(baseUrl + '/register', user);
         },
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();
@@ -278,7 +275,7 @@ export const useVpsStore = defineStore({
                 const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/' + action);
                 this.linkDisplay = response.text;
                 this.responseText = response.text;
-                this.queueId  = response.queueId;
+                this.queueId = response.queueId;
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

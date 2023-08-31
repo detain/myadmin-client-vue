@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Rapid Deploy Servers List');
 siteStore.setTitle('Rapid Deploy Servers List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Quickservers' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Quickservers']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface quickserversRow {

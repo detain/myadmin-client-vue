@@ -3,46 +3,46 @@ import { fetchWrapper, snakeToCamel } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface SslListRow {
-    ssl_id      : number;
+    ssl_id: number;
     ssl_hostname: string;
     services_name: string;
-    ssl_status  : string;
+    ssl_status: string;
     ssl_company: string;
 }
 
 interface SslState {
-    sslList           : SslListRow[];
-    loading           : boolean;
-    error             : boolean;
-    pkg               : number;
-    ssl_id            : number;
-    ssl_hostname      : string;
-    ssl_order_id      : number;
-    ssl_type          : number;
-    ssl_currency      : string;
-    ssl_order_date    : string;
-    ssl_custid        : number;
-    ssl_status        : string;
-    ssl_invoice       : number;
-    ssl_coupon        : number;
-    ssl_firstname     : string;
-    ssl_lastname      : string;
-    ssl_phone         : string;
-    ssl_email         : string;
-    ssl_company       : string;
-    ssl_address       : string;
-    ssl_city          : string;
-    ssl_state         : string;
-    ssl_zip           : string;
-    ssl_country       : string;
-    ssl_department    : string;
-    ssl_extra         : string;
+    sslList: SslListRow[];
+    loading: boolean;
+    error: boolean;
+    pkg: number;
+    ssl_id: number;
+    ssl_hostname: string;
+    ssl_order_id: number;
+    ssl_type: number;
+    ssl_currency: string;
+    ssl_order_date: string;
+    ssl_custid: number;
+    ssl_status: string;
+    ssl_invoice: number;
+    ssl_coupon: number;
+    ssl_firstname: string;
+    ssl_lastname: string;
+    ssl_phone: string;
+    ssl_email: string;
+    ssl_company: string;
+    ssl_address: string;
+    ssl_city: string;
+    ssl_state: string;
+    ssl_zip: string;
+    ssl_country: string;
+    ssl_department: string;
+    ssl_extra: string;
     ssl_approver_email: string;
-    ssl_csr           : string;
-    ssl_private_key   : string;
-    ssl_x509          : string;
-    ssl_ca_root       : string;
-    ssl_ca_inter      : string;
+    ssl_csr: string;
+    ssl_private_key: string;
+    ssl_x509: string;
+    ssl_ca_root: string;
+    ssl_ca_inter: string;
     linkDisplay: boolean;
 }
 
@@ -81,11 +81,9 @@ export const useSslStore = defineStore({
         ssl_ca_root: '',
         ssl_ca_inter: '',
         pkg: 0,
-        linkDisplay: false
+        linkDisplay: false,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
@@ -150,7 +148,7 @@ export const useSslStore = defineStore({
                 this.ssl_x509 = response.ssl_x509;
                 this.ssl_ca_root = response.ssl_ca_root;
                 this.ssl_ca_inter = response.ssl_ca_inter;
-                            } catch (error: any) {
+            } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
             }

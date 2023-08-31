@@ -17,7 +17,7 @@ const id = route.params.id;
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Editor');
 siteStore.setTitle('DNS Editor');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/dns', 'DNS Manager' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/dns', 'DNS Manager']]);
 siteStore.addBreadcrum('/dns/' + id, 'DNS Editor');
 const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);
@@ -32,12 +32,12 @@ let dt;
 const limitStatus = ref('active');
 
 interface DnsRecordRow {
-    id     : number;
-    name   : string;
-    type   : string;
+    id: number;
+    name: string;
+    type: string;
     content: string;
-    prio   : string;
-    ttl    : string;
+    prio: string;
+    ttl: string;
 }
 
 interface LimitStatusMap {
@@ -138,8 +138,8 @@ async function addDnsRecord(event: Event) {
 
 async function showEditRecord(event: Event) {
     recordId.value = Number((event.target as HTMLElement).getAttribute('data-id'));
-  let row, rowIdx;
-  for (rowIdx in data.value) {
+    let row, rowIdx;
+    for (rowIdx in data.value) {
         row = data.value[rowIdx];
         if (row.id == recordId.value) {
             recordRow.value = row;
@@ -148,8 +148,8 @@ async function showEditRecord(event: Event) {
 }
 
 async function deleteRecord(event: Event) {
-  const record = (event.target as HTMLElement).getAttribute('data-id');
-  console.log(record);
+    const record = (event.target as HTMLElement).getAttribute('data-id');
+    console.log(record);
     Swal.fire({
         icon: 'error',
         title: '<h3>Delete Domain</h3> ',

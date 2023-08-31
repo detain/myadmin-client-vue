@@ -8,7 +8,7 @@ import DataTable from 'datatables.net-dt';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Invoice List');
 siteStore.setTitle('Invoice List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Invoices' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Invoices']]);
 
 const invoicesStore = useInvoicesStore();
 const { custid, month, year, months_arr, years_arr, rows, loading, error } = storeToRefs(invoicesStore);

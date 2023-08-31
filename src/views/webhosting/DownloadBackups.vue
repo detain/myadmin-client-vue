@@ -23,10 +23,10 @@ const isEmpty = (rows: any) => {
 };
 
 interface BackupRow {
-backup_name  : string;
-website      : string;
-size         : number;
-download_link: string;
+    backup_name: string;
+    website: string;
+    size: number;
+    download_link: string;
 }
 
 </script>

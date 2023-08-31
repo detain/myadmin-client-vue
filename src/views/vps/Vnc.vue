@@ -93,7 +93,7 @@ const moduleLink = computed(() => {
                         <tr>
                             <td style="width: 100px; vertical-align: middle">
                                 <img v-if="vpsScreenshot" style="height: 100px" :src="vpsScreenshot" alt="VPS Screenshot" />
-                                <img alt=""  v-else style="height: 100px" src="//i.ytimg.com/vi/B-3yfcIiLZc/maxresdefault.jpg" />
+                                <img alt="" v-else style="height: 100px" src="//i.ytimg.com/vi/B-3yfcIiLZc/maxresdefault.jpg" />
                             </td>
                         </tr>
                     </table>

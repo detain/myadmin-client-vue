@@ -10,7 +10,7 @@ import 'datatables.net-bs4';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate System');
 siteStore.setTitle('Affiliate System');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Affiliate' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Affiliate']]);
 const myUrl = 'https://my.interserver.net';
 const body = ref('');
 const custid = ref();
@@ -22,8 +22,8 @@ onMounted(() => {
         document.location.href = $(this).attr('href') as string;
     });
     $('#copy_url').click(function () {
-      const copyText = $('#affiliateinput');
-      copyText.select();
+        const copyText = $('#affiliateinput');
+        copyText.select();
         document.execCommand('copy');
         Swal.fire({
             icon: 'success',
@@ -67,18 +67,18 @@ onMounted(() => {
             [10, 25, 50, 100, 500, 'All'],
         ],
     });
-  const tables = ['table_default', 'table_pending', 'table_paid', 'table_failed'];
-  for (let j = tables.length - 1; j >= 0; j--) {
+    const tables = ['table_default', 'table_pending', 'table_paid', 'table_failed'];
+    for (let j = tables.length - 1; j >= 0; j--) {
         $('#' + tables[j] + ' thead tr')
             .clone(true)
             .appendTo('#' + tables[j] + ' thead');
         $('#' + tables[j] + ' thead tr:eq(1) td').each(function (i) {
             $(this).removeAttr('class aria-controls aria-label rowspan colspan style');
-          const title = $(this).text();
-          $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
+            const title = $(this).text();
+            $(this).html('<input type="text" placeholder="Search" style="width:100%"/>');
             $('input', this).on('keyup change', function (event, value) {
-              const table_name = $(this).parents('table').attr('id');
-              if (table_name === 'table_default' && table_default.column(i).search() !== value) {
+                const table_name = $(this).parents('table').attr('id');
+                if (table_name === 'table_default' && table_default.column(i).search() !== value) {
                     table_default.column(i).search(value).draw();
                 } else if (table_name === 'table_pending') {
                     table_pending.column(i).search(value).draw();

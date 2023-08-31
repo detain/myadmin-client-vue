@@ -21,7 +21,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
 siteStore.setTitle('VPS List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'VPS List' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'VPS List']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface vpsRow {
@@ -66,7 +66,7 @@ const filteredData = computed(() => {
     }
 });
 
-onMounted(function () {});
+onMounted(function () { });
 
 function crud_print(): void {
 
@@ -310,6 +310,7 @@ loadVpsList(data);
 
 <style scoped>
 @import 'datatables.net-bs4';
+
 /*@import 'datatables.net-buttons-bs4';
 @import 'datatables.net-responsive-bs4';*/
 a.btn-info:link,

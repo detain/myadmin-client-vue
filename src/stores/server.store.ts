@@ -22,22 +22,22 @@ interface ServerInfo {
     server_ips: number;
     server_monthly_bill: number;
     server_setup: number;
-    server_discount: string | null,
+    server_discount: string | null;
     server_rep: number;
     server_date: number;
     server_total_cost: number;
-    server_location: string | null,
+    server_location: string | null;
     server_hardware_ordered: number;
     server_billed: number;
     server_welcome_email: number;
     server_dedicated_cpu: number;
     server_dedicated_memory: number;
     server_dedicated_hd1: number;
-    server_dedicated_hd2: number | null,
+    server_dedicated_hd2: number | null;
     server_dedicated_bandwidth: number;
     server_dedicated_ips: number;
     server_dedicated_os: number;
-    server_dedicated_cp: number | null,
+    server_dedicated_cp: number | null;
     server_dedicated_raid: number;
     server_extra: string;
 }
@@ -58,7 +58,7 @@ interface ServerState {
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
@@ -149,9 +149,7 @@ export const useServerStore = defineStore({
         },
         locations: {},
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

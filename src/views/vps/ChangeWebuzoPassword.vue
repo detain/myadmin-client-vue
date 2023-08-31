@@ -15,7 +15,7 @@ const goBackLink = ref('');
 const hostname = ref('');
 const ip = ref('');
 const ima = ref('');
-onMounted(() => {});
+onMounted(() => { });
 function submitForm() {
     // Perform logic for form submission
 }

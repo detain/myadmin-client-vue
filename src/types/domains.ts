@@ -1,7 +1,7 @@
 import { ServiceType } from './view-service-common';
 
 export interface SearchDomainResult {
-    'continue': boolean;
+    continue: boolean;
     currencySymbol: string;
     domain: string;
     domain_type: string;
@@ -16,16 +16,16 @@ export interface SearchDomainResult {
 export interface DomainResult extends SuggestionRow {
     raw: {
         cost: number;
-        'new': number;
+        new: number;
         renewal: number;
         transfer: number;
-    }
+    };
 }
 
 export interface Lookups {
     items: {
         [key: number]: SuggestionRow;
-    }
+    };
 }
 
 export interface LookupsOld {
@@ -33,7 +33,7 @@ export interface LookupsOld {
     is_success: number;
     items: {
         [key: number]: SuggestionRow;
-    }
+    };
     response_code: number;
     response_text: string;
 }
@@ -43,15 +43,15 @@ export interface Suggestions {
 }
 
 export interface SuggestionRow {
-    cost     : string;
-    domain   : string;
-    id       : number;
-    'new'    : string;
-    renewal  : string;
-    status   : string;
-    tld      : string;
-    transfer : string;
-    premium ?: string;
+    cost: string;
+    domain: string;
+    id: number;
+    new: string;
+    renewal: string;
+    status: string;
+    tld: string;
+    transfer: string;
+    premium?: string;
 }
 
 export interface DomainFieldsResponse {
@@ -63,12 +63,12 @@ export interface DomainFields {
 }
 
 export interface DomainField {
-    validations : string[];
-    value       : string;
-    label       : string;
-    input       : string | DomainFieldInputArray;
-    required    : boolean;
-    tip        ?: string;
+    validations: string[];
+    value: string;
+    label: string;
+    input: string | DomainFieldInputArray;
+    required: boolean;
+    tip?: string;
 }
 
 type DomainFieldInputArray = [string, DomainFieldSelectValues];

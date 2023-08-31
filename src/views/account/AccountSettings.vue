@@ -9,7 +9,7 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Account Settings' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Account Settings']]);
 const baseUrl = siteStore.getBaseUrl();
 
 const { loading, error, custid, ima, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);

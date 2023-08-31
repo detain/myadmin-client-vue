@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'SSL' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'SSL']]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -32,10 +32,10 @@ const limitStatusMap: LimitStatusMap = {
 };
 
 interface SslListRow {
-    ssl_id      : number;
+    ssl_id: number;
     ssl_hostname: string;
     services_name: string;
-    ssl_status  : string;
+    ssl_status: string;
     ssl_company: string;
 }
 

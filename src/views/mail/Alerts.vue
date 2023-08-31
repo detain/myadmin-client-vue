@@ -41,17 +41,17 @@ function submitBlock() {
 }
 
 interface AlertRow {
-    alert_id      : number;
-    alert_module  : string;
-    alert_service : number;
-    alert_enabled : number;
-    alert_type    : string;
-    alert_value   : string;
+    alert_id: number;
+    alert_module: string;
+    alert_service: number;
+    alert_enabled: number;
+    alert_type: string;
+    alert_value: string;
     alert_notifier: string;
-    alert_to      : string;
-    alert_created : string;
-    alert_updated : string;
-    alert_used    : string;
+    alert_to: string;
+    alert_created: string;
+    alert_updated: string;
+    alert_used: string;
 }
 
 </script>

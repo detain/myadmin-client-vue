@@ -6,10 +6,10 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - PaymentSetup');
 siteStore.setTitle('Affiliate - PaymentSetup');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'PaymentSetup' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'PaymentSetup']]);
 const payment_method = ref('');
 const affiliate_paypal = ref('');
-onMounted(() => {});
+onMounted(() => { });
 </script>
 
 <template>

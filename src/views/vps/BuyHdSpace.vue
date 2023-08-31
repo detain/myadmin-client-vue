@@ -65,9 +65,7 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" id="hdamount" class="form-control form-control-sm" readonly :value="getAmount()" />
-                                    <span class="text-muted text-sm"
-                                        >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
-                                    >
+                                    <span class="text-muted text-sm">{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span>
                                 </div>
                             </div>
                         </div>

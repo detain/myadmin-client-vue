@@ -49,8 +49,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
-                            <b>{{ user.account_lid }}</b></span
-                        >
+                            <b>{{ user.account_lid }}</b></span>
                     </div>
                 </div>
                 <nav class="mt-2">

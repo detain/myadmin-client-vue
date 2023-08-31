@@ -30,7 +30,7 @@ export default defineConfig({
         inject({
             jQuery: 'jquery',
         }),
-/*
+        /*
         checker({
             vueTsc: true,
             typescript: false,
@@ -58,9 +58,9 @@ export default defineConfig({
         Inspect(),
         Inspector(),
         VueDevTools(),
-//        TurboConsole(),
+        //        TurboConsole(),
     ],
-/*
+    /*
     optimizeDeps: {
         disabled: false,
         include: ['jquery'],
@@ -100,7 +100,7 @@ export default defineConfig({
     resolve: {
         alias: {
             //'@': path.resolve(__dirname, './src'),
-            "@": fileURLToPath(new URL("./src", import.meta.url))
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
 });

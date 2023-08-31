@@ -9,26 +9,26 @@ import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, Sug
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains List'],[ '/domains/order', 'Order Domain' ]]);
-const baseUrl          = siteStore.getBaseUrl();
-const route            = useRoute();
-const router           = useRouter();
-const hostname         = ref('');
-const ima              = ref('client');
-const custid           = ref('2773');
+siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains List'], ['/domains/order', 'Order Domain']]);
+const baseUrl = siteStore.getBaseUrl();
+const route = useRoute();
+const router = useRouter();
+const hostname = ref('');
+const ima = ref('client');
+const custid = ref('2773');
 const whoisPrivacyCost = ref(0);
-const whoisPrivacy     = ref('disable');
-const domainResult     = ref<DomainResult | null>(null);
-const domainType       = ref('register');
-const lookups          = ref<Lookups>({ items: {} });
-const suggestions      = ref<Suggestions>({ items: [] });
-const packageInfo      = ref<ServiceType | null>(null);
-const errors           = ref<string[]>([]);
-const searchResponse   = ref<SearchDomainResult | null>(null);
-const services         = ref<ServiceTypes>({});
-const tldServices      = ref({});
-const domainFields     = ref<DomainFields>({});
-const domainCost       = ref(0);
+const whoisPrivacy = ref('disable');
+const domainResult = ref<DomainResult | null>(null);
+const domainType = ref('register');
+const lookups = ref<Lookups>({ items: {} });
+const suggestions = ref<Suggestions>({ items: [] });
+const packageInfo = ref<ServiceType | null>(null);
+const errors = ref<string[]>([]);
+const searchResponse = ref<SearchDomainResult | null>(null);
+const services = ref<ServiceTypes>({});
+const tldServices = ref({});
+const domainFields = ref<DomainFields>({});
+const domainCost = ref(0);
 const termsAgreed = ref(false);
 const domain = computed(() => {
     return route.params.domain as string;
@@ -39,9 +39,9 @@ const regType = computed(() => {
 const display = ref('step1');
 
 function updateStep() {
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/domains', 'Domains List'],[ '/domains/order', 'Order Domain' ]]);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains List'], ['/domains/order', 'Order Domain']]);
     if (typeof domain.value == 'undefined') {
-        display.value ='step1';
+        display.value = 'step1';
     } else {
         hostname.value = domain.value;
         siteStore.addBreadcrum('/domains/order/' + domain.value, 'Domain Search');
@@ -57,12 +57,12 @@ function updateStep() {
         domainType.value = regType.value;
         siteStore.addBreadcrum('/domains/order/' + domain.value + '/' + regType.value, 'Domain Details');
         getDomainFields();
-        display.value ='step2';
+        display.value = 'step2';
     }
 }
 
 watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
-    console.log('domain old '+domainOld+' new '+domainNew+' regType old '+regTypeOld+' new '+regTypeNew);
+    console.log('domain old ' + domainOld + ' new ' + domainNew + ' regType old ' + regTypeOld + ' new ' + regTypeNew);
     updateStep();
 });
 
@@ -301,15 +301,9 @@ updateStep();
                                             </div>
                                             <br />
                                             <div class="d-inline px-2">
-                                                <span
-                                                    style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted"
-                                                    data-toggle="popover"
-                                                    data-container="body"
-                                                    data-html="true"
-                                                    data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
+                                                <span style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted" data-toggle="popover" data-container="body" data-html="true" data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
                   <p>The benefit of having Whois Privacy is that the Registrant’s identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
-                  <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>"
-                                                    title="WHOIS">
+                  <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>" title="WHOIS">
                                                     What is this Whois Privacy?
                                                 </span>
                                             </div>

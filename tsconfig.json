@@ -10,7 +10,7 @@
         "esModuleInterop": true,
         "lib": ["ESNext", "DOM"],
         "skipLibCheck": true,
-	// bundler
+        // bundler
         "moduleResolution": "Node",
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
@@ -18,9 +18,9 @@
         "noEmit": true,
         "jsx": "preserve",
         "paths": {
-          "@/*": ["src/*"]
+            "@/*": ["src/*"]
         },
-	// linting
+        // linting
         "strict": true,
         "noImplicitThis": true,
         "noUnusedLocals": false,

@@ -13,7 +13,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 const { loading, error, custid, ima, data, ip, gravatar } = storeToRefs(accountStore);
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Contact Info' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Contact Info']]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const countries = ref({});

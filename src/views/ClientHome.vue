@@ -8,24 +8,24 @@ const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
-siteStore.setBreadcrums([[ '', 'Home' ]]);
+siteStore.setBreadcrums([['', 'Home']]);
 const baseUrl = siteStore.getBaseUrl();
 import $ from 'jquery';
 import jQuery from 'jquery';
-const last_login_ip    = ref('');
-const last_login       = ref('');
-const currency         = ref('');
-const amount           = ref('');
-const invoice_list     = ref('');
-const balance          = ref('');
-const full_name        = ref('');
-const email            = ref('');
-const tickets          = ref<HomeTicket[]>([]);
-const data             = ref<any>({});
-const ticketStatus     = ref<HomeTicketStatus>({});
+const last_login_ip = ref('');
+const last_login = ref('');
+const currency = ref('');
+const amount = ref('');
+const invoice_list = ref('');
+const balance = ref('');
+const full_name = ref('');
+const email = ref('');
+const tickets = ref<HomeTicket[]>([]);
+const data = ref<any>({});
+const ticketStatus = ref<HomeTicketStatus>({});
 const ticketStatusView = ref<HomeTicketStatusView>({});
-const details          = ref<HomeDetails>({ modules: {} });
-const services         = ref<HomeServices>({});
+const details = ref<HomeDetails>({ modules: {} });
+const services = ref<HomeServices>({});
 const AFFILIATE_AMOUNT = ref('');
 
 interface HomeResponse {
@@ -49,21 +49,21 @@ interface HomeResponse {
 interface HomeDetails {
     modules: {
         [key: string]: {
-            icon     : string;
+            icon: string;
             view_link: string;
-            heading  : string;
-            buy_link : string;
+            heading: string;
+            buy_link: string;
             list_link: string;
         }
     }
 }
 
 interface HomeTicket {
-    ticketid      : number;
+    ticketid: number;
     ticketstatusid: number;
-    ticketmaskid  : string;
-    subject        : string;
-    lastreplier    : string;
+    ticketmaskid: string;
+    subject: string;
+    lastreplier: string;
 
 }
 

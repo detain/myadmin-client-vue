@@ -11,11 +11,11 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
 siteStore.setTitle('Order Floating IPs');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/mail', 'Floating IPs List'],[ '/mail/order', 'Order Floating IPs' ]]);
-const baseUrl          = siteStore.getBaseUrl();
-const step             = ref('orderform');
-const coupon           = ref('');
-const pkg              = ref(10880);
+siteStore.setBreadcrums([['/home', 'Home'], ['/mail', 'Floating IPs List'], ['/mail/order', 'Order Floating IPs']]);
+const baseUrl = siteStore.getBaseUrl();
+const step = ref('orderform');
+const coupon = ref('');
+const pkg = ref(10880);
 const validateResponse = ref<ValidateFloatingIpOrderResponse>({
     continue: false,
     errors: [],
@@ -31,9 +31,9 @@ const validateResponse = ref<ValidateFloatingIpOrderResponse>({
 
 
 
-const tos              = ref(false);
-const packageCosts     = ref({});
-const serviceTypes     = ref<ServiceTypes>({});
+const tos = ref(false);
+const packageCosts = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 const packageCost = ref(0);
 
 async function editForm() {
@@ -107,7 +107,7 @@ async function placeOrder(values: any) {
             console.log('Response:');
             console.log(response);
             if (response['continue'] == true) {
-                router.push('/cart/'+response.iids.join(','));
+                router.push('/cart/' + response.iids.join(','));
             }
         });
 }
@@ -139,8 +139,7 @@ try {
                     <div class="card-body">
                         <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_floating_ip" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label text-right"
-                                    >Package
+                                <label class="col-sm-3 col-form-label text-right">Package
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">

@@ -6,9 +6,9 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Signups');
 siteStore.setTitle('Affiliate - Signups');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'Signups' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'Signups']]);
 
-onMounted(() => {});
+onMounted(() => { });
 </script>
 
 <template>

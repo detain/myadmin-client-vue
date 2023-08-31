@@ -10,12 +10,12 @@ import 'datatables.net-responsive';
 */
 
 interface domainsRow {
-    screenshot        : string;
-    domain_id         : number;
-    domain_hostname   : string;
+    screenshot: string;
+    domain_id: number;
+    domain_hostname: string;
     domain_expire_date: string;
-    cost              : number;
-    domain_status     : string;
+    cost: number;
+    domain_status: string;
     link: string;
 }
 

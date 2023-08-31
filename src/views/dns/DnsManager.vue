@@ -14,7 +14,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Manager');
 siteStore.setTitle('DNS Manager');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'DNS Manager' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'DNS Manager']]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -126,13 +126,13 @@ function crud_export(exportType: string): void {
 }
 
 interface DomainRow {
-    id             : number;
-    name           : string;
-    master         : string;
-    last_check     : number;
-    type           : string;
+    id: number;
+    name: string;
+    master: string;
+    last_check: number;
+    type: string;
     notified_serial: number;
-    account        : string;
+    account: string;
     content: string;
 }
 

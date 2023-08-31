@@ -23,15 +23,15 @@ if (id) {
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
-    lastName : Yup.string().required('Last Name is required'),
-    username : Yup.string().required('Username is required'),
-    password : user ? Yup.string()
+    lastName: Yup.string().required('Last Name is required'),
+    username: Yup.string().required('Username is required'),
+    password: user ? Yup.string()
         .transform((x) => (x === '' ? undefined : x))
-        .min(6, 'Password must be at least 6 characters'): Yup.string()
-        .transform((x) => (x === '' ? undefined : x))
-        // password optional in edit mode
-        .concat(Yup.string().required('Password is required'))
-        .min(6, 'Password must be at least 6 characters'),
+        .min(6, 'Password must be at least 6 characters') : Yup.string()
+            .transform((x) => (x === '' ? undefined : x))
+            // password optional in edit mode
+            .concat(Yup.string().required('Password is required'))
+            .min(6, 'Password must be at least 6 characters'),
 });
 
 async function onSubmit(values: any) {

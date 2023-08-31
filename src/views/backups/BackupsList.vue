@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Storage / Backup List');
 siteStore.setTitle('Storage / Backup List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Storage' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Storage']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface backupsRow {
@@ -100,38 +100,38 @@ loadBackups();
                                 <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fa fa-print crud-icon"></i>Print</button>
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role = "presentation" data-type = "xlsx">
-                                    <a  href = "#" data-container       = "body" title = "Excel 2007+" @click.prevent = "crud_export('xlsx')"><img src = "/images/crud/xlsx.png" alt = "" /> XLSX</a>
+                                    <li role="presentation" data-type="xlsx">
+                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="/images/crud/xlsx.png" alt="" /> XLSX</a>
                                     </li>
-                                    <li role = "presentation" data-type = "xls">
-                                    <a  href = "#" data-container       = "body" title = "Excel 2003/BIFF" @click.prevent = "crud_export('xls')"><img src = "/images/crud/xls.png" alt = "" /> XLS</a>
+                                    <li role="presentation" data-type="xls">
+                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export('xls')"><img src="/images/crud/xls.png" alt="" /> XLS</a>
                                     </li>
-                                    <li role = "presentation" data-type = "ods">
-                                    <a  href = "#" data-container       = "body" title = "OpenDocument SpreadSheet" @click.prevent = "crud_export('ods')"><img src = "/images/crud/ods.png" alt = "" /> ODS</a>
+                                    <li role="presentation" data-type="ods">
+                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export('ods')"><img src="/images/crud/ods.png" alt="" /> ODS</a>
                                     </li>
-                                    <li role = "presentation" data-type = "pdf">
-                                    <a  href = "#" data-container       = "body" title = "Adobe Portable Document Format" @click.prevent = "crud_export('pdf')"><img src = "/images/crud/pdf.png" alt = "" /> PDF</a>
+                                    <li role="presentation" data-type="pdf">
+                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export('pdf')"><img src="/images/crud/pdf.png" alt="" /> PDF</a>
                                     </li>
-                                    <li role = "presentation" data-type = "xml">
-                                    <a  href = "#" data-container       = "body" title = "Extensible Markup Language" @click.prevent = "crud_export('xml')"><img src = "/images/crud/xml.png" alt = "" /> XML</a>
+                                    <li role="presentation" data-type="xml">
+                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export('xml')"><img src="/images/crud/xml.png" alt="" /> XML</a>
                                     </li>
-                                    <li role = "presentation" data-type = "php">
-                                    <a  href = "#" data-container       = "body" title = "PHP Array" @click.prevent = "crud_export('php')"><img src = "/images/crud/php.png" alt = "" /> PHP</a>
+                                    <li role="presentation" data-type="php">
+                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export('php')"><img src="/images/crud/php.png" alt="" /> PHP</a>
                                     </li>
-                                    <li role = "presentation" data-type = "csv">
-                                    <a  href = "#" data-container       = "body" title = "Comma-Seperated Values" @click.prevent = "crud_export('csv')"><img src = "/images/crud/csv.png" alt = "" /> CSV</a>
+                                    <li role="presentation" data-type="csv">
+                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export('csv')"><img src="/images/crud/csv.png" alt="" /> CSV</a>
                                     </li>
-                                    <li role = "presentation" data-type = "json">
-                                    <a  href = "#" data-container       = "body" title = "JSON" @click.prevent = "crud_export('json')"><img src = "/images/crud/json.png" alt = "" /> JSON</a>
+                                    <li role="presentation" data-type="json">
+                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export('json')"><img src="/images/crud/json.png" alt="" /> JSON</a>
                                     </li>
-                                    <li role = "presentation" data-type = "bbcode">
-                                    <a  href = "#" data-container       = "body" title = "BBcode" @click.prevent = "crud_export('bbcode')"><img src = "/images/crud/bbcode.png" alt = "" /> BBCODE</a>
+                                    <li role="presentation" data-type="bbcode">
+                                        <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export('bbcode')"><img src="/images/crud/bbcode.png" alt="" /> BBCODE</a>
                                     </li>
-                                    <li role = "presentation" data-type = "wiki">
-                                    <a  href = "#" data-container       = "body" title = "WikiCode" @click.prevent = "crud_export('wiki')"><img src = "/images/crud/wiki.png" alt = "" /> WIKI</a>
+                                    <li role="presentation" data-type="wiki">
+                                        <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export('wiki')"><img src="/images/crud/wiki.png" alt="" /> WIKI</a>
                                     </li>
-                                    <li role = "presentation" data-type = "markdown">
-                                    <a  href = "#" data-container       = "body" title = "MarkDown" @click.prevent = "crud_export('markdown')"><img src = "/images/crud/markdown.png" alt = "" /> MARKDOWN</a>
+                                    <li role="presentation" data-type="markdown">
+                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export('markdown')"><img src="/images/crud/markdown.png" alt="" /> MARKDOWN</a>
                                     </li>
                                 </ul>
                             </div>

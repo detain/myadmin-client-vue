@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Dedicated Servers List');
 siteStore.setTitle('Dedicated Servers List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Servers' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Servers']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface serversRow {

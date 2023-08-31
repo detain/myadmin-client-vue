@@ -1,4 +1,3 @@
-
 export interface ClientLink {
     label: string;
     link: string;
@@ -9,17 +8,17 @@ export interface ClientLink {
 }
 
 export interface ServiceType {
-    services_id       : number;
-    services_name     : string;
-    services_cost     : number;
-    services_curency ?: string;
-    services_category : number;
-    services_buyable  : number | boolean;
-    services_type     : number;
-    services_field1   : string;
-    services_field2   : string;
-    services_module   : string;
-    services_hidden  ?: boolean | number;
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_curency?: string;
+    services_category: number;
+    services_buyable: number | boolean;
+    services_type: number;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+    services_hidden?: boolean | number;
     services_details?: string;
 }
 
@@ -28,19 +27,21 @@ export interface ServiceTypes {
 }
 
 export interface BillingDetails {
-    service_last_invoice_date : string;
-    service_payment_status    ?: string;
-    service_frequency         : string;
-    next_date                 ?: string;
-    service_next_invoice_date ?: string;
-    service_currency          : string;
-    service_currency_symbol   : string;
-    service_cost_info         : string;
-    service_coupon           ?: string;
+    service_last_invoice_date: string;
+    service_payment_status?: string;
+    service_frequency: string;
+    next_date?: string;
+    service_next_invoice_date?: string;
+    service_currency: string;
+    service_currency_symbol: string;
+    service_cost_info: string;
+    service_coupon?: string;
     service_module?: string;
-    service_extra?: string | {
-        [key: string]: any;
-    };
+    service_extra?:
+        | string
+        | {
+              [key: string]: any;
+          };
 }
 
 export interface ExtraInfoTableRow {

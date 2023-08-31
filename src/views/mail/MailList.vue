@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Mail Services List');
 siteStore.setTitle('Mail Services List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Mail' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Mail']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface mailRow {

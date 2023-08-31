@@ -16,7 +16,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ip', 'Floating IPs' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/floating_ip', 'Floating IPs']]);
 siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IPs ' + id);
 
 const floatingIpStore = useFloatingIpStore();
@@ -32,7 +32,7 @@ function closeModal() {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/floating_ip', 'Floating IPs' ]]);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/floating_ip', 'Floating IPs']]);
     siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IP ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Floating IP ' + id);
@@ -42,7 +42,7 @@ function loadLink(newLink: string) {
         siteStore.setTitle('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/floating_ip/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
-		// do something here
+            // do something here
         }
     }
 }
@@ -75,9 +75,7 @@ const statusClass = computed(() => {
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Package</h3>
                     <p class="m-0 py-2">{{ pkg }}</p>
-                    <p>
-                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
-                    </p>
+                    <p>Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
@@ -90,16 +88,13 @@ const statusClass = computed(() => {
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>Billing</h3>
                     <p class="my-3 py-3">
-                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
-                        billed: <b>{{ billingDetails.service_frequency }}</b>
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >Floating IPs Status is: <b>{{ status }}</b></span
-                >
+                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -149,8 +144,7 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body my-3 py-4">
                         <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/floating_ip/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                            >{{ clientLink.label }}
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>

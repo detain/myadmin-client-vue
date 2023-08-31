@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Floating IPs Services List');
 siteStore.setTitle('Floating IPs Services List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Floating IPs' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Floating IPs']]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -60,13 +60,13 @@ function crud_export(exportType: string): void {
 }
 
 interface FloatingIpRow {
-    floating_ip_id      : number;
+    floating_ip_id: number;
     repeat_invoices_cost: number;
     floating_ip_username: string;
-    floating_ip_status  : string;
-    services_name       : string;
-    link                : string;
-    sortable            : boolean;
+    floating_ip_status: string;
+    services_name: string;
+    link: string;
+    sortable: boolean;
 }
 
 

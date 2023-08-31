@@ -22,7 +22,7 @@ onMounted(() => {
 type Nameservers = NameserverRow[];
 
 interface NameserverRow {
-    name     : string;
+    name: string;
     ipaddress: string;
     can_delete: number;
 }

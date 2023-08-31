@@ -21,13 +21,13 @@ const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        siteStore.setBreadcrums([[ '/home', 'Home'],[ '/licenses', 'Licenses List'],[ '/licenses/order', 'Select License Type' ]]);
+        siteStore.setBreadcrums([['/home', 'Home'], ['/licenses', 'Licenses List'], ['/licenses/order', 'Select License Type']]);
     } else {
-        siteStore.setBreadcrums([[ '/home', 'Home'],[ '/licenses', 'Licenses List'],[ '/licenses/order', 'Select License Type'],[ '/licenses/order/' + catTag.value, 'Order License' ]]);
+        siteStore.setBreadcrums([['/home', 'Home'], ['/licenses', 'Licenses List'], ['/licenses/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
     }
 }
 interface GetLicensesRow {
-    name       : string;
+    name: string;
     description: string;
     image: string;
     order: number;
@@ -74,8 +74,8 @@ const getLicenses = ref<GetLicenses>({
     },
 });
 const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
-const packageCosts    = ref({});
-const serviceTypes    = ref<ServiceTypes>({});
+const packageCosts = ref({});
+const serviceTypes = ref<ServiceTypes>({});
 
 
 interface ServiceCategory {
@@ -158,7 +158,7 @@ function submitLicenseForm() {
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/' + response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -386,7 +386,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos"/>
+                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>

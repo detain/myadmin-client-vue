@@ -13,8 +13,7 @@ authStore.sudo(sessionId);
 </script>
 
 <template>
-Logged in as a client, redirecting to home.
+    Logged in as a client, redirecting to home.
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

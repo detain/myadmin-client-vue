@@ -6,18 +6,18 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - ViewBanner');
 siteStore.setTitle('Affiliate - ViewBanner');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'ViewBanner' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'ViewBanner']]);
 
-const url            = ref('{$url}');
-const vpsUrl         = ref('{$vps_url}');
-const webhostingUrl  = ref('{$webhosting_url}');
-const imgDetail      = ref({ b: '', h: 0, w: 0 });
-const sid            = ref('');
-const landing        = ref('vps');
-const customUrl      = ref('');
+const url = ref('{$url}');
+const vpsUrl = ref('{$vps_url}');
+const webhostingUrl = ref('{$webhosting_url}');
+const imgDetail = ref({ b: '', h: 0, w: 0 });
+const sid = ref('');
+const landing = ref('vps');
+const customUrl = ref('');
 const custUrlVisible = ref(false);
-const htmlCode       = ref('');
-const landingUrl     = ref('');
+const htmlCode = ref('');
+const landingUrl = ref('');
 
 function updateCode() {
     custUrlVisible.value = false;
@@ -54,7 +54,7 @@ function copyCode() {
     alert('HTML Code copied.');
 }
 
-onMounted(() => {});
+onMounted(() => { });
 </script>
 
 <template>

@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Licensing List');
 siteStore.setTitle('Licensing List');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Licenses' ]]);
+siteStore.setBreadcrums([[/home', 'Home'],  [', 'Licenses']);
 const baseUrl = siteStore.getBaseUrl();
 
 interface licensesRow {

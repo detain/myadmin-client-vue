@@ -32,10 +32,10 @@ const formAction = computed(() => {
     return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
 });
 const osDistroSelect = computed(() => {
-  const distros: Distros = {};
-  for (let idx in vpsTemplates.value) {
-      const template = vpsTemplates.value[idx];
-      distros[template.template_os] = template.template_name;
+    const distros: Distros = {};
+    for (let idx in vpsTemplates.value) {
+        const template = vpsTemplates.value[idx];
+        distros[template.template_os] = template.template_name;
     }
     return distros;
 });
@@ -43,8 +43,8 @@ const getOsDistro = computed(() => {
     if (vpsTemplates.value.length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
             for (let idx in vpsTemplates.value) {
-              const template = vpsTemplates.value[idx];
-              if (template.template_file == serviceInfo.value.vps_os) {
+                const template = vpsTemplates.value[idx];
+                if (template.template_file == serviceInfo.value.vps_os) {
                     return template.template_os;
                 }
             }
@@ -56,10 +56,10 @@ const getOsDistro = computed(() => {
 });
 
 const osVersionSelect = computed(() => {
-  const versions: Distros = {};
-  for (let idx in vpsTemplates.value) {
-      const template = vpsTemplates.value[idx];
-      if (template.template_os == osDistro.value) {
+    const versions: Distros = {};
+    for (let idx in vpsTemplates.value) {
+        const template = vpsTemplates.value[idx];
+        if (template.template_os == osDistro.value) {
             versions[template.template_file] = template.template_version;
         }
     }
@@ -86,15 +86,15 @@ interface VpsTemplates {
 }
 
 interface VpsTemplate {
-    template_id       : number;
-    template_type     : number;
-    template_os       : string;
-    template_version  : string;
-    template_bits     : number;
-    template_file     : string;
+    template_id: number;
+    template_type: number;
+    template_os: string;
+    template_version: string;
+    template_bits: number;
+    template_file: string;
     template_available: number;
-    template_name     : string;
-    template_dir      : string;
+    template_name: string;
+    template_dir: string;
 
 }
 
@@ -103,8 +103,8 @@ try {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (let idx in vpsTemplates.value) {
-          const template = vpsTemplates.value[idx];
-          if (template.template_file == serviceInfo.value.vps_os) {
+            const template = vpsTemplates.value[idx];
+            if (template.template_file == serviceInfo.value.vps_os) {
                 osDistro.value = template.template_os;
                 osVersion.value = template.template_file;
             }
@@ -118,12 +118,12 @@ try {
 
 <template>
     <div>
-        <div    class = "row mt-2">
-        <div    class = "col-md-12">
-        <div    class = "card w-100 mb-2 bg-white p-2 shadow-none" style = "border-left: 4px solid red; display: block ruby">
-        <p      class = "text-md m-0"><i class                           = "fas fa-info-circle text-red" style = "color: red" aria-hidden = "true"></i>&nbsp;<b class  = "text-red"> Important Note #1:</b>&nbsp;Re-installing the operating system will delete all data.</p>
-        <div    class = "card-tools float-right">
-        <button type  = "button" class                                   = "btn btn-tool" data-card-widget     = "remove"><i class        = "fas fa-times" aria-hidden = "true"></i></button>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="card w-100 mb-2 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
+                    <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red"> Important Note #1:</b>&nbsp;Re-installing the operating system will delete all data.</p>
+                    <div class="card-tools float-right">
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                     </div>
                     <p></p>
                 </div>

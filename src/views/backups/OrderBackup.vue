@@ -3,25 +3,25 @@ import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers';
 import { useSiteStore } from '@/stores';
-import { useRoute,  useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
 siteStore.setTitle('Order Backup');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/backups', 'Backup List'],[ '/backups/order', 'Order Backup' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/backups', 'Backup List'], ['/backups/order', 'Order Backup']]);
 const baseUrl = siteStore.getBaseUrl();
 
-const step              = ref('orderform');
-const currency          = ref('USD');
-const currencySymbol    = ref('$');
-const pkg               = ref(10831);
-const rootpass          = ref('');
-const period            = ref(1);
-const coupon            = ref('');
-const packageCosts      = ref<PackageCosts>({});
-const serviceTypes      = ref<ServiceTypes>({});
+const step = ref('orderform');
+const currency = ref('USD');
+const currencySymbol = ref('$');
+const pkg = ref(10831);
+const rootpass = ref('');
+const period = ref(1);
+const coupon = ref('');
+const packageCosts = ref<PackageCosts>({});
+const serviceTypes = ref<ServiceTypes>({});
 const repeatServiceCost = ref(0);
 
 const periods = [
@@ -68,7 +68,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    router.push('/cart/'+response.iids.join(','));
+                    router.push('/cart/' + response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -97,9 +97,9 @@ async function onSubmit(values: any) {
                 //validateResponse.value = response;
                 console.log('Response:');
                 console.log(response);
-                pkg.value      = response.serviceType;
+                pkg.value = response.serviceType;
                 rootpass.value = response.password;
-                coupon.value   = response.coupon;
+                coupon.value = response.coupon;
                 repeatServiceCost.value = response.repeatServiceCost;
                 if (response.continue == true) {
                     step.value = 'order_confirm';
@@ -113,16 +113,16 @@ async function onSubmit(values: any) {
 }
 
 interface BackupOrderValidateResponse {
-    continue         : boolean;
-    coupon           : string;
-    couponCode       : number;
-    errors           : string[];
-    hostname         : string;
-    originalCost     : number;
-    password         : string;
+    continue: boolean;
+    coupon: string;
+    couponCode: number;
+    errors: string[];
+    hostname: string;
+    originalCost: number;
+    password: string;
     repeatServiceCost: number;
-    serviceCost      : number;
-    serviceType      : number;
+    serviceCost: number;
+    serviceType: number;
 }
 
 interface BackupOrderResponse {
@@ -189,7 +189,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                                     <input type="text" class="form-control form-control-sm" v-model="coupon" @change="updateCoupon" placeholder="Coupon Code" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
-                                    <img alt=""  :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
+                                    <img alt="" :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
                                 </div>
                             </div>
                             <hr class="mt-0" />
@@ -277,7 +277,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                                             <td class="text-md">Coupon Used</td>
                                             <td class="text-bold text-md">
                                                 {{ coupon }}
-                                                <img alt=""  src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
+                                                <img alt="" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
                                             </td>
                                         </tr>
                                     </template>

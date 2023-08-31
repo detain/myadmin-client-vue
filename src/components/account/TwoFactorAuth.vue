@@ -10,7 +10,7 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Account Settings' ]]);
+siteStore.setBreadcrums([['/home', 'Home'], ['', 'Account Settings']]);
 const baseUrl = siteStore.getBaseUrl();
 const googleKey = ref('');
 const googleSplit = ref('');
@@ -19,10 +19,10 @@ const googleCode = ref('');
 async function update2fa() {
     try {
         fetchWrapper.post(`${baseUrl}/account/2fa`, { '2fa_google_code': googleCode.value }).then((response) => {
-                console.log('update2fa success');
-                console.log(response);
+            console.log('update2fa success');
+            console.log(response);
 
-            });
+        });
     } catch (error: any) {
         console.log('update2fa failed');
         console.log(error);
