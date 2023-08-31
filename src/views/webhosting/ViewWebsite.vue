@@ -136,7 +136,7 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id"></BuyIp>
+            <BuyIp :id="((id as unknown) as StringConstructor)"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>

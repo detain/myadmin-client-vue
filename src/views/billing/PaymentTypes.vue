@@ -264,9 +264,9 @@ accountStore.load();
                             <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" :title="cc_detail.verified ? 'Verified' : 'Not Verified'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(cc_id)" :id="'unver_' + cc_id"><i class="fa fa-exclamation-triangle"></i> Verify</a>
-                            <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)"><i class="fa fa-edit"></i> Edit</a>
-                            <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)"><i class="fa fa-trash"></i> Delete</a>
+                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))" :id="'unver_' + cc_id"><i class="fa fa-exclamation-triangle"></i> Verify</a>
+                            <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
+                            <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>
                     </div>
                 </div>

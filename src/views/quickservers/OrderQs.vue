@@ -35,7 +35,7 @@ watch([osTemplates, osDistro, osVersion], ([newTemplates, newDistro, newVersion]
     if (entries.length == 0) {
         osVersionSelect.value = {};
     }
-    if (typeof newTemplates[newDistro][newVersion] == 'undefined') {
+    if (typeof newTemplates[newDistro][Number(newVersion)] == 'undefined') {
         console.log(newTemplates[newVersion]);
         lastEntry = entries[entries.length - 1];
         console.log(lastEntry);
@@ -121,7 +121,7 @@ interface ServerDetails {
 
 interface Templates {
     [key: string]: {
-        64: [string, string][];
+        [key: number]: [string, string][];
     }
 }
 
@@ -307,7 +307,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                     <div class="text-sm">Operating System</div>
                                 </td>
                                 <td>
-                                    <div class="text-bold">{{ osDistro }} {{ osTemplates[osDistro][osVersion] }}</div>
+                                    <div class="text-bold">{{ osDistro }} {{ osTemplates[osDistro][Number(osVersion)] }}</div>
                                 </td>
                             </tr>
                             <tr>

@@ -721,12 +721,12 @@ accountStore.load();
 
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(cc_id)" :id="'editcard-modal-' + cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))" :id="'editcard-modal-' + cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="paymentMethod === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(cc_id)" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="paymentMethod === 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
