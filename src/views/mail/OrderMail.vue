@@ -18,7 +18,7 @@ const coupon = ref('');
 const pkg = ref(10880);
 const validateResponse = ref<ValiateResponse | null>(null);
 const tos = ref(false);
-const packageCosts = ref({});
+const packageCosts = ref<PackageCosts>({});
 const serviceTypes = ref<ServiceTypes>({});
 
 function updateCoupon() {
@@ -43,7 +43,7 @@ async function onSubmit(values: any) {
                 serviceType: pkg.value,
                 coupon: coupon.value,
             })
-            .then((response) => {
+            .then((response: ValiateResponse) => {
                 Swal.close();
                 validateResponse.value = response;
                 console.log('Response:');
@@ -89,6 +89,15 @@ async function placeOrder(values: any) {
     }
 }
 
+interface PackageCosts {
+    [key: number]: number;
+}
+
+interface MailOrderResponse {
+    packageCosts: PackageCosts;
+    serviceTypes: ServiceTypes;
+}
+
 interface ValiateResponse {
     continue: boolean;
     coupon: string;
@@ -103,7 +112,7 @@ interface ValiateResponse {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/mail/order').then((response) => {
+    fetchWrapper.get(baseUrl + '/mail/order').then((response: MailOrderResponse) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
@@ -220,7 +229,7 @@ try {
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
-                                            <div class="text-bold text-md package_cost">{{ validateResponse.originalCost }}</div>
+                                            <div class="text-bold text-md package_cost">{{ validateResponse?.originalCost }}</div>
                                         </th>
                                     </tr>
                                 </thead>
@@ -238,7 +247,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://mystage.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://mystage.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse?.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">
@@ -254,7 +263,7 @@ try {
                                             <div class="text-bold text-lg">Total</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-lg" id="totalprice">{{ validateResponse.serviceCost }}</div>
+                                            <div class="text-bold text-lg" id="totalprice">{{ validateResponse?.serviceCost }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
