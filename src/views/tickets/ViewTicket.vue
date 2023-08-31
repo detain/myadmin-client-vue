@@ -48,9 +48,9 @@ function bs_input_file() {
     $('.input-file').after(function () {
         if (!$(this).prev().hasClass('input-ghost')) {
           const element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-          element.attr('name', $(this).attr('name'));
+          element.attr('name', $(this).attr('name') as string);
             element.change(function () {
-                element.prev(element).find('input').val(element.val().split('\\').pop());
+                element.prev().find('input').val((element.val() as string).split('\\').pop() as string);
             });
             $(this)
                 .find('button.btn-choose')
@@ -60,7 +60,7 @@ function bs_input_file() {
             $(this)
                 .find('button.btn-reset')
                 .click(function () {
-                    element.val(null);
+                    element.val('');
                     $(this).parents('.input-file').find('input').val('');
                 });
             $(this).find('input').css('cursor', 'pointer');

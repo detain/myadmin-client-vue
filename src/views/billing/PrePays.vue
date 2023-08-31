@@ -70,7 +70,7 @@ prepayStore.load();
                                 <p>Prepay ID : {{ p_details.prepay.prepay_id }}</p>
                                 <p>Module: {{ p_details.prepay.prepay_module ? p_details.prepay.prepay_module : 'All' }}</p>
                                 <p>Balance: {{ p_details.prepay.prepay_remaining_disp }}</p>
-                                <p>Automatically use on Invoices: {{ p_details.prepay.prepay_automatic_use === '1' ? 'Yes' : 'No' }}</p>
+                                <p>Automatically use on Invoices: {{ p_details.prepay.prepay_automatic_use == 1 ? 'Yes' : 'No' }}</p>
                             </div>
                             <div class="col-md-3">
                                 <!--
