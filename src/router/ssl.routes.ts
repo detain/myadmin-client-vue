@@ -3,7 +3,7 @@ const ViewSsl = () => import(/* webpackChunkName: "ssl" */ '@/views/ssl/ViewSsl.
 const OrderSsl = () => import(/* webpackChunkName: "ssl" */ '@/views/ssl/OrderSsl.vue');
 
 export default {
-    path: '/ssl_certs',
+    path: '/ssl',
     //component: Layout,
     children: [
         { path: '', component: SslList },
