@@ -12,7 +12,7 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => { return route.params.link; });
+const link = computed(() => { return route.params.link as string; });
 console.log(link.value);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
@@ -136,10 +136,10 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id"></BuyIp>
+            <BuyIp :id="id as string"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
-            <DownloadBackups :id="id"></DownloadBackups>
+            <DownloadBackups :id="id as string"></DownloadBackups>
         </div>
         <div v-else-if="link == 'migration'" class="col">
             <Migration :id="id"></Migration>

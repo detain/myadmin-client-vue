@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed } from 'vue';
+import { ref, computed, PropType } from 'vue';
 import { useSiteStore } from '@/stores';
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -13,8 +13,8 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    ips_details: {
-        type: Array,
+    ipsDetails: {
+        type: Array as PropType<IpDetails[]>,
         default: () => [],
     },
     buy_form: {
@@ -34,7 +34,43 @@ const props = defineProps({
         required: true,
     },
 });
-const ipsDetailsExist = computed(() => props.ips_details.length > 0);
+const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
+const buyForm         = ref(false);
+
+
+interface IpDetails {
+    invoices_id                : string;
+    invoices_description       : string;
+    invoices_amount            : string;
+    invoices_custid            : string;
+    invoices_type              : string;
+    invoices_date              : string;
+    invoices_group             : string;
+    invoices_extra             : string;
+    invoices_paid              : string;
+    invoices_module            : string;
+    invoices_due_date          : string;
+    invoices_service           : string;
+    invoices_deleted           : string;
+    invoices_currency          : string;
+    repeat_invoices_id         : string;
+    repeat_invoices_description: string;
+    repeat_invoices_type       : string;
+    repeat_invoices_cost       : string;
+    repeat_invoices_custid     : string;
+    repeat_invoices_frequency  : string;
+    repeat_invoices_date       : string;
+    repeat_invoices_group      : string;
+    repeat_invoices_module     : string;
+    repeat_invoices_service    : string;
+    repeat_invoices_last_date  : string;
+    repeat_invoices_next_date  : string;
+    repeat_invoices_deleted    : string;
+    repeat_invoices_currency   : string;
+    cancel_link                : string;
+    ip                         : string;
+}
+
 </script>
 
 <template>
