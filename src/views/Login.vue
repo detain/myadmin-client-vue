@@ -309,7 +309,7 @@ function login_handler() {
                 console.log(html.substring(0, 8) + ' got ' + html);
                 if (html.substring(0, 4) == 'true') {
                     if (html.length == 4) {
-                        window.location = 'index.php';
+                        window.location = 'index.php' as unknown as Location;
                     } else {
                         window.location = html.substring(4);
                     }
@@ -365,7 +365,7 @@ function login_handler() {
                 });
             },
             beforeSend: function () {
-                $('.loginsubmit, .signupsubmit').attr('disabled', true);
+                $('.loginsubmit, .signupsubmit').attr('disabled', 'disabled');
 
             },
         });
@@ -461,7 +461,7 @@ function signup_handler() {
                     Swal.close();
                     if (html.substring(0, 4) == 'true') {
                         if (html.length == 4) {
-                            window.location = 'index.php';
+                            window.location = 'index.php' as unknown as Location;
                         } else {
                             window.location = html.substring(4);
                         }
@@ -501,7 +501,7 @@ function signup_handler() {
                     });
                 },
                 beforeSend: function () {
-                    $('.loginsubmit, .signupsubmit').attr('disabled', true);
+                    $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                     Swal.close();
                 },
             });
