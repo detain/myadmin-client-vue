@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
-import { computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl';
 
