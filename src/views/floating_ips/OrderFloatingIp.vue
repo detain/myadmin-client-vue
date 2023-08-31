@@ -18,9 +18,15 @@ const coupon           = ref('');
 const pkg              = ref(10880);
 const validateResponse = ref<ValidateFloatingIpOrderResponse>({
     continue: false,
+    errors: [],
+    serviceType: 0,
+    serviceCost: null,
+    originalCost: null,
+    repeatServiceCost: null,
+    password: 0,
+    introFrequency: null,
     coupon: '',
-    couponCode: null,
-    errors: false,
+    couponCode: null
 });
 
 
@@ -69,11 +75,11 @@ interface ValidateFloatingIpOrderResponse {
     continue: boolean;
     errors: string[];
     serviceType: number;
-    serviceCost: null;;
-    originalCost: null;
-    repeatServiceCost: null;
+    serviceCost: null | string;
+    originalCost: null | string;
+    repeatServiceCost: null | string;
     password: number;
-    introFrequency: null;
+    introFrequency: null | number;
     coupon: string;
     couponCode: null | number;
 }
