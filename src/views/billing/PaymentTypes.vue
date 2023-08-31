@@ -17,21 +17,26 @@ const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
 const selectedCc = ref(0);
 const editCcIdx = ref(0);
-const triggerClick = ref(false);
+const triggerClick = ref<any>(false);
 const current_cc_id = ref(0);
-const verify_display = ref(undefined);
+const verify_display = ref('');
 const cc_auto_checked = ref(false);
 const countries = ref({});
-const contFields = reactive({
+const contFields = reactive<SimpleStringObj>({
     cc     : '',
     cc_exp : '',
     name   : '',
     address: '',
+    phone  : '',
     city   : '',
     state  : '',
     zip    : '',
     country: 'US',
 });
+
+interface SimpleStringObj {
+    [key: string]: any;
+}
 
 function mounted() {
     if (triggerClick.value) {
@@ -134,7 +139,7 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-    verify_display.value = $('#unver_' + cc_id).attr('data-step');
+    verify_display.value = $('#unver_' + cc_id).attr('data-step') as string;
     if (typeof verify_display.value === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verify_display.value == 'step1') {
