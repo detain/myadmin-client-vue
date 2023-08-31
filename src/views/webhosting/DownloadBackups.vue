@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed } from 'vue';
+import { ref, computed, PropType } from 'vue';
 import { useSiteStore } from '@/stores';
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,13 +14,21 @@ const props = defineProps({
         required: true,
     },
     rows: {
-        type: Array,
+        type: Array as PropType<BackupRow[]>,
         default: () => [],
     },
 });
 const isEmpty = (rows: any) => {
     return rows.length === 0;
 };
+
+interface BackupRow {
+backup_name  : string;
+website      : string;
+size         : number;
+download_link: string;
+}
+
 </script>
 
 <template>
