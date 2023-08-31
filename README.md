@@ -63,7 +63,6 @@ Do not simplify or skip any of the output. Show everything (the full output).
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
-  * [ ] switch from authstore.user to accountstore.data
   * [ ] finish /account/*
   * view service pages
     * [ ] links and form handling
@@ -86,7 +85,6 @@ Do not simplify or skip any of the output. Show everything (the full output).
   * [ ] api finalized
 * Future Tasks
   * [ ] utilize the form validation stuff
-  * [ ] incorporate typescript
   * [ ] replace jquery type calls with built in template handling and such
   * [ ] electron build
     * [x] windows/linux/mac builds
