@@ -3,18 +3,22 @@ import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '@/stores';
-//import Chart from 'chart.js';
+import Chart from 'chart.js/auto';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - TrafficGraph');
 siteStore.setTitle('Affiliate - TrafficGraph');
 siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'TrafficGraph' ]]);
 
 const selectedPeriod = ref(30);
-const canvas = ref(null);
 function createGraph() {
-    const ctx = canvas.value.getContext('2d');
+    const canvas = ((document.getElementById('canvasGraph') as unknown) as HTMLCanvasElement);
+    const ctx    = canvas.getContext("2d") as CanvasRenderingContext2D;
     new Chart(ctx, {
-        // your chart configuration here
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: []
+        }
     });
 }
 
@@ -55,7 +59,7 @@ onMounted(() => {
                         </div>
                     </form>
                     <div>
-                        <canvas ref="canvas" width="400" height="100"></canvas>
+                        <canvas id="canvasGraph" ref="canvas" width="400" height="100"></canvas>
                     </div>
                 </div>
             </div>

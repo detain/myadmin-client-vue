@@ -3,15 +3,12 @@ import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
-//import Chart from 'chart.js';
+import Chart from 'chart.js/auto';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-const todayGraph = ref(null);
-const hourGraph = ref(null);
-const monthGraph = ref(null);
 const id = computed(() => { return props.id; });
 const module = computed(() => { return props.module; });
 
@@ -19,15 +16,30 @@ const goBackLink = computed(() => {
     return module.value === 'vps' ? `view_${module.value}` : 'view_qs';
 });
 onMounted(() => {
-    // Initialize and configure the charts
-    const todayChart = new Chart(todayGraph.value.getContext('2d'), {
-        /* Chart configuration */
+    const todayGraph = ((document.getElementById('todayGraph') as unknown) as HTMLCanvasElement);
+    const hourGraph = ((document.getElementById('hourGraph') as unknown) as HTMLCanvasElement);
+    const monthGraph = ((document.getElementById('monthGraph') as unknown) as HTMLCanvasElement);
+      // Initialize and configure the charts
+    const todayChart = new Chart(todayGraph.getContext('2d') as CanvasRenderingContext2D, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: []
+        }
     });
-    const hourChart = new Chart(hourGraph.value.getContext('2d'), {
-        /* Chart configuration */
+    const hourChart = new Chart(hourGraph.getContext('2d') as CanvasRenderingContext2D, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: []
+        }
     });
-    const monthChart = new Chart(monthGraph.value.getContext('2d'), {
-        /* Chart configuration */
+    const monthChart = new Chart(monthGraph.getContext('2d') as CanvasRenderingContext2D, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: []
+        }
     });
 
     // Rest of the chart setup code
@@ -54,19 +66,19 @@ onMounted(() => {
             <div class="row">
                 <div class="col">
                     <h5 class="text-md">Today Usage</h5>
-                    <canvas ref="todayGraph" width="400" height="100"></canvas>
+                    <canvas id="todayGraph" ref="todayGraph" width="400" height="100"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
                     <h5 class="text-md">Hourly Usage</h5>
-                    <canvas ref="hourGraph" width="400" height="100"></canvas>
+                    <canvas id="hourGraph" ref="hourGraph" width="400" height="100"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
                     <h5 class="text-md">Daily Usage</h5>
-                    <canvas ref="monthGraph" width="400" height="100"></canvas>
+                    <canvas id="monthGraph" ref="monthGraph" width="400" height="100"></canvas>
                 </div>
             </div>
             <div class="card">
