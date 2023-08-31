@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 
 const siteStore = useSiteStore();
 const route = useRoute();
@@ -17,6 +18,60 @@ const sslStore                             = useSslStore();
 const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
 const isCollapsed                          = ref(false);
 const clientLinks = ref<ClientLink[]>([]);
+
+interface ViewSslResponse {
+    serviceInfo: ServiceInfo;
+    client_links: ClientLink[];
+    billingDetails: BillingDetails;
+    custCurrency: string;
+    custCurrencySymbol: string;
+    package: string;
+    serviceExtra: ServiceExtra;
+    extraInfoTables: ExtraInfoTables;
+    serviceType: ServiceType;
+    order_details: OrderDetails;
+    order_status: null | string;
+    cert_status: null | string;
+}
+
+interface ServiceInfo {
+    ssl_id: string;
+    ssl_hostname: string;
+    ssl_order_id: string;
+    ssl_type: string;
+    ssl_currency: string;
+    ssl_order_date: string;
+    ssl_custid: string;
+    ssl_status: string;
+    ssl_invoice: string;
+    ssl_coupon: string;
+    ssl_firstname: string;
+    ssl_lastname: string;
+    ssl_phone: string;
+    ssl_email: string;
+    ssl_company: string;
+    ssl_address: string;
+    ssl_city: string;
+    ssl_state: string;
+    ssl_zip: string;
+    ssl_country: string;
+    ssl_department: string;
+    ssl_extra: string;
+    ssl_approver_email: null | string;
+    ssl_csr: null | string;
+    ssl_private_key: null | string;
+    ssl_x509: null | string;
+    ssl_ca_root: null | string;
+    ssl_ca_inter: null | string;
+}
+
+interface ServiceExtra {
+    [key: string]: any;
+}
+
+interface OrderDetails {
+    [key: string]: any;
+}
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);

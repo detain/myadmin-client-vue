@@ -197,7 +197,7 @@ const statusClass = computed(() => {
     <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.floating_ip_id}`">
+                <form class="inline" method="post" :action="`view_floating_ip?id=${serviceInfo.floating_ip_id}`">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>

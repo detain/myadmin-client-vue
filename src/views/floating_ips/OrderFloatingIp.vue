@@ -104,7 +104,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_mail" @submit.prevent="onSubmit">
+                        <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_floating_ip" @submit.prevent="onSubmit">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right"
                                     >Package
@@ -189,7 +189,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" class="floating_ip_form_confirm" action="order_mail">
+                        <form method="post" class="floating_ip_form_confirm" action="order_floating_ip">
                             <input type="hidden" name="serviceType" :value="pkg" />
                             <input type="hidden" name="coupon" :value="coupon" />
                             <table class="table-sm table-bordered table">
