@@ -11,7 +11,7 @@ const module = 'webhosting';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
-const id = route.params.id;
+const id = route.params.id as string;
 const link = computed(() => { return route.params.link as string; });
 console.log(link.value);
 const { modules } = storeToRefs(siteStore);
@@ -136,7 +136,7 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id as string"></BuyIp>
+            <BuyIp :id="id"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>
