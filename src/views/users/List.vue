@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { useUsersStore } from '@/stores';
 
 const usersStore = useUsersStore();
-const { users } = storeToRefs(usersStore);
+const { users, loading, error } = storeToRefs(usersStore);
 
 usersStore.getAll();
 </script>
@@ -29,21 +29,21 @@ usersStore.getAll();
                     <td>{{ user.username }}</td>
                     <td style="white-space: nowrap">
                         <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
-                        <button @click="usersStore.delete(user.id)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting">
+                        <button @click="usersStore.delete(user.id as number)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting">
                             <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
                             <span v-else>Delete</span>
                         </button>
                     </td>
                 </tr>
             </template>
-            <tr v-if="users.loading">
+            <tr v-if="loading">
                 <td colspan="4" class="text-center">
                     <span class="spinner-border spinner-border-lg align-center"></span>
                 </td>
             </tr>
-            <tr v-if="users.error">
+            <tr v-if="error">
                 <td colspan="4">
-                    <div class="text-danger">Error loading users: {{ users.error }}</div>
+                    <div class="text-danger">Error loading users: {{ error }}</div>
                 </td>
             </tr>
         </tbody>

@@ -263,13 +263,13 @@ function toggleFunc(cp: string) {
             <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="id" :module="module"></ResetPassword>
+            <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module"></ReverseDns>
         </div>
         <div v-else-if="link == 'slices'" class="col">
-            <Slices :id="id" :module="module"></Slices>
+            <Slices :id="Number(id)" :module="module"></Slices>
         </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
@@ -379,7 +379,7 @@ function toggleFunc(cp: string) {
                                     </tr>
                                     <tr>
                                         <td class="text-muted text-bold">Remaining Space:</td>
-                                        <td class="text-bold text-capitalize">{{ parseFloat(service_disk_total) - parseFloat(service_disk_used) }} GB</td>
+                                        <td class="text-bold text-capitalize">{{ parseFloat(service_disk_total.toString()) - parseFloat(service_disk_used.toString()) }} GB</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 75%">

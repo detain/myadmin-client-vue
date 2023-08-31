@@ -101,8 +101,8 @@ interface VpsState {
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
     serviceType: ServiceType;
-    service_disk_used: number | null;
-    service_disk_total: number | null;
+    service_disk_used: number;
+    service_disk_total: number;
     daLink: number;
     srLink: number;
     cpLink: number;
@@ -230,8 +230,8 @@ export const useVpsStore = defineStore({
             services_module: 'vps',
         },
         linkDisplay: false,
-        service_disk_used: null,
-        service_disk_total: null,
+        service_disk_used: 0,
+        service_disk_total: 0,
         daLink: 0,
         srLink: 0,
         cpLink: 0,
