@@ -74,16 +74,157 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
   * [ ] make sure affiliate tracking still works
   * [ ] analytics
   * [ ] get various libs loading with imports insteaed of directly called with scritpts and link tags
-  * [ ] improve webpacking
   * [ ] minimize api fields in requests/responses and filter them for security
   * [ ] api finalized
 * Future Tasks
+  * [ ] improve webpacking
   * [ ] move type definitions into /types?
   * [ ] utilize the form validation stuff
   * [ ] replace jquery type calls with built in template handling and such
   * [ ] electron build
     * [x] windows/linux/mac builds
     * [ ] js/css assets loaded locally
+
+### Pages
+
+| Url | Working | API Spec | Breadcrum |
+|-----|---------|----------|-----------|
+| / | [ ] | [ ] | [ ] |
+| /account/info | [ ] | [ ] | [ ] |
+| /account/pass | [ ] | [ ] | [ ] |
+| /account/username | [ ] | [ ] | [ ] |
+| /account/settings | [ ] | [ ] | [ ] |
+| /affiliate/faq | [ ] | [ ] | [ ] |
+| /affiliate/landing_pg | [ ] | [ ] | [ ] |
+| /affiliate/payment_setup | [ ] | [ ] | [ ] |
+| /affiliate/rich_report | [ ] | [ ] | [ ] |
+| /affiliate/sales_graph | [ ] | [ ] | [ ] |
+| /affiliate/sales_report | [ ] | [ ] | [ ] |
+| /affiliate/status_legend | [ ] | [ ] | [ ] |
+| /affiliate/tos | [ ] | [ ] | [ ] |
+| /affiliate/traffic_graph | [ ] | [ ] | [ ] |
+| /affiliate/web_traffic | [ ] | [ ] | [ ] |
+| /affiliate/banners | [ ] | [ ] | [ ] |
+| /affiliate/banner/:id | [ ] | [ ] | [ ] |
+| /backups/order | [ ] | [ ] | [ ] |
+| /backups/:id | [ ] | [ ] | [ ] |
+| /backups/:id/welcome_email | [ ] | [ ] | [ ] |
+| /backups/:id/cancel | [ ] | [ ] | [ ] |
+| /backups/:id/invoices | [ ] | [ ] | [ ] |
+| /dns/:id | [ ] | [ ] | [ ] |
+| /domains/order | [ ] | [ ] | [ ] |
+| /domains/order/:domain | [ ] | [ ] | [ ] |
+| /domains/:id/order/:domain/:regType | [ ] | [ ] | [ ] |
+| /domains/:id/transfer | [ ] | [ ] | [ ] |
+| /domains/:id | [ ] | [ ] | [ ] |
+| /domains/:id/welcome_email | [ ] | [ ] | [ ] |
+| /domains/:id/cancel | [ ] | [ ] | [ ] |
+| /domains/:id/invoices | [ ] | [ ] | [ ] |
+| /domains/:id/contact | [ ] | [ ] | [ ] |
+| /domains/:id/nameservers | [ ] | [ ] | [ ] |
+| /domains/:id/renew | [ ] | [ ] | [ ] |
+| /domains/:id/whois | [ ] | [ ] | [ ] |
+| /domains/:id/contact | [ ] | [ ] | [ ] |
+| /domains/:id/dnssec | [ ] | [ ] | [ ] |
+| /floating_ips/order | [ ] | [ ] | [ ] |
+| /floating_ips/:id | [ ] | [ ] | [ ] |
+| /floating_ips/:id/welcome_email | [ ] | [ ] | [ ] |
+| /floating_ips/:id/cancel | [ ] | [ ] | [ ] |
+| /floating_ips/:id/invoices | [ ] | [ ] | [ ] |
+| /floating_ips/:id/change_ip | [ ] | [ ] | [ ] |
+| /licenses/order | [ ] | [ ] | [ ] |
+| /licenses/order/:catTag | [ ] | [ ] | [ ] |
+| /licenses/:id | [ ] | [ ] | [ ] |
+| /licenses/:id/welcome_email | [ ] | [ ] | [ ] |
+| /licenses/:id/cancel | [ ] | [ ] | [ ] |
+| /licenses/:id/invoices | [ ] | [ ] | [ ] |
+| /licenses/:id/change_ip | [ ] | [ ] | [ ] |
+| /licenses/:id/change_os | [ ] | [ ] | [ ] |
+| /mail/order | [ ] | [ ] | [ ] |
+| /mail/:id | [ ] | [ ] | [ ] |
+| /mail/:id/welcome_email | [ ] | [ ] | [ ] |
+| /mail/:id/cancel | [ ] | [ ] | [ ] |
+| /mail/:id/invoices | [ ] | [ ] | [ ] |
+| /mail/:id/alerts | [ ] | [ ] | [ ] |
+| /mail/:id/deny_rules | [ ] | [ ] | [ ] |
+| /qs/order | [ ] | [ ] | [ ] |
+| /qs/:id | [ ] | [ ] | [ ] |
+| /qs/:id/backup | [ ] | [ ] | [ ] |
+| /qs/:id/backups | [ ] | [ ] | [ ] |
+| /qs/:id/restore | [ ] | [ ] | [ ] |
+| /qs/:id/start | [ ] | [ ] | [ ] |
+| /qs/:id/stop | [ ] | [ ] | [ ] |
+| /qs/:id/restart | [ ] | [ ] | [ ] |
+| /qs/:id/invoices | [ ] | [ ] | [ ] |
+| /qs/:id/cancel | [ ] | [ ] | [ ] |
+| /qs/:id/reinstall_os | [ ] | [ ] | [ ] |
+| /qs/:id/reverse_dns | [ ] | [ ] | [ ] |
+| /qs/:id/traffic_usage | [ ] | [ ] | [ ] |
+| /qs/:id/setup_vnc | [ ] | [ ] | [ ] |
+| /qs/:id/slices | [ ] | [ ] | [ ] |
+| /qs/:id/buy_ip | [ ] | [ ] | [ ] |
+| /qs/:id/reset_password | [ ] | [ ] | [ ] |
+| /qs/:id/view_desktop | [ ] | [ ] | [ ] |
+| /qs/:id/change_timezone | [ ] | [ ] | [ ] |
+| /qs/:id/insert_cd | [ ] | [ ] | [ ] |
+| /qs/:id/eject_cd | [ ] | [ ] | [ ] |
+| /servers/order | [ ] | [ ] | [ ] |
+| /servers/:id | [ ] | [ ] | [ ] |
+| /servers/:id/welcome_email | [ ] | [ ] | [ ] |
+| /servers/:id/cancel | [ ] | [ ] | [ ] |
+| /servers/:id/invoices | [ ] | [ ] | [ ] |
+| /servers/:id/bandwidth_graph | [ ] | [ ] | [ ] |
+| /servers/:id/ipmi_live | [ ] | [ ] | [ ] |
+| /servers/:id/reverse_dns | [ ] | [ ] | [ ] |
+| /ssl/order | [ ] | [ ] | [ ] |
+| /ssl/:id | [ ] | [ ] | [ ] |
+| /ssl/:id/welcome_email | [ ] | [ ] | [ ] |
+| /ssl/:id/cancel | [ ] | [ ] | [ ] |
+| /ssl/:id/invoices | [ ] | [ ] | [ ] |
+| /ssl/:id/change_approver_email | [ ] | [ ] | [ ] |
+| /ssl/:id/resend_approver_email | [ ] | [ ] | [ ] |
+| /tickets/new | [ ] | [ ] | [ ] |
+| /tickets/:id | [ ] | [ ] | [ ] |
+| /vps/order | [ ] | [ ] | [ ] |
+| /vps/:id | [ ] | [ ] | [ ] |
+| /vps/:id/backup | [ ] | [ ] | [ ] |
+| /vps/:id/backups | [ ] | [ ] | [ ] |
+| /vps/:id/block_smtp | [ ] | [ ] | [ ] |
+| /vps/:id/buy_ip | [ ] | [ ] | [ ] |
+| /vps/:id/buy_hd_space | [ ] | [ ] | [ ] |
+| /vps/:id/cancel | [ ] | [ ] | [ ] |
+| /vps/:id/change_hostname | [ ] | [ ] | [ ] |
+| /vps/:id/change_root_password | [ ] | [ ] | [ ] |
+| /vps/:id/change_timezone | [ ] | [ ] | [ ] |
+| /vps/:id/change_webuzo_password | [ ] | [ ] | [ ] |
+| /vps/:id/disable_quota | [ ] | [ ] | [ ] |
+| /vps/:id/disable_cd | [ ] | [ ] | [ ] |
+| /vps/:id/eject_cd | [ ] | [ ] | [ ] |
+| /vps/:id/enable_quota | [ ] | [ ] | [ ] |
+| /vps/:id/insert_cd | [ ] | [ ] | [ ] |
+| /vps/:id/invoices | [ ] | [ ] | [ ] |
+| /vps/:id/reinstall_os | [ ] | [ ] | [ ] |
+| /vps/:id/reset_password | [ ] | [ ] | [ ] |
+| /vps/:id/restart | [ ] | [ ] | [ ] |
+| /vps/:id/restore | [ ] | [ ] | [ ] |
+| /vps/:id/reset_password | [ ] | [ ] | [ ] |
+| /vps/:id/reverse_dns | [ ] | [ ] | [ ] |
+| /vps/:id/setup_vnc | [ ] | [ ] | [ ] |
+| /vps/:id/slices | [ ] | [ ] | [ ] |
+| /vps/:id/start | [ ] | [ ] | [ ] |
+| /vps/:id/stop | [ ] | [ ] | [ ] |
+| /vps/:id/traffic_usage | [ ] | [ ] | [ ] |
+| /vps/:id/view_desktop | [ ] | [ ] | [ ] |
+| /websites/order | [ ] | [ ] | [ ] |
+| /websites/:id | [ ] | [ ] | [ ] |
+| /websites/:id/login | [ ] | [ ] | [ ] |
+| /websites/:id/buy_ip | [ ] | [ ] | [ ] |
+| /websites/:id/download_backups | [ ] | [ ] | [ ] |
+| /websites/:id/migration | [ ] | [ ] | [ ] |
+| /websites/:id/reverse_dns | [ ] | [ ] | [ ] |
+| /websites/:id/welcome_email | [ ] | [ ] | [ ] |
+| /websites/:id/cancel | [ ] | [ ] | [ ] |
+| /websites/:id/invoices | [ ] | [ ] | [ ] |
 
 ### API Response HTTP Status Codes
 

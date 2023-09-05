@@ -95,7 +95,7 @@ const loadVpsList = async (data: any) => {
                     {
                         data: null,
                         render: (data, type, row, meta) => {
-                            return '<a href="" @click.prevent="router.push\(`/' + moduleLink(module) + '/${row.vps_id}`);">' + row.vps_hostname + '</a>';
+                            return '<a href="" @click.prevent="router.push(`/' + moduleLink(module) + '/${row.vps_id}`);">' + row.vps_hostname + '</a>';
                         },
                     },
                     { data: 'vps_ip' },
