@@ -1,5 +1,5 @@
-const List = () => import(/* webpackChunkName: "users" */ '@/views/users/List.vue');
-const AddEdit = () => import(/* webpackChunkName: "users" */ '@/views/users/AddEdit.vue');
+import List from '@/views/users/List.vue';
+import AddEdit from '@/views/users/AddEdit.vue';
 
 export default {
     path: '/users',

@@ -1,7 +1,7 @@
-const ContactInfo = () => import(/* webpackChunkName: "accounts" */ '@/views/account/ContactInfo.vue');
-const AccountSettings = () => import(/* webpackChunkName: "accounts" */ '@/views/account/AccountSettings.vue');
-const ChangePass = () => import(/* webpackChunkName: "accounts" */ '@/views/account/ChangePass.vue');
-const ChangeUsername = () => import(/* webpackChunkName: "accounts" */ '@/views/account/ChangeUsername.vue');
+import ContactInfo from '@/views/account/ContactInfo.vue';
+import AccountSettings from '@/views/account/AccountSettings.vue';
+import ChangePass from '@/views/account/ChangePass.vue';
+import ChangeUsername from '@/views/account/ChangeUsername.vue';
 
 export default {
     path: '/account',

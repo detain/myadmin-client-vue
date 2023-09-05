@@ -15,17 +15,17 @@ import serverRoutes from './server.routes';
 import sslRoutes from './ssl.routes';
 import vpsRoutes from './vps.routes';
 import websiteRoutes from './website.routes';
-const ClientHome = () => import(/* webpackChunkName: "main" */ '@/views/ClientHome.vue');
-const Home = () => import(/* webpackChunkName: "main" */ '@/views/Home.vue');
-const Login = () => import(/* webpackChunkName: "main" */ '@/views/Login.vue');
-const LoginOld = () => import(/* webpackChunkName: "main" */ '@/views/LoginOld.vue');
-const Register = () => import(/* webpackChunkName: "main" */ '@/views/Register.vue');
-const Sudo = () => import(/* webpackChunkName: "main" */ '@/views/Sudo.vue');
-const PrePays = () => import(/* webpackChunkName: "main" */ '@/views/billing/PrePays.vue');
-const PaymentTypes = () => import(/* webpackChunkName: "main" */ '@/views/billing/PaymentTypes.vue');
-const InvoicesList = () => import(/* webpackChunkName: "main" */ '@/views/billing/InvoicesList.vue');
-const Cart = () => import(/* webpackChunkName: "main" */ '@/views/billing/Cart.vue');
-const Pay = () => import(/* webpackChunkName: "main" */ '@/views/billing/Pay.vue');
+import ClientHome from '@/views/ClientHome.vue';
+import Home from '@/views/Home.vue';
+import Login from '@/views/Login.vue';
+import LoginOld from '@/views/LoginOld.vue';
+import Register from '@/views/Register.vue';
+import Sudo from '@/views/Sudo.vue';
+import PrePays from '@/views/billing/PrePays.vue';
+import PaymentTypes from '@/views/billing/PaymentTypes.vue';
+import InvoicesList from '@/views/billing/InvoicesList.vue';
+import Cart from '@/views/billing/Cart.vue';
+import Pay from '@/views/billing/Pay.vue';
 
 /*
 import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'

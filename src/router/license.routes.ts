@@ -1,6 +1,6 @@
-const LicensesList = () => import(/* webpackChunkName: "licenses" */ '@/views/licenses/LicensesList.vue');
-const ViewLicense = () => import(/* webpackChunkName: "licenses" */ '@/views/licenses/ViewLicense.vue');
-const OrderLicense = () => import(/* webpackChunkName: "licenses" */ '@/views/licenses/OrderLicense.vue');
+import LicensesList from '@/views/licenses/LicensesList.vue';
+import ViewLicense from '@/views/licenses/ViewLicense.vue';
+import OrderLicense from '@/views/licenses/OrderLicense.vue';
 
 export default {
     path: '/licenses',

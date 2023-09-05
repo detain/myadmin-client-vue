@@ -52,8 +52,6 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
-  * [ ] change style scoped to style for app??
-  * [ ] move type definitions into /types
   * [ ] finish /account/*
   * view service pages
     * [ ] links and form handling
@@ -80,6 +78,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
   * [ ] minimize api fields in requests/responses and filter them for security
   * [ ] api finalized
 * Future Tasks
+  * [ ] move type definitions into /types?
   * [ ] utilize the form validation stuff
   * [ ] replace jquery type calls with built in template handling and such
   * [ ] electron build

@@ -1,5 +1,5 @@
-const DnsManager = () => import(/* webpackChunkName: "dns" */ '@/views/dns/DnsManager.vue');
-const DnsEditor = () => import(/* webpackChunkName: "dns" */ '@/views/dns/DnsEditor.vue');
+import DnsManager from '@/views/dns/DnsManager.vue';
+import DnsEditor from '@/views/dns/DnsEditor.vue';
 
 export default {
     path: '/dns',

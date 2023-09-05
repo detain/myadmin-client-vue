@@ -1,6 +1,6 @@
-const QsList = () => import(/* webpackChunkName: "quickservers" */ '@/views/quickservers/QsList.vue');
-const ViewQs = () => import(/* webpackChunkName: "quickservers" */ '@/views/quickservers/ViewQs.vue');
-const OrderQs = () => import(/* webpackChunkName: "quickservers" */ '@/views/quickservers/OrderQs.vue');
+import QsList from '@/views/quickservers/QsList.vue';
+import ViewQs from '@/views/quickservers/ViewQs.vue';
+import OrderQs from '@/views/quickservers/OrderQs.vue';
 
 export default {
     path: '/qs',

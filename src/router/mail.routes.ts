@@ -1,6 +1,6 @@
-const MailList = () => import(/* webpackChunkName: "mail" */ '@/views/mail/MailList.vue');
-const ViewMail = () => import(/* webpackChunkName: "mail" */ '@/views/mail/ViewMail.vue');
-const OrderMail = () => import(/* webpackChunkName: "mail" */ '@/views/mail/OrderMail.vue');
+import MailList from '@/views/mail/MailList.vue';
+import ViewMail from '@/views/mail/ViewMail.vue';
+import OrderMail from '@/views/mail/OrderMail.vue';
 
 export default {
     path: '/mail',

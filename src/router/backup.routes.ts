@@ -1,6 +1,6 @@
-const BackupsList = () => import(/* webpackChunkName: "backups" */ '@/views/backups/BackupsList.vue');
-const ViewBackup = () => import(/* webpackChunkName: "backups" */ '@/views/backups/ViewBackup.vue');
-const OrderBackup = () => import(/* webpackChunkName: "backups" */ '@/views/backups/OrderBackup.vue');
+import BackupsList from '@/views/backups/BackupsList.vue';
+import ViewBackup from '@/views/backups/ViewBackup.vue';
+import OrderBackup from '@/views/backups/OrderBackup.vue';
 
 export default {
     path: '/backups',

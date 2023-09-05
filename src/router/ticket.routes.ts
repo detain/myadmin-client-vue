@@ -1,6 +1,6 @@
-const TicketsList = () => import(/* webpackChunkName: "tickets" */ '@/views/tickets/TicketsList.vue');
-const ViewTicket = () => import(/* webpackChunkName: "tickets" */ '@/views/tickets/ViewTicket.vue');
-const NewTicket = () => import(/* webpackChunkName: "tickets" */ '@/views/tickets/NewTicket.vue');
+import TicketsList from '@/views/tickets/TicketsList.vue';
+import ViewTicket from '@/views/tickets/ViewTicket.vue';
+import NewTicket from '@/views/tickets/NewTicket.vue';
 
 export default {
     path: '/tickets',
