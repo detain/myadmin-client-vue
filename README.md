@@ -104,6 +104,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /account/pass                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /account/username                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /account/settings                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /affiliate                          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /affiliate/faq                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /affiliate/landing_pg               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /affiliate/payment_setup            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -116,12 +117,14 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /affiliate/web_traffic              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /affiliate/banners                  | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /affiliate/banner/:id               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /backups                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/order                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id                        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/welcome_email          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/cancel                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/invoices               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /dns/:id                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /domains                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order/:domain              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/:id/order/:domain/:regType | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -136,12 +139,14 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /domains/:id/whois                  | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/:id/contact                | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/:id/dnssec                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /floating_ips                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/order                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/:id                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/:id/welcome_email     | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/:id/cancel            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/:id/invoices          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /floating_ips/:id/change_ip         | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /licenses                           | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /licenses/order                     | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /licenses/:id                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -150,6 +155,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /licenses/:id/invoices              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /licenses/:id/change_ip             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /licenses/:id/change_os             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /mail                               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /mail/order                         | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /mail/:id                           | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /mail/:id/welcome_email             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -157,6 +163,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /mail/:id/invoices                  | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /mail/:id/alerts                    | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /mail/:id/deny_rules                | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /qs                                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /qs/order                           | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /qs/:id                             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /qs/:id/backup                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -178,6 +185,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /qs/:id/change_timezone             | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /qs/:id/insert_cd                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /qs/:id/eject_cd                    | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /servers                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /servers/order                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /servers/:id                        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /servers/:id/welcome_email          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -186,6 +194,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /servers/:id/bandwidth_graph        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /servers/:id/ipmi_live              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /servers/:id/reverse_dns            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /ssl                                | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /ssl/order                          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /ssl/:id                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /ssl/:id/welcome_email              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -193,8 +202,10 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /ssl/:id/invoices                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /ssl/:id/change_approver_email      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /ssl/:id/resend_approver_email      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /tickets                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /tickets/new                        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /tickets/:id                        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /vps                                | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /vps/order                          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /vps/:id                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /vps/:id/backup                     | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -225,6 +236,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /vps/:id/stop                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /vps/:id/traffic_usage              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /vps/:id/view_desktop               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /websites                           | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /websites/order                     | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /websites/:id                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /websites/:id/login                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
