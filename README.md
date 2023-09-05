@@ -100,7 +100,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /cart/::iids                        | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /pay/:method/:invoices              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /invoices                           | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
-| /account/info                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /account/info                       | [x]     | [ ]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /account/pass                       | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /account/username                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /account/settings                   | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
