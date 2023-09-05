@@ -123,7 +123,8 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /backups/:id/welcome_email          | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/cancel                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/invoices               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
-| /dns/:id                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /dns                                | [x]     | [x]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /dns/:id                            | [x]     | [ ]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order/:domain              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
