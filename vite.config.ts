@@ -9,9 +9,9 @@ import { fileURLToPath, URL } from 'node:url';
 import fs from 'fs';
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
-import VueDevTools from 'vite-plugin-vue-devtools';
+//import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
-import Inspector from 'vite-plugin-vue-inspector';
+//import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from "vite-plugin-turbo-console";
 
 /** @type {import('vite').UserConfig} */
@@ -56,8 +56,8 @@ export default defineConfig({
             },
         }),
         Inspect(),
-        Inspector(),
-        VueDevTools(),
+        //Inspector(),
+        //VueDevTools(),
         //        TurboConsole(),
     ],
     /*

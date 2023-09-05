@@ -196,8 +196,6 @@
         "vite-plugin-inspect": "*",
         "vite-plugin-pwa": "*",
         "vite-plugin-turbo-console": "*",
-        "vite-plugin-vue-devtools": "*",
-        "vite-plugin-vue-inspector": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
         "vue-eslint-parser": "*",
@@ -209,6 +207,8 @@
         "sweetalert2": "11.4.8"
     },
     "suggest": {
+        "vite-plugin-vue-devtools": "*",
+        "vite-plugin-vue-inspector": "*",
         "jquery-sortable": "johnny/jquery-sortable#master",
         "@vitejs/plugin-legacy": "latest",
         "vite-plugin-i18n-resources": "*",
