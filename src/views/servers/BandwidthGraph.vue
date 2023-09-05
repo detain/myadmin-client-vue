@@ -7,6 +7,7 @@ const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
+const module: string = 'servers';
 const siteStore = useSiteStore();
 
 const errorMsg = ref('');
@@ -29,7 +30,7 @@ function toggleCollapse() {
                     <div class="card-header">
                         <h3 class="card-title py-2"><i class="fa fa-line-chart">&nbsp;</i>Bandwidth Graphs</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/servers/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body">

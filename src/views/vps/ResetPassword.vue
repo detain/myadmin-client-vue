@@ -8,7 +8,7 @@ const props = defineProps({
     id: Number,
 });
 const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
+const module = computed(() => { return props.module || ''; });
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -30,7 +30,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title d-flex py-2"><i class="material-icons">password&nbsp;</i> Reset VPS Password</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/vps/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

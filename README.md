@@ -52,7 +52,6 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
-  * [ ] fix links on home to proper module links
   * [ ] change style scoped to style for app??
   * [ ] move type definitions into /types
   * [ ] finish /account/*

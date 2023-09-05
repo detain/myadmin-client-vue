@@ -7,10 +7,11 @@ import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
 const router = useRouter();
+const module: string = 'quickservers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Rapid Deploy Servers List'], ['/qs/order', 'Order Rapid Deploy Server']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Rapid Deploy Servers List'], ['/'+moduleLink(module)+'/order', 'Order Rapid Deploy Server']]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('orderform');

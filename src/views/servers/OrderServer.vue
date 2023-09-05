@@ -4,6 +4,7 @@ import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
+const module: string = 'servers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');

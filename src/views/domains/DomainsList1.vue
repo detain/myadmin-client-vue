@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+import { moduleLink } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -22,6 +23,7 @@ interface domainsRow {
 /*DataTable.use(DataTablesCore);*/
 
 let dt;
+const module = 'domains';
 const limitStatus = ref('active');
 interface LimitStatusMap {
     [key: string]: string[];

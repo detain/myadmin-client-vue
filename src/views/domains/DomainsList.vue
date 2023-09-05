@@ -10,7 +10,7 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-
+const module: string = 'domains';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 siteStore.setPageHeading('Domain Registrations List');

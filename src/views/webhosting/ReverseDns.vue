@@ -8,6 +8,7 @@ const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref<Fields>({});
+const module: string = 'webhosting';
 const siteStore = useSiteStore();
 
 interface Fields {

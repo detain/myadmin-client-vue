@@ -8,6 +8,7 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const module: string = 'domains';
 
 const renewCost = ref('{$formValues.renewCost}');
 const whoisCost = ref('{$formValues.whoisCost}');
@@ -79,7 +80,7 @@ function renewCalculate() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Renew</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/'+moduleLink(module)+'/domains/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">

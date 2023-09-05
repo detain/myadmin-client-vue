@@ -7,6 +7,7 @@ const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
+const module: string = 'webhosting';
 const siteStore = useSiteStore();
 
 const custPortal = ref('');

@@ -10,10 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module: string = 'ssl';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'SSL']]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'SSL']]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/

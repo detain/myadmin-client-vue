@@ -333,9 +333,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -448,7 +448,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/'+moduleLink(module)+'/vps/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -663,7 +663,7 @@ function toggleFunc(cp: string) {
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br />

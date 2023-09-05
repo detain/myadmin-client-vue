@@ -7,6 +7,7 @@ const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
+const module: string = 'licenses';
 const siteStore = useSiteStore();
 
 //const id = ref('');
@@ -29,7 +30,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-linux"></i>Change OS</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/licenses/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i></router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i></router-link>
                         </div>
                     </div>
                 </div>

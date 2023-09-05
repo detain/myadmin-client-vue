@@ -10,10 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module = 'backups';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Storage / Backup List');
 siteStore.setTitle('Storage / Backup List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Storage']]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Storage']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface backupsRow {

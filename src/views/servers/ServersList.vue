@@ -10,10 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module: string = 'servers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Dedicated Servers List');
 siteStore.setTitle('Dedicated Servers List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Servers']]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Servers']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface serversRow {

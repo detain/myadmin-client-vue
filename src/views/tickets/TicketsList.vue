@@ -141,12 +141,12 @@ ticketsStore.getAll();
                                         <i v-else-if="ticket.status_text === 'Closed'" class="far fa-envelope text-danger"></i>
                                     </td>
                                     <td class="mailbox-name">
-                                        <router-link :to="'/'+moduleLink(module)+'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link>
+                                        <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link>
                                     </td>
                                     <td class="mailbox-subject">
                                         <b>
-                                            <router-link :to="'/'+moduleLink(module)+'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b>
-                                        - <router-link :to="'/'+moduleLink(module)+'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + '...' : ticket.title }}</router-link>
+                                            <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b>
+                                        - <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + '...' : ticket.title }}</router-link>
                                     </td>
                                     <td class="mailbox-attachment" v-if="ticket.attachments.length > 0"><i class="fas fa-paperclip"></i></td>
                                     <td class="mailbox-date">{{ ticket.lastactivity }}</td>

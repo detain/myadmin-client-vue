@@ -10,6 +10,7 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module: string = 'webhosting';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Web Hosting List');
 siteStore.setTitle('Web Hosting List');

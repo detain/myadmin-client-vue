@@ -18,6 +18,7 @@ import 'datatables.net-bs4';
 import DataTable from 'datatables.net-dt';
 
 import { useSiteStore } from '@/stores';
+const module: string = 'vps';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
 siteStore.setTitle('VPS List');
@@ -93,7 +94,7 @@ const loadVpsList = async (data: any) => {
                     {
                         data: null,
                         render: (data, type, row, meta) => {
-                            return '<a href="" @click.prevent="router.push(`/vps/${row.vps_id}`);">' + row.vps_hostname + '</a>';
+                            return '<a href="" @click.prevent="router.push\(`/'+moduleLink(module)+'/${row.vps_id}`);">' + row.vps_hostname + '</a>';
                         },
                     },
                     { data: 'vps_ip' },
@@ -104,7 +105,7 @@ const loadVpsList = async (data: any) => {
                         name: 'link',
                         data: null,
                         render: (data, type, row, meta) => {
-                            return '<router-link :to="\'vps/' + row.vps_id + '\'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
+                            return '<router-link :to="\'/'+moduleLink(module)+'/ + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
                         },
                     },
                 ],

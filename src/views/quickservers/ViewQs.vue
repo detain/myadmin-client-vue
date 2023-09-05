@@ -201,9 +201,9 @@ function closeModal() {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +339,7 @@ function closeModal() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/qs/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>

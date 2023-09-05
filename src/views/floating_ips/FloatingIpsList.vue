@@ -10,10 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module: string = 'floating_ips';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Floating IPs Services List');
 siteStore.setTitle('Floating IPs Services List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Floating IPs']]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Floating IPs']]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/

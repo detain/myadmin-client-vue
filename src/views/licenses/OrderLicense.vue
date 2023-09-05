@@ -5,6 +5,7 @@ import { fetchWrapper, moduleLink } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+const module: string = 'licenses';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');
@@ -21,9 +22,9 @@ const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/licenses/order', 'Select License Type']]);
+        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/'+moduleLink(module)+'/order', 'Select License Type']]);
     } else {
-        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/licenses/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
+        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/'+moduleLink(module)+'/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
     }
 }
 interface GetLicensesRow {

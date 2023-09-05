@@ -7,6 +7,7 @@ import { useSslStore, useSiteStore } from '@/stores';
 import { ChangeApproverEmail } from '@/views/ssl';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 
+const module: string = 'ssl';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
@@ -225,7 +226,7 @@ sslStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/ssl/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>

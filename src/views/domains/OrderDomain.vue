@@ -6,10 +6,11 @@ import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';
+const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/domains/order', 'Order Domain']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/'+moduleLink(module)+'/order', 'Order Domain']]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
@@ -39,7 +40,7 @@ const regType = computed(() => {
 const display = ref('step1');
 
 function updateStep() {
-    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/domains/order', 'Order Domain']]);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/'+moduleLink(module)+'/order', 'Order Domain']]);
     if (typeof domain.value == 'undefined') {
         display.value = 'step1';
     } else {

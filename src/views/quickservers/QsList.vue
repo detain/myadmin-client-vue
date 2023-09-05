@@ -10,10 +10,11 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import { useSiteStore } from '@/stores';
+const module: string = 'quickservers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Rapid Deploy Servers List');
 siteStore.setTitle('Rapid Deploy Servers List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Quickservers']]);
+siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Quickservers']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface quickserversRow {
@@ -170,12 +171,12 @@ loadQuickservers();
                                             <td>{{ row.qs_name }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/qs/' + row.qs_id">{{ row.qs_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.qs_id">{{ row.qs_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.qs_status }}</td>
                                             <td>{{ row.qs_comment }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/qs/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
