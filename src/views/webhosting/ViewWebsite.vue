@@ -46,7 +46,9 @@ function loadLink(newLink: string) {
                 fetchWrapper.get(baseUrl + '/' + moduleLink(module) + '/' + id + '/login').then((response) => {
                     console.log('response:');
                     console.log(response);
-                    window.location = response.location;
+                    if (typeof response.location != 'undefined') {
+                        window.location = response.location;
+                    }
                 });
             } catch (error: any) {
                 console.log('error:');
