@@ -14,7 +14,10 @@ const module: string = 'floating_ips';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Floating IPs Services List');
 siteStore.setTitle('Floating IPs Services List');
-siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Floating IPs']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Floating IPs'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -52,9 +55,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
@@ -69,7 +70,6 @@ interface FloatingIpRow {
     link: string;
     sortable: boolean;
 }
-
 
 const loadFloatingIp = async () => {
     try {
@@ -171,12 +171,12 @@ loadFloatingIp();
                                             <td>{{ row.floating_ip_id }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.floating_ip_id">{{ row.floating_ip_username }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.floating_ip_id">{{ row.floating_ip_username }}</router-link>
                                             </td>
                                             <td>{{ row.floating_ip_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.floating_ip_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.floating_ip_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

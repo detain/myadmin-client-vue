@@ -38,7 +38,6 @@ const props = defineProps({
 const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
 const buyForm = ref(false);
 
-
 interface IpDetails {
     invoices_id: string;
     invoices_description: string;
@@ -71,7 +70,6 @@ interface IpDetails {
     cancel_link: string;
     ip: string;
 }
-
 </script>
 
 <template>
@@ -86,7 +84,7 @@ interface IpDetails {
                             <template v-else-if="buyForm">Buy Additional IP Addon</template>
                         </h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

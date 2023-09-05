@@ -8,7 +8,11 @@ const module: string = 'servers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Servers List'], ['/servers/order', 'Order Server']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Servers List'],
+    ['/servers/order', 'Order Server'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 const currency = ref('USD');
@@ -34,7 +38,9 @@ const servername = ref('');
 const rootpass = ref('');
 const comment = ref('');
 const cpuCores = ref<CpuCores>({});
-const hdValues = computed(() => { return configLi.value.hd_li; });
+const hdValues = computed(() => {
+    return configLi.value.hd_li;
+});
 const fieldLabel = ref<FieldLabel>({
     bandwidth: {
         name: 'Bandwidth',
@@ -63,17 +69,11 @@ const fieldLabel = ref<FieldLabel>({
     },
 });
 
-function addDrive(id: number, driveType: string, description: string, price: number) {
+function addDrive(id: number, driveType: string, description: string, price: number) {}
 
-}
+function updatePrice() {}
 
-function updatePrice() {
-
-}
-
-function removeDrive(id: number, driveType: string) {
-
-}
+function removeDrive(id: number, driveType: string) {}
 
 function onSubmitCpu() {
     serverOrderRequest(true);
@@ -85,7 +85,7 @@ interface SimpleStringObj {
 
 interface ServerOrderResponse {
     cpu: number;
-    cpu_li: CpuLi
+    cpu_li: CpuLi;
     cpu_cores: CpuCores;
     config_ids: ConfigIds;
     config_li: ConfigLi;
@@ -96,7 +96,7 @@ interface ServerOrderResponse {
 interface CpuCores {
     [key: string]: {
         [key: string]: CpuCoresRow;
-    }
+    };
 }
 
 interface ConfigIds {
@@ -111,7 +111,7 @@ interface FieldLabel {
     [key: string]: {
         name: string;
         active?: number;
-    }
+    };
 }
 
 interface ConfigLi extends SimpleStringObj {
@@ -132,13 +132,13 @@ interface CpuLi extends SimpleStringObj {
 interface MemoryLi extends SimpleStringObj {
     [key: string]: {
         [key: string]: MemoryRow;
-    }
+    };
 }
 
 interface HdLi extends SimpleStringObj {
     [key: string]: {
         [key: string]: HdRow;
-    }
+    };
 }
 
 interface BandwidthLi extends SimpleStringObj {
@@ -316,7 +316,7 @@ serverOrderRequest(false);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/'+moduleLink(module)+'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -647,7 +647,7 @@ serverOrderRequest(false);
                     <div class="card-body">
                         <form id="edit_order_form" method="post" action="order_server">
                             <template v-for="(field_value, field) in formValues">
-                                <input :key="field" type="hidden" :id="field as string" :name="(field as string)" :value="field_value" v-if="field !== 'hd'" />
+                                <input :key="field" type="hidden" :id="field as string" :name="field as string" :value="field_value" v-if="field !== 'hd'" />
                             </template>
                             <input v-for="(hd_val, indexx) in hdValues" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />

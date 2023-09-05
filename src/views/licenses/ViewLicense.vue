@@ -11,25 +11,32 @@ const module = 'licenses';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => { return route.params.link; });
+const link = computed(() => {
+    return route.params.link;
+});
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => { return modules.value[module]; });
+const settings = computed(() => {
+    return modules.value[module];
+});
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/'+moduleLink(module)+moduleLink(module), 'License' ]]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View License ' + id);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module) + moduleLink(module), 'License'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View License ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View License ' + id);
         siteStore.setTitle('View License ' + id);
     } else {
         siteStore.setPageHeading('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
-		// do something here
+            // do something here
         }
     }
 }
@@ -176,7 +183,7 @@ licenseStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

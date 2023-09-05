@@ -14,15 +14,14 @@ onMounted(() => {
         confirmButtonText: 'Yes',
         html: html.value,
         preConfirm: () => {
-            ((document.getElementById('confirmDialog') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('confirmDialog') as unknown as HTMLFormElement).submit();
         },
     });
 });
 </script>
 
 <template>
-    <form id="confirmDialog" :action="url" method="POST">
-    </form>
+    <form id="confirmDialog" :action="url" method="POST"></form>
 </template>
 
 <style scoped></style>

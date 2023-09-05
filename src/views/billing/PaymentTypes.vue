@@ -11,7 +11,10 @@ const accountStore = useAccountStore();
 siteStore.setPageHeading('Payment Types');
 siteStore.setTitle('Payment Types');
 siteStore.setTitle('Payment Types');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Payment Types']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Payment Types'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
@@ -351,7 +354,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;">
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -444,7 +447,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;" disabled>
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>

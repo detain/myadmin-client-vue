@@ -14,7 +14,10 @@ const module: string = 'webhosting';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Web Hosting List');
 siteStore.setTitle('Web Hosting List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Webhosting']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Webhosting'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -62,19 +65,16 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(event: any): void {
     const exportType = event.currentTarget.parentElement.getAttribute('data-type');
     console.log(exportType);
-
 }
 
 const loadWebsites = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/'+moduleLink(module));
+        const response = await fetchWrapper.get(baseUrl + '/' + moduleLink(module));
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -97,7 +97,7 @@ loadWebsites();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/order'" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/' + moduleLink(module) + '/order'" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -172,14 +172,14 @@ loadWebsites();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.website_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.website_id">{{ row.website_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.website_id">{{ row.website_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>{{ row.website_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.website_comment }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

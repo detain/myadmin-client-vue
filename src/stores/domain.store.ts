@@ -4,7 +4,7 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface DomainInfo {
-    domain_id      : number;
+    domain_id: number;
     domain_hostname: string;
     domain_username: string;
     domain_password: string;
@@ -39,14 +39,14 @@ interface DomainState {
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
     serviceType: ServiceType;
     serviceTypes: {
         [key: string]: ServiceType;
-    }
+    };
     contact_details: {
         first_name: string;
         last_name: string;
@@ -62,12 +62,12 @@ interface DomainState {
         country: string;
         phone: string;
         fax: string;
-    },
+    };
     pwarning: string;
     transfer_info: string;
-    errors: boolean,
-    domain_logs: [],
-    allInfo: any,
+    errors: boolean;
+    domain_logs: [];
+    allInfo: any;
     registrarStatus: string;
     locked: string;
     whoisPrivacy: string;
@@ -83,7 +83,7 @@ export const useDomainStore = defineStore({
         pkg: '',
         linkDisplay: false,
         serviceInfo: {
-            domain_id      : 0,
+            domain_id: 0,
             domain_hostname: '',
             domain_username: '',
             domain_password: '',
@@ -106,7 +106,7 @@ export const useDomainStore = defineStore({
             domain_country: '',
             domain_phone: '',
             domain_fax: '',
-            domain_company: ''
+            domain_company: '',
         },
         serviceTypes: {},
         clientLinks: [],
@@ -163,9 +163,7 @@ export const useDomainStore = defineStore({
         whoisPrivacy: '',
         autoRenew: '',
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

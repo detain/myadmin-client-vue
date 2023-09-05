@@ -54,8 +54,8 @@ interface HomeDetails {
             heading: string;
             buy_link: string;
             list_link: string;
-        }
-    }
+        };
+    };
 }
 
 interface HomeTicket {
@@ -64,7 +64,6 @@ interface HomeTicket {
     ticketmaskid: string;
     subject: string;
     lastreplier: string;
-
 }
 
 interface HomeTicketStatus {
@@ -82,12 +81,12 @@ interface HomeServices {
 interface HomeService {
     links: {
         [key: number]: string;
-    }
+    };
     count: number;
 }
 
 const copyToClipboard = () => {
-    const value = (document.getElementById('affiliateinput') as HTMLElement).innerText
+    const value = (document.getElementById('affiliateinput') as HTMLElement).innerText;
     const $temp = document.createElement('input');
     document.body.appendChild($temp);
     $temp.value = value;
@@ -114,21 +113,13 @@ const affiliateUrl = computed(() => {
     return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? 'https://www.interserver.net/r/' + user.value.account_id : '';
 });
 
-function shareOnPinterest() {
+function shareOnPinterest() {}
 
-}
+function shareOnTwitter() {}
 
-function shareOnTwitter() {
+function shareOnLinkedIn() {}
 
-}
-
-function shareOnLinkedIn() {
-
-}
-
-function shareOnFacebook() {
-
-}
+function shareOnFacebook() {}
 
 const loadHome = async () => {
     try {
@@ -272,11 +263,11 @@ loadHome();
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
-                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
-                                    <router-link :to="'/'+moduleLink(module)+'/order'" class="btn order">Order Now</router-link>
+                                    <router-link :to="'/' + moduleLink(module) + '/order'" class="btn order">Order Now</router-link>
                                 </li>
                             </ul>
                         </div>

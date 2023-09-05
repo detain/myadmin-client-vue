@@ -39,15 +39,15 @@ interface PrePayState {
     error: boolean;
     modules: {
         [key: string]: string;
-    }
+    };
     ima: string;
     custid: number;
     prepays: {
         [key: number]: {
             history: PrePayHistoryRow[];
             prepay: PrePayRow;
-        }
-    }
+        };
+    };
     total_pages: number;
     total_records: number;
     limit: number;
@@ -58,9 +58,9 @@ interface PrePayState {
             module_name: string;
             services: {
                 [key: number]: string;
-            }
-        }
-    }
+            };
+        };
+    };
 }
 
 export const usePrePayStore = defineStore({
@@ -79,9 +79,7 @@ export const usePrePayStore = defineStore({
         curr_page_records: 0,
         allInfo: {},
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

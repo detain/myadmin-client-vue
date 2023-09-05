@@ -11,7 +11,11 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
 siteStore.setTitle('Order Floating IPs');
-siteStore.setBreadcrums([['/home', 'Home'], ['/mail', 'Floating IPs List'], ['/mail/order', 'Order Floating IPs']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/mail', 'Floating IPs List'],
+    ['/mail/order', 'Order Floating IPs'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const coupon = ref('');
@@ -26,10 +30,8 @@ const validateResponse = ref<ValidateFloatingIpOrderResponse>({
     password: 0,
     introFrequency: null,
     coupon: '',
-    couponCode: null
+    couponCode: null,
 });
-
-
 
 const tos = ref(false);
 const packageCosts = ref({});
@@ -84,9 +86,7 @@ interface ValidateFloatingIpOrderResponse {
     couponCode: null | number;
 }
 
-function updateCoupon() {
-
-}
+function updateCoupon() {}
 
 async function placeOrder(values: any) {
     Swal.fire({
@@ -139,7 +139,8 @@ try {
                     <div class="card-body">
                         <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_floating_ip" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label text-right">Package
+                                <label class="col-sm-3 col-form-label text-right"
+                                    >Package
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">

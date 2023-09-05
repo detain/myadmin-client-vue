@@ -10,13 +10,20 @@ const module = 'quickservers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = Number(route.params.id);
-const link = computed(() => { return route.params.link as string; });
+const link = computed(() => {
+    return route.params.link as string;
+});
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => { return modules.value[module]; });
+const settings = computed(() => {
+    return modules.value[module];
+});
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/'+moduleLink(module)+'/', 'Rapid Deploy Servers' ]]);
-siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Qs ' + id);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module) + '/', 'Rapid Deploy Servers'],
+]);
+siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
@@ -27,17 +34,11 @@ const isCollapsed = ref(false);
 
 const diskPercentage = Math.round((serviceMaster.value.qs_hdfree / serviceMaster.value.qs_hdsize) * 100);
 
-function openCommentForm() {
+function openCommentForm() {}
 
-}
+function submitComment() {}
 
-function submitComment() {
-
-}
-
-function closeModal() {
-
-}
+function closeModal() {}
 </script>
 
 <template>
@@ -201,9 +202,9 @@ function closeModal() {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +340,7 @@ function closeModal() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -472,7 +473,7 @@ function closeModal() {
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.qs_id" />
                             <input type="hidden" name="link" value="update_comment" />
-                                <input type="hidden" name="edit_comment" value="2" />
+                            <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
                                 <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.qs_comment"></textarea>

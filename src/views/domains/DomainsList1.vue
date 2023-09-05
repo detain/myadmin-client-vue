@@ -46,8 +46,8 @@ const options = {
 };
 
 origData.value = [
-    { screenshot: '<a href="index.php?choice=none.view_domain&id=376503"><img src="https://shot.sh?w=300&h=100&img=hostingenuity.com"></a>', domain_id: 376503, domain_hostname: 'hostingenuity.com', domain_expire_date: '2022-02-09 16:20:25', cost: 12.00, domain_status: 'active', link: 'hi' },
-    { screenshot: '<a href="index.php?choice=none.view_domain&id=592337"><img src="https://shot.sh?w=300&h=100&img=detain.dev"></a>', domain_id: 592337, domain_hostname: 'detain.dev', domain_expire_date: '2023-08-14 00:59:38', cost: 18.00, domain_status: 'active', link: 'hi' },
+    { screenshot: '<a href="index.php?choice=none.view_domain&id=376503"><img src="https://shot.sh?w=300&h=100&img=hostingenuity.com"></a>', domain_id: 376503, domain_hostname: 'hostingenuity.com', domain_expire_date: '2022-02-09 16:20:25', cost: 12.0, domain_status: 'active', link: 'hi' },
+    { screenshot: '<a href="index.php?choice=none.view_domain&id=592337"><img src="https://shot.sh?w=300&h=100&img=detain.dev"></a>', domain_id: 592337, domain_hostname: 'detain.dev', domain_expire_date: '2023-08-14 00:59:38', cost: 18.0, domain_status: 'active', link: 'hi' },
 ];
 const filteredData = computed(() => {
     if (limitStatus.value === 'all') {
@@ -61,9 +61,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
@@ -160,13 +158,13 @@ function setStatusLimit(event: Event) {
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.domain_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.domain_id">{{ row.domain_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id">{{ row.domain_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.domain_expire_date }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>{{ row.domain_status }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

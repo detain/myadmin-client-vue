@@ -60,34 +60,32 @@ interface SiteState {
     title: string;
     modules: {
         [key: string]: ModuleSettings;
-    }
+    };
     services: {
         [key: string]: ServiceInfo;
-    }
+    };
     serviceTypes: {
         [key: string]: ServiceType;
-    }
+    };
     serviceCategories: {
         [key: string]: ServiceCategory;
-    }
+    };
 }
 
 export const useSiteStore = defineStore({
     id: 'site',
     state: (): SiteState => ({
         // initialize state from local storage to enable user to stay logged in
-        breadcrums       : [],
-        page_heading     : '',
-        sidemenu         : '',
-        title            : '',
-        modules          : {},
-        services         : {},
-        serviceTypes     : {},
-        serviceCategories: {}
+        breadcrums: [],
+        page_heading: '',
+        sidemenu: '',
+        title: '',
+        modules: {},
+        services: {},
+        serviceTypes: {},
+        serviceCategories: {},
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         getBaseUrl() {
             return baseUrl;
@@ -101,16 +99,14 @@ export const useSiteStore = defineStore({
             }
         },
         async loadInfo(): Promise<void> {
-            fetchWrapper
-                .get(baseUrl + '/info')
-                .then((response) => {
-                    this.modules           = response.modules;
-                    this.services          = response.services;
-                    this.serviceTypes      = response.serviceTypes;
-                    this.serviceCategories = response.serviceCategories;
-                    console.log('info success');
-                    console.log(response);
-                });
+            fetchWrapper.get(baseUrl + '/info').then((response) => {
+                this.modules = response.modules;
+                this.services = response.services;
+                this.serviceTypes = response.serviceTypes;
+                this.serviceCategories = response.serviceCategories;
+                console.log('info success');
+                console.log(response);
+            });
         },
         setBreadcrums(value: BreadCrum[]) {
             this.breadcrums = value;

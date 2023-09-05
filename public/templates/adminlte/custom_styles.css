@@ -319,7 +319,9 @@ a.blog-link:hover {
 
 .info-box:hover,
 .card:hover {
-    box-shadow: 0 0 0.07rem rgba(0, 0, 0, 0.125), 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 0 0.07rem rgba(0, 0, 0, 0.125),
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
 }
 
 .info-box .info-box-icon {
@@ -395,7 +397,9 @@ tr.shown td.details-control {
 }
 
 .home-cards {
-    box-shadow: 0 0 0.07rem rgba(0, 0, 0, 0.125), 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 0 0.07rem rgba(0, 0, 0, 0.125),
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
     margin-bottom: 1.5rem !important;
     margin: 0.07rem;
     transition-duration: 0.4s;

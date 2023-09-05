@@ -10,7 +10,11 @@ const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/'+moduleLink(module)+'/order', 'Order Domain']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Domains List'],
+    ['/' + moduleLink(module) + '/order', 'Order Domain'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
@@ -40,7 +44,11 @@ const regType = computed(() => {
 const display = ref('step1');
 
 function updateStep() {
-    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/'+moduleLink(module)+'/order', 'Order Domain']]);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module), 'Domains List'],
+        ['/' + moduleLink(module) + '/order', 'Order Domain'],
+    ]);
     if (typeof domain.value == 'undefined') {
         display.value = 'step1';
     } else {
@@ -75,7 +83,6 @@ fetchWrapper.get(baseUrl + '/domains/order').then((response) => {
     tldServices.value = response.tldServices;
 });
 
-
 function searchDomain() {
     Swal.fire({
         title: '',
@@ -101,9 +108,7 @@ function searchDomain() {
         });
 }
 
-function clearInput() {
-
-}
+function clearInput() {}
 
 function getDomainFields() {
     Swal.fire({
@@ -125,13 +130,9 @@ function getDomainFields() {
         });
 }
 
-function edit_form() {
+function edit_form() {}
 
-}
-
-function placeOrder() {
-
-}
+function placeOrder() {}
 
 updateStep();
 </script>
@@ -177,7 +178,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult?.domain }}</b> is available! you can register it for {{ domainResult?.new }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
                             </div>
                         </template>
                         <template v-else-if="domainResult?.status === 'taken'">
@@ -185,7 +186,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult?.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult?.transfer }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
                             </div>
                         </template>
                     </template>
@@ -214,13 +215,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="suggestion.status === 'available'">
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="suggestion.status === 'taken'">
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -248,13 +249,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="lookup.status === 'available'">
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="lookup.status === 'taken'">
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -281,7 +282,7 @@ updateStep();
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-address-card">&nbsp;</i>Contact Information</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -302,9 +303,15 @@ updateStep();
                                             </div>
                                             <br />
                                             <div class="d-inline px-2">
-                                                <span style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted" data-toggle="popover" data-container="body" data-html="true" data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
+                                                <span
+                                                    style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted"
+                                                    data-toggle="popover"
+                                                    data-container="body"
+                                                    data-html="true"
+                                                    data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
                   <p>The benefit of having Whois Privacy is that the Registrant’s identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
-                  <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>" title="WHOIS">
+                  <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>"
+                                                    title="WHOIS">
                                                     What is this Whois Privacy?
                                                 </span>
                                             </div>

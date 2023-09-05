@@ -11,36 +11,42 @@ const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => { return route.params.link; });
+const link = computed(() => {
+    return route.params.link;
+});
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => { return modules.value[module]; });
+const settings = computed(() => {
+    return modules.value[module];
+});
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Floating IPs']]);
-siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Floating IPs ' + id);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Floating IPs'],
+]);
+siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Floating IPs ' + id);
 
 const floatingIpStore = useFloatingIpStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 
-function submitForm() {
+function submitForm() {}
 
-}
-
-function closeModal() {
-
-}
+function closeModal() {}
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Floating IPs']]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Floating IP ' + id);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module), 'Floating IPs'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Floating IP ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Floating IP ' + id);
         siteStore.setTitle('View Floating IP ' + id);
     } else {
         siteStore.setPageHeading('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -75,7 +81,9 @@ const statusClass = computed(() => {
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Package</h3>
                     <p class="m-0 py-2">{{ pkg }}</p>
-                    <p>Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
+                    <p>
+                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
+                    </p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-briefcase"></i>
@@ -94,7 +102,9 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
+                <span class="small-box-footer"
+                    >Floating IPs Status is: <b>{{ status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-4">
@@ -124,7 +134,16 @@ const statusClass = computed(() => {
     <template v-else>
         <div>
             <div class="col-md-12">
-                <blockquote style="border-left: 0.4rem solid dimgray; height: 70px; padding-top: 20px; box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%)" class="mx-0 pl-4">
+                <blockquote
+                    style="
+                        border-left: 0.4rem solid dimgray;
+                        height: 70px;
+                        padding-top: 20px;
+                        box-shadow:
+                            0 0 1px rgb(0 0 0 / 13%),
+                            0 1px 3px rgb(0 0 0 / 20%);
+                    "
+                    class="mx-0 pl-4">
                     <p style="font-size: 20px; vertical-align: middle">
                         <i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Floating IPs Usage Count: <strong>{{ usage_count }}</strong>
                     </p>
@@ -143,8 +162,9 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                            >{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>

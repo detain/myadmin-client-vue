@@ -10,7 +10,11 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Website');
 siteStore.setTitle('Order Website');
-siteStore.setBreadcrums([['/home', 'Home'], ['/websites', 'Websites List'], ['/websites/order', 'Order Website']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/websites', 'Websites List'],
+    ['/websites/order', 'Order Website'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface Package extends ServiceType {
@@ -93,13 +97,9 @@ const totalCost = computed(() => {
     return total;
 });
 
-function updateCoupon() {
+function updateCoupon() {}
 
-}
-
-function updatePrice(event: Event, force: boolean = false) {
-
-}
+function updatePrice(event: Event, force: boolean = false) {}
 
 async function onSubmit() {
     try {
@@ -148,7 +148,6 @@ async function onSubmitConfirmation() {
                 if (response['success'] == true) {
                     router.push('/cart/' + response.iids.join(','));
                 }
-
             });
     } catch (error: any) {
         console.log('website order validation failed');

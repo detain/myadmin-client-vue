@@ -27,7 +27,6 @@ const InvoicesList = () => import(/* webpackChunkName: "main" */ '@/views/billin
 const Cart = () => import(/* webpackChunkName: "main" */ '@/views/billing/Cart.vue');
 const Pay = () => import(/* webpackChunkName: "main" */ '@/views/billing/Pay.vue');
 
-
 /*
 import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'
 import { DnsManager, DnsEditor } from '@/views/dns'

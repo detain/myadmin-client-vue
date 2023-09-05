@@ -22,7 +22,10 @@ const module: string = 'vps';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
 siteStore.setTitle('VPS List');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'VPS List']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'VPS List'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface vpsRow {
@@ -67,11 +70,9 @@ const filteredData = computed(() => {
     }
 });
 
-onMounted(function () { });
+onMounted(function () {});
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
@@ -94,7 +95,7 @@ const loadVpsList = async (data: any) => {
                     {
                         data: null,
                         render: (data, type, row, meta) => {
-                            return '<a href="" @click.prevent="router.push\(`/'+moduleLink(module)+'/${row.vps_id}`);">' + row.vps_hostname + '</a>';
+                            return '<a href="" @click.prevent="router.push\(`/' + moduleLink(module) + '/${row.vps_id}`);">' + row.vps_hostname + '</a>';
                         },
                     },
                     { data: 'vps_ip' },
@@ -105,7 +106,7 @@ const loadVpsList = async (data: any) => {
                         name: 'link',
                         data: null,
                         render: (data, type, row, meta) => {
-                            return '<router-link :to="\'/'+moduleLink(module)+'/ + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
+                            return '<router-link :to="\'/' + moduleLink(module) + '/ + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
                         },
                     },
                 ],
@@ -170,7 +171,7 @@ loadVpsList(data);
                         </div>
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link :to="'/'+moduleLink(module)+'/'+moduleLink(module)+'/order'" class="btn btn-primary btn-sm printer-hidden" title="Order VPS"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/' + moduleLink(module) + '/order'" class="btn btn-primary btn-sm printer-hidden" title="Order VPS"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -249,14 +250,14 @@ loadVpsList(data);
                                             <td>{{ row.vps_name }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.vps_id">{{ row.vps_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.vps_id">{{ row.vps_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.vps_ip }}</td>
                                             <td>{{ row.vps_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.vps_comment }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

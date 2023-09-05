@@ -6,7 +6,11 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Faq');
 siteStore.setTitle('Affiliate - Faq');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/affiliate', 'Affiliate'],[ '', 'Faq' ]]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/affiliate', 'Affiliate'],
+    ['', 'Faq'],
+]);
 
 onMounted(() => {});
 </script>

@@ -39,7 +39,7 @@ function initializeToast() {
         document.getElementById('suggestedNameserver')?.addEventListener('click', () => {
             if (suggested.value) {
                 suggested.value.forEach((suggestion, idx) => {
-                    ((document.getElementById(`nameserver${idx}`) as unknown) as HTMLInputElement).value = suggestion;
+                    (document.getElementById(`nameserver${idx}`) as unknown as HTMLInputElement).value = suggestion;
                 });
                 Toast.fire({
                     icon: 'info',
@@ -58,9 +58,7 @@ function saveNameservers() {
     // Handle save nameservers form submission
 }
 
-function handleSuggestedNameserver() {
-
-}
+function handleSuggestedNameserver() {}
 
 function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) {
     Swal.fire({
@@ -85,7 +83,7 @@ function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) 
                 <i class="m-0"><!-- <svg style="width: 40px; height: 40px;"><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-dns"></use></svg> --></i>Domain Name Servers
             </h3>
             <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">

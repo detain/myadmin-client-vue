@@ -12,8 +12,6 @@ const authStore = useAuthStore();
 authStore.sudo(sessionId);
 </script>
 
-<template>
-    Logged in as a client, redirecting to home.
-</template>
+<template>Logged in as a client, redirecting to home.</template>
 
 <style scoped></style>

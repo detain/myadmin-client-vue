@@ -406,7 +406,11 @@ select {
     background-color: #f0f0f0;
     color: black;
     padding: 1px;
-    font: normal 16px Verdana, Arial, Helvetica, sans-serif;
+    font:
+        normal 16px Verdana,
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 /* The buttons used for bbCode styling in message post */
@@ -440,14 +444,21 @@ colour as the background no one will know;)
     background: #d4eafe;
     border: 1px solid #99ccff;
     color: black;
-    font: 11px Courier, 'Courier New', sans-serif;
+    font:
+        11px Courier,
+        'Courier New',
+        sans-serif;
 }
 
 .quote {
     background: #d4eafe;
     border: 1px solid #99ccff;
     color: black;
-    font: 11px/125% Verdana, Arial, Helvetica, sans-serif;
+    font:
+        11px/125% Verdana,
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 /* Old background color: #99CCFF */

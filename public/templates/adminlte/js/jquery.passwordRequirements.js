@@ -77,7 +77,7 @@ import jQuery from 'jquery';
                                 itemL = $(this).offset().left;
                             // Append info box tho the body
                             $('body').append(messageDiv);
-                            $('#pr-box').addClass(o.style).fadeIn(o.fadeTime).css({top: totalH, left: itemL});
+                            $('#pr-box').addClass(o.style).fadeIn(o.fadeTime).css({ top: totalH, left: itemL });
                         });
                     }
                 };

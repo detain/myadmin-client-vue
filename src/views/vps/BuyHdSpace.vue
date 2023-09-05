@@ -10,8 +10,12 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 const additional_hd = ref('');
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
 const currency_symbol = ref('');
 const gbCost = ref(0);
 const selectedSpace = ref(0);
@@ -51,7 +55,7 @@ onMounted(() => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-server"></i> Additional VPS Drive Space</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>
@@ -65,7 +69,9 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" id="hdamount" class="form-control form-control-sm" readonly :value="getAmount()" />
-                                    <span class="text-muted text-sm">{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span>
+                                    <span class="text-muted text-sm"
+                                        >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
+                                    >
                                 </div>
                             </div>
                         </div>

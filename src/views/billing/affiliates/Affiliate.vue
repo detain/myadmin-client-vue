@@ -10,7 +10,10 @@ import 'datatables.net-bs4';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate System');
 siteStore.setTitle('Affiliate System');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Affiliate']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Affiliate'],
+]);
 const myUrl = 'https://my.interserver.net';
 const body = ref('');
 const custid = ref();

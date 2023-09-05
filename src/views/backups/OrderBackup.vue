@@ -10,7 +10,11 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Backup');
 siteStore.setTitle('Order Backup');
-siteStore.setBreadcrums([['/home', 'Home'], ['/backups', 'Backup List'], ['/backups/order', 'Order Backup']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/backups', 'Backup List'],
+    ['/backups/order', 'Order Backup'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('orderform');
@@ -37,13 +41,9 @@ async function editForm() {
     step.value = 'orderform';
 }
 
-function updatePrice() {
+function updatePrice() {}
 
-}
-
-function updateCoupon() {
-
-}
+function updateCoupon() {}
 
 const serviceDetail = computed(() => {
     return serviceTypes.value[pkg.value] as ServiceType;

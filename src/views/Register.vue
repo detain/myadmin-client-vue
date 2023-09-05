@@ -20,7 +20,7 @@ async function onSubmit(values: any) {
         await router.push('/account/login');
         alertStore.success('Registration successful');
     } catch (error: any) {
-        console.log()
+        console.log();
         alertStore.error(error.message);
     }
 }

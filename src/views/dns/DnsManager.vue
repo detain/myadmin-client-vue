@@ -14,7 +14,10 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Manager');
 siteStore.setTitle('DNS Manager');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'DNS Manager']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'DNS Manager'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -117,9 +120,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);

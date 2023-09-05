@@ -10,8 +10,12 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const hostname = ref('');
 const newHostname = ref('');
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
 
 function getLink() {
     if (module.value === 'vps') {
@@ -37,7 +41,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom">manage_accounts</i>Change VPS Hostname</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>

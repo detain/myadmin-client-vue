@@ -7,17 +7,19 @@ import Chart from 'chart.js/auto';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - SalesGraph');
 siteStore.setTitle('Affiliate - SalesGraph');
-siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'SalesGraph']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/affiliate', 'Affiliate'],
+    ['', 'SalesGraph'],
+]);
 
 const selectedPeriod = ref(30);
 
-function updatePeriod() {
-
-}
+function updatePeriod() {}
 
 onMounted(() => {
-    const canvas = ((document.getElementById('canvasGraph') as unknown) as HTMLCanvasElement);
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    const canvas = document.getElementById('canvasGraph') as unknown as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -31,8 +33,7 @@ onMounted(() => {
                 },
             ],
         },
-        options: {
-        },
+        options: {},
     });
 });
 </script>

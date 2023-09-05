@@ -57,7 +57,7 @@ function editBlock(action: string, id: number, type: string, data: any) {
     blockId.value = id;
     blockData.value = data;
     modalTitle.value = action === 'edit' ? 'Update Block' : 'Add New Block';
-    ((document.getElementById(type) as unknown) as HTMLInputElement).checked = true;
+    (document.getElementById(type) as unknown as HTMLInputElement).checked = true;
 }
 function loadEmail(id: number) {
     // Implement the loadEmail functionality
@@ -139,7 +139,8 @@ function submitBlock() {
                         <input id="action" type="hidden" name="action" :value="blockAction" />
                         <input id="rule_id" type="hidden" name="rule_id" :value="blockId" />
                         <div class="form-group row mx-auto">
-                            <label class="col-md-2 col-form-label px-0" for="mail_types">Type
+                            <label class="col-md-2 col-form-label px-0" for="mail_types"
+                                >Type
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-8 input-group">
@@ -153,7 +154,8 @@ function submitBlock() {
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label px-0">Data
+                            <label class="col-sm-2 col-form-label px-0"
+                                >Data
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-8">

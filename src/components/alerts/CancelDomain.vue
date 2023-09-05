@@ -17,15 +17,14 @@ onMounted(() => {
       <p>Are you sure want to cancel your domain <span class="text-2lg">${domain.value}</span>${addons.value.length ? ` and its addon <span class="text-2lg">Whois Privacy</span>` : ''}?</p>
     `,
         preConfirm: () => {
-            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('cancelForm') as unknown as HTMLFormElement).submit();
         },
     });
 });
 </script>
 
 <template>
-    <form id="cancelForm" :action="`view_domain?id=${id}&link=cancel`" method="POST">
-    </form>
+    <form id="cancelForm" :action="`view_domain?id=${id}&link=cancel`" method="POST"></form>
 </template>
 
 <style scoped></style>

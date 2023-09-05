@@ -9,11 +9,21 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
-const settings = computed(() => { return props.settings; });
-const serviceInfo = computed(() => { return props.serviceInfo; });
-const serviceMaster = computed(() => { return props.serviceMaster; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
+const settings = computed(() => {
+    return props.settings;
+});
+const serviceInfo = computed(() => {
+    return props.serviceInfo;
+});
+const serviceMaster = computed(() => {
+    return props.serviceMaster;
+});
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
 const osVersion = ref('');
@@ -95,7 +105,6 @@ interface VpsTemplate {
     template_available: number;
     template_name: string;
     template_dir: string;
-
 }
 
 try {
@@ -144,7 +153,7 @@ try {
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-linux">&nbsp;</i>Reinstall OS</h3>
                             <div class="card-tools text-right">
-                                <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

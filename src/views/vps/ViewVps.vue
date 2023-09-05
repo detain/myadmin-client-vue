@@ -14,9 +14,13 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id;
-const link = computed(() => { return route.params.link; });
+const link = computed(() => {
+    return route.params.link;
+});
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => { return modules.value[module]; });
+const settings = computed(() => {
+    return modules.value[module];
+});
 const webuzoTableExists = computed(() => {
     return typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo);
 });
@@ -27,15 +31,18 @@ const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop
 const collapsed = ref(false);
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/'+moduleLink(module)+moduleLink(module), 'VPS' ]]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View VPS ' + id);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module) + moduleLink(module), 'VPS'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View VPS ' + id);
         siteStore.setTitle('View VPS ' + id);
     } else {
         siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             vpsStore.queue(id as string, newLink);
             Swal.fire({
@@ -45,12 +52,10 @@ function loadLink(newLink: string) {
         }
         if (newLink == 'login') {
             try {
-                fetchWrapper
-                    .get(`${baseUrl}/vps/${id}/login`)
-                    .then((response) => {
-                        console.log('login success');
-                        console.log(response);
-                    });
+                fetchWrapper.get(`${baseUrl}/vps/${id}/login`).then((response) => {
+                    console.log('login success');
+                    console.log(response);
+                });
             } catch (error: any) {
                 console.log('login failed');
                 console.log(error);
@@ -59,33 +64,19 @@ function loadLink(newLink: string) {
     }
 }
 
-function hideModal() {
+function hideModal() {}
 
-}
+function onSubmit() {}
 
-function onSubmit() {
+function openModal(type: string, cost: string, name: string, index: number | string) {}
 
-}
+function showModal(type: string, currencySymbol: string, cost: string, name: string, index: number | string) {}
 
-function openModal(type: string, cost: string, name: string, index: number | string) {
+function showCPModal() {}
 
-}
+function toggleCP() {}
 
-function showModal(type: string, currencySymbol: string, cost: string, name: string, index: number | string) {
-
-}
-
-function showCPModal() {
-
-}
-
-function toggleCP() {
-
-}
-
-function openPopUp() {
-
-}
+function openPopUp() {}
 
 watch(
     () => route.params.link,
@@ -138,20 +129,20 @@ function docReady() {
         if (cp === 'cp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
         } else if (cp === 'da') {
             const lic_cost_type = $(this).attr('data-ser');
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
         } else if (cp === 'pp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
         } else if (cp === 'rs') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? $(this).attr('data-cost') as string : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
         }
     });
 }
@@ -333,9 +324,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -448,7 +439,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -663,7 +654,7 @@ function toggleFunc(cp: string) {
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link :to="'/'+moduleLink(module)+'/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br />
@@ -814,7 +805,7 @@ function toggleFunc(cp: string) {
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.vps_id" />
                             <input type="hidden" name="link" value="update_comment" />
-                                <input type="hidden" name="edit_comment" value="2" />
+                            <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
                                 <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>

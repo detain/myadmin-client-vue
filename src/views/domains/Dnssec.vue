@@ -24,7 +24,7 @@ const confirmDialog = () => {
         confirmButtonText: 'Yes, remove them!',
     }).then((result) => {
         if (result.value) {
-            ((document.getElementById('removethem') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('removethem') as unknown as HTMLFormElement).submit();
         }
     });
 };
@@ -35,26 +35,18 @@ const showAddDnsContent = () => {
 };
 
 const checkCharacterLimit = (event: Event, limit: number, displayId: string) => {
-    if (((event.target as unknown) as HTMLInputElement).value.length > limit) {
+    if ((event.target as unknown as HTMLInputElement).value.length > limit) {
         event.preventDefault();
     }
     const obj = document.getElementById(displayId) as HTMLElement;
-    obj.innerHTML = `Characters left: <b>${limit - ((event.target as unknown) as HTMLInputElement).value.length}</b>`;
+    obj.innerHTML = `Characters left: <b>${limit - (event.target as unknown as HTMLInputElement).value.length}</b>`;
 };
 
-function showAddDNSContent() {
+function showAddDNSContent() {}
 
-}
+function hideAddDNSContent() {}
 
-function hideAddDNSContent() {
-
-}
-
-function saveDNSSEC() {
-
-}
-
-
+function saveDNSSEC() {}
 </script>
 
 <template>

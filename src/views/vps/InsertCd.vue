@@ -10,7 +10,9 @@ const fields = ref({});
 const siteStore = useSiteStore();
 
 const action = ref('');
-const module = computed(() => { return props.module; });
+const module = computed(() => {
+    return props.module;
+});
 //const id = ref('');
 const goBackLink = ref('');
 const protocols = ref('https');
@@ -31,7 +33,7 @@ function submitForm() {
                             {{ action === 'enable_cd' ? 'Enable CDROM Drive' : 'Insert ISO Image In CDROM Drive' }}
                         </h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,7 @@ interface MailState {
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
@@ -101,9 +101,7 @@ export const useMailStore = defineStore({
         },
         usage_count: 0,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

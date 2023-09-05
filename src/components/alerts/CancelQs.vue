@@ -16,15 +16,14 @@ onMounted(() => {
       <p>Are you sure want to cancel your Rapid Deploy Server <span class="text-2lg">${hostname.value}</span>${addons.value.length ? ' and its addons' : ''}?</p>
     `,
         preConfirm: () => {
-            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('cancelForm') as unknown as HTMLFormElement).submit();
         },
     });
 });
 </script>
 
 <template>
-    <form id="cancelForm" :action="`view_qs?id=${id}&link=cancel`" method="POST">
-    </form>
+    <form id="cancelForm" :action="`view_qs?id=${id}&link=cancel`" method="POST"></form>
 </template>
 
 <style scoped></style>

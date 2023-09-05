@@ -53,7 +53,6 @@ interface AlertRow {
     alert_updated: string;
     alert_used: string;
 }
-
 </script>
 
 <template>

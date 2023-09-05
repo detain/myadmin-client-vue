@@ -12,10 +12,14 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = route.params.id as string;
-const link = computed(() => { return route.params.link as string; });
+const link = computed(() => {
+    return route.params.link as string;
+});
 console.log(link.value);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => { return modules.value[module]; });
+const settings = computed(() => {
+    return modules.value[module];
+});
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 
@@ -25,18 +29,21 @@ function isEmpty(table: any) {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Website']]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Website ' + id);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module), 'Website'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Website ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Website ' + id);
         siteStore.setTitle('View Website ' + id);
     } else {
         siteStore.setPageHeading('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             try {
-                fetchWrapper.get(baseUrl + '/'+moduleLink(module)+'/' + id + '/login').then((response) => {
+                fetchWrapper.get(baseUrl + '/' + moduleLink(module) + '/' + id + '/login').then((response) => {
                     console.log('response:');
                     console.log(response);
                     window.location = response.location;
@@ -78,13 +85,14 @@ loadLink(route.params.link as string);
             </div>
         </div>
         <div class="col-md-4">
-            <div :class="{
-                'small-box': true,
-                'bg-success': serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active',
-                'bg-orange': serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended',
-                'bg-danger': serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled',
-                'bg-info': !(serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active' || serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended' || serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled'),
-            }">
+            <div
+                :class="{
+                    'small-box': true,
+                    'bg-success': serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active',
+                    'bg-orange': serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended',
+                    'bg-danger': serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled',
+                    'bg-info': !(serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active' || serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended' || serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled'),
+                }">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>Billing</h3>
                     <p class="my-3 py-3">
@@ -135,7 +143,7 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="((id as unknown) as StringConstructor)"></BuyIp>
+            <BuyIp :id="id as unknown as StringConstructor"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>
@@ -177,7 +185,7 @@ loadLink(route.params.link as string);
                                 </template>
                                 <tr v-if="clientLinks[3]">
                                     <td>Automatic Login</td>
-                                    <td><router-link :to="'/'+moduleLink(module)+'/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
+                                    <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
                                 </tr>
                             </table>
                         </div>
@@ -256,8 +264,9 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

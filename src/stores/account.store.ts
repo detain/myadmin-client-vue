@@ -6,73 +6,73 @@ interface SimpleStringObj {
     [key: string]: any;
 }
 interface AccountData extends SimpleStringObj {
-  account_id       : number | null;
-  account_lid      : string;
-  status           : string;
-  pin              : number;
-  name             : string;
-  address          : string;
-  address2         : string;
-  city             : string;
-  state            : string;
-  zip              : string;
-  phone            : string;
-  country          : string;
-  payment_method   : string;
-  ima              : string;
-  company          : string;
-  currency         : string;
-  locale           : string;
-  disable_cc       : number;
-  fraudrecord_score: string;
-  maxmind_riskscore: any;
-  fraudrecord      : FraudRecordResponse | {};
-  maxmind          : MaxMindResponse | {};
-  maxmind_score    : string;
-  group            : string;
-  cc               : string;
-  cc_auto          : number;
-  cc_exp           : string;
-  cc_type          : string;
-  cc_whitelist     : number;
-  ccs              : CCsData;
-  ccs_added        : number;
-  disable_reinstall: number;
-  disable_reset    : number;
-  disable_email_notifications: number;
-  disable_server_notifications: number;
-  email            : string;
-  email_abuse      : string;
-  email_invoices   : string;
-  email_settings   : {
-      [key: string]: string;
-  };
-  extra: {
-      [key: string]: any;
-  };
-  picture                   : string;
-  affiliate_dock_description: string;
-  affiliate_dock_title      : string;
-  affiliate_payment_method  : string;
-  affiliate_paypal          : string;
-  referrer_coupon           : string;
-  reseller_markup           : string;
-  facebook_id               : string;
-  facebook_url              : string;
-  gstin?: string;
-  github_id: string;
-  github_url: string;
-  google_id: string;
-  google_url: string;
-  ssh_key: string;
-  ssh_key_wrapped: string;
-  api_key: string;
-  api_key_wrapped: string;
-  '2fa_google_key': string;
-  '2fa_google_enabled': boolean;
-  '2fa_google': number;
-  '2fa_google_split': string;
-  '2fa_google_qr': string;
+    account_id: number | null;
+    account_lid: string;
+    status: string;
+    pin: number;
+    name: string;
+    address: string;
+    address2: string;
+    city: string;
+    state: string;
+    zip: string;
+    phone: string;
+    country: string;
+    payment_method: string;
+    ima: string;
+    company: string;
+    currency: string;
+    locale: string;
+    disable_cc: number;
+    fraudrecord_score: string;
+    maxmind_riskscore: any;
+    fraudrecord: FraudRecordResponse | {};
+    maxmind: MaxMindResponse | {};
+    maxmind_score: string;
+    group: string;
+    cc: string;
+    cc_auto: number;
+    cc_exp: string;
+    cc_type: string;
+    cc_whitelist: number;
+    ccs: CCsData;
+    ccs_added: number;
+    disable_reinstall: number;
+    disable_reset: number;
+    disable_email_notifications: number;
+    disable_server_notifications: number;
+    email: string;
+    email_abuse: string;
+    email_invoices: string;
+    email_settings: {
+        [key: string]: string;
+    };
+    extra: {
+        [key: string]: any;
+    };
+    picture: string;
+    affiliate_dock_description: string;
+    affiliate_dock_title: string;
+    affiliate_payment_method: string;
+    affiliate_paypal: string;
+    referrer_coupon: string;
+    reseller_markup: string;
+    facebook_id: string;
+    facebook_url: string;
+    gstin?: string;
+    github_id: string;
+    github_url: string;
+    google_id: string;
+    google_url: string;
+    ssh_key: string;
+    ssh_key_wrapped: string;
+    api_key: string;
+    api_key_wrapped: string;
+    '2fa_google_key': string;
+    '2fa_google_enabled': boolean;
+    '2fa_google': number;
+    '2fa_google_split': string;
+    '2fa_google_qr': string;
 }
 
 interface AccountLimit {
@@ -92,23 +92,23 @@ interface CCsData {
 }
 
 interface CCData extends SimpleStringObj {
-    cc                : string;
-    cc_exp            : string;
-    country           : string;
-    name              : string;
-    address           : string;
-    city              : string;
-    maxmind           : MaxMindResponse;
-    maxmind_riskscore : string;
-    state             : string;
-    verified          : boolean;
-    zip               : string;
-    delete_text      ?: string;
-    edit_text        ?: string;
-    mask_cc          ?: string;
-    verified_cc      ?: string;
-    verified_text    ?: string;
-    unverified_text  ?: string;
+    cc: string;
+    cc_exp: string;
+    country: string;
+    name: string;
+    address: string;
+    city: string;
+    maxmind: MaxMindResponse;
+    maxmind_riskscore: string;
+    state: string;
+    verified: boolean;
+    zip: string;
+    delete_text?: string;
+    edit_text?: string;
+    mask_cc?: string;
+    verified_cc?: string;
+    verified_text?: string;
+    unverified_text?: string;
     v_step?: number;
 }
 
@@ -174,29 +174,29 @@ interface OAuthProviders {
     [key: string]: OauthProvider;
 }
 interface AccountState {
-  accountList: AccountData[];
-  loading: boolean;
-  error: boolean;
-  custid: number;
-  ima: string;
-  data: AccountData;
-  ip: string;
-  oauthproviders: OAuthProviders;
-  oauthconfig: {
-    callback: string;
-    providers: OAuthProviders;
-  };
-  oauthadapters: {
-    [key: string]: any;
-  };
-  limits: AccountLimit[];
-  gravatar: string;
-  language: string;
-  countryCurrencies: {
-      [key: string]: string[];
-  };
-  enableLocales: boolean;
-  enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
+    accountList: AccountData[];
+    loading: boolean;
+    error: boolean;
+    custid: number;
+    ima: string;
+    data: AccountData;
+    ip: string;
+    oauthproviders: OAuthProviders;
+    oauthconfig: {
+        callback: string;
+        providers: OAuthProviders;
+    };
+    oauthadapters: {
+        [key: string]: any;
+    };
+    limits: AccountLimit[];
+    gravatar: string;
+    language: string;
+    countryCurrencies: {
+        [key: string]: string[];
+    };
+    enableLocales: boolean;
+    enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
 }
 
 export const useAccountStore = defineStore({
@@ -208,69 +208,69 @@ export const useAccountStore = defineStore({
         custid: 0,
         ima: 'client',
         data: {
-            account_id                  : 0,
-            account_lid                 : '',
-            status                      : '',
-            pin                         : 0,
-            name                        : '',
-            address                     : '',
-            address2                    : '',
-            city                        : '',
-            state                       : '',
-            zip                         : '',
-            phone                       : '',
-            country                     : '',
-            payment_method              : 'paypal',
-            ima                         : 'client',
-            company                     : '',
-            currency                    : 'USD',
-            locale                      : 'auto',
-            disable_cc                  : 0,
-            disable_email_notifications : 0,
+            account_id: 0,
+            account_lid: '',
+            status: '',
+            pin: 0,
+            name: '',
+            address: '',
+            address2: '',
+            city: '',
+            state: '',
+            zip: '',
+            phone: '',
+            country: '',
+            payment_method: 'paypal',
+            ima: 'client',
+            company: '',
+            currency: 'USD',
+            locale: 'auto',
+            disable_cc: 0,
+            disable_email_notifications: 0,
             disable_server_notifications: 0,
             fraudrecord_score: '',
             maxmind_riskscore: null,
-            fraudrecord      : {},
-            maxmind          : {},
-            maxmind_score    : '',
+            fraudrecord: {},
+            maxmind: {},
+            maxmind_score: '',
             gstin: '',
-            group                     : '',
-            cc                        : '',
-            cc_auto                   : 0,
-            cc_exp                    : '',
-            cc_type                   : '',
-            cc_whitelist              : 0,
-            ccs                       : {},
-            ccs_added                 : 0,
-            disable_reinstall         : 0,
-            disable_reset             : 0,
-            email                     : '',
-            email_abuse               : '',
-            email_invoices            : '',
-            email_settings            : {},
-            extra                     : {},
-            picture                   : '',
+            group: '',
+            cc: '',
+            cc_auto: 0,
+            cc_exp: '',
+            cc_type: '',
+            cc_whitelist: 0,
+            ccs: {},
+            ccs_added: 0,
+            disable_reinstall: 0,
+            disable_reset: 0,
+            email: '',
+            email_abuse: '',
+            email_invoices: '',
+            email_settings: {},
+            extra: {},
+            picture: '',
             affiliate_dock_description: '',
-            affiliate_dock_title      : '',
-            affiliate_payment_method  : '',
-            affiliate_paypal          : '',
-            referrer_coupon           : '',
-            reseller_markup           : '',
-            facebook_id               : '',
-            facebook_url              : '',
-            github_id                 : '',
-            github_url                : '',
-            google_id                 : '',
-            google_url                : '',
-            ssh_key                   : '',
-            ssh_key_wrapped           : '',
-            api_key                   : '',
-            api_key_wrapped           : '',
-            '2fa_google_key'          : '',
-            '2fa_google_enabled'      : false,
-            '2fa_google'              : 1,
-            '2fa_google_split'        : '',
-            '2fa_google_qr'           : '',
+            affiliate_dock_title: '',
+            affiliate_payment_method: '',
+            affiliate_paypal: '',
+            referrer_coupon: '',
+            reseller_markup: '',
+            facebook_id: '',
+            facebook_url: '',
+            github_id: '',
+            github_url: '',
+            google_id: '',
+            google_url: '',
+            ssh_key: '',
+            ssh_key_wrapped: '',
+            api_key: '',
+            api_key_wrapped: '',
+            '2fa_google_key': '',
+            '2fa_google_enabled': false,
+            '2fa_google': 1,
+            '2fa_google_split': '',
+            '2fa_google_qr': '',
         },
         ip: '',
         oauthproviders: {},
@@ -286,9 +286,7 @@ export const useAccountStore = defineStore({
         enableLocales: true,
         enableCurrencies: false, // whether to show the currency dropdown on the contact info page
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

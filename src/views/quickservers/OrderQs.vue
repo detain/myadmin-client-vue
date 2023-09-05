@@ -11,7 +11,11 @@ const module: string = 'quickservers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
-siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Rapid Deploy Servers List'], ['/'+moduleLink(module)+'/order', 'Order Rapid Deploy Server']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Rapid Deploy Servers List'],
+    ['/' + moduleLink(module) + '/order', 'Order Rapid Deploy Server'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('orderform');
@@ -117,13 +121,13 @@ interface ServerDetails {
         hd: string;
         cores: number;
         cost: string;
-    }
+    };
 }
 
 interface Templates {
     [key: string]: {
         [key: number]: [string, string][];
-    }
+    };
 }
 
 interface Version {

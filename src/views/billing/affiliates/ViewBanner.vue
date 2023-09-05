@@ -6,7 +6,11 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - ViewBanner');
 siteStore.setTitle('Affiliate - ViewBanner');
-siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'ViewBanner']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/affiliate', 'Affiliate'],
+    ['', 'ViewBanner'],
+]);
 
 const url = ref('{$url}');
 const vpsUrl = ref('{$vps_url}');
@@ -49,12 +53,12 @@ function updateCode() {
 }
 
 function copyCode() {
-    const copyText = ((document.querySelector('#htmcode') as unknown) as HTMLInputElement).select();
+    const copyText = (document.querySelector('#htmcode') as unknown as HTMLInputElement).select();
     document.execCommand('copy');
     alert('HTML Code copied.');
 }
 
-onMounted(() => { });
+onMounted(() => {});
 </script>
 
 <template>

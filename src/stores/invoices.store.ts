@@ -3,15 +3,15 @@ import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface InvoiceRow {
-    id          : number;
-    module      : string;
-    date        : string;
-    service     : string;
-    description : string;
-    amount      : string;
-    paid        : string;
+    id: number;
+    module: string;
+    date: string;
+    service: string;
+    description: string;
+    amount: string;
+    paid: string;
     payment_type: string;
-    month       : string;
+    month: string;
     year: string;
     payment_description: string;
     paid_on: string;
@@ -26,39 +26,37 @@ interface InvoicesState {
     size: number;
     years_arr: {
         [key: number]: number;
-    }
-    months_arr    : string[];
+    };
+    months_arr: string[];
     textextraction: string;
-    table_header  : string[];
-    sizes         : string;
-    table_rows    : InvoiceRow[];
-    rows          : InvoiceRow[];
-    month         : number;
-    year          : number;
+    table_header: string[];
+    sizes: string;
+    table_rows: InvoiceRow[];
+    rows: InvoiceRow[];
+    month: number;
+    year: number;
 }
 
 export const useInvoicesStore = defineStore({
     id: 'invoices',
     state: (): InvoicesState => ({
-        custid    : 0,
+        custid: 0,
         months_arr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        years_arr : [],
-        month     : 0,
-        year      : 0,
-        sortcol       : 0,
-        sortdir       : 1,
+        years_arr: [],
+        month: 0,
+        year: 0,
+        sortcol: 0,
+        sortdir: 1,
         textextraction: '"complex"',
-        size          : 100,
-        sizes         : '10,25,50,75,100,200,500,750,1000',
+        size: 100,
+        sizes: '10,25,50,75,100,200,500,750,1000',
         table_header: [],
         table_rows: [],
         rows: [],
         loading: false,
         error: false,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();

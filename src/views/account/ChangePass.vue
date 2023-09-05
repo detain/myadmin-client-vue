@@ -8,7 +8,10 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Change Password');
 siteStore.setTitle('Change Password');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Change Password']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Change Password'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 const password = ref('');
 const newPassword = ref('');

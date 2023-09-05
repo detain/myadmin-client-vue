@@ -25,7 +25,8 @@ function placeOrder() {
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>.
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b
+                    >.
                 </p>
             </div>
         </div>
@@ -36,7 +37,7 @@ function placeOrder() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Whois Privacy</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">

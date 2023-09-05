@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
 import { useAuthStore, useSiteStore } from '@/stores';
-import ClientHome from "@/views/ClientHome.vue";
+import ClientHome from '@/views/ClientHome.vue';
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -49,7 +49,8 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
-                            <b>{{ user.account_lid }}</b></span>
+                            <b>{{ user.account_lid }}</b></span
+                        >
                     </div>
                 </div>
                 <nav class="mt-2">
@@ -71,7 +72,9 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                             <ol class="breadcrumb">
                                 <li v-for="(bData, index) in breadcrums" :key="index" :class="{ active: breadcrums.length - 1 === index }">
                                     <template v-if="index === breadcrums.length - 1">{{ bData[1] }}</template>
-                                    <template v-else><a :href="bData[0]">{{ bData[1] }}</a></template>
+                                    <template v-else
+                                        ><a :href="bData[0]">{{ bData[1] }}</a></template
+                                    >
                                 </li>
                             </ol>
                         </div>

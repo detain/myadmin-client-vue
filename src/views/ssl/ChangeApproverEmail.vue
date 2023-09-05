@@ -11,8 +11,8 @@ const module: string = 'ssl';
 const siteStore = useSiteStore();
 
 //const id = ref(''); // Replace with appropriate data or pass as props
-const approver_select = ref([]);        // Replace with appropriate data or pass as props
-const selectedApproverEmail = ref('');  // Stores the selected approver email
+const approver_select = ref([]); // Replace with appropriate data or pass as props
+const selectedApproverEmail = ref(''); // Stores the selected approver email
 
 interface SslServiceInfo {
     ssl_id: number;
@@ -44,7 +44,6 @@ interface SslServiceInfo {
     ssl_ca_root: string;
     ssl_ca_inter: string;
 }
-
 
 const service_info = ref<SslServiceInfo>({
     ssl_id: 0,
@@ -90,7 +89,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-envelope">&nbsp;</i>Change Approver Email</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

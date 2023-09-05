@@ -19,17 +19,18 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Account Settings']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Account Settings'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 async function logOutOauth(type: string) {
     try {
-        fetchWrapper
-            .get(`${baseUrl}/account/oauth/${type}/logout`)
-            .then((response) => {
-                console.log('unlinkOauth success');
-                console.log(response);
-            });
+        fetchWrapper.get(`${baseUrl}/account/oauth/${type}/logout`).then((response) => {
+            console.log('unlinkOauth success');
+            console.log(response);
+        });
     } catch (error: any) {
         console.log('unlinkOauth failed');
         console.log(error);
@@ -38,12 +39,10 @@ async function logOutOauth(type: string) {
 
 async function unlinkOauth(type: string) {
     try {
-        fetchWrapper
-            .delete(`${baseUrl}/account/oauth/${type}`)
-            .then((response) => {
-                console.log('unlinkOauth success');
-                console.log(response);
-            });
+        fetchWrapper.delete(`${baseUrl}/account/oauth/${type}`).then((response) => {
+            console.log('unlinkOauth success');
+            console.log(response);
+        });
     } catch (error: any) {
         console.log('unlinkOauth failed');
         console.log(error);

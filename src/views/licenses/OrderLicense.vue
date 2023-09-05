@@ -22,9 +22,18 @@ const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/'+moduleLink(module)+'/order', 'Select License Type']]);
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            ['/' + moduleLink(module), 'Licenses List'],
+            ['/' + moduleLink(module) + '/order', 'Select License Type'],
+        ]);
     } else {
-        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/'+moduleLink(module)+'/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            ['/' + moduleLink(module), 'Licenses List'],
+            ['/' + moduleLink(module) + '/order', 'Select License Type'],
+            ['/licenses/order/' + catTag.value, 'Order License'],
+        ]);
     }
 }
 interface GetLicensesRow {
@@ -78,7 +87,6 @@ const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5
 const packageCosts = ref({});
 const serviceTypes = ref<ServiceTypes>({});
 
-
 interface ServiceCategory {
     category_id: number;
     category_name: string;
@@ -113,17 +121,11 @@ const getServiceTypes = computed(() => {
     return types;
 });
 
-function updateCoupon() {
+function updateCoupon() {}
 
-}
+function updatePrice() {}
 
-function updatePrice() {
-
-}
-
-function checkAvailability() {
-
-}
+function checkAvailability() {}
 
 function orderLicenseType(type: string | number) {
     catTag.value = type as string;
@@ -152,7 +154,7 @@ function submitLicenseForm() {
                 comment: comment.value,
                 coupon: coupon.value,
                 ip: ip.value,
-                'package': packageId.value,
+                package: packageId.value,
             })
             .then((response) => {
                 Swal.close();
@@ -167,12 +169,9 @@ function submitLicenseForm() {
         console.log('caught error:');
         console.log(error);
     }
-
 }
 
-function editForm() {
-
-}
+function editForm() {}
 
 fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
     console.log('Response:');

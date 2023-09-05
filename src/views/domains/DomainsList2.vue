@@ -21,7 +21,6 @@ interface domainsRow {
     hostname?: string;
 }
 
-
 /*DataTable.use(DataTablesCore);*/
 
 const router = useRouter();
@@ -49,8 +48,8 @@ const options = {
 };
 
 origData.value = [
-    { domain_id: 376503, domain_hostname: 'hostingenuity.com', domain_expire_date: '2022-02-09 16:20:25', cost: 12.00, domain_status: 'active' },
-    { domain_id: 592337, domain_hostname: 'detain.dev', domain_expire_date: '2023-08-14 00:59:38', cost: 18.00, domain_status: 'active' },
+    { domain_id: 376503, domain_hostname: 'hostingenuity.com', domain_expire_date: '2022-02-09 16:20:25', cost: 12.0, domain_status: 'active' },
+    { domain_id: 592337, domain_hostname: 'detain.dev', domain_expire_date: '2023-08-14 00:59:38', cost: 18.0, domain_status: 'active' },
 ];
 
 const filteredData = computed(() => {
@@ -70,9 +69,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);

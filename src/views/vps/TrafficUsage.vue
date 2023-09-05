@@ -9,37 +9,41 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
 
 const goBackLink = computed(() => {
     return module.value === 'vps' ? `view_${module.value}` : 'view_qs';
 });
 onMounted(() => {
-    const todayGraph = ((document.getElementById('todayGraph') as unknown) as HTMLCanvasElement);
-    const hourGraph = ((document.getElementById('hourGraph') as unknown) as HTMLCanvasElement);
-    const monthGraph = ((document.getElementById('monthGraph') as unknown) as HTMLCanvasElement);
-      // Initialize and configure the charts
+    const todayGraph = document.getElementById('todayGraph') as unknown as HTMLCanvasElement;
+    const hourGraph = document.getElementById('hourGraph') as unknown as HTMLCanvasElement;
+    const monthGraph = document.getElementById('monthGraph') as unknown as HTMLCanvasElement;
+    // Initialize and configure the charts
     const todayChart = new Chart(todayGraph.getContext('2d') as CanvasRenderingContext2D, {
         type: 'line',
         data: {
             labels: [],
-            datasets: []
-        }
+            datasets: [],
+        },
     });
     const hourChart = new Chart(hourGraph.getContext('2d') as CanvasRenderingContext2D, {
         type: 'line',
         data: {
             labels: [],
-            datasets: []
-        }
+            datasets: [],
+        },
     });
     const monthChart = new Chart(monthGraph.getContext('2d') as CanvasRenderingContext2D, {
         type: 'line',
         data: {
             labels: [],
-            datasets: []
-        }
+            datasets: [],
+        },
     });
 
     // Rest of the chart setup code
@@ -58,7 +62,7 @@ onMounted(() => {
             <div class="p-1">
                 <h3 class="card-title py-2"><i class="fa fa-tachometer-alt"></i> &nbsp;Bandwidth / Traffic Usage</h3>
                 <div class="card-tools text-right">
-                    <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                 </div>
             </div>
         </div>
@@ -189,5 +193,4 @@ onMounted(() => {
     </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -11,9 +11,7 @@ const success = ref<string | boolean>(false);
 const failed = ref<string | boolean>(false);
 const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
 
-function formatDate(date: string) {
-
-}
+function formatDate(date: string) {}
 
 /*
 function toggleToggle() {
@@ -142,7 +140,7 @@ function bs_input_file() {
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label">Is SSH root restricted ?</label>
-                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm" @click.prevent="$('.ssh-toggle').toggle();">Click here</button></div>
+                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm" @click.prevent="$('.ssh-toggle').toggle()">Click here</button></div>
                             </div>
                             <div class="form-group row ssh-toggle">
                                 <label for="sudo_user" class="col-sm-4 col-form-label">Sudo User</label>
@@ -264,7 +262,9 @@ function bs_input_file() {
 }
 
 .info-box {
-    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    box-shadow:
+        0 0 1px rgb(0 0 0 / 13%),
+        0 1px 3px rgb(0 0 0 / 20%);
     border-radius: 0.25rem;
     background-color: #fff;
     display: -ms-flexbox;

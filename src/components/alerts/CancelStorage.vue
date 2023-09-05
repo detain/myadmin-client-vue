@@ -15,15 +15,14 @@ onMounted(() => {
       <p>Are you sure want to cancel your storage <span class="text-2lg">${username.value}</span>?</p>
     `,
         preConfirm: () => {
-            ((document.getElementById('cancelForm') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('cancelForm') as unknown as HTMLFormElement).submit();
         },
     });
 });
 </script>
 
 <template>
-    <form id="cancelForm" :action="`view_backup?id=${id}&link=cancel`" method="POST">
-    </form>
+    <form id="cancelForm" :action="`view_backup?id=${id}&link=cancel`" method="POST"></form>
 </template>
 
 <style scoped></style>

@@ -3,18 +3,18 @@ import { fetchWrapper } from '@/helpers';
 import { useAuthStore, useSiteStore } from '@/stores';
 
 interface UserRow {
-    id         ?: number;
-    firstName  ?: string;
-    lastName   ?: string;
-    username   ?: string;
-    isDeleting ?: boolean;
+    id?: number;
+    firstName?: string;
+    lastName?: string;
+    username?: string;
+    isDeleting?: boolean;
 }
 
 interface UserState {
     loading?: boolean;
-    error  ?: string | boolean;
-    users   : UserRow[];
-    user    : UserRow;
+    error?: string | boolean;
+    users: UserRow[];
+    user: UserRow;
 }
 
 export const useUsersStore = defineStore({
@@ -25,9 +25,7 @@ export const useUsersStore = defineStore({
         users: [],
         user: {},
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

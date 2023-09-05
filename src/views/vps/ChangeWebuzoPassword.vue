@@ -9,13 +9,15 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 
-const module = computed(() => { return props.module; });
+const module = computed(() => {
+    return props.module;
+});
 //const id = ref('');
 const goBackLink = ref('');
 const hostname = ref('');
 const ip = ref('');
 const ima = ref('');
-onMounted(() => { });
+onMounted(() => {});
 function submitForm() {
     // Perform logic for form submission
 }
@@ -29,7 +31,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-key">&nbsp;</i>Change Webuzo Admin Password</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

@@ -115,15 +115,18 @@ interface OrderDetails {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'SSL Certificates']]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View SSL Certificate ' + id);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module), 'SSL Certificates'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View SSL Certificate ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View SSL Certificate ' + id);
         siteStore.setTitle('View SSL Certificate ' + id);
     } else {
         siteStore.setPageHeading('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -176,7 +179,9 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer">Status is: <b>{{ serviceInfo.ssl_status }}</b></span>
+                <span class="small-box-footer"
+                    >Status is: <b>{{ serviceInfo.ssl_status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-3">
@@ -190,7 +195,9 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="material-icons" style="user-select: none">policy</i>
                 </div>
-                <span class="small-box-footer">Order Status: <b>{{ serviceInfo.ssl_status }}</b></span>
+                <span class="small-box-footer"
+                    >Order Status: <b>{{ serviceInfo.ssl_status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-3">
@@ -202,7 +209,9 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="material-icons" style="user-select: none">admin_panel_settings</i>
                 </div>
-                <span class="small-box-footer">Cert Status: <b>{{ serviceInfo.ssl_order_id }}</b></span>
+                <span class="small-box-footer"
+                    >Cert Status: <b>{{ serviceInfo.ssl_order_id }}</b></span
+                >
             </div>
         </div>
     </div>
@@ -226,8 +235,9 @@ sslStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

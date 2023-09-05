@@ -7,13 +7,15 @@ import $ from 'jquery';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Banners');
 siteStore.setTitle('Affiliate - Banners');
-siteStore.setBreadcrums([['/home', 'Home'], ['/affiliate', 'Affiliate'], ['', 'Banners']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/affiliate', 'Affiliate'],
+    ['', 'Banners'],
+]);
 const banners = ref<Banner[]>([]);
 const usefulLinks = ref<UsefulLink[]>([]);
 
-function copyLink(index: any) {
-
-}
+function copyLink(index: any) {}
 
 interface AffiliateBanners {
     banners: Banner[];
@@ -28,10 +30,9 @@ interface Banner {
 }
 
 interface UsefulLink {
-    page: string
+    page: string;
     link: string;
 }
-
 
 onMounted(() => {
     //$('#freetile').freetile({});

@@ -4,7 +4,11 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order SSL');
 siteStore.setTitle('Order SSL');
-siteStore.setBreadcrums([['/home', 'Home'], ['/ssl', 'SSL List'], ['/ssl/order', 'Order SSL']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/ssl', 'SSL List'],
+    ['/ssl/order', 'Order SSL'],
+]);
 </script>
 
 <template>

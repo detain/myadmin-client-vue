@@ -6,7 +6,7 @@ import { MainMenu, Alert } from '@/components';
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 
-onMounted(function () { });
+onMounted(function () {});
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -43,7 +43,7 @@ let AdminLTESidebarTweak = {
         EnableRemember: true,
         NoTransitionAfterReload: false,
         //Removes the transition after page reload.
-    }
+    },
 };
 $('.collapse_menu').on('click', function () {
     if (AdminLTESidebarTweak.options.EnableRemember) {
@@ -115,7 +115,8 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
-                            <b>{{ user?.account_lid }}</b></span>
+                            <b>{{ user?.account_lid }}</b></span
+                        >
                     </div>
                 </div>
                 <nav class="mt-2">
@@ -137,7 +138,9 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                             <ol class="breadcrumb">
                                 <li v-for="(bData, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ active: index === breadcrums.length - 1 }">
                                     <template v-if="index === breadcrums.length - 1">{{ bData[1] }}</template>
-                                    <template v-else><router-link :to="bData[0]">{{ bData[1] }}</router-link></template>
+                                    <template v-else
+                                        ><router-link :to="bData[0]">{{ bData[1] }}</router-link></template
+                                    >
                                 </li>
                             </ol>
                         </div>

@@ -10,7 +10,7 @@ interface ErrorMessage {
 }
 
 interface ExtendedPinia extends Pinia {
-  _s: Map<string, Store>;
+    _s: Map<string, Store>;
 }
 
 export const useAuthStore = defineStore({
@@ -38,9 +38,7 @@ export const useAuthStore = defineStore({
         user: JSON.parse(localStorage.getItem('user') || '{}'),
         returnUrl: null as string | null,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         loggedIn() {
             if (this.sessionId != null || this.apiKey != null) {
@@ -76,7 +74,7 @@ export const useAuthStore = defineStore({
                 this.user.name = accountStore.data.name;
                 localStorage.setItem('user', JSON.stringify(this.user));
                 // redirect to previous url or default to home page
-                console.log("Trying to load a different URL");
+                console.log('Trying to load a different URL');
                 router.push(this.returnUrl || '/');
             });
         },

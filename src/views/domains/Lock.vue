@@ -17,7 +17,7 @@ onMounted(() => {
       <p>Do you want to <span class="text-2lg">${domain_lock_status.value === 'Active' ? 'Inactivate' : 'Activate'}</span> domain lock?</p>
     `,
         preConfirm: () => {
-            ((document.getElementById('lockForm') as unknown) as HTMLFormElement).submit();
+            (document.getElementById('lockForm') as unknown as HTMLFormElement).submit();
         },
     });
 });

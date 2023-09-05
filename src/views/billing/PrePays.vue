@@ -9,7 +9,10 @@ const prepayStore = usePrePayStore();
 const { loading, error, custid, ima, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'PrePays']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'PrePays'],
+]);
 
 function addPrepayUpdates(event: Event) {
     const module = (event.target as HTMLInputElement).value;

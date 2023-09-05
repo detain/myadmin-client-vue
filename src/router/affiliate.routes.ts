@@ -1,17 +1,17 @@
-const Affiliate = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Affiliate.vue')
-const ViewBanners = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/ViewBanners.vue')
-const DockSetup = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/DockSetup.vue')
-const Faq = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Faq.vue')
-const Layout = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Layout.vue')
-const PaymentSetup = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/PaymentSetup.vue')
-const RichReport = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/RichReport.vue')
-const SalesGraph = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/SalesGraph.vue')
-const Signups = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Signups.vue')
-const Status = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Status.vue')
-const Tos = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Tos.vue')
-const TrafficGraph = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/TrafficGraph.vue')
-const ViewBanner = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/ViewBanner.vue')
-const WebTraffic = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/WebTraffic.vue')
+const Affiliate = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Affiliate.vue');
+const ViewBanners = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/ViewBanners.vue');
+const DockSetup = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/DockSetup.vue');
+const Faq = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Faq.vue');
+const Layout = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Layout.vue');
+const PaymentSetup = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/PaymentSetup.vue');
+const RichReport = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/RichReport.vue');
+const SalesGraph = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/SalesGraph.vue');
+const Signups = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Signups.vue');
+const Status = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Status.vue');
+const Tos = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/Tos.vue');
+const TrafficGraph = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/TrafficGraph.vue');
+const ViewBanner = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/ViewBanner.vue');
+const WebTraffic = () => import(/* webpackChunkName: "affiliates" */ '@/views/billing/affiliates/WebTraffic.vue');
 
 export default {
     path: '/affiliate',

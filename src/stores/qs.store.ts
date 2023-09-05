@@ -8,7 +8,7 @@ interface QsInfo {
     qs_custid: number;
     qs_server: number;
     qs_ip: string;
-    qs_ipv6: string | null,
+    qs_ipv6: string | null;
     qs_vzid: string;
     qs_currency: string;
     qs_type: number;
@@ -22,14 +22,13 @@ interface QsInfo {
     qs_comment: string;
     qs_slices: string;
     qs_vnc: string;
-    qs_vnc_port: string | null,
+    qs_vnc_port: string | null;
     qs_rootpass: string;
     qs_mac: string;
     qs_os: string;
     qs_version: string;
     qs_location: string;
-    qs_platform: string | null,
-
+    qs_platform: string | null;
 }
 
 interface QsServiceMaster {
@@ -64,10 +63,9 @@ interface QsServiceMaster {
     qs_bytes_sec_out: number;
     qs_packets_sec_in: number;
     qs_packets_sec_out: number;
-    qs_last_install_time: string | null,
-    qs_partitions: string | null,
+    qs_last_install_time: string | null;
+    qs_partitions: string | null;
     qs_cpu_flags: string;
-
 }
 
 interface QsState {
@@ -80,7 +78,7 @@ interface QsState {
     pkg: string;
     clientLinks: ClientLink[];
     billingDetails: BillingDetails;
-    custCurrency: string
+    custCurrency: string;
     custCurrencySymbol: string;
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
@@ -144,7 +142,7 @@ export const useQsStore = defineStore({
             service_currency_symbol: '$',
             service_coupon: '',
             service_cost_info: '0.00',
-            service_module: 'quickservers'
+            service_module: 'quickservers',
         },
         custCurrency: 'USD',
         custCurrencySymbol: '$',
@@ -212,9 +210,7 @@ export const useQsStore = defineStore({
             spice_information: '',
         },
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

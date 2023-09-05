@@ -14,7 +14,10 @@ const module: string = 'mail';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Mail Services List');
 siteStore.setTitle('Mail Services List');
-siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Mail']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'Mail'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface mailRow {
@@ -60,9 +63,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
@@ -167,12 +168,12 @@ loadMail();
                                             <td>{{ row.mail_id }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.mail_id">{{ row.mail_username }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id">{{ row.mail_username }}</router-link>
                                             </td>
                                             <td>{{ row.mail_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

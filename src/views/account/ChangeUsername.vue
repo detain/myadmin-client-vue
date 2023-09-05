@@ -7,7 +7,10 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Change Username');
 siteStore.setTitle('Change Username');
-siteStore.setBreadcrums([['/home', 'Home'], ['', 'Change Username']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Change Username'],
+]);
 </script>
 
 <template>

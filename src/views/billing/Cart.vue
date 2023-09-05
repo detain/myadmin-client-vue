@@ -10,31 +10,34 @@ const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Cart');
 siteStore.setTitle('Cart');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '', 'Cart' ]]);
-const baseUrl                                   = siteStore.getBaseUrl();
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['', 'Cart'],
+]);
+const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
-const paymentMethod                             = ref('paypal');
-const invoices                                  = ref<string[]>([]);
-const modules                                   = ref<Modules>({});
-const editCcIdx                                 = ref(0);
-const selectedCc                                = ref('');
-const r_paymentMethod                           = ref('');
-const cc_detail                                 = ref({});
-const country_select                            = ref('');
-const invrows                                   = ref<InvRow[]>([]);
-const currency                                  = ref('USD');
-const currencyArr                               = ref<CurrencyArr>({});
-const invoiceDays                               = ref(0);
-const order_msg                                 = ref(false);
-const total_display                             = ref(0.0);
-const displayPrepay                             = ref(true);
-const total_invoices                            = ref(0);
-const paymentMethodsData                        = ref<PaymentMethodsData>({});
-const current_cc_id                             = ref(0);
-const triggerClick                              = ref(null);
-const isChecked                                 = ref(false);
-const modulesCounts                             = ref<ModuleCounts>({});
-const countries                                 = ref({});
+const paymentMethod = ref('paypal');
+const invoices = ref<string[]>([]);
+const modules = ref<Modules>({});
+const editCcIdx = ref(0);
+const selectedCc = ref('');
+const r_paymentMethod = ref('');
+const cc_detail = ref({});
+const country_select = ref('');
+const invrows = ref<InvRow[]>([]);
+const currency = ref('USD');
+const currencyArr = ref<CurrencyArr>({});
+const invoiceDays = ref(0);
+const order_msg = ref(false);
+const total_display = ref(0.0);
+const displayPrepay = ref(true);
+const total_invoices = ref(0);
+const paymentMethodsData = ref<PaymentMethodsData>({});
+const current_cc_id = ref(0);
+const triggerClick = ref(null);
+const isChecked = ref(false);
+const modulesCounts = ref<ModuleCounts>({});
+const countries = ref({});
 const st = ref<null | string>(null);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
@@ -79,11 +82,11 @@ interface CartResponse {
     company: string;
     paymentMethods: {
         [key: string]: string;
-    }
+    };
     paymentMethodsData: PaymentMethodsData;
     paymentMethodsType: {
         [key: string]: string;
-    }
+    };
     prepay_invoices: string;
     displayPrepay: string;
     prepay: number;
@@ -122,11 +125,11 @@ interface CurrencyArr {
 interface PaymentMethodsData {
     [key: string]: {
         link_class: string;
-        link_style: string
+        link_style: string;
         text: string;
         image: string;
         image_style: string;
-    }
+    };
 }
 
 interface ModuleSettings {
@@ -151,44 +154,44 @@ interface ModuleSettings {
 }
 
 interface InvRow {
-    collapse                    : number;
-    currency_display            : string;
-    date                        : string;
-    days_old                    : number;
-    invoices_amount             : number;
-    invoices_currency           : string;
-    invoices_custid             : number;
-    invoices_date               : string;
-    invoices_deleted            : number;
-    invoices_description        : string;
-    invoices_due_date           : string;
-    invoices_extra              : number;
-    invoices_group              : number;
-    invoices_id                 : number;
-    invoices_module             : string;
-    invoices_paid               : number;
-    invoices_service            : number;
-    invoices_type               : number;
-    repeat_invoices_cost        : number;
-    repeat_invoices_currency    : string;
-    repeat_invoices_custid      : number;
-    repeat_invoices_date        : string;
-    repeat_invoices_deleted     : number;
-    repeat_invoices_description : string;
-    repeat_invoices_frequency   : number;
-    repeat_invoices_group       : number;
-    repeat_invoices_id          : number;
-    repeat_invoices_last_date   : string;
-    repeat_invoices_module      : string;
-    repeat_invoices_next_date   : string;
-    repeat_invoices_service     : number;
-    repeat_invoices_type        : number;
-    service                     : string;
-    service_invoice             : boolean;
-    service_label               : string;
-    service_line                : number;
-    service_status              : string;
-    prepay_invoice             ?: number;
+    collapse: number;
+    currency_display: string;
+    date: string;
+    days_old: number;
+    invoices_amount: number;
+    invoices_currency: string;
+    invoices_custid: number;
+    invoices_date: string;
+    invoices_deleted: number;
+    invoices_description: string;
+    invoices_due_date: string;
+    invoices_extra: number;
+    invoices_group: number;
+    invoices_id: number;
+    invoices_module: string;
+    invoices_paid: number;
+    invoices_service: number;
+    invoices_type: number;
+    repeat_invoices_cost: number;
+    repeat_invoices_currency: string;
+    repeat_invoices_custid: number;
+    repeat_invoices_date: string;
+    repeat_invoices_deleted: number;
+    repeat_invoices_description: string;
+    repeat_invoices_frequency: number;
+    repeat_invoices_group: number;
+    repeat_invoices_id: number;
+    repeat_invoices_last_date: string;
+    repeat_invoices_module: string;
+    repeat_invoices_next_date: string;
+    repeat_invoices_service: number;
+    repeat_invoices_type: number;
+    service: string;
+    service_invoice: boolean;
+    service_label: string;
+    service_line: number;
+    service_status: string;
+    prepay_invoice?: number;
 }
 
 interface CCRow {
@@ -367,8 +370,8 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-  const verifyDisplay = $('#unver_' + cc_id).attr('data-step');
-  if (typeof verifyDisplay === 'undefined') {
+    const verifyDisplay = $('#unver_' + cc_id).attr('data-step');
+    if (typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verifyDisplay === 'step1') {
         $('#VerifyFormStep1').trigger('click');
@@ -392,16 +395,16 @@ function updatePaymentMethod(cc_val: string, cc_auto = 0) {
 
 function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
-  let caretPosition = e.target.selectionStart;
-  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  const parts = [];
-  let i, len;
-  for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
+    let caretPosition = e.target.selectionStart;
+    const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+    const parts = [];
+    let i, len;
+    for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-      const c = e.target.value[i];
-      if (c < '0' || c > '9') {
+        const c = e.target.value[i];
+        if (c < '0' || c > '9') {
             caretPosition--;
         }
     }
@@ -412,11 +415,11 @@ function formatCardNum(e: any) {
 
 function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
-  let caretPosition = e.target.selectionStart;
-  const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-  const parts = [];
-  let i;
-  for (i = 0; i < 2; i += 2) {
+    let caretPosition = e.target.selectionStart;
+    const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
+    const parts = [];
+    let i;
+    for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
     }
     if (sanitizedValue.length >= 2) {
@@ -425,8 +428,8 @@ function formatExpDate(e: any) {
         }
     }
     for (i = caretPosition - 1; i >= 0; i--) {
-      const c = e.target.value[i];
-      if (c < '0' || c > '9') {
+        const c = e.target.value[i];
+        if (c < '0' || c > '9') {
             caretPosition--;
         }
     }
@@ -435,40 +438,22 @@ function formatExpDate(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function toggleCheckBox() {
+function toggleCheckBox() {}
 
-}
+function checkClass(idx: string) {}
 
-function checkClass(idx: string) {
+function delete_invoice(invId: number) {}
 
-}
+function toggleCheckbox() {}
+function updateInfoSubmit() {}
 
-function delete_invoice(invId: number) {
+function checkAll() {}
 
-}
+function uncheckAll() {}
 
-function toggleCheckbox() {
+function checkRecent() {}
 
-}
-function updateInfoSubmit() {
-
-}
-
-function checkAll() {
-
-}
-
-function uncheckAll() {
-
-}
-
-function checkRecent() {
-
-}
-
-function checkActive() {
-
-}
+function checkActive() {}
 
 function onCardNumInput(e: any) {
     formatCardNum(e);
@@ -478,9 +463,7 @@ function onExpDateInput(e: any) {
     formatExpDate(e);
 }
 
-function submitForm(value: any) {
-
-}
+function submitForm(value: any) {}
 
 try {
     fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
@@ -625,8 +608,8 @@ accountStore.load();
                             <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                 <td>
                                     <div class="icheck-success d-inline">
-                                        <input :id="'check'+invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
-                                        <label :for="'check'+invrow.invoices_id"> </label>
+                                        <input :id="'check' + invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
+                                        <label :for="'check' + invrow.invoices_id"> </label>
                                     </div>
                                 </td>
                                 <td>
@@ -676,7 +659,7 @@ accountStore.load();
                                 <span id="payments-section">
                                     <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
                                         <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt=""  :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
@@ -881,7 +864,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;" disabled>
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -955,7 +938,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right;" disabled>
+                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>

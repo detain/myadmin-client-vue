@@ -14,7 +14,10 @@ const module: string = 'ssl';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
-siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'SSL']]);
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/' + moduleLink(module), 'SSL'],
+]);
 const baseUrl = siteStore.getBaseUrl();
 
 /*DataTable.use(DataTablesCore);*/
@@ -61,9 +64,7 @@ onMounted(function () {
     dt = table.value.dt;
 });
 
-function crud_print(): void {
-
-}
+function crud_print(): void {}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
@@ -167,13 +168,13 @@ loadSsl();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.ssl_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.ssl_company }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.ssl_status }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
