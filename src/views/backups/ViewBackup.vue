@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useBackupStore, useSiteStore } from '@/stores';
@@ -15,8 +15,8 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Backup');
 siteStore.setTitle('View Backup');
-siteStore.setBreadcrums([['/home', 'Home'], ['/backups', 'Storage']]);
-siteStore.addBreadcrum('/backups/' + id, 'View Backup ' + id);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Storage']]);
+siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
@@ -111,7 +111,7 @@ const billingStatusClass = computed(() => {
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/backups/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/backups/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>

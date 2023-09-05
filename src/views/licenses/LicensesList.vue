@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -13,7 +13,7 @@ import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Licensing List');
 siteStore.setTitle('Licensing List');
-siteStore.setBreadcrums([['/home', 'Home'],  ['/license', 'Licenses']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses']]);
 const baseUrl = siteStore.getBaseUrl();
 
 interface licensesRow {
@@ -94,7 +94,7 @@ loadLicenses();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" to="licenses/order" title="Order License Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/'+moduleLink(module)+'/order'" title="Order License Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -171,10 +171,10 @@ loadLicenses();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.license_id }}</td>
                                             <td>
-                                                <router-link :to="'licenses/' + row.license_id">{{ row.license_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.license_id">{{ row.license_hostname }}</router-link>
                                             </td>
                                             <td>
-                                                <router-link :to="'licenses/' + row.license_id">{{ row.license_ip }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.license_id">{{ row.license_ip }}</router-link>
                                             </td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.cost }}</td>
@@ -182,7 +182,7 @@ loadLicenses();
                                             <td>{{ row.invoices_paid }}</td>
                                             <td>{{ row.invoices_date }}</td>
                                             <td>
-                                                <router-link :to="'licenses/' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

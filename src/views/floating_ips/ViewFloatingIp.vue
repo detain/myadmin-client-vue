@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore, useSiteStore } from '@/stores';
@@ -16,8 +16,8 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
-siteStore.setBreadcrums([['/home', 'Home'], ['/floating_ip', 'Floating IPs']]);
-siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IPs ' + id);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Floating IPs']]);
+siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Floating IPs ' + id);
 
 const floatingIpStore = useFloatingIpStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
@@ -32,15 +32,15 @@ function closeModal() {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/floating_ip', 'Floating IPs']]);
-    siteStore.addBreadcrum('/floating_ip/' + id, 'View Floating IP ' + id);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Floating IPs']]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Floating IP ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Floating IP ' + id);
         siteStore.setTitle('View Floating IP ' + id);
     } else {
         siteStore.setPageHeading('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Floating IP ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/floating_ip/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -143,7 +143,7 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/floating_ip/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/floating_ips/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                         </router-link>
                     </div>

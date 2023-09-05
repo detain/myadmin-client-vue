@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
@@ -12,13 +12,6 @@ const module = computed(() => { return props.module; });
 const vpsScreenshot = ref('');
 const setupVncLink = ref('');
 const novncLink = ref('');
-const moduleLink = computed(() => {
-    if (module.value === 'vps') {
-        return `view_${module.value}`;
-    } else {
-        return 'view_qs';
-    }
-});
 </script>
 
 <template>
@@ -29,7 +22,7 @@ const moduleLink = computed(() => {
                     <div class="p-1">
                         <h3 class="card-title py-2">Microsoft Remote Desktop Connection</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/vps/' + props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/vps/' + props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

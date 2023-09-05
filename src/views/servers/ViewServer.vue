@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useServerStore, useSiteStore } from '@/stores';
@@ -19,15 +19,15 @@ const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clie
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/servers', 'Servers']]);
-    siteStore.addBreadcrum('/servers/' + id, 'View Server ' + id);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Servers']]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Server ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Server ' + id);
         siteStore.setTitle('View Server ' + id);
     } else {
         siteStore.setPageHeading('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/servers/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -188,7 +188,7 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/servers/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/servers/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>

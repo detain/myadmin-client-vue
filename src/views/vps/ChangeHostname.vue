@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
@@ -37,7 +37,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom">manage_accounts</i>Change VPS Hostname</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>

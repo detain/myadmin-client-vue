@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
@@ -84,7 +84,7 @@ function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) 
                 <i class="m-0"><!-- <svg style="width: 40px; height: 40px;"><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-dns"></use></svg> --></i>Domain Name Servers
             </h3>
             <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link :to="'/'+moduleLink(module)+'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">

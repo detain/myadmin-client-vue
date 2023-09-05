@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
@@ -9,7 +9,7 @@ import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, Sug
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
 siteStore.setTitle('Order Domain');
-siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains List'], ['/domains/order', 'Order Domain']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/domains/order', 'Order Domain']]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
@@ -39,7 +39,7 @@ const regType = computed(() => {
 const display = ref('step1');
 
 function updateStep() {
-    siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains List'], ['/domains/order', 'Order Domain']]);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains List'], ['/domains/order', 'Order Domain']]);
     if (typeof domain.value == 'undefined') {
         display.value = 'step1';
     } else {
@@ -176,7 +176,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult?.domain }}</b> is available! you can register it for {{ domainResult?.new }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
                             </div>
                         </template>
                         <template v-else-if="domainResult?.status === 'taken'">
@@ -184,7 +184,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult?.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult?.transfer }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
                             </div>
                         </template>
                     </template>
@@ -213,13 +213,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="suggestion.status === 'available'">
-                                                <router-link :to="'/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="suggestion.status === 'taken'">
-                                                <router-link :to="'/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -247,13 +247,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="lookup.status === 'available'">
-                                                <router-link :to="'/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="lookup.status === 'taken'">
-                                                <router-link :to="'/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -280,7 +280,7 @@ updateStep();
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-address-card">&nbsp;</i>Contact Information</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

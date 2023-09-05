@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
@@ -78,7 +78,7 @@ interface IpDetails {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-map-marker-alt"></i> Additional IP Addon for your VPS</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/vps/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>

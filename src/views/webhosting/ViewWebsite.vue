@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useWebsiteStore, useSiteStore } from '@/stores';
@@ -25,18 +25,18 @@ function isEmpty(table: any) {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/websites', 'Website']]);
-    siteStore.addBreadcrum('/websites/' + id, 'View Website ' + id);
+    siteStore.setBreadcrums([['/home', 'Home'], ['/'+moduleLink(module), 'Website']]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Website ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Website ' + id);
         siteStore.setTitle('View Website ' + id);
     } else {
         siteStore.setPageHeading('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/websites/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             try {
-                fetchWrapper.get(baseUrl + '/websites/' + id + '/login').then((response) => {
+                fetchWrapper.get(baseUrl + '/'+moduleLink(module)+'/' + id + '/login').then((response) => {
                     console.log('response:');
                     console.log(response);
                     window.location = response.location;
@@ -177,7 +177,7 @@ loadLink(route.params.link as string);
                                 </template>
                                 <tr v-if="clientLinks[3]">
                                     <td>Automatic Login</td>
-                                    <td><router-link :to="'/websites/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
+                                    <td><router-link :to="'/'+moduleLink(module)+'/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
                                 </tr>
                             </table>
                         </div>
@@ -256,7 +256,7 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/websites/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>

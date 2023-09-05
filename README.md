@@ -49,20 +49,12 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 
 ## Development
 
-### Updated OpenAPI API
-
-While building out this I am creating an OpenAPI based API and utilizing its calls in the client.
-
-### Generating OpenAPI Schema Objects with ChatGPT
-
-Generate an OpenAPI yaml schema object named 'ServerOrder' from the sample JSON data below.
-All nested objects should be thier own Schema with a name prefixed by 'ServerOrder' followed by the field or object name generated from thier parent elemnts followed by the objects own name.
-Everything should have examples set using the included data, a description set based on the field name, be marked as required.
-Do not simplify or skip any of the output. Show everything (the full output).
-
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
+  * [ ] fix links on home to proper module links
+  * [ ] change style scoped to style for app??
+  * [ ] move type definitions into /types
   * [ ] finish /account/*
   * view service pages
     * [ ] links and form handling
@@ -81,6 +73,11 @@ Do not simplify or skip any of the output. Show everything (the full output).
       * [ ] pagination
       * [ ] print/export
 * **1.0-stable** MileStone
+  * [ ] setup github actions and hooks for automated testing
+  * [ ] make sure affiliate tracking still works
+  * [ ] analytics
+  * [ ] get various libs loading with imports insteaed of directly called with scritpts and link tags
+  * [ ] improve webpacking
   * [ ] minimize api fields in requests/responses and filter them for security
   * [ ] api finalized
 * Future Tasks

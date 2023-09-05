@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useDomainStore, useSiteStore } from '@/stores';
@@ -19,15 +19,15 @@ const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/domains', 'Domains']]);
-    siteStore.addBreadcrum('/domains/' + id, 'View Domain ' + id);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Domains']]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Domain ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View Domain ' + id);
         siteStore.setTitle('View Domain ' + id);
     } else {
         siteStore.setPageHeading('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('Domain ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/domains/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -98,7 +98,7 @@ console.log(link.value);
                 </div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/domains/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
+                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/'+moduleLink(module)+'/domains/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
                 </span>
             </div>
         </div>
@@ -131,7 +131,7 @@ console.log(link.value);
                     </div>
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/domains/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/domains/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
@@ -146,7 +146,7 @@ console.log(link.value);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/domains/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/domains/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ console.log(link.value);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/domains/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/domains/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>

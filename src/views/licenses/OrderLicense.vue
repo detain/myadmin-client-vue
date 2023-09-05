@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
@@ -21,9 +21,9 @@ const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
     if (step.value == 'license_types') {
-        siteStore.setBreadcrums([['/home', 'Home'], ['/licenses', 'Licenses List'], ['/licenses/order', 'Select License Type']]);
+        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/licenses/order', 'Select License Type']]);
     } else {
-        siteStore.setBreadcrums([['/home', 'Home'], ['/licenses', 'Licenses List'], ['/licenses/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
+        siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Licenses List'], ['/licenses/order', 'Select License Type'], ['/licenses/order/' + catTag.value, 'Order License']]);
     }
 }
 interface GetLicensesRow {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
@@ -31,7 +31,7 @@ fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) 
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-atlas">&nbsp;</i>Reverse DNS</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/vps/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp; </router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/vps/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp; </router-link>
                         </div>
                     </div>
                 </div>

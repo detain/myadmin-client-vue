@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -73,7 +73,7 @@ function crud_export(event: any): void {
 
 const loadWebsites = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/websites');
+        const response = await fetchWrapper.get(baseUrl + '/'+moduleLink(module));
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -96,7 +96,7 @@ loadWebsites();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" to="websites/order" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/order'" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -171,14 +171,14 @@ loadWebsites();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.website_id }}</td>
                                             <td>
-                                                <router-link :to="'websites/' + row.website_id">{{ row.website_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.website_id">{{ row.website_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>{{ row.website_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.website_comment }}</td>
                                             <td>
-                                                <router-link :to="'websites/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

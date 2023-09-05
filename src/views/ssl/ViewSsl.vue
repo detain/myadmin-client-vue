@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
@@ -114,15 +114,15 @@ interface OrderDetails {
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([['/home', 'Home'], ['/ssl', 'SSL Certificates']]);
-    siteStore.addBreadcrum('/ssl/' + id, 'View SSL Certificate ' + id);
+    siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'SSL Certificates']]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View SSL Certificate ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View SSL Certificate ' + id);
         siteStore.setTitle('View SSL Certificate ' + id);
     } else {
         siteStore.setPageHeading('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/ssl/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'login') {
             // do something here
         }
@@ -225,7 +225,7 @@ sslStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/ssl/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/ssl/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>

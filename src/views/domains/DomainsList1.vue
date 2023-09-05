@@ -158,13 +158,13 @@ function setStatusLimit(event: Event) {
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.domain_id }}</td>
                                             <td>
-                                                <router-link :to="'domains/' + row.domain_id">{{ row.domain_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.domain_id">{{ row.domain_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.domain_expire_date }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>{{ row.domain_status }}</td>
                                             <td>
-                                                <router-link :to="'domains/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

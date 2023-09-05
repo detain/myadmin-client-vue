@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useQsStore, useSiteStore } from '@/stores';
@@ -15,8 +15,8 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => { return modules.value[module]; });
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
-siteStore.setBreadcrums([[ '/home', 'Home'],[ '/qs/', 'Rapid Deploy Servers' ]]);
-siteStore.addBreadcrum('/qs/' + id, 'View Qs ' + id);
+siteStore.setBreadcrums([[ '/home', 'Home'],[ '/'+moduleLink(module)+'/', 'Rapid Deploy Servers' ]]);
+siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
@@ -201,9 +201,9 @@ function closeModal() {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/qs/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/qs/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +339,7 @@ function closeModal() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/qs/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/qs/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>

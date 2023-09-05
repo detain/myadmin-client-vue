@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
-siteStore.setBreadcrums([['/home', 'Home'], ['/servers', 'Servers List'], ['/servers/order', 'Order Server']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Servers List'], ['/servers/order', 'Order Server']]);
 const baseUrl = siteStore.getBaseUrl();
 
 const currency = ref('USD');
@@ -315,7 +315,7 @@ serverOrderRequest(false);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

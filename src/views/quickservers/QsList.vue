@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -93,7 +93,7 @@ loadQuickservers();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" to="qs/order" title="Order Qs Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/'+moduleLink(module)+'/order'" title="Order Qs Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -170,12 +170,12 @@ loadQuickservers();
                                             <td>{{ row.qs_name }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>
-                                                <router-link :to="'/qs/' + row.qs_id">{{ row.qs_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/qs/' + row.qs_id">{{ row.qs_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.qs_status }}</td>
                                             <td>{{ row.qs_comment }}</td>
                                             <td>
-                                                <router-link :to="'/qs/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/qs/' + row.qs_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

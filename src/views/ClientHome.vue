@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted } from 'vue';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { storeToRefs } from 'pinia';
 import { useAuthStore, useSiteStore } from '@/stores';
 const siteStore = useSiteStore();
@@ -272,11 +272,11 @@ loadHome();
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
-                                        <router-link :to="details.modules[module].view_link + '/' + serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceId">{{ serviceDesc }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
-                                    <router-link :to="details.modules[module].buy_link" class="btn order">Order Now</router-link>
+                                    <router-link :to="'/'+moduleLink(module)+'/order'" class="btn order">Order Now</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -296,10 +296,10 @@ loadHome();
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
-                                        <a class="mx-2" href="https://www.facebook.com/sharer/sharer.php?u={{ socialMediaUrl }}&amp;title=InterServer Web Hosting and VPS" title="InterServer Web Hosting and VPS" @click.prevent="shareOnFacebook"><img class="social" alt="Share on Facebook" src="/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
-                                        <a class="mx-2" href='https://twitter.com/intent/tweet?source=https%3A%2F%2Finterserver.net&amp;text="Write something here" @interserver {{ socialMediaUrl }}&amp;' @click.prevent="shareOnTwitter" title="Tweet"><img class="social" alt="Tweet" src="/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
-                                        <a class="mx-2" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ socialMediaUrl }}&amp;title=affiliate%20link%20{{ socialMediaUrl }}&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnLinkedIn" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
-                                        <a class="mx-2" href="https://pinterest.com/pin/create/button/?url={{ socialMediaUrl }}&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website {{ socialMediaUrl }}" @click.prevent="shareOnPinterest" title="Pin it"><img class="social" alt="Pin it" src="/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
+                                        <a class="mx-2" href="https://www.facebook.com/sharer/sharer.php?u={{ affiliateUrl }}&amp;title=InterServer Web Hosting and VPS" title="InterServer Web Hosting and VPS" @click.prevent="shareOnFacebook"><img class="social" alt="Share on Facebook" src="/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
+                                        <a class="mx-2" href='https://twitter.com/intent/tweet?source={{ affiliateUrl }}&amp;text="Write something here" @interserver {{ affiliateUrl }}&amp;' @click.prevent="shareOnTwitter" title="Tweet"><img class="social" alt="Tweet" src="/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
+                                        <a class="mx-2" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ affiliateUrl }}&amp;title=affiliate%20link%20{{ affiliateUrl }}&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website {{ affiliateUrl }}" @click.prevent="shareOnLinkedIn" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
+                                        <a class="mx-2" href="https://pinterest.com/pin/create/button/?url={{ affiliateUrl }}&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website {{ affiliateUrl }}" @click.prevent="shareOnPinterest" title="Pin it"><img class="social" alt="Pin it" src="/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
                                     </div>
                                 </div>
                             </div>

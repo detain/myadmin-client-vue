@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useVpsStore, useSiteStore } from '@/stores';
@@ -27,15 +27,15 @@ const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop
 const collapsed = ref(false);
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
-    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/vps', 'VPS' ]]);
-    siteStore.addBreadcrum('/vps/' + id, 'View VPS ' + id);
+    siteStore.setBreadcrums([[ '/home', 'Home'],[ '/'+moduleLink(module)+moduleLink(module), 'VPS' ]]);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id, 'View VPS ' + id);
     if (typeof newLink == 'undefined') {
         siteStore.setPageHeading('View VPS ' + id);
         siteStore.setTitle('View VPS ' + id);
     } else {
         siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/vps/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             vpsStore.queue(id as string, newLink);
             Swal.fire({
@@ -333,9 +333,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/vps/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -448,7 +448,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/vps/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/'+moduleLink(module)+'/vps/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -663,7 +663,7 @@ function toggleFunc(cp: string) {
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link :to="'/vps/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link :to="'/'+moduleLink(module)+'/vps/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br />

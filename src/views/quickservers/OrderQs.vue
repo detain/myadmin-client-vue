@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { useSiteStore } from '@/stores';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { VerifyJsonWebKeyInput } from 'crypto';
@@ -10,7 +10,7 @@ const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
-siteStore.setBreadcrums([['/home', 'Home'], ['/qs', 'Rapid Deploy Servers List'], ['/qs/order', 'Order Rapid Deploy Server']]);
+siteStore.setBreadcrums([['/home', 'Home'],[ '/'+moduleLink(module), 'Rapid Deploy Servers List'], ['/qs/order', 'Order Rapid Deploy Server']]);
 const baseUrl = siteStore.getBaseUrl();
 
 const step = ref('orderform');
