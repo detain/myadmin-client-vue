@@ -5,7 +5,12 @@ import { storeToRefs } from 'pinia';
 import { MainMenu, Alert } from '@/components';
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-
+import 'jquery-ui';
+import 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'admin-lte/dist/js/adminlte.js';
+import Swal from 'sweetalert2';
+import '@fortawesome/fontawesome-free/js/all.js';
 onMounted(function () {});
 
 const authStore = useAuthStore();
@@ -167,21 +172,35 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
-/*
+/* @import 'jquery-ui/dist/themes/smoothness/jquery-ui.css'; */
+/* @import '/css/misha-theme/jquery-ui.css'; */
+/* @import '/css/jquery.custom.css'; */
+@import 'bootstrap/dist/css/bootstrap.css';
+@import '/templates/menu/dark/menu.css';
+@import '/css/hide_printed_links.css';
+@import '/images/myadmin/css/styles.css';
+@import 'admin-lte/dist/css/adminlte.css';
+@import 'icheck-bootstrap/icheck-bootstrap.css';
+@import 'select2/dist/css/select2.css';
+@import 'select2-bootstrap-theme/dist/select2-bootstrap.css';
+@import 'jqvmap-novulnerability/dist/jqvmap.css';
+@import 'overlayscrollbars/css/OverlayScrollbars.css';
+@import 'sweetalert2/dist/sweetalert2.css';
+@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
+@import '/templates/adminlte/custom_styles.css';
+/* @import '/templates/adminlte/jquery.passwordRequirements.css'; */
+@import '/templates/my/style.css';
+@import '/templates/my/style2.css';
+@import '@fortawesome/fontawesome-free/css/all.css';
+/*
 @import 'jquery-ui/dist/themes/smoothness/jquery-ui.min.css';
 @import '/css/misha-theme/jquery-ui.css';
 //@import 'jquery-simple-pass-meter/simplePassMeter.css';
 @import '/css/jquery.custom.css';
 @import '/css/home_new.css?20180104';
 @import '/css/home.css';
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'jqvmap-novulnerability/dist/jqvmap.min.css';
-@import 'admin-lte/dist/css/adminlte.min.css';
-@import '/templates/menu/dark/menu.css';
-@import '/css/hide_printed_links.css';
-@import '/images/myadmin/css/styles.css?20180101';
 //@import 'tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
 @import 'icheck-bootstrap/icheck-bootstrap.min.css';
 @import 'select2/dist/css/select2.min.css';
@@ -192,9 +211,6 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 @import '/templates/adminlte/custom_styles.css';
 @import '/templates/adminlte/jquery.passwordRequirements.css';
-@import '/templates/my/style.css?202211190107';
-@import '/templates/my/style2.css';
-@import '/css/view_service.css';
 //@import 'tablesorter/dist/css/theme.jui.min.css';
 //@import 'tablesorter/dist/css/theme.blue.min.css';
 //@import 'tablesorter/dist/css/jquery.tablesorter.pager.min.css';

@@ -49,7 +49,6 @@ export const router = createRouter({
         { path: '/login_old', component: LoginOld },
         { path: '/register', component: Register },
         { path: '/sudo/:sessionid', component: Sudo },
-        { path: '/home', component: ClientHome },
         { path: '/prepays', component: PrePays },
         { path: '/payment_types', component: PaymentTypes },
         { path: '/cart', component: Cart },

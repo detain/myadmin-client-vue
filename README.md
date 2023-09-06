@@ -95,7 +95,6 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /login                              | [ ]     | [ ]      |           |
 | /register                           | [ ]     | [ ]      |           |
 | /sudo/:sessionId                    | [x]     |          |           |
-| /home                               | [ ]     | [ ]      | [ ]       |
 | /prepays                            | [ ]     | [ ]      | [ ]       |
 | /payment_types                      | [ ]     | [ ]      | [ ]       |
 | /cart                               | [ ]     | [ ]      | [ ]       |
