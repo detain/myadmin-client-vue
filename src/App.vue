@@ -10,7 +10,7 @@ import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';
 import Swal from 'sweetalert2';
-import '@fortawesome/fontawesome-free/js/all.js';
+import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 onMounted(function () {});
 
 const authStore = useAuthStore();
@@ -192,8 +192,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 /* @import '/templates/adminlte/custom_styles.css'; */
 /* @import '/templates/adminlte/jquery.passwordRequirements.css'; */
 /* @import '/templates/my/style.css';
-@import '/templates/my/style2.css';
-@import '@fortawesome/fontawesome-free/css/all.css'; */
+@import '/templates/my/style2.css'; */
 /* @import 'jquery-simple-pass-meter/simplePassMeter.css';
 @import '/css/home_new.css?20180104';
 @import '/css/home.css';
