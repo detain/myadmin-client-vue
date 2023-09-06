@@ -85,7 +85,9 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
     * [x] windows/linux/mac builds
     * [ ] js/css assets loaded locally
 
-### Pages
+### Page Status
+
+* Working status does not include the export/sorting related options on the view service list type pages
 
 | Url                                 | Working | API Spec | Breadcrum |     |     |     |     |     |
 | ----------------------------------- | ------- | -------- | --------- | --- | --- | --- | --- | --- |
@@ -124,7 +126,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /backups/:id/cancel                 | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /backups/:id/invoices               | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /dns                                | [x]     | [x]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
-| /dns/:id                            | [x]     | [ ]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
+| /dns/:id                            | [x]     | [x]      | [x]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains                            | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order                      | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |
 | /domains/order/:domain              | [ ]     | [ ]      | [ ]       | [ ] | [ ] | [ ] | [ ] | [ ] |

@@ -90,7 +90,7 @@ async function showAddDnsRecord(event: Event) {
 async function editDnsRecord(event: Event) {
     let response;
     try {
-        fetchWrapper.post(baseUrl + '/dns/' + id, recordRow.value).then((response) => {
+        fetchWrapper.post(baseUrl + '/dns/' + id + '/' + recordId.value, recordRow.value).then((response) => {
             console.log('api success');
             console.log(response);
             loadDns();
@@ -151,7 +151,7 @@ async function showEditRecord(event: Event) {
 }
 
 async function deleteRecord(event: Event) {
-    const record = (event.target as HTMLElement).getAttribute('data-id');
+    const record = Number((event.target as HTMLElement).getAttribute('data-id'));
     console.log(record);
     Swal.fire({
         icon: 'error',
@@ -163,7 +163,7 @@ async function deleteRecord(event: Event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id).then((response) => {
+                fetchWrapper.delete(baseUrl + '/dns/' + id + '/' + record).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns();
