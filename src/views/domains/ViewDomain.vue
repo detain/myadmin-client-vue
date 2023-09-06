@@ -228,4 +228,6 @@ console.log(link.value);
         </div>
     </div>
 </template>
-<style scoped></style>
+<style>
+@import '/css/view_service.css';
+</style>

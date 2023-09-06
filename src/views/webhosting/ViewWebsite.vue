@@ -296,4 +296,6 @@ loadLink(route.params.link as string);
     </div>
 </template>
 
-<style scoped></style>
+<style>
+@import '/css/view_service.css';
+</style>

@@ -150,4 +150,6 @@ const billingStatusClass = computed(() => {
     </div>
 </template>
 
-<style scoped></style>
+<style>
+@import '/css/view_service.css';
+</style>
