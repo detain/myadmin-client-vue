@@ -51,7 +51,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome": "*",
-        "@fortawesome/fontawesome-free": "*",
+        "@fortawesome/fontawesome-free": "^5.15",
         "@fortawesome/fontawesome-free-brands": "*",
         "@fortawesome/fontawesome-free-regular": "*",
         "@fortawesome/fontawesome-free-solid": "*",
