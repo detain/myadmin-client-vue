@@ -186,10 +186,10 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import 'jqvmap-novulnerability/dist/jqvmap.css';
 @import 'overlayscrollbars/css/OverlayScrollbars.css';
 @import 'sweetalert2/dist/sweetalert2.css';
-@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
+@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css'; */
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
-@import '/templates/adminlte/custom_styles.css'; */
+/* @import '/templates/adminlte/custom_styles.css'; */
 /* @import '/templates/adminlte/jquery.passwordRequirements.css'; */
 /* @import '/templates/my/style.css';
 @import '/templates/my/style2.css';
