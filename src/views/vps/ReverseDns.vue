@@ -3,6 +3,7 @@ import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
+import Swal from 'sweetalert2';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -14,7 +15,37 @@ const id = computed(() => {
     return props.id;
 });
 
-function submitForm() {}
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/vps/' + id.value + '/reverse_dns', {
+                ips: ips.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('vps update reverse dns success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: 'Success' + response.message,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('vps update reverse dns  failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: 'Got error ' + error.message,
+        });
+    }
+}
 
 fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) => {
     console.log('Response:');

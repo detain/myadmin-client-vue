@@ -91,8 +91,8 @@ interface Distros {
     [key: string]: string;
 }
 
-interface VpsTemplates {
-    [key: number | string]: VpsTemplate;
+interface VpsTemplatesResponse {
+    templates: VpsTemplate[];
 }
 
 interface VpsTemplate {
@@ -108,7 +108,7 @@ interface VpsTemplate {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response) => {
+    fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (let idx in vpsTemplates.value) {
@@ -168,7 +168,7 @@ try {
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="os">Current OS</label>
                                     <div class="col-sm-9 input-group">
-                                        <input type="text" class="form-control form-control-sm" id="os" name="current_os" :value="currentOS" disabled />
+                                        <input type="text" class="form-control form-control-sm" id="os" name="current_os" :value="serviceInfo.vps_os" disabled />
                                     </div>
                                 </div>
                                 <div class="form-group row">
