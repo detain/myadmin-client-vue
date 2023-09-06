@@ -209,10 +209,10 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /tickets/:id                        | [ ]     | [ ]      | [ ]       |
 | /vps                                | [x]     | [x]      | [x]       |
 | /vps/order                          | [ ]     | [ ]      | [ ]       |
-| /vps/:id                            | [ ]     | [ ]      | [ ]       |
+| /vps/:id                            | [x]     | [x]      | [x]       |
 | /vps/:id/backup                     | [ ]     | [ ]      | [ ]       |
 | /vps/:id/backups                    | [ ]     | [ ]      | [ ]       |
-| /vps/:id/block_smtp                 | [ ]     | [ ]      | [ ]       |
+| /vps/:id/block_smtp                 | [x]     | [x]      | [x]       |
 | /vps/:id/buy_ip                     | [ ]     | [ ]      | [ ]       |
 | /vps/:id/buy_hd_space               | [ ]     | [ ]      | [ ]       |
 | /vps/:id/cancel                     | [ ]     | [ ]      | [ ]       |
@@ -220,22 +220,22 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /vps/:id/change_root_password       | [ ]     | [ ]      | [ ]       |
 | /vps/:id/change_timezone            | [ ]     | [ ]      | [ ]       |
 | /vps/:id/change_webuzo_password     | [ ]     | [ ]      | [ ]       |
-| /vps/:id/disable_quota              | [ ]     | [ ]      | [ ]       |
-| /vps/:id/disable_cd                 | [ ]     | [ ]      | [ ]       |
-| /vps/:id/eject_cd                   | [ ]     | [ ]      | [ ]       |
-| /vps/:id/enable_quota               | [ ]     | [ ]      | [ ]       |
+| /vps/:id/disable_quota              | [x]     | [x]      | [x]       |
+| /vps/:id/disable_cd                 | [x]     | [x]      | [x]       |
+| /vps/:id/eject_cd                   | [x]     | [x]      | [x]       |
+| /vps/:id/enable_quota               | [x]     | [x]      | [x]       |
 | /vps/:id/insert_cd                  | [ ]     | [ ]      | [ ]       |
 | /vps/:id/invoices                   | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reinstall_os               | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reset_password             | [ ]     | [ ]      | [ ]       |
-| /vps/:id/restart                    | [ ]     | [ ]      | [ ]       |
+| /vps/:id/restart                    | [x]     | [x]      | [x]       |
 | /vps/:id/restore                    | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reset_password             | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reverse_dns                | [ ]     | [ ]      | [ ]       |
 | /vps/:id/setup_vnc                  | [ ]     | [ ]      | [ ]       |
 | /vps/:id/slices                     | [ ]     | [ ]      | [ ]       |
-| /vps/:id/start                      | [ ]     | [ ]      | [ ]       |
-| /vps/:id/stop                       | [ ]     | [ ]      | [ ]       |
+| /vps/:id/start                      | [x]     | [x]      | [x]       |
+| /vps/:id/stop                       | [x]     | [x]      | [x]       |
 | /vps/:id/traffic_usage              | [ ]     | [ ]      | [ ]       |
 | /vps/:id/view_desktop               | [ ]     | [ ]      | [ ]       |
 | /websites                           | [x]     | [x]      | [x]       |
