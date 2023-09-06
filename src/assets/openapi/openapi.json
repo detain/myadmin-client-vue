@@ -229,332 +229,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AccountInfo"
-                                },
-                                "examples": {
-                                    "AccountResponse": {
-                                        "value": {
-                                            "custid": "98651",
-                                            "ima": "client",
-                                            "data": {
-                                                "group": "0",
-                                                "address": "112 Uber St.",
-                                                "city": "Townsville",
-                                                "country": "US",
-                                                "disable_cc": "0",
-                                                "fraudrecord_score": "0",
-                                                "ima": "client",
-                                                "name": "John Doe",
-                                                "payment_method": "paypal",
-                                                "phone": "8675309",
-                                                "pin": "000000",
-                                                "state": "PA",
-                                                "status": "active",
-                                                "zip": "11111",
-                                                "account_id": "98651",
-                                                "account_lid": "user@domain.com",
-                                                "address2": "",
-                                                "affiliate_dock_description": "Use this coupon when placing an order to get the first month of hosting for only 1 penny.",
-                                                "affiliate_dock_title": "Exclusive offer to viewers",
-                                                "affiliate_payment_method": "paypal",
-                                                "affiliate_paypal": "user@domain.com",
-                                                "cc": "************1111",
-                                                "cc_auto": "0",
-                                                "cc_exp": "05/2019",
-                                                "cc_type": "visa",
-                                                "cc_whitelist": "1",
-                                                "ccs": {
-                                                    "1": {
-                                                        "cc": "************1111",
-                                                        "cc_exp": "05/2019",
-                                                        "name": "John Doe",
-                                                        "country": "US",
-                                                        "verified": true
-                                                    },
-                                                    "5": {
-                                                        "cc": "************2222",
-                                                        "cc_exp": "05/2019",
-                                                        "name": "John Doe",
-                                                        "address": "123 Uber St",
-                                                        "city": "Townsville",
-                                                        "state": "PA",
-                                                        "zip": "11122",
-                                                        "country": "US",
-                                                        "maxmind_riskscore": "0.25",
-                                                        "maxmind": {
-                                                            "distance": "0",
-                                                            "countryMatch": "Yes",
-                                                            "countryCode": "US",
-                                                            "freeMail": "No",
-                                                            "anonymousProxy": "No",
-                                                            "binMatch": "No",
-                                                            "binCountry": "IN",
-                                                            "err": "",
-                                                            "proxyScore": "0.00",
-                                                            "ip_region": "PA",
-                                                            "ip_city": "Townsville",
-                                                            "ip_latitude": "40.175",
-                                                            "ip_longitude": "-76.1817",
-                                                            "binName": "state bank of india",
-                                                            "ip_isp": "PenTeleData",
-                                                            "ip_org": "PenTeleData",
-                                                            "binNameMatch": "NA",
-                                                            "binPhoneMatch": "NA",
-                                                            "binPhone": "",
-                                                            "custPhoneInBillingLoc": "NotFound",
-                                                            "highRiskCountry": "No",
-                                                            "queriesRemaining": "2764",
-                                                            "cityPostalMatch": "Yes",
-                                                            "shipCityPostalMatch": "",
-                                                            "maxmindID": "7IVXKOVV",
-                                                            "ip_asnum": "AS3737 AS-PTD",
-                                                            "ip_userType": "residential",
-                                                            "ip_countryConf": "99",
-                                                            "ip_regionConf": "99",
-                                                            "ip_cityConf": "30",
-                                                            "ip_postalCode": "11122",
-                                                            "ip_postalConf": "30",
-                                                            "ip_accuracyRadius": "20",
-                                                            "ip_netSpeedCell": "Cable/DSL",
-                                                            "ip_metroCode": "566",
-                                                            "ip_areaCode": "",
-                                                            "ip_timeZone": "America/New_York",
-                                                            "ip_regionName": "Pennsylvania",
-                                                            "ip_domain": "ptd.net",
-                                                            "ip_countryName": "United States",
-                                                            "ip_continentCode": "NA",
-                                                            "ip_corporateProxy": "No",
-                                                            "isTransProxy": "No",
-                                                            "carderEmail": "No",
-                                                            "highRiskUsername": "No",
-                                                            "highRiskPassword": "No",
-                                                            "riskScore": 0.25,
-                                                            "prepaid": "No",
-                                                            "minfraud_version": "1.3",
-                                                            "service_level": "premium",
-                                                            "female_name": "no"
-                                                        },
-                                                        "verified": true
-                                                    },
-                                                    "6": {
-                                                        "cc": "************1111",
-                                                        "cc_exp": "05/2021",
-                                                        "name": "John Doe",
-                                                        "city": "Townsville",
-                                                        "state": "PA",
-                                                        "zip": "11122",
-                                                        "country": "US",
-                                                        "maxmind_riskscore": "0.48",
-                                                        "maxmind": {
-                                                            "distance": "0",
-                                                            "countryMatch": "Yes",
-                                                            "countryCode": "US",
-                                                            "freeMail": "No",
-                                                            "anonymousProxy": "No",
-                                                            "binMatch": "Yes",
-                                                            "binCountry": "US",
-                                                            "err": "",
-                                                            "proxyScore": "0.00",
-                                                            "ip_region": "PA",
-                                                            "ip_city": "Townsville",
-                                                            "ip_latitude": "40.175",
-                                                            "ip_longitude": "-76.1817",
-                                                            "binName": "Bank of No Hope",
-                                                            "ip_isp": "PenTeleData",
-                                                            "ip_org": "PenTeleData",
-                                                            "binNameMatch": "NA",
-                                                            "binPhoneMatch": "NA",
-                                                            "binPhone": "1234561234",
-                                                            "custPhoneInBillingLoc": "NotFound",
-                                                            "highRiskCountry": "No",
-                                                            "queriesRemaining": "2765",
-                                                            "cityPostalMatch": "Yes",
-                                                            "shipCityPostalMatch": "",
-                                                            "maxmindID": "AAAAAZZZZZ",
-                                                            "ip_asnum": "AS3737 AS-PTD",
-                                                            "ip_userType": "residential",
-                                                            "ip_countryConf": "99",
-                                                            "ip_regionConf": "99",
-                                                            "ip_cityConf": "30",
-                                                            "ip_postalCode": "11122",
-                                                            "ip_postalConf": "30",
-                                                            "ip_accuracyRadius": "20",
-                                                            "ip_netSpeedCell": "Cable/DSL",
-                                                            "ip_metroCode": "566",
-                                                            "ip_areaCode": "",
-                                                            "ip_timeZone": "America/New_York",
-                                                            "ip_regionName": "Pennsylvania",
-                                                            "ip_domain": "ptd.net",
-                                                            "ip_countryName": "United States",
-                                                            "ip_continentCode": "NA",
-                                                            "ip_corporateProxy": "No",
-                                                            "isTransProxy": "No",
-                                                            "carderEmail": "No",
-                                                            "highRiskUsername": "No",
-                                                            "highRiskPassword": "No",
-                                                            "riskScore": 0.48,
-                                                            "prepaid": "No",
-                                                            "minfraud_version": "1.3",
-                                                            "service_level": "premium",
-                                                            "female_name": "no"
-                                                        },
-                                                        "verified": true
-                                                    }
-                                                },
-                                                "ccs_added": "14",
-                                                "company": "InterServer, Inc.",
-                                                "currency": "USD",
-                                                "disable_reinstall": "0",
-                                                "disable_reset": "0",
-                                                "email": "user@domain.com",
-                                                "email_abuse": "",
-                                                "email_settings": {
-                                                    "admin/cc_bad_response": "1",
-                                                    "admin/mass_communications.tpl": "1"
-                                                },
-                                                "extra": {
-                                                    "private_whois": "0"
-                                                },
-                                                "facebook_id": "111111111111111",
-                                                "facebook_url": "https://www.facebook.com/111111111111111",
-                                                "firstname": "John",
-                                                "fraudrecord": {
-                                                    "score": "0",
-                                                    "count": "0",
-                                                    "reliability": "0.0",
-                                                    "code": "zxcvzxcvzxcv"
-                                                },
-                                                "github_id": "2222222",
-                                                "github_url": "https://github.com/user",
-                                                "google_id": "355431342512341234",
-                                                "google_url": "https://plus.google.com/+JohnDoe",
-                                                "innertell_id": "2222222",
-                                                "lastname": "Doe",
-                                                "locale": "auto",
-                                                "maxmind": {
-                                                    "distance": "6146",
-                                                    "countryMatch": "No",
-                                                    "countryCode": "US",
-                                                    "freeMail": "No",
-                                                    "anonymousProxy": "No",
-                                                    "score": "5.00",
-                                                    "binMatch": "NotFound",
-                                                    "binCountry": "",
-                                                    "err": "CITY_NOT_FOUND",
-                                                    "proxyScore": "0.00",
-                                                    "ip_region": "PA",
-                                                    "ip_city": "Townsville",
-                                                    "ip_latitude": "40.1767",
-                                                    "ip_longitude": "-76.4297",
-                                                    "binName": "",
-                                                    "ip_isp": "PenTeleData",
-                                                    "ip_org": "PenTeleData",
-                                                    "binNameMatch": "NA",
-                                                    "binPhoneMatch": "NA",
-                                                    "binPhone": "",
-                                                    "custPhoneInBillingLoc": "",
-                                                    "highRiskCountry": "No",
-                                                    "queriesRemaining": "171",
-                                                    "cityPostalMatch": "",
-                                                    "shipCityPostalMatch": "",
-                                                    "maxmindID": "HMOCUJP7",
-                                                    "ip_asnum": "AS3737 PenTeleData Inc.",
-                                                    "ip_userType": "residential",
-                                                    "ip_countryConf": "99",
-                                                    "ip_regionConf": "97",
-                                                    "ip_cityConf": "30",
-                                                    "ip_postalCode": "11122",
-                                                    "ip_postalConf": "30",
-                                                    "ip_accuracyRadius": "10",
-                                                    "ip_netSpeedCell": "Dialup",
-                                                    "ip_metroCode": "566",
-                                                    "ip_areaCode": "333",
-                                                    "ip_timeZone": "America/New_York",
-                                                    "ip_regionName": "Pennsylvania",
-                                                    "ip_domain": "ptd.net",
-                                                    "ip_countryName": "United States",
-                                                    "ip_continentCode": "NA",
-                                                    "ip_corporateProxy": "No",
-                                                    "carderEmail": "No",
-                                                    "highRiskUsername": "No",
-                                                    "riskScore": "4.82",
-                                                    "explanation": "You should review this order carefully, as it is considered high risk. We suggest you be very cautious about accepting this order. This order is higher risk because the distance between the billing address and the user's actual location is so great. The order is higher risk because the billing country and the country in which the IP address is located don't match",
-                                                    "female_name": "no"
-                                                },
-                                                "maxmind_score": "0",
-                                                "mb_id": "4769",
-                                                "modernbill_id": "1234",
-                                                "picture": "https://avatars3.githubusercontent.com/u/1364504",
-                                                "referrer_coupon": "detainaffiliatecoupon",
-                                                "reseller_markup": "10",
-                                                "username": "user@domain.com",
-                                                "ssh_key": "zzzz",
-                                                "ssh_key_wrapped": "zzzz",
-                                                "api_key": "aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbccccccccccccccccccc",
-                                                "api_key_wrapped": "aaaaaaaaaaaaaaaaaaaaaaa<br>bbbbbbbbbbbbb<br>ccccccccccccccccccc",
-                                                "2fa_google_key": "ssssssssssssssssssssssssss",
-                                                "2fa_google_enabled": true,
-                                                "2fa_google": 1,
-                                                "2fa_google_split": "zzzz zzzz zzzz zzzz ",
-                                                "2fa_google_qr": "data:image/png;base64,zzz"
-                                            },
-                                            "ip": "1.2.3.4",
-                                            "oauthproviders": {},
-                                            "oauthconfig": {
-                                                "callback": "https://my.interserver.net/oauth/callback.php",
-                                                "providers": {
-                                                    "Twitter": {
-                                                        "enabled": false,
-                                                        "linked": false
-                                                    },
-                                                    "Facebook": {
-                                                        "enabled": true,
-                                                        "account": "111111111111111111111",
-                                                        "url": "https://www.facebook.com/111111111111111111111",
-                                                        "linked": true
-                                                    },
-                                                    "Google": {
-                                                        "enabled": true,
-                                                        "account": "111111111111111111111",
-                                                        "url": "https://plus.google.com/+UserName",
-                                                        "linked": true
-                                                    },
-                                                    "GitHub": {
-                                                        "enabled": true,
-                                                        "account": "111111111111111111111",
-                                                        "url": "https://github.com/detain",
-                                                        "linked": true
-                                                    }
-                                                }
-                                            },
-                                            "oauthadapters": [],
-                                            "limits": [
-                                                {
-                                                    "start": "1.1.1.1",
-                                                    "end": "1.1.1.254"
-                                                },
-                                                {
-                                                    "start": "2600:387:0:809::1b",
-                                                    "end": "2600:387:0:809::1b"
-                                                }
-                                            ],
-                                            "language": "en-US",
-                                            "countryCurrencies": {
-                                                "CN": [
-                                                    "USD"
-                                                ],
-                                                "BR": [
-                                                    "USD",
-                                                    "BRL"
-                                                ],
-                                                "RU": [
-                                                    "USD"
-                                                ]
-                                            },
-                                            "enableLocales": true,
-                                            "enableCurrencies": false,
-                                            "gravatar": "https://avatars3.githubusercontent.com/u/1364504"
-                                        }
-                                    }
                                 }
                             }
                         },
@@ -901,6 +575,19 @@
                 "summary": "Gets the DNS Records for a domain.",
                 "description": "Returns a list of all of the dns records."
             },
+            "post": {
+                "tags": [
+                    "dns"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add DNS Domain Response"
+                    }
+                },
+                "operationId": "updateDnsDomain",
+                "summary": "Add DNS Domain",
+                "description": "Creates a new Domain on the DNS Servers."
+            },
             "delete": {
                 "tags": [
                     "dns"
@@ -1116,6 +803,19 @@
                 "summary": "",
                 "description": ""
             },
+            "put": {
+                "tags": [
+                    "backups"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Backup Order Response"
+                    }
+                },
+                "operationId": "putBackups",
+                "summary": "",
+                "description": ""
+            },
             "post": {
                 "tags": [
                     "backups"
@@ -1158,7 +858,7 @@
                                             {
                                                 "domain_id": "592337",
                                                 "domain_hostname": "detain.dev",
-                                                "domain_expire_date": "2023-08-14 00:59:38",
+                                                "domain_expire_date": "2023-08-14T00:59:38.000Z",
                                                 "cost": "18.00",
                                                 "domain_status": "active"
                                             }
@@ -1202,6 +902,19 @@
                 "summary": "",
                 "description": ""
             },
+            "put": {
+                "tags": [
+                    "domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Domain Order response"
+                    }
+                },
+                "operationId": "putDomains",
+                "summary": "",
+                "description": ""
+            },
             "post": {
                 "tags": [
                     "domains"
@@ -1212,6 +925,19 @@
                     }
                 },
                 "operationId": "addDomain",
+                "summary": "",
+                "description": ""
+            },
+            "patch": {
+                "tags": [
+                    "domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Domain order response"
+                    }
+                },
+                "operationId": "patchDomains",
                 "summary": "",
                 "description": ""
             }
@@ -1265,6 +991,19 @@
                     }
                 },
                 "operationId": "getNewLicense",
+                "summary": "",
+                "description": ""
+            },
+            "put": {
+                "tags": [
+                    "licenses"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Licenses order response"
+                    }
+                },
+                "operationId": "putLicenses",
                 "summary": "",
                 "description": ""
             },
@@ -1334,6 +1073,19 @@
                 "summary": "",
                 "description": ""
             },
+            "put": {
+                "tags": [
+                    "mail"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Mail order response."
+                    }
+                },
+                "operationId": "putMail",
+                "summary": "",
+                "description": ""
+            },
             "post": {
                 "tags": [
                     "mail"
@@ -1397,6 +1149,19 @@
                     }
                 },
                 "operationId": "getNewQs",
+                "summary": "",
+                "description": ""
+            },
+            "put": {
+                "tags": [
+                    "qs"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate QuickServer Order response"
+                    }
+                },
+                "operationId": "putQs",
                 "summary": "",
                 "description": ""
             },
@@ -1466,6 +1231,19 @@
                 "summary": "",
                 "description": ""
             },
+            "put": {
+                "tags": [
+                    "servers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Server order response"
+                    }
+                },
+                "operationId": "putServers",
+                "summary": "",
+                "description": ""
+            },
             "post": {
                 "tags": [
                     "servers"
@@ -1487,14 +1265,6 @@
                 ],
                 "responses": {
                     "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {}
-                                }
-                            }
-                        },
                         "description": "The listing of `SSL` services on your account."
                     },
                     "default": {
@@ -1517,6 +1287,19 @@
                     }
                 },
                 "operationId": "getNewSsl",
+                "summary": "",
+                "description": ""
+            },
+            "put": {
+                "tags": [
+                    "ssl"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate SSL Order response"
+                    }
+                },
+                "operationId": "putSsl",
                 "summary": "",
                 "description": ""
             },
@@ -1583,6 +1366,19 @@
                     }
                 },
                 "operationId": "getNewVps",
+                "summary": "",
+                "description": ""
+            },
+            "put": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate VPS order response."
+                    }
+                },
+                "operationId": "putVps",
                 "summary": "",
                 "description": ""
             },
@@ -1728,6 +1524,19 @@
                     }
                 },
                 "operationId": "getNewWebsite",
+                "summary": "",
+                "description": ""
+            },
+            "put": {
+                "tags": [
+                    "websites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Website order response"
+                    }
+                },
+                "operationId": "putWebsites",
                 "summary": "",
                 "description": ""
             },
@@ -3448,6 +3257,19 @@
                 "summary": "",
                 "description": ""
             },
+            "put": {
+                "tags": [
+                    "floating_ips"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validate Floating IPs order response"
+                    }
+                },
+                "operationId": "putFloating_ips",
+                "summary": "",
+                "description": ""
+            },
             "post": {
                 "tags": [
                     "floating_ips"
@@ -3463,6 +3285,19 @@
             }
         },
         "/account/oauth/{name}": {
+            "delete": {
+                "tags": [
+                    "account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Account OAuth response"
+                    }
+                },
+                "operationId": "deleteAccountOauthName",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "name",
@@ -3493,17 +3328,33 @@
                 }
             ]
         },
-        "/billing/creditcards": {},
-        "/billing/creditcards/{id}": {
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/vps/{id}/view_desktop": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS View Desktop Information"
+                    }
+                },
+                "operationId": "getVpsViewDesktop",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Submit VPS View Desktop Information"
+                    }
+                },
+                "operationId": "postVpsViewDesktop",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3517,6 +3368,32 @@
             ]
         },
         "/vps/{id}/traffic_usage": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS Traffic usage"
+                    }
+                },
+                "operationId": "getVpsTrafficUsage",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Submit VPS Traffic Usage"
+                    }
+                },
+                "operationId": "postVpsTrafficUsage",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3530,6 +3407,32 @@
             ]
         },
         "/vps/{id}/slices": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Slices information"
+                    }
+                },
+                "operationId": "getVpsSlices",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update VPS slices response"
+                    }
+                },
+                "operationId": "postVpsSlices",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3543,6 +3446,32 @@
             ]
         },
         "/vps/{id}/setup_vnc": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS Setup VNC Information"
+                    }
+                },
+                "operationId": "getVpsSetupVnc",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Setup VNC response"
+                    }
+                },
+                "operationId": "postVpsSetupVnc",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3556,6 +3485,32 @@
             ]
         },
         "/vps/{id}/reverse_dns": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Reverse DNS info response"
+                    }
+                },
+                "operationId": "getVpsReverseDns",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update VPS Reverse DNS response"
+                    }
+                },
+                "operationId": "postVpsReverseDns",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3569,6 +3524,19 @@
             ]
         },
         "/vps/{id}/restore": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS Restore info response"
+                    }
+                },
+                "operationId": "getVpsRestore",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3582,6 +3550,32 @@
             ]
         },
         "/vps/{id}/reset_password": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Reset password info"
+                    }
+                },
+                "operationId": "getVpsResetPassword",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Reset Password update response"
+                    }
+                },
+                "operationId": "postVpsResetPassword",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3595,6 +3589,32 @@
             ]
         },
         "/vps/{id}/reinstall_os": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Reinstall OS info response"
+                    }
+                },
+                "operationId": "getVpsReinstallOs",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Reinstall OS post response"
+                    }
+                },
+                "operationId": "postVpsReinstallOs",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3608,6 +3628,19 @@
             ]
         },
         "/vps/{id}/invoices": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS Invoices response"
+                    }
+                },
+                "operationId": "getVpsInvoices",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3621,6 +3654,32 @@
             ]
         },
         "/vps/{id}/insert_cd": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Insert CD info response"
+                    }
+                },
+                "operationId": "getVpsInsertCd",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update VPS Insert CD response"
+                    }
+                },
+                "operationId": "postVpsInsertCd",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3634,6 +3693,32 @@
             ]
         },
         "/vps/{id}/change_webuzo_password": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Change Webuzo Password info response"
+                    }
+                },
+                "operationId": "getVpsChangeWebuzoPassword",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Submit VPS Change Webuzo Password response"
+                    }
+                },
+                "operationId": "postVpsChangeWebuzoPassword",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3647,6 +3732,32 @@
             ]
         },
         "/vps/{id}/change_timezone": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Change Timezone info response"
+                    }
+                },
+                "operationId": "getVpsChangeTimezone",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update VPS Change Timezone response"
+                    }
+                },
+                "operationId": "postVpsChangeTimezone",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3660,6 +3771,32 @@
             ]
         },
         "/vps/{id}/change_root_password": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Change Root Password response"
+                    }
+                },
+                "operationId": "getVpsChangeRootPassword",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Change Root Password response"
+                    }
+                },
+                "operationId": "postVpsChangeRootPassword",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3673,6 +3810,32 @@
             ]
         },
         "/vps/{id}/change_hostname": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Change Hostname info response"
+                    }
+                },
+                "operationId": "getVpsChangeHostname",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS change hostname response"
+                    }
+                },
+                "operationId": "postVpsChangeHostname",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3686,6 +3849,32 @@
             ]
         },
         "/vps/{id}/buy_ip": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VPS Buy IP information"
+                    }
+                },
+                "operationId": "getVpsBuyIp",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Submit VPS Buy IP form response"
+                    }
+                },
+                "operationId": "postVpsBuyIp",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3699,6 +3888,32 @@
             ]
         },
         "/vps/{id}/buy_hd_space": {
+            "get": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get VPS Buy HD Space information"
+                    }
+                },
+                "operationId": "getVpsBuyHdSpace",
+                "summary": "",
+                "description": ""
+            },
+            "post": {
+                "tags": [
+                    "vps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Post Buy HD Space for VPS response"
+                    }
+                },
+                "operationId": "postVpsBuyHdSpace",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -3820,6 +4035,19 @@
             ]
         },
         "/websites/{id}/login": {
+            "get": {
+                "tags": [
+                    "websites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Website Login response"
+                    }
+                },
+                "operationId": "getWebsitesLogin",
+                "summary": "",
+                "description": ""
+            },
             "parameters": [
                 {
                     "name": "id",
@@ -4728,7 +4956,7 @@
                         "format": "date-time",
                         "description": "The expiration date of the domain.",
                         "type": "string",
-                        "example": "2023-08-14 00:59:38"
+                        "example": "2023-08-14T00:59:38.000Z"
                     },
                     "cost": {
                         "description": "The cost of the domain.",
@@ -4744,7 +4972,7 @@
                 "example": {
                     "domain_id": "592337",
                     "domain_hostname": "mydomain.com",
-                    "domain_expire_date": "2023-08-14 00:59:38",
+                    "domain_expire_date": "2023-08-14T00:59:38.000Z",
                     "cost": "18.00",
                     "domain_status": "active"
                 }
@@ -4944,7 +5172,7 @@
                         "format": "date-time",
                         "description": "The invoices date of the license.",
                         "type": "string",
-                        "example": "2019-08-28 14:27:22"
+                        "example": "2019-08-28T14:27:22.000Z"
                     }
                 },
                 "example": {
@@ -4955,7 +5183,7 @@
                     "cost": "25.00",
                     "license_status": "canceled",
                     "invoices_paid": "1",
-                    "invoices_date": "2019-08-28 14:27:22"
+                    "invoices_date": "2019-08-28T14:27:22.000Z"
                 }
             },
             "WebsiteRow": {
@@ -5900,8 +6128,7 @@
                         "type": "string"
                     },
                     "oauthproviders": {
-                        "type": "array",
-                        "items": {}
+                        "$ref": "#/components/schemas/AccountInfoOauthConfigProviders"
                     },
                     "oauthconfig": {
                         "$ref": "#/components/schemas/AccountInfoOauthConfig",
@@ -5980,7 +6207,9 @@
                     },
                     "oauthadapters": {
                         "type": "array",
-                        "items": {}
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "limits": {
                         "$ref": "#/components/schemas/AccountInfoLimits"
@@ -6287,7 +6516,7 @@
                         "2fa_google_qr": "data:image/png;base64,zzz"
                     },
                     "ip": "1.2.3.4",
-                    "oauthproviders": {},
+                    "oauthproviders": [],
                     "oauthconfig": {
                         "callback": "https://my.interserver.net/oauth/callback.php",
                         "providers": {
@@ -8544,7 +8773,7 @@
                     "departmenttitle": "Bugs",
                     "ticketid": 704185,
                     "can_close": "no",
-                    "attachments": {},
+                    "attachments": [],
                     "status_text": "Closed",
                     "checked": false
                 }
@@ -8784,7 +9013,7 @@
                     "vps_order_date": {
                         "description": "Date of VPS order",
                         "type": "string",
-                        "example": "2022-12-26 20:14:59"
+                        "example": "2022-12-26T20:14:59.000Z"
                     },
                     "vps_status": {
                         "description": "VPS status",
@@ -8919,7 +9148,7 @@
                     "next_date": {
                         "description": "Next billing date",
                         "type": "string",
-                        "example": "2023-08-26 09:41:12"
+                        "example": "2023-08-26T09:41:12.000Z"
                     },
                     "service_next_invoice_date": {
                         "description": "Next invoice date",
@@ -9022,7 +9251,7 @@
                     "vps_last_update": {
                         "description": "Last update date",
                         "type": "string",
-                        "example": "2023-08-17 22:19:04"
+                        "example": "2023-08-17T22:19:04.000Z"
                     },
                     "vps_raid_building": {
                         "description": "RAID building status",
@@ -9359,7 +9588,7 @@
                     "website_order_date": {
                         "description": "Order date of the website",
                         "type": "string",
-                        "example": "2023-03-16 22:51:54"
+                        "example": "2023-03-16T22:51:54.000Z"
                     },
                     "website_custid": {
                         "description": "Customer ID of the website",
@@ -9537,7 +9766,7 @@
                     "website_last_update": {
                         "description": "Last update date for the service master",
                         "type": "string",
-                        "example": "2023-08-17 23:01:02"
+                        "example": "2023-08-17T23:01:02.000Z"
                     },
                     "website_max_sites": {
                         "description": "Maximum number of sites for the service master",
@@ -9651,8 +9880,7 @@
                 }
             },
             "BackupServiceExtra": {
-                "type": "array",
-                "items": {}
+                "type": "string"
             },
             "BackupServiceMaster": {
                 "type": "object",
@@ -9690,7 +9918,7 @@
                     "backup_last_update": {
                         "description": "Last update timestamp of the backup service.",
                         "type": "string",
-                        "example": "2023-08-17 23:20:02"
+                        "example": "2023-08-17T23:20:02.000Z"
                     },
                     "backup_available": {
                         "description": "Availability status of the backup service.",
@@ -9706,60 +9934,6 @@
                         "description": "Order associated with the backup service.",
                         "type": "string",
                         "example": 21359
-                    }
-                }
-            },
-            "BackupBillingDetails": {
-                "type": "object",
-                "properties": {
-                    "service_last_invoice_date": {
-                        "description": "Last invoice date of the service.",
-                        "type": "string",
-                        "example": "December 29, 2021"
-                    },
-                    "service_payment_status": {
-                        "description": "Payment status of the service.",
-                        "type": "string",
-                        "example": "Paid"
-                    },
-                    "service_frequency": {
-                        "description": "Billing frequency of the service.",
-                        "type": "string",
-                        "example": "Monthly"
-                    },
-                    "next_date": {
-                        "description": "Next billing date of the service.",
-                        "type": "string",
-                        "example": "2022-01-29 14:09:57"
-                    },
-                    "service_next_invoice_date": {
-                        "description": "Next invoice date of the service.",
-                        "type": "string",
-                        "example": "January 29, 2022"
-                    },
-                    "service_currency": {
-                        "description": "Currency of the service.",
-                        "type": "string",
-                        "example": "USD"
-                    },
-                    "service_currency_symbol": {
-                        "description": "Currency symbol of the service.",
-                        "type": "string",
-                        "example": "$"
-                    },
-                    "service_cost_info": {
-                        "description": "Cost information of the service.",
-                        "type": "string",
-                        "example": 3
-                    },
-                    "service_extra": {
-                        "type": "array",
-                        "items": {}
-                    },
-                    "service_extra_json": {
-                        "description": "JSON representation of extra service information.",
-                        "type": "string",
-                        "example": "[]"
                     }
                 }
             },
@@ -9823,7 +9997,7 @@
                     "backup_order_date": {
                         "description": "Backup order date.",
                         "type": "string",
-                        "example": "2021-12-29 14:09:57"
+                        "example": "2021-12-29T14:09:57.000Z"
                     },
                     "backup_custid": {
                         "description": "Backup customer ID.",
@@ -9942,8 +10116,7 @@
                         "$ref": "#/components/schemas/DomainBillingExtra"
                     },
                     "extraInfoTables": {
-                        "type": "array",
-                        "items": {}
+                        "$ref": "#/components/schemas/BackupExtraInfoTables"
                     },
                     "serviceType": {
                         "$ref": "#/components/schemas/DomainServiceType"
@@ -9962,7 +10135,9 @@
                     },
                     "domain_logs": {
                         "type": "array",
-                        "items": {}
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "allInfo": {
                         "$ref": "#/components/schemas/DomainAllInfo"
@@ -10569,7 +10744,7 @@
                     "mail_order_date": {
                         "description": "The order date of the mail service.",
                         "type": "string",
-                        "example": "2023-07-16 00:55:05"
+                        "example": "2023-07-16T00:55:05.000Z"
                     },
                     "mail_custid": {
                         "description": "The customer ID associated with the mail service.",
@@ -10674,7 +10849,7 @@
                     "next_date": {
                         "description": "The next payment date of the service.",
                         "type": "string",
-                        "example": "2023-08-16 00:55:05"
+                        "example": "2023-08-16T00:55:05.000Z"
                     },
                     "service_next_invoice_date": {
                         "description": "The next invoice date of the service.",
@@ -11007,7 +11182,7 @@
                         "format": "date-time",
                         "description": "License order date",
                         "type": "string",
-                        "example": "2020-01-14 10:48:14"
+                        "example": "2020-01-14T10:48:14.000Z"
                     },
                     "license_custid": {
                         "description": "Customer ID",
@@ -11114,7 +11289,7 @@
                         "format": "date-time",
                         "description": "Next date",
                         "type": "string",
-                        "example": "2023-09-14 09:39:46"
+                        "example": "2023-09-14T09:39:46.000Z"
                     },
                     "service_next_invoice_date": {
                         "description": "Next invoice date",
@@ -11526,238 +11701,6 @@
                     }
                 }
             },
-            "Home": {
-                "required": [
-                    "last_login_ip",
-                    "last_login",
-                    "currency",
-                    "amount",
-                    "invoice_list",
-                    "balance",
-                    "full_name",
-                    "email",
-                    "tickets",
-                    "data",
-                    "ticketStatus",
-                    "ticketStatusView",
-                    "details",
-                    "services",
-                    "AFFILIATE_AMOUNT"
-                ],
-                "type": "object",
-                "properties": {
-                    "last_login_ip": {
-                        "description": "Last login IP.",
-                        "type": "string",
-                        "example": "99.88.77.66"
-                    },
-                    "last_login": {
-                        "description": "Last login time.",
-                        "type": "string",
-                        "example": "14:58:pm - 17 Aug, 2023"
-                    },
-                    "currency": {
-                        "description": "Currency symbol.",
-                        "type": "string",
-                        "example": "$"
-                    },
-                    "amount": {
-                        "description": "Amount with currency.",
-                        "type": "string",
-                        "example": "$23.50"
-                    },
-                    "invoice_list": {
-                        "description": "Number of invoices.",
-                        "type": "integer",
-                        "example": 5
-                    },
-                    "balance": {
-                        "description": "Balance with currency.",
-                        "type": "string",
-                        "example": "$0.60"
-                    },
-                    "full_name": {
-                        "description": "User's full name.",
-                        "type": "string",
-                        "example": "John"
-                    },
-                    "email": {
-                        "description": "User's email address.",
-                        "type": "string",
-                        "example": "user@domain.com"
-                    },
-                    "tickets": {
-                        "description": "List of tickets.",
-                        "type": "array",
-                        "items": {}
-                    },
-                    "data": {
-                        "description": "User-specific data.",
-                        "type": "object",
-                        "example": {}
-                    },
-                    "ticketStatus": {
-                        "description": "Ticket statuses.",
-                        "type": "object",
-                        "properties": {
-                            "Open": {
-                                "description": "Count of open tickets.",
-                                "type": "integer",
-                                "example": 4
-                            },
-                            "On Hold": {
-                                "description": "Count of tickets on hold.",
-                                "type": "integer",
-                                "example": 5
-                            }
-                        }
-                    },
-                    "ticketStatusView": {
-                        "description": "Ticket statuses with view numbers.",
-                        "type": "object",
-                        "properties": {
-                            "4": {
-                                "description": "Status corresponding to view number 4.",
-                                "type": "string",
-                                "example": "Open"
-                            },
-                            "5": {
-                                "description": "Status corresponding to view number 5.",
-                                "type": "string",
-                                "example": "On Hold"
-                            },
-                            "6": {
-                                "description": "Status corresponding to view number 6.",
-                                "type": "string",
-                                "example": "Closed"
-                            }
-                        }
-                    },
-                    "details": {
-                        "description": "User's details.",
-                        "type": "object",
-                        "properties": {
-                            "modules": {
-                                "type": "object",
-                                "properties": {
-                                    "domains": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesDomains"
-                                    },
-                                    "webhosting": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesWebhosting"
-                                    },
-                                    "vps": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesVps"
-                                    },
-                                    "licenses": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesLicenses"
-                                    },
-                                    "backups": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesBackups"
-                                    },
-                                    "servers": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesServers"
-                                    },
-                                    "quickservers": {
-                                        "$ref": "#/components/schemas/HomeDetailsModulesQuickservers"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "services": {
-                        "description": "User's services.",
-                        "type": "object",
-                        "properties": {
-                            "domains": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "$ref": "#/components/schemas/HomeServicesDomainsLinks"
-                                    },
-                                    "count": {
-                                        "description": "Number of domains.",
-                                        "type": "integer",
-                                        "example": 5
-                                    }
-                                }
-                            },
-                            "webhosting": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "$ref": "#/components/schemas/HomeServicesWebhostingLinks"
-                                    },
-                                    "count": {
-                                        "description": "Number of web hosting services.",
-                                        "type": "integer",
-                                        "example": 8
-                                    }
-                                }
-                            },
-                            "vps": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "$ref": "#/components/schemas/HomeServicesVpsLinks"
-                                    },
-                                    "count": {
-                                        "description": "Number of VPS services.",
-                                        "type": "integer",
-                                        "example": 20
-                                    }
-                                }
-                            },
-                            "licenses": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "$ref": "#/components/schemas/HomeServicesLicensesLinks"
-                                    },
-                                    "count": {
-                                        "description": "Number of licenses.",
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                }
-                            },
-                            "servers": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "$ref": "#/components/schemas/HomeServicesServersLinks"
-                                    },
-                                    "count": {
-                                        "description": "Number of servers.",
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                }
-                            },
-                            "backups": {
-                                "type": "object",
-                                "properties": {
-                                    "links": {
-                                        "description": "List of backup links.",
-                                        "type": "array",
-                                        "items": {}
-                                    },
-                                    "count": {
-                                        "description": "Number of backups.",
-                                        "type": "integer",
-                                        "example": 0
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "AFFILIATE_AMOUNT": {
-                        "description": "Affiliate amount with currency.",
-                        "type": "string",
-                        "example": "100"
-                    }
-                }
-            },
             "Quickserver": {
                 "required": [
                     "serviceInfo",
@@ -11942,7 +11885,7 @@
                     "qs_order_date": {
                         "description": "Order date",
                         "type": "string",
-                        "example": "2023-04-11 20:00:06"
+                        "example": "2023-04-11T20:00:06.000Z"
                     },
                     "qs_status": {
                         "description": "Status",
@@ -12077,7 +12020,7 @@
                     "next_date": {
                         "description": "Next date",
                         "type": "string",
-                        "example": "2023-05-11 20:00:06"
+                        "example": "2023-05-11T20:00:06.000Z"
                     },
                     "service_next_invoice_date": {
                         "description": "Next invoice date",
@@ -12185,7 +12128,7 @@
                     "qs_last_update": {
                         "description": "Last update date",
                         "type": "string",
-                        "example": "2023-08-17 23:52:02"
+                        "example": "2023-08-17T23:52:02.000Z"
                     },
                     "qs_cores": {
                         "description": "Number of cores",
@@ -12966,7 +12909,7 @@
                     "server_order_date": {
                         "description": "The date when the server was ordered.",
                         "type": "string",
-                        "example": "2020-05-08 17:22:36"
+                        "example": "2020-05-08T17:22:36.000Z"
                     },
                     "server_invoice": {
                         "description": "The invoice number for the server.",
@@ -13883,7 +13826,7 @@
                     "created_at": {
                         "description": "Creation date",
                         "type": "string",
-                        "example": "2023-01-25 14:50:55"
+                        "example": "2023-01-25T14:50:55.000Z"
                     },
                     "updated_at": {
                         "description": "Update date",
@@ -14139,7 +14082,7 @@
                     "created_at": {
                         "description": "The creation timestamp of the service offer.",
                         "type": "string",
-                        "example": "2023-01-25 14:50:55"
+                        "example": "2023-01-25T14:50:55.000Z"
                     },
                     "updated_at": {
                         "description": "The update timestamp of the service offer.",
@@ -15208,6 +15151,302 @@
                 "example": {
                     "text": "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
                     "queueId": 14670065
+                }
+            },
+            "BackupBillingDetails": {
+                "type": "object",
+                "properties": {
+                    "service_last_invoice_date": {
+                        "description": "Last invoice date of the service.",
+                        "type": "string",
+                        "example": "December 29, 2021"
+                    },
+                    "service_payment_status": {
+                        "description": "Payment status of the service.",
+                        "type": "string",
+                        "example": "Paid"
+                    },
+                    "service_frequency": {
+                        "description": "Billing frequency of the service.",
+                        "type": "string",
+                        "example": "Monthly"
+                    },
+                    "next_date": {
+                        "description": "Next billing date of the service.",
+                        "type": "string",
+                        "example": "2022-01-29T14:09:57.000Z"
+                    },
+                    "service_next_invoice_date": {
+                        "description": "Next invoice date of the service.",
+                        "type": "string",
+                        "example": "January 29, 2022"
+                    },
+                    "service_currency": {
+                        "description": "Currency of the service.",
+                        "type": "string",
+                        "example": "USD"
+                    },
+                    "service_currency_symbol": {
+                        "description": "Currency symbol of the service.",
+                        "type": "string",
+                        "example": "$"
+                    },
+                    "service_cost_info": {
+                        "description": "Cost information of the service.",
+                        "type": "string",
+                        "example": "3"
+                    },
+                    "service_extra": {
+                        "description": "Service Extra Info",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": "[]"
+                    },
+                    "service_extra_json": {
+                        "description": "JSON representation of extra service information.",
+                        "type": "string",
+                        "example": "[]"
+                    }
+                }
+            },
+            "Home": {
+                "required": [
+                    "last_login_ip",
+                    "last_login",
+                    "currency",
+                    "amount",
+                    "invoice_list",
+                    "balance",
+                    "full_name",
+                    "email",
+                    "tickets",
+                    "data",
+                    "ticketStatus",
+                    "ticketStatusView",
+                    "details",
+                    "services",
+                    "AFFILIATE_AMOUNT"
+                ],
+                "type": "object",
+                "properties": {
+                    "last_login_ip": {
+                        "description": "Last login IP.",
+                        "type": "string",
+                        "example": "99.88.77.66"
+                    },
+                    "last_login": {
+                        "description": "Last login time.",
+                        "type": "string",
+                        "example": "14:58:pm - 17 Aug, 2023"
+                    },
+                    "currency": {
+                        "description": "Currency symbol.",
+                        "type": "string",
+                        "example": "$"
+                    },
+                    "amount": {
+                        "description": "Amount with currency.",
+                        "type": "string",
+                        "example": "$23.50"
+                    },
+                    "invoice_list": {
+                        "description": "Number of invoices.",
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "balance": {
+                        "description": "Balance with currency.",
+                        "type": "string",
+                        "example": "$0.60"
+                    },
+                    "full_name": {
+                        "description": "Users full name.",
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "email": {
+                        "description": "User email address.",
+                        "type": "string",
+                        "example": "user@domain.com"
+                    },
+                    "tickets": {
+                        "description": "List of tickets.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AccountInfo",
+                        "description": "User-specific data."
+                    },
+                    "ticketStatus": {
+                        "description": "Ticket statuses.",
+                        "type": "object",
+                        "properties": {
+                            "Open": {
+                                "description": "Count of open tickets.",
+                                "type": "integer",
+                                "example": 4
+                            },
+                            "On Hold": {
+                                "description": "Count of tickets on hold.",
+                                "type": "integer",
+                                "example": 5
+                            }
+                        }
+                    },
+                    "ticketStatusView": {
+                        "description": "Ticket statuses with view numbers.",
+                        "type": "object",
+                        "properties": {
+                            "4": {
+                                "description": "Status corresponding to view number 4.",
+                                "type": "string",
+                                "example": "Open"
+                            },
+                            "5": {
+                                "description": "Status corresponding to view number 5.",
+                                "type": "string",
+                                "example": "On Hold"
+                            },
+                            "6": {
+                                "description": "Status corresponding to view number 6.",
+                                "type": "string",
+                                "example": "Closed"
+                            }
+                        }
+                    },
+                    "details": {
+                        "description": "Users details.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "properties": {
+                            "modules": {
+                                "type": "object",
+                                "properties": {
+                                    "domains": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesDomains"
+                                    },
+                                    "webhosting": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesWebhosting"
+                                    },
+                                    "vps": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesVps"
+                                    },
+                                    "licenses": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesLicenses"
+                                    },
+                                    "backups": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesBackups"
+                                    },
+                                    "servers": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesServers"
+                                    },
+                                    "quickservers": {
+                                        "$ref": "#/components/schemas/HomeDetailsModulesQuickservers"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "services": {
+                        "description": "Users services.",
+                        "type": "object",
+                        "properties": {
+                            "domains": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "$ref": "#/components/schemas/HomeServicesDomainsLinks"
+                                    },
+                                    "count": {
+                                        "description": "Number of domains.",
+                                        "type": "integer",
+                                        "example": 5
+                                    }
+                                }
+                            },
+                            "webhosting": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "$ref": "#/components/schemas/HomeServicesWebhostingLinks"
+                                    },
+                                    "count": {
+                                        "description": "Number of web hosting services.",
+                                        "type": "integer",
+                                        "example": 8
+                                    }
+                                }
+                            },
+                            "vps": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "$ref": "#/components/schemas/HomeServicesVpsLinks"
+                                    },
+                                    "count": {
+                                        "description": "Number of VPS services.",
+                                        "type": "integer",
+                                        "example": 20
+                                    }
+                                }
+                            },
+                            "licenses": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "$ref": "#/components/schemas/HomeServicesLicensesLinks"
+                                    },
+                                    "count": {
+                                        "description": "Number of licenses.",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                }
+                            },
+                            "servers": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "$ref": "#/components/schemas/HomeServicesServersLinks"
+                                    },
+                                    "count": {
+                                        "description": "Number of servers.",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                }
+                            },
+                            "backups": {
+                                "type": "object",
+                                "properties": {
+                                    "links": {
+                                        "description": "List of backup links.",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "count": {
+                                        "description": "Number of backups.",
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "AFFILIATE_AMOUNT": {
+                        "description": "Affiliate amount with currency.",
+                        "type": "string",
+                        "example": "100"
+                    }
                 }
             }
         },
