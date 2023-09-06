@@ -175,7 +175,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 /* @import 'jquery-ui/dist/themes/smoothness/jquery-ui.css'; */
 /* @import '/css/misha-theme/jquery-ui.css'; */
 /* @import '/css/jquery.custom.css'; */
-@import 'bootstrap/dist/css/bootstrap.css';
+/* @import 'bootstrap/dist/css/bootstrap.css';
 @import '/templates/menu/dark/menu.css';
 @import '/css/hide_printed_links.css';
 @import '/images/myadmin/css/styles.css';
@@ -189,11 +189,11 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
-@import '/templates/adminlte/custom_styles.css';
+@import '/templates/adminlte/custom_styles.css'; */
 /* @import '/templates/adminlte/jquery.passwordRequirements.css'; */
-@import '/templates/my/style.css';
+/* @import '/templates/my/style.css';
 @import '/templates/my/style2.css';
-@import '@fortawesome/fontawesome-free/css/all.css';
+@import '@fortawesome/fontawesome-free/css/all.css'; */
 /* @import 'jquery-simple-pass-meter/simplePassMeter.css';
 @import '/css/home_new.css?20180104';
 @import '/css/home.css';
