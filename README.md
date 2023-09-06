@@ -129,7 +129,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /domains                            | [x]     | [x]      | [x]       |
 | /domains/order                      | [ ]     | [ ]      | [ ]       |
 | /domains/order/:domain              | [ ]     | [ ]      | [ ]       |
-| /domains/:id/order/:domain/:regType | [ ]     | [ ]      | [ ]       |
+| /domains/order/:domain/:regType     | [ ]     | [ ]      | [ ]       |
 | /domains/:id/transfer               | [ ]     | [ ]      | [ ]       |
 | /domains/:id                        | [ ]     | [ ]      | [ ]       |
 | /domains/:id/welcome_email          | [ ]     | [ ]      | [ ]       |
