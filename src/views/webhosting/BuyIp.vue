@@ -24,15 +24,15 @@ const props = defineProps({
     },
     ip_currency: {
         type: String,
-        required: true,
+        required: false,
     },
     im_cost: {
         type: String,
-        required: true,
+        required: false,
     },
     ip_cost: {
         type: String,
-        required: true,
+        required: false,
     },
 });
 const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);

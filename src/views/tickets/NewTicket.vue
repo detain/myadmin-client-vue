@@ -25,17 +25,12 @@ const subject = ref('');
 const kyDept = ref('');
 const ima = ref('admin');
 const abuse = '';
-
-const getActionUrl = () => {
-    // return the action URL for the form submission
-    return 'your-action-url';
-};
 </script>
 
 <template>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="POST" class="new-ticket" enctype="multipart/form-data" :action="getActionUrl">
+            <form method="POST" class="new-ticket" enctype="multipart/form-data">
                 <input v-if="abuse" type="hidden" name="abuse" :value="abuse" />
                 <div class="card card-outline card-success">
                     <div class="card-header">
