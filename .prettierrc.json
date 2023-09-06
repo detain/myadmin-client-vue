@@ -10,5 +10,6 @@
     "bracketSameLine": true,
     "arrowParens": "always",
     "endOfLine": "lf",
+    "proseWrap": "never",
     "singleAttributePerLine": false
 }
