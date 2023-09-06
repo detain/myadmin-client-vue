@@ -92,8 +92,8 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | Url                                 | Working | API Spec | Breadcrum |
 | ----------------------------------- | ------- | -------- | --------- |
 | /                                   | [x]     | [ ]      | [x]       |
-| /login                              | [ ]     | [ ]      | [ ]       |
-| /register                           | [ ]     | [ ]      | [ ]       |
+| /login                              | [ ]     | [ ]      |           |
+| /register                           | [ ]     | [ ]      |           |
 | /sudo/:sessionId                    | [x]     |          |           |
 | /home                               | [ ]     | [ ]      | [ ]       |
 | /prepays                            | [ ]     | [ ]      | [ ]       |
