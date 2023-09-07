@@ -1,0 +1,9 @@
+export { default as CancelDomain } from './CancelDomain.vue';
+export { default as CancelLicense } from './CancelLicense.vue';
+export { default as CancelMail } from './CancelMail.vue';
+export { default as CancelQs } from './CancelQs.vue';
+export { default as CancelSsl } from './CancelSsl.vue';
+export { default as CancelStorage } from './CancelStorage.vue';
+export { default as CancelVps } from './CancelVps.vue';
+export { default as CancelWebsite } from './CancelWebsite.vue';
+export { default as Confirm } from './Confirm.vue';
