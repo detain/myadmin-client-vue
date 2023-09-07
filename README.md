@@ -218,7 +218,7 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /vps/:id/cancel                     | [ ]     | [ ]      | [ ]       |
 | /vps/:id/change_hostname            | [ ]     | [ ]      | [ ]       |
 | /vps/:id/change_root_password       | [ ]     | [ ]      | [ ]       |
-| /vps/:id/change_timezone            | [ ]     | [ ]      | [ ]       |
+| /vps/:id/change_timezone            | [x]     | [x]      | [x]       |
 | /vps/:id/change_webuzo_password     | [ ]     | [ ]      | [ ]       |
 | /vps/:id/disable_quota              | [x]     | [x]      | [x]       |
 | /vps/:id/disable_cd                 | [x]     | [x]      | [x]       |
@@ -232,12 +232,12 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 | /vps/:id/restore                    | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reset_password             | [ ]     | [ ]      | [ ]       |
 | /vps/:id/reverse_dns                | [x]     | [x]      | [x]       |
-| /vps/:id/setup_vnc                  | [ ]     | [ ]      | [ ]       |
+| /vps/:id/setup_vnc                  | [x]     | [x]      | [x]       |
 | /vps/:id/slices                     | [ ]     | [ ]      | [ ]       |
 | /vps/:id/start                      | [x]     | [x]      | [x]       |
 | /vps/:id/stop                       | [x]     | [x]      | [x]       |
 | /vps/:id/traffic_usage              | [ ]     | [ ]      | [ ]       |
-| /vps/:id/view_desktop               | [ ]     | [ ]      | [ ]       |
+| /vps/:id/view_desktop               | [x]     | [x]      | [x]       |
 | /websites                           | [x]     | [x]      | [x]       |
 | /websites/order                     | [ ]     | [ ]      | [ ]       |
 | /websites/:id                       | [ ]     | [ ]      | [ ]       |
