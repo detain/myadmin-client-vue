@@ -1,18 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import BuyIp from '@components/alerts/BuyIp.vue';
-import CancelDomain from '@components/alerts/CancelDomain.vue';
-import CancelLicense from '@components/alerts/CancelLicense.vue';
-import CancelMail from '@components/alerts/CancelMail.vue';
-import CancelQs from '@components/alerts/CancelQs.vue';
-import CancelSsl from '@components/alerts/CancelSsl.vue';
-import CancelStorage from '@components/alerts/CancelStorage.vue';
-import CancelVps from '@components/alerts/CancelVps.vue';
-import CancelWebsite from '@components/alerts/CancelWebsite.vue';
-import Confirm from '@components/alerts/Confirm.vue';
-//import EppCode from '@components/alerts/EppCode.vue';
-//import Lock from '@components/alerts/Lock.vue';
-//import Whois from '@components/alerts/Whois.vue';
+import { CancelDomain, CancelLicense, CancelMail, CancelQs, CancelSsl, CancelStorage, CancelVps, CancelWebsite, Confirm } from '@/components/alerts';
 
 const props = defineProps({
     display: {
@@ -60,13 +48,7 @@ const props = defineProps({
 
 <template>
     <div>
-        <template v-if="display === 'yes' && action === 'eppcode'">
-            <!-- <EppCode :url="url" :domain="domain" /> -->
-        </template>
-        <template v-else-if="display === 'yes' && action === 'lock'">
-            <!-- <Lock :url="url" :status="status" /> -->
-        </template>
-        <template v-else-if="display === 'yes' && action === 'cancel_domain'">
+        <template v-if="display === 'yes' && action === 'cancel_domain'">
             <CancelDomain :url="url" :domain="domain" />
         </template>
         <template v-else-if="display === 'yes' && action === 'cancel_vps'">
@@ -92,9 +74,6 @@ const props = defineProps({
         </template>
         <template v-else-if="display === 'yes' && action === 'whois'">
             <!-- <Whois :url="url" :funct="funct" :domain="domain" /> -->
-        </template>
-        <template v-else-if="display === 'yes' && action === 'buy_ip'">
-            <BuyIp :url="url" :domain="domain" />
         </template>
         <template v-else-if="display === 'yes' && action === 'confirm'">
             <Confirm :url="url" :html="html" />
