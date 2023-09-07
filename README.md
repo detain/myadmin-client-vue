@@ -49,6 +49,34 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 
 ## Development
 
+* [vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js](https://github.com/vitejs/awesome-vite)
+
+### Electron Integration
+
+* [electron-vite/electron-vite-vue: 🥳 Really simple Electron + Vite + Vue boilerplate.](https://github.com/electron-vite/electron-vite-vue)
+* [Deluze/electron-vue-template: Simple Vue3 + Electron starter template in TypeScript, including ViteJS and Electron Builder](https://github.com/Deluze/electron-vue-template)
+* [cawa-93/vite-electron-builder: Secure boilerplate for Electron app based on Vite. TypeScript + Vue/React/Angular/Svelte/Vanilla](https://github.com/cawa-93/vite-electron-builder)
+
+Each of the above repos is an Electron+Vue+Vite setup that is active and works well.   I plan on trying to get the whole app copied into each of these repos and see if i can get it working.  At the end I hope to have 1 or more working electron versions of my app.
+
+* Phase 1 - login page with needed stylings + libs
+  * make sure @ link is there
+  * add login page
+  * add libs needed for login page
+  * add pinia and get it working
+  * get it to load nicely in electron
+* Phase 2 - main layout and components
+  * add vue-router and get it working
+  * add main components for the layout (clienthome, mainmenu, etc)
+  * add any needed libs
+  * get it all working nicely in electron so far
+* Phase 3 - full app
+  * add all the remaining pages/routes/stores/etc
+  * get them working nicely
+  * get it building in electron and showing everything properly
+
+After this is done on all of the repos pick the best one and setit up .. try to preserve git history
+
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
