@@ -4,7 +4,8 @@ import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useVpsStore, useSiteStore } from '@/stores';
-import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
+import { Cancel, Invoices } from '@/components/services';
+import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, SetupVnc, Vnc } from '@/views/vps';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
@@ -236,6 +237,9 @@ function toggleFunc(cp: string) {
         <div v-else-if="link == 'buy_ip'" class="col">
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+        </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>
         </div>
@@ -250,6 +254,9 @@ function toggleFunc(cp: string) {
         </div>
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
+        </div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
             <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
@@ -267,9 +274,13 @@ function toggleFunc(cp: string) {
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
+            <SetupVnc :id="id" :module="module" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></SetupVnc>
+        </div>
+        <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
-        <div v-else class="col" v-html="linkDisplay"></div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <template v-else>
         <div class="row">
