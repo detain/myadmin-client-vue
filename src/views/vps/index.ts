@@ -15,4 +15,5 @@ export { default as ResetPassword } from './ResetPassword.vue';
 export { default as ReverseDns } from './ReverseDns.vue';
 export { default as Slices } from './Slices.vue';
 export { default as TrafficUsage } from './TrafficUsage.vue';
+export { default as SetupVnc } from './SetupVnc.vue';
 export { default as Vnc } from './Vnc.vue';

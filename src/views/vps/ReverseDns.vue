@@ -33,7 +33,7 @@ function submitForm() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success' + response.message,
+                    html: 'Success' + response.text,
                 });
             });
     } catch (error: any) {
@@ -42,7 +42,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: 'Got error ' + error.text,
         });
     }
 }
