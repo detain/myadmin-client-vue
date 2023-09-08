@@ -51,6 +51,15 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 
 * [vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js](https://github.com/vitejs/awesome-vite)
 
+### OpenAPI Spec
+
+#### API GUI Designers
+
+* [Free Online Visual API Designer for OpenAPI and AsyncAPI Specifications - ApiBldr](https://www.apibldr.com/)
+* [my InterServer Services Management API - myadminapi - Edit - Frogment](https://www.frogment.com/edit/myadminapi/interserver_myadmin_api.json#info.yaml)
+* [APIGit - API Document](https://app.apigit.com/repository/detain/myadmin-openapi-spec/api/openapi.yaml)
+* [Apicurio Studio - API Editor :: my InterServer Services Management API](https://studio.apicur.io/apis/93618/editor)
+
 ### Electron Integration
 
 * [electron-vite/electron-vite-vue: 🥳 Really simple Electron + Vite + Vue boilerplate.](https://github.com/electron-vite/electron-vite-vue)
