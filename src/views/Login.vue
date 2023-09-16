@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
-const { breadcrums, page_heading, sidemenu } = storeToRefs(siteStore);
 
 const gresponse = ref('');
 const gresponse2 = ref('');
