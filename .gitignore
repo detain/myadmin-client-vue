@@ -12,11 +12,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-.DS_Store
 dev-dist
 dist
-dist_electron
+dist-electron
 dist-ssr
+release
 coverage
 *.local
 
@@ -27,8 +27,10 @@ coverage
 
 # Editor directories and files
 .vscode/*
+.vscode/.debug.env
 !.vscode/extensions.json
 .idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
@@ -48,3 +50,8 @@ coverage
 # Vitest related files
 __snapshots__/
 coverage/
+
+# lockfile
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

@@ -7,6 +7,8 @@ import { VueRecaptchaPlugin } from 'vue-recaptcha';
 
 import App from './App.vue';
 import { router } from './router';
+import './samples/node-api'
+//import "./style.css"
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -21,4 +23,7 @@ app.use(VueRecaptchaPlugin, {
     //  v3SiteKey: 'YOUR_V3_SITEKEY_HERE',
 });
 //app.use(i18n)
-app.mount('#app');
+app.mount('#app')
+  .$nextTick(() => {
+    postMessage({ payload: 'removeLoading' }, '*')
+  })
