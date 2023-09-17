@@ -4,6 +4,13 @@
     "main": "electron/electron.cjs",
     "version": "0.0.0",
     "private": true,
+    "keywords": [
+        "electron",
+        "rollup",
+        "vite",
+        "vue3",
+        "vue"
+    ],
     "type": "module",
     "scripts": {
         "ts": "npx vue-tsc --noEmit",
