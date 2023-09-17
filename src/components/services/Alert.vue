@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
     <div v-if="display == 'yes'">
-        <template v-if="action == 'confirm'" data="{ url: 'example.com', html: '<p>Confirmation message</p>' }" />
+        <template v-if="action == 'confirm'"/>
     </div>
 </template>
 
