@@ -5,12 +5,12 @@ import { storeToRefs } from 'pinia';
 import { MainMenu, Alert } from '@/components';
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-import 'jquery-ui';
+//import 'jquery-ui';
 import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';
 import Swal from 'sweetalert2';
-import 'https://kit.fontawesome.com/2c66c1d1b5.js';
+//import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 onMounted(function () {});
 
 const authStore = useAuthStore();
