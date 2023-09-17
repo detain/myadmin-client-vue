@@ -128,9 +128,9 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 
 | Url                                 | Working | API Call | API Spec | Breadcrum |
 | ----------------------------------- | ------- | -------- | -------- | --------- |
-| /                                   | [x]     | [ ]      | [ ]      | [x]       |
-| /login                              | [ ]     | [ ]      | [ ]      |           |
-| /register                           | [ ]     | [ ]      | [ ]      |           |
+| /                                   | [x]     | [x]      | [x]      | [x]       |
+| /login                              | [x]     | [ ]      | [ ]      |           |
+| /register                           | [x]     | [ ]      | [ ]      |           |
 | /sudo/:sessionId                    | [x]     |          |          |           |
 | /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /payment_types                      | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -143,14 +143,14 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate                          | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/faq                      | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/faq                      | [ ]     |          |          | [ ]       |
 | /affiliate/landing_pg               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/payment_setup            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/rich_report              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_graph              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_report             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/status_legend            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/tos                      | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/status_legend            | [ ]     |          |          | [ ]       |
+| /affiliate/tos                      | [ ]     |          |          | [ ]       |
 | /affiliate/traffic_graph            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/web_traffic              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/banners                  | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -245,27 +245,26 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps                                | [x]     | [x]      | [x]      | [x]       |
 | /vps/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps/:id                            | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/backup                     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/backups                    | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/backup                     | [ ]     | [x]      | [x]      | [ ]       |
+| /vps/:id/backups                    | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/block_smtp                 | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/buy_ip                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps/:id/buy_hd_space               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps/:id/cancel                     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/change_hostname            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/change_root_password       | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/change_hostname            | [ ]     | [x]      | [x]      | [ ]       |
+| /vps/:id/change_root_password       | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/change_timezone            | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/change_webuzo_password     | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/change_webuzo_password     | [ ]     | [ ]      | [x]      | [ ]       |
 | /vps/:id/disable_quota              | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/disable_cd                 | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/eject_cd                   | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/enable_quota               | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/insert_cd                  | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/insert_cd                  | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/invoices                   | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/reinstall_os               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/reset_password             | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/reinstall_os               | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/restart                    | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/restore                    | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/reset_password             | [ ]     | [ ]      | [ ]      | [ ]       |
+| /vps/:id/restore                    | [ ]     | [ ]      | [x]      | [ ]       |
+| /vps/:id/reset_password             | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/reverse_dns                | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/setup_vnc                  | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/slices                     | [ ]     | [ ]      | [ ]      | [ ]       |
