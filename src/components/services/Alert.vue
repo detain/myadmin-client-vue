@@ -1,17 +1,35 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Confirm } from '@/components/alerts';
+import { ref, onMounted } from 'vue';
+import Swal from 'sweetalert2';
 
+const url = ref(''); // Assign the value of `$url` here
+const html = ref(''); // Assign the value of `$html` here
 const display = ref('yes');
 const action = ref('eppcode');
 const actions = ref([
     'confirm',
 ]);
+
+onMounted(() => {
+    Swal.fire({
+        icon: 'question',
+        title: '<h3>Are you sure?</h3>',
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: 'Yes',
+        html: html.value,
+        preConfirm: () => {
+            (document.getElementById('confirmDialog') as unknown as HTMLFormElement).submit();
+        },
+    });
+});
+
 </script>
 
 <template>
     <div v-if="display == 'yes'">
-        <Confirm v-if="action == 'confirm'" data="{ url: 'example.com', html: '<p>Confirmation message</p>' }" />
+        <template v-if="action == 'confirm'" data="{ url: 'example.com', html: '<p>Confirmation message</p>' }" />
     </div>
 </template>
 
