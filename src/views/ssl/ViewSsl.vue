@@ -4,6 +4,7 @@ import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
+import { Cancel, Invoices } from '@/components/services';
 import { ChangeApproverEmail } from '@/views/ssl';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 
@@ -219,7 +220,11 @@ sslStore.getById(id as string);
         <div v-if="link == 'change_approver_email'" class="col">
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>
-        <div v-else class="col">{{ linkDisplay }}</div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <div v-else-if="!linkDisplay || (link && ['cancel', 'resend_approver_email', 'reissue_cert'].includes(link))" class="row row-flex">
         <div class="col-md-6">

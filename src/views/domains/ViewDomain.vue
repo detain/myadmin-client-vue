@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useDomainStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
+import { Cancel, Invoices } from '@/components/services';
 import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains';
 
 const module = 'domains';
@@ -126,7 +127,11 @@ console.log(link.value);
         <div v-else-if="link == 'whois'" class="col">
             <Whois :id="id"></Whois>
         </div>
-        <div v-else class="col">{{ linkDisplay }}</div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <div v-else class="row">
         <div class="col-md-6">

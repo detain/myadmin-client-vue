@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useLicenseStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
+import { Cancel, Invoices } from '@/components/services';
 import { ChangeIp, ChangeOs } from '@/views/licenses';
 
 const module = 'licenses';
@@ -141,7 +142,11 @@ licenseStore.getById(id as string);
         <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>
         </div>
-        <div v-else class="col">{{ linkDisplay }}</div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <div v-else-if="!linkDisplay || (link && link.includes('cancel'))" class="row row-flex">
         <template v-if="extraInfoTables.ip_info">
