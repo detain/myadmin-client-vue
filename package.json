@@ -4,6 +4,13 @@
     "main": "dist-electron/main/index.js",
     "version": "1.0.0",
     "private": true,
+    "keywords": [
+        "electron",
+        "rollup",
+        "vite",
+        "vue3",
+        "vue"
+    ],
     "type": "module",
     "debug": {
         "env": {
@@ -94,7 +101,6 @@
         "tempusdominus-bootstrap-4": "*",
         "toastr": "^2.1.4",
         "vee-validate": "*",
-        "vue": "*",
         "vue-recaptcha": "^3.0.0-alpha.2",
         "vue-router": "*",
         "word-wrap": ">=1.2.4",
@@ -158,7 +164,7 @@
         "prettier-plugin-tailwindcss": "*",
         "tailwindcss": "*",
         "terser": "*",
-        "typescript": "~5.0.4",
+        "typescript": "~5.1.6",
         "vite": "~4.4",
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
@@ -167,6 +173,7 @@
         "vite-plugin-turbo-console": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
+        "vue": "*",
         "vue-eslint-parser": "*",
         "vue-i18n": "*",
         "vue-tsc": "*",
