@@ -1,10 +1,9 @@
 {
     "name": "myadmin-client-vue",
     "author": "detain",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "keywords": [
-        "electron",
         "rollup",
         "vite",
         "vue3",
@@ -13,7 +12,7 @@
     "type": "module",
     "scripts": {
         "ts": "npx vue-tsc --noEmit",
-        "clean": "rm -rf dist dist_electron dev-dist",
+        "clean": "rm -rf dist dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
         "build": "vue-tsc --noEmit && vite build",
@@ -26,12 +25,6 @@
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
         "format": "prettier . --write",
         "format:check": "prettier . --check",
-        "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
-        "electron:pack": "electron-builder --dir",
-        "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
-        "electron:builder": "electron-builder",
-        "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
-        "app:build": "yarn build:for:electron && yarn electron:builder",
         "test": "vitest",
         "coverage": "vitest run --coverage"
     },
@@ -47,12 +40,11 @@
             "allowToChangeInstallationDirectory": true
         },
         "files": [
-            "dist/**/*",
-            "electron/**/*"
+            "dist/**/*"
         ],
         "directories": {
             "buildResources": "assets",
-            "output": "dist_electron"
+            "output": "dist"
         }
     },
     "dependencies": {
@@ -89,9 +81,6 @@
         "datatables.net-select-bs": "*",
         "datatables.net-select-bs4": "*",
         "datatables.net-vue3": "*",
-        "electron-log": "*",
-        "electron-store": "*",
-        "electron-updater": "^4.0",
         "font-awesome": "^4.7",
         "font-awesome-animation": "l-lin/font-awesome-animation#master",
         "jquery": "^3.7",
@@ -130,7 +119,6 @@
         "@types/bootstrap": "*",
         "@types/datatables.net-buttons": "*",
         "@types/datatables.net-select": "*",
-        "@types/electron-devtools-installer": "*",
         "@types/eslint": "*",
         "@types/jquery": "*",
         "@types/jquery-migrate": "*",
@@ -160,9 +148,6 @@
         "autoprefixer": "*",
         "concurrently": "*",
         "cross-env": "*",
-        "electron": "*",
-        "electron-builder": "*",
-        "electron-devtools-installer": "*",
         "eslint": "*",
         "eslint-config-prettier": "*",
         "eslint-plugin-vue": "*",
