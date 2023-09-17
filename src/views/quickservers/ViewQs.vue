@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useQsStore, useSiteStore } from '@/stores';
 import { Cancel, Invoices } from '@/components/services';
-import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
+import { Backup, Backups, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, SetupVnc, Vnc } from '@/views/vps';
 import $ from 'jquery';
+import Swal from 'sweetalert2';
 const module = 'quickservers';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const id = Number(route.params.id);
 const link = computed(() => {
@@ -27,7 +29,8 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra } = storeToRefs(qsStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
+const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 
 qsStore.getById(id);
 
@@ -40,6 +43,43 @@ function openCommentForm() {}
 function submitComment() {}
 
 function closeModal() {}
+
+function loadLink(newLink: string) {
+    console.log(`link is now ${newLink}`);
+    linkDisplay.value = false;
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module) + moduleLink(module), 'VPS'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View VPS ' + id);
+        siteStore.setTitle('View VPS ' + id);
+    } else {
+        siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (noForm.includes(newLink)) {
+            qsStore.queue(String(id), newLink);
+            Swal.fire({
+                icon: 'success',
+                html: responseText.value,
+            });
+        }
+        if (newLink == 'login') {
+            try {
+                fetchWrapper.get(`${baseUrl}/qs/${id}/login`).then((response) => {
+                    console.log('login success');
+                    console.log(response);
+                });
+            } catch (error: any) {
+                console.log('login failed');
+                console.log(error);
+            }
+        }
+    }
+}
+
 </script>
 
 <template>
@@ -107,11 +147,14 @@ function closeModal() {}
         </div>
     </div>
     <div v-if="link" class="row">
-        <div v-if="link == 'buy_hd_space'" class="col">
-            <BuyHdSpace :id="id" :module="module"></BuyHdSpace>
+        <div v-if="link == 'backup'" class="col">
+            <Backup :id="id" :module="module"></Backup>
         </div>
-        <div v-else-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id" :module="module"></BuyIp>
+        <div v-else-if="link == 'backups'" class="col">
+            <Backups :id="id" :module="module" :settings="settings"></Backups>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>
@@ -132,21 +175,21 @@ function closeModal() {}
             <Invoices :id="id" :module="module"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="id" :module="module"></ResetPassword>
+            <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module"></ReverseDns>
         </div>
-        <div v-else-if="link == 'slices'" class="col">
-            <Slices :id="id" :module="module"></Slices>
-        </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
         </div>
-        <div v-else-if="link == 'vnc'" class="col">
+        <div v-else-if="link == 'setup_vnc'" class="col">
+            <SetupVnc :id="id" :module="module" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></SetupVnc>
+        </div>
+        <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay">

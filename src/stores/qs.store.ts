@@ -93,6 +93,8 @@ interface QsState {
     memory: string;
     hdd: string;
     serviceOverviewExtra: any;
+    responseText: string;
+    queueId: number | null;
 }
 
 export const useQsStore = defineStore({
@@ -209,6 +211,8 @@ export const useQsStore = defineStore({
         serviceOverviewExtra: {
             spice_information: '',
         },
+        responseText: '',
+        queueId: null,
     }),
     getters: {},
     actions: {
@@ -229,6 +233,24 @@ export const useQsStore = defineStore({
                 this.error = error;
             }
             this.loading = false;
+        },
+        async queue(id: number | string, action: string): Promise<boolean> {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
+            this.loading = true;
+            let success = true;
+            try {
+                const response = await fetchWrapper.get(baseUrl + '/qs/' + id + '/' + action);
+                this.linkDisplay = response.text;
+                this.responseText = response.text;
+                this.queueId = response.queueId;
+            } catch (error: any) {
+                console.log('got error response' + error);
+                this.error = error;
+                success = false;
+            }
+            this.loading = false;
+            return success;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
