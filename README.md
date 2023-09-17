@@ -202,23 +202,23 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /qs                                 | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id                             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/backup                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/backups                     | [ ]     | [ ]      | [ ]      | [ ]       |
+| /qs/:id/backup                      | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/backups                     | [ ]     | [x]      | [ ]      | [ ]       |
 | /qs/:id/cancel                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/change_timezone             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/eject_cd                    | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/insert_cd                   | [ ]     | [ ]      | [ ]      | [ ]       |
+| /qs/:id/change_timezone             | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/eject_cd                    | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/insert_cd                   | [ ]     | [x]      | [ ]      | [ ]       |
 | /qs/:id/invoices                    | [ ]     | [x]      | [x]      | [ ]       |
-| /qs/:id/reinstall_os                | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/reset_password              | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/restart                     | [ ]     | [ ]      | [ ]      | [ ]       |
+| /qs/:id/reinstall_os                | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/reset_password              | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/restart                     | [ ]     | [x]      | [ ]      | [ ]       |
 | /qs/:id/restore                     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/reverse_dns                 | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/setup_vnc                   | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/start                       | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/stop                        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/traffic_usage               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/view_desktop                | [ ]     | [ ]      | [ ]      | [ ]       |
+| /qs/:id/reverse_dns                 | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/setup_vnc                   | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/start                       | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/stop                        | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/traffic_usage               | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/view_desktop                | [ ]     | [x]      | [ ]      | [ ]       |
 | /qs/order                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /register                           | [x]     | [ ]      | [ ]      |           |
 | /servers                            | [x]     | [x]      | [x]      | [x]       |
