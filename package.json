@@ -168,6 +168,8 @@
         "vite": "~4.4",
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
+        "vite-plugin-electron": "*",
+        "vite-plugin-electron-renderer": "*",
         "vite-plugin-inspect": "*",
         "vite-plugin-pwa": "*",
         "vite-plugin-turbo-console": "*",
