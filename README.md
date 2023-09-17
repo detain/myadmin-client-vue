@@ -136,7 +136,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /domains/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/cancel                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/contact                | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains/:id/contact                | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/dnssec                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/nameservers            | [ ]     | [ ]      | [ ]      | [ ]       |

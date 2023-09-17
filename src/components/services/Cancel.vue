@@ -1,24 +1,56 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
-const props = defineProps(['id']);
+import Swal from 'sweetalert2';
+const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
     return props.id;
+});
+const module = computed(() => {
+    return props.module;
 });
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/vps', 'VPS'],
+    ['/'+moduleLink(module.value), 'VPS'],
 ]);
-siteStore.addBreadcrum('/vps/' + id.value, 'View VPS ' + id.value);
-siteStore.addBreadcrum('/vps/' + id.value + '/', '');
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value, 'View '+module.value+' ' + id.value);
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value + '/cancel', 'Cancel '+module.value);
+
+
+onMounted(() => {
+});
+
+function onSubmit() {
+    Swal.fire({
+        icon: 'error',
+        title: '<h3>Cancel '+module.value+'</h3> ',
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: 'Yes, Cancel it.',
+        html: '<p>Are you sure want to cancel your '+module.value+' <span class="text-2lg">'+id.value+'</span>?</p>',
+        preConfirm: () => {
+            try {
+                fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/cancel').then((response) => {
+                    console.log(module.value+' cancel success');
+                    console.log(response);
+                });
+            } catch (error: any) {
+                console.log(module.value+' cancel failed');
+                console.log(error);
+            }
+
+        },
+    });
+}
 </script>
 
 <template>
@@ -30,7 +62,7 @@ siteStore.addBreadcrum('/vps/' + id.value + '/', '');
                         <h4 class="card-title m-0 text-left">Cancel Websites Service</h4>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal text-left" role="form" method="POST">
+                        <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label">Websites ID:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">376473</div>

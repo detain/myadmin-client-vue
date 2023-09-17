@@ -21,10 +21,10 @@ siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module.value), 'VPS'],
+    ['/'+moduleLink(module.value), module.value],
 ]);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value, 'View VPS ' + id.value);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value + '/invoices', 'VPS Invoices');
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value, 'View '+module.value+' ' + id.value);
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value + '/invoices', module.value+' Invoices');
 
 type InvoiceRow = [string, string, string, string, string, string, string, string, string, string, string, string, string];
 type ChargeInvoiceRow = [...InvoiceRow, InvoiceRow[]];
