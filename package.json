@@ -20,7 +20,7 @@
     "scripts": {
         "dev": "vite --cors",
         "build": "vue-tsc --noEmit && vite build && electron-builder",
-        "preview": "vite preview"
+        "preview": "vite preview",
         "ts": "npx vue-tsc --noEmit",
         "clean": "rm -rf dist dist_electron dev-dist",
         "dev:https": "vite --cors --https",
