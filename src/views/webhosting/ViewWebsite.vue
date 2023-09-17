@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useWebsiteStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
+import { Cancel, Invoices } from '@/components/services';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
 
 const module = 'webhosting';
@@ -150,14 +151,16 @@ loadLink(route.params.link as string);
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>
         </div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
         <div v-else-if="link == 'migration'" class="col">
             <Migration :id="id"></Migration>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
-        <div v-else class="col">
-            {{ linkDisplay }}
+        <div v-else class="col" v-html="linkDisplay">
         </div>
     </div>
     <div v-else-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row mt-2">

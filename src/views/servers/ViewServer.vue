@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useServerStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
+import { Cancel, Invoices } from '@/components/services';
 import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
 
 const module = 'servers';
@@ -148,7 +149,11 @@ const ipv6VlansNetworks = computed(() => {
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
-        <div v-else class="col">{{ linkDisplay }}</div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <div v-if="!linkDisplay || (link && link.includes('cancel'))" class="row justify-content-center">
         <div class="col-md-4">

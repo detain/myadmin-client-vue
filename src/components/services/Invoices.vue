@@ -1,25 +1,30 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores';
-const props = defineProps(['id']);
+import $ from 'jquery';
+const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
     return props.id;
+});
+const module = computed(() => {
+    return props.module;
 });
 
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/vps', 'VPS'],
+    ['/'+moduleLink(module.value), 'VPS'],
 ]);
-siteStore.addBreadcrum('/vps/' + id.value, 'View VPS ' + id.value);
-siteStore.addBreadcrum('/vps/' + id.value + '/', '');
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value, 'View VPS ' + id.value);
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value + '/invoices', 'VPS Invoices');
 
 type InvoiceRow = [string, string, string, string, string, string, string, string, string, string, string, string, string];
 type ChargeInvoiceRow = [...InvoiceRow, InvoiceRow[]];
@@ -242,107 +247,119 @@ function get_payment_method_text(type: string) {
 }
 
 $(document).ready(function() {
-    var table = $('#invoice_table').DataTable({
-        "data": dataSets.value,
-        "columnDefs": [{
-                targets: 2,
-                //render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'Do MMM YYYY')
-            },
-            {
-                targets: 3,
-                //render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'Do MMM YYYY')
-            },
-            {
-                "targets": 4,
-                "data": 3,
-                "render": function(data, type, row: string[], meta) {
-                    if (row[4] == '1') {
-                        data = data.replace('(Repeat Invoice: ' + row[8] + ') ', '');
+});
+
+try {
+    fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/invoices').then((response) => {
+        console.log(module.value+' invoices success');
+        console.log(response);
+        dataSets.value = response.invoices;
+        eDataSet.value = response.one_array;
+        prefixes.value = response.prefixes;
+        var table = $('#invoice_table').DataTable({
+            "data": dataSets.value,
+            "columnDefs": [{
+                    targets: 2,
+                    //render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'Do MMM YYYY')
+                },
+                {
+                    targets: 3,
+                    //render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'Do MMM YYYY')
+                },
+                {
+                    "targets": 4,
+                    "data": 3,
+                    "render": function(data, type, row: string[], meta) {
+                        if (row[4] == '1') {
+                            data = data.replace('(Repeat Invoice: ' + row[8] + ') ', '');
+                        }
+                        return data;
                     }
-                    return data;
-                }
-            },
-            {
-                "targets": 5,
-                "data": 4,
-                "render": function(data, type, row: string[], meta) {
-                    data = row[12] + row[5];
-                    return data;
-                }
-            },
-            {
-                "targets": 6,
-                "data": 6,
-                "render": function(data, type, row: string[], meta) {
-                    if (row[6] == '1') {
-                        if (data == 1) {
-                            return '<i class="icon-checkmark"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-checkmark"></use></svg></i>';
+                },
+                {
+                    "targets": 5,
+                    "data": 4,
+                    "render": function(data, type, row: string[], meta) {
+                        data = row[12] + row[5];
+                        return data;
+                    }
+                },
+                {
+                    "targets": 6,
+                    "data": 6,
+                    "render": function(data, type, row: string[], meta) {
+                        if (row[6] == '1') {
+                            if (data == 1) {
+                                return '<i class="icon-checkmark"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-checkmark"></use></svg></i>';
+                            } else {
+                                return '<i class="icon-delete"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-delete"></use></svg></i>';
+                            }
                         } else {
                             return '<i class="icon-delete"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-delete"></use></svg></i>';
                         }
-                    } else {
-                        return '<i class="icon-delete"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-delete"></use></svg></i>';
                     }
-                }
-            },
-            {
-                "targets": 7,
-                "data": null,
-                "width": "150px",
-                "render": function(data, type, row: string[], meta) {
-                    var out = '';
-                    if (Number(row[4]) >= 10) {
-                        out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_payment_confirmation=' + row[0] + '" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
-                    } else {
-                        out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_invoice=' + row[0] + '" data-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
-                    }
-                    if (row[4] == '1') {
-                        if (Number(row[6]) == 0) {
-                            out = out + '<a href="view_balance&module=' + row[9] + '&invoice=' + row[0] + '" data-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>';
+                },
+                {
+                    "targets": 7,
+                    "data": null,
+                    "width": "150px",
+                    "render": function(data, type, row: string[], meta) {
+                        var out = '';
+                        if (Number(row[4]) >= 10) {
+                            out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_payment_confirmation=' + row[0] + '" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
+                        } else {
+                            out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_invoice=' + row[0] + '" data-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
                         }
-                        out = out + '<a target="_blank"  href="view_invoice&id=' + row[0] + '&module=' + row[9] + '" data-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>';
-                        out = out + '<a href="pdf.php?choice=view_invoice&id=' + row[0] + '&module=' + row[9] + '" data-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>';
+                        if (row[4] == '1') {
+                            if (Number(row[6]) == 0) {
+                                out = out + '<a href="view_balance&module=' + row[9] + '&invoice=' + row[0] + '" data-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>';
+                            }
+                            out = out + '<a target="_blank"  href="view_invoice&id=' + row[0] + '&module=' + row[9] + '" data-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>';
+                            out = out + '<a href="pdf.php?choice=view_invoice&id=' + row[0] + '&module=' + row[9] + '" data-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>';
+                        }
+                        return out;
                     }
-                    return out;
                 }
+            ],
+            "columns": [{
+                    "className": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                { "data": 0 },
+                { "data": 1 },
+                { "data": 10 },
+                { "data": 3 },
+                { "data": 5 },
+                { "data": 6 },
+                { "data": 7 }
+            ],
+            "order": [
+                [0, "desc"]
+            ],
+            "autoWidth": false
+        });
+
+        $('#invoice_table tbody').on('click', 'td.details-control', function() {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                row.child(format(row.data())).show();
+                tr.addClass('shown');
+                console.log(row);
+                console.log(row.child());
+                console.log(format(row.data()));
             }
-        ],
-        "columns": [{
-                "className": 'details-control',
-                "orderable": false,
-                "data": null,
-                "defaultContent": ''
-            },
-            { "data": 0 },
-            { "data": 1 },
-            { "data": 10 },
-            { "data": 3 },
-            { "data": 5 },
-            { "data": 6 },
-            { "data": 7 }
-        ],
-        "order": [
-            [0, "desc"]
-        ],
-        "autoWidth": false
+        });
     });
-
-    $('#invoice_table tbody').on('click', 'td.details-control', function() {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
-        if (row.child.isShown()) {
-            row.child.hide();
-            tr.removeClass('shown');
-        } else {
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-            console.log(row);
-            console.log(row.child());
-            console.log(format(row.data()));
-        }
-    });
-});
-
+} catch (error: any) {
+    console.log(module.value+' invoices failed');
+    console.log(error);
+}
 
 </script>
 

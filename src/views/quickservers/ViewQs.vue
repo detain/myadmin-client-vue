@@ -4,6 +4,7 @@ import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useQsStore, useSiteStore } from '@/stores';
+import { Cancel, Invoices } from '@/components/services';
 import { BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, Vnc } from '@/views/vps';
 import $ from 'jquery';
 const module = 'quickservers';
@@ -127,6 +128,9 @@ function closeModal() {}
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
         </div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
             <ReinstallOs :id="id" :module="module"></ReinstallOs>
         </div>
@@ -145,7 +149,8 @@ function closeModal() {}
         <div v-else-if="link == 'vnc'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
-        <div v-else class="col" v-html="linkDisplay"></div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <template v-if="!link || (link && ['cancel', 'welcome_email'].includes(link))">
         <div class="row my-2">

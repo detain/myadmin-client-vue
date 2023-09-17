@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
+import { Cancel, Invoices } from '@/components/services';
 //import { Alerts, DenyRules } from '@/views/floating_ip';
 
 const module = 'floating_ips';
@@ -127,8 +128,12 @@ const statusClass = computed(() => {
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
+        <div v-else-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
         <div v-else class="row shadow-none">
-            <div class="col-md-12">{{ linkDisplay }}</div>
+            <div class="col-md-12" v-html="linkDisplay">
+            </div>
         </div>
     </template>
     <template v-else>

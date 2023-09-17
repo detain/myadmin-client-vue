@@ -4,6 +4,7 @@ import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useBackupStore, useSiteStore } from '@/stores';
+import { Cancel, Invoices } from '@/components/services';
 import $ from 'jquery';
 
 const module = 'backups';
@@ -102,7 +103,11 @@ const billingStatusClass = computed(() => {
         </div>
     </div>
     <div v-if="link" class="row shadow-none">
-        <div class="col">{{ linkDisplay }}</div>
+        <div v-if="link == 'invoices'" class="col">
+            <Invoices :id="id" :module="module"></Invoices>
+        </div>
+        <div v-else class="col" v-html="linkDisplay">
+        </div>
     </div>
     <div v-else-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row justify-content-center">
         <div class="col-md-8">
