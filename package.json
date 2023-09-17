@@ -1,7 +1,6 @@
 {
     "name": "myadmin-client-vue",
     "author": "detain",
-    "main": "electron/electron.cjs",
     "version": "0.0.0",
     "private": true,
     "keywords": [
