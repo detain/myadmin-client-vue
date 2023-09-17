@@ -45,15 +45,6 @@ coverage
 !.yarn/sdks
 !.yarn/versions
 
-# Non Zero nstalls
-public/.pnp.*
-public/.yarn/*
-!public/.yarn/patches
-!public/.yarn/plugins
-!public/.yarn/releases
-!public/.yarn/sdks
-!public/.yarn/versions
-
 # Vitest related files
 __snapshots__/
 coverage/
