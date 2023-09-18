@@ -172,32 +172,22 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
-/* @import 'jquery-ui/dist/themes/smoothness/jquery-ui.css'; */
-/* @import '/css/misha-theme/jquery-ui.css'; */
-/* @import '/css/jquery.custom.css'; */
-/* @import 'bootstrap/dist/css/bootstrap.css';
-@import '/templates/menu/dark/menu.css';
-@import '/css/hide_printed_links.css';
-@import '/images/myadmin/css/styles.css';
-@import 'admin-lte/dist/css/adminlte.css';
-@import 'icheck-bootstrap/icheck-bootstrap.css';
-@import 'select2/dist/css/select2.css';
-@import 'select2-bootstrap-theme/dist/select2-bootstrap.css';
-@import 'jqvmap-novulnerability/dist/jqvmap.css';
-@import 'overlayscrollbars/css/OverlayScrollbars.css';
-@import 'sweetalert2/dist/sweetalert2.css';
-@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css'; */
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
-/* @import '/templates/adminlte/custom_styles.css'; */
-/* @import '/templates/adminlte/jquery.passwordRequirements.css'; */
-/* @import '/templates/my/style.css';
-@import '/templates/my/style2.css'; */
-/* @import 'jquery-simple-pass-meter/simplePassMeter.css';
-@import '/css/home_new.css?20180104';
-@import '/css/home.css';
-@import 'tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
-@import 'daterangepicker/daterangepicker.css';
-@import 'summernote/dist/summernote-bs4.min.css';
-@import '@/assets/base.css';*/
+/* @import '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
+/*@import '/css/misha-theme/jquery-ui.css?url'; */
+@import '/css/jquery.custom.css?url';
+@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '/templates/menu/dark/menu.css?url';
+@import '/css/hide_printed_links.css?url';
+@import '/images/myadmin/css/styles.css?url';
+@import '/node_modules/icheck-bootstrap/icheck-bootstrap.min.css';
+@import '/node_modules/select2/dist/css/select2.min.css';
+@import '/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css';
+@import '/node_modules/jqvmap-novulnerability/dist/jqvmap.min.css';
+@import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
+@import '/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
+@import '/templates/adminlte/custom_styles.css?url';
+/*@import '/templates/adminlte/jquery.passwordRequirements.css?url'; */
+@import '/templates/my/style.css?url';
+@import '/templates/my/style2.css?url';
+@import '/node_modules/admin-lte/dist/css/adminlte.min.css';
 </style>
