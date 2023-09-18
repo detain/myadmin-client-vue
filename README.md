@@ -106,12 +106,12 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | ----------------------------------- | ------- | -------- | -------- | --------- |
 | /                                   | [x]     | [x]      | [x]      | [x]       |
 | /account/info                       | [x]     | [x]      | [x]      | [x]       |
-| /account/pass                       | [ ]     | [ ]      | [ ]      | [ ]       |
+| /account/pass                       | [ ]     | [x]      | [x]      | [ ]       |
 | /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate                          | [x]     |          |          | [x]       |
 | /affiliate/banner/:id               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/banners                  | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/banners                  | [ ]     | [x]      | [x]      | [ ]       |
 | /affiliate/faq                      | [x]     |          |          | [x]       |
 | /affiliate/landing_pg               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/payment_setup            | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -126,7 +126,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /backups/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /backups/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id/welcome_email          | [ ]     | [ ]      | [ ]      | [ ]       |
+| /backups/:id/welcome_email          | [ ]     | [x]      | [ ]      | [ ]       |
 | /backups/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart                               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart/::iids                        | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -141,7 +141,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /domains/:id/nameservers            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/renew                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/transfer               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains/:id/welcome_email          | [ ]     | [ ]      | [ ]      | [ ]       |
+| /domains/:id/welcome_email          | [ ]     | [x]      | [ ]      | [ ]       |
 | /domains/:id/whois                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order/:domain              | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -151,7 +151,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /floating_ips/:id/cancel            | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/:id/change_ip         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /floating_ips/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
-| /floating_ips/:id/welcome_email     | [ ]     | [ ]      | [ ]      | [ ]       |
+| /floating_ips/:id/welcome_email     | [ ]     | [x]      | [ ]      | [ ]       |
 | /floating_ips/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /invoices                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses                           | [x]     | [x]      | [x]      | [x]       |
@@ -160,7 +160,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /licenses/:id/change_ip             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/change_os             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id/welcome_email         | [ ]     | [ ]      | [ ]      | [ ]       |
+| /licenses/:id/welcome_email         | [ ]     | [x]      | [ ]      | [ ]       |
 | /licenses/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /login                              | [x]     | [ ]      | [ ]      |           |
@@ -170,30 +170,31 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /mail/:id/cancel                    | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/deny_rules                | [ ]     | [ ]      | [ ]      | [ ]       |
 | /mail/:id/invoices                  | [x]     | [x]      | [x]      | [x]       |
-| /mail/:id/welcome_email             | [ ]     | [ ]      | [ ]      | [ ]       |
+| /mail/:id/welcome_email             | [ ]     | [x]      | [ ]      | [ ]       |
 | /mail/order                         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /pay/:method/:invoices              | [ ]     | [x]      | [x]      | [ ]       |
 | /payment_types                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /qs                                 | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id                             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/backup                      | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/backups                     | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/backup                      | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/backups                     | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/cancel                      | [x]     | [x]      | [x]      | [x]       |
-| /qs/:id/change_timezone             | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/eject_cd                    | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/insert_cd                   | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/change_timezone             | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/eject_cd                    | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/insert_cd                   | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/invoices                    | [x]     | [x]      | [x]      | [x]       |
-| /qs/:id/reinstall_os                | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/reset_password              | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/restart                     | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/reinstall_os                | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/reset_password              | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/restart                     | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/restore                     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs/:id/reverse_dns                 | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/setup_vnc                   | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/start                       | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/stop                        | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/traffic_usage               | [ ]     | [x]      | [ ]      | [ ]       |
-| /qs/:id/view_desktop                | [ ]     | [x]      | [ ]      | [ ]       |
+| /qs/:id/reverse_dns                 | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/setup_vnc                   | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/start                       | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/stop                        | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/traffic_usage               | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/view_desktop                | [ ]     | [x]      | [x]      | [ ]       |
+| /qs/:id/welcome_email               | [ ]     | [x]      | [ ]      | [ ]       |
 | /qs/order                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /register                           | [x]     | [ ]      | [ ]      |           |
 | /servers                            | [x]     | [x]      | [x]      | [x]       |
@@ -203,7 +204,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /servers/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/ipmi_live              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /servers/:id/reverse_dns            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /servers/:id/welcome_email          | [ ]     | [ ]      | [ ]      | [ ]       |
+| /servers/:id/welcome_email          | [ ]     | [x]      | [ ]      | [ ]       |
 | /servers/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl                                | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id                            | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -211,7 +212,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /ssl/:id/change_approver_email      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id/invoices                   | [x]     | [x]      | [x]      | [x]       |
 | /ssl/:id/resend_approver_email      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /ssl/:id/welcome_email              | [ ]     | [ ]      | [ ]      | [ ]       |
+| /ssl/:id/welcome_email              | [ ]     | [x]      | [ ]      | [ ]       |
 | /ssl/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /sudo/:sessionId                    | [x]     |          |          |           |
 | /tickets                            | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -246,6 +247,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps/:id/stop                       | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/traffic_usage              | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/view_desktop               | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/welcome_email              | [ ]     | [x]      | [ ]      | [ ]       |
 | /vps/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites                           | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id                       | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -256,7 +258,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /websites/:id/login                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/migration             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/reverse_dns           | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/welcome_email         | [ ]     | [ ]      | [ ]      | [ ]       |
+| /websites/:id/welcome_email         | [ ]     | [x]      | [ ]      | [ ]       |
 | /websites/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 
 ### API Response HTTP Status Codes
