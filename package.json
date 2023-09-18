@@ -67,7 +67,7 @@
         "autoprefixer": "^10.4.14",
         "axios": "*",
         "bootstrap": "^4.6",
-        "chart.js": "*",
+        "chart.js": "~4.4",
         "datatables.net-bs": "*",
         "datatables.net-bs4": "*",
         "datatables.net-buttons": "*",
