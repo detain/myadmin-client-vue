@@ -105,21 +105,21 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | Url                                 | Working | API Call | API Spec | Breadcrum |
 | ----------------------------------- | ------- | -------- | -------- | --------- |
 | /                                   | [x]     | [x]      | [x]      | [x]       |
-| /account/info                       | [x]     | [ ]      | [ ]      | [x]       |
+| /account/info                       | [x]     | [x]      | [x]      | [x]       |
 | /account/pass                       | [ ]     | [ ]      | [ ]      | [ ]       |
 | /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate                          | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate                          | [x]     |          |          | [x]       |
 | /affiliate/banner/:id               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/banners                  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/faq                      | [ ]     |          |          | [ ]       |
+| /affiliate/faq                      | [x]     |          |          | [x]       |
 | /affiliate/landing_pg               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/payment_setup            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/rich_report              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_graph              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_report             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/status_legend            | [ ]     |          |          | [ ]       |
-| /affiliate/tos                      | [ ]     |          |          | [ ]       |
+| /affiliate/status_legend            | [x]     |          |          | [x]       |
+| /affiliate/tos                      | [x]     |          |          | [x]       |
 | /affiliate/traffic_graph            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/web_traffic              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /backups                            | [x]     | [x]      | [x]      | [x]       |
