@@ -110,7 +110,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate                          | [x]     |          |          | [x]       |
-| /affiliate/banner/:id               | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/banner/:id               | [ ]     |          |          | [ ]       |
 | /affiliate/banners                  | [ ]     | [x]      | [x]      | [ ]       |
 | /affiliate/faq                      | [x]     |          |          | [x]       |
 | /affiliate/landing_pg               | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -123,7 +123,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /affiliate/traffic_graph            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/web_traffic              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /backups                            | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /backups/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/welcome_email          | [ ]     | [x]      | [ ]      | [ ]       |
@@ -133,7 +133,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /dns                                | [x]     | [x]      | [x]      | [x]       |
 | /dns/:id                            | [x]     | [x]      | [x]      | [x]       |
 | /domains                            | [x]     | [x]      | [x]      | [x]       |
-| /domains/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /domains/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/contact                | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/dnssec                 | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -155,7 +155,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /floating_ips/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /invoices                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses                           | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id                       | [ ]     | [ ]      | [ ]      | [ ]       |
+| /licenses/:id                       | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id/change_ip             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/change_os             | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -165,7 +165,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /login                              | [x]     | [ ]      | [ ]      |           |
 | /mail                               | [x]     | [x]      | [x]      | [x]       |
-| /mail/:id                           | [ ]     | [ ]      | [ ]      | [ ]       |
+| /mail/:id                           | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/alerts                    | [ ]     | [ ]      | [ ]      | [ ]       |
 | /mail/:id/cancel                    | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/deny_rules                | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -176,7 +176,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /payment_types                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /qs                                 | [x]     | [x]      | [x]      | [x]       |
-| /qs/:id                             | [ ]     | [ ]      | [ ]      | [ ]       |
+| /qs/:id                             | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id/backup                      | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/backups                     | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/cancel                      | [x]     | [x]      | [x]      | [x]       |
@@ -198,7 +198,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /qs/order                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /register                           | [x]     | [ ]      | [ ]      |           |
 | /servers                            | [x]     | [x]      | [x]      | [x]       |
-| /servers/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /servers/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/bandwidth_graph        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /servers/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
@@ -250,12 +250,12 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps/:id/welcome_email              | [ ]     | [x]      | [ ]      | [ ]       |
 | /vps/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites                           | [x]     | [x]      | [x]      | [x]       |
-| /websites/:id                       | [ ]     | [ ]      | [ ]      | [ ]       |
+| /websites/:id                       | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/buy_ip                | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/download_backups      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
-| /websites/:id/login                 | [ ]     | [ ]      | [ ]      | [ ]       |
+| /websites/:id/login                 | [ ]     | [x]      | [x]      | [ ]       |
 | /websites/:id/migration             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/reverse_dns           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/welcome_email         | [ ]     | [x]      | [ ]      | [ ]       |
