@@ -45,7 +45,7 @@ function loadLink(newLink: string) {
         siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
-            const { value: formValues } = Swal.fire({
+            Swal.fire({
                 icon: "question",
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,

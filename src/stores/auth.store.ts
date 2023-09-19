@@ -171,6 +171,8 @@ n,
             }
         },
         async logout(): Promise<void> {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
             try {
                 await fetchWrapper.get(baseUrl + '/logout');
             } catch (error: any) {

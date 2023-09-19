@@ -54,7 +54,7 @@ function loadLink(newLink: string) {
             });
         }
         if (newLink == 'welcome_email') {
-            const { value: formValues } = Swal.fire({
+            Swal.fire({
                 icon: "question",
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,

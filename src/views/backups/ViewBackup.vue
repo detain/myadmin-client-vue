@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
-import { RouterLink, useRoute } from 'vue-router';
-import { ref, computed } from 'vue';
+import { fetchWrapper, moduleLink, ucwords } from '@/helpers';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { ref, computed, watch } from 'vue';
 import { useBackupStore, useSiteStore } from '@/stores';
 import { Cancel, Invoices } from '@/components/services';
 import $ from 'jquery';
+import Swal from 'sweetalert2';
 
 const module = 'backups';
 const siteStore = useSiteStore();
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
 });
 const { modules } = storeToRefs(siteStore);
+const baseUrl = siteStore.getBaseUrl();
 const settings = computed(() => {
     return modules.value[module];
 });
@@ -44,6 +47,76 @@ const billingStatusClass = computed(() => {
     if (status === 'expired' || status === 'canceled') return 'bg-red';
     return '';
 });
+
+function loadLink(newLink: string) {
+    console.log(`link is now ${newLink}`);
+    siteStore.setBreadcrums([
+        ['/home', 'Home'],
+        ['/' + moduleLink(module), 'Backup'],
+    ]);
+    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Backup ' + id);
+    if (typeof newLink == 'undefined') {
+        siteStore.setPageHeading('View Backup ' + id);
+        siteStore.setTitle('View Backup ' + id);
+    } else {
+        siteStore.setPageHeading('Backup ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Backup ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        if (newLink == 'welcome_email') {
+            Swal.fire({
+                icon: "question",
+                title: '<h3>Are you sure?</h3> ',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: 'Yes',
+                html: "Are you sure want to resend welcome email?",
+                preConfirm: () => {
+                    try {
+                        Swal.close();
+                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                            Swal.fire({
+                                icon: "success",
+                                title: '<h3>Email Sent</h3> ',
+                                showCancelButton: false,
+                                showLoaderOnConfirm: true,
+                                confirmButtonText: 'Yes',
+                                html: "The welcome email has been resent.  Check your inbox.",
+                                preConfirm: () => {
+                                    router.push('/' + moduleLink(module) + '/' + id);
+                                }
+                            });
+                        });
+                    } catch (error: any) {
+                        console.log('error');
+                        console.log(error);
+                    }
+                }
+            });
+        } else if (newLink == 'login') {
+            try {
+                fetchWrapper.get(baseUrl + '/' + moduleLink(module) + '/' + id + '/login').then((response) => {
+                    console.log('response:');
+                    console.log(response);
+                    if (typeof response.location != 'undefined') {
+                        window.location = response.location;
+                    }
+                });
+            } catch (error: any) {
+                console.log('error:');
+                console.log(error);
+            }
+        }
+    }
+}
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink as string);
+    }
+);
+
+loadLink(route.params.link as string);
 </script>
 
 <template>
