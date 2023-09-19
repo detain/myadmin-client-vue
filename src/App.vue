@@ -172,8 +172,8 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
-/* @import '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
-/*@import '/css/misha-theme/jquery-ui.css?url'; */
+/* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
+/* '/css/misha-theme/jquery-ui.css?url'; */
 @import '/css/jquery.custom.css?url';
 @import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '/templates/menu/dark/menu.css?url';
@@ -186,8 +186,9 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 @import '/templates/adminlte/custom_styles.css?url';
-/*@import '/templates/adminlte/jquery.passwordRequirements.css?url'; */
+/* '/templates/adminlte/jquery.passwordRequirements.css?url'; */
 @import '/templates/my/style.css?url';
 @import '/templates/my/style2.css?url';
 @import '/node_modules/admin-lte/dist/css/adminlte.min.css';
+@import '/node_modules/@material-design-icons/font/filled.css';
 </style>
