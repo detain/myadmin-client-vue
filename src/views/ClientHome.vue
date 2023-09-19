@@ -113,14 +113,6 @@ const affiliateUrl = computed(() => {
     return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? 'https://www.interserver.net/r/' + user.value.account_id : '';
 });
 
-function shareOnPinterest() {}
-
-function shareOnTwitter() {}
-
-function shareOnLinkedIn() {}
-
-function shareOnFacebook() {}
-
 const loadHome = async () => {
     try {
         fetchWrapper.get(baseUrl + '/home').then((response: HomeResponse) => {
@@ -287,10 +279,10 @@ loadHome();
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
-                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS" @click.prevent="shareOnFacebook"><img class="social" alt="Share on Facebook" src="/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
-                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" @click.prevent="shareOnTwitter" title="Tweet"><img class="social" alt="Tweet" src="/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
-                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" @click.prevent="shareOnLinkedIn" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
-                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(affiliateUrl) + '&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" @click.prevent="shareOnPinterest" title="Pin it"><img class="social" alt="Pin it" src="/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
+                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
+                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(affiliateUrl) + '&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Pin it"><img class="social" alt="Pin it" src="/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
                                     </div>
                                 </div>
                             </div>
