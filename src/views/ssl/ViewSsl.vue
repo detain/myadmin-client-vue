@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
 import { Cancel, Invoices } from '@/components/services';
 import { ChangeApproverEmail } from '@/views/ssl';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
+import Swal from 'sweetalert2';
 
 const module: string = 'ssl';
 const siteStore = useSiteStore();
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
@@ -128,7 +130,37 @@ function loadLink(newLink: string) {
         siteStore.setPageHeading('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.setTitle('SSL Certificate ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
-        if (newLink == 'login') {
+        if (newLink == 'welcome_email') {
+            Swal.fire({
+                icon: "question",
+                title: '<h3>Are you sure?</h3> ',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: 'Yes',
+                html: "Are you sure want to resend welcome email?",
+                preConfirm: () => {
+                    try {
+                        Swal.close();
+                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                            Swal.fire({
+                                icon: "success",
+                                title: '<h3>Email Sent</h3> ',
+                                showCancelButton: false,
+                                showLoaderOnConfirm: true,
+                                confirmButtonText: 'Yes',
+                                html: "The welcome email has been resent.  Check your inbox.",
+                                preConfirm: () => {
+                                    router.push('/' + moduleLink(module) + '/' + id);
+                                }
+                            });
+                        });
+                    } catch (error: any) {
+                        console.log('error');
+                        console.log(error);
+                    }
+                }
+            });
+        } else if (newLink == 'login') {
             // do something here
         }
     }

@@ -171,6 +171,14 @@ n,
             }
         },
         async logout(): Promise<void> {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
+            try {
+                await fetchWrapper.get(baseUrl + '/logout');
+            } catch (error: any) {
+                console.log('error:');
+                console.log(error);
+            }
             this.user = null;
             this.sessionId = null;
             this.apiKey = null;
