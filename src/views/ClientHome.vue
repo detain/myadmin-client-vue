@@ -252,7 +252,7 @@ loadHome();
                             </h2>
                             <div class="card-tools float-right">
                                 <span class="card-subtitle text-muted float-right mb-2 mt-2">
-                                    <router-link class="badge bg-success float-right" title="View All" :to="details.modules[module].list_link">{{ value.count }}</router-link>
+                                    <router-link class="badge bg-success float-right" title="View All" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
