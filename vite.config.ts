@@ -6,6 +6,7 @@ import renderer from 'vite-plugin-electron-renderer'
 import { notBundle } from 'vite-plugin-electron/plugin'
 import pkg from './package.json'
 import * as path from 'path';
+import inject from '@rollup/plugin-inject';
 /*
 import dts from 'vite-plugin-dts';
 //import AutoImport from "unplugin-auto-import/vite";
@@ -14,7 +15,6 @@ import dts from 'vite-plugin-dts';
 
 import { fileURLToPath, URL } from 'node:url';
 import fs from 'fs';
-import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
@@ -33,9 +33,6 @@ export default defineConfig({
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         //webfontDownload(),
-        inject({
-            jQuery: 'jquery',
-        }),
         //checker({
         //    vueTsc: true,
         //    typescript: false,
@@ -78,6 +75,9 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [
       vue(),
+      inject({
+        jQuery: 'jquery',
+    }),
       electron([
         {
           // Main process entry file of the Electron App.
