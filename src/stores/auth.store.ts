@@ -171,6 +171,12 @@ n,
             }
         },
         async logout(): Promise<void> {
+            try {
+                await fetchWrapper.get(baseUrl + '/logout');
+            } catch (error: any) {
+                console.log('error:');
+                console.log(error);
+            }
             this.user = null;
             this.sessionId = null;
             this.apiKey = null;
