@@ -1507,6 +1507,11 @@
   resolved "https://registry.yarnpkg.com/@lgaitan/pace-progress/-/pace-progress-1.0.7.tgz#c96fbbd9fd4cf528feed34ea0c8f9d8b3e98f0dd"
   integrity sha512-GMoTcF6WBpno7a7Iyx7M79os26d5bCDbh7YTZmXZM8YuLR3DDtwo0/CBYddStGD6QIBTieFDz4IAQiO0dAdRGw==
 
+"@material-design-icons/font@*":
+  version "0.14.12"
+  resolved "https://registry.yarnpkg.com/@material-design-icons/font/-/font-0.14.12.tgz#3cf6211e6e8c947be4157206b174f8df81ca32f7"
+  integrity sha512-S3tptjXalue2hdtcUUnCXKpMcvIEKlyXJrsVrPj3vvPAYR4IpvQcGCfB9n9mbC+U39QUwKrFIKKccaMtkrRqgQ==
+
 "@microsoft/api-extractor-model@7.28.0":
   version "7.28.0"
   resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.28.0.tgz#33136473abd048ca219a7f0bcb0b80030d712853"
