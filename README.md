@@ -247,7 +247,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps/:id/stop                       | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/traffic_usage              | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/view_desktop               | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/welcome_email              | [ ]     | [x]      | [ ]      | [ ]       |
+| /vps/:id/welcome_email              | [x]     | [x]      | [ ]      | [x]       |
 | /vps/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites                           | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id                       | [x]     | [x]      | [x]      | [x]       |
@@ -255,10 +255,10 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /websites/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/download_backups      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
-| /websites/:id/login                 | [ ]     | [x]      | [x]      | [ ]       |
+| /websites/:id/login                 | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/migration             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/reverse_dns           | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/welcome_email         | [ ]     | [x]      | [ ]      | [ ]       |
+| /websites/:id/welcome_email         | [x]     | [x]      | [ ]      | [x]       |
 | /websites/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 
 ### API Response HTTP Status Codes

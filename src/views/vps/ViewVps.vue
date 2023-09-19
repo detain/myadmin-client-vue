@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useVpsStore, useSiteStore } from '@/stores';
 import { Cancel, Invoices } from '@/components/services';
@@ -14,6 +14,7 @@ const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
 const link = computed(() => {
     return route.params.link;
@@ -52,7 +53,37 @@ function loadLink(newLink: string) {
                 html: responseText.value,
             });
         }
-        if (newLink == 'login') {
+        if (newLink == 'welcome_email') {
+            const { value: formValues } = Swal.fire({
+                icon: "question",
+                title: '<h3>Are you sure?</h3> ',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: 'Yes',
+                html: "Are you sure want to resend welcome email?",
+                preConfirm: () => {
+                    try {
+                        Swal.close();
+                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                            Swal.fire({
+                                icon: "success",
+                                title: '<h3>Email Sent</h3> ',
+                                showCancelButton: false,
+                                showLoaderOnConfirm: true,
+                                confirmButtonText: 'Yes',
+                                html: "The welcome email has been resent.  Check your inbox.",
+                                preConfirm: () => {
+                                    router.push('/' + moduleLink(module) + '/' + id);
+                                }
+                            });
+                        });
+                    } catch (error: any) {
+                        console.log('error');
+                        console.log(error);
+                    }
+                }
+            });
+        } else if (newLink == 'login') {
             try {
                 fetchWrapper.get(`${baseUrl}/vps/${id}/login`).then((response) => {
                     console.log('login success');
