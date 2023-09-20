@@ -507,13 +507,6 @@ authStore.load();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" />
-    <link rel="stylesheet" href="/css/tailwind.min.css" />
-    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
-    <link rel="stylesheet" href="/css/login_new.css" />
-    <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css" />
-    <link rel="stylesheet" href="/templates/adminlte/custom_styles.css" />
     <div class="bg-black p-3 px-3"><img src="/images/logo_new.png" alt="" /></div>
     <div class="container-main flex min-h-screen flex-grow flex-col-reverse lg:flex-row">
         <div class="marketing-content min-h-full w-full bg-blue-700 lg:block lg:w-5/12">
@@ -992,6 +985,10 @@ authStore.load();
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
+@import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
+@import '/css/tailwind.min.css';
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import '/css/login_new.css';
 body {
     height: 100vh;
 }
