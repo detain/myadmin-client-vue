@@ -28,25 +28,6 @@
         "test": "vitest",
         "coverage": "vitest run --coverage"
     },
-    "build": {
-        "appId": "com.my-website.my-app",
-        "productName": "MyApp",
-        "copyright": "Copyright © 2019 ${author}",
-        "mac": {
-            "category": "public.app-category.utilities"
-        },
-        "nsis": {
-            "oneClick": false,
-            "allowToChangeInstallationDirectory": true
-        },
-        "files": [
-            "dist/**/*"
-        ],
-        "directories": {
-            "buildResources": "assets",
-            "output": "dist"
-        }
-    },
     "dependencies": {
         "@fortawesome/fontawesome": "*",
         "@fortawesome/fontawesome-free": "^5.15",
