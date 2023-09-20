@@ -35,7 +35,6 @@
   color: #9eba0e;
 }
 .logo_wrapper .logo {
-  background-image: url("logo-new-gray.png?202103250919");
   background-repeat: no-repeat;
   background-size: 240px 50px;
   float: left;
@@ -55,44 +54,36 @@
   }
 }
 .mishaico a {
-  background-image: url("mishaIco.png");
   background-repeat: no-repeat;
   height: 23px;
   text-decoration: none;
   width: 54px;
 }
 .mishaico a:hover {
-  background-image: url("mishaIcoH.png");
 }
 .Homeico a {
-  background-image: url("homeIco.png");
   background-repeat: no-repeat;
   height: 23px;
   text-decoration: none;
   width: 23px;
 }
 .Homeico a:hover {
-  background-image: url("homeIcoH.png");
 }
 .contact_ico a {
-  background-image: url("contactIco.png");
   background-repeat: no-repeat;
   height: 23px;
   text-decoration: none;
   width: 23px;
 }
 .contact_ico a:hover {
-  background-image: url("contactIcoH.png");
 }
 .customer_ico a {
-  background-image: url("Customerlounge.png");
   background-repeat: no-repeat;
   height: 23px;
   text-decoration: none;
   width: 23px;
 }
 .customer_ico a:hover {
-  background-image: url("CustomerloungeH.png");
   background-repeat: no-repeat;
   height: 23px;
   width: 23px;
@@ -114,7 +105,6 @@
   width: 170px;
 }
 .footer_Ulist li a {
-  background-image: url("footer_bullet.png");
   background-position: left center;
   background-repeat: no-repeat;
   color: #888888;
@@ -160,7 +150,6 @@
 }
 
 .footer-new {
-  background: url("footer_bg.jpg") repeat-x scroll left top transparent;
   float: left;
   height: 175px;
   margin-top: 3px;
@@ -168,7 +157,6 @@
 }
 
 .scHdr {
-  background: #e6e6e6 url("../vps/titleback.png");
   font-weight: bold;
   border-left: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
@@ -200,7 +188,6 @@ body {
 }
 
 .bgimage45 {
-  background-image: url("../../images/header_BSeparatorBg.gif");
 }
 
 .footer {
