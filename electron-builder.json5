@@ -6,6 +6,7 @@
   "appId": "YourAppID",
   "asar": true,
   "productName": "YourAppName",
+  "extends": null,
   "directories": {
     "output": "release/${version}"
   },

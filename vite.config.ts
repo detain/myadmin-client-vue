@@ -77,7 +77,7 @@ export default defineConfig(({ command }) => {
       vue(),
       inject({
         jQuery: 'jquery',
-    }),
+      }),
       electron([
         {
           // Main process entry file of the Electron App.
