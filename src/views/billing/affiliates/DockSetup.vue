@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { fetchWrapper } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useAuthStore, useSiteStore, useAccountStore } from '@/stores';
+import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Affiliate - Dock Setup');
 siteStore.setTitle('Affiliate - Dock Setup');
