@@ -2,8 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore, useSiteStore, useAccountStore } from '@/stores';
 const siteStore = useSiteStore();
+const accountStore = useAccountStore();
 siteStore.setPageHeading('Affiliate - Dock Setup');
 siteStore.setTitle('Affiliate - Dock Setup');
 siteStore.setBreadcrums([
@@ -14,11 +15,47 @@ siteStore.setBreadcrums([
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
+const { data } = storeToRefs(accountStore);
 const referrerCoupon = ref('');
 const affiliateDockTitle = ref('');
 const affiliateDockDescription = ref('');
 
+function onSubmit() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(baseUrl + '/affiliate/dock_setup', {
+                coupon: data.value.referrer_coupon,
+                title: data.value.affiliate_dock_title,
+                description: data.value.affiliate_dock_description
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('affiliate dock success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: 'Success' + response.text,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('affilaite dock failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: 'Got error ' + error.text,
+        });
+    }
+}
+
 onMounted(() => {});
+accountStore.loadOnce();
 </script>
 
 <template>
@@ -55,11 +92,11 @@ onMounted(() => {});
                     </div>
                 </div>
                 <div class="card-body">
-                    <form id="dockform" method="post" enctype="multipart/form-data" action="index.php?choice=none.affiliate_dock_setup">
+                    <form id="dockform" method="post" enctype="multipart/form-data" @submit.prevent="onSubmit">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input v-model="referrerCoupon" id="referrer_coupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
+                                <input v-model="data.referrer_coupon" id="referrer_coupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
                             </div>
                         </div>
                         <!-- <div class="form-group row">
@@ -74,13 +111,13 @@ onMounted(() => {});
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_title">Title<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input v-model="affiliateDockTitle" id="affiliate_dock_title" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
+                                <input v-model="data.affiliate_dock_title" id="affiliate_dock_title" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_description">Description<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <textarea v-model="affiliateDockDescription" class="form-control form-control-sm" id="affiliate_dock_description" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
+                                <textarea v-model="data.affiliate_dock_description" class="form-control form-control-sm" id="affiliate_dock_description" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
                             </div>
                         </div>
                         <div class="row justify-content-center">
