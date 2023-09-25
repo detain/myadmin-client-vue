@@ -757,7 +757,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="signup_toggle twofactorauth mb-6 hidden">
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-mode="twoFactorAuthCode" placeholder="Enter Code from Authenticator" autocomplete="off" />
+                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-model="twoFactorAuthCode" placeholder="Enter Code from Authenticator" autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
                                                         </div>
