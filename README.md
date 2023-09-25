@@ -108,8 +108,8 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | ----------------------------------- | ------- | -------- | -------- | --------- |
 | /                                   | [x]     | [x]      | [x]      | [x]       |
 | /account/info                       | [x]     | [x]      | [x]      | [x]       |
-| /account/pass                       | [ ]     | [x]      | [x]      | [ ]       |
-| /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
+| /account/pass                       | [x]     | [x]      | [x]      | [x]       |
+| /account/settings                   | [ ]     | [ ]      | [ ]      | [x]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate                          | [x]     |          |          | [x]       |
 | /affiliate/banner/:id               | [ ]     |          |          | [ ]       |
@@ -165,7 +165,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /licenses/:id/welcome_email         | [x]     | [x]      | [ ]      | [x]       |
 | /licenses/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /login                              | [x]     | [ ]      | [ ]      |           |
+| /login                              | [x]     | [x]      | [x]      |           |
 | /mail                               | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id                           | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/alerts                    | [ ]     | [ ]      | [ ]      | [ ]       |
