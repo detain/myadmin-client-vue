@@ -66,8 +66,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 
 * **1.0-alpha** MileStone
   * [ ] finish /account/*
-  * view service pages
-    * [ ] links and form handling
   * order service pages
     * [ ] server
     * [ ] domain
@@ -94,9 +92,13 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * [ ] move type definitions into /types?
   * [ ] utilize the form validation stuff
   * [ ] replace jquery type calls with built in template handling and such
-  * [ ] electron build
+  * [ ] ionic capacitor
+    * [ ] android build
+    * [ ] ios build
+  * [x] electron build
     * [x] windows/linux/mac builds
-    * [ ] js/css assets loaded locally
+    * [ ] automated builds
+    * [x] js/css assets loaded locally
 
 ### Page Status
 
