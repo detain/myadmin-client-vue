@@ -288,6 +288,11 @@ export const useAccountStore = defineStore({
     }),
     getters: {},
     actions: {
+        async loadOnce(): Promise<void> {
+            if (Number(this.data.account_id) == 0 ) {
+                this.load();
+            }
+        },
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
