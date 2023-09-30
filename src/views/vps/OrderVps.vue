@@ -1004,7 +1004,7 @@ try {
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
                                     <div id="cyclediscount" class="col text-right"></div>
                                 </div>
-                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined' && couponInfo.applies > 0">
+                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined' && Number(couponInfo.applies) > 0">
                                     <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
                                     <div id="couponprice" class="col text-right"></div>
                                 </div>
