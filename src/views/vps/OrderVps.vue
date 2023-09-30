@@ -393,16 +393,6 @@ function updateCoupon() {
 }
 
 function update_vps_choices() {
-    if (curControl.value != jQuery('select[name=controlpanel]').val()) {
-        curControl.value = jQuery('select[name=controlpanel]').val() as string;
-        if (curControl.value == 'cpanel') {
-            controlCost.value = cpanelCost.value;
-        } else if (curControl.value == 'da') {
-            controlCost.value = daCost.value;
-        } else {
-            controlCost.value = 0;
-        }
-    }
     if (vpsPlatform.value == 'openvz' || vpsPlatform.value == 'virtuozzo') {
         jQuery('#hostnamerow').css('display', 'table-row');
         jQuery('#ssdrow').css('display', 'table-row');
@@ -580,16 +570,6 @@ function update_vps_choices() {
 }
 
 function update_vps_choices_order() {
-    if (curControl.value != jQuery('#controlpanel').val()) {
-        curControl.value = jQuery('#controlpanel').val() as string;
-        if (curControl.value == 'cpanel') {
-            controlCost.value = cpanelCost.value;
-        } else if (curControl.value == 'da') {
-            controlCost.value = daCost.value;
-        } else {
-            controlCost.value = 0;
-        }
-    }
     if (curSsd.value != jQuery('#ssd').val()) {
         curSsd.value = jQuery('#ssd').val() as number;
     }
@@ -760,7 +740,6 @@ function recomended_linux() {
     osDistro.value = 'ubuntu';
     slices.value = 1;
     curControl.value = 'none';
-    controlCost.value = 0;
     //update_vps_choices();
 }
 
@@ -769,7 +748,6 @@ function recomended_cpanel() {
     osDistro.value = 'centos';
     slices.value = 2;
     curControl.value = 'cpanel';
-    controlCost.value = cpanelCost.value;
     //update_vps_choices();
 }
 
@@ -779,7 +757,6 @@ function recomended_directadmin() {
     osDistro.value = 'almalinux';
     slices.value = 4;
     curControl.value = 'da';
-    controlCost.value = daCost.value;
     console.log(osDistro.value);
     //update_vps_choices();
     console.log(osDistro.value);
@@ -790,7 +767,6 @@ function recomended_windows() {
     osDistro.value = 'windows';
     slices.value = 2;
     curControl.value = 'none';
-    controlCost.value = 0;
     //update_vps_choices();
 }
 
@@ -799,7 +775,6 @@ function recomended_linux_desktop() {
     osDistro.value = 'ubuntu';
     slices.value = 2;
     curControl.value = 'none';
-    controlCost.value = 0;
     //update_vps_choices();
 }
 
@@ -808,7 +783,6 @@ function recomended_webuzo() {
     osDistro.value = 'centos';
     slices.value = 1;
     curControl.value = 'none';
-    controlCost.value = 0;
     //update_vps_choices();
 }
 

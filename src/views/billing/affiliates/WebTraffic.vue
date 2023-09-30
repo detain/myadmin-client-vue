@@ -54,7 +54,7 @@ try {
                 <template v-else>
                     <table class="table table-sm table-hover table-striped table-bordered">
                     <tr><th>Date</th><th>IP</th><th>URL</th></tr>
-                    <template v-for="(row, index) in traffic" key="index">
+                    <template v-for="(row, index) in traffic" :key="index">
                         <tr>
                             <td>{{row.traffic_timestamp}}</td>
                             <td>{{row.traffic_ip}}</td>
