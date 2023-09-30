@@ -96,7 +96,6 @@ const vpsNyCost = ref(0);
 const vpsSliceKvmWCost = ref(0);
 const totalCostDisplay = ref(0.0);
 const ipv6_only_discount = ref(1);
-const controlCost = ref(0);
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const step = ref('orderform');
@@ -172,7 +171,15 @@ interface VpsOrderResponse {
     vpsSliceVmwareCost: number;
     vpsSliceXenCost: number;
 }
-
+const controlCost = computed(() => {
+    if (curControl.value == 'cpanel') {
+        return cpanelCost.value;
+    } else if (curControl.value == 'da') {
+        return daCost.value;
+    } else {
+        return 0;
+    }
+});
 const slicesRange = computed(() => {
     const arr = [];
     for (let i = 1; i <= maxSlices.value; i++) {
@@ -1021,11 +1028,11 @@ try {
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
                                     <div class="col text-md totalcost_display text-right">{{ currencySymbol }}{{ platformPackages[vpsPlatform] ? packageCosts[platformPackages[vpsPlatform]] : 0 }}</div>
                                 </div>
-                                <div id="cyclediscountrownew" class="row mb-3">
+                                <div id="cyclediscountrownew" class="row mb-3" v-show="period >= 6">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
                                     <div id="cyclediscount" class="col text-right"></div>
                                 </div>
-                                <div id="couponpricerownew" class="row mb-3">
+                                <div id="couponpricerownew" class="row mb-3" v-show="couponInfo?.applies > 0">
                                     <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
                                     <div id="couponprice" class="col text-right"></div>
                                 </div>

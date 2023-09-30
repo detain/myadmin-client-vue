@@ -65,7 +65,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 ### TODO Road-Map
 
 * **1.0-alpha** MileStone
-  * [ ] finish /account/*
   * order service pages
     * [ ] server
     * [ ] domain
