@@ -123,7 +123,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /affiliate/status_legend            | [x]     |          |          | [x]       |
 | /affiliate/tos                      | [x]     |          |          | [x]       |
 | /affiliate/traffic_graph            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/web_traffic              | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/web_traffic              | [x]     | [x]      | [x]      | [x]       |
 | /backups                            | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
