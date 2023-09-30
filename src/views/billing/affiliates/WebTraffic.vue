@@ -61,11 +61,11 @@ try {
                             <td><a class="link" v-if="row.traffic_url != ''" :href="row.traffic_url" target=_blank :title="row.traffic_url+'(Load Page in New Tab (be careful about cookies being set)'">{{row.traffic_url}}</a>
                             </td>
                         </tr>
-                        <template v-if="row.traffic_referrer != ''">
+                        <template v-if="row.traffic_referer != ''">
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <td><b>referrer:</b> <a class="link" :href="row.traffic_referrer" target=_blank style="font-size: 10pt;" title="View Page in New Tab (be careful about cookies being set">{{row.traffic_referrer}}</a></td>
+                                <td><b>referrer:</b> <a class="link" :href="row.traffic_referer" target=_blank style="font-size: 10pt;" title="View Page in New Tab (be careful about cookies being set">{{row.traffic_referer}}</a></td>
                             </tr>
                         </template>
                     </template>
