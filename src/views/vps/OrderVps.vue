@@ -446,7 +446,6 @@ function update_vps_choices() {
         else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
-        controlCost.value = Number(parseFloat(controlCost.value.toString()).toFixed(2));
         jQuery('#controlpanelcost').text(currencySymbol.value + controlCost.value);
         jQuery('#controlpanelcostnew').text(currencySymbol.value + controlCost.value);
         jQuery('#controlpanelpricerownew').show();
@@ -612,7 +611,6 @@ function update_vps_choices_order() {
         else sliceCost.value = vpsSliceVirtuozzoCost.value;
     if (location.value == 3) sliceCost.value = sliceCost.value * vpsNyCost.value;
     if (controlCost.value > 0) {
-        controlCost.value = Number(parseFloat(controlCost.value.toString()).toFixed(2));
         jQuery('#controlpanelcost').text(currencySymbol.value + controlCost.value);
     } else {
         jQuery('#controlpanelcost').text('');
@@ -1006,7 +1004,7 @@ try {
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
                                     <div id="cyclediscount" class="col text-right"></div>
                                 </div>
-                                <div id="couponpricerownew" class="row mb-3" v-show="couponInfo?.applies > 0">
+                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined' && couponInfo.applies > 0">
                                     <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
                                     <div id="couponprice" class="col text-right"></div>
                                 </div>
