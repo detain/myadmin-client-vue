@@ -164,7 +164,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_reset"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" :checked="data.disable_reset == 1" value="1" />
+                                            <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" value="1" />
                                             <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_email_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" :checked="data.disable_email_notifications == 1" value="1" />
+                                            <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1" />
                                             <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_server_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" :checked="data.disable_server_notifications == 1" value="1" />
+                                            <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" value="1" />
                                             <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_reinstall"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" :checked="data.disable_reinstall == 1" value="1" />
+                                            <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" value="1" />
                                             <label for="disable_reinstall">Disable Reinstalls.</label>
                                         </div>
                                     </div>

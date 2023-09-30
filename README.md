@@ -66,8 +66,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 
 * **1.0-alpha** MileStone
   * [ ] finish /account/*
-  * view service pages
-    * [ ] links and form handling
   * order service pages
     * [ ] server
     * [ ] domain
@@ -94,9 +92,13 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * [ ] move type definitions into /types?
   * [ ] utilize the form validation stuff
   * [ ] replace jquery type calls with built in template handling and such
-  * [ ] electron build
+  * [ ] ionic capacitor
+    * [ ] android build
+    * [ ] ios build
+  * [x] electron build
     * [x] windows/linux/mac builds
-    * [ ] js/css assets loaded locally
+    * [ ] automated builds
+    * [x] js/css assets loaded locally
 
 ### Page Status
 
@@ -106,8 +108,8 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | ----------------------------------- | ------- | -------- | -------- | --------- |
 | /                                   | [x]     | [x]      | [x]      | [x]       |
 | /account/info                       | [x]     | [x]      | [x]      | [x]       |
-| /account/pass                       | [ ]     | [x]      | [x]      | [ ]       |
-| /account/settings                   | [ ]     | [ ]      | [ ]      | [ ]       |
+| /account/pass                       | [x]     | [x]      | [x]      | [x]       |
+| /account/settings                   | [ ]     | [ ]      | [ ]      | [x]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate                          | [x]     |          |          | [x]       |
 | /affiliate/banner/:id               | [ ]     |          |          | [ ]       |
@@ -121,7 +123,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /affiliate/status_legend            | [x]     |          |          | [x]       |
 | /affiliate/tos                      | [x]     |          |          | [x]       |
 | /affiliate/traffic_graph            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/web_traffic              | [ ]     | [ ]      | [ ]      | [ ]       |
+| /affiliate/web_traffic              | [x]     | [x]      | [x]      | [x]       |
 | /backups                            | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
@@ -163,7 +165,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /licenses/:id/welcome_email         | [x]     | [x]      | [ ]      | [x]       |
 | /licenses/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /login                              | [x]     | [ ]      | [ ]      |           |
+| /login                              | [x]     | [x]      | [x]      |           |
 | /mail                               | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id                           | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/alerts                    | [ ]     | [ ]      | [ ]      | [ ]       |

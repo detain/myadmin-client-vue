@@ -3,16 +3,36 @@ import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - WebTraffic');
-siteStore.setTitle('Affiliate - WebTraffic');
+siteStore.setPageHeading('Affiliate - Latest Web Traffic');
+siteStore.setTitle('Affiliate - Latest Web Traffic');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['/affiliate', 'Affiliate'],
-    ['', 'WebTraffic'],
+    ['/affiliate/web_traffic', 'Latest Web Traffic'],
 ]);
-const table = ref('');
+const baseUrl = siteStore.getBaseUrl();
+
+export interface AffiliateTrafficRow {
+    traffic_id: number;
+    traffic_ip: string;
+    traffic_url: string;
+    traffic_affiliate: number;
+    traffic_referer: string;
+    traffic_timestamp: string;
+}
+const traffic = ref<AffiliateTrafficRow[]>([]);
 onMounted(() => {});
+
+try {
+    fetchWrapper.get(baseUrl+'/affiliate/web_traffic').then((response) => {
+        traffic.value = response;
+    });
+} catch (error: any) {
+    console.log('error');
+    console.log(error);
+}
 </script>
 
 <template>
@@ -28,7 +48,29 @@ onMounted(() => {});
                     </div>
                 </div>
                 <div class="card-body">
-                    {{ table }}
+                <template v-if="traffic.length == 0">
+                No Recent Affiliate Traffic Matches Search
+                </template>
+                <template v-else>
+                    <table class="table table-sm table-hover table-striped table-bordered">
+                    <tr><th>Date</th><th>IP</th><th>URL</th></tr>
+                    <template v-for="(row, index) in traffic" key="index">
+                        <tr>
+                            <td>{{row.traffic_timestamp}}</td>
+                            <td>{{row.traffic_ip}}</td>
+                            <td><a class="link" v-if="row.traffic_url != ''" :href="row.traffic_url" target=_blank :title="row.traffic_url+'(Load Page in New Tab (be careful about cookies being set)'">{{row.traffic_url}}</a>
+                            </td>
+                        </tr>
+                        <template v-if="row.traffic_referrer != ''">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td><b>referrer:</b> <a class="link" :href="row.traffic_referrer" target=_blank style="font-size: 10pt;" title="View Page in New Tab (be careful about cookies being set">{{row.traffic_referrer}}</a></td>
+                            </tr>
+                        </template>
+                    </template>
+                    </table>
+                </template>
                 </div>
             </div>
         </div>

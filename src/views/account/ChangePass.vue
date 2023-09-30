@@ -29,7 +29,10 @@ function changePassword() {
     const formData = new FormData();
     formData.append('password2', password.value);
     fetchWrapper
-        .post(`${baseUrl}/account/password`, formData)
+        //.post(`${baseUrl}/account/password`, formData)
+        .post(`${baseUrl}/account/password`, {
+            password: password.value
+        })
         .then((response) => {
             // handle success
         })

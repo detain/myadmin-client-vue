@@ -14,7 +14,6 @@ const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
 
 const gresponse = ref('');
-const gresponse2 = ref('');
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
 const login = ref('');
@@ -72,9 +71,6 @@ async function onLoginSubmit() {
     if (authStore.opts.tfa == true) {
         loginParams.tfa = twoFactorAuthCode.value;
     }
-    if (window.location.host != 'cn.interserver.net') {
-        loginParams['g-recaptcha-response'] = gresponse.value;
-    }
     console.log('Login Params:');
     console.log(loginParams);
     await authStore.login(loginParams).then((response) => {
@@ -102,7 +98,7 @@ async function onSignupSubmit() {
         signupParams.tfa = twoFactorAuthCode.value;
     }
     if (window.location.host != 'cn.interserver.net') {
-        signupParams['g-recaptcha-response'] = gresponse2.value;
+        signupParams['g-recaptcha-response'] = gresponse.value;
     }
     console.log('Signup Params:');
     console.log(signupParams);
@@ -336,7 +332,6 @@ function login_handler() {
                 } else {
                     if (window.location.host != 'cn.interserver.net') {
                         gresponse.value = '';
-                        gresponse2.value = '';
                     }
                     reloadCaptcha();
                     $('.loginsubmit, .signupsubmit').removeAttr('disabled');
@@ -351,7 +346,6 @@ function login_handler() {
             error: function () {
                 $('.loginsubmit, .signupsubmit').prop('disabled', false);
                 gresponse.value = '';
-                gresponse2.value = '';
                 Swal.fire({
                     icon: 'warning',
                     title: 'Error occurred!',
@@ -441,7 +435,7 @@ function signup_handler() {
         });
     } else {
         if (email_conf == '') {
-            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse2.value);
+            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value);
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -474,7 +468,6 @@ function signup_handler() {
                     } else {
                         $('.loginsubmit, .signupsubmit').removeAttr('disabled');
                         gresponse.value = '';
-                        gresponse2.value = '';
                         Swal.fire({
                             icon: 'warning',
                             html: html,
@@ -486,7 +479,6 @@ function signup_handler() {
                     Swal.close();
                     $('.loginsubmit, .signupsubmit').prop('disabled', false);
                     gresponse.value = '';
-                    gresponse2.value = '';
                     Swal.fire({
                         icon: 'warning',
                         title: 'Error occurred!',
@@ -559,30 +551,6 @@ authStore.load();
                                         <div class="row">
                                             <div class="col-12 mb-1">
                                                 <a class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#" id="forgot_link">I forgot my password</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="captcha_main mb-6">
-                                                    <Checkbox v-model="gresponse" />
-                                                    <div id="gcaptcha-1"></div>
-                                                    <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" id="captcha_alt_link">Alternate Captcha</a>
-                                                </div>
-                                                <div class="captcha_alt mb-6">
-                                                    <div class="flex">
-                                                        <img :src="captcha" style="max-width: 75%" alt="" />
-                                                        <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false">
-                                                            <span class="fa fa-refresh fa-fw"></span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="input-group my-3">
-                                                        <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off" />
-                                                        <div class="input-group-append">
-                                                            <div class="input-group-text">
-                                                                <span class="fa fa-robot" aria-hidden="true"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
-                                                </div>
                                             </div>
                                             <div class="col-8">
                                                 <div class="icheck-primary">
@@ -764,8 +732,8 @@ authStore.load();
                                                     </div>
                                                 </div>
                                                 <div class="captcha_main_signup mb-6">
-                                                    <Checkbox v-model="gresponse2" />
-                                                    <div id="gcaptcha-2"></div>
+                                                    <Checkbox v-model="gresponse" />
+                                                    <div id="gcaptcha-1"></div>
                                                     <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" id="captcha_alt_link_signup">Alternate Captcha</a>
                                                 </div>
                                                 <div class="captcha_alt_signup mb-6">
