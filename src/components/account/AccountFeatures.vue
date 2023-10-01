@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { fetchWrapper } from '@/helpers';
-import { useAccountStore, useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores';
 const props = defineProps(['data']);
 const data = computed(() => {
     return props.data;
 });
 const siteStore = useSiteStore();
-const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');
 siteStore.setBreadcrums([
