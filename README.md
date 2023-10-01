@@ -68,7 +68,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * order service pages
     * [ ] server
     * [ ] domain
-    * [ ] coupon handling
   * [ ] cart/iids parsed and handled
 * **1.0-beta** MileStone
   * [ ] update response codes to match table below

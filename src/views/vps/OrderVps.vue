@@ -82,19 +82,19 @@ const bwTotal = ref(2);
 const bwSlice = ref(2000);
 const hdSlice = ref(30);
 const ramSlice = ref(2048);
-const vpsSliceSsdOvzCost = ref(0);
-const vpsSliceOvzCost = ref(0);
-const vpsSliceSsdVirtuozzoCost = ref(0);
-const vpsSliceVirtuozzoCost = ref(0);
-const vpsSliceHypervCost = ref(0);
-const vpsSliceVmwareCost = ref(0);
-const vpsSliceLxcCost = ref(0);
-const vpsSliceXenCost = ref(0);
-const vpsSliceKvmLCost = ref(0);
-const vpsSliceKvmStorageCost = ref(0);
-const vpsNyCost = ref(0);
-const vpsSliceKvmWCost = ref(0);
-const totalCostDisplay = ref(0.0);
+const vpsSliceSsdOvzCost = ref(6);
+const vpsSliceOvzCost = ref(6);
+const vpsSliceSsdVirtuozzoCost = ref(6);
+const vpsSliceVirtuozzoCost = ref(6);
+const vpsSliceHypervCost = ref(6);
+const vpsSliceVmwareCost = ref(6);
+const vpsSliceLxcCost = ref(6);
+const vpsSliceXenCost = ref(6);
+const vpsSliceKvmLCost = ref(6);
+const vpsSliceKvmStorageCost = ref(6);
+const vpsNyCost = ref(3);
+const vpsSliceKvmWCost = ref(6);
+const totalCost = ref(0.0);
 const ipv6_only_discount = ref(1);
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
@@ -104,13 +104,13 @@ const validationSuccess = ref(false);
 const couponCode = ref('');
 const custid = ref(0);
 const errors = ref([]);
-const monthlyServiceCost = ref(0);
-const originalCost = ref(0);
-const originalSliceCost = ref(0);
-const repeatServiceCost = ref(0);
-const repeatSliceCost = ref(0);
-const serviceCost = ref(0);
-const sliceCost = ref(0);
+const monthlyServiceCost = ref(6);
+const originalCost = ref(6);
+const originalSliceCost = ref(6);
+const repeatServiceCost = ref(6);
+const repeatSliceCost = ref(6);
+const serviceCost = ref(6);
+const sliceCost = ref(6);
 // form fields
 const serviceType = ref(0);
 const slices = ref(1);
@@ -127,7 +127,7 @@ const curControl = ref('');
 const period = ref(1);
 const couponPriceText = ref('');
 const couponPriceLabel = ref('Coupon Discount:');
-const sliceCostHtml = ref('6 per slice');
+const sliceCostHtml = ref('$6 per slice');
 const cycleDiscountText = ref('');
 
 interface CouponInfo {
@@ -191,10 +191,10 @@ const slicesRange = computed(() => {
     }
     return arr;
 });
-const totalCost = computed(() => {
-    return currencySymbol.value + totalCostDisplay.value.toFixed(2);
+const totalCostDisplay = computed(() => {
+    return currencySymbol.value + Number(totalCost.value).toFixed(2);
 });
-watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo], ([newTemplates, newPlatform, newDistro, newVersion, newCouponInfo], [oldTemplates, oldPlatform, oldDistro, oldVersion, oldCouponInfo]) => {
+watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, location], ([newTemplates, newPlatform, newDistro, newVersion, newCouponInfo, newSlices, newLocation], [oldTemplates, oldPlatform, oldDistro, oldVersion, oldCouponInfo, oldSlices, oldLocation]) => {
     let entries, lastEntry, lastKey, lastValue;
     entries = Object.entries(newTemplates[newPlatform]);
     console.log(entries);
@@ -258,10 +258,10 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo], ([newTemplate
         }
     }
 
-    if (location.value == 3) {
+    if (Number(location.value).toString() == '3') {
         sliceCost.value = sliceCost.value * vpsNyCost.value;
     }
-    sliceCostHtml.value = currencySymbol.value + sliceCost.value + ' Per Slice';
+    sliceCostHtml.value = currencySymbol.value + Number(sliceCost.value).toString() + ' Per Slice';
     // later month slice costs
     serviceCost.value = sliceCost.value;
     // first month slice cost
@@ -323,11 +323,11 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo], ([newTemplate
     if (period.value > 1) {
         serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
     }
-    let total_cost = Number(serviceCost.value);
+    totalCost.value = Number(serviceCost.value);
     if (controlCost.value > 0) {
-        total_cost = total_cost + controlCost.value * period.value;
+        totalCost.value = totalCost.value + controlCost.value * period.value;
     }
-    total_cost = Number(total_cost.toFixed(2));
+    totalCost.value = Number(Number(totalCost.value).toFixed(2));
 });
 const getBandwidth = computed(() => {
     const VPS_SLICE_BW_TEMP = bwSlice.value;
@@ -490,7 +490,7 @@ function updateCoupon() {
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
                 if (couponInfo.value.onetime == '0') {
-                    update_vps_choices_order();
+                    //update_vps_choices_order();
                 }
             }
         });
@@ -664,15 +664,15 @@ function update_vps_choices() {
         serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
     }
 
-    let total_cost = Number(serviceCost.value);
+    totalCost.value = Number(serviceCost.value);
     if (controlCost.value > 0) {
-        total_cost = total_cost + controlCost.value * period.value;
+        totalCost.value = totalCost.value + controlCost.value * period.value;
     }
-    total_cost = Number(total_cost.toFixed(2));
-    jQuery('#totalcost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
-    jQuery('.totalcost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
-    jQuery('#totalcostnew').val(total_cost);
-    jQuery('#total_cost_displa').val(total_cost);
+    totalCost.value = Number(Number(totalCost.value).toFixed(2));
+    jQuery('#totalcost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(totalCost.value.toString()).toFixed(2))));
+    jQuery('.totalcost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(totalCost.value.toString()).toFixed(2))));
+    jQuery('#totalcostnew').val(totalCost.value);
+    jQuery('#total_cost_displa').val(totalCost.value);
     if ($('#package_name').length > 0) {
         $('#package_name').text(serviceTypes.value[get_package_id()].services_name);
     }
@@ -825,15 +825,15 @@ function update_vps_choices_order() {
         serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
     }
 
-    let total_cost = Number(serviceCost.value);
+    totalCost.value = Number(serviceCost.value);
     if (controlCost.value > 0) {
-        total_cost = total_cost + controlCost.value * period.value;
+        totalCost.value = totalCost.value + controlCost.value * period.value;
     }
-    total_cost = Number(total_cost.toFixed(2));
-    jQuery('#totalcost11').text(currencySymbol.value + total_cost);
-    jQuery('#totalcostnew').val(total_cost);
+    totalCost.value = Number(Number(totalCost.value).toFixed(2));
+    jQuery('#totalcost11').text(currencySymbol.value + totalCost.value);
+    jQuery('#totalcostnew').val(totalCost.value);
     if ($('#total_cost_display').length > 0) {
-        $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(total_cost.toString()).toFixed(2))));
+        $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(totalCost.value.toString()).toFixed(2))));
     }
     $(document).ready(function () {
         if ($('#renew_cost').length > 0) {
@@ -1107,20 +1107,20 @@ try {
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md totalcost_display text-right" :html="currencySymbol + sliceCostHtml"></div>
+                                    <div class="col text-md totalcost_display text-right" v-html="sliceCostHtml" />
                                 </div>
                                 <div id="cyclediscountrownew" class="row mb-3" v-show="period >= 6">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
-                                    <div id="cyclediscount" class="col text-right" :html="cycleDiscountText"></div>
+                                    <div id="cyclediscount" class="col text-right">{{ cycleDiscountText }}</div>
                                 </div>
                                 <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined'">
-                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold" v-text="couponPriceLabel"></div>
-                                    <div id="couponprice" class="col text-right" :html="couponPriceText"></div>
+                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">{{ couponPriceLabel }}</div>
+                                    <div id="couponprice" class="col text-right">{{ couponPriceText }}</div>
                                 </div>
                                 <hr />
                                 <div class="row mb-3">
                                     <div class="col-md-8 text-md text-bold text-muted">Total:</div>
-                                    <div id="totalcost" class="col text-md total_cost text-right">{{ currencySymbol }}{{ totalCost }}</div>
+                                    <div id="totalcost" class="col text-md total_cost text-right">{{ totalCostDisplay }}</div>
                                 </div>
                             </div>
                         </div>
