@@ -125,6 +125,10 @@ const rootpass = ref('');
 const curSsd = ref(0);
 const curControl = ref('');
 const period = ref(1);
+const couponPriceText = ref('');
+const couponPriceLabel = ref('Coupon Discount:');
+const sliceCostHtml = ref('6 per slice');
+const cycleDiscountText = ref('');
 
 interface CouponInfo {
     applies?: number | string;
@@ -190,7 +194,7 @@ const slicesRange = computed(() => {
 const totalCost = computed(() => {
     return currencySymbol.value + totalCostDisplay.value.toFixed(2);
 });
-watch([osTemplates, vpsPlatform, osDistro, osVersion], ([newTemplates, newPlatform, newDistro, newVersion], [oldTemplates, oldPlatform, oldDistro, oldVersion]) => {
+watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo], ([newTemplates, newPlatform, newDistro, newVersion, newCouponInfo], [oldTemplates, oldPlatform, oldDistro, oldVersion, oldCouponInfo]) => {
     let entries, lastEntry, lastKey, lastValue;
     entries = Object.entries(newTemplates[newPlatform]);
     console.log(entries);
@@ -223,6 +227,107 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion], ([newTemplates, newPlatfo
         osVersion.value = lastKey;
     }
     osVersionSelect.value = newTemplates[newPlatform][newDistro];
+
+    if (vpsPlatform.value == 'openvz') {
+        if (curSsd.value == 1) {
+            sliceCost.value = vpsSliceSsdOvzCost.value;
+        } else {
+            sliceCost.value = vpsSliceOvzCost.value;
+        }
+    } else if (vpsPlatform.value == 'kvm') {
+        if (osDistro.value == 'windows') {
+            sliceCost.value = vpsSliceKvmWCost.value;
+        } else {
+            sliceCost.value = vpsSliceKvmLCost.value;
+        }
+    } else if (vpsPlatform.value == 'kvmstorage') {
+        sliceCost.value = vpsSliceKvmStorageCost.value;
+    } else if (vpsPlatform.value == 'xen') {
+        sliceCost.value = vpsSliceXenCost.value;
+    } else if (vpsPlatform.value == 'lxc') {
+        sliceCost.value = vpsSliceLxcCost.value;
+    } else if (vpsPlatform.value == 'vmware') {
+        sliceCost.value = vpsSliceVmwareCost.value;
+    } else if (vpsPlatform.value == 'hyperv') {
+        sliceCost.value = vpsSliceHypervCost.value;
+    } else if (vpsPlatform.value == 'virtuozzo') {
+        if (curSsd.value == 1) {
+            sliceCost.value = vpsSliceSsdVirtuozzoCost.value;
+        } else {
+            sliceCost.value = vpsSliceVirtuozzoCost.value;
+        }
+    }
+
+    if (location.value == 3) {
+        sliceCost.value = sliceCost.value * vpsNyCost.value;
+    }
+    sliceCostHtml.value = currencySymbol.value + sliceCost.value + ' Per Slice';
+    // later month slice costs
+    serviceCost.value = sliceCost.value;
+    // first month slice cost
+    let first_slice = sliceCost.value;
+    let monthly_slice_cost = sliceCost.value;
+    couponPriceLabel.value = '';
+    couponPriceText.value = '';
+    if (typeof couponInfo.value.applies != 'undefined') {
+        if (couponInfo.value.type == 3) {
+            sliceCostHtml.value = '<del style="color: red;">' + currencySymbol.value + sliceCost.value + '</del> Per Slice';
+            couponPriceLabel.value = 'Price';
+            couponPriceText.value = currencySymbol.value + couponInfo.value.amount + ' per slice';
+            first_slice = Number(couponInfo.value.amount);
+        } else if (couponInfo.value.type == 2) {
+            couponPriceText.value = '-' + currencySymbol.value + couponInfo.value.amount;
+            couponPriceLabel.value = 'Discount';
+            first_slice = first_slice - Number(couponInfo.value.amount);
+        } else if (couponInfo.value.type == 1) {
+            couponPriceText.value = couponInfo.value.amount + '% Off';
+            couponPriceLabel.value = 'Discount';
+            first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
+        }
+        if (first_slice < 0.01 && first_slice > 0) {
+            first_slice = 0.01;
+        }
+        if (couponInfo.value.amount != 0.01) {
+            sliceCost.value = first_slice;
+        } else if (vpsPlatform.value == 'kvm' || vpsPlatform.value == 'hyperv') {
+            first_slice = sliceCost.value * 0.5;
+            couponPriceText.value = '50% Off';
+        }
+        if (couponInfo.value.onetime == 0) {
+            monthly_slice_cost = sliceCost.value;
+        } else {
+            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
+        }
+        couponPriceLabel.value = 'Coupon '+couponPriceLabel.value;
+    }
+    serviceCost.value = first_slice + sliceCost.value * (slices.value - 1);
+    monthlyServiceCost.value = monthly_slice_cost * slices.value;
+    cycleDiscountText.value = '';
+    if (period.value >= 36) {
+        cycleDiscountText.value = '20% Off';
+        serviceCost.value = serviceCost.value * 0.8;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.8;
+    } else if (period.value >= 24) {
+        cycleDiscountText.value = '15% Off';
+        serviceCost.value = serviceCost.value * 0.85;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.85;
+    } else if (period.value >= 12) {
+        cycleDiscountText.value = '10% Off';
+        serviceCost.value = serviceCost.value * 0.9;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.9;
+    } else if (period.value >= 6) {
+        cycleDiscountText.value = '5% Off';
+        serviceCost.value = serviceCost.value * 0.95;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.95;
+    }
+    if (period.value > 1) {
+        serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
+    }
+    let total_cost = Number(serviceCost.value);
+    if (controlCost.value > 0) {
+        total_cost = total_cost + controlCost.value * period.value;
+    }
+    total_cost = Number(total_cost.toFixed(2));
 });
 const getBandwidth = computed(() => {
     const VPS_SLICE_BW_TEMP = bwSlice.value;
@@ -379,7 +484,7 @@ function onSubmitConfirmation() {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = 'validate_coupon.php?module=vps&coupon=' + coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = 'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon.value;
         $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
@@ -430,13 +535,19 @@ function update_vps_choices() {
         jQuery('#rootpassrow').css('display', 'table-row');
         jQuery('#rootpassrownew').show();
     }
-    if (vpsPlatform.value == 'openvz')
-        if (curSsd.value == 1) sliceCost.value = vpsSliceSsdOvzCost.value;
-        else sliceCost.value = vpsSliceOvzCost.value;
-    else if (vpsPlatform.value == 'kvm')
-        if (osDistro.value == 'windows') sliceCost.value = vpsSliceKvmWCost.value;
-        else sliceCost.value = vpsSliceKvmLCost.value;
-    else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
+    if (vpsPlatform.value == 'openvz') {
+        if (curSsd.value == 1) {
+            sliceCost.value = vpsSliceSsdOvzCost.value;
+        } else {
+            sliceCost.value = vpsSliceOvzCost.value;
+        }
+    } else if (vpsPlatform.value == 'kvm') {
+        if (osDistro.value == 'windows') {
+            sliceCost.value = vpsSliceKvmWCost.value;
+        } else {
+            sliceCost.value = vpsSliceKvmLCost.value;
+        }
+    } else if (vpsPlatform.value == 'kvmstorage') sliceCost.value = vpsSliceKvmStorageCost.value;
     else if (vpsPlatform.value == 'xen') sliceCost.value = vpsSliceXenCost.value;
     else if (vpsPlatform.value == 'lxc') sliceCost.value = vpsSliceLxcCost.value;
     else if (vpsPlatform.value == 'vmware') sliceCost.value = vpsSliceVmwareCost.value;
@@ -457,17 +568,16 @@ function update_vps_choices() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-    let service_cost = sliceCost.value;
+    serviceCost.value = sliceCost.value;
     // first month slice cost
     let first_slice = sliceCost.value;
     let monthly_slice_cost = sliceCost.value;
-    let couponpricetext;
     if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
             jQuery('#slicecost').html('<del style="color: red;">' + currencySymbol.value + sliceCost.value + '</del> Per Slice');
-            couponpricetext = 'Price';
+            couponPriceLabel.value = 'Price';
             jQuery('#couponprice').html(currencySymbol.value + couponInfo.value.amount + ' per slice');
             jQuery('#couponpricenew').val(couponInfo.value.amount + ' per slice');
             first_slice = Number(couponInfo.value.amount);
@@ -475,7 +585,7 @@ function update_vps_choices() {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
             jQuery('#couponprice').text('-' + currencySymbol.value + couponInfo.value.amount);
-            couponpricetext = 'Discount';
+            couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val('-(' + couponInfo.value.amount + ')');
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
@@ -483,7 +593,7 @@ function update_vps_choices() {
             jQuery('#couponpricerownew').show();
             jQuery('#couponprice').text(couponInfo.value.amount + '% Off');
             jQuery('#couponpricenew').val(couponInfo.value.amount + '% Off');
-            couponpricetext = 'Discount';
+            couponPriceLabel.value = 'Discount';
             first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
         } else {
             jQuery('#couponpricerow').css('display', 'none');
@@ -504,46 +614,46 @@ function update_vps_choices() {
         if (couponInfo.value.onetime == 0) {
             monthly_slice_cost = sliceCost.value;
         } else {
-            couponpricetext = 'First Month ' + couponpricetext;
+            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
         }
-        jQuery('#couponpricetext').text('Coupon ' + couponpricetext);
-        jQuery('#couponpricetextnew').text('Coupon ' + couponpricetext);
+        jQuery('#couponpricetext').text('Coupon ' + couponPriceLabel.value);
+        jQuery('#couponpricetextnew').text('Coupon ' + couponPriceLabel.value);
     } else {
         jQuery('#couponpricerow').css('display', 'none');
         jQuery('#couponpricerownew').hide();
         jQuery('#couponprice').text('');
         jQuery('#couponpricenew').val('');
     }
-    service_cost = first_slice + sliceCost.value * (slices.value - 1);
-    let monthly_service_cost = monthly_slice_cost * slices.value;
+    serviceCost.value = first_slice + sliceCost.value * (slices.value - 1);
+    monthlyServiceCost.value = monthly_slice_cost * slices.value;
     if (period.value >= 36) {
         jQuery('#cyclediscount').text('20% Off');
         jQuery('#cyclediscountnew').text('20% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.8;
-        monthly_service_cost = monthly_service_cost * 0.8;
+        serviceCost.value = serviceCost.value * 0.8;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.8;
     } else if (period.value >= 24) {
         jQuery('#cyclediscount').text('15% Off');
         jQuery('#cyclediscountnew').text('15% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.85;
-        monthly_service_cost = monthly_service_cost * 0.85;
+        serviceCost.value = serviceCost.value * 0.85;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.85;
     } else if (period.value >= 12) {
         jQuery('#cyclediscount').text('10% Off');
         jQuery('#cyclediscountnew').text('10% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.9;
-        monthly_service_cost = monthly_service_cost * 0.9;
+        serviceCost.value = serviceCost.value * 0.9;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.9;
     } else if (period.value >= 6) {
         jQuery('#cyclediscount').text('5% Off');
         jQuery('#cyclediscountnew').text('5% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.95;
-        monthly_service_cost = monthly_service_cost * 0.95;
+        serviceCost.value = serviceCost.value * 0.95;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.95;
     } else {
         jQuery('#cyclediscountrownew').hide();
         jQuery('#cyclediscountrow').css('display', 'none');
@@ -551,10 +661,10 @@ function update_vps_choices() {
         jQuery('#cyclediscountnew').text('');
     }
     if (period.value > 1) {
-        service_cost = service_cost + (period.value - 1) * monthly_service_cost;
+        serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
     }
 
-    let total_cost = Number(service_cost);
+    let total_cost = Number(serviceCost.value);
     if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
@@ -618,18 +728,17 @@ function update_vps_choices_order() {
     jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
-    let service_cost = sliceCost.value;
+    serviceCost.value = sliceCost.value;
     // first month slice cost
     let first_slice = sliceCost.value;
     let monthly_slice_cost = sliceCost.value;
-    let monthly_service_cost = service_cost;
-    let couponpricetext;
+    monthlyServiceCost.value = serviceCost.value;
     if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
             jQuery('#slicecost').html('<del style="color: red;">$' + sliceCost.value + '</del> Per Slice');
-            couponpricetext = 'Price';
+            couponPriceLabel.value = 'Price';
             jQuery('#couponprice').html(currencySymbol.value + couponInfo.value.amount + ' per slice');
             jQuery('#couponpricenew').val(couponInfo.value.amount + ' per slice');
             first_slice = Number(couponInfo.value.amount);
@@ -637,7 +746,7 @@ function update_vps_choices_order() {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
             jQuery('#couponprice').text('-' + currencySymbol.value + couponInfo.value.amount);
-            couponpricetext = 'Discount';
+            couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val('-(' + couponInfo.value.amount + ')');
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
@@ -645,7 +754,7 @@ function update_vps_choices_order() {
             jQuery('#couponpricerownew').show();
             jQuery('#couponprice').text(couponInfo.value.amount + '% Off');
             jQuery('#couponpricenew').val(couponInfo.value.amount + '% Off');
-            couponpricetext = 'Discount';
+            couponPriceLabel.value = 'Discount';
             first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
         } else {
             jQuery('#couponpricerow').css('display', 'none');
@@ -666,46 +775,46 @@ function update_vps_choices_order() {
         if (couponInfo.value.onetime == 0) {
             monthly_slice_cost = sliceCost.value;
         } else {
-            couponpricetext = 'First Month ' + couponpricetext;
+            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
         }
-        jQuery('#couponpricetext').text('Coupon ' + couponpricetext);
-        jQuery('#couponpricetextnew').text('Coupon ' + couponpricetext);
+        jQuery('#couponpricetext').text('Coupon ' + couponPriceLabel.value);
+        jQuery('#couponpricetextnew').text('Coupon ' + couponPriceLabel.value);
     } else {
         jQuery('#couponpricerow').css('display', 'none');
         jQuery('#couponpricerownew').hide();
         jQuery('#couponprice').text('');
         jQuery('#couponpricenew').val('');
     }
-    service_cost = first_slice + sliceCost.value * (slices.value - 1);
-    monthly_service_cost = monthly_slice_cost * slices.value;
+    serviceCost.value = first_slice + sliceCost.value * (slices.value - 1);
+    monthlyServiceCost.value = monthly_slice_cost * slices.value;
     if (period.value >= 36) {
         jQuery('#cyclediscount').text('20% Off');
         jQuery('#cyclediscountnew').text('20% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.8;
-        monthly_service_cost = monthly_service_cost * 0.8;
+        serviceCost.value = serviceCost.value * 0.8;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.8;
     } else if (period.value >= 24) {
         jQuery('#cyclediscount').text('15% Off');
         jQuery('#cyclediscountnew').text('15% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.85;
-        monthly_service_cost = monthly_service_cost * 0.85;
+        serviceCost.value = serviceCost.value * 0.85;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.85;
     } else if (period.value >= 12) {
         jQuery('#cyclediscount').text('10% Off');
         jQuery('#cyclediscountnew').text('10% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.9;
-        monthly_service_cost = monthly_service_cost * 0.9;
+        serviceCost.value = serviceCost.value * 0.9;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.9;
     } else if (period.value >= 6) {
         jQuery('#cyclediscount').text('5% Off');
         jQuery('#cyclediscountnew').text('5% Off');
         jQuery('#cyclediscountrow').css('display', 'table-row');
         jQuery('#cyclediscountrownew').show();
-        service_cost = service_cost * 0.95;
-        monthly_service_cost = monthly_service_cost * 0.95;
+        serviceCost.value = serviceCost.value * 0.95;
+        monthlyServiceCost.value = monthlyServiceCost.value * 0.95;
     } else {
         jQuery('#cyclediscountrownew').hide();
         jQuery('#cyclediscountrow').css('display', 'none');
@@ -713,10 +822,10 @@ function update_vps_choices_order() {
         jQuery('#cyclediscountnew').text('');
     }
     if (period.value > 1) {
-        service_cost = service_cost + (period.value - 1) * monthly_service_cost;
+        serviceCost.value = serviceCost.value + (period.value - 1) * monthlyServiceCost.value;
     }
 
-    let total_cost = Number(service_cost);
+    let total_cost = Number(serviceCost.value);
     if (controlCost.value > 0) {
         total_cost = total_cost + controlCost.value * period.value;
     }
@@ -998,15 +1107,15 @@ try {
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md totalcost_display text-right">{{ currencySymbol }}{{ platformPackages[vpsPlatform] ? packageCosts[platformPackages[vpsPlatform]] : 0 }}</div>
+                                    <div class="col text-md totalcost_display text-right" :html="currencySymbol + sliceCostHtml"></div>
                                 </div>
                                 <div id="cyclediscountrownew" class="row mb-3" v-show="period >= 6">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
-                                    <div id="cyclediscount" class="col text-right"></div>
+                                    <div id="cyclediscount" class="col text-right" :html="cycleDiscountText"></div>
                                 </div>
-                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined' && Number(couponInfo.applies) > 0">
-                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">Coupon Discount:</div>
-                                    <div id="couponprice" class="col text-right"></div>
+                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined'">
+                                    <div id="couponpricetextnew" class="col-md-8 text-muted text-bold" v-text="couponPriceLabel"></div>
+                                    <div id="couponprice" class="col text-right" :html="couponPriceText"></div>
                                 </div>
                                 <hr />
                                 <div class="row mb-3">
