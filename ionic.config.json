@@ -1,0 +1,7 @@
+{
+  "name": "myadmin-client-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
