@@ -3,9 +3,6 @@ import { ref, computed } from 'vue';
 import { useAccountStore, useSiteStore } from '@/stores';
 import { fetchWrapper } from '@/helpers';
 const props = defineProps(['data', 'limits', 'ip']);
-const data = computed(() => {
-    return props.data;
-});
 const limits = computed(() => {
     return props.limits;
 });

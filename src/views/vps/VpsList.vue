@@ -171,7 +171,7 @@ loadVpsList(data);
                         </div>
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link :to="'/' + moduleLink(module) + '/' + moduleLink(module) + '/order'" class="btn btn-primary btn-sm printer-hidden" title="Order VPS"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/order'" class="btn btn-primary btn-sm printer-hidden" title="Order VPS"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
