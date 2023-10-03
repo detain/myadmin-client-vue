@@ -1150,9 +1150,9 @@
     ajv-keywords "^3.4.1"
 
 "@electron/asar@^3.2.1":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@electron/asar/-/asar-3.2.5.tgz#1557d456e99123cbc0b69a79230199b32dca785a"
-  integrity sha512-Ypahc2ElTj9YOrFvUHuoXv5Z/V1nPA5enlhmQapc578m/HZBHKTbqhoL5JZQjje2+/6Ti5AHh7Gj1/haeJa63Q==
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@electron/asar/-/asar-3.2.7.tgz#bb8117dc6fd0c06a922ae7fb1c0e2d433e35a6e5"
+  integrity sha512-8FaSCAIiZGYFWyjeevPQt+0e9xCK9YmJ2Rjg5SXgdsXon6cRnU0Yxnbe6CvJbQn26baifur2Y2G5EBayRIsjyg==
   dependencies:
     commander "^5.0.0"
     glob "^7.1.6"
@@ -2109,9 +2109,9 @@
   integrity sha512-ZYFzrvyWUNhaPomn80dsMNgMeXxNWZBdkuG/hWlUvXvbdUH8ZERNBGXnU87McuGcWDsyzX2aChCv/SVN348k3A==
 
 "@types/ms@*":
-  version "0.7.31"
-  resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
-  integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+  version "0.7.32"
+  resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.32.tgz#f6cd08939ae3ad886fcc92ef7f0109dacddf61ab"
+  integrity sha512-xPSg0jm4mqgEkNhowKgZFBNtwoEwF6gJ4Dhww+GFpm3IgtNseHQZ5IqdNwnquZEoANxyDAKDRAdVo4Z72VvD/g==
 
 "@types/node@*":
   version "20.8.2"
@@ -2124,9 +2124,9 @@
   integrity sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==
 
 "@types/node@^18.11.18":
-  version "18.17.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.19.tgz#80c9b8a89d3648d9e6098f4a7184e03833fee3c5"
-  integrity sha512-+pMhShR3Or5GR0/sp4Da7FnhVmTalWm81M6MkEldbwjETSaPalw138Z4KdpQaistvqQxLB7Cy4xwYdxpbSOs9Q==
+  version "18.18.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.18.3.tgz#e5188135fc2909b46530c798ef49be65083be3fd"
+  integrity sha512-0OVfGupTl3NBFr8+iXpfZ8NR7jfFO+P1Q+IO/q0wbo02wYkP5gy36phojeYWpLQ6WAMjl+VfmqUk2YbUfp0irA==
 
 "@types/nodemon@*":
   version "1.19.3"
@@ -2161,9 +2161,9 @@
     "@types/node" "*"
 
 "@types/responselike@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/responselike/-/responselike-1.0.0.tgz#251f4fe7d154d2bad125abe1b429b23afd262e29"
-  integrity sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/responselike/-/responselike-1.0.1.tgz#1dd57e54509b3b95c7958e52709567077019d65d"
+  integrity sha512-TiGnitEDxj2X0j+98Eqk5lv/Cij8oHd32bU4D/Yw6AOq7vvTk0gSD2GPj0G/HkvhMoVsdlhYF4yqqlyPBTM6Sg==
   dependencies:
     "@types/node" "*"
 
@@ -2174,12 +2174,7 @@
   dependencies:
     "@types/jquery" "*"
 
-"@types/semver@^7.3.6":
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.2.tgz#31f6eec1ed7ec23f4f05608d3a2d381df041f564"
-  integrity sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==
-
-"@types/semver@^7.5.0":
+"@types/semver@^7.3.6", "@types/semver@^7.5.0":
   version "7.5.3"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.3.tgz#9a726e116beb26c24f1ccd6850201e1246122e04"
   integrity sha512-OxepLK9EuNEIPxWNME+C6WwbRAOOI2o2BaQEGzz5Lu2e4Z5eDnEo+/aVEDMIXywoJitJ7xWd641wrGLZdtwRyw==
@@ -2217,9 +2212,9 @@
   integrity sha512-IDaobHimLQhjwsQ/NMwRVfa/yL7L/wriQPMhw1ZJall0KX6E1oxk29XMDeilW5qTIg5aoiqf5Udy8U/51aNoQQ==
 
 "@types/verror@^1.10.3":
-  version "1.10.6"
-  resolved "https://registry.yarnpkg.com/@types/verror/-/verror-1.10.6.tgz#3e600c62d210c5826460858f84bcbb65805460bb"
-  integrity sha512-NNm+gdePAX1VGvPcGZCDKQZKYSiAWigKhKaz5KF94hG6f2s8de9Ow5+7AbXoeKxL8gavZfk4UquSAygOF2duEQ==
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/@types/verror/-/verror-1.10.7.tgz#7e2ee21514355a7ae354fa151d96856d18531f72"
+  integrity sha512-4c5F4T0qMSoXq1KHx7WV1FMuD2h0xdaFoJ7HSVWUfQ8w5YbqCwLOA8K7/yy1I+Txuzvm417dnPUaLmqazX1F7g==
 
 "@types/wait-on@*":
   version "5.3.2"
@@ -4592,9 +4587,9 @@ electron-updater@^4.0:
     semver "^7.3.5"
 
 electron@*:
-  version "26.2.2"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-26.2.2.tgz#d465b7b5ead240448c131208631d172a45ae4953"
-  integrity sha512-Ihb3Zt4XYnHF52DYSq17ySkgFqJV4OT0VnfhUYZASAql7Vembz3VsAq7mB3OALBHXltAW34P8BxTIwTqZaMS3g==
+  version "26.2.4"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-26.2.4.tgz#36616b2386b083c13ae9188f2d8ccf233c23404a"
+  integrity sha512-weMUSMyDho5E0DPQ3breba3D96IxwNvtYHjMd/4/wNN3BdI5s3+0orNnPVGJFcLhSvKoxuKUqdVonUocBPwlQA==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^18.11.18"
@@ -5632,11 +5627,9 @@ has-tostringtag@^1.0.0:
     has-symbols "^1.0.2"
 
 has@^1.0.1, has@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
-  integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
-  dependencies:
-    function-bind "^1.1.1"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/has/-/has-1.0.4.tgz#2eb2860e000011dae4f1406a86fe80e530fb2ec6"
+  integrity sha512-qdSAmqLF6209RFj4VVItywPMbm3vWylknmB3nvNiUIs72xAimcM8nVYxYr7ncvZq5qzk9MKIZR8ijqD/1QuYjQ==
 
 hash-sum@^2.0.0:
   version "2.0.0"
@@ -7500,9 +7493,9 @@ prettier-linter-helpers@^1.0.0:
     fast-diff "^1.1.2"
 
 prettier-plugin-tailwindcss@*:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.4.tgz#ebfacbcb90e2ca1df671ffe4083e99f81d72040d"
-  integrity sha512-QZzzB1bID6qPsKHTeA9qPo1APmmxfFrA5DD3LQ+vbTmAnY40eJI7t9Q1ocqel2EKMWNPLJqdTDWZj1hKYgqSgg==
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.5.tgz#2860de31772235231339ca5e8c745969532fab95"
+  integrity sha512-voy0CjWv/CM8yeaduv5ZwovovpTGMR5LbzlhGF+LtEvMJt9wBeVTVnW781hL38R/RcDXCJwN2rolsgr94B/n0Q==
 
 prettier@*:
   version "3.0.3"
@@ -9352,9 +9345,9 @@ vite-plugin-webfont-dl@*:
     picocolors "^1.0"
 
 "vite@^3.0.0 || ^4.0.0 || ^5.0.0-0", "vite@^3.1.0 || ^4.0.0 || ^5.0.0-0", vite@~4.4:
-  version "4.4.9"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-4.4.9.tgz#1402423f1a2f8d66fd8d15e351127c7236d29d3d"
-  integrity sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-4.4.10.tgz#3794639cc433f7cb33ad286930bf0378c86261c8"
+  integrity sha512-TzIjiqx9BEXF8yzYdF2NTf1kFFbjMjUSV0LFZ3HyHoI3SGSPLnnFUKiIQtL3gl2AjHvMrprOvQ3amzaHgQlAxw==
   dependencies:
     esbuild "^0.18.10"
     postcss "^8.4.27"
