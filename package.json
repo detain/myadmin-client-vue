@@ -31,6 +31,7 @@
     "ionic:serve": "npm run serve"
   },
   "dependencies": {
+    "@capacitor/android": "5.4.1",
     "@capacitor/app": "5.0.6",
     "@capacitor/cli": "5.4.1",
     "@capacitor/core": "5.4.1",
