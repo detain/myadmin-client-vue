@@ -1522,9 +1522,9 @@
     "@rushstack/node-core-library" "3.61.0"
 
 "@microsoft/api-extractor@^7.36.4":
-  version "7.37.3"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.37.3.tgz#3f621a2254ba8fa7a116ff203beabe16c7b36b05"
-  integrity sha512-daC5IKZw/Qg8DYucnQVvagihKsTr5L7Bgf5VJYe/FwQhQuR9VRqKZfr2JkqoszsVqOf8C0KtFNTaqyB7chD/HQ==
+  version "7.38.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.38.0.tgz#e72546d6766b3866578a462b040f71b17779e1c5"
+  integrity sha512-e1LhZYnfw+JEebuY2bzhw0imDCl1nwjSThTrQqBXl40hrVo6xm3j/1EpUr89QyzgjqmAwek2ZkIVZbrhaR+cqg==
   dependencies:
     "@microsoft/api-extractor-model" "7.28.2"
     "@microsoft/tsdoc" "0.14.2"
@@ -1704,9 +1704,9 @@
     picomatch "^2.3.1"
 
 "@rushstack/eslint-patch@*":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.5.0.tgz#5143b0da9c536bfe8beddfeb68bb8b5d647cc7a3"
-  integrity sha512-EF3948ckf3f5uPgYbQ6GhyA56Dmv8yg0+ir+BroRjwdxyZJsekhZzawOecC2rOTPCz173t7ZcR1HHZu0dZgOCw==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.5.1.tgz#5f1b518ec5fa54437c0b7c4a821546c64fed6922"
+  integrity sha512-6i/8UoL0P5y4leBIGzvkZdS85RDMG9y1ihZzmTZQ5LdHUYmZ7pKFoj8X0236s3lusPs1Fa5HTQUpwI+UfTcmeA==
 
 "@rushstack/node-core-library@3.61.0":
   version "3.61.0"
@@ -1783,18 +1783,18 @@
   dependencies:
     remove-accents "0.4.2"
 
-"@tanstack/query-core@4.35.3":
-  version "4.35.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.35.3.tgz#1c127e66b4ad1beeac052db83a812d7cb67369e1"
-  integrity sha512-PS+WEjd9wzKTyNjjQymvcOe1yg8f3wYc6mD+vb6CKyZAKvu4sIJwryfqfBULITKCla7P9C4l5e9RXePHvZOZeQ==
+"@tanstack/query-core@4.35.7":
+  version "4.35.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.35.7.tgz#31d6f520ab8abedb6024d2d870af8afca764d048"
+  integrity sha512-PgDJtX75ubFS0WCYFM7DqEoJ4QbxU3S5OH3gJSI40xr7UVVax3/J4CM3XUMOTs+EOT5YGEfssi3tfRVGte4DEw==
 
 "@tanstack/vue-query@*":
-  version "4.35.6"
-  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-4.35.6.tgz#40ce1d7f7094e893bcb57dbf0aef6f8bac179a7f"
-  integrity sha512-TmeViEsUyJRpOQ3E/9pR2kniRGARr+3LpRQNH+AxRYFklaVfwO/FdUU9NWjzATUUNR4O0vQ9WAFwDTwQ5sqKOA==
+  version "4.35.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-4.35.7.tgz#ceb12ea0e7e94d34ce0c743620400e5d0f9110ed"
+  integrity sha512-97MFXawXhDD0rwltrKkqMDCkJy2G/4fLqGeLbmTf9kMWR0lrBRnzzMQHwLhk2Xkhs2dsYSAMesZ605F+9AXwnQ==
   dependencies:
     "@tanstack/match-sorter-utils" "^8.1.1"
-    "@tanstack/query-core" "4.35.3"
+    "@tanstack/query-core" "4.35.7"
     "@vue/devtools-api" "^6.4.2"
     vue-demi "^0.13.11"
 
@@ -7950,9 +7950,9 @@ type-fest@^3.9.0:
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
 
 type-fest@^4.3.1:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.3.2.tgz#bb7948127bb644364994dc1b44b8a797da8aadcd"
-  integrity sha512-VpwuOgnTsQUUWi0id8Hl4/xiQ+OoaeJGe8dnFjzubJYe/lOc2/d1Qx/d3FqWR0FlpOG/cvukAXfB12A49Y4iiA==
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.3.3.tgz#e991de7c373097721d53dbf38b904f1e51915294"
+  integrity sha512-bxhiFii6BBv6UiSDq7uKTMyADT9unXEl3ydGefndVLxFeB44LRbT4K7OJGDYSyDrKnklCC1Pre68qT2wbUl2Aw==
 
 type@^1.0.1:
   version "1.2.0"
@@ -8926,6 +8926,6 @@ z-schema@~5.0.2:
     commander "^10.0.0"
 
 zhead@^2.1.1:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/zhead/-/zhead-2.1.2.tgz#552f140cb389f39b53b22989198609a9a6f22248"
-  integrity sha512-h5X4OW0UseKFfLft2dyvAY5N/frg5JR+uLsy4ZNSUtX+EpFN/StRDn3gXePMLvIWTrAzmM6JRVchr4bL4UR+ng==
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/zhead/-/zhead-2.1.3.tgz#77d97ec4657fc9b35872ac482613af0cc6b86b57"
+  integrity sha512-T6kZx8TYdLhuy2vURjPUj9EK9Dobnctu12CYw9ibu6Xj/UAqh2q2bQaA3vFrL4Rna5+CXYHYN3uJrUu6VulYzw==

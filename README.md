@@ -68,7 +68,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * order service pages
     * [ ] server
     * [ ] domain
-    * [ ] coupon handling
   * [ ] cart/iids parsed and handled
 * **1.0-beta** MileStone
   * [ ] update response codes to match table below
@@ -91,6 +90,7 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * [ ] move type definitions into /types?
   * [ ] utilize the form validation stuff
   * [ ] replace jquery type calls with built in template handling and such
+  * [ ] bs5/adminlte4 https://github.com/coliff/bootstrap-5-migrate-tool/blob/main/gulpfile.js  https://gist.github.com/Juan-escobar94/f76535a1264ac6f7251c643af50c184d
   * [ ] ionic capacitor
     * [ ] android build
     * [ ] ios build
@@ -100,6 +100,52 @@ After this is done on all of the repos pick the best one and setit up .. try to 
     * [x] js/css assets loaded locally
 
 ### Page Status
+
+API Spec Checks
+* Request Body
+* Success Response
+* Error Responses
+* Examples
+* Detailed Documentation
+* Optimize Types
+* Paths
+  * summary set
+  * description set
+  * parameters
+    * description
+    * schema type
+    * example
+    * links
+  * methods
+    * summary set
+    * description set
+    * tag set
+    * request types json+form
+    * request body defintion
+    * request body description (inheritable)
+    * request body example (inheritable)
+    * response success definition (inheritable)
+    * response success example (inheritable)
+    * links
+* Schemas
+    * summary set
+    * description set
+    * example set
+    * required set
+    * links
+* Tags
+  * detailed descriptions
+
+API Call Checks
+* Working
+* Secure
+  * db escaping
+  * html filtering
+* Success Response
+* Error Ressponses
+* Optimize Types
+* Swagger Annotations
+
 
 * Working status does not include the export/sorting related options on the view service list type pages
 
