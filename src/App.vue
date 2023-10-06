@@ -185,10 +185,10 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '/node_modules/jqvmap-novulnerability/dist/jqvmap.min.css';
 @import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
-@import '/templates/adminlte/custom_styles.css';
 /* '/templates/adminlte/jquery.passwordRequirements.css'; */
 @import '/templates/my/style.css';
 @import '/templates/my/style2.css';
 @import '/node_modules/admin-lte/dist/css/adminlte.min.css';
+@import '/templates/adminlte/custom_styles.css';
 @import '/node_modules/@material-design-icons/font/filled.css';
 </style>
