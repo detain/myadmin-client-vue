@@ -152,10 +152,24 @@ API Call Checks
 | Url                                 | Working | API Call | API Spec | Breadcrum |
 | ----------------------------------- | ------- | -------- | -------- | --------- |
 | /                                   | [x]     | [x]      | [x]      | [x]       |
+| /login                              | [x]     | [x]      | [x]      |           |
+| /register                           | [x]     | [ ]      | [ ]      |           |
+| /sudo/:sessionId                    | [x]     |          |          |           |
 | /account/info                       | [x]     | [x]      | [x]      | [x]       |
 | /account/pass                       | [x]     | [x]      | [x]      | [x]       |
 | /account/settings                   | [ ]     | [ ]      | [ ]      | [x]       |
 | /account/username                   | [ ]     | [ ]      | [ ]      | [ ]       |
+| /cart                               | [ ]     | [ ]      | [ ]      | [ ]       |
+| /cart/::iids                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /invoices                           | [ ]     | [ ]      | [ ]      | [ ]       |
+| /payment_types                      | [ ]     | [ ]      | [ ]      | [ ]       |
+| /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
+| /pay/:method/:invoices              | [ ]     | [x]      | [x]      | [ ]       |
+| /tickets                            | [ ]     | [ ]      | [ ]      | [ ]       |
+| /tickets/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /tickets/new                        | [ ]     | [ ]      | [ ]      | [ ]       |
+| /dns                                | [x]     | [x]      | [x]      | [x]       |
+| /dns/:id                            | [x]     | [x]      | [x]      | [x]       |
 | /affiliate                          | [x]     |          |          | [x]       |
 | /affiliate/banner/:id               | [ ]     |          |          | [ ]       |
 | /affiliate/banners                  | [ ]     | [x]      | [x]      | [ ]       |
@@ -175,10 +189,6 @@ API Call Checks
 | /backups/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/welcome_email          | [x]     | [x]      | [ ]      | [x]       |
 | /backups/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /cart                               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /cart/::iids                        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /dns                                | [x]     | [x]      | [x]      | [x]       |
-| /dns/:id                            | [x]     | [x]      | [x]      | [x]       |
 | /domains                            | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
@@ -200,7 +210,6 @@ API Call Checks
 | /floating_ips/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/:id/welcome_email     | [x]     | [x]      | [ ]      | [x]       |
 | /floating_ips/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
-| /invoices                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses                           | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id                       | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
@@ -210,7 +219,6 @@ API Call Checks
 | /licenses/:id/welcome_email         | [x]     | [x]      | [ ]      | [x]       |
 | /licenses/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /login                              | [x]     | [x]      | [x]      |           |
 | /mail                               | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id                           | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/alerts                    | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -219,9 +227,6 @@ API Call Checks
 | /mail/:id/invoices                  | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/welcome_email             | [x]     | [x]      | [ ]      | [x]       |
 | /mail/order                         | [ ]     | [ ]      | [ ]      | [ ]       |
-| /pay/:method/:invoices              | [ ]     | [x]      | [x]      | [ ]       |
-| /payment_types                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /prepays                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /qs                                 | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id                             | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id/backup                      | [ ]     | [x]      | [x]      | [ ]       |
@@ -243,7 +248,6 @@ API Call Checks
 | /qs/:id/view_desktop                | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/welcome_email               | [x]     | [x]      | [ ]      | [x]       |
 | /qs/order                           | [ ]     | [ ]      | [ ]      | [ ]       |
-| /register                           | [x]     | [ ]      | [ ]      |           |
 | /servers                            | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/bandwidth_graph        | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -261,10 +265,6 @@ API Call Checks
 | /ssl/:id/resend_approver_email      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id/welcome_email              | [x]     | [x]      | [ ]      | [x]       |
 | /ssl/order                          | [ ]     | [ ]      | [ ]      | [ ]       |
-| /sudo/:sessionId                    | [x]     |          |          |           |
-| /tickets                            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /tickets/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /tickets/new                        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps                                | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id                            | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/backup                     | [ ]     | [x]      | [x]      | [ ]       |
