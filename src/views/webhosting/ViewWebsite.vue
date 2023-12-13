@@ -183,6 +183,9 @@ loadLink(route.params.link as string);
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
+        </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
         </div>

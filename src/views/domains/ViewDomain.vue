@@ -148,7 +148,7 @@ console.log(link.value);
             <Contact :id="id"></Contact>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]"></Cancel>
         </div>
         <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>

@@ -252,6 +252,9 @@ sslStore.getById(id as string);
         <div v-if="link == 'change_approver_email'" class="col">
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]"></Cancel>
+        </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
         </div>

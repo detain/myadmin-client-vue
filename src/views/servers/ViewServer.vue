@@ -175,6 +175,9 @@ const ipv6VlansNetworks = computed(() => {
         <div v-if="link == 'bandwidth_graph'" class="col">
             <BandwidthGraph :id="id"></BandwidthGraph>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]"></Cancel>
+        </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
             <IpmiLive :id="id"></IpmiLive>
         </div>

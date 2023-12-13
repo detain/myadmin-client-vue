@@ -171,6 +171,9 @@ licenseStore.getById(id as string);
         <div v-if="link == 'change_ip'" class="col">
             <ChangeIp :id="id"></ChangeIp>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
+        </div>
         <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>
         </div>

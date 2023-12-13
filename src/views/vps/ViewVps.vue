@@ -269,7 +269,7 @@ function toggleFunc(cp: string) {
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

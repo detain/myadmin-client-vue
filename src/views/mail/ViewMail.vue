@@ -149,6 +149,9 @@ const statusClass = computed(() => {
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]"></Cancel>
+        </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
