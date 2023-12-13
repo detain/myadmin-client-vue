@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { fetchWrapper, moduleLink } from '@/helpers';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
@@ -10,12 +11,17 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
+const { modules } = storeToRefs(siteStore);
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
+const settings = computed(() => {
+    return modules.value[module.value];
+});
+
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
@@ -59,12 +65,12 @@ function onSubmit() {
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12 my-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title m-0 text-left">Cancel Websites Service</h4>
+                        <h4 class="card-title m-0 text-left">Cancel {{settings?.TITLE}} Service</h4>
                     </div>
                     <div class="card-body">
                         <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">Websites ID:</label>
+                                <label class="col-sm-5 col-form-label">{{settings?.TBLNAME}} ID:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">376473</div>
                             </div>
                             <div class="form-group row">
@@ -85,7 +91,7 @@ function onSubmit() {
                                     <div class="ui-select">
                                         <select id="confirm" name="confirm" class="form-control">
                                             <option value="no">No</option>
-                                            <option value="yes">Yes, Cancel the Websites Order</option>
+                                            <option value="yes">Yes, Cancel the {{settings?.TBLNAME}} Order</option>
                                         </select>
                                     </div>
                                 </div>
