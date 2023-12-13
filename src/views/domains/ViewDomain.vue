@@ -147,6 +147,9 @@ console.log(link.value);
         <div v-if="link == 'contact'" class="col">
             <Contact :id="id"></Contact>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+        </div>
         <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>
         </div>
@@ -212,7 +215,7 @@ console.log(link.value);
             </div>
         </div>
     </div>
-    <div class="row my-2">
+    <div v-if="!link" class="row my-2">
         <div class="col-12 col-sm-6 col-md-6">
             <div class="card">
                 <div class="card-header">

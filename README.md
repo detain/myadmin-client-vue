@@ -144,7 +144,6 @@ API Call Checks
 * Success Response
 * Error Ressponses
 * Optimize Types
-* Swagger Annotations
 
 
 * Working status does not include the export/sorting related options on the view service list type pages
