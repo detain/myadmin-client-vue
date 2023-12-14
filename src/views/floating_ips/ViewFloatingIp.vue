@@ -5,8 +5,8 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-import { default as Cancel } from '@/components/services/Cancel.vue';
-import { default as Invoices } from '@/components/services/Invoices.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 //import Alerts from '@/views/floating_ip/Alerts.vue';
 //import DenyRules from '@/views/floating_ip/DenyRules.vue';
 

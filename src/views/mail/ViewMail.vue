@@ -6,8 +6,8 @@ import { computed, watch } from 'vue';
 import { useMailStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { default as Cancel } from '@/components/services/Cancel.vue';
-import { default as Invoices } from '@/components/services/Invoices.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 import Alerts from '@/views/mail/Alerts.vue';
 import DenyRules from '@/views/mail/DenyRules.vue';
 

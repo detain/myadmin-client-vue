@@ -4,8 +4,8 @@ import { fetchWrapper, moduleLink, ucwords } from '@/helpers';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useBackupStore, useSiteStore } from '@/stores';
-import { default as Cancel } from '@/components/services/Cancel.vue';
-import { default as Invoices } from '@/components/services/Invoices.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 

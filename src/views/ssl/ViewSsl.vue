@@ -4,8 +4,8 @@ import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
-import { default as Cancel } from '@/components/services/Cancel.vue';
-import { default as Invoices } from '@/components/services/Invoices.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 import ChangeApproverEmail from '@/views/ssl/ChangeApproverEmail.vue';
 
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
