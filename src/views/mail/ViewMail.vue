@@ -30,7 +30,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const mailStore = useMailStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -158,7 +158,7 @@ const statusClass = computed(() => {
             <Alerts :id="id"></Alerts>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]"></Cancel>7
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>7
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>

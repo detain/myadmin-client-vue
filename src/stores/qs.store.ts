@@ -218,7 +218,11 @@ export const useQsStore = defineStore({
         responseText: '',
         queueId: null,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.qs_hostname,
+        titleField2: (state) => state.serviceInfo.qs_ip,
+        titleField3: (state) => state.serviceInfo.qs_vzid
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

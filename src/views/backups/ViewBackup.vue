@@ -36,7 +36,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
 backupStore.getById(id as string);
 
 const billingStatus = computed(() => {

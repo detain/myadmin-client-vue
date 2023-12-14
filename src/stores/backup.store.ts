@@ -114,7 +114,10 @@ export const useBackupStore = defineStore({
             },
         },
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.backup_username,
+        titleField2: (state) => state.serviceInfo.backup_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

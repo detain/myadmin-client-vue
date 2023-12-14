@@ -31,7 +31,7 @@ import Vnc from '@/views/vps/Vnc.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
-const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, titleField, titleField2, titleField3, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
@@ -291,7 +291,7 @@ function toggleFunc(cp: string) {
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]" :title-field3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

@@ -38,7 +38,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Floating IPs ' + id);
 
 const floatingIpStore = useFloatingIpStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 
 function submitForm() {}
 
@@ -166,7 +166,7 @@ const statusClass = computed(() => {
             <Alerts :id="id"></Alerts>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>

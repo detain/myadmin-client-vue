@@ -130,7 +130,11 @@ export const useWebsiteStore = defineStore({
             },
         },
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.website_hostname,
+        titleField2: (state) => state.serviceInfo.website_username,
+        titleField3: (state) => state.serviceInfo.website_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

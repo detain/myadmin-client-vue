@@ -167,7 +167,9 @@ export const useDomainStore = defineStore({
         whoisPrivacy: '',
         autoRenew: '',
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.domain_hostname
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

@@ -105,7 +105,10 @@ export const useFloatingIpStore = defineStore({
         },
         usage_count: 0,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.floating_ip_ip,
+        titleField2: (state) => state.serviceInfo.floating_ip_target_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

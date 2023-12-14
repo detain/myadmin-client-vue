@@ -50,7 +50,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 
 qsStore.getById(id);
@@ -205,7 +205,7 @@ function loadLink(newLink: string) {
             <Backups :id="id" :module="module" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]" :title-field3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

@@ -26,7 +26,7 @@ const link = computed(() => {
 });
 
 const sslStore = useSslStore();
-const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
+const { loading, error, pkg, linkDisplay, titleField } = storeToRefs(sslStore);
 const isCollapsed = ref(false);
 const clientLinks = ref<ClientLink[]>([]);
 const serviceInfo = ref<ServiceInfo>({
@@ -260,7 +260,7 @@ sslStore.getById(id as string);
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

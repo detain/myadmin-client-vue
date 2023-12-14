@@ -250,7 +250,11 @@ export const useVpsStore = defineStore({
         responseText: '',
         queueId: null,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.vps_hostname,
+        titleField2: (state) => state.serviceInfo.vps_ip,
+        titleField3: (state) => state.serviceInfo.vps_vzid
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

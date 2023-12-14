@@ -31,7 +31,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const serverStore = useServerStore();
-const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, titleField, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -185,7 +185,7 @@ const ipv6VlansNetworks = computed(() => {
             <BandwidthGraph :id="id"></BandwidthGraph>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
             <IpmiLive :id="id"></IpmiLive>

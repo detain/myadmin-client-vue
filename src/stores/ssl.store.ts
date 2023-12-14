@@ -87,7 +87,9 @@ export const useSslStore = defineStore({
         pkg: 0,
         linkDisplay: false,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.ssl_order_id
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

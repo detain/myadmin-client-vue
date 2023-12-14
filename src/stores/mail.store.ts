@@ -105,7 +105,10 @@ export const useMailStore = defineStore({
         },
         usage_count: 0,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.mail_username,
+        titleField2: (state) => state.serviceInfo.mail_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

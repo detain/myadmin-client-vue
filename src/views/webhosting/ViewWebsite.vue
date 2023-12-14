@@ -34,11 +34,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
-const titleField = computed(() => {
-    return serviceInfo.value[modules.value[module].TITLE_FIELD];
-})
-
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
 }
@@ -197,7 +193,7 @@ loadLink(route.params.link as string);
             <DownloadBackups :id="id as string"></DownloadBackups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="serviceInfo[modules[module].TITLE_FIELD2]" :titleField3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

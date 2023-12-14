@@ -96,8 +96,12 @@ export const useLicenseStore = defineStore({
             services_module: 'licenses',
         },
     }),
-    getters: {},
-    actions: {
+     getters: {
+        titleField: (state) => state.serviceInfo.license_ip,
+        titleField2: (state) => state.serviceInfo.license_key,
+        titleField3: (state) => state.serviceInfo.license_hostname
+    },
+   actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

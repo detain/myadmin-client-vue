@@ -153,7 +153,9 @@ export const useServerStore = defineStore({
         },
         locations: {},
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.server_hostname,
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
