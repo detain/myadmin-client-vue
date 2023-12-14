@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const module: string = 'servers';
 const siteStore = useSiteStore();

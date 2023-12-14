@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');

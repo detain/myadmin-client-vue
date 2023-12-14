@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import ucwords from '@/helpers/ucwords.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import useMailStore from '@/stores/mail.store.ts';
-import useSiteStore from '@/stores/site.store.ts';
+import { useMailStore } from '@/stores/mail.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';

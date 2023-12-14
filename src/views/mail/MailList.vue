@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { ref, computed, onMounted } from 'vue';
 /*
@@ -11,7 +11,7 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const module: string = 'mail';
 const siteStore = useSiteStore();

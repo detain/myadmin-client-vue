@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted } from 'vue';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { storeToRefs } from 'pinia';
-import useAuthStore from '@/stores/auth.store.ts';
-import useSiteStore from '@/stores/site.store.ts';
-import useAccountStore from '@/stores/account.store.ts';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '@/stores/account.store.ts';
 
 const siteStore = useSiteStore();
 const authStore = useAuthStore();

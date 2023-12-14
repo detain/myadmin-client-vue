@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import useTicketsStore from '@/stores/tickets.store.ts';
+import { useTicketsStore } from '@/stores/tickets.store.ts';
 
 import { ref, computed } from 'vue';
 import $ from 'jquery';

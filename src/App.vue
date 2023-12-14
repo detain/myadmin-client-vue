@@ -5,8 +5,8 @@ import { storeToRefs } from 'pinia';
 import MainMenu from '@/components/MainMenu.vue';
 import Alert from '@/components/Alert.vue';
 
-import useAuthStore from '@/stores/auth.store.ts';
-import useSiteStore from '@/stores/site.store.ts';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
 import 'jquery-ui';

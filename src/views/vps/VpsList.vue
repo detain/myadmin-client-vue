@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
-import moduleLink from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { ref, computed, onMounted } from 'vue';
 /*import $ from 'jquery';
@@ -19,7 +19,7 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 import DataTable from 'datatables.net-dt';
 
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const module: string = 'vps';
 const siteStore = useSiteStore();

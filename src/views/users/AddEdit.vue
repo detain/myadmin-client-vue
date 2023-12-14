@@ -4,10 +4,10 @@ import * as Yup from 'yup';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
-import useUsersStore from '@/stores/users.store.ts';
-import useAlertStore from '@/stores/alert.store.ts';
+import { useUsersStore } from '@/stores/users.store.ts';
+import { useAlertStore } from '@/stores/alert.store.ts';
 
-import router from '@/router';
+import { router } from '@/router';
 
 const usersStore = useUsersStore();
 const alertStore = useAlertStore();

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
 const props = defineProps(['id']);

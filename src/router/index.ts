@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import useAuthStore from '@/stores/auth.store.ts';
-import useAlertStore from '@/stores/alert.store.ts';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useAlertStore } from '@/stores/alert.store.ts';
 
 import affiliateRoutes from './affiliate.routes';
 import usersRoutes from './users.routes';

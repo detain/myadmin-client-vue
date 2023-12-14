@@ -4,8 +4,8 @@ import MainMenu from '@/components/MainMenu.vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
-import useAuthStore from '@/stores/auth.store.ts';
-import useSiteStore from '@/stores/site.store.ts';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 import ClientHome from '@/views/ClientHome.vue';
 

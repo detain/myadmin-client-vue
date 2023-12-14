@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order SSL');

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
-import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 
-import useSiteStore from '@/stores/site.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { useRoute, useRouter } from 'vue-router';
