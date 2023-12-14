@@ -3,7 +3,9 @@ import { ref, reactive, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAccountStore, useSiteStore } from '@/stores';
+import useAccountStore from '@/stores/account.store.ts';
+import useSiteStore from '@/stores/site.store.ts';
+
 import AccountFeatures from '@/components/account/AccountFeatures.vue';
 import ApiAccess from '@/components/account/ApiAccess.vue';
 import IpLimits from '@/components/account/IpLimits.vue';

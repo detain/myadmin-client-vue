@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useTicketsStore } from '@/stores';
+import useTicketsStore from '@/stores/tickets.store.ts';
+
 import { ref, computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 const ticketsStore = useTicketsStore();

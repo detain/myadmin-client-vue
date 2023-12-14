@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import moduleLink from '@/helpers/moduleLink.ts';
+
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -9,7 +11,8 @@ import 'datatables.net-buttons';
 import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 const module: string = 'quickservers';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Rapid Deploy Servers List');

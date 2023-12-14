@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import moduleLink from '@/helpers/moduleLink.ts';
+
 import { ref, computed, onMounted } from 'vue';
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 /*
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';

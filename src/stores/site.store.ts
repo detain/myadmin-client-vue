@@ -1,4 +1,5 @@
-import { fetchWrapper } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+
 import { defineStore } from 'pinia';
 
 const baseUrl = import.meta.env.VITE_API_URL;

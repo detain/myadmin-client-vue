@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { fetchWrapper, moduleLink } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import moduleLink from '@/helpers/moduleLink.ts';
+
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 const props = defineProps(['id']);
 //const id = ref('');
 const successMsg = ref('');

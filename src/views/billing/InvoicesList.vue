@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useInvoicesStore, useSiteStore } from '@/stores';
+import useInvoicesStore from '@/stores/invoices.store.ts';
+import useSiteStore from '@/stores/site.store.ts';
+
 import { ref, computed, onMounted } from 'vue';
 import 'datatables.net';
 import 'datatables.net-bs4';

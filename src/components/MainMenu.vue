@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);

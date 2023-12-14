@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink, ucwords } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import moduleLink from '@/helpers/moduleLink.ts';
+import ucwords from '@/helpers/ucwords.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useBackupStore, useSiteStore } from '@/stores';
+import useBackupStore from '@/stores/backup.store.ts';
+import useSiteStore from '@/stores/site.store.ts';
+
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import $ from 'jquery';

@@ -1,6 +1,10 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
-import { useAuthStore, useSiteStore } from '@/stores';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import snakeToCamel from '@/helpers/snakeToCamel.ts';
+
+import useAuthStore from '@/stores/auth.store.ts';
+import useSiteStore from '@/stores/site.store.ts';
+
 
 interface SimpleStringObj {
     [key: string]: any;

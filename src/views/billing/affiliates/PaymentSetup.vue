@@ -2,7 +2,8 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - PaymentSetup');
 siteStore.setTitle('Affiliate - PaymentSetup');

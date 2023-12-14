@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+
 import { ref, computed, onMounted } from 'vue';
 /*
 import DataTable from 'datatables.net-vue3';
@@ -10,7 +11,8 @@ import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
 import 'datatables.net-responsive';
 */
 import Swal from 'sweetalert2';
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Manager');
 siteStore.setTitle('DNS Manager');

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import fetchWrapper from '@/helpers/fetchWrapper.ts';
+import moduleLink from '@/helpers/moduleLink.ts';
+
 import { ref, computed, onMounted } from 'vue';
 /*import $ from 'jquery';
 import 'jquery';
@@ -17,7 +19,8 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 import DataTable from 'datatables.net-dt';
 
-import { useSiteStore } from '@/stores';
+import useSiteStore from '@/stores/site.store.ts';
+
 const module: string = 'vps';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
