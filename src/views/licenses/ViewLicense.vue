@@ -6,7 +6,8 @@ import { computed, watch } from 'vue';
 import { useLicenseStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 import { ChangeIp, ChangeOs } from '@/views/licenses';
 
 const module = 'licenses';
@@ -172,7 +173,7 @@ licenseStore.getById(id as string);
             <ChangeIp :id="id"></ChangeIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]" :title-field3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
         </div>
         <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>

@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores';
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module', 'package', 'title-field', 'title-field2', 'title-field3']);
+const props = defineProps(['id', 'module', 'package', 'titleField', 'titleField2', 'titleField3']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

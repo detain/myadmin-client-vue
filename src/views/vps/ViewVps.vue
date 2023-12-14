@@ -4,7 +4,8 @@ import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useVpsStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, SetupVnc, Vnc } from '@/views/vps';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -269,7 +270,7 @@ function toggleFunc(cp: string) {
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]" :title-field3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

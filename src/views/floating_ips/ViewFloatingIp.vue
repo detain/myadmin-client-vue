@@ -5,7 +5,8 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 //import { Alerts, DenyRules } from '@/views/floating_ip';
 import Swal from 'sweetalert2';
 
@@ -158,7 +159,7 @@ const statusClass = computed(() => {
             <Alerts :id="id"></Alerts>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]" :title-field2="serviceInfo[modules[module].TITLE_FIELD2]"></Cancel>
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>

@@ -4,7 +4,8 @@ import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 import { ChangeApproverEmail } from '@/views/ssl';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import Swal from 'sweetalert2';
@@ -253,7 +254,7 @@ sslStore.getById(id as string);
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

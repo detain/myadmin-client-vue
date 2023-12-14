@@ -6,7 +6,8 @@ import { computed, watch } from 'vue';
 import { useDomainStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains';
 
 const module = 'domains';
@@ -148,7 +149,7 @@ console.log(link.value);
             <Contact :id="id"></Contact>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="serviceInfo[modules[module]['TITLE_FIELD']]"></Cancel>
         </div>
         <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>

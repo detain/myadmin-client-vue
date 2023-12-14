@@ -5,7 +5,8 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useWebsiteStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
-import { Cancel, Invoices } from '@/components/services';
+import { default as Cancel } from '@/components/services/Cancel.vue';
+import { default as Invoices } from '@/components/services/Invoices.vue';
 import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
 import Swal from 'sweetalert2';
 
@@ -25,6 +26,9 @@ const settings = computed(() => {
 });
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
+const titleField = computed(() => {
+    return serviceInfo.value[modules.value[module].TITLE_FIELD];
+})
 
 function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
@@ -184,7 +188,7 @@ loadLink(route.params.link as string);
             <DownloadBackups :id="id as string"></DownloadBackups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="serviceType.services_name" :title-field="serviceInfo[settings?.TITLE_FIELD]" :title-field2="serviceInfo[settings?.TITLE_FIELD2]" :title-field3="serviceInfo[settings?.TITLE_FIELD3]"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="serviceInfo[modules[module].TITLE_FIELD2]" :titleField3="serviceInfo[modules[module].TITLE_FIELD3]"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
