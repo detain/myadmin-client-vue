@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
 import { useUsersStore, useAlertStore } from '@/stores';
-import { router } from '@/router';
+import router from '@/router';
 
 const usersStore = useUsersStore();
 const alertStore = useAlertStore();

@@ -3,7 +3,7 @@ import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 
 import { useUsersStore, useAlertStore } from '@/stores';
-import { router } from '@/router';
+import router from '@/router';
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
