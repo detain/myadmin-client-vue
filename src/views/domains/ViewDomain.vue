@@ -8,7 +8,12 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains';
+import Contact from '@/views/domains/Contact.vue';
+import Dnssec from '@/views/domains/Dnssec.vue';
+import Nameservers from '@/views/domains/Nameservers.vue';
+import Renew from '@/views/domains/Renew.vue';
+import Whois from '@/views/domains/Whois.vue';
+
 
 const module = 'domains';
 const siteStore = useSiteStore();

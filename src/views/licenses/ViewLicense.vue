@@ -8,7 +8,9 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { ChangeIp, ChangeOs } from '@/views/licenses';
+import ChangeIp from '@/views/licenses/ChangeIp.vue';
+import ChangeOs from '@/views/licenses/ChangeOs.vue';
+
 
 const module = 'licenses';
 const siteStore = useSiteStore();

@@ -7,7 +7,9 @@ import { useFloatingIpStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-//import { Alerts, DenyRules } from '@/views/floating_ip';
+//import Alerts from '@/views/floating_ip/Alerts.vue';
+//import DenyRules from '@/views/floating_ip/DenyRules.vue';
+
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';

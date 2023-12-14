@@ -8,7 +8,10 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
+import BandwidthGraph from '@/views/servers/BandwidthGraph.vue';
+import IpmiLive from '@/views/servers/IpmiLive.vue';
+import ReverseDns from '@/views/servers/ReverseDns.vue';
+
 
 const module = 'servers';
 const siteStore = useSiteStore();

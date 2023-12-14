@@ -28,17 +28,50 @@ import Cart from '@/views/billing/Cart.vue';
 import Pay from '@/views/billing/Pay.vue';
 
 /*
-import { ContactInfo, AccountSettings, ChangePass, ChangeUsername } from '@/views/account'
-import { DnsManager, DnsEditor } from '@/views/dns'
-import { DomainsList, ViewDomain, OrderDomain } from '@/views/domains';
-import { BackupsList, ViewBackup, OrderBackup } from '@/views/backups';
-import { LicensesList, ViewLicense, OrderLicense } from '@/views/licenses';
-import { MailList, ViewMail, OrderMail } from '@/views/mail';
-import { QsList, ViewQs, OrderQs } from '@/views/quickservers';
-import { ServersList, ViewServer, OrderServer } from '@/views/servers';
-import { SslList, ViewSsl, OrderSsl } from '@/views/ssl';
-import { VpsList, ViewVps, OrderVps } from '@/views/vps';
-import { WebsitesList, ViewWebsite, OrderWebsite } from '@/views/webhosting';
+import ContactInfo from '@/views/account/ContactInfo.vue'
+import AccountSettings from '@/views/account/AccountSettings.vue'
+import ChangePass from '@/views/account/ChangePass.vue'
+import ChangeUsername from '@/views/account/ChangeUsername.vue'
+
+import DnsManager from '@/views/dns/DnsManager.vue'
+import DnsEditor from '@/views/dns/DnsEditor.vue'
+
+import DomainsList from '@/views/domains/DomainsList.vue';
+import ViewDomain from '@/views/domains/ViewDomain.vue';
+import OrderDomain from '@/views/domains/OrderDomain.vue';
+
+import BackupsList from '@/views/backups/BackupsList.vue';
+import ViewBackup from '@/views/backups/ViewBackup.vue';
+import OrderBackup from '@/views/backups/OrderBackup.vue';
+
+import LicensesList from '@/views/licenses/LicensesList.vue';
+import ViewLicense from '@/views/licenses/ViewLicense.vue';
+import OrderLicense from '@/views/licenses/OrderLicense.vue';
+
+import MailList from '@/views/mail/MailList.vue';
+import ViewMail from '@/views/mail/ViewMail.vue';
+import OrderMail from '@/views/mail/OrderMail.vue';
+
+import QsList from '@/views/quickservers/QsList.vue';
+import ViewQs from '@/views/quickservers/ViewQs.vue';
+import OrderQs from '@/views/quickservers/OrderQs.vue';
+
+import ServersList from '@/views/servers/ServersList.vue';
+import ViewServer from '@/views/servers/ViewServer.vue';
+import OrderServer from '@/views/servers/OrderServer.vue';
+
+import SslList from '@/views/ssl/SslList.vue';
+import ViewSsl from '@/views/ssl/ViewSsl.vue';
+import OrderSsl from '@/views/ssl/OrderSsl.vue';
+
+import VpsList from '@/views/vps/VpsList.vue';
+import ViewVps from '@/views/vps/ViewVps.vue';
+import OrderVps from '@/views/vps/OrderVps.vue';
+
+import WebsitesList from '@/views/webhosting/WebsitesList.vue';
+import ViewWebsite from '@/views/webhosting/ViewWebsite.vue';
+import OrderWebsite from '@/views/webhosting/OrderWebsite.vue';
+
 */
 
 export const router = createRouter({

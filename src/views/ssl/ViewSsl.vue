@@ -6,7 +6,8 @@ import { ref, computed, watch } from 'vue';
 import { useSslStore, useSiteStore } from '@/stores';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { ChangeApproverEmail } from '@/views/ssl';
+import ChangeApproverEmail from '@/views/ssl/ChangeApproverEmail.vue';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import Swal from 'sweetalert2';
 

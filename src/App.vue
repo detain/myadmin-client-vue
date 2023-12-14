@@ -2,7 +2,9 @@
 import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { MainMenu, Alert } from '@/components';
+import MainMenu from '@/components/MainMenu.vue';
+import Alert from '@/components/Alert.vue';
+
 import { useAuthStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import 'jquery-ui';

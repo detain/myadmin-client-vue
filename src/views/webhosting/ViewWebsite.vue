@@ -7,7 +7,11 @@ import { useWebsiteStore, useSiteStore } from '@/stores';
 import $ from 'jquery';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
+import BuyIp from '@/views/webhosting/BuyIp.vue';
+import DownloadBackups from '@/views/webhosting/DownloadBackups.vue';
+import Migration from '@/views/webhosting/Migration.vue';
+import ReverseDns from '@/views/webhosting/ReverseDns.vue';
+
 import Swal from 'sweetalert2';
 
 const module = 'webhosting';

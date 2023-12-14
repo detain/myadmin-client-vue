@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { MainMenu } from '@/components';
+import MainMenu from '@/components/MainMenu.vue';
+
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 

@@ -4,7 +4,13 @@ import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAccountStore, useSiteStore } from '@/stores';
-import { AccountFeatures, ApiAccess, IpLimits, LinkedAccounts, SshKeys, TwoFactorAuth } from '@/components/account';
+import AccountFeatures from '@/components/account/AccountFeatures.vue';
+import ApiAccess from '@/components/account/ApiAccess.vue';
+import IpLimits from '@/components/account/IpLimits.vue';
+import LinkedAccounts from '@/components/account/LinkedAccounts.vue';
+import SshKeys from '@/components/account/SshKeys.vue';
+import TwoFactorAuth from '@/components/account/TwoFactorAuth.vue';
+
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');

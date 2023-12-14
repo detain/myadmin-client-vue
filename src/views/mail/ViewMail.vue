@@ -8,7 +8,9 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { default as Cancel } from '@/components/services/Cancel.vue';
 import { default as Invoices } from '@/components/services/Invoices.vue';
-import { Alerts, DenyRules } from '@/views/mail';
+import Alerts from '@/views/mail/Alerts.vue';
+import DenyRules from '@/views/mail/DenyRules.vue';
+
 
 const module = 'mail';
 const siteStore = useSiteStore();
