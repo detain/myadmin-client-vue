@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
-import { useAccountStore, useSiteStore } from '@/stores';
+import { useAccountStore } from '@/stores/account.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 

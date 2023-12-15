@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useLicenseStore, useSiteStore } from '@/stores';
+import { useLicenseStore } from '@/stores/license.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { Cancel, Invoices } from '@/components/services';
-import { ChangeIp, ChangeOs } from '@/views/licenses';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import ChangeIp from '@/views/licenses/ChangeIp.vue';
+import ChangeOs from '@/views/licenses/ChangeOs.vue';
+
 
 const module = 'licenses';
 const siteStore = useSiteStore();
@@ -22,7 +30,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const licenseStore = useLicenseStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -170,6 +178,9 @@ licenseStore.getById(id as string);
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'change_ip'" class="col">
             <ChangeIp :id="id"></ChangeIp>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_os'" class="col">
             <ChangeOs :id="id"></ChangeOs>

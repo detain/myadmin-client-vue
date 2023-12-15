@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
 import Swal from 'sweetalert2';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const route = useRoute();

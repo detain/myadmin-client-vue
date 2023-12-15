@@ -4,7 +4,8 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "strict": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
@@ -12,6 +13,14 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
+        "allowJs": true,
+        "checkJs": true,
+        "sourceMap": true,
+        "noEmit": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true
     "paths": {
       "@/*": ["src/*"]
     },

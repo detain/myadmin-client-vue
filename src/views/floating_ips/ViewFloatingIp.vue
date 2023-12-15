@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useFloatingIpStore, useSiteStore } from '@/stores';
+import { useFloatingIpStore } from '@/stores/floating_ip.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
-import { Cancel, Invoices } from '@/components/services';
-//import { Alerts, DenyRules } from '@/views/floating_ip';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+//import Alerts from '@/views/floating_ip/Alerts.vue';
+//import DenyRules from '@/views/floating_ip/DenyRules.vue';
+
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';
@@ -30,7 +38,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Floating IPs ' + id);
 
 const floatingIpStore = useFloatingIpStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 
 function submitForm() {}
 
@@ -156,6 +164,9 @@ const statusClass = computed(() => {
     <template v-if="linkDisplay">
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>

@@ -1,13 +1,22 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useServerStore, useSiteStore } from '@/stores';
+import { useServerStore } from '@/stores/server.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { Cancel, Invoices } from '@/components/services';
-import { BandwidthGraph, IpmiLive, ReverseDns } from '@/views/servers';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import BandwidthGraph from '@/views/servers/BandwidthGraph.vue';
+import IpmiLive from '@/views/servers/IpmiLive.vue';
+import ReverseDns from '@/views/servers/ReverseDns.vue';
+
 
 const module = 'servers';
 const siteStore = useSiteStore();
@@ -22,7 +31,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const serverStore = useServerStore();
-const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, titleField, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -174,6 +183,9 @@ const ipv6VlansNetworks = computed(() => {
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'bandwidth_graph'" class="col">
             <BandwidthGraph :id="id"></BandwidthGraph>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
             <IpmiLive :id="id"></IpmiLive>

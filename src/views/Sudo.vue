@@ -3,7 +3,8 @@ import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const sessionId = route.params.sessionid as string;

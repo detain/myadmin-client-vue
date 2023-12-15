@@ -1,11 +1,31 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useQsStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
-import { Backup, Backups, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, SetupVnc, Vnc } from '@/views/vps';
+import { useQsStore } from '@/stores/qs.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Backup from '@/views/vps/Backup.vue';
+import Backups from '@/views/vps/Backups.vue';
+import ChangeHostname from '@/views/vps/ChangeHostname.vue';
+import ChangeRootPassword from '@/views/vps/ChangeRootPassword.vue';
+import ChangeTimezone from '@/views/vps/ChangeTimezone.vue';
+import ChangeWebuzoPassword from '@/views/vps/ChangeWebuzoPassword.vue';
+import InsertCd from '@/views/vps/InsertCd.vue';
+import ReinstallOs from '@/views/vps/ReinstallOs.vue';
+import ResetPassword from '@/views/vps/ResetPassword.vue';
+import ReverseDns from '@/views/vps/ReverseDns.vue';
+import Slices from '@/views/vps/Slices.vue';
+import TrafficUsage from '@/views/vps/TrafficUsage.vue';
+import SetupVnc from '@/views/vps/SetupVnc.vue';
+import Vnc from '@/views/vps/Vnc.vue';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const module = 'quickservers';
@@ -30,7 +50,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
 
 const qsStore = useQsStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 
 qsStore.getById(id);
@@ -185,7 +205,7 @@ function loadLink(newLink: string) {
             <Backups :id="id" :module="module" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

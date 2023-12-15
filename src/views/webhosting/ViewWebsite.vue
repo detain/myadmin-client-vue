@@ -1,12 +1,22 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useWebsiteStore, useSiteStore } from '@/stores';
+import { useWebsiteStore } from '@/stores/website.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
-import { Cancel, Invoices } from '@/components/services';
-import { BuyIp, DownloadBackups, Migration, ReverseDns } from '@/views/webhosting';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import BuyIp from '@/views/webhosting/BuyIp.vue';
+import DownloadBackups from '@/views/webhosting/DownloadBackups.vue';
+import Migration from '@/views/webhosting/Migration.vue';
+import ReverseDns from '@/views/webhosting/ReverseDns.vue';
+
 import Swal from 'sweetalert2';
 
 const module = 'webhosting';
@@ -24,8 +34,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const websiteStore = useWebsiteStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
-
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
 function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
 }
@@ -182,6 +191,9 @@ loadLink(route.params.link as string);
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
             <DownloadBackups :id="id as string"></DownloadBackups>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

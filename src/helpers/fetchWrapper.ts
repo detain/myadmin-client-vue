@@ -1,4 +1,5 @@
-import { useAuthStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+
 
 export const fetchWrapper = {
     delete: request('DELETE'),

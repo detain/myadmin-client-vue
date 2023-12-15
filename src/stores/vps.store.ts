@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface VpsInfo {
     vps_comment: string;
@@ -246,7 +250,11 @@ export const useVpsStore = defineStore({
         responseText: '',
         queueId: null,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.vps_hostname,
+        titleField2: (state) => state.serviceInfo.vps_ip,
+        titleField3: (state) => state.serviceInfo.vps_vzid
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '@/helpers';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface InvoiceRow {
     id: number;

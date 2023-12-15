@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface FloatingIpInfo {
     floating_ip_id: number;
@@ -101,7 +105,10 @@ export const useFloatingIpStore = defineStore({
         },
         usage_count: 0,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.floating_ip_ip,
+        titleField2: (state) => state.serviceInfo.floating_ip_target_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();

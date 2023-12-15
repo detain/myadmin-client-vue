@@ -2,7 +2,8 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Banners');

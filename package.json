@@ -110,8 +110,6 @@
     "devDependencies": {
         "@vitejs/plugin-vue": "*",
         "tree-kill": "*",
-        "typescript": "^5.1.6",
-        "vite": "^5.0.4",
         "@commitlint/cli": "*",
         "@commitlint/config-conventional": "*",
         "@rollup/plugin-inject": "*",
@@ -167,6 +165,8 @@
         "prettier-plugin-tailwindcss": "*",
         "tailwindcss": "*",
         "terser": "*",
+        "typescript": "^5.1.6",
+        "vite": "^5.0.4",
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-electron": "*",
