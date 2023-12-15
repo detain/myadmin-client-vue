@@ -108,8 +108,6 @@
         "yup": "*"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "*",
-        "tree-kill": "*",
         "@commitlint/cli": "*",
         "@commitlint/config-conventional": "*",
         "@rollup/plugin-inject": "*",
@@ -137,6 +135,7 @@
         "@typescript-eslint/parser": "*",
         "@vitejs/plugin-basic-ssl": "*",
         "@vitejs/plugin-legacy": "*",
+        "@vitejs/plugin-vue": "*",
         "@vitest/coverage-c8": "*",
         "@vitest/ui": "*",
         "@vue/compiler-sfc": "*",
@@ -165,6 +164,7 @@
         "prettier-plugin-tailwindcss": "*",
         "tailwindcss": "*",
         "terser": "*",
+        "tree-kill": "*",
         "typescript": "^5.1.6",
         "vite": "^5.0.4",
         "vite-plugin-checker": "*",
@@ -209,4 +209,4 @@
         "node": ">=16.0.0",
         "yarn": ">= 1.0.0"
     }
-  }
+}
