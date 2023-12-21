@@ -16,7 +16,7 @@ import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 import Inspector from 'vite-plugin-vue-inspector';
 //import Inspector from 'unplugin-vue-inspector/vite'
-import TurboConsole from 'vite-plugin-turbo-console';
+import TurboConsole from 'unplugin-turbo-console/vite';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({

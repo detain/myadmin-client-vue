@@ -12,7 +12,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
-//import TurboConsole from "vite-plugin-turbo-console";
+//import TurboConsole from 'unplugin-turbo-console/vite';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
