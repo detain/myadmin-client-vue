@@ -15,11 +15,13 @@ import dts from 'vite-plugin-dts';
 
 import { fileURLToPath, URL } from 'node:url';
 import fs from 'fs';
+import inject from '@rollup/plugin-inject';
+import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
-//import TurboConsole from "vite-plugin-turbo-console";
+//import TurboConsole from 'unplugin-turbo-console/vite';
 
 export default defineConfig({
     plugins: [
@@ -33,23 +35,28 @@ export default defineConfig({
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         //webfontDownload(),
-        //checker({
-        //    vueTsc: true,
-        //    typescript: false,
-        //}),
-        //TurboConsole(),
-        //i18nResources({
-        //    path: resolve(__dirname, "src/locales"),
-        //}),
-        //AutoImport({
-        //    imports: ["vue", "@vueuse/core"],
-        //    resolvers: [],
-        //    dirs: ["./composables/" + "**", "./views/" + "**"],
-        //    vueTemplate: true,
-        //    cache: true
-        //}),
-        //splitVendorChunkPlugin(),
-        //legacy({ targets: ["defaults", "not IE 11"] }),
+        inject({
+            jQuery: 'jquery',
+        }),
+        /*
+        checker({
+            vueTsc: true,
+            typescript: false,
+        }),
+        TurboConsole(),
+        i18nResources({
+            path: resolve(__dirname, "src/locales"),
+        }),
+        AutoImport({
+            imports: ["vue", "@vueuse/core"],
+            resolvers: [],
+            dirs: ["./composables/" + "**", "./views/" + "**"],
+            vueTemplate: true,
+            cache: true
+        }),
+        splitVendorChunkPlugin(),
+*/
+        legacy({ targets: ["defaults", "not IE 11"] }),
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
