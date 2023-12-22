@@ -16,13 +16,12 @@ import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import fs from 'fs';
 import inject from '@rollup/plugin-inject';
-import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from 'unplugin-turbo-console/vite';
-
+/*
 export default defineConfig({
     plugins: [
         vue({
@@ -38,7 +37,6 @@ export default defineConfig({
         inject({
             jQuery: 'jquery',
         }),
-        /*
         checker({
             vueTsc: true,
             typescript: false,
@@ -55,7 +53,6 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-*/
         legacy({ targets: ["defaults", "not IE 11"] }),
         VitePWA({
             registerType: 'autoUpdate',
@@ -67,7 +64,7 @@ export default defineConfig({
         //Inspector(),
         //VueDevTools(),
         //        TurboConsole(),
-    ],
+    ]
 });
 */
 
