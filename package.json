@@ -1,5 +1,6 @@
 {
     "name": "myadmin-client-vue",
+    "description": "Client interface to the InterServer billing and management platform written in Vue+Vite.",
     "author": "detain",
     "version": "1.0.0",
     "private": true,
