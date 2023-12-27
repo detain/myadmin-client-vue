@@ -4,13 +4,6 @@ import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { ref, computed, onMounted } from 'vue';
-/*
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net';
-import 'datatables.net-buttons';
-import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
-import 'datatables.net-responsive';
-*/
 import { useSiteStore } from '@/stores/site.store.ts';
 
 const module: string = 'quickservers';
@@ -31,10 +24,6 @@ interface quickserversRow {
     qs_status: string;
     qs_comment: string;
 }
-
-/*DataTable.use(DataTablesCore);*/
-
-let dt;
 const limitStatus = ref('active');
 interface LimitStatusMap {
     [key: string]: string[];
@@ -64,10 +53,6 @@ const filteredData = computed(() => {
     }
 });
 
-onMounted(function () {
-    dt = table.value.dt;
-});
-
 function crud_print(): void {}
 
 function crud_export(exportType: string): void {
@@ -89,7 +74,6 @@ loadQuickservers();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
@@ -195,11 +179,6 @@ loadQuickservers();
 </template>
 
 <style scoped>
-/*
-@import 'datatables.net-bs4';
-@import 'datatables.net-buttons-bs4';
-@import 'datatables.net-responsive-bs4';
-*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

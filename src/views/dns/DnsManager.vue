@@ -3,13 +3,6 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 
 import { ref, computed, onMounted } from 'vue';
-/*
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net';
-import 'datatables.net-buttons';
-import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
-import 'datatables.net-responsive';
-*/
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores/site.store.ts';
 
@@ -21,10 +14,6 @@ siteStore.setBreadcrums([
     ['', 'DNS Manager'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-
-/*DataTable.use(DataTablesCore);*/
-
-let dt;
 const limitStatus = ref('active');
 interface LimitStatusMap {
     [key: string]: string[];
@@ -118,10 +107,6 @@ async function deleteDomain(event: Event) {
     });
 }
 
-onMounted(function () {
-    dt = table.value.dt;
-});
-
 function crud_print(): void {}
 
 function crud_export(exportType: string): void {
@@ -155,7 +140,6 @@ loadDns();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
@@ -313,11 +297,6 @@ loadDns();
 </template>
 
 <style scoped>
-/*
-@import 'datatables.net-bs4';
-@import 'datatables.net-buttons-bs4';
-@import 'datatables.net-responsive-bs4';
-*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

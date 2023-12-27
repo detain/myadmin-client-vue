@@ -51,19 +51,6 @@
         "axios": "*",
         "bootstrap": "^4.6",
         "chart.js": "~4.4",
-        "datatables.net-bs": "*",
-        "datatables.net-bs4": "*",
-        "datatables.net-buttons": "*",
-        "datatables.net-buttons-bs": "*",
-        "datatables.net-buttons-bs4": "*",
-        "datatables.net-dt": "*",
-        "datatables.net-responsive-bs": "*",
-        "datatables.net-responsive-bs4": "*",
-        "datatables.net-searchpanes-bs": "*",
-        "datatables.net-select": "*",
-        "datatables.net-select-bs": "*",
-        "datatables.net-select-bs4": "*",
-        "datatables.net-vue3": "*",
         "font-awesome": "^4.7",
         "font-awesome-animation": "l-lin/font-awesome-animation#master",
         "jquery": "^3.7",
@@ -100,8 +87,6 @@
         "@rushstack/eslint-patch": "*",
         "@tsconfig/node18": "*",
         "@types/bootstrap": "*",
-        "@types/datatables.net-buttons": "*",
-        "@types/datatables.net-select": "*",
         "@types/eslint": "*",
         "@types/jquery": "*",
         "@types/jquery-migrate": "*",
@@ -172,8 +157,7 @@
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",
         "@intlify/unplugin-vue-i18n": "*",
-        "@ttskch/select2-bootstrap4-theme": "*",
-        "datatables.net-plugins": "*"
+        "@ttskch/select2-bootstrap4-theme": "*"
     },
     "commitlint": {
         "extends": [
