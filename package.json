@@ -66,7 +66,7 @@
         "chart.js": "~4.4",
         "electron-log": "*",
         "electron-store": "*",
-        "electron-updater": ">=4.0",
+        "electron-updater": "^4.0",
         "font-awesome": "^4.7",
         "font-awesome-animation": "l-lin/font-awesome-animation#master",
         "jquery": "^3.7",

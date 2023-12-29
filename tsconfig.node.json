@@ -3,7 +3,9 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": true, // needs noEmit or emitDeclarationOnly to be set
+    "noEmit": true,
+    //"emitDeclarationOnly": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
