@@ -120,8 +120,7 @@ export const useFloatingIpStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/floating_ip');
-                this.floatingIpList = response;
+                this.floatingIpList = await fetchWrapper.get(baseUrl + '/floating_ip');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

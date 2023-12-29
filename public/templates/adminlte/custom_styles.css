@@ -667,7 +667,7 @@ tr.shown td.details-control {
 .success .heading,
 .danger .heading {
     text-transform: capitalize;
-    float: inline-start;
+    float: initial;
     width: fit-content;
     position: relative;
     top: 0.14rem;

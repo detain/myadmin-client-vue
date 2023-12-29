@@ -266,8 +266,7 @@ export const useVpsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps');
-                this.vpsList = response;
+                this.vpsList = await fetchWrapper.get(baseUrl + '/vps');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

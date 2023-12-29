@@ -53,7 +53,7 @@
         "chart.js": "~4.4",
         "font-awesome": "^4.7",
         "font-awesome-animation": "l-lin/font-awesome-animation#master",
-        "jquery": "^3.7",
+        "jquery": "^3.7.1",
         "jquery-migrate": "appleboy/jquery-migrate#master",
         "jquery-simple-pass-meter": "jakerella/jquerySimplePassMeter#master",
         "jquery-ui": "jquery/jquery-ui#>=1.13.2",

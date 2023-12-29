@@ -120,8 +120,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/mail');
-                this.mailList = response;
+                this.mailList = await fetchWrapper.get(baseUrl + '/mail');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

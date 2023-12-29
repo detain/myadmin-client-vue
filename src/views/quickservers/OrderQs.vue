@@ -7,7 +7,6 @@ import { moduleLink } from '@/helpers/moduleLink.ts';
 import { useSiteStore } from '@/stores/site.store.ts';
 
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
 const router = useRouter();
 const module: string = 'quickservers';

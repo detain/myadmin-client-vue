@@ -114,7 +114,7 @@ import jQuery from 'jquery';
                 const lowerCase = new RegExp('[a-z]'),
                     upperCase = new RegExp('[A-Z]'),
                     numbers = new RegExp('[0-9]'),
-                    specialCharacter = new RegExp('[!,%,&,@,#,$,^,*,?,_,~]');
+                    specialCharacter = new RegExp('[!,%&@#$^*?_~]');
 
                 // Show or Hide password hint based on keyup
                 $(this).on('keyup focus', function () {

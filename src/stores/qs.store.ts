@@ -234,8 +234,7 @@ export const useQsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/qs');
-                this.qsList = response;
+                this.qsList = await fetchWrapper.get(baseUrl + '/qs');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

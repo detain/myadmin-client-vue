@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 //import checker from 'vite-plugin-checker';
 //import * as path from 'path';
 import { fileURLToPath, URL } from 'node:url';
-import fs from 'fs';
+//import fs from 'fs';
 import inject from '@rollup/plugin-inject';
 import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa';

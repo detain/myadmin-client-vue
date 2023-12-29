@@ -204,11 +204,11 @@ function docReady() {
 
 function toggleFunc(cp: string) {
     if (cp === 'cp') {
-        $('#warning-text').html('cPanel is not supported by your operating system. To use this control panel you should reinstall <b>"CentOS 7 Cpanel" or "CentOS"</b> operating system.');
+        $('#warning-text').html('cPanel is not supported by your operating system. To use this control panel you should reinstall <b>&quot;CentOS 7 Cpanel&quot; or &quot;CentOS&quot;</b> operating system.');
     } else if (cp === 'da') {
-        $('#warning-text').html('Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>"Linux"</b> operating system.');
+        $('#warning-text').html('Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>&quot;Linux&quot;</b> operating system.');
     } else if (cp === 'pp') {
-        $('#warning-text').html('Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>"Windows"</b> operating system.');
+        $('#warning-text').html('Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>&quot;Windows&quot;</b> operating system.');
     }
     $('.toggleTr').show();
 }
