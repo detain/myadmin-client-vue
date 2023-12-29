@@ -6,7 +6,7 @@ import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import DataTable from 'datatables.net-dt';
+import DataTable from 'datatables.net';
 import 'datatables.net-bs4';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate System');

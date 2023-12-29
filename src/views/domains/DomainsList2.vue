@@ -2,13 +2,6 @@
 import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
-/*
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net';
-import 'datatables.net-buttons';
-import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
-import 'datatables.net-responsive';
-*/
 
 interface domainsRow {
     screenshot?: string;
@@ -20,8 +13,6 @@ interface domainsRow {
     link?: number | string;
     hostname?: string;
 }
-
-/*DataTable.use(DataTablesCore);*/
 
 const router = useRouter();
 const route = useRoute();
@@ -65,10 +56,6 @@ const filteredData = computed(() => {
     return activeDomains;
 });
 
-onMounted(function () {
-    dt = table.value.dt;
-});
-
 function crud_print(): void {}
 
 function crud_export(exportType: string): void {
@@ -80,7 +67,6 @@ function setStatusLimit(event: Event) {
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
@@ -173,11 +159,6 @@ function setStatusLimit(event: Event) {
 </template>
 
 <style scoped>
-/*
-@import 'datatables.net-bs4';
-@import 'datatables.net-buttons-bs4';
-@import 'datatables.net-responsive-bs4';
-*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,
