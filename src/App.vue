@@ -169,7 +169,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
         </footer>
     </div>
     <div v-else>
-        <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+        <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
             <router-view />
         </div>
     </div>

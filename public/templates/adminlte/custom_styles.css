@@ -136,18 +136,6 @@ ul.dropdown-menu.show {
     width: max-content !important;
 }
 
-.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable {
-    height: 0 !important;
-    left: 6rem !important;
-    width: 6.7% !important;
-    display: block ruby !important;
-    top: -31.8rem !important;
-}
-
-ui-dialog:nth-child(2) {
-    display: none !important;
-}
-
 .ui-dialog-content.ui-widget-content {
     min-height: 1.07rem !important;
     background: white !important;
@@ -810,7 +798,6 @@ tr.shown td.details-control {
 .form-card input,
 .form-card textarea,
 .form-card select {
-    border: none;
     border: 0.07rem solid lightgrey;
     border-radius: 0.42rem;
     margin-bottom: 1.07rem;
@@ -891,7 +878,7 @@ tr.shown td.details-control {
 
     .aff-share {
         display: block ruby;
-        margin: 0.35rem 0rem 0rem;
+        margin: 0.35rem 0 0;
     }
 
     .aff-social {

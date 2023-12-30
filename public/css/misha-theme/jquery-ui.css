@@ -95,7 +95,7 @@
 }
 .ui-resizable-handle {
   position: absolute;
-  font-size: 0.1px;
+  font-size: 1px;
   display: block;
   -ms-touch-action: none;
   touch-action: none;

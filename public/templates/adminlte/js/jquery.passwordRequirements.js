@@ -122,7 +122,7 @@ import jQuery from 'jquery';
 
                     checkCompleted();
 
-                    if ($('#password').val() == $('#password2').val()) {
+                    if ($('#password').val() === $('#password2').val()) {
                         $('.pr-matchPassUI span').addClass('pr-ok');
                         matchPassDone = true;
                     } else $('.pr-matchPassUI span').removeClass('pr-ok');
