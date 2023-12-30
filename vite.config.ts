@@ -13,7 +13,7 @@ import dts from 'vite-plugin-dts';
 //import checker from 'vite-plugin-checker';
 
 import { fileURLToPath, URL } from 'node:url';
-import fs from 'fs';
+//import fs from 'fs';
 import inject from '@rollup/plugin-inject';
 import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
@@ -33,9 +33,10 @@ export default defineConfig({
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         //webfontDownload(),
-        inject({
+        /* inject({
             jQuery: 'jquery',
-        }),
+        }), */
+        /*
         checker({
             vueTsc: true,
             typescript: false,

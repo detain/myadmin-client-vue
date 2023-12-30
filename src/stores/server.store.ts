@@ -167,8 +167,7 @@ export const useServerStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/servers');
-                this.serverList = response;
+                this.serverList = await fetchWrapper.get(baseUrl + '/servers');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

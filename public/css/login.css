@@ -13,7 +13,6 @@ body {
   color: #333;
   float: left;
   height: auto;
-  font-family: Segoe UI;
   font-size: 15px;
   text-align: justify;
   width: 100%;
@@ -83,8 +82,6 @@ div.signup_toggle {
 .form-signin .form-control {
   position: relative;
   height: auto;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
@@ -302,7 +299,6 @@ a.nav-link {
   font-size: 14px;
 }
 .imgr {
-  font-family: arial;
   font-size: 14px;
   line-height: 1.4em;
   margin-right: 30px !important;

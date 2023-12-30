@@ -46,11 +46,7 @@ export const useAuthStore = defineStore({
     getters: {},
     actions: {
         loggedIn() {
-            if (this.sessionId != null || this.apiKey != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.sessionId != null || this.apiKey != null;
         },
         resetStores(): void {
             const pinia = getActivePinia() as ExtendedPinia;

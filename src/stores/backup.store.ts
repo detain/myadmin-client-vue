@@ -129,8 +129,7 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/backups');
-                this.backupList = response;
+                this.backupList = await fetchWrapper.get(baseUrl + '/backups');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

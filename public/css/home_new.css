@@ -263,14 +263,6 @@ h3 {
   border: 1px solid #eee;
 }
 
-.half2 {
-  background: url(../images/android_03.jpg) left center;
-  width: 48.6%;
-  float: left;
-  margin-left: 2%;
-  border: 1px solid #eee;
-}
-
 .bottom h4 {
   background: #ebebeb none repeat scroll 0 0;
   box-sizing: border-box;

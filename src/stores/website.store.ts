@@ -146,8 +146,7 @@ export const useWebsiteStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/websites');
-                this.websiteList = response;
+                this.websiteList = await fetchWrapper.get(baseUrl + '/websites');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;
