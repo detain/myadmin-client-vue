@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron'
 import renderer from 'vite-plugin-electron-renderer'
-import { notBundle } from 'vite-plugin-electron/plugin'
 import pkg from './package.json'
 import * as path from 'path';
 import inject from '@rollup/plugin-inject';
@@ -106,11 +105,6 @@ export default defineConfig(({ command }) => {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
               },
             },
-            plugins: [
-              // This is just an option to improve build performance, it's non-deterministic!
-              // e.g. `import log from 'electron-log'` -> `const log = require('electron-log')`
-              isServe && notBundle(),
-            ],
           },
         },
         {
@@ -129,9 +123,6 @@ export default defineConfig(({ command }) => {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
               },
             },
-            plugins: [
-              isServe && notBundle(),
-            ],
           },
         }
       ]),

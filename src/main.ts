@@ -1,14 +1,18 @@
+<<<<<<< HEAD
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { VueQueryPlugin } from '@tanstack/vue-query';
 import { createHead } from '@unhead/vue';
 import { VueRecaptchaPlugin } from 'vue-recaptcha';
 //import { createI18n } from 'vue-i18n'
-
 import App from './App.vue';
 import { router } from './router';
-import './samples/node-api'
-//import "./style.css"
+
+import './style.css'
+
+// `nodeIntegration` needs to be enabled in the Main process.
+// import './demos/node'
+// import './demos/ipc'
 
 const app = createApp(App);
 const pinia = createPinia();

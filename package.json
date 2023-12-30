@@ -2,7 +2,7 @@
     "name": "myadmin-client-vue",
     "description": "Client interface to the InterServer billing and management platform written in Vue+Vite.",
     "author": "detain",
-    "main": "dist-electron/main/index.js",
+    "main": "dist-electron/main/index.mjs",
     "version": "1.0.0",
     "private": true,
     "keywords": [
@@ -152,7 +152,7 @@
         "tailwindcss": "*",
         "terser": "*",
         "tree-kill": "*",
-        "typescript": "^5.1.6",
+        "typescript": "^5.3.3",
         "unplugin-turbo-console": "*",
         "vite": "*",
         "vite-plugin-checker": "*",
