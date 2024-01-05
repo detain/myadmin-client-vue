@@ -9,7 +9,7 @@ import { useAuthStore } from '@/stores/auth.store.ts';
 import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
-import 'jquery-ui';
+//import 'jquery-ui';
 import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';

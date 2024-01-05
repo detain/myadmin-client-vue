@@ -28,9 +28,9 @@ export default defineConfig({
         }),
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         //webfontDownload(),
-        /* inject({
+        inject({
             jQuery: 'jquery',
-        }), */
+        }),
         /*
         checker({
             vueTsc: true,
