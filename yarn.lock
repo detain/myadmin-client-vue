@@ -1583,14 +1583,14 @@
     fastq "^1.6.0"
 
 "@nuxt/kit@^3.4.3":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.9.0.tgz#b18492bb9b6ea42f8df68483c3286614df0f9933"
-  integrity sha512-XVFQihMTXM5y7Xj7EXbcDbUbxNkC8+ArQKArAH5PK1ulCWZWyP+VR94Gg2boo9vI2eNLTs+LquxnOtOHRQrg0A==
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.9.1.tgz#12ec2f38fad35c4f777e21bf1f5671c5824cd1b6"
+  integrity sha512-QvwZ4QmxmKEnGXXwhLapfogW8enIX30GD7nbmasAkcDIf4GdP2IWUwhd068mrXMbzdZupRLV1J5E74Dr516o5g==
   dependencies:
-    "@nuxt/schema" "3.9.0"
-    c12 "^1.5.1"
+    "@nuxt/schema" "3.9.1"
+    c12 "^1.6.1"
     consola "^3.2.3"
-    defu "^6.1.3"
+    defu "^6.1.4"
     globby "^14.0.0"
     hash-sum "^2.0.0"
     ignore "^5.3.0"
@@ -1603,24 +1603,24 @@
     semver "^7.5.4"
     ufo "^1.3.2"
     unctx "^2.3.1"
-    unimport "^3.7.0"
+    unimport "^3.7.1"
     untyped "^1.4.0"
 
-"@nuxt/schema@3.9.0", "@nuxt/schema@^3.4.3":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.9.0.tgz#4eb52c8c8f10ae7195a2fa75bf4c90445418554e"
-  integrity sha512-NaRiq+g6XE4YOZLy7be2e6AmZCW0gfQWDM88TSfNr3Lypo+6PuY2VqzZLpSvOCNlW3CFj/kWtMdhool2BP0yIg==
+"@nuxt/schema@3.9.1", "@nuxt/schema@^3.4.3":
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.9.1.tgz#01b0beee83a7ac94e37d63107e7b733e6189904c"
+  integrity sha512-GmALRLYo2vPMS1lMpUkUrUuEgTMCL1ZWyqA+zPKJ9/Rh2rrQgIvFyClqUl4txQoCZl038njP5cW0nOe2Oe0HKg==
   dependencies:
     "@nuxt/ui-templates" "^1.3.1"
     consola "^3.2.3"
-    defu "^6.1.3"
+    defu "^6.1.4"
     hookable "^5.5.3"
     pathe "^1.1.1"
     pkg-types "^1.0.3"
     scule "^1.1.1"
     std-env "^3.7.0"
     ufo "^1.3.2"
-    unimport "^3.7.0"
+    unimport "^3.7.1"
     untyped "^1.4.0"
 
 "@nuxt/ui-templates@^1.3.1":
@@ -1858,18 +1858,18 @@
   dependencies:
     remove-accents "0.4.2"
 
-"@tanstack/query-core@5.17.1":
-  version "5.17.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.17.1.tgz#341d975dce20c5c9e0767a3a69c0bfbc9ca16114"
-  integrity sha512-kUXozQmU7NBtzX5dM6qfFNZN+YK/9Ct37hnG/ogdgI4mExIx7VH/qRepsPhKfNrJz2w81/JykmM3Uug6sVpUSw==
+"@tanstack/query-core@5.17.4":
+  version "5.17.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.17.4.tgz#3c216f76935dad59818890dc60250c9cd0a7ca5a"
+  integrity sha512-1J2vINgJ6OH1/qgN/ouDjnRZc67TnKQ2mlIODKQr36Aa2vjMdH6Fb3pIbCRh5N6u95q6z1olp90n22eTlp9Ykg==
 
 "@tanstack/vue-query@*":
-  version "5.17.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-5.17.2.tgz#9cb98723b81c8e5e07c9eb383aee6ecbbd7035dc"
-  integrity sha512-5A6dY80WyuCfLPsepgaIle7xtNigN7gvqvDce3SE4z2BCMxqMdmQTJCJQyc3e9GatxXS3z89tdNW8N0lc2GADg==
+  version "5.17.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-5.17.4.tgz#7c6f151708cea7255ff0006a727bda84e50e1030"
+  integrity sha512-gK1dFF71ls6AmLyYZ5x/KJ/RPrZ5GLxTiiAsA06wtBsNS7IQaYe5Zfx1U0tkgURw1GpkOOrG9tyGk3030L9pcQ==
   dependencies:
     "@tanstack/match-sorter-utils" "^8.8.4"
-    "@tanstack/query-core" "5.17.1"
+    "@tanstack/query-core" "5.17.4"
     "@vue/devtools-api" "^6.5.1"
     vue-demi "^0.14.6"
 
@@ -2996,7 +2996,7 @@ bundle-name@^3.0.0:
   dependencies:
     run-applescript "^5.0.0"
 
-c12@^1.5.1:
+c12@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/c12/-/c12-1.6.1.tgz#e6d3198d214cce66f82101e58e30daf2a0f58737"
   integrity sha512-fAZOi3INDvIbmjuwAVVggusyRTxwNdTAnwLay8IsXwhFzDwPPGzFxzrx6L55CPFGPulUSZI0eyFUvRDXveoE3g==
@@ -3834,7 +3834,7 @@ define-properties@^1.1.3, define-properties@^1.2.0, define-properties@^1.2.1:
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
 
-defu@^6.1.2, defu@^6.1.3:
+defu@^6.1.2, defu@^6.1.3, defu@^6.1.4:
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/defu/-/defu-6.1.4.tgz#4e0c9cf9ff68fe5f3d7f2765cc1a012dfdcb0479"
   integrity sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==
@@ -6761,9 +6761,9 @@ prettier-linter-helpers@^1.0.0:
     fast-diff "^1.1.2"
 
 prettier-plugin-tailwindcss@*:
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.10.tgz#c7a68d8751e4963f290f980fd61f9d9882660b50"
-  integrity sha512-9UGSejqFxGG6brYjFfTYlJ8zs4L/lvZg1AngFfaC5Fs1otSskASv5IWKmjPu5MlABQUtTKtMArKyYr/hWpXSUg==
+  version "0.5.11"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.11.tgz#1aa9308c3285b3cb7942aaeaec8d0e0775ac54d0"
+  integrity sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==
 
 prettier@*:
   version "3.1.1"
@@ -7789,9 +7789,9 @@ tablesorter@Mottie/tablesorter#*:
     jquery ">=1.2.6"
 
 tailwindcss@^3.3.2:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.0.tgz#045a9c474e6885ebd0436354e611a76af1c76839"
-  integrity sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.1.tgz#f512ca5d1dd4c9503c7d3d28a968f1ad8f5c839d"
+  integrity sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==
   dependencies:
     "@alloc/quick-lru" "^5.2.0"
     arg "^5.0.2"
@@ -8275,7 +8275,7 @@ unicorn-magic@^0.1.0:
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.1.0.tgz#1bb9a51c823aaf9d73a8bfcd3d1a23dde94b0ce4"
   integrity sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==
 
-unimport@^3.7.0:
+unimport@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/unimport/-/unimport-3.7.1.tgz#37250d0f3f2dcf1e1b66ed13728db0e9f50ba0c3"
   integrity sha512-V9HpXYfsZye5bPPYUgs0Otn3ODS1mDUciaBlXljI4C2fTwfFpvFZRywmlOu943puN9sncxROMZhsZCjNXEpzEQ==

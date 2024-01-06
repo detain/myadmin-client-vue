@@ -169,7 +169,7 @@ API Call Checks
 | /sudo/:sessionId                | [x]     |          |          |           |
 | /account/info                   | [x]     | [x]      | [x]      | [x]       |
 | /account/pass                   | [x]     | [x]      | [x]      | [x]       |
-| /account/settings               | [ ]     | [ ]      | [ ]      | [x]       |
+| /account/settings               | [x]     |          |          | [x]       |
 | /account/username               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart/::iids                    | [ ]     | [ ]      | [ ]      | [ ]       |
