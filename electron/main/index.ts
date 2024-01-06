@@ -10,7 +10,7 @@ const __dirname = dirname(__filename)
 //
 // ├─┬ dist-electron
 // │ ├─┬ main
-// │ │ └── index.mjs    > Electron-Main
+// │ │ └── index.js    > Electron-Main
 // │ └─┬ preload
 // │   └── index.mjs    > Preload-Scripts
 // ├─┬ dist
@@ -58,7 +58,7 @@ async function createWindow() {
 
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
-      contextIsolation: false,
+      // contextIsolation: false,
     },
   })
 

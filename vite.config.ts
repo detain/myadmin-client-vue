@@ -1,8 +1,7 @@
-import { rmSync } from 'node:fs'
+import fs from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import electron from 'vite-plugin-electron'
-import renderer from 'vite-plugin-electron-renderer'
+import electron from 'vite-plugin-electron/simple'
 import pkg from './package.json'
 import * as path from 'path';
 import inject from '@rollup/plugin-inject';
@@ -20,57 +19,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from 'unplugin-turbo-console/vite';
-/*
-export default defineConfig({
-    plugins: [
-        vue({
-            script: {
-                defineModel: true,
-            },
-        }),
-        dts({
-            insertTypesEntry: true,
-        }),
-        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-        //webfontDownload(),
-        /* inject({
-            jQuery: 'jquery',
-        }), */
-        /*
-        checker({
-            vueTsc: true,
-            typescript: false,
-        }),
-        TurboConsole(),
-        i18nResources({
-            path: resolve(__dirname, "src/locales"),
-        }),
-        AutoImport({
-            imports: ["vue", "@vueuse/core"],
-            resolvers: [],
-            dirs: ["./composables/" + "**", "./views/" + "**"],
-            vueTemplate: true,
-            cache: true
-        }),
-        splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }),
-        VitePWA({
-            registerType: 'autoUpdate',
-            devOptions: {
-                enabled: true,
-            },
-        }),
-        Inspect(),
-        //Inspector(),
-        //VueDevTools(),
-        //        TurboConsole(),
-    ]
-});
-*/
-
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
-  rmSync('dist-electron', { recursive: true, force: true })
+  fs.rmSync('dist-electron', { recursive: true, force: true })
 
   const isServe = command === 'serve'
   const isBuild = command === 'build'
@@ -82,9 +33,9 @@ export default defineConfig(({ command }) => {
       inject({
         jQuery: 'jquery',
       }),
-      electron([
-        {
-          // Main process entry file of the Electron App.
+      electron({
+        main: {
+          // Shortcut of `build.lib.entry`
           entry: 'electron/main/index.ts',
           onstart({ startup }) {
             if (process.env.VSCODE_DEBUG) {
@@ -108,13 +59,10 @@ export default defineConfig(({ command }) => {
             },
           },
         },
-        {
-          entry: 'electron/preload/index.ts',
-          onstart({ reload }) {
-            // Notify the Renderer process to reload the page when the Preload scripts build is complete,
-            // instead of restarting the entire Electron App.
-            reload()
-          },
+        preload: {
+          // Shortcut of `build.rollupOptions.input`.
+          // Preload scripts may contain Web assets, so use the `build.rollupOptions.input` instead `build.lib.entry`.
+          input: 'electron/preload/index.ts',
           vite: {
             build: {
               sourcemap: sourcemap ? 'inline' : undefined, // #332
@@ -125,10 +73,12 @@ export default defineConfig(({ command }) => {
               },
             },
           },
-        }
-      ]),
-      // Use Node.js API in the Renderer process
-      renderer(),
+        },
+        // Ployfill the Electron and Node.js API for Renderer process.
+        // If you want use Node.js in Renderer process, the `nodeIntegration` needs to be enabled in the Main process.
+        // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
+        renderer: {},
+      }),
     ],
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
