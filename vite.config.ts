@@ -30,9 +30,39 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [
       vue(),
-      inject({
-        jQuery: 'jquery',
-      }),
+        dts({
+            insertTypesEntry: true,
+        }),
+        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
+        //webfontDownload(),
+        inject({
+            jQuery: 'jquery',
+        }),
+        /*
+        checker({
+            vueTsc: true,
+            typescript: false,
+        }),
+        TurboConsole(),
+        i18nResources({
+            path: resolve(__dirname, "src/locales"),
+        }),
+        AutoImport({
+            imports: ["vue", "@vueuse/core"],
+            resolvers: [],
+            dirs: ["./composables/" + "**", "./views/" + "**"],
+            vueTemplate: true,
+            cache: true
+        }),
+        splitVendorChunkPlugin(),
+*/
+        legacy({ targets: ["defaults", "not IE 11"] }),
+        VitePWA({
+            registerType: 'autoUpdate',
+            devOptions: {
+                enabled: true,
+            },
+        }),
       electron({
         main: {
           // Shortcut of `build.lib.entry`
