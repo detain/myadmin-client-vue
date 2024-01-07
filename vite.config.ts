@@ -4,16 +4,13 @@ import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron/simple'
 import pkg from './package.json'
 import * as path from 'path';
-import inject from '@rollup/plugin-inject';
-/*
 import dts from 'vite-plugin-dts';
 //import AutoImport from "unplugin-auto-import/vite";
 //import i18nResources from "vite-plugin-i18n-resources"
 //import checker from 'vite-plugin-checker';
-
-import { fileURLToPath, URL } from 'node:url';
-//import fs from 'fs';
+import { URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
+/*
 import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
@@ -55,7 +52,6 @@ export default defineConfig(({ command }) => {
             cache: true
         }),
         splitVendorChunkPlugin(),
-*/
         legacy({ targets: ["defaults", "not IE 11"] }),
         VitePWA({
             registerType: 'autoUpdate',
@@ -63,7 +59,8 @@ export default defineConfig(({ command }) => {
                 enabled: true,
             },
         }),
-      electron({
+*/
+electron({
         main: {
           // Shortcut of `build.lib.entry`
           entry: 'electron/main/index.ts',
