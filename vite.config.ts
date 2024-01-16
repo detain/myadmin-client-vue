@@ -16,6 +16,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from 'unplugin-turbo-console/vite';
+*/
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   fs.rmSync('dist-electron', { recursive: true, force: true })
@@ -59,8 +60,8 @@ export default defineConfig(({ command }) => {
                 enabled: true,
             },
         }),
-*/
-electron({
+        */
+      electron({
         main: {
           // Shortcut of `build.lib.entry`
           entry: 'electron/main/index.ts',
