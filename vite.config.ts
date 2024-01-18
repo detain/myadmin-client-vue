@@ -99,13 +99,6 @@ export default defineConfig(({ command }) => {
         // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
         renderer: {},
       }),
-=======
-        }), */
-        Inspect(),
-        //Inspector(),
-        //VueDevTools(),
-        //        TurboConsole(),
->>>>>>> origin/master
     ],
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
