@@ -15,7 +15,6 @@ import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from 'unplugin-turbo-console/vite';
-*/
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   fs.rmSync('dist-electron', { recursive: true, force: true })
