@@ -160,7 +160,6 @@
         "vite-plugin-electron": "*",
         "vite-plugin-electron-renderer": "*",
         "vite-plugin-inspect": "*",
-        "vite-plugin-pwa": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
         "vue": "*",
