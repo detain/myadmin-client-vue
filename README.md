@@ -199,7 +199,7 @@ API Call Checks
 | /backups/:id                    | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
 | /backups/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id/welcome_email      | [x]     | [x]      | [ ]      | [x]       |
+| /backups/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
 | /backups/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains                        | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id                    | [x]     | [x]      | [x]      | [x]       |
@@ -210,7 +210,7 @@ API Call Checks
 | /domains/:id/nameservers        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/renew              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/transfer           | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains/:id/welcome_email      | [x]     | [x]      | [ ]      | [x]       |
+| /domains/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/whois              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order/:domain          | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -220,7 +220,7 @@ API Call Checks
 | /floating_ips/:id/cancel        | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/:id/change_ip     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /floating_ips/:id/invoices      | [x]     | [x]      | [x]      | [x]       |
-| /floating_ips/:id/welcome_email | [x]     | [x]      | [ ]      | [x]       |
+| /floating_ips/:id/welcome_email | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/order             | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses                       | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id                   | [x]     | [x]      | [x]      | [x]       |
@@ -228,7 +228,7 @@ API Call Checks
 | /licenses/:id/change_ip         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/change_os         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id/welcome_email     | [x]     | [x]      | [ ]      | [x]       |
+| /licenses/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
 | /licenses/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /mail                           | [x]     | [x]      | [x]      | [x]       |
@@ -237,7 +237,7 @@ API Call Checks
 | /mail/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/deny_rules            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /mail/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
-| /mail/:id/welcome_email         | [x]     | [x]      | [ ]      | [x]       |
+| /mail/:id/welcome_email         | [x]     | [x]      | [x]      | [x]       |
 | /mail/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
 | /qs                             | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id                         | [x]     | [x]      | [x]      | [x]       |
@@ -258,7 +258,7 @@ API Call Checks
 | /qs/:id/stop                    | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/traffic_usage           | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/view_desktop            | [ ]     | [x]      | [x]      | [ ]       |
-| /qs/:id/welcome_email           | [x]     | [x]      | [ ]      | [x]       |
+| /qs/:id/welcome_email           | [x]     | [x]      | [x]      | [x]       |
 | /qs/order                       | [ ]     | [ ]      | [ ]      | [ ]       |
 | /servers                        | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id                    | [x]     | [x]      | [x]      | [x]       |
@@ -267,7 +267,7 @@ API Call Checks
 | /servers/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/ipmi_live          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /servers/:id/reverse_dns        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /servers/:id/welcome_email      | [x]     | [x]      | [ ]      | [x]       |
+| /servers/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
 | /servers/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -275,7 +275,7 @@ API Call Checks
 | /ssl/:id/change_approver_email  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /ssl/:id/resend_approver_email  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /ssl/:id/welcome_email          | [x]     | [x]      | [ ]      | [x]       |
+| /ssl/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
 | /ssl/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps                            | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id                        | [x]     | [x]      | [x]      | [x]       |
@@ -306,7 +306,7 @@ API Call Checks
 | /vps/:id/stop                   | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/traffic_usage          | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/view_desktop           | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/welcome_email          | [x]     | [x]      | [ ]      | [x]       |
+| /vps/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
 | /vps/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites                       | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id                   | [x]     | [x]      | [x]      | [x]       |
@@ -317,7 +317,7 @@ API Call Checks
 | /websites/:id/login             | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/migration         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/reverse_dns       | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/welcome_email     | [x]     | [x]      | [ ]      | [x]       |
+| /websites/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
 | /websites/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 
 ### API Response HTTP Status Codes

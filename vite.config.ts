@@ -10,8 +10,7 @@ import dts from 'vite-plugin-dts';
 //import checker from 'vite-plugin-checker';
 import { URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
-/*
-import { VitePWA } from 'vite-plugin-pwa';
+//import legacy from '@vitejs/plugin-legacy'
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
@@ -53,14 +52,8 @@ export default defineConfig(({ command }) => {
             cache: true
         }),
         splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }),
-        VitePWA({
-            registerType: 'autoUpdate',
-            devOptions: {
-                enabled: true,
-            },
-        }),
         */
+        /* legacy({ targets: ["defaults", "not IE 11"] }), */
       electron({
         main: {
           // Shortcut of `build.lib.entry`
@@ -107,6 +100,13 @@ export default defineConfig(({ command }) => {
         // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
         renderer: {},
       }),
+=======
+        }), */
+        Inspect(),
+        //Inspector(),
+        //VueDevTools(),
+        //        TurboConsole(),
+>>>>>>> origin/master
     ],
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
