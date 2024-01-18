@@ -8,8 +8,8 @@ import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 //import fs from 'fs';
 import inject from '@rollup/plugin-inject';
-import legacy from '@vitejs/plugin-legacy'
-import { VitePWA } from 'vite-plugin-pwa';
+//import legacy from '@vitejs/plugin-legacy'
+//import { VitePWA } from 'vite-plugin-pwa';
 //import VueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
@@ -49,13 +49,13 @@ export default defineConfig({
         }),
         splitVendorChunkPlugin(),
 */
-        legacy({ targets: ["defaults", "not IE 11"] }),
+        /* legacy({ targets: ["defaults", "not IE 11"] }),
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }),
+        }), */
         Inspect(),
         //Inspector(),
         //VueDevTools(),
