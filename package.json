@@ -104,7 +104,6 @@
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
         "@vitejs/plugin-basic-ssl": "*",
-        "@vitejs/plugin-legacy": "*",
         "@vitejs/plugin-vue": "*",
         "@vitest/coverage-v8": "*",
         "@vitest/ui": "*",
@@ -137,7 +136,6 @@
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-inspect": "*",
-        "vite-plugin-pwa": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
         "vue": "*",
@@ -150,10 +148,11 @@
         "sweetalert2": "11.4.8"
     },
     "suggest": {
+        "@vitejs/plugin-legacy": "*",
+        "vite-plugin-pwa": "*",
         "vite-plugin-vue-devtools": "*",
         "vite-plugin-vue-inspector": "*",
         "jquery-sortable": "johnny/jquery-sortable#master",
-        "@vitejs/plugin-legacy": "latest",
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",
         "@intlify/unplugin-vue-i18n": "*",
