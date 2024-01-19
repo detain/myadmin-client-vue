@@ -60,7 +60,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/backups]/order', {
+            .post(baseUrl + '/backups/order', {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,

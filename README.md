@@ -165,11 +165,79 @@ API Call Checks
 |---------------------------------|---------|----------|----------|-----------|
 | /                               | [x]     | [x]      | [x]      | [x]       |
 | /login                          | [x]     | [x]      | [x]      |           |
-| /register                       | [x]     | [ ]      | [ ]      |           |
 | /sudo/:sessionId                | [x]     |          |          |           |
 | /account/info                   | [x]     | [x]      | [x]      | [x]       |
 | /account/pass                   | [x]     | [x]      | [x]      | [x]       |
 | /account/settings               | [x]     |          |          | [x]       |
+| /dns                            | [x]     | [x]      | [x]      | [x]       |
+| /dns/:id                        | [x]     | [x]      | [x]      | [x]       |
+| /affiliate                      | [x]     |          |          | [x]       |
+| /affiliate/faq                  | [x]     |          |          | [x]       |
+| /affiliate/status_legend        | [x]     |          |          | [x]       |
+| /affiliate/tos                  | [x]     |          |          | [x]       |
+| /affiliate/web_traffic          | [x]     | [x]      | [x]      | [x]       |
+| /backups                        | [x]     | [x]      | [x]      | [x]       |
+| /backups/:id                    | [x]     | [x]      | [x]      | [x]       |
+| /backups/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
+| /backups/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
+| /backups/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
+| /backups/order                  | [x]     | [x]      | [x]      | [x]       |
+| /domains                        | [x]     | [x]      | [x]      | [x]       |
+| /domains/:id                    | [x]     | [x]      | [x]      | [x]       |
+| /domains/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
+| /domains/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
+| /domains/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
+| /floating_ips                   | [x]     | [x]      | [x]      | [x]       |
+| /floating_ips/:id/cancel        | [x]     | [x]      | [x]      | [x]       |
+| /floating_ips/:id/invoices      | [x]     | [x]      | [x]      | [x]       |
+| /floating_ips/:id/welcome_email | [x]     | [x]      | [x]      | [x]       |
+| /licenses                       | [x]     | [x]      | [x]      | [x]       |
+| /licenses/:id                   | [x]     | [x]      | [x]      | [x]       |
+| /licenses/:id/cancel            | [x]     | [x]      | [x]      | [x]       |
+| /licenses/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
+| /licenses/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
+| /mail                           | [x]     | [x]      | [x]      | [x]       |
+| /mail/:id                       | [x]     | [x]      | [x]      | [x]       |
+| /mail/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
+| /mail/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
+| /mail/:id/welcome_email         | [x]     | [x]      | [x]      | [x]       |
+| /qs                             | [x]     | [x]      | [x]      | [x]       |
+| /qs/:id                         | [x]     | [x]      | [x]      | [x]       |
+| /qs/:id/cancel                  | [x]     | [x]      | [x]      | [x]       |
+| /qs/:id/invoices                | [x]     | [x]      | [x]      | [x]       |
+| /qs/:id/welcome_email           | [x]     | [x]      | [x]      | [x]       |
+| /servers                        | [x]     | [x]      | [x]      | [x]       |
+| /servers/:id                    | [x]     | [x]      | [x]      | [x]       |
+| /servers/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
+| /servers/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
+| /servers/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
+| /ssl/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
+| /ssl/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
+| /ssl/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
+| /vps                            | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id                        | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/block_smtp             | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/change_timezone        | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/disable_cd             | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/disable_quota          | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/eject_cd               | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/enable_quota           | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/restart                | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/reverse_dns            | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/setup_vnc              | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/start                  | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/stop                   | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/view_desktop           | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
+| /websites                       | [x]     | [x]      | [x]      | [x]       |
+| /websites/:id                   | [x]     | [x]      | [x]      | [x]       |
+| /websites/:id/cancel            | [x]     | [x]      | [x]      | [x]       |
+| /websites/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
+| /websites/:id/login             | [x]     | [x]      | [x]      | [x]       |
+| /websites/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
+| /register                       | [x]     | [ ]      | [ ]      |           |
 | /account/username               | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart                           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /cart/::iids                    | [ ]     | [ ]      | [ ]      | [ ]       |
@@ -180,74 +248,38 @@ API Call Checks
 | /tickets                        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /tickets/:id                    | [ ]     | [ ]      | [ ]      | [ ]       |
 | /tickets/new                    | [ ]     | [ ]      | [ ]      | [ ]       |
-| /dns                            | [x]     | [x]      | [x]      | [x]       |
-| /dns/:id                        | [x]     | [x]      | [x]      | [x]       |
-| /affiliate                      | [x]     |          |          | [x]       |
 | /affiliate/banner/:id           | [ ]     |          |          | [ ]       |
 | /affiliate/banners              | [ ]     | [x]      | [x]      | [ ]       |
-| /affiliate/faq                  | [x]     |          |          | [x]       |
 | /affiliate/landing_pg           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/payment_setup        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/rich_report          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_graph          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /affiliate/sales_report         | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/status_legend        | [x]     |          |          | [x]       |
-| /affiliate/tos                  | [x]     |          |          | [x]       |
 | /affiliate/traffic_graph        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /affiliate/web_traffic          | [x]     | [x]      | [x]      | [x]       |
-| /backups                        | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id                    | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
-| /backups/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
-| /backups/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains                        | [x]     | [x]      | [x]      | [x]       |
-| /domains/:id                    | [x]     | [x]      | [x]      | [x]       |
-| /domains/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/contact            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/dnssec             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/nameservers        | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/renew              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/:id/transfer           | [ ]     | [ ]      | [ ]      | [ ]       |
-| /domains/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
 | /domains/:id/whois              | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order/:domain          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /domains/order/:domain/:regType | [ ]     | [ ]      | [ ]      | [ ]       |
-| /floating_ips                   | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/:id               | [ ]     | [ ]      | [ ]      | [ ]       |
-| /floating_ips/:id/cancel        | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/:id/change_ip     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /floating_ips/:id/invoices      | [x]     | [x]      | [x]      | [x]       |
-| /floating_ips/:id/welcome_email | [x]     | [x]      | [x]      | [x]       |
 | /floating_ips/order             | [ ]     | [ ]      | [ ]      | [ ]       |
-| /licenses                       | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id                   | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id/cancel            | [x]     | [x]      | [x]      | [x]       |
 | /licenses/:id/change_ip         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/:id/change_os         | [ ]     | [ ]      | [ ]      | [ ]       |
-| /licenses/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
-| /licenses/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
 | /licenses/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 | /licenses/order/:catTag         | [ ]     | [ ]      | [ ]      | [ ]       |
-| /mail                           | [x]     | [x]      | [x]      | [x]       |
-| /mail/:id                       | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/alerts                | [ ]     | [ ]      | [ ]      | [ ]       |
-| /mail/:id/cancel                | [x]     | [x]      | [x]      | [x]       |
 | /mail/:id/deny_rules            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /mail/:id/invoices              | [x]     | [x]      | [x]      | [x]       |
-| /mail/:id/welcome_email         | [x]     | [x]      | [x]      | [x]       |
 | /mail/order                     | [ ]     | [ ]      | [ ]      | [ ]       |
-| /qs                             | [x]     | [x]      | [x]      | [x]       |
-| /qs/:id                         | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id/backup                  | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/backups                 | [ ]     | [x]      | [x]      | [ ]       |
-| /qs/:id/cancel                  | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id/change_timezone         | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/eject_cd                | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/insert_cd               | [ ]     | [x]      | [x]      | [ ]       |
-| /qs/:id/invoices                | [x]     | [x]      | [x]      | [x]       |
 | /qs/:id/reinstall_os            | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/reset_password          | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/restart                 | [ ]     | [x]      | [x]      | [ ]       |
@@ -258,66 +290,34 @@ API Call Checks
 | /qs/:id/stop                    | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/traffic_usage           | [ ]     | [x]      | [x]      | [ ]       |
 | /qs/:id/view_desktop            | [ ]     | [x]      | [x]      | [ ]       |
-| /qs/:id/welcome_email           | [x]     | [x]      | [x]      | [x]       |
 | /qs/order                       | [ ]     | [ ]      | [ ]      | [ ]       |
-| /servers                        | [x]     | [x]      | [x]      | [x]       |
-| /servers/:id                    | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/bandwidth_graph    | [ ]     | [ ]      | [ ]      | [ ]       |
-| /servers/:id/cancel             | [x]     | [x]      | [x]      | [x]       |
-| /servers/:id/invoices           | [x]     | [x]      | [x]      | [x]       |
 | /servers/:id/ipmi_live          | [ ]     | [ ]      | [ ]      | [ ]       |
 | /servers/:id/reverse_dns        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /servers/:id/welcome_email      | [x]     | [x]      | [x]      | [x]       |
 | /servers/order                  | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl                            | [ ]     | [ ]      | [ ]      | [ ]       |
 | /ssl/:id                        | [ ]     | [ ]      | [ ]      | [ ]       |
-| /ssl/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /ssl/:id/change_approver_email  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /ssl/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /ssl/:id/resend_approver_email  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /ssl/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
 | /ssl/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps                            | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id                        | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/backup                 | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/backups                | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/block_smtp             | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/buy_hd_space           | [ ]     | [ ]      | [ ]      | [ ]       |
 | /vps/:id/buy_ip                 | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/cancel                 | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/change_hostname        | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/change_root_password   | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/change_timezone        | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/change_webuzo_password | [ ]     | [ ]      | [x]      | [ ]       |
-| /vps/:id/disable_cd             | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/disable_quota          | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/eject_cd               | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/enable_quota           | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/insert_cd              | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/reinstall_os           | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/reset_password         | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/restart                | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/restore                | [ ]     | [ ]      | [x]      | [ ]       |
-| /vps/:id/reverse_dns            | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/setup_vnc              | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/slices                 | [ ]     | [ ]      | [ ]      | [ ]       |
-| /vps/:id/start                  | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/stop                   | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/traffic_usage          | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/view_desktop           | [x]     | [x]      | [x]      | [x]       |
-| /vps/:id/welcome_email          | [x]     | [x]      | [x]      | [x]       |
 | /vps/order                      | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites                       | [x]     | [x]      | [x]      | [x]       |
-| /websites/:id                   | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/buy_ip            | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/cancel            | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/download_backups  | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/invoices          | [x]     | [x]      | [x]      | [x]       |
-| /websites/:id/login             | [x]     | [x]      | [x]      | [x]       |
 | /websites/:id/migration         | [ ]     | [ ]      | [ ]      | [ ]       |
 | /websites/:id/reverse_dns       | [ ]     | [ ]      | [ ]      | [ ]       |
-| /websites/:id/welcome_email     | [x]     | [x]      | [x]      | [x]       |
 | /websites/order                 | [ ]     | [ ]      | [ ]      | [ ]       |
 
 ### API Response HTTP Status Codes
