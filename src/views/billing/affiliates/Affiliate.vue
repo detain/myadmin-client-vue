@@ -6,8 +6,8 @@ import { useSiteStore } from '@/stores/site.store.ts';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import DataTable from 'datatables.net';
-import 'datatables.net-bs4';
+//import DataTable from 'datatables.net';
+//import 'datatables.net-bs4';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate System');
 siteStore.setTitle('Affiliate System');
@@ -35,7 +35,7 @@ onMounted(() => {
         });
     });
     //$.fn.dataTable.render.moment( 'HH:mm MMM D, YY' );
-    let table_default = new DataTable('#table_default', {
+    /*let table_default = new DataTable('#table_default', {
         ajax: myUrl + 'ajax.php?choice=affiliates_clientside&st=default',
         order: [[3, 'desc']],
         pageLength: 25,
@@ -94,6 +94,7 @@ onMounted(() => {
             });
         });
     }
+    */
 });
 </script>
 
