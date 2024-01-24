@@ -52,6 +52,6 @@ __snapshots__/
 coverage/
 
 # lockfile
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
+#package-lock.json
+#pnpm-lock.yaml
+#yarn.lock
