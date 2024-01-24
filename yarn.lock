@@ -1048,28 +1048,6 @@
   resolved "https://registry.yarnpkg.com/@sweetalert2/theme-bootstrap-4/-/theme-bootstrap-4-5.0.16.tgz#530431834990fdb0ebcf50a732d014255d169a32"
   integrity sha512-KHFJZBTrZqZGdx9TBL1t8wmkGPzq593QKX8FWr67z6foLiVjjcPK9fvdkrUrGcOJ4sjpwrk1QdELIrsdGOyp8A==
 
-"@tanstack/match-sorter-utils@^8.8.4":
-  version "8.11.7"
-  resolved "https://registry.yarnpkg.com/@tanstack/match-sorter-utils/-/match-sorter-utils-8.11.7.tgz#f23b4bddbc21a83c846c430699410d3398e7c236"
-  integrity sha512-4PUKgaaFpiB7MK406N5VAiLu2VUhDumojGWhEC8kNQ767RGU2vsJDI7Xp4D8lMBzijqswRWz3U8ioa2zUKnFeQ==
-  dependencies:
-    remove-accents "0.4.2"
-
-"@tanstack/query-core@5.17.19":
-  version "5.17.19"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.17.19.tgz#212515ccc7a6b913afee6b71ce3e7df2c4d85f7d"
-  integrity sha512-Lzw8FUtnLCc9Jwz0sw9xOjZB+/mCCmJev38v2wHMUl/ioXNIhnNWeMxu0NKUjIhAd62IRB3eAtvxAGDJ55UkyA==
-
-"@tanstack/vue-query@*":
-  version "5.17.19"
-  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-5.17.19.tgz#0d63d858acfe1d259e31b52359f2f28868e027c6"
-  integrity sha512-8LsQmOy44qV1FxAPukjhdEYvcDoRq4P+PRkKeig7EsdfgaopxhSH+/GpxyDZiyEfU2Rg/JYQ3p88ufQYV424Sw==
-  dependencies:
-    "@tanstack/match-sorter-utils" "^8.8.4"
-    "@tanstack/query-core" "5.17.19"
-    "@vue/devtools-api" "^6.5.1"
-    vue-demi "^0.14.6"
-
 "@tsconfig/node18@*":
   version "18.2.2"
   resolved "https://registry.yarnpkg.com/@tsconfig/node18/-/node18-18.2.2.tgz#81fb16ecff0d400b1cbadbf76713b50f331029ce"
@@ -4460,10 +4438,6 @@ jquery-mapael@^2.2.0:
   optionalDependencies:
     jquery-mousewheel "^3.1"
 
-jquery-migrate@appleboy/jquery-migrate#master:
-  version "0.0.0"
-  resolved "https://codeload.github.com/appleboy/jquery-migrate/tar.gz/ba224c3e6bd8a90f72fddacf34e02bc2472d5a0f"
-
 jquery-mousewheel@^3.1, jquery-mousewheel@^3.1.13:
   version "3.1.13"
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
@@ -4473,16 +4447,17 @@ jquery-simple-pass-meter@jakerella/jquerySimplePassMeter#master:
   version "0.6.0"
   resolved "https://codeload.github.com/jakerella/jquerySimplePassMeter/tar.gz/01628f4976d61a9456f12250bce9ee9d58c495cc"
 
-jquery-ui-dist@^1.13.0:
+jquery-ui-dist@>=1.13.2, jquery-ui-dist@^1.13.0:
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/jquery-ui-dist/-/jquery-ui-dist-1.13.2.tgz#899fbb3c6210de19ace10657cf844a3b97f3be70"
   integrity sha512-oVDRd1NLtTbBwpRKAYdIRgpWVDzeBhfy7Gu0RmY6JEaZtmBq6kDn1pm5SgDiAotrnDS+RoTRXO6xvcNTxA9tOA==
   dependencies:
     jquery ">=1.8.0 <4.0.0"
 
-jquery-ui-dist@jquery/jquery-ui#>=1.13.2, jquery-ui@jquery/jquery-ui#>=1.13.2:
+jquery-ui@>=1.13.2:
   version "1.13.2"
-  resolved "https://codeload.github.com/jquery/jquery-ui/tar.gz/d6c028cc2e214a4f9f3a787313ef03a17a33a008"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.13.2.tgz#de03580ae6604773602f8d786ad1abfb75232034"
+  integrity sha512-wBZPnqWs5GaYJmo1Jj0k/mrSkzdQzKDwhXNtHKcBdAcKVxMM3KNYFq+iJ2i1rwiG53Z8M4mTn3Qxrm17uH1D4Q==
   dependencies:
     jquery ">=1.8.0 <4.0.0"
 
@@ -5099,14 +5074,10 @@ moment-timezone@^0.5, moment-timezone@^0.5.34:
   dependencies:
     moment "^2.29.4"
 
-moment@^2.10.2, moment@^2.29.1, moment@^2.29.2, moment@^2.29.4, moment@^2.9.0:
+moment@>=2.29.4, moment@^2.10.2, moment@^2.29.1, moment@^2.29.2, moment@^2.29.4, moment@^2.9.0:
   version "2.30.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
-
-moment@moment/moment#>=2.29.4:
-  version "2.30.1"
-  resolved "https://codeload.github.com/moment/moment/tar.gz/485d9a7d709bd5f3869a7ad24630cf0746d072dc"
 
 mosha-vue-toastify@*:
   version "1.0.23"
@@ -5907,11 +5878,6 @@ regexp.prototype.flags@^1.5.1:
     define-properties "^1.2.0"
     set-function-name "^2.0.0"
 
-remove-accents@0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
-  integrity sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==
-
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
@@ -6613,9 +6579,10 @@ synckit@^0.8.6:
     "@pkgr/core" "^0.1.0"
     tslib "^2.6.2"
 
-tablesorter@Mottie/tablesorter#*:
+tablesorter@*:
   version "2.31.3"
-  resolved "https://codeload.github.com/Mottie/tablesorter/tar.gz/7202d5faf8105a5ecd1a2b7a653777618713ffe5"
+  resolved "https://registry.yarnpkg.com/tablesorter/-/tablesorter-2.31.3.tgz#94c33234ba0e5d9efc5ba4e48651010a396c8b64"
+  integrity sha512-ueEzeKiMajDcCWnUoT1dOeNEaS1OmPh9+8J0O2Sjp3TTijMygH74EA9QNJiNkLJqULyNU0RhbKY26UMUq9iurA==
   dependencies:
     jquery ">=1.2.6"
 
@@ -7344,7 +7311,7 @@ vue-component-type-helpers@^1.8.21:
   resolved "https://registry.yarnpkg.com/vue-component-type-helpers/-/vue-component-type-helpers-1.8.27.tgz#e816c82dcffac8bca58833c120ba395c325dfa68"
   integrity sha512-0vOfAtI67UjeO1G6UiX5Kd76CqaQ67wrRZiOe7UAb9Jm6GzlUr/fC7CV90XfwapJRjpCMaZFhv1V0ajWRmE9Dg==
 
-vue-demi@>=0.14.5, vue-demi@>=0.14.6, vue-demi@^0.14.0, vue-demi@^0.14.6:
+vue-demi@>=0.14.5, vue-demi@>=0.14.6, vue-demi@^0.14.0:
   version "0.14.6"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.6.tgz#dc706582851dc1cdc17a0054f4fec2eb6df74c92"
   integrity sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==
