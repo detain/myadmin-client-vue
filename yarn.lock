@@ -1100,13 +1100,6 @@
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.6.tgz#7739c232a1fee9b4d3ce8985f314c0c6d33549d7"
   integrity sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==
 
-"@types/jquery-migrate@*":
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/@types/jquery-migrate/-/jquery-migrate-3.3.3.tgz#a48a6064e11c3169a41aa213f41af36f7cf328d3"
-  integrity sha512-0CRPTHKGaK831+bxIbRerQpyLHwkNr/vSYZD5JAYpWw/TL2RUGiyWdwR8dAoGC4MpoyH5S+ato3+SyQDBmrZNQ==
-  dependencies:
-    "@types/jquery" "*"
-
 "@types/jquery-sortable@*":
   version "0.9.34"
   resolved "https://registry.yarnpkg.com/@types/jquery-sortable/-/jquery-sortable-0.9.34.tgz#5efb514929e5fc6c76aab6101b765f97a40ebc8b"
@@ -2963,9 +2956,9 @@ dot-prop@^5.1.0:
     is-obj "^2.0.0"
 
 dotenv@^16.3.1:
-  version "16.4.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.0.tgz#ac21c3fcaad2e7832a1cd0c0e4e8e52225ecda0e"
-  integrity sha512-WvImr5kpN5NGNn7KaDjJnLTh5rDVLZiDf/YLA8T1ZEZEBZNEDOE+mnkS0PVjPax8ZxBP5zC5SLMB3/9VV5de9g==
+  version "16.4.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.1.tgz#1d9931f1d3e5d2959350d1250efab299561f7f11"
+  integrity sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==
 
 dropzone@^5.9.3:
   version "5.9.3"
@@ -3005,9 +2998,9 @@ ekko-lightbox@^5.3.0:
   integrity sha512-mbacwySuVD3Ad6F2hTkjSTvJt59bcVv2l/TmBerp4xZnLak8tPtA4AScUn4DL42c1ksTiAO6sGhJZ52P/1Qgew==
 
 electron-to-chromium@^1.4.601:
-  version "1.4.643"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.643.tgz#081a20c5534db91e66ef094f68624960f674768f"
-  integrity sha512-QHscvvS7gt155PtoRC0dR2ilhL8E9LHhfTQEq1uD5AL0524rBLAwpAREFH06f87/e45B9XkR6Ki5dbhbCsVEIg==
+  version "1.4.644"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.644.tgz#76d9d0a58d9ea05dc675fd7358414efa1116f752"
+  integrity sha512-zOnPndwz3u1sVFSyBcRWcn0529Kz+jr+tDxN9iP69I3CpC5wlvYmjLrK2O7TEsg2oDDoUqooeXqbiHLvXvl6Lg==
 
 emoji-regex@^10.3.0:
   version "10.3.0"
@@ -3595,9 +3588,10 @@ follow-redirects@^1.15.4:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.5.tgz#54d4d6d062c0fa7d9d17feb008461550e3ba8020"
   integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
 
-font-awesome-animation@l-lin/font-awesome-animation#master:
+font-awesome-animation@*:
   version "1.1.1"
-  resolved "https://codeload.github.com/l-lin/font-awesome-animation/tar.gz/eb7b2887fd95e02f50e1c98e2aa3c825747ab018"
+  resolved "https://registry.yarnpkg.com/font-awesome-animation/-/font-awesome-animation-1.1.1.tgz#fa7e685c163034d59a22b565af1d848d3f7866b6"
+  integrity sha512-WHl4zhyb0LeqT+v2JClv5yNZ+63e2Mbbu+9ycL3FGVHtZA8zn4iaMBxA6AgcJySLlfdjuTEA0lBZBW2CE1cwpQ==
 
 font-awesome@^4.7:
   version "4.7.0"
@@ -4443,9 +4437,10 @@ jquery-mousewheel@^3.1, jquery-mousewheel@^3.1.13:
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
   integrity sha512-GXhSjfOPyDemM005YCEHvzrEALhKDIswtxSHSR2e4K/suHVJKJxxRCGz3skPjNxjJjQa9AVSGGlYjv1M3VLIPg==
 
-jquery-simple-pass-meter@jakerella/jquerySimplePassMeter#master:
+jquery-simple-pass-meter@*:
   version "0.6.0"
-  resolved "https://codeload.github.com/jakerella/jquerySimplePassMeter/tar.gz/01628f4976d61a9456f12250bce9ee9d58c495cc"
+  resolved "https://registry.yarnpkg.com/jquery-simple-pass-meter/-/jquery-simple-pass-meter-0.6.0.tgz#e12cc1ed36b0e22cfc7cf579d3709df6dea01eba"
+  integrity sha512-X7tqhyz5feRSJIg6Th+0K2u8RhjfjOrmTrAEoShjh6McoqDLwaLB32F7Qsr2uMCiYC9fQR2Z2s3z8LQwUxstEQ==
 
 jquery-ui-dist@>=1.13.2, jquery-ui-dist@^1.13.0:
   version "1.13.2"
@@ -6067,9 +6062,10 @@ scule@^1.1.1, scule@^1.2.0:
   resolved "https://registry.yarnpkg.com/scule/-/scule-1.2.0.tgz#b46d444d6a8c92e73eb80d2d8d00b94ab065cc3e"
   integrity sha512-CRCmi5zHQnSoeCik9565PONMg0kfkvYmcSqrbOJY4txFfy1wvVULV4FDaiXhUblUgahdqz3F2NwHZ8i4eBTwUw==
 
-select2-bootstrap-theme@select2/select2-bootstrap-theme#master:
+select2-bootstrap-theme@^0.1.0-beta.10:
   version "0.1.0-beta.10"
-  resolved "https://codeload.github.com/select2/select2-bootstrap-theme/tar.gz/8f833863dc3bf5c0d8d7113a8da43acb2c7c7c91"
+  resolved "https://registry.yarnpkg.com/select2-bootstrap-theme/-/select2-bootstrap-theme-0.1.0-beta.10.tgz#b9426ecfc03bf4a235e76a132377574310469ac0"
+  integrity sha512-gc9Y9yNjkGRqeFmI/pAKyL4maMKH9VKAn62E+uF/hxz8FTmfuKH0sDEGhFhk3f8Jp+emtsDdK1c1nb6S51BV0Q==
 
 select2@4.1.0-beta.0:
   version "4.1.0-beta.0"
