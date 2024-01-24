@@ -259,7 +259,7 @@ try {
         dataSets.value = response.invoices;
         eDataSet.value = response.one_array;
         prefixes.value = response.prefixes;
-        let table = $('#invoice_table').DataTable({
+        /*let table = $('#invoice_table').DataTable({
             "data": dataSets.value,
             "columnDefs": [{
                     targets: 2,
@@ -272,7 +272,7 @@ try {
                 {
                     "targets": 4,
                     "data": 3,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         if (row[4] == '1') {
                             data = data.replace('(Repeat Invoice: ' + row[8] + ') ', '');
                         }
@@ -282,7 +282,7 @@ try {
                 {
                     "targets": 5,
                     "data": 4,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         data = row[12] + row[5];
                         return data;
                     }
@@ -290,7 +290,7 @@ try {
                 {
                     "targets": 6,
                     "data": 6,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         if (row[6] == '1') {
                             if (data == 1) {
                                 return '<i class="icon-checkmark"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-checkmark"></use></svg></i>';
@@ -306,7 +306,7 @@ try {
                     "targets": 7,
                     "data": null,
                     "width": "150px",
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         let out = '';
                         if (Number(row[4]) >= 10) {
                             out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_payment_confirmation=' + row[0] + '" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
@@ -358,6 +358,7 @@ try {
                 console.log(format(row.data()));
             }
         });
+        */
     });
 } catch (error: any) {
     console.log(module.value+' invoices failed');
