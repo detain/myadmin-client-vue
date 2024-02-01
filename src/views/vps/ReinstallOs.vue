@@ -3,7 +3,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
 
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
@@ -52,8 +52,12 @@ const osDistroSelect = computed(() => {
     }
     return distros;
 });
+watch(serviceInfo, (newValue, oldValue) => {
+    osDistro.value = getOsDistro.value;
+    osVersion.value = getOsVersion.value;
+})
 const getOsDistro = computed(() => {
-    if (vpsTemplates.value.length > 0 && osDistro.value == '') {
+    if (typeof serviceInfo.value.vps_os != 'undefined' && vpsTemplates.value.length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
             for (let idx in vpsTemplates.value) {
                 const template = vpsTemplates.value[idx];
@@ -65,6 +69,21 @@ const getOsDistro = computed(() => {
         return vpsTemplates.value[0].template_os;
     } else {
         return osDistro.value;
+    }
+});
+const getOsVersion = computed(() => {
+    if (typeof serviceInfo.value.vps_os != 'undefined' && vpsTemplates.value.length > 0 && osVersion.value == '') {
+        if (typeof serviceInfo.value.vps_os != 'undefined') {
+            for (let idx in vpsTemplates.value) {
+                const template = vpsTemplates.value[idx];
+                if (template.template_file == serviceInfo.value.vps_os) {
+                    return template.template_file;
+                }
+            }
+        }
+        return vpsTemplates.value[0].template_file;
+    } else {
+        return osVersion.value;
     }
 });
 
@@ -121,6 +140,7 @@ try {
                 osVersion.value = template.template_file;
             }
         }
+        //osDistro.value = getOsDistro.value;
     });
 } catch (error: any) {
     console.log('error:');

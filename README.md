@@ -34,7 +34,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
   * [ ] setup github actions and hooks for automated testing
   * [ ] make sure affiliate tracking still works
   * [ ] analytics
-  * [ ] get various libs loading with imports insteaed of directly called with scritpts and link tags
   * [ ] minimize api fields in requests/responses and filter them for security
   * [ ] api finalized
 * Future Tasks
