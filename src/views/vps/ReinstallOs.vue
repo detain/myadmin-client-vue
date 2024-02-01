@@ -52,7 +52,7 @@ const osDistroSelect = computed(() => {
     }
     return distros;
 });
-watch(serviceInfo, (newValue, oldValue) => {
+watch(serviceInfo, (newValue: any, oldValue: any) => {
     osDistro.value = getOsDistro.value;
     osVersion.value = getOsVersion.value;
 })
