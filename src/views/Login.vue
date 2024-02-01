@@ -3,7 +3,9 @@ import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
 
 import $ from 'jquery';

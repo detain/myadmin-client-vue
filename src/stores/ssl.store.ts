@@ -1,6 +1,10 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface SslListRow {
     ssl_id: number;
@@ -83,7 +87,9 @@ export const useSslStore = defineStore({
         pkg: 0,
         linkDisplay: false,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.ssl_order_id
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
@@ -95,8 +101,7 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/ssl');
-                this.sslList = response;
+                this.sslList = await fetchWrapper.get(baseUrl + '/ssl');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

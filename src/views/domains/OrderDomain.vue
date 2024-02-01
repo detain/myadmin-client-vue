@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper, moduleLink } from '@/helpers';
-import { useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';

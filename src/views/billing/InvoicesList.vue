@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useInvoicesStore, useSiteStore } from '@/stores';
+import { useInvoicesStore } from '@/stores/invoices.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { ref, computed, onMounted } from 'vue';
-import 'datatables.net';
-import 'datatables.net-bs4';
-import DataTable from 'datatables.net-dt';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Invoice List');
 siteStore.setTitle('Invoice List');
@@ -23,36 +22,6 @@ const submitForm = () => {
 const invoicesTable = ref(null);
 
 invoicesStore.getAll();
-onMounted(() => {
-    /*
-    invoicesTable.value = new DataTable('#invoices_table', {
-        createdRow(row, data, index) {
-            const invoiceId = $(row).find("td").eq(0).text();
-            const hrefUrl = $(row).find("td:first a").attr("href");
-            $(row).find("td").eq(9).html(`<a href="${hrefUrl}" title="Download Invoice PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a> <a href="${hrefUrl.replace(/pdf\.php/g,"index.php")}" title="View Invoice"><i class="icon-view-details"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-view-details"></use></svg></i></a>`);
-        },
-        order: [[0, "desc"]],
-        pageLength: 50,
-        lengthMenu: [
-            [10, 25, 50, 100, 500, -1],
-            [10, 25, 50, 100, 500, "All"]
-        ],
-        data: rows,
-        columns: [
-            { data: "id" },
-            { data: "date" },
-            { data: "service" },
-            { data: "description" },
-            { data: "amount" },
-            { data: "paid" },
-            { data: "payment_type" },
-            { data: "payment_description" },
-            { data: "paid_on" },
-            { data: null, defaultContent: "" }
-        ]
-    });
-    */
-});
 </script>
 
 <template>
@@ -149,5 +118,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import 'datatables.net-bs4';
 </style>

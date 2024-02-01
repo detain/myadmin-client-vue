@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface MailInfo {
     mail_id: number;
@@ -101,7 +105,10 @@ export const useMailStore = defineStore({
         },
         usage_count: 0,
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.mail_username,
+        titleField2: (state) => state.serviceInfo.mail_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
@@ -113,8 +120,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/mail');
-                this.mailList = response;
+                this.mailList = await fetchWrapper.get(baseUrl + '/mail');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

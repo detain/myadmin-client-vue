@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers';
-import { useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 const route = useRoute();
@@ -58,7 +60,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/backups]/order', {
+            .post(baseUrl + '/backups/order', {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,

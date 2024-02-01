@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted } from 'vue';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { storeToRefs } from 'pinia';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '@/stores/account.store.ts';
+
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
+const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
+const { data } = storeToRefs(accountStore)
 siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
 siteStore.setBreadcrums([['', 'Home']]);
@@ -21,7 +28,6 @@ const balance = ref('');
 const full_name = ref('');
 const email = ref('');
 const tickets = ref<HomeTicket[]>([]);
-const data = ref<any>({});
 const ticketStatus = ref<HomeTicketStatus>({});
 const ticketStatusView = ref<HomeTicketStatusView>({});
 const details = ref<HomeDetails>({ modules: {} });
@@ -127,7 +133,6 @@ const loadHome = async () => {
             full_name.value = response.full_name;
             email.value = response.email;
             tickets.value = response.tickets;
-            data.value = response.data;
             ticketStatus.value = response.ticketStatus;
             ticketStatusView.value = response.ticketStatusView;
             details.value = response.details;
@@ -141,6 +146,7 @@ const loadHome = async () => {
 };
 
 loadHome();
+accountStore.load();
 </script>
 
 <template>

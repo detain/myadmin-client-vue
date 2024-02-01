@@ -1,23 +1,18 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { ref, computed, onMounted } from 'vue';
 /*import $ from 'jquery';
 import 'jquery';
 import jQuery from 'jquery';
 import 'jquery-ui/dist/jquery-ui.js';
 import Popper from 'popper.js';
-import 'bootstrap';
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net';
-import 'datatables.net-buttons';
-import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
-import 'datatables.net-responsive';*/
-import 'datatables.net';
-import 'datatables.net-bs4';
-import DataTable from 'datatables.net-dt';
+import 'bootstrap';*/
 
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 const module: string = 'vps';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('VPS List');
@@ -39,8 +34,6 @@ interface vpsRow {
     vps_comment: string;
 }
 
-/*DataTable.use(DataTablesCore);*/
-
 const limitStatus = ref('active');
 interface LimitStatusMap {
     [key: string]: string[];
@@ -54,7 +47,6 @@ const limitStatusMap: LimitStatusMap = {
 };
 const data = ref<vpsRow[]>([]);
 const table = ref();
-const dt = ref<any>(null);
 
 const columns = [{ data: 'vps_id' }, { data: 'vps_name' }, { data: 'repeat_invoices_cost' }, { data: 'vps_hostname' }, { data: 'vps_ip' }, { data: 'vps_status' }, { data: 'services_name' }, { data: 'vps_comment' }, { name: 'link', data: 'link', sortable: false }];
 
@@ -79,39 +71,10 @@ function crud_export(exportType: string): void {
 }
 const loadVpsList = async (data: any) => {
     try {
-        const useDT = false;
         const response = await fetchWrapper.get(baseUrl + '/vps');
         console.log('api success');
         console.log(response);
-        if (useDT === false) {
-            data.value = response;
-        } else {
-            dt.value = new DataTable('#crud-table', {
-                data: response,
-                columns: [
-                    { data: 'vps_id' },
-                    { data: 'vps_name' },
-                    { data: 'repeat_invoices_cost' },
-                    {
-                        data: null,
-                        render: (data, type, row, meta) => {
-                            return '<a href="" @click.prevent="router.push(`/' + moduleLink(module) + '/${row.vps_id}`);">' + row.vps_hostname + '</a>';
-                        },
-                    },
-                    { data: 'vps_ip' },
-                    { data: 'vps_status' },
-                    { data: 'services_name' },
-                    { data: 'vps_comment' },
-                    {
-                        name: 'link',
-                        data: null,
-                        render: (data, type, row, meta) => {
-                            return '<router-link :to="\'/' + moduleLink(module) + '/ + row.vps_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
-                        },
-                    },
-                ],
-            });
-        }
+        data.value = response;
     } catch (error: any) {
         console.log('api failed');
         console.log(error);
@@ -122,7 +85,6 @@ loadVpsList(data);
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
@@ -311,10 +273,6 @@ loadVpsList(data);
 </template>
 
 <style scoped>
-@import 'datatables.net-bs4';
-
-/*@import 'datatables.net-buttons-bs4';
-@import 'datatables.net-responsive-bs4';*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

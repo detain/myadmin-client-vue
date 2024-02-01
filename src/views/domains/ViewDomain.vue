@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useDomainStore, useSiteStore } from '@/stores';
+import { useDomainStore } from '@/stores/domain.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { Cancel, Invoices } from '@/components/services';
-import { Contact, Dnssec, Nameservers, Renew, Whois } from '@/views/domains';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Contact from '@/views/domains/Contact.vue';
+import Dnssec from '@/views/domains/Dnssec.vue';
+import Nameservers from '@/views/domains/Nameservers.vue';
+import Renew from '@/views/domains/Renew.vue';
+import Whois from '@/views/domains/Whois.vue';
+
 
 const module = 'domains';
 const siteStore = useSiteStore();
@@ -22,7 +33,7 @@ const settings = computed(() => {
     return modules.value[module];
 });
 const domainStore = useDomainStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -147,6 +158,9 @@ console.log(link.value);
         <div v-if="link == 'contact'" class="col">
             <Contact :id="id"></Contact>
         </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
+        </div>
         <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>
         </div>
@@ -212,7 +226,7 @@ console.log(link.value);
             </div>
         </div>
     </div>
-    <div class="row my-2">
+    <div v-if="!link" class="row my-2">
         <div class="col-12 col-sm-6 col-md-6">
             <div class="card">
                 <div class="card-header">

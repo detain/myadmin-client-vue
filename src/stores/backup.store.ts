@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface BackupInfo {
     backup_id: number;
@@ -110,7 +114,10 @@ export const useBackupStore = defineStore({
             },
         },
     }),
-    getters: {},
+    getters: {
+        titleField: (state) => state.serviceInfo.backup_username,
+        titleField2: (state) => state.serviceInfo.backup_ip
+    },
     actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
@@ -122,8 +129,7 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/backups');
-                this.backupList = response;
+                this.backupList = await fetchWrapper.get(baseUrl + '/backups');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

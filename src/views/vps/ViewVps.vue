@@ -1,15 +1,37 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useVpsStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
-import { Backup, Backups, BuyHdSpace, BuyIp, ChangeHostname, ChangeRootPassword, ChangeTimezone, ChangeWebuzoPassword, InsertCd, ReinstallOs, ResetPassword, ReverseDns, Slices, TrafficUsage, SetupVnc, Vnc } from '@/views/vps';
+import { useVpsStore } from '@/stores/vps.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Backup from '@/views/vps/Backup.vue';
+import Backups from '@/views/vps/Backups.vue';
+import BuyHdSpace from '@/views/vps/BuyHdSpace.vue';
+import BuyIp from '@/views/vps/BuyIp.vue';
+import ChangeHostname from '@/views/vps/ChangeHostname.vue';
+import ChangeRootPassword from '@/views/vps/ChangeRootPassword.vue';
+import ChangeTimezone from '@/views/vps/ChangeTimezone.vue';
+import ChangeWebuzoPassword from '@/views/vps/ChangeWebuzoPassword.vue';
+import InsertCd from '@/views/vps/InsertCd.vue';
+import ReinstallOs from '@/views/vps/ReinstallOs.vue';
+import ResetPassword from '@/views/vps/ResetPassword.vue';
+import ReverseDns from '@/views/vps/ReverseDns.vue';
+import Slices from '@/views/vps/Slices.vue';
+import TrafficUsage from '@/views/vps/TrafficUsage.vue';
+import SetupVnc from '@/views/vps/SetupVnc.vue';
+import Vnc from '@/views/vps/Vnc.vue';
+
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const vpsStore = useVpsStore();
-const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, titleField, titleField2, titleField3, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
@@ -182,11 +204,11 @@ function docReady() {
 
 function toggleFunc(cp: string) {
     if (cp === 'cp') {
-        $('#warning-text').html('cPanel is not supported by your operating system. To use this control panel you should reinstall <b>"CentOS 7 Cpanel" or "CentOS"</b> operating system.');
+        $('#warning-text').html('cPanel is not supported by your operating system. To use this control panel you should reinstall <b>&quot;CentOS 7 Cpanel&quot; or &quot;CentOS&quot;</b> operating system.');
     } else if (cp === 'da') {
-        $('#warning-text').html('Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>"Linux"</b> operating system.');
+        $('#warning-text').html('Direct Admin does not support your VPS operating system. To use this control panel you should reinstall <b>&quot;Linux&quot;</b> operating system.');
     } else if (cp === 'pp') {
-        $('#warning-text').html('Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>"Windows"</b> operating system.');
+        $('#warning-text').html('Plesk is not support your VPS operating system. To use this control panel you should reinstall <b>&quot;Windows&quot;</b> operating system.');
     }
     $('.toggleTr').show();
 }
@@ -269,7 +291,7 @@ function toggleFunc(cp: string) {
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :settings="settings"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>

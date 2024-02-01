@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { fetchWrapper, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
@@ -55,8 +58,8 @@ function submitForm() {
 }
 
 function format(d: any) {
-    var paid_content: string = '';
-    var refund_content: string = '';
+    let paid_content: string = '';
+    let refund_content: string = '';
     if (typeof d[13] == 'undefined' || d[13].length == 0) {
         paid_content = '<div class="text-danger text-center">No Paid Invoices Available</div>';
     } else {
@@ -75,11 +78,11 @@ function format(d: any) {
             '<tbody>';
         console.log(d[13]);
         //console.log(d[13].length);
-        var payment_type: string = '',
+        let payment_type: string = '',
           trnx_col: string = '',
           plinks: string = '',
           links: string = '';
-        for (var i: number = 0; i < d[13].length; i++) {
+        for (let i: number = 0; i < d[13].length; i++) {
             payment_type = '<i class="icon-' + get_payment_type_image(d[13][i][4]) + '" title="' + get_payment_type(d[13][i][4]) + '"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-' + get_payment_type_image(d[13][i][4]) + '"></use></svg></i>';
             trnx_col = d[13][i][3];
             plinks = get_links(d[13][i]);
@@ -109,7 +112,7 @@ function format(d: any) {
                     '</tr>' +
                     '</thead>' +
                     '<tbody>';
-                for (var j = 0; j < d[13][i][13].length; j++) {
+                for (let j = 0; j < d[13][i][13].length; j++) {
                     links = get_links(d[13][i][13][j]);
                     refund_content = refund_content +
                         '<tr>' +
@@ -135,7 +138,7 @@ function format(d: any) {
 }
 
 function get_links(row: string[]) {
-    var out = '';
+    let out = '';
     if (Number(row[4]) >= 10) {
         out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_payment_confirmation=' + row[0] + '" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
     } else {
@@ -232,17 +235,17 @@ function get_payment_types(): PaymentTypes {
 }
 
 function get_payment_type(type: string) {
-    var types = get_payment_types();
+    let types = get_payment_types();
     return types[type]['type'];
 }
 
 function get_payment_type_image(type: string) {
-    var types = get_payment_types();
+    let types = get_payment_types();
     return types[type]['image'];
 }
 
 function get_payment_method_text(type: string) {
-    var types = get_payment_types();
+    let types = get_payment_types();
     return types[type]['text'];
 }
 
@@ -256,7 +259,7 @@ try {
         dataSets.value = response.invoices;
         eDataSet.value = response.one_array;
         prefixes.value = response.prefixes;
-        var table = $('#invoice_table').DataTable({
+        /*let table = $('#invoice_table').DataTable({
             "data": dataSets.value,
             "columnDefs": [{
                     targets: 2,
@@ -269,7 +272,7 @@ try {
                 {
                     "targets": 4,
                     "data": 3,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         if (row[4] == '1') {
                             data = data.replace('(Repeat Invoice: ' + row[8] + ') ', '');
                         }
@@ -279,7 +282,7 @@ try {
                 {
                     "targets": 5,
                     "data": 4,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         data = row[12] + row[5];
                         return data;
                     }
@@ -287,7 +290,7 @@ try {
                 {
                     "targets": 6,
                     "data": 6,
-                    "render": function(data, type, row: string[], meta) {
+                    "render": function(data: any, type: any, row: string[], meta: any) {
                         if (row[6] == '1') {
                             if (data == 1) {
                                 return '<i class="icon-checkmark"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-checkmark"></use></svg></i>';
@@ -303,8 +306,8 @@ try {
                     "targets": 7,
                     "data": null,
                     "width": "150px",
-                    "render": function(data, type, row: string[], meta) {
-                        var out = '';
+                    "render": function(data: any, type: any, row: string[], meta: any) {
+                        let out = '';
                         if (Number(row[4]) >= 10) {
                             out = out + '<a href="view_' + prefixes.value[row[9]] + '&id=' + row[2] + '&link=invoices&resend_payment_confirmation=' + row[0] + '" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
                         } else {
@@ -342,8 +345,8 @@ try {
         });
 
         $('#invoice_table tbody').on('click', 'td.details-control', function() {
-            var tr = $(this).closest('tr');
-            var row = table.row(tr);
+            let tr = $(this).closest('tr');
+            let row = table.row(tr);
             if (row.child.isShown()) {
                 row.child.hide();
                 tr.removeClass('shown');
@@ -355,6 +358,7 @@ try {
                 console.log(format(row.data()));
             }
         });
+        */
     });
 } catch (error: any) {
     console.log(module.value+' invoices failed');

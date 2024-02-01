@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Change Password');
 siteStore.setTitle('Change Password');

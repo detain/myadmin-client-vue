@@ -1,21 +1,28 @@
 <script setup lang="ts">
-import { fetchWrapper, moduleLink } from '@/helpers';
+import { storeToRefs } from 'pinia';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module']);
+const props = defineProps(['id', 'module', 'package', 'titleField', 'titleField2', 'titleField3']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const { modules } = storeToRefs(siteStore);
+const id = computed(() => { return props.id; });
+const module = computed(() => { return props.module; });
+const pkg = computed(() => { return props.package; });
+const titleField = computed(() => { return props['titleField']; });
+const titleField2 = computed(() => { return props['titleField2']; });
+const titleField3 = computed(() => { return props['titleField3']; });
+const settings = computed(() => { return modules.value[module.value]; });
+
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
@@ -59,25 +66,25 @@ function onSubmit() {
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12 my-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title m-0 text-left">Cancel Websites Service</h4>
+                        <h4 class="card-title m-0 text-left">Cancel {{settings?.TITLE}} Service</h4>
                     </div>
                     <div class="card-body">
                         <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">Websites ID:</label>
-                                <div class="col-sm-7 col-form-label" style="text-align: left">376473</div>
+                                <label class="col-sm-5 col-form-label">{{settings?.TBLNAME}} ID:</label>
+                                <div class="col-sm-7 col-form-label" style="text-align: left">{{ id }}</div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label">Type:</label>
-                                <div class="col-sm-7 col-form-label" style="text-align: left">Standard Web Hosting</div>
+                                <div class="col-sm-7 col-form-label" style="text-align: left">{{ pkg }}</div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label">Hostname:</label>
-                                <div class="col-sm-7 col-form-label" style="text-align: left">fancytush.com</div>
+                                <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField }}</div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label">Username:</label>
-                                <div class="col-sm-7 col-form-label" style="text-align: left">fancytus</div>
+                                <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField2 }}</div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="confirm">Are you sure you want to cancel?</label>
@@ -85,7 +92,7 @@ function onSubmit() {
                                     <div class="ui-select">
                                         <select id="confirm" name="confirm" class="form-control">
                                             <option value="no">No</option>
-                                            <option value="yes">Yes, Cancel the Websites Order</option>
+                                            <option value="yes">Yes, Cancel the {{settings?.TBLNAME}} Order</option>
                                         </select>
                                     </div>
                                 </div>

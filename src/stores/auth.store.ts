@@ -1,7 +1,12 @@
 import { storeToRefs, defineStore, getActivePinia, Store, Pinia } from 'pinia';
-import { fetchWrapper } from '@/helpers';
-import { router } from '@/router';
-import { useAccountStore, useAlertStore, useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
+import { router } from '@/router/index.ts';
+
+import { useAccountStore } from '@/stores/account.store.ts';
+import { useAlertStore } from '@/stores/alert.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface ErrorMessage {
     code: number;
@@ -41,11 +46,7 @@ export const useAuthStore = defineStore({
     getters: {},
     actions: {
         loggedIn() {
-            if (this.sessionId != null || this.apiKey != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.sessionId != null || this.apiKey != null;
         },
         resetStores(): void {
             const pinia = getActivePinia() as ExtendedPinia;

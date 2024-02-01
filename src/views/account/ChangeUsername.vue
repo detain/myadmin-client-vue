@@ -3,7 +3,8 @@ import { ref, reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Change Username');
 siteStore.setTitle('Change Username');

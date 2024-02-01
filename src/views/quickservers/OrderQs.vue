@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper, moduleLink } from '@/helpers';
-import { useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { VerifyJsonWebKeyInput } from 'crypto';
 const route = useRoute();
 const router = useRouter();
 const module: string = 'quickservers';

@@ -2,10 +2,14 @@
 import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { MainMenu, Alert } from '@/components';
-import { useAuthStore, useSiteStore } from '@/stores';
+import MainMenu from '@/components/MainMenu.vue';
+import Alert from '@/components/Alert.vue';
+
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import $ from 'jquery';
-import 'jquery-ui';
+//import 'jquery-ui';
 import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';
@@ -165,7 +169,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
         </footer>
     </div>
     <div v-else>
-        <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+        <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
             <router-view />
         </div>
     </div>
@@ -186,9 +190,9 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 /* '/templates/adminlte/jquery.passwordRequirements.css'; */
-@import '/templates/my/style.css';
-@import '/templates/my/style2.css';
 @import '/node_modules/admin-lte/dist/css/adminlte.min.css';
 @import '/templates/adminlte/custom_styles.css';
+@import '/templates/my/style.css';
+@import '/templates/my/style2.css';
 @import '/node_modules/@material-design-icons/font/filled.css';
 </style>

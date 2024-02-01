@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, ucwords, moduleLink } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useSslStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
-import { ChangeApproverEmail } from '@/views/ssl';
+import { useSslStore } from '@/stores/ssl.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import ChangeApproverEmail from '@/views/ssl/ChangeApproverEmail.vue';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import Swal from 'sweetalert2';
 
@@ -19,7 +26,7 @@ const link = computed(() => {
 });
 
 const sslStore = useSslStore();
-const { loading, error, pkg, linkDisplay } = storeToRefs(sslStore);
+const { loading, error, pkg, linkDisplay, titleField } = storeToRefs(sslStore);
 const isCollapsed = ref(false);
 const clientLinks = ref<ClientLink[]>([]);
 const serviceInfo = ref<ServiceInfo>({
@@ -251,6 +258,9 @@ sslStore.getById(id as string);
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'change_approver_email'" class="col">
             <ChangeApproverEmail :id="id"></ChangeApproverEmail>
+        </div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

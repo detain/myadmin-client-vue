@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
 import { ref, computed, onMounted } from 'vue';
-/*
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net';
-import 'datatables.net-buttons';
-import 'datatables.net-buttons-bs4/js/buttons.bootstrap4';
-import 'datatables.net-responsive';
-*/
 import { useRoute } from 'vue-router';
-import { useSiteStore } from '@/stores';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 import Swal from 'sweetalert2';
 const route = useRoute();
 const id = route.params.id;
@@ -30,8 +25,6 @@ const type = ref('');
 const content = ref('');
 const prio = ref('');
 const ttl = ref('');
-
-let dt;
 const limitStatus = ref('active');
 
 interface DnsRecordRow {
@@ -184,10 +177,6 @@ async function deleteRecord(event: Event) {
     });
 }
 
-onMounted(function () {
-    dt = table.value.dt;
-});
-
 const loadDns = async () => {
     try {
         const response = await fetchWrapper.get(baseUrl + '/dns/' + id);
@@ -204,7 +193,6 @@ loadDns();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/crud_table5.css" />
     <div id="records" class="card">
         <div class="card-header">
@@ -312,11 +300,6 @@ loadDns();
 </template>
 
 <style scoped>
-/*
-@import 'datatables.net-bs4';
-@import 'datatables.net-buttons-bs4';
-@import 'datatables.net-responsive-bs4';
-*/
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper, moduleLink, ucwords } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+import { ucwords } from '@/helpers/ucwords.ts';
+
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useBackupStore, useSiteStore } from '@/stores';
-import { Cancel, Invoices } from '@/components/services';
+import { useBackupStore } from '@/stores/backup.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -30,7 +36,7 @@ siteStore.setBreadcrums([
 siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Backup ' + id);
 
 const backupStore = useBackupStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
 backupStore.getById(id as string);
 
 const billingStatus = computed(() => {

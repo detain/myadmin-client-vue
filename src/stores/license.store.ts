@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper, snakeToCamel } from '@/helpers';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useAuthStore, useSiteStore } from '@/stores';
+import { useAuthStore } from '@/stores/auth.store.ts';
+import { useSiteStore } from '@/stores/site.store.ts';
+
 
 interface LicenseInfo {
     license_id: number;
@@ -92,8 +96,12 @@ export const useLicenseStore = defineStore({
             services_module: 'licenses',
         },
     }),
-    getters: {},
-    actions: {
+     getters: {
+        titleField: (state) => state.serviceInfo.license_ip,
+        titleField2: (state) => state.serviceInfo.license_key,
+        titleField3: (state) => state.serviceInfo.license_hostname
+    },
+   actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
@@ -104,8 +112,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/licenses');
-                this.licenseList = response;
+                this.licenseList = await fetchWrapper.get(baseUrl + '/licenses');
             } catch (error: any) {
                 console.log('got error response' + error);
                 this.error = error;

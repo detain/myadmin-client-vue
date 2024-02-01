@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { fetchWrapper } from '@/helpers';
-import { useSiteStore } from '@/stores';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+
+import { useSiteStore } from '@/stores/site.store.ts';
+
 const props = defineProps(['data']);
 const data = computed(() => {
     return props.data;
