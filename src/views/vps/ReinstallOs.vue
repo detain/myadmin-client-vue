@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');
 const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
@@ -31,17 +30,8 @@ const serviceMaster = computed(() => {
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
 const osVersion = ref('');
-const templateSelect = ref({});
-const currentOS = ref('');
 const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
-const goBackLink = computed(() => {
-    if (module.value === 'vps') {
-        return `view_${module.value}`;
-    } else {
-        return 'view_qs';
-    }
-});
 const formAction = computed(() => {
     return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
 });
@@ -53,10 +43,10 @@ const osDistroSelect = computed(() => {
     }
     return distros;
 });
-watch(serviceInfo, (newValue: any, oldValue: any) => {
+watch(serviceInfo, () => {
     osDistro.value = getOsDistro.value;
     osVersion.value = getOsVersion.value;
-})
+});
 const getOsDistro = computed(() => {
     if (typeof serviceInfo.value.vps_os != 'undefined' && vpsTemplates.value.length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
@@ -99,10 +89,6 @@ const osVersionSelect = computed(() => {
     return versions;
 });
 
-function updateVPS() {
-    // Perform logic for updating VPS based on selected values
-}
-
 interface Distros {
     [key: string]: string;
 }
@@ -125,7 +111,6 @@ interface VpsTemplate {
 
 function submitForm() {
     // Handle form submission
-    let response;
     try {
         let postData = {
             template: osVersion.value,
@@ -135,7 +120,6 @@ function submitForm() {
         fetchWrapper.post(baseUrl + '/vps/' + id.value + '/reinstall_os', postData).then((response: any) => {
             console.log('api success');
             console.log(response);
-            loadDns();
             Swal.fire({
                 icon: 'success',
                 html: response.message,
@@ -166,7 +150,6 @@ try {
                 osVersion.value = template.template_file;
             }
         }
-        //osDistro.value = getOsDistro.value;
     });
 } catch (error: any) {
     console.log('error:');
