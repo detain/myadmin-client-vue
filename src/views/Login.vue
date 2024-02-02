@@ -955,9 +955,10 @@ authStore.load();
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
+/* @import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
+@import '/css/fontawesome-kit.min.css';	
 @import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
 @import '/css/tailwind.min.css';
-@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import '/css/login_new.css';
 body {
     height: 100vh;

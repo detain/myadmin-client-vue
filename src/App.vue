@@ -176,6 +176,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
+@import '/css/fontawesome-kit.min.css';	
 /* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
 /* '/css/misha-theme/jquery-ui.css'; */
 @import '/css/jquery.custom.css';
