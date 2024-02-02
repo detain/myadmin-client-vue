@@ -14,7 +14,7 @@ import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';
 import Swal from 'sweetalert2';
-import 'https://kit.fontawesome.com/2c66c1d1b5.js';
+//import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 onMounted(function () {});
 
 const authStore = useAuthStore();
@@ -176,6 +176,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
+@import '/css/fontawesome-kit.min.css';	
 /* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
 /* '/css/misha-theme/jquery-ui.css'; */
 @import '/css/jquery.custom.css';

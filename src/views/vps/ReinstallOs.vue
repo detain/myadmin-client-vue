@@ -3,13 +3,13 @@ import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
 
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
+import Swal from 'sweetalert2';
 
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');
 const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
@@ -30,17 +30,8 @@ const serviceMaster = computed(() => {
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
 const osVersion = ref('');
-const templateSelect = ref({});
-const currentOS = ref('');
 const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
-const goBackLink = computed(() => {
-    if (module.value === 'vps') {
-        return `view_${module.value}`;
-    } else {
-        return 'view_qs';
-    }
-});
 const formAction = computed(() => {
     return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
 });
@@ -52,8 +43,12 @@ const osDistroSelect = computed(() => {
     }
     return distros;
 });
+watch(serviceInfo, () => {
+    osDistro.value = getOsDistro.value;
+    osVersion.value = getOsVersion.value;
+});
 const getOsDistro = computed(() => {
-    if (vpsTemplates.value.length > 0 && osDistro.value == '') {
+    if (typeof serviceInfo.value.vps_os != 'undefined' && vpsTemplates.value.length > 0 && osDistro.value == '') {
         if (typeof serviceInfo.value.vps_os != 'undefined') {
             for (let idx in vpsTemplates.value) {
                 const template = vpsTemplates.value[idx];
@@ -67,6 +62,21 @@ const getOsDistro = computed(() => {
         return osDistro.value;
     }
 });
+const getOsVersion = computed(() => {
+    if (typeof serviceInfo.value.vps_os != 'undefined' && vpsTemplates.value.length > 0 && osVersion.value == '') {
+        if (typeof serviceInfo.value.vps_os != 'undefined') {
+            for (let idx in vpsTemplates.value) {
+                const template = vpsTemplates.value[idx];
+                if (template.template_file == serviceInfo.value.vps_os) {
+                    return template.template_file;
+                }
+            }
+        }
+        return vpsTemplates.value[0].template_file;
+    } else {
+        return osVersion.value;
+    }
+});
 
 const osVersionSelect = computed(() => {
     const versions: Distros = {};
@@ -78,17 +88,6 @@ const osVersionSelect = computed(() => {
     }
     return versions;
 });
-
-onMounted(() => {
-    console.log(serviceInfo.value);
-});
-
-function updateVPS() {
-    // Perform logic for updating VPS based on selected values
-}
-function submitForm() {
-    // Handle form submission
-}
 
 interface Distros {
     [key: string]: string;
@@ -109,6 +108,36 @@ interface VpsTemplate {
     template_name: string;
     template_dir: string;
 }
+
+function submitForm() {
+    // Handle form submission
+    try {
+        let postData = {
+            template: osVersion.value,
+            password: checkVpsPassword.value,
+            loginPassword: checkAccountPassword.value
+        };
+        fetchWrapper.post(baseUrl + '/vps/' + id.value + '/reinstall_os', postData).then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        });
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: 'Got error ' + error.message,
+        });
+    }
+}
+
+onMounted(() => {
+    console.log(serviceInfo.value);
+});
 
 try {
     fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
