@@ -5,6 +5,7 @@ import { moduleLink } from '@/helpers/moduleLink.ts';
 import { RouterLink } from 'vue-router';
 import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
+import Swal from 'sweetalert2';
 
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');
@@ -98,15 +99,8 @@ const osVersionSelect = computed(() => {
     return versions;
 });
 
-onMounted(() => {
-    console.log(serviceInfo.value);
-});
-
 function updateVPS() {
     // Perform logic for updating VPS based on selected values
-}
-function submitForm() {
-    // Handle form submission
 }
 
 interface Distros {
@@ -128,6 +122,38 @@ interface VpsTemplate {
     template_name: string;
     template_dir: string;
 }
+
+function submitForm() {
+    // Handle form submission
+    let response;
+    try {
+        let postData = {
+            template: osVersion.value,
+            password: checkVpsPassword.value,
+            loginPassword: checkAccountPassword.value
+        };
+        fetchWrapper.post(baseUrl + '/vps/' + id.value + '/reinstall_os', postData).then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            loadDns();
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        });
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: 'Got error ' + error.message,
+        });
+    }
+}
+
+onMounted(() => {
+    console.log(serviceInfo.value);
+});
 
 try {
     fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
