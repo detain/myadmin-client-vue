@@ -4,12 +4,14 @@ import { moduleLink } from '@/helpers/moduleLink.ts';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
+import Swal from 'sweetalert2';
 
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const action = ref('');
 const id = computed(() => {
     return props.id;
