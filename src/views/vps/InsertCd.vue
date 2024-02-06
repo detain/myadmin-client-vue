@@ -10,12 +10,13 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-
 const action = ref('');
+const id = computed(() => {
+    return props.id;
+});
 const module = computed(() => {
     return props.module;
 });
-//const id = ref('');
 const goBackLink = ref('');
 const protocols = ref('https');
 const links = ref(['https://templates.is.cc/knoppix/KNOPPIX_V9.1CD-2021-01-25-EN.iso', 'https://templates.is.cc/systemrescuecd/systemrescue-7.01-amd64.iso']);

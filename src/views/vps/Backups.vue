@@ -5,17 +5,19 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
 
-const props = defineProps(['id', 'settings', 'backupsTable']);
+const props = defineProps(['id', 'module', 'settings', 'backupsTable']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
-const module: string = 'vps';
 const siteStore = useSiteStore();
 const settings = computed(() => {
     return props.settings;
 });
 const id = computed(() => {
     return props.id;
+});
+const module = computed(() => {
+    return props.module;
 });
 const backupsTable = computed(() => {
     return props.backupsTable;

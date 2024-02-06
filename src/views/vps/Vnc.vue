@@ -10,6 +10,9 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const id = computed(() => {
+    return props.id;
+});
 const module = computed(() => {
     return props.module;
 });
