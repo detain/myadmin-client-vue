@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
-
 import Swal from 'sweetalert2';
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
@@ -17,6 +15,9 @@ const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
     return props.id;
 });
+const module = computed(() => {
+    return props.module;
+});
 
 function submitForm() {
     Swal.fire({
@@ -27,7 +28,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/vps/' + id.value + '/reverse_dns', {
+            .post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reverse_dns', {
                 ips: ips.value,
             })
             .then((response) => {
@@ -50,7 +51,7 @@ function submitForm() {
     }
 }
 
-fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reverse_dns').then((response) => {
+fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reverse_dns').then((response) => {
     console.log('Response:');
     console.log(response);
     ips.value = response.ips;
