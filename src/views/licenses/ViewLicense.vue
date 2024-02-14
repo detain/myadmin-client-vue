@@ -36,7 +36,7 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module) + moduleLink(module), 'License'],
+        ['/' + moduleLink(module), 'License'],
     ]);
     siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View License ' + id);
     if (typeof newLink == 'undefined') {

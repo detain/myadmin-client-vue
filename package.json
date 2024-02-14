@@ -172,6 +172,7 @@
         "vite-plugin-pwa": "*",
         "vite-plugin-vue-devtools": "*",
         "vite-plugin-vue-inspector": "*",
+        "unplugin-turbo-console": "*",
         "jquery-sortable": "johnny/jquery-sortable#master",
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",

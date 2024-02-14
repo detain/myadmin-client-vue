@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
@@ -11,6 +10,9 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const id = computed(() => {
+    return props.id;
+});
 const module = computed(() => {
     return props.module;
 });
