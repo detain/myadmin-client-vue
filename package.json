@@ -148,7 +148,7 @@
         "tailwindcss": "*",
         "terser": "*",
         "tree-kill": "*",
-        "typescript": "^5.3.3",
+        "typescript": "^5.4.2",
         "unplugin-turbo-console": "*",
         "vite": "*",
         "vite-plugin-checker": "*",
