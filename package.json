@@ -5,6 +5,7 @@
     "main": "dist-electron/main/index.js",
     "version": "1.0.0",
     "private": true,
+    "type": "module",
     "keywords": [
         "electron",
         "rollup",
