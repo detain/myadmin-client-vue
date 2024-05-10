@@ -70,7 +70,7 @@ function loadLink(newLink: string) {
     linkDisplay.value = false;
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module) + moduleLink(module), 'VPS'],
+        ['/' + moduleLink(module), 'VPS'],
     ]);
     siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
     if (typeof newLink == 'undefined') {

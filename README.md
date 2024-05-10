@@ -130,7 +130,9 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps/:id/eject_cd               | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/enable_quota           | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/invoices               | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/insert_cd              | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/restart                | [x]     | [x]      | [x]      | [x]       |
+| /vps/:id/reinstall_os           | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/reverse_dns            | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/setup_vnc              | [x]     | [x]      | [x]      | [x]       |
 | /vps/:id/start                  | [x]     | [x]      | [x]      | [x]       |
@@ -213,8 +215,6 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 | /vps/:id/change_hostname        | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/change_root_password   | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/change_webuzo_password | [ ]     | [ ]      | [x]      | [ ]       |
-| /vps/:id/insert_cd              | [ ]     | [x]      | [x]      | [ ]       |
-| /vps/:id/reinstall_os           | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/reset_password         | [ ]     | [x]      | [x]      | [ ]       |
 | /vps/:id/restore                | [ ]     | [ ]      | [x]      | [ ]       |
 | /vps/:id/slices                 | [ ]     | [ ]      | [ ]      | [ ]       |

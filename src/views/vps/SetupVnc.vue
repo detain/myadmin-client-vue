@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
@@ -27,7 +26,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/vps/' + id.value + '/setup_vnc', {
+            .post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/setup_vnc', {
                 ip: myip.value,
             })
             .then((response) => {

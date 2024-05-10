@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
@@ -26,7 +25,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/vps/' + id.value + '/change_timezone', {
+            .post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/change_timezone', {
                 timezone: timezone.value,
             })
             .then((response) => {
@@ -49,7 +48,7 @@ function submitForm() {
     }
 }
 
-fetchWrapper.get(baseUrl + '/vps/' + id.value + '/change_timezone').then((response) => {
+fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/change_timezone').then((response) => {
     console.log('Response:');
     console.log(response);
     zones.value = response;

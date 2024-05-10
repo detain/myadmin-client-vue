@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
@@ -32,9 +31,6 @@ const osDistro = ref('');
 const osVersion = ref('');
 const checkVpsPassword = ref(true);
 const checkAccountPassword = ref(true);
-const formAction = computed(() => {
-    return `${module.value === 'vps' ? 'view_vps' : 'view_qs'}?id=${id.value}&link=reinstall_os`;
-});
 const osDistroSelect = computed(() => {
     const distros: Distros = {};
     for (let idx in vpsTemplates.value) {
@@ -117,7 +113,7 @@ function submitForm() {
             password: checkVpsPassword.value,
             loginPassword: checkAccountPassword.value
         };
-        fetchWrapper.post(baseUrl + '/vps/' + id.value + '/reinstall_os', postData).then((response: any) => {
+        fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reinstall_os', postData).then((response: any) => {
             console.log('api success');
             console.log(response);
             Swal.fire({
@@ -140,7 +136,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
+    fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (let idx in vpsTemplates.value) {
@@ -193,7 +189,7 @@ try {
                         <div v-if="successMsg" class="alert alert-success">
                             {{ successMsg }} <span v-if="cancelQueue">{{ cancelQueue }}</span>
                         </div>
-                        <form @submit.prevent="submitForm" :action="formAction" class="reinstall_os">
+                        <form @submit.prevent="submitForm" class="reinstall_os">
                             <input type="hidden" name="link" value="reinstall_os" />
 
                             <div class="form-group">

@@ -1,27 +1,50 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import { moduleLink } from '@/helpers/moduleLink.ts';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store.ts';
+import Swal from 'sweetalert2';
 
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
-
+const baseUrl = siteStore.getBaseUrl();
 const action = ref('');
+const id = computed(() => {
+    return props.id;
+});
 const module = computed(() => {
     return props.module;
 });
-//const id = ref('');
+const url = ref('');
 const goBackLink = ref('');
 const protocols = ref('https');
 const links = ref(['https://templates.is.cc/knoppix/KNOPPIX_V9.1CD-2021-01-25-EN.iso', 'https://templates.is.cc/systemrescuecd/systemrescue-7.01-amd64.iso']);
 function submitForm() {
-    // Perform logic for form submission
+    // Handle form submission
+    try {
+        let postData = {
+            url: url.value
+        };
+        fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/insert_cd', postData).then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        });
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: 'Got error ' + error.message,
+        });
+    }
 }
 </script>
 
@@ -72,7 +95,7 @@ function submitForm() {
                                     <label for="slices" class="col-form-label">Enter URL</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" name="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL" />
+                                    <input type="text" name="url" v-model="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL" />
                                 </div>
                             </div>
                         </div>
