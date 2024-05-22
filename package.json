@@ -46,7 +46,6 @@
         "@unhead/vue": "*",
         "@vueuse/core": "*",
         "admin-lte": "*",
-	"summernote": "summernote/summernote#develop",
         "autoprefixer": "^10.4.14",
         "axios": "*",
         "bootstrap": "^4.6",
