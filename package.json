@@ -72,7 +72,7 @@
         "tempusdominus-bootstrap-4": "*",
         "toastr": "^2.1.4",
         "vee-validate": "*",
-        "vue-recaptcha": "^3.0.0-alpha.2",
+        "vue-recaptcha": "^3.0.0-alpha.6",
         "vue-router": "*",
         "word-wrap": ">=1.2.4",
         "yaml": "^2.3",
