@@ -134,7 +134,7 @@
         "vite-plugin-inspect": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
-        "vue": "*",
+        "vue": "~3.4.38",
         "vue-eslint-parser": "*",
         "vue-i18n": "*",
         "vue-tsc": "*",
