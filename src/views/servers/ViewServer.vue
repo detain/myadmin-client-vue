@@ -279,7 +279,7 @@ const ipv6VlansNetworks = computed(() => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(asset, asset_id, index) in assets" :key="index">
+                            <tr v-for="(asset, asset_id) in assets" :key="asset_id">
                                 <td>{{ asset.id }}</td>
                                 <td>{{ asset.hostname }}</td>
                                 <td>{{ asset.primary_ipv4 }}</td>
@@ -339,11 +339,11 @@ const ipv6VlansNetworks = computed(() => {
                             </tr>
                         </thead>
                         <tbody>
-                            <template v-for="(switchport, switchport_id, switchport_index) in switchports" :key="switchport_id">
+                            <template v-for="(switchport, switchport_id) in switchports" :key="switchport_id">
                                 <tr v-for="vlan_id in switchport.vlans" :key="vlan_id">
                                     <td>{{ vlans[vlan_id].network }}</td>
                                     <td>{{ vlans[vlan_id].first_usable }}</td>
-                                    <template v-if="switchport_index === 0">
+                                    <template v-if="Object.keys(switchports)[0] === String(switchport_id)">
                                         <td :rowspan="switchport.vlans.length" v-bind:class="{ 'vertical-align': switchport.vlans.length > 1 }">
                                             <template v-if="networkInfo.vlans6 && networkInfo.vlans6.length > 0">
                                                 <template v-for="(ipv6, ipv6_index) in networkInfo.vlans6" :key="ipv6_index">

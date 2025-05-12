@@ -300,9 +300,9 @@ function login_handler() {
                 console.log(html.substring(0, 8) + ' got ' + html);
                 if (html.substring(0, 4) == 'true') {
                     if (html.length == 4) {
-                        window.location = 'index.php' as unknown as Location;
+                        window.location.href = 'index.php';
                     } else {
-                        window.location = html.substring(4);
+                        window.location.href = html.substring(4);
                     }
                 } else if (html.substring(0, 8) == '2fa_auth') {
                     $('.loginsubmit, .signupsubmit').removeAttr('disabled');
@@ -449,9 +449,9 @@ function signup_handler() {
                     Swal.close();
                     if (html.substring(0, 4) == 'true') {
                         if (html.length == 4) {
-                            window.location = 'index.php' as unknown as Location;
+                            window.location.href = 'index.php';
                         } else {
-                            window.location = html.substring(4);
+                            window.location.href = html.substring(4);
                         }
                     } else if (html.substring(0, 6) == 'verify') {
                         $('.loginsubmit, .signupsubmit').removeAttr('disabled');

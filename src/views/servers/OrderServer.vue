@@ -117,14 +117,14 @@ interface FieldLabel {
 }
 
 interface ConfigLi extends SimpleStringObj {
-    cpu_li: CpuLi;
-    memory_li: MemoryLi;
-    hd_li: HdLi;
-    bandwidth_li: BandwidthLi;
-    ips_li: IpsLi;
-    os_li: OsLi;
-    cp_li: CpLi;
-    raid_li: RaidLi;
+    cpu_li: Record<string, CpuRow>;
+    memory_li: Record<string, Record<string, MemoryRow>>;
+    hd_li: Record<string, Record<string, HdRow>>;
+    bandwidth_li: Record<string, BandwidthRow>;
+    ips_li: Record<string, IpsRow>;
+    os_li: Record<string, OsRow>;
+    cp_li: Record<string, CpRow>;
+    raid_li: Record<string, RaidRow>;
 }
 
 interface CpuLi extends SimpleStringObj {
@@ -469,10 +469,10 @@ serverOrderRequest(false);
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
-                                                <template v-for="(details, id, detIndex) in inputDetails[cpu.toString()]" :key="detIndex">
+                                                <template v-for="(details, id) in inputDetails[cpu.toString()]" :key="id">
                                                     <div class="icheck-success d-inline w-100">
                                                         <input v-if="inputName === 'memory_li'" :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
-                                                        <label v-if="detIndex === 0 && inputName === 'hd_li'" class="font-weight-normal w-100">
+                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
                                                                     <table class="table-sm table-bordered table">
@@ -496,7 +496,7 @@ serverOrderRequest(false);
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="detIndex !== 0 || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">

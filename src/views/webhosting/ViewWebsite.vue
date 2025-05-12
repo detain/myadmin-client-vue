@@ -89,7 +89,7 @@ function loadLink(newLink: string) {
                     console.log('response:');
                     console.log(response);
                     if (typeof response.location != 'undefined') {
-                        window.location = response.location;
+                        window.location.href = response.location;
                     }
                 });
             } catch (error: any) {
