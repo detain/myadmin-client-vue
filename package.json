@@ -128,7 +128,7 @@
         "tailwindcss": "*",
         "terser": "*",
         "typescript": "*",
-        "vite": "*",
+        "vite": "^6.3",
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-inspect": "*",
