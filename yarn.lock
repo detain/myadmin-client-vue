@@ -1212,13 +1212,6 @@
   dependencies:
     nodemon "*"
 
-"@types/overlayscrollbars@*":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/overlayscrollbars/-/overlayscrollbars-2.0.0.tgz#c3b3172992c95dc2ba3b5d9ec512fb0a84f35c8a"
-  integrity sha512-cnBrkBveho2YavKPfeeFjkId4yXQAqiY4Wt7fPVoioied0tPscjl3w2YNSn684ho7H2gUJoYo+M/+a7EQuZ4pw==
-  dependencies:
-    overlayscrollbars "*"
-
 "@types/select2@*":
   version "4.0.63"
   resolved "https://registry.yarnpkg.com/@types/select2/-/select2-4.0.63.tgz#6aafe9bf596fc99aff749afe6b0bb6c31aeec2ce"
@@ -5064,7 +5057,7 @@ overlayscrollbars@*:
   resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-2.13.0.tgz#3e8d8c6c4123fe4b820bf36a8e0084056d0a76ae"
   integrity sha512-uQGpLESrbFDLTWucWAKX9ceIANj7detMwH/2yJ315Llt72ZcWN3P6ckMotoqVv2Mk29R/pnhDtgYjy4K+kwAyQ==
 
-overlayscrollbars@^1.0, overlayscrollbars@^1.13.1:
+overlayscrollbars@^1.13.1:
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-1.13.3.tgz#992c96fd2c8535802d1e56c40bc12ec03076c626"
   integrity sha512-1nB/B5kaakJuHXaLXLRK0bUIilWhUGT6q5g+l2s5vqYdLle/sd0kscBHkQC1kuuDg9p9WR4MTdySDOPbeL/86g==
