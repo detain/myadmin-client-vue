@@ -93,7 +93,6 @@
         "@types/jsdom": "*",
         "@types/node": "*",
         "@types/nodemon": "*",
-        "@types/overlayscrollbars": "*",
         "@types/select2": "*",
         "@types/tablesorter": "*",
         "@types/toastr": "*",
