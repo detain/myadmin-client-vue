@@ -43,7 +43,7 @@
         "@material-design-icons/font": "*",
         "@sweetalert2/theme-bootstrap-4": "*",
         "@ttskch/select2-bootstrap4-theme": "^1.5.2",
-        "@unhead/vue": "*",
+        "@unhead/vue": "^1.8",
         "@vueuse/core": "*",
         "admin-lte": "*",
         "autoprefixer": "^10.4.14",
@@ -137,7 +137,7 @@
         "vue": "~3.4.38",
         "vue-eslint-parser": "*",
         "vue-i18n": "*",
-        "vue-tsc": "*",
+        "vue-tsc": "^2.2",
         "wait-on": "*"
     },
     "resolutions": {
