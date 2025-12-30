@@ -26,6 +26,8 @@
         "coverage": "vitest run --coverage"
     },
     "dependencies": {
+    },
+    "devDependencies": {
         "@fortawesome/fontawesome": "*",
         "@fortawesome/fontawesome-free": "^5.15",
         "@fortawesome/fontawesome-free-brands": "*",
@@ -72,9 +74,7 @@
         "vue-router": "*",
         "word-wrap": ">=1.2.4",
         "yaml": "^2.3",
-        "yup": "*"
-    },
-    "devDependencies": {
+        "yup": "*",
         "@commitlint/cli": "*",
         "@commitlint/config-conventional": "*",
         "@rollup/plugin-inject": "*",
@@ -104,7 +104,6 @@
         "@vue/eslint-config-typescript": "*",
         "@vue/test-utils": "*",
         "@vue/tsconfig": "*",
-        "autoprefixer": "*",
         "concurrently": "*",
         "cross-env": "*",
         "eslint": "*",
@@ -117,10 +116,8 @@
         "minimatch": "*",
         "nodemon": "*",
         "npm-run-all": "*",
-        "postcss": "*",
         "prettier": "*",
         "prettier-plugin-tailwindcss": "*",
-        "tailwindcss": "*",
         "terser": "*",
         "typescript": "*",
         "vite": "*",
