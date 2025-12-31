@@ -1,6 +1,6 @@
 .marketing-content {
   font-family: "Bebas Neue", cursive;
-  background: url("/images/main.jpg");
+  background: url("../images/main.jpg");
 }
 .alert {
   padding: 15px;

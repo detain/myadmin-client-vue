@@ -16,7 +16,7 @@
     },
     "servers": [
         {
-            "url": "https://mystage.interserver.net",
+            "url": "https://my.interserver.net",
             "description": "Development API Endpoint"
         },
         {
@@ -67,7 +67,7 @@
                                 "examples": {
                                     "LoginInfoExample": {
                                         "value": {
-                                            "logo": "//mystage.interserver.net/images/logos/mystaging.png",
+                                            "logo": "//my.interserver.net/images/logos/mystaging.png",
                                             "captcha": "data:image/jpeg;base64,/9j/",
                                             "language": "en-US",
                                             "counts": {
@@ -8535,7 +8535,7 @@
                     "logo": {
                         "description": "A logo image url.",
                         "type": "string",
-                        "example": "//mystage.interserver.net/images/logos/mystaging.png"
+                        "example": "//my.interserver.net/images/logos/mystaging.png"
                     },
                     "captcha": {
                         "description": "A base64 encoded image to use for rendering the alternateive captcha.",
@@ -8554,7 +8554,7 @@
                     }
                 },
                 "example": {
-                    "logo": "//mystage.interserver.net/images/logos/mystaging.png",
+                    "logo": "//my.interserver.net/images/logos/mystaging.png",
                     "captcha": "data:image/jpeg;base64,/9j/",
                     "language": "en-US",
                     "counts": {
