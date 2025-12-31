@@ -33,7 +33,7 @@ jobs:
       - run: yarn build
 
       - name: Read version
-        run: echo "APP_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
       - name: Zip dist for dev
         run: zip -r my-interserver-client-web-dev-master.zip dist
@@ -131,7 +131,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Read app version
-        run: echo "APP_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
       - name: Install Linux deps
         if: matrix.platform == 'linux'
