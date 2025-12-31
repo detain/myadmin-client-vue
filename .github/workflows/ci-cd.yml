@@ -51,9 +51,8 @@ jobs:
           zip -r my-interserver-client-web-${VERSION}.zip dist
           gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
 
-      - name: Fetch all branches
-        run: |
-          git fetch origin +refs/heads/*:refs/remotes/origin/*
+      - name: Fetch full history
+        run: git fetch --unshallow origin
 
       - name: Merge master into electron
         uses: devops-infra/action-pull-request@v1
