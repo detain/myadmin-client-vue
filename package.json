@@ -152,6 +152,7 @@
   "stackblitz": {
     "startCommand": "npm run test"
   },
+  "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=20.0.0",
     "yarn": ">= 1.0.0"
