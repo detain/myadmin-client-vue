@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth.store';
 import { useAlertStore } from '../stores/alert.store';
 
@@ -77,7 +77,7 @@ import OrderWebsite from '../views/webhosting/OrderWebsite.vue';
 */
 
 export const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: [
         { path: '/', component: ClientHome },
         { path: '/login', component: Login },

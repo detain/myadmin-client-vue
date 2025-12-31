@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Electron</title>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="
+            default-src 'self';
+
+            script-src
+            'self'
+            'unsafe-inline'
+            https://www.paypal.com
+            https://www.paypalobjects.com
+            https://www.googletagmanager.com
+            https://www.google-analytics.com
+            https://*.consumptionjunction.com
+            https://embed.tawk.to
+            https://challenges.cloudflare.com
+            https://kit.fontawesome.com;
+
+            connect-src
+            'self'
+            https://my.interserver.net
+            https://www.paypal.com
+            https://api.paypal.com
+            https://www.google-analytics.com
+            https://*.consumptionjunction.com
+            https://embed.tawk.to
+            https://challenges.cloudflare.com
+            https://ka-f.fontawesome.com;
+
+            frame-src
+            https://www.paypal.com
+            https://challenges.cloudflare.com
+            https://embed.tawk.to;
+
+            style-src
+            'self'
+            'unsafe-inline'
+            https://fonts.googleapis.com;
+
+            font-src
+            'self'
+            data:
+            https://fonts.gstatic.com
+            https://ka-f.fontawesome.com;
+
+            img-src
+            'self'
+            data:
+            https://www.paypalobjects.com
+            https://my.interserver.net
+            https://avatars3.githubusercontent.com
+            https://www.google-analytics.com
+            https://stats.g.doubleclick.net
+            https://*.consumptionjunction.com;
+
+            base-uri 'self';
+            form-action 'self' https://www.paypal.com;
+            "
+            />
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

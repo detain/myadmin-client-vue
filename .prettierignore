@@ -1,8 +1,11 @@
-coverage/
-dist/
-__snapshots__/
+out
+dist
 pnpm-lock.yaml
-*.md
+LICENSE.md
+tsconfig.json
+tsconfig.*.json
+coverage/
+__snapshots__/
 .yarn/releases/
 public/css/*.min.css
 src/assets/openapi/openapi.*
