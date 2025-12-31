@@ -18,7 +18,7 @@ asarUnpack:
 
 npmRebuild: false
 
-# ---------------- WINDOWS ----------------
+# Windows
 win:
   executableName: my-interserver-client
   target:
@@ -34,7 +34,7 @@ nsis:
 portable:
   artifactName: ${name}-${version}-portable-${arch}.exe
 
-# ---------------- macOS ----------------
+# macOS
 mac:
   hardenedRuntime: true
   entitlements: build/entitlements.mac.plist
@@ -47,7 +47,7 @@ mac:
 dmg:
   artifactName: ${name}-${version}-${arch}.${ext}
 
-# ---------------- LINUX ----------------
+# Linux
 linux:
   category: Utility
   maintainer: InterServer
@@ -65,7 +65,7 @@ deb:
 snap:
   artifactName: ${name}-${version}-${arch}.${ext}
 
-# ---------------- AUTO UPDATE ----------------
+# Auto-update
 publish:
   provider: generic
   url: https://example.com/auto-updates
