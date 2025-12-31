@@ -1,0 +1,136 @@
+name: Electron Build & Release
+
+on:
+  push:
+    # branches: ["**"]
+    branches:
+      - electron   # only runs on push to the electron branch
+    # tags: ["v*"]
+    tags:
+      - "v*"      # still allows releases on tags
+  pull_request:
+    branches:
+      - electron   # only runs PRs targeting the electron branch
+
+jobs:
+  build:
+    name: ${{ matrix.platform }}-${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux
+          - os: ubuntu-latest
+            platform: linux
+            arch: x64
+            build_args: --linux AppImage snap deb --x64
+
+          - os: ubuntu-latest
+            platform: linux
+            arch: arm64
+            build_args: --linux AppImage snap deb --arm64
+
+          # Windows
+          - os: windows-latest
+            platform: win
+            arch: x64
+            build_args: --win nsis portable --x64
+
+          - os: windows-latest
+            platform: win
+            arch: arm64
+            build_args: --win nsis portable --arm64
+
+          # macOS
+          - os: macos-latest
+            platform: mac
+            arch: universal
+            build_args: --mac dmg pkg
+
+    env:
+      ELECTRON_CACHE: ~/.cache/electron
+      ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
+
+      # Signing / notarization (only used on non-PR builds)
+      CSC_LINK: ${{ secrets.CSC_LINK }}
+      CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+      WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+      WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+      APPLE_ID: ${{ secrets.APPLE_ID }}
+      APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - run: corepack enable
+
+      - name: Restore Electron cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/electron
+            ~/.cache/electron-builder
+          key: electron-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Read version
+        run: echo "APP_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Linux system deps
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools snapcraft rpm
+
+      - name: Disable signing on PRs
+        if: github.event_name == 'pull_request'
+        run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
+
+      - name: Build Electron app
+        run: npx electron-builder ${{ matrix.build_args }}
+
+      # ---------------- ZIP UNPACKED ----------------
+
+      - name: Zip unpacked (Linux)
+        if: matrix.platform == 'linux'
+        run: |
+          cd dist
+          zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+
+      - name: Zip unpacked (Windows)
+        if: matrix.platform == 'win'
+        shell: pwsh
+        run: |
+          cd dist
+          Compress-Archive win-unpacked my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip
+
+      # ---------------- CHECKSUMS ----------------
+
+      - name: Generate SHA256 checksums
+        run: |
+          cd dist
+          if command -v sha256sum >/dev/null; then
+            sha256sum * > SHA256SUMS.txt
+          else
+            certutil -hashfile * SHA256 > SHA256SUMS.txt
+          fi
+
+      # ---------------- UPLOAD ----------------
+
+      - name: Upload artifacts
+        if: github.ref == 'refs/heads/electron' || startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform }}-${{ matrix.arch }}
+          path: |
+            dist/**
