@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useWebsiteStore } from '@/stores/website.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useWebsiteStore } from '../../stores/website.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import BuyIp from '@/views/webhosting/BuyIp.vue';
-import DownloadBackups from '@/views/webhosting/DownloadBackups.vue';
-import Migration from '@/views/webhosting/Migration.vue';
-import ReverseDns from '@/views/webhosting/ReverseDns.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import BuyIp from '../../views/webhosting/BuyIp.vue';
+import DownloadBackups from '../../views/webhosting/DownloadBackups.vue';
+import Migration from '../../views/webhosting/Migration.vue';
+import ReverseDns from '../../views/webhosting/ReverseDns.vue';
 
 import Swal from 'sweetalert2';
 
@@ -222,10 +222,13 @@ loadLink(route.params.link as string);
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table-bordered table">
+                            <thead>
                                 <tr>
                                     <th>Types:</th>
                                     <th>Links:</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <template v-if="extraInfoTables.links && extraInfoTables.links.rows.length > 0 && extraInfoTables.links.rows[0].value">
                                     <tr>
                                         <td>Manual Login</td>
@@ -236,6 +239,7 @@ loadLink(route.params.link as string);
                                     <td>Automatic Login</td>
                                     <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
                                 </tr>
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -256,14 +260,18 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body" style="height: 270px">
                     <table class="table-bordered table">
+                    <thead>
                         <tr>
                             <th>Nameservers:</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <template v-if="extraInfoTables.dns && extraInfoTables.dns.rows">
                             <tr v-for="(nameserver, idx) in extraInfoTables.dns.rows" :key="idx">
                                 <td>{{ nameserver.desc }}</td>
                             </tr>
                         </template>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -282,10 +290,13 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body" style="height: 270px">
                     <table class="table-bordered table">
+                    <thead>
                         <tr>
                             <th>Names:</th>
                             <th>Links:</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <template v-for="(link, index) in extraInfoTables.links.rows">
                             <tr :key="index" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
                                 <td>{{ link.desc }}</td>
@@ -296,6 +307,7 @@ loadLink(route.params.link as string);
                             <td>Website Preview</td>
                             <td><a :href="extraInfoTables.preview.rows[0]?.value" target="__blank" class="link">Click Here</a></td>
                         </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -332,10 +344,12 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body">
                     <table class="table-bordered table">
+                    <tbody>
                         <tr v-for="addon in extraInfoTables.addons.rows" :key="addon.id">
                             <td>{{ addon.desc }}</td>
                             <td>{{ addon.value }}</td>
                         </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -344,5 +358,5 @@ loadLink(route.params.link as string);
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

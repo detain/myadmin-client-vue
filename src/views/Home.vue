@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import MainMenu from '@/components/MainMenu.vue';
+import MainMenu from '../components/MainMenu.vue';
 
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAuthStore } from '../stores/auth.store';
+import { useSiteStore } from '../stores/site.store';
 
-import ClientHome from '@/views/ClientHome.vue';
+import ClientHome from '../views/ClientHome.vue';
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -41,7 +41,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <!-- Main Sidebar Container -->
             <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link">
                 <!-- Brand Logo -->
-                <img src="/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
+                <img src="../assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">InterServer</span>
             </a>
             <div class="sidebar">

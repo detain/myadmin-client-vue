@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 const props = defineProps(['id', 'module']);
 const successMsg = ref('');
@@ -35,9 +35,10 @@ const novncLink = ref('');
                 </div>
                 <div class="p-3">
                     <table class="table-sm table-bordered table">
+                    <tbody>
                         <tr>
                             <td style="text-align: center; width: 20%">
-                                <img style="height: 150px" alt="Remote Desktop Icon" src="/images/vps/remote_desktop.jpg" />
+                                <img style="height: 150px" alt="Remote Desktop Icon" src="../../assets/images/vps/remote_desktop.jpg" />
                             </td>
                             <td class="p-3">
                                 <p>Available <b>only</b> on the <b>Windows Platform</b>. Remote desktop is a quick and convenient way to connect to a virtual machine's desktop.</p>
@@ -48,6 +49,7 @@ const novncLink = ref('');
                                 <strong>NOTE:</strong> For a remote desktop tutorial click <a href="//interserver.net/resolve/Knowledgebase/Article/View/192/28/how-to-remote-desktop-to-vps" target="_blank"><span class="link text-bold">here</span>.</a><br />
                             </td>
                         </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -63,6 +65,7 @@ const novncLink = ref('');
                 </div>
                 <div class="card-body p-3">
                     <table class="table-sm table-bordered mb-0 table">
+                    <tbody>
                         <tr>
                             <td>
                                 <img style="height: 150px" alt="VNC Icon" src="//upload.wikimedia.org/wikipedia/en/thumb/5/51/Virtual_Network_Computing_%28logo%29.svg/1168px-Virtual_Network_Computing_%28logo%29.svg.png" />
@@ -75,6 +78,7 @@ const novncLink = ref('');
                                 </ul>
                             </td>
                         </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -90,12 +94,14 @@ const novncLink = ref('');
                 </div>
                 <div class="d-flex p-3">
                     <table style="width: 15%" class="table-sm table-bordered mb-0 table">
+                    <tbody>
                         <tr>
                             <td style="width: 100px; vertical-align: middle">
                                 <img v-if="vpsScreenshot" style="height: 100px" :src="vpsScreenshot" alt="VPS Screenshot" />
                                 <img alt="" v-else style="height: 100px" src="//i.ytimg.com/vi/B-3yfcIiLZc/maxresdefault.jpg" />
                             </td>
                         </tr>
+                    </tbody>
                     </table>
                     <div style="width: 85%; border: 1px solid #dee2e6">
                         <div class="p-2" style="border: 1px solid #dee2e6">

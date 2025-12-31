@@ -1,6 +1,6 @@
-import TicketsList from '@/views/tickets/TicketsList.vue';
-import ViewTicket from '@/views/tickets/ViewTicket.vue';
-import NewTicket from '@/views/tickets/NewTicket.vue';
+import TicketsList from '../views/tickets/TicketsList.vue';
+import ViewTicket from '../views/tickets/ViewTicket.vue';
+import NewTicket from '../views/tickets/NewTicket.vue';
 
 export default {
     path: '/tickets',

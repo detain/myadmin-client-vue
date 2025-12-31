@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useInvoicesStore } from '@/stores/invoices.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useInvoicesStore } from '../../stores/invoices.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import { ref, computed, onMounted } from 'vue';
 const siteStore = useSiteStore();
@@ -49,7 +49,7 @@ invoicesStore.getAll();
                                         <div class="input-group">
                                             <select v-model="year" class="select2 form-control form-control-sm" @change="submitForm">
                                                 <option value="">All</option>
-                                                <option v-for="(text, val) in years_arr" :key="val" :value="val" :selected="year === val">{{ text }}</option>
+                                                <option v-for="(text, val) in years_arr" :key="val" :value="val" :selected="year === Number(val)">{{ text }}</option>
                                             </select>
                                         </div>
                                     </div>

@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../../stores/site.store';
 
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../../helpers/fetchWrapper';
 
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Latest Web Traffic');
@@ -55,7 +55,10 @@ try {
                 </template>
                 <template v-else>
                     <table class="table table-sm table-hover table-striped table-bordered">
+                    <thead>
                     <tr><th>Date</th><th>IP</th><th>URL</th></tr>
+                    </thead>
+                    <tbody>
                     <template v-for="(row, index) in traffic" :key="index">
                         <tr>
                             <td>{{row.traffic_timestamp}}</td>
@@ -71,6 +74,7 @@ try {
                             </tr>
                         </template>
                     </template>
+                    </tbody>
                     </table>
                 </template>
                 </div>

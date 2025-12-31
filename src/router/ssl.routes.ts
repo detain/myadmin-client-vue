@@ -1,6 +1,6 @@
-import SslList from '@/views/ssl/SslList.vue';
-import ViewSsl from '@/views/ssl/ViewSsl.vue';
-import OrderSsl from '@/views/ssl/OrderSsl.vue';
+import SslList from '../views/ssl/SslList.vue';
+import ViewSsl from '../views/ssl/ViewSsl.vue';
+import OrderSsl from '../views/ssl/OrderSsl.vue';
 
 export default {
     path: '/ssl',

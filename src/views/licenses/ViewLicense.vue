@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useLicenseStore } from '@/stores/license.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useLicenseStore } from '../../stores/license.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import ChangeIp from '@/views/licenses/ChangeIp.vue';
-import ChangeOs from '@/views/licenses/ChangeOs.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import ChangeIp from '../../views/licenses/ChangeIp.vue';
+import ChangeOs from '../../views/licenses/ChangeOs.vue';
 
 
 const module = 'licenses';
@@ -256,10 +256,12 @@ licenseStore.getById(id as string);
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
+                        <tbody>
                             <tr v-for="(value, key) in extraInfoTables.cpanel.rows" :key="key">
                                 <td>{{ value.desc }}</td>
                                 <td class="text-success">{{ value.value }}</td>
                             </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -283,9 +285,11 @@ licenseStore.getById(id as string);
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
+                        <tbody>
                             <tr>
                                 <td>{{ extraInfoTables.note.rows[0].value }}</td>
                             </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -295,5 +299,5 @@ licenseStore.getById(id as string);
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

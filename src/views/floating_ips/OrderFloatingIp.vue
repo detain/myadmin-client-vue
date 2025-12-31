@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
 
 import Swal from 'sweetalert2';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 import { useRoute, useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
@@ -155,7 +155,7 @@ try {
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" v-model="coupon" @input="updateCoupon()" placeholder="Coupon Code" />
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://mystage.interserver.net/validate_coupon.php?module=vps" id="couponimg" height="20" width="20" alt="" /></span>
+                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps" id="couponimg" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -253,7 +253,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://mystage.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">

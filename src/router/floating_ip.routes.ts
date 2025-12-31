@@ -1,6 +1,6 @@
-import FloatingIpsList from '@/views/floating_ips/FloatingIpsList.vue';
-import ViewFloatingIp from '@/views/floating_ips/ViewFloatingIp.vue';
-import OrderFloatingIp from '@/views/floating_ips/OrderFloatingIp.vue';
+import FloatingIpsList from '../views/floating_ips/FloatingIpsList.vue';
+import ViewFloatingIp from '../views/floating_ips/ViewFloatingIp.vue';
+import OrderFloatingIp from '../views/floating_ips/OrderFloatingIp.vue';
 
 export default {
     path: '/floating_ips',

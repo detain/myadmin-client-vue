@@ -1,5 +1,5 @@
-import DnsManager from '@/views/dns/DnsManager.vue';
-import DnsEditor from '@/views/dns/DnsEditor.vue';
+import DnsManager from '../views/dns/DnsManager.vue';
+import DnsEditor from '../views/dns/DnsEditor.vue';
 
 export default {
     path: '/dns',

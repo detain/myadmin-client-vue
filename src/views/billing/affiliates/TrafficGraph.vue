@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../../stores/site.store';
 
 import Chart from 'chart.js/auto';
 const siteStore = useSiteStore();

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 const props = defineProps(['id', 'module', 'settings', 'backupsTable']);
 const successMsg = ref('');

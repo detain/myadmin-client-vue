@@ -3,10 +3,10 @@ import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAuthStore } from '../stores/auth.store';
+import { useSiteStore } from '../stores/site.store';
 
-import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
+//import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -496,28 +496,28 @@ function signup_handler() {
     return false;
 }
 
-useRecaptchaProvider();
+//useRecaptchaProvider();
 authStore.load();
 </script>
 
 <template>
-    <div class="bg-black p-3 px-3"><img src="/images/logo_new.png" alt="" /></div>
+    <div class="bg-black p-3 px-3"><img src="../assets/images/logo_new.png" alt="" /></div>
     <div class="container-main flex min-h-screen flex-grow flex-col-reverse lg:flex-row">
         <div class="marketing-content min-h-full w-full bg-blue-700 lg:block lg:w-5/12">
             <h1 class="mt-5 w-full text-center text-3xl uppercase tracking-widest text-white">Welcome back to our growing Community</h1>
             <div class="mt-24 flex">
                 <div class="mx-auto">
-                    <div class="mb-1"><img src="/images/vps.png" alt="" /></div>
+                    <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
                     <div class="text-center text-4xl tracking-widest text-white" id="count-v">{{ counts.vps }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">VPS</div>
                 </div>
                 <div class="mx-auto">
-                    <div class="mb-1"><img src="/images/website.png" alt="" /></div>
+                    <div class="mb-1"><img src="../assets/images/website.png" alt="" /></div>
                     <div class="text-center text-4xl tracking-widest text-white" id="count-w">{{ counts.websites }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Websites</div>
                 </div>
                 <div class="mx-auto">
-                    <div class="mb-1"><img src="/images/servers.png" alt="" /></div>
+                    <div class="mb-1"><img src="../assets/images/servers.png" alt="" /></div>
                     <div class="text-center text-4xl tracking-widest text-white" id="count-s">{{ counts.servers }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Servers</div>
                 </div>
@@ -955,17 +955,17 @@ authStore.load();
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
-/* @import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
-@import '/css/fontawesome-kit.min.css';	
+/* @import '../assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
+@import '../assets/css/fontawesome-kit.min.css';	
 @import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
-@import '/css/tailwind.min.css';
-@import '/css/login_new.css';
+@import '../assets/css/tailwind.min.css';
+@import '../assets/css/login_new.css';
 body {
     height: 100vh;
 }
 .marketing-content {
     font-family: 'Bebas Neue', cursive;
-    background: url('/images/main.jpg');
+    background: url('../assets/images/main.jpg');
 }
 .alert {
     padding: 15px;

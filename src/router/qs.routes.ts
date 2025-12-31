@@ -1,6 +1,6 @@
-import QsList from '@/views/quickservers/QsList.vue';
-import ViewQs from '@/views/quickservers/ViewQs.vue';
-import OrderQs from '@/views/quickservers/OrderQs.vue';
+import QsList from '../views/quickservers/QsList.vue';
+import ViewQs from '../views/quickservers/ViewQs.vue';
+import OrderQs from '../views/quickservers/OrderQs.vue';
 
 export default {
     path: '/qs',

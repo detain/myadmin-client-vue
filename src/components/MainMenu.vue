@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../stores/site.store';
 
 
 const siteStore = useSiteStore();

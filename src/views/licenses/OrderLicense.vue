@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { moduleLink } from '../../helpers/moduleLink';
 
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');

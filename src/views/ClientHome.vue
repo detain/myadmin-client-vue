@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted } from 'vue';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../helpers/fetchWrapper';
+import { moduleLink } from '../helpers/moduleLink';
 
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
-import { useAccountStore } from '@/stores/account.store.ts';
+import { useAuthStore } from '../stores/auth.store';
+import { useSiteStore } from '../stores/site.store';
+import { useAccountStore } from '../stores/account.store';
 
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
@@ -285,10 +285,10 @@ accountStore.load();
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
-                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
-                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
-                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
-                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(affiliateUrl) + '&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Pin it"><img class="social" alt="Pin it" src="/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="../assets/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
+                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="../assets/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="../assets/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
+                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(affiliateUrl) + '&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Pin it"><img class="social" alt="Pin it" src="../assets/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -301,6 +301,6 @@ accountStore.load();
 </template>
 
 <style scoped>
-/* @import '/css/home_new.css';
-@import '/css/home.css'; */
+/* @import '../assets/css/home_new.css';
+@import '../assets/css/home.css'; */
 </style>

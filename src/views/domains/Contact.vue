@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
 
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
-import { ServiceType, ServiceTypes } from '@/types/view-service-common';
-import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '@/types/domains';
+import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '../../types/domains';
 const props = defineProps(['id']);
 const successMsg = ref('');
 const cancelQueue = ref('');

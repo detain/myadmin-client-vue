@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
 
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useAccountStore } from '@/stores/account.store.ts';
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useAlertStore } from '@/stores/alert.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '../../stores/account.store';
+import { useAuthStore } from '../../stores/auth.store';
+import { useAlertStore } from '../../stores/alert.store';
+import { useSiteStore } from '../../stores/site.store';
 
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();

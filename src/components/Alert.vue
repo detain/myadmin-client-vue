@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import { useAlertStore } from '@/stores/alert.store.ts';
+import { useAlertStore } from '../stores/alert.store';
 
 
 const alertStore = useAlertStore();

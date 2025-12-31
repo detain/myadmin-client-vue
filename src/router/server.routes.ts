@@ -1,6 +1,6 @@
-import ServersList from '@/views/servers/ServersList.vue';
-import ViewServer from '@/views/servers/ViewServer.vue';
-import OrderServer from '@/views/servers/OrderServer.vue';
+import ServersList from '../views/servers/ServersList.vue';
+import ViewServer from '../views/servers/ViewServer.vue';
+import OrderServer from '../views/servers/OrderServer.vue';
 
 export default {
     path: '/servers',

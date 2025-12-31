@@ -1,5 +1,5 @@
-import List from '@/views/users/List.vue';
-import AddEdit from '@/views/users/AddEdit.vue';
+import List from '../views/users/List.vue';
+import AddEdit from '../views/users/AddEdit.vue';
 
 export default {
     path: '/users',

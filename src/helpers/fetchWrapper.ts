@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/stores/auth.store.ts';
+import { useAuthStore } from '../stores/auth.store';
 
 
 export const fetchWrapper = {

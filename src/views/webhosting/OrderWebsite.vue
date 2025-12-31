@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
 
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
-import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
@@ -216,7 +216,7 @@ fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
                                         <div class="card-body row">
                                             <template v-for="(serviceData, servicesId) in serviceTypes" :key="servicesId">
                                                 <template v-if="serviceData.services_buyable == 1 && serviceData.services_hidden == 0 && (serviceData.services_field1 === '' || serviceData.services_field1 === 'webhosting')">
-                                                    <div class="card mx-1" :style="{ width: '48%', border: servicesId === 11363 ? '4px solid #007bff' : '' }">
+                                                    <div class="card mx-1" :style="{ width: '48%', border: Number(servicesId) === 11363 ? '4px solid #007bff' : '' }">
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">

@@ -2,11 +2,11 @@
 import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import MainMenu from '@/components/MainMenu.vue';
-import Alert from '@/components/Alert.vue';
+import MainMenu from './components/MainMenu.vue';
+import Alert from './components/Alert.vue';
 
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAuthStore } from './stores/auth.store';
+import { useSiteStore } from './stores/site.store';
 
 import $ from 'jquery';
 //import 'jquery-ui';
@@ -113,7 +113,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
             <!-- Main Sidebar Container -->
             <router-link to="/" class="brand-link">
                 <!-- Brand Logo -->
-                <img src="/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
+                <img src="./assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">InterServer</span>
             </router-link>
             <div class="sidebar">
@@ -176,24 +176,24 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 </template>
 
 <style>
-@import '/css/fontawesome-kit.min.css';	
+@import './assets/css/fontawesome-kit.min.css';
 /* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
 /* '/css/misha-theme/jquery-ui.css'; */
-@import '/css/jquery.custom.css';
-@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '/templates/menu/dark/menu.css';
-@import '/css/hide_printed_links.css';
-@import '/images/myadmin/css/styles.css';
-@import '/node_modules/icheck-bootstrap/icheck-bootstrap.min.css';
-@import '/node_modules/select2/dist/css/select2.min.css';
-@import '/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css';
-@import '/node_modules/jqvmap-novulnerability/dist/jqvmap.min.css';
-@import '/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css';
-@import '/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
+@import './assets/css/jquery.custom.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './assets/templates/menu/dark/menu.css';
+@import './assets/css/hide_printed_links.css';
+@import './assets/images/myadmin/css/styles.css';
+@import 'icheck-bootstrap/icheck-bootstrap.min.css';
+@import 'select2/dist/css/select2.min.css';
+@import 'select2-bootstrap-theme/dist/select2-bootstrap.min.css';
+@import 'jqvmap-novulnerability/dist/jqvmap.min.css';
+@import 'overlayscrollbars/css/OverlayScrollbars.min.css';
+@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 /* '/templates/adminlte/jquery.passwordRequirements.css'; */
-@import '/templates/adminlte/custom_styles.css';
-@import '/node_modules/admin-lte/dist/css/adminlte.min.css';
-@import '/templates/my/style.css';
-@import '/templates/my/style2.css';
-@import '/node_modules/@material-design-icons/font/filled.css';
+@import './assets/templates/adminlte/custom_styles.css';
+@import 'admin-lte/dist/css/adminlte.min.css';
+@import './assets/templates/my/style.css';
+@import './assets/templates/my/style2.css';
+@import '@material-design-icons/font/filled.css';
 </style>

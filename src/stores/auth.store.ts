@@ -1,11 +1,11 @@
 import { storeToRefs, defineStore, getActivePinia, Store, Pinia } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../helpers/fetchWrapper';
 
-import { router } from '@/router/index.ts';
+import { router } from '../router/index';
 
-import { useAccountStore } from '@/stores/account.store.ts';
-import { useAlertStore } from '@/stores/alert.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '../stores/account.store';
+import { useAlertStore } from '../stores/alert.store';
+import { useSiteStore } from '../stores/site.store';
 
 
 interface ErrorMessage {

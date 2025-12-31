@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useFloatingIpStore } from '@/stores/floating_ip.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useFloatingIpStore } from '../../stores/floating_ip.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-//import Alerts from '@/views/floating_ip/Alerts.vue';
-//import DenyRules from '@/views/floating_ip/DenyRules.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+//import Alerts from '../../views/floating_ip/Alerts.vue';
+//import DenyRules from '../../views/floating_ip/DenyRules.vue';
 
 import Swal from 'sweetalert2';
 
@@ -287,5 +287,5 @@ const statusClass = computed(() => {
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

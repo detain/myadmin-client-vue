@@ -2,11 +2,11 @@
 import { ref, reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { snakeToCamel } from '../../helpers/snakeToCamel';
 
-import { useAccountStore } from '@/stores/account.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '../../stores/account.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -177,7 +177,7 @@ function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts = [];
+    const parts: string[] = []
     let i, len;
     for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
@@ -197,7 +197,7 @@ function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts = [];
+    const parts: string[] = []
     let i;
     for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
@@ -273,7 +273,7 @@ accountStore.load();
                         <div class="col-md-6 pb-2">
                             <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))" :id="'unver_' + cc_id"><i class="fa fa-exclamation-triangle"></i> Verify</a>
                             <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
-                            <a v-if="selectedCc !== cc_id" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
+                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>
                     </div>
                 </div>

@@ -1,30 +1,30 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useQsStore } from '@/stores/qs.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useQsStore } from '../../stores/qs.store';
+import { useSiteStore } from '../../stores/site.store';
 
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import Backup from '@/views/vps/Backup.vue';
-import Backups from '@/views/vps/Backups.vue';
-import ChangeHostname from '@/views/vps/ChangeHostname.vue';
-import ChangeRootPassword from '@/views/vps/ChangeRootPassword.vue';
-import ChangeTimezone from '@/views/vps/ChangeTimezone.vue';
-import ChangeWebuzoPassword from '@/views/vps/ChangeWebuzoPassword.vue';
-import InsertCd from '@/views/vps/InsertCd.vue';
-import ReinstallOs from '@/views/vps/ReinstallOs.vue';
-import ResetPassword from '@/views/vps/ResetPassword.vue';
-import ReverseDns from '@/views/vps/ReverseDns.vue';
-import Slices from '@/views/vps/Slices.vue';
-import TrafficUsage from '@/views/vps/TrafficUsage.vue';
-import SetupVnc from '@/views/vps/SetupVnc.vue';
-import Vnc from '@/views/vps/Vnc.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import Backup from '../../views/vps/Backup.vue';
+import Backups from '../../views/vps/Backups.vue';
+import ChangeHostname from '../../views/vps/ChangeHostname.vue';
+import ChangeRootPassword from '../../views/vps/ChangeRootPassword.vue';
+import ChangeTimezone from '../../views/vps/ChangeTimezone.vue';
+import ChangeWebuzoPassword from '../../views/vps/ChangeWebuzoPassword.vue';
+import InsertCd from '../../views/vps/InsertCd.vue';
+import ReinstallOs from '../../views/vps/ReinstallOs.vue';
+import ResetPassword from '../../views/vps/ResetPassword.vue';
+import ReverseDns from '../../views/vps/ReverseDns.vue';
+import Slices from '../../views/vps/Slices.vue';
+import TrafficUsage from '../../views/vps/TrafficUsage.vue';
+import SetupVnc from '../../views/vps/SetupVnc.vue';
+import Vnc from '../../views/vps/Vnc.vue';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -340,6 +340,7 @@ function loadLink(newLink: string) {
                         <div class="row">
                             <div class="col-md-12 mb-1 py-3">
                                 <table class="table-bordered my-3 table">
+                                <tbody>
                                     <tr>
                                         <td class="text-muted text-bold">Total Space:</td>
                                         <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize }}</td>
@@ -360,6 +361,7 @@ function loadLink(newLink: string) {
                                         </td>
                                         <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
                                     </tr>
+                                </tbody>
                                 </table>
                             </div>
                         </div>
@@ -378,6 +380,7 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body" style="height: 270px">
                         <table class="table-bordered table">
+                        <tbody>
                             <tr>
                                 <td><b>VNC Info</b></td>
                                 <td>
@@ -400,6 +403,7 @@ function loadLink(newLink: string) {
                                     </template>
                                 </td>
                             </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -416,12 +420,14 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body" style="height: 270px">
                         <table class="table-bordered table">
+                        <tbody>
                             <tr>
                                 <td><b>OS</b></td>
                                 <td>
                                     <b class="text-muted">{{ osTemplate }}</b>
                                 </td>
                             </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -463,6 +469,7 @@ function loadLink(newLink: string) {
                         </div>
                         <div class="card-body">
                             <table class="table-bordered table">
+                            <tbody>
                                 <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
                                     <td>
                                         <b>{{ itemvalue.desc }}</b>
@@ -471,6 +478,7 @@ function loadLink(newLink: string) {
                                         <b class="text-muted">{{ itemvalue.value }}</b>
                                     </td>
                                 </tr>
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -491,6 +499,7 @@ function loadLink(newLink: string) {
                         </div>
                         <div class="card-body">
                             <table class="table-bordered table">
+                            <tbody>
                                 <tr v-for="(itemvalue, index) in extraInfoTables.cp.rows" :key="index">
                                     <td>
                                         <b>{{ itemvalue.desc }}</b>
@@ -499,6 +508,7 @@ function loadLink(newLink: string) {
                                         <b class="text-muted">{{ itemvalue.value }}</b>
                                     </td>
                                 </tr>
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -521,6 +531,7 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
+                        <tbody>
                             <tr v-for="(itemvalue, index) in extraInfoTables.addons.rows" :key="index">
                                 <td>
                                     <b>{{ itemvalue.desc }}</b>
@@ -529,6 +540,7 @@ function loadLink(newLink: string) {
                                     <b class="text-muted">{{ itemvalue.value }}</b>
                                 </td>
                             </tr>
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -550,9 +562,11 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
+                        <tbody>
                             {{
                                 extraInfoTables.note.rows[0].value
                             }}
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -590,5 +604,5 @@ function loadLink(newLink: string) {
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

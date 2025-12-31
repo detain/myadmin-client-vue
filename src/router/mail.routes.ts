@@ -1,6 +1,6 @@
-import MailList from '@/views/mail/MailList.vue';
-import ViewMail from '@/views/mail/ViewMail.vue';
-import OrderMail from '@/views/mail/OrderMail.vue';
+import MailList from '../views/mail/MailList.vue';
+import ViewMail from '../views/mail/ViewMail.vue';
+import OrderMail from '../views/mail/OrderMail.vue';
 
 export default {
     path: '/mail',

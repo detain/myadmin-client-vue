@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+import { fetchWrapper } from '../helpers/fetchWrapper';
+import { snakeToCamel } from '../helpers/snakeToCamel';
 
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAuthStore } from '../stores/auth.store';
+import { useSiteStore } from '../stores/site.store';
 
 
 interface SslListRow {

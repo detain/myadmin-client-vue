@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 const module: string = 'servers';
 const siteStore = useSiteStore();
@@ -501,11 +501,11 @@ serverOrderRequest(false);
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(id, details.drive_type)">
+                                                                            <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
                                                                                 <i class="fa fa-minus"></i>
                                                                             </button>
                                                                             <b>/</b>
-                                                                            <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(id, details.drive_type, details.short_desc, details.monthly_price)">
+                                                                            <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </template>

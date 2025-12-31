@@ -1,6 +1,6 @@
-import WebsitesList from '@/views/webhosting/WebsitesList.vue';
-import ViewWebsite from '@/views/webhosting/ViewWebsite.vue';
-import OrderWebsite from '@/views/webhosting/OrderWebsite.vue';
+import WebsitesList from '../views/webhosting/WebsitesList.vue';
+import ViewWebsite from '../views/webhosting/ViewWebsite.vue';
+import OrderWebsite from '../views/webhosting/OrderWebsite.vue';
 
 export default {
     path: '/websites',

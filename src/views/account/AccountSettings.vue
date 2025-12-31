@@ -3,15 +3,15 @@ import { ref, reactive, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAccountStore } from '@/stores/account.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '../../stores/account.store';
+import { useSiteStore } from '../../stores/site.store';
 
-import AccountFeatures from '@/components/account/AccountFeatures.vue';
-import ApiAccess from '@/components/account/ApiAccess.vue';
-import IpLimits from '@/components/account/IpLimits.vue';
-import LinkedAccounts from '@/components/account/LinkedAccounts.vue';
-import SshKeys from '@/components/account/SshKeys.vue';
-import TwoFactorAuth from '@/components/account/TwoFactorAuth.vue';
+import AccountFeatures from '../../components/account/AccountFeatures.vue';
+import ApiAccess from '../../components/account/ApiAccess.vue';
+import IpLimits from '../../components/account/IpLimits.vue';
+import LinkedAccounts from '../../components/account/LinkedAccounts.vue';
+import SshKeys from '../../components/account/SshKeys.vue';
+import TwoFactorAuth from '../../components/account/TwoFactorAuth.vue';
 
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();

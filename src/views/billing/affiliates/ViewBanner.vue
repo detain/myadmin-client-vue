@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../../stores/site.store';
 
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - ViewBanner');
@@ -70,6 +70,7 @@ onMounted(() => {});
                     <h4>Banner Image</h4>
                 </div>
                 <table class="table-sm table">
+                <tbody>
                     <tr>
                         <td>Image</td>
                         <td>{{ imgDetail.b }}</td>
@@ -111,12 +112,15 @@ onMounted(() => {});
                         </td>
                         <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
                     </tr>
+                </tbody>
                 </table>
                 <table class="table-sm table">
+                <tbody>
                     <tr>
                         <td>Image Preview</td>
                         <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
                     </tr>
+                </tbody>
                 </table>
             </div>
         </div>

@@ -6,11 +6,11 @@ import * as Yup from 'yup';
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
 
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
-import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
@@ -187,7 +187,7 @@ const controlCost = computed(() => {
     }
 });
 const slicesRange = computed(() => {
-    const arr = [];
+    const arr: number[] = [];
     for (let i = 1; i <= maxSlices.value; i++) {
         arr.push(i);
     }

@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useMailStore } from '@/stores/mail.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useMailStore } from '../../stores/mail.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import Alerts from '@/views/mail/Alerts.vue';
-import DenyRules from '@/views/mail/DenyRules.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import Alerts from '../../views/mail/Alerts.vue';
+import DenyRules from '../../views/mail/DenyRules.vue';
 
 
 const module = 'mail';
@@ -279,5 +279,5 @@ const statusClass = computed(() => {
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

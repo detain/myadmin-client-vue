@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { useAuthStore } from '@/stores/auth.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAuthStore } from '../stores/auth.store';
+import { useSiteStore } from '../stores/site.store';
 
 
 const siteStore = useSiteStore();

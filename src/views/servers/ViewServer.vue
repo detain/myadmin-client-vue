@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useServerStore } from '@/stores/server.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useServerStore } from '../../stores/server.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import BandwidthGraph from '@/views/servers/BandwidthGraph.vue';
-import IpmiLive from '@/views/servers/IpmiLive.vue';
-import ReverseDns from '@/views/servers/ReverseDns.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import BandwidthGraph from '../../views/servers/BandwidthGraph.vue';
+import IpmiLive from '../../views/servers/IpmiLive.vue';
+import ReverseDns from '../../views/servers/ReverseDns.vue';
 
 
 const module = 'servers';
@@ -377,5 +377,5 @@ const ipv6VlansNetworks = computed(() => {
 </template>
 
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, PropType } from 'vue';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useSiteStore } from '../../stores/site.store';
 
 const successMsg = ref('');
 const cancelQueue = ref('');
@@ -47,12 +47,15 @@ interface BackupRow {
                 </div>
                 <div class="card-body">
                     <table class="table-sm table-bordered table">
+                    <thead>
                         <tr>
                             <th>Website</th>
                             <th>Backup</th>
                             <th>Size</th>
                             <th>Options</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <template v-if="!isEmpty(rows)">
                             <tr v-for="row in rows" :key="row.backup_name">
                                 <td>{{ row.website }}</td>
@@ -61,6 +64,7 @@ interface BackupRow {
                                 <td>{{ row.download_link }}</td>
                             </tr>
                         </template>
+                    </tbody>
                     </table>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-import VpsList from '@/views/vps/VpsList.vue';
-import ViewVps from '@/views/vps/ViewVps.vue';
-import OrderVps from '@/views/vps/OrderVps.vue';
+import VpsList from '../views/vps/VpsList.vue';
+import ViewVps from '../views/vps/ViewVps.vue';
+import OrderVps from '../views/vps/OrderVps.vue';
 
 export default {
     path: '/vps',

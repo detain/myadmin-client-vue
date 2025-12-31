@@ -1,6 +1,6 @@
-import LicensesList from '@/views/licenses/LicensesList.vue';
-import ViewLicense from '@/views/licenses/ViewLicense.vue';
-import OrderLicense from '@/views/licenses/OrderLicense.vue';
+import LicensesList from '../views/licenses/LicensesList.vue';
+import ViewLicense from '../views/licenses/ViewLicense.vue';
+import OrderLicense from '../views/licenses/OrderLicense.vue';
 
 export default {
     path: '/licenses',

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { snakeToCamel } from '@/helpers/snakeToCamel.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { snakeToCamel } from '../../helpers/snakeToCamel';
 
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
-import { useAccountStore } from '@/stores/account.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '../../stores/account.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -401,7 +401,7 @@ function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts = [];
+    const parts: string[] = []
     let i, len;
     for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
@@ -421,7 +421,7 @@ function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts = [];
+    const parts: string[] = []
     let i;
     for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
@@ -484,7 +484,7 @@ try {
         invrows.value = response.invrows;
         modules.value = response.modules;
         modulesCounts.value = response.modules_counts;
-        let checkedInvoices = [];
+        let checkedInvoices: string[] = [];
         for (const idx in response.invrows) {
             let row = response.invrows[idx];
             if (typeof row.prepay_invoice == 'undefined') {
@@ -595,6 +595,7 @@ accountStore.load();
                     </div>
                     <template v-if="invrows.length > 0">
                         <table class="table-md mx-auto my-0 table" style="width: 88%">
+                        <thead>
                             <tr>
                                 <th style="width: 5%">
                                     <div class="icheck-success d-inline">
@@ -609,6 +610,8 @@ accountStore.load();
                                 <th>Actions</th>
                                 <th class="text-right">Amount</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                 <td>
                                     <div class="icheck-success d-inline">
@@ -651,6 +654,7 @@ accountStore.load();
                                     </button>
                                 </td>
                             </tr>
+                        </tbody>
                         </table>
                         <hr />
                         <div class="row mt-4">
@@ -662,8 +666,8 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://mystage.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
+                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
@@ -730,6 +734,7 @@ accountStore.load();
                     </template>
                     <template v-else>
                         <table class="table-md mx-auto my-0 table" style="width: 88%">
+                        <thead>
                             <tr>
                                 <th style="width: 5%">
                                     <div class="icheck-success d-inline">
@@ -744,9 +749,12 @@ accountStore.load();
                                 <th>Actions</th>
                                 <th class="text-right">Amount</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">No Invoices to pay...</td>
                             </tr>
+                        </tbody>
                         </table>
                     </template>
                     <div v-if="currency === 'INR'" class="col-md-12 alert alert-info b-radius mb-0 mt-4 text-sm">
@@ -770,6 +778,7 @@ accountStore.load();
                 </div>
                 <div class="card-body">
                     <table class="table-sm table">
+                    <tbody>
                         <tr>
                             <td class="text-center" colspan="2" style="border: none">
                                 <div><strong>Total Invoices</strong></div>
@@ -794,6 +803,7 @@ accountStore.load();
                                 <div class="text-success text-lg" name="totalamount" v-html="total_display"></div>
                             </td>
                         </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>

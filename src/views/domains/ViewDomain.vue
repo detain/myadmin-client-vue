@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { ucwords } from '@/helpers/ucwords.ts';
-import { moduleLink } from '@/helpers/moduleLink.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { ucwords } from '../../helpers/ucwords';
+import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useDomainStore } from '@/stores/domain.store.ts';
-import { useSiteStore } from '@/stores/site.store.ts';
+import { useDomainStore } from '../../stores/domain.store';
+import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import Cancel from '@/components/services/Cancel.vue';
-import Invoices from '@/components/services/Invoices.vue';
-import Contact from '@/views/domains/Contact.vue';
-import Dnssec from '@/views/domains/Dnssec.vue';
-import Nameservers from '@/views/domains/Nameservers.vue';
-import Renew from '@/views/domains/Renew.vue';
-import Whois from '@/views/domains/Whois.vue';
+import Cancel from '../../components/services/Cancel.vue';
+import Invoices from '../../components/services/Invoices.vue';
+import Contact from '../../views/domains/Contact.vue';
+import Dnssec from '../../views/domains/Dnssec.vue';
+import Nameservers from '../../views/domains/Nameservers.vue';
+import Renew from '../../views/domains/Renew.vue';
+import Whois from '../../views/domains/Whois.vue';
 
 
 const module = 'domains';
@@ -280,5 +280,5 @@ console.log(link.value);
     </div>
 </template>
 <style>
-@import '/css/view_service.css';
+@import '../../assets/css/view_service.css';
 </style>
