@@ -46,7 +46,7 @@
         "admin-lte": "*",
         "autoprefixer": "^10.4.14",
         "axios": "*",
-        "bootstrap": "^4.6",
+        "bootstrap": "^5.0",
         "chart.js": "~4.4",
         "font-awesome": "^4.7",
         "font-awesome-animation": "*",
