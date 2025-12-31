@@ -54,22 +54,6 @@ jobs:
           zip -r my-interserver-client-web-${VERSION}.zip dist
           gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
 
-      - name: Create PR from master to electron
-        if: github.ref == 'refs/heads/master'
-        run: |
-          gh pr create \
-            --base electron \
-            --head master \
-            --title "Sync master → electron" \
-            --body "Automated sync from master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Auto-merge PR
-        run: gh pr merge --auto --merge
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   # ---------------- ELECTRON BUILD ON ELECTRON BRANCH ----------------
   electron-build:
     if: github.ref == 'refs/heads/electron'
