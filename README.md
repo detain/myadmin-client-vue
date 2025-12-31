@@ -63,6 +63,38 @@ After this is done on all of the repos pick the best one and setit up .. try to 
 [jooy2/vutron: 💚 Quick Start Templates for Vite + Electron + Vue 3 + Vuetify + TypeScript. Vutron is a preconfigured template for developing Electron cross-platform desktop apps. It uses Vue 3 and allows you to build a fast development environment with little effort.](https://github.com/jooy2/vutron)
 [caoxiemeihao/vite-electron-plugin: High-performance, esbuild-based Vite Electron plugin](https://github.com/caoxiemeihao/vite-electron-plugin)
 
+
+## Features
+
+- Web version for browsers
+- Desktop app via Electron
+- Auto-update support
+- Linux (.AppImage, .deb, Snap)
+- Windows (.exe installer, portable)
+- macOS (.dmg, .pkg)
+
+## Downloads
+
+<!-- DOWNLOADS-START -->
+<!-- DOWNLOADS-END -->
+
+## Installation
+
+### Web
+1. Download the ZIP
+2. Extract to any folder
+3. Open `index.html` in your browser
+
+### Electron
+Follow instructions for your platform after downloading the respective installer or ZIP.
+
+### Linux
+```bash
+# AppImage
+chmod +x MyApp-*.AppImage
+./MyApp-*.AppImage
+
+
 ### Page Status
 
 * Working status does not include the export/sorting related options on the view service list type pages
