@@ -1,14 +1,31 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, screen } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
+  /**
+   * Determine the usable screen size (excludes taskbars, docks, etc.)
+   */
+  const { workAreaSize } = screen.getPrimaryDisplay()
+
+  /**
+   * Desired maximum window size
+   */
+  const MAX_WIDTH = 1380
+  const MAX_HEIGHT = 1000
+
+  /**
+   * Clamp window size to available screen space
+   */
+  const width = Math.min(workAreaSize.width, MAX_WIDTH)
+  const height = Math.min(workAreaSize.height, MAX_HEIGHT)
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
-    show: false,
+    width,
+    height,
+    show: false, // Prevent flicker while loading
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -17,16 +34,35 @@ function createWindow(): void {
     }
   })
 
-  mainWindow.on('ready-to-show', () => {
+  /**
+   * Center the window after creation
+   */
+  mainWindow.center()
+
+  /**
+   * If the screen is smaller than the desired size,
+   * maximize the window instead of forcing a smaller fixed size
+   */
+  if (workAreaSize.width < MAX_WIDTH || workAreaSize.height < MAX_HEIGHT) {
+    mainWindow.maximize()
+  }
+
+  /**
+   * Show the window only when it is fully ready
+   */
+  mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })
 
+  /**
+   * Open external links in the user's default browser
+   */
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
 
-  // HMR for renderer base on electron-vite cli.
+  // HMR for renderer based on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
@@ -39,7 +75,7 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // Set app user model id for windows
+  // Set app user model id for Windows
   electronApp.setAppUserModelId('com.electron')
 
   // Default open or close DevTools by F12 in development
