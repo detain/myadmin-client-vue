@@ -21,7 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # fetch full history
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -51,16 +54,13 @@ jobs:
           zip -r my-interserver-client-web-${VERSION}.zip dist
           gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
 
-      - name: Fetch full history
-        run: git fetch --unshallow origin
-
       - name: Merge master into electron
-        uses: devops-infra/action-pull-request@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: master
-          target_branch: electron
-          commit_message: "Sync master into electron"
+        run: |
+          git fetch origin +refs/heads/*:refs/remotes/origin/*
+          git checkout electron
+          git merge origin/master
+          git push origin electron
+          git checkout master
 
   # ---------------- ELECTRON BUILD ON ELECTRON BRANCH ----------------
   electron-build:
