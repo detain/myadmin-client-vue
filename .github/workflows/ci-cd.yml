@@ -52,7 +52,7 @@ jobs:
           gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
 
       - name: Merge master into electron
-        uses: devops-infra/action-pull-request@v0.3.0
+        uses: devops-infra/action-pull-request@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_branch: master
