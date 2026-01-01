@@ -23,6 +23,9 @@
         "format": "prettier . --write",
         "format:check": "prettier . --check",
         "test": "vitest",
+        "test:browser": "vitest --config=vitest.browser.config.ts",
+        "test:coverage": "vitest run --coverage",
+        "test:e2e": ":npx playwrite test",
         "coverage": "vitest run --coverage",
         "cap:sync": "npx cap sync",
         "cap:copy": "npx cap copy",
@@ -60,6 +63,7 @@
         "@fortawesome/vue-fontawesome": "*",
         "@jridgewell/sourcemap-codec": "^1.4.14",
         "@material-design-icons/font": "*",
+        "@playwright/test": "^1.57.0",
         "@rollup/plugin-inject": "*",
         "@rushstack/eslint-patch": "*",
         "@sweetalert2/theme-bootstrap-4": "*",
@@ -83,6 +87,7 @@
         "@unhead/vue": "^1.8",
         "@vitejs/plugin-basic-ssl": "*",
         "@vitejs/plugin-vue": "*",
+        "@vitest/browser-playwright": "^4.0.16",
         "@vitest/coverage-v8": "*",
         "@vitest/ui": "*",
         "@vue/compiler-sfc": "*",
@@ -117,10 +122,12 @@
         "moment": ">=2.29.4",
         "moment-timezone": "^0.5",
         "mosha-vue-toastify": "*",
+        "msw": "^2.12.7",
         "nodemon": "*",
         "npm-run-all": "*",
         "overlayscrollbars": "^1.0",
         "pinia": "^2.1",
+        "playwright": "^1.57.0",
         "postcss": "^8.4.24",
         "prettier": "*",
         "prettier-plugin-tailwindcss": "*",
@@ -140,6 +147,7 @@
         "vite-plugin-inspect": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
+        "vitest-browser-vue": "^2.0.1",
         "vue": "~3.4.38",
         "vue-eslint-parser": "*",
         "vue-i18n": "*",
@@ -179,5 +187,10 @@
     "engines": {
         "node": ">=18.0.0",
         "yarn": ">= 1.0.0"
+    },
+    "msw": {
+        "workerDirectory": [
+            "public"
+        ]
     }
 }

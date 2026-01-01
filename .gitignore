@@ -48,3 +48,10 @@ coverage
 # Vitest related files
 __snapshots__/
 coverage/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
