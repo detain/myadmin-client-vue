@@ -127,7 +127,7 @@
     "vite-plugin-webfont-dl": "*",
     "vitest": "^4.0.16",
     "vitest-browser-vue": "^2.0.1",
-    "vue": "~3.5.25",
+    "vue": "^3.5.25",
     "vue-eslint-parser": "^10.2.0",
     "vue-i18n": "*",
     "vue-recaptcha": "*",
@@ -138,9 +138,7 @@
     "yaml": "^2.3",
     "yup": "*"
   },
-  "resolutions": {
-    "sweetalert2": "11.4.8"
-  },
+  "resolutions": {},
   "suggest": {
     "@tanstack/vue-query": "*",
     "@vitejs/plugin-legacy": "*",
