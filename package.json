@@ -16,7 +16,7 @@
         "clean": "rm -rf dist dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
-        "build": "vue-tsc --noEmit && vite build",
+        "build": "vue-tsc --noEmit && vite build && npx cap sync",
         "serve": "vite preview",
         "preview": "vite preview",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
