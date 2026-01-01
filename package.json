@@ -23,7 +23,17 @@
         "format": "prettier . --write",
         "format:check": "prettier . --check",
         "test": "vitest",
-        "coverage": "vitest run --coverage"
+        "coverage": "vitest run --coverage",
+        "cap:sync": "npx cap sync",
+        "cap:copy": "npx cap copy",
+        "android:build": "yarn build && npx cap open android",
+        "android:open": "npx cap open android",
+        "android:run": "npx cap run android",
+        "android:live": "npx cap run android -l --external",
+        "ios:build": "yarn build && npx cap open ios",
+        "ios:open": "npx cap open ios",
+        "ios:run": "npx cap run ios",
+        "ios:live": "npx cap run ios -l --external"
     },
     "dependencies": {
         "@capacitor/android": "^8.0.0",
