@@ -22,7 +22,7 @@
     "test": "vitest",
     "test:browser": "vitest --config=vitest.browser.config.ts",
     "test:coverage": "vitest run --coverage",
-    "test:e2e": ":npx playwrite test"
+    "test:e2e": ":npx playwrite test",
     "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
     "typecheck:web": "vue-tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
