@@ -6,6 +6,7 @@
   "author": "detain",
   "homepage": "https://electron-vite.org",
   "license": "MIT",
+  "private": true,
   "keywords": [
     "rollup",
     "vite",
@@ -14,8 +15,14 @@
   ],
   "type": "module",
   "scripts": {
-    "format": "prettier --write .",
+    "clean": "rm -rf dist dev-dist",
     "lint": "eslint --cache .",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest",
+    "test:browser": "vitest --config=vitest.browser.config.ts",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": ":npx playwrite test"
     "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
     "typecheck:web": "vue-tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
@@ -50,6 +57,7 @@
     "@fortawesome/vue-fontawesome": "*",
     "@jridgewell/sourcemap-codec": "^1.4.14",
     "@material-design-icons/font": "*",
+    "@playwright/test": "^1.57.0",
     "@rollup/plugin-inject": "*",
     "@rushstack/eslint-patch": "*",
     "@sweetalert2/theme-bootstrap-4": "*",
@@ -73,6 +81,7 @@
     "@unhead/vue": "^1.8",
     "@vitejs/plugin-basic-ssl": "*",
     "@vitejs/plugin-vue": "^6.0.2",
+    "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "*",
     "@vitest/ui": "*",
     "@vue/compiler-sfc": "*",
@@ -110,10 +119,12 @@
     "moment": ">=2.29.4",
     "moment-timezone": "^0.5",
     "mosha-vue-toastify": "*",
+    "msw": "^2.12.7",
     "nodemon": "*",
     "npm-run-all": "*",
     "overlayscrollbars": "^1.0",
     "pinia": "^2.1",
+    "playwright": "^1.57.0",
     "postcss": "^8.4.24",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "*",
@@ -132,7 +143,8 @@
     "vite-plugin-dts": "*",
     "vite-plugin-inspect": "*",
     "vite-plugin-webfont-dl": "*",
-    "vitest": "*",
+    "vitest": "^4.0.16",
+    "vitest-browser-vue": "^2.0.1",
     "vue": "^3.5.25",
     "vue-eslint-parser": "^10.2.0",
     "vue-i18n": "*",
@@ -143,6 +155,21 @@
     "word-wrap": ">=1.2.4",
     "yaml": "^2.3",
     "yup": "*"
+  },
+  "resolutions": {
+  },
+  "suggest": {
+    "@tanstack/vue-query": "*",
+    "@vitejs/plugin-legacy": "*",
+    "vite-plugin-pwa": "*",
+    "vite-plugin-vue-devtools": "*",
+    "vite-plugin-vue-inspector": "*",
+    "unplugin-turbo-console": "*",
+    "jquery-sortable": "johnny/jquery-sortable#master",
+    "vite-plugin-i18n-resources": "*",
+    "unplugin-auto-import": "*",
+    "@intlify/unplugin-vue-i18n": "*",
+    "@ttskch/select2-bootstrap4-theme": "*"
   },
   "commitlint": {
     "extends": [
@@ -156,5 +183,10 @@
   "engines": {
     "node": ">=20.0.0",
     "yarn": ">= 1.0.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
