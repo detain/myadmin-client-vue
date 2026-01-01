@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">my-interserver-client</string>
+    <string name="title_activity_main">my-interserver-client</string>
+    <string name="package_name">net.interserver.my</string>
+    <string name="custom_url_scheme">net.interserver.my</string>
+</resources>
