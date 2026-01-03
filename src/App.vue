@@ -47,39 +47,51 @@ $(document).ready(function () {
         }
     );
 });
-let AdminLTESidebarTweak = {
-    options: {
-        EnableRemember: true,
-        NoTransitionAfterReload: false,
-        //Removes the transition after page reload.
-    },
-};
-$('.collapse_menu').on('click', function () {
-    if (AdminLTESidebarTweak.options.EnableRemember) {
-        let toggleState = 'closed';
-        if ($('body').hasClass('sidebar-collapse')) {
-            toggleState = 'opened';
-        }
-        document.cookie = 'toggleState=' + toggleState;
-    }
-});
-if (AdminLTESidebarTweak.options.EnableRemember) {
-    const re = new RegExp('toggleState' + '=([^;]+)');
-    const value = re.exec(document.cookie);
-    let toggleState = value != null ? unescape(value[1]) : null;
-    if (toggleState == 'closed') {
-        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
-            $('body')
-                .addClass('sidebar-collapse hold-transition')
-                .delay(100)
-                .queue(function () {
-                    $(this).removeClass('hold-transition');
-                });
-        } else {
-            $('body').addClass('sidebar-collapse');
-        }
-    }
+interface SidebarTweakOptions {
+  EnableRemember: boolean;
+  NoTransitionAfterReload: boolean;
 }
+
+const AdminLTESidebarTweak = {
+  options: {
+    EnableRemember: true,
+    NoTransitionAfterReload: false
+  } as SidebarTweakOptions
+};
+
+// Remember toggle state
+$(document).on('click', '.collapse_menu', function () {
+  if (!AdminLTESidebarTweak.options.EnableRemember) return;
+
+  const toggleState = $('body').hasClass('sidebar-collapse')
+    ? 'opened'
+    : 'closed';
+
+  document.cookie = `toggleState=${toggleState}; path=/`;
+});
+
+// Restore state on load
+$(function () {
+  if (!AdminLTESidebarTweak.options.EnableRemember) return;
+
+  const match = document.cookie.match(/toggleState=([^;]+)/);
+  const toggleState = match ? decodeURIComponent(match[1]) : null;
+
+  if (toggleState === 'closed') {
+    if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+      $('body')
+        .addClass('sidebar-collapse hold-transition')
+        .delay(100)
+        .queue(function (next) {
+          $(this).removeClass('hold-transition');
+          next();
+        });
+    } else {
+      $('body').addClass('sidebar-collapse');
+    }
+  }
+});
+
 if (window.location.href.indexOf('view_domains_list') > -1) {
     $('#crud-table th:nth-child(1)').css('display', 'none');
     $('#crud-table tbody td:nth-child(1)').css('display', 'none');
@@ -196,4 +208,10 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import './assets/templates/my/style.css';
 @import './assets/templates/my/style2.css';
 @import '@material-design-icons/font/filled.css';
+
+.main-header {
+  position: relative;
+  z-index: 1050;
+}
+
 </style>
