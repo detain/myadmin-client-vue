@@ -63,7 +63,7 @@ function format(d: any) {
     if (typeof d[13] == 'undefined' || d[13].length == 0) {
         paid_content = '<div class="text-danger text-center">No Paid Invoices Available</div>';
     } else {
-        paid_content = '<table id="paid_content" class="display table table-striped table-sm table-hover" style="width:100%">'+'<thead>'+'<tr>'+'<th>&nbsp;</th>'+'<th>ID</th>'+'<th>Paid On</th>'+'<th>Description</th>'+'<th>Amount</th>'+'<th>Paid By</th>'+'<th>Links</th>'+'</tr>'+'</thead>'+'<tbody>';
+        paid_content = '<table id="paid_content" class="display table table-striped table-sm table-hover" style="width:100%"><thead><tr><th>&nbsp;</th><th>ID</th><th>Paid On</th><th>Description</th><th>Amount</th><th>Paid By</th><th>Links</th></tr></thead><tbody>';
         console.log(d[13]);
         //console.log(d[13].length);
         let payment_type: string = '',
@@ -74,22 +74,22 @@ function format(d: any) {
             payment_type = `<i class="icon-${get_payment_type_image(d[13][i][4])}" title="${get_payment_type(d[13][i][4])}"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-${get_payment_type_image(d[13][i][4])}"></use></svg></i>`;
             trnx_col = d[13][i][3];
             plinks = get_links(d[13][i]);
-            paid_content = `${paid_content}<tr>`+`<td class="details-control-refund sorting_disabled" style="width: 40px;">&nbsp;</td>`+`<td>${d[13][i][0]}</td>`+`<td>${d[13][i][1]}</td>`+`<td>${trnx_col}</td>`+`<td>${d[13][i][12]  }${d[13][i][5]}</td>`+`<td>${payment_type}</td>`+`<td>${plinks}</td>`+`</tr>`;
+            paid_content = `${paid_content}<tr><td class="details-control-refund sorting_disabled" style="width: 40px;">&nbsp;</td><td>${d[13][i][0]}</td><td>${d[13][i][1]}</td><td>${trnx_col}</td><td>${d[13][i][12]}${d[13][i][5]}</td><td>${payment_type}</td><td>${plinks}</td></tr>`;
             //console.log(paid_content);
             if (typeof d[13][i][13] == 'undefined' || d[13][i][13].length == 0) {
                 console.log('not sure what this is for');
             } else {
-                refund_content = '<tr><td colspan="7"><table id="refund_rows" class="display table table-striped table-sm table-hover" style="width:100%">'+'<thead>'+'<tr>'+'<th></th>'+'<th>ID</th>'+'<th>Refunded On</th>'+'<th>Description</th>'+'<th>Amount</th>'+'<th>Links</th>'+'</tr>'+'</thead>'+'<tbody>';
+                refund_content = '<tr><td colspan="7"><table id="refund_rows" class="display table table-striped table-sm table-hover" style="width:100%"><thead><tr><th></th><th>ID</th><th>Refunded On</th><th>Description</th><th>Amount</th><th>Links</th></tr></thead><tbody>';
                 for (let j = 0; j < d[13][i][13].length; j++) {
                     links = get_links(d[13][i][13][j]);
-                    refund_content = `${refund_content}<tr>`+`<td style="width: 40px;">&nbsp;</td>`+`<td>${d[13][i][13][j][0]}</td>`+`<td>${d[13][i][13][j][1]}</td>`+`<td>${trnx_col}</td>`+`<td>${d[13][i][13][j][12]  }${d[13][i][13][j][5]}</td>`+`<td>${links}</td>`+`</tr>`;
+                    refund_content = `${refund_content}<tr><td style="width: 40px;">&nbsp;</td><td>${d[13][i][13][j][0]}</td><td>${d[13][i][13][j][1]}</td><td>${trnx_col}</td><td>${d[13][i][13][j][12]}${d[13][i][13][j][5]}</td><td>${links}</td></tr>`;
                 }
                 refund_content = `${refund_content}</tbody></table></td></tr>`;
                 paid_content = paid_content + refund_content;
             }
             //console.log(paid_content);
         }
-        paid_content = `${paid_content}</tbody>`+`</table>`;
+        paid_content = `${paid_content}</tbody></table>`;
     }
     //console.log(paid_content);
     return paid_content;

@@ -118,7 +118,7 @@ onMounted(() => {
                             <div class="card-header">
                                 <div class="p-1">
                                     <h3 class="card-title py-2">
-                                        <i class="fa fa-money" aria-hidden="true">&nbsp;</i> Earn <b>{{ '$'+affiliate_amount }}</b> per new customer sale!
+                                        <i class="fa fa-money" aria-hidden="true">&nbsp;</i> Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
                                     </h3>
                                     <div class="card-tools float-right">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -127,7 +127,7 @@ onMounted(() => {
                             </div>
                             <div class="card-body">
                                 <p>
-                                    By adding a link to Interserver on your website you will get <b class="text-success">{{ '$'+affiliate_amount }}</b> commission on each new sale we get that results from clicking the link on your website. <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">Know More</a>
+                                    By adding a link to Interserver on your website you will get <b class="text-success">{{ '$' + affiliate_amount }}</b> commission on each new sale we get that results from clicking the link on your website. <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">Know More</a>
                                 </p>
                             </div>
                         </div>
@@ -145,7 +145,7 @@ onMounted(() => {
                             <div class="card-body mb-2 pb-4 text-center">
                                 <form class="form-inline">
                                     <div class="form-group w-50 mr-2">
-                                        <input id="affiliateinput" type="text" class="form-control form-control-sm w-100" placeholder="Affiliate URL" :value="'https://www.interserver.net/r/'+custid" />
+                                        <input id="affiliateinput" type="text" class="form-control form-control-sm w-100" placeholder="Affiliate URL" :value="'https://www.interserver.net/r/' + custid" />
                                         <span class="text-muted text-xs">Share your unique affiliate URL with friends</span>
                                     </div>
                                     <button id="copy_url" type="submit" class="btn btn-custom btn-sm mb-3">Copy to Clipboard</button>

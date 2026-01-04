@@ -195,8 +195,8 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                             <tr v-for="(details, value) in serverDetails" :key="value">
                                                 <td>
                                                     <div class="icheck-success d-inline">
-                                                        <input :id="'qs-'+value" v-model="qsId" type="radio" class="form-check-input" name="quickserver" :value="value" />
-                                                        <label class="text-bold my-1" :for="'qs-'+value">&nbsp;</label>
+                                                        <input :id="'qs-' + value" v-model="qsId" type="radio" class="form-check-input" name="quickserver" :value="value" />
+                                                        <label class="text-bold my-1" :for="'qs-' + value">&nbsp;</label>
                                                     </div>
                                                 </td>
                                                 <td>{{ value }}</td>

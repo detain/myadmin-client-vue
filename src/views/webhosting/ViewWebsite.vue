@@ -236,7 +236,7 @@ loadLink(route.params.link as string);
                                     </template>
                                     <tr v-if="clientLinks[3]">
                                         <td>Automatic Login</td>
-                                        <td><router-link :to="'/'+moduleLink(module)+'/'+id+'/login'" target="__blank" class="link">Click Here</router-link></td>
+                                        <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -324,7 +324,7 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+(clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

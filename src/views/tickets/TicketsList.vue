@@ -119,9 +119,9 @@ ticketsStore.getAll();
                                     {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                                     <div class="btn-group">
                                         <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view='+view+'&page='+(currentPage - 1)+'&limit='+limit"><i class="fas fa-chevron-left"></i></router-link>
+                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
                                         <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view='+view+'&page='+currentPage + 1+'&limit='+limit"><i class="fas fa-chevron-right"></i></router-link>
+                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + currentPage + 1 + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
                                     </div>
                                     <!-- /.btn-group -->
                                 </div>
@@ -133,8 +133,8 @@ ticketsStore.getAll();
                                         <tr v-for="ticket in tickets" :key="ticket.ticketid">
                                             <td>
                                                 <div v-if="ticket.can_close === 'no'" class="icheck-primary">
-                                                    <input :id="'check'+ticket.ticketid" v-model="ticket.checked" type="checkbox" value="1" :name="`tickets[${ticket.ticketid}]`" />
-                                                    <label :for="'check'+ticket.ticketid"></label>
+                                                    <input :id="'check' + ticket.ticketid" v-model="ticket.checked" type="checkbox" value="1" :name="`tickets[${ticket.ticketid}]`" />
+                                                    <label :for="'check' + ticket.ticketid"></label>
                                                 </div>
                                             </td>
                                             <td class="mailbox-star">
@@ -143,13 +143,13 @@ ticketsStore.getAll();
                                                 <i v-else-if="ticket.status_text === 'Closed'" class="far fa-envelope text-danger"></i>
                                             </td>
                                             <td class="mailbox-name">
-                                                <router-link :to="'/tickets/'+ticket.ticketid">{{ ticket.lastreplier }}</router-link>
+                                                <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link>
                                             </td>
                                             <td class="mailbox-subject">
                                                 <b>
-                                                    <router-link :to="'/tickets/'+ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b
+                                                    <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b
                                                 >
-                                                - <router-link :to="'/tickets/'+ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3)+'...' : ticket.title }}</router-link>
+                                                - <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + '...' : ticket.title }}</router-link>
                                             </td>
                                             <td v-if="ticket.attachments.length > 0" class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
                                             <td class="mailbox-date">{{ ticket.lastactivity }}</td>
@@ -173,9 +173,9 @@ ticketsStore.getAll();
                                 {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
                                 <div class="btn-group">
                                     <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view='+view+'&page='+(currentPage - 1)+'&limit='+limit"><i class="fas fa-chevron-left"></i></router-link>
+                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
                                     <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view='+view+'&page='+(currentPage + 1)+'&limit='+limit"><i class="fas fa-chevron-right"></i></router-link>
+                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage + 1) + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
                                 </div>
                                 <!-- /.btn-group -->
                             </div>
