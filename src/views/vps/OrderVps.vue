@@ -300,7 +300,7 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
         } else {
             couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
         }
-        couponPriceLabel.value = 'Coupon '+couponPriceLabel.value;
+        couponPriceLabel.value = 'Coupon ' + couponPriceLabel.value;
     }
     serviceCost.value = first_slice + sliceCost.value * (slices.value - 1);
     monthlyServiceCost.value = monthly_slice_cost * slices.value;

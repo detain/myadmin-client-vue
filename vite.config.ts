@@ -78,14 +78,14 @@ export default defineConfig({
                 interop: 'compat', // "compat"| "auto"| "esModule"| "default"| "defaultOnly"
                 format: 'es', // es | umd
                 globals: {
-                  jquery: '$'
+                    jquery: '$',
                 },
                 generatedCode: {
                     preset: 'es2015', // es5 | es2015
                     constBindings: true,
                     arrowFunctions: true,
                 },
-/*
+                /*
                 manualChunks: {
                     components: [ 'src/components/TheWelcome.vue', 'src/components/icons/IconTooling.vue', 'src/components/icons/IconEcosystem.vue', 'src/components/icons/IconDocumentation.vue', 'src/components/icons/IconCommunity.vue', 'src/components/icons/IconSupport.vue', 'src/components/account/SshKeys.vue', 'src/components/account/AccountFeatures.vue', 'src/components/account/IpLimits.vue', 'src/components/account/ApiAccess.vue', 'src/components/account/TwoFactorAuth.vue', 'src/components/account/LinkedAccounts.vue', 'src/components/services/Invoices.vue', 'src/components/services/Alert.vue', 'src/components/services/Cancel.vue', 'src/components/Alert.vue', 'src/components/HelloWorld.vue', 'src/components/Nav.vue', 'src/components/WelcomeItem.vue', 'src/components/MainMenu.vue', 'src/views/tickets/ViewTicket.vue', 'src/views/tickets/TicketsList.vue', 'src/views/tickets/NewTicket.vue', 'src/views/users/AddEdit.vue', 'src/views/users/List.vue', 'src/views/mail/OrderMail.vue', 'src/views/mail/MailList.vue', 'src/views/mail/Alerts.vue', 'src/views/mail/ViewMail.vue', 'src/views/mail/DenyRules.vue', 'src/views/account/ChangeUsername.vue', 'src/views/account/ChangePass.vue', 'src/views/account/AccountSettings.vue', 'src/views/account/ContactInfo.vue', 'src/views/Sudo.vue', ],
                     licdnswebback: [ 'src/views/licenses/LicensesList.vue', 'src/views/licenses/ChangeIp.vue', 'src/views/licenses/ViewLicense.vue', 'src/views/licenses/ChangeOs.vue', 'src/views/licenses/OrderLicense.vue', 'src/views/dns/DnsManager.vue', 'src/views/dns/DnsEditor.vue', 'src/views/LoginOld.vue', 'src/views/floating_ips/ViewFloatingIp.vue', 'src/views/floating_ips/FloatingIpsList.vue', 'src/views/floating_ips/OrderFloatingIp.vue', 'src/views/ClientHome.vue', 'src/views/domains/OrderDomain.vue', 'src/views/domains/ViewDomain.vue', 'src/views/domains/Contact.vue', 'src/views/domains/WhoisToggle.vue', 'src/views/domains/EppCode.vue', 'src/views/domains/Nameservers.vue', 'src/views/domains/DomainsList1.vue', 'src/views/domains/DomainsList2.vue', 'src/views/domains/DomainsList.vue', 'src/views/domains/Renew.vue', 'src/views/domains/Lock.vue', 'src/views/domains/Dnssec.vue', 'src/views/domains/Whois.vue', 'src/views/webhosting/BuyIp.vue', 'src/views/webhosting/DownloadBackups.vue', 'src/views/webhosting/ViewWebsite.vue', 'src/views/webhosting/Migration.vue', 'src/views/webhosting/WebsitesList.vue', 'src/views/webhosting/ReverseDns.vue', 'src/views/webhosting/OrderWebsite.vue', 'src/views/servers/ViewServer.vue', 'src/views/servers/ServersList.vue', 'src/views/servers/IpmiLive.vue', 'src/views/servers/ReverseDns.vue', 'src/views/servers/BandwidthGraph.vue', 'src/views/servers/OrderServer.vue', 'src/views/quickservers/ViewQs.vue', 'src/views/quickservers/QsList.vue', 'src/views/quickservers/OrderQs.vue', 'src/views/Login.vue', 'src/views/backups/BackupsList.vue', 'src/views/backups/ViewBackup.vue', 'src/views/backups/OrderBackup.vue' ],
@@ -108,6 +108,6 @@ export default defineConfig({
         },
     },
     server: {
-        allowedHosts: true
-    }
+        allowedHosts: true,
+    },
 });

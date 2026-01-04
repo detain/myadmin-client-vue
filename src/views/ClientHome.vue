@@ -12,7 +12,7 @@ const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
-const { data } = storeToRefs(accountStore)
+const { data } = storeToRefs(accountStore);
 siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
 siteStore.setBreadcrums([['', 'Home']]);
@@ -170,9 +170,7 @@ accountStore.load();
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>PrePay Balance</h3>
                             <p class="mb-2 mt-3 py-3" style="min-height: 3.5em">
-                              <template v-if="balance">
-                                <b>Prepay Remaining Balance:</b> {{ balance }}
-                              </template>
+                                <template v-if="balance"> <b>Prepay Remaining Balance:</b> {{ balance }} </template>
                             </p>
                         </div>
                         <div class="icon">

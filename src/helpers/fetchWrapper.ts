@@ -1,6 +1,5 @@
 import { useAuthStore } from '../stores/auth.store';
 
-
 export const fetchWrapper = {
     delete: request('DELETE'),
     get: request('GET'),

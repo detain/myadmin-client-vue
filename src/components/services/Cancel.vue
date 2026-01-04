@@ -15,46 +15,57 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const { modules } = storeToRefs(siteStore);
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
-const pkg = computed(() => { return props.package; });
-const titleField = computed(() => { return props['titleField']; });
-const titleField2 = computed(() => { return props['titleField2']; });
-const titleField3 = computed(() => { return props['titleField3']; });
-const settings = computed(() => { return modules.value[module.value]; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
+const pkg = computed(() => {
+    return props.package;
+});
+const titleField = computed(() => {
+    return props['titleField'];
+});
+const titleField2 = computed(() => {
+    return props['titleField2'];
+});
+const titleField3 = computed(() => {
+    return props['titleField3'];
+});
+const settings = computed(() => {
+    return modules.value[module.value];
+});
 
 siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module.value), 'VPS'],
+    ['/' + moduleLink(module.value), 'VPS'],
 ]);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value, 'View '+module.value+' ' + id.value);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/' + id.value + '/cancel', 'Cancel '+module.value);
+siteStore.addBreadcrum('/' + moduleLink(module.value) + '/' + id.value, 'View ' + module.value + ' ' + id.value);
+siteStore.addBreadcrum('/' + moduleLink(module.value) + '/' + id.value + '/cancel', 'Cancel ' + module.value);
 
-
-onMounted(() => {
-});
+onMounted(() => {});
 
 function onSubmit() {
     Swal.fire({
         icon: 'error',
-        title: '<h3>Cancel '+module.value+'</h3> ',
+        title: '<h3>Cancel ' + module.value + '</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Cancel it.',
-        html: '<p>Are you sure want to cancel your '+module.value+' <span class="text-2lg">'+id.value+'</span>?</p>',
+        html: '<p>Are you sure want to cancel your ' + module.value + ' <span class="text-2lg">' + id.value + '</span>?</p>',
         preConfirm: () => {
             try {
-                fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/cancel').then((response) => {
-                    console.log(module.value+' cancel success');
+                fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/cancel').then((response) => {
+                    console.log(module.value + ' cancel success');
                     console.log(response);
                 });
             } catch (error: any) {
-                console.log(module.value+' cancel failed');
+                console.log(module.value + ' cancel failed');
                 console.log(error);
             }
-
         },
     });
 }
@@ -66,12 +77,12 @@ function onSubmit() {
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12 my-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title m-0 text-left">Cancel {{settings?.TITLE}} Service</h4>
+                        <h4 class="card-title m-0 text-left">Cancel {{ settings?.TITLE }} Service</h4>
                     </div>
                     <div class="card-body">
                         <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">{{settings?.TBLNAME}} ID:</label>
+                                <label class="col-sm-5 col-form-label">{{ settings?.TBLNAME }} ID:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ id }}</div>
                             </div>
                             <div class="form-group row">
@@ -92,7 +103,7 @@ function onSubmit() {
                                     <div class="ui-select">
                                         <select id="confirm" name="confirm" class="form-control">
                                             <option value="no">No</option>
-                                            <option value="yes">Yes, Cancel the {{settings?.TBLNAME}} Order</option>
+                                            <option value="yes">Yes, Cancel the {{ settings?.TBLNAME }} Order</option>
                                         </select>
                                     </div>
                                 </div>

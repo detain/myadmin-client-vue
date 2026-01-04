@@ -401,7 +401,7 @@ function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts: string[] = []
+    const parts: string[] = [];
     let i, len;
     for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
@@ -421,7 +421,7 @@ function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts: string[] = []
+    const parts: string[] = [];
     let i;
     for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));
@@ -595,66 +595,66 @@ accountStore.load();
                     </div>
                     <template v-if="invrows.length > 0">
                         <table class="table-md mx-auto my-0 table" style="width: 88%">
-                        <thead>
-                            <tr>
-                                <th style="width: 5%">
-                                    <div class="icheck-success d-inline">
-                                        <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" checked />
-                                        <label for="checkboxtoggle"> </label>
-                                    </div>
-                                </th>
-                                <th>Service</th>
-                                <th>Description</th>
-                                <th>Date</th>
-                                <th>Service Status</th>
-                                <th>Actions</th>
-                                <th class="text-right">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
-                                <td>
-                                    <div class="icheck-success d-inline">
-                                        <input :id="'check' + invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
-                                        <label :for="'check' + invrow.invoices_id"> </label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <template v-if="invrow.invoices_module === 'default'">{{ invrow.service }}</template>
-                                    <template v-else-if="invrow.collapse !== 1">
-                                        <router-link class="text-primary" :to="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</router-link>
-                                    </template>
-                                </td>
-                                <td>{{ invrow.invoices_description }}</td>
-                                <td>{{ invrow.date }}</td>
-                                <td>{{ invrow.service_status }}</td>
-                                <td class="text-center">
-                                    <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
-                                        <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
-                                        <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
-                                            <input type="hidden" name="inv_id" v-model="invrow.invoices_id" />
-                                        </form>
-                                    </template>
-                                    <template v-else>
-                                        <span class="font-italic text-muted text-sm">Empty...</span>
-                                    </template>
-                                </td>
-                                <td>{{ invrow.currency_display }}</td>
-                            </tr>
-                            <tr>
-                                <td>Filter</td>
-                                <td colspan="7">
-                                    <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" v-model="isChecked" @change="toggleCheckbox" />
-                                    <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
-                                    <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
-                                    <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
-                                    <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
-                                    <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module + 'row')">
-                                        {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%">
+                                        <div class="icheck-success d-inline">
+                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" checked />
+                                            <label for="checkboxtoggle"> </label>
+                                        </div>
+                                    </th>
+                                    <th>Service</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Service Status</th>
+                                    <th>Actions</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
+                                    <td>
+                                        <div class="icheck-success d-inline">
+                                            <input :id="'check' + invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
+                                            <label :for="'check' + invrow.invoices_id"> </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <template v-if="invrow.invoices_module === 'default'">{{ invrow.service }}</template>
+                                        <template v-else-if="invrow.collapse !== 1">
+                                            <router-link class="text-primary" :to="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</router-link>
+                                        </template>
+                                    </td>
+                                    <td>{{ invrow.invoices_description }}</td>
+                                    <td>{{ invrow.date }}</td>
+                                    <td>{{ invrow.service_status }}</td>
+                                    <td class="text-center">
+                                        <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
+                                            <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
+                                            <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
+                                                <input type="hidden" name="inv_id" v-model="invrow.invoices_id" />
+                                            </form>
+                                        </template>
+                                        <template v-else>
+                                            <span class="font-italic text-muted text-sm">Empty...</span>
+                                        </template>
+                                    </td>
+                                    <td>{{ invrow.currency_display }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Filter</td>
+                                    <td colspan="7">
+                                        <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" v-model="isChecked" @change="toggleCheckbox" />
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
+                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module + 'row')">
+                                            {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                         <hr />
                         <div class="row mt-4">
@@ -734,27 +734,27 @@ accountStore.load();
                     </template>
                     <template v-else>
                         <table class="table-md mx-auto my-0 table" style="width: 88%">
-                        <thead>
-                            <tr>
-                                <th style="width: 5%">
-                                    <div class="icheck-success d-inline">
-                                        <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
-                                        <label for="checkboxtoggle"> </label>
-                                    </div>
-                                </th>
-                                <th>Service</th>
-                                <th>Description</th>
-                                <th>Date</th>
-                                <th>Service Status</th>
-                                <th>Actions</th>
-                                <th class="text-right">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">No Invoices to pay...</td>
-                            </tr>
-                        </tbody>
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%">
+                                        <div class="icheck-success d-inline">
+                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
+                                            <label for="checkboxtoggle"> </label>
+                                        </div>
+                                    </th>
+                                    <th>Service</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Service Status</th>
+                                    <th>Actions</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">No Invoices to pay...</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </template>
                     <div v-if="currency === 'INR'" class="col-md-12 alert alert-info b-radius mb-0 mt-4 text-sm">
@@ -778,32 +778,32 @@ accountStore.load();
                 </div>
                 <div class="card-body">
                     <table class="table-sm table">
-                    <tbody>
-                        <tr>
-                            <td class="text-center" colspan="2" style="border: none">
-                                <div><strong>Total Invoices</strong></div>
-                                <div class="text-success text-lg" v-html="total_invoices"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center" colspan="2">
-                                <div><strong>Invoices Total Amount</strong></div>
-                                <div class="text-success text-lg" name="totalcol" v-html="total_display"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <div><strong>PrePay Available</strong></div>
-                                <div class="text-success text-lg" v-html="displayPrepay"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center" colspan="2">
-                                <div><strong>To Be Paid</strong></div>
-                                <div class="text-success text-lg" name="totalamount" v-html="total_display"></div>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" colspan="2" style="border: none">
+                                    <div><strong>Total Invoices</strong></div>
+                                    <div class="text-success text-lg" v-html="total_invoices"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">
+                                    <div><strong>Invoices Total Amount</strong></div>
+                                    <div class="text-success text-lg" name="totalcol" v-html="total_display"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <div><strong>PrePay Available</strong></div>
+                                    <div class="text-success text-lg" v-html="displayPrepay"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">
+                                    <div><strong>To Be Paid</strong></div>
+                                    <div class="text-success text-lg" name="totalamount" v-html="total_display"></div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface WebsiteInfo {
     website_id: number;
     website_server: number;
@@ -133,7 +132,7 @@ export const useWebsiteStore = defineStore({
     getters: {
         titleField: (state) => state.serviceInfo.website_hostname,
         titleField2: (state) => state.serviceInfo.website_username,
-        titleField3: (state) => state.serviceInfo.website_ip
+        titleField3: (state) => state.serviceInfo.website_ip,
     },
     actions: {
         async register(user: any): Promise<void> {

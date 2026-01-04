@@ -33,7 +33,7 @@ function changePassword() {
     fetchWrapper
         //.post(`${baseUrl}/account/password`, formData)
         .post(`${baseUrl}/account/password`, {
-            password: password.value
+            password: password.value,
         })
         .then((response) => {
             // handle success

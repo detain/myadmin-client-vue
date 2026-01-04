@@ -177,7 +177,7 @@ function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts: string[] = []
+    const parts: string[] = [];
     let i, len;
     for (i = 0, len = sanitizedValue.length; i < len; i += 4) {
         parts.push(sanitizedValue.substring(i, i + 4));
@@ -197,7 +197,7 @@ function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
-    const parts: string[] = []
+    const parts: string[] = [];
     let i;
     for (i = 0; i < 2; i += 2) {
         parts.push(sanitizedValue.substring(i, i + 2));

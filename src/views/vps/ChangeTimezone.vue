@@ -12,8 +12,12 @@ const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => { return props.id; });
-const module = computed(() => { return props.module; });
+const id = computed(() => {
+    return props.id;
+});
+const module = computed(() => {
+    return props.module;
+});
 const timezone = ref('America/New_York');
 const zones = ref<string[]>([]);
 function submitForm() {
@@ -53,7 +57,6 @@ fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/c
     console.log(response);
     zones.value = response;
 });
-
 </script>
 
 <template>
@@ -103,7 +106,7 @@ fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/c
                                 <label class="col-md-3 col-form-label text-right" for="os">Select Timezone</label>
                                 <div class="col-sm-9 input-group">
                                     <select name="timezone" class="form-control select2" v-model="timezone">
-                                        <option v-for="(zone, index) in zones" :key="index" :value="zone" >{{ zone }}</option>
+                                        <option v-for="(zone, index) in zones" :key="index" :value="zone">{{ zone }}</option>
                                     </select>
                                 </div>
                             </div>

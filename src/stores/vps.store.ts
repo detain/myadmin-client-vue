@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface VpsInfo {
     vps_comment: string;
     vps_coupon: number;
@@ -253,7 +252,7 @@ export const useVpsStore = defineStore({
     getters: {
         titleField: (state) => state.serviceInfo.vps_hostname,
         titleField2: (state) => state.serviceInfo.vps_ip,
-        titleField3: (state) => state.serviceInfo.vps_vzid
+        titleField3: (state) => state.serviceInfo.vps_vzid,
     },
     actions: {
         async register(user: any): Promise<void> {

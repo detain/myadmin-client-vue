@@ -16,7 +16,6 @@ import Invoices from '../../components/services/Invoices.vue';
 import Alerts from '../../views/mail/Alerts.vue';
 import DenyRules from '../../views/mail/DenyRules.vue';
 
-
 const module = 'mail';
 const siteStore = useSiteStore();
 const route = useRoute();
@@ -48,33 +47,33 @@ function loadLink(newLink: string) {
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             // do something here
@@ -157,9 +156,7 @@ const statusClass = computed(() => {
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
-        <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>7
-        </div>
+        <div v-else-if="link == 'cancel'" class="col"><Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>7</div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
@@ -167,8 +164,7 @@ const statusClass = computed(() => {
             <Invoices :id="id" :module="module"></Invoices>
         </div>
         <div v-else class="row shadow-none">
-            <div class="col-md-12" v-html="linkDisplay">
-            </div>
+            <div class="col-md-12" v-html="linkDisplay"></div>
         </div>
     </template>
     <template v-else>

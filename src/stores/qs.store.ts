@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface QsInfo {
     qs_id: number;
     qs_custid: number;
@@ -221,7 +220,7 @@ export const useQsStore = defineStore({
     getters: {
         titleField: (state) => state.serviceInfo.qs_hostname,
         titleField2: (state) => state.serviceInfo.qs_ip,
-        titleField3: (state) => state.serviceInfo.qs_vzid
+        titleField3: (state) => state.serviceInfo.qs_vzid,
     },
     actions: {
         async register(user: any): Promise<void> {

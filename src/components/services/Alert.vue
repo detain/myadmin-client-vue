@@ -6,9 +6,7 @@ const url = ref(''); // Assign the value of `$url` here
 const html = ref(''); // Assign the value of `$html` here
 const display = ref('yes');
 const action = ref('eppcode');
-const actions = ref([
-    'confirm',
-]);
+const actions = ref(['confirm']);
 
 onMounted(() => {
     Swal.fire({
@@ -23,12 +21,11 @@ onMounted(() => {
         },
     });
 });
-
 </script>
 
 <template>
     <div v-if="display == 'yes'">
-        <template v-if="action == 'confirm'"/>
+        <template v-if="action == 'confirm'" />
     </div>
 </template>
 
