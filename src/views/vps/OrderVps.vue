@@ -263,7 +263,7 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
     if (Number(location.value).toString() == '3') {
         sliceCost.value = sliceCost.value * vpsNyCost.value;
     }
-    sliceCostHtml.value = currencySymbol.value + Number(sliceCost.value).toString() + ' Per Slice';
+    sliceCostHtml.value = `${currencySymbol.value + Number(sliceCost.value).toString()} Per Slice`;
     // later month slice costs
     serviceCost.value = sliceCost.value;
     // first month slice cost
@@ -273,16 +273,16 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
     couponPriceText.value = '';
     if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
-            sliceCostHtml.value = '<del style="color: red;">' + currencySymbol.value + sliceCost.value + '</del> Per Slice';
+            sliceCostHtml.value = `<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`;
             couponPriceLabel.value = 'Price';
-            couponPriceText.value = currencySymbol.value + couponInfo.value.amount + ' per slice';
+            couponPriceText.value = `${currencySymbol.value + couponInfo.value.amount} per slice`;
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
-            couponPriceText.value = '-' + currencySymbol.value + couponInfo.value.amount;
+            couponPriceText.value = `-${currencySymbol.value  }${couponInfo.value.amount}`;
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
-            couponPriceText.value = couponInfo.value.amount + '% Off';
+            couponPriceText.value = `${couponInfo.value.amount}% Off`;
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
         }
@@ -298,9 +298,9 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
         if (couponInfo.value.onetime == 0) {
             monthly_slice_cost = sliceCost.value;
         } else {
-            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
+            couponPriceLabel.value = `First Month ${couponPriceLabel.value}`;
         }
-        couponPriceLabel.value = 'Coupon ' + couponPriceLabel.value;
+        couponPriceLabel.value = `Coupon ${couponPriceLabel.value}`;
     }
     serviceCost.value = first_slice + sliceCost.value * (slices.value - 1);
     monthlyServiceCost.value = monthly_slice_cost * slices.value;
@@ -425,7 +425,7 @@ function onSubmit() {
                 if (response.continue == false) {
                     Swal.fire({
                         icon: 'error',
-                        html: 'Got error ' + response.errors.join('<br>'),
+                        html: `Got error ${response.errors.join('<br>')}`,
                     });
                 } else {
                     step.value = 'order_confirm';
@@ -436,7 +436,7 @@ function onSubmit() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -463,13 +463,13 @@ function onSubmitConfirmation() {
                 console.log(response);
                 // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
                 if (response.success == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                     // forward to cart or w/e
                 } else {
                     // display 'message'
                     Swal.fire({
                         icon: 'error',
-                        html: 'Got error ' + response.message,
+                        html: `Got error ${response.message}`,
                     });
                 }
             });
@@ -478,7 +478,7 @@ function onSubmitConfirmation() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -486,8 +486,8 @@ function onSubmitConfirmation() {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = 'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon.value;
-        $.getJSON('https://my.interserver.net/coupon_info.php?module=vps&coupon=' + coupon.value, {}, function (json: CouponInfo) {
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
@@ -567,7 +567,7 @@ function update_vps_choices() {
         jQuery('#controlpanelcostnew').text('');
         jQuery('#controlpanelpricerownew').hide();
     }
-    jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
+    jQuery('#slicecost').text(`${currencySymbol.value + sliceCost.value} Per Slice`);
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
     serviceCost.value = sliceCost.value;
@@ -578,23 +578,23 @@ function update_vps_choices() {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#slicecost').html('<del style="color: red;">' + currencySymbol.value + sliceCost.value + '</del> Per Slice');
+            jQuery('#slicecost').html(`<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`);
             couponPriceLabel.value = 'Price';
-            jQuery('#couponprice').html(currencySymbol.value + couponInfo.value.amount + ' per slice');
-            jQuery('#couponpricenew').val(couponInfo.value.amount + ' per slice');
+            jQuery('#couponprice').html(`${currencySymbol.value + couponInfo.value.amount} per slice`);
+            jQuery('#couponpricenew').val(`${couponInfo.value.amount} per slice`);
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text('-' + currencySymbol.value + couponInfo.value.amount);
+            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
-            jQuery('#couponpricenew').val('-(' + couponInfo.value.amount + ')');
+            jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(couponInfo.value.amount + '% Off');
-            jQuery('#couponpricenew').val(couponInfo.value.amount + '% Off');
+            jQuery('#couponprice').text(`${couponInfo.value.amount}% Off`);
+            jQuery('#couponpricenew').val(`${couponInfo.value.amount}% Off`);
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
         } else {
@@ -616,10 +616,10 @@ function update_vps_choices() {
         if (couponInfo.value.onetime == 0) {
             monthly_slice_cost = sliceCost.value;
         } else {
-            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
+            couponPriceLabel.value = `First Month ${couponPriceLabel.value}`;
         }
-        jQuery('#couponpricetext').text('Coupon ' + couponPriceLabel.value);
-        jQuery('#couponpricetextnew').text('Coupon ' + couponPriceLabel.value);
+        jQuery('#couponpricetext').text(`Coupon ${couponPriceLabel.value}`);
+        jQuery('#couponpricetextnew').text(`Coupon ${couponPriceLabel.value}`);
     } else {
         jQuery('#couponpricerow').css('display', 'none');
         jQuery('#couponpricerownew').hide();
@@ -727,7 +727,7 @@ function update_vps_choices_order() {
     } else {
         jQuery('#controlpanelcost').text('');
     }
-    jQuery('#slicecost').text(currencySymbol.value + sliceCost.value + ' Per Slice');
+    jQuery('#slicecost').text(`${currencySymbol.value + sliceCost.value} Per Slice`);
     jQuery('#slicecosttb').text(currencySymbol.value + sliceCost.value);
     // later month slice costs
     serviceCost.value = sliceCost.value;
@@ -739,23 +739,23 @@ function update_vps_choices_order() {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#slicecost').html('<del style="color: red;">$' + sliceCost.value + '</del> Per Slice');
+            jQuery('#slicecost').html(`<del style="color: red;">$${sliceCost.value}</del> Per Slice`);
             couponPriceLabel.value = 'Price';
-            jQuery('#couponprice').html(currencySymbol.value + couponInfo.value.amount + ' per slice');
-            jQuery('#couponpricenew').val(couponInfo.value.amount + ' per slice');
+            jQuery('#couponprice').html(`${currencySymbol.value + couponInfo.value.amount} per slice`);
+            jQuery('#couponpricenew').val(`${couponInfo.value.amount} per slice`);
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text('-' + currencySymbol.value + couponInfo.value.amount);
+            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
-            jQuery('#couponpricenew').val('-(' + couponInfo.value.amount + ')');
+            jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(couponInfo.value.amount + '% Off');
-            jQuery('#couponpricenew').val(couponInfo.value.amount + '% Off');
+            jQuery('#couponprice').text(`${couponInfo.value.amount}% Off`);
+            jQuery('#couponpricenew').val(`${couponInfo.value.amount}% Off`);
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice * ((100 - Number(couponInfo.value.amount)) / 100);
         } else {
@@ -777,10 +777,10 @@ function update_vps_choices_order() {
         if (couponInfo.value.onetime == 0) {
             monthly_slice_cost = sliceCost.value;
         } else {
-            couponPriceLabel.value = 'First Month ' + couponPriceLabel.value;
+            couponPriceLabel.value = `First Month ${couponPriceLabel.value}`;
         }
-        jQuery('#couponpricetext').text('Coupon ' + couponPriceLabel.value);
-        jQuery('#couponpricetextnew').text('Coupon ' + couponPriceLabel.value);
+        jQuery('#couponpricetext').text(`Coupon ${couponPriceLabel.value}`);
+        jQuery('#couponpricetextnew').text(`Coupon ${couponPriceLabel.value}`);
     } else {
         jQuery('#couponpricerow').css('display', 'none');
         jQuery('#couponpricerownew').hide();
@@ -944,7 +944,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/vps/order').then((response: VpsOrderResponse) => {
+    fetchWrapper.get(`${baseUrl}/vps/order`).then((response: VpsOrderResponse) => {
         maxSlices.value = response.maxSlices;
         hdStorageSlice.value = response.hdStorageSlice;
         cpanelCost.value = response.cpanelCost;
@@ -1002,18 +1002,18 @@ try {
 
                     <div class="card-body">
                         <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" id="period" name="period" :value="period" />
+                            <input id="period" type="hidden" name="period" :value="period" />
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">VPS Details</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
                                     <div class="d-inline pr-3">
-                                        <span>Storage: </span> <span class="text-bold" id="storage">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
+                                        <span>Storage: </span> <span id="storage" class="text-bold">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
                                     </div>
                                     <div class="d-inline pr-3">
-                                        <span>Memory: </span> <span class="text-bold" id="memory_recommended">{{ ramSlice * slices }} MB</span>
+                                        <span>Memory: </span> <span id="memory_recommended" class="text-bold">{{ ramSlice * slices }} MB</span>
                                     </div>
                                     <div class="d-inline">
-                                        <span>Transfer: </span> <span class="text-bold" id="Transfer_bandwidth">{{ getBandwidth }}</span>
+                                        <span>Transfer: </span> <span id="Transfer_bandwidth" class="text-bold">{{ getBandwidth }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -1021,7 +1021,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="vpsPlatform">
+                                    <select v-model="vpsPlatform" class="form-control select2">
                                         <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
@@ -1030,7 +1030,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <select class="form-control select2" v-model="location">
+                                    <select v-model="location" class="form-control select2">
                                         <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
                                     </select>
                                 </div>
@@ -1038,7 +1038,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="slices">
+                                    <select v-model="slices" class="form-control select2">
                                         <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
                                     </select>
                                 </div>
@@ -1046,7 +1046,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="osDistro">
+                                    <select v-model="osDistro" class="form-control select2">
                                         <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
                                         <option v-if="vpsPlatform != 'hyperv'" disabled>Windows (only on HyperV)</option>
                                     </select>
@@ -1055,7 +1055,7 @@ try {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="osVersion">
+                                    <select v-model="osVersion" class="form-control select2">
                                         <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
                                     </select>
                                 </div>
@@ -1063,21 +1063,21 @@ try {
                             <div id="hostnamerownew" class="form-group row">
                                 <label class="col-sm-3 col-form-label">Hostname</label>
                                 <div class="col-md-9">
-                                    <input type="text" id="hostname" name="hostname" class="form-control text-sm" placeholder="server.domain.com" v-model="hostname" @keyup="updateHostname" @change="updateHostname" />
+                                    <input id="hostname" v-model="hostname" type="text" name="hostname" class="form-control text-sm" placeholder="server.domain.com" @keyup="updateHostname" @change="updateHostname" />
                                 </div>
                             </div>
                             <div id="rootpassrownew" class="row">
                                 <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
                                 <div class="form-group col-md-9">
-                                    <input type="text" name="rootpass" class="form-control text-sm" v-model="rootpass" />
+                                    <input v-model="rootpass" type="text" name="rootpass" class="form-control text-sm" />
                                     <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Coupon Code</label>
                                 <div class="input-group col-md-9">
-                                    <input type="text" class="w-100 form-control text-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @keyup="updateCoupon" @change="updateCoupon" />
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="" /></span>
+                                    <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" placeholder="Coupon Code" @keyup="updateCoupon" @change="updateCoupon" />
+                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -1111,11 +1111,11 @@ try {
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
                                     <div class="col text-md totalcost_display text-right" v-html="sliceCostHtml" />
                                 </div>
-                                <div id="cyclediscountrownew" class="row mb-3" v-show="period >= 6">
+                                <div v-show="period >= 6" id="cyclediscountrownew" class="row mb-3">
                                     <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
                                     <div id="cyclediscount" class="col text-right">{{ cycleDiscountText }}</div>
                                 </div>
-                                <div id="couponpricerownew" class="row mb-3" v-show="typeof couponInfo.applies != 'undefined'">
+                                <div v-show="typeof couponInfo.applies != 'undefined'" id="couponpricerownew" class="row mb-3">
                                     <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">{{ couponPriceLabel }}</div>
                                     <div id="couponprice" class="col text-right">{{ couponPriceText }}</div>
                                 </div>
@@ -1140,12 +1140,12 @@ try {
                                 </div>
                             </div>
                             <div class="card-body py-2">
-                                <a id="rec_linux" href="javascript:void(0);" @click.prevent="recomended_linux" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-linux">&nbsp;</i>Linux&nbsp;</a>
-                                <a id="rec_directadmin" href="javascript:void(0);" @click.prevent="recomended_directadmin" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3"><i class="fa fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
-                                <a id="rec_windows" href="javascript:void(0);" @click.prevent="recomended_windows" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1"><i class="fa fa-windows">&nbsp;</i>Windows&nbsp;</a>
-                                <a id="rec_cPanel" href="javascript:void(0);" @click.prevent="recomended_cpanel" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px"><i class="fa fa-server">&nbsp;</i>cPanel&nbsp;</a>
-                                <a id="rec_linux_desktop" href="javascript:void(0);" @click.prevent="recomended_linux_desktop" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px"><i class="fa fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
-                                <a id="rec_webuzo" href="javascript:void(0);" @click.prevent="recomended_webuzo" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px"><i class="fa fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
+                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><i class="fa fa-linux">&nbsp;</i>Linux&nbsp;</a>
+                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><i class="fa fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
+                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><i class="fa fa-windows">&nbsp;</i>Windows&nbsp;</a>
+                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><i class="fa fa-server">&nbsp;</i>cPanel&nbsp;</a>
+                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><i class="fa fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
+                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><i class="fa fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
                             </div>
                         </div>
                     </div>
@@ -1214,7 +1214,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click.prevent="step = 'orderform'" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-md text-bold">{{ period }} month(s)</div>
@@ -1227,7 +1227,7 @@ try {
                                             <div class="text-md">{{ serviceTypes[platformPackages[vpsPlatform]].services_name }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md" id="slicecost">{{ sliceCost }}</div>
+                                            <div id="slicecost" class="text-bold text-md">{{ sliceCost }}</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1286,7 +1286,7 @@ try {
                                             <td>
                                                 <div class="text-bold text-md">
                                                     {{ coupon }}
-                                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" />
+                                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px" height="20" width="20" alt="" />
                                                 </div>
                                             </td>
                                         </tr>
@@ -1306,7 +1306,7 @@ try {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-bold text-lg" id="total_cost_display">${{ serviceCost }}</div>
+                                            <div id="total_cost_display" class="text-bold text-lg">${{ serviceCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -1319,7 +1319,7 @@ try {
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Servers List'],
+    [`/${moduleLink(module)}`, 'Servers List'],
     ['/servers/order', 'Order Server'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
@@ -289,7 +289,7 @@ function serverOrderRequest(addCpu: boolean) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response: ServerOrderResponse) => {
+    fetchWrapper.get(addCpu ? `${baseUrl}/servers/order?cpu=${cpu.value}` : `${baseUrl}/servers/order`).then((response: ServerOrderResponse) => {
         Swal.close();
         console.log('Response:');
         console.log(response);
@@ -318,7 +318,7 @@ serverOrderRequest(false);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/' + moduleLink(module) + '/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -328,11 +328,11 @@ serverOrderRequest(false);
                                 <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-11">
                                     <div v-for="(cpu_details, id) in cpu_li" :key="id" class="icheck-success d-inline w-100">
-                                        <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" v-model="cpu" />
-                                        <label class="font-weight-normal w-100" :for="'ds-' + id">
+                                        <input :id="'ds-'+id" v-model="cpu" type="radio" class="form-check-input" name="cpu" :value="id" />
+                                        <label class="font-weight-normal w-100" :for="'ds-'+id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <img alt="" class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
+                                                    <img alt="" class="pr-2" :src="'/images/v2-images/'+cpu_details.img" style="max-width: 100px" />
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="text-bold text-sm">{{ cpu_details.short_desc }}</div>
@@ -395,8 +395,8 @@ serverOrderRequest(false);
                     </div>
                     <div class="card-body">
                         <template v-for="(cpu_det, core) in cpuCores" :key="core">
-                            <a href="javascript:void(0);" :id="'core-' + core" data-toggle="modal" :data-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
-                            <div :id="'coreM-' + core" class="modal fade">
+                            <a :id="'core-'+core" href="javascript:void(0);" data-toggle="modal" :data-target="'#coreM-'+core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
+                            <div :id="'coreM-'+core" class="modal fade">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header border-0 p-4">
@@ -408,7 +408,7 @@ serverOrderRequest(false);
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
-                                                    <div class="col"><img alt="" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" /></div>
+                                                    <div class="col"><img alt="" :src="'/images/v2-images/'+cpu_details.img" style="max-width: 100px" /></div>
                                                     <div class="col">
                                                         <div class="font-weight-light text-lg">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-green text-sm">{{ cpu_details.monthly_price_display }}</div>
@@ -419,16 +419,16 @@ serverOrderRequest(false);
                                                         <div class="text-green text-sm text-sm">{{ cpu_details.memory_det.monthly_price_display }}</div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="text-lg" v-if="cpu_details.hd_det">{{ cpu_details.hd_det.short_desc }}</div>
+                                                        <div v-if="cpu_details.hd_det" class="text-lg">{{ cpu_details.hd_det.short_desc }}</div>
                                                         <div class="text-sm">HDD</div>
-                                                        <div class="text-green text-sm text-sm" v-if="cpu_details.hd_det">{{ cpu_details.hd_det.monthly_price_display }}</div>
+                                                        <div v-if="cpu_details.hd_det" class="text-green text-sm text-sm">{{ cpu_details.hd_det.monthly_price_display }}</div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="text-green text-lg">{{ cpu_details.monthly_fee }}</div>
                                                         <div class="text-sm">Total Cost per month</div>
                                                     </div>
                                                     <div class="col">
-                                                        <a :href="'/order_server?cpu=' + cpu_details.id" class="btn btn-green btn-sm mt-2 px-4 py-2">Order</a>
+                                                        <a :href="'/order_server?cpu='+cpu_details.id" class="btn btn-green btn-sm mt-2 px-4 py-2">Order</a>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100" />
@@ -471,7 +471,7 @@ serverOrderRequest(false);
                                             <div class="input-group col-md-9">
                                                 <template v-for="(details, id) in inputDetails[cpu.toString()]" :key="id">
                                                     <div class="icheck-success d-inline w-100">
-                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
+                                                        <input v-if="inputName === 'memory_li'" :id="'ds-'+(inputName as string).replace('_li', '')+'-'+id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
                                                         <label v-if="Object.keys(inputDetails[cpu.toString()])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
@@ -496,16 +496,16 @@ serverOrderRequest(false);
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-'+(inputName as string).replace('_li', '')+'-'+id" :class="'font-weight-normal w-100'+(inputName === 'hd_li' ? ' drive-row-'+details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
+                                                                            <button :id="'drive-remove-'+id" type="button" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
                                                                                 <i class="fa fa-minus"></i>
                                                                             </button>
                                                                             <b>/</b>
-                                                                            <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
+                                                                            <button :id="'drive-add-'+id" type="button" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </template>
@@ -530,10 +530,10 @@ serverOrderRequest(false);
                                             {{ fieldLabel[(inputName as string).replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
-                                        <div class="input-group col-md-9" :class="inputName + '-row'">
+                                        <div class="input-group col-md-9" :class="inputName+'-row'">
                                             <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
-                                                <input :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
-                                                <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="font-weight-normal w-100">
+                                                <input :id="'ds-'+(inputName as string).replace('_li', '')+'-'+id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
+                                                <label :for="'ds-'+(inputName as string).replace('_li', '')+'-'+id" class="font-weight-normal w-100">
                                                     <div class="row mb-2">
                                                         <div class="col-md-8">
                                                             <div class="text-bold text-sm">{{ details.short_desc }}</div>
@@ -649,14 +649,14 @@ serverOrderRequest(false);
                     <div class="card-body">
                         <form id="edit_order_form" method="post" action="order_server">
                             <template v-for="(field_value, field) in formValues">
-                                <input :key="field" type="hidden" :id="field as string" :name="field as string" :value="field_value" v-if="field !== 'hd'" />
+                                <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
                             </template>
                             <input v-for="(hd_val, indexx) in hdValues" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
                         <form method="post" class="dserver_form_confirm" action="order_server">
                             <template v-for="(field_value, field) in formValues">
-                                <input :key="field" type="hidden" :id="field as string" :name="field as string" :value="field_value" v-if="field !== 'hd'" />
+                                <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
                             </template>
                             <input v-for="(hd_val, indexx) in hdValues" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
@@ -673,14 +673,14 @@ serverOrderRequest(false);
                             <div id="rootpassrownew" class="form-group row">
                                 <label class="col-sm-4 col-form-label text-right">Root Password<span class="text-danger"> *</span></label>
                                 <div class="form-group input-group col-md-8">
-                                    <input placeholder="Enter Password" v-model="rootpass" class="form-control form-control-sm" required />
+                                    <input v-model="rootpass" placeholder="Enter Password" class="form-control form-control-sm" required />
                                     <small class="form-text text-muted">Note: Password must contain atleast 8 characters,one lowercase letter, one uppercase letter, one number, a special character.</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-right">Comments</label>
                                 <div class="form-group input-group col-md-8">
-                                    <textarea placeholder="Enter Comment" rows="5" v-model="comment" class="form-control form-control-sm" id="comment"></textarea>
+                                    <textarea id="comment" v-model="comment" placeholder="Enter Comment" rows="5" class="form-control form-control-sm"></textarea>
                                 </div>
                             </div>
                             <hr />
@@ -784,7 +784,7 @@ serverOrderRequest(false);
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>

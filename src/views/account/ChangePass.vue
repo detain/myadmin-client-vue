@@ -61,19 +61,19 @@ function changePassword() {
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="currentpassword">Current Password</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control form-control-sm" v-model="currentPassword" id="currentpassword" placeholder="Current Password" />
+                                <input id="currentpassword" v-model="currentPassword" type="password" class="form-control form-control-sm" placeholder="Current Password" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="password">New Password</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control form-control-sm" v-model="newPassword" id="password" placeholder="New Password" />
+                                <input id="password" v-model="newPassword" type="password" class="form-control form-control-sm" placeholder="New Password" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="phone">Confirm Password</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control form-control-sm" v-model="password" placeholder="Confirm Password" />
+                                <input v-model="password" type="password" class="form-control form-control-sm" placeholder="Confirm Password" />
                             </div>
                         </div>
                         <div class="row justify-content-center">

@@ -27,15 +27,15 @@ function updateBreadcrums() {
     if (step.value == 'license_types') {
         siteStore.setBreadcrums([
             ['/home', 'Home'],
-            ['/' + moduleLink(module), 'Licenses List'],
-            ['/' + moduleLink(module) + '/order', 'Select License Type'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
         ]);
     } else {
         siteStore.setBreadcrums([
             ['/home', 'Home'],
-            ['/' + moduleLink(module), 'Licenses List'],
-            ['/' + moduleLink(module) + '/order', 'Select License Type'],
-            ['/licenses/order/' + catTag.value, 'Order License'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
+            [`/licenses/order/${catTag.value}`, 'Order License'],
         ]);
     }
 }
@@ -135,7 +135,7 @@ function orderLicenseType(type: string | number) {
     packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
-    router.push('/licenses/order/' + catTag.value);
+    router.push(`/licenses/order/${catTag.value}`);
 }
 
 function submitForm() {
@@ -151,7 +151,7 @@ function submitLicenseForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/licenses/order', {
+            .post(`${baseUrl}/licenses/order`, {
                 tos: tos.value,
                 frequency: frequency.value,
                 comment: comment.value,
@@ -164,7 +164,7 @@ function submitLicenseForm() {
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -176,7 +176,7 @@ function submitLicenseForm() {
 
 function editForm() {}
 
-fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
+fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
     console.log('Response:');
     console.log(response);
     packageCosts.value = response.packageCosts;
@@ -191,7 +191,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="'/' + details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
+                        <img class="card-img-top" :src="'/'+details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <h3 class="card-title"></h3>
                         <div class="card-tools float-right">
                             <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -205,7 +205,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                     <p class="card-text text-left text-sm">{{ details.description }}</p>
                     <div class="license_footer">
                         <div class="order-button">
-                            <a href="#" @click.prevent="orderLicenseType(key)" class="btn order">Order Now</a>
+                            <a href="#" class="btn order" @click.prevent="orderLicenseType(key)">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <div class="col-sm-9 input-group">
                                     <div v-for="(package_details, id) in getServiceTypes" :key="id" class="form-group w-100">
                                         <div class="icheck-success d-inline">
-                                            <input :id="package_details.services_name" type="radio" class="form-check-input" name="package" :value="id" v-model="packageId" />
+                                            <input :id="package_details.services_name" v-model="packageId" type="radio" class="form-check-input" name="package" :value="id" />
                                             <label class="more-info font-weight-normal" :for="package_details.services_name">{{ package_details.services_name }}</label>
                                         </div>
                                     </div>
@@ -243,18 +243,18 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right">IP Address<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" name="ip" class="form-control form-control-sm" @change="updatePrice()" placeholder="IP Address" v-model="ip" required />
+                                    <input v-model="ip" type="text" name="ip" class="form-control form-control-sm" placeholder="IP Address" required @change="updatePrice()" />
                                 </div>
                             </div>
                             <div v-if="getLicenses[catTag].name !== 'cPanel'" id="coupon_row" class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" name="coupon" id="coupon" @change="updateCoupon()" placeholder="Coupon Code" v-model="coupon" />
+                                    <input id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon()" />
                                 </div>
                                 <label class="col-md-3"></label>
                                 <div class="col-md-9">
                                     <button class="btn bg-secondary btn-sm mr-2 mt-1" @click="checkAvailability()">Check availability</button>
-                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" id="couponimg" height="20" width="20" alt="" />
+                                    <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon='+coupon" height="20" width="20" alt="" />
                                 </div>
                             </div>
                             <div class="row">
@@ -335,13 +335,13 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" class="license_form_confirm" ref="licenseForm" @submit.prevent="submitLicenseForm">
+                        <form ref="licenseForm" method="post" class="license_form_confirm" @submit.prevent="submitLicenseForm">
                             <table class="table-sm table-bordered table">
                                 <thead>
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[Number(packageId)].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm()" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm()"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost"></div>
@@ -362,7 +362,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }}<img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }}<img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">
@@ -378,7 +378,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                             <div class="text-lg">Total</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-lg" id="totalprice"></div>
+                                            <div id="totalprice" class="text-bold text-lg"></div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -389,7 +389,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>

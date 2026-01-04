@@ -86,7 +86,7 @@ interface IpDetails {
                             <template v-else-if="buyForm">Buy Additional IP Addon</template>
                         </h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@ interface IpDetails {
                                         <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="hidden" id="amount" class="form-control" value="1" />
+                                        <input id="amount" type="hidden" class="form-control" value="1" />
                                         <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="im_cost" />
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ interface IpDetails {
                                         <label for="amount" class="col-form-label">Renewal Cost</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="hidden" id="amount" class="form-control" value="1" />
+                                        <input id="amount" type="hidden" class="form-control" value="1" />
                                         <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
                                         <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
                                     </div>

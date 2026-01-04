@@ -47,7 +47,7 @@ interface SimpleStringObj {
 
 function mounted() {
     if (triggerClick.value) {
-        $('#unver_' + current_cc_id.value)
+        $(`#unver_${current_cc_id.value}`)
             .attr('data-step', triggerClick.value)
             .trigger('click');
     }
@@ -61,7 +61,7 @@ function deleteCardModal(cc_id = 0) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
+        html: `<p>Are you sure want to remove your creditcard <br><b>${data.value.ccs[cc_id]['cc']}</b> ?</p>`,
         preConfirm: () => {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
@@ -146,7 +146,7 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-    verify_display.value = $('#unver_' + cc_id).attr('data-step') as string;
+    verify_display.value = $(`#unver_${cc_id}`).attr('data-step') as string;
     if (typeof verify_display.value === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verify_display.value == 'step1') {
@@ -159,7 +159,7 @@ function verifyCard(cc_id = 0) {
 function updatePaymentMethod() {
     try {
         fetchWrapper
-            .post(baseUrl + '/billing/payment_method', {
+            .post(`${baseUrl}/billing/payment_method`, {
                 cc_auto: cc_auto_checked.value,
                 payment_method: paymentMethod.value,
             })
@@ -227,7 +227,7 @@ function onExpDateInput(e: any) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
+    fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
         countries.value = response;
     });
 } catch (error: any) {
@@ -258,20 +258,20 @@ accountStore.load();
             `
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body icheck-success">
-                    <input id="paypal" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" v-model="paymentMethod" @change="updatePaymentMethod()" />
+                    <input id="paypal" v-model="paymentMethod" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" @change="updatePaymentMethod()" />
                     <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
                 </div>
             </div>
             <div v-if="data.ccs">
                 <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-hover shadow-sm">
                     <div class="card-body icheck-success row">
-                        <input :id="'cc-' + cc_id" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" v-model="paymentMethod" @change="updatePaymentMethod()" />
-                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
+                        <input :id="'cc-'+cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc'+cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
+                        <label :for="'cc-'+cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                         <div class="col-md-2 pb-2">
                             <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" :title="cc_detail.verified ? 'Verified' : 'Not Verified'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))" :id="'unver_' + cc_id"><i class="fa fa-exclamation-triangle"></i> Verify</a>
+                            <a v-if="cc_detail.verified == false" :id="'unver_'+cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
                             <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
                             <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>
@@ -281,16 +281,16 @@ accountStore.load();
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch3" name="cc_auto" v-model="cc_auto_checked" @change="updatePaymentMethod()" />
+                        <input id="customSwitch3" v-model="cc_auto_checked" type="checkbox" class="custom-control-input" name="cc_auto" @change="updatePaymentMethod()" />
                         <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
+    <div id="AddClick" class="d-none" data-toggle="modal" data-target="#add-card"></div>
     <!--ADD CC FORM IN MODAL-->
-    <div class="modal fade" id="add-card" style="display: none" aria-hidden="true">
+    <div id="add-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
@@ -302,7 +302,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" v-model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit creditcard number')" oninput="setCustomValidity('')" />
+                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit creditcard number')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@ accountStore.load();
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" v-model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                            <input id="exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -328,7 +328,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')" />
+                                    <input v-model="contFields.name" type="text" name="name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -336,7 +336,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" v-model="contFields.address" placeholder="Address line" />
+                                    <input v-model="contFields.address" type="text" name="address" placeholder="Address line" />
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -344,13 +344,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" v-model="contFields.city" placeholder="City" />
+                                    <input v-model="contFields.city" type="text" name="city" placeholder="City" />
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" v-model="contFields.state" placeholder="State" />
+                                    <input v-model="contFields.state" type="text" name="state" placeholder="State" />
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -358,7 +358,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
+                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -366,7 +366,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" />
+                                    <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" />
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -380,22 +380,22 @@ accountStore.load();
         </div>
     </div>
     <!--ADD CC FORM IN MODAL-->
-    <div class="d-none" id="EditClick" data-toggle="modal" data-target="#edit-card"></div>
+    <div id="EditClick" class="d-none" data-toggle="modal" data-target="#edit-card"></div>
     <!--EDIT CC FORM IN MODAL-->
-    <div class="modal fade" id="edit-card" style="display: none" aria-hidden="true">
+    <div id="edit-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 class="modal-title">Update CreditCard</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="payment_types" method="post" class="form-card" id="EditForm">
+                    <form id="EditForm" action="payment_types" method="post" class="form-card">
                         <input type="hidden" name="action" value="edit" />
-                        <input id="e_cc_idx" type="hidden" name="idx" v-model="editCcIdx" />
+                        <input id="e_cc_idx" v-model="editCcIdx" type="hidden" name="idx" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" v-model="contFields.cc" id="e_cr_no" name="cc" required readonly disabled />
+                                    <input id="e_cr_no" v-model="contFields.cc" type="text" name="cc" required readonly disabled />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -405,7 +405,7 @@ accountStore.load();
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" v-model="contFields.cc_exp" id="e_exp" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                            <input id="e_exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -421,7 +421,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" disabled />
+                                    <input v-model="contFields.name" type="text" name="name" placeholder="Name on card" disabled />
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -429,7 +429,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" v-model="contFields.address" placeholder="Address line" disabled />
+                                    <input v-model="contFields.address" type="text" name="address" placeholder="Address line" disabled />
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -437,13 +437,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" v-model="contFields.city" placeholder="City" disabled />
+                                    <input v-model="contFields.city" type="text" name="city" placeholder="City" disabled />
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" v-model="contFields.state" placeholder="State" disabled />
+                                    <input v-model="contFields.state" type="text" name="state" placeholder="State" disabled />
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -451,7 +451,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -459,7 +459,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" disabled />
+                                    <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" disabled />
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -474,18 +474,18 @@ accountStore.load();
     </div>
     <!--EDIT CC FORM IN MODAL-->
     <!-- VERIFY CC FORM -->
-    <div class="d-none" id="VerifyFormStep1" data-toggle="modal" data-target="#verify-card-1"></div>
+    <div id="VerifyFormStep1" class="d-none" data-toggle="modal" data-target="#verify-card-1"></div>
     <!--EDIT CC FORM IN MODAL-->
-    <div class="modal fade" id="verify-card-1" style="display: none" aria-hidden="true">
+    <div id="verify-card-1" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="payment_types" method="post" class="form-card" id="VerifyForm">
+                    <form id="VerifyForm" action="payment_types" method="post" class="form-card">
                         <input type="hidden" name="action" value="verify" />
-                        <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="" />
+                        <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
@@ -517,18 +517,18 @@ accountStore.load();
     </div>
     <!-- END VERIFY CC FORM -->
     <!-- VERIFY CC FORM -->
-    <div class="d-none" id="VerifyClick" data-toggle="modal" data-target="#verify-card"></div>
+    <div id="VerifyClick" class="d-none" data-toggle="modal" data-target="#verify-card"></div>
     <!--EDIT CC FORM IN MODAL-->
-    <div class="modal fade" id="verify-card" style="display: none" aria-hidden="true">
+    <div id="verify-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="payment_types" method="post" class="form-card" id="VerifyForm">
+                    <form id="VerifyForm" action="payment_types" method="post" class="form-card">
                         <input type="hidden" name="action" value="verify" />
-                        <input class="v_cc_idx" id="v_cc_idx" type="hidden" name="idx" value="" />
+                        <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>

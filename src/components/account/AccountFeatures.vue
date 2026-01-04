@@ -49,7 +49,7 @@ async function updateFeatures() {
             <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateFeatures">
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
-                        <input type="checkbox" name="disable_reinstall" value="1" id="disreins" v-model="data.disable_reinstall" />
+                        <input id="disreins" v-model="data.disable_reinstall" type="checkbox" name="disable_reinstall" value="1" />
                         <label for="disreins"
                             >Disable Reinstalls
                             <div style="font-weight: normal">Note: To disable reinstall create new ticket, our support team will help</div>
@@ -58,7 +58,7 @@ async function updateFeatures() {
                 </div>
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
-                        <input type="checkbox" name="disable_reset" value="1" id="disreset" v-model="data.disable_reset" />
+                        <input id="disreset" v-model="data.disable_reset" type="checkbox" name="disable_reset" value="1" />
                         <label for="disreset">Disable (Forgot your Password) Password Resets.</label>
                     </div>
                 </div>

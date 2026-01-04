@@ -54,13 +54,13 @@ const abuse = '';
                         <div class="form-group row">
                             <label for="user_ip" class="col-sm-4 col-form-label">Subject</label>
                             <div class="col-sm-8">
-                                <input type="text" name="subject" class="form-control form-control-sm" placeholder="Subject" v-model="subject" />
+                                <input v-model="subject" type="text" name="subject" class="form-control form-control-sm" placeholder="Subject" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="message" class="col-sm-4 col-form-label">Message</label>
                             <div class="col-sm-8">
-                                <textarea name="message" class="form-control form-control-sm" rows="5" placeholder="Message" v-model="message"></textarea>
+                                <textarea v-model="message" name="message" class="form-control form-control-sm" rows="5" placeholder="Message"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">

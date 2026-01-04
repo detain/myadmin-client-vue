@@ -29,7 +29,7 @@ function submitForm() {
         let postData = {
             url: url.value,
         };
-        fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/insert_cd', postData).then((response: any) => {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/insert_cd`, postData).then((response: any) => {
             console.log('api success');
             console.log(response);
             Swal.fire({
@@ -42,7 +42,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -59,7 +59,7 @@ function submitForm() {
                             {{ action === 'enable_cd' ? 'Enable CDROM Drive' : 'Insert ISO Image In CDROM Drive' }}
                         </h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ function submitForm() {
                                     <label for="slices" class="col-form-label">Enter URL</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" name="url" v-model="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL" />
+                                    <input v-model="url" type="text" name="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL" />
                                 </div>
                             </div>
                         </div>

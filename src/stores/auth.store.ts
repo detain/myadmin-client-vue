@@ -83,7 +83,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const response = await fetchWrapper.get(baseUrl + '/login');
+                const response = await fetchWrapper.get(`${baseUrl}/login`);
                 this.logo = response.logo;
                 this.captcha = response.captcha;
                 this.language = response.language;
@@ -97,7 +97,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const response = await fetchWrapper.get(baseUrl + '/captcha');
+                const response = await fetchWrapper.get(`${baseUrl}/captcha`);
                 this.captcha = response.captcha;
             } catch (error: any) {
                 console.log('error:');
@@ -108,7 +108,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const user = await fetchWrapper.post(baseUrl + '/login', loginParams);
+                const user = await fetchWrapper.post(`${baseUrl}/login`, loginParams);
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
@@ -139,7 +139,7 @@ export const useAuthStore = defineStore({
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                const user = await fetchWrapper.post(baseUrl + '/signup', signupParms);
+                const user = await fetchWrapper.post(`${baseUrl}/signup`, signupParms);
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
@@ -174,7 +174,7 @@ n,
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                await fetchWrapper.get(baseUrl + '/logout');
+                await fetchWrapper.get(`${baseUrl}/logout`);
             } catch (error: any) {
                 console.log('error:');
                 console.log(error);

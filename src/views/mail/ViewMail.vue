@@ -35,16 +35,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'Mail'],
+        [`/${moduleLink(module)}`, 'Mail'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Mail ' + id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Mail ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Mail ' + id);
-        siteStore.setTitle('View Mail ' + id);
+        siteStore.setPageHeading(`View Mail ${id}`);
+        siteStore.setTitle(`View Mail ${id}`);
     } else {
-        siteStore.setPageHeading('Mail ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Mail ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`Mail ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Mail ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -56,7 +56,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -65,7 +65,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -156,7 +156,7 @@ const statusClass = computed(() => {
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
-        <div v-else-if="link == 'cancel'" class="col"><Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>7</div>
+        <div v-else-if="link == 'cancel'" class="col"><Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>7</div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
@@ -198,7 +198,7 @@ const statusClass = computed(() => {
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -247,12 +247,12 @@ const statusClass = computed(() => {
             </div>
         </div>
     </template>
-    <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="commentForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.mail_id}`">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                        <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
@@ -261,7 +261,7 @@ const statusClass = computed(() => {
                         <input type="hidden" name="edit_comment" value="2" />
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.mail_comment"></textarea>
+                            <textarea id="message-text" v-model="serviceInfo.mail_comment" class="form-control" rows="5" name="comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -45,9 +45,9 @@ siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module) + '/', 'Rapid Deploy Servers'],
+    [`/${moduleLink(module)}/`, 'Rapid Deploy Servers'],
 ]);
-siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
+siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Qs ${id}`);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
@@ -70,16 +70,16 @@ function loadLink(newLink: string) {
     linkDisplay.value = false;
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'VPS'],
+        [`/${moduleLink(module)}`, 'VPS'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View VPS ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View VPS ' + id);
-        siteStore.setTitle('View VPS ' + id);
+        siteStore.setPageHeading(`View VPS ${id}`);
+        siteStore.setTitle(`View VPS ${id}`);
     } else {
-        siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             qsStore.queue(String(id), newLink);
             Swal.fire({
@@ -98,7 +98,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -107,7 +107,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -204,7 +204,7 @@ function loadLink(newLink: string) {
             <Backups :id="id" :module="module" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>
@@ -225,7 +225,7 @@ function loadLink(newLink: string) {
             <Invoices :id="id" :module="module"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
@@ -237,7 +237,7 @@ function loadLink(newLink: string) {
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
-            <SetupVnc :id="id" :module="module" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></SetupVnc>
+            <SetupVnc :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></SetupVnc>
         </div>
         <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
@@ -299,9 +299,9 @@ function loadLink(newLink: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -314,7 +314,7 @@ function loadLink(newLink: string) {
                                         Comment:
                                         <span v-if="serviceInfo.qs_comment">{{ serviceInfo.qs_comment }}</span>
                                         <span v-else>none</span>
-                                        <span @click="openCommentForm" title="Edit Comment" style="cursor: pointer"><i class="fa fa-pencil my-2 text-sm"></i></span>
+                                        <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm"><i class="fa fa-pencil my-2 text-sm"></i></span>
                                     </h5>
                                 </span>
                             </div>
@@ -354,7 +354,7 @@ function loadLink(newLink: string) {
                                         <tr>
                                             <td style="width: 75%">
                                                 <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage + '%' }"></div>
+                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage+'%' }"></div>
                                                 </div>
                                             </td>
                                             <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
@@ -443,7 +443,7 @@ function loadLink(newLink: string) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -571,12 +571,12 @@ function loadLink(newLink: string) {
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div id="commentForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <form class="inline" @submit.prevent="submitComment">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                            <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -587,7 +587,7 @@ function loadLink(newLink: string) {
                             <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
-                                <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.qs_comment"></textarea>
+                                <textarea id="message-text" v-model="serviceInfo.qs_comment" class="form-control" rows="5" name="comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

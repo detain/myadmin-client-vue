@@ -57,12 +57,12 @@ onMounted(() => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-server"></i> Additional VPS Drive Space</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form v-on:submit.prevent="submitForm">
+                    <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="buy_hd_space" />
                         <div class="form-group">
                             <div class="row">
@@ -70,7 +70,7 @@ onMounted(() => {
                                     <label for="slices" class="col-form-label">Cost Per Month ({{ currency_symbol }})</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" id="hdamount" class="form-control form-control-sm" readonly :value="getAmount()" />
+                                    <input id="hdamount" type="text" class="form-control form-control-sm" readonly :value="getAmount()" />
                                     <span class="text-muted text-sm"
                                         >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
                                     >
@@ -83,7 +83,7 @@ onMounted(() => {
                                     <label for="slices" class="col-form-label">Additional Space</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input name="size" id="size" type="text" class="form-control form-control-sm" readonly :value="additional_hd ? additional_hd : ''" />
+                                    <input id="size" name="size" type="text" class="form-control form-control-sm" readonly :value="additional_hd ? additional_hd : ''" />
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ onMounted(() => {
                                     <label for="amount" class="col-form-label">Select Space</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="range" class="form-range form-control form-control-sm" min="1" max="100" step="1" id="hdslider" name="slices" v-model="selectedSpace" />
+                                    <input id="hdslider" v-model="selectedSpace" type="range" class="form-range form-control form-control-sm" min="1" max="100" step="1" name="slices" />
                                     <span class="text-muted text-sm">Minimum 1 upto 100GB Additional HD Space can be purchased</span>
                                 </div>
                             </div>

@@ -42,7 +42,7 @@ function submitForm() {
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
@@ -54,12 +54,12 @@ function submitForm() {
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="hostname">Server</label>
                                     <div class="col-sm-6 input-group">
-                                        <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="hostname" disabled />
+                                        <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
                                     </div>
                                 </div>
                                 <div class="text-center">
                                     <div class="icheck-success d-inline">
-                                        <input id="confirm_yes" type="checkbox" class="form-check-input" name="confirm" value="yes" v-model="confirm" />
+                                        <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input" name="confirm" value="yes" />
                                         <label class="more-info" for="confirm_yes">Do you really want to take backup?</label>
                                     </div>
                                 </div>

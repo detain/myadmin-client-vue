@@ -292,7 +292,7 @@ export const useSiteStore = defineStore({
             }
         },
         async loadInfo(): Promise<void> {
-            fetchWrapper.get(baseUrl + '/info').then((response) => {
+            fetchWrapper.get(`${baseUrl}/info`).then((response) => {
                 this.modules = response.modules;
                 this.services = response.services;
                 this.serviceTypes = response.serviceTypes;
@@ -312,7 +312,7 @@ export const useSiteStore = defineStore({
         },
         setTitle(value: string) {
             this.title = value;
-            document.title = this.title + ' | My InterServer';
+            document.title = `${this.title} | My InterServer`;
         },
         setSideMenu(value: string) {
             this.sidemenu = value;

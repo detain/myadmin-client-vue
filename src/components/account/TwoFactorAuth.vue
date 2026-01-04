@@ -75,7 +75,7 @@ async function get2faKey() {
             <form @submit.prevent="update2fa">
                 <div class="row justify-content-center">
                     <div class="icheck-success d-inline">
-                        <input type="checkbox" id="giChkSqr" value="1" name="2fa_google" v-model="data['2fa_google_enabled']" />
+                        <input id="giChkSqr" v-model="data['2fa_google_enabled']" type="checkbox" value="1" name="2fa_google" />
                         <label for="giChkSqr">Enable Google Two Factor Authentication</label>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ async function get2faKey() {
                             <i class="fa fas fa-file-export">&nbsp;</i>
                             You should backup this code for recovery.
                         </div>
-                        <input v-if="!data['2fa_google_enabled']" v-model="googleCode" type="text" class="form-control mt-4" name="2fa_google_code" id="2fa_google_code" placeholder="Enter Code from Authenticator" />
+                        <input v-if="!data['2fa_google_enabled']" id="2fa_google_code" v-model="googleCode" type="text" class="form-control mt-4" name="2fa_google_code" placeholder="Enter Code from Authenticator" />
                     </div>
                     <div class="col-md-3 text-center">
                         <img :src="data['2fa_google_qr']" alt="Google QR Code" />

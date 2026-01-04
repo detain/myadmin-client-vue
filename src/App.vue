@@ -110,7 +110,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                     <router-link to="/cart" class="nav-link" title="Cart"><i class="fa fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fa fa-power-off"></i></button>
                 </li>
             </ul>
         </nav>

@@ -43,7 +43,7 @@ async function onSubmit(values: any) {
                 <div class="card m-3">
                     <h4 class="card-header">Login</h4>
                     <div class="card-body">
-                        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
+                        <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema" @submit="onSubmit">
                             <div class="form-group">
                                 <label>Username</label>
                                 <Field name="login" type="text" class="form-control" :class="{ 'is-invalid': errors.login }" />
@@ -54,7 +54,7 @@ async function onSubmit(values: any) {
                                 <Field name="passwd" type="password" class="form-control" :class="{ 'is-invalid': errors.passwd }" />
                                 <div class="invalid-feedback">{{ errors.passwd }}</div>
                             </div>
-                            <div class="form-group" v-if="opts.tfa">
+                            <div v-if="opts.tfa" class="form-group">
                                 <label>2-Factor Authentication Code</label>
                                 <Field name="tfa" type="text" class="form-control" :class="{ 'is-invalid': errors.tfa }" />
                                 <div class="invalid-feedback">{{ errors.tfa }}</div>

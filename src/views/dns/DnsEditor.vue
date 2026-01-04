@@ -16,7 +16,7 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['/dns', 'DNS Manager'],
 ]);
-siteStore.addBreadcrum('/dns/' + id, 'DNS Editor');
+siteStore.addBreadcrum(`/dns/${id}`, 'DNS Editor');
 const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);
 /*DataTable.use(DataTablesCore);*/
@@ -83,7 +83,7 @@ async function showAddDnsRecord(event: Event) {
 async function editDnsRecord(event: Event) {
     let response;
     try {
-        fetchWrapper.post(baseUrl + '/dns/' + id + '/' + recordId.value, recordRow.value).then((response) => {
+        fetchWrapper.post(`${baseUrl}/dns/${id}/${recordId.value}`, recordRow.value).then((response) => {
             console.log('api success');
             console.log(response);
             loadDns();
@@ -97,7 +97,7 @@ async function editDnsRecord(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -106,7 +106,7 @@ async function addDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper
-            .post(baseUrl + '/dns/' + id, {
+            .post(`${baseUrl}/dns/${id}`, {
                 name: name.value,
                 type: type.value,
                 content: content.value,
@@ -127,7 +127,7 @@ async function addDnsRecord(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -156,7 +156,7 @@ async function deleteRecord(event: Event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id + '/' + record).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/dns/${id}/${record}`).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns();
@@ -170,7 +170,7 @@ async function deleteRecord(event: Event) {
                 console.log(error);
                 Swal.fire({
                     icon: 'error',
-                    html: 'Got error ' + error.message,
+                    html: `Got error ${error.message}`,
                 });
             }
         },
@@ -179,7 +179,7 @@ async function deleteRecord(event: Event) {
 
 const loadDns = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns/' + id);
+        const response = await fetchWrapper.get(`${baseUrl}/dns/${id}`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -205,9 +205,9 @@ loadDns();
         </div>
         <div class="card-body">
             <form method="post">
-                <input type="hidden" name="id" id="domain_id" value="35626" />
+                <input id="domain_id" type="hidden" name="id" value="35626" />
             </form>
-            <table :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+            <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" width="100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -215,7 +215,7 @@ loadDns();
                             <form class="form-inline">
                                 <div class="form-group name">
                                     Name:&nbsp;&nbsp;
-                                    <input type="text" class="form-control no-shadow" id="searchName" placeholder="Search" autocomplete="off" />
+                                    <input id="searchName" type="text" class="form-control no-shadow" placeholder="Search" autocomplete="off" />
                                 </div>
                             </form>
                         </th>
@@ -224,7 +224,7 @@ loadDns();
                             <form class="form-inline">
                                 <div class="form-group content">
                                     Content:&nbsp;&nbsp;
-                                    <input type="text" class="form-control no-shadow" id="searchContent" placeholder="Search" autocomplete="off" />
+                                    <input id="searchContent" type="text" class="form-control no-shadow" placeholder="Search" autocomplete="off" />
                                 </div>
                             </form>
                         </th>
@@ -237,25 +237,25 @@ loadDns();
                     <tr>
                         <td class="p-0"></td>
                     </tr>
-                    <tr id="add_record" style="display: none" v-show="showingAddRecord">
+                    <tr v-show="showingAddRecord" id="add_record" style="display: none">
                         <td>New</td>
                         <td>
                             <div class="input-group">
-                                <input id="addName" type="text" class="form-control form-control-sm" data-regex="^([^.]+\.)*[^.]*$" v-model="name" />
+                                <input id="addName" v-model="name" type="text" class="form-control form-control-sm" data-regex="^([^.]+\.)*[^.]*$" />
                                 <input id="add-domain-name" class="form-control form-control-sm" type="text" readonly disabled />
                             </div>
                         </td>
                         <td>
-                            <select id="addType" class="form-control" v-model="type">
+                            <select id="addType" v-model="type" class="form-control">
                                 <option v-for="(type, index) in recordTypes" :key="index" :value="type">{{ type }}</option>
                             </select>
                         </td>
-                        <td><input id="addContent" type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="content" /></td>
-                        <td><input id="addPrio" type="text" class="form-control form-control-sm" placeholder="0" size="1" data-regex="^[0-9]*$" v-model="prio" /></td>
-                        <td><input id="addTtl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$" v-model="ttl" /></td>
+                        <td><input id="addContent" v-model="content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
+                        <td><input id="addPrio" v-model="prio" type="text" class="form-control form-control-sm" placeholder="0" size="1" data-regex="^[0-9]*$" /></td>
+                        <td><input id="addTtl" v-model="ttl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$" /></td>
                         <td colspan="3" class="text-center">
-                            <button @click.prevent="addDnsRecord" class="btn btn-success btn-sm">&nbsp;Add&nbsp;</button>
-                            <button @click.prevent="cancelAddRecord" class="btn btn-danger btn-xs printer-hidden" title="Cancel Add"><i class="fa fa-fw fa-times"></i></button>
+                            <button class="btn btn-success btn-sm" @click.prevent="addDnsRecord">&nbsp;Add&nbsp;</button>
+                            <button class="btn btn-danger btn-xs printer-hidden" title="Cancel Add" @click.prevent="cancelAddRecord"><i class="fa fa-fw fa-times"></i></button>
                         </td>
                     </tr>
                     <tr v-for="(row, rowIndex) in data" :key="rowIndex">
@@ -263,21 +263,21 @@ loadDns();
                             <td>{{ row.id }}</td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" v-model="row.name" />
+                                    <input v-model="row.name" type="text" class="form-control form-control-sm" data-regex="^([^.]+.)*[^.]*$" />
                                     <input class="form-control form-control-sm" value="" disabled readonly />
                                 </div>
                             </td>
                             <td>
-                                <select class="form-control" style="width: 100% !important" v-model="row.type">
+                                <select v-model="row.type" class="form-control" style="width: 100% !important">
                                     <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
                                 </select>
                             </td>
-                            <td><input type="text" class="form-control form-control-sm" data-regex="^.+$" v-model="row.content" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" v-model="row.prio" /></td>
-                            <td><input type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" v-model="row.ttl" /></td>
+                            <td><input v-model="row.content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
+                            <td><input v-model="row.prio" type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" /></td>
+                            <td><input v-model="row.ttl" type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" /></td>
                             <td>
-                                <a href="#" @click.prevent="editDnsRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
-                                <a href="#" @click.prevent="cancelEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record" @click.prevent="editDnsRecord"><i class="fa fa-fw fa-check" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit" @click.prevent="cancelEditRecord"><i class="fa fa-fw fa-times" :data-id="row.id"></i></a>
                             </td>
                         </template>
                         <template v-else>
@@ -288,8 +288,8 @@ loadDns();
                             <td>{{ row.prio }}</td>
                             <td>{{ row.ttl }}</td>
                             <td>
-                                <a href="#" @click.prevent="showEditRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog" :data-id="row.id"></i></a>
-                                <a href="#" @click.prevent="deleteRecord" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain" @click.prevent="showEditRecord"><i class="fa fa-fw fa-cog" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteRecord"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                             </td>
                         </template>
                     </tr>

@@ -128,9 +128,9 @@ export const useBackupStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.backupList = await fetchWrapper.get(baseUrl + '/backups');
+                this.backupList = await fetchWrapper.get(`${baseUrl}/backups`);
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -142,7 +142,7 @@ export const useBackupStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/backups/' + id);
+                const response = await fetchWrapper.get(`${baseUrl}/backups/${id}`);
                 this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;

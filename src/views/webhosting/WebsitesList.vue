@@ -62,7 +62,7 @@ function crud_export(event: any): void {
 
 const loadWebsites = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/' + moduleLink(module));
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -84,7 +84,7 @@ loadWebsites();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/' + moduleLink(module) + '/order'" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/order'" title="Order Website Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -129,7 +129,7 @@ loadWebsites();
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -143,7 +143,7 @@ loadWebsites();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -159,14 +159,14 @@ loadWebsites();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.website_id }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.website_id">{{ row.website_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.website_id">{{ row.website_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>{{ row.website_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.website_comment }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.website_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

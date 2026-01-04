@@ -119,9 +119,9 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.mailList = await fetchWrapper.get(baseUrl + '/mail');
+                this.mailList = await fetchWrapper.get(`${baseUrl}/mail`);
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -133,7 +133,7 @@ export const useMailStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/mail/' + id);
+                const response = await fetchWrapper.get(`${baseUrl}/mail/${id}`);
                 this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;

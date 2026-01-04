@@ -29,7 +29,7 @@ usersStore.getAll();
                     <td>{{ user.username }}</td>
                     <td style="white-space: nowrap">
                         <router-link :to="`/users/edit/${user.id}`" class="btn btn-sm btn-primary mr-1">Edit</router-link>
-                        <button @click="usersStore.delete(user.id as number)" class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting">
+                        <button class="btn btn-sm btn-danger btn-delete-user" :disabled="user.isDeleting" @click="usersStore.delete(user.id as number)">
                             <span v-if="user.isDeleting" class="spinner-border spinner-border-sm"></span>
                             <span v-else>Delete</span>
                         </button>
