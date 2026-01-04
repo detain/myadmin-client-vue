@@ -179,8 +179,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 
 <style>
 @import './assets/css/fontawesome-kit.min.css';
-/* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
-/* '/css/misha-theme/jquery-ui.css'; */
+@import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import './assets/templates/menu/dark/menu.css';
@@ -192,7 +191,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import 'jqvmap-novulnerability/dist/jqvmap.min.css';
 @import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
-/* '/templates/adminlte/jquery.passwordRequirements.css'; */
+@import './assets/templates/adminlte/jquery.passwordRequirements.css';
 @import './assets/templates/adminlte/custom_styles.css';
 @import 'admin-lte/dist/css/adminlte.min.css';
 @import './assets/templates/my/style.css';
