@@ -93,7 +93,7 @@ Follow instructions for your platform after downloading the respective installer
 # AppImage
 chmod +x MyApp-*.AppImage
 ./MyApp-*.AppImage
-
+```
 
 ### Page Status
 
