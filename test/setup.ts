@@ -1,4 +1,4 @@
-// vitest.setup.ts
+// setup.ts
 import { vi, beforeAll, afterAll, afterEach } from 'vitest';
 import { server } from './src/mocks/server';
 
