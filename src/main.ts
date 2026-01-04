@@ -8,6 +8,16 @@ import { createHead } from '@unhead/vue';
 import App from './App.vue';
 import { router } from './router';
 
+import $ from 'jquery';
+
+(window as any).$ = $;
+(window as any).jQuery = $;
+
+//import 'jquery-ui';
+import 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'admin-lte/dist/js/adminlte.js';
+
 const app = createApp(App);
 const pinia = createPinia();
 const head = createHead();

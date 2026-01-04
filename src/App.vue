@@ -8,14 +8,12 @@ import Alert from './components/Alert.vue';
 import { useAuthStore } from './stores/auth.store';
 import { useSiteStore } from './stores/site.store';
 
-import $ from 'jquery';
-//import 'jquery-ui';
-import 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
-import 'admin-lte/dist/js/adminlte.js';
 import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
-onMounted(function () {});
+
+onMounted(function () {
+//    $('[data-widget="pushmenu"]').PushMenu();
+});
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -47,39 +45,43 @@ $(document).ready(function () {
         }
     );
 });
-let AdminLTESidebarTweak = {
-    options: {
-        EnableRemember: true,
-        NoTransitionAfterReload: false,
-        //Removes the transition after page reload.
-    },
-};
-$('.collapse_menu').on('click', function () {
-    if (AdminLTESidebarTweak.options.EnableRemember) {
-        let toggleState = 'closed';
-        if ($('body').hasClass('sidebar-collapse')) {
-            toggleState = 'opened';
-        }
-        document.cookie = 'toggleState=' + toggleState;
-    }
-});
-if (AdminLTESidebarTweak.options.EnableRemember) {
-    const re = new RegExp('toggleState' + '=([^;]+)');
-    const value = re.exec(document.cookie);
-    let toggleState = value != null ? unescape(value[1]) : null;
-    if (toggleState == 'closed') {
-        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
-            $('body')
-                .addClass('sidebar-collapse hold-transition')
-                .delay(100)
-                .queue(function () {
-                    $(this).removeClass('hold-transition');
-                });
-        } else {
-            $('body').addClass('sidebar-collapse');
-        }
-    }
+interface SidebarTweakOptions {
+  EnableRemember: boolean;
+  NoTransitionAfterReload: boolean;
 }
+
+const AdminLTESidebarTweak = {
+  options: {
+    EnableRemember: true,
+    NoTransitionAfterReload: false
+  } as SidebarTweakOptions
+};
+
+// Remember toggle state
+$(document).on('click', '.collapse_menu', function () {
+  if (!AdminLTESidebarTweak.options.EnableRemember) return;
+  const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
+  document.cookie = `toggleState=${toggleState}; path=/`;
+});
+
+// Restore state on load
+$(function () {
+  if (!AdminLTESidebarTweak.options.EnableRemember) return;
+  const match = document.cookie.match(/toggleState=([^;]+)/);
+  const toggleState = match ? decodeURIComponent(match[1]) : null;
+
+  if (toggleState === 'closed') {
+    if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+      $('body').addClass('sidebar-collapse hold-transition').delay(100).queue(function (next) {
+          $(this).removeClass('hold-transition');
+          next();
+      });
+    } else {
+      $('body').addClass('sidebar-collapse');
+    }
+  }
+});
+
 if (window.location.href.indexOf('view_domains_list') > -1) {
     $('#crud-table th:nth-child(1)').css('display', 'none');
     $('#crud-table tbody td:nth-child(1)').css('display', 'none');
@@ -177,8 +179,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 
 <style>
 @import './assets/css/fontawesome-kit.min.css';
-/* '/node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.min.css'; */
-/* '/css/misha-theme/jquery-ui.css'; */
+@import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import './assets/templates/menu/dark/menu.css';
@@ -190,10 +191,16 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import 'jqvmap-novulnerability/dist/jqvmap.min.css';
 @import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
-/* '/templates/adminlte/jquery.passwordRequirements.css'; */
+@import './assets/templates/adminlte/jquery.passwordRequirements.css';
 @import './assets/templates/adminlte/custom_styles.css';
 @import 'admin-lte/dist/css/adminlte.min.css';
 @import './assets/templates/my/style.css';
 @import './assets/templates/my/style2.css';
 @import '@material-design-icons/font/filled.css';
+
+.main-header {
+  position: relative;
+  z-index: 1050;
+}
+
 </style>

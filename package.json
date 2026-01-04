@@ -159,9 +159,7 @@
     "yaml": "^2.3",
     "yup": "*"
   },
-  "resolutions": {
-    "sweetalert2": "11.4.8"
-  },
+  "resolutions": {},
   "suggest": {
     "@tanstack/vue-query": "*",
     "@vitejs/plugin-legacy": "*",
