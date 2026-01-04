@@ -1,16 +1,12 @@
-import ContactInfo from '../views/account/ContactInfo.vue';
-import AccountSettings from '../views/account/AccountSettings.vue';
-import ChangePass from '../views/account/ChangePass.vue';
-import ChangeUsername from '../views/account/ChangeUsername.vue';
 
 export default {
     path: '/account',
     //component: Layout,
     children: [
-        //{ path: '', component: ContactInfo },
-        { path: 'info', component: ContactInfo },
-        { path: 'pass', component: ChangePass },
-        { path: 'username', component: ChangeUsername },
-        { path: 'settings', component: AccountSettings },
+        //{ path: '', component: () => import('../views/account/ContactInfo.vue') },
+        { path: 'info', component: () => import('../views/account/ContactInfo.vue') },
+        { path: 'pass', component: () => import('../views/account/ChangePass.vue') },
+        { path: 'username', component: () => import('../views/account/ChangeUsername.vue') },
+        { path: 'settings', component: () => import('../views/account/AccountSettings.vue') },
     ],
 };
