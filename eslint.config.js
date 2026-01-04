@@ -4,8 +4,12 @@ import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import vueParser from 'vue-eslint-parser';
 import prettier from 'eslint-config-prettier';
+import globals from 'globals';
 
 export default [
+    {
+        ignores: ['dist/**', 'node_modules/**'],
+    },
     // ------------------------------------------------------------
     // ESLint core recommended
     // ------------------------------------------------------------
@@ -24,6 +28,9 @@ export default [
 
         languageOptions: {
             parser: vueParser,
+            globals: {
+                ...globals.browser,
+            },
             parserOptions: {
                 parser: tsParser,
                 ecmaVersion: 'latest',

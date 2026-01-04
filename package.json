@@ -85,6 +85,7 @@
         "eslint-plugin-vue": "^10.6.2",
         "font-awesome": "^4.7",
         "font-awesome-animation": "*",
+        "globals": "^17.0.0",
         "husky": "*",
         "jquery": "^3.7.1",
         "jquery-simple-pass-meter": "*",
