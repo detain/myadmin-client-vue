@@ -15,8 +15,8 @@ siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Rapid Deploy Servers List'],
-    ['/' + moduleLink(module) + '/order', 'Order Rapid Deploy Server'],
+    [`/${moduleLink(module)}`, 'Rapid Deploy Servers List'],
+    [`/${moduleLink(module)}/order`, 'Order Rapid Deploy Server'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -106,7 +106,7 @@ async function onSubmitConfirmation() {
                 console.log('qs order placed');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -154,7 +154,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
+fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
@@ -179,7 +179,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                     </div>
                     <div class="card-body">
                         <form id="quickserver_form" method="post" class="quickserver_form_init" @submit.prevent="onSubmit">
-                            <input type="hidden" name="rootpass" v-model="rootpass" />
+                            <input v-model="rootpass" type="hidden" name="rootpass" />
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <table v-if="Object.keys(serverDetails).length > 0" class="table-sm table text-center">
@@ -195,8 +195,8 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                             <tr v-for="(details, value) in serverDetails" :key="value">
                                                 <td>
                                                     <div class="icheck-success d-inline">
-                                                        <input :id="'qs-' + value" type="radio" class="form-check-input" name="quickserver" v-model="qsId" :value="value" />
-                                                        <label class="text-bold my-1" :for="'qs-' + value">&nbsp;</label>
+                                                        <input :id="'qs-'+value" v-model="qsId" type="radio" class="form-check-input" name="quickserver" :value="value" />
+                                                        <label class="text-bold my-1" :for="'qs-'+value">&nbsp;</label>
                                                     </div>
                                                 </td>
                                                 <td>{{ value }}</td>
@@ -218,7 +218,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select class="form-control select2" v-model="osDistro">
+                                    <select v-model="osDistro" class="form-control select2">
                                         <option v-for="(templateData, templateDistro, index) in osTemplates" :key="index" :value="templateDistro">{{ templateDistro }}</option>
                                     </select>
                                 </div>
@@ -226,14 +226,14 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select class="form-control select2" v-model="osVersion">
+                                    <select v-model="osVersion" class="form-control select2">
                                         <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Root Password</label>
-                                <input type="password" class="form-control form-control-sm col-md-9" name="rootpass" id="mypassword" placeholder="Root Password" v-model="rootpass" />
+                                <input id="mypassword" v-model="rootpass" type="password" class="form-control form-control-sm col-md-9" name="rootpass" placeholder="Root Password" />
                                 <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
                             </div>
                             <div class="form-group row">
@@ -293,7 +293,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                     <tr>
                                         <th>
                                             <div class="text-bold float-left" style="position: relative; top: 5px">Server Name</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="step = 'orderform'" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="step = 'orderform'"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold">{{ serverDetails[qsId].cpu }}</div>
@@ -348,7 +348,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-bold total_cost text-lg" id="totalprice"></div>
+                                            <div id="totalprice" class="text-bold total_cost text-lg"></div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -359,7 +359,7 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span id="totalprice" class="total_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>

@@ -83,14 +83,14 @@ onMounted(() => {});
                         <tr>
                             <td>SID</td>
                             <td>
-                                <textarea class="form-control" style="margin-top: 15px" cols="75" rows="2" v-model="sid" placeholder="eg. Home Page, Mailing list"></textarea>
+                                <textarea v-model="sid" class="form-control" style="margin-top: 15px" cols="75" rows="2" placeholder="eg. Home Page, Mailing list"></textarea>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>Landing Page URL</td>
                             <td>
-                                <select class="form-control" id="landing-url" v-model="landingUrl">
+                                <select id="landing-url" v-model="landingUrl" class="form-control">
                                     <option value="">Select</option>
                                     <option value="home">Home Page</option>
                                     <option value="vps">VPS Page</option>
@@ -102,13 +102,13 @@ onMounted(() => {});
                         </tr>
                         <tr v-if="landingUrl === 'custom'" id="cust_url">
                             <td>Custom URL</td>
-                            <td><textarea id="custom_url" name="custom_url" class="form-control" cols="75" rows="4" v-model="customUrl" placeholder="https://www.interserver.net/">https://www.interserver.net/blog</textarea></td>
+                            <td><textarea id="custom_url" v-model="customUrl" name="custom_url" class="form-control" cols="75" rows="4" placeholder="https://www.interserver.net/">https://www.interserver.net/blog</textarea></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>HTML Code</td>
                             <td>
-                                <textarea id="htmcode" class="form-control" readonly editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
+                                <textarea id="htmcode" v-model="htmlCode" class="form-control" readonly editable="false" cols="75" rows="4"></textarea>
                             </td>
                             <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
                         </tr>
@@ -118,7 +118,7 @@ onMounted(() => {});
                     <tbody>
                         <tr>
                             <td>Image Preview</td>
-                            <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
+                            <td><img :src="'https://www.interserver.net/logos/'+imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
                         </tr>
                     </tbody>
                 </table>

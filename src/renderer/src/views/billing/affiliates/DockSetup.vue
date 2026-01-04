@@ -36,7 +36,7 @@ function onSubmit() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/affiliate/dock_setup', {
+            .post(`${baseUrl}/affiliate/dock_setup`, {
                 coupon: data.value.referrer_coupon,
                 title: data.value.affiliate_dock_title,
                 description: data.value.affiliate_dock_description,
@@ -47,7 +47,7 @@ function onSubmit() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success' + response.text,
+                    html: `Success${response.text}`,
                 });
             });
     } catch (error: any) {
@@ -56,7 +56,7 @@ function onSubmit() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.text,
+            html: `Got error ${error.text}`,
         });
     }
 }
@@ -103,7 +103,7 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input v-model="data.referrer_coupon" id="referrer_coupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
+                                <input id="referrer_coupon" v-model="data.referrer_coupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
                             </div>
                         </div>
                         <!-- <div class="form-group row">
@@ -118,13 +118,13 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_title">Title<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input v-model="data.affiliate_dock_title" id="affiliate_dock_title" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
+                                <input id="affiliate_dock_title" v-model="data.affiliate_dock_title" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_description">Description<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <textarea v-model="data.affiliate_dock_description" class="form-control form-control-sm" id="affiliate_dock_description" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
+                                <textarea id="affiliate_dock_description" v-model="data.affiliate_dock_description" class="form-control form-control-sm" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
                             </div>
                         </div>
                         <div class="row justify-content-center">

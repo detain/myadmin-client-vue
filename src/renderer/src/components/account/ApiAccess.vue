@@ -44,9 +44,9 @@ async function generateApiKey() {
             </div>
         </div>
         <div class="card-body">
-            <form @submit.prevent="generateApiKey" enctype="multipart/form-data" action="account_settings">
+            <form enctype="multipart/form-data" action="account_settings" @submit.prevent="generateApiKey">
                 <div class="row">
-                    <textarea rows="8" id="api_key" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : 'No API Key Setup Yet'" v-model="data.api_key"></textarea>
+                    <textarea id="api_key" v-model="data.api_key" rows="8" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : 'No API Key Setup Yet'"></textarea>
                 </div>
                 <hr />
                 <div class="row">

@@ -28,7 +28,7 @@ const countries = ref({});
 async function onSubmit(values: any) {
     try {
         let message;
-        const response = await fetchWrapper.post(baseUrl + '/account', {
+        const response = await fetchWrapper.post(`${baseUrl}/account`, {
             name: data.value.name,
             company: data.value.company,
             address: data.value.address,
@@ -65,7 +65,7 @@ async function onSubmit(values: any) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
+    fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
         countries.value = response;
     });
 } catch (error: any) {
@@ -100,51 +100,51 @@ accountStore.load();
                             <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
                         </div>
                         <div class="col">
-                            <form @submit.prevent="onSubmit" method="POST" action="contact_info">
+                            <form method="POST" action="contact_info" @submit.prevent="onSubmit">
                                 <h4 class="mb-4">Personal Information</h4>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="name">Name</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.name" type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Joe Cool" required autofocus />
+                                        <input id="name" v-model="data.name" type="text" class="form-control form-control-sm" name="name" placeholder="Joe Cool" required autofocus />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="company">Company</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.company" type="text" class="form-control form-control-sm" name="company" id="company" placeholder="Company" required />
+                                        <input id="company" v-model="data.company" type="text" class="form-control form-control-sm" name="company" placeholder="Company" required />
                                     </div>
                                 </div>
                                 <div v-if="data.country === 'IN'" class="form-group row" style="display: flex">
                                     <label class="col-md-3 col-form-label" for="gstin">GSTIN</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" id="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
+                                        <input id="gstin" v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="address">Address Line 1</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.address" type="text" class="form-control form-control-sm" name="address" id="address" placeholder="Address Line 1" required />
+                                        <input id="address" v-model="data.address" type="text" class="form-control form-control-sm" name="address" placeholder="Address Line 1" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="address2">Address Line 2</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" id="address2" placeholder="Address Line 2" />
+                                        <input id="address2" v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" placeholder="Address Line 2" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="city">City, State</label>
                                     <div class="col-md-3">
-                                        <input v-model="data.city" type="text" class="form-control form-control-sm" name="city" id="city" placeholder="City" required />
+                                        <input id="city" v-model="data.city" type="text" class="form-control form-control-sm" name="city" placeholder="City" required />
                                     </div>
                                     <div class="col-md-3">
-                                        <input v-model="data.state" type="text" class="form-control form-control-sm" name="state" id="state" placeholder="State" required />
+                                        <input id="state" v-model="data.state" type="text" class="form-control form-control-sm" name="state" placeholder="State" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="country">Country</label>
                                     <div class="col-md-6">
-                                        <select v-model="data.country" id="country" name="country" class="form-control select2 form-control-sm">
+                                        <select id="country" v-model="data.country" name="country" class="form-control select2 form-control-sm">
                                             <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
                                                 {{ country_name }}
                                             </option>
@@ -154,13 +154,13 @@ accountStore.load();
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="zip">Zipcode</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" id="zip" placeholder="Zipcode" required />
+                                        <input id="zip" v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" placeholder="Zipcode" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="phone">Phone No</label>
                                     <div class="col-md-6">
-                                        <input v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="Phone Number" required />
+                                        <input id="phone" v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" placeholder="Phone Number" required />
                                     </div>
                                 </div>
                                 <hr />
@@ -169,7 +169,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_reset"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input v-model="data.disable_reset" id="disable_reset" type="checkbox" name="disable_reset" value="1" />
+                                            <input id="disable_reset" v-model="data.disable_reset" type="checkbox" name="disable_reset" value="1" />
                                             <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_email_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input v-model="data.disable_email_notifications" id="disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1" />
+                                            <input id="disable_email_notifications" v-model="data.disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1" />
                                             <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_server_notifications"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input id="disable_server_notifications" type="checkbox" v-model="data.disable_server_notifications" value="1" />
+                                            <input id="disable_server_notifications" v-model="data.disable_server_notifications" type="checkbox" value="1" />
                                             <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="disable_reinstall"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
-                                            <input id="disable_reinstall" type="checkbox" v-model="data.disable_reinstall" value="1" />
+                                            <input id="disable_reinstall" v-model="data.disable_reinstall" type="checkbox" value="1" />
                                             <label for="disable_reinstall">Disable Reinstalls.</label>
                                         </div>
                                     </div>
@@ -204,13 +204,13 @@ accountStore.load();
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="email_invoices">Alternate Email for Invoices</label>
                                     <div class="col-md-6">
-                                        <input type="email" class="form-control form-control-sm" name="email_invoices" id="email_invoices" placeholder="Alternative email for sending invoices" v-model="data.email_invoices" />
+                                        <input id="email_invoices" v-model="data.email_invoices" type="email" class="form-control form-control-sm" name="email_invoices" placeholder="Alternative email for sending invoices" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="email_abuse">Alternate Email for Abuse Reports</label>
                                     <div class="col-md-6">
-                                        <input type="email" class="form-control form-control-sm" name="email_abuse" id="email_abuse" placeholder="Alternate Email for Abuse Reports" v-model="data.email_abuse" />
+                                        <input id="email_abuse" v-model="data.email_abuse" type="email" class="form-control form-control-sm" name="email_abuse" placeholder="Alternate Email for Abuse Reports" />
                                     </div>
                                 </div>
                                 <div class="form-group row">

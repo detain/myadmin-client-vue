@@ -28,7 +28,7 @@ const traffic = ref<AffiliateTrafficRow[]>([]);
 onMounted(() => {});
 
 try {
-    fetchWrapper.get(baseUrl + '/affiliate/web_traffic').then((response) => {
+    fetchWrapper.get(`${baseUrl}/affiliate/web_traffic`).then((response) => {
         traffic.value = response;
     });
 } catch (error: any) {
@@ -66,7 +66,7 @@ try {
                                         <td>{{ row.traffic_timestamp }}</td>
                                         <td>{{ row.traffic_ip }}</td>
                                         <td>
-                                            <a class="link" v-if="row.traffic_url != ''" :href="row.traffic_url" target="_blank" :title="row.traffic_url + '(Load Page in New Tab (be careful about cookies being set)'">{{ row.traffic_url }}</a>
+                                            <a v-if="row.traffic_url != ''" class="link" :href="row.traffic_url" target="_blank" :title="row.traffic_url+'(Load Page in New Tab (be careful about cookies being set)'">{{ row.traffic_url }}</a>
                                         </td>
                                     </tr>
                                     <template v-if="row.traffic_referer != ''">

@@ -51,7 +51,7 @@ onMounted(() => {
                         <div class="form-group row justify-content-center mb-4">
                             <label class="col-sm-2 col-form-label text-right">Select<span class="text-danger"> *</span></label>
                             <div class="col-sm-7 input-group">
-                                <select v-model="selectedPeriod" @change="updatePeriod" id="graph_period" name="graph_period" class="form-control form-control-sm select2">
+                                <select id="graph_period" v-model="selectedPeriod" name="graph_period" class="form-control form-control-sm select2" @change="updatePeriod">
                                     <option value="30" :selected="selectedPeriod == 30">Last 30 Days</option>
                                     <option value="90" :selected="selectedPeriod == 90">Last 3 months</option>
                                     <option value="180" :selected="selectedPeriod == 180">Last 6 months</option>

@@ -145,9 +145,9 @@ export const useWebsiteStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.websiteList = await fetchWrapper.get(baseUrl + '/websites');
+                this.websiteList = await fetchWrapper.get(`${baseUrl}/websites`);
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -159,7 +159,7 @@ export const useWebsiteStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/websites/' + id);
+                const response = await fetchWrapper.get(`${baseUrl}/websites/${id}`);
                 this.$reset();
                 //let key, value;
                 console.log(response);

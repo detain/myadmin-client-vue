@@ -32,10 +32,10 @@ onMounted(() => {});
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <span class="text-md">Export All Records: </span>
-                            <router-link to="/affiliate/download/xlsx/all" id="ex_xlsx_all" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
-                            <router-link to="/affiliate/download/xls/all" id="ex_xls_all" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
-                            <router-link to="/affiliate/download/csv/all" id="ex_csv_all" class="btn btn-sm btn-custom export">CSV</router-link>
-                            <router-link to="/affiliate/download/pdf/all" id="ex_pdf_all" class="btn btn-sm btn-custom export">PDF</router-link>
+                            <router-link id="ex_xlsx_all" to="/affiliate/download/xlsx/all" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
+                            <router-link id="ex_xls_all" to="/affiliate/download/xls/all" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
+                            <router-link id="ex_csv_all" to="/affiliate/download/csv/all" class="btn btn-sm btn-custom export">CSV</router-link>
+                            <router-link id="ex_pdf_all" to="/affiliate/download/pdf/all" class="btn btn-sm btn-custom export">PDF</router-link>
                         </div>
                         <div class="col-md-4 mb-3">
                             <span class="text-md text-center">Affiliate Status: </span>
@@ -49,15 +49,15 @@ onMounted(() => {});
                         <div class="col-md-4 mb-3 text-right">
                             <span class="text-md">Export on Status: </span>
                             <!-- <div class="btn-group btn-sm"> -->
-                            <router-link to="/affiliate/download/xlsx/default" id="ex_xlsx" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
-                            <router-link to="/affiliate/download/xls/default" id="ex_xls" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
-                            <router-link to="/affiliate/download/csv/default" id="ex_csv" class="btn btn-sm btn-custom export">CSV</router-link>
-                            <router-link to="/affiliate/download/pdf/default" id="ex_pdf" class="btn btn-sm btn-custom export">PDF</router-link>
+                            <router-link id="ex_xlsx" to="/affiliate/download/xlsx/default" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
+                            <router-link id="ex_xls" to="/affiliate/download/xls/default" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
+                            <router-link id="ex_csv" to="/affiliate/download/csv/default" class="btn btn-sm btn-custom export">CSV</router-link>
+                            <router-link id="ex_pdf" to="/affiliate/download/pdf/default" class="btn btn-sm btn-custom export">PDF</router-link>
                             <!-- </div> -->
                         </div>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab-default">
+                        <div id="tab-default" class="tab-pane active">
                             <div class="table-responsive">
                                 <table id="table_default" class="table-sm w-100 table">
                                     <thead>
@@ -77,7 +77,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-pending">
+                        <div id="tab-pending" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_pending" class="table-sm w-100 table">
                                     <thead>
@@ -97,7 +97,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-failed">
+                        <div id="tab-failed" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_failed" class="table-sm w-100 table">
                                     <thead>
@@ -115,7 +115,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-paid">
+                        <div id="tab-paid" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_paid" class="table-sm w-100 table">
                                     <thead>
@@ -163,10 +163,10 @@ onMounted(() => {});
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <span class="text-md">Export All Records: </span>
-                            <router-link to="/affiliate/download/xlsx/all" id="ex_xlsx_all" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
-                            <router-link to="/affiliate/download/xls/all" id="ex_xls_all" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
-                            <router-link to="/affiliate/download/csv/all" id="ex_csv_all" class="btn btn-sm btn-custom export">CSV</router-link>
-                            <router-link to="/affiliate/download/pdf/all" id="ex_pdf_all" class="btn btn-sm btn-custom export">PDF</router-link>
+                            <router-link id="ex_xlsx_all" to="/affiliate/download/xlsx/all" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
+                            <router-link id="ex_xls_all" to="/affiliate/download/xls/all" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
+                            <router-link id="ex_csv_all" to="/affiliate/download/csv/all" class="btn btn-sm btn-custom export">CSV</router-link>
+                            <router-link id="ex_pdf_all" to="/affiliate/download/pdf/all" class="btn btn-sm btn-custom export">PDF</router-link>
                         </div>
                         <div class="col-md-4 mb-3">
                             <span class="text-md text-center">Affiliate Status: </span>
@@ -180,15 +180,15 @@ onMounted(() => {});
                         <div class="col-md-4 mb-3 text-right">
                             <span class="text-md">Export on Status: </span>
                             <!-- <div class="btn-group btn-sm"> -->
-                            <router-link to="/affiliate/download/xlsx/default" id="ex_xlsx" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
-                            <router-link to="/affiliate/download/xls/default" id="ex_xls" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
-                            <router-link to="/affiliate/download/csv/default" id="ex_csv" class="btn btn-sm btn-custom export">CSV</router-link>
-                            <router-link to="/affiliate/download/pdf/default" id="ex_pdf" class="btn btn-sm btn-custom export">PDF</router-link>
+                            <router-link id="ex_xlsx" to="/affiliate/download/xlsx/default" title="Excel 2007+" class="btn btn-sm btn-custom export">Xlsx</router-link>
+                            <router-link id="ex_xls" to="/affiliate/download/xls/default" title="Excel 2003/BIF" class="btn btn-sm btn-custom export">Xls</router-link>
+                            <router-link id="ex_csv" to="/affiliate/download/csv/default" class="btn btn-sm btn-custom export">CSV</router-link>
+                            <router-link id="ex_pdf" to="/affiliate/download/pdf/default" class="btn btn-sm btn-custom export">PDF</router-link>
                             <!-- </div> -->
                         </div>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab-default">
+                        <div id="tab-default" class="tab-pane active">
                             <div class="table-responsive">
                                 <table id="table_default" class="table-sm w-100 table">
                                     <thead>
@@ -208,7 +208,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-pending">
+                        <div id="tab-pending" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_pending" class="table-sm w-100 table">
                                     <thead>
@@ -228,7 +228,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-failed">
+                        <div id="tab-failed" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_failed" class="table-sm w-100 table">
                                     <thead>
@@ -246,7 +246,7 @@ onMounted(() => {});
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-paid">
+                        <div id="tab-paid" class="tab-pane">
                             <div class="table-responsive">
                                 <table id="table_paid" class="table-sm w-100 table">
                                     <thead>

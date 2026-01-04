@@ -39,7 +39,7 @@ function placeOrder() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Whois Privacy</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
@@ -47,7 +47,7 @@ function placeOrder() {
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="domain">Domain</label>
                             <div class="col-sm-10 input-group">
-                                <input type="text" class="form-control form-control-sm" id="hostname" :value="domain" disabled />
+                                <input id="hostname" type="text" class="form-control form-control-sm" :value="domain" disabled />
                             </div>
                         </div>
                         <div id="whois_row" class="form-group row">
@@ -56,13 +56,13 @@ function placeOrder() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" id="whois_cost" :value="whoisCost.toFixed(2)" disabled />
+                                <input id="whois_cost" type="text" class="form-control form-control-sm" :value="whoisCost.toFixed(2)" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="submit"></label>
                             <div class="col-sm-10 input-group input-group-sm">
-                                <input type="submit" name="Submit" value="Place Order" class="btn btn-custom btn-sm px-3 py-2 text-sm" id="button-id-signup" />
+                                <input id="button-id-signup" type="submit" name="Submit" value="Place Order" class="btn btn-custom btn-sm px-3 py-2 text-sm" />
                             </div>
                         </div>
                     </form>

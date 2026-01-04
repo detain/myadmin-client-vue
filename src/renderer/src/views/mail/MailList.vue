@@ -12,7 +12,7 @@ siteStore.setPageHeading('Mail Services List');
 siteStore.setTitle('Mail Services List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Mail'],
+    [`/${moduleLink(module)}`, 'Mail'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -58,7 +58,7 @@ function crud_export(exportType: string): void {
 }
 const loadMail = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/mail');
+        const response = await fetchWrapper.get(`${baseUrl}/mail`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -125,7 +125,7 @@ loadMail();
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -139,7 +139,7 @@ loadMail();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -155,12 +155,12 @@ loadMail();
                                             <td>{{ row.mail_id }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id">{{ row.mail_username }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id">{{ row.mail_username }}</router-link>
                                             </td>
                                             <td>{{ row.mail_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

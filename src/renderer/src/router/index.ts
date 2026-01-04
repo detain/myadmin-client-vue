@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth.store';
 import { useAlertStore } from '../stores/alert.store';
-//import Layout from '../views/billing/affiliates/Layout.vue';
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -19,7 +18,7 @@ export const router = createRouter({
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
         {
             path: '/account',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 //{ path: '', component: () => import('../views/account/ContactInfo.vue') },
                 { path: 'info', component: () => import('../views/account/ContactInfo.vue') },
@@ -30,7 +29,7 @@ export const router = createRouter({
         },
         {
             path: '/affiliate',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/billing/affiliates/Affiliate.vue') },
                 { path: 'faq', component: () => import('../views/billing/affiliates/Faq.vue') },
@@ -49,7 +48,7 @@ export const router = createRouter({
         },
         {
             path: '/backups',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/backups/BackupsList.vue') },
                 { path: 'order', component: () => import('../views/backups/OrderBackup.vue') },
@@ -59,7 +58,7 @@ export const router = createRouter({
         },
         {
             path: '/dns',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/dns/DnsManager.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/dns/DnsEditor.vue') },
@@ -67,7 +66,7 @@ export const router = createRouter({
         },
         {
             path: '/domains',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/domains/DomainsList.vue') },
                 { path: 'order', component: () => import('../views/domains/OrderDomain.vue') },
@@ -79,7 +78,7 @@ export const router = createRouter({
         },
         {
             path: '/floating_ips',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/floating_ips/FloatingIpsList.vue') },
                 { path: 'order', component: () => import('../views/floating_ips/OrderFloatingIp.vue') },
@@ -89,7 +88,7 @@ export const router = createRouter({
         },
         {
             path: '/licenses',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/licenses/LicensesList.vue') },
                 //{ path: 'order/:catTag?', component: () => import('../views/licenses/OrderLicense.vue') },
@@ -101,7 +100,7 @@ export const router = createRouter({
         },
         {
             path: '/mail',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/mail/MailList.vue') },
                 { path: 'order', component: () => import('../views/mail/OrderMail.vue') },
@@ -111,7 +110,7 @@ export const router = createRouter({
         },
         {
             path: '/qs',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/quickservers/QsList.vue') },
                 { path: 'order', component: () => import('../views/quickservers/OrderQs.vue') },
@@ -121,7 +120,7 @@ export const router = createRouter({
         },
         {
             path: '/servers',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/servers/ServersList.vue') },
                 { path: 'order', component: () => import('../views/servers/OrderServer.vue') },
@@ -131,7 +130,7 @@ export const router = createRouter({
         },
         {
             path: '/ssl',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/ssl/SslList.vue') },
                 { path: 'order', component: () => import('../views/ssl/OrderSsl.vue') },
@@ -141,7 +140,7 @@ export const router = createRouter({
         },
         {
             path: '/tickets',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/tickets/TicketsList.vue') },
                 { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
@@ -150,7 +149,7 @@ export const router = createRouter({
         },
         {
             path: '/users',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/users/List.vue') },
                 { path: 'add', component: () => import('../views/users/AddEdit.vue') },
@@ -159,7 +158,7 @@ export const router = createRouter({
         },
         {
             path: '/vps',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/vps/VpsList.vue') },
                 { path: 'order', component: () => import('../views/vps/OrderVps.vue') },
@@ -169,7 +168,7 @@ export const router = createRouter({
         },
         {
             path: '/websites',
-            //component: Layout,
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/webhosting/WebsitesList.vue') },
                 { path: 'order', component: () => import('../views/webhosting/OrderWebsite.vue') },
@@ -183,66 +182,16 @@ export const router = createRouter({
         { path: '/change_username', redirect: '/account/username' },
         { path: '/account_settings', redirect: '/account/settings' },
         { path: '/dns_manager', redirect: '/dns' },
-        {
-            path: '/dns_editor',
-            redirect: (to) => {
-                return to.query.id ? '/dns/' + to.query.id : '/dns';
-            },
-        },
-        {
-            path: '/view_domain',
-            redirect: (to) => {
-                return to.query.id ? '/domains/' + to.query.id : '/domains';
-            },
-        },
-        {
-            path: '/view_backup',
-            redirect: (to) => {
-                return to.query.id ? '/backups/' + to.query.id : '/backups';
-            },
-        },
-        {
-            path: '/view_license',
-            redirect: (to) => {
-                return to.query.id ? '/license/' + to.query.id : '/licenses';
-            },
-        },
-        {
-            path: '/view_mail',
-            redirect: (to) => {
-                return to.query.id ? '/mail/' + to.query.id : '/mail';
-            },
-        },
-        {
-            path: '/view_qs',
-            redirect: (to) => {
-                return to.query.id ? '/qs/' + to.query.id : '/qs';
-            },
-        },
-        {
-            path: '/view_server',
-            redirect: (to) => {
-                return to.query.id ? '/servers/' + to.query.id : '/servers';
-            },
-        },
-        {
-            path: '/view_ssl',
-            redirect: (to) => {
-                return to.query.id ? '/ssl/' + to.query.id : '/ssl';
-            },
-        },
-        {
-            path: '/view_vps',
-            redirect: (to) => {
-                return to.query.id ? '/vps/' + to.query.id : '/vps';
-            },
-        },
-        {
-            path: '/view_website',
-            redirect: (to) => {
-                return to.query.id ? '/websites/' + to.query.id : '/websites';
-            },
-        },
+        { path: '/dns_editor', redirect: (to) => (to.query.id ? `/dns/${to.query.id}` : '/dns') },
+        { path: '/view_domain', redirect: (to) => (to.query.id ? `/domains/${to.query.id}` : '/domains') },
+        { path: '/view_backup', redirect: (to) => (to.query.id ? `/backups/${to.query.id}` : '/backups') },
+        { path: '/view_license', redirect: (to) => (to.query.id ? `/license/${to.query.id}` : '/licenses') },
+        { path: '/view_mail', redirect: (to) => (to.query.id ? `/mail/${to.query.id}` : '/mail') },
+        { path: '/view_qs', redirect: (to) => (to.query.id ? `/qs/${to.query.id}` : '/qs') },
+        { path: '/view_server', redirect: (to) => (to.query.id ? `/servers/${to.query.id}` : '/servers') },
+        { path: '/view_ssl', redirect: (to) => (to.query.id ? `/ssl/${to.query.id}` : '/ssl') },
+        { path: '/view_vps', redirect: (to) => (to.query.id ? `/vps/${to.query.id}` : '/vps') },
+        { path: '/view_website', redirect: (to) => (to.query.id ? `/websites/${to.query.id}` : '/websites') },
         { path: '/view_domains_list', redirect: '/domains' },
         { path: '/view_backups_list', redirect: '/backups' },
         { path: '/view_licenses_list', redirect: '/licenses' },

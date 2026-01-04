@@ -111,9 +111,9 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.licenseList = await fetchWrapper.get(baseUrl + '/licenses');
+                this.licenseList = await fetchWrapper.get(`${baseUrl}/licenses`);
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -125,7 +125,7 @@ export const useLicenseStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/licenses/' + id);
+                const response = await fetchWrapper.get(`${baseUrl}/licenses/${id}`);
                 this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;

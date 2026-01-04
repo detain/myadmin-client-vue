@@ -34,43 +34,43 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-key">&nbsp;</i>Change Webuzo Admin Password</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit.prevent="submitForm" class="change_rootpass">
+                    <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_webuzo_password" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="os">Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="hostname" disabled />
+                                    <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="os">IP</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="ip" name="ip" :value="ip" disabled />
+                                    <input id="ip" type="text" class="form-control form-control-sm" name="ip" :value="ip" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">New Password</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="password" class="pr-password form-control form-control-sm" id="password" name="password" required />
+                                    <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">Confirm password</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="password" class="pr-password form-control form-control-sm" id="password2" name="password2" required />
+                                    <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
                                 </div>
                             </div>
                             <template v-if="ima === 'client'">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="password2">Our Portal Login Password</label>
                                     <div class="col-sm-9 input-group">
-                                        <input type="password" class="pr-password form-control form-control-sm" id="login_password" name="login_password" required />
+                                        <input id="login_password" type="password" class="pr-password form-control form-control-sm" name="login_password" required />
                                     </div>
                                 </div>
                             </template>

@@ -29,9 +29,9 @@ onMounted(() => {});
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="accordion" id="faq">
+                    <div id="faq" class="accordion">
                         <div class="card m-0">
-                            <div class="card-header" id="qs1">
+                            <div id="qs1" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#q1" aria-expanded="true" aria-controls="q1">1. What is your Commission structure?</button>
                                 </h2>
@@ -46,7 +46,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs2">
+                            <div id="qs2" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q2" aria-expanded="false" aria-controls="q2">2. How long does it take for a sale to show up in my account?</button>
                                 </h2>
@@ -60,7 +60,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs3">
+                            <div id="qs3" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q3" aria-expanded="false" aria-controls="q3">3. I just made a sale. Where can I see it?</button>
                                 </h2>
@@ -79,7 +79,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs4">
+                            <div id="qs4" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q4" aria-expanded="false" aria-controls="q4">4. I know someone who needs hosting. How do I earn a referral fee?</button>
                                 </h2>
@@ -96,7 +96,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs5">
+                            <div id="qs5" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q5" aria-expanded="false" aria-controls="q5">5. I've been approved for the Interserver Hosting affiliate program. Now what do I do?</button>
                                 </h2>
@@ -113,7 +113,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs6">
+                            <div id="qs6" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q6" aria-expanded="false" aria-controls="q6">6. Can I PPC bid to promote Interserver Hosting?</button>
                                 </h2>
@@ -133,7 +133,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs7">
+                            <div id="qs7" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q7" aria-expanded="false" aria-controls="q7">7. I've made a sale. Now when do I get paid?</button>
                                 </h2>
@@ -148,7 +148,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs8">
+                            <div id="qs8" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q8" aria-expanded="false" aria-controls="q8">8. I have a pending sale that did not get paid.</button>
                                 </h2>
@@ -163,7 +163,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs9">
+                            <div id="qs9" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q9" aria-expanded="false" aria-controls="q9">9. How long do my sales/commission remain pending until they are approved?</button>
                                 </h2>
@@ -177,7 +177,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs10">
+                            <div id="qs10" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q10" aria-expanded="false" aria-controls="q10">10. Can I use my affiliate link for self-referrals on accounts I'll use for personal use?</button>
                                 </h2>
@@ -191,7 +191,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs11">
+                            <div id="qs11" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q11" aria-expanded="false" aria-controls="q11">11. WHY WAS MY Commission REJECTED?</button>
                                 </h2>
@@ -214,7 +214,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs12">
+                            <div id="qs12" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q12" aria-expanded="false" aria-controls="q12">12. I AM A DESIGNER/DEVELOPER AND WILL REFER CUSTOMERS Is that okay?</button>
                                 </h2>
@@ -233,7 +233,7 @@ onMounted(() => {});
                             </div>
                         </div>
                         <div class="card m-0">
-                            <div class="card-header" id="qs13">
+                            <div id="qs13" class="card-header">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q13" aria-expanded="false" aria-controls="q13">13. Where I can setup my payment?</button>
                                 </h2>

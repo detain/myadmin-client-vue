@@ -58,16 +58,16 @@ function loadLink(newLink: string) {
     linkDisplay.value = false;
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'VPS'],
+        [`/${moduleLink(module)}`, 'VPS'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View VPS ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View VPS ' + id);
-        siteStore.setTitle('View VPS ' + id);
+        siteStore.setPageHeading(`View VPS ${id}`);
+        siteStore.setTitle(`View VPS ${id}`);
     } else {
-        siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             vpsStore.queue(id as string, newLink);
             Swal.fire({
@@ -86,7 +86,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -95,7 +95,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -184,20 +184,20 @@ function docReady() {
         if (cp === 'cp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
         } else if (cp === 'da') {
             const lic_cost_type = $(this).attr('data-ser');
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
         } else if (cp === 'pp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
         } else if (cp === 'rs') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
         }
     });
 }
@@ -291,7 +291,7 @@ function toggleFunc(cp: string) {
             <BuyIp :id="id" :module="module"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2" :titleField3="titleField3"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
             <ChangeHostname :id="id" :module="module"></ChangeHostname>
@@ -312,7 +312,7 @@ function toggleFunc(cp: string) {
             <Invoices :id="id" :module="module"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module" :settings="settings" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
@@ -327,7 +327,7 @@ function toggleFunc(cp: string) {
             <TrafficUsage :id="id" :module="module"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
-            <SetupVnc :id="id" :module="module" :serviceInfo="serviceInfo" :serviceMaster="serviceMaster"></SetupVnc>
+            <SetupVnc :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></SetupVnc>
         </div>
         <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
@@ -388,9 +388,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +400,7 @@ function toggleFunc(cp: string) {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span @click="openCommentForm()" title="Edit Comment" style="cursor: pointer"><i class="fa fa-pencil my-2 text-sm"></i></span>
+                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><i class="fa fa-pencil my-2 text-sm"></i></span>
                                     </h5>
                                 </span>
                             </div>
@@ -440,7 +440,7 @@ function toggleFunc(cp: string) {
                                         <tr>
                                             <td style="width: 75%">
                                                 <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                    <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage + '%' }"></div>
+                                                    <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage+'%' }"></div>
                                                 </div>
                                             </td>
                                             <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ disk_percentage }}%</td>
@@ -507,7 +507,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -577,7 +577,7 @@ function toggleFunc(cp: string) {
                             </div>
                             <template v-if="daLink">
                                 <div v-for="(daDetails, index) in daData" :key="index" class="col mr-1">
-                                    <a class="img-a" @click="openModal('da', daDetails.cost, daDetails.name, index)" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+                                    <a class="img-a" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal" @click="openModal('da', daDetails.cost, daDetails.name, index)">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 pb-2 pt-2">
                                                 <span class="text-center">
@@ -653,7 +653,7 @@ function toggleFunc(cp: string) {
                             </template>
                             <template v-if="ppLink">
                                 <div v-for="(details, type) in plesk12Data" :key="type" class="col mr-1">
-                                    <a class="img-a" @click="showModal('pp', custCurrencySymbol, details.cost, details.name, details.id)" href="javascript:void(0);">
+                                    <a class="img-a" href="javascript:void(0);" @click="showModal('pp', custCurrencySymbol, details.cost, details.name, details.id)">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 mb-1 py-3">
                                                 <span class="text-center">
@@ -688,7 +688,7 @@ function toggleFunc(cp: string) {
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="cpModal" role="dialog">
+            <div id="cpModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -722,7 +722,7 @@ function toggleFunc(cp: string) {
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link id="cp-order-link" :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/add/cp'" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br />
@@ -866,12 +866,12 @@ function toggleFunc(cp: string) {
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div id="commentForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form class="inline" method="post" @submit.prevent="onSubmit" action="#">
+                    <form class="inline" method="post" action="#" @submit.prevent="onSubmit">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                            <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
@@ -880,7 +880,7 @@ function toggleFunc(cp: string) {
                             <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Comment:</label>
-                                <textarea class="form-control" id="message-text" rows="5" name="vps_comment" v-model="serviceInfo.vps_comment"></textarea>
+                                <textarea id="message-text" v-model="serviceInfo.vps_comment" class="form-control" rows="5" name="vps_comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

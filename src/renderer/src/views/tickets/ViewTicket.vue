@@ -188,7 +188,7 @@ function bs_input_file() {
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
                                     </span>
-                                    <input type="text" name="file_attachment" v-model="inputFile" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
+                                    <input v-model="inputFile" type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
                                     <span class="input-group-btn">
                                         <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
                                     </span>

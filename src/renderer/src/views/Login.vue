@@ -222,9 +222,9 @@ function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
 
 function toggleModal(modalID: string) {
     document.getElementById(modalID)?.classList.toggle('hidden');
-    document.getElementById(modalID + '-backdrop')?.classList.toggle('hidden');
+    document.getElementById(`${modalID}-backdrop`)?.classList.toggle('hidden');
     document.getElementById(modalID)?.classList.toggle('flex');
-    document.getElementById(modalID + '-backdrop')?.classList.toggle('flex');
+    document.getElementById(`${modalID}-backdrop`)?.classList.toggle('flex');
 }
 
 function animateValue(obj: any, start = 0, end: null | number = null, duration = 1000) {
@@ -277,12 +277,12 @@ function login_handler() {
             html: password.value,
         });
     } else {
-        let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password.value) + '&captcha=' + encodeURIComponent(captcha);
+        let loginCheckData = `ajax=1&remember=${remember}&login_id=${encodeURIComponent(username)}&passwd=${encodeURIComponent(password.value)}&captcha=${encodeURIComponent(captcha)}`;
         if (twofactor) {
-            loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
+            loginCheckData = `${loginCheckData}&2fa_code=${encodeURIComponent(twofactor)}`;
         }
         if (emailCode.value != '') {
-            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailCode.value);
+            loginCheckData = `${loginCheckData}&email_confirmation=${encodeURIComponent(emailCode.value)}`;
         }
         const pathArray = window.location.pathname.split('/');
         let newPath = '/';
@@ -293,11 +293,11 @@ function login_handler() {
         }
         $.ajax({
             type: 'POST',
-            url: 'https://' + window.location.host + newPath + 'ajax_check_login.php',
+            url: `https://${window.location.host  }${newPath}ajax_check_login.php`,
             data: loginCheckData,
             success: function (html) {
                 console.log(loginCheckData);
-                console.log(html.substring(0, 8) + ' got ' + html);
+                console.log(`${html.substring(0, 8)} got ${html}`);
                 if (html.substring(0, 4) == 'true') {
                     if (html.length == 4) {
                         window.location.href = 'index.php';
@@ -379,8 +379,8 @@ function forgot_password() {
         }
         $.ajax({
             type: 'POST',
-            url: 'https://' + window.location.host + newPath + 'password.php',
-            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value) + '&captcha=' + encodeURIComponent(captcha),
+            url: `https://${window.location.host  }${newPath}password.php`,
+            data: `ajax=1&email=${encodeURIComponent(username)}&g-recaptcha-response=${encodeURIComponent(gresponse.value)}&captcha=${encodeURIComponent(captcha)}`,
             success: function (html) {
                 $('#forgot-password-message').html(html);
             },
@@ -413,21 +413,21 @@ function signup_handler() {
     for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != 'remember' && items[i].name != 'email_confirmation' && items[i].name != 'captcha' && items[i].value == '') {
             if (items[i].name == 'login_id') {
-                errors = errors + '<strong>Error!</strong> Please enter an email address<br>';
+                errors = `${errors}<strong>Error!</strong> Please enter an email address<br>`;
             } else if (items[i].name == 'passwd' || items[i].name == 'password') {
-                errors = errors + '<strong>Error!</strong> Please enter a password<br>';
+                errors = `${errors}<strong>Error!</strong> Please enter a password<br>`;
             } else if (items[i].name == 'giftcard_number') {
-                errors = errors + '<strong>Error!</strong> Please enter a giftcard number<br>';
+                errors = `${errors}<strong>Error!</strong> Please enter a giftcard number<br>`;
             } else if (items[i].name == '2fa_code') {
                 // do something
             } else if (items[i].name == 'captcha' || items[i].name == 'g-recaptcha-response') {
                 // do something
             } else {
-                errors = errors + '<strong>Error!</strong> Please enter a ' + items[i].name + ' (got a blank value)<br>';
+                errors = `${errors}<strong>Error!</strong> Please enter a ${items[i].name} (got a blank value)<br>`;
             }
         }
         if (items[i].value != '' && items[i].name != 'captcha' && items[i].name != 'g-recaptcha-response') {
-            data_string = data_string + '&' + items[i].name + '=' + encodeURIComponent(items[i].value);
+            data_string = `${data_string}&${items[i].name}=${encodeURIComponent(items[i].value)}`;
         }
     }
     if (errors != '') {
@@ -437,7 +437,7 @@ function signup_handler() {
         });
     } else {
         if (email_conf == '') {
-            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value);
+            data_string = `${data_string}&captcha=${encodeURIComponent(captchaCode.value)}&g-recaptcha-response=${encodeURIComponent(gresponse.value)}`;
         }
         if (signup_running == 0) {
             signup_running = 1;
@@ -508,17 +508,17 @@ authStore.load();
             <div class="mt-24 flex">
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
-                    <div class="text-center text-4xl tracking-widest text-white" id="count-v">{{ counts.vps }}</div>
+                    <div id="count-v" class="text-center text-4xl tracking-widest text-white">{{ counts.vps }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">VPS</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/website.png" alt="" /></div>
-                    <div class="text-center text-4xl tracking-widest text-white" id="count-w">{{ counts.websites }}</div>
+                    <div id="count-w" class="text-center text-4xl tracking-widest text-white">{{ counts.websites }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Websites</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/servers.png" alt="" /></div>
-                    <div class="text-center text-4xl tracking-widest text-white" id="count-s">{{ counts.servers }}</div>
+                    <div id="count-s" class="text-center text-4xl tracking-widest text-white">{{ counts.servers }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Servers</div>
                 </div>
             </div>
@@ -526,7 +526,7 @@ authStore.load();
         <div class="w-full lg:w-7/12">
             <div class="p-2"></div>
             <div class="mx-auto block lg:my-auto">
-                <div class="wrapper w-full" v-show="isLogin">
+                <div v-show="isLogin" class="wrapper w-full">
                     <div class="myadmin_login w-full">
                         <div class="login-box m-auto" style="width: 400px">
                             <div class="card card-outline card-primary">
@@ -535,28 +535,28 @@ authStore.load();
                                     <h3 class="card-title text-bold ml-3 mt-2">Sign in to start your session</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="onLoginSubmit" :validation-schema="loginSchema">
+                                    <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" :validation-schema="loginSchema" @submit.prevent="onLoginSubmit">
                                         <div class="input-group mb-3">
-                                            <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off" />
+                                            <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="loginpassword" :type="passwordType" class="login_info form-control" v-model="password" placeholder="Password" autocomplete="off" required />
+                                            <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" placeholder="Password" autocomplete="off" required />
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
-                                                    <button type="button" @click.prevent="isPasswordVisible = !isPasswordVisible" aria-hidden="true"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
+                                                    <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12 mb-1">
-                                                <a class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#" id="forgot_link">I forgot my password</a>
+                                                <a id="forgot_link" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#">I forgot my password</a>
                                             </div>
                                             <div class="col-8">
                                                 <div class="icheck-primary">
-                                                    <input class="login_info" type="checkbox" id="remember" v-model="remember" />
+                                                    <input id="remember" v-model="remember" class="login_info" type="checkbox" />
                                                     <label for="remember">Remember Me</label>
                                                 </div>
                                             </div>
@@ -573,11 +573,11 @@ authStore.load();
                                                     <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
                                                     <form>
                                                         <div class="mb-4">
-                                                            <input type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" id="email_confirmation" name="email_confirmation" placeholder="Security Code" v-model="emailCode" autocomplete="off" required />
+                                                            <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" placeholder="Security Code" autocomplete="off" required />
                                                         </div>
                                                         <div class="col-8">
                                                             <div class="icheck-primary">
-                                                                <input class="login_info" type="checkbox" id="code-remember" v-model="remember" />
+                                                                <input id="code-remember" v-model="remember" class="login_info" type="checkbox" />
                                                                 <label for="remember">Remember Me</label>
                                                             </div>
                                                         </div>
@@ -585,18 +585,18 @@ authStore.load();
                                                             <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
-                                                                <span class="block sm:inline" id="error-message"></span>
+                                                                <span id="error-message" class="block sm:inline"></span>
                                                                 <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><i class="fas fa-times" aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button type="submit" @click.prevent="onLoginSubmit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Sign In</button>
+                                                            <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="poppup popup fixed inset-0 z-10 flex items-center justify-center" v-if="opts.tfa">
+                                        <div v-if="opts.tfa" class="poppup popup fixed inset-0 z-10 flex items-center justify-center">
                                             <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                             <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                 <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
@@ -605,13 +605,13 @@ authStore.load();
                                                     <p class="mb-8 text-center text-gray-600"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Use your configured Authenticator to get a code and enter it here.</p>
                                                     <form>
                                                         <div class="signup_toggle twofactorauth mb-4">
-                                                            <input type="text" v-model="twoFactorAuthCode" placeholder="Enter Code from Authenticator" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                            <input v-model="twoFactorAuthCode" type="text" placeholder="Enter Code from Authenticator" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                         </div>
                                                         <div class="mb-4">
                                                             <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
-                                                                <span class="block sm:inline" id="2fa-error-message"></span>
+                                                                <span id="2fa-error-message" class="block sm:inline"></span>
                                                                 <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                     <i class="fas fa-times" aria-hidden="true"></i>
                                                                 </span>
@@ -619,12 +619,12 @@ authStore.load();
                                                         </div>
                                                         <div class="mb-4">
                                                             <label class="flex items-center">
-                                                                <input type="checkbox" name="remember" id="2fa-remember" class="form-checkbox h-4 w-4 rounded-sm text-indigo-500" v-model="remember" />
+                                                                <input id="2fa-remember" v-model="remember" type="checkbox" name="remember" class="form-checkbox h-4 w-4 rounded-sm text-indigo-500" />
                                                                 <span class="ml-2 text-gray-800">Remember me</span>
                                                             </label>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button type="submit" @click.prevent="onLoginSubmit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Sign In</button>
+                                                            <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -696,7 +696,7 @@ authStore.load();
                                 </div>
                                 <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="submitForgotPassForm">
                                     <div class="input-group mb-3">
-                                        <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off" />
+                                        <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-envelope" aria-hidden="true"></span>
@@ -706,10 +706,10 @@ authStore.load();
                                     <div class="captcha_main mb-6">
                                         <div class="flex">
                                             <img :src="captcha" style="max-width: 75%" alt="" />
-                                            <button class="focus:shadow-outline btn-captcha-reloadFP ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false"><span class="fa fa-refresh fa-fw"></span></button>
+                                            <button class="focus:shadow-outline btn-captcha-reloadFP ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha"><span class="fa fa-refresh fa-fw"></span></button>
                                         </div>
                                         <div class="input-group my-3">
-                                            <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off" />
+                                            <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
                                             </div>
@@ -727,7 +727,7 @@ authStore.load();
                         </div>
                     </div>
                 </div>
-                <div class="wrapper-signup mx-auto w-full" v-show="!isLogin">
+                <div v-show="!isLogin" class="wrapper-signup mx-auto w-full">
                     <div class="myadmin_login w-full">
                         <div class="login-box m-auto" style="width: 400px">
                             <div class="card card-outline card-primary">
@@ -738,7 +738,7 @@ authStore.load();
                                 <div class="card-body">
                                     <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="onSignupSubmit">
                                         <div class="input-group mb-3">
-                                            <input type="email" class="login_info form-control" v-model="login" placeholder="Email Address" required autofocus autocomplete="off" />
+                                            <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span class="fas fa-envelope" aria-hidden="true"></span>
@@ -746,10 +746,10 @@ authStore.load();
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input id="signuppassword" :type="passwordType" class="form-control" v-model="password" placeholder="Password" autocomplete="off" required />
+                                            <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required />
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
-                                                    <button type="button" @click.prevent="isPasswordVisible = !isPasswordVisible" aria-hidden="true"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
+                                                    <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
                                                 </div>
                                             </div>
                                             <div id="pswd_info">
@@ -767,7 +767,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="signup_toggle twofactorauth mb-6 hidden">
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" id="signup_2fa_code" name="2fa_code" v-model="twoFactorAuthCode" placeholder="Enter Code from Authenticator" autocomplete="off" />
+                                                        <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" placeholder="Enter Code from Authenticator" autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
                                                         </div>
@@ -776,17 +776,17 @@ authStore.load();
                                                 <div class="captcha_main_signup mb-6">
                                                     <Checkbox v-model="gresponse" />
                                                     <div id="gcaptcha-1"></div>
-                                                    <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" id="captcha_alt_link_signup">Alternate Captcha</a>
+                                                    <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
                                                 </div>
                                                 <div class="captcha_alt_signup mb-6">
                                                     <div class="flex">
                                                         <img :src="captcha" style="max-width: 75%" alt="" />
-                                                        <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" @click="reloadCaptcha" title="Reload Captcha" tabindex="-1" aria-pressed="false">
+                                                        <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
                                                             <span class="fa fa-refresh fa-fw"></span>
                                                         </button>
                                                     </div>
                                                     <div class="input-group my-3">
-                                                        <input type="text" class="form-control" v-model="captchaCode" placeholder="Captcha" autofocus autocomplete="off" />
+                                                        <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
                                                         <div class="input-group-append">
                                                             <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
                                                         </div>
@@ -796,7 +796,7 @@ authStore.load();
                                             </div>
                                             <div class="col-12">
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" id="tos" required v-model="tos" />
+                                                    <input id="tos" v-model="tos" type="checkbox" required />
                                                     <label for="tos"
                                                         >I agree to the <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a></span></label
                                                     >
@@ -815,13 +815,13 @@ authStore.load();
                                                     <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
                                                     <form>
                                                         <div class="mb-4">
-                                                            <input type="text" id="signup_email_confirmation" name="email_confirmation" placeholder="Security Code" v-model="emailCode" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                            <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                         </div>
                                                         <div class="mb-4">
                                                             <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
-                                                                <span class="block sm:inline" id="signup-error-message"></span>
+                                                                <span id="signup-error-message" class="block sm:inline"></span>
                                                                 <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                     <i class="fas fa-times" aria-hidden="true"></i>
                                                                 </span>
@@ -887,14 +887,14 @@ authStore.load();
                         </div>
                     </div>
                 </div>
-                <div class="sign-up-txt signup pb-5 text-center text-gray-600" v-show="isLogin">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
-                <div class="sign-up-txt pb-5 text-center text-gray-600" v-show="!isLogin">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
+                <div v-show="isLogin" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
+                <div v-show="!isLogin" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
                 <div class="p-1 text-center text-sm text-gray-500">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="h-128 fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none" id="tosModal">
+    <div id="tosModal" class="h-128 fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
         <div class="relative mx-auto my-6 w-auto max-w-3xl">
             <!--content-->
             <div class="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
@@ -1028,7 +1028,7 @@ authStore.load();
             </div>
         </div>
     </div>
-    <div class="fixed inset-0 z-40 hidden bg-black opacity-25" id="tosModal-backdrop"></div>
+    <div id="tosModal-backdrop" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
 </template>
 
 <style scoped>

@@ -99,7 +99,7 @@ function submitBlock() {
                             <tbody>
                                 <tr v-for="email in spam" :key="email.id">
                                     <td>
-                                        <a :href="'index.php?choice=none.mailinfo&id=' + email.id" @click="loadEmail(email.id)">
+                                        <a :href="'index.php?choice=none.mailinfo&id='+email.id" @click="loadEmail(email.id)">
                                             {{ email.id }}
                                         </a>
                                     </td>
@@ -114,7 +114,7 @@ function submitBlock() {
                                     </td>
                                     <td style="max-width: 300px; overflow: hidden; white-space: nowrap">
                                         <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-new" @click="editBlock('edit', email.id, email.type, email.data)"> Edit </a>
-                                        <a :href="'view_mail?id=' + id + '&link=deny_rules&action=delete&rule_id=' + email.id" class="btn btn-sm btn-primary"> Delete </a>
+                                        <a :href="'view_mail?id='+id+'&link=deny_rules&action=delete&rule_id='+email.id" class="btn btn-sm btn-primary"> Delete </a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -130,7 +130,7 @@ function submitBlock() {
     </div>
 
     <!-- Add New Popup -->
-    <div class="modal fade" id="add-new" style="display: none" aria-hidden="true">
+    <div id="add-new" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header mx-4">
@@ -161,7 +161,7 @@ function submitBlock() {
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-8">
-                                <input id="data" type="text" class="form-control form-control-sm" name="data" required v-model="blockData" />
+                                <input id="data" v-model="blockData" type="text" class="form-control form-control-sm" name="data" required />
                             </div>
                         </div>
                         <div class="form-group row">

@@ -60,7 +60,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/backups/order', {
+            .post(`${baseUrl}/backups/order`, {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -70,7 +70,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -89,7 +89,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(baseUrl + '/backups/order', {
+            .put(`${baseUrl}/backups/order`, {
                 validateOnly: true,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -142,7 +142,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse) => {
+fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
@@ -188,10 +188,10 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                             <div id="coupon_row" class="row">
                                 <label class="col-md-2 col-form-label">Coupon Code</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @change="updateCoupon" placeholder="Coupon Code" />
+                                    <input v-model="coupon" type="text" class="form-control form-control-sm" placeholder="Coupon Code" @change="updateCoupon" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
-                                    <img alt="" :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" id="couponimg" height="20" width="20" />
+                                    <img id="couponimg" alt="" :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" height="20" width="20" />
                                 </div>
                             </div>
                             <hr class="mt-0" />
@@ -262,7 +262,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                                             <div class="text-md float-left" style="position: relative; top: 5px">
                                                 {{ serviceDetail.services_name }}
                                             </div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th class="text-md">{{ period }} Month(s)</th>
                                     </tr>
@@ -279,7 +279,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                                             <td class="text-md">Coupon Used</td>
                                             <td class="text-bold text-md">
                                                 {{ coupon }}
-                                                <img alt="" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg" height="20" width="20" />
+                                                <img id="couponimg" alt="" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" />
                                             </td>
                                         </tr>
                                     </template>
@@ -315,7 +315,7 @@ fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>

@@ -116,12 +116,12 @@ onMounted(() => {
 });
 
 const affiliateUrl = computed(() => {
-    return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? 'https://www.interserver.net/r/' + user.value.account_id : '';
+    return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? `https://www.interserver.net/r/${user.value.account_id}` : '';
 });
 
 const loadHome = async () => {
     try {
-        fetchWrapper.get(baseUrl + '/home').then((response: HomeResponse) => {
+        fetchWrapper.get(`${baseUrl}/home`).then((response: HomeResponse) => {
             console.log('api success');
             console.log(response);
             last_login_ip.value = response.last_login_ip;
@@ -233,7 +233,7 @@ accountStore.load();
                                         <td>{{ ticket.lastreplier }}</td>
                                         <td>{{ ticketStatusView[ticket.ticketstatusid] }}</td>
                                         <td>
-                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <i class="fa fa-pencil"></i>&nbsp;Edit </router-link>
+                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/'+ticket.ticketid"> <i class="fa fa-pencil"></i>&nbsp;Edit </router-link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -247,12 +247,12 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header home-card" style="background-color: rgba(0, 0, 0, 0.03) !important">
                             <h2 class="card-title mt-2 text-lg">
-                                <i :class="'fa fa-' + details.modules[module].icon"></i>
+                                <i :class="'fa fa-'+details.modules[module].icon"></i>
                                 <span>{{ details.modules[module].heading }}</span>
                             </h2>
                             <div class="card-tools float-right">
                                 <span class="card-subtitle text-muted float-right mb-2 mt-2">
-                                    <router-link class="badge bg-success float-right" title="View All" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
+                                    <router-link class="badge bg-success float-right" title="View All" :to="'/'+moduleLink(module)">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
@@ -263,11 +263,11 @@ accountStore.load();
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceId">{{ serviceDesc }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
-                                    <router-link :to="'/' + moduleLink(module) + '/order'" class="btn order">Order Now</router-link>
+                                    <router-link :to="'/'+moduleLink(module)+'/order'" class="btn order">Order Now</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -287,10 +287,10 @@ accountStore.load();
                                     </div>
                                     <div class="aff-share m-2">
                                         <h4 class="aff-social mx-2">Share with:</h4>
-                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="../assets/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
-                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="../assets/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
-                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="../assets/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
-                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(affiliateUrl) + '&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Pin it"><img class="social" alt="Pin it" src="../assets/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(affiliateUrl)+'&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="../assets/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
+                                        <a class="mx-2" :href="'https://twitter.com/intent/tweet?source='+encodeURIComponent(affiliateUrl)+'&amp;text=&quot;Write something here&quot; @interserver '+encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="../assets/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
+                                        <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url='+encodeURIComponent(affiliateUrl)+'&amp;title=affiliate%20link%20'+encodeURIComponent(affiliateUrl)+'&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website '+encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="../assets/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>
+                                        <a class="mx-2" :href="'https://pinterest.com/pin/create/button/?url='+encodeURIComponent(affiliateUrl)+'&amp;media=test&amp;description=Very happy with the web hosting service @interserver give them a try if you have a website '+encodeURIComponent(affiliateUrl)" title="Pin it"><img class="social" alt="Pin it" src="../assets/images/social_flat_rounded_rects_svg/Pinterest.svg" /></a>
                                     </div>
                                 </div>
                             </div>
