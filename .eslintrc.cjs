@@ -16,6 +16,8 @@ module.exports = {
         {
             files: ['src/' + '**' + '/' + '*.vue', 'src/' + '**' + '/' + '*.ts'],
             rules: {
+                'prefer-template': 'error',
+                'no-useless-concat': 'error',
                 'no-unused-vars': 'off', // warn
                 'vue/multi-word-component-names': 'off', // warn
                 '@typescript-eslint/no-unused-vars': 'off',
