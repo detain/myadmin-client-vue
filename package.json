@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "*",
     "@unhead/vue": "^1.8",
     "@vitejs/plugin-basic-ssl": "*",
-    "@vitejs/plugin-vue": "^6.0.2",
+    "@vitejs/plugin-vue": "*",
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "*",
     "@vitest/ui": "*",
