@@ -6,3 +6,4 @@ pnpm-lock.yaml
 .yarn/releases/
 public/css/*.min.css
 src/assets/openapi/openapi.*
+src/assets/spec/openapi.*
