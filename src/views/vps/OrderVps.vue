@@ -273,12 +273,12 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
     couponPriceText.value = '';
     if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
-            sliceCostHtml.value = `<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`;
+            sliceCostHtml.value = `<del style="color: red;">${currencySymbol.value}${sliceCost.value}</del> Per Slice`;
             couponPriceLabel.value = 'Price';
             couponPriceText.value = `${currencySymbol.value + couponInfo.value.amount} per slice`;
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
-            couponPriceText.value = `-${currencySymbol.value  }${couponInfo.value.amount}`;
+            couponPriceText.value = `-${currencySymbol.value}${couponInfo.value.amount}`;
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
@@ -578,7 +578,7 @@ function update_vps_choices() {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#slicecost').html(`<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`);
+            jQuery('#slicecost').html(`<del style="color: red;">${currencySymbol.value}${sliceCost.value}</del> Per Slice`);
             couponPriceLabel.value = 'Price';
             jQuery('#couponprice').html(`${currencySymbol.value + couponInfo.value.amount} per slice`);
             jQuery('#couponpricenew').val(`${couponInfo.value.amount} per slice`);
@@ -586,7 +586,7 @@ function update_vps_choices() {
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
+            jQuery('#couponprice').text(`-${currencySymbol.value}${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);
@@ -747,7 +747,7 @@ function update_vps_choices_order() {
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
+            jQuery('#couponprice').text(`-${currencySymbol.value}${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);

@@ -32,12 +32,12 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-linux"></i>Change OS</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i></router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i></router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" :action="'view_licenses?id='+id" @submit.prevent="submitForm">
+                    <form method="POST" :action="'view_licenses?id=' + id" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_os" />
                         <input type="hidden" name="license_type" :value="licenseType" />
                         <input type="hidden" name="lid" :value="lid" />

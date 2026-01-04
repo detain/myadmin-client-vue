@@ -241,7 +241,7 @@ loadDns();
                                             <td>{{ row.name }}</td>
                                             <td>{{ row.content }}</td>
                                             <td>
-                                                <router-link :to="'dns/'+row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
                                                 <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteDomain"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                                             </td>
                                         </tr>

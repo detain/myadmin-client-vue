@@ -47,9 +47,7 @@ interface SimpleStringObj {
 
 function mounted() {
     if (triggerClick.value) {
-        $(`#unver_${current_cc_id.value}`)
-            .attr('data-step', triggerClick.value)
-            .trigger('click');
+        $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
     }
 }
 
@@ -265,13 +263,13 @@ accountStore.load();
             <div v-if="data.ccs">
                 <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-hover shadow-sm">
                     <div class="card-body icheck-success row">
-                        <input :id="'cc-'+cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc'+cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
-                        <label :for="'cc-'+cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
+                        <input :id="'cc-' + cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
+                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                         <div class="col-md-2 pb-2">
                             <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" :title="cc_detail.verified ? 'Verified' : 'Not Verified'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" :id="'unver_'+cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
+                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
                             <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
                             <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>

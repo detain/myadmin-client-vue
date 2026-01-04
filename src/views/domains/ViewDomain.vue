@@ -148,7 +148,7 @@ console.log(link.value);
                 </div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/'+moduleLink(module)+'/'+id+'/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
+                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
                 </span>
             </div>
         </div>
@@ -187,7 +187,7 @@ console.log(link.value);
                     </div>
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -203,7 +203,7 @@ console.log(link.value);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+id+'/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@ console.log(link.value);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+id+'/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -244,7 +244,7 @@ console.log(link.value);
                         Address: {{ serviceInfo.domain_address }}<br />
                         {{ serviceInfo.domain_city }}, {{ serviceInfo.domain_state }}<br />
                         {{ serviceInfo.domain_country }} - {{ serviceInfo.domain_zip }}<br />
-                        Ph: <a @href="'tel:'+serviceInfo.domain_address">{{ serviceInfo.domain_phone }}</a>
+                        Ph: <a @href="'tel:' + serviceInfo.domain_address">{{ serviceInfo.domain_phone }}</a>
                     </p>
                 </div>
             </div>

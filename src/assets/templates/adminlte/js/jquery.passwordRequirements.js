@@ -30,7 +30,7 @@ import jQuery from 'jquery';
             return this.each(function () {
                 const o = options;
 
-                o.infoMessage = 'The minimum password length is '+o.numCharacters+' characters and must contain at least 1 lowercase letter, 1 capital letter, 1 number, and 1 special character.';
+                o.infoMessage = 'The minimum password length is ' + o.numCharacters + ' characters and must contain at least 1 lowercase letter, 1 capital letter, 1 number, and 1 special character.';
                 // Add Variables for the li elements
                 const numCharactersUI = '<li class="pr-numCharacters"><span></span># of characters</li>';
                 let useLowercaseUI = '',
@@ -56,7 +56,7 @@ import jQuery from 'jquery';
                 }
 
                 // Append password hint div
-                const messageDiv = '<div id="pr-box"><i></i><div id="pr-box-inner"><p>'+o.infoMessage+'</p><ul>'+numCharactersUI + useLowercaseUI + matchPassUI + useUppercaseUI + useNumbersUI + useSpecialUI+'</ul></div></div>';
+                const messageDiv = '<div id="pr-box"><i></i><div id="pr-box-inner"><p>' + o.infoMessage + '</p><ul>' + numCharactersUI + useLowercaseUI + matchPassUI + useUppercaseUI + useNumbersUI + useSpecialUI + '</ul></div></div>';
 
                 // Set campletion vatiables
                 let numCharactersDone = true,
