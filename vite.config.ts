@@ -10,7 +10,7 @@ import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 //import legacy from '@vitejs/plugin-legacy'
 //import { VitePWA } from 'vite-plugin-pwa';
-//import VueDevTools from 'vite-plugin-vue-devtools';
+//import vueDevTools from 'vite-plugin-vue-devtools';
 import Inspect from 'vite-plugin-inspect';
 //import Inspector from 'vite-plugin-vue-inspector';
 //import TurboConsole from 'unplugin-turbo-console/vite';
@@ -58,7 +58,7 @@ export default defineConfig({
         }), */
         Inspect(),
         //Inspector(),
-        //VueDevTools(),
+        //vueDevTools(),
         //        TurboConsole(),
     ],
     /*
