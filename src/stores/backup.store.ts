@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface BackupInfo {
     backup_id: number;
     backup_server: number;
@@ -116,7 +115,7 @@ export const useBackupStore = defineStore({
     }),
     getters: {
         titleField: (state) => state.serviceInfo.backup_username,
-        titleField2: (state) => state.serviceInfo.backup_ip
+        titleField2: (state) => state.serviceInfo.backup_ip,
     },
     actions: {
         async register(user: any): Promise<void> {

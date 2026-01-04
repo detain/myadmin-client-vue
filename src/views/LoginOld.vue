@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts } = storeToRefs(authStore);

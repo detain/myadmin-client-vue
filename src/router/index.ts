@@ -183,16 +183,66 @@ export const router = createRouter({
         { path: '/change_username', redirect: '/account/username' },
         { path: '/account_settings', redirect: '/account/settings' },
         { path: '/dns_manager', redirect: '/dns' },
-        { path: '/dns_editor', redirect: (to) => { return to.query.id ? '/dns/'+to.query.id : '/dns'; } },
-        { path: '/view_domain', redirect: (to) => { return to.query.id ? '/domains/'+to.query.id : '/domains'; } },
-        { path: '/view_backup', redirect: (to) => { return to.query.id ? '/backups/'+to.query.id : '/backups'; } },
-        { path: '/view_license', redirect: (to) => { return to.query.id ? '/license/'+to.query.id : '/licenses'; } },
-        { path: '/view_mail', redirect: (to) => { return to.query.id ? '/mail/'+to.query.id : '/mail'; } },
-        { path: '/view_qs', redirect: (to) => { return to.query.id ? '/qs/'+to.query.id : '/qs'; } },
-        { path: '/view_server', redirect: (to) => { return to.query.id ? '/servers/'+to.query.id : '/servers'; } },
-        { path: '/view_ssl', redirect: (to) => { return to.query.id ? '/ssl/'+to.query.id : '/ssl'; } },
-        { path: '/view_vps', redirect: (to) => { return to.query.id ? '/vps/'+to.query.id : '/vps'; }},
-        { path: '/view_website', redirect: (to) => { return to.query.id ? '/websites/'+to.query.id : '/websites'; } },
+        {
+            path: '/dns_editor',
+            redirect: (to) => {
+                return to.query.id ? '/dns/' + to.query.id : '/dns';
+            },
+        },
+        {
+            path: '/view_domain',
+            redirect: (to) => {
+                return to.query.id ? '/domains/' + to.query.id : '/domains';
+            },
+        },
+        {
+            path: '/view_backup',
+            redirect: (to) => {
+                return to.query.id ? '/backups/' + to.query.id : '/backups';
+            },
+        },
+        {
+            path: '/view_license',
+            redirect: (to) => {
+                return to.query.id ? '/license/' + to.query.id : '/licenses';
+            },
+        },
+        {
+            path: '/view_mail',
+            redirect: (to) => {
+                return to.query.id ? '/mail/' + to.query.id : '/mail';
+            },
+        },
+        {
+            path: '/view_qs',
+            redirect: (to) => {
+                return to.query.id ? '/qs/' + to.query.id : '/qs';
+            },
+        },
+        {
+            path: '/view_server',
+            redirect: (to) => {
+                return to.query.id ? '/servers/' + to.query.id : '/servers';
+            },
+        },
+        {
+            path: '/view_ssl',
+            redirect: (to) => {
+                return to.query.id ? '/ssl/' + to.query.id : '/ssl';
+            },
+        },
+        {
+            path: '/view_vps',
+            redirect: (to) => {
+                return to.query.id ? '/vps/' + to.query.id : '/vps';
+            },
+        },
+        {
+            path: '/view_website',
+            redirect: (to) => {
+                return to.query.id ? '/websites/' + to.query.id : '/websites';
+            },
+        },
         { path: '/view_domains_list', redirect: '/domains' },
         { path: '/view_backups_list', redirect: '/backups' },
         { path: '/view_licenses_list', redirect: '/licenses' },

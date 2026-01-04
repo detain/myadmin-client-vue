@@ -5,7 +5,6 @@ import { snakeToCamel } from '../helpers/snakeToCamel';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface SimpleStringObj {
     [key: string]: any;
 }
@@ -293,7 +292,7 @@ export const useAccountStore = defineStore({
     getters: {},
     actions: {
         async loadOnce(): Promise<void> {
-            if (Number(this.data.account_id) == 0 ) {
+            if (Number(this.data.account_id) == 0) {
                 this.load();
             }
         },

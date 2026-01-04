@@ -5,7 +5,6 @@ import { snakeToCamel } from '../helpers/snakeToCamel';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface PrePayRow {
     prepay_amount: number;
     prepay_automatic_use: number;

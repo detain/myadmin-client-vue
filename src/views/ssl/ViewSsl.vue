@@ -139,33 +139,33 @@ function loadLink(newLink: string) {
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             // do something here
@@ -265,8 +265,7 @@ sslStore.getById(id as string);
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
         </div>
-        <div v-else class="col" v-html="linkDisplay">
-        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <div v-else-if="!linkDisplay || (link && ['cancel', 'resend_approver_email', 'reissue_cert'].includes(link))" class="row row-flex">
         <div class="col-md-6">
@@ -303,16 +302,16 @@ sslStore.getById(id as string);
                 </div>
                 <div class="card-body" v-show="!isCollapsed">
                     <table class="table-bordered table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>For Certificate Installation Instructions</b>
-                            </td>
-                            <td>
-                                <a href="https://support.globalsign.com/#category_SSL_Installation" target="__blank" class="link">Click Here</a>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>For Certificate Installation Instructions</b>
+                                </td>
+                                <td>
+                                    <a href="https://support.globalsign.com/#category_SSL_Installation" target="__blank" class="link">Click Here</a>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     <hr />
                     <h3 class="text-muted text-bold text-center">CSR</h3>

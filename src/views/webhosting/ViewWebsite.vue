@@ -55,33 +55,33 @@ function loadLink(newLink: string) {
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             try {
@@ -204,8 +204,7 @@ loadLink(route.params.link as string);
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
         </div>
-        <div v-else class="col" v-html="linkDisplay">
-        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <div v-else-if="!linkDisplay || (link && ['cancel', 'welcome_email'].includes(link))" class="row mt-2">
         <div class="col-md-4">
@@ -222,24 +221,24 @@ loadLink(route.params.link as string);
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table-bordered table">
-                            <thead>
-                                <tr>
-                                    <th>Types:</th>
-                                    <th>Links:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <template v-if="extraInfoTables.links && extraInfoTables.links.rows.length > 0 && extraInfoTables.links.rows[0].value">
+                                <thead>
                                     <tr>
-                                        <td>Manual Login</td>
-                                        <td><a :href="extraInfoTables.links.rows[0].value" target="__blank" class="link">Click Here</a></td>
+                                        <th>Types:</th>
+                                        <th>Links:</th>
                                     </tr>
-                                </template>
-                                <tr v-if="clientLinks[3]">
-                                    <td>Automatic Login</td>
-                                    <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
-                                </tr>
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    <template v-if="extraInfoTables.links && extraInfoTables.links.rows.length > 0 && extraInfoTables.links.rows[0].value">
+                                        <tr>
+                                            <td>Manual Login</td>
+                                            <td><a :href="extraInfoTables.links.rows[0].value" target="__blank" class="link">Click Here</a></td>
+                                        </tr>
+                                    </template>
+                                    <tr v-if="clientLinks[3]">
+                                        <td>Automatic Login</td>
+                                        <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -260,18 +259,18 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body" style="height: 270px">
                     <table class="table-bordered table">
-                    <thead>
-                        <tr>
-                            <th>Nameservers:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <template v-if="extraInfoTables.dns && extraInfoTables.dns.rows">
-                            <tr v-for="(nameserver, idx) in extraInfoTables.dns.rows" :key="idx">
-                                <td>{{ nameserver.desc }}</td>
+                        <thead>
+                            <tr>
+                                <th>Nameservers:</th>
                             </tr>
-                        </template>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            <template v-if="extraInfoTables.dns && extraInfoTables.dns.rows">
+                                <tr v-for="(nameserver, idx) in extraInfoTables.dns.rows" :key="idx">
+                                    <td>{{ nameserver.desc }}</td>
+                                </tr>
+                            </template>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -290,24 +289,24 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body" style="height: 270px">
                     <table class="table-bordered table">
-                    <thead>
-                        <tr>
-                            <th>Names:</th>
-                            <th>Links:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <template v-for="(link, index) in extraInfoTables.links.rows">
-                            <tr :key="index" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
-                                <td>{{ link.desc }}</td>
-                                <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
+                        <thead>
+                            <tr>
+                                <th>Names:</th>
+                                <th>Links:</th>
                             </tr>
-                        </template>
-                        <tr>
-                            <td>Website Preview</td>
-                            <td><a :href="extraInfoTables.preview.rows[0]?.value" target="__blank" class="link">Click Here</a></td>
-                        </tr>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            <template v-for="(link, index) in extraInfoTables.links.rows">
+                                <tr :key="index" v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'">
+                                    <td>{{ link.desc }}</td>
+                                    <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
+                                </tr>
+                            </template>
+                            <tr>
+                                <td>Website Preview</td>
+                                <td><a :href="extraInfoTables.preview.rows[0]?.value" target="__blank" class="link">Click Here</a></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -344,12 +343,12 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body">
                     <table class="table-bordered table">
-                    <tbody>
-                        <tr v-for="addon in extraInfoTables.addons.rows" :key="addon.id">
-                            <td>{{ addon.desc }}</td>
-                            <td>{{ addon.value }}</td>
-                        </tr>
-                    </tbody>
+                        <tbody>
+                            <tr v-for="addon in extraInfoTables.addons.rows" :key="addon.id">
+                                <td>{{ addon.desc }}</td>
+                                <td>{{ addon.value }}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

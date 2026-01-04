@@ -27,7 +27,7 @@ function submitForm() {
     // Handle form submission
     try {
         let postData = {
-            url: url.value
+            url: url.value,
         };
         fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/insert_cd', postData).then((response: any) => {
             console.log('api success');

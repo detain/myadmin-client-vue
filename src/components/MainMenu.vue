@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '../stores/site.store';
 
-
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);
 

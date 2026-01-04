@@ -7,7 +7,6 @@ import { useAccountStore } from '../stores/account.store';
 import { useAlertStore } from '../stores/alert.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface ErrorMessage {
     code: number;
     message: string;

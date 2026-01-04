@@ -586,7 +586,7 @@ authStore.load();
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
                                                                 <span class="block sm:inline" id="error-message"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none';"><i class="fas fa-times" aria-hidden="true"></i></span>
+                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><i class="fas fa-times" aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
                                                         <div class="text-center">
@@ -612,7 +612,7 @@ authStore.load();
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
                                                                 <span class="block sm:inline" id="2fa-error-message"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none';">
+                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                     <i class="fas fa-times" aria-hidden="true"></i>
                                                                 </span>
                                                             </div>
@@ -633,10 +633,50 @@ authStore.load();
                                     </form>
                                     <div class="social-auth-links mb-3 mt-2 text-center">
                                         <h3 class="text-bold text-center text-lg">Sign in using:</h3>
-                                        <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" onclick="window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" onclick="window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" onclick="window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fa fa-github"></i></a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" onclick="window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-primary btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign in using Facebook"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fab fa-facebook" aria-hidden="true"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-danger btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign in using Google+"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fab fa-google-plus" aria-hidden="true"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-secondary btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign in using Github"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fa fa-github"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-info btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign in using Twitter"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fa fa-twitter"></i
+                                        ></a>
                                     </div>
                                 </div>
                             </div>
@@ -782,7 +822,7 @@ authStore.load();
                                                                 <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                 <strong class="font-bold">Error!</strong>
                                                                 <span class="block sm:inline" id="signup-error-message"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none';">
+                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                     <i class="fas fa-times" aria-hidden="true"></i>
                                                                 </span>
                                                             </div>
@@ -797,10 +837,50 @@ authStore.load();
                                     </form>
                                     <div class="social-auth-links mb-3 mt-2 text-center">
                                         <h3 class="text-bold text-center text-lg">Sign up using:</h3>
-                                        <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign up using Facebook" onclick="window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign up using Google+" onclick="window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign up using Github" onclick="window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fa fa-github"></i></a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign up using Twitter" onclick="window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-primary btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign up using Facebook"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fab fa-facebook" aria-hidden="true"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-danger btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign up using Google+"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fab fa-google-plus" aria-hidden="true"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-secondary btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign up using Github"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fa fa-github"></i
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-info btn-lg"
+                                            data-toggle="tooltip"
+                                            title="Sign up using Twitter"
+                                            onclick="
+                                                window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes');
+                                                return false;
+                                            "
+                                            ><i class="fa fa-twitter"></i
+                                        ></a>
                                     </div>
                                 </div>
                             </div>
@@ -956,7 +1036,7 @@ authStore.load();
 @tailwind components;
 @tailwind utilities;*/
 /* @import '../assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
-@import '../assets/css/fontawesome-kit.min.css';	
+@import '../assets/css/fontawesome-kit.min.css';
 @import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import '../assets/css/tailwind.min.css';

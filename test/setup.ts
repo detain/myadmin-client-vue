@@ -14,29 +14,29 @@ afterAll(() => server.stop());
 
 // Global jQuery mock (runs before every test file)
 vi.mock('jquery', () => {
-  const mockJquery = vi.fn(() => ({
-    on: vi.fn(),
-    off: vi.fn(),
-    ready: vi.fn(),
-    click: vi.fn(),
-    keyup: vi.fn(),
-    hide: vi.fn(),
-    show: vi.fn(),
-    toggle: vi.fn(),
-    find: vi.fn(),
-    css: vi.fn(),
-    addClass: vi.fn(),
-    removeClass: vi.fn(),
-    delay: vi.fn().mockReturnThis(),
-    queue: vi.fn().mockImplementation((fn) => fn()),
-    outerHeight: vi.fn(() => 100),
-    innerHeight: vi.fn(() => 80)
-  }));
+    const mockJquery = vi.fn(() => ({
+        on: vi.fn(),
+        off: vi.fn(),
+        ready: vi.fn(),
+        click: vi.fn(),
+        keyup: vi.fn(),
+        hide: vi.fn(),
+        show: vi.fn(),
+        toggle: vi.fn(),
+        find: vi.fn(),
+        css: vi.fn(),
+        addClass: vi.fn(),
+        removeClass: vi.fn(),
+        delay: vi.fn().mockReturnThis(),
+        queue: vi.fn().mockImplementation((fn) => fn()),
+        outerHeight: vi.fn(() => 100),
+        innerHeight: vi.fn(() => 80),
+    }));
 
-  // emulate $.ajax usage
-  (mockJquery as any).ajax = vi.fn();
+    // emulate $.ajax usage
+    (mockJquery as any).ajax = vi.fn();
 
-  return {
-    default: mockJquery
-  };
+    return {
+        default: mockJquery,
+    };
 });

@@ -111,7 +111,7 @@ function submitForm() {
         let postData = {
             template: osVersion.value,
             password: checkVpsPassword.value,
-            loginPassword: checkAccountPassword.value
+            loginPassword: checkAccountPassword.value,
         };
         fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reinstall_os', postData).then((response: any) => {
             console.log('api success');

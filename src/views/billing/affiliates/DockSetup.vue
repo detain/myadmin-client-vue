@@ -39,7 +39,7 @@ function onSubmit() {
             .post(baseUrl + '/affiliate/dock_setup', {
                 coupon: data.value.referrer_coupon,
                 title: data.value.affiliate_dock_title,
-                description: data.value.affiliate_dock_description
+                description: data.value.affiliate_dock_description,
             })
             .then((response) => {
                 Swal.close();

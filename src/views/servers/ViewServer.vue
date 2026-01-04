@@ -17,7 +17,6 @@ import BandwidthGraph from '../../views/servers/BandwidthGraph.vue';
 import IpmiLive from '../../views/servers/IpmiLive.vue';
 import ReverseDns from '../../views/servers/ReverseDns.vue';
 
-
 const module = 'servers';
 const siteStore = useSiteStore();
 const route = useRoute();
@@ -49,33 +48,33 @@ function loadLink(newLink: string) {
         siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             // do something here
@@ -196,8 +195,7 @@ const ipv6VlansNetworks = computed(() => {
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
         </div>
-        <div v-else class="col" v-html="linkDisplay">
-        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <div v-if="!linkDisplay || (link && link.includes('cancel'))" class="row justify-content-center">
         <div class="col-md-4">

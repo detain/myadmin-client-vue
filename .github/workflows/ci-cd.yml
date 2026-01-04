@@ -2,216 +2,215 @@
 name: CI/CD - Web + Electron
 
 on:
-  push:
-    branches:
-      - master
-      - electron
-    tags:
-      - "v*"
-  pull_request:
-    branches:
-      - master
-      - electron
+    push:
+        branches:
+            - master
+            - electron
+        tags:
+            - 'v*'
+    pull_request:
+        branches:
+            - master
+            - electron
 
 jobs:
+    # ---------------- WEB BUILD ON MASTER ----------------
+    web-build:
+        if: github.ref == 'refs/heads/master'
+        runs-on: ubuntu-latest
 
-  # ---------------- WEB BUILD ON MASTER ----------------
-  web-build:
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0 # fetch full history
 
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # fetch full history
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: yarn
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
+            - run: yarn
+            - run: yarn build
 
-      - run: yarn
-      - run: yarn build
+            - name: Read version
+              run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
-      - name: Read version
-        run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+            - name: Zip dist for dev
+              run: zip -r my-interserver-client-web-dev-master.zip dist
 
-      - name: Zip dist for dev
-        run: zip -r my-interserver-client-web-dev-master.zip dist
+            - name: Upload dev artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: web-dev-master
+                  path: my-interserver-client-web-dev-master.zip
 
-      - name: Upload dev artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: web-dev-master
-          path: my-interserver-client-web-dev-master.zip
+            - name: Publish release zip (if tag)
+              if: startsWith(github.ref, 'refs/tags/')
+              run: |
+                  VERSION=$(node -p "require('./package.json').version")
+                  zip -r my-interserver-client-web-${VERSION}.zip dist
+                  gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
 
-      - name: Publish release zip (if tag)
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          zip -r my-interserver-client-web-${VERSION}.zip dist
-          gh release upload ${GITHUB_REF_NAME} my-interserver-client-web-${VERSION}.zip --clobber
+    # ---------------- ELECTRON BUILD ON ELECTRON BRANCH ----------------
+    electron-build:
+        if: github.ref == 'refs/heads/electron'
+        runs-on: ${{ matrix.os }}
+        needs: web-build
 
-  # ---------------- ELECTRON BUILD ON ELECTRON BRANCH ----------------
-  electron-build:
-    if: github.ref == 'refs/heads/electron'
-    runs-on: ${{ matrix.os }}
-    needs: web-build
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    # Linux
+                    - os: ubuntu-latest
+                      platform: linux
+                      arch: x64
+                      build_args: --linux AppImage snap deb --x64
+                    - os: ubuntu-latest
+                      platform: linux
+                      arch: arm64
+                      build_args: --linux AppImage snap deb --arm64
 
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          # Linux
-          - os: ubuntu-latest
-            platform: linux
-            arch: x64
-            build_args: --linux AppImage snap deb --x64
-          - os: ubuntu-latest
-            platform: linux
-            arch: arm64
-            build_args: --linux AppImage snap deb --arm64
+                    # Windows
+                    - os: windows-latest
+                      platform: win
+                      arch: x64
+                      build_args: --win nsis portable --x64
+                    - os: windows-latest
+                      platform: win
+                      arch: arm64
+                      build_args: --win nsis portable --arm64
 
-          # Windows
-          - os: windows-latest
-            platform: win
-            arch: x64
-            build_args: --win nsis portable --x64
-          - os: windows-latest
-            platform: win
-            arch: arm64
-            build_args: --win nsis portable --arm64
+                    # macOS
+                    - os: macos-latest
+                      platform: mac
+                      arch: universal
+                      build_args: --mac dmg pkg
 
-          # macOS
-          - os: macos-latest
-            platform: mac
-            arch: universal
-            build_args: --mac dmg pkg
+        env:
+            ELECTRON_CACHE: ~/.cache/electron
+            ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
 
-    env:
-      ELECTRON_CACHE: ~/.cache/electron
-      ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
+            # Signing / notarization
+            CSC_LINK: ${{ secrets.CSC_LINK }}
+            CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+            WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+            WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+            APPLE_ID: ${{ secrets.APPLE_ID }}
+            APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+            APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
 
-      # Signing / notarization
-      CSC_LINK: ${{ secrets.CSC_LINK }}
-      CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-      WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
-      WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-      APPLE_ID: ${{ secrets.APPLE_ID }}
-      APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        steps:
+            - uses: actions/checkout@v4
 
-    steps:
-      - uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: yarn
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
+            - run: corepack enable
 
-      - run: corepack enable
+            - name: Restore Electron cache
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cache/electron
+                      ~/.cache/electron-builder
+                  key: electron-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
-      - name: Restore Electron cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/electron
-            ~/.cache/electron-builder
-          key: electron-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
 
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
+            - name: Read app version
+              run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
-      - name: Read app version
-        run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+            - name: Install Linux deps
+              if: matrix.platform == 'linux'
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y libarchive-tools snapcraft rpm
 
-      - name: Install Linux deps
-        if: matrix.platform == 'linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libarchive-tools snapcraft rpm
+            - name: Disable signing for PRs
+              if: github.event_name == 'pull_request'
+              run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
 
-      - name: Disable signing for PRs
-        if: github.event_name == 'pull_request'
-        run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
+            - name: Build Electron app
+              run: npx electron-builder ${{ matrix.build_args }}
 
-      - name: Build Electron app
-        run: npx electron-builder ${{ matrix.build_args }}
+            # ---------------- ZIP UNPACKED ----------------
+            - name: Zip unpacked (Linux)
+              if: matrix.platform == 'linux'
+              run: |
+                  cd dist
+                  zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
 
-      # ---------------- ZIP UNPACKED ----------------
-      - name: Zip unpacked (Linux)
-        if: matrix.platform == 'linux'
-        run: |
-          cd dist
-          zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+            - name: Zip unpacked (Windows)
+              if: matrix.platform == 'win'
+              shell: pwsh
+              run: |
+                  cd dist
+                  Compress-Archive win-unpacked my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip
 
-      - name: Zip unpacked (Windows)
-        if: matrix.platform == 'win'
-        shell: pwsh
-        run: |
-          cd dist
-          Compress-Archive win-unpacked my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip
+            - name: Zip unpacked (macOS)
+              if: matrix.platform == 'mac'
+              run: |
+                  cd dist
+                  zip -r my-interserver-client-${APP_VERSION}-mac.zip mac-unpacked
 
-      - name: Zip unpacked (macOS)
-        if: matrix.platform == 'mac'
-        run: |
-          cd dist
-          zip -r my-interserver-client-${APP_VERSION}-mac.zip mac-unpacked
+            # ---------------- CHECKSUMS ----------------
+            - name: Generate SHA256 checksums
+              run: |
+                  cd dist
+                  if command -v sha256sum >/dev/null; then
+                    sha256sum * > SHA256SUMS.txt
+                  else
+                    certutil -hashfile * SHA256 > SHA256SUMS.txt
+                  fi
 
-      # ---------------- CHECKSUMS ----------------
-      - name: Generate SHA256 checksums
-        run: |
-          cd dist
-          if command -v sha256sum >/dev/null; then
-            sha256sum * > SHA256SUMS.txt
-          else
-            certutil -hashfile * SHA256 > SHA256SUMS.txt
-          fi
+            # ---------------- UPLOAD ARTIFACTS ----------------
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/**
 
-      # ---------------- UPLOAD ARTIFACTS ----------------
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.platform }}-${{ matrix.arch }}
-          path: dist/**
+            # ---------------- RELEASE ASSETS ----------------
+            - name: Publish release assets (tags)
+              if: startsWith(github.ref, 'refs/tags/')
+              run: |
+                  gh release upload ${GITHUB_REF_NAME} dist/* --clobber
 
-      # ---------------- RELEASE ASSETS ----------------
-      - name: Publish release assets (tags)
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          gh release upload ${GITHUB_REF_NAME} dist/* --clobber
+            # ---------------- UPDATE README WITH DOWNLOAD LINKS ----------------
+            - name: Update README with latest download links
+              if: startsWith(github.ref, 'refs/tags/')
+              run: |
+                  VERSION="${GITHUB_REF_NAME#v}"
+                  REPO_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}"
 
-      # ---------------- UPDATE README WITH DOWNLOAD LINKS ----------------
-      - name: Update README with latest download links
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          VERSION="${GITHUB_REF_NAME#v}"
-          REPO_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}"
+                  WEB_URL="${REPO_URL}/my-interserver-client-web-${VERSION}.zip"
+                  LINUX_URL="${REPO_URL}/my-interserver-client-${VERSION}-linux-x64.zip"
+                  WIN_URL="${REPO_URL}/my-interserver-client-${VERSION}-windows-x64.zip"
+                  MAC_URL="${REPO_URL}/my-interserver-client-${VERSION}-mac.zip"
+                  echo -e "<!-- DOWNLOADS-START -->\n## Latest Downloads (v${VERSION})\n\n### Web\n- [Web (zip)](${WEB_URL})\n\n### Electron\n#### Linux\n- [x64](${LINUX_URL})\n#### Windows\n- [x64](${WIN_URL})\n#### macOS\n- [Universal](${MAC_URL})\n<!-- DOWNLOADS-END -->" > latest-downloads.md
+                  awk '
+                    BEGIN {in_block=0}
+                    /<!-- DOWNLOADS-START -->/ {
+                      system("cat latest-downloads.md")
+                      in_block=1
+                      next
+                    }
+                    /<!-- DOWNLOADS-END -->/ {
+                      in_block=0
+                      next
+                    }
+                    !in_block {print}
+                  ' README.md > README.tmp && mv README.tmp README.md
 
-          WEB_URL="${REPO_URL}/my-interserver-client-web-${VERSION}.zip"
-          LINUX_URL="${REPO_URL}/my-interserver-client-${VERSION}-linux-x64.zip"
-          WIN_URL="${REPO_URL}/my-interserver-client-${VERSION}-windows-x64.zip"
-          MAC_URL="${REPO_URL}/my-interserver-client-${VERSION}-mac.zip"
-          echo -e "<!-- DOWNLOADS-START -->\n## Latest Downloads (v${VERSION})\n\n### Web\n- [Web (zip)](${WEB_URL})\n\n### Electron\n#### Linux\n- [x64](${LINUX_URL})\n#### Windows\n- [x64](${WIN_URL})\n#### macOS\n- [Universal](${MAC_URL})\n<!-- DOWNLOADS-END -->" > latest-downloads.md
-          awk '
-            BEGIN {in_block=0}
-            /<!-- DOWNLOADS-START -->/ {
-              system("cat latest-downloads.md")
-              in_block=1
-              next
-            }
-            /<!-- DOWNLOADS-END -->/ {
-              in_block=0
-              next
-            }
-            !in_block {print}
-          ' README.md > README.tmp && mv README.tmp README.md
-
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add README.md
-          git commit -m "Update latest download links for v${VERSION}" || echo "No changes to commit"
-          git push
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+                  git add README.md
+                  git commit -m "Update latest download links for v${VERSION}" || echo "No changes to commit"
+                  git push

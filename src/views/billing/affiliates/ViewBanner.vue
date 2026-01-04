@@ -70,57 +70,57 @@ onMounted(() => {});
                     <h4>Banner Image</h4>
                 </div>
                 <table class="table-sm table">
-                <tbody>
-                    <tr>
-                        <td>Image</td>
-                        <td>{{ imgDetail.b }}</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>Image Size</td>
-                        <td>{{ imgDetail.w }}X{{ imgDetail.h }}</td>
-                    </tr>
-                    <tr>
-                        <td>SID</td>
-                        <td>
-                            <textarea class="form-control" style="margin-top: 15px" cols="75" rows="2" v-model="sid" placeholder="eg. Home Page, Mailing list"></textarea>
-                        </td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>Landing Page URL</td>
-                        <td>
-                            <select class="form-control" id="landing-url" v-model="landingUrl">
-                                <option value="">Select</option>
-                                <option value="home">Home Page</option>
-                                <option value="vps">VPS Page</option>
-                                <option value="webhosting">Webhosting Page</option>
-                                <option value="custom">Custom Url</option>
-                            </select>
-                        </td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr v-if="landingUrl === 'custom'" id="cust_url">
-                        <td>Custom URL</td>
-                        <td><textarea id="custom_url" name="custom_url" class="form-control" cols="75" rows="4" v-model="customUrl" placeholder="https://www.interserver.net/">https://www.interserver.net/blog</textarea></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>HTML Code</td>
-                        <td>
-                            <textarea id="htmcode" class="form-control" readonly editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
-                        </td>
-                        <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Image</td>
+                            <td>{{ imgDetail.b }}</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Image Size</td>
+                            <td>{{ imgDetail.w }}X{{ imgDetail.h }}</td>
+                        </tr>
+                        <tr>
+                            <td>SID</td>
+                            <td>
+                                <textarea class="form-control" style="margin-top: 15px" cols="75" rows="2" v-model="sid" placeholder="eg. Home Page, Mailing list"></textarea>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Landing Page URL</td>
+                            <td>
+                                <select class="form-control" id="landing-url" v-model="landingUrl">
+                                    <option value="">Select</option>
+                                    <option value="home">Home Page</option>
+                                    <option value="vps">VPS Page</option>
+                                    <option value="webhosting">Webhosting Page</option>
+                                    <option value="custom">Custom Url</option>
+                                </select>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr v-if="landingUrl === 'custom'" id="cust_url">
+                            <td>Custom URL</td>
+                            <td><textarea id="custom_url" name="custom_url" class="form-control" cols="75" rows="4" v-model="customUrl" placeholder="https://www.interserver.net/">https://www.interserver.net/blog</textarea></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>HTML Code</td>
+                            <td>
+                                <textarea id="htmcode" class="form-control" readonly editable="false" cols="75" rows="4" v-model="htmlCode"></textarea>
+                            </td>
+                            <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
+                        </tr>
+                    </tbody>
                 </table>
                 <table class="table-sm table">
-                <tbody>
-                    <tr>
-                        <td>Image Preview</td>
-                        <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Image Preview</td>
+                            <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
