@@ -7,6 +7,13 @@ import { server } from './src/mocks/setup';
 
 export default defineConfig({
     plugins: [Vue()],
+    optimizeDeps: {
+      exclude: [
+        'playwright',
+        'playwright-core',
+        'chromium-bidi'
+      ]
+    },
     test: {
         globals: true,
         environment: 'jsdom',

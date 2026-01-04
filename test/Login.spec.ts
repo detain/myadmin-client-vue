@@ -1,8 +1,9 @@
 import { mount } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import Login from '@/views/Login.vue';
+import Login from '../src/views/Login.vue';
 import Swal from 'sweetalert2';
+import { useAuthStore } from '../src/stores/auth.store';
 
 vi.mock('sweetalert2');
 
@@ -44,8 +45,6 @@ describe('Login.vue', () => {
   });
 
   it('calls authStore.login on submit', async () => {
-    import { useAuthStore } from '@/stores/auth.store';
-
     const authStore = useAuthStore();
     const wrapper = mount(Login, mountOptions);
 
