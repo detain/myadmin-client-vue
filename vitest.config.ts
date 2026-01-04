@@ -7,6 +7,13 @@ import { server } from './src/mocks/setup';
 
 export default defineConfig({
     plugins: [Vue()],
+    optimizeDeps: {
+      exclude: [
+        'playwright',
+        'playwright-core',
+        'chromium-bidi'
+      ]
+    },
     test: {
         globals: true,
         environment: 'jsdom',
@@ -15,7 +22,7 @@ export default defineConfig({
             provider: playwright(),
             name: 'chromium', // or 'firefox', 'webkit'
             headless: true, // set to false to watch tests in a UI
-            setupFiles: ['./vitest.setup.ts'],
+            setupFiles: ['./test/.setup.ts'],
             // Optional: configure specific options, e.g., launch options
             launchOptions: {
               headless: true, // Run headless in CI/locally
