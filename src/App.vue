@@ -8,14 +8,12 @@ import Alert from './components/Alert.vue';
 import { useAuthStore } from './stores/auth.store';
 import { useSiteStore } from './stores/site.store';
 
-import $ from 'jquery';
-//import 'jquery-ui';
-import 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
-import 'admin-lte/dist/js/adminlte.js';
 import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
-onMounted(function () {});
+
+onMounted(function () {
+//    $('[data-widget="pushmenu"]').PushMenu();
+});
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -62,30 +60,22 @@ const AdminLTESidebarTweak = {
 // Remember toggle state
 $(document).on('click', '.collapse_menu', function () {
   if (!AdminLTESidebarTweak.options.EnableRemember) return;
-
-  const toggleState = $('body').hasClass('sidebar-collapse')
-    ? 'opened'
-    : 'closed';
-
+  const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
   document.cookie = `toggleState=${toggleState}; path=/`;
 });
 
 // Restore state on load
 $(function () {
   if (!AdminLTESidebarTweak.options.EnableRemember) return;
-
   const match = document.cookie.match(/toggleState=([^;]+)/);
   const toggleState = match ? decodeURIComponent(match[1]) : null;
 
   if (toggleState === 'closed') {
     if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
-      $('body')
-        .addClass('sidebar-collapse hold-transition')
-        .delay(100)
-        .queue(function (next) {
+      $('body').addClass('sidebar-collapse hold-transition').delay(100).queue(function (next) {
           $(this).removeClass('hold-transition');
           next();
-        });
+      });
     } else {
       $('body').addClass('sidebar-collapse');
     }

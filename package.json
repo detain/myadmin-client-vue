@@ -75,7 +75,7 @@
     "@vue/test-utils": "*",
     "@vue/tsconfig": "*",
     "@vueuse/core": "*",
-    "admin-lte": "*",
+    "admin-lte": "^3.0.1",
     "autoprefixer": "^10.4.14",
     "axios": "*",
     "bootstrap": "^4.6",
