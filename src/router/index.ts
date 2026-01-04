@@ -141,7 +141,7 @@ export const router = createRouter({
     { path: '/order_ssl', component: OrderSsl },
     { path: '/ssl_order', component: OrderSsl },
     { path: '/view_vps_list', component: VpsList },
-    { path: '/view_vps', component: ViewVps },
+    { path: '/view_vps', redirect: (to) => { return to.query.id ? '/vps/'+to.query.id : '/vps'; }},
     { path: '/order_vps', component: OrderVps },
     { path: '/vps_order', component: OrderVps },
     { path: '/view_websites_list', component: WebsitesList },
