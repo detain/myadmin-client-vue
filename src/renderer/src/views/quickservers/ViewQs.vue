@@ -89,33 +89,33 @@ function loadLink(newLink: string) {
         }
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             try {
@@ -130,7 +130,6 @@ function loadLink(newLink: string) {
         }
     }
 }
-
 </script>
 
 <template>
@@ -243,8 +242,7 @@ function loadLink(newLink: string) {
         <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
-        <div v-else class="col" v-html="linkDisplay">
-        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <template v-if="!link || (link && ['cancel', 'welcome_email'].includes(link))">
         <div class="row my-2">
@@ -340,28 +338,28 @@ function loadLink(newLink: string) {
                         <div class="row">
                             <div class="col-md-12 mb-1 py-3">
                                 <table class="table-bordered my-3 table">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted text-bold">Total Space:</td>
-                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">Free Space:</td>
-                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdfree }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">Remaining Space:</td>
-                                        <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize - serviceMaster.qs_hdfree }} GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 75%">
-                                            <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage + '%' }"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted text-bold">Total Space:</td>
+                                            <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">Free Space:</td>
+                                            <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdfree }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">Remaining Space:</td>
+                                            <td class="text-bold text-capitalize">{{ serviceMaster.qs_hdsize - serviceMaster.qs_hdfree }} GB</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 75%">
+                                                <div id="info-progress-lg" class="progress progress-sm mt-2">
+                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage + '%' }"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -380,30 +378,30 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body" style="height: 270px">
                         <table class="table-bordered table">
-                        <tbody>
-                            <tr>
-                                <td><b>VNC Info</b></td>
-                                <td>
-                                    <template v-if="serviceOverviewExtra.vnc_information">
-                                        <b class="text-muted">{{ serviceOverviewExtra.vnc_information }}</b>
-                                    </template>
-                                    <template v-else>
-                                        <b class="text-muted font-italic">No data to show</b>
-                                    </template>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>Spice Info</b></td>
-                                <td>
-                                    <template v-if="serviceOverviewExtra.spice_information">
-                                        <b class="text-muted">{{ serviceOverviewExtra.spice_information }}</b>
-                                    </template>
-                                    <template v-else>
-                                        <b class="text-muted font-italic">No data to show</b>
-                                    </template>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr>
+                                    <td><b>VNC Info</b></td>
+                                    <td>
+                                        <template v-if="serviceOverviewExtra.vnc_information">
+                                            <b class="text-muted">{{ serviceOverviewExtra.vnc_information }}</b>
+                                        </template>
+                                        <template v-else>
+                                            <b class="text-muted font-italic">No data to show</b>
+                                        </template>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Spice Info</b></td>
+                                    <td>
+                                        <template v-if="serviceOverviewExtra.spice_information">
+                                            <b class="text-muted">{{ serviceOverviewExtra.spice_information }}</b>
+                                        </template>
+                                        <template v-else>
+                                            <b class="text-muted font-italic">No data to show</b>
+                                        </template>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -420,14 +418,14 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body" style="height: 270px">
                         <table class="table-bordered table">
-                        <tbody>
-                            <tr>
-                                <td><b>OS</b></td>
-                                <td>
-                                    <b class="text-muted">{{ osTemplate }}</b>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr>
+                                    <td><b>OS</b></td>
+                                    <td>
+                                        <b class="text-muted">{{ osTemplate }}</b>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -469,16 +467,16 @@ function loadLink(newLink: string) {
                         </div>
                         <div class="card-body">
                             <table class="table-bordered table">
-                            <tbody>
-                                <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
-                                    <td>
-                                        <b>{{ itemvalue.desc }}</b>
-                                    </td>
-                                    <td>
-                                        <b class="text-muted">{{ itemvalue.value }}</b>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr v-for="(itemvalue, index) in extraInfoTables.ip_info.rows" :key="index">
+                                        <td>
+                                            <b>{{ itemvalue.desc }}</b>
+                                        </td>
+                                        <td>
+                                            <b class="text-muted">{{ itemvalue.value }}</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -499,16 +497,16 @@ function loadLink(newLink: string) {
                         </div>
                         <div class="card-body">
                             <table class="table-bordered table">
-                            <tbody>
-                                <tr v-for="(itemvalue, index) in extraInfoTables.cp.rows" :key="index">
-                                    <td>
-                                        <b>{{ itemvalue.desc }}</b>
-                                    </td>
-                                    <td>
-                                        <b class="text-muted">{{ itemvalue.value }}</b>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr v-for="(itemvalue, index) in extraInfoTables.cp.rows" :key="index">
+                                        <td>
+                                            <b>{{ itemvalue.desc }}</b>
+                                        </td>
+                                        <td>
+                                            <b class="text-muted">{{ itemvalue.value }}</b>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -531,16 +529,16 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                        <tbody>
-                            <tr v-for="(itemvalue, index) in extraInfoTables.addons.rows" :key="index">
-                                <td>
-                                    <b>{{ itemvalue.desc }}</b>
-                                </td>
-                                <td>
-                                    <b class="text-muted">{{ itemvalue.value }}</b>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr v-for="(itemvalue, index) in extraInfoTables.addons.rows" :key="index">
+                                    <td>
+                                        <b>{{ itemvalue.desc }}</b>
+                                    </td>
+                                    <td>
+                                        <b class="text-muted">{{ itemvalue.value }}</b>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -562,11 +560,11 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                        <tbody>
-                            {{
-                                extraInfoTables.note.rows[0].value
-                            }}
-                        </tbody>
+                            <tbody>
+                                {{
+                                    extraInfoTables.note.rows[0].value
+                                }}
+                            </tbody>
                         </table>
                     </div>
                 </div>

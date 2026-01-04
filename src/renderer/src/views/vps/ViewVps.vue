@@ -77,33 +77,33 @@ function loadLink(newLink: string) {
         }
         if (newLink == 'welcome_email') {
             Swal.fire({
-                icon: "question",
+                icon: 'question',
                 title: '<h3>Are you sure?</h3> ',
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: 'Yes',
-                html: "Are you sure want to resend welcome email?",
+                html: 'Are you sure want to resend welcome email?',
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
                             Swal.fire({
-                                icon: "success",
+                                icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
                                 confirmButtonText: 'Yes',
-                                html: "The welcome email has been resent.  Check your inbox.",
+                                html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
                                     router.push('/' + moduleLink(module) + '/' + id);
-                                }
+                                },
                             });
                         });
                     } catch (error: any) {
                         console.log('error');
                         console.log(error);
                     }
-                }
+                },
             });
         } else if (newLink == 'login') {
             try {
@@ -332,8 +332,7 @@ function toggleFunc(cp: string) {
         <div v-else-if="link == 'view_desktop'" class="col">
             <Vnc :id="id" :module="module"></Vnc>
         </div>
-        <div v-else class="col" v-html="linkDisplay">
-        </div>
+        <div v-else class="col" v-html="linkDisplay"></div>
     </div>
     <template v-else>
         <div class="row">
@@ -425,28 +424,28 @@ function toggleFunc(cp: string) {
                         <div class="row">
                             <div class="col-md-12 mb-1 py-3">
                                 <table class="table-bordered my-3 table">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted text-bold">Total Space:</td>
-                                        <td class="text-bold text-capitalize">{{ service_disk_total }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">Used Space:</td>
-                                        <td class="text-bold text-capitalize">{{ service_disk_used }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">Remaining Space:</td>
-                                        <td class="text-bold text-capitalize">{{ parseFloat(service_disk_total.toString()) - parseFloat(service_disk_used.toString()) }} GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 75%">
-                                            <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage + '%' }"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ disk_percentage }}%</td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted text-bold">Total Space:</td>
+                                            <td class="text-bold text-capitalize">{{ service_disk_total }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">Used Space:</td>
+                                            <td class="text-bold text-capitalize">{{ service_disk_used }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">Remaining Space:</td>
+                                            <td class="text-bold text-capitalize">{{ parseFloat(service_disk_total.toString()) - parseFloat(service_disk_used.toString()) }} GB</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 75%">
+                                                <div id="info-progress-lg" class="progress progress-sm mt-2">
+                                                    <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage + '%' }"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ disk_percentage }}%</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -469,24 +468,24 @@ function toggleFunc(cp: string) {
                         <div class="row">
                             <div class="col-md-12 mb-1 py-3">
                                 <table class="table-bordered my-3 table">
-                                <tbody>
-                                    <tr class="col">
-                                        <td class="text-muted text-bold">Memory:</td>
-                                        <td class="text-bold text-capitalize">{{ memory }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">Disk Drive:</td>
-                                        <td class="text-bold text-capitalize">{{ hdd }}</td>
-                                    </tr>
-                                    <tr class="col">
-                                        <td class="text-muted text-bold">CPU Cores:</td>
-                                        <td class="text-bold text-capitalize">{{ serviceInfo.vps_slices }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted text-bold">OS:</td>
-                                        <td class="text-bold text-capitalize">{{ osTemplate }}</td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        <tr class="col">
+                                            <td class="text-muted text-bold">Memory:</td>
+                                            <td class="text-bold text-capitalize">{{ memory }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">Disk Drive:</td>
+                                            <td class="text-bold text-capitalize">{{ hdd }}</td>
+                                        </tr>
+                                        <tr class="col">
+                                            <td class="text-muted text-bold">CPU Cores:</td>
+                                            <td class="text-bold text-capitalize">{{ serviceInfo.vps_slices }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted text-bold">OS:</td>
+                                            <td class="text-bold text-capitalize">{{ osTemplate }}</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -779,12 +778,12 @@ function toggleFunc(cp: string) {
                     </div>
                     <div class="card-body" style="height: 370px">
                         <table class="table-bordered table">
-                        <tbody>
-                            <tr v-for="itemvalue in extraInfoTables.cp.rows" :key="itemvalue.desc">
-                                <td class="text-muted text-bold text-capitalize">{{ itemvalue.desc }}</td>
-                                <td class="text-bold text-capitalize">{{ itemvalue.value }}</td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr v-for="itemvalue in extraInfoTables.cp.rows" :key="itemvalue.desc">
+                                    <td class="text-muted text-bold text-capitalize">{{ itemvalue.desc }}</td>
+                                    <td class="text-bold text-capitalize">{{ itemvalue.value }}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -856,11 +855,11 @@ function toggleFunc(cp: string) {
                         </div>
                         <div class="card-body" style="height: 370px">
                             <table class="table-bordered table">
-                            <tbody>
-                                <tr>
-                                    <td>{{ extraInfoTables.note.rows[0].value }}</td>
-                                </tr>
-                            </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ extraInfoTables.note.rows[0].value }}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

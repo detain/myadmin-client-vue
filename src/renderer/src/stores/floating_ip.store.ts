@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface FloatingIpInfo {
     floating_ip_id: number;
     floating_ip_type: number;
@@ -107,7 +106,7 @@ export const useFloatingIpStore = defineStore({
     }),
     getters: {
         titleField: (state) => state.serviceInfo.floating_ip_ip,
-        titleField2: (state) => state.serviceInfo.floating_ip_target_ip
+        titleField2: (state) => state.serviceInfo.floating_ip_target_ip,
     },
     actions: {
         async register(user: any): Promise<void> {

@@ -4,7 +4,6 @@ import { fetchWrapper } from '../helpers/fetchWrapper';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface TicketRow {
     title: string;
     ticketmaskid: string;

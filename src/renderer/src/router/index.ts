@@ -177,50 +177,99 @@ export const router = createRouter({
                 { path: ':id(\\d+)/:link(login|buy_ip|download_backups|migration|reverse_dns|welcome_email|cancel|invoices)', component: () => import('../views/webhosting/ViewWebsite.vue') },
             ],
         },
-        /*
-    { path: '/contact_info', component: () => import('../views/account/ContactInfo.vue') },
-    { path: '/change_pass', component: () => import('../views/account/ChangePass.vue') },
-    { path: '/change_username', component: () => import('../views/account/ChangeUsername.vue') },
-    { path: '/account_settings', component: () => import('../views/account/AccountSettings.vue') },
-    { path: '/dns_manager', component: () => import('../views/dns/DnsManager.vue') },
-    { path: '/dns_editor', component: () => import('../views/dns/DnsEditor.vue') },
-    { path: '/view_domains_list', component: () => import('../views/domains/DomainsList.vue') },
-    { path: '/view_domain', component: () => import('../views/domains/ViewDomain.vue') },
-    { path: '/order_domain', component: () => import('../views/domains/OrderDomain.vue') },
-    { path: '/domain_order', component: () => import('../views/domains/OrderDomain.vue') },
-    { path: '/view_backups_list', component: () => import('../views/backups/BackupsList.vue') },
-    { path: '/view_backup', component: () => import('../views/backups/ViewBackup.vue') },
-    { path: '/order_backup', component: () => import('../views/backups/OrderBackup.vue') },
-    { path: '/backup_order', component: () => import('../views/backups/OrderBackup.vue') },
-    { path: '/view_licenses_list', component: () => import('../views/licenses/LicensesList.vue') },
-    { path: '/view_license', component: () => import('../views/licenses/ViewLicense.vue') },
-    { path: '/order_license', component: () => import('../views/licenses/OrderLicense.vue') },
-    { path: '/license_order', component: () => import('../views/licenses/OrderLicense.vue') },
-    { path: '/view_mail_list', component: () => import('../views/mail/MailList.vue') },
-    { path: '/view_mail', component: () => import('../views/mail/ViewMail.vue') },
-    { path: '/order_mail', component: () => import('../views/mail/OrderMail.vue') },
-    { path: '/mail_order', component: () => import('../views/mail/OrderMail.vue') },
-    { path: '/view_quickservers_list', component: () => import('../views/quickservers/QsList.vue') },
-    { path: '/view_qs', component: () => import('../views/quickservers/ViewQs.vue') },
-    { path: '/order_qs', component: () => import('../views/quickservers/OrderQs.vue') },
-    { path: '/qs_order', component: () => import('../views/quickservers/OrderQs.vue') },
-    { path: '/view_servers_list', component: () => import('../views/servers/ServersList.vue') },
-    { path: '/view_server', component: () => import('../views/servers/ViewServer.vue') },
-    { path: '/order_server', component: () => import('../views/servers/OrderServer.vue') },
-    { path: '/server_order', component: () => import('../views/servers/OrderServer.vue') },
-    { path: '/view_ssl_list', component: () => import('../views/ssl/SslList.vue') },
-    { path: '/view_ssl', component: () => import('../views/ssl/ViewSsl.vue') },
-    { path: '/order_ssl', component: () => import('../views/ssl/OrderSsl.vue') },
-    { path: '/ssl_order', component: () => import('../views/ssl/OrderSsl.vue') },
-    { path: '/view_vps_list', component: () => import('../views/vps/VpsList.vue') },
-    { path: '/view_vps', redirect: (to) => { return to.query.id ? '/vps/'+to.query.id : '/vps'; }},
-    { path: '/order_vps', component: () => import('../views/vps/OrderVps.vue') },
-    { path: '/vps_order', component: () => import('../views/vps/OrderVps.vue') },
-    { path: '/view_websites_list', component: () => import('../views/webhosting/WebsitesList.vue') },
-    { path: '/view_website', component: () => import('../views/webhosting/ViewWebsite.vue') },
-    { path: '/order_website', component: () => import('../views/webhosting/OrderWebsite.vue') },
-    { path: '/website_order', component: () => import('../views/webhosting/OrderWebsite.vue') },
-    */
+        // fallback compatibility routes
+        { path: '/contact_info', redirect: '/account/info' },
+        { path: '/change_pass', redirect: '/account/pass' },
+        { path: '/change_username', redirect: '/account/username' },
+        { path: '/account_settings', redirect: '/account/settings' },
+        { path: '/dns_manager', redirect: '/dns' },
+        {
+            path: '/dns_editor',
+            redirect: (to) => {
+                return to.query.id ? '/dns/' + to.query.id : '/dns';
+            },
+        },
+        {
+            path: '/view_domain',
+            redirect: (to) => {
+                return to.query.id ? '/domains/' + to.query.id : '/domains';
+            },
+        },
+        {
+            path: '/view_backup',
+            redirect: (to) => {
+                return to.query.id ? '/backups/' + to.query.id : '/backups';
+            },
+        },
+        {
+            path: '/view_license',
+            redirect: (to) => {
+                return to.query.id ? '/license/' + to.query.id : '/licenses';
+            },
+        },
+        {
+            path: '/view_mail',
+            redirect: (to) => {
+                return to.query.id ? '/mail/' + to.query.id : '/mail';
+            },
+        },
+        {
+            path: '/view_qs',
+            redirect: (to) => {
+                return to.query.id ? '/qs/' + to.query.id : '/qs';
+            },
+        },
+        {
+            path: '/view_server',
+            redirect: (to) => {
+                return to.query.id ? '/servers/' + to.query.id : '/servers';
+            },
+        },
+        {
+            path: '/view_ssl',
+            redirect: (to) => {
+                return to.query.id ? '/ssl/' + to.query.id : '/ssl';
+            },
+        },
+        {
+            path: '/view_vps',
+            redirect: (to) => {
+                return to.query.id ? '/vps/' + to.query.id : '/vps';
+            },
+        },
+        {
+            path: '/view_website',
+            redirect: (to) => {
+                return to.query.id ? '/websites/' + to.query.id : '/websites';
+            },
+        },
+        { path: '/view_domains_list', redirect: '/domains' },
+        { path: '/view_backups_list', redirect: '/backups' },
+        { path: '/view_licenses_list', redirect: '/licenses' },
+        { path: '/view_mail_list', redirect: '/mail' },
+        { path: '/view_quickservers_list', redirect: '/qs' },
+        { path: '/view_servers_list', redirect: '/servers' },
+        { path: '/view_ssl_list', redirect: '/ssl' },
+        { path: '/view_vps_list', redirect: '/vps' },
+        { path: '/view_websites_list', redirect: '/websites' },
+        { path: '/order_domain', redirect: '/domains/order' },
+        { path: '/domain_order', redirect: '/domains/order' },
+        { path: '/order_backup', redirect: '/backups/order' },
+        { path: '/backup_order', redirect: '/backups/order' },
+        { path: '/order_license', redirect: '/licenses/order' },
+        { path: '/license_order', redirect: '/licenses/order' },
+        { path: '/order_mail', redirect: '/mail/order' },
+        { path: '/mail_order', redirect: '/mail/order' },
+        { path: '/order_qs', redirect: '/qs/order' },
+        { path: '/qs_order', redirect: '/qs/order' },
+        { path: '/order_server', redirect: '/servers/order' },
+        { path: '/server_order', redirect: '/servers/order' },
+        { path: '/order_ssl', redirect: '/ssl/order' },
+        { path: '/ssl_order', redirect: '/ssl/order' },
+        { path: '/order_vps', redirect: '/vps/order' },
+        { path: '/vps_order', redirect: '/vps/order' },
+        { path: '/order_website', redirect: '/websites/order' },
+        { path: '/website_order', redirect: '/websites/order' },
         // catch all redirect to home page
         { path: '/:pathMatch(.*)*', redirect: '/' },
     ],

@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface DomainInfo {
     domain_id: number;
     domain_hostname: string;
@@ -168,7 +167,7 @@ export const useDomainStore = defineStore({
         autoRenew: '',
     }),
     getters: {
-        titleField: (state) => state.serviceInfo.domain_hostname
+        titleField: (state) => state.serviceInfo.domain_hostname,
     },
     actions: {
         async register(user: any): Promise<void> {

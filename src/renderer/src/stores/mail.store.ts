@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface MailInfo {
     mail_id: number;
     mail_username: string;
@@ -107,7 +106,7 @@ export const useMailStore = defineStore({
     }),
     getters: {
         titleField: (state) => state.serviceInfo.mail_username,
-        titleField2: (state) => state.serviceInfo.mail_ip
+        titleField2: (state) => state.serviceInfo.mail_ip,
     },
     actions: {
         async register(user: any): Promise<void> {

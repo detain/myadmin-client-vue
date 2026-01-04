@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia';
 
 import { useAlertStore } from '../stores/alert.store';
 
-
 const alertStore = useAlertStore();
 const { alert } = storeToRefs(alertStore);
 </script>

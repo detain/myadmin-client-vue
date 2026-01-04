@@ -12,14 +12,13 @@ import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
 onMounted(function () {
-//    $('[data-widget="pushmenu"]').PushMenu();
+    //    $('[data-widget="pushmenu"]').PushMenu();
 });
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(siteStore);
-
 
 siteStore.checkInfoLoaded();
 
@@ -48,40 +47,43 @@ $(document).ready(function () {
     );
 });
 interface SidebarTweakOptions {
-  EnableRemember: boolean;
-  NoTransitionAfterReload: boolean;
+    EnableRemember: boolean;
+    NoTransitionAfterReload: boolean;
 }
 
 const AdminLTESidebarTweak = {
-  options: {
-    EnableRemember: true,
-    NoTransitionAfterReload: false
-  } as SidebarTweakOptions
+    options: {
+        EnableRemember: true,
+        NoTransitionAfterReload: false,
+    } as SidebarTweakOptions,
 };
 
 // Remember toggle state
 $(document).on('click', '.collapse_menu', function () {
-  if (!AdminLTESidebarTweak.options.EnableRemember) return;
-  const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
-  document.cookie = `toggleState=${toggleState}; path=/`;
+    if (!AdminLTESidebarTweak.options.EnableRemember) return;
+    const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
+    document.cookie = `toggleState=${toggleState}; path=/`;
 });
 
 // Restore state on load
 $(function () {
-  if (!AdminLTESidebarTweak.options.EnableRemember) return;
-  const match = document.cookie.match(/toggleState=([^;]+)/);
-  const toggleState = match ? decodeURIComponent(match[1]) : null;
+    if (!AdminLTESidebarTweak.options.EnableRemember) return;
+    const match = document.cookie.match(/toggleState=([^;]+)/);
+    const toggleState = match ? decodeURIComponent(match[1]) : null;
 
-  if (toggleState === 'closed') {
-    if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
-      $('body').addClass('sidebar-collapse hold-transition').delay(100).queue(function (next) {
-          $(this).removeClass('hold-transition');
-          next();
-      });
-    } else {
-      $('body').addClass('sidebar-collapse');
+    if (toggleState === 'closed') {
+        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+            $('body')
+                .addClass('sidebar-collapse hold-transition')
+                .delay(100)
+                .queue(function (next) {
+                    $(this).removeClass('hold-transition');
+                    next();
+                });
+        } else {
+            $('body').addClass('sidebar-collapse');
+        }
     }
-  }
 });
 
 if (window.location.href.indexOf('view_domains_list') > -1) {
@@ -173,7 +175,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
         </footer>
     </div>
     <div v-else>
-        <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <div class="container-fluid" style="padding-left: 0; padding-right: 0">
             <router-view />
         </div>
     </div>
@@ -201,8 +203,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
 @import '@material-design-icons/font/filled.css';
 
 .main-header {
-  position: relative;
-  z-index: 1050;
+    position: relative;
+    z-index: 1050;
 }
-
 </style>

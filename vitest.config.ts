@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from 'vitest/config';
 //import { defineConfig } from 'vite';
-import { playwright } from '@vitest/browser-playwright'
+import { playwright } from '@vitest/browser-playwright';
 import Vue from '@vitejs/plugin-vue';
 //import minimatch from 'minimatch'
 import { server } from './src/mocks/setup';
@@ -8,11 +8,7 @@ import { server } from './src/mocks/setup';
 export default defineConfig({
     plugins: [Vue()],
     optimizeDeps: {
-      exclude: [
-        'playwright',
-        'playwright-core',
-        'chromium-bidi'
-      ]
+        exclude: ['playwright', 'playwright-core', 'chromium-bidi'],
     },
     test: {
         globals: true,
@@ -25,12 +21,10 @@ export default defineConfig({
             setupFiles: ['./test/.setup.ts'],
             // Optional: configure specific options, e.g., launch options
             launchOptions: {
-              headless: true, // Run headless in CI/locally
+                headless: true, // Run headless in CI/locally
             },
             // https://vitest.dev/config/browser/playwright
-            instances: [
-                { browser: 'chromium' },
-            ],
+            instances: [{ browser: 'chromium' }],
         },
     },
 });

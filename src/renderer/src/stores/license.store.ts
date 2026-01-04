@@ -6,7 +6,6 @@ import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTa
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface LicenseInfo {
     license_id: number;
     license_type: number;
@@ -96,12 +95,12 @@ export const useLicenseStore = defineStore({
             services_module: 'licenses',
         },
     }),
-     getters: {
+    getters: {
         titleField: (state) => state.serviceInfo.license_ip,
         titleField2: (state) => state.serviceInfo.license_key,
-        titleField3: (state) => state.serviceInfo.license_hostname
+        titleField3: (state) => state.serviceInfo.license_hostname,
     },
-   actions: {
+    actions: {
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

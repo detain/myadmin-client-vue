@@ -5,7 +5,6 @@ import { snakeToCamel } from '../helpers/snakeToCamel';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
-
 interface SslListRow {
     ssl_id: number;
     ssl_hostname: string;
@@ -88,7 +87,7 @@ export const useSslStore = defineStore({
         linkDisplay: false,
     }),
     getters: {
-        titleField: (state) => state.ssl_order_id
+        titleField: (state) => state.ssl_order_id,
     },
     actions: {
         async register(user: any): Promise<void> {

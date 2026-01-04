@@ -47,24 +47,24 @@ interface BackupRow {
                 </div>
                 <div class="card-body">
                     <table class="table-sm table-bordered table">
-                    <thead>
-                        <tr>
-                            <th>Website</th>
-                            <th>Backup</th>
-                            <th>Size</th>
-                            <th>Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <template v-if="!isEmpty(rows)">
-                            <tr v-for="row in rows" :key="row.backup_name">
-                                <td>{{ row.website }}</td>
-                                <td>{{ row.backup_name }}</td>
-                                <td>{{ row.size }}</td>
-                                <td>{{ row.download_link }}</td>
+                        <thead>
+                            <tr>
+                                <th>Website</th>
+                                <th>Backup</th>
+                                <th>Size</th>
+                                <th>Options</th>
                             </tr>
-                        </template>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            <template v-if="!isEmpty(rows)">
+                                <tr v-for="row in rows" :key="row.backup_name">
+                                    <td>{{ row.website }}</td>
+                                    <td>{{ row.backup_name }}</td>
+                                    <td>{{ row.size }}</td>
+                                    <td>{{ row.download_link }}</td>
+                                </tr>
+                            </template>
+                        </tbody>
                     </table>
                 </div>
             </div>

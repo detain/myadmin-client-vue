@@ -1,3 +1,3 @@
 export default {
-  fire: vi.fn()
+    fire: vi.fn(),
 };
