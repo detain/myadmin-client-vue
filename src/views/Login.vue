@@ -139,12 +139,12 @@ onMounted(function () {
         $('#forgot_link').click(function (e) {
             e.preventDefault();
             $('.sign-up-txt').hide();
-            $('div.myadmin_login').toggle('500');
+            $('div.myadmin_login').toggle(500);
         });
         $('#access_link').click(function (e) {
             e.preventDefault();
             $('.sign-up-txt.signup').show();
-            $('div.myadmin_login').toggle('500');
+            $('div.myadmin_login').toggle(500);
         });
         $('#btn-forgot').click(function (e) {
             forgot_password();
