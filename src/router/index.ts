@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth.store';
 import { useAlertStore } from '../stores/alert.store';
+//import Layout from '../views/billing/affiliates/Layout.vue';
 
 export const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
