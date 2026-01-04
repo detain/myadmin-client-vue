@@ -1,8 +1,3 @@
-/*! jQuery UI - v1.11.2 - 2014-10-21
-* Copyright 2014 jQuery Foundation and other contributors; Licensed MIT */
-
-/* Layout helpers
-----------------------------------*/
 .ui-helper-hidden {
   display: none;
 }
@@ -36,7 +31,7 @@
   clear: both;
 }
 .ui-helper-clearfix {
-  min-height: 0; /* support: IE7 */
+  min-height: 0; 
 }
 .ui-helper-zfix {
   width: 100%;
@@ -45,23 +40,17 @@
   left: 0;
   position: absolute;
   opacity: 0;
-  filter: Alpha(Opacity=0); /* support: IE8 */
+  filter: Alpha(Opacity=0); 
 }
 
 .ui-front {
   z-index: 100;
 }
 
-/* Interaction Cues
-----------------------------------*/
 .ui-state-disabled {
   cursor: default !important;
 }
 
-/* Icons
-----------------------------------*/
-
-/* states and images */
 .ui-icon {
   width: 16px;
   height: 16px;
@@ -71,15 +60,12 @@
   background-repeat: no-repeat;
 }
 
-/* Misc visuals
-----------------------------------*/
 
-/* Overlays */
 .ui-widget-overlay {
   background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50%
     repeat-x;
   opacity: 0.3;
-  filter: Alpha(Opacity=30); /* support: IE8 */
+  filter: Alpha(Opacity=30); 
   position: fixed;
   top: 0;
   left: 0;
@@ -179,7 +165,7 @@
   position: relative;
   margin: 2px 0 0 0;
   padding: 0.5em 0.5em 0.5em 0.7em;
-  min-height: 0; /* support: IE7 */
+  min-height: 0; 
   font-size: 100%;
 }
 .ui-accordion .ui-accordion-icons {
@@ -214,7 +200,7 @@
   cursor: pointer;
   vertical-align: middle;
   text-align: center;
-  overflow: visible; /* removes extra width in IE */
+  overflow: visible; 
 }
 .ui-button,
 .ui-button:link,
@@ -223,11 +209,11 @@
 .ui-button:active {
   text-decoration: none;
 }
-/* to make room for the icon, a width needs to be set here */
+
 .ui-button-icon-only {
   width: 2.2em;
 }
-/* button elements seem to need a little more width */
+
 button.ui-button-icon-only {
   width: 2.4em;
 }
@@ -238,7 +224,7 @@ button.ui-button-icons-only {
   width: 3.7em;
 }
 
-/* button text element */
+
 .ui-button .ui-button-text {
   display: block;
   line-height: normal;
@@ -263,12 +249,12 @@ button.ui-button-icons-only {
   padding-left: 2.1em;
   padding-right: 2.1em;
 }
-/* no icon support for input elements, provide padding by default */
+
 input.ui-button {
   padding: 0.4em 1em;
 }
 
-/* button icon element(s) */
+
 .ui-button-icon-only .ui-icon,
 .ui-button-text-icon-primary .ui-icon,
 .ui-button-text-icon-secondary .ui-icon,
@@ -293,7 +279,7 @@ input.ui-button {
   right: 0.5em;
 }
 
-/* button sets */
+
 .ui-buttonset {
   margin-right: 7px;
 }
@@ -302,8 +288,8 @@ input.ui-button {
   margin-right: -0.3em;
 }
 
-/* workarounds */
-/* reset extra padding in Firefox, see h5bp.com/l */
+
+
 input.ui-button::-moz-focus-inner,
 button.ui-button::-moz-focus-inner {
   border: 0;
@@ -406,7 +392,7 @@ button.ui-button::-moz-focus-inner {
   float: left;
 }
 
-/* with multiple calendars */
+
 .ui-datepicker.ui-datepicker-multi {
   width: auto;
 }
@@ -439,7 +425,7 @@ button.ui-button::-moz-focus-inner {
   font-size: 0;
 }
 
-/* RTL support */
+
 .ui-datepicker-rtl {
   direction: rtl;
 }
@@ -549,8 +535,8 @@ button.ui-button::-moz-focus-inner {
   margin: 0;
   padding: 3px 1em 3px 0.4em;
   cursor: pointer;
-  min-height: 0; /* support: IE7 */
-  /* support: IE10, see #8844 */
+  min-height: 0; 
+  
   list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
 .ui-menu .ui-menu-divider {
@@ -565,7 +551,7 @@ button.ui-button::-moz-focus-inner {
   margin: -1px;
 }
 
-/* icon support */
+
 .ui-menu-icons {
   position: relative;
 }
@@ -573,7 +559,7 @@ button.ui-button::-moz-focus-inner {
   padding-left: 2em;
 }
 
-/* left-aligned */
+
 .ui-menu .ui-icon {
   position: absolute;
   top: 0;
@@ -582,7 +568,7 @@ button.ui-button::-moz-focus-inner {
   margin: auto 0;
 }
 
-/* right-aligned */
+
 .ui-menu .ui-menu-icon {
   left: auto;
   right: 0;
@@ -599,7 +585,7 @@ button.ui-button::-moz-focus-inner {
 .ui-progressbar .ui-progressbar-overlay {
   background: url("data:image/gif;base64,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");
   height: 100%;
-  filter: alpha(opacity=25); /* support: IE8 */
+  filter: alpha(opacity=25); 
   opacity: 0.25;
 }
 .ui-progressbar-indeterminate .ui-progressbar-value {
@@ -615,7 +601,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-selectmenu-menu .ui-menu {
   overflow: auto;
-  /* Support: IE7 */
+  
   overflow-x: hidden;
   padding-bottom: 1px;
 }
@@ -676,7 +662,7 @@ button.ui-button::-moz-focus-inner {
   background-position: 0 0;
 }
 
-/* support: IE8 - See #6727 */
+
 .ui-slider.ui-state-disabled .ui-slider-handle,
 .ui-slider.ui-state-disabled .ui-slider-range {
   filter: inherit;
@@ -747,13 +733,13 @@ button.ui-button::-moz-focus-inner {
   overflow: hidden;
   right: 0;
 }
-/* more specificity required here to override default borders */
+
 .ui-spinner a.ui-spinner-button {
   border-top: none;
   border-bottom: none;
   border-right: none;
 }
-/* vertically center icon */
+
 .ui-spinner .ui-icon {
   position: absolute;
   margin-top: -8px;
@@ -767,13 +753,13 @@ button.ui-button::-moz-focus-inner {
   bottom: 0;
 }
 
-/* TR overrides */
+
 .ui-spinner .ui-icon-triangle-1-s {
-  /* need to fix icons sprite */
+  
   background-position: -65px -16px;
 }
 .ui-tabs {
-  position: relative; /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+  position: relative; 
   padding: 0.2em;
 }
 .ui-tabs .ui-tabs-nav {
@@ -825,8 +811,6 @@ body .ui-tooltip {
   border-width: 2px;
 }
 
-/* Component containers
-----------------------------------*/
 .ui-widget {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.1em;
@@ -861,8 +845,6 @@ body .ui-tooltip {
   color: #444444;
 }
 
-/* Interaction states
-----------------------------------*/
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
@@ -917,8 +899,6 @@ body .ui-tooltip {
   text-decoration: none;
 }
 
-/* Interaction Cues
-----------------------------------*/
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
@@ -959,24 +939,22 @@ body .ui-tooltip {
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
   opacity: 0.7;
-  filter: Alpha(Opacity=70); /* support: IE8 */
+  filter: Alpha(Opacity=70); 
   font-weight: normal;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
   opacity: 0.35;
-  filter: Alpha(Opacity=35); /* support: IE8 */
+  filter: Alpha(Opacity=35); 
   background-image: none;
 }
 .ui-state-disabled .ui-icon {
-  filter: Alpha(Opacity=35); /* support: IE8 - See #6059 */
+  filter: Alpha(Opacity=35); 
 }
 
-/* Icons
-----------------------------------*/
 
-/* states and images */
+
 .ui-icon,
 .ui-widget-content .ui-icon {
   background-image: url("images/ui-icons_222222_256x240.png");
@@ -1002,7 +980,7 @@ body .ui-tooltip {
   background-image: url("images/ui-icons_cd0a0a_256x240.png");
 }
 
-/* positioning */
+
 .ui-icon-blank {
   background-position: 16px 16px;
 }
@@ -1414,7 +1392,7 @@ body .ui-tooltip {
 .ui-icon-seek-start {
   background-position: -80px -160px;
 }
-/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+
 .ui-icon-seek-first {
   background-position: -80px -160px;
 }
@@ -1530,10 +1508,8 @@ body .ui-tooltip {
   background-position: -80px -224px;
 }
 
-/* Misc visuals
-----------------------------------*/
 
-/* Corner radius */
+
 .ui-corner-all,
 .ui-corner-top,
 .ui-corner-left,
@@ -1559,13 +1535,13 @@ body .ui-tooltip {
   border-bottom-right-radius: 2px;
 }
 
-/* Overlays */
+
 .ui-widget-shadow {
   margin: -8px 0 0 -8px;
   padding: 8px;
   background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50%
     repeat-x;
   opacity: 0.3;
-  filter: Alpha(Opacity=30); /* support: IE8 */
+  filter: Alpha(Opacity=30); 
   border-radius: 8px;
 }
