@@ -19,7 +19,7 @@
         "build": "vue-tsc --noEmit && vite build",
         "serve": "vite preview",
         "preview": "vite preview",
-        "lint": "eslint . --ext .ts,.vue,.js,.jsx,.cjs,.mjs --fix --ignore-pattern .gitignore",
+        "lint": "eslint . --ext .ts,.vue,.js,.jsx,.cjs,.mjs --fix --ignore-pattern .gitignore --ignore-pattern test/",
         "format": "prettier . --write",
         "format:check": "prettier . --check",
         "test": "vitest",

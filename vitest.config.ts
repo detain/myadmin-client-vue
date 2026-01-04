@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import Vue from '@vitejs/plugin-vue';
 //import minimatch from 'minimatch'
-import { server } from './src/mocks/setup';
+//import { server } from './src/mocks/setup';
 
 export default defineConfig({
     plugins: [Vue()],

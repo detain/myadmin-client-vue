@@ -20,16 +20,30 @@ export default [
     // ------------------------------------------------------------
     ...vue.configs['flat/recommended'],
 
+    {
+        files: ['*.cjs', '*.ts'],
+        languageOptions: {
+            globals: {
+                process: 'readonly',
+                module: 'readonly',
+                require: 'readonly',
+                __dirname: 'readonly',
+            },
+        },
+    },
+
     // ------------------------------------------------------------
     // TypeScript + Vue files
     // ------------------------------------------------------------
     {
         files: ['src/**/*.ts', 'src/**/*.vue'],
-
         languageOptions: {
             parser: vueParser,
             globals: {
                 ...globals.browser,
+                $: 'readonly', // for jQuery or dev helpers
+                NodeJS: 'readonly',
+                JQuery: 'readonly',
             },
             parserOptions: {
                 parser: tsParser,
@@ -48,6 +62,8 @@ export default [
 
             'no-unused-vars': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
+
+            '@typescript-eslint/ban-types': 'off', // disable for d.ts if needed
 
             'vue/multi-word-component-names': 'off',
         },
