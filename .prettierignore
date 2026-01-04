@@ -8,4 +8,5 @@ coverage/
 __snapshots__/
 .yarn/releases/
 public/css/*.min.css
-src/assets/openapi/openapi.*
+src/renderer/src/assets/openapi/openapi.*
+src/renderer/src/assets/spec/openapi.*

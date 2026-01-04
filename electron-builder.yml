@@ -2,73 +2,73 @@ appId: com.electron.app
 productName: my-interserver-client
 
 directories:
-  buildResources: build
-  output: dist
+    buildResources: build
+    output: dist
 
 files:
-  - '!**/.vscode/*'
-  - '!src/*'
-  - '!electron.vite.config.{js,ts,mjs,cjs}'
-  - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,CHANGELOG.md,README.md}'
-  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
-  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+    - '!**/.vscode/*'
+    - '!src/*'
+    - '!electron.vite.config.{js,ts,mjs,cjs}'
+    - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,CHANGELOG.md,README.md}'
+    - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+    - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 
 asarUnpack:
-  - resources/**
+    - resources/**
 
 npmRebuild: false
 
 # Windows
 win:
-  executableName: my-interserver-client
-  target:
-    - target: nsis
-    - target: portable
+    executableName: my-interserver-client
+    target:
+        - target: nsis
+        - target: portable
 
 nsis:
-  artifactName: ${name}-${version}-setup-${arch}.${ext}
-  shortcutName: ${productName}
-  uninstallDisplayName: ${productName}
-  createDesktopShortcut: always
+    artifactName: ${name}-${version}-setup-${arch}.${ext}
+    shortcutName: ${productName}
+    uninstallDisplayName: ${productName}
+    createDesktopShortcut: always
 
 portable:
-  artifactName: ${name}-${version}-portable-${arch}.exe
+    artifactName: ${name}-${version}-portable-${arch}.exe
 
 # macOS
 mac:
-  hardenedRuntime: true
-  entitlements: build/entitlements.mac.plist
-  entitlementsInherit: build/entitlements.mac.plist
-  notarize: true
-  target:
-    - dmg
-    - pkg
+    hardenedRuntime: true
+    entitlements: build/entitlements.mac.plist
+    entitlementsInherit: build/entitlements.mac.plist
+    notarize: true
+    target:
+        - dmg
+        - pkg
 
 dmg:
-  artifactName: ${name}-${version}-${arch}.${ext}
+    artifactName: ${name}-${version}-${arch}.${ext}
 
 # Linux
 linux:
-  category: Utility
-  maintainer: InterServer
-  target:
-    - AppImage
-    - snap
-    - deb
+    category: Utility
+    maintainer: InterServer
+    target:
+        - AppImage
+        - snap
+        - deb
 
 appImage:
-  artifactName: ${name}-${version}-${arch}.${ext}
+    artifactName: ${name}-${version}-${arch}.${ext}
 
 deb:
-  artifactName: ${name}-${version}-${arch}.${ext}
+    artifactName: ${name}-${version}-${arch}.${ext}
 
 snap:
-  artifactName: ${name}-${version}-${arch}.${ext}
+    artifactName: ${name}-${version}-${arch}.${ext}
 
 # Auto-update
 publish:
-  provider: generic
-  url: https://example.com/auto-updates
+    provider: generic
+    url: https://example.com/auto-updates
 
 electronDownload:
-  mirror: https://npmmirror.com/mirrors/electron/
+    mirror: https://npmmirror.com/mirrors/electron/
