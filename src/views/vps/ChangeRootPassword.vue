@@ -37,25 +37,25 @@ function submitForm() {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit.prevent="submitForm" class="change_rootpass">
+                    <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeRootPassword" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="os">Server: </label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="hostname" disabled />
+                                    <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">New Password: </label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="password" class="pr-password form-control form-control-sm" id="password" name="password" required />
+                                    <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">Confirm password: </label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="password" class="pr-password form-control form-control-sm" id="password2" name="password2" required />
+                                    <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
                                 </div>
                             </div>
                             <hr />

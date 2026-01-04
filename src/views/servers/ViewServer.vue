@@ -36,16 +36,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/'+moduleLink(module), 'Servers'],
+        [`/${moduleLink(module)}`, 'Servers'],
     ]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Server '+id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Server ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Server '+id);
-        siteStore.setTitle('View Server '+id);
+        siteStore.setPageHeading(`View Server ${id}`);
+        siteStore.setTitle(`View Server ${id}`);
     } else {
-        siteStore.setPageHeading('Server '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Server '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`Server ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Server ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -57,7 +57,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -66,7 +66,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/'+moduleLink(module)+'/'+id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -184,7 +184,7 @@ const ipv6VlansNetworks = computed(() => {
             <BandwidthGraph :id="id"></BandwidthGraph>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
             <IpmiLive :id="id"></IpmiLive>
@@ -263,7 +263,7 @@ const ipv6VlansNetworks = computed(() => {
                 </div>
 
                 <div class="card-body" style="overflow: scroll">
-                    <table class="table-sm table-bordered table" v-if="assets">
+                    <table v-if="assets" class="table-sm table-bordered table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -342,7 +342,7 @@ const ipv6VlansNetworks = computed(() => {
                                     <td>{{ vlans[vlan_id].network }}</td>
                                     <td>{{ vlans[vlan_id].first_usable }}</td>
                                     <template v-if="Object.keys(switchports)[0] === String(switchport_id)">
-                                        <td :rowspan="switchport.vlans.length" v-bind:class="{ 'vertical-align': switchport.vlans.length > 1 }">
+                                        <td :rowspan="switchport.vlans.length" :class="{ 'vertical-align': switchport.vlans.length > 1 }">
                                             <template v-if="networkInfo.vlans6 && networkInfo.vlans6.length > 0">
                                                 <template v-for="(ipv6, ipv6_index) in networkInfo.vlans6" :key="ipv6_index">
                                                     {{ ipv6.vlans6_networks }}

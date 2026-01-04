@@ -47,7 +47,7 @@ function placeOrder() {
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="domain">Domain</label>
                             <div class="col-sm-10 input-group">
-                                <input type="text" class="form-control form-control-sm" id="hostname" :value="domain" disabled />
+                                <input id="hostname" type="text" class="form-control form-control-sm" :value="domain" disabled />
                             </div>
                         </div>
                         <div id="whois_row" class="form-group row">
@@ -56,13 +56,13 @@ function placeOrder() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" id="whois_cost" :value="whoisCost.toFixed(2)" disabled />
+                                <input id="whois_cost" type="text" class="form-control form-control-sm" :value="whoisCost.toFixed(2)" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="submit"></label>
                             <div class="col-sm-10 input-group input-group-sm">
-                                <input type="submit" name="Submit" value="Place Order" class="btn btn-custom btn-sm px-3 py-2 text-sm" id="button-id-signup" />
+                                <input id="button-id-signup" type="submit" name="Submit" value="Place Order" class="btn btn-custom btn-sm px-3 py-2 text-sm" />
                             </div>
                         </div>
                     </form>

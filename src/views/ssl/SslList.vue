@@ -12,7 +12,7 @@ siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module), 'SSL'],
+    [`/${moduleLink(module)}`, 'SSL'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -60,7 +60,7 @@ function crud_export(exportType: string): void {
 }
 const loadSsl = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl+'/ssl');
+        const response = await fetchWrapper.get(`${baseUrl}/ssl`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -127,7 +127,7 @@ loadSsl();
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -141,7 +141,7 @@ loadSsl();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Service ID</th>

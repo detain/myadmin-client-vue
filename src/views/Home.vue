@@ -31,7 +31,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <router-link to="cart" title="Cart" class="nav-link"><i class="fa fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button @click="authStore.logout()" class="btn btn-link nav-item nav-link"><i class="fa fa-power-off"></i></button>
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fa fa-power-off"></i></button>
                     <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fa fa-power-off"></i></a> -->
                 </li>
             </ul>

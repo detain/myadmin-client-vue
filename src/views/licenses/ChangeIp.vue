@@ -45,7 +45,7 @@ function handleSubmit() {
                             <div class="form-group row">
                                 <label class="col-md-2" for="os">New IP</label>
                                 <div class="col-sm-10 input-group">
-                                    <input name="new_ip" class="form-control form-control-sm" v-model="newIp" />
+                                    <input v-model="newIp" name="new_ip" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <hr />

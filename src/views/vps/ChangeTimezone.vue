@@ -29,7 +29,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/change_timezone', {
+            .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`, {
                 timezone: timezone.value,
             })
             .then((response) => {
@@ -38,7 +38,7 @@ function submitForm() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success'+response.text,
+                    html: `Success${response.text}`,
                 });
             });
     } catch (error: any) {
@@ -47,12 +47,12 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error '+error.text,
+            html: `Got error ${error.text}`,
         });
     }
 }
 
-fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/change_timezone').then((response) => {
+fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`).then((response) => {
     console.log('Response:');
     console.log(response);
     zones.value = response;
@@ -99,13 +99,13 @@ fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/change_time
                     </div>
                 </div>
                 <div class="card-body pb-0">
-                    <form @submit.prevent="submitForm" class="change_timezone">
+                    <form class="change_timezone" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_timezone" />
                         <div class="form-group">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right" for="os">Select Timezone</label>
                                 <div class="col-sm-9 input-group">
-                                    <select name="timezone" class="form-control select2" v-model="timezone">
+                                    <select v-model="timezone" name="timezone" class="form-control select2">
                                         <option v-for="(zone, index) in zones" :key="index" :value="zone">{{ zone }}</option>
                                     </select>
                                 </div>

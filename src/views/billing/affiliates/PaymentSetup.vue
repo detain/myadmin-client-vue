@@ -30,7 +30,7 @@ onMounted(() => {});
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" id="" action="/affiliate?link=payment_method">
+                    <form id="" method="post" action="/affiliate?link=payment_method">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right"> Select Payment Method<span class="text-danger"> *</span> </label>
                             <div class="col-sm-9 input-group">

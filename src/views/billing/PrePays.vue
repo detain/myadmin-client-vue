@@ -50,7 +50,7 @@ function delete_prepay(prepay_id: string | number) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to delete your <strong>prepay #'+prepay_id+'</strong> and its related history ?</p>',
+        html: `<p>Are you sure want to delete your <strong>prepay #${prepay_id}</strong> and its related history ?</p>`,
         preConfirm: () => {
             $('#deleteForm').submit();
         },
@@ -121,7 +121,7 @@ prepayStore.load();
                         </div>
                     </div>
                 </div>
-                <div class="row py-3" v-if="Object.keys(prepays).length > 0">
+                <div v-if="Object.keys(prepays).length > 0" class="row py-3">
                     <div class="col text-left">
                         <h6 class="pl-3">
                             <small>Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }}</small>
@@ -133,7 +133,7 @@ prepayStore.load();
                                 <li class="page-item" :class="{ disabled: page === 1 }">
                                     <a class="page-link" :href="`prepays?page=${page - 1}`" tabindex="-1">Previous</a>
                                 </li>
-                                <li class="page-item" :class="{ active: page === i }" v-for="i in total_pages" :key="i">
+                                <li v-for="i in total_pages" :key="i" class="page-item" :class="{ active: page === i }">
                                     <a class="page-link" :href="`prepays?page=${i}`">{{ i }}</a>
                                 </li>
                                 <li class="page-item" :class="{ disabled: page === total_pages }">
@@ -150,7 +150,7 @@ prepayStore.load();
             </template>
         </div>
     </div>
-    <div class="modal fade" id="add-funds" style="display: none" aria-hidden="true">
+    <div id="add-funds" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
@@ -160,17 +160,17 @@ prepayStore.load();
                     <form action="prepays" method="post" class="">
                         <input type="hidden" name="action" value="addfunds" />
                         <input id="prepay_hiddenid" type="hidden" name="prepay_id" value="" />
-                        <input type="hidden" id="p_module" name="prepay_module" value="" />
+                        <input id="p_module" type="hidden" name="prepay_module" value="" />
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-right" for="prep_id">Prepay ID</label>
                             <div class="col-sm-6 input-group">
-                                <input type="text" class="form-control form-control-sm" id="prep_id" name="prep_id" value="" disabled />
+                                <input id="prep_id" type="text" class="form-control form-control-sm" name="prep_id" value="" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-right" for="amount">Amount in USD</label>
                             <div class="col-sm-6 input-group">
-                                <input type="text" class="form-control form-control-sm" id="amount" name="amount" />
+                                <input id="amount" type="text" class="form-control form-control-sm" name="amount" />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -184,7 +184,7 @@ prepayStore.load();
             </div>
         </div>
     </div>
-    <div class="modal fade" id="add-prepay" style="display: none" aria-hidden="true">
+    <div id="add-prepay" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -197,25 +197,25 @@ prepayStore.load();
                             <label class="col-md-6 col-form-label" for="module-select">Select Module to use this prepay for</label>
                             <div class="col-sm-6 input-group">
                                 <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event)">
-                                    <option v-for="(module_name, module) in modules" :value="module" :key="module">{{ module_name }}</option>
+                                    <option v-for="(module_name, module) in modules" :key="module" :value="module">{{ module_name }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label" for="amount">Amount in USD</label>
                             <div class="col-sm-6 input-group">
-                                <input type="text" class="form-control form-control-sm" id="amount" name="amount" value="100" />
+                                <input id="amount" type="text" class="form-control form-control-sm" name="amount" value="100" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label" for="auto-use">Automatically use on new invoices</label>
                             <div class="col-sm-6 input-group">
                                 <div class="icheck-success d-inline">
-                                    <input class="form-check-input" type="radio" name="automatic_use" id="a-inlineRadio1" value="1" checked />
+                                    <input id="a-inlineRadio1" class="form-check-input" type="radio" name="automatic_use" value="1" checked />
                                     <label class="form-check-label" for="a-inlineRadio1">Yes</label>
                                 </div>
                                 <div class="icheck-success d-inline pl-2">
-                                    <input class="form-check-input" type="radio" name="automatic_use" id="a-inlineRadio2" value="0" />
+                                    <input id="a-inlineRadio2" class="form-check-input" type="radio" name="automatic_use" value="0" />
                                     <label class="form-check-label" for="a-inlineRadio2">No</label>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@ prepayStore.load();
         </div>
     </div>
     <form id="deleteForm" action="prepays" method="POST">
-        <input type="hidden" name="p_id" value="" id="p_id" />
+        <input id="p_id" type="hidden" name="p_id" value="" />
         <input type="hidden" name="action" value="delete" />
     </form>
 </template>

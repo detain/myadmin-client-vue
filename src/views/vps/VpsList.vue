@@ -71,7 +71,7 @@ function crud_export(exportType: string): void {
 }
 const loadVpsList = async (data: any) => {
     try {
-        const response = await fetchWrapper.get(baseUrl+'/vps');
+        const response = await fetchWrapper.get(`${baseUrl}/vps`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -92,7 +92,7 @@ loadVpsList(data);
                 <div class="card-header text-right">
                     <div class="row float-right">
                         <div id="search_btns" class="col-md-auto printer-hidden pl-2 text-right">
-                            <form accept-charset="UTF-8" role="form" id="paginationForm" class="" action="ajax.php?choice=crud&crud=view_vps_list&action=list" autocomplete="on" method="GET">
+                            <form id="paginationForm" accept-charset="UTF-8" role="form" class="" action="ajax.php?choice=crud&crud=view_vps_list&action=list" autocomplete="on" method="GET">
                                 <a id="crud-search" class="btn btn-sm btn-primary" href="" title="Search" data-tile="Search"> <span class="fa fa-search fa-fw"></span> Search </a>
                                 <span id="crud-search-more" class="crud-search form-inline float-right" style="display: none">
                                     <input class="crud-searchdata crud-search-active form-control form-control-sm mr-1" name="search" data-type="text" type="text" value="" />
@@ -114,7 +114,7 @@ loadVpsList(data);
                                     </select>
                                     <input class="crud-searchdata crud-datepicker-from form-control form-control-sm mr-1" name="date_from" style="display: none" data-type="datetime" data-fieldtype="date" type="text" value="" />
                                     <input class="crud-searchdata crud-datepicker-to form-control form-control-sm mr-1" name="date_to" style="display: none" data-type="datetime" data-fieldtype="date" type="text" value="" />
-                                    <select class="crud-data crud-columns-select form-control form-control-sm mr-1" name="column" id="crud_search_column">
+                                    <select id="crud_search_column" class="crud-data crud-columns-select form-control form-control-sm mr-1" name="column">
                                         <option value="">All fields</option>
                                         <option value="vps_id" data-type="int">ID</option>
                                         <option value="vps_ip" data-type="int">IP</option>
@@ -126,7 +126,7 @@ loadVpsList(data);
                                         <option value="services_name" data-type="int">Package</option>
                                     </select>
                                     <span class="btn-group">
-                                        <a class="btn btn-sm btn-primary" href="" data-search="1" id="crud_search_button">Go</a>
+                                        <a id="crud_search_button" class="btn btn-sm btn-primary" href="" data-search="1">Go</a>
                                     </span>
                                 </span>
                             </form>
@@ -178,7 +178,7 @@ loadVpsList(data);
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -192,7 +192,7 @@ loadVpsList(data);
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -228,7 +228,7 @@ loadVpsList(data);
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <form accept-charset="UTF-8" role="form" id="paginationForm" class="" action="ajax.php?choice=crud&crud=view_vps_list&action=list" autocomplete="on" method="GET" style="display: inline-flex">
+                                <form id="paginationForm" accept-charset="UTF-8" role="form" class="" action="ajax.php?choice=crud&crud=view_vps_list&action=list" autocomplete="on" method="GET" style="display: inline-flex">
                                     <div class="btn-group row-counts" role="group" aria-label="Rows Per Page">
                                         <button type="button" class="btn btn-secondary btn-sm" data-limit="10">10</button>
                                         <button type="button" class="btn btn-secondary btn-sm" data-limit="25">25</button>

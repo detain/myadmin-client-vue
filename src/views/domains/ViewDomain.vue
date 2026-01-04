@@ -38,16 +38,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/'+moduleLink(module), 'Domains'],
+        [`/${moduleLink(module)}`, 'Domains'],
     ]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Domain '+id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Domain ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Domain '+id);
-        siteStore.setTitle('View Domain '+id);
+        siteStore.setPageHeading(`View Domain ${id}`);
+        siteStore.setTitle(`View Domain ${id}`);
     } else {
-        siteStore.setPageHeading('Domain '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Domain '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -59,7 +59,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -68,7 +68,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/'+moduleLink(module)+'/'+id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -158,7 +158,7 @@ console.log(link.value);
             <Contact :id="id"></Contact>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'dnssec'" class="col">
             <Dnssec :id="id"></Dnssec>

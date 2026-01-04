@@ -90,20 +90,20 @@ function renewCalculate() {
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="domain">Domain</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="hostname" name="domain" :value="formValues.serviceInfo.domain_hostname" disabled />
+                                <input id="hostname" type="text" class="form-control form-control-sm" name="domain" :value="formValues.serviceInfo.domain_hostname" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="expiry_date">Expiry Date</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="expiry_date" name="expiry_date" :value="formValues.expireDate || ''" disabled />
+                                <input id="expiry_date" type="text" class="form-control form-control-sm" name="expiry_date" :value="formValues.expireDate || ''" disabled />
                             </div>
                         </div>
                         <template v-if="tldInfo.tld_whois_privacy_available == 'Y'">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="whois_privacy">Whois Privacy</label>
                                 <div class="col-sm-9 input-group">
-                                    <select name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl" id="whois_privacy" @change="renewCalculate">
+                                    <select id="whois_privacy" name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl" @change="renewCalculate">
                                         <option value="enable" :selected="whoisPrivacy === 'enabled'">Enable</option>
                                         <option value="disable" :selected="whoisPrivacy === false || !whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === ''">Disable</option>
                                     </select>
@@ -116,7 +116,7 @@ function renewCalculate() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" id="renew_cost" name="renew_cost" :value="renewCostFormatted" disabled />
+                                <input id="renew_cost" type="text" class="form-control form-control-sm" name="renew_cost" :value="renewCostFormatted" disabled />
                             </div>
                         </div>
                         <div id="whois_row" class="form-group row">
@@ -125,7 +125,7 @@ function renewCalculate() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" id="whois_cost" name="whois_cost" :value="whoisCostFormatted" disabled />
+                                <input id="whois_cost" type="text" class="form-control form-control-sm" name="whois_cost" :value="whoisCostFormatted" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -134,7 +134,7 @@ function renewCalculate() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input type="text" class="form-control" id="total_cost" name="total_cost" :value="renewCostFormatted" disabled />
+                                <input id="total_cost" type="text" class="form-control" name="total_cost" :value="renewCostFormatted" disabled />
                             </div>
                         </div>
                         <div class="form-group row">

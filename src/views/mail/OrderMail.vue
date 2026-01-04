@@ -42,7 +42,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(baseUrl+'/mail/order', {
+            .put(`${baseUrl}/mail/order`, {
                 validateOnly: true,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -73,7 +73,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl+'/mail/order', {
+            .post(`${baseUrl}/mail/order`, {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -83,7 +83,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    router.push('/cart/'+response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -116,7 +116,7 @@ interface ValiateResponse {
 }
 
 try {
-    fetchWrapper.get(baseUrl+'/mail/order').then((response: MailOrderResponse) => {
+    fetchWrapper.get(`${baseUrl}/mail/order`).then((response: MailOrderResponse) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
@@ -152,8 +152,8 @@ try {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" v-model="coupon" @input="updateCoupon()" placeholder="Coupon Code" />
-                                    <span class="input-group-addon" style="padding: 0"><img src="https://my.interserver.net/validate_coupon.php?module=vps" id="couponimg" height="20" width="20" alt="" /></span>
+                                    <input v-model="coupon" type="text" class="form-control form-control-sm" placeholder="Coupon Code" @input="updateCoupon()" />
+                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -186,7 +186,7 @@ try {
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div id="package_name" class="col-md-8" v-if="serviceTypes && serviceTypes[pkg]">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_name : '' }}</div>
+                            <div v-if="serviceTypes && serviceTypes[pkg]" id="package_name" class="col-md-8">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_name : '' }}</div>
                             <div id="package_period" class="col text-bold text-right">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
@@ -230,7 +230,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[pkg].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" @click="editForm" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost">{{ validateResponse?.originalCost }}</div>
@@ -251,7 +251,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon='+validateResponse?.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon='+validateResponse?.coupon" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">
@@ -267,7 +267,7 @@ try {
                                             <div class="text-bold text-lg">Total</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-lg" id="totalprice">{{ validateResponse?.serviceCost }}</div>
+                                            <div id="totalprice" class="text-bold text-lg">{{ validateResponse?.serviceCost }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -280,7 +280,7 @@ try {
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" style="margin: 0 5px; display: inline" value="yes" v-model="tos" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </div>
                             </div>

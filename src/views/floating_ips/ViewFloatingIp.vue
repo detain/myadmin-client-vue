@@ -33,9 +33,9 @@ siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module), 'Floating IPs'],
+    [`/${moduleLink(module)}`, 'Floating IPs'],
 ]);
-siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Floating IPs '+id);
+siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IPs ${id}`);
 
 const floatingIpStore = useFloatingIpStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
@@ -48,16 +48,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/'+moduleLink(module), 'Floating IPs'],
+        [`/${moduleLink(module)}`, 'Floating IPs'],
     ]);
-    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Floating IP '+id);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IP ${id}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Floating IP '+id);
-        siteStore.setTitle('View Floating IP '+id);
+        siteStore.setPageHeading(`View Floating IP ${id}`);
+        siteStore.setTitle(`View Floating IP ${id}`);
     } else {
-        siteStore.setPageHeading('Floating IP '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Floating IP '+id+' '+ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -69,7 +69,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -78,7 +78,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/'+moduleLink(module)+'/'+id);
+                                    router.push(`/${moduleLink(module)}/${id}`);
                                 },
                             });
                         });
@@ -166,7 +166,7 @@ const statusClass = computed(() => {
             <Alerts :id="id"></Alerts>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
-            <Cancel :id="id" :module="module" :package="pkg" :titleField="titleField" :titleField2="titleField2"></Cancel>
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
@@ -258,12 +258,12 @@ const statusClass = computed(() => {
             </div>
         </div>
     </template>
-    <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="commentForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <form class="inline" method="post" :action="`view_floating_ip?id=${serviceInfo.floating_ip_id}`">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Update Comment</h5>
+                        <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
@@ -272,7 +272,7 @@ const statusClass = computed(() => {
                         <input type="hidden" name="edit_comment" value="2" />
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
-                            <textarea class="form-control" id="message-text" rows="5" name="comment" v-model="serviceInfo.floating_ip_comment"></textarea>
+                            <textarea id="message-text" v-model="serviceInfo.floating_ip_comment" class="form-control" rows="5" name="comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

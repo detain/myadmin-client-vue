@@ -233,9 +233,9 @@ export const useQsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.qsList = await fetchWrapper.get(baseUrl+'/qs');
+                this.qsList = await fetchWrapper.get(`${baseUrl}/qs`);
             } catch (error: any) {
-                console.log('got error response'+error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -246,12 +246,12 @@ export const useQsStore = defineStore({
             this.loading = true;
             let success = true;
             try {
-                const response = await fetchWrapper.get(baseUrl+'/qs/'+id+'/'+action);
+                const response = await fetchWrapper.get(`${baseUrl}/qs/${id}/${action}`);
                 this.linkDisplay = response.text;
                 this.responseText = response.text;
                 this.queueId = response.queueId;
             } catch (error: any) {
-                console.log('got error response'+error);
+                console.log(`got error response${error}`);
                 this.error = error;
                 success = false;
             }
@@ -265,7 +265,7 @@ export const useQsStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl+'/qs/'+id);
+                const response = await fetchWrapper.get(`${baseUrl}/qs/${id}`);
                 this.$reset();
                 //let key, value;
                 console.log(response);

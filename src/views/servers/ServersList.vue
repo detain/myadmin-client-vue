@@ -12,7 +12,7 @@ siteStore.setPageHeading('Dedicated Servers List');
 siteStore.setTitle('Dedicated Servers List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module), 'Servers'],
+    [`/${moduleLink(module)}`, 'Servers'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -58,7 +58,7 @@ function crud_export(exportType: string): void {
 
 const loadServers = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl+'/servers');
+        const response = await fetchWrapper.get(`${baseUrl}/servers`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -125,7 +125,7 @@ loadServers();
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -139,7 +139,7 @@ loadServers();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>

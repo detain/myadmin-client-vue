@@ -264,7 +264,7 @@ interface ServerRow {
 
 function mounted() {
     if (triggerClick.value) {
-        $('#unver_'+current_cc_id.value)
+        $(`#unver_${current_cc_id.value}`)
             .attr('data-step', triggerClick.value)
             .trigger('click');
     }
@@ -278,7 +278,7 @@ function deleteCardModal(cc_id = 0) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['cc']+'</b> ?</p>',
+        html: `<p>Are you sure want to remove your creditcard <br><b>${data.value.ccs[cc_id]['cc']}</b> ?</p>`,
         preConfirm: () => {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
@@ -374,7 +374,7 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-    const verifyDisplay = $('#unver_'+cc_id).attr('data-step');
+    const verifyDisplay = $(`#unver_${cc_id}`).attr('data-step');
     if (typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verifyDisplay === 'step1') {
@@ -470,7 +470,7 @@ function onExpDateInput(e: any) {
 function submitForm(value: any) {}
 
 try {
-    fetchWrapper.get(baseUrl+'/account/countries').then((response) => {
+    fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
         countries.value = response;
     });
 } catch (error: any) {
@@ -478,7 +478,7 @@ try {
     console.log(error);
 }
 try {
-    fetchWrapper.get(baseUrl+'/billing/cart').then((response: CartResponse) => {
+    fetchWrapper.get(`${baseUrl}/billing/cart`).then((response: CartResponse) => {
         console.log(response);
         paymentMethodsData.value = response.paymentMethodsData;
         invrows.value = response.invrows;
@@ -572,7 +572,7 @@ accountStore.load();
                             <form @submit.prevent="submitForm('cart'+(st ? '?st='+st : ''))">
                                 <div class="form-group row">
                                     <label for="invoice_days" class="col-md-4 col-form-label">Filter</label>
-                                    <select id="invoice_days" class="col-md-8 select2 form-control text-left" name="invoice_days" v-model="invoiceDays" @change="submitForm">
+                                    <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-control text-left" name="invoice_days" @change="submitForm">
                                         <option value="-1">All Days</option>
                                         <option value="30">30 Days</option>
                                         <option value="60">60 Days</option>
@@ -586,7 +586,7 @@ accountStore.load();
                             <form @submit.prevent="submitForm('cart'+(st ? '?st='+st : ''))">
                                 <div class="form-group row">
                                     <label for="currency_select" class="col-md-6 col-form-label">Currency</label>
-                                    <select id="currency_select" class="col-md-6 select2 form-control text-left" name="currency" v-model="currency" @change="submitForm">
+                                    <select id="currency_select" v-model="currency" class="col-md-6 select2 form-control text-left" name="currency" @change="submitForm">
                                         <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
                                 </div>
@@ -599,7 +599,7 @@ accountStore.load();
                                 <tr>
                                     <th style="width: 5%">
                                         <div class="icheck-success d-inline">
-                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" checked />
+                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" checked @change="toggleCheckbox" />
                                             <label for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
@@ -615,7 +615,7 @@ accountStore.load();
                                 <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                     <td>
                                         <div class="icheck-success d-inline">
-                                            <input :id="'check'+invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
+                                            <input :id="'check'+invrow.invoices_id" v-model="invoices" type="checkbox" name="invoices" :value="invrow.service_label" class="inv_checkbox" />
                                             <label :for="'check'+invrow.invoices_id"> </label>
                                         </div>
                                     </td>
@@ -630,9 +630,9 @@ accountStore.load();
                                     <td>{{ invrow.service_status }}</td>
                                     <td class="text-center">
                                         <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
-                                            <a href="javascript:void(0);" @click="delete_invoice(invrow.invoices_id)" title="Delete Invoice"><i class="fa fa-trash"></i></a>
+                                            <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><i class="fa fa-trash"></i></a>
                                             <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
-                                                <input type="hidden" name="inv_id" v-model="invrow.invoices_id" />
+                                                <input v-model="invrow.invoices_id" type="hidden" name="inv_id" />
                                             </form>
                                         </template>
                                         <template v-else>
@@ -644,7 +644,7 @@ accountStore.load();
                                 <tr>
                                     <td>Filter</td>
                                     <td colspan="7">
-                                        <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" v-model="isChecked" @change="toggleCheckbox" />
+                                        <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
@@ -666,28 +666,28 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net'+methodData.image" border="" :style="methodData.image_style" /></a>
+                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net'+methodData.image" border="" :style="methodData.image_style" /></a>
                                         <router-link v-else :to="'/pay/'+methodId+'/'+invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net'+methodData.image" border="" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
                         </div>
                         <hr />
-                        <div :style="{ display: paymentMethod !== 'cc' ? 'none' : '' }" id="select_card">
+                        <div id="select_card" :style="{ display: paymentMethod !== 'cc' ? 'none' : '' }">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">Select / Add Credit Card</b>
                                     <a href="javascript:void(0);" class="btn btn-custom float-right" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
                                 </div>
-                                <div class="col-md-12 d-flex mt-3" id="selectcardmsg"></div>
+                                <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
                                 <template v-if="data.ccs">
                                     <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="paymentMethod === 'cc' && selectedCc === cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
                                         <div v-if="paymentMethod === 'cc' && selectedCc === cc_id" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Default</div>
                                         </div>
-                                        <form action="cart" method="post" id="paymentform">
+                                        <form id="paymentform" action="cart" method="post">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
@@ -712,12 +712,12 @@ accountStore.load();
 
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_'+cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))" :id="'editcard-modal-'+cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" :id="'editcard-modal-'+cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="paymentMethod === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))" style="text-decoration: none"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="paymentMethod === 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
@@ -809,8 +809,8 @@ accountStore.load();
             </div>
         </div>
     </div>
-    <div class="d-none" id="AddClick" data-toggle="modal" data-target="#add-card"></div>
-    <div class="modal fade" id="add-card" style="display: none" aria-hidden="true">
+    <div id="AddClick" class="d-none" data-toggle="modal" data-target="#add-card"></div>
+    <div id="add-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
@@ -822,7 +822,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" v-model="contFields.cc" id="cr_no" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')" />
+                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit card number')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -832,7 +832,7 @@ accountStore.load();
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" v-model="contFields.cc_exp" id="exp" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                            <input id="exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -848,7 +848,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" v-model="contFields.name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')" />
+                                    <input v-model="contFields.name" type="text" name="name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -856,7 +856,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" v-model="contFields.address" placeholder="Address line" />
+                                    <input v-model="contFields.address" type="text" name="address" placeholder="Address line" />
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -870,7 +870,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" v-model="contFields.state" placeholder="State" />
+                                    <input v-model="contFields.state" type="text" name="state" placeholder="State" />
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -878,7 +878,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -886,7 +886,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" />
+                                    <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" />
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -901,20 +901,20 @@ accountStore.load();
             </div>
         </div>
     </div>
-    <div class="d-none" id="EditInfo" data-toggle="modal" data-target="#edit-info"></div>
-    <div class="modal fade" id="edit-info" style="display: none" aria-hidden="true">
+    <div id="EditInfo" class="d-none" data-toggle="modal" data-target="#edit-info"></div>
+    <div id="edit-info" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 class="modal-title">Update Contact Info</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="cart" method="post" class="form-card" id="EditInfo">
+                    <form id="EditInfo" action="cart" method="post" class="form-card">
                         <input type="hidden" name="action" value="edit_info" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="name" v-model="contFields.name" placeholder="You Name" />
+                                    <input v-model="contFields.name" type="text" name="name" placeholder="You Name" />
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
@@ -922,7 +922,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="address" v-model="contFields.address" placeholder="Address line" />
+                                    <input v-model="contFields.address" type="text" name="address" placeholder="Address line" />
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -930,7 +930,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" name="phone" v-model="contFields.phone" placeholder="Phone Number" required />
+                                    <input v-model="contFields.phone" type="text" name="phone" placeholder="Phone Number" required />
                                     <label class="text-md">Phone</label>
                                 </div>
                             </div>
@@ -938,13 +938,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="city" v-model="contFields.city" placeholder="City" />
+                                    <input v-model="contFields.city" type="text" name="city" placeholder="City" />
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="state" v-model="contFields.state" placeholder="State" />
+                                    <input v-model="contFields.state" type="text" name="state" placeholder="State" />
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -952,7 +952,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select name="country" v-model="contFields.country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="text-md">Country</label>
@@ -960,7 +960,7 @@ accountStore.load();
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" />
+                                    <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" />
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>
@@ -975,22 +975,22 @@ accountStore.load();
             </div>
         </div>
     </div>
-    <div class="d-none" id="EditClick" data-toggle="modal" data-target="#edit-card"></div>
+    <div id="EditClick" class="d-none" data-toggle="modal" data-target="#edit-card"></div>
     <!--EDIT CC FORM IN MODAL-->
-    <div class="modal fade" id="edit-card" style="display: none" aria-hidden="true">
+    <div id="edit-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 class="modal-title">Update Credit Card</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="cart" method="post" class="form-card" id="EditForm">
+                    <form id="EditForm" action="cart" method="post" class="form-card">
                         <input type="hidden" name="action" value="edit" />
-                        <input id="e_cc_idx" type="hidden" name="idx" v-model="editCcIdx" />
+                        <input id="e_cc_idx" v-model="editCcIdx" type="hidden" name="idx" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="text" id="e_exp" name="cc_exp" v-model="contFields.cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                    <input id="e_exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Expiry Date</label>
                                 </div>
                             </div>
@@ -998,7 +998,7 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input style="border: none; letter-spacing: 20px; font-weight: bold" type="text" id="e_cr_no" name="cc" v-model="contFields.cc" required readonly disabled />
+                                    <input id="e_cr_no" v-model="contFields.cc" style="border: none; letter-spacing: 20px; font-weight: bold" type="text" name="cc" required readonly disabled />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -1006,13 +1006,13 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" type="text" name="name" v-model="contFields.name" placeholder="Name on card" />
+                                    <input v-model="contFields.name" style="border: none" type="text" name="name" placeholder="Name on card" />
                                     <label class="text-md">Name</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" type="text" name="address" v-model="contFields.address" placeholder="Address line" disabled />
+                                    <input v-model="contFields.address" style="border: none" type="text" name="address" placeholder="Address line" disabled />
                                     <label class="text-md">Address</label>
                                 </div>
                             </div>
@@ -1020,13 +1020,13 @@ accountStore.load();
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" type="text" name="city" v-model="contFields.city" placeholder="City" disabled />
+                                    <input v-model="contFields.city" style="border: none" type="text" name="city" placeholder="City" disabled />
                                     <label class="text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" type="text" name="state" v-model="contFields.state" placeholder="State" disabled />
+                                    <input v-model="contFields.state" style="border: none" type="text" name="state" placeholder="State" disabled />
                                     <label class="text-md">State</label>
                                 </div>
                             </div>
@@ -1034,13 +1034,13 @@ accountStore.load();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" v-model="contFields.country" type="text" name="Country" placeholder="Country" />
+                                    <input v-model="contFields.country" style="border: none" type="text" name="Country" placeholder="Country" />
                                     <label class="text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
-                                    <input style="border: none" type="text" name="zip" v-model="contFields.zip" placeholder="Zipcode" disabled />
+                                    <input v-model="contFields.zip" style="border: none" type="text" name="zip" placeholder="Zipcode" disabled />
                                     <label class="text-md">Zipcode</label>
                                 </div>
                             </div>

@@ -35,7 +35,7 @@ async function onSubmit(values: any) {
                 <div class="card m-3">
                     <h4 class="card-header">Register</h4>
                     <div class="card-body">
-                        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
+                        <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema" @submit="onSubmit">
                             <div class="form-group">
                                 <label>First Name</label>
                                 <Field name="firstName" type="text" class="form-control" :class="{ 'is-invalid': errors.firstName }" />

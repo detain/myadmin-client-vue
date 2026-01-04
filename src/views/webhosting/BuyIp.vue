@@ -115,7 +115,7 @@ interface IpDetails {
                                         <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="hidden" id="amount" class="form-control" value="1" />
+                                        <input id="amount" type="hidden" class="form-control" value="1" />
                                         <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="im_cost" />
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ interface IpDetails {
                                         <label for="amount" class="col-form-label">Renewal Cost</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="hidden" id="amount" class="form-control" value="1" />
+                                        <input id="amount" type="hidden" class="form-control" value="1" />
                                         <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
                                         <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
                                     </div>

@@ -96,7 +96,7 @@ export const usePrePayStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl+'/billing/prepays');
+                const response = await fetchWrapper.get(`${baseUrl}/billing/prepays`);
                 this.$reset();
                 let key, value;
                 console.log(response);

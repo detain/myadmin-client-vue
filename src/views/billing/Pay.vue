@@ -30,7 +30,7 @@ const invoices = computed(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl+'/pay/'+method.value+'/'+invoices.value+'?redirectUrl='+encodeURIComponent('https://'+window.location.hostname+'/pay/'+method.value+'/'+invoices.value)+'?cancelUrl='+encodeURIComponent('https://'+window.location.hostname+'/pay/'+method.value+'/'+invoices.value)).then((response) => {
+    fetchWrapper.get(`${baseUrl}/pay/${method.value}/${invoices.value}?redirectUrl=${encodeURIComponent(`https://${window.location.hostname}/pay/${method.value}/${invoices.value}`)}?cancelUrl=${encodeURIComponent(`https://${window.location.hostname}/pay/${method.value}/${invoices.value}`)}`).then((response) => {
         console.log(response);
     });
 } catch (error: any) {

@@ -119,9 +119,9 @@ export const useFloatingIpStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.floatingIpList = await fetchWrapper.get(baseUrl+'/floating_ip');
+                this.floatingIpList = await fetchWrapper.get(`${baseUrl}/floating_ip`);
             } catch (error: any) {
-                console.log('got error response'+error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -133,7 +133,7 @@ export const useFloatingIpStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl+'/floating_ip/'+id);
+                const response = await fetchWrapper.get(`${baseUrl}/floating_ip/${id}`);
                 this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;

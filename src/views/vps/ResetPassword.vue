@@ -21,7 +21,7 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const server = ref('');
 const goBackLink = computed(() => {
-    return `${module.value === 'vps' ? 'view_'+module.value : 'view_qs'}?id=${id.value}`;
+    return `${module.value === 'vps' ? `view_${module.value}` : 'view_qs'}?id=${id.value}`;
 });
 function submitForm() {
     // Handle form submission

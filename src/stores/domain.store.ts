@@ -180,9 +180,9 @@ export const useDomainStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.domainList = await fetchWrapper.get(baseUrl+'/domains');
+                this.domainList = await fetchWrapper.get(`${baseUrl}/domains`);
             } catch (error: any) {
-                console.log('got error response'+error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;
@@ -194,7 +194,7 @@ export const useDomainStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl+'/domains/'+id);
+                const response = await fetchWrapper.get(`${baseUrl}/domains/${id}`);
                 this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;

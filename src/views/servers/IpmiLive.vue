@@ -146,37 +146,37 @@ interface AssetRow {
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Asset ID</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="asset_id" name="asset_id" :value="aId" disabled />
+                                <input id="asset_id" type="text" class="form-control form-control-sm" name="asset_id" :value="aId" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Server ID</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="server_id" name="server_id" :value="assetInfo.order_id" disabled />
+                                <input id="server_id" type="text" class="form-control form-control-sm" name="server_id" :value="assetInfo.order_id" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Hostname</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" :value="assetInfo.hostname" disabled />
+                                <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="assetInfo.hostname" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Server IP</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="primary_ipv4" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled />
+                                <input id="primary_ipv4" type="text" class="form-control form-control-sm" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Server IPMI</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" id="ipmi" name="ipmi" :value="assetInfo.ipmi_ip" disabled />
+                                <input id="ipmi" type="text" class="form-control form-control-sm" name="ipmi" :value="assetInfo.ipmi_ip" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Your IP Address</label>
                             <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control form-control-sm" placeholder="1.2.3.4" id="ip" name="ip" v-model="clientIP" />
+                                <input id="ip" v-model="clientIP" type="text" class="form-control form-control-sm" placeholder="1.2.3.4" name="ip" />
                             </div>
                         </div>
                         <hr />

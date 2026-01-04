@@ -50,7 +50,7 @@ async function addDomain(event: Event) {
     let response;
     try {
         fetchWrapper
-            .post(baseUrl+'/dns', {
+            .post(`${baseUrl}/dns`, {
                 domain: domain.value,
                 ip: ip.value,
             })
@@ -68,7 +68,7 @@ async function addDomain(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error '+error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -86,7 +86,7 @@ async function deleteDomain(event: Event) {
         preConfirm: () => {
             console.log('got to this plce fro deleteDomain preConfirm');
             try {
-                fetchWrapper.delete(baseUrl+'/dns/'+domainId.value).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/dns/${domainId.value}`).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns();
@@ -100,7 +100,7 @@ async function deleteDomain(event: Event) {
                 console.log(error);
                 Swal.fire({
                     icon: 'error',
-                    html: 'Got error '+error.message,
+                    html: `Got error ${error.message}`,
                 });
             }
         },
@@ -126,7 +126,7 @@ interface DomainRow {
 
 const loadDns = async () => {
     try {
-        const response: DomainRow[] = await fetchWrapper.get(baseUrl+'/dns');
+        const response: DomainRow[] = await fetchWrapper.get(`${baseUrl}/dns`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -206,14 +206,14 @@ loadDns();
                                 <div class="col-md-3">
                                     <div class="printer-hidden">
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" aria-label="Domain Name" placeholder="Domain like mycoolsite.com" v-model="domain" />
+                                            <input v-model="domain" class="form-control form-control-sm" aria-label="Domain Name" placeholder="Domain like mycoolsite.com" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="printer-hidden">
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" aria-label="IP Address" placeholder="IP Address like 0.0.0.0" v-model="ip" />
+                                            <input v-model="ip" class="form-control form-control-sm" aria-label="IP Address" placeholder="IP Address like 0.0.0.0" />
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@ loadDns();
                         </form>
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -242,7 +242,7 @@ loadDns();
                                             <td>{{ row.content }}</td>
                                             <td>
                                                 <router-link :to="'dns/'+row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
-                                                <a href="#" @click.prevent="deleteDomain" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
+                                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteDomain"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -251,7 +251,7 @@ loadDns();
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <form accept-charset="UTF-8" role="form" id="paginationForm" class="" action="ajax.php?choice=crud&crud=dns_manager&action=list" autocomplete="on" method="GET" style="display: inline-flex"></form>
+                                <form id="paginationForm" accept-charset="UTF-8" role="form" class="" action="ajax.php?choice=crud&crud=dns_manager&action=list" autocomplete="on" method="GET" style="display: inline-flex"></form>
                             </div>
                             <div class="col-md-6 float-right"></div>
                         </div>

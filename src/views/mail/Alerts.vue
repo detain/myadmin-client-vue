@@ -116,42 +116,42 @@ interface AlertRow {
         </div>
     </div>
     <!-- Add New Popup -->
-    <div class="modal fade" id="add-new" style="display: none" aria-hidden="true">
+    <div id="add-new" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header mx-4">
                     <h4 id="modal-title" class="modal-title">{{ modalTitle }}</h4>
                 </div>
                 <div class="modal-body mx-4">
-                    <form @submit.prevent="submitBlock" id="block-form">
+                    <form id="block-form" @submit.prevent="submitBlock">
                         <input id="action" type="hidden" name="action" :value="action" />
-                        <input id="alert_id" type="hidden" name="alert_id" v-model="alertId" />
+                        <input id="alert_id" v-model="alertId" type="hidden" name="alert_id" />
                         <div class="form-group row mx-auto">
                             <label class="col-md-4 col-form-label px-0" for="notification_types"> Notification Type <span class="text-danger">*</span> </label>
                             <div class="col-sm-8">
-                                <select id="type" name="type" class="select2 w-100" v-model="selectedType">
+                                <select id="type" v-model="selectedType" name="type" class="select2 w-100">
                                     <option value="">Select notifications / alerts type</option>
-                                    <option v-for="(label, type_id) in types_sel" :value="type_id" :key="type_id">{{ label }}</option>
+                                    <option v-for="(label, type_id) in types_sel" :key="type_id" :value="type_id">{{ label }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label px-0">Amount hits this value <span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input id="value" type="text" class="form-control form-control-sm" name="value" v-model="value" required />
+                                <input id="value" v-model="value" type="text" class="form-control form-control-sm" name="value" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label px-0">Where to send the notification to <span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input id="to" type="text" class="form-control form-control-sm" name="to" v-model="to" required />
+                                <input id="to" v-model="to" type="text" class="form-control form-control-sm" name="to" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label px-0">Enable Alert</label>
                             <div class="col-md-8">
                                 <div class="icheck-success d-inline">
-                                    <input id="enabled" type="checkbox" name="enabled" v-model="enabled" />
+                                    <input id="enabled" v-model="enabled" type="checkbox" name="enabled" />
                                     <label for="enabled"> </label>
                                 </div>
                             </div>

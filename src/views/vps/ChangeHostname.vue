@@ -48,19 +48,19 @@ function submitForm() {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form v-on:submit.prevent="submitForm" class="change_hostname">
+                    <form class="change_hostname" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeHostname" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="oldhostname" name="oldhostname" :value="hostname" disabled />
+                                    <input id="oldhostname" type="text" class="form-control form-control-sm" name="oldhostname" :value="hostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="hostname">New Hostname</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control form-control-sm" id="hostname" name="hostname" placeholder="your.server.com" v-model="newHostname" />
+                                    <input id="hostname" v-model="newHostname" type="text" class="form-control form-control-sm" name="hostname" placeholder="your.server.com" />
                                     <span class="text-muted text-sm">For Example: your.server.com</span>
                                 </div>
                             </div>

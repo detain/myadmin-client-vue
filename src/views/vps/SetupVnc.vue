@@ -34,7 +34,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/setup_vnc', {
+            .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/setup_vnc`, {
                 ip: myip.value,
             })
             .then((response) => {
@@ -43,7 +43,7 @@ function submitForm() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success'+response.text,
+                    html: `Success${response.text}`,
                 });
             });
     } catch (error: any) {
@@ -52,7 +52,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error '+error.text,
+            html: `Got error ${error.text}`,
         });
     }
 }
@@ -76,25 +76,25 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncname">VPS Name</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="vncname" :value="serviceInfo.vps_hostname" disabled />
+                                    <input id="vncname" type="text" class="form-control form-control-sm" :value="serviceInfo.vps_hostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncserver">VPS IP</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="vncserver" :value="serviceInfo.vps_ip" disabled />
+                                    <input id="vncserver" type="text" class="form-control form-control-sm" :value="serviceInfo.vps_ip" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncipport">VNC IP:Port</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="vncipport" :value="serviceMaster.vps_ip+':'+serviceInfo.vps_vnc_port" disabled />
+                                    <input id="vncipport" type="text" class="form-control form-control-sm" :value="serviceMaster.vps_ip+':'+serviceInfo.vps_vnc_port" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncip">IP to grant VNC access</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="vncip" v-model="myip" />
+                                    <input id="vncip" v-model="myip" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <hr />

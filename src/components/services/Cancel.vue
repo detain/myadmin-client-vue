@@ -41,29 +41,29 @@ siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module.value), 'VPS'],
+    [`/${moduleLink(module.value)}`, 'VPS'],
 ]);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/'+id.value, 'View '+module.value+' '+id.value);
-siteStore.addBreadcrum('/'+moduleLink(module.value)+'/'+id.value+'/cancel', 'Cancel '+module.value);
+siteStore.addBreadcrum(`/${moduleLink(module.value)}/${id.value}`, `View ${module.value} ${id.value}`);
+siteStore.addBreadcrum(`/${moduleLink(module.value)}/${id.value}/cancel`, `Cancel ${module.value}`);
 
 onMounted(() => {});
 
 function onSubmit() {
     Swal.fire({
         icon: 'error',
-        title: '<h3>Cancel '+module.value+'</h3> ',
+        title: `<h3>Cancel ${module.value}</h3> `,
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Cancel it.',
-        html: '<p>Are you sure want to cancel your '+module.value+' <span class="text-2lg">'+id.value+'</span>?</p>',
+        html: `<p>Are you sure want to cancel your ${module.value} <span class="text-2lg">${id.value}</span>?</p>`,
         preConfirm: () => {
             try {
-                fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/cancel').then((response) => {
-                    console.log(module.value+' cancel success');
+                fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/cancel`).then((response) => {
+                    console.log(`${module.value} cancel success`);
                     console.log(response);
                 });
             } catch (error: any) {
-                console.log(module.value+' cancel failed');
+                console.log(`${module.value} cancel failed`);
                 console.log(error);
             }
         },
@@ -111,7 +111,7 @@ function onSubmit() {
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="comment" style="font-weight: normal">Reason for Cancellation/Comment:</label>
                                 <div class="col-sm-7" style="text-align: left">
-                                    <textarea class="form-control" rows="2" id="comment"></textarea>
+                                    <textarea id="comment" class="form-control" rows="2"></textarea>
                                 </div>
                             </div>
                             <div class="card-footer">

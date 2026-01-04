@@ -41,16 +41,16 @@ async function updateSshPublicKey() {
     <div class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2" v-bind:title="'This SSH Key will automatically get added to some services such as VPS orders providing an alternative means of authentication with your services.'">SSH Keys</h3>
+                <h3 class="card-title py-2" :title="'This SSH Key will automatically get added to some services such as VPS orders providing an alternative means of authentication with your services.'">SSH Keys</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <form method="post" @submit.prevent="updateSshPublicKey" enctype="multipart/form-data" action="account_settings">
+            <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateSshPublicKey">
                 <div class="row">
-                    <textarea class="form-control" rows="6" id="ssh_key" name="ssh_key" placeholder="No SSH Key Setup Yet" v-model="data.ssh_key"></textarea>
+                    <textarea id="ssh_key" v-model="data.ssh_key" class="form-control" rows="6" name="ssh_key" placeholder="No SSH Key Setup Yet"></textarea>
                 </div>
                 <hr />
                 <div class="row">

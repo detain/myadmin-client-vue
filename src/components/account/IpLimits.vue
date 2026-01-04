@@ -80,7 +80,7 @@ async function addRangeSubmit() {
                 <br />
                 Enabling IP limits will prevent anyone that is not listed below from logging in. Make sure your IP address is static and will not change in the future.
             </div>
-            <form @submit.prevent="addRangeSubmit" enctype="multipart/form-data">
+            <form enctype="multipart/form-data" @submit.prevent="addRangeSubmit">
                 <table class="table-sm table">
                     <thead>
                         <tr>
@@ -94,12 +94,12 @@ async function addRangeSubmit() {
                             <td>{{ limit.start }}</td>
                             <td>{{ limit.end }}</td>
                             <td>
-                                <a @click.prevent="deleteRange(limit.start, limit.end)" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Remove</a>
+                                <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fa fa-trash"></span> Remove</a>
                             </td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="start" v-model="newLimit.start" /></td>
-                            <td><input type="text" name="end" v-model="newLimit.end" /></td>
+                            <td><input v-model="newLimit.start" type="text" name="start" /></td>
+                            <td><input v-model="newLimit.end" type="text" name="end" /></td>
                             <td><button type="submit" class="btn btn-custom btn-sm" name="submit">Add Range</button></td>
                         </tr>
                     </tbody>

@@ -81,7 +81,7 @@ invoicesStore.getAll();
                             <tr v-if="loading">
                                 <td colspan="10">Loading...</td>
                             </tr>
-                            <tr v-else v-for="(row, index) in rows" :key="index">
+                            <tr v-for="(row, index) in rows" v-else :key="index">
                                 <td>
                                     <a :href="'pdf.php?choice=view_invoice&module='+row.module+'&id='+row.id">{{ row.id }}</a>
                                 </td>

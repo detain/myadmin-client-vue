@@ -98,7 +98,7 @@ export const useTicketsStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl+'/tickets');
+                const response = await fetchWrapper.get(`${baseUrl}/tickets`);
                 this.ima = response.ima;
                 this.custid = response.custid;
                 this.view = response.view;
@@ -114,7 +114,7 @@ export const useTicketsStore = defineStore({
                 this.countArray = response.countArray;
                 this.viewText = response.viewText;
             } catch (error: any) {
-                console.log('got error response'+error);
+                console.log(`got error response${error}`);
                 this.error = error;
             }
             this.loading = false;

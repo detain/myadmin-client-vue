@@ -130,7 +130,7 @@ function submitBlock() {
     </div>
 
     <!-- Add New Popup -->
-    <div class="modal fade" id="add-new" style="display: none" aria-hidden="true">
+    <div id="add-new" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header mx-4">
@@ -161,7 +161,7 @@ function submitBlock() {
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-8">
-                                <input id="data" type="text" class="form-control form-control-sm" name="data" required v-model="blockData" />
+                                <input id="data" v-model="blockData" type="text" class="form-control form-control-sm" name="data" required />
                             </div>
                         </div>
                         <div class="form-group row">

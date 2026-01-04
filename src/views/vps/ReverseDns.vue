@@ -28,7 +28,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reverse_dns', {
+            .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns`, {
                 ips: ips.value,
             })
             .then((response) => {
@@ -37,7 +37,7 @@ function submitForm() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success'+response.text,
+                    html: `Success${response.text}`,
                 });
             });
     } catch (error: any) {
@@ -46,12 +46,12 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error '+error.text,
+            html: `Got error ${error.text}`,
         });
     }
 }
 
-fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reverse_dns').then((response) => {
+fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns`).then((response) => {
     console.log('Response:');
     console.log(response);
     ips.value = response.ips;
@@ -75,13 +75,13 @@ fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reverse_dns
                     <template v-if="successMsg">
                         <div class="alert alert-success">{{ successMsg }} {{ cancelQueue }}</div>
                     </template>
-                    <form @submit.prevent="submitForm" action="view_vps" method="POST">
+                    <form action="view_vps" method="POST" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="reverse_dns" />
                         <template v-for="(host, ip, index) in ips" :key="index">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">{{ ip }}</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" :id="ip" :name="ip" v-model="ips[ip]" />
+                                    <input :id="ip" v-model="ips[ip]" type="text" class="form-control form-control-sm" :name="ip" />
                                 </div>
                             </div>
                         </template>

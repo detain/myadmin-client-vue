@@ -84,15 +84,15 @@ function submitForm() {
                                     <div class="row m-0 p-0">
                                         <div class="col-md-4 text-left">
                                             <span>CPU Cores: </span>
-                                            <span class="text-bold" id="slices_disp">{{ slices }}</span>
+                                            <span id="slices_disp" class="text-bold">{{ slices }}</span>
                                         </div>
                                         <div class="col-md-4 text-center">
                                             <span>Memory: </span>
-                                            <span class="text-bold" id="ram_disp">{{ memory }}</span>
+                                            <span id="ram_disp" class="text-bold">{{ memory }}</span>
                                         </div>
                                         <div class="col-md-4 text-right">
                                             <span>Disk: </span>
-                                            <span class="text-bold" id="hdd_disp">{{ hdd }}</span>
+                                            <span id="hdd_disp" class="text-bold">{{ hdd }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@ function submitForm() {
                                     <label for="slices" class="col-form-label">Slices ( Count )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" id="slices" v-model="slices" />
+                                    <input id="slices" v-model="slices" type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" />
                                     <span class="text-muted text-sm">Up to 16 Slices can be attached to a VPS.</span>
                                 </div>
                             </div>
@@ -117,8 +117,8 @@ function submitForm() {
                                     <label for="amount" class="col-form-label">Immediate Cost ( {{ currency_symbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="hidden" id="amount" class="form-control" value="1" />
-                                    <input class="price lead form-control form-control-sm text-bold" name="now_cost" type="text" id="now_cost" disabled :value="nowCost" />
+                                    <input id="amount" type="hidden" class="form-control" value="1" />
+                                    <input id="now_cost" class="price lead form-control form-control-sm text-bold" name="now_cost" type="text" disabled :value="nowCost" />
                                     <span class="text-muted text-sm">Prorated amount to be paid now.</span>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@ function submitForm() {
                                     <label for="amount" class="col-form-label">Additional Fees ( {{ currency_symbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" id="diff_cost" disabled :value="diffCost" />
+                                    <input id="diff_cost" class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" disabled :value="diffCost" />
                                     <span class="text-muted text-sm">Recurring Bill will change by this much</span>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ function submitForm() {
                                     <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currency_symbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" id="repeat_cost" disabled :value="repeatCost" />
+                                    <input id="repeat_cost" class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" disabled :value="repeatCost" />
                                     <span class="text-muted text-sm">New invoices will cost this much</span>
                                 </div>
                             </div>

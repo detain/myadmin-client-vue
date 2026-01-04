@@ -12,7 +12,7 @@ siteStore.setPageHeading('Floating IPs Services List');
 siteStore.setTitle('Floating IPs Services List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/'+moduleLink(module), 'Floating IPs'],
+    [`/${moduleLink(module)}`, 'Floating IPs'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const limitStatus = ref('active');
@@ -61,7 +61,7 @@ interface FloatingIpRow {
 
 const loadFloatingIp = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl+'/floating_ip');
+        const response = await fetchWrapper.get(`${baseUrl}/floating_ip`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -128,7 +128,7 @@ loadFloatingIp();
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
-                            <div class="btn-group" id="limitStatusGroup">
+                            <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
@@ -142,7 +142,7 @@ loadFloatingIp();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%" ref="table" id="crud-table">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>

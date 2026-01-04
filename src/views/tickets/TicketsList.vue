@@ -132,8 +132,8 @@ ticketsStore.getAll();
                                     <tbody>
                                         <tr v-for="ticket in tickets" :key="ticket.ticketid">
                                             <td>
-                                                <div class="icheck-primary" v-if="ticket.can_close === 'no'">
-                                                    <input type="checkbox" value="1" :id="'check'+ticket.ticketid" :name="`tickets[${ticket.ticketid}]`" v-model="ticket.checked" />
+                                                <div v-if="ticket.can_close === 'no'" class="icheck-primary">
+                                                    <input :id="'check'+ticket.ticketid" v-model="ticket.checked" type="checkbox" value="1" :name="`tickets[${ticket.ticketid}]`" />
                                                     <label :for="'check'+ticket.ticketid"></label>
                                                 </div>
                                             </td>
@@ -151,7 +151,7 @@ ticketsStore.getAll();
                                                 >
                                                 - <router-link :to="'/tickets/'+ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3)+'...' : ticket.title }}</router-link>
                                             </td>
-                                            <td class="mailbox-attachment" v-if="ticket.attachments.length > 0"><i class="fas fa-paperclip"></i></td>
+                                            <td v-if="ticket.attachments.length > 0" class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
                                             <td class="mailbox-date">{{ ticket.lastactivity }}</td>
                                         </tr>
                                     </tbody>

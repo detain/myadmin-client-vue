@@ -148,7 +148,7 @@ async function onSubmitConfirmation() {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/'+response.iids.join(','));
+                    router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -158,8 +158,8 @@ async function onSubmitConfirmation() {
 }
 
 async function searchDomain() {
-    console.log('searching for '+hostname.value);
-    fetchWrapper.get(baseUrl+'/domains/lookup/'+hostname.value).then((response) => {
+    console.log(`searching for ${hostname.value}`);
+    fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response) => {
         console.log('Response:');
         console.log(response);
     });
@@ -171,7 +171,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
+fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
@@ -221,7 +221,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
                                                                     <div class="icheck-success">
-                                                                        <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" v-model="packageId" :value="serviceData.services_id" />
+                                                                        <input :id="serviceData.services_name" v-model="packageId" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" />
                                                                         <label :for="serviceData.services_name">
                                                                             {{ serviceData.services_name }}<br />
                                                                             <div class="text-muted font-italic mt-1 text-sm">
@@ -274,7 +274,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
                                                                 <div class="icheck-success">
-                                                                    <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" v-model="packageId" />
+                                                                    <input :id="serviceData.services_name" v-model="packageId" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" />
                                                                     <label :for="serviceData.services_name">
                                                                         {{ serviceData.services_name }}<br />
                                                                         <div class="text-muted font-italic mt-1 text-sm">
@@ -310,7 +310,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                             </div>
                             <template v-else>
                                 <template v-for="(serviceData, servicesId) in packages">
-                                    <div v-if="serviceData.services_id == packageId" class="form-group row" :key="servicesId">
+                                    <div v-if="serviceData.services_id == packageId" :key="servicesId" class="form-group row">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
@@ -394,7 +394,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                             <div class="form-group row">
                                 <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
                                 <div class="col-md-12">
-                                    <input id="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" v-model="hostname" required @keyup="searchDomain" @change="searchDomain" />
+                                    <input id="hostname" v-model="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" required @keyup="searchDomain" @change="searchDomain" />
                                     <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                 </div>
                             </div>
@@ -409,7 +409,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                             <div class="form-group row">
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
-                                    <select name="period" id="period" class="form-control form-control-sm select2" v-model="period" @change="updatePrice">
+                                    <select id="period" v-model="period" name="period" class="form-control form-control-sm select2" @change="updatePrice">
                                         <option value="1">Monthly</option>
                                         <option value="3">3 Months</option>
                                         <option value="6">6 Months (5% off)</option>
@@ -421,11 +421,11 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                             </div>
                             <div id="coupon_row" class="form-group row">
                                 <label class="col-md-12">Coupon Code</label>
-                                <div class="col-md-12"><input type="text" class="form-control form-control-sm" name="coupon" id="coupon" placeholder="Coupon Code" v-model="coupon" @change="updateCoupon" v-if="coupon" /></div>
+                                <div class="col-md-12"><input v-if="coupon" id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12">
-                                    <img src="https://my.interserver.net/validate_coupon.php?module=vps'" id="couponimg" height="20" width="20" alt="" />
-                                    <span class="text-muted text-sm" id="coupon_text" style="position: relative; top: 2px"></span>
+                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" />
+                                    <span id="coupon_text" class="text-muted text-sm" style="position: relative; top: 2px"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -457,7 +457,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <button type="button" style="" name="update_values" @click="step = 'order_form'" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details">
+                                            <button type="button" style="" name="update_values" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
                                                 <div style="display: inline" class="text-md float-left">{{ hostname }}</div>
                                                 <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fa fa-pencil float-right"></i>
                                             </button>
@@ -492,7 +492,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                                 <div class="text-md">Coupon Used</div>
                                             </td>
                                             <td>
-                                                <div class="text-md text-bold">{{ coupon }} <img src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" id="couponimg2" height="20" width="20" alt="" /></div>
+                                                <div class="text-md text-bold">{{ coupon }} <img id="couponimg2" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                             </td>
                                         </tr>
                                     </template>
@@ -511,7 +511,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-bold text-lg" id="totalprice2">{{ totalCost }}</div>
+                                            <div id="totalprice2" class="text-bold text-lg">{{ totalCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -523,7 +523,7 @@ fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input type="checkbox" name="tos" id="tos" class="d-inline" style="margin: 0 5px" value="yes" />
+                                    <input id="tos" type="checkbox" name="tos" class="d-inline" style="margin: 0 5px" value="yes" />
                                     <label for="tos" style="display: inline; text-align: center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>

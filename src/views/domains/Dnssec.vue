@@ -93,7 +93,7 @@ function saveDNSSEC() {}
                         <h5 class="text-orange w-100 tex-red b-radius text-bold py-2 text-center">No DNSSEC Records found.</h5>
                     </template>
 
-                    <div class="card form-gray col-md-10 mt-5" id="add-dns-content" v-show="showAddDNSContent">
+                    <div v-show="showAddDNSContent" id="add-dns-content" class="card form-gray col-md-10 mt-5">
                         <div class="card-header p-3">
                             <h3 class="card-title text-bold text-center text-xl" style="width: 95%">Add DNSSEC</h3>
                             <div class="card-tools m-0 pt-2">
@@ -101,7 +101,7 @@ function saveDNSSEC() {}
                             </div>
                         </div>
                         <div class="card-body">
-                            <form @submit.prevent="saveDNSSEC" method="post" :action="'view_domain?id='+props.id+'&link=dnssec'">
+                            <form method="post" :action="'view_domain?id='+props.id+'&link=dnssec'" @submit.prevent="saveDNSSEC">
                                 <input type="hidden" name="action" value="add" />
                                 <div v-for="foo in 3" :key="foo">
                                     <div class="form-group row">
@@ -142,12 +142,12 @@ function saveDNSSEC() {}
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" :for="'name'+(foo + 1)">Digest #{{ foo + 1 }}</label>
                                         <div class="col-sm-10 input-group">
-                                            <textarea :placeholder="'Enter Value of Digest #'+(foo + 1)+' ( Must not be greater than: '+(foo === 0 ? '40' : foo === 1 ? '64' : '96')+' Characters )'" :id="'digest'+(foo + 1)" class="form-control text-sm" :name="'digest['+foo+']'" rows="5" required></textarea>
+                                            <textarea :id="'digest'+(foo + 1)" :placeholder="'Enter Value of Digest #'+(foo + 1)+' ( Must not be greater than: '+(foo === 0 ? '40' : foo === 1 ? '64' : '96')+' Characters )'" class="form-control text-sm" :name="'digest['+foo+']'" rows="5" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <div class="text-muted text-right" :id="'display'+(foo + 1)">
+                                            <div :id="'display'+(foo + 1)" class="text-muted text-right">
                                                 Characters left: <b>{{ foo === 0 ? '40' : foo === 1 ? '64' : '96' }}</b>
                                             </div>
                                         </div>
@@ -156,7 +156,7 @@ function saveDNSSEC() {}
                                 <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="submit"></label>
                                     <div class="col-sm-10 input-group input-group-sm">
-                                        <input type="submit" name="Submit" value="Save" class="btn btn-custom px-4 pt-2" id="button-id-signup" />
+                                        <input id="button-id-signup" type="submit" name="Submit" value="Save" class="btn btn-custom px-4 pt-2" />
                                     </div>
                                 </div>
                             </form>

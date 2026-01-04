@@ -55,45 +55,45 @@ const submitForm = () => {
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="cust_portal">Customer Portal URL</label>
                                     <div class="col-md-6">
-                                        <input placeholder="Enter Customer Portal URL" type="text" class="form-control form-control-sm" id="cust_portal" v-model="custPortal" />
+                                        <input id="cust_portal" v-model="custPortal" placeholder="Enter Customer Portal URL" type="text" class="form-control form-control-sm" />
                                         <small class="form-text text-muted">For Example: sso.godaddy.com</small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pl-0 pr-3 text-right" for="reg_email">Registered Username / Email / ID</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" id="reg_email" v-model="regEmail" />
+                                        <input id="reg_email" v-model="regEmail" placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="pass">Password</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter Password" type="password" class="form-control form-control-sm" id="pass" v-model="password" />
+                                        <input id="pass" v-model="password" placeholder="Enter Password" type="password" class="form-control form-control-sm" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="ctrl_panel">Control Panel URL</label>
                                     <div class="col-md-6">
-                                        <input placeholder="Enter Control Panel URL" type="text" class="form-control form-control-sm" id="ctrl_panel" v-model="ctrlPanel" />
+                                        <input id="ctrl_panel" v-model="ctrlPanel" placeholder="Enter Control Panel URL" type="text" class="form-control form-control-sm" />
                                         <small class="form-text text-muted">For Example: yourdomain.com/cpanel</small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="ftp_usrname">FTP / Control Panel Username</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter FTP / Control Panel Username" type="text" class="form-control form-control-sm" id="ftp_usrname" v-model="ftpUsername" />
+                                        <input id="ftp_usrname" v-model="ftpUsername" placeholder="Enter FTP / Control Panel Username" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="ftp_pass">FTP / Control Panel Password</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter FTP / Control Panel Password" type="password" class="form-control form-control-sm" id="ftp_pass" v-model="ftpPassword" />
+                                        <input id="ftp_pass" v-model="ftpPassword" placeholder="Enter FTP / Control Panel Password" type="password" class="form-control form-control-sm" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="site_busy_mig">If the site is live/busy site having high traffic, can we set a holding page during migration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select name="site_busy_mig" class="form-control form-control-sm" v-model="siteBusyMig">
+                                        <select v-model="siteBusyMig" name="site_busy_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -102,7 +102,7 @@ const submitForm = () => {
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="spl_req_mig">Does this site have special requirements like PHP Version / Modules?</label>
                                     <div class="col-md-6 input-group">
-                                        <select name="spl_req_mig" class="form-control form-control-sm" v-model="splReqMig">
+                                        <select v-model="splReqMig" name="spl_req_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -120,7 +120,7 @@ const submitForm = () => {
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg">Do you also want us to help you transfer the domain name registration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select name="domain_reg" class="form-control form-control-sm" v-model="domainReg">
+                                        <select v-model="domainReg" name="domain_reg" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -129,7 +129,7 @@ const submitForm = () => {
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="data_mig">Do you want us to update the name servers as soon as we finish the data migration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select name="data_mig" class="form-control form-control-sm" v-model="dataMig">
+                                        <select v-model="dataMig" name="data_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -138,24 +138,24 @@ const submitForm = () => {
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_portal">Domain Registry Customer Portal</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Domain Registry Customer Portal" type="text" class="form-control form-control-sm" id="domain_reg_portal" name="domain_reg_portal" v-model="domainRegPortal" />
+                                        <input id="domain_reg_portal" v-model="domainRegPortal" placeholder="Domain Registry Customer Portal" type="text" class="form-control form-control-sm" name="domain_reg_portal" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_email">Registered Username / Email / ID</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" id="domain_reg_email" name="domain_reg_email" v-model="domainRegEmail" />
+                                        <input id="domain_reg_email" v-model="domainRegEmail" placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" name="domain_reg_email" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_pass">Password</label>
                                     <div class="col-md-6 input-group">
-                                        <input placeholder="Enter Password" type="password" class="form-control form-control-sm" id="domain_reg_pass" name="domain_reg_pass" v-model="domainRegPassword" />
+                                        <input id="domain_reg_pass" v-model="domainRegPassword" placeholder="Enter Password" type="password" class="form-control form-control-sm" name="domain_reg_pass" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="controls col-md-12" style="text-align: center">
-                                        <input type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" id="button-id-signup" />
+                                        <input id="button-id-signup" type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" />
                                     </div>
                                 </div>
                             </div>

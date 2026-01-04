@@ -95,12 +95,12 @@ interface IpDetails {
                                 <td>Additional IP</td>
                                 <td v-if="vpsDetail.ip">{{ vpsDetail.ip }}</td>
                                 <td v-else>-</td>
-                                <td><a v-bind:href="vpsDetail.cancel_link">Cancel</a></td>
+                                <td><a :href="vpsDetail.cancel_link">Cancel</a></td>
                             </tr>
                         </table>
                     </template>
                     <template v-if="buyForm">
-                        <form v-on:submit.prevent="submitForm">
+                        <form @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
                             <div class="form-group">
                                 <div class="row">
@@ -108,7 +108,7 @@ interface IpDetails {
                                         <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="hidden" id="amount" class="form-control" value="1" />
+                                        <input id="amount" type="hidden" class="form-control" value="1" />
                                         <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
                                     </div>
                                 </div>

@@ -113,7 +113,7 @@ function submitForm() {
             password: checkVpsPassword.value,
             loginPassword: checkAccountPassword.value,
         };
-        fetchWrapper.post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reinstall_os', postData).then((response: any) => {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reinstall_os`, postData).then((response: any) => {
             console.log('api success');
             console.log(response);
             Swal.fire({
@@ -126,7 +126,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error '+error.message,
+            html: `Got error ${error.message}`,
         });
     }
 }
@@ -136,7 +136,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reinstall_os').then((response: VpsTemplatesResponse) => {
+    fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reinstall_os`).then((response: VpsTemplatesResponse) => {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (let idx in vpsTemplates.value) {
@@ -189,20 +189,20 @@ try {
                         <div v-if="successMsg" class="alert alert-success">
                             {{ successMsg }} <span v-if="cancelQueue">{{ cancelQueue }}</span>
                         </div>
-                        <form @submit.prevent="submitForm" class="reinstall_os">
+                        <form class="reinstall_os" @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="reinstall_os" />
 
                             <div class="form-group">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="os">Current OS</label>
                                     <div class="col-sm-9 input-group">
-                                        <input type="text" class="form-control form-control-sm" id="os" name="current_os" :value="serviceInfo.vps_os" disabled />
+                                        <input id="os" type="text" class="form-control form-control-sm" name="current_os" :value="serviceInfo.vps_os" disabled />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="vps_distro">Operating System Distribution</label>
                                     <div class="col-sm-9 input-group">
-                                        <select id="vps_distro" name="vps_distro" class="form-control form-control-sm select2" v-model="osDistro">
+                                        <select id="vps_distro" v-model="osDistro" name="vps_distro" class="form-control form-control-sm select2">
                                             <option v-for="(distro, ky, index) in osDistroSelect" :key="index" :value="ky">{{ distro }}</option>
                                         </select>
                                     </div>
@@ -210,7 +210,7 @@ try {
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="template">Version</label>
                                     <div class="col-sm-9 input-group">
-                                        <select id="template" name="template" class="form-control form-control-sm select2" v-model="osVersion">
+                                        <select id="template" v-model="osVersion" name="template" class="form-control form-control-sm select2">
                                             <option v-for="(template, ky, index) in osVersionSelect" :key="index" :value="ky">{{ template }}</option>
                                         </select>
                                     </div>
@@ -220,13 +220,13 @@ try {
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="password">New Password</label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="password" class="pr-password form-control form-control-sm" id="password" name="password" required />
+                                            <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="password2">Confirm password</label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="password" class="pr-password form-control form-control-sm" id="password2" name="password2" required />
+                                            <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@ try {
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="passwd">Login Password</label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="password" class="form-control form-control-sm" id="passwd" name="passwd" required />
+                                            <input id="passwd" type="password" class="form-control form-control-sm" name="passwd" required />
                                         </div>
                                     </div>
                                 </div>

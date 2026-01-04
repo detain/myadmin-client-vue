@@ -116,12 +116,12 @@ onMounted(() => {
 });
 
 const affiliateUrl = computed(() => {
-    return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? 'https://www.interserver.net/r/'+user.value.account_id : '';
+    return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? `https://www.interserver.net/r/${user.value.account_id}` : '';
 });
 
 const loadHome = async () => {
     try {
-        fetchWrapper.get(baseUrl+'/home').then((response: HomeResponse) => {
+        fetchWrapper.get(`${baseUrl}/home`).then((response: HomeResponse) => {
             console.log('api success');
             console.log(response);
             last_login_ip.value = response.last_login_ip;

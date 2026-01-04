@@ -73,7 +73,7 @@ const novncLink = ref('');
                                 <td>
                                     <p class="mx-3 px-4 pt-3">VNC allows you to connect to the virtual machine's desktop. VNC can be run in the browser or as a stand-alone client. Your computer's IP address must be granted access before the connection can be established.</p>
                                     <ul>
-                                        <li><b>Step 1</b>: Click link to grant your IP Access to VNC. <a v-bind:href="setupVncLink" target="_blank" class="link text-bold" style="transition-duration: 0.3s">Grant Your IP access to VNC </a>Please wait 2 minutes for the action to complete.</li>
+                                        <li><b>Step 1</b>: Click link to grant your IP Access to VNC. <a :href="setupVncLink" target="_blank" class="link text-bold" style="transition-duration: 0.3s">Grant Your IP access to VNC </a>Please wait 2 minutes for the action to complete.</li>
                                         <li><b>Step 2</b>: You can also download one of the many VNC clients available on the internet. We recommend TightVNC. Connect using your VPS IP address. Password is not required after your remote IP address has been granted in step 1.&nbsp;<span class="Apple-converted-space"></span></li>
                                     </ul>
                                 </td>
@@ -98,7 +98,7 @@ const novncLink = ref('');
                             <tr>
                                 <td style="width: 100px; vertical-align: middle">
                                     <img v-if="vpsScreenshot" style="height: 100px" :src="vpsScreenshot" alt="VPS Screenshot" />
-                                    <img alt="" v-else style="height: 100px" src="//i.ytimg.com/vi/B-3yfcIiLZc/maxresdefault.jpg" />
+                                    <img v-else alt="" style="height: 100px" src="//i.ytimg.com/vi/B-3yfcIiLZc/maxresdefault.jpg" />
                                 </td>
                             </tr>
                         </tbody>
