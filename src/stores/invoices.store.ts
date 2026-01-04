@@ -65,7 +65,7 @@ export const useInvoicesStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/invoices');
+                const response = await fetchWrapper.get(baseUrl+'/invoices');
                 this.custid = response.custid;
                 this.years_arr = response.years_arr;
                 this.months_arr = response.months_arr;
@@ -78,7 +78,7 @@ export const useInvoicesStore = defineStore({
                 this.table_rows = response.table_rows;
                 this.rows = response.rows;
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log('got error response'+error);
                 this.error = error;
             }
             this.loading = false;

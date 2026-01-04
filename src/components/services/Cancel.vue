@@ -41,29 +41,29 @@ siteStore.setTitle('');
 siteStore.setPageHeading('');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module.value), 'VPS'],
+    ['/'+moduleLink(module.value), 'VPS'],
 ]);
-siteStore.addBreadcrum('/' + moduleLink(module.value) + '/' + id.value, 'View ' + module.value + ' ' + id.value);
-siteStore.addBreadcrum('/' + moduleLink(module.value) + '/' + id.value + '/cancel', 'Cancel ' + module.value);
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/'+id.value, 'View '+module.value+' '+id.value);
+siteStore.addBreadcrum('/'+moduleLink(module.value)+'/'+id.value+'/cancel', 'Cancel '+module.value);
 
 onMounted(() => {});
 
 function onSubmit() {
     Swal.fire({
         icon: 'error',
-        title: '<h3>Cancel ' + module.value + '</h3> ',
+        title: '<h3>Cancel '+module.value+'</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Cancel it.',
-        html: '<p>Are you sure want to cancel your ' + module.value + ' <span class="text-2lg">' + id.value + '</span>?</p>',
+        html: '<p>Are you sure want to cancel your '+module.value+' <span class="text-2lg">'+id.value+'</span>?</p>',
         preConfirm: () => {
             try {
-                fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/cancel').then((response) => {
-                    console.log(module.value + ' cancel success');
+                fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/cancel').then((response) => {
+                    console.log(module.value+' cancel success');
                     console.log(response);
                 });
             } catch (error: any) {
-                console.log(module.value + ' cancel failed');
+                console.log(module.value+' cancel failed');
                 console.log(error);
             }
         },

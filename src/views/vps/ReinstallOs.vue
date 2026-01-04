@@ -113,7 +113,7 @@ function submitForm() {
             password: checkVpsPassword.value,
             loginPassword: checkAccountPassword.value,
         };
-        fetchWrapper.post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reinstall_os', postData).then((response: any) => {
+        fetchWrapper.post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reinstall_os', postData).then((response: any) => {
             console.log('api success');
             console.log(response);
             Swal.fire({
@@ -126,7 +126,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: 'Got error '+error.message,
         });
     }
 }
@@ -136,7 +136,7 @@ onMounted(() => {
 });
 
 try {
-    fetchWrapper.get(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/reinstall_os').then((response: VpsTemplatesResponse) => {
+    fetchWrapper.get(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/reinstall_os').then((response: VpsTemplatesResponse) => {
         console.log(response);
         vpsTemplates.value = response.templates;
         for (let idx in vpsTemplates.value) {
@@ -181,7 +181,7 @@ try {
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-linux">&nbsp;</i>Reinstall OS</h3>
                             <div class="card-tools text-right">
-                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

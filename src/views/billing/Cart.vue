@@ -264,7 +264,7 @@ interface ServerRow {
 
 function mounted() {
     if (triggerClick.value) {
-        $('#unver_' + current_cc_id.value)
+        $('#unver_'+current_cc_id.value)
             .attr('data-step', triggerClick.value)
             .trigger('click');
     }
@@ -278,7 +278,7 @@ function deleteCardModal(cc_id = 0) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to remove your creditcard <br><b>' + data.value.ccs[cc_id]['cc'] + '</b> ?</p>',
+        html: '<p>Are you sure want to remove your creditcard <br><b>'+data.value.ccs[cc_id]['cc']+'</b> ?</p>',
         preConfirm: () => {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
@@ -374,7 +374,7 @@ function editCardModal(cc_id = 0) {
 
 function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
-    const verifyDisplay = $('#unver_' + cc_id).attr('data-step');
+    const verifyDisplay = $('#unver_'+cc_id).attr('data-step');
     if (typeof verifyDisplay === 'undefined') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verifyDisplay === 'step1') {
@@ -470,7 +470,7 @@ function onExpDateInput(e: any) {
 function submitForm(value: any) {}
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
+    fetchWrapper.get(baseUrl+'/account/countries').then((response) => {
         countries.value = response;
     });
 } catch (error: any) {
@@ -478,7 +478,7 @@ try {
     console.log(error);
 }
 try {
-    fetchWrapper.get(baseUrl + '/billing/cart').then((response: CartResponse) => {
+    fetchWrapper.get(baseUrl+'/billing/cart').then((response: CartResponse) => {
         console.log(response);
         paymentMethodsData.value = response.paymentMethodsData;
         invrows.value = response.invrows;
@@ -569,7 +569,7 @@ accountStore.load();
                             </div>
                         </div>
                         <div class="col-md-3 text-center">
-                            <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
+                            <form @submit.prevent="submitForm('cart'+(st ? '?st='+st : ''))">
                                 <div class="form-group row">
                                     <label for="invoice_days" class="col-md-4 col-form-label">Filter</label>
                                     <select id="invoice_days" class="col-md-8 select2 form-control text-left" name="invoice_days" v-model="invoiceDays" @change="submitForm">
@@ -583,7 +583,7 @@ accountStore.load();
                             </form>
                         </div>
                         <div class="col-md-3 text-center">
-                            <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
+                            <form @submit.prevent="submitForm('cart'+(st ? '?st='+st : ''))">
                                 <div class="form-group row">
                                     <label for="currency_select" class="col-md-6 col-form-label">Currency</label>
                                     <select id="currency_select" class="col-md-6 select2 form-control text-left" name="currency" v-model="currency" @change="submitForm">
@@ -615,8 +615,8 @@ accountStore.load();
                                 <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                     <td>
                                         <div class="icheck-success d-inline">
-                                            <input :id="'check' + invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
-                                            <label :for="'check' + invrow.invoices_id"> </label>
+                                            <input :id="'check'+invrow.invoices_id" type="checkbox" name="invoices" v-model="invoices" :value="invrow.service_label" class="inv_checkbox" />
+                                            <label :for="'check'+invrow.invoices_id"> </label>
                                         </div>
                                     </td>
                                     <td>
@@ -649,7 +649,7 @@ accountStore.load();
                                         <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
-                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module + 'row')">
+                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module+'row')">
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
                                     </td>
@@ -666,8 +666,8 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
+                                        <a v-if="methodData.text === 'Select Credit Card'" @click.prevent="paymentMethod = 'cc'" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net'+methodData.image" border="" :style="methodData.image_style" /></a>
+                                        <router-link v-else :to="'/pay/'+methodId+'/'+invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net'+methodData.image" border="" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>
@@ -691,8 +691,8 @@ accountStore.load();
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
-                                                        <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
+                                                        <input :id="'cc-'+cc_id" :name="r_paymentMethod" :model="'cc_'+cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc'+cc_id)" />
+                                                        <label :for="'cc-'+cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="ml-2 pl-4">
                                                         <div class="my-2 text-sm">
@@ -711,8 +711,8 @@ accountStore.load();
                                                 </div>
 
                                                 <div class="col-md-6 pl-4">
-                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))" :id="'editcard-modal-' + cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_'+cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))" :id="'editcard-modal-'+cc_id" data-toggle="modal" data-target="#edit-card"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="paymentMethod === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
 

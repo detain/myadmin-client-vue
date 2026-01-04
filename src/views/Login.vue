@@ -222,9 +222,9 @@ function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
 
 function toggleModal(modalID: string) {
     document.getElementById(modalID)?.classList.toggle('hidden');
-    document.getElementById(modalID + '-backdrop')?.classList.toggle('hidden');
+    document.getElementById(modalID+'-backdrop')?.classList.toggle('hidden');
     document.getElementById(modalID)?.classList.toggle('flex');
-    document.getElementById(modalID + '-backdrop')?.classList.toggle('flex');
+    document.getElementById(modalID+'-backdrop')?.classList.toggle('flex');
 }
 
 function animateValue(obj: any, start = 0, end: null | number = null, duration = 1000) {
@@ -277,12 +277,12 @@ function login_handler() {
             html: password.value,
         });
     } else {
-        let loginCheckData = 'ajax=1&remember=' + remember + '&login_id=' + encodeURIComponent(username) + '&passwd=' + encodeURIComponent(password.value) + '&captcha=' + encodeURIComponent(captcha);
+        let loginCheckData = 'ajax=1&remember='+remember+'&login_id='+encodeURIComponent(username)+'&passwd='+encodeURIComponent(password.value)+'&captcha='+encodeURIComponent(captcha);
         if (twofactor) {
-            loginCheckData = loginCheckData + '&2fa_code=' + encodeURIComponent(twofactor);
+            loginCheckData = loginCheckData+'&2fa_code='+encodeURIComponent(twofactor);
         }
         if (emailCode.value != '') {
-            loginCheckData = loginCheckData + '&email_confirmation=' + encodeURIComponent(emailCode.value);
+            loginCheckData = loginCheckData+'&email_confirmation='+encodeURIComponent(emailCode.value);
         }
         const pathArray = window.location.pathname.split('/');
         let newPath = '/';
@@ -293,11 +293,11 @@ function login_handler() {
         }
         $.ajax({
             type: 'POST',
-            url: 'https://' + window.location.host + newPath + 'ajax_check_login.php',
+            url: 'https://'+window.location.host + newPath+'ajax_check_login.php',
             data: loginCheckData,
             success: function (html) {
                 console.log(loginCheckData);
-                console.log(html.substring(0, 8) + ' got ' + html);
+                console.log(html.substring(0, 8)+' got '+html);
                 if (html.substring(0, 4) == 'true') {
                     if (html.length == 4) {
                         window.location.href = 'index.php';
@@ -379,8 +379,8 @@ function forgot_password() {
         }
         $.ajax({
             type: 'POST',
-            url: 'https://' + window.location.host + newPath + 'password.php',
-            data: 'ajax=1&email=' + encodeURIComponent(username) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value) + '&captcha=' + encodeURIComponent(captcha),
+            url: 'https://'+window.location.host + newPath+'password.php',
+            data: 'ajax=1&email='+encodeURIComponent(username)+'&g-recaptcha-response='+encodeURIComponent(gresponse.value)+'&captcha='+encodeURIComponent(captcha),
             success: function (html) {
                 $('#forgot-password-message').html(html);
             },
@@ -413,21 +413,21 @@ function signup_handler() {
     for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != 'remember' && items[i].name != 'email_confirmation' && items[i].name != 'captcha' && items[i].value == '') {
             if (items[i].name == 'login_id') {
-                errors = errors + '<strong>Error!</strong> Please enter an email address<br>';
+                errors = errors+'<strong>Error!</strong> Please enter an email address<br>';
             } else if (items[i].name == 'passwd' || items[i].name == 'password') {
-                errors = errors + '<strong>Error!</strong> Please enter a password<br>';
+                errors = errors+'<strong>Error!</strong> Please enter a password<br>';
             } else if (items[i].name == 'giftcard_number') {
-                errors = errors + '<strong>Error!</strong> Please enter a giftcard number<br>';
+                errors = errors+'<strong>Error!</strong> Please enter a giftcard number<br>';
             } else if (items[i].name == '2fa_code') {
                 // do something
             } else if (items[i].name == 'captcha' || items[i].name == 'g-recaptcha-response') {
                 // do something
             } else {
-                errors = errors + '<strong>Error!</strong> Please enter a ' + items[i].name + ' (got a blank value)<br>';
+                errors = errors+'<strong>Error!</strong> Please enter a '+items[i].name+' (got a blank value)<br>';
             }
         }
         if (items[i].value != '' && items[i].name != 'captcha' && items[i].name != 'g-recaptcha-response') {
-            data_string = data_string + '&' + items[i].name + '=' + encodeURIComponent(items[i].value);
+            data_string = data_string+'&'+items[i].name+'='+encodeURIComponent(items[i].value);
         }
     }
     if (errors != '') {
@@ -437,7 +437,7 @@ function signup_handler() {
         });
     } else {
         if (email_conf == '') {
-            data_string = data_string + '&captcha=' + encodeURIComponent(captchaCode.value) + '&g-recaptcha-response=' + encodeURIComponent(gresponse.value);
+            data_string = data_string+'&captcha='+encodeURIComponent(captchaCode.value)+'&g-recaptcha-response='+encodeURIComponent(gresponse.value);
         }
         if (signup_running == 0) {
             signup_running = 1;

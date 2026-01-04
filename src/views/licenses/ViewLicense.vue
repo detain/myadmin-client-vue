@@ -35,16 +35,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'License'],
+        ['/'+moduleLink(module), 'License'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View License ' + id);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View License '+id);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View License ' + id);
-        siteStore.setTitle('View License ' + id);
+        siteStore.setPageHeading('View License '+id);
+        siteStore.setTitle('View License '+id);
     } else {
-        siteStore.setPageHeading('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('License ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading('License '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('License '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -56,7 +56,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -65,7 +65,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push('/'+moduleLink(module)+'/'+id);
                                 },
                             });
                         });
@@ -229,7 +229,7 @@ licenseStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

@@ -43,16 +43,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'Website'],
+        ['/'+moduleLink(module), 'Website'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Website ' + id);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Website '+id);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Website ' + id);
-        siteStore.setTitle('View Website ' + id);
+        siteStore.setPageHeading('View Website '+id);
+        siteStore.setTitle('View Website '+id);
     } else {
-        siteStore.setPageHeading('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Website ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading('Website '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Website '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -64,7 +64,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -73,7 +73,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push('/'+moduleLink(module)+'/'+id);
                                 },
                             });
                         });
@@ -85,7 +85,7 @@ function loadLink(newLink: string) {
             });
         } else if (newLink == 'login') {
             try {
-                fetchWrapper.get(baseUrl + '/' + moduleLink(module) + '/' + id + '/login').then((response) => {
+                fetchWrapper.get(baseUrl+'/'+moduleLink(module)+'/'+id+'/login').then((response) => {
                     console.log('response:');
                     console.log(response);
                     if (typeof response.location != 'undefined') {
@@ -236,7 +236,7 @@ loadLink(route.params.link as string);
                                     </template>
                                     <tr v-if="clientLinks[3]">
                                         <td>Automatic Login</td>
-                                        <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
+                                        <td><router-link :to="'/'+moduleLink(module)+'/'+id+'/login'" target="__blank" class="link">Click Here</router-link></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -324,7 +324,7 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+(clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

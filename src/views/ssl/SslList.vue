@@ -12,7 +12,7 @@ siteStore.setPageHeading('SSL Certificates List');
 siteStore.setTitle('SSL Certificates List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'SSL'],
+    ['/'+moduleLink(module), 'SSL'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -60,7 +60,7 @@ function crud_export(exportType: string): void {
 }
 const loadSsl = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/ssl');
+        const response = await fetchWrapper.get(baseUrl+'/ssl');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -156,13 +156,13 @@ loadSsl();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.ssl_id }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.ssl_id">{{ row.ssl_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.ssl_company }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.ssl_status }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -166,9 +166,9 @@ export const useServerStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.serverList = await fetchWrapper.get(baseUrl + '/servers');
+                this.serverList = await fetchWrapper.get(baseUrl+'/servers');
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log('got error response'+error);
                 this.error = error;
             }
             this.loading = false;
@@ -180,7 +180,7 @@ export const useServerStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/servers/' + id);
+                const response = await fetchWrapper.get(baseUrl+'/servers/'+id);
                 this.$reset();
                 //let key, value;
                 console.log(response);

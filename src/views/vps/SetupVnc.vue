@@ -34,7 +34,7 @@ function submitForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/' + moduleLink(module.value) + '/' + id.value + '/setup_vnc', {
+            .post(baseUrl+'/'+moduleLink(module.value)+'/'+id.value+'/setup_vnc', {
                 ip: myip.value,
             })
             .then((response) => {
@@ -43,7 +43,7 @@ function submitForm() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success' + response.text,
+                    html: 'Success'+response.text,
                 });
             });
     } catch (error: any) {
@@ -52,7 +52,7 @@ function submitForm() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.text,
+            html: 'Got error '+error.text,
         });
     }
 }
@@ -66,7 +66,7 @@ function submitForm() {
                     <div class="py-2">
                         <h3 class="card-title"><i class="material-icons mb-1 pr-2" style="vertical-align: middle">alarm</i>Setup VNC</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncipport">VNC IP:Port</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" id="vncipport" :value="serviceMaster.vps_ip + ':' + serviceInfo.vps_vnc_port" disabled />
+                                    <input type="text" class="form-control form-control-sm" id="vncipport" :value="serviceMaster.vps_ip+':'+serviceInfo.vps_vnc_port" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">

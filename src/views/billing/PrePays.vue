@@ -50,7 +50,7 @@ function delete_prepay(prepay_id: string | number) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to delete your <strong>prepay #' + prepay_id + '</strong> and its related history ?</p>',
+        html: '<p>Are you sure want to delete your <strong>prepay #'+prepay_id+'</strong> and its related history ?</p>',
         preConfirm: () => {
             $('#deleteForm').submit();
         },

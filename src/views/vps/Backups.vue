@@ -31,7 +31,7 @@ const backupsTable = computed(() => {
                 <div class="card-header">
                     <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>Manage VPS Backups</h3>
                     <div class="card-tools text-right">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <div class="card-body mb-0">

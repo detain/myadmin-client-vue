@@ -15,8 +15,8 @@ siteStore.setPageHeading('Order Rapid Deploy Server');
 siteStore.setTitle('Order Rapid Deploy Server');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Rapid Deploy Servers List'],
-    ['/' + moduleLink(module) + '/order', 'Order Rapid Deploy Server'],
+    ['/'+moduleLink(module), 'Rapid Deploy Servers List'],
+    ['/'+moduleLink(module)+'/order', 'Order Rapid Deploy Server'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -106,7 +106,7 @@ async function onSubmitConfirmation() {
                 console.log('qs order placed');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -154,7 +154,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
+fetchWrapper.get(baseUrl+'/qs/order').then((response: QsOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);
@@ -195,8 +195,8 @@ fetchWrapper.get(baseUrl + '/qs/order').then((response: QsOrderResponse) => {
                                             <tr v-for="(details, value) in serverDetails" :key="value">
                                                 <td>
                                                     <div class="icheck-success d-inline">
-                                                        <input :id="'qs-' + value" type="radio" class="form-check-input" name="quickserver" v-model="qsId" :value="value" />
-                                                        <label class="text-bold my-1" :for="'qs-' + value">&nbsp;</label>
+                                                        <input :id="'qs-'+value" type="radio" class="form-check-input" name="quickserver" v-model="qsId" :value="value" />
+                                                        <label class="text-bold my-1" :for="'qs-'+value">&nbsp;</label>
                                                     </div>
                                                 </td>
                                                 <td>{{ value }}</td>

@@ -28,7 +28,7 @@ const countries = ref({});
 async function onSubmit(values: any) {
     try {
         let message;
-        const response = await fetchWrapper.post(baseUrl + '/account', {
+        const response = await fetchWrapper.post(baseUrl+'/account', {
             name: data.value.name,
             company: data.value.company,
             address: data.value.address,
@@ -65,7 +65,7 @@ async function onSubmit(values: any) {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/account/countries').then((response) => {
+    fetchWrapper.get(baseUrl+'/account/countries').then((response) => {
         countries.value = response;
     });
 } catch (error: any) {

@@ -60,7 +60,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/backups/order', {
+            .post(baseUrl+'/backups/order', {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -70,7 +70,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -89,7 +89,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(baseUrl + '/backups/order', {
+            .put(baseUrl+'/backups/order', {
                 validateOnly: true,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -142,7 +142,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/backups/order').then((response: BackupOrderResponse) => {
+fetchWrapper.get(baseUrl+'/backups/order').then((response: BackupOrderResponse) => {
     Swal.close();
     console.log('Response:');
     console.log(response);

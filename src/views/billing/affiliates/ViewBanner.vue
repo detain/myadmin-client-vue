@@ -118,7 +118,7 @@ onMounted(() => {});
                     <tbody>
                         <tr>
                             <td>Image Preview</td>
-                            <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
+                            <td><img :src="'https://www.interserver.net/logos/'+imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
                         </tr>
                     </tbody>
                 </table>

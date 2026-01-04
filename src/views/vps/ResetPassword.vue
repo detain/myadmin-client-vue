@@ -21,7 +21,7 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const server = ref('');
 const goBackLink = computed(() => {
-    return `${module.value === 'vps' ? 'view_' + module.value : 'view_qs'}?id=${id.value}`;
+    return `${module.value === 'vps' ? 'view_'+module.value : 'view_qs'}?id=${id.value}`;
 });
 function submitForm() {
     // Handle form submission
@@ -36,7 +36,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title d-flex py-2"><i class="material-icons">password&nbsp;</i> Reset VPS Password</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

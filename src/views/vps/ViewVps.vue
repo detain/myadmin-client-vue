@@ -58,16 +58,16 @@ function loadLink(newLink: string) {
     linkDisplay.value = false;
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'VPS'],
+        ['/'+moduleLink(module), 'VPS'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View VPS '+id);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View VPS ' + id);
-        siteStore.setTitle('View VPS ' + id);
+        siteStore.setPageHeading('View VPS '+id);
+        siteStore.setTitle('View VPS '+id);
     } else {
-        siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading('VPS '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('VPS '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             vpsStore.queue(id as string, newLink);
             Swal.fire({
@@ -86,7 +86,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -95,7 +95,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push('/'+moduleLink(module)+'/'+id);
                                 },
                             });
                         });
@@ -184,20 +184,20 @@ function docReady() {
         if (cp === 'cp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)+' /mo');
         } else if (cp === 'da') {
             const lic_cost_type = $(this).attr('data-ser');
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)+' /mo');
         } else if (cp === 'pp') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)+' /mo');
         } else if (cp === 'rs') {
             $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
             $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2) + ' /mo');
+            $('#cp-cost').text($(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)+' /mo');
         }
     });
 }
@@ -388,9 +388,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -440,7 +440,7 @@ function toggleFunc(cp: string) {
                                         <tr>
                                             <td style="width: 75%">
                                                 <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                    <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage + '%' }"></div>
+                                                    <div class="progress-bar" :class="[getDiskClass()]" :style="{ width: disk_percentage+'%' }"></div>
                                                 </div>
                                             </td>
                                             <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ disk_percentage }}%</td>
@@ -507,7 +507,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -722,7 +722,7 @@ function toggleFunc(cp: string) {
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.vps_id+'/add/cp'" id="cp-order-link" class="btn btn-primary btn-block">Place Order</router-link>
                                 </div>
                             </div>
                             <br />

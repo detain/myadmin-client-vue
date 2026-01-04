@@ -258,16 +258,16 @@ export const useVpsStore = defineStore({
         async register(user: any): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.post(baseUrl + '/register', user);
+            await fetchWrapper.post(baseUrl+'/register', user);
         },
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.vpsList = await fetchWrapper.get(baseUrl + '/vps');
+                this.vpsList = await fetchWrapper.get(baseUrl+'/vps');
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log('got error response'+error);
                 this.error = error;
             }
             this.loading = false;
@@ -278,12 +278,12 @@ export const useVpsStore = defineStore({
             this.loading = true;
             let success = true;
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps/' + id + '/' + action);
+                const response = await fetchWrapper.get(baseUrl+'/vps/'+id+'/'+action);
                 this.linkDisplay = response.text;
                 this.responseText = response.text;
                 this.queueId = response.queueId;
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log('got error response'+error);
                 this.error = error;
                 success = false;
             }
@@ -297,7 +297,7 @@ export const useVpsStore = defineStore({
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(baseUrl + '/vps/' + id);
+                const response = await fetchWrapper.get(baseUrl+'/vps/'+id);
                 this.$reset();
                 //let key, value;
                 console.log(response);

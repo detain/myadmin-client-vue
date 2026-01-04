@@ -53,7 +53,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(baseUrl + '/floating_ip/order', {
+            .put(baseUrl+'/floating_ip/order', {
                 validateOnly: true,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -98,7 +98,7 @@ async function placeOrder(values: any) {
         showConfirmButton: false,
     });
     fetchWrapper
-        .post(baseUrl + '/floating_ip/order', {
+        .post(baseUrl+'/floating_ip/order', {
             validateOnly: false,
             serviceType: pkg.value,
             coupon: coupon.value,
@@ -109,13 +109,13 @@ async function placeOrder(values: any) {
             console.log('Response:');
             console.log(response);
             if (response['continue'] == true) {
-                router.push('/cart/' + response.iids.join(','));
+                router.push('/cart/'+response.iids.join(','));
             }
         });
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/floating_ip/order').then((response) => {
+    fetchWrapper.get(baseUrl+'/floating_ip/order').then((response) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
@@ -253,7 +253,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon='+validateResponse.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">

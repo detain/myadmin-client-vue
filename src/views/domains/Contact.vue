@@ -33,12 +33,12 @@ const updateContact = () => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-address-card"></i>&nbsp;Contact Information</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/domains/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id=' + id + '&link=contact'">
+                    <form @submit.prevent="updateContact" method="POST" :action="'view_domain?id='+id+'&link=contact'">
                         <div v-for="(field, fieldName) in formFields" :key="fieldName" class="form-group row">
                             <template v-if="domainFields[fieldName].label && domainFields[fieldName].label">
                                 <label class="col-sm-3 col-form-label" :for="fieldName">{{ domainFields[fieldName].label }}<span v-if="domainFields[fieldName].required" class="text-danger"> *</span></label>

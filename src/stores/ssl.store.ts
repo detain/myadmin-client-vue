@@ -100,9 +100,9 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                this.sslList = await fetchWrapper.get(baseUrl + '/ssl');
+                this.sslList = await fetchWrapper.get(baseUrl+'/ssl');
             } catch (error: any) {
-                console.log('got error response' + error);
+                console.log('got error response'+error);
                 this.error = error;
             }
             this.loading = false;
@@ -122,7 +122,7 @@ export const useSslStore = defineStore({
             }
             */
             try {
-                const response = await fetchWrapper.get(baseUrl + '/ssl/' + id);
+                const response = await fetchWrapper.get(baseUrl+'/ssl/'+id);
                 this.$reset();
                 this.ssl_id = response.ssl_id;
                 this.ssl_hostname = response.ssl_hostname;

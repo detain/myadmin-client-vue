@@ -45,9 +45,9 @@ siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module) + '/', 'Rapid Deploy Servers'],
+    ['/'+moduleLink(module)+'/', 'Rapid Deploy Servers'],
 ]);
-siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Qs ' + id);
+siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Qs '+id);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
@@ -70,16 +70,16 @@ function loadLink(newLink: string) {
     linkDisplay.value = false;
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'VPS'],
+        ['/'+moduleLink(module), 'VPS'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View VPS ' + id);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View VPS '+id);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View VPS ' + id);
-        siteStore.setTitle('View VPS ' + id);
+        siteStore.setPageHeading('View VPS '+id);
+        siteStore.setTitle('View VPS '+id);
     } else {
-        siteStore.setPageHeading('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('VPS ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading('VPS '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('VPS '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             qsStore.queue(String(id), newLink);
             Swal.fire({
@@ -98,7 +98,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -107,7 +107,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push('/'+moduleLink(module)+'/'+id);
                                 },
                             });
                         });
@@ -299,9 +299,9 @@ function loadLink(newLink: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@ function loadLink(newLink: string) {
                                         <tr>
                                             <td style="width: 75%">
                                                 <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage + '%' }"></div>
+                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage+'%' }"></div>
                                                 </div>
                                             </td>
                                             <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
@@ -443,7 +443,7 @@ function loadLink(newLink: string) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>

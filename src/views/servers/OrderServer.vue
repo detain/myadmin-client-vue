@@ -12,7 +12,7 @@ siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Servers List'],
+    ['/'+moduleLink(module), 'Servers List'],
     ['/servers/order', 'Order Server'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
@@ -289,7 +289,7 @@ function serverOrderRequest(addCpu: boolean) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.get(addCpu ? baseUrl + '/servers/order?cpu=' + cpu.value : baseUrl + '/servers/order').then((response: ServerOrderResponse) => {
+    fetchWrapper.get(addCpu ? baseUrl+'/servers/order?cpu='+cpu.value : baseUrl+'/servers/order').then((response: ServerOrderResponse) => {
         Swal.close();
         console.log('Response:');
         console.log(response);
@@ -318,7 +318,7 @@ serverOrderRequest(false);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/' + moduleLink(module) + '/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/'+moduleLink(module)+'/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -328,11 +328,11 @@ serverOrderRequest(false);
                                 <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-11">
                                     <div v-for="(cpu_details, id) in cpu_li" :key="id" class="icheck-success d-inline w-100">
-                                        <input :id="'ds-' + id" type="radio" class="form-check-input" name="cpu" :value="id" v-model="cpu" />
-                                        <label class="font-weight-normal w-100" :for="'ds-' + id">
+                                        <input :id="'ds-'+id" type="radio" class="form-check-input" name="cpu" :value="id" v-model="cpu" />
+                                        <label class="font-weight-normal w-100" :for="'ds-'+id">
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <img alt="" class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
+                                                    <img alt="" class="pr-2" :src="'/images/v2-images/'+cpu_details.img" style="max-width: 100px" />
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="text-bold text-sm">{{ cpu_details.short_desc }}</div>
@@ -395,8 +395,8 @@ serverOrderRequest(false);
                     </div>
                     <div class="card-body">
                         <template v-for="(cpu_det, core) in cpuCores" :key="core">
-                            <a href="javascript:void(0);" :id="'core-' + core" data-toggle="modal" :data-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
-                            <div :id="'coreM-' + core" class="modal fade">
+                            <a href="javascript:void(0);" :id="'core-'+core" data-toggle="modal" :data-target="'#coreM-'+core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
+                            <div :id="'coreM-'+core" class="modal fade">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header border-0 p-4">
@@ -408,7 +408,7 @@ serverOrderRequest(false);
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
-                                                    <div class="col"><img alt="" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" /></div>
+                                                    <div class="col"><img alt="" :src="'/images/v2-images/'+cpu_details.img" style="max-width: 100px" /></div>
                                                     <div class="col">
                                                         <div class="font-weight-light text-lg">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-green text-sm">{{ cpu_details.monthly_price_display }}</div>
@@ -428,7 +428,7 @@ serverOrderRequest(false);
                                                         <div class="text-sm">Total Cost per month</div>
                                                     </div>
                                                     <div class="col">
-                                                        <a :href="'/order_server?cpu=' + cpu_details.id" class="btn btn-green btn-sm mt-2 px-4 py-2">Order</a>
+                                                        <a :href="'/order_server?cpu='+cpu_details.id" class="btn btn-green btn-sm mt-2 px-4 py-2">Order</a>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100" />
@@ -471,7 +471,7 @@ serverOrderRequest(false);
                                             <div class="input-group col-md-9">
                                                 <template v-for="(details, id) in inputDetails[cpu.toString()]" :key="id">
                                                     <div class="icheck-success d-inline w-100">
-                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
+                                                        <input v-if="inputName === 'memory_li'" :id="'ds-'+(inputName as string).replace('_li', '')+'-'+id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
                                                         <label v-if="Object.keys(inputDetails[cpu.toString()])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
@@ -496,16 +496,16 @@ serverOrderRequest(false);
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-'+(inputName as string).replace('_li', '')+'-'+id" :class="'font-weight-normal w-100'+(inputName === 'hd_li' ? ' drive-row-'+details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <button type="button" :id="'drive-remove-' + id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
+                                                                            <button type="button" :id="'drive-remove-'+id" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
                                                                                 <i class="fa fa-minus"></i>
                                                                             </button>
                                                                             <b>/</b>
-                                                                            <button type="button" :id="'drive-add-' + id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
+                                                                            <button type="button" :id="'drive-add-'+id" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </template>
@@ -530,10 +530,10 @@ serverOrderRequest(false);
                                             {{ fieldLabel[(inputName as string).replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
-                                        <div class="input-group col-md-9" :class="inputName + '-row'">
+                                        <div class="input-group col-md-9" :class="inputName+'-row'">
                                             <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
-                                                <input :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
-                                                <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="font-weight-normal w-100">
+                                                <input :id="'ds-'+(inputName as string).replace('_li', '')+'-'+id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
+                                                <label :for="'ds-'+(inputName as string).replace('_li', '')+'-'+id" class="font-weight-normal w-100">
                                                     <div class="row mb-2">
                                                         <div class="col-md-8">
                                                             <div class="text-bold text-sm">{{ details.short_desc }}</div>

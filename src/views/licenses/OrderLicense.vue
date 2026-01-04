@@ -27,15 +27,15 @@ function updateBreadcrums() {
     if (step.value == 'license_types') {
         siteStore.setBreadcrums([
             ['/home', 'Home'],
-            ['/' + moduleLink(module), 'Licenses List'],
-            ['/' + moduleLink(module) + '/order', 'Select License Type'],
+            ['/'+moduleLink(module), 'Licenses List'],
+            ['/'+moduleLink(module)+'/order', 'Select License Type'],
         ]);
     } else {
         siteStore.setBreadcrums([
             ['/home', 'Home'],
-            ['/' + moduleLink(module), 'Licenses List'],
-            ['/' + moduleLink(module) + '/order', 'Select License Type'],
-            ['/licenses/order/' + catTag.value, 'Order License'],
+            ['/'+moduleLink(module), 'Licenses List'],
+            ['/'+moduleLink(module)+'/order', 'Select License Type'],
+            ['/licenses/order/'+catTag.value, 'Order License'],
         ]);
     }
 }
@@ -135,7 +135,7 @@ function orderLicenseType(type: string | number) {
     packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
-    router.push('/licenses/order/' + catTag.value);
+    router.push('/licenses/order/'+catTag.value);
 }
 
 function submitForm() {
@@ -151,7 +151,7 @@ function submitLicenseForm() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/licenses/order', {
+            .post(baseUrl+'/licenses/order', {
                 tos: tos.value,
                 frequency: frequency.value,
                 comment: comment.value,
@@ -164,7 +164,7 @@ function submitLicenseForm() {
                 console.log('Response:');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -176,7 +176,7 @@ function submitLicenseForm() {
 
 function editForm() {}
 
-fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
+fetchWrapper.get(baseUrl+'/licenses/order').then((response) => {
     console.log('Response:');
     console.log(response);
     packageCosts.value = response.packageCosts;
@@ -191,7 +191,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="'/' + details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
+                        <img class="card-img-top" :src="'/'+details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <h3 class="card-title"></h3>
                         <div class="card-tools float-right">
                             <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -254,7 +254,7 @@ fetchWrapper.get(baseUrl + '/licenses/order').then((response) => {
                                 <label class="col-md-3"></label>
                                 <div class="col-md-9">
                                     <button class="btn bg-secondary btn-sm mr-2 mt-1" @click="checkAvailability()">Check availability</button>
-                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" id="couponimg" height="20" width="20" alt="" />
+                                    <img :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon='+coupon" id="couponimg" height="20" width="20" alt="" />
                                 </div>
                             </div>
                             <div class="row">

@@ -46,9 +46,9 @@ origData.value = [
 const filteredData = computed(() => {
     const activeDomains: domainsRow[] = [];
     origData.value.forEach((row) => {
-        row.link = '<router-link to="\'view_domain?id=' + row.domain_id + '\'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
+        row.link = '<router-link to="\'view_domain?id='+row.domain_id+'\'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>';
         row.link = row.domain_id;
-        row.hostname = '<router-link to="\'view_domain?id=' + row.domain_id + '\'">' + row.domain_hostname + '</router-link>';
+        row.hostname = '<router-link to="\'view_domain?id='+row.domain_id+'\'">'+row.domain_hostname+'</router-link>';
         if (limitStatus.value === 'all' || limitStatusMap[limitStatus.value].includes(row.domain_status)) {
             activeDomains.push(row);
         }

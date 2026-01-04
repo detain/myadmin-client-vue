@@ -13,7 +13,7 @@ siteStore.setPageHeading('Domain Registrations List');
 siteStore.setTitle('Domain Registrations List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Domains'],
+    ['/'+moduleLink(module), 'Domains'],
 ]);
 
 interface domainsRow {
@@ -58,7 +58,7 @@ function crud_export(exportType: string): void {
 }
 const loadDomains = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/domains');
+        const response = await fetchWrapper.get(baseUrl+'/domains');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -80,7 +80,7 @@ loadDomains();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/' + moduleLink(module) + '/order'" title="Order Domain Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/order'" title="Order Domain Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -154,13 +154,13 @@ loadDomains();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.domain_id }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id">{{ row.domain_hostname }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.domain_id">{{ row.domain_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.domain_expire_date }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>{{ row.domain_status }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

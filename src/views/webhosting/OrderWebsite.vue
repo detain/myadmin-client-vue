@@ -148,7 +148,7 @@ async function onSubmitConfirmation() {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -158,8 +158,8 @@ async function onSubmitConfirmation() {
 }
 
 async function searchDomain() {
-    console.log('searching for ' + hostname.value);
-    fetchWrapper.get(baseUrl + '/domains/lookup/' + hostname.value).then((response) => {
+    console.log('searching for '+hostname.value);
+    fetchWrapper.get(baseUrl+'/domains/lookup/'+hostname.value).then((response) => {
         console.log('Response:');
         console.log(response);
     });
@@ -171,7 +171,7 @@ Swal.fire({
     allowOutsideClick: false,
     showConfirmButton: false,
 });
-fetchWrapper.get(baseUrl + '/websites/order').then((response) => {
+fetchWrapper.get(baseUrl+'/websites/order').then((response) => {
     Swal.close();
     console.log('Response:');
     console.log(response);

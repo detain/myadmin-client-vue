@@ -99,7 +99,7 @@ interface AlertRow {
                                     <td>{{ alert.alert_updated }}</td>
                                     <td style="max-width: 300px; overflow: hidden; white-space: nowrap">
                                         <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-new" @click="editAlert('edit', alert.alert_id, alert.alert_type, alert.alert_value, alert.alert_to, alert.alert_enabled)"> Edit </a>
-                                        <a :href="'view_mail?id=' + id + '&link=alerts&action=delete&alert_id=' + alert.alert_id" class="btn btn-sm btn-primary"> Delete </a>
+                                        <a :href="'view_mail?id='+id+'&link=alerts&action=delete&alert_id='+alert.alert_id" class="btn btn-sm btn-primary"> Delete </a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -42,7 +42,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(baseUrl + '/mail/order', {
+            .put(baseUrl+'/mail/order', {
                 validateOnly: true,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -73,7 +73,7 @@ async function placeOrder(values: any) {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/mail/order', {
+            .post(baseUrl+'/mail/order', {
                 validateOnly: false,
                 serviceType: pkg.value,
                 coupon: coupon.value,
@@ -83,7 +83,7 @@ async function placeOrder(values: any) {
                 console.log('Response:');
                 console.log(response);
                 if (response['continue'] == true) {
-                    router.push('/cart/' + response.iids.join(','));
+                    router.push('/cart/'+response.iids.join(','));
                 }
             });
     } catch (error: any) {
@@ -116,7 +116,7 @@ interface ValiateResponse {
 }
 
 try {
-    fetchWrapper.get(baseUrl + '/mail/order').then((response: MailOrderResponse) => {
+    fetchWrapper.get(baseUrl+'/mail/order').then((response: MailOrderResponse) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
@@ -251,7 +251,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse?.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon='+validateResponse?.coupon" style="padding-left: 10px" id="couponimg" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">

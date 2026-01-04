@@ -50,7 +50,7 @@ async function addDomain(event: Event) {
     let response;
     try {
         fetchWrapper
-            .post(baseUrl + '/dns', {
+            .post(baseUrl+'/dns', {
                 domain: domain.value,
                 ip: ip.value,
             })
@@ -68,7 +68,7 @@ async function addDomain(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: 'Got error '+error.message,
         });
     }
 }
@@ -86,7 +86,7 @@ async function deleteDomain(event: Event) {
         preConfirm: () => {
             console.log('got to this plce fro deleteDomain preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + domainId.value).then((response) => {
+                fetchWrapper.delete(baseUrl+'/dns/'+domainId.value).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns();
@@ -100,7 +100,7 @@ async function deleteDomain(event: Event) {
                 console.log(error);
                 Swal.fire({
                     icon: 'error',
-                    html: 'Got error ' + error.message,
+                    html: 'Got error '+error.message,
                 });
             }
         },
@@ -126,7 +126,7 @@ interface DomainRow {
 
 const loadDns = async () => {
     try {
-        const response: DomainRow[] = await fetchWrapper.get(baseUrl + '/dns');
+        const response: DomainRow[] = await fetchWrapper.get(baseUrl+'/dns');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -241,7 +241,7 @@ loadDns();
                                             <td>{{ row.name }}</td>
                                             <td>{{ row.content }}</td>
                                             <td>
-                                                <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'dns/'+row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fa fa-fw fa-cog"></i></router-link>
                                                 <a href="#" @click.prevent="deleteDomain" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS"><i class="fa fa-fw fa-trash" :data-id="row.id"></i></a>
                                             </td>
                                         </tr>

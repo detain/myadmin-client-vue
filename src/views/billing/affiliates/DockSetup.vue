@@ -36,7 +36,7 @@ function onSubmit() {
     });
     try {
         fetchWrapper
-            .post(baseUrl + '/affiliate/dock_setup', {
+            .post(baseUrl+'/affiliate/dock_setup', {
                 coupon: data.value.referrer_coupon,
                 title: data.value.affiliate_dock_title,
                 description: data.value.affiliate_dock_description,
@@ -47,7 +47,7 @@ function onSubmit() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: 'Success' + response.text,
+                    html: 'Success'+response.text,
                 });
             });
     } catch (error: any) {
@@ -56,7 +56,7 @@ function onSubmit() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.text,
+            html: 'Got error '+error.text,
         });
     }
 }

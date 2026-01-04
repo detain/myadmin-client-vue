@@ -36,16 +36,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
         ['/home', 'Home'],
-        ['/' + moduleLink(module), 'Servers'],
+        ['/'+moduleLink(module), 'Servers'],
     ]);
-    siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id, 'View Server ' + id);
+    siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id, 'View Server '+id);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading('View Server ' + id);
-        siteStore.setTitle('View Server ' + id);
+        siteStore.setPageHeading('View Server '+id);
+        siteStore.setTitle('View Server '+id);
     } else {
-        siteStore.setPageHeading('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.setTitle('Server ' + id + ' ' + ucwords(newLink.replace('_', ' ')));
-        siteStore.addBreadcrum('/' + moduleLink(module) + '/' + id + '/' + newLink, ucwords(newLink.replace('_', ' ')));
+        siteStore.setPageHeading('Server '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.setTitle('Server '+id+' '+ucwords(newLink.replace('_', ' ')));
+        siteStore.addBreadcrum('/'+moduleLink(module)+'/'+id+'/'+newLink, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
@@ -57,7 +57,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get('/' + moduleLink(module) + '/' + id + '/welcome_email').then((response) => {
+                        fetchWrapper.get('/'+moduleLink(module)+'/'+id+'/welcome_email').then((response) => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -66,7 +66,7 @@ function loadLink(newLink: string) {
                                 confirmButtonText: 'Yes',
                                 html: 'The welcome email has been resent.  Check your inbox.',
                                 preConfirm: () => {
-                                    router.push('/' + moduleLink(module) + '/' + id);
+                                    router.push('/'+moduleLink(module)+'/'+id);
                                 },
                             });
                         });
@@ -244,7 +244,7 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -292,11 +292,11 @@ const ipv6VlansNetworks = computed(() => {
                                             <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">Select Action</button>
                                             <button type="button" class="btn dropdown-toggle dropdown-hover dropdown-icon" :class="asset.lease.power ? 'btn-success' : 'btn-danger'" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
                                             <div class="dropdown-menu" role="menu">
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=cycle'">Cycle</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=reset'">Reset</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=on'">On</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=off'">Off</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=soft'">Soft Reboot</a>
+                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=cycle'">Cycle</a>
+                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=reset'">Reset</a>
+                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=on'">On</a>
+                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=off'">Off</a>
+                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=soft'">Soft Reboot</a>
                                             </div>
                                         </div>
                                     </template>

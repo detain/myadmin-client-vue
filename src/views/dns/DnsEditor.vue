@@ -16,7 +16,7 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['/dns', 'DNS Manager'],
 ]);
-siteStore.addBreadcrum('/dns/' + id, 'DNS Editor');
+siteStore.addBreadcrum('/dns/'+id, 'DNS Editor');
 const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);
 /*DataTable.use(DataTablesCore);*/
@@ -83,7 +83,7 @@ async function showAddDnsRecord(event: Event) {
 async function editDnsRecord(event: Event) {
     let response;
     try {
-        fetchWrapper.post(baseUrl + '/dns/' + id + '/' + recordId.value, recordRow.value).then((response) => {
+        fetchWrapper.post(baseUrl+'/dns/'+id+'/'+recordId.value, recordRow.value).then((response) => {
             console.log('api success');
             console.log(response);
             loadDns();
@@ -97,7 +97,7 @@ async function editDnsRecord(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: 'Got error '+error.message,
         });
     }
 }
@@ -106,7 +106,7 @@ async function addDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper
-            .post(baseUrl + '/dns/' + id, {
+            .post(baseUrl+'/dns/'+id, {
                 name: name.value,
                 type: type.value,
                 content: content.value,
@@ -127,7 +127,7 @@ async function addDnsRecord(event: Event) {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: 'Got error ' + error.message,
+            html: 'Got error '+error.message,
         });
     }
 }
@@ -156,7 +156,7 @@ async function deleteRecord(event: Event) {
         preConfirm: () => {
             console.log('got to this place from deleteRecord preConfirm');
             try {
-                fetchWrapper.delete(baseUrl + '/dns/' + id + '/' + record).then((response) => {
+                fetchWrapper.delete(baseUrl+'/dns/'+id+'/'+record).then((response) => {
                     console.log('api success');
                     console.log(response);
                     loadDns();
@@ -170,7 +170,7 @@ async function deleteRecord(event: Event) {
                 console.log(error);
                 Swal.fire({
                     icon: 'error',
-                    html: 'Got error ' + error.message,
+                    html: 'Got error '+error.message,
                 });
             }
         },
@@ -179,7 +179,7 @@ async function deleteRecord(event: Event) {
 
 const loadDns = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/dns/' + id);
+        const response = await fetchWrapper.get(baseUrl+'/dns/'+id);
         console.log('api success');
         console.log(response);
         data.value = response;

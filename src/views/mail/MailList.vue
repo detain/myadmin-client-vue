@@ -12,7 +12,7 @@ siteStore.setPageHeading('Mail Services List');
 siteStore.setTitle('Mail Services List');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/' + moduleLink(module), 'Mail'],
+    ['/'+moduleLink(module), 'Mail'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
@@ -58,7 +58,7 @@ function crud_export(exportType: string): void {
 }
 const loadMail = async () => {
     try {
-        const response = await fetchWrapper.get(baseUrl + '/mail');
+        const response = await fetchWrapper.get(baseUrl+'/mail');
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -155,12 +155,12 @@ loadMail();
                                             <td>{{ row.mail_id }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id">{{ row.mail_username }}</router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id">{{ row.mail_username }}</router-link>
                                             </td>
                                             <td>{{ row.mail_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
