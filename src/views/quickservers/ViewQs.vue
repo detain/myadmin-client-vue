@@ -228,7 +228,7 @@ function loadLink(newLink: string) {
             <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="Number(id)" :module="module" :service-info="serviceInfo"></ResetPassword>
+            <ResetPassword :id="id" :module="module"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
