@@ -193,7 +193,6 @@ loadDns();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div id="records" class="card">
         <div class="card-header">
             <div class="p-1">
@@ -300,6 +299,7 @@ loadDns();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,
