@@ -20,25 +20,25 @@ const props = defineProps({
         type: Array as PropType<IpDetails[]>,
         default: () => [],
     },
-    buy_form: {
+    buyForm: {
         type: Boolean,
         default: false,
     },
-    ip_currency: {
+    ipCurrency: {
         type: String,
         required: false,
     },
-    im_cost: {
+    imCost: {
         type: String,
         required: false,
     },
-    ip_cost: {
+    ipCost: {
         type: String,
         required: false,
     },
 });
 const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
-const buyForm = ref(false);
+const buyForm = computed(() => props.buyForm);
 
 interface IpDetails {
     invoices_id: string;
@@ -112,11 +112,11 @@ interface IpDetails {
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
+                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ipCurrency }})</label>
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="im_cost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="simCost" />
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +127,8 @@ interface IpDetails {
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
-                                        <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ipCost" />
+                                        <small class="form-text text-muted">Cost ({{ ipCurrency }}) every month as your website invoiced</small>
                                     </div>
                                 </div>
                             </div>

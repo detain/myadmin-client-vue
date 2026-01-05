@@ -246,7 +246,7 @@ loadDns();
                         </td>
                         <td>
                             <select id="addType" v-model="type" class="form-control">
-                                <option v-for="(type, index) in recordTypes" :key="index" :value="type">{{ type }}</option>
+                                <option v-for="(recordType, index) in recordTypes" :key="index" :value="recordType">{{ recordType }}</option>
                             </select>
                         </td>
                         <td><input id="addContent" v-model="content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
@@ -268,7 +268,7 @@ loadDns();
                             </td>
                             <td>
                                 <select v-model="row.type" class="form-control" style="width: 100% !important">
-                                    <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
+                                    <option v-for="(recordType, typeIndex) in recordTypes" :key="typeIndex" :value="recordType">{{ recordType }}</option>
                                 </select>
                             </td>
                             <td><input v-model="row.content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
