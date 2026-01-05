@@ -13,9 +13,9 @@ import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/js/dist/popover';
 
 // Optional auto-init
-$(function () {
+/* $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
-});
+}); */
 
 export default $;

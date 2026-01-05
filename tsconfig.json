@@ -26,6 +26,6 @@
         "noFallthroughCasesInSwitch": true,
         "types": ["vite/client", "vitest/globals", "jquery", "node"]
     },
-    "include": ["env.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "include": ["env.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/types/**/*.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
