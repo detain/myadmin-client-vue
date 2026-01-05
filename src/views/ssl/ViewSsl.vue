@@ -219,9 +219,7 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >Status is: <b>{{ serviceInfo.ssl_status }}</b></span
-                >
+                <span class="small-box-footer">Status is: <b>{{ serviceInfo.ssl_status }}</b></span>
             </div>
         </div>
         <div class="col-md-3">
@@ -235,9 +233,7 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="material-icons" style="user-select: none">policy</i>
                 </div>
-                <span class="small-box-footer"
-                    >Order Status: <b>{{ serviceInfo.ssl_status }}</b></span
-                >
+                <span class="small-box-footer">Order Status: <b>{{ serviceInfo.ssl_status }}</b></span>
             </div>
         </div>
         <div class="col-md-3">
@@ -249,9 +245,7 @@ sslStore.getById(id as string);
                 <div class="icon">
                     <i class="material-icons" style="user-select: none">admin_panel_settings</i>
                 </div>
-                <span class="small-box-footer"
-                    >Cert Status: <b>{{ serviceInfo.ssl_order_id }}</b></span
-                >
+                <span class="small-box-footer">Cert Status: <b>{{ serviceInfo.ssl_order_id }}</b></span>
             </div>
         </div>
     </div>
@@ -282,8 +276,7 @@ sslStore.getById(id as string);
                 </div>
                 <div v-show="!isCollapsed" class="card-body">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>
