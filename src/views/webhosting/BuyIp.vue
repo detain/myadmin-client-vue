@@ -116,7 +116,7 @@ interface IpDetails {
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="simCost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="imCost" />
                                     </div>
                                 </div>
                             </div>
