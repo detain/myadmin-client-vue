@@ -22,7 +22,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 siteStore.checkInfoLoaded();
 
 $(function () {
-    //$('.pr-password').passwordRequirements({});
+    /*$('.pr-password').passwordRequirements({});
     $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
@@ -30,7 +30,7 @@ $(function () {
         closeOnSelect: true,
     });
     $('[data-toggle="popover"]').popover();
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip(); */
     //Onhover add shaddow
     $('.shadow-hover').hover(
         function () {
@@ -60,11 +60,11 @@ function Previous() {
 }
 
 // Remember toggle state
-$(document).on('click', '.collapse_menu', function () {
+function collapseMenu() {
     if (!AdminLTESidebarTweak.options.EnableRemember) return;
     const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
     document.cookie = `toggleState=${toggleState}; path=/`;
-});
+}
 
 // Restore state on load
 $(function () {
@@ -102,7 +102,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
             <ul class="navbar-nav menu-collapse">
                 <!-- Left navbar links -->
                 <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
