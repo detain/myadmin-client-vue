@@ -30,7 +30,7 @@ function getLink() {
     if (module.value === 'vps') {
         return `view_${module.value}?id=${id.value}`;
     } else {
-        return 'view_qs';
+        return `view_qs?id=${id.value}`;
     }
 }
 function submitForm() {
