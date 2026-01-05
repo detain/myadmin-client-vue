@@ -20,7 +20,7 @@ const module: string = 'ssl';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -182,7 +182,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-sslStore.getById(id as string);
+sslStore.getById(id);
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import { useSiteStore } from '../../stores/site.store';
 
 import Swal from 'sweetalert2';
 const route = useRoute();
-const id = route.params.id;
+const id = Number(route.params.id);
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Editor');
 siteStore.setTitle('DNS Editor');

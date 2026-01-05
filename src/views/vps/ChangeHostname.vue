@@ -4,21 +4,28 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
-const props = defineProps(['id', 'module']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    curHostname: string;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const hostname = ref('');
-const newHostname = ref('');
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
-
+const curHostname = computed(() => {
+    return props.curHostname;
+});
 function getLink() {
     if (module.value === 'vps') {
         return `view_${module.value}?id=${id.value}`;
@@ -29,9 +36,30 @@ function getLink() {
 function submitForm() {
     const formData = {
         link: 'changeHostname',
-        hostname: newHostname,
+        hostname: hostname,
     };
     // Process the form submission or make an API request here
+    // Handle form submission
+    try {
+        let postData = {
+            hostname: hostname.value,
+        };
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/insert_cd`, postData).then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        });
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.message}`,
+        });
+    }
 }
 </script>
 
@@ -54,13 +82,13 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="oldhostname" type="text" class="form-control form-control-sm" name="oldhostname" :value="hostname" disabled />
+                                    <input id="oldhostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="hostname">New Hostname</label>
                                 <div class="col-sm-9">
-                                    <input id="hostname" v-model="newHostname" type="text" class="form-control form-control-sm" name="hostname" placeholder="your.server.com" />
+                                    <input id="hostname" v-model="hostname" type="text" class="form-control form-control-sm" name="hostname" placeholder="your.server.com" />
                                     <span class="text-muted text-sm">For Example: your.server.com</span>
                                 </div>
                             </div>

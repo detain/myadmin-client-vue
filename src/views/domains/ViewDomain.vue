@@ -23,7 +23,7 @@ const module = 'domains';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -93,7 +93,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-domainStore.getById(id as string);
+domainStore.getById(id);
 console.log('link:');
 console.log(link.value);
 </script>

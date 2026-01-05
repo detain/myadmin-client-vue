@@ -5,6 +5,8 @@ import { RouterLink } from 'vue-router';
 import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 
 const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
 const successMsg = ref('');

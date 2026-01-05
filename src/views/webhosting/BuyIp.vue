@@ -13,7 +13,7 @@ const siteStore = useSiteStore();
 
 const props = defineProps({
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     ipsDetails: {

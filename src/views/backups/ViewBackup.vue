@@ -18,7 +18,7 @@ const module = 'backups';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -37,7 +37,7 @@ siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Backup ${id}`);
 
 const backupStore = useBackupStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
-backupStore.getById(id as string);
+backupStore.getById(id);
 
 const billingStatus = computed(() => {
     const status = serviceInfo.value.backup_status;

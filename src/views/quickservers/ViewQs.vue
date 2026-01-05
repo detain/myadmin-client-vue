@@ -198,49 +198,49 @@ function loadLink(newLink: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module"></Backup>
+            <Backup :id="id" :module="module" :service-info="serviceInfo"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
-            <Backups :id="id" :module="module" :settings="settings"></Backups>
+            <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
-            <ChangeHostname :id="id" :module="module"></ChangeHostname>
+            <ChangeHostname :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ChangeHostname>
         </div>
         <div v-else-if="link == 'change_root_password'" class="col">
-            <ChangeRootPassword :id="id" :module="module"></ChangeRootPassword>
+            <ChangeRootPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeRootPassword>
         </div>
         <div v-else-if="link == 'change_timezone'" class="col">
-            <ChangeTimezone :id="id" :module="module"></ChangeTimezone>
+            <ChangeTimezone :id="id" :module="module" :service-info="serviceInfo"></ChangeTimezone>
         </div>
         <div v-else-if="link == 'change_webuzo_password'" class="col">
-            <ChangeWebuzoPassword :id="id" :module="module"></ChangeWebuzoPassword>
+            <ChangeWebuzoPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeWebuzoPassword>
         </div>
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
-            <Invoices :id="id" :module="module"></Invoices>
+            <Invoices :id="id" :module="module" :service-info="serviceInfo"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
             <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
+            <ResetPassword :id="Number(id)" :module="module" :service-info="serviceInfo"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
-            <ReverseDns :id="id" :module="module"></ReverseDns>
+            <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
         </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
-            <TrafficUsage :id="id" :module="module"></TrafficUsage>
+            <TrafficUsage :id="id" :module="module" :service-info="serviceInfo"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
             <SetupVnc :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></SetupVnc>
         </div>
         <div v-else-if="link == 'view_desktop'" class="col">
-            <Vnc :id="id" :module="module"></Vnc>
+            <Vnc :id="id" :module="module" :service-info="serviceInfo"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>

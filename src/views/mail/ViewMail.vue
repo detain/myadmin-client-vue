@@ -20,7 +20,7 @@ const module = 'mail';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -93,7 +93,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-mailStore.getById(id as string);
+mailStore.getById(id);
 
 const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
 const statusClass = computed(() => {

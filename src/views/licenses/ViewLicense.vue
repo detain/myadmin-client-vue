@@ -20,7 +20,7 @@ const module = 'licenses';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -90,7 +90,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-licenseStore.getById(id as string);
+licenseStore.getById(id);
 </script>
 
 <template>

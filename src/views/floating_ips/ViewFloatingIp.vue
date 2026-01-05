@@ -21,7 +21,7 @@ const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -103,7 +103,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-floatingIpStore.getById(id as string);
+floatingIpStore.getById(id);
 
 const status = computed(() => serviceInfo.value.floating_ip_status); // compute your status value here
 const statusClass = computed(() => {

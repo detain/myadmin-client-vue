@@ -4,6 +4,9 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
+
 
 import Swal from 'sweetalert2';
 const props = defineProps(['id', 'module', 'serviceInfo', 'serviceMaster']);

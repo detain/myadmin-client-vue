@@ -21,7 +21,7 @@ const module = 'servers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -91,7 +91,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-serverStore.getById(id as string);
+serverStore.getById(id);
 
 const hasAssetVlanSwitchport = computed(() => {
     let ret = false;

@@ -24,7 +24,7 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id as string;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link as string;
 });
@@ -107,7 +107,7 @@ watch(
     }
 );
 
-websiteStore.getById(id as string);
+websiteStore.getById(id);
 loadLink(route.params.link as string);
 </script>
 
@@ -187,10 +187,10 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id as unknown as string"></BuyIp>
+            <BuyIp :id="id"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
-            <DownloadBackups :id="id as string"></DownloadBackups>
+            <DownloadBackups :id="id"></DownloadBackups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
