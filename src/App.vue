@@ -23,17 +23,15 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 siteStore.checkInfoLoaded();
 
 $(function () {
-    /*
-    $(".pr-password").passwordRequirements({});
+    $('.pr-password').passwordRequirements({});
     $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
         theme: 'bootstrap4',
-        closeOnSelect: true
+        closeOnSelect: true,
     });
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
-    */
     //Onhover add shaddow
     $('.shadow-hover').hover(
         function () {
@@ -51,28 +49,38 @@ interface SidebarTweakOptions {
     NoTransitionAfterReload: boolean;
 }
 
-const AdminLTESidebarTweak = {
+$.AdminLTESidebarTweak = {
     options: {
         EnableRemember: true,
         NoTransitionAfterReload: false,
     } as SidebarTweakOptions,
 };
 
+function Previous() {
+    window.history.back();
+}
+$.AdminLTESidebarTweak = {};
+$.AdminLTESidebarTweak.options = {
+    EnableRemember: true,
+    NoTransitionAfterReload: false,
+    //Removes the transition after page reload.
+};
+
 // Remember toggle state
 $(document).on('click', '.collapse_menu', function () {
-    if (!AdminLTESidebarTweak.options.EnableRemember) return;
+    if (!$.AdminLTESidebarTweak.options.EnableRemember) return;
     const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
     document.cookie = `toggleState=${toggleState}; path=/`;
 });
 
 // Restore state on load
 $(function () {
-    if (!AdminLTESidebarTweak.options.EnableRemember) return;
+    if (!$.AdminLTESidebarTweak.options.EnableRemember) return;
     const match = document.cookie.match(/toggleState=([^;]+)/);
     const toggleState = match ? decodeURIComponent(match[1]) : null;
 
     if (toggleState === 'closed') {
-        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+        if ($.AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')
                 .addClass('sidebar-collapse hold-transition')
                 .delay(100)
@@ -129,9 +137,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                     <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0">
-                            <b>{{ user?.account_lid }}</b></span
-                        >
+                        <span style="color: #c2c7d0"><b>{{ user?.account_lid }}</b></span>
                     </div>
                 </div>
                 <nav class="mt-2">
