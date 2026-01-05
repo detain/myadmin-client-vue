@@ -12,15 +12,15 @@ import { useSiteStore } from './stores/site.store';
 
 onMounted(function () {
     restoreSidebarState();
-    /*$('.pr-password').passwordRequirements({});
-    $('.select2').select2();
+    $('.pr-password').passwordRequirements({});
+    /* $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
         theme: 'bootstrap4',
         closeOnSelect: true,
-    });
+    }); */
     $('[data-toggle="popover"]').popover();
-    $('[data-toggle="tooltip"]').tooltip(); */
+    $('[data-toggle="tooltip"]').tooltip();
     //Onhover add shaddow
     $('.shadow-hover').hover(
         function () {
