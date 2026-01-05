@@ -60,6 +60,18 @@ export default defineConfig({
         //vueDevTools(),
         //TurboConsole(),
     ],
+    optimizeDeps: {
+        include: [
+            'jquery',
+            'select2',
+            'jquery-passwordRequirements'
+        ]
+    },
+    include: [
+      'jquery',
+      'select2',
+      'jquery-password-requirements'
+    ]
     build: {
         sourcemap: false,
         rollupOptions: {

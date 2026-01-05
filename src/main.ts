@@ -8,10 +8,7 @@ import { createHead } from '@unhead/vue';
 import App from './App.vue';
 import { router } from './router';
 
-import $ from 'jquery';
-
-(window as any).$ = $;
-(window as any).jQuery = $;
+import './plugins/jquery';
 
 //import 'jquery-ui';
 import 'popper.js';
