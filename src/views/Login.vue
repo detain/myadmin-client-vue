@@ -120,7 +120,7 @@ function closePopup() {}
 function submitForgotPassForm() {}
 
 onMounted(function () {
-    $(document).ready(function () {
+    $(function () {
         $('#tosModal').on('shown.bs.modal', function (e) {
             setModalMaxHeight(this);
         });

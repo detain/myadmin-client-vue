@@ -837,7 +837,7 @@ function update_vps_choices_order() {
     if ($('#total_cost_display').length > 0) {
         $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(totalCost.value.toString()).toFixed(2))));
     }
-    $(document).ready(function () {
+    $(function () {
         if ($('#renew_cost').length > 0) {
             $('#renew_cost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat((slices.value * sliceCost.value).toString()).toFixed(2))));
         }

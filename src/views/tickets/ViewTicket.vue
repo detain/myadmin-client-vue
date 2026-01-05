@@ -29,7 +29,7 @@ function resetFile() {
 }
 */
 
-$(document).ready(function () {
+$(function () {
     $('.ssh-toggle').hide();
     bs_input_file();
     //Initialize Select2 Elements

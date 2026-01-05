@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
 onMounted(function () {
-    //    $('[data-widget="pushmenu"]').PushMenu();
+    $('[data-widget="pushmenu"]').PushMenu();
 });
 
 const authStore = useAuthStore();
@@ -22,7 +22,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 siteStore.checkInfoLoaded();
 
-$(document).ready(function () {
+$(function () {
     /*
     $(".pr-password").passwordRequirements({});
     $('.select2').select2();
