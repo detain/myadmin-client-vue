@@ -487,7 +487,7 @@ function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
