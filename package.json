@@ -12,7 +12,7 @@
     ],
     "type": "module",
     "scripts": {
-        "ts": "npx vue-tsc --noEmit",
+        "ts": "yarn exec vue-tsc --noEmit",
         "clean": "rm -rf dist dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
@@ -25,7 +25,7 @@
         "test": "vitest",
         "test:browser": "vitest --config=vitest.browser.config.ts",
         "test:coverage": "vitest run --coverage",
-        "test:e2e": ":npx playwrite test"
+        "test:e2e": ":yarn exec playwrite test"
     },
     "dependencies": {},
     "devDependencies": {
@@ -157,7 +157,7 @@
         ]
     },
     "stackblitz": {
-        "startCommand": "npm run test"
+        "startCommand": "yarn run test"
     },
     "packageManager": "yarn@1.22.19",
     "engines": {
