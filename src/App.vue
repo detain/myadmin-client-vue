@@ -8,7 +8,6 @@ import Alert from './components/Alert.vue';
 import { useAuthStore } from './stores/auth.store';
 import { useSiteStore } from './stores/site.store';
 
-import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
 onMounted(function () {
@@ -23,7 +22,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 siteStore.checkInfoLoaded();
 
 $(function () {
-    $('.pr-password').passwordRequirements({});
+    //$('.pr-password').passwordRequirements({});
     $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
@@ -49,7 +48,7 @@ interface SidebarTweakOptions {
     NoTransitionAfterReload: boolean;
 }
 
-$.AdminLTESidebarTweak = {
+const AdminLTESidebarTweak = {
     options: {
         EnableRemember: true,
         NoTransitionAfterReload: false,
@@ -59,28 +58,22 @@ $.AdminLTESidebarTweak = {
 function Previous() {
     window.history.back();
 }
-$.AdminLTESidebarTweak = {};
-$.AdminLTESidebarTweak.options = {
-    EnableRemember: true,
-    NoTransitionAfterReload: false,
-    //Removes the transition after page reload.
-};
 
 // Remember toggle state
 $(document).on('click', '.collapse_menu', function () {
-    if (!$.AdminLTESidebarTweak.options.EnableRemember) return;
+    if (!AdminLTESidebarTweak.options.EnableRemember) return;
     const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
     document.cookie = `toggleState=${toggleState}; path=/`;
 });
 
 // Restore state on load
 $(function () {
-    if (!$.AdminLTESidebarTweak.options.EnableRemember) return;
+    if (!AdminLTESidebarTweak.options.EnableRemember) return;
     const match = document.cookie.match(/toggleState=([^;]+)/);
     const toggleState = match ? decodeURIComponent(match[1]) : null;
 
     if (toggleState === 'closed') {
-        if ($.AdminLTESidebarTweak.options.NoTransitionAfterReload) {
+        if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             $('body')
                 .addClass('sidebar-collapse hold-transition')
                 .delay(100)

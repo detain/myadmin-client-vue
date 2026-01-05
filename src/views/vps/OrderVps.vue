@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
+//import { storeToRefs } from 'pinia';
 import { ref, watch, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
+//import * as Yup from 'yup';
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
@@ -23,14 +23,14 @@ siteStore.setBreadcrums([
     ['/vps/order', 'Order VPS'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-const billingCycle = ref({
+/* const billingCycle = ref({
     1: 'Monthly',
     3: '3 Months',
     6: '6 Months (5% off)',
     12: 'Yearly (10% off)',
     24: '24 Months (15% off)',
     36: '36 Months (20% off)',
-});
+}); */
 const controlpanel = ref({
     none: 'None',
     da: 'DirectAdmin',
