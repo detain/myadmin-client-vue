@@ -766,7 +766,7 @@ authStore.load();
                                                     </div>
                                                 </div>
                                                 <div class="captcha_main_signup mb-6">
-                                                    <Checkbox v-model="gresponse" />
+                                                    <!-- <Checkbox v-model="gresponse" /> -->
                                                     <div id="gcaptcha-1"></div>
                                                     <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
                                                 </div>
