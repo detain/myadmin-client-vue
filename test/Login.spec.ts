@@ -7,7 +7,6 @@ import { useAuthStore } from '../src/stores/auth.store';
 import $ from 'jquery';
 
 vi.mock('sweetalert2');
-vi.mock('jquery');
 
 describe('Login.vue', () => {
     const mountOptions = {
