@@ -16,9 +16,8 @@ export default defineConfig({
         browser: {
             enabled: true,
             provider: playwright(),
-            name: 'chromium', // or 'firefox', 'webkit'
             headless: true, // set to false to watch tests in a UI
-            setupFiles: ['./test/.setup.ts'],
+            setupFiles: ['./test/setup.ts'],
             // Optional: configure specific options, e.g., launch options
             launchOptions: {
                 headless: true, // Run headless in CI/locally
