@@ -5,7 +5,12 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id', 'module', 'settings', 'backupsTable']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    settings: any;
+    backupsTable: any;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

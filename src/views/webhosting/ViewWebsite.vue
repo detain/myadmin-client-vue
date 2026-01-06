@@ -296,10 +296,10 @@ loadLink(route.params.link as string);
                             </tr>
                         </thead>
                         <tbody>
-                            <template v-for="(link, index) in extraInfoTables.links.rows">
-                                <tr v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'" :key="index">
-                                    <td>{{ link.desc }}</td>
-                                    <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
+                            <template v-for="(linkRow, index) in extraInfoTables.links.rows">
+                                <tr v-if="linkRow.desc !== 'CPanel' && linkRow.desc !== 'Plesk Panel' && linkRow.desc !== 'DirectAdmin Panel'" :key="index">
+                                    <td>{{ linkRow.desc }}</td>
+                                    <td><a :href="linkRow.value" target="__blank" class="link">Click Here</a></td>
                                 </tr>
                             </template>
                             <tr>

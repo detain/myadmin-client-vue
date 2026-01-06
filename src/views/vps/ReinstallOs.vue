@@ -8,7 +8,13 @@ import Swal from 'sweetalert2';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
 
-const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    settings: string;
+    serviceInfo: any;
+    serviceMaster: any;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const siteStore = useSiteStore();

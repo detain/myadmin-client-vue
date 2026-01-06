@@ -97,8 +97,8 @@ function submitForm() {
                     <div class="card-body">
                         <template v-if="backupsArr.length > 0">
                             <table class="table-sm table">
-                                <tr v-for="backup in backupsArr" :key="backup">
-                                    <td>{{ backup }}</td>
+                                <tr v-for="backupRow in backupsArr" :key="backupRow">
+                                    <td>{{ backupRow }}</td>
                                 </tr>
                             </table>
                         </template>

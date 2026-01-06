@@ -9,7 +9,12 @@ import { QsInfo } from '../../types/qs';
 
 
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module', 'serviceInfo', 'serviceMaster']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: any;
+    serviceMaster: any;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
