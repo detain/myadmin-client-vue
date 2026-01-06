@@ -130,4 +130,5 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_time
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

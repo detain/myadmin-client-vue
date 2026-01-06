@@ -26,16 +26,8 @@ const module = computed(() => {
 const curHostname = computed(() => {
     return props.curHostname;
 });
-function getLink() {
-    if (module.value === 'vps') {
-        return `view_${module.value}?id=${id.value}`;
-    } else {
-        return `view_qs?id=${id.value}`;
-    }
-}
 function submitForm() {
     const formData = {
-        link: 'changeHostname',
         hostname: hostname,
     };
     // Process the form submission or make an API request here
@@ -44,7 +36,7 @@ function submitForm() {
         let postData = {
             hostname: hostname.value,
         };
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/insert_cd`, postData).then((response: any) => {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_hostname`, postData).then((response: any) => {
             console.log('api success');
             console.log(response);
             Swal.fire({
