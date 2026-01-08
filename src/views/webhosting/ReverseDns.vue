@@ -7,7 +7,7 @@ import { useSiteStore } from '../../stores/site.store';
 
 const props = defineProps<{
     id: number;
-}>()
+}>();
 //const id = ref('');
 const successMsg = ref('');
 const cancelQueue = ref('');

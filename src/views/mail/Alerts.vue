@@ -8,7 +8,7 @@ import { useSiteStore } from '../../stores/site.store';
 import $ from 'jquery';
 const props = defineProps<{
     id: number;
-}>()
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

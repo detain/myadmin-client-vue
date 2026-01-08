@@ -7,14 +7,14 @@ import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
-import {storeToRefs} from "pinia";
+import { storeToRefs } from 'pinia';
 
 const props = defineProps<{
     id: number;
     module: string;
     serviceInfo: any;
     serviceMaster: any;
-}>()
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const siteStore = useSiteStore();

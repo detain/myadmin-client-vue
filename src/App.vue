@@ -69,7 +69,9 @@ function restoreSidebarState() {
         const body = document.body;
         if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
             body.classList.add('sidebar-collapse', 'hold-transition');
-            setTimeout(() => { body.classList.remove('hold-transition'); }, 100);
+            setTimeout(() => {
+                body.classList.remove('hold-transition');
+            }, 100);
         } else {
             body.classList.add('sidebar-collapse');
         }
@@ -114,7 +116,9 @@ function restoreSidebarState() {
                     <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0"><b>{{ user?.account_lid }}</b></span>
+                        <span style="color: #c2c7d0"
+                            ><b>{{ user?.account_lid }}</b></span
+                        >
                     </div>
                 </div>
                 <nav class="mt-2">

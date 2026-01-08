@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
     module: string;
-}>()
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

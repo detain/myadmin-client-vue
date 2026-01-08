@@ -253,7 +253,9 @@ function toggleFunc(cp: string) {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer">VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span>
+                <span class="small-box-footer"
+                    >VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-4">
@@ -355,7 +357,9 @@ function toggleFunc(cp: string) {
                                             'text-warning': serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended',
                                             'text-danger': serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut',
                                             'text-info': !(serviceInfo.vps_server_status === 'running' || serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended' || serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut'),
-                                        }">{{ serviceInfo.vps_server_status }}</span>
+                                        }"
+                                        >{{ serviceInfo.vps_server_status }}</span
+                                    >
                                 </h5>
                             </div>
                             <div class="col-md-12 mr-3 pr-4 pt-2 text-center">
@@ -504,14 +508,16 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
                                 <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    >{{ clientLink.label }}
                                 </router-link>
                             </template>
                         </template>
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
                                 <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    >{{ clientLink.label }}
                                 </button>
                             </template>
                         </template>
@@ -548,7 +554,9 @@ function toggleFunc(cp: string) {
                                         <div class="col-md-12 mb-1 py-3">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm"
+                                                    >Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
+                                                >
                                             </span>
                                         </div>
                                     </div>
@@ -558,7 +566,9 @@ function toggleFunc(cp: string) {
                                         <div class="col-md-12 py-2">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
+                                                <span class="text-sm"
+                                                    >Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
+                                                >
                                                 <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                             </span>
                                         </div>
@@ -573,9 +583,12 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="my-1 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span>)
+                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
+                                                        >)
                                                     </p>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                    <span class="text-sm"
+                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
+                                                    >
                                                 </span>
                                             </div>
                                         </div>
@@ -590,9 +603,12 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="m-0 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span>)
+                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
+                                                        >)
                                                     </p>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
+                                                    <span class="text-sm"
+                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
+                                                    >
                                                     <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>
@@ -608,7 +624,9 @@ function toggleFunc(cp: string) {
                                                 <div class="col-md-12 mb-1 py-3">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
+                                                        <span class="text-sm"
+                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
+                                                        >
                                                     </span>
                                                 </div>
                                             </div>
@@ -622,7 +640,9 @@ function toggleFunc(cp: string) {
                                                 <div class="col-md-12 py-2">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
+                                                        <span class="text-sm"
+                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
+                                                        >
                                                         <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                     </span>
                                                 </div>
@@ -638,7 +658,9 @@ function toggleFunc(cp: string) {
                                             <div class="col-md-12 mb-1 py-3">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
+                                                    <span class="text-sm"
+                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
+                                                    >
                                                 </span>
                                             </div>
                                         </div>
@@ -652,7 +674,9 @@ function toggleFunc(cp: string) {
                                             <div class="col-md-12 py-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
+                                                    <span class="text-sm"
+                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
+                                                    >
                                                     <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>

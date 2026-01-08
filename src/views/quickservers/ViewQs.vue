@@ -198,7 +198,7 @@ function loadLink(newLink: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module"  :cur-hostname="serviceInfo.qs_hostname"></Backup>
+            <Backup :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
             <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
@@ -444,7 +444,8 @@ function loadLink(newLink: string) {
                     </div>
                     <div class="card-body">
                         <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                            >{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>

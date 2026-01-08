@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
             }
         },
         async sudo(sessionId: string): Promise<void> {
-            console.log("Starting sudo session with sessionId "+sessionId)
+            console.log('Starting sudo session with sessionId ' + sessionId);
             this.resetStores();
             const accountStore = useAccountStore();
             if (this.user == null) {
@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth', {
             localStorage.setItem('sessionId', this.sessionId || '');
             //localStorage.setItem('apiKey', this.apiKey);
             accountStore.load().then((response) => {
-                console.log("starting .then handler for accountStore.load trying to utilize the data");
+                console.log('starting .then handler for accountStore.load trying to utilize the data');
                 this.user.account_id = accountStore.data.account_id;
                 this.user.account_lid = accountStore.data.account_lid;
                 this.user.gravatar = accountStore.gravatar;

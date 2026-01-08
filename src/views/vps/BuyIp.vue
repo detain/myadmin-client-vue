@@ -11,7 +11,7 @@ const props = defineProps<{
     id: number;
     module: string;
     serviceInfo: VpsInfo | QsInfo;
-}>()
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

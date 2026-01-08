@@ -202,7 +202,8 @@ loadLink(route.params.link as string);
                 </div>
                 <div class="card-body text-center">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        >{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

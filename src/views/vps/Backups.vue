@@ -8,7 +8,7 @@ import { useSiteStore } from '../../stores/site.store';
 const props = defineProps<{
     id: number;
     module: string;
-}>()
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const loading = ref(true);
@@ -42,7 +42,6 @@ const loadBackupsList = async () => {
 };
 
 loadBackupsList();
-
 </script>
 
 <template>
@@ -58,28 +57,28 @@ loadBackupsList();
                 <div class="card-body mb-0">
                     <table class="table-sm display compact table">
                         <thead>
-                        <tr>
-                            <th>VPS</th>
-                            <th>Type</th>
-                            <th>Backup Name</th>
-                            <th>Size</th>
-                            <th colspan="2">Options</th>
-                        </tr>
+                            <tr>
+                                <th>VPS</th>
+                                <th>Type</th>
+                                <th>Backup Name</th>
+                                <th>Size</th>
+                                <th colspan="2">Options</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr v-if="loading">
-                            <td colspan="10">Loading...</td>
-                        </tr>
-                        <tr v-for="(row, index) in backupsArr" v-else :key="index">
-                            <td>
-                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="">{{ row.service }}</router-link>
-                            </td>
-                            <td>{{ row.type }}</td>
-                            <td>{{ row.name }}</td>
-                            <td>{{ row.size }}</td>
-                            <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/delete'" class="">Delete</router-link></td>
-                            <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/download'" class="">Download</router-link></td>
-                        </tr>
+                            <tr v-if="loading">
+                                <td colspan="10">Loading...</td>
+                            </tr>
+                            <tr v-for="(row, index) in backupsArr" v-else :key="index">
+                                <td>
+                                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="">{{ row.service }}</router-link>
+                                </td>
+                                <td>{{ row.type }}</td>
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.size }}</td>
+                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/delete'" class="">Delete</router-link></td>
+                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/download'" class="">Download</router-link></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
