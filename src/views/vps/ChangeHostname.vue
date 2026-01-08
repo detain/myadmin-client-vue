@@ -11,9 +11,6 @@ const props = defineProps<{
     module: string;
     curHostname: string;
 }>()
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const hostname = ref('');
@@ -27,31 +24,26 @@ const curHostname = computed(() => {
     return props.curHostname;
 });
 function submitForm() {
-    const formData = {
-        hostname: hostname,
-    };
     // Process the form submission or make an API request here
     // Handle form submission
-    try {
-        let postData = {
-            hostname: hostname.value,
-        };
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_hostname`, postData).then((response: any) => {
-            console.log('api success');
-            console.log(response);
-            Swal.fire({
-                icon: 'success',
-                html: response.message,
-            });
+    let postData = {
+        hostname: hostname.value,
+    };
+    fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_hostname`, postData).then((response: any) => {
+        console.log('api success');
+        console.log(response);
+        Swal.fire({
+            icon: 'success',
+            html: response.message,
         });
-    } catch (error: any) {
+    }).catch((error: any) => {
         console.log('api failed');
         console.log(error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
         });
-    }
+    });
 }
 </script>
 
@@ -72,9 +64,9 @@ function submitForm() {
                         <input type="hidden" name="link" value="changeHostname" />
                         <div class="form-group mb-0">
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="oldhostname">Existing Hostname</label>
+                                <label class="col-md-3 col-form-label" for="old-hostname">Existing Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="oldhostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
+                                    <input id="old-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
