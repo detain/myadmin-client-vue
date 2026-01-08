@@ -4,19 +4,15 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import Swal from "sweetalert2";
 
 const props = defineProps<{
     id: number;
     module: string;
-    serviceInfo: VpsInfo | QsInfo;
+    curHostname: string;
 }>()
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
-
+const baseUrl = siteStore.getBaseUrl();
 const module_name = ref('');
 const backup = ref('');
 const hostname = ref('');
@@ -29,10 +25,31 @@ const id = computed(() => {
 const module = computed(() => {
     return props.module;
 });
+const curHostname = computed(() => {
+    return props.curHostname;
+});
 
 function submitForm() {
+    // Process the form submission or make an API request here
     // Handle form submission
-    // You can access the form data using `module_name`, `module`, etc.
+    let postData = {
+        hostname: hostname.value,
+    };
+    fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`, postData).then((response: any) => {
+        console.log('api success');
+        console.log(response);
+        Swal.fire({
+            icon: 'success',
+            html: response.message,
+        });
+    }).catch((error: any) => {
+        console.log('api failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.message}`,
+        });
+    });
 }
 </script>
 
@@ -58,9 +75,9 @@ function submitForm() {
                             <input type="hidden" name="backup" :value="backup" />
                             <div class="form-group mb-0">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="hostname">Server</label>
+                                    <label class="col-md-3 col-form-label" for="cur-hostname">Server</label>
                                     <div class="col-sm-6 input-group">
-                                        <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
+                                        <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
                                 <div class="text-center">

@@ -277,7 +277,7 @@ function toggleFunc(cp: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module" :service-info="serviceInfo"></Backup>
+            <Backup :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
             <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>

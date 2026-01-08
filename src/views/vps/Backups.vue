@@ -11,10 +11,8 @@ const props = defineProps<{
     settings: any;
     backupsTable: any;
 }>()
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const settings = computed(() => {
     return props.settings;
 });
