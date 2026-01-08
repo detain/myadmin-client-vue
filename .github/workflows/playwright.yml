@@ -28,9 +28,6 @@ jobs:
         steps:
             - uses: actions/checkout@v6
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-
             - name: Set node version to ${{ inputs.node-version }}
               uses: actions/setup-node@v6
               with:
@@ -45,4 +42,4 @@ jobs:
                   yarn playwright install chromium --with-deps
 
             - name: Test
-              run: pnpm playwright test
+              run: yarn playwright test
