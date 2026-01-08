@@ -18,6 +18,7 @@ const backup = ref('');
 const confirm = ref(false);
 const note_text = ref('');
 const backupsArr = ref([]);
+const loading = ref(true);
 const id = computed(() => {
     return props.id;
 });
@@ -52,6 +53,7 @@ function submitForm() {
 const loadBackupsList = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backups`);
+        loading.value = false;
         console.log('api success');
         console.log(response);
         backupsArr.value = response;
@@ -123,11 +125,27 @@ loadBackupsList();
                         </div>
                     </div>
                     <div class="card-body">
-                        <template v-if="backupsArr.length > 0">
+                        <template v-if="loading">
+                            <td colspan="10">Loading...</td>
+                        </template>
+                        <template v-else-if="backupsArr.length > 0">
                             <table class="table-sm table">
-                                <tr v-for="backupRow in backupsArr" :key="backupRow">
-                                    <td>{{ backupRow }}</td>
+                                <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Type</th>
+                                    <th>Name</th>
+                                    <th>Size</th>
                                 </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="backupRow in backupsArr" :key="backupRow">
+                                    <td>{{ backupRow.service }}</td>
+                                    <td>{{ backupRow.type }}</td>
+                                    <td>{{ backupRow.name }}</td>
+                                    <td>{{ backupRow.size }}</td>
+                                </tr>
+                                </tbody>
                             </table>
                         </template>
                         <template v-else> No backup currently exists </template>
