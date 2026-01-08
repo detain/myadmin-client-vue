@@ -8,21 +8,25 @@ import { useSiteStore } from '../../stores/site.store';
 const props = defineProps<{
     id: number;
     module: string;
-    settings: any;
 }>()
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const loading = ref(true);
-const settings = computed(() => {
-    return props.settings;
-});
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
-const backupsArr = ref([]);
+const backupsArr = ref<VpsBackup[]>([]);
+
+export interface VpsBackup {
+    service: number;
+    type: string;
+    name: string;
+    size: number;
+    date: number;
+}
 
 const loadBackupsList = async () => {
     try {

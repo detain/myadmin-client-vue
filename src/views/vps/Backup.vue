@@ -17,7 +17,7 @@ const module_name = ref('');
 const backup = ref('');
 const confirm = ref(false);
 const note_text = ref('');
-const backupsArr = ref([]);
+const backupsArr = ref<VpsBackup[]>([]);
 const loading = ref(true);
 const id = computed(() => {
     return props.id;
@@ -28,6 +28,15 @@ const module = computed(() => {
 const curHostname = computed(() => {
     return props.curHostname;
 });
+
+export interface VpsBackup {
+    service: number;
+    type: string;
+    name: string;
+    size: number;
+    date: number;
+}
+
 
 function submitForm() {
     // Process the form submission or make an API request here
@@ -139,7 +148,7 @@ loadBackupsList();
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="backupRow in backupsArr" :key="backupRow">
+                                <tr v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx">
                                     <td>{{ backupRow.service }}</td>
                                     <td>{{ backupRow.type }}</td>
                                     <td>{{ backupRow.name }}</td>

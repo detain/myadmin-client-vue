@@ -27,7 +27,6 @@
         "test:coverage": "vitest run --coverage",
         "test:e2e": ":yarn exec playwrite test"
     },
-    "dependencies": {},
     "devDependencies": {
         "@commitlint/cli": "*",
         "@commitlint/config-conventional": "*",
@@ -43,7 +42,7 @@
         "@fortawesome/vue-fontawesome": "*",
         "@jridgewell/sourcemap-codec": "^1.4.14",
         "@material-design-icons/font": "*",
-        "@pinia/testing": "^1.0.3",
+        "@pinia/testing": "*",
         "@playwright/test": "^1.57.0",
         "@rollup/plugin-inject": "*",
         "@sweetalert2/theme-bootstrap-4": "*",
@@ -104,7 +103,7 @@
         "nodemon": "*",
         "npm-run-all": "*",
         "overlayscrollbars": "^1.0",
-        "pinia": "^2.1",
+        "pinia": "*",
         "playwright": "^1.57.0",
         "postcss": "^8.4.24",
         "prettier": "^3.7.4",
@@ -137,7 +136,6 @@
         "yaml": "^2.3",
         "yup": "*"
     },
-    "resolutions": {},
     "suggest": {
         "@tanstack/vue-query": "*",
         "@vitejs/plugin-legacy": "*",
