@@ -25,7 +25,7 @@ const backupsArr = ref([]);
 
 const loadBackupsList = async () => {
     try {
-        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/backups`);
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/backups?all=1`);
         console.log('api success');
         console.log(response);
         backupsArr.value = response;

@@ -17,8 +17,7 @@ interface ExtendedPinia extends Pinia {
     _s: Map<string, Store>;
 }
 
-export const useAuthStore = defineStore({
-    id: 'auth',
+export const useAuthStore = defineStore('auth', {
     state: () => ({
         opts: {
             tfa: false,

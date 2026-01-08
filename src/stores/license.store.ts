@@ -38,8 +38,7 @@ interface LicenseState {
     serviceType: ServiceType;
 }
 
-export const useLicenseStore = defineStore({
-    id: 'license',
+export const useLicenseStore = defineStore('license', {
     state: (): LicenseState => ({
         licenseList: [],
         loading: false,

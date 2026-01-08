@@ -77,8 +77,7 @@ interface DomainState {
     autoRenew: string;
 }
 
-export const useDomainStore = defineStore({
-    id: 'domain',
+export const useDomainStore = defineStore('domain', {
     state: (): DomainState => ({
         domainList: [],
         loading: false,

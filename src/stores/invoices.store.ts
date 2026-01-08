@@ -39,8 +39,7 @@ interface InvoicesState {
     year: number;
 }
 
-export const useInvoicesStore = defineStore({
-    id: 'invoices',
+export const useInvoicesStore = defineStore('invoices', {
     state: (): InvoicesState => ({
         custid: 0,
         months_arr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

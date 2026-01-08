@@ -73,8 +73,7 @@ interface SiteState {
     };
 }
 
-export const useSiteStore = defineStore({
-    id: 'site',
+export const useSiteStore = defineStore('site', {
     state: (): SiteState => ({
         // initialize state from local storage to enable user to stay logged in
         breadcrums: [],

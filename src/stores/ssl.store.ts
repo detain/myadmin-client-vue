@@ -49,8 +49,7 @@ interface SslState {
     linkDisplay: boolean;
 }
 
-export const useSslStore = defineStore({
-    id: 'ssl',
+export const useSslStore = defineStore('ssl', {
     state: (): SslState => ({
         sslList: [],
         loading: false,

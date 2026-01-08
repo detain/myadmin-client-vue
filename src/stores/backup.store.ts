@@ -53,8 +53,7 @@ interface BackupState {
     extraInfoTables: ExtraInfoTables;
 }
 
-export const useBackupStore = defineStore({
-    id: 'backup',
+export const useBackupStore = defineStore('backup', {
     state: (): BackupState => ({
         backupList: [],
         loading: false,

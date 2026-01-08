@@ -40,8 +40,7 @@ interface FloatingIpState {
     usage_count: number;
 }
 
-export const useFloatingIpStore = defineStore({
-    id: 'floating_ip',
+export const useFloatingIpStore = defineStore('floating_ip', {
     state: (): FloatingIpState => ({
         floatingIpList: [],
         loading: false,

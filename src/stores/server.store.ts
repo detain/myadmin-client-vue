@@ -71,8 +71,7 @@ interface ServerState {
     locations: any;
 }
 
-export const useServerStore = defineStore({
-    id: 'server',
+export const useServerStore = defineStore('server', {
     state: (): ServerState => ({
         serverList: [],
         loading: false,

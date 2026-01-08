@@ -40,8 +40,7 @@ interface MailState {
     usage_count: number;
 }
 
-export const useMailStore = defineStore({
-    id: 'mail',
+export const useMailStore = defineStore('mail', {
     state: (): MailState => ({
         mailList: [],
         loading: false,

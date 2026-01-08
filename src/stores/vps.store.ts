@@ -6,8 +6,7 @@ import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
 
-export const useVpsStore = defineStore({
-    id: 'vps',
+export const useVpsStore = defineStore('vps', {
     state: (): VpsState => ({
         vpsList: [],
         loading: false,

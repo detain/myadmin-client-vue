@@ -57,8 +57,7 @@ interface WebsiteState {
     extraInfoTables: ExtraInfoTables;
 }
 
-export const useWebsiteStore = defineStore({
-    id: 'website',
+export const useWebsiteStore = defineStore('website', {
     state: (): WebsiteState => ({
         websiteList: [],
         loading: false,

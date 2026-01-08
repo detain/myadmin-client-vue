@@ -202,8 +202,7 @@ interface AccountState {
     enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
 }
 
-export const useAccountStore = defineStore({
-    id: 'account',
+export const useAccountStore = defineStore('account', {
     state: (): AccountState => ({
         accountList: [],
         loading: false,

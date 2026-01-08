@@ -7,8 +7,7 @@ import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 import { QsState } from '../types/qs';
 
-export const useQsStore = defineStore({
-    id: 'qs',
+export const useQsStore = defineStore('qs', {
     state: (): QsState => ({
         qsList: [],
         loading: false,

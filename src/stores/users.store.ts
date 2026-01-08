@@ -19,8 +19,7 @@ interface UserState {
     user: UserRow;
 }
 
-export const useUsersStore = defineStore({
-    id: 'users',
+export const useUsersStore = defineStore('users', {
     state: (): UserState => ({
         loading: false,
         error: false,

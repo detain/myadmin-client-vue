@@ -66,8 +66,7 @@ interface PrePayState {
     };
 }
 
-export const usePrePayStore = defineStore({
-    id: 'prepay',
+export const usePrePayStore = defineStore('prepay', {
     state: (): PrePayState => ({
         loading: false,
         error: false,
