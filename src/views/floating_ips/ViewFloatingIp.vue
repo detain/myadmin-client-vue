@@ -21,7 +21,7 @@ const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -103,7 +103,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-floatingIpStore.getById(id as string);
+floatingIpStore.getById(id);
 
 const status = computed(() => serviceInfo.value.floating_ip_status); // compute your status value here
 const statusClass = computed(() => {
@@ -143,9 +143,7 @@ const statusClass = computed(() => {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >Floating IPs Status is: <b>{{ status }}</b></span
-                >
+                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -210,8 +208,7 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body my-3 py-4">
                         <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                            >{{ clientLink.label }}
+                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                         </router-link>
                     </div>
                 </div>

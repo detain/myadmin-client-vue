@@ -5,7 +5,14 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module']);
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
+
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: VpsInfo | QsInfo;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

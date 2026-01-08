@@ -38,8 +38,7 @@ interface LicenseState {
     serviceType: ServiceType;
 }
 
-export const useLicenseStore = defineStore({
-    id: 'license',
+export const useLicenseStore = defineStore('license', {
     state: (): LicenseState => ({
         licenseList: [],
         loading: false,
@@ -149,7 +148,7 @@ export const useLicenseStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

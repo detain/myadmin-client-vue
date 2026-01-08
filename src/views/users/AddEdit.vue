@@ -12,7 +12,7 @@ import { router } from '../../router';
 const usersStore = useUsersStore();
 const alertStore = useAlertStore();
 const route = useRoute();
-const id = route.params.id;
+const id = Number(route.params.id);
 
 let title = 'Add User';
 let user: any = null;
@@ -20,7 +20,7 @@ if (id) {
     // edit mode
     title = 'Edit User';
     ({ user } = storeToRefs(usersStore));
-    usersStore.getById(id as string);
+    usersStore.getById(id);
 }
 
 const schema = Yup.object().shape({

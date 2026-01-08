@@ -8,15 +8,15 @@ import { useSiteStore } from '../../stores/site.store';
 const props = defineProps({
     module: String,
     id: Number,
-    currency_symbol: String,
+    currencySymbol: String,
     memory: String,
     hdd: String,
 });
 const id = computed(() => {
     return props.id;
 });
-const currency_symbol = computed(() => {
-    return props.currency_symbol;
+const currencySymbol = computed(() => {
+    return props.currencySymbol;
 });
 const memory = computed(() => {
     return props.memory;
@@ -114,7 +114,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Immediate Cost ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Immediate Cost ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="amount" type="hidden" class="form-control" value="1" />
@@ -127,7 +127,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Additional Fees ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Additional Fees ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="diff_cost" class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" disabled :value="diffCost" />
@@ -139,7 +139,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="repeat_cost" class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" disabled :value="repeatCost" />

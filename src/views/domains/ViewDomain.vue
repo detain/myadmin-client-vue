@@ -23,7 +23,7 @@ const module = 'domains';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -93,7 +93,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-domainStore.getById(id as string);
+domainStore.getById(id);
 console.log('link:');
 console.log(link.value);
 </script>
@@ -188,8 +188,7 @@ console.log(link.value);
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                        >{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>

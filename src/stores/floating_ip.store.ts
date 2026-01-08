@@ -40,8 +40,7 @@ interface FloatingIpState {
     usage_count: number;
 }
 
-export const useFloatingIpStore = defineStore({
-    id: 'floating_ip',
+export const useFloatingIpStore = defineStore('floating_ip', {
     state: (): FloatingIpState => ({
         floatingIpList: [],
         loading: false,
@@ -156,7 +155,7 @@ export const useFloatingIpStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

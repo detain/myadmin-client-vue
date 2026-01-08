@@ -12,7 +12,7 @@
     ],
     "type": "module",
     "scripts": {
-        "ts": "npx vue-tsc --noEmit",
+        "ts": "yarn exec vue-tsc --noEmit",
         "clean": "rm -rf dist dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
@@ -25,7 +25,7 @@
         "test": "vitest",
         "test:browser": "vitest --config=vitest.browser.config.ts",
         "test:coverage": "vitest run --coverage",
-        "test:e2e": ":npx playwrite test",
+        "test:e2e": ":yarn exec playwrite test",
         "coverage": "vitest run --coverage",
         "cap:sync": "npx cap sync",
         "cap:copy": "npx cap copy",
@@ -64,7 +64,7 @@
         "@fortawesome/vue-fontawesome": "*",
         "@jridgewell/sourcemap-codec": "^1.4.14",
         "@material-design-icons/font": "*",
-        "@pinia/testing": "^1.0.3",
+        "@pinia/testing": "*",
         "@playwright/test": "^1.57.0",
         "@rollup/plugin-inject": "*",
         "@sweetalert2/theme-bootstrap-4": "*",
@@ -125,7 +125,7 @@
         "nodemon": "*",
         "npm-run-all": "*",
         "overlayscrollbars": "^1.0",
-        "pinia": "^2.1",
+        "pinia": "*",
         "playwright": "^1.57.0",
         "postcss": "^8.4.24",
         "prettier": "^3.7.4",
@@ -158,7 +158,6 @@
         "yaml": "^2.3",
         "yup": "*"
     },
-    "resolutions": {},
     "suggest": {
         "@tanstack/vue-query": "*",
         "@vitejs/plugin-legacy": "*",
@@ -178,11 +177,10 @@
         ]
     },
     "stackblitz": {
-        "startCommand": "npm run test"
+        "startCommand": "yarn run test"
     },
-    "packageManager": "yarn@1.22.19",
     "engines": {
-        "node": ">=18.0.0",
+        "node": ">=20.0.0",
         "yarn": ">= 1.0.0"
     },
     "msw": {

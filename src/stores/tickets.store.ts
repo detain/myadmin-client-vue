@@ -48,8 +48,7 @@ interface TicketState {
     search: string;
 }
 
-export const useTicketsStore = defineStore({
-    id: 'tickets',
+export const useTicketsStore = defineStore('tickets', {
     state: (): TicketState => ({
         tickets: [],
         ticket: {

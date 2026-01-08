@@ -37,7 +37,7 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -69,7 +69,7 @@ function loadLink(newLink: string) {
         siteStore.setTitle(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
-            vpsStore.queue(id as string, newLink);
+            vpsStore.queue(id, newLink);
             Swal.fire({
                 icon: 'success',
                 html: responseText.value,
@@ -141,7 +141,7 @@ watch(
 );
 
 loadLink(route.params.link as string);
-vpsStore.getById(id as string);
+vpsStore.getById(id);
 
 function openCommentForm() {
     $('#commentForm').modal('show');
@@ -253,9 +253,7 @@ function toggleFunc(cp: string) {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span
-                >
+                <span class="small-box-footer">VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span>
             </div>
         </div>
         <div class="col-md-4">
@@ -279,58 +277,58 @@ function toggleFunc(cp: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module"></Backup>
+            <Backup :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
-            <Backups :id="id" :module="module" :settings="settings"></Backups>
+            <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'buy_hd_space'" class="col">
-            <BuyHdSpace :id="id" :module="module"></BuyHdSpace>
+            <BuyHdSpace :id="id" :module="module" :service-info="serviceInfo"></BuyHdSpace>
         </div>
         <div v-else-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id" :module="module"></BuyIp>
+            <BuyIp :id="id" :module="module" :service-info="serviceInfo"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
-            <ChangeHostname :id="id" :module="module"></ChangeHostname>
+            <ChangeHostname :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ChangeHostname>
         </div>
         <div v-else-if="link == 'change_root_password'" class="col">
-            <ChangeRootPassword :id="id" :module="module"></ChangeRootPassword>
+            <ChangeRootPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeRootPassword>
         </div>
         <div v-else-if="link == 'change_timezone'" class="col">
-            <ChangeTimezone :id="id" :module="module"></ChangeTimezone>
+            <ChangeTimezone :id="id" :module="module" :service-info="serviceInfo"></ChangeTimezone>
         </div>
         <div v-else-if="link == 'change_webuzo_password'" class="col">
-            <ChangeWebuzoPassword :id="id" :module="module"></ChangeWebuzoPassword>
+            <ChangeWebuzoPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeWebuzoPassword>
         </div>
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
-            <Invoices :id="id" :module="module"></Invoices>
+            <Invoices :id="id" :module="module" :service-info="serviceInfo"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
+            <ResetPassword :id="id" :module="module"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
-            <ReverseDns :id="id" :module="module"></ReverseDns>
+            <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
         </div>
         <div v-else-if="link == 'slices'" class="col">
-            <Slices :id="Number(id)" :module="module"></Slices>
+            <Slices :id="Number(id)" :module="module" :service-info="serviceInfo"></Slices>
         </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
-            <TrafficUsage :id="id" :module="module"></TrafficUsage>
+            <TrafficUsage :id="id" :module="module" :service-info="serviceInfo"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
             <SetupVnc :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></SetupVnc>
         </div>
         <div v-else-if="link == 'view_desktop'" class="col">
-            <Vnc :id="id" :module="module"></Vnc>
+            <Vnc :id="id" :module="module" :service-info="serviceInfo"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>
@@ -357,9 +355,7 @@ function toggleFunc(cp: string) {
                                             'text-warning': serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended',
                                             'text-danger': serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut',
                                             'text-info': !(serviceInfo.vps_server_status === 'running' || serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended' || serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut'),
-                                        }"
-                                        >{{ serviceInfo.vps_server_status }}</span
-                                    >
+                                        }">{{ serviceInfo.vps_server_status }}</span>
                                 </h5>
                             </div>
                             <div class="col-md-12 mr-3 pr-4 pt-2 text-center">
@@ -508,16 +504,14 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
                                 <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                                    >{{ clientLink.label }}
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                                 </router-link>
                             </template>
                         </template>
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
                                 <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
-                                    >{{ clientLink.label }}
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                                 </button>
                             </template>
                         </template>
@@ -554,9 +548,7 @@ function toggleFunc(cp: string) {
                                         <div class="col-md-12 mb-1 py-3">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm"
-                                                    >Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
-                                                >
+                                                <span class="text-sm">Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
                                             </span>
                                         </div>
                                     </div>
@@ -566,9 +558,7 @@ function toggleFunc(cp: string) {
                                         <div class="col-md-12 py-2">
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
-                                                <span class="text-sm"
-                                                    >Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
-                                                >
+                                                <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span>
                                                 <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                             </span>
                                         </div>
@@ -583,12 +573,9 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="my-1 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
-                                                        >)
+                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span>)
                                                     </p>
-                                                    <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
-                                                    >
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -603,12 +590,9 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="m-0 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
-                                                        >)
+                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span>)
                                                     </p>
-                                                    <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
-                                                    >
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span>
                                                     <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>
@@ -624,9 +608,7 @@ function toggleFunc(cp: string) {
                                                 <div class="col-md-12 mb-1 py-3">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm"
-                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
-                                                        >
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -640,9 +622,7 @@ function toggleFunc(cp: string) {
                                                 <div class="col-md-12 py-2">
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
-                                                        <span class="text-sm"
-                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
-                                                        >
+                                                        <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span>
                                                         <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                     </span>
                                                 </div>
@@ -658,9 +638,7 @@ function toggleFunc(cp: string) {
                                             <div class="col-md-12 mb-1 py-3">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
-                                                    >
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -674,9 +652,7 @@ function toggleFunc(cp: string) {
                                             <div class="col-md-12 py-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
-                                                    <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
-                                                    >
+                                                    <span class="text-sm">Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span>
                                                     <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
                                                 </span>
                                             </div>

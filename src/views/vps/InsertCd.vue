@@ -6,7 +6,10 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
 
-const props = defineProps(['id', 'module']);
+const props = defineProps<{
+    id: number;
+    module: string;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

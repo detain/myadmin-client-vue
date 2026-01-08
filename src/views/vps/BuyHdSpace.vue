@@ -4,8 +4,14 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 
-const props = defineProps(['id', 'module']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: VpsInfo | QsInfo;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -25,7 +31,7 @@ function getLink() {
     if (module.value === 'vps') {
         return `view_${module.value}?id=${id.value}`;
     } else {
-        return 'view_qs';
+        return `view_qs?id=${id.value}`;
     }
 }
 function getAmount() {
@@ -71,9 +77,7 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-9">
                                     <input id="hdamount" type="text" class="form-control form-control-sm" readonly :value="getAmount()" />
-                                    <span class="text-muted text-sm"
-                                        >{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span
-                                    >
+                                    <span class="text-muted text-sm">{{ currency_symbol }}<span id="per_ten">{{ gbCost * 10 }}</span> per 10GB per Month</span>
                                 </div>
                             </div>
                         </div>

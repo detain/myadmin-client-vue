@@ -120,7 +120,7 @@ function closePopup() {}
 function submitForgotPassForm() {}
 
 onMounted(function () {
-    $(document).ready(function () {
+    $(function () {
         $('#tosModal').on('shown.bs.modal', function (e) {
             setModalMaxHeight(this);
         });
@@ -641,9 +641,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fab fa-facebook" aria-hidden="true"></i
-                                        ></a>
+                                            "><i class="fab fa-facebook" aria-hidden="true"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-danger btn-lg"
@@ -652,9 +650,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fab fa-google-plus" aria-hidden="true"></i
-                                        ></a>
+                                            "><i class="fab fa-google-plus" aria-hidden="true"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-secondary btn-lg"
@@ -663,9 +659,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fa fa-github"></i
-                                        ></a>
+                                            "><i class="fa fa-github"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-info btn-lg"
@@ -674,9 +668,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fa fa-twitter"></i
-                                        ></a>
+                                            "><i class="fa fa-twitter"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -774,7 +766,7 @@ authStore.load();
                                                     </div>
                                                 </div>
                                                 <div class="captcha_main_signup mb-6">
-                                                    <Checkbox v-model="gresponse" />
+                                                    <!-- <Checkbox v-model="gresponse" /> -->
                                                     <div id="gcaptcha-1"></div>
                                                     <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
                                                 </div>
@@ -797,9 +789,7 @@ authStore.load();
                                             <div class="col-12">
                                                 <div class="icheck-primary">
                                                     <input id="tos" v-model="tos" type="checkbox" required />
-                                                    <label for="tos"
-                                                        >I agree to the <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a></span></label
-                                                    >
+                                                    <label for="tos">I agree to the <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a></span></label>
                                                 </div>
                                             </div>
                                             <div class="col-12 text-right">
@@ -845,9 +835,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Facebook', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fab fa-facebook" aria-hidden="true"></i
-                                        ></a>
+                                            "><i class="fab fa-facebook" aria-hidden="true"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-danger btn-lg"
@@ -856,9 +844,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Google', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fab fa-google-plus" aria-hidden="true"></i
-                                        ></a>
+                                            "><i class="fab fa-google-plus" aria-hidden="true"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-secondary btn-lg"
@@ -867,9 +853,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=GitHub', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fa fa-github"></i
-                                        ></a>
+                                            "><i class="fa fa-github"></i></a>
                                         <a
                                             href="#"
                                             class="btn btn-info btn-lg"
@@ -878,9 +862,7 @@ authStore.load();
                                             onclick="
                                                 window.open('oauth/callback.php?provider=Twitter', 'authWindow', 'width=600,height=600,scrollbars=yes');
                                                 return false;
-                                            "
-                                            ><i class="fa fa-twitter"></i
-                                        ></a>
+                                            "><i class="fa fa-twitter"></i></a>
                                     </div>
                                 </div>
                             </div>

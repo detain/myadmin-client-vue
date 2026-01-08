@@ -66,8 +66,7 @@ interface PrePayState {
     };
 }
 
-export const usePrePayStore = defineStore({
-    id: 'prepay',
+export const usePrePayStore = defineStore('prepay', {
     state: (): PrePayState => ({
         loading: false,
         error: false,
@@ -121,7 +120,7 @@ export const usePrePayStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

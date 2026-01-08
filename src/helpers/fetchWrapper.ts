@@ -37,7 +37,7 @@ function request(method: string) {
 
 // helper functions
 function authHeader(url: string): any {
-    // return auth header with jwt if user is logged in and request is to the api url
+    // return auth header with jwt if user is logged-in and request is to the api url
     const { user, apiKey, sessionId } = useAuthStore();
     //console.log("session id:");
     //console.log(sessionId);

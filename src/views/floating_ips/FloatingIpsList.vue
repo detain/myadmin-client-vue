@@ -75,7 +75,6 @@ loadFloatingIp();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -142,7 +141,7 @@ loadFloatingIp();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -178,6 +177,7 @@ loadFloatingIp();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

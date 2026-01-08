@@ -141,8 +141,7 @@ try {
                     <div class="card-body">
                         <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_floating_ip" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label text-right"
-                                    >Package
+                                <label class="col-sm-3 col-form-label text-right">Package
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">

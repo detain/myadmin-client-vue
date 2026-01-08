@@ -5,23 +5,44 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id', 'module', 'settings', 'backupsTable']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const props = defineProps<{
+    id: number;
+    module: string;
+}>()
 const siteStore = useSiteStore();
-const settings = computed(() => {
-    return props.settings;
-});
+const baseUrl = siteStore.getBaseUrl();
+const loading = ref(true);
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
-const backupsTable = computed(() => {
-    return props.backupsTable;
-});
+const backupsArr = ref<VpsBackup[]>([]);
+
+export interface VpsBackup {
+    service: number;
+    type: string;
+    name: string;
+    size: number;
+    date: number;
+}
+
+const loadBackupsList = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/backups?all=1`);
+        loading.value = false;
+        console.log('api success');
+        console.log(response);
+        backupsArr.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadBackupsList();
+
 </script>
 
 <template>
@@ -35,7 +56,32 @@ const backupsTable = computed(() => {
                     </div>
                 </div>
                 <div class="card-body mb-0">
-                    {{ backupsTable }}
+                    <table class="table-sm display compact table">
+                        <thead>
+                        <tr>
+                            <th>VPS</th>
+                            <th>Type</th>
+                            <th>Backup Name</th>
+                            <th>Size</th>
+                            <th colspan="2">Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-if="loading">
+                            <td colspan="10">Loading...</td>
+                        </tr>
+                        <tr v-for="(row, index) in backupsArr" v-else :key="index">
+                            <td>
+                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="">{{ row.service }}</router-link>
+                            </td>
+                            <td>{{ row.type }}</td>
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.size }}</td>
+                            <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/delete'" class="">Delete</router-link></td>
+                            <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/download'" class="">Download</router-link></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

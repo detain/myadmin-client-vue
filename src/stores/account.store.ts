@@ -202,8 +202,7 @@ interface AccountState {
     enableCurrencies: boolean; // whether to show the currency dropdown on the contact info page
 }
 
-export const useAccountStore = defineStore({
-    id: 'account',
+export const useAccountStore = defineStore('account', {
     state: (): AccountState => ({
         accountList: [],
         loading: false,
@@ -337,7 +336,7 @@ export const useAccountStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

@@ -207,7 +207,7 @@ function get_payment_method_text(type: string) {
     return types[type]['text'];
 }
 
-$(document).ready(function () {});
+$(function () {});
 
 try {
     fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/invoices`).then((response) => {

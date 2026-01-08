@@ -664,8 +664,8 @@ accountStore.load();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
                                     <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></a>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" border="" :style="methodData.image_style" /></router-link>
+                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                     </span>
                                 </span>
                             </div>

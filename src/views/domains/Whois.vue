@@ -5,7 +5,9 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -27,8 +29,7 @@ function placeOrder() {
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b
-                    >.
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>.
                 </p>
             </div>
         </div>

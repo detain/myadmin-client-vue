@@ -7,7 +7,9 @@ import { useSiteStore } from '../../stores/site.store';
 
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '../../types/domains';
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>()
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});

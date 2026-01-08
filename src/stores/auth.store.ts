@@ -17,8 +17,7 @@ interface ExtendedPinia extends Pinia {
     _s: Map<string, Store>;
 }
 
-export const useAuthStore = defineStore({
-    id: 'auth',
+export const useAuthStore = defineStore('auth', {
     state: () => ({
         opts: {
             tfa: false,
@@ -112,7 +111,7 @@ export const useAuthStore = defineStore({
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
-                // store user details and jwt in local storage to keep user logged in between page refreshes
+                // store user details and jwt in local storage to keep user logged-in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');
@@ -143,7 +142,7 @@ export const useAuthStore = defineStore({
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
-                // store user details and jwt in local storage to keep user logged in between page refreshes
+                // store user details and jwt in local storage to keep user logged-in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');

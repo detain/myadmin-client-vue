@@ -59,7 +59,7 @@ export default [
         rules: {
             'prefer-template': 'error',
             'no-useless-concat': 'error',
-
+            'vue/no-v-html': 'off',
             'no-unused-vars': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
 
