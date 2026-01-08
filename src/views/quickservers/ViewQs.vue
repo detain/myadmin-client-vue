@@ -198,7 +198,7 @@ function loadLink(newLink: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module" :service-info="serviceInfo"></Backup>
+            <Backup :id="id" :module="module"  :cur-hostname="serviceInfo.qs_hostname"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
             <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
@@ -225,7 +225,7 @@ function loadLink(newLink: string) {
             <Invoices :id="id" :module="module" :service-info="serviceInfo"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="id" :module="module"></ResetPassword>
