@@ -58,7 +58,7 @@ export const useUsersStore = defineStore('users', {
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage
@@ -80,7 +80,7 @@ export const useUsersStore = defineStore('users', {
             // remove user from list after deleted
             //this.users = this.users.filter((x: any) => x.id !== id);
 
-            // auto logout if the logged in user deleted their own record
+            // auto logout if the logged-in user deleted their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 await authStore.logout();

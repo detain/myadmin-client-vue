@@ -239,7 +239,7 @@ router.beforeEach(async (to) => {
     const alertStore = useAlertStore();
     alertStore.clear();
 
-    // redirect to login page if not logged in and trying to access a restricted page
+    // redirect to login page if not logged-in and trying to access a restricted page
     if (authRequired && !authStore.sessionId && !authStore.apiKey) {
         authStore.returnUrl = to.fullPath;
         return '/login';
