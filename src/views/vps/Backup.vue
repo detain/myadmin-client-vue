@@ -35,7 +35,7 @@ function submitForm() {
     let postData = {
         hostname: hostname.value,
     };
-    fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`, postData).then((response: any) => {
+    fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`, postData).then((response: any) => {
         console.log('api success');
         console.log(response);
         Swal.fire({
