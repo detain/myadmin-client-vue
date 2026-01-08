@@ -15,7 +15,6 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module_name = ref('');
 const backup = ref('');
-const hostname = ref('');
 const confirm = ref(false);
 const note_text = ref('');
 const backupsArr = ref([]);
@@ -32,10 +31,7 @@ const curHostname = computed(() => {
 function submitForm() {
     // Process the form submission or make an API request here
     // Handle form submission
-    let postData = {
-        hostname: hostname.value,
-    };
-    fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`, postData).then((response: any) => {
+    fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`).then((response: any) => {
         console.log('api success');
         console.log(response);
         Swal.fire({
@@ -51,6 +47,21 @@ function submitForm() {
         });
     });
 }
+
+
+const loadBackupsList = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backups`);
+        console.log('api success');
+        console.log(response);
+        backupsArr.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadBackupsList();
 </script>
 
 <template>

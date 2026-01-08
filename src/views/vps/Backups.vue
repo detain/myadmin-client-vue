@@ -9,7 +9,6 @@ const props = defineProps<{
     id: number;
     module: string;
     settings: any;
-    backupsTable: any;
 }>()
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
@@ -22,9 +21,22 @@ const id = computed(() => {
 const module = computed(() => {
     return props.module;
 });
-const backupsTable = computed(() => {
-    return props.backupsTable;
-});
+const backupsArr = ref([]);
+
+const loadBackupsList = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/backups`);
+        console.log('api success');
+        console.log(response);
+        backupsArr.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadBackupsList();
+
 </script>
 
 <template>
@@ -38,7 +50,7 @@ const backupsTable = computed(() => {
                     </div>
                 </div>
                 <div class="card-body mb-0">
-                    {{ backupsTable }}
+                    {{ backupsArr }}
                 </div>
             </div>
         </div>
