@@ -268,7 +268,6 @@ function bs_input_file() {
         0 1px 3px rgb(0 0 0 / 20%);
     border-radius: 0.25rem;
     background-color: #fff;
-    display: -ms-flexbox;
     display: flex;
     margin-bottom: 1rem;
     min-height: 80px;
@@ -281,7 +280,6 @@ function bs_input_file() {
     border-radius: 0.25rem;
     -ms-flex-align: center;
     align-items: center;
-    display: -ms-flexbox;
     display: flex;
     font-size: 1.875rem;
     -ms-flex-pack: center;
