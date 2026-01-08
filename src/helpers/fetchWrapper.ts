@@ -59,7 +59,6 @@ async function handleResponse(response: any) {
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     // check for error response
-    //console.log("Got "+response.status+" response");
     if (!response.ok) {
         const authStore = useAuthStore();
         if ([401, 403].includes(response.status) && authStore.user) {

@@ -21,7 +21,7 @@ onMounted(function () {
     }); */
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
-    //Onhover add shaddow
+    //Onhover add shadow
     $('.shadow-hover').hover(
         function () {
             $(this).removeClass('shadow-sm');
