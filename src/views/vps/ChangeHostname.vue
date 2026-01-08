@@ -24,8 +24,6 @@ const curHostname = computed(() => {
     return props.curHostname;
 });
 function submitForm() {
-    // Process the form submission or make an API request here
-    // Handle form submission
     let postData = {
         hostname: hostname.value,
     };

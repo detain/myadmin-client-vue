@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
             }
         },
         async sudo(sessionId: string): Promise<void> {
-            console.log('Starting sudo session with sessionId ' + sessionId);
+            console.log(`Starting sudo session with sessionId ${sessionId}`);
             this.resetStores();
             const accountStore = useAccountStore();
             if (this.user == null) {

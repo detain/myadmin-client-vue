@@ -4,31 +4,50 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import Swal from "sweetalert2";
 
 const props = defineProps<{
     id: number;
     module: string;
-    serviceInfo: VpsInfo | QsInfo;
+    curHostname: string;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const password = ref('');
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
-const goBackLink = ref('');
-const hostname = ref('');
-const ip = ref('');
-const ima = ref('');
+const curHostname = computed(() => {
+    return props.curHostname;
+});
+
 onMounted(() => {});
+
 function submitForm() {
-    // Perform logic for form submission
+    let postData = {
+        password: password.value,
+    };
+    fetchWrapper
+        .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_webuzo_password`, postData)
+        .then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
+        });
 }
 </script>
 
@@ -51,7 +70,7 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="os">Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
+                                    <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="curHostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -72,14 +91,12 @@ function submitForm() {
                                     <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
                                 </div>
                             </div>
-                            <template v-if="ima === 'client'">
-                                <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="password2">Our Portal Login Password</label>
-                                    <div class="col-sm-9 input-group">
-                                        <input id="login_password" type="password" class="pr-password form-control form-control-sm" name="login_password" required />
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="password2">Our Portal Login Password</label>
+                                <div class="col-sm-9 input-group">
+                                    <input id="login_password" type="password" class="pr-password form-control form-control-sm" name="login_password" required />
                                 </div>
-                            </template>
+                            </div>
                             <hr />
                             <div class="row justify-content-center">
                                 <div class="controls">

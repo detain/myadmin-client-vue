@@ -36,7 +36,7 @@ export interface PasswordRequirementsOptions {
     return this.each(function (this: HTMLElement) {
         const o = settings;
 
-        o.infoMessage = `The minimum password length is ${o.numCharacters} characters and must contain ` + `at least 1 lowercase letter, 1 capital letter, 1 number, and 1 special character.`;
+        o.infoMessage = `The minimum password length is ${o.numCharacters} characters and must contain at least 1 lowercase letter, 1 capital letter, 1 number, and 1 special character.`;
 
         const numCharactersUI = '<li class="pr-numCharacters"><span></span># of characters</li>';
 
@@ -62,7 +62,7 @@ export interface PasswordRequirementsOptions {
             useSpecialUI = '<li class="pr-useSpecial"><span></span>Special character</li>';
         }
 
-        const messageDiv = `<div id="pr-box"><i></i>` + `<div id="pr-box-inner"><p>${o.infoMessage}</p>` + `<ul>${numCharactersUI}${useLowercaseUI}${matchPassUI}${useUppercaseUI}${useNumbersUI}${useSpecialUI}</ul>` + `</div></div>`;
+        const messageDiv = `<div id="pr-box"><i></i><div id="pr-box-inner"><p>${o.infoMessage}</p><ul>${numCharactersUI}${useLowercaseUI}${matchPassUI}${useUppercaseUI}${useNumbersUI}${useSpecialUI}</ul></div></div>`;
 
         let numCharactersDone = true;
         let useLowercaseDone = true;

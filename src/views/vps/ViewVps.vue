@@ -297,13 +297,13 @@ function toggleFunc(cp: string) {
             <ChangeHostname :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ChangeHostname>
         </div>
         <div v-else-if="link == 'change_root_password'" class="col">
-            <ChangeRootPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeRootPassword>
+            <ChangeRootPassword :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ChangeRootPassword>
         </div>
         <div v-else-if="link == 'change_timezone'" class="col">
             <ChangeTimezone :id="id" :module="module" :service-info="serviceInfo"></ChangeTimezone>
         </div>
         <div v-else-if="link == 'change_webuzo_password'" class="col">
-            <ChangeWebuzoPassword :id="id" :module="module" :service-info="serviceInfo"></ChangeWebuzoPassword>
+            <ChangeWebuzoPassword :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ChangeWebuzoPassword>
         </div>
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
@@ -315,7 +315,7 @@ function toggleFunc(cp: string) {
             <ReinstallOs :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="id" :module="module"></ResetPassword>
+            <ResetPassword :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
