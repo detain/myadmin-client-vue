@@ -13,10 +13,10 @@ const props = defineProps<{
     module: string;
     serviceInfo: VpsInfo | QsInfo;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const loading = ref(true);
+const trafficData = ref<any>([]);
 const id = computed(() => {
     return props.id;
 });
@@ -24,11 +24,8 @@ const module = computed(() => {
     return props.module;
 });
 
-const goBackLink = computed(() => {
-    return module.value === 'vps' ? `view_${module.value}` : 'view_qs';
-});
 onMounted(() => {
-    const todayGraph = document.getElementById('todayGraph') as unknown as HTMLCanvasElement;
+/*    const todayGraph = document.getElementById('todayGraph') as unknown as HTMLCanvasElement;
     const hourGraph = document.getElementById('hourGraph') as unknown as HTMLCanvasElement;
     const monthGraph = document.getElementById('monthGraph') as unknown as HTMLCanvasElement;
     // Initialize and configure the charts
@@ -53,7 +50,7 @@ onMounted(() => {
             datasets: [],
         },
     });
-
+*/
     // Rest of the chart setup code
     // ...
 
@@ -62,6 +59,21 @@ onMounted(() => {
     // Example:
     // import Chart from 'chart.js';
 });
+
+const loadTraffic = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/traffic_usage`);
+        loading.value = false;
+        console.log('api success');
+        console.log(response);
+        trafficData.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadTraffic();
 </script>
 
 <template>
@@ -110,41 +122,41 @@ onMounted(() => {
                                         <th class="text-danger">Out</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody v-if="trafficData.totals">
                                     <tr>
                                         <td>Today</td>
                                         <td class="text-success">
-                                            <div class="day_in"></div>
+                                            <div class="day_in">{{ trafficData.totals.day.in }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="day_out"></div>
+                                            <div class="day_out">{{ trafficData.totals.day.out }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>This Month</td>
                                         <td class="text-success">
-                                            <div class="month_in"></div>
+                                            <div class="month_in">{{ trafficData.totals.month.in }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="month_out"></div>
+                                            <div class="month_out">{{ trafficData.totals.month.out }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>This Year</td>
                                         <td class="text-success">
-                                            <div class="year_in"></div>
+                                            <div class="year_in">{{ trafficData.totals.year.in }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="year_out"></div>
+                                            <div class="year_out">{{ trafficData.totals.year.out }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>All</td>
                                         <td class="text-success">
-                                            <div class="all_in"></div>
+                                            <div class="all_in">{{ trafficData.totals.all.in }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="all_out"></div>
+                                            <div class="all_out">{{ trafficData.totals.all.out }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -159,36 +171,36 @@ onMounted(() => {
                                         <th class="text-danger">Out</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody v-if="trafficData.usage">
                                     <tr>
                                         <td><strong>Current</strong></td>
                                         <td class="text-success">
                                             <strong>
-                                                <div class="current_in"></div>
+                                                <div class="current_in">{{ trafficData.usage.current.in }}</div>
                                             </strong>
                                         </td>
                                         <td class="text-danger">
                                             <strong>
-                                                <div class="current_out"></div>
+                                                <div class="current_out">{{ trafficData.usage.current.in }}</div>
                                             </strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Average</td>
                                         <td class="text-success">
-                                            <div class="average_in"></div>
+                                            <div class="average_in">{{ trafficData.usage.average.in.value }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="average_out"></div>
+                                            <div class="average_out">{{ trafficData.usage.average.out.value }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Peak</td>
                                         <td class="text-success">
-                                            <div class="peak_in"></div>
+                                            <div class="peak_in">{{ trafficData.usage.peak.in }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="peak_out"></div>
+                                            <div class="peak_out">{{ trafficData.usage.peak.out }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
