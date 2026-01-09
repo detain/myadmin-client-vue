@@ -137,6 +137,10 @@ jobs:
               if: github.event_name == 'pull_request'
               run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
 
+            - name: Disable signing for Mac
+              if: matrix.platform == 'mac'
+              run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
+
             - name: Build Site
               run: yarn build
 
@@ -148,7 +152,11 @@ jobs:
               if: matrix.platform == 'linux'
               run: |
                   cd dist
-                  zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+                  if  [ "${{ matrix.arch }}" = "arm64" ]; then
+                      zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-arm64-unpacked
+                  else
+                      zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+                  fi
 
             - name: Zip unpacked (Windows)
               if: matrix.platform == 'win'
