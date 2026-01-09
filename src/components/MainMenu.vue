@@ -66,21 +66,21 @@ function isActive(key: string[] | undefined) {
                 <p>{{ link.text }}<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul v-if="typeof link.menu != 'undefined' && typeof menus[link.menu] !== 'undefined'" class="nav nav-treeview" :class="{ 'menu-open': isActive(link.activecheck) }">
-                <li v-for="(sublink, index) in menus[link.menu]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(sublink), 'menu-open': Array.isArray(sublink) && isActive(sublink.activecheck) }">
-                    <a v-if="typeof sublink.menu != 'undefined'" href="#" class="nav-link" :class="{ active: isActive(sublink.activecheck) }" v-html="sublink.text"></a>
-                    <router-link v-else-if="typeof sublink.link != 'undefined'" :to="sublink.link" class="nav-link" active-class="active">
-                        <i class="nav-icon" :class="sublink.icon"></i>
-                        <p>{{ sublink.text }}</p>
+                <li v-for="(subLink, subIndex) in menus[link.menu]" :key="subIndex" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subLink), 'menu-open': Array.isArray(subLink) && isActive(subLink.activecheck) }">
+                    <a v-if="typeof subLink.menu != 'undefined'" href="#" class="nav-link" :class="{ active: isActive(subLink.activecheck) }" v-html="subLink.text"></a>
+                    <router-link v-else-if="typeof subLink.link != 'undefined'" :to="subLink.link" class="nav-link" active-class="active">
+                        <i class="nav-icon" :class="subLink.icon"></i>
+                        <p>{{ subLink.text }}</p>
                     </router-link>
-                    <ul v-if="Array.isArray(sublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(sublink.activecheck) }">
-                        <li v-for="(subsublink, index) in menus[sublink[0]]" :key="index" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subsublink), 'menu-open': Array.isArray(subsublink) && isActive(subsublink.activecheck) }">
-                            <a v-if="Array.isArray(subsublink)" href="#" class="nav-link" :class="{ active: isActive(subsublink.activecheck) }" v-html="subsublink[1]"></a>
-                            <router-link v-else-if="typeof subsublink.link != 'undefined'" :to="subsublink.link" class="nav-link" active-class="active">
-                                <i class="nav-icon" :class="subsublink.icon"></i>
-                                <p>{{ subsublink.text }}</p>
+                    <ul v-if="Array.isArray(subLink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subLink.activecheck) }">
+                        <li v-for="(subSubLink, subSubIndex) in menus[subLink[0]]" :key="subSubIndex" :class="{ 'nav-item': true, 'has-treeview': Array.isArray(subSubLink), 'menu-open': Array.isArray(subSubLink) && isActive(subSubLink.activecheck) }">
+                            <a v-if="Array.isArray(subSubLink)" href="#" class="nav-link" :class="{ active: isActive(subSubLink.activecheck) }" v-html="subSubLink[1]"></a>
+                            <router-link v-else-if="typeof subSubLink.link != 'undefined'" :to="subSubLink.link" class="nav-link" active-class="active">
+                                <i class="nav-icon" :class="subSubLink.icon"></i>
+                                <p>{{ subSubLink.text }}</p>
                             </router-link>
-                            <ul v-if="Array.isArray(subsublink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subsublink.activecheck) }">
-                                <li v-for="(subsubsublink, index) in menus[subsublink[0]]" :key="index" v-html="subsubsublink"></li>
+                            <ul v-if="Array.isArray(subSubLink)" class="nav nav-treeview" :class="{ 'menu-open': isActive(subSubLink.activecheck) }">
+                                <li v-for="(subSubSubLink, subSubSubIndex) in menus[subSubLink[0]]" :key="subSubSubIndex" v-html="subSubSubLink"></li>
                             </ul>
                         </li>
                     </ul>

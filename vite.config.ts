@@ -61,15 +61,9 @@ export default defineConfig({
         //TurboConsole(),
     ],
     optimizeDeps: {
-        include: [
-            'jquery',
-            'select2',
-        ]
+        include: ['jquery', 'select2'],
     },
-    include: [
-      'jquery',
-      'select2',
-    ],
+    include: ['jquery', 'select2'],
     build: {
         sourcemap: false,
         rollupOptions: {

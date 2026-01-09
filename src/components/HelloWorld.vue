@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const props = defineProps(['msg']);
+import { computed } from 'vue';
+const props = defineProps<{
+    msg: string;
+}>();
+const msg = computed(() => {
+    return props.msg;
+});
 </script>
 
 <template>

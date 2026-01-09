@@ -206,7 +206,7 @@ loadDns();
             <form method="post">
                 <input id="domain_id" type="hidden" name="id" value="35626" />
             </form>
-            <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" style="width: 100%;">
+            <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" style="width: 100%">
                 <thead>
                     <tr>
                         <th>ID</th>

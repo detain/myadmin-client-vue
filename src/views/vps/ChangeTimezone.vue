@@ -12,10 +12,7 @@ const props = defineProps<{
     id: number;
     module: string;
     serviceInfo: VpsInfo | QsInfo;
-}>()
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
@@ -130,5 +127,4 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_time
     </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

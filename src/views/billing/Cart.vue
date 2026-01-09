@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { snakeToCamel } from '../../helpers/snakeToCamel';
-
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { useAccountStore } from '../../stores/account.store';
@@ -26,7 +24,6 @@ const modules = ref<Modules>({});
 const editCcIdx = ref(0);
 const selectedCc = ref('');
 const r_paymentMethod = ref('');
-const cc_detail = ref({});
 const country_select = ref('');
 const invrows = ref<InvRow[]>([]);
 const currency = ref('USD');
@@ -310,7 +307,7 @@ function addCardSubmit() {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
-                addresss: contFields.address,
+                address: contFields.address,
                 city: contFields.city,
                 state: contFields.state,
                 zip: contFields.zip,
@@ -333,7 +330,7 @@ function editCardSubmit() {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
-                addresss: contFields.address,
+                address: contFields.address,
                 city: contFields.city,
                 state: contFields.state,
                 zip: contFields.zip,

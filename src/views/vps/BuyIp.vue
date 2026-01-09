@@ -6,16 +6,15 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
     module: string;
     serviceInfo: VpsInfo | QsInfo;
-}>()
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+}>();
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const ipsDetails = ref<IpDetails[]>([]);
 const buyForm = ref(null);
 const id = computed(() => {
@@ -26,18 +25,33 @@ const module = computed(() => {
 });
 const ip_currency = ref('USD');
 const ip_cost = ref(0);
-function getLink() {
-    if (module.value === 'vps') {
-        return `view_${module.value}?id=${id.value}`;
-    } else {
-        return `view_qs?id=${id.value}`;
-    }
-}
+
 function submitForm() {
-    const formData = {
-        link: 'buy_ip',
-    };
-    // Process the form submission or make an API request here
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {}).then((response) => {
+            Swal.close();
+            console.log('webhosting buy ip');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('webhosting buy ip');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 
 interface BuyIpResponse {

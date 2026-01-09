@@ -10,7 +10,7 @@ const props = defineProps<{
     id: number;
     module: string;
     curHostname: string;
-}>()
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const hostname = ref('');
@@ -24,26 +24,27 @@ const curHostname = computed(() => {
     return props.curHostname;
 });
 function submitForm() {
-    // Process the form submission or make an API request here
-    // Handle form submission
     let postData = {
         hostname: hostname.value,
     };
-    fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_hostname`, postData).then((response: any) => {
-        console.log('api success');
-        console.log(response);
-        Swal.fire({
-            icon: 'success',
-            html: response.message,
+    fetchWrapper
+        .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_hostname`, postData)
+        .then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
         });
-    }).catch((error: any) => {
-        console.log('api failed');
-        console.log(error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.message}`,
-        });
-    });
 }
 </script>
 
@@ -89,6 +90,4 @@ function submitForm() {
     </div>
 </template>
 
-<style scoped>
-    
-</style>
+<style scoped></style>

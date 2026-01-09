@@ -4,13 +4,13 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
     module: string;
     curHostname: string;
-}>()
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module_name = ref('');
@@ -37,27 +37,28 @@ export interface VpsBackup {
     date: number;
 }
 
-
 function submitForm() {
     // Process the form submission or make an API request here
     // Handle form submission
-    fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`).then((response: any) => {
-        console.log('api success');
-        console.log(response);
-        Swal.fire({
-            icon: 'success',
-            html: response.message,
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`)
+        .then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
         });
-    }).catch((error: any) => {
-        console.log('api failed');
-        console.log(error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.message}`,
-        });
-    });
 }
-
 
 const loadBackupsList = async () => {
     try {
@@ -140,20 +141,20 @@ loadBackupsList();
                         <template v-else-if="backupsArr.length > 0">
                             <table class="table-sm table">
                                 <thead>
-                                <tr>
-                                    <th>Service</th>
-                                    <th>Type</th>
-                                    <th>Name</th>
-                                    <th>Size</th>
-                                </tr>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Type</th>
+                                        <th>Name</th>
+                                        <th>Size</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx">
-                                    <td>{{ backupRow.service }}</td>
-                                    <td>{{ backupRow.type }}</td>
-                                    <td>{{ backupRow.name }}</td>
-                                    <td>{{ backupRow.size }}</td>
-                                </tr>
+                                    <tr v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx">
+                                        <td>{{ backupRow.service }}</td>
+                                        <td>{{ backupRow.type }}</td>
+                                        <td>{{ backupRow.name }}</td>
+                                        <td>{{ backupRow.size }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </template>
