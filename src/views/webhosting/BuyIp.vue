@@ -2,40 +2,24 @@
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { ref, computed, PropType } from 'vue';
+import { computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from "sweetalert2";
 
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const module: string = 'webhosting';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 
-const props = defineProps({
-    id: {
-        type: Number,
-        required: true,
-    },
-    ipsDetails: {
-        type: Array as PropType<IpDetails[]>,
-        default: () => [],
-    },
-    buyForm: {
-        type: Boolean,
-        default: false,
-    },
-    ipCurrency: {
-        type: String,
-        required: false,
-    },
-    imCost: {
-        type: String,
-        required: false,
-    },
-    ipCost: {
-        type: String,
-        required: false,
-    },
+const props = defineProps<{
+    id: number;
+    ipsDetails: IpDetails[];
+    buyForm: boolean;
+    ipCurrency: string;
+    imCost: string;
+    ipCost: string;
+}>();
+const id = computed(() => {
+    return props.id;
 });
 const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
 const buyForm = computed(() => props.buyForm);
@@ -72,6 +56,39 @@ interface IpDetails {
     cancel_link: string;
     ip: string;
 }
+
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, {
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('webhosting buy ip');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('webhosting buy ip');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+
 </script>
 
 <template>
@@ -107,7 +124,7 @@ interface IpDetails {
                         <hr />
                     </template>
                     <template v-if="buyForm">
-                        <form method="POST" :action="`view_website?id=${id}&link=buy_ip`">
+                        <form method="POST"  @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
                             <div class="form-group">
                                 <div class="row">

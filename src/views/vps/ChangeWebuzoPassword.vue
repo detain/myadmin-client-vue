@@ -74,12 +74,6 @@ function submitForm() {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="os">IP</label>
-                                <div class="col-sm-9 input-group">
-                                    <input id="ip" type="text" class="form-control form-control-sm" name="ip" :value="ip" disabled />
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">New Password</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />

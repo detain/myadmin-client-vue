@@ -13,9 +13,6 @@ const props = defineProps<{
     module: string;
     serviceInfo: VpsInfo | QsInfo;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {

@@ -88,7 +88,6 @@ onMounted(() => {
             </div>
         </div>
     </div>
-    <template>
         <div class="row">
             <div class="col-md-12">
                 <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid skyblue; display: block ruby">
@@ -136,7 +135,6 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-    </template>
 </template>
 
 <style scoped>

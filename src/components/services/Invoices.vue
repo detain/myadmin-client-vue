@@ -7,10 +7,10 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
-const props = defineProps(['id', 'module']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const props = defineProps<{
+    id: number;
+    module: string;
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {

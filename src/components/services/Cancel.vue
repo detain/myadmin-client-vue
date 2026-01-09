@@ -2,16 +2,17 @@
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-
-import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module', 'package', 'titleField', 'titleField2', 'titleField3']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const props = defineProps<{
+    id: number;
+    module: string;
+    package: number;
+    titleField: string;
+    titleField2: string;
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const { modules } = storeToRefs(siteStore);
@@ -29,9 +30,6 @@ const titleField = computed(() => {
 });
 const titleField2 = computed(() => {
     return props['titleField2'];
-});
-const titleField3 = computed(() => {
-    return props['titleField3'];
 });
 const settings = computed(() => {
     return modules.value[module.value];
