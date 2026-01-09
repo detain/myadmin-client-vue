@@ -70,7 +70,7 @@ jobs:
                     - os: ubuntu-latest
                       platform: linux
                       arch: arm64
-                      build_args: --linux AppImage snap deb --arm64
+                      build_args: --linux AppImage deb --arm64
 
                     # Windows
                     - os: windows-latest
