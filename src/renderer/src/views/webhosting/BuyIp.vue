@@ -12,16 +12,16 @@ const baseUrl = siteStore.getBaseUrl();
 
 const props = defineProps<{
     id: number;
-    ipsDetails: IpDetails[];
-    buyForm: boolean;
-    ipCurrency: string;
-    imCost: string;
-    ipCost: string;
+    ipsDetails?: IpDetails[];
+    buyForm?: boolean;
+    ipCurrency?: string;
+    imCost?: string;
+    ipCost?: string;
 }>();
 const id = computed(() => {
     return props.id;
 });
-const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
+const ipsDetailsExist = computed(() => (props.ipsDetails?.length ?? 0) > 0);
 const buyForm = computed(() => props.buyForm);
 
 interface IpDetails {
