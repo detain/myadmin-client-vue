@@ -177,20 +177,65 @@ jobs:
                   cd dist
                   zip -r my-interserver-client-${APP_VERSION}-mac.zip mac-unpacked
 
-            # ---------------- UPLOAD ALL ARTIFACTS ----------------
-            - name: Upload all Electron artifacts
+            - name: Upload DEB packages
               uses: actions/upload-artifact@v4
               with:
-                  name: electron-artifacts-${{ matrix.platform }}-${{ matrix.arch }}
-                  path: |
-                      dist/*.deb
-                      dist/*.AppImage
-                      dist/*.snap
-                      dist/*portable*.exe
-                      dist/*setup*.exe
-                      dist/*.dmg
-                      dist/*.pkg
-                      dist/*.zip
+                  name: deb-${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.deb
+                  if-no-files-found: ignore
+
+            - name: Upload AppImage packages
+              uses: actions/upload-artifact@v4
+              with:
+                  name: appimage-${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.AppImage
+                  if-no-files-found: ignore
+
+            - name: Upload Snap packages
+              uses: actions/upload-artifact@v4
+              with:
+                  name: snap-${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.snap
+                  if-no-files-found: ignore
+
+            - name: Upload Windows installers
+              if: matrix.platform == 'win'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: windows-installers-${{ matrix.arch }}
+                  path: dist/*setup*.exe
+                  if-no-files-found: ignore
+
+            - name: Upload Windows portable builds
+              if: matrix.platform == 'win'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: windows-portable-${{ matrix.arch }}
+                  path: dist/*portable*.exe
+                  if-no-files-found: ignore
+
+            - name: Upload macOS Dmg images
+              if: matrix.platform == 'mac'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: macos-${{ matrix.arch }}
+                  path: dist/*.dmg
+                  if-no-files-found: ignore
+
+            - name: Upload macOS Pkg images
+              if: matrix.platform == 'mac'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: macos-${{ matrix.arch }}
+                  path: dist/*.pkg
+                  if-no-files-found: ignore
+
+            - name: Upload unpacked zips
+              uses: actions/upload-artifact@v4
+              with:
+                  name: unpacked-${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.zip
+                  if-no-files-found: ignore
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
