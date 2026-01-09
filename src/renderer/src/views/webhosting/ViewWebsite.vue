@@ -24,7 +24,7 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id as string;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link as string;
 });
@@ -107,7 +107,7 @@ watch(
     }
 );
 
-websiteStore.getById(id as string);
+websiteStore.getById(id);
 loadLink(route.params.link as string);
 </script>
 
@@ -187,10 +187,10 @@ loadLink(route.params.link as string);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id as unknown as string"></BuyIp>
+            <BuyIp :id="id"></BuyIp>
         </div>
         <div v-else-if="link == 'download_backups'" class="col">
-            <DownloadBackups :id="id as string"></DownloadBackups>
+            <DownloadBackups :id="id"></DownloadBackups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
@@ -236,7 +236,7 @@ loadLink(route.params.link as string);
                                     </template>
                                     <tr v-if="clientLinks[3]">
                                         <td>Automatic Login</td>
-                                        <td><router-link :to="'/'+moduleLink(module)+'/'+id+'/login'" target="__blank" class="link">Click Here</router-link></td>
+                                        <td><router-link :to="'/' + moduleLink(module) + '/' + id + '/login'" target="__blank" class="link">Click Here</router-link></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -296,10 +296,10 @@ loadLink(route.params.link as string);
                             </tr>
                         </thead>
                         <tbody>
-                            <template v-for="(link, index) in extraInfoTables.links.rows">
-                                <tr v-if="link.desc !== 'CPanel' && link.desc !== 'Plesk Panel' && link.desc !== 'DirectAdmin Panel'" :key="index">
-                                    <td>{{ link.desc }}</td>
-                                    <td><a :href="link.value" target="__blank" class="link">Click Here</a></td>
+                            <template v-for="(linkRow, index) in extraInfoTables.links.rows">
+                                <tr v-if="linkRow.desc !== 'CPanel' && linkRow.desc !== 'Plesk Panel' && linkRow.desc !== 'DirectAdmin Panel'" :key="index">
+                                    <td>{{ linkRow.desc }}</td>
+                                    <td><a :href="linkRow.value" target="__blank" class="link">Click Here</a></td>
                                 </tr>
                             </template>
                             <tr>
@@ -324,7 +324,7 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+(clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

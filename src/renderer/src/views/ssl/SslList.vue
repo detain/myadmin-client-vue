@@ -74,7 +74,6 @@ loadSsl();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -141,7 +140,7 @@ loadSsl();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>Service ID</th>
@@ -156,13 +155,13 @@ loadSsl();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.ssl_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.ssl_id">{{ row.ssl_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id">{{ row.ssl_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.ssl_company }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.ssl_status }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.ssl_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -177,6 +176,7 @@ loadSsl();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

@@ -90,7 +90,7 @@ async function addRangeSubmit() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(limit, idx) in limits" :key="'row'+idx">
+                        <tr v-for="(limit, idx) in limits" :key="'row' + idx">
                             <td>{{ limit.start }}</td>
                             <td>{{ limit.end }}</td>
                             <td>

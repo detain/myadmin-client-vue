@@ -4,8 +4,14 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 
-const props = defineProps(['id', 'module']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: VpsInfo | QsInfo;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -25,7 +31,7 @@ function getLink() {
     if (module.value === 'vps') {
         return `view_${module.value}?id=${id.value}`;
     } else {
-        return 'view_qs';
+        return `view_qs?id=${id.value}`;
     }
 }
 function getAmount() {
@@ -57,7 +63,7 @@ onMounted(() => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-server"></i> Additional VPS Drive Space</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>
                     </div>
                 </div>

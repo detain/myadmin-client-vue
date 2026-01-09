@@ -49,8 +49,7 @@ interface SslState {
     linkDisplay: boolean;
 }
 
-export const useSslStore = defineStore({
-    id: 'ssl',
+export const useSslStore = defineStore('ssl', {
     state: (): SslState => ({
         sslList: [],
         loading: false,
@@ -162,7 +161,7 @@ export const useSslStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

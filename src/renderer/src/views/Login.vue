@@ -120,7 +120,7 @@ function closePopup() {}
 function submitForgotPassForm() {}
 
 onMounted(function () {
-    $(document).ready(function () {
+    $(function () {
         $('#tosModal').on('shown.bs.modal', function (e) {
             setModalMaxHeight(this);
         });
@@ -139,12 +139,12 @@ onMounted(function () {
         $('#forgot_link').click(function (e) {
             e.preventDefault();
             $('.sign-up-txt').hide();
-            $('div.myadmin_login').toggle('500');
+            $('div.myadmin_login').toggle(500);
         });
         $('#access_link').click(function (e) {
             e.preventDefault();
             $('.sign-up-txt.signup').show();
-            $('div.myadmin_login').toggle('500');
+            $('div.myadmin_login').toggle(500);
         });
         $('#btn-forgot').click(function (e) {
             forgot_password();
@@ -293,7 +293,7 @@ function login_handler() {
         }
         $.ajax({
             type: 'POST',
-            url: `https://${window.location.host  }${newPath}ajax_check_login.php`,
+            url: `https://${window.location.host}${newPath}ajax_check_login.php`,
             data: loginCheckData,
             success: function (html) {
                 console.log(loginCheckData);
@@ -379,7 +379,7 @@ function forgot_password() {
         }
         $.ajax({
             type: 'POST',
-            url: `https://${window.location.host  }${newPath}password.php`,
+            url: `https://${window.location.host}${newPath}password.php`,
             data: `ajax=1&email=${encodeURIComponent(username)}&g-recaptcha-response=${encodeURIComponent(gresponse.value)}&captcha=${encodeURIComponent(captcha)}`,
             success: function (html) {
                 $('#forgot-password-message').html(html);
@@ -774,7 +774,7 @@ authStore.load();
                                                     </div>
                                                 </div>
                                                 <div class="captcha_main_signup mb-6">
-                                                    <Checkbox v-model="gresponse" />
+                                                    <!-- <Checkbox v-model="gresponse" /> -->
                                                     <div id="gcaptcha-1"></div>
                                                     <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
                                                 </div>

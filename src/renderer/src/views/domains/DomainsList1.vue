@@ -58,7 +58,6 @@ function setStatusLimit(event: Event) {
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -127,7 +126,7 @@ function setStatusLimit(event: Event) {
                             <div class="col-md-12">
                                 <DataTable id="crud-table" ref="table" :options="options" :columns="columns" :data="filteredData" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <template #link="{ value }">
-                                        <router-link :to="'view_domain?id='+value" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                        <router-link :to="'view_domain?id=' + value" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                     </template>
                                     <thead>
                                         <tr>
@@ -143,13 +142,13 @@ function setStatusLimit(event: Event) {
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.domain_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.domain_id">{{ row.domain_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id">{{ row.domain_hostname }}</router-link>
                                             </td>
                                             <td>{{ row.domain_expire_date }}</td>
                                             <td>{{ row.cost }}</td>
                                             <td>{{ row.domain_status }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -164,6 +163,7 @@ function setStatusLimit(event: Event) {
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

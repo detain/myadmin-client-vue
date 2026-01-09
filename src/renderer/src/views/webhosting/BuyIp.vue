@@ -2,43 +2,27 @@
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { ref, computed, PropType } from 'vue';
+import { computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const module: string = 'webhosting';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 
-const props = defineProps({
-    id: {
-        type: String,
-        required: true,
-    },
-    ipsDetails: {
-        type: Array as PropType<IpDetails[]>,
-        default: () => [],
-    },
-    buy_form: {
-        type: Boolean,
-        default: false,
-    },
-    ip_currency: {
-        type: String,
-        required: false,
-    },
-    im_cost: {
-        type: String,
-        required: false,
-    },
-    ip_cost: {
-        type: String,
-        required: false,
-    },
+const props = defineProps<{
+    id: number;
+    ipsDetails: IpDetails[];
+    buyForm: boolean;
+    ipCurrency: string;
+    imCost: string;
+    ipCost: string;
+}>();
+const id = computed(() => {
+    return props.id;
 });
 const ipsDetailsExist = computed(() => props.ipsDetails.length > 0);
-const buyForm = ref(false);
+const buyForm = computed(() => props.buyForm);
 
 interface IpDetails {
     invoices_id: string;
@@ -72,6 +56,34 @@ interface IpDetails {
     cancel_link: string;
     ip: string;
 }
+
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, {}).then((response) => {
+            Swal.close();
+            console.log('webhosting buy ip');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('webhosting buy ip');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
 </script>
 
 <template>
@@ -86,7 +98,7 @@ interface IpDetails {
                             <template v-else-if="buyForm">Buy Additional IP Addon</template>
                         </h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -107,16 +119,16 @@ interface IpDetails {
                         <hr />
                     </template>
                     <template v-if="buyForm">
-                        <form method="POST" :action="`view_website?id=${id}&link=buy_ip`">
+                        <form method="POST" @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
+                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ipCurrency }})</label>
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="im_cost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="imCost" />
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +139,8 @@ interface IpDetails {
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
-                                        <small class="form-text text-muted">Cost ({{ ip_currency }}) every month as your website invoiced</small>
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ipCost" />
+                                        <small class="form-text text-muted">Cost ({{ ipCurrency }}) every month as your website invoiced</small>
                                     </div>
                                 </div>
                             </div>

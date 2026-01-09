@@ -6,7 +6,9 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
 import { number } from 'yup';
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -99,7 +101,7 @@ function submitBlock() {
                             <tbody>
                                 <tr v-for="email in spam" :key="email.id">
                                     <td>
-                                        <a :href="'index.php?choice=none.mailinfo&id='+email.id" @click="loadEmail(email.id)">
+                                        <a :href="'index.php?choice=none.mailinfo&id=' + email.id" @click="loadEmail(email.id)">
                                             {{ email.id }}
                                         </a>
                                     </td>
@@ -114,7 +116,7 @@ function submitBlock() {
                                     </td>
                                     <td style="max-width: 300px; overflow: hidden; white-space: nowrap">
                                         <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-new" @click="editBlock('edit', email.id, email.type, email.data)"> Edit </a>
-                                        <a :href="'view_mail?id='+id+'&link=deny_rules&action=delete&rule_id='+email.id" class="btn btn-sm btn-primary"> Delete </a>
+                                        <a :href="'view_mail?id=' + id + '&link=deny_rules&action=delete&rule_id=' + email.id" class="btn btn-sm btn-primary"> Delete </a>
                                     </td>
                                 </tr>
                             </tbody>

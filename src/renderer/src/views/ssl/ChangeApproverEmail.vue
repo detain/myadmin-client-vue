@@ -5,7 +5,9 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -91,7 +93,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-envelope">&nbsp;</i>Change Approver Email</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

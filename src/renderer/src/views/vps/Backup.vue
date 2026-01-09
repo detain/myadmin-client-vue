@@ -4,30 +4,76 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
-const props = defineProps(['id', 'module']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const props = defineProps<{
+    id: number;
+    module: string;
+    curHostname: string;
+}>();
 const siteStore = useSiteStore();
-
+const baseUrl = siteStore.getBaseUrl();
 const module_name = ref('');
 const backup = ref('');
-const hostname = ref('');
 const confirm = ref(false);
 const note_text = ref('');
-const backupsArr = ref([]);
+const backupsArr = ref<VpsBackup[]>([]);
+const loading = ref(true);
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
+const curHostname = computed(() => {
+    return props.curHostname;
+});
+
+export interface VpsBackup {
+    service: number;
+    type: string;
+    name: string;
+    size: number;
+    date: number;
+}
 
 function submitForm() {
+    // Process the form submission or make an API request here
     // Handle form submission
-    // You can access the form data using `module_name`, `module`, etc.
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`)
+        .then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
+        });
 }
+
+const loadBackupsList = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backups`);
+        loading.value = false;
+        console.log('api success');
+        console.log(response);
+        backupsArr.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadBackupsList();
 </script>
 
 <template>
@@ -42,7 +88,7 @@ function submitForm() {
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
@@ -52,9 +98,9 @@ function submitForm() {
                             <input type="hidden" name="backup" :value="backup" />
                             <div class="form-group mb-0">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="hostname">Server</label>
+                                    <label class="col-md-3 col-form-label" for="cur-hostname">Server</label>
                                     <div class="col-sm-6 input-group">
-                                        <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="hostname" disabled />
+                                        <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -89,11 +135,27 @@ function submitForm() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <template v-if="backupsArr.length > 0">
+                        <template v-if="loading">
+                            <td colspan="10">Loading...</td>
+                        </template>
+                        <template v-else-if="backupsArr.length > 0">
                             <table class="table-sm table">
-                                <tr v-for="backup in backupsArr" :key="backup">
-                                    <td>{{ backup }}</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Type</th>
+                                        <th>Name</th>
+                                        <th>Size</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx">
+                                        <td>{{ backupRow.service }}</td>
+                                        <td>{{ backupRow.type }}</td>
+                                        <td>{{ backupRow.name }}</td>
+                                        <td>{{ backupRow.size }}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </template>
                         <template v-else> No backup currently exists </template>

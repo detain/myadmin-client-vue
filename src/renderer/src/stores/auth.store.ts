@@ -17,8 +17,7 @@ interface ExtendedPinia extends Pinia {
     _s: Map<string, Store>;
 }
 
-export const useAuthStore = defineStore({
-    id: 'auth',
+export const useAuthStore = defineStore('auth', {
     state: () => ({
         opts: {
             tfa: false,
@@ -54,7 +53,7 @@ export const useAuthStore = defineStore({
             }
         },
         async sudo(sessionId: string): Promise<void> {
-            //console.log("Starting sudo session with sessionId "+sessionId)
+            console.log(`Starting sudo session with sessionId ${sessionId}`);
             this.resetStores();
             const accountStore = useAccountStore();
             if (this.user == null) {
@@ -66,7 +65,7 @@ export const useAuthStore = defineStore({
             localStorage.setItem('sessionId', this.sessionId || '');
             //localStorage.setItem('apiKey', this.apiKey);
             accountStore.load().then((response) => {
-                //console.log("starting .then handler for accountStore.load trying to utilize the data");
+                console.log('starting .then handler for accountStore.load trying to utilize the data');
                 this.user.account_id = accountStore.data.account_id;
                 this.user.account_lid = accountStore.data.account_lid;
                 this.user.gravatar = accountStore.gravatar;
@@ -112,7 +111,7 @@ export const useAuthStore = defineStore({
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
-                // store user details and jwt in local storage to keep user logged in between page refreshes
+                // store user details and jwt in local storage to keep user logged-in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');
@@ -143,7 +142,7 @@ export const useAuthStore = defineStore({
                 this.resetStores();
                 this.user = user;
                 this.sessionId = user.sessionId;
-                // store user details and jwt in local storage to keep user logged in between page refreshes
+                // store user details and jwt in local storage to keep user logged-in between page refreshes
                 localStorage.setItem('remember', this.remember || '');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');

@@ -5,7 +5,9 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -82,7 +84,7 @@ function renewCalculate() {
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Renew</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">

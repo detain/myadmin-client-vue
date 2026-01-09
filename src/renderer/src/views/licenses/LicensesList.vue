@@ -75,7 +75,6 @@ loadLicenses();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -83,7 +82,7 @@ loadLicenses();
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/'+moduleLink(module)+'/order'" title="Order License Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="'/' + moduleLink(module) + '/order'" title="Order License Registrations"><i class="fa fa-shopping-cart"></i> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
@@ -142,7 +141,7 @@ loadLicenses();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>Service ID</th>
@@ -160,10 +159,10 @@ loadLicenses();
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td>{{ row.license_id }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.license_id">{{ row.license_hostname }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.license_id">{{ row.license_hostname }}</router-link>
                                             </td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.license_id">{{ row.license_ip }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.license_id">{{ row.license_ip }}</router-link>
                                             </td>
                                             <td>{{ row.services_name }}</td>
                                             <td>{{ row.cost }}</td>
@@ -171,7 +170,7 @@ loadLicenses();
                                             <td>{{ row.invoices_paid }}</td>
                                             <td>{{ row.invoices_date }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.license_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -186,6 +185,7 @@ loadLicenses();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

@@ -3,7 +3,11 @@
   "include": [
     "src/renderer/src/env.d.ts",
     "src/renderer/src/**/*",
+    "src/renderer/src/**/*.ts",
+    "src/renderer/src/**/*.d.ts",
+    "src/renderer/src/**/*.tsx",
     "src/renderer/src/**/*.vue",
+    "src/renderer/src/types/**/*.d.ts",
     "src/preload/*.d.ts"
   ],
   "compilerOptions": {
@@ -14,7 +18,32 @@
     "paths": {
       "@renderer/*": [
         "src/renderer/src/*"
-      ]
-    }
+      ],
+      "@/*": ["src/renderer/src/*"]
+    },
+
+
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "declaration": true,
+    "jsx": "preserve",
+    "strict": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "types": ["vite/client", "vitest/globals", "jquery", "node"]
+
+
   }
 }

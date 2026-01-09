@@ -4,12 +4,19 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo, VpsServiceMaster } from '../../types/vps';
+import { QsInfo, QsServiceMaster } from '../../types/qs';
 
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module', 'serviceInfo', 'serviceMaster']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+import { storeToRefs } from 'pinia';
+type ServiceInfo = VpsInfo | QsInfo;
+type ServiceMaster = VpsServiceMaster | QsServiceMaster;
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: ServiceInfo;
+    serviceMaster: ServiceMaster;
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
@@ -24,6 +31,28 @@ const serviceInfo = computed(() => {
 const serviceMaster = computed(() => {
     return props.serviceMaster;
 });
+const { modules } = storeToRefs(siteStore);
+const settings = computed(() => {
+    return modules.value[module.value];
+});
+function useServiceInfoField<T = string>(suffix: string) {
+    return computed<T>(() => {
+        const prefix = settings.value.PREFIX; // 'vps' | 'qs'
+        const key = `${prefix}_${suffix}` as keyof ServiceInfo;
+        return (serviceInfo.value as ServiceInfo)[key] as T;
+    });
+}
+function useServiceMasterField<T = string>(suffix: string) {
+    return computed<T>(() => {
+        const prefix = settings.value.PREFIX; // 'vps' | 'qs'
+        const key = `${prefix}_${suffix}` as keyof ServiceMaster;
+        return (serviceMaster.value as ServiceMaster)[key] as T;
+    });
+}
+const hostname = useServiceInfoField<string>('hostname');
+const ip = useServiceInfoField<string>('ip');
+const vncPort = useServiceInfoField<string>('vnc_port');
+const masterIp = useServiceMasterField<string>('ip');
 const myip = ref('');
 function submitForm() {
     Swal.fire({
@@ -66,7 +95,7 @@ function submitForm() {
                     <div class="py-2">
                         <h3 class="card-title"><i class="material-icons mb-1 pr-2" style="vertical-align: middle">alarm</i>Setup VNC</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -76,19 +105,19 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncname">VPS Name</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="vncname" type="text" class="form-control form-control-sm" :value="serviceInfo.vps_hostname" disabled />
+                                    <input id="vncname" type="text" class="form-control form-control-sm" :value="hostname" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncserver">VPS IP</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="vncserver" type="text" class="form-control form-control-sm" :value="serviceInfo.vps_ip" disabled />
+                                    <input id="vncserver" type="text" class="form-control form-control-sm" :value="ip" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncipport">VNC IP:Port</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="vncipport" type="text" class="form-control form-control-sm" :value="serviceMaster.vps_ip+':'+serviceInfo.vps_vnc_port" disabled />
+                                    <input id="vncipport" type="text" class="form-control form-control-sm" :value="masterIp + ':' + vncPort" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">

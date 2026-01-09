@@ -4,12 +4,15 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 
 import Swal from 'sweetalert2';
-const props = defineProps(['id', 'module']);
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: VpsInfo | QsInfo;
+}>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
@@ -94,7 +97,7 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_time
                     <div class="py-2">
                         <h3 class="card-title"><i class="material-icons mb-1 pr-2" style="vertical-align: middle">alarm</i>Change {{ module }} Timezone</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

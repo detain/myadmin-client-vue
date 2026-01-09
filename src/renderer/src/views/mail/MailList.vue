@@ -72,7 +72,6 @@ loadMail();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -139,7 +138,7 @@ loadMail();
                     <div id="crud" class="crud">
                         <div class="row">
                             <div class="col-md-12">
-                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
+                                <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -155,12 +154,12 @@ loadMail();
                                             <td>{{ row.mail_id }}</td>
                                             <td>{{ row.repeat_invoices_cost }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id">{{ row.mail_username }}</router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id">{{ row.mail_username }}</router-link>
                                             </td>
                                             <td>{{ row.mail_status }}</td>
                                             <td>{{ row.services_name }}</td>
                                             <td>
-                                                <router-link :to="'/'+moduleLink(module)+'/'+row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.mail_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -175,6 +174,7 @@ loadMail();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,

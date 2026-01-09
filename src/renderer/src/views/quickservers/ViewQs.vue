@@ -21,7 +21,6 @@ import InsertCd from '../../views/vps/InsertCd.vue';
 import ReinstallOs from '../../views/vps/ReinstallOs.vue';
 import ResetPassword from '../../views/vps/ResetPassword.vue';
 import ReverseDns from '../../views/vps/ReverseDns.vue';
-import Slices from '../../views/vps/Slices.vue';
 import TrafficUsage from '../../views/vps/TrafficUsage.vue';
 import SetupVnc from '../../views/vps/SetupVnc.vue';
 import Vnc from '../../views/vps/Vnc.vue';
@@ -198,49 +197,49 @@ function loadLink(newLink: string) {
     </div>
     <div v-if="link" class="row">
         <div v-if="link == 'backup'" class="col">
-            <Backup :id="id" :module="module"></Backup>
+            <Backup :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></Backup>
         </div>
         <div v-else-if="link == 'backups'" class="col">
-            <Backups :id="id" :module="module" :settings="settings"></Backups>
+            <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
         </div>
         <div v-else-if="link == 'change_hostname'" class="col">
-            <ChangeHostname :id="id" :module="module"></ChangeHostname>
+            <ChangeHostname :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ChangeHostname>
         </div>
         <div v-else-if="link == 'change_root_password'" class="col">
-            <ChangeRootPassword :id="id" :module="module"></ChangeRootPassword>
+            <ChangeRootPassword :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ChangeRootPassword>
         </div>
         <div v-else-if="link == 'change_timezone'" class="col">
-            <ChangeTimezone :id="id" :module="module"></ChangeTimezone>
+            <ChangeTimezone :id="id" :module="module" :service-info="serviceInfo"></ChangeTimezone>
         </div>
         <div v-else-if="link == 'change_webuzo_password'" class="col">
-            <ChangeWebuzoPassword :id="id" :module="module"></ChangeWebuzoPassword>
+            <ChangeWebuzoPassword :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ChangeWebuzoPassword>
         </div>
         <div v-else-if="link == 'insert_cd'" class="col">
             <InsertCd :id="id" :module="module"></InsertCd>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
-            <Invoices :id="id" :module="module"></Invoices>
+            <Invoices :id="id" :module="module" :service-info="serviceInfo"></Invoices>
         </div>
         <div v-else-if="link == 'reinstall_os'" class="col">
-            <ReinstallOs :id="id" :module="module" :settings="settings" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
+            <ReinstallOs :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></ReinstallOs>
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
-            <ResetPassword :id="Number(id)" :module="module"></ResetPassword>
+            <ResetPassword :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ResetPassword>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
-            <ReverseDns :id="id" :module="module"></ReverseDns>
+            <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
         </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
-            <TrafficUsage :id="id" :module="module"></TrafficUsage>
+            <TrafficUsage :id="id" :module="module" :service-info="serviceInfo"></TrafficUsage>
         </div>
         <div v-else-if="link == 'setup_vnc'" class="col">
             <SetupVnc :id="id" :module="module" :service-info="serviceInfo" :service-master="serviceMaster"></SetupVnc>
         </div>
         <div v-else-if="link == 'view_desktop'" class="col">
-            <Vnc :id="id" :module="module"></Vnc>
+            <Vnc :id="id" :module="module" :service-info="serviceInfo"></Vnc>
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>
@@ -299,9 +298,9 @@ function loadLink(newLink: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/'+moduleLink(module)+'/'+serviceInfo.qs_id+'/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/restart'" class="dropdown-item">Restart</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/stop'" class="dropdown-item">Stop</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +353,7 @@ function loadLink(newLink: string) {
                                         <tr>
                                             <td style="width: 75%">
                                                 <div id="info-progress-lg" class="progress progress-sm mt-2">
-                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage+'%' }"></div>
+                                                    <div class="progress-bar" :class="[{ 'bg-gradient-blue': diskPercentage <= 80 }, { 'bg-gradient-yellow': 80 > diskPercentage && diskPercentage <= 90 }, { 'bg-gradient-red': diskPercentage > 90 }]" :style="{ width: diskPercentage + '%' }"></div>
                                                 </div>
                                             </td>
                                             <td class="text-bold text-capitalize text-md" style="vertical-align: middle">{{ diskPercentage }}%</td>
@@ -443,7 +442,7 @@ function loadLink(newLink: string) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>

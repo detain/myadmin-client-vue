@@ -8,33 +8,20 @@ import Alert from './components/Alert.vue';
 import { useAuthStore } from './stores/auth.store';
 import { useSiteStore } from './stores/site.store';
 
-import Swal from 'sweetalert2';
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
 onMounted(function () {
-    //    $('[data-widget="pushmenu"]').PushMenu();
-});
-
-const authStore = useAuthStore();
-const siteStore = useSiteStore();
-const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading } = storeToRefs(siteStore);
-
-siteStore.checkInfoLoaded();
-
-$(document).ready(function () {
-    /*
-    $(".pr-password").passwordRequirements({});
-    $('.select2').select2();
+    restoreSidebarState();
+    $('.pr-password').passwordRequirements({});
+    /* $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
         theme: 'bootstrap4',
-        closeOnSelect: true
-    });
+        closeOnSelect: true,
+    }); */
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
-    */
-    //Onhover add shaddow
+    //Onhover add shadow
     $('.shadow-hover').hover(
         function () {
             $(this).removeClass('shadow-sm');
@@ -46,6 +33,14 @@ $(document).ready(function () {
         }
     );
 });
+
+const authStore = useAuthStore();
+const siteStore = useSiteStore();
+const { user } = storeToRefs(authStore);
+const { breadcrums, page_heading } = storeToRefs(siteStore);
+
+siteStore.checkInfoLoaded();
+
 interface SidebarTweakOptions {
     EnableRemember: boolean;
     NoTransitionAfterReload: boolean;
@@ -59,36 +54,28 @@ const AdminLTESidebarTweak = {
 };
 
 // Remember toggle state
-$(document).on('click', '.collapse_menu', function () {
+function collapseMenu() {
     if (!AdminLTESidebarTweak.options.EnableRemember) return;
-    const toggleState = $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed';
+    const body = document.body;
+    const toggleState = body.classList.contains('sidebar-collapse') ? 'opened' : 'closed';
     document.cookie = `toggleState=${toggleState}; path=/`;
-});
+}
 
-// Restore state on load
-$(function () {
+function restoreSidebarState() {
     if (!AdminLTESidebarTweak.options.EnableRemember) return;
-    const match = document.cookie.match(/toggleState=([^;]+)/);
+    const match = document.cookie.match(/(?:^|;\s*)toggleState=([^;]+)/);
     const toggleState = match ? decodeURIComponent(match[1]) : null;
-
     if (toggleState === 'closed') {
+        const body = document.body;
         if (AdminLTESidebarTweak.options.NoTransitionAfterReload) {
-            $('body')
-                .addClass('sidebar-collapse hold-transition')
-                .delay(100)
-                .queue(function (next) {
-                    $(this).removeClass('hold-transition');
-                    next();
-                });
+            body.classList.add('sidebar-collapse', 'hold-transition');
+            setTimeout(() => {
+                body.classList.remove('hold-transition');
+            }, 100);
         } else {
-            $('body').addClass('sidebar-collapse');
+            body.classList.add('sidebar-collapse');
         }
     }
-});
-
-if (window.location.href.indexOf('view_domains_list') > -1) {
-    $('#crud-table th:nth-child(1)').css('display', 'none');
-    $('#crud-table tbody td:nth-child(1)').css('display', 'none');
 }
 </script>
 
@@ -101,7 +88,7 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
             <ul class="navbar-nav menu-collapse">
                 <!-- Left navbar links -->
                 <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -129,8 +116,8 @@ if (window.location.href.indexOf('view_domains_list') > -1) {
                     <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0">
-                            <b>{{ user?.account_lid }}</b></span
+                        <span style="color: #c2c7d0"
+                            ><b>{{ user?.account_lid }}</b></span
                         >
                     </div>
                 </div>

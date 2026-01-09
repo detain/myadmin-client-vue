@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
+//import { storeToRefs } from 'pinia';
 import { ref, watch, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
+//import * as Yup from 'yup';
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
@@ -23,14 +23,14 @@ siteStore.setBreadcrums([
     ['/vps/order', 'Order VPS'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-const billingCycle = ref({
+/* const billingCycle = ref({
     1: 'Monthly',
     3: '3 Months',
     6: '6 Months (5% off)',
     12: 'Yearly (10% off)',
     24: '24 Months (15% off)',
     36: '36 Months (20% off)',
-});
+}); */
 const controlpanel = ref({
     none: 'None',
     da: 'DirectAdmin',
@@ -273,12 +273,12 @@ watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, locati
     couponPriceText.value = '';
     if (typeof couponInfo.value.applies != 'undefined') {
         if (couponInfo.value.type == 3) {
-            sliceCostHtml.value = `<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`;
+            sliceCostHtml.value = `<del style="color: red;">${currencySymbol.value}${sliceCost.value}</del> Per Slice`;
             couponPriceLabel.value = 'Price';
             couponPriceText.value = `${currencySymbol.value + couponInfo.value.amount} per slice`;
             first_slice = Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 2) {
-            couponPriceText.value = `-${currencySymbol.value  }${couponInfo.value.amount}`;
+            couponPriceText.value = `-${currencySymbol.value}${couponInfo.value.amount}`;
             couponPriceLabel.value = 'Discount';
             first_slice = first_slice - Number(couponInfo.value.amount);
         } else if (couponInfo.value.type == 1) {
@@ -487,7 +487,7 @@ function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
@@ -578,7 +578,7 @@ function update_vps_choices() {
         if (couponInfo.value.type == 3) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#slicecost').html(`<del style="color: red;">${currencySymbol.value  }${sliceCost.value}</del> Per Slice`);
+            jQuery('#slicecost').html(`<del style="color: red;">${currencySymbol.value}${sliceCost.value}</del> Per Slice`);
             couponPriceLabel.value = 'Price';
             jQuery('#couponprice').html(`${currencySymbol.value + couponInfo.value.amount} per slice`);
             jQuery('#couponpricenew').val(`${couponInfo.value.amount} per slice`);
@@ -586,7 +586,7 @@ function update_vps_choices() {
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
+            jQuery('#couponprice').text(`-${currencySymbol.value}${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);
@@ -747,7 +747,7 @@ function update_vps_choices_order() {
         } else if (couponInfo.value.type == 2) {
             jQuery('#couponpricerow').css('display', 'table-row');
             jQuery('#couponpricerownew').show();
-            jQuery('#couponprice').text(`-${currencySymbol.value  }${couponInfo.value.amount}`);
+            jQuery('#couponprice').text(`-${currencySymbol.value}${couponInfo.value.amount}`);
             couponPriceLabel.value = 'Discount';
             jQuery('#couponpricenew').val(`-(${couponInfo.value.amount})`);
             first_slice = first_slice - Number(couponInfo.value.amount);
@@ -837,7 +837,7 @@ function update_vps_choices_order() {
     if ($('#total_cost_display').length > 0) {
         $('#total_cost_display').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat(totalCost.value.toString()).toFixed(2))));
     }
-    $(document).ready(function () {
+    $(function () {
         if ($('#renew_cost').length > 0) {
             $('#renew_cost').text(Intl.NumberFormat('en-US', { style: 'currency', currency: currency.value }).format(Number(parseFloat((slices.value * sliceCost.value).toString()).toFixed(2))));
         }

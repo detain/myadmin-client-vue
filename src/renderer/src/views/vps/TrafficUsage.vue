@@ -4,9 +4,15 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 
 import Chart from 'chart.js/auto';
-const props = defineProps(['id', 'module']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: VpsInfo | QsInfo;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -64,7 +70,7 @@ onMounted(() => {
             <div class="p-1">
                 <h3 class="card-title py-2"><i class="fa fa-tachometer-alt"></i> &nbsp;Bandwidth / Traffic Usage</h3>
                 <div class="card-tools text-right">
-                    <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                 </div>
             </div>
         </div>

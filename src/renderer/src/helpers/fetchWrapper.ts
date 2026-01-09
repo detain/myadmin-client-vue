@@ -37,7 +37,7 @@ function request(method: string) {
 
 // helper functions
 function authHeader(url: string): any {
-    // return auth header with jwt if user is logged in and request is to the api url
+    // return auth header with jwt if user is logged-in and request is to the api url
     const { user, apiKey, sessionId } = useAuthStore();
     //console.log("session id:");
     //console.log(sessionId);
@@ -59,7 +59,6 @@ async function handleResponse(response: any) {
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
     // check for error response
-    //console.log("Got "+response.status+" response");
     if (!response.ok) {
         const authStore = useAuthStore();
         if ([401, 403].includes(response.status) && authStore.user) {

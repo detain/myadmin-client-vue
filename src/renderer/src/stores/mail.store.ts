@@ -40,8 +40,7 @@ interface MailState {
     usage_count: number;
 }
 
-export const useMailStore = defineStore({
-    id: 'mail',
+export const useMailStore = defineStore('mail', {
     state: (): MailState => ({
         mailList: [],
         loading: false,
@@ -156,7 +155,7 @@ export const useMailStore = defineStore({
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
-            // update stored user if the logged in user updated their own record
+            // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
             if (id === authStore.user.id) {
                 // update local storage

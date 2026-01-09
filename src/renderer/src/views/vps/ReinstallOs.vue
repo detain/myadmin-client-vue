@@ -5,11 +5,20 @@ import { RouterLink } from 'vue-router';
 import { ref, watch, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
+import { storeToRefs } from 'pinia';
 
-const props = defineProps(['id', 'module', 'settings', 'serviceInfo', 'serviceMaster']);
+const props = defineProps<{
+    id: number;
+    module: string;
+    serviceInfo: any;
+    serviceMaster: any;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const siteStore = useSiteStore();
+const { modules } = storeToRefs(siteStore);
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => {
     return props.id;
@@ -17,14 +26,14 @@ const id = computed(() => {
 const module = computed(() => {
     return props.module;
 });
-const settings = computed(() => {
-    return props.settings;
-});
 const serviceInfo = computed(() => {
     return props.serviceInfo;
 });
 const serviceMaster = computed(() => {
     return props.serviceMaster;
+});
+const settings = computed(() => {
+    return modules.value[module.value];
 });
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
@@ -181,7 +190,7 @@ try {
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-linux">&nbsp;</i>Reinstall OS</h3>
                             <div class="card-tools text-right">
-                                <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

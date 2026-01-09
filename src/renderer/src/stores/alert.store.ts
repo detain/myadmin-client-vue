@@ -9,8 +9,7 @@ interface AlertState {
     alert: AlertMessage | null;
 }
 
-export const useAlertStore = defineStore({
-    id: 'alert',
+export const useAlertStore = defineStore('alert', {
     state: (): AlertState => ({
         alert: null,
     }),

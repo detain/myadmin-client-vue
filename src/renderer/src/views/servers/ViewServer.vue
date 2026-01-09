@@ -21,7 +21,7 @@ const module = 'servers';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -91,7 +91,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-serverStore.getById(id as string);
+serverStore.getById(id);
 
 const hasAssetVlanSwitchport = computed(() => {
     let ret = false;
@@ -244,7 +244,7 @@ const ipv6VlansNetworks = computed(() => {
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -292,11 +292,11 @@ const ipv6VlansNetworks = computed(() => {
                                             <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">Select Action</button>
                                             <button type="button" class="btn dropdown-toggle dropdown-hover dropdown-icon" :class="asset.lease.power ? 'btn-success' : 'btn-danger'" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
                                             <div class="dropdown-menu" role="menu">
-                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=cycle'">Cycle</a>
-                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=reset'">Reset</a>
-                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=on'">On</a>
-                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=off'">Off</a>
-                                                <a class="dropdown-item" :href="'view_server?id='+serviceInfo.server_id+'&asset='+asset_id+'&link=ipmi_power&action=soft'">Soft Reboot</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=cycle'">Cycle</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=reset'">Reset</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=on'">On</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=off'">Off</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=soft'">Soft Reboot</a>
                                             </div>
                                         </div>
                                     </template>

@@ -20,7 +20,7 @@ const module: string = 'ssl';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -182,7 +182,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-sslStore.getById(id as string);
+sslStore.getById(id);
 </script>
 
 <template>
@@ -203,7 +203,7 @@ sslStore.getById(id as string);
             </div>
         </div>
         <div class="col-md-3">
-            <div :class="'small-box bg-'+serviceStatusColor">
+            <div :class="'small-box bg-' + serviceStatusColor">
                 <div class="inner px-3 pb-1 pt-2">
                     <h3>Billing</h3>
                     <p class="m-0 py-1">
@@ -281,7 +281,7 @@ sslStore.getById(id as string);
                     </div>
                 </div>
                 <div v-show="!isCollapsed" class="card-body">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

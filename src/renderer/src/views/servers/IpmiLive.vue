@@ -5,7 +5,9 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 
-const props = defineProps(['id']);
+const props = defineProps<{
+    id: number;
+}>();
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
@@ -126,7 +128,7 @@ interface AssetRow {
                         <h3 class="card-title py-2"><i class="fa fa-connectdevelop">&nbsp;</i>IPMI IP</h3>
                         <div class="card-tools float-right">
                             <a class="btn btn-custom mr-3" :href="emailIPMILink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

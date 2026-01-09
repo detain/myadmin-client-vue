@@ -4,19 +4,20 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
-const props = defineProps({
-    module: String,
-    id: Number,
-    currency_symbol: String,
-    memory: String,
-    hdd: String,
-});
+const props = defineProps<{
+    module: string;
+    id: number;
+    currencySymbol: string;
+    memory: string;
+    hdd: string;
+}>();
 const id = computed(() => {
     return props.id;
 });
-const currency_symbol = computed(() => {
-    return props.currency_symbol;
+const currencySymbol = computed(() => {
+    return props.currencySymbol;
 });
 const memory = computed(() => {
     return props.memory;
@@ -25,13 +26,12 @@ const hdd = computed(() => {
     return props.hdd;
 });
 const module = computed(() => {
-    return props.module || '';
+    return props.module;
 });
 
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const confirm = ref(false);
+const baseUrl = siteStore.getBaseUrl();
 const slices = ref(0);
 const nowCost = computed(() => {
     // Calculate and return the now_cost value based on the slices value
@@ -55,7 +55,27 @@ const repeatCost = computed(() => {
     return (baseCost * slicesMultiplier).toFixed(2);
 });
 function submitForm() {
-    // Handle form submission
+    let postData = {
+        slices: slices.value,
+    };
+    fetchWrapper
+        .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/slices`, postData)
+        .then((response: any) => {
+            console.log('api success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: response.message,
+            });
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
+        });
 }
 </script>
 
@@ -67,7 +87,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-upload"></i>&nbsp;Upgrade / Downgrade Slices</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -78,7 +98,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label class="col-form-label">Upgrade / Dowgrade</label>
+                                    <label class="col-form-label">Upgrade / Downgrade</label>
                                 </div>
                                 <div class="col-md-9 b-radius form-control-sm text-muted px-4" style="background: #e7ebef; border: 1px solid #ced4da">
                                     <div class="row m-0 p-0">
@@ -114,7 +134,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Immediate Cost ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Immediate Cost ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="amount" type="hidden" class="form-control" value="1" />
@@ -127,7 +147,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Additional Fees ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Additional Fees ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="diff_cost" class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" disabled :value="diffCost" />
@@ -139,7 +159,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currency_symbol }} )</label>
+                                    <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currencySymbol }} )</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="repeat_cost" class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" disabled :value="repeatCost" />
@@ -147,12 +167,20 @@ function submitForm() {
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="confirmation">Yes I want to do this.</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input id="confirmation" v-model="confirm" type="checkbox" name="confirm" value="yes" required />
+                                </div>
+                            </div>
+                        </div>
                         <hr />
-
                         <div class="form-group">
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-order px-3 py-2 text-sm">Confirm</button>
+                                <button type="submit" class="btn btn-order px-3 py-2 text-sm" :disabled="!confirm">Confirm</button>
                             </div>
                         </div>
                     </form>

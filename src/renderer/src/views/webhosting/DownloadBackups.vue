@@ -13,7 +13,7 @@ const siteStore = useSiteStore();
 
 const props = defineProps({
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     rows: {
@@ -41,7 +41,7 @@ interface BackupRow {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i style="vertical-align: middle; margin-top: -5px" class="material-icons">cloud_download</i>&nbsp;Download Backups</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/'+moduleLink(module)+'/'+id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

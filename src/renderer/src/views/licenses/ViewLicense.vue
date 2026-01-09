@@ -20,7 +20,7 @@ const module = 'licenses';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id = Number(route.params.id);
 const link = computed(() => {
     return route.params.link;
 });
@@ -90,7 +90,7 @@ watch(
 
 loadLink(route.params.link as string);
 
-licenseStore.getById(id as string);
+licenseStore.getById(id);
 </script>
 
 <template>
@@ -229,7 +229,7 @@ licenseStore.getById(id as string);
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/'+moduleLink(module)+'/'+id+'/'+clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>

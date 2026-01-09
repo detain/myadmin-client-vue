@@ -8,7 +8,7 @@ import { useSiteStore } from '../../stores/site.store';
 
 import Swal from 'sweetalert2';
 const route = useRoute();
-const id = route.params.id;
+const id = Number(route.params.id);
 const siteStore = useSiteStore();
 siteStore.setPageHeading('DNS Editor');
 siteStore.setTitle('DNS Editor');
@@ -193,7 +193,6 @@ loadDns();
 </script>
 
 <template>
-    <link rel="stylesheet" href="/css/crud_table5.css" />
     <div id="records" class="card">
         <div class="card-header">
             <div class="p-1">
@@ -207,7 +206,7 @@ loadDns();
             <form method="post">
                 <input id="domain_id" type="hidden" name="id" value="35626" />
             </form>
-            <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" width="100%">
+            <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" style="width: 100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -247,7 +246,7 @@ loadDns();
                         </td>
                         <td>
                             <select id="addType" v-model="type" class="form-control">
-                                <option v-for="(type, index) in recordTypes" :key="index" :value="type">{{ type }}</option>
+                                <option v-for="(recordType, index) in recordTypes" :key="index" :value="recordType">{{ recordType }}</option>
                             </select>
                         </td>
                         <td><input id="addContent" v-model="content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
@@ -269,7 +268,7 @@ loadDns();
                             </td>
                             <td>
                                 <select v-model="row.type" class="form-control" style="width: 100% !important">
-                                    <option v-for="(type, typeIndex) in recordTypes" :key="typeIndex" :value="type">{{ type }}</option>
+                                    <option v-for="(recordType, typeIndex) in recordTypes" :key="typeIndex" :value="recordType">{{ recordType }}</option>
                                 </select>
                             </td>
                             <td><input v-model="row.content" type="text" class="form-control form-control-sm" data-regex="^.+$" /></td>
@@ -300,6 +299,7 @@ loadDns();
 </template>
 
 <style scoped>
+@import '../../assets/css/crud_table5.css';
 a.btn-info:link,
 a.btn-info:active,
 a.btn-info:visited,
