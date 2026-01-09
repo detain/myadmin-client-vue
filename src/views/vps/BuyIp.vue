@@ -6,7 +6,7 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
@@ -34,18 +34,15 @@ function submitForm() {
         showConfirmButton: false,
     });
     try {
-        fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {
-            })
-            .then((response) => {
-                Swal.close();
-                console.log('webhosting buy ip');
-                console.log(response);
-                Swal.fire({
-                    icon: 'success',
-                    html: `Success${response.text}`,
-                });
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {}).then((response) => {
+            Swal.close();
+            console.log('webhosting buy ip');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
             });
+        });
     } catch (error: any) {
         Swal.close();
         console.log('webhosting buy ip');

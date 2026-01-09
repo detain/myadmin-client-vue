@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-const props = defineProps< {
+const props = defineProps<{
     msg: string;
 }>();
 const msg = computed(() => {

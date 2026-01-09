@@ -4,7 +4,7 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;

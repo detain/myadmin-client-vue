@@ -4,7 +4,7 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 const module: string = 'webhosting';
 const siteStore = useSiteStore();
@@ -65,18 +65,15 @@ function submitForm() {
         showConfirmButton: false,
     });
     try {
-        fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, {
-            })
-            .then((response) => {
-                Swal.close();
-                console.log('webhosting buy ip');
-                console.log(response);
-                Swal.fire({
-                    icon: 'success',
-                    html: `Success${response.text}`,
-                });
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, {}).then((response) => {
+            Swal.close();
+            console.log('webhosting buy ip');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
             });
+        });
     } catch (error: any) {
         Swal.close();
         console.log('webhosting buy ip');
@@ -87,8 +84,6 @@ function submitForm() {
         });
     }
 }
-
-
 </script>
 
 <template>
@@ -124,7 +119,7 @@ function submitForm() {
                         <hr />
                     </template>
                     <template v-if="buyForm">
-                        <form method="POST"  @submit.prevent="submitForm">
+                        <form method="POST" @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
                             <div class="form-group">
                                 <div class="row">
