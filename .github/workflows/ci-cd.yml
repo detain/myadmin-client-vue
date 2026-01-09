@@ -137,6 +137,9 @@ jobs:
               if: github.event_name == 'pull_request'
               run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
 
+            - name: Build Site
+              run: yarn build
+
             - name: Build Electron app
               run: npx electron-builder ${{ matrix.build_args }}
 
