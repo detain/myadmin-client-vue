@@ -130,7 +130,8 @@ jobs:
               if: matrix.platform == 'linux'
               run: |
                   sudo apt-get update
-                  sudo apt-get install -y libarchive-tools snapcraft rpm
+                  sudo apt-get install -y libarchive-tools rpm
+                  sudo snap install snapcraft --classic
 
             - name: Disable signing for PRs
               if: github.event_name == 'pull_request'
