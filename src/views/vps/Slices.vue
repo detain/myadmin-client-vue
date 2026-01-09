@@ -10,8 +10,8 @@ const props = defineProps<{
     module: string;
     id: number;
     currencySymbol: string;
-    memory: string;
-    hdd: string;
+    memory?: string;
+    hdd?: string;
 }>();
 const id = computed(() => {
     return props.id;

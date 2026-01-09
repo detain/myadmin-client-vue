@@ -321,7 +321,7 @@ function toggleFunc(cp: string) {
             <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
         </div>
         <div v-else-if="link == 'slices'" class="col">
-            <Slices :id="Number(id)" :module="module" :service-info="serviceInfo"></Slices>
+            <Slices :id="id" :module="module" :service-info="serviceInfo" :currency-symbol="custCurrencySymbol"></Slices>
         </div>
         <div v-else-if="link == 'traffic_usage'" class="col">
             <TrafficUsage :id="id" :module="module" :service-info="serviceInfo"></TrafficUsage>

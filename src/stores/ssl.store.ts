@@ -20,7 +20,7 @@ interface SslState {
     pkg: number;
     ssl_id: number;
     ssl_hostname: string;
-    ssl_order_id: number;
+    ssl_order_id: string | number;
     ssl_type: number;
     ssl_currency: string;
     ssl_order_date: string;
@@ -86,7 +86,7 @@ export const useSslStore = defineStore('ssl', {
         linkDisplay: false,
     }),
     getters: {
-        titleField: (state) => state.ssl_order_id,
+        titleField: (state) => state.ssl_order_id as string,
     },
     actions: {
         async register(user: any): Promise<void> {

@@ -11,7 +11,7 @@ const props = defineProps<{
     module: string;
     package: string | number;
     titleField: string;
-    titleField2: string;
+    titleField2?: string;
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
