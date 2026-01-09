@@ -154,8 +154,14 @@ jobs:
               if: matrix.platform == 'win'
               shell: pwsh
               run: |
-                  cd dist
-                  Compress-Archive win-unpacked my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip
+                  cd dist                  
+                  if ("${{ matrix.arch }}" -eq "arm64") {
+                    $src = "win-arm64-unpacked"
+                  } else {
+                    $src = "win-unpacked"
+                  }                  
+                  $zip = "my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip"
+                  Compress-Archive -Path $src -DestinationPath $zip
 
             - name: Zip unpacked (macOS)
               if: matrix.platform == 'mac'
@@ -167,14 +173,9 @@ jobs:
             - name: Generate SHA256 checksums
               run: |
                   cd dist
-                  if command -v sha256sum >/dev/null; then
-                    find . -type f -maxdepth 1 -print0 | xargs -0 sha256sum > SHA256SUMS.txt
-                  else
-                    # Windows / certutil fallback (PowerShell runners won't hit this branch)
-                    for f in *; do
-                      [ -f "$f" ] && certutil -hashfile "$f" SHA256
-                    done > SHA256SUMS.txt
-                  fi
+                  for f in *; do
+                    [ -f "$f" ] && certutil -hashfile "$f" SHA256
+                  done > SHA256SUMS.txt
 
             # ---------------- UPLOAD ARTIFACTS ----------------
             - name: Upload artifacts
