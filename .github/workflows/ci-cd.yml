@@ -169,21 +169,6 @@ jobs:
                   cd dist
                   zip -r my-interserver-client-${APP_VERSION}-mac.zip mac-unpacked
 
-            # ---------------- CHECKSUMS ----------------
-            - name: Generate Win SHA256 checksums
-              if: matrix.platform == 'win'
-              run: |
-                  cd dist
-                  for f in *; do
-                    [ -f "$f" ] && certutil -hashfile "$f" SHA256
-                  done > SHA256SUMS.txt
-
-            - name: Generate Other SHA256 checksums
-              if: matrix.platform != 'win'
-              run: |
-                  cd dist
-                  find . -type f -maxdepth 1 -print0 | xargs -0 sha256sum > SHA256SUMS.txt
-
             # ---------------- UPLOAD ARTIFACTS ----------------
             - name: Upload artifacts
               uses: actions/upload-artifact@v4
