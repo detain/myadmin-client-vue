@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
     module: string;
-    package: number;
+    package: string | number;
     titleField: string;
     titleField2: string;
 }>();
