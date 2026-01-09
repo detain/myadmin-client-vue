@@ -130,7 +130,7 @@ jobs:
               if: matrix.platform == 'linux'
               run: |
                   sudo apt-get update
-                  sudo apt-get install -y libarchive-tools rpm
+                  sudo apt-get install -y libarchive-tools rpm libnss3-tools
                   sudo snap install snapcraft --classic
 
             - name: Disable signing for PRs
@@ -168,9 +168,12 @@ jobs:
               run: |
                   cd dist
                   if command -v sha256sum >/dev/null; then
-                    sha256sum * > SHA256SUMS.txt
+                    find . -type f -maxdepth 1 -print0 | xargs -0 sha256sum > SHA256SUMS.txt
                   else
-                    certutil -hashfile * SHA256 > SHA256SUMS.txt
+                    # Windows / certutil fallback (PowerShell runners won't hit this branch)
+                    for f in *; do
+                      [ -f "$f" ] && certutil -hashfile "$f" SHA256
+                    done > SHA256SUMS.txt
                   fi
 
             # ---------------- UPLOAD ARTIFACTS ----------------
