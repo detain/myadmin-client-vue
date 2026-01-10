@@ -2,12 +2,46 @@
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
+import {
+    Chart,
+    LineController,
+    BarController,
+    LineElement,
+    BarElement,
+    PointElement,
+    LinearScale,
+    TimeScale,
+    Tooltip,
+    Legend,
+    Filler
+} from 'chart.js';
+import 'chartjs-adapter-date-fns';
 
-import Chart from 'chart.js/auto';
+Chart.register(
+    LineController,
+    BarController,
+    LineElement,
+    BarElement,
+    PointElement,
+    LinearScale,
+    TimeScale,
+    Tooltip,
+    Legend,
+    Filler
+);
+
+const todayGraph = ref<HTMLCanvasElement | null>(null);
+const hourGraph = ref<HTMLCanvasElement | null>(null);
+const monthGraph = ref<HTMLCanvasElement | null>(null);
+
+let todayChart: Chart | null = null;
+let hourChart: Chart | null = null;
+let monthChart: Chart | null = null;
+
 const props = defineProps<{
     id: number;
     module: string;
@@ -24,41 +58,196 @@ const module = computed(() => {
     return props.module;
 });
 
-onMounted(() => {
-/*    const todayGraph = document.getElementById('todayGraph') as unknown as HTMLCanvasElement;
-    const hourGraph = document.getElementById('hourGraph') as unknown as HTMLCanvasElement;
-    const monthGraph = document.getElementById('monthGraph') as unknown as HTMLCanvasElement;
-    // Initialize and configure the charts
-    const todayChart = new Chart(todayGraph.getContext('2d') as CanvasRenderingContext2D, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [],
-        },
-    });
-    const hourChart = new Chart(hourGraph.getContext('2d') as CanvasRenderingContext2D, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [],
-        },
-    });
-    const monthChart = new Chart(monthGraph.getContext('2d') as CanvasRenderingContext2D, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [],
-        },
-    });
-*/
-    // Rest of the chart setup code
-    // ...
+const metric = ref<'bits' | 'bytes'>('bits');
 
-    // Remember to import any required libraries before using them in the setup
+function formatTotal(val: number, metricType = metric.value) {
+    const unit = metricType === 'bits' ? 'b' : 'B';
 
-    // Example:
-    // import Chart from 'chart.js';
+    if (val > 1073741824) return `${Math.ceil(val / 1073741824)} G${unit}`;
+    if (val > 1048576)    return `${Math.ceil(val / 1048576)} M${unit}`;
+    if (val > 1024)       return `${Math.ceil(val / 1024)} K${unit}`;
+
+    return `${val} ${unit}`;
+}
+
+function formatBandwidth(val: number, metricType = metric.value) {
+    return `${formatTotal(val, metricType)}/s`;
+}
+
+const currentIn = computed(() => formatBandwidth(trafficData.value.usage.current.in, metric.value));
+const currentOut = computed(() => formatBandwidth(trafficData.value.usage.current.out, metric.value));
+const peakIn = computed(() => formatBandwidth(trafficData.value.usage.peak.in, metric.value));
+const peakOut = computed(() => formatBandwidth(trafficData.value.usage.peak.out, metric.value));
+const avgIn = computed(() => formatBandwidth(trafficData.value.usage.average.in.value, metric.value));
+const avgOut = computed(() => formatBandwidth(trafficData.value.usage.average.out.value, metric.value));
+
+const dayIn = computed(() => formatTotal(trafficData.value.totals.day.in, metric.value));
+const dayOut = computed(() => formatTotal(trafficData.value.totals.day.out, metric.value));
+const monthIn = computed(() => formatTotal(trafficData.value.totals.month.in, metric.value));
+const monthOut = computed(() => formatTotal(trafficData.value.totals.month.out, metric.value));
+const yearIn = computed(() => formatTotal(trafficData.value.totals.year.in, metric.value));
+const yearOut = computed(() => formatTotal(trafficData.value.totals.year.out, metric.value));
+const allIn = computed(() => formatTotal(trafficData.value.totals.all.in, metric.value));
+const allOut = computed(() => formatTotal(trafficData.value.totals.all.out, metric.value));
+
+onMounted(async () => {
+    await loadTraffic();
+
+    buildTodayChart();
+    buildHourChart();
+    buildDayChart();
+
+    pollTimer = window.setInterval(
+        pollTraffic,
+        trafficData.value.interval * 1000
+    );
 });
+
+onBeforeUnmount(() => {
+    if (pollTimer) clearInterval(pollTimer);
+    todayChart?.destroy();
+    hourChart?.destroy();
+    monthChart?.destroy();
+});
+
+let pollTimer: number | null = null;
+
+async function pollTraffic() {
+    if (!trafficData.value) return;
+
+    const lastTs = trafficData.value.last;
+
+    const json = await fetchWrapper.get(
+        `${baseUrl}/${module.value}/${id.value}/traffic_usage?ts=${lastTs}`
+    );
+
+    trafficData.value.last = json.last;
+
+    // current
+    trafficData.value.usage.current = json.usage.current;
+
+    // peak
+    if (
+        json.usage.peak.in + json.usage.peak.out >
+        trafficData.value.usage.peak.in + trafficData.value.usage.peak.out
+    ) {
+        trafficData.value.usage.peak = json.usage.peak;
+    }
+
+    // averages
+    for (const dir of ['in', 'out'] as const) {
+        const avg = trafficData.value.usage.average[dir];
+        avg.total += json.usage.average[dir].total;
+        avg.count += json.usage.average[dir].count;
+        avg.value = Math.ceil(avg.total / avg.count);
+    }
+
+    // append chart data
+    if (json.data?.length && todayChart) {
+        json.data.forEach((s: any, idx: number) => {
+            todayChart!.data.datasets[idx].data.push(
+                ...s.data.map((p: any) => ({ x: p[0], y: p[1] }))
+            );
+        });
+
+        todayChart.update('none');
+    }
+}
+
+function buildTodayChart() {
+    if (!todayGraph.value || !trafficData.value?.data) return;
+
+    todayChart?.destroy();
+
+    todayChart = new Chart(todayGraph.value, {
+        type: 'line',
+        data: {
+            datasets: trafficData.value.data.map((s: any) => ({
+                label: s.name,
+                data: s.data.map((p: any) => ({ x: p[0], y: p[1] })),
+                fill: true,
+                tension: 0.4
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: ctx => formatBandwidth(ctx.parsed.y)
+                    }
+                }
+            },
+            scales: {
+                x: { type: 'time' },
+                y: {
+                    ticks: {
+                        callback: v => formatBandwidth(Number(v))
+                    }
+                }
+            }
+        }
+    });
+}
+
+function buildHourChart() {
+    if (!hourGraph.value || !trafficData.value?.history?.hour) return;
+
+    hourChart?.destroy();
+
+    hourChart = new Chart(hourGraph.value, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Bandwidth Used',
+                data: trafficData.value.history.hour.data.map((p: any) => ({
+                    x: p[0],
+                    y: p[1]
+                }))
+            }]
+        },
+        options: {
+            scales: {
+                x: { type: 'time' },
+                y: {
+                    ticks: {
+                        callback: v => formatTotal(Number(v))
+                    }
+                }
+            }
+        }
+    });
+}
+
+function buildDayChart() {
+    if (!monthGraph.value || !trafficData.value?.history?.day) return;
+
+    monthChart?.destroy();
+
+    monthChart = new Chart(monthGraph.value, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Bandwidth Used',
+                data: trafficData.value.history.day.data.map((p: any) => ({
+                    x: p[0],
+                    y: p[1]
+                }))
+            }]
+        },
+        options: {
+            scales: {
+                x: { type: 'time' },
+                y: {
+                    ticks: {
+                        callback: v => formatTotal(Number(v))
+                    }
+                }
+            }
+        }
+    });
+}
+
 
 const loadTraffic = async () => {
     try {
@@ -126,37 +315,37 @@ loadTraffic();
                                     <tr>
                                         <td>Today</td>
                                         <td class="text-success">
-                                            <div class="day_in">{{ trafficData.totals.day.in }}</div>
+                                            <div class="day_in">{{ dayIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="day_out">{{ trafficData.totals.day.out }}</div>
+                                            <div class="day_out">{{ dayOut }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>This Month</td>
                                         <td class="text-success">
-                                            <div class="month_in">{{ trafficData.totals.month.in }}</div>
+                                            <div class="month_in">{{ monthIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="month_out">{{ trafficData.totals.month.out }}</div>
+                                            <div class="month_out">{{ monthOut }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>This Year</td>
                                         <td class="text-success">
-                                            <div class="year_in">{{ trafficData.totals.year.in }}</div>
+                                            <div class="year_in">{{ yearIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="year_out">{{ trafficData.totals.year.out }}</div>
+                                            <div class="year_out">{{ yearOut }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>All</td>
                                         <td class="text-success">
-                                            <div class="all_in">{{ trafficData.totals.all.in }}</div>
+                                            <div class="all_in">{{ allIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="all_out">{{ trafficData.totals.all.out }}</div>
+                                            <div class="all_out">{{ allOut }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -176,31 +365,31 @@ loadTraffic();
                                         <td><strong>Current</strong></td>
                                         <td class="text-success">
                                             <strong>
-                                                <div class="current_in">{{ trafficData.usage.current.in }}</div>
+                                                <div class="current_in">{{ currentIn }}</div>
                                             </strong>
                                         </td>
                                         <td class="text-danger">
                                             <strong>
-                                                <div class="current_out">{{ trafficData.usage.current.in }}</div>
+                                                <div class="current_out">{{ currentOut }}</div>
                                             </strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Average</td>
                                         <td class="text-success">
-                                            <div class="average_in">{{ trafficData.usage.average.in.value }}</div>
+                                            <div class="average_in">{{ avgIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="average_out">{{ trafficData.usage.average.out.value }}</div>
+                                            <div class="average_out">{{ avgOut }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Peak</td>
                                         <td class="text-success">
-                                            <div class="peak_in">{{ trafficData.usage.peak.in }}</div>
+                                            <div class="peak_in">{{ peakIn }}</div>
                                         </td>
                                         <td class="text-danger">
-                                            <div class="peak_out">{{ trafficData.usage.peak.out }}</div>
+                                            <div class="peak_out">{{ peakOut }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
