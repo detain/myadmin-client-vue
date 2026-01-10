@@ -4,19 +4,25 @@ import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 
 import { fetchWrapper } from '../../helpers/fetchWrapper';
+import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '../../types/account.ts';
 
-const props = defineProps(['data', 'oauthproviders', 'oauthconfig', 'oauthadapters']);
+const props = defineProps<{
+    data: AccountData
+    oAuthProviders: oAuthProvidersType
+    oAuthConfig: oAuthConfigType
+    oAuthAdapters: oAuthAdaptersType
+}>();
 const data = computed(() => {
     return props.data;
 });
-const oauthproviders = computed(() => {
-    return props.oauthproviders;
+const oAuthProviders = computed(() => {
+    return props.oAuthProviders;
 });
-const oauthconfig = computed(() => {
-    return props.oauthconfig;
+const oAuthConfig = computed(() => {
+    return props.oAuthConfig;
 });
-const oauthadapters = computed(() => {
-    return props.oauthadapters;
+const oAuthAdapters = computed(() => {
+    return props.oAuthAdapters;
 });
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
@@ -74,7 +80,7 @@ async function unlinkOauth(type: string) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(provider, name) in oauthconfig.providers" :key="name">
+                    <tr v-for="(provider, name) in oAuthConfig.providers" :key="name">
                         <td>{{ name }}</td>
                         <td>
                             <span v-if="provider.linked">Linked</span>
@@ -84,7 +90,7 @@ async function unlinkOauth(type: string) {
                             <span v-if="provider.url">
                                 <a :href="provider.url" target="_blank">{{ provider.url }}</a>
                                 (<a href="" @click.prevent="unlinkOauth(name.toString())">Unlink</a>)
-                                <span v-if="oauthadapters[name]">(<a @click.prevent="logOutOauth(name.toString())">Log Out</a>)</span>
+                                <span v-if="oAuthAdapters[name]">(<a @click.prevent="logOutOauth(name.toString())">Log Out</a>)</span>
                             </span>
                             <span v-else>
                                 {{ provider.account || '' }}

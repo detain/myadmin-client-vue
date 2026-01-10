@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-
 import { useSiteStore } from '../../stores/site.store';
+import type { AccountData } from '../../types/account.ts';
 
-const props = defineProps(['data']);
+const props = defineProps<{
+    data: AccountData
+}>();
 const data = computed(() => {
     return props.data;
 });
@@ -46,12 +48,11 @@ async function updateFeatures() {
             </div>
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateFeatures">
+            <form method="post" enctype="multipart/form-data" @submit.prevent="updateFeatures">
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
                         <input id="disreins" v-model="data.disable_reinstall" type="checkbox" name="disable_reinstall" value="1" />
-                        <label for="disreins"
-                            >Disable Reinstalls
+                        <label for="disreins">Disable Re-installs
                             <div style="font-weight: normal">Note: To disable reinstall create new ticket, our support team will help</div>
                         </label>
                     </div>
