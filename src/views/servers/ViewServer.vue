@@ -193,7 +193,7 @@ const ipv6VlansNetworks = computed(() => {
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
-            <IpmiLive :id="id"></IpmiLive>
+            <IpmiLive :id="id" :asset-info="firstAsset"></IpmiLive>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
@@ -300,7 +300,7 @@ const ipv6VlansNetworks = computed(() => {
                                 <th>IPv6</th>
                                 <th>Netmask</th>
                                 <th>Gateway</th>
-                                <th>Hostmax</th>
+                                <th>HostMax</th>
                                 <th>Switch</th>
                                 <th>Port</th>
                                 <th>Is Primary?</th>
