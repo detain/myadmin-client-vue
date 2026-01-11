@@ -264,6 +264,7 @@ accountStore.load();
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-right" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">Control Panel</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">

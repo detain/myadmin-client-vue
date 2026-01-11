@@ -543,7 +543,7 @@ function toggleFunc(cp: string) {
                                     <strong>Note:</strong>
                                     <span id="warning-text"></span><br />
                                     You can reinstall from left menu
-                                    <b>Maintanance -> Re-Install Operating System</b>
+                                    <b>Maintenance -> Re-Install Operating System</b>
                                 </div>
                             </div>
                         </div>
