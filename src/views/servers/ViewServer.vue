@@ -9,7 +9,6 @@ import { computed, watch } from 'vue';
 import { useServerStore } from '../../stores/server.store';
 import { useSiteStore } from '../../stores/site.store';
 
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
@@ -112,6 +111,11 @@ const assets = computed(() => {
     return networkInfo.value.assets ? networkInfo.value.assets : {};
 });
 
+const firstAsset = computed(() => {
+    return networkInfo.value.assets ? (Object.keys(networkInfo.value.assets).length > 0 ? networkInfo.value.assets[Object.keys(networkInfo.value.assets)[0]] : []) : [];
+});
+
+
 const vlans = computed(() => {
     return networkInfo.value.vlans ? networkInfo.value.vlans : {};
 });
@@ -199,7 +203,7 @@ const ipv6VlansNetworks = computed(() => {
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>
-    <div v-if="!linkDisplay || (link && link.includes('cancel'))" class="row justify-content-center">
+    <div v-else class="row justify-content-center">
         <div :class="`${ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true ? 'col-md-8' : 'col-md-4'}`">
             <div class="card">
                 <div class="card-header">
