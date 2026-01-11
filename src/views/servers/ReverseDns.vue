@@ -4,21 +4,58 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const module: string = 'servers';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const id = computed(() => {
+    return props.id;
+});
+const ips = ref<IpMap>({});
 
-//const id = ref('');
-const ipLabelListSet = ref({});
-const ipInputNameSet = ref({});
-const ipInputValueSet = ref({});
-const ipInputListUpdated = ref('');
+type IpMap = Record<string, string>;
+
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`, {
+                ips: ips.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('vps update reverse dns success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('vps update reverse dns  failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).then((response) => {
+    console.log('Response:');
+    console.log(response);
+    ips.value = response.ips;
+});
 </script>
 
 <template>
@@ -35,7 +72,7 @@ const ipInputListUpdated = ref('');
                 </div>
                 <div class="card-body">
                     <div class="alert alert-warning" role="alert">Changes to reverse dns take up to an hour to show up.</div>
-                    <form id="reverse_dns_form" accept-charset="UTF-8" role="form" :action="`view_server?id=${id}&link=reverse_dns`" method="POST">
+                    <form id="reverse_dns_form" accept-charset="UTF-8" role="form" method="POST" @submit.prevent="submitForm">
                         <input type="hidden" name="choice" value="none.view_dedicated_server" />
                         <input type="hidden" name="link" value="reverse_dns" />
                         <div class="form-group row">
@@ -44,19 +81,16 @@ const ipInputListUpdated = ref('');
                                 <label class="col-md-9 col-form-label">Hostnames</label>
                             </div>
                         </div>
-                        <div v-for="(v, k) in ipLabelListSet" :key="k" class="form-group row">
-                            <label class="col-md-3 col-form-label">{{ v }}</label>
+                        <div v-for="(v, k) in ips" :key="k" class="form-group row">
+                            <label class="col-md-3 col-form-label">{{ k }}</label>
                             <div class="col-sm-9 input-group">
-                                <input v-if="ipInputNameSet[k]" :id="ipInputNameSet[k]" :name="ipInputNameSet[k]" type="text" class="form-control form-control-sm" :value="ipInputValueSet[k]" />
+                                <input :id="k" :name="k" type="text" class="form-control form-control-sm" :value="v" />
                             </div>
-                        </div>
-                        <div v-if="ipInputListUpdated" class="alert alert-success">
-                            {{ ipInputListUpdated }}
                         </div>
                         <hr />
                         <div class="form-group row">
                             <div class="controls col-md-12 text-center">
-                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
+                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2"/>
                             </div>
                         </div>
                     </form>
