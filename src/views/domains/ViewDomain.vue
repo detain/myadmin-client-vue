@@ -97,11 +97,10 @@ watch(
     }
 );
 
-loadLink(route.params.link as string);
-
 domainStore.getById(id);
 console.log('link:');
 console.log(link.value);
+loadLink(route.params.link as string);
 </script>
 
 <template>

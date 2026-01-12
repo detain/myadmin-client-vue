@@ -9,9 +9,6 @@ import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module = 'domains';
@@ -20,7 +17,6 @@ const suggested = ref<string[]>([]);
 const initialNameservers = ref<string[]>([]);
 const nameservers = ref<Nameservers>([]);
 const registeredNameservers = ref<Nameservers>([]);
-const domain_id = ref('{$domain_id}');
 onMounted(() => {});
 
 type Nameservers = NameserverRow[];
