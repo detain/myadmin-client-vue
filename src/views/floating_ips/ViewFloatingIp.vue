@@ -118,7 +118,9 @@ const statusClass = computed(() => {
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Package</h3>
                     <p class="m-0 py-2">{{ pkg }}</p>
-                    <p>Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b></p>
+                    <p>
+                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
+                    </p>
                 </div>
                 <div class="icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.floating_ip_ip }}</span>
@@ -128,10 +130,14 @@ const statusClass = computed(() => {
             <div :class="statusClass">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>Billing</h3>
-                    <p class="my-3 py-3"><b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b></p>
+                    <p class="my-3 py-3">
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b>
+                    </p>
                 </div>
                 <div class="icon"><i class="fas fa-dollar-sign"></i></div>
-                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
+                <span class="small-box-footer"
+                    >Floating IPs Status is: <b>{{ status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-4">
@@ -165,14 +171,16 @@ const statusClass = computed(() => {
     <template v-else>
         <div>
             <div class="col-md-12">
-                <blockquote style="
+                <blockquote
+                    style="
                         border-left: 0.4rem solid dimgray;
                         height: 70px;
                         padding-top: 20px;
                         box-shadow:
                             0 0 1px rgb(0 0 0 / 13%),
                             0 1px 3px rgb(0 0 0 / 20%);
-                    " class="mx-0 pl-4">
+                    "
+                    class="mx-0 pl-4">
                     <p style="font-size: 20px; vertical-align: middle">
                         <i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Floating IPs Usage Count: <strong>{{ usage_count }}</strong>
                     </p>
@@ -203,7 +211,9 @@ const statusClass = computed(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-plug">&nbsp;</i>Connection Information</h3>
-                            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -221,7 +231,9 @@ const statusClass = computed(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-video">&nbsp;</i>{{ extraInfoTables.tutorials.title }}</h3>
-                            <div class="card-tools float-right"><button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button></div>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

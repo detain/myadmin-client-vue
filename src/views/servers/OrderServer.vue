@@ -5,18 +5,10 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
-
+import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
 const module: string = 'servers';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order Server');
-siteStore.setTitle('Order Server');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Servers List'],
-    ['/servers/order', 'Order Server'],
-]);
 const baseUrl = siteStore.getBaseUrl();
-
 const currency = ref('USD');
 const currencySymbol = ref('$');
 const custid = ref('2773');
@@ -44,32 +36,21 @@ const hdValues = computed(() => {
     return configLi.value.hd_li;
 });
 const fieldLabel = ref<FieldLabel>({
-    bandwidth: {
-        name: 'Bandwidth',
-        active: 1,
-    },
-    ips: {
-        name: 'IPs',
-        active: 0,
-    },
-    os: {
-        name: 'Operating System',
-        active: 1,
-    },
-    cp: {
-        name: 'Control Panel',
-        active: 0,
-    },
-    raid: {
-        name: 'Raid',
-    },
-    memory: {
-        name: 'Memory',
-    },
-    hd: {
-        name: 'Hard Drives',
-    },
+    bandwidth: { name: 'Bandwidth', active: 1 },
+    ips: { name: 'IPs', active: 0 },
+    os: { name: 'Operating System', active: 1 },
+    cp: { name: 'Control Panel', active: 0 },
+    raid: { name: 'Raid' },
+    memory: { name: 'Memory' },
+    hd: { name: 'Hard Drives' },
 });
+siteStore.setPageHeading('Order Server');
+siteStore.setTitle('Order Server');
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/${moduleLink(module)}`, 'Servers List'],
+    ['/servers/order', 'Order Server'],
+]);
 
 function addDrive(id: number, driveType: string, description: string, price: number) {}
 
@@ -79,207 +60,6 @@ function removeDrive(id: number, driveType: string) {}
 
 function onSubmitCpu() {
     serverOrderRequest(true);
-}
-
-interface SimpleStringObj {
-    [key: string]: any;
-}
-
-interface ServerOrderResponse {
-    cpu: number;
-    cpu_li: CpuLi;
-    cpu_cores: CpuCores;
-    config_ids: ConfigIds;
-    config_li: ConfigLi;
-    field_label: FieldLabel;
-    form_values: FormValues;
-}
-
-interface CpuCores {
-    [key: string]: {
-        [key: string]: CpuCoresRow;
-    };
-}
-
-interface ConfigIds {
-    [key: string]: number;
-}
-
-interface FormValues {
-    [key: string]: number;
-}
-
-interface FieldLabel {
-    [key: string]: {
-        name: string;
-        active?: number;
-    };
-}
-
-interface ConfigLi extends SimpleStringObj {
-    cpu_li: Record<string, CpuRow>;
-    memory_li: Record<string, Record<string, MemoryRow>>;
-    hd_li: Record<string, Record<string, HdRow>>;
-    bandwidth_li: Record<string, BandwidthRow>;
-    ips_li: Record<string, IpsRow>;
-    os_li: Record<string, OsRow>;
-    cp_li: Record<string, CpRow>;
-    raid_li: Record<string, RaidRow>;
-}
-
-interface CpuLi extends SimpleStringObj {
-    [key: string]: CpuRow;
-}
-
-interface MemoryLi extends SimpleStringObj {
-    [key: string]: {
-        [key: string]: MemoryRow;
-    };
-}
-
-interface HdLi extends SimpleStringObj {
-    [key: string]: {
-        [key: string]: HdRow;
-    };
-}
-
-interface BandwidthLi extends SimpleStringObj {
-    [key: string]: BandwidthRow;
-}
-
-interface IpsLi extends SimpleStringObj {
-    [key: string]: IpsRow;
-}
-
-interface OsLi extends SimpleStringObj {
-    [key: string]: OsRow;
-}
-
-interface CpLi extends SimpleStringObj {
-    [key: string]: CpRow;
-}
-
-interface RaidLi extends SimpleStringObj {
-    [key: string]: RaidRow;
-}
-
-interface CpuRow {
-    active: string;
-    benchmark: string;
-    cache: string;
-    fsb: string;
-    hd_ids: string;
-    id: string;
-    img: string;
-    location: string;
-    long_desc: string;
-    manu: string;
-    max_lff: string;
-    max_nve: string;
-    max_ram: string;
-    max_sff: string;
-    min_ram: string;
-    monthly_price: number;
-    monthly_price_display: string;
-    num_cores: string;
-    num_cpus: string;
-    price: number;
-    price_display: string;
-    short_desc: string;
-    speed: string;
-    type: string;
-    visible: string;
-}
-
-interface CpuCoresRow extends CpuRow {
-    memory_det: MemoryRow;
-    hd_det: HdRow;
-    monthly_fee: string;
-}
-
-interface MemoryRow {
-    id: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    short_desc: string;
-}
-
-interface HdRow {
-    drive_type: string;
-    hidden: string;
-    id: string;
-    img: string;
-    long_desc: string;
-    manu: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    price: string;
-    short_desc: string;
-    size: string;
-    type: string;
-}
-
-interface BandwidthRow {
-    active: string;
-    id: string;
-    img: string;
-    long_desc: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    price: string;
-    price_display: string;
-    qty: string;
-    short_desc: string;
-    type: string;
-}
-
-interface IpsRow {
-    id: string;
-    img: string;
-    long_desc: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    price: string;
-    price_display: string;
-    qty: string;
-    short_desc: string;
-}
-
-interface OsRow {
-    active: string;
-    id: string;
-    img: string;
-    long_desc: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    price: string;
-    price_display: string;
-    short_desc: string;
-}
-
-interface CpRow {
-    id: string;
-    img: string;
-    long_desc: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    os_type: string;
-    price: string;
-    price_display: string;
-    short_desc: string;
-    types: string;
-}
-
-interface RaidRow {
-    active: string;
-    id: string;
-    img: string;
-    long_desc: string;
-    monthly_price: string;
-    monthly_price_display: string;
-    price: string;
-    price_display: string;
-    short_desc: string;
 }
 
 function serverOrderRequest(addCpu: boolean) {

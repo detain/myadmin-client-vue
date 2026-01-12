@@ -130,7 +130,9 @@ function confirmDelete(index: number) {
         <!-- HEADER -->
         <div class="card-header">
             <h3 class="card-title text-lg mt-1">
-                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"><svg><use :xlink:href="iconHref('dns')" /></svg></i>Domain Name Servers
+                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"
+                    ><svg><use :xlink:href="iconHref('dns')" /></svg></i
+                >Domain Name Servers
             </h3>
 
             <div class="card-tools mr-4 mt-2">
