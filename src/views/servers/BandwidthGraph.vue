@@ -8,11 +8,9 @@ import { useSiteStore } from '../../stores/site.store';
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const module: string = 'servers';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 
 const errorMsg = ref('');
 //const id = ref('');
@@ -23,6 +21,9 @@ const ranges = ref({});
 function toggleCollapse() {
     // Add the toggle collapse logic here
 }
+
+
+
 </script>
 
 <template>
