@@ -17,7 +17,7 @@ const id = computed(() => {
 });
 const ips = ref<IpMap>({});
 
-type IpMap = Record<string, string>;
+type IpMap = Record<string, string | boolean>;
 
 function submitForm() {
     Swal.fire({
@@ -84,7 +84,7 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                         <div v-for="(v, k) in ips" :key="k" class="form-group row">
                             <label class="col-md-3 col-form-label">{{ k }}</label>
                             <div class="col-sm-9 input-group">
-                                <input :id="k" :name="k" type="text" class="form-control form-control-sm" :value="v" />
+                                <input :id="k" :name="k" type="text" class="form-control form-control-sm" :value="typeof v == 'boolean' && !v ? '' : v" />
                             </div>
                         </div>
                         <hr />
