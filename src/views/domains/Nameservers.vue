@@ -13,16 +13,15 @@ const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const module = 'domains';
-
-//const id = ref("{$id}");
+const id = computed(() => props.id);
 const suggested = ref<string[]>([]);
 const initialNameservers = ref<string[]>([]);
 const nameservers = ref<Nameservers>([]);
 const registeredNameservers = ref<Nameservers>([]);
 const domain_id = ref('{$domain_id}');
-onMounted(() => {
-});
+onMounted(() => {});
 
 type Nameservers = NameserverRow[];
 
@@ -55,33 +54,59 @@ function applySuggested() {
 }
 
 function submitNameservers() {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = `view_domain?id=${props.domainId}&link=nameservers`;
-
-    form.innerHTML = `
-    <input type="hidden" name="csrf_token" value="${props.csrfToken}">
-    <input type="hidden" name="action" value="add">
-    ${nameserverInputs.value.map((ns, i) => `<input type="hidden" name="nameserver[${i}]" value="${ns}">`).join('')}
-  `;
-
-    document.body.appendChild(form);
-    form.submit();
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+                name: newNameserver.value.name,
+                ipAddress: newNameserver.value.ipaddress,
+                new_nameservers: 1,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('register nameserver success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('register nameserver failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 
 function registerNameserver() {
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = `view_domain?id=${props.domainId}&link=nameservers`;
-    form.innerHTML = `
-    <input type="hidden" name="csrf_token" value="${props.csrfTokenRegister}">
-    <input type="hidden" name="name" value="${newNameserver.value.name}">
-    <input type="hidden" name="ipaddress" value="${newNameserver.value.ipaddress}">
-    <input type="hidden" name="new_nameservers" value="1">
-  `;
-    document.body.appendChild(form);
-    form.submit();
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+                name: newNameserver.value.name,
+                ipAddress: newNameserver.value.ipaddress,
+                new_nameservers: 1,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('register nameserver success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('register nameserver failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 
 function confirmDelete(index: number) {
@@ -96,7 +121,7 @@ function confirmDelete(index: number) {
         confirmButtonText: 'Yes, Delete it',
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `view_domain?id=${props.domainId}&link=nameservers&delete_registered=${index}`;
+            window.location.href = `view_domain?id=${id.value}&link=nameservers&delete_registered=${index}`;
         }
     });
 }
