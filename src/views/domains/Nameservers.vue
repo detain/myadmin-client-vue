@@ -4,7 +4,8 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import iconDns from '../../assets/images/myadmin/dns.png';
+//import iconDns from '../../assets/images/myadmin/dns.png';
+import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
@@ -17,7 +18,12 @@ const suggested = ref<string[]>([]);
 const initialNameservers = ref<string[]>([]);
 const nameservers = ref<Nameservers>([]);
 const registeredNameservers = ref<Nameservers>([]);
-onMounted(() => {});
+const iconHref = (name: string) => `${myAdminIcons}#icon-${name}`;
+const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
+const newNameserver = ref({
+    name: '',
+    ipaddress: '',
+});
 
 type Nameservers = NameserverRow[];
 
@@ -27,11 +33,7 @@ interface NameserverRow {
     can_delete: number;
 }
 
-const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
-const newNameserver = ref({
-    name: '',
-    ipaddress: '',
-});
+onMounted(() => {});
 
 function applySuggested() {
     suggested.value?.forEach((value, index) => {
@@ -128,7 +130,7 @@ function confirmDelete(index: number) {
         <!-- HEADER -->
         <div class="card-header">
             <h3 class="card-title text-lg mt-1">
-                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"><img :src="iconDns" alt="DNS" /></i>Domain Name Servers
+                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"><svg><use :xlink:href="iconHref('dns')" /></svg></i>Domain Name Servers
             </h3>
 
             <div class="card-tools mr-4 mt-2">
