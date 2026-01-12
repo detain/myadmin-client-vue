@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '../helpers/fetchWrapper';
-import { snakeToCamel } from '../helpers/snakeToCamel';
 import { VpsState } from '../types/vps';
-import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 
 export const useVpsStore = defineStore('vps', {
@@ -214,7 +212,7 @@ export const useVpsStore = defineStore('vps', {
                     } else if (typeof keyMap[key] != 'undefined') {
                         this[keyMap[key]] = value;
                     } else {
-                        console.log("no key '" + key + "' with value '" + value + "'");
+                        console.log(`no key '${key}' with value '${value}'`);
                     }
                 }
                 */
@@ -224,20 +222,6 @@ export const useVpsStore = defineStore('vps', {
             }
         },
         async update(id: number, params: any): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.put(`${baseUrl}/${id}`, params);
-
-            // update stored user if the logged-in user updated their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                // update local storage
-                const user = { ...authStore.user, ...params };
-                localStorage.setItem('user', JSON.stringify(user));
-
-                // update auth user in pinia state
-                authStore.user = user;
-            }
         },
         async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted

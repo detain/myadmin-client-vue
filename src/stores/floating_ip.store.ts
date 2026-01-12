@@ -151,20 +151,6 @@ export const useFloatingIpStore = defineStore('floating_ip', {
             }
         },
         async update(id: number, params: any): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.put(`${baseUrl}/${id}`, params);
-
-            // update stored user if the logged-in user updated their own record
-            const authStore = useAuthStore();
-            if (id === authStore.user.id) {
-                // update local storage
-                const user = { ...authStore.user, ...params };
-                localStorage.setItem('user', JSON.stringify(user));
-
-                // update auth user in pinia state
-                authStore.user = user;
-            }
         },
         async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted

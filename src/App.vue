@@ -21,17 +21,17 @@ onMounted(function () {
     }); */
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
-    //Onhover add shadow
-    $('.shadow-hover').hover(
-        function () {
-            $(this).removeClass('shadow-sm');
-            $(this).addClass('shadow').css('cursor', 'pointer');
-        },
-        function () {
-            $(this).addClass('shadow-sm');
-            $(this).removeClass('shadow');
-        }
-    );
+    document.querySelectorAll<HTMLElement>('.shadow-hover').forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+            el.classList.remove('shadow-sm');
+            el.classList.add('shadow');
+            el.style.cursor = 'pointer';
+        });
+        el.addEventListener('mouseleave', () => {
+            el.classList.add('shadow-sm');
+            el.classList.remove('shadow');
+        });
+    });
 });
 
 const authStore = useAuthStore();
