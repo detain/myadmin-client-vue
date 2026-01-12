@@ -5,7 +5,7 @@ import { useSiteStore } from '../../stores/site.store';
 import type { AccountData } from '../../types/account.ts';
 
 const props = defineProps<{
-    data: AccountData
+    data: AccountData;
 }>();
 const data = computed(() => {
     return props.data;
@@ -52,7 +52,8 @@ async function updateFeatures() {
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
                         <input id="disreins" v-model="data.disable_reinstall" type="checkbox" name="disable_reinstall" value="1" />
-                        <label for="disreins">Disable Re-installs
+                        <label for="disreins"
+                            >Disable Re-installs
                             <div style="font-weight: normal">Note: To disable reinstall create new ticket, our support team will help</div>
                         </label>
                     </div>

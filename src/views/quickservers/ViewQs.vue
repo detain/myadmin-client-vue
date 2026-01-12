@@ -25,7 +25,6 @@ import TrafficUsage from '../../views/vps/TrafficUsage.vue';
 import SetupVnc from '../../views/vps/SetupVnc.vue';
 import Vnc from '../../views/vps/Vnc.vue';
 
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 const module = 'quickservers';
 const siteStore = useSiteStore();

@@ -4,24 +4,25 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-
+//import iconDns from '../../assets/images/myadmin/dns.png';
+import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const module = 'domains';
-
-//const id = ref("{$id}");
+const id = computed(() => props.id);
 const suggested = ref<string[]>([]);
+const initialNameservers = ref<string[]>([]);
 const nameservers = ref<Nameservers>([]);
-const registered_nameservers = ref<Nameservers>([]);
-const domain_id = ref('{$domain_id}');
-onMounted(() => {
-    initializeToast();
+const registeredNameservers = ref<Nameservers>([]);
+const iconHref = (name: string) => `${myAdminIcons}#icon-${name}`;
+const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
+const newNameserver = ref({
+    name: '',
+    ipaddress: '',
 });
 
 type Nameservers = NameserverRow[];
@@ -32,49 +33,93 @@ interface NameserverRow {
     can_delete: number;
 }
 
-function initializeToast() {
-    const Toast = Swal.mixin({
+onMounted(() => {});
+
+function applySuggested() {
+    suggested.value?.forEach((value, index) => {
+        if (index < nameserverInputs.value.length) {
+            nameserverInputs.value[index] = value;
+        }
+    });
+    Swal.fire({
         toast: true,
+        icon: 'info',
+        title: 'Suggested nameservers have been applied. Click Update to save.',
         position: 'top',
         showConfirmButton: false,
         timer: 5000,
     });
-    if (suggested.value && suggested.value.length) {
-        document.getElementById('suggestedNameserver')?.addEventListener('click', () => {
-            if (suggested.value) {
-                suggested.value.forEach((suggestion, idx) => {
-                    (document.getElementById(`nameserver${idx}`) as unknown as HTMLInputElement).value = suggestion;
+}
+
+function submitNameservers() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+                name: newNameserver.value.name,
+                ipAddress: newNameserver.value.ipaddress,
+                new_nameservers: 1,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('register nameserver success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
                 });
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Suggested nameservers are shown in the nameservers textboxes. Click submit to update nameservers.',
-                });
-            }
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('register nameserver failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
         });
     }
 }
 
-function updateNameservers() {
-    // Handle update nameservers form submission
+function registerNameserver() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+                name: newNameserver.value.name,
+                ipAddress: newNameserver.value.ipaddress,
+                new_nameservers: 1,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('register nameserver success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('register nameserver failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 
-function saveNameservers() {
-    // Handle save nameservers form submission
-}
-
-function handleSuggestedNameserver() {}
-
-function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) {
+function confirmDelete(index: number) {
     Swal.fire({
         icon: 'error',
-        title: '<h3>Delete nameserver</h3>',
+        title: 'Delete nameserver',
+        html: `
+      <p>You are about to delete your domain nameserver.</p>
+      <p>Are you sure?</p>
+    `,
         showCancelButton: true,
-        showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it',
-        html: '<p>Your about to delete your domain nameserver </p> <p>Are you sure want to delete it?</p>',
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `/domains/${domain_id}/nameservers?delete_registered=${nameserver_id}`;
+            window.location.href = `view_domain?id=${id.value}&link=nameservers&delete_registered=${index}`;
         }
     });
 }
@@ -82,74 +127,79 @@ function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) 
 
 <template>
     <div class="card">
+        <!-- HEADER -->
         <div class="card-header">
-            <h3 class="card-title mt-1 text-lg">
-                <i class="m-0"><!-- <svg style="width: 40px; height: 40px;"><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-dns"></use></svg> --></i>Domain Name Servers
+            <h3 class="card-title text-lg mt-1">
+                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"><svg><use :xlink:href="iconHref('dns')" /></svg></i>Domain Name Servers
             </h3>
+
             <div class="card-tools mr-4 mt-2">
                 <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
+
+        <!-- BODY -->
         <div class="card-body">
             <div class="row justify-content-around">
+                <!-- NAMESERVERS -->
                 <div class="card form-gray col-md-6">
                     <div class="card-header border-0">
                         <h3 class="card-title text-lg">Nameservers</h3>
-                        <div class="card-tools">
-                            <button v-if="suggested && suggested.length" id="suggestedNameserver" type="button" class="btn btn-sm bg-gradient-info" @click="handleSuggestedNameserver">Suggested Nameserver</button>
+                        <div v-if="suggested?.length" class="card-tools">
+                            <button type="button" class="btn btn-sm bg-gradient-info" @click="applySuggested">Suggested Nameserver</button>
                         </div>
                     </div>
+
                     <div class="card-body">
-                        <form method="post" :action="`view_domain?id=${domain_id}&link=nameservers`" @submit.prevent="updateNameservers">
-                            <input type="hidden" name="action" value="add" />
-                            <div v-for="foo in 3" :key="foo" class="form-group row">
-                                <label class="col-md-3 col-form-label" :for="`nameserver${foo}`">Nameserver #{{ foo + 1 }}</label>
+                        <form @submit.prevent="submitNameservers">
+                            <div v-for="(ns, index) in nameserverInputs" :key="index" class="form-group row">
+                                <label class="col-md-3 col-form-label"> Nameserver #{{ index + 1 }} </label>
                                 <div class="col-sm-9 input-group">
-                                    <input :id="`nameserver${foo}`" type="text" class="form-control form-control-sm" :name="`nameserver[${foo}]`" :value="nameservers[foo]?.name || ''" />
+                                    <input v-model="nameserverInputs[index]" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="submit"></label>
-                                <div class="col-sm-9 input-group input-group-sm">
-                                    <input id="button-id-signup" type="submit" name="ex_nameservers" value="Update" class="btn btn-custom btn-sm px-2 py-1" />
+                                <div class="col-sm-9 offset-md-3">
+                                    <button type="submit" class="btn btn-custom btn-sm py-1 px-2">Update</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <!-- REGISTER NEW NAMESERVER -->
                 <div class="card form-gray col-md-5">
                     <div class="card-header border-0">
                         <h3 class="card-title text-lg">Register New Nameservers</h3>
                     </div>
                     <div class="card-body">
-                        <form method="post" :action="`view_domain?id=${domain_id}&link=nameservers`" @submit.prevent="saveNameservers">
+                        <form @submit.prevent="registerNameserver">
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="name">Hostname</label>
+                                <label class="col-md-3 col-form-label">Hostname</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" name="name" value="" />
+                                    <input v-model="newNameserver.name" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="ipaddress">IP Address</label>
+                                <label class="col-md-3 col-form-label">IP Address</label>
                                 <div class="col-sm-9 input-group">
-                                    <input type="text" class="form-control form-control-sm" name="ipaddress" value="" />
+                                    <input v-model="newNameserver.ipaddress" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="submit"></label>
-                                <div class="col-sm-9 input-group input-group-sm">
-                                    <input type="submit" name="new_nameservers" value="Save" class="btn btn-outline-custom btn-sm py-1" />
+                                <div class="col-sm-9 offset-md-3">
+                                    <button type="submit" class="btn btn-outline-custom btn-sm py-1">Save</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div v-if="registered_nameservers && registered_nameservers.length">
-                <h4>Registered Nameservers</h4>
+            <!-- REGISTERED NAMESERVERS -->
+            <div v-if="registeredNameservers?.length">
+                <h4 class="mt-4">Registered Nameservers</h4>
                 <div class="row">
                     <div class="col-md-8">
-                        <table class="table-bordered table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Hostname</th>
@@ -159,14 +209,14 @@ function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(ns, idx) in registered_nameservers" :key="idx">
+                                <tr v-for="(ns, index) in registeredNameservers" :key="index">
                                     <td>{{ ns.name }}</td>
                                     <td>{{ ns.ipaddress }}</td>
                                     <td>
-                                        <span :class="ns.can_delete == 1 ? 'text-green' : 'text-red'">{{ ns.can_delete == 1 ? 'Yes' : 'No' }}</span>
+                                        <span :class="ns.can_delete ? 'text-green' : 'text-red'">{{ ns.can_delete ? 'Yes' : 'No' }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0);" title="Delete" data-toggle="tooltip" @click="confirmDeleteDialog(id, idx)"><i class="fa fa-trash">&nbsp;</i></a>
+                                        <a href="javascript:void(0)" title="Delete" @click="confirmDelete(index)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -178,4 +228,6 @@ function confirmDeleteDialog(domain_id: number, nameserver_id: string | number) 
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import '../../assets/images/myadmin/css/styles.css';
+</style>

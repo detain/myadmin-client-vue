@@ -55,11 +55,10 @@ function submitForm() {
     }
 }
 
-fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`).then((response) => {
-    console.log('Response:');
-    console.log(response);
-    zones.value = response;
-});
+const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`);
+console.log('Response:');
+console.log(response);
+zones.value = response;
 </script>
 
 <template>
@@ -127,4 +126,4 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_time
     </div>
 </template>
 
-<style scoped></style>
+<style scoped />

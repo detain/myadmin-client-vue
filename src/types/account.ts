@@ -1,5 +1,4 @@
-
-export  interface SimpleStringObj {
+export interface SimpleStringObj {
     [key: string]: any;
 }
 export interface AccountData extends SimpleStringObj {

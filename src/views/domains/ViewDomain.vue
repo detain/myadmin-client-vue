@@ -9,7 +9,6 @@ import { computed, watch } from 'vue';
 import { useDomainStore } from '../../stores/domain.store';
 import { useSiteStore } from '../../stores/site.store';
 
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
@@ -40,10 +39,10 @@ function loadLink(newLink: string) {
         ['/home', 'Home'],
         [`/${moduleLink(module)}`, 'Domains'],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Domain ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, serviceInfo.value.domain_hostname);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Domain ${id}`);
-        siteStore.setTitle(`View Domain ${id}`);
+        siteStore.setPageHeading(`View Domain - ${serviceInfo.value.domain_hostname}`);
+        siteStore.setTitle(`Domain ${serviceInfo.value.domain_hostname}`);
     } else {
         siteStore.setPageHeading(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.setTitle(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
@@ -84,6 +83,13 @@ function loadLink(newLink: string) {
     }
 }
 
+const formatDate = (dateString?: string | null): string => {
+    if (!dateString) return '';
+    const date = new Date(dateString.replace(' ', 'T')); // Ensure ISO-8601 compatibility
+    if (isNaN(date.getTime())) return '';
+    return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(date);
+};
+
 watch(
     () => route.params.link as string,
     (newLink) => {
@@ -91,11 +97,10 @@ watch(
     }
 );
 
-loadLink(route.params.link as string);
-
 domainStore.getById(id);
 console.log('link:');
 console.log(link.value);
+loadLink(route.params.link as string);
 </script>
 
 <template>
@@ -106,7 +111,7 @@ console.log(link.value);
                     <h3>Package</h3>
                     <p>{{ serviceType.services_name }}</p>
                     <p>
-                        Next Invoice Date: <b>{{ billingDetails.next_date }}</b>
+                        Next Invoice Date: <b>{{ formatDate(billingDetails.next_date) }}</b>
                     </p>
                 </div>
                 <div class="icon">
@@ -124,7 +129,7 @@ console.log(link.value);
                         billed <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                     <p>
-                        Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? allInfo.attributes.expiredate : serviceInfo.domain_expire_date }}</b>
+                        Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
                     </p>
                 </div>
                 <div class="icon">
@@ -212,12 +217,12 @@ console.log(link.value);
                         <div class="col-md-6 p-0">
                             <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
                             <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-                            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
+                            <h5 v-if="allInfo?.attributes?.nameserver_list[2]?.name" class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
                         </div>
                         <div class="col-md-6 p-0">
                             <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[0]?.name ?? '&nbsp;' }}</h5>
                             <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[1]?.name ?? '&nbsp;' }}</h5>
-                            <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[2]?.name ?? '&nbsp;' }}</h5>
+                            <h5 v-if="allInfo?.attributes?.nameserver_list[2]?.name" class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[2]?.name ?? '&nbsp;' }}</h5>
                         </div>
                     </div>
                 </div>
@@ -240,7 +245,8 @@ console.log(link.value);
                 </div>
                 <div class="card-body pt-5" style="height: 250px">
                     <p>
-                        Name: Real Person <br />
+                        Name: {{ serviceInfo.domain_firstname }} {{ serviceInfo.domain_lastname }} <br />
+                        Organization: {{ serviceInfo.domain_company }}<br />
                         Address: {{ serviceInfo.domain_address }}<br />
                         {{ serviceInfo.domain_city }}, {{ serviceInfo.domain_state }}<br />
                         {{ serviceInfo.domain_country }} - {{ serviceInfo.domain_zip }}<br />

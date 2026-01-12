@@ -6,25 +6,25 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 interface Props {
-    gbCost?: number
-    currencySymbol: string
-    module: string
-    id: string | number
-    additionalHd?: number
-    serviceInfo: VpsInfo | QsInfo
+    gbCost?: number;
+    currencySymbol: string;
+    module: string;
+    id: string | number;
+    additionalHd?: number;
+    serviceInfo: VpsInfo | QsInfo;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const slider = ref<number>(props.additionalHd ?? 1)
-const gbCost = computed<number>(() => (props.gbCost ?? 0.1));
-const sizeLabel = computed<string>(() => `${slider.value} GB`)
-const perTen = computed<string>(() => (gbCost.value * 10).toFixed(2))
-const amount = computed<string>(() => (slider.value * gbCost.value).toFixed(2))
+const slider = ref<number>(props.additionalHd ?? 1);
+const gbCost = computed<number>(() => props.gbCost ?? 0.1);
+const sizeLabel = computed<string>(() => `${slider.value} GB`);
+const perTen = computed<string>(() => (gbCost.value * 10).toFixed(2));
+const amount = computed<string>(() => (slider.value * gbCost.value).toFixed(2));
 const id = computed(() => props.id);
 const module = computed(() => props.module);
 
@@ -59,9 +59,7 @@ function submitForm() {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2">
-                            <i class="fa fa-server"></i>&nbsp;Additional VPS Drive Space
-                        </h3>
+                        <h3 class="card-title py-2"><i class="fa fa-server"></i>&nbsp;Additional VPS Drive Space</h3>
                         <div class="card-tools text-right">
                             <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i> Back</router-link>
                         </div>

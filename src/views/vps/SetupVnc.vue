@@ -19,22 +19,12 @@ const props = defineProps<{
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
-const serviceInfo = computed(() => {
-    return props.serviceInfo;
-});
-const serviceMaster = computed(() => {
-    return props.serviceMaster;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
+const serviceInfo = computed(() => props.serviceInfo);
+const serviceMaster = computed(() => props.serviceMaster);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module.value];
-});
+const settings = computed(() => modules.value[module.value]);
 function useServiceInfoField<T = string>(suffix: string) {
     return computed<T>(() => {
         const prefix = settings.value.PREFIX; // 'vps' | 'qs'

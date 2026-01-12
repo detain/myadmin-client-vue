@@ -6,7 +6,7 @@ import { moduleLink } from '../../helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useFloatingIpStore } from '../../stores/floating_ip.store';
+import { useFloatingIpStore } from '../../stores/floating_ips.store';
 import { useSiteStore } from '../../stores/site.store';
 
 import $ from 'jquery';
