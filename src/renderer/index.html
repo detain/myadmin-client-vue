@@ -62,6 +62,9 @@
 
             base-uri 'self';
             form-action 'self' https://www.paypal.com;
+
+            worker-src 'self' blob:;
+            child-src 'self' blob:;
             " />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     </head>

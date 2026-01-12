@@ -285,10 +285,10 @@ function toggleFunc(cp: string) {
             <Backups :id="id" :module="module" :service-info="serviceInfo" :settings="settings"></Backups>
         </div>
         <div v-else-if="link == 'buy_hd_space'" class="col">
-            <BuyHdSpace :id="id" :module="module" :service-info="serviceInfo"></BuyHdSpace>
+            <BuyHdSpace :id="id" :module="module" :service-info="serviceInfo" :currency-symbol="custCurrencySymbol"></BuyHdSpace>
         </div>
         <div v-else-if="link == 'buy_ip'" class="col">
-            <BuyIp :id="id" :module="module" :service-info="serviceInfo"></BuyIp>
+            <BuyIp :id="id" :module="module" :service-info="serviceInfo" :currency-symbol="custCurrencySymbol"></BuyIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>
@@ -543,7 +543,7 @@ function toggleFunc(cp: string) {
                                     <strong>Note:</strong>
                                     <span id="warning-text"></span><br />
                                     You can reinstall from left menu
-                                    <b>Maintanance -> Re-Install Operating System</b>
+                                    <b>Maintenance -> Re-Install Operating System</b>
                                 </div>
                             </div>
                         </div>
@@ -693,7 +693,7 @@ function toggleFunc(cp: string) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Order Confirmation</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$emit('close')">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

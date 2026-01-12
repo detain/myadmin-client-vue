@@ -2,10 +2,12 @@
 import { computed } from 'vue';
 import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
-
 import { fetchWrapper } from '../../helpers/fetchWrapper';
+import type { AccountData } from '../../types/account.ts';
 
-const props = defineProps(['data']);
+const props = defineProps<{
+    data: AccountData
+}>();
 const data = computed(() => {
     return props.data;
 });

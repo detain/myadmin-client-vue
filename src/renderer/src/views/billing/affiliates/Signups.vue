@@ -138,14 +138,6 @@ onMounted(() => {});
                     </div>
                 </div>
             </div>
-            {if isset($admin_disp)} {foreach from=$admin_disp key=panel_name item=displ}
-            <div class="card">
-                <div class="card-header">
-                    <h4>{$panel_name}</h4>
-                </div>
-                <div class="card-body">{$displ}</div>
-            </div>
-            {/foreach} {/if}
         </div>
     </div>
     <div class="row">
