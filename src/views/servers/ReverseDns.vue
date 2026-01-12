@@ -84,13 +84,13 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                         <div v-for="(v, k) in ips" :key="k" class="form-group row">
                             <label class="col-md-3 col-form-label">{{ k }}</label>
                             <div class="col-sm-9 input-group">
-                                <input :id="k" :name="k" type="text" class="form-control form-control-sm" :value="typeof v == 'boolean' && !v ? '' : v" />
+                                <input :id="k" v-model="ips[k]" :name="k" type="text" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <hr />
                         <div class="form-group row">
                             <div class="controls col-md-12 text-center">
-                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
+                                <input type="submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
                             </div>
                         </div>
                     </form>
