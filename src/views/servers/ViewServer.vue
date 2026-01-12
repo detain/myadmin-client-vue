@@ -332,7 +332,7 @@ const ipv6VlansNetworks = computed(() => {
                                     <td>{{ vlans[vlan_id].primary ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a :href="`/view_server?id=${serviceInfo.server_id}&link=bandwidth_graph&graph_id=${switchport.graph_id}`" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="fa fa-line-chart"></i></a>
+                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="fa fa-line-chart"></i></router-link>
                                         </div>
                                     </td>
                                 </tr>
