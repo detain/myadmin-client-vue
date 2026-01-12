@@ -117,11 +117,11 @@ jobs:
       - name: Build web assets
         run: yarn build
 
-      - name: Capacitor sync iOS
-        run: npx cap sync ios
-
       - name: Ensure iOS project exists
         run: npx cap add ios || echo "iOS project already exists"
+
+      - name: Capacitor sync iOS
+        run: npx cap sync ios
 
       - name: Cache CocoaPods
         uses: actions/cache@v4
