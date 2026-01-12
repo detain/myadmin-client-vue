@@ -59,9 +59,9 @@ interface FloatingIpRow {
     sortable: boolean;
 }
 
-const loadFloatingIp = async () => {
+const loadFloatingIps = async () => {
     try {
-        const response = await fetchWrapper.get(`${baseUrl}/floating_ip`);
+        const response = await fetchWrapper.get(`${baseUrl}/floating_ips`);
         console.log('api success');
         console.log(response);
         data.value = response;
@@ -71,7 +71,7 @@ const loadFloatingIp = async () => {
     }
 };
 
-loadFloatingIp();
+loadFloatingIps();
 </script>
 
 <template>
