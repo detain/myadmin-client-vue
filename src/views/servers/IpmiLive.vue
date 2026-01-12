@@ -146,10 +146,6 @@ try {
                 <b class="text-info">What this does?</b>
                 Give live IP to IPMI controller restricted to your IP and limited to 24 hours of use.
             </p>
-            <div class="card-tools float-right">
-                <button type="button" class="btn btn-tool" data-card-widget="remove" @click="removeCard"><i class="fas fa-times" aria-hidden="true"></i></button>
-            </div>
-            <p></p>
         </div>
         <div class="col-md-6">
             <div class="card">
