@@ -21,9 +21,6 @@ const ranges = ref({});
 function toggleCollapse() {
     // Add the toggle collapse logic here
 }
-
-
-
 </script>
 
 <template>

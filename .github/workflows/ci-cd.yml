@@ -255,16 +255,16 @@ jobs:
               run: |
                   VERSION="${GITHUB_REF_NAME#v}"
                   REPO_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}"
-                  
+
                   WEB_URL="${REPO_URL}/my-interserver-client-web-${VERSION}.zip"
                   LINUX_URL_X64="${REPO_URL}/my-interserver-client-${VERSION}-linux-x64.zip"
                   LINUX_URL_ARM64="${REPO_URL}/my-interserver-client-${VERSION}-linux-arm64.zip"
                   WIN_URL_X64="${REPO_URL}/my-interserver-client-${VERSION}-windows-x64.zip"
                   WIN_URL_ARM64="${REPO_URL}/my-interserver-client-${VERSION}-windows-arm64.zip"
                   MAC_URL="${REPO_URL}/my-interserver-client-${VERSION}-mac.zip"
-                  
+
                   echo -e "<!-- DOWNLOADS-START -->\n## Latest Downloads (v${VERSION})\n\n### Web\n- [Web (zip)](${WEB_URL})\n\n### Electron\n#### Linux\n- [x64](${LINUX_URL_X64})\n- [arm64](${LINUX_URL_ARM64})\n#### Windows\n- [x64](${WIN_URL_X64})\n- [arm64](${WIN_URL_ARM64})\n#### macOS\n- [Universal](${MAC_URL})\n<!-- DOWNLOADS-END -->" > latest-downloads.md
-                  
+
                   awk '
                     BEGIN {in_block=0}
                     /<!-- DOWNLOADS-START -->/ {
@@ -278,7 +278,7 @@ jobs:
                     }
                     !in_block {print}
                   ' README.md > README.tmp && mv README.tmp README.md
-                  
+
                   git config user.name "github-actions"
                   git config user.email "github-actions@github.com"
                   git add README.md

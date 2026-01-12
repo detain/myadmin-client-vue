@@ -111,7 +111,6 @@ const loadBuyIp = async () => {
 };
 
 loadBuyIp();
-
 </script>
 
 <template>

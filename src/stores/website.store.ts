@@ -190,8 +190,7 @@ export const useWebsiteStore = defineStore('website', {
                 console.log(error);
             }
         },
-        async update(id: number, params: any): Promise<void> {
-        },
+        async update(id: number, params: any): Promise<void> {},
         async delete(id: number): Promise<void> {
             // add isDeleting prop to user being deleted
             const siteStore = useSiteStore();

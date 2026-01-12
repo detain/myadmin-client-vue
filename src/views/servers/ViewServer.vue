@@ -92,7 +92,7 @@ loadLink(route.params.link as string);
 
 serverStore.getById(id);
 
-const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'}));
+const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }));
 
 const hasAssetVlanSwitchport = computed(() => {
     let ret = false;
@@ -114,7 +114,6 @@ const assets = computed(() => {
 const firstAsset = computed(() => {
     return networkInfo.value.assets ? (Object.keys(networkInfo.value.assets).length > 0 ? networkInfo.value.assets[Object.keys(networkInfo.value.assets)[0]] : []) : [];
 });
-
 
 const vlans = computed(() => {
     return networkInfo.value.vlans ? networkInfo.value.vlans : {};

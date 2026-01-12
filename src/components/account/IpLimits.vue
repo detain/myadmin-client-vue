@@ -7,9 +7,9 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import type { AccountData, AccountLimit } from '../../types/account.ts';
 
 const props = defineProps<{
-    data: AccountData
-    limits: AccountLimit[]
-    ip: string
+    data: AccountData;
+    limits: AccountLimit[];
+    ip: string;
 }>();
 const limits = computed(() => {
     return props.limits;

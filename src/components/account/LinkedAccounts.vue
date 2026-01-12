@@ -7,10 +7,10 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '../../types/account.ts';
 
 const props = defineProps<{
-    data: AccountData
-    oAuthProviders: oAuthProvidersType
-    oAuthConfig: oAuthConfigType
-    oAuthAdapters: oAuthAdaptersType
+    data: AccountData;
+    oAuthProviders: oAuthProvidersType;
+    oAuthConfig: oAuthConfigType;
+    oAuthAdapters: oAuthAdaptersType;
 }>();
 const data = computed(() => {
     return props.data;
