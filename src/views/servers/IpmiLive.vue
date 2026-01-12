@@ -10,9 +10,7 @@ const props = defineProps<{
     id: number;
     assetInfo: AssetRow;
 }>();
-const id = computed(() => {
-    return props.id;
-});
+const id = computed(() => props.id);
 const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();

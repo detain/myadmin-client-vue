@@ -11,9 +11,7 @@ const props = defineProps<{
     id: number;
     curHostname: string;
 }>();
-const id = computed(() => {
-    return props.id;
-});
+const id = computed(() => props.id);
 const module = computed(() => {
     return props.module || '';
 });

@@ -13,9 +13,7 @@ const props = defineProps<{
     memory?: string;
     hdd?: string;
 }>();
-const id = computed(() => {
-    return props.id;
-});
+const id = computed(() => props.id);
 const currencySymbol = computed(() => {
     return props.currencySymbol;
 });
@@ -25,9 +23,7 @@ const memory = computed(() => {
 const hdd = computed(() => {
     return props.hdd;
 });
-const module = computed(() => {
-    return props.module;
-});
+const module = computed(() => props.module);
 
 const siteStore = useSiteStore();
 const confirm = ref(false);

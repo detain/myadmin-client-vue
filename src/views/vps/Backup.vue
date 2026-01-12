@@ -19,12 +19,8 @@ const confirm = ref(false);
 const note_text = ref('');
 const backupsArr = ref<VpsBackup[]>([]);
 const loading = ref(true);
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const curHostname = computed(() => {
     return props.curHostname;
 });

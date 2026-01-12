@@ -4,16 +4,21 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
 }>();
-//const id = ref('');
+const id = computed(() => props.id);
 const successMsg = ref('');
 const cancelQueue = ref('');
 const fields = ref<Fields>({});
 const module: string = 'webhosting';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const ips = ref<IpMap>({});
+
+type IpMap = Record<string, string | boolean>;
 
 interface Fields {
     [key: string]: {
@@ -24,8 +29,42 @@ interface Fields {
 }
 
 function submitForm() {
-    // Perform necessary form submission logic here
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`, {
+                ips: ips.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('vps update reverse dns success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('vps update reverse dns  failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
+
+fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).then((response) => {
+    console.log('Response:');
+    console.log(response);
+    ips.value = response.ips;
+});
 </script>
 
 <template>
@@ -53,7 +92,7 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">{{ field_name }}</label>
                                 <div class="col-sm-9 input-group">
-                                    <input :id="field_details.name" type="text" class="form-control form-control-sm" name="host_name" :value="field_details.value" required />
+                                    <input :id="field_details.name" v-model="fields[field_name]" type="text" class="form-control form-control-sm" name="host_name" required />
                                 </div>
                             </div>
                         </template>

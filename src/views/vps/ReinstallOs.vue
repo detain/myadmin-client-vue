@@ -20,12 +20,8 @@ const cancelQueue = ref('');
 const siteStore = useSiteStore();
 const { modules } = storeToRefs(siteStore);
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const serviceInfo = computed(() => {
     return props.serviceInfo;
 });
