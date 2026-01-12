@@ -6,33 +6,10 @@ import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
-import {
-    Chart,
-    LineController,
-    BarController,
-    LineElement,
-    BarElement,
-    PointElement,
-    LinearScale,
-    TimeScale,
-    Tooltip,
-    Legend,
-    Filler
-} from 'chart.js';
+import { Chart, LineController, BarController, LineElement, BarElement, PointElement, LinearScale, TimeScale, Tooltip, Legend, Filler } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
-Chart.register(
-    LineController,
-    BarController,
-    LineElement,
-    BarElement,
-    PointElement,
-    LinearScale,
-    TimeScale,
-    Tooltip,
-    Legend,
-    Filler
-);
+Chart.register(LineController, BarController, LineElement, BarElement, PointElement, LinearScale, TimeScale, Tooltip, Legend, Filler);
 
 const todayGraph = ref<HTMLCanvasElement | null>(null);
 const hourGraph = ref<HTMLCanvasElement | null>(null);
@@ -64,8 +41,8 @@ function formatTotal(val: number, metricType = metric.value) {
     const unit = metricType === 'bits' ? 'b' : 'B';
 
     if (val > 1073741824) return `${Math.ceil(val / 1073741824)} G${unit}`;
-    if (val > 1048576)    return `${Math.ceil(val / 1048576)} M${unit}`;
-    if (val > 1024)       return `${Math.ceil(val / 1024)} K${unit}`;
+    if (val > 1048576) return `${Math.ceil(val / 1048576)} M${unit}`;
+    if (val > 1024) return `${Math.ceil(val / 1024)} K${unit}`;
 
     return `${val} ${unit}`;
 }
@@ -97,10 +74,7 @@ onMounted(async () => {
     buildHourChart();
     buildDayChart();
 
-    pollTimer = window.setInterval(
-        pollTraffic,
-        trafficData.value.interval * 1000
-    );
+    pollTimer = window.setInterval(pollTraffic, trafficData.value.interval * 1000);
 });
 
 onBeforeUnmount(() => {
@@ -117,9 +91,7 @@ async function pollTraffic() {
 
     const lastTs = trafficData.value.last;
 
-    const json = await fetchWrapper.get(
-        `${baseUrl}/${module.value}/${id.value}/traffic_usage?ts=${lastTs}`
-    );
+    const json = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/traffic_usage?ts=${lastTs}`);
 
     trafficData.value.last = json.last;
 
@@ -127,10 +99,7 @@ async function pollTraffic() {
     trafficData.value.usage.current = json.usage.current;
 
     // peak
-    if (
-        json.usage.peak.in + json.usage.peak.out >
-        trafficData.value.usage.peak.in + trafficData.value.usage.peak.out
-    ) {
+    if (json.usage.peak.in + json.usage.peak.out > trafficData.value.usage.peak.in + trafficData.value.usage.peak.out) {
         trafficData.value.usage.peak = json.usage.peak;
     }
 
@@ -145,9 +114,7 @@ async function pollTraffic() {
     // append chart data
     if (json.data?.length && todayChart) {
         json.data.forEach((s: any, idx: number) => {
-            todayChart!.data.datasets[idx].data.push(
-                ...s.data.map((p: any) => ({ x: p[0], y: p[1] }))
-            );
+            todayChart!.data.datasets[idx].data.push(...s.data.map((p: any) => ({ x: p[0], y: p[1] })));
         });
 
         todayChart.update('none');
@@ -166,27 +133,27 @@ function buildTodayChart() {
                 label: s.name,
                 data: s.data.map((p: any) => ({ x: p[0], y: p[1] })),
                 fill: true,
-                tension: 0.4
-            }))
+                tension: 0.4,
+            })),
         },
         options: {
             responsive: true,
             plugins: {
                 tooltip: {
                     callbacks: {
-                        label: ctx => formatBandwidth(ctx.parsed.y)
-                    }
-                }
+                        label: (ctx) => formatBandwidth(ctx.parsed.y),
+                    },
+                },
             },
             scales: {
                 x: { type: 'time' },
                 y: {
                     ticks: {
-                        callback: v => formatBandwidth(Number(v))
-                    }
-                }
-            }
-        }
+                        callback: (v) => formatBandwidth(Number(v)),
+                    },
+                },
+            },
+        },
     });
 }
 
@@ -198,24 +165,26 @@ function buildHourChart() {
     hourChart = new Chart(hourGraph.value, {
         type: 'bar',
         data: {
-            datasets: [{
-                label: 'Bandwidth Used',
-                data: trafficData.value.history.hour.data.map((p: any) => ({
-                    x: p[0],
-                    y: p[1]
-                }))
-            }]
+            datasets: [
+                {
+                    label: 'Bandwidth Used',
+                    data: trafficData.value.history.hour.data.map((p: any) => ({
+                        x: p[0],
+                        y: p[1],
+                    })),
+                },
+            ],
         },
         options: {
             scales: {
                 x: { type: 'time' },
                 y: {
                     ticks: {
-                        callback: v => formatTotal(Number(v))
-                    }
-                }
-            }
-        }
+                        callback: (v) => formatTotal(Number(v)),
+                    },
+                },
+            },
+        },
     });
 }
 
@@ -227,27 +196,28 @@ function buildDayChart() {
     monthChart = new Chart(monthGraph.value, {
         type: 'bar',
         data: {
-            datasets: [{
-                label: 'Bandwidth Used',
-                data: trafficData.value.history.day.data.map((p: any) => ({
-                    x: p[0],
-                    y: p[1]
-                }))
-            }]
+            datasets: [
+                {
+                    label: 'Bandwidth Used',
+                    data: trafficData.value.history.day.data.map((p: any) => ({
+                        x: p[0],
+                        y: p[1],
+                    })),
+                },
+            ],
         },
         options: {
             scales: {
                 x: { type: 'time' },
                 y: {
                     ticks: {
-                        callback: v => formatTotal(Number(v))
-                    }
-                }
-            }
-        }
+                        callback: (v) => formatTotal(Number(v)),
+                    },
+                },
+            },
+        },
     });
 }
-
 
 const loadTraffic = async () => {
     try {

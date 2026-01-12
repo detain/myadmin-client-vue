@@ -6,7 +6,7 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import type { AccountData } from '../../types/account.ts';
 
 const props = defineProps<{
-    data: AccountData
+    data: AccountData;
 }>();
 const data = computed(() => {
     return props.data;

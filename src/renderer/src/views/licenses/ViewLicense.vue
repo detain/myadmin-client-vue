@@ -167,9 +167,7 @@ licenseStore.getById(id);
                     <div class="icon">
                         <i class="fab fa-cpanel"></i>
                     </div>
-                    <div class="small-box-footer text-white">
-                        Status is: <b>{{ serviceOverviewExtra.cPanel_Status }}</b>
-                    </div>
+                    <div class="small-box-footer text-white">Status is: <b v-html="serviceOverviewExtra.cPanel_Status"></b></div>
                 </div>
             </div>
         </template>
@@ -197,9 +195,7 @@ licenseStore.getById(id);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-map-marker-alt">&nbsp;</i>IP Information</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -241,14 +237,9 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2">
-                                <i class="fa fa-book">&nbsp;</i>
-                                {{ extraInfoTables.cpanel.title }}
-                            </h3>
+                            <h3 class="card-title py-2"><i class="fa fa-book">&nbsp;</i>{{ extraInfoTables.cpanel.title }}</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -270,24 +261,15 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2">
-                                <i class="fa fa-info-circle">&nbsp;</i>
-                                {{ extraInfoTables.note.title }}
-                            </h3>
+                            <h3 class="card-title py-2"><i class="fa fa-info-circle">&nbsp;</i>{{ extraInfoTables.note.title }}</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            <tbody>
-                                <tr>
-                                    <td>{{ extraInfoTables.note.rows[0].value }}</td>
-                                </tr>
-                            </tbody>
+                            <tbody v-html="extraInfoTables.note.rows[0].value"></tbody>
                         </table>
                     </div>
                 </div>

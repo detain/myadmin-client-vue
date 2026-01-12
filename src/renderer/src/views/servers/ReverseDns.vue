@@ -90,7 +90,7 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                         <hr />
                         <div class="form-group row">
                             <div class="controls col-md-12 text-center">
-                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2"/>
+                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
                             </div>
                         </div>
                     </form>

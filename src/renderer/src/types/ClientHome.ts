@@ -47,4 +47,3 @@ export interface HomeTicketStatusView {
 export interface HomeServices {
     [key: string]: HomeServices;
 }
-
