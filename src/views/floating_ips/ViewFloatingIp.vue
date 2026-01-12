@@ -9,8 +9,6 @@ import { useFloatingIpStore } from '../../stores/floating_ips.store';
 import { useSiteStore } from '../../stores/site.store';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
-import Alerts from './Alerts.vue';
-import DenyRules from './DenyRules.vue';
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';
@@ -18,9 +16,7 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => {
     return modules.value[module];
@@ -152,14 +148,8 @@ const statusClass = computed(() => {
         </div>
     </div>
     <template v-if="linkDisplay">
-        <div v-if="link == 'alerts'" class="col">
-            <Alerts :id="id"></Alerts>
-        </div>
-        <div v-else-if="link == 'cancel'" class="col">
+        <div v-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
-        </div>
-        <div v-else-if="link == 'deny_rules'" class="col">
-            <DenyRules :id="id"></DenyRules>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
