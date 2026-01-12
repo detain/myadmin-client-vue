@@ -23,7 +23,7 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 
-const { loading, error, custid, ima, data, ip, oauthproviders, oauthconfig, oauthadapters, limits } = storeToRefs(accountStore);
+const { loading, error, custid, ima, data, ip, oAuthProviders, oAuthConfig, oAuthAdapters, limits } = storeToRefs(accountStore);
 
 accountStore.load();
 </script>
@@ -42,7 +42,7 @@ accountStore.load();
             <SshKeys :data="data"></SshKeys>
         </div>
         <div class="col-md-6">
-            <LinkedAccounts :data="data" :oauthproviders="oauthproviders" :oauthconfig="oauthconfig" :oauthadapters="oauthadapters"></LinkedAccounts>
+            <LinkedAccounts :data="data" :o-auth-providers="oAuthProviders" :o-auth-config="oAuthConfig" :o-auth-adapters="oAuthAdapters"></LinkedAccounts>
         </div>
     </div>
     <div class="row">

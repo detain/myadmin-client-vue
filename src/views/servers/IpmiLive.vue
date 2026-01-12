@@ -4,69 +4,85 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
+    assetInfo: AssetRow;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const id = computed(() => {
     return props.id;
 });
 const module: string = 'servers';
 const siteStore = useSiteStore();
-const aId = ref('');
-const assetInfo = ref<AssetRow>({
-    id: 0,
-    order_id: 0,
-    hostname: '',
-    status: '',
-    primary_ipv4: '',
-    primary_ipv6: '',
-    mac: '',
-    datacenter: 0,
-    type_id: 0,
-    asset_tag: '',
-    rack: '',
-    row: '',
-    col: '',
-    unit_start: '',
-    unit_end: '',
-    unit_sub: 0,
-    ipmi_mac: '',
-    ipmi_ip: '',
-    ipmi_admin_username: '',
-    ipmi_admin_password: '',
-    ipmi_client_username: '',
-    ipmi_client_password: '',
-    ipmi_updated: '',
-    ipmi_working: 0,
-    company: '',
-    comments: '',
-    make: '',
-    model: '',
-    description: '',
-    customer_id: '',
-    external_id: 0,
-    billing_status: '',
-    overdue: 0,
-    create_timestamp: '',
-    update_timestamp: '',
-});
+const baseUrl = siteStore.getBaseUrl();
+const assetInfo = computed(() => props.assetInfo);
 const clientIP = ref('');
 const success = ref('');
 const info = ref('');
 const error = ref('');
-const emailIPMILink = computed(() => {
-    // Replace with the computed property logic to generate the link
-    return `view_server?id=${id.value}&link=ipmi_live&a_id=${aId.value}&email_ipmi_cred=1`;
-});
-function submitForm() {
-    // Add the form submission logic here
+function emailIpmiLink() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`, {
+                ip: clientIP.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('ipmi live setup vnc success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('ipmi live setup vnc failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
-function removeCard() {
-    // Add the remove card logic here
+
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`, {
+                ip: clientIP.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('ipmi live setup vnc success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
+            });
+    } catch (error: any) {
+        Swal.close();
+        console.log('ipmi live setup vnc failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 
 interface AssetRow {
@@ -106,6 +122,20 @@ interface AssetRow {
     create_timestamp: string;
     update_timestamp: string;
 }
+
+try {
+    fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`).then((response) => {
+        console.log(response);
+        if (typeof response.public_ip != 'undefined') {
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        }
+    });
+} catch (error: any) {
+    console.log(error);
+}
 </script>
 
 <template>
@@ -127,7 +157,7 @@ interface AssetRow {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-connectdevelop">&nbsp;</i>IPMI IP</h3>
                         <div class="card-tools float-right">
-                            <a class="btn btn-custom mr-3" :href="emailIPMILink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
+                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
                             <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
@@ -148,7 +178,7 @@ interface AssetRow {
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Asset ID</label>
                             <div class="col-sm-9 input-group">
-                                <input id="asset_id" type="text" class="form-control form-control-sm" name="asset_id" :value="aId" disabled />
+                                <input id="asset_id" type="text" class="form-control form-control-sm" name="asset_id" :value="assetInfo.id" disabled />
                             </div>
                         </div>
                         <div class="form-group row">

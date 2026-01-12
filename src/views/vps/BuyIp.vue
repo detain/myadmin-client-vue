@@ -11,55 +11,24 @@ import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
     module: string;
+    currencySymbol: string;
     serviceInfo: VpsInfo | QsInfo;
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const ipsDetails = ref<IpDetails[]>([]);
-const buyForm = ref(null);
+const buyForm = ref(false);
 const id = computed(() => {
     return props.id;
 });
 const module = computed(() => {
     return props.module;
 });
-const ip_currency = ref('USD');
-const ip_cost = ref(0);
-
-function submitForm() {
-    Swal.fire({
-        title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-    });
-    try {
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {}).then((response) => {
-            Swal.close();
-            console.log('webhosting buy ip');
-            console.log(response);
-            Swal.fire({
-                icon: 'success',
-                html: `Success${response.text}`,
-            });
-        });
-    } catch (error: any) {
-        Swal.close();
-        console.log('webhosting buy ip');
-        console.log(error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.text}`,
-        });
-    }
-}
-
-interface BuyIpResponse {
-    ipsDetails: IpDetails[];
-    ips: number;
-    maxIps: number;
-    ipCost: number;
-}
+const maxIps = ref(1);
+const ipCount = ref(0);
+const loading = ref(true);
+const ipCurrency = ref('USD');
+const ipCost = ref(0);
 
 interface IpDetails {
     invoices_id: string;
@@ -93,6 +62,56 @@ interface IpDetails {
     cancel_link: string;
     ip: string;
 }
+
+function submitForm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {}).then((response) => {
+            Swal.close();
+            console.log('webhosting buy ip');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('webhosting buy ip');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+const loadBuyIp = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/buy_ip`);
+        loading.value = false;
+        console.log('api success');
+        console.log(response);
+        ipsDetails.value = response.ipsDetails;
+        ipCost.value = response.ipCost;
+        maxIps.value = response.maxIps;
+        ipCount.value = response.ips;
+        if (ipCount.value < maxIps.value) {
+            buyForm.value = true;
+        }
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadBuyIp();
+
 </script>
 
 <template>
@@ -125,11 +144,11 @@ interface IpDetails {
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ip_currency }})</label>
+                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ipCurrency }})</label>
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ip_cost" />
+                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ipCost" />
                                     </div>
                                 </div>
                             </div>

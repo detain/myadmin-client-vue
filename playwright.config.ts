@@ -73,7 +73,8 @@ export default defineConfig({
     /* Run your local dev server before starting the tests */
     webServer: {
         command: 'yarn run dev',
-        url: 'http://localhost:5153',
+        url: 'http://localhost:5173',
         reuseExistingServer: !process.env.CI,
+        timeout: 120 * 1000,
     },
 });

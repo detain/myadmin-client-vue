@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, reactive, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { fetchWrapper } from '../helpers/fetchWrapper';
 import { moduleLink } from '../helpers/moduleLink';
-
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
 import { useAccountStore } from '../stores/account.store';
-
+import type { HomeTicket, HomeTicketStatus, HomeTicketStatusView, HomeDetails, HomeServices, HomeResponse } from '../types/ClientHome.ts';
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
@@ -17,8 +16,6 @@ siteStore.setPageHeading('Dashboard');
 siteStore.setTitle('Dashboard');
 siteStore.setBreadcrums([['', 'Home']]);
 const baseUrl = siteStore.getBaseUrl();
-import $ from 'jquery';
-import jQuery from 'jquery';
 const last_login_ip = ref('');
 const last_login = ref('');
 const currency = ref('');
@@ -34,83 +31,50 @@ const details = ref<HomeDetails>({ modules: {} });
 const services = ref<HomeServices>({});
 const AFFILIATE_AMOUNT = ref('');
 
-interface HomeResponse {
-    last_login_ip: string;
-    last_login: string;
-    currency: string;
-    amount: string;
-    invoice_list: string;
-    balance: string;
-    full_name: string;
-    email: string;
-    tickets: HomeTicket[];
-    data: any;
-    ticketStatus: HomeTicketStatus;
-    ticketStatusView: HomeTicketStatusView;
-    details: HomeDetails;
-    services: HomeServices;
-    AFFILIATE_AMOUNT: string;
-}
-
-interface HomeDetails {
-    modules: {
-        [key: string]: {
-            icon: string;
-            view_link: string;
-            heading: string;
-            buy_link: string;
-            list_link: string;
-        };
-    };
-}
-
-interface HomeTicket {
-    ticketid: number;
-    ticketstatusid: number;
-    ticketmaskid: string;
-    subject: string;
-    lastreplier: string;
-}
-
-interface HomeTicketStatus {
-    [key: string]: number;
-}
-
-interface HomeTicketStatusView {
-    [key: number]: string;
-}
-
-interface HomeServices {
-    [key: string]: HomeServices;
-}
-
-interface HomeService {
-    links: {
-        [key: number]: string;
-    };
-    count: number;
-}
-
-const copyToClipboard = () => {
-    const value = (document.getElementById('affiliateinput') as HTMLElement).innerText;
-    const $temp = document.createElement('input');
-    document.body.appendChild($temp);
-    $temp.value = value;
-    $temp.select();
-    document.execCommand('copy');
-    document.body.removeChild($temp);
+const copyToClipboard = async (): Promise<void> => {
+    const el = document.getElementById('affiliateinput');
+    if (!el) return;
+    const value = el.textContent?.trim();
+    if (!value) return;
+    // Preferred modern API
+    if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(value);
+        return;
+    }
 };
 
 onMounted(() => {
     //$('.column').sortable({ connectWith: '.column' });
-    $('.portlet').addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all').find('.portlet-header').addClass('ui-widget-header ui-corner-all').prepend('<span class="float-right glyphicon glyphicon-minus" aria-hidden="true"></span>').end().find('.portlet-content');
-    $('.portlet-header .ui-icon').click(function () {
-        $(this).toggleClass('ui-icon-minusthick').toggleClass('ui-icon-plusthick');
-        $(this).parents('.portlet:first').find('.portlet-content').toggle();
+    document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        // Handle ui-icon and glyphicon clicks
+        const icon = target.closest<HTMLElement>('.portlet-header .ui-icon, .portlet-header .glyphicon');
+        if (!icon) return;
+        const portlet = icon.closest<HTMLElement>('.portlet');
+        const content = portlet?.querySelector<HTMLElement>('.portlet-content');
+        if (!content) return;
+        // Toggle icon-specific classes
+        if (icon.classList.contains('ui-icon')) {
+            icon.classList.toggle('ui-icon-minusthick');
+            icon.classList.toggle('ui-icon-plusthick');
+        }
+        if (icon.classList.contains('glyphicon')) {
+            icon.classList.toggle('glyphicon-minus');
+            icon.classList.toggle('glyphicon-plus');
+        }
+        // Toggle content visibility
+        content.style.display = content.style.display === 'none' ? '' : 'none';
     });
-    $('.portlet-header .glyphicon').click(function () {
-        $(this).toggleClass('glyphicon-minus').toggleClass('glyphicon-plus');
-        $(this).parents('.portlet:first').find('.portlet-content').toggle();
+    // One-time portlet initialization
+    document.querySelectorAll<HTMLElement>('.portlet').forEach((portlet) => {
+        portlet.classList.add('ui-widget', 'ui-widget-content', 'ui-helper-clearfix', 'ui-corner-all');
+        const header = portlet.querySelector<HTMLElement>('.portlet-header');
+        if (!header) return;
+        header.classList.add('ui-widget-header', 'ui-corner-all');
+        const icon = document.createElement('span');
+        icon.className = 'float-right glyphicon glyphicon-minus';
+        icon.setAttribute('aria-hidden', 'true');
+        header.prepend(icon);
     });
     //$('.column').disableSelection();
 });
@@ -264,6 +228,7 @@ accountStore.load();
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
+                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-right" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">Control Panel</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">

@@ -16,7 +16,7 @@ on:
 jobs:
     # ---------------- WEB BUILD ON MASTER ----------------
     web-build:
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         runs-on: ubuntu-latest
 
         steps:
@@ -28,7 +28,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
                   cache: yarn
 
             - run: yarn
@@ -55,9 +55,8 @@ jobs:
 
     # ---------------- ELECTRON BUILD ON ELECTRON BRANCH ----------------
     electron-build:
-        if: github.ref == 'refs/heads/electron'
+        if: github.ref == 'refs/heads/electron' || startsWith(github.ref, 'refs/tags/')
         runs-on: ${{ matrix.os }}
-        needs: web-build
 
         strategy:
             fail-fast: false
@@ -71,7 +70,7 @@ jobs:
                     - os: ubuntu-latest
                       platform: linux
                       arch: arm64
-                      build_args: --linux AppImage snap deb --arm64
+                      build_args: --linux AppImage deb --arm64
 
                     # Windows
                     - os: windows-latest
@@ -93,7 +92,7 @@ jobs:
             ELECTRON_CACHE: ~/.cache/electron
             ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
 
-            # Signing / notarization
+            # Signing / notarization (only needed for tagged builds)
             CSC_LINK: ${{ secrets.CSC_LINK }}
             CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
             WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
@@ -108,7 +107,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
                   cache: yarn
 
             - run: corepack enable
@@ -127,32 +126,50 @@ jobs:
             - name: Read app version
               run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
-            - name: Install Linux deps
+            - name: Install Linux dependencies
               if: matrix.platform == 'linux'
               run: |
                   sudo apt-get update
-                  sudo apt-get install -y libarchive-tools snapcraft rpm
+                  sudo apt-get install -y libarchive-tools rpm
+                  sudo snap install snapcraft --classic
 
-            - name: Disable signing for PRs
-              if: github.event_name == 'pull_request'
+            # Disable code signing for PRs and CI Mac builds
+            - name: Disable signing for PRs / CI Mac
+              if: github.event_name == 'pull_request' || matrix.platform == 'mac'
               run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
 
+            - name: Build Web / Site
+              run: yarn build
+
+            # Build Electron
             - name: Build Electron app
               run: npx electron-builder ${{ matrix.build_args }}
+              env:
+                  CSC_IDENTITY_AUTO_DISCOVERY: ${{ env.CSC_IDENTITY_AUTO_DISCOVERY || 'true' }}
 
             # ---------------- ZIP UNPACKED ----------------
             - name: Zip unpacked (Linux)
               if: matrix.platform == 'linux'
               run: |
                   cd dist
-                  zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+                  if [ "${{ matrix.arch }}" = "arm64" ]; then
+                    zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-arm64-unpacked
+                  else
+                    zip -r my-interserver-client-${APP_VERSION}-linux-${{ matrix.arch }}.zip linux-unpacked
+                  fi
 
             - name: Zip unpacked (Windows)
               if: matrix.platform == 'win'
               shell: pwsh
               run: |
                   cd dist
-                  Compress-Archive win-unpacked my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip
+                  if ("${{ matrix.arch }}" -eq "arm64") {
+                    $src = "win-arm64-unpacked"
+                  } else {
+                    $src = "win-unpacked"
+                  }
+                  $zip = "my-interserver-client-$env:APP_VERSION-windows-${{ matrix.arch }}.zip"
+                  Compress-Archive -Path $src -DestinationPath $zip
 
             - name: Zip unpacked (macOS)
               if: matrix.platform == 'mac'
@@ -160,22 +177,65 @@ jobs:
                   cd dist
                   zip -r my-interserver-client-${APP_VERSION}-mac.zip mac-unpacked
 
-            # ---------------- CHECKSUMS ----------------
-            - name: Generate SHA256 checksums
-              run: |
-                  cd dist
-                  if command -v sha256sum >/dev/null; then
-                    sha256sum * > SHA256SUMS.txt
-                  else
-                    certutil -hashfile * SHA256 > SHA256SUMS.txt
-                  fi
-
-            # ---------------- UPLOAD ARTIFACTS ----------------
-            - name: Upload artifacts
+            - name: Upload DEB packages
               uses: actions/upload-artifact@v4
               with:
                   name: ${{ matrix.platform }}-${{ matrix.arch }}
-                  path: dist/**
+                  path: dist/*.deb
+                  if-no-files-found: ignore
+
+            - name: Upload AppImage packages
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.AppImage
+                  if-no-files-found: ignore
+
+            - name: Upload Snap packages
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  path: dist/*.snap
+                  if-no-files-found: ignore
+
+            - name: Upload Windows installers
+              if: matrix.platform == 'win'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: windows${{ matrix.arch }}-installer
+                  path: dist/*setup*.exe
+                  if-no-files-found: ignore
+
+            - name: Upload Windows portable builds
+              if: matrix.platform == 'win'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: windows-${{ matrix.arch }}-portable
+                  path: dist/*portable*.exe
+                  if-no-files-found: ignore
+
+            - name: Upload macOS Dmg images
+              if: matrix.platform == 'mac'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: macos-${{ matrix.arch }}
+                  path: dist/*.dmg
+                  if-no-files-found: ignore
+
+            - name: Upload macOS Pkg images
+              if: matrix.platform == 'mac'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: macos-${{ matrix.arch }}
+                  path: dist/*.pkg
+                  if-no-files-found: ignore
+
+            - name: Upload unpacked zips
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}-unpacked
+                  path: dist/*.zip
+                  if-no-files-found: ignore
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
@@ -189,12 +249,16 @@ jobs:
               run: |
                   VERSION="${GITHUB_REF_NAME#v}"
                   REPO_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}"
-
+                  
                   WEB_URL="${REPO_URL}/my-interserver-client-web-${VERSION}.zip"
-                  LINUX_URL="${REPO_URL}/my-interserver-client-${VERSION}-linux-x64.zip"
-                  WIN_URL="${REPO_URL}/my-interserver-client-${VERSION}-windows-x64.zip"
+                  LINUX_URL_X64="${REPO_URL}/my-interserver-client-${VERSION}-linux-x64.zip"
+                  LINUX_URL_ARM64="${REPO_URL}/my-interserver-client-${VERSION}-linux-arm64.zip"
+                  WIN_URL_X64="${REPO_URL}/my-interserver-client-${VERSION}-windows-x64.zip"
+                  WIN_URL_ARM64="${REPO_URL}/my-interserver-client-${VERSION}-windows-arm64.zip"
                   MAC_URL="${REPO_URL}/my-interserver-client-${VERSION}-mac.zip"
-                  echo -e "<!-- DOWNLOADS-START -->\n## Latest Downloads (v${VERSION})\n\n### Web\n- [Web (zip)](${WEB_URL})\n\n### Electron\n#### Linux\n- [x64](${LINUX_URL})\n#### Windows\n- [x64](${WIN_URL})\n#### macOS\n- [Universal](${MAC_URL})\n<!-- DOWNLOADS-END -->" > latest-downloads.md
+                  
+                  echo -e "<!-- DOWNLOADS-START -->\n## Latest Downloads (v${VERSION})\n\n### Web\n- [Web (zip)](${WEB_URL})\n\n### Electron\n#### Linux\n- [x64](${LINUX_URL_X64})\n- [arm64](${LINUX_URL_ARM64})\n#### Windows\n- [x64](${WIN_URL_X64})\n- [arm64](${WIN_URL_ARM64})\n#### macOS\n- [Universal](${MAC_URL})\n<!-- DOWNLOADS-END -->" > latest-downloads.md
+                  
                   awk '
                     BEGIN {in_block=0}
                     /<!-- DOWNLOADS-START -->/ {
@@ -208,7 +272,7 @@ jobs:
                     }
                     !in_block {print}
                   ' README.md > README.tmp && mv README.tmp README.md
-
+                  
                   git config user.name "github-actions"
                   git config user.email "github-actions@github.com"
                   git add README.md

@@ -9,7 +9,6 @@ import { computed, watch } from 'vue';
 import { useServerStore } from '../../stores/server.store';
 import { useSiteStore } from '../../stores/site.store';
 
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
@@ -93,6 +92,8 @@ loadLink(route.params.link as string);
 
 serverStore.getById(id);
 
+const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'}));
+
 const hasAssetVlanSwitchport = computed(() => {
     let ret = false;
     if (networkInfo.value.assets) {
@@ -109,6 +110,11 @@ const hasAssetVlanSwitchport = computed(() => {
 const assets = computed(() => {
     return networkInfo.value.assets ? networkInfo.value.assets : {};
 });
+
+const firstAsset = computed(() => {
+    return networkInfo.value.assets ? (Object.keys(networkInfo.value.assets).length > 0 ? networkInfo.value.assets[Object.keys(networkInfo.value.assets)[0]] : []) : [];
+});
+
 
 const vlans = computed(() => {
     return networkInfo.value.vlans ? networkInfo.value.vlans : {};
@@ -174,7 +180,7 @@ const ipv6VlansNetworks = computed(() => {
                 </div>
                 <div class="icon"><i class="fa fa-cart-plus"></i></div>
                 <div class="small-box-footer">
-                    Ordered on: <b>{{ new Date(serviceInfo.server_date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) }}</b>
+                    Ordered on: <b>{{ orderedOn }}</b>
                 </div>
             </div>
         </div>
@@ -187,7 +193,7 @@ const ipv6VlansNetworks = computed(() => {
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
-            <IpmiLive :id="id"></IpmiLive>
+            <IpmiLive :id="id" :asset-info="firstAsset"></IpmiLive>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
@@ -197,42 +203,7 @@ const ipv6VlansNetworks = computed(() => {
         </div>
         <div v-else class="col" v-html="linkDisplay"></div>
     </div>
-    <div v-if="!linkDisplay || (link && link.includes('cancel'))" class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;Server Information</h3>
-                        <div class="card-tools float-right pl-3 pt-1">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" style="height: 270px">
-                    <div class="row">
-                        <template v-if="ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true">
-                            <div class="col-md-12">
-                                <h5 class="text-md m-0 p-2 text-center">
-                                    Power Status is: <span class="text-bold text-capitalize text-bold" :class="{ 'text-success': ipmiLease.power == true, 'text-danger': ipmiLease.power == false }">{{ ipmiLease.power ? 'On' : 'Off' }}</span>
-                                </h5>
-                            </div>
-                        </template>
-                        <div class="col-md-12 mr-3 pr-4 pt-2 text-center"></div>
-                        <div class="row">
-                            <div class="col-md-12 py-2">
-                                <span class="info-box-text">
-                                    <hr />
-                                    <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.server_comment ? serviceInfo.server_comment : 'none' }}
-                                        <span data-toggle="modal" data-target="#commentForm" title="Edit Comment" style="cursor: pointer"><i class="fa fa-pencil my-2 text-sm"></i></span>
-                                    </h5>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div v-else class="row justify-content-center">
         <div :class="`${ipmiLease && ipmiLease !== false && ipmiLease.authenticated == true ? 'col-md-8' : 'col-md-4'}`">
             <div class="card">
                 <div class="card-header">
@@ -324,12 +295,12 @@ const ipv6VlansNetworks = computed(() => {
                     <table class="table-sm table-bordered table text-center">
                         <thead>
                             <tr>
-                                <th class="text-3xl font-bold underline">Network</th>
+                                <th>Network</th>
                                 <th>Primary IP</th>
                                 <th>IPv6</th>
                                 <th>Netmask</th>
                                 <th>Gateway</th>
-                                <th>Hostmax</th>
+                                <th>HostMax</th>
                                 <th>Switch</th>
                                 <th>Port</th>
                                 <th>Is Primary?</th>
@@ -361,7 +332,7 @@ const ipv6VlansNetworks = computed(() => {
                                     <td>{{ vlans[vlan_id].primary ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a :href="`/view_server?id=${serviceInfo.server_id}&link=bandwidth_graph&graph_id=${switchport.graph_id}`" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="fa fa-line-chart"></i></a>
+                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="fa fa-line-chart"></i></router-link>
                                         </div>
                                     </td>
                                 </tr>

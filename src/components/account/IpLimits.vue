@@ -4,8 +4,13 @@ import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 
 import { fetchWrapper } from '../../helpers/fetchWrapper';
+import type { AccountData, AccountLimit } from '../../types/account.ts';
 
-const props = defineProps(['data', 'limits', 'ip']);
+const props = defineProps<{
+    data: AccountData
+    limits: AccountLimit[]
+    ip: string
+}>();
 const limits = computed(() => {
     return props.limits;
 });
