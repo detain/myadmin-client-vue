@@ -7,6 +7,7 @@ import { useSiteStore } from '../../stores/site.store';
 import { useAccountStore } from '../../stores/account.store';
 import Swal from 'sweetalert2';
 import { storeToRefs } from 'pinia';
+import { AssetRow } from '../../types/servers';
 
 const props = defineProps<{
     id: number;
@@ -17,12 +18,13 @@ const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const accountStore = useAccountStore();
-const { ip  } = storeToRefs(accountStore);
+const { ip } = storeToRefs(accountStore);
 const assetInfo = computed(() => props.assetInfo);
 const success = ref('');
 const info = ref('');
 const error = ref('');
 const clientIp = ref(ip.value);
+
 function emailIpmiLink() {
     Swal.fire({
         title: '',
@@ -68,6 +70,7 @@ function submitForm() {
                 ip: clientIp.value,
             })
             .then((response) => {
+                //'<h4>Setup Completed!<h4><br>For the next '.$leaseHours.' hours your IP <strong>' . $ipmiInfo['ip_user'] . '</strong> can connect to IPMI for the server through IP <strong>' . $ipmiInfo['ip_public'] . '</strong><br>IPMI URL: <a href="https://' . $ipmiInfo['ip_public'] . '">https://' . $ipmiInfo['ip_public'] . '</a> / <a href="https://' . $other_url . '">https://' . $other_url . '</a><br>'
                 Swal.close();
                 console.log('ipmi live setup vnc success');
                 console.log(response);
@@ -87,44 +90,6 @@ function submitForm() {
     }
 }
 
-interface AssetRow {
-    id: number;
-    order_id: number;
-    hostname: string;
-    status: string;
-    primary_ipv4: string;
-    primary_ipv6: string;
-    mac: string;
-    datacenter: number;
-    type_id: number;
-    asset_tag: string;
-    rack: string;
-    row: string;
-    col: string;
-    unit_start: string;
-    unit_end: string;
-    unit_sub: number;
-    ipmi_mac: string;
-    ipmi_ip: string;
-    ipmi_admin_username: string;
-    ipmi_admin_password: string;
-    ipmi_client_username: string;
-    ipmi_client_password: string;
-    ipmi_updated: string;
-    ipmi_working: number;
-    company: string;
-    comments: string;
-    make: string;
-    model: string;
-    description: string;
-    customer_id: string;
-    external_id: number;
-    billing_status: string;
-    overdue: number;
-    create_timestamp: string;
-    update_timestamp: string;
-}
-
 try {
     fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`).then((response) => {
         console.log(response);
@@ -138,6 +103,7 @@ try {
 } catch (error: any) {
     console.log(error);
 }
+
 accountStore.loadOnce();
 </script>
 
