@@ -4,7 +4,9 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { useAccountStore } from '../../stores/account.store';
 import Swal from 'sweetalert2';
+import { storeToRefs } from 'pinia';
 
 const props = defineProps<{
     id: number;
@@ -14,11 +16,13 @@ const id = computed(() => props.id);
 const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
+const accountStore = useAccountStore();
+const { ip  } = storeToRefs(accountStore);
 const assetInfo = computed(() => props.assetInfo);
-const clientIP = ref('');
 const success = ref('');
 const info = ref('');
 const error = ref('');
+const clientIp = ref(ip.value);
 function emailIpmiLink() {
     Swal.fire({
         title: '',
@@ -29,7 +33,7 @@ function emailIpmiLink() {
     try {
         fetchWrapper
             .post(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`, {
-                ip: clientIP.value,
+                ip: clientIp.value,
             })
             .then((response) => {
                 Swal.close();
@@ -61,7 +65,7 @@ function submitForm() {
     try {
         fetchWrapper
             .post(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`, {
-                ip: clientIP.value,
+                ip: clientIp.value,
             })
             .then((response) => {
                 Swal.close();
@@ -134,6 +138,7 @@ try {
 } catch (error: any) {
     console.log(error);
 }
+accountStore.loadOnce();
 </script>
 
 <template>
@@ -202,7 +207,7 @@ try {
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Your IP Address</label>
                             <div class="col-sm-9 input-group">
-                                <input id="ip" v-model="clientIP" type="text" class="form-control form-control-sm" placeholder="1.2.3.4" name="ip" />
+                                <input id="ip" v-model="clientIp" type="text" class="form-control form-control-sm" placeholder="1.2.3.4" name="ip" />
                             </div>
                         </div>
                         <hr />
