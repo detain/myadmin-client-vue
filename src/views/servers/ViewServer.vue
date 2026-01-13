@@ -56,7 +56,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -130,14 +130,6 @@ function nl2br(text: string) {
 function locationName(assetId: number | string) {
     return locations.value[networkInfo.value.assets[assetId].datacenter].location_name;
 }
-
-const ipv6VlansNetworks = computed(() => {
-    if (!networkInfo.value.vlans6 || networkInfo.value.vlans6.length === 0) {
-        return '<i>Null</i>';
-    }
-
-    return networkInfo.value.vlans6.map((ipv6: any) => ipv6.vlans6Networks).join(',');
-});
 </script>
 
 <template>
@@ -308,10 +300,10 @@ const ipv6VlansNetworks = computed(() => {
                         </thead>
                         <tbody>
                             <template v-for="(switchport, switchport_id) in switchports" :key="switchport_id">
-                                <tr v-for="vlan_id in switchport.vlans" :key="vlan_id">
+                                <tr v-for="(vlan_id, vlan_index) in switchport.vlans" :key="vlan_id">
                                     <td>{{ vlans[vlan_id].network }}</td>
                                     <td>{{ vlans[vlan_id].first_usable }}</td>
-                                    <template v-if="Object.keys(switchports)[0] === String(switchport_id)">
+                                    <template v-if="vlan_index === 0">
                                         <td :rowspan="switchport.vlans.length" :class="{ 'vertical-align': switchport.vlans.length > 1 }">
                                             <template v-if="networkInfo.vlans6 && networkInfo.vlans6.length > 0">
                                                 <template v-for="(ipv6, ipv6_index) in networkInfo.vlans6" :key="ipv6_index">
