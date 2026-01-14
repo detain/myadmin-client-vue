@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { fetchWrapper } from '../../../helpers/fetchWrapper';
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
 import { useSiteStore } from '../../../stores/site.store';
-
+import Swal from 'sweetalert2';
 import Chart from 'chart.js/auto';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - SalesGraph');
@@ -13,29 +13,65 @@ siteStore.setBreadcrums([
     ['/affiliate', 'Affiliate'],
     ['', 'SalesGraph'],
 ]);
+const baseUrl = siteStore.getBaseUrl();
+const selectedPeriod = ref(365);
+const chartInstance = ref<Chart | null>(null);
+const colors = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'];
 
-const selectedPeriod = ref(30);
+type StatusMonthlyBreakdown = Record<'default' | 'failed' | 'rejected' | 'pending' | 'locked' | 'paid', Record<string, number>>;
 
-function updatePeriod() {}
+const chartData = ref<StatusMonthlyBreakdown>({
+    default: {},
+    failed: {},
+    rejected: {},
+    pending: {},
+    locked: {},
+    paid: {},
+});
+
+async function updatePeriod() {
+    try {
+        const response: StatusMonthlyBreakdown = await fetchWrapper.get(`${baseUrl}/affiliate/sales_graph?days=${selectedPeriod.value}`);
+        chartData.value = response;
+        const datasets: any[] = [];
+        let i = 0;
+        for (const label in chartData.value) {
+            datasets.push({
+                label,
+                data: Object.values(chartData.value[label]),
+                borderColor: colors[i % colors.length],
+                fill: false,
+                tension: 0.3,
+            });
+            i++;
+        }
+        const canvas = document.getElementById('canvasGraph') as HTMLCanvasElement;
+        const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+        // Destroy previous chart before creating a new one
+        if (chartInstance.value) {
+            chartInstance.value.destroy();
+        }
+        chartInstance.value = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Object.keys(chartData.value.default),
+                datasets,
+            },
+            options: {
+                responsive: true,
+            },
+        });
+    } catch (error: any) {
+        console.error(error);
+        await Swal.fire({
+            icon: 'error',
+            html: `Got error ${error?.message ?? 'Unknown error'}`,
+        });
+    }
+}
 
 onMounted(() => {
-    const canvas = document.getElementById('canvasGraph') as unknown as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-    const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'Affiliate Sales',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                    borderColor: 'blue',
-                    fill: false,
-                },
-            ],
-        },
-        options: {},
-    });
+    updatePeriod(); // initial load
 });
 </script>
 
