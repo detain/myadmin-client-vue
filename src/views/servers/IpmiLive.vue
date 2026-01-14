@@ -39,7 +39,7 @@ function emailIpmiLink() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('ipmi live setup vnc success');
+                console.log('ipmi live success');
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
@@ -48,7 +48,7 @@ function emailIpmiLink() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('ipmi live setup vnc failed');
+        console.log('ipmi live failed');
         console.log(error);
         Swal.fire({
             icon: 'error',
@@ -76,13 +76,13 @@ function submitForm() {
                 } else {
                     error.value = response.text;
                 }
-                console.log('ipmi live setup vnc success');
+                console.log('ipmi live success');
                 console.log(response);
             });
     } catch (err: any) {
         Swal.close();
         error.value = err.text;
-        console.log('ipmi live setup vnc failed');
+        console.log('ipmi live failed');
         console.log(error);
     }
 }
