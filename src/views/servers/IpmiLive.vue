@@ -70,23 +70,20 @@ function submitForm() {
                 ip: clientIp.value,
             })
             .then((response) => {
-                //'<h4>Setup Completed!<h4><br>For the next '.$leaseHours.' hours your IP <strong>' . $ipmiInfo['ip_user'] . '</strong> can connect to IPMI for the server through IP <strong>' . $ipmiInfo['ip_public'] . '</strong><br>IPMI URL: <a href="https://' . $ipmiInfo['ip_public'] . '">https://' . $ipmiInfo['ip_public'] . '</a> / <a href="https://' . $other_url . '">https://' . $other_url . '</a><br>'
                 Swal.close();
+                if (typeof response.public_ip != 'undefined') {
+                    success.value = response.text;
+                } else {
+                    error.value = response.text;
+                }
                 console.log('ipmi live setup vnc success');
                 console.log(response);
-                Swal.fire({
-                    icon: 'success',
-                    html: `Success${response.text}`,
-                });
             });
-    } catch (error: any) {
+    } catch (err: any) {
         Swal.close();
+        error.value = err.text;
         console.log('ipmi live setup vnc failed');
         console.log(error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.text}`,
-        });
     }
 }
 
@@ -94,10 +91,7 @@ try {
     fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/ipmi_live`).then((response) => {
         console.log(response);
         if (typeof response.public_ip != 'undefined') {
-            Swal.fire({
-                icon: 'success',
-                html: `Success${response.text}`,
-            });
+            success.value = response.text;
         }
     });
 } catch (error: any) {
@@ -129,7 +123,7 @@ accountStore.loadOnce();
                 </div>
                 <div class="card-body">
                     <div v-if="success">
-                        <div class="alert alert-success">{{ success }}</div>
+                        <div class="alert alert-success" v-html="success"></div>
                     </div>
                     <div v-else-if="info">
                         <div class="alert alert-info">{{ info }}</div>
