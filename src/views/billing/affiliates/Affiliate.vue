@@ -97,6 +97,7 @@ onMounted(() => {
     }
     */
 });
+accountStore.loadOnce();
 </script>
 
 <template>
