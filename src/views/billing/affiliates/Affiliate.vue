@@ -3,11 +3,12 @@ import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSiteStore } from '../../../stores/site.store';
-
+import { useAccountStore } from '../../../stores/account.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 //import DataTable from 'datatables.net';
 //import 'datatables.net-bs4';
+const accountStore = useAccountStore();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate System');
 siteStore.setTitle('Affiliate System');
@@ -15,10 +16,10 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Affiliate'],
 ]);
+const { custid, data } = storeToRefs(accountStore);
 const myUrl = 'https://my.interserver.net';
 const body = ref('');
-const custid = ref();
-const affiliate_amount = ref(0);
+const affiliate_amount = ref(data.value.affiliate_amount || 100);
 
 onMounted(() => {
     $('.export').click(function (e) {
