@@ -19,6 +19,7 @@ const chartInstance = ref<Chart | null>(null);
 const colors = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'];
 
 type StatusMonthlyBreakdown = Record<'default' | 'failed' | 'rejected' | 'pending' | 'locked' | 'paid', Record<string, number>>;
+type Status = keyof StatusMonthlyBreakdown;
 
 const chartData = ref<StatusMonthlyBreakdown>({
     default: {},
@@ -31,14 +32,14 @@ const chartData = ref<StatusMonthlyBreakdown>({
 
 async function updatePeriod() {
     try {
-        const response: StatusMonthlyBreakdown = await fetchWrapper.get(`${baseUrl}/affiliate/sales_graph?days=${selectedPeriod.value}`);
-        chartData.value = response;
+        chartData.value = await fetchWrapper.get(`${baseUrl}/affiliate/sales_graph?days=${selectedPeriod.value}`);
         const datasets: any[] = [];
         let i = 0;
         for (const label in chartData.value) {
+            const status = label as Status;
             datasets.push({
                 label,
-                data: Object.values(chartData.value[label]),
+                data: Object.values(chartData.value[status]),
                 borderColor: colors[i % colors.length],
                 fill: false,
                 tension: 0.3,

@@ -18,8 +18,8 @@ siteStore.setBreadcrums([
     ['', 'PaymentSetup'],
 ]);
 const { data } = storeToRefs(accountStore);
-const payment_method = ref(data.affiliate_payment_method || 'not set');
-const affiliate_paypal = ref(data.affiliate_paypal || '');
+const payment_method = ref(data.value.affiliate_payment_method || 'not set');
+const affiliate_paypal = ref(data.value.affiliate_paypal || '');
 onMounted(() => {});
 
 function submitForm() {
@@ -94,7 +94,7 @@ accountStore.loadOnce();
                                 </div>
                                 <div class="form-group w-100">
                                     <div class="icheck-success d-inline">
-                                        <input id="no_payment_method" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="not set"/>
+                                        <input id="no_payment_method" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="not set" />
                                         <label class="more-info font-weight-normal" for="no_payment_method">Not Set.</label>
                                     </div>
                                 </div>
