@@ -20,6 +20,7 @@ import ChangeWebuzoPassword from '../../views/vps/ChangeWebuzoPassword.vue';
 import InsertCd from '../../views/vps/InsertCd.vue';
 import ReinstallOs from '../../views/vps/ReinstallOs.vue';
 import ResetPassword from '../../views/vps/ResetPassword.vue';
+import Restore from '../../views/vps/Restore.vue';
 import ReverseDns from '../../views/vps/ReverseDns.vue';
 import TrafficUsage from '../../views/vps/TrafficUsage.vue';
 import SetupVnc from '../../views/vps/SetupVnc.vue';
@@ -227,6 +228,9 @@ function loadLink(newLink: string) {
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></ResetPassword>
+        </div>
+        <div v-else-if="link == 'restore'" class="col">
+            <Restore :id="id" :module="module" :cur-hostname="serviceInfo.qs_hostname"></Restore>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
