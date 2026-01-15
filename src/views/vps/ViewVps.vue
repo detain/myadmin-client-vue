@@ -22,6 +22,7 @@ import ChangeWebuzoPassword from '../../views/vps/ChangeWebuzoPassword.vue';
 import InsertCd from '../../views/vps/InsertCd.vue';
 import ReinstallOs from '../../views/vps/ReinstallOs.vue';
 import ResetPassword from '../../views/vps/ResetPassword.vue';
+import Restore from '../../views/vps/Restore.vue';
 import ReverseDns from '../../views/vps/ReverseDns.vue';
 import Slices from '../../views/vps/Slices.vue';
 import TrafficUsage from '../../views/vps/TrafficUsage.vue';
@@ -253,9 +254,9 @@ function toggleFunc(cp: string) {
                 <div class="icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
-                <span class="small-box-footer"
-                    >VPS Status is: <b>{{ serviceInfo.vps_status }}</b></span
-                >
+                <span class="small-box-footer">
+                    VPS Status is: <b>{{ serviceInfo.vps_status }}</b>
+                </span>
             </div>
         </div>
         <div class="col-md-4">
@@ -316,6 +317,9 @@ function toggleFunc(cp: string) {
         </div>
         <div v-else-if="link == 'reset_password'" class="col">
             <ResetPassword :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></ResetPassword>
+        </div>
+        <div v-else-if="link == 'restore'" class="col">
+            <Restore :id="id" :module="module" :cur-hostname="serviceInfo.vps_hostname"></Restore>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id" :module="module" :service-info="serviceInfo"></ReverseDns>
