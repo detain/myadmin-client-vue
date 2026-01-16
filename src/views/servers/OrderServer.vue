@@ -6,6 +6,8 @@ import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
 import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
@@ -44,6 +46,9 @@ const fieldLabel = ref<FieldLabel>({
     memory: { name: 'Memory' },
     hd: { name: 'Hard Drives' },
 });
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums([
@@ -51,6 +56,22 @@ siteStore.setBreadcrums([
     [`/${moduleLink(module)}`, 'Servers List'],
     ['/servers/order', 'Order Server'],
 ]);
+
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 
 function addDrive(id: number, driveType: string, description: string, price: number) {}
 

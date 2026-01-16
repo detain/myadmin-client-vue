@@ -22,6 +22,9 @@ siteStore.setBreadcrums([
     ['/vps/order', 'Order VPS'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
 /* const billingCycle = ref({
     1: 'Monthly',
     3: '3 Months',
@@ -97,8 +100,6 @@ const vpsNyCost = ref(3);
 const vpsSliceKvmWCost = ref(6);
 const totalCost = ref(0.0);
 const ipv6_only_discount = ref(1);
-const couponInfo = ref<CouponInfo>({});
-const lastCoupon = ref('');
 const step = ref('orderform');
 // validation response extra fields
 const validationSuccess = ref(false);
@@ -121,7 +122,6 @@ const osVersion = ref('');
 const osDistro = ref('ubuntu');
 const hostname = ref('server.domain.com');
 const osVersionSelect = ref({});
-const coupon = ref('');
 const rootpass = ref('');
 const curSsd = ref(0);
 const curControl = ref('');
@@ -298,6 +298,23 @@ const getBandwidth = computed(() => {
     return bandwidthamount + slice_amount;
 });
 
+
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
+
 function updateHostname() {}
 
 function onSubmit() {
@@ -399,22 +416,6 @@ function onSubmitConfirmation() {
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
-        });
-    }
-}
-
-function updateCoupon() {
-    if (lastCoupon.value != coupon.value) {
-        lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
-                }
-            }
         });
     }
 }

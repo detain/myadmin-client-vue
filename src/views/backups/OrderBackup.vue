@@ -2,11 +2,11 @@
 import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-
 import { useSiteStore } from '../../stores/site.store';
-
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
@@ -25,6 +25,8 @@ const currencySymbol = ref('$');
 const pkg = ref(10831);
 const rootpass = ref('');
 const period = ref(1);
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
 const coupon = ref('');
 const packageCosts = ref<PackageCosts>({});
 const serviceTypes = ref<ServiceTypes>({});
@@ -45,7 +47,21 @@ async function editForm() {
 
 function updatePrice() {}
 
-function updateCoupon() {}
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 
 const serviceDetail = computed(() => {
     return serviceTypes.value[pkg.value] as ServiceType;

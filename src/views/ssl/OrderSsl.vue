@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
+import { ref } from 'vue';
 
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order SSL');
@@ -10,6 +13,25 @@ siteStore.setBreadcrums([
     ['/ssl', 'SSL List'],
     ['/ssl/order', 'Order SSL'],
 ]);
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
+
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 </script>
 
 <template>
