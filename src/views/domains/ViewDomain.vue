@@ -169,7 +169,7 @@ loadLink(route.params.link as string);
             <Dnssec :id="id"></Dnssec>
         </div>
         <div v-else-if="link == 'nameservers'" class="col">
-            <Nameservers :id="id"></Nameservers>
+            <Nameservers :id="id" :nameservers="allInfo.attributes?.nameserver_list"></Nameservers>
         </div>
         <div v-else-if="link == 'renew'" class="col">
             <Renew :id="id"></Renew>

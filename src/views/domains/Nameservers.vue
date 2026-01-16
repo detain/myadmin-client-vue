@@ -9,15 +9,16 @@ import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
+    nameservers: NameServerRow[] | undefined;
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module = 'domains';
 const id = computed(() => props.id);
+const nameservers = computed(() => props.nameservers);
 const suggested = ref<string[]>([]);
-const initialNameservers = ref<string[]>([]);
-const nameservers = ref<Nameservers>([]);
-const registeredNameservers = ref<Nameservers>([]);
+const initialNameservers = ref<string[]>(buildInitialNameservers(nameservers.value));
+const registeredNameservers = ref<RegNameServerRow[]>([]);
 const iconHref = (name: string) => `${myAdminIcons}#icon-${name}`;
 const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
 const newNameserver = ref({
@@ -25,15 +26,27 @@ const newNameserver = ref({
     ipaddress: '',
 });
 
-type Nameservers = NameserverRow[];
+interface NameServerRow {
+    sortorder: string;
+    name: string;
+    ipaddress: string;
+}
 
-interface NameserverRow {
+interface RegNameServerRow {
     name: string;
     ipaddress: string;
     can_delete: number;
 }
 
 onMounted(() => {});
+
+function buildInitialNameservers(nameservers: NameServerRow[]): string[] {
+    const result = typeof nameservers == 'undefined' ? [] : nameservers.map((ns) => ns.name).slice(0, 4);
+    while (result.length < 4) {
+        result.push('');
+    }
+    return result as string[];
+}
 
 function applySuggested() {
     suggested.value?.forEach((value, index) => {
@@ -123,6 +136,19 @@ function confirmDelete(index: number) {
         }
     });
 }
+
+const loadNameservers = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`);
+        console.log('api success');
+        console.log(response);
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadNameservers();
 </script>
 
 <template>
@@ -131,7 +157,7 @@ function confirmDelete(index: number) {
         <div class="card-header">
             <h3 class="card-title text-lg mt-1">
                 <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"
-                    ><svg><use :xlink:href="iconHref('dns')" /></svg></i
+                    ><svg><use :href="iconHref('dns')" /></svg></i
                 >Domain Name Servers
             </h3>
 
