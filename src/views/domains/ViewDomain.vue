@@ -91,10 +91,16 @@ const formatDate = (dateString?: string | null): string => {
 };
 
 watch(
-    () => route.params.link as string,
-    (newLink) => {
-        loadLink(newLink as string);
-    }
+    [
+        () => route.params.link as string | undefined,
+        () => serviceInfo.value, // or domainStore.domain
+    ],
+    ([link, serviceInfo]) => {
+        if (!link || !serviceInfo) return;
+
+        loadLink(link);
+    },
+    { immediate: true }
 );
 
 domainStore.getById(id);

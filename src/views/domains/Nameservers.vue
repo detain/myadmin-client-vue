@@ -2,11 +2,11 @@
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { watch, ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-//import iconDns from '../../assets/images/myadmin/dns.png';
 import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
+//import iconDns from '../../assets/images/myadmin/dns.png';
 const props = defineProps<{
     id: number;
     nameservers: NameServerRow[] | undefined;
@@ -17,10 +17,9 @@ const module = 'domains';
 const id = computed(() => props.id);
 const nameservers = computed(() => props.nameservers);
 const suggested = ref<string[]>([]);
-const initialNameservers = ref<string[]>(buildInitialNameservers(nameservers.value));
 const registeredNameservers = ref<RegNameServerRow[]>([]);
 const iconHref = (name: string) => `${myAdminIcons}#icon-${name}`;
-const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
+const nameserverInputs = ref<string[]>(buildInitialNameservers(nameservers.value));
 const newNameserver = ref({
     name: '',
     ipaddress: '',
@@ -40,7 +39,14 @@ interface RegNameServerRow {
 
 onMounted(() => {});
 
-function buildInitialNameservers(nameservers: NameServerRow[]): string[] {
+watch(
+    () => nameservers,
+    (nameservers) => {
+        nameserverInputs.value = buildInitialNameservers(nameservers.value);
+    }
+);
+
+function buildInitialNameservers(nameservers: NameServerRow[] | undefined): string[] {
     const result = typeof nameservers == 'undefined' ? [] : nameservers.map((ns) => ns.name).slice(0, 4);
     while (result.length < 4) {
         result.push('');
