@@ -148,6 +148,7 @@ const loadNameservers = async () => {
         const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`);
         console.log('api success');
         console.log(response);
+        registeredNameservers.value = response;
     } catch (error: any) {
         console.log('api failed');
         console.log(error);
@@ -162,17 +163,14 @@ loadNameservers();
         <!-- HEADER -->
         <div class="card-header">
             <h3 class="card-title text-lg mt-1">
-                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"
-                    ><svg><use :href="iconHref('dns')" /></svg></i
+                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px">
+                    <svg><use :href="iconHref('dns')" /></svg></i
                 >Domain Name Servers
             </h3>
-
             <div class="card-tools mr-4 mt-2">
                 <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
-
-        <!-- BODY -->
         <div class="card-body">
             <div class="row justify-content-around">
                 <!-- NAMESERVERS -->

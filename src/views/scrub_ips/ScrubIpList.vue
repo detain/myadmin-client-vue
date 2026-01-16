@@ -142,28 +142,28 @@ loadScrubIp();
                             <div class="col-md-12">
                                 <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Cost</th>
-                                        <th>Username</th>
-                                        <th>Status</th>
-                                        <th>Package</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Cost</th>
+                                            <th>Username</th>
+                                            <th>Status</th>
+                                            <th>Package</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
-                                        <td>{{ row.scrub_ip_id }}</td>
-                                        <td>{{ row.repeat_invoices_cost }}</td>
-                                        <td>
-                                            <router-link :to="'/' + moduleLink(module) + '/' + row.scrub_ip_id">{{ row.scrub_ip_ip }}</router-link>
-                                        </td>
-                                        <td>{{ row.scrub_ip_status }}</td>
-                                        <td>{{ row.services_name }}</td>
-                                        <td>
-                                            <router-link :to="'/' + moduleLink(module) + '/' + row.scrub_ip_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
-                                        </td>
-                                    </tr>
+                                        <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
+                                            <td>{{ row.scrub_ip_id }}</td>
+                                            <td>{{ row.repeat_invoices_cost }}</td>
+                                            <td>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.scrub_ip_id">{{ row.scrub_ip_ip }}</router-link>
+                                            </td>
+                                            <td>{{ row.scrub_ip_status }}</td>
+                                            <td>{{ row.services_name }}</td>
+                                            <td>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.scrub_ip_id" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
