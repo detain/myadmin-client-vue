@@ -101,10 +101,9 @@ function submitNameservers() {
 function registerNameserver() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`, {
                 name: newNameserver.value.name,
                 ipAddress: newNameserver.value.ipaddress,
-                new_nameservers: 1,
             })
             .then((response) => {
                 Swal.close();
@@ -112,7 +111,7 @@ function registerNameserver() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: `Success${response.text}`,
+                    html: `Success${response}`,
                 });
             });
     } catch (error: any) {
@@ -121,7 +120,7 @@ function registerNameserver() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.text}`,
+            html: `Got error ${error}`,
         });
     }
 }
