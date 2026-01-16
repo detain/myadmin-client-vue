@@ -23,13 +23,35 @@ siteStore.setBreadcrums([
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const pkg = ref(10880);
-const validateResponse = ref<ValiateResponse | null>(null);
+const validateResponse = ref<ValidateResponse | null>(null);
 const tos = ref(false);
 const packageCosts = ref<PackageCosts>({});
 const serviceTypes = ref<ServiceTypes>({});
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const coupon = ref('');
+
+interface PackageCosts {
+    [key: number]: number;
+}
+
+interface MailOrderResponse {
+    packageCosts: PackageCosts;
+    serviceTypes: ServiceTypes;
+}
+
+interface ValidateResponse {
+    continue: boolean;
+    coupon: string;
+    couponCode: number;
+    errors: string[];
+    introFrequency: number;
+    originalCost: number;
+    password: string;
+    repeatServiceCost: number;
+    serviceCost: number;
+    serviceType: number;
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -65,7 +87,7 @@ async function onSubmit(values: any) {
                 serviceType: pkg.value,
                 coupon: coupon.value,
             })
-            .then((response: ValiateResponse) => {
+            .then((response: ValidateResponse) => {
                 Swal.close();
                 validateResponse.value = response;
                 console.log('Response:');
@@ -111,28 +133,6 @@ async function placeOrder(values: any) {
     }
 }
 
-interface PackageCosts {
-    [key: number]: number;
-}
-
-interface MailOrderResponse {
-    packageCosts: PackageCosts;
-    serviceTypes: ServiceTypes;
-}
-
-interface ValiateResponse {
-    continue: boolean;
-    coupon: string;
-    couponCode: number;
-    errors: string[];
-    introFrequency: number;
-    originalCost: number;
-    password: string;
-    repeatServiceCost: number;
-    serviceCost: number;
-    serviceType: number;
-}
-
 try {
     fetchWrapper.get(`${baseUrl}/mail/order`).then((response: MailOrderResponse) => {
         packageCosts.value = response.packageCosts;
@@ -168,10 +168,10 @@ try {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Coupon Code</label>
-                                <div class="col-md-9">
-                                    <input v-model="coupon" type="text" class="form-control form-control-sm" placeholder="Coupon Code" @input="updateCoupon()" />
-                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" height="20" width="20" alt="" /></span>
+                                <label class="col-sm-3 col-form-label">Coupon Code</label>
+                                <div class="input-group col-md-9">
+                                    <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" placeholder="Coupon Code" @keyup="updateCoupon" @change="updateCoupon" />
+                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row">
