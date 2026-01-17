@@ -14,12 +14,8 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const password = ref('');
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const curHostname = computed(() => {
     return props.curHostname;
 });

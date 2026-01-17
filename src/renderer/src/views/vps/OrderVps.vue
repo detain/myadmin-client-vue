@@ -1,17 +1,16 @@
 <script setup lang="ts">
-//import { storeToRefs } from 'pinia';
 import { ref, watch, computed, onMounted } from 'vue';
-//import { Form, Field } from 'vee-validate';
-//import * as Yup from 'yup';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { useSiteStore } from '../../stores/site.store';
+import type { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import type { CouponInfo, VpsOrderResponse, PlatformPackages, PlatformNames, PackageCosts, LocationStock, LocationNames, OsNames, Templates } from '../../types/vps_order.ts';
+import { useRoute, useRouter } from 'vue-router';
 import $ from 'jquery';
 import jQuery from 'jquery';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-
-import { useSiteStore } from '../../stores/site.store';
-
-import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import { useRoute, useRouter } from 'vue-router';
+//import { storeToRefs } from 'pinia';
+//import { Form, Field } from 'vee-validate';
+//import * as Yup from 'yup';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
@@ -23,6 +22,9 @@ siteStore.setBreadcrums([
     ['/vps/order', 'Order VPS'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
 /* const billingCycle = ref({
     1: 'Monthly',
     3: '3 Months',
@@ -98,8 +100,6 @@ const vpsNyCost = ref(3);
 const vpsSliceKvmWCost = ref(6);
 const totalCost = ref(0.0);
 const ipv6_only_discount = ref(1);
-const couponInfo = ref<CouponInfo>({});
-const lastCoupon = ref('');
 const step = ref('orderform');
 // validation response extra fields
 const validationSuccess = ref(false);
@@ -122,7 +122,6 @@ const osVersion = ref('');
 const osDistro = ref('ubuntu');
 const hostname = ref('server.domain.com');
 const osVersionSelect = ref({});
-const coupon = ref('');
 const rootpass = ref('');
 const curSsd = ref(0);
 const curControl = ref('');
@@ -132,51 +131,6 @@ const couponPriceLabel = ref('Coupon Discount:');
 const sliceCostHtml = ref('$6 per slice');
 const cycleDiscountText = ref('');
 
-interface CouponInfo {
-    applies?: number | string;
-    type?: number | string;
-    amount?: number | string;
-    onetime?: number | string;
-    usable?: number | string;
-    used?: number | string;
-    amounts?: {
-        [key: string]: number | string;
-    };
-}
-
-interface VpsOrderResponse {
-    bwSlice: number;
-    bwTotal: number;
-    bwType: number;
-    cpanelCost: number;
-    currency: string;
-    currencySymbol: string;
-    daCost: number;
-    hdSlice: number;
-    hdStorageSlice: number;
-    locationNames: LocationNames;
-    locationStock: LocationStock;
-    maxSlices: number;
-    osNames: OsNames;
-    packageCosts: PackageCosts;
-    platformNames: PlatformNames;
-    platformPackages: PlatformPackages;
-    ramSlice: number;
-    serviceTypes: ServiceTypes;
-    templates: Templates;
-    vpsNyCost: number;
-    vpsSliceHypervCost: number;
-    vpsSliceKvmLCost: number;
-    vpsSliceKvmStorageCost: number;
-    vpsSliceKvmWCost: number;
-    vpsSliceLxcCost: number;
-    vpsSliceOvzCost: number;
-    vpsSliceSsdOvzCost: number;
-    vpsSliceSsdVirtuozzoCost: number;
-    vpsSliceVirtuozzoCost: number;
-    vpsSliceVmwareCost: number;
-    vpsSliceXenCost: number;
-}
 const controlCost = computed(() => {
     if (curControl.value == 'cpanel') {
         return cpanelCost.value;
@@ -344,38 +298,21 @@ const getBandwidth = computed(() => {
     return bandwidthamount + slice_amount;
 });
 
-interface PlatformPackages {
-    [key: string]: number;
-}
 
-interface PlatformNames {
-    [key: string]: string;
-}
-
-interface PackageCosts {
-    [key: number]: number;
-}
-
-interface LocationStock {
-    [key: number]: {
-        [key: string]: boolean;
-    };
-}
-
-interface LocationNames {
-    [key: number]: string;
-}
-
-interface OsNames {
-    [key: string]: string;
-}
-
-interface Templates {
-    [key: string]: {
-        [key: string]: {
-            [key: string]: string;
-        };
-    };
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
 }
 
 function updateHostname() {}
@@ -479,22 +416,6 @@ function onSubmitConfirmation() {
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
-        });
-    }
-}
-
-function updateCoupon() {
-    if (lastCoupon.value != coupon.value) {
-        lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
-                }
-            }
         });
     }
 }

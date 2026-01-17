@@ -12,12 +12,8 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const loading = ref(true);
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const backupsArr = ref<VpsBackup[]>([]);
 
 export interface VpsBackup {

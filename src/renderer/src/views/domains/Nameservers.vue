@@ -2,38 +2,57 @@
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { watch, ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-//import iconDns from '../../assets/images/myadmin/dns.png';
 import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
+//import iconDns from '../../assets/images/myadmin/dns.png';
 const props = defineProps<{
     id: number;
+    nameservers: NameServerRow[] | undefined;
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module = 'domains';
 const id = computed(() => props.id);
+const nameservers = computed(() => props.nameservers);
 const suggested = ref<string[]>([]);
-const initialNameservers = ref<string[]>([]);
-const nameservers = ref<Nameservers>([]);
-const registeredNameservers = ref<Nameservers>([]);
+const registeredNameservers = ref<RegNameServerRow[]>([]);
 const iconHref = (name: string) => `${myAdminIcons}#icon-${name}`;
-const nameserverInputs = ref<string[]>(initialNameservers.value.length ? [...initialNameservers.value] : ['', '', '', '']);
+const nameserverInputs = ref<string[]>(buildInitialNameservers(nameservers.value));
 const newNameserver = ref({
     name: '',
     ipaddress: '',
 });
 
-type Nameservers = NameserverRow[];
-
-interface NameserverRow {
+interface NameServerRow {
+    sortorder: string;
     name: string;
     ipaddress: string;
-    can_delete: number;
+}
+
+interface RegNameServerRow {
+    name: string;
+    ipaddress: string;
+    can_delete: '1' | '0';
 }
 
 onMounted(() => {});
+
+watch(
+    () => nameservers,
+    (nameservers) => {
+        nameserverInputs.value = buildInitialNameservers(nameservers.value);
+    }
+);
+
+function buildInitialNameservers(nameservers: NameServerRow[] | undefined): string[] {
+    const result = typeof nameservers == 'undefined' ? [] : nameservers.map((ns) => ns.name).slice(0, 4);
+    while (result.length < 4) {
+        result.push('');
+    }
+    return result as string[];
+}
 
 function applySuggested() {
     suggested.value?.forEach((value, index) => {
@@ -54,14 +73,12 @@ function applySuggested() {
 function submitNameservers() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
-                name: newNameserver.value.name,
-                ipAddress: newNameserver.value.ipaddress,
-                new_nameservers: 1,
+            .put(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`, {
+                nameserver: nameserverInputs.value,
             })
             .then((response) => {
                 Swal.close();
-                console.log('register nameserver success');
+                console.log('update nameservers success');
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
@@ -70,7 +87,7 @@ function submitNameservers() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('register nameserver failed');
+        console.log('update nameservers failed');
         console.log(error);
         Swal.fire({
             icon: 'error',
@@ -82,10 +99,9 @@ function submitNameservers() {
 function registerNameserver() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameserver`, {
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`, {
                 name: newNameserver.value.name,
                 ipAddress: newNameserver.value.ipaddress,
-                new_nameservers: 1,
             })
             .then((response) => {
                 Swal.close();
@@ -93,7 +109,7 @@ function registerNameserver() {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    html: `Success${response.text}`,
+                    html: `Success${response}`,
                 });
             });
     } catch (error: any) {
@@ -102,7 +118,7 @@ function registerNameserver() {
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.text}`,
+            html: `Got error ${error}`,
         });
     }
 }
@@ -111,18 +127,49 @@ function confirmDelete(index: number) {
     Swal.fire({
         icon: 'error',
         title: 'Delete nameserver',
-        html: `
-      <p>You are about to delete your domain nameserver.</p>
-      <p>Are you sure?</p>
-    `,
+        html: `<p>You are about to delete your domain nameserver.</p><br><p>Are you sure?</p>`,
         showCancelButton: true,
         confirmButtonText: 'Yes, Delete it',
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `view_domain?id=${id.value}&link=nameservers&delete_registered=${index}`;
+            try {
+                fetchWrapper
+                    .delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?index=${index}`)
+                    .then((response) => {
+                        Swal.close();
+                        console.log('delete nameserver success');
+                        console.log(response);
+                        Swal.fire({
+                            icon: 'success',
+                            html: `Success${response}`,
+                        });
+                    });
+            } catch (error: any) {
+                Swal.close();
+                console.log('delete  nameserver failed');
+                console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    html: `Got error ${error}`,
+                });
+            }
         }
     });
 }
+
+const loadNameservers = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`);
+        console.log('api success');
+        console.log(response);
+        registeredNameservers.value = response;
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadNameservers();
 </script>
 
 <template>
@@ -130,15 +177,14 @@ function confirmDelete(index: number) {
         <!-- HEADER -->
         <div class="card-header">
             <h3 class="card-title text-lg mt-1">
-                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px"><svg><use :xlink:href="iconHref('dns')" /></svg></i>Domain Name Servers
+                <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px">
+                    <svg><use :href="iconHref('dns')" /></svg></i
+                >Domain Name Servers
             </h3>
-
             <div class="card-tools mr-4 mt-2">
                 <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
-
-        <!-- BODY -->
         <div class="card-body">
             <div class="row justify-content-around">
                 <!-- NAMESERVERS -->
@@ -213,10 +259,10 @@ function confirmDelete(index: number) {
                                     <td>{{ ns.name }}</td>
                                     <td>{{ ns.ipaddress }}</td>
                                     <td>
-                                        <span :class="ns.can_delete ? 'text-green' : 'text-red'">{{ ns.can_delete ? 'Yes' : 'No' }}</span>
+                                        <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? 'Yes' : 'No' }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" title="Delete" @click="confirmDelete(index)"><i class="fa fa-trash-o"></i></a>
+                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(index)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

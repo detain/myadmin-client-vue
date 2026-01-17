@@ -23,9 +23,9 @@ siteStore.setBreadcrums([
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 const { data } = storeToRefs(accountStore);
-const referrerCoupon = ref('');
-const affiliateDockTitle = ref('');
-const affiliateDockDescription = ref('');
+const referrerCoupon = ref(data.value.referrer_coupon || '');
+const affiliateDockTitle = ref(data.value.affiliate_dock_title || '');
+const affiliateDockDescription = ref(data.value.affiliate_dock_description || '');
 
 function onSubmit() {
     Swal.fire({
@@ -37,9 +37,9 @@ function onSubmit() {
     try {
         fetchWrapper
             .post(`${baseUrl}/affiliate/dock_setup`, {
-                coupon: data.value.referrer_coupon,
-                title: data.value.affiliate_dock_title,
-                description: data.value.affiliate_dock_description,
+                coupon: referrerCoupon.value,
+                title: affiliateDockTitle.value,
+                description: affiliateDockDescription.value,
             })
             .then((response) => {
                 Swal.close();
@@ -52,7 +52,7 @@ function onSubmit() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('affilaite dock failed');
+        console.log('affiliate dock failed');
         console.log(error);
         Swal.fire({
             icon: 'error',
@@ -103,7 +103,7 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input id="referrer_coupon" v-model="data.referrer_coupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
+                                <input id="referrer_coupon" v-model="referrerCoupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
                             </div>
                         </div>
                         <!-- <div class="form-group row">
@@ -118,13 +118,13 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_title">Title<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input id="affiliate_dock_title" v-model="data.affiliate_dock_title" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
+                                <input id="affiliate_dock_title" v-model="affiliateDockTitle" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_description">Description<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <textarea id="affiliate_dock_description" v-model="data.affiliate_dock_description" class="form-control form-control-sm" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
+                                <textarea id="affiliate_dock_description" v-model="affiliateDockDescription" class="form-control form-control-sm" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
                             </div>
                         </div>
                         <div class="row justify-content-center">

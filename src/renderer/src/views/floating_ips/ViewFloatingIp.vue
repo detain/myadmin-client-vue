@@ -3,18 +3,12 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { ucwords } from '../../helpers/ucwords';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useFloatingIpStore } from '../../stores/floating_ips.store';
 import { useSiteStore } from '../../stores/site.store';
-
-import $ from 'jquery';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
-//import Alerts from '../../views/floating_ip/Alerts.vue';
-//import DenyRules from '../../views/floating_ip/DenyRules.vue';
-
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';
@@ -22,9 +16,7 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => {
     return modules.value[module];
@@ -126,9 +118,7 @@ const statusClass = computed(() => {
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
+                <div class="icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.floating_ip_ip }}</span>
             </div>
         </div>
@@ -140,9 +130,7 @@ const statusClass = computed(() => {
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
+                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
                 <span class="small-box-footer"
                     >Floating IPs Status is: <b>{{ status }}</b></span
                 >
@@ -154,22 +142,14 @@ const statusClass = computed(() => {
                     <h3>Floating IPs API</h3>
                     <p class="my-3 py-3">For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-bold text-white">Click Here</a></p>
                 </div>
-                <div class="icon">
-                    <i class="material-icons">api</i>
-                </div>
+                <div class="icon"><i class="material-icons">api</i></div>
                 <span class="small-box-footer"> For API Key: <router-link to="/account/settings" class="text-bold text-white">Account Settings</router-link> </span>
             </div>
         </div>
     </div>
     <template v-if="linkDisplay">
-        <div v-if="link == 'alerts'" class="col">
-            <Alerts :id="id"></Alerts>
-        </div>
-        <div v-else-if="link == 'cancel'" class="col">
+        <div v-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
-        </div>
-        <div v-else-if="link == 'deny_rules'" class="col">
-            <DenyRules :id="id"></DenyRules>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
@@ -228,9 +208,9 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            <tr v-for="itemvalue in extraInfoTables.floating_ip.rows" :key="itemvalue.id">
-                                <td>{{ itemvalue.desc }}</td>
-                                <td class="text-success">{{ itemvalue.value }}</td>
+                            <tr v-for="itemValue in extraInfoTables.floating_ip.rows" :key="itemValue.id">
+                                <td>{{ itemValue.desc }}</td>
+                                <td class="text-success">{{ itemValue.value }}</td>
                             </tr>
                         </table>
                     </div>
@@ -248,9 +228,9 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            <tr v-for="itemvalue in extraInfoTables.tutorials.rows" :key="itemvalue.id">
-                                <td>{{ itemvalue.desc }}</td>
-                                <td class="text-success">{{ itemvalue.value }}</td>
+                            <tr v-for="itemValue in extraInfoTables.tutorials.rows" :key="itemValue.id">
+                                <td>{{ itemValue.desc }}</td>
+                                <td class="text-success">{{ itemValue.value }}</td>
                             </tr>
                         </table>
                     </div>

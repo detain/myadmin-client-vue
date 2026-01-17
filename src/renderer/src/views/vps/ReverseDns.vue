@@ -19,12 +19,8 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const ips = ref({});
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 
 function submitForm() {
     Swal.fire({

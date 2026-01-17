@@ -16,12 +16,8 @@ const fields = ref({});
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const action = ref('');
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const url = ref('');
 const goBackLink = ref('');
 const protocols = ref('https');

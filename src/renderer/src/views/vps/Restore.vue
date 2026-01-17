@@ -16,14 +16,12 @@ const baseUrl = siteStore.getBaseUrl();
 const module_name = ref('');
 const backup = ref('');
 const confirm = ref(false);
-const note_text = ref('');
 const backupsArr = ref<VpsBackup[]>([]);
 const loading = ref(true);
+const password = ref('');
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const curHostname = computed(() => {
-    return props.curHostname;
-});
+const curHostname = computed(() => props.curHostname);
 
 export interface VpsBackup {
     service: number;
@@ -37,7 +35,10 @@ function submitForm() {
     // Process the form submission or make an API request here
     // Handle form submission
     fetchWrapper
-        .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backup`)
+        .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/restore`, {
+            backup: backup.value,
+            password: password.value,
+        })
         .then((response: any) => {
             console.log('api success');
             console.log(response);
@@ -58,7 +59,7 @@ function submitForm() {
 
 const loadBackupsList = async () => {
     try {
-        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backups`);
+        const response: VpsBackup[] = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/backups?all=1`);
         loading.value = false;
         console.log('api success');
         console.log(response);
@@ -74,12 +75,16 @@ loadBackupsList();
 
 <template>
     <div>
-        <div class="callout callout-info">
-            <h5 class="text-red"><i class="fa fa-exclamation"></i> Important Note</h5>
-            <p class="text-md">Backups will only work with default partitioning.</p>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="callout callout-info">
+                    <h5 class="text-red"><i class="fa fa-exclamation"></i> Important Note</h5>
+                    <p class="text-md">Your server will be offline while it replaces all your current files with those on the backup. Please contact support with any questions.</p>
+                </div>
+            </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-10">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
@@ -89,9 +94,6 @@ loadBackupsList();
                     </div>
                     <div class="card-body mb-0">
                         <form @submit.prevent="submitForm">
-                            <input type="hidden" name="link" value="queue" />
-                            <input type="hidden" name="action" value="backup" />
-                            <input type="hidden" name="backup" :value="backup" />
                             <div class="form-group mb-0">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="cur-hostname">Server</label>
@@ -99,62 +101,33 @@ loadBackupsList();
                                         <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <div class="icheck-success d-inline">
-                                        <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input" name="confirm" value="yes" />
-                                        <label class="more-info" for="confirm_yes">Do you really want to take backup?</label>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="backup">Restore this backup</label>
+                                    <div class="col-sm-9 input-group">
+                                        <select id="backup" v-model="backup">
+                                            <option disabled value="">Select a backup</option>
+                                            <option v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx" :value="backupRow.name">{{ backupRow.type }}: {{ backupRow.service }} - {{ backupRow.name }} {{ backupRow.date }} ({{ backupRow.size }})</option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="password">Enter Login Password to Validate Restore.</label>
+                                    <div class="col-sm-9 input-group">
+                                        <input id="password" v-model="password" type="text" class="form-control form-control-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="more-info col-sm-3" for="confirm_yes">Do you really want to restore this backup?</label>
+                                    <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input col-sm-9" name="confirm" value="yes" />
                                 </div>
                                 <hr />
                                 <div class="row justify-content-center">
                                     <div class="controls">
-                                        <input type="submit" name="submit" value="Continue" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm" />
+                                        <input type="submit" name="submit" value="Continue" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm || backup == ''" />
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <hr />
-                        <p class="text-muted text-xs"><b>Note: </b>{{ note_text }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="p-1">
-                            <h3 class="card-title py-2"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>Current Backups</h3>
-                            <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <template v-if="loading">
-                            <td colspan="10">Loading...</td>
-                        </template>
-                        <template v-else-if="backupsArr.length > 0">
-                            <table class="table-sm table">
-                                <thead>
-                                    <tr>
-                                        <th>Service</th>
-                                        <th>Type</th>
-                                        <th>Name</th>
-                                        <th>Size</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx">
-                                        <td>{{ backupRow.service }}</td>
-                                        <td>{{ backupRow.type }}</td>
-                                        <td>{{ backupRow.name }}</td>
-                                        <td>{{ backupRow.size }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </template>
-                        <template v-else> No backup currently exists </template>
                     </div>
                 </div>
             </div>

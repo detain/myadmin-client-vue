@@ -12,12 +12,10 @@ const props = defineProps<{
 const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const id = computed(() => {
-    return props.id;
-});
+const id = computed(() => props.id);
 const ips = ref<IpMap>({});
 
-type IpMap = Record<string, string>;
+type IpMap = Record<string, string | boolean>;
 
 function submitForm() {
     Swal.fire({
@@ -73,8 +71,6 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                 <div class="card-body">
                     <div class="alert alert-warning" role="alert">Changes to reverse dns take up to an hour to show up.</div>
                     <form id="reverse_dns_form" accept-charset="UTF-8" role="form" method="POST" @submit.prevent="submitForm">
-                        <input type="hidden" name="choice" value="none.view_dedicated_server" />
-                        <input type="hidden" name="link" value="reverse_dns" />
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">IP Addresses</label>
                             <div class="col-sm-9 input-group">
@@ -84,13 +80,13 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                         <div v-for="(v, k) in ips" :key="k" class="form-group row">
                             <label class="col-md-3 col-form-label">{{ k }}</label>
                             <div class="col-sm-9 input-group">
-                                <input :id="k" :name="k" type="text" class="form-control form-control-sm" :value="v" />
+                                <input :id="k" v-model="ips[k]" :name="k" type="text" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <hr />
                         <div class="form-group row">
                             <div class="controls col-md-12 text-center">
-                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
+                                <input type="submit" value="Update Reverse DNS" class="btn btn-sm btn-order px-3 py-2" />
                             </div>
                         </div>
                     </form>

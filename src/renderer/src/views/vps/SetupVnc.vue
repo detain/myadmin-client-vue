@@ -4,6 +4,7 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { useAccountStore } from '../../stores/account.store';
 import { VpsInfo, VpsServiceMaster } from '../../types/vps';
 import { QsInfo, QsServiceMaster } from '../../types/qs';
 
@@ -19,6 +20,8 @@ const props = defineProps<{
 }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
+const accountStore = useAccountStore();
+const { ip } = storeToRefs(accountStore);
 const id = computed(() => props.id);
 const module = computed(() => props.module);
 const serviceInfo = computed(() => props.serviceInfo);
@@ -40,10 +43,10 @@ function useServiceMasterField<T = string>(suffix: string) {
     });
 }
 const hostname = useServiceInfoField<string>('hostname');
-const ip = useServiceInfoField<string>('ip');
+const serviceIp = useServiceInfoField<string>('ip');
 const vncPort = useServiceInfoField<string>('vnc_port');
 const masterIp = useServiceMasterField<string>('ip');
-const myip = ref('');
+const myip = ref(ip.value);
 function submitForm() {
     Swal.fire({
         title: '',
@@ -75,6 +78,7 @@ function submitForm() {
         });
     }
 }
+accountStore.loadOnce();
 </script>
 
 <template>
@@ -101,7 +105,7 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="vncserver">VPS IP</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="vncserver" type="text" class="form-control form-control-sm" :value="ip" disabled />
+                                    <input id="vncserver" type="text" class="form-control form-control-sm" :value="serviceIp" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">

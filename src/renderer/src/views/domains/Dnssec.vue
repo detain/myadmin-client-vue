@@ -1,56 +1,59 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
 const dnssec_records = ref([]);
-//const id = ref('{$id}');
+const id = computed(() => props.id);
 const domainId = ref('{$domain_id}');
 
-const confirmDialog = () => {
+const showForm = ref(false);
+const dnssecRecords = ref<ExistingDNSSEC[]>([]);
+const records = ref<DNSSECRecord[]>([
+    { digestType: '2', algorithm: '8', keyTag: null, digest: '', maxLength: 40, visible: true },
+    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 64, visible: false },
+    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 96, visible: false },
+]);
+
+interface DNSSECRecord {
+    digestType: string;
+    algorithm: string;
+    keyTag: number | null;
+    digest: string;
+    maxLength: number;
+    visible: boolean;
+}
+
+interface ExistingDNSSEC {
+    digestType: string;
+    algorithm: string;
+    keyTag: number;
+    digest: string;
+}
+
+function confirmRemoveAll() {
     Swal.fire({
-        title: 'Are you sure want to remove all DNSSEC records?',
-        text: '',
+        title: 'Are you sure?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, remove them!',
     }).then((result) => {
-        if (result.value) {
-            (document.getElementById('removethem') as unknown as HTMLFormElement).submit();
+        if (result.isConfirmed) {
+            // submit delete action here
         }
     });
-};
+}
 
-const showAddDnsContent = () => {
-    const obj = document.getElementById('add-dns-content') as HTMLElement;
-    obj.style.display = 'block';
-};
-
-const checkCharacterLimit = (event: Event, limit: number, displayId: string) => {
-    if ((event.target as unknown as HTMLInputElement).value.length > limit) {
-        event.preventDefault();
-    }
-    const obj = document.getElementById(displayId) as HTMLElement;
-    obj.innerHTML = `Characters left: <b>${limit - (event.target as unknown as HTMLInputElement).value.length}</b>`;
-};
-
-function showAddDNSContent() {}
-
-function hideAddDNSContent() {}
-
-function saveDNSSEC() {}
+function submitForm() {
+    const payload = records.value.filter((r) => r.visible);
+    console.log(payload);
+    // submit payload to backend
+}
 </script>
 
 <template>
@@ -58,108 +61,90 @@ function saveDNSSEC() {}
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <router-link :to="'/domains/' + props.id" style="float: right" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
-                    <h3 class="card-title ml-2 mt-1"><i class="fas fa-lock">&nbsp;</i>DNSSEC Infomation</h3>
+                    <a class="btn-outline-custom py-1 px-2" style="float: inline-start" href="view_domain?id={$id}" title="Go Back"> <i class="fas fa-arrow-left text-sm"></i>&nbsp;Back </a>
+                    <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;DNSSEC Information</h3>
                     <div class="card-tools m-0">
-                        <a id="add-new" class="btn btn-custom px-3 py-2 text-sm" href="javascript:void(0);" @click="showAddDNSContent"><i class="fa fa-plus-circle">&nbsp;</i>Add New Record</a>
-                        <template v-if="dnssec_records && dnssec_records.length">
-                            <form id="removethem" method="POST" :action="'view_domain?id=' + props.id + '&link=dnssec'" class="d-inline">
-                                <input type="hidden" name="action" value="delete" />
-                                <button type="submit" class="btn btn-sm bg-gradient-red text-white" @click.prevent="confirmDialog"><i class="fa fa-times-circle">&nbsp;</i>Remove All DNSSEC Records</button>
-                            </form>
-                        </template>
+                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fa fa-plus-circle"></i>&nbsp;Add New Record</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="fa fa-times-circle"></i>&nbsp;Remove All DNSSEC Records</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
-                    <template v-if="dnssec_records && dnssec_records.length">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Digest Type</th>
-                                    <th>Algorithm</th>
-                                    <th>Key Tag</th>
-                                    <th>Digest</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(dnssec, key) in dnssec_records" :key="key">
-                                    <td>{{ dnssec['Digest Type'] }}</td>
-                                    <td>{{ dnssec['Algorithm'] }}</td>
-                                    <td>{{ dnssec['Key Tag'] }}</td>
-                                    <td>{{ dnssec['Digest'] }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </template>
-                    <template v-else>
-                        <h5 class="text-orange w-100 tex-red b-radius text-bold py-2 text-center">No DNSSEC Records found.</h5>
-                    </template>
-
-                    <div v-show="showAddDNSContent" id="add-dns-content" class="card form-gray col-md-10 mt-5">
+                    <table v-if="dnssecRecords.length" class="table">
+                        <thead>
+                            <tr>
+                                <th>Digest Type</th>
+                                <th>Algorithm</th>
+                                <th>Key Tag</th>
+                                <th>Digest</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(dnssec, i) in dnssecRecords" :key="i">
+                                <td>{{ dnssec.digestType }}</td>
+                                <td>{{ dnssec.algorithm }}</td>
+                                <td>{{ dnssec.keyTag }}</td>
+                                <td>{{ dnssec.digest }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 v-else class="text-orange text-center w-100 py-2 text-bold">No DNSSEC Records found.</h5>
+                    <!-- ADD DNSSEC -->
+                    <div v-if="showForm" class="card form-gray col-md-10 mt-5">
                         <div class="card-header p-3">
-                            <h3 class="card-title text-bold text-center text-xl" style="width: 95%">Add DNSSEC</h3>
-                            <div class="card-tools m-0 pt-2">
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" @click="hideAddDNSContent"><i class="fas fa-times"></i></button>
+                            <h3 class="card-title text-xl text-bold text-center">Add DNSSEC</h3>
+                            <div class="card-tools pt-2 m-0">
+                                <button class="btn btn-tool" @click="showForm = false">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" :action="'view_domain?id=' + props.id + '&link=dnssec'" @submit.prevent="saveDNSSEC">
-                                <input type="hidden" name="action" value="add" />
-                                <div v-for="foo in 3" :key="foo">
+                            <form @submit.prevent="submitForm">
+                                <div v-for="(record, index) in records" v-show="record.visible" :key="index">
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label" :for="'name' + (foo + 1)">Digest Type #{{ foo + 1 }}</label>
-                                        <div class="col-md-10 input-group">
-                                            <select :name="'digest_type[' + foo + ']'" class="form-control select2" style="width: 100%" required>
+                                        <label class="col-md-2 col-form-label"> Digest Type #{{ index + 1 }} </label>
+                                        <div class="col-md-10">
+                                            <select v-model="record.digestType" class="form-control" :required="index === 0">
                                                 <option value="">Select</option>
                                                 <option value="1">SHA-1</option>
-                                                <option value="2" :selected="foo === 0">SHA-256</option>
+                                                <option value="2">SHA-256</option>
                                                 <option value="3">GOST</option>
                                                 <option value="4">SHA-384</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" :for="'name' + (foo + 1)">Algorithm #{{ foo + 1 }}</label>
-                                        <div class="col-sm-10 input-group">
-                                            <select :name="'algorithm[' + foo + ']'" class="form-control select2" style="width: 100%" required>
+                                        <label class="col-md-2 col-form-label"> Algorithm #{{ index + 1 }} </label>
+                                        <div class="col-md-10">
+                                            <select v-model="record.algorithm" class="form-control" :required="index === 0">
                                                 <option value="">Select</option>
-                                                <option value="2">Diffie-Hellman</option>
-                                                <option value="3">DSA/SHA-1</option>
-                                                <option value="5">RSA/SHA-1</option>
-                                                <option value="6">DSA-NSEC3/SHA1</option>
-                                                <option value="7">RSASHA1-NSEC3/SHA1</option>
-                                                <option value="8" :selected="foo === 0">RSA/SHA-256</option>
-                                                <option value="10">RSA/SHA-512</option>
-                                                <option value="13">ECDSA Curve P-256 with SHA-256</option>
-                                                <option value="14">ECDSA Curve P-384 with SHA-384</option>
+                                                <option value="8">RSA/SHA-256</option>
+                                                <option value="13">ECDSA P-256</option>
+                                                <option value="14">ECDSA P-384</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" :for="'name' + (foo + 1)">Key Tag #{{ foo + 1 }}</label>
-                                        <div class="col-sm-10 input-group">
-                                            <input type="number" :placeholder="'Enter Key Tag ( Example: 2371 )'" :name="'key_tag[' + foo + ']'" class="form-control text-sm" required />
+                                        <label class="col-md-2 col-form-label"> Key Tag #{{ index + 1 }} </label>
+                                        <div class="col-md-10">
+                                            <input v-model.number="record.keyTag" type="number" class="form-control" :required="index === 0" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" :for="'name' + (foo + 1)">Digest #{{ foo + 1 }}</label>
-                                        <div class="col-sm-10 input-group">
-                                            <textarea :id="'digest' + (foo + 1)" :placeholder="'Enter Value of Digest #' + (foo + 1) + ' ( Must not be greater than: ' + (foo === 0 ? '40' : foo === 1 ? '64' : '96') + ' Characters )'" class="form-control text-sm" :name="'digest[' + foo + ']'" rows="5" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <div :id="'display' + (foo + 1)" class="text-muted text-right">
-                                                Characters left: <b>{{ foo === 0 ? '40' : foo === 1 ? '64' : '96' }}</b>
+                                        <label class="col-md-2 col-form-label"> Digest #{{ index + 1 }} </label>
+                                        <div class="col-md-10">
+                                            <textarea v-model="record.digest" class="form-control" rows="5" :maxlength="record.maxLength" :required="index === 0"></textarea>
+                                            <div class="text-right text-muted">
+                                                Characters left: <b>{{ record.maxLength - record.digest.length }}</b>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label" for="submit"></label>
-                                    <div class="col-sm-10 input-group input-group-sm">
-                                        <input id="button-id-signup" type="submit" name="Submit" value="Save" class="btn btn-custom px-4 pt-2" />
+                                    <div v-if="index < 2" class="text-right mb-3">
+                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><i class="fa fa-plus"></i>&nbsp;Add More</button>
                                     </div>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom pt-2 px-4" type="submit">Save</button>
                                 </div>
                             </form>
                         </div>

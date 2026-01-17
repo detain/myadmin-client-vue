@@ -29,6 +29,7 @@ const menus = ref<menuGroup>({
         { link: '/licenses', icon: 'fa fa-id-card', text: 'Licenses' },
         { link: '/websites', icon: 'far fa-window-maximize', text: 'Webhosting' },
         { link: '/floating_ips', icon: 'fa fa-cloud-meatball', text: 'Floating IPs' },
+        { link: '/scrub_ips', icon: 'fa fa-filter', text: 'Scrub IPs' },
         { link: '/qs', icon: 'fa fa-cloud', text: 'Rapid Deploy Servers' },
         { link: '/servers', icon: 'fa fa-server', text: 'Servers' },
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },

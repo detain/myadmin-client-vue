@@ -28,12 +28,8 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const loading = ref(true);
 const trafficData = ref<any>([]);
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 
 const metric = ref<'bits' | 'bytes'>('bits');
 
