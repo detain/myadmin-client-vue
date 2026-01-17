@@ -3,12 +3,12 @@ import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { useSiteStore } from '../../stores/site.store';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '../../types/domains';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
@@ -38,6 +38,9 @@ const tldServices = ref({});
 const domainFields = ref<DomainFields>({});
 const domainCost = ref(0);
 const termsAgreed = ref(false);
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
 const domain = computed(() => {
     return route.params.domain as string;
 });
@@ -45,6 +48,22 @@ const regType = computed(() => {
     return route.params.regType as string;
 });
 const display = ref('step1');
+
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 
 function updateStep() {
     siteStore.setBreadcrums([

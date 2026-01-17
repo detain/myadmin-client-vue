@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
 import { useSiteStore } from '../../../stores/site.store';
-
+import Swal from 'sweetalert2';
 import Chart from 'chart.js/auto';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - TrafficGraph');
 siteStore.setTitle('Affiliate - TrafficGraph');
@@ -13,24 +13,54 @@ siteStore.setBreadcrums([
     ['/affiliate', 'Affiliate'],
     ['', 'TrafficGraph'],
 ]);
+const baseUrl = siteStore.getBaseUrl();
+const selectedPeriod = ref(180);
+const chartInstance = ref<Chart | null>(null);
 
-const selectedPeriod = ref(30);
-function createGraph() {
-    const canvas = document.getElementById('canvasGraph') as unknown as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [],
-        },
-    });
+type MonthlyBreakdown = Record<string, number>;
+
+const chartData = ref<MonthlyBreakdown>({});
+
+async function updatePeriod() {
+    try {
+        const response: MonthlyBreakdown = await fetchWrapper.get(`${baseUrl}/affiliate/traffic_graph?days=${selectedPeriod.value}`);
+        console.log(response);
+        chartData.value = response;
+        const dataset: any[] = [];
+        dataset.push({
+            label: 'Website Traffic',
+            data: Object.values(chartData.value),
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.3,
+        });
+        const canvas = document.getElementById('canvasGraph') as HTMLCanvasElement;
+        const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+        // Destroy previous chart before creating a new one
+        if (chartInstance.value) {
+            chartInstance.value.destroy();
+        }
+        chartInstance.value = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Object.keys(chartData.value),
+                datasets: dataset,
+            },
+            options: {
+                responsive: true,
+            },
+        });
+    } catch (error: any) {
+        console.error(error);
+        await Swal.fire({
+            icon: 'error',
+            html: `Got error ${error?.message ?? 'Unknown error'}`,
+        });
+    }
 }
 
-function updatePeriod() {}
-
 onMounted(() => {
-    createGraph();
+    updatePeriod(); // initial load
 });
 </script>
 

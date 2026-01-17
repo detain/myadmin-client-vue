@@ -91,10 +91,16 @@ const formatDate = (dateString?: string | null): string => {
 };
 
 watch(
-    () => route.params.link as string,
-    (newLink) => {
-        loadLink(newLink as string);
-    }
+    [
+        () => route.params.link as string | undefined,
+        () => serviceInfo.value, // or domainStore.domain
+    ],
+    ([link, serviceInfo]) => {
+        if (!link || !serviceInfo) return;
+
+        loadLink(link);
+    },
+    { immediate: true }
 );
 
 domainStore.getById(id);
@@ -169,7 +175,7 @@ loadLink(route.params.link as string);
             <Dnssec :id="id"></Dnssec>
         </div>
         <div v-else-if="link == 'nameservers'" class="col">
-            <Nameservers :id="id"></Nameservers>
+            <Nameservers :id="id" :nameservers="allInfo.attributes?.nameserver_list"></Nameservers>
         </div>
         <div v-else-if="link == 'renew'" class="col">
             <Renew :id="id"></Renew>

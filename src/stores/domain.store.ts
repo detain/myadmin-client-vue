@@ -169,11 +169,6 @@ export const useDomainStore = defineStore('domain', {
         titleField: (state) => state.serviceInfo.domain_hostname,
     },
     actions: {
-        async register(user: any): Promise<void> {
-            const siteStore = useSiteStore();
-            const baseUrl = siteStore.getBaseUrl();
-            await fetchWrapper.post(`${baseUrl}/register`, user);
-        },
         async getAll(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

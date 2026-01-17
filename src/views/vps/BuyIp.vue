@@ -18,12 +18,8 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const ipsDetails = ref<IpDetails[]>([]);
 const buyForm = ref(false);
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
 const maxIps = ref(1);
 const ipCount = ref(0);
 const loading = ref(true);

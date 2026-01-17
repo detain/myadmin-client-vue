@@ -87,6 +87,10 @@ export const router = createRouter({
             ],
         },
         {
+            path: '/scrub_ips',
+            children: [{ path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') }],
+        },
+        {
             path: '/licenses',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [

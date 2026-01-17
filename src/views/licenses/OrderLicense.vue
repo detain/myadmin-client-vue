@@ -8,6 +8,8 @@ import { useSiteStore } from '../../stores/site.store';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');
@@ -19,6 +21,8 @@ const step = ref('license_types');
 updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
 const coupon = ref('');
 const tos = ref(false);
 const comment = ref('');
@@ -124,7 +128,21 @@ const getServiceTypes = computed(() => {
     return types;
 });
 
-function updateCoupon() {}
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 
 function updatePrice() {}
 

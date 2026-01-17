@@ -8,6 +8,8 @@ import { useSiteStore } from '../../stores/site.store';
 
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import $ from 'jquery';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
@@ -20,6 +22,8 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
 const coupon = ref('');
 const pkg = ref(10880);
 const validateResponse = ref<ValidateFloatingIpOrderResponse>({
@@ -88,7 +92,21 @@ interface ValidateFloatingIpOrderResponse {
     couponCode: null | number;
 }
 
-function updateCoupon() {}
+function updateCoupon() {
+    if (lastCoupon.value != coupon.value) {
+        lastCoupon.value = coupon.value;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+            couponInfo.value = json;
+            if (typeof json.applies != 'undefined') {
+                //update_vps_choices();
+                if (couponInfo.value.onetime == '0') {
+                    //update_vps_choices_order();
+                }
+            }
+        });
+    }
+}
 
 async function placeOrder(values: any) {
     Swal.fire({

@@ -18,9 +18,7 @@ const props = defineProps<{
     imCost?: string;
     ipCost?: string;
 }>();
-const id = computed(() => {
-    return props.id;
-});
+const id = computed(() => props.id);
 const ipsDetailsExist = computed(() => (props.ipsDetails?.length ?? 0) > 0);
 const buyForm = computed(() => props.buyForm);
 

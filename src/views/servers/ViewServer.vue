@@ -3,18 +3,17 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { ucwords } from '../../helpers/ucwords';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useServerStore } from '../../stores/server.store';
 import { useSiteStore } from '../../stores/site.store';
-
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
 import BandwidthGraph from '../../views/servers/BandwidthGraph.vue';
 import IpmiLive from '../../views/servers/IpmiLive.vue';
 import ReverseDns from '../../views/servers/ReverseDns.vue';
+import { AssetRow } from '../../types/servers';
 
 const module = 'servers';
 const siteStore = useSiteStore();
@@ -30,6 +29,41 @@ const settings = computed(() => {
 });
 const serverStore = useServerStore();
 const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, titleField, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+
+const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }));
+
+const hasAssetVlanSwitchport = computed(() => {
+    let ret = false;
+    if (networkInfo.value.assets) {
+        for (let assetId in networkInfo.value.assets) {
+            let asset = networkInfo.value.assets[assetId];
+            if (asset.vlans && (Object.keys(asset.vlans).length > 0 || Object.keys(asset.switchports).length > 0)) {
+                ret = true;
+            }
+        }
+    }
+    return ret;
+});
+
+const assets = computed(() => {
+    return networkInfo.value.assets ? networkInfo.value.assets : {};
+});
+
+const firstAsset = computed<AssetRow | null>(() => {
+    const assets = networkInfo.value.assets;
+    if (!assets || Object.keys(assets).length === 0) {
+        return null;
+    }
+    return assets[Object.keys(assets)[0]];
+});
+
+const vlans = computed(() => {
+    return networkInfo.value.vlans ? networkInfo.value.vlans : {};
+});
+
+const switchports = computed(() => {
+    return networkInfo.value.switchports ? networkInfo.value.switchports : {};
+});
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -56,7 +90,7 @@ function loadLink(newLink: string) {
                 preConfirm: () => {
                     try {
                         Swal.close();
-                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: '<h3>Email Sent</h3> ',
@@ -81,6 +115,14 @@ function loadLink(newLink: string) {
     }
 }
 
+function nl2br(text: string) {
+    return text.replace(/\n/g, '<br>');
+}
+
+function locationName(assetId: number | string) {
+    return locations.value[networkInfo.value.assets[assetId].datacenter].location_name;
+}
+
 watch(
     () => route.params.link,
     (newLink) => {
@@ -91,53 +133,6 @@ watch(
 loadLink(route.params.link as string);
 
 serverStore.getById(id);
-
-const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }));
-
-const hasAssetVlanSwitchport = computed(() => {
-    let ret = false;
-    if (networkInfo.value.assets) {
-        for (let assetId in networkInfo.value.assets) {
-            let asset = networkInfo.value.assets[assetId];
-            if (asset.vlans && (Object.keys(asset.vlans).length > 0 || Object.keys(asset.switchports).length > 0)) {
-                ret = true;
-            }
-        }
-    }
-    return ret;
-});
-
-const assets = computed(() => {
-    return networkInfo.value.assets ? networkInfo.value.assets : {};
-});
-
-const firstAsset = computed(() => {
-    return networkInfo.value.assets ? (Object.keys(networkInfo.value.assets).length > 0 ? networkInfo.value.assets[Object.keys(networkInfo.value.assets)[0]] : []) : [];
-});
-
-const vlans = computed(() => {
-    return networkInfo.value.vlans ? networkInfo.value.vlans : {};
-});
-
-const switchports = computed(() => {
-    return networkInfo.value.switchports ? networkInfo.value.switchports : {};
-});
-
-function nl2br(text: string) {
-    return text.replace(/\n/g, '<br>');
-}
-
-function locationName(assetId: number | string) {
-    return locations.value[networkInfo.value.assets[assetId].datacenter].location_name;
-}
-
-const ipv6VlansNetworks = computed(() => {
-    if (!networkInfo.value.vlans6 || networkInfo.value.vlans6.length === 0) {
-        return '<i>Null</i>';
-    }
-
-    return networkInfo.value.vlans6.map((ipv6: any) => ipv6.vlans6Networks).join(',');
-});
 </script>
 
 <template>
@@ -192,7 +187,7 @@ const ipv6VlansNetworks = computed(() => {
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField"></Cancel>
         </div>
         <div v-else-if="link == 'ipmi_live'" class="col">
-            <IpmiLive :id="id" :asset-info="firstAsset"></IpmiLive>
+            <IpmiLive v-if="firstAsset" :id="id" :asset-info="firstAsset"></IpmiLive>
         </div>
         <div v-else-if="link == 'reverse_dns'" class="col">
             <ReverseDns :id="id"></ReverseDns>
@@ -308,10 +303,10 @@ const ipv6VlansNetworks = computed(() => {
                         </thead>
                         <tbody>
                             <template v-for="(switchport, switchport_id) in switchports" :key="switchport_id">
-                                <tr v-for="vlan_id in switchport.vlans" :key="vlan_id">
+                                <tr v-for="(vlan_id, vlan_index) in switchport.vlans" :key="vlan_id">
                                     <td>{{ vlans[vlan_id].network }}</td>
                                     <td>{{ vlans[vlan_id].first_usable }}</td>
-                                    <template v-if="Object.keys(switchports)[0] === String(switchport_id)">
+                                    <template v-if="vlan_index === 0">
                                         <td :rowspan="switchport.vlans.length" :class="{ 'vertical-align': switchport.vlans.length > 1 }">
                                             <template v-if="networkInfo.vlans6 && networkInfo.vlans6.length > 0">
                                                 <template v-for="(ipv6, ipv6_index) in networkInfo.vlans6" :key="ipv6_index">

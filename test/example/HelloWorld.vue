@@ -1,7 +1,10 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue';
+
+const props = defineProps<{
     name: string;
 }>();
+const name = computed(() => props.name);
 </script>
 
 <template>
