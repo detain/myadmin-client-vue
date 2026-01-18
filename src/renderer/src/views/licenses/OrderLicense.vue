@@ -9,7 +9,7 @@ import { useSiteStore } from '../../stores/site.store';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import $ from 'jquery';
-import type { CouponInfo } from '@/types/vps_order.ts';
+import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order License');

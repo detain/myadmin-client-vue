@@ -1,5 +1,5 @@
 import 'jquery';
-import { PasswordRequirementsOptions } from '@/plugins/jquery.passwordRequirements';
+import { PasswordRequirementsOptions } from '../plugins/jquery.passwordRequirements';
 
 declare module 'jquery' {
     interface JQuery {

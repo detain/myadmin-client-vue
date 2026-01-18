@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
 import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
 import $ from 'jquery';
-import type { CouponInfo } from '@/types/vps_order.ts';
+import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'servers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();

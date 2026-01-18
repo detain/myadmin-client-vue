@@ -6,7 +6,7 @@ import { useSiteStore } from '../../stores/site.store';
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import $ from 'jquery';
-import type { CouponInfo } from '@/types/vps_order.ts';
+import type { CouponInfo } from '../../types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
