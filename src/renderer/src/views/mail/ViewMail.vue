@@ -3,13 +3,10 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { ucwords } from '../../helpers/ucwords';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useMailStore } from '../../stores/mail.store';
 import { useSiteStore } from '../../stores/site.store';
-
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
@@ -30,6 +27,13 @@ const settings = computed(() => {
 });
 const mailStore = useMailStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
+const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
+const statusClass = computed(() => {
+    if (serviceInfo.value.mail_status === 'active') return 'small-box b-radius bg-success';
+    if (serviceInfo.value.mail_status === 'pending') return 'small-box b-radius bg-orange';
+    if (serviceInfo.value.mail_status === 'expired' || serviceInfo.value.mail_status === 'canceled') return 'small-box b-radius bg-red';
+    return '';
+});
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -94,15 +98,6 @@ watch(
 loadLink(route.params.link as string);
 
 mailStore.getById(id);
-
-const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
-const statusClass = computed(() => {
-    const statusValue = serviceInfo.value.mail_status;
-    if (statusValue === 'active') return 'small-box b-radius bg-success';
-    if (statusValue === 'pending') return 'small-box b-radius bg-orange';
-    if (statusValue === 'expired' || statusValue === 'canceled') return 'small-box b-radius bg-red';
-    return '';
-});
 </script>
 
 <template>
@@ -152,11 +147,13 @@ const statusClass = computed(() => {
             </div>
         </div>
     </div>
-    <template v-if="linkDisplay">
+    <template v-if="link">
         <div v-if="link == 'alerts'" class="col">
             <Alerts :id="id"></Alerts>
         </div>
-        <div v-else-if="link == 'cancel'" class="col"><Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>7</div>
+        <div v-else-if="link == 'cancel'" class="col">
+            <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
+        </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
         </div>
@@ -239,7 +236,7 @@ const statusClass = computed(() => {
                         <table class="table-bordered table">
                             <tr v-for="itemvalue in extraInfoTables.tutorials.rows" :key="itemvalue.id">
                                 <td>{{ itemvalue.desc }}</td>
-                                <td class="text-success">{{ itemvalue.value }}</td>
+                                <td class="text-success" v-html="itemvalue.value"></td>
                             </tr>
                         </table>
                     </div>
