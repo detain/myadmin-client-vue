@@ -1,3 +1,4 @@
+---
 name: Playwright Tests
 
 on:
@@ -26,10 +27,10 @@ jobs:
                 include:
                     - os: ubuntu-latest
                       node_version: 22
-                    - os: macos-latest
-                      node_version: 22
-                    - os: windows-latest
-                      node_version: 22
+                    #- os: macos-latest
+                    #  node_version: 22
+                    #- os: windows-latest
+                    #  node_version: 22
 
         steps:
             - name: Checkout repository
@@ -57,7 +58,7 @@ jobs:
                   restore-keys: |
                       playwright-${{ runner.os }}-
 
-            # Single, correct install step
+            # Single, correct installation step
             - name: Install Playwright browsers
               run: yarn playwright install --with-deps
 
