@@ -64,14 +64,25 @@ jobs:
             - name: Build Web / Site
               run: yarn build
 
-            - name: Zip dist for dev
+            - name: Zip dist for tag
+              if: startsWith(github.ref, 'refs/tags/')
               run: zip -r my-interserver-client-web-${APP_VERSION}.zip dist
+
+            - name: Upload tagged artifact
+              if: startsWith(github.ref, 'refs/tags/')
+              uses: actions/upload-artifact@v4
+              with:
+                  name: web
+                  path: my-interserver-client-web-${APP_VERSION}.zip
+
+            - name: Zip dist for dev
+              run: zip -r my-interserver-client-web-dev-master.zip dist
 
             - name: Upload dev artifact
               uses: actions/upload-artifact@v4
               with:
                   name: web
-                  path: my-interserver-client-web-${APP_VERSION}.zip
+                  path: my-interserver-client-web-dev-master.zip
 
             - name: Publish release zip (if tag)
               if: startsWith(github.ref, 'refs/tags/')
