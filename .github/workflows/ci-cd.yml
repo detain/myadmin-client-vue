@@ -44,22 +44,22 @@ jobs:
                   corepack enable
                   corepack prepare yarn@${{ env.YARN_VERSION }} --activate
 
-            - name: Cache Yarn
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      .yarn/cache
-                      .yarn/unplugged
-                      .yarn/install-state.gz
-                  key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-                  restore-keys: |
-                      yarn-${{ runner.os }}-
+            #- name: Cache Yarn
+            #  uses: actions/cache@v4
+            #  with:
+            #      path: |
+            #          .yarn/cache
+            #          .yarn/unplugged
+            #          .yarn/install-state.gz
+            #      key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            #      restore-keys: |
+            #          yarn-${{ runner.os }}-
 
             - name: Read version
               run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
             - name: Install dependencies
-              run: yarn install --immutable
+              run: yarn install
 
             - name: Build Web / Site
               run: yarn build
@@ -158,16 +158,16 @@ jobs:
                   corepack enable
                   corepack prepare yarn@${{ env.YARN_VERSION }} --activate
 
-            - name: Cache Yarn
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      .yarn/cache
-                      .yarn/unplugged
-                      .yarn/install-state.gz
-                  key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-                  restore-keys: |
-                      yarn-${{ runner.os }}-
+            #- name: Cache Yarn
+            #  uses: actions/cache@v4
+            #  with:
+            #      path: |
+            #          .yarn/cache
+            #          .yarn/unplugged
+            #          .yarn/install-state.gz
+            #      key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            #      restore-keys: |
+            #          yarn-${{ runner.os }}-
 
             - name: Restore Electron cache
               uses: actions/cache@v4
@@ -179,6 +179,12 @@ jobs:
 
             - name: Read app version
               run: echo "APP_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Build Web / Site
+              run: yarn build
 
             - name: Install Linux dependencies
               if: matrix.platform == 'linux'
@@ -192,15 +198,9 @@ jobs:
               if: github.event_name == 'pull_request' || matrix.platform == 'mac'
               run: echo "CSC_IDENTITY_AUTO_DISCOVERY=false" >> $GITHUB_ENV
 
-            - name: Install dependencies
-              run: yarn install --immutable
-
-            - name: Build Web / Site
-              run: yarn build
-
             # Build Electron
             - name: Build Electron app
-              run: npx electron-builder ${{ matrix.build_args }}
+              run: yarn electron-builder ${{ matrix.build_args }}
               env:
                   CSC_IDENTITY_AUTO_DISCOVERY: ${{ env.CSC_IDENTITY_AUTO_DISCOVERY || 'true' }}
 
@@ -362,16 +362,16 @@ jobs:
                   corepack enable
                   corepack prepare yarn@${{ env.YARN_VERSION }} --activate
 
-            - name: Cache Yarn
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      .yarn/cache
-                      .yarn/unplugged
-                      .yarn/install-state.gz
-                  key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-                  restore-keys: |
-                      yarn-${{ runner.os }}-
+            #- name: Cache Yarn
+            #  uses: actions/cache@v4
+            #  with:
+            #      path: |
+            #          .yarn/cache
+            #          .yarn/unplugged
+            #          .yarn/install-state.gz
+            #      key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            #      restore-keys: |
+            #          yarn-${{ runner.os }}-
 
             - name: Setup Java 21
               uses: actions/setup-java@v4
@@ -391,13 +391,13 @@ jobs:
                       gradle-${{ runner.os }}-
 
             - name: Install dependencies
-              run: yarn install --immutable
+              run: yarn install
 
             - name: Build web assets
               run: yarn build
 
             - name: Capacitor sync (Android)
-              run: npx cap sync android
+              run: yarn cap sync android
 
             - name: Build Android APK
               env:
@@ -439,28 +439,28 @@ jobs:
                   corepack enable
                   corepack prepare yarn@${{ env.YARN_VERSION }} --activate
 
-            - name: Cache Yarn
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      .yarn/cache
-                      .yarn/unplugged
-                      .yarn/install-state.gz
-                  key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-                  restore-keys: |
-                      yarn-${{ runner.os }}-
+            #- name: Cache Yarn
+            #  uses: actions/cache@v4
+            #  with:
+            #      path: |
+            #          .yarn/cache
+            #          .yarn/unplugged
+            #          .yarn/install-state.gz
+            #      key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            #      restore-keys: |
+            #          yarn-${{ runner.os }}-
 
             - name: Install dependencies
-              run: yarn install --immutable
+              run: yarn install
 
             - name: Build web assets
               run: yarn build
 
             - name: Ensure iOS project exists
-              run: npx cap add ios || echo "iOS project already exists"
+              run: yarn cap add ios || echo "iOS project already exists"
 
             - name: Capacitor sync iOS
-              run: npx cap sync ios
+              run: yarn cap sync ios
 
             - name: Cache CocoaPods
               uses: actions/cache@v4
