@@ -405,7 +405,7 @@ jobs:
             - name: Upload Android APK
               uses: actions/upload-artifact@v4
               with:
-                  name: android-apk
+                  name: android
                   path: android/app/build/outputs/apk/release/*.apk
 
     ios:
