@@ -232,21 +232,21 @@ jobs:
             - name: Upload DEB packages
               uses: actions/upload-artifact@v4
               with:
-                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}-deb
                   path: dist/*.deb
                   if-no-files-found: ignore
 
             - name: Upload AppImage packages
               uses: actions/upload-artifact@v4
               with:
-                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}-appimage
                   path: dist/*.AppImage
                   if-no-files-found: ignore
 
             - name: Upload Snap packages
               uses: actions/upload-artifact@v4
               with:
-                  name: ${{ matrix.platform }}-${{ matrix.arch }}
+                  name: ${{ matrix.platform }}-${{ matrix.arch }}-snap
                   path: dist/*.snap
                   if-no-files-found: ignore
 
@@ -270,7 +270,7 @@ jobs:
               if: matrix.platform == 'mac'
               uses: actions/upload-artifact@v4
               with:
-                  name: macos-${{ matrix.arch }}
+                  name: macos-${{ matrix.arch }}-dmg
                   path: dist/*.dmg
                   if-no-files-found: ignore
 
@@ -278,7 +278,7 @@ jobs:
               if: matrix.platform == 'mac'
               uses: actions/upload-artifact@v4
               with:
-                  name: macos-${{ matrix.arch }}
+                  name: macos-${{ matrix.arch }}-pkg
                   path: dist/*.pkg
                   if-no-files-found: ignore
 
