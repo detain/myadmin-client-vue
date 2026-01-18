@@ -23,6 +23,7 @@ siteStore.setBreadcrums([
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');
 const pkg = ref(10880);
+const module = 'mail';
 const validateResponse = ref<ValidateResponse | null>(null);
 const tos = ref(false);
 const packageCosts = ref<PackageCosts>({});
@@ -56,8 +57,8 @@ interface ValidateResponse {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
+        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
             couponInfo.value = json;
             if (typeof json.applies != 'undefined') {
                 //update_vps_choices();
@@ -146,6 +147,26 @@ try {
 
 <template>
     <template v-if="!step || step == 'orderform'">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); color: #000; border: 2px solid #b6b8b9; color: #00334e;border-radius: 8px;">
+                <div class="d-flex align-items-center">
+                    <div class="mr-4">
+                        <i class="fas fa-envelope fa-3x" style="color: #007bff;"></i>
+                    </div>
+                    <div>
+                        <h4 class="alert-heading mb-2 text-bold" style="color: #007bff;">Outgoing Mail Relay Service</h4>
+                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5;margin-bottom: 5px;;">
+                            This is a mail relay and security service for outgoing email only. For more information, visit
+                            <a href="https://mail.baby" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline;">https://mail.baby</a>.
+                        </p>
+                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5;margin-bottom: 3px;">
+                            If you are looking for a full email service that includes Incoming Mail, Outgoing Mail, POP/IMAP, Webmail, and more, please purchase a web hosting package from
+                            <a href="http://www.interserver.net/webhosting/" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline;">Interserver Web Hosting</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -317,4 +338,13 @@ try {
 
 <style scoped>
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
+
+.outgoing_mail_msg {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 </style>
