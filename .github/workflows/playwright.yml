@@ -47,7 +47,7 @@ jobs:
                   corepack prepare yarn@4.12.0 --activate
 
             - name: Install dependencies
-              run: yarn --frozen-lockfile
+              run: yarn
 
             # Cache Playwright browsers (major speed improvement)
             - name: Cache Playwright browsers
