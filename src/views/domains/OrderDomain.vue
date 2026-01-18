@@ -8,7 +8,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '../../types/domains';
 import $ from 'jquery';
-import type { CouponInfo } from '@/types/vps_order.ts';
+import type { CouponInfo } from '../../types/vps_order.ts';
 const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
