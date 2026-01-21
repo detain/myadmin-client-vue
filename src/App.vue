@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import MainMenu from './components/MainMenu.vue';
 import Alert from './components/Alert.vue';
-
+import Search from './components/Search.vue';
 import { useAuthStore } from './stores/auth.store';
 import { useSiteStore } from './stores/site.store';
 
@@ -91,6 +91,7 @@ function restoreSidebarState() {
                     <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <!-- <Search /> -->
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
@@ -193,4 +194,5 @@ function restoreSidebarState() {
     position: relative;
     z-index: 1050;
 }
+
 </style>
