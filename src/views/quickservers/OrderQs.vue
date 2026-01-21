@@ -38,6 +38,20 @@ const osVersionSelect = computed<[string, string][]>(() => {
     const distro = osTemplates.value[osDistro.value];
     return distro ? Object.values(distro).flat() : [];
 });
+watch(osVersionSelect, (options) => {
+        if (!options.length) {
+            osVersion.value = '';
+            return;
+        }
+        const isValid = options.some(
+            ([, value]) => value === osVersion.value
+        );
+        if (!isValid) {
+            osVersion.value = options[0][1];
+        }
+    },
+    { immediate: true }
+);
 
 /*
 const osVersionSelect = computed(() => {
