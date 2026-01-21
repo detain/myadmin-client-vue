@@ -140,8 +140,8 @@ export const useTicketsStore = defineStore('tickets', {
                     sortcol: params.sortcol ?? this.sortcol,
                     sortdir: params.sortdir ?? this.sortdir,
                 };
-                const qs = '?' + new URLSearchParams(Object.entries(query).filter(([_, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => [k, String(v)])).toString()
-                const response = await fetchWrapper.get(`${baseUrl}/tickets${qs}`);
+                const qs = new URLSearchParams(Object.entries(query).filter(([_, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => [k, String(v)])).toString()
+                const response = await fetchWrapper.get(`${baseUrl}/tickets?${qs}`);
 
                 /* ---- server response mapping ---- */
 
@@ -188,9 +188,7 @@ export const useTicketsStore = defineStore('tickets', {
             const baseUrl = siteStore.getBaseUrl();
 
             try {
-                const response = await fetchWrapper.post(`${baseUrl}/ajax.php?choice=tickets_search_widget`, { keyword });
-
-                return response;
+                return await fetchWrapper.post(`${baseUrl}/ajax.php?choice=tickets_search_widget`, { keyword });
             } catch (err) {
                 console.error('Search failed', err);
                 return '<div class="text-danger p-2">Search failed</div>';
