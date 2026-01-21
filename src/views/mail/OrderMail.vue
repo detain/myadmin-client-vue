@@ -94,12 +94,18 @@ async function onSubmit(values: any) {
                 console.log('Response:');
                 console.log(response);
                 pkg.value = response.serviceType;
-                if (response.continue == true) {
+                if (!response.continue) {
+                    Swal.fire({
+                        icon: 'error',
+                        html: `Got error ${response.errors.join('<br>')}`,
+                    });
+                } else {
                     step.value = 'order_confirm';
                 }
             });
     } catch (error: any) {
         Swal.close();
+
         console.log('error:');
         console.log(error);
     }
@@ -148,20 +154,20 @@ try {
 <template>
     <template v-if="!step || step == 'orderform'">
         <div class="row justify-content-center mb-3">
-            <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); border: 2px solid #b6b8b9; color: #00334e;border-radius: 8px;">
+            <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); border: 2px solid #b6b8b9; color: #00334e; border-radius: 8px">
                 <div class="d-flex align-items-center">
                     <div class="mr-4">
-                        <i class="fas fa-envelope fa-3x" style="color: #007bff;"></i>
+                        <i class="fas fa-envelope fa-3x" style="color: #007bff"></i>
                     </div>
                     <div>
-                        <h4 class="alert-heading mb-2 text-bold" style="color: #007bff;">Outgoing Mail Relay Service</h4>
-                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5;margin-bottom: 5px;;">
+                        <h4 class="alert-heading mb-2 text-bold" style="color: #007bff">Outgoing Mail Relay Service</h4>
+                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 5px">
                             This is a mail relay and security service for outgoing email only. For more information, visit
-                            <a href="https://mail.baby" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline;">https://mail.baby</a>.
+                            <a href="https://mail.baby" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline">https://mail.baby</a>.
                         </p>
-                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5;margin-bottom: 3px;">
+                        <p style="font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 3px">
                             If you are looking for a full email service that includes Incoming Mail, Outgoing Mail, POP/IMAP, Webmail, and more, please purchase a web hosting package from
-                            <a href="http://www.interserver.net/webhosting/" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline;">Interserver Web Hosting</a>.
+                            <a href="http://www.interserver.net/webhosting/" target="_blank" class="alert-link" style="color: #0056b3; text-decoration: underline">Interserver Web Hosting</a>.
                         </p>
                     </div>
                 </div>
@@ -232,15 +238,16 @@ try {
                             <div class="col-md-8">Package Cost</div>
                             <div class="col text-bold package_cost text-right">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
+                        <!--
                         <div id="couponpricerownew" class="row mb-3">
                             <div id="couponpricetextnew" class="col-md-8">Coupon Discount</div>
                             <div id="couponprice" class="col text-bold text-right"></div>
                         </div>
-
+                        -->
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-bold total_cost text-right text-lg"></div>
+                            <div id="totalcost" class="col text-bold total_cost text-right text-lg">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -344,7 +351,11 @@ try {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>
