@@ -12,6 +12,7 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => props.id);
+const module = 'mail';
 const alerts = ref<AlertRow[]>([]);
 const types_sel = ref({});
 const defaultTo = ref('');

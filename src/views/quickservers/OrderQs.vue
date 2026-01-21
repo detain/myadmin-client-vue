@@ -34,25 +34,11 @@ const rootpass = ref('');
 const hostname = ref('');
 const tos = ref(false);
 const osTemplates = ref<Templates>({});
-const osVersionSelect = ref({});
-watch([osTemplates, osDistro, osVersion], ([newTemplates, newDistro, newVersion], [oldTemplates, oldDistro, oldVersion]) => {
-    let entries, lastEntry, lastKey, lastValue;
-    entries = Object.entries(newTemplates[newDistro]);
-    console.log(entries);
-    if (entries.length == 0) {
-        osVersionSelect.value = {};
-    }
-    if (typeof newTemplates[newDistro][Number(newVersion)] == 'undefined') {
-        console.log(newTemplates[newVersion]);
-        lastEntry = entries[entries.length - 1];
-        console.log(lastEntry);
-        [lastKey, lastValue] = lastEntry;
-        console.log([lastKey, lastValue]);
-        newVersion = lastKey;
-        osVersion.value = lastKey;
-    }
-    osVersionSelect.value = newTemplates[newDistro];
+const osVersionSelect = computed<[string, string][]>(() => {
+    const distro = osTemplates.value[osDistro.value];
+    return distro ? Object.values(distro).flat() : [];
 });
+
 /*
 const osVersionSelect = computed(() => {
     let entries, lastEntry, lastKey, lastValue;
@@ -227,7 +213,9 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                 <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select v-model="osVersion" class="form-control select2">
-                                        <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
+                                        <option v-for="([label, value], index) in osVersionSelect" :key="index" :value="value">
+                                            {{ label }}
+                                        </option>
                                     </select>
                                 </div>
                             </div>

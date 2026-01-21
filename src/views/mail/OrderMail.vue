@@ -148,7 +148,7 @@ try {
 <template>
     <template v-if="!step || step == 'orderform'">
         <div class="row justify-content-center mb-3">
-            <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); color: #000; border: 2px solid #b6b8b9; color: #00334e;border-radius: 8px;">
+            <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); border: 2px solid #b6b8b9; color: #00334e;border-radius: 8px;">
                 <div class="d-flex align-items-center">
                     <div class="mr-4">
                         <i class="fas fa-envelope fa-3x" style="color: #007bff;"></i>
