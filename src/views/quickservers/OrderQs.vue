@@ -38,48 +38,20 @@ const osVersionSelect = computed<[string, string][]>(() => {
     const distro = osTemplates.value[osDistro.value];
     return distro ? Object.values(distro).flat() : [];
 });
-watch(osVersionSelect, (options) => {
+watch(
+    osVersionSelect,
+    (options) => {
         if (!options.length) {
             osVersion.value = '';
             return;
         }
-        const isValid = options.some(
-            ([, value]) => value === osVersion.value
-        );
+        const isValid = options.some(([, value]) => value === osVersion.value);
         if (!isValid) {
             osVersion.value = options[0][1];
         }
     },
     { immediate: true }
 );
-
-/*
-const osVersionSelect = computed(() => {
-    let entries, lastEntry, lastKey, lastValue;
-    console.log(osTemplates.value);
-    console.log(osDistro.value);
-    if (Object.entries(osTemplates.value).length === 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length === 0 || osTemplates.value[osDistro.value][64].length === 0) {
-        return {};
-    }
-    const templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
-            acc[key] = value;
-            return acc;
-        }, {});
-    if (typeof templates[osVersion.value] == 'undefined') {
-        console.log(templates);
-        entries = Object.entries(templates);
-        console.log(entries);
-        lastEntry = entries[entries.length - 1];
-        console.log(lastEntry);
-        osVersion.value = lastEntry[0];
-    }
-    return templates;
-});
-*/
-
-async function editForm() {
-    step.value = 'orderform';
-}
 
 async function onSubmit() {
     step.value = 'order_confirm';
@@ -350,7 +322,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div id="totalprice" class="text-bold total_cost text-lg"></div>
+                                            <div id="totalprice" class="text-bold total_cost text-lg">{{ serverDetails[qsId] ? serverDetails[qsId].cost : '' }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -366,7 +338,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="controls col-md-12 text-center"><input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" /></div>
+                                <div class="controls col-md-12 text-center"><input type="submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" /></div>
                             </div>
                         </form>
                     </div>
