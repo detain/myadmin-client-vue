@@ -5,8 +5,8 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { useRoute, useRouter } from 'vue-router';
-import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
+const module = 'webhosting';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
@@ -104,16 +104,27 @@ const totalCost = computed(() => {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
+        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error ${response.status}`);
                 }
-            }
-        });
+                return response.json() as Promise<CouponInfo>;
+            })
+            .then((json) => {
+                couponInfo.value = json;
+
+                if (typeof json.applies !== 'undefined') {
+                    // update_vps_choices();
+                    if (couponInfo.value.onetime === '0') {
+                        // update_vps_choices_order();
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Failed to load coupon info:', error);
+            });
     }
 }
 

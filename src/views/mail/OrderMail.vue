@@ -8,7 +8,6 @@ import { useSiteStore } from '../../stores/site.store';
 
 import { useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
@@ -58,15 +57,26 @@ function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
         (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
+        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error ${response.status}`);
                 }
-            }
-        });
+                return response.json() as Promise<CouponInfo>;
+            })
+            .then((json) => {
+                couponInfo.value = json;
+
+                if (typeof json.applies !== 'undefined') {
+                    // update_vps_choices();
+                    if (couponInfo.value.onetime === '0') {
+                        // update_vps_choices_order();
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Failed to load coupon info:', error);
+            });
     }
 }
 

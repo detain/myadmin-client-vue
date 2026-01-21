@@ -23,6 +23,7 @@ const step = ref('orderform');
 const currency = ref('USD');
 const currencySymbol = ref('$');
 const pkg = ref(10831);
+const module = 'backups';
 const rootpass = ref('');
 const period = ref(1);
 const couponInfo = ref<CouponInfo>({});
@@ -50,16 +51,27 @@ function updatePrice() {}
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
-                }
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
+fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+        return response.json() as Promise<CouponInfo>;
+    })
+    .then((json) => {
+        couponInfo.value = json;
+
+        if (typeof json.applies !== 'undefined') {
+            // update_vps_choices();
+            if (couponInfo.value.onetime === '0') {
+                // update_vps_choices_order();
             }
-        });
+        }
+    })
+    .catch((error) => {
+        console.error('Failed to load coupon info:', error);
+    });
     }
 }
 
