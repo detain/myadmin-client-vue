@@ -79,15 +79,68 @@ function loadLink(newLink: string) {
                     }
                 },
             });
+        } else if (newLink == 'reset_password') {
+            Swal.fire({
+                icon: 'question',
+                title: '<h3>Are you sure?</h3> ',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: 'Yes',
+                html: 'Are you sure want to reset the password?',
+                preConfirm: () => {
+                    try {
+                        Swal.close();
+                        fetchWrapper.get(`/${moduleLink(module)}/${id}/reset_password`).then((response) => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '<h3>Email Sent</h3> ',
+                                showCancelButton: false,
+                                showLoaderOnConfirm: true,
+                                confirmButtonText: 'Yes',
+                                html: 'The password has been reset and sent to your email.  Check your inbox.',
+                                preConfirm: () => {
+                                    router.push(`/${moduleLink(module)}/${id}`);
+                                },
+                            });
+                        });
+                    } catch (error: any) {
+                        console.log('error');
+                        console.log(error);
+                    }
+                },
+            });
         } else if (newLink == 'login') {
             // do something here
         }
     }
 }
 
-function submitForm() {}
+function submitForm() {
+    try {
+        Swal.close();
+        fetchWrapper.post(`/${moduleLink(module)}/${id}`, {
+            comment: serviceInfo.value.mail_comment,
+        }).then((response) => {
+            Swal.fire({
+                icon: 'success',
+                title: '<h3>Email Sent</h3> ',
+                showCancelButton: false,
+                showLoaderOnConfirm: true,
+                confirmButtonText: 'Yes',
+                html: 'Comment updated successfully.',
+                preConfirm: () => {
+                    router.push(`/${moduleLink(module)}/${id}`);
+                },
+            });
+        });
+    } catch (error: any) {
+        console.log('error');
+        console.log(error);
+    }
+}
 
 function closeModal() {}
+
 watch(
     () => route.params.link,
     (newLink) => {
@@ -247,15 +300,12 @@ mailStore.getById(id);
     <div id="commentForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form class="inline" method="post" :action="`view_mail?id=${serviceInfo.mail_id}`">
+                <form class="inline" method="post">
                     <div class="modal-header">
                         <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id" :value="serviceInfo.mail_id" />
-                        <input type="hidden" name="link" value="update_comment" />
-                        <input type="hidden" name="edit_comment" value="2" />
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Comment:</label>
                             <textarea id="message-text" v-model="serviceInfo.mail_comment" class="form-control" rows="5" name="comment"></textarea>
