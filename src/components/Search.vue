@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
-
+import { fetchWrapper } from '../helpers/fetchWrapper.ts';
+import { useSiteStore } from '../stores/site.store.ts';
+const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const searchInput = ref('');
 const searchResults = ref<SearchResults | null>(null);
 const filteredResults = ref<any[][]>([]);
@@ -51,18 +54,27 @@ interface SearchTable {
 }
 
 async function loadSearchResults() {
-    const response = await fetch('ajax.php?choice=none.search_autocomplete');
-    searchResults.value = await response.json();
+    try {
+        fetchWrapper.get(`${baseUrl}/search`).then((response) => {
+            searchResults.value = response;
+        });
+    } catch (error: any) {
+        console.log('error:');
+        console.log(error);
+    }
 }
 
 async function updateSearchResults(search: string) {
     if (!search) return;
-
-    const response = await fetch(`ajax.php?choice=none.search_autocomplete&search=${encodeURIComponent(search)}`);
-    const json = await response.json();
-
-    if (json?.results?.length && searchResults.value) {
-        searchResults.value.results.push(...json.results);
+    try {
+        fetchWrapper.get(`${baseUrl}/search?search=${encodeURIComponent(search)}`).then((response) => {
+            if (response?.results?.length && searchResults.value) {
+                searchResults.value.results.push(...response.results);
+            }
+        });
+    } catch (error: any) {
+        console.log('error:');
+        console.log(error);
     }
 }
 

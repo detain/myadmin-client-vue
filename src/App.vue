@@ -91,7 +91,7 @@ function restoreSidebarState() {
                     <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
-            <!-- <Search /> -->
+            <Search />
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
