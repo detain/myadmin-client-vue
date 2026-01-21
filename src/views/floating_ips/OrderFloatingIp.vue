@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { storeToRefs } from 'pinia';
+import { ref, computed, watch } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
-
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
-const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');
@@ -25,7 +21,8 @@ const step = ref('orderform');
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const coupon = ref('');
-const pkg = ref(10880);
+const pkg = ref(0);
+const targetIp = ref('');
 const validateResponse = ref<ValidateFloatingIpOrderResponse>({
     continue: false,
     errors: [],
@@ -38,17 +35,33 @@ const validateResponse = ref<ValidateFloatingIpOrderResponse>({
     coupon: '',
     couponCode: null,
 });
-
 const tos = ref(false);
 const packageCosts = ref({});
 const serviceTypes = ref<ServiceTypes>({});
 const packageCost = ref(0);
+const buyableServiceTypes = computed(() => Object.values(serviceTypes.value).filter((serviceType) => serviceType.services_buyable == '1'));
+
+watch(
+    buyableServiceTypes,
+    (services) => {
+        if (!services.length) {
+            pkg.value = 0;
+            return;
+        }
+        const firstId = services[0].services_id;
+        // Only set if current value is invalid or unset
+        if (!services.some((s) => s.services_id === pkg.value)) {
+            pkg.value = firstId!;
+        }
+    },
+    { immediate: true }
+);
 
 async function editForm() {
     step.value = 'orderform';
 }
 
-async function onSubmit(values: any) {
+async function validateOrder() {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
@@ -57,8 +70,7 @@ async function onSubmit(values: any) {
     });
     try {
         fetchWrapper
-            .put(`${baseUrl}/floating_ip/order`, {
-                validateOnly: true,
+            .put(`${baseUrl}/floating_ips/order`, {
                 serviceType: pkg.value,
                 coupon: coupon.value,
             })
@@ -68,7 +80,12 @@ async function onSubmit(values: any) {
                 console.log('Response:');
                 console.log(response);
                 pkg.value = response.serviceType;
-                if (response.continue == true) {
+                if (!response.continue) {
+                    Swal.fire({
+                        icon: 'error',
+                        html: `Got error ${response.errors.join('<br>')}`,
+                    });
+                } else {
                     step.value = 'order_confirm';
                 }
             });
@@ -108,7 +125,7 @@ function updateCoupon() {
     }
 }
 
-async function placeOrder(values: any) {
+async function placeOrder() {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -116,8 +133,7 @@ async function placeOrder(values: any) {
         showConfirmButton: false,
     });
     fetchWrapper
-        .post(`${baseUrl}/floating_ip/order`, {
-            validateOnly: false,
+        .post(`${baseUrl}/floating_ips/order`, {
             serviceType: pkg.value,
             coupon: coupon.value,
         })
@@ -133,7 +149,7 @@ async function placeOrder(values: any) {
 }
 
 try {
-    fetchWrapper.get(`${baseUrl}/floating_ip/order`).then((response) => {
+    fetchWrapper.get(`${baseUrl}/floating_ips/order`).then((response) => {
         packageCosts.value = response.packageCosts;
         serviceTypes.value = response.serviceTypes;
     });
@@ -157,7 +173,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="floating_ip_form" method="post" class="floating_ip_form_init" action="order_floating_ip" @submit.prevent="onSubmit">
+                        <form id="floating_ip_form" method="post" class="floating_ip_form_init" @submit.prevent="validateOrder">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-right"
                                     >Package
@@ -165,10 +181,17 @@ try {
                                 </label>
                                 <div class="col-sm-9">
                                     <select v-model="pkg" class="form-control form-control-sm select2 valid">
-                                        <option v-for="(serviceType, index) in serviceTypes" :key="index" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
+                                        <option v-for="serviceType in buyableServiceTypes" :key="serviceType.services_id" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">IP to point to</label>
+                                <div class="col-md-9">
+                                    <input v-model="targetIp" type="text" class="form-control form-control-sm" name="ip" placeholder="Target IP" />
+                                </div>
+                            </div>
+                            <!--
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
@@ -176,6 +199,7 @@ try {
                                     <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
+                            -->
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
                                     <input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order px-3 py-2" />
@@ -187,7 +211,7 @@ try {
                         <div class="row text-center">
                             <div class="controls col-md-12">
                                 <b><i class="fa fa-info-circle text-info" aria-hidden="true"></i></b>
-                                Visit <a href="https://mail.baby" class="text-info underline" target="_blank"><u>https://mail.baby</u></a> for more information.
+                                Visit <a href="https://www.interserver.net/tips/kb/floating-ip-address/" class="text-info underline" target="_blank"><u>https://www.interserver.net/tips/kb/floating-ip-address/</u></a> for more information.
                             </div>
                         </div>
                     </div>
@@ -213,15 +237,16 @@ try {
                             <div class="col-md-8">Package Cost</div>
                             <div class="col text-bold package_cost text-right">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
+                        <!--
                         <div id="couponpricerownew" class="row mb-3">
                             <div id="couponpricetextnew" class="col-md-8">Coupon Discount</div>
                             <div id="couponprice" class="col text-bold text-right"></div>
                         </div>
-
+                        -->
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-bold total_cost text-right text-lg"></div>
+                            <div id="totalcost" class="col text-bold total_cost text-right text-lg">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -242,7 +267,7 @@ try {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" class="floating_ip_form_confirm" action="order_floating_ip">
+                        <form method="post" class="floating_ip_form_confirm">
                             <input type="hidden" name="serviceType" :value="pkg" />
                             <input type="hidden" name="coupon" :value="coupon" />
                             <table class="table-sm table-bordered table">
@@ -306,7 +331,7 @@ try {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click="placeOrder">Place Order</button>
+                                    <button type="submit" name="Submit" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click.prevent="placeOrder">Place Order</button>
                                 </div>
                             </div>
                         </form>
