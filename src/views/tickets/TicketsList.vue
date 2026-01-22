@@ -95,7 +95,9 @@ function timeAgo(input: string | number) {
 
     const diff = Math.floor((Date.now() - ts) / 1000);
 
-    const units = [
+    type Unit = [number, string];
+
+    const units: Unit[] = [
         [60, 'second'],
         [3600, 'minute'],
         [86400, 'hour'],

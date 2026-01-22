@@ -8,8 +8,6 @@ import $ from 'jquery';
 const ticketsStore = useTicketsStore();
 const showToggle = ref(false);
 const inputFile = ref('');
-const success = ref<string | boolean>(false);
-const failed = ref<string | boolean>(false);
 const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
 
 function formatDate(date: string) {}
@@ -76,13 +74,7 @@ function bs_input_file() {
 </script>
 
 <template>
-    <div v-if="success" class="row">
-        <div class="alert alert-success mainbox col-md-12" style="padding: 5px">{{ success }}</div>
-    </div>
-    <div v-if="failed" class="row">
-        <div class="alert alert-danger mainbox col-md-12" style="padding: 5px">{{ failed }}</div>
-    </div>
-    <template v-else>
+    <template v-if="ticket">
         <link rel="stylesheet" href="/lib/select2/dist/css/select2.min.css" />
         <link rel="stylesheet" href="/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
         <div class="row">
