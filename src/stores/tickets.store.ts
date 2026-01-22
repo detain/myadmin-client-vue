@@ -140,7 +140,11 @@ export const useTicketsStore = defineStore('tickets', {
                     sortcol: params.sortcol ?? this.sortcol,
                     sortdir: params.sortdir ?? this.sortdir,
                 };
-                const qs = new URLSearchParams(Object.entries(query).filter(([_, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => [k, String(v)])).toString()
+                const qs = new URLSearchParams(
+                    Object.entries(query)
+                        .filter(([_, v]) => v !== undefined && v !== null && v !== '')
+                        .map(([k, v]) => [k, String(v)])
+                ).toString();
                 const response = await fetchWrapper.get(`${baseUrl}/tickets?${qs}`);
 
                 /* ---- server response mapping ---- */

@@ -133,17 +133,15 @@ function confirmDelete(index: number) {
     }).then((result) => {
         if (result.isConfirmed) {
             try {
-                fetchWrapper
-                    .delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?index=${index}`)
-                    .then((response) => {
-                        Swal.close();
-                        console.log('delete nameserver success');
-                        console.log(response);
-                        Swal.fire({
-                            icon: 'success',
-                            html: `Success${response}`,
-                        });
+                fetchWrapper.delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?index=${index}`).then((response) => {
+                    Swal.close();
+                    console.log('delete nameserver success');
+                    console.log(response);
+                    Swal.fire({
+                        icon: 'success',
+                        html: `Success${response}`,
                     });
+                });
             } catch (error: any) {
                 Swal.close();
                 console.log('delete  nameserver failed');

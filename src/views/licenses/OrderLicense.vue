@@ -21,7 +21,7 @@ siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
-const catTag = computed(() => route.params.catTag as string || '');
+const catTag = computed(() => (route.params.catTag as string) || '');
 const step = ref('license_types');
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');

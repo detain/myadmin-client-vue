@@ -194,5 +194,4 @@ function restoreSidebarState() {
     position: relative;
     z-index: 1050;
 }
-
 </style>

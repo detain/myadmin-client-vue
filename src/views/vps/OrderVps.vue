@@ -299,7 +299,6 @@ const getBandwidth = computed(() => {
     return bandwidthamount + slice_amount;
 });
 
-
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;

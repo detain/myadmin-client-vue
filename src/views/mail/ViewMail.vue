@@ -118,21 +118,23 @@ function loadLink(newLink: string) {
 function submitForm() {
     try {
         Swal.close();
-        fetchWrapper.post(`/${moduleLink(module)}/${id}`, {
-            comment: serviceInfo.value.mail_comment,
-        }).then((response) => {
-            Swal.fire({
-                icon: 'success',
-                title: '<h3>Email Sent</h3> ',
-                showCancelButton: false,
-                showLoaderOnConfirm: true,
-                confirmButtonText: 'Yes',
-                html: 'Comment updated successfully.',
-                preConfirm: () => {
-                    router.push(`/${moduleLink(module)}/${id}`);
-                },
+        fetchWrapper
+            .post(`/${moduleLink(module)}/${id}`, {
+                comment: serviceInfo.value.mail_comment,
+            })
+            .then((response) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '<h3>Email Sent</h3> ',
+                    showCancelButton: false,
+                    showLoaderOnConfirm: true,
+                    confirmButtonText: 'Yes',
+                    html: 'Comment updated successfully.',
+                    preConfirm: () => {
+                        router.push(`/${moduleLink(module)}/${id}`);
+                    },
+                });
             });
-        });
     } catch (error: any) {
         console.log('error');
         console.log(error);
