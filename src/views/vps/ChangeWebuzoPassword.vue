@@ -14,6 +14,8 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const password = ref('');
+const password2 = ref('');
+const login_password = ref('');
 const id = computed(() => props.id);
 const module = computed(() => props.module);
 const curHostname = computed(() => {
@@ -23,8 +25,16 @@ const curHostname = computed(() => {
 onMounted(() => {});
 
 function submitForm() {
+    if (password.value != password2.value) {
+        Swal.fire({
+            icon: 'error',
+            html: `Password and Confirm Password do not match`,
+        });
+        return;
+    }
     let postData = {
         password: password.value,
+        login_password: login_password.value,
     };
     fetchWrapper
         .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_webuzo_password`, postData)
@@ -72,25 +82,25 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">New Password</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
+                                    <input v-model="password" type="password" class="pr-password form-control form-control-sm" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">Confirm password</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
+                                    <input v-model="password2" type="password" class="pr-password form-control form-control-sm" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">Our Portal Login Password</label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="login_password" type="password" class="pr-password form-control form-control-sm" name="login_password" required />
+                                    <input v-model="login_password" type="password" class="pr-password form-control form-control-sm" required />
                                 </div>
                             </div>
                             <hr />
                             <div class="row justify-content-center">
                                 <div class="controls">
-                                    <input type="submit" name="change_webuzo_pass" value="Change Password" class="btn btn-order px-4 py-2 text-sm" />
+                                    <input type="submit" value="Change Password" class="btn btn-order px-4 py-2 text-sm" />
                                 </div>
                             </div>
                         </div>
