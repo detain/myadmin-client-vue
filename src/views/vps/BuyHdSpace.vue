@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
@@ -16,6 +16,7 @@ const props = defineProps<{
 }>();
 const gbCost = ref(0.1);
 const size = ref(0);
+const router = useRouter();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const slider = ref<number>(size.value ?? 1);
@@ -36,15 +37,16 @@ function submitForm() {
             console.log(response);
             Swal.fire({
                 icon: 'success',
-                html: response.message,
+                html: response.text,
             });
+            router.push(`/cart/${response.invoice}`);
         })
         .catch((error: any) => {
             console.log('api failed');
             console.log(error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: `Got error ${error}`,
             });
         });
 }
@@ -63,7 +65,7 @@ async function loadData() {
             console.log(error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: `Got error ${error}`,
             });
         });
 }
