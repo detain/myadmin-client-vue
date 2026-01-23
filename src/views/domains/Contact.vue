@@ -12,22 +12,25 @@ const id = computed(() => props.id);
 const module: string = 'domains';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const tabIndex = ref(0);
 const domainFields = ref<DomainFields>({});
 
 const updateContact = () => {
     // Handle contact update logic here
 };
 
-try {
-    fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`).then((response: DomainFields) => {
-        console.log(response);
-        domainFields.value = response;
-    });
-} catch (error: any) {
-    console.log('error:');
-    console.log(error);
+async function loadContact() {
+    try {
+        fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`).then((response: DomainFields) => {
+            console.log(response);
+            domainFields.value = response;
+        });
+    } catch (error: any) {
+        console.log('error:');
+        console.log(error);
+    }
 }
+
+loadContact();
 </script>
 
 <template>
@@ -43,17 +46,17 @@ try {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" @submit.prevent="updateContact">
+                    <form v-if="Object.keys(domainFields).length" method="POST" @submit.prevent="updateContact">
                         <div v-for="(fieldData, fieldName, fieldIndex) in domainFields" :key="fieldIndex" class="form-group row">
                             <template v-if="fieldData.label && fieldData.label">
                                 <label class="col-sm-3 col-form-label" :for="String(fieldName)">{{ fieldData.label }}<span v-if="fieldData.required" class="text-danger"> *</span></label>
                             </template>
                             <div class="col-sm-9 input-group">
                                 <template v-if="fieldData.input === 'text'">
-                                    <input type="text" :name="String(fieldName)" class="form-control form-control-sm" :value="fieldData.value" :tabindex="++tabIndex" />
+                                    <input type="text" :name="String(fieldName)" class="form-control form-control-sm" :value="fieldData.value" :tabindex="fieldIndex + 1" />
                                 </template>
                                 <template v-else-if="fieldData.input && fieldData.input[0] === 'select'">
-                                    <select :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="++tabIndex">
+                                    <select :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="fieldIndex + 1">
                                         <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val" :selected="fieldData.value === val">{{ displayName }}</option>
                                     </select>
                                 </template>
