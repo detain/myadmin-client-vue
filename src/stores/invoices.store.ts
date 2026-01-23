@@ -8,10 +8,12 @@ interface InvoiceRow {
     id: number;
     module: string;
     date: string;
+    service_id: number;
     service: string;
     description: string;
     amount: string;
     paid: string;
+    payment_type_id: number;
     payment_type: string;
     month: string;
     year: string;

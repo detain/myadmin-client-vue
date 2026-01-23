@@ -3,11 +3,9 @@ import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { useSiteStore } from '../../stores/site.store';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import $ from 'jquery';
 import imageDirectAdmin from '../../assets/images/directadmin.png';
 import imageSoftaculous from '../../assets/images/softaculous.png';
 import imagePlesk from '../../assets/images/plesk12.png';
