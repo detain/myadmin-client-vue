@@ -12,7 +12,7 @@
     ],
     "type": "module",
     "scripts": {
-        "ts": "yarn exec vue-tsc --noEmit",
+        "ts": "vue-tsc --noEmit",
         "clean": "rm -rf dist dev-dist",
         "dev": "vite --cors",
         "dev:https": "vite --cors --https",
@@ -25,7 +25,7 @@
         "test": "vitest",
         "test:browser": "vitest --config=vitest.browser.config.ts",
         "test:coverage": "vitest run --coverage",
-        "test:e2e": ":yarn exec playwrite test"
+        "test:e2e": "playwright test"
     },
     "devDependencies": {
         "@commitlint/cli": "*",

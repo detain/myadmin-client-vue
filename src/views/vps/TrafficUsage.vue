@@ -47,19 +47,16 @@ const formatData = (value: number, perSecond = false) => {
     const isBytes = metric.value === 'bytes';
     const multiplier = isBytes ? 1 : 8;
     const unit = isBytes ? 'Bytes' : 'Bits';
-
     let result: string;
-
     if (value > 1073741824) {
-        result = ((value / 1073741824) * multiplier).toFixed(2) + ` G${unit}`;
+        result = `${((value / 1073741824) * multiplier).toFixed(2)} G${unit}`;
     } else if (value > 1048576) {
-        result = ((value / 1048576) * multiplier).toFixed(2) + ` M${unit}`;
+        result = `${((value / 1048576) * multiplier).toFixed(2)} M${unit}`;
     } else if (value > 1024) {
-        result = ((value / 1024) * multiplier).toFixed(2) + ` K${unit}`;
+        result = `${((value / 1024) * multiplier).toFixed(2)} K${unit}`;
     } else {
-        result = (value * multiplier).toFixed(2) + ` ${unit}`;
+        result = `${(value * multiplier).toFixed(2)} ${unit}`;
     }
-
     return perSecond ? `${result}/s` : result;
 };
 
@@ -70,13 +67,10 @@ const destroyCharts = () => {
 
 const renderCharts = () => {
     if (!trafficData.value) return;
-
     destroyCharts();
-
     const today = trafficData.value.data;
     const hour = trafficData.value.history.hour.data;
     const day = trafficData.value.history.day.data;
-
     charts.push(
         new Chart(todayCanvas.value!, {
             type: 'line',
@@ -96,7 +90,6 @@ const renderCharts = () => {
                 ],
             },
         }),
-
         new Chart(hourCanvas.value!, {
             type: 'line',
             data: {
@@ -110,7 +103,6 @@ const renderCharts = () => {
                 ],
             },
         }),
-
         new Chart(dayCanvas.value!, {
             type: 'line',
             data: {
@@ -165,45 +157,38 @@ onBeforeUnmount(() => {
             <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
                     <h3 class="card-title py-2 mb-0"><i class="fa fa-tachometer-alt"></i>&nbsp;Bandwidth / Traffic Usage</h3>
-
                     <div class="metric-toggle-container ml-4">
                         <span class="toggle-label mr-2">Display in:</span>
                         <div class="metric-toggle">
-                            <input type="radio" id="bits-metric" value="bits" v-model="metric" />
+                            <input id="bits-metric" v-model="metric" type="radio" value="bits" />
                             <label for="bits-metric">bits</label>
-
-                            <input type="radio" id="bytes-metric" value="bytes" v-model="metric" />
+                            <input id="bytes-metric" v-model="metric" type="radio" value="bytes" />
                             <label for="bytes-metric">bytes</label>
                         </div>
                     </div>
                 </div>
-
                 <div class="card-tools">
                     <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left"></i>&nbsp;Back </router-link>
                 </div>
             </div>
         </div>
-
         <div class="card-body">
             <div class="alert alert-info">
                 <strong><i class="fa fa-warning"></i>&nbsp;Note:</strong>
                 This is not used for billing calculations and is an estimate only based on your virtual network cards.
             </div>
-
             <div class="row">
                 <div class="col">
                     <h5>Today Usage</h5>
                     <canvas ref="todayCanvas"></canvas>
                 </div>
             </div>
-
             <div class="row mt-4">
                 <div class="col">
                     <h5>Hourly Usage</h5>
                     <canvas ref="hourCanvas"></canvas>
                 </div>
             </div>
-
             <div class="row mt-4">
                 <div class="col">
                     <h5>Daily Usage</h5>
@@ -215,7 +200,6 @@ onBeforeUnmount(() => {
                 <div class="card-header">
                     <h5 class="card-title text-bold"><i class="fa fa-bar-chart"></i>&nbsp;Statistics</h5>
                 </div>
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -236,7 +220,6 @@ onBeforeUnmount(() => {
                                 </tbody>
                             </table>
                         </div>
-
                         <div class="col">
                             <table class="table table-bordered">
                                 <thead>
