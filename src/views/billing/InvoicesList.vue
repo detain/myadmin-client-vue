@@ -33,7 +33,6 @@ const submitForm = () => {
     console.log(`Selected month: ${month.value}`);
     console.log(`Selected year: ${year.value}`);
 };
-const invoicesTable = ref(null);
 
 invoicesStore.getAll();
 
