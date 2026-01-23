@@ -3,6 +3,21 @@ import { storeToRefs } from 'pinia';
 import { useInvoicesStore } from '../../stores/invoices.store';
 import { useSiteStore } from '../../stores/site.store';
 import { ref, computed, onMounted, watch } from 'vue';
+import iconCheckmark from '../../assets/images/myadmin/checkmark.png';
+import iconDelete from '../../assets/images/myadmin/delete.png';
+import iconCashflow from '../../assets/images/myadmin/cashflow.png';
+import iconBudget from '../../assets/images/myadmin/budget.png';
+import iconPaypal from '../../assets/images/myadmin/paypal.png';
+import iconCreditCard from '../../assets/images/myadmin/credit-card.png';
+import iconMerchantAccount from '../../assets/images/myadmin/merchant-account.png';
+import iconGooglePlus from '../../assets/images/myadmin/google-plus.png';
+import iconCardPayment from '../../assets/images/myadmin/card-payment.png';
+import iconPriceTag from '../../assets/images/myadmin/price-tag.png';
+import iconBilling from '../../assets/images/myadmin/billing.png';
+import iconBouncedCheck from '../../assets/images/myadmin/bounced-check.png';
+import iconPayssion from '../../assets/images/payssion.png';
+import iconPdf from '../../assets/images/myadmin/pdf.png';
+import iconViewDetails from '../../assets/images/myadmin/view-details.png';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Invoice List');
 siteStore.setTitle('Invoice List');
@@ -44,6 +59,31 @@ const currentPage = ref(1);
 const sortKey = ref<keyof InvoiceRow>('id');
 const sortDir = ref<'asc' | 'desc'>('desc');
 /* ------------------ data load ------------------ */
+
+function getImage(type: number): string {
+    const map: Record<number, string> = {
+        1: iconCashflow,
+        2: iconBudget,
+        10: iconPaypal,
+        11: iconCreditCard,
+        12: iconMerchantAccount,
+        13: iconGooglePlus,
+        14: iconCardPayment,
+        15: iconPriceTag,
+        16: iconBilling,
+        17: iconBouncedCheck,
+        18: iconPayssion,
+    };
+    return map[type] ?? iconCardPayment;
+}
+
+function paidImage(paid: string): string {
+    return paid == 'Yes' ? iconCheckmark : iconDelete;
+}
+
+function paymentImage(typeId: number): string {
+    return getImage(typeId);
+}
 
 async function loadInvoices(exportType?: 'excel' | 'pdf') {
     /*loading.value = true;
@@ -208,13 +248,13 @@ function exportPdf() {
                         <td v-html="row.service"></td>
                         <td>{{ row.description }}</td>
                         <td class="text-end">{{ row.amount }}</td>
-                        <td>{{ row.paid }}</td>
-                        <td>{{ row.payment_type_id }}</td>
+                        <td><img :src="paidImage(row.paid)" border="0" :alt="row.paid" style="width: 24px" /></td>
+                        <td><img :src="paymentImage(row.payment_type_id)" border="0" :alt="row.payment_type" style="width: 24px" /></td>
                         <td>{{ row.payment_description }}</td>
                         <td>{{ row.paid_on }}</td>
                         <td>
-                            <a :href="`pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}`" title="PDF" class="me-2">PDF</a>
-                            <a :href="`index.php?choice=view_invoice&module=${row.module}&id=${row.id}`" title="View">View</a>
+                            <a :href="`pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}`" title="PDF" class="me-2"><img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" /></a>
+                            <a :href="`index.php?choice=view_invoice&module=${row.module}&id=${row.id}`" title="View Invoice"><img :src="iconViewDetails" border="0" alt="View Invoice" style="width: 1em; height: 1em; display: inline-block" /></a>
                         </td>
                     </tr>
                 </tbody>
