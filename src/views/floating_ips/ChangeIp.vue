@@ -10,7 +10,7 @@ const props = defineProps<{
     id: number;
 }>();
 const id = computed(() => props.id);
-const module: string = 'licenses';
+const module: string = 'floating_ips';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');
@@ -23,17 +23,19 @@ function handleSubmit() {
         showConfirmButton: false,
     });
     try {
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/change_ip`, {
-            ip: newIp.value,
-        }).then((response) => {
-            Swal.close();
-            console.log('webhosting buy ip');
-            console.log(response);
-            Swal.fire({
-                icon: 'success',
-                html: `Success${response.text}`,
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/change_ip`, {
+                ip: newIp.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('webhosting buy ip');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
             });
-        });
     } catch (error: any) {
         Swal.close();
         console.log('webhosting buy ip');

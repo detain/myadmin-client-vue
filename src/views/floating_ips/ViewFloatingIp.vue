@@ -9,6 +9,7 @@ import { useFloatingIpStore } from '../../stores/floating_ips.store';
 import { useSiteStore } from '../../stores/site.store';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
+import ChangeIp from './ChangeIp.vue';
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';
@@ -131,7 +132,9 @@ const statusClass = computed(() => {
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-dollar-sign"></i></div>
-                <span class="small-box-footer">Floating IPs Status is: <b>{{ status }}</b></span>
+                <span class="small-box-footer"
+                    >Floating IPs Status is: <b>{{ status }}</b></span
+                >
             </div>
         </div>
         <div class="col-md-4">
@@ -154,6 +157,9 @@ const statusClass = computed(() => {
     <template v-if="linkDisplay">
         <div v-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
+        </div>
+        <div v-else-if="link == 'change_ip'" class="col">
+            <ChangeIp :id="id"></ChangeIp>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
