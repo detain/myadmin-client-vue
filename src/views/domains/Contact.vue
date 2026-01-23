@@ -5,6 +5,7 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { DomainFields } from '../../types/domains';
 import { moduleLink } from '../../helpers/moduleLink.ts';
+import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
@@ -14,19 +15,58 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const domainFields = ref<DomainFields>({});
 
-const updateContact = () => {
-    // Handle contact update logic here
+const updateContact = async () => {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        // Build payload from domainFields
+        const payload: Record<string, any> = {};
+
+        for (const [fieldName, fieldData] of Object.entries(domainFields.value)) {
+            payload[fieldName] = fieldData.value;
+        }
+        const response = await fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`, payload);
+        Swal.close();
+        console.log('Contact updated successfully', response);
+        Swal.fire({
+            icon: 'success',
+            html: `Success ${response}`,
+        });
+    } catch (error) {
+        Swal.close();
+        console.error('Failed to update contact:', error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 };
 
 async function loadContact() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
     try {
         fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`).then((response: DomainFields) => {
+            Swal.close();
             console.log(response);
             domainFields.value = response;
         });
     } catch (error: any) {
+        Swal.close();
         console.log('error:');
         console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
     }
 }
 
@@ -53,11 +93,11 @@ loadContact();
                             </template>
                             <div class="col-sm-9 input-group">
                                 <template v-if="fieldData.input === 'text'">
-                                    <input type="text" :name="String(fieldName)" class="form-control form-control-sm" :value="fieldData.value" :tabindex="fieldIndex + 1" />
+                                    <input v-model="domainFields[String(fieldName)].value" type="text" :name="String(fieldName)" class="form-control form-control-sm" :tabindex="fieldIndex + 1" />
                                 </template>
                                 <template v-else-if="fieldData.input && fieldData.input[0] === 'select'">
-                                    <select :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="fieldIndex + 1">
-                                        <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val" :selected="fieldData.value === val">{{ displayName }}</option>
+                                    <select v-model="domainFields[String(fieldName)].value" :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="fieldIndex + 1">
+                                        <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
                                 </template>
                                 <template v-if="fieldData.tip">
