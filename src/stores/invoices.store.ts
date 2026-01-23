@@ -7,6 +7,7 @@ import { useSiteStore } from '../stores/site.store';
 interface InvoiceRow {
     id: number;
     module: string;
+    date_raw: string;
     date: string;
     service_id: number;
     service: string;

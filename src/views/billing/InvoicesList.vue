@@ -1,8 +1,9 @@
+7
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useInvoicesStore } from '../../stores/invoices.store';
 import { useSiteStore } from '../../stores/site.store';
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import iconCheckmark from '../../assets/images/myadmin/checkmark.png';
 import iconDelete from '../../assets/images/myadmin/delete.png';
 import iconCashflow from '../../assets/images/myadmin/cashflow.png';
@@ -29,16 +30,12 @@ siteStore.setBreadcrums([
 const invoicesStore = useInvoicesStore();
 const { custid, month, year, months_arr, years_arr, rows, loading, error } = storeToRefs(invoicesStore);
 
-const submitForm = () => {
-    console.log(`Selected month: ${month.value}`);
-    console.log(`Selected year: ${year.value}`);
-};
-
 invoicesStore.getAll();
 
 interface InvoiceRow {
     id: number;
     module: string;
+    date_raw: string;
     date: string;
     service: string;
     description: string;
@@ -57,8 +54,8 @@ const pageSize = ref(50);
 const currentPage = ref(1);
 const sortKey = ref<keyof InvoiceRow>('id');
 const sortDir = ref<'asc' | 'desc'>('desc');
-/* ------------------ data load ------------------ */
 
+/* ------------------ data load ------------------ */
 function getImage(type: number): string {
     const map: Record<number, string> = {
         1: iconCashflow,
@@ -84,37 +81,7 @@ function paymentImage(typeId: number): string {
     return getImage(typeId);
 }
 
-async function loadInvoices(exportType?: 'excel' | 'pdf') {
-    /*loading.value = true;
-    try {
-        /*const res = await axios.post('/api/invoices', {
-            inv_month: selectedMonth.value,
-            inv_year: selectedYear.value,
-            export: exportType ?? null,
-        });
-
-        if (exportType && res.data?.redirect) {
-            window.location.href = res.data.redirect;
-            return;
-        }
-
-        months_arr.value = res.data.months_arr;
-        years_arr.value = res.data.years_arr;
-        rows.value = res.data.rows;
-        currentPage.value = 1;
-    } finally {
-        loading.value = false;
-    }*/
-}
-
-onMounted(loadInvoices);
-
-watch([selectedMonth, selectedYear], () => {
-    //    loadInvoices();
-});
-
 /* ------------------ sorting ------------------ */
-
 function setSort(key: keyof InvoiceRow) {
     if (sortKey.value === key) {
         sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc';
@@ -124,13 +91,35 @@ function setSort(key: keyof InvoiceRow) {
     }
 }
 
+function sortArrow(key: keyof InvoiceRow): string {
+    if (sortKey.value !== key) return '';
+    return sortDir.value === 'asc' ? '▲' : '▼';
+}
+
+function getYear(dateRaw: string): number {
+    return Number(dateRaw.substring(0, 4));
+}
+
+function getMonth(dateRaw: string): number {
+    return Number(dateRaw.substring(5, 7)); // 1–12
+}
+
 /* ------------------ computed ------------------ */
-
 const filteredRows = computed(() => {
-    if (!searchText.value) return rows.value;
-
-    const s = searchText.value.toLowerCase();
-    return rows.value.filter((r) => Object.values(r).some((v) => String(v).toLowerCase().includes(s)));
+    let result = rows.value;
+    if (selectedYear.value) {
+        const y = Number(selectedYear.value);
+        result = result.filter((r) => getYear(r.date_raw) === y);
+    }
+    if (selectedMonth.value) {
+        const m = Number(selectedMonth.value);
+        result = result.filter((r) => getMonth(r.date_raw) === m);
+    }
+    if (searchText.value) {
+        const s = searchText.value.toLowerCase();
+        result = result.filter((r) => Object.values(r).some((v) => String(v).toLowerCase().includes(s)));
+    }
+    return result;
 });
 
 const sortedRows = computed(() => {
@@ -158,13 +147,10 @@ watch([pageSize, filteredRows], () => {
 });
 
 /* ------------------ export ------------------ */
-
 function exportExcel() {
-    loadInvoices('excel');
 }
 
 function exportPdf() {
-    loadInvoices('pdf');
 }
 </script>
 
@@ -173,7 +159,6 @@ function exportPdf() {
         <div class="card-header">
             <h3 class="card-title">Invoices List</h3>
         </div>
-
         <div class="card-body">
             <!-- filters -->
             <div class="row mb-3 align-items-end">
@@ -186,7 +171,6 @@ function exportPdf() {
                         </option>
                     </select>
                 </div>
-
                 <div class="col-md-2">
                     <label>Year</label>
                     <select v-model="selectedYear" class="form-control form-control-sm">
@@ -196,12 +180,10 @@ function exportPdf() {
                         </option>
                     </select>
                 </div>
-
                 <div class="col-md-2">
                     <label>Search</label>
                     <input v-model="searchText" type="text" class="form-control form-control-sm" placeholder="Search…" />
                 </div>
-
                 <div class="col-md-2">
                     <label>Page Size</label>
                     <select v-model.number="pageSize" class="form-control form-control-sm">
@@ -212,7 +194,6 @@ function exportPdf() {
                         <option :value="500">500</option>
                     </select>
                 </div>
-
                 <div class="col-md-4 text-end">
                     <button class="btn btn-primary btn-sm me-2" @click="exportExcel">Export Excel</button>
                     <button class="btn btn-primary btn-sm" @click="exportPdf">Export PDF</button>
@@ -223,25 +204,40 @@ function exportPdf() {
             <table class="table table-sm table-striped">
                 <thead>
                     <tr>
-                        <th @click="setSort('id')">ID</th>
-                        <th @click="setSort('date')">Date</th>
-                        <th @click="setSort('service')">Service</th>
-                        <th @click="setSort('description')">Description</th>
-                        <th class="text-end" @click="setSort('amount')">Amount</th>
-                        <th @click="setSort('paid')">Paid</th>
-                        <th @click="setSort('payment_type')">Payment</th>
-                        <th @click="setSort('payment_description')">Payment Description</th>
-                        <th @click="setSort('paid_on')">Paid On</th>
+                        <th class="sortable" @click="setSort('id')">
+                            ID <span class="sort-arrow">{{ sortArrow('id') }}</span>
+                        </th>
+                        <th @click="setSort('date')">
+                            Date <span class="sort-arrow">{{ sortArrow('date') }}</span>
+                        </th>
+                        <th @click="setSort('service')">
+                            Service <span class="sort-arrow">{{ sortArrow('service') }}</span>
+                        </th>
+                        <th @click="setSort('description')">
+                            Description <span class="sort-arrow">{{ sortArrow('description') }}</span>
+                        </th>
+                        <th class="text-end" @click="setSort('amount')">
+                            Amount <span class="sort-arrow">{{ sortArrow('amount') }}</span>
+                        </th>
+                        <th @click="setSort('paid')">
+                            Paid <span class="sort-arrow">{{ sortArrow('paid') }}</span>
+                        </th>
+                        <th @click="setSort('payment_type')">
+                            Payment <span class="sort-arrow">{{ sortArrow('payment_type') }}</span>
+                        </th>
+                        <th @click="setSort('payment_description')">
+                            Payment Description <span class="sort-arrow">{{ sortArrow('payment_description') }}</span>
+                        </th>
+                        <th @click="setSort('paid_on')">
+                            Paid On <span class="sort-arrow">{{ sortArrow('paid_on') }}</span>
+                        </th>
                         <th>Links</th>
                     </tr>
                 </thead>
-
                 <tbody v-if="!loading">
                     <tr v-for="row in pagedRows" :key="row.id">
                         <td>
-                            <a :href="`pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}`">
-                                {{ row.id }}
-                            </a>
+                            <a :href="`pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}`">{{ row.id }}</a>
                         </td>
                         <td>{{ row.date }}</td>
                         <td v-html="row.service"></td>
@@ -257,14 +253,12 @@ function exportPdf() {
                         </td>
                     </tr>
                 </tbody>
-
                 <tbody v-else>
                     <tr>
                         <td colspan="10" class="text-center">Loading…</td>
                     </tr>
                 </tbody>
             </table>
-
             <!-- pagination -->
             <div class="d-flex justify-content-between align-items-center">
                 <div>Page {{ currentPage }} of {{ totalPages }}</div>
@@ -277,4 +271,15 @@ function exportPdf() {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+th {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sort-arrow {
+    margin-left: 4px;
+    font-size: 0.75em;
+    opacity: 0.7;
+}
+</style>
