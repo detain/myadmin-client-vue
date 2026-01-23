@@ -8,13 +8,14 @@ import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
+    curIp: string;
 }>();
 const id = computed(() => props.id);
+const curIp = computed(() => props.curIp);
 const module: string = 'floating_ips';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const ip = ref('');
-const newIp = ref(''); // Data binding for the "new_ip" input field
+const newIp = ref(props.curIp);
 function handleSubmit() {
     Swal.fire({
         title: '',
@@ -67,7 +68,7 @@ function handleSubmit() {
                             <div class="form-group row">
                                 <label class="col-md-2" for="os">Current IP</label>
                                 <div class="col-sm-10 input-group">
-                                    <input name="old_ip" class="form-control form-control-sm" :value="ip" disabled />
+                                    <input name="old_ip" class="form-control form-control-sm" :value="curIp" disabled />
                                 </div>
                             </div>
                             <div class="form-group row">

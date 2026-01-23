@@ -16,9 +16,11 @@ const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
+const floatingIpStore = useFloatingIpStore();
 const id = Number(route.params.id);
 const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 const settings = computed(() => {
     return modules.value[module];
 });
@@ -28,10 +30,7 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/${moduleLink(module)}`, 'Floating IPs'],
 ]);
-siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IPs ${id}`);
-
-const floatingIpStore = useFloatingIpStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
+siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IPs ${serviceInfo.value.floating_ip_ip}`);
 
 function submitForm() {}
 
@@ -43,13 +42,13 @@ function loadLink(newLink: string) {
         ['/home', 'Home'],
         [`/${moduleLink(module)}`, 'Floating IPs'],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IP ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IP ${serviceInfo.value.floating_ip_ip}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Floating IP ${id}`);
-        siteStore.setTitle(`View Floating IP ${id}`);
+        siteStore.setPageHeading(`View Floating IP ${serviceInfo.value.floating_ip_ip}`);
+        siteStore.setTitle(`View Floating IP ${serviceInfo.value.floating_ip_ip}`);
     } else {
-        siteStore.setPageHeading(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(`Floating IP ${serviceInfo.value.floating_ip_ip} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Floating IP ${serviceInfo.value.floating_ip_ip} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
@@ -154,12 +153,12 @@ const statusClass = computed(() => {
             </div>
         </div>
     </div>
-    <template v-if="linkDisplay">
+    <template v-if="link">
         <div v-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
         </div>
         <div v-else-if="link == 'change_ip'" class="col">
-            <ChangeIp :id="id"></ChangeIp>
+            <ChangeIp :id="id" :cur-ip="serviceInfo.floating_ip_target_ip"></ChangeIp>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
