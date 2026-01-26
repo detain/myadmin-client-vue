@@ -88,7 +88,7 @@ export const usePrePayStore = defineStore('prepay', {
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async load(page: number | null): Promise<void> {
+        async load(page?: number): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;

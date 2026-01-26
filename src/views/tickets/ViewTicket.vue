@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '../../stores/tickets.store';
-
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
+//import Prism from 'prismjs';
 import $ from 'jquery';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 const ticketsStore = useTicketsStore();
 const showToggle = ref(false);
 const inputFile = ref('');
 const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
-
-function formatDate(date: string) {}
 
 /*
 function toggleToggle() {
@@ -71,166 +69,233 @@ function bs_input_file() {
     });
     */
 }
+
+interface Ticket {
+    ticketstatustitle: string;
+    dateline: number;
+    lastactivity: number;
+    subject: string;
+    ticketstatusid: number;
+}
+
+const props = defineProps<{
+    ticket: Ticket;
+    posts: any[];
+    statusCounts: any[];
+    suppressedEmail?: { email: string };
+}>();
+
+const searchQuery = ref('');
+const searchResults = ref<any[]>([]);
+
+const serverAccess = ref(false);
+const server = ref({
+    ip: '',
+    rootPass: '',
+    isRootRestricted: false,
+    sudoUser: '',
+    sudoPass: '',
+    port: 22,
+});
+
+const replyBody = ref('');
+const wordCount = ref(0);
+const replyFile = ref<File | null>(null);
+
+const statusClass = computed(() => ({
+    'bg-success': props.ticket.ticketstatustitle === 'Open',
+    'bg-warning': props.ticket.ticketstatustitle === 'On Hold',
+    'bg-secondary': props.ticket.ticketstatustitle === 'In Progress',
+    'bg-danger': props.ticket.ticketstatustitle === 'Closed',
+}));
+
+const statusIcon = computed(() => (props.ticket.ticketstatustitle === 'In Progress' ? 'fas fa-hourglass-half' : 'fas fa-ticket-alt'));
+
+const formatDate = (ts: number) => new Date(ts * 1000).toLocaleString();
+
+const updateWordCount = () => {
+    const words = replyBody.value.trim().split(/\s+/);
+    wordCount.value = Math.min(words.length, 500);
+    replyBody.value = words.slice(0, 500).join(' ');
+};
+
+const handleReplyFile = (e: Event) => {
+    replyFile.value = (e.target as HTMLInputElement).files?.[0] || null;
+};
+
+const postReply = async () => {
+    const formData = new FormData();
+    formData.append('body', replyBody.value);
+    if (replyFile.value) formData.append('file', replyFile.value);
+};
+
+const updateTicket = () => {};
+const closeTicket = () => {};
+
+const searchTickets = async () => {
+    searchResults.value = [];
+};
+
+const renderPost = (content: string) => {
+    const escaped = content.replace(/\n/g, '<br>');
+    //  nextTick(() => Prism.highlightAll());
+    return escaped;
+};
 </script>
 
 <template>
     <template v-if="ticket">
-        <link rel="stylesheet" href="/lib/select2/dist/css/select2.min.css" />
-        <link rel="stylesheet" href="/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row mb-4">
+            <!-- Status -->
+            <div class="col-md-2 pr-1">
                 <div class="info-box p-0">
-                    <span class="info-box-icon border-rad-zero" :class="{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' }"><i class="fas fa-ticket-alt"></i></span>
+                    <span class="info-box-icon border-rad-zero" :class="statusClass">
+                        <i :class="statusIcon"></i>
+                    </span>
                     <div class="info-box-content">
-                        <!--      <span class = "info-box-text">{{ ticket.ticketmaskid }}</span> -->
-                        <span class="info-box-number">{{ ticket.status }}</span>
-                        <span class="info-box-text">{{ ticket.priority }}</span>
-                        <span class="info-box-text">{{ ticket.department }} Department</span>
+                        <span class="info-box-number">{{ ticket.ticketstatustitle }}</span>
+                        <span class="info-box-text"> Created: {{ formatDate(ticket.dateline) }} </span>
+                        <span class="info-box-text"> Updated: {{ formatDate(ticket.lastactivity) }} </span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="callout callout-info">
-                    <h5><i class="fas fa-align-left">&nbsp;</i>Subject</h5>
+
+            <!-- Subject -->
+            <div class="col-md-10">
+                <div class="callout callout-info m-0 py-3">
+                    <h5>
+                        <b><i class="fas fa-align-left"></i> Subject</b>
+                    </h5>
                     <p>{{ ticket.subject }}</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <form method="POST" action="view_ticket?ticket={$ticket.ticketid}">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Update Ticket</h3>
-                            <!-- /.user-block -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="status" class="col-sm-4 col-form-label">Status</label>
-                                <div class="col-sm-8">
-                                    <select name="status" class="form-control form-control-sm select2" style="width: 100%">
-                                        <option value="4" selected>Open</option>
-                                        <option value="5">On Hold</option>
-                                        <option value="6">Close</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="box_auth_value" class="col-sm-4 col-form-label">Root Password</label>
-                                <div class="col-sm-8">
-                                    <input type="password" name="box_auth_value" class="form-control form-control-sm" placeholder="Root password (VPS / Dedicated Server)" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="user_ip" class="col-sm-4 col-form-label">Your IP Address</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="user_ip" class="form-control form-control-sm" placeholder="Your IP Address" value="{$client_ip}" />
-                                    <span class="help-text text-orange">If connection is coming from different IP address. Kindly change it.</span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-4 col-form-label">Is SSH root restricted ?</label>
-                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm" @click.prevent="$('.ssh-toggle').toggle()">Click here</button></div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="sudo_user" class="col-sm-4 col-form-label">Sudo User</label>
-                                <div class="col-sm-8"><input type="text" name="sudo_user" class="form-control form-control-sm" placeholder="Sudo Username" /></div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="sudo_password" class="col-sm-4 col-form-label">Sudo Password</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="sudo_password" class="form-control form-control-sm" placeholder="Sudo user password" />
-                                    <span class="help-text text-orange">Passwords are stored in a separate encrypted database.</span>
-                                </div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="port_no" class="col-sm-4 col-form-label">SSH Port</label>
-                                <div class="col-sm-8"><input type="text" name="port_no" class="form-control form-control-sm" placeholder="SSH Port Number" value="22" /></div>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" name="submit" value="updateTicket" class="btn btn-primary">Update</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <form method="post" role="form" action="view_ticket?ticket={$ticket.ticketid}" enctype="multipart/form-data">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Reply Post</h3>
-                            <!-- /.user-block -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Post</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control form-control-sm" name="body" placeholder="Detailed post about the issue" rows="7"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group required row mb-0">
-                                <label for="file_upload" class="col-sm-2 col-form-label requiredField">File Upload</label>
-                                <div class="controls col-sm-10 input-group input-file" name="file_attachment">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
-                                    </span>
-                                    <input v-model="inputFile" type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="ff" class="col-md-2"></label>
-                                <div class="col-sm-10 input-group">
-                                    <span class="help-text text-orange">Note: Only image files - gif/jpeg/png types are allowed.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" name="submit" value="postReply" class="btn btn-primary">Post Reply</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
+        <!-- Suppressed Email -->
+        <div v-if="suppressedEmail" class="alert alert-danger">
+            <strong>Important Notice:</strong>
+            Your email <b>{{ suppressedEmail.email }}</b> is disabled.
         </div>
+
         <div class="row">
-            <div class="col-md-12">
-                <div class="card card-widget card-outline card-success">
+            <!-- Sidebar -->
+            <div class="col-md-2">
+                <div class="card mb-3">
+                    <div class="input-group input-group-sm">
+                        <input v-model="searchQuery" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <button class="btn btn-primary" @click="searchTickets">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <div v-if="searchResults.length" class="results p-2">
+                        <div v-for="r in searchResults" :key="r.id">
+                            {{ r.subject }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Quick Filter</h3>
+                    </div>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <RouterLink class="nav-link" to="/new-ticket"> <i class="fa fa-plus-circle"></i> New Ticket </RouterLink>
+                        </li>
+                        <li v-for="st in statusCounts" :key="st.ticketstatustitle" class="nav-item">
+                            <RouterLink class="nav-link" :to="`/tickets?view=${st.ticketstatustitle}`">
+                                {{ st.ticketstatustitle }}
+                                <span class="badge ml-1">{{ st.st_count }}</span>
+                            </RouterLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main -->
+            <div class="col-md-10">
+                <!-- Server Access -->
+                <div class="card card-body">
+                    <div class="custom-control custom-checkbox">
+                        <input v-model="serverAccess" type="checkbox" class="custom-control-input" />
+                        <label class="custom-control-label"> Allow InterServer to modify server </label>
+                    </div>
+
+                    <div v-if="serverAccess" class="mt-3">
+                        <div class="form-row">
+                            <div class="col-md-2">
+                                <label>IP Address</label>
+                                <input v-model="server.ip" class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-md-2">
+                                <label>Root Password</label>
+                                <input v-model="server.rootPass" class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-md-2">
+                                <input v-model="server.isRootRestricted" type="checkbox" />
+                                Is SSH Root Restricted?
+                            </div>
+
+                            <template v-if="server.isRootRestricted">
+                                <div class="col-md-2">
+                                    <label>Sudo User</label>
+                                    <input v-model="server.sudoUser" class="form-control form-control-sm" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Sudo Password</label>
+                                    <input v-model="server.sudoPass" class="form-control form-control-sm" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label>SSH Port</label>
+                                    <input v-model="server.port" class="form-control form-control-sm" />
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <button class="btn btn-outline-primary" @click="updateTicket">Update</button>
+                    </div>
+                </div>
+
+                <!-- Reply -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title">Post Reply</h3>
+                        <button v-if="ticket.ticketstatusid === 5" class="btn btn-sm btn-danger ml-3" @click="closeTicket">Close Ticket</button>
+                    </div>
+
+                    <div class="card-body">
+                        <textarea v-model="replyBody" class="form-control" rows="7" @input="updateWordCount" />
+                        <div id="wordCount">{{ wordCount }} / 500 words</div>
+
+                        <input type="file" @change="handleReplyFile" />
+
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary" @click="postReply">Post Reply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Replies -->
+                <div v-if="posts.length" class="card mt-3">
                     <div class="card-header">
                         <h3 class="card-title">Ticket Replies</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                    </div>
+
+                    <div class="card-body">
+                        <div v-for="post in posts" :key="post.ticketpostid" class="mb-4">
+                            <h5>{{ post.fullname }}</h5>
+                            <small>{{ formatDate(post.dateline) }}</small>
+
+                            <div class="inherit-class" v-html="renderPost(post.contents)"></div>
+
+                            <div v-if="post.liked === 1" class="text-success"><i class="fas fa-thumbs-up"></i> User liked your reply</div>
+                            <div v-if="post.liked === 0" class="text-danger"><i class="fas fa-thumbs-down"></i> User disliked your reply</div>
                         </div>
                     </div>
-                    <div class="card-footer card-comments">
-                        <div v-if="ticket.ticket_posts">
-                            <div v-for="post in ticket.ticket_posts" :key="post.id" class="card-comment">
-                                <div class="comment-text ml-4">
-                                    <span class="username">
-                                        {{ post.fullname }} <span :class="post.staffid ? 'b-radius bg-green ml-1 px-2 py-1 text-xs' : 'b-radius bg-green ml-1 px-2 py-1 text-xs'"> {{ post.staffid ? 'Staff' : 'User' }}</span>
-                                        <span class="text-muted float-right">{{ formatDate(post.posted_on) }}</span>
-                                    </span>
-                                    <pre class="inherit-class">{{ post.contents }}</pre>
-                                    <template v-if="post.liked !== undefined">
-                                        <button type="button" class="btn btn-secondary btn-sm bg-primary"><i :class="post.liked == 1 ? 'far fa-thumbs-up' : 'far fa-thumbs-down'"></i> {{ post.liked == 1 ? 'Like' : 'Dislike' }}</button>
-                                    </template>
-                                    <template v-if="post.attachment_count > 0 && post.getAttachments">
-                                        <span v-for="attachment in post.getAttachments" :key="attachment.id">{{ attachment.file }}&nbsp;</span>
-                                    </template>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer"></div>
                 </div>
             </div>
         </div>
@@ -238,45 +303,8 @@ function bs_input_file() {
 </template>
 
 <style scoped>
-.inherit-class {
-    display: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    white-space: pre-wrap;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: inherit !important;
-    margin-top: -5px;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 0 !important;
-}
-
-.info-box {
-    box-shadow:
-        0 0 1px rgb(0 0 0 / 13%),
-        0 1px 3px rgb(0 0 0 / 20%);
-    border-radius: 0.25rem;
-    background-color: #fff;
-    display: flex;
-    margin-bottom: 1rem;
-    min-height: 80px;
-    padding: 0.5rem;
-    position: relative;
-    width: 100%;
-}
-
-.info-box .info-box-icon {
-    border-radius: 0.25rem;
-    -ms-flex-align: center;
-    align-items: center;
-    display: flex;
-    font-size: 1.875rem;
-    -ms-flex-pack: center;
-    justify-content: center;
-    text-align: center;
-    width: 70px;
+.results {
+    max-height: 200px;
+    overflow-y: auto;
 }
 </style>
