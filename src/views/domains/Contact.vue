@@ -16,7 +16,7 @@ const baseUrl = siteStore.getBaseUrl();
 const domainFields = ref<DomainFields>({});
 
 const updateContact = async () => {
-    Swal.fire({
+    await Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -32,14 +32,14 @@ const updateContact = async () => {
         const response = await fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`, payload);
         Swal.close();
         console.log('Contact updated successfully', response);
-        Swal.fire({
+        await Swal.fire({
             icon: 'success',
             html: `Success ${response}`,
         });
-    } catch (error) {
+    } catch (error: any) {
         Swal.close();
         console.error('Failed to update contact:', error);
-        Swal.fire({
+        await Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
         });
@@ -47,7 +47,7 @@ const updateContact = async () => {
 };
 
 async function loadContact() {
-    Swal.fire({
+    await Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
@@ -63,7 +63,7 @@ async function loadContact() {
         Swal.close();
         console.log('error:');
         console.log(error);
-        Swal.fire({
+        await Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
         });

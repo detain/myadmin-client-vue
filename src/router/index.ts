@@ -16,6 +16,7 @@ export const router = createRouter({
         { path: '/cart/:iids([\\w,]+)', component: () => import('../views/billing/Cart.vue') },
         { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)/:invoices', component: () => import('../views/billing/Pay.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
+        { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {
             path: '/account',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
@@ -90,7 +91,7 @@ export const router = createRouter({
             path: '/scrub_ips',
             children: [
                 { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
-                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') }
+                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
             ],
         },
         {
