@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { ref, reactive, defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { usePrePayStore } from '../../stores/prepay.store';
 import { useSiteStore } from '../../stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const prepayStore = usePrePayStore();
+const router = useRouter();
 const { loading, error, custid, ima, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
@@ -113,6 +117,26 @@ function updateModuleOptions() {
 function submitNewPrepay() {
     // API call here
     console.log('Submitting prepay', newPrepay);
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/prepays`, newPrepay).then((response) => {
+            Swal.close();
+            console.log('Response:');
+            console.log(response);
+            if (response['success'] == true) {
+                router.push(`/cart/${response.iids.join(',')}`);
+            }
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('caught error:');
+        console.log(error);
+    }
 }
 </script>
 
@@ -152,7 +176,7 @@ function submitNewPrepay() {
                                         <div class="card-header">
                                             <h3 class="card-title">History Log</h3>
                                             <div class="card-tools">
-                                                <button class="btn btn-tool" @click="toggleHistory(p.prepay.prepay_id)" data-card-widget="collapse">
+                                                <button class="btn btn-tool" data-card-widget="collapse" @click="toggleHistory(p.prepay.prepay_id)">
                                                     <i class="fas fa-plus" />
                                                 </button>
                                             </div>
