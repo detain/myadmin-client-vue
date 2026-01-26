@@ -3,8 +3,6 @@ import { ref, reactive, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { snakeToCamel } from '../../helpers/snakeToCamel';
-
 import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 

@@ -14,6 +14,37 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'PrePays'],
 ]);
+/* =====================
+   STATE (replace with API)
+===================== */
+const expandedHistory = reactive<Record<number, boolean>>({});
+const newPrepay = reactive({
+    module: null,
+    amount: 100,
+    automatic_use: '1',
+});
+
+/* =====================
+   TYPES
+===================== */
+interface Prepay {
+    prepay_id: string;
+    prepay_module: string | null;
+    prepay_remaining_disp: string;
+    prepay_automatic_use: string;
+}
+
+interface PrepayHistory {
+    history_id: string;
+    history_timestamp_disp: string;
+    desc: string;
+    amt_used: string;
+}
+
+interface PrepayItem {
+    prepay: Prepay;
+    history: PrepayHistory[];
+}
 
 function addPrepayUpdates(event: Event) {
     const module = (event.target as HTMLInputElement).value;
@@ -59,40 +90,6 @@ function delete_prepay(prepay_id: string | number) {
 prepayStore.load();
 
 /* =====================
-   TYPES
-===================== */
-interface Prepay {
-    prepay_id: string;
-    prepay_module: string;
-    prepay_remaining_disp: string;
-    prepay_automatic_use: string;
-}
-
-interface PrepayHistory {
-    history_id: string;
-    history_timestamp_disp: string;
-    desc: string;
-    amt_used: string;
-}
-
-interface PrepayItem {
-    prepay: Prepay;
-    history: PrepayHistory[];
-}
-
-/* =====================
-   STATE (replace with API)
-===================== */
-
-const expandedHistory = reactive<Record<number, boolean>>({});
-
-const newPrepay = reactive({
-    module: '',
-    amount: 100,
-    automatic_use: '1',
-});
-
-/* =====================
    METHODS
 ===================== */
 function capitalize(value: string) {
@@ -123,7 +120,7 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#add-prepay"><i class="fa fa-plus" /> Add New Prepay</button>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" /> Add New Prepay</button>
             </div>
 
             <template v-if="Object.keys(prepays).length">
@@ -155,7 +152,7 @@ function submitNewPrepay() {
                                         <div class="card-header">
                                             <h3 class="card-title">History Log</h3>
                                             <div class="card-tools">
-                                                <button class="btn btn-tool" @click="toggleHistory(p.prepay.prepay_id)">
+                                                <button class="btn btn-tool" @click="toggleHistory(p.prepay.prepay_id)" data-card-widget="collapse">
                                                     <i class="fas fa-plus" />
                                                 </button>
                                             </div>
@@ -268,7 +265,7 @@ function submitNewPrepay() {
 
                         <div class="text-center">
                             <button class="btn btn-primary btn-sm me-2">Submit</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>
