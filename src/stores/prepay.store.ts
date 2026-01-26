@@ -88,17 +88,20 @@ export const usePrePayStore = defineStore('prepay', {
             const baseUrl = siteStore.getBaseUrl();
             await fetchWrapper.post(`${baseUrl}/register`, user);
         },
-        async load(): Promise<void> {
+        async load(page: number | null): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
+            this.loading = true;
             const keyMap = {
                 package: 'pkg',
             };
             try {
-                const response = await fetchWrapper.get(`${baseUrl}/billing/prepays`);
+                const url = page ? `${baseUrl}/billing/prepays?page=${page}` : `${baseUrl}/billing/prepays`;
+                const response = await fetchWrapper.get(url);
                 this.$reset();
                 let key, value;
                 console.log(response);
+                this.loading = false;
                 this.error = response.error;
                 this.custid = response.custid;
                 this.ima = response.ima;
@@ -113,6 +116,7 @@ export const usePrePayStore = defineStore('prepay', {
             } catch (error: any) {
                 console.log('api failed');
                 console.log(error);
+                this.loading = false;
             }
         },
         async update(id: number, params: any): Promise<void> {},

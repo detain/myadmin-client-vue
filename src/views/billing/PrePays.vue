@@ -23,7 +23,7 @@ siteStore.setBreadcrums([
 ===================== */
 const expandedHistory = reactive<Record<number, boolean>>({});
 const newPrepay = reactive({
-    module: null,
+    module: 'default',
     amount: 100,
     automatic_use: '1',
 });
@@ -106,8 +106,11 @@ function toggleHistory(id: number) {
 
 function goToPage(p: number) {
     if (p < 1 || p > total_pages.value) return;
-    page.value = p;
-    // fetchPrepays()
+    if (p !== page.value) {
+        page.value = p;
+        // fetchPrepays()
+        prepayStore.load(page.value);
+    }
 }
 
 function updateModuleOptions() {
@@ -146,7 +149,7 @@ function submitNewPrepay() {
             <div class="text-center mb-5">
                 <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" /> Add New Prepay</button>
             </div>
-
+            <div v-if="loading" class="text-center">Loading…</div>
             <template v-if="Object.keys(prepays).length">
                 <div v-for="p in prepays" :key="p.prepay.prepay_id" class="card mb-3">
                     <div class="card-body">
