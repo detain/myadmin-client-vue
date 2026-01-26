@@ -7,7 +7,7 @@ import { useSiteStore } from '../stores/site.store';
 
 interface PrePayRow {
     prepay_amount: number;
-    prepay_automatic_use: number;
+    prepay_automatic_use: '1' | '0';
     prepay_created: string;
     prepay_currency: string;
     prepay_custid: number;
