@@ -6,30 +6,143 @@ import { useSiteStore } from '@/stores/site.store';
    Types
 ====================== */
 
-export interface TicketRow {
-    ticketid: number;
+export interface Ticket {
+    ticketid: string;
     ticketmaskid: string;
-    title: string;
-    subject: string;
-    lastreplier: string;
-    status: string;
-    status_text: string;
-    priority: string;
-    department: string;
+
+    departmentid: string;
     departmenttitle: string;
-    total_replies: number;
+
+    ticketstatusid: string;
+    ticketstatustitle: 'Open' | 'On Hold' | 'Closed' | string;
+
+    priorityid: string;
+    prioritytitle: string;
+
+    emailqueueid: string;
+
+    userid: string;
+    staffid: string;
+    ownerstaffid: string;
+    ownerstaffname: string;
+
+    assignstatus: string;
+
+    fullname: string;
+    email: string;
+    lastreplier: string;
+    replyto: string;
+    subject: string;
+
+    dateline: string;
     lastactivity: string;
-    can_close: string;
-    attachments: any[];
-    ticket_posts: any[];
+    laststaffreplytime: string;
+    lastuserreplytime: string;
+
+    slaplanid: string;
+    ticketslaplanid: string;
+    duetime: string;
+
+    totalreplies: string;
+    ipaddress: string;
+
+    flagtype: string;
+    hasnotes: string;
+    hasattachments: string;
+    isemailed: string;
+
+    edited: string;
+    editedbystaffid: string;
+    editeddateline: string;
+
+    creator: string;
+
+    charset: string;
+    transferencoding: string;
+
+    timeworked: string;
+    timebilled: string;
+
+    dateicon: string;
+
+    lastpostid: string;
+    firstpostid: string;
+
+    tgroupid: string;
+    messageid: string;
+
+    escalationruleid: string;
+
+    hasdraft: string;
+    hasbilling: string;
+
+    isphonecall: string;
+    isescalated: string;
+    isescalatedvolatile: string;
+
+    phoneno: string;
+
+    isautoclosed: string;
+    autocloseruleid: string;
+    autoclosestatus: string;
+    autoclosetimeline: string;
+
+    escalatedtime: string;
+
+    followupcount: string;
+    hasfollowup: string;
+    hasratings: string;
+
+    tickethash: string;
+    islinked: string;
+    trasholddepartmentid: string;
+
+    tickettype: string;
+    tickettypeid: string;
+    tickettypetitle: string;
+
+    creationmode: string;
+
+    isfirstcontactresolved: string;
+    wasreopened: string;
+    reopendateline: string;
+    resolutiondateline: string;
+
+    escalationlevelcount: string;
+    resolutionseconds: string;
+    resolutionlevel: string;
+    repliestoresolution: string;
+
+    averageresponsetime: string;
+    averageresponsetimehits: string;
+    firstresponsetime: string;
+
+    resolutionduedateline: string;
+
+    isresolved: string;
+    iswatched: string;
+
+    oldeditemailaddress: string;
+
+    linkkbarticleid: string;
+    linkticketmacroid: string;
+
+    bayescategoryid: string;
+    recurrencefromticketid: string;
+    averageslaresponsetime: string;
+
+    service_id: string | null;
+    service_module: string | null;
+
     checked: boolean;
 }
 
-export interface TicketCounts {
-    Open: number;
-    'On Hold': number;
-    Closed: number;
+export interface TicketStatusCount {
+    ticketstatustitle: string;
+    st_count: number;
 }
+
+export type TicketStatusCounts = TicketStatusCount[];
 
 export interface TicketFetchParams {
     view?: string;
@@ -49,8 +162,8 @@ interface TicketState {
     loading: boolean;
     error: string | false;
 
-    tickets: TicketRow[];
-    ticket: TicketRow | null;
+    tickets: Ticket[];
+    ticket: Ticket | null;
 
     ima: string;
     custid: number;
@@ -61,8 +174,8 @@ interface TicketState {
     currentPage: number;
     limit: number;
     pages: number;
-    rowsOffset: number;
-    rowsTotal: number;
+    offset: number;
+    totalTickets: number;
 
     sortcol: number;
     sortdir: number;
@@ -70,8 +183,7 @@ interface TicketState {
     search: string;
     period: string;
 
-    inboxCount: number;
-    countArray: TicketCounts;
+    st_count: TicketStatusCounts;
 }
 
 /* ======================
@@ -95,21 +207,19 @@ export const useTicketsStore = defineStore('tickets', {
         currentPage: 1,
         limit: 50,
         pages: 1,
-        rowsOffset: 0,
-        rowsTotal: 0,
+        offset: 0,
+        totalTickets: 0,
 
         sortcol: 6,
         sortdir: 1,
 
         search: '',
         period: '30',
-
-        inboxCount: 0,
-        countArray: {
-            Open: 0,
-            'On Hold': 0,
-            Closed: 0,
-        },
+        st_count:[
+            { ticketstatustitle: 'Open', st_count: 0},
+            { ticketstatustitle: 'On Hold', st_count: 0},
+            { ticketstatustitle: 'Closed', st_count: 0},
+        ]
     }),
 
     getters: {
@@ -151,27 +261,18 @@ export const useTicketsStore = defineStore('tickets', {
 
                 this.ima = response.ima;
                 this.custid = response.custid;
-
                 this.view = response.view ?? query.view;
-                this.viewText = response.viewText ?? this.view;
-
+                this.period = response.selected_period ?? 30;
                 this.currentPage = response.currentPage ?? query.page;
                 this.limit = response.limit ?? query.limit;
                 this.pages = response.pages ?? 1;
-
-                this.rowsOffset = response.rowsOffset ?? 0;
-                this.rowsTotal = response.rowsTotal ?? 0;
-
-                this.sortcol = response.sortcol ?? this.sortcol;
-                this.sortdir = response.sortdir ?? this.sortdir;
+                this.offset = response.offset ?? 0;
+                this.totalTickets = response.total.tickets ?? 0;
 
                 this.search = query.search ?? '';
-                this.period = query.period ?? '30';
+                this.st_count = response.st_count ?? this.st_count;
 
-                this.inboxCount = response.inboxCount ?? 0;
-                this.countArray = response.countArray ?? this.countArray;
-
-                this.tickets = (response.tickets ?? []).map((t: TicketRow) => ({
+                this.tickets = (response.tickets ?? []).map((t: Ticket) => ({
                     ...t,
                     checked: false,
                 }));

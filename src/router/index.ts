@@ -153,7 +153,7 @@ export const router = createRouter({
             children: [
                 { path: '', component: () => import('../views/tickets/TicketsList.vue') },
                 { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
-                { path: ':id(\\w+)', component: () => import('../views/tickets/ViewTicket.vue') },
+                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
             ],
         },
         {

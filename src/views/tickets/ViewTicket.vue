@@ -8,7 +8,7 @@ import $ from 'jquery';
 const ticketsStore = useTicketsStore();
 const showToggle = ref(false);
 const inputFile = ref('');
-const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
+const { ticket, loading, error, ima, custid, sortcol, sortdir, st_count, offset, totalTickets, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
 
 /*
 function toggleToggle() {
@@ -29,12 +29,9 @@ $(function () {
     $('.ssh-toggle').hide();
     bs_input_file();
     //Initialize Select2 Elements
-    $('.select2').select2();
-
+    //$('.select2').select2();
     //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4',
-    });
+    //$('.select2bs4').select2({ theme: 'bootstrap4', });
 });
 
 function bs_input_file() {
