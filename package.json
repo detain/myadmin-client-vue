@@ -111,6 +111,7 @@
         "postcss": "^8.4.24",
         "prettier": "^3.7.4",
         "prettier-plugin-tailwindcss": "*",
+        "prismjs": "^1.30.0",
         "select2": "4.1.0-beta.0",
         "select2-bootstrap-theme": "^0.1.0-beta.10",
         "sweetalert2": "11.4.8",
