@@ -38,6 +38,7 @@ export interface Ticket {
     lastactivity: string;
     laststaffreplytime: string;
     lastuserreplytime: string;
+    lastactivity_time?: string;
 
     slaplanid: string;
     ticketslaplanid: string;
@@ -288,16 +289,17 @@ export const useTicketsStore = defineStore('tickets', {
            Search Widget
         ====================== */
 
-        async searchTickets(keyword: string): Promise<string> {
+        async searchTickets(keyword: string): Promise<Ticket[]> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-
+            let results: Ticket[] = [];
             try {
-                return await fetchWrapper.post(`${baseUrl}/ajax.php?choice=tickets_search_widget`, { keyword });
+                results = await fetchWrapper.post(`${baseUrl}/tickets`, { search: keyword });
+                console.log(results);
             } catch (err) {
                 console.error('Search failed', err);
-                return '<div class="text-danger p-2">Search failed</div>';
             }
+            return results;
         },
 
         /* ======================

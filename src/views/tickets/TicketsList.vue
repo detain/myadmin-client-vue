@@ -2,14 +2,12 @@
 import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useTicketsStore } from '@/stores/tickets.store';
+import { Ticket, useTicketsStore } from '@/stores/tickets.store';
 
 const route = useRoute();
 const router = useRouter();
 const store = useTicketsStore();
-
 const { tickets, st_count, pages, currentPage, view } = storeToRefs(store);
-
 const selectedPeriod = ref(route.query.period ?? '30');
 
 watch(selectedPeriod, (val) => {
@@ -32,7 +30,7 @@ watch(
 const searchBox = ref('');
 const showResults = ref(false);
 const searching = ref(false);
-const searchResults = ref('');
+const searchResults = ref<Ticket[]>([]);
 const spinner = '<div class="spinner-border text-secondary"></div>';
 
 async function submitSearch() {
@@ -77,6 +75,24 @@ function statusBadge(status: string) {
         'In Progress': 'badge bg-secondary',
     }[status];
 }
+function ticketStatusClass(statusId: number | string): string {
+    switch (statusId) {
+        case '4':
+        case 4:
+            return 'bg-primary';
+        case '5':
+        case 5:
+            return 'bg-warning';
+        case '6':
+        case 6:
+            return 'bg-danger';
+        case '7':
+        case 7:
+            return 'bg-success';
+        default:
+            return '';
+    }
+}
 
 function timeAgo(input: string | number) {
     const ts = typeof input === 'number' ? input * 1000 : Date.parse(input);
@@ -100,7 +116,21 @@ function timeAgo(input: string | number) {
                         <button class="btn btn-primary" :disabled="searching"><i class="fas fa-search" /></button>
                     </div>
                 </form>
-                <div v-if="showResults" class="results p-2" v-html="searchResults || spinner" />
+                <div v-if="showResults" class="results p-2">
+                    <template v-if="searchResults?.length">
+                        <div v-for="row in searchResults" :key="row.ticketid">
+                            <RouterLink :to="`/tickets/${row.ticketmaskid}`" class="pb-2 d-inline-block">
+                                <span class="badge" :class="ticketStatusClass(row.ticketstatusid)">{{ row.ticketmaskid }}</span>
+                                <span style="font-size: 95%">{{ row.subject }}</span>
+                            </RouterLink>
+                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <hr />
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div v-html="spinner" />
+                    </template>
+                </div>
             </div>
             <!-- Period Filter -->
             <div class="card mb-3">
@@ -144,7 +174,9 @@ function timeAgo(input: string | number) {
         <!-- Main Content -->
         <div class="col-md-10">
             <div class="card card-primary card-outline">
-                <div class="card-header"><h3 class="card-title">{{ view || 'All Tickets' }} – {{ periodLabel }}</h3></div>
+                <div class="card-header">
+                    <h3 class="card-title">{{ view || 'All Tickets' }} – {{ periodLabel }}</h3>
+                </div>
                 <div class="card-body p-0">
                     <table v-if="tickets.length" class="table table-sm table-striped">
                         <thead>
@@ -161,7 +193,9 @@ function timeAgo(input: string | number) {
                                 <td><i :class="statusIcon(t.ticketstatustitle)" /></td>
                                 <td><i v-if="Number(t.hasattachments)" class="fas fa-paperclip" /></td>
                                 <td class="text-left">
-                                    <RouterLink :to="`/tickets/${t.ticketmaskid}`"><b>{{ t.ticketmaskid }}</b> – {{ t.subject }}</RouterLink>
+                                    <RouterLink :to="`/tickets/${t.ticketmaskid}`"
+                                        ><b>{{ t.ticketmaskid }}</b> – {{ t.subject }}</RouterLink
+                                    >
                                 </td>
                                 <td class="text-left">{{ t.lastreplier }}</td>
                                 <td class="text-left">{{ timeAgo(Number(t.lastactivity)) }}</td>
