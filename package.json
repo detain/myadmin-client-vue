@@ -57,6 +57,7 @@
         "@types/jsdom": "*",
         "@types/node": "^22.19.1",
         "@types/nodemon": "*",
+        "@types/prismjs": "^1.26.5",
         "@types/select2": "*",
         "@types/tablesorter": "*",
         "@types/toastr": "*",

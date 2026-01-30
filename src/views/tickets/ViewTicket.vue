@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '../../stores/tickets.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-//import Prism from 'prismjs';
+import Prism from 'prismjs';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 const ticketsStore = useTicketsStore();
 const { ticket, loading, error, ima, custid, sortcol, sortdir, st_count, offset, totalTickets, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
@@ -100,7 +100,7 @@ function submitReply() {
    Lifecycle
 ======================= */
 onMounted(() => {
-    //Prism.highlightAll();
+    Prism.highlightAll();
 });
 </script>
 
