@@ -75,24 +75,15 @@ function statusBadge(status: string) {
         'In Progress': 'badge bg-secondary',
     }[status];
 }
-function ticketStatusClass(statusId: number | string): string {
-    switch (statusId) {
-        case '4':
-        case 4:
-            return 'bg-primary';
-        case '5':
-        case 5:
-            return 'bg-warning';
-        case '6':
-        case 6:
-            return 'bg-danger';
-        case '7':
-        case 7:
-            return 'bg-success';
-        default:
-            return '';
-    }
-}
+
+const statusClassMap: Record<number, string> = {
+    4: 'bg-primary',
+    5: 'bg-warning',
+    6: 'bg-danger',
+    7: 'bg-success',
+};
+
+const ticketStatusClass = (id: number) => statusClassMap[id] ?? '';
 
 function timeAgo(input: string | number) {
     const ts = typeof input === 'number' ? input * 1000 : Date.parse(input);
@@ -120,7 +111,7 @@ function timeAgo(input: string | number) {
                     <template v-if="searchResults?.length">
                         <div v-for="row in searchResults" :key="row.ticketid">
                             <RouterLink :to="`/tickets/${row.ticketmaskid}`" class="pb-2 d-inline-block">
-                                <span class="badge" :class="ticketStatusClass(row.ticketstatusid)">{{ row.ticketmaskid }}</span>
+                                <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
                                 <span style="font-size: 95%">{{ row.subject }}</span>
                             </RouterLink>
                             <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
