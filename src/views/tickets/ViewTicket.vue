@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, watch } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import Prism from 'prismjs';
 import Swal from 'sweetalert2';
@@ -79,6 +79,16 @@ const wordCount = computed(() => (replyBody.value.trim() ? replyBody.value.trim(
 /* =======================
    Helpers
 ======================= */
+
+const statusClassMap: Record<number, string> = {
+    4: 'bg-primary',
+    5: 'bg-warning',
+    6: 'bg-danger',
+    7: 'bg-success',
+};
+
+const ticketStatusClass = (id: number) => statusClassMap[id] ?? '';
+
 function formatDate(ts?: number) {
     if (!ts) return '';
     const d = new Date(ts * 1000);
@@ -223,8 +233,8 @@ onMounted(loadTicket);
                     <span class="info-box-number">
                         {{ ticket.ticketstatustitle }}
                     </span>
-                    <span class="info-box-text"> Created: {{ formatDate(ticket.dateline) }} </span>
-                    <span class="info-box-text"> Updated: {{ formatDate(ticket.lastactivity) }} </span>
+                    <span class="info-box-text"> Created: {{ formatDate(Number(ticket.dateline)) }} </span>
+                    <span class="info-box-text"> Updated: {{ formatDate(Number(ticket.lastactivity)) }} </span>
                 </div>
             </div>
         </div>
@@ -296,15 +306,39 @@ onMounted(loadTicket);
         <div class="col-md-10">
             <!-- REPLY -->
             <div class="card mt-3">
-                <div class="card-header">Post Reply</div>
+                <div class="card-header" style="border-bottom: 3px solid #007bff">Post Reply</div>
                 <div class="card-body">
                     <template v-if="isClosed">
                         <span class="alert alert-warning">This ticket is closed. Replies are disabled.</span>
                     </template>
                     <template v-else>
-                        <textarea v-model="replyBody" class="form-control" rows="7" />
-                        <div class="text-right text-muted">{{ wordCount }} / 500 words</div>
-                        <button class="btn btn-primary mt-2" :disabled="wordCount > 500" @click="submitReply">Post Reply</button>
+                        <form id="replyForm" method="post" role="form" class="needs-validation" enctype="multipart/form-data" novalidate>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="ssh-button">Reply Content</label>
+                                <div class="col-sm-10">
+                                    <textarea v-model="replyBody" class="form-control form-control-sm" placeholder="Detailed post about the issue" rows="7" required></textarea>
+                                    <div class="text-right text-muted" style="position: absolute; bottom: 22px; right: 25px; font-size: 12px">{{ wordCount }} / 500 words</div>
+                                    <small class="text-muted">Creating separate tickets for new issues helps our team prioritize and resolve them faster.</small>
+                                </div>
+                                <div class="invalid-feedback">Please enter a detailed description about the issue.</div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="file-upload">Attach Media</label>
+                                <div class="controls col-sm-10 input-group input-file w-75" name="file_attachment">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
+                                    </span>
+                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="text-center">
+                                <button class="btn btn-primary mt-2" :disabled="wordCount > 500" @click="submitReply">Post Reply</button>
+                            </div>
+                        </form>
                     </template>
                 </div>
             </div>
