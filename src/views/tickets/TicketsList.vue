@@ -2,13 +2,20 @@
 import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { Ticket, useTicketsStore } from '@/stores/tickets.store';
+import { Ticket, useTicketsStore } from '../../stores/tickets.store';
+import { useSiteStore } from '../../stores/site.store.ts';
 
 const route = useRoute();
 const router = useRouter();
-const store = useTicketsStore();
-const { tickets, st_count, pages, currentPage, view } = storeToRefs(store);
+const ticketsStore = useTicketsStore();
+const { tickets, st_count, pages, currentPage, view } = storeToRefs(ticketsStore);
 const selectedPeriod = ref(route.query.period ?? '30');
+const siteStore = useSiteStore();
+
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/tickets`, 'Tickets'],
+]);
 
 watch(selectedPeriod, (val) => {
     router.push({
@@ -22,7 +29,7 @@ watch(selectedPeriod, (val) => {
 
 watch(
     () => route.query,
-    () => store.fetchTickets(route.query),
+    () => ticketsStore.fetchTickets(route.query),
     { immediate: true }
 );
 
@@ -37,7 +44,7 @@ async function submitSearch() {
     if (!searchBox.value) return;
     searching.value = true;
     showResults.value = true;
-    searchResults.value = await store.searchTickets(searchBox.value);
+    searchResults.value = await ticketsStore.searchTickets(searchBox.value);
     searching.value = false;
 }
 

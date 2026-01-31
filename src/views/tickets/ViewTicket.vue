@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import Prism from 'prismjs';
 import Swal from 'sweetalert2';
-
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { Ticket, useTicketsStore } from '../../stores/tickets.store';
+
+/* Search */
+const searchBox = ref('');
+const showResults = ref(false);
+const searching = ref(false);
+const searchResults = ref<Ticket[]>([]);
+const spinner = '<div class="spinner-border text-secondary"></div>';
+
+const statusClassMap: Record<number, string> = {
+    4: 'bg-primary',
+    5: 'bg-warning',
+    6: 'bg-danger',
+    7: 'bg-success',
+};
+
+const ticketStatusClass = (id: number) => statusClassMap[id] ?? '';
 
 /* =======================
    Store / Route
@@ -48,40 +63,17 @@ const statusCounts = ref<StatusCount[]>([]);
 const filesByPost = ref<Record<string, Attachment[]>>({});
 const suppressedEmail = ref(false);
 
-const searchQuery = ref('');
-const showSearchResults = ref(false);
-const searchResults = ref<string>('');
-
 const replyBody = ref('');
 const attachments = ref<File[]>([]);
 
 const allowServerAccess = ref(false);
 const isRootRestricted = ref(false);
 
-const ticketMaskId = computed(() => route.params.id as string);
-
 /* =======================
    Computed
 ======================= */
+const ticketMaskId = computed(() => route.params.id as string);
 const isClosed = computed(() => ticket.value?.ticketstatustitle === 'Closed');
-
-const statusClass = computed(() => {
-    switch (ticket.value?.ticketstatustitle) {
-        case 'Open':
-            return 'bg-success';
-        case 'On Hold':
-            return 'bg-warning';
-        case 'In Progress':
-            return 'bg-secondary';
-        default:
-            return 'bg-danger';
-    }
-});
-
-const statusIcon = computed(() => {
-    return ticket.value?.ticketstatustitle === 'In Progress' ? 'fas fa-hourglass-half' : 'fas fa-ticket-alt';
-});
-
 const wordCount = computed(() => {
     if (!replyBody.value.trim()) return 0;
     return replyBody.value.trim().split(/\s+/).length;
@@ -90,6 +82,15 @@ const wordCount = computed(() => {
 /* =======================
    Helpers
 ======================= */
+
+async function submitSearch() {
+    if (!searchBox.value) return;
+    searching.value = true;
+    showResults.value = true;
+    searchResults.value = await ticketsStore.searchTickets(searchBox.value);
+    searching.value = false;
+}
+
 function formatDate(ts?: number) {
     if (!ts) return '';
     const date = new Date(ts * 1000);
@@ -104,19 +105,43 @@ function formatReply(content: string) {
     return html;
 }
 
+function statusClass(status: string) {
+    switch (status) {
+        case 'Open':
+            return 'bg-success';
+        case 'On Hold':
+            return 'bg-warning';
+        case 'In Progress':
+            return 'bg-secondary';
+        default:
+            return 'bg-danger';
+    }
+}
+
+function statusIcon(status: string) {
+    switch (status) {
+        case 'Open':
+            return 'far fa-envelope-open text-success';
+        case 'On Hold':
+            return 'fa fa-pause text-warning';
+        case 'In Progress':
+            return 'fa fa-hourglass-half text-secondary';
+        default:
+            return 'far fa-envelope text-danger';
+    }
+}
 /* =======================
    API
 ======================= */
 async function loadTicket() {
     const baseUrl = siteStore.getBaseUrl();
     const result = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
-
+    console.log(result);
     ticket.value = result.ticket;
     posts.value = result.posts;
     statusCounts.value = result.st_count || [];
     filesByPost.value = result.files || {};
     suppressedEmail.value = !!result.suppressed_email;
-
     onMounted(() => Prism.highlightAll());
 }
 
@@ -155,19 +180,17 @@ async function submitReply() {
     }
 }
 
-async function runSearch() {
-    if (!searchQuery.value.trim()) return;
-    showSearchResults.value = true;
-    searchResults.value = '<div class="spinner-border text-secondary"></div>';
-
-    const baseUrl = siteStore.getBaseUrl();
-    const res = await fetchWrapper.post(`${baseUrl}/tickets/search`, { keyword: searchQuery.value });
-    searchResults.value = res.html;
-}
-
 /* =======================
    Lifecycle
 ======================= */
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/tickets`, 'Tickets'],
+    [`/tickets/${ticketMaskId.value}`, `${ticketMaskId.value}`],
+]);
+siteStore.setPageHeading(`Ticket ${ticketMaskId.value}`);
+siteStore.setTitle(`[${ticketMaskId.value}] | View Ticket`);
+
 onMounted(loadTicket);
 </script>
 
@@ -175,8 +198,8 @@ onMounted(loadTicket);
     <div v-if="ticket" class="row mb-4">
         <div class="col-md-2 pr-1">
             <div class="info-box p-0">
-                <span class="info-box-icon border-rad-zero" :class="statusClass">
-                    <i :class="statusIcon" />
+                <span class="info-box-icon border-rad-zero" :class="statusClass(ticket.ticketstatustitle)">
+                    <i class="text-white" :class="statusIcon(ticket.ticketstatustitle)" />
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-number">{{ ticket.ticketstatustitle }}</span>
@@ -195,31 +218,46 @@ onMounted(loadTicket);
 
     <div class="row">
         <div class="col-md-2 folders">
+            <!-- Search -->
             <div class="card mb-3">
-                <div class="input-group input-group-sm">
-                    <input v-model="searchQuery" class="form-control" placeholder="Search by TicketID / Subject" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" @click="runSearch"><i class="fas fa-search" /></button>
+                <form @submit.prevent="submitSearch">
+                    <div class="input-group input-group-sm">
+                        <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <button class="btn btn-primary" :disabled="searching"><i class="fas fa-search" /></button>
                     </div>
+                </form>
+                <div v-if="showResults" class="results p-2">
+                    <template v-if="searchResults?.length">
+                        <div v-for="row in searchResults" :key="row.ticketid">
+                            <RouterLink :to="`/tickets/${row.ticketmaskid}`" class="pb-2 d-inline-block">
+                                <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
+                                <span style="font-size: 95%">{{ row.subject }}</span>
+                            </RouterLink>
+                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <hr />
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div v-html="spinner" />
+                    </template>
                 </div>
-                <div v-if="showSearchResults" class="results p-2" v-html="searchResults" />
             </div>
-
             <div class="card folder_tickets">
                 <div class="card-header">
                     <h3 class="card-title">Quick Filter</h3>
                 </div>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <RouterLink to="/new_ticket_c" class="nav-link">New Ticket</RouterLink>
+                        <RouterLink to="/new_ticket_c" class="nav-link"> <i class="fa fa-plus-circle text-info">&nbsp;</i> New Ticket </RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink to="/tickets" class="nav-link">ALL</RouterLink>
+                        <RouterLink to="/tickets" class="nav-link"> <i class="fas fa-inbox text-primary">&nbsp;</i>ALL </RouterLink>
                     </li>
                     <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
-                        <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
+                        <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link" :title="s.ticketstatustitle">
+                            <i :class="statusIcon(s.ticketstatustitle)"></i>
                             {{ s.ticketstatustitle }}
-                            <span class="badge float-right">{{ s.st_count }}</span>
+                            <span class="badge float-right" :class="statusClass(s.ticketstatustitle)">{{ s.st_count }}</span>
                         </RouterLink>
                     </li>
                 </ul>
@@ -255,10 +293,6 @@ onMounted(loadTicket);
     </div>
 </template>
 
-<style scoped>
+<style>
 @import 'prismjs/themes/prism.css';
-.results {
-    max-height: 200px;
-    overflow-y: auto;
-}
 </style>
