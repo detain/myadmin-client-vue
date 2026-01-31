@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { useTicketsStore } from '../../stores/tickets.store';
 import { useSiteStore } from '../../stores/site.store.ts';
-import { reactive, ref, onMounted, computed } from 'vue';
+import { reactive, ref, onMounted, computed, nextTick } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import Prism from 'prismjs';
 const ticketsStore = useTicketsStore();
 const siteStore = useSiteStore();
 const route = useRoute();
 console.log('Route Query View:');
 console.log(route.query.view);
-const products = {};
+const products = ref({});
 siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/tickets`, 'Tickets'],
@@ -18,14 +19,18 @@ siteStore.setBreadcrums([
 ]);
 siteStore.setPageHeading('New Ticket');
 siteStore.setTitle('New Ticket');
+const baseUrl = siteStore.getBaseUrl();
 
 const handleFile = (e: Event) => {
     const input = e.target as HTMLInputElement;
     file.value = input.files?.[0] || null;
 };
 
+async function loadProducts() {
+    products.value = await fetchWrapper.get(`${baseUrl}/tickets/new`);
+}
+
 async function handleSubmit() {
-    const baseUrl = siteStore.getBaseUrl();
     let formData = {
         product: form.product,
         asubject: form.subject,
@@ -126,7 +131,10 @@ function bs_input_file(): void {
     });
 }
 
-onMounted(bs_input_file);
+onMounted(() => {
+    loadProducts()
+    bs_input_file();
+});
 </script>
 
 <template>
