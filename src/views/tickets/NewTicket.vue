@@ -27,6 +27,44 @@ const handleFile = (e: Event) => {
     file.value = input.files?.[0] || null;
 };
 
+const fileInput = ref<HTMLInputElement | null>(null);
+const fileBase64 = ref<string | null>(null);
+const fileName = ref('');
+
+function openFileDialog() {
+    fileInput.value?.click();
+}
+
+function onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) {
+        fileName.value = '';
+        fileBase64.value = null;
+        return;
+    }
+    fileName.value = file.name;
+    const reader = new FileReader();
+    reader.onload = () => {
+        // result = "data:image/png;base64,iVBORw0KGgoAAA..."
+        fileBase64.value = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+}
+
+function resetFile() {
+    if (fileInput.value) {
+        fileInput.value.value = '';
+    }
+    fileName.value = '';
+    fileBase64.value = null;
+}
+
+function getRawBase64(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[1];
+}
+
 async function loadProducts() {
     products.value = await fetchWrapper.get(`${baseUrl}/tickets/new`);
 }
@@ -35,14 +73,14 @@ async function handleSubmit() {
     let formData = {
         product: form.product,
         subject: form.subject,
-        content: form.content,
+        body: form.content,
         allowAccess: form.allowAccess,
-        rootPassword: form.rootPassword,
-        clientIp: form.clientIp,
+        root_pass: form.rootPassword,
+        ip: form.clientIp,
         sshRestricted: form.sshRestricted,
-        sudoUser: form.sudoUser,
-        sudoPassword: form.sudoPassword,
-        sshPort: form.sshPort,
+        sudo_user: form.sudoUser,
+        sudo_pass: form.sudoPassword,
+        port_no: form.sshPort,
         attachments: [file.value],
     };
     console.log('Submitting ticket', formData);
@@ -52,6 +90,7 @@ async function handleSubmit() {
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
+    /*
     try {
         const res = await fetchWrapper.post(`${baseUrl}/tickets/new`, formData);
         Swal.close();
@@ -64,6 +103,7 @@ async function handleSubmit() {
         Swal.close();
         await Swal.fire('Error', 'Failed to post reply', 'error');
     }
+    */
 }
 
 const showTerms = ref(false);
@@ -188,11 +228,18 @@ accountStore.loadOnce();
                         <div class="form-group row mb-0">
                             <label for="file_upload" class="col-sm-3 col-form-label requiredField">File Upload</label>
                             <div class="controls col-sm-9 input-group input-file" name="file_attachment">
+                                <!-- Visible filename input -->
+                                <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button" @click="openFileDialog">Choose</button></span>
+                                <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" :value="fileName" readonly placeholder="Choose a file..." @mousedown.prevent="openFileDialog"  />
+                                <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button" @click="resetFile">Reset</button></span>
+                                <!-- Hidden file input -->
+                                <input ref="fileInput" type="file" class="input-ghost" name="attachments" accept="image/png,image/jpeg,image/gif" style="visibility: hidden; height: 0" @change="onFileChange" />
+                            </div>
+                            <!-- <div class="controls col-sm-9 input-group input-file" name="file_attachment">
                                 <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button></span>
                                 <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                <!-- <input type="file" class="form-control form-control-sm input-text-file" accept="image/png,image/jpeg,image/gif" @change="handleFile" /> -->
                                 <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button></span>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="form-group row">
@@ -205,7 +252,7 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Server Access</label>
                             <div class="col-sm-9">
-                                <input id="allow-access" v-model="form.allowAccess" type="checkbox" style="margin-right: 5px;"/>
+                                <input id="allow-access" v-model="form.allowAccess" type="checkbox" style="margin-right: 5px" />
                                 <label> I allow InterServer to access my server and perform modifications </label>
                                 <span class="help-text text-red d-block"><b>Please note:</b> By opening a support request InterServer may need to access, debug, or modify files in your account. This requirement is needed in order to provide technical support. Please only continue if you agree.</span>
                             </div>
