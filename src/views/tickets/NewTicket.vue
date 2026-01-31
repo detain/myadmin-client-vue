@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useTicketsStore } from '../../stores/tickets.store';
 import { useSiteStore } from '../../stores/site.store.ts';
 import { useAccountStore } from '../../stores/account.store';
-import { reactive, ref, onMounted, computed, nextTick } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { RouterLink, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-const ticketsStore = useTicketsStore();
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 const { ip } = storeToRefs(accountStore);
@@ -36,7 +34,7 @@ async function loadProducts() {
 async function handleSubmit() {
     let formData = {
         product: form.product,
-        asubject: form.subject,
+        subject: form.subject,
         content: form.content,
         allowAccess: form.allowAccess,
         rootPassword: form.rootPassword,
