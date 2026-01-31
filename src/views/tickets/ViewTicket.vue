@@ -61,7 +61,7 @@ const ticket = ref<Ticket | null>(null);
 const posts = ref<Post[]>([]);
 const statusCounts = ref<StatusCount[]>([]);
 const filesByPost = ref<Record<string, Attachment[]>>({});
-const suppressedEmail = ref(false);
+const suppressedEmail = ref<any>(false);
 
 const replyBody = ref('');
 const attachments = ref<File[]>([]);
@@ -141,7 +141,7 @@ async function loadTicket() {
     posts.value = result.posts;
     statusCounts.value = result.st_count || [];
     filesByPost.value = result.files || {};
-    suppressedEmail.value = !!result.suppressed_email;
+    suppressedEmail.value = result.suppressed_email;
     onMounted(() => Prism.highlightAll());
 }
 
@@ -195,6 +195,14 @@ onMounted(loadTicket);
 </script>
 
 <template>
+    <!-- SUPPRESSED EMAIL ALERT -->
+    <div v-if="suppressedEmail" class="alert alert-danger rounded">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <strong>Important Notice:</strong>
+        Your email <b>({{ suppressedEmail.email }})</b> has been disabled due to bounces.
+        Please <RouterLink to="/new_ticket_c" class="text-white text-underline">contact support</RouterLink>.
+    </div>
+
     <div v-if="ticket" class="row mb-4">
         <div class="col-md-2 pr-1">
             <div class="info-box p-0">
