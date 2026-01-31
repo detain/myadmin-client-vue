@@ -22,9 +22,6 @@ siteStore.setBreadcrums([
 siteStore.setPageHeading('New Ticket');
 siteStore.setTitle('New Ticket');
 const baseUrl = siteStore.getBaseUrl();
-const fileInput = ref<HTMLInputElement | null>(null);
-const fileBase64 = ref<string | null>(null);
-const fileName = ref('');
 const showTerms = ref(false);
 const form = reactive({
     product: '',
@@ -38,6 +35,9 @@ const form = reactive({
     sudoPassword: '',
     sshPort: 22,
 });
+const fileInput = ref<HTMLInputElement | null>(null);
+const fileBase64 = ref<string | null>(null);
+const fileName = ref('');
 
 function openFileDialog() {
     fileInput.value?.click();

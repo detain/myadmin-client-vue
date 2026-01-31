@@ -68,6 +68,50 @@ const searching = ref(false);
 const showResults = ref(false);
 const spinner = `<div class="spinner-border text-secondary"></div>`;
 
+/* file attachments */
+const fileInput = ref<HTMLInputElement | null>(null);
+const fileBase64 = ref<string | null>(null);
+const fileName = ref('');
+
+function openFileDialog() {
+    fileInput.value?.click();
+}
+
+function onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) {
+        fileName.value = '';
+        fileBase64.value = null;
+        return;
+    }
+    fileName.value = file.name;
+    const reader = new FileReader();
+    reader.onload = () => {
+        // result = "data:image/png;base64,iVBORw0KGgoAAA..."
+        fileBase64.value = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+}
+
+function resetFile() {
+    if (fileInput.value) {
+        fileInput.value.value = '';
+    }
+    fileName.value = '';
+    fileBase64.value = null;
+}
+
+function getRawBase64(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[1];
+}
+
+function getRawType(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[0].split(';')[0].split(':')[1];
+}
+
 /* =======================
    Computed
 ======================= */
@@ -157,7 +201,6 @@ async function loadTicket() {
     statusCounts.value = result.st_count || [];
     filesByPost.value = result.files || {};
     suppressedEmail.value = result.suppressed_email || null;
-    bs_input_file();
     await nextTick();
     Prism.highlightAll();
 }
@@ -215,55 +258,6 @@ async function closeTicket() {
     }
 }
 
-function bs_input_file(): void {
-    document.querySelectorAll<HTMLElement>('.input-file').forEach((wrapper) => {
-        // Prevent duplicate ghost inputs
-        const next = wrapper.nextElementSibling;
-        if (next && next.classList.contains('input-ghost')) {
-            return;
-        }
-        // Create hidden file input
-        const ghost = document.createElement('input');
-        ghost.type = 'file';
-        ghost.className = 'input-ghost';
-        ghost.style.visibility = 'hidden';
-        ghost.style.height = '0';
-        // Copy name attribute
-        const name = wrapper.getAttribute('name');
-        if (name) ghost.name = name;
-        wrapper.parentNode?.insertBefore(ghost, wrapper.nextSibling);
-        // Type-safe element lookups
-        const chooseBtn = wrapper.querySelector<HTMLButtonElement>('.btn-choose');
-        const resetBtn = wrapper.querySelector<HTMLButtonElement>('.btn-reset');
-        const textInput = wrapper.querySelector<HTMLInputElement>('input[type="text"]');
-        // File selected → update text field
-        ghost.addEventListener('change', () => {
-            const fileName = ghost.value.split('\\').pop() || '';
-            if (textInput) {
-                textInput.value = fileName;
-            }
-        });
-        // Choose button opens dialog
-        chooseBtn?.addEventListener('click', () => {
-            ghost.click();
-        });
-        // Reset clears everything
-        resetBtn?.addEventListener('click', () => {
-            ghost.value = '';
-            if (textInput) {
-                textInput.value = '';
-            }
-        });
-        // Text input behavior
-        if (textInput) {
-            textInput.style.cursor = 'pointer';
-            textInput.addEventListener('mousedown', (e: MouseEvent) => {
-                e.preventDefault();
-                ghost.click();
-            });
-        }
-    });
-}
 /* =======================
    Lifecycle
 ======================= */
@@ -448,14 +442,13 @@ onMounted(loadTicket);
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" for="file-upload">Attach Media</label>
-                                <div class="controls col-sm-10 input-group input-file w-75">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
-                                    </span>
-                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
-                                    </span>
+                                <div class="controls col-sm-10 input-group input-file w-75" name="file_attachment">
+                                    <!-- Visible filename input -->
+                                    <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button" @click="openFileDialog">Choose</button></span>
+                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" :value="fileName" readonly placeholder="Choose a file..." @mousedown.prevent="openFileDialog" />
+                                    <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button" @click="resetFile">Reset</button></span>
+                                    <!-- Hidden file input -->
+                                    <input ref="fileInput" type="file" class="input-ghost" name="attachments" accept="image/png,image/jpeg,image/gif" style="visibility: hidden; height: 0" @change="onFileChange" />
                                 </div>
                             </div>
                             <hr />
