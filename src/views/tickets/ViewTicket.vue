@@ -2,12 +2,15 @@
 import { ref, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '../../stores/tickets.store';
-import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { useRoute } from 'vue-router';
 import Prism from 'prismjs';
+import { useSiteStore } from '../../stores/site.store.ts';
+import { fetchWrapper } from '../..//helpers/fetchWrapper.ts';
 //import from '/lib/select2/dist/js/select2.full.min.js';
 const ticketsStore = useTicketsStore();
 const { ticket, loading, error, ima, custid, sortcol, sortdir, st_count, offset, totalTickets, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
+const route = useRoute();
 
 /* =======================
    Types
@@ -41,7 +44,7 @@ interface Post {
 ======================= */
 const statusCounts = ref<StatusCount[]>([]);
 const posts = ref<Post[]>([]);
-
+const ticketMaskId = computed(() => route.params.id as string);
 /* =======================
    UI State
 ======================= */
@@ -96,9 +99,23 @@ function submitReply() {
     // submit via fetch / axios
 }
 
+async function loadTicket() {
+    const siteStore = useSiteStore();
+    const baseUrl = siteStore.getBaseUrl();
+    try {
+        const results = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
+        ticket.value = results.ticket;
+        posts.value = results.ticket_posts;
+        console.log(results);
+    } catch (err) {
+        console.error('Search failed', err);
+    }
+}
+
 /* =======================
    Lifecycle
 ======================= */
+loadTicket();
 onMounted(() => {
     Prism.highlightAll();
 });
