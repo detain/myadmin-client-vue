@@ -1,25 +1,16 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
 import { useTicketsStore } from '../../stores/tickets.store';
 import { useSiteStore } from '../../stores/site.store.ts';
 import { reactive, ref, computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
+import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const ticketsStore = useTicketsStore();
 const siteStore = useSiteStore();
 const route = useRoute();
 console.log('Route Query View:');
 console.log(route.query.view);
-//const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, currentPage, pages, view, search } = storeToRefs(ticketsStore);
-//ticketsStore.getAll();
-const createAs = ref('customer');
-const message = ref('');
-const departments = {};
 const products = {};
-const subject = ref('');
-const kyDept = ref('');
-const ima = ref('admin');
-const abuse = '';
-
 siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/tickets`, 'Tickets'],
@@ -33,13 +24,41 @@ const handleFile = (e: Event) => {
     file.value = input.files?.[0] || null;
 };
 
-const handleSubmit = () => {
-    const payload = new FormData();
-    Object.entries(form).forEach(([k, v]) => payload.append(k, String(v)));
-    if (file.value) payload.append('file', file.value);
-    // Replace with fetchWrapper / axios
-    console.log('Submitting ticket', payload);
-};
+async function handleSubmit() {
+    const baseUrl = siteStore.getBaseUrl();
+    let formData = {
+        product: form.product,
+        asubject: form.subject,
+        content: form.content,
+        allowAccess: form.allowAccess,
+        rootPassword: form.rootPassword,
+        clientIp: form.clientIp,
+        sshRestricted: form.sshRestricted,
+        sudoUser: form.sudoUser,
+        sudoPassword: form.sudoPassword,
+        sshPort: form.sshPort,
+        attachments: [file.value],
+    };
+    console.log('Submitting ticket', formData);
+    Swal.fire({
+        html: 'Please wait...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    });
+    try {
+        const res = await fetchWrapper.post(`${baseUrl}/tickets/new`, formData);
+        Swal.close();
+        if (res.status === 'success') {
+            await Swal.fire('Reply Posted', res.message, 'success');
+        } else {
+            await Swal.fire('Warning', res.message, 'warning');
+        }
+    } catch {
+        Swal.close();
+        Swal.fire('Error', 'Failed to post reply', 'error');
+    }
+}
 
 const showTerms = ref(false);
 const file = ref<File | null>(null);
