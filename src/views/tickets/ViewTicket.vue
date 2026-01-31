@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
+import { storeToRefs } from 'pinia';
 import Prism from 'prismjs';
 import Swal from 'sweetalert2';
-
+import { useAuthStore } from '../../stores/auth.store';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { Ticket, useTicketsStore } from '../../stores/tickets.store';
@@ -14,7 +15,9 @@ import { Ticket, useTicketsStore } from '../../stores/tickets.store';
 const route = useRoute();
 const siteStore = useSiteStore();
 const ticketsStore = useTicketsStore();
-
+const authStore = useAuthStore();
+const { sessionId } = storeToRefs(authStore);
+const baseUrl = siteStore.getBaseUrl();
 /* =======================
    Types
 ======================= */
@@ -24,12 +27,13 @@ interface StatusCount {
 }
 
 interface Attachment {
-    attach_id: string;
-    src: string;
-    link: string;
+    attachmentid: string;
+    filename: string;
+    linkttypeid: string;
 }
 
 interface Post {
+    attachments?: Attachment[];
     ticketpostid: string;
     creator: '1' | '2';
     fullname: string;
@@ -53,6 +57,7 @@ const replyBody = ref('');
 const attachments = ref<File[]>([]);
 
 /* server access */
+const authKey = ref('');
 const allowServerAccess = ref(false);
 const isRootRestricted = ref(false);
 const ipAddress = ref('');
@@ -112,6 +117,10 @@ function getRawType(): string | null {
     return fileBase64.value.split(',')[0].split(';')[0].split(':')[1];
 }
 
+function attachmentSrc(attachId: string) {
+    return `https://my.interserver.net/ajax.php?choice=ticket_dl&id=${attachId}&use_variable_sessionid=true&sessionid=${sessionId.value}`;
+}
+
 /* =======================
    Computed
 ======================= */
@@ -123,7 +132,6 @@ const wordCount = computed(() => (replyBody.value.trim() ? replyBody.value.trim(
 /* =======================
    Helpers
 ======================= */
-
 const statusClassMap: Record<number, string> = {
     4: 'bg-primary',
     5: 'bg-warning',
@@ -194,48 +202,99 @@ async function submitSearch() {
    API
 ======================= */
 async function loadTicket() {
-    const baseUrl = siteStore.getBaseUrl();
     const result = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
+    console.log(result);
     ticket.value = result.ticket;
     posts.value = result.posts || [];
     statusCounts.value = result.st_count || [];
     filesByPost.value = result.files || {};
     suppressedEmail.value = result.suppressed_email || null;
+    if (typeof result.custom_values['5'] != 'undefined') {
+        ipAddress.value = result.custom_values['5'].fieldvalue;
+    }
+    if (typeof result.custom_values['6'] != 'undefined') {
+        rootPassword.value = result.custom_values['6'].fieldvalue;
+    }
+    if (typeof result.custom_values['7'] != 'undefined') {
+        authKey.value = result.custom_values['7'].fieldvalue;
+    }
+    if (typeof result.custom_values['8'] != 'undefined') {
+        sudoUser.value = result.custom_values['8'].fieldvalue;
+    }
+    if (typeof result.custom_values['9'] != 'undefined') {
+        sudoPassword.value = result.custom_values['9'].fieldvalue;
+    }
+    if (typeof result.custom_values['10'] != 'undefined') {
+        sshPort.value = result.custom_values['10'].fieldvalue;
+    }
+    if (typeof result.custom_values['11'] != 'undefined') {
+        allowServerAccess.value = result.custom_values['11'].fieldvalue == 'y';
+    }
+    isRootRestricted.value = !!(sudoUser.value && sudoPassword.value);
     await nextTick();
     Prism.highlightAll();
 }
 
 async function submitReply() {
     if (wordCount.value === 0 || wordCount.value > 500 || isClosed.value) return;
-    const baseUrl = siteStore.getBaseUrl();
-    const formData = new FormData();
-    formData.append('body', replyBody.value);
-    attachments.value.forEach((f) => formData.append('attachments[]', f));
-    await Swal.fire({
+    const formData = {
+        body: replyBody.value,
+        attachments: fileBase64.value ? [{ name: fileName.value, content: getRawBase64(), type: getRawType() }] : [],
+    };
+    Swal.fire({
         html: 'Please wait...',
         allowOutsideClick: false,
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
     try {
-        const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/reply`, formData);
+        const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}`, formData);
         Swal.close();
         if (res.status === 'success') {
-            await Swal.fire('Reply Posted', res.message, 'success');
+            Swal.fire('Reply Posted', res.message, 'success');
             replyBody.value = '';
             attachments.value = [];
-            await loadTicket();
+            loadTicket();
         } else {
-            await Swal.fire('Warning', res.message, 'warning');
+            Swal.fire('Warning', res.message, 'warning');
         }
     } catch {
         Swal.close();
-        await Swal.fire('Error', 'Failed to post reply', 'error');
+        Swal.fire('Error', 'Failed to post reply', 'error');
+    }
+}
+
+async function submitUpdate() {
+    const formData = {
+        server_access: allowServerAccess.value ? 'y' : 'n',
+        ip: ipAddress.value,
+        root_pass: rootPassword.value,
+        is_root: isRootRestricted.value ? 'y' : 'n',
+        sudo_user: sudoUser.value,
+        sudo_pass: sudoPassword.value,
+        port_no: sshPort.value,
+    };
+    Swal.fire({
+        html: 'Please wait...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    });
+    try {
+        const res = await fetchWrapper.put(`${baseUrl}/tickets/${ticketMaskId.value}`, formData);
+        Swal.close();
+        if (res.status === 'success') {
+            Swal.fire('Ticket Settings Updated', res.message, 'success');
+        } else {
+            Swal.fire('Warning', res.message, 'warning');
+        }
+    } catch {
+        Swal.close();
+        Swal.fire('Error', 'Failed to update settings', 'error');
     }
 }
 
 async function closeTicket() {
-    const baseUrl = siteStore.getBaseUrl();
     const result = await Swal.fire({
         title: 'Are you sure?',
         text: 'Do you want to close this ticket?',
@@ -245,13 +304,9 @@ async function closeTicket() {
     });
     if (result.isConfirmed) {
         try {
-            const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/close`, {});
-            if (res.status === 'success') {
-                await Swal.fire('Ticket Closed', res.message, 'success');
-                await loadTicket();
-            } else {
-                await Swal.fire('Warning', res.message, 'warning');
-            }
+            const res = await fetchWrapper.delete(`${baseUrl}/tickets/${ticketMaskId.value}`);
+            Swal.fire('Ticket Closed', res, 'success');
+            loadTicket();
         } catch {
             await Swal.fire('Error', 'Failed to close ticket', 'error');
         }
@@ -363,7 +418,7 @@ onMounted(loadTicket);
         <!-- MAIN -->
         <div class="col-md-10">
             <div class="card card-body">
-                <form method="post" role="form" :action="`ticket_c?id=${ticket?.ticketmaskid}`">
+                <form method="post" role="form" @submit.prevent="submitUpdate">
                     <!-- SERVER ACCESS -->
                     <div class="form-group col-md-6 mb-0 pl-0">
                         <div class="custom-control custom-checkbox">
@@ -391,10 +446,9 @@ onMounted(loadTicket);
                             <!-- ROOT RESTRICTED -->
                             <div class="form-group col-md-2 pl-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" class="custom-control-input" />
+                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" name="is_root" class="custom-control-input" />
                                     <label class="custom-control-label" for="is_root_checkbox">Is SSH Root Restricted?</label>
                                 </div>
-                                <input type="hidden" name="is_root" :value="isRootRestricted ? 'yes' : 'no'" />
                             </div>
                             <!-- SUDO FIELDS -->
                             <div v-show="isRootRestricted" class="form-group col-md-2">
@@ -414,7 +468,7 @@ onMounted(loadTicket);
                     </div>
                     <hr />
                     <div class="text-center">
-                        <button type="submit" name="submit" value="updateTicket" class="btn btn-md btn-outline-primary">Update</button>
+                        <button type="submit" class="btn btn-md btn-outline-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -494,14 +548,21 @@ onMounted(loadTicket);
                                     <div v-else class="text-danger mb-2 ml-2"><i class="fas fa-thumbs-down mr-1"></i> User disliked your reply</div>
                                 </template>
                                 <!-- ATTACHMENTS -->
-                                <template v-if="filesByPost[post.ticketpostid]">
-                                    <div v-for="file in filesByPost[post.ticketpostid]" :key="file.attach_id" class="post-attachments">
-                                        <div v-html="file.link"></div>
-                                        <!-- Image modal (Bootstrap-compatible) -->
-                                        <div :id="`image-${file.attach_id}`" class="attachment-modal modal fade" tabindex="-1" role="dialog">
+                                <template v-if="post.attachments">
+                                    <div v-for="file in post.attachments" :key="file.attachmentid" class="post-attachments">
+                                        <div class="img-preview-container">
+                                            <img class="img-attachment" :src="attachmentSrc(file.attachmentid)" :alt="file.filename" />
+                                            <div class="img-preview-overlay">
+                                                <div class="buttons">
+                                                    <button class="btn btn-dark" data-toggle="modal" data-target="`#image-${file.attachmentid}`"><i class="fas fa-search-plus"></i></button>
+                                                    <a :href="attachmentSrc(file.attachmentid)" :download="file.filename" class="btn btn-dark"><i class="fas fa-download"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div :id="`image-${file.attachmentid}`" class="attachment-modal modal fade" tabindex="-1" role="dialog">
                                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                 <div class="modal-content">
-                                                    <img :src="file.src" alt="Ticket Attachment" class="img-fluid" />
+                                                    <img :src="attachmentSrc(file.attachmentid)" alt="Ticket Attachment" class="img-fluid" />
                                                 </div>
                                             </div>
                                         </div>

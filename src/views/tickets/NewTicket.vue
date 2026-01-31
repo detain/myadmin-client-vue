@@ -83,7 +83,7 @@ async function loadProducts() {
 }
 
 async function handleSubmit() {
-    let formData = {
+    const formData = {
         product: form.product,
         subject: form.subject,
         body: form.content,
