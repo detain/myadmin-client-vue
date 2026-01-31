@@ -16,6 +16,8 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/tickets`, 'Tickets'],
 ]);
+siteStore.setPageHeading('Tickets List');
+siteStore.setTitle('Tickets List');
 
 watch(selectedPeriod, (val) => {
     router.push({
