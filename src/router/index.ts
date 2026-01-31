@@ -44,7 +44,7 @@ export const router = createRouter({
                 { path: 'traffic_graph', component: () => import('../views/billing/affiliates/TrafficGraph.vue') },
                 { path: 'web_traffic', component: () => import('../views/billing/affiliates/WebTraffic.vue') },
                 { path: 'banners', component: () => import('../views/billing/affiliates/ViewBanners.vue') },
-                { path: 'banner/:id(\\d+)', component: () => import('../views/billing/affiliates/ViewBanner.vue') },
+                { path: 'banners/:id', component: () => import('../views/billing/affiliates/ViewBanner.vue') },
             ],
         },
         {
