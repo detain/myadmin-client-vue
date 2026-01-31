@@ -1,65 +1,60 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useRoute } from 'vue-router';
 import { useSiteStore } from '../../../stores/site.store';
-
+import { useAccountStore } from '../../../stores/account.store';
+const route = useRoute();
+const accountStore = useAccountStore();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - ViewBanner');
 siteStore.setTitle('Affiliate - ViewBanner');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['', 'ViewBanner'],
+    ['/affiliate', 'Affiliate System'],
+    ['', 'Banners & Links'],
 ]);
-
-const url = ref('{$url}');
-const vpsUrl = ref('{$vps_url}');
-const webhostingUrl = ref('{$webhosting_url}');
-const imgDetail = ref({ b: '', h: 0, w: 0 });
+const { custid } = storeToRefs(accountStore);
+const imageFile = route.params.id as string;
+const width = route.query.w as string;
+const height = route.query.h as string;
 const sid = ref('');
-const landing = ref('vps');
-const customUrl = ref('');
-const custUrlVisible = ref(false);
-const htmlCode = ref('');
-const landingUrl = ref('');
-
-function updateCode() {
-    custUrlVisible.value = false;
-    let urlValue = url.value;
+const landing = ref('');
+const customUrl = ref('https://www.interserver.net/blog');
+const mainUrl = computed(() => `https://www.interserver.net/r/${custid.value}`);
+const vpsUrl = computed(() => `https://www.interserver.net/vps?id=${custid.value}`);
+const webhostingUrl = computed(() => `https://www.interserver.net/webhosting?id=${custid.value}`);
+const imageSrc = computed(() => `https://www.interserver.net/logos/${imageFile}`);
+const htmlCode = computed(() => `<a href="${finalUrl.value}"><img src="${imageSrc.value}" alt="InterServer Web Hosting and VPS"></a>`);
+const finalUrl = computed(() => {
+    let url = mainUrl.value;
     if (landing.value === 'vps') {
-        urlValue = vpsUrl.value;
-        if (sid.value) {
-            urlValue = `${vpsUrl.value}&sid=${sid.value}`;
-        }
+        url = vpsUrl.value;
+        if (sid.value) url += `&sid=${encodeURIComponent(sid.value)}`;
     } else if (landing.value === 'webhosting') {
-        urlValue = webhostingUrl.value;
-        if (sid.value) {
-            urlValue = `${webhostingUrl.value}&sid=${sid.value}`;
-        }
+        url = webhostingUrl.value;
+        if (sid.value) url += `&sid=${encodeURIComponent(sid.value)}`;
     } else if (landing.value === 'custom') {
-        const custUrlValue = customUrl.value;
         if (sid.value) {
-            urlValue = `${urlValue}?sid=${sid.value}&url=${custUrlValue}`;
+            url += `?sid=${encodeURIComponent(sid.value)}&url=${encodeURIComponent(customUrl.value)}`;
         } else {
-            urlValue = `${urlValue}?url=${custUrlValue}`;
+            url += `?url=${encodeURIComponent(customUrl.value)}`;
         }
-        custUrlVisible.value = true;
     } else {
         if (sid.value) {
-            urlValue = `${urlValue}?sid=${sid.value}`;
+            url += `?sid=${encodeURIComponent(sid.value)}`;
         }
     }
-    htmlCode.value = `<a href="${urlValue}"><img src="https://www.interserver.net/logos/${imgDetail.value.b}" alt="InterServer Web Hosting and VPS"></a>`;
-}
+    return url;
+});
 
-function copyCode() {
-    const copyText = (document.querySelector('#htmcode') as unknown as HTMLInputElement).select();
-    document.execCommand('copy');
+async function copyHtml() {
+    await navigator.clipboard.writeText(htmlCode.value);
     alert('HTML Code copied.');
 }
 
-onMounted(() => {});
+accountStore.loadOnce();
 </script>
 
 <template>
@@ -67,60 +62,55 @@ onMounted(() => {});
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Banner Image</h4>
+                    <h4 class="float-left">Banner Image</h4>
+                    <div class="card-tools float-right">
+                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                    </div>
                 </div>
-                <table class="table-sm table">
-                    <tbody>
-                        <tr>
-                            <td>Image</td>
-                            <td>{{ imgDetail.b }}</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>Image Size</td>
-                            <td>{{ imgDetail.w }}X{{ imgDetail.h }}</td>
-                        </tr>
-                        <tr>
-                            <td>SID</td>
-                            <td>
-                                <textarea v-model="sid" class="form-control" style="margin-top: 15px" cols="75" rows="2" placeholder="eg. Home Page, Mailing list"></textarea>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>Landing Page URL</td>
-                            <td>
-                                <select id="landing-url" v-model="landingUrl" class="form-control">
-                                    <option value="">Select</option>
-                                    <option value="home">Home Page</option>
-                                    <option value="vps">VPS Page</option>
-                                    <option value="webhosting">Webhosting Page</option>
-                                    <option value="custom">Custom Url</option>
-                                </select>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr v-if="landingUrl === 'custom'" id="cust_url">
-                            <td>Custom URL</td>
-                            <td><textarea id="custom_url" v-model="customUrl" name="custom_url" class="form-control" cols="75" rows="4" placeholder="https://www.interserver.net/">https://www.interserver.net/blog</textarea></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>HTML Code</td>
-                            <td>
-                                <textarea id="htmcode" v-model="htmlCode" class="form-control" readonly editable="false" cols="75" rows="4"></textarea>
-                            </td>
-                            <td><button id="copyText" class="btn btn-primary" @click="copyCode">Copy Code</button></td>
-                        </tr>
-                    </tbody>
+                <table class="table table-sm">
+                    <tr>
+                        <td>Image</td>
+                        <td>{{ imageFile }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Image Size</td>
+                        <td>{{ width }} x {{ height }}</td>
+                    </tr>
+                    <tr>
+                        <td>SID</td>
+                        <td><textarea v-model="sid" class="form-control" cols="75" rows="2" placeholder="eg. Home Page, Mailing list" /></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Landing Page URL</td>
+                        <td>
+                            <select v-model="landing" class="form-control">
+                                <option value="">Select</option>
+                                <option value="home">Home Page</option>
+                                <option value="vps">VPS Page</option>
+                                <option value="webhosting">Webhosting Page</option>
+                                <option value="custom">Custom Url</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr v-show="landing === 'custom'">
+                        <td>Custom URL</td>
+                        <td><textarea v-model="customUrl" class="form-control" cols="75" rows="4" placeholder="https://www.interserver.net/" /></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>HTML Code</td>
+                        <td><textarea class="form-control" cols="75" rows="4" readonly :value="htmlCode" /></td>
+                        <td><button type="button" class="btn btn-primary" @click="copyHtml">Copy Code</button></td>
+                    </tr>
                 </table>
-                <table class="table-sm table">
-                    <tbody>
-                        <tr>
-                            <td>Image Preview</td>
-                            <td><img :src="'https://www.interserver.net/logos/' + imgDetail.b" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
-                        </tr>
-                    </tbody>
+                <table class="table table-sm">
+                    <tr>
+                        <td>Image Preview</td>
+                        <td><img :src="imageSrc" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
+                    </tr>
                 </table>
             </div>
         </div>
