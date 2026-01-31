@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
-import Swal from 'sweetalert2';
 import Prism from 'prismjs';
-import { Ticket, useTicketsStore } from '../../stores/tickets.store';
-import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
+
 import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { useSiteStore } from '../../stores/site.store';
+import { Ticket, useTicketsStore } from '../../stores/tickets.store';
+
+/* =======================
+   Store / Route
+======================= */
+const route = useRoute();
+const siteStore = useSiteStore();
+const ticketsStore = useTicketsStore();
 
 /* =======================
    Types
 ======================= */
-
 interface StatusCount {
     ticketstatustitle: string;
     st_count: number;
@@ -27,201 +33,223 @@ interface Post {
     ticketpostid: string;
     creator: '1' | '2';
     fullname: string;
-    email?: string;
+    email: string;
     contents: string;
     dateline: number;
     liked?: number;
-    files?: Attachment[];
 }
-
-/* =======================
-   Stores / Route
-======================= */
-const route = useRoute();
-const ticketsStore = useTicketsStore();
-const siteStore = useSiteStore();
-const { ticket } = storeToRefs(ticketsStore);
 
 /* =======================
    State
 ======================= */
+const ticket = ref<Ticket | null>(null);
 const posts = ref<Post[]>([]);
 const statusCounts = ref<StatusCount[]>([]);
-const suppressedEmail = ref<{ email: string } | null>(null);
+const filesByPost = ref<Record<string, Attachment[]>>({});
+const suppressedEmail = ref(false);
 
-const allowServerAccess = ref<'y' | 'n'>('n');
-const isRootRestricted = ref<'yes' | 'no'>('no');
-
-const ip = ref('');
-const rootPass = ref('');
-const sudoUser = ref('');
-const sudoPass = ref('');
-const sshPort = ref('22');
+const searchQuery = ref('');
+const showSearchResults = ref(false);
+const searchResults = ref<string>('');
 
 const replyBody = ref('');
-const attachments = ref<File | null>(null);
+const attachments = ref<File[]>([]);
+
+const allowServerAccess = ref(false);
+const isRootRestricted = ref(false);
+
+const ticketMaskId = computed(() => route.params.id as string);
 
 /* =======================
    Computed
 ======================= */
-const ticketMaskId = computed(() => route.params.id as string);
-
-const wordCount = computed(() => {
-    const words = replyBody.value.trim().split(/\s+/).filter(Boolean);
-    return words.length;
-});
+const isClosed = computed(() => ticket.value?.ticketstatustitle === 'Closed');
 
 const statusClass = computed(() => {
     switch (ticket.value?.ticketstatustitle) {
-        case 'Open': return 'bg-success';
-        case 'On Hold': return 'bg-warning';
-        case 'In Progress': return 'bg-secondary';
-        default: return 'bg-danger';
+        case 'Open':
+            return 'bg-success';
+        case 'On Hold':
+            return 'bg-warning';
+        case 'In Progress':
+            return 'bg-secondary';
+        default:
+            return 'bg-danger';
     }
 });
 
+const statusIcon = computed(() => {
+    return ticket.value?.ticketstatustitle === 'In Progress' ? 'fas fa-hourglass-half' : 'fas fa-ticket-alt';
+});
+
+const wordCount = computed(() => {
+    if (!replyBody.value.trim()) return 0;
+    return replyBody.value.trim().split(/\s+/).length;
+});
+
+/* =======================
+   Helpers
+======================= */
 function formatDate(ts?: number) {
     if (!ts) return '';
     const date = new Date(ts * 1000);
     return `Posted on: ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`;
 }
 
+function formatReply(content: string) {
+    let html = content.replace(/`([^`]+)`/g, '<code>$1</code>').replace(/<br\s*\/?>/gi, '\n');
+
+    html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+
+    return html;
+}
+
 /* =======================
-   Methods
+   API
 ======================= */
 async function loadTicket() {
     const baseUrl = siteStore.getBaseUrl();
-    const res = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
-    ticket.value = res.ticket as Ticket;
-    posts.value = res.posts || [];
-    statusCounts.value = res.st_counts || [];
-    suppressedEmail.value = res.suppressed_email || null;
+    const result = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
 
-    allowServerAccess.value = res.custom?.server_access ?? 'n';
-    isRootRestricted.value = res.custom?.is_root ?? 'no';
+    ticket.value = result.ticket;
+    posts.value = result.posts;
+    statusCounts.value = result.st_count || [];
+    filesByPost.value = result.files || {};
+    suppressedEmail.value = !!result.suppressed_email;
 
-    ip.value = res.custom?.ip ?? res.client_ip ?? '';
-    rootPass.value = res.custom?.root_pass ?? '';
-    sudoUser.value = res.custom?.sudo_user ?? '';
-    sudoPass.value = res.custom?.sudo_pass ?? '';
-    sshPort.value = res.custom?.port_no ?? '22';
-
-    renderContent();
-}
-
-function renderContent() {
-    setTimeout(() => {
-        document.querySelectorAll('.inherit-class').forEach(el => {
-            el.innerHTML = el.innerHTML.replace(/`([^`]+)`/g, '<code>$1</code>');
-        });
-        Prism.highlightAll();
-    });
+    onMounted(() => Prism.highlightAll());
 }
 
 async function submitReply() {
-    if (wordCount.value === 0 || wordCount.value > 500) return;
+    if (wordCount.value === 0 || wordCount.value > 500 || isClosed.value) return;
 
     const baseUrl = siteStore.getBaseUrl();
-    const form = new FormData();
-    form.append('body', replyBody.value);
-    if (attachments.value) form.append('file_attachment', attachments.value);
+    const formData = new FormData();
 
-    Swal.fire({ html: 'Please wait...', allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
+    formData.append('body', replyBody.value);
+    attachments.value.forEach((f) => formData.append('attachments[]', f));
+
+    Swal.fire({
+        title: '',
+        html: 'Please wait...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    });
 
     try {
-        const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/reply`, form);
+        const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/reply`, formData);
         Swal.close();
+
         if (res.status === 'success') {
-            await Swal.fire({ icon: 'success', title: 'Reply Posted!' });
+            Swal.fire('Reply Posted', res.message, 'success');
             replyBody.value = '';
-            attachments.value = null;
-            loadTicket();
+            attachments.value = [];
+            await loadTicket();
         } else {
-            Swal.fire({ icon: 'warning', text: res.message });
+            Swal.fire('Warning', res.message, 'warning');
         }
     } catch {
-        Swal.fire({ icon: 'error', text: 'Failed to post reply.' });
+        Swal.close();
+        Swal.fire('Error', 'Failed to post reply', 'error');
     }
+}
+
+async function runSearch() {
+    if (!searchQuery.value.trim()) return;
+    showSearchResults.value = true;
+    searchResults.value = '<div class="spinner-border text-secondary"></div>';
+
+    const baseUrl = siteStore.getBaseUrl();
+    const res = await fetchWrapper.post(`${baseUrl}/tickets/search`, { keyword: searchQuery.value });
+    searchResults.value = res.html;
 }
 
 /* =======================
    Lifecycle
 ======================= */
 onMounted(loadTicket);
-watch(posts, renderContent);
 </script>
 
 <template>
-    <div class="row mb-4">
+    <div class="row mb-4" v-if="ticket">
         <div class="col-md-2 pr-1">
             <div class="info-box p-0">
                 <span class="info-box-icon border-rad-zero" :class="statusClass">
-                    <i :class="ticket?.ticketstatustitle === 'In Progress' ? 'fas fa-hourglass-half' : 'fas fa-ticket-alt'" />
+                    <i :class="statusIcon" />
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-number">{{ ticket?.ticketstatustitle }}</span>
-                    <span class="info-box-text">Created: {{ formatDate(ticket?.dateline) }}</span>
-                    <span class="info-box-text">Updated: {{ formatDate(ticket?.lastactivity) }}</span>
+                    <span class="info-box-number">{{ ticket.ticketstatustitle }}</span>
+                    <span class="info-box-text">Created: {{ formatDate(Number(ticket.dateline)) }}</span>
+                    <span class="info-box-text">Updated: {{ formatDate(Number(ticket.lastactivity)) }}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-10">
-            <div class="callout callout-info py-3">
-                <h5><i class="fas fa-align-left" /> Subject</h5>
-                <p>{{ ticket?.subject }}</p>
+            <div class="callout callout-info m-0 py-3">
+                <h5><i class="fas fa-align-left"></i> Subject</h5>
+                <p>{{ ticket.subject }}</p>
             </div>
         </div>
-    </div>
-
-    <div v-if="suppressedEmail" class="alert alert-danger">
-        <strong>Important Notice:</strong> Your email address ({{ suppressedEmail.email }}) has been disabled.
     </div>
 
     <div class="row">
-        <div class="col-md-2">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <RouterLink to="/tickets" class="nav-link">All</RouterLink>
-                </li>
-                <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
-                    <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
-                        {{ s.ticketstatustitle }}
-                        <span class="badge float-right">{{ s.st_count }}</span>
-                    </RouterLink>
-                </li>
-            </ul>
+        <div class="col-md-2 folders">
+            <div class="card mb-3">
+                <div class="input-group input-group-sm">
+                    <input v-model="searchQuery" class="form-control" placeholder="Search by TicketID / Subject" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" @click="runSearch"><i class="fas fa-search" /></button>
+                    </div>
+                </div>
+                <div v-if="showSearchResults" class="results p-2" v-html="searchResults" />
+            </div>
+
+            <div class="card folder_tickets">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Filter</h3>
+                </div>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <RouterLink to="/new_ticket_c" class="nav-link">New Ticket</RouterLink>
+                    </li>
+                    <li class="nav-item">
+                        <RouterLink to="/tickets" class="nav-link">ALL</RouterLink>
+                    </li>
+                    <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
+                        <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
+                            {{ s.ticketstatustitle }}
+                            <span class="badge float-right">{{ s.st_count }}</span>
+                        </RouterLink>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="col-md-10">
-            <div class="card mb-3">
-                <div class="card-header">Post Reply</div>
+            <div class="alert alert-warning" v-if="isClosed">This ticket is closed. Replies are disabled.</div>
+
+            <div class="card" v-for="post in posts" :key="post.ticketpostid">
                 <div class="card-body">
-                    <form @submit.prevent="submitReply">
-                        <textarea v-model="replyBody" class="form-control" rows="7" />
-                        <div class="text-right text-muted">{{ wordCount }} / 500 words</div>
-                        <input type="file" class="form-control mt-2" @change="e => attachments = e.target.files?.[0] || null" />
-                        <button class="btn btn-primary mt-2" :disabled="wordCount > 500">Post Reply</button>
-                    </form>
+                    <strong>{{ post.fullname }}</strong>
+                    <div class="text-muted">{{ formatDate(post.dateline) }}</div>
+                    <div class="inherit-class" v-html="formatReply(post.contents)"></div>
+
+                    <div v-if="filesByPost[post.ticketpostid]">
+                        <div v-for="f in filesByPost[post.ticketpostid]" :key="f.attach_id" v-html="f.link"></div>
+                    </div>
+
+                    <div v-if="post.liked === 1" class="text-success mt-2">👍 User liked your reply</div>
                 </div>
             </div>
 
-            <div v-for="post in posts" :key="post.ticketpostid" class="card mb-2">
-                <div class="card-header">
-                    <strong>{{ post.fullname }}</strong>
-                    <span class="text-muted ml-2">{{ formatDate(post.dateline) }}</span>
-                </div>
+            <div class="card mt-3" v-if="!isClosed">
+                <div class="card-header">Post Reply</div>
                 <div class="card-body">
-                    <div class="inherit-class" v-html="post.contents"></div>
-                    <div v-if="post.liked === 1" class="text-success mt-2">👍 User liked your reply</div>
-                    <div v-if="post.liked === 0" class="text-danger mt-2">👎 User disliked your reply</div>
-
-                    <div v-if="post.files">
-                        <div v-for="f in post.files" :key="f.attach_id" class="mt-2">
-                            <a :href="f.src" target="_blank">{{ f.link }}</a>
-                        </div>
-                    </div>
+                    <textarea v-model="replyBody" class="form-control" rows="7"></textarea>
+                    <div class="text-right text-muted">{{ wordCount }} / 500 words</div>
+                    <button class="btn btn-primary mt-2" :disabled="wordCount > 500" @click="submitReply">Post Reply</button>
                 </div>
-                <div v-if="post.creator !== '1'" class="card-footer">Email: <b>{{ post.email }}</b></div>
             </div>
         </div>
     </div>
@@ -229,5 +257,8 @@ watch(posts, renderContent);
 
 <style scoped>
 @import 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css';
-.results { max-height: 200px; overflow-y: auto; }
+.results {
+    max-height: 200px;
+    overflow-y: auto;
+}
 </style>
