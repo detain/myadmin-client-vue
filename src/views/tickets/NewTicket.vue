@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useTicketsStore } from '../../stores/tickets.store';
 import { useSiteStore } from '../../stores/site.store.ts';
+import { useAccountStore } from '../../stores/account.store';
 import { reactive, ref, onMounted, computed, nextTick } from 'vue';
+import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import Prism from 'prismjs';
 const ticketsStore = useTicketsStore();
 const siteStore = useSiteStore();
+const accountStore = useAccountStore();
+const { ip } = storeToRefs(accountStore);
 const route = useRoute();
 console.log('Route Query View:');
 console.log(route.query.view);
@@ -74,7 +77,7 @@ const form = reactive({
     content: '',
     allowAccess: true,
     rootPassword: '',
-    clientIp: '',
+    clientIp: ip.value,
     sshRestricted: '0',
     sudoUser: '',
     sudoPassword: '',
@@ -132,9 +135,10 @@ function bs_input_file(): void {
 }
 
 onMounted(() => {
-    loadProducts()
+    loadProducts();
     bs_input_file();
 });
+accountStore.loadOnce();
 </script>
 
 <template>
