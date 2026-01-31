@@ -13,6 +13,8 @@ concurrency:
     cancel-in-progress: true
 
 env:
+    NODE_VERSION: 22
+    YARN_VERSION: 1.22.22
     # Explicit browser cache location so we can cache it
     PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
 
@@ -26,11 +28,11 @@ jobs:
             matrix:
                 include:
                     - os: ubuntu-latest
-                      node_version: 22
+                      node-version: 22
                     #- os: macos-latest
-                    #  node_version: 22
+                    #  node-version: ${{ env.NODE_VERSION }}
                     #- os: windows-latest
-                    #  node_version: 22
+                    #  node-version: ${{ env.NODE_VERSION }}
 
         steps:
             - name: Checkout repository
@@ -41,10 +43,10 @@ jobs:
               with:
                   node-version: ${{ matrix.node_version }}
 
-            - name: Enable Corepack and Yarn 4.12.0
+            - name: Enable Corepack and Yarn
               run: |
                   corepack enable
-                  corepack prepare yarn@4.12.0 --activate
+                  corepack prepare yarn@${{ env.YARN_VERSION }} --activate
 
             - name: Install dependencies
               run: yarn

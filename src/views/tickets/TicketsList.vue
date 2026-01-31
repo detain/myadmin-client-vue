@@ -1,198 +1,232 @@
 <script setup lang="ts">
+import { ref, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useTicketsStore } from '../../stores/tickets.store';
-
-import { ref, computed } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { Ticket, useTicketsStore } from '../../stores/tickets.store';
+import { useSiteStore } from '../../stores/site.store.ts';
 
 const route = useRoute();
-console.log('Route Query View:');
-console.log(route.query.view);
+const router = useRouter();
 const ticketsStore = useTicketsStore();
-const { tickets, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, viewText, rowsOffset, rowsTotal, limit, search, currentPage, pages, view } = storeToRefs(ticketsStore);
-const checkIcon = ref('far fa-square');
-const viewType = computed(() => {
-    if (route.query.view) {
-        return route.query.view;
-    } else {
-        return 'all';
-    }
+const { tickets, st_count, pages, currentPage, view } = storeToRefs(ticketsStore);
+const selectedPeriod = ref(route.query.period ?? '30');
+const siteStore = useSiteStore();
+
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/tickets`, 'Tickets'],
+]);
+siteStore.setPageHeading('Tickets List');
+siteStore.setTitle('Tickets List');
+
+watch(selectedPeriod, (val) => {
+    router.push({
+        query: {
+            ...route.query,
+            page: undefined,
+            period: val === '30' ? undefined : val,
+        },
+    });
 });
 
-const statusText = computed(() => {
-    if (viewText.value) {
-        switch (viewText.value) {
-            case 'open':
-                return 'Open';
-            case 'hold':
-                return 'Awaiting Reply';
-            case 'closed':
-                return 'Closed';
-            default:
-                return 'Inbox';
-        }
-    } else {
-        return 'Inbox';
-    }
-});
+watch(
+    () => route.query,
+    () => ticketsStore.fetchTickets(route.query),
+    { immediate: true }
+);
 
-function toggleCheckboxes() {
-    const checked = tickets.value.every((ticket) => ticket.checked);
-    tickets.value.forEach((ticket) => (ticket.checked = !checked));
-    checkIcon.value = checked ? 'far fa-square' : 'far fa-check-square';
+/* Search */
+const searchBox = ref('');
+const showResults = ref(false);
+const searching = ref(false);
+const searchResults = ref<Ticket[]>([]);
+const spinner = '<div class="spinner-border text-secondary"></div>';
+
+async function submitSearch() {
+    if (!searchBox.value) return;
+    searching.value = true;
+    showResults.value = true;
+    searchResults.value = await ticketsStore.searchTickets(searchBox.value);
+    searching.value = false;
 }
 
-ticketsStore.getAll();
+/* Pagination */
+function goToPage(page: number) {
+    router.push({ query: { ...route.query, page } });
+}
+
+/* UI helpers */
+const periodLabel = computed(() => {
+    const map: Record<string, string> = {
+        '30': 'Last 30 Days',
+        '90': 'Last 90 Days',
+        '365': 'Last 1 Year',
+        '1825': 'Last 5 Years',
+        all: 'All Time',
+    };
+    return map[selectedPeriod.value as string];
+});
+
+function statusIcon(status: string) {
+    return {
+        Open: 'far fa-envelope-open text-success',
+        'On Hold': 'fa fa-pause text-warning',
+        Closed: 'far fa-envelope text-danger',
+        'In Progress': 'fa fa-hourglass-half text-secondary',
+    }[status];
+}
+
+function statusBadge(status: string) {
+    return {
+        Open: 'badge bg-success',
+        'On Hold': 'badge bg-warning',
+        Closed: 'badge bg-danger',
+        'In Progress': 'badge bg-secondary',
+    }[status];
+}
+
+const statusClassMap: Record<number, string> = {
+    4: 'bg-primary',
+    5: 'bg-warning',
+    6: 'bg-danger',
+    7: 'bg-success',
+};
+
+const ticketStatusClass = (id: number) => statusClassMap[id] ?? '';
+
+function timeAgo(input: string | number) {
+    const ts = typeof input === 'number' ? input * 1000 : Date.parse(input);
+    const diff = Math.floor((Date.now() - ts) / 1000);
+    if (diff < 60) return `${diff}s ago`;
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+    return `${Math.floor(diff / 86400)}d ago`;
+}
 </script>
 
 <template>
     <div class="row">
-        <div class="col-md-2">
-            <router-link to="/tickets/new" class="btn btn-primary btn-block mb-3">New Ticket</router-link>
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Folders</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        <!-- Sidebar -->
+        <div id="sidebar" class="col-md-2 folders">
+            <!-- Search -->
+            <div class="card mb-3">
+                <form @submit.prevent="submitSearch">
+                    <div class="input-group input-group-sm">
+                        <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <button class="btn btn-primary" :disabled="searching"><i class="fas fa-search" /></button>
                     </div>
+                </form>
+                <div v-if="showResults" class="results p-2">
+                    <template v-if="searchResults?.length">
+                        <div v-for="row in searchResults" :key="row.ticketid">
+                            <RouterLink :to="`/tickets/${row.ticketmaskid}`" class="pb-2 d-inline-block">
+                                <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
+                                <span style="font-size: 95%">{{ row.subject }}</span>
+                            </RouterLink>
+                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <hr />
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div v-html="spinner" />
+                    </template>
                 </div>
+            </div>
+            <!-- Period Filter -->
+            <div class="card mb-3">
+                <div class="card-header"><h3 class="card-title">Filter by Age</h3></div>
+                <div class="card-body p-2">
+                    <select v-model="selectedPeriod" class="form-control form-control-sm">
+                        <option value="30">Last 30 Days</option>
+                        <option value="90">Last 90 Days</option>
+                        <option value="365">Last 1 Year</option>
+                        <option value="1825">Last 5 Years</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Quick Filters -->
+            <div class="card folder_tickets mb-2">
+                <div class="card-header"><h3 class="card-title">Quick Filter</h3></div>
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item" :class="{ active: viewType == 'all' }">
-                            <router-link to="tickets" class="nav-link">
-                                <i class="fas fa-inbox text-primary">&nbsp;</i> Inbox
-                                <!-- <span class="badge bg-primary float-right">{{ inboxCount }}</span> -->
-                            </router-link>
+                        <li class="nav-item">
+                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
                         </li>
-                        <li class="nav-item" :class="{ active: viewType == 'open' }">
-                            <router-link to="tickets?view=open" class="nav-link">
-                                <i class="far fa-envelope-open text-success">&nbsp;</i> Open
-                                <span class="badge bg-success float-right">{{ countArray['Open'] }}</span>
-                            </router-link>
-                        </li>
-                        <li class="nav-item" :class="{ active: viewType == 'hold' }">
-                            <router-link to="tickets?view=hold" class="nav-link">
-                                <i class="fa fa-pause text-warning">&nbsp;</i> Awaiting Reply
-                                <span class="badge bg-warning float-right">{{ countArray['On Hold'] }}</span>
-                            </router-link>
-                        </li>
-                        <li class="nav-item" :class="{ active: viewType == 'closed' }">
-                            <router-link to="tickets?view=closed" class="nav-link">
-                                <i class="far fa-envelope text-danger">&nbsp;</i> Closed
-                                <span class="badge bg-danger float-right">{{ countArray['Closed'] }}</span>
-                            </router-link>
+                        <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
+                            <RouterLink
+                                class="nav-link"
+                                :to="{
+                                    path: '/tickets',
+                                    query: {
+                                        view: status.ticketstatustitle,
+                                        period: selectedPeriod !== '30' ? selectedPeriod : undefined,
+                                    },
+                                }">
+                                <i :class="statusIcon(status.ticketstatustitle)" /> {{ status.ticketstatustitle }}
+                                <span :class="statusBadge(status.ticketstatustitle)">{{ status.st_count }}</span>
+                            </RouterLink>
                         </li>
                     </ul>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
-        <!-- /.col -->
+        <!-- Main Content -->
         <div class="col-md-10">
-            <form method="POST">
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">{{ statusText }}</h3>
-                        <div class="card-tools" style="width: 40%">
-                            <form method="POST" action="">
-                                <div class="input-group input-group-sm">
-                                    <input v-model="search" type="text" name="search" class="form-control" placeholder="Search by TicketID / Subject / Content" />
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <h4 v-if="loading" class="p-4">Loading...</h4>
-                        <template v-else-if="tickets.length">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-                                <button type="button" class="btn btn-secondary btn-sm checkbox-toggle" @click="toggleCheckboxes"><i :class="checkIcon"></i></button>
-                                <div class="btn-group">
-                                    <button id="close-ticket" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
-                                </div>
-                                <div class="float-right">
-                                    {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
-                                    <div class="btn-group">
-                                        <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
-                                        <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                        <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + currentPage + 1 + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                </div>
-                                <!-- /.float-right -->
-                            </div>
-                            <div class="table-responsive mailbox-messages">
-                                <table>
-                                    <tbody>
-                                        <tr v-for="ticket in tickets" :key="ticket.ticketid">
-                                            <td>
-                                                <div v-if="ticket.can_close === 'no'" class="icheck-primary">
-                                                    <input :id="'check' + ticket.ticketid" v-model="ticket.checked" type="checkbox" value="1" :name="`tickets[${ticket.ticketid}]`" />
-                                                    <label :for="'check' + ticket.ticketid"></label>
-                                                </div>
-                                            </td>
-                                            <td class="mailbox-star">
-                                                <i v-if="ticket.status_text === 'Open'" class="far fa-envelope-open text-success"></i>
-                                                <i v-else-if="ticket.status_text === 'On Hold'" class="fa fa-pause text-warning"></i>
-                                                <i v-else-if="ticket.status_text === 'Closed'" class="far fa-envelope text-danger"></i>
-                                            </td>
-                                            <td class="mailbox-name">
-                                                <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.lastreplier }}</router-link>
-                                            </td>
-                                            <td class="mailbox-subject">
-                                                <b>
-                                                    <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.ticketmaskid }}</router-link></b
-                                                >
-                                                - <router-link :to="'/tickets/' + ticket.ticketid">{{ ticket.title.length > 140 ? ticket.title.substring(0, 140 - 3) + '...' : ticket.title }}</router-link>
-                                            </td>
-                                            <td v-if="ticket.attachments.length > 0" class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                            <td class="mailbox-date">{{ ticket.lastactivity }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.mail-box-messages -->
-                        </template>
-                        <h4 v-else class="p-4">No tickets found!</h4>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer p-0">
-                        <div v-if="tickets.length" class="mailbox-controls">
-                            <!-- Check all button -->
-                            <button type="button" class="btn btn-secondary btn-sm checkbox-toggle"><i class="far fa-square"></i></button>
-                            <div class="btn-group">
-                                <button id="close-ticket-footer" type="submit" class="btn btn-danger btn-sm" value="Close" title="Close Tickets" tooltip="Close Tickets"><i class="far fa-envelope"></i></button>
-                            </div>
-                            <div class="float-right">
-                                {{ rowsOffset + 1 }}-{{ !search || rowsOffset + limit < rowsTotal ? rowsOffset + limit : rowsTotal }}/{{ rowsTotal }}
-                                <div class="btn-group">
-                                    <button v-if="currentPage - 1 < 1" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage - 1) + '&limit=' + limit"><i class="fas fa-chevron-left"></i></router-link>
-                                    <button v-if="currentPage + 1 > pages" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    <router-link v-else class="btn btn-secondary btn-sm" :to="'tickets?view=' + view + '&page=' + (currentPage + 1) + '&limit=' + limit"><i class="fas fa-chevron-right"></i></router-link>
-                                </div>
-                                <!-- /.btn-group -->
-                            </div>
-                            <!-- /.float-right -->
-                        </div>
-                    </div>
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">{{ view || 'All Tickets' }} – {{ periodLabel }}</h3>
                 </div>
-                <!-- /.card -->
-            </form>
+                <div class="card-body p-0">
+                    <table v-if="tickets.length" class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th class="text-left">Subject</th>
+                                <th class="text-left">Last Replier</th>
+                                <th class="text-left">Last Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="t in tickets" :key="t.ticketmaskid">
+                                <td><i :class="statusIcon(t.ticketstatustitle)" /></td>
+                                <td><i v-if="Number(t.hasattachments)" class="fas fa-paperclip" /></td>
+                                <td class="text-left">
+                                    <RouterLink :to="`/tickets/${t.ticketmaskid}`"
+                                        ><b>{{ t.ticketmaskid }}</b> – {{ t.subject }}</RouterLink
+                                    >
+                                </td>
+                                <td class="text-left">{{ t.lastreplier }}</td>
+                                <td class="text-left">{{ timeAgo(Number(t.lastactivity)) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 v-else class="p-4">No tickets found!</h4>
+                </div>
+                <!-- Pagination -->
+                <div v-if="pages > 1" class="card-footer">
+                    <ul class="pagination pagination-sm justify-content-end">
+                        <li v-for="p in pages" :key="p" :class="['page-item', { active: p === currentPage }]">
+                            <a class="page-link" @click.prevent="goToPage(p)">{{ p }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </template>
 
 <style scoped>
 a.btn {
     color: inherit !important;
+}
+
+.results {
+    width: 100%;
+    overflow-y: auto;
+    box-shadow: rgba(0, 0, 0, 0.22) 0 3px 14px;
+    border-radius: 0 0 8px 8px;
+    height: 200px;
 }
 </style>

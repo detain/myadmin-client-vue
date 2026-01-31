@@ -5,19 +5,9 @@ import { RouterLink } from 'vue-router';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
-import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
-import { Chart, LineController, BarController, LineElement, BarElement, PointElement, LinearScale, TimeScale, Tooltip, Legend, Filler } from 'chart.js';
+import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue';
+import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
-
-Chart.register(LineController, BarController, LineElement, BarElement, PointElement, LinearScale, TimeScale, Tooltip, Legend, Filler);
-
-const todayGraph = ref<HTMLCanvasElement | null>(null);
-const hourGraph = ref<HTMLCanvasElement | null>(null);
-const monthGraph = ref<HTMLCanvasElement | null>(null);
-
-let todayChart: Chart | null = null;
-let hourChart: Chart | null = null;
-let monthChart: Chart | null = null;
 
 const props = defineProps<{
     id: number;
@@ -31,245 +21,189 @@ const trafficData = ref<any>([]);
 const id = computed(() => props.id);
 const module = computed(() => props.module);
 
+Chart.register(...registerables);
+
 const metric = ref<'bits' | 'bytes'>('bits');
 
-function formatTotal(val: number, metricType = metric.value) {
-    const unit = metricType === 'bits' ? 'b' : 'B';
+const todayCanvas = ref<HTMLCanvasElement | null>(null);
+const hourCanvas = ref<HTMLCanvasElement | null>(null);
+const dayCanvas = ref<HTMLCanvasElement | null>(null);
 
-    if (val > 1073741824) return `${Math.ceil(val / 1073741824)} G${unit}`;
-    if (val > 1048576) return `${Math.ceil(val / 1048576)} M${unit}`;
-    if (val > 1024) return `${Math.ceil(val / 1024)} K${unit}`;
-
-    return `${val} ${unit}`;
-}
-
-function formatBandwidth(val: number, metricType = metric.value) {
-    return `${formatTotal(val, metricType)}/s`;
-}
-
-const currentIn = computed(() => formatBandwidth(trafficData.value.usage.current.in, metric.value));
-const currentOut = computed(() => formatBandwidth(trafficData.value.usage.current.out, metric.value));
-const peakIn = computed(() => formatBandwidth(trafficData.value.usage.peak.in, metric.value));
-const peakOut = computed(() => formatBandwidth(trafficData.value.usage.peak.out, metric.value));
-const avgIn = computed(() => formatBandwidth(trafficData.value.usage.average.in.value, metric.value));
-const avgOut = computed(() => formatBandwidth(trafficData.value.usage.average.out.value, metric.value));
-
-const dayIn = computed(() => formatTotal(trafficData.value.totals.day.in, metric.value));
-const dayOut = computed(() => formatTotal(trafficData.value.totals.day.out, metric.value));
-const monthIn = computed(() => formatTotal(trafficData.value.totals.month.in, metric.value));
-const monthOut = computed(() => formatTotal(trafficData.value.totals.month.out, metric.value));
-const yearIn = computed(() => formatTotal(trafficData.value.totals.year.in, metric.value));
-const yearOut = computed(() => formatTotal(trafficData.value.totals.year.out, metric.value));
-const allIn = computed(() => formatTotal(trafficData.value.totals.all.in, metric.value));
-const allOut = computed(() => formatTotal(trafficData.value.totals.all.out, metric.value));
-
-onMounted(async () => {
-    await loadTraffic();
-
-    buildTodayChart();
-    buildHourChart();
-    buildDayChart();
-
-    pollTimer = window.setInterval(pollTraffic, trafficData.value.interval * 1000);
-});
-
-onBeforeUnmount(() => {
-    if (pollTimer) clearInterval(pollTimer);
-    todayChart?.destroy();
-    hourChart?.destroy();
-    monthChart?.destroy();
-});
-
-let pollTimer: number | null = null;
-
-async function pollTraffic() {
-    if (!trafficData.value) return;
-
-    const lastTs = trafficData.value.last;
-
-    const json = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/traffic_usage?ts=${lastTs}`);
-
-    trafficData.value.last = json.last;
-
-    // current
-    trafficData.value.usage.current = json.usage.current;
-
-    // peak
-    if (json.usage.peak.in + json.usage.peak.out > trafficData.value.usage.peak.in + trafficData.value.usage.peak.out) {
-        trafficData.value.usage.peak = json.usage.peak;
-    }
-
-    // averages
-    for (const dir of ['in', 'out'] as const) {
-        const avg = trafficData.value.usage.average[dir];
-        avg.total += json.usage.average[dir].total;
-        avg.count += json.usage.average[dir].count;
-        avg.value = Math.ceil(avg.total / avg.count);
-    }
-
-    // append chart data
-    if (json.data?.length && todayChart) {
-        json.data.forEach((s: any, idx: number) => {
-            todayChart!.data.datasets[idx].data.push(...s.data.map((p: any) => ({ x: p[0], y: p[1] })));
-        });
-
-        todayChart.update('none');
-    }
-}
-
-function buildTodayChart() {
-    if (!todayGraph.value || !trafficData.value?.data) return;
-
-    todayChart?.destroy();
-
-    todayChart = new Chart(todayGraph.value, {
-        type: 'line',
-        data: {
-            datasets: trafficData.value.data.map((s: any) => ({
-                label: s.name,
-                data: s.data.map((p: any) => ({ x: p[0], y: p[1] })),
-                fill: true,
-                tension: 0.4,
-            })),
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => formatBandwidth(ctx.parsed.y),
-                    },
-                },
-            },
-            scales: {
-                x: { type: 'time' },
-                y: {
-                    ticks: {
-                        callback: (v) => formatBandwidth(Number(v)),
-                    },
-                },
-            },
-        },
-    });
-}
-
-function buildHourChart() {
-    if (!hourGraph.value || !trafficData.value?.history?.hour) return;
-
-    hourChart?.destroy();
-
-    hourChart = new Chart(hourGraph.value, {
-        type: 'bar',
-        data: {
-            datasets: [
-                {
-                    label: 'Bandwidth Used',
-                    data: trafficData.value.history.hour.data.map((p: any) => ({
-                        x: p[0],
-                        y: p[1],
-                    })),
-                },
-            ],
-        },
-        options: {
-            scales: {
-                x: { type: 'time' },
-                y: {
-                    ticks: {
-                        callback: (v) => formatTotal(Number(v)),
-                    },
-                },
-            },
-        },
-    });
-}
-
-function buildDayChart() {
-    if (!monthGraph.value || !trafficData.value?.history?.day) return;
-
-    monthChart?.destroy();
-
-    monthChart = new Chart(monthGraph.value, {
-        type: 'bar',
-        data: {
-            datasets: [
-                {
-                    label: 'Bandwidth Used',
-                    data: trafficData.value.history.day.data.map((p: any) => ({
-                        x: p[0],
-                        y: p[1],
-                    })),
-                },
-            ],
-        },
-        options: {
-            scales: {
-                x: { type: 'time' },
-                y: {
-                    ticks: {
-                        callback: (v) => formatTotal(Number(v)),
-                    },
-                },
-            },
-        },
-    });
-}
+let charts: Chart[] = [];
+let intervalId: number;
 
 const loadTraffic = async () => {
     try {
-        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/traffic_usage`);
-        loading.value = false;
-        console.log('api success');
-        console.log(response);
+        const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/traffic_usage?metric=${metric.value}`);
         trafficData.value = response;
-    } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        loading.value = false;
+        renderCharts();
+    } catch (e) {
+        console.error(e);
     }
 };
 
-loadTraffic();
+const formatData = (value: number, perSecond = false) => {
+    const isBytes = metric.value === 'bytes';
+    const multiplier = isBytes ? 1 : 8;
+    const unit = isBytes ? 'Bytes' : 'Bits';
+    let result: string;
+    if (value > 1073741824) {
+        result = `${((value / 1073741824) * multiplier).toFixed(2)} G${unit}`;
+    } else if (value > 1048576) {
+        result = `${((value / 1048576) * multiplier).toFixed(2)} M${unit}`;
+    } else if (value > 1024) {
+        result = `${((value / 1024) * multiplier).toFixed(2)} K${unit}`;
+    } else {
+        result = `${(value * multiplier).toFixed(2)} ${unit}`;
+    }
+    return perSecond ? `${result}/s` : result;
+};
+
+const destroyCharts = () => {
+    charts.forEach((c) => c.destroy());
+    charts = [];
+};
+
+const renderCharts = () => {
+    if (!trafficData.value) return;
+    destroyCharts();
+    const today = trafficData.value.data;
+    const hour = trafficData.value.history.hour.data;
+    const day = trafficData.value.history.day.data;
+    charts.push(
+        new Chart(todayCanvas.value!, {
+            type: 'line',
+            data: {
+                labels: today[0].data.map((d: any) => d[0]),
+                datasets: [
+                    {
+                        label: today[0].name,
+                        data: today[0].data.map((d: any) => d[1]),
+                        borderColor: 'rgba(54,162,235,1)',
+                    },
+                    {
+                        label: today[1].name,
+                        data: today[1].data.map((d: any) => d[1]),
+                        borderColor: 'rgba(255,206,86,1)',
+                    },
+                ],
+            },
+        }),
+        new Chart(hourCanvas.value!, {
+            type: 'line',
+            data: {
+                labels: hour.map((d: any) => d[0]),
+                datasets: [
+                    {
+                        label: 'Hourly Usage',
+                        data: hour.map((d: any) => d[1]),
+                        borderColor: 'rgba(75,192,192,1)',
+                    },
+                ],
+            },
+        }),
+        new Chart(dayCanvas.value!, {
+            type: 'line',
+            data: {
+                labels: day.map((d: any) => d[0]),
+                datasets: [
+                    {
+                        label: 'Daily Usage',
+                        data: day.map((d: any) => d[1]),
+                        borderColor: 'rgba(153,102,255,1)',
+                    },
+                ],
+            },
+        })
+    );
+};
+
+const historyRows = computed(() => {
+    const t = trafficData.value?.totals || {};
+    return [
+        { key: 'today', label: 'Today', in: formatData(t.day?.in || 0), out: formatData(t.day?.out || 0) },
+        { key: 'month', label: 'This Month', in: formatData(t.month?.in || 0), out: formatData(t.month?.out || 0) },
+        { key: 'year', label: 'This Year', in: formatData(t.year?.in || 0), out: formatData(t.year?.out || 0) },
+        { key: 'all', label: 'All', in: formatData(t.all?.in || 0), out: formatData(t.all?.out || 0) },
+    ];
+});
+
+const usageRows = computed(() => {
+    const u = trafficData.value?.usage || {};
+    return [
+        { key: 'current', label: 'Current', in: formatData(u.current?.in || 0, true), out: formatData(u.current?.out || 0, true), bold: true },
+        { key: 'average', label: 'Average', in: formatData(u.average?.in?.value || 0, true), out: formatData(u.average?.out?.value || 0, true) },
+        { key: 'peak', label: 'Peak', in: formatData(u.peak?.in || 0, true), out: formatData(u.peak?.out || 0, true) },
+    ];
+});
+
+watch(metric, loadTraffic);
+
+onMounted(() => {
+    loadTraffic();
+    intervalId = window.setInterval(loadTraffic, 1000 * 60 * 5);
+});
+
+onBeforeUnmount(() => {
+    destroyCharts();
+    clearInterval(intervalId);
+});
 </script>
 
 <template>
     <div class="card shadow-none">
         <div class="card-header">
-            <div class="p-1">
-                <h3 class="card-title py-2"><i class="fa fa-tachometer-alt"></i> &nbsp;Bandwidth / Traffic Usage</h3>
-                <div class="card-tools text-right">
-                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+            <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex align-items-center">
+                    <h3 class="card-title py-2 mb-0"><i class="fa fa-tachometer-alt"></i>&nbsp;Bandwidth / Traffic Usage</h3>
+                    <div class="metric-toggle-container ml-4">
+                        <span class="toggle-label mr-2">Display in:</span>
+                        <div class="metric-toggle">
+                            <input id="bits-metric" v-model="metric" type="radio" value="bits" />
+                            <label for="bits-metric">bits</label>
+                            <input id="bytes-metric" v-model="metric" type="radio" value="bytes" />
+                            <label for="bytes-metric">bytes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-tools">
+                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left"></i>&nbsp;Back </router-link>
                 </div>
             </div>
         </div>
         <div class="card-body">
+            <div class="alert alert-info">
+                <strong><i class="fa fa-warning"></i>&nbsp;Note:</strong>
+                This is not used for billing calculations and is an estimate only based on your virtual network cards.
+            </div>
             <div class="row">
                 <div class="col">
-                    <h5 class="text-md">Today Usage</h5>
-                    <canvas id="todayGraph" ref="todayGraph" width="400" height="100"></canvas>
+                    <h5>Today Usage</h5>
+                    <canvas ref="todayCanvas"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <h5 class="text-md">Hourly Usage</h5>
-                    <canvas id="hourGraph" ref="hourGraph" width="400" height="100"></canvas>
+                    <h5>Hourly Usage</h5>
+                    <canvas ref="hourCanvas"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <h5 class="text-md">Daily Usage</h5>
-                    <canvas id="monthGraph" ref="monthGraph" width="400" height="100"></canvas>
+                    <h5>Daily Usage</h5>
+                    <canvas ref="dayCanvas"></canvas>
                 </div>
             </div>
-            <div class="card">
+
+            <div class="card mt-4">
                 <div class="card-header">
-                    <div class="p-1">
-                        <h5 class="card-title text-bold py-2"><i class="fa fa-bar-chart">&nbsp;</i>&nbsp;Statistics</h5>
-                    </div>
+                    <h5 class="card-title text-bold"><i class="fa fa-bar-chart"></i>&nbsp;Statistics</h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <table class="table-bordered table">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>History</th>
@@ -277,48 +211,17 @@ loadTraffic();
                                         <th class="text-danger">Out</th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="trafficData.totals">
-                                    <tr>
-                                        <td>Today</td>
-                                        <td class="text-success">
-                                            <div class="day_in">{{ dayIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="day_out">{{ dayOut }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>This Month</td>
-                                        <td class="text-success">
-                                            <div class="month_in">{{ monthIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="month_out">{{ monthOut }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>This Year</td>
-                                        <td class="text-success">
-                                            <div class="year_in">{{ yearIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="year_out">{{ yearOut }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>All</td>
-                                        <td class="text-success">
-                                            <div class="all_in">{{ allIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="all_out">{{ allOut }}</div>
-                                        </td>
+                                <tbody>
+                                    <tr v-for="row in historyRows" :key="row.key">
+                                        <td>{{ row.label }}</td>
+                                        <td class="text-success">{{ row.in }}</td>
+                                        <td class="text-danger">{{ row.out }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col">
-                            <table class="table-bordered table">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Usage</th>
@@ -326,37 +229,14 @@ loadTraffic();
                                         <th class="text-danger">Out</th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="trafficData.usage">
-                                    <tr>
-                                        <td><strong>Current</strong></td>
-                                        <td class="text-success">
-                                            <strong>
-                                                <div class="current_in">{{ currentIn }}</div>
-                                            </strong>
+                                <tbody>
+                                    <tr v-for="row in usageRows" :key="row.key">
+                                        <td>
+                                            <strong v-if="row.bold">{{ row.label }}</strong
+                                            ><span v-else>{{ row.label }}</span>
                                         </td>
-                                        <td class="text-danger">
-                                            <strong>
-                                                <div class="current_out">{{ currentOut }}</div>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Average</td>
-                                        <td class="text-success">
-                                            <div class="average_in">{{ avgIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="average_out">{{ avgOut }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Peak</td>
-                                        <td class="text-success">
-                                            <div class="peak_in">{{ peakIn }}</div>
-                                        </td>
-                                        <td class="text-danger">
-                                            <div class="peak_out">{{ peakOut }}</div>
-                                        </td>
+                                        <td class="text-success">{{ row.in }}</td>
+                                        <td class="text-danger">{{ row.out }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -368,4 +248,178 @@ loadTraffic();
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.metric-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toggle-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.metric-toggle {
+    display: inline-flex;
+    background: #e9ecef;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+.metric-toggle input[type='radio'] {
+    display: none;
+}
+
+.metric-toggle label {
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6c757d;
+    user-select: none;
+    margin: 0;
+}
+
+.metric-toggle label:hover {
+    color: #2c3e50;
+}
+
+.metric-toggle input[type='radio']:checked + label {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+body.dark-mode .toggle-label {
+    color: #bdc3c7;
+}
+
+body.dark-mode .metric-toggle {
+    background: #1a252f;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .metric-toggle label {
+    color: #95a5a6;
+}
+
+body.dark-mode .metric-toggle label:hover {
+    color: #ecf0f1;
+}
+
+body.dark-mode .metric-toggle input[type='radio']:checked + label {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4);
+}
+.pill-toggle {
+    display: inline-flex;
+    background: #e9ecef;
+    border-radius: 50px;
+    padding: 3px;
+    border: 2px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.pill-toggle input[type='radio'] {
+    display: none;
+}
+
+.pill-toggle label {
+    padding: 6px 18px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6c757d;
+    user-select: none;
+    margin: 0;
+}
+
+.pill-toggle label:hover {
+    color: #2c3e50;
+}
+
+.pill-toggle input[type='radio']:checked + label {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+body.dark-mode .pill-toggle {
+    background: #1a252f;
+    border-color: #2c3e50;
+}
+
+body.dark-mode .pill-toggle label {
+    color: #95a5a6;
+}
+
+body.dark-mode .pill-toggle label:hover {
+    color: #ecf0f1;
+}
+
+body.dark-mode .pill-toggle input[type='radio']:checked + label {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+.badge-toggle {
+    display: inline-flex;
+    gap: 8px;
+}
+
+.badge-toggle input[type='radio'] {
+    display: none;
+}
+
+.badge-toggle label {
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6c757d;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    user-select: none;
+    margin: 0;
+}
+
+.badge-toggle label:hover {
+    border-color: #3498db;
+    color: #2c3e50;
+}
+
+.badge-toggle input[type='radio']:checked + label {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+body.dark-mode .badge-toggle label {
+    color: #95a5a6;
+    background: #1a252f;
+    border-color: #2c3e50;
+}
+
+body.dark-mode .badge-toggle label:hover {
+    border-color: #3498db;
+    color: #ecf0f1;
+}
+
+body.dark-mode .badge-toggle input[type='radio']:checked + label {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4);
+}
+</style>

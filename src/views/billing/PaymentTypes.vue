@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { snakeToCamel } from '../../helpers/snakeToCamel';
-
 import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 
@@ -234,6 +232,35 @@ try {
 }
 accountStore.load();
 //accountStore.getCountries();
+
+watch(
+    () => data.value,
+    (val) => {
+        if (!val) return;
+
+        /* -------------------------
+           PAYMENT METHOD
+        -------------------------- */
+        if (val.payment_method === 'paypal') {
+            paymentMethod.value = 'paypal';
+        } else if (val.payment_method === 'cc') {
+            // find matching credit card
+            const match = Object.entries(val.ccs || {}).find(([, cc]) => cc.cc === val.cc && cc.cc_exp === val.cc_exp);
+
+            if (match) {
+                const [cc_id] = match;
+                paymentMethod.value = `cc${cc_id}`;
+                selectedCc.value = Number(cc_id);
+            }
+        }
+
+        /* -------------------------
+           AUTO-CHARGE CHECKBOX
+        -------------------------- */
+        cc_auto_checked.value = val.cc_auto == '1';
+    },
+    { immediate: true }
+);
 </script>
 
 <template>
@@ -279,7 +306,7 @@ accountStore.load();
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                        <input id="customSwitch3" v-model="cc_auto_checked" type="checkbox" class="custom-control-input" name="cc_auto" @change="updatePaymentMethod()" />
+                        <input id="customSwitch3" v-model="cc_auto_checked" type="checkbox" class="custom-control-input" @change="updatePaymentMethod()" />
                         <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
                     </div>
                 </div>

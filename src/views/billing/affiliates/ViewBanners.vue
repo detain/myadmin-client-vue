@@ -117,9 +117,9 @@ loadBanners();
                 <!-- Banners Body -->
                 <div class="card-body">
                     <div class="banner-grid">
-                        <a v-for="banner in banners" :key="banner.image" :href="`/affiliate?link=view_banner&b=${banner.image}&w=${banner.width}&h=${banner.height}`">
+                        <router-link v-for="banner in banners" :key="banner.image" :to="`/affiliate/banners/${banner.image}?w=${banner.width}&h=${banner.height}`">
                             <img :src="`https://www.interserver.net/logos/${banner.image}`" alt="InterServer Web Hosting and VPS" />
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>

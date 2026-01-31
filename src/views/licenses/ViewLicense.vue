@@ -3,13 +3,10 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { ucwords } from '../../helpers/ucwords';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useLicenseStore } from '../../stores/license.store';
 import { useSiteStore } from '../../stores/site.store';
-
-import $ from 'jquery';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
@@ -174,7 +171,7 @@ licenseStore.getById(id);
     </div>
     <div v-if="link" class="row shadow-none">
         <div v-if="link == 'change_ip'" class="col">
-            <ChangeIp :id="id"></ChangeIp>
+            <ChangeIp :id="id" :cur-ip="serviceInfo.license_ip"></ChangeIp>
         </div>
         <div v-else-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2" :title-field3="titleField3"></Cancel>

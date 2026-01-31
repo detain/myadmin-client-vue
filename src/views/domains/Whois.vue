@@ -4,23 +4,47 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
+    hostname: string;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
+const id = computed(() => props.id);
+const hostname = computed(() => props.hostname);
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const module: string = 'domains';
 const currencySymbol = ref('$');
 const whoisCost = ref(0);
-const domain = ref('');
-//const id = ref('');
 const contactPrivacyCost = ref(5.0);
 function placeOrder() {
     // Handle the form submission
-    // ...
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/whois`, {}).then((response) => {
+            Swal.close();
+            console.log('domain whois privacy');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('domain whois privacyc');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
 </script>
 
@@ -47,10 +71,8 @@ function placeOrder() {
                 <div class="card-body">
                     <form @submit.prevent="placeOrder">
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label" for="domain">Domain</label>
-                            <div class="col-sm-10 input-group">
-                                <input id="hostname" type="text" class="form-control form-control-sm" :value="domain" disabled />
-                            </div>
+                            <label class="col-md-2 col-form-label" for="hostname">Domain</label>
+                            <div class="col-sm-10 input-group"><input id="hostname" type="text" class="form-control form-control-sm" :value="hostname" disabled /></div>
                         </div>
                         <div id="whois_row" class="form-group row">
                             <label class="col-md-2 col-form-label" for="whois_cost">Whois Cost</label>

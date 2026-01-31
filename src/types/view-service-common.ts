@@ -13,7 +13,7 @@ export interface ServiceType {
     services_cost: number;
     services_curency?: string;
     services_category: number;
-    services_buyable: number | boolean;
+    services_buyable: 1 | 0 | boolean | '1' | '0';
     services_type: number;
     services_field1: string;
     services_field2: string;

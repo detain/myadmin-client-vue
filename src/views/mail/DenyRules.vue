@@ -156,7 +156,7 @@ loadRules();
                                 <td class="truncate">{{ email.data }}</td>
                                 <td class="truncate">
                                     <button class="btn btn-sm btn-primary me-1" @click="openEdit(email)">Edit</button>
-                                    <button class="btn btn-sm btn-primary" @click="deleteRule(email.id)"> Delete </button>
+                                    <button class="btn btn-sm btn-primary" @click="deleteRule(email.id)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

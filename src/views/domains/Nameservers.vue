@@ -6,7 +6,6 @@ import { watch, ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
-//import iconDns from '../../assets/images/myadmin/dns.png';
 const props = defineProps<{
     id: number;
     nameservers: NameServerRow[] | undefined;
@@ -111,6 +110,7 @@ function registerNameserver() {
                     icon: 'success',
                     html: `Success${response}`,
                 });
+                loadNameservers();
             });
     } catch (error: any) {
         Swal.close();
@@ -123,7 +123,7 @@ function registerNameserver() {
     }
 }
 
-function confirmDelete(index: number) {
+function confirmDelete(name: string, ip: string) {
     Swal.fire({
         icon: 'error',
         title: 'Delete nameserver',
@@ -133,17 +133,16 @@ function confirmDelete(index: number) {
     }).then((result) => {
         if (result.isConfirmed) {
             try {
-                fetchWrapper
-                    .delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?index=${index}`)
-                    .then((response) => {
-                        Swal.close();
-                        console.log('delete nameserver success');
-                        console.log(response);
-                        Swal.fire({
-                            icon: 'success',
-                            html: `Success${response}`,
-                        });
+                fetchWrapper.delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?name=${name}&ip=${ip}`).then((response) => {
+                    Swal.close();
+                    console.log('delete nameserver success');
+                    console.log(response);
+                    Swal.fire({
+                        icon: 'success',
+                        html: `Success${response}`,
                     });
+                    loadNameservers();
+                });
             } catch (error: any) {
                 Swal.close();
                 console.log('delete  nameserver failed');
@@ -262,7 +261,7 @@ loadNameservers();
                                         <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? 'Yes' : 'No' }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(index)"><i class="fa fa-trash-o"></i></a>
+                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

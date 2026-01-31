@@ -5,6 +5,7 @@ import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { DomainFields } from '../../types/domains';
 import { moduleLink } from '../../helpers/moduleLink.ts';
+import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
@@ -12,22 +13,64 @@ const id = computed(() => props.id);
 const module: string = 'domains';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const tabIndex = ref(0);
 const domainFields = ref<DomainFields>({});
 
-const updateContact = () => {
-    // Handle contact update logic here
+const updateContact = async () => {
+    await Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        // Build payload from domainFields
+        const payload: Record<string, any> = {};
+
+        for (const [fieldName, fieldData] of Object.entries(domainFields.value)) {
+            payload[fieldName] = fieldData.value;
+        }
+        const response = await fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`, payload);
+        Swal.close();
+        console.log('Contact updated successfully', response);
+        await Swal.fire({
+            icon: 'success',
+            html: `Success ${response}`,
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.error('Failed to update contact:', error);
+        await Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 };
 
-try {
-    fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`).then((response: DomainFields) => {
-        console.log(response);
-        domainFields.value = response;
+async function loadContact() {
+    await Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
     });
-} catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    try {
+        fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/contact`).then((response: DomainFields) => {
+            Swal.close();
+            console.log(response);
+            domainFields.value = response;
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('error:');
+        console.log(error);
+        await Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
 }
+
+loadContact();
 </script>
 
 <template>
@@ -43,18 +86,18 @@ try {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" @submit.prevent="updateContact">
+                    <form v-if="Object.keys(domainFields).length" method="POST" @submit.prevent="updateContact">
                         <div v-for="(fieldData, fieldName, fieldIndex) in domainFields" :key="fieldIndex" class="form-group row">
                             <template v-if="fieldData.label && fieldData.label">
                                 <label class="col-sm-3 col-form-label" :for="String(fieldName)">{{ fieldData.label }}<span v-if="fieldData.required" class="text-danger"> *</span></label>
                             </template>
                             <div class="col-sm-9 input-group">
                                 <template v-if="fieldData.input === 'text'">
-                                    <input type="text" :name="String(fieldName)" class="form-control form-control-sm" :value="fieldData.value" :tabindex="++tabIndex" />
+                                    <input v-model="domainFields[String(fieldName)].value" type="text" :name="String(fieldName)" class="form-control form-control-sm" :tabindex="fieldIndex + 1" />
                                 </template>
                                 <template v-else-if="fieldData.input && fieldData.input[0] === 'select'">
-                                    <select :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="++tabIndex">
-                                        <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val" :selected="fieldData.value === val">{{ displayName }}</option>
+                                    <select v-model="domainFields[String(fieldName)].value" :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="fieldIndex + 1">
+                                        <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
                                 </template>
                                 <template v-if="fieldData.tip">
