@@ -74,7 +74,7 @@ async function handleSubmit() {
         sudo_user: form.sudoUser,
         sudo_pass: form.sudoPassword,
         port_no: form.sshPort,
-        attachments: fileBase64.value ? [{ name: fileName.value, content: fileBase64.value }] : [],
+        attachments: fileBase64.value ? [{ name: fileName.value, content: getRawBase64() }] : [],
     };
     console.log('Submitting ticket', formData);
     await Swal.fire({
