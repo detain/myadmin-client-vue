@@ -207,10 +207,8 @@ accountStore.loadOnce();
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Server Access</label>
                             <div class="col-sm-9">
-                                <div class="icheck-success">
-                                    <input v-model="form.allowAccess" type="checkbox" />
-                                    <label> I allow InterServer to access my server and perform modifications </label>
-                                </div>
+                                <input id="allow-access" v-model="form.allowAccess" type="checkbox" style="margin-right: 5px;"/>
+                                <label> I allow InterServer to access my server and perform modifications </label>
                                 <span class="help-text text-red d-block"><b>Please note:</b> By opening a support request InterServer may need to access, debug, or modify files in your account. This requirement is needed in order to provide technical support. Please only continue if you agree.</span>
                             </div>
                         </div>
@@ -248,6 +246,7 @@ accountStore.loadOnce();
                             <div class="form-group col-md-4">
                                 <label>Sudo Password</label>
                                 <input v-model="form.sudoPassword" class="form-control form-control-sm" />
+                                <span class="help-text text-gray text-sm">Passwords are stored in a separate encrypted database.</span>
                                 <div class="invalid-feedback">Sudo password is required.</div>
                             </div>
                             <div class="form-group col-md-1">
