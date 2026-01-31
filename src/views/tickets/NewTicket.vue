@@ -106,13 +106,11 @@ const form = reactive({
                         <!-- File Upload -->
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 col-form-label">File Upload</label>
-                            <div class="col-sm-9 input-group">
-                                <div class="controls col-sm-9 input-group input-file" name="file_attachment">
-                                    <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button></span>
-                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                    <!-- <input type="file" class="form-control form-control-sm input-text-file" accept="image/png,image/jpeg,image/gif" @change="handleFile" /> -->
-                                    <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button></span>
-                                </div>
+                            <div class="controls col-sm-9 input-group input-file" name="file_attachment">
+                                <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button></span>
+                                <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
+                                <!-- <input type="file" class="form-control form-control-sm input-text-file" accept="image/png,image/jpeg,image/gif" @change="handleFile" /> -->
+                                <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button></span>
                             </div>
                         </div>
 
