@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTicketsStore } from '../../stores/tickets.store';
 import { useSiteStore } from '../../stores/site.store.ts';
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, onMounted, computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
@@ -75,6 +75,58 @@ const form = reactive({
     sudoPassword: '',
     sshPort: 22,
 });
+
+function bs_input_file(): void {
+    document.querySelectorAll<HTMLElement>('.input-file').forEach((wrapper) => {
+        // Prevent duplicate ghost inputs
+        const next = wrapper.nextElementSibling;
+        if (next && next.classList.contains('input-ghost')) {
+            return;
+        }
+        // Create hidden file input
+        const ghost = document.createElement('input');
+        ghost.type = 'file';
+        ghost.className = 'input-ghost';
+        ghost.style.visibility = 'hidden';
+        ghost.style.height = '0';
+        // Copy name attribute
+        const name = wrapper.getAttribute('name');
+        if (name) ghost.name = name;
+        wrapper.parentNode?.insertBefore(ghost, wrapper.nextSibling);
+        // Type-safe element lookups
+        const chooseBtn = wrapper.querySelector<HTMLButtonElement>('.btn-choose');
+        const resetBtn = wrapper.querySelector<HTMLButtonElement>('.btn-reset');
+        const textInput = wrapper.querySelector<HTMLInputElement>('input[type="text"]');
+        // File selected → update text field
+        ghost.addEventListener('change', () => {
+            const fileName = ghost.value.split('\\').pop() || '';
+            if (textInput) {
+                textInput.value = fileName;
+            }
+        });
+        // Choose button opens dialog
+        chooseBtn?.addEventListener('click', () => {
+            ghost.click();
+        });
+        // Reset clears everything
+        resetBtn?.addEventListener('click', () => {
+            ghost.value = '';
+            if (textInput) {
+                textInput.value = '';
+            }
+        });
+        // Text input behavior
+        if (textInput) {
+            textInput.style.cursor = 'pointer';
+            textInput.addEventListener('mousedown', (e: MouseEvent) => {
+                e.preventDefault();
+                ghost.click();
+            });
+        }
+    });
+}
+
+onMounted(bs_input_file);
 </script>
 
 <template>
@@ -124,7 +176,7 @@ const form = reactive({
 
                         <!-- File Upload -->
                         <div class="form-group row mb-0">
-                            <label class="col-sm-3 col-form-label">File Upload</label>
+                            <label for="file_upload" class="col-sm-3 col-form-label requiredField">File Upload</label>
                             <div class="controls col-sm-9 input-group input-file" name="file_attachment">
                                 <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button></span>
                                 <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />

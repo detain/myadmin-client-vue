@@ -105,9 +105,7 @@ function formatDate(ts?: number) {
 
 function formatReply(content: string) {
     let html = content.replace(/`([^`]+)`/g, '<code>$1</code>').replace(/<br\s*\/?>/gi, '\n');
-
     html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
-
     return html;
 }
 
@@ -154,37 +152,31 @@ async function submitSearch() {
 async function loadTicket() {
     const baseUrl = siteStore.getBaseUrl();
     const result = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
-
     ticket.value = result.ticket;
     posts.value = result.posts || [];
     statusCounts.value = result.st_count || [];
     filesByPost.value = result.files || {};
     suppressedEmail.value = result.suppressed_email || null;
-
+    bs_input_file();
     await nextTick();
     Prism.highlightAll();
 }
 
 async function submitReply() {
     if (wordCount.value === 0 || wordCount.value > 500 || isClosed.value) return;
-
     const baseUrl = siteStore.getBaseUrl();
     const formData = new FormData();
     formData.append('body', replyBody.value);
     attachments.value.forEach((f) => formData.append('attachments[]', f));
-
     await Swal.fire({
         html: 'Please wait...',
         allowOutsideClick: false,
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
-
     try {
         const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/reply`, formData);
-
         Swal.close();
-
         if (res.status === 'success') {
             await Swal.fire('Reply Posted', res.message, 'success');
             replyBody.value = '';
@@ -223,6 +215,55 @@ async function closeTicket() {
     }
 }
 
+function bs_input_file(): void {
+    document.querySelectorAll<HTMLElement>('.input-file').forEach((wrapper) => {
+        // Prevent duplicate ghost inputs
+        const next = wrapper.nextElementSibling;
+        if (next && next.classList.contains('input-ghost')) {
+            return;
+        }
+        // Create hidden file input
+        const ghost = document.createElement('input');
+        ghost.type = 'file';
+        ghost.className = 'input-ghost';
+        ghost.style.visibility = 'hidden';
+        ghost.style.height = '0';
+        // Copy name attribute
+        const name = wrapper.getAttribute('name');
+        if (name) ghost.name = name;
+        wrapper.parentNode?.insertBefore(ghost, wrapper.nextSibling);
+        // Type-safe element lookups
+        const chooseBtn = wrapper.querySelector<HTMLButtonElement>('.btn-choose');
+        const resetBtn = wrapper.querySelector<HTMLButtonElement>('.btn-reset');
+        const textInput = wrapper.querySelector<HTMLInputElement>('input[type="text"]');
+        // File selected → update text field
+        ghost.addEventListener('change', () => {
+            const fileName = ghost.value.split('\\').pop() || '';
+            if (textInput) {
+                textInput.value = fileName;
+            }
+        });
+        // Choose button opens dialog
+        chooseBtn?.addEventListener('click', () => {
+            ghost.click();
+        });
+        // Reset clears everything
+        resetBtn?.addEventListener('click', () => {
+            ghost.value = '';
+            if (textInput) {
+                textInput.value = '';
+            }
+        });
+        // Text input behavior
+        if (textInput) {
+            textInput.style.cursor = 'pointer';
+            textInput.addEventListener('mousedown', (e: MouseEvent) => {
+                e.preventDefault();
+                ghost.click();
+            });
+        }
+    });
+}
 /* =======================
    Lifecycle
 ======================= */
