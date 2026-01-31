@@ -173,7 +173,7 @@ async function submitReply() {
     formData.append('body', replyBody.value);
     attachments.value.forEach((f) => formData.append('attachments[]', f));
 
-    Swal.fire({
+    await Swal.fire({
         html: 'Please wait...',
         allowOutsideClick: false,
         showConfirmButton: false,
@@ -195,7 +195,7 @@ async function submitReply() {
         }
     } catch {
         Swal.close();
-        Swal.fire('Error', 'Failed to post reply', 'error');
+        await Swal.fire('Error', 'Failed to post reply', 'error');
     }
 }
 
@@ -218,7 +218,7 @@ async function closeTicket() {
                 await Swal.fire('Warning', res.message, 'warning');
             }
         } catch {
-            Swal.fire('Error', 'Failed to close ticket', 'error');
+            await Swal.fire('Error', 'Failed to close ticket', 'error');
         }
     }
 }

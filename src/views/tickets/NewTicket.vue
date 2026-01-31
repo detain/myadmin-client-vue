@@ -40,7 +40,7 @@ async function handleSubmit() {
         attachments: [file.value],
     };
     console.log('Submitting ticket', formData);
-    Swal.fire({
+    await Swal.fire({
         html: 'Please wait...',
         allowOutsideClick: false,
         showConfirmButton: false,
@@ -56,7 +56,7 @@ async function handleSubmit() {
         }
     } catch {
         Swal.close();
-        Swal.fire('Error', 'Failed to post reply', 'error');
+        await Swal.fire('Error', 'Failed to post reply', 'error');
     }
 }
 

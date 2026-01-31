@@ -785,7 +785,7 @@ function toggleFunc(cp: string) {
                             <tbody>
                                 <tr v-for="itemvalue in extraInfoTables.cp.rows" :key="itemvalue.desc">
                                     <td class="text-muted text-bold text-capitalize">{{ itemvalue.desc }}</td>
-                                    <td class="text-bold text-capitalize" v-html="itemvalue.value"/>
+                                    <td class="text-bold text-capitalize" v-html="itemvalue.value" />
                                 </tr>
                             </tbody>
                         </table>

@@ -216,11 +216,11 @@ export const useTicketsStore = defineStore('tickets', {
 
         search: '',
         period: '30',
-        st_count:[
-            { ticketstatustitle: 'Open', st_count: 0},
-            { ticketstatustitle: 'On Hold', st_count: 0},
-            { ticketstatustitle: 'Closed', st_count: 0},
-        ]
+        st_count: [
+            { ticketstatustitle: 'Open', st_count: 0 },
+            { ticketstatustitle: 'On Hold', st_count: 0 },
+            { ticketstatustitle: 'Closed', st_count: 0 },
+        ],
     }),
 
     getters: {

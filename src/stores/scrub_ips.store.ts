@@ -1,7 +1,7 @@
-import { defineStore } from "pinia";
-import { fetchWrapper } from "@/helpers/fetchWrapper";
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from "@/types/view-service-common";
-import { useSiteStore } from "@/stores/site.store";
+import { defineStore } from 'pinia';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from '@/types/view-service-common';
+import { useSiteStore } from '@/stores/site.store';
 
 interface ScrubIpInfo {
     scrub_ip_id: number;
@@ -33,7 +33,7 @@ interface ScrubIpState {
     serviceExtra: any;
     extraInfoTables: ExtraInfoTables;
     serviceType: ServiceType;
-    serviceStatus: string
+    serviceStatus: string;
     statusClass: string | boolean;
 }
 
@@ -70,7 +70,7 @@ export const useScrubIpStore = defineStore('scrub_ips', {
             service_currency: 'USD',
             service_currency_symbol: '$',
             service_coupon: '',
-            service_cost_info: 0.00 as number,
+            service_cost_info: 0.0 as number,
             service_extra: [],
             serviceStatus: '' as string,
             statusClass: '' as string | boolean,
@@ -122,6 +122,6 @@ export const useScrubIpStore = defineStore('scrub_ips', {
                 this.loading = false;
                 return Promise.reject(error);
             }
-        }
+        },
     },
 });

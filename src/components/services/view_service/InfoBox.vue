@@ -8,19 +8,19 @@
             <div class="icon">
                 <i :class="[iconClass]">{{ iconName }}</i>
             </div>
-            <span class="small-box-footer"> {{ footerKey}}: {{ footerVal }} </span>
+            <span class="small-box-footer"> {{ footerKey }}: {{ footerVal }} </span>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-    defineProps<{
-        heading: string,
-        key1: string,
-        val1: string,
-        iconClass: string,
-        iconName: string,
-        bgClass: string,
-        footerKey: string,
-        footerVal: string
-    }>()
+defineProps<{
+    heading: string;
+    key1: string;
+    val1: string;
+    iconClass: string;
+    iconName: string;
+    bgClass: string;
+    footerKey: string;
+    footerVal: string;
+}>();
 </script>

@@ -29,29 +29,31 @@ const domainRegPassword = ref('');
 
 const submitForm = () => {
     try {
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/migration`, {
-            custPortal: custPortal.value,
-            regEmail: regEmail.value,
-            password: password.value,
-            ctrlPanel: ctrlPanel.value,
-            ftpUsername: ftpUsername.value,
-            ftpPassword: ftpPassword.value,
-            siteBusyMig: siteBusyMig.value,
-            splReqMig: splReqMig.value,
-            domainReg: domainReg.value,
-            dataMig: dataMig.value,
-            domainRegPortal: domainRegPortal.value,
-            domainRegEmail: domainRegEmail.value,
-            domainRegPassword: domainRegPassword.value,
-        }).then((response) => {
-            Swal.close();
-            console.log('migration success');
-            console.log(response);
-            Swal.fire({
-                icon: 'success',
-                html: `Success${response.text}`,
+        fetchWrapper
+            .post(`${baseUrl}/${moduleLink(module)}/${id.value}/migration`, {
+                custPortal: custPortal.value,
+                regEmail: regEmail.value,
+                password: password.value,
+                ctrlPanel: ctrlPanel.value,
+                ftpUsername: ftpUsername.value,
+                ftpPassword: ftpPassword.value,
+                siteBusyMig: siteBusyMig.value,
+                splReqMig: splReqMig.value,
+                domainReg: domainReg.value,
+                dataMig: dataMig.value,
+                domainRegPortal: domainRegPortal.value,
+                domainRegEmail: domainRegEmail.value,
+                domainRegPassword: domainRegPassword.value,
+            })
+            .then((response) => {
+                Swal.close();
+                console.log('migration success');
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    html: `Success${response.text}`,
+                });
             });
-        });
     } catch (error: any) {
         Swal.close();
         console.log('migration failed');
