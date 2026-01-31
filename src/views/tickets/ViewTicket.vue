@@ -199,6 +199,30 @@ async function submitReply() {
     }
 }
 
+async function closeTicket() {
+    const baseUrl = siteStore.getBaseUrl();
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'Do you want to close this ticket?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, close it!',
+    });
+    if (result.isConfirmed) {
+        try {
+            const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}/close`, {});
+            if (res.status === 'success') {
+                await Swal.fire('Ticket Closed', res.message, 'success');
+                await loadTicket();
+            } else {
+                await Swal.fire('Warning', res.message, 'warning');
+            }
+        } catch {
+            Swal.fire('Error', 'Failed to close ticket', 'error');
+        }
+    }
+}
+
 /* =======================
    Lifecycle
 ======================= */
@@ -238,7 +262,6 @@ onMounted(loadTicket);
                 </div>
             </div>
         </div>
-
         <div class="col-md-10">
             <div class="callout callout-info py-3">
                 <h5><i class="fas fa-align-left"></i> Subject</h5>
@@ -304,12 +327,72 @@ onMounted(loadTicket);
 
         <!-- MAIN -->
         <div class="col-md-10">
+            <div class="card card-body">
+                <form method="post" role="form" :action="`ticket_c?id=${ticket?.ticketmaskid}`">
+                    <!-- SERVER ACCESS -->
+                    <div class="form-group col-md-6 mb-0 pl-0">
+                        <div class="custom-control custom-checkbox">
+                            <input id="server_access_checkbox" v-model="allowServerAccess" type="checkbox" class="custom-control-input" />
+                            <label class="custom-control-label" for="server_access_checkbox">Allow InterServer to modify server:</label>
+                        </div>
+                        <input type="hidden" name="server_access" :value="allowServerAccess ? 'y' : 'n'" />
+                    </div>
+                    <!-- TOGGLED SECTION -->
+                    <div v-show="allowServerAccess" class="form-toggle">
+                        <hr />
+                        <div class="form-row">
+                            <!-- IP -->
+                            <div class="form-group col-md-2">
+                                <label for="ip">Your IP Address</label>
+                                <input id="ip" v-model="ipAddress" name="ip" type="text" class="form-control form-control-sm" placeholder="Your IP Address" />
+                                <span class="help-text text-danger text-sm"> If connection is coming from different IP address. Kindly change it. </span>
+                            </div>
+                            <!-- ROOT PASSWORD -->
+                            <div class="form-group col-md-2 pr-3" style="border-right: 1px solid #cccccc69">
+                                <label for="root_pass">Root Password</label>
+                                <input id="root_pass" v-model="rootPassword" name="root_pass" type="text" class="form-control form-control-sm" placeholder="VPS / Dedicated Server" />
+                                <span class="help-text text-danger text-sm">Passwords are stored in a separate encrypted database.</span>
+                            </div>
+                            <!-- ROOT RESTRICTED -->
+                            <div class="form-group col-md-2 pl-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" class="custom-control-input" />
+                                    <label class="custom-control-label" for="is_root_checkbox">Is SSH Root Restricted?</label>
+                                </div>
+                                <input type="hidden" name="is_root" :value="isRootRestricted ? 'yes' : 'no'" />
+                            </div>
+                            <!-- SUDO FIELDS -->
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="sudo_user">Sudo Username</label>
+                                <input id="sudo_user" v-model="sudoUser" name="sudo_user" type="text" class="form-control form-control-sm" placeholder="Sudo Username" />
+                            </div>
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="sudo_pass">Sudo Password</label>
+                                <input id="sudo_pass" v-model="sudoPassword" name="sudo_pass" type="text" class="form-control form-control-sm" placeholder="Sudo user password" />
+                                <span class="help-text text-danger text-sm"> Passwords are stored in a separate encrypted database. </span>
+                            </div>
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="ssh-port">SSH Port</label>
+                                <input id="ssh-port" v-model="sshPort" name="port_no" type="text" class="form-control form-control-sm" placeholder="SSH Port Number" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                        <button type="submit" name="submit" value="updateTicket" class="btn btn-md btn-outline-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+
             <!-- REPLY -->
             <div class="card mt-3">
-                <div class="card-header" style="border-bottom: 3px solid #007bff">Post Reply</div>
+                <div class="card-header" style="border-bottom: 3px solid #007bff">
+                    <h3 class="card-title mt-1 mr-2">Post Reply</h3>
+                    <a v-if="ticket?.ticketstatusid == '5'" class="btn btn-sm btn-danger ml-3" @click.prevent="closeTicket">Close Ticket</a>
+                </div>
                 <div class="card-body">
                     <template v-if="isClosed">
-                        <span class="alert alert-warning">This ticket is closed. Replies are disabled.</span>
+                        <span class="text-bold">This ticket is closed, so replies are disabled. If you still need assistance, feel free to open a new ticket and we’ll be happy to help.</span>
                     </template>
                     <template v-else>
                         <form id="replyForm" method="post" role="form" class="needs-validation" enctype="multipart/form-data" novalidate>
@@ -324,7 +407,7 @@ onMounted(loadTicket);
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" for="file-upload">Attach Media</label>
-                                <div class="controls col-sm-10 input-group input-file w-75" name="file_attachment">
+                                <div class="controls col-sm-10 input-group input-file w-75">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
                                     </span>
@@ -343,24 +426,61 @@ onMounted(loadTicket);
                 </div>
             </div>
 
-            <div v-for="post in posts" :key="post.ticketpostid" class="card card-comment">
-                <div class="card-body">
-                    <strong>{{ post.fullname }}</strong>
-                    <div class="text-muted">
-                        {{ formatDate(post.dateline) }}
-                    </div>
-
-                    <div class="inherit-class" v-html="formatReply(post.contents)" />
-
-                    <div v-if="filesByPost[post.ticketpostid]">
-                        <div v-for="f in filesByPost[post.ticketpostid]" :key="f.attach_id" v-html="f.link" />
-                    </div>
-
-                    <div v-if="post.liked === 1" class="text-success mt-2">👍 User liked your reply</div>
-                    <div v-if="post.liked === 0" class="text-danger mt-2">👎 User disliked your reply</div>
-
-                    <div v-if="post.creator !== '1'" class="text-muted mt-2">
-                        Email: <b>{{ post.email }}</b>
+            <!-- Ticket Replies -->
+            <div v-if="posts.length" class="card card-widget">
+                <div class="card-header">
+                    <h3 class="card-title">Ticket Replies</h3>
+                </div>
+                <div class="card-body card-comments p-0">
+                    <div v-for="post in posts" :key="post.ticketpostid" class="row m-0 card-comment card-outline card-success p-0">
+                        <!-- LEFT USER COLUMN -->
+                        <div class="col-md-2 username d-flex pt-4 px-3" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ background: post.creator === '1' ? 'rgba(0,0,0,.03)' : '#fff', borderRight: '2px solid #ccc' }">
+                            <div class="text-center mt-3 w-100">
+                                <h3 class="mb-2" style="line-break: anywhere; font-size: 1.2rem">{{ post.fullname }}</h3>
+                                <span class="py-1 px-2 text-sm d-block mt-1" :class="post.creator === '1' ? 'bg-green' : 'bg-secondary text-white'" style="font-weight: normal; letter-spacing: 0.6px; border-radius: 4px">
+                                    {{ post.creator === '1' ? 'Staff' : post.creator === '2' ? 'User' : 'Participant' }}
+                                </span>
+                            </div>
+                        </div>
+                        <!-- RIGHT CONTENT COLUMN -->
+                        <div class="col-md-10 p-0">
+                            <!-- HEADER / TIMESTAMP -->
+                            <div class="card-footer py-2 px-0" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ borderBottom: '1px solid #ccc', background: post.creator !== '1' ? '#fff' : undefined }">
+                                <span class="username ml-2 text-muted">
+                                    {{ formatDate(post.dateline) }}
+                                </span>
+                            </div>
+                            <!-- MESSAGE BODY -->
+                            <div class="comment-text ml-2">
+                                <div class="inherit-class w-100 m-0 js-linkify" v-html="formatReply(post.contents)" />
+                                <!-- LIKE / DISLIKE -->
+                                <template v-if="post.liked !== undefined">
+                                    <hr class="my-1" />
+                                    <div v-if="post.liked === 1" class="text-success mb-2 ml-2"><i class="fas fa-thumbs-up mr-1"></i> User liked your reply</div>
+                                    <div v-else class="text-danger mb-2 ml-2"><i class="fas fa-thumbs-down mr-1"></i> User disliked your reply</div>
+                                </template>
+                                <!-- ATTACHMENTS -->
+                                <template v-if="filesByPost[post.ticketpostid]">
+                                    <div v-for="file in filesByPost[post.ticketpostid]" :key="file.attach_id" class="post-attachments">
+                                        <div v-html="file.link"></div>
+                                        <!-- Image modal (Bootstrap-compatible) -->
+                                        <div :id="`image-${file.attach_id}`" class="attachment-modal modal fade" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <img :src="file.src" alt="Ticket Attachment" class="img-fluid" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                            <!-- EMAIL FOOTER (USER ONLY) -->
+                            <div v-if="post.creator !== '1'" class="card-footer py-2 px-0 user" style="background: #fff">
+                                <span class="ml-2"
+                                    >Email: <b>{{ post.email }}</b></span
+                                >
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
