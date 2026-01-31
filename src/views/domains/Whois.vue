@@ -27,7 +27,7 @@ function placeOrder() {
         showConfirmButton: false,
     });
     try {
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/whois`, {}).then((response) => {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/whois`, {}).then((response) => {
             Swal.close();
             console.log('domain whois privacy');
             console.log(response);

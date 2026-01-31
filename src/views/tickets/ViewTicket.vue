@@ -129,7 +129,7 @@ async function submitReply() {
     formData.append('body', replyBody.value);
     attachments.value.forEach((f) => formData.append('attachments[]', f));
 
-    Swal.fire({
+    await Swal.fire({
         title: '',
         html: 'Please wait...',
         allowOutsideClick: false,
@@ -142,16 +142,16 @@ async function submitReply() {
         Swal.close();
 
         if (res.status === 'success') {
-            Swal.fire('Reply Posted', res.message, 'success');
+            await Swal.fire('Reply Posted', res.message, 'success');
             replyBody.value = '';
             attachments.value = [];
             await loadTicket();
         } else {
-            Swal.fire('Warning', res.message, 'warning');
+            await Swal.fire('Warning', res.message, 'warning');
         }
     } catch {
         Swal.close();
-        Swal.fire('Error', 'Failed to post reply', 'error');
+        await Swal.fire('Error', 'Failed to post reply', 'error');
     }
 }
 
@@ -172,7 +172,7 @@ onMounted(loadTicket);
 </script>
 
 <template>
-    <div class="row mb-4" v-if="ticket">
+    <div v-if="ticket" class="row mb-4">
         <div class="col-md-2 pr-1">
             <div class="info-box p-0">
                 <span class="info-box-icon border-rad-zero" :class="statusClass">
@@ -227,9 +227,9 @@ onMounted(loadTicket);
         </div>
 
         <div class="col-md-10">
-            <div class="alert alert-warning" v-if="isClosed">This ticket is closed. Replies are disabled.</div>
+            <div v-if="isClosed" class="alert alert-warning">This ticket is closed. Replies are disabled.</div>
 
-            <div class="card" v-for="post in posts" :key="post.ticketpostid">
+            <div v-for="post in posts" :key="post.ticketpostid" class="card">
                 <div class="card-body">
                     <strong>{{ post.fullname }}</strong>
                     <div class="text-muted">{{ formatDate(post.dateline) }}</div>
@@ -243,7 +243,7 @@ onMounted(loadTicket);
                 </div>
             </div>
 
-            <div class="card mt-3" v-if="!isClosed">
+            <div v-if="!isClosed" class="card mt-3">
                 <div class="card-header">Post Reply</div>
                 <div class="card-body">
                     <textarea v-model="replyBody" class="form-control" rows="7"></textarea>
@@ -256,7 +256,7 @@ onMounted(loadTicket);
 </template>
 
 <style scoped>
-@import 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css';
+@import 'prismjs/themes/prism.css';
 .results {
     max-height: 200px;
     overflow-y: auto;
