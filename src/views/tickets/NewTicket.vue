@@ -3,13 +3,14 @@ import { useSiteStore } from '../../stores/site.store.ts';
 import { useAccountStore } from '../../stores/account.store';
 import { reactive, ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+import { fetchWrapper } from '../../helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 const { ip } = storeToRefs(accountStore);
 const route = useRoute();
+const router = useRouter();
 console.log('Route Query View:');
 console.log(route.query.view);
 const products = ref({});
@@ -24,6 +25,19 @@ const baseUrl = siteStore.getBaseUrl();
 const fileInput = ref<HTMLInputElement | null>(null);
 const fileBase64 = ref<string | null>(null);
 const fileName = ref('');
+const showTerms = ref(false);
+const form = reactive({
+    product: '',
+    subject: '',
+    content: '',
+    allowAccess: true,
+    rootPassword: '',
+    clientIp: ip.value,
+    sshRestricted: '0',
+    sudoUser: '',
+    sudoPassword: '',
+    sshPort: 22,
+});
 
 function openFileDialog() {
     fileInput.value?.click();
@@ -59,6 +73,11 @@ function getRawBase64(): string | null {
     return fileBase64.value.split(',')[1];
 }
 
+function getRawType(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[0].split(';')[0].split(':')[1];
+}
+
 async function loadProducts() {
     products.value = await fetchWrapper.get(`${baseUrl}/tickets/new`);
 }
@@ -74,44 +93,31 @@ async function handleSubmit() {
         sudo_user: form.sudoUser,
         sudo_pass: form.sudoPassword,
         port_no: form.sshPort,
-        attachments: fileBase64.value ? [{ name: fileName.value, content: getRawBase64() }] : [],
+        attachments: fileBase64.value ? [{ name: fileName.value, content: getRawBase64(), type: getRawType() }] : [],
     };
     console.log('Submitting ticket', formData);
-    await Swal.fire({
+    /* Swal.fire({
         html: 'Please wait...',
         allowOutsideClick: false,
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
+    */
     try {
         const res = await fetchWrapper.post(`${baseUrl}/tickets/new`, formData);
+        console.log('Response:',res);
         Swal.close();
-        if (res.status === 'success') {
-            await Swal.fire('Reply Posted', res.message, 'success');
+        if (res.success == true) {
+            Swal.fire('Ticket Created', res.text, 'success');
+            router.push(`/tickets/${res.ticket}`);
         } else {
-            await Swal.fire('Warning', res.message, 'warning');
+            Swal.fire('Warning', res, 'warning');
         }
     } catch {
         Swal.close();
-        await Swal.fire('Error', 'Failed to post reply', 'error');
+        Swal.fire('Error', 'Failed to post reply', 'error');
     }
 }
-
-const showTerms = ref(false);
-const file = ref<File | null>(null);
-
-const form = reactive({
-    product: '',
-    subject: '',
-    content: '',
-    allowAccess: true,
-    rootPassword: '',
-    clientIp: ip.value,
-    sshRestricted: '0',
-    sudoUser: '',
-    sudoPassword: '',
-    sshPort: 22,
-});
 
 onMounted(() => {
     loadProducts();
