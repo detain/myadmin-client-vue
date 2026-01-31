@@ -21,12 +21,6 @@ siteStore.setBreadcrums([
 siteStore.setPageHeading('New Ticket');
 siteStore.setTitle('New Ticket');
 const baseUrl = siteStore.getBaseUrl();
-
-const handleFile = (e: Event) => {
-    const input = e.target as HTMLInputElement;
-    file.value = input.files?.[0] || null;
-};
-
 const fileInput = ref<HTMLInputElement | null>(null);
 const fileBase64 = ref<string | null>(null);
 const fileName = ref('');
@@ -74,14 +68,13 @@ async function handleSubmit() {
         product: form.product,
         subject: form.subject,
         body: form.content,
-        allowAccess: form.allowAccess,
+        server_access: form.allowAccess,
         root_pass: form.rootPassword,
         ip: form.clientIp,
-        sshRestricted: form.sshRestricted,
         sudo_user: form.sudoUser,
         sudo_pass: form.sudoPassword,
         port_no: form.sshPort,
-        attachments: [file.value],
+        attachments: fileBase64.value ? [{ name: fileName.value, content: fileBase64.value }] : [],
     };
     console.log('Submitting ticket', formData);
     await Swal.fire({
@@ -90,7 +83,6 @@ async function handleSubmit() {
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
-    /*
     try {
         const res = await fetchWrapper.post(`${baseUrl}/tickets/new`, formData);
         Swal.close();
@@ -103,7 +95,6 @@ async function handleSubmit() {
         Swal.close();
         await Swal.fire('Error', 'Failed to post reply', 'error');
     }
-    */
 }
 
 const showTerms = ref(false);
@@ -122,59 +113,8 @@ const form = reactive({
     sshPort: 22,
 });
 
-function bs_input_file(): void {
-    document.querySelectorAll<HTMLElement>('.input-file').forEach((wrapper) => {
-        // Prevent duplicate ghost inputs
-        const next = wrapper.nextElementSibling;
-        if (next && next.classList.contains('input-ghost')) {
-            return;
-        }
-        // Create hidden file input
-        const ghost = document.createElement('input');
-        ghost.type = 'file';
-        ghost.className = 'input-ghost';
-        ghost.style.visibility = 'hidden';
-        ghost.style.height = '0';
-        // Copy name attribute
-        const name = wrapper.getAttribute('name');
-        if (name) ghost.name = name;
-        wrapper.parentNode?.insertBefore(ghost, wrapper.nextSibling);
-        // Type-safe element lookups
-        const chooseBtn = wrapper.querySelector<HTMLButtonElement>('.btn-choose');
-        const resetBtn = wrapper.querySelector<HTMLButtonElement>('.btn-reset');
-        const textInput = wrapper.querySelector<HTMLInputElement>('input[type="text"]');
-        // File selected → update text field
-        ghost.addEventListener('change', () => {
-            const fileName = ghost.value.split('\\').pop() || '';
-            if (textInput) {
-                textInput.value = fileName;
-            }
-        });
-        // Choose button opens dialog
-        chooseBtn?.addEventListener('click', () => {
-            ghost.click();
-        });
-        // Reset clears everything
-        resetBtn?.addEventListener('click', () => {
-            ghost.value = '';
-            if (textInput) {
-                textInput.value = '';
-            }
-        });
-        // Text input behavior
-        if (textInput) {
-            textInput.style.cursor = 'pointer';
-            textInput.addEventListener('mousedown', (e: MouseEvent) => {
-                e.preventDefault();
-                ghost.click();
-            });
-        }
-    });
-}
-
 onMounted(() => {
     loadProducts();
-    bs_input_file();
 });
 accountStore.loadOnce();
 </script>
@@ -223,25 +163,18 @@ accountStore.loadOnce();
                                 <div class="invalid-feedback">Please enter detailed description about issue.</div>
                             </div>
                         </div>
-
                         <!-- File Upload -->
                         <div class="form-group row mb-0">
                             <label for="file_upload" class="col-sm-3 col-form-label requiredField">File Upload</label>
                             <div class="controls col-sm-9 input-group input-file" name="file_attachment">
                                 <!-- Visible filename input -->
                                 <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button" @click="openFileDialog">Choose</button></span>
-                                <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" :value="fileName" readonly placeholder="Choose a file..." @mousedown.prevent="openFileDialog"  />
+                                <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" :value="fileName" readonly placeholder="Choose a file..." @mousedown.prevent="openFileDialog" />
                                 <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button" @click="resetFile">Reset</button></span>
                                 <!-- Hidden file input -->
                                 <input ref="fileInput" type="file" class="input-ghost" name="attachments" accept="image/png,image/jpeg,image/gif" style="visibility: hidden; height: 0" @change="onFileChange" />
                             </div>
-                            <!-- <div class="controls col-sm-9 input-group input-file" name="file_attachment">
-                                <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button></span>
-                                <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button></span>
-                            </div> -->
                         </div>
-
                         <div class="form-group row">
                             <div class="col-sm-9 offset-sm-3">
                                 <span class="help-text text-gray"> Note: Only image files - gif/jpeg/png types are allowed. </span>
