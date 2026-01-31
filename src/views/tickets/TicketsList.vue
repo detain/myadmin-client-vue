@@ -149,7 +149,7 @@ function timeAgo(input: string | number) {
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <RouterLink to="/new-ticket" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
+                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
                         </li>
                         <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
                             <RouterLink

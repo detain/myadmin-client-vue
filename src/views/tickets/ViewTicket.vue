@@ -307,7 +307,7 @@ onMounted(loadTicket);
                 </div>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <RouterLink to="/new_ticket_c" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
+                        <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
                     </li>
                     <li class="nav-item">
                         <RouterLink to="/tickets" class="nav-link"> <i class="fas fa-inbox text-primary">&nbsp;</i>ALL </RouterLink>
