@@ -16,6 +16,7 @@ export const router = createRouter({
         { path: '/cart/:iids([\\w,]+)', component: () => import('../views/billing/Cart.vue') },
         { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)/:invoices', component: () => import('../views/billing/Pay.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
+        { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {
             path: '/account',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
@@ -43,7 +44,7 @@ export const router = createRouter({
                 { path: 'traffic_graph', component: () => import('../views/billing/affiliates/TrafficGraph.vue') },
                 { path: 'web_traffic', component: () => import('../views/billing/affiliates/WebTraffic.vue') },
                 { path: 'banners', component: () => import('../views/billing/affiliates/ViewBanners.vue') },
-                { path: 'banner/:id(\\d+)', component: () => import('../views/billing/affiliates/ViewBanner.vue') },
+                { path: 'banners/:id', component: () => import('../views/billing/affiliates/ViewBanner.vue') },
             ],
         },
         {
@@ -88,7 +89,10 @@ export const router = createRouter({
         },
         {
             path: '/scrub_ips',
-            children: [{ path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') }],
+            children: [
+                { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
+                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
+            ],
         },
         {
             path: '/licenses',
@@ -97,7 +101,7 @@ export const router = createRouter({
                 { path: '', component: () => import('../views/licenses/LicensesList.vue') },
                 //{ path: 'order/:catTag?', component: () => import('../views/licenses/OrderLicense.vue') },
                 { path: 'order', component: () => import('../views/licenses/OrderLicense.vue') },
-                { path: 'order/:catTag', component: () => import('../views/licenses/OrderLicense.vue') },
+                { path: 'order/:catTag(directadmin|softaculous|parallels|cpanel|litespeed|cloudlinux)', component: () => import('../views/licenses/OrderLicense.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/licenses/ViewLicense.vue') },
                 { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|change_ip|change_os)', component: () => import('../views/licenses/ViewLicense.vue') },
             ],
@@ -149,7 +153,7 @@ export const router = createRouter({
             children: [
                 { path: '', component: () => import('../views/tickets/TicketsList.vue') },
                 { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
-                { path: ':id(\\d+)', component: () => import('../views/tickets/ViewTicket.vue') },
+                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
             ],
         },
         {

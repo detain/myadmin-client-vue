@@ -40,7 +40,7 @@ export const useAccountStore = defineStore('account', {
             gstin: '',
             group: '',
             cc: '',
-            cc_auto: 0,
+            cc_auto: '0',
             cc_exp: '',
             cc_type: '',
             cc_whitelist: 0,
@@ -140,7 +140,7 @@ export const useAccountStore = defineStore('account', {
 
             // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
-            if (id === authStore.user.id) {
+            if (id === authStore.user.account_id) {
                 // update local storage
                 const user = { ...authStore.user, ...params };
                 localStorage.setItem('user', JSON.stringify(user));

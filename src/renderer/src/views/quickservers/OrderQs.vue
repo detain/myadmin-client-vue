@@ -34,52 +34,24 @@ const rootpass = ref('');
 const hostname = ref('');
 const tos = ref(false);
 const osTemplates = ref<Templates>({});
-const osVersionSelect = ref({});
-watch([osTemplates, osDistro, osVersion], ([newTemplates, newDistro, newVersion], [oldTemplates, oldDistro, oldVersion]) => {
-    let entries, lastEntry, lastKey, lastValue;
-    entries = Object.entries(newTemplates[newDistro]);
-    console.log(entries);
-    if (entries.length == 0) {
-        osVersionSelect.value = {};
-    }
-    if (typeof newTemplates[newDistro][Number(newVersion)] == 'undefined') {
-        console.log(newTemplates[newVersion]);
-        lastEntry = entries[entries.length - 1];
-        console.log(lastEntry);
-        [lastKey, lastValue] = lastEntry;
-        console.log([lastKey, lastValue]);
-        newVersion = lastKey;
-        osVersion.value = lastKey;
-    }
-    osVersionSelect.value = newTemplates[newDistro];
+const osVersionSelect = computed<[string, string][]>(() => {
+    const distro = osTemplates.value[osDistro.value];
+    return distro ? Object.values(distro).flat() : [];
 });
-/*
-const osVersionSelect = computed(() => {
-    let entries, lastEntry, lastKey, lastValue;
-    console.log(osTemplates.value);
-    console.log(osDistro.value);
-    if (Object.entries(osTemplates.value).length === 0 || typeof osTemplates.value[osDistro.value] == 'undefined' || Object.entries(osTemplates.value[osDistro.value]).length === 0 || osTemplates.value[osDistro.value][64].length === 0) {
-        return {};
-    }
-    const templates = osTemplates.value[osDistro.value][64].reduce((acc, [value, key]) => {
-            acc[key] = value;
-            return acc;
-        }, {});
-    if (typeof templates[osVersion.value] == 'undefined') {
-        console.log(templates);
-        entries = Object.entries(templates);
-        console.log(entries);
-        lastEntry = entries[entries.length - 1];
-        console.log(lastEntry);
-        osVersion.value = lastEntry[0];
-    }
-    return templates;
-});
-*/
-
-async function editForm() {
-    step.value = 'orderform';
-}
+watch(
+    osVersionSelect,
+    (options) => {
+        if (!options.length) {
+            osVersion.value = '';
+            return;
+        }
+        const isValid = options.some(([, value]) => value === osVersion.value);
+        if (!isValid) {
+            osVersion.value = options[0][1];
+        }
+    },
+    { immediate: true }
+);
 
 async function onSubmit() {
     step.value = 'order_confirm';
@@ -227,7 +199,9 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                 <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select v-model="osVersion" class="form-control select2">
-                                        <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
+                                        <option v-for="([label, value], index) in osVersionSelect" :key="index" :value="value">
+                                            {{ label }}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -348,7 +322,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div id="totalprice" class="text-bold total_cost text-lg"></div>
+                                            <div id="totalprice" class="text-bold total_cost text-lg">{{ serverDetails[qsId] ? serverDetails[qsId].cost : '' }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -364,7 +338,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="controls col-md-12 text-center"><input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" /></div>
+                                <div class="controls col-md-12 text-center"><input type="submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" /></div>
                             </div>
                         </form>
                     </div>

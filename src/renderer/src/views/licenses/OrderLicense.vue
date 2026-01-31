@@ -3,12 +3,15 @@ import { ref, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-
 import { useSiteStore } from '../../stores/site.store';
-
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import $ from 'jquery';
+import imageDirectAdmin from '../../assets/images/directadmin.png';
+import imageSoftaculous from '../../assets/images/softaculous.png';
+import imagePlesk from '../../assets/images/plesk12.png';
+import imageCloudLinux from '../../assets/images/cloudlinux.png';
+import imageCpanel from '../../assets/images/cpanel.png';
+import imageLitespeed from '../../assets/images/litespeed.png';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
@@ -16,9 +19,8 @@ siteStore.setPageHeading('Order License');
 siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
-const catTag = ref<string>(route.params.catTag as string);
+const catTag = computed(() => (route.params.catTag as string) || '');
 const step = ref('license_types');
-updateBreadcrums();
 const baseUrl = siteStore.getBaseUrl();
 const ip = ref('');
 const couponInfo = ref<CouponInfo>({});
@@ -28,6 +30,11 @@ const tos = ref(false);
 const comment = ref('');
 const frequency = ref(1);
 function updateBreadcrums() {
+    if (catTag.value == '') {
+        step.value = 'license_types';
+    } else {
+        step.value = 'order_form';
+    }
     if (step.value == 'license_types') {
         siteStore.setBreadcrums([
             ['/home', 'Home'],
@@ -56,37 +63,37 @@ const getLicenses = ref<GetLicenses>({
     directadmin: {
         name: 'DirectAdmin',
         description: 'DirectAdmin is a graphical web-based web hosting control panel allowing administration of websites through a web browser. The software is configurable to enable standalone, reseller, and shared web hosting from a single instance.',
-        image: 'images/directadmin.png',
+        image: imageDirectAdmin,
         order: 1,
     },
     softaculous: {
         name: 'Softaculous',
         description: 'Softaculous is a commercial script library that automates the installation of commercial and open source web applications to a website. Softaculous scripts are executed from the administration area of a website control panel, typically via an interface tool such as cPanel, Plesk, H-Sphere, DirectAdmin and InterWorx.',
-        image: 'images/softaculous.png',
+        image: imageSoftaculous,
         order: 2,
     },
     parallels: {
         name: 'Parallel Plesk',
         description: 'Professional control panel that gives web-designers, web-masters and website owners tools to manage their servers, sites and applications. The only hosting solution that will grow with your business from a single site and servers to a multi-server cloud solution and millions of users. The professionals choice for growing businesses.',
-        image: 'images/plesk12.png',
+        image: imagePlesk,
         order: 3,
     },
     cloudlinux: {
         name: 'CloudLinux',
         description: 'CloudLinux OS is a commercial Linux distribution marketed to shared hosting providers. It is developed by software company CloudLinux, Inc. CloudLinux OS is based on the CentOS operating system; it uses the OpenVZ kernel and the rpm package manager.',
-        image: 'images/cloudlinux.png',
+        image: imageCloudLinux,
         order: 4,
     },
     cpanel: {
         name: 'cPanel',
         description: 'cPanel is a web hosting control panel software developed by cPanel, LLC. It provides a graphical interface and automation tools designed to simplify the process of hosting a web site to the website owner or the "end user". It enables administration through a standard web browser using a three-tier structure.',
-        image: 'images/cpanel.png',
+        image: imageCpanel,
         order: 5,
     },
     litespeed: {
         name: 'LiteSpeed',
         description: 'LiteSpeed Web Server, is a proprietary web server software. It is the 4th most popular web server, estimated to be used by 10% of websites as of July 2021. LSWS is developed by privately held LiteSpeed Technologies.',
-        image: 'images/litespeed.png',
+        image: imageLitespeed,
         order: 6,
     },
 });
@@ -131,16 +138,27 @@ const getServiceTypes = computed(() => {
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=vps&coupon=${coupon.value}`;
-        $.getJSON(`https://my.interserver.net/ajax/coupon_info.php?module=vps&coupon=${coupon.value}`, {}, function (json: CouponInfo) {
-            couponInfo.value = json;
-            if (typeof json.applies != 'undefined') {
-                //update_vps_choices();
-                if (couponInfo.value.onetime == '0') {
-                    //update_vps_choices_order();
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
+        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error ${response.status}`);
                 }
-            }
-        });
+                return response.json() as Promise<CouponInfo>;
+            })
+            .then((json) => {
+                couponInfo.value = json;
+
+                if (typeof json.applies !== 'undefined') {
+                    // update_vps_choices();
+                    if (couponInfo.value.onetime === '0') {
+                        // update_vps_choices_order();
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Failed to load coupon info:', error);
+            });
     }
 }
 
@@ -149,11 +167,10 @@ function updatePrice() {}
 function checkAvailability() {}
 
 function orderLicenseType(type: string | number) {
-    catTag.value = type as string;
     packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
-    router.push(`/licenses/order/${catTag.value}`);
+    router.push(`/licenses/order/${type}`);
 }
 
 function submitForm() {
@@ -194,6 +211,7 @@ function submitLicenseForm() {
 
 function editForm() {}
 
+updateBreadcrums();
 fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
     console.log('Response:');
     console.log(response);
@@ -209,7 +227,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="'/' + details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
+                        <img class="card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <h3 class="card-title"></h3>
                         <div class="card-tools float-right">
                             <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -223,7 +241,10 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                     <p class="card-text text-left text-sm">{{ details.description }}</p>
                     <div class="license_footer">
                         <div class="order-button">
+                            <router-link :to="'/' + moduleLink(module) + '/order/' + key" class="btn order">Order Now</router-link>
+                            <!--
                             <a href="#" class="btn order" @click.prevent="orderLicenseType(key)">Order Now</a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -238,7 +259,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                         <div class="p-1">
                             <h3 class="card-title py-2">
                                 <i class="material-icons" style="position: relative; top: 5px">card_membership</i>
-                                Order {{ getLicenses[catTag].name }} License
+                                Order {{ getLicenses[catTag]?.name }} License
                             </h3>
                             <div class="card-tools float-right">
                                 <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative; top: 5px"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>

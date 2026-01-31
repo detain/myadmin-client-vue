@@ -120,9 +120,7 @@ loadLink(route.params.link as string);
                         Next Invoice Date: <b>{{ formatDate(billingDetails.next_date) }}</b>
                     </p>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
+                <div class="icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer">{{ serviceInfo.domain_hostname }}</span>
             </div>
         </div>
@@ -138,9 +136,7 @@ loadLink(route.params.link as string);
                         Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
                     </p>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
+                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
                 <span class="small-box-footer">
                     Domain Status: <b>{{ serviceInfo.domain_status }}</b>
                 </span>
@@ -154,9 +150,7 @@ loadLink(route.params.link as string);
                         Whois Privacy is: <b class="text-md">{{ whoisPrivacy }}</b>
                     </p>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-user-secret"></i>
-                </div>
+                <div class="icon"><i class="fas fa-user-secret"></i></div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
                     <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
@@ -181,7 +175,7 @@ loadLink(route.params.link as string);
             <Renew :id="id"></Renew>
         </div>
         <div v-else-if="link == 'whois'" class="col">
-            <Whois :id="id"></Whois>
+            <Whois :id="id" :hostname="serviceInfo.domain_hostname"></Whois>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
@@ -269,9 +263,7 @@ loadLink(route.params.link as string);
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                     </div>
                 </div>
-                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center">
-                    <span class="text-secondary text-md">No domain log found.</span>
-                </div>
+                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-secondary text-md">No domain log found.</span></div>
             </div>
         </div>
         <div class="col-md-3">
@@ -282,9 +274,7 @@ loadLink(route.params.link as string);
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                     </div>
                 </div>
-                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center">
-                    <span class="text-success text-md">All good! no errors in Contact Information!</span>
-                </div>
+                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-success text-md">All good! no errors in Contact Information!</span></div>
             </div>
         </div>
     </div>

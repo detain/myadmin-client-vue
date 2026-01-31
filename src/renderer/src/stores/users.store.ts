@@ -60,7 +60,7 @@ export const useUsersStore = defineStore('users', {
 
             // update stored user if the logged-in user updated their own record
             const authStore = useAuthStore();
-            if (id === authStore.user.id) {
+            if (id === authStore.user.account_id) {
                 // update local storage
                 const user = { ...authStore.user, ...params };
                 localStorage.setItem('user', JSON.stringify(user));
@@ -82,7 +82,7 @@ export const useUsersStore = defineStore('users', {
 
             // auto logout if the logged-in user deleted their own record
             const authStore = useAuthStore();
-            if (id === authStore.user.id) {
+            if (id === authStore.user.account_id) {
                 await authStore.logout();
             }
         },

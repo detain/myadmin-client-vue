@@ -1,8 +1,6 @@
 import { storeToRefs, defineStore, getActivePinia, Store, Pinia } from 'pinia';
 import { fetchWrapper } from '../helpers/fetchWrapper';
-
 import { router } from '../router/index';
-
 import { useAccountStore } from '../stores/account.store';
 import { useAlertStore } from '../stores/alert.store';
 import { useSiteStore } from '../stores/site.store';
@@ -17,8 +15,39 @@ interface ExtendedPinia extends Pinia {
     _s: Map<string, Store>;
 }
 
+interface AuthUser {
+    sessionId?: string;
+    account_id?: number;
+    account_lid?: string;
+    gravatar?: string;
+    ima?: string;
+    name?: string;
+}
+
+interface AuthState {
+    opts: {
+        tfa: boolean;
+        verify: boolean;
+        captcha: boolean;
+    };
+    logo: string;
+    captcha: string;
+    language: string;
+    counts: {
+        vps: number;
+        websites: number;
+        servers: number;
+    };
+    apiKey: string | null;
+    sessionId: string | null;
+    useHeaders: boolean;
+    remember: string | null;
+    user: AuthUser;
+    returnUrl: string | null;
+}
+
 export const useAuthStore = defineStore('auth', {
-    state: () => ({
+    state: (): AuthState => ({
         opts: {
             tfa: false,
             verify: false,
@@ -38,7 +67,7 @@ export const useAuthStore = defineStore('auth', {
         useHeaders: true, // whether to send auth via headers or cookie
         // initialize state from local storage to enable user to stay logged in
         remember: localStorage.getItem('remember'),
-        user: JSON.parse(localStorage.getItem('user') || '{}'),
+        user: JSON.parse(localStorage.getItem('user') || '{}') as AuthUser,
         returnUrl: null as string | null,
     }),
     getters: {},
@@ -56,8 +85,8 @@ export const useAuthStore = defineStore('auth', {
             console.log(`Starting sudo session with sessionId ${sessionId}`);
             this.resetStores();
             const accountStore = useAccountStore();
-            if (this.user == null) {
-                this.user = {};
+            if (!this.user) {
+                this.user = {} as AuthUser;
             }
             this.user.sessionId = sessionId;
             this.sessionId = sessionId;
@@ -66,11 +95,11 @@ export const useAuthStore = defineStore('auth', {
             //localStorage.setItem('apiKey', this.apiKey);
             accountStore.load().then((response) => {
                 console.log('starting .then handler for accountStore.load trying to utilize the data');
-                this.user.account_id = accountStore.data.account_id;
-                this.user.account_lid = accountStore.data.account_lid;
-                this.user.gravatar = accountStore.gravatar;
+                this.user.account_id = accountStore.data.account_id ?? undefined;
+                this.user.account_lid = accountStore.data.account_lid ?? undefined;
+                this.user.gravatar = accountStore.gravatar ?? undefined;
                 this.user.ima = 'client'; // accountStore.data.ima;
-                this.user.name = accountStore.data.name;
+                this.user.name = accountStore.data.name ?? undefined;
                 localStorage.setItem('user', JSON.stringify(this.user));
                 // redirect to previous url or default to home page
                 console.log('Trying to load a different URL');
@@ -178,7 +207,7 @@ n,
                 console.log('error:');
                 console.log(error);
             }
-            this.user = null;
+            this.user = {} as AuthUser;
             this.sessionId = null;
             this.apiKey = null;
             localStorage.removeItem('user');

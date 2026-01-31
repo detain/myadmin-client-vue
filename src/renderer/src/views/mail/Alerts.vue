@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-
 import $ from 'jquery';
+import { moduleLink } from '@/helpers/moduleLink.ts';
+import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
-
+const baseUrl = siteStore.getBaseUrl();
+const id = computed(() => props.id);
+const module = 'mail';
 const alerts = ref<AlertRow[]>([]);
 const types_sel = ref({});
-//const id = ref('');
 const defaultTo = ref('');
 const action = ref('');
 const alertId = ref(0);
@@ -57,6 +55,95 @@ interface AlertRow {
     alert_updated: string;
     alert_used: string;
 }
+
+function submitNameservers() {
+    try {
+        fetchWrapper.put(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`, {}).then((response) => {
+            Swal.close();
+            console.log('update alert success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response.text}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('update alert failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+function registerAlert() {
+    try {
+        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`, {}).then((response) => {
+            Swal.close();
+            console.log('register alert success');
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                html: `Success${response}`,
+            });
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('register alert failed');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error}`,
+        });
+    }
+}
+
+function confirmDelete(index: number) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Delete Alert',
+        html: `<p>You are about to delete this alert.</p><br><p>Are you sure?</p>`,
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Delete it',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                fetchWrapper.delete(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts?index=${index}`).then((response) => {
+                    Swal.close();
+                    console.log('delete alert success');
+                    console.log(response);
+                    Swal.fire({
+                        icon: 'success',
+                        html: `Success${response}`,
+                    });
+                });
+            } catch (error: any) {
+                Swal.close();
+                console.log('delete alert failed');
+                console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    html: `Got error ${error}`,
+                });
+            }
+        }
+    });
+}
+
+const loadAlerts = async () => {
+    try {
+        const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`);
+        console.log('api success');
+        console.log(response);
+    } catch (error: any) {
+        console.log('api failed');
+        console.log(error);
+    }
+};
+
+loadAlerts();
 </script>
 
 <template>

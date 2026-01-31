@@ -27,7 +27,7 @@ export interface AccountData extends SimpleStringObj {
     maxmind_score: string;
     group: string;
     cc: string;
-    cc_auto: number;
+    cc_auto: '1' | '0';
     cc_exp: string;
     cc_type: string;
     cc_whitelist: number;

@@ -12,10 +12,9 @@ const props = defineProps<{
 }>();
 const id = computed(() => props.id);
 const curIp = computed(() => props.curIp);
-const module: string = 'licenses';
+const module: string = 'floating_ips';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-const ip = ref('');
 const newIp = ref(props.curIp);
 function handleSubmit() {
     Swal.fire({

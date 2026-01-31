@@ -1,290 +1,597 @@
 <script setup lang="ts">
+import { ref, computed, onMounted, nextTick } from 'vue';
+import { useRoute, RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useTicketsStore } from '../../stores/tickets.store';
+import Prism from 'prismjs';
+import Swal from 'sweetalert2';
+import { useAuthStore } from '../../stores/auth.store';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { useSiteStore } from '../../stores/site.store';
+import { Ticket, useTicketsStore } from '../../stores/tickets.store';
 
-import { ref, computed } from 'vue';
-import $ from 'jquery';
-//import from '/lib/select2/dist/js/select2.full.min.js';
+/* =======================
+   Stores / Route
+======================= */
+const route = useRoute();
+const siteStore = useSiteStore();
 const ticketsStore = useTicketsStore();
-const showToggle = ref(false);
-const inputFile = ref('');
-const success = ref<string | boolean>(false);
-const failed = ref<string | boolean>(false);
-const { ticket, loading, error, ima, custid, sortcol, sortdir, countArray, inboxCount, rowsOffset, rowsTotal, limit, currentPage, pages, view, viewText, search } = storeToRefs(ticketsStore);
-
-function formatDate(date: string) {}
-
-/*
-function toggleToggle() {
-    showToggle.value = !showToggle.value;
+const authStore = useAuthStore();
+const { sessionId } = storeToRefs(authStore);
+const baseUrl = siteStore.getBaseUrl();
+/* =======================
+   Types
+======================= */
+interface StatusCount {
+    ticketstatustitle: string;
+    st_count: number;
 }
 
-function chooseFile() {
-    inputFile.value.click();
+interface Attachment {
+    attachmentid: string;
+    filename: string;
+    linkttypeid: string;
+}
+
+interface Post {
+    attachments?: Attachment[];
+    ticketpostid: string;
+    creator: '1' | '2';
+    fullname: string;
+    email: string;
+    contents: string;
+    dateline: number;
+    liked?: number;
+}
+
+/* =======================
+   State
+======================= */
+const ticket = ref<Ticket | null>(null);
+const posts = ref<Post[]>([]);
+const statusCounts = ref<StatusCount[]>([]);
+const filesByPost = ref<Record<string, Attachment[]>>({});
+const suppressedEmail = ref<any>(null);
+
+/* reply */
+const replyBody = ref('');
+const attachments = ref<File[]>([]);
+
+/* server access */
+const authKey = ref('');
+const allowServerAccess = ref(false);
+const isRootRestricted = ref(false);
+const ipAddress = ref('');
+const rootPassword = ref('');
+const sudoUser = ref('');
+const sudoPassword = ref('');
+const sshPort = ref('22');
+
+/* search */
+const searchBox = ref('');
+const searchResults = ref<Ticket[]>([]);
+const searching = ref(false);
+const showResults = ref(false);
+const spinner = `<div class="spinner-border text-secondary"></div>`;
+
+/* file attachments */
+const fileInput = ref<HTMLInputElement | null>(null);
+const fileBase64 = ref<string | null>(null);
+const fileName = ref('');
+
+function openFileDialog() {
+    fileInput.value?.click();
+}
+
+function onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) {
+        fileName.value = '';
+        fileBase64.value = null;
+        return;
+    }
+    fileName.value = file.name;
+    const reader = new FileReader();
+    reader.onload = () => {
+        // result = "data:image/png;base64,iVBORw0KGgoAAA..."
+        fileBase64.value = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 }
 
 function resetFile() {
-    inputFile.value = null;
-    inputFile.value.previousSibling.value = '';
+    if (fileInput.value) {
+        fileInput.value.value = '';
+    }
+    fileName.value = '';
+    fileBase64.value = null;
 }
-*/
 
-$(function () {
-    $('.ssh-toggle').hide();
-    bs_input_file();
-    //Initialize Select2 Elements
-    $('.select2').select2();
+function getRawBase64(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[1];
+}
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4',
+function getRawType(): string | null {
+    if (!fileBase64.value) return null;
+    return fileBase64.value.split(',')[0].split(';')[0].split(':')[1];
+}
+
+function attachmentSrc(attachId: string) {
+    return `https://my.interserver.net/ajax.php?choice=ticket_dl&id=${attachId}&use_variable_sessionid=true&sessionid=${sessionId.value}`;
+}
+
+/* =======================
+   Computed
+======================= */
+const ticketMaskId = computed(() => route.params.id as string);
+const isClosed = computed(() => ticket.value?.ticketstatustitle === 'Closed');
+
+const wordCount = computed(() => (replyBody.value.trim() ? replyBody.value.trim().split(/\s+/).length : 0));
+
+/* =======================
+   Helpers
+======================= */
+const statusClassMap: Record<number, string> = {
+    4: 'bg-primary',
+    5: 'bg-warning',
+    6: 'bg-danger',
+    7: 'bg-success',
+};
+
+const ticketStatusClass = (id: number) => statusClassMap[id] ?? '';
+
+function formatDate(ts?: number) {
+    if (!ts) return '';
+    const d = new Date(ts * 1000);
+    return `Posted on: ${d.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    })} ${d.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+    })}`;
+}
+
+function formatReply(content: string) {
+    let html = content.replace(/`([^`]+)`/g, '<code>$1</code>').replace(/<br\s*\/?>/gi, '\n');
+    html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+    return html;
+}
+
+function statusClass(status: string) {
+    switch (status) {
+        case 'Open':
+            return 'bg-success';
+        case 'On Hold':
+            return 'bg-warning';
+        case 'In Progress':
+            return 'bg-secondary';
+        default:
+            return 'bg-danger';
+    }
+}
+
+function statusIcon(status: string) {
+    switch (status) {
+        case 'Open':
+            return 'far fa-envelope-open text-success';
+        case 'On Hold':
+            return 'fa fa-pause text-warning';
+        case 'In Progress':
+            return 'fa fa-hourglass-half text-secondary';
+        default:
+            return 'far fa-envelope text-danger';
+    }
+}
+
+/* =======================
+   Search
+======================= */
+async function submitSearch() {
+    if (!searchBox.value) return;
+    searching.value = true;
+    showResults.value = true;
+    searchResults.value = await ticketsStore.searchTickets(searchBox.value);
+    searching.value = false;
+}
+
+/* =======================
+   API
+======================= */
+async function loadTicket() {
+    const result = await fetchWrapper.get(`${baseUrl}/tickets/${ticketMaskId.value}`);
+    console.log(result);
+    ticket.value = result.ticket;
+    posts.value = result.posts || [];
+    statusCounts.value = result.st_count || [];
+    filesByPost.value = result.files || {};
+    suppressedEmail.value = result.suppressed_email || null;
+    if (typeof result.custom_values['5'] != 'undefined') {
+        ipAddress.value = result.custom_values['5'].fieldvalue;
+    }
+    if (typeof result.custom_values['6'] != 'undefined') {
+        rootPassword.value = result.custom_values['6'].fieldvalue;
+    }
+    if (typeof result.custom_values['7'] != 'undefined') {
+        authKey.value = result.custom_values['7'].fieldvalue;
+    }
+    if (typeof result.custom_values['8'] != 'undefined') {
+        sudoUser.value = result.custom_values['8'].fieldvalue;
+    }
+    if (typeof result.custom_values['9'] != 'undefined') {
+        sudoPassword.value = result.custom_values['9'].fieldvalue;
+    }
+    if (typeof result.custom_values['10'] != 'undefined') {
+        sshPort.value = result.custom_values['10'].fieldvalue;
+    }
+    if (typeof result.custom_values['11'] != 'undefined') {
+        allowServerAccess.value = result.custom_values['11'].fieldvalue == 'y';
+    }
+    isRootRestricted.value = !!(sudoUser.value && sudoPassword.value);
+    await nextTick();
+    Prism.highlightAll();
+}
+
+async function submitReply() {
+    if (wordCount.value === 0 || wordCount.value > 500 || isClosed.value) return;
+    const formData = {
+        body: replyBody.value,
+        attachments: fileBase64.value ? [{ name: fileName.value, content: getRawBase64(), type: getRawType() }] : [],
+    };
+    Swal.fire({
+        html: 'Please wait...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
     });
-});
-
-function bs_input_file() {
-    /*
-    $('.input-file').after(function () {
-        if (!$(this).prev().hasClass('input-ghost')) {
-          const element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-          element.attr('name', $(this).attr('name') as string);
-            element.change(function () {
-                element.prev().find('input').val((element.val() as string).split('\\').pop() as string);
-            });
-            $(this)
-                .find('button.btn-choose')
-                .click(function () {
-                    element.click();
-                });
-            $(this)
-                .find('button.btn-reset')
-                .click(function () {
-                    element.val('');
-                    $(this).parents('.input-file').find('input').val('');
-                });
-            $(this).find('input').css('cursor', 'pointer');
-            $(this)
-                .find('input')
-                .mousedown(function () {
-                    $(this).parents('.input-file').next().click();
-                    return false;
-                });
-            return element;
+    try {
+        const res = await fetchWrapper.post(`${baseUrl}/tickets/${ticketMaskId.value}`, formData);
+        Swal.close();
+        if (res.status === 'success') {
+            Swal.fire('Reply Posted', res.message, 'success');
+            replyBody.value = '';
+            attachments.value = [];
+            loadTicket();
+        } else {
+            Swal.fire('Warning', res.message, 'warning');
         }
-    });
-    */
+    } catch {
+        Swal.close();
+        Swal.fire('Error', 'Failed to post reply', 'error');
+    }
 }
+
+async function submitUpdate() {
+    const formData = {
+        server_access: allowServerAccess.value ? 'y' : 'n',
+        ip: ipAddress.value,
+        root_pass: rootPassword.value,
+        is_root: isRootRestricted.value ? 'y' : 'n',
+        sudo_user: sudoUser.value,
+        sudo_pass: sudoPassword.value,
+        port_no: sshPort.value,
+    };
+    Swal.fire({
+        html: 'Please wait...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    });
+    try {
+        const res = await fetchWrapper.put(`${baseUrl}/tickets/${ticketMaskId.value}`, formData);
+        Swal.close();
+        if (res.status === 'success') {
+            Swal.fire('Ticket Settings Updated', res.message, 'success');
+        } else {
+            Swal.fire('Warning', res.message, 'warning');
+        }
+    } catch {
+        Swal.close();
+        Swal.fire('Error', 'Failed to update settings', 'error');
+    }
+}
+
+async function closeTicket() {
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'Do you want to close this ticket?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, close it!',
+    });
+    if (result.isConfirmed) {
+        try {
+            const res = await fetchWrapper.delete(`${baseUrl}/tickets/${ticketMaskId.value}`);
+            Swal.fire('Ticket Closed', res, 'success');
+            loadTicket();
+        } catch {
+            await Swal.fire('Error', 'Failed to close ticket', 'error');
+        }
+    }
+}
+
+/* =======================
+   Lifecycle
+======================= */
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    ['/tickets', 'Tickets'],
+    [`/tickets/${ticketMaskId.value}`, ticketMaskId.value],
+]);
+
+siteStore.setPageHeading(`Ticket ${ticketMaskId.value}`);
+siteStore.setTitle(`[${ticketMaskId.value}] | View Ticket`);
+
+onMounted(loadTicket);
 </script>
 
 <template>
-    <div v-if="success" class="row">
-        <div class="alert alert-success mainbox col-md-12" style="padding: 5px">{{ success }}</div>
+    <!-- SUPPRESSED EMAIL -->
+    <div v-if="suppressedEmail" class="alert alert-danger" style="border-radius: 10px">
+        <strong>Important Notice:</strong>
+        Your email <b>({{ suppressedEmail.email }})</b> has been disabled. Please contact
+        <RouterLink class="text-white text-underline" to="/new_ticket_c"> SUPPORT </RouterLink>
     </div>
-    <div v-if="failed" class="row">
-        <div class="alert alert-danger mainbox col-md-12" style="padding: 5px">{{ failed }}</div>
-    </div>
-    <template v-else>
-        <link rel="stylesheet" href="/lib/select2/dist/css/select2.min.css" />
-        <link rel="stylesheet" href="/lib/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
-        <div class="row">
-            <div class="col-md-3">
-                <div class="info-box p-0">
-                    <span class="info-box-icon border-rad-zero" :class="{ 'bg-success': ticket.status === 'Open', 'bg-warning': ticket.status === 'On Hold', 'bg-danger': ticket.status !== 'Open' && ticket.status !== 'On Hold' }"><i class="fas fa-ticket-alt"></i></span>
-                    <div class="info-box-content">
-                        <!--      <span class = "info-box-text">{{ ticket.ticketmaskid }}</span> -->
-                        <span class="info-box-number">{{ ticket.status }}</span>
-                        <span class="info-box-text">{{ ticket.priority }}</span>
-                        <span class="info-box-text">{{ ticket.department }} Department</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="callout callout-info">
-                    <h5><i class="fas fa-align-left">&nbsp;</i>Subject</h5>
-                    <p>{{ ticket.subject }}</p>
+
+    <!-- HEADER -->
+    <div v-if="ticket" class="row mb-4">
+        <div class="col-md-2 pr-1">
+            <div class="info-box p-0">
+                <span class="info-box-icon border-rad-zero" :class="statusClass(ticket.ticketstatustitle)">
+                    <i class="text-white" :class="statusIcon(ticket.ticketstatustitle)" />
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-number">
+                        {{ ticket.ticketstatustitle }}
+                    </span>
+                    <span class="info-box-text"> Created: {{ formatDate(Number(ticket.dateline)) }} </span>
+                    <span class="info-box-text"> Updated: {{ formatDate(Number(ticket.lastactivity)) }} </span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <form method="POST" action="view_ticket?ticket={$ticket.ticketid}">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Update Ticket</h3>
-                            <!-- /.user-block -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+        <div class="col-md-10">
+            <div class="callout callout-info py-3">
+                <h5><i class="fas fa-align-left"></i> Subject</h5>
+                <p>{{ ticket.subject }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="row">
+        <!-- SIDEBAR -->
+        <div class="col-md-2 folders">
+            <!-- SEARCH -->
+            <div class="card mb-3">
+                <form @submit.prevent="submitSearch">
+                    <div class="input-group input-group-sm">
+                        <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search" />
+                        </button>
+                    </div>
+                </form>
+
+                <div v-if="showResults" class="results p-2">
+                    <template v-if="searchResults.length">
+                        <div v-for="row in searchResults" :key="row.ticketid">
+                            <RouterLink :to="`/tickets/${row.ticketmaskid}`" class="pb-2 d-inline-block">
+                                <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
+                                <span style="font-size: 95%">{{ row.subject }}</span>
+                            </RouterLink>
+                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <hr />
+                        </div>
+                    </template>
+                    <div v-else v-html="spinner" />
+                </div>
+            </div>
+
+            <!-- QUICK FILTER -->
+            <div class="card folder_tickets">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Filter</h3>
+                </div>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
+                    </li>
+                    <li class="nav-item">
+                        <RouterLink to="/tickets" class="nav-link"> <i class="fas fa-inbox text-primary">&nbsp;</i>ALL </RouterLink>
+                    </li>
+                    <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
+                        <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
+                            <i :class="statusIcon(s.ticketstatustitle)" />
+                            {{ s.ticketstatustitle }}
+                            <span class="badge float-right" :class="statusClass(s.ticketstatustitle)">
+                                {{ s.st_count }}
+                            </span>
+                        </RouterLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="col-md-10">
+            <div class="card card-body">
+                <form method="post" role="form" @submit.prevent="submitUpdate">
+                    <!-- SERVER ACCESS -->
+                    <div class="form-group col-md-6 mb-0 pl-0">
+                        <div class="custom-control custom-checkbox">
+                            <input id="server_access_checkbox" v-model="allowServerAccess" type="checkbox" class="custom-control-input" />
+                            <label class="custom-control-label" for="server_access_checkbox">Allow InterServer to modify server:</label>
+                        </div>
+                        <input type="hidden" name="server_access" :value="allowServerAccess ? 'y' : 'n'" />
+                    </div>
+                    <!-- TOGGLED SECTION -->
+                    <div v-show="allowServerAccess" class="form-toggle">
+                        <hr />
+                        <div class="form-row">
+                            <!-- IP -->
+                            <div class="form-group col-md-2">
+                                <label for="ip">Your IP Address</label>
+                                <input id="ip" v-model="ipAddress" name="ip" type="text" class="form-control form-control-sm" placeholder="Your IP Address" />
+                                <span class="help-text text-danger text-sm"> If connection is coming from different IP address. Kindly change it. </span>
+                            </div>
+                            <!-- ROOT PASSWORD -->
+                            <div class="form-group col-md-2 pr-3" style="border-right: 1px solid #cccccc69">
+                                <label for="root_pass">Root Password</label>
+                                <input id="root_pass" v-model="rootPassword" name="root_pass" type="text" class="form-control form-control-sm" placeholder="VPS / Dedicated Server" />
+                                <span class="help-text text-danger text-sm">Passwords are stored in a separate encrypted database.</span>
+                            </div>
+                            <!-- ROOT RESTRICTED -->
+                            <div class="form-group col-md-2 pl-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" name="is_root" class="custom-control-input" />
+                                    <label class="custom-control-label" for="is_root_checkbox">Is SSH Root Restricted?</label>
+                                </div>
+                            </div>
+                            <!-- SUDO FIELDS -->
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="sudo_user">Sudo Username</label>
+                                <input id="sudo_user" v-model="sudoUser" name="sudo_user" type="text" class="form-control form-control-sm" placeholder="Sudo Username" />
+                            </div>
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="sudo_pass">Sudo Password</label>
+                                <input id="sudo_pass" v-model="sudoPassword" name="sudo_pass" type="text" class="form-control form-control-sm" placeholder="Sudo user password" />
+                                <span class="help-text text-danger text-sm"> Passwords are stored in a separate encrypted database. </span>
+                            </div>
+                            <div v-show="isRootRestricted" class="form-group col-md-2">
+                                <label for="ssh-port">SSH Port</label>
+                                <input id="ssh-port" v-model="sshPort" name="port_no" type="text" class="form-control form-control-sm" placeholder="SSH Port Number" />
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="status" class="col-sm-4 col-form-label">Status</label>
-                                <div class="col-sm-8">
-                                    <select name="status" class="form-control form-control-sm select2" style="width: 100%">
-                                        <option value="4" selected>Open</option>
-                                        <option value="5">On Hold</option>
-                                        <option value="6">Close</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="box_auth_value" class="col-sm-4 col-form-label">Root Password</label>
-                                <div class="col-sm-8">
-                                    <input type="password" name="box_auth_value" class="form-control form-control-sm" placeholder="Root password (VPS / Dedicated Server)" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="user_ip" class="col-sm-4 col-form-label">Your IP Address</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="user_ip" class="form-control form-control-sm" placeholder="Your IP Address" value="{$client_ip}" />
-                                    <span class="help-text text-orange">If connection is coming from different IP address. Kindly change it.</span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-4 col-form-label">Is SSH root restricted ?</label>
-                                <div class="col-sm-8"><button class="ssh-root btn btn-secondary btn-sm" @click.prevent="$('.ssh-toggle').toggle()">Click here</button></div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="sudo_user" class="col-sm-4 col-form-label">Sudo User</label>
-                                <div class="col-sm-8"><input type="text" name="sudo_user" class="form-control form-control-sm" placeholder="Sudo Username" /></div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="sudo_password" class="col-sm-4 col-form-label">Sudo Password</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="sudo_password" class="form-control form-control-sm" placeholder="Sudo user password" />
-                                    <span class="help-text text-orange">Passwords are stored in a separate encrypted database.</span>
-                                </div>
-                            </div>
-                            <div class="form-group row ssh-toggle">
-                                <label for="port_no" class="col-sm-4 col-form-label">SSH Port</label>
-                                <div class="col-sm-8"><input type="text" name="port_no" class="form-control form-control-sm" placeholder="SSH Port Number" value="22" /></div>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" name="submit" value="updateTicket" class="btn btn-primary">Update</button>
-                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-md btn-outline-primary">Update</button>
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
-                <form method="post" role="form" action="view_ticket?ticket={$ticket.ticketid}" enctype="multipart/form-data">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Reply Post</h3>
-                            <!-- /.user-block -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
+
+            <!-- REPLY -->
+            <div class="card mt-3">
+                <div class="card-header" style="border-bottom: 3px solid #007bff">
+                    <h3 class="card-title mt-1 mr-2">Post Reply</h3>
+                    <a v-if="ticket?.ticketstatusid == '5'" class="btn btn-sm btn-danger ml-3" @click.prevent="closeTicket">Close Ticket</a>
+                </div>
+                <div class="card-body">
+                    <template v-if="isClosed">
+                        <span class="text-bold">This ticket is closed, so replies are disabled. If you still need assistance, feel free to open a new ticket and we’ll be happy to help.</span>
+                    </template>
+                    <template v-else>
+                        <form id="replyForm" method="post" role="form" class="needs-validation" enctype="multipart/form-data" novalidate>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Post</label>
+                                <label class="col-sm-2 col-form-label" for="ssh-button">Reply Content</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control form-control-sm" name="body" placeholder="Detailed post about the issue" rows="7"></textarea>
+                                    <textarea v-model="replyBody" class="form-control form-control-sm" placeholder="Detailed post about the issue" rows="7" required></textarea>
+                                    <div class="text-right text-muted" style="position: absolute; bottom: 22px; right: 25px; font-size: 12px">{{ wordCount }} / 500 words</div>
+                                    <small class="text-muted">Creating separate tickets for new issues helps our team prioritize and resolve them faster.</small>
                                 </div>
-                            </div>
-                            <div class="form-group required row mb-0">
-                                <label for="file_upload" class="col-sm-2 col-form-label requiredField">File Upload</label>
-                                <div class="controls col-sm-10 input-group input-file" name="file_attachment">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-sm btn-choose" type="button">Choose</button>
-                                    </span>
-                                    <input v-model="inputFile" type="text" name="file_attachment" class="form-control form-control-sm input-text-file" placeholder="Choose a file..." />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-warning btn-reset btn-sm" type="button">Reset</button>
-                                    </span>
-                                </div>
+                                <div class="invalid-feedback">Please enter a detailed description about the issue.</div>
                             </div>
                             <div class="form-group row">
-                                <label for="ff" class="col-md-2"></label>
-                                <div class="col-sm-10 input-group">
-                                    <span class="help-text text-orange">Note: Only image files - gif/jpeg/png types are allowed.</span>
+                                <label class="col-sm-2 col-form-label" for="file-upload">Attach Media</label>
+                                <div class="controls col-sm-10 input-group input-file w-75" name="file_attachment">
+                                    <!-- Visible filename input -->
+                                    <span class="input-group-btn"><button class="btn btn-secondary btn-sm btn-choose" type="button" @click="openFileDialog">Choose</button></span>
+                                    <input type="text" name="file_attachment" class="form-control form-control-sm input-text-file" :value="fileName" readonly placeholder="Choose a file..." @mousedown.prevent="openFileDialog" />
+                                    <span class="input-group-btn"><button class="btn btn-warning btn-reset btn-sm" type="button" @click="resetFile">Reset</button></span>
+                                    <!-- Hidden file input -->
+                                    <input ref="fileInput" type="file" class="input-ghost" name="attachments" accept="image/png,image/jpeg,image/gif" style="visibility: hidden; height: 0" @change="onFileChange" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" name="submit" value="postReply" class="btn btn-primary">Post Reply</button>
-                        </div>
-                    </div>
-                </form>
+                            <hr />
+                            <div class="text-center">
+                                <button class="btn btn-primary mt-2" :disabled="wordCount > 500" @click="submitReply">Post Reply</button>
+                            </div>
+                        </form>
+                    </template>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-widget card-outline card-success">
-                    <div class="card-header">
-                        <h3 class="card-title">Ticket Replies</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+
+            <!-- Ticket Replies -->
+            <div v-if="posts.length" class="card card-widget">
+                <div class="card-header">
+                    <h3 class="card-title">Ticket Replies</h3>
+                </div>
+                <div class="card-body card-comments p-0">
+                    <div v-for="post in posts" :key="post.ticketpostid" class="row m-0 card-comment card-outline card-success p-0">
+                        <!-- LEFT USER COLUMN -->
+                        <div class="col-md-2 username d-flex pt-4 px-3" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ background: post.creator === '1' ? 'rgba(0,0,0,.03)' : '#fff', borderRight: '2px solid #ccc' }">
+                            <div class="text-center mt-3 w-100">
+                                <h3 class="mb-2" style="line-break: anywhere; font-size: 1.2rem">{{ post.fullname }}</h3>
+                                <span class="py-1 px-2 text-sm d-block mt-1" :class="post.creator === '1' ? 'bg-green' : 'bg-secondary text-white'" style="font-weight: normal; letter-spacing: 0.6px; border-radius: 4px">
+                                    {{ post.creator === '1' ? 'Staff' : post.creator === '2' ? 'User' : 'Participant' }}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-footer card-comments">
-                        <div v-if="ticket.ticket_posts">
-                            <div v-for="post in ticket.ticket_posts" :key="post.id" class="card-comment">
-                                <div class="comment-text ml-4">
-                                    <span class="username">
-                                        {{ post.fullname }} <span :class="post.staffid ? 'b-radius bg-green ml-1 px-2 py-1 text-xs' : 'b-radius bg-green ml-1 px-2 py-1 text-xs'"> {{ post.staffid ? 'Staff' : 'User' }}</span>
-                                        <span class="text-muted float-right">{{ formatDate(post.posted_on) }}</span>
-                                    </span>
-                                    <pre class="inherit-class">{{ post.contents }}</pre>
-                                    <template v-if="post.liked !== undefined">
-                                        <button type="button" class="btn btn-secondary btn-sm bg-primary"><i :class="post.liked == 1 ? 'far fa-thumbs-up' : 'far fa-thumbs-down'"></i> {{ post.liked == 1 ? 'Like' : 'Dislike' }}</button>
-                                    </template>
-                                    <template v-if="post.attachment_count > 0 && post.getAttachments">
-                                        <span v-for="attachment in post.getAttachments" :key="attachment.id">{{ attachment.file }}&nbsp;</span>
-                                    </template>
-                                </div>
+                        <!-- RIGHT CONTENT COLUMN -->
+                        <div class="col-md-10 p-0">
+                            <!-- HEADER / TIMESTAMP -->
+                            <div class="card-footer py-2 px-0" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ borderBottom: '1px solid #ccc', background: post.creator !== '1' ? '#fff' : undefined }">
+                                <span class="username ml-2 text-muted">
+                                    {{ formatDate(post.dateline) }}
+                                </span>
+                            </div>
+                            <!-- MESSAGE BODY -->
+                            <div class="comment-text ml-2">
+                                <div class="inherit-class w-100 m-0 js-linkify" v-html="formatReply(post.contents)" />
+                                <!-- LIKE / DISLIKE -->
+                                <template v-if="post.liked !== undefined">
+                                    <hr class="my-1" />
+                                    <div v-if="post.liked === 1" class="text-success mb-2 ml-2"><i class="fas fa-thumbs-up mr-1"></i> User liked your reply</div>
+                                    <div v-else class="text-danger mb-2 ml-2"><i class="fas fa-thumbs-down mr-1"></i> User disliked your reply</div>
+                                </template>
+                                <!-- ATTACHMENTS -->
+                                <template v-if="post.attachments">
+                                    <div v-for="file in post.attachments" :key="file.attachmentid" class="post-attachments">
+                                        <div class="img-preview-container">
+                                            <img class="img-attachment" :src="attachmentSrc(file.attachmentid)" :alt="file.filename" />
+                                            <div class="img-preview-overlay">
+                                                <div class="buttons">
+                                                    <button class="btn btn-dark" data-toggle="modal" data-target="`#image-${file.attachmentid}`"><i class="fas fa-search-plus"></i></button>
+                                                    <a :href="attachmentSrc(file.attachmentid)" :download="file.filename" class="btn btn-dark"><i class="fas fa-download"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div :id="`image-${file.attachmentid}`" class="attachment-modal modal fade" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <img :src="attachmentSrc(file.attachmentid)" alt="Ticket Attachment" class="img-fluid" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                            <!-- EMAIL FOOTER (USER ONLY) -->
+                            <div v-if="post.creator !== '1'" class="card-footer py-2 px-0 user" style="background: #fff">
+                                <span class="ml-2"
+                                    >Email: <b>{{ post.email }}</b></span
+                                >
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer"></div>
                 </div>
             </div>
         </div>
-    </template>
+    </div>
 </template>
 
 <style scoped>
-.inherit-class {
-    display: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    white-space: pre-wrap;
-}
+@import 'prismjs/themes/prism.css';
+@importt '../../assets/css/view_admin_ticket.css';
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: inherit !important;
-    margin-top: -5px;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 0 !important;
-}
-
-.info-box {
-    box-shadow:
-        0 0 1px rgb(0 0 0 / 13%),
-        0 1px 3px rgb(0 0 0 / 20%);
-    border-radius: 0.25rem;
-    background-color: #fff;
-    display: flex;
-    margin-bottom: 1rem;
-    min-height: 80px;
-    padding: 0.5rem;
-    position: relative;
+.results {
     width: 100%;
-}
-
-.info-box .info-box-icon {
-    border-radius: 0.25rem;
-    -ms-flex-align: center;
-    align-items: center;
-    display: flex;
-    font-size: 1.875rem;
-    -ms-flex-pack: center;
-    justify-content: center;
-    text-align: center;
-    width: 70px;
+    overflow-y: auto;
+    box-shadow: rgba(0, 0, 0, 0.22) 0 3px 14px;
+    border-radius: 0 0 8px 8px;
+    height: 200px;
 }
 </style>

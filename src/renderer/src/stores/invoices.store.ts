@@ -7,11 +7,14 @@ import { useSiteStore } from '../stores/site.store';
 interface InvoiceRow {
     id: number;
     module: string;
+    date_raw: string;
     date: string;
+    service_id: number;
     service: string;
     description: string;
     amount: string;
     paid: string;
+    payment_type_id: number;
     payment_type: string;
     month: string;
     year: string;
@@ -64,7 +67,7 @@ export const useInvoicesStore = defineStore('invoices', {
             const baseUrl = siteStore.getBaseUrl();
             this.loading = true;
             try {
-                const response = await fetchWrapper.get(`${baseUrl}/invoices`);
+                const response = await fetchWrapper.get(`${baseUrl}/billing/invoices`);
                 this.custid = response.custid;
                 this.years_arr = response.years_arr;
                 this.months_arr = response.months_arr;
@@ -81,6 +84,11 @@ export const useInvoicesStore = defineStore('invoices', {
                 this.error = error;
             }
             this.loading = false;
+        },
+        async getInvoice(id: number): Promise<string> {
+            const siteStore = useSiteStore();
+            const baseUrl = siteStore.getBaseUrl();
+            return await fetchWrapper.get(`${baseUrl}/billing/invoices/${id}`);
         },
     },
 });

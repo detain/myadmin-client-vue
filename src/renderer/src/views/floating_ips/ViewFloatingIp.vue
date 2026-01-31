@@ -9,15 +9,18 @@ import { useFloatingIpStore } from '../../stores/floating_ips.store';
 import { useSiteStore } from '../../stores/site.store';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
+import ChangeIp from './ChangeIp.vue';
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';
 const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
+const floatingIpStore = useFloatingIpStore();
 const id = Number(route.params.id);
 const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
+const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
 const settings = computed(() => {
     return modules.value[module];
 });
@@ -27,10 +30,7 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/${moduleLink(module)}`, 'Floating IPs'],
 ]);
-siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IPs ${id}`);
-
-const floatingIpStore = useFloatingIpStore();
-const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
+siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IPs ${serviceInfo.value.floating_ip_ip}`);
 
 function submitForm() {}
 
@@ -42,13 +42,13 @@ function loadLink(newLink: string) {
         ['/home', 'Home'],
         [`/${moduleLink(module)}`, 'Floating IPs'],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IP ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Floating IP ${serviceInfo.value.floating_ip_ip}`);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Floating IP ${id}`);
-        siteStore.setTitle(`View Floating IP ${id}`);
+        siteStore.setPageHeading(`View Floating IP ${serviceInfo.value.floating_ip_ip}`);
+        siteStore.setTitle(`View Floating IP ${serviceInfo.value.floating_ip_ip}`);
     } else {
-        siteStore.setPageHeading(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`Floating IP ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(`Floating IP ${serviceInfo.value.floating_ip_ip} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`Floating IP ${serviceInfo.value.floating_ip_ip} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
@@ -137,19 +137,28 @@ const statusClass = computed(() => {
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-danger b-radius">
-                <div class="inner px-3 pb-2 pt-3">
-                    <h3>Floating IPs API</h3>
-                    <p class="my-3 py-3">For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-bold text-white">Click Here</a></p>
+            <div class="small-box bg-info">
+                <div class="inner pt-3 pb-2 px-3">
+                    <h3>Floating IP</h3>
+                    <p class="py-3 my-3">
+                        Floating IP is: <b>{{ serviceInfo.floating_ip_ip }}</b>
+                    </p>
                 </div>
-                <div class="icon"><i class="material-icons">api</i></div>
-                <span class="small-box-footer"> For API Key: <router-link to="/account/settings" class="text-bold text-white">Account Settings</router-link> </span>
+                <div class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <span class="small-box-footer">
+                    Target IP: <b>{{ serviceInfo.floating_ip_target_ip }}</b>
+                </span>
             </div>
         </div>
     </div>
-    <template v-if="linkDisplay">
+    <template v-if="link">
         <div v-if="link == 'cancel'" class="col">
             <Cancel :id="id" :module="module" :package="pkg" :title-field="titleField" :title-field2="titleField2"></Cancel>
+        </div>
+        <div v-else-if="link == 'change_ip'" class="col">
+            <ChangeIp :id="id" :cur-ip="serviceInfo.floating_ip_target_ip"></ChangeIp>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>
@@ -159,24 +168,6 @@ const statusClass = computed(() => {
         </div>
     </template>
     <template v-else>
-        <div>
-            <div class="col-md-12">
-                <blockquote
-                    style="
-                        border-left: 0.4rem solid dimgray;
-                        height: 70px;
-                        padding-top: 20px;
-                        box-shadow:
-                            0 0 1px rgb(0 0 0 / 13%),
-                            0 1px 3px rgb(0 0 0 / 20%);
-                    "
-                    class="mx-0 pl-4">
-                    <p style="font-size: 20px; vertical-align: middle">
-                        <i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Floating IPs Usage Count: <strong>{{ usage_count }}</strong>
-                    </p>
-                </blockquote>
-            </div>
-        </div>
         <div class="row row-flex py-4">
             <div class="col-md-5">
                 <div class="card">
@@ -196,7 +187,7 @@ const statusClass = computed(() => {
                     </div>
                 </div>
             </div>
-            <div v-if="extraInfoTables.floating_ip" class="col-md-4">
+            <div v-if="extraInfoTables.floating_ips" class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -208,7 +199,7 @@ const statusClass = computed(() => {
                     </div>
                     <div class="card-body">
                         <table class="table-bordered table">
-                            <tr v-for="itemValue in extraInfoTables.floating_ip.rows" :key="itemValue.id">
+                            <tr v-for="itemValue in extraInfoTables.floating_ips.rows" :key="itemValue.id">
                                 <td>{{ itemValue.desc }}</td>
                                 <td class="text-success">{{ itemValue.value }}</td>
                             </tr>

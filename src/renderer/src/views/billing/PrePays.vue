@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref, reactive, defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { usePrePayStore } from '../../stores/prepay.store';
 import { useSiteStore } from '../../stores/site.store';
-
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
 const prepayStore = usePrePayStore();
+const router = useRouter();
 const { loading, error, custid, ima, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
 siteStore.setPageHeading('PrePaid Funds');
 siteStore.setTitle('PrePaid Funds');
@@ -15,6 +18,37 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'PrePays'],
 ]);
+/* =====================
+   STATE (replace with API)
+===================== */
+const expandedHistory = reactive<Record<number, boolean>>({});
+const newPrepay = reactive({
+    module: 'default',
+    amount: 100,
+    automatic_use: '1',
+});
+
+/* =====================
+   TYPES
+===================== */
+interface Prepay {
+    prepay_id: string;
+    prepay_module: string | null;
+    prepay_remaining_disp: string;
+    prepay_automatic_use: string;
+}
+
+interface PrepayHistory {
+    history_id: string;
+    history_timestamp_disp: string;
+    desc: string;
+    amt_used: string;
+}
+
+interface PrepayItem {
+    prepay: Prepay;
+    history: PrepayHistory[];
+}
 
 function addPrepayUpdates(event: Event) {
     const module = (event.target as HTMLInputElement).value;
@@ -58,183 +92,213 @@ function delete_prepay(prepay_id: string | number) {
 }
 
 prepayStore.load();
+
+/* =====================
+   METHODS
+===================== */
+function capitalize(value: string) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function toggleHistory(id: number) {
+    expandedHistory[id] = !expandedHistory[id];
+}
+
+function goToPage(p: number) {
+    if (p < 1 || p > total_pages.value) return;
+    if (p !== page.value) {
+        page.value = p;
+        // fetchPrepays()
+        prepayStore.load(page.value);
+    }
+}
+
+function updateModuleOptions() {
+    // placeholder for service/type logic
+}
+
+function submitNewPrepay() {
+    // API call here
+    console.log('Submitting prepay', newPrepay);
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.post(`${baseUrl}/prepays`, newPrepay).then((response) => {
+            Swal.close();
+            console.log('Response:');
+            console.log(response);
+            if (response['success'] == true) {
+                router.push(`/cart/${response.iids.join(',')}`);
+            }
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('caught error:');
+        console.log(error);
+    }
+}
 </script>
 
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
-            <div class="mb-5 text-center">
-                <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" aria-hidden="true"></i> Add New Prepay</a>
+            <div class="text-center mb-5">
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" /> Add New Prepay</button>
             </div>
-
-            <template v-if="prepays">
-                <div v-for="(p_details, p_id) in prepays" :key="p_id" class="card">
+            <div v-if="loading" class="text-center">Loading…</div>
+            <template v-if="Object.keys(prepays).length">
+                <div v-for="p in prepays" :key="p.prepay.prepay_id" class="card mb-3">
                     <div class="card-body">
                         <div class="row">
+                            <!-- LEFT COLUMN -->
                             <div class="col-md-3">
-                                <p>Prepay ID : {{ p_details.prepay.prepay_id }}</p>
-                                <p>Module: {{ p_details.prepay.prepay_module ? p_details.prepay.prepay_module : 'All' }}</p>
-                                <p>Balance: {{ p_details.prepay.prepay_remaining_disp }}</p>
-                                <p>Automatically use on Invoices: {{ p_details.prepay.prepay_automatic_use == 1 ? 'Yes' : 'No' }}</p>
+                                <p>Prepay ID : {{ p.prepay.prepay_id }}</p>
+                                <p>
+                                    Module:
+                                    <span v-if="!p.prepay.prepay_module">All</span>
+                                    <span v-else>{{ capitalize(p.prepay.prepay_module) }}</span>
+                                </p>
+                                <p>Balance: {{ p.prepay.prepay_remaining_disp }}</p>
+                                <p>
+                                    Automatically use on Invoices:
+                                    {{ p.prepay.prepay_automatic_use == '1' ? 'Yes' : 'No' }}
+                                </p>
                             </div>
-                            <div class="col-md-3">
-                                <!--
-              <a class="btn btn-custom" href="javascript:void(0);" data-toggle="modal" data-target="#add-funds" title="Add Fund" @click="addAmount(p_details.prepay.prepay_id, p_details.prepay.prepay_module)">
-                <i class="fa fa-plus"></i> Add Funds
-              </a>
-              <a v-if="p_details.prepay.prepay_remaining === 0" class="btn btn-custom ml-2" href="javascript:void(0);" @click="deletePrepay(p_details.prepay.prepay_id)">
-                <i class="fa fa-trash"></i> Delete
-              </a>
-              -->
-                            </div>
+
+                            <!-- ACTION COLUMN -->
+                            <div class="col-md-3"></div>
+
+                            <!-- HISTORY COLUMN -->
                             <div class="col-md-6">
-                                <div v-if="typeof p_details.history != 'undefined' && Array.isArray(p_details.history) && p_details.history.length > 0" class="card card-secondary collapsed-card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">History Log</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i></button>
+                                <template v-if="p.history?.length">
+                                    <div class="card card-secondary collapsed-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">History Log</h3>
+                                            <div class="card-tools">
+                                                <button class="btn btn-tool" data-card-widget="collapse" @click="toggleHistory(p.prepay.prepay_id)">
+                                                    <i class="fas fa-plus" />
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div v-show="expandedHistory[p.prepay.prepay_id]" class="card-body">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Description</th>
+                                                        <th class="text-end">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="h in p.history" :key="h.history_id">
+                                                        <td>{{ h.history_timestamp_disp }}</td>
+                                                        <td>{{ h.desc }}</td>
+                                                        <td class="text-end">{{ h.amt_used }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <table class="table-sm table">
-                                            <thead>
-                                                <tr>
-                                                    <!-- <th>ID</th> -->
-                                                    <th>Date</th>
-                                                    <th>Description</th>
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr v-for="p_history in p_details.history" :key="p_history.history_id">
-                                                    <!-- <td>{{ p_history.history_id }}</td> -->
-                                                    <td>{{ p_history.history_timestamp_disp }}</td>
-                                                    <td>{{ p_history.desc }}</td>
-                                                    <td class="text-right">{{ p_history.amt_used }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <span v-else class="text-red">No History found!</span>
+                                </template>
+                                <span v-else class="text-danger">No History found!</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div v-if="Object.keys(prepays).length > 0" class="row py-3">
+
+                <!-- PAGINATION -->
+                <div class="row py-3">
                     <div class="col text-left">
                         <h6 class="pl-3">
-                            <small>Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }}</small>
+                            <small> Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }} </small>
                         </h6>
                     </div>
+
                     <div class="col">
-                        <nav aria-label="Page navigation example">
+                        <nav>
                             <ul class="pagination justify-content-end">
                                 <li class="page-item" :class="{ disabled: page === 1 }">
-                                    <a class="page-link" :href="`prepays?page=${page - 1}`" tabindex="-1">Previous</a>
+                                    <button class="page-link" @click="goToPage(page - 1)">Previous</button>
                                 </li>
+
                                 <li v-for="i in total_pages" :key="i" class="page-item" :class="{ active: page === i }">
-                                    <a class="page-link" :href="`prepays?page=${i}`">{{ i }}</a>
+                                    <button class="page-link" @click="goToPage(i)">
+                                        {{ i }}
+                                    </button>
                                 </li>
+
                                 <li class="page-item" :class="{ disabled: page === total_pages }">
-                                    <a class="page-link" :href="`prepays?page=${page + 1}`">Next</a>
+                                    <button class="page-link" @click="goToPage(page + 1)">Next</button>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </template>
+
             <template v-else>
                 <hr />
-                <div class="text-red text-center">No Prepaid funds available</div>
+                <div class="text-danger text-center">No Prepaid funds available</div>
             </template>
         </div>
     </div>
-    <div id="add-funds" class="modal fade" style="display: none" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header mx-4">
-                    <h4 class="modal-title">Add Funds</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="prepays" method="post" class="">
-                        <input type="hidden" name="action" value="addfunds" />
-                        <input id="prepay_hiddenid" type="hidden" name="prepay_id" value="" />
-                        <input id="p_module" type="hidden" name="prepay_module" value="" />
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="prep_id">Prepay ID</label>
-                            <div class="col-sm-6 input-group">
-                                <input id="prep_id" type="text" class="form-control form-control-sm" name="prep_id" value="" disabled />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="amount">Amount in USD</label>
-                            <div class="col-sm-6 input-group">
-                                <input id="amount" type="text" class="form-control form-control-sm" name="amount" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12 text-center">
-                                <button class="btn btn-primary btn-sm mr-2" type="submit">Add Funds</button>
-                                <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="add-prepay" class="modal fade" style="display: none" aria-hidden="true">
+
+    <!-- ADD PREPAY MODAL -->
+    <div id="add-prepay" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add New Prepay</h4>
+                    <h4>Add New Prepay</h4>
                 </div>
+
                 <div class="modal-body">
-                    <form action="prepays" method="post" class="">
-                        <input type="hidden" name="action" value="addnewprepay" />
+                    <form @submit.prevent="submitNewPrepay">
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label" for="module-select">Select Module to use this prepay for</label>
-                            <div class="col-sm-6 input-group">
-                                <select id="module-select" name="module" class="form-control select2" @change="addPrepayUpdates($event)">
-                                    <option v-for="(module_name, module) in modules" :key="module" :value="module">{{ module_name }}</option>
+                            <label class="col-md-6 col-form-label"> Select Module </label>
+                            <div class="col-sm-6">
+                                <select v-model="newPrepay.module" class="form-control" @change="updateModuleOptions">
+                                    <option v-for="(name, key) in modules" :key="key" :value="key">
+                                        {{ name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label" for="amount">Amount in USD</label>
-                            <div class="col-sm-6 input-group">
-                                <input id="amount" type="text" class="form-control form-control-sm" name="amount" value="100" />
+                            <label class="col-md-6 col-form-label"> Amount in USD </label>
+                            <div class="col-sm-6">
+                                <input v-model.number="newPrepay.amount" type="number" class="form-control form-control-sm" />
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label" for="auto-use">Automatically use on new invoices</label>
-                            <div class="col-sm-6 input-group">
-                                <div class="icheck-success d-inline">
-                                    <input id="a-inlineRadio1" class="form-check-input" type="radio" name="automatic_use" value="1" checked />
-                                    <label class="form-check-label" for="a-inlineRadio1">Yes</label>
-                                </div>
-                                <div class="icheck-success d-inline pl-2">
-                                    <input id="a-inlineRadio2" class="form-check-input" type="radio" name="automatic_use" value="0" />
-                                    <label class="form-check-label" for="a-inlineRadio2">No</label>
-                                </div>
+                            <label class="col-md-6 col-form-label"> Automatically use on new invoices </label>
+                            <div class="col-sm-6">
+                                <label>
+                                    <input v-model="newPrepay.automatic_use" type="radio" value="1" />
+                                    Yes
+                                </label>
+                                <label class="ms-2">
+                                    <input v-model="newPrepay.automatic_use" type="radio" value="0" />
+                                    No
+                                </label>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12 text-center">
-                                <button class="btn btn-primary btn-sm mr-2" type="submit">Submit</button>
-                                <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
-                            </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-sm me-2">Submit</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <form id="deleteForm" action="prepays" method="POST">
-        <input id="p_id" type="hidden" name="p_id" value="" />
-        <input type="hidden" name="action" value="delete" />
-    </form>
 </template>
 
 <style scoped>
