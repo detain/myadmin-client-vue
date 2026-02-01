@@ -36,7 +36,6 @@ const searchResponse = ref<SearchDomainResult | null>(null);
 const services = ref<ServiceTypes>({});
 const tldServices = ref({});
 const domainFields = ref<DomainFields>({});
-const domainCost = ref(0);
 const termsAgreed = ref(false);
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
@@ -45,6 +44,56 @@ const domainInput = ref<HTMLInputElement | null>(null);
 const domain = computed(() => route.params.domain as string);
 const regType = computed(() => route.params.regType as string);
 const display = ref('step1');
+
+const domainDetails = ref<DomainDetails>({
+    status: 'available',
+    currency: 'USD',
+    raw: {
+        new: 12.99,
+        transfer: 9.99,
+        renewal: 14.99,
+        whois_cost: 3.99,
+    },
+});
+
+const whoisEnabled = ref<boolean>(false);
+
+type DomainStatus = 'taken' | 'available';
+
+interface DomainRawPricing {
+    transfer: number;
+    new: number;
+    whois_cost: number;
+    renewal: number;
+}
+
+interface DomainDetails {
+    status: DomainStatus;
+    currency: string;
+    raw: DomainRawPricing;
+}
+
+const domainCost = computed<number>(() => {
+    return domainDetails.value.status === 'taken' ? domainDetails.value.raw.transfer : domainDetails.value.raw.new;
+});
+
+const totalCost = computed<number>(() => {
+    return whoisEnabled.value ? domainCost.value + domainDetails.value.raw.whois_cost : domainCost.value;
+});
+
+const formattedTotalCost = computed<string>(() => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: domainDetails.value.currency,
+    }).format(totalCost.value);
+});
+
+const formattedRenewCost = computed<string>(() => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: domainDetails.value.currency,
+    }).format(domainDetails.value.raw.renewal);
+});
 
 function clearInput(): void {
     const input = domainInput.value;
@@ -368,6 +417,11 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="card-body">
+                        <div class="whois-row" v-show="whoisEnabled"><!-- WHOIS content --></div>
+                        <label><input v-model="whoisEnabled" type="radio" value="true" /> Enable WHOIS</label>
+                        <label><input type="radio" value="false" v-model="whoisEnabled" /> Disable WHOIS</label>
+                        <div class="total_cost">{{ formattedTotalCost }}</div>
+                        <div class="renew_cost">{{ formattedRenewCost }}</div>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
                             <template v-if="whoisPrivacyCost">
                                 <div class="form-group row">
@@ -384,11 +438,7 @@ onMounted(() => {
                                             </div>
                                             <br />
                                             <div class="d-inline px-2">
-                                                <span
-                                                    style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted"
-                                                    data-toggle="popover"
-                                                    data-container="body"
-                                                    data-html="true"
+                                                <span style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted" data-toggle="popover" data-container="body" data-html="true"
                                                     data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
                   <p>The benefit of having Whois Privacy is that the Registrant’s identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
                   <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>"
@@ -402,9 +452,8 @@ onMounted(() => {
                                 <hr />
                             </template>
                             <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
-                                <label v-if="domainField.label" class="col-sm-3 col-form-label">
-                                    {{ domainField.label }}
-                                    <span v-if="domainField.required" class="text-danger">*</span>
+                                <label v-if="domainField.label" class="col-sm-3 col-form-label">ff
+                                    {{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
