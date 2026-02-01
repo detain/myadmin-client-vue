@@ -18,42 +18,7 @@ siteStore.setBreadcrums([
     ['/websites/order', 'Order Website'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-
-interface Package extends ServiceType {
-    services_html: string;
-    services_description: string;
-    services_moreinfo_url: string;
-}
-
-interface Packages {
-    [key: number]: Package;
-}
-
-interface ServiceOffers {
-    [key: number]: ServiceOffer[];
-}
-
-interface PackageIds {
-    [key: number]: string;
-}
-
-interface JsonServices {
-    [key: number]: string;
-}
-
-interface ServiceOffer {
-    service_offer_id: number;
-    service_id: number;
-    intro_cost: number;
-    renewal_cost: number;
-    intro_frequency: number;
-    renewal_frequency: number;
-    allow_coupon: number;
-    service_module: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at: string;
-}
+const searchResults = ref<SearchDomainResponse | null>(null);
 
 const step = ref('order_form');
 const packageId = ref(11363);
@@ -100,6 +65,90 @@ const totalCost = computed(() => {
     total = serviceTypes.value[packageId.value].services_cost;
     return total;
 });
+
+interface Package extends ServiceType {
+    services_html: string;
+    services_description: string;
+    services_moreinfo_url: string;
+}
+
+interface Packages {
+    [key: number]: Package;
+}
+
+interface ServiceOffers {
+    [key: number]: ServiceOffer[];
+}
+
+interface PackageIds {
+    [key: number]: string;
+}
+
+interface JsonServices {
+    [key: number]: string;
+}
+
+interface ServiceOffer {
+    service_offer_id: number;
+    service_id: number;
+    intro_cost: number;
+    renewal_cost: number;
+    intro_frequency: number;
+    renewal_frequency: number;
+    allow_coupon: number;
+    service_module: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
+}
+
+interface SearchDomainResponse {
+    available: boolean;
+    premium: boolean;
+    website: boolean;
+    domain_service: boolean;
+
+    service: SearchService;
+
+    whois_privacy: boolean;
+
+    new: string;
+    renewal: string;
+    transfer: string;
+
+    fields: Record<string, SearchFieldDefinition>;
+
+    currencies: Record<string, SearchCurrencyPricing>;
+}
+
+interface SearchService {
+    services_id: string;
+    services_name: string;
+    services_cost: string;
+    services_category: string;
+    services_buyable: string;
+    services_type: string;
+    services_field1: string;
+    services_field2: string;
+    services_module: string;
+}
+
+interface SearchFieldDefinition {
+    validations: string[];
+    value: string;
+    label?: string;
+    input: SearchFieldInput;
+    required: boolean;
+}
+
+type SearchFieldInput = 'text' | ['select', Record<string, string>];
+
+interface SearchCurrencyPricing {
+    services_cost: number;
+    new: number;
+    renewal: number;
+    transfer: number;
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -186,9 +235,14 @@ async function onSubmitConfirmation() {
 
 async function searchDomain() {
     console.log(`searching for ${hostname.value}`);
-    fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response) => {
+    if (hostname.value.trim().length < 3 || hostname.value.trim().indexOf('.') == -1) {
+        searchResults.value = null;
+        return;
+    }
+    fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response: SearchDomainResponse) => {
         console.log('Response:');
         console.log(response);
+        searchResults.value = response;
     });
 }
 
@@ -448,7 +502,7 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                             </div>
                             <div id="coupon_row" class="form-group row">
                                 <label class="col-md-12">Coupon Code</label>
-                                <div class="col-md-12"><input v-if="coupon" id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
+                                <div class="col-md-12"><input id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12">
                                     <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" />
