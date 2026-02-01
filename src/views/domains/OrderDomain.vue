@@ -226,7 +226,7 @@ updateStep();
                 </div>
             </template>
 
-            <div v-if="(suggestions && suggestions.items) || (lookups && lookups.items)" class="row">
+            <div v-if="(suggestions && suggestions.items && suggestions.items.length > 0) || (lookups && lookups.items && Object.keys(lookups.items).length > 0)" class="row">
                 <div class="col-md-6">
                     <div class="card card-outline card-secondary shadow-none">
                         <div class="card-body">

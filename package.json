@@ -24,6 +24,7 @@
         "format:check": "prettier . --check",
         "test": "vitest",
         "test:browser": "vitest --config=vitest.browser.config.ts",
+        "test:browser:install": "playwright install",
         "test:coverage": "vitest run --coverage",
         "test:e2e": "playwright test"
     },
@@ -43,7 +44,6 @@
         "@jridgewell/sourcemap-codec": "^1.4.14",
         "@material-design-icons/font": "*",
         "@pinia/testing": "*",
-        "@playwright/experimental-ct-vue": "*",
         "@playwright/test": "*",
         "@rollup/plugin-inject": "*",
         "@sweetalert2/theme-bootstrap-4": "*",

@@ -1,9 +1,11 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
+import { playwright } from '@vitest/browser-playwright';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
@@ -17,6 +19,22 @@ import TurboConsole from 'unplugin-turbo-console/vite'; */
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        browser: {
+            enabled: true,
+            provider: playwright(),
+            headless: true, // set too false to watch tests in a UI
+            setupFiles: ['./test/setup.ts'],
+            // Optional: configure specific options, e.g., launch options
+            launchOptions: {
+                headless: true, // Run headless in CI/locally
+            },
+            // https://vitest.dev/config/browser/playwright
+            instances: [{ browser: 'chromium' }],
+        },
+    },
     plugins: [
         vue({
             script: {
@@ -62,6 +80,7 @@ export default defineConfig({
     ],
     optimizeDeps: {
         include: ['jquery', 'select2'],
+        exclude: ['playwright', 'playwright-core', 'chromium-bidi'],
     },
     include: ['jquery', 'select2'],
     build: {
