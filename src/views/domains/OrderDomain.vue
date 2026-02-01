@@ -20,12 +20,9 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
-const router = useRouter();
 const hostname = ref('');
-const ima = ref('client');
-const custid = ref('2773');
 const whoisPrivacyCost = ref(0);
-const whoisPrivacy = ref('disable');
+const whoisEnabled = ref<boolean>(false);
 const domainResult = ref<DomainResult | null>(null);
 const domainType = ref('register');
 const lookups = ref<Lookups>({ items: {} });
@@ -55,8 +52,6 @@ const domainDetails = ref<DomainDetails>({
         whois_cost: 3.99,
     },
 });
-
-const whoisEnabled = ref<boolean>(false);
 
 type DomainStatus = 'taken' | 'available';
 
@@ -417,28 +412,25 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="whois-row" v-show="whoisEnabled"><!-- WHOIS content --></div>
-                        <label><input v-model="whoisEnabled" type="radio" value="true" /> Enable WHOIS</label>
-                        <label><input type="radio" value="false" v-model="whoisEnabled" /> Disable WHOIS</label>
-                        <div class="total_cost">{{ formattedTotalCost }}</div>
-                        <div class="renew_cost">{{ formattedRenewCost }}</div>
                         <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
                             <template v-if="whoisPrivacyCost">
                                 <div class="form-group row">
                                     <label for="create_as" class="col-sm-5 col-form-label"> Whois Privacy for {{ whoisPrivacyCost }} / year </label>
                                     <div class="controls col-sm-7">
                                         <div class="form-group clearfix">
-                                            <div class="icheck-success d-inline">
-                                                <input id="enabled" v-model="whoisPrivacy" type="radio" class="whois_radio" name="whois_privacy" value="enable" />
-                                                <label for="enabled">Enabled</label>
+                                            <div class="d-inline">
+                                                <label><input v-model="whoisEnabled" type="radio" value="true" /> Enabled</label>
                                             </div>
-                                            <div class="icheck-success d-inline px-2">
-                                                <input id="disabled" v-model="whoisPrivacy" type="radio" class="whois_radio" name="whois_privacy" value="disable" checked />
-                                                <label for="disabled">Disabled</label>
+                                            <div class="d-inline px-2">
+                                                <label><input v-model="whoisEnabled" type="radio" value="false" /> Disabled</label>
                                             </div>
                                             <br />
                                             <div class="d-inline px-2">
-                                                <span style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted" data-toggle="popover" data-container="body" data-html="true"
+                                                <span
+                                                    style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted"
+                                                    data-toggle="popover"
+                                                    data-container="body"
+                                                    data-html="true"
                                                     data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant’s domain.</p>
                   <p>The benefit of having Whois Privacy is that the Registrant’s identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
                   <p>When Registrants enable the Whois Privacy service, masked contact information appears in the public WHOIS database.</p>"
@@ -452,9 +444,7 @@ onMounted(() => {
                                 <hr />
                             </template>
                             <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
-                                <label v-if="domainField.label" class="col-sm-3 col-form-label">ff
-                                    {{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span>
-                                </label>
+                                <label v-if="domainField.label" class="col-sm-3 col-form-label">ff {{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
                                     <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName as string" class="form-control select2">
@@ -482,9 +472,7 @@ onMounted(() => {
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -496,19 +484,17 @@ onMounted(() => {
                         <div class="row mb-3">
                             <div class="col-md-8">{{ domainResult?.domain }}</div>
                             <div class="col text-bold text-right">
-                                {{ domainResult?.status == 'taken' ? domainResult?.transfer : domainResult?.new }}
+                                {{ domainCost }}
                             </div>
                         </div>
-                        <div class="whois-row row d-none mb-3">
+                        <div :v-show="whoisEnabled === true" class="whois-row row mb-3">
                             <div class="col-md-8">Whois Privacy</div>
                             <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div class="col text-bold total_cost text-right text-lg">
-                                {{ domainResult?.status == 'taken' ? domainResult?.transfer : domainResult?.new }}
-                            </div>
+                            <div class="col text-bold total_cost text-right text-lg">{{ formattedTotalCost }}</div>
                         </div>
                     </div>
                 </div>
@@ -523,9 +509,7 @@ onMounted(() => {
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -535,67 +519,39 @@ onMounted(() => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">
-                                                {{ packageInfo?.services_name }}
-                                            </div>
+                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ packageInfo?.services_name }}</div>
                                             <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="edit_form"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
-                                        <th>
-                                            <div class="text-md text-bold">1 Year</div>
-                                        </th>
+                                        <th><div class="text-md text-bold">1 Year</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <div class="text-md">Order Type</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">
-                                                {{ domainResult?.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}
-                                            </div>
-                                        </td>
+                                        <td><div class="text-md">Order Type</div></td>
+                                        <td><div class="text-bold text-md">{{ domainResult?.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}</div></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <div class="text-md">{{ domainResult?.domain }}</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-bold text-md">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
-                                        </td>
+                                        <td><div class="text-md">{{ domainResult?.domain }}</div></td>
+                                        <td><div class="text-bold text-md">{{ domainCost }}</div></td>
                                     </tr>
-                                    <template v-if="whoisPrivacy === 'enable'">
+                                    <template :v-if="whoisEnabled">
                                         <tr>
-                                            <td>
-                                                <div class="text-md">Whois Privacy</div>
-                                            </td>
-                                            <td>
-                                                <div class="text-bold text-md">{{ whoisPrivacyCost }}</div>
-                                            </td>
+                                            <td><div class="text-md">Whois Privacy</div></td>
+                                            <td><div class="text-bold text-md">{{ whoisPrivacyCost }}</div></td>
                                         </tr>
                                     </template>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>
-                                            <div class="text-lg">Total</div>
-                                        </th>
-                                        <th>
-                                            <div class="text-lg">
-                                                <div class="text-bold total_cost text-lg">{{ domainResult?.status === 'taken' ? domainResult?.transfer : domainResult?.new }}</div>
-                                            </div>
-                                        </th>
+                                        <th><div class="text-lg">Total</div></th>
+                                        <th><div class="text-lg"><div class="text-bold total_cost text-lg">{{ totalCost }}</div></div></th>
                                     </tr>
                                 </tfoot>
                             </table>
                             <hr />
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
-                                <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every year at</b>
-                                    <span class="text-bold renew_cost">{{ domainCost }}</span>
-                                    until canceled.
-                                </p>
+                                <p class="text-center text-sm">The subscription will automatically renew after <b>every year at</b> <span class="text-bold renew_cost">{{ domainCost }}</span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank"> Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank"> Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
                                     <input id="tos" v-model="termsAgreed" type="checkbox" style="margin: 0 5px; display: inline" value="yes" />
