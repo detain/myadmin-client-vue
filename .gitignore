@@ -37,6 +37,7 @@ coverage
 .vs
 
 # Zero Installs
+.eslintcache
 .yarn/*
 !.yarn/cache
 !.yarn/patches
