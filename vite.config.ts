@@ -13,9 +13,9 @@ import * as path from 'path';
 import fs from 'fs';
 import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa';
-import vueDevTools from 'vite-plugin-vue-devtools';
+import vueDevTools from 'vite-plugin-vue-devtools'; */
 import Inspector from 'vite-plugin-vue-inspector';
-import TurboConsole from 'unplugin-turbo-console/vite'; */
+import TurboConsole from 'unplugin-turbo-console/vite';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -80,9 +80,9 @@ export default defineConfig({
             },
         }), */
         Inspect(),
-        //Inspector(),
+        Inspector(),
         //vueDevTools(),
-        //TurboConsole(),
+        TurboConsole(),
     ],
     optimizeDeps: {
         include: ['jquery', 'select2'],
