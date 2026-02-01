@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
@@ -41,13 +41,59 @@ const termsAgreed = ref(false);
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const coupon = ref('');
-const domain = computed(() => {
-    return route.params.domain as string;
-});
-const regType = computed(() => {
-    return route.params.regType as string;
-});
+const domainInput = ref<HTMLInputElement | null>(null);
+const domain = computed(() => route.params.domain as string);
+const regType = computed(() => route.params.regType as string);
 const display = ref('step1');
+
+function clearInput(): void {
+    const input = domainInput.value;
+    if (!input) return;
+    const length = input.value.length;
+    input.setSelectionRange(length, length);
+}
+
+// Delay helper
+const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Add something to given element placeholder
+async function addToPlaceholder(toAdd: string, el: HTMLInputElement): Promise<void> {
+    el.placeholder = (el.placeholder ?? '') + toAdd;
+    // Delay between symbols "typing"
+    await delay(200);
+}
+
+// Clear placeholder attribute in given element
+function clearPlaceholder(el: HTMLInputElement): void {
+    el.placeholder = '';
+}
+
+// Print one phrase
+async function printPhrase(phrase: string, el: HTMLInputElement): Promise<void> {
+    // Clear placeholder before typing next phrase
+    clearPlaceholder(el);
+    const letters: string[] = phrase.split('');
+    for (let i = 0; i < letters.length; i++) {
+        await addToPlaceholder(letters[i], el);
+    }
+    // Delay before starting next phrase "typing"
+    await delay(2000);
+}
+
+// Print given phrases to element (sequentially)
+async function printPhrases(phrases: string[], el: HTMLInputElement): Promise<void> {
+    for (const phrase of phrases) {
+        await printPhrase(phrase, el);
+    }
+}
+
+// Start typing
+async function runPhrases(): Promise<void> {
+    const phrases: string[] = ['mydomain.com', 'techsupport.online', 'usdomain.us', 'networking.net', 'allcountrydomains.com.au', 'bizdomain.biz', 'giftdomain.gift', 'sarahclothes.fashion', 'grocery.shop', 'mydomain.com', 'techsupport.online', 'uscitizens.us', 'networking.net', 'allcountrydomains.com.au', 'yourbizdomain.biz', 'giftdomain.gift', 'sarahclothes.fashion', 'grocery.shop', 'mydomain.com', 'techsupport.online', 'usdomain.us', 'networking.net', 'allcountrydomains.com.au', 'yourbizdomain.biz', 'giftdomain.gift', 'sarah.fashion', 'grocery.shop', 'mydomain.com'];
+    if (domainInput.value) {
+        await printPhrases(phrases, domainInput.value);
+    }
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -103,19 +149,6 @@ function updateStep() {
     }
 }
 
-watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
-    console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
-    updateStep();
-});
-
-fetchWrapper.get(`${baseUrl}/domains/order`).then((response) => {
-    console.log('GET Response:');
-    console.log(response);
-    whoisPrivacyCost.value = response.whoisPrivacyCost;
-    services.value = response.services;
-    tldServices.value = response.tldServices;
-});
-
 function searchDomain() {
     Swal.fire({
         title: '',
@@ -141,8 +174,6 @@ function searchDomain() {
         });
 }
 
-function clearInput() {}
-
 function getDomainFields() {
     Swal.fire({
         title: '',
@@ -167,14 +198,31 @@ function edit_form() {}
 
 function placeOrder() {}
 
-updateStep();
+watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+    console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
+    updateStep();
+});
+
+fetchWrapper.get(`${baseUrl}/domains/order`).then((response) => {
+    console.log('GET Response:');
+    console.log(response);
+    whoisPrivacyCost.value = response.whoisPrivacyCost;
+    services.value = response.services;
+    tldServices.value = response.tldServices;
+});
+
+onMounted(() => {
+    domainInput.value?.focus();
+    runPhrases();
+    updateStep();
+});
 </script>
 
 <template>
     <div v-if="!display || display === 'step1' || display == 'step1b'" class="row justify-content-center" :class="{ 'mt-5': !domainResult }">
         <div class="col-md-10 text-center">
             <h3 class="text-capitalize pb-2">Find your domain and check availability.</h3>
-            <form class="search-domain" @submit.prevent="router.push(`/domains/order/${hostname}`)">
+            <form class="search-domain" @submit.prevent="searchDomain">
                 <div class="form-group row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
                         <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus autocomplete="off" style="border-radius: 5px" @focus="clearInput" />
@@ -211,7 +259,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-green text-bold">Yes!</span> your domain <b>{{ domainResult?.domain }}</b> is available! you can register it for {{ domainResult?.new }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
+                                <router-link :to="'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">Register</router-link>
                             </div>
                         </template>
                         <template v-else-if="domainResult?.status === 'taken'">
@@ -219,7 +267,7 @@ updateStep();
                                 <div class="text-md ml-2" style="position: relative; top: 4px">
                                     <span class="text-red text-bold">Sorry!</span> Your Domain <b>{{ domainResult?.domain }}</b> is already taken! You already own it ? You can transfer it for {{ domainResult?.transfer }}. Renewal cost will be {{ domainResult?.renewal }}.
                                 </div>
-                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
+                                <router-link :to="'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">Transfer</router-link>
                             </div>
                         </template>
                     </template>
@@ -248,13 +296,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="suggestion.status === 'available'">
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/domains/order/' + suggestion.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="suggestion.status === 'taken'">
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/domains/order/' + suggestion.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
+                                                <router-link :to="'/domains/order/' + suggestion.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ suggestion.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -282,13 +330,13 @@ updateStep();
                                         </template>
                                         <template v-else>
                                             <template v-if="lookup.status === 'available'">
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
+                                                <router-link :to="'/domains/order/' + lookup.domain + '/register'" class="btn btn-green px-3 py-2 text-sm">Register</router-link>
                                             </template>
                                             <template v-else-if="lookup.status === 'taken'">
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
+                                                <router-link :to="'/domains/order/' + lookup.domain + '/transfer'" class="btn btn-yellow px-3 py-2 text-sm">Transfer</router-link>
                                             </template>
                                             <template v-else>
-                                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
+                                                <router-link :to="'/domains/order/' + lookup.domain + '/undefined'" class="btn btn-green px-3 py-2 text-sm">{{ lookup.status }}</router-link>
                                             </template>
                                         </template>
                                     </td>
@@ -315,7 +363,7 @@ updateStep();
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-address-card">&nbsp;</i>Contact Information</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/' + moduleLink(module) + '/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
