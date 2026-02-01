@@ -137,6 +137,114 @@ const getServiceTypes = computed(() => {
     }
     return types;
 });
+const currency = ref('USD');
+const licenseFields = computed(() => getLicenseFields(catTag.value, currency.value, getServiceTypes.value));
+
+interface Service {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_field2?: string;
+    services_category: number;
+}
+
+interface LicenseField {
+    services_name: string;
+    services_cost: number;
+    services_details?: string;
+}
+
+type LicenseFieldMap = Record<string, LicenseField>;
+
+function normalizeCost(cost: number, currency: string): number {
+    return cost;
+    //return currency === 'USD' ? cost : convertCurrency(cost, currency).getAmount().toFloat();
+}
+
+function getLicenseFields(tag: string, currency: string, services: Record<number, Service>): LicenseFieldMap | false {
+    const data: LicenseFieldMap = {};
+    const serviceId = (id: number) => services[id];
+    switch (tag) {
+        case 'directadmin': {
+            const allowed = [11482, 11475, 11468];
+            for (const id of allowed) {
+                const svc = services[id];
+                console.log(`loading id ${id} geting service`, svc);
+                if (!svc) continue;
+                const name = svc.services_name.includes('DirectAdmin for') ? svc.services_name.replace(/DirectAdmin for /i, '') : svc.services_name.replace(/DirectAdmin /i, '');
+                data[id] = {
+                    services_name: name,
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                    services_details: svc.services_field2,
+                };
+            }
+            console.log(data);
+            console.log(Object.keys(services));
+            break;
+        }
+        case 'litespeed': {
+            const allowed = [10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994];
+            for (const id of allowed) {
+                const svc = serviceId(id);
+                if (!svc) continue;
+                data[id] = {
+                    services_name: svc.services_name.replace(/LiteSpeed /i, ''),
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                    services_details: svc.services_field2,
+                };
+            }
+            break;
+        }
+        case 'cloudlinux': {
+            for (const svc of Object.values(services)) {
+                data[svc.services_id] = {
+                    services_name: svc.services_name.replace(/LiteSpeed /i, ''),
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                };
+            }
+            break;
+        }
+        case 'parallels': {
+            const allowed = [5054, 5058, 5060, 5053, 5057, 5059];
+            for (const id of allowed) {
+                const svc = serviceId(id);
+                if (!svc) continue;
+                data[id] = {
+                    services_name: svc.services_name.replace(/Plesk v12 /i, ''),
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                };
+            }
+            break;
+        }
+        case 'cpanel': {
+            const allowed = [10682, 10769];
+            for (const id of allowed) {
+                const svc = serviceId(id);
+                if (!svc) continue;
+                data[id] = {
+                    services_name: id === 10682 ? `${svc.services_name} Server` : `${svc.services_name.replace(/Cloud /i, '')} VPS`,
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                };
+            }
+            break;
+        }
+        case 'softaculous': {
+            const allowed = [5006, 5007];
+            for (const id of allowed) {
+                const svc = serviceId(id);
+                if (!svc) continue;
+                data[id] = {
+                    services_name: id === 5006 ? `${svc.services_name} Server (External)` : `${svc.services_name} (External)`,
+                    services_cost: normalizeCost(svc.services_cost, currency),
+                };
+            }
+            break;
+        }
+        default:
+            return false;
+    }
+    return Object.keys(data).length ? data : false;
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -214,15 +322,18 @@ function submitLicenseForm() {
 function editForm() {}
 
 updateBreadcrums();
-fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
-    console.log('Response:');
-    console.log(response);
-    packageCosts.value = response.packageCosts;
-    serviceTypes.value = response.serviceTypes;
-    serviceCategories.value = response.serviceCategories;
-}).catch((error: any) => {
-    console.error('Got Error: ',error);
-});
+fetchWrapper
+    .get(`${baseUrl}/licenses/order`)
+    .then((response) => {
+        console.log('Response:');
+        console.log(response);
+        packageCosts.value = response.packageCosts;
+        serviceTypes.value = response.serviceTypes;
+        serviceCategories.value = response.serviceCategories;
+    })
+    .catch((error: any) => {
+        console.error('Got Error: ', error);
+    });
 
 watch(
     () => route.params.catTag,

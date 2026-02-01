@@ -75,7 +75,7 @@ const totalCost = computed(() => {
     if (period.value === 36) total *= 0.8;
     // coupon (flat only — matches current backend behavior)
     if (couponInfo.value?.applies && couponInfo.value.amounts?.USD) {
-        total -= couponInfo.value.amounts.USD;
+        total -= Number(couponInfo.value.amounts.USD);
     }
     // domain
     if (domainCost.value > 0) {
