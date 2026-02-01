@@ -38,6 +38,10 @@ const serviceOffers = ref<ServiceOffers>({});
 const packages = ref<Packages>({});
 const jsonServices = ref<JsonServices>({});
 const jsonServiceOffers = ref<ServiceOffers>({});
+const domainStatusVisible = ref(false);
+const domainStatusText = ref('');
+const domainDescription = ref('');
+const domainCost = ref(0);
 const formData = reactive({
     step: step,
     packageId: packageId,
@@ -57,13 +61,27 @@ const formData = reactive({
     //    packges: packges,
     //    packages: packages,
 });
+
+const basePrice = computed(() => {
+    const svc = serviceTypes.value[packageId.value];
+    return svc ? Number(svc.services_cost) : 0;
+});
+
 const totalCost = computed(() => {
-    let total = 0;
-    if (!serviceTypes.value[packageId.value]) {
-        return total;
+    let total = basePrice.value;
+    // billing discounts
+    if (period.value === 12) total *= 0.9;
+    if (period.value === 24) total *= 0.85;
+    if (period.value === 36) total *= 0.8;
+    // coupon (flat only — matches current backend behavior)
+    if (couponInfo.value?.applies && couponInfo.value.amounts?.USD) {
+        total -= couponInfo.value.amounts.USD;
     }
-    total = serviceTypes.value[packageId.value].services_cost;
-    return total;
+    // domain
+    if (domainCost.value > 0) {
+        total += domainCost.value;
+    }
+    return total.toFixed(2);
 });
 
 interface Package extends ServiceType {
@@ -177,7 +195,6 @@ function updateCoupon() {
     }
 }
 
-function updatePrice(event: Event, force: boolean = false) {}
 
 async function onSubmit() {
     try {
@@ -240,9 +257,17 @@ async function searchDomain() {
         return;
     }
     fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response: SearchDomainResponse) => {
-        console.log('Response:');
-        console.log(response);
         searchResults.value = response;
+        domainStatusVisible.value = true;
+        if (response.available) {
+            domainCost.value = Number(response.service.services_cost);
+            domainStatusText.value = '✔ Domain is available';
+            domainDescription.value = `Register for ${currencySymbol.value}${domainCost.value}`;
+        } else {
+            domainCost.value = 0;
+            domainStatusText.value = '✖ Domain is not available';
+            domainDescription.value = 'You must use an existing domain';
+        }
     });
 }
 
@@ -398,7 +423,7 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" @change="updatePrice($event, true)" />
+                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" />
                                                             <label :for="serviceData.services_name">
                                                                 {{ serviceData.services_name }}<br />
                                                                 <div class="text-muted font-italic mt-1 text-sm">
@@ -448,7 +473,7 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                                 <div class="col-md-6 package_name">
                                     <template v-if="serviceTypes[packageId]">{{ serviceTypes[packageId].services_name }}</template>
                                 </div>
-                                <div class="col period text-right">1 Month</div>
+                                <div class="col period text-right">{{ period }} Month(s)</div>
                             </div>
                             <div class="row mb-3">
                                 <div id="hostname_display" class="col-md-6"></div>
@@ -461,7 +486,7 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                             <hr />
                             <div class="row mb-3">
                                 <div class="col-md-8 text-lg">Total</div>
-                                <div id="totalprice" class="col total_cost text-right text-lg">{{ totalCost }}</div>
+                                <div class="col total_cost text-right text-lg">{{ currencySymbol }}{{ totalCost }}</div>
                             </div>
                         </div>
                     </div>
@@ -479,18 +504,18 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                                     <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                 </div>
                             </div>
-                            <div id="registerrow" class="form-group row d-none d-status mb-0">
+                            <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
                                 <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
                                 <div class="col-md-12">
-                                    <small id="registertext" class="form-text text-warning mb-0 text-sm"></small>
+                                    <small class="form-text text-warning mb-0 text-sm">{{ domainStatusText }}</small>
                                 </div>
-                                <label id="registerdesc" class="col-md-12 col-form-label"></label>
+                                <label class="col-md-12 col-form-label">{{ domainDescription }}</label>
                                 <span class="form-text"></span>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
-                                    <select id="period" v-model="period" name="period" class="form-control form-control-sm select2" @change="updatePrice">
+                                    <select id="period" v-model="period" name="period" class="form-control form-control-sm select2">
                                         <option value="1">Monthly</option>
                                         <option value="3">3 Months</option>
                                         <option value="6">6 Months (5% off)</option>
