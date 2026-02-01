@@ -444,7 +444,7 @@ onMounted(() => {
                                 <hr />
                             </template>
                             <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
-                                <label v-if="domainField.label" class="col-sm-3 col-form-label">ff {{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
+                                <label v-if="domainField.label" class="col-sm-3 col-form-label">{{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
                                     <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName as string" class="form-control select2">
@@ -487,10 +487,12 @@ onMounted(() => {
                                 {{ domainCost }}
                             </div>
                         </div>
-                        <div :v-show="whoisEnabled === true" class="whois-row row mb-3">
-                            <div class="col-md-8">Whois Privacy</div>
-                            <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
-                        </div>
+                        <template :v-if="whoisEnabled">
+                            <div class="whois-row row mb-3">
+                                <div class="col-md-8">Whois Privacy</div>
+                                <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
+                            </div>
+                        </template>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
