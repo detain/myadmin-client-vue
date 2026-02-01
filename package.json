@@ -90,6 +90,7 @@
         "font-awesome-animation": "*",
         "globals": "^17.0.0",
         "husky": "*",
+        "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "jquery-simple-pass-meter": "*",
         "jquery-ui": ">=1.13.2",
