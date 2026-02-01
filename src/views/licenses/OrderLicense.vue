@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
@@ -42,6 +42,9 @@ function updateBreadcrums() {
             [`/${moduleLink(module)}/order`, 'Select License Type'],
         ]);
     } else {
+        if (!Object.keys(getServiceTypes.value).includes(packageId.value as string)) {
+            packageId.value = Object.keys(getServiceTypes.value)[0];
+        }
         siteStore.setBreadcrums([
             ['/home', 'Home'],
             [`/${moduleLink(module)}`, 'Licenses List'],
@@ -167,7 +170,6 @@ function updatePrice() {}
 function checkAvailability() {}
 
 function orderLicenseType(type: string | number) {
-    packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
     router.push(`/licenses/order/${type}`);
@@ -218,7 +220,14 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
     packageCosts.value = response.packageCosts;
     serviceTypes.value = response.serviceTypes;
     serviceCategories.value = response.serviceCategories;
+}).catch((error: any) => {
+    console.error('Got Error: ',error);
 });
+
+watch(
+    () => route.params.catTag,
+    () => updateBreadcrums()
+);
 </script>
 
 <template>
