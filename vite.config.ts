@@ -22,17 +22,23 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
+        reporters: ['default', 'html'],
         browser: {
             enabled: true,
             provider: playwright(),
-            headless: true, // set too false to watch tests in a UI
+            trace: 'on', // 'on-first-retry' 'on-all-retries' or 'retain-on-failure'
+            headless: false, // set too false to watch tests in a UI
             setupFiles: ['./test/setup.ts'],
             // Optional: configure specific options, e.g., launch options
             launchOptions: {
-                headless: true, // Run headless in CI/locally
+                headless: false, // Run headless in CI/locally
             },
             // https://vitest.dev/config/browser/playwright
-            instances: [{ browser: 'chromium' }],
+            instances: [
+                { browser: 'chromium' },
+                { browser: 'firefox' },
+                { browser: 'webkit' },
+            ],
         },
     },
     plugins: [
