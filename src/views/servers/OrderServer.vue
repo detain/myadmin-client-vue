@@ -4,7 +4,7 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
-import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
+import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
 import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'servers';
@@ -18,6 +18,7 @@ const cpu = ref<string>('34');
 const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
+const regions = ref<Region[]>([]);
 const configLi = ref<ConfigLi>({
     cpu_li: {},
     memory_li: {},
@@ -80,6 +81,16 @@ siteStore.setBreadcrums([
 function imageUrl(imageName: string) {
     const trimmed = imageName.trim();
     return new URL(`../../assets/images/v2-images/${trimmed}`, import.meta.url).href;
+}
+
+const setupTimes: Record<string, string> = {
+    '2': '48 hrs',
+    '9': '5 days',
+    '11': '3 days',
+}
+
+function setupTime(regionId: string) {
+    return setupTimes[regionId] ?? '48 hrs'
 }
 
 function updateCoupon() {
@@ -150,6 +161,7 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
         displayShowMore.value = response.display_showmore;
         assetServers.value = response.asset_servers;
         buyItServers.value = response.buy_it_servers;
+        regions.value = response.regions;
         console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
         console.log('asset servers:', assetServers.value, assetServers.value.length);
         if (query) {
@@ -342,7 +354,6 @@ serverOrderRequest();
                     </div>
                 </div>
                 <!-- End Buy Now Servers -->
-
             </div>
         </div>
     </template>
@@ -354,7 +365,7 @@ serverOrderRequest();
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <a href="order_server" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp; </a>
+                                <router-link to="/servers/order" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -450,6 +461,23 @@ serverOrderRequest();
                                     </div>
                                 </template>
                             </template>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">Server Region <span class="text-danger"> *</span></label>
+                                <div class="input-group col-md-9 region-row">
+                                    <div v-for="(region, indx) in regions" :key="region.region_id" class="icheck-success d-inline w-100">
+                                        <input :id="`region-${indx}`" type="radio" class="form-check-input" name="region" :value="region.region_id" :data-name="region.region_name" onchange="return serverRegionUpdate();" :checked="String(formValues.region) == region.region_id" />
+                                        <label class="font-weight-normal w-100" :for="`region-${indx}`">
+                                            <div class="row mb-2">
+                                                <div class="col-md-8">
+                                                    <div class="text-sm text-bold">{{ region.region_name }} [Setup Time - {{ setupTime(region.region_id) }}</div>
+                                                </div>
+                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
                                     <input type="submit" name="Submit" value="Continue" class="btn btn-order btn-sm px-3 py-2" />

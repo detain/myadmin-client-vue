@@ -20,8 +20,13 @@ export interface ServerOrderResponse {
     display_showmore: 'yes' | 'no';
     frequency: number;
     ima: 'client' | 'admin';
-    regions: any[];
+    regions: Region[];
     step: string;
+}
+
+export interface Region {
+    region_id: string;
+    region_name: string;
 }
 
 export interface CpuCores {
