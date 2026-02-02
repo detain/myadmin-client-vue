@@ -10,6 +10,18 @@ export interface ServerOrderResponse {
     config_li: ConfigLi;
     field_label: FieldLabel;
     form_values: FormValues;
+    asset_servers: any[];
+    buy_it_servers: any[];
+    country: string;
+    currency: string;
+    currencySymbol: string;
+    cust_discount: number;
+    custid: number;
+    display_showmore: 'yes' | 'no';
+    frequency: number;
+    ima: 'client' | 'admin';
+    regions: any[];
+    step: string;
 }
 
 export interface CpuCores {

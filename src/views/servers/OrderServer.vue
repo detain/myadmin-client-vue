@@ -37,6 +37,28 @@ const hdValues = computed(() => {
     return configLi.value.hd_li;
 });
 
+interface BuyNowServer {
+    name: string;
+    description: string;
+    amount_disp: string;
+}
+
+interface AssetServer {
+    id: number;
+    CPU: string[];
+    Memory: string[];
+    HD: string[];
+    Bandwidth?: string[];
+    IPs?: string[];
+    Region?: string[];
+    price: string;
+}
+
+const collapsed = ref(false);
+const buyItServers = ref<BuyNowServer[]>([]);
+const assetServers = ref<AssetServer[]>([]);
+const displayShowMore = ref<'yes' | 'no'>('no');
+
 const fieldLabel = ref<FieldLabel>({
     bandwidth: { name: 'Bandwidth', active: 1 },
     ips: { name: 'IPs', active: 0 },
@@ -119,6 +141,11 @@ function serverOrderRequest(addCpu: boolean) {
         cpuCores.value = response.cpu_cores;
         fieldLabel.value = response.field_label;
         formValues.value = response.form_values;
+        displayShowMore.value = response.display_showmore;
+        assetServers.value = response.asset_servers;
+        buyItServers.value = response.buy_it_servers;
+        console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
+        console.log('asset servers:', assetServers.value, assetServers.value.length);
         if (addCpu) {
             step.value = 'step2';
         }
@@ -131,7 +158,7 @@ serverOrderRequest(false);
 <template>
     <template v-if="!step || step == 'order_form'">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
@@ -192,7 +219,7 @@ serverOrderRequest(false);
             </div>
             <div class="col-md-4">
                 <!-- Order Summary -->
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
@@ -216,7 +243,7 @@ serverOrderRequest(false);
                             <div id="totalcost" class="col total_cost text-right text-lg">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : '' }}</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- End Order Summary -->
                 <!-- Server Recommendations -->
                 <div class="card">
@@ -276,6 +303,69 @@ serverOrderRequest(false);
                     </div>
                 </div>
                 <!-- End Server Recommendations -->
+                <!-- Buy Now Servers -->
+                <div v-if="(buyItServers && buyItServers.length > 0) || (assetServers && assetServers.length > 0)" class="card">
+                    <div class="card-header">
+                        <div class="p-1">
+                            <h4 class="card-title py-2">
+                                <i class="fa fa-thumbs-up">&nbsp;</i> Buy It Now Servers
+                                <div><sub>Pre-configured servers ready to use!</sub></div>
+                            </h4>
+                            <div class="card-tools float-right">
+                                <button type="button" class="btn btn-tool mt-0" @click="collapsed = !collapsed">
+                                    <i class="fas" :class="collapsed ? 'fa-plus' : 'fa-minus'" aria-hidden="true" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Buy It Now Servers -->
+                            <template v-if="buyItServers && buyItServers.length">
+                                <div v-for="server in buyItServers" :key="server.name" class="card mx-2" style="width: 46% !important">
+                                    <div class="card-header bg-secondary">
+                                        <h5 class="card-title text-center">{{ server.name }}</h5>
+                                    </div>
+                                    <div class="card-body" v-html="server.description.replace(/\n/g, '<br>')" />
+                                    <div class="card-footer text-center">
+                                        <div class="font-weight-bold">{{ server.amount_disp }}</div>
+                                        <hr class="w-100 m-1" />
+                                        <a :href="`order_dedicated?c=${encodeURIComponent(server.name)}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
+                                    </div>
+                                </div>
+                            </template>
+                            <!-- Asset Servers -->
+                            <template v-if="assetServers && assetServers.length">
+                                <div v-for="asset in assetServers" :key="asset.id" class="card mx-2" style="width: 46% !important">
+                                    <div class="card-header bg-secondary">
+                                        <h5 class="card-title text-center">{{ asset.CPU[0] }} SALE</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ asset.CPU[0] }}<br />
+                                        {{ asset.Memory[0] }} Memory<br />
+                                        <template v-for="(hd, i) in asset.HD" :key="i"> {{ hd }}<br /> </template>
+                                        <template v-if="asset.Bandwidth?.[0]"> {{ asset.Bandwidth[0] }}<br /> </template>
+                                        <template v-if="asset.IPs?.[0]"> {{ asset.IPs[0] }}<br /> </template>
+                                        <template v-if="asset.Region?.[0]">
+                                            {{ asset.Region[0] }}
+                                        </template>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="font-weight-bold">{{ asset.price }}</div>
+                                        <hr class="w-100 m-1" />
+                                        <a :href="`order_dedicated?a=${asset.id}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <!-- Show More -->
+                    <div :v-if="displayShowMore == 'yes'" class="card-footer text-center">
+                        <a class="btn bg-secondary" href="https://www.interserver.net/dedicated/buy-now-servers.html" target="_blank" rel="noopener">Show More</a>
+                    </div>
+                </div>
+                <!-- End Buy Now Servers -->
+
             </div>
         </div>
     </template>
