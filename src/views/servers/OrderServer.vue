@@ -14,9 +14,8 @@ const baseUrl = siteStore.getBaseUrl();
 const currency = ref('USD');
 const currencySymbol = ref('$');
 const custid = ref('2773');
-const ima = ref('client');
 const step = ref('order_form');
-const cpu = ref<number>(34);
+const cpu = ref<string>('34');
 const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
@@ -37,6 +36,7 @@ const cpuCores = ref<CpuCores>({});
 const hdValues = computed(() => {
     return configLi.value.hd_li;
 });
+
 const fieldLabel = ref<FieldLabel>({
     bandwidth: { name: 'Bandwidth', active: 1 },
     ips: { name: 'IPs', active: 0 },
@@ -56,6 +56,11 @@ siteStore.setBreadcrums([
     [`/${moduleLink(module)}`, 'Servers List'],
     ['/servers/order', 'Order Server'],
 ]);
+
+function imageUrl(imageName: string) {
+    const trimmed = imageName.trim();
+    return new URL(`../../assets/images/v2-images/${trimmed}`, import.meta.url).href;
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -90,7 +95,9 @@ function updatePrice() {}
 
 function removeDrive(id: number, driveType: string) {}
 
-function onSubmitCpu() {
+function onSubmitCpu(idCpu: string, idHd: string) {
+    cpu.value = idCpu;
+    // hd.value = idHd;
     serverOrderRequest(true);
 }
 
@@ -107,7 +114,7 @@ function serverOrderRequest(addCpu: boolean) {
         console.log(response);
         configIds.value = response.config_ids;
         configLi.value = response.config_li;
-        cpu.value = response.cpu;
+        cpu.value = String(response.cpu);
         cpu_li.value = response.cpu_li;
         cpuCores.value = response.cpu_cores;
         fieldLabel.value = response.field_label;
@@ -135,32 +142,48 @@ serverOrderRequest(false);
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="dserver_form" method="post" class="dserver_form_init" action="order_server" @submit.prevent="onSubmitCpu">
+                        <form id="dserver_form" method="post" class="dserver_form_init">
                             <div class="form-group row">
-                                <label class="col-md-1 px-0">CPU<span class="text-danger"> *</span></label>
-                                <div class="input-group col-md-11">
-                                    <div v-for="(cpu_details, id) in cpu_li" :key="id" class="icheck-success d-inline w-100">
-                                        <input :id="'ds-' + id" v-model="cpu" type="radio" class="form-check-input" name="cpu" :value="id" />
-                                        <label class="font-weight-normal w-100" :for="'ds-' + id">
-                                            <div class="row mb-2">
-                                                <div class="col-md-3">
-                                                    <img alt="" class="pr-2" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" />
+                                <div class="input-group col-md-12">
+                                    <template v-for="(cpuDetails, coreKey) in cpuCores" :key="coreKey">
+                                        <template v-for="cpuDetail in cpuDetails" :key="cpuDetail.id">
+                                            <div class="d-flex w-100">
+                                                <!-- CPU -->
+                                                <div class="col-4">
+                                                    <img class="d-block" style="max-width: 75px" :src="imageUrl(cpuDetail.img)" alt="" />
+                                                    <span class="text-lg font-weight-light">{{ cpuDetail.short_desc }}</span>
+                                                    <div>({{ cpuDetail.num_cpus }} cpu, {{ cpuDetail.num_cores }} cores)</div>
                                                 </div>
-                                                <div class="col-md-5">
-                                                    <div class="text-bold text-sm">{{ cpu_details.short_desc }}</div>
-                                                    <div class="text-bold text-sm">{{ cpu_details.num_cores }} Cores</div>
+                                                <!-- Memory -->
+                                                <div class="col">
+                                                    <div class="text-lg">{{ cpuDetail.memory_det?.short_desc }}</div>
+                                                    <div class="text-sm">RAM</div>
                                                 </div>
-                                                <div class="col-md-4 text-right">
-                                                    <span class="text-md text-bold text-green pl-2">{{ cpu_details.monthly_price_display }}</span>
+                                                <!-- HDD -->
+                                                <div class="col">
+                                                    <div class="text-lg">{{ cpuDetail.hd_det?.short_desc }}</div>
+                                                    <div class="text-sm">HDD</div>
+                                                </div>
+                                                <!-- Speed -->
+                                                <div class="col">
+                                                    <div class="text-lg">
+                                                        <template v-if="cpuDetail.speed">{{ cpuDetail.speed }} GHz</template>
+                                                    </div>
+                                                    <div class="text-sm">Speed</div>
+                                                </div>
+                                                <!-- Price -->
+                                                <div class="col">
+                                                    <div class="text-green text-lg">{{ cpuDetail.monthly_fee }}</div>
+                                                    <div class="text-sm">/mo</div>
+                                                </div>
+                                                <!-- Select button -->
+                                                <div class="col my-auto text-center">
+                                                    <button type="button" class="btn btn-custom btn-sm" @click="onSubmitCpu(cpuDetail.id, cpuDetail.hd_det?.id)">Select</button>
                                                 </div>
                                             </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="controls col-md-12 text-center">
-                                    <input type="submit" name="Submit" value="Continue" class="btn btn-order btn-sm px-3 py-2" />
+                                            <hr class="w-100 m-2" />
+                                        </template>
+                                    </template>
                                 </div>
                             </div>
                         </form>
@@ -220,7 +243,7 @@ serverOrderRequest(false);
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
-                                                    <div class="col"><img alt="" :src="'/images/v2-images/' + cpu_details.img" style="max-width: 100px" /></div>
+                                                    <div class="col"><img :src="imageUrl(cpu_details.img)" alt="" style="max-width: 100px" /></div>
                                                     <div class="col">
                                                         <div class="font-weight-light text-lg">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-green text-sm">{{ cpu_details.monthly_price_display }}</div>
@@ -228,19 +251,19 @@ serverOrderRequest(false);
                                                     <div class="col">
                                                         <div class="text-lg">{{ cpu_details.memory_det.short_desc }}</div>
                                                         <div class="text-sm">RAM</div>
-                                                        <div class="text-green text-sm text-sm">{{ cpu_details.memory_det.monthly_price_display }}</div>
+                                                        <div class="text-green text-sm">{{ cpu_details.memory_det.monthly_price_display }}</div>
                                                     </div>
                                                     <div class="col">
                                                         <div v-if="cpu_details.hd_det" class="text-lg">{{ cpu_details.hd_det.short_desc }}</div>
                                                         <div class="text-sm">HDD</div>
-                                                        <div v-if="cpu_details.hd_det" class="text-green text-sm text-sm">{{ cpu_details.hd_det.monthly_price_display }}</div>
+                                                        <div v-if="cpu_details.hd_det" class="text-green text-sm">{{ cpu_details.hd_det.monthly_price_display }}</div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="text-green text-lg">{{ cpu_details.monthly_fee }}</div>
                                                         <div class="text-sm">Total Cost per month</div>
                                                     </div>
                                                     <div class="col">
-                                                        <a :href="'/order_server?cpu=' + cpu_details.id" class="btn btn-green btn-sm mt-2 px-4 py-2">Order</a>
+                                                        <button type="button" class="btn btn-green btn-sm mt-2 px-4 py-2" @click="onSubmitCpu(cpu_details.id, cpu_details.hd_det?.id)">Order</button>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100" />

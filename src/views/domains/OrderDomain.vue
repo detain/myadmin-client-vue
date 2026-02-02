@@ -487,12 +487,10 @@ onMounted(() => {
                                 {{ domainCost }}
                             </div>
                         </div>
-                        <template :v-if="whoisEnabled">
-                            <div class="whois-row row mb-3">
-                                <div class="col-md-8">Whois Privacy</div>
-                                <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
-                            </div>
-                        </template>
+                        <div :v-if="whoisEnabled" class="whois-row row mb-3">
+                            <div class="col-md-8">Whois Privacy</div>
+                            <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
+                        </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
@@ -530,30 +528,42 @@ onMounted(() => {
                                 <tbody>
                                     <tr>
                                         <td><div class="text-md">Order Type</div></td>
-                                        <td><div class="text-bold text-md">{{ domainResult?.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}</div></td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ domainResult?.status === 'taken' ? 'Domain Transfer' : 'Domain Register' }}</div>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td><div class="text-md">{{ domainResult?.domain }}</div></td>
-                                        <td><div class="text-bold text-md">{{ domainCost }}</div></td>
+                                        <td>
+                                            <div class="text-md">{{ domainResult?.domain }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ domainCost }}</div>
+                                        </td>
                                     </tr>
-                                    <template :v-if="whoisEnabled">
-                                        <tr>
-                                            <td><div class="text-md">Whois Privacy</div></td>
-                                            <td><div class="text-bold text-md">{{ whoisPrivacyCost }}</div></td>
-                                        </tr>
-                                    </template>
+                                    <tr :v-if="whoisEnabled">
+                                        <td><div class="text-md">Whois Privacy</div></td>
+                                        <td>
+                                            <div class="text-bold text-md">{{ whoisPrivacyCost }}</div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th><div class="text-lg">Total</div></th>
-                                        <th><div class="text-lg"><div class="text-bold total_cost text-lg">{{ totalCost }}</div></div></th>
+                                        <th>
+                                            <div class="text-lg">
+                                                <div class="text-bold total_cost text-lg">{{ totalCost }}</div>
+                                            </div>
+                                        </th>
                                     </tr>
                                 </tfoot>
                             </table>
                             <hr />
                             <div class="p-1">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
-                                <p class="text-center text-sm">The subscription will automatically renew after <b>every year at</b> <span class="text-bold renew_cost">{{ domainCost }}</span> until canceled.</p>
+                                <p class="text-center text-sm">
+                                    The subscription will automatically renew after <b>every year at</b> <span class="text-bold renew_cost">{{ domainCost }}</span> until canceled.
+                                </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank"> Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank"> Privacy Policy</a>.</p>
                                 <div class="icheck-success text-bold text-center">
                                     <input id="tos" v-model="termsAgreed" type="checkbox" style="margin: 0 5px; display: inline" value="yes" />
