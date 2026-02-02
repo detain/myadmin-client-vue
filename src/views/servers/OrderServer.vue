@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
@@ -54,7 +53,6 @@ interface AssetServer {
     price: string;
 }
 
-const collapsed = ref(false);
 const buyItServers = ref<BuyNowServer[]>([]);
 const assetServers = ref<AssetServer[]>([]);
 const displayShowMore = ref<'yes' | 'no'>('no');
@@ -75,7 +73,7 @@ siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Servers List'],
+    [`/servers`, 'Servers List'],
     ['/servers/order', 'Order Server'],
 ]);
 
@@ -119,18 +117,26 @@ function removeDrive(id: number, driveType: string) {}
 
 function onSubmitCpu(idCpu: string, idHd: string) {
     cpu.value = idCpu;
-    // hd.value = idHd;
-    serverOrderRequest(true);
+    serverOrderRequest(idCpu, idHd);
 }
 
-function serverOrderRequest(addCpu: boolean) {
+function serverOrderRequest(idCpu?: string, idHd?: string) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.get(addCpu ? `${baseUrl}/servers/order?cpu=${cpu.value}` : `${baseUrl}/servers/order`).then((response: ServerOrderResponse) => {
+    const params = new URLSearchParams()
+    if (idCpu) {
+        params.append('cpu', idCpu)
+    }
+    if (idHd) {
+        params.append('hd', idHd)
+    }
+    const query = params.toString()
+    const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`
+    fetchWrapper.get(url).then((response: ServerOrderResponse) => {
         Swal.close();
         console.log('Response:');
         console.log(response);
@@ -146,7 +152,7 @@ function serverOrderRequest(addCpu: boolean) {
         buyItServers.value = response.buy_it_servers;
         console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
         console.log('asset servers:', assetServers.value, assetServers.value.length);
-        if (addCpu) {
+        if (query) {
             step.value = 'step2';
         }
     });
@@ -164,7 +170,7 @@ serverOrderRequest(false);
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/' + moduleLink(module) + '/servers'" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link to="/servers" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -218,33 +224,6 @@ serverOrderRequest(false);
                 </div>
             </div>
             <div class="col-md-4">
-                <!-- Order Summary -->
-                <!-- <div class="card">
-                    <div class="card-header">
-                        <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
-                            <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div id="package_name" class="col-md-8">Dedicated Server</div>
-                            <div id="package_period" class="col text-right">1 Month(s)</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-8 cpu_name">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : 'CPU' }}</div>
-                            <div class="col cpu_cost text-right text-lg">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : '' }}</div>
-                        </div>
-                        <hr />
-                        <div class="row mb-3">
-                            <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col total_cost text-right text-lg">{{ cpu_li[cpu] ? cpu_li[cpu].monthly_price_display : '' }}</div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- End Order Summary -->
                 <!-- Server Recommendations -->
                 <div class="card">
                     <div class="card-header">
@@ -312,9 +291,7 @@ serverOrderRequest(false);
                                 <div><sub>Pre-configured servers ready to use!</sub></div>
                             </h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" @click="collapsed = !collapsed">
-                                    <i class="fas" :class="collapsed ? 'fa-plus' : 'fa-minus'" aria-hidden="true" />
-                                </button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
