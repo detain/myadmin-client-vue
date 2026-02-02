@@ -158,7 +158,7 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
     });
 }
 
-serverOrderRequest(false);
+serverOrderRequest();
 </script>
 
 <template>
