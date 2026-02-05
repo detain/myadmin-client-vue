@@ -609,10 +609,10 @@ serverOrderRequest();
                         </div>
                         <div class="row cpu-row mb-3">
                             <div class="col-md-8">
-                                <span class="cpu_name"></span>
+                                <span class="cpu_name">{{ configLi.cpu_li[cpu].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">CPU</span>
                             </div>
-                            <div class="col text-md text-bold cpu_cost text-right"></div>
+                            <div class="col text-md text-bold cpu_cost text-right">{{ configLi.cpu_li[cpu].monthly_price_display }}</div>
                         </div>
                         <div class="row d-none memory-row mb-3">
                             <div class="col-md-8">
