@@ -25,7 +25,7 @@ export interface ServerOrderResponse {
 }
 
 export interface Region {
-    region_id: string;
+    region_id: number;
     region_name: string;
 }
 
@@ -133,21 +133,21 @@ export interface CpuCoresRow extends CpuRow {
 
 export interface MemoryRow {
     id: number;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
     short_desc: string;
 }
 
 export interface HdRow {
-    drive_type: string;
+    drive_type: 'lff' | 'sff' | 'nve';
     hidden: string;
     id: number;
     img: string;
     long_desc: string;
     manu: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
-    price: string;
+    price: number;
     short_desc: string;
     size: string;
     type: string;
@@ -158,9 +158,9 @@ export interface BandwidthRow {
     id: number;
     img: string;
     long_desc: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
-    price: string;
+    price: number;
     price_display: string;
     qty: string;
     short_desc: string;
@@ -171,9 +171,9 @@ export interface IpsRow {
     id: number;
     img: string;
     long_desc: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
-    price: string;
+    price: number;
     price_display: string;
     qty: string;
     short_desc: string;
@@ -184,9 +184,9 @@ export interface OsRow {
     id: number;
     img: string;
     long_desc: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
-    price: string;
+    price: number;
     price_display: string;
     short_desc: string;
 }
@@ -195,10 +195,10 @@ export interface CpRow {
     id: number;
     img: string;
     long_desc: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
     os_type: string;
-    price: string;
+    price: number;
     price_display: string;
     short_desc: string;
     types: number[];
@@ -209,9 +209,9 @@ export interface RaidRow {
     id: number;
     img: string;
     long_desc: string;
-    monthly_price: string;
+    monthly_price: number;
     monthly_price_display: string;
-    price: string;
+    price: number;
     price_display: string;
     short_desc: string;
 }

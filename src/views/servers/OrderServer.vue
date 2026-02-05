@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
-import type { SimpleStringObj, ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region, MemoryLi, HdLi, BandwidthLi, IpsLi, OsLi, CpLi, RaidLi, CpuRow, CpuCoresRow, MemoryRow, HdRow, BandwidthRow, IpsRow, OsRow, CpRow, RaidRow } from '../../types/servers_order.ts';
+import type { ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region } from '../../types/servers_order.ts';
 import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'servers';
@@ -51,14 +51,18 @@ const fieldLabel = ref<FieldLabel>({
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const coupon = ref('');
-const setupTimes: Record<string, string> = { '2': '48 hrs', '9': '5 days', '11': '3 days' };
-const drives = reactive<{ id: number; type: 'lff' | 'sff' | 'nve'; desc: string; price: number }[]>([]);
+const setupTimes: Record<number, string> = { 2: '48 hrs', 9: '5 days', 11: '3 days' };
+const drives = ref<number[]>([]);
 const curLff = ref(0);
 const curSff = ref(0);
 const curNve = ref(0);
 const maxLff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_lff ?? 0));
 const maxSff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_sff ?? 0));
 const maxNve = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_nve ?? 0));
+const regionName = computed(() => {
+    const region = regions.value.find((r) => r.region_id === formValues.value.region);
+    return region ? region.region_name : '';
+});
 const totalCost = ref(0);
 const discountCost = ref(0);
 const totalPayable = ref(0);
@@ -96,15 +100,17 @@ function imageUrl(imageName: string) {
     return new URL(`../../assets/images/v2-images/${trimmed}`, import.meta.url).href;
 }
 
-function setupTime(regionId: string) {
+function setupTime(regionId: number) {
     return setupTimes[regionId] ?? '48 hrs';
 }
 
-function addDrive(id: number, type: 'lff' | 'sff' | 'nve', desc: string, price: number) {
+function addDrive(id: number) {
+    console.log(`Adding Drive ${id}`);
+    const type = configLi.value.hd_li[cpu.value][Number(id)].drive_type;
     if ((type === 'lff' && Number(curLff.value) >= Number(maxLff.value)) || (type === 'sff' && Number(curSff.value) >= Number(maxSff.value)) || (type === 'nve' && Number(curNve.value) >= Number(maxNve.value))) {
         return;
     }
-    drives.push({ id, type, desc, price });
+    drives.value.push(Number(id));
     if (type === 'lff') {
         curLff.value++;
         if (Number(maxLff.value) === Number(maxSff.value)) curSff.value++;
@@ -117,10 +123,11 @@ function addDrive(id: number, type: 'lff' | 'sff' | 'nve', desc: string, price: 
     updatePrice();
 }
 
-function removeDrive(id: number, type: 'lff' | 'sff' | 'nve') {
-    const idx = drives.findIndex((d) => d.id === id);
+function removeDrive(id: number) {
+    const type = configLi.value.hd_li[cpu.value][Number(id)].drive_type;
+    const idx = drives.value.indexOf(Number(id));
     if (idx === -1) return;
-    drives.splice(idx, 1);
+    drives.value.splice(idx, 1);
     if (type === 'lff') {
         curLff.value--;
         if (maxLff.value === maxSff.value) curSff.value--;
@@ -144,7 +151,7 @@ function canAddDrive(type: 'lff' | 'sff' | 'nve') {
 }
 
 function canRemoveDrive(id: number) {
-    return drives.some((d) => d.id === id);
+    return drives.value.includes(Number(id));
 }
 
 function updatePrice() {
@@ -161,7 +168,7 @@ function updatePrice() {
             total += Number(configLi.value[`${input}_li`][val].monthly_price);
         }
     });
-    drives.forEach((d) => (total += d.price));
+    drives.value.forEach((d) => (total += configLi.value.hd_li[cpu.value][d].monthly_price));
     totalCost.value = total;
     if (cust_discount.value > 0) {
         discountCost.value = total * (cust_discount.value / 100);
@@ -207,16 +214,12 @@ function updateCoupon() {
 
 function onSubmitCpu(idCpu: number, idHd: number) {
     cpu.value = idCpu;
+    //addDrive(Number(idHd));
     serverOrderRequest(idCpu, idHd);
 }
 
 function serverOrderRequest(idCpu?: number, idHd?: number) {
-    Swal.fire({
-        title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-    });
+    showLoading();
     const params = new URLSearchParams();
     if (idCpu) {
         params.append('cpu', String(idCpu));
@@ -232,7 +235,7 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         console.log(response);
         configIds.value = response.config_ids;
         configLi.value = response.config_li;
-        cpu.value = response.cpu;
+        cpu.value = Number(response.cpu);
         cpu_li.value = response.cpu_li;
         cpuCores.value = response.cpu_cores;
         fieldLabel.value = response.field_label;
@@ -241,6 +244,13 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         assetServers.value = response.asset_servers;
         buyItServers.value = response.buy_it_servers;
         regions.value = response.regions;
+        drives.value = [];
+        curNve.value = 0;
+        curSff.value = 0;
+        curLff.value = 0;
+        if (response.form_values.hd) {
+            addDrive(Number(response.form_values.hd));
+        }
         cust_discount.value = response.cust_discount;
         console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
         console.log('asset servers:', assetServers.value, assetServers.value.length);
@@ -263,17 +273,17 @@ watch(
     }
 );
 
-watch(() => ({ ...formValues.value, drives: drives.length }), updatePrice, { deep: true });
+watch(() => ({ ...formValues.value, drives: drives.value.length }), updatePrice, { deep: true });
 
 onMounted(() => {
-    curLff.value = 0;
-    curSff.value = 0;
-    curNve.value = 0;
-    drives.splice(0);
-    updatePrice();
 });
 
+curLff.value = 0;
+curSff.value = 0;
+curNve.value = 0;
+drives.value.splice(0);
 serverOrderRequest();
+updatePrice();
 </script>
 
 <template>
@@ -452,7 +462,7 @@ serverOrderRequest();
                         </div>
                     </div>
                     <!-- Show More -->
-                    <div :v-if="displayShowMore == 'yes'" class="card-footer text-center">
+                    <div v-if="displayShowMore == 'yes'" class="card-footer text-center">
                         <a class="btn bg-secondary" href="https://www.interserver.net/dedicated/buy-now-servers.html" target="_blank" rel="noopener">Show More</a>
                     </div>
                 </div>
@@ -485,10 +495,10 @@ serverOrderRequest();
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
-                                                <template v-for="(details, id) in inputDetails[cpu.toString()]" :key="id">
+                                                <template v-for="(details, id) in inputDetails[cpu]" :key="id">
                                                     <div class="icheck-success d-inline w-100">
                                                         <input v-if="inputName === 'memory_li'" :id="`ds-memory-${id}`" v-model="formValues.memory" type="radio" class="form-check-input" name="memory" :value="id" />
-                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
+                                                        <label v-if="Object.keys(inputDetails[cpu])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
                                                                     <table class="table-sm table-bordered table">
@@ -512,16 +522,16 @@ serverOrderRequest();
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label v-if="Object.keys(inputDetails[cpu.toString()])[0] !== String(id) || inputName !== 'hd_li'" :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs btn-secondary pb-0" @click="removeDrive(Number(id), details.drive_type)">
+                                                                            <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs pb-0" :class="canRemoveDrive(id) ? 'btn-success' : 'btn-secondary'" :disabled="!canRemoveDrive(id)" @click="removeDrive(id)">
                                                                                 <i class="fa fa-minus"></i>
                                                                             </button>
                                                                             <b>/</b>
-                                                                            <button :id="'drive-add-' + id" type="button" class="add-button btn btn-success btn-xs pb-0" @click="addDrive(Number(id), details.drive_type, details.short_desc, details.monthly_price)">
+                                                                            <button :id="'drive-add-' + id" type="button" class="add-button btn btn-xs pb-0" :class="canAddDrive(details) ? 'btn-success' : 'btn-secondary'" :disabled="!canAddDrive(details.drive_type)" @click="addDrive(id)">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </template>
@@ -620,6 +630,13 @@ serverOrderRequest();
                             </div>
                             <div class="col text-md text-bold memory_cost text-right">{{ configLi.memory_li[cpu][formValues.memory].monthly_price_display }}</div>
                         </div>
+                        <div v-for="hd in drives" :key="hd" class="row memory-row mb-3">
+                            <div class="col-md-8">
+                                <span class="memory_name">{{ configLi.hd_li[cpu][hd].short_desc }}</span>
+                                <span class="badge badge-pill badge-warning ml-2">HDD</span>
+                            </div>
+                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.hd_li[cpu][hd].monthly_price_display }}</div>
+                        </div>
                         <div id="hd-row" class="d-none"></div>
                         <div class="row bandwidth-row mb-3">
                             <div class="col-md-8">
@@ -655,6 +672,13 @@ serverOrderRequest();
                                 <span class="badge badge-pill badge-warning ml-2">RAID</span>
                             </div>
                             <div class="col text-md text-bold raid_cost text-right">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</div>
+                        </div>
+                        <div class="row region-row mb-3">
+                            <div class="col-md-8">
+                                <span class="raid_name">{{ regionName }}</span>
+                                <span class="badge badge-pill badge-warning ml-2">Server Region</span>
+                            </div>
+                            <div class="col text-md text-bold raid_cost text-right"></div>
                         </div>
                         <hr />
                         <div class="row mb-3">
