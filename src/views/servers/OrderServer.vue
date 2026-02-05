@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted } from 'vue'
+import { ref, reactive, computed, watch, onMounted } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
@@ -51,19 +51,19 @@ const fieldLabel = ref<FieldLabel>({
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
 const coupon = ref('');
-const setupTimes: Record<string, string> = {'2': '48 hrs', '9': '5 days', '11': '3 days'}
-const drives = reactive<{ id: number; type: 'lff' | 'sff' | 'nve'; desc: string; price: number }[]>([])
-const curLff = ref(0)
-const curSff = ref(0)
-const curNve = ref(0)
-const maxLff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_lff ?? 0))
-const maxSff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_sff ?? 0))
-const maxNve = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_nve ?? 0))
-const totalCost = ref(0)
-const discountCost = ref(0)
-const totalPayable = ref(0)
-const lastOs = ref<string | number | null>(null)
-const money = (val: number) => Intl.NumberFormat(`en-${country.value}`, {'style': 'currency', 'currency': currency.value}).format(val)
+const setupTimes: Record<string, string> = { '2': '48 hrs', '9': '5 days', '11': '3 days' };
+const drives = reactive<{ id: number; type: 'lff' | 'sff' | 'nve'; desc: string; price: number }[]>([]);
+const curLff = ref(0);
+const curSff = ref(0);
+const curNve = ref(0);
+const maxLff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_lff ?? 0));
+const maxSff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_sff ?? 0));
+const maxNve = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_nve ?? 0));
+const totalCost = ref(0);
+const discountCost = ref(0);
+const totalPayable = ref(0);
+const lastOs = ref<string | number | null>(null);
+const money = (val: number) => Intl.NumberFormat(`en-${country.value}`, { style: 'currency', currency: currency.value }).format(val);
 siteStore.setPageHeading('Order Server');
 siteStore.setTitle('Order Server');
 siteStore.setBreadcrums([
@@ -72,22 +72,7 @@ siteStore.setBreadcrums([
     ['/servers/order', 'Order Server'],
 ]);
 
-watch(
-    () => formValues.value.os,
-    os => {
-        if (os === lastOs.value) return
-        lastOs.value = os
-        const allowed = Object.values(configLi.value.cp_li).filter(cp =>
-            cp.types.includes(os)
-        )
-        if (allowed.length) {
-            formValues.value.cp = allowed[0].id
-        }
-        updatePrice()
-    }
-)
-
-type ComponentKey = keyof FormValues
+type ComponentKey = keyof FormValues;
 
 interface BuyNowServer {
     name: string;
@@ -112,75 +97,75 @@ function imageUrl(imageName: string) {
 }
 
 function setupTime(regionId: string) {
-    return setupTimes[regionId] ?? '48 hrs'
+    return setupTimes[regionId] ?? '48 hrs';
 }
 
 function addDrive(id: number, type: 'lff' | 'sff' | 'nve', desc: string, price: number) {
     if ((type === 'lff' && Number(curLff.value) >= Number(maxLff.value)) || (type === 'sff' && Number(curSff.value) >= Number(maxSff.value)) || (type === 'nve' && Number(curNve.value) >= Number(maxNve.value))) {
-        return
+        return;
     }
-    drives.push({ id, type, desc, price })
+    drives.push({ id, type, desc, price });
     if (type === 'lff') {
-        curLff.value++
-        if (Number(maxLff.value) === Number(maxSff.value)) curSff.value++
+        curLff.value++;
+        if (Number(maxLff.value) === Number(maxSff.value)) curSff.value++;
     } else if (type === 'sff') {
-        curSff.value++
-        if (maxLff.value === maxSff.value) curLff.value++
+        curSff.value++;
+        if (maxLff.value === maxSff.value) curLff.value++;
     } else {
-        curNve.value++
+        curNve.value++;
     }
-    updatePrice()
+    updatePrice();
 }
 
 function removeDrive(id: number, type: 'lff' | 'sff' | 'nve') {
-    const idx = drives.findIndex(d => d.id === id)
-    if (idx === -1) return
-    drives.splice(idx, 1)
+    const idx = drives.findIndex((d) => d.id === id);
+    if (idx === -1) return;
+    drives.splice(idx, 1);
     if (type === 'lff') {
-        curLff.value--
-        if (maxLff.value === maxSff.value) curSff.value--
+        curLff.value--;
+        if (maxLff.value === maxSff.value) curSff.value--;
     } else if (type === 'sff') {
-        curSff.value--
-        if (maxLff.value === maxSff.value) curLff.value--
+        curSff.value--;
+        if (maxLff.value === maxSff.value) curLff.value--;
     } else {
-        curNve.value--
+        curNve.value--;
     }
-    updatePrice()
+    updatePrice();
 }
 
 function canAddDrive(type: 'lff' | 'sff' | 'nve') {
-    if (type === 'lff') return curLff.value < maxLff.value
-    if (type === 'sff') return curSff.value < maxSff.value
+    if (type === 'lff') return curLff.value < maxLff.value;
+    if (type === 'sff') return curSff.value < maxSff.value;
     if (type === 'nve') {
-        if ((cpu.value === 58 || cpu.value === 107) && curNve.value >= 2) return false
-        return curNve.value < maxNve.value
+        if ((cpu.value === 58 || cpu.value === 107) && curNve.value >= 2) return false;
+        return curNve.value < maxNve.value;
     }
-    return false
+    return false;
 }
 
 function canRemoveDrive(id: number) {
-    return drives.some(d => d.id === id)
+    return drives.some((d) => d.id === id);
 }
 
 function updatePrice() {
-    let total = 0
-    const components: ComponentKey[] = ['cpu', 'memory', 'bandwidth', 'ips', 'os', 'cp', 'raid']
-    components.forEach(input => {
-        const val = formValues.value[input]
-        if (!val) return
-        if (val === undefined || val === null || val === 0) return
+    let total = 0;
+    const components: ComponentKey[] = ['cpu', 'memory', 'bandwidth', 'ips', 'os', 'cp', 'raid'];
+    components.forEach((input) => {
+        const val = formValues.value[input];
+        if (!val) return;
+        if (val === undefined || val === null || val === 0) return;
 
         if (input === 'memory') {
-            total += Number(configLi.value.memory_li[cpu.value][val].monthly_price)
+            total += Number(configLi.value.memory_li[cpu.value][val].monthly_price);
         } else {
-            total += Number(configLi.value[`${input}_li`][val].monthly_price)
+            total += Number(configLi.value[`${input}_li`][val].monthly_price);
         }
-    })
-    drives.forEach(d => (total += d.price))
-    totalCost.value = total
+    });
+    drives.forEach((d) => (total += d.price));
+    totalCost.value = total;
     if (cust_discount.value > 0) {
-        discountCost.value = total * (cust_discount.value / 100)
-        totalPayable.value = total - discountCost.value
+        discountCost.value = total * (cust_discount.value / 100);
+        totalPayable.value = total - discountCost.value;
     }
 }
 
@@ -191,9 +176,8 @@ function showLoading() {
         allowOutsideClick: false,
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
-    })
+    });
 }
-
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -233,15 +217,15 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    const params = new URLSearchParams()
+    const params = new URLSearchParams();
     if (idCpu) {
-        params.append('cpu', String(idCpu))
+        params.append('cpu', String(idCpu));
     }
     if (idHd) {
-        params.append('hd', String(idHd))
+        params.append('hd', String(idHd));
     }
-    const query = params.toString()
-    const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`
+    const query = params.toString();
+    const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`;
     fetchWrapper.get(url).then((response: ServerOrderResponse) => {
         Swal.close();
         console.log('Response:');
@@ -266,13 +250,28 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
     });
 }
 
+watch(
+    () => formValues.value.os,
+    (os) => {
+        if (os === lastOs.value) return;
+        lastOs.value = os;
+        const allowed = Object.values(configLi.value.cp_li).filter((cp) => cp.types.includes(os));
+        if (allowed.length) {
+            formValues.value.cp = allowed[0].id;
+        }
+        updatePrice();
+    }
+);
+
+watch(() => ({ ...formValues.value, drives: drives.length }), updatePrice, { deep: true });
+
 onMounted(() => {
-    curLff.value = 0
-    curSff.value = 0
-    curNve.value = 0
-    drives.splice(0)
-    updatePrice()
-})
+    curLff.value = 0;
+    curSff.value = 0;
+    curNve.value = 0;
+    drives.splice(0);
+    updatePrice();
+});
 
 serverOrderRequest();
 </script>
@@ -488,7 +487,7 @@ serverOrderRequest();
                                             <div class="input-group col-md-9">
                                                 <template v-for="(details, id) in inputDetails[cpu.toString()]" :key="id">
                                                     <div class="icheck-success d-inline w-100">
-                                                        <input v-if="inputName === 'memory_li'" :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="form-check-input" type="radio" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] === id" @change="updatePrice()" />
+                                                        <input v-if="inputName === 'memory_li'" :id="`ds-memory-${id}`" v-model="formValues.memory" type="radio" class="form-check-input" name="memory" :value="id" />
                                                         <label v-if="Object.keys(inputDetails[cpu.toString()])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
@@ -549,7 +548,7 @@ serverOrderRequest();
                                         </label>
                                         <div class="input-group col-md-9" :class="inputName + '-row'">
                                             <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
-                                                <input :id="'ds-' + (inputName as string).replace('_li', '') + '-' + id" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" :checked="formValues[(inputName as string).replace('_li', '')] == id" @change="updatePrice()" />
+                                                <input :id="`ds-${(inputName as string).replace('_li', '')}-${id}`" v-model="formValues[(inputName as string).replace('_li', '')]" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" />
                                                 <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="font-weight-normal w-100">
                                                     <div class="row mb-2">
                                                         <div class="col-md-8">
@@ -569,7 +568,7 @@ serverOrderRequest();
                                 <label class="col-md-3 col-form-label text-right">Server Region <span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9 region-row">
                                     <div v-for="(region, indx) in regions" :key="region.region_id" class="icheck-success d-inline w-100">
-                                        <input :id="`region-${indx}`" type="radio" class="form-check-input" name="region" :value="region.region_id" :data-name="region.region_name" onchange="return serverRegionUpdate();" :checked="String(formValues.region) == region.region_id" />
+                                        <input :id="`region-${indx}`" v-model="formValues.region" type="radio" class="form-check-input" name="region" :value="region.region_id" />
                                         <label class="font-weight-normal w-100" :for="`region-${indx}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
@@ -614,53 +613,53 @@ serverOrderRequest();
                             </div>
                             <div class="col text-md text-bold cpu_cost text-right">{{ configLi.cpu_li[cpu].monthly_price_display }}</div>
                         </div>
-                        <div class="row d-none memory-row mb-3">
+                        <div class="row memory-row mb-3">
                             <div class="col-md-8">
-                                <span class="memory_name"></span>
+                                <span class="memory_name">{{ configLi.memory_li[cpu][formValues.memory].short_desc }} RAM</span>
                                 <span class="badge badge-pill badge-warning ml-2">RAM</span>
                             </div>
-                            <div class="col text-md text-bold memory_cost text-right"></div>
+                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.memory_li[cpu][formValues.memory].monthly_price_display }}</div>
                         </div>
                         <div id="hd-row" class="d-none"></div>
-                        <div class="row d-none bandwidth-row mb-3">
+                        <div class="row bandwidth-row mb-3">
                             <div class="col-md-8">
-                                <span class="bandwidth_name"></span>
+                                <span class="bandwidth_name">{{ configLi.bandwidth_li[formValues.bandwidth].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">Bandwidth</span>
                             </div>
-                            <div class="col text-md text-bold bandwidth_cost text-right"></div>
+                            <div class="col text-md text-bold bandwidth_cost text-right">{{ configLi.bandwidth_li[formValues.bandwidth].monthly_price_display }}</div>
                         </div>
-                        <div class="row d-none ips-row mb-3">
+                        <div class="row ips-row mb-3">
                             <div class="col-md-8">
-                                <span class="ips_name"></span>
+                                <span class="ips_name">{{ configLi.ips_li[formValues.ips].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">IP</span>
                             </div>
-                            <div class="col text-md text-bold ips_cost text-right"></div>
+                            <div class="col text-md text-bold ips_cost text-right">{{ configLi.ips_li[formValues.ips].monthly_price_display }}</div>
                         </div>
-                        <div class="row d-none os-row mb-3">
+                        <div class="row os-row mb-3">
                             <div class="col-md-8">
-                                <span class="os_name"></span>
+                                <span class="os_name">{{ configLi.os_li[formValues.os].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">OS</span>
                             </div>
-                            <div class="col text-md text-bold os_cost text-right"></div>
+                            <div class="col text-md text-bold os_cost text-right">{{ configLi.os_li[formValues.os].monthly_price_display }}</div>
                         </div>
-                        <div class="row d-none cp-row mb-3">
+                        <div class="row cp-row mb-3">
                             <div class="col-md-8">
-                                <span class="cp_name"></span>
+                                <span class="cp_name">{{ configLi.cp_li[formValues.cp].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">Control Panel</span>
                             </div>
-                            <div class="col text-md text-bold cp_cost text-right"></div>
+                            <div class="col text-md text-bold cp_cost text-right">{{ configLi.cp_li[formValues.cp].monthly_price_display }}</div>
                         </div>
-                        <div class="row d-none raid-row mb-3">
+                        <div class="row raid-row mb-3">
                             <div class="col-md-8">
-                                <span class="raid_name"></span>
+                                <span class="raid_name">{{ configLi.raid_li[formValues.raid].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">RAID</span>
                             </div>
-                            <div class="col text-md text-bold raid_cost text-right"></div>
+                            <div class="col text-md text-bold raid_cost text-right">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-bold total_cost text-right text-lg"></div>
+                            <div id="totalcost" class="col text-bold total_cost text-right text-lg">{{ totalCost }}</div>
                         </div>
                     </div>
                 </div>
