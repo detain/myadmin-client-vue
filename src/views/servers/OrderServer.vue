@@ -567,12 +567,12 @@ serverOrderRequest();
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Server Region <span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9 region-row">
-                                    <div v-for="(region, indx) in regions" :key="region.region_id" class="icheck-success d-inline w-100">
-                                        <input :id="`region-${indx}`" v-model="formValues.region" type="radio" class="form-check-input" name="region" :value="region.region_id" />
-                                        <label class="font-weight-normal w-100" :for="`region-${indx}`">
+                                    <div v-for="(region, index) in regions" :key="region.region_id" class="icheck-success d-inline w-100">
+                                        <input :id="`region-${index}`" v-model="formValues.region" type="radio" class="form-check-input" name="region" :value="region.region_id" />
+                                        <label class="font-weight-normal w-100" :for="`region-${index}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
-                                                    <div class="text-sm text-bold">{{ region.region_name }} [Setup Time - {{ setupTime(region.region_id) }}</div>
+                                                    <div class="text-sm text-bold">{{ region.region_name }} [Setup Time - {{ setupTime(region.region_id) }}]</div>
                                                 </div>
                                                 <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
                                             </div>
@@ -684,14 +684,14 @@ serverOrderRequest();
                             <template v-for="(field_value, field) in formValues">
                                 <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
                             </template>
-                            <input v-for="(hd_val, indexx) in hdValues" :key="indexx" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
+                            <input v-for="(hd_val, index) in hdValues" :key="index" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
                         <form method="post" class="dserver_form_confirm" action="order_server">
                             <template v-for="(field_value, field) in formValues">
                                 <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
                             </template>
-                            <input v-for="(hd_val, indexx) in hdValues" :key="indexx" type="hidden" name="hd[]" :value="hd_val" />
+                            <input v-for="(hd_val, index) in hdValues" :key="index" type="hidden" name="hd[]" :value="hd_val" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label text-right">Server Hostname<span class="text-danger"> *</span></label>
