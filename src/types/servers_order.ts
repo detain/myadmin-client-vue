@@ -30,8 +30,8 @@ export interface Region {
 }
 
 export interface CpuCores {
-    [key: string]: {
-        [key: string]: CpuCoresRow;
+    [key: number]: {
+        [key: number]: CpuCoresRow;
     };
 }
 
@@ -51,50 +51,50 @@ export interface FieldLabel {
 }
 
 export interface ConfigLi extends SimpleStringObj {
-    cpu_li: Record<string, CpuRow>;
-    memory_li: Record<string, Record<string, MemoryRow>>;
-    hd_li: Record<string, Record<string, HdRow>>;
-    bandwidth_li: Record<string, BandwidthRow>;
-    ips_li: Record<string, IpsRow>;
-    os_li: Record<string, OsRow>;
-    cp_li: Record<string, CpRow>;
-    raid_li: Record<string, RaidRow>;
+    cpu_li: Record<number, CpuRow>;
+    memory_li: Record<number, Record<number, MemoryRow>>;
+    hd_li: Record<string, Record<number, HdRow>>;
+    bandwidth_li: Record<number, BandwidthRow>;
+    ips_li: Record<number, IpsRow>;
+    os_li: Record<number, OsRow>;
+    cp_li: Record<number, CpRow>;
+    raid_li: Record<number, RaidRow>;
 }
 
 export interface CpuLi extends SimpleStringObj {
-    [key: string]: CpuRow;
+    [key: number]: CpuRow;
 }
 
 export interface MemoryLi extends SimpleStringObj {
-    [key: string]: {
-        [key: string]: MemoryRow;
+    [key: number]: {
+        [key: number]: MemoryRow;
     };
 }
 
 export interface HdLi extends SimpleStringObj {
-    [key: string]: {
-        [key: string]: HdRow;
+    [key: number]: {
+        [key: number]: HdRow;
     };
 }
 
 export interface BandwidthLi extends SimpleStringObj {
-    [key: string]: BandwidthRow;
+    [key: number]: BandwidthRow;
 }
 
 export interface IpsLi extends SimpleStringObj {
-    [key: string]: IpsRow;
+    [key: number]: IpsRow;
 }
 
 export interface OsLi extends SimpleStringObj {
-    [key: string]: OsRow;
+    [key: number]: OsRow;
 }
 
 export interface CpLi extends SimpleStringObj {
-    [key: string]: CpRow;
+    [key: number]: CpRow;
 }
 
 export interface RaidLi extends SimpleStringObj {
-    [key: string]: RaidRow;
+    [key: number]: RaidRow;
 }
 
 export interface CpuRow {
@@ -103,7 +103,7 @@ export interface CpuRow {
     cache: string;
     fsb: string;
     hd_ids: string;
-    id: string;
+    id: number;
     img: string;
     location: string;
     long_desc: string;
@@ -132,7 +132,7 @@ export interface CpuCoresRow extends CpuRow {
 }
 
 export interface MemoryRow {
-    id: string;
+    id: number;
     monthly_price: string;
     monthly_price_display: string;
     short_desc: string;
@@ -141,7 +141,7 @@ export interface MemoryRow {
 export interface HdRow {
     drive_type: string;
     hidden: string;
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     manu: string;
@@ -155,7 +155,7 @@ export interface HdRow {
 
 export interface BandwidthRow {
     active: string;
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     monthly_price: string;
@@ -168,7 +168,7 @@ export interface BandwidthRow {
 }
 
 export interface IpsRow {
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     monthly_price: string;
@@ -181,7 +181,7 @@ export interface IpsRow {
 
 export interface OsRow {
     active: string;
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     monthly_price: string;
@@ -192,7 +192,7 @@ export interface OsRow {
 }
 
 export interface CpRow {
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     monthly_price: string;
@@ -201,12 +201,12 @@ export interface CpRow {
     price: string;
     price_display: string;
     short_desc: string;
-    types: string;
+    types: number[];
 }
 
 export interface RaidRow {
     active: string;
-    id: string;
+    id: number;
     img: string;
     long_desc: string;
     monthly_price: string;

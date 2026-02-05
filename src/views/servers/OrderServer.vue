@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
@@ -9,12 +9,12 @@ import $ from 'jquery';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'servers';
 const siteStore = useSiteStore();
+const country = ref('US');
 const baseUrl = siteStore.getBaseUrl();
 const currency = ref('USD');
-const currencySymbol = ref('$');
-const custid = ref('2773');
+const cust_discount = ref(0);
 const step = ref('order_form');
-const cpu = ref<string>('34');
+const cpu = ref<number>(34);
 const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
@@ -36,6 +36,58 @@ const cpuCores = ref<CpuCores>({});
 const hdValues = computed(() => {
     return configLi.value.hd_li;
 });
+const buyItServers = ref<BuyNowServer[]>([]);
+const assetServers = ref<AssetServer[]>([]);
+const displayShowMore = ref<'yes' | 'no'>('no');
+const fieldLabel = ref<FieldLabel>({
+    bandwidth: { name: 'Bandwidth', active: 1 },
+    ips: { name: 'IPs', active: 0 },
+    os: { name: 'Operating System', active: 1 },
+    cp: { name: 'Control Panel', active: 0 },
+    raid: { name: 'Raid' },
+    memory: { name: 'Memory' },
+    hd: { name: 'Hard Drives' },
+});
+const couponInfo = ref<CouponInfo>({});
+const lastCoupon = ref('');
+const coupon = ref('');
+const setupTimes: Record<string, string> = {'2': '48 hrs', '9': '5 days', '11': '3 days'}
+const drives = reactive<{ id: number; type: 'lff' | 'sff' | 'nve'; desc: string; price: number }[]>([])
+const curLff = ref(0)
+const curSff = ref(0)
+const curNve = ref(0)
+const maxLff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_lff ?? 0))
+const maxSff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_sff ?? 0))
+const maxNve = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_nve ?? 0))
+const totalCost = ref(0)
+const discountCost = ref(0)
+const totalPayable = ref(0)
+const lastOs = ref<string | number | null>(null)
+const money = (val: number) => Intl.NumberFormat(`en-${country.value}`, {'style': 'currency', 'currency': currency.value}).format(val)
+siteStore.setPageHeading('Order Server');
+siteStore.setTitle('Order Server');
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/servers`, 'Servers List'],
+    ['/servers/order', 'Order Server'],
+]);
+
+watch(
+    () => formValues.value.os,
+    os => {
+        if (os === lastOs.value) return
+        lastOs.value = os
+        const allowed = Object.values(configLi.value.cp_li).filter(cp =>
+            cp.types.includes(os)
+        )
+        if (allowed.length) {
+            formValues.value.cp = allowed[0].id
+        }
+        updatePrice()
+    }
+)
+
+type ComponentKey = keyof FormValues
 
 interface BuyNowServer {
     name: string;
@@ -54,44 +106,94 @@ interface AssetServer {
     price: string;
 }
 
-const buyItServers = ref<BuyNowServer[]>([]);
-const assetServers = ref<AssetServer[]>([]);
-const displayShowMore = ref<'yes' | 'no'>('no');
-
-const fieldLabel = ref<FieldLabel>({
-    bandwidth: { name: 'Bandwidth', active: 1 },
-    ips: { name: 'IPs', active: 0 },
-    os: { name: 'Operating System', active: 1 },
-    cp: { name: 'Control Panel', active: 0 },
-    raid: { name: 'Raid' },
-    memory: { name: 'Memory' },
-    hd: { name: 'Hard Drives' },
-});
-const couponInfo = ref<CouponInfo>({});
-const lastCoupon = ref('');
-const coupon = ref('');
-siteStore.setPageHeading('Order Server');
-siteStore.setTitle('Order Server');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/servers`, 'Servers List'],
-    ['/servers/order', 'Order Server'],
-]);
-
 function imageUrl(imageName: string) {
     const trimmed = imageName.trim();
     return new URL(`../../assets/images/v2-images/${trimmed}`, import.meta.url).href;
 }
 
-const setupTimes: Record<string, string> = {
-    '2': '48 hrs',
-    '9': '5 days',
-    '11': '3 days',
-}
-
 function setupTime(regionId: string) {
     return setupTimes[regionId] ?? '48 hrs'
 }
+
+function addDrive(id: number, type: 'lff' | 'sff' | 'nve', desc: string, price: number) {
+    if ((type === 'lff' && Number(curLff.value) >= Number(maxLff.value)) || (type === 'sff' && Number(curSff.value) >= Number(maxSff.value)) || (type === 'nve' && Number(curNve.value) >= Number(maxNve.value))) {
+        return
+    }
+    drives.push({ id, type, desc, price })
+    if (type === 'lff') {
+        curLff.value++
+        if (Number(maxLff.value) === Number(maxSff.value)) curSff.value++
+    } else if (type === 'sff') {
+        curSff.value++
+        if (maxLff.value === maxSff.value) curLff.value++
+    } else {
+        curNve.value++
+    }
+    updatePrice()
+}
+
+function removeDrive(id: number, type: 'lff' | 'sff' | 'nve') {
+    const idx = drives.findIndex(d => d.id === id)
+    if (idx === -1) return
+    drives.splice(idx, 1)
+    if (type === 'lff') {
+        curLff.value--
+        if (maxLff.value === maxSff.value) curSff.value--
+    } else if (type === 'sff') {
+        curSff.value--
+        if (maxLff.value === maxSff.value) curLff.value--
+    } else {
+        curNve.value--
+    }
+    updatePrice()
+}
+
+function canAddDrive(type: 'lff' | 'sff' | 'nve') {
+    if (type === 'lff') return curLff.value < maxLff.value
+    if (type === 'sff') return curSff.value < maxSff.value
+    if (type === 'nve') {
+        if ((cpu.value === 58 || cpu.value === 107) && curNve.value >= 2) return false
+        return curNve.value < maxNve.value
+    }
+    return false
+}
+
+function canRemoveDrive(id: number) {
+    return drives.some(d => d.id === id)
+}
+
+function updatePrice() {
+    let total = 0
+    const components: ComponentKey[] = ['cpu', 'memory', 'bandwidth', 'ips', 'os', 'cp', 'raid']
+    components.forEach(input => {
+        const val = formValues.value[input]
+        if (!val) return
+        if (val === undefined || val === null || val === 0) return
+
+        if (input === 'memory') {
+            total += Number(configLi.value.memory_li[cpu.value][val].monthly_price)
+        } else {
+            total += Number(configLi.value[`${input}_li`][val].monthly_price)
+        }
+    })
+    drives.forEach(d => (total += d.price))
+    totalCost.value = total
+    if (cust_discount.value > 0) {
+        discountCost.value = total * (cust_discount.value / 100)
+        totalPayable.value = total - discountCost.value
+    }
+}
+
+function showLoading() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    })
+}
+
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -106,7 +208,6 @@ function updateCoupon() {
             })
             .then((json) => {
                 couponInfo.value = json;
-
                 if (typeof json.applies !== 'undefined') {
                     // update_vps_choices();
                     if (couponInfo.value.onetime === '0') {
@@ -120,18 +221,12 @@ function updateCoupon() {
     }
 }
 
-function addDrive(id: number, driveType: string, description: string, price: number) {}
-
-function updatePrice() {}
-
-function removeDrive(id: number, driveType: string) {}
-
-function onSubmitCpu(idCpu: string, idHd: string) {
+function onSubmitCpu(idCpu: number, idHd: number) {
     cpu.value = idCpu;
     serverOrderRequest(idCpu, idHd);
 }
 
-function serverOrderRequest(idCpu?: string, idHd?: string) {
+function serverOrderRequest(idCpu?: number, idHd?: number) {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
@@ -140,10 +235,10 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
     });
     const params = new URLSearchParams()
     if (idCpu) {
-        params.append('cpu', idCpu)
+        params.append('cpu', String(idCpu))
     }
     if (idHd) {
-        params.append('hd', idHd)
+        params.append('hd', String(idHd))
     }
     const query = params.toString()
     const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`
@@ -153,7 +248,7 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
         console.log(response);
         configIds.value = response.config_ids;
         configLi.value = response.config_li;
-        cpu.value = String(response.cpu);
+        cpu.value = response.cpu;
         cpu_li.value = response.cpu_li;
         cpuCores.value = response.cpu_cores;
         fieldLabel.value = response.field_label;
@@ -162,6 +257,7 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
         assetServers.value = response.asset_servers;
         buyItServers.value = response.buy_it_servers;
         regions.value = response.regions;
+        cust_discount.value = response.cust_discount;
         console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
         console.log('asset servers:', assetServers.value, assetServers.value.length);
         if (query) {
@@ -169,6 +265,14 @@ function serverOrderRequest(idCpu?: string, idHd?: string) {
         }
     });
 }
+
+onMounted(() => {
+    curLff.value = 0
+    curSff.value = 0
+    curNve.value = 0
+    drives.splice(0)
+    updatePrice()
+})
 
 serverOrderRequest();
 </script>
@@ -335,8 +439,8 @@ serverOrderRequest();
                                         <template v-for="(hd, i) in asset.HD" :key="i"> {{ hd }}<br /> </template>
                                         <template v-if="asset.Bandwidth?.[0]"> {{ asset.Bandwidth[0] }}<br /> </template>
                                         <template v-if="asset.IPs?.[0]"> {{ asset.IPs[0] }}<br /> </template>
-                                        <template v-if="asset.Region?.[0]">
-                                            {{ asset.Region[0] }}
+                                        <template v-if="asset.Region">
+                                            {{ asset.Region }}
                                         </template>
                                     </div>
                                     <div class="card-footer text-center">
@@ -400,9 +504,9 @@ serverOrderRequest();
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>Max Drives</td>
-                                                                                <td id="drives-lff">0/4</td>
-                                                                                <td id="drives-sff">0/4</td>
-                                                                                <td id="drives-nve">0/2</td>
+                                                                                <td id="drives-lff">{{ curLff }}/{{ maxLff }}</td>
+                                                                                <td id="drives-sff">{{ curSff }}/{{ maxSff }}</td>
+                                                                                <td id="drives-nve">{{ curNve }}/{{ maxNve }}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -647,11 +751,11 @@ serverOrderRequest();
                                     </tr>
                                     <tr v-for="(hdValue, index) in hdValues" :key="index">
                                         <td>
-                                            <span class="hd_name">{{ configLi['hd_li'][cpu][index]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][index]['short_desc'] }}</span>
+                                            <span class="hd_name">{{ configLi['hd_li'][cpu][Number(index)]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][Number(index)]['short_desc'] }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">HDD</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][index]['monthly_price_display'] }}</div>
+                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][Number(index)]['monthly_price_display'] }}</div>
                                         </td>
                                     </tr>
                                     <tr>
