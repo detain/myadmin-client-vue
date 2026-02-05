@@ -218,6 +218,10 @@ function onSubmitCpu(idCpu: number, idHd: number) {
     serverOrderRequest(idCpu, idHd);
 }
 
+function onSubmitOptions() {
+    step.value = 'confirm_order';
+}
+
 function serverOrderRequest(idCpu?: number, idHd?: number) {
     showLoading();
     const params = new URLSearchParams();
@@ -275,8 +279,7 @@ watch(
 
 watch(() => ({ ...formValues.value, drives: drives.value.length }), updatePrice, { deep: true });
 
-onMounted(() => {
-});
+onMounted(() => {});
 
 curLff.value = 0;
 curSff.value = 0;
@@ -483,7 +486,7 @@ updatePrice();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="dserver_form" method="post" class="dserver_form_init" action="order_server">
+                        <form id="dserver_form" method="post" class="dserver_form_init">
                             <input id="cpu" type="hidden" name="cpu" :value="formValues.cpu" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
@@ -593,7 +596,7 @@ updatePrice();
 
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <input type="submit" name="Submit" value="Continue" class="btn btn-order btn-sm px-3 py-2" />
+                                    <input type="button" name="Submit" value="Continue" class="btn btn-order btn-sm px-3 py-2" @click="onSubmitOptions" />
                                 </div>
                             </div>
                         </form>
@@ -711,7 +714,7 @@ updatePrice();
                             <input v-for="(hd_val, index) in hdValues" :key="index" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
                             <input type="hidden" name="Submit" />
                         </form>
-                        <form method="post" class="dserver_form_confirm" action="order_server">
+                        <form method="post" class="dserver_form_confirm">
                             <template v-for="(field_value, field) in formValues">
                                 <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
                             </template>
@@ -746,7 +749,6 @@ updatePrice();
                                     <tr>
                                         <th>
                                             <div id="package_name" class="float-left" style="position: relative; top: 5px">Dedicated Server</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" onclick="edit_form()" data-toggle="tooltip" title="Edit details"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div id="package_period" class="text-bold">1 Month(s)</div>
@@ -756,73 +758,80 @@ updatePrice();
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <span class="cpu_name"></span>
+                                            <span class="cpu_name">{{ configLi.cpu_li[cpu].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">CPU</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold cpu_cost"></div>
+                                            <div class="text-bold cpu_cost">{{ configLi.cpu_li[cpu].monthly_price_display }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="memory_name"></span>
+                                            <span class="memory_name">{{ configLi.memory_li[cpu][formValues.memory].short_desc }} RAM</span>
                                             <span class="badge badge-pill badge-warning ml-2">RAM</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold memory_cost"></div>
+                                            <div class="text-bold memory_cost">{{ configLi.memory_li[cpu][formValues.memory].monthly_price_display }}</div>
                                         </td>
                                     </tr>
-                                    <tr v-for="(hdValue, index) in hdValues" :key="index">
+                                    <tr v-for="hd in drives" :key="hd">
                                         <td>
-                                            <span class="hd_name">{{ configLi['hd_li'][cpu][Number(index)]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][Number(index)]['short_desc'] }}</span>
+                                            <span class="hd_name">{{ configLi['hd_li'][cpu][hd]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][hd]['short_desc'] }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">HDD</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][Number(index)]['monthly_price_display'] }}</div>
+                                            <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][hd]['monthly_price_display'] }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="bandwidth_name"></span>
+                                            <span class="bandwidth_name">{{ configLi.bandwidth_li[formValues.bandwidth].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">Bandwidth</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold bandwidth_cost"></div>
+                                            <div class="text-bold bandwidth_cost">{{ configLi.bandwidth_li[formValues.bandwidth].monthly_price_display }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="ips_name"></span>
+                                            <span class="ips_name">{{ configLi.ips_li[formValues.ips].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">IP</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold ips_cost"></div>
+                                            <div class="text-bold ips_cost">{{ configLi.ips_li[formValues.ips].monthly_price_display }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="os_name"></span>
+                                            <span class="os_name">{{ configLi.os_li[formValues.os].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">OS</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold os_cost"></div>
+                                            <div class="text-bold os_cost">{{ configLi.os_li[formValues.os].monthly_price_display }}</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="cp_name"></span>
+                                            <span class="cp_name">{{ configLi.cp_li[formValues.cp].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">Control Panel</span>
                                         </td>
                                         <td>
-                                            <div class="text-bold cp_cost"></div>
+                                            <div class="text-bold cp_cost">{{ configLi.cp_li[formValues.cp].monthly_price_display }}</div>
                                         </td>
                                     </tr>
-                                    <tr class="d-none raid-row">
+                                    <tr class="raid-row">
                                         <td>
-                                            <span class="raid_name"></span>
+                                            <span class="raid_name">{{ configLi.raid_li[formValues.raid].short_desc }}</span>
                                             <span class="badge badge-pill badge-warning ml-2">RAID</span>
                                         </td>
-                                        <td class="text-bold raid_cost"></td>
+                                        <td class="text-bold raid_cost">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>{{ regionName }}</span>
+                                            <span class="badge badge-pill badge-warning ml-2">Server Region</span>
+                                        </td>
+                                        <td class="text-bold"></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -831,7 +840,7 @@ updatePrice();
                                             <div class="col-md-10 text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-bold total_cost text-lg"></div>
+                                            <div class="text-bold total_cost text-lg">{{ totalCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
