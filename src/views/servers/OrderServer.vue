@@ -5,9 +5,6 @@ import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
 import type { ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region } from '../../types/servers_order.ts';
-import $ from 'jquery';
-import type { CouponInfo } from '../../types/vps_order.ts';
-const module: string = 'servers';
 const siteStore = useSiteStore();
 const country = ref('US');
 const baseUrl = siteStore.getBaseUrl();
@@ -48,9 +45,6 @@ const fieldLabel = ref<FieldLabel>({
     memory: { name: 'Memory' },
     hd: { name: 'Hard Drives' },
 });
-const couponInfo = ref<CouponInfo>({});
-const lastCoupon = ref('');
-const coupon = ref('');
 const setupTimes: Record<number, string> = { 2: '48 hrs', 9: '5 days', 11: '3 days' };
 const drives = ref<number[]>([]);
 const curLff = ref(0);
@@ -161,7 +155,6 @@ function updatePrice() {
         const val = formValues.value[input];
         if (!val) return;
         if (val === undefined || val === null || val === 0) return;
-
         if (input === 'memory') {
             total += Number(configLi.value.memory_li[cpu.value][val].monthly_price);
         } else {
@@ -184,32 +177,6 @@ function showLoading() {
         showConfirmButton: false,
         didOpen: () => Swal.showLoading(),
     });
-}
-
-function updateCoupon() {
-    if (lastCoupon.value != coupon.value) {
-        lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
-        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error ${response.status}`);
-                }
-                return response.json() as Promise<CouponInfo>;
-            })
-            .then((json) => {
-                couponInfo.value = json;
-                if (typeof json.applies !== 'undefined') {
-                    // update_vps_choices();
-                    if (couponInfo.value.onetime === '0') {
-                        // update_vps_choices_order();
-                    }
-                }
-            })
-            .catch((error) => {
-                console.error('Failed to load coupon info:', error);
-            });
-    }
 }
 
 function onSubmitCpu(idCpu: number, idHd: number) {
@@ -303,7 +270,7 @@ updatePrice();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="dserver_form" method="post" class="dserver_form_init">
+                        <form method="post" class="dserver_form_init">
                             <div class="form-group row">
                                 <div class="input-group col-md-12">
                                     <template v-for="(cpuDetails, coreKey) in cpuCores" :key="coreKey">
@@ -486,9 +453,7 @@ updatePrice();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="dserver_form" method="post" class="dserver_form_init">
-                            <input id="cpu" type="hidden" name="cpu" :value="formValues.cpu" />
-                            <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
+                        <form method="post" class="dserver_form_init">
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
                                 <template v-if="inputName !== 'cpu_li'">
                                     <template v-if="['memory_li', 'hd_li'].includes(inputName as string)">
@@ -530,11 +495,11 @@ updatePrice();
                                                                 <div class="col-md-8">
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs pb-0" :class="canRemoveDrive(id) ? 'btn-success' : 'btn-secondary'" :disabled="!canRemoveDrive(id)" @click="removeDrive(id)">
+                                                                            <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs pb-0" :class="canRemoveDrive(Number(id)) ? 'btn-success' : 'btn-secondary'" :disabled="!canRemoveDrive(Number(id))" @click="removeDrive(Number(id))">
                                                                                 <i class="fa fa-minus"></i>
                                                                             </button>
                                                                             <b>/</b>
-                                                                            <button :id="'drive-add-' + id" type="button" class="add-button btn btn-xs pb-0" :class="canAddDrive(details) ? 'btn-success' : 'btn-secondary'" :disabled="!canAddDrive(details.drive_type)" @click="addDrive(id)">
+                                                                            <button :id="'drive-add-' + id" type="button" class="add-button btn btn-xs pb-0" :class="canAddDrive(details) ? 'btn-success' : 'btn-secondary'" :disabled="!canAddDrive(details.drive_type)" @click="addDrive(Number(id))">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </template>
@@ -686,7 +651,7 @@ updatePrice();
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-bold total_cost text-right text-lg">{{ totalCost }}</div>
+                            <div class="col text-bold total_cost text-right text-lg">{{ money(totalCost) }}</div>
                         </div>
                     </div>
                 </div>
@@ -707,13 +672,6 @@ updatePrice();
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="edit_order_form" method="post" action="order_server">
-                            <template v-for="(field_value, field) in formValues">
-                                <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
-                            </template>
-                            <input v-for="(hd_val, index) in hdValues" :key="index" class="input-hd" type="hidden" name="hd[]" :value="hd_val" />
-                            <input type="hidden" name="Submit" />
-                        </form>
                         <form method="post" class="dserver_form_confirm">
                             <template v-for="(field_value, field) in formValues">
                                 <input v-if="field !== 'hd'" :id="field as string" :key="field" type="hidden" :name="field as string" :value="field_value" />
@@ -730,17 +688,17 @@ updatePrice();
                                     </small>
                                 </div>
                             </div>
-                            <div id="rootpassrownew" class="form-group row">
+                            <div class="form-group row">
                                 <label class="col-sm-4 col-form-label text-right">Root Password<span class="text-danger"> *</span></label>
                                 <div class="form-group input-group col-md-8">
                                     <input v-model="rootpass" placeholder="Enter Password" class="form-control form-control-sm" required />
-                                    <small class="form-text text-muted">Note: Password must contain atleast 8 characters,one lowercase letter, one uppercase letter, one number, a special character.</small>
+                                    <small class="form-text text-muted">Note: Password must contain at least 8 characters,one lowercase letter, one uppercase letter, one number, a special character.</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-right">Comments</label>
                                 <div class="form-group input-group col-md-8">
-                                    <textarea id="comment" v-model="comment" placeholder="Enter Comment" rows="5" class="form-control form-control-sm"></textarea>
+                                    <textarea v-model="comment" placeholder="Enter Comment" rows="5" class="form-control form-control-sm"></textarea>
                                 </div>
                             </div>
                             <hr />
@@ -840,7 +798,7 @@ updatePrice();
                                             <div class="col-md-10 text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div class="text-bold total_cost text-lg">{{ totalCost }}</div>
+                                            <div class="text-bold total_cost text-lg">{{ money(totalCost) }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
