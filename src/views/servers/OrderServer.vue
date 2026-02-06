@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { generatePassword } from '../../helpers/generatePassword';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '../../stores/site.store';
@@ -16,6 +17,7 @@ const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
 const regions = ref<Region[]>([]);
+const tos = ref('');
 const configLi = ref<ConfigLi>({
     cpu_li: {},
     memory_li: {},
@@ -27,7 +29,7 @@ const configLi = ref<ConfigLi>({
     raid_li: {},
 });
 const servername = ref('');
-const rootpass = ref('');
+const rootpass = ref<string>(generatePassword());
 const comment = ref('');
 const cpuCores = ref<CpuCores>({});
 const hdValues = computed(() => {
@@ -189,6 +191,35 @@ function onSubmitOptions() {
     step.value = 'confirm_order';
 }
 
+function onGoBack() {
+    step.value = 'order_form';
+}
+
+function onGoBackStep2() {
+    step.value = 'step2';
+}
+
+function onSubmitOrder() {
+    showLoading();
+    fetchWrapper.post(`${baseUrl}/servers/order`, {
+        cpu: cpu.value,
+        hd: drives.value,
+        rootpass: rootpass.value,
+        servername: servername.value,
+        comment: comment.value,
+        tos: tos.value,
+        ...formValues.value,
+    } ).then((response) => {
+        Swal.close();
+        console.log('Response:');
+        console.log(response);
+    }).catch((error) => {
+        Swal.close();
+        console.log('Error:');
+        console.log(error);
+    });
+}
+
 function serverOrderRequest(idCpu?: number, idHd?: number) {
     showLoading();
     const params = new URLSearchParams();
@@ -228,6 +259,10 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         if (query) {
             step.value = 'step2';
         }
+    }).catch((error) => {
+        Swal.close();
+        console.log('Error:');
+        console.log(error);
     });
 }
 
@@ -448,7 +483,7 @@ updatePrice();
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link to="/servers/order" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBack"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -667,7 +702,7 @@ updatePrice();
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBackStep2"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -681,7 +716,7 @@ updatePrice();
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label text-right">Server Hostname<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-8">
-                                    <input type="text" class="form-control form-control-sm" name="servername" :value="servername" placeholder="server.hostname.com" required />
+                                    <input v-model="servername" type="text" class="form-control form-control-sm" name="servername" placeholder="server.hostname.com" required />
                                     <small class="form-text text-muted">
                                         <b>Example: server.hostname.com</b><br />
                                         Use the hostname to identify the server. The domain does not need to be valid or registered. One period is required in the hostname. Other examples: database.local, web.server or your.name.
@@ -808,13 +843,13 @@ updatePrice();
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" />
+                                    <input type="button" value="Place Order" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click.prevent="onSubmitOrder"/>
                                 </div>
                             </div>
                         </form>
