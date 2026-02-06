@@ -1,3 +1,4 @@
+x
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -20,13 +21,7 @@ const comments = ref('');
 const subtotal = computed(() => basePrice.value + optionsTotal.value);
 const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
 const total = computed(() => Math.max(0, subtotal.value - discountAmount.value));
-const options = reactive<Record<string, Option[]>>({
-    ips: [],
-    bandwidth: [],
-    os: [],
-    cp: [],
-    raid: [],
-});
+const labels = { ips: 'IPs', bandwidth: 'Bandwidth', os: 'Operating System', cp: 'Control Panel', raid: 'Raid' } as const;
 const selected = reactive<Record<string, number | null>>({
     ips: null,
     bandwidth: null,
@@ -34,13 +29,22 @@ const selected = reactive<Record<string, number | null>>({
     cp: null,
     raid: null,
 });
+const options = reactive<Record<string, Option[]>>({
+    ips: [],
+    bandwidth: [],
+    os: [],
+    cp: [],
+    raid: [],
+});
 const optionsTotal = computed(() =>
     Object.entries(selected).reduce((sum, [key, id]) => {
         if (!id) return sum;
         const opt = options[key]?.find((o) => o.id === id);
-        return sum + (opt?.price ?? 0);
+        return sum + Number(opt?.monthly_price ?? 0);
     }, 0)
 );
+
+type LabelKey = keyof typeof labels;
 
 interface InitResponse {
     basePrice: number;
@@ -78,8 +82,10 @@ interface SubmitPayload {
 
 interface Option {
     id: number;
-    label: string;
-    price: number;
+    short_desc: string;
+    long_desc?: string;
+    monthly_price: string;
+    os_type?: string;
 }
 
 interface Region {
@@ -108,11 +114,17 @@ async function serverOrderRequest() {
     }
     const query = params.toString();
     fetchWrapper
-        .get(`${baseUrl}/servers/dedicated?${query}`)
-        .then((response: InitResponse) => {
+        .get(`${baseUrl}/servers/order/buy_now_server?${query}`)
+        .then((response) => {
             Swal.close();
             console.log('Response:');
             console.log(response);
+            options.bandwidth = response.bandwidth;
+            options.cp = response.cp;
+            options.ips = response.ips;
+            options.os = response.os;
+            options.raid = response.raid;
+            /*
             basePrice.value = response.basePrice;
             discountPercent.value = response.discountPercent ?? 0;
             Object.assign(options, response.options);
@@ -123,9 +135,11 @@ async function serverOrderRequest() {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
-            }
+            }*/
+            loading.value = false;
         })
         .catch((error) => {
+            loading.value = false;
             Swal.close();
             console.log('Error:');
             console.log(error);
@@ -180,106 +194,35 @@ onMounted(async () => {
                         </tr>
                     </thead>
                     <tbody class="ui-widget-content">
-                        <tr>
-                            <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select IPs</h3></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: left">
-                                <span>
-                                    <div class="icheck-success w-100" style="display: inline">
-                                        <input id="ips9" type="radio" class="form-check-input" name="ips" value="9" onchange="return updateTotalDisp();" />
-                                        <label class="font-weight-normal w-100" for="ips9">
-                                            <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">1 Vlan Ip (/30)</div></div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green">$0.00</span></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Bandwidth</h3></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: left">
-                                <span>
-                                    <div class="icheck-success w-100" style="display: inline">
-                                        <input id="bandwidth10" type="radio" class="form-check-input" name="bandwidth" value="10" onchange="return updateTotalDisp();" />
-                                        <label class="font-weight-normal w-100" for="bandwidth10">
-                                            <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">1GBPS Unmetered</div></div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green">$0.00</span></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Operating System</h3></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: left">
-                                <span>
-                                    <div class="icheck-success w-100" style="display: inline">
-                                        <input type="radio" class="form-check-input" name="os" value="53" onchange="return updateTotalDisp();" />
-                                        <label class="font-weight-normal w-100" for="os53">
-                                            <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">No OS (IPMI Install)</div></div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green">$0.00</span></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Control Panel</h3></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: left">
-                                <span>
-                                    <div class="icheck-success w-100" style="display: inline">
-                                        <input id="cp1" type="radio" class="form-check-input" name="cp" value="1" onchange="return updateTotalDisp();" />
-                                        <label class="font-weight-normal w-100" for="cp1">
-                                            <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">None</div></div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green">$0.00</span></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Raid</h3></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" style="text-align: left">
-                                <span>
-                                    <div class="icheck-success w-100" style="display: inline">
-                                        <input id="raid0" type="radio" class="form-check-input" name="raid" value="0" onchange="return updateTotalDisp();" />
-                                        <label class="font-weight-normal w-100" for="raid0">
-                                            <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">No Raid</div></div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green">$0.00</span></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
+                        <template v-for="(opts, key) in options" :key="key">
+                            <tr>
+                                <td colspan="6" style="text-align: center">
+                                    <span>
+                                        <h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select {{ labels[key as LabelKey] ?? key }}</h3>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr v-for="opt in opts" :key="opt.id">
+                                <td colspan="6" style="text-align: left">
+                                    <span>
+                                        <div class="icheck-success w-100" style="display: inline">
+                                            <input v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
+                                            <label class="font-weight-normal w-100" for="ips9">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-8">
+                                                        <div class="text-sm text-bold">{{ opt.short_desc }}</div>
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <span class="text-md text-bold pl-2 text-green">${{ Number(opt.monthly_price).toFixed(2) }}</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </span>
+                                </td>
+                            </tr>
+                        </template>
+
                         <tr>
                             <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Server Region</h3></span>
@@ -315,7 +258,7 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><input id="servername" tabindex="0" type="text" name="servername" size="30" value="" placeholder="server.hostname.com" class="form-control" autocomplete="off" /></span>
+                                <span><input id="servername" v-model="hostname" tabindex="0" type="text" name="servername" size="30" placeholder="server.hostname.com" class="form-control" autocomplete="off" /></span>
                             </td>
                         </tr>
                         <tr>
@@ -335,7 +278,7 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><input id="root_pass" tabindex="0" type="text" name="rootpass" size="30" value="sT3%CXeJ" placeholder="Enter Password" class="form-control" autocomplete="off" ß="" /></span>
+                                <span><input id="root_pass" v-model="rootPassword" tabindex="0" type="text" name="rootpass" size="30" placeholder="Enter Password" class="form-control" autocomplete="off" ß="" /></span>
                             </td>
                         </tr>
                         <tr>
@@ -351,7 +294,7 @@ onMounted(async () => {
                         <tr>
                             <td colspan="6" style="text-align: left">
                                 <span>
-                                    <textarea id="comment" placeholder="Enter Comment" class="form-control" name="comments" rows="7" cols="30"></textarea>
+                                    <textarea id="comment" v-model="comments" placeholder="Enter Comment" class="form-control" name="comments" rows="7" cols="30"></textarea>
                                     <hr />
                                 </span>
                             </td>
@@ -459,14 +402,6 @@ onMounted(async () => {
         <div v-if="loading">Loading…</div>
         <div v-if="error" class="error">{{ error }}</div>
         <form v-if="!loading" @submit.prevent="submitOrder">
-            <!-- OPTIONS -->
-            <section v-for="(opts, key) in options" :key="key">
-                <h3>Select {{ key }}</h3>
-                <label v-for="opt in opts" :key="opt.id">
-                    <input v-model="selected[key]" type="radio" :name="key" :value="opt.id" />
-                    {{ opt.label }} — ${{ opt.price.toFixed(2) }}
-                </label>
-            </section>
             <!-- REGION -->
             <section>
                 <h3>Server Region</h3>
@@ -475,20 +410,12 @@ onMounted(async () => {
                     {{ r.region_name }}
                 </label>
             </section>
-            <!-- DETAILS -->
-            <section>
-                <h3>Server Details</h3>
-                <input v-model="hostname" placeholder="server.hostname.com" required />
-                <input v-model="rootPassword" type="password" placeholder="Root Password" required />
-                <textarea v-model="comments" placeholder="Comments"></textarea>
-            </section>
             <!-- SUMMARY -->
             <aside class="order-summary">
                 <p>Subtotal: ${{ subtotal.toFixed(2) }}</p>
                 <p v-if="discountPercent">Discount ({{ discountPercent }}%): -${{ discountAmount.toFixed(2) }}</p>
                 <strong>Total: ${{ total.toFixed(2) }}</strong>
             </aside>
-
             <button type="submit">Add to Cart</button>
         </form>
     </div>
