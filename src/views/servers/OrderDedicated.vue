@@ -1,9 +1,47 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import axios from 'axios';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import Swal from 'sweetalert2';
+import { useSiteStore } from '../../stores/site.store';
+const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const route = useRoute();
+const router = useRouter();
+const loading = ref(true);
+const error = ref<string | null>(null);
+const basePrice = ref(0);
+const discountPercent = ref(0);
+const regions = ref<Region[]>([]);
+const selectedRegion = ref<number | null>(null);
+const hostname = ref('');
+const rootPassword = ref('');
+const comments = ref('');
+const subtotal = computed(() => basePrice.value + optionsTotal.value);
+const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
+const total = computed(() => Math.max(0, subtotal.value - discountAmount.value));
+const options = reactive<Record<string, Option[]>>({
+    ips: [],
+    bandwidth: [],
+    os: [],
+    cp: [],
+    raid: [],
+});
+const selected = reactive<Record<string, number | null>>({
+    ips: null,
+    bandwidth: null,
+    os: null,
+    cp: null,
+    raid: null,
+});
+const optionsTotal = computed(() =>
+    Object.entries(selected).reduce((sum, [key, id]) => {
+        if (!id) return sum;
+        const opt = options[key]?.find((o) => o.id === id);
+        return sum + (opt?.price ?? 0);
+    }, 0)
+);
 
-/* ---------- Types ---------- */
 interface InitResponse {
     basePrice: number;
     discountPercent: number;
@@ -32,8 +70,8 @@ interface SubmitPayload {
     hostname: string;
     rootPassword: string;
     comments: string;
-    selections: Record<string, number>;
-    region: number;
+    selections: Record<string, number | null>;
+    region: number | null;
     coupon?: string;
     assetId?: number;
 }
@@ -49,98 +87,82 @@ interface Region {
     region_name: string;
 }
 
-/* ---------- State ---------- */
-const route = useRoute();
-const router = useRouter();
+function showLoading() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => Swal.showLoading(),
+    });
+}
 
-const loading = ref(true);
-const error = ref<string | null>(null);
-
-const basePrice = ref(0);
-const discountPercent = ref(0);
-
-const options = reactive<Record<string, Option[]>>({
-    ips: [],
-    bandwidth: [],
-    os: [],
-    cp: [],
-    raid: [],
-});
-
-const selected = reactive<Record<string, number | null>>({
-    ips: null,
-    bandwidth: null,
-    os: null,
-    cp: null,
-    raid: null,
-});
-
-const regions = ref<Region[]>([]);
-const selectedRegion = ref<number | null>(null);
-
-/* ---------- Server details ---------- */
-const hostname = ref('');
-const rootPassword = ref('');
-const comments = ref('');
-
-/* ---------- Derived Pricing ---------- */
-const optionsTotal = computed(() =>
-    Object.entries(selected).reduce((sum, [key, id]) => {
-        if (!id) return sum;
-        const opt = options[key]?.find((o) => o.id === id);
-        return sum + (opt?.price ?? 0);
-    }, 0)
-);
-
-const subtotal = computed(() => basePrice.value + optionsTotal.value);
-
-const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
-
-const total = computed(() => Math.max(0, subtotal.value - discountAmount.value));
-
-/* ---------- Init Load ---------- */
-onMounted(async () => {
-    try {
-        const { data } = await axios.get('/api/order/dedicated/init', {
-            params: route.query,
-        });
-
-        basePrice.value = data.basePrice;
-        discountPercent.value = data.discountPercent ?? 0;
-        Object.assign(options, data.options);
-        regions.value = data.regions;
-        selectedRegion.value = data.coupon?.regionId || data.asset?.regionId || null;
-
-        // Preselect first option per category
-        for (const key in options) {
-            if (options[key].length > 0) {
-                selected[key] = options[key][0].id;
-            }
-        }
-    } catch (e) {
-        error.value = 'Failed to load order data';
-    } finally {
-        loading.value = false;
+async function serverOrderRequest() {
+    showLoading();
+    const params = new URLSearchParams();
+    if (typeof route.query.c === 'string') {
+        params.append('c', route.query.c);
     }
-});
+    if (typeof route.query.a === 'string') {
+        params.append('a', route.query.a);
+    }
+    const query = params.toString();
+    fetchWrapper
+        .get(`${baseUrl}/servers/dedicated?${query}`)
+        .then((response: InitResponse) => {
+            Swal.close();
+            console.log('Response:');
+            console.log(response);
+            basePrice.value = response.basePrice;
+            discountPercent.value = response.discountPercent ?? 0;
+            Object.assign(options, response.options);
+            regions.value = response.regions;
+            selectedRegion.value = response.coupon?.regionId || response.asset?.regionId || null;
+            // Preselect first option per category
+            for (const key in options) {
+                if (options[key].length > 0) {
+                    selected[key] = options[key][0].id;
+                }
+            }
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log('Error:');
+            console.log(error);
+        });
+}
 
-/* ---------- Submit ---------- */
 async function submitOrder() {
     try {
-        await axios.post('/api/order/dedicated/submit', {
+        const postData: SubmitPayload = {
             hostname: hostname.value,
             rootPassword: rootPassword.value,
             comments: comments.value,
             selections: selected,
             region: selectedRegion.value,
-            coupon: route.query.c,
-            assetId: route.query.a,
-        });
-        router.push({ name: 'OrderPaymentPending' });
+            coupon: route.query.c as string,
+            assetId: Number(route.query.a),
+        };
+        fetchWrapper
+            .post(`${baseUrl}/servers/dedicated`, postData)
+            .then((response: InitResponse) => {
+                Swal.close();
+                console.log('Response:');
+                console.log(response);
+            })
+            .catch((error) => {
+                Swal.close();
+                console.log('Error:');
+                console.log(error);
+            });
     } catch (e) {
         error.value = 'Order submission failed';
     }
 }
+
+onMounted(async () => {
+    serverOrderRequest();
+});
 </script>
 
 <template>
@@ -159,12 +181,12 @@ async function submitOrder() {
                     </thead>
                     <tbody class="ui-widget-content">
                         <tr>
-                            <td colspan="6" bgcolor="#FFFFFF" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select IPs</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input id="ips9" type="radio" class="form-check-input" name="ips" value="9" onchange="return updateTotalDisp();" />
@@ -179,12 +201,12 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Bandwidth</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input id="bandwidth10" type="radio" class="form-check-input" name="bandwidth" value="10" onchange="return updateTotalDisp();" />
@@ -199,12 +221,12 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Operating System</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input type="radio" class="form-check-input" name="os" value="53" onchange="return updateTotalDisp();" />
@@ -219,12 +241,12 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Control Panel</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input id="cp1" type="radio" class="form-check-input" name="cp" value="1" onchange="return updateTotalDisp();" />
@@ -239,12 +261,12 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Select Raid</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input id="raid0" type="radio" class="form-check-input" name="raid" value="0" onchange="return updateTotalDisp();" />
@@ -259,12 +281,12 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Server Region</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" bgcolor="" style="text-align: left">
+                            <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
                                         <input id="region-2" type="radio" class="form-check-input" name="region" value="2" />
@@ -277,27 +299,27 @@ async function submitOrder() {
                                     </div>
                                 </span>
                             </td>
-                            <td colspan="5" bgcolor="" style="text-align: left">
+                            <td colspan="5" style="text-align: left">
                                 <span>&nbsp;</span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><h3 style="border: 1px solid #ccc; background: #f9f9f9" class="py-2 text-lg b-radius mt-2">Enter Server Details</h3></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><label class="m-0" for="servername">Server Hostname</label></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><input id="servername" tabindex="0" type="text" name="servername" size="30" value="" placeholder="server.hostname.com" class="form-control" autocomplete="off" /></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <small class="form-text text-muted">
                                         <b>Example: server.hostname.com</b><br />
@@ -307,35 +329,35 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><label class="m-0" for="root_pass">Root Password</label></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><input id="root_pass" tabindex="0" type="text" name="rootpass" size="30" value="sT3%CXeJ" placeholder="Enter Password" class="form-control" autocomplete="off" ß="" /></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><small class="form-text text-muted"> Note: Password must contain atleast 8 characters,one lowercase letter, one uppercase letter, one number, a special character. </small></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span><label class="m-0" for="comment">Comments</label></span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: left">
+                            <td colspan="6" style="text-align: left">
                                 <span>
                                     <textarea id="comment" placeholder="Enter Comment" class="form-control" name="comments" rows="7" cols="30"></textarea>
-                                    <hr/>
+                                    <hr />
                                 </span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" bgcolor="" style="text-align: center">
+                            <td colspan="6" style="text-align: center">
                                 <span><input type="submit" value="Add to cart" class="btn btn-order py-2 px-3 b-radius mb-3" /></span>
                             </td>
                         </tr>
@@ -355,7 +377,7 @@ async function submitOrder() {
                     </thead>
                     <tbody class="ui-widget-content">
                         <tr>
-                            <td colspan="3" bgcolor="" style="text-align: left">
+                            <td colspan="3" style="text-align: left">
                                 <span>
                                     <div class="order_summary w-100 d-block" style="border-bottom: 1px solid #ccc">
                                         <div class="label-row">
@@ -419,10 +441,10 @@ async function submitOrder() {
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" bgcolor="" style="text-align: left">
+                            <td colspan="2" style="text-align: left">
                                 <span><div class="w-100 d-block pb-2 font-weight-bold">Monthly Total</div></span>
                             </td>
-                            <td colspan="1" bgcolor="" style="text-align: right">
+                            <td colspan="1" style="text-align: right">
                                 <span><div id="total_price" class="w-100 d-block pb-2 font-weight-bold">$169.00</div></span>
                             </td>
                         </tr>

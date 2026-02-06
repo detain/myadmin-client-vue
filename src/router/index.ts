@@ -29,6 +29,15 @@ export const router = createRouter({
             ],
         },
         {
+            path: '/users',
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
+            children: [
+                { path: '', component: () => import('../views/users/List.vue') },
+                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
+                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
+            ],
+        },
+        {
             path: '/affiliate',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
@@ -54,15 +63,6 @@ export const router = createRouter({
                 { path: '', component: () => import('../views/tickets/TicketsList.vue') },
                 { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
                 { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
-            ],
-        },
-        {
-            path: '/users',
-            //component: () => import('../views/billing/affiliates/Layout.vue'),
-            children: [
-                { path: '', component: () => import('../views/users/List.vue') },
-                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
-                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
             ],
         },
         {
@@ -106,13 +106,6 @@ export const router = createRouter({
             ],
         },
         {
-            path: '/scrub_ips',
-            children: [
-                { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
-                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
-            ],
-        },
-        {
             path: '/licenses',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
@@ -143,6 +136,13 @@ export const router = createRouter({
                 { path: 'order', component: () => import('../views/quickservers/OrderQs.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/quickservers/ViewQs.vue') },
                 { path: ':id(\\d+)/:link(backup|backups|restore|start|stop|restart|invoices|cancel|reinstall_os|reverse_dns|traffic_usage|setup_vnc|slices|buy_ip|reset_password|view_desktop|change_timezone|insert_cd|eject_cd)', component: () => import('../views/quickservers/ViewQs.vue') },
+            ],
+        },
+        {
+            path: '/scrub_ips',
+            children: [
+                { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
+                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
             ],
         },
         {
