@@ -48,6 +48,24 @@ export const router = createRouter({
             ],
         },
         {
+            path: '/tickets',
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
+            children: [
+                { path: '', component: () => import('../views/tickets/TicketsList.vue') },
+                { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
+                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
+            ],
+        },
+        {
+            path: '/users',
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
+            children: [
+                { path: '', component: () => import('../views/users/List.vue') },
+                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
+                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
+            ],
+        },
+        {
             path: '/backups',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
@@ -146,24 +164,6 @@ export const router = createRouter({
                 { path: 'order', component: () => import('../views/ssl/OrderSsl.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/ssl/ViewSsl.vue') },
                 { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|change_approver_email|resend_approver_email)', component: () => import('../views/ssl/ViewSsl.vue') },
-            ],
-        },
-        {
-            path: '/tickets',
-            //component: () => import('../views/billing/affiliates/Layout.vue'),
-            children: [
-                { path: '', component: () => import('../views/tickets/TicketsList.vue') },
-                { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
-                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
-            ],
-        },
-        {
-            path: '/users',
-            //component: () => import('../views/billing/affiliates/Layout.vue'),
-            children: [
-                { path: '', component: () => import('../views/users/List.vue') },
-                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
-                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
             ],
         },
         {
