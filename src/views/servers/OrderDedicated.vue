@@ -124,18 +124,18 @@ async function serverOrderRequest() {
             options.ips = response.ips;
             options.os = response.os;
             options.raid = response.raid;
+            regions.value = response.regions;
             /*
             basePrice.value = response.basePrice;
             discountPercent.value = response.discountPercent ?? 0;
-            Object.assign(options, response.options);
-            regions.value = response.regions;
-            selectedRegion.value = response.coupon?.regionId || response.asset?.regionId || null;
+            */
             // Preselect first option per category
-            for (const key in options) {
+            ['cp','ips','os','bandwidth','raid'].forEach((key) => {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
-            }*/
+            });
+            selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
             loading.value = false;
         })
         .catch((error) => {
@@ -228,14 +228,14 @@ onMounted(async () => {
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Server Region</h3></span>
                             </td>
                         </tr>
-                        <tr>
+                        <tr v-for="region in regions" :key="region.region_id">
                             <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
-                                        <input id="region-2" type="radio" class="form-check-input" name="region" value="2" />
+                                        <input v-model="selected.region" type="radio" clasls="form-check-input" name="region" :value="region.region_id" />
                                         <label class="font-weight-normal w-100" for="region-2">
                                             <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">NYC Region</div></div>
+                                                <div class="col-md-8"><div class="text-sm text-bold">{{ region.region_name }}</div></div>
                                                 <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
                                             </div>
                                         </label>
