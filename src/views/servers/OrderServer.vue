@@ -17,7 +17,7 @@ const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
 const regions = ref<Region[]>([]);
-const tos = ref('');
+const tos = ref(false);
 const configLi = ref<ConfigLi>({
     cpu_li: {},
     memory_li: {},
@@ -215,6 +215,10 @@ function onSubmitOrder() {
         console.log(response);
     }).catch((error) => {
         Swal.close();
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.message}`,
+        });
         console.log('Error:');
         console.log(error);
     });
@@ -843,7 +847,7 @@ updatePrice();
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="true" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
