@@ -74,7 +74,7 @@ export const router = createRouter({
                 { path: 'order/:domain', component: () => import('../views/domains/OrderDomain.vue') },
                 { path: 'order/:domain/:regType(register|transfer)', component: () => import('../views/domains/OrderDomain.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/domains/ViewDomain.vue') },
-                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|contact|nameservers|renew|whois|contact|dnssec)', component: () => import('../views/domains/ViewDomain.vue') },
+                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|contact|nameservers|renew|whois|contact|dnssec|transfer)', component: () => import('../views/domains/ViewDomain.vue') },
             ],
         },
         {
@@ -113,7 +113,7 @@ export const router = createRouter({
                 { path: '', component: () => import('../views/mail/MailList.vue') },
                 { path: 'order', component: () => import('../views/mail/OrderMail.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/mail/ViewMail.vue') },
-                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|alerts|deny_rules|blocks|send|advsend|rules|stats|log)', component: () => import('../views/mail/ViewMail.vue') },
+                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|alerts|deny_rules|blocks|send|advsend|rules|stats|log|email_deliverability)', component: () => import('../views/mail/ViewMail.vue') },
                 { path: ':id(\\d+)/:link(deny_rules|rules)/:ruleId(\\d+)', component: () => import('../views/mail/ViewMail.vue') },
             ],
         },
