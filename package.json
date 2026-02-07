@@ -83,6 +83,7 @@
         "concurrently": "*",
         "cross-env": "*",
         "date-fns": "^4.1.0",
+        "dotenv": "*",
         "eslint": "^9.39.1",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-vue": "^10.6.2",

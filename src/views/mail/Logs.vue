@@ -90,14 +90,14 @@ function buildQueryString(): string {
     params.set('page', page.value.toString());
     params.set('limit', limit.value.toString());
 
-    if (filters.value.to) params.set('to', filters.value.to);
-    if (filters.value.from) params.set('from', filters.value.from);
-    if (filters.value.subject) params.set('subject', filters.value.subject);
-    if (filters.value.origin) params.set('origin', filters.value.origin);
-    if (filters.value.delivered !== '') params.set('delivered', filters.value.delivered);
+    if (filters.value.to) params.set('to', filters.value.to as string);
+    if (filters.value.from) params.set('from', filters.value.from as string);
+    if (filters.value.subject) params.set('subject', filters.value.subject as string);
+    if (filters.value.origin) params.set('origin', filters.value.origin as string);
+    if (filters.value.delivered !== '') params.set('delivered', filters.value.delivered as string);
 
-    if (filters.value.startDate) params.set('startDate', filters.value.startDate);
-    if (filters.value.endDate) params.set('endDate', filters.value.endDate);
+    if (filters.value.startDate) params.set('startDate', filters.value.startDate as string);
+    if (filters.value.endDate) params.set('endDate', filters.value.endDate as string);
 
     return params.toString();
 }
@@ -109,7 +109,7 @@ const loadLog = async () => {
 
     const query = buildQueryString();
 
-    const response = await fetchWrapper.get<MailLogResponse>(`${baseUrl}/${moduleLink(module)}/${props.id}/log?${query}`);
+    const response: MailLogResponse = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${props.id}/log?${query}`);
 
     total.value = response.total;
     limit.value = response.limit;
