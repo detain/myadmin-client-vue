@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onBeforeUnmount } from 'vue';
-import ApexCharts from 'apexcharts';
+import { ref, watch, nextTick, onBeforeUnmount } from 'vue';
+import { Chart, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { moduleLink } from '@/helpers/moduleLink';
 
-const props = defineProps<{ id: number }>();
+Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
+const props = defineProps<{ id: number }>();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module = 'mail';
-
-/* ------------------ Time ------------------ */
 
 type TimeKey = 'all' | 'billing' | 'month' | '7d' | '24h' | 'day' | '1h';
 
@@ -25,9 +24,7 @@ const times: Record<TimeKey, string> = {
     '1h': '1 Hour',
 };
 
-const selectedTime = ref<TimeKey>('all');
-
-/* ------------------ Data ------------------ */
+const selectedTime = ref<TimeKey>('1h');
 
 interface StatsData {
     usage: number;
@@ -51,31 +48,49 @@ const statsData = ref<StatsData>({
     volume: { to: {}, from: {}, ip: {} },
 });
 
-/* ------------------ Charts ------------------ */
+/* ---------------- Charts ---------------- */
 
-const charts: Record<'to' | 'from' | 'ip', ApexCharts | null> = {
+const charts: Record<'to' | 'from' | 'ip', Chart | null> = {
     to: null,
     from: null,
     ip: null,
 };
 
-const buildPie = (data: Record<string, number>) => {
-    const rows = Object.entries(data).sort((a, b) => b[1] - a[1]);
+const CHART_COLORS = [
+    '#008FFB', // blue
+    '#00E396', // green
+    '#FEB019', // orange
+    '#FF4560', // red
+    '#775DD0', // purple
+    '#3F51B5', // indigo
+    '#546E7A', // gray
+    '#D4526E', // pink
+    '#8D5B4C', // brown
+    '#F86624', // other
+];
 
-    const series: number[] = [];
+const buildPieData = (data: Record<string, number>) => {
+    const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+
     const labels: string[] = [];
+    const values: number[] = [];
+    const colors: string[] = [];
 
-    rows.forEach(([key, count], idx) => {
+    entries.forEach(([key, count], idx) => {
+        const colorIndex = Math.min(idx, CHART_COLORS.length - 1);
+
         if (idx < 9) {
-            series.push(count);
             labels.push(key ? key.substring(0, 35) : 'unknown');
+            values.push(count);
+            colors.push(CHART_COLORS[colorIndex]);
         } else {
-            series[9] = (series[9] ?? 0) + count;
+            values[9] = (values[9] ?? 0) + count;
             labels[9] = 'Other';
+            colors[9] = CHART_COLORS[9];
         }
     });
 
-    return { series, labels };
+    return { labels, values, colors };
 };
 
 const renderChart = async (field: 'to' | 'from' | 'ip') => {
@@ -83,33 +98,45 @@ const renderChart = async (field: 'to' | 'from' | 'ip') => {
 
     charts[field]?.destroy();
 
-    const el = document.getElementById(`piegraph-${field}`);
-    if (!el) return;
+    const canvas = document.getElementById(`piegraph-${field}`) as HTMLCanvasElement | null;
 
-    const { series, labels } = buildPie(statsData.value.volume[field]);
+    if (!canvas) return;
 
-    charts[field] = new ApexCharts(el, {
-        chart: {
-            type: 'donut',
-            width: 400,
-            height: 450,
+    const { labels, values, colors } = buildPieData(statsData.value.volume[field]);
+
+    charts[field] = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [
+                {
+                    data: values,
+                    backgroundColor: colors, // ✅ COLORIZED
+                    borderWidth: 1,
+                },
+            ],
         },
-        series,
-        labels,
-        plotOptions: {
-            pie: {
-                startAngle: -90,
-                endAngle: 270,
+        options: {
+            responsive: false,
+            cutout: '65%',
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        generateLabels(chart) {
+                            const dataset = chart.data.datasets[0];
+                            return chart.data.labels!.map((label, i) => ({
+                                text: `${label} - ${dataset.data[i]}`,
+                                fillStyle: dataset.backgroundColor![i] as string,
+                                strokeStyle: '#fff',
+                                index: i,
+                            }));
+                        },
+                    },
+                },
             },
         },
-        fill: { type: 'gradient' },
-        legend: {
-            position: 'bottom',
-            formatter: (val: string, opts: any) => `${val} - ${opts.w.globals.series[opts.seriesIndex]}`,
-        },
     });
-
-    charts[field]!.render();
 };
 
 const renderAllCharts = () => {
@@ -118,12 +145,11 @@ const renderAllCharts = () => {
     renderChart('ip');
 };
 
-/* ------------------ Load ------------------ */
+/* ---------------- Load ---------------- */
 
 const loadStats = async () => {
-    const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${props.id}/stats?time=${selectedTime.value}`);
+    statsData.value = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${props.id}/stats?time=${selectedTime.value}`);
 
-    statsData.value = response;
     renderAllCharts();
 };
 
@@ -175,7 +201,6 @@ onBeforeUnmount(() => {
                             </button>
                         </div>
                     </div>
-
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
@@ -192,14 +217,14 @@ onBeforeUnmount(() => {
             </div>
         </div>
 
-        <!-- VOLUME / TABLES -->
+        <!-- VOLUME + TABLES -->
         <div class="row">
             <div v-for="(label, field) in { to: 'To', from: 'From', ip: 'IP' }" :key="field" class="col-sm-4">
                 <div class="card m-1">
                     <div class="card-header">Volume by {{ label }} Address</div>
 
                     <div class="card-body">
-                        <div :id="`piegraph-${field}`" style="height: 400px; width: 400px"></div>
+                        <canvas :id="`piegraph-${field}`" width="400" height="400" />
                     </div>
 
                     <table class="table table-striped table-sm table-hover">
