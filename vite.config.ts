@@ -27,7 +27,7 @@ export default defineConfig({
             enabled: true,
             provider: playwright(),
             trace: 'on', // 'on-first-retry' 'on-all-retries' or 'retain-on-failure'
-            headless: false, // set too false to watch tests in a UI
+            headless: true, // set too false to watch tests in a UI
             setupFiles: ['./test/setup.ts'],
             // Optional: configure specific options, e.g., launch options
             launchOptions: {
