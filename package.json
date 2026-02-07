@@ -140,7 +140,6 @@
         "vue-recaptcha": "*",
         "vue-router": "*",
         "vue-tsc": "^3.1.6",
-        "vue3-apexcharts": "*",
         "wait-on": "*",
         "word-wrap": ">=1.2.4",
         "yaml": "^2.3",
