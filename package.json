@@ -75,7 +75,6 @@
         "@vue/tsconfig": "*",
         "@vueuse/core": "*",
         "admin-lte": "^3.0.1",
-        "apexcharts": "*",
         "autoprefixer": "^10.4.14",
         "axios": "*",
         "bootstrap": "^4.6",
