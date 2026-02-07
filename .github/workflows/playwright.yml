@@ -51,22 +51,22 @@ jobs:
             - name: Install dependencies
               run: yarn
 
+            # Cache Playwright browsers (major speed improvement)
+            - name: Cache Playwright browsers
+              uses: actions/cache@v4
+              with:
+                  path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+                  key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+                  restore-keys: |
+                      playwright-${{ runner.os }}-
+
+            # Single, correct installation step
+            - name: Install Playwright browsers
+              run: yarn playwright install --with-deps
+
             # Vite dev server is started automatically by Playwright
             - name: Run Playwright tests
               run: yarn test
-
-            # Cache Playwright browsers (major speed improvement)
-            #- name: Cache Playwright browsers
-            #  uses: actions/cache@v4
-            #  with:
-            #      path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
-            #      key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-            #      restore-keys: |
-            #          playwright-${{ runner.os }}-
-
-            # Single, correct installation step
-            #- name: Install Playwright browsers
-            #  run: yarn playwright install --with-deps
 
             # Vite dev server is started automatically by Playwright
             #- name: Run Playwright tests
