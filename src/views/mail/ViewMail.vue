@@ -222,7 +222,7 @@ mailStore.getById(id);
         <div v-else-if="link == 'email_deliverability'" class="col">
             <Deliverability :id="id"></Deliverability>
         </div>
-        <div v-else-if="link == 'logs'" class="col">
+        <div v-else-if="link == 'log'" class="col">
             <Logs :id="id"></Logs>
         </div>
         <div v-else-if="link == 'stats'" class="col">
