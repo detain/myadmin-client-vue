@@ -4,27 +4,29 @@ import { moduleLink } from '../../helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
+import { VpsInfo } from '../../types/vps';
+import { QsInfo } from '../../types/qs';
 import Swal from 'sweetalert2';
-
 const props = defineProps<{
-    module: string;
     id: number;
+    module: string;
     currencySymbol: string;
-    memory?: string;
-    hdd?: string;
+    serviceInfo: VpsInfo | QsInfo;
 }>();
 const id = computed(() => props.id);
-const currencySymbol = computed(() => {
-    return props.currencySymbol;
-});
-const memory = computed(() => {
-    return props.memory;
-});
-const hdd = computed(() => {
-    return props.hdd;
-});
 const module = computed(() => props.module);
-
+const currencySymbol = computed(() => props.currencySymbol);
+const sliceData = ref<SlicesResponse>({
+    frequency: 1,
+    max_slices: 32,
+    min_slices: 1,
+    prorated_slice_cost: 0,
+    slice_cost: 0,
+    slice_hd: 40,
+    slice_ram: 2,
+    vps_cost: 0,
+    vps_slices: 1,
+});
 const siteStore = useSiteStore();
 const confirm = ref(false);
 const baseUrl = siteStore.getBaseUrl();
@@ -50,6 +52,19 @@ const repeatCost = computed(() => {
     const slicesMultiplier = 1; // Replace with the actual slices multiplier
     return (baseCost * slicesMultiplier).toFixed(2);
 });
+
+interface SlicesResponse {
+    frequency: number;
+    max_slices: number;
+    min_slices: number;
+    prorated_slice_cost: number;
+    slice_cost: number;
+    slice_hd: number;
+    slice_ram: number;
+    vps_cost: number;
+    vps_slices: number;
+}
+
 function submitForm() {
     let postData = {
         slices: slices.value,
@@ -73,6 +88,27 @@ function submitForm() {
             });
         });
 }
+
+function loadData() {
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/slices`)
+        .then((response: SlicesResponse) => {
+            console.log('api success');
+            console.log(response);
+            sliceData.value = response;
+            slices.value = response.vps_slices;
+        })
+        .catch((error: any) => {
+            console.log('api failed');
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
+        });
+}
+
+loadData();
 </script>
 
 <template>
@@ -100,15 +136,15 @@ function submitForm() {
                                     <div class="row m-0 p-0">
                                         <div class="col-md-4 text-left">
                                             <span>CPU Cores: </span>
-                                            <span id="slices_disp" class="text-bold">{{ slices }}</span>
+                                            <span id="slices_disp" class="text-bold">{{ Math.ceil((slices - 2) / 2 + 1) }}</span>
                                         </div>
                                         <div class="col-md-4 text-center">
                                             <span>Memory: </span>
-                                            <span id="ram_disp" class="text-bold">{{ memory }}</span>
+                                            <span id="ram_disp" class="text-bold">{{ sliceData.slice_ram * slices }} GB</span>
                                         </div>
                                         <div class="col-md-4 text-right">
                                             <span>Disk: </span>
-                                            <span id="hdd_disp" class="text-bold">{{ hdd }}</span>
+                                            <span id="hdd_disp" class="text-bold">{{ sliceData.slice_hd * slices }} GB</span>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +158,8 @@ function submitForm() {
                                 </div>
                                 <div class="col-md-9">
                                     <input id="slices" v-model="slices" type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" />
-                                    <span class="text-muted text-sm">Up to 16 Slices can be attached to a VPS.</span>
+                                    <span class="text-sm text-muted">Up to 32 Slices can be attached to a VPS.</span>
+                                    <span class="text-sm text-muted float-right text-bold"><span id="cur_slice">{{ slices }}</span>/{{ sliceData.max_slices }} Slices</span>
                                 </div>
                             </div>
                         </div>
