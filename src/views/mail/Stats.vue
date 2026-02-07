@@ -125,9 +125,10 @@ const renderChart = async (field: 'to' | 'from' | 'ip') => {
                     labels: {
                         generateLabels(chart) {
                             const dataset = chart.data.datasets[0];
+                            const bgColors = dataset.backgroundColor as string[];
                             return chart.data.labels!.map((label, i) => ({
                                 text: `${label} - ${dataset.data[i]}`,
-                                fillStyle: dataset.backgroundColor![i] as string,
+                                fillStyle: bgColors[i],
                                 strokeStyle: '#fff',
                                 index: i,
                             }));
