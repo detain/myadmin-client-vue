@@ -1586,7 +1586,7 @@
   dependencies:
     nodemon "*"
 
-"@types/prismjs@^1.26.5":
+"@types/prismjs@*":
   version "1.26.5"
   resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.26.5.tgz#72499abbb4c4ec9982446509d2f14fb8483869d6"
   integrity sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==
@@ -7189,14 +7189,14 @@ vite-plugin-webfont-dl@*:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitest-browser-vue@^2.0.1:
+vitest-browser-vue@*:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/vitest-browser-vue/-/vitest-browser-vue-2.0.2.tgz#77d0e4bd33e97e297e673a65a1107437e07ee11d"
   integrity sha512-/IM/+gOBEPL5Ocu/n28NmAvr1XgqGxzJrgwkPx9O+ioB52iuyg25nDQXlDDPSCm5PJFmwNzA6yycWxFAFTqXYA==
   dependencies:
     "@vue/test-utils" "^2.4.6"
 
-vitest@^4.0.16:
+vitest@*:
   version "4.0.18"
   resolved "https://registry.yarnpkg.com/vitest/-/vitest-4.0.18.tgz#56f966353eca0b50f4df7540cd4350ca6d454a05"
   integrity sha512-hOQuK7h0FGKgBAas7v0mSAsnvrIgAvWmRFjmzpJ7SwFHH3g1k2u37JtYwOwmEKhK6ZO3v9ggDBBm0La1LCK4uQ==

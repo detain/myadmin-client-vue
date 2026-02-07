@@ -48,6 +48,7 @@ coverage
 
 # Vitest related files
 __snapshots__/
+__traces__/
 __screenshots__/
 coverage/
 

@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
-//import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAuthStore } from '../stores/auth.store';
 import { useSiteStore } from '../stores/site.store';
-
-//import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
-
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+//import { Form, Field } from 'vee-validate';
+//import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
 
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
-
 const gresponse = ref('');
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
@@ -537,7 +534,7 @@ authStore.load();
                                 <div class="card-body">
                                     <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" :validation-schema="loginSchema" @submit.prevent="onLoginSubmit">
                                         <div class="input-group mb-3">
-                                            <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                            <input id="loginname" v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
                                             </div>
@@ -561,7 +558,7 @@ authStore.load();
                                                 </div>
                                             </div>
                                             <div class="col-4">
-                                                <button id="" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
+                                                <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
                                             </div>
                                         </div>
                                         <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
