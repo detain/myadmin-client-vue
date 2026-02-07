@@ -1,4 +1,3 @@
-x
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -22,6 +21,14 @@ const subtotal = computed(() => basePrice.value + optionsTotal.value);
 const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
 const total = computed(() => Math.max(0, subtotal.value - discountAmount.value));
 const labels = { ips: 'IPs', bandwidth: 'Bandwidth', os: 'Operating System', cp: 'Control Panel', raid: 'Raid' } as const;
+const serverCoupon = ref({});
+const serverAsset = ref({});
+const regionName = computed(() => {
+    const list = regions.value;
+    if (!Array.isArray(list)) return '';
+    const region = list.find((r) => r.region_id === selectedRegion.value);
+    return region?.region_name ?? '';
+});
 const selected = reactive<Record<string, number | null>>({
     ips: null,
     bandwidth: null,
@@ -42,6 +49,22 @@ const optionsTotal = computed(() =>
         const opt = options[key]?.find((o) => o.id === id);
         return sum + Number(opt?.monthly_price ?? 0);
     }, 0)
+);
+const orderSummary = computed(() =>
+    (Object.keys(selected) as LabelKey[])
+        .map((key) => {
+            const id = selected[key];
+            if (!id) return null;
+            const opt = options[key].find((o) => o.id === id);
+            if (!opt) return null;
+            return {
+                key,
+                label: labels[key],
+                short_desc: opt.short_desc,
+                price: Number(opt.monthly_price),
+            };
+        })
+        .filter(Boolean)
 );
 
 type LabelKey = keyof typeof labels;
@@ -125,17 +148,24 @@ async function serverOrderRequest() {
             options.os = response.os;
             options.raid = response.raid;
             regions.value = response.regions;
+            if (typeof response.a !== 'undefined') {
+                serverAsset.value = response.a;
+            }
+            if (typeof response.c !== 'undefined') {
+                serverCoupon.value = response.c;
+            }
             /*
             basePrice.value = response.basePrice;
             discountPercent.value = response.discountPercent ?? 0;
             */
             // Preselect first option per category
-            ['cp','ips','os','bandwidth','raid'].forEach((key) => {
+            ['cp', 'ips', 'os', 'bandwidth', 'raid'].forEach((key) => {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
             });
-            selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
+            //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
+            selectedRegion.value = regions.value.length > 0 ? regions.value[0].region_id : null;
             loading.value = false;
         })
         .catch((error) => {
@@ -222,7 +252,6 @@ onMounted(async () => {
                                 </td>
                             </tr>
                         </template>
-
                         <tr>
                             <td colspan="6" style="text-align: center">
                                 <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Server Region</h3></span>
@@ -232,10 +261,12 @@ onMounted(async () => {
                             <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
-                                        <input v-model="selected.region" type="radio" clasls="form-check-input" name="region" :value="region.region_id" />
+                                        <input v-model="selectedRegion" type="radio" clasls="form-check-input" name="region" :value="region.region_id" />
                                         <label class="font-weight-normal w-100" for="region-2">
                                             <div class="row mb-2">
-                                                <div class="col-md-8"><div class="text-sm text-bold">{{ region.region_name }}</div></div>
+                                                <div class="col-md-8">
+                                                    <div class="text-sm text-bold">{{ region.region_name }}</div>
+                                                </div>
                                                 <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
                                             </div>
                                         </label>
@@ -323,60 +354,22 @@ onMounted(async () => {
                             <td colspan="3" style="text-align: left">
                                 <span>
                                     <div class="order_summary w-100 d-block" style="border-bottom: 1px solid #ccc">
-                                        <div class="label-row">
-                                            <div class="text">NYC Region</div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">ProLiant DL360 Gen9<span class="badge">Motherboard</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">1Gbps Unmetered<span class="badge">Bandwidth</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">2 x Xeon E5-2680v4 4LFF<span class="badge">CPU</span></div>
-                                            <div class="price">$169.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">2TB SATA<span class="badge">HD</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">1TB SSD<span class="badge">HD</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">1 Vlan Ip (/30)<span class="badge">IPs</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row">
-                                            <div class="text">128GB<span class="badge">Memory</span></div>
-                                            <div class="price">$0.00</div>
+                                        <template v-for="(rows, cat, index) in serverAsset" :key="index">
+                                            <div v-for="(row, idx) in rows" :key="idx" class="label-row">
+                                                <div class="text">
+                                                    {{ row }}<span class="badge">{{ cat }}</span>
+                                                </div>
+                                                <div class="price">$0.00</div>
+                                            </div>
+                                        </template>
+                                        <div v-for="item in orderSummary" :key="item?.key" class="label-row js-added-row">
+                                            <div class="text">
+                                                {{ item?.short_desc }}<span class="badge">{{ item?.label }}</span>
+                                            </div>
+                                            <div class="price">${{ item?.price.toFixed(2) }}</div>
                                         </div>
                                         <div class="label-row js-added-row">
-                                            <div class="text">1 Vlan Ip (/30)<span class="badge">ips</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row js-added-row">
-                                            <div class="text">1GBPS Unmetered<span class="badge">bandwidth</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row js-added-row">
-                                            <div class="text">No OS (IPMI Install)<span class="badge">os</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row js-added-row">
-                                            <div class="text">None<span class="badge">cp</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row js-added-row">
-                                            <div class="text">No Raid<span class="badge">raid</span></div>
-                                            <div class="price">$0.00</div>
-                                        </div>
-                                        <div class="label-row js-added-row">
-                                            <div class="text">NYC Region<span class="badge">region</span></div>
+                                            <div class="text">{{ regionName }}<span class="badge">region</span></div>
                                             <div class="price">$0.00</div>
                                         </div>
                                     </div>
@@ -388,7 +381,9 @@ onMounted(async () => {
                                 <span><div class="w-100 d-block pb-2 font-weight-bold">Monthly Total</div></span>
                             </td>
                             <td colspan="1" style="text-align: right">
-                                <span><div id="total_price" class="w-100 d-block pb-2 font-weight-bold">$169.00</div></span>
+                                <span>
+                                    <div id="total_price" class="w-100 d-block pb-2 font-weight-bold">${{ optionsTotal.toFixed(2) }}</div>
+                                </span>
                             </td>
                         </tr>
                     </tbody>
