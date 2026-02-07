@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { useRouter, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
@@ -28,6 +28,7 @@ const sliceData = ref<SlicesResponse>({
     vps_slices: 1,
 });
 const siteStore = useSiteStore();
+const router = useRouter();
 const confirm = ref(false);
 const baseUrl = siteStore.getBaseUrl();
 const slices = ref(0);
@@ -76,8 +77,11 @@ function submitForm() {
             console.log(response);
             Swal.fire({
                 icon: 'success',
-                html: response.message,
+                html: response.text,
             });
+            if (typeof response.invoice != 'undefined') {
+                router.push(`/cart/${response.invoice}`);
+            }
         })
         .catch((error: any) => {
             console.log('api failed');
@@ -159,7 +163,9 @@ loadData();
                                 <div class="col-md-9">
                                     <input id="slices" v-model="slices" type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" />
                                     <span class="text-sm text-muted">Up to 32 Slices can be attached to a VPS.</span>
-                                    <span class="text-sm text-muted float-right text-bold"><span id="cur_slice">{{ slices }}</span>/{{ sliceData.max_slices }} Slices</span>
+                                    <span class="text-sm text-muted float-right text-bold">
+                                        <span id="cur_slice">{{ slices }}</span>/{{ sliceData.max_slices }} Slices
+                                    </span>
                                 </div>
                             </div>
                         </div>
