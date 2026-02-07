@@ -84,12 +84,32 @@ const buildQuery = () => ({
     page: page.value,
 });
 
+function buildQueryString(): string {
+    const params = new URLSearchParams();
+
+    params.set('page', page.value.toString());
+    params.set('limit', limit.value.toString());
+
+    if (filters.value.to) params.set('to', filters.value.to);
+    if (filters.value.from) params.set('from', filters.value.from);
+    if (filters.value.subject) params.set('subject', filters.value.subject);
+    if (filters.value.origin) params.set('origin', filters.value.origin);
+    if (filters.value.delivered !== '') params.set('delivered', filters.value.delivered);
+
+    if (filters.value.startDate) params.set('startDate', filters.value.startDate);
+    if (filters.value.endDate) params.set('endDate', filters.value.endDate);
+
+    return params.toString();
+}
+
 /* ---------------- API ---------------- */
 
 const loadLog = async () => {
     loading.value = true;
 
-    const response = await fetchWrapper.get<MailLogResponse>(`${baseUrl}/${moduleLink(module)}/${props.id}/log`, { params: buildQuery() });
+    const query = buildQueryString();
+
+    const response = await fetchWrapper.get<MailLogResponse>(`${baseUrl}/${moduleLink(module)}/${props.id}/log?${query}`);
 
     total.value = response.total;
     limit.value = response.limit;
