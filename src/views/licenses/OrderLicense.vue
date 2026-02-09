@@ -29,39 +29,36 @@ const coupon = ref('');
 const tos = ref(false);
 const comment = ref('');
 const frequency = ref(1);
-function updateBreadcrums() {
-    if (catTag.value == '') {
-        step.value = 'license_types';
-    } else {
-        step.value = 'order_form';
-    }
-    if (step.value == 'license_types') {
-        siteStore.setBreadcrums([
-            ['/home', 'Home'],
-            [`/${moduleLink(module)}`, 'Licenses List'],
-            [`/${moduleLink(module)}/order`, 'Select License Type'],
-        ]);
-    } else {
-        if (!Object.keys(getServiceTypes.value).includes(packageId.value as string)) {
-            packageId.value = Object.keys(getServiceTypes.value)[0];
+const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
+const packageCosts = ref({});
+const serviceTypes = ref<ServiceTypes>({});
+const serviceCategories = ref<ServiceCategories>({});
+const packageId = ref<number | string>(0);
+const validateResponse = ref({});
+const currency = ref('USD');
+const licenseFields = computed(() => getLicenseFields(catTag.value, currency.value, getServiceTypes.value));
+const getCatId = computed(() => {
+    for (const catId in serviceCategories.value) {
+        if (serviceCategories.value[catId].category_tag == catTag.value) {
+            return catId;
         }
-        siteStore.setBreadcrums([
-            ['/home', 'Home'],
-            [`/${moduleLink(module)}`, 'Licenses List'],
-            [`/${moduleLink(module)}/order`, 'Select License Type'],
-            [`/licenses/order/${catTag.value}`, 'Order License'],
-        ]);
     }
-}
-interface GetLicensesRow {
-    name: string;
-    description: string;
-    image: string;
-    order: number;
-}
-interface GetLicenses {
-    [key: string]: GetLicensesRow;
-}
+    return 0;
+});
+const getServiceTypes = computed(() => {
+    const catId = getCatId.value;
+    console.log(catId);
+    let types: ServiceTypes = {};
+    for (const serviceId in serviceTypes.value) {
+        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1') {
+            types[serviceId] = serviceTypes.value[serviceId];
+            if (catTag.value == 'litespeed') {
+                types[serviceId].services_name = types[serviceId].services_name.replace(/LiteSpeed /i, '');
+            }
+        }
+    }
+    return types;
+});
 const getLicenses = ref<GetLicenses>({
     directadmin: {
         name: 'DirectAdmin',
@@ -100,9 +97,18 @@ const getLicenses = ref<GetLicenses>({
         order: 6,
     },
 });
-const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
-const packageCosts = ref({});
-const serviceTypes = ref<ServiceTypes>({});
+
+type LicenseFieldMap = Record<string, LicenseField>;
+
+interface GetLicensesRow {
+    name: string;
+    description: string;
+    image: string;
+    order: number;
+}
+interface GetLicenses {
+    [key: string]: GetLicensesRow;
+}
 
 interface ServiceCategory {
     category_id: number;
@@ -114,31 +120,6 @@ interface ServiceCategory {
 interface ServiceCategories {
     [key: string]: ServiceCategory;
 }
-
-const serviceCategories = ref<ServiceCategories>({});
-const packageId = ref<number | string>(0);
-const validateResponse = ref({});
-const getCatId = computed(() => {
-    for (const catId in serviceCategories.value) {
-        if (serviceCategories.value[catId].category_tag == catTag.value) {
-            return catId;
-        }
-    }
-    return 0;
-});
-const getServiceTypes = computed(() => {
-    const catId = getCatId.value;
-    console.log(catId);
-    let types: ServiceTypes = {};
-    for (const serviceId in serviceTypes.value) {
-        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId))) {
-            types[serviceId] = serviceTypes.value[serviceId];
-        }
-    }
-    return types;
-});
-const currency = ref('USD');
-const licenseFields = computed(() => getLicenseFields(catTag.value, currency.value, getServiceTypes.value));
 
 interface Service {
     services_id: number;
@@ -154,7 +135,30 @@ interface LicenseField {
     services_details?: string;
 }
 
-type LicenseFieldMap = Record<string, LicenseField>;
+function updateBreadcrums() {
+    if (catTag.value == '') {
+        step.value = 'license_types';
+    } else {
+        step.value = 'order_form';
+    }
+    if (step.value == 'license_types') {
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
+        ]);
+    } else {
+        if (!Object.keys(getServiceTypes.value).includes(packageId.value as string)) {
+            packageId.value = Object.keys(getServiceTypes.value)[0];
+        }
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
+            [`/licenses/order/${catTag.value}`, 'Order License'],
+        ]);
+    }
+}
 
 function normalizeCost(cost: number, currency: string): number {
     return cost;
@@ -169,7 +173,7 @@ function getLicenseFields(tag: string, currency: string, services: Record<number
             const allowed = [11482, 11475, 11468];
             for (const id of allowed) {
                 const svc = services[id];
-                console.log(`loading id ${id} geting service`, svc);
+                console.log(`loading id ${id} getting service`, svc);
                 if (!svc) continue;
                 const name = svc.services_name.includes('DirectAdmin for') ? svc.services_name.replace(/DirectAdmin for /i, '') : svc.services_name.replace(/DirectAdmin /i, '');
                 data[id] = {
@@ -347,8 +351,7 @@ watch(
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
-                        <h3 class="card-title"></h3>
+                        <img class="card-title card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <div class="card-tools float-right">
                             <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
@@ -405,7 +408,7 @@ watch(
                                     <input v-model="ip" type="text" name="ip" class="form-control form-control-sm" placeholder="IP Address" required @change="updatePrice()" />
                                 </div>
                             </div>
-                            <div v-if="getLicenses[catTag].name !== 'cPanel'" id="coupon_row" class="form-group row">
+                            <div v-if="getLicenses[catTag]?.name !== 'cPanel'" id="coupon_row" class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon()" />
@@ -437,12 +440,12 @@ watch(
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-6 package_name"></div>
+                            <div class="col-md-6 package_name">{{ serviceTypes[Number(packageId)]?.services_name }}</div>
                             <div class="col text-bold text-right">1 Month</div>
                         </div>
                         <div class="row mb-3">
                             <div id="hostname_display" class="col-md-6">Package Cost</div>
-                            <div class="col package_cost text-bold text-right"></div>
+                            <div class="col package_cost text-bold text-right">{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                         <div id="couponpricerownew" class="row coupon-display mb-3">
                             <div id="couponpricetext" class="col-md-6"></div>
@@ -451,7 +454,7 @@ watch(
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalprice" class="col text-bold total_cost text-right text-lg"></div>
+                            <div id="totalprice" class="col text-bold total_cost text-right text-lg">{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                     </div>
                 </div>
@@ -463,7 +466,7 @@ watch(
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-12 pkg_det">{{ serviceTypes[Number(packageId)].services_details }}</div>
+                            <div class="col-md-12 pkg_det">{{ serviceTypes[Number(packageId)]?.services_field2 }}</div>
                         </div>
                     </div>
                 </div>
