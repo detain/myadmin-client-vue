@@ -15,8 +15,6 @@ import imageLitespeed from '../../assets/images/litespeed.png';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order License');
-siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
 const catTag = computed(() => (route.params.catTag as string) || '');
@@ -34,9 +32,10 @@ const packageCosts = ref({});
 const serviceTypes = ref<ServiceTypes>({});
 const serviceCategories = ref<ServiceCategories>({});
 const packageId = ref<number | string>(0);
-const validateResponse = ref({});
 const currency = ref('USD');
-const licenseFields = computed(() => getLicenseFields(catTag.value, currency.value, getServiceTypes.value));
+const currencySymbol = ref('$');
+siteStore.setPageHeading('Order License');
+siteStore.setTitle('Order License');
 const getCatId = computed(() => {
     for (const catId in serviceCategories.value) {
         if (serviceCategories.value[catId].category_tag == catTag.value) {
@@ -50,7 +49,7 @@ const getServiceTypes = computed(() => {
     console.log(catId);
     let types: ServiceTypes = {};
     for (const serviceId in serviceTypes.value) {
-        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1' && serviceTypes.value[serviceId].services_hidden == '0') {
+        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1' && String(serviceTypes.value[serviceId].services_hidden) == '0') {
             types[serviceId] = serviceTypes.value[serviceId];
         }
     }
@@ -162,91 +161,6 @@ function normalizeCost(cost: number, currency: string): number {
     //return currency === 'USD' ? cost : convertCurrency(cost, currency).getAmount().toFloat();
 }
 
-function getLicenseFields(tag: string, currency: string, services: Record<number, Service>): LicenseFieldMap | false {
-    const data: LicenseFieldMap = {};
-    const serviceId = (id: number) => services[id];
-    switch (tag) {
-        case 'directadmin': {
-            const allowed = [11482, 11475, 11468];
-            for (const id of allowed) {
-                const svc = services[id];
-                console.log(`loading id ${id} getting service`, svc);
-                if (!svc) continue;
-                const name = svc.services_name.includes('DirectAdmin for') ? svc.services_name.replace(/DirectAdmin for /i, '') : svc.services_name.replace(/DirectAdmin /i, '');
-                data[id] = {
-                    services_name: name,
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                    services_details: svc.services_field2,
-                };
-            }
-            console.log(data);
-            console.log(Object.keys(services));
-            break;
-        }
-        case 'litespeed': {
-            const allowed = [10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994];
-            for (const id of allowed) {
-                const svc = serviceId(id);
-                if (!svc) continue;
-                data[id] = {
-                    services_name: svc.services_name.replace(/LiteSpeed /i, ''),
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                    services_details: svc.services_field2,
-                };
-            }
-            break;
-        }
-        case 'cloudlinux': {
-            for (const svc of Object.values(services)) {
-                data[svc.services_id] = {
-                    services_name: svc.services_name.replace(/LiteSpeed /i, ''),
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                };
-            }
-            break;
-        }
-        case 'parallels': {
-            const allowed = [5054, 5058, 5060, 5053, 5057, 5059];
-            for (const id of allowed) {
-                const svc = serviceId(id);
-                if (!svc) continue;
-                data[id] = {
-                    services_name: svc.services_name.replace(/Plesk v12 /i, ''),
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                };
-            }
-            break;
-        }
-        case 'cpanel': {
-            const allowed = [10682, 10769];
-            for (const id of allowed) {
-                const svc = serviceId(id);
-                if (!svc) continue;
-                data[id] = {
-                    services_name: id === 10682 ? `${svc.services_name} Server` : `${svc.services_name.replace(/Cloud /i, '')} VPS`,
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                };
-            }
-            break;
-        }
-        case 'softaculous': {
-            const allowed = [5006, 5007];
-            for (const id of allowed) {
-                const svc = serviceId(id);
-                if (!svc) continue;
-                data[id] = {
-                    services_name: id === 5006 ? `${svc.services_name} Server (External)` : `${svc.services_name} (External)`,
-                    services_cost: normalizeCost(svc.services_cost, currency),
-                };
-            }
-            break;
-        }
-        default:
-            return false;
-    }
-    return Object.keys(data).length ? data : false;
-}
-
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
         lastCoupon.value = coupon.value;
@@ -331,6 +245,7 @@ function loadLicenseData() {
             packageCosts.value = response.packageCosts;
             serviceTypes.value = response.serviceTypes;
             serviceCategories.value = response.serviceCategories;
+            currencySymbol.value = response.currencySymbol;
             for (const serviceId in serviceTypes.value) {
                 if (serviceCategories.value[serviceTypes.value[serviceId].services_category]) {
                     if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'litespeed') {
@@ -346,6 +261,7 @@ function loadLicenseData() {
                     }
                 }
             }
+            updateBreadcrums();
         })
         .catch((error: any) => {
             console.error('Got Error: ', error);
@@ -461,7 +377,7 @@ loadLicenseData();
                         </div>
                         <div class="row mb-3">
                             <div id="hostname_display" class="col-md-6">Package Cost</div>
-                            <div class="col package_cost text-bold text-right">{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
+                            <div class="col package_cost text-bold text-right">{{ currencySymbol }}{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                         <div id="couponpricerownew" class="row coupon-display mb-3">
                             <div id="couponpricetext" class="col-md-6"></div>
@@ -470,11 +386,11 @@ loadLicenseData();
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalprice" class="col text-bold total_cost text-right text-lg">{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
+                            <div id="totalprice" class="col text-bold total_cost text-right text-lg">{{ currencySymbol }}{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                     </div>
                 </div>
-                <div v-if="catTag === 'litespeed'" class="card">
+                <div v-if="catTag == 'litespeed' || catTag == 'directadmin'" class="card">
                     <div class="p-1">
                         <div class="card-header py-2">
                             <h3 class="card-title"><i class="fa fa-suitcase">&nbsp;</i>Package Details</h3>
@@ -482,7 +398,7 @@ loadLicenseData();
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-12 pkg_det">{{ serviceTypes[Number(packageId)]?.services_field2 }}</div>
+                            <div class="col-md-12 pkg_det" v-html="serviceTypes[Number(packageId)]?.services_field2"></div>
                         </div>
                     </div>
                 </div>

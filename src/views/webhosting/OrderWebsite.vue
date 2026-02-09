@@ -270,6 +270,7 @@ function loadOrderData() {
         Swal.close();
         console.log('Response:');
         console.log(response);
+        currencySymbol.value = response.currencySymbol;
         step.value = response.step;
         web.value = response.website;
         formData.packageId = response.website == '' ? 11363 : response.website;
