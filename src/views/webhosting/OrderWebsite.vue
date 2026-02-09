@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { ref, watch, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
 import { useRoute, useRouter } from 'vue-router';
 import type { CouponInfo } from '../../types/vps_order.ts';
+import iconShield from '../../assets/images/myadmin/warning-shield.png';
+import iconCheckmark from '../../assets/images/myadmin/checkmark.png';
 const module = 'webhosting';
 const route = useRoute();
 const router = useRouter();
@@ -24,6 +26,7 @@ const packageId = ref(11363);
 const period = ref(1);
 const serviceOfferId = ref(0);
 const enableDomainRegistering = ref({});
+const registerDomain = ref(false);
 const web = ref('');
 const currency = ref('USD');
 const currencySymbol = ref('$');
@@ -60,6 +63,7 @@ const formData = reactive({
     //    packges: packges,
     //    packages: packages,
 });
+
 const selectedOffer = computed(() => {
     if (serviceOffers.value[packageId.value]) {
         return serviceOffers.value[packageId.value].find((offer) => offer.service_offer_id === period.value);
@@ -73,16 +77,20 @@ const basePrice = computed(() => {
 
 const totalCost = computed(() => {
     let total = basePrice.value;
-    // billing discounts
-    if (period.value === 12) total *= 0.9;
-    if (period.value === 24) total *= 0.85;
-    if (period.value === 36) total *= 0.8;
+    if (selectedOffer.value) {
+        total = Number(selectedOffer.value.intro_cost);
+    } else {
+        // billing discounts
+        if (period.value === 12) total *= 0.9;
+        if (period.value === 24) total *= 0.85;
+        if (period.value === 36) total *= 0.8;
+    }
     // coupon (flat only — matches current backend behavior)
     if (couponInfo.value?.applies && couponInfo.value.amounts?.USD) {
         total -= Number(couponInfo.value.amounts.USD);
     }
     // domain
-    if (domainCost.value > 0) {
+    if (registerDomain.value === true && domainCost.value > 0) {
         total += domainCost.value;
     }
     return total.toFixed(2);
@@ -260,17 +268,13 @@ async function searchDomain() {
         return;
     }
     fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response: SearchDomainResponse) => {
-        searchResults.value = response;
-        domainStatusVisible.value = true;
         if (response.available) {
             domainCost.value = Number(response.service.services_cost);
-            domainStatusText.value = '✔ Domain is available';
-            domainDescription.value = `Register for ${currencySymbol.value}${domainCost.value}`;
         } else {
             domainCost.value = 0;
-            domainStatusText.value = '✖ Domain is not available';
-            domainDescription.value = 'You must use an existing domain';
         }
+        searchResults.value = response;
+        domainStatusVisible.value = true;
     });
 }
 
@@ -304,6 +308,19 @@ function loadOrderData() {
 }
 
 loadOrderData();
+
+watch(
+    [packageId, serviceOffers],
+    ([newPackageId, newServiceOffers]) => {
+        const offers = newServiceOffers[newPackageId];
+        if (Array.isArray(offers) && offers.length > 0) {
+            period.value = offers[0].service_offer_id;
+        } else {
+            period.value = 1;
+        }
+    },
+    { immediate: true }
+);
 </script>
 
 <template>
@@ -492,7 +509,7 @@ loadOrderData();
                                 <template v-if="selectedOffer">
                                     <div class="col package_cost text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s)</div>
                                 </template>
-                                <template v-else>
+                                <template v-else-if="serviceTypes[packageId]">
                                     <div class="col package_cost text-right">{{ currencySymbol }}{{ serviceTypes[packageId].services_cost }} / {{ period }} month(s)</div>
                                 </template>
                             </div>
@@ -523,11 +540,22 @@ loadOrderData();
                             </div>
                             <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
                                 <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
-                                <div class="col-md-12">
-                                    <small class="form-text text-warning mb-0 text-sm">{{ domainStatusText }}</small>
-                                </div>
-                                <label class="col-md-12 col-form-label">{{ domainDescription }}</label>
-                                <span class="form-text"></span>
+                                <template v-if="!searchResults?.available">
+                                    <div class="col-md-12">
+                                        <small class="form-text text-warning mb-0 text-sm">
+                                            <img :src="iconCheckmark" border="0" style="width: 20px; height: 20px" /> <b>Domain is available</b><br />
+                                            Register for {{ currencySymbol }}{{ domainCost }}
+                                        </small>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <div class="col-md-12">
+                                        <small class="form-text text-warning mb-0 text-sm">
+                                            <img :src="iconShield" border="0" style="width: 20px; height: 20px" /> <b>Already Registered!</b><br />
+                                            Proceed only if you already own the domain.
+                                        </small>
+                                    </div>
+                                </template>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
