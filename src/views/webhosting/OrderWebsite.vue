@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import { useRoute, useRouter } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import type { CouponInfo } from '../../types/vps_order.ts';
 import iconShield from '../../assets/images/myadmin/warning-shield.png';
 import iconCheckmark from '../../assets/images/myadmin/checkmark.png';
@@ -22,56 +22,41 @@ siteStore.setBreadcrums([
 const baseUrl = siteStore.getBaseUrl();
 const searchResults = ref<SearchDomainResponse | null>(null);
 const step = ref('order_form');
-const packageId = ref(11363);
 const period = ref(1);
 const serviceOfferId = ref(0);
 const enableDomainRegistering = ref({});
 const registerDomain = ref(false);
-const web = ref('');
 const currency = ref('USD');
 const currencySymbol = ref('$');
-const hostname = ref('');
-const rootpass = ref('');
+const tos = ref(false);
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
-const coupon = ref('');
+const web = ref('');
 const serviceTypes = ref<Packages>({});
 const serviceOffers = ref<ServiceOffers>({});
 const packages = ref<Packages>({});
 const jsonServices = ref<JsonServices>({});
 const jsonServiceOffers = ref<ServiceOffers>({});
 const domainStatusVisible = ref(false);
-const domainStatusText = ref('');
-const domainDescription = ref('');
 const domainCost = ref(0);
 const formData = reactive({
-    step: step,
-    packageId: packageId,
-    period: period,
+    packageId: 11363,
+    period: 1,
     enableDomainRegistering: enableDomainRegistering,
-    web: web,
-    currency: currency,
-    currencySymbol: currencySymbol,
-    hostname: hostname,
-    rootpass: rootpass,
-    coupon: coupon,
-    serviceOfferId: serviceOfferId,
-    'serviceOffers[packageId]': serviceOffers.value[packageId.value] ? serviceOffers.value[packageId.value] : {},
-    'serviceTypes[packageId]': serviceTypes.value[packageId.value] ? serviceTypes.value[packageId.value] : {},
-    //    jsonServices: jsonServices,
-    //    jsonServiceOffers: jsonServiceOffers,
-    //    packges: packges,
-    //    packages: packages,
+    hostname: '',
+    rootpass: '',
+    coupon: '',
+    serviceOfferId: 0,
 });
 
 const selectedOffer = computed(() => {
-    if (serviceOffers.value[packageId.value]) {
-        return serviceOffers.value[packageId.value].find((offer) => offer.service_offer_id === period.value);
+    if (serviceOffers.value[formData.packageId]) {
+        return serviceOffers.value[formData.packageId].find((offer) => offer.service_offer_id === period.value);
     }
     return null;
 });
 const basePrice = computed(() => {
-    const svc = serviceTypes.value[packageId.value];
+    const svc = serviceTypes.value[formData.packageId];
     return svc ? Number(svc.services_cost) : 0;
 });
 
@@ -137,17 +122,12 @@ interface SearchDomainResponse {
     premium: boolean;
     website: boolean;
     domain_service: boolean;
-
     service: SearchService;
-
     whois_privacy: boolean;
-
     new: string;
     renewal: string;
     transfer: string;
-
     fields: Record<string, SearchFieldDefinition>;
-
     currencies: Record<string, SearchCurrencyPricing>;
 }
 
@@ -180,11 +160,15 @@ interface SearchCurrencyPricing {
     transfer: number;
 }
 
+function goBack() {
+    step.value = 'order_form';
+}
+
 function updateCoupon() {
-    if (lastCoupon.value != coupon.value) {
-        lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
-        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
+    if (lastCoupon.value != formData.coupon) {
+        lastCoupon.value = formData.coupon;
+        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${formData.coupon}`;
+        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(formData.coupon)}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error ${response.status}`);
@@ -215,15 +199,14 @@ async function onSubmit() {
             allowOutsideClick: false,
             showConfirmButton: false,
         });
-        fetchWrapper
-            .put(`${baseUrl}/websites/order`, {
-                web: packageId.value,
-                packageId: packageId.value,
-                hostname: hostname.value,
-                rootpass: rootpass.value,
-                period: period.value,
-                coupon: coupon.value,
-            })
+        if (selectedOffer.value) {
+            formData.period = selectedOffer.value.intro_frequency;
+            formData.serviceOfferId = selectedOffer.value.service_offer_id;
+        } else {
+            formData.period = period.value;
+            formData.serviceOfferId = 0;
+        }
+        fetchWrapper.put(`${baseUrl}/websites/order`, formData)
             .then((response) => {
                 Swal.close();
                 step.value = 'order_confirm';
@@ -238,21 +221,19 @@ async function onSubmit() {
 
 async function onSubmitConfirmation() {
     try {
-        fetchWrapper
-            .post(`${baseUrl}/websites/order`, {
-                web: packageId.value,
-                packageId: packageId.value,
-                hostname: hostname.value,
-                rootpass: rootpass.value,
-                period: period.value,
-                coupon: coupon.value,
-                serviceType: packageId.value,
-            })
+        if (selectedOffer.value) {
+            formData.period = selectedOffer.value.intro_frequency;
+            formData.serviceOfferId = selectedOffer.value.service_offer_id;
+        } else {
+            formData.period = period.value;
+            formData.serviceOfferId = 0;
+        }
+        fetchWrapper.post(`${baseUrl}/websites/order`, formData)
             .then((response) => {
                 console.log('website order validated');
                 console.log(response);
                 if (response['success'] == true) {
-                    router.push(`/cart/${response.iids.join(',')}`);
+                    router.push(`/cart/${response.real_iids.join(',')}`);
                 }
             });
     } catch (error: any) {
@@ -262,12 +243,12 @@ async function onSubmitConfirmation() {
 }
 
 async function searchDomain() {
-    console.log(`searching for ${hostname.value}`);
-    if (hostname.value.trim().length < 3 || hostname.value.trim().indexOf('.') == -1) {
+    console.log(`searching for ${formData.hostname}`);
+    if (formData.hostname.trim().length < 3 || formData.hostname.trim().indexOf('.') == -1) {
         searchResults.value = null;
         return;
     }
-    fetchWrapper.get(`${baseUrl}/domains/lookup/${hostname.value}`).then((response: SearchDomainResponse) => {
+    fetchWrapper.get(`${baseUrl}/domains/lookup/${formData.hostname}`).then((response: SearchDomainResponse) => {
         if (response.available) {
             domainCost.value = Number(response.service.services_cost);
         } else {
@@ -290,17 +271,13 @@ function loadOrderData() {
         console.log('Response:');
         console.log(response);
         step.value = response.step;
-        if (response.website == '') {
-            packageId.value = 11363;
-        } else {
-            packageId.value = response.website;
-        }
-        period.value = response.period;
-        serviceOfferId.value = response.serviceOfferId;
+        web.value = response.website;
+        formData.packageId = response.website == '' ? 11363 : response.website;
+        formData.period = response.period;
+        formData.serviceOfferId = response.serviceOfferId;
         serviceTypes.value = response.serviceTypes;
         serviceOffers.value = response.serviceOffers;
         packages.value = response.packges;
-        //packages.value = response.packages;
         enableDomainRegistering.value = response.enableDomainRegistering;
         jsonServices.value = response.jsonServices;
         jsonServiceOffers.value = response.jsonServiceOffers;
@@ -310,7 +287,7 @@ function loadOrderData() {
 loadOrderData();
 
 watch(
-    [packageId, serviceOffers],
+    [() => formData.packageId, serviceOffers],
     ([newPackageId, newServiceOffers]) => {
         const offers = newServiceOffers[newPackageId];
         if (Array.isArray(offers) && offers.length > 0) {
@@ -351,7 +328,7 @@ watch(
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
                                                                     <div class="icheck-success">
-                                                                        <input :id="serviceData.services_name" v-model="packageId" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" />
+                                                                        <input :id="serviceData.services_name" v-model="formData.packageId" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" />
                                                                         <label :for="serviceData.services_name">
                                                                             {{ serviceData.services_name }}<br />
                                                                             <div class="text-muted font-italic mt-1 text-sm">
@@ -404,7 +381,7 @@ watch(
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
                                                                 <div class="icheck-success">
-                                                                    <input :id="serviceData.services_name" v-model="packageId" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" />
+                                                                    <input :id="serviceData.services_name" v-model="formData.packageId" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" />
                                                                     <label :for="serviceData.services_name">
                                                                         {{ serviceData.services_name }}<br />
                                                                         <div class="text-muted font-italic mt-1 text-sm">
@@ -440,14 +417,14 @@ watch(
                             </div>
                             <template v-else>
                                 <template v-for="(serviceData, servicesId) in packages">
-                                    <div v-if="serviceData.services_id == packageId" :key="servicesId" class="form-group row">
+                                    <div v-if="serviceData.services_id == formData.packageId" :key="servicesId" class="form-group row">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
                                                         <div class="icheck-success">
-                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="packageId == serviceData.services_id" />
+                                                            <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="formData.packageId == serviceData.services_id" />
                                                             <label :for="serviceData.services_name">
                                                                 {{ serviceData.services_name }}<br />
                                                                 <div class="text-muted font-italic mt-1 text-sm">
@@ -495,7 +472,7 @@ watch(
                         <div class="card-body text-md">
                             <div class="row mb-3">
                                 <div class="col-md-4 package_name">
-                                    <template v-if="serviceTypes[packageId]">{{ serviceTypes[packageId].services_name }}</template>
+                                    <template v-if="serviceTypes[formData.packageId]">{{ serviceTypes[formData.packageId].services_name }}</template>
                                 </div>
                                 <template v-if="selectedOffer">
                                     <div class="col-md-8 period text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} for {{ selectedOffer.intro_frequency }} month(s). Renews at {{ currencySymbol }}{{ selectedOffer.renewal_cost }} for {{ selectedOffer.renewal_frequency }} month(s)</div>
@@ -505,12 +482,12 @@ watch(
                                 </template>
                             </div>
                             <div class="row mb-3">
-                                <div id="hostname_display" class="col-md-6">{{ hostname }}</div>
+                                <div id="hostname_display" class="col-md-6">{{ formData.hostname }}</div>
                                 <template v-if="selectedOffer">
                                     <div class="col package_cost text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s)</div>
                                 </template>
-                                <template v-else-if="serviceTypes[packageId]">
-                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ serviceTypes[packageId].services_cost }} / {{ period }} month(s)</div>
+                                <template v-else-if="serviceTypes[formData.packageId]">
+                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ serviceTypes[formData.packageId].services_cost }} / {{ period }} month(s)</div>
                                 </template>
                             </div>
                             <div id="couponpricerownew" class="row coupon-display d-none mb-3">
@@ -534,13 +511,13 @@ watch(
                             <div class="form-group row">
                                 <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
                                 <div class="col-md-12">
-                                    <input id="hostname" v-model="hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" required @keyup="searchDomain" @change="searchDomain" />
+                                    <input id="hostname" v-model="formData.hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" required @keyup="searchDomain" @change="searchDomain" />
                                     <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                 </div>
                             </div>
                             <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
                                 <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
-                                <template v-if="!searchResults?.available">
+                                <template v-if="searchResults?.available === true">
                                     <div class="col-md-12">
                                         <small class="form-text text-warning mb-0 text-sm">
                                             <img :src="iconCheckmark" border="0" style="width: 20px; height: 20px" /> <b>Domain is available</b><br />
@@ -548,7 +525,7 @@ watch(
                                         </small>
                                     </div>
                                 </template>
-                                <template v-else>
+                                <template v-else-if="searchResults?.available === false">
                                     <div class="col-md-12">
                                         <small class="form-text text-warning mb-0 text-sm">
                                             <img :src="iconShield" border="0" style="width: 20px; height: 20px" /> <b>Already Registered!</b><br />
@@ -561,8 +538,8 @@ watch(
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
                                     <select id="period" v-model="period" name="period" class="form-control form-control-sm select2">
-                                        <template v-if="serviceOffers[packageId]">
-                                            <option v-for="offer in serviceOffers[packageId]" :key="offer.service_offer_id" :value="offer.service_offer_id">{{ currencySymbol }}{{ offer.intro_cost }} for {{ offer.intro_frequency }} Month(s). Renews at {{ currencySymbol }}{{ offer.renewal_cost }} for {{ offer.renewal_frequency }} Month(s)</option>
+                                        <template v-if="serviceOffers[formData.packageId]">
+                                            <option v-for="offer in serviceOffers[formData.packageId]" :key="offer.service_offer_id" :value="offer.service_offer_id">{{ currencySymbol }}{{ offer.intro_cost }} for {{ offer.intro_frequency }} Month(s). Renews at {{ currencySymbol }}{{ offer.renewal_cost }} for {{ offer.renewal_frequency }} Month(s)</option>
                                         </template>
                                         <template v-else>
                                             <option value="1">Monthly</option>
@@ -577,7 +554,7 @@ watch(
                             </div>
                             <div id="coupon_row" class="form-group row">
                                 <label class="col-md-12">Coupon Code</label>
-                                <div class="col-md-12"><input id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
+                                <div class="col-md-12"><input id="coupon" v-model="formData.coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12">
                                     <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" />
@@ -585,7 +562,7 @@ watch(
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="controls col-md-12" style="text-align: center"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order px-3 py-2" /></div>
+                                <div class="controls col-md-12" style="text-align: center"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order px-3 py-2" :disabled="formData.hostname == ''" /></div>
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: left">
@@ -614,12 +591,17 @@ watch(
                                     <tr>
                                         <th>
                                             <button type="button" style="" name="update_values" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
-                                                <div style="display: inline" class="text-md float-left">{{ hostname }}</div>
+                                                <div style="display: inline" class="text-md float-left">{{ formData.hostname }}</div>
                                                 <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fa fa-pencil float-right"></i>
                                             </button>
                                         </th>
                                         <th>
-                                            <div class="text-md">{{ period }} Month(s)</div>
+                                            <template v-if="selectedOffer">
+                                                <div class="text-md">{{ selectedOffer.intro_frequency }} month(s).</div>
+                                            </template>
+                                            <template v-else>
+                                                <div class="text-md">{{ period }} Month(s)</div>
+                                            </template>
                                         </th>
                                     </tr>
                                 </thead>
@@ -629,6 +611,25 @@ watch(
                                             <div class="col-md-8 text-md">Availiability:</div>
                                         </td>
                                         <td>
+                                            <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
+                                                <template v-if="searchResults?.available === true">
+                                                    <div class="col-md-12">
+                                                        <small class="form-text text-warning mb-0 text-sm">
+                                                            <img :src="iconCheckmark" border="0" style="width: 20px; height: 20px" /> <b>Domain is available</b><br />
+                                                            Register for {{ currencySymbol }}{{ domainCost }}
+                                                        </small>
+                                                    </div>
+                                                </template>
+                                                <template v-else-if="searchResults?.available === false">
+                                                    <div class="col-md-12">
+                                                        <small class="form-text text-warning mb-0 text-sm">
+                                                            <img :src="iconShield" border="0" style="width: 20px; height: 20px" /> <b>Already Registered!</b><br />
+                                                            Proceed only if you already own the domain.
+                                                        </small>
+                                                    </div>
+                                                </template>
+                                            </div>
+
                                             <span id="registerconfrow" class="d-none d-status text-md">
                                                 <div id="registerconfdesc"></div>
                                             </span>
@@ -636,19 +637,25 @@ watch(
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="col-md-8 text-md">{{ serviceTypes[packageId].services_name }}</div>
+                                            <div class="col-md-8 text-md">{{ serviceTypes[formData.packageId].services_name }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-md package_cost"></div>
+                                            <template v-if="selectedOffer">
+                                                <div class="text-md">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s).</div>
+                                            </template>
+                                            <template v-else>
+                                                <div class="text-md package_cost"></div>
+                                                <div class="text-md">{{ currencySymbol }}{{ serviceTypes[formData.packageId].services_cost }} / {{ period }} Month(s)</div>
+                                            </template>
                                         </td>
                                     </tr>
-                                    <template v-if="coupon && coupon !== ''">
+                                    <template v-if="formData.coupon && formData.coupon !== ''">
                                         <tr>
                                             <td>
                                                 <div class="text-md">Coupon Used</div>
                                             </td>
                                             <td>
-                                                <div class="text-md text-bold">{{ coupon }} <img id="couponimg2" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
+                                                <div class="text-md text-bold">{{ formData.coupon }} <img id="couponimg2" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                             </td>
                                         </tr>
                                     </template>
@@ -667,7 +674,7 @@ watch(
                                             <div class="text-lg">Total</div>
                                         </th>
                                         <th>
-                                            <div id="totalprice2" class="text-bold text-lg">{{ totalCost }}</div>
+                                            <div id="totalprice2" class="text-bold text-lg">{{ currencySymbol }}{{ totalCost }}</div>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -679,12 +686,15 @@ watch(
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
-                                    <input id="tos" type="checkbox" name="tos" class="d-inline" style="margin: 0 5px" value="yes" />
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" class="d-inline" style="margin: 0 5px" value="true" />
                                     <label for="tos" style="display: inline; text-align: center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
                             <div class="form-group row">
-                                <div class="controls col-md-12" style="text-align: center"><input type="submit" name="Submit" value="Place Order" class="btn btn-green px-3 py-2 text-sm" /></div>
+                                <div class="controls col-md-12" style="text-align: center">
+                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</button>
+                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-green px-3 py-2 text-sm" :disabled="tos == false" />
+                                </div>
                             </div>
                         </form>
                     </div>
