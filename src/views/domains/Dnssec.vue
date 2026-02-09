@@ -4,14 +4,14 @@ import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 const props = defineProps<{
     id: number;
 }>();
+const module = 'domains';
 const siteStore = useSiteStore();
-const dnssec_records = ref([]);
+const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => props.id);
-const domainId = ref('{$domain_id}');
-
 const showForm = ref(false);
 const dnssecRecords = ref<ExistingDNSSEC[]>([]);
 const records = ref<DNSSECRecord[]>([
@@ -54,6 +54,33 @@ function submitForm() {
     console.log(payload);
     // submit payload to backend
 }
+
+function loadDnsSec() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`).then((response) => {
+            Swal.close();
+            console.log('domain dns sec');
+            console.log(response);
+            dnssecRecords.value = response.records;
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('domain dns sec');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+loadDnsSec();
 </script>
 
 <template>
@@ -61,7 +88,7 @@ function submitForm() {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <a class="btn-outline-custom py-1 px-2" style="float: inline-start" href="view_domain?id={$id}" title="Go Back"> <i class="fas fa-arrow-left text-sm"></i>&nbsp;Back </a>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;DNSSEC Information</h3>
                     <div class="card-tools m-0">
                         <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fa fa-plus-circle"></i>&nbsp;Add New Record</button>
@@ -127,13 +154,13 @@ function submitForm() {
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label"> Key Tag #{{ index + 1 }} </label>
                                         <div class="col-md-10">
-                                            <input v-model.number="record.keyTag" type="number" class="form-control" :required="index === 0" />
+                                            <input v-model.number="record.keyTag" type="number" class="form-control" placeholder="Enter Key Tag (Example: 2371)" :required="index === 0" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label"> Digest #{{ index + 1 }} </label>
                                         <div class="col-md-10">
-                                            <textarea v-model="record.digest" class="form-control" rows="5" :maxlength="record.maxLength" :required="index === 0"></textarea>
+                                            <textarea v-model="record.digest" class="form-control" rows="5" placeholder="Enter Value of Digest (Must not be greater than 40 Characters)" :maxlength="record.maxLength" :required="index === 0"></textarea>
                                             <div class="text-right text-muted">
                                                 Characters left: <b>{{ record.maxLength - record.digest.length }}</b>
                                             </div>
