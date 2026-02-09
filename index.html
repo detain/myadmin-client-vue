@@ -14,6 +14,8 @@
             script-src
             'self'
             'unsafe-inline'
+            http://static.openreplay.com
+            https://static.openreplay.com
             https://www.paypal.com
             https://www.paypalobjects.com
             https://www.googletagmanager.com
@@ -25,6 +27,7 @@
 
             connect-src
             'self'
+            https://openreplay.is.cc
             https://my.interserver.net
             https://www.paypal.com
             https://api.paypal.com
@@ -72,6 +75,37 @@
 
     <body>
         <div id="app"></div>
+        <script>
+            var initOpts = {
+                projectKey: "DJDxKtP5YpSgb0ArsCIy",
+                ingestPoint: "https://openreplay.is.cc/ingest",
+                defaultInputMode: 0,
+                obscureTextNumbers: false,
+                obscureTextEmails: false,
+                __DISABLE_SECURE_MODE: true,
+            };
+            var startOpts = {
+                userID: "",
+                resourceBaseHref: "https://my.interserver.net/",
+                __DISABLE_SECURE_MODE: true,
+            };
+            (function (A, s, a, y, e, r) {
+                r = window.OpenReplay = [e, r, y, [s - 1, e]];
+                s = document.createElement("script");
+                s.src = A;
+                s.async = !a;
+                document.head.appendChild(s);
+                r.start = function () { r.push([0]) };
+                r.stop = function () { r.push([1]) };
+                r.setUserID = function (id) { r.push([2, id]) };
+                r.setUserAnonymousID = function (id) { r.push([3, id]) };
+                r.setMetadata = function (k, v) { r.push([4, k, v]) };
+                r.event = function (k, p, i) { r.push([5, k, p, i]) };
+                r.issue = function (k, p) { r.push([6, k, p]) };
+                r.isActive = function () { return false };
+                r.getSessionToken = function () {};
+            })("//static.openreplay.com/latest/openreplay.js", 1, 0, initOpts, startOpts);
+        </script>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>

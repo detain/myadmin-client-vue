@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { watch, onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import MainMenu from './components/MainMenu.vue';
@@ -77,6 +77,17 @@ function restoreSidebarState() {
         }
     }
 }
+
+watch(
+    () => authStore.user,
+    (user) => {
+        if (user?.account_lid && window.OpenReplay) {
+            window.OpenReplay.setUserID(user.account_lid);
+        }
+    },
+    { immediate: true }
+);
+
 </script>
 
 <template>
