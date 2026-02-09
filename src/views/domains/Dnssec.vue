@@ -15,9 +15,9 @@ const id = computed(() => props.id);
 const showForm = ref(false);
 const dnssecRecords = ref<ExistingDNSSEC[]>([]);
 const records = ref<DNSSECRecord[]>([
-    { digestType: '2', algorithm: '8', keyTag: null, digest: '', maxLength: 40, visible: true },
-    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 64, visible: false },
-    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 96, visible: false },
+    { digestType: '2', algorithm: '8', keyTag: null, digest: '', maxLength: 40, visible: true, importText: '' },
+    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 64, visible: false, importText: '' },
+    { digestType: '', algorithm: '', keyTag: null, digest: '', maxLength: 96, visible: false, importText: '' },
 ]);
 
 interface DNSSECRecord {
@@ -27,6 +27,7 @@ interface DNSSECRecord {
     digest: string;
     maxLength: number;
     visible: boolean;
+    importText?: string;
 }
 
 interface ExistingDNSSEC {
@@ -34,6 +35,29 @@ interface ExistingDNSSEC {
     algorithm: string;
     keyTag: number;
     digest: string;
+}
+
+function importDsRecord(record: DNSSECRecord) {
+    if (!record.importText) return;
+    /**
+     * Expected format:
+     * <domain> IN DS <keyTag> <algorithm> <digestType> <digest> ; comment
+     */
+    const regex = /\sDS\s+(\d+)\s+(\d+)\s+(\d+)\s+([a-fA-F0-9]+)/;
+    const match = record.importText.match(regex);
+    if (!match) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid DS Record',
+            text: 'Unable to parse DS record format.',
+        });
+        return;
+    }
+    record.keyTag = Number(match[1]);
+    record.algorithm = match[2];
+    record.digestType = match[3];
+    record.digest = match[4];
+    record.importText = '';
 }
 
 function confirmRemoveAll() {
@@ -128,6 +152,16 @@ loadDnsSec();
                         <div class="card-body">
                             <form @submit.prevent="submitForm">
                                 <div v-for="(record, index) in records" v-show="record.visible" :key="index">
+                                    <!-- IMPORT DS RECORD -->
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Import DS</label>
+                                        <div class="col-md-8">
+                                            <input v-model="record.importText" type="text" class="form-control" placeholder="host.com. IN DS 1172 13 1 26ffc7 ; ( SHA1 digest )" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-primary w-100" @click="importDsRecord(record)">Import</button>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label"> Digest Type #{{ index + 1 }} </label>
                                         <div class="col-md-10">
