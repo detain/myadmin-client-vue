@@ -29,7 +29,7 @@ const coupon = ref('');
 const tos = ref(false);
 const comment = ref('');
 const frequency = ref(1);
-const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
+const enabledServices = [11482, 11475, 11468, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 5032, 5034, 10677, 10678, 10679, 10680, 10681, 11524, 11531, 11538, 5054, 5058, 5060, 5053, 5057, 5059, 10682, 10769, 5006, 5007];
 const packageCosts = ref({});
 const serviceTypes = ref<ServiceTypes>({});
 const serviceCategories = ref<ServiceCategories>({});
@@ -50,17 +50,8 @@ const getServiceTypes = computed(() => {
     console.log(catId);
     let types: ServiceTypes = {};
     for (const serviceId in serviceTypes.value) {
-        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1') {
+        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1' && serviceTypes.value[serviceId].services_hidden == '0') {
             types[serviceId] = serviceTypes.value[serviceId];
-            if (catTag.value == 'litespeed') {
-                types[serviceId].services_name = types[serviceId].services_name.replace(/LiteSpeed /i, '');
-            } else if (catTag.value == 'parallels') {
-                types[serviceId].services_name = types[serviceId].services_name.replace(/Plesk v12 /i, '');
-            } else if (catTag.value == 'cpanel') {
-                types[serviceId].services_name = serviceId === '10682' ? `${types[serviceId].services_name} Server` : `${types[serviceId].services_name.replace(/Cloud /i, '')} VPS`;
-            } else if (catTag.value == 'softaculous') {
-                types[serviceId].services_name = serviceId === '5006' ? `${types[serviceId].services_name} Server (External)` : `${types[serviceId].services_name} (External)`;
-            }
         }
     }
     return types;
@@ -331,24 +322,43 @@ function submitLicenseForm() {
 
 function editForm() {}
 
-updateBreadcrums();
-fetchWrapper
-    .get(`${baseUrl}/licenses/order`)
-    .then((response) => {
-        console.log('Response:');
-        console.log(response);
-        packageCosts.value = response.packageCosts;
-        serviceTypes.value = response.serviceTypes;
-        serviceCategories.value = response.serviceCategories;
-    })
-    .catch((error: any) => {
-        console.error('Got Error: ', error);
-    });
+function loadLicenseData() {
+    fetchWrapper
+        .get(`${baseUrl}/licenses/order`)
+        .then((response) => {
+            console.log('Response:');
+            console.log(response);
+            packageCosts.value = response.packageCosts;
+            serviceTypes.value = response.serviceTypes;
+            serviceCategories.value = response.serviceCategories;
+            for (const serviceId in serviceTypes.value) {
+                if (serviceCategories.value[serviceTypes.value[serviceId].services_category]) {
+                    if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'litespeed') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/LiteSpeed /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'directadmin') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/DirectAdmin /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'parallels') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/Plesk v12 /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'cpanel') {
+                        serviceTypes.value[serviceId].services_name = serviceId === '10682' ? `${serviceTypes.value[serviceId].services_name} Server` : `${serviceTypes.value[serviceId].services_name.replace(/Cloud /i, '')} VPS`;
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'softaculous') {
+                        serviceTypes.value[serviceId].services_name = serviceId === '5006' ? `${serviceTypes.value[serviceId].services_name} Server (External)` : `${serviceTypes.value[serviceId].services_name} (External)`;
+                    }
+                }
+            }
+        })
+        .catch((error: any) => {
+            console.error('Got Error: ', error);
+        });
+}
 
 watch(
     () => route.params.catTag,
     () => updateBreadcrums()
 );
+
+updateBreadcrums();
+loadLicenseData();
 </script>
 
 <template>
