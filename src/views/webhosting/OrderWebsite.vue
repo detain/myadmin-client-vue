@@ -19,7 +19,6 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const searchResults = ref<SearchDomainResponse | null>(null);
-
 const step = ref('order_form');
 const packageId = ref(11363);
 const period = ref(1);
@@ -61,7 +60,12 @@ const formData = reactive({
     //    packges: packges,
     //    packages: packages,
 });
-
+const selectedOffer = computed(() => {
+    if (serviceOffers.value[packageId.value]) {
+        return serviceOffers.value[packageId.value].find((offer) => offer.service_offer_id === period.value);
+    }
+    return null;
+});
 const basePrice = computed(() => {
     const svc = serviceTypes.value[packageId.value];
     return svc ? Number(svc.services_cost) : 0;
@@ -195,7 +199,6 @@ function updateCoupon() {
     }
 }
 
-
 async function onSubmit() {
     try {
         Swal.fire({
@@ -271,32 +274,36 @@ async function searchDomain() {
     });
 }
 
-Swal.fire({
-    title: '',
-    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
-    allowOutsideClick: false,
-    showConfirmButton: false,
-});
-fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
-    Swal.close();
-    console.log('Response:');
-    console.log(response);
-    step.value = response.step;
-    if (response.website == '') {
-        packageId.value = 11363;
-    } else {
-        packageId.value = response.website;
-    }
-    period.value = response.period;
-    serviceOfferId.value = response.serviceOfferId;
-    serviceTypes.value = response.serviceTypes;
-    serviceOffers.value = response.serviceOffers;
-    packages.value = response.packges;
-    //packages.value = response.packages;
-    enableDomainRegistering.value = response.enableDomainRegistering;
-    jsonServices.value = response.jsonServices;
-    jsonServiceOffers.value = response.jsonServiceOffers;
-});
+function loadOrderData() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
+        Swal.close();
+        console.log('Response:');
+        console.log(response);
+        step.value = response.step;
+        if (response.website == '') {
+            packageId.value = 11363;
+        } else {
+            packageId.value = response.website;
+        }
+        period.value = response.period;
+        serviceOfferId.value = response.serviceOfferId;
+        serviceTypes.value = response.serviceTypes;
+        serviceOffers.value = response.serviceOffers;
+        packages.value = response.packges;
+        //packages.value = response.packages;
+        enableDomainRegistering.value = response.enableDomainRegistering;
+        jsonServices.value = response.jsonServices;
+        jsonServiceOffers.value = response.jsonServiceOffers;
+    });
+}
+
+loadOrderData();
 </script>
 
 <template>
@@ -470,14 +477,24 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                         </div>
                         <div class="card-body text-md">
                             <div class="row mb-3">
-                                <div class="col-md-6 package_name">
+                                <div class="col-md-4 package_name">
                                     <template v-if="serviceTypes[packageId]">{{ serviceTypes[packageId].services_name }}</template>
                                 </div>
-                                <div class="col period text-right">{{ period }} Month(s)</div>
+                                <template v-if="selectedOffer">
+                                    <div class="col-md-8 period text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} for {{ selectedOffer.intro_frequency }} month(s). Renews at {{ currencySymbol }}{{ selectedOffer.renewal_cost }} for {{ selectedOffer.renewal_frequency }} month(s)</div>
+                                </template>
+                                <template v-else>
+                                    <div class="col-md-8 period text-right">{{ period }} Month(s)</div>
+                                </template>
                             </div>
                             <div class="row mb-3">
-                                <div id="hostname_display" class="col-md-6"></div>
-                                <div class="col package_cost text-right"></div>
+                                <div id="hostname_display" class="col-md-6">{{ hostname }}</div>
+                                <template v-if="selectedOffer">
+                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s)</div>
+                                </template>
+                                <template v-else>
+                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ serviceTypes[packageId].services_cost }} / {{ period }} month(s)</div>
+                                </template>
                             </div>
                             <div id="couponpricerownew" class="row coupon-display d-none mb-3">
                                 <div id="couponpricetext" class="col-md-6"></div>
@@ -516,12 +533,17 @@ fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
                                 <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
                                     <select id="period" v-model="period" name="period" class="form-control form-control-sm select2">
-                                        <option value="1">Monthly</option>
-                                        <option value="3">3 Months</option>
-                                        <option value="6">6 Months (5% off)</option>
-                                        <option value="12">Yearly (10% off)</option>
-                                        <option value="24">24 Months (15% off)</option>
-                                        <option value="36">36 Months (20% off)</option>
+                                        <template v-if="serviceOffers[packageId]">
+                                            <option v-for="offer in serviceOffers[packageId]" :key="offer.service_offer_id" :value="offer.service_offer_id">{{ currencySymbol }}{{ offer.intro_cost }} for {{ offer.intro_frequency }} Month(s). Renews at {{ currencySymbol }}{{ offer.renewal_cost }} for {{ offer.renewal_frequency }} Month(s)</option>
+                                        </template>
+                                        <template v-else>
+                                            <option value="1">Monthly</option>
+                                            <option value="3">3 Months</option>
+                                            <option value="6">6 Months (5% off)</option>
+                                            <option value="12">Yearly (10% off)</option>
+                                            <option value="24">24 Months (15% off)</option>
+                                            <option value="36">36 Months (20% off)</option>
+                                        </template>
                                     </select>
                                 </div>
                             </div>
