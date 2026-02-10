@@ -14,7 +14,7 @@ export const router = createRouter({
         { path: '/payment_types', component: () => import('../views/billing/PaymentTypes.vue') },
         { path: '/cart', component: () => import('../views/billing/Cart.vue') },
         { path: '/cart/:iids([\\w,]+)', component: () => import('../views/billing/Cart.vue') },
-        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)/:invoices', component: () => import('../views/billing/Pay.vue') },
+        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices', component: () => import('../views/billing/Pay.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
         { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {
