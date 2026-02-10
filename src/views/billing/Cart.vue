@@ -26,11 +26,11 @@ const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
 const order_msg = ref(false);
 const total_display = ref('');
-const displayPrepay = ref(true);
 const total_invoices = ref(0);
 const paymentMethodsData = ref<PaymentMethodsData>({});
 const current_cc_id = ref(0);
 const triggerClick = ref(null);
+const toggleStatus = ref<Record<string, boolean>>({});
 const isChecked = ref(false);
 const modulesCounts = ref<ModuleCounts>({});
 const countries = ref({});
@@ -53,6 +53,16 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Cart'],
 ]);
+
+const selectedAmount = computed(() => {
+    let total = 0;
+    for (const invrow of invrows.value) {
+        if (invoices.value.includes(invrow.service_label)) {
+            total += Number(invrow.invoices_amount);
+        }
+    }
+    return total;
+});
 
 function formattedCost(amount: number): string {
     return new Intl.NumberFormat('en-US', {
@@ -241,16 +251,57 @@ function formatExpDate(e: any) {
 
 function toggleCheckBox() {}
 
-function checkClass(idx: string) {}
+function checkClass(module: string) {
+    if (typeof toggleStatus.value[module] === 'undefined') {
+        toggleStatus.value[module] = false;
+    }
+    if (toggleStatus.value[module] === false) {
+        for (let idx = 0; idx < invrows.value.length; idx++) {
+            const invRow = invrows.value[idx];
+            if (invRow.invoices_module == module && !invoices.value.includes(invRow.service_label)) {
+                invoices.value.push(invRow.service_label);
+            }
+        }
+    } else {
+        for (let idx = 0; idx < invrows.value.length; idx++) {
+            const invRow = invrows.value[idx];
+            if (invRow.invoices_module == module) {
+                const index = invoices.value.indexOf(invRow.service_label);
+                if (index > -1) {
+                    invoices.value.splice(index, 1);
+                }
+            }
+        }
+    }
+    toggleStatus.value[module] = !toggleStatus.value[module];
+}
 
 function delete_invoice(invId: number) {}
 
-function toggleCheckbox() {}
+function toggleCheckbox() {
+    const el = document.getElementById('checkboxtoggle') as HTMLInputElement | null;
+    if (el?.checked) {
+        checkAll();
+    } else {
+        uncheckAll();
+    }
+}
+
 function updateInfoSubmit() {}
 
-function checkAll() {}
+function checkAll() {
+    invoices.value = [];
+    for (let idx = 0; idx < invrows.value.length; idx++) {
+        const invRow = invrows.value[idx];
+        if (typeof invRow?.prepay_invoice == 'undefined') {
+            invoices.value.push(invRow.service_label);
+        }
+    }
+}
 
-function uncheckAll() {}
+function uncheckAll() {
+    invoices.value = [];
+}
 
 function checkRecent() {}
 
@@ -264,20 +315,46 @@ function onExpDateInput(e: any) {
     formatExpDate(e);
 }
 
-function submitForm(value: any) {}
+function submitForm(value: any) {
+    loadCartData();
+}
 
-try {
-    fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
-        countries.value = response;
-    });
-} catch (error: any) {
-    console.log('error:');
-    console.log(error);
+async function loadCountries() {
+    try {
+        fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
+            countries.value = response;
+        });
+    } catch (error: any) {
+        console.log('error:');
+        console.log(error);
+    }
+}
+
+async function pageInit() {
+    loadCountries();
+    loadCartData();
+    await accountStore.loadOnce();
+    for (const index in data.value.ccs) {
+        const cc_detail = data.value.ccs[index];
+        if (data.value.cc == cc_detail.cc && data.value.cc_exp == cc_detail.cc_exp) {
+            selectedCc.value = Number(index);
+            primaryCc.value = Number(index);
+            break;
+        }
+    }
 }
 
 async function loadCartData() {
     try {
-        fetchWrapper.get(`${baseUrl}/billing/cart`).then((response: CartResponse) => {
+        const params = new URLSearchParams();
+        let query = '';
+        if (invoiceDays.value != 0) {
+            params.set('invoice_days', invoiceDays.value.toString());
+        }
+        if (params.size > 0) {
+            query = `?${params.toString()}`;
+        }
+        fetchWrapper.get(`${baseUrl}/billing/cart${query}`).then((response: CartResponse) => {
             console.log(response);
             paymentMethodsData.value = response.paymentMethodsData;
             invrows.value = response.invrows;
@@ -302,18 +379,9 @@ async function loadCartData() {
         console.log('error:');
         console.log(error);
     }
-    await accountStore.loadOnce();
-    for (const index in data.value.ccs) {
-        const cc_detail = data.value.ccs[index];
-        if (data.value.cc == cc_detail.cc && data.value.cc_exp == cc_detail.cc_exp) {
-            selectedCc.value = Number(index);
-            primaryCc.value = Number(index);
-            break;
-        }
-    }
 }
 
-loadCartData();
+pageInit();
 </script>
 
 <template>
@@ -464,7 +532,7 @@ loadCartData();
                                         <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
-                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(module + 'row')">
+                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(String(module))">
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
                                     </td>
@@ -603,7 +671,7 @@ loadCartData();
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>Invoices Total Amount</strong></div>
-                                    <div class="text-success text-lg" name="totalcol">{{ total_display }}</div>
+                                    <div class="text-success text-lg">{{ total_display }}</div>
                                 </td>
                             </tr>
                             <tr>
@@ -615,7 +683,7 @@ loadCartData();
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>To Be Paid</strong></div>
-                                    <div class="text-success text-lg" name="totalamount">{{ total_display }}</div>
+                                    <div class="text-success text-lg">{{ formattedCost(selectedAmount) }}</div>
                                 </td>
                             </tr>
                         </tbody>
