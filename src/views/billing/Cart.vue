@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
@@ -25,7 +25,7 @@ const currency = ref('USD');
 const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
 const order_msg = ref(false);
-const total_display = ref(0.0);
+const total_display = ref('');
 const displayPrepay = ref(true);
 const total_invoices = ref(0);
 const paymentMethodsData = ref<PaymentMethodsData>({});
@@ -34,6 +34,7 @@ const triggerClick = ref(null);
 const isChecked = ref(false);
 const modulesCounts = ref<ModuleCounts>({});
 const countries = ref({});
+const prepayAvailable = ref(0);
 const st = ref<null | string>(null);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
@@ -52,6 +53,13 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Cart'],
 ]);
+
+function formattedCost(amount: number): string {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currency.value,
+    }).format(amount);
+}
 
 function mounted() {
     if (triggerClick.value) {
@@ -275,6 +283,11 @@ async function loadCartData() {
             invrows.value = response.invrows;
             modules.value = response.modules;
             modulesCounts.value = response.modules_counts;
+            total_invoices.value = Number(response.total_invoices);
+            total_display.value = response.total_display;
+            prepayAvailable.value = Number(response.prepay);
+            currencyArr.value = response.currency_arr;
+            invoiceDays.value = Number(response.invoice_days);
             let checkedInvoices: string[] = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
@@ -493,7 +506,7 @@ loadCartData();
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="selectedCc === Number(cc_id)" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <input :id="'cc-' + cc_id" v-model="selectedCc" :value="Number(cc_id)" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" @change="updatePaymentMethod('cc' + cc_id)" />
                                                         <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="ml-2 pl-4">
@@ -584,25 +597,25 @@ loadCartData();
                             <tr>
                                 <td class="text-center" colspan="2" style="border: none">
                                     <div><strong>Total Invoices</strong></div>
-                                    <div class="text-success text-lg" v-html="total_invoices"></div>
+                                    <div class="text-success text-lg">{{ total_invoices }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>Invoices Total Amount</strong></div>
-                                    <div class="text-success text-lg" name="totalcol" v-html="total_display"></div>
+                                    <div class="text-success text-lg" name="totalcol">{{ total_display }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center">
                                     <div><strong>PrePay Available</strong></div>
-                                    <div class="text-success text-lg" v-html="displayPrepay"></div>
+                                    <div class="text-success text-lg">{{ formattedCost(prepayAvailable) }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>To Be Paid</strong></div>
-                                    <div class="text-success text-lg" name="totalamount" v-html="total_display"></div>
+                                    <div class="text-success text-lg" name="totalamount">{{ total_display }}</div>
                                 </td>
                             </tr>
                         </tbody>
@@ -857,13 +870,4 @@ loadCartData();
             </div>
         </div>
     </div>
-    <form id="defaultpymt" action="cart" method="post">
-        <input type="hidden" name="action" value="default" />
-        <input id="defaultpaymentMethod" type="hidden" name="payment_method" value="" />
-        <input id="cc_auto_update" type="hidden" name="cc_auto_update" value="" />
-    </form>
-    <form id="deleteForm" action="cart" method="POST">
-        <input type="hidden" name="action" value="delete" />
-        <input id="cc_idx" type="hidden" name="idx" value="" />
-    </form>
 </template>
