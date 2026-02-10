@@ -16,7 +16,8 @@ const paymentMethod = ref('paypal');
 const invoices = ref<string[]>([]);
 const modules = ref<Modules>({});
 const editCcIdx = ref(0);
-const selectedCc = ref('');
+const selectedCc = ref(0);
+const primaryCc = ref<null | number>(null);
 const r_paymentMethod = ref('');
 const country_select = ref('');
 const invrows = ref<InvRow[]>([]);
@@ -265,28 +266,41 @@ try {
     console.log('error:');
     console.log(error);
 }
-try {
-    fetchWrapper.get(`${baseUrl}/billing/cart`).then((response: CartResponse) => {
-        console.log(response);
-        paymentMethodsData.value = response.paymentMethodsData;
-        invrows.value = response.invrows;
-        modules.value = response.modules;
-        modulesCounts.value = response.modules_counts;
-        let checkedInvoices: string[] = [];
-        for (const idx in response.invrows) {
-            let row = response.invrows[idx];
-            if (typeof row.prepay_invoice == 'undefined') {
-                checkedInvoices.push(row.service_label);
+
+async function loadCartData() {
+    try {
+        fetchWrapper.get(`${baseUrl}/billing/cart`).then((response: CartResponse) => {
+            console.log(response);
+            paymentMethodsData.value = response.paymentMethodsData;
+            invrows.value = response.invrows;
+            modules.value = response.modules;
+            modulesCounts.value = response.modules_counts;
+            let checkedInvoices: string[] = [];
+            for (const idx in response.invrows) {
+                let row = response.invrows[idx];
+                if (typeof row.prepay_invoice == 'undefined') {
+                    checkedInvoices.push(row.service_label);
+                }
             }
+            console.log(checkedInvoices);
+            invoices.value = checkedInvoices;
+        });
+    } catch (error: any) {
+        console.log('error:');
+        console.log(error);
+    }
+    await accountStore.loadOnce();
+    for (const index in data.value.ccs) {
+        const cc_detail = data.value.ccs[index];
+        if (data.value.cc == cc_detail.cc && data.value.cc_exp == cc_detail.cc_exp) {
+            selectedCc.value = Number(index);
+            primaryCc.value = Number(index);
+            break;
         }
-        console.log(checkedInvoices);
-        invoices.value = checkedInvoices;
-    });
-} catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    }
 }
-accountStore.load();
+
+loadCartData();
 </script>
 
 <template>
@@ -461,7 +475,7 @@ accountStore.load();
                             </div>
                         </div>
                         <hr />
-                        <div id="select_card" :style="{ display: paymentMethod !== 'cc' ? 'none' : '' }">
+                        <div id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -471,15 +485,15 @@ accountStore.load();
                                 <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="paymentMethod === 'cc' && selectedCc === cc_id ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
-                                        <div v-if="paymentMethod === 'cc' && selectedCc === cc_id" class="ribbon-wrapper">
-                                            <div class="ribbon bg-success text-xs">Default</div>
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="primaryCc === Number(cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
+                                        <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
+                                            <div class="ribbon bg-success text-xs">Primary</div>
                                         </div>
                                         <form id="paymentform" action="cart" method="post">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="paymentMethod === 'cc' && selectedCc === cc_id" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <input :id="'cc-' + cc_id" :name="r_paymentMethod" :model="'cc_' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" :checked="selectedCc === Number(cc_id)" @change="updatePaymentMethod('cc' + cc_id)" />
                                                         <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
                                                     <div class="ml-2 pl-4">
@@ -488,7 +502,7 @@ accountStore.load();
                                                         </div>
                                                         <div class="text-muted text-sm">Expires on {{ cc_detail.cc_exp }}</div>
                                                         <div class="my-2">
-                                                            <template v-if="paymentMethod === 'cc' && selectedCc === cc_id">
+                                                            <template v-if="selectedCc === Number(cc_id)">
                                                                 <div id="selected_services"></div>
                                                                 <input type="hidden" name="balance" value="1" />
                                                                 <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
@@ -500,13 +514,13 @@ accountStore.load();
 
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && (!selectedCc || (selectedCc && selectedCc !== cc_id))" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
-                                                    <div v-else-if="paymentMethod === 'cc' && selectedCc === cc_id" class="text-success text-lg" name="totalccamount"></div>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(!selectedCc || selectedCc !== cc_id || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
-                                                    <input v-else-if="paymentMethod === 'cc' && selectedCc == cc_id" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
+                                                    <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <input v-else-if="selectedCc === Number(cc_id)" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
                                         </form>

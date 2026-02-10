@@ -4,11 +4,10 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
 import { useSiteStore } from '../../stores/site.store';
-import { RouterLink, useRoute, useRouter } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import { SearchDomainResult, DomainResult, Lookups, LookupsOld, Suggestions, SuggestionRow, DomainFieldsResponse, DomainFields, DomainField, DomainFieldSelectValues } from '../../types/domains';
+import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '../../types/domains';
 import $ from 'jquery';
-import type { CouponInfo } from '../../types/vps_order.ts';
 const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
@@ -34,60 +33,35 @@ const services = ref<ServiceTypes>({});
 const tldServices = ref({});
 const domainFields = ref<DomainFields>({});
 const termsAgreed = ref(false);
-const couponInfo = ref<CouponInfo>({});
-const lastCoupon = ref('');
-const coupon = ref('');
 const domainInput = ref<HTMLInputElement | null>(null);
 const domain = computed(() => route.params.domain as string);
 const regType = computed(() => route.params.regType as string);
 const display = ref('step1');
-
-const domainDetails = ref<DomainDetails>({
-    status: 'available',
-    currency: 'USD',
-    raw: {
-        new: 12.99,
-        transfer: 9.99,
-        renewal: 14.99,
-        whois_cost: 3.99,
-    },
-});
-
-type DomainStatus = 'taken' | 'available';
-
-interface DomainRawPricing {
-    transfer: number;
-    new: number;
-    whois_cost: number;
-    renewal: number;
-}
-
-interface DomainDetails {
-    status: DomainStatus;
-    currency: string;
-    raw: DomainRawPricing;
-}
+const currency = ref('USD');
+const currencySymbol = ref('$');
 
 const domainCost = computed<number>(() => {
-    return domainDetails.value.status === 'taken' ? domainDetails.value.raw.transfer : domainDetails.value.raw.new;
+    if (!domainResult.value) return 0;
+    return Number(domainResult.value.status === 'taken' ? domainResult.value.raw.transfer : domainResult.value.raw.new);
 });
 
 const totalCost = computed<number>(() => {
-    return whoisEnabled.value ? domainCost.value + domainDetails.value.raw.whois_cost : domainCost.value;
+    return whoisEnabled.value === true ? domainCost.value + whoisPrivacyCost.value : domainCost.value;
 });
 
 const formattedTotalCost = computed<string>(() => {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: domainDetails.value.currency,
+        currency: currency.value,
     }).format(totalCost.value);
 });
 
 const formattedRenewCost = computed<string>(() => {
+    if (!domainResult.value) return '';
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: domainDetails.value.currency,
-    }).format(domainDetails.value.raw.renewal);
+        currency: currency.value,
+    }).format(domainResult.value.raw.renewal);
 });
 
 function clearInput(): void {
@@ -136,33 +110,6 @@ async function runPhrases(): Promise<void> {
     const phrases: string[] = ['mydomain.com', 'techsupport.online', 'usdomain.us', 'networking.net', 'allcountrydomains.com.au', 'bizdomain.biz', 'giftdomain.gift', 'sarahclothes.fashion', 'grocery.shop', 'mydomain.com', 'techsupport.online', 'uscitizens.us', 'networking.net', 'allcountrydomains.com.au', 'yourbizdomain.biz', 'giftdomain.gift', 'sarahclothes.fashion', 'grocery.shop', 'mydomain.com', 'techsupport.online', 'usdomain.us', 'networking.net', 'allcountrydomains.com.au', 'yourbizdomain.biz', 'giftdomain.gift', 'sarah.fashion', 'grocery.shop', 'mydomain.com'];
     if (domainInput.value) {
         await printPhrases(phrases, domainInput.value);
-    }
-}
-
-function updateCoupon() {
-    if (lastCoupon.value != coupon.value) {
-        lastCoupon.value = coupon.value;
-        (document.getElementById('couponimg') as unknown as HTMLImageElement).src = `https://my.interserver.net/validate_coupon.php?module=${module}&coupon=${coupon.value}`;
-        fetch(`https://my.interserver.net/ajax/coupon_info.php?module=${module}&coupon=${encodeURIComponent(coupon.value)}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error ${response.status}`);
-                }
-                return response.json() as Promise<CouponInfo>;
-            })
-            .then((json) => {
-                couponInfo.value = json;
-
-                if (typeof json.applies !== 'undefined') {
-                    // update_vps_choices();
-                    if (couponInfo.value.onetime === '0') {
-                        // update_vps_choices_order();
-                    }
-                }
-            })
-            .catch((error) => {
-                console.error('Failed to load coupon info:', error);
-            });
     }
 }
 
@@ -242,7 +189,7 @@ function edit_form() {}
 
 function placeOrder() {}
 
-watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+watch([route.params.domain, route.params.regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
     console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
     updateStep();
 });
@@ -250,7 +197,7 @@ watch([domain, regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
 fetchWrapper.get(`${baseUrl}/domains/order`).then((response) => {
     console.log('GET Response:');
     console.log(response);
-    whoisPrivacyCost.value = response.whoisPrivacyCost;
+    whoisPrivacyCost.value = Number(response.whoisPrivacyCost);
     services.value = response.services;
     tldServices.value = response.tldServices;
 });
