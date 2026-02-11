@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import { VpsInfo } from '../../types/vps';
 import { QsInfo } from '../../types/qs';
 
 import Swal from 'sweetalert2';
+import ServiceActionCardHeader from '../../components/services/ServiceActionCardHeader.vue';
 const props = defineProps<{
     id: number;
     module: string;
@@ -19,42 +19,51 @@ const id = computed(() => props.id);
 const module = computed(() => props.module);
 const timezone = ref('America/New_York');
 const zones = ref<string[]>([]);
-function submitForm() {
+async function submitForm() {
     Swal.fire({
         title: '',
         html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
+
     try {
-        fetchWrapper
-            .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`, {
-                timezone: timezone.value,
-            })
-            .then((response) => {
-                Swal.close();
-                console.log('vps change timezone success');
-                console.log(response);
-                Swal.fire({
-                    icon: 'success',
-                    html: `Success${response.text}`,
-                });
-            });
+        const response = await fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`, {
+            timezone: timezone.value,
+        });
+
+        Swal.close();
+        console.log('vps change timezone success');
+        console.log(response);
+        Swal.fire({
+            icon: 'success',
+            html: `Success${response.text}`,
+        });
     } catch (error: any) {
         Swal.close();
         console.log('vps change timezone failed');
         console.log(error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.text}`,
+            html: `Got error ${error.message}`,
         });
     }
 }
 
-const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`);
-console.log('Response:');
-console.log(response);
-zones.value = response;
+let response;
+try {
+    response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`);
+    console.log('Response:');
+    console.log(response);
+    zones.value = response;
+} catch (error: any) {
+    console.log('vps fetch timezone list failed');
+    console.log(error);
+    Swal.fire({
+        icon: 'error',
+        html: `Got error ${error.message}`,
+    });
+}
 </script>
 
 <template>
@@ -88,14 +97,7 @@ zones.value = response;
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <div class="py-2">
-                        <h3 class="card-title"><i class="material-icons mb-1 pr-2" style="vertical-align: middle">alarm</i>Change {{ module }} Timezone</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
-                        </div>
-                    </div>
-                </div>
+                <ServiceActionCardHeader :title="`Change ${module} Timezone`" material-icon="alarm" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body pb-0">
                     <form class="change_timezone" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_timezone" />
