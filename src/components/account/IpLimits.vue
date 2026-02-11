@@ -4,7 +4,7 @@ import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import type { AccountData, AccountLimit } from '../../types/account.ts';
+import type { AccountData, AccountLimit } from '../../types/account';
 
 const props = defineProps<{
     data: AccountData;
@@ -66,6 +66,12 @@ async function addRangeSubmit() {
         console.log('add range failed');
         console.log(error);
     }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'IpLimits',
 }
 </script>
 

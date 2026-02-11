@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import type { AccountData } from '../../types/account.ts';
+import type { AccountData } from '../../types/account';
 
 const props = defineProps<{
     data: AccountData;
@@ -60,6 +60,12 @@ async function get2faKey() {
         console.log('get2faKey failed');
         console.log(error);
     }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'TwoFactorAuth',
 }
 </script>
 

@@ -245,6 +245,12 @@ onBeforeUnmount(() => {
 });
 </script>
 
+<script lang="ts">
+export default {
+  name: 'Searchbox',
+}
+</script>
+
 <template>
     <div class="search-wrapper">
         <input ref="searchInputEl" v-model="searchInput" type="text" class="new-search" @keydown="onKeydown" />
