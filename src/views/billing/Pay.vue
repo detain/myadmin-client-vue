@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { reactive, ref, computed, watch } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
@@ -7,7 +7,11 @@ import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-
+const form = reactive({
+    action: null,
+    method: 'POST',
+    items: {}
+});
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Cart');
@@ -27,7 +31,16 @@ const invoices = computed(() => {
 });
 
 try {
-    fetchWrapper.get(`${baseUrl}/pay/${method.value}/${invoices.value}?redirectUrl=${encodeURIComponent(`https://${window.location.hostname}/pay/${method.value}/${invoices.value}`)}?cancelUrl=${encodeURIComponent(`https://${window.location.hostname}/pay/${method.value}/${invoices.value}`)}`).then((response) => {
+    fetchWrapper.get(`${baseUrl}/pay/${method.value}/${invoices.value}?redirectUrl=${encodeURIComponent(`https://${window.location.hostname}/pay/${method.value}/${invoices.value}`)}`).then((response) => {
+        if (response.type == 'redirect') {
+            window.location.href = response.redirectUrl;
+        } else if (response.type == 'submit') {
+            form.action = response.action;
+            form.method = response.method;
+            form.items = response.items;
+            const submit = document.getElementById('submitForm') as HTMLFormElement;
+            submit.submit();
+        }
         console.log(response);
     });
 } catch (error: any) {
@@ -45,4 +58,9 @@ try {
             </div>
         </div>
     </div>
+    <form v-if="form.action" id="submitForm" :action="form.action">
+        <input v-for="(value, key) in form.items" :key="key" type="hidden" :name="key" :value="value" />
+        <input type="submit" value="Submit">
+
+    </form>
 </template>
