@@ -5,10 +5,10 @@ import { createPinia, setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import Login from '../src/views/Login.vue';
 import { useAuthStore } from '../src/stores/auth.store';
-import { fetchWrapper } from '@/helpers/fetchWrapper';
-import Swal from 'sweetalert2';
-import $ from 'jquery';
+import { fetchWrapper } from '../src/helpers/fetchWrapper';
 import { nextTick } from 'vue';
+//import Swal from 'sweetalert2';
+//import $ from 'jquery';
 
 vi.mock('sweetalert2');
 
