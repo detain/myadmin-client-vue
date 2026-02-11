@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
+import ServiceActionCardHeader from '../../components/services/ServiceActionCardHeader.vue';
 
 const props = defineProps<{
     id: number;
@@ -48,14 +48,7 @@ function submitForm() {
     <div class="row justify-content-center py-4">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title"><i class="material-icons pr-1" style="vertical-align: bottom">manage_accounts</i>Change VPS Hostname</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left"></i> Back</router-link>
-                        </div>
-                    </div>
-                </div>
+                <ServiceActionCardHeader title="Change VPS Hostname" material-icon="manage_accounts" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body">
                     <form class="change_hostname" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeHostname" />
