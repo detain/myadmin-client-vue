@@ -13,8 +13,8 @@ export const router = createRouter({
         { path: '/prepays', component: () => import('../views/billing/PrePays.vue') },
         { path: '/payment_types', component: () => import('../views/billing/PaymentTypes.vue') },
         { path: '/cart', component: () => import('../views/billing/Cart.vue') },
-        { path: '/cart/:iids([\\w,]+)', component: () => import('../views/billing/Cart.vue') },
-        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices', component: () => import('../views/billing/Pay.vue') },
+        { path: '/cart/:invoices', component: () => import('../views/billing/Cart.vue') },
+        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices/:done(done)?', component: () => import('../views/billing/Pay.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
         { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {

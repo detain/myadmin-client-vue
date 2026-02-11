@@ -2,13 +2,14 @@
 import { ref, reactive, computed } from 'vue';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, CCRow, HDRow, ServerRow } from '../../types/cart.ts';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
+const route = useRoute();
 const accountStore = useAccountStore();
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
@@ -24,6 +25,7 @@ const invrows = ref<InvRow[]>([]);
 const currency = ref('USD');
 const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
+const routeInvoices = computed(() => route.params.invoices ? String(route.params.invoices).split(',') : undefined);
 const order_msg = ref(false);
 const total_display = ref('');
 const total_invoices = ref(0);
@@ -368,7 +370,14 @@ async function loadCartData() {
             let checkedInvoices: string[] = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
-                if (typeof row.prepay_invoice == 'undefined') {
+                if (
+                    (typeof routeInvoices.value == 'undefined'  && typeof row.prepay_invoice == 'undefined')
+                    ||
+                    (typeof routeInvoices.value != 'undefined' && (
+                        routeInvoices.value.includes(row.service_label)
+                        ||
+                        routeInvoices.value.includes(row.invoices_id))
+                    )) {
                     checkedInvoices.push(row.service_label);
                 }
             }
