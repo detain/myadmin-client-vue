@@ -376,7 +376,7 @@ async function loadCartData() {
                     (typeof routeInvoices.value != 'undefined' && (
                         routeInvoices.value.includes(row.service_label)
                         ||
-                        routeInvoices.value.includes(row.invoices_id))
+                        routeInvoices.value.includes(String(row.invoices_id)))
                     )) {
                     checkedInvoices.push(row.service_label);
                 }
