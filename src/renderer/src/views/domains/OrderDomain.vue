@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
-import { useSiteStore } from '../../stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
+import { useSiteStore } from '@/stores/site.store';
 import { RouterLink, useRoute } from 'vue-router';
-import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '../../types/domains';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '@/types/domains';
 import $ from 'jquery';
 const module = 'domains';
 const siteStore = useSiteStore();

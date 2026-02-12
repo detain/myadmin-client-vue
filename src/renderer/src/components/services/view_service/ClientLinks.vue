@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { moduleLink } from '../../../helpers/moduleLink';
+import { moduleLink } from '@/helpers/moduleLink';
 const { clientLinks, module, id } = defineProps<{
     clientLinks: Array<{
         link: string;

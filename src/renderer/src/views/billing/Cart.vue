@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
-import { useAccountStore } from '../../stores/account.store';
-import { useSiteStore } from '../../stores/site.store';
-import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, CCRow, HDRow, ServerRow } from '../../types/cart.ts';
+import { useAccountStore } from '@/stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
+import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, CCRow, HDRow, ServerRow } from '@/types/cart.ts';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();

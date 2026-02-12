@@ -1,4 +1,4 @@
-import { ServiceType } from './view-service-common';
+import { ServiceType } from '@/view-service-common';
 
 export interface SearchDomainResult {
     continue: boolean;

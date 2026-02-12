@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { fetchWrapper } from '../../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '../../../stores/auth.store';
-import { useSiteStore } from '../../../stores/site.store';
-import { useAccountStore } from '../../../stores/account.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
 
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();

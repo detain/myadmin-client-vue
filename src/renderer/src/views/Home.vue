@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import MainMenu from '../components/MainMenu.vue';
+import MainMenu from '@/components/MainMenu.vue';
 
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import ClientHome from '../views/ClientHome.vue';
+import ClientHome from '@/views/ClientHome.vue';
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();

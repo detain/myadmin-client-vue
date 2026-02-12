@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref, computed, watch } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
-import { useAccountStore } from '../../stores/account.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const form = reactive({

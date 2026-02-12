@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { snakeToCamel } from '../helpers/snakeToCamel';
-import { ServerState } from '../types/servers';
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { snakeToCamel } from '@/helpers/snakeToCamel';
+import { ServerState } from '@/types/servers';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
 export const useServerStore = defineStore('server', {
     state: (): ServerState => ({

@@ -1,4 +1,4 @@
-import { fetchWrapper } from '../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import { defineStore } from 'pinia';
 

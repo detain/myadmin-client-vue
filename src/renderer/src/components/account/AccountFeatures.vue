@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import type { AccountData } from '../../types/account';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import type { AccountData } from '@/types/account';
 
 const props = defineProps<{
     data: AccountData;

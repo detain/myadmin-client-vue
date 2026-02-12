@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import { useUsersStore } from '../../stores/users.store';
+import { useUsersStore } from '@/stores/users.store';
 
 const usersStore = useUsersStore();
 const { users, loading, error } = storeToRefs(usersStore);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { moduleLink } from '../../helpers/moduleLink';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { ref, computed, onMounted } from 'vue';
 

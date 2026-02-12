@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
-import { AccountState } from '../types/account';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
+import { AccountState } from '@/types/account';
 
 export const useAccountStore = defineStore('account', {
     state: (): AccountState => ({

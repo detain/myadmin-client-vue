@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAccountStore } from '../../stores/account.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '../../types/account';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '@/types/account';
 
 const props = defineProps<{
     data: AccountData;

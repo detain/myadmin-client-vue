@@ -4,10 +4,10 @@ import { useRoute, RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import Prism from 'prismjs';
 import Swal from 'sweetalert2';
-import { useAuthStore } from '../../stores/auth.store';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import { Ticket, useTicketsStore } from '../../stores/tickets.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import { Ticket, useTicketsStore } from '@/stores/tickets.store';
 
 /* =======================
    Stores / Route

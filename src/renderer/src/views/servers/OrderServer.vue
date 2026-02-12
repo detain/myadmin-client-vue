@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { generatePassword } from '../../helpers/generatePassword';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { generatePassword } from '@/helpers/generatePassword';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-import { useSiteStore } from '../../stores/site.store';
-import type { ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region } from '../../types/servers_order.ts';
+import { useSiteStore } from '@/stores/site.store';
+import type { ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region } from '@/types/servers_order.ts';
 const siteStore = useSiteStore();
 const country = ref('US');
 const baseUrl = siteStore.getBaseUrl();

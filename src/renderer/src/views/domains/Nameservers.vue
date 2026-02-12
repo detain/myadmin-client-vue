@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { watch, ref, computed, onMounted } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
-import myAdminIcons from '../../assets/images/myadmin/MyAdmin-Icons.min.svg';
+import { useSiteStore } from '@/stores/site.store';
+import myAdminIcons from '@/assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;

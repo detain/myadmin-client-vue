@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 import * as Yup from 'yup';
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 //import { Form, Field } from 'vee-validate';

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
-import { DomainFields } from '../../types/domains';
-import { moduleLink } from '../../helpers/moduleLink.ts';
+import { useSiteStore } from '@/stores/site.store';
+import { DomainFields } from '@/types/domains';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 import Swal from 'sweetalert2';
 const props = defineProps<{
     id: number;

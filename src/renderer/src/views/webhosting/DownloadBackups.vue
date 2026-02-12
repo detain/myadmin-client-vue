@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
-import { useAuthStore } from '../../stores/auth.store';
-import { useSiteStore } from '../../stores/site.store';
-import imageFloppy from '../../assets/images/icons/floppy_disk_48.png';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
+import imageFloppy from '@/assets/images/icons/floppy_disk_48.png';
 
 const props = defineProps<{
     id: number;
