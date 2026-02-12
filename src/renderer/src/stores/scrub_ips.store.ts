@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from '@/types/view-service-common';
-import { useSiteStore } from '@/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 interface ScrubIpInfo {
     scrub_ip_id: number;

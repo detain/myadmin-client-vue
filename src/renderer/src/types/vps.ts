@@ -1,4 +1,4 @@
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from '@/view-service-common';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from '@/types/view-service-common';
 
 export interface VpsInfo {
     vps_comment: string;
