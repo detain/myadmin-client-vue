@@ -7,6 +7,12 @@ const alertStore = useAlertStore();
 const { alert } = storeToRefs(alertStore);
 </script>
 
+<script lang="ts">
+export default {
+  name: 'Alert',
+}
+</script>
+
 <template>
     <div v-if="alert" class="container">
         <div class="m-3">

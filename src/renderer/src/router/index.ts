@@ -13,8 +13,8 @@ export const router = createRouter({
         { path: '/prepays', component: () => import('../views/billing/PrePays.vue') },
         { path: '/payment_types', component: () => import('../views/billing/PaymentTypes.vue') },
         { path: '/cart', component: () => import('../views/billing/Cart.vue') },
-        { path: '/cart/:iids([\\w,]+)', component: () => import('../views/billing/Cart.vue') },
-        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase)/:invoices', component: () => import('../views/billing/Pay.vue') },
+        { path: '/cart/:invoices', component: () => import('../views/billing/Cart.vue') },
+        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices/:done(done)?', component: () => import('../views/billing/Pay.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
         { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {
@@ -26,6 +26,15 @@ export const router = createRouter({
                 { path: 'pass', component: () => import('../views/account/ChangePass.vue') },
                 { path: 'username', component: () => import('../views/account/ChangeUsername.vue') },
                 { path: 'settings', component: () => import('../views/account/AccountSettings.vue') },
+            ],
+        },
+        {
+            path: '/users',
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
+            children: [
+                { path: '', component: () => import('../views/users/List.vue') },
+                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
+                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
             ],
         },
         {
@@ -45,6 +54,15 @@ export const router = createRouter({
                 { path: 'web_traffic', component: () => import('../views/billing/affiliates/WebTraffic.vue') },
                 { path: 'banners', component: () => import('../views/billing/affiliates/ViewBanners.vue') },
                 { path: 'banners/:id', component: () => import('../views/billing/affiliates/ViewBanner.vue') },
+            ],
+        },
+        {
+            path: '/tickets',
+            //component: () => import('../views/billing/affiliates/Layout.vue'),
+            children: [
+                { path: '', component: () => import('../views/tickets/TicketsList.vue') },
+                { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
+                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
             ],
         },
         {
@@ -74,7 +92,7 @@ export const router = createRouter({
                 { path: 'order/:domain', component: () => import('../views/domains/OrderDomain.vue') },
                 { path: 'order/:domain/:regType(register|transfer)', component: () => import('../views/domains/OrderDomain.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/domains/ViewDomain.vue') },
-                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|contact|nameservers|renew|whois|contact|dnssec)', component: () => import('../views/domains/ViewDomain.vue') },
+                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|contact|nameservers|renew|whois|contact|dnssec|transfer)', component: () => import('../views/domains/ViewDomain.vue') },
             ],
         },
         {
@@ -85,13 +103,6 @@ export const router = createRouter({
                 { path: 'order', component: () => import('../views/floating_ips/OrderFloatingIp.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/floating_ips/ViewFloatingIp.vue') },
                 { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|change_ip)', component: () => import('../views/floating_ips/ViewFloatingIp.vue') },
-            ],
-        },
-        {
-            path: '/scrub_ips',
-            children: [
-                { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
-                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
             ],
         },
         {
@@ -113,7 +124,7 @@ export const router = createRouter({
                 { path: '', component: () => import('../views/mail/MailList.vue') },
                 { path: 'order', component: () => import('../views/mail/OrderMail.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/mail/ViewMail.vue') },
-                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|alerts|deny_rules|blocks|send|advsend|rules|stats|log)', component: () => import('../views/mail/ViewMail.vue') },
+                { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|alerts|delist|deny_rules|blocks|send|advsend|rules|stats|log|email_deliverability)', component: () => import('../views/mail/ViewMail.vue') },
                 { path: ':id(\\d+)/:link(deny_rules|rules)/:ruleId(\\d+)', component: () => import('../views/mail/ViewMail.vue') },
             ],
         },
@@ -128,11 +139,19 @@ export const router = createRouter({
             ],
         },
         {
+            path: '/scrub_ips',
+            children: [
+                { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
+                { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
+            ],
+        },
+        {
             path: '/servers',
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/servers/ServersList.vue') },
                 { path: 'order', component: () => import('../views/servers/OrderServer.vue') },
+                { path: 'dedicated', component: () => import('../views/servers/OrderDedicated.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/servers/ViewServer.vue') },
                 { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|bandwidth_graph|ipmi_live|reverse_dns)', component: () => import('../views/servers/ViewServer.vue') },
             ],
@@ -145,24 +164,6 @@ export const router = createRouter({
                 { path: 'order', component: () => import('../views/ssl/OrderSsl.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/ssl/ViewSsl.vue') },
                 { path: ':id(\\d+)/:link(welcome_email|cancel|invoices|change_approver_email|resend_approver_email)', component: () => import('../views/ssl/ViewSsl.vue') },
-            ],
-        },
-        {
-            path: '/tickets',
-            //component: () => import('../views/billing/affiliates/Layout.vue'),
-            children: [
-                { path: '', component: () => import('../views/tickets/TicketsList.vue') },
-                { path: 'new', component: () => import('../views/tickets/NewTicket.vue') },
-                { path: ':id', component: () => import('../views/tickets/ViewTicket.vue') },
-            ],
-        },
-        {
-            path: '/users',
-            //component: () => import('../views/billing/affiliates/Layout.vue'),
-            children: [
-                { path: '', component: () => import('../views/users/List.vue') },
-                { path: 'add', component: () => import('../views/users/AddEdit.vue') },
-                { path: 'edit/:id', component: () => import('../views/users/AddEdit.vue') },
             ],
         },
         {

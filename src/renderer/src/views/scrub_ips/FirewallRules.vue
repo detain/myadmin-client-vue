@@ -46,8 +46,8 @@
 </template>
 
 <script setup lang="ts">
-import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { useSiteStore } from '@/stores/site.store';
+import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const firewallRules = defineModel('firewallRules', { type: Array });

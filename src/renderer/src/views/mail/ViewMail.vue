@@ -10,8 +10,12 @@ import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
-import Alerts from '../../views/mail/Alerts.vue';
-import DenyRules from '../../views/mail/DenyRules.vue';
+import Alerts from './Alerts.vue';
+import DenyRules from './DenyRules.vue';
+import Delist from './Delist.vue';
+import Deliverability from './Deliverability.vue';
+import Logs from './Logs.vue';
+import Stats from './Stats.vue';
 
 const module = 'mail';
 const siteStore = useSiteStore();
@@ -211,6 +215,18 @@ mailStore.getById(id);
         </div>
         <div v-else-if="link == 'deny_rules'" class="col">
             <DenyRules :id="id"></DenyRules>
+        </div>
+        <div v-else-if="link == 'delist'" class="col">
+            <Delist :id="id"></Delist>
+        </div>
+        <div v-else-if="link == 'email_deliverability'" class="col">
+            <Deliverability :id="id"></Deliverability>
+        </div>
+        <div v-else-if="link == 'log'" class="col">
+            <Logs :id="id"></Logs>
+        </div>
+        <div v-else-if="link == 'stats'" class="col">
+            <Stats :id="id"></Stats>
         </div>
         <div v-else-if="link == 'invoices'" class="col">
             <Invoices :id="id" :module="module"></Invoices>

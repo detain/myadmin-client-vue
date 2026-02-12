@@ -4,7 +4,7 @@ import { useAccountStore } from '../../stores/account.store';
 import { useSiteStore } from '../../stores/site.store';
 
 import { fetchWrapper } from '../../helpers/fetchWrapper';
-import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '../../types/account.ts';
+import type { AccountData, oAuthProviders as oAuthProvidersType, oAuthConfig as oAuthConfigType, oAuthAdapters as oAuthAdaptersType } from '../../types/account';
 
 const props = defineProps<{
     data: AccountData;
@@ -56,6 +56,12 @@ async function unlinkOauth(type: string) {
         console.log('unlinkOauth failed');
         console.log(error);
     }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'LinkedAccounts',
 }
 </script>
 

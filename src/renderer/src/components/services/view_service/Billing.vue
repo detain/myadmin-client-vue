@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ucwords } from '@/helpers/ucwords';
+import { ucwords } from '../../../helpers/ucwords';
 const { serviceStatus, currencySymbol, cost, frequency } = defineProps<{
     frequency: string;
     currencySymbol: string;

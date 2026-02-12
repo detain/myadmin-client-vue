@@ -12,11 +12,12 @@ import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
 import Cancel from '../../components/services/Cancel.vue';
 import Invoices from '../../components/services/Invoices.vue';
-import Contact from '../../views/domains/Contact.vue';
-import Dnssec from '../../views/domains/Dnssec.vue';
-import Nameservers from '../../views/domains/Nameservers.vue';
-import Renew from '../../views/domains/Renew.vue';
-import Whois from '../../views/domains/Whois.vue';
+import Contact from './Contact.vue';
+import Dnssec from './Dnssec.vue';
+import Nameservers from './Nameservers.vue';
+import Renew from './Renew.vue';
+import Transfer from './Transfer.vue';
+import Whois from './Whois.vue';
 
 const module = 'domains';
 const siteStore = useSiteStore();
@@ -173,6 +174,9 @@ loadLink(route.params.link as string);
         </div>
         <div v-else-if="link == 'renew'" class="col">
             <Renew :id="id"></Renew>
+        </div>
+        <div v-else-if="link == 'transfer'" class="col">
+            <Transfer :id="id"></Transfer>
         </div>
         <div v-else-if="link == 'whois'" class="col">
             <Whois :id="id" :hostname="serviceInfo.domain_hostname"></Whois>

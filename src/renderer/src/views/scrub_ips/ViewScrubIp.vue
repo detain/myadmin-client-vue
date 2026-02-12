@@ -49,16 +49,16 @@
 import { storeToRefs } from 'pinia';
 import { computed, watch } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { useSiteStore } from '@/stores/site.store';
-import { useScrubIpStore } from '@/stores/scrub_ips.store';
-import { moduleLink } from '@/helpers/moduleLink';
-import { ucwords } from '@/helpers/ucwords';
-import Package from '@/components/services/view_service/Package.vue';
-import Billing from '@/components/services/view_service/Billing.vue';
-import InfoBox from '@/components/services/view_service/InfoBox.vue';
-import ClientLinks from '@/components/services/view_service/ClientLinks.vue';
-import Filters from '@/views/scrub_ips/Filters.vue';
-import FirewallRules from '@/views/scrub_ips/FirewallRules.vue';
+import { useSiteStore } from '../../stores/site.store';
+import { useScrubIpStore } from '../../stores/scrub_ips.store';
+import { moduleLink } from '../../helpers/moduleLink';
+import { ucwords } from '../../helpers/ucwords';
+import Package from '../../components/services/view_service/Package.vue';
+import Billing from '../../components/services/view_service/Billing.vue';
+import InfoBox from '../../components/services/view_service/InfoBox.vue';
+import ClientLinks from '../../components/services/view_service/ClientLinks.vue';
+import Filters from '../../views/scrub_ips/Filters.vue';
+import FirewallRules from '../../views/scrub_ips/FirewallRules.vue';
 
 const scrubIpStore = useScrubIpStore();
 const module = 'scrub_ips';

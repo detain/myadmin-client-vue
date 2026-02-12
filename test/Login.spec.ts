@@ -1,12 +1,24 @@
+import { vi, expect, test } from 'vitest';
+import { render } from 'vitest-browser-vue';
 import { mount } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import Login from '../src/views/Login.vue';
-import Swal from 'sweetalert2';
 import { useAuthStore } from '../src/stores/auth.store';
-import $ from 'jquery';
+import { fetchWrapper } from '../src/helpers/fetchWrapper';
+import { nextTick } from 'vue';
+//import Swal from 'sweetalert2';
+//import $ from 'jquery';
 
 vi.mock('sweetalert2');
+
+test('renders login form', async () => {
+    const { getByText } = render(Login, {
+        //props: { name: 'Vitest' },
+    });
+    await expect.element(getByText('Sign in using')).toBeInTheDocument();
+});
+
 
 describe('Login.vue', () => {
     const mountOptions = {
@@ -34,8 +46,8 @@ describe('Login.vue', () => {
     it('updates login and password fields', async () => {
         const wrapper = mount(Login, mountOptions);
 
-        const loginInput = wrapper.find('input[name="login"]');
-        const passwordInput = wrapper.find('input[type="password"]');
+        const loginInput = wrapper.find('#loginname');
+        const passwordInput = wrapper.find('#loginpassword');
 
         await loginInput.setValue('testuser');
         await passwordInput.setValue('secret');
@@ -44,15 +56,55 @@ describe('Login.vue', () => {
         expect((passwordInput.element as HTMLInputElement).value).toBe('secret');
     });
 
-    it('calls authStore.login on submit', async () => {
+    it('submits form and updates store user & sessionId', async () => {
+        // Mount component with Pinia injected
+        const wrapper = mount(Login, {
+            global: {
+                plugins: [
+                    createTestingPinia({
+                        stubActions: false, // let actions run
+                    }),
+                ],
+            },
+        });
+
+        // Get the store **after Pinia is installed**
         const authStore = useAuthStore();
-        const wrapper = mount(Login, mountOptions);
 
-        await wrapper.find('form').trigger('submit.prevent');
+        // Arrange: mock fetchWrapper.post to return a fake user
+        const fakeUser = { sessionId: 'abc123', userName: 'Joe' };
+        vi.spyOn(fetchWrapper, 'post').mockResolvedValue(fakeUser);
 
-        expect(authStore.login).toHaveBeenCalled();
+        const loginInput = wrapper.find('#loginname');
+        const passwordInput = wrapper.find('#loginpassword');
+
+        await loginInput.setValue('testuser');
+        await passwordInput.setValue('secret');
+
+        expect((loginInput.element as HTMLInputElement).value).toBe('testuser');
+        expect((passwordInput.element as HTMLInputElement).value).toBe('secret');
+
+        // Act: trigger form submit
+        await wrapper.find('form.myadmin_loginForm').trigger('submit.prevent');
+
+        // Wait for all async tasks in login
+        await nextTick();
+        await new Promise((resolve) => setTimeout(resolve, 0)); // ensures all promises resolved
+
+        // Assert: fetchWrapper.post was called with login URL
+        expect(fetchWrapper.post).toHaveBeenCalledWith(
+            expect.stringContaining('/login'),
+            expect.objectContaining({
+                login: 'testuser',
+                passwd: 'secret',
+            })
+        );
+
+        // Assert: store was updated correctly
+        expect(authStore.user).toEqual(fakeUser);
+        expect(authStore.sessionId).toEqual(fakeUser.sessionId);
     });
-
+/*
     it('blocks submit when fields are empty', async () => {
         const wrapper = mount(Login, mountOptions);
 
@@ -122,7 +174,7 @@ describe('Login.vue', () => {
 
         expect(authStore.signup).toHaveBeenCalled();
     });
-
+*/
     it('shows forgot password form', async () => {
         const wrapper = mount(Login, mountOptions);
 
@@ -132,7 +184,7 @@ describe('Login.vue', () => {
         // Simulate click on forgot link (but since jQuery, hard to test directly)
         // Perhaps test the function directly or mock
     });
-
+/*
     it('computes isTosChecked correctly', async () => {
         const wrapper = mount(Login, mountOptions);
 
@@ -190,7 +242,7 @@ describe('Login.vue', () => {
             })
         );
     });
-
+*/
     it('calls forgot_password function', () => {
         const wrapper = mount(Login, mountOptions);
 

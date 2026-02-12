@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { moduleLink } from '../../helpers/moduleLink';
@@ -15,8 +15,6 @@ import imageLitespeed from '../../assets/images/litespeed.png';
 import type { CouponInfo } from '../../types/vps_order.ts';
 const module: string = 'licenses';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order License');
-siteStore.setTitle('Order License');
 const route = useRoute();
 const router = useRouter();
 const catTag = computed(() => (route.params.catTag as string) || '');
@@ -29,36 +27,34 @@ const coupon = ref('');
 const tos = ref(false);
 const comment = ref('');
 const frequency = ref(1);
-function updateBreadcrums() {
-    if (catTag.value == '') {
-        step.value = 'license_types';
-    } else {
-        step.value = 'order_form';
+const enabledServices = [11482, 11475, 11468, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 5032, 5034, 10677, 10678, 10679, 10680, 10681, 11524, 11531, 11538, 5054, 5058, 5060, 5053, 5057, 5059, 10682, 10769, 5006, 5007];
+const packageCosts = ref({});
+const serviceTypes = ref<ServiceTypes>({});
+const serviceCategories = ref<ServiceCategories>({});
+const packageId = ref<number | string>(0);
+const currency = ref('USD');
+const currencySymbol = ref('$');
+siteStore.setPageHeading('Order License');
+siteStore.setTitle('Order License');
+const getCatId = computed(() => {
+    for (const catId in serviceCategories.value) {
+        if (serviceCategories.value[catId].category_tag == catTag.value) {
+            return catId;
+        }
     }
-    if (step.value == 'license_types') {
-        siteStore.setBreadcrums([
-            ['/home', 'Home'],
-            [`/${moduleLink(module)}`, 'Licenses List'],
-            [`/${moduleLink(module)}/order`, 'Select License Type'],
-        ]);
-    } else {
-        siteStore.setBreadcrums([
-            ['/home', 'Home'],
-            [`/${moduleLink(module)}`, 'Licenses List'],
-            [`/${moduleLink(module)}/order`, 'Select License Type'],
-            [`/licenses/order/${catTag.value}`, 'Order License'],
-        ]);
+    return 0;
+});
+const getServiceTypes = computed(() => {
+    const catId = getCatId.value;
+    console.log(catId);
+    let types: ServiceTypes = {};
+    for (const serviceId in serviceTypes.value) {
+        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId)) && serviceTypes.value[serviceId].services_buyable == '1' && String(serviceTypes.value[serviceId].services_hidden) == '0') {
+            types[serviceId] = serviceTypes.value[serviceId];
+        }
     }
-}
-interface GetLicensesRow {
-    name: string;
-    description: string;
-    image: string;
-    order: number;
-}
-interface GetLicenses {
-    [key: string]: GetLicensesRow;
-}
+    return types;
+});
 const getLicenses = ref<GetLicenses>({
     directadmin: {
         name: 'DirectAdmin',
@@ -97,9 +93,18 @@ const getLicenses = ref<GetLicenses>({
         order: 6,
     },
 });
-const enabledServices = [5006, 5007, 5032, 5034, 5053, 5054, 5057, 5058, 5059, 5060, 10677, 10678, 10679, 10680, 10681, 10682, 10725, 10767, 10769, 10945, 10952, 10959, 10966, 10973, 10980, 10987, 10994, 11272, 11279, 11349];
-const packageCosts = ref({});
-const serviceTypes = ref<ServiceTypes>({});
+
+type LicenseFieldMap = Record<string, LicenseField>;
+
+interface GetLicensesRow {
+    name: string;
+    description: string;
+    image: string;
+    order: number;
+}
+interface GetLicenses {
+    [key: string]: GetLicensesRow;
+}
 
 interface ServiceCategory {
     category_id: number;
@@ -112,28 +117,49 @@ interface ServiceCategories {
     [key: string]: ServiceCategory;
 }
 
-const serviceCategories = ref<ServiceCategories>({});
-const packageId = ref<number | string>(0);
-const validateResponse = ref({});
-const getCatId = computed(() => {
-    for (const catId in serviceCategories.value) {
-        if (serviceCategories.value[catId].category_tag == catTag.value) {
-            return catId;
-        }
+interface Service {
+    services_id: number;
+    services_name: string;
+    services_cost: number;
+    services_field2?: string;
+    services_category: number;
+}
+
+interface LicenseField {
+    services_name: string;
+    services_cost: number;
+    services_details?: string;
+}
+
+function updateBreadcrums() {
+    if (catTag.value == '') {
+        step.value = 'license_types';
+    } else {
+        step.value = 'order_form';
     }
-    return 0;
-});
-const getServiceTypes = computed(() => {
-    const catId = getCatId.value;
-    console.log(catId);
-    let types: ServiceTypes = {};
-    for (const serviceId in serviceTypes.value) {
-        if (serviceTypes.value[serviceId].services_category == catId && enabledServices.includes(Number(serviceId))) {
-            types[serviceId] = serviceTypes.value[serviceId];
+    if (step.value == 'license_types') {
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
+        ]);
+    } else {
+        if (!Object.keys(getServiceTypes.value).includes(packageId.value as string)) {
+            packageId.value = Object.keys(getServiceTypes.value)[0];
         }
+        siteStore.setBreadcrums([
+            ['/home', 'Home'],
+            [`/${moduleLink(module)}`, 'Licenses List'],
+            [`/${moduleLink(module)}/order`, 'Select License Type'],
+            [`/licenses/order/${catTag.value}`, 'Order License'],
+        ]);
     }
-    return types;
-});
+}
+
+function normalizeCost(cost: number, currency: string): number {
+    return cost;
+    //return currency === 'USD' ? cost : convertCurrency(cost, currency).getAmount().toFloat();
+}
 
 function updateCoupon() {
     if (lastCoupon.value != coupon.value) {
@@ -167,7 +193,6 @@ function updatePrice() {}
 function checkAvailability() {}
 
 function orderLicenseType(type: string | number) {
-    packageId.value = Object.keys(getServiceTypes.value)[0];
     step.value = 'order_form';
     updateBreadcrums();
     router.push(`/licenses/order/${type}`);
@@ -211,14 +236,45 @@ function submitLicenseForm() {
 
 function editForm() {}
 
+function loadLicenseData() {
+    fetchWrapper
+        .get(`${baseUrl}/licenses/order`)
+        .then((response) => {
+            console.log('Response:');
+            console.log(response);
+            packageCosts.value = response.packageCosts;
+            serviceTypes.value = response.serviceTypes;
+            serviceCategories.value = response.serviceCategories;
+            currencySymbol.value = response.currencySymbol;
+            for (const serviceId in serviceTypes.value) {
+                if (serviceCategories.value[serviceTypes.value[serviceId].services_category]) {
+                    if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'litespeed') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/LiteSpeed /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'directadmin') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/DirectAdmin /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'parallels') {
+                        serviceTypes.value[serviceId].services_name = serviceTypes.value[serviceId].services_name.replace(/Plesk v12 /i, '');
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'cpanel') {
+                        serviceTypes.value[serviceId].services_name = serviceId === '10682' ? `${serviceTypes.value[serviceId].services_name} Server` : `${serviceTypes.value[serviceId].services_name.replace(/Cloud /i, '')} VPS`;
+                    } else if (serviceCategories.value[serviceTypes.value[serviceId].services_category].category_tag == 'softaculous') {
+                        serviceTypes.value[serviceId].services_name = serviceId === '5006' ? `${serviceTypes.value[serviceId].services_name} Server (External)` : `${serviceTypes.value[serviceId].services_name} (External)`;
+                    }
+                }
+            }
+            updateBreadcrums();
+        })
+        .catch((error: any) => {
+            console.error('Got Error: ', error);
+        });
+}
+
+watch(
+    () => route.params.catTag,
+    () => updateBreadcrums()
+);
+
 updateBreadcrums();
-fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
-    console.log('Response:');
-    console.log(response);
-    packageCosts.value = response.packageCosts;
-    serviceTypes.value = response.serviceTypes;
-    serviceCategories.value = response.serviceCategories;
-});
+loadLicenseData();
 </script>
 
 <template>
@@ -227,8 +283,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
             <div v-for="(details, key) in getLicenses" :key="key" class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <img class="card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
-                        <h3 class="card-title"></h3>
+                        <img class="card-title card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <div class="card-tools float-right">
                             <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
@@ -285,7 +340,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                                     <input v-model="ip" type="text" name="ip" class="form-control form-control-sm" placeholder="IP Address" required @change="updatePrice()" />
                                 </div>
                             </div>
-                            <div v-if="getLicenses[catTag].name !== 'cPanel'" id="coupon_row" class="form-group row">
+                            <div v-if="getLicenses[catTag]?.name !== 'cPanel'" id="coupon_row" class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input id="coupon" v-model="coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon()" />
@@ -317,12 +372,12 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-6 package_name"></div>
+                            <div class="col-md-6 package_name">{{ serviceTypes[Number(packageId)]?.services_name }}</div>
                             <div class="col text-bold text-right">1 Month</div>
                         </div>
                         <div class="row mb-3">
                             <div id="hostname_display" class="col-md-6">Package Cost</div>
-                            <div class="col package_cost text-bold text-right"></div>
+                            <div class="col package_cost text-bold text-right">{{ currencySymbol }}{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                         <div id="couponpricerownew" class="row coupon-display mb-3">
                             <div id="couponpricetext" class="col-md-6"></div>
@@ -331,11 +386,11 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalprice" class="col text-bold total_cost text-right text-lg"></div>
+                            <div id="totalprice" class="col text-bold total_cost text-right text-lg">{{ currencySymbol }}{{ serviceTypes[Number(packageId)]?.services_cost }}</div>
                         </div>
                     </div>
                 </div>
-                <div v-if="catTag === 'litespeed'" class="card">
+                <div v-if="catTag == 'litespeed' || catTag == 'directadmin'" class="card">
                     <div class="p-1">
                         <div class="card-header py-2">
                             <h3 class="card-title"><i class="fa fa-suitcase">&nbsp;</i>Package Details</h3>
@@ -343,7 +398,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                     </div>
                     <div class="card-body text-md">
                         <div class="row mb-3">
-                            <div class="col-md-12 pkg_det">{{ serviceTypes[Number(packageId)].services_details }}</div>
+                            <div class="col-md-12 pkg_det" v-html="serviceTypes[Number(packageId)]?.services_field2"></div>
                         </div>
                     </div>
                 </div>
@@ -426,7 +481,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                             <div class="pb-1 pt-3">
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
-                                <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
+                                <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
                                 <p class="icheck-success text-bold text-center">
                                     <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
                                     <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
@@ -434,6 +489,7 @@ fetchWrapper.get(`${baseUrl}/licenses/order`).then((response) => {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
+                                    <router-link :to="`/licenses/order/${catTag}`" class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style=""><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</router-link>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" />
                                 </div>
                             </div>

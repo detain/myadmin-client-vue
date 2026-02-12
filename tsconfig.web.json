@@ -32,7 +32,8 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
+    //"moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -42,8 +43,6 @@
     "strict": true,
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["vite/client", "vitest/globals", "jquery", "node"]
-
-
+    "types": ["vite/client", "vitest/globals", "jquery", "node", "vitest/importMeta"]
   }
 }
