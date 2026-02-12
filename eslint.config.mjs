@@ -3,6 +3,7 @@ import tseslint from '@electron-toolkit/eslint-config-ts';
 import eslintConfigPrettier from '@electron-toolkit/eslint-config-prettier';
 import eslintPluginVue from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
+import globals from 'globals';
 
 export default defineConfig(
     { ignores: ['**/node_modules', '**/dist', '**/out'] },
@@ -24,6 +25,13 @@ export default defineConfig(
     {
         files: ['**/*.{ts,mts,tsx,vue}'],
         rules: {
+            'prefer-template': 'error',
+            'no-useless-concat': 'error',
+            'vue/no-v-html': 'off',
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': 'off',
+            '@typescript-eslint/ban-types': 'off', // disable for d.ts if needed
+
             'vue/require-default-prop': 'off',
             'vue/multi-word-component-names': 'off',
             'vue/block-lang': [

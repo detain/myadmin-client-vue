@@ -16,15 +16,14 @@ export default defineConfig({
             },
         },
         plugins: [
-          vue({
-              script: {
-                  defineModel: true,
-              },
-          }),
-          dts({
-              insertTypesEntry: true,
-          }),
+            vue({
+                script: {
+                    defineModel: true,
+                },
+            }),
+            dts({
+                insertTypesEntry: true,
+            }),
         ],
-
     },
 });
