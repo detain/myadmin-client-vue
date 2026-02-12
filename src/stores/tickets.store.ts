@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { useSiteStore } from '@/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 /* ======================
    Types
