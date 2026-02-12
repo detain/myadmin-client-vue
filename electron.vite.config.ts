@@ -12,7 +12,7 @@ export default defineConfig({
         resolve: {
             alias: {
                 '@renderer': resolve('src/renderer/src'),
-                '@': fileURLToPath(new URL('./src', import.meta.url)),
+                '@': fileURLToPath(new URL('./src/renderer/src', import.meta.url)),
             },
         },
         plugins: [
