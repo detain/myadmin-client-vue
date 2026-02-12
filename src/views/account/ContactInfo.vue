@@ -16,6 +16,7 @@ const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(siteStore);
 const { loading, error, custid, ima, data, ip, gravatar } = storeToRefs(accountStore);
+const timezones = ref<string[]>([]);
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
 siteStore.setBreadcrums([
@@ -38,6 +39,7 @@ async function onSubmit(values: any) {
             country: data.value.country,
             zip: data.value.zip,
             phone: data.value.phone,
+            timezone: data.value.timezone,
             email_invoices: data.value.email_invoices,
             email_abuse: data.value.email_abuse,
             gstin: data.value.gstin,
@@ -64,15 +66,29 @@ async function onSubmit(values: any) {
     }
 }
 
-try {
-    fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
-        countries.value = response;
-    });
-} catch (error: any) {
-    console.log('error:');
-    console.log(error);
+async function loadCountries() {
+    try {
+        await fetchWrapper.get(`${baseUrl}/account/countries`).then((response) => {
+            countries.value = response;
+        });
+    } catch (error: any) {
+        console.log('error loading countries:', error);
+    }
 }
+
+async function loadTimezones() {
+    try {
+        await fetchWrapper.get(`${baseUrl}/account/timezones`).then((response) => {
+            timezones.value = response;
+        });
+    } catch (error: any) {
+        console.log('error loading timezones:', error);
+    }
+}
+
 accountStore.load();
+loadCountries();
+loadTimezones();
 </script>
 
 <template>
@@ -94,13 +110,13 @@ accountStore.load();
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-4 text-center">
-                                <img :src="user.gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10% !important; max-width: 250px" />
+                                <img :src="user.gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10% !important; max-width: 250px; display: inline;" />
                             </div>
                             <h4 class="mb-2 text-center">{{ data.name }}&nbsp;({{ data.account_id }})</h4>
                             <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
                         </div>
                         <div class="col">
-                            <form method="POST" action="contact_info" @submit.prevent="onSubmit">
+                            <form method="POST" @submit.prevent="onSubmit">
                                 <h4 class="mb-4">Personal Information</h4>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="name">Name</label>
@@ -115,7 +131,7 @@ accountStore.load();
                                     </div>
                                 </div>
                                 <div v-if="data.country === 'IN'" class="form-group row" style="display: flex">
-                                    <label class="col-md-3 col-form-label" for="gstin">GSTIN</label>
+                                    <label class="col-md-3 col-form-label" for="gstin">GSTIN TAX ID</label>
                                     <div class="col-md-6">
                                         <input id="gstin" v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
                                     </div>
@@ -161,6 +177,14 @@ accountStore.load();
                                     <label class="col-md-3 col-form-label" for="phone">Phone No</label>
                                     <div class="col-md-6">
                                         <input id="phone" v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" placeholder="Phone Number" required />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="timezone">Time Zone</label>
+                                    <div class="col-md-6">
+                                        <select id="timezone" v-model="data.timezone" name="timezone" class="form-control select2 form-control-sm">
+                                            <option v-for="(zone, index) in timezones" :key="index" :value="zone">{{ zone }}</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr />
