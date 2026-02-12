@@ -3,7 +3,7 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
-import { moduleLink } from '@/helpers/moduleLink';
+import { moduleLink } from '../../helpers/moduleLink';
 
 const props = defineProps<{
     id: number;

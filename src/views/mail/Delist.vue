@@ -3,7 +3,7 @@ import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '../../stores/site.store';
 import Swal from 'sweetalert2';
-import { moduleLink } from '@/helpers/moduleLink';
+import { moduleLink } from '../../helpers/moduleLink';
 
 const props = defineProps<{
     id: number;

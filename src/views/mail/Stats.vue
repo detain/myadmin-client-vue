@@ -3,7 +3,7 @@ import { ref, watch, nextTick, onBeforeUnmount } from 'vue';
 import { Chart, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
 import { fetchWrapper } from '../../helpers/fetchWrapper';
 import { useSiteStore } from '../../stores/site.store';
-import { moduleLink } from '@/helpers/moduleLink';
+import { moduleLink } from '../../helpers/moduleLink';
 
 Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
