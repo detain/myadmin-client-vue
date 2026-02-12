@@ -2,9 +2,9 @@
 import { ref, reactive, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useAccountStore } from '../../stores/account.store';
-import { useSiteStore } from '../../stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useAccountStore } from '@/stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';

@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { snakeToCamel } from '../helpers/snakeToCamel';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { snakeToCamel } from '@/helpers/snakeToCamel';
 
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '../types/view-service-common';
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
-import { QsState } from '../types/qs';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
+import { QsState } from '@/types/qs';
 
 export const useQsStore = defineStore('qs', {
     state: (): QsState => ({

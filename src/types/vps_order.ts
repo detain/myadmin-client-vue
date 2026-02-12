@@ -1,4 +1,4 @@
-import { ServiceTypes } from './view-service-common.ts';
+import { ServiceTypes } from '@/view-service-common.ts';
 
 export interface CouponInfo {
     applies?: number | string;

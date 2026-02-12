@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 
 const props = defineProps<{
@@ -16,8 +16,9 @@ const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const module: string = 'domains';
 const currencySymbol = ref('$');
+const available = ref(true);
 const whoisCost = ref(0);
-const contactPrivacyCost = ref(5.0);
+
 function placeOrder() {
     // Handle the form submission
     Swal.fire({
@@ -38,7 +39,7 @@ function placeOrder() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('domain whois privacyc');
+        console.log('domain whois privacy');
         console.log(error);
         Swal.fire({
             icon: 'error',
@@ -46,6 +47,34 @@ function placeOrder() {
         });
     }
 }
+
+function loadWhois() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    try {
+        fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/whois`).then((response) => {
+            Swal.close();
+            console.log('domain whois privacy');
+            console.log(response);
+            available.value = response.available;
+            whoisCost.value = response.cost;
+        });
+    } catch (error: any) {
+        Swal.close();
+        console.log('domain whois privacy');
+        console.log(error);
+        Swal.fire({
+            icon: 'error',
+            html: `Got error ${error.text}`,
+        });
+    }
+}
+
+loadWhois();
 </script>
 
 <template>
@@ -53,8 +82,7 @@ function placeOrder() {
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b
-                    >.
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>.
                 </p>
             </div>
         </div>
@@ -106,7 +134,7 @@ function placeOrder() {
                     <p>The benefit of having Contact Privacy is that the Registrant’s identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
                     <p>When Registrants enable the Contact Privacy service, masked contact information appears in the public WHOIS database.</p>
                     <p>
-                        Contact privacy is available for <span class="text-md text-green text-md">{{ contactPrivacyCost }}</span> per domain per year.
+                        Contact privacy is available for <span class="text-md text-green text-md">{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</span> per domain per year.
                     </p>
                     <p>To enable Contact Privacy for your Domain, Place Order Now.</p>
                 </div>

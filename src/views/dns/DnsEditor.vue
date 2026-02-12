@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 import Swal from 'sweetalert2';
 const route = useRoute();

@@ -2,8 +2,8 @@
 import { ref, reactive, defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { usePrePayStore } from '../../stores/prepay.store';
-import { useSiteStore } from '../../stores/site.store';
+import { usePrePayStore } from '@/stores/prepay.store';
+import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';

@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
+import { useRouter, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import { useSiteStore } from '@/stores/site.store';
+import { VpsInfo } from '@/types/vps';
+import { QsInfo } from '@/types/qs';
 import Swal from 'sweetalert2';
-
 const props = defineProps<{
     id: number;
     module: string;
@@ -15,6 +14,7 @@ const props = defineProps<{
     serviceInfo: VpsInfo | QsInfo;
 }>();
 const siteStore = useSiteStore();
+const router = useRouter();
 const baseUrl = siteStore.getBaseUrl();
 const ipsDetails = ref<IpDetails[]>([]);
 const buyForm = ref(false);
@@ -24,6 +24,7 @@ const maxIps = ref(1);
 const ipCount = ref(0);
 const loading = ref(true);
 const ipCurrency = ref('USD');
+const ipCurrencySymbol = ref('$');
 const ipCost = ref(0);
 
 interface IpDetails {
@@ -75,6 +76,7 @@ function submitForm() {
                 icon: 'success',
                 html: `Success${response.text}`,
             });
+            router.push(`/cart/${response.invoice}`);
         });
     } catch (error: any) {
         Swal.close();
@@ -96,10 +98,12 @@ const loadBuyIp = async () => {
         ipsDetails.value = response.ipsDetails;
         ipCost.value = response.ipCost;
         maxIps.value = response.maxIps;
-        ipCount.value = response.ips;
+        ipCount.value = response.ipCount;
         if (ipCount.value < maxIps.value) {
             buyForm.value = true;
         }
+        ipCurrency.value = response.currency;
+        ipCurrencySymbol.value = response.currencySymbol;
     } catch (error: any) {
         console.log('api failed');
         console.log(error);

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
-import { useSiteStore } from '../../stores/site.store';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import { useSiteStore } from '@/stores/site.store';
+import { VpsInfo } from '@/types/vps';
+import { QsInfo } from '@/types/qs';
 import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue';
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';

@@ -1,4 +1,4 @@
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from './view-service-common';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTables } from '@/view-service-common';
 
 export interface QsInfo {
     qs_id: number;

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import Swal from 'sweetalert2';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 import { useRoute, useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import type { CouponInfo } from '../../types/vps_order.ts';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
 const siteStore = useSiteStore();

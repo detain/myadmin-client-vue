@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '../../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import { fetchWrapper } from '../../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - Latest Web Traffic');

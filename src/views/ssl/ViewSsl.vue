@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useSslStore } from '../../stores/ssl.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useSslStore } from '@/stores/ssl.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import ChangeApproverEmail from '../../views/ssl/ChangeApproverEmail.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import ChangeApproverEmail from '@/views/ssl/ChangeApproverEmail.vue';
 
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '../../types/view-service-common';
+import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import Swal from 'sweetalert2';
 
 const module: string = 'ssl';

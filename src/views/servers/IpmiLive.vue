@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
-import { useAccountStore } from '../../stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
 import Swal from 'sweetalert2';
 import { storeToRefs } from 'pinia';
-import { AssetRow } from '../../types/servers';
+import { AssetRow } from '@/types/servers';
 
 const props = defineProps<{
     id: number;

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { ref, computed, onMounted } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+import ServiceActionCardHeader from '@/components/services/ServiceActionCardHeader.vue';
 
 const props = defineProps<{
     id: number;
@@ -61,14 +61,7 @@ function submitForm() {
     <div class="row justify-content-center py-3">
         <div class="col-md-6">
             <div class="card b-radius">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-key">&nbsp;</i>Change Webuzo Admin Password</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
-                        </div>
-                    </div>
-                </div>
+                <ServiceActionCardHeader title="Change Webuzo Admin Password" icon-class="fa fa-key" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body">
                     <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_webuzo_password" />

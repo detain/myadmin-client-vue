@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '../../../stores/site.store';
-import { useAccountStore } from '../../../stores/account.store';
-import { fetchWrapper } from '../../../helpers/fetchWrapper.ts';
+import { useSiteStore } from '@/stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();

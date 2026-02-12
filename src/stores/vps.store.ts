@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { VpsState } from '../types/vps';
-import { useSiteStore } from '../stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { VpsState } from '@/types/vps';
+import { useSiteStore } from '@/stores/site.store';
 
 export const useVpsStore = defineStore('vps', {
     state: (): VpsState => ({

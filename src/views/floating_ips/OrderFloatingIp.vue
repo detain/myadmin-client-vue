@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import Swal from 'sweetalert2';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import { useRouter } from 'vue-router';
-import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import $ from 'jquery';
-import type { CouponInfo } from '../../types/vps_order.ts';
+import type { CouponInfo } from '@/types/vps_order.ts';
 const router = useRouter();
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Floating IPs');

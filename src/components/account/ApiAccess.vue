@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAccountStore } from '../../stores/account.store';
-import { useSiteStore } from '../../stores/site.store';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import type { AccountData } from '../../types/account.ts';
+import { useAccountStore } from '@/stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import type { AccountData } from '@/types/account';
 
 const props = defineProps<{
     data: AccountData;
@@ -32,6 +32,12 @@ async function generateApiKey() {
         console.log('generateApiKey failed');
         console.log(error);
     }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ApiAccess',
 }
 </script>
 

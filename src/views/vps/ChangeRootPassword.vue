@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+import ServiceActionCardHeader from '@/components/services/ServiceActionCardHeader.vue';
 
 const props = defineProps<{
     id: number;
@@ -14,6 +14,7 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const password = ref('');
+const password2 = ref('');
 const id = computed(() => props.id);
 const module = computed(() => props.module);
 const curHostname = computed(() => {
@@ -21,6 +22,14 @@ const curHostname = computed(() => {
 });
 
 function submitForm() {
+    if (password.value !== password2.value) {
+        Swal.fire({
+            icon: 'error',
+            html: `Password and Confirm Password do not match`,
+        });
+        return;
+    }
+
     let postData = {
         password: password.value,
     };
@@ -49,14 +58,7 @@ function submitForm() {
     <div class="row justify-content-center py-3">
         <div class="col-md-6">
             <div class="card b-radius">
-                <div class="card-header">
-                    <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-key">&nbsp;</i>Change VPS Root Password</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
-                        </div>
-                    </div>
-                </div>
+                <ServiceActionCardHeader title="Change VPS Root Password" icon-class="fa fa-key" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body">
                     <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeRootPassword" />
@@ -70,13 +72,13 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">New Password: </label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
+                                    <input id="password" v-model="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">Confirm password: </label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
+                                    <input id="password2" v-model="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
                                 </div>
                             </div>
                             <hr />

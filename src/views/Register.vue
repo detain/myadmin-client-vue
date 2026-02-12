@@ -2,10 +2,10 @@
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 
-import { useUsersStore } from '../stores/users.store';
-import { useAlertStore } from '../stores/alert.store';
+import { useUsersStore } from '@/stores/users.store';
+import { useAlertStore } from '@/stores/alert.store';
 
-import { router } from '../router';
+import { router } from '@/router';
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),

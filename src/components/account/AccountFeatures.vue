@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import type { AccountData } from '../../types/account.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import type { AccountData } from '@/types/account';
 
 const props = defineProps<{
     data: AccountData;
@@ -34,6 +34,12 @@ async function updateFeatures() {
         console.log('update Features failed');
         console.log(error);
     }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'AccountFeatures',
 }
 </script>
 

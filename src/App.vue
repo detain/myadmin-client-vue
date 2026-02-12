@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { watch, onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import MainMenu from './components/MainMenu.vue';
-import Alert from './components/Alert.vue';
-import Search from './components/Search.vue';
-import { useAuthStore } from './stores/auth.store';
-import { useSiteStore } from './stores/site.store';
+import MainMenu from '@/components/MainMenu.vue';
+import Alert from '@/components/Alert.vue';
+import Searchbox from '@/components/Searchbox.vue';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
@@ -77,6 +77,17 @@ function restoreSidebarState() {
         }
     }
 }
+
+watch(
+    () => authStore.user,
+    (user) => {
+        if (user?.account_lid && window.OpenReplay) {
+            window.OpenReplay.setUserID(user.account_lid);
+        }
+    },
+    { immediate: true }
+);
+
 </script>
 
 <template>
@@ -91,7 +102,7 @@ function restoreSidebarState() {
                     <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
-            <Search />
+            <Searchbox />
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">

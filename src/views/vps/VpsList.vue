@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { ref, computed, onMounted } from 'vue';
 /*import $ from 'jquery';
@@ -11,7 +11,7 @@ import 'jquery-ui/dist/jquery-ui.js';
 import Popper from 'popper.js';
 import 'bootstrap';*/
 
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 const module: string = 'vps';
 const siteStore = useSiteStore();

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);
 
-interface menuLink {
+interface MenuLink {
     link?: string;
     menu?: string;
     icon: string;
@@ -14,11 +14,11 @@ interface menuLink {
     activecheck?: string[];
 }
 
-interface menuGroup {
-    [key: string]: menuLink[];
+interface MenuGroup {
+    [key: string]: MenuLink[];
 }
 
-const menus = ref<menuGroup>({
+const menus = ref<MenuGroup>({
     main: [
         { link: '/', icon: 'fa fa-tachometer-alt', text: 'Dashboard' },
         { link: '/domains', icon: 'fa fa-globe', text: 'Domains' },
@@ -49,9 +49,17 @@ const menus = ref<menuGroup>({
         { link: '/account/pass', icon: 'far fa-circle', text: 'Change Password' },
     ],
 });
+
 function isActive(key: string[] | undefined) {
     // You need to implement your translation logic here
     return typeof key != 'undefined' && key.includes(window.location.pathname.split('/')[1]);
+}
+
+</script>
+
+<script lang="ts">
+export default {
+  name: 'MainMenu',
 }
 </script>
 

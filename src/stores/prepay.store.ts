@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { snakeToCamel } from '../helpers/snakeToCamel';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { snakeToCamel } from '@/helpers/snakeToCamel';
 
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
 interface PrePayRow {
     prepay_amount: number;

@@ -1,9 +1,11 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
+import { playwright } from '@vitest/browser-playwright';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
@@ -11,12 +13,34 @@ import * as path from 'path';
 import fs from 'fs';
 import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa';
-import vueDevTools from 'vite-plugin-vue-devtools';
+import vueDevTools from 'vite-plugin-vue-devtools'; */
 import Inspector from 'vite-plugin-vue-inspector';
-import TurboConsole from 'unplugin-turbo-console/vite'; */
+import TurboConsole from 'unplugin-turbo-console/vite';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        reporters: ['default', 'html'],
+        browser: {
+            enabled: true,
+            provider: playwright(),
+            trace: 'on', // 'on-first-retry' 'on-all-retries' or 'retain-on-failure'
+            headless: true, // set too false to watch tests in a UI
+            setupFiles: ['./test/setup.ts'],
+            // Optional: configure specific options, e.g., launch options
+            launchOptions: {
+                headless: false, // Run headless in CI/locally
+            },
+            // https://vitest.dev/config/browser/playwright
+            instances: [
+                { browser: 'chromium' },
+                //{ browser: 'firefox' },
+                //{ browser: 'webkit' },
+            ],
+        },
+    },
     plugins: [
         vue({
             script: {
@@ -56,12 +80,13 @@ export default defineConfig({
             },
         }), */
         Inspect(),
-        //Inspector(),
+        Inspector(),
         //vueDevTools(),
-        //TurboConsole(),
+        TurboConsole(),
     ],
     optimizeDeps: {
         include: ['jquery', 'select2'],
+        exclude: ['playwright', 'playwright-core', 'chromium-bidi'],
     },
     include: ['jquery', 'select2'],
     build: {

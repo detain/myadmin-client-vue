@@ -1,30 +1,30 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useQsStore } from '../../stores/qs.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useQsStore } from '@/stores/qs.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import Backup from '../../views/vps/Backup.vue';
-import Backups from '../../views/vps/Backups.vue';
-import ChangeHostname from '../../views/vps/ChangeHostname.vue';
-import ChangeRootPassword from '../../views/vps/ChangeRootPassword.vue';
-import ChangeTimezone from '../../views/vps/ChangeTimezone.vue';
-import ChangeWebuzoPassword from '../../views/vps/ChangeWebuzoPassword.vue';
-import InsertCd from '../../views/vps/InsertCd.vue';
-import ReinstallOs from '../../views/vps/ReinstallOs.vue';
-import ResetPassword from '../../views/vps/ResetPassword.vue';
-import Restore from '../../views/vps/Restore.vue';
-import ReverseDns from '../../views/vps/ReverseDns.vue';
-import TrafficUsage from '../../views/vps/TrafficUsage.vue';
-import SetupVnc from '../../views/vps/SetupVnc.vue';
-import Vnc from '../../views/vps/Vnc.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Backup from '@/views/vps/Backup.vue';
+import Backups from '@/views/vps/Backups.vue';
+import ChangeHostname from '@/views/vps/ChangeHostname.vue';
+import ChangeRootPassword from '@/views/vps/ChangeRootPassword.vue';
+import ChangeTimezone from '@/views/vps/ChangeTimezone.vue';
+import ChangeWebuzoPassword from '@/views/vps/ChangeWebuzoPassword.vue';
+import InsertCd from '@/views/vps/InsertCd.vue';
+import ReinstallOs from '@/views/vps/ReinstallOs.vue';
+import ResetPassword from '@/views/vps/ResetPassword.vue';
+import Restore from '@/views/vps/Restore.vue';
+import ReverseDns from '@/views/vps/ReverseDns.vue';
+import TrafficUsage from '@/views/vps/TrafficUsage.vue';
+import SetupVnc from '@/views/vps/SetupVnc.vue';
+import Vnc from '@/views/vps/Vnc.vue';
 
 import Swal from 'sweetalert2';
 const module = 'quickservers';

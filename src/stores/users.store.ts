@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
-import { fetchWrapper } from '../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
 interface UserRow {
     id?: number;

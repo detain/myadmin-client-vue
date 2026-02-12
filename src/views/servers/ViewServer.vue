@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useServerStore } from '../../stores/server.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useServerStore } from '@/stores/server.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import BandwidthGraph from '../../views/servers/BandwidthGraph.vue';
-import IpmiLive from '../../views/servers/IpmiLive.vue';
-import ReverseDns from '../../views/servers/ReverseDns.vue';
-import { AssetRow } from '../../types/servers';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import BandwidthGraph from '@/views/servers/BandwidthGraph.vue';
+import IpmiLive from '@/views/servers/IpmiLive.vue';
+import ReverseDns from '@/views/servers/ReverseDns.vue';
+import { AssetRow } from '@/types/servers';
 
 const module = 'servers';
 const siteStore = useSiteStore();

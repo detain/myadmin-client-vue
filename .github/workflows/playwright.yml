@@ -66,4 +66,8 @@ jobs:
 
             # Vite dev server is started automatically by Playwright
             - name: Run Playwright tests
-              run: yarn playwright test
+              run: yarn test
+
+            # Vite dev server is started automatically by Playwright
+            #- name: Run Playwright tests
+            #  run: yarn playwright test

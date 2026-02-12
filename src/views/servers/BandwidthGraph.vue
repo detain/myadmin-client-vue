@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { moduleLink } from '../../helpers/moduleLink';
+import { moduleLink } from '@/helpers/moduleLink';
 import { useRoute, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useAuthStore } from '../../stores/auth.store';
+import { useAuthStore } from '@/stores/auth.store';
 const authStore = useAuthStore();
 const props = defineProps<{
     id: number;

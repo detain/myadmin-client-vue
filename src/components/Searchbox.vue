@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, nextTick, onBeforeUnmount } from 'vue';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { useSiteStore } from '../stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
 
 interface SearchResults {
     results: (string | number | null)[][];
@@ -243,6 +243,12 @@ onMounted(async () => {
 onBeforeUnmount(() => {
     document.removeEventListener('click', onClickOutside);
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: 'Searchbox',
+}
 </script>
 
 <template>
