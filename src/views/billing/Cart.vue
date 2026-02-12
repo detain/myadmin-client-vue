@@ -278,9 +278,22 @@ function checkClass(module: string) {
     toggleStatus.value[module] = !toggleStatus.value[module];
 }
 
-function delete_invoice(invId: number) {}
+async function delete_invoice(invId: number) {
+    Swal.fire({
+        icon: "warning",
+        title: '<h3>Invoice Delete ?</h3> ',
+        showCancelButton: true,
+        showLoaderOnConfirm: true,
+        confirmButtonText: 'Yes, Delete it.',
+        html:
+            '<p>Are you sure want to delete your invoice?</p>',
+        preConfirm: () => {
+//            alert(`i wanted to delete invoice ${invId}`);
+        }
+    });
+}
 
-function toggleCheckbox() {
+async function toggleCheckbox() {
     const el = document.getElementById('checkboxtoggle') as HTMLInputElement | null;
     if (el?.checked) {
         checkAll();
@@ -289,9 +302,17 @@ function toggleCheckbox() {
     }
 }
 
-function updateInfoSubmit() {}
+async function updateInfoSubmit() {
+    try {
+        const response = await fetchWrapper.post(`${baseUrl}/account`, contFields);
+        console.log(response);
+    } catch (error: any) {
+        console.log(error);
+    }
 
-function checkAll() {
+}
+
+async function checkAll() {
     invoices.value = [];
     for (let idx = 0; idx < invrows.value.length; idx++) {
         const invRow = invrows.value[idx];

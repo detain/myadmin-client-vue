@@ -110,7 +110,7 @@ loadTimezones();
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-4 text-center">
-                                <img :src="user.gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10% !important; max-width: 250px; display: inline;" />
+                                <img :src="user.gravatar" class="avatar rounded-circle img-thumbnail" alt="avatar" style="border-radius: 10% !important; max-width: 250px; display: inline" />
                             </div>
                             <h4 class="mb-2 text-center">{{ data.name }}&nbsp;({{ data.account_id }})</h4>
                             <h4 class="mb-2 text-center">{{ data.account_lid }}</h4>
