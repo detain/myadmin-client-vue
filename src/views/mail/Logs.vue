@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import { moduleLink } from '@/helpers/moduleLink';
 
 const props = defineProps<{
     id: number;

@@ -2,9 +2,9 @@
 import { ref, computed, reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '../../helpers/fetchWrapper.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();

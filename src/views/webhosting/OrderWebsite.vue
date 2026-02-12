@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, watch, reactive, computed } from 'vue';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import { ServiceType, ServiceTypes } from '../../types/view-service-common';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-import type { CouponInfo } from '../../types/vps_order.ts';
-import iconShield from '../../assets/images/myadmin/warning-shield.png';
-import iconCheckmark from '../../assets/images/myadmin/checkmark.png';
+import type { CouponInfo } from '@/types/vps_order.ts';
+import iconShield from '@/assets/images/myadmin/warning-shield.png';
+import iconCheckmark from '@/assets/images/myadmin/checkmark.png';
 const module = 'webhosting';
 const route = useRoute();
 const router = useRouter();

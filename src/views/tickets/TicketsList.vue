@@ -2,8 +2,8 @@
 import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { Ticket, useTicketsStore } from '../../stores/tickets.store';
-import { useSiteStore } from '../../stores/site.store.ts';
+import { Ticket, useTicketsStore } from '@/stores/tickets.store';
+import { useSiteStore } from '@/stores/site.store.ts';
 
 const route = useRoute();
 const router = useRouter();

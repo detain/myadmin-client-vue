@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 //import { number } from 'yup';
-import { moduleLink } from '../../helpers/moduleLink.ts';
+import { moduleLink } from '@/helpers/moduleLink.ts';
 const props = defineProps<{
     id: number;
 }>();

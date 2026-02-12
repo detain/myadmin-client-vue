@@ -2,11 +2,11 @@
 import { watch, onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import MainMenu from './components/MainMenu.vue';
-import Alert from './components/Alert.vue';
-import Searchbox from './components/Searchbox.vue';
-import { useAuthStore } from './stores/auth.store';
-import { useSiteStore } from './stores/site.store';
+import MainMenu from '@/components/MainMenu.vue';
+import Alert from '@/components/Alert.vue';
+import Searchbox from '@/components/Searchbox.vue';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
 
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 

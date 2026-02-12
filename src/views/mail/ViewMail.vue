@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useMailStore } from '../../stores/mail.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useMailStore } from '@/stores/mail.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import Alerts from './Alerts.vue';
-import DenyRules from './DenyRules.vue';
-import Delist from './Delist.vue';
-import Deliverability from './Deliverability.vue';
-import Logs from './Logs.vue';
-import Stats from './Stats.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Alerts from '@/Alerts.vue';
+import DenyRules from '@/DenyRules.vue';
+import Delist from '@/Delist.vue';
+import Deliverability from '@/Deliverability.vue';
+import Logs from '@/Logs.vue';
+import Stats from '@/Stats.vue';
 
 const module = 'mail';
 const siteStore = useSiteStore();

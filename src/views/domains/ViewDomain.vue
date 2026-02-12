@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useDomainStore } from '../../stores/domain.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useDomainStore } from '@/stores/domain.store';
+import { useSiteStore } from '@/stores/site.store';
 
 import Swal from 'sweetalert2';
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import Contact from './Contact.vue';
-import Dnssec from './Dnssec.vue';
-import Nameservers from './Nameservers.vue';
-import Renew from './Renew.vue';
-import Transfer from './Transfer.vue';
-import Whois from './Whois.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import Contact from '@/Contact.vue';
+import Dnssec from '@/Dnssec.vue';
+import Nameservers from '@/Nameservers.vue';
+import Renew from '@/Renew.vue';
+import Transfer from '@/Transfer.vue';
+import Whois from '@/Whois.vue';
 
 const module = 'domains';
 const siteStore = useSiteStore();

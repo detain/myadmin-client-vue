@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, watch, computed, onMounted } from 'vue';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { useSiteStore } from '../../stores/site.store';
-import type { ServiceType, ServiceTypes } from '../../types/view-service-common';
-import type { CouponInfo, VpsOrderResponse, PlatformPackages, PlatformNames, PackageCosts, LocationStock, LocationNames, OsNames, Templates } from '../../types/vps_order.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useSiteStore } from '@/stores/site.store';
+import type { ServiceType, ServiceTypes } from '@/types/view-service-common';
+import type { CouponInfo, VpsOrderResponse, PlatformPackages, PlatformNames, PackageCosts, LocationStock, LocationNames, OsNames, Templates } from '@/types/vps_order.ts';
 import { useRoute, useRouter } from 'vue-router';
 import $ from 'jquery';
 import jQuery from 'jquery';

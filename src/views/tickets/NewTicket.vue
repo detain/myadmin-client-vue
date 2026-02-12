@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useSiteStore } from '../../stores/site.store.ts';
-import { useAccountStore } from '../../stores/account.store';
+import { useSiteStore } from '@/stores/site.store.ts';
+import { useAccountStore } from '@/stores/account.store';
 import { reactive, ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
-import { fetchWrapper } from '../../helpers/fetchWrapper.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 const { ip } = storeToRefs(accountStore);

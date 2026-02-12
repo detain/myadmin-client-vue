@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
-import { ucwords } from '../../helpers/ucwords';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
+import { ucwords } from '@/helpers/ucwords';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
-import { useBackupStore } from '../../stores/backup.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useBackupStore } from '@/stores/backup.store';
+import { useSiteStore } from '@/stores/site.store';
 
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 

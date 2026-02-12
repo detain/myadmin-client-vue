@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useWebsiteStore } from '../../stores/website.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useWebsiteStore } from '@/stores/website.store';
+import { useSiteStore } from '@/stores/site.store';
 
 import $ from 'jquery';
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import BuyIp from '../../views/webhosting/BuyIp.vue';
-import DownloadBackups from '../../views/webhosting/DownloadBackups.vue';
-import Migration from '../../views/webhosting/Migration.vue';
-import ReverseDns from '../../views/webhosting/ReverseDns.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import BuyIp from '@/views/webhosting/BuyIp.vue';
+import DownloadBackups from '@/views/webhosting/DownloadBackups.vue';
+import Migration from '@/views/webhosting/Migration.vue';
+import ReverseDns from '@/views/webhosting/ReverseDns.vue';
 
 import Swal from 'sweetalert2';
 

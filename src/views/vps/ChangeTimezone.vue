@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import { useSiteStore } from '@/stores/site.store';
+import { VpsInfo } from '@/types/vps';
+import { QsInfo } from '@/types/qs';
 
 import Swal from 'sweetalert2';
-import ServiceActionCardHeader from '../../components/services/ServiceActionCardHeader.vue';
+import ServiceActionCardHeader from '@/components/services/ServiceActionCardHeader.vue';
 const props = defineProps<{
     id: number;
     module: string;

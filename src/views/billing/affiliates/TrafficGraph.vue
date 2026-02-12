@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useSiteStore } from '../../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import Chart from 'chart.js/auto';
-import { fetchWrapper } from '../../../helpers/fetchWrapper.ts';
+import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Affiliate - TrafficGraph');
 siteStore.setTitle('Affiliate - TrafficGraph');

@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { ucwords } from '../../helpers/ucwords';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { ucwords } from '@/helpers/ucwords';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
-import { useLicenseStore } from '../../stores/license.store';
-import { useSiteStore } from '../../stores/site.store';
+import { useLicenseStore } from '@/stores/license.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
-import Cancel from '../../components/services/Cancel.vue';
-import Invoices from '../../components/services/Invoices.vue';
-import ChangeIp from '../../views/licenses/ChangeIp.vue';
-import ChangeOs from '../../views/licenses/ChangeOs.vue';
+import Cancel from '@/components/services/Cancel.vue';
+import Invoices from '@/components/services/Invoices.vue';
+import ChangeIp from '@/views/licenses/ChangeIp.vue';
+import ChangeOs from '@/views/licenses/ChangeOs.vue';
 
 const module = 'licenses';
 const siteStore = useSiteStore();

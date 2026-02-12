@@ -2,8 +2,8 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSiteStore } from '../../../stores/site.store';
-import { useAccountStore } from '../../../stores/account.store';
+import { useSiteStore } from '@/stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 //import DataTable from 'datatables.net';

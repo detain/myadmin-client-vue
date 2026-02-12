@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
-import type { CouponInfo } from '../../types/vps_order.ts';
+import type { CouponInfo } from '@/types/vps_order.ts';
 import { ref } from 'vue';
 
 const siteStore = useSiteStore();

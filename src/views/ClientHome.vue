@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import { moduleLink } from '../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '../stores/auth.store';
-import { useSiteStore } from '../stores/site.store';
-import { useAccountStore } from '../stores/account.store';
-import type { HomeTicket, HomeTicketStatus, HomeTicketStatusView, HomeDetails, HomeServices, HomeResponse } from '../types/ClientHome.ts';
+import { useAuthStore } from '@/stores/auth.store';
+import { useSiteStore } from '@/stores/site.store';
+import { useAccountStore } from '@/stores/account.store';
+import type { HomeTicket, HomeTicketStatus, HomeTicketStatusView, HomeDetails, HomeServices, HomeResponse } from '@/types/ClientHome.ts';
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();

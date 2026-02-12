@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { fetchWrapper } from '../../helpers/fetchWrapper';
-import { moduleLink } from '../../helpers/moduleLink';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
-import { useSiteStore } from '../../stores/site.store';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
-import { VpsInfo } from '../../types/vps';
-import { QsInfo } from '../../types/qs';
+import { VpsInfo } from '@/types/vps';
+import { QsInfo } from '@/types/qs';
 
 const props = defineProps<{
     id: number;
