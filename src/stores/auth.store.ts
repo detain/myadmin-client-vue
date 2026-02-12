@@ -202,7 +202,7 @@ n,
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
             try {
-                await fetchWrapper.get(`${baseUrl}/logout`);
+                await fetchWrapper.getNoLogout(`${baseUrl}/logout`);
             } catch (error: any) {
                 console.log('error:');
                 console.log(error);
