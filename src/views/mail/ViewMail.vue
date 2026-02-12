@@ -10,12 +10,12 @@ import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
-import Alerts from '@/Alerts.vue';
-import DenyRules from '@/DenyRules.vue';
-import Delist from '@/Delist.vue';
-import Deliverability from '@/Deliverability.vue';
-import Logs from '@/Logs.vue';
-import Stats from '@/Stats.vue';
+import Alerts from './Alerts.vue';
+import DenyRules from './DenyRules.vue';
+import Delist from './Delist.vue';
+import Deliverability from './Deliverability.vue';
+import Logs from './Logs.vue';
+import Stats from './Stats.vue';
 
 const module = 'mail';
 const siteStore = useSiteStore();

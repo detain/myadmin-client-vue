@@ -9,7 +9,7 @@ import { useFloatingIpStore } from '@/stores/floating_ips.store';
 import { useSiteStore } from '@/stores/site.store';
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
-import ChangeIp from '@/ChangeIp.vue';
+import ChangeIp from './ChangeIp.vue';
 import Swal from 'sweetalert2';
 
 const module = 'floating_ips';

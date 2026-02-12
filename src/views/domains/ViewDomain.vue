@@ -12,12 +12,12 @@ import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
-import Contact from '@/Contact.vue';
-import Dnssec from '@/Dnssec.vue';
-import Nameservers from '@/Nameservers.vue';
-import Renew from '@/Renew.vue';
-import Transfer from '@/Transfer.vue';
-import Whois from '@/Whois.vue';
+import Contact from './Contact.vue';
+import Dnssec from './Dnssec.vue';
+import Nameservers from './Nameservers.vue';
+import Renew from './Renew.vue';
+import Transfer from './Transfer.vue';
+import Whois from './Whois.vue';
 
 const module = 'domains';
 const siteStore = useSiteStore();
