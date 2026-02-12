@@ -5,8 +5,8 @@ import { createHead } from '@unhead/vue';
 //import { VueRecaptchaPlugin } from 'vue-recaptcha';
 //import { createI18n } from 'vue-i18n'
 
-import App from '@/App.vue';
-import { router } from '@/router';
+import App from './App.vue';
+import { router } from './router';
 
 import './plugins/jquery';
 
