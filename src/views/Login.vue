@@ -1033,7 +1033,7 @@ authStore.load();
 @tailwind components;
 @tailwind utilities;*/
 /* @import '../assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
-@import '../assets/css/fontawesome-kit.min.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import '../assets/css/tailwind.min.css';
