@@ -203,6 +203,7 @@ watch(
 
 <style>
 @import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'font-awesome/css/font-awesome.min.css';
 @import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
