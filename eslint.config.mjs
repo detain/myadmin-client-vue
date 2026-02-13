@@ -22,6 +22,20 @@ export default defineConfig(
             },
         },
     },
+
+    // ✅ Renderer globals
+    {
+        files: ['src/renderer/**/*.{ts,vue}'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                $: 'readonly',
+                JQuery: 'readonly',
+                NodeJS: 'readonly',
+            },
+        },
+    },
+
     {
         files: ['**/*.{ts,mts,tsx,vue}'],
         rules: {
@@ -31,7 +45,10 @@ export default defineConfig(
             'no-unused-vars': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
             '@typescript-eslint/ban-types': 'off', // disable for d.ts if needed
-
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-empty-function': 'off',
+            '@typescript-eslint/no-empty-object-type': 'off',
             'vue/require-default-prop': 'off',
             'vue/multi-word-component-names': 'off',
             'vue/block-lang': [
