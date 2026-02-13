@@ -8,8 +8,6 @@ import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 
-//import 'https://kit.fontawesome.com/2c66c1d1b5.js';
-
 function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     const body = document.body;
     const isMobileViewport = window.innerWidth <= 992;
@@ -149,11 +147,11 @@ watch(
                 <div class="user-panel d-flex mb-3 mt-3 pb-3">
                     <!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
-                    <div class="info">
+                    <div class="info hide-on-collaps">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0"
-                            ><b>{{ user?.account_lid }}</b></span
-                        >
+                        <span style="color: #c2c7d0">
+                            <b>{{ user?.account_lid }}</b>
+                        </span>
                     </div>
                 </div>
                 <nav class="mt-2">
@@ -175,9 +173,9 @@ watch(
                             <ol class="breadcrumb">
                                 <li v-for="(bData, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ active: index === breadcrums.length - 1 }">
                                     <template v-if="index === breadcrums.length - 1">{{ bData[1] }}</template>
-                                    <template v-else
-                                        ><router-link :to="bData[0]">{{ bData[1] }}</router-link></template
-                                    >
+                                    <template v-else>
+                                        <router-link :to="bData[0]">{{ bData[1] }}</router-link>
+                                    </template>
                                 </li>
                             </ol>
                         </div>
