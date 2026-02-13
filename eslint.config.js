@@ -8,7 +8,7 @@ import globals from 'globals';
 
 export default [
     {
-        ignores: ['dist/**', 'node_modules/**'],
+        ignores: ['dist/**', 'node_modules/**', 'android/**', 'ios/**', 'out/**'],
     },
     // ------------------------------------------------------------
     // ESLint core recommended
@@ -36,7 +36,7 @@ export default [
     // TypeScript + Vue files
     // ------------------------------------------------------------
     {
-        files: ['src/**/*.ts', 'src/**/*.vue'],
+        files: ['**/*.ts', 'src/**/*.vue'],
         languageOptions: {
             parser: vueParser,
             globals: {
