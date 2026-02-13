@@ -65,8 +65,8 @@ async function get2faKey() {
 
 <script lang="ts">
 export default {
-  name: 'TwoFactorAuth',
-}
+    name: 'TwoFactorAuth',
+};
 </script>
 
 <template>

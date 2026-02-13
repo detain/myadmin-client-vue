@@ -41,8 +41,8 @@ async function updateSshPublicKey() {
 
 <script lang="ts">
 export default {
-  name: 'SshKeys',
-}
+    name: 'SshKeys',
+};
 </script>
 
 <template>

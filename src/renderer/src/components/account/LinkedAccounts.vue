@@ -61,8 +61,8 @@ async function unlinkOauth(type: string) {
 
 <script lang="ts">
 export default {
-  name: 'LinkedAccounts',
-}
+    name: 'LinkedAccounts',
+};
 </script>
 
 <template>

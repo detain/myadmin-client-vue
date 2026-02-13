@@ -71,8 +71,8 @@ async function addRangeSubmit() {
 
 <script lang="ts">
 export default {
-  name: 'IpLimits',
-}
+    name: 'IpLimits',
+};
 </script>
 
 <template>

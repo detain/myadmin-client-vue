@@ -1,6 +1,6 @@
 /**
  * Generates a password with the given length allowing you to choose what type of characters are included.
- * 
+ *
  * availableSets:
  *  l = lowercase
  *  u = uppercase
@@ -25,7 +25,7 @@ export function generatePassword(length: number = 8, availableSets: string = 'lu
         throw new Error('No character sets selected');
     }
     const getRandomChar = (str: string): string => str[Math.floor(Math.random() * str.length)];
-    let passwordChars: string[] = [];
+    const passwordChars: string[] = [];
     let allChars = '';
     // Ensure at least one character from each selected set
     for (const set of sets) {

@@ -9,8 +9,8 @@ const { alert } = storeToRefs(alertStore);
 
 <script lang="ts">
 export default {
-  name: 'Alert',
-}
+    name: 'Alert',
+};
 </script>
 
 <template>

@@ -39,8 +39,8 @@ async function updateFeatures() {
 
 <script lang="ts">
 export default {
-  name: 'AccountFeatures',
-}
+    name: 'AccountFeatures',
+};
 </script>
 
 <template>

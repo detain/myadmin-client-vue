@@ -12,13 +12,10 @@ const id = computed(() => props.id);
 const module: string = 'domains';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-
 </script>
 
 <template>
     <div />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

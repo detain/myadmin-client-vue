@@ -164,7 +164,8 @@ loadData();
                                     <input id="slices" v-model="slices" type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" />
                                     <span class="text-sm text-muted">Up to 32 Slices can be attached to a VPS.</span>
                                     <span class="text-sm text-muted float-right text-bold">
-                                        <span id="cur_slice">{{ slices }}</span>/{{ sliceData.max_slices }} Slices
+                                        <span id="cur_slice">{{ slices }}</span
+                                        >/{{ sliceData.max_slices }} Slices
                                     </span>
                                 </div>
                             </div>

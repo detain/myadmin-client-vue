@@ -25,7 +25,7 @@ const invrows = ref<InvRow[]>([]);
 const currency = ref('USD');
 const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
-const routeInvoices = computed(() => route.params.invoices ? String(route.params.invoices).split(',') : undefined);
+const routeInvoices = computed(() => (route.params.invoices ? String(route.params.invoices).split(',') : undefined));
 const order_msg = ref(false);
 const total_display = ref('');
 const total_invoices = ref(0);
@@ -370,14 +370,7 @@ async function loadCartData() {
             let checkedInvoices: string[] = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
-                if (
-                    (typeof routeInvoices.value == 'undefined'  && typeof row.prepay_invoice == 'undefined')
-                    ||
-                    (typeof routeInvoices.value != 'undefined' && (
-                        routeInvoices.value.includes(row.service_label)
-                        ||
-                        routeInvoices.value.includes(String(row.invoices_id)))
-                    )) {
+                if ((typeof routeInvoices.value == 'undefined' && typeof row.prepay_invoice == 'undefined') || (typeof routeInvoices.value != 'undefined' && (routeInvoices.value.includes(row.service_label) || routeInvoices.value.includes(String(row.invoices_id))))) {
                     checkedInvoices.push(row.service_label);
                 }
             }

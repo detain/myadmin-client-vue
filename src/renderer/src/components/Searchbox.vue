@@ -247,8 +247,8 @@ onBeforeUnmount(() => {
 
 <script lang="ts">
 export default {
-  name: 'Searchbox',
-}
+    name: 'Searchbox',
+};
 </script>
 
 <template>

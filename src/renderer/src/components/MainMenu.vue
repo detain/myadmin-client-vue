@@ -54,13 +54,12 @@ function isActive(key: string[] | undefined) {
     // You need to implement your translation logic here
     return typeof key != 'undefined' && key.includes(window.location.pathname.split('/')[1]);
 }
-
 </script>
 
 <script lang="ts">
 export default {
-  name: 'MainMenu',
-}
+    name: 'MainMenu',
+};
 </script>
 
 <template>

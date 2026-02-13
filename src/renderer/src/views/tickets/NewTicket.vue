@@ -105,7 +105,7 @@ async function handleSubmit() {
     */
     try {
         const res = await fetchWrapper.post(`${baseUrl}/tickets/new`, formData);
-        console.log('Response:',res);
+        console.log('Response:', res);
         Swal.close();
         if (res.success == true) {
             Swal.fire('Ticket Created', res.text, 'success');

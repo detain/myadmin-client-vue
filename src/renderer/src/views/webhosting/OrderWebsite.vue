@@ -206,13 +206,12 @@ async function onSubmit() {
             formData.period = period.value;
             formData.serviceOfferId = 0;
         }
-        fetchWrapper.put(`${baseUrl}/websites/order`, formData)
-            .then((response) => {
-                Swal.close();
-                step.value = 'order_confirm';
-                console.log('website order validated');
-                console.log(response);
-            });
+        fetchWrapper.put(`${baseUrl}/websites/order`, formData).then((response) => {
+            Swal.close();
+            step.value = 'order_confirm';
+            console.log('website order validated');
+            console.log(response);
+        });
     } catch (error: any) {
         console.log('website order validation failed');
         console.log(error);
@@ -228,14 +227,13 @@ async function onSubmitConfirmation() {
             formData.period = period.value;
             formData.serviceOfferId = 0;
         }
-        fetchWrapper.post(`${baseUrl}/websites/order`, formData)
-            .then((response) => {
-                console.log('website order validated');
-                console.log(response);
-                if (response['success'] == true) {
-                    router.push(`/cart/${response.real_iids.join(',')}`);
-                }
-            });
+        fetchWrapper.post(`${baseUrl}/websites/order`, formData).then((response) => {
+            console.log('website order validated');
+            console.log(response);
+            if (response['success'] == true) {
+                router.push(`/cart/${response.real_iids.join(',')}`);
+            }
+        });
     } catch (error: any) {
         console.log('website order validation failed');
         console.log(error);

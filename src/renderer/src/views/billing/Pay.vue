@@ -78,9 +78,7 @@ if (!isDone.value) {
             </div>
         </div>
     </div>
-    <div v-else>
-        Returned from payment.
-    </div>
+    <div v-else>Returned from payment.</div>
     <form v-if="form.action" id="submitForm" :action="form.action">
         <input v-for="(value, key) in form.items" :key="key" type="hidden" :name="key" :value="value" />
         <input type="submit" value="Submit" />

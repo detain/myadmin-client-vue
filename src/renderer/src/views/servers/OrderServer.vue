@@ -201,27 +201,30 @@ function onGoBackStep2() {
 
 function onSubmitOrder() {
     showLoading();
-    fetchWrapper.post(`${baseUrl}/servers/order`, {
-        cpu: cpu.value,
-        hd: drives.value,
-        rootpass: rootpass.value,
-        servername: servername.value,
-        comment: comment.value,
-        tos: tos.value,
-        ...formValues.value,
-    } ).then((response) => {
-        Swal.close();
-        console.log('Response:');
-        console.log(response);
-    }).catch((error) => {
-        Swal.close();
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.message}`,
+    fetchWrapper
+        .post(`${baseUrl}/servers/order`, {
+            cpu: cpu.value,
+            hd: drives.value,
+            rootpass: rootpass.value,
+            servername: servername.value,
+            comment: comment.value,
+            tos: tos.value,
+            ...formValues.value,
+        })
+        .then((response) => {
+            Swal.close();
+            console.log('Response:');
+            console.log(response);
+        })
+        .catch((error) => {
+            Swal.close();
+            Swal.fire({
+                icon: 'error',
+                html: `Got error ${error.message}`,
+            });
+            console.log('Error:');
+            console.log(error);
         });
-        console.log('Error:');
-        console.log(error);
-    });
 }
 
 function serverOrderRequest(idCpu?: number, idHd?: number) {
@@ -235,39 +238,42 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
     }
     const query = params.toString();
     const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`;
-    fetchWrapper.get(url).then((response: ServerOrderResponse) => {
-        Swal.close();
-        console.log('Response:');
-        console.log(response);
-        configIds.value = response.config_ids;
-        configLi.value = response.config_li;
-        cpu.value = Number(response.cpu);
-        cpu_li.value = response.cpu_li;
-        cpuCores.value = response.cpu_cores;
-        fieldLabel.value = response.field_label;
-        formValues.value = response.form_values;
-        displayShowMore.value = response.display_showmore;
-        assetServers.value = response.asset_servers;
-        buyItServers.value = response.buy_it_servers;
-        regions.value = response.regions;
-        drives.value = [];
-        curNve.value = 0;
-        curSff.value = 0;
-        curLff.value = 0;
-        if (response.form_values.hd) {
-            addDrive(Number(response.form_values.hd));
-        }
-        cust_discount.value = response.cust_discount;
-        console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
-        console.log('asset servers:', assetServers.value, assetServers.value.length);
-        if (query) {
-            step.value = 'step2';
-        }
-    }).catch((error) => {
-        Swal.close();
-        console.log('Error:');
-        console.log(error);
-    });
+    fetchWrapper
+        .get(url)
+        .then((response: ServerOrderResponse) => {
+            Swal.close();
+            console.log('Response:');
+            console.log(response);
+            configIds.value = response.config_ids;
+            configLi.value = response.config_li;
+            cpu.value = Number(response.cpu);
+            cpu_li.value = response.cpu_li;
+            cpuCores.value = response.cpu_cores;
+            fieldLabel.value = response.field_label;
+            formValues.value = response.form_values;
+            displayShowMore.value = response.display_showmore;
+            assetServers.value = response.asset_servers;
+            buyItServers.value = response.buy_it_servers;
+            regions.value = response.regions;
+            drives.value = [];
+            curNve.value = 0;
+            curSff.value = 0;
+            curLff.value = 0;
+            if (response.form_values.hd) {
+                addDrive(Number(response.form_values.hd));
+            }
+            cust_discount.value = response.cust_discount;
+            console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
+            console.log('asset servers:', assetServers.value, assetServers.value.length);
+            if (query) {
+                step.value = 'step2';
+            }
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log('Error:');
+            console.log(error);
+        });
 }
 
 watch(
@@ -853,7 +859,7 @@ updatePrice();
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <input type="button" value="Place Order" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click.prevent="onSubmitOrder"/>
+                                    <input type="button" value="Place Order" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click.prevent="onSubmitOrder" />
                                 </div>
                             </div>
                         </form>
