@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onMounted } from 'vue';
+import { watch, onMounted, onBeforeUnmount } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import MainMenu from '@/components/MainMenu.vue';
@@ -10,7 +10,24 @@ import { useSiteStore } from '@/stores/site.store';
 
 //import 'https://kit.fontawesome.com/2c66c1d1b5.js';
 
+function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
+    const body = document.body;
+    const isMobileViewport = window.innerWidth <= 992;
+    const target = event.target as HTMLElement | null;
+    if (!isMobileViewport || !body.classList.contains('sidebar-open') || !target) {
+        return;
+    }
+
+    if (target.closest('.main-sidebar, [data-widget="pushmenu"]')) {
+        return;
+    }
+
+    body.classList.remove('sidebar-open');
+    collapseMenu();
+}
+
 onMounted(function () {
+    document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed');
     restoreSidebarState();
     $('.pr-password').passwordRequirements({});
     /* $('.select2').select2();
@@ -32,6 +49,12 @@ onMounted(function () {
             el.classList.remove('shadow');
         });
     });
+
+    document.addEventListener('click', closeMobileSidebarOnOutsideClick);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', closeMobileSidebarOnOutsideClick);
 });
 
 const authStore = useAuthStore();
@@ -91,7 +114,7 @@ watch(
 
 <template>
     <Alert />
-    <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="app-container bg-light">
+    <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="wrapper bg-light">
         <!-- <Nav /> -->
         <nav class="main-header navbar navbar-expand navbar-dark">
             <!-- Navbar -->

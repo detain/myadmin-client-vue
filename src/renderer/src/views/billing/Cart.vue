@@ -103,17 +103,6 @@ function deleteCardModal(cc_id = 0) {
     });
 }
 
-function editInfo() {
-    for (let key in contFields) {
-        if (data.value[key]) {
-            contFields[key] = data.value[key];
-        } else {
-            contFields[key] = '';
-        }
-    }
-    $('#EditInfo').trigger('click');
-}
-
 function addCardSubmit() {
     try {
         fetchWrapper
@@ -285,10 +274,20 @@ async function delete_invoice(invId: number) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html:
-            '<p>Are you sure want to delete your invoice?</p>',
+        html: '<p>Are you sure want to delete your invoice?</p>',
         preConfirm: () => {
-//            alert(`i wanted to delete invoice ${invId}`);
+            console.log('Wanted to delete invoice: ', invId);
+            for (let idx = 0; idx < invrows.value.length; idx++) {
+                const invRow = invrows.value[idx];
+                const resp = invRow.invoices_description.match("^Prepay ID ([0-9]*) Invoice$");
+                if (resp) {
+                    const prepayId = resp[1];
+                    fetchWrapper.delete(`${baseUrl}/billing/prepays/${prepayId}`).then((response) => {
+                        console.log("Deleted Invoice ",prepayId);
+                    });
+                }
+            }
+            //fetchWrapper.delete(`${baseUrl}/billing/prepays/${query}`).then((respons
         }
     });
 }
@@ -304,8 +303,13 @@ async function toggleCheckbox() {
 
 async function updateInfoSubmit() {
     try {
+        console.log('posting contact fields:',contFields);
         const response = await fetchWrapper.post(`${baseUrl}/account`, contFields);
         console.log(response);
+        for (let key in contFields) {
+            data.value[key] = contFields[key];
+        }
+        $("#edit-info").modal('hide');
     } catch (error: any) {
         console.log(error);
     }
@@ -357,6 +361,9 @@ async function pageInit() {
     loadCountries();
     loadCartData();
     await accountStore.loadOnce();
+    for (let key in contFields) {
+        contFields[key] = data.value[key] ? data.value[key] : '';
+    }
     for (const index in data.value.ccs) {
         const cc_detail = data.value.ccs[index];
         if (data.value.cc == cc_detail.cc && data.value.cc_exp == cc_detail.cc_exp) {
@@ -453,7 +460,7 @@ pageInit();
                                     </template>
                                 </div>
                                 <div class="col-md-12 pr-3 text-right">
-                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" title="Update Contact Info" @click="editInfo"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>EDIT </a>
+                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" title="Update Contact Info"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>EDIT </a>
                                 </div>
                             </div>
                         </div>
@@ -537,9 +544,6 @@ pageInit();
                                     <td class="text-center">
                                         <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
                                             <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><i class="fa fa-trash"></i></a>
-                                            <form :id="`invdel${invrow.invoices_id}`" action="del_inv?r=cart" method="POST">
-                                                <input v-model="invrow.invoices_id" type="hidden" name="inv_id" />
-                                            </form>
                                         </template>
                                         <template v-else>
                                             <span class="font-italic text-muted text-sm">Empty...</span>
@@ -807,7 +811,6 @@ pageInit();
             </div>
         </div>
     </div>
-    <div id="EditInfo" class="d-none" data-toggle="modal" data-target="#edit-info"></div>
     <div id="edit-info" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -815,7 +818,7 @@ pageInit();
                     <h4 class="modal-title">Update Contact Info</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="EditInfo" action="cart" method="post" class="form-card">
+                    <form id="EditInfo" method="post" class="form-card" @submit.prevent="updateInfoSubmit">
                         <input type="hidden" name="action" value="edit_info" />
                         <div class="row justify-content-center">
                             <div class="col-12">
@@ -873,7 +876,7 @@ pageInit();
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" @click.prevent="updateInfoSubmit" />
+                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" />
                             </div>
                         </div>
                     </form>
