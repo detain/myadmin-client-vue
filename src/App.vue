@@ -144,10 +144,10 @@ watch(
             </router-link>
             <div class="sidebar">
                 <!-- Sidebar -->
-                <div class="user-panel d-flex mb-3 mt-3 pb-3">
+                <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em;">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
-                    <div class="info hide-on-collaps">
+                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px;" alt="Profile Image" />
+                    <div class="info hide-on-collapse brand-text" style="padding: 0px;">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>
