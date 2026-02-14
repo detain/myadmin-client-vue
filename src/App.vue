@@ -7,6 +7,7 @@ import Alert from '@/components/Alert.vue';
 import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
+import { useDarkMode } from '@/helpers/useDarkMode'
 
 function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     const body = document.body;
@@ -109,6 +110,7 @@ watch(
     { immediate: true }
 );
 
+useDarkMode();
 </script>
 
 <template>
@@ -203,7 +205,7 @@ watch(
 
 <style>
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-@import 'font-awesome/css/font-awesome.min.css';
+/* @import 'font-awesome/css/font-awesome.min.css'; */
 @import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';

@@ -3,7 +3,9 @@ import { computed } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useSiteStore } from '@/stores/site.store';
 import type { AccountData } from '@/types/account';
+import { useDarkMode } from '@/helpers/useDarkMode';
 
+const { isDarkMode } = useDarkMode();
 const props = defineProps<{
     data: AccountData;
 }>();
@@ -39,8 +41,8 @@ async function updateFeatures() {
 
 <script lang="ts">
 export default {
-  name: 'AccountFeatures',
-}
+    name: 'AccountFeatures',
+};
 </script>
 
 <template>
@@ -54,20 +56,26 @@ export default {
             </div>
         </div>
         <div class="card-body">
+            <hr class="mt-0" />
+            <div class="mt-3 mb-4" style="height: 15px">
+                <div class="float-left"><b>Enable Dark Mode</b></div>
+                <div class="custom-control custom-switch float-right">
+                    <input id="dark-mode-switch" v-model="isDarkMode" type="checkbox" class="custom-control-input" />
+                    <label class="custom-control-label" for="dark-mode-switch"></label>
+                </div>
+            </div>
+            <hr />
             <form method="post" enctype="multipart/form-data" @submit.prevent="updateFeatures">
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
-                        <input id="disreins" v-model="data.disable_reinstall" type="checkbox" name="disable_reinstall" value="1" />
-                        <label for="disreins"
-                            >Disable Re-installs
-                            <div style="font-weight: normal">Note: To disable reinstall create new ticket, our support team will help</div>
-                        </label>
+                        <input id="disable-reinstall" v-model="data.disable_reinstall" type="checkbox" name="disable_reinstall" value="1" />
+                        <label for="disable-reinstall"> Disable Re-installs </label>
                     </div>
                 </div>
                 <div class="row ml-5 pl-5">
                     <div class="icheck-success d-inline">
-                        <input id="disreset" v-model="data.disable_reset" type="checkbox" name="disable_reset" value="1" />
-                        <label for="disreset">Disable (Forgot your Password) Password Resets.</label>
+                        <input id="disable-reset" v-model="data.disable_reset" type="checkbox" name="disable_reset" value="1" />
+                        <label for="disable-reset">Disable (Forgot your Password) Password Resets.</label>
                     </div>
                 </div>
                 <hr />
