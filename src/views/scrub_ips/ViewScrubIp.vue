@@ -68,9 +68,7 @@ const router = useRouter();
 const id = Number(route.params.id);
 const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 const scrubStore = scrubIpStore.getByID(id);
 siteStore.setPageHeading('View Scrub IPs');
 siteStore.setTitle('View Scrub IPs');
@@ -92,7 +90,5 @@ const footer_val = computed(() => {
     }
     return val;
 });
-const cost = computed(() => {
-    return Number(billingDetails.value.service_cost_info).toFixed(2);
-});
+const cost = computed(() => Number(billingDetails.value.service_cost_info).toFixed(2));
 </script>

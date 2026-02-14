@@ -79,9 +79,7 @@ onMounted(() => {
     //$('.column').disableSelection();
 });
 
-const affiliateUrl = computed(() => {
-    return user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? `https://www.interserver.net/r/${user.value.account_id}` : '';
-});
+const affiliateUrl = computed(() => user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? `https://www.interserver.net/r/${user.value.account_id}` : '');
 
 const loadHome = async () => {
     try {

@@ -16,9 +16,7 @@ const baseUrl = siteStore.getBaseUrl();
 const hostname = ref('');
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const curHostname = computed(() => {
-    return props.curHostname;
-});
+const curHostname = computed(() => props.curHostname);
 function submitForm() {
     let postData = {
         hostname: hostname.value,

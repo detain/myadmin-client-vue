@@ -16,24 +16,12 @@ const props = defineProps<{
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const { modules } = storeToRefs(siteStore);
-const id = computed(() => {
-    return props.id;
-});
-const module = computed(() => {
-    return props.module;
-});
-const pkg = computed(() => {
-    return props.package;
-});
-const titleField = computed(() => {
-    return props['titleField'];
-});
-const titleField2 = computed(() => {
-    return props['titleField2'];
-});
-const settings = computed(() => {
-    return modules.value[module.value];
-});
+const id = computed(() => props.id);
+const module = computed(() => props.module);
+const pkg = computed(() => props.package);
+const titleField = computed(() => props['titleField']);
+const titleField2 = computed(() => props['titleField2']);
+const settings = computed(() => modules.value[module.value]);
 
 siteStore.setTitle('');
 siteStore.setPageHeading('');

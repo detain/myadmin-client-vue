@@ -8,9 +8,7 @@ import type { AccountData } from '@/types/account';
 const props = defineProps<{
     data: AccountData;
 }>();
-const data = computed(() => {
-    return props.data;
-});
+const data = computed(() => props.data);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');

@@ -22,9 +22,7 @@ const captchaCode = ref('');
 const emailCode = ref('');
 const twoFactorAuthCode = ref('');
 
-const isTosCheked = computed(() => {
-    return tos.value == true || login.value != '';
-});
+const isTosCheked = computed(() => tos.value == true || login.value != '');
 
 const passwordType = computed(() => {
     if (isPasswordVisible.value == true) {

@@ -32,9 +32,7 @@ const servername = ref('');
 const rootpass = ref<string>(generatePassword());
 const comment = ref('');
 const cpuCores = ref<CpuCores>({});
-const hdValues = computed(() => {
-    return configLi.value.hd_li;
-});
+const hdValues = computed(() => configLi.value.hd_li);
 const buyItServers = ref<BuyNowServer[]>([]);
 const assetServers = ref<AssetServer[]>([]);
 const displayShowMore = ref<'yes' | 'no'>('no');

@@ -9,9 +9,7 @@ const { isDarkMode } = useDarkMode();
 const props = defineProps<{
     data: AccountData;
 }>();
-const data = computed(() => {
-    return props.data;
-});
+const data = computed(() => props.data);
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Account Settings');
 siteStore.setTitle('Account Settings');

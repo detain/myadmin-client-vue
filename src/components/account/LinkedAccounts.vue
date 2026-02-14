@@ -12,18 +12,10 @@ const props = defineProps<{
     oAuthConfig: oAuthConfigType;
     oAuthAdapters: oAuthAdaptersType;
 }>();
-const data = computed(() => {
-    return props.data;
-});
-const oAuthProviders = computed(() => {
-    return props.oAuthProviders;
-});
-const oAuthConfig = computed(() => {
-    return props.oAuthConfig;
-});
-const oAuthAdapters = computed(() => {
-    return props.oAuthAdapters;
-});
+const data = computed(() => props.data);
+const oAuthProviders = computed(() => props.oAuthProviders);
+const oAuthConfig = computed(() => props.oAuthConfig);
+const oAuthAdapters = computed(() => props.oAuthAdapters);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
