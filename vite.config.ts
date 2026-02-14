@@ -6,13 +6,13 @@ import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
 import { playwright } from '@vitest/browser-playwright';
+import { VitePWA } from 'vite-plugin-pwa';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
 import * as path from 'path';
 import fs from 'fs';
 import legacy from '@vitejs/plugin-legacy'
-import { VitePWA } from 'vite-plugin-pwa';
 import vueDevTools from 'vite-plugin-vue-devtools'; */
 import Inspector from 'vite-plugin-vue-inspector';
 import TurboConsole from 'unplugin-turbo-console/vite';
@@ -72,13 +72,13 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }),
+        legacy({ targets: ["defaults", "not IE 11"] }), */
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }), */
+        }),
         Inspect(),
         Inspector(),
         //vueDevTools(),
