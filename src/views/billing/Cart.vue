@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
-import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, CCRow, HDRow, ServerRow } from '@/types/cart.ts';
+import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, HDRow, ServerRow } from '@/types/cart.ts';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
@@ -25,7 +25,7 @@ const invrows = ref<InvRow[]>([]);
 const currency = ref('USD');
 const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
-const routeInvoices = computed(() => route.params.invoices ? String(route.params.invoices).split(',') : undefined);
+const routeInvoices = computed(() => (route.params.invoices ? String(route.params.invoices).split(',') : undefined));
 const order_msg = ref(false);
 const total_display = ref('');
 const total_invoices = ref(0);
@@ -240,36 +240,69 @@ function formatExpDate(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function toggleCheckBox() {}
+type Operator = '==' | '<=' | 'typeof'
+
+const operators: Record<Operator, (a: any, b: any) => boolean> = {
+    '==': (a, b) => a == b,
+    '<=': (a, b) => Number(a) <= Number(b),
+    'typeof': (a, b) => typeof a === b
+}
+
+function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
+    const isActive = toggleStatus.value[status] ?? false
+    const operatorFn = operators[check]
+    const invoiceSet = new Set(invoices.value)
+    for (const row of invrows.value) {
+        const matches = operatorFn(row[field], value)
+        if (!isActive) {
+            if (matches) {
+                invoiceSet.add(row.service_label)
+            } else if (toggleOther) {
+                invoiceSet.delete(row.service_label)
+            }
+        } else {
+            if (matches) {
+                invoiceSet.delete(row.service_label)
+            } else if (toggleOther) {
+                invoiceSet.add(row.service_label)
+            }
+        }
+    }
+    invoices.value = Array.from(invoiceSet)
+    toggleStatus.value[status] = !isActive
+}
+
+function checkRecent() {
+    checkStatus('recent', 'days_old', 31, '<=', true);
+}
+
+function checkActive() {
+    checkStatus('active', 'service_status', 'active', '==', true);
+}
 
 function checkClass(module: string) {
-    if (typeof toggleStatus.value[module] === 'undefined') {
-        toggleStatus.value[module] = false;
-    }
-    if (toggleStatus.value[module] === false) {
-        for (let idx = 0; idx < invrows.value.length; idx++) {
-            const invRow = invrows.value[idx];
-            if (invRow.invoices_module == module && !invoices.value.includes(invRow.service_label)) {
-                invoices.value.push(invRow.service_label);
-            }
-        }
+    checkStatus(module, 'invoices_module', module);
+}
+
+function checkAll() {
+    checkStatus('all', 'prepay_invoice', 'undefined', 'typeof', true);
+}
+
+function uncheckAll() {
+    invoices.value = [];
+}
+
+async function toggleCheckbox() {
+    if (isChecked.value) {
+        uncheckAll();
     } else {
-        for (let idx = 0; idx < invrows.value.length; idx++) {
-            const invRow = invrows.value[idx];
-            if (invRow.invoices_module == module) {
-                const index = invoices.value.indexOf(invRow.service_label);
-                if (index > -1) {
-                    invoices.value.splice(index, 1);
-                }
-            }
-        }
+        checkAll();
     }
-    toggleStatus.value[module] = !toggleStatus.value[module];
 }
 
 async function delete_invoice(invId: number) {
     Swal.fire({
-        icon: "warning",
+        icon: 'warning',
         title: '<h3>Invoice Delete ?</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -279,60 +312,32 @@ async function delete_invoice(invId: number) {
             console.log('Wanted to delete invoice: ', invId);
             for (let idx = 0; idx < invrows.value.length; idx++) {
                 const invRow = invrows.value[idx];
-                const resp = invRow.invoices_description.match("^Prepay ID ([0-9]*) Invoice$");
+                const resp = invRow.invoices_description.match('^Prepay ID ([0-9]*) Invoice$');
                 if (resp) {
                     const prepayId = resp[1];
                     fetchWrapper.delete(`${baseUrl}/billing/prepays/${prepayId}`).then((response) => {
-                        console.log("Deleted Invoice ",prepayId);
+                        console.log('Deleted Invoice ', prepayId);
                     });
                 }
             }
             //fetchWrapper.delete(`${baseUrl}/billing/prepays/${query}`).then((respons
-        }
+        },
     });
-}
-
-async function toggleCheckbox() {
-    const el = document.getElementById('checkboxtoggle') as HTMLInputElement | null;
-    if (el?.checked) {
-        checkAll();
-    } else {
-        uncheckAll();
-    }
 }
 
 async function updateInfoSubmit() {
     try {
-        console.log('posting contact fields:',contFields);
+        console.log('posting contact fields:', contFields);
         const response = await fetchWrapper.post(`${baseUrl}/account`, contFields);
         console.log(response);
         for (let key in contFields) {
             data.value[key] = contFields[key];
         }
-        $("#edit-info").modal('hide');
+        $('#edit-info').modal('hide');
     } catch (error: any) {
         console.log(error);
     }
-
 }
-
-async function checkAll() {
-    invoices.value = [];
-    for (let idx = 0; idx < invrows.value.length; idx++) {
-        const invRow = invrows.value[idx];
-        if (typeof invRow?.prepay_invoice == 'undefined') {
-            invoices.value.push(invRow.service_label);
-        }
-    }
-}
-
-function uncheckAll() {
-    invoices.value = [];
-}
-
-function checkRecent() {}
-
-function checkActive() {}
 
 function onCardNumInput(e: any) {
     formatCardNum(e);
@@ -398,14 +403,7 @@ async function loadCartData() {
             let checkedInvoices: string[] = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
-                if (
-                    (typeof routeInvoices.value == 'undefined'  && typeof row.prepay_invoice == 'undefined')
-                    ||
-                    (typeof routeInvoices.value != 'undefined' && (
-                        routeInvoices.value.includes(row.service_label)
-                        ||
-                        routeInvoices.value.includes(String(row.invoices_id)))
-                    )) {
+                if ((typeof routeInvoices.value == 'undefined' && typeof row.prepay_invoice == 'undefined') || (typeof routeInvoices.value != 'undefined' && (routeInvoices.value.includes(row.service_label) || routeInvoices.value.includes(String(row.invoices_id))))) {
                     checkedInvoices.push(row.service_label);
                 }
             }
@@ -561,7 +559,6 @@ pageInit();
                                 <tr>
                                     <td>Filter</td>
                                     <td colspan="7">
-                                        <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
@@ -655,7 +652,7 @@ pageInit();
                                 <tr>
                                     <th style="width: 5%">
                                         <div class="icheck-success d-inline">
-                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
+                                            <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
                                             <label for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
