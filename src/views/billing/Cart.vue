@@ -821,8 +821,8 @@ pageInit();
                         <div id="select_paypal">
                             <div class="row my-2">
                                 <div class="col-md-12">
-                                    <span id="step_4" class="text-bold mr-1 steps">4</span>
-                                    <b class="text-lg">{t}Select PayPal Payment Type{/t}</b>
+                                    <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
+                                    <b class="text-lg">Select PayPal Payment Type</b>
                                 </div>
                                 <div id="" class="col-md-12 d-flex mt-3">
                                     <div id="paypal-button-container" class="paypal-button-container" style="width: 300px; float: left"></div>
