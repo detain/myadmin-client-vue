@@ -267,16 +267,6 @@ export default {
                 </div>
                 <div class="cell fields" v-html="buildInnerHTML(row)"></div>
             </div>
-            <!--
-            <div v-for="(row, index) in filteredResults" :key="index" class="search-row" :class="{ active: index === highlightIndex }" tabindex="0" @click="navigate(row)">
-                <strong>
-                    {{ searchResults!.tables[row[0]].label ?? ucwords(searchResults!.tables[row[0]].table) }}
-                </strong>
-                &nbsp;
-                <span v-html="highlightMatch(getServiceId(row), searchInput)"></span>
-                <div v-html="buildInnerHTML(row)"></div>
-            </div>
--->
             <div v-if="filteredResults.length === 0">No Search Results found</div>
         </div>
     </div>
