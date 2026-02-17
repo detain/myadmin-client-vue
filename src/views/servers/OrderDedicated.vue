@@ -21,8 +21,8 @@ const subtotal = computed(() => basePrice.value + optionsTotal.value);
 const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
 const total = computed(() => Math.max(0, subtotal.value - discountAmount.value));
 const labels = { ips: 'IPs', bandwidth: 'Bandwidth', os: 'Operating System', cp: 'Control Panel', raid: 'Raid' } as const;
-const serverCoupon = ref({});
-const serverAsset = ref({});
+const serverCoupon = ref<ServerCoupon | null>(null);
+const serverAsset = ref<ServerAsset | null>(null);
 const regionName = computed(() => {
     const list = regions.value;
     if (!Array.isArray(list)) return '';
@@ -66,8 +66,38 @@ const orderSummary = computed(() =>
         })
         .filter(Boolean)
 );
+siteStore.setPageHeading('Order Dedicated');
+siteStore.setTitle('Order Dedicated');
+siteStore.setBreadcrums([
+    ['/home', 'Home'],
+    [`/servers`, 'Servers List'],
+    ['/servers/order_dedicated', 'Order Dedicated'],
+]);
 
 type LabelKey = keyof typeof labels;
+
+
+interface ServerCoupon {
+    amount: string;
+    datacenter: string;
+    description: string;
+    id: string;
+    in_stock: string;
+    is_public: string;
+    name: string;
+    region_id: string;
+    region_name: string;
+    serveR_region_id: string;
+}
+
+interface ServerAsset {
+    CPU: string[];
+    Memory: string[];
+    HD: string[];
+    Bandwidth?: string[];
+    IPs?: string[];
+    Region?: string[];
+}
 
 interface InitResponse {
     basePrice: number;
@@ -153,6 +183,7 @@ async function serverOrderRequest() {
             }
             if (typeof response.c !== 'undefined') {
                 serverCoupon.value = response.c;
+                basePrice.value = Number(response.c.amount);
             }
             /*
             basePrice.value = response.basePrice;
@@ -382,7 +413,7 @@ onMounted(async () => {
                             </td>
                             <td colspan="1" style="text-align: right">
                                 <span>
-                                    <div id="total_price" class="w-100 d-block pb-2 font-weight-bold">${{ optionsTotal.toFixed(2) }}</div>
+                                    <div id="total_price" class="w-100 d-block pb-2 font-weight-bold">${{ total.toFixed(2) }}</div>
                                 </span>
                             </td>
                         </tr>
