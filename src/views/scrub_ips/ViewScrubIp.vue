@@ -40,7 +40,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <FirewallRules :id="Number(id)" :firewall-rules="firewallRules" />
+            <FirewallRules :id="Number(id)" :firewall-rules="firewallRules" :base_url="siteStore.getBaseUrl()" :ip="serviceInfo.scrub_ip_ip" />
         </div>
     </div>
     <div class="row">

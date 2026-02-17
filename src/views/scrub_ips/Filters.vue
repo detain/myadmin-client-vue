@@ -107,7 +107,6 @@
 
     const handleSubmit = (form_id: number) => {
         const targetForm = forms.get(form_id);
-        console.log('Submitting form with data:', targetForm); // Debug log
         if (targetForm) {
             const fd = new FormData(targetForm);
             const formDataValues: Record<string, any> = {};
@@ -117,29 +116,20 @@
             try {
                 fetchWrapper.post(`${baseUrl.value}/scrub_ips/${id.value}/create_filter`, formDataValues).then((response) => {
                     if (response && response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            html: `<strong>Success!</strong> ${response.text}`,
-                        }).then((result) => {
-                            console.log('Filter creation response:', result); // Debug log
-                            console.log('Filter creation response Confirmed:', result.isConfirmed); // Debug log
+                        Swal.fire({ icon: 'success',html: `<strong>Success!</strong> ${response.text}` }).then((result) => {
                             if (result.isConfirmed) {
                                window.location.reload();
                             }
                         });
                         closeDialog();
                     } else {
-                        Swal.fire({
-                            icon: 'error',
-                            html: `${response.text}`,
-                        });
+                        Swal.fire({ icon: 'error', html: `${response.text}` });
                     }
+                }).catch(error => {
+                    Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
                 });
             } catch (error) {
-                Swal.fire({
-                    icon: 'error',
-                    html: '<strong>Error!</strong> Unable to create filter at this time.',
-                });
+                Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to create filter at this time.'});
             }
         }
     };
@@ -169,24 +159,17 @@ const handleDelete = (itemId: number) => {
                     fetchWrapper.post(`${baseUrl.value}/scrub_ips/${id.value}/delete_filter`, formDataValues).then((response) => {
                         Swal.close();
                         if (response && response.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                html: `<strong>Success!</strong> ${response.text}`,
-                            });
+                            Swal.fire({ icon: 'success', html: `<strong>Success!</strong> ${response.text}` });
                             filters.value = filters.value!.filter((item, index) => index !== itemId);
                         } else {
-                            Swal.fire({
-                                icon: 'error',
-                                html: `${response.text}`,
-                            });
+                            Swal.fire({ icon: 'error', html: `${response.text}` });
                         }
+                    }).catch(error => {
+                        Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
                     });
                 } catch (error) {
                     Swal.close();
-                    Swal.fire({
-                        icon: 'error',
-                        html: '<strong>Error!</strong> Unable to delete filter at this time.',
-                    });
+                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete filter at this time.' });
                 }
             }
         }
