@@ -179,8 +179,7 @@ function getDomainFields() {
         })
         .then((response: DomainFieldsResponse) => {
             Swal.close();
-            console.log('PATCH Response:');
-            console.log(response);
+            console.log('PATCH Response:', response);
             domainFields.value = response.domainFields;
         });
 }
@@ -189,14 +188,13 @@ function edit_form() {}
 
 function placeOrder() {}
 
-watch([route.params.domain, route.params.regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+watch(() => [route.params.domain, route.params.regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
     console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
     updateStep();
 });
 
 fetchWrapper.get(`${baseUrl}/domains/order`).then((response) => {
-    console.log('GET Response:');
-    console.log(response);
+    console.log('GET Response:', response);
     whoisPrivacyCost.value = Number(response.whoisPrivacyCost);
     services.value = response.services;
     tldServices.value = response.tldServices;
