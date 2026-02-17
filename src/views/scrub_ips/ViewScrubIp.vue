@@ -35,12 +35,17 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+            <GeoFirewallRules :id="Number(id)" :geo-firewall-rules="geoFirewallRules" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <FirewallRules :id="Number(id)" :firewall-rules="firewallRules" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <Filters :id="Number(id)" :filters="filterRules" />
+            <Filters :id="Number(id)" :filters="filterRules" :filter_types="filterTypes" :base_url="siteStore.getBaseUrl()" :ip="serviceInfo.scrub_ip_ip" />
         </div>
     </div>
 </template>
@@ -59,6 +64,7 @@ import InfoBox from '@/components/services/view_service/InfoBox.vue';
 import ClientLinks from '@/components/services/view_service/ClientLinks.vue';
 import Filters from '@/views/scrub_ips/Filters.vue';
 import FirewallRules from '@/views/scrub_ips/FirewallRules.vue';
+import GeoFirewallRules from '@/views/scrub_ips/GeoFirewallRules.vue';
 
 const scrubIpStore = useScrubIpStore();
 const module = 'scrub_ips';
@@ -78,7 +84,8 @@ siteStore.setBreadcrums([
 ]);
 siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Scrub IPs`);
 
-const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, filterRules } = storeToRefs(scrubIpStore);
+const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, 
+    extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes } = storeToRefs(scrubIpStore);
 
 const footer_val = computed(() => {
     let val = '';
