@@ -132,7 +132,7 @@ function updateStep() {
 }
 
 function goConfirm() {
-  display.value = 'step3';
+    display.value = 'step3';
 }
 
 function searchDomain() {
@@ -142,19 +142,17 @@ function searchDomain() {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper
-        .post(`${baseUrl}/domains/search/${hostname.value}`)
-        .then((response: SearchDomainResult) => {
-            Swal.close();
-            searchResponse.value = response;
-            console.log('SEARCH Response:', response);
-            domainResult.value = response.domain_result;
-            suggestions.value = response.suggestions;
-            lookups.value = response.lookups;
-            errors.value = response.errors;
-            domainType.value = response.domain_type;
-            packageInfo.value = response.package_info;
-        });
+    fetchWrapper.post(`${baseUrl}/domains/search/${hostname.value}`).then((response: SearchDomainResult) => {
+        Swal.close();
+        searchResponse.value = response;
+        console.log('SEARCH Response:', response);
+        domainResult.value = response.domain_result;
+        suggestions.value = response.suggestions;
+        lookups.value = response.lookups;
+        errors.value = response.errors;
+        domainType.value = response.domain_type;
+        packageInfo.value = response.package_info;
+    });
 }
 
 function getDomainFields() {
@@ -386,9 +384,9 @@ onMounted(() => {
                             <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
                                 <label v-if="domainField.label" class="col-sm-3 col-form-label">{{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
                                 <div class="col-sm-9 input-group">
-                                    <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
-                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName as string" class="form-control select2">
-                                        <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val" :selected="domainField.value === val">{{ displayName }}</option>
+                                    <input v-if="domainField.input === 'text'" v-model="domainField.value" type="text" :name="fieldName as string" class="form-control" />
+                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" v-model="domainField.value" :name="fieldName as string" class="form-control select2">
+                                        <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
                                     <div v-if="domainField.tip" class="input-group-append">
                                         <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
