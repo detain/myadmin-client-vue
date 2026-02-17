@@ -104,6 +104,18 @@ async function runPhrases(): Promise<void> {
     }
 }
 
+function getFormFields() {
+    const formFields: Record<string, any> = {};
+    for (const key in domainFields.value) {
+        if (Object.prototype.hasOwnProperty.call(domainFields.value, key)) {
+            formFields[key] = domainFields.value[key].value;
+        }
+    }
+    formFields.hostname = domain.value;
+    formFields.type = regType.value;
+    return formFields;
+}
+
 function updateStep() {
     siteStore.setBreadcrums([
         ['/home', 'Home'],
@@ -131,8 +143,8 @@ function updateStep() {
     }
 }
 
-function goConfirm() {
-    display.value = 'step3';
+function goDetails() {
+    display.value = 'step2';
 }
 
 function searchDomain() {
@@ -174,9 +186,61 @@ function getDomainFields() {
         });
 }
 
-function edit_form() {}
+function goConfirm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
 
-function placeOrder() {}
+    fetchWrapper
+        .patch(`${baseUrl}/domains/order`, getFormFields())
+        .then((response) => {
+            Swal.close();
+            console.log(response);
+            display.value = 'step3';
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log(error);
+            let message = 'Got Error: ';
+            for (let idx = 0; idx < error.message.length; idx++) {
+                message += `<br>${error.message[idx].text}`;
+            }
+            Swal.fire({
+                icon: 'error',
+                html: message,
+            });
+        });
+}
+
+function placeOrder() {
+  Swal.fire({
+    title: '',
+    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+    allowOutsideClick: false,
+    showConfirmButton: false,
+  });
+  fetchWrapper
+      .post(`${baseUrl}/domains/order`, getFormFields())
+      .then((response) => {
+        Swal.close();
+        console.log(response);
+      })
+      .catch((error) => {
+        Swal.close();
+        console.log(error);
+        let message = 'Got Error: ';
+        for (let idx = 0; idx < error.message.length; idx++) {
+          message += `<br>${error.message[idx].text}`;
+        }
+        Swal.fire({
+          icon: 'error',
+          html: message,
+        });
+      });
+}
 
 watch(
     () => [route.params.domain, route.params.regType],
@@ -458,7 +522,6 @@ onMounted(() => {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ packageInfo?.services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="edit_form"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th><div class="text-md text-bold">1 Year</div></th>
                                     </tr>
@@ -475,13 +538,13 @@ onMounted(() => {
                                             <div class="text-md">{{ domainResult?.domain }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ domainCost }}</div>
+                                            <div class="text-bold text-md">{{ formatCost(domainCost) }}</div>
                                         </td>
                                     </tr>
-                                    <tr :v-if="whoisEnabled">
+                                    <tr v-show="whoisEnabled">
                                         <td><div class="text-md">Whois Privacy</div></td>
                                         <td>
-                                            <div class="text-bold text-md">{{ whoisPrivacyCost }}</div>
+                                            <div class="text-bold text-md">{{ formatCost(whoisPrivacyCost) }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -490,7 +553,7 @@ onMounted(() => {
                                         <th><div class="text-lg">Total</div></th>
                                         <th>
                                             <div class="text-lg">
-                                                <div class="text-bold total_cost text-lg">{{ totalCost }}</div>
+                                                <div class="text-bold total_cost text-lg">{{ formatCost(totalCost) }}</div>
                                             </div>
                                         </th>
                                     </tr>
@@ -510,6 +573,7 @@ onMounted(() => {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
+                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fa fa-arrow-left"></i>&nbsp;Go Back</button>
                                     <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click="placeOrder">Place Order</button>
                                 </div>
                             </div>
