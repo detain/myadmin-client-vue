@@ -31,8 +31,7 @@ function handleSubmit() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('webhosting buy ip');
-                console.log(response);
+                console.log('webhosting buy ip', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -40,8 +39,7 @@ function handleSubmit() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('webhosting buy ip');
-        console.log(error);
+        console.log('webhosting buy ip', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

@@ -29,24 +29,20 @@ const baseUrl = siteStore.getBaseUrl();
 async function logOutOauth(type: string) {
     try {
         fetchWrapper.get(`${baseUrl}/account/oauth/${type}/logout`).then((response) => {
-            console.log('unlinkOauth success');
-            console.log(response);
+            console.log('unlinkOauth success', response);
         });
     } catch (error: any) {
-        console.log('unlinkOauth failed');
-        console.log(error);
+        console.log('unlinkOauth failed', error);
     }
 }
 
 async function unlinkOauth(type: string) {
     try {
         fetchWrapper.delete(`${baseUrl}/account/oauth/${type}`).then((response) => {
-            console.log('unlinkOauth success');
-            console.log(response);
+            console.log('unlinkOauth success', response);
         });
     } catch (error: any) {
-        console.log('unlinkOauth failed');
-        console.log(error);
+        console.log('unlinkOauth failed', error);
     }
 }
 </script>

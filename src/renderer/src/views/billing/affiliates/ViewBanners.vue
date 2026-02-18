@@ -49,13 +49,11 @@ onMounted(() => {
 function loadBanners() {
     try {
         fetchWrapper.get(`${baseUrl}/affiliate/banners`).then((response) => {
-            console.log('affiliate banners success');
-            console.log(response);
+            console.log('affiliate banners success', response);
             banners.value = response;
         });
     } catch (error: any) {
-        console.log('affiliate banners loading failed');
-        console.log(error);
+        console.log('affiliate banners loading failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

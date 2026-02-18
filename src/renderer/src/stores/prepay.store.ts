@@ -114,8 +114,7 @@ export const usePrePayStore = defineStore('prepay', {
                 this.curr_page_records = response.curr_page_records;
                 this.allInfo = response.allInfo;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
                 this.loading = false;
             }
         },

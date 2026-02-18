@@ -150,6 +150,7 @@
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-inspect": "*",
+        "vite-plugin-pwa": "*",
         "vite-plugin-vue-inspector": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
@@ -168,7 +169,6 @@
     "suggest": {
         "@tanstack/vue-query": "*",
         "@vitejs/plugin-legacy": "*",
-        "vite-plugin-pwa": "*",
         "vite-plugin-vue-devtools": "*",
         "jquery-sortable": "johnny/jquery-sortable#master",
         "vite-plugin-i18n-resources": "*",

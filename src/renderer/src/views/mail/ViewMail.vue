@@ -74,8 +74,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
@@ -104,8 +103,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
@@ -136,8 +134,7 @@ function submitForm() {
                 });
             });
     } catch (error: any) {
-        console.log('error');
-        console.log(error);
+        console.log('error', error);
     }
 }
 

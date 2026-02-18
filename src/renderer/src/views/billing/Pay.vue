@@ -63,8 +63,7 @@ if (!isDone.value) {
             console.log(response);
         });
     } catch (error: any) {
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 </script>

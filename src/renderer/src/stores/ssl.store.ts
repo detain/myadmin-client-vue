@@ -152,8 +152,7 @@ export const useSslStore = defineStore('ssl', {
                 this.ssl_ca_root = response.ssl_ca_root;
                 this.ssl_ca_inter = response.ssl_ca_inter;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

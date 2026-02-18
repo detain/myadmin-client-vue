@@ -61,8 +61,7 @@ function submitForm() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('vps setup vnc success');
-                console.log(response);
+                console.log('vps setup vnc success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -70,8 +69,7 @@ function submitForm() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('vps setup vnc failed');
-        console.log(error);
+        console.log('vps setup vnc failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

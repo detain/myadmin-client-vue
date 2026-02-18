@@ -75,16 +75,14 @@ async function onSubmitConfirmation() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('qs order placed');
-                console.log(response);
+                console.log('qs order placed', response);
                 if (response['success'] == true) {
                     router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
         Swal.close();
-        console.log('qs order place failed');
-        console.log(error);
+        console.log('qs order place failed', error);
     }
 }
 
@@ -128,8 +126,7 @@ Swal.fire({
 });
 fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
     Swal.close();
-    console.log('Response:');
-    console.log(response);
+    console.log('Response:', response);
     serverDetails.value = response.server_details;
     qsId.value = response.qs_id;
     osTemplates.value = response.templates;

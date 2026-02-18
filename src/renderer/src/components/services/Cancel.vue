@@ -45,12 +45,10 @@ function onSubmit() {
         preConfirm: () => {
             try {
                 fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/cancel`).then((response) => {
-                    console.log(`${module.value} cancel success`);
-                    console.log(response);
+                    console.log(`${module.value} cancel success`, response);
                 });
             } catch (error: any) {
-                console.log(`${module.value} cancel failed`);
-                console.log(error);
+                console.log(`${module.value} cancel failed`, error);
             }
         },
     });

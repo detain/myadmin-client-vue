@@ -33,16 +33,14 @@ async function submitForm() {
         });
 
         Swal.close();
-        console.log('vps change timezone success');
-        console.log(response);
+        console.log('vps change timezone success', response);
         Swal.fire({
             icon: 'success',
             html: `Success${response.text}`,
         });
     } catch (error: any) {
         Swal.close();
-        console.log('vps change timezone failed');
-        console.log(error);
+        console.log('vps change timezone failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -53,12 +51,10 @@ async function submitForm() {
 let response;
 try {
     response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/change_timezone`);
-    console.log('Response:');
-    console.log(response);
+    console.log('Response:', response);
     zones.value = response;
 } catch (error: any) {
-    console.log('vps fetch timezone list failed');
-    console.log(error);
+    console.log('vps fetch timezone list failed', error);
     Swal.fire({
         icon: 'error',
         html: `Got error ${error.message}`,

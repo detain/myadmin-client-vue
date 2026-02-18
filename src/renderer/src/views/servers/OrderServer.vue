@@ -73,9 +73,13 @@ siteStore.setBreadcrums([
 type ComponentKey = keyof FormValues;
 
 interface BuyNowServer {
+    id: number;
     name: string;
     description: string;
-    amount_disp: string;
+    in_stock: string;
+    is_public: string;
+    server_region_id: string;
+    amount: string;
 }
 
 interface AssetServer {
@@ -211,17 +215,14 @@ function onSubmitOrder() {
         })
         .then((response) => {
             Swal.close();
-            console.log('Response:');
-            console.log(response);
-        })
-        .catch((error) => {
+        console.log('Response:', response);
+    }).catch((error) => {
             Swal.close();
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error.message}`,
             });
-            console.log('Error:');
-            console.log(error);
+        console.log('Error:', error);
         });
 }
 
@@ -240,8 +241,7 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         .get(url)
         .then((response: ServerOrderResponse) => {
             Swal.close();
-            console.log('Response:');
-            console.log(response);
+        console.log('Response:', response);
             configIds.value = response.config_ids;
             configLi.value = response.config_li;
             cpu.value = Number(response.cpu);
@@ -261,16 +261,14 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
                 addDrive(Number(response.form_values.hd));
             }
             cust_discount.value = response.cust_discount;
-            console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
-            console.log('asset servers:', assetServers.value, assetServers.value.length);
+        console.log('buy it servers:', buyItServers.value, buyItServers.value.length, 'asset servers:', assetServers.value, assetServers.value.length);
             if (query) {
                 step.value = 'step2';
             }
         })
         .catch((error) => {
             Swal.close();
-            console.log('Error:');
-            console.log(error);
+        console.log('Error:', error);
         });
 }
 
@@ -407,7 +405,7 @@ updatePrice();
                                                         <div class="text-sm">Total Cost per month</div>
                                                     </div>
                                                     <div class="col">
-                                                        <button type="button" class="btn btn-green btn-sm mt-2 px-4 py-2" @click="onSubmitCpu(cpu_details.id, cpu_details.hd_det?.id)">Order</button>
+                                                        <button type="button" class="btn btn-green btn-sm mt-2 px-4 py-2" data-dismiss="modal" @click="onSubmitCpu(cpu_details.id, cpu_details.hd_det?.id)">Order</button>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100" />
@@ -443,7 +441,7 @@ updatePrice();
                                     </div>
                                     <div class="card-body" v-html="server.description.replace(/\n/g, '<br>')" />
                                     <div class="card-footer text-center">
-                                        <div class="font-weight-bold">{{ server.amount_disp }}</div>
+                                        <div class="font-weight-bold">{{ server.amount }}</div>
                                         <hr class="w-100 m-1" />
                                         <a :href="`order_dedicated?c=${encodeURIComponent(server.name)}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
                                     </div>

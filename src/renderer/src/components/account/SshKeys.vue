@@ -27,12 +27,10 @@ async function updateSshPublicKey() {
                 sshKey: data.value.ssh_key,
             })
             .then((response) => {
-                console.log('updateSshPublicKey success');
-                console.log(response);
+                console.log('updateSshPublicKey success', response);
             });
     } catch (error: any) {
-        console.log('updateSshPublicKey failed');
-        console.log(error);
+        console.log('updateSshPublicKey failed', error);
     }
 }
 </script>

@@ -117,8 +117,7 @@ export const useAuthStore = defineStore('auth', {
                 this.language = response.language;
                 this.counts = response.counts;
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
             }
         },
         async reloadCaptcha(): Promise<void> {
@@ -128,8 +127,7 @@ export const useAuthStore = defineStore('auth', {
                 const response = await fetchWrapper.get(`${baseUrl}/captcha`);
                 this.captcha = response.captcha;
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
             }
         },
         async login(loginParams: any): Promise<void> {
@@ -148,8 +146,7 @@ export const useAuthStore = defineStore('auth', {
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
                 if (typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
@@ -178,8 +175,7 @@ export const useAuthStore = defineStore('auth', {
                 // redirect to previous url or default to home page
                 await router.push(this.returnUrl || '/');
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
                 if (typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
@@ -204,8 +200,7 @@ n,
             try {
                 await fetchWrapper.getNoLogout(`${baseUrl}/logout`);
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
             }
             this.user = {} as AuthUser;
             this.sessionId = null;

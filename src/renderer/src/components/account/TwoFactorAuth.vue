@@ -25,38 +25,32 @@ const googleCode = ref('');
 async function update2fa() {
     try {
         fetchWrapper.post(`${baseUrl}/account/2fa`, { '2fa_google_code': googleCode.value }).then((response) => {
-            console.log('update2fa success');
-            console.log(response);
+            console.log('update2fa success', response);
         });
     } catch (error: any) {
-        console.log('update2fa failed');
-        console.log(error);
+        console.log('update2fa failed', error);
     }
 }
 
 async function delete2fa() {
     try {
         fetchWrapper.delete(`${baseUrl}/account/2fa`).then((response) => {
-            console.log('delete2fa success');
-            console.log(response);
+            console.log('delete2fa success', response);
         });
     } catch (error: any) {
-        console.log('delete2fa failed');
-        console.log(error);
+        console.log('delete2fa failed', error);
     }
 }
 
 async function get2faKey() {
     try {
         fetchWrapper.get(`${baseUrl}/account/2fa`).then((response) => {
-            console.log('get2faKey success');
-            console.log(response);
+            console.log('get2faKey success', response);
             googleKey.value = response['2fa_google_key'];
             googleSplit.value = response['2fa_google_split'];
         });
     } catch (error: any) {
-        console.log('get2faKey failed');
-        console.log(error);
+        console.log('get2faKey failed', error);
     }
 }
 </script>

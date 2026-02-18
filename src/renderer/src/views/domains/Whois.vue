@@ -30,8 +30,7 @@ function placeOrder() {
     try {
         fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/whois`, {}).then((response) => {
             Swal.close();
-            console.log('domain whois privacy');
-            console.log(response);
+            console.log('domain whois privacy', response);
             Swal.fire({
                 icon: 'success',
                 html: `Success${response.text}`,
@@ -39,8 +38,7 @@ function placeOrder() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('domain whois privacy');
-        console.log(error);
+        console.log('domain whois privacy', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -58,15 +56,13 @@ function loadWhois() {
     try {
         fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/whois`).then((response) => {
             Swal.close();
-            console.log('domain whois privacy');
-            console.log(response);
+            console.log('domain whois privacy', response);
             available.value = response.available;
             whoisCost.value = response.cost;
         });
     } catch (error: any) {
         Swal.close();
-        console.log('domain whois privacy');
-        console.log(error);
+        console.log('domain whois privacy', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

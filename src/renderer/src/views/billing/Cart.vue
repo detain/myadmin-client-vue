@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
-import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, CCRow, HDRow, ServerRow } from '@/types/cart.ts';
+import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, HDRow, ServerRow } from '@/types/cart.ts';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
@@ -55,6 +55,194 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Cart'],
 ]);
+const paypalLoaded = ref(false);
+const paypalScriptEl = ref<HTMLScriptElement | null>(null);
+let PPAmount = 0;
+let PPCurrency = '';
+let PPItems: PayPalItem[] = [];
+let PPCustom = '';
+let PPReturnURL = '';
+let PPCancelURL = '';
+let ppButtons: PayPalButtonsInstance | null = null;
+
+interface PayPalButtonsInstance {
+    render: (selector: string) => Promise<void>;
+    close?: () => void;
+}
+
+interface PayPalItem {
+    name: string;
+    quantity: number;
+    category: string;
+    unit_amount: {
+        currency_code: string;
+        value: string | number;
+    };
+}
+
+const fundingSources = computed(() => {
+    const country = data.value?.country;
+    const funding: string[] = [];
+
+    if (!country) return funding;
+
+    switch (country) {
+        case 'US':
+            funding.push('venmo');
+            break;
+        case 'BE':
+            funding.push('bancontact');
+            break;
+        case 'PL':
+            funding.push('blik');
+            funding.push('p24');
+            break;
+        case 'AT':
+            funding.push('eps');
+            break;
+        case 'NL':
+            funding.push('ideal');
+            break;
+        case 'IT':
+            funding.push('mybank');
+            break;
+        case 'DE':
+            funding.push('pay-upon-invoice');
+            break;
+    }
+
+    if (['AT', 'DE', 'DK', 'EE', 'ES', 'FI', 'GB', 'LT', 'LV', 'NL', 'NO', 'SE'].includes(country)) {
+        funding.push('trustly');
+    }
+
+    return funding;
+});
+
+const paypalSdkUrl = computed(() => {
+    if (!data.value?.country) return '';
+
+    const params = new URLSearchParams({
+        'client-id': 'AdYdovDB_vwbBaM0ZCT5l1MUKeAxz_IWeWt8q0hgqtkASsLRTvnlbTMMNxM4xHfJTVw_akRZKmkteMAT',
+        'integration-date': '2026-01-01',
+        currency: currency.value || 'USD',
+        intent: 'capture',
+        components: 'buttons,funding-eligibility,applepay,googlepay'
+    });
+
+    if (fundingSources.value.length > 0) {
+        params.set('enable-funding', fundingSources.value.join(','));
+    }
+
+    return `https://www.paypal.com/sdk/js?${params.toString()}`;
+});
+
+
+function getBtnOpts() {
+    const btnOpts = {
+        // Sets up the transaction when a payment button is clicked
+        createOrder: createOrderCallback,
+        onApprove: onApproveCallback,
+        onError: function (error: any) {
+            // Do something with the error from the SDK
+        },
+        style: {
+            shape: 'rect',
+            layout: 'vertical',
+            //color: "gold",
+            //label: "paypal",
+            height: 50,
+            tagline: false,
+        },
+    };
+    return btnOpts;
+}
+
+async function createOrderCallback() {
+    resultMessage('');
+    try {
+        if (PPCustom.length > 570) {
+            throw new Error('Too many invoices selected for PayPal.  Please choose fewer invoices.');
+        }
+        const response = await fetch('/payments/paypal_sdk.php?call=create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // use the "body" param to optionally pass additional order information
+            // like product ids and quantities
+            body: JSON.stringify({
+                amount: PPAmount,
+                currency: PPCurrency,
+                items: PPItems,
+                custom: PPCustom,
+                returnURL: PPReturnURL,
+                cancelURL: PPCancelURL,
+            }),
+        });
+        const orderData = await response.json();
+        if (orderData.id) {
+            return orderData.id;
+        } else {
+            const errorDetail = orderData?.details?.[0];
+            const errorMessage = errorDetail ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})` : JSON.stringify(orderData);
+            throw new Error(errorMessage);
+        }
+    } catch (error) {
+        console.error(error);
+        resultMessage(`Could not initiate PayPal Checkout...<br><br>${error}`);
+    }
+}
+
+async function onApproveCallback(data: any, actions: any) {
+    try {
+        const response = await fetch(`/payments/paypal_sdk.php?call=capture&order=${data.orderID}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const orderData = await response.json();
+        // Three cases to handle:
+        //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+        //   (2) Other non-recoverable errors -> Show a failure message
+        //   (3) Successful transaction -> Show confirmation or thank you message
+        const transaction = orderData?.purchase_units?.[0]?.payments?.captures?.[0] || orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+        const errorDetail = orderData?.details?.[0];
+        // this actions.restart() behavior only applies to the Buttons component
+        if (errorDetail?.issue === 'INSTRUMENT_DECLINED' && !data.card && actions) {
+            // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+            // recoverable state, per https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
+            return actions.restart();
+        } else if (errorDetail || !transaction || transaction.status === 'DECLINED') {
+            // (2) Other non-recoverable errors -> Show a failure message
+            let errorMessage;
+            if (transaction) {
+                errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
+            } else if (errorDetail) {
+                errorMessage = `${errorDetail.description} (${orderData.debug_id})`;
+            } else {
+                errorMessage = JSON.stringify(orderData);
+            }
+            throw new Error(errorMessage);
+        } else {
+            // (3) Successful transaction -> Show confirmation or thank you message
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            resultMessage(`Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`);
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            actions.redirect(`https://${window.location.hostname}/payment_success?invoices=${orderData.purchase_units[0].payments.captures[0].custom_id}`);
+        }
+    } catch (error) {
+        console.error(error);
+        resultMessage(`Sorry, your transaction could not be processed...<br><br>${error}`);
+    }
+}
+
+// Example function to show a result to the user. Your site's UI library can be used instead.
+function resultMessage(message: string) {
+    const container = document.querySelector('#result-message');
+    if (!container) return;
+    container.innerHTML = message;
+}
 
 const selectedAmount = computed(() => {
     let total = 0;
@@ -73,11 +261,44 @@ function formattedCost(amount: number): string {
     }).format(amount);
 }
 
+async function initializePayPalButtons() {
+    if (!paypalLoaded.value || !(window as any).paypal) return;
+    await nextTick();
+    if (ppButtons?.close) {
+        ppButtons.close();
+    }
+    ppButtons = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
+    await ppButtons.render('#paypal-button-container');
+ }
+
+
 function mounted() {
     if (triggerClick.value) {
         $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
     }
 }
+
+function loadPayPalSdk() {
+    if (!paypalSdkUrl.value) return;
+    // Remove existing script if reloading
+    if (paypalScriptEl.value) {
+        document.head.removeChild(paypalScriptEl.value);
+        paypalScriptEl.value = null;
+        paypalLoaded.value = false;
+    }
+    const script = document.createElement('script');
+    script.src = paypalSdkUrl.value;
+    script.setAttribute('data-page-type', 'checkout');
+    script.setAttribute('data-sdk-integration-source', 'developer-studio');
+    script.async = true;
+    script.onload = () => {
+        paypalLoaded.value = true;
+        initializePayPalButtons();
+    };
+    document.head.appendChild(script);
+    paypalScriptEl.value = script;
+}
+
 
 function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
@@ -91,12 +312,10 @@ function deleteCardModal(cc_id = 0) {
         preConfirm: () => {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
-                    console.log('delete cc success');
-                    console.log(response);
+                    console.log('delete cc success', response);
                 });
             } catch (error: any) {
-                console.log('delete cc failed');
-                console.log(error);
+                console.log('delete cc failed', error);
             }
             $('#deleteForm').submit();
         },
@@ -117,12 +336,10 @@ function addCardSubmit() {
                 country: contFields.country,
             })
             .then((response) => {
-                console.log('add cc success');
-                console.log(response);
+                console.log('add cc success', response);
             });
     } catch (error: any) {
-        console.log('add cc failed');
-        console.log(error);
+        console.log('add cc failed', error);
     }
 }
 
@@ -140,12 +357,10 @@ function editCardSubmit() {
                 country: contFields.country,
             })
             .then((response) => {
-                console.log('edit cc success');
-                console.log(response);
+                console.log('edit cc success', response);
             });
     } catch (error: any) {
-        console.log('edit cc failed');
-        console.log(error);
+        console.log('edit cc failed', error);
     }
 }
 
@@ -240,36 +455,69 @@ function formatExpDate(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function toggleCheckBox() {}
+type Operator = '==' | '<=' | 'typeof';
 
-function checkClass(module: string) {
-    if (typeof toggleStatus.value[module] === 'undefined') {
-        toggleStatus.value[module] = false;
-    }
-    if (toggleStatus.value[module] === false) {
-        for (let idx = 0; idx < invrows.value.length; idx++) {
-            const invRow = invrows.value[idx];
-            if (invRow.invoices_module == module && !invoices.value.includes(invRow.service_label)) {
-                invoices.value.push(invRow.service_label);
-            }
+const operators: Record<Operator, (a: any, b: any) => boolean> = {
+    '==': (a, b) => a == b,
+    '<=': (a, b) => Number(a) <= Number(b),
+    typeof: (a, b) => typeof a === b,
+};
+
+function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
+    const isActive = toggleStatus.value[status] ?? false;
+    const operatorFn = operators[check];
+    const invoiceSet = new Set(invoices.value);
+    for (const row of invrows.value) {
+        const matches = operatorFn(row[field], value);
+        if (!isActive) {
+            if (matches) {
+                invoiceSet.add(row.service_label);
+            } else if (toggleOther) {
+                invoiceSet.delete(row.service_label);
         }
     } else {
-        for (let idx = 0; idx < invrows.value.length; idx++) {
-            const invRow = invrows.value[idx];
-            if (invRow.invoices_module == module) {
-                const index = invoices.value.indexOf(invRow.service_label);
-                if (index > -1) {
-                    invoices.value.splice(index, 1);
+            if (matches) {
+                invoiceSet.delete(row.service_label);
+            } else if (toggleOther) {
+                invoiceSet.add(row.service_label);
                 }
             }
         }
+    invoices.value = Array.from(invoiceSet);
+    toggleStatus.value[status] = !isActive;
+}
+
+function checkRecent() {
+    checkStatus('recent', 'days_old', 31, '<=', true);
+}
+
+function checkActive() {
+    checkStatus('active', 'service_status', 'active', '==', true);
+}
+
+function checkClass(module: string) {
+    checkStatus(module, 'invoices_module', module);
+}
+
+function checkAll() {
+    checkStatus('all', 'prepay_invoice', 'undefined', 'typeof', true);
+}
+
+function uncheckAll() {
+    invoices.value = [];
+}
+
+async function toggleCheckbox() {
+    if (isChecked.value) {
+        uncheckAll();
+    } else {
+        checkAll();
     }
-    toggleStatus.value[module] = !toggleStatus.value[module];
 }
 
 async function delete_invoice(invId: number) {
     Swal.fire({
-        icon: "warning",
+        icon: 'warning',
         title: '<h3>Invoice Delete ?</h3> ',
         showCancelButton: true,
         showLoaderOnConfirm: true,
@@ -279,60 +527,32 @@ async function delete_invoice(invId: number) {
             console.log('Wanted to delete invoice: ', invId);
             for (let idx = 0; idx < invrows.value.length; idx++) {
                 const invRow = invrows.value[idx];
-                const resp = invRow.invoices_description.match("^Prepay ID ([0-9]*) Invoice$");
+                const resp = invRow.invoices_description.match('^Prepay ID ([0-9]*) Invoice$');
                 if (resp) {
                     const prepayId = resp[1];
                     fetchWrapper.delete(`${baseUrl}/billing/prepays/${prepayId}`).then((response) => {
-                        console.log("Deleted Invoice ",prepayId);
+                        console.log('Deleted Invoice ', prepayId);
                     });
                 }
             }
             //fetchWrapper.delete(`${baseUrl}/billing/prepays/${query}`).then((respons
-        }
+        },
     });
-}
-
-async function toggleCheckbox() {
-    const el = document.getElementById('checkboxtoggle') as HTMLInputElement | null;
-    if (el?.checked) {
-        checkAll();
-    } else {
-        uncheckAll();
-    }
 }
 
 async function updateInfoSubmit() {
     try {
-        console.log('posting contact fields:',contFields);
+        console.log('posting contact fields:', contFields);
         const response = await fetchWrapper.post(`${baseUrl}/account`, contFields);
         console.log(response);
         for (let key in contFields) {
             data.value[key] = contFields[key];
         }
-        $("#edit-info").modal('hide');
+        $('#edit-info').modal('hide');
     } catch (error: any) {
         console.log(error);
     }
-
 }
-
-async function checkAll() {
-    invoices.value = [];
-    for (let idx = 0; idx < invrows.value.length; idx++) {
-        const invRow = invrows.value[idx];
-        if (typeof invRow?.prepay_invoice == 'undefined') {
-            invoices.value.push(invRow.service_label);
-        }
-    }
-}
-
-function uncheckAll() {
-    invoices.value = [];
-}
-
-function checkRecent() {}
-
-function checkActive() {}
 
 function onCardNumInput(e: any) {
     formatCardNum(e);
@@ -352,8 +572,7 @@ async function loadCountries() {
             countries.value = response;
         });
     } catch (error: any) {
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 
@@ -406,10 +625,19 @@ async function loadCartData() {
             invoices.value = checkedInvoices;
         });
     } catch (error: any) {
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
+
+watch(
+    [() => data.value?.country, currency],
+    ([country]) => {
+        if (country) {
+            loadPayPalSdk();
+        }
+    }
+);
+
 
 pageInit();
 </script>
@@ -554,7 +782,6 @@ pageInit();
                                 <tr>
                                     <td>Filter</td>
                                     <td colspan="7">
-                                        <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
                                         <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
@@ -583,6 +810,17 @@ pageInit();
                             </div>
                         </div>
                         <hr />
+                        <div id="select_paypal">
+                            <div class="row my-2">
+                                <div class="col-md-12">
+                                    <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
+                                    <b class="text-lg">Select PayPal Payment Type</b>
+                                </div>
+                                <div id="" class="col-md-12 d-flex mt-3">
+                                    <div id="paypal-button-container" class="paypal-button-container" style="width: 300px; float: left"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
@@ -648,7 +886,7 @@ pageInit();
                                 <tr>
                                     <th style="width: 5%">
                                         <div class="icheck-success d-inline">
-                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
+                                            <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
                                             <label for="checkboxtoggle"> </label>
                                         </div>
                                     </th>

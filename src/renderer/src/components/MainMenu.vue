@@ -35,7 +35,7 @@ const menus = ref<MenuGroup>({
         { link: '/affiliate', icon: 'fa fa-handshake', text: 'Affiliate System' },
         { link: '/tickets', icon: 'fa fa-ticket', text: 'Tickets' },
         { menu: 'billing', icon: 'fa fa-file-invoice', text: 'Billing', activecheck: ['cart', 'invoices', 'payment_types', 'prepays'] },
-        { menu: 'settings', icon: 'fa fa-gear', text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] },
+        { menu: 'settings', icon: 'fa fa-cog', text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] },
     ],
     billing: [
         { link: '/cart', icon: 'far fa-circle', text: 'Cart' },
