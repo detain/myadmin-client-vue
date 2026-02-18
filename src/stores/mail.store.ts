@@ -146,8 +146,7 @@ export const useMailStore = defineStore('mail', {
                 this.serviceType = response.serviceType;
                 this.usage_count = response.usage_count;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

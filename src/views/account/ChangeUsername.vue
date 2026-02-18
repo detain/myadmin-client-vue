@@ -40,16 +40,14 @@ const handleSubmit = async () => {
         fetchWrapper.post(`${baseUrl}/account/username`, payload).then((response) => {
             submitting.value = false;
             Swal.close();
-            console.log('Response:');
-            console.log(response);
+            console.log('Response:', response);
             success.value = response;
             failed.value = null;
         });
     } catch (error: any) {
         submitting.value = false;
         Swal.close();
-        console.log('caught error:');
-        console.log(error);
+        console.log('caught error:', error);
         failed.value = `Got error ${error}`;
         success.value = null;
     }

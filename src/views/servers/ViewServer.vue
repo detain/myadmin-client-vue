@@ -20,13 +20,9 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 const serverStore = useServerStore();
 const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, titleField, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
 
@@ -45,9 +41,7 @@ const hasAssetVlanSwitchport = computed(() => {
     return ret;
 });
 
-const assets = computed(() => {
-    return networkInfo.value.assets ? networkInfo.value.assets : {};
-});
+const assets = computed(() => networkInfo.value.assets ? networkInfo.value.assets : {});
 
 const firstAsset = computed<AssetRow | null>(() => {
     const assets = networkInfo.value.assets;
@@ -57,13 +51,9 @@ const firstAsset = computed<AssetRow | null>(() => {
     return assets[Object.keys(assets)[0]];
 });
 
-const vlans = computed(() => {
-    return networkInfo.value.vlans ? networkInfo.value.vlans : {};
-});
+const vlans = computed(() => networkInfo.value.vlans ? networkInfo.value.vlans : {});
 
-const switchports = computed(() => {
-    return networkInfo.value.switchports ? networkInfo.value.switchports : {};
-});
+const switchports = computed(() => networkInfo.value.switchports ? networkInfo.value.switchports : {});
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
@@ -104,8 +94,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });

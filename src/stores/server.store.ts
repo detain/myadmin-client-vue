@@ -129,8 +129,7 @@ export const useServerStore = defineStore('server', {
                 this.networkInfo = response.networkInfo;
                 this.locations = response.locations;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

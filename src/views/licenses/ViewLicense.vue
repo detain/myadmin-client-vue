@@ -18,13 +18,9 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
 
@@ -67,8 +63,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });

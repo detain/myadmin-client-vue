@@ -89,14 +89,12 @@ function loadDnsSec() {
     try {
         fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`).then((response) => {
             Swal.close();
-            console.log('domain dns sec');
-            console.log(response);
+            console.log('domain dns sec', response);
             dnssecRecords.value = response.records;
         });
     } catch (error: any) {
         Swal.close();
-        console.log('domain dns sec');
-        console.log(error);
+        console.log('domain dns sec', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

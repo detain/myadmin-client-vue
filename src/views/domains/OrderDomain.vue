@@ -7,7 +7,6 @@ import { useSiteStore } from '@/stores/site.store';
 import { RouterLink, useRoute } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '@/types/domains';
-import $ from 'jquery';
 const module = 'domains';
 const siteStore = useSiteStore();
 siteStore.setPageHeading('Order Domain');
@@ -49,20 +48,12 @@ const totalCost = computed<number>(() => {
     return whoisEnabled.value === true ? domainCost.value + whoisPrivacyCost.value : domainCost.value;
 });
 
-const formattedTotalCost = computed<string>(() => {
+function formatCost(cost: number): string {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: currency.value,
-    }).format(totalCost.value);
-});
-
-const formattedRenewCost = computed<string>(() => {
-    if (!domainResult.value) return '';
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: currency.value,
-    }).format(domainResult.value.raw.renewal);
-});
+    }).format(cost);
+}
 
 function clearInput(): void {
     const input = domainInput.value;
@@ -113,6 +104,18 @@ async function runPhrases(): Promise<void> {
     }
 }
 
+function getFormFields() {
+    const formFields: Record<string, any> = {};
+    for (const key in domainFields.value) {
+        if (Object.prototype.hasOwnProperty.call(domainFields.value, key)) {
+            formFields[key] = domainFields.value[key].value;
+        }
+    }
+    formFields.hostname = domain.value;
+    formFields.type = regType.value;
+    return formFields;
+}
+
 function updateStep() {
     siteStore.setBreadcrums([
         ['/home', 'Home'],
@@ -123,10 +126,9 @@ function updateStep() {
         display.value = 'step1';
     } else {
         hostname.value = domain.value;
-        siteStore.addBreadcrum(`/domains/order/${domain.value}`, 'Domain Search');
+        //siteStore.addBreadcrum(`/domains/order/${domain.value}`, 'Domain Search');
         if (searchResponse.value?.domain !== hostname.value) {
-            console.log(`currently hostname is ${searchResponse.value?.domain}`);
-            console.log(searchResponse.value?.domain);
+            console.log(`currently hostname is ${searchResponse.value?.domain}`, searchResponse.value?.domain);
             console.log(`new domain is ${hostname.value}`);
             searchDomain();
         }
@@ -140,6 +142,10 @@ function updateStep() {
     }
 }
 
+function goDetails() {
+    display.value = 'step2';
+}
+
 function searchDomain() {
     Swal.fire({
         title: '',
@@ -147,22 +153,17 @@ function searchDomain() {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper
-        .put(`${baseUrl}/domains/order`, {
-            hostname: hostname.value,
-        })
-        .then((response: SearchDomainResult) => {
-            Swal.close();
-            searchResponse.value = response;
-            console.log('PUT Response:');
-            console.log(response);
-            domainResult.value = response.domain_result;
-            suggestions.value = response.suggestions;
-            lookups.value = response.lookups;
-            errors.value = response.errors;
-            domainType.value = response.domain_type;
-            packageInfo.value = response.package_info;
-        });
+    fetchWrapper.post(`${baseUrl}/domains/search/${hostname.value}`).then((response: SearchDomainResult) => {
+        Swal.close();
+        searchResponse.value = response;
+        console.log('SEARCH Response:', response);
+        domainResult.value = response.domain_result;
+        suggestions.value = response.suggestions;
+        lookups.value = response.lookups;
+        errors.value = response.errors;
+        domainType.value = response.domain_type;
+        packageInfo.value = response.package_info;
+    });
 }
 
 function getDomainFields() {
@@ -173,30 +174,83 @@ function getDomainFields() {
         showConfirmButton: false,
     });
     fetchWrapper
-        .patch(`${baseUrl}/domains/order`, {
+        .put(`${baseUrl}/domains/order`, {
             hostname: hostname.value,
             type: domainType.value,
         })
         .then((response: DomainFieldsResponse) => {
             Swal.close();
-            console.log('PATCH Response:');
-            console.log(response);
+            console.log('PUT Response:', response);
             domainFields.value = response.domainFields;
         });
 }
 
-function edit_form() {}
+function goConfirm() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
 
-function placeOrder() {}
+    fetchWrapper
+        .patch(`${baseUrl}/domains/order`, getFormFields())
+        .then((response) => {
+            Swal.close();
+            console.log(response);
+            display.value = 'step3';
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log(error);
+            let message = 'Got Error: ';
+            for (let idx = 0; idx < error.message.length; idx++) {
+                message += `<br>${error.message[idx].text}`;
+            }
+            Swal.fire({
+                icon: 'error',
+                html: message,
+            });
+        });
+}
 
-watch([route.params.domain, route.params.regType], ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
-    console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
-    updateStep();
-});
+function placeOrder() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    fetchWrapper
+        .post(`${baseUrl}/domains/order`, getFormFields())
+        .then((response) => {
+            Swal.close();
+            console.log(response);
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log(error);
+            let message = 'Got Error: ';
+            for (let idx = 0; idx < error.message.length; idx++) {
+                message += `<br>${error.message[idx].text}`;
+            }
+            Swal.fire({
+                icon: 'error',
+                html: message,
+            });
+        });
+}
+
+watch(
+    () => [route.params.domain, route.params.regType],
+    ([domainNew, regTypeNew], [domainOld, regTypeOld]) => {
+        console.log(`domain old ${domainOld} new ${domainNew} regType old ${regTypeOld} new ${regTypeNew}`);
+        updateStep();
+    }
+);
 
 fetchWrapper.get(`${baseUrl}/domains/order`).then((response) => {
-    console.log('GET Response:');
-    console.log(response);
+    console.log('GET Response:', response);
     whoisPrivacyCost.value = Number(response.whoisPrivacyCost);
     services.value = response.services;
     tldServices.value = response.tldServices;
@@ -359,17 +413,17 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="POST" class="contact-form" :action="'domain_order?hostname=' + hostname">
+                        <form method="POST" class="contact-form" @submit.prevent="goConfirm">
                             <template v-if="whoisPrivacyCost">
                                 <div class="form-group row">
                                     <label for="create_as" class="col-sm-5 col-form-label"> Whois Privacy for {{ whoisPrivacyCost }} / year </label>
                                     <div class="controls col-sm-7">
                                         <div class="form-group clearfix">
                                             <div class="d-inline">
-                                                <label><input v-model="whoisEnabled" type="radio" value="true" /> Enabled</label>
+                                                <label><input v-model="whoisEnabled" type="radio" :value="true" /> Enabled</label>
                                             </div>
                                             <div class="d-inline px-2">
-                                                <label><input v-model="whoisEnabled" type="radio" value="false" /> Disabled</label>
+                                                <label><input v-model="whoisEnabled" type="radio" :value="false" /> Disabled</label>
                                             </div>
                                             <br />
                                             <div class="d-inline px-2">
@@ -393,9 +447,9 @@ onMounted(() => {
                             <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
                                 <label v-if="domainField.label" class="col-sm-3 col-form-label">{{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
                                 <div class="col-sm-9 input-group">
-                                    <input v-if="domainField.input === 'text'" type="text" :name="fieldName as string" class="form-control" :value="domainField.value" />
-                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" :name="fieldName as string" class="form-control select2">
-                                        <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val" :selected="domainField.value === val">{{ displayName }}</option>
+                                    <input v-if="domainField.input === 'text'" v-model="domainField.value" type="text" :name="fieldName as string" class="form-control" />
+                                    <select v-else-if="domainField.input && domainField.input[0] === 'select'" v-model="domainField.value" :name="fieldName as string" class="form-control select2">
+                                        <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
                                     <div v-if="domainField.tip" class="input-group-append">
                                         <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
@@ -431,17 +485,17 @@ onMounted(() => {
                         <div class="row mb-3">
                             <div class="col-md-8">{{ domainResult?.domain }}</div>
                             <div class="col text-bold text-right">
-                                {{ domainCost }}
+                                {{ formatCost(domainCost) }}
                             </div>
                         </div>
-                        <div :v-if="whoisEnabled" class="whois-row row mb-3">
+                        <div v-show="whoisEnabled" class="whois-row row mb-3">
                             <div class="col-md-8">Whois Privacy</div>
-                            <div class="col text-bold text-right">{{ whoisPrivacyCost }}</div>
+                            <div class="col text-bold text-right">{{ formatCost(whoisPrivacyCost) }}</div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div class="col text-bold total_cost text-right text-lg">{{ formattedTotalCost }}</div>
+                            <div class="col text-bold total_cost text-right text-lg">{{ formatCost(totalCost) }}</div>
                         </div>
                     </div>
                 </div>
@@ -467,7 +521,6 @@ onMounted(() => {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ packageInfo?.services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="edit_form"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
                                         </th>
                                         <th><div class="text-md text-bold">1 Year</div></th>
                                     </tr>
@@ -484,13 +537,13 @@ onMounted(() => {
                                             <div class="text-md">{{ domainResult?.domain }}</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ domainCost }}</div>
+                                            <div class="text-bold text-md">{{ formatCost(domainCost) }}</div>
                                         </td>
                                     </tr>
-                                    <tr :v-if="whoisEnabled">
+                                    <tr v-show="whoisEnabled">
                                         <td><div class="text-md">Whois Privacy</div></td>
                                         <td>
-                                            <div class="text-bold text-md">{{ whoisPrivacyCost }}</div>
+                                            <div class="text-bold text-md">{{ formatCost(whoisPrivacyCost) }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -499,7 +552,7 @@ onMounted(() => {
                                         <th><div class="text-lg">Total</div></th>
                                         <th>
                                             <div class="text-lg">
-                                                <div class="text-bold total_cost text-lg">{{ totalCost }}</div>
+                                                <div class="text-bold total_cost text-lg">{{ formatCost(totalCost) }}</div>
                                             </div>
                                         </th>
                                     </tr>
@@ -519,6 +572,7 @@ onMounted(() => {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
+                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fa fa-arrow-left"></i>&nbsp;Go Back</button>
                                     <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click="placeOrder">Place Order</button>
                                 </div>
                             </div>

@@ -8,9 +8,7 @@ import type { AccountData } from '@/types/account';
 const props = defineProps<{
     data: AccountData;
 }>();
-const data = computed(() => {
-    return props.data;
-});
+const data = computed(() => props.data);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
@@ -29,12 +27,10 @@ async function updateSshPublicKey() {
                 sshKey: data.value.ssh_key,
             })
             .then((response) => {
-                console.log('updateSshPublicKey success');
-                console.log(response);
+                console.log('updateSshPublicKey success', response);
             });
     } catch (error: any) {
-        console.log('updateSshPublicKey failed');
-        console.log(error);
+        console.log('updateSshPublicKey failed', error);
     }
 }
 </script>

@@ -296,8 +296,7 @@ export const useSiteStore = defineStore('site', {
                 this.services = response.services;
                 this.serviceTypes = response.serviceTypes;
                 this.serviceCategories = response.serviceCategories;
-                console.log('info success');
-                console.log(response);
+                console.log('info success', response);
             });
         },
         setBreadcrums(value: BreadCrum[]) {

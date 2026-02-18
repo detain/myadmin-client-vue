@@ -12,12 +12,8 @@ const props = defineProps<{
     curHostname: string;
 }>();
 const id = computed(() => props.id);
-const module = computed(() => {
-    return props.module || '';
-});
-const curHostname = computed(() => {
-    return props.curHostname;
-});
+const module = computed(() => props.module || '');
+const curHostname = computed(() => props.curHostname);
 const siteStore = useSiteStore();
 const confirm = ref(false);
 const baseUrl = siteStore.getBaseUrl();
@@ -29,16 +25,14 @@ function submitForm() {
     fetchWrapper
         .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reset_password`, postData)
         .then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             Swal.fire({
                 icon: 'success',
                 html: response.message,
             });
         })
         .catch((error: any) => {
-            console.log('api failed');
-            console.log(error);
+            console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error.message}`,

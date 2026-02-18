@@ -23,8 +23,7 @@ interface LoginParams {
 async function onSubmit(values: any) {
     const authStore = useAuthStore();
     const siteStore = useSiteStore();
-    console.log('Values:');
-    console.log(values);
+    console.log('Values:', values);
     const loginParams: LoginParams = {
         login: values.login,
         passwd: values.passwd,

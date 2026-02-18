@@ -14,6 +14,7 @@ import './plugins/jquery';
 import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'admin-lte/dist/js/adminlte.js';
+import './assets/css/admin_darkmode.css';
 
 const app = createApp(App);
 const pinia = createPinia();

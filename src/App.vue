@@ -7,8 +7,7 @@ import Alert from '@/components/Alert.vue';
 import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
-
-//import 'https://kit.fontawesome.com/2c66c1d1b5.js';
+import { useDarkMode } from '@/helpers/useDarkMode'
 
 function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     const body = document.body;
@@ -111,6 +110,7 @@ watch(
     { immediate: true }
 );
 
+useDarkMode();
 </script>
 
 <template>
@@ -146,14 +146,14 @@ watch(
             </router-link>
             <div class="sidebar">
                 <!-- Sidebar -->
-                <div class="user-panel d-flex mb-3 mt-3 pb-3">
+                <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em;">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="image"><img :src="user?.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
-                    <div class="info">
+                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px;" alt="Profile Image" />
+                    <div class="info hide-on-collapse brand-text" style="padding: 0px;">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
-                        <span style="color: #c2c7d0"
-                            ><b>{{ user?.account_lid }}</b></span
-                        >
+                        <span style="color: #c2c7d0">
+                            <b>{{ user?.account_lid }}</b>
+                        </span>
                     </div>
                 </div>
                 <nav class="mt-2">
@@ -175,9 +175,9 @@ watch(
                             <ol class="breadcrumb">
                                 <li v-for="(bData, index) in breadcrums" :key="index" class="breadcrumb-item" :class="{ active: index === breadcrums.length - 1 }">
                                     <template v-if="index === breadcrums.length - 1">{{ bData[1] }}</template>
-                                    <template v-else
-                                        ><router-link :to="bData[0]">{{ bData[1] }}</router-link></template
-                                    >
+                                    <template v-else>
+                                        <router-link :to="bData[0]">{{ bData[1] }}</router-link>
+                                    </template>
                                 </li>
                             </ol>
                         </div>
@@ -205,6 +205,7 @@ watch(
 
 <style>
 @import '@fortawesome/fontawesome-free/css/all.min.css';
+/* @import 'font-awesome/css/font-awesome.min.css'; */
 @import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';

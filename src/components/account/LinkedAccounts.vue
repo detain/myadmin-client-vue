@@ -12,18 +12,10 @@ const props = defineProps<{
     oAuthConfig: oAuthConfigType;
     oAuthAdapters: oAuthAdaptersType;
 }>();
-const data = computed(() => {
-    return props.data;
-});
-const oAuthProviders = computed(() => {
-    return props.oAuthProviders;
-});
-const oAuthConfig = computed(() => {
-    return props.oAuthConfig;
-});
-const oAuthAdapters = computed(() => {
-    return props.oAuthAdapters;
-});
+const data = computed(() => props.data);
+const oAuthProviders = computed(() => props.oAuthProviders);
+const oAuthConfig = computed(() => props.oAuthConfig);
+const oAuthAdapters = computed(() => props.oAuthAdapters);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
@@ -37,32 +29,28 @@ const baseUrl = siteStore.getBaseUrl();
 async function logOutOauth(type: string) {
     try {
         fetchWrapper.get(`${baseUrl}/account/oauth/${type}/logout`).then((response) => {
-            console.log('unlinkOauth success');
-            console.log(response);
+            console.log('unlinkOauth success', response);
         });
     } catch (error: any) {
-        console.log('unlinkOauth failed');
-        console.log(error);
+        console.log('unlinkOauth failed', error);
     }
 }
 
 async function unlinkOauth(type: string) {
     try {
         fetchWrapper.delete(`${baseUrl}/account/oauth/${type}`).then((response) => {
-            console.log('unlinkOauth success');
-            console.log(response);
+            console.log('unlinkOauth success', response);
         });
     } catch (error: any) {
-        console.log('unlinkOauth failed');
-        console.log(error);
+        console.log('unlinkOauth failed', error);
     }
 }
 </script>
 
 <script lang="ts">
 export default {
-  name: 'LinkedAccounts',
-}
+    name: 'LinkedAccounts',
+};
 </script>
 
 <template>
@@ -87,16 +75,16 @@ export default {
                 </thead>
                 <tbody>
                     <tr v-for="(provider, name) in oAuthConfig.providers" :key="name">
-                        <td>{{ name }}</td>
+                        <th>{{ name }}</th>
                         <td>
                             <span v-if="provider.linked">Linked</span>
                             <span v-else>Not linked</span>
                         </td>
                         <td>
-                            <span v-if="provider.url">
-                                <a :href="provider.url" target="_blank">{{ provider.url }}</a>
-                                (<a href="" @click.prevent="unlinkOauth(name.toString())">Unlink</a>)
-                                <span v-if="oAuthAdapters[name]">(<a @click.prevent="logOutOauth(name.toString())">Log Out</a>)</span>
+                            <span v-if="provider.enabled">
+                                <a v-if="provider.url" :href="provider.url" class="px-1" target="_blank">{{ provider.url }}</a>
+                                <span v-if="provider.linked" class="px-1">(<a href="" @click.prevent="unlinkOauth(name.toString())">Unlink</a>)</span>
+                                <span v-if="oAuthAdapters[name]" class="px-1">(<a @click.prevent="logOutOauth(name.toString())">Log Out</a>)</span>
                             </span>
                             <span v-else>
                                 {{ provider.account || '' }}

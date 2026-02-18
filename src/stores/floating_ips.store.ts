@@ -146,8 +146,7 @@ export const useFloatingIpStore = defineStore('floating_ip', {
                 this.serviceType = response.serviceType;
                 this.usage_count = response.usage_count;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

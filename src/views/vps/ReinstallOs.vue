@@ -22,15 +22,9 @@ const { modules } = storeToRefs(siteStore);
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const serviceInfo = computed(() => {
-    return props.serviceInfo;
-});
-const serviceMaster = computed(() => {
-    return props.serviceMaster;
-});
-const settings = computed(() => {
-    return modules.value[module.value];
-});
+const serviceInfo = computed(() => props.serviceInfo);
+const serviceMaster = computed(() => props.serviceMaster);
+const settings = computed(() => modules.value[module.value]);
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
 const osVersion = ref('');
@@ -119,16 +113,14 @@ function submitForm() {
             loginPassword: checkAccountPassword.value,
         };
         fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reinstall_os`, postData).then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             Swal.fire({
                 icon: 'success',
                 html: response.message,
             });
         });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -153,8 +145,7 @@ try {
         }
     });
 } catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    console.log('error:', error);
 }
 </script>
 

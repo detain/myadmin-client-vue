@@ -28,12 +28,10 @@ const loadBackupsList = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/backups?all=1`);
         loading.value = false;
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         backupsArr.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

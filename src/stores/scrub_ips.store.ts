@@ -88,7 +88,9 @@ export const useScrubIpStore = defineStore('scrub_ips', {
             services_type: 0,
         },
         firewallRules: [],
+        geoFirewallRules: [],
         filterRules: [],
+        filterTypes: [],
     }),
     getters: {
         getScrubIps(state): any[] {
@@ -114,8 +116,10 @@ export const useScrubIpStore = defineStore('scrub_ips', {
                 this.linkDisplay = response.linkDisplay;
                 this.loading = false;
                 this.firewallRules = response.filter_firewall.rules || [];
+                this.geoFirewallRules = response.filter_firewall.geo_rules || [];
                 this.filterRules = response.filter_firewall.filters || [];
-                console.log('Fetched scrub IP by ID:', response);
+                const filterTypes = await fetchWrapper.get(`${baseUrl}/scrub_ips/filter_types`);
+                this.filterTypes = filterTypes.filters || [];
                 return response;
             } catch (error) {
                 this.error = true;

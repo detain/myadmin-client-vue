@@ -22,13 +22,9 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 const mailStore = useMailStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
 const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
@@ -78,8 +74,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
@@ -108,8 +103,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
@@ -140,8 +134,7 @@ function submitForm() {
                 });
             });
     } catch (error: any) {
-        console.log('error');
-        console.log(error);
+        console.log('error', error);
     }
 }
 

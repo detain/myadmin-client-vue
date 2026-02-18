@@ -19,14 +19,10 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const baseUrl = siteStore.getBaseUrl();
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 siteStore.setPageHeading('View Backup');
 siteStore.setTitle('View Backup');
 siteStore.setBreadcrums([
@@ -93,23 +89,20 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
         } else if (newLink == 'login') {
             try {
                 fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id}/login`).then((response) => {
-                    console.log('response:');
-                    console.log(response);
+                    console.log('response:', response);
                     if (typeof response.location != 'undefined') {
                         window.location.href = response.location;
                     }
                 });
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
             }
         }
     }

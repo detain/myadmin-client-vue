@@ -73,8 +73,7 @@ function submitForm() {
     fetchWrapper
         .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/slices`, postData)
         .then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             Swal.fire({
                 icon: 'success',
                 html: response.text,
@@ -84,8 +83,7 @@ function submitForm() {
             }
         })
         .catch((error: any) => {
-            console.log('api failed');
-            console.log(error);
+            console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error.message}`,
@@ -97,14 +95,12 @@ function loadData() {
     fetchWrapper
         .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/slices`)
         .then((response: SlicesResponse) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             sliceData.value = response;
             slices.value = response.vps_slices;
         })
         .catch((error: any) => {
-            console.log('api failed');
-            console.log(error);
+            console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error.message}`,

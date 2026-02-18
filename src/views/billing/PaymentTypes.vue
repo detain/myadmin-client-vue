@@ -61,12 +61,10 @@ function deleteCardModal(cc_id = 0) {
         preConfirm: () => {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
-                    console.log('delete cc success');
-                    console.log(response);
+                    console.log('delete cc success', response);
                 });
             } catch (error: any) {
-                console.log('delete cc failed');
-                console.log(error);
+                console.log('delete cc failed', error);
             }
             $('#deleteForm').submit();
         },
@@ -87,12 +85,10 @@ function addCardSubmit() {
                 country: contFields.country,
             })
             .then((response) => {
-                console.log('add cc success');
-                console.log(response);
+                console.log('add cc success', response);
             });
     } catch (error: any) {
-        console.log('add cc failed');
-        console.log(error);
+        console.log('add cc failed', error);
     }
 }
 
@@ -110,12 +106,10 @@ function editCardSubmit() {
                 country: contFields.country,
             })
             .then((response) => {
-                console.log('edit cc success');
-                console.log(response);
+                console.log('edit cc success', response);
             });
     } catch (error: any) {
-        console.log('edit cc failed');
-        console.log(error);
+        console.log('edit cc failed', error);
     }
 }
 
@@ -160,12 +154,10 @@ function updatePaymentMethod() {
                 payment_method: paymentMethod.value,
             })
             .then((response) => {
-                console.log('update payment method success');
-                console.log(response);
+                console.log('update payment method success', response);
             });
     } catch (error: any) {
-        console.log('update payment method failed');
-        console.log(error);
+        console.log('update payment method failed', error);
     }
 }
 
@@ -227,8 +219,7 @@ try {
         countries.value = response;
     });
 } catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    console.log('error:', error);
 }
 accountStore.load();
 //accountStore.getCountries();

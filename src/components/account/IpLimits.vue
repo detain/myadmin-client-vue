@@ -2,21 +2,15 @@
 import { ref, computed } from 'vue';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
-
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import type { AccountData, AccountLimit } from '@/types/account';
-
 const props = defineProps<{
     data: AccountData;
     limits: AccountLimit[];
     ip: string;
 }>();
-const limits = computed(() => {
-    return props.limits;
-});
-const ip = computed(() => {
-    return props.ip;
-});
+const limits = computed(() => props.limits);
+const ip = computed(() => props.ip);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
@@ -26,10 +20,10 @@ siteStore.setBreadcrums([
     ['', 'Account Settings'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-
 const newLimit = ref({
     start: '',
     end: '',
+    restrict: 'Web & API'
 });
 
 async function deleteRange(start: string, end: string) {
@@ -40,13 +34,11 @@ async function deleteRange(start: string, end: string) {
                 end: end,
             })
             .then((response) => {
-                console.log('delete range success');
-                console.log(response);
+                console.log('delete range success', response);
                 accountStore.load();
             });
     } catch (error: any) {
-        console.log('delete range failed');
-        console.log(error);
+        console.log('delete range failed', error);
     }
 }
 
@@ -56,23 +48,22 @@ async function addRangeSubmit() {
             .post(`${baseUrl}/account/iplimits`, {
                 start: newLimit.value.start,
                 end: newLimit.value.end,
+                restrict: newLimit.value.restrict
             })
             .then((response) => {
-                console.log('add range success');
-                console.log(response);
+                console.log('add range success', response);
                 accountStore.load();
             });
     } catch (error: any) {
-        console.log('add range failed');
-        console.log(error);
+        console.log('add range failed', error);
     }
 }
 </script>
 
 <script lang="ts">
 export default {
-  name: 'IpLimits',
-}
+    name: 'IpLimits',
+};
 </script>
 
 <template>
@@ -97,6 +88,7 @@ export default {
                         <tr>
                             <th>Start IP</th>
                             <th>End IP</th>
+                            <th>Restrict</th>
                             <th>Options</th>
                         </tr>
                     </thead>
@@ -104,13 +96,18 @@ export default {
                         <tr v-for="(limit, idx) in limits" :key="'row' + idx">
                             <td>{{ limit.start }}</td>
                             <td>{{ limit.end }}</td>
+                            <td>{{ limit?.restrict == 'Only API' ? 'Only API' : 'Web & API' }}</td>
                             <td>
                                 <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fa fa-trash"></span> Remove</a>
                             </td>
                         </tr>
                         <tr>
-                            <td><input v-model="newLimit.start" type="text" name="start" /></td>
-                            <td><input v-model="newLimit.end" type="text" name="end" /></td>
+                            <td><input v-model="newLimit.start" type="text" name="start" placeholder="192.168.1.0" /></td>
+                            <td><input v-model="newLimit.end" type="text" name="end" placeholder="192.168.1.255" /></td>
+                            <td><select v-model="newLimit.restrict" name="restrict">
+                                <option value="Web & API">Web & API</option>
+                                <option value="Only API">Only API</option>
+                            </select></td>
                             <td><button type="submit" class="btn btn-custom btn-sm" name="submit">Add Range</button></td>
                         </tr>
                     </tbody>

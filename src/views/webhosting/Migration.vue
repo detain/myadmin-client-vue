@@ -47,8 +47,7 @@ const submitForm = () => {
             })
             .then((response) => {
                 Swal.close();
-                console.log('migration success');
-                console.log(response);
+                console.log('migration success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -56,8 +55,7 @@ const submitForm = () => {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('migration failed');
-        console.log(error);
+        console.log('migration failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error}`,

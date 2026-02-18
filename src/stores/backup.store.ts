@@ -154,8 +154,7 @@ export const useBackupStore = defineStore('backup', {
                 this.serviceExtra = response.serviceExtra;
                 this.extraInfoTables = response.extraInfoTables;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

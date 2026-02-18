@@ -8,9 +8,7 @@ import type { AccountData } from '@/types/account';
 const props = defineProps<{
     data: AccountData;
 }>();
-const data = computed(() => {
-    return props.data;
-});
+const data = computed(() => props.data);
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 siteStore.setPageHeading('Account Settings');
@@ -24,13 +22,11 @@ const baseUrl = siteStore.getBaseUrl();
 async function generateApiKey() {
     try {
         fetchWrapper.post(`${baseUrl}/account/apikey`, {}).then((response) => {
-            console.log('generateApiKey success');
-            console.log(response);
+            console.log('generateApiKey success', response);
             accountStore.data.api_key = response;
         });
     } catch (error: any) {
-        console.log('generateApiKey failed');
-        console.log(error);
+        console.log('generateApiKey failed', error);
     }
 }
 </script>

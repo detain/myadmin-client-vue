@@ -84,8 +84,7 @@ async function editDnsRecord(event: Event) {
     let response;
     try {
         fetchWrapper.post(`${baseUrl}/dns/${id}/${recordId.value}`, recordRow.value).then((response) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             loadDns();
             Swal.fire({
                 icon: 'success',
@@ -93,8 +92,7 @@ async function editDnsRecord(event: Event) {
             });
         });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -114,8 +112,7 @@ async function addDnsRecord(event: Event) {
                 ttl: ttl.value,
             })
             .then((response) => {
-                console.log('api success');
-                console.log(response);
+                console.log('api success', response);
                 loadDns();
                 Swal.fire({
                     icon: 'success',
@@ -123,8 +120,7 @@ async function addDnsRecord(event: Event) {
                 });
             });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -157,8 +153,7 @@ async function deleteRecord(event: Event) {
             console.log('got to this place from deleteRecord preConfirm');
             try {
                 fetchWrapper.delete(`${baseUrl}/dns/${id}/${record}`).then((response) => {
-                    console.log('api success');
-                    console.log(response);
+                    console.log('api success', response);
                     loadDns();
                     Swal.fire({
                         icon: 'success',
@@ -166,8 +161,7 @@ async function deleteRecord(event: Event) {
                     });
                 });
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
                 Swal.fire({
                     icon: 'error',
                     html: `Got error ${error.message}`,
@@ -180,12 +174,10 @@ async function deleteRecord(event: Event) {
 const loadDns = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/dns/${id}`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         data.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

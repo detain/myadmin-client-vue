@@ -139,8 +139,7 @@ export const useLicenseStore = defineStore('license', {
                 this.serviceType = response.serviceType;
                 //this.license_key = response.license_key;
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             }
         },
         async update(id: number, params: any): Promise<void> {},

@@ -33,13 +33,9 @@ const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link as string;
-});
+const link = computed(() => route.params.link as string);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
 siteStore.setBreadcrums([
@@ -111,20 +107,17 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
         } else if (newLink == 'login') {
             try {
                 fetchWrapper.get(`${baseUrl}/qs/${id}/login`).then((response) => {
-                    console.log('login success');
-                    console.log(response);
+                    console.log('login success', response);
                 });
             } catch (error: any) {
-                console.log('login failed');
-                console.log(error);
+                console.log('login failed', error);
             }
         }
     }

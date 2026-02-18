@@ -6,7 +6,7 @@
         <title>My InterServer</title>
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <meta
-            http-equiv="Content-Security-Policy"
+            http-eqmuiv="Content-Security-Policy"
             content="
 
             default-src 'self';
@@ -14,8 +14,6 @@
             script-src
             'self'
             'unsafe-inline'
-            http://static.openreplay.com
-            https://static.openreplay.com
             https://www.paypal.com
             https://www.paypalobjects.com
             https://www.googletagmanager.com
@@ -27,7 +25,8 @@
 
             connect-src
             'self'
-            https://openreplay.is.cc
+            wss://*.tawk.to/
+            https://va.tawk.to/
             https://my.interserver.net
             https://www.paypal.com
             https://api.paypal.com
@@ -45,11 +44,13 @@
             style-src
             'self'
             'unsafe-inline'
+            https://embed.tawk.to/
             https://fonts.googleapis.com;
 
             font-src
             'self'
             data:
+            https://embed.tawk.to/
             https://fonts.gstatic.com
             https://ka-f.fontawesome.com;
 
@@ -73,38 +74,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     </head>
 
-    <body>
+    <body class="sidebar-mini layout-fixed">
         <div id="app"></div>
-        <script>
-            var initOpts = {
-                projectKey: "DJDxKtP5YpSgb0ArsCIy",
-                ingestPoint: "https://openreplay.is.cc/ingest",
-                defaultInputMode: 0,
-                obscureTextNumbers: false,
-                obscureTextEmails: false,
-                __DISABLE_SECURE_MODE: true,
-            };
-            var startOpts = {
-                userID: "",
-                resourceBaseHref: "https://my.interserver.net/",
-                __DISABLE_SECURE_MODE: true,
-            };
-            (function (A, s, a, y, e, r) {
-                r = window.OpenReplay = [e, r, y, [s - 1, e]];
-                s = document.createElement("script");
-                s.src = A;
-                s.async = !a;
-                document.head.appendChild(s);
-                r.start = function () { r.push([0]) };
-                r.stop = function () { r.push([1]) };
-                r.setUserID = function (id) { r.push([2, id]) };
-                r.setUserAnonymousID = function (id) { r.push([3, id]) };
-                r.setMetadata = function (k, v) { r.push([4, k, v]) };
-                r.event = function (k, p, i) { r.push([5, k, p, i]) };
-                r.issue = function (k, p) { r.push([6, k, p]) };
-                r.isActive = function () { return false };
-                r.getSessionToken = function () {};
-            })("//static.openreplay.com/latest/openreplay.js", 1, 0, initOpts, startOpts);
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/5a0d9a85bb0c3f433d4c999b/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
         </script>
         <script type="module" src="/src/main.ts"></script>
     </body>

@@ -3,9 +3,7 @@ import { computed } from 'vue';
 const props = defineProps<{
     msg: string;
 }>();
-const msg = computed(() => {
-    return props.msg;
-});
+const msg = computed(() => props.msg);
 </script>
 
 <template>

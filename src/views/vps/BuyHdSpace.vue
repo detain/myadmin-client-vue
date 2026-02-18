@@ -33,8 +33,7 @@ function submitForm() {
     fetchWrapper
         .post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_hd_space`, postData)
         .then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             Swal.fire({
                 icon: 'success',
                 html: response.text,
@@ -42,8 +41,7 @@ function submitForm() {
             router.push(`/cart/${response.invoice}`);
         })
         .catch((error: any) => {
-            console.log('api failed');
-            console.log(error);
+            console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error}`,
@@ -55,14 +53,12 @@ async function loadData() {
     fetchWrapper
         .get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_hd_space`)
         .then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             gbCost.value = response.gbCost;
             size.value = response.size;
         })
         .catch((error: any) => {
-            console.log('api failed');
-            console.log(error);
+            console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
                 html: `Got error ${error}`,
