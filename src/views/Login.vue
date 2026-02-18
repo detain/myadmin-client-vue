@@ -8,7 +8,6 @@ import $ from 'jquery';
 import Swal from 'sweetalert2';
 //import { Form, Field } from 'vee-validate';
 //import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
-
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
@@ -23,6 +22,21 @@ const emailCode = ref('');
 const twoFactorAuthCode = ref('');
 const primaryCaptcha = ref(true);
 const showForgotPass = ref(false);
+const showPasswordInfo = ref(false);
+const validClass = 'fa-check bg-green p-1';
+const invalidClass = 'fa-close bg-red px-2 py-1';
+
+const passwordRules = computed(() => {
+    const val = password.value;
+    return {
+        length: val.length >= 8,
+        letter: /[a-z]/.test(val),
+        capital: /[A-Z]/.test(val),
+        number: /\d/.test(val),
+        special: !/^[a-zA-Z0-9- ]*$/.test(val),
+    };
+});
+
 const containerRef = ref<HTMLElement | null>(null);
 const widgetId = ref<string | null>(null);
 const isTosChecked = computed(() => tos.value == true || login.value != '');
@@ -450,53 +464,6 @@ onMounted(async () => {
         animateValue(document.getElementById('count-w'));
         animateValue(document.getElementById('count-s'));
         //reloadCaptcha();
-        $('input[type=password]').keyup(function () {
-            $('#password_confirmation').on('keyup', function () {
-                $('#pswd_info').hide();
-            });
-        });
-        $('#signuppassword')
-            .keyup(function () {
-                // keyup code here
-                //validate the length
-                if (password.value.length < 8) {
-                    $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                } else {
-                    $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                }
-                //validate letter
-                if (password.value.match(/[a-z]/)) {
-                    $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                //validate capital letter
-                if (password.value.match(/[A-Z]/)) {
-                    $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                //validate number
-                if (password.value.match(/\d/)) {
-                    $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#number .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                if (/^[a-zA-Z0-9- ]*$/.test(password.value) == false) {
-                    $('#special .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-            })
-            .focus(function () {
-                $('#pswd_info').show();
-            })
-            .blur(function () {
-                $('#pswd_info').hide();
-            });
-        $('#password_confirmation').on('click', function () {
-            $('#pswd_info').hide();
-        });
     });
 });
 
@@ -645,10 +612,10 @@ authStore.load();
                                                 <i class="fab fa-google-plus" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
-                                                <i class="fa fa-github"></i>
+                                                <i class="fab fa-github"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -723,20 +690,20 @@ authStore.load();
                                                 </div>
                                             </div>
                                             <div class="input-group mb-3">
-                                                <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required />
+                                                <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required @focus="showPasswordInfo = true" @blur="showPasswordInfo = false" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
                                                     </div>
                                                 </div>
-                                                <div id="pswd_info">
+                                                <div v-show="showPasswordInfo" id="pswd_info">
                                                     <p class="pp"><b>Password must have:</b></p>
                                                     <ul>
-                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 8 characters</li>
-                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 uppercase</li>
-                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 lowercase</li>
-                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 number</li>
-                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 special char</li>
+                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.length ? validClass : invalidClass"></i>atleast 8 characters</li>
+                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.letter ? validClass : invalidClass"></i>atleast 1 uppercase</li>
+                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.capital ? validClass : invalidClass"></i>atleast 1 lowercase</li>
+                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.number ? validClass : invalidClass"></i>atleast 1 number</li>
+                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.special ? validClass : invalidClass"></i>atleast 1 special char</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -779,12 +746,12 @@ authStore.load();
                                                 <div class="col-12">
                                                     <div class="icheck-primary">
                                                         <input id="tos" v-model="tos" type="checkbox" required />
-                                                        <label for="tos"
-                                                            >I agree to the
+                                                        <label for="tos" >
+                                                            I agree to the
                                                             <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
                                                                 <a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a>
-                                                            </span></label
-                                                        >
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 text-right">
@@ -829,10 +796,10 @@ authStore.load();
                                                 <i class="fab fa-google-plus" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
-                                                <i class="fa fa-github"></i>
+                                                <i class="fab fa-github"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -1092,7 +1059,7 @@ body {
     box-shadow: 0 1px 3px #ccc;
     border: 1px solid #ddd;
     top: 34px;
-    display: none;
+    display: block;
     z-index: 999;
 }
 .pass_checks {
