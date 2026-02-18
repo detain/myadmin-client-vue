@@ -63,66 +63,12 @@ interface LoginParams {
     remember: string | null;
     tfa?: string;
     'g-recaptcha-response'?: string;
+    'cf-turnstile-response'?: string;
+    captcha?: string;
 }
 
 interface SignupParams extends LoginParams {
     tos?: boolean;
-}
-
-async function onLoginSubmit() {
-    Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-    });
-    const authStore = useAuthStore();
-    let loginParams: LoginParams = {
-        login: login.value,
-        passwd: password.value,
-        remember: remember.value,
-    };
-    if (authStore.opts.tfa == true) {
-        loginParams.tfa = twoFactorAuthCode.value;
-    }
-    console.log('Login Params:', loginParams);
-    await authStore.login(loginParams).then((response) => {
-        Swal.close();
-    });
-}
-
-async function oAuthLogin(provider: string) {
-    window.open(`oauth/callback.php?provider=${provider}`, 'authWindow', 'width=600,height=600,scrollbars=yes');
-}
-
-async function onSignupSubmit() {
-    Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-    });
-    const authStore = useAuthStore();
-    let signupParams: SignupParams = {
-        login: login.value,
-        passwd: password.value,
-        tos: tos.value,
-        remember: remember.value,
-    };
-    if (authStore.opts.tfa == true) {
-        signupParams.tfa = twoFactorAuthCode.value;
-    }
-    if (window.location.host != 'cn.interserver.net') {
-        signupParams['g-recaptcha-response'] = gresponse.value;
-    }
-    console.log('Signup Params:', signupParams);
-    authStore.signup(signupParams).then((response) => {
-        Swal.close();
-    });
 }
 
 async function reloadCaptcha() {
@@ -299,40 +245,6 @@ function login_handler() {
     return false;
 }
 
-function forgot_password() {
-    const username = $("input[name='email']").val() as string;
-    const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    const captcha = captchaCode.value;
-    if (username == '') {
-        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
-    } else if (regex.test(username) == false) {
-        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
-    } else {
-        const pathArray = window.location.pathname.split('/');
-        let newPath = '/';
-        let i;
-        for (i = 1; i < pathArray.length - 1; i++) {
-            newPath += pathArray[i];
-            newPath += '/';
-        }
-        $.ajax({
-            type: 'POST',
-            url: `https://${window.location.host}${newPath}password.php`,
-            data: `ajax=1&email=${encodeURIComponent(username)}&g-recaptcha-response=${encodeURIComponent(gresponse.value)}&captcha=${encodeURIComponent(captcha)}`,
-            success: function (html) {
-                $('#forgot-password-message').html(html);
-            },
-            error: function () {
-                $('#btn-forgot').prop('disabled', false);
-                $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>');
-            },
-            beforeSend: function () {
-                $('#forgot-password-message').html('<div style="margin: 15px; text-align: center;"><i class="fa fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
-            },
-        });
-    }
-}
-
 function signup_handler() {
     Swal.fire({
         title: 'Please wait',
@@ -432,6 +344,103 @@ function signup_handler() {
         }
     }
     return false;
+}
+
+function forgot_password() {
+    const username = $("input[name='email']").val() as string;
+    const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const captcha = captchaCode.value;
+    if (username == '') {
+        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
+    } else if (regex.test(username) == false) {
+        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
+    } else {
+        const pathArray = window.location.pathname.split('/');
+        let newPath = '/';
+        let i;
+        for (i = 1; i < pathArray.length - 1; i++) {
+            newPath += pathArray[i];
+            newPath += '/';
+        }
+        $.ajax({
+            type: 'POST',
+            url: `https://${window.location.host}${newPath}password.php`,
+            data: `ajax=1&email=${encodeURIComponent(username)}&g-recaptcha-response=${encodeURIComponent(gresponse.value)}&captcha=${encodeURIComponent(captcha)}`,
+            success: function (html) {
+                $('#forgot-password-message').html(html);
+            },
+            error: function () {
+                $('#btn-forgot').prop('disabled', false);
+                $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>');
+            },
+            beforeSend: function () {
+                $('#forgot-password-message').html('<div style="margin: 15px; text-align: center;"><i class="fa fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
+            },
+        });
+    }
+}
+
+async function onLoginSubmit() {
+    Swal.fire({
+        title: 'Please wait',
+        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+    });
+    const authStore = useAuthStore();
+    let loginParams: LoginParams = {
+        login: login.value,
+        passwd: password.value,
+        remember: remember.value,
+    };
+    if (authStore.opts.tfa == true) {
+        loginParams.tfa = twoFactorAuthCode.value;
+    }
+    console.log('Login Params:', loginParams);
+    await authStore.login(loginParams).then((response) => {
+        Swal.close();
+    });
+}
+
+async function oAuthLogin(provider: string) {
+    window.open(`oauth/callback.php?provider=${provider}`, 'authWindow', 'width=600,height=600,scrollbars=yes');
+}
+
+async function onSignupSubmit() {
+    Swal.fire({
+        title: 'Please wait',
+        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+    });
+    const authStore = useAuthStore();
+    let signupParams: SignupParams = {
+        login: login.value,
+        passwd: password.value,
+        tos: tos.value,
+        remember: remember.value,
+    };
+    if (authStore.opts.tfa == true) {
+        signupParams.tfa = twoFactorAuthCode.value;
+    }
+    signupParams['cf-turnstile-response'] = window.turnstile.getResponse(widgetId.value);
+    /*if (window.location.host != 'cn.interserver.net') {
+        signupParams['g-recaptcha-response'] = gresponse.value;
+    }*/
+    console.log('Signup Params:', signupParams);
+    authStore.signup(signupParams).then((response) => {
+        Swal.close();
+        window.turnstile.reset(widgetId.value);
+
+    }).catch((error: any) => {
+        Swal.close();
+        window.turnstile.reset(widgetId.value);
+
+    });
 }
 
 function loadTurnstileScript(): Promise<void> {
