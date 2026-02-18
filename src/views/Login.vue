@@ -456,15 +456,10 @@ onMounted(async () => {
             console.log(token);
         },
     });
-    $(function () {
-        $('#tosModal').on('shown.bs.modal', function (e) {
-            setModalMaxHeight(this);
-        });
-        animateValue(document.getElementById('count-v'));
-        animateValue(document.getElementById('count-w'));
-        animateValue(document.getElementById('count-s'));
-        //reloadCaptcha();
-    });
+    animateValue(document.getElementById('count-v'));
+    animateValue(document.getElementById('count-w'));
+    animateValue(document.getElementById('count-s'));
+    //reloadCaptcha();
 });
 
 //useRecaptchaProvider();
@@ -749,7 +744,7 @@ authStore.load();
                                                         <label for="tos" >
                                                             I agree to the
                                                             <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
-                                                                <a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a>
+                                                                <a href="https://www.interserver.net/terms-of-service.html" target="_blank">Terms of Service</a>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -818,142 +813,6 @@ authStore.load();
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div id="tosModal" class="h-128 fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
-        <div class="relative mx-auto my-6 w-auto max-w-3xl">
-            <!--content-->
-            <div class="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
-                <!--header-->
-                <div class="flex items-start justify-between rounded-t border-b border-solid border-gray-300 p-5">
-                    <h3 class="text-3xl font-semibold">Terms of Service</h3>
-                    <button class="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black opacity-5 outline-none focus:outline-none" onclick="toggleModal('tosModal')">
-                        <span class="block h-6 w-6 bg-transparent text-2xl text-black opacity-5 outline-none focus:outline-none">×</span>
-                    </button>
-                </div>
-                <!--body-->
-                <div class="relative flex-auto p-6">
-                    <div class="modal-content my-4 h-64 overflow-y-auto text-lg leading-relaxed text-gray-600">
-                        <div class="modal-body text-black">
-                            <div class="clear container" style="display: inline">
-                                <div class="other_main">
-                                    <p class="common_paragraph pt-3">InterServer's terms of service applies to all content, domains and clients with in the InterServer network.</p>
-                                    <div class="press_details bg-gray-200 bg-gray-200 p-3 p-3">
-                                        <p class="font-semibold text-black">Ordering</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Please read the following Terms Of Service agreement before proceeding, then continue ordering. These policies are designed to protect the best interests of our customers as a whole. Interserver's policy is to act as a neutral provider of access to the global Internet. We reserve the right to suspend or cancel a customer's access to any or all services provided by us if it is decided that the account has been inappropriately used.</p>
-                                    <p class="common_paragraph pt-3">All shared hosting services are intended for the end user only and may not be subleased, sold or given to third parties.</p>
-                                    <p class="common_paragraph pt-3">Any products and services to be provided to Client will be at a professional level of quality conforming to generally accepted industry standards and in compliance in all material respect with all applicable laws and regulations. Except as otherwise expressly provided in this agreement, Interserver does not make, and hereby disclaims any and all other warranties, expressed or implied including any and all warranties of merchantability or fitness for a particular purpose.</p>
-                                    <p class="common_paragraph pt-3">Clients are responsible for frequently backing up their files on our system. Interserver cannot be held responsible for the deletion of users' files, whether intentional or unintentional.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Authorization of Charges</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">InterServer will bill for services rendered which are due with in seven (7) days. Client authorizes InterServer to charge credit card supplied by Client if stored with in our billing system. Paypal or check/money order are also accepted if client chooses not to store a credit card.</p>
-                                    <p class="common_paragraph pt-3">Interserver may discontinue service for failure to make payment for initial fees or for any re-occuring fees thereafter. Interserver reserves the right to refuse, suspend, or cancel service pending receipt of a valid payment.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Content Restrictions</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">All services provided by Interserver may be used for lawful purposes only. Transmission, storage, or presentation of any information, data, or material in violation of any United States federal, state, or local law is strictly prohibited. This includes but is not limited to copyrighted or trademarked material and material protected by trade secret.</p>
-                                    <p class="common_paragraph pt-3">Warez Policy: Actual files, including but not limited to pirated software, hacker programs, cracks, and MP3 files, are strictly prohibited from being stored on any Interserver servers.</p>
-                                    <p class="common_paragraph pt-3">Examples of unacceptable content include, but are not limited to the following: Pirated software, Hacker programs or archives, illegal audio files or archives.</p>
-                                    <p class="common_paragraph pt-3">IRC and camfrog servers are strictly prohibited.</p>
-                                    <p class="common_paragraph pt-3">Interserver reserves the right to disable any material from Client's web space that is reasonably deemed unacceptable.</p>
-                                    <p class="common_paragraph pt-3">Interserver reserves the right to suspend Client's account our discretion if said material is discovered.</p>
-                                    <p class="common_paragraph pt-3">Interserver is the sole arbiter as to what constitutes a violation of the above provisions.</p>
-                                    <p class="common_paragraph pt-3">Interserver reserves the right to suspend any client which violates section 3 of our Terms Of Service.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Shared Hosting Application Restrictions</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">VPS servers are not permitted to run CPU mining programs. Shared Webhosting Restrictions: The Client is allowed to freely install CGI/PHP applications; however, Interserver reserves the right to disable any application that unreasonably effects or interferes with normal server operations. Said situation is highly unlikely. Some scripts and sites are not allowed on shared hosting: *Tube / youtube clone sites, adult content, file archives, mirror sites, image and file upload sites. No single shared hosting account is permitted to use more that 20% of the server resources at a time. A single account is limited to 250,000 inodes at any given time. Clients on the Unlimited SSD shared hosting platform using more than 1GB of space will be moved to SATA.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Spam Policy</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Interserver servers may not be the source, intermediary, or destination address involved in the transmission of Spam, Spamware and other Spam Software or misuse of SMTP. Client's domain or IP may not be referenced as originator or intermediary in any of the above.</p>
-                                    <p class="common_paragraph pt-3">Interserver considers Spam to be any mass unsolicited message in the mediums of newsgroups and e-mail.</p>
-                                    <p class="common_paragraph pt-3">The actions stated above will not be tolerated. Violation will result in the immediate deactivation of services without refund of any kind. Furthermore, a fine of one-hundred (100) US dollars will be imposed for each spam policy violation. Interserver is the sole arbiter as to what constitutes a violation of the above provisions.</p>
-                                    <p class="common_paragraph pt-3">InterServer IP blocks may not be used for the purposes of IP rotation while sending email. InterServer may, through feedback loop monitoring, block SMTP traffic on a server found to be sending email through multiple IP addresses. Failure to respond to SPAM complaints will result in a block against SMTP traffic and may result in account termination. Further mailing list policies are included in the Email / Mailing List Policy.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Server Abuse</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Any attempt to undermine or cause harm to a Interserver server or another Interserver Client is strictly prohibited.</p>
-                                    <p class="common_paragraph pt-3">Any attempt to undermine any Interserver web site or a web site of another Interserver Client is strictly prohibited and may result in immediate termination of services rendered by Interserver without refund. Interserver is the sole arbiter as to what constitutes a violation of the above provisions. A fine of two-hundred (200) USD may be implemented for intentional server abuse.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Indemnification</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Client agrees that it will defend, indemnify, and hold harmless Interserver from any and all demands, fines, liabilities, losses, costs, claims, and expenses, including attorney's fees, asserted against Interserver, its employees, officers, agents, and directors that may arise or result from any service provided or performed, or agreed to be performed, or any product sold by Client, its employees, officers, agents, and directors.</p>
-                                    <p class="common_paragraph pt-3">The Client agrees that it will defend, indemnify, and hold harmless Interserver against any liabilities, including but not limited to, those arising out of (1) any injury to person or property caused by any product sold or service rendered or otherwise distributed in connection with Interserver's servers; (2) any material supplied by the Client infringing upon or allegedly infringing upon the proprietary rights of a third party; (3) copyright infringement; and (4) any defective products sold to the Client's customer from Interserver's servers.</p>
-                                    <p class="common_paragraph pt-3">Interserver assumes no liability of the Client for failure to follow this Agreement and any results caused by the acts, omissions or negligence of the Client, sub-contractor or an agent of Client or an employee of any one to them, including, but not limited to, claims of third parties arising out of or resulting from or in connection with the Client's products, messages, programs, caller contracts, promotions, advertising, infringement or any claim for libel or slander or for violation of copyright, trademark or other intellectual property rights. Any attempt to undermine any Interserver web site or a web site of another Interserver Client is strictly prohibited and may result in immediate termination of services rendered by Interserver without refund. Interserver is the sole arbiter as to what constitutes a violation of the above provisions. A fine of two-hundred (200) USD may be implemented for intentional server abuse.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Disclaimer</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Interserver wll not be held responsible for any damages you or your business may suffer. Interserver makes no warranties of any kind, expressed or implied, for services rendered. Interserver disclaims any warranty or merchantability or fitness for a particular purpose. Interserver assumes no liability for disruptions or improper operation of its equipment or software for any reason, including, but not limited to, vandalism, theft, phone service outages, Internet disruptions, human error, extreme or severe weather conditions or any other causes in the nature of "Acts of God" or force majeure. Interserver will not be responsible for consequential damages or punitive or exemplary damages under any circumstances. In no case will Client be entitled to recover damages from Interserver.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Term</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph first_cap pt-3">A The term of this Agreement will continue until a notice of cancellation by Interserver or Client is given, or until terminated under other provisions of this Agreement. Interserver reserves the right to terminate this Agreement with cause upon notification to the Client. Interserver may further terminate this Agreement immediately without notice at any time the Client breaches any part of this Agreement, or if any program or facility used by Interserver to implement this Agreement is disrupted or terminated for any reason.</p>
-                                    <p class="common_paragraph first_cap pt-3">B 9.b is only applicable to Shared Hosting Accounts (package IS 1.0-3.0). CLIENT may request Interserver refunds money within 30 days after sign up has taken place. CLIENT will be refunded the full amount they have paid. If 30 days have past CLIENT may cancel contract, however, CLIENT forfeits monies paid to Interserver. CLIENT may cancel account with Interserver and be removed from billing, thereby stopping all future charges.</p>
-                                    <p class="common_paragraph first_cap pt-3">C 9.c is only applicable to Dedicated/Colocation and IP Transit accounts. Refunds will be issued to any order prior to service turn up at CLIENT's request. Refunds are not offered on Dedicated servers, colocation space, VPS, licencing or IP transit after service has started.</p>
-                                    <p class="common_paragraph first_cap pt-3">D These policies may be modified or changed by Interserver. Interserver will inform client of any major policy changes.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Presumption of Agreement</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">By signing up with Interserver, be it using Interserver's online sign up form or contacting in any way an employee, officer, agent, and director with request for Interserver to provide Client services, Client (1) authorizes Interserver to take the actions necessary in order to setup Client's account, including charging credit card, if applicable, supplied by Client at time of sign up; and (2) agrees to each and every provision set forth in this Agreement and shall hold to said Agreement in the court of law.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Default</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">In the event Client defaults in any provision or fails to perform pursuant to this Agreement, Interserver will be entitled to damages, costs, and attorney's fees from the Client.</p>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Invalid or Non-enforeable Provisions</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">The invalidity or non-enforceability of any provision of this Agreement, as so determined by a court of competent jurisdiction, will not affect the other provisions hereof, and in any such occasion this Agreement will be construed in all respects as if such invalid or non-enforceable provision were omitted. This agreement constitutes the entire agreement between the parties hereto.</p>
-                                    <div class="press_details bg-gray-200 p-3"><p class="font-semibold text-black">Choice of Law / Venue</p></div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">This Agreement will be construed and enforced in accordance with the laws of the State of NJ and the venue for any action, dispute or proceeding with respect to this Agreement will be NJ.</p>
-                                    <div class="press_details bg-gray-200 p-3"><p class="font-semibold text-black">Domain Agreement</p></div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Interserver may provide new top level domain name for new clients as requested by them, on packages with specifically state this. These domain names carry no charge for renewals thereafter to the client while client remains hosted at Interserver. The client is responsible for renewing domain name by contacting the sales department. Should client decide to switch hosting providers, client agrees to pay yearly fee listed on the Interserver website for domain name registrations.</p>
-                                    <div class="press_details bg-gray-200 p-3"><p class="font-semibold text-black">Email / Mailing List Policy</p></div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">Server's which are for mailing only are disallowed on InterServer's network. A mailing only server is defined as any any shared/vps/dedicated/colocated server who's primary purpose is sending email over SMTP. Interserver's network is monitored through multiple feedback loops and may terminate, with out prior warning, a server which has a high complaint ratio including servers that may be CAN-SPAM compliant. Running a single opt in, opt out only, or any other non double opt in mailing list will result in server termination.</p>
-                                    <ul class="other_Ulist list-disc">
-                                        <li>Mailing lists must be double opt in lists.</li>
-                                        <li>Messages must have clear removal instructions and valid headers.</li>
-                                        <li>Removal requests must be completed with in 24 hours.</li>
-                                        <li>Messages must include details on how the user subscribed. These details must be provided to Interserver on our request.</li>
-                                        <li>Excessive complaints may result in account termination.</li>
-                                        <li>Interserver reserves the right to charge $100 fee for IPs which are blacklisted due to failing to adhere to Interserver policies.</li>
-                                        <li>Operating an account on behalf of, or in connection with, or reselling any service to, persons or firms listed in the Spamhaus Register of Known Spam Operations (ROKSO) database at: https://www.spamhaus.org will result in immediate account termination.</li>
-                                    </ul>
-                                    <div class="press_details bg-gray-200 p-3">
-                                        <p class="font-semibold text-black">Abuse Complaints</p>
-                                    </div>
-                                    <div class="bottom_hrline bottom_adjust"></div>
-                                    <p class="common_paragraph pt-3">All abuse complaints must be responded to no later than 48 hours after the complaint is made. Failure to reply may result in account termination. Interserver reserves the right to remove files which do not adhere to our terms of service, local, state, or federal laws.</p>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--footer-->
-                <div class="flex items-center justify-end rounded-b border-t border-solid border-gray-300 p-6">
-                    <button class="background-transparent mb-1 mr-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none focus:outline-none" type="button" style="transition: all 0.15s ease" @click.prevent="toggleModal('tosModal')">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="tosModal-backdrop" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
 </template>
 
 <style scoped>
