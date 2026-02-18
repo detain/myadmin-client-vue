@@ -25,7 +25,13 @@ const showForgotPass = ref(false);
 const showPasswordInfo = ref(false);
 const validClass = 'fa-check bg-green p-1';
 const invalidClass = 'fa-close bg-red px-2 py-1';
-
+const containerRef = ref<HTMLElement | null>(null);
+const widgetId = ref<string | null>(null);
+const containerRef2 = ref<HTMLElement | null>(null);
+const widgetId2 = ref<string | null>(null);
+const isTosChecked = computed(() => tos.value == true || login.value != '');
+const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
+let signup_running = 0;
 const passwordRules = computed(() => {
     const val = password.value;
     return {
@@ -36,14 +42,6 @@ const passwordRules = computed(() => {
         special: !/^[a-zA-Z0-9- ]*$/.test(val),
     };
 });
-
-const containerRef = ref<HTMLElement | null>(null);
-const widgetId = ref<string | null>(null);
-const containerRef2 = ref<HTMLElement | null>(null);
-const widgetId2 = ref<string | null>(null);
-const isTosChecked = computed(() => tos.value == true || login.value != '');
-const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
-let signup_running = 0;
 
 const loginSchema = Yup.object().shape({
     tfa: Yup.string(),
@@ -71,6 +69,10 @@ interface SignupParams extends LoginParams {
     tos?: boolean;
 }
 
+function closePopup() {}
+
+function submitForgotPassForm() {}
+
 async function reloadCaptcha() {
     authStore.reloadCaptcha();
 }
@@ -82,10 +84,6 @@ async function toggleCaptchaMethod() {
 async function toggleForgotPass() {
     showForgotPass.value = !showForgotPass.value;
 }
-
-function closePopup() {}
-
-function submitForgotPassForm() {}
 
 function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
@@ -435,11 +433,9 @@ async function onSignupSubmit() {
     authStore.signup(signupParams).then((response) => {
         Swal.close();
         window.turnstile.reset(widgetId.value);
-
     }).catch((error: any) => {
         Swal.close();
         window.turnstile.reset(widgetId.value);
-
     });
 }
 
