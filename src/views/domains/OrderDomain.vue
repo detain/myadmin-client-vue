@@ -216,30 +216,30 @@ function goConfirm() {
 }
 
 function placeOrder() {
-  Swal.fire({
-    title: '',
-    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
-    allowOutsideClick: false,
-    showConfirmButton: false,
-  });
-  fetchWrapper
-      .post(`${baseUrl}/domains/order`, getFormFields())
-      .then((response) => {
-        Swal.close();
-        console.log(response);
-      })
-      .catch((error) => {
-        Swal.close();
-        console.log(error);
-        let message = 'Got Error: ';
-        for (let idx = 0; idx < error.message.length; idx++) {
-          message += `<br>${error.message[idx].text}`;
-        }
-        Swal.fire({
-          icon: 'error',
-          html: message,
+    Swal.fire({
+        title: '',
+        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    fetchWrapper
+        .post(`${baseUrl}/domains/order`, getFormFields())
+        .then((response) => {
+            Swal.close();
+            console.log(response);
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log(error);
+            let message = 'Got Error: ';
+            for (let idx = 0; idx < error.message.length; idx++) {
+                message += `<br>${error.message[idx].text}`;
+            }
+            Swal.fire({
+                icon: 'error',
+                html: message,
+            });
         });
-      });
 }
 
 watch(

@@ -76,7 +76,6 @@ siteStore.setBreadcrums([
 
 type LabelKey = keyof typeof labels;
 
-
 interface ServerCoupon {
     amount: string;
     datacenter: string;
@@ -170,8 +169,7 @@ async function serverOrderRequest() {
         .get(`${baseUrl}/servers/order/buy_now_server?${query}`)
         .then((response) => {
             Swal.close();
-            console.log('Response:');
-            console.log(response);
+            console.log('Response:', response);
             options.bandwidth = response.bandwidth;
             options.cp = response.cp;
             options.ips = response.ips;
@@ -202,8 +200,11 @@ async function serverOrderRequest() {
         .catch((error) => {
             loading.value = false;
             Swal.close();
-            console.log('Error:');
-            console.log(error);
+            console.log('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                html: error.message,
+            });
         });
 }
 
