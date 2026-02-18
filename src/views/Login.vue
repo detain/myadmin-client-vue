@@ -22,16 +22,12 @@ const captchaCode = ref('');
 const emailCode = ref('');
 const twoFactorAuthCode = ref('');
 const primaryCaptcha = ref(true);
-
-const isTosCheked = computed(() => tos.value == true || login.value != '');
-
-const passwordType = computed(() => {
-    if (isPasswordVisible.value == true) {
-        return 'text';
-    } else {
-        return 'password';
-    }
-});
+const showForgotPass = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
+const widgetId = ref<string | null>(null);
+const isTosChecked = computed(() => tos.value == true || login.value != '');
+const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
+let signup_running = 0;
 
 const loginSchema = Yup.object().shape({
     tfa: Yup.string(),
@@ -81,7 +77,7 @@ async function onLoginSubmit() {
     });
 }
 
-function oAuthLogin(provider: string) {
+async function oAuthLogin(provider: string) {
     window.open(`oauth/callback.php?provider=${provider}`, 'authWindow', 'width=600,height=600,scrollbars=yes');
 }
 
@@ -113,19 +109,21 @@ async function onSignupSubmit() {
     });
 }
 
-function reloadCaptcha() {
+async function reloadCaptcha() {
     authStore.reloadCaptcha();
 }
 
-function toggleCaptchaMethod() {
+async function toggleCaptchaMethod() {
     primaryCaptcha.value = !primaryCaptcha.value;
+}
+
+async function toggleForgotPass() {
+    showForgotPass.value = !showForgotPass.value;
 }
 
 function closePopup() {}
 
 function submitForgotPassForm() {}
-
-let signup_running = 0;
 
 function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
@@ -426,20 +424,15 @@ function loadTurnstileScript(): Promise<void> {
             resolve();
             return;
         }
-
         const script = document.createElement('script');
         script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
         script.async = true;
         script.defer = true;
         script.onload = () => resolve();
         script.onerror = reject;
-
         document.head.appendChild(script);
     });
 }
-
-const containerRef = ref<HTMLElement | null>(null);
-const widgetId = ref<string | null>(null);
 
 onMounted(async () => {
     await loadTurnstileScript();
@@ -457,20 +450,6 @@ onMounted(async () => {
         animateValue(document.getElementById('count-w'));
         animateValue(document.getElementById('count-s'));
         //reloadCaptcha();
-        $('#forgot_link').click(function (e) {
-            e.preventDefault();
-            $('.sign-up-txt').hide();
-            $('div.myadmin_login').toggle(500);
-        });
-        $('#access_link').click(function (e) {
-            e.preventDefault();
-            $('.sign-up-txt.signup').show();
-            $('div.myadmin_login').toggle(500);
-        });
-        $('#btn-forgot').click(function (e) {
-            forgot_password();
-            return false;
-        });
         $('input[type=password]').keyup(function () {
             $('#password_confirmation').on('keyup', function () {
                 $('#pswd_info').hide();
@@ -552,187 +531,145 @@ authStore.load();
             <div class="p-2"></div>
             <div class="mx-auto block lg:my-auto">
                 <Transition name="fade-slide">
-                <div v-show="isLogin" class="wrapper w-full">
-                    <div class="myadmin_login w-full">
-                        <div class="login-box m-auto" style="width: 400px">
-                            <div class="card card-outline card-primary">
-                                <div class="card-header text-center" style="display: flex">
-                                    <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
-                                    <h3 class="card-title text-bold ml-3 mt-2">Sign in to start your session</h3>
-                                </div>
-                                <div class="card-body">
-                                    <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" :validation-schema="loginSchema" @submit.prevent="onLoginSubmit">
-                                        <div class="input-group mb-3">
-                                            <input id="loginname" v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
-                                            <div class="input-group-append">
-                                                <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" placeholder="Password" autocomplete="off" required />
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
+                    <div v-show="isLogin && !showForgotPass" class="wrapper w-full">
+                        <div class="myadmin_login w-full">
+                            <div class="login-box m-auto" style="width: 400px">
+                                <div class="card card-outline card-primary">
+                                    <div class="card-header text-center" style="display: flex">
+                                        <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
+                                        <h3 class="card-title text-bold ml-3 mt-2">Sign in to start your session</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" :validation-schema="loginSchema" @submit.prevent="onLoginSubmit">
+                                            <div class="input-group mb-3">
+                                                <input id="loginname" v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 mb-1">
-                                                <a id="forgot_link" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#">I forgot my password</a>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="icheck-primary">
-                                                    <input id="remember" v-model="remember" class="login_info" type="checkbox" />
-                                                    <label for="remember">Remember Me</label>
+                                            <div class="input-group mb-3">
+                                                <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" placeholder="Password" autocomplete="off" required />
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-4">
-                                                <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
+                                            <div class="row">
+                                                <div class="col-12 mb-1">
+                                                    <a id="forgot_link" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#" @click.prevent="toggleForgotPass">I forgot my password</a>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="icheck-primary">
+                                                        <input id="remember" v-model="remember" class="login_info" type="checkbox" />
+                                                        <label for="remember">Remember Me</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
-                                            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
-                                            <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
-                                                <div class="p-6">
-                                                    <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
-                                                    <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
-                                                    <form>
-                                                        <div class="mb-4">
-                                                            <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" placeholder="Security Code" autocomplete="off" required />
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <div class="icheck-primary">
-                                                                <input id="code-remember" v-model="remember" class="login_info" type="checkbox" />
-                                                                <label for="remember">Remember Me</label>
+                                            <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
+                                                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                                                <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
+                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <div class="p-6">
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
+                                                        <form>
+                                                            <div class="mb-4">
+                                                                <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" placeholder="Security Code" autocomplete="off" required />
                                                             </div>
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
-                                                                <strong class="font-bold">Error!</strong>
-                                                                <span id="error-message" class="block sm:inline"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><i class="fas fa-times" aria-hidden="true"></i></span>
+                                                            <div class="col-8">
+                                                                <div class="icheck-primary">
+                                                                    <input id="code-remember" v-model="remember" class="login_info" type="checkbox" />
+                                                                    <label for="remember">Remember Me</label>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
-                                                        </div>
-                                                    </form>
+                                                            <div class="mb-4">
+                                                                <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
+                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <span id="error-message" class="block sm:inline"></span>
+                                                                    <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><i class="fas fa-times" aria-hidden="true"></i></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div v-if="opts.tfa" class="poppup popup fixed inset-0 z-10 flex items-center justify-center">
-                                            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
-                                            <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
-                                                <div class="p-6">
-                                                    <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>Enter Two Factor Authorization Code!</h2>
-                                                    <p class="mb-8 text-center text-gray-600"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Use your configured Authenticator to get a code and enter it here.</p>
-                                                    <form>
-                                                        <div class="signup_toggle twofactorauth mb-4">
-                                                            <input v-model="twoFactorAuthCode" type="text" placeholder="Enter Code from Authenticator" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
-                                                                <strong class="font-bold">Error!</strong>
-                                                                <span id="2fa-error-message" class="block sm:inline"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
-                                                                    <i class="fas fa-times" aria-hidden="true"></i>
-                                                                </span>
+                                            <div v-if="opts.tfa" class="poppup popup fixed inset-0 z-10 flex items-center justify-center">
+                                                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                                                <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
+                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <div class="p-6">
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>Enter Two Factor Authorization Code!</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Use your configured Authenticator to get a code and enter it here.</p>
+                                                        <form>
+                                                            <div class="signup_toggle twofactorauth mb-4">
+                                                                <input v-model="twoFactorAuthCode" type="text" placeholder="Enter Code from Authenticator" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <label class="flex items-center">
-                                                                <input id="2fa-remember" v-model="remember" type="checkbox" name="remember" class="form-checkbox h-4 w-4 rounded-sm text-indigo-500" />
-                                                                <span class="ml-2 text-gray-800">Remember me</span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
-                                                        </div>
-                                                    </form>
+                                                            <div class="mb-4">
+                                                                <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
+                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <span id="2fa-error-message" class="block sm:inline"></span>
+                                                                    <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
+                                                                        <i class="fas fa-times" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label class="flex items-center">
+                                                                    <input id="2fa-remember" v-model="remember" type="checkbox" name="remember" class="form-checkbox h-4 w-4 rounded-sm text-indigo-500" />
+                                                                    <span class="ml-2 text-gray-800">Remember me</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </form>
+                                        <div class="social-auth-links mb-3 mt-2 text-center">
+                                            <h3 class="text-bold text-center text-lg">Sign in using:</h3>
+                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
+                                                <i class="fab fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
+                                                <i class="fab fa-google-plus" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
+                                                <i class="fa fa-github"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
                                         </div>
-                                    </form>
-                                    <div class="social-auth-links mb-3 mt-2 text-center">
-                                        <h3 class="text-bold text-center text-lg">Sign in using:</h3>
-                                        <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
-                                            <i class="fab fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
-                                            <i class="fab fa-google-plus" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
-                                            <i class="fa fa-github"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </Transition>
-                <div class="myadmin_login w-full p-4" style="display: none">
-                    <div class="login-box m-auto" style="width: 400px">
-                        <div class="card card-outline card-primary">
-                            <div class="card-header text-center">
-                                <h3 class="card-title ml-3 mt-1">Forgot your Password?</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-yellow-700">
-                                    Enter the Email address you use to log in to your account<br />
-                                    We'll send you an email with instructions to choose a new password.
-                                </div>
-                                <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="submitForgotPassForm">
-                                    <div class="input-group mb-3">
-                                        <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">
-                                                <span class="fas fa-envelope" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="captcha_main mb-6">
-                                        <div class="flex">
-                                            <img :src="captcha" style="max-width: 75%" alt="" />
-                                            <button class="focus:shadow-outline btn-captcha-reloadFP ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha"><span class="fa fa-refresh fa-fw"></span></button>
-                                        </div>
-                                        <div class="input-group my-3">
-                                            <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
-                                            <div class="input-group-append">
-                                                <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="forgot-password-message"></div>
-                                    <button id="btn-forgot" type="submit" class="btn btn-primary btn-block text-bold">Continue</button>
-                                </form>
-                                <div class="row">
-                                    <div class="col-12 myadmin_forgotPwd mb-1">
-                                        <a id="access_link" href="#" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800">Login to My Account</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <Transition name="fade-slide">
-                <div v-show="!isLogin" class="wrapper-signup mx-auto w-full">
-                    <div class="myadmin_login w-full">
+                    <div v-show="showForgotPass" class="myadmin_login w-full p-4">
                         <div class="login-box m-auto" style="width: 400px">
                             <div class="card card-outline card-primary">
-                                <div class="card-header text-center" style="display: flex">
-                                    <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
-                                    <h3 class="card-title text-bold ml-3 mt-2">Create Your Account Now</h3>
+                                <div class="card-header text-center">
+                                    <h3 class="card-title ml-3 mt-1">Forgot your Password?</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="onSignupSubmit">
+                                    <div class="text-yellow-700">
+                                        Enter the Email address you use to log in to your account<br />
+                                        We'll send you an email with instructions to choose a new password.
+                                    </div>
+                                    <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="submitForgotPassForm">
                                         <div class="input-group mb-3">
                                             <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
@@ -741,124 +678,168 @@ authStore.load();
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required />
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
-                                                </div>
+                                        <div class="captcha_main mb-6">
+                                            <div class="flex">
+                                                <img :src="captcha" style="max-width: 75%" alt="" />
+                                                <button class="focus:shadow-outline btn-captcha-reloadFP ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha"><span class="fa fa-refresh fa-fw"></span></button>
                                             </div>
-                                            <div id="pswd_info">
-                                                <p class="pp"><b>Password must have:</b></p>
-                                                <ul>
-                                                    <li id="length" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 8 characters</li>
-                                                    <li id="capital" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 uppercase</li>
-                                                    <li id="letter" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 lowercase</li>
-                                                    <li id="number" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 number</li>
-                                                    <li id="special" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 special char</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="signup_toggle twofactorauth mb-6 hidden">
-                                                    <div class="input-group my-3">
-                                                        <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" placeholder="Enter Code from Authenticator" autocomplete="off" />
-                                                        <div class="input-group-append">
-                                                            <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <Transition name="fade-slide">
-                                                    <div v-show="primaryCaptcha" class="captcha_main_signup mb-6">
-                                                        <!-- <Checkbox v-model="gresponse" /> -->
-                                                        <div id="turnstileDiv" ref="containerRef"></div>
-                                                        <div id="gcaptcha-1"></div>
-                                                        <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
-                                                    </div>
-                                                </Transition>
-                                                <Transition name="fade-slide">
-                                                    <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
-                                                        <div class="flex">
-                                                            <img :src="captcha" style="max-width: 75%" alt="" />
-                                                            <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                                <span class="fa fa-refresh fa-fw"></span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="input-group my-3">
-                                                            <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
-                                                            <div class="input-group-append">
-                                                                <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
-                                                            </div>
-                                                        </div>
-                                                        <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
-                                                    </div>
-                                                </Transition>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="icheck-primary">
-                                                    <input id="tos" v-model="tos" type="checkbox" required />
-                                                    <label for="tos"
-                                                        >I agree to the
-                                                        <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
-                                                            <a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a>
-                                                        </span></label
-                                                    >
-                                                </div>
-                                            </div>
-                                            <div class="col-12 text-right">
-                                                <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">Create Account</button>
-                                            </div>
-                                        </div>
-                                        <div class="poppup email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
-                                            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
-                                            <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
-                                                <div class="p-6">
-                                                    <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
-                                                    <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
-                                                    <form>
-                                                        <div class="mb-4">
-                                                            <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
-                                                                <strong class="font-bold">Error!</strong>
-                                                                <span id="signup-error-message" class="block sm:inline"></span>
-                                                                <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
-                                                                    <i class="fas fa-times" aria-hidden="true"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <button type="submit" class="signupsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Create Account</button>
-                                                        </div>
-                                                    </form>
+                                            <div class="input-group my-3">
+                                                <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="forgot-password-message"></div>
+                                        <button id="btn-forgot" type="button" class="btn btn-primary btn-block text-bold" @click.prevent="forgot_password">Continue</button>
                                     </form>
-                                    <div class="social-auth-links mb-3 mt-2 text-center">
-                                        <h3 class="text-bold text-center text-lg">Sign up using:</h3>
-                                        <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
-                                            <i class="fab fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
-                                            <i class="fab fa-google-plus" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
-                                            <i class="fa fa-github"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
+                                    <div class="row">
+                                        <div class="col-12 myadmin_forgotPwd mb-1">
+                                            <a id="access_link" href="#" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" @click.prevent="toggleForgotPass">Login to My Account</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </Transition>
+                <Transition name="fade-slide">
+                    <div v-show="!isLogin" class="wrapper-signup mx-auto w-full">
+                        <div class="myadmin_login w-full">
+                            <div class="login-box m-auto" style="width: 400px">
+                                <div class="card card-outline card-primary">
+                                    <div class="card-header text-center" style="display: flex">
+                                        <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
+                                        <h3 class="card-title text-bold ml-3 mt-2">Create Your Account Now</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="onSignupSubmit">
+                                            <div class="input-group mb-3">
+                                                <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <span class="fas fa-envelope" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required />
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div id="pswd_info">
+                                                    <p class="pp"><b>Password must have:</b></p>
+                                                    <ul>
+                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 8 characters</li>
+                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 uppercase</li>
+                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 lowercase</li>
+                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 number</li>
+                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="fa fa-close bg-red b-radius mr-2 px-2 py-1 text-white"></i>atleast 1 special char</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="signup_toggle twofactorauth mb-6 hidden">
+                                                        <div class="input-group my-3">
+                                                            <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" placeholder="Enter Code from Authenticator" autocomplete="off" />
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <Transition name="fade-slide">
+                                                        <div v-show="primaryCaptcha" class="captcha_main_signup mb-6">
+                                                            <!-- <Checkbox v-model="gresponse" /> -->
+                                                            <div id="turnstileDiv" ref="containerRef"></div>
+                                                            <div id="gcaptcha-1"></div>
+                                                            <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
+                                                        </div>
+                                                    </Transition>
+                                                    <Transition name="fade-slide">
+                                                        <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
+                                                            <div class="flex">
+                                                                <img :src="captcha" style="max-width: 75%" alt="" />
+                                                                <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
+                                                                    <span class="fa fa-refresh fa-fw"></span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="input-group my-3">
+                                                                <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                                <div class="input-group-append">
+                                                                    <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                                </div>
+                                                            </div>
+                                                            <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
+                                                        </div>
+                                                    </Transition>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="icheck-primary">
+                                                        <input id="tos" v-model="tos" type="checkbox" required />
+                                                        <label for="tos"
+                                                            >I agree to the
+                                                            <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
+                                                                <a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a>
+                                                            </span></label
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right">
+                                                    <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">Create Account</button>
+                                                </div>
+                                            </div>
+                                            <div class="poppup email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
+                                                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                                                <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
+                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <div class="p-6">
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
+                                                        <form>
+                                                            <div class="mb-4">
+                                                                <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
+                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <span id="signup-error-message" class="block sm:inline"></span>
+                                                                    <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
+                                                                        <i class="fas fa-times" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="signupsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Create Account</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="social-auth-links mb-3 mt-2 text-center">
+                                            <h3 class="text-bold text-center text-lg">Sign up using:</h3>
+                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
+                                                <i class="fab fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
+                                                <i class="fab fa-google-plus" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
+                                                <i class="fa fa-github"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Transition>
                 <Transition name="fade-slide">
                     <div v-show="isLogin" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
@@ -1155,7 +1136,9 @@ body {
 
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
 }
 
 .fade-slide-enter-from,
@@ -1169,5 +1152,4 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-
 </style>
