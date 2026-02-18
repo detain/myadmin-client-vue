@@ -69,8 +69,7 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
@@ -101,8 +100,7 @@ watch(
 );
 
 domainStore.getById(id);
-console.log('link:');
-console.log(link.value);
+console.log('link:', link.value);
 loadLink(route.params.link as string);
 </script>
 

@@ -70,8 +70,7 @@ function submitForm() {
     try {
         fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/buy_ip`, {}).then((response) => {
             Swal.close();
-            console.log('webhosting buy ip');
-            console.log(response);
+            console.log('webhosting buy ip', response);
             Swal.fire({
                 icon: 'success',
                 html: `Success${response.text}`,
@@ -80,8 +79,7 @@ function submitForm() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('webhosting buy ip');
-        console.log(error);
+        console.log('webhosting buy ip', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -93,8 +91,7 @@ const loadBuyIp = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${module.value}/${id.value}/buy_ip`);
         loading.value = false;
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         ipsDetails.value = response.ipsDetails;
         ipCost.value = response.ipCost;
         maxIps.value = response.maxIps;
@@ -105,8 +102,7 @@ const loadBuyIp = async () => {
         ipCurrency.value = response.currency;
         ipCurrencySymbol.value = response.currencySymbol;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

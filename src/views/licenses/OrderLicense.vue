@@ -221,16 +221,14 @@ function submitLicenseForm() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
                 if (response['success'] == true) {
                     router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
         Swal.close();
-        console.log('caught error:');
-        console.log(error);
+        console.log('caught error:', error);
     }
 }
 
@@ -240,8 +238,7 @@ function loadLicenseData() {
     fetchWrapper
         .get(`${baseUrl}/licenses/order`)
         .then((response) => {
-            console.log('Response:');
-            console.log(response);
+            console.log('Response:', response);
             packageCosts.value = response.packageCosts;
             serviceTypes.value = response.serviceTypes;
             serviceCategories.value = response.serviceCategories;

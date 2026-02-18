@@ -34,13 +34,11 @@ async function deleteRange(start: string, end: string) {
                 end: end,
             })
             .then((response) => {
-                console.log('delete range success');
-                console.log(response);
+                console.log('delete range success', response);
                 accountStore.load();
             });
     } catch (error: any) {
-        console.log('delete range failed');
-        console.log(error);
+        console.log('delete range failed', error);
     }
 }
 
@@ -53,13 +51,11 @@ async function addRangeSubmit() {
                 restrict: newLimit.value.restrict
             })
             .then((response) => {
-                console.log('add range success');
-                console.log(response);
+                console.log('add range success', response);
                 accountStore.load();
             });
     } catch (error: any) {
-        console.log('add range failed');
-        console.log(error);
+        console.log('add range failed', error);
     }
 }
 </script>

@@ -129,16 +129,14 @@ function submitNewPrepay() {
     try {
         fetchWrapper.post(`${baseUrl}/prepays`, newPrepay).then((response) => {
             Swal.close();
-            console.log('Response:');
-            console.log(response);
+            console.log('Response:', response);
             if (response['success'] == true) {
                 router.push(`/cart/${response.iids.join(',')}`);
             }
         });
     } catch (error: any) {
         Swal.close();
-        console.log('caught error:');
-        console.log(error);
+        console.log('caught error:', error);
     }
 }
 </script>

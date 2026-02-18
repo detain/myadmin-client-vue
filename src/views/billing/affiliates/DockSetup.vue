@@ -43,8 +43,7 @@ function onSubmit() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('affiliate dock success');
-                console.log(response);
+                console.log('affiliate dock success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -52,8 +51,7 @@ function onSubmit() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('affiliate dock failed');
-        console.log(error);
+        console.log('affiliate dock failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

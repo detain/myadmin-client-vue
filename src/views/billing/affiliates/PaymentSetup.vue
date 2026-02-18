@@ -37,8 +37,7 @@ function submitForm() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('affiliate payment method setup success');
-                console.log(response);
+                console.log('affiliate payment method setup success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -46,8 +45,7 @@ function submitForm() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('affiliate payment method setup failed');
-        console.log(error);
+        console.log('affiliate payment method setup failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

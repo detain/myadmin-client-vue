@@ -27,12 +27,10 @@ async function updateFeatures() {
                 disable_reset: data.value.disable_reset,
             })
             .then((response) => {
-                console.log('update Features success');
-                console.log(response);
+                console.log('update Features success', response);
             });
     } catch (error: any) {
-        console.log('update Features failed');
-        console.log(error);
+        console.log('update Features failed', error);
     }
 }
 </script>

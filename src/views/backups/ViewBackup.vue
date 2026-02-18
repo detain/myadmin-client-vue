@@ -89,23 +89,20 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
         } else if (newLink == 'login') {
             try {
                 fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id}/login`).then((response) => {
-                    console.log('response:');
-                    console.log(response);
+                    console.log('response:', response);
                     if (typeof response.location != 'undefined') {
                         window.location.href = response.location;
                     }
                 });
             } catch (error: any) {
-                console.log('error:');
-                console.log(error);
+                console.log('error:', error);
             }
         }
     }

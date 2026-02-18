@@ -68,8 +68,7 @@ async function onLoginSubmit() {
     if (authStore.opts.tfa == true) {
         loginParams.tfa = twoFactorAuthCode.value;
     }
-    console.log('Login Params:');
-    console.log(loginParams);
+    console.log('Login Params:', loginParams);
     await authStore.login(loginParams).then((response) => {
         Swal.close();
     });
@@ -97,8 +96,7 @@ async function onSignupSubmit() {
     if (window.location.host != 'cn.interserver.net') {
         signupParams['g-recaptcha-response'] = gresponse.value;
     }
-    console.log('Signup Params:');
-    console.log(signupParams);
+    console.log('Signup Params:', signupParams);
     authStore.signup(signupParams).then((response) => {
         Swal.close();
     });
@@ -291,8 +289,7 @@ function login_handler() {
             url: `https://${window.location.host}${newPath}ajax_check_login.php`,
             data: loginCheckData,
             success: function (html) {
-                console.log(loginCheckData);
-                console.log(`${html.substring(0, 8)} got ${html}`);
+                console.log(loginCheckData, `${html.substring(0, 8)} got ${html}`);
                 if (html.substring(0, 4) == 'true') {
                     if (html.length == 4) {
                         window.location.href = 'index.php';

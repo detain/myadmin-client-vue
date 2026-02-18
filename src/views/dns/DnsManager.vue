@@ -55,8 +55,7 @@ async function addDomain(event: Event) {
                 ip: ip.value,
             })
             .then((response) => {
-                console.log('api success');
-                console.log(response);
+                console.log('api success', response);
                 loadDns();
                 Swal.fire({
                     icon: 'success',
@@ -64,8 +63,7 @@ async function addDomain(event: Event) {
                 });
             });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -87,8 +85,7 @@ async function deleteDomain(event: Event) {
             console.log('got to this plce fro deleteDomain preConfirm');
             try {
                 fetchWrapper.delete(`${baseUrl}/dns/${domainId.value}`).then((response) => {
-                    console.log('api success');
-                    console.log(response);
+                    console.log('api success', response);
                     loadDns();
                     Swal.fire({
                         icon: 'success',
@@ -96,8 +93,7 @@ async function deleteDomain(event: Event) {
                     });
                 });
             } catch (error: any) {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
                 Swal.fire({
                     icon: 'error',
                     html: `Got error ${error.message}`,
@@ -127,12 +123,10 @@ interface DomainRow {
 const loadDns = async () => {
     try {
         const response: DomainRow[] = await fetchWrapper.get(`${baseUrl}/dns`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         data.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

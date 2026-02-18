@@ -113,16 +113,14 @@ function submitForm() {
             loginPassword: checkAccountPassword.value,
         };
         fetchWrapper.post(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reinstall_os`, postData).then((response: any) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             Swal.fire({
                 icon: 'success',
                 html: response.message,
             });
         });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -147,8 +145,7 @@ try {
         }
     });
 } catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    console.log('error:', error);
 }
 </script>
 

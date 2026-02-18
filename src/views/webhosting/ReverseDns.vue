@@ -42,8 +42,7 @@ function submitForm() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('vps update reverse dns success');
-                console.log(response);
+                console.log('vps update reverse dns success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -51,8 +50,7 @@ function submitForm() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('vps update reverse dns  failed');
-        console.log(error);
+        console.log('vps update reverse dns  failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -61,8 +59,7 @@ function submitForm() {
 }
 
 fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).then((response) => {
-    console.log('Response:');
-    console.log(response);
+    console.log('Response:', response);
     ips.value = response.ips;
 });
 </script>

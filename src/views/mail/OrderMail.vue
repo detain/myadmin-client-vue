@@ -101,8 +101,7 @@ async function onSubmit(values: any) {
             .then((response: ValidateResponse) => {
                 Swal.close();
                 validateResponse.value = response;
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
                 pkg.value = response.serviceType;
                 if (!response.continue) {
                     Swal.fire({
@@ -116,8 +115,7 @@ async function onSubmit(values: any) {
     } catch (error: any) {
         Swal.close();
 
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 
@@ -137,16 +135,14 @@ async function placeOrder(values: any) {
             })
             .then((response) => {
                 Swal.close();
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
                 if (response['continue'] == true) {
                     router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
         Swal.close();
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 
@@ -156,8 +152,7 @@ try {
         serviceTypes.value = response.serviceTypes;
     });
 } catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    console.log('error:', error);
 }
 </script>
 

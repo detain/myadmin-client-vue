@@ -61,8 +61,7 @@ async function loadContact() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
         await Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,

@@ -210,12 +210,10 @@ async function onSubmit() {
             .then((response) => {
                 Swal.close();
                 step.value = 'order_confirm';
-                console.log('website order validated');
-                console.log(response);
+                console.log('website order validated', response);
             });
     } catch (error: any) {
-        console.log('website order validation failed');
-        console.log(error);
+        console.log('website order validation failed', error);
     }
 }
 
@@ -230,15 +228,13 @@ async function onSubmitConfirmation() {
         }
         fetchWrapper.post(`${baseUrl}/websites/order`, formData)
             .then((response) => {
-                console.log('website order validated');
-                console.log(response);
+                console.log('website order validated', response);
                 if (response['success'] == true) {
                     router.push(`/cart/${response.real_iids.join(',')}`);
                 }
             });
     } catch (error: any) {
-        console.log('website order validation failed');
-        console.log(error);
+        console.log('website order validation failed', error);
     }
 }
 
@@ -268,8 +264,7 @@ function loadOrderData() {
     });
     fetchWrapper.get(`${baseUrl}/websites/order`).then((response) => {
         Swal.close();
-        console.log('Response:');
-        console.log(response);
+        console.log('Response:', response);
         currencySymbol.value = response.currencySymbol;
         step.value = response.step;
         web.value = response.website;

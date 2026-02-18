@@ -77,8 +77,7 @@ function submitNameservers() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('update nameservers success');
-                console.log(response);
+                console.log('update nameservers success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -86,8 +85,7 @@ function submitNameservers() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('update nameservers failed');
-        console.log(error);
+        console.log('update nameservers failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -104,8 +102,7 @@ function registerNameserver() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('register nameserver success');
-                console.log(response);
+                console.log('register nameserver success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response}`,
@@ -114,8 +111,7 @@ function registerNameserver() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('register nameserver failed');
-        console.log(error);
+        console.log('register nameserver failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error}`,
@@ -135,8 +131,7 @@ function confirmDelete(name: string, ip: string) {
             try {
                 fetchWrapper.delete(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers?name=${name}&ip=${ip}`).then((response) => {
                     Swal.close();
-                    console.log('delete nameserver success');
-                    console.log(response);
+                    console.log('delete nameserver success', response);
                     Swal.fire({
                         icon: 'success',
                         html: `Success${response}`,
@@ -145,8 +140,7 @@ function confirmDelete(name: string, ip: string) {
                 });
             } catch (error: any) {
                 Swal.close();
-                console.log('delete  nameserver failed');
-                console.log(error);
+                console.log('delete  nameserver failed', error);
                 Swal.fire({
                     icon: 'error',
                     html: `Got error ${error}`,
@@ -159,12 +153,10 @@ function confirmDelete(name: string, ip: string) {
 const loadNameservers = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/nameservers`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         registeredNameservers.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

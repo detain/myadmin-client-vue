@@ -11,8 +11,7 @@ const accountStore = useAccountStore();
 const { ip } = storeToRefs(accountStore);
 const route = useRoute();
 const router = useRouter();
-console.log('Route Query View:');
-console.log(route.query.view);
+console.log('Route Query View:', route.query.view);
 const products = ref({});
 siteStore.setBreadcrums([
     ['/home', 'Home'],

@@ -107,20 +107,17 @@ function loadLink(newLink: string) {
                             });
                         });
                     } catch (error: any) {
-                        console.log('error');
-                        console.log(error);
+                        console.log('error', error);
                     }
                 },
             });
         } else if (newLink == 'login') {
             try {
                 fetchWrapper.get(`${baseUrl}/qs/${id}/login`).then((response) => {
-                    console.log('login success');
-                    console.log(response);
+                    console.log('login success', response);
                 });
             } catch (error: any) {
-                console.log('login failed');
-                console.log(error);
+                console.log('login failed', error);
             }
         }
     }

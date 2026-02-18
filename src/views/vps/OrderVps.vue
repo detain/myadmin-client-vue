@@ -344,8 +344,7 @@ function onSubmit() {
                 period: period.value,
             })
             .then((response) => {
-                console.log('vps order validation success');
-                console.log(response);
+                console.log('vps order validation success', response);
                 validationSuccess.value = response['continue'];
                 controlpanel.value = response.controlpanel;
                 coupon.value = response.coupon;
@@ -378,8 +377,7 @@ function onSubmit() {
                 }
             });
     } catch (error: any) {
-        console.log('vps order validation failed');
-        console.log(error);
+        console.log('vps order validation failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -405,8 +403,7 @@ function onSubmitConfirmation() {
                 period: period.value,
             })
             .then((response) => {
-                console.log('vps order validation success');
-                console.log(response);
+                console.log('vps order validation success', response);
                 // response = {'success','message','total_cost','iid','iids','real_iids','serviceid','invoice_description','cj_params'}
                 if (response.success == true) {
                     router.push(`/cart/${response.iids.join(',')}`);
@@ -420,8 +417,7 @@ function onSubmitConfirmation() {
                 }
             });
     } catch (error: any) {
-        console.log('vps order  failed');
-        console.log(error);
+        console.log('vps order  failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
@@ -911,8 +907,7 @@ try {
         //update_vps_choices();
     });
 } catch (error: any) {
-    console.log('error:');
-    console.log(error);
+    console.log('error:', error);
 }
 </script>
 

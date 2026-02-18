@@ -53,8 +53,7 @@ function deleteRule(ruleId: number) {
                 loadRules();
             })
             .catch((error: any) => {
-                console.log('api failed');
-                console.log(error);
+                console.log('api failed', error);
             });
     }
 }
@@ -89,19 +88,16 @@ async function submitForm() {
                 type: form.value.type,
                 data: form.value.data,
             });
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
         } else {
             const response = await fetchWrapper.put(`${baseUrl}/${moduleLink(module)}/${id.value}/rules/${form.value.rule_id}`, {
                 type: form.value.type,
                 data: form.value.data,
             });
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
         }
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
     await loadRules();
     closeModal();
@@ -110,12 +106,10 @@ async function submitForm() {
 const loadRules = async () => {
     try {
         const response: SpamRow[] = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/rules`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         spam.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

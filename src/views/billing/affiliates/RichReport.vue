@@ -26,14 +26,12 @@ try {
     });
     fetchWrapper.get(`${baseUrl}/affiliate/rich_report`).then((response) => {
         Swal.close();
-        console.log('rich report success');
-        console.log(response);
+        console.log('rich report success', response);
         table.value = response.text;
     });
 } catch (error: any) {
     Swal.close();
-    console.log('vps setup vnc failed');
-    console.log(error);
+    console.log('vps setup vnc failed', error);
     Swal.fire({
         icon: 'error',
         html: `Got error ${error.text}`,

@@ -93,16 +93,14 @@ async function placeOrder(values: any) {
             })
             .then((response) => {
                 Swal.close();
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
                 if (response['continue'] == true) {
                     router.push(`/cart/${response.iids.join(',')}`);
                 }
             });
     } catch (error: any) {
         Swal.close();
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 
@@ -123,8 +121,7 @@ async function onSubmit(values: any) {
             .then((response: BackupOrderValidateResponse) => {
                 Swal.close();
                 //validateResponse.value = response;
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
                 pkg.value = response.serviceType;
                 rootpass.value = response.password;
                 coupon.value = response.coupon;
@@ -135,8 +132,7 @@ async function onSubmit(values: any) {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('error:');
-        console.log(error);
+        console.log('error:', error);
     }
 }
 
@@ -170,8 +166,7 @@ Swal.fire({
 });
 fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse) => {
     Swal.close();
-    console.log('Response:');
-    console.log(response);
+    console.log('Response:', response);
     packageCosts.value = response.packageCosts;
     serviceTypes.value = response.serviceTypes;
 });

@@ -39,8 +39,7 @@ function emailIpmiLink() {
             })
             .then((response) => {
                 Swal.close();
-                console.log('ipmi live success');
-                console.log(response);
+                console.log('ipmi live success', response);
                 Swal.fire({
                     icon: 'success',
                     html: `Success${response.text}`,
@@ -48,8 +47,7 @@ function emailIpmiLink() {
             });
     } catch (error: any) {
         Swal.close();
-        console.log('ipmi live failed');
-        console.log(error);
+        console.log('ipmi live failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -76,14 +74,12 @@ function submitForm() {
                 } else {
                     error.value = response.text;
                 }
-                console.log('ipmi live success');
-                console.log(response);
+                console.log('ipmi live success', response);
             });
     } catch (err: any) {
         Swal.close();
         error.value = err.text;
-        console.log('ipmi live failed');
-        console.log(error);
+        console.log('ipmi live failed', error);
     }
 }
 

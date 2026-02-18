@@ -223,13 +223,11 @@ async function submitOrder() {
             .post(`${baseUrl}/servers/dedicated`, postData)
             .then((response: InitResponse) => {
                 Swal.close();
-                console.log('Response:');
-                console.log(response);
+                console.log('Response:', response);
             })
             .catch((error) => {
                 Swal.close();
-                console.log('Error:');
-                console.log(error);
+                console.log('Error:', error);
             });
     } catch (e) {
         error.value = 'Order submission failed';

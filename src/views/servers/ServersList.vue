@@ -59,12 +59,10 @@ function crud_export(exportType: string): void {
 const loadServers = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/servers`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
         data.value = response;
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

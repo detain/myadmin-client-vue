@@ -207,8 +207,7 @@ $(function () {});
 
 try {
     fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/invoices`).then((response) => {
-        console.log(`${module.value} invoices success`);
-        console.log(response);
+        console.log(`${module.value} invoices success`, response);
         dataSets.value = response.invoices;
         eDataSet.value = response.one_array;
         prefixes.value = response.prefixes;
@@ -306,16 +305,14 @@ try {
             } else {
                 row.child(format(row.data())).show();
                 tr.addClass('shown');
-                console.log(row);
-                console.log(row.child());
+                console.log(row, row.child());
                 console.log(format(row.data()));
             }
         });
         */
     });
 } catch (error: any) {
-    console.log(`${module.value} invoices failed`);
-    console.log(error);
+    console.log(`${module.value} invoices failed`, error);
 }
 </script>
 

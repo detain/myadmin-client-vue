@@ -213,16 +213,14 @@ function onSubmitOrder() {
         ...formValues.value,
     } ).then((response) => {
         Swal.close();
-        console.log('Response:');
-        console.log(response);
+        console.log('Response:', response);
     }).catch((error) => {
         Swal.close();
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.message}`,
         });
-        console.log('Error:');
-        console.log(error);
+        console.log('Error:', error);
     });
 }
 
@@ -239,8 +237,7 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
     const url = query ? `${baseUrl}/servers/order?${query}` : `${baseUrl}/servers/order`;
     fetchWrapper.get(url).then((response: ServerOrderResponse) => {
         Swal.close();
-        console.log('Response:');
-        console.log(response);
+        console.log('Response:', response);
         configIds.value = response.config_ids;
         configLi.value = response.config_li;
         cpu.value = Number(response.cpu);
@@ -260,15 +257,13 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
             addDrive(Number(response.form_values.hd));
         }
         cust_discount.value = response.cust_discount;
-        console.log('buy it servers:', buyItServers.value, buyItServers.value.length);
-        console.log('asset servers:', assetServers.value, assetServers.value.length);
+        console.log('buy it servers:', buyItServers.value, buyItServers.value.length, 'asset servers:', assetServers.value, assetServers.value.length);
         if (query) {
             step.value = 'step2';
         }
     }).catch((error) => {
         Swal.close();
-        console.log('Error:');
-        console.log(error);
+        console.log('Error:', error);
     });
 }
 

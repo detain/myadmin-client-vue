@@ -56,8 +56,7 @@ function submitNameservers() {
     try {
         fetchWrapper.put(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`, {}).then((response) => {
             Swal.close();
-            console.log('update alert success');
-            console.log(response);
+            console.log('update alert success', response);
             Swal.fire({
                 icon: 'success',
                 html: `Success${response.text}`,
@@ -65,8 +64,7 @@ function submitNameservers() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('update alert failed');
-        console.log(error);
+        console.log('update alert failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error.text}`,
@@ -78,8 +76,7 @@ function registerAlert() {
     try {
         fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`, {}).then((response) => {
             Swal.close();
-            console.log('register alert success');
-            console.log(response);
+            console.log('register alert success', response);
             Swal.fire({
                 icon: 'success',
                 html: `Success${response}`,
@@ -87,8 +84,7 @@ function registerAlert() {
         });
     } catch (error: any) {
         Swal.close();
-        console.log('register alert failed');
-        console.log(error);
+        console.log('register alert failed', error);
         Swal.fire({
             icon: 'error',
             html: `Got error ${error}`,
@@ -108,8 +104,7 @@ function confirmDelete(index: number) {
             try {
                 fetchWrapper.delete(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts?index=${index}`).then((response) => {
                     Swal.close();
-                    console.log('delete alert success');
-                    console.log(response);
+                    console.log('delete alert success', response);
                     Swal.fire({
                         icon: 'success',
                         html: `Success${response}`,
@@ -117,8 +112,7 @@ function confirmDelete(index: number) {
                 });
             } catch (error: any) {
                 Swal.close();
-                console.log('delete alert failed');
-                console.log(error);
+                console.log('delete alert failed', error);
                 Swal.fire({
                     icon: 'error',
                     html: `Got error ${error}`,
@@ -131,11 +125,9 @@ function confirmDelete(index: number) {
 const loadAlerts = async () => {
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/alerts`);
-        console.log('api success');
-        console.log(response);
+        console.log('api success', response);
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 

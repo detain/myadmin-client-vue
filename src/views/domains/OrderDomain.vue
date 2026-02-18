@@ -128,8 +128,7 @@ function updateStep() {
         hostname.value = domain.value;
         //siteStore.addBreadcrum(`/domains/order/${domain.value}`, 'Domain Search');
         if (searchResponse.value?.domain !== hostname.value) {
-            console.log(`currently hostname is ${searchResponse.value?.domain}`);
-            console.log(searchResponse.value?.domain);
+            console.log(`currently hostname is ${searchResponse.value?.domain}`, searchResponse.value?.domain);
             console.log(`new domain is ${hostname.value}`);
             searchDomain();
         }

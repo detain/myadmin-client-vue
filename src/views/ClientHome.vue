@@ -84,8 +84,7 @@ const affiliateUrl = computed(() => user.value !== null && typeof user.value.acc
 const loadHome = async () => {
     try {
         fetchWrapper.get(`${baseUrl}/home`).then((response: HomeResponse) => {
-            console.log('api success');
-            console.log(response);
+            console.log('api success', response);
             last_login_ip.value = response.last_login_ip;
             last_login.value = response.last_login;
             currency.value = response.currency;
@@ -102,8 +101,7 @@ const loadHome = async () => {
             AFFILIATE_AMOUNT.value = response.AFFILIATE_AMOUNT;
         });
     } catch (error: any) {
-        console.log('api failed');
-        console.log(error);
+        console.log('api failed', error);
     }
 };
 
