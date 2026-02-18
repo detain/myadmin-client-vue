@@ -39,6 +39,8 @@ const passwordRules = computed(() => {
 
 const containerRef = ref<HTMLElement | null>(null);
 const widgetId = ref<string | null>(null);
+const containerRef2 = ref<HTMLElement | null>(null);
+const widgetId2 = ref<string | null>(null);
 const isTosChecked = computed(() => tos.value == true || login.value != '');
 const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
 let signup_running = 0;
@@ -456,6 +458,12 @@ onMounted(async () => {
             console.log(token);
         },
     });
+    widgetId2.value = window.turnstile.render(containerRef2.value, {
+        sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
+        callback: (token: string) => {
+            console.log(token);
+        },
+    });
     animateValue(document.getElementById('count-v'));
     animateValue(document.getElementById('count-w'));
     animateValue(document.getElementById('count-s'));
@@ -640,18 +648,32 @@ authStore.load();
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="captcha_main mb-6">
-                                            <div class="flex">
-                                                <img :src="captcha" style="max-width: 75%" alt="" />
-                                                <button class="focus:shadow-outline btn-captcha-reloadFP ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha"><span class="fa fa-refresh fa-fw"></span></button>
+
+                                        <Transition name="fade-slide">
+                                            <div v-show="primaryCaptcha" class="captcha_main_signup mb-6">
+                                                <!-- <Checkbox v-model="gresponse" /> -->
+                                                <div id="turnstileDiv2" ref="containerRef2"></div>
+                                                <div id="gcaptcha-2"></div>
+                                                <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
                                             </div>
-                                            <div class="input-group my-3">
-                                                <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                        </Transition>
+                                        <Transition name="fade-slide">
+                                            <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
+                                                <div class="flex">
+                                                    <img :src="captcha" style="max-width: 75%" alt="" />
+                                                    <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
+                                                        <span class="fa fa-refresh fa-fw"></span>
+                                                    </button>
                                                 </div>
+                                                <div class="input-group my-3">
+                                                    <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                    </div>
+                                                </div>
+                                                <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
                                             </div>
-                                        </div>
+                                        </Transition>
                                         <div id="forgot-password-message"></div>
                                         <button id="btn-forgot" type="button" class="btn btn-primary btn-block text-bold" @click.prevent="forgot_password">Continue</button>
                                     </form>
@@ -741,7 +763,7 @@ authStore.load();
                                                 <div class="col-12">
                                                     <div class="icheck-primary">
                                                         <input id="tos" v-model="tos" type="checkbox" required />
-                                                        <label for="tos" >
+                                                        <label for="tos">
                                                             I agree to the
                                                             <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
                                                                 <a href="https://www.interserver.net/terms-of-service.html" target="_blank">Terms of Service</a>
@@ -803,12 +825,8 @@ authStore.load();
                         </div>
                     </div>
                 </Transition>
-                <Transition name="fade-slide">
-                    <div v-show="isLogin" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
-                </Transition>
-                <Transition name="fade-slide">
-                    <div v-show="!isLogin" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
-                </Transition>
+                <div v-show="isLogin && !showForgotPass" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
+                <div v-show="!isLogin && !showForgotPass" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
                 <div class="p-1 text-center text-sm text-gray-500">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
