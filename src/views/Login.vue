@@ -38,6 +38,12 @@ const loginSchema = Yup.object().shape({
     passwd: Yup.string().required('Password is required'),
 });
 
+declare global {
+    interface Window {
+        turnstile: any;
+    }
+}
+
 interface LoginParams {
     login: string;
     passwd: string;
@@ -111,87 +117,6 @@ function toggleCaptchaMethod() {}
 function closePopup() {}
 
 function submitForgotPassForm() {}
-
-onMounted(function () {
-    $(function () {
-        $('#tosModal').on('shown.bs.modal', function (e) {
-            setModalMaxHeight(this);
-        });
-        animateValue(document.getElementById('count-v'));
-        animateValue(document.getElementById('count-w'));
-        animateValue(document.getElementById('count-s'));
-        //reloadCaptcha();
-        $('#captcha_alt_link, #captcha_main_link').click(function (e) {
-            e.preventDefault();
-            $('.captcha_main, .captcha_alt').toggle(500);
-        });
-        $('#captcha_alt_link_signup, #captcha_main_link_signup').click(function (e) {
-            e.preventDefault();
-            $('.captcha_main_signup, .captcha_alt_signup').toggle(500);
-        });
-        $('#forgot_link').click(function (e) {
-            e.preventDefault();
-            $('.sign-up-txt').hide();
-            $('div.myadmin_login').toggle(500);
-        });
-        $('#access_link').click(function (e) {
-            e.preventDefault();
-            $('.sign-up-txt.signup').show();
-            $('div.myadmin_login').toggle(500);
-        });
-        $('#btn-forgot').click(function (e) {
-            forgot_password();
-            return false;
-        });
-        $('input[type=password]').keyup(function () {
-            $('#password_confirmation').on('keyup', function () {
-                $('#pswd_info').hide();
-            });
-        });
-        $('#signuppassword')
-            .keyup(function () {
-                // keyup code here
-                //validate the length
-                if (password.value.length < 8) {
-                    $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                } else {
-                    $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                }
-                //validate letter
-                if (password.value.match(/[a-z]/)) {
-                    $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                //validate capital letter
-                if (password.value.match(/[A-Z]/)) {
-                    $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                //validate number
-                if (password.value.match(/\d/)) {
-                    $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#number .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-                if (/^[a-zA-Z0-9- ]*$/.test(password.value) == false) {
-                    $('#special .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
-                } else {
-                    $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
-                }
-            })
-            .focus(function () {
-                $('#pswd_info').show();
-            })
-            .blur(function () {
-                $('#pswd_info').hide();
-            });
-        $('#password_confirmation').on('click', function () {
-            $('#pswd_info').hide();
-        });
-    });
-});
 
 let signup_running = 0;
 
@@ -488,6 +413,115 @@ function signup_handler() {
     return false;
 }
 
+function loadTurnstileScript(): Promise<void> {
+    return new Promise((resolve, reject) => {
+        if (window.turnstile) {
+            resolve();
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.onload = () => resolve();
+        script.onerror = reject;
+
+        document.head.appendChild(script);
+    });
+}
+
+const containerRef = ref<HTMLElement | null>(null);
+const widgetId = ref<string | null>(null);
+
+onMounted(async () => {
+    await loadTurnstileScript();
+    widgetId.value = window.turnstile.render(containerRef.value, {
+        sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
+        callback: (token: string) => {
+            console.log(token);
+        },
+    });
+    $(function () {
+        $('#tosModal').on('shown.bs.modal', function (e) {
+            setModalMaxHeight(this);
+        });
+        animateValue(document.getElementById('count-v'));
+        animateValue(document.getElementById('count-w'));
+        animateValue(document.getElementById('count-s'));
+        //reloadCaptcha();
+        $('#captcha_alt_link, #captcha_main_link').click(function (e) {
+            e.preventDefault();
+            $('.captcha_main, .captcha_alt').toggle(500);
+        });
+        $('#captcha_alt_link_signup, #captcha_main_link_signup').click(function (e) {
+            e.preventDefault();
+            $('.captcha_main_signup, .captcha_alt_signup').toggle(500);
+        });
+        $('#forgot_link').click(function (e) {
+            e.preventDefault();
+            $('.sign-up-txt').hide();
+            $('div.myadmin_login').toggle(500);
+        });
+        $('#access_link').click(function (e) {
+            e.preventDefault();
+            $('.sign-up-txt.signup').show();
+            $('div.myadmin_login').toggle(500);
+        });
+        $('#btn-forgot').click(function (e) {
+            forgot_password();
+            return false;
+        });
+        $('input[type=password]').keyup(function () {
+            $('#password_confirmation').on('keyup', function () {
+                $('#pswd_info').hide();
+            });
+        });
+        $('#signuppassword')
+            .keyup(function () {
+                // keyup code here
+                //validate the length
+                if (password.value.length < 8) {
+                    $('#length .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
+                } else {
+                    $('#length .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
+                }
+                //validate letter
+                if (password.value.match(/[a-z]/)) {
+                    $('#letter .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
+                } else {
+                    $('#letter .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
+                }
+                //validate capital letter
+                if (password.value.match(/[A-Z]/)) {
+                    $('#capital .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
+                } else {
+                    $('#capital .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
+                }
+                //validate number
+                if (password.value.match(/\d/)) {
+                    $('#number .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
+                } else {
+                    $('#number .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
+                }
+                if (/^[a-zA-Z0-9- ]*$/.test(password.value) == false) {
+                    $('#special .fa').addClass('fa-check bg-green p-1').removeClass('fa-close bg-red py-1 px-2');
+                } else {
+                    $('#special .fa').addClass('fa-close bg-red px-2 py-1').removeClass('fa-check bg-green p-1');
+                }
+            })
+            .focus(function () {
+                $('#pswd_info').show();
+            })
+            .blur(function () {
+                $('#pswd_info').hide();
+            });
+        $('#password_confirmation').on('click', function () {
+            $('#pswd_info').hide();
+        });
+    });
+});
+
 //useRecaptchaProvider();
 authStore.load();
 </script>
@@ -767,11 +801,12 @@ authStore.load();
                                                 </div>
                                                 <div class="captcha_main_signup mb-6">
                                                     <!-- <Checkbox v-model="gresponse" /> -->
-                                                    <div id="gcaptcha-1"></div>
+                                                    <div id="turnstileDiv" ref="containerRef"></div>
                                                     <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
                                                 </div>
                                                 <div class="captcha_alt_signup mb-6">
                                                     <div class="flex">
+                                                        <div id="gcaptcha-1"></div>
                                                         <img :src="captcha" style="max-width: 75%" alt="" />
                                                         <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
                                                             <span class="fa fa-refresh fa-fw"></span>

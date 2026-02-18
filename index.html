@@ -6,7 +6,7 @@
         <title>My InterServer</title>
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <meta
-            http-equiv="Content-Security-Policy"
+            http-eqmuiv="Content-Security-Policy"
             content="
 
             default-src 'self';
@@ -25,6 +25,8 @@
 
             connect-src
             'self'
+            wss://*.tawk.to/
+            https://va.tawk.to/
             https://my.interserver.net
             https://www.paypal.com
             https://api.paypal.com
@@ -42,11 +44,13 @@
             style-src
             'self'
             'unsafe-inline'
+            https://embed.tawk.to/
             https://fonts.googleapis.com;
 
             font-src
             'self'
             data:
+            https://embed.tawk.to/
             https://fonts.gstatic.com
             https://ka-f.fontawesome.com;
 
@@ -72,6 +76,17 @@
 
     <body class="sidebar-mini layout-fixed">
         <div id="app"></div>
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/5a0d9a85bb0c3f433d4c999b/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>
