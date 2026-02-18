@@ -21,6 +21,7 @@ const tos = ref(false);
 const captchaCode = ref('');
 const emailCode = ref('');
 const twoFactorAuthCode = ref('');
+const primaryCaptcha = ref(true);
 
 const isTosCheked = computed(() => tos.value == true || login.value != '');
 
@@ -116,7 +117,9 @@ function reloadCaptcha() {
     authStore.reloadCaptcha();
 }
 
-function toggleCaptchaMethod() {}
+function toggleCaptchaMethod() {
+    primaryCaptcha.value = !primaryCaptcha.value;
+}
 
 function closePopup() {}
 
@@ -165,7 +168,7 @@ function animateValue(obj: any, start = 0, end: null | number = null, duration =
         // get current time and calculate desired end time
         const startTime = new Date().getTime();
         const endTime = startTime + duration;
-        let timer: NodeJS.Timeout
+        let timer: NodeJS.Timeout;
         const run = () => {
             const now = new Date().getTime();
             const remaining = Math.max((endTime - now) / duration, 0);
@@ -454,14 +457,6 @@ onMounted(async () => {
         animateValue(document.getElementById('count-w'));
         animateValue(document.getElementById('count-s'));
         //reloadCaptcha();
-        $('#captcha_alt_link, #captcha_main_link').click(function (e) {
-            e.preventDefault();
-            $('.captcha_main, .captcha_alt').toggle(500);
-        });
-        $('#captcha_alt_link_signup, #captcha_main_link_signup').click(function (e) {
-            e.preventDefault();
-            $('.captcha_main_signup, .captcha_alt_signup').toggle(500);
-        });
         $('#forgot_link').click(function (e) {
             e.preventDefault();
             $('.sign-up-txt').hide();
@@ -556,6 +551,7 @@ authStore.load();
         <div class="w-full lg:w-7/12">
             <div class="p-2"></div>
             <div class="mx-auto block lg:my-auto">
+                <Transition name="fade-slide">
                 <div v-show="isLogin" class="wrapper w-full">
                     <div class="myadmin_login w-full">
                         <div class="login-box m-auto" style="width: 400px">
@@ -672,7 +668,7 @@ authStore.load();
                                         <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
                                             <i class="fa fa-github"></i>
                                         </a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter"  @click.prevent="oAuthLogin('Twitter')">
+                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </div>
@@ -681,6 +677,7 @@ authStore.load();
                         </div>
                     </div>
                 </div>
+                </Transition>
                 <div class="myadmin_login w-full p-4" style="display: none">
                     <div class="login-box m-auto" style="width: 400px">
                         <div class="card card-outline card-primary">
@@ -725,6 +722,7 @@ authStore.load();
                         </div>
                     </div>
                 </div>
+                <Transition name="fade-slide">
                 <div v-show="!isLogin" class="wrapper-signup mx-auto w-full">
                     <div class="myadmin_login w-full">
                         <div class="login-box m-auto" style="width: 400px">
@@ -771,33 +769,40 @@ authStore.load();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="captcha_main_signup mb-6">
-                                                    <!-- <Checkbox v-model="gresponse" /> -->
-                                                    <div id="turnstileDiv" ref="containerRef"></div>
-                                                    <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800">Alternate Captcha</a>
-                                                </div>
-                                                <div class="captcha_alt_signup mb-6">
-                                                    <div class="flex">
+                                                <Transition name="fade-slide">
+                                                    <div v-show="primaryCaptcha" class="captcha_main_signup mb-6">
+                                                        <!-- <Checkbox v-model="gresponse" /> -->
+                                                        <div id="turnstileDiv" ref="containerRef"></div>
                                                         <div id="gcaptcha-1"></div>
-                                                        <img :src="captcha" style="max-width: 75%" alt="" />
-                                                        <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                            <span class="fa fa-refresh fa-fw"></span>
-                                                        </button>
+                                                        <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
                                                     </div>
-                                                    <div class="input-group my-3">
-                                                        <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
-                                                        <div class="input-group-append">
-                                                            <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                </Transition>
+                                                <Transition name="fade-slide">
+                                                    <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
+                                                        <div class="flex">
+                                                            <img :src="captcha" style="max-width: 75%" alt="" />
+                                                            <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
+                                                                <span class="fa fa-refresh fa-fw"></span>
+                                                            </button>
                                                         </div>
+                                                        <div class="input-group my-3">
+                                                            <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
                                                     </div>
-                                                    <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
-                                                </div>
+                                                </Transition>
                                             </div>
                                             <div class="col-12">
                                                 <div class="icheck-primary">
                                                     <input id="tos" v-model="tos" type="checkbox" required />
                                                     <label for="tos"
-                                                        >I agree to the <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800"><a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a></span></label
+                                                        >I agree to the
+                                                        <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
+                                                            <a href="https://www.interserver.net/terms-of-service.html" target="_blank" @click.prevent="toggleModal('tosModal')">Terms of Service</a>
+                                                        </span></label
                                                     >
                                                 </div>
                                             </div>
@@ -845,7 +850,7 @@ authStore.load();
                                         <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
                                             <i class="fa fa-github"></i>
                                         </a>
-                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter"  @click.prevent="oAuthLogin('Twitter')">
+                                        <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </div>
@@ -854,8 +859,13 @@ authStore.load();
                         </div>
                     </div>
                 </div>
-                <div v-show="isLogin" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
-                <div v-show="!isLogin" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
+                </Transition>
+                <Transition name="fade-slide">
+                    <div v-show="isLogin" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
+                </Transition>
+                <Transition name="fade-slide">
+                    <div v-show="!isLogin" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
+                </Transition>
                 <div class="p-1 text-center text-sm text-gray-500">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
@@ -1142,4 +1152,22 @@ body {
         flex-direction: row !important;
     }
 }
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 </style>
