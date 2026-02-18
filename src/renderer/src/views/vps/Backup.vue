@@ -21,9 +21,7 @@ const backupsArr = ref<VpsBackup[]>([]);
 const loading = ref(true);
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const curHostname = computed(() => {
-    return props.curHostname;
-});
+const curHostname = computed(() => props.curHostname);
 
 export interface VpsBackup {
     service: number;

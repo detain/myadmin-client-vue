@@ -22,12 +22,8 @@ const selectedType = ref('');
 const value = ref('');
 const to = ref('');
 const enabled = ref(false);
-const modalTitle = computed(() => {
-    return action.value === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger';
-});
-const isEmpty = computed(() => {
-    return alerts.value.length === 0;
-});
+const modalTitle = computed(() => action.value === 'edit' ? 'Update Alert/Notification Trigger' : 'Add New Alert/Notification Trigger');
+const isEmpty = computed(() => alerts.value.length === 0);
 function editAlert(formAct: string, formId: number, formType: string, formValue: string, formTo: string, formEnabled: number | boolean = false) {
     action.value = formAct;
     alertId.value = formId;

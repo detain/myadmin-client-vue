@@ -22,15 +22,9 @@ const { modules } = storeToRefs(siteStore);
 const baseUrl = siteStore.getBaseUrl();
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const serviceInfo = computed(() => {
-    return props.serviceInfo;
-});
-const serviceMaster = computed(() => {
-    return props.serviceMaster;
-});
-const settings = computed(() => {
-    return modules.value[module.value];
-});
+const serviceInfo = computed(() => props.serviceInfo);
+const serviceMaster = computed(() => props.serviceMaster);
+const settings = computed(() => modules.value[module.value]);
 const vpsTemplates = ref<VpsTemplate[]>([]);
 const osDistro = ref('');
 const osVersion = ref('');

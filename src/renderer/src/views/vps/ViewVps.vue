@@ -39,19 +39,11 @@ const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
-const webuzoTableExists = computed(() => {
-    return typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo);
-});
-const addonsTableExists = computed(() => {
-    return typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons);
-});
+const settings = computed(() => modules.value[module]);
+const webuzoTableExists = computed(() => typeof extraInfoTables.value.webuzo != 'undefined' && !isEmpty(extraInfoTables.value.webuzo));
+const addonsTableExists = computed(() => typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 const collapsed = ref(false);
 function loadLink(newLink: string) {

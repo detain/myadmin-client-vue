@@ -21,9 +21,7 @@ const id = Number(route.params.id);
 const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');
 siteStore.setBreadcrums([

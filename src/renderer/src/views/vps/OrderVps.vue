@@ -148,9 +148,7 @@ const slicesRange = computed(() => {
     }
     return arr;
 });
-const totalCostDisplay = computed(() => {
-    return currencySymbol.value + Number(totalCost.value).toFixed(2);
-});
+const totalCostDisplay = computed(() => currencySymbol.value + Number(totalCost.value).toFixed(2));
 watch([osTemplates, vpsPlatform, osDistro, osVersion, couponInfo, slices, location], ([newTemplates, newPlatform, newDistro, newVersion, newCouponInfo, newSlices, newLocation], [oldTemplates, oldPlatform, oldDistro, oldVersion, oldCouponInfo, oldSlices, oldLocation]) => {
     let entries, lastEntry, lastKey, lastValue;
     entries = Object.entries(newTemplates[newPlatform]);

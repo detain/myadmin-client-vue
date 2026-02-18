@@ -74,6 +74,7 @@ export interface AccountData extends SimpleStringObj {
 export interface AccountLimit {
     start: string;
     end: string;
+    restrict?: 'Only API' | 'Web & API' | 'Web &amp; API';
 }
 
 export interface OauthProvider {

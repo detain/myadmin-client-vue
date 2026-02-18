@@ -21,9 +21,7 @@ const siteStore = useSiteStore();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link;
-});
+const link = computed(() => route.params.link);
 
 const sslStore = useSslStore();
 const { loading, error, pkg, linkDisplay, titleField } = storeToRefs(sslStore);

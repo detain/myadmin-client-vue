@@ -18,9 +18,7 @@ const password2 = ref('');
 const login_password = ref('');
 const id = computed(() => props.id);
 const module = computed(() => props.module);
-const curHostname = computed(() => {
-    return props.curHostname;
-});
+const curHostname = computed(() => props.curHostname);
 
 onMounted(() => {});
 

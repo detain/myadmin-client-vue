@@ -33,13 +33,9 @@ const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
 const id = Number(route.params.id);
-const link = computed(() => {
-    return route.params.link as string;
-});
+const link = computed(() => route.params.link as string);
 const { modules } = storeToRefs(siteStore);
-const settings = computed(() => {
-    return modules.value[module];
-});
+const settings = computed(() => modules.value[module]);
 siteStore.setPageHeading('View Qs');
 siteStore.setTitle('View Qs');
 siteStore.setBreadcrums([
