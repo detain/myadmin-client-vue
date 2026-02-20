@@ -16,11 +16,9 @@ function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     if (!isMobileViewport || !body.classList.contains('sidebar-open') || !target) {
         return;
     }
-
     if (target.closest('.main-sidebar, [data-widget="pushmenu"]')) {
         return;
     }
-
     body.classList.remove('sidebar-open');
     collapseMenu();
 }
