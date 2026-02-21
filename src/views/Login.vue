@@ -61,7 +61,7 @@ interface LoginParams {
     passwd: string;
     remember: boolean;
     tfa?: string;
-    email_confirmation: string;
+    email_confirmation?: string;
     'g-recaptcha-response'?: string;
     'cf-turnstile-response'?: string;
     captcha?: string;
