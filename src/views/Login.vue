@@ -31,6 +31,7 @@ const containerRef2 = ref<HTMLElement | null>(null);
 const widgetId2 = ref<string | null>(null);
 const isTosChecked = computed(() => tos.value == true || login.value != '');
 const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
+const submitDisabled = ref(false);
 let signup_running = 0;
 const passwordRules = computed(() => {
     const val = password.value;
@@ -58,8 +59,9 @@ declare global {
 interface LoginParams {
     login: string;
     passwd: string;
-    remember: string | null;
+    remember: boolean;
     tfa?: string;
+    email_confirmation: string;
     'g-recaptcha-response'?: string;
     'cf-turnstile-response'?: string;
     captcha?: string;
@@ -422,6 +424,9 @@ async function onSignupSubmit() {
         tos: tos.value,
         remember: remember.value,
     };
+    if (authStore.opts.verify == true) {
+        signupParams.email_confirmation = emailCode.value;
+    }
     if (authStore.opts.tfa == true) {
         signupParams.tfa = twoFactorAuthCode.value;
     }
@@ -780,14 +785,14 @@ authStore.load();
                                                     <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">Create Account</button>
                                                 </div>
                                             </div>
-                                            <div class="poppup email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
+                                            <div v-show="!isLogin && opts.verify" class="poppup email_popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
                                                         <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                         <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
-                                                        <form>
+                                                        <form @submit.prevent="onSignupSubmit">
                                                             <div class="mb-4">
                                                                 <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
