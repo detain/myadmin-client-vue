@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 import * as Yup from 'yup';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
@@ -413,13 +414,7 @@ async function oAuthLogin(provider: string) {
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
-        const response = await fetch(`/api/oauth?provider=${provider}`, {
-            credentials: 'include',
-        });
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.message || 'OAuth initialization failed');
-        }
+        const data: any = await fetchWrapper.get(`/apiv2/oauth?provider=${provider}`);
         if (!data.redirect_url) {
             throw new Error('Missing redirect URL');
         }
@@ -443,11 +438,7 @@ async function handleOAuthCallback() {
             showConfirmButton: false,
             allowOutsideClick: false,
         });
-        const response = await fetch(`/api/oauth?provider=${provider}&code=${code}`, {
-            method: 'POST',
-            credentials: 'include',
-        });
-        const data = await response.json();
+        const data: any = await fetchWrapper.post(`/api/oauth?provider=${provider}&code=${code}`, {});
         Swal.close();
         if (data.login || data.signup) {
             // Clean URL
@@ -470,16 +461,10 @@ async function handleOAuthCallback() {
 
 async function submitOAuth2FA() {
   try {
-    const response = await fetch('/api/oauth', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
+    const data: any = await fetchWrapper.patch('/api/oauth', {
         account_id: authStore.opts.oauth_account_id,
         code: twoFactorAuthCode.value
-      })
     });
-    const data = await response.json();
     if (data.login) {
       window.location.href = '/dashboard';
     } else {
