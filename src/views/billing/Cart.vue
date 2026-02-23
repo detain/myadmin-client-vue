@@ -83,9 +83,7 @@ interface PayPalItem {
 const fundingSources = computed(() => {
     const country = data.value?.country;
     const funding: string[] = [];
-
     if (!country) return funding;
-
     switch (country) {
         case 'US':
             funding.push('venmo');
@@ -110,17 +108,14 @@ const fundingSources = computed(() => {
             funding.push('pay-upon-invoice');
             break;
     }
-
     if (['AT', 'DE', 'DK', 'EE', 'ES', 'FI', 'GB', 'LT', 'LV', 'NL', 'NO', 'SE'].includes(country)) {
         funding.push('trustly');
     }
-
     return funding;
 });
 
 const paypalSdkUrl = computed(() => {
     if (!data.value?.country) return '';
-
     const params = new URLSearchParams({
         'client-id': 'AdYdovDB_vwbBaM0ZCT5l1MUKeAxz_IWeWt8q0hgqtkASsLRTvnlbTMMNxM4xHfJTVw_akRZKmkteMAT',
         'integration-date': '2026-01-01',
@@ -128,11 +123,9 @@ const paypalSdkUrl = computed(() => {
         intent: 'capture',
         components: 'buttons,funding-eligibility,applepay,googlepay'
     });
-
     if (fundingSources.value.length > 0) {
         params.set('enable-funding', fundingSources.value.join(','));
     }
-
     return `https://www.paypal.com/sdk/js?${params.toString()}`;
 });
 
@@ -790,7 +783,7 @@ pageInit();
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
                                     </td>
-                                </tr>
+                             -   </tr>
                             </tbody>
                         </table>
                         <hr />
@@ -802,15 +795,19 @@ pageInit();
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
-                                    <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
+                                    <template v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
                                         <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                        <template v-else-if="methodData.text == 'PayPal'">
+                                            <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'paypal'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style"><div style="float: right;">{{ methodData.text }}<br>(old)</div><img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
+                                        </template>
                                         <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
-                                    </span>
+                                    </template>
                                 </span>
                             </div>
                         </div>
                         <hr />
-                        <div id="select_paypal">
+                        <div id="select_paypal" v-show="paymentMethod == 'paypal'">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -821,7 +818,7 @@ pageInit();
                                 </div>
                             </div>
                         </div>
-                        <div id="select_card">
+                        <div id="select_card" v-show="paymentMethod == 'cc'">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>

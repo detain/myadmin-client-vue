@@ -415,7 +415,7 @@ async function oAuthLogin(provider: string) {
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
-        const data: any = await fetchWrapper.get(`${baseUrl}/apiv2/oauth?provider=${provider}`);
+        const data: any = await fetchWrapper.get(`${baseUrl}/oauth?provider=${provider}`);
         if (!data.redirect_url) {
             throw new Error('Missing redirect URL');
         }
@@ -439,7 +439,7 @@ async function handleOAuthCallback() {
             showConfirmButton: false,
             allowOutsideClick: false,
         });
-        const data: any = await fetchWrapper.post(`${baseUrl}/apiv2/oauth?provider=${provider}&code=${code}`, {});
+        const data: any = await fetchWrapper.post(`${baseUrl}/oauth?provider=${provider}&code=${code}`, {});
         Swal.close();
         if (data.login || data.signup) {
             // Clean URL
@@ -462,7 +462,7 @@ async function handleOAuthCallback() {
 
 async function submitOAuth2FA() {
     try {
-        const data: any = await fetchWrapper.patch(`${baseUrl}/apiv2/oauth`, {
+        const data: any = await fetchWrapper.patch(`${baseUrl}/oauth`, {
             account_id: authStore.opts.oauth_account_id,
             code: twoFactorAuthCode.value,
         });
