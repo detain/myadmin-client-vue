@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
+const baseUrl = siteStore.getBaseUrl();
 const gresponse = ref('');
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
@@ -414,7 +415,7 @@ async function oAuthLogin(provider: string) {
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
-        const data: any = await fetchWrapper.get(`/apiv2/oauth?provider=${provider}`);
+        const data: any = await fetchWrapper.get(`${baseUrl}/apiv2/oauth?provider=${provider}`);
         if (!data.redirect_url) {
             throw new Error('Missing redirect URL');
         }
@@ -438,7 +439,7 @@ async function handleOAuthCallback() {
             showConfirmButton: false,
             allowOutsideClick: false,
         });
-        const data: any = await fetchWrapper.post(`/api/oauth?provider=${provider}&code=${code}`, {});
+        const data: any = await fetchWrapper.post(`${baseUrl}/apiv2/oauth?provider=${provider}&code=${code}`, {});
         Swal.close();
         if (data.login || data.signup) {
             // Clean URL
@@ -460,19 +461,19 @@ async function handleOAuthCallback() {
 }
 
 async function submitOAuth2FA() {
-  try {
-    const data: any = await fetchWrapper.patch('/api/oauth', {
-        account_id: authStore.opts.oauth_account_id,
-        code: twoFactorAuthCode.value
-    });
-    if (data.login) {
-      window.location.href = '/dashboard';
-    } else {
-      Swal.fire('Invalid Code', 'Please try again', 'error');
+    try {
+        const data: any = await fetchWrapper.patch(`${baseUrl}/apiv2/oauth`, {
+            account_id: authStore.opts.oauth_account_id,
+            code: twoFactorAuthCode.value,
+        });
+        if (data.login) {
+            window.location.href = '/dashboard';
+        } else {
+            Swal.fire('Invalid Code', 'Please try again', 'error');
+        }
+    } catch (e) {
+        Swal.fire('Error', '2FA verification failed', 'error');
     }
-  } catch (e) {
-    Swal.fire('Error', '2FA verification failed', 'error');
-  }
 }
 
 async function onSignupSubmit() {
