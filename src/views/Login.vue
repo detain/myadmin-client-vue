@@ -405,7 +405,89 @@ async function onLoginSubmit() {
 }
 
 async function oAuthLogin(provider: string) {
-    window.open(`oauth/callback.php?provider=${provider}`, 'authWindow', 'width=600,height=600,scrollbars=yes');
+    try {
+        Swal.fire({
+            title: 'Redirecting...',
+            html: `<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+        const response = await fetch(`/api/oauth?provider=${provider}`, {
+            credentials: 'include',
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'OAuth initialization failed');
+        }
+        if (!data.redirect_url) {
+            throw new Error('Missing redirect URL');
+        }
+        // Full redirect — NOT popup
+        window.location.href = data.redirect_url;
+    } catch (err: any) {
+        Swal.close();
+        Swal.fire('Error', err.message || 'OAuth error', 'error');
+    }
+}
+
+async function handleOAuthCallback() {
+    const url = new URL(window.location.href);
+    const provider = url.searchParams.get('provider');
+    const code = url.searchParams.get('code');
+    if (!provider || !code) return;
+    try {
+        Swal.fire({
+            title: 'Signing you in...',
+            html: '<i class="fa fa-spinner fa-spin fa-2x"></i>',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+        });
+        const response = await fetch(`/api/oauth?provider=${provider}&code=${code}`, {
+            method: 'POST',
+            credentials: 'include',
+        });
+        const data = await response.json();
+        Swal.close();
+        if (data.login || data.signup) {
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+            // Reload auth store
+            await authStore.load();
+            // Redirect to dashboard
+            window.location.href = '/dashboard';
+        } else if (data.error === '2fa_required') {
+            authStore.opts.tfa = true;
+            authStore.opts.oauth_account_id = data.account_id;
+        } else {
+            Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
+        }
+    } catch (err: any) {
+        Swal.close();
+        Swal.fire('OAuth Error', err.message || 'Authentication failed', 'error');
+    }
+}
+
+async function submitOAuth2FA() {
+  try {
+    const response = await fetch('/api/oauth', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        account_id: authStore.opts.oauth_account_id,
+        code: twoFactorAuthCode.value
+      })
+    });
+    const data = await response.json();
+    if (data.login) {
+      window.location.href = '/dashboard';
+    } else {
+      Swal.fire('Invalid Code', 'Please try again', 'error');
+    }
+  } catch (e) {
+    Swal.fire('Error', '2FA verification failed', 'error');
+  }
 }
 
 async function onSignupSubmit() {
@@ -435,13 +517,16 @@ async function onSignupSubmit() {
         signupParams['g-recaptcha-response'] = gresponse.value;
     }*/
     console.log('Signup Params:', signupParams);
-    authStore.signup(signupParams).then((response) => {
-        Swal.close();
-        window.turnstile.reset(widgetId.value);
-    }).catch((error: any) => {
-        Swal.close();
-        window.turnstile.reset(widgetId.value);
-    });
+    authStore
+        .signup(signupParams)
+        .then((response) => {
+            Swal.close();
+            window.turnstile.reset(widgetId.value);
+        })
+        .catch((error: any) => {
+            Swal.close();
+            window.turnstile.reset(widgetId.value);
+        });
 }
 
 function loadTurnstileScript(): Promise<void> {
@@ -462,6 +547,7 @@ function loadTurnstileScript(): Promise<void> {
 
 onMounted(async () => {
     await loadTurnstileScript();
+    await handleOAuthCallback();
     widgetId.value = window.turnstile.render(containerRef.value, {
         sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
         callback: (token: string) => {

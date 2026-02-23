@@ -29,6 +29,7 @@ interface AuthState {
         tfa: boolean;
         verify: boolean;
         captcha: boolean;
+        oauth_account_id?: string;
     };
     logo: string;
     captcha: string;
