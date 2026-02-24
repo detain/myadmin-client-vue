@@ -25,6 +25,11 @@ const twoFactorAuthCode = ref('');
 const primaryCaptcha = ref(true);
 const showForgotPass = ref(false);
 const showPasswordInfo = ref(false);
+const oauthProvider = ref('');
+const oauthNeeds2FA = ref(false);
+const oauthAccountId = ref<number | null>(null);
+const oauthLinkRequired = ref(false);
+const oauthErrorMessage = ref('');
 const validClass = 'fa-check bg-green p-1';
 const invalidClass = 'fa-close bg-red px-2 py-1';
 const containerRef = ref<HTMLElement | null>(null);
@@ -419,6 +424,7 @@ async function oAuthLogin(provider: string) {
         if (!data.redirect_url) {
             throw new Error('Missing redirect URL');
         }
+        sessionStorage.setItem('oauth_provider', provider);
         // Full redirect — NOT popup
         window.location.href = data.redirect_url;
     } catch (err: any) {
@@ -429,9 +435,10 @@ async function oAuthLogin(provider: string) {
 
 async function handleOAuthCallback() {
     const url = new URL(window.location.href);
-    const provider = url.searchParams.get('provider');
+    const provider = url.searchParams.get('provider') || sessionStorage.getItem('oauth_provider') || '';
     const code = url.searchParams.get('code');
     if (!provider || !code) return;
+    oauthProvider.value = provider;
     try {
         Swal.fire({
             title: 'Signing you in...',
@@ -442,32 +449,46 @@ async function handleOAuthCallback() {
         const data: any = await fetchWrapper.post(`${baseUrl}/oauth?provider=${provider}&code=${code}`, {});
         Swal.close();
         if (data.login || data.signup) {
+            sessionStorage.removeItem('oauth_provider');
             // Clean URL
             window.history.replaceState({}, document.title, window.location.pathname);
             // Reload auth store
             await authStore.load();
             // Redirect to dashboard
-            window.location.href = '/dashboard';
-        } else if (data.error === '2fa_required') {
-            authStore.opts.tfa = true;
-            authStore.opts.oauth_account_id = data.account_id;
+            window.location.href = '/';
         } else {
             Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
         }
     } catch (err: any) {
         Swal.close();
-        Swal.fire('OAuth Error', err.message || 'Authentication failed', 'error');
+        const errorCode = err?.error || err?.message || '';
+        if (errorCode === '2fa_required') {
+            oauthNeeds2FA.value = true;
+            oauthAccountId.value = Number(err?.account_id || err?.details?.account_id || 0);
+            oauthErrorMessage.value = '';
+            window.history.replaceState({}, document.title, window.location.pathname);
+            return;
+        }
+        if (errorCode === 'account_exists_not_linked') {
+            oauthLinkRequired.value = true;
+            oauthErrorMessage.value = '';
+            window.history.replaceState({}, document.title, window.location.pathname);
+            return;
+        }
+        oauthErrorMessage.value = err?.message || 'Authentication failed';
+        Swal.fire('OAuth Error', oauthErrorMessage.value, 'error');
     }
 }
 
 async function submitOAuth2FA() {
     try {
         const data: any = await fetchWrapper.patch(`${baseUrl}/oauth`, {
-            account_id: authStore.opts.oauth_account_id,
+            account_id: oauthAccountId.value,
             code: twoFactorAuthCode.value,
         });
         if (data.login) {
-            window.location.href = '/dashboard';
+            sessionStorage.removeItem('oauth_provider');
+            window.location.href = '/';
         } else {
             Swal.fire('Invalid Code', 'Please try again', 'error');
         }
@@ -900,6 +921,18 @@ authStore.load();
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
                                                 <i class="fab fa-twitter"></i>
                                             </a>
+                                        </div>
+                                        <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
+                                            <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
+                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">This social email already exists in MyAdmin but is not linked to this provider yet. Please log in with email/password and link this provider from account settings.</p>
+                                            <div v-if="oauthNeeds2FA" class="input-group mb-2">
+                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
+                                                </div>
+                                            </div>
+                                            <div v-if="oauthErrorMessage" class="text-sm text-red-600">{{ oauthErrorMessage }}</div>
                                         </div>
                                     </div>
                                 </div>
