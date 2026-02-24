@@ -38,6 +38,9 @@ const modulesCounts = ref<ModuleCounts>({});
 const countries = ref({});
 const prepayAvailable = ref(0);
 const st = ref<null | string>(null);
+const paypalLoaded = ref(false);
+const paypalScriptEl = ref<HTMLScriptElement | null>(null);
+const ppButtons = ref<PayPalButtonsInstance | null>(null);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -55,15 +58,6 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Cart'],
 ]);
-const paypalLoaded = ref(false);
-const paypalScriptEl = ref<HTMLScriptElement | null>(null);
-let PPAmount = 0;
-let PPCurrency = '';
-let PPItems: PayPalItem[] = [];
-let PPCustom = '';
-let PPReturnURL = '';
-let PPCancelURL = '';
-let ppButtons: PayPalButtonsInstance | null = null;
 
 interface PayPalButtonsInstance {
     render: (selector: string) => Promise<void>;
@@ -121,14 +115,13 @@ const paypalSdkUrl = computed(() => {
         'integration-date': '2026-01-01',
         currency: currency.value || 'USD',
         intent: 'capture',
-        components: 'buttons,funding-eligibility,applepay,googlepay'
+        components: 'buttons,funding-eligibility,applepay,googlepay',
     });
     if (fundingSources.value.length > 0) {
         params.set('enable-funding', fundingSources.value.join(','));
     }
     return `https://www.paypal.com/sdk/js?${params.toString()}`;
 });
-
 
 function getBtnOpts() {
     const btnOpts = {
@@ -153,7 +146,7 @@ function getBtnOpts() {
 async function createOrderCallback() {
     resultMessage('');
     try {
-        if (PPCustom.length > 570) {
+        if (invoices.value.join(',').length > 570) {
             throw new Error('Too many invoices selected for PayPal.  Please choose fewer invoices.');
         }
         const response = await fetch('/payments/paypal_sdk.php?call=create', {
@@ -164,12 +157,12 @@ async function createOrderCallback() {
             // use the "body" param to optionally pass additional order information
             // like product ids and quantities
             body: JSON.stringify({
-                amount: PPAmount,
-                currency: PPCurrency,
-                items: PPItems,
-                custom: PPCustom,
-                returnURL: PPReturnURL,
-                cancelURL: PPCancelURL,
+                amount: selectedAmount.value,
+                currency: currency.value,
+                items: paypalItems.value,
+                custom: invoices.value.join(','),
+                returnURL: `${window.location.origin}/pay/paypal/${invoices.value.join(',')}/done`,
+                cancelURL: `${window.location.origin}/pay/paypal/${invoices.value.join(',')}/done`,
             }),
         });
         const orderData = await response.json();
@@ -237,6 +230,20 @@ function resultMessage(message: string) {
     container.innerHTML = message;
 }
 
+const paypalItems = computed(() => {
+    return invrows.value
+        .filter((row) => invoices.value.includes(row.service_label))
+        .map((row) => ({
+            name: row.service,
+            quantity: 1,
+            category: 'DIGITAL_GOODS',
+            unit_amount: {
+                currency_code: row.invoices_currency,
+                value: row.invoices_amount,
+            },
+        }));
+});
+
 const selectedAmount = computed(() => {
     let total = 0;
     for (const invrow of invrows.value) {
@@ -257,13 +264,12 @@ function formattedCost(amount: number): string {
 async function initializePayPalButtons() {
     if (!paypalLoaded.value || !(window as any).paypal) return;
     await nextTick();
-    if (ppButtons?.close) {
-        ppButtons.close();
+    if (ppButtons.value?.close) {
+        ppButtons.value.close();
     }
-    ppButtons = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
-    await ppButtons.render('#paypal-button-container');
- }
-
+    ppButtons.value = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
+    await ppButtons.value.render('#paypal-button-container');
+}
 
 function mounted() {
     if (triggerClick.value) {
@@ -291,7 +297,6 @@ function loadPayPalSdk() {
     document.head.appendChild(script);
     paypalScriptEl.value = script;
 }
-
 
 function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
@@ -622,15 +627,11 @@ async function loadCartData() {
     }
 }
 
-watch(
-    [() => data.value?.country, currency],
-    ([country]) => {
-        if (country) {
-            loadPayPalSdk();
-        }
+watch([() => data.value?.country, currency], ([country]) => {
+    if (country) {
+        loadPayPalSdk();
     }
-);
-
+});
 
 pageInit();
 </script>
@@ -783,7 +784,7 @@ pageInit();
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
                                     </td>
-                             -   </tr>
+                                </tr>
                             </tbody>
                         </table>
                         <hr />
@@ -799,7 +800,10 @@ pageInit();
                                         <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                         <template v-else-if="methodData.text == 'PayPal'">
                                             <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'paypal'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
-                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style"><div style="float: right;">{{ methodData.text }}<br>(old)</div><img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
+                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">
+                                                <div style="float: right">{{ methodData.text }}<br />(old)</div>
+                                                <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
+                                            </router-link>
                                         </template>
                                         <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                     </template>
