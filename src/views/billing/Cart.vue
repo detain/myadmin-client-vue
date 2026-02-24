@@ -74,6 +74,20 @@ interface PayPalItem {
     };
 }
 
+type Operator = '==' | '<=' | 'typeof';
+
+const operators: Record<Operator, (a: any, b: any) => boolean> = {
+  '==': (a, b) => a == b,
+  '<=': (a, b) => Number(a) <= Number(b),
+  typeof: (a, b) => typeof a === b,
+};
+
+const paypalMethodStyle = computed(() => {
+    const style: Record<string, string> = {};
+    style.display = paymentMethod.value === 'paypal' ? 'block' : 'none';
+    return style;
+});
+
 const fundingSources = computed(() => {
     const country = data.value?.country;
     const funding: string[] = [];
@@ -121,6 +135,30 @@ const paypalSdkUrl = computed(() => {
         params.set('enable-funding', fundingSources.value.join(','));
     }
     return `https://www.paypal.com/sdk/js?${params.toString()}`;
+});
+
+const paypalItems = computed(() => {
+  return invrows.value
+      .filter((row) => invoices.value.includes(row.service_label))
+      .map((row) => ({
+        name: row.service,
+        quantity: 1,
+        category: 'DIGITAL_GOODS',
+        unit_amount: {
+          currency_code: row.invoices_currency,
+          value: row.invoices_amount,
+        },
+      }));
+});
+
+const selectedAmount = computed(() => {
+  let total = 0;
+  for (const invrow of invrows.value) {
+    if (invoices.value.includes(invrow.service_label)) {
+      total += Number(invrow.invoices_amount);
+    }
+  }
+  return total;
 });
 
 function getBtnOpts() {
@@ -230,30 +268,6 @@ function resultMessage(message: string) {
     container.innerHTML = message;
 }
 
-const paypalItems = computed(() => {
-    return invrows.value
-        .filter((row) => invoices.value.includes(row.service_label))
-        .map((row) => ({
-            name: row.service,
-            quantity: 1,
-            category: 'DIGITAL_GOODS',
-            unit_amount: {
-                currency_code: row.invoices_currency,
-                value: row.invoices_amount,
-            },
-        }));
-});
-
-const selectedAmount = computed(() => {
-    let total = 0;
-    for (const invrow of invrows.value) {
-        if (invoices.value.includes(invrow.service_label)) {
-            total += Number(invrow.invoices_amount);
-        }
-    }
-    return total;
-});
-
 function formattedCost(amount: number): string {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -269,12 +283,6 @@ async function initializePayPalButtons() {
     }
     ppButtons.value = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
     await ppButtons.value.render('#paypal-button-container');
-}
-
-function mounted() {
-    if (triggerClick.value) {
-        $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
-    }
 }
 
 function loadPayPalSdk() {
@@ -453,14 +461,6 @@ function formatExpDate(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-type Operator = '==' | '<=' | 'typeof';
-
-const operators: Record<Operator, (a: any, b: any) => boolean> = {
-    '==': (a, b) => a == b,
-    '<=': (a, b) => Number(a) <= Number(b),
-    typeof: (a, b) => typeof a === b,
-};
-
 function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
     const isActive = toggleStatus.value[status] ?? false;
     const operatorFn = operators[check];
@@ -626,6 +626,13 @@ async function loadCartData() {
         console.log('error:', error);
     }
 }
+
+onMounted(() => {
+  loadPayPalSdk();
+  if (triggerClick.value) {
+    $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
+  }
+});
 
 watch([() => data.value?.country, currency], ([country]) => {
     if (country) {
@@ -811,7 +818,7 @@ pageInit();
                             </div>
                         </div>
                         <hr />
-                        <div v-show="paymentMethod == 'paypal'" id="select_paypal">
+                        <div id="select_paypal" :style="paypalMethodStyle">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -836,7 +843,7 @@ pageInit();
                                         <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Primary</div>
                                         </div>
-                                        <form id="paymentform" action="cart" method="post">
+                                        <form id="paymentform" :action="`/pay/cc/${invoices.join(',')}`" method="post">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
@@ -858,13 +865,11 @@ pageInit();
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
                                                     <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
-
                                                 <div class="col-md-6 text-right">
                                                     <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="selectedCc === Number(cc_id)" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
