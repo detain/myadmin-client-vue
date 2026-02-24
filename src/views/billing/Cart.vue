@@ -807,7 +807,7 @@ pageInit();
                             </div>
                         </div>
                         <hr />
-                        <div id="select_paypal" v-show="paymentMethod == 'paypal'">
+                        <div v-show="paymentMethod == 'paypal'" id="select_paypal">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -818,7 +818,7 @@ pageInit();
                                 </div>
                             </div>
                         </div>
-                        <div id="select_card" v-show="paymentMethod == 'cc'">
+                        <div v-show="paymentMethod == 'cc'" id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
