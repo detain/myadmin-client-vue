@@ -43,75 +43,77 @@
             </table>
         </div>
     </div>
-    <Dialog ref="dialogTarget" command="show-modal" commandfor="dialog">
-        <template #dialog-conent>
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 id="modal-label-firewall" class="modal-title">Create New Firewall</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+    <Teleport to="body">
+        <Dialog ref="dialogTarget" command="show-modal" commandfor="dialog">
+            <template #dialog-conent>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="modal-label-firewall" class="modal-title">Create New Firewall</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="destination" class="col-sm-3 col-form-label">
+                                        Destination IP<span class="text-red">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input id="destination" type="text" class="form-control" name="destination_ip" :value="ip" readonly>
+                                        <small id="type_help_destination">IP address is required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="source_ip" class="col-sm-3 col-form-label">Destination Port</label>
+                                    <div class="col-sm-9">
+                                        <input id="destination_port" name="destination_port" class="form-control" value="80">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="protocol" class="col-sm-3 col-form-label">Protocol</label>
+                                    <div class="col-sm-9">
+                                        <select 
+                                            id="protocol" name="protocol_id" class="form-control select2"
+                                            style="width: 100% !important;">
+                                            <option value="1">TCP</option>
+                                            <option value="2">UDP</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="source_type" class="col-sm-3 col-form-label">Source IP</label>
+                                    <div class="col-sm-9">
+                                        <input id="destination" type="text" class="form-control" name="source_ip" value="0">
+                                    </div>
+                                </div>
+                                <div id="s_network" class="form-group row">
+                                    <label for="source_ip" class="col-sm-3 col-form-label">Source Port</label>
+                                    <div class="col-sm-9">
+                                        <input id="source_port" name="source_port" class="form-control" value="0">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="action" class="col-sm-3 col-form-label">XDP Action</label>
+                                    <div class="col-sm-9">
+                                        <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important;" onchange="xdp_update();">
+                                            <option value="1">Block</option>
+                                            <option value="0">Whitelist</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
+                            </div>
+                        </form>
                     </div>
-                    <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="destination" class="col-sm-3 col-form-label">
-                                    Destination IP<span class="text-red">*</span>
-                                </label>
-                                <div class="col-sm-9">
-                                    <input id="destination" type="text" class="form-control" name="destination_ip" :value="ip" readonly>
-                                    <small id="type_help_destination">IP address is required</small>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="source_ip" class="col-sm-3 col-form-label">Destination Port</label>
-                                <div class="col-sm-9">
-                                    <input id="destination_port" name="destination_port" class="form-control" value="80">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="protocol" class="col-sm-3 col-form-label">Protocol</label>
-                                <div class="col-sm-9">
-                                    <select 
-                                        id="protocol" name="protocol_id" class="form-control select2"
-                                        style="width: 100% !important;">
-                                        <option value="1">TCP</option>
-                                        <option value="2">UDP</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="source_type" class="col-sm-3 col-form-label">Source IP</label>
-                                <div class="col-sm-9">
-                                    <input id="destination" type="text" class="form-control" name="source_ip" value="0">
-                                </div>
-                            </div>
-                            <div id="s_network" class="form-group row">
-                                <label for="source_ip" class="col-sm-3 col-form-label">Source Port</label>
-                                <div class="col-sm-9">
-                                    <input id="source_port" name="source_port" class="form-control" value="0">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="action" class="col-sm-3 col-form-label">XDP Action</label>
-                                <div class="col-sm-9">
-                                    <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important;" onchange="xdp_update();">
-                                        <option value="1">Block</option>
-                                        <option value="0">Whitelist</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-        </template> 
-    </Dialog>
+            </template> 
+        </Dialog>
+    </Teleport>
 </template>
 
 <script setup lang="ts">
