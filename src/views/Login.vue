@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 import * as Yup from 'yup';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
+const baseUrl = siteStore.getBaseUrl();
 const gresponse = ref('');
 const isLogin = ref(true);
 const isPasswordVisible = ref(false);
@@ -23,9 +25,21 @@ const twoFactorAuthCode = ref('');
 const primaryCaptcha = ref(true);
 const showForgotPass = ref(false);
 const showPasswordInfo = ref(false);
+const oauthProvider = ref('');
+const oauthNeeds2FA = ref(false);
+const oauthAccountId = ref<number | null>(null);
+const oauthLinkRequired = ref(false);
+const oauthErrorMessage = ref('');
 const validClass = 'fa-check bg-green p-1';
 const invalidClass = 'fa-close bg-red px-2 py-1';
-
+const containerRef = ref<HTMLElement | null>(null);
+const widgetId = ref<string | null>(null);
+const containerRef2 = ref<HTMLElement | null>(null);
+const widgetId2 = ref<string | null>(null);
+const isTosChecked = computed(() => tos.value == true || login.value != '');
+const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
+const submitDisabled = ref(false);
+let signup_running = 0;
 const passwordRules = computed(() => {
     const val = password.value;
     return {
@@ -36,14 +50,6 @@ const passwordRules = computed(() => {
         special: !/^[a-zA-Z0-9- ]*$/.test(val),
     };
 });
-
-const containerRef = ref<HTMLElement | null>(null);
-const widgetId = ref<string | null>(null);
-const containerRef2 = ref<HTMLElement | null>(null);
-const widgetId2 = ref<string | null>(null);
-const isTosChecked = computed(() => tos.value == true || login.value != '');
-const passwordType = computed(() => (isPasswordVisible.value == true ? 'text' : 'password'));
-let signup_running = 0;
 
 const loginSchema = Yup.object().shape({
     tfa: Yup.string(),
@@ -60,8 +66,9 @@ declare global {
 interface LoginParams {
     login: string;
     passwd: string;
-    remember: string | null;
+    remember: boolean;
     tfa?: string;
+    email_confirmation?: string;
     'g-recaptcha-response'?: string;
     'cf-turnstile-response'?: string;
     captcha?: string;
@@ -70,6 +77,10 @@ interface LoginParams {
 interface SignupParams extends LoginParams {
     tos?: boolean;
 }
+
+function closePopup() {}
+
+function submitForgotPassForm() {}
 
 async function reloadCaptcha() {
     authStore.reloadCaptcha();
@@ -82,10 +93,6 @@ async function toggleCaptchaMethod() {
 async function toggleForgotPass() {
     showForgotPass.value = !showForgotPass.value;
 }
-
-function closePopup() {}
-
-function submitForgotPassForm() {}
 
 function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
     element = $(element);
@@ -405,7 +412,93 @@ async function onLoginSubmit() {
 }
 
 async function oAuthLogin(provider: string) {
-    window.open(`oauth/callback.php?provider=${provider}`, 'authWindow', 'width=600,height=600,scrollbars=yes');
+    try {
+        Swal.fire({
+            title: 'Redirecting...',
+            html: `<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+        window.location.href = `${baseUrl}/oauth?provider=${provider}`;
+        /*
+        const data: any = await fetchWrapper.get(`${baseUrl}/oauth?provider=${provider}`);
+        if (!data.redirect_url) {
+            throw new Error('Missing redirect URL');
+        }
+        sessionStorage.setItem('oauth_provider', provider);
+        // Full redirect — NOT popup
+        window.location.href = data.redirect_url;
+        */
+
+    } catch (err: any) {
+        Swal.close();
+        Swal.fire('Error', err.message || 'OAuth error', 'error');
+    }
+}
+
+async function handleOAuthCallback() {
+    const url = new URL(window.location.href);
+    const provider = url.searchParams.get('provider') || sessionStorage.getItem('oauth_provider') || '';
+    const code = url.searchParams.get('code');
+    if (!provider || !code) return;
+    oauthProvider.value = provider;
+    try {
+        Swal.fire({
+            title: 'Signing you in...',
+            html: '<i class="fa fa-spinner fa-spin fa-2x"></i>',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+        });
+        const data: any = await fetchWrapper.post(`${baseUrl}/oauth?provider=${provider}&code=${code}`, {});
+        Swal.close();
+        if (data.login || data.signup) {
+            sessionStorage.removeItem('oauth_provider');
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+            // Reload auth store
+            await authStore.load();
+            // Redirect to dashboard
+            window.location.href = '/';
+        } else {
+            Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
+        }
+    } catch (err: any) {
+        Swal.close();
+        const errorCode = err?.error || err?.message || '';
+        if (errorCode === '2fa_required') {
+            oauthNeeds2FA.value = true;
+            oauthAccountId.value = Number(err?.account_id || err?.details?.account_id || 0);
+            oauthErrorMessage.value = '';
+            window.history.replaceState({}, document.title, window.location.pathname);
+            return;
+        }
+        if (errorCode === 'account_exists_not_linked') {
+            oauthLinkRequired.value = true;
+            oauthErrorMessage.value = '';
+            window.history.replaceState({}, document.title, window.location.pathname);
+            return;
+        }
+        oauthErrorMessage.value = err?.message || 'Authentication failed';
+        Swal.fire('OAuth Error', oauthErrorMessage.value, 'error');
+    }
+}
+
+async function submitOAuth2FA() {
+    try {
+        const data: any = await fetchWrapper.patch(`${baseUrl}/oauth`, {
+            account_id: oauthAccountId.value,
+            code: twoFactorAuthCode.value,
+        });
+        if (data.login) {
+            sessionStorage.removeItem('oauth_provider');
+            window.location.href = '/';
+        } else {
+            Swal.fire('Invalid Code', 'Please try again', 'error');
+        }
+    } catch (e) {
+        Swal.fire('Error', '2FA verification failed', 'error');
+    }
 }
 
 async function onSignupSubmit() {
@@ -424,6 +517,9 @@ async function onSignupSubmit() {
         tos: tos.value,
         remember: remember.value,
     };
+    if (authStore.opts.verify == true) {
+        signupParams.email_confirmation = emailCode.value;
+    }
     if (authStore.opts.tfa == true) {
         signupParams.tfa = twoFactorAuthCode.value;
     }
@@ -432,15 +528,16 @@ async function onSignupSubmit() {
         signupParams['g-recaptcha-response'] = gresponse.value;
     }*/
     console.log('Signup Params:', signupParams);
-    authStore.signup(signupParams).then((response) => {
-        Swal.close();
-        window.turnstile.reset(widgetId.value);
-
-    }).catch((error: any) => {
-        Swal.close();
-        window.turnstile.reset(widgetId.value);
-
-    });
+    authStore
+        .signup(signupParams)
+        .then((response) => {
+            Swal.close();
+            window.turnstile.reset(widgetId.value);
+        })
+        .catch((error: any) => {
+            Swal.close();
+            window.turnstile.reset(widgetId.value);
+        });
 }
 
 function loadTurnstileScript(): Promise<void> {
@@ -461,6 +558,7 @@ function loadTurnstileScript(): Promise<void> {
 
 onMounted(async () => {
     await loadTurnstileScript();
+    await handleOAuthCallback();
     widgetId.value = window.turnstile.render(containerRef.value, {
         sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
         callback: (token: string) => {
@@ -784,14 +882,14 @@ authStore.load();
                                                     <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">Create Account</button>
                                                 </div>
                                             </div>
-                                            <div class="poppup email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
+                                            <div v-show="!isLogin && opts.verify" class="poppup email_popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
                                                         <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                         <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
-                                                        <form>
+                                                        <form @submit.prevent="onSignupSubmit">
                                                             <div class="mb-4">
                                                                 <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
@@ -827,6 +925,18 @@ authStore.load();
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
                                                 <i class="fab fa-twitter"></i>
                                             </a>
+                                        </div>
+                                        <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
+                                            <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
+                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">This social email already exists in MyAdmin but is not linked to this provider yet. Please log in with email/password and link this provider from account settings.</p>
+                                            <div v-if="oauthNeeds2FA" class="input-group mb-2">
+                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
+                                                </div>
+                                            </div>
+                                            <div v-if="oauthErrorMessage" class="text-sm text-red-600">{{ oauthErrorMessage }}</div>
                                         </div>
                                     </div>
                                 </div>

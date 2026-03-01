@@ -29,6 +29,7 @@ interface AuthState {
         tfa: boolean;
         verify: boolean;
         captcha: boolean;
+        oauth_account_id?: string;
     };
     logo: string;
     captcha: string;
@@ -41,7 +42,7 @@ interface AuthState {
     apiKey: string | null;
     sessionId: string | null;
     useHeaders: boolean;
-    remember: string | null;
+    remember: boolean;
     user: AuthUser;
     returnUrl: string | null;
 }
@@ -66,7 +67,7 @@ export const useAuthStore = defineStore('auth', {
         sessionId: localStorage.getItem('sessionId'), // your session id
         useHeaders: true, // whether to send auth via headers or cookie
         // initialize state from local storage to enable user to stay logged in
-        remember: localStorage.getItem('remember'),
+        remember: localStorage.getItem('remember') == 'true',
         user: JSON.parse(localStorage.getItem('user') || '{}') as AuthUser,
         returnUrl: null as string | null,
     }),
@@ -139,7 +140,7 @@ export const useAuthStore = defineStore('auth', {
                 this.user = user;
                 this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged-in between page refreshes
-                localStorage.setItem('remember', this.remember || '');
+                localStorage.setItem('remember', this.remember ? 'true' : 'false');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');
                 //localStorage.setItem('apiKey', this.apiKey);
@@ -169,7 +170,7 @@ export const useAuthStore = defineStore('auth', {
                 this.user = user;
                 this.sessionId = user.sessionId;
                 // store user details and jwt in local storage to keep user logged-in between page refreshes
-                localStorage.setItem('remember', this.remember || '');
+                localStorage.setItem('remember', this.remember ? 'true' : 'false');
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('sessionId', this.sessionId || '');
                 // redirect to previous url or default to home page
@@ -179,7 +180,7 @@ export const useAuthStore = defineStore('auth', {
                 if (typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
-                    } else if (error.field == 'verify') {
+                    } else if (error.field == 'email_confirmation') {
                         this.opts.verify = true;
                     } else if (error.field == 'captcha') {
                         this.opts.captcha = true;

@@ -91,6 +91,7 @@ export const useScrubIpStore = defineStore('scrub_ips', {
         geoFirewallRules: [],
         filterRules: [],
         filterTypes: [],
+        countries: []
     }),
     getters: {
         getScrubIps(state): any[] {
@@ -120,6 +121,8 @@ export const useScrubIpStore = defineStore('scrub_ips', {
                 this.filterRules = response.filter_firewall.filters || [];
                 const filterTypes = await fetchWrapper.get(`${baseUrl}/scrub_ips/filter_types`);
                 this.filterTypes = filterTypes.filters || [];
+                const countries = await fetchWrapper.get(`${baseUrl}/account/countries?fetch_by=numcode`);
+                this.countries = countries || [];
                 return response;
             } catch (error) {
                 this.error = true;
