@@ -38,6 +38,9 @@ const modulesCounts = ref<ModuleCounts>({});
 const countries = ref({});
 const prepayAvailable = ref(0);
 const st = ref<null | string>(null);
+const paypalLoaded = ref(false);
+const paypalScriptEl = ref<HTMLScriptElement | null>(null);
+const ppButtons = ref<PayPalButtonsInstance | null>(null);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -55,15 +58,6 @@ siteStore.setBreadcrums([
     ['/home', 'Home'],
     ['', 'Cart'],
 ]);
-const paypalLoaded = ref(false);
-const paypalScriptEl = ref<HTMLScriptElement | null>(null);
-let PPAmount = 0;
-let PPCurrency = '';
-let PPItems: PayPalItem[] = [];
-let PPCustom = '';
-let PPReturnURL = '';
-let PPCancelURL = '';
-let ppButtons: PayPalButtonsInstance | null = null;
 
 interface PayPalButtonsInstance {
     render: (selector: string) => Promise<void>;
@@ -80,12 +74,24 @@ interface PayPalItem {
     };
 }
 
+type Operator = '==' | '<=' | 'typeof';
+
+const operators: Record<Operator, (a: any, b: any) => boolean> = {
+  '==': (a, b) => a == b,
+  '<=': (a, b) => Number(a) <= Number(b),
+  typeof: (a, b) => typeof a === b,
+};
+
+const paypalMethodStyle = computed(() => {
+    const style: Record<string, string> = {};
+    style.display = paymentMethod.value === 'paypal' ? 'block' : 'none';
+    return style;
+});
+
 const fundingSources = computed(() => {
     const country = data.value?.country;
     const funding: string[] = [];
-
     if (!country) return funding;
-
     switch (country) {
         case 'US':
             funding.push('venmo');
@@ -110,32 +116,50 @@ const fundingSources = computed(() => {
             funding.push('pay-upon-invoice');
             break;
     }
-
     if (['AT', 'DE', 'DK', 'EE', 'ES', 'FI', 'GB', 'LT', 'LV', 'NL', 'NO', 'SE'].includes(country)) {
         funding.push('trustly');
     }
-
     return funding;
 });
 
 const paypalSdkUrl = computed(() => {
     if (!data.value?.country) return '';
-
     const params = new URLSearchParams({
         'client-id': 'AdYdovDB_vwbBaM0ZCT5l1MUKeAxz_IWeWt8q0hgqtkASsLRTvnlbTMMNxM4xHfJTVw_akRZKmkteMAT',
         'integration-date': '2026-01-01',
         currency: currency.value || 'USD',
         intent: 'capture',
-        components: 'buttons,funding-eligibility,applepay,googlepay'
+        components: 'buttons,funding-eligibility,applepay,googlepay',
     });
-
     if (fundingSources.value.length > 0) {
         params.set('enable-funding', fundingSources.value.join(','));
     }
-
     return `https://www.paypal.com/sdk/js?${params.toString()}`;
 });
 
+const paypalItems = computed(() => {
+  return invrows.value
+      .filter((row) => invoices.value.includes(row.service_label))
+      .map((row) => ({
+        name: row.service,
+        quantity: 1,
+        category: 'DIGITAL_GOODS',
+        unit_amount: {
+          currency_code: row.invoices_currency,
+          value: row.invoices_amount,
+        },
+      }));
+});
+
+const selectedAmount = computed(() => {
+  let total = 0;
+  for (const invrow of invrows.value) {
+    if (invoices.value.includes(invrow.service_label)) {
+      total += Number(invrow.invoices_amount);
+    }
+  }
+  return total;
+});
 
 function getBtnOpts() {
     const btnOpts = {
@@ -160,7 +184,7 @@ function getBtnOpts() {
 async function createOrderCallback() {
     resultMessage('');
     try {
-        if (PPCustom.length > 570) {
+        if (invoices.value.join(',').length > 570) {
             throw new Error('Too many invoices selected for PayPal.  Please choose fewer invoices.');
         }
         const response = await fetch('/payments/paypal_sdk.php?call=create', {
@@ -171,12 +195,12 @@ async function createOrderCallback() {
             // use the "body" param to optionally pass additional order information
             // like product ids and quantities
             body: JSON.stringify({
-                amount: PPAmount,
-                currency: PPCurrency,
-                items: PPItems,
-                custom: PPCustom,
-                returnURL: PPReturnURL,
-                cancelURL: PPCancelURL,
+                amount: selectedAmount.value,
+                currency: currency.value,
+                items: paypalItems.value,
+                custom: invoices.value.join(','),
+                returnURL: `${window.location.origin}/pay/paypal/${invoices.value.join(',')}/done`,
+                cancelURL: `${window.location.origin}/pay/paypal/${invoices.value.join(',')}/done`,
             }),
         });
         const orderData = await response.json();
@@ -244,16 +268,6 @@ function resultMessage(message: string) {
     container.innerHTML = message;
 }
 
-const selectedAmount = computed(() => {
-    let total = 0;
-    for (const invrow of invrows.value) {
-        if (invoices.value.includes(invrow.service_label)) {
-            total += Number(invrow.invoices_amount);
-        }
-    }
-    return total;
-});
-
 function formattedCost(amount: number): string {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -264,18 +278,11 @@ function formattedCost(amount: number): string {
 async function initializePayPalButtons() {
     if (!paypalLoaded.value || !(window as any).paypal) return;
     await nextTick();
-    if (ppButtons?.close) {
-        ppButtons.close();
+    if (ppButtons.value?.close) {
+        ppButtons.value.close();
     }
-    ppButtons = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
-    await ppButtons.render('#paypal-button-container');
- }
-
-
-function mounted() {
-    if (triggerClick.value) {
-        $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
-    }
+    ppButtons.value = (window as any).paypal.Buttons(getBtnOpts()) as PayPalButtonsInstance;
+    await ppButtons.value.render('#paypal-button-container');
 }
 
 function loadPayPalSdk() {
@@ -298,7 +305,6 @@ function loadPayPalSdk() {
     document.head.appendChild(script);
     paypalScriptEl.value = script;
 }
-
 
 function deleteCardModal(cc_id = 0) {
     $('#cc_idx').val(cc_id);
@@ -455,14 +461,6 @@ function formatExpDate(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-type Operator = '==' | '<=' | 'typeof';
-
-const operators: Record<Operator, (a: any, b: any) => boolean> = {
-    '==': (a, b) => a == b,
-    '<=': (a, b) => Number(a) <= Number(b),
-    typeof: (a, b) => typeof a === b,
-};
-
 function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
     const isActive = toggleStatus.value[status] ?? false;
     const operatorFn = operators[check];
@@ -474,15 +472,15 @@ function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'se
                 invoiceSet.add(row.service_label);
             } else if (toggleOther) {
                 invoiceSet.delete(row.service_label);
-        }
-    } else {
+            }
+        } else {
             if (matches) {
                 invoiceSet.delete(row.service_label);
             } else if (toggleOther) {
                 invoiceSet.add(row.service_label);
-                }
             }
         }
+    }
     invoices.value = Array.from(invoiceSet);
     toggleStatus.value[status] = !isActive;
 }
@@ -629,15 +627,18 @@ async function loadCartData() {
     }
 }
 
-watch(
-    [() => data.value?.country, currency],
-    ([country]) => {
-        if (country) {
-            loadPayPalSdk();
-        }
-    }
-);
+onMounted(() => {
+  loadPayPalSdk();
+  if (triggerClick.value) {
+    $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
+  }
+});
 
+watch([() => data.value?.country, currency], ([country]) => {
+    if (country) {
+        loadPayPalSdk();
+    }
+});
 
 pageInit();
 </script>
@@ -802,15 +803,22 @@ pageInit();
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span id="payments-section">
-                                    <span v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
+                                    <template v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
                                         <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                        <template v-else-if="methodData.text == 'PayPal'">
+                                            <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'paypal'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">
+                                                <div style="float: right">{{ methodData.text }}<br />(old)</div>
+                                                <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
+                                            </router-link>
+                                        </template>
                                         <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
-                                    </span>
+                                    </template>
                                 </span>
                             </div>
                         </div>
                         <hr />
-                        <div id="select_paypal">
+                        <div id="select_paypal" :style="paypalMethodStyle">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -821,7 +829,7 @@ pageInit();
                                 </div>
                             </div>
                         </div>
-                        <div id="select_card">
+                        <div v-show="paymentMethod == 'cc'" id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
@@ -835,7 +843,7 @@ pageInit();
                                         <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Primary</div>
                                         </div>
-                                        <form id="paymentform" action="cart" method="post">
+                                        <form id="paymentform" :action="`/pay/cc/${invoices.join(',')}`" method="post">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
@@ -857,13 +865,11 @@ pageInit();
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
                                                     <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
-
                                                 <div class="col-md-6 text-right">
                                                     <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="selectedCc === Number(cc_id)" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />

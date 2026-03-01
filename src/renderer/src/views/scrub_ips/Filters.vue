@@ -38,51 +38,53 @@
             </table>
         </div>
     </div>
-    <Dialog ref="dialogTarget" command="show-modal" commandfor="dialog">
-        <template #dialog-conent>
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 id="modal-label" class="modal-title">Create New Filter</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+    <Teleport to="body">
+        <Dialog ref="dialogTarget" command="show-modal" commandfor="dialog">
+            <template #dialog-conent>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="modal-label" class="modal-title">Create New Filter</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="filter_type" class="col-sm-4 col-form-label">Filter Type</label>
+                                    <div class="col-sm-8">
+                                        <select 
+                                            id="filter_type" name="filter_type" class="form-control form-control-sm select2"
+                                                style="width: 100% !important;" required>
+                                            <option value="">Select Filter Type</option>
+                                            <option v-for="type, key in filter_types" :key="type.value" :value="key">{{ type.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ip" class="col-sm-4 col-form-label">IP Address</label>
+                                    <div class="col-sm-8">
+                                        <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="port" class="col-sm-4 col-form-label">Port No</label>
+                                    <div class="col-sm-8">
+                                        <input id="port" type="text" name="port" class="form-control" value="80">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
+                            </div>
+                        </form>
                     </div>
-                    <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="filter_type" class="col-sm-4 col-form-label">Filter Type</label>
-                                <div class="col-sm-8">
-                                    <select 
-                                        id="filter_type" name="filter_type" class="form-control form-control-sm select2"
-                                            style="width: 100% !important;" required>
-                                        <option value="">Select Filter Type</option>
-                                        <option v-for="type, key in filter_types" :key="type.value" :value="key">{{ type.name }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="ip" class="col-sm-4 col-form-label">IP Address</label>
-                                <div class="col-sm-8">
-                                    <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="port" class="col-sm-4 col-form-label">Port No</label>
-                                <div class="col-sm-8">
-                                    <input id="port" type="text" name="port" class="form-control" value="80">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-        </template> 
-    </Dialog>
+            </template> 
+        </Dialog>
+    </Teleport>
 </template>
 <script setup lang="ts">
     import { fetchWrapper } from '@/helpers/fetchWrapper';
