@@ -420,6 +420,8 @@ async function oAuthLogin(provider: string) {
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
+        window.location.href = `${baseUrl}/oauth?provider=${provider}`;
+        /*
         const data: any = await fetchWrapper.get(`${baseUrl}/oauth?provider=${provider}`);
         if (!data.redirect_url) {
             throw new Error('Missing redirect URL');
@@ -427,6 +429,8 @@ async function oAuthLogin(provider: string) {
         sessionStorage.setItem('oauth_provider', provider);
         // Full redirect — NOT popup
         window.location.href = data.redirect_url;
+        */
+
     } catch (err: any) {
         Swal.close();
         Swal.fire('Error', err.message || 'OAuth error', 'error');
