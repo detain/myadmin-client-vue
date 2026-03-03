@@ -487,25 +487,10 @@ loadInvoices();
                         <button class="btn-custom text-sm" data-toggle="tooltip" title="Go Back" @click="previous"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</button>
                     </div>
                 </div>
-                <div class="card-body row justify-content-center">
-                    <table id="invoice_table" class="table-bordered mt-2 table">
-                        <thead>
-                            <tr>
-                                <th>More Details</th>
-                                <th>ID</th>
-                                <th>Invoice Date</th>
-                                <th>Due Date</th>
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Paid</th>
-                                <th>Links</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                <div class="card-body justify-content-center">
                     <!-- filters -->
                     <div class="row mb-3 align-items-end">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label>Search</label>
                             <input v-model="searchText" type="text" class="form-control form-control-sm" placeholder="Search…" />
                         </div>
@@ -524,9 +509,8 @@ loadInvoices();
                             <a :href="`https://my.interserver.net/pdf.php?choice=view_invoices&use_variable_sessionid=true&sessionid=${sessionId}`" class="btn btn-primary btn-sm">Export PDF</a>
                         </div>
                     </div>
-
                     <!-- table -->
-                    <table class="table table-sm table-striped">
+                    <table class="table-bordered mt-2 table">
                         <thead>
                             <tr>
                                 <th>More Details</th>
@@ -534,7 +518,10 @@ loadInvoices();
                                     ID <span class="sort-arrow">{{ sortArrow('invoices_id') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_date')">
-                                    Date <span class="sort-arrow">{{ sortArrow('invoices_date') }}</span>
+                                    Invoice Date <span class="sort-arrow">{{ sortArrow('invoices_date') }}</span>
+                                </th>
+                                <th @click="setSort('invoices_due_date')">
+                                    Due Date <span class="sort-arrow">{{ sortArrow('invoices_due_date') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_description')">
                                     Description <span class="sort-arrow">{{ sortArrow('invoices_description') }}</span>
@@ -558,10 +545,10 @@ loadInvoices();
                                         <a :href="`pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}`">{{ row.invoices_id }}</a>
                                     </td>
                                     <td>{{ row.invoices_date }}</td>
+                                    <td>{{ row.invoices_due_date }}</td>
                                     <td>{{ row.invoices_description }}</td>
                                     <td class="text-end">{{ row.invoices_amount }}</td>
                                     <td><img :src="paidImage(row.invoices_paid)" border="0" :alt="row.invoices_paid ? 'Yes' : 'No'" style="width: 24px" /></td>
-                                    <!-- <td><img :src="paymentImage(row.payment_type_id)" border="0" :alt="row.payment_type" style="width: 24px" /></td> -->
                                     <td>
                                         <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}&use_variable_sessionid=true&sessionid=${sessionId}`" title="PDF" class="me-2">
                                             <img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" />
