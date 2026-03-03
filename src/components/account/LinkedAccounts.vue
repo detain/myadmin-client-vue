@@ -81,13 +81,11 @@ export default {
                             <span v-else>Not linked</span>
                         </td>
                         <td>
-                            <span v-if="provider.enabled">
+                            <span v-if="provider.linked">
                                 <a v-if="provider.url" :href="provider.url" class="px-1" target="_blank">{{ provider.url }}</a>
-                                <span v-if="provider.linked" class="px-1">(<a href="" @click.prevent="unlinkOauth(name.toString())">Unlink</a>)</span>
+                                <span v-else>{{ provider.account }}</span>
+                                <span class="px-1">(<a href="" @click.prevent="unlinkOauth(name.toString())">Unlink</a>)</span>
                                 <span v-if="oAuthAdapters[name]" class="px-1">(<a @click.prevent="logOutOauth(name.toString())">Log Out</a>)</span>
-                            </span>
-                            <span v-else>
-                                {{ provider.account || '' }}
                             </span>
                         </td>
                     </tr>
