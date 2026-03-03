@@ -91,6 +91,9 @@ export default defineConfig({
     include: ['jquery', 'select2'],
     build: {
         sourcemap: false,
+        modulePreload: {
+            polyfill: true,
+        },
         rollupOptions: {
             preserveEntrySignatures: 'allow-extension',
             output: {
@@ -106,6 +109,25 @@ export default defineConfig({
                     preset: 'es2015', // es5 | es2015
                     constBindings: true,
                     arrowFunctions: true,
+                },
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+                            return 'framework';
+                        }
+                        if (id.includes('admin-lte') || id.includes('jquery') || id.includes('bootstrap') || id.includes('select2')) {
+                            return 'legacy-ui';
+                        }
+
+                        return 'vendor';
+                    }
+
+                    if (id.includes('/src/views/')) {
+                        const viewScope = id.split('/src/views/')[1]?.split('/')[0];
+                        return viewScope ? `view-${viewScope}` : 'views';
+                    }
+
+                    return undefined;
                 },
             },
         },
