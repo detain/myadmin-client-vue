@@ -33,6 +33,7 @@ const id = computed(() => props.id);
 const module = computed(() => props.module);
 const authStore = useAuthStore();
 const { sessionId } = storeToRefs(authStore);
+const loading = ref(true);
 
 type InvoicesResponse = {
     success: boolean;
@@ -47,28 +48,45 @@ type PaymentInvoiceRows = {
     [key: string]: PaymentInvoiceRow;
 };
 
+type RefundInvoiceRows = {
+    [key: string]: RefundInvoiceRow;
+};
+
 type ChargeInvoiceRow = {
-    invoices_id: string;
+    invoices_id: number;
     invoices_description: string;
-    invoices_amount: string;
+    invoices_amount: number;
     invoices_date: string;
-    invoices_paid: string;
+    invoices_type: number;
+    invoices_paid: boolean;
     invoices_due_date: string;
     invoices_currency: string;
     currency_symbol: string;
     invoices_date_formatted: string;
-    paid_invoices: PaymentInvoiceRows;
+    paid_invoices?: PaymentInvoiceRows;
 };
 
 type PaymentInvoiceRow = {
-    invoices_id: string;
+    invoices_id: number;
     invoices_description: string;
-    invoices_amount: string;
+    invoices_amount: number;
     invoices_date: string;
+    invoices_type: number;
     invoices_currency: string;
     currency_symbol: string;
     invoices_date_formatted: string;
     payment_type: string;
+    refund_invoices?: RefundInvoiceRows;
+};
+
+type RefundInvoiceRow = {
+    invoices_id: number;
+    invoices_description: string;
+    invoices_amount: number;
+    invoices_date: string;
+    invoices_currency: string;
+    currency_symbol: string;
+    invoices_date_formatted: string;
 };
 
 type Prefixes = Record<string, string>;
@@ -86,6 +104,14 @@ const pageSize = ref(50);
 const currentPage = ref(1);
 const sortKey = ref<keyof ChargeInvoiceRow>('invoices_id');
 const sortDir = ref<'asc' | 'desc'>('desc');
+const showDetails = ref<Record<string, boolean>>({});
+
+function toggleDetails(id: number) {
+    const row = invoices.value.find((r) => r.invoices_id === id);
+    if (row) {
+        showDetails.value[id] = !showDetails.value[id];
+    }
+}
 
 /* ------------------ data load ------------------ */
 function getImage(type: number): string {
@@ -105,8 +131,8 @@ function getImage(type: number): string {
     return map[type] ?? iconCardPayment;
 }
 
-function paidImage(paid: string): string {
-    return paid == 'Yes' ? iconCheckmark : iconDelete;
+function paidImage(paid: boolean): string {
+    return paid ? iconCheckmark : iconDelete;
 }
 
 function paymentImage(typeId: number): string {
@@ -142,7 +168,9 @@ const sortedRows = computed(() => {
     return [...filteredRows.value].sort((a, b) => {
         const av = a[sortKey.value];
         const bv = b[sortKey.value];
-
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1; // push undefined to bottom
+        if (bv == null) return -1;
         if (av === bv) return 0;
         if (sortDir.value === 'asc') {
             return av > bv ? 1 : -1;
@@ -321,8 +349,10 @@ function get_payment_method_text(type: string) {
 }
 
 function loadInvoices() {
+    loading.value = true;
     try {
         fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/invoices`).then((resp: InvoicesResponse) => {
+            loading.value = false;
             console.log(`${module.value} ${id.value} invoices success`, resp);
             invoices.value = Object.values(resp.invoices);
             /*let table = $('#invoice_table').DataTable({
@@ -426,6 +456,7 @@ function loadInvoices() {
             */
         });
     } catch (error: any) {
+        loading.value = false;
         console.log(`${module.value} ${id.value} invoices failed`, error);
     }
 }
@@ -498,6 +529,7 @@ loadInvoices();
                     <table class="table table-sm table-striped">
                         <thead>
                             <tr>
+                                <th>More Details</th>
                                 <th class="sortable" @click="setSort('invoices_id')">
                                     ID <span class="sort-arrow">{{ sortArrow('invoices_id') }}</span>
                                 </th>
@@ -513,27 +545,65 @@ loadInvoices();
                                 <th @click="setSort('invoices_paid')">
                                     Paid <span class="sort-arrow">{{ sortArrow('invoices_paid') }}</span>
                                 </th>
-                                <th @click="setSort('payment_type')">
-                                    Payment <span class="sort-arrow">{{ sortArrow('payment_type') }}</span>
-                                </th>
                                 <th>Links</th>
                             </tr>
                         </thead>
                         <tbody v-if="!loading">
-                            <tr v-for="row in pagedRows" :key="row.invoices_id">
-                                <td>
-                                    <a :href="`pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}`">{{ row.invoices_id }}</a>
-                                </td>
-                                <td>{{ row.invoices_date }}</td>
-                                <td>{{ row.invoices_description }}</td>
-                                <td class="text-end">{{ row.invoices_amount }}</td>
-                                <td><img :src="paidImage(row.invoices_paid)" border="0" :alt="row.invoices_paid" style="width: 24px" /></td>
-                                <td><img :src="paymentImage(row.payment_type_id)" border="0" :alt="row.payment_type" style="width: 24px" /></td>
-                                <td>
-                                    <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}&use_variable_sessionid=true&sessionid=${sessionId}`" title="PDF" class="me-2"><img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" /></a>
-                                    <router-link :to="'/invoices/' + row.invoices_id" title="View Invoice"><img :src="iconViewDetails" border="0" alt="View Invoice" style="width: 1em; height: 1em; display: inline-block" /></router-link>
-                                </td>
-                            </tr>
+                            <template v-for="row in pagedRows" :key="row.invoices_id">
+                                <tr>
+                                    <td>
+                                        <a @click.prevent="toggleDetails(row.invoices_id)"><i class="fas" :class="{ 'fa-plus': typeof showDetails[row.invoices_id] == 'undefined' || !showDetails[row.invoices_id], 'fa-minus': showDetails[row.invoices_id] }"></i></a>
+                                    </td>
+                                    <td>
+                                        <a :href="`pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}`">{{ row.invoices_id }}</a>
+                                    </td>
+                                    <td>{{ row.invoices_date }}</td>
+                                    <td>{{ row.invoices_description }}</td>
+                                    <td class="text-end">{{ row.invoices_amount }}</td>
+                                    <td><img :src="paidImage(row.invoices_paid)" border="0" :alt="row.invoices_paid ? 'Yes' : 'No'" style="width: 24px" /></td>
+                                    <!-- <td><img :src="paymentImage(row.payment_type_id)" border="0" :alt="row.payment_type" style="width: 24px" /></td> -->
+                                    <td>
+                                        <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}&use_variable_sessionid=true&sessionid=${sessionId}`" title="PDF" class="me-2">
+                                            <img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" />
+                                        </a>
+                                        <router-link :to="'/invoices/' + row.invoices_id" title="View Invoice"><img :src="iconViewDetails" border="0" alt="View Invoice" style="width: 1em; height: 1em; display: inline-block" /></router-link>
+                                    </td>
+                                </tr>
+                                <template v-if="row.paid_invoices && Object.values(row.paid_invoices).length > 0">
+                                    <tr v-show="showDetails[row.invoices_id]">
+                                        <td colspan="7">
+                                            <table class="table table-sm table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>ID</th>
+                                                        <th>Paid On</th>
+                                                        <th>Description</th>
+                                                        <th>Amount</th>
+                                                        <th>Paid By</th>
+                                                        <th>Links</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="paid in row.paid_invoices" :key="paid.invoices_id">
+                                                        <td></td>
+                                                        <td>
+                                                            <a :href="`pdf.php?choice=view_invoice&module=${module}&id=${paid.invoices_id}`">{{ paid.invoices_id }}</a>
+                                                        </td>
+                                                        <td>{{ paid.invoices_date }}</td>
+                                                        <td>{{ paid.invoices_description }}</td>
+                                                        <td class="text-end">{{ paid.invoices_amount }}</td>
+                                                        <td><img :src="paymentImage(paid.invoices_type)" border="0" :alt="paid.payment_type" style="width: 24px" /></td>
+                                                        <td>
+                                                            <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${module}&id=${paid.invoices_id}&use_variable_sessionid=true&sessionid=${sessionId}`" title="PDF" class="me-2"> <img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" /></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
                         </tbody>
                         <tbody v-else>
                             <tr>
