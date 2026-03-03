@@ -8,6 +8,18 @@ import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { useDarkMode } from '@/helpers/useDarkMode'
+import { warmFrequentlyUsedRoutes, warmRouteByLocation } from '@/router';
+
+function warmSidebarRouteFromEvent(event: Event) {
+    const target = event.target as HTMLElement | null;
+    const link = target?.closest('a[href]');
+    const href = link?.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#')) {
+        return;
+    }
+
+    warmRouteByLocation(href);
+}
 
 function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     const body = document.body;
@@ -48,10 +60,29 @@ onMounted(function () {
     });
 
     document.addEventListener('click', closeMobileSidebarOnOutsideClick);
+
+    const idleWarmup = () => {
+        warmFrequentlyUsedRoutes();
+    };
+
+    const requestIdleCallbackFn = window.requestIdleCallback?.bind(window);
+    if (requestIdleCallbackFn) {
+        requestIdleCallbackFn(idleWarmup, { timeout: 1200 });
+    } else {
+        window.setTimeout(idleWarmup, 400);
+    }
+
+    const sidebar = document.querySelector('.main-sidebar');
+    sidebar?.addEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
+    sidebar?.addEventListener('focusin', warmSidebarRouteFromEvent as EventListener);
 });
 
 onBeforeUnmount(() => {
     document.removeEventListener('click', closeMobileSidebarOnOutsideClick);
+
+    const sidebar = document.querySelector('.main-sidebar');
+    sidebar?.removeEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
+    sidebar?.removeEventListener('focusin', warmSidebarRouteFromEvent as EventListener);
 });
 
 const authStore = useAuthStore();
