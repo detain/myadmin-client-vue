@@ -2,7 +2,7 @@
 import { reactive, ref, computed, watch } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
@@ -14,6 +14,7 @@ const form = reactive({
 });
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
+const router = useRouter();
 const baseUrl = siteStore.getBaseUrl();
 const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const route = useRoute();
@@ -35,6 +36,11 @@ interface GetPayRedirectResponse {
     text: string;
 }
 
+interface GetPaySingleResponse {
+    type: 'single';
+    text: string;
+}
+
 interface GetPaySubmitResponse {
     type: 'submit';
     text: string;
@@ -45,7 +51,7 @@ interface GetPaySubmitResponse {
     };
 }
 
-type GetPayResponse = GetPaySubmitResponse | GetPayRedirectResponse;
+type GetPayResponse = GetPaySubmitResponse | GetPayRedirectResponse | GetPaySingleResponse;
 
 if (!isDone.value) {
     try {
@@ -59,6 +65,8 @@ if (!isDone.value) {
                 form.items = response.items;
                 const submit = document.getElementById('submitForm') as HTMLFormElement;
                 submit.submit();
+            } else if (response.type == 'single') {
+                router.push(`/pay/${method.value}/${invoices.value}/done`);
             }
             console.log(response);
         });
@@ -77,9 +85,7 @@ if (!isDone.value) {
             </div>
         </div>
     </div>
-    <div v-else>
-        Returned from payment.
-    </div>
+    <div v-else>Returned from payment.</div>
     <form v-if="form.action" id="submitForm" :action="form.action">
         <input v-for="(value, key) in form.items" :key="key" type="hidden" :name="key" :value="value" />
         <input type="submit" value="Submit" />
