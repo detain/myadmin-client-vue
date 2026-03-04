@@ -29,24 +29,25 @@ const regionName = computed(() => {
     const region = list.find((r) => r.region_id === selectedRegion.value);
     return region?.region_name ?? '';
 });
-const selected = reactive<Record<string, number | null>>({
+const selected = reactive<SelectedOptions>({
     ips: null,
     bandwidth: null,
     os: null,
     cp: null,
     raid: null,
 });
-const options = reactive<Record<string, Option[]>>({
+const options = reactive<Record<OptionKey, Option[]>>({
     ips: [],
     bandwidth: [],
     os: [],
     cp: [],
     raid: [],
 });
+
 const optionsTotal = computed(() =>
-    Object.entries(selected).reduce((sum, [key, id]) => {
+    (Object.entries(selected) as [OptionKey, number | null][]).reduce((sum, [key, id]) => {
         if (!id) return sum;
-        const opt = options[key]?.find((o) => o.id === id);
+        const opt = options[key].find((o) => o.id === id);
         return sum + Number(opt?.monthly_price ?? 0);
     }, 0)
 );
@@ -122,14 +123,28 @@ interface InitResponse {
     regions: Region[];
 }
 
+type OptionKey = keyof SelectedOptions;
+
+interface SelectedOptions {
+    bandwidth: number | null;
+    cp: number | null;
+    ips: number | null;
+    os: number | null;
+    raid: number | null;
+}
+
 interface SubmitPayload {
     hostname: string;
     rootPassword: string;
     comments: string;
-    selections: Record<string, number | null>;
     region: number | null;
     coupon?: string;
     assetId?: number;
+    bandwidth: number | null;
+    cp: number | null;
+    ips: number | null;
+    os: number | null;
+    raid: number | null;
 }
 
 interface Option {
@@ -188,12 +203,12 @@ async function serverOrderRequest() {
             discountPercent.value = response.discountPercent ?? 0;
             */
             // Preselect first option per category
-            ['cp', 'ips', 'os', 'bandwidth', 'raid'].forEach((key) => {
+            const optionKeys: (keyof SelectedOptions)[] = ['cp', 'ips', 'os', 'bandwidth', 'raid'];
+            optionKeys.forEach((key) => {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
-            });
-            //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
+            }); //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
             selectedRegion.value = regions.value.length > 0 ? regions.value[0].region_id : null;
             loading.value = false;
         })
@@ -214,10 +229,10 @@ async function submitOrder() {
             hostname: hostname.value,
             rootPassword: rootPassword.value,
             comments: comments.value,
-            selections: selected,
             region: selectedRegion.value,
             coupon: route.query.c as string,
             assetId: Number(route.query.a),
+            ...selected,
         };
         fetchWrapper
             .post(`${baseUrl}/servers/order/buy_now_server`, postData)
@@ -397,7 +412,7 @@ onMounted(async () => {
                                                 {{ row }}
                                             </div>
                                             <div class="price">
-                                                <template v-if="idx == 0">${{ serverCoupon.amount }}</template>
+                                                <template v-if="idx == 0 && serverCoupon && serverCoupon.amount">${{ serverCoupon.amount }}</template>
                                                 <template v-else>$0.00</template>
                                             </div>
                                         </div>
