@@ -1326,9 +1326,9 @@
     levn "^0.4.1"
 
 "@exodus/bytes@^1.11.0", "@exodus/bytes@^1.6.0":
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/@exodus/bytes/-/bytes-1.14.1.tgz#9b5c29077162a35f1bd25613e0cd3c239f6e7ad8"
-  integrity sha512-OhkBFWI6GcRMUroChZiopRiSp2iAMvEBK47NhJooDqz1RERO4QuZIZnjP63TXX8GAiLABkYmX+fuQsdJ1dd2QQ==
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@exodus/bytes/-/bytes-1.15.0.tgz#54479e0f406cbad024d6fe1c3190ecca4468df3b"
+  integrity sha512-UY0nlA+feH81UGSHv92sLEPLCeZFjXOuHhrIo0HQydScuQc8s0A7kL/UdgwgDq8g8ilksmuoF35YVTNphV2aBQ==
 
 "@foliojs-fork/fontkit@^1.9.2":
   version "1.9.2"
@@ -4971,9 +4971,9 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
 graphql@^16.12.0:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.13.0.tgz#726857e897e87d54412d62356ec0b6b76bfab409"
-  integrity sha512-uSisMYERbaB9bkA9M4/4dnqyktaEkf1kMHNKq/7DHyxVeWqHQ2mBmVqm5u6/FVHwF3iCNalKcg82Zfl+tffWoA==
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.13.1.tgz#38ae5c76fbc4a009e0004dca6c76c370a1da7b54"
+  integrity sha512-gGgrVCoDKlIZ8fIqXBBb0pPKqDgki0Z/FSKNiQzSGj2uEYHr1tq5wmBegGwJx6QB5S5cM0khSBpi/JFHMCvsmQ==
 
 h3@^1.15.4:
   version "1.15.5"
