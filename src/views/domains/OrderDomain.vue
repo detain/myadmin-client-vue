@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useSiteStore } from '@/stores/site.store';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '@/types/domains';
 const module = 'domains';
@@ -18,6 +18,7 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
+const router = useRouter();
 const hostname = ref('');
 const whoisPrivacyCost = ref(0);
 const whoisEnabled = ref<boolean>(false);
