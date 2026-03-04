@@ -7,7 +7,7 @@ import Alert from '@/components/Alert.vue';
 import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
-import { useDarkMode } from '@/helpers/useDarkMode'
+import { useDarkMode } from '@/helpers/useDarkMode';
 import { warmFrequentlyUsedRoutes, warmRouteByLocation } from '@/router';
 
 function warmSidebarRouteFromEvent(event: Event) {
@@ -17,7 +17,6 @@ function warmSidebarRouteFromEvent(event: Event) {
     if (!href || href.startsWith('http') || href.startsWith('#')) {
         return;
     }
-
     warmRouteByLocation(href);
 }
 
@@ -58,30 +57,29 @@ onMounted(function () {
             el.classList.remove('shadow');
         });
     });
-
     document.addEventListener('click', closeMobileSidebarOnOutsideClick);
-
     const idleWarmup = () => {
         warmFrequentlyUsedRoutes();
     };
-
     const requestIdleCallbackFn = window.requestIdleCallback?.bind(window);
     if (requestIdleCallbackFn) {
         requestIdleCallbackFn(idleWarmup, { timeout: 1200 });
     } else {
         window.setTimeout(idleWarmup, 400);
     }
-
     const sidebar = document.querySelector('.main-sidebar');
+    // eslint-disable-next-line no-undef
     sidebar?.addEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
+    // eslint-disable-next-line no-undef
     sidebar?.addEventListener('focusin', warmSidebarRouteFromEvent as EventListener);
 });
 
 onBeforeUnmount(() => {
     document.removeEventListener('click', closeMobileSidebarOnOutsideClick);
-
     const sidebar = document.querySelector('.main-sidebar');
+    // eslint-disable-next-line no-undef
     sidebar?.removeEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
+    // eslint-disable-next-line no-undef
     sidebar?.removeEventListener('focusin', warmSidebarRouteFromEvent as EventListener);
 });
 
@@ -175,10 +173,10 @@ useDarkMode();
             </router-link>
             <div class="sidebar">
                 <!-- Sidebar -->
-                <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em;">
+                <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px;" alt="Profile Image" />
-                    <div class="info hide-on-collapse brand-text" style="padding: 0px;">
+                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" alt="Profile Image" />
+                    <div class="info hide-on-collapse brand-text" style="padding: 0px">
                         <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>

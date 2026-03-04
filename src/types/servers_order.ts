@@ -3,7 +3,7 @@ export interface SimpleStringObj {
 }
 
 export interface ServerOrderResponse {
-    cpu: number;
+    cpu: string;
     cpu_li: CpuLi;
     cpu_cores: CpuCores;
     config_ids: ConfigIds;
@@ -40,7 +40,7 @@ export interface ConfigIds {
 }
 
 export interface FormValues {
-    [key: string]: number;
+    [key: string]: string;
 }
 
 export interface FieldLabel {
@@ -51,14 +51,14 @@ export interface FieldLabel {
 }
 
 export interface ConfigLi extends SimpleStringObj {
-    cpu_li: Record<number, CpuRow>;
-    memory_li: Record<number, Record<number, MemoryRow>>;
-    hd_li: Record<string, Record<number, HdRow>>;
-    bandwidth_li: Record<number, BandwidthRow>;
-    ips_li: Record<number, IpsRow>;
-    os_li: Record<number, OsRow>;
-    cp_li: Record<number, CpRow>;
-    raid_li: Record<number, RaidRow>;
+    cpu_li: Record<string, CpuRow>;
+    memory_li: Record<string, Record<string, MemoryRow>>;
+    hd_li: Record<string, Record<string, HdRow>>;
+    bandwidth_li: Record<string, BandwidthRow>;
+    ips_li: Record<string, IpsRow>;
+    os_li: Record<string, OsRow>;
+    cp_li: Record<string, CpRow>;
+    raid_li: Record<string, RaidRow>;
 }
 
 export interface CpuLi extends SimpleStringObj {
@@ -103,7 +103,7 @@ export interface CpuRow {
     cache: string;
     fsb: string;
     hd_ids: string;
-    id: number;
+    id: string;
     img: string;
     location: string;
     long_desc: string;
@@ -132,7 +132,7 @@ export interface CpuCoresRow extends CpuRow {
 }
 
 export interface MemoryRow {
-    id: number;
+    id: string;
     monthly_price: number;
     monthly_price_display: string;
     short_desc: string;
@@ -141,7 +141,7 @@ export interface MemoryRow {
 export interface HdRow {
     drive_type: 'lff' | 'sff' | 'nve';
     hidden: string;
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     manu: string;
@@ -155,7 +155,7 @@ export interface HdRow {
 
 export interface BandwidthRow {
     active: string;
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     monthly_price: number;
@@ -168,7 +168,7 @@ export interface BandwidthRow {
 }
 
 export interface IpsRow {
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     monthly_price: number;
@@ -181,7 +181,7 @@ export interface IpsRow {
 
 export interface OsRow {
     active: string;
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     monthly_price: number;
@@ -192,7 +192,7 @@ export interface OsRow {
 }
 
 export interface CpRow {
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     monthly_price: number;
@@ -206,7 +206,7 @@ export interface CpRow {
 
 export interface RaidRow {
     active: string;
-    id: number;
+    id: string;
     img: string;
     long_desc: string;
     monthly_price: number;
