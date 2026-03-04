@@ -127,11 +127,11 @@ function submitNewPrepay() {
         showConfirmButton: false,
     });
     try {
-        fetchWrapper.post(`${baseUrl}/prepays`, newPrepay).then((response) => {
+        fetchWrapper.post(`${baseUrl}/billing/prepays`, newPrepay).then((response) => {
             Swal.close();
             console.log('Response:', response);
-            if (response['success'] == true) {
-                router.push(`/cart/${response.iids.join(',')}`);
+            if (response.invoice) {
+                router.push(`/cart/${response.invoice}`);
             }
         });
     } catch (error: any) {
