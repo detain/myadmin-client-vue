@@ -12,7 +12,7 @@ const baseUrl = siteStore.getBaseUrl();
 const currency = ref('USD');
 const cust_discount = ref(0);
 const step = ref('order_form');
-const cpu = ref<number>(34);
+const cpu = ref<string>('34');
 const cpu_li = ref<CpuLi>({});
 const configIds = ref<ConfigIds>({});
 const formValues = ref<FormValues>({});
@@ -50,11 +50,11 @@ const drives = ref<number[]>([]);
 const curLff = ref(0);
 const curSff = ref(0);
 const curNve = ref(0);
-const maxLff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_lff ?? 0));
-const maxSff = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_sff ?? 0));
-const maxNve = computed(() => Number(configLi.value.cpu_li[cpu.value]?.max_nve ?? 0));
+const maxLff = computed(() => Number(configLi.value.cpu_li[Number(cpu.value)]?.max_lff ?? 0));
+const maxSff = computed(() => Number(configLi.value.cpu_li[Number(cpu.value)]?.max_sff ?? 0));
+const maxNve = computed(() => Number(configLi.value.cpu_li[Number(cpu.value)]?.max_nve ?? 0));
 const regionName = computed(() => {
-    const region = regions.value.find((r) => r.region_id === formValues.value.region);
+    const region = regions.value.find((r) => r.region_id === Number(formValues.value.region));
     return region ? region.region_name : '';
 });
 const totalCost = ref(0);
@@ -142,7 +142,7 @@ function canAddDrive(type: 'lff' | 'sff' | 'nve') {
     if (type === 'lff') return curLff.value < maxLff.value;
     if (type === 'sff') return curSff.value < maxSff.value;
     if (type === 'nve') {
-        if ((cpu.value === 58 || cpu.value === 107) && curNve.value >= 2) return false;
+        if ((cpu.value === '58' || cpu.value === '107') && curNve.value >= 2) return false;
         return curNve.value < maxNve.value;
     }
     return false;
@@ -158,9 +158,9 @@ function updatePrice() {
     components.forEach((input) => {
         const val = formValues.value[input];
         if (!val) return;
-        if (val === undefined || val === null || val === 0) return;
+        if (val === undefined || val === null || Number(val) === 0) return;
         if (input === 'memory') {
-            total += Number(configLi.value.memory_li[cpu.value][val].monthly_price);
+            total += Number(configLi.value.memory_li[Number(cpu.value)][Number(val)].monthly_price);
         } else {
             total += Number(configLi.value[`${input}_li`][val].monthly_price);
         }
@@ -183,7 +183,7 @@ function showLoading() {
     });
 }
 
-function onSubmitCpu(idCpu: number, idHd: number) {
+function onSubmitCpu(idCpu: string, idHd: string) {
     cpu.value = idCpu;
     //addDrive(Number(idHd));
     serverOrderRequest(idCpu, idHd);
@@ -216,7 +216,8 @@ function onSubmitOrder() {
         .then((response) => {
             Swal.close();
         console.log('Response:', response);
-    }).catch((error) => {
+        })
+        .catch((error) => {
             Swal.close();
             Swal.fire({
                 icon: 'error',
@@ -226,7 +227,7 @@ function onSubmitOrder() {
         });
 }
 
-function serverOrderRequest(idCpu?: number, idHd?: number) {
+function serverOrderRequest(idCpu?: string, idHd?: string) {
     showLoading();
     const params = new URLSearchParams();
     if (idCpu) {
@@ -244,7 +245,7 @@ function serverOrderRequest(idCpu?: number, idHd?: number) {
         console.log('Response:', response);
             configIds.value = response.config_ids;
             configLi.value = response.config_li;
-            cpu.value = Number(response.cpu);
+            cpu.value = response.cpu;
             cpu_li.value = response.cpu_li;
             cpuCores.value = response.cpu_cores;
             fieldLabel.value = response.field_label;
@@ -277,7 +278,7 @@ watch(
     (os) => {
         if (os === lastOs.value) return;
         lastOs.value = os;
-        const allowed = Object.values(configLi.value.cp_li).filter((cp) => cp.types.includes(os));
+        const allowed = Object.values(configLi.value.cp_li).filter((cp) => cp.types.includes(Number(os)));
         if (allowed.length) {
             formValues.value.cp = allowed[0].id;
         }
@@ -627,21 +628,21 @@ updatePrice();
                         </div>
                         <div class="row cpu-row mb-3">
                             <div class="col-md-8">
-                                <span class="cpu_name">{{ configLi.cpu_li[cpu].short_desc }}</span>
+                                <span class="cpu_name">{{ configLi.cpu_li[Number(cpu)].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">CPU</span>
                             </div>
-                            <div class="col text-md text-bold cpu_cost text-right">{{ configLi.cpu_li[cpu].monthly_price_display }}</div>
+                            <div class="col text-md text-bold cpu_cost text-right">{{ configLi.cpu_li[Number(cpu)].monthly_price_display }}</div>
                         </div>
                         <div class="row memory-row mb-3">
                             <div class="col-md-8">
-                                <span class="memory_name">{{ configLi.memory_li[cpu][formValues.memory].short_desc }} RAM</span>
+                                <span class="memory_name">{{ configLi.memory_li[Number(cpu)][formValues.memory].short_desc }} RAM</span>
                                 <span class="badge badge-pill badge-warning ml-2">RAM</span>
                             </div>
-                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.memory_li[cpu][formValues.memory].monthly_price_display }}</div>
+                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.memory_li[Number(cpu)][formValues.memory].monthly_price_display }}</div>
                         </div>
                         <div v-for="hd in drives" :key="hd" class="row memory-row mb-3">
                             <div class="col-md-8">
-                                <span class="memory_name">{{ configLi.hd_li[cpu][hd].short_desc }}</span>
+                                <span class="memory_name">{{ configLi.hd_li[Number(cpu)][hd].short_desc }}</span>
                                 <span class="badge badge-pill badge-warning ml-2">HDD</span>
                             </div>
                             <div class="col text-md text-bold memory_cost text-right">{{ configLi.hd_li[cpu][hd].monthly_price_display }}</div>
