@@ -5,7 +5,6 @@ import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
-import { playwright } from '@vitest/browser-playwright';
 import { VitePWA } from 'vite-plugin-pwa';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
@@ -23,23 +22,7 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         reporters: ['default', 'html'],
-        browser: {
-            enabled: true,
-            provider: playwright(),
-            trace: 'on', // 'on-first-retry' 'on-all-retries' or 'retain-on-failure'
-            headless: true, // set too false to watch tests in a UI
-            setupFiles: ['./test/setup.ts'],
-            // Optional: configure specific options, e.g., launch options
-            launchOptions: {
-                headless: false, // Run headless in CI/locally
-            },
-            // https://vitest.dev/config/browser/playwright
-            instances: [
-                { browser: 'chromium' },
-                //{ browser: 'firefox' },
-                //{ browser: 'webkit' },
-            ],
-        },
+        setupFiles: ['./test/setup.ts'],
     },
     plugins: [
         vue({

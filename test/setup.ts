@@ -1,6 +1,6 @@
 // setup.ts
 import { vi, beforeAll, afterAll, afterEach } from 'vitest';
-import { server } from './src/mocks/server';
+import { server } from '../src/mocks/setup';
 
 // Establish API mocking before all tests
 beforeAll(() => server.listen());
@@ -10,7 +10,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 
 // Clean up after the tests are finished
-afterAll(() => server.stop());
+afterAll(() => server.close());
 
 // Global jQuery mock (runs before every test file)
 vi.mock('jquery', () => {
