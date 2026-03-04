@@ -170,8 +170,7 @@ function showLoading() {
     });
 }
 
-async function serverOrderRequest() {
-    showLoading();
+function buildParams() {
     const params = new URLSearchParams();
     if (typeof route.query.c === 'string') {
         params.append('c', route.query.c);
@@ -179,7 +178,12 @@ async function serverOrderRequest() {
     if (typeof route.query.a === 'string') {
         params.append('a', route.query.a);
     }
-    const query = params.toString();
+    return params.toString();
+}
+
+async function serverOrderRequest() {
+    showLoading();
+    const query = buildParams();
     fetchWrapper
         .get(`${baseUrl}/servers/order/buy_now_server?${query}`)
         .then((response) => {
@@ -225,6 +229,7 @@ async function serverOrderRequest() {
 
 async function submitOrder() {
     try {
+        const query = buildParams();
         const postData: SubmitPayload = {
             hostname: hostname.value,
             rootPassword: rootPassword.value,
@@ -235,7 +240,7 @@ async function submitOrder() {
             ...selected,
         };
         fetchWrapper
-            .post(`${baseUrl}/servers/order/buy_now_server`, postData)
+            .post(`${baseUrl}/servers/order/buy_now_server?${query}`, postData)
             .then((response: InitResponse) => {
                 Swal.close();
                 console.log('Response:', response);
