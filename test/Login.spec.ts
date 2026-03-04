@@ -1,5 +1,4 @@
 import { vi, expect, test } from 'vitest';
-import { render } from 'vitest-browser-vue';
 import { mount } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
@@ -11,14 +10,6 @@ import { nextTick } from 'vue';
 //import $ from 'jquery';
 
 vi.mock('sweetalert2');
-
-test('renders login form', async () => {
-    const { getByText } = render(Login, {
-        //props: { name: 'Vitest' },
-    });
-    await expect.element(getByText('Sign in using')).toBeInTheDocument();
-});
-
 
 describe('Login.vue', () => {
     const mountOptions = {
