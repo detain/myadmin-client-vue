@@ -220,7 +220,7 @@ async function submitOrder() {
             assetId: Number(route.query.a),
         };
         fetchWrapper
-            .post(`${baseUrl}/servers/dedicated`, postData)
+            .post(`${baseUrl}/servers/order/buy_now_server`, postData)
             .then((response: InitResponse) => {
                 Swal.close();
                 console.log('Response:', response);
@@ -242,7 +242,7 @@ onMounted(async () => {
 <template>
     <div class="row mb-2">
         <div class="col-sm-12">
-            <form method="POST" autocomplete="off">
+            <form method="POST" autocomplete="off" @submit.prevent="submitOrder">
                 <input type="hidden" name="a" value="3288" />
                 <table id="dedicated_server" class="table table-bordered table-striped dataTable">
                     <thead class="ui-widget-header">
@@ -392,7 +392,7 @@ onMounted(async () => {
                                                 <div class="price">$0.00</div>
                                             </div>
                                         </template>
-                                        <div v-for="(row, idx) in serverCoupon.description.split('\n')" :key="idx" class="label-row">
+                                        <div v-for="(row, idx) in serverCoupon?.description.split('\n')" :key="idx" class="label-row">
                                             <div class="text">
                                                 {{ row }}
                                             </div>
