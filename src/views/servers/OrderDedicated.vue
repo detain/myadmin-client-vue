@@ -266,8 +266,8 @@ onMounted(async () => {
                                 <td colspan="6" style="text-align: left">
                                     <span>
                                         <div class="icheck-success w-100" style="display: inline">
-                                            <input v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
-                                            <label class="font-weight-normal w-100" for="ips9">
+                                            <input :id="`${key}${opt.id}`" v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
+                                            <label class="font-weight-normal w-100" :for="`${key}${opt.id}`">
                                                 <div class="row mb-2">
                                                     <div class="col-md-8">
                                                         <div class="text-sm text-bold">{{ opt.short_desc }}</div>
@@ -291,8 +291,8 @@ onMounted(async () => {
                             <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
-                                        <input v-model="selectedRegion" type="radio" clasls="form-check-input" name="region" :value="region.region_id" />
-                                        <label class="font-weight-normal w-100" for="region-2">
+                                        <input :id="`region${region.region_id}`" v-model="selectedRegion" type="radio" class="form-check-input" name="region" :value="region.region_id" />
+                                        <label class="font-weight-normal w-100" :for="`region${region.region_id}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
                                                     <div class="text-sm text-bold">{{ region.region_name }}</div>
@@ -392,6 +392,15 @@ onMounted(async () => {
                                                 <div class="price">$0.00</div>
                                             </div>
                                         </template>
+                                        <div v-for="(row, idx) in serverCoupon.description.split('\n')" :key="idx" class="label-row">
+                                            <div class="text">
+                                                {{ row }}
+                                            </div>
+                                            <div class="price">
+                                                <template v-if="idx == 0">${{ serverCoupon.amount }}</template>
+                                                <template v-else>$0.00</template>
+                                            </div>
+                                        </div>
                                         <div v-for="item in orderSummary" :key="item?.key" class="label-row js-added-row">
                                             <div class="text">
                                                 {{ item?.short_desc }}<span class="badge">{{ item?.label }}</span>
@@ -420,29 +429,6 @@ onMounted(async () => {
                 </table>
             </form>
         </div>
-    </div>
-
-    <div class="order-dedicated">
-        <h2>Order Dedicated Server</h2>
-        <div v-if="loading">Loading…</div>
-        <div v-if="error" class="error">{{ error }}</div>
-        <form v-if="!loading" @submit.prevent="submitOrder">
-            <!-- REGION -->
-            <section>
-                <h3>Server Region</h3>
-                <label v-for="r in regions" :key="r.region_id">
-                    <input v-model="selectedRegion" type="radio" name="region" :value="r.region_id" :disabled="selectedRegion !== r.region_id" />
-                    {{ r.region_name }}
-                </label>
-            </section>
-            <!-- SUMMARY -->
-            <aside class="order-summary">
-                <p>Subtotal: ${{ subtotal.toFixed(2) }}</p>
-                <p v-if="discountPercent">Discount ({{ discountPercent }}%): -${{ discountAmount.toFixed(2) }}</p>
-                <strong>Total: ${{ total.toFixed(2) }}</strong>
-            </aside>
-            <button type="submit">Add to Cart</button>
-        </form>
     </div>
 </template>
 
