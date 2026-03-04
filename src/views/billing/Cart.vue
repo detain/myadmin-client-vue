@@ -530,6 +530,7 @@ async function delete_invoice(invId: number) {
                     const prepayId = resp[1];
                     fetchWrapper.delete(`${baseUrl}/billing/prepays/${prepayId}`).then((response) => {
                         console.log('Deleted Invoice ', prepayId);
+                        loadCartData();
                     });
                 }
             }

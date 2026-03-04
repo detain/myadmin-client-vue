@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteLocationRaw, type RouteRecordNormalized } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 
@@ -234,6 +234,44 @@ export const router = createRouter({
     ],
 });
 
+const warmedComponentLoaders = new WeakSet<() => Promise<unknown>>();
+
+function isLazyComponent(component: unknown): component is () => Promise<unknown> {
+    return typeof component === 'function';
+}
+
+function warmRouteRecord(record: RouteRecordNormalized) {
+    const componentCandidates = Object.values(record.components ?? {});
+
+    for (const candidate of componentCandidates) {
+        if (!isLazyComponent(candidate) || warmedComponentLoaders.has(candidate)) {
+            continue;
+        }
+
+        warmedComponentLoaders.add(candidate);
+        candidate().catch(() => {
+            warmedComponentLoaders.delete(candidate);
+        });
+    }
+}
+
+export function warmRouteByLocation(location: RouteLocationRaw) {
+    const resolvedRoute = router.resolve(location);
+    resolvedRoute.matched.forEach(warmRouteRecord);
+}
+
+export function warmFrequentlyUsedRoutes() {
+    [
+        '/domains',
+        '/servers',
+        '/vps',
+        '/websites',
+        '/tickets',
+        '/invoices',
+        '/account/info',
+    ].forEach((path) => warmRouteByLocation(path));
+}
+
 router.beforeEach(async (to) => {
     //console.log("We are here:"+to.path);
     const publicPages = ['/login', '/login_old', '/register', '/sudo'];
@@ -254,5 +292,8 @@ router.beforeEach(async (to) => {
         authStore.returnUrl = to.fullPath;
         return '/login';
     }
+
+    warmRouteByLocation(to);
+
     return true;
 });

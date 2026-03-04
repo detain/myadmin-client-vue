@@ -207,7 +207,7 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header home-card" style="background-color: rgba(0, 0, 0, 0.03) !important">
                             <h2 class="card-title mt-2 text-lg">
-                                <i :class="'fa fa-' + details.modules[module].icon"></i>
+                                <i :class="'fa fa-' + details.modules[module].icon"></i>&nbsp;
                                 <span>{{ details.modules[module].heading }}</span>
                             </h2>
                             <div class="card-tools float-right">

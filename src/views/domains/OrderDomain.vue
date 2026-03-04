@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useSiteStore } from '@/stores/site.store';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import { SearchDomainResult, DomainResult, Lookups, Suggestions, DomainFieldsResponse, DomainFields } from '@/types/domains';
 const module = 'domains';
@@ -18,6 +18,7 @@ siteStore.setBreadcrums([
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
+const router = useRouter();
 const hostname = ref('');
 const whoisPrivacyCost = ref(0);
 const whoisEnabled = ref<boolean>(false);
@@ -163,6 +164,24 @@ function searchDomain() {
         errors.value = response.errors;
         domainType.value = response.domain_type;
         packageInfo.value = response.package_info;
+        if (searchResponse.value.continue === false) {
+            Swal.fire({
+                icon: 'error',
+                html: searchResponse.value.errors.join('<br>'),
+            });
+        }
+    })
+    .catch((error) => {
+        Swal.close();
+        console.log(error);
+        let message = 'Got Error: ';
+        for (let idx = 0; idx < error.message.length; idx++) {
+            message += `<br>${error.message[idx].text}`;
+        }
+        Swal.fire({
+            icon: 'error',
+            html: message,
+        });
     });
 }
 
@@ -221,11 +240,13 @@ function placeOrder() {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
+    console.log(getFormFields());
     fetchWrapper
         .post(`${baseUrl}/domains/order`, getFormFields())
         .then((response) => {
             Swal.close();
             console.log(response);
+            router.push(`/cart/${response.iids.join(',')}`);
         })
         .catch((error) => {
             Swal.close();
@@ -573,7 +594,7 @@ onMounted(() => {
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
                                     <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fa fa-arrow-left"></i>&nbsp;Go Back</button>
-                                    <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click="placeOrder">Place Order</button>
+                                    <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click.prevent="placeOrder">Place Order</button>
                                 </div>
                             </div>
                         </form>
