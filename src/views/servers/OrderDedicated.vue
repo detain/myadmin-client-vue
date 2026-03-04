@@ -29,24 +29,25 @@ const regionName = computed(() => {
     const region = list.find((r) => r.region_id === selectedRegion.value);
     return region?.region_name ?? '';
 });
-const selected = reactive<Record<string, number | null>>({
+const selected = reactive<SelectedOptions>({
     ips: null,
     bandwidth: null,
     os: null,
     cp: null,
     raid: null,
 });
-const options = reactive<Record<string, Option[]>>({
+const options = reactive<Record<OptionKey, Option[]>>({
     ips: [],
     bandwidth: [],
     os: [],
     cp: [],
     raid: [],
 });
+
 const optionsTotal = computed(() =>
-    Object.entries(selected).reduce((sum, [key, id]) => {
+    (Object.entries(selected) as [OptionKey, number | null][]).reduce((sum, [key, id]) => {
         if (!id) return sum;
-        const opt = options[key]?.find((o) => o.id === id);
+        const opt = options[key].find((o) => o.id === id);
         return sum + Number(opt?.monthly_price ?? 0);
     }, 0)
 );
@@ -122,14 +123,28 @@ interface InitResponse {
     regions: Region[];
 }
 
+type OptionKey = keyof SelectedOptions;
+
+interface SelectedOptions {
+    bandwidth: number | null;
+    cp: number | null;
+    ips: number | null;
+    os: number | null;
+    raid: number | null;
+}
+
 interface SubmitPayload {
     hostname: string;
     rootPassword: string;
     comments: string;
-    selections: Record<string, number | null>;
     region: number | null;
     coupon?: string;
     assetId?: number;
+    bandwidth: number | null;
+    cp: number | null;
+    ips: number | null;
+    os: number | null;
+    raid: number | null;
 }
 
 interface Option {
@@ -188,12 +203,12 @@ async function serverOrderRequest() {
             discountPercent.value = response.discountPercent ?? 0;
             */
             // Preselect first option per category
-            ['cp', 'ips', 'os', 'bandwidth', 'raid'].forEach((key) => {
+            const optionKeys: (keyof SelectedOptions)[] = ['cp', 'ips', 'os', 'bandwidth', 'raid'];
+            optionKeys.forEach((key) => {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
-            });
-            //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
+            }); //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
             selectedRegion.value = regions.value.length > 0 ? regions.value[0].region_id : null;
             loading.value = false;
         })
@@ -214,13 +229,13 @@ async function submitOrder() {
             hostname: hostname.value,
             rootPassword: rootPassword.value,
             comments: comments.value,
-            selections: selected,
             region: selectedRegion.value,
             coupon: route.query.c as string,
             assetId: Number(route.query.a),
+            ...selected,
         };
         fetchWrapper
-            .post(`${baseUrl}/servers/dedicated`, postData)
+            .post(`${baseUrl}/servers/order/buy_now_server`, postData)
             .then((response: InitResponse) => {
                 Swal.close();
                 console.log('Response:', response);
@@ -242,7 +257,7 @@ onMounted(async () => {
 <template>
     <div class="row mb-2">
         <div class="col-sm-12">
-            <form method="POST" autocomplete="off">
+            <form method="POST" autocomplete="off" @submit.prevent="submitOrder">
                 <input type="hidden" name="a" value="3288" />
                 <table id="dedicated_server" class="table table-bordered table-striped dataTable">
                     <thead class="ui-widget-header">
@@ -266,8 +281,8 @@ onMounted(async () => {
                                 <td colspan="6" style="text-align: left">
                                     <span>
                                         <div class="icheck-success w-100" style="display: inline">
-                                            <input v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
-                                            <label class="font-weight-normal w-100" for="ips9">
+                                            <input :id="`${key}${opt.id}`" v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
+                                            <label class="font-weight-normal w-100" :for="`${key}${opt.id}`">
                                                 <div class="row mb-2">
                                                     <div class="col-md-8">
                                                         <div class="text-sm text-bold">{{ opt.short_desc }}</div>
@@ -291,8 +306,8 @@ onMounted(async () => {
                             <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
-                                        <input v-model="selectedRegion" type="radio" clasls="form-check-input" name="region" :value="region.region_id" />
-                                        <label class="font-weight-normal w-100" for="region-2">
+                                        <input :id="`region${region.region_id}`" v-model="selectedRegion" type="radio" class="form-check-input" name="region" :value="region.region_id" />
+                                        <label class="font-weight-normal w-100" :for="`region${region.region_id}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
                                                     <div class="text-sm text-bold">{{ region.region_name }}</div>
@@ -392,6 +407,15 @@ onMounted(async () => {
                                                 <div class="price">$0.00</div>
                                             </div>
                                         </template>
+                                        <div v-for="(row, idx) in serverCoupon?.description.split('\n')" :key="idx" class="label-row">
+                                            <div class="text">
+                                                {{ row }}
+                                            </div>
+                                            <div class="price">
+                                                <template v-if="idx == 0 && serverCoupon && serverCoupon.amount">${{ serverCoupon.amount }}</template>
+                                                <template v-else>$0.00</template>
+                                            </div>
+                                        </div>
                                         <div v-for="item in orderSummary" :key="item?.key" class="label-row js-added-row">
                                             <div class="text">
                                                 {{ item?.short_desc }}<span class="badge">{{ item?.label }}</span>
@@ -420,29 +444,6 @@ onMounted(async () => {
                 </table>
             </form>
         </div>
-    </div>
-
-    <div class="order-dedicated">
-        <h2>Order Dedicated Server</h2>
-        <div v-if="loading">Loading…</div>
-        <div v-if="error" class="error">{{ error }}</div>
-        <form v-if="!loading" @submit.prevent="submitOrder">
-            <!-- REGION -->
-            <section>
-                <h3>Server Region</h3>
-                <label v-for="r in regions" :key="r.region_id">
-                    <input v-model="selectedRegion" type="radio" name="region" :value="r.region_id" :disabled="selectedRegion !== r.region_id" />
-                    {{ r.region_name }}
-                </label>
-            </section>
-            <!-- SUMMARY -->
-            <aside class="order-summary">
-                <p>Subtotal: ${{ subtotal.toFixed(2) }}</p>
-                <p v-if="discountPercent">Discount ({{ discountPercent }}%): -${{ discountAmount.toFixed(2) }}</p>
-                <strong>Total: ${{ total.toFixed(2) }}</strong>
-            </aside>
-            <button type="submit">Add to Cart</button>
-        </form>
     </div>
 </template>
 
