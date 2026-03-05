@@ -23,7 +23,7 @@ const baseUrl = siteStore.getBaseUrl();
 const newLimit = ref({
     start: '',
     end: '',
-    restrict: 'Web & API'
+    restrict: 'Web & API',
 });
 
 async function deleteRange(start: string, end: string) {
@@ -48,7 +48,7 @@ async function addRangeSubmit() {
             .post(`${baseUrl}/account/iplimits`, {
                 start: newLimit.value.start,
                 end: newLimit.value.end,
-                restrict: newLimit.value.restrict
+                restrict: newLimit.value.restrict,
             })
             .then((response) => {
                 console.log('add range success', response);
@@ -104,10 +104,12 @@ export default {
                         <tr>
                             <td><input v-model="newLimit.start" type="text" name="start" placeholder="192.168.1.0" /></td>
                             <td><input v-model="newLimit.end" type="text" name="end" placeholder="192.168.1.255" /></td>
-                            <td><select v-model="newLimit.restrict" name="restrict">
-                                <option value="Web & API">Web & API</option>
-                                <option value="Only API">Only API</option>
-                            </select></td>
+                            <td>
+                                <select v-model="newLimit.restrict" name="restrict">
+                                    <option value="Web & API">Web & API</option>
+                                    <option value="Only API">Only API</option>
+                                </select>
+                            </td>
                             <td><button type="submit" class="btn btn-custom btn-sm" name="submit">Add Range</button></td>
                         </tr>
                     </tbody>

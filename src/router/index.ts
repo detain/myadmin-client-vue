@@ -262,15 +262,7 @@ export function warmRouteByLocation(location: RouteLocationRaw) {
 }
 
 export function warmFrequentlyUsedRoutes() {
-    [
-        '/domains',
-        '/servers',
-        '/vps',
-        '/websites',
-        '/tickets',
-        '/invoices',
-        '/account/info',
-    ].forEach((path) => warmRouteByLocation(path));
+    ['/domains', '/servers', '/vps', '/websites', '/tickets', '/invoices', '/account/info'].forEach((path) => warmRouteByLocation(path));
 }
 
 router.beforeEach(async (to) => {

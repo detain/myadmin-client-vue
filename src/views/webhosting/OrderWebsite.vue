@@ -225,8 +225,7 @@ async function onSubmitConfirmation() {
             formData.period = period.value;
             formData.serviceOfferId = 0;
         }
-        fetchWrapper.post(`${baseUrl}/websites/order`, formData)
-            .then((response) => {
+        fetchWrapper.post(`${baseUrl}/websites/order`, formData).then((response) => {
                 console.log('website order validated', response);
             if (response['success'] == true) {
                 router.push(`/cart/${response.real_iids.join(',')}`);

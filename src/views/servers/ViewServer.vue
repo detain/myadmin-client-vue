@@ -41,7 +41,7 @@ const hasAssetVlanSwitchport = computed(() => {
     return ret;
 });
 
-const assets = computed(() => networkInfo.value.assets ? networkInfo.value.assets : {});
+const assets = computed(() => (networkInfo.value.assets ? networkInfo.value.assets : {}));
 
 const firstAsset = computed<AssetRow | null>(() => {
     const assets = networkInfo.value.assets;
@@ -51,9 +51,9 @@ const firstAsset = computed<AssetRow | null>(() => {
     return assets[Object.keys(assets)[0]];
 });
 
-const vlans = computed(() => networkInfo.value.vlans ? networkInfo.value.vlans : {});
+const vlans = computed(() => (networkInfo.value.vlans ? networkInfo.value.vlans : {}));
 
-const switchports = computed(() => networkInfo.value.switchports ? networkInfo.value.switchports : {});
+const switchports = computed(() => (networkInfo.value.switchports ? networkInfo.value.switchports : {}));
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
