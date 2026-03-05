@@ -33,8 +33,8 @@ async function generateApiKey() {
 
 <script lang="ts">
 export default {
-  name: 'ApiAccess',
-}
+    name: 'ApiAccess',
+};
 </script>
 
 <template>

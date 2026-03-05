@@ -91,7 +91,7 @@ export const useScrubIpStore = defineStore('scrub_ips', {
         geoFirewallRules: [],
         filterRules: [],
         filterTypes: [],
-        countries: []
+        countries: [],
     }),
     getters: {
         getScrubIps(state): any[] {

@@ -95,7 +95,7 @@ describe('Login.vue', () => {
         expect(authStore.user).toEqual(fakeUser);
         expect(authStore.sessionId).toEqual(fakeUser.sessionId);
     });
-/*
+    /*
     it('blocks submit when fields are empty', async () => {
         const wrapper = mount(Login, mountOptions);
 
@@ -175,7 +175,7 @@ describe('Login.vue', () => {
         // Simulate click on forgot link (but since jQuery, hard to test directly)
         // Perhaps test the function directly or mock
     });
-/*
+    /*
     it('computes isTosChecked correctly', async () => {
         const wrapper = mount(Login, mountOptions);
 

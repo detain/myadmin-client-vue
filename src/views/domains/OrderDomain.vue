@@ -154,35 +154,37 @@ function searchDomain() {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    fetchWrapper.post(`${baseUrl}/domains/search/${hostname.value}`).then((response: SearchDomainResult) => {
-        Swal.close();
-        searchResponse.value = response;
-        console.log('SEARCH Response:', response);
-        domainResult.value = response.domain_result;
-        suggestions.value = response.suggestions;
-        lookups.value = response.lookups;
-        errors.value = response.errors;
-        domainType.value = response.domain_type;
-        packageInfo.value = response.package_info;
-        if (searchResponse.value.continue === false) {
+    fetchWrapper
+        .post(`${baseUrl}/domains/search/${hostname.value}`)
+        .then((response: SearchDomainResult) => {
+            Swal.close();
+            searchResponse.value = response;
+            console.log('SEARCH Response:', response);
+            domainResult.value = response.domain_result;
+            suggestions.value = response.suggestions;
+            lookups.value = response.lookups;
+            errors.value = response.errors;
+            domainType.value = response.domain_type;
+            packageInfo.value = response.package_info;
+            if (searchResponse.value.continue === false) {
+                Swal.fire({
+                    icon: 'error',
+                    html: searchResponse.value.errors.join('<br>'),
+                });
+            }
+        })
+        .catch((error) => {
+            Swal.close();
+            console.log(error);
+            let message = 'Got Error: ';
+            for (let idx = 0; idx < error.message.length; idx++) {
+                message += `<br>${error.message[idx].text}`;
+            }
             Swal.fire({
                 icon: 'error',
-                html: searchResponse.value.errors.join('<br>'),
+                html: message,
             });
-        }
-    })
-    .catch((error) => {
-        Swal.close();
-        console.log(error);
-        let message = 'Got Error: ';
-        for (let idx = 0; idx < error.message.length; idx++) {
-            message += `<br>${error.message[idx].text}`;
-        }
-        Swal.fire({
-            icon: 'error',
-            html: message,
         });
-    });
 }
 
 function getDomainFields() {

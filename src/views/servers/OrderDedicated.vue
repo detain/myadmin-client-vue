@@ -255,7 +255,6 @@ async function submitOrder() {
                     html: `${error.text}<br><br>${error?.errors}`,
                     allowOutsideClick: false,
                 });
-
             });
     } catch (e) {
         error.value = 'Order submission failed';

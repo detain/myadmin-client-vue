@@ -5,10 +5,8 @@
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa fa-globe" aria-hidden="true">&nbsp;</i>Geo Firewall Rules</h3>
                     <div class="card-tools">
-                    <button type="button" class="btn-custom text-sm mr-2" @click="showDialog">
-                        <i class="fas fa-plus" aria-hidden="true">&nbsp;</i> Create New
-                    </button>
-                </div>
+                        <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true">&nbsp;</i> Create New</button>
+                    </div>
                 </div>
                 <div class="card-body pt-5">
                     <div v-if="geoFirewallRules == undefined || !geoFirewallRules.length" class="text-center text-danger">No rules found!</div>
@@ -16,7 +14,7 @@
                         <thead>
                             <tr>
                                 <th>Destination IP</th>
-                                <th>Destination<br>Port</th>
+                                <th>Destination<br />Port</th>
                                 <th>Source Country</th>
                                 <th>Source Asn</th>
                                 <th>XDP Action</th>
@@ -61,34 +59,34 @@
                                 <div class="form-group row">
                                     <label for="ip" class="col-sm-4 col-form-label">Destination IP</label>
                                     <div class="col-sm-8">
-                                        <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip">
+                                        <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="port" class="col-sm-4 col-form-label">Port No</label>
                                     <div class="col-sm-8">
-                                        <input id="port" type="text" name="destination_port" class="form-control" value="80">
+                                        <input id="port" type="text" name="destination_port" class="form-control" value="80" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="filter_type" class="col-sm-4 col-form-label">Select Country</label>
                                     <div class="col-sm-8">
-                                        <select id="countries" name="country_code" class="form-control select2" style="width: 100% !important;" required>
+                                        <select id="countries" name="country_code" class="form-control select2" style="width: 100% !important" required>
                                             <option value="">Select Country</option>
-                                            <option v-for="numcode, key in countries" :key="key" :value="key">{{ numcode }}</option>
+                                            <option v-for="(numcode, key) in countries" :key="key" :value="key">{{ numcode }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="asn" class="col-sm-4 col-form-label">ASN</label>
                                     <div class="col-sm-8">
-                                        <input id="asn" type="text" name="asn" class="form-control">
+                                        <input id="asn" type="text" name="asn" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="xdp_action" class="col-sm-4 col-form-label">XDP Action</label>
                                     <div class="col-sm-8">
-                                        <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important;" required>
+                                        <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" required>
                                             <option value="1">Block</option>
                                             <option value="0">Whitelist</option>
                                         </select>
@@ -102,7 +100,7 @@
                         </form>
                     </div>
                 </div>
-            </template> 
+            </template>
         </Dialog>
     </Teleport>
 </template>
@@ -137,17 +135,20 @@ const handleSubmit = (form_id: number) => {
             formDataValues[pair[0]] = pair[1];
         }
         try {
-            fetchWrapper.post(`${baseUrl.value}/scrub_ips/${id.value}/create_geo_rule`, formDataValues).then((response) => {
-                if (response && response.success) {
-                    Swal.fire({ icon: 'success', html: `<strong>Success!</strong> ${response.text}` }).then(() => {
-                        location.reload();
-                    });
-                } else {
-                    Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${response.text}` });
-                }
-            }).catch(error => {
-                Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
-            });
+            fetchWrapper
+                .post(`${baseUrl.value}/scrub_ips/${id.value}/create_geo_rule`, formDataValues)
+                .then((response) => {
+                    if (response && response.success) {
+                        Swal.fire({ icon: 'success', html: `<strong>Success!</strong> ${response.text}` }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${response.text}` });
+                    }
+                })
+                .catch((error) => {
+                    Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
+                });
         } catch (error) {
             Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to create firewall rule at this time.' });
         }
@@ -155,11 +156,17 @@ const handleSubmit = (form_id: number) => {
 };
 const handleDelete = (itemId: number) => {
     Swal.fire({
-        icon: 'warning', title: 'Are you sure you want to delete this geo rule?', showCancelButton: true, confirmButtonText: 'Yes',
+        icon: 'warning',
+        title: 'Are you sure you want to delete this geo rule?',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-                title: '', html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!', allowOutsideClick: false, showConfirmButton: false,
+                title: '',
+                html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+                allowOutsideClick: false,
+                showConfirmButton: false,
             });
             const targetForm = forms.get(itemId);
             if (targetForm) {
@@ -180,7 +187,7 @@ const handleDelete = (itemId: number) => {
                     });
                 } catch (error) {
                     Swal.close();
-                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete geo firewall at this time.'});
+                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete geo firewall at this time.' });
                 }
             }
         }
