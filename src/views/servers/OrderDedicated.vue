@@ -4,7 +4,6 @@ TODO:
 region should not be changeable for the coupons
 test marketplace order
 api order needs to add the items
-
 */
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -31,6 +30,7 @@ const total = computed(() => Math.max(0, subtotal.value - discountAmount.value))
 const labels = { ips: 'IPs', bandwidth: 'Bandwidth', os: 'Operating System', cp: 'Control Panel', raid: 'Raid' } as const;
 const serverCoupon = ref<ServerCoupon | null>(null);
 const serverAsset = ref<ServerAsset | null>(null);
+const regionSelectDisabled = ref(true);
 const regionName = computed(() => {
     const list = regions.value;
     if (!Array.isArray(list)) return '';
@@ -95,7 +95,7 @@ interface ServerCoupon {
     name: string;
     region_id: string;
     region_name: string;
-    serveR_region_id: string;
+    server_region_id: string;
 }
 
 interface ServerAsset {
@@ -108,16 +108,16 @@ interface ServerAsset {
 }
 
 interface OrderSuccessResponse {
-  success: boolean;
-  text: string;
-  service_id: number;
-  invoice_id: number;
+    success: boolean;
+    text: string;
+    service_id: number;
+    invoice_id: number;
 }
 
 interface OrderErrorResponse {
-  success: boolean;
-  text: string;
-  errors: string;
+    success: boolean;
+    text: string;
+    errors: string;
 }
 
 type OptionKey = keyof SelectedOptions;
@@ -192,12 +192,16 @@ async function serverOrderRequest() {
             options.os = response.os;
             options.raid = response.raid;
             regions.value = response.regions;
+            selectedRegion.value = regions.value.length > 0 ? regions.value[0].region_id : null;
+            regionSelectDisabled.value = false;
             if (typeof response.a !== 'undefined') {
                 serverAsset.value = response.a;
             }
             if (typeof response.c !== 'undefined') {
                 serverCoupon.value = response.c;
                 basePrice.value = Number(response.c.amount);
+                regionSelectDisabled.value = true;
+                selectedRegion.value = Number(response.c.server_region_id);
             }
             /*
             basePrice.value = response.basePrice;
@@ -209,8 +213,7 @@ async function serverOrderRequest() {
                 if (options[key].length > 0) {
                     selected[key] = options[key][0].id;
                 }
-            }); //selected['region'] = regions.value.length > 0 ? regions.value[0].region_id : null;
-            selectedRegion.value = regions.value.length > 0 ? regions.value[0].region_id : null;
+            });
             loading.value = false;
         })
         .catch((error) => {
@@ -312,7 +315,7 @@ onMounted(async () => {
                             <td colspan="1" style="text-align: left">
                                 <span>
                                     <div class="icheck-success w-100" style="display: inline">
-                                        <input :id="`region${region.region_id}`" v-model="selectedRegion" type="radio" class="form-check-input" name="region" :value="region.region_id" />
+                                        <input :id="`region${region.region_id}`" v-model="selectedRegion" type="radio" class="form-check-input" name="region" :value="region.region_id" :disabled="selectedRegion != region.region_id && regionSelectDisabled" />
                                         <label class="font-weight-normal w-100" :for="`region${region.region_id}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
