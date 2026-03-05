@@ -11,27 +11,25 @@
     </el-dialog>
 </template>
 <script setup lang="ts">
-    import { ref } from "vue";
-    const dialogRef = ref<HTMLDialogElement | null>(null);
-    const show = () => {
-        if (dialogRef.value) {
-            dialogRef.value.show();
-        }
-        document.body.style.overflow = "hidden";
-    };
-    const close = () => {
-        if (dialogRef.value) {
-            dialogRef.value.close();
-        }
-        document.body.style.overflow = "auto";
-    };
-    defineExpose({ show: show, close: close });
+import { ref } from 'vue';
+const dialogRef = ref<HTMLDialogElement | null>(null);
+const show = () => {
+    if (dialogRef.value) {
+        dialogRef.value.show();
+    }
+    document.body.style.overflow = 'hidden';
+};
+const close = () => {
+    if (dialogRef.value) {
+        dialogRef.value.close();
+    }
+    document.body.style.overflow = 'auto';
+};
+defineExpose({ show: show, close: close });
 </script>
 <style>
-
 body.modal-open {
-  overflow: hidden !important;
-  overflow: hidden !important;
+    overflow: hidden !important;
+    overflow: hidden !important;
 }
-
 </style>

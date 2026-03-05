@@ -77,9 +77,9 @@ interface PayPalItem {
 type Operator = '==' | '<=' | 'typeof';
 
 const operators: Record<Operator, (a: any, b: any) => boolean> = {
-  '==': (a, b) => a == b,
-  '<=': (a, b) => Number(a) <= Number(b),
-  typeof: (a, b) => typeof a === b,
+    '==': (a, b) => a == b,
+    '<=': (a, b) => Number(a) <= Number(b),
+    typeof: (a, b) => typeof a === b,
 };
 
 const paypalMethodStyle = computed(() => {
@@ -138,27 +138,27 @@ const paypalSdkUrl = computed(() => {
 });
 
 const paypalItems = computed(() => {
-  return invrows.value
-      .filter((row) => invoices.value.includes(row.service_label))
-      .map((row) => ({
-        name: row.service,
-        quantity: 1,
-        category: 'DIGITAL_GOODS',
-        unit_amount: {
-          currency_code: row.invoices_currency,
-          value: row.invoices_amount,
-        },
-      }));
+    return invrows.value
+        .filter((row) => invoices.value.includes(row.service_label))
+        .map((row) => ({
+            name: row.service,
+            quantity: 1,
+            category: 'DIGITAL_GOODS',
+            unit_amount: {
+                currency_code: row.invoices_currency,
+                value: row.invoices_amount,
+            },
+        }));
 });
 
 const selectedAmount = computed(() => {
-  let total = 0;
-  for (const invrow of invrows.value) {
-    if (invoices.value.includes(invrow.service_label)) {
-      total += Number(invrow.invoices_amount);
+    let total = 0;
+    for (const invrow of invrows.value) {
+        if (invoices.value.includes(invrow.service_label)) {
+            total += Number(invrow.invoices_amount);
+        }
     }
-  }
-  return total;
+    return total;
 });
 
 function getBtnOpts() {
@@ -629,10 +629,10 @@ async function loadCartData() {
 }
 
 onMounted(() => {
-  loadPayPalSdk();
-  if (triggerClick.value) {
-    $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
-  }
+    loadPayPalSdk();
+    if (triggerClick.value) {
+        $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
+    }
 });
 
 watch([() => data.value?.country, currency], ([country]) => {

@@ -11,7 +11,7 @@ withDefaults(
     {
         iconClass: '',
         materialIcon: '',
-    },
+    }
 );
 </script>
 
@@ -24,9 +24,7 @@ withDefaults(
                 {{ title }}
             </h3>
             <div class="card-tools text-right">
-                <router-link :to="backTo" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back">
-                    <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;
-                </router-link>
+                <router-link :to="backTo" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp; </router-link>
             </div>
         </div>
     </div>

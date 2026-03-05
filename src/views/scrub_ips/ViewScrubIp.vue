@@ -33,9 +33,9 @@
             </div>
         </div>
     </div>
-    
+
     <GeoFirewallRules :id="Number(id)" :geo-firewall-rules="geoFirewallRules" :base_url="siteStore.getBaseUrl()" :ip="serviceInfo.scrub_ip_ip" :countries="countries" />
-        
+
     <div class="row">
         <div class="col-md-12">
             <FirewallRules :id="Number(id)" :firewall-rules="firewallRules" :base_url="siteStore.getBaseUrl()" :ip="serviceInfo.scrub_ip_ip" />
@@ -82,8 +82,7 @@ siteStore.setBreadcrums([
 ]);
 siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Scrub IPs`);
 
-const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, 
-    extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes, countries } = storeToRefs(scrubIpStore);
+const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes, countries } = storeToRefs(scrubIpStore);
 
 const footer_val = computed(() => {
     let val = '';

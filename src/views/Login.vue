@@ -430,7 +430,6 @@ async function oAuthLogin(provider: string) {
         // Full redirect — NOT popup
         window.location.href = data.redirect_url;
         */
-
     } catch (err: any) {
         Swal.close();
         Swal.fire('Error', err.message || 'OAuth error', 'error');

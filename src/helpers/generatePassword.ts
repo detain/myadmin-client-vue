@@ -1,6 +1,6 @@
 /**
  * Generates a password with the given length allowing you to choose what type of characters are included.
- * 
+ *
  * availableSets:
  *  l = lowercase
  *  u = uppercase
