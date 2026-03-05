@@ -104,6 +104,9 @@ interface ServerAsset {
     Bandwidth?: string[];
     IPs?: string[];
     Region?: string[];
+    Chasis?: string[];
+    Motherboard?: string[];
+    price?: string;
 }
 
 interface OrderSuccessResponse {
@@ -413,12 +416,14 @@ onMounted(async () => {
                                 <span>
                                     <div class="order_summary w-100 d-block" style="border-bottom: 1px solid #ccc">
                                         <template v-for="(rows, cat, index) in serverAsset" :key="index">
-                                            <div v-for="(row, idx) in rows" :key="idx" class="label-row">
-                                                <div class="text">
-                                                    {{ row }}<span class="badge">{{ cat }}</span>
+                                            <template v-if="!['Bandwidth','IPs','price'].includes(cat)">
+                                                <div v-for="(row, idx) in rows" :key="idx" class="label-row">
+                                                    <div class="text">
+                                                        {{ row }}<span class="badge">{{ cat }}</span>
+                                                    </div>
+                                                    <div class="price">$0.00</div>
                                                 </div>
-                                                <div class="price">$0.00</div>
-                                            </div>
+                                            </template>
                                         </template>
                                         <div v-for="(row, idx) in serverCoupon?.description.split('\n')" :key="idx" class="label-row">
                                             <div class="text">
