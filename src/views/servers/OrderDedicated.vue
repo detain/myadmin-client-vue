@@ -1,9 +1,7 @@
 <script setup lang="ts">
 /*
 TODO:
-region should not be changeable for the coupons
 test marketplace order
-api order needs to add the items
 */
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -252,6 +250,12 @@ async function submitOrder() {
             .catch((error: OrderErrorResponse) => {
                 Swal.close();
                 console.log('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    html: error.text + '<br><br>' + (error.errors || ''),
+                    allowOutsideClick: false,
+                });
+
             });
     } catch (e) {
         error.value = 'Order submission failed';
