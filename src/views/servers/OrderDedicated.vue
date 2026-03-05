@@ -198,6 +198,8 @@ async function serverOrderRequest() {
             regionSelectDisabled.value = false;
             if (typeof response.a !== 'undefined') {
                 serverAsset.value = response.a;
+                regionSelectDisabled.value = true;
+                basePrice.value = Number(response.a.price);
             }
             if (typeof response.c !== 'undefined') {
                 serverCoupon.value = response.c;
@@ -256,7 +258,7 @@ async function submitOrder() {
                 console.log('Error:', error);
                 Swal.fire({
                     icon: 'error',
-                    html: `${error.text}<br><br>${error?.errors}`,
+                    html: error?.message ? error.message : `${error.text}<br><br>${error?.errors}`,
                     allowOutsideClick: false,
                 });
             });
@@ -416,7 +418,7 @@ onMounted(async () => {
                                 <span>
                                     <div class="order_summary w-100 d-block" style="border-bottom: 1px solid #ccc">
                                         <template v-for="(rows, cat, index) in serverAsset" :key="index">
-                                            <template v-if="!['Bandwidth','IPs','price'].includes(cat)">
+                                            <template v-if="!['Bandwidth', 'IPs', 'price'].includes(cat)">
                                                 <div v-for="(row, idx) in rows" :key="idx" class="label-row">
                                                     <div class="text">
                                                         {{ row }}<span class="badge">{{ cat }}</span>
