@@ -252,7 +252,7 @@ async function submitOrder() {
                 console.log('Error:', error);
                 Swal.fire({
                     icon: 'error',
-                    html: error.text + '<br><br>' + (error.errors || ''),
+                    html: `${error.text}<br><br>${error?.errors}`,
                     allowOutsideClick: false,
                 });
 
