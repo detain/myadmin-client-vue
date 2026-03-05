@@ -78,7 +78,8 @@ siteStore.setTitle('Order Dedicated');
 siteStore.setBreadcrums([
     ['/home', 'Home'],
     [`/servers`, 'Servers List'],
-    ['/servers/order_dedicated', 'Order Dedicated'],
+    ['/servers/order', 'Order Server'],
+    ['/servers/order_dedicated', 'Customize Order'],
 ]);
 
 type LabelKey = keyof typeof labels;

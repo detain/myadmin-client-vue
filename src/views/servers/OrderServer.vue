@@ -442,7 +442,7 @@ updatePrice();
                                     </div>
                                     <div class="card-body" v-html="server.description.replace(/\n/g, '<br>')" />
                                     <div class="card-footer text-center">
-                                        <div class="font-weight-bold">{{ server.amount }}</div>
+                                        <div class="font-weight-bold">${{ server.amount }}</div>
                                         <hr class="w-100 m-1" />
                                         <a :href="`order_dedicated?c=${encodeURIComponent(server.name)}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
                                     </div>
@@ -465,7 +465,7 @@ updatePrice();
                                         </template>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="font-weight-bold">{{ asset.price }}</div>
+                                        <div class="font-weight-bold">${{ asset.price }}</div>
                                         <hr class="w-100 m-1" />
                                         <a :href="`order_dedicated?a=${asset.id}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
                                     </div>
