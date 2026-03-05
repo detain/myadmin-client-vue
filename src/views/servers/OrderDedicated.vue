@@ -1,9 +1,17 @@
 <script setup lang="ts">
+/*
+TODO:
+region should not be changeable for the coupons
+test marketplace order
+api order needs to add the items
+
+*/
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores/site.store';
+import { generatePassword } from '@/helpers/generatePassword';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
@@ -15,7 +23,7 @@ const discountPercent = ref(0);
 const regions = ref<Region[]>([]);
 const selectedRegion = ref<number | null>(null);
 const hostname = ref('');
-const rootPassword = ref('');
+const rootPassword = ref(generatePassword());
 const comments = ref('');
 const subtotal = computed(() => basePrice.value + optionsTotal.value);
 const discountAmount = computed(() => subtotal.value * (discountPercent.value / 100));
@@ -99,28 +107,17 @@ interface ServerAsset {
     Region?: string[];
 }
 
-interface InitResponse {
-    basePrice: number;
-    discountPercent: number;
-    coupon?: {
-        id: number;
-        name: string;
-        description: string;
-        regionId: number;
-    };
-    asset?: {
-        id: number;
-        regionId: number;
-        details: Array<{ label: string; category: string; price: number }>;
-    };
-    options: {
-        ips: Option[];
-        bandwidth: Option[];
-        os: Option[];
-        cp: Option[];
-        raid: Option[];
-    };
-    regions: Region[];
+interface OrderSuccessResponse {
+  success: boolean;
+  text: string;
+  service_id: number;
+  invoice_id: number;
+}
+
+interface OrderErrorResponse {
+  success: boolean;
+  text: string;
+  errors: string;
 }
 
 type OptionKey = keyof SelectedOptions;
@@ -223,6 +220,9 @@ async function serverOrderRequest() {
             Swal.fire({
                 icon: 'error',
                 html: error.message,
+                allowOutsideClick: false,
+                showLoaderOnConfirm: true,
+                preConfirm: () => router.push(`/servers/order`),
             });
         });
 }
@@ -241,11 +241,12 @@ async function submitOrder() {
         };
         fetchWrapper
             .post(`${baseUrl}/servers/order/buy_now_server?${query}`, postData)
-            .then((response: InitResponse) => {
+            .then((response: OrderSuccessResponse) => {
                 Swal.close();
                 console.log('Response:', response);
+                router.push(`/order_needs_payment/SERVICEservers${response.service_id}`);
             })
-            .catch((error) => {
+            .catch((error: OrderErrorResponse) => {
                 Swal.close();
                 console.log('Error:', error);
             });
