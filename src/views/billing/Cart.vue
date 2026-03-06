@@ -25,9 +25,10 @@ const invrows = ref<InvRow[]>([]);
 const currency = ref('USD');
 const currencyArr = ref<CurrencyArr>({});
 const invoiceDays = ref(0);
+const currencySymbol = ref('$');
 const routeInvoices = computed(() => (route.params.invoices ? String(route.params.invoices).split(',') : undefined));
 const order_msg = ref(false);
-const total_display = ref('');
+const total = ref(0);
 const total_invoices = ref(0);
 const paymentMethodsData = ref<PaymentMethodsData>({});
 const current_cc_id = ref(0);
@@ -636,26 +637,27 @@ async function loadCartData() {
             query = `?${params.toString()}`;
         }
         fetchWrapper.get(`${baseUrl}/billing/cart${query}`).then((response: CartResponse) => {
+            let checkedInvoices: string[] = [];
             console.log(response);
             cartResponse.value = response;
+            currencySymbol.value = response.currencySymbol;
             paymentMethodsData.value = response.paymentMethodsData;
-            invrows.value = response.invrows;
             modules.value = response.modules;
             modulesCounts.value = response.modules_counts;
-            total_invoices.value = Number(response.total_invoices);
-            total_display.value = response.total_display;
             prepayAvailable.value = Number(response.prepay);
             currencyArr.value = response.currency_arr;
             invoiceDays.value = Number(response.invoice_days);
-            let checkedInvoices: string[] = [];
+            /* invrows.value = response.invrows;
+            total_invoices.value = Number(response.total_invoices);
+            total.value = Number(response.total); */
             total_invoices.value = 0;
-            total_display.value = 0;
+            total.value = 0;
             invrows.value = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
                 if ((typeof routeInvoices.value == 'undefined' && typeof row.prepay_invoice == 'undefined') || (typeof routeInvoices.value != 'undefined' && (routeInvoices.value.includes(row.service_label) || routeInvoices.value.includes(String(row.invoices_id))))) {
                     total_invoices.value++;
-                    total_display.value += Number(row.invoices_amount);
+                    total.value += Number(row.invoices_amount);
                     checkedInvoices.push(row.service_label);
                     invrows.value.push(row);
                 }
@@ -986,7 +988,7 @@ pageInit();
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>Invoices Total Amount</strong></div>
-                                    <div class="text-success text-lg">{{ total_display }}</div>
+                                    <div class="text-success text-lg">{{ currencySymbol }}{{ total }}</div>
                                 </td>
                             </tr>
                             <tr>
