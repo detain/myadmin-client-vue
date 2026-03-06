@@ -55,6 +55,7 @@ export interface CartResponse {
     cc_arr: CCRow[];
     serverInfo: ServerRow[];
     hds: HDRow[];
+    gtag_obj: string;
 }
 
 export interface ModuleCounts {
