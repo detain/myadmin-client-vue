@@ -41,6 +41,7 @@ const st = ref<null | string>(null);
 const paypalLoaded = ref(false);
 const paypalScriptEl = ref<HTMLScriptElement | null>(null);
 const ppButtons = ref<PayPalButtonsInstance | null>(null);
+const cartResponse = ref<CartResponse | null>(null);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -160,6 +161,38 @@ const selectedAmount = computed(() => {
     }
     return total;
 });
+
+function getServerComment(invrow: InvRow) {
+    if (invrow.invoices_module === 'servers') {
+        if (cartResponse.value?.serverInfo) {
+            for (const server of cartResponse.value?.serverInfo) {
+                if (server.server_id == invrow.invoices_service) {
+                    let serverComment = server.server_comment;
+                    serverComment = serverComment.replace(/<br>/g, '\n');
+                    const lines = serverComment.split('\n');
+                    const idx = lines.findIndex((l) => l.includes('Customers IP'));
+                    let comment = idx >= 0 ? lines.slice(idx + 1).join('\n') : '';
+                    if (idx >= 0) serverComment = lines.slice(0, idx + 1).join('\n');
+                    serverComment = serverComment
+                        .replace(/Customers IP \d+\.\d+\.\d+\.\d+/, '')
+                        .replace(/\n\n/g, '<br>')
+                        .replace(/\n/g, '<br>')
+                        .replace(/^<br>/g, '');
+                    return serverComment;
+                }
+            }
+        }
+        /*
+        const hdrow = cartResponse.value?.hdrows?.find((hd) => hd.hd_id === invrow.hd_id);
+        const serverrow = cartResponse.value?.serverrows?.find((sv) => sv.sv_id === invrow.sv_id);
+        if (hdrow && serverrow) {
+            return `Server: ${serverrow.sv_name}, HD: ${hdrow.hd_name}`;
+        } else if (serverrow) {
+            return `Server: ${serverrow.sv_name}`;
+        }
+        */
+    }
+}
 
 function getBtnOpts() {
     const btnOpts = {
@@ -604,6 +637,7 @@ async function loadCartData() {
         }
         fetchWrapper.get(`${baseUrl}/billing/cart${query}`).then((response: CartResponse) => {
             console.log(response);
+            cartResponse.value = response;
             paymentMethodsData.value = response.paymentMethodsData;
             invrows.value = response.invrows;
             modules.value = response.modules;
@@ -768,12 +802,15 @@ pageInit();
                                             <router-link class="text-primary" :to="`/${modules[invrow.invoices_module].TABLE}/${invrow.invoices_service}`">{{ invrow.service }}</router-link>
                                         </template>
                                     </td>
-                                    <td>{{ invrow.invoices_description }}</td>
+                                    <td>
+                                        {{ invrow.invoices_description }}
+                                        <div class="form-text text-muted text-xs" v-html="getServerComment(invrow)" />
+                                    </td>
                                     <td>{{ invrow.date }}</td>
                                     <td>{{ invrow.service_status }}</td>
                                     <td class="text-center">
                                         <template v-if="invrow.prepay_invoice || invrow.service_status === 'pending'">
-                                            <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><i class="fa fa-trash"></i></a>
+                                            <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><i class="far fa-trash-alt"></i></a>
                                         </template>
                                         <template v-else>
                                             <span class="font-italic text-muted text-sm">Empty...</span>
