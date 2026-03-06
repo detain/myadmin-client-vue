@@ -648,10 +648,16 @@ async function loadCartData() {
             currencyArr.value = response.currency_arr;
             invoiceDays.value = Number(response.invoice_days);
             let checkedInvoices: string[] = [];
+            total_invoices.value = 0;
+            total_display.value = 0;
+            invrows.value = [];
             for (const idx in response.invrows) {
                 let row = response.invrows[idx];
                 if ((typeof routeInvoices.value == 'undefined' && typeof row.prepay_invoice == 'undefined') || (typeof routeInvoices.value != 'undefined' && (routeInvoices.value.includes(row.service_label) || routeInvoices.value.includes(String(row.invoices_id))))) {
+                    total_invoices.value++;
+                    total_display.value += Number(row.invoices_amount);
                     checkedInvoices.push(row.service_label);
+                    invrows.value.push(row);
                 }
             }
             console.log(checkedInvoices);
