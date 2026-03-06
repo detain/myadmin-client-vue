@@ -7,3 +7,4 @@ pnpm-lock.yaml
 public/css/*.min.css
 src/assets/openapi/openapi.*
 src/assets/spec/openapi.*
+public/mockServiceWorker.js
