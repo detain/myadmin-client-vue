@@ -164,22 +164,22 @@ const selectedAmount = computed(() => {
 
 function getServerComment(invrow: InvRow) {
     if (invrow.invoices_module === 'servers') {
-        if (cartResponse.value?.serverInfo) {
-            for (const server of cartResponse.value?.serverInfo) {
-                if (server.server_id == invrow.invoices_service) {
-                    let serverComment = server.server_comment;
-                    serverComment = serverComment.replace(/<br>/g, '\n');
-                    const lines = serverComment.split('\n');
-                    const idx = lines.findIndex((l) => l.includes('Customers IP'));
-                    let comment = idx >= 0 ? lines.slice(idx + 1).join('\n') : '';
-                    if (idx >= 0) serverComment = lines.slice(0, idx + 1).join('\n');
-                    serverComment = serverComment
-                        .replace(/Customers IP \d+\.\d+\.\d+\.\d+/, '')
-                        .replace(/\n\n/g, '<br>')
-                        .replace(/\n/g, '<br>')
-                        .replace(/^<br>/g, '');
-                    return serverComment;
-                }
+        const serverInfo = cartResponse.value?.serverInfo;
+        if (!serverInfo) return;
+        for (const server of serverInfo) {
+            if (server.server_id == invrow.invoices_service) {
+                let serverComment = server.server_comment;
+                serverComment = serverComment.replace(/<br>/g, '\n');
+                const lines = serverComment.split('\n');
+                const idx = lines.findIndex((l) => l.includes('Customers IP'));
+                let comment = idx >= 0 ? lines.slice(idx + 1).join('\n') : '';
+                if (idx >= 0) serverComment = lines.slice(0, idx + 1).join('\n');
+                serverComment = serverComment
+                    .replace(/Customers IP \d+\.\d+\.\d+\.\d+/, '')
+                    .replace(/\n\n/g, '<br>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/^<br>/g, '');
+                return serverComment;
             }
         }
         /*
