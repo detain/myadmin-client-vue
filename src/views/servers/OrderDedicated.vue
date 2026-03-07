@@ -117,9 +117,10 @@ interface OrderSuccessResponse {
 }
 
 interface OrderErrorResponse {
-    success: boolean;
-    text: string;
-    errors: string;
+    success?: boolean;
+    message?: string;
+    text?: string;
+    errors?: string;
 }
 
 type OptionKey = keyof SelectedOptions;
