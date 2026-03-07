@@ -8,5 +8,6 @@ coverage/
 __snapshots__/
 .yarn/releases/
 public/css/*.min.css
-src/renderer/src/assets/openapi/openapi.*
-src/renderer/src/assets/spec/openapi.*
+src/assets/openapi/openapi.*
+src/assets/spec/openapi.*
+public/mockServiceWorker.js
