@@ -22,9 +22,6 @@ const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
 const selectedCc = ref(0);
 const editCcIdx = ref(0);
-const triggerClick = ref<any>(false);
-const current_cc_id = ref(0);
-const verify_display = ref('');
 const cc_auto_checked = ref(false);
 const countries = ref({});
 const contFields = reactive<SimpleStringObj>({
@@ -41,12 +38,6 @@ const contFields = reactive<SimpleStringObj>({
 
 interface SimpleStringObj {
     [key: string]: any;
-}
-
-function mounted() {
-    if (triggerClick.value) {
-        $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
-    }
 }
 
 function deleteCardModal(cc_id = 0) {
@@ -66,7 +57,6 @@ function deleteCardModal(cc_id = 0) {
             } catch (error: any) {
                 console.log('delete cc failed', error);
             }
-            $('#deleteForm').submit();
         },
     });
 }
@@ -123,18 +113,14 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
-    $("#edit-card").modal("show");
+    $('#edit-card').modal('show');
 }
 
 function verifyCard(cc_id = 0) {
-    $('.v_cc_idx').val(cc_id);
-    verify_display.value = $(`#unver_${cc_id}`).attr('data-step') as string;
-    if (typeof verify_display.value === 'undefined') {
+    if (!data.value.ccs[cc_id].verify_charged) {
         $('#verify-card-1').modal('show');
-    } else if (verify_display.value == 'step1') {
-        $('#VerifyFormStep1').trigger('click');
-    } else if (verify_display.value == 'step2') {
-        $('#VerifyClick').trigger('click');
+    } else {
+        $('#verify-card').modal('show');
     }
 }
 
@@ -308,7 +294,7 @@ onMounted(() => {
                     <h4 class="modal-title">Add CreditCard</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="payment_types" method="post" class="form-card">
+                    <form method="post" class="form-card" @submit.prevent="addCardSubmit">
                         <input type="hidden" name="action" value="add" />
                         <div class="row justify-content-center">
                             <div class="col-12">
@@ -383,7 +369,7 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" @click.prevent="addCardSubmit" /></div>
+                            <div class="col-md-12"><input type="submit" value="Add Credit Card" class="btn btn-pay placeicon" /></div>
                         </div>
                     </form>
                 </div>
@@ -399,7 +385,7 @@ onMounted(() => {
                     <h4 class="modal-title">Update CreditCard</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="EditForm" action="payment_types" method="post" class="form-card">
+                    <form id="EditForm" method="post" class="form-card" @submit.prevent="editCardSubmit">
                         <input type="hidden" name="action" value="edit" />
                         <input id="e_cc_idx" v-model="editCcIdx" type="hidden" name="idx" />
                         <div class="row justify-content-center">
@@ -475,7 +461,7 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Update Card" class="btn btn-pay placeicon" @click.prevent="editCardSubmit" /></div>
+                            <div class="col-md-12"><input type="submit" value="Update Card" class="btn btn-pay placeicon" /></div>
                         </div>
                     </form>
                 </div>
@@ -484,8 +470,6 @@ onMounted(() => {
     </div>
     <!--EDIT CC FORM IN MODAL-->
     <!-- VERIFY CC FORM -->
-    <div id="VerifyFormStep1" class="d-none" data-toggle="modal" data-target="#verify-card-1"></div>
-    <!--EDIT CC FORM IN MODAL-->
     <div id="verify-card-1" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -493,7 +477,7 @@ onMounted(() => {
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="VerifyForm" action="payment_types" method="post" class="form-card">
+                    <form id="VerifyForm" method="post" class="form-card">
                         <input type="hidden" name="action" value="verify" />
                         <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
                         <div class="row justify-content-center">
@@ -527,8 +511,6 @@ onMounted(() => {
     </div>
     <!-- END VERIFY CC FORM -->
     <!-- VERIFY CC FORM -->
-    <div id="VerifyClick" class="d-none" data-toggle="modal" data-target="#verify-card"></div>
-    <!--EDIT CC FORM IN MODAL-->
     <div id="verify-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -536,7 +518,7 @@ onMounted(() => {
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="VerifyForm" action="payment_types" method="post" class="form-card">
+                    <form id="VerifyForm" method="post" class="form-card">
                         <input type="hidden" name="action" value="verify" />
                         <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
                         <div class="row justify-content-center">
@@ -576,8 +558,4 @@ onMounted(() => {
         </div>
     </div>
     <!-- END VERIFY CC FORM -->
-    <form id="VerifyFormDefault" action="payment_types" method="post">
-        <input type="hidden" name="action" value="verify" />
-        <input class="v_cc_idx" type="hidden" name="idx" value="" />
-    </form>
 </template>
