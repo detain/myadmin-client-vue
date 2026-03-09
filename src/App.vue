@@ -246,11 +246,11 @@ useDarkMode();
 @import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 @import './assets/templates/adminlte/jquery.passwordRequirements.css';
-@import './assets/templates/adminlte/custom_styles.css';
 @import 'admin-lte/dist/css/adminlte.min.css';
 @import './assets/templates/my/style.css';
 @import './assets/templates/my/style2.css';
 @import '@material-design-icons/font/filled.css';
+@import './assets/templates/adminlte/custom_styles.css';
 
 .main-header {
     position: relative;

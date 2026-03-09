@@ -43,6 +43,7 @@ const paypalLoaded = ref(false);
 const paypalScriptEl = ref<HTMLScriptElement | null>(null);
 const ppButtons = ref<PayPalButtonsInstance | null>(null);
 const cartResponse = ref<CartResponse | null>(null);
+const showMethods = computed(() => invoices.value.length > 0);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -408,7 +409,6 @@ function addCardModal() {
     for (let key in contFields) {
         contFields[key] = data.value[key] && key !== 'cc' && key !== 'cc_exp' ? data.value[key] : '';
     }
-    $('#AddClick').trigger('click');
 }
 
 function editCardModal(cc_id = 0) {
@@ -422,7 +422,6 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
-    $('#EditClick').trigger('click');
 }
 
 function verifyCard(cc_id = 0) {
@@ -855,7 +854,7 @@ pageInit();
                             </div>
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
-                                <span id="payments-section">
+                                <span v-show="showMethods" id="payments-section">
                                     <template v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
                                         <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                         <template v-else-if="methodData.text == 'PayPal'">
@@ -887,7 +886,7 @@ pageInit();
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">Select / Add Credit Card</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
                                 </div>
                                 <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
@@ -920,7 +919,7 @@ pageInit();
                                                 </div>
                                                 <div class="col-md-6 pl-4">
                                                     <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click.prevent="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
                                                 <div class="col-md-6 text-right">
@@ -1181,7 +1180,6 @@ pageInit();
             </div>
         </div>
     </div>
-    <div id="EditClick" class="d-none" data-toggle="modal" data-target="#edit-card"></div>
     <!--EDIT CC FORM IN MODAL-->
     <div id="edit-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
