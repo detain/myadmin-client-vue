@@ -99,6 +99,7 @@ interface CCData extends SimpleStringObj {
     maxmind_riskscore: string;
     state: string;
     verified: boolean;
+    verify_charged?: boolean;
     zip: string;
     delete_text?: string;
     edit_text?: string;
