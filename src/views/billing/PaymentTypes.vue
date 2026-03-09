@@ -60,7 +60,7 @@ function deleteCardModal(cc_id = 0) {
         html: `<p>Are you sure want to remove your creditcard <br><b>${data.value.ccs[cc_id]['cc']}</b> ?</p>`,
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/creditcards/${cc_id}`).then((response) => {
                     console.log('delete cc success', response);
                 });
             } catch (error: any) {
@@ -74,7 +74,7 @@ function deleteCardModal(cc_id = 0) {
 function addCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/billing/ccs/add`, {
+            .post(`${baseUrl}/billing/creditcards`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
@@ -95,15 +95,8 @@ function addCardSubmit() {
 function editCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/billing/ccs/${editCcIdx.value}`, {
-                cc: contFields.cc,
+            .post(`${baseUrl}/billing/creditcards/${editCcIdx.value}`, {
                 cc_exp: contFields.cc_exp,
-                name: contFields.name,
-                address: contFields.address,
-                city: contFields.city,
-                state: contFields.state,
-                zip: contFields.zip,
-                country: contFields.country,
             })
             .then((response) => {
                 console.log('edit cc success', response);
@@ -136,7 +129,7 @@ function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
     verify_display.value = $(`#unver_${cc_id}`).attr('data-step') as string;
     if (typeof verify_display.value === 'undefined') {
-        $('#VerifyFormStep1').trigger('click');
+        $("#verify-card-1").modal('show');
     } else if (verify_display.value == 'step1') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verify_display.value == 'step2') {
@@ -273,7 +266,7 @@ watch(
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body icheck-success">
                     <input id="paypal" v-model="paymentMethod" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" @change="updatePaymentMethod()" />
-                    <label for="paypal"><i class="fa fa-paypal"></i> Pay with Paypal</label>
+                    <label for="paypal"><i class="fab fa-paypal"></i> Pay with Paypal</label>
                 </div>
             </div>
             <div v-if="data.ccs">
