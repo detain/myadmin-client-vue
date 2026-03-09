@@ -214,7 +214,7 @@ jobs:
                   rsync -az \
                     --partial \
                     --info=progress2 \
-                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    -e "ssh -o Compression=no -o Ciphers=+chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
                     *.zip ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/web/
 
             - name: Publish release zip (if tag)
@@ -445,7 +445,7 @@ jobs:
                   rsync -az \
                     --partial \
                     --info=progress2 \
-                    -e "ssh -oKexAlgorithms=+curve25519-sha256@libssh.org -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    -e "ssh -o KexAlgorithms=+curve25519-sha256@libssh.org -o Compression=no -o ControlMaster=auto -o ControlPersist=60" \
                     dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
@@ -587,7 +587,7 @@ jobs:
                   rsync -az \
                     --partial \
                     --info=progress2 \
-                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    -e "ssh -o Compression=no -o Ciphers=+chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
                     android/app/build/outputs/apk/release/*.apk ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/android/
 
     ios:
@@ -697,5 +697,5 @@ jobs:
                   rsync -az \
                     --partial \
                     --info=progress2 \
-                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    -e "ssh -o Compression=no -o Ciphers=+chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
                     ios/App/artifacts/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/ios/
