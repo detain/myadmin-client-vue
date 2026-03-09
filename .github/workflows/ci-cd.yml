@@ -223,7 +223,7 @@ jobs:
         name: Electron Build
         if: github.ref == 'refs/heads/electron' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'electron')
         concurrency:
-            group: electron-build-${{ github.ref }}-${{ github.event_name }}
+            group: electron-${{ matrix.platform }}-${{ matrix.arch }}-build-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: ${{ matrix.os }}
 
