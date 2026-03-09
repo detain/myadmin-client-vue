@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
@@ -129,7 +129,7 @@ function verifyCard(cc_id = 0) {
     $('.v_cc_idx').val(cc_id);
     verify_display.value = $(`#unver_${cc_id}`).attr('data-step') as string;
     if (typeof verify_display.value === 'undefined') {
-        $("#verify-card-1").modal('show');
+        $('#verify-card-1').modal('show');
     } else if (verify_display.value == 'step1') {
         $('#VerifyFormStep1').trigger('click');
     } else if (verify_display.value == 'step2') {
@@ -243,6 +243,10 @@ watch(
     },
     { immediate: true }
 );
+
+onMounted(() => {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 
 <template>
@@ -275,10 +279,10 @@ watch(
                         <input :id="'cc-' + cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
                         <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                         <div class="col-md-2 pb-2">
-                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" :title="cc_detail.verified ? 'Verified' : 'Not Verified'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
+                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
+                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
                             <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
                             <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>
