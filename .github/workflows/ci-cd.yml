@@ -211,7 +211,7 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60scp -v -r \
+                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60 -v -r \
                     *.zip ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/web/
 
             - name: Publish release zip (if tag)
@@ -439,7 +439,7 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -o Compression=no -oKexAlgorithms=+curve25519-sha256@libssh.org -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60scp -v -r \
+                  scp -o Compression=no -oKexAlgorithms=+curve25519-sha256@libssh.org -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60 -v -r \
                     dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
@@ -578,7 +578,7 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60scp -v -r \
+                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60 -v -r \
                     android/app/build/outputs/apk/release/*.apk ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/android/
 
     ios:
@@ -685,5 +685,5 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60scp -v -r ios/App/artifacts/* \
+                  scp -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60 -v -r ios/App/artifacts/* \
                     ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/ios/
