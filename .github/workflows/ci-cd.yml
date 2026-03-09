@@ -111,9 +111,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.rest.actions.createWorkflowDispatch({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
+                      await action_repository.createWorkflowDispatch({
                         workflow_id: 'ci-cd.yml',
                         ref: 'electron',
                         inputs: { run_target: 'electron' }
@@ -129,9 +127,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.rest.actions.createWorkflowDispatch({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
+                      await action_repository.createWorkflowDispatch({
                         workflow_id: 'ci-cd.yml',
                         ref: 'capacitor',
                         inputs: { run_target: 'capacitor' }
@@ -442,7 +438,7 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -o StrictHostKeyChecking=accept-new \
+                  scp --% -o StrictHostKeyChecking=accept-new \
                     -o KexAlgorithms=curve25519-sha256 \
                     -o Compression=no \
                     -o Ciphers=chacha20-poly1305@openssh.com \
