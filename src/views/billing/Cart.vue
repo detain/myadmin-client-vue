@@ -167,7 +167,7 @@ const selectedAmount = computed(() => {
 function getServerComment(invrow: InvRow) {
     if (invrow.invoices_module === 'servers') {
         const serverInfo = cartResponse.value?.serverInfo;
-        if (!serverInfo) return;
+        if (!serverInfo) return '';
         for (const server of serverInfo) {
             if (server.server_id == invrow.invoices_service) {
                 let serverComment = server.server_comment;
@@ -184,16 +184,15 @@ function getServerComment(invrow: InvRow) {
                 return serverComment;
             }
         }
-        /*
-        const hdrow = cartResponse.value?.hdrows?.find((hd) => hd.hd_id === invrow.hd_id);
+        /* const hdrow = cartResponse.value?.hdrows?.find((hd) => hd.hd_id === invrow.hd_id);
         const serverrow = cartResponse.value?.serverrows?.find((sv) => sv.sv_id === invrow.sv_id);
         if (hdrow && serverrow) {
             return `Server: ${serverrow.sv_name}, HD: ${hdrow.hd_name}`;
         } else if (serverrow) {
             return `Server: ${serverrow.sv_name}`;
-        }
-        */
+        } */
     }
+    return '';
 }
 
 function getBtnOpts() {
