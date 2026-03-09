@@ -32,7 +32,7 @@ jobs:
         name: Sync master to release branches
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}
+            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: ubuntu-latest
         outputs:
@@ -142,7 +142,7 @@ jobs:
         name: Web Build
         if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}
+            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: ubuntu-latest
 
@@ -223,7 +223,7 @@ jobs:
         name: Electron Build
         if: github.ref == 'refs/heads/electron' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'electron')
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}
+            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: ${{ matrix.os }}
 
@@ -488,7 +488,7 @@ jobs:
         name: Android Build
         if: github.ref == 'refs/heads/capacitor' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'capacitor')
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}
+            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: ubuntu-latest
 
@@ -585,7 +585,7 @@ jobs:
         name: iOS Build
         if: github.ref == 'refs/heads/capacitor' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'capacitor')
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}
+            group: ${{ github.workflow }}-${{ github.job }}-${{ github.ref }}-${{ github.event_name }}
             cancel-in-progress: true
         runs-on: macos-latest
 
