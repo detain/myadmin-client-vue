@@ -112,6 +112,8 @@ jobs:
               with:
                   script: |
                       await github.rest.actions.createWorkflowDispatch({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
                         workflow_id: 'ci-cd.yml',
                         ref: 'electron',
                         inputs: { run_target: 'electron' }
@@ -128,6 +130,8 @@ jobs:
               with:
                   script: |
                       await github.rest.actions.createWorkflowDispatch({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
                         workflow_id: 'ci-cd.yml',
                         ref: 'capacitor',
                         inputs: { run_target: 'capacitor' }
