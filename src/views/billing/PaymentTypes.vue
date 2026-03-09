@@ -117,7 +117,6 @@ function addCardModal() {
     for (let key in contFields) {
         contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
     }
-    $('#AddClick').trigger('click');
 }
 
 function editCardModal(cc_id = 0) {
@@ -131,7 +130,6 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
-    $('#EditClick').trigger('click');
 }
 
 function verifyCard(cc_id = 0) {
@@ -268,7 +266,7 @@ watch(
                 <h5 class="w-50">Select Preferred Payment Method</h5>
                 <div class="w-50 text-right">
                     <router-link to="/cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</router-link>
-                    <a href="javascript:void(0);" class="btn btn-custom" @click.prevent="addCardModal"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
+                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
                 </div>
             </div>
             `
@@ -288,7 +286,7 @@ watch(
                         </div>
                         <div class="col-md-6 pb-2">
                             <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" :title="cc_detail.unverified_text" :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
-                            <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" @click.prevent="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
                             <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
                         </div>
                     </div>
@@ -304,7 +302,6 @@ watch(
             </div>
         </div>
     </div>
-    <div id="AddClick" class="d-none" data-toggle="modal" data-target="#add-card"></div>
     <!--ADD CC FORM IN MODAL-->
     <div id="add-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
@@ -396,7 +393,6 @@ watch(
         </div>
     </div>
     <!--ADD CC FORM IN MODAL-->
-    <div id="EditClick" class="d-none" data-toggle="modal" data-target="#edit-card"></div>
     <!--EDIT CC FORM IN MODAL-->
     <div id="edit-card" class="modal fade" style="display: none" aria-hidden="true">
         <div class="modal-dialog">
