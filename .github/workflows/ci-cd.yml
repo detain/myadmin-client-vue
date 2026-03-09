@@ -108,7 +108,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.action_repository.actions.createWorkflowDispatch({
+                      await github.rest.actions.createWorkflowDispatch({
                         owner: context.repo.owner,
                         repo: context.repo.repo,
                         workflow_id: 'ci-cd.yml',
@@ -126,7 +126,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.action_repository.actions.createWorkflowDispatch({
+                      await github.rest.actions.createWorkflowDispatch({
                         owner: context.repo.owner,
                         repo: context.repo.repo,
                         workflow_id: 'ci-cd.yml',
