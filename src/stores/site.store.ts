@@ -2,7 +2,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import { defineStore } from 'pinia';
 
-const baseUrl = 'https://my.interserver.net/apiv2';
+const baseUrl = import.meta.env.VITE_API_BASE_URL ?? 'https://my.interserver.net/apiv2';
 
 interface ModuleSettings {
     BILLING_DAYS_OFFSET: number;
