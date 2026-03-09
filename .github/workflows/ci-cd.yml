@@ -443,7 +443,7 @@ jobs:
             - name: Upload files via SCP
               run: |
                   scp -o StrictHostKeyChecking=accept-new \
-                    -oKexAlgorithms=+curve25519-sha256@libssh.org \
+                    -o KexAlgorithms=+curve25519-sha256@libssh.org \
                     -o Compression=no \
                     -o Ciphers=chacha20-poly1305@openssh.com \
                     -o ControlMaster=auto -o ControlPersist=60 -v -r \
