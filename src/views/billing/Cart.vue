@@ -352,7 +352,7 @@ function deleteCardModal(cc_id = 0) {
         html: `<p>Are you sure want to remove your creditcard <br><b>${data.value.ccs[cc_id]['cc']}</b> ?</p>`,
         preConfirm: () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/billing/ccs/${cc_id}`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/billing/creditcards/${cc_id}`).then((response) => {
                     console.log('delete cc success', response);
                 });
             } catch (error: any) {
@@ -366,7 +366,7 @@ function deleteCardModal(cc_id = 0) {
 function addCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/billing/ccs/add`, {
+            .post(`${baseUrl}/billing/creditcards`, {
                 cc: contFields.cc,
                 cc_exp: contFields.cc_exp,
                 name: contFields.name,
@@ -387,15 +387,8 @@ function addCardSubmit() {
 function editCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/billing/ccs/${editCcIdx.value}`, {
-                cc: contFields.cc,
+            .post(`${baseUrl}/billing/creditcards/${editCcIdx.value}`, {
                 cc_exp: contFields.cc_exp,
-                name: contFields.name,
-                address: contFields.address,
-                city: contFields.city,
-                state: contFields.state,
-                zip: contFields.zip,
-                country: contFields.country,
             })
             .then((response) => {
                 console.log('edit cc success', response);
