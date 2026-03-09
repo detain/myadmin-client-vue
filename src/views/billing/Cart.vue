@@ -550,7 +550,8 @@ async function delete_invoice(invId: number) {
         preConfirm: () => {
             console.log('Wanted to delete invoice: ', invId);
             fetchWrapper
-                .delete(`${baseUrl}/billing/invoices/${invId}`).then((response) => {
+                .delete(`${baseUrl}/billing/invoices/${invId}`)
+                .then((response) => {
                     console.log(response);
                     Swal.close();
                     console.log('Deleted Invoice ', invId);

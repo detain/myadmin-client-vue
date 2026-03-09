@@ -5,7 +5,6 @@ import { RouterLink } from 'vue-router';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
-
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const siteStore = useSiteStore();
@@ -18,7 +17,7 @@ siteStore.setBreadcrums([
     ['', 'Payment Types'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-const { loading, error, custid, ima, data, ip } = storeToRefs(accountStore);
+const { loading, error, data } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
 const selectedCc = ref(0);
 const editCcIdx = ref(0);
