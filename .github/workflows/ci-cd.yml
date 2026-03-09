@@ -207,7 +207,7 @@ jobs:
                   mkdir -p ~/.ssh
                   echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
                   chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+                  ssh-keyscan -t ed25519 -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
 
             - name: Upload files via SCP
               run: |
@@ -435,7 +435,7 @@ jobs:
                   mkdir -p ~/.ssh
                   echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
                   chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+                  ssh-keyscan -t ed25519 -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
 
             - name: Upload files via SCP
               run: |
@@ -574,7 +574,7 @@ jobs:
                   mkdir -p ~/.ssh
                   echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
                   chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+                  ssh-keyscan -t ed25519 -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
 
             - name: Upload files via SCP
               run: |
@@ -681,7 +681,7 @@ jobs:
                   mkdir -p ~/.ssh
                   echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
                   chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+                  ssh-keyscan -t ed25519 -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
 
             - name: Upload files via SCP
               run: |
