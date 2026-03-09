@@ -211,8 +211,11 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -v -r dist/* *.zip \
-                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/web/
+                  rsync -az \
+                    --partial \
+                    --info=progress2 \
+                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    *.zip ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/web/
 
             - name: Publish release zip (if tag)
               if: startsWith(github.ref, 'refs/tags/')
@@ -439,8 +442,11 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -oKexAlgorithms=+curve25519-sha256@libssh.org -v -r dist/* \
-                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
+                  rsync -az \
+                    --partial \
+                    --info=progress2 \
+                    -e "ssh -oKexAlgorithms=+curve25519-sha256@libssh.org -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
@@ -578,8 +584,11 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -v -r android/app/build/outputs/apk/release/*.apk \
-                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/android/
+                  rsync -az \
+                    --partial \
+                    --info=progress2 \
+                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    android/app/build/outputs/apk/release/*.apk ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/android/
 
     ios:
         name: iOS Build
@@ -685,5 +694,8 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -v -r ios/App/artifacts/* \
-                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/ios/
+                  rsync -az \
+                    --partial \
+                    --info=progress2 \
+                    -e "ssh -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60" \
+                    ios/App/artifacts/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/ios/
