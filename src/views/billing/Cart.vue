@@ -554,21 +554,28 @@ async function delete_invoice(invId: number) {
         showCancelButton: true,
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
-        html: '<p>Are you sure want to delete your invoice?</p>',
+        html: `'<p>Are you sure want to delete your invoice ${invId}?</p>`,
         preConfirm: () => {
             console.log('Wanted to delete invoice: ', invId);
-            for (let idx = 0; idx < invrows.value.length; idx++) {
-                const invRow = invrows.value[idx];
-                const resp = invRow.invoices_description.match('^Prepay ID ([0-9]*) Invoice$');
-                if (resp) {
-                    const prepayId = resp[1];
-                    fetchWrapper.delete(`${baseUrl}/billing/prepays/${prepayId}`).then((response) => {
-                        console.log('Deleted Invoice ', prepayId);
-                        loadCartData();
+            fetchWrapper
+                .delete(`${baseUrl}/billing/invoices/${invId}`).then((response) => {
+                    console.log(response);
+                    Swal.close();
+                    console.log('Deleted Invoice ', invId);
+                    Swal.fire({
+                        icon: 'info',
+                        html: `Got ${response}`,
                     });
-                }
-            }
-            //fetchWrapper.delete(`${baseUrl}/billing/prepays/${query}`).then((respons
+                    loadCartData();
+                })
+                .catch((error: any) => {
+                    Swal.close();
+                    console.log(error);
+                    Swal.fire({
+                        icon: 'error',
+                        html: `Got error ${error.message}`,
+                    });
+                });
         },
     });
 }
