@@ -196,14 +196,17 @@ jobs:
                   name: web
                   path: my-interserver-client-web-dev-master.zip
 
-            - name: Upload to SFTP
-              uses: appleboy/scp-action@v1
-              with:
-                  host: ${{ secrets.SFTP_HOST }}
-                  username: ${{ secrets.SFTP_USER }}
-                  key: ${{ secrets.SFTP_KEY }}
-                  source: 'dist/*,*.zip'
-                  target: '/uploads/web/'
+            - name: Setup SSH key
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
+                  chmod 600 ~/.ssh/id_ed25519
+                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+
+            - name: Upload files via SCP
+              run: |
+                  scp -v -r dist/* *.zip \
+                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/web/
 
             - name: Publish release zip (if tag)
               if: startsWith(github.ref, 'refs/tags/')
@@ -415,14 +418,17 @@ jobs:
                   path: dist/*.zip
                   if-no-files-found: ignore
 
-            - name: Upload Electron artifacts to SFTP
-              uses: appleboy/scp-action@v1
-              with:
-                  host: ${{ secrets.SFTP_HOST }}
-                  username: ${{ secrets.SFTP_USER }}
-                  key: ${{ secrets.SFTP_KEY }}
-                  source: 'dist/*'
-                  target: '/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/'
+            - name: Setup SSH key
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
+                  chmod 600 ~/.ssh/id_ed25519
+                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+
+            - name: Upload files via SCP
+              run: |
+                  scp -v -r dist/* \
+                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
@@ -548,14 +554,17 @@ jobs:
                   name: android
                   path: android/app/build/outputs/apk/release/*.apk
 
-            - name: Upload Android build to SFTP
-              uses: appleboy/scp-action@v1
-              with:
-                  host: ${{ secrets.SFTP_HOST }}
-                  username: ${{ secrets.SFTP_USER }}
-                  key: ${{ secrets.SFTP_KEY }}
-                  source: 'android/app/build/outputs/apk/release/*.apk'
-                  target: '/uploads/android/'
+            - name: Setup SSH key
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
+                  chmod 600 ~/.ssh/id_ed25519
+                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+
+            - name: Upload files via SCP
+              run: |
+                  scp -v -r android/app/build/outputs/apk/release/*.apk \
+                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/android/
 
     ios:
         name: iOS Build
@@ -649,11 +658,14 @@ jobs:
                   name: ios
                   path: ios/App/build/Build/Products/Release-iphoneos
 
-            - name: Upload iOS build to SFTP
-              uses: appleboy/scp-action@v1
-              with:
-                  host: ${{ secrets.SFTP_HOST }}
-                  username: ${{ secrets.SFTP_USER }}
-                  key: ${{ secrets.SFTP_KEY }}
-                  source: 'ios/App/artifacts/*'
-                  target: '/uploads/ios/'
+            - name: Setup SSH key
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.SFTP_KEY }}" > ~/.ssh/id_ed25519
+                  chmod 600 ~/.ssh/id_ed25519
+                  ssh-keyscan -H ${{ secrets.SFTP_HOST }} >> ~/.ssh/known_hosts
+
+            - name: Upload files via SCP
+              run: |
+                  scp -v -r ios/App/artifacts/* \
+                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/uis/
