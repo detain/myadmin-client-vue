@@ -123,6 +123,7 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
+    $("#edit-card").modal("show");
 }
 
 function verifyCard(cc_id = 0) {
@@ -262,8 +263,8 @@ onMounted(() => {
             <div class="d-flex mb-4">
                 <h5 class="w-50">Select Preferred Payment Method</h5>
                 <div class="w-50 text-right">
-                    <router-link to="/cart" class="btn btn-custom mr-2"><i class="fa fa-money" aria-hidden="true"></i> Cart</router-link>
-                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fa fa-plus" aria-hidden="true"></i> Add New Card</a>
+                    <router-link to="/cart" class="btn btn-custom mr-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart</router-link>
+                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fas fa-plus" aria-hidden="true"></i> Add New Card</a>
                 </div>
             </div>
             `
@@ -277,14 +278,14 @@ onMounted(() => {
                 <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-hover shadow-sm">
                     <div class="card-body icheck-success row">
                         <input :id="'cc-' + cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
-                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fa fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
+                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fas fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
                         <div class="col-md-2 pb-2">
-                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <i :class="{ 'fa fa-check': cc_detail.verified == true, 'fa fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
+                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <i :class="{ 'fas fa-check': cc_detail.verified == true, 'fas fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." :data-step="cc_detail.v_step ? cc_detail.v_step : 'step1'" @click="verifyCard(Number(cc_id))"><i class="fa fa-exclamation-triangle"></i> Verify</a>
-                            <a class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"><i class="fa fa-edit"></i> Edit</a>
-                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" :title="cc_detail.delete_text" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fa fa-trash"></i> Delete</a>
+                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><i class="fas fa-exclamation-triangle"></i> Verify</a>
+                            <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Update the Expiration Date" @click="editCardModal(Number(cc_id))"><i class="fas fa-edit"></i> Edit</a>
+                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Remove this Credit Card" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fas fa-trash"></i> Delete</a>
                         </div>
                     </div>
                 </div>
