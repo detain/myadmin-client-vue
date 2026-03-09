@@ -441,24 +441,8 @@ jobs:
                   echo "${{ secrets.SFTP_HOST_KEY }}" >> ~/.ssh/known_hosts
 
             - name: Upload files via SCP
-              if: matrix.platform == 'win'
               run: |
-                  scp --% -o StrictHostKeyChecking=accept-new \
-                    -o KexAlgorithms=curve25519-sha256 \
-                    -o Compression=no \
-                    -o Ciphers=chacha20-poly1305@openssh.com \
-                    -o ControlMaster=auto -o ControlPersist=60 -v -r \
-                    dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
-
-            - name: Upload files via SCP
-              if: matrix.platform != 'win'
-              run: |
-                  scp -o StrictHostKeyChecking=accept-new \
-                    -o KexAlgorithms=curve25519-sha256 \
-                    -o Compression=no \
-                    -o Ciphers=chacha20-poly1305@openssh.com \
-                    -o ControlMaster=auto -o ControlPersist=60 -v -r \
-                    dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
+                  scp -o StrictHostKeyChecking=accept-new -o KexAlgorithms=curve25519-sha256 -o Compression=no -o Ciphers=chacha20-poly1305@openssh.com -o ControlMaster=auto -o ControlPersist=60 -v -r dist/* ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
