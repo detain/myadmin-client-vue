@@ -202,8 +202,8 @@ jobs:
                   host: ${{ secrets.SFTP_HOST }}
                   username: ${{ secrets.SFTP_USER }}
                   key: ${{ secrets.SFTP_KEY }}
-                  source: "dist/*,*.zip"
-                  target: "/uploads/web/"
+                  source: 'dist/*,*.zip'
+                  target: '/uploads/web/'
 
             - name: Publish release zip (if tag)
               if: startsWith(github.ref, 'refs/tags/')
@@ -421,8 +421,8 @@ jobs:
                   host: ${{ secrets.SFTP_HOST }}
                   username: ${{ secrets.SFTP_USER }}
                   key: ${{ secrets.SFTP_KEY }}
-                  source: "dist/*"
-                  target: "/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/"
+                  source: 'dist/*'
+                  target: '/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/'
 
             # ---------------- RELEASE ASSETS ----------------
             - name: Publish release assets (tags)
@@ -554,8 +554,8 @@ jobs:
                   host: ${{ secrets.SFTP_HOST }}
                   username: ${{ secrets.SFTP_USER }}
                   key: ${{ secrets.SFTP_KEY }}
-                  source: "android/app/build/outputs/apk/release/*.apk"
-                  target: "/uploads/android/"
+                  source: 'android/app/build/outputs/apk/release/*.apk'
+                  target: '/uploads/android/'
 
     ios:
         name: iOS Build
@@ -655,5 +655,5 @@ jobs:
                   host: ${{ secrets.SFTP_HOST }}
                   username: ${{ secrets.SFTP_USER }}
                   key: ${{ secrets.SFTP_KEY }}
-                  source: "ios/App/artifacts/*"
-                  target: "/uploads/ios/"
+                  source: 'ios/App/artifacts/*'
+                  target: '/uploads/ios/'
