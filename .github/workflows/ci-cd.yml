@@ -111,7 +111,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.actions.createWorkflowDispatch({
+                      await github.rest.actions.createWorkflowDispatch({
                         workflow_id: 'ci-cd.yml',
                         ref: 'electron',
                         inputs: { run_target: 'electron' }
@@ -127,7 +127,7 @@ jobs:
               uses: actions/github-script@v8
               with:
                   script: |
-                      await github.actions.createWorkflowDispatch({
+                      await github.rest.actions.createWorkflowDispatch({
                         workflow_id: 'ci-cd.yml',
                         ref: 'capacitor',
                         inputs: { run_target: 'capacitor' }
