@@ -31,6 +31,9 @@ jobs:
     sync-release-branches:
         name: Sync master to release branches
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
         runs-on: ubuntu-latest
         outputs:
             electron_merged: ${{ steps.sync.outputs.electron_merged }}
@@ -138,6 +141,9 @@ jobs:
     web-build:
         name: Web Build
         if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
         runs-on: ubuntu-latest
 
         steps:
@@ -216,6 +222,9 @@ jobs:
     electron-build:
         name: Electron Build
         if: github.ref == 'refs/heads/electron' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'electron')
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
         runs-on: ${{ matrix.os }}
 
         strategy:
@@ -326,7 +335,10 @@ jobs:
             - name: Build Electron app
               run: yarn electron-builder ${{ matrix.build_args }}
               env:
-                  CSC_IDENTITY_AUTO_DISCOVERY: ${{ env.CSC_IDENTITY_AUTO_DISCOVERY || 'true' }}
+                  #CSC_IDENTITY_AUTO_DISCOVERY: ${{ env.CSC_IDENTITY_AUTO_DISCOVERY || 'true' }}
+                  CSC_IDENTITY_AUTO_DISCOVERY: false
+                  CSC_KEY_PASSWORD: ""
+                  CSC_LINK: ""
 
             # ---------------- ZIP UNPACKED ----------------
             - name: Zip unpacked (Linux)
@@ -427,7 +439,7 @@ jobs:
 
             - name: Upload files via SCP
               run: |
-                  scp -v -r dist/* \
+                  scp -oKexAlgorithms=+curve25519-sha256@libssh.org -v -r dist/* \
                     ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/electron/${{ matrix.platform }}-${{ matrix.arch }}/
 
             # ---------------- RELEASE ASSETS ----------------
@@ -475,6 +487,9 @@ jobs:
     android:
         name: Android Build
         if: github.ref == 'refs/heads/capacitor' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'capacitor')
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
         runs-on: ubuntu-latest
 
         steps:
@@ -569,6 +584,9 @@ jobs:
     ios:
         name: iOS Build
         if: github.ref == 'refs/heads/capacitor' || startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.run_target == 'capacitor')
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
         runs-on: macos-latest
 
         steps:
@@ -668,4 +686,4 @@ jobs:
             - name: Upload files via SCP
               run: |
                   scp -v -r ios/App/artifacts/* \
-                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/uis/
+                    ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }}:/uploads/ios/
