@@ -42,12 +42,15 @@ const isChecked = ref(false);
 const modulesCounts = ref<ModuleCounts>({});
 const countries = ref({});
 const prepayAvailable = ref(0);
+const payssionMinAmount = ref(0);
+const ccAuto = ref(0);
+const defaultPaymentMethod = ref('');
 const st = ref<null | string>(null);
 const paypalLoaded = ref(false);
 const paypalScriptEl = ref<HTMLScriptElement | null>(null);
 const ppButtons = ref<PayPalButtonsInstance | null>(null);
 const cartResponse = ref<CartResponse | null>(null);
-const showMethods = computed(() => invoices.value.length > 0);
+const showMethods = computed(() => invoices.value.length > 0 && selectedAmount.value > 0.01);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -88,6 +91,26 @@ const operators: Record<Operator, (a: any, b: any) => boolean> = {
     '<=': (a, b) => Number(a) <= Number(b),
     typeof: (a, b) => typeof a === b,
 };
+
+const filteredPaymentMethods = computed(() => {
+    const result: PaymentMethodsData = {};
+    for (const [key, method] of Object.entries(paymentMethodsData.value)) {
+        if (key.startsWith('payssion') && selectedAmount.value < payssionMinAmount.value) {
+            continue;
+        }
+        result[key] = method;
+    }
+    return result;
+});
+
+const showPrepay = computed(() => {
+    if (prepayAvailable.value <= 0) return false;
+    const amounts = invrows.value
+        .filter((row) => invoices.value.includes(row.service_label))
+        .map((row) => Number(row.invoices_amount));
+    if (amounts.length === 0) return false;
+    return prepayAvailable.value >= Math.min(...amounts);
+});
 
 const paypalMethodStyle = computed(() => {
     const style: Record<string, string> = {};
@@ -456,17 +479,32 @@ async function verifyCard(cc_id = 0) {
     }
 }
 
-function updatePaymentMethod(cc_val: string, cc_auto = 0) {
-    if (cc_auto == 1) {
-        if ($('#customSwitch3').is(':checked')) {
-            $('#cc_auto_update').val(1);
+async function updatePaymentMethod(cc_val: string, cc_auto_toggle = false) {
+    try {
+        if (cc_auto_toggle) {
+            ccAuto.value = ccAuto.value === 1 ? 0 : 1;
+            await fetchWrapper.post(`${baseUrl}/billing/payment_method`, {
+                cc_auto: ccAuto.value,
+            });
         } else {
-            $('#cc_auto_update').val(0);
+            defaultPaymentMethod.value = cc_val;
+            await fetchWrapper.post(`${baseUrl}/billing/payment_method`, {
+                payment_method: cc_val,
+            });
         }
-    } else {
-        $('#defaultpaymentMethod').val(cc_val);
+    } catch (error: any) {
+        console.log('update payment method failed', error);
     }
-    //$("#defaultpymt").submit();
+}
+
+
+
+function selectPaymentMethod(method: string) {
+    paymentMethod.value = method;
+    nextTick(() => {
+        const sectionId = method === 'cc' ? 'select_card' : 'select_paypal';
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    });
 }
 
 function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
@@ -672,6 +710,8 @@ async function loadCartData() {
             modules.value = response.modules;
             modulesCounts.value = response.modules_counts;
             prepayAvailable.value = Number(response.prepay);
+            payssionMinAmount.value = Number(response.payssion_min || 0);
+            ccAuto.value = Number(response.cc_auto || 0);
             currencyArr.value = response.currency_arr;
             invoiceDays.value = Number(response.invoice_days);
             /* invrows.value = response.invrows;
@@ -701,6 +741,27 @@ onMounted(() => {
     loadPayPalSdk();
     if (triggerClick.value) {
         $(`#unver_${current_cc_id.value}`).attr('data-step', triggerClick.value).trigger('click');
+    }
+});
+
+// Prepay/regular invoice mutual exclusion: they cannot be paid together
+watch(invoices, (newVal, oldVal) => {
+    if (newVal.length === 0 || oldVal === undefined) return;
+    // Find which invoice was just added
+    const added = newVal.filter((v) => !oldVal.includes(v));
+    if (added.length === 0) return;
+    const addedRow = invrows.value.find((r) => added.includes(r.service_label));
+    if (!addedRow) return;
+    const addedIsPrepay = typeof addedRow.prepay_invoice !== 'undefined';
+    // If a prepay invoice was added, remove all non-prepay; if regular was added, remove all prepay
+    const filtered = newVal.filter((label) => {
+        const row = invrows.value.find((r) => r.service_label === label);
+        if (!row) return true;
+        const isPrepay = typeof row.prepay_invoice !== 'undefined';
+        return isPrepay === addedIsPrepay;
+    });
+    if (filtered.length !== newVal.length) {
+        invoices.value = filtered;
     }
 });
 
@@ -876,10 +937,10 @@ pageInit();
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span v-show="showMethods" id="payments-section">
-                                    <template v-for="(methodData, methodId) in paymentMethodsData" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'cc'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                    <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
+                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                         <template v-else-if="methodData.text == 'PayPal'">
-                                            <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="paymentMethod = 'paypal'">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                            <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                             <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">
                                                 <div style="float: right">{{ methodData.text }}<br />(old)</div>
                                                 <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
@@ -887,6 +948,9 @@ pageInit();
                                         </template>
                                         <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                     </template>
+                                    <router-link v-if="showPrepay" :to="'/pay/prepay/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1">
+                                        PrePay ({{ formattedCost(prepayAvailable) }})
+                                    </router-link>
                                 </span>
                             </div>
                         </div>
@@ -916,7 +980,9 @@ pageInit();
                                         <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">Primary</div>
                                         </div>
-                                        <form id="paymentform" :action="`/pay/cc/${invoices.join(',')}`" method="post">
+                                        <form id="paymentform" :action="'/pay/cc/' + invoices.join(',')" method="post">
+                                            <div id="selected_services"></div>
+                                            <input type="hidden" name="balance" value="1" />
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="icheck-success">
@@ -930,16 +996,14 @@ pageInit();
                                                         <div class="text-muted text-sm">Expires on {{ cc_detail.cc_exp }}</div>
                                                         <div class="my-2">
                                                             <template v-if="selectedCc === Number(cc_id)">
-                                                                <div id="selected_services"></div>
-                                                                <input type="hidden" name="balance" value="1" />
-                                                                <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%" minlength="3" maxlength="4" required :oninvalid="`this.setCustomValidity('Please Enter 3 digit CVV number on credit card number')`" @input="`setCustomValidity('')`" />
+                                                                <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter Your CVV')" oninput="setCustomValidity('')" />
                                                             </template>
                                                             <template v-else> &nbsp; </template>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 pl-4">
-                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="payment_types?action=verify" style="text-decoration: none" :title="cc_detail.unverified_text"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
+                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="javascript:void(0);" style="text-decoration: none" :title="cc_detail.unverified_text" @click.prevent="verifyCard(Number(cc_id))"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
                                                     <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
@@ -979,7 +1043,12 @@ pageInit();
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">No Invoices to pay...</td>
+                                    <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">
+                                        <div class="callout callout-success m-0 p-3">
+                                            <h5 class="text-success">You're all up to date!</h5>
+                                            <p class="mb-0">No unpaid invoices found.</p>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -997,7 +1066,7 @@ pageInit();
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card" style="position: fixed; top: 30%; width: 22%">
+            <div class="card cart-sidebar">
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title float-left py-2"><i class="fa fa-file-invoice">&nbsp;</i>Balance & Invoice Info</h3>
@@ -1121,7 +1190,7 @@ pageInit();
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit-card number')" oninput="setCustomValidity('')" />
+                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit-card number')" @input="onCardNumInput" />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -1131,7 +1200,7 @@ pageInit();
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input id="exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                            <input id="exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" @input="onExpDateInput" />
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -1222,7 +1291,7 @@ pageInit();
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input id="e_exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" oninput="setCustomValidity('')" />
+                                            <input id="e_exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" @input="onExpDateInput" />
                                             <label class="text-md">Expiry Date</label>
                                         </div>
                                     </div>
@@ -1375,3 +1444,37 @@ pageInit();
         </div>
     </div>
 </template>
+
+<style scoped>
+.cart-sidebar {
+    position: fixed;
+    top: 30%;
+    width: 22%;
+}
+
+@media (max-width: 800px) {
+    .cart-sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .table-responsive-cart {
+        overflow-x: auto;
+    }
+
+    .payment-methods-wrap {
+        overflow-x: auto;
+    }
+
+    .cc-card-offset {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cart-sidebar {
+        position: static;
+        width: 100%;
+    }
+}
+</style>
