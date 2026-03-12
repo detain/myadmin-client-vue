@@ -64,7 +64,7 @@
         "@types/wait-on": "*",
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
-        "@unhead/vue": "^1.8",
+        "@unhead/vue": "^2.1",
         "@vitejs/plugin-basic-ssl": "*",
         "@vitejs/plugin-vue": "*",
         "@vitest/browser-playwright": "*",
