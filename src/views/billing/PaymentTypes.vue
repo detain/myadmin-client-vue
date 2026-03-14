@@ -17,12 +17,15 @@ siteStore.setBreadcrums([
     ['', 'Payment Types'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-const { loading, error, data } = storeToRefs(accountStore);
+const { data } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
 const selectedCc = ref(0);
-const editCcIdx = ref(0);
+const modalCcIdx = ref(0);
 const cc_auto_checked = ref(false);
 const countries = ref({});
+const cc_ccv2 = ref('');
+const cc_amount1 = ref('');
+const cc_amount2 = ref('');
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -40,7 +43,6 @@ interface SimpleStringObj {
 }
 
 function deleteCardModal(cc_id = 0) {
-    $('#cc_idx').val(cc_id);
     Swal.fire({
         icon: 'warning',
         title: '<h3>Delete CreditCard</h3> ',
@@ -52,6 +54,7 @@ function deleteCardModal(cc_id = 0) {
             try {
                 fetchWrapper.delete(`${baseUrl}/billing/creditcards/${cc_id}`).then((response) => {
                     console.log('delete cc success', response);
+                    accountStore.load();
                 });
             } catch (error: any) {
                 console.log('delete cc failed', error);
@@ -75,16 +78,17 @@ function addCardSubmit() {
             })
             .then((response) => {
                 console.log('add cc success', response);
+                accountStore.load();
             });
     } catch (error: any) {
         console.log('add cc failed', error);
     }
 }
 
-function editCardSubmit() {
+async function editCardSubmit() {
     try {
         fetchWrapper
-            .post(`${baseUrl}/billing/creditcards/${editCcIdx.value}`, {
+            .post(`${baseUrl}/billing/creditcards/${modalCcIdx.value}`, {
                 cc_exp: contFields.cc_exp,
             })
             .then((response) => {
@@ -95,17 +99,45 @@ function editCardSubmit() {
     }
 }
 
-function addCardModal() {
+async function verifyCardSubmit() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/billing/creditcards/${modalCcIdx.value}/verify`, {
+                cc_ccv2: cc_ccv2.value,
+            })
+            .then((response) => {
+                console.log('edit cc success', response);
+            });
+    } catch (error: any) {
+        console.log('edit cc failed', error);
+    }
+}
+
+async function verifyAmountSubmit() {
+    try {
+        fetchWrapper
+            .post(`${baseUrl}/billing/creditcards/${modalCcIdx.value}/verify`, {
+                cc_exp: contFields.cc_exp,
+            })
+            .then((response) => {
+                console.log('edit cc success', response);
+            });
+    } catch (error: any) {
+        console.log('edit cc failed', error);
+    }
+}
+
+async function addCardModal() {
     for (let key in contFields) {
         contFields[key] = data.value[key] && key != 'cc' && key != 'cc_exp' ? data.value[key] : '';
     }
 }
 
 function editCardModal(cc_id = 0) {
-    editCcIdx.value = cc_id;
+    modalCcIdx.value = cc_id;
     for (let key in contFields) {
-        if (data.value.ccs[editCcIdx.value][key]) {
-            contFields[key] = data.value.ccs[editCcIdx.value][key];
+        if (data.value.ccs[modalCcIdx.value][key]) {
+            contFields[key] = data.value.ccs[modalCcIdx.value][key];
         } else if (data.value[key]) {
             contFields[key] = data.value[key];
         } else {
@@ -115,7 +147,8 @@ function editCardModal(cc_id = 0) {
     $('#edit-card').modal('show');
 }
 
-function verifyCard(cc_id = 0) {
+async function verifyCard(cc_id = 0) {
+    modalCcIdx.value = cc_id;
     if (!data.value.ccs[cc_id].verify_charged) {
         $('#verify-card-1').modal('show');
     } else {
@@ -123,7 +156,7 @@ function verifyCard(cc_id = 0) {
     }
 }
 
-function updatePaymentMethod() {
+async function updatePaymentMethod() {
     try {
         fetchWrapper
             .post(`${baseUrl}/billing/payment_method`, {
@@ -132,13 +165,14 @@ function updatePaymentMethod() {
             })
             .then((response) => {
                 console.log('update payment method success', response);
+                accountStore.load();
             });
     } catch (error: any) {
         console.log('update payment method failed', error);
     }
 }
 
-function formatCardNum(e: any) {
+async function formatCardNum(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -158,7 +192,7 @@ function formatCardNum(e: any) {
     e.target.selectionStart = e.target.selectionEnd = caretPosition;
 }
 
-function formatExpDate(e: any) {
+async function formatExpDate(e: any) {
     if (e.target.value == e.target.lastValue) return;
     let caretPosition = e.target.selectionStart;
     const sanitizedValue = e.target.value.replace(/[^0-9]/gi, '');
@@ -205,26 +239,19 @@ watch(
     () => data.value,
     (val) => {
         if (!val) return;
-
-        /* -------------------------
-           PAYMENT METHOD
-        -------------------------- */
+        /* ------------------------- PAYMENT METHOD -------------------------- */
         if (val.payment_method === 'paypal') {
             paymentMethod.value = 'paypal';
         } else if (val.payment_method === 'cc') {
             // find matching credit card
             const match = Object.entries(val.ccs || {}).find(([, cc]) => cc.cc === val.cc && cc.cc_exp === val.cc_exp);
-
             if (match) {
                 const [cc_id] = match;
                 paymentMethod.value = `cc${cc_id}`;
                 selectedCc.value = Number(cc_id);
             }
         }
-
-        /* -------------------------
-           AUTO-CHARGE CHECKBOX
-        -------------------------- */
+        /* ------------------------- AUTO-CHARGE CHECKBOX -------------------------- */
         cc_auto_checked.value = val.cc_auto == '1';
     },
     { immediate: true }
@@ -268,7 +295,7 @@ onMounted(() => {
                             <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <i :class="{ 'fas fa-check': cc_detail.verified == true, 'fas fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" :id="'unver_' + cc_id" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><i class="fas fa-exclamation-triangle"></i> Verify</a>
+                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><i class="fas fa-exclamation-triangle"></i> Verify</a>
                             <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Update the Expiration Date" @click="editCardModal(Number(cc_id))"><i class="fas fa-edit"></i> Edit</a>
                             <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Remove this Credit Card" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fas fa-trash"></i> Delete</a>
                         </div>
@@ -294,11 +321,10 @@ onMounted(() => {
                 </div>
                 <div class="modal-body">
                     <form method="post" class="form-card" @submit.prevent="addCardSubmit">
-                        <input type="hidden" name="action" value="add" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit creditcard number')" oninput="setCustomValidity('')" />
+                                    <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit-card number')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Card Number</label>
                                 </div>
                             </div>
@@ -314,7 +340,7 @@ onMounted(() => {
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')" />
+                                            <input type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on credit-card number')" oninput="setCustomValidity('')" />
                                             <label class="text-md">CVV</label>
                                         </div>
                                     </div>
@@ -385,8 +411,7 @@ onMounted(() => {
                 </div>
                 <div class="modal-body">
                     <form id="EditForm" method="post" class="form-card" @submit.prevent="editCardSubmit">
-                        <input type="hidden" name="action" value="edit" />
-                        <input id="e_cc_idx" v-model="editCcIdx" type="hidden" name="idx" />
+                        <input id="e_cc_idx" v-model="modalCcIdx" type="hidden" name="idx" />
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
@@ -406,7 +431,7 @@ onMounted(() => {
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input id="ccv2" type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on creditcard number')" oninput="setCustomValidity('')" disabled />
+                                            <input id="ccv2" type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on credit-card number')" oninput="setCustomValidity('')" disabled />
                                             <label class="text-md">CVV</label>
                                         </div>
                                     </div>
@@ -476,9 +501,7 @@ onMounted(() => {
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="VerifyForm" method="post" class="form-card">
-                        <input type="hidden" name="action" value="verify" />
-                        <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
+                    <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyCardSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
@@ -489,7 +512,7 @@ onMounted(() => {
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <input type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')" />
+                                    <input v-model="cc_ccv2" type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')" />
                                     <label class="text-md">Card Security Code (CVV / CSV)</label>
                                 </div>
                             </div>
@@ -517,9 +540,7 @@ onMounted(() => {
                     <h4 class="modal-title">Credit Card Verification</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="VerifyForm" method="post" class="form-card">
-                        <input type="hidden" name="action" value="verify" />
-                        <input id="v_cc_idx" class="v_cc_idx" type="hidden" name="idx" value="" />
+                    <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyAmountSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
@@ -532,13 +553,13 @@ onMounted(() => {
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" name="cc_amount1" />
+                                            <input v-model="cc_amount1" type="text" name="cc_amount1" />
                                             <label class="text-md">Amount 1</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
-                                            <input type="text" name="cc_amount2" />
+                                            <input v-model="cc_amount2" type="text" name="cc_amount2" />
                                             <label class="text-md">Amount 2</label>
                                         </div>
                                     </div>

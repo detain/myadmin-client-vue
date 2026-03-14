@@ -8,7 +8,7 @@ import globals from 'globals';
 
 export default [
     {
-        ignores: ['dist/**', 'out/**', 'build/**', 'dev-dist/**', 'node_modules/**', 'android/**', 'ios/**'],
+        ignores: ['.claude/**', 'dist/**', 'out/**', 'build/**', 'dev-dist/**', 'node_modules/**', 'android/**', 'ios/**'],
     },
     // ------------------------------------------------------------
     // ESLint core recommended
