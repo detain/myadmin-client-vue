@@ -77,21 +77,11 @@ export default defineConfig({
         modulePreload: {
             polyfill: true,
         },
-        rollupOptions: {
-            preserveEntrySignatures: 'allow-extension',
+        rolldownOptions: {
             output: {
-                preserveModules: false,
-                validate: true,
-                inlineDynamicImports: false,
-                interop: 'compat', // "compat"| "auto"| "esModule"| "default"| "defaultOnly"
-                format: 'es', // es | umd
+                format: 'es',
                 globals: {
                     jquery: '$',
-                },
-                generatedCode: {
-                    preset: 'es2015', // es5 | es2015
-                    constBindings: true,
-                    arrowFunctions: true,
                 },
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
