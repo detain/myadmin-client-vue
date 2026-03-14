@@ -199,6 +199,5 @@
         "workerDirectory": [
             "public"
         ]
-    },
-    "dependencies": {}
+    }
 }
