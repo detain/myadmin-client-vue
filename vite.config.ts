@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
-import inject from '@rollup/plugin-inject';
 import Inspect from 'vite-plugin-inspect';
 import { VitePWA } from 'vite-plugin-pwa';
 /* import AutoImport from "unplugin-auto-import/vite";
@@ -32,9 +31,6 @@ export default defineConfig({
         }),
         dts({
             insertTypesEntry: true,
-        }),
-        inject({
-            jQuery: 'jquery',
         }),
         /*
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
