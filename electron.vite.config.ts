@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
     main: {
         build: {
-            rollupOptions: {
+            rolldownOptions: {
                 input: {
                     index: resolve(__dirname, 'electron/main/index.ts'),
                 },
@@ -17,7 +17,7 @@ export default defineConfig({
     },
     preload: {
         build: {
-            rollupOptions: {
+            rolldownOptions: {
                 input: {
                     index: resolve(__dirname, 'electron/preload/index.ts'),
                 },
@@ -27,7 +27,7 @@ export default defineConfig({
     renderer: {
         root: '.',
         build: {
-            rollupOptions: {
+            rolldownOptions: {
                 input: {
                     index: resolve(__dirname, 'index.html'),
                 },

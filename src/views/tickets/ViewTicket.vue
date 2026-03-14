@@ -585,7 +585,7 @@ onMounted(loadTicket);
 
 <style scoped>
 @import 'prismjs/themes/prism.css';
-@importt '../../assets/css/view_admin_ticket.css';
+@import '../../assets/css/view_admin_ticket.css';
 
 .results {
     width: 100%;
