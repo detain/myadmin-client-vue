@@ -86,7 +86,7 @@ const filteredData = computed(() => {
 
 const computedOrderRoute = computed(() => {
     if (props.orderRoute) return props.orderRoute;
-    return '/' + moduleLink(props.module) + '/order';
+    return `/${moduleLink(props.module)}/order`;
 });
 
 const exportFormats = [
@@ -96,7 +96,7 @@ const exportFormats = [
     { type: 'pdf', title: 'Adobe Portable Document Format', label: 'PDF', img: pdfImg },
     { type: 'xml', title: 'Extensible Markup Language', label: 'XML', img: xmlImg },
     { type: 'php', title: 'PHP Array', label: 'PHP', img: phpImg },
-    { type: 'csv', title: 'Comma-Seperated Values', label: 'CSV', img: csvImg },
+    { type: 'csv', title: 'Comma-Separated Values', label: 'CSV', img: csvImg },
     { type: 'json', title: 'JSON', label: 'JSON', img: jsonImg },
     { type: 'bbcode', title: 'BBcode', label: 'BBCODE', img: bbcodeImg },
     { type: 'wiki', title: 'WikiCode', label: 'WIKI', img: wikiImg },
@@ -152,25 +152,10 @@ function crud_export(exportType: string): void {
                                 <table id="crud-table" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%">
                                     <thead>
                                         <tr>
-                                            <th
-                                                v-for="col in columns"
-                                                :key="col.key"
-                                                :class="{ sortable: col.sortable !== false }"
-                                                @click="toggleSort(col)"
-                                                style="cursor: pointer; user-select: none;"
-                                            >
+                                            <th v-for="col in columns" :key="col.key" :class="{ sortable: col.sortable !== false }" style="cursor: pointer; user-select: none;" @click="toggleSort(col)">
                                                 {{ col.label }}
-                                                <i
-                                                    v-if="col.sortable !== false && sortField === col.key"
-                                                    class="fa"
-                                                    :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"
-                                                    style="margin-left: 4px;"
-                                                ></i>
-                                                <i
-                                                    v-else-if="col.sortable !== false"
-                                                    class="fa fa-sort"
-                                                    style="margin-left: 4px; opacity: 0.3;"
-                                                ></i>
+                                                <i v-if="col.sortable !== false && sortField === col.key" class="fa" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" style="margin-left: 4px;"></i>
+                                                <i v-else-if="col.sortable !== false" class="fa fa-sort" style="margin-left: 4px; opacity: 0.3;"></i>
                                             </th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -209,10 +194,6 @@ div.dataTables_length label,
 div.dataTables_filter label {
     text-align: left;
     white-space: nowrap;
-}
-
-div.dataTables_filter {
-    text-align: right;
 }
 
 th.sortable:hover {
