@@ -17,6 +17,8 @@ const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(siteStore);
 const { loading, error, custid, ima, data, ip, gravatar } = storeToRefs(accountStore);
 const timezones = ref<string[]>([]);
+const currencies = ref<string[]>([]);
+const locales = ref<Record<string, string>>({});
 siteStore.setPageHeading('Contact Info');
 siteStore.setTitle('Contact Info');
 siteStore.setBreadcrums([
@@ -86,9 +88,31 @@ async function loadTimezones() {
     }
 }
 
+async function loadCurrencies() {
+    try {
+        await fetchWrapper.get(`${baseUrl}/account/currencies`).then((response) => {
+            currencies.value = response;
+        });
+    } catch (error: any) {
+        console.log('error loading currencies:', error);
+    }
+}
+
+async function loadLocales() {
+    try {
+        await fetchWrapper.get(`${baseUrl}/account/locales`).then((response) => {
+            locales.value = response;
+        });
+    } catch (error: any) {
+        console.log('error loading locales:', error);
+    }
+}
+
 accountStore.load();
 loadCountries();
 loadTimezones();
+loadCurrencies();
+loadLocales();
 </script>
 
 <template>
@@ -178,6 +202,25 @@ loadTimezones();
                                     <div class="col-md-6">
                                         <input id="phone" v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" placeholder="Phone Number" required />
                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="locale">Language</label>
+                                    <div class="col-md-6">
+                                        <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
+                                            <option value="auto">Auto</option>
+                                            <option v-for="(name, code, index) in locales" :key="index" :value="code">{{ code }} - {{ name }}</option>
+                                        </select>
+                                    </div>
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="currency">Currency</label>
+                                    <div class="col-md-6">
+                                        <select id="currency" v-model="data.currency" name="currency" class="form-control select2 form-control-sm">
+                                            <option v-for="(currency, index) in currencies" :key="index" :value="currency">{{ currency }}</option>
+                                        </select>
+                                    </div>
+                                    <span class="form-text"></span>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="timezone">Time Zone</label>
