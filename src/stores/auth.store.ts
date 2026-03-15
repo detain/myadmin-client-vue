@@ -195,6 +195,20 @@ n,
                 alertStore.error(error);
             }
         },
+        setOAuthSession(data: any): void {
+            this.resetStores();
+            this.user = {
+                sessionId: data.sessionId,
+                account_id: data.account_id,
+                account_lid: data.account_lid,
+                ima: data.ima || 'client',
+                name: data.name || '',
+                gravatar: data.gravatar || '',
+            };
+            this.sessionId = data.sessionId;
+            localStorage.setItem('user', JSON.stringify(this.user));
+            localStorage.setItem('sessionId', this.sessionId || '');
+        },
         async logout(): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();

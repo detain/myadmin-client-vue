@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
+import { router } from '@/router/index';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 //import { Form, Field } from 'vee-validate';
@@ -14,7 +15,7 @@ const authStore = useAuthStore();
 const { logo, captcha, language, counts, opts, remember } = storeToRefs(authStore);
 const baseUrl = siteStore.getBaseUrl();
 const gresponse = ref('');
-const isLogin = ref(true);
+const isLogin = ref(!window.location.pathname.endsWith('/signup'));
 const isPasswordVisible = ref(false);
 const login = ref('');
 const password = ref('');
@@ -30,6 +31,9 @@ const oauthNeeds2FA = ref(false);
 const oauthAccountId = ref<number | null>(null);
 const oauthLinkRequired = ref(false);
 const oauthErrorMessage = ref('');
+const oauthToken = ref<string | null>(null);
+const oauthEmail = ref('');
+const oauthDisplayName = ref('');
 const validClass = 'fa-check bg-green p-1';
 const invalidClass = 'fa-close bg-red px-2 py-1';
 const containerRef = ref<HTMLElement | null>(null);
@@ -92,6 +96,11 @@ async function toggleCaptchaMethod() {
 
 async function toggleForgotPass() {
     showForgotPass.value = !showForgotPass.value;
+}
+
+function toggleLoginSignup() {
+    isLogin.value = !isLogin.value;
+    router.replace(isLogin.value ? '/login' : '/signup');
 }
 
 function setModalMaxHeight(element: HTMLElement | JQuery<HTMLElement>) {
@@ -412,133 +421,103 @@ async function onLoginSubmit() {
 }
 
 async function oAuthLogin(provider: string) {
-    try {
-    /*    Swal.fire({
-            title: 'Redirecting...',
-            html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
-            showConfirmButton: false,
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-        });*/
-        const popup = window.open(
-            `${baseUrl}/oauth?provider=${provider}`,
-            'oauth', 'width=600,height=600'
-        );
-        window.addEventListener('message', async (event) => {
-            console.log("Got Event", event);
-            const data = event.data;
-            switch (data.type) {
-                case 'oauth_success':
-                    // Logged in! data has: sessionId, account_id, account_lid, name, gravatar
-                    break;
-                case 'oauth_2fa_required':
-                    // Prompt user for 2FA code, then:
-                    // PATCH /apiv2/oauth with { code: "123456" }
-                    break;
-                case 'oauth_link_required':
-                    // No linked account. data has: email, provider, display_name
-                    // Show login/signup form, then:
-                    // POST /apiv2/oauth with { login, password } to link existing
-                    // POST /apiv2/oauth with { login, password, create: true } for new account
-                    break;
-                case 'oauth_error':
-                    // Show data.message
-                    break;
-            }
-        });
-        /*
-// Link existing account (POST /apiv2/oauth)
-fetch('/apiv2/oauth', {
-  method: 'POST',
-  credentials: 'include',
-  body: new URLSearchParams({ login: email, password: pw })
-});
-// Verify 2FA (PATCH /apiv2/oauth)
-fetch('/apiv2/oauth', {
-  method: 'PATCH',
-  credentials: 'include',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ code: '123456' })
-});
-
-         */
-
-        /*
-        const data: any = await fetchWrapper.get(`${baseUrl}/oauth?provider=${provider}`);
-        if (!data.redirect_url) {
-            throw new Error('Missing redirect URL');
-        }
-        sessionStorage.setItem('oauth_provider', provider);
-        // Full redirect — NOT popup
-        window.location.href = data.redirect_url;
-        */
-    } catch (err: any) {
-        /* Swal.close();
-        Swal.fire('Error', err.message || 'OAuth error', 'error'); */
-    }
-}
-
-async function handleOAuthCallback() {
-    const url = new URL(window.location.href);
-    const provider = url.searchParams.get('provider') || sessionStorage.getItem('oauth_provider') || '';
-    const code = url.searchParams.get('code');
-    if (!provider || !code) return;
     oauthProvider.value = provider;
-    try {
-        Swal.fire({
-            title: 'Signing you in...',
-            html: '<i class="fas fa-spinner fa-spin fa-2x"></i>',
-            showConfirmButton: false,
-            allowOutsideClick: false,
-        });
-        const data: any = await fetchWrapper.post(`${baseUrl}/oauth?provider=${provider}&code=${code}`, {});
-        Swal.close();
-        if (data.login || data.signup) {
-            sessionStorage.removeItem('oauth_provider');
-            // Clean URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-            // Reload auth store
-            await authStore.load();
-            // Redirect to dashboard
-            window.location.href = '/';
-        } else {
-            Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
+    const origin = encodeURIComponent(window.location.origin);
+    const popup = window.open(
+        `${baseUrl}/oauth?provider=${provider}&origin=${origin}`,
+        'oauth', 'width=600,height=600'
+    );
+    window.addEventListener('message', async (event) => {
+        // Only accept messages from our API domain
+        if (!event.origin.includes('interserver.net')) return;
+        const data = event.data;
+        if (!data || !data.type) return;
+        console.log('OAuth postMessage:', data);
+        switch (data.type) {
+            case 'oauth_success':
+                // Logged in — store session and redirect
+                authStore.setOAuthSession(data);
+                await router.push(authStore.returnUrl || '/');
+                break;
+            case 'oauth_2fa_required':
+                oauthNeeds2FA.value = true;
+                oauthAccountId.value = data.account_id;
+                oauthToken.value = data.oauth_token;
+                oauthErrorMessage.value = '';
+                break;
+            case 'oauth_link_required':
+                oauthLinkRequired.value = true;
+                oauthToken.value = data.oauth_token;
+                oauthEmail.value = data.email || '';
+                oauthDisplayName.value = data.display_name || '';
+                login.value = data.email || '';
+                oauthErrorMessage.value = '';
+                break;
+            case 'oauth_error':
+                oauthErrorMessage.value = data.message || 'OAuth authentication failed';
+                Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
+                break;
         }
-    } catch (err: any) {
-        Swal.close();
-        const errorCode = err?.error || err?.message || '';
-        if (errorCode === '2fa_required') {
-            oauthNeeds2FA.value = true;
-            oauthAccountId.value = Number(err?.account_id || err?.details?.account_id || 0);
-            oauthErrorMessage.value = '';
-            window.history.replaceState({}, document.title, window.location.pathname);
-            return;
-        }
-        if (errorCode === 'account_exists_not_linked') {
-            oauthLinkRequired.value = true;
-            oauthErrorMessage.value = '';
-            window.history.replaceState({}, document.title, window.location.pathname);
-            return;
-        }
-        oauthErrorMessage.value = err?.message || 'Authentication failed';
-        Swal.fire('OAuth Error', oauthErrorMessage.value, 'error');
-    }
+    }, { once: true });
 }
+
+// OAuth callback is now handled via postMessage in oAuthLogin()
 
 async function submitOAuth2FA() {
     try {
         const data: any = await fetchWrapper.patch(`${baseUrl}/oauth`, {
-            account_id: oauthAccountId.value,
             code: twoFactorAuthCode.value,
+            oauth_token: oauthToken.value,
         });
         if (data.login) {
-            sessionStorage.removeItem('oauth_provider');
-            window.location.href = '/';
+            authStore.setOAuthSession(data);
+            oauthNeeds2FA.value = false;
+            oauthToken.value = null;
+            await router.push(authStore.returnUrl || '/');
         } else {
             Swal.fire('Invalid Code', 'Please try again', 'error');
         }
     } catch (e) {
         Swal.fire('Error', '2FA verification failed', 'error');
+    }
+}
+
+async function submitOAuthLink(createNew: boolean = false) {
+    if (!login.value || !password.value) {
+        Swal.fire('Error', 'Please enter email and password', 'warning');
+        return;
+    }
+    try {
+        const body: any = {
+            login: login.value,
+            password: password.value,
+            oauth_token: oauthToken.value,
+        };
+        if (createNew) {
+            body.create = true;
+        }
+        if (emailCode.value) {
+            body.email_confirmation = emailCode.value;
+        }
+        const data: any = await fetchWrapper.post(`${baseUrl}/oauth`, body);
+        if (data.linked || data.signup || data.sessionId) {
+            authStore.setOAuthSession(data);
+            oauthLinkRequired.value = false;
+            oauthToken.value = null;
+            await router.push(authStore.returnUrl || '/');
+        }
+    } catch (error: any) {
+        if (error?.message === 'email_verification_required') {
+            // Show email verification input — the token is still valid for retry
+            Swal.fire('Verify Email', 'A verification code has been sent to your email.', 'info');
+        } else if (error?.message === '2fa_required') {
+            oauthLinkRequired.value = false;
+            oauthNeeds2FA.value = true;
+            oauthErrorMessage.value = '';
+        } else {
+            oauthErrorMessage.value = error?.message || 'Failed to link account';
+            Swal.fire('Error', oauthErrorMessage.value, 'error');
+        }
     }
 }
 
@@ -599,7 +578,6 @@ function loadTurnstileScript(): Promise<void> {
 
 onMounted(async () => {
     await loadTurnstileScript();
-    await handleOAuthCallback();
     widgetId.value = window.turnstile.render(containerRef.value, {
         sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
         callback: (token: string) => {
@@ -768,6 +746,33 @@ authStore.load();
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
                                                 <i class="fab fa-twitter"></i>
                                             </a>
+                                        </div>
+                                        <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
+                                            <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
+                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
+                                            <div v-if="oauthNeeds2FA" class="input-group mb-2">
+                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
+                                                </div>
+                                            </div>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">No linked account found for <strong>{{ oauthDisplayName || oauthEmail }}</strong>. Enter your existing login credentials to link, or create a new account.</p>
+                                            <div v-if="oauthLinkRequired">
+                                                <div class="input-group mb-2">
+                                                    <input v-model="login" type="email" class="form-control" placeholder="Email Address" autocomplete="off" />
+                                                </div>
+                                                <div class="input-group mb-2">
+                                                    <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="off" />
+                                                </div>
+                                                <div v-if="emailCode !== ''" class="input-group mb-2">
+                                                    <input v-model="emailCode" type="text" class="form-control" placeholder="Email Verification Code" autocomplete="off" />
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">Link Existing Account</button>
+                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">Create New Account</button>
+                                                </div>
+                                            </div>
+                                            <div v-if="oauthErrorMessage" class="mt-2 text-sm text-red-600">{{ oauthErrorMessage }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -970,14 +975,29 @@ authStore.load();
                                         <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
                                             <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
                                             <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
-                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">This social email already exists in MyAdmin but is not linked to this provider yet. Please log in with email/password and link this provider from account settings.</p>
                                             <div v-if="oauthNeeds2FA" class="input-group mb-2">
                                                 <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
                                                 <div class="input-group-append">
                                                     <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
                                                 </div>
                                             </div>
-                                            <div v-if="oauthErrorMessage" class="text-sm text-red-600">{{ oauthErrorMessage }}</div>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">No linked account found for <strong>{{ oauthDisplayName || oauthEmail }}</strong>. Enter your existing login credentials to link, or create a new account.</p>
+                                            <div v-if="oauthLinkRequired">
+                                                <div class="input-group mb-2">
+                                                    <input v-model="login" type="email" class="form-control" placeholder="Email Address" autocomplete="off" />
+                                                </div>
+                                                <div class="input-group mb-2">
+                                                    <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="off" />
+                                                </div>
+                                                <div v-if="emailCode !== '' || oauthErrorMessage === 'email_verification_required'" class="input-group mb-2">
+                                                    <input v-model="emailCode" type="text" class="form-control" placeholder="Email Verification Code" autocomplete="off" />
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">Link Existing Account</button>
+                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">Create New Account</button>
+                                                </div>
+                                            </div>
+                                            <div v-if="oauthErrorMessage" class="mt-2 text-sm text-red-600">{{ oauthErrorMessage }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -985,8 +1005,8 @@ authStore.load();
                         </div>
                     </div>
                 </Transition>
-                <div v-show="isLogin && !showForgotPass" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Sign Up</a></div>
-                <div v-show="!isLogin && !showForgotPass" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="isLogin = !isLogin">Login</a></div>
+                <div v-show="isLogin && !showForgotPass" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">Sign Up</a></div>
+                <div v-show="!isLogin && !showForgotPass" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">Login</a></div>
                 <div class="p-1 text-center text-sm text-gray-500">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
             </div>
         </div>
