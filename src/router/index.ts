@@ -7,6 +7,15 @@ export const router = createRouter({
     routes: [
         { path: '/', component: () => import('../views/ClientHome.vue') },
         { path: '/login', component: () => import('../views/Login.vue') },
+        {
+            path: '/logout',
+            component: () => import('../views/Login.vue'),
+            beforeEnter: async () => {
+                const authStore = useAuthStore();
+                await authStore.logout();
+                return '/login';
+            },
+        },
         { path: '/signup', component: () => import('../views/Login.vue') },
         { path: '/login_old', component: () => import('../views/LoginOld.vue') },
         { path: '/register', component: () => import('../views/Register.vue') },
