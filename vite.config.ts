@@ -22,6 +22,7 @@ export default defineConfig({
         environment: 'jsdom',
         reporters: ['default', 'html'],
         setupFiles: ['./test/setup.ts'],
+        exclude: ['**/.claude/**', '**/e2e/**', '**/node_modules/**'],
     },
     plugins: [
         vue({
