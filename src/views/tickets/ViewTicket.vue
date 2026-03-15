@@ -179,9 +179,9 @@ function statusIcon(status: string) {
         case 'Open':
             return 'far fa-envelope-open text-success';
         case 'On Hold':
-            return 'fa fa-pause text-warning';
+            return 'fas fa-pause text-warning';
         case 'In Progress':
-            return 'fa fa-hourglass-half text-secondary';
+            return 'fas fa-hourglass-half text-secondary';
         default:
             return 'far fa-envelope text-danger';
     }
@@ -397,7 +397,7 @@ onMounted(loadTicket);
                 </div>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
+                        <RouterLink to="/tickets/new" class="nav-link"> <i class="fas fa-plus-circle text-info" /> New Ticket </RouterLink>
                     </li>
                     <li class="nav-item">
                         <RouterLink to="/tickets" class="nav-link"> <i class="fas fa-inbox text-primary">&nbsp;</i>ALL </RouterLink>

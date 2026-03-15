@@ -266,7 +266,7 @@ onMounted(() => {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card-body text-red px-0">
-                <strong class="pr-2"><i class="fa fa-lightbulb"></i> Note: </strong> All credit cards must be verified before they can be used. To verify them click the "Verify" button.
+                <strong class="pr-2"><i class="far fa-lightbulb"></i> Note: </strong> All credit cards must be verified before they can be used. To verify them click the "Verify" button.
             </div>
         </div>
     </div>

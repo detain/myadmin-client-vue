@@ -205,7 +205,7 @@ function submitForm() {
 function submitLicenseForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -314,7 +314,7 @@ loadLicenseData();
                                 Order {{ getLicenses[catTag]?.name }} License
                             </h3>
                             <div class="card-tools float-right">
-                                <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative; top: 5px"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative; top: 5px"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -361,7 +361,7 @@ loadLicenseData();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -390,7 +390,7 @@ loadLicenseData();
                 <div v-if="catTag == 'litespeed' || catTag == 'directadmin'" class="card">
                     <div class="p-1">
                         <div class="card-header py-2">
-                            <h3 class="card-title"><i class="fa fa-suitcase">&nbsp;</i>Package Details</h3>
+                            <h3 class="card-title"><i class="fas fa-suitcase">&nbsp;</i>Package Details</h3>
                         </div>
                     </div>
                     <div class="card-body text-md">
@@ -419,7 +419,7 @@ loadLicenseData();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -486,7 +486,7 @@ loadLicenseData();
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <router-link :to="`/licenses/order/${catTag}`" class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style=""><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</router-link>
+                                    <router-link :to="`/licenses/order/${catTag}`" class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style=""><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</router-link>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" />
                                 </div>
                             </div>

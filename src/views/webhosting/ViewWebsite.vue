@@ -272,7 +272,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-link" aria-hidden="true">&nbsp;</i>External Links</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true">&nbsp;</i>External Links</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <i class="fas fa-minus" aria-hidden="true"></i>
@@ -328,7 +328,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-plus">&nbsp;</i>{{ extraInfoTables.addons.title }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-plus">&nbsp;</i>{{ extraInfoTables.addons.title }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>

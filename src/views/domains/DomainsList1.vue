@@ -65,13 +65,13 @@ function setStatusLimit(event: Event) {
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" title="Order Domain Registrations"><i class="fa fa-shopping-cart"></i> Order</a>
+                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" title="Order Domain Registrations"><i class="fas fa-shopping-cart"></i> Order</a>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fa fa-print crud-icon"></i>Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fas fa-print crud-icon"></i>Print</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
                                         <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> XLSX</a>

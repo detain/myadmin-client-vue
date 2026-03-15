@@ -82,7 +82,7 @@ export default {
                 <hr />
                 <div v-if="data['2fa_google_enabled']">
                     <p class="text-success mt-4 text-center">
-                        <strong><i class="fa fa-check-square" style="">&nbsp;</i>Two Factor Authentication Enabled</strong>
+                        <strong><i class="far fa-check-square" style="">&nbsp;</i>Two Factor Authentication Enabled</strong>
                     </p>
                 </div>
                 <div v-else id="2fa_google" class="row">

@@ -405,7 +405,7 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-microchip">&nbsp;</i>System Information</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-microchip">&nbsp;</i>System Information</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -452,7 +452,7 @@ function loadLink(newLink: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fa fa-map-marker-alt">&nbsp;</i>IP Information</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-map-marker-alt">&nbsp;</i>IP Information</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -482,7 +482,7 @@ function loadLink(newLink: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fa fa-tachometer-alt">&nbsp;</i>{{ extraInfoTables.cp.title }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-tachometer-alt">&nbsp;</i>{{ extraInfoTables.cp.title }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -512,7 +512,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2">
-                                <i class="fa fa-plus">&nbsp;</i>
+                                <i class="fas fa-plus">&nbsp;</i>
                                 {{ extraInfoTables.addons.title }}
                             </h3>
                             <div class="card-tools float-right">
@@ -543,7 +543,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2">
-                                <i class="fa fa-exclamation">&nbsp;</i>
+                                <i class="fas fa-exclamation">&nbsp;</i>
                                 {{ extraInfoTables.note.title }}
                             </h3>
                             <div class="card-tools float-right">

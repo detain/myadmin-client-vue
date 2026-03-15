@@ -28,7 +28,7 @@ const clientIp = ref(ip.value);
 function emailIpmiLink() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -58,7 +58,7 @@ function emailIpmiLink() {
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -112,8 +112,8 @@ accountStore.loadOnce();
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fab fa-connectdevelop">&nbsp;</i>IPMI IP</h3>
                         <div class="card-tools float-right">
-                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><i class="fa fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><i class="far fa-paper-plane" aria-hidden="true">&nbsp;</i>Email IPMI Credentials</a>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

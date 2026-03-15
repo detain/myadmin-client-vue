@@ -87,7 +87,7 @@ async function editForm() {
 async function onSubmit(values: any) {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! validating data',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -122,7 +122,7 @@ async function onSubmit(values: any) {
 async function placeOrder(values: any) {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -183,7 +183,7 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Mail</h3>
+                            <h3 class="card-title py-2"><i class="far fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Mail</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -216,7 +216,7 @@ try {
                     <div class="card-footer">
                         <div class="row text-center">
                             <div class="controls col-md-12">
-                                <b><i class="fa fa-info-circle text-info" aria-hidden="true"></i></b>
+                                <b><i class="fas fa-info-circle text-info" aria-hidden="true"></i></b>
                                 Visit <a href="https://mail.baby" class="text-info underline" target="_blank"><u>https://mail.baby</u></a> for more information.
                             </div>
                         </div>
@@ -228,7 +228,7 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -266,7 +266,7 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>

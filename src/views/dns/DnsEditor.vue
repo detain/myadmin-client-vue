@@ -188,9 +188,9 @@ loadDns();
     <div id="records" class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2"><i class="fa fa-table"></i>&nbsp;DNS Records</h3>
+                <h3 class="card-title py-2"><i class="fas fa-table"></i>&nbsp;DNS Records</h3>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>

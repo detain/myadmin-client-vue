@@ -73,7 +73,7 @@ const submitForm = () => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="material-icons">transfer_within_a_station&nbsp;</i>Migrate Your Website</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const submitForm = () => {
                         <div class="card mb-0 shadow-none">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h3 class="card-title text-bold"><i aria-hidden="true" class="fa fa-info-circle">&nbsp;</i>Current Web Host Info</h3>
+                                    <h3 class="card-title text-bold"><i aria-hidden="true" class="fas fa-info-circle">&nbsp;</i>Current Web Host Info</h3>
                                 </div>
                             </div>
                             <div class="card-body pb-0">
@@ -147,7 +147,7 @@ const submitForm = () => {
                         <div class="card shadow-none">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h5 class="card-title text-bold"><i aria-hidden="true" class="fa fa-info-circle">&nbsp;</i>Domain Registry Information</h5>
+                                    <h5 class="card-title text-bold"><i aria-hidden="true" class="fas fa-info-circle">&nbsp;</i>Domain Registry Information</h5>
                                 </div>
                             </div>
                             <div class="card-body">

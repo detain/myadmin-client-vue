@@ -156,10 +156,10 @@ useDarkMode();
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="/cart" class="nav-link" title="Cart"><i class="fa fa-shopping-cart"></i></router-link>
+                    <router-link to="/cart" class="nav-link" title="Cart"><i class="fas fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fa fa-power-off"></i></button>
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
                 </li>
             </ul>
         </nav>

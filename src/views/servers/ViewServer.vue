@@ -161,7 +161,7 @@ serverStore.getById(id);
                         Order ID: <b>{{ serviceInfo.server_id }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fa fa-cart-plus"></i></div>
+                <div class="icon"><i class="fas fa-cart-plus"></i></div>
                 <div class="small-box-footer">
                     Ordered on: <b>{{ orderedOn }}</b>
                 </div>
@@ -268,7 +268,7 @@ serverStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-sitemap">&nbsp;</i>Network Information</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-sitemap">&nbsp;</i>Network Information</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>

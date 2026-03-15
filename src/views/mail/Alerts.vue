@@ -139,9 +139,9 @@ loadAlerts();
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><i class="fa fa-bell"></i> Alerts</h3>
+                    <h3 class="card-title text-lg"><i class="far fa-bell"></i> Alerts</h3>
                     <div class="card-tools">
-                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', 0, '', '', defaultTo)"> <i class="fa fa-plus"></i> Add New </a>
+                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', 0, '', '', defaultTo)"> <i class="fas fa-plus"></i> Add New </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -184,7 +184,7 @@ loadAlerts();
                     </template>
                     <template v-else>
                         <div class="callout callout-danger text-red text-sm">
-                            <i class="fa fa-bullhorn" aria-hidden="true">&nbsp;</i>
+                            <i class="fas fa-bullhorn" aria-hidden="true">&nbsp;</i>
                             <strong>Heads up!&nbsp;</strong>No alerts added yet.
                         </div>
                     </template>

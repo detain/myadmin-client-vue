@@ -163,7 +163,7 @@ const handleSubmit = (form_id: number) => {
 const handleDelete = (itemId: number) => {
     Swal.fire({ icon: 'warning', title: 'Are you sure you want to delete this rule?', showCancelButton: true, confirmButtonText: 'Yes' }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire({ title: '', html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!', allowOutsideClick: false, showConfirmButton: false });
+            Swal.fire({ title: '', html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!', allowOutsideClick: false, showConfirmButton: false });
             const targetForm = forms.get(itemId);
             if (targetForm) {
                 const fd = new FormData(targetForm);

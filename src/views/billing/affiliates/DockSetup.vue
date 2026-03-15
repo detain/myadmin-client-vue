@@ -30,7 +30,7 @@ const affiliateDockDescription = ref(data.value.affiliate_dock_description || ''
 function onSubmit() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -92,7 +92,7 @@ accountStore.loadOnce();
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fa fa-ticket">&nbsp;</i>Affiliate Landing Page Setup (<a :href="`https://www.interserver.net/dock/vps-${user.account_id}.html`" class="link mt-0" target="_blank">View Landing Page</a>)</h3>
                         <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

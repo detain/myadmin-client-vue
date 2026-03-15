@@ -94,11 +94,11 @@ loadTimezones();
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="callout callout-danger text-red text-sm"><i class="fa fa-bullhorn">&nbsp;</i><strong>Heads up!&nbsp;</strong>Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your <strong>Risk % Score</strong> giving your quicker and more convenient access to parts of the site (such as not having to authenticate a credit-card).</div>
+            <div class="callout callout-danger text-red text-sm"><i class="fas fa-bullhorn">&nbsp;</i><strong>Heads up!&nbsp;</strong>Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your <strong>Risk % Score</strong> giving your quicker and more convenient access to parts of the site (such as not having to authenticate a credit-card).</div>
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="fa fa-id-card-o"></i>&nbsp;Update Contact Info</h3>
+                        <h3 class="card-title float-left py-2"><i class="far fa-id-card-o"></i>&nbsp;Update Contact Info</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <i class="fas fa-minus" aria-hidden="true"></i>
