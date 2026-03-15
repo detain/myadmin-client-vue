@@ -788,7 +788,7 @@ pageInit();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="fa fa-money">&nbsp;</i>Pay Balance</h3>
+                        <h3 class="card-title float-left py-2"><i class="far fa-money-bill">&nbsp;</i>Pay Balance</h3>
                     </div>
                 </div>
                 <div class="card-body">

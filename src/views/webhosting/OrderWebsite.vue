@@ -351,7 +351,7 @@ watch(
                                                             </div>
                                                             <div class="float-right">
                                                                 <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
-                                                                    <i class="fa fa-external-link"></i>
+                                                                    <i class="far fa-external-link-alt"></i>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -399,7 +399,7 @@ watch(
                                                         </div>
                                                         <div class="float-right">
                                                             <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
-                                                                <i class="fa fa-external-link"></i>
+                                                                <i class="far fa-external-link-alt"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -446,7 +446,7 @@ watch(
                                                     Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                 </div>
                                                 <div class="float-right">
-                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info"><i class="fa fa-external-link"></i></a>
+                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info"><i class="far fa-external-link-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -586,7 +586,7 @@ watch(
                                         <th>
                                             <button type="button" style="" name="update_values" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
                                                 <div style="display: inline" class="text-md float-left">{{ formData.hostname }}</div>
-                                                <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fa fa-pencil float-right"></i>
+                                                <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fas fa-pencil-alt float-right"></i>
                                             </button>
                                         </th>
                                         <th>

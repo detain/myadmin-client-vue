@@ -1139,7 +1139,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-md text-bold">{{ period }} month(s)</div>

@@ -283,7 +283,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                                             <div class="text-md float-left" style="position: relative; top: 5px">
                                                 {{ serviceDetail.services_name }}
                                             </div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                                         </th>
                                         <th class="text-md">{{ period }} Month(s)</th>
                                     </tr>

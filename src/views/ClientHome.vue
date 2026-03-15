@@ -137,7 +137,7 @@ accountStore.load();
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account"> Manage Account&nbsp;<i class="fa fa-pencil text-sm"></i> </router-link>
+                            <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account"> Manage Account&nbsp;<i class="fas fa-pencil-alt text-sm"></i> </router-link>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ accountStore.load();
                             <i class="fas fa-file-invoice"></i>
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount"> <i class="fa fa-dollar text-sm"></i>&nbsp;Pay Now </router-link>
+                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount"> <i class="far fa-money-bill text-sm"></i>&nbsp;Pay Now </router-link>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title float-left py-2"><i class="fa fa-ticket"></i>Recent Tickets</h3>
+                                <h3 class="card-title float-left py-2"><i class="far fa-ticket-alt"></i>Recent Tickets</h3>
                                 <div class="card-tools float-right">
                                     <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <i class="far fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
                                 </div>
@@ -193,7 +193,7 @@ accountStore.load();
                                         <td>{{ ticket.lastreplier }}</td>
                                         <td>{{ ticketStatusView[ticket.ticketstatusid] }}</td>
                                         <td>
-                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <i class="fa fa-pencil"></i>&nbsp;Edit </router-link>
+                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <i class="fas fa-pencil-alt"></i>&nbsp;Edit </router-link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -207,7 +207,7 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header home-card" style="background-color: rgba(0, 0, 0, 0.03) !important">
                             <h2 class="card-title mt-2 text-lg">
-                                <i :class="'fa fa-' + details.modules[module].icon"></i>&nbsp;
+                                <i :class="'fas fa-' + details.modules[module].icon"></i>&nbsp;
                                 <span>{{ details.modules[module].heading }}</span>
                             </h2>
                             <div class="card-tools float-right">

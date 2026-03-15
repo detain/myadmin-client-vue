@@ -50,7 +50,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
-                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
+                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user.account_lid }}</b></span
                         >

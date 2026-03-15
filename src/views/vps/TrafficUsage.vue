@@ -174,7 +174,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="card-body">
             <div class="alert alert-info">
-                <strong><i class="fa fa-warning"></i>&nbsp;Note:</strong>
+                <strong><i class="far fa-exclamation-triangle"></i>&nbsp;Note:</strong>
                 This is not used for billing calculations and is an estimate only based on your virtual network cards.
             </div>
             <div class="row">
@@ -198,7 +198,7 @@ onBeforeUnmount(() => {
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5 class="card-title text-bold"><i class="fa fa-bar-chart"></i>&nbsp;Statistics</h5>
+                    <h5 class="card-title text-bold"><i class="far fa-chart-bar"></i>&nbsp;Statistics</h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
