@@ -209,6 +209,12 @@ useDarkMode();
                             </ol>
                         </div>
                     </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <section class="content">
+                <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <router-view />
@@ -216,8 +222,7 @@ useDarkMode();
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
+            </section>
         </div>
         <footer class="main-footer text-center">
             <strong>Copyright &copy; {{ new Date().getFullYear() }} <a href="https://interserver.net">InterServer Inc</a>.</strong> All rights reserved.
