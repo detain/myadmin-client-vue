@@ -167,7 +167,7 @@ function crud_export(exportType: string): void {
                                                 <template v-else>{{ row[col.key] }}</template>
                                             </td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row[idField]" class="btn btn-primary btn-xs printer-hidden"><i class="far fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row[idField]" class="btn btn-primary btn-xs printer-hidden"><i class="fas fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>
