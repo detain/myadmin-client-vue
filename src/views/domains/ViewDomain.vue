@@ -148,7 +148,7 @@ loadLink(route.params.link as string);
                 <div class="icon"><i class="fas fa-user-secret"></i></div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fa fa-pencil"></i></router-link>
+                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fas fa-pencil-alt"></i></router-link>
                 </span>
             </div>
         </div>
@@ -206,7 +206,7 @@ loadLink(route.params.link as string);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -237,7 +237,7 @@ loadLink(route.params.link as string);
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fa fa-pencil" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>Edit </router-link>
                         </div>
                     </div>
                 </div>

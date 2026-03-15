@@ -648,7 +648,7 @@ authStore.load();
                                             <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
                                                         <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                         <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>
@@ -680,7 +680,7 @@ authStore.load();
                                             <div v-if="opts.tfa" class="poppup popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
                                                         <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>Enter Two Factor Authorization Code!</h2>
                                                         <p class="mb-8 text-center text-gray-600"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Use your configured Authenticator to get a code and enter it here.</p>
@@ -768,7 +768,7 @@ authStore.load();
                                                 <div class="flex">
                                                     <img :src="captcha" style="max-width: 75%" alt="" />
                                                     <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                        <span class="fa fa-refresh fa-fw"></span>
+                                                        <span class="far fa-sync fa-fw"></span>
                                                     </button>
                                                 </div>
                                                 <div class="input-group my-3">
@@ -822,11 +822,11 @@ authStore.load();
                                                 <div v-show="showPasswordInfo" id="pswd_info">
                                                     <p class="pp"><b>Password must have:</b></p>
                                                     <ul>
-                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.length ? validClass : invalidClass"></i>atleast 8 characters</li>
-                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.letter ? validClass : invalidClass"></i>atleast 1 uppercase</li>
-                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.capital ? validClass : invalidClass"></i>atleast 1 lowercase</li>
-                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.number ? validClass : invalidClass"></i>atleast 1 number</li>
-                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="fa b-radius mr-2 text-white" :class="passwordRules.special ? validClass : invalidClass"></i>atleast 1 special char</li>
+                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.length ? validClass : invalidClass"></i>atleast 8 characters</li>
+                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.letter ? validClass : invalidClass"></i>atleast 1 uppercase</li>
+                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.capital ? validClass : invalidClass"></i>atleast 1 lowercase</li>
+                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.number ? validClass : invalidClass"></i>atleast 1 number</li>
+                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.special ? validClass : invalidClass"></i>atleast 1 special char</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -853,7 +853,7 @@ authStore.load();
                                                             <div class="flex">
                                                                 <img :src="captcha" style="max-width: 75%" alt="" />
                                                                 <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                                    <span class="fa fa-refresh fa-fw"></span>
+                                                                    <span class="far fa-sync fa-fw"></span>
                                                                 </button>
                                                             </div>
                                                             <div class="input-group my-3">
@@ -884,7 +884,7 @@ authStore.load();
                                             <div v-show="!isLogin && opts.verify" class="poppup email_popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <i class="close fa fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
                                                         <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>Email Verification</h2>
                                                         <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>Enter the security code sent to your email.</p>

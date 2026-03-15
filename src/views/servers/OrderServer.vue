@@ -365,7 +365,7 @@ updatePrice();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-hand-o-right">&nbsp;</i>Recommendations</h4>
+                            <h4 class="card-title py-2"><i class="far fa-hand-point-right">&nbsp;</i>Recommendations</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>

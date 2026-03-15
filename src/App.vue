@@ -177,7 +177,7 @@ useDarkMode();
                     <!-- Sidebar user panel (optional) -->
                     <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" alt="Profile Image" />
                     <div class="info hide-on-collapse brand-text" style="padding: 0px">
-                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fa fa-pencil text-bold text-xs"></i></router-link>
+                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>
                         </span>

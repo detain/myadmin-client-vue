@@ -204,7 +204,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;</i>&nbsp;{{ pkg }} Login</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-sign-in-alt" aria-hidden="true">&nbsp;</i>&nbsp;{{ pkg }} Login</h3>
                         <div class="card-tools float-right">
                             <button class="btn btn-tool mt-0" type="button" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>

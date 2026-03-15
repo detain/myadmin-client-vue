@@ -46,7 +46,7 @@ origData.value = [
 const filteredData = computed(() => {
     const activeDomains: domainsRow[] = [];
     origData.value.forEach((row) => {
-        row.link = `<router-link to="'view_domain?id=${row.domain_id}'" class="btn btn-primary btn-xs printer-hidden"><i class="fa fa-fw fa-cog"></i></router-link>`;
+        row.link = `<router-link to="'view_domain?id=${row.domain_id}'" class="btn btn-primary btn-xs printer-hidden"><i class="far fa-fw fa-cog"></i></router-link>`;
         row.link = row.domain_id;
         row.hostname = `<router-link to="'view_domain?id=${row.domain_id}'">${row.domain_hostname}</router-link>`;
         if (limitStatus.value === 'all' || limitStatusMap[limitStatus.value].includes(row.domain_status)) {
@@ -135,7 +135,7 @@ function setStatusLimit(event: Event) {
                             <div class="col-md-12">
                                 <DataTable id="crud-table" ref="table" :options="options" :data="filteredData" :columns="columns" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <template #link="{ value }">
-                                        <router-link :to="value" class="btn btn-primary btn-xs printer-hidden">{{ value }}<i class="fa fa-fw fa-cog"></i></router-link>
+                                        <router-link :to="value" class="btn btn-primary btn-xs printer-hidden">{{ value }}<i class="far fa-fw fa-cog"></i></router-link>
                                     </template>
                                     <thead>
                                         <tr>

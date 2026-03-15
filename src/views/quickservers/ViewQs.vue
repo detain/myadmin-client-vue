@@ -309,7 +309,7 @@ function loadLink(newLink: string) {
                                         Comment:
                                         <span v-if="serviceInfo.qs_comment">{{ serviceInfo.qs_comment }}</span>
                                         <span v-else>none</span>
-                                        <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm"><i class="fa fa-pencil my-2 text-sm"></i></span>
+                                        <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm"><i class="fas fa-pencil-alt my-2 text-sm"></i></span>
                                     </h5>
                                 </span>
                             </div>
