@@ -38,7 +38,7 @@ describe('InfoBox.vue', () => {
     it('applies icon class', () => {
         const wrapper = mount(InfoBox, { props: defaultProps });
         const icon = wrapper.find('i');
-        expect(icon.classes()).toContain('fa');
+        expect(icon.classes()).toContain('fas');
         expect(icon.classes()).toContain('fa-server');
     });
 

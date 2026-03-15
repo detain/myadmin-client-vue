@@ -7,6 +7,16 @@ export const router = createRouter({
     routes: [
         { path: '/', component: () => import('../views/ClientHome.vue') },
         { path: '/login', component: () => import('../views/Login.vue') },
+        {
+            path: '/logout',
+            component: () => import('../views/Login.vue'),
+            beforeEnter: async () => {
+                const authStore = useAuthStore();
+                await authStore.logout();
+                return '/login';
+            },
+        },
+        { path: '/signup', component: () => import('../views/Login.vue') },
         { path: '/login_old', component: () => import('../views/LoginOld.vue') },
         { path: '/register', component: () => import('../views/Register.vue') },
         { path: '/sudo/:sessionid', component: () => import('../views/Sudo.vue') },
@@ -267,7 +277,7 @@ export function warmFrequentlyUsedRoutes() {
 
 router.beforeEach(async (to) => {
     //console.log("We are here:"+to.path);
-    const publicPages = ['/login', '/login_old', '/register', '/sudo'];
+    const publicPages = ['/login', '/login_old', '/register', '/signup', '/sudo', '/logout'];
     const parts = to.path.split('/');
     if (parts.length >= 3) {
         parts.splice(2);
