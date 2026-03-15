@@ -4,6 +4,9 @@ import { defineConfig } from 'electron-vite';
 import vue from '@vitejs/plugin-vue';
 import { fileURLToPath, URL } from 'node:url';
 import dts from 'vite-plugin-dts';
+import Inspect from 'vite-plugin-inspect';
+import Inspector from 'vite-plugin-vue-inspector';
+import TurboConsole from 'unplugin-turbo-console/vite';
 
 export default defineConfig({
     main: {
@@ -26,18 +29,12 @@ export default defineConfig({
     },
     renderer: {
         root: '.',
-        build: {
-            rolldownOptions: {
-                input: {
-                    index: resolve(__dirname, 'index.html'),
-                },
-            },
-        },
-        resolve: {
-            alias: {
-                '@renderer': resolve('src'),
-                '@': fileURLToPath(new URL('./src', import.meta.url)),
-            },
+        test: {
+            globals: true,
+            environment: 'jsdom',
+            reporters: ['default', 'html'],
+            setupFiles: ['./test/setup.ts'],
+            exclude: ['**/.claude/**', '**/e2e/**', '**/node_modules/**'],
         },
         plugins: [
             vue({
@@ -48,6 +45,79 @@ export default defineConfig({
             dts({
                 insertTypesEntry: true,
             }),
+            /*
+            // https://github.com/feat-agency/vite-plugin-webfont-dl#options
+            webfontDownload(),
+            checker({
+                vueTsc: true,
+                typescript: false,
+            }),
+            TurboConsole(),
+            i18nResources({
+                path: resolve(__dirname, "src/locales"),
+            }),
+            AutoImport({
+                imports: ["vue", "@vueuse/core"],
+                resolvers: [],
+                dirs: ["./composables/" + "**", "./views/" + "**"],
+                vueTemplate: true,
+                cache: true
+            }),
+            splitVendorChunkPlugin(),
+            legacy({ targets: ["defaults", "not IE 11"] }), */
+            Inspect(),
+            Inspector(),
+            //vueDevTools(),
+            TurboConsole(),
         ],
+        optimizeDeps: {
+            include: ['jquery', 'select2'],
+            exclude: ['playwright', 'playwright-core', 'chromium-bidi'],
+        },
+        build: {
+            sourcemap: false,
+            modulePreload: {
+                polyfill: true,
+            },
+            rolldownOptions: {
+                input: {
+                    index: resolve(__dirname, 'index.html'),
+                },
+                output: {
+                    format: 'es',
+                    globals: {
+                        jquery: '$',
+                    },
+                    manualChunks(id) {
+                        if (id.includes('node_modules')) {
+                            if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+                                return 'framework';
+                            }
+                            if (id.includes('admin-lte') || id.includes('jquery') || id.includes('bootstrap') || id.includes('select2')) {
+                                return 'legacy-ui';
+                            }
+
+                            return 'vendor';
+                        }
+
+                        if (id.includes('/src/views/')) {
+                            const viewScope = id.split('/src/views/')[1]?.split('/')[0];
+                            return viewScope ? `view-${viewScope}` : 'views';
+                        }
+
+                        return undefined;
+                    },
+                },
+            },
+        },
+        resolve: {
+            alias: {
+                '@renderer': resolve('src'),
+                '@': fileURLToPath(new URL('./src', import.meta.url)),
+            },
+        },
+        server: {
+            allowedHosts: true,
+        },
     },
 });
