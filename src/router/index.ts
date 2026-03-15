@@ -268,7 +268,7 @@ export function warmFrequentlyUsedRoutes() {
 
 router.beforeEach(async (to) => {
     //console.log("We are here:"+to.path);
-    const publicPages = ['/login', '/login_old', '/register', '/signup', '/sudo'];
+    const publicPages = ['/login', '/login_old', '/register', '/signup', '/sudo', '/logout'];
     const parts = to.path.split('/');
     if (parts.length >= 3) {
         parts.splice(2);
