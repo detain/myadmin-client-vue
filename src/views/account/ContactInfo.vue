@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
-
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
-
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
 const { breadcrums, page_heading } = storeToRefs(siteStore);
-const { loading, error, custid, ima, data, ip, gravatar } = storeToRefs(accountStore);
+const { loading, error, data } = storeToRefs(accountStore);
 const timezones = ref<string[]>([]);
 const currencies = ref<string[]>([]);
 const locales = ref<Record<string, string>>({});
@@ -26,9 +23,8 @@ siteStore.setBreadcrums([
     ['', 'Contact Info'],
 ]);
 const baseUrl = siteStore.getBaseUrl();
-const route = useRoute();
 const countries = ref({});
-async function onSubmit(values: any) {
+async function onSubmit() {
     try {
         let message;
         const response = await fetchWrapper.post(`${baseUrl}/account`, {
@@ -264,7 +260,7 @@ loadLocales();
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_reinstall" v-model="data.disable_reinstall" type="checkbox" value="1" />
-                                            <label for="disable_reinstall">Disable Reinstalls.</label>
+                                            <label for="disable_reinstall">Disable Reinstall.</label>
                                         </div>
                                     </div>
                                 </div>
