@@ -264,7 +264,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                     <tr>
                                         <th>
                                             <div class="text-bold float-left" style="position: relative; top: 5px">Server Name</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="step = 'orderform'"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold">{{ serverDetails[qsId].cpu }}</div>

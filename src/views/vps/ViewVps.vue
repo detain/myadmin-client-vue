@@ -393,7 +393,7 @@ function toggleFunc(cp: string) {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><i class="fa fa-pencil my-2 text-sm"></i></span>
+                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><i class="fas fa-pencil-alt my-2 text-sm"></i></span>
                                     </h5>
                                 </span>
                             </div>
@@ -523,7 +523,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-dashboard"></i> &nbsp;Control Panel Add-on</h3>
+                            <h3 class="card-title py-2"><i class="far fa-tachometer-alt"></i> &nbsp;Control Panel Add-on</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
