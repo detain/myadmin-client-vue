@@ -413,14 +413,56 @@ async function onLoginSubmit() {
 
 async function oAuthLogin(provider: string) {
     try {
-        Swal.fire({
+    /*    Swal.fire({
             title: 'Redirecting...',
             html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
             showConfirmButton: false,
             allowOutsideClick: false,
             allowEscapeKey: false,
+        });*/
+        const popup = window.open(
+            `${baseUrl}/oauth?provider=${provider}`,
+            'oauth', 'width=600,height=600'
+        );
+        window.addEventListener('message', async (event) => {
+            console.log("Got Event", event);
+            const data = event.data;
+            switch (data.type) {
+                case 'oauth_success':
+                    // Logged in! data has: sessionId, account_id, account_lid, name, gravatar
+                    break;
+                case 'oauth_2fa_required':
+                    // Prompt user for 2FA code, then:
+                    // PATCH /apiv2/oauth with { code: "123456" }
+                    break;
+                case 'oauth_link_required':
+                    // No linked account. data has: email, provider, display_name
+                    // Show login/signup form, then:
+                    // POST /apiv2/oauth with { login, password } to link existing
+                    // POST /apiv2/oauth with { login, password, create: true } for new account
+                    break;
+                case 'oauth_error':
+                    // Show data.message
+                    break;
+            }
         });
-        window.location.href = `${baseUrl}/oauth?provider=${provider}`;
+        /*
+// Link existing account (POST /apiv2/oauth)
+fetch('/apiv2/oauth', {
+  method: 'POST',
+  credentials: 'include',
+  body: new URLSearchParams({ login: email, password: pw })
+});
+// Verify 2FA (PATCH /apiv2/oauth)
+fetch('/apiv2/oauth', {
+  method: 'PATCH',
+  credentials: 'include',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ code: '123456' })
+});
+
+         */
+
         /*
         const data: any = await fetchWrapper.get(`${baseUrl}/oauth?provider=${provider}`);
         if (!data.redirect_url) {
@@ -431,8 +473,8 @@ async function oAuthLogin(provider: string) {
         window.location.href = data.redirect_url;
         */
     } catch (err: any) {
-        Swal.close();
-        Swal.fire('Error', err.message || 'OAuth error', 'error');
+        /* Swal.close();
+        Swal.fire('Error', err.message || 'OAuth error', 'error'); */
     }
 }
 
