@@ -120,7 +120,7 @@ accountStore.load();
                             <p class="mb-2 mt-3 py-3"><b>Last Login: </b>{{ last_login }}</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-id-card"></i>
+                            <i class="far fa-id-card"></i>
                         </div>
                         <div class="small-box-footer"><b>Last Login IP: </b>{{ last_login_ip }}</div>
                     </div>
@@ -171,7 +171,7 @@ accountStore.load();
                             <div class="p-1">
                                 <h3 class="card-title float-left py-2"><i class="fa fa-ticket"></i>Recent Tickets</h3>
                                 <div class="card-tools float-right">
-                                    <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <i class="fa fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
+                                    <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <i class="far fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
                                 </div>
                             </div>
                         </div>

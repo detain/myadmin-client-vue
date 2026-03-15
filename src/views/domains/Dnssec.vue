@@ -82,7 +82,7 @@ function submitForm() {
 function loadDnsSec() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -113,8 +113,8 @@ loadDnsSec();
                     <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
                     <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;DNSSEC Information</h3>
                     <div class="card-tools m-0">
-                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fa fa-plus-circle"></i>&nbsp;Add New Record</button>
-                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="fa fa-times-circle"></i>&nbsp;Remove All DNSSEC Records</button>
+                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fas fa-plus-circle"></i>&nbsp;Add New Record</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="far fa-times-circle"></i>&nbsp;Remove All DNSSEC Records</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
@@ -199,7 +199,7 @@ loadDnsSec();
                                         </div>
                                     </div>
                                     <div v-if="index < 2" class="text-right mb-3">
-                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><i class="fa fa-plus"></i>&nbsp;Add More</button>
+                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><i class="fas fa-plus"></i>&nbsp;Add More</button>
                                     </div>
                                 </div>
                                 <div class="text-center">

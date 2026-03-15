@@ -25,7 +25,7 @@ const module = computed(() => props.module);
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -64,9 +64,9 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
             <div class="card b-radius my-3 shadow-none">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-atlas">&nbsp;</i>Reverse DNS</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-atlas">&nbsp;</i>Reverse DNS</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp; </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp; </router-link>
                         </div>
                     </div>
                 </div>

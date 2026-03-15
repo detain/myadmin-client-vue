@@ -195,7 +195,7 @@ async function onSubmit() {
     try {
         Swal.fire({
             title: '',
-            html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+            html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
             allowOutsideClick: false,
             showConfirmButton: false,
         });
@@ -256,7 +256,7 @@ async function searchDomain() {
 function loadOrderData() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -460,7 +460,7 @@ watch(
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h4 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h4>
+                                <h4 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h4>
                             </div>
                         </div>
                         <div class="card-body text-md">
@@ -575,7 +575,7 @@ watch(
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -686,7 +686,7 @@ watch(
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</button>
+                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</button>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-green px-3 py-2 text-sm" :disabled="tos == false" />
                                 </div>
                             </div>

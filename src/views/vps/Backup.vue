@@ -69,7 +69,7 @@ loadBackupsList();
 <template>
     <div>
         <div class="callout callout-info">
-            <h5 class="text-red"><i class="fa fa-exclamation"></i> Important Note</h5>
+            <h5 class="text-red"><i class="fas fa-exclamation"></i> Important Note</h5>
             <p class="text-md">Backups will only work with default partitioning.</p>
         </div>
         <div class="row justify-content-center">
@@ -78,7 +78,7 @@ loadBackupsList();
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">

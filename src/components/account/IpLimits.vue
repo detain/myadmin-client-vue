@@ -98,7 +98,7 @@ export default {
                             <td>{{ limit.end }}</td>
                             <td>{{ limit?.restrict == 'Only API' ? 'Only API' : 'Web & API' }}</td>
                             <td>
-                                <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fa fa-trash"></span> Remove</a>
+                                <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fas fa-trash"></span> Remove</a>
                             </td>
                         </tr>
                         <tr>

@@ -449,7 +449,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-microchip">&nbsp;</i>&nbsp;System Information</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-microchip">&nbsp;</i>&nbsp;System Information</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus" aria-hidden="true"></i>
@@ -729,7 +729,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-chart-bar">&nbsp;</i>CPU Usage</h3>
+                            <h3 class="card-title py-2"><i class="far fa-chart-bar">&nbsp;</i>CPU Usage</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
                                     <i class="fas fa-minus"></i>
@@ -786,7 +786,7 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fa fa-tachometer-alt">&nbsp;</i>&nbsp;{{ extraInfoTables.webuzo.title }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-tachometer-alt">&nbsp;</i>&nbsp;{{ extraInfoTables.webuzo.title }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
@@ -810,7 +810,7 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fa fa-plus">&nbsp;</i>{{ extraInfoTables.addons.title }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-plus">&nbsp;</i>{{ extraInfoTables.addons.title }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
@@ -840,7 +840,7 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fa fa-info-circle text-red">&nbsp;</i>Attention</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-info-circle text-red">&nbsp;</i>Attention</h3>
                                 <div class="card-tools float-right pl-3 pt-1">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>

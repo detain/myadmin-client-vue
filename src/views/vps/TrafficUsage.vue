@@ -156,7 +156,7 @@ onBeforeUnmount(() => {
         <div class="card-header">
             <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
-                    <h3 class="card-title py-2 mb-0"><i class="fa fa-tachometer-alt"></i>&nbsp;Bandwidth / Traffic Usage</h3>
+                    <h3 class="card-title py-2 mb-0"><i class="fas fa-tachometer-alt"></i>&nbsp;Bandwidth / Traffic Usage</h3>
                     <div class="metric-toggle-container ml-4">
                         <span class="toggle-label mr-2">Display in:</span>
                         <div class="metric-toggle">
@@ -168,7 +168,7 @@ onBeforeUnmount(() => {
                     </div>
                 </div>
                 <div class="card-tools">
-                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fa fa-arrow-left"></i>&nbsp;Back </router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fas fa-arrow-left"></i>&nbsp;Back </router-link>
                 </div>
             </div>
         </div>

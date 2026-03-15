@@ -28,11 +28,11 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="cart" title="Cart" class="nav-link"><i class="fa fa-shopping-cart"></i></router-link>
+                    <router-link to="cart" title="Cart" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fa fa-power-off"></i></button>
-                    <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fa fa-power-off"></i></a> -->
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
+                    <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fas fa-power-off"></i></a> -->
                 </li>
             </ul>
         </nav>

@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-plug">&nbsp;</i> {{ extraInfoTables[module]?.title }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-plug">&nbsp;</i> {{ extraInfoTables[module]?.title }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>

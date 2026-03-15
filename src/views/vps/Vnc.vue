@@ -28,7 +28,7 @@ const novncLink = ref('');
                     <div class="p-1">
                         <h3 class="card-title py-2">Microsoft Remote Desktop Connection</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const novncLink = ref('');
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-desktop">&nbsp;</i>Desktop VNC Connection</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-desktop">&nbsp;</i>Desktop VNC Connection</h3>
                     </div>
                 </div>
                 <div class="card-body p-3">

@@ -255,7 +255,7 @@ function login_handler() {
 function signup_handler() {
     Swal.fire({
         title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -381,7 +381,7 @@ function forgot_password() {
                 $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>');
             },
             beforeSend: function () {
-                $('#forgot-password-message').html('<div style="margin: 15px; text-align: center;"><i class="fa fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
+                $('#forgot-password-message').html('<div style="margin: 15px; text-align: center;"><i class="fas fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
             },
         });
     }
@@ -390,7 +390,7 @@ function forgot_password() {
 async function onLoginSubmit() {
     Swal.fire({
         title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -415,7 +415,7 @@ async function oAuthLogin(provider: string) {
     try {
         Swal.fire({
             title: 'Redirecting...',
-            html: `<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
+            html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Connecting to ${provider}`,
             showConfirmButton: false,
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -445,7 +445,7 @@ async function handleOAuthCallback() {
     try {
         Swal.fire({
             title: 'Signing you in...',
-            html: '<i class="fa fa-spinner fa-spin fa-2x"></i>',
+            html: '<i class="fas fa-spinner fa-spin fa-2x"></i>',
             showConfirmButton: false,
             allowOutsideClick: false,
         });
@@ -503,7 +503,7 @@ async function submitOAuth2FA() {
 async function onSignupSubmit() {
     Swal.fire({
         title: 'Please wait',
-        html: '<i class="fa fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -612,7 +612,7 @@ authStore.load();
                             <div class="login-box m-auto" style="width: 400px">
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
-                                        <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
+                                        <i class="far fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
                                         <h3 class="card-title text-bold ml-3 mt-2">Sign in to start your session</h3>
                                     </div>
                                     <div class="card-body">
@@ -774,7 +774,7 @@ authStore.load();
                                                 <div class="input-group my-3">
                                                     <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
                                                     <div class="input-group-append">
-                                                        <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                        <div class="input-group-text"><span class="fas fa-robot" aria-hidden="true"></span></div>
                                                     </div>
                                                 </div>
                                                 <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
@@ -799,7 +799,7 @@ authStore.load();
                             <div class="login-box m-auto" style="width: 400px">
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
-                                        <i class="fa fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
+                                        <i class="far fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
                                         <h3 class="card-title text-bold ml-3 mt-2">Create Your Account Now</h3>
                                     </div>
                                     <div class="card-body">
@@ -836,7 +836,7 @@ authStore.load();
                                                         <div class="input-group my-3">
                                                             <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" placeholder="Enter Code from Authenticator" autocomplete="off" />
                                                             <div class="input-group-append">
-                                                                <div class="input-group-text"><span class="fa fa-lock" aria-hidden="true"></span></div>
+                                                                <div class="input-group-text"><span class="fas fa-lock" aria-hidden="true"></span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -859,7 +859,7 @@ authStore.load();
                                                             <div class="input-group my-3">
                                                                 <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
                                                                 <div class="input-group-append">
-                                                                    <div class="input-group-text"><span class="fa fa-robot" aria-hidden="true"></span></div>
+                                                                    <div class="input-group-text"><span class="fas fa-robot" aria-hidden="true"></span></div>
                                                                 </div>
                                                             </div>
                                                             <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>

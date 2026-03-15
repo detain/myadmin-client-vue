@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-globe" aria-hidden="true">&nbsp;</i>Geo Firewall Rules</h3>
+                    <h3 class="card-title"><i class="fas fa-globe" aria-hidden="true">&nbsp;</i>Geo Firewall Rules</h3>
                     <div class="card-tools">
                         <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true">&nbsp;</i> Create New</button>
                     </div>
@@ -164,7 +164,7 @@ const handleDelete = (itemId: number) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: '',
-                html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+                html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });

@@ -58,7 +58,7 @@ interface IpDetails {
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -89,12 +89,12 @@ function submitForm() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2">
-                            <i class="fa fa-map-marker-alt">&nbsp;</i>
+                            <i class="fas fa-map-marker-alt">&nbsp;</i>
                             <template v-if="ipsDetailsExist">Existing Addon IPs</template>
                             <template v-else-if="buyForm">Buy Additional IP Addon</template>
                         </h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

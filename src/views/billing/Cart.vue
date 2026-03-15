@@ -820,7 +820,7 @@ pageInit();
                                     </template>
                                 </div>
                                 <div class="col-md-12 pr-3 text-right">
-                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" title="Update Contact Info"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>EDIT </a>
+                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" title="Update Contact Info"> <i class="far fa-edit" aria-hidden="true">&nbsp;</i>EDIT </a>
                                 </div>
                             </div>
                         </div>
@@ -829,7 +829,7 @@ pageInit();
                                 <h5 class="card-title text-bold py-2">Please Add Billing Address to continue Purchase.</h5>
                             </div>
                             <div class="card-body mx-auto my-2">
-                                <router-link to="/account/info" class="btn btn-custom px-3 py-2" title="Add Billing Address to continue"> <i class="fa fa-plus"></i>&nbsp;Add Billing Address </router-link>
+                                <router-link to="/account/info" class="btn btn-custom px-3 py-2" title="Add Billing Address to continue"> <i class="fas fa-plus"></i>&nbsp;Add Billing Address </router-link>
                             </div>
                         </div>
                     </div>
@@ -971,7 +971,7 @@ pageInit();
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">Select / Add Credit Card</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fas fa-plus" aria-hidden="true">&nbsp;</i>Add New Card</a>
                                 </div>
                                 <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
@@ -1003,12 +1003,12 @@ pageInit();
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 pl-4">
-                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="javascript:void(0);" style="text-decoration: none" :title="cc_detail.unverified_text" @click.prevent="verifyCard(Number(cc_id))"> <i class="fa fa-exclamation-triangle"></i>&nbsp;Verify </a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="fa fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
+                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="javascript:void(0);" style="text-decoration: none" :title="cc_detail.unverified_text" @click.prevent="verifyCard(Number(cc_id))"> <i class="fas fa-exclamation-triangle"></i>&nbsp;Verify </a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="far fa-edit" aria-hidden="true">&nbsp;</i>Edit </a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fa fa-trash"></i>&nbsp;Delete </a>
+                                                    <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fas fa-trash"></i>&nbsp;Delete </a>
                                                     <input v-else-if="selectedCc === Number(cc_id)" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
                                             </div>
@@ -1069,7 +1069,7 @@ pageInit();
             <div class="card cart-sidebar">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="fa fa-file-invoice">&nbsp;</i>Balance & Invoice Info</h3>
+                        <h3 class="card-title float-left py-2"><i class="fas fa-file-invoice">&nbsp;</i>Balance & Invoice Info</h3>
                     </div>
                 </div>
                 <div class="card-body">

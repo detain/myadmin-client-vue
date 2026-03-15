@@ -70,9 +70,9 @@ const periodLabel = computed(() => {
 function statusIcon(status: string) {
     return {
         Open: 'far fa-envelope-open text-success',
-        'On Hold': 'fa fa-pause text-warning',
+        'On Hold': 'fas fa-pause text-warning',
         Closed: 'far fa-envelope text-danger',
-        'In Progress': 'fa fa-hourglass-half text-secondary',
+        'In Progress': 'fas fa-hourglass-half text-secondary',
     }[status];
 }
 
@@ -151,7 +151,7 @@ function timeAgo(input: string | number) {
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fa fa-plus-circle text-info" /> New Ticket </RouterLink>
+                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fas fa-plus-circle text-info" /> New Ticket </RouterLink>
                         </li>
                         <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
                             <RouterLink
