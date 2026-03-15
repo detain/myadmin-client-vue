@@ -6,7 +6,7 @@ describe('InfoBox.vue', () => {
         heading: 'Server Info',
         key1: 'Hostname',
         val1: 'test.example.com',
-        iconClass: 'fa fa-server',
+        iconClass: 'fas fa-server',
         iconName: '',
         bgClass: 'bg-info',
         footerKey: 'IP',
