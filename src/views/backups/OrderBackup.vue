@@ -80,7 +80,7 @@ const serviceDetail = computed(() => serviceTypes.value[pkg.value] as ServiceTyp
 async function placeOrder(values: any) {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -107,7 +107,7 @@ async function placeOrder(values: any) {
 async function onSubmit(values: any) {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! validating data',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! validating data',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -160,7 +160,7 @@ interface PackageCosts {
 
 Swal.fire({
     title: '',
-    html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+    html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
     allowOutsideClick: false,
     showConfirmButton: false,
 });
@@ -229,7 +229,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -268,7 +268,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>

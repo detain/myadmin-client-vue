@@ -122,7 +122,7 @@ function submitNewPrepay() {
     console.log('Submitting prepay', newPrepay);
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -145,7 +145,7 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fa fa-plus" /> Add New Prepay</button>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fas fa-plus" /> Add New Prepay</button>
             </div>
             <div v-if="loading" class="text-center">Loading…</div>
             <template v-if="Object.keys(prepays).length">

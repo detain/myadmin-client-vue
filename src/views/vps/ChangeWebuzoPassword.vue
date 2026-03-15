@@ -57,7 +57,7 @@ function submitForm() {
     <div class="row justify-content-center py-3">
         <div class="col-md-6">
             <div class="card b-radius">
-                <ServiceActionCardHeader title="Change Webuzo Admin Password" icon-class="fa fa-key" :back-to="'/' + moduleLink(module) + '/' + props.id" />
+                <ServiceActionCardHeader title="Change Webuzo Admin Password" icon-class="fas fa-key" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body">
                     <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_webuzo_password" />

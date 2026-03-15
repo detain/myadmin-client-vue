@@ -482,7 +482,7 @@ loadInvoices();
         <div class="col-md-12">
             <div class="card shadow-none">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-file-invoice-dollar">&nbsp;</i>Invoices</h3>
+                    <h3 class="card-title"><i class="fas fa-file-invoice-dollar">&nbsp;</i>Invoices</h3>
                     <div class="card-tools">
                         <button class="btn-custom text-sm" data-toggle="tooltip" title="Go Back" @click="previous"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</button>
                     </div>

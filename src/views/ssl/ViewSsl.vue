@@ -289,7 +289,7 @@ sslStore.getById(id);
             <div class="card card-primary-outline">
                 <div class="card-header card-primary-outline">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fa fa-certificate">&nbsp;</i>SSL Certificates</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-certificate">&nbsp;</i>SSL Certificates</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
                                 <i :class="isCollapsed ? 'fas fa-plus' : 'fas fa-minus'"></i>

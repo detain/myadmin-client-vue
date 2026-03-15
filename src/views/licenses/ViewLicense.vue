@@ -185,7 +185,7 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-map-marker-alt">&nbsp;</i>IP Information</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-map-marker-alt">&nbsp;</i>IP Information</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
@@ -229,7 +229,7 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-book">&nbsp;</i>{{ extraInfoTables.cpanel.title }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-book">&nbsp;</i>{{ extraInfoTables.cpanel.title }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
@@ -253,7 +253,7 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-info-circle">&nbsp;</i>{{ extraInfoTables.note.title }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-info-circle">&nbsp;</i>{{ extraInfoTables.note.title }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>

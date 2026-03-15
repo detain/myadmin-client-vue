@@ -150,7 +150,7 @@ function goDetails() {
 function searchDomain() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -190,7 +190,7 @@ function searchDomain() {
 function getDomainFields() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! Loading Domain Fields.',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -209,7 +209,7 @@ function getDomainFields() {
 function goConfirm() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -238,7 +238,7 @@ function goConfirm() {
 function placeOrder() {
     Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait! Searching for this domain name.',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -431,7 +431,7 @@ onMounted(() => {
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-address-card">&nbsp;</i>Contact Information</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -494,7 +494,7 @@ onMounted(() => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -531,7 +531,7 @@ onMounted(() => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
@@ -595,7 +595,7 @@ onMounted(() => {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fa fa-arrow-left"></i>&nbsp;Go Back</button>
+                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fas fa-arrow-left"></i>&nbsp;Go Back</button>
                                     <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click.prevent="placeOrder">Place Order</button>
                                 </div>
                             </div>

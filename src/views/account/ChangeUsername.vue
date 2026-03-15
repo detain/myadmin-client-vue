@@ -32,7 +32,7 @@ const handleSubmit = async () => {
     };
     await Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -91,7 +91,7 @@ const resetForm = () => {
                                     <div class="form-group input-group col-md-7">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <i class="fa fa-at"></i>
+                                                <i class="fas fa-at"></i>
                                             </div>
                                         </div>
                                         <input type="text" class="form-control" disabled :value="oldUsername" />
@@ -104,7 +104,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fa fa-at"></i>
+                                                    <i class="fas fa-at"></i>
                                                 </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" readonly />
@@ -116,7 +116,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fa fa-key"></i>
+                                                    <i class="fas fa-key"></i>
                                                 </div>
                                             </div>
                                             <input v-model="emailConfirmation" type="text" class="form-control" required />
@@ -131,7 +131,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fa fa-at"></i>
+                                                    <i class="fas fa-at"></i>
                                                 </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" required />

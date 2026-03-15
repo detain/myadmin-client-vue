@@ -242,7 +242,7 @@ mailStore.getById(id);
                     "
                     class="mx-0 pl-4">
                     <p style="font-size: 20px; vertical-align: middle">
-                        <i class="fa fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong>
+                        <i class="fas fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong>
                     </p>
                 </blockquote>
             </div>
@@ -270,7 +270,7 @@ mailStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-plug">&nbsp;</i>Connection Information</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-plug">&nbsp;</i>Connection Information</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
@@ -290,7 +290,7 @@ mailStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fa fa-video">&nbsp;</i>{{ extraInfoTables.tutorials.title }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-video">&nbsp;</i>{{ extraInfoTables.tutorials.title }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>

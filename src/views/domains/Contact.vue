@@ -18,7 +18,7 @@ const domainFields = ref<DomainFields>({});
 const updateContact = async () => {
     await Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -49,7 +49,7 @@ const updateContact = async () => {
 async function loadContact() {
     await Swal.fire({
         title: '',
-        html: '<i class="fa fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
