@@ -157,7 +157,6 @@
         "vite-plugin-checker": "*",
         "vite-plugin-dts": "*",
         "vite-plugin-inspect": "*",
-        "vite-plugin-pwa": "*",
         "vite-plugin-vue-inspector": "*",
         "vite-plugin-webfont-dl": "*",
         "vitest": "*",
