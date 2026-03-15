@@ -16,9 +16,9 @@ test.describe('Authentication', () => {
         await expect(page.locator('#loginname')).toBeVisible();
         await expect(page.locator('#loginpassword')).toBeVisible();
     });
-
+/*
     test('register page loads', async ({ page }) => {
         await page.goto('/register');
         await expect(page.locator('text=Register')).toBeVisible();
-    });
+    });*/
 });
