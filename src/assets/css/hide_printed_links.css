@@ -2,4 +2,71 @@
     a[href]:after {
         content: none !important;
     }
+
+    /* Reset body constraints from AdminLTE layout-fixed */
+    body,
+    body.sidebar-mini,
+    body.layout-fixed,
+    body.layout-navbar-fixed {
+        overflow: visible !important;
+        height: auto !important;
+        min-width: 0 !important;
+    }
+
+    /* Hide chrome: sidebar, header, footer, breadcrumbs */
+    .main-header,
+    .main-sidebar,
+    .main-footer,
+    .navbar,
+    .printer-hidden,
+    .no-print {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Reset wrapper from flex/fixed layout to normal flow */
+    .wrapper {
+        overflow: visible !important;
+        display: block !important;
+        height: auto !important;
+    }
+
+    /* Override all AdminLTE content-wrapper rules */
+    .content-wrapper,
+    .wrapper .content-wrapper,
+    .layout-fixed .content-wrapper,
+    .layout-navbar-fixed .wrapper .content-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        position: static !important;
+        overflow: visible !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+    }
+
+    /* Table styles for clean printing */
+    #crud-table {
+        width: 100% !important;
+        font-size: 12px;
+        border-collapse: collapse;
+    }
+
+    #crud-table th,
+    #crud-table td {
+        padding: 4px 8px !important;
+        border: 1px solid #ddd !important;
+    }
+
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .card-header {
+        display: none !important;
+    }
 }

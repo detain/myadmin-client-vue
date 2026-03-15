@@ -103,7 +103,9 @@ const exportFormats = [
     { type: 'markdown', title: 'MarkDown', label: 'MARKDOWN', img: markdownImg },
 ];
 
-function crud_print(): void {}
+function crud_print(): void {
+    window.print();
+}
 
 function crud_export(exportType: string): void {
     console.log(exportType);
