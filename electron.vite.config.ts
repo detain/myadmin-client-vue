@@ -1,4 +1,3 @@
-/// <reference types="vitest/config" />
 import { resolve } from 'path';
 import { defineConfig } from 'electron-vite';
 import vue from '@vitejs/plugin-vue';
@@ -29,13 +28,6 @@ export default defineConfig({
     },
     renderer: {
         root: '.',
-        test: {
-            globals: true,
-            environment: 'jsdom',
-            reporters: ['default', 'html'],
-            setupFiles: ['./test/setup.ts'],
-            exclude: ['**/.claude/**', '**/e2e/**', '**/node_modules/**'],
-        },
         plugins: [
             vue({
                 script: {
