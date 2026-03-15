@@ -279,7 +279,7 @@ loadDns();
                             <td>{{ row.prio }}</td>
                             <td>{{ row.ttl }}</td>
                             <td>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain" @click.prevent="showEditRecord"><i class="far fa-fw fa-cog" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain" @click.prevent="showEditRecord"><i class="fas fa-fw fa-cog" :data-id="row.id"></i></a>
                                 <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteRecord"><i class="far fa-fw fa-trash" :data-id="row.id"></i></a>
                             </td>
                         </template>
