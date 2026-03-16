@@ -608,17 +608,17 @@ authStore.load();
             <div class="mt-24 flex">
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
-                    <div id="count-v" class="text-center text-4xl tracking-widest text-white">{{ counts.vps }}</div>
+                    <div id="count-v" class="text-center text-4xl tracking-widest text-white">{{ counts?.vps }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">VPS</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/website.png" alt="" /></div>
-                    <div id="count-w" class="text-center text-4xl tracking-widest text-white">{{ counts.websites }}</div>
+                    <div id="count-w" class="text-center text-4xl tracking-widest text-white">{{ counts?.websites }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Websites</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/servers.png" alt="" /></div>
-                    <div id="count-s" class="text-center text-4xl tracking-widest text-white">{{ counts.servers }}</div>
+                    <div id="count-s" class="text-center text-4xl tracking-widest text-white">{{ counts?.servers }}</div>
                     <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Servers</div>
                 </div>
             </div>
