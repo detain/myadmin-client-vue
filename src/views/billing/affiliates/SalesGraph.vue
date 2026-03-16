@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import Chart from 'chart.js/auto';
+
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - SalesGraph');
-siteStore.setTitle('Affiliate - SalesGraph');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['', 'SalesGraph'],
-]);
+
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.salesGraphPage.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.salesGraphPage.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.salesGraphPage.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 const selectedPeriod = ref(365);
 const chartInstance = ref<Chart | null>(null);
@@ -82,23 +88,23 @@ onMounted(() => {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'chart-line']" />&nbsp;Affiliate Status Graph</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'chart-line']" />&nbsp;{{ t('affiliate.salesGraphPage.affiliateStatusGraph') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="form-group row justify-content-center mb-4">
-                            <label class="col-sm-2 col-form-label text-right">Select<span class="text-danger"> *</span></label>
+                            <label class="col-sm-2 col-form-label text-right">{{ t('affiliate.salesGraphPage.select') }}<span class="text-danger"> *</span></label>
                             <div class="col-sm-7 input-group">
                                 <select v-model="selectedPeriod" class="form-control form-control-sm select2" @change="updatePeriod()">
-                                    <option value="30">Last 30 Days</option>
-                                    <option value="90">Last 3 months</option>
-                                    <option value="180">Last 6 months</option>
-                                    <option value="270">Last 9 months</option>
-                                    <option value="365">Last 1 year</option>
+                                    <option value="30">{{ t('affiliate.salesGraphPage.last30Days') }}</option>
+                                    <option value="90">{{ t('affiliate.salesGraphPage.last3Months') }}</option>
+                                    <option value="180">{{ t('affiliate.salesGraphPage.last6Months') }}</option>
+                                    <option value="270">{{ t('affiliate.salesGraphPage.last9Months') }}</option>
+                                    <option value="365">{{ t('affiliate.salesGraphPage.last1Year') }}</option>
                                 </select>
                             </div>
                         </div>

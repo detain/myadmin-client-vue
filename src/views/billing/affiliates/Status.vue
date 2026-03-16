@@ -30,10 +30,10 @@ watchEffect(() => {
                 <div class="card-body text-lg"><strong>{{ t('affiliate.signups.failed') }} -</strong> {{ t('affiliate.status.failedDesc') }}</div>
             </div>
             <div class="card card-outline card-danger">
-                <div class="card-body text-lg"><strong>Locked -</strong> {{ t('affiliate.status.lockedDesc') }}</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.locked') }} -</strong> {{ t('affiliate.status.lockedDesc') }}</div>
             </div>
             <div class="card card-outline card-danger">
-                <div class="card-body text-lg"><strong>Rejected -</strong> {{ t('affiliate.status.rejectedDesc') }}</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.rejected') }} -</strong> {{ t('affiliate.status.rejectedDesc') }}</div>
             </div>
             <div class="card card-outline card-success">
                 <div class="card-body text-lg"><strong>{{ t('affiliate.signups.paid') }} -</strong> {{ t('affiliate.status.paidDesc') }}</div>
