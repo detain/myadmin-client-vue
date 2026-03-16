@@ -127,7 +127,9 @@ async function exportFile(format: string, status: string) {
             headers['X-API-KEY'] = apiKey;
         }
         const response = await fetch(url, { method: 'GET', headers });
-        if (!response.ok) throw new Error('Download failed');
+        if (!response.ok) {
+            throw new Error(`Download failed: ${response.status}`);
+        }
         const blob = await response.blob();
         const contentDisposition = response.headers.get('Content-Disposition');
         let filename = `Interserver_Affiliates.${format}`;
@@ -144,7 +146,7 @@ async function exportFile(format: string, status: string) {
         URL.revokeObjectURL(a.href);
     } catch (err) {
         console.error('Export failed', err);
-        Swal.fire({ icon: 'error', title: t('affiliate.exportFailed'), text: t('affiliate.exportFailedText') });
+        await Swal.fire({ icon: 'error', title: t('affiliate.exportFailed'), text: t('affiliate.exportFailedText') });
     }
 }
 
@@ -153,12 +155,15 @@ function copyUrl() {
     const input = document.getElementById('affiliateinput') as HTMLInputElement;
     if (input) {
         input.select();
-        navigator.clipboard.writeText(input.value).then(() => {
-            Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
-        }).catch(() => {
-            document.execCommand('copy');
-            Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
-        });
+        navigator.clipboard
+            .writeText(input.value)
+            .then(() => {
+                Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
+            })
+            .catch(() => {
+                document.execCommand('copy');
+                Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
+            });
     }
 }
 
@@ -173,7 +178,9 @@ onMounted(() => {
     <div class="row justify-content-center mt-2">
         <div class="col">
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
-                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link></p>
+                <p class="text-md m-0">
+                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link>
+                </p>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
@@ -184,9 +191,7 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2">
-                                    <font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}
-                                </h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
