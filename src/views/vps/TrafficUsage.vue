@@ -156,7 +156,7 @@ onBeforeUnmount(() => {
         <div class="card-header">
             <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
-                    <h3 class="card-title py-2 mb-0"><i class="fas fa-tachometer-alt"></i>&nbsp;Bandwidth / Traffic Usage</h3>
+                    <h3 class="card-title py-2 mb-0"><font-awesome-icon :icon="['fas', 'tachometer-alt']" />&nbsp;Bandwidth / Traffic Usage</h3>
                     <div class="metric-toggle-container ml-4">
                         <span class="toggle-label mr-2">Display in:</span>
                         <div class="metric-toggle">
@@ -168,13 +168,13 @@ onBeforeUnmount(() => {
                     </div>
                 </div>
                 <div class="card-tools">
-                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <i class="fas fa-arrow-left"></i>&nbsp;Back </router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back </router-link>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="alert alert-info">
-                <strong><i class="far fa-exclamation-triangle"></i>&nbsp;Note:</strong>
+                <strong><font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp;Note:</strong>
                 This is not used for billing calculations and is an estimate only based on your virtual network cards.
             </div>
             <div class="row">
@@ -198,7 +198,7 @@ onBeforeUnmount(() => {
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5 class="card-title text-bold"><i class="far fa-chart-bar"></i>&nbsp;Statistics</h5>
+                    <h5 class="card-title text-bold"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;Statistics</h5>
                 </div>
                 <div class="card-body">
                     <div class="row">

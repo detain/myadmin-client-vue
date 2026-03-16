@@ -174,9 +174,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="far fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Floating IPs</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'envelope-open']" />Order Floating IPs</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ try {
                     <div class="card-footer">
                         <div class="row text-center">
                             <div class="controls col-md-12">
-                                <b><i class="fas fa-info-circle text-info" aria-hidden="true"></i></b>
+                                <b><font-awesome-icon :icon="['fas', 'info-circle']" class="text-info" /></b>
                                 Visit <a href="https://www.interserver.net/tips/kb/floating-ip-address/" class="text-info underline" target="_blank"><u>https://www.interserver.net/tips/kb/floating-ip-address/</u></a> for more information.
                             </div>
                         </div>
@@ -230,9 +230,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -268,9 +268,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[pkg].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost">{{ validateResponse.originalCost }}</div>

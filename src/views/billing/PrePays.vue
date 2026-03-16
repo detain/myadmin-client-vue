@@ -145,7 +145,7 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fas fa-plus" /> Add New Prepay</button>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><font-awesome-icon :icon="['fas', 'plus']" /> Add New Prepay</button>
             </div>
             <div v-if="loading" class="text-center">Loading…</div>
             <template v-if="Object.keys(prepays).length">
@@ -178,7 +178,7 @@ function submitNewPrepay() {
                                             <h3 class="card-title">History Log</h3>
                                             <div class="card-tools">
                                                 <button class="btn btn-tool" data-card-widget="collapse" @click="toggleHistory(p.prepay.prepay_id)">
-                                                    <i class="fas fa-plus" />
+                                                    <font-awesome-icon :icon="['fas', 'plus']" />
                                                 </button>
                                             </div>
                                         </div>

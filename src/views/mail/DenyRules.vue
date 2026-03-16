@@ -121,11 +121,11 @@ loadRules();
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><i class="fas fa-mail-bulk"></i> Mail Deny Rules</h3>
+                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'mail-bulk']" /> Mail Deny Rules</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-custom" @click="openAdd"><i class="fas fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-custom" @click="openAdd"><font-awesome-icon :icon="['fas', 'plus']" /> Add New</button>
                         <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
-                            <i class="fas" :class="collapsed ? 'fa-plus' : 'fa-minus'"></i>
+                            <font-awesome-icon :icon="['fas', collapsed ? 'plus' : 'minus']" />
                         </button>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ loadRules();
                             </tr>
                         </tbody>
                     </table>
-                    <div v-else class="callout callout-danger text-red text-sm"><i class="fas fa-bullhorn"></i> <strong>Heads up!</strong> No spam blocks added yet.</div>
+                    <div v-else class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" /> <strong>Heads up!</strong> No spam blocks added yet.</div>
                 </div>
             </div>
         </div>

@@ -918,9 +918,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order VPS</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;Order VPS</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -1021,9 +1021,9 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
                                     <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
                                 </div>
                             </div>
@@ -1058,19 +1058,19 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="far fa-thumbs-up">&nbsp;</i>Recommendations</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['far', 'thumbs-up']" />&nbsp;Recommendations</h4>
                                     <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body py-2">
-                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><i class="fab fa-linux">&nbsp;</i>Linux&nbsp;</a>
-                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><i class="far fa-user">&nbsp;</i>Direct Admin&nbsp;</a>
-                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><i class="fab fa-windows">&nbsp;</i>Windows&nbsp;</a>
-                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><i class="fas fa-server">&nbsp;</i>cPanel&nbsp;</a>
-                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><i class="fas fa-desktop">&nbsp;</i>Linux Desktop&nbsp;</a>
-                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><i class="fas fa-laptop">&nbsp;</i>Webuzo&nbsp;</a>
+                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><font-awesome-icon :icon="['fab', 'linux']" />&nbsp;Linux&nbsp;</a>
+                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><font-awesome-icon :icon="['far', 'user']" />&nbsp;Direct Admin&nbsp;</a>
+                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><font-awesome-icon :icon="['fab', 'windows']" />&nbsp;Windows&nbsp;</a>
+                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;cPanel&nbsp;</a>
+                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><font-awesome-icon :icon="['fas', 'desktop']" />&nbsp;Linux Desktop&nbsp;</a>
+                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><font-awesome-icon :icon="['fas', 'laptop']" />&nbsp;Webuzo&nbsp;</a>
                             </div>
                         </div>
                     </div>
@@ -1080,9 +1080,9 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><i class="fas fa-map-pin"></i>&nbsp;Location Availability</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-pin']" />&nbsp;Location Availability</h4>
                                     <div class="card-tools float-right">
-                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
                                 </div>
                             </div>
@@ -1126,9 +1126,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -1139,7 +1139,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-md text-bold">{{ period }} month(s)</div>

@@ -67,13 +67,14 @@ const periodLabel = computed(() => {
     return map[selectedPeriod.value as string];
 });
 
-function statusIcon(status: string) {
-    return {
-        Open: 'far fa-envelope-open text-success',
-        'On Hold': 'fas fa-pause text-warning',
-        Closed: 'far fa-envelope text-danger',
-        'In Progress': 'fas fa-hourglass-half text-secondary',
-    }[status];
+function statusIcon(status: string): { icon: [string, string]; class: string } {
+    const map: Record<string, { icon: [string, string]; class: string }> = {
+        Open: { icon: ['far', 'envelope-open'], class: 'text-success' },
+        'On Hold': { icon: ['fas', 'pause'], class: 'text-warning' },
+        Closed: { icon: ['far', 'envelope'], class: 'text-danger' },
+        'In Progress': { icon: ['fas', 'hourglass-half'], class: 'text-secondary' },
+    };
+    return map[status] || { icon: ['fas', 'ticket-alt'], class: '' };
 }
 
 function statusBadge(status: string) {
@@ -113,7 +114,7 @@ function timeAgo(input: string | number) {
                 <form @submit.prevent="submitSearch">
                     <div class="input-group input-group-sm">
                         <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
-                        <button class="btn btn-primary" :disabled="searching"><i class="fas fa-search" /></button>
+                        <button class="btn btn-primary" :disabled="searching"><font-awesome-icon :icon="['fas', 'search']" /></button>
                     </div>
                 </form>
                 <div v-if="showResults" class="results p-2">
@@ -151,7 +152,7 @@ function timeAgo(input: string | number) {
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fas fa-plus-circle text-info" /> New Ticket </RouterLink>
+                            <RouterLink to="/tickets/new" class="nav-link"> <font-awesome-icon :icon="['fas', 'plus-circle']" class="text-info" /> New Ticket </RouterLink>
                         </li>
                         <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
                             <RouterLink
@@ -163,7 +164,7 @@ function timeAgo(input: string | number) {
                                         period: selectedPeriod !== '30' ? selectedPeriod : undefined,
                                     },
                                 }">
-                                <i :class="statusIcon(status.ticketstatustitle)" /> {{ status.ticketstatustitle }}
+                                <font-awesome-icon :icon="statusIcon(status.ticketstatustitle).icon" :class="statusIcon(status.ticketstatustitle).class" /> {{ status.ticketstatustitle }}
                                 <span :class="statusBadge(status.ticketstatustitle)">{{ status.st_count }}</span>
                             </RouterLink>
                         </li>
@@ -190,8 +191,8 @@ function timeAgo(input: string | number) {
                         </thead>
                         <tbody>
                             <tr v-for="t in tickets" :key="t.ticketmaskid">
-                                <td><i :class="statusIcon(t.ticketstatustitle)" /></td>
-                                <td><i v-if="Number(t.hasattachments)" class="fas fa-paperclip" /></td>
+                                <td><font-awesome-icon :icon="statusIcon(t.ticketstatustitle).icon" :class="statusIcon(t.ticketstatustitle).class" /></td>
+                                <td><font-awesome-icon v-if="Number(t.hasattachments)" :icon="['fas', 'paperclip']" /></td>
                                 <td class="text-left">
                                     <RouterLink :to="`/tickets/${t.ticketmaskid}`"
                                         ><b>{{ t.ticketmaskid }}</b> – {{ t.subject }}</RouterLink
