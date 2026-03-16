@@ -79,6 +79,7 @@ function addCardSubmit() {
             .then((response) => {
                 console.log('add cc success', response);
                 accountStore.load();
+                $('#add-card').modal('hide');
             });
     } catch (error: any) {
         console.log('add cc failed', error);
@@ -93,6 +94,8 @@ async function editCardSubmit() {
             })
             .then((response) => {
                 console.log('edit cc success', response);
+                accountStore.load();
+                $('#edit-card').modal('hide');
             });
     } catch (error: any) {
         console.log('edit cc failed', error);
@@ -106,10 +109,17 @@ async function verifyCardSubmit() {
                 cc_ccv2: cc_ccv2.value,
             })
             .then((response) => {
-                console.log('edit cc success', response);
+                console.log('verify cc success', response);
+                accountStore.load();
+                $('#verify-card-1').modal('hide');
+                // After step 1, the card is now charged - open step 2 modal
+                if (data.value.ccs[modalCcIdx.value]) {
+                    data.value.ccs[modalCcIdx.value].verify_charged = true;
+                    $('#verify-card').modal('show');
+                }
             });
     } catch (error: any) {
-        console.log('edit cc failed', error);
+        console.log('verify cc failed', error);
     }
 }
 
@@ -117,13 +127,16 @@ async function verifyAmountSubmit() {
     try {
         fetchWrapper
             .post(`${baseUrl}/billing/creditcards/${modalCcIdx.value}/verify`, {
-                cc_exp: contFields.cc_exp,
+                cc_amount1: cc_amount1.value,
+                cc_amount2: cc_amount2.value,
             })
             .then((response) => {
-                console.log('edit cc success', response);
+                console.log('verify amounts success', response);
+                accountStore.load();
+                $('#verify-card').modal('hide');
             });
     } catch (error: any) {
-        console.log('edit cc failed', error);
+        console.log('verify amounts failed', error);
     }
 }
 

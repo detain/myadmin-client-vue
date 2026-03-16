@@ -26,6 +26,7 @@ export const router = createRouter({
         { path: '/cart/:invoices', component: () => import('../views/billing/Cart.vue') },
         { path: '/order_needs_payment/:invoices', component: () => import('../views/billing/OrderNeedsPayment.vue') },
         { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices/:done(done)?', component: () => import('../views/billing/Pay.vue') },
+        { path: '/payment_success', component: () => import('../views/billing/PaymentSuccess.vue') },
         { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
         { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
         {
