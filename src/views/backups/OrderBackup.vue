@@ -179,9 +179,9 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-database" aria-hidden="true">&nbsp;</i>Order Storage</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'database']" />Order Storage</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -229,9 +229,9 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -268,9 +268,9 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                                             <div class="text-md float-left" style="position: relative; top: 5px">
                                                 {{ serviceDetail.services_name }}
                                             </div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
                                         </th>
                                         <th class="text-md">{{ period }} Month(s)</th>
                                     </tr>

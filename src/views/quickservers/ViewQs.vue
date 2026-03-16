@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
+import { parseFaIcon } from '@/helpers/parseFaIcon';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
@@ -136,7 +137,7 @@ function loadLink(newLink: string) {
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-briefcase"></i>
+                    <font-awesome-icon :icon="['fas', 'briefcase']" />
                 </div>
                 <div class="small-box-footer">
                     <b>{{ serviceInfo.qs_hostname }}</b>
@@ -162,7 +163,7 @@ function loadLink(newLink: string) {
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-dollar-sign"></i>
+                    <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                 </div>
                 <div class="small-box-footer">
                     Status is: <b>{{ serviceInfo.qs_status }}</b>
@@ -180,7 +181,7 @@ function loadLink(newLink: string) {
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-info-circle"></i>
+                    <font-awesome-icon :icon="['fas', 'info-circle']" />
                 </div>
                 <div class="small-box-footer">
                     Vzid: <b>{{ serviceInfo.qs_vzid }}</b>
@@ -245,10 +246,10 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-server">&nbsp;</i>&nbsp;QuickServer Information</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;QuickServer Information</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                    <font-awesome-icon :icon="['fas', 'minus']" />
                                 </button>
                             </div>
                         </div>
@@ -309,7 +310,7 @@ function loadLink(newLink: string) {
                                         Comment:
                                         <span v-if="serviceInfo.qs_comment">{{ serviceInfo.qs_comment }}</span>
                                         <span v-else>none</span>
-                                        <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm"><i class="fas fa-pencil-alt my-2 text-sm"></i></span>
+                                        <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm"><font-awesome-icon :icon="['fas', 'pencil-alt']" class="my-2 text-sm" /></span>
                                     </h5>
                                 </span>
                             </div>
@@ -321,10 +322,10 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-hdd">&nbsp;</i>Disk</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'hdd']" />Disk</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
+                                    <font-awesome-icon :icon="['fas', 'minus']" />
                                 </button>
                             </div>
                         </div>
@@ -365,9 +366,9 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Connections</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />Connections</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -405,9 +406,9 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-microchip">&nbsp;</i>System Information</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'microchip']" />System Information</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -429,17 +430,18 @@ function loadLink(newLink: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />Links</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
+                                    <font-awesome-icon :icon="['fas', 'minus']" />
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                            <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                            <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
+                            <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
                     </div>
@@ -452,10 +454,10 @@ function loadLink(newLink: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fas fa-map-marker-alt">&nbsp;</i>IP Information</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-marker-alt']" />IP Information</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
+                                        <font-awesome-icon :icon="['fas', 'minus']" />
                                     </button>
                                 </div>
                             </div>
@@ -482,10 +484,10 @@ function loadLink(newLink: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fas fa-tachometer-alt">&nbsp;</i>{{ extraInfoTables.cp.title }}</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'tachometer-alt']" />{{ extraInfoTables.cp.title }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
+                                        <font-awesome-icon :icon="['fas', 'minus']" />
                                     </button>
                                 </div>
                             </div>
@@ -512,12 +514,12 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2">
-                                <i class="fas fa-plus">&nbsp;</i>
+                                <font-awesome-icon :icon="['fas', 'plus']" />
                                 {{ extraInfoTables.addons.title }}
                             </h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
+                                    <font-awesome-icon :icon="['fas', 'minus']" />
                                 </button>
                             </div>
                         </div>
@@ -543,12 +545,12 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2">
-                                <i class="fas fa-exclamation">&nbsp;</i>
+                                <font-awesome-icon :icon="['fas', 'exclamation']" />
                                 {{ extraInfoTables.note.title }}
                             </h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
+                                    <font-awesome-icon :icon="['fas', 'minus']" />
                                 </button>
                             </div>
                         </div>

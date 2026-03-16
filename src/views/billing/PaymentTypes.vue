@@ -279,7 +279,7 @@ onMounted(() => {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card-body text-red px-0">
-                <strong class="pr-2"><i class="far fa-lightbulb"></i> Note: </strong> All credit cards must be verified before they can be used. To verify them click the "Verify" button.
+                <strong class="pr-2"><font-awesome-icon :icon="['far', 'lightbulb']" /> Note: </strong> All credit cards must be verified before they can be used. To verify them click the "Verify" button.
             </div>
         </div>
     </div>
@@ -288,29 +288,29 @@ onMounted(() => {
             <div class="d-flex mb-4">
                 <h5 class="w-50">Select Preferred Payment Method</h5>
                 <div class="w-50 text-right">
-                    <router-link to="/cart" class="btn btn-custom mr-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart</router-link>
-                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fas fa-plus" aria-hidden="true"></i> Add New Card</a>
+                    <router-link to="/cart" class="btn btn-custom mr-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> Cart</router-link>
+                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><font-awesome-icon :icon="['fas', 'plus']" /> Add New Card</a>
                 </div>
             </div>
             `
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body icheck-success">
                     <input id="paypal" v-model="paymentMethod" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" @change="updatePaymentMethod()" />
-                    <label for="paypal"><i class="fab fa-paypal"></i> Pay with Paypal</label>
+                    <label for="paypal"><font-awesome-icon :icon="['fab', 'paypal']" /> Pay with Paypal</label>
                 </div>
             </div>
             <div v-if="data.ccs">
                 <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-hover shadow-sm">
                     <div class="card-body icheck-success row">
                         <input :id="'cc-' + cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
-                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><i class="fas fa-credit-card-alt"></i> Credit Card {{ cc_detail.cc }}</label>
+                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><font-awesome-icon :icon="['fas', 'credit-card']" /> Credit Card {{ cc_detail.cc }}</label>
                         <div class="col-md-2 pb-2">
-                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <i :class="{ 'fas fa-check': cc_detail.verified == true, 'fas fa-times': cc_detail.verified == false }"></i> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
+                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <font-awesome-icon :icon="['fas', cc_detail.verified == true ? 'check' : 'times']" /> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><i class="fas fa-exclamation-triangle"></i> Verify</a>
-                            <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Update the Expiration Date" @click="editCardModal(Number(cc_id))"><i class="fas fa-edit"></i> Edit</a>
-                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Remove this Credit Card" @click.prevent="deleteCardModal(Number(cc_id))"><i class="fas fa-trash"></i> Delete</a>
+                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" /> Verify</a>
+                            <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Update the Expiration Date" @click="editCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'edit']" /> Edit</a>
+                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Remove this Credit Card" @click.prevent="deleteCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'trash']" /> Delete</a>
                         </div>
                     </div>
                 </div>

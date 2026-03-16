@@ -120,7 +120,7 @@ accountStore.load();
                             <p class="mb-2 mt-3 py-3"><b>Last Login: </b>{{ last_login }}</p>
                         </div>
                         <div class="icon">
-                            <i class="far fa-id-card"></i>
+                            <font-awesome-icon :icon="['far', 'id-card']" />
                         </div>
                         <div class="small-box-footer"><b>Last Login IP: </b>{{ last_login_ip }}</div>
                     </div>
@@ -134,10 +134,10 @@ accountStore.load();
                             </p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-dollar-sign"></i>
+                            <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account"> Manage Account&nbsp;<i class="fas fa-pencil-alt text-sm"></i> </router-link>
+                            <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account"> Manage Account&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-sm" /></router-link>
                         </div>
                     </div>
                 </div>
@@ -149,16 +149,16 @@ accountStore.load();
                             <div class="mb-2 mt-2"><b>Total Amount To Be Paid: </b>{{ amount }}</div>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-file-invoice"></i>
+                            <font-awesome-icon :icon="['fas', 'file-invoice']" />
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount"> <i class="far fa-money-bill text-sm"></i>&nbsp;Pay Now </router-link>
+                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount"> <font-awesome-icon :icon="['far', 'money-bill-alt']" class="text-sm" />&nbsp;Pay Now </router-link>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-100 d-flex callpin mb-5 bg-white p-3">
-                <i class="fas fa-key" style="font-size: 20px; padding: 5px"></i>
+                <font-awesome-icon :icon="['fas', 'key']" style="font-size: 20px; padding: 5px" />
                 <h5 style="position: relative; top: 5px; left: 10px">Call in Pin:</h5>
                 <h5 style="position: relative; left: 15px; top: 5px; font-weight: bold; font-size: 20px">
                     {{ data.pin }}
@@ -169,9 +169,9 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title float-left py-2"><i class="far fa-ticket-alt"></i>Recent Tickets</h3>
+                                <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['fas', 'ticket-alt']" />Recent Tickets</h3>
                                 <div class="card-tools float-right">
-                                    <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <i class="far fa-eye"></i>&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
+                                    <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <font-awesome-icon :icon="['far', 'eye']" />&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@ accountStore.load();
                                         <td>{{ ticket.lastreplier }}</td>
                                         <td>{{ ticketStatusView[ticket.ticketstatusid] }}</td>
                                         <td>
-                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <i class="fas fa-pencil-alt"></i>&nbsp;Edit </router-link>
+                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit </router-link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -207,7 +207,7 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header home-card" style="background-color: rgba(0, 0, 0, 0.03) !important">
                             <h2 class="card-title mt-2 text-lg">
-                                <i :class="'fas fa-' + details.modules[module].icon"></i>&nbsp;
+                                <font-awesome-icon :icon="['fas', details.modules[module].icon]" />&nbsp;
                                 <span>{{ details.modules[module].heading }}</span>
                             </h2>
                             <div class="card-tools float-right">

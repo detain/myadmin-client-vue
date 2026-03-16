@@ -75,6 +75,9 @@ export default defineConfig({
                 },
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
+                        if (id.includes('fontawesome') || id.includes('fortawesome')) {
+                            return 'fontawesome';
+                        }
                         if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
                             return 'framework';
                         }

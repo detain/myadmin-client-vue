@@ -47,7 +47,7 @@ export default {
             <div class="p-1">
                 <h3 class="card-title py-2" title="">Account Features</h3>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
                 </div>
             </div>
         </div>

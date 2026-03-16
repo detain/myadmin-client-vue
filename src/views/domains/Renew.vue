@@ -132,26 +132,26 @@ loadRenew();
         <div class="col-md-12">
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #1:</b>&nbsp;Domain should be renewed on or before expiry date.
+                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #1:</b>&nbsp;Domain should be renewed on or before expiry date.
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                     </div>
                 </div>
             </div>
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired it may have a grace period from expiry date to renew.
+                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #2:</b>&nbsp;If domain expired it may have a grace period from expiry date to renew.
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                     </div>
                 </div>
             </div>
             <template v-if="whoisAvailable">
                 <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                     <div class="text-md m-0">
-                        <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant's domain.
+                        <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant's domain.
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                         </div>
                     </div>
                 </div>
@@ -162,20 +162,20 @@ loadRenew();
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Renew</h3>
+                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;Renew</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="alreadyInvoiced && invoicePaid">
                         <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle"></i>&nbsp; You have already renewed your domain!
+                            <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; You have already renewed your domain!
                         </div>
                     </template>
                     <template v-else-if="alreadyInvoiced && !invoicePaid">
                         <div class="alert alert-info">
-                            <i class="fas fa-info-circle"></i>&nbsp; To renew your domain, kindly pay the existing invoice.
+                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; To renew your domain, kindly pay the existing invoice.
                         </div>
                     </template>
                     <form v-else @submit.prevent="placeOrder">

@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
+import { parseFaIcon } from '@/helpers/parseFaIcon';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
@@ -194,7 +195,7 @@ sslStore.getById(id);
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-briefcase"></i>
+                    <font-awesome-icon :icon="['fas', 'briefcase']" />
                 </div>
                 <div class="small-box-footer">{{ serviceInfo.ssl_hostname }}</div>
             </div>
@@ -214,7 +215,7 @@ sslStore.getById(id);
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-dollar-sign"></i>
+                    <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                 </div>
                 <span class="small-box-footer"
                     >Status is: <b>{{ serviceInfo.ssl_status }}</b></span
@@ -269,17 +270,18 @@ sslStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Links</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
-                                <i :class="isCollapsed ? 'fas fa-plus' : 'fas fa-minus'"></i>
+                                <font-awesome-icon :icon="['fas', isCollapsed ? 'plus' : 'minus']" />
                             </button>
                         </div>
                     </div>
                 </div>
                 <div v-show="!isCollapsed" class="card-body">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
+                        <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
                 </div>
@@ -289,10 +291,10 @@ sslStore.getById(id);
             <div class="card card-primary-outline">
                 <div class="card-header card-primary-outline">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-certificate">&nbsp;</i>SSL Certificates</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'certificate']" />&nbsp;SSL Certificates</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
-                                <i :class="isCollapsed ? 'fas fa-plus' : 'fas fa-minus'"></i>
+                                <font-awesome-icon :icon="['fas', isCollapsed ? 'plus' : 'minus']" />
                             </button>
                         </div>
                     </div>

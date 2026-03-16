@@ -67,24 +67,24 @@ try {
         <div class="col-md-12">
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
                 <p class="text-md m-0">
-                    <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Important Note #1:</b>&nbsp;You should turn your <b>{{ module }}</b> off completely before changing the time zone.
+                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #1:</b>&nbsp;You should turn your <b>{{ module }}</b> off completely before changing the time zone.
                 </p>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
                 <p></p>
             </div>
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
-                <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Important Note #2:</b>&nbsp;VPS will be <b>Powered OFF</b> and restarted during the process.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #2:</b>&nbsp;VPS will be <b>Powered OFF</b> and restarted during the process.</p>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
                 <p></p>
             </div>
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
-                <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Important Note #3:</b>&nbsp;The timezone on this page will always default to <b>America/New_York</b> regardless of what your server is set to.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #3:</b>&nbsp;The timezone on this page will always default to <b>America/New_York</b> regardless of what your server is set to.</p>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
                 <p></p>
             </div>

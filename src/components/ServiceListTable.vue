@@ -120,13 +120,13 @@ function crud_export(exportType: string): void {
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="computedOrderRoute" :title="orderTitle"><i class="fas fa-shopping-cart"></i> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="computedOrderRoute" :title="orderTitle"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> Order</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fas fa-print crud-icon"></i>Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />Print</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li v-for="fmt in exportFormats" :key="fmt.type" role="presentation" :data-type="fmt.type">
                                         <a href="#" data-container="body" :title="fmt.title" @click.prevent="crud_export(fmt.type)"><img :src="fmt.img" alt="" /> {{ fmt.label }}</a>
@@ -154,8 +154,8 @@ function crud_export(exportType: string): void {
                                         <tr>
                                             <th v-for="col in columns" :key="col.key" :class="{ sortable: col.sortable !== false }" style="cursor: pointer; user-select: none;" @click="toggleSort(col)">
                                                 {{ col.label }}
-                                                <i v-if="col.sortable !== false && sortField === col.key" class="fa" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" style="margin-left: 4px;"></i>
-                                                <i v-else-if="col.sortable !== false" class="fas fa-sort" style="margin-left: 4px; opacity: 0.3;"></i>
+                                                <font-awesome-icon v-if="col.sortable !== false && sortField === col.key" :icon="['fas', sortDirection === 'asc' ? 'sort-up' : 'sort-down']" style="margin-left: 4px;" />
+                                                <font-awesome-icon v-else-if="col.sortable !== false" :icon="['fas', 'sort']" style="margin-left: 4px; opacity: 0.3;" />
                                             </th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -167,7 +167,7 @@ function crud_export(exportType: string): void {
                                                 <template v-else>{{ row[col.key] }}</template>
                                             </td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row[idField]" class="btn btn-primary btn-xs printer-hidden"><i class="fas fa-fw fa-cog"></i></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row[idField]" class="btn btn-primary btn-xs printer-hidden"><font-awesome-icon :icon="['fas', 'cog']" fixed-width /></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

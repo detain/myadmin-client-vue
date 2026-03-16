@@ -64,7 +64,7 @@ accountStore.loadOnce();
                 <div class="card-header">
                     <h4 class="float-left">Banner Image</h4>
                     <div class="card-tools float-right">
-                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <table class="table table-sm">

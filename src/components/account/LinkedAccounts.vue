@@ -60,7 +60,7 @@ export default {
                 <h3 class="card-title py-2" title="Social accounts linked to be able to login using it.">Linked Accounts</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                        <i class="fa fas fa-minus" aria-hidden="true"></i>
+                        <font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" />
                     </button>
                 </div>
             </div>

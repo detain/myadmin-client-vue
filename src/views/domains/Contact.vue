@@ -78,9 +78,9 @@ loadContact();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-address-card"></i>&nbsp;Contact Information</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;Contact Information</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ loadContact();
                                 <template v-if="fieldData.tip">
                                     <div class="input-group-append">
                                         <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" data-html="true" :data-content="`<p style='text-align: left;'>${fieldData.tip}</p>`" :data-original-title="`<div style='text-align: left; font-weight: bold;'>Tip for ${fieldData.label}</div>`">
-                                            <i class="fa text-info fa-question"></i>
+                                            <font-awesome-icon :icon="['fas', 'question']" class="text-info" />
                                         </span>
                                     </div>
                                 </template>

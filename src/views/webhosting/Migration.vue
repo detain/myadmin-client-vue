@@ -73,7 +73,7 @@ const submitForm = () => {
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="material-icons">transfer_within_a_station&nbsp;</i>Migrate Your Website</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const submitForm = () => {
                         <div class="card mb-0 shadow-none">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h3 class="card-title text-bold"><i aria-hidden="true" class="fas fa-info-circle">&nbsp;</i>Current Web Host Info</h3>
+                                    <h3 class="card-title text-bold"><font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp;Current Web Host Info</h3>
                                 </div>
                             </div>
                             <div class="card-body pb-0">
@@ -147,7 +147,7 @@ const submitForm = () => {
                         <div class="card shadow-none">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h5 class="card-title text-bold"><i aria-hidden="true" class="fas fa-info-circle">&nbsp;</i>Domain Registry Information</h5>
+                                    <h5 class="card-title text-bold"><font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp;Domain Registry Information</h5>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -202,9 +202,9 @@ const submitForm = () => {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h4 class="card-title text-red py-2"><i class="fas fa-lightbulb">&nbsp;</i>Important Notes</h4>
+                        <h4 class="card-title text-red py-2"><font-awesome-icon :icon="['fas', 'lightbulb']" />&nbsp;Important Notes</h4>
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                     </div>
                 </div>
