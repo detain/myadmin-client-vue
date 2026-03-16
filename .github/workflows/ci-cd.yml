@@ -22,6 +22,7 @@ on:
 env:
     NODE_VERSION: 22
     YARN_VERSION: 1.22.22
+    GH_TOKEN: ${{ github.token }}
 
 permissions:
     actions: write
