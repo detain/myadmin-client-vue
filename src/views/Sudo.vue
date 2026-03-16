@@ -3,7 +3,10 @@ import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
 //import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
+import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
+
+const { t } = useI18n();
 
 import { useRoute } from 'vue-router';
 const route = useRoute();
@@ -12,6 +15,6 @@ const authStore = useAuthStore();
 authStore.sudo(sessionId);
 </script>
 
-<template>Logged in as a client, redirecting to home.</template>
+<template>{{ t('login.sudo.redirecting') }}</template>
 
 <style scoped></style>

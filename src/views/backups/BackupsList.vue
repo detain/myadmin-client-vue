@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+const { t } = useI18n();
+
 const module = 'backups';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Storage / Backup List');
-siteStore.setTitle('Storage / Backup List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Storage'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('backups.list.title'));
+    siteStore.setTitle(t('backups.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.storage')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 interface backupsRow {
@@ -26,12 +31,12 @@ interface backupsRow {
 }
 
 const columns: ServiceListColumn[] = [
-    { key: 'backup_id', label: 'ID' },
-    { key: 'backup_name', label: 'Server' },
-    { key: 'backup_cost', label: 'Cost' },
-    { key: 'backup_username', label: 'Username', link: true },
-    { key: 'backup_status', label: 'Status' },
-    { key: 'services_name', label: 'Package' },
+    { key: 'backup_id', label: t('common.labels.id') },
+    { key: 'backup_name', label: t('common.labels.server') },
+    { key: 'backup_cost', label: t('common.labels.cost') },
+    { key: 'backup_username', label: t('common.labels.username'), link: true },
+    { key: 'backup_status', label: t('common.labels.status') },
+    { key: 'services_name', label: t('common.labels.package') },
 ];
 
 const data = ref<backupsRow[]>([]);
@@ -54,6 +59,6 @@ loadBackups();
         :columns="columns"
         id-field="backup_id"
         status-field="backup_status"
-        order-title="Order Backup Registrations"
+        :order-title="t('backups.list.orderTitle')"
     />
 </template>

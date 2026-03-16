@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 
 import { useAlertStore } from '@/stores/alert.store';
 
+const { t } = useI18n();
 const alertStore = useAlertStore();
 const { alert } = storeToRefs(alertStore);
 </script>

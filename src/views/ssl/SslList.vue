@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+const { t } = useI18n();
+
 const module = 'ssl';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('SSL Certificates List');
-siteStore.setTitle('SSL Certificates List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'SSL'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('ssl.list.title'));
+    siteStore.setTitle(t('ssl.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, 'SSL'],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 const columns: ServiceListColumn[] = [
@@ -44,7 +49,7 @@ loadData();
         :columns="columns"
         id-field="ssl_id"
         status-field="ssl_status"
-        order-title="Order Ssl Registrations"
+        :order-title="t('ssl.list.orderTitle')"
         order-route="/ssl/order"
     />
 </template>

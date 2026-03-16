@@ -3,22 +3,22 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'globe']" />Geo Firewall Rules</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'globe']" />{{ t('scrub_ips.geoFirewallRules.title') }}</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> Create New</button>
+                        <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('scrub_ips.geoFirewallRules.createNew') }}</button>
                     </div>
                 </div>
                 <div class="card-body pt-5">
-                    <div v-if="geoFirewallRules == undefined || !geoFirewallRules.length" class="text-center text-danger">No rules found!</div>
+                    <div v-if="geoFirewallRules == undefined || !geoFirewallRules.length" class="text-center text-danger">{{ t('scrub_ips.geoFirewallRules.noRulesFound') }}</div>
                     <table v-else class="table table-sm table-bordered">
                         <thead>
                             <tr>
-                                <th>Destination IP</th>
-                                <th>Destination<br />Port</th>
-                                <th>Source Country</th>
-                                <th>Source Asn</th>
-                                <th>XDP Action</th>
-                                <th>Actions</th>
+                                <th>{{ t('scrub_ips.geoFirewallRules.destinationIp') }}</th>
+                                <th>{{ t('scrub_ips.geoFirewallRules.destinationPort') }}</th>
+                                <th>{{ t('scrub_ips.geoFirewallRules.sourceCountry') }}</th>
+                                <th>{{ t('scrub_ips.geoFirewallRules.sourceAsn') }}</th>
+                                <th>{{ t('scrub_ips.geoFirewallRules.xdpAction') }}</th>
+                                <th>{{ t('common.labels.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,7 +31,7 @@
                                 <td>
                                     <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                         <input v-model="rule.id" type="hidden" name="rule_id" />
-                                        <button type="submit" class="border-0" data-toggle="tooltip" title="Delete Geo Firewall Rule">
+                                        <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
                                             <font-awesome-icon :icon="['fas', 'trash']" />
                                         </button>
                                     </form>
@@ -49,7 +49,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 id="modal-label" class="modal-title">Create New Geo Firewall Rule</h5>
+                            <h5 id="modal-label" class="modal-title">{{ t('scrub_ips.geoFirewallRules.createNewGeoRule') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -57,45 +57,45 @@
                         <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
                             <div class="modal-body">
                                 <div class="form-group row">
-                                    <label for="ip" class="col-sm-4 col-form-label">Destination IP</label>
+                                    <label for="ip" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.destinationIp') }}</label>
                                     <div class="col-sm-8">
                                         <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="port" class="col-sm-4 col-form-label">Port No</label>
+                                    <label for="port" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.portNo') }}</label>
                                     <div class="col-sm-8">
                                         <input id="port" type="text" name="destination_port" class="form-control" value="80" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="filter_type" class="col-sm-4 col-form-label">Select Country</label>
+                                    <label for="filter_type" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.selectCountry') }}</label>
                                     <div class="col-sm-8">
                                         <select id="countries" name="country_code" class="form-control select2" style="width: 100% !important" required>
-                                            <option value="">Select Country</option>
+                                            <option value="">{{ t('scrub_ips.geoFirewallRules.selectCountry') }}</option>
                                             <option v-for="(numcode, key) in countries" :key="key" :value="key">{{ numcode }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="asn" class="col-sm-4 col-form-label">ASN</label>
+                                    <label for="asn" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.asn') }}</label>
                                     <div class="col-sm-8">
                                         <input id="asn" type="text" name="asn" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="xdp_action" class="col-sm-4 col-form-label">XDP Action</label>
+                                    <label for="xdp_action" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.xdpAction') }}</label>
                                     <div class="col-sm-8">
                                         <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" required>
-                                            <option value="1">Block</option>
-                                            <option value="0">Whitelist</option>
+                                            <option value="1">{{ t('scrub_ips.geoFirewallRules.block') }}</option>
+                                            <option value="0">{{ t('scrub_ips.geoFirewallRules.whitelist') }}</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ t('common.buttons.create') }}</button>
                             </div>
                         </form>
                     </div>
@@ -110,6 +110,9 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 import Dialog from '@/components/Dialog.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const geoFirewallRules = defineModel('geoFirewallRules', { type: Array });
 const id = defineModel('id', { type: Number });
@@ -150,16 +153,16 @@ const handleSubmit = (form_id: number) => {
                     Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
                 });
         } catch (error) {
-            Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to create firewall rule at this time.' });
+            Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.geoFirewallRules.unableToCreateRule')}` });
         }
     }
 };
 const handleDelete = (itemId: number) => {
     Swal.fire({
         icon: 'warning',
-        title: 'Are you sure you want to delete this geo rule?',
+        title: t('scrub_ips.geoFirewallRules.deleteGeoRuleConfirm'),
         showCancelButton: true,
-        confirmButtonText: 'Yes',
+        confirmButtonText: t('common.labels.yes'),
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -187,7 +190,7 @@ const handleDelete = (itemId: number) => {
                     });
                 } catch (error) {
                     Swal.close();
-                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete geo firewall at this time.' });
+                    Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.geoFirewallRules.unableToDeleteRule')}` });
                 }
             }
         }

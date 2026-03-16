@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted, watchEffect } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAccountStore } from '@/stores/account.store';
@@ -13,14 +14,18 @@ import LinkedAccounts from '@/components/account/LinkedAccounts.vue';
 import SshKeys from '@/components/account/SshKeys.vue';
 import TwoFactorAuth from '@/components/account/TwoFactorAuth.vue';
 
+const { t } = useI18n();
+
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
-siteStore.setPageHeading('Account Settings');
-siteStore.setTitle('Account Settings');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Account Settings'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('account.settings.title'));
+    siteStore.setTitle(t('account.settings.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('account.settings.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 const { loading, error, custid, ima, data, ip, oAuthProviders, oAuthConfig, oAuthAdapters, limits } = storeToRefs(accountStore);

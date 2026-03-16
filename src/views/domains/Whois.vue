@@ -4,8 +4,10 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
     hostname: string;
@@ -24,16 +26,16 @@ const loadingDone = ref(false);
 
 function placeOrder() {
     Swal.fire({
-        title: 'Confirm Order',
-        html: `<p>Whois Privacy cost: <b>${currencySymbol.value}${whoisCost.value.toFixed(2)}</b> per year</p><p>Are you sure you want to place this order?</p>`,
+        title: t('domains.whois.confirmOrderTitle'),
+        html: `<p>${t('domains.whois.confirmOrderMessage', { cost: `<b>${currencySymbol.value}${whoisCost.value.toFixed(2)}</b>` })}</p>`,
         icon: 'question',
         showCancelButton: true,
-        confirmButtonText: 'Place Order',
+        confirmButtonText: t('domains.order.placeOrder'),
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: '',
-                html: '<i class="fas fa-spinner fa-pulse"></i> Placing order...',
+                html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.whois.placingOrder')}`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });
@@ -42,8 +44,8 @@ function placeOrder() {
                 .then((response) => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Order Placed',
-                        html: response.text || 'Whois privacy order placed successfully!',
+                        title: t('domains.whois.orderPlaced'),
+                        html: response.text || t('domains.whois.orderSuccess'),
                         confirmButtonText: 'OK',
                     }).then(() => {
                         if (response.payUrl) {
@@ -56,7 +58,7 @@ function placeOrder() {
                 .catch((error: any) => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
+                        title: t('common.confirm.title'),
                         html: error?.text || error?.error || 'Failed to place order.',
                     });
                 });
@@ -66,16 +68,16 @@ function placeOrder() {
 
 function enableWhois() {
     Swal.fire({
-        title: 'Enable Whois Privacy',
-        html: `<p>Your domain <b>${hostname.value}</b> has a paid whois privacy addon that is not yet enabled.</p><p>Would you like to enable it now?</p>`,
+        title: t('domains.whois.enableTitle'),
+        html: `<p>${t('domains.whois.enableMessage', { hostname: hostname.value })}</p>`,
         icon: 'question',
         showCancelButton: true,
-        confirmButtonText: 'Enable Whois Privacy',
+        confirmButtonText: t('domains.whois.enableTitle'),
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: '',
-                html: '<i class="fas fa-spinner fa-pulse"></i> Enabling whois privacy...',
+                html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.whois.enablingWhois')}`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });
@@ -84,8 +86,8 @@ function enableWhois() {
                 .then((response) => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Enabled',
-                        html: response.text || 'Whois Privacy is now enabled.',
+                        title: t('common.buttons.enable'),
+                        html: response.text || t('domains.whois.whoisEnabled'),
                     }).then(() => {
                         router.push(`/${moduleLink(module)}/${id.value}`);
                     });
@@ -93,7 +95,7 @@ function enableWhois() {
                 .catch((error: any) => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
+                        title: t('common.confirm.title'),
                         html: error?.text || error?.error || 'Failed to enable whois privacy.',
                     });
                 });
@@ -103,17 +105,17 @@ function enableWhois() {
 
 function disableWhois() {
     Swal.fire({
-        title: 'Disable & Cancel Whois Privacy',
-        html: `<p>Your domain <b>${hostname.value}</b> Whois Privacy addon is currently enabled.</p><p>Are you sure you want to disable and cancel it?</p>`,
+        title: t('domains.whois.disableTitle'),
+        html: `<p>${t('domains.whois.disableMessage', { hostname: hostname.value })}</p>`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Disable & Cancel',
+        confirmButtonText: t('domains.whois.disableAndCancel'),
         confirmButtonColor: '#d33',
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: '',
-                html: '<i class="fas fa-spinner fa-pulse"></i> Disabling whois privacy...',
+                html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.whois.disablingWhois')}`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });
@@ -122,8 +124,8 @@ function disableWhois() {
                 .then((response) => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Disabled',
-                        html: response.text || 'Whois Privacy has been disabled and canceled.',
+                        title: t('common.buttons.disable'),
+                        html: response.text || t('domains.whois.whoisDisabled'),
                     }).then(() => {
                         router.push(`/${moduleLink(module)}/${id.value}`);
                     });
@@ -131,7 +133,7 @@ function disableWhois() {
                 .catch((error: any) => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
+                        title: t('common.confirm.title'),
                         html: error?.text || error?.error || 'Failed to disable whois privacy.',
                     });
                 });
@@ -142,7 +144,7 @@ function disableWhois() {
 function loadWhois() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.contact.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -173,7 +175,7 @@ loadWhois();
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp; <b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>
+                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp; <b>Note:</b> &nbsp;{{ t('domains.whois.renewalNote', { cost: `<b>${currencySymbol}${whoisCost.toFixed(2)}</b>` }) }}
                 </p>
             </div>
         </div>
@@ -182,7 +184,7 @@ loadWhois();
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="alert alert-warning">
-                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; Whois Privacy is not available for this TLD.
+                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; {{ t('domains.whois.notAvailable') }}
                 </div>
             </div>
         </div>
@@ -192,17 +194,17 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;Whois Privacy</h3>
+                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body text-center">
                         <div class="alert alert-success">
-                            <font-awesome-icon :icon="['fas', 'check-circle']" />&nbsp; Whois Privacy is currently <b>enabled</b> for <b>{{ hostname }}</b>.
+                            <font-awesome-icon :icon="['fas', 'check-circle']" />&nbsp; {{ t('domains.whois.currentlyEnabled', { hostname }) }}
                         </div>
                         <button class="btn btn-danger mt-3" @click="disableWhois">
-                            <font-awesome-icon :icon="['fas', 'times-circle']" />&nbsp; Disable & Cancel Whois Privacy
+                            <font-awesome-icon :icon="['fas', 'times-circle']" />&nbsp; {{ t('domains.whois.disableAndCancel') }}
                         </button>
                     </div>
                 </div>
@@ -214,19 +216,19 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;Whois Privacy</h3>
+                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="placeOrder">
                             <div class="form-group row">
-                                <label class="col-md-2 col-form-label" for="hostname">Domain</label>
+                                <label class="col-md-2 col-form-label" for="hostname">{{ t('domains.whois.domain') }}</label>
                                 <div class="col-sm-10 input-group"><input id="hostname" type="text" class="form-control form-control-sm" :value="hostname" disabled /></div>
                             </div>
                             <div id="whois_row" class="form-group row">
-                                <label class="col-md-2 col-form-label" for="whois_cost">Whois Cost</label>
+                                <label class="col-md-2 col-form-label" for="whois_cost">{{ t('domains.whois.whoisCost') }}</label>
                                 <div class="col-sm-10 input-group input-group-sm">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
@@ -237,7 +239,7 @@ loadWhois();
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label" for="submit"></label>
                                 <div class="col-sm-10 input-group input-group-sm">
-                                    <input id="button-id-signup" type="submit" name="Submit" value="Place Order" class="btn btn-custom btn-sm px-3 py-2 text-sm" />
+                                    <input id="button-id-signup" type="submit" name="Submit" :value="t('domains.order.placeOrder')" class="btn btn-custom btn-sm px-3 py-2 text-sm" />
                                 </div>
                             </div>
                         </form>
@@ -247,19 +249,19 @@ loadWhois();
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;Contact Privacy</h4>
+                        <h4 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;{{ t('domains.whois.contactPrivacy') }}</h4>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>Contact Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant's domain.</p>
-                        <p>The benefit of having Contact Privacy is that the Registrant's identity, including home address, phone number, and email address, is shielded from spammers, identity thieves and scammers.</p>
-                        <p>When Registrants enable the Contact Privacy service, masked contact information appears in the public WHOIS database.</p>
+                        <p>{{ t('domains.whois.contactPrivacyDescription1') }}</p>
+                        <p>{{ t('domains.whois.contactPrivacyDescription2') }}</p>
+                        <p>{{ t('domains.whois.contactPrivacyDescription3') }}</p>
                         <p>
-                            Contact privacy is available for <span class="text-md text-green text-md">{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</span> per domain per year.
+                            {{ t('domains.whois.contactPrivacyAvailable', { cost: '' }) }} <span class="text-md text-green text-md">{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</span>
                         </p>
-                        <p>To enable Contact Privacy for your Domain, Place Order Now.</p>
+                        <p>{{ t('domains.whois.enableNow') }}</p>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, nextTick, onBeforeUnmount } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useSiteStore } from '@/stores/site.store';
 import { useRouter } from 'vue-router';
+
+const { t } = useI18n();
 
 interface SearchResults {
     results: (string | number | null)[][];
@@ -257,7 +260,7 @@ export default {
 
 <template>
     <div class="search-wrapper">
-        <input ref="searchInputEl" v-model="searchInput" type="text" class="new-search" @keydown="onKeydown" />
+        <input ref="searchInputEl" v-model="searchInput" type="text" class="new-search" :placeholder="t('common.search.placeholder')" @keydown="onKeydown" />
         <span ref="searchIconEl" class="search-icon" @click="onIconClick">
             {{ searchIcon }}
         </span>
@@ -265,16 +268,16 @@ export default {
             <router-link v-for="(item, index) in displayRows" v-slot="{ navigate: linkNavigate, href }" :key="index" :to="getRoute(item.row)" custom>
                 <a class="search-row" :class="{ active: index === highlightIndex }" :href="href" tabindex="0" @click.prevent="linkNavigate">
                     <!-- Table Label -->
-                <div class="cell label">
+                    <div class="cell label">
                         {{ item.table.label ?? ucwords(item.table.table) }}
-                </div>
+                    </div>
                     <!-- Service ID -->
-                <div class="cell id">
+                    <div class="cell id">
                         <template v-for="(part, i) in splitHighlight(item.serviceId, searchInput)" :key="i">
                             <b v-if="part.match">{{ part.text }}</b>
                             <span v-else>{{ part.text }}</span>
                         </template>
-                </div>
+                    </div>
                     <!-- Fields -->
                     <div class="cell fields">
                         <div v-for="(field, fIndex) in item.fields" :key="fIndex" class="field-group px-1">
@@ -285,10 +288,10 @@ export default {
                                 <b v-if="part.match">{{ part.text }}</b>
                                 <span v-else>{{ part.text }}</span>
                             </template>
-            </div>
-            </div>
+                        </div>
+                    </div>
                 </a>
-                <div v-if="displayRows.length === 0">No Search Results found</div>
+                <div v-if="displayRows.length === 0">{{ t('common.search.noResults') }}</div>
             </router-link>
         </div>
     </div>

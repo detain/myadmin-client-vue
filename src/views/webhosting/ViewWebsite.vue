@@ -6,10 +6,13 @@ import { moduleLink } from '@/helpers/moduleLink';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useWebsiteStore } from '@/stores/website.store';
 import { useSiteStore } from '@/stores/site.store';
 
 import $ from 'jquery';
+
+const { t } = useI18n();
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import BuyIp from '@/views/webhosting/BuyIp.vue';
@@ -38,36 +41,36 @@ function isEmpty(table: any) {
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
-        ['/home', 'Home'],
-        [`/${moduleLink(module)}`, 'Website'],
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.webhosting')],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Website ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('webhosting.view.title', { id }));
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Website ${id}`);
-        siteStore.setTitle(`View Website ${id}`);
+        siteStore.setPageHeading(t('webhosting.view.title', { id }));
+        siteStore.setTitle(t('webhosting.view.title', { id }));
     } else {
-        siteStore.setPageHeading(`Website ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`Website ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(`${t('common.menu.webhosting')} ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`${t('common.menu.webhosting')} ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
-                title: '<h3>Are you sure?</h3> ',
+                title: `<h3>${t('common.confirm.title')}</h3> `,
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
-                confirmButtonText: 'Yes',
-                html: 'Are you sure want to resend welcome email?',
+                confirmButtonText: t('common.confirm.yes'),
+                html: t('webhosting.view.welcomeEmailConfirm'),
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
-                                title: '<h3>Email Sent</h3> ',
+                                title: `<h3>${t('webhosting.view.emailSent')}</h3> `,
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
-                                confirmButtonText: 'Yes',
-                                html: 'The welcome email has been resent.  Check your inbox.',
+                                confirmButtonText: t('common.confirm.yes'),
+                                html: t('webhosting.view.emailSentMessage'),
                                 preConfirm: () => {
                                     router.push(`/${moduleLink(module)}/${id}`);
                                 },
@@ -109,10 +112,10 @@ loadLink(route.params.link as string);
         <div class="col-md-4">
             <div class="small-box bg-secondary">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Package</h3>
+                    <h3>{{ t('webhosting.view.package') }}</h3>
                     <p class="m-0 py-2">{{ pkg }}</p>
                     <p>
-                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
+                        {{ t('webhosting.view.nextInvoiceDate') }} <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
                 <div class="icon">
@@ -131,17 +134,17 @@ loadLink(route.params.link as string);
                     'bg-info': !(serviceInfo.website_status === 'running' || serviceInfo.website_status === 'active' || serviceInfo.website_status === 'paused' || serviceInfo.website_status === 'suspended' || serviceInfo.website_status === 'stopped' || serviceInfo.website_status === 'deleted' || serviceInfo.website_status === 'canceled'),
                 }">
                 <div class="inner px-3 pb-2 pt-3">
-                    <h3>Billing</h3>
+                    <h3>{{ t('webhosting.view.billing') }}</h3>
                     <p class="my-3 py-3">
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
-                        billed <b>{{ billingDetails.service_frequency }}</b>
+                        {{ t('webhosting.view.billed') }} <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
                 <div class="icon">
                     <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                 </div>
                 <span class="small-box-footer">
-                    Billing Status is:
+                    {{ t('webhosting.view.billingStatusIs') }}
                     <b>{{ serviceInfo.website_status }}</b>
                 </span>
             </div>
@@ -149,19 +152,19 @@ loadLink(route.params.link as string);
         <div class="col-md-4">
             <div class="small-box bg-info">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Host Info</h3>
+                    <h3>{{ t('webhosting.view.hostInfo') }}</h3>
                     <p class="m-0 py-2">
                         Username:
                         <b>
                             <template v-if="!isEmpty(serviceInfo.website_username)">{{ serviceInfo.website_username }}</template>
-                            <template v-else>Not set yet</template>
+                            <template v-else>{{ t('webhosting.view.notSetYet') }}</template>
                         </b>
                     </p>
                     <p>
                         IP:
                         <b>
                             <template v-if="!isEmpty(serviceInfo.website_ip)">{{ serviceInfo.website_ip }}</template>
-                            <template v-else>Not set yet</template>
+                            <template v-else>{{ t('webhosting.view.notSetYet') }}</template>
                         </b>
                     </p>
                 </div>
@@ -172,7 +175,7 @@ loadLink(route.params.link as string);
                     Server:
                     <b>
                         <template v-if="!isEmpty(serviceMaster.website_name)">{{ serviceMaster.website_name }}</template>
-                        <template v-else>Not set yet</template>
+                        <template v-else>{{ t('webhosting.view.notSetYet') }}</template>
                     </b>
                 </span>
             </div>
@@ -242,7 +245,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Default Nameservers</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;{{ t('webhosting.view.defaultNameservers') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <font-awesome-icon :icon="['fas', 'minus']" />
@@ -272,7 +275,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;External Links</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('webhosting.view.externalLinks') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <font-awesome-icon :icon="['fas', 'minus']" />
@@ -310,7 +313,7 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Links</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('common.labels.links') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>

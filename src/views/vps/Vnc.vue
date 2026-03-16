@@ -3,7 +3,10 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -26,9 +29,9 @@ const novncLink = ref('');
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2">Microsoft Remote Desktop Connection</h3>
+                        <h3 class="card-title py-2">{{ t('vps.vnc.remoteDesktop') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-toggle="tooltip" title="Go Back" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-toggle="tooltip" :title="t('vps.common.goBack')" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -40,12 +43,12 @@ const novncLink = ref('');
                                     <img style="height: 150px" alt="Remote Desktop Icon" src="../../assets/images/vps/remote_desktop.jpg" />
                                 </td>
                                 <td class="p-3">
-                                    <p>Available <b>only</b> on the <b>Windows Platform</b>. Remote desktop is a quick and convenient way to connect to a virtual machine's desktop.</p>
+                                    <p>{{ t('vps.vnc.remoteDesktopDescription') }}</p>
                                     <ul>
-                                        <li>The Administrator password must first be set on the VPS before you can use remote desktop.</li>
-                                        <li>Connect with VNC or HTML5 VNC to set your initial password.</li>
+                                        <li>{{ t('vps.vnc.remoteDesktopStep1') }}</li>
+                                        <li>{{ t('vps.vnc.remoteDesktopStep2') }}</li>
                                     </ul>
-                                    <strong>NOTE:</strong> For a remote desktop tutorial click <a href="//interserver.net/resolve/Knowledgebase/Article/View/192/28/how-to-remote-desktop-to-vps" target="_blank"><span class="link text-bold">here</span>.</a><br />
+                                    <strong>NOTE:</strong> {{ t('vps.vnc.remoteDesktopNote') }} <a href="//interserver.net/resolve/Knowledgebase/Article/View/192/28/how-to-remote-desktop-to-vps" target="_blank"><span class="link text-bold">{{ t('vps.vnc.here') }}</span>.</a><br />
                                 </td>
                             </tr>
                         </tbody>
@@ -59,7 +62,7 @@ const novncLink = ref('');
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'desktop']" />&nbsp;Desktop VNC Connection</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'desktop']" />&nbsp;{{ t('vps.vnc.desktopVnc') }}</h3>
                     </div>
                 </div>
                 <div class="card-body p-3">
@@ -70,10 +73,10 @@ const novncLink = ref('');
                                     <img style="height: 150px" alt="VNC Icon" src="//upload.wikimedia.org/wikipedia/en/thumb/5/51/Virtual_Network_Computing_%28logo%29.svg/1168px-Virtual_Network_Computing_%28logo%29.svg.png" />
                                 </td>
                                 <td>
-                                    <p class="mx-3 px-4 pt-3">VNC allows you to connect to the virtual machine's desktop. VNC can be run in the browser or as a stand-alone client. Your computer's IP address must be granted access before the connection can be established.</p>
+                                    <p class="mx-3 px-4 pt-3">{{ t('vps.vnc.desktopVncDescription') }}</p>
                                     <ul>
-                                        <li><b>Step 1</b>: Click link to grant your IP Access to VNC. <a :href="setupVncLink" target="_blank" class="link text-bold" style="transition-duration: 0.3s">Grant Your IP access to VNC </a>Please wait 2 minutes for the action to complete.</li>
-                                        <li><b>Step 2</b>: You can also download one of the many VNC clients available on the internet. We recommend TightVNC. Connect using your VPS IP address. Password is not required after your remote IP address has been granted in step 1.&nbsp;<span class="Apple-converted-space"></span></li>
+                                        <li><b>Step 1</b>: {{ t('vps.vnc.grantIpAccess') }} <a :href="setupVncLink" target="_blank" class="link text-bold" style="transition-duration: 0.3s">{{ t('vps.vnc.grantIpAccess') }} </a>{{ t('vps.vnc.grantIpWait') }}</li>
+                                        <li><b>Step 2</b>: {{ t('vps.vnc.vncClientNote') }}&nbsp;<span class="Apple-converted-space"></span></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -88,7 +91,7 @@ const novncLink = ref('');
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'firefox']" class="text-orange" />&nbsp;Browser VNC Connection</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'firefox']" class="text-orange" />&nbsp;{{ t('vps.vnc.browserVnc') }}</h3>
                     </div>
                 </div>
                 <div class="d-flex p-3">
@@ -104,11 +107,11 @@ const novncLink = ref('');
                     </table>
                     <div style="width: 85%; border: 1px solid #dee2e6">
                         <div class="p-2" style="border: 1px solid #dee2e6">
-                            To connect using HTML5 VNC Client:
-                            <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="novncLink">Click Here</a>
+                            {{ t('vps.vnc.connectHtml5') }}
+                            <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="novncLink">{{ t('vps.vnc.clickHere') }}</a>
                         </div>
-                        <div class="p-2" style="border: 1px solid #dee2e6">To connect using old layout: <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="`${novncLink}&mode=basic`">Click Here</a></div>
-                        <div class="p-2" style="border: 1px solid #dee2e6">HTML5 VNC client that runs well in any modern browser including mobile browsers (iOS and Android).</div>
+                        <div class="p-2" style="border: 1px solid #dee2e6">{{ t('vps.vnc.connectOldLayout') }} <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="`${novncLink}&mode=basic`">{{ t('vps.vnc.clickHere') }}</a></div>
+                        <div class="p-2" style="border: 1px solid #dee2e6">{{ t('vps.vnc.html5Note') }}</div>
                     </div>
                 </div>
             </div>

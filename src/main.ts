@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 //import { VueQueryPlugin } from '@tanstack/vue-query';
 import { createHead } from '@unhead/vue/client';
 //import { VueRecaptchaPlugin } from 'vue-recaptcha';
-//import { createI18n } from 'vue-i18n'
+import i18n, { loadCommonMessages } from './i18n';
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
@@ -34,7 +34,7 @@ import {
     faTable, faTachometerAlt, faThumbsDown, faThumbsUp, faTicketAlt, faTimes, faTimesCircle, faTrash, faTrashAlt, faTv,
     faUpload, faUser, faUserEdit, faUserLock, faUserPlus, faUserSecret, faUserShield, faUsersCog,
     faVideo,
-    faWallet, faWarehouse,
+    faWallet, faWarehouse, faWindowMaximize,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faBell as farBell, faChartBar as farChartBar, faCheckSquare as farCheckSquare,
@@ -79,7 +79,7 @@ addIcons(
 addIcons(
     faTable, faTachometerAlt, faThumbsDown, faThumbsUp, faTicketAlt, faTimes, faTimesCircle, faTrash, faTrashAlt, faTv,
     faUpload, faUser, faUserEdit, faUserLock, faUserPlus, faUserSecret, faUserShield, faUsersCog,
-    faVideo, faWallet, faWarehouse,
+    faVideo, faWallet, faWarehouse, faWindowMaximize,
 );
 // regular icons
 addIcons(
@@ -111,15 +111,15 @@ const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon);
 const pinia = createPinia();
 const head = createHead();
-//const i18n = createI18n({})
 app.use(pinia);
 app.use(router);
 //app.use(VueQueryPlugin);
 app.use(head);
-/* @todo this caused the screen to go blank
-app.use(VueRecaptchaPlugin, {
+app.use(i18n);
+/*app.use(VueRecaptchaPlugin, {
     v2SiteKey: '6LeYMVkUAAAAAOW7Nw0e9rhAxIfH5T9k-JN9pMr2',
     //  v3SiteKey: 'YOUR_V3_SITEKEY_HERE',
 });*/
-//app.use(i18n)
-app.mount('#app');
+loadCommonMessages().then(() => {
+    app.mount('#app');
+});

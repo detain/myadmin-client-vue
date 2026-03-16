@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref, computed, reactive } from 'vue';
+import { ref, computed, reactive, watchEffect } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { Form, Field } from 'vee-validate';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 
+const { t } = useI18n();
+
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
-siteStore.setPageHeading('Change Username');
-siteStore.setTitle('Change Username');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Change Username'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('account.changeUsername.title'));
+    siteStore.setTitle(t('account.changeUsername.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('account.changeUsername.title')],
+    ]);
+});
 const disabled = true;
 const oldUsername = ref<string | null>(null);
 const success = ref<string | null>(null);
@@ -32,7 +37,7 @@ const handleSubmit = async () => {
     };
     await Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('account.changeUsername.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -48,7 +53,7 @@ const handleSubmit = async () => {
         submitting.value = false;
         Swal.close();
         console.log('caught error:', error);
-        failed.value = `Got error ${error}`;
+        failed.value = t('account.changeUsername.gotError', { error });
         success.value = null;
     }
 };
@@ -65,21 +70,21 @@ const resetForm = () => {
     <div class="container">
         <template v-if="disabled">
             <div class="row justify-content-center">
-                <div class="col-md-7">Username changes have been temporarily disabled.</div>
+                <div class="col-md-7">{{ t('account.changeUsername.disabled') }}</div>
             </div>
         </template>
         <template v-else>
             <!-- Alerts -->
-            <div v-if="success" class="alert alert-success"><strong>Success! </strong>{{ success }}</div>
+            <div v-if="success" class="alert alert-success"><strong>{{ t('common.alerts.success') }} </strong>{{ success }}</div>
 
-            <div v-if="failed" class="alert alert-danger"><strong>Error! </strong>{{ failed }}</div>
+            <div v-if="failed" class="alert alert-danger"><strong>{{ t('common.alerts.error') }} </strong>{{ failed }}</div>
 
             <div class="row">
                 <div class="offset-md-2 col-sm-8">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <h4>Change Username</h4>
+                                <h4>{{ t('account.changeUsername.title') }}</h4>
                             </div>
                         </div>
 
@@ -87,7 +92,7 @@ const resetForm = () => {
                             <form id="changeusername_form" accept-charset="UTF-8" role="form" class="not-bold left-align-text" @submit.prevent="handleSubmit">
                                 <!-- Current Username -->
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label"> Current Username </label>
+                                    <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.currentUsername') }} </label>
                                     <div class="form-group input-group col-md-7">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -100,7 +105,7 @@ const resetForm = () => {
                                 <!-- New Username (confirmation step) -->
                                 <template v-if="newUsername">
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label"> New Desired Username <span style="color: red">*</span> </label>
+                                        <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.newDesiredUsername') }} <span style="color: red">*</span> </label>
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -112,7 +117,7 @@ const resetForm = () => {
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label"> Confirmation Code <span style="color: red">*</span> </label>
+                                        <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.confirmationCode') }} <span style="color: red">*</span> </label>
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -127,7 +132,7 @@ const resetForm = () => {
                                 <!-- New Username (initial step) -->
                                 <template v-else>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label"> New Desired Username <span style="color: red">*</span> </label>
+                                        <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.newDesiredUsername') }} <span style="color: red">*</span> </label>
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -142,8 +147,8 @@ const resetForm = () => {
                                 <!-- Actions -->
                                 <div class="form-group row">
                                     <div class="controls col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary" :disabled="submitting">Continue</button>
-                                        <button type="button" class="btn btn-danger" @click="resetForm">Reset</button>
+                                        <button type="submit" class="btn btn-primary" :disabled="submitting">{{ t('common.buttons.continue') }}</button>
+                                        <button type="button" class="btn btn-danger" @click="resetForm">{{ t('common.buttons.reset') }}</button>
                                     </div>
                                 </div>
                             </form>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, watch, computed, onMounted } from 'vue';
+import { ref, watch, computed, onMounted, watchEffect } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import type { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import type { CouponInfo, VpsOrderResponse, PlatformPackages, PlatformNames, PackageCosts, LocationStock, LocationNames, OsNames, Templates } from '@/types/vps_order.ts';
@@ -14,14 +15,17 @@ import Swal from 'sweetalert2';
 const route = useRoute();
 const router = useRouter();
 const module = 'vps';
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order VPS');
-siteStore.setTitle('Order VPS');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/vps', 'VPS List'],
-    ['/vps/order', 'Order VPS'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('vps.order.title'));
+    siteStore.setTitle(t('vps.order.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/vps', t('vps.list.title')],
+        ['/vps/order', t('vps.order.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 const couponInfo = ref<CouponInfo>({});
 const lastCoupon = ref('');
@@ -918,7 +922,7 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;Order VPS</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;{{ t('vps.order.title') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
@@ -929,22 +933,22 @@ try {
                         <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
                             <input id="period" type="hidden" name="period" :value="period" />
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">VPS Details</label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.vpsDetails') }}</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
                                     <div class="d-inline pr-3">
-                                        <span>Storage: </span> <span id="storage" class="text-bold">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
+                                        <span>{{ t('vps.order.storage') }} </span> <span id="storage" class="text-bold">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
                                     </div>
                                     <div class="d-inline pr-3">
-                                        <span>Memory: </span> <span id="memory_recommended" class="text-bold">{{ ramSlice * slices }} MB</span>
+                                        <span>{{ t('vps.order.memoryLabel') }} </span> <span id="memory_recommended" class="text-bold">{{ ramSlice * slices }} MB</span>
                                     </div>
                                     <div class="d-inline">
-                                        <span>Transfer: </span> <span id="Transfer_bandwidth" class="text-bold">{{ getBandwidth }}</span>
+                                        <span>{{ t('vps.order.transfer') }} </span> <span id="Transfer_bandwidth" class="text-bold">{{ getBandwidth }}</span>
                                     </div>
                                 </div>
                             </div>
                             <hr />
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Platform <span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.platform') }} <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="vpsPlatform" class="form-control select2">
                                         <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
@@ -953,7 +957,7 @@ try {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Location<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.location') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
                                     <select v-model="location" class="form-control select2">
                                         <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
@@ -961,7 +965,7 @@ try {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Slices<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.slices') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="slices" class="form-control select2">
                                         <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
@@ -969,16 +973,16 @@ try {
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.osDistribution') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="osDistro" class="form-control select2">
                                         <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
-                                        <option v-if="vpsPlatform != 'hyperv'" disabled>Windows (only on HyperV)</option>
+                                        <option v-if="vpsPlatform != 'hyperv'" disabled>{{ t('vps.order.windowsOnlyHyperV') }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.osVersion') }}<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select v-model="osVersion" class="form-control select2">
                                         <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
@@ -986,28 +990,28 @@ try {
                                 </div>
                             </div>
                             <div id="hostnamerownew" class="form-group row">
-                                <label class="col-sm-3 col-form-label">Hostname</label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.hostname') }}</label>
                                 <div class="col-md-9">
                                     <input id="hostname" v-model="hostname" type="text" name="hostname" class="form-control text-sm" placeholder="server.domain.com" @keyup="updateHostname" @change="updateHostname" />
                                 </div>
                             </div>
                             <div id="rootpassrownew" class="row">
-                                <label class="col-sm-3 col-form-label">Root Password<span class="text-danger"> *</span></label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.rootPassword') }}<span class="text-danger"> *</span></label>
                                 <div class="form-group col-md-9">
                                     <input v-model="rootpass" type="text" name="rootpass" class="form-control text-sm" />
-                                    <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
+                                    <small class="form-text text-muted">{{ t('vps.order.rootPasswordNote') }}</small>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Coupon Code</label>
+                                <label class="col-sm-3 col-form-label">{{ t('vps.order.couponCode') }}</label>
                                 <div class="input-group col-md-9">
-                                    <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" placeholder="Coupon Code" @keyup="updateCoupon" @change="updateCoupon" />
+                                    <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" :placeholder="t('vps.order.couponCodePlaceholder')" @keyup="updateCoupon" @change="updateCoupon" />
                                     <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="controls">
-                                    <input type="submit" name="Submit" value="Continue" class="btn btn-order px-3 py-2 text-sm" />
+                                    <input type="submit" name="Submit" :value="t('vps.order.continue')" class="btn btn-order px-3 py-2 text-sm" />
                                 </div>
                             </div>
                         </form>
@@ -1021,7 +1025,7 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;{{ t('vps.order.orderSummary') }}</h4>
                                     <div class="card-tools float-right">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
@@ -1030,14 +1034,14 @@ try {
                             <div class="card-body pb-0">
                                 <div class="row mb-3">
                                     <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[vpsPlatform] && serviceTypes && serviceTypes[platformPackages[vpsPlatform]] ? serviceTypes[platformPackages[vpsPlatform]].services_name : '' }}</div>
-                                    <div id="package_period" class="col text-right">{{ period }} Month(s)</div>
+                                    <div id="package_period" class="col text-right">{{ t('vps.order.months', { count: period }) }}</div>
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
                                     <div class="col text-md totalcost_display text-right" v-html="sliceCostHtml" />
                                 </div>
                                 <div v-show="period >= 6" id="cyclediscountrownew" class="row mb-3">
-                                    <div class="col-md-8 text-muted text-bold">Billing cycle discount:</div>
+                                    <div class="col-md-8 text-muted text-bold">{{ t('vps.order.billingCycleDiscount') }}</div>
                                     <div id="cyclediscount" class="col text-right">{{ cycleDiscountText }}</div>
                                 </div>
                                 <div v-show="typeof couponInfo.applies != 'undefined'" id="couponpricerownew" class="row mb-3">
@@ -1046,7 +1050,7 @@ try {
                                 </div>
                                 <hr />
                                 <div class="row mb-3">
-                                    <div class="col-md-8 text-md text-bold text-muted">Total:</div>
+                                    <div class="col-md-8 text-md text-bold text-muted">{{ t('vps.order.total') }}</div>
                                     <div id="totalcost" class="col text-md total_cost text-right">{{ totalCostDisplay }}</div>
                                 </div>
                             </div>
@@ -1058,19 +1062,19 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['far', 'thumbs-up']" />&nbsp;Recommendations</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['far', 'thumbs-up']" />&nbsp;{{ t('vps.order.recommendations') }}</h4>
                                     <div class="card-tools float-right">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body py-2">
-                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" title="Linux VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><font-awesome-icon :icon="['fab', 'linux']" />&nbsp;Linux&nbsp;</a>
-                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" title="Direct Admin VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><font-awesome-icon :icon="['far', 'user']" />&nbsp;Direct Admin&nbsp;</a>
-                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" title="Windows VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><font-awesome-icon :icon="['fab', 'windows']" />&nbsp;Windows&nbsp;</a>
-                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" title="cPanel VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;cPanel&nbsp;</a>
-                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" title="Linux Desktop VPS" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><font-awesome-icon :icon="['fas', 'desktop']" />&nbsp;Linux Desktop&nbsp;</a>
-                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" title="Webuzo VPS" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><font-awesome-icon :icon="['fas', 'laptop']" />&nbsp;Webuzo&nbsp;</a>
+                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.linuxVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><font-awesome-icon :icon="['fab', 'linux']" />&nbsp;Linux&nbsp;</a>
+                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.directAdminVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><font-awesome-icon :icon="['far', 'user']" />&nbsp;DirectAdmin&nbsp;</a>
+                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.windowsVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><font-awesome-icon :icon="['fab', 'windows']" />&nbsp;Windows&nbsp;</a>
+                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.cpanelVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;cPanel&nbsp;</a>
+                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.linuxDesktopVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><font-awesome-icon :icon="['fas', 'desktop']" />&nbsp;Linux Desktop&nbsp;</a>
+                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.webuzoVps')" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><font-awesome-icon :icon="['fas', 'laptop']" />&nbsp;Webuzo&nbsp;</a>
                             </div>
                         </div>
                     </div>
@@ -1080,7 +1084,7 @@ try {
                         <div class="card">
                             <div class="card-header">
                                 <div class="p-1">
-                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-pin']" />&nbsp;Location Availability</h4>
+                                    <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-pin']" />&nbsp;{{ t('vps.order.locationAvailability') }}</h4>
                                     <div class="card-tools float-right">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                     </div>
@@ -1090,12 +1094,12 @@ try {
                                 <table class="table-hover table-bordered table">
                                     <thead>
                                         <tr>
-                                            <th>Location / Platform</th>
+                                            <th>{{ t('vps.order.locationPlatform') }}</th>
                                             <!--<th>Virtuozzo</th>-->
-                                            <th>KVM Linux</th>
+                                            <th>{{ t('vps.order.kvmLinux') }}</th>
                                             <!--<th>KVM Windows</th>-->
-                                            <th>HyperV</th>
-                                            <th>KVM Storage</th>
+                                            <th>{{ t('vps.order.hyperV') }}</th>
+                                            <th>{{ t('vps.order.kvmStorage') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1126,7 +1130,7 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;{{ t('vps.order.orderSummary') }}</h4>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
@@ -1139,10 +1143,10 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click.prevent="step = 'orderform'"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" :title="t('vps.order.editDetails')" @click.prevent="step = 'orderform'"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;{{ t('common.buttons.edit') }}</button>
                                         </th>
                                         <th>
-                                            <div class="text-md text-bold">{{ period }} month(s)</div>
+                                            <div class="text-md text-bold">{{ t('vps.order.months', { count: period }) }}</div>
                                         </th>
                                     </tr>
                                 </thead>
@@ -1157,7 +1161,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">VPS Location</div>
+                                            <div class="text-md">{{ t('vps.order.vpsLocation') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ locationNames[location] }}</div>
@@ -1165,7 +1169,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">Slices</div>
+                                            <div class="text-md">{{ t('vps.order.slices') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ slices }}</div>
@@ -1173,7 +1177,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">Memory</div>
+                                            <div class="text-md">{{ t('vps.order.memoryLabel') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ ramSlice * slices }} MB</div>
@@ -1181,7 +1185,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">HD Space</div>
+                                            <div class="text-md">{{ t('vps.order.hdSpace') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</div>
@@ -1189,7 +1193,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">Bandwidth</div>
+                                            <div class="text-md">{{ t('vps.order.bandwidth') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ getBandwidth }}</div>
@@ -1197,7 +1201,7 @@ try {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="text-md">Operating System</div>
+                                            <div class="text-md">{{ t('vps.order.operatingSystem') }}</div>
                                         </td>
                                         <td>
                                             <div class="text-bold text-md">{{ osNames[osDistro] }} {{ osTemplates[vpsPlatform][osDistro][osVersion] }}</div>
@@ -1206,7 +1210,7 @@ try {
                                     <template v-if="coupon">
                                         <tr>
                                             <td>
-                                                <div class="text-md">Coupon Used</div>
+                                                <div class="text-md">{{ t('vps.order.couponUsed') }}</div>
                                             </td>
                                             <td>
                                                 <div class="text-bold text-md">
@@ -1218,7 +1222,7 @@ try {
                                     </template>
                                     <tr style="display: none">
                                         <td>
-                                            <div id="couponpricetext" class="text-md">Coupon Discount</div>
+                                            <div id="couponpricetext" class="text-md">{{ t('vps.order.couponDiscount') }}</div>
                                         </td>
                                         <td>
                                             <div id="couponprice" class="text-bold text-md"></div>
@@ -1228,7 +1232,7 @@ try {
                                 <tfoot>
                                     <tr>
                                         <th>
-                                            <div class="text-lg">Total</div>
+                                            <div class="text-lg">{{ t('vps.order.total') }}</div>
                                         </th>
                                         <th>
                                             <div id="total_cost_display" class="text-bold text-lg">${{ serviceCost }}</div>
@@ -1238,19 +1242,19 @@ try {
                             </table>
                             <hr />
                             <div class="p-1">
-                                <h4 class="text-center"><u>Agree to the offer terms</u></h4>
+                                <h4 class="text-center"><u>{{ t('vps.order.agreeToTerms') }}</u></h4>
                                 <p class="text-center text-sm">
-                                    The subscription will automatically renew after <b>every month at</b> <span id="renew_cost" class="package_cost text-bold">${{ serviceCost }}</span> until canceled.
+                                    {{ t('vps.order.subscriptionRenewal', { period: 'every month at', cost: '$' + serviceCost }) }}
                                 </p>
-                                <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
+                                <p class="text-muted text-xs">{{ t('vps.order.tosAcknowledgment') }}</p>
                                 <div class="icheck-success text-bold text-center">
                                     <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
-                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                                    <label for="tos" class="d-inline text-center">{{ t('vps.order.tosAgree') }}</label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <input type="submit" name="Submit" value="Place Order" class="btn btn-green btn-sm px-3 py-2" />
+                                    <input type="submit" name="Submit" :value="t('vps.order.placeOrder')" class="btn btn-green btn-sm px-3 py-2" />
                                 </div>
                             </div>
                         </form>

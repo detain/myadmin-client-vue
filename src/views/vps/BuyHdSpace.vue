@@ -3,10 +3,13 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     currencySymbol: string;
@@ -44,7 +47,7 @@ function submitForm() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error}`,
+                html: t('vps.common.gotError', { error }),
             });
         });
 }
@@ -61,7 +64,7 @@ async function loadData() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error}`,
+                html: t('vps.common.gotError', { error }),
             });
         });
 }
@@ -75,9 +78,9 @@ loadData();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;Additional VPS Drive Space</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;{{ t('vps.buyHdSpace.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" /> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.buyHdSpace.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                 </div>
@@ -87,18 +90,18 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 p-0">
-                                    <label class="col-form-label">Cost Per Month ({{ currencySymbol }})</label>
+                                    <label class="col-form-label">{{ t('vps.buyHdSpace.costPerMonth', { symbol: currencySymbol }) }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" :value="amount" readonly />
-                                    <span class="text-muted text-sm">{{ currencySymbol }}{{ perTen }} per 10GB per Month</span>
+                                    <span class="text-muted text-sm">{{ t('vps.buyHdSpace.perTenGb', { symbol: currencySymbol, cost: perTen }) }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 p-0">
-                                    <label class="col-form-label">Additional Space</label>
+                                    <label class="col-form-label">{{ t('vps.buyHdSpace.additionalSpace') }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input name="size" type="text" class="form-control form-control-sm" :value="sizeLabel" readonly />
@@ -108,18 +111,18 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 p-0">
-                                    <label class="col-form-label">Select Space</label>
+                                    <label class="col-form-label">{{ t('vps.buyHdSpace.selectSpace') }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input v-model.number="slider" type="range" class="form-range form-control form-control-sm" min="1" max="100" step="1" name="slices" />
-                                    <span class="text-muted text-sm">Minimum 1 upto 100GB Additional HD Space can be purchased</span>
+                                    <span class="text-muted text-sm">{{ t('vps.buyHdSpace.spaceNote') }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row justify-content-center">
                             <div class="controls">
-                                <button type="submit" class="btn btn-sm btn-order px-3 py-2" @click.prevent="submitForm">Confirm Order</button>
+                                <button type="submit" class="btn btn-sm btn-order px-3 py-2" @click.prevent="submitForm">{{ t('vps.buyHdSpace.confirmOrder') }}</button>
                             </div>
                         </div>
                     </form>

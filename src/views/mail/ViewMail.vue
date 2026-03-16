@@ -6,9 +6,12 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useMailStore } from '@/stores/mail.store';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import Alerts from './Alerts.vue';
@@ -39,15 +42,15 @@ const statusClass = computed(() => {
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
-        ['/home', 'Home'],
-        [`/${moduleLink(module)}`, 'Mail'],
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.mail')],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Mail ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('mail.view.title', { id }));
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Mail ${id}`);
-        siteStore.setTitle(`View Mail ${id}`);
+        siteStore.setPageHeading(t('mail.view.title', { id }));
+        siteStore.setTitle(t('mail.view.title', { id }));
     } else {
-        siteStore.setPageHeading(`Mail ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(`${t('common.menu.mail')} ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.setTitle(`Mail ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {

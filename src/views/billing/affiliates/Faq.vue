@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - Faq');
-siteStore.setTitle('Affiliate - Faq');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['', 'Faq'],
-]);
 
-onMounted(() => {});
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.faqPage.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.faqPage.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.faqPage.title')],
+    ]);
+});
 </script>
 
 <template>
@@ -22,9 +24,9 @@ onMounted(() => {});
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'question']" />&nbsp;Frequently Asked Questions</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'question']" />&nbsp;{{ t('affiliate.frequentlyAskedQuestions') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -33,14 +35,13 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs1" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#q1" aria-expanded="true" aria-controls="q1">1. What is your Commission structure?</button>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#q1" aria-expanded="true" aria-controls="q1">{{ t('affiliate.faqPage.q1') }}</button>
                                 </h2>
                             </div>
-
                             <div id="q1" class="show collapse" aria-labelledby="qs1" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>We pay $100 flat commission/sales and this one of the highest paying Affiliate Program.</li>
+                                        <li>{{ t('affiliate.faqPage.a1') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -48,13 +49,13 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs2" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q2" aria-expanded="false" aria-controls="q2">2. How long does it take for a sale to show up in my account?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q2" aria-expanded="false" aria-controls="q2">{{ t('affiliate.faqPage.q2') }}</button>
                                 </h2>
                             </div>
                             <div id="q2" class="collapse" aria-labelledby="qs2" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>It should show up immediately.</li>
+                                        <li>{{ t('affiliate.faqPage.a2') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,18 +63,15 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs3" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q3" aria-expanded="false" aria-controls="q3">3. I just made a sale. Where can I see it?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q3" aria-expanded="false" aria-controls="q3">{{ t('affiliate.faqPage.q3') }}</button>
                                 </h2>
                             </div>
                             <div id="q3" class="collapse" aria-labelledby="qs3" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>Log into <a href="https://my.interserver.net" class="link" target="_blank">interserver.net.</a></li>
-                                        <li>
-                                            On the bottom right side you will see an option
-                                            <b>View Affiliate Page.</b>
-                                        </li>
-                                        <li>Here you can see all of your Pending and Approved commissions.</li>
+                                        <li>{{ t('affiliate.faqPage.a3_step1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a3_step2') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a3_step3') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -81,16 +79,16 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs4" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q4" aria-expanded="false" aria-controls="q4">4. I know someone who needs hosting. How do I earn a referral fee?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q4" aria-expanded="false" aria-controls="q4">{{ t('affiliate.faqPage.q4') }}</button>
                                 </h2>
                             </div>
                             <div id="q4" class="collapse" aria-labelledby="qs4" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>Log into <a href="https://my.interserver.net" class="link" target="_blank">interserver.net.</a></li>
-                                        <li>Scroll down to the bottom to see your affiliate link.</li>
-                                        <li>Send this link to your acquaintance that needs hosting.</li>
-                                        <li>When they click on that link and order an account with us, you earn a commission.</li>
+                                        <li>{{ t('affiliate.faqPage.a4_step1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a4_step2') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a4_step3') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a4_step4') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -98,16 +96,16 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs5" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q5" aria-expanded="false" aria-controls="q5">5. I've been approved for the Interserver Hosting affiliate program. Now what do I do?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q5" aria-expanded="false" aria-controls="q5">{{ t('affiliate.faqPage.q5') }}</button>
                                 </h2>
                             </div>
                             <div id="q5" class="collapse" aria-labelledby="qs5" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>Log into your affiliate account to access Interserver marketing materials by clicking <b>Banners and Links</b> Tab.</li>
-                                        <li>Choose the marketing material you would like to add to your site.</li>
-                                        <li>You will see Banner codes right side of all banners, and copy/paste this code to your site.</li>
-                                        <li>When someone clicks on that link and purchases a hosting account, you earn a commission.</li>
+                                        <li>{{ t('affiliate.faqPage.a5_step1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a5_step2') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a5_step3') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a5_step4') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,19 +113,16 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs6" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q6" aria-expanded="false" aria-controls="q6">6. Can I PPC bid to promote Interserver Hosting?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q6" aria-expanded="false" aria-controls="q6">{{ t('affiliate.faqPage.q6') }}</button>
                                 </h2>
                             </div>
                             <div id="q6" class="collapse" aria-labelledby="qs6" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>Yes, but please do not bid on our corporate name, variation of our corporate name, misspelling or any keyword that contains a portion of it including <b>Interserver, Interserver Hosting, Interserver Hosting</b>.</li>
-                                        <li>Focus on bids for keywords like <b>fast hosting, PHP hosting, WordPress hosting</b>.</li>
-                                        <li>Please contact us if you need help brainstorming keywords.</li>
-                                        <li>
-                                            Make sure to add <b>Interserver, Interserver hosting, Interserver hosting, Interserver.net, Interserver web hosting</b>
-                                            as negative campaign keywords.
-                                        </li>
+                                        <li>{{ t('affiliate.faqPage.a6_line1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a6_line2') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a6_line3') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a6_line4') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -135,14 +130,14 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs7" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q7" aria-expanded="false" aria-controls="q7">7. I've made a sale. Now when do I get paid?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q7" aria-expanded="false" aria-controls="q7">{{ t('affiliate.faqPage.q7') }}</button>
                                 </h2>
                             </div>
                             <div id="q7" class="collapse" aria-labelledby="qs7" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>After 90 days a valid sale will change from status <b>Default</b> to <b>Pending.</b></li>
-                                        <li>Once the sale is Pending it will be paid during the first 7 days of the month.</li>
+                                        <li>{{ t('affiliate.faqPage.a7_line1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a7_line2') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -150,14 +145,14 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs8" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q8" aria-expanded="false" aria-controls="q8">8. I have a pending sale that did not get paid.</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q8" aria-expanded="false" aria-controls="q8">{{ t('affiliate.faqPage.q8') }}</button>
                                 </h2>
                             </div>
                             <div id="q8" class="collapse" aria-labelledby="qs8" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>There might be a few reasons for this. Sometimes we need more time to validate a sale.</li>
-                                        <li>One easy thing to check to make sure your payment method is set.</li>
+                                        <li>{{ t('affiliate.faqPage.a8_line1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a8_line2') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -165,13 +160,13 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs9" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q9" aria-expanded="false" aria-controls="q9">9. How long do my sales/commission remain pending until they are approved?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q9" aria-expanded="false" aria-controls="q9">{{ t('affiliate.faqPage.q9') }}</button>
                                 </h2>
                             </div>
                             <div id="q9" class="collapse" aria-labelledby="qs9" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>90-days.</li>
+                                        <li>{{ t('affiliate.faqPage.a9') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,13 +174,13 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs10" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q10" aria-expanded="false" aria-controls="q10">10. Can I use my affiliate link for self-referrals on accounts I'll use for personal use?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q10" aria-expanded="false" aria-controls="q10">{{ t('affiliate.faqPage.q10') }}</button>
                                 </h2>
                             </div>
                             <div id="q10" class="collapse" aria-labelledby="qs10" data-parent="#faq">
                                 <div class="card-body mr-4">
                                     <ul>
-                                        <li>No. Any contact with a resold account will result in automatic failure of the sale.</li>
+                                        <li>{{ t('affiliate.faqPage.a10') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -193,22 +188,22 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs11" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q11" aria-expanded="false" aria-controls="q11">11. WHY WAS MY Commission REJECTED?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q11" aria-expanded="false" aria-controls="q11">{{ t('affiliate.faqPage.q11') }}</button>
                                 </h2>
                             </div>
                             <div id="q11" class="collapse" aria-labelledby="qs11" data-parent="#faq">
                                 <div class="card-body px-5">
-                                    <p>Rejected means the commission has failed permanently.</p>
-                                    <p>Some reasons for this could be:</p>
+                                    <p>{{ t('affiliate.faqPage.a11_intro') }}</p>
+                                    <p>{{ t('affiliate.faqPage.a11_reasons') }}</p>
                                     <ul style="padding-left: 25px">
-                                        <li>The customer has already signed up with us in the past.</li>
-                                        <li>The same payment method was used as another account.</li>
-                                        <li>The system detected that you the affiliate is also using the customer's account.</li>
+                                        <li>{{ t('affiliate.faqPage.a11_reason1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a11_reason2') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a11_reason3') }}</li>
                                     </ul>
-                                    <p>Since our payout of $100 per sale is often way more then we recover from the customer even after 1 year. We have strict policy in place to catch referrals that do not meet our guidelines. If you are referring a friend or a customer just give them a link or a coupon. Do not share payment types and do not use the account.</p>
+                                    <p>{{ t('affiliate.faqPage.a11_policy') }}</p>
                                     <p>
-                                        Also please review our affiliate terms here:
-                                        <a class="link" target="_blank" href="https://my.interserver.net/index.php?choice=none.affiliate_tos"> Terms Of Services </a>
+                                        {{ t('affiliate.faqPage.a11_reviewTos') }}
+                                        <a class="link" target="_blank" href="https://my.interserver.net/index.php?choice=none.affiliate_tos"> {{ t('affiliate.termsOfService') }} </a>
                                     </p>
                                 </div>
                             </div>
@@ -216,17 +211,17 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs12" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q12" aria-expanded="false" aria-controls="q12">12. I AM A DESIGNER/DEVELOPER AND WILL REFER CUSTOMERS Is that okay?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q12" aria-expanded="false" aria-controls="q12">{{ t('affiliate.faqPage.q12') }}</button>
                                 </h2>
                             </div>
                             <div id="q12" class="collapse" aria-labelledby="qs12" data-parent="#faq">
                                 <div class="card-body">
                                     <ul>
-                                        <li>This plan is not going to work with us (or any other hosting affiliate program). Once there are matches made across multiple accounts the commission's fail.</li>
-                                        <li>This is done to prevent the same person from signing up and making money off our affiliate program by referring themselves.</li>
+                                        <li>{{ t('affiliate.faqPage.a12_line1') }}</li>
+                                        <li>{{ t('affiliate.faqPage.a12_line2') }}</li>
                                         <li>
-                                            You might want to consider hosting the customers directly and bill them yourself using something like PayPal. You can buy a reseller hosting account from us and get started.
-                                            <a href="https://www.interserver.net/webhosting/reseller-hosting.html" class="link" target="__blank">Click Here</a>
+                                            {{ t('affiliate.faqPage.a12_line3') }}
+                                            <a href="https://www.interserver.net/webhosting/reseller-hosting.html" class="link" target="__blank">{{ t('affiliate.faqPage.a12_clickHere') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -235,15 +230,15 @@ onMounted(() => {});
                         <div class="card m-0">
                             <div id="qs13" class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q13" aria-expanded="false" aria-controls="q13">13. Where I can setup my payment?</button>
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#q13" aria-expanded="false" aria-controls="q13">{{ t('affiliate.faqPage.q13') }}</button>
                                 </h2>
                             </div>
                             <div id="q13" class="collapse" aria-labelledby="qs13" data-parent="#faq">
                                 <div class="card-body">
                                     <ul>
                                         <li>
-                                            You can setup your payment,
-                                            <a href="https://my.interserver.net/index.php?choice=none.affiliate_payment_setup" class="link" target="_blank">By clicking Here</a>
+                                            {{ t('affiliate.faqPage.a13') }}
+                                            <a href="https://my.interserver.net/index.php?choice=none.affiliate_payment_setup" class="link" target="_blank">{{ t('affiliate.faqPage.a13_clickHere') }}</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { Ticket, useTicketsStore } from '@/stores/tickets.store';
 import { useSiteStore } from '@/stores/site.store.ts';
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const ticketsStore = useTicketsStore();
@@ -12,12 +14,14 @@ const { tickets, st_count, pages, currentPage, view } = storeToRefs(ticketsStore
 const selectedPeriod = ref(route.query.period ?? '30');
 const siteStore = useSiteStore();
 
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/tickets`, 'Tickets'],
-]);
-siteStore.setPageHeading('Tickets List');
-siteStore.setTitle('Tickets List');
+watchEffect(() => {
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/tickets', t('common.menu.tickets')],
+    ]);
+    siteStore.setPageHeading(t('tickets.list.title'));
+    siteStore.setTitle(t('tickets.list.title'));
+});
 
 watch(selectedPeriod, (val) => {
     router.push({
@@ -58,11 +62,11 @@ function goToPage(page: number) {
 /* UI helpers */
 const periodLabel = computed(() => {
     const map: Record<string, string> = {
-        '30': 'Last 30 Days',
-        '90': 'Last 90 Days',
-        '365': 'Last 1 Year',
-        '1825': 'Last 5 Years',
-        all: 'All Time',
+        '30': t('tickets.list.last30Days'),
+        '90': t('tickets.list.last90Days'),
+        '365': t('tickets.list.last1Year'),
+        '1825': t('tickets.list.last5Years'),
+        all: t('tickets.list.allTime'),
     };
     return map[selectedPeriod.value as string];
 });
@@ -113,7 +117,7 @@ function timeAgo(input: string | number) {
             <div class="card mb-3">
                 <form @submit.prevent="submitSearch">
                     <div class="input-group input-group-sm">
-                        <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <input v-model="searchBox" class="form-control" :placeholder="t('tickets.list.searchPlaceholder')" />
                         <button class="btn btn-primary" :disabled="searching"><font-awesome-icon :icon="['fas', 'search']" /></button>
                     </div>
                 </form>
@@ -135,24 +139,24 @@ function timeAgo(input: string | number) {
             </div>
             <!-- Period Filter -->
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title">Filter by Age</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ t('tickets.list.filterByAge') }}</h3></div>
                 <div class="card-body p-2">
                     <select v-model="selectedPeriod" class="form-control form-control-sm">
-                        <option value="30">Last 30 Days</option>
-                        <option value="90">Last 90 Days</option>
-                        <option value="365">Last 1 Year</option>
-                        <option value="1825">Last 5 Years</option>
-                        <option value="all">All Time</option>
+                        <option value="30">{{ t('tickets.list.last30Days') }}</option>
+                        <option value="90">{{ t('tickets.list.last90Days') }}</option>
+                        <option value="365">{{ t('tickets.list.last1Year') }}</option>
+                        <option value="1825">{{ t('tickets.list.last5Years') }}</option>
+                        <option value="all">{{ t('tickets.list.allTime') }}</option>
                     </select>
                 </div>
             </div>
             <!-- Quick Filters -->
             <div class="card folder_tickets mb-2">
-                <div class="card-header"><h3 class="card-title">Quick Filter</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ t('tickets.list.quickFilter') }}</h3></div>
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <RouterLink to="/tickets/new" class="nav-link"> <font-awesome-icon :icon="['fas', 'plus-circle']" class="text-info" /> New Ticket </RouterLink>
+                            <RouterLink to="/tickets/new" class="nav-link"> <font-awesome-icon :icon="['fas', 'plus-circle']" class="text-info" /> {{ t('tickets.list.newTicket') }} </RouterLink>
                         </li>
                         <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
                             <RouterLink
@@ -176,7 +180,7 @@ function timeAgo(input: string | number) {
         <div class="col-md-10">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{ view || 'All Tickets' }} – {{ periodLabel }}</h3>
+                    <h3 class="card-title">{{ view || t('tickets.list.allTickets') }} – {{ periodLabel }}</h3>
                 </div>
                 <div class="card-body p-0">
                     <table v-if="tickets.length" class="table table-sm table-striped">
@@ -184,26 +188,26 @@ function timeAgo(input: string | number) {
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th class="text-left">Subject</th>
-                                <th class="text-left">Last Replier</th>
-                                <th class="text-left">Last Activity</th>
+                                <th class="text-left">{{ t('common.table.subject') }}</th>
+                                <th class="text-left">{{ t('common.table.lastReplier') }}</th>
+                                <th class="text-left">{{ t('common.labels.date') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="t in tickets" :key="t.ticketmaskid">
-                                <td><font-awesome-icon :icon="statusIcon(t.ticketstatustitle).icon" :class="statusIcon(t.ticketstatustitle).class" /></td>
-                                <td><font-awesome-icon v-if="Number(t.hasattachments)" :icon="['fas', 'paperclip']" /></td>
+                            <tr v-for="ticket in tickets" :key="ticket.ticketmaskid">
+                                <td><font-awesome-icon :icon="statusIcon(ticket.ticketstatustitle).icon" :class="statusIcon(ticket.ticketstatustitle).class" /></td>
+                                <td><font-awesome-icon v-if="Number(ticket.hasattachments)" :icon="['fas', 'paperclip']" /></td>
                                 <td class="text-left">
-                                    <RouterLink :to="`/tickets/${t.ticketmaskid}`"
-                                        ><b>{{ t.ticketmaskid }}</b> – {{ t.subject }}</RouterLink
+                                    <RouterLink :to="`/tickets/${ticket.ticketmaskid}`"
+                                        ><b>{{ ticket.ticketmaskid }}</b> – {{ ticket.subject }}</RouterLink
                                     >
                                 </td>
-                                <td class="text-left">{{ t.lastreplier }}</td>
-                                <td class="text-left">{{ timeAgo(Number(t.lastactivity)) }}</td>
+                                <td class="text-left">{{ ticket.lastreplier }}</td>
+                                <td class="text-left">{{ timeAgo(Number(ticket.lastactivity)) }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h4 v-else class="p-4">No tickets found!</h4>
+                    <h4 v-else class="p-4">{{ t('tickets.list.noTicketsFound') }}</h4>
                 </div>
                 <!-- Pagination -->
                 <div v-if="pages > 1" class="card-footer">

@@ -4,8 +4,11 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { watch, ref, computed, onMounted } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import myAdminIcons from '@/assets/images/myadmin/MyAdmin-Icons.min.svg';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
     nameservers: NameServerRow[] | undefined;
@@ -62,7 +65,7 @@ function applySuggested() {
     Swal.fire({
         toast: true,
         icon: 'info',
-        title: 'Suggested nameservers have been applied. Click Update to save.',
+        title: t('domains.nameservers.suggestedApplied'),
         position: 'top',
         showConfirmButton: false,
         timer: 5000,
@@ -122,10 +125,10 @@ function registerNameserver() {
 function confirmDelete(name: string, ip: string) {
     Swal.fire({
         icon: 'error',
-        title: 'Delete nameserver',
-        html: `<p>You are about to delete your domain nameserver.</p><br><p>Are you sure?</p>`,
+        title: t('domains.nameservers.deleteTitle'),
+        html: `<p>${t('domains.nameservers.deleteConfirm')}</p><br><p>${t('domains.nameservers.deleteConfirmQuestion')}</p>`,
         showCancelButton: true,
-        confirmButtonText: 'Yes, Delete it',
+        confirmButtonText: t('domains.nameservers.yesDeleteIt'),
     }).then((result) => {
         if (result.isConfirmed) {
             try {
@@ -140,7 +143,7 @@ function confirmDelete(name: string, ip: string) {
                 });
             } catch (error: any) {
                 Swal.close();
-                console.log('delete  nameserver failed', error);
+                console.log('delete nameserver failed', error);
                 Swal.fire({
                     icon: 'error',
                     html: `Got error ${error}`,
@@ -170,10 +173,10 @@ loadNameservers();
             <h3 class="card-title text-lg mt-1">
                 <i class="icon-dns m-0 pull-left" style="width: 40px; height: 40px">
                     <svg><use :href="iconHref('dns')" /></svg></i
-                >Domain Name Servers
+                >{{ t('domains.nameservers.title') }}
             </h3>
             <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
@@ -181,23 +184,23 @@ loadNameservers();
                 <!-- NAMESERVERS -->
                 <div class="card form-gray col-md-6">
                     <div class="card-header border-0">
-                        <h3 class="card-title text-lg">Nameservers</h3>
+                        <h3 class="card-title text-lg">{{ t('domains.nameservers.nameservers') }}</h3>
                         <div v-if="suggested?.length" class="card-tools">
-                            <button type="button" class="btn btn-sm bg-gradient-info" @click="applySuggested">Suggested Nameserver</button>
+                            <button type="button" class="btn btn-sm bg-gradient-info" @click="applySuggested">{{ t('domains.nameservers.suggestedNameserver') }}</button>
                         </div>
                     </div>
 
                     <div class="card-body">
                         <form @submit.prevent="submitNameservers">
                             <div v-for="(ns, index) in nameserverInputs" :key="index" class="form-group row">
-                                <label class="col-md-3 col-form-label"> Nameserver #{{ index + 1 }} </label>
+                                <label class="col-md-3 col-form-label"> {{ t('domains.nameservers.nameserverLabel', { number: index + 1 }) }} </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="nameserverInputs[index]" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-9 offset-md-3">
-                                    <button type="submit" class="btn btn-custom btn-sm py-1 px-2">Update</button>
+                                    <button type="submit" class="btn btn-custom btn-sm py-1 px-2">{{ t('common.buttons.update') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -206,25 +209,25 @@ loadNameservers();
                 <!-- REGISTER NEW NAMESERVER -->
                 <div class="card form-gray col-md-5">
                     <div class="card-header border-0">
-                        <h3 class="card-title text-lg">Register New Nameservers</h3>
+                        <h3 class="card-title text-lg">{{ t('domains.nameservers.registerNewNameservers') }}</h3>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="registerNameserver">
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Hostname</label>
+                                <label class="col-md-3 col-form-label">{{ t('domains.nameservers.hostname') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="newNameserver.name" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">IP Address</label>
+                                <label class="col-md-3 col-form-label">{{ t('domains.nameservers.ipAddress') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="newNameserver.ipaddress" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-9 offset-md-3">
-                                    <button type="submit" class="btn btn-outline-custom btn-sm py-1">Save</button>
+                                    <button type="submit" class="btn btn-outline-custom btn-sm py-1">{{ t('common.buttons.save') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -233,16 +236,16 @@ loadNameservers();
             </div>
             <!-- REGISTERED NAMESERVERS -->
             <div v-if="registeredNameservers?.length">
-                <h4 class="mt-4">Registered Nameservers</h4>
+                <h4 class="mt-4">{{ t('domains.nameservers.registeredNameservers') }}</h4>
                 <div class="row">
                     <div class="col-md-8">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Hostname</th>
-                                    <th>IP Address</th>
-                                    <th>Can Delete</th>
-                                    <th>Action</th>
+                                    <th>{{ t('domains.nameservers.hostname') }}</th>
+                                    <th>{{ t('domains.nameservers.ipAddress') }}</th>
+                                    <th>{{ t('domains.nameservers.canDelete') }}</th>
+                                    <th>{{ t('common.labels.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -250,10 +253,10 @@ loadNameservers();
                                     <td>{{ ns.name }}</td>
                                     <td>{{ ns.ipaddress }}</td>
                                     <td>
-                                        <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? 'Yes' : 'No' }}</span>
+                                        <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? t('domains.nameservers.yes') : t('domains.nameservers.no') }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><font-awesome-icon :icon="['fas', 'trash']" /></a>
+                                        <a href="javascript:void(0)" :title="t('common.buttons.delete')" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><font-awesome-icon :icon="['fas', 'trash']" /></a>
                                     </td>
                                 </tr>
                             </tbody>

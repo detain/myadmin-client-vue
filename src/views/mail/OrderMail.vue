@@ -11,13 +11,15 @@ import { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import type { CouponInfo } from '@/types/vps_order.ts';
 const route = useRoute();
 const router = useRouter();
+import { useI18n } from 'vue-i18n';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order Mail');
-siteStore.setTitle('Order Mail');
+const { t } = useI18n();
+siteStore.setPageHeading(t('mail.order.title'));
+siteStore.setTitle(t('mail.order.title'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/mail', 'Mail List'],
-    ['/mail/order', 'Order Mail'],
+    ['/home', t('common.breadcrumb.home')],
+    ['/mail', t('mail.list.title')],
+    ['/mail/order', t('mail.order.title')],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const step = ref('orderform');

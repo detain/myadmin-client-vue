@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - Latest Web Traffic');
-siteStore.setTitle('Affiliate - Latest Web Traffic');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['/affiliate/web_traffic', 'Latest Web Traffic'],
-]);
+
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.webTrafficPage.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.webTrafficPage.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.webTrafficPage.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 export interface AffiliateTrafficRow {
@@ -42,21 +46,21 @@ try {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Web Traffic</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;{{ t('affiliate.webTrafficPage.webTraffic') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <template v-if="traffic.length == 0"> No Recent Affiliate Traffic Matches Search </template>
+                    <template v-if="traffic.length == 0"> {{ t('affiliate.webTrafficPage.noTraffic') }} </template>
                     <template v-else>
                         <table class="table table-sm table-hover table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>IP</th>
-                                    <th>URL</th>
+                                    <th>{{ t('affiliate.webTrafficPage.date') }}</th>
+                                    <th>{{ t('affiliate.webTrafficPage.ip') }}</th>
+                                    <th>{{ t('affiliate.webTrafficPage.url') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,7 +69,7 @@ try {
                                         <td>{{ row.traffic_timestamp }}</td>
                                         <td>{{ row.traffic_ip }}</td>
                                         <td>
-                                            <a v-if="row.traffic_url != ''" class="link" :href="row.traffic_url" target="_blank" :title="row.traffic_url + '(Load Page in New Tab (be careful about cookies being set)'">{{ row.traffic_url }}</a>
+                                            <a v-if="row.traffic_url != ''" class="link" :href="row.traffic_url" target="_blank" :title="row.traffic_url + ' (' + t('affiliate.webTrafficPage.loadInNewTab') + ')'">{{ row.traffic_url }}</a>
                                         </td>
                                     </tr>
                                     <template v-if="row.traffic_referer != ''">
@@ -73,7 +77,7 @@ try {
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>
-                                                <b>referrer:</b> <a class="link" :href="row.traffic_referer" target="_blank" style="font-size: 10pt" title="View Page in New Tab (be careful about cookies being set">{{ row.traffic_referer }}</a>
+                                                <b>{{ t('affiliate.webTrafficPage.referrer') }}</b> <a class="link" :href="row.traffic_referer" target="_blank" style="font-size: 10pt" :title="t('affiliate.webTrafficPage.viewInNewTab')">{{ row.traffic_referer }}</a>
                                             </td>
                                         </tr>
                                     </template>

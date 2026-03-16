@@ -3,10 +3,14 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useRouter, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
+
 const props = defineProps<{
     id: number;
     module: string;
@@ -63,7 +67,7 @@ interface IpDetails {
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${  t('vps.buyIp.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -73,7 +77,7 @@ function submitForm() {
             console.log('webhosting buy ip', response);
             Swal.fire({
                 icon: 'success',
-                html: `Success${response.text}`,
+                html: t('vps.buyIp.success', { text: response.text }),
             });
             router.push(`/cart/${response.invoice}`);
         });
@@ -82,7 +86,7 @@ function submitForm() {
         console.log('webhosting buy ip', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.text}`,
+            html: t('vps.buyIp.gotError', { text: error.text }),
         });
     }
 }
@@ -115,21 +119,21 @@ loadBuyIp();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-marker-alt']" /> Additional IP Addon for your VPS</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-marker-alt']" /> {{ t('vps.buyIp.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" /> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="ipsDetails.length > 0">
-                        <h4>Existing Addon IPs</h4>
+                        <h4>{{ t('vps.buyIp.existingAddonIps') }}</h4>
                         <table class="table-sm table">
                             <tr v-for="vpsDetail in ipsDetails" :key="vpsDetail.ip">
-                                <td>Additional IP</td>
+                                <td>{{ t('vps.buyIp.additionalIp') }}</td>
                                 <td v-if="vpsDetail.ip">{{ vpsDetail.ip }}</td>
                                 <td v-else>-</td>
-                                <td><a :href="vpsDetail.cancel_link">Cancel</a></td>
+                                <td><a :href="vpsDetail.cancel_link">{{ t('common.buttons.cancel') }}</a></td>
                             </tr>
                         </table>
                     </template>
@@ -139,7 +143,7 @@ loadBuyIp();
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ipCurrency }})</label>
+                                        <label for="amount" class="col-form-label">{{ t('vps.buyIp.immediateCost', { currency: ipCurrency }) }}</label>
                                     </div>
                                     <div class="col-md-9">
                                         <input id="amount" type="hidden" class="form-control" value="1" />
@@ -150,7 +154,7 @@ loadBuyIp();
                             <hr />
                             <div class="row justify-content-center">
                                 <div class="controls">
-                                    <input type="submit" name="place_order" value="Place Order" class="btn btn-order px-3 py-2 text-sm" />
+                                    <input type="submit" name="place_order" :value="t('vps.buyIp.placeOrder')" class="btn btn-order px-3 py-2 text-sm" />
                                 </div>
                             </div>
                         </form>

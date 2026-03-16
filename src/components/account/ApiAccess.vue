@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import type { AccountData } from '@/types/account';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     data: AccountData;
@@ -41,7 +44,7 @@ export default {
     <div class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2" title="This Provides an alternative way to authenticate with the API. You can use the API Key in place of the account password for API Authentication.">API Access</h3>
+                <h3 class="card-title py-2" :title="t('common.account.apiAccessDescription')">{{ t('common.account.apiAccess') }}</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
                 </div>
@@ -50,12 +53,12 @@ export default {
         <div class="card-body">
             <form enctype="multipart/form-data" action="account_settings" @submit.prevent="generateApiKey">
                 <div class="row">
-                    <textarea id="api_key" v-model="data.api_key" rows="8" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : 'No API Key Setup Yet'"></textarea>
+                    <textarea id="api_key" v-model="data.api_key" rows="8" class="form-control" :readonly="!!data.api_key" :placeholder="data.api_key ? '' : t('common.labels.noApiKey')"></textarea>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-sm btn-green px-3 py-2">{{ data.api_key ? 'Generate a new API Key replacing the old one' : 'Generate an API Key' }}</button>
+                        <button type="submit" class="btn btn-sm btn-green px-3 py-2">{{ data.api_key ? t('common.buttons.generateNewApiKey') : t('common.buttons.generateApiKey') }}</button>
                         <br />
                     </div>
                 </div>

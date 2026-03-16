@@ -1,24 +1,28 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import Swal from 'sweetalert2';
 
+const { t } = useI18n();
 const accountStore = useAccountStore();
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const baseUrl = siteStore.getBaseUrl();
 
-siteStore.setPageHeading('Affiliate System');
-siteStore.setTitle('Affiliate System');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Affiliate'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('affiliate.title'));
+    siteStore.setTitle(t('affiliate.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('affiliate.breadcrumb')],
+    ]);
+});
 
 const { custid, data } = storeToRefs(accountStore);
 const affiliate_amount = ref(data.value.affiliate_amount || 100);
@@ -140,7 +144,7 @@ async function exportFile(format: string, status: string) {
         URL.revokeObjectURL(a.href);
     } catch (err) {
         console.error('Export failed', err);
-        Swal.fire({ icon: 'error', title: 'Export failed', text: 'Could not download the file.' });
+        Swal.fire({ icon: 'error', title: t('affiliate.exportFailed'), text: t('affiliate.exportFailedText') });
     }
 }
 
@@ -150,10 +154,10 @@ function copyUrl() {
     if (input) {
         input.select();
         navigator.clipboard.writeText(input.value).then(() => {
-            Swal.fire({ icon: 'success', title: 'Copied to clipboard.' });
+            Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
         }).catch(() => {
             document.execCommand('copy');
-            Swal.fire({ icon: 'success', title: 'Copied to clipboard.' });
+            Swal.fire({ icon: 'success', title: t('affiliate.copiedToClipboard') });
         });
     }
 }
@@ -169,7 +173,7 @@ onMounted(() => {
     <div class="row justify-content-center mt-2">
         <div class="col">
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
-                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;This affiliate program is not intended for referral of "family members" or "clients" please read <router-link class="link" :to="'/affiliate/faq'">FAQ</router-link> before proceeding.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link></p>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
@@ -181,7 +185,7 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2">
-                                    <font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
+                                    <font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}
                                 </h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
@@ -190,7 +194,7 @@ onMounted(() => {
                         </div>
                         <div class="card-body">
                             <p>
-                                By adding a link to Interserver on your website you will get <b class="text-success">{{ '$' + affiliate_amount }}</b> commission on each new sale we get that results from clicking the link on your website. <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">Know More</a>
+                                {{ t('affiliate.earnDescription', { amount: '' }) }}<b class="text-success">{{ '$' + affiliate_amount }}</b> <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">{{ t('affiliate.knowMore') }}</a>
                             </p>
                         </div>
                     </div>
@@ -199,7 +203,7 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'external-link-alt']" />&nbsp;Affiliate URL</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'external-link-alt']" />&nbsp;{{ t('affiliate.affiliateUrl') }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
@@ -209,9 +213,9 @@ onMounted(() => {
                             <form class="form-inline" @submit.prevent="copyUrl">
                                 <div class="form-group w-50 mr-2">
                                     <input id="affiliateinput" type="text" class="form-control form-control-sm w-100" placeholder="Affiliate URL" :value="'https://www.interserver.net/r/' + custid" readonly />
-                                    <span class="text-muted text-xs">Share your unique affiliate URL with friends</span>
+                                    <span class="text-muted text-xs">{{ t('affiliate.shareUrl') }}</span>
                                 </div>
-                                <button type="submit" class="btn btn-custom btn-sm mb-3">Copy to Clipboard</button>
+                                <button type="submit" class="btn btn-custom btn-sm mb-3">{{ t('common.buttons.copyToClipboard') }}</button>
                             </form>
                         </div>
                     </div>
@@ -222,23 +226,23 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Links</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('affiliate.links') }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" title="Sales Graph"><font-awesome-icon :icon="['fas', 'chart-line']" />Sales Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><font-awesome-icon :icon="['fas', 'chart-line']" />Web Traffic Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><font-awesome-icon :icon="['fas', 'image']" />View Banners & Links</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><font-awesome-icon :icon="['fas', 'ticket-alt']" />Setup Landing page & Coupons</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><font-awesome-icon :icon="['fas', 'money-bill']" />Setup Payment Method</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><font-awesome-icon :icon="['fas', 'file-alt']" />Rich Report</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" title="Latest Web Traffic"><font-awesome-icon :icon="['fas', 'globe']" />Latest Web Traffic</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><font-awesome-icon :icon="['fas', 'closed-captioning']" />Status Legend</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" title="Frequently Asked Questions"><font-awesome-icon :icon="['fas', 'question']" />Frequently Asked Questions</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" title="Terms Of Service"><font-awesome-icon :icon="['fas', 'file-alt']" />Terms Of Service</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" :title="t('affiliate.salesGraph')"><font-awesome-icon :icon="['fas', 'chart-line']" />{{ t('affiliate.salesGraph') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" :title="t('affiliate.webTrafficGraph')"><font-awesome-icon :icon="['fas', 'chart-line']" />{{ t('affiliate.webTrafficGraph') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" :title="t('affiliate.viewBannersLinks')"><font-awesome-icon :icon="['fas', 'image']" />{{ t('affiliate.viewBannersLinks') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" :title="t('affiliate.setupLandingPage')"><font-awesome-icon :icon="['fas', 'ticket-alt']" />{{ t('affiliate.setupLandingPage') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" :title="t('affiliate.setupPaymentMethod')"><font-awesome-icon :icon="['fas', 'money-bill']" />{{ t('affiliate.setupPaymentMethod') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" :title="t('affiliate.richReport')"><font-awesome-icon :icon="['fas', 'file-alt']" />{{ t('affiliate.richReport') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" :title="t('affiliate.latestWebTraffic')"><font-awesome-icon :icon="['fas', 'globe']" />{{ t('affiliate.latestWebTraffic') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" :title="t('affiliate.statusLegend')"><font-awesome-icon :icon="['fas', 'closed-captioning']" />{{ t('affiliate.statusLegend') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" :title="t('affiliate.frequentlyAskedQuestions')"><font-awesome-icon :icon="['fas', 'question']" />{{ t('affiliate.frequentlyAskedQuestions') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" :title="t('affiliate.termsOfService')"><font-awesome-icon :icon="['fas', 'file-alt']" />{{ t('affiliate.termsOfService') }}</router-link>
                         </div>
                     </div>
                 </div>
@@ -249,7 +253,7 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'user-plus']" />&nbsp;Affiliate Signups</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'user-plus']" />&nbsp;{{ t('affiliate.signups.title') }}</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
@@ -259,23 +263,23 @@ onMounted(() => {
                             <!-- Export & Status Tabs -->
                             <div class="row mb-3">
                                 <div class="col-md-4 mb-3">
-                                    <span class="text-md">Export All Records: </span>
+                                    <span class="text-md">{{ t('affiliate.signups.exportAllRecords') }} </span>
                                     <button class="btn btn-sm btn-custom" title="Excel 2007+" @click="exportFile('xlsx', 'all')">Xlsx</button>
                                     <button class="btn btn-sm btn-custom" title="Excel 2003/BIF" @click="exportFile('xls', 'all')">Xls</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('csv', 'all')">CSV</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('pdf', 'all')">PDF</button>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <span class="text-md text-center">Affiliate Status: </span>
+                                    <span class="text-md text-center">{{ t('affiliate.signups.affiliateStatus') }} </span>
                                     <div class="nav nav-tabs d-inline-flex">
-                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'default' }]" @click="switchTab('default')">Default</button>
-                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'pending' }]" @click="switchTab('pending')">Pending</button>
-                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'paid' }]" @click="switchTab('paid')">Paid</button>
-                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'failed' }]" @click="switchTab('failed')">Failed</button>
+                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'default' }]" @click="switchTab('default')">{{ t('affiliate.signups.default') }}</button>
+                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'pending' }]" @click="switchTab('pending')">{{ t('affiliate.signups.pending') }}</button>
+                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'paid' }]" @click="switchTab('paid')">{{ t('affiliate.signups.paid') }}</button>
+                                        <button :class="['btn btn-info btn-sm', { active: activeTab === 'failed' }]" @click="switchTab('failed')">{{ t('affiliate.signups.failed') }}</button>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3 text-right">
-                                    <span class="text-md">Export on Status: </span>
+                                    <span class="text-md">{{ t('affiliate.signups.exportOnStatus') }} </span>
                                     <button class="btn btn-sm btn-custom" title="Excel 2007+" @click="exportFile('xlsx', activeTab)">Xlsx</button>
                                     <button class="btn btn-sm btn-custom" title="Excel 2003/BIF" @click="exportFile('xls', activeTab)">Xls</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('csv', activeTab)">CSV</button>
@@ -285,11 +289,11 @@ onMounted(() => {
                             <!-- Search & Page Size -->
                             <div class="row mb-3 align-items-end">
                                 <div class="col-md-3">
-                                    <label>Search</label>
-                                    <input v-model="searchText" type="text" class="form-control form-control-sm" placeholder="Search..." />
+                                    <label>{{ t('common.search.placeholder') }}</label>
+                                    <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label>Page Size</label>
+                                    <label>{{ t('common.labels.pageSize') }}</label>
                                     <select v-model.number="pageSize" class="form-control form-control-sm">
                                         <option :value="10">10</option>
                                         <option :value="25">25</option>
@@ -299,7 +303,7 @@ onMounted(() => {
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="text-muted">{{ filteredRows.length }} record(s) found</span>
+                                    <span class="text-muted">{{ t('affiliate.signups.recordsFound', { count: filteredRows.length }) }}</span>
                                 </div>
                             </div>
                             <!-- Signups Table -->
@@ -314,12 +318,12 @@ onMounted(() => {
                                     </thead>
                                     <tbody v-if="signupsLoading">
                                         <tr>
-                                            <td :colspan="columns.length" class="text-center">Loading...</td>
+                                            <td :colspan="columns.length" class="text-center">{{ t('common.labels.loading') }}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else-if="pagedRows.length === 0">
                                         <tr>
-                                            <td :colspan="columns.length" class="text-center">No records found</td>
+                                            <td :colspan="columns.length" class="text-center">{{ t('affiliate.signups.noRecords') }}</td>
                                         </tr>
                                     </tbody>
                                     <tbody v-else>
@@ -331,10 +335,10 @@ onMounted(() => {
                             </div>
                             <!-- Pagination -->
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <div>Page {{ currentPage }} of {{ totalPages }}</div>
+                                <div>{{ t('affiliate.signups.page', { current: currentPage, total: totalPages }) }}</div>
                                 <div>
-                                    <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">Prev</button>
-                                    <button class="btn btn-sm btn-secondary" :disabled="currentPage >= totalPages" @click="currentPage++">Next</button>
+                                    <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">{{ t('affiliate.signups.prev') }}</button>
+                                    <button class="btn btn-sm btn-secondary" :disabled="currentPage >= totalPages" @click="currentPage++">{{ t('affiliate.signups.next') }}</button>
                                 </div>
                             </div>
                         </div>

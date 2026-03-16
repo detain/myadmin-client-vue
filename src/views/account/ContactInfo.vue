@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
+
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();
 const authStore = useAuthStore();
@@ -16,12 +20,14 @@ const { loading, error, data } = storeToRefs(accountStore);
 const timezones = ref<string[]>([]);
 const currencies = ref<string[]>([]);
 const locales = ref<Record<string, string>>({});
-siteStore.setPageHeading('Contact Info');
-siteStore.setTitle('Contact Info');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Contact Info'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('account.contactInfo.title'));
+    siteStore.setTitle(t('account.contactInfo.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('account.contactInfo.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 const countries = ref({});
 async function onSubmit() {
@@ -47,20 +53,8 @@ async function onSubmit() {
             disable_reinstall: data.value.disable_reinstall,
         });
         console.log(response);
-        /*
-        if (user) {
-            await usersStore.update(user.value.id, values)
-            message = 'User updated';
-        } else {
-            await usersStore.register(values);
-            message = 'User added';
-        }
-        await router.push('/users');
-        alertStore.success(message);
-        */
     } catch (error: any) {
         console.log(error);
-        //alertStore.error(error);
     }
 }
 
@@ -114,11 +108,11 @@ loadLocales();
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>Heads up!&nbsp;</strong>Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your <strong>Risk % Score</strong> giving your quicker and more convenient access to parts of the site (such as not having to authenticate a credit-card).</div>
+            <div class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>{{ t('account.contactInfo.headsUp') }}&nbsp;</strong>{{ t('account.contactInfo.headsUpMessage') }}</div>
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['far', 'id-card']" />&nbsp;Update Contact Info</h3>
+                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['far', 'id-card']" />&nbsp;{{ t('account.contactInfo.cardTitle') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <font-awesome-icon :icon="['fas', 'minus']" />
@@ -137,48 +131,48 @@ loadLocales();
                         </div>
                         <div class="col">
                             <form method="POST" @submit.prevent="onSubmit">
-                                <h4 class="mb-4">Personal Information</h4>
+                                <h4 class="mb-4">{{ t('account.contactInfo.personalInformation') }}</h4>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="name">Name</label>
+                                    <label class="col-md-3 col-form-label" for="name">{{ t('account.contactInfo.name') }}</label>
                                     <div class="col-md-6">
-                                        <input id="name" v-model="data.name" type="text" class="form-control form-control-sm" name="name" placeholder="Joe Cool" required autofocus />
+                                        <input id="name" v-model="data.name" type="text" class="form-control form-control-sm" name="name" :placeholder="t('account.contactInfo.namePlaceholder')" required autofocus />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="company">Company</label>
+                                    <label class="col-md-3 col-form-label" for="company">{{ t('account.contactInfo.company') }}</label>
                                     <div class="col-md-6">
-                                        <input id="company" v-model="data.company" type="text" class="form-control form-control-sm" name="company" placeholder="Company" required />
+                                        <input id="company" v-model="data.company" type="text" class="form-control form-control-sm" name="company" :placeholder="t('account.contactInfo.company')" required />
                                     </div>
                                 </div>
                                 <div v-if="data.country === 'IN'" class="form-group row" style="display: flex">
-                                    <label class="col-md-3 col-form-label" for="gstin">GSTIN TAX ID</label>
+                                    <label class="col-md-3 col-form-label" for="gstin">{{ t('account.contactInfo.gstinTaxId') }}</label>
                                     <div class="col-md-6">
-                                        <input id="gstin" v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" placeholder="Goods and Services Taxpayer Identification Number" />
+                                        <input id="gstin" v-model="data.gstin" type="text" class="form-control form-control-sm" name="gstin" :placeholder="t('account.contactInfo.gstinPlaceholder')" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="address">Address Line 1</label>
+                                    <label class="col-md-3 col-form-label" for="address">{{ t('account.contactInfo.addressLine1') }}</label>
                                     <div class="col-md-6">
-                                        <input id="address" v-model="data.address" type="text" class="form-control form-control-sm" name="address" placeholder="Address Line 1" required />
+                                        <input id="address" v-model="data.address" type="text" class="form-control form-control-sm" name="address" :placeholder="t('account.contactInfo.addressLine1')" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="address2">Address Line 2</label>
+                                    <label class="col-md-3 col-form-label" for="address2">{{ t('account.contactInfo.addressLine2') }}</label>
                                     <div class="col-md-6">
-                                        <input id="address2" v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" placeholder="Address Line 2" />
+                                        <input id="address2" v-model="data.address2" type="text" class="form-control form-control-sm" name="address2" :placeholder="t('account.contactInfo.addressLine2')" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="city">City, State</label>
+                                    <label class="col-md-3 col-form-label" for="city">{{ t('account.contactInfo.cityState') }}</label>
                                     <div class="col-md-3">
-                                        <input id="city" v-model="data.city" type="text" class="form-control form-control-sm" name="city" placeholder="City" required />
+                                        <input id="city" v-model="data.city" type="text" class="form-control form-control-sm" name="city" :placeholder="t('account.contactInfo.city')" required />
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="state" v-model="data.state" type="text" class="form-control form-control-sm" name="state" placeholder="State" required />
+                                        <input id="state" v-model="data.state" type="text" class="form-control form-control-sm" name="state" :placeholder="t('account.contactInfo.state')" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="country">Country</label>
+                                    <label class="col-md-3 col-form-label" for="country">{{ t('account.contactInfo.country') }}</label>
                                     <div class="col-md-6">
                                         <select id="country" v-model="data.country" name="country" class="form-control select2 form-control-sm">
                                             <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
@@ -188,29 +182,29 @@ loadLocales();
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="zip">Zipcode</label>
+                                    <label class="col-md-3 col-form-label" for="zip">{{ t('account.contactInfo.zipcode') }}</label>
                                     <div class="col-md-6">
-                                        <input id="zip" v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" placeholder="Zipcode" required />
+                                        <input id="zip" v-model="data.zip" type="text" class="form-control form-control-sm" name="zip" :placeholder="t('account.contactInfo.zipcode')" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="phone">Phone No</label>
+                                    <label class="col-md-3 col-form-label" for="phone">{{ t('account.contactInfo.phoneNo') }}</label>
                                     <div class="col-md-6">
-                                        <input id="phone" v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" placeholder="Phone Number" required />
+                                        <input id="phone" v-model="data.phone" type="text" class="form-control form-control-sm" name="phone" :placeholder="t('account.contactInfo.phoneNumber')" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="locale">Language</label>
+                                    <label class="col-md-3 col-form-label" for="locale">{{ t('account.contactInfo.language') }}</label>
                                     <div class="col-md-6">
                                         <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
-                                            <option value="auto">Auto</option>
+                                            <option value="auto">{{ t('account.contactInfo.auto') }}</option>
                                             <option v-for="(name, code, index) in locales" :key="index" :value="code">{{ code }} - {{ name }}</option>
                                         </select>
                                     </div>
                                     <span class="form-text"></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="currency">Currency</label>
+                                    <label class="col-md-3 col-form-label" for="currency">{{ t('account.contactInfo.currency') }}</label>
                                     <div class="col-md-6">
                                         <select id="currency" v-model="data.currency" name="currency" class="form-control select2 form-control-sm">
                                             <option v-for="(currency, index) in currencies" :key="index" :value="currency">{{ currency }}</option>
@@ -219,7 +213,7 @@ loadLocales();
                                     <span class="form-text"></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="timezone">Time Zone</label>
+                                    <label class="col-md-3 col-form-label" for="timezone">{{ t('account.contactInfo.timeZone') }}</label>
                                     <div class="col-md-6">
                                         <select id="timezone" v-model="data.timezone" name="timezone" class="form-control select2 form-control-sm">
                                             <option v-for="(zone, index) in timezones" :key="index" :value="zone">{{ zone }}</option>
@@ -227,13 +221,13 @@ loadLocales();
                                     </div>
                                 </div>
                                 <hr />
-                                <h4 class="mb-4">Other Settings</h4>
+                                <h4 class="mb-4">{{ t('account.contactInfo.otherSettings') }}</h4>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="disable_reset"></label>
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_reset" v-model="data.disable_reset" type="checkbox" name="disable_reset" value="1" />
-                                            <label for="disable_reset">Disable (Forgot your Password) Password Resets.</label>
+                                            <label for="disable_reset">{{ t('account.contactInfo.disablePasswordResets') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +236,7 @@ loadLocales();
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_email_notifications" v-model="data.disable_email_notifications" type="checkbox" name="disable_email_notifications" value="1" />
-                                            <label for="disable_email_notifications">Disable Invoice Reminder Email Notifications.</label>
+                                            <label for="disable_email_notifications">{{ t('account.contactInfo.disableInvoiceReminders') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +245,7 @@ loadLocales();
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_server_notifications" v-model="data.disable_server_notifications" type="checkbox" value="1" />
-                                            <label for="disable_server_notifications">Disable Server Invoice Reminder Email Notifications.</label>
+                                            <label for="disable_server_notifications">{{ t('account.contactInfo.disableServerInvoiceReminders') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -260,26 +254,26 @@ loadLocales();
                                     <div class="col-md-8">
                                         <div class="icheck-success d-inline">
                                             <input id="disable_reinstall" v-model="data.disable_reinstall" type="checkbox" value="1" />
-                                            <label for="disable_reinstall">Disable Reinstall.</label>
+                                            <label for="disable_reinstall">{{ t('account.contactInfo.disableReinstall') }}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="email_invoices">Alternate Email for Invoices</label>
+                                    <label class="col-md-3 col-form-label" for="email_invoices">{{ t('account.contactInfo.alternateEmailInvoices') }}</label>
                                     <div class="col-md-6">
-                                        <input id="email_invoices" v-model="data.email_invoices" type="email" class="form-control form-control-sm" name="email_invoices" placeholder="Alternative email for sending invoices" />
+                                        <input id="email_invoices" v-model="data.email_invoices" type="email" class="form-control form-control-sm" name="email_invoices" :placeholder="t('account.contactInfo.alternateEmailInvoicesPlaceholder')" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="email_abuse">Alternate Email for Abuse Reports</label>
+                                    <label class="col-md-3 col-form-label" for="email_abuse">{{ t('account.contactInfo.alternateEmailAbuse') }}</label>
                                     <div class="col-md-6">
-                                        <input id="email_abuse" v-model="data.email_abuse" type="email" class="form-control form-control-sm" name="email_abuse" placeholder="Alternate Email for Abuse Reports" />
+                                        <input id="email_abuse" v-model="data.email_abuse" type="email" class="form-control form-control-sm" name="email_abuse" :placeholder="t('account.contactInfo.alternateEmailAbuse')" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="save_settings">&nbsp;</label>
                                     <div class="controls col-md-6">
-                                        <input id="save_settings" type="submit" name="Submit" value="Update Info" class="btn btn-custom btn-sm" />
+                                        <input id="save_settings" type="submit" name="Submit" :value="t('account.contactInfo.updateInfo')" class="btn btn-custom btn-sm" />
                                     </div>
                                 </div>
                             </form>

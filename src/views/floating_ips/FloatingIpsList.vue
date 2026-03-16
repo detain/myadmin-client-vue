@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+const { t } = useI18n();
+
 const module = 'floating_ips';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Floating IPs Services List');
-siteStore.setTitle('Floating IPs Services List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Floating IPs'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('floating_ips.list.title'));
+    siteStore.setTitle(t('floating_ips.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.floatingIps')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 interface FloatingIpRow {
@@ -25,11 +30,11 @@ interface FloatingIpRow {
 }
 
 const columns: ServiceListColumn[] = [
-    { key: 'floating_ip_id', label: 'ID' },
-    { key: 'repeat_invoices_cost', label: 'Cost' },
-    { key: 'floating_ip_username', label: 'Username', link: true },
-    { key: 'floating_ip_status', label: 'Status' },
-    { key: 'services_name', label: 'Package' },
+    { key: 'floating_ip_id', label: t('common.labels.id') },
+    { key: 'repeat_invoices_cost', label: t('common.labels.cost') },
+    { key: 'floating_ip_username', label: t('common.labels.username'), link: true },
+    { key: 'floating_ip_status', label: t('common.labels.status') },
+    { key: 'services_name', label: t('common.labels.package') },
 ];
 
 const data = ref<FloatingIpRow[]>([]);
@@ -52,6 +57,6 @@ loadFloatingIps();
         :columns="columns"
         id-field="floating_ip_id"
         status-field="floating_ip_status"
-        order-title="Order Floating IPs Registrations"
+        :order-title="t('floating_ips.list.orderTitle')"
     />
 </template>

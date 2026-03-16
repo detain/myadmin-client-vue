@@ -2,12 +2,15 @@
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
 import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue';
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -96,7 +99,7 @@ const renderCharts = () => {
                 labels: hour.map((d: any) => d[0]),
                 datasets: [
                     {
-                        label: 'Hourly Usage',
+                        label: t('vps.trafficUsage.hourlyUsage'),
                         data: hour.map((d: any) => d[1]),
                         borderColor: 'rgba(75,192,192,1)',
                     },
@@ -109,7 +112,7 @@ const renderCharts = () => {
                 labels: day.map((d: any) => d[0]),
                 datasets: [
                     {
-                        label: 'Daily Usage',
+                        label: t('vps.trafficUsage.dailyUsage'),
                         data: day.map((d: any) => d[1]),
                         borderColor: 'rgba(153,102,255,1)',
                     },
@@ -120,21 +123,21 @@ const renderCharts = () => {
 };
 
 const historyRows = computed(() => {
-    const t = trafficData.value?.totals || {};
+    const tt = trafficData.value?.totals || {};
     return [
-        { key: 'today', label: 'Today', in: formatData(t.day?.in || 0), out: formatData(t.day?.out || 0) },
-        { key: 'month', label: 'This Month', in: formatData(t.month?.in || 0), out: formatData(t.month?.out || 0) },
-        { key: 'year', label: 'This Year', in: formatData(t.year?.in || 0), out: formatData(t.year?.out || 0) },
-        { key: 'all', label: 'All', in: formatData(t.all?.in || 0), out: formatData(t.all?.out || 0) },
+        { key: 'today', label: t('vps.trafficUsage.today'), in: formatData(tt.day?.in || 0), out: formatData(tt.day?.out || 0) },
+        { key: 'month', label: t('vps.trafficUsage.thisMonth'), in: formatData(tt.month?.in || 0), out: formatData(tt.month?.out || 0) },
+        { key: 'year', label: t('vps.trafficUsage.thisYear'), in: formatData(tt.year?.in || 0), out: formatData(tt.year?.out || 0) },
+        { key: 'all', label: t('vps.trafficUsage.all'), in: formatData(tt.all?.in || 0), out: formatData(tt.all?.out || 0) },
     ];
 });
 
 const usageRows = computed(() => {
     const u = trafficData.value?.usage || {};
     return [
-        { key: 'current', label: 'Current', in: formatData(u.current?.in || 0, true), out: formatData(u.current?.out || 0, true), bold: true },
-        { key: 'average', label: 'Average', in: formatData(u.average?.in?.value || 0, true), out: formatData(u.average?.out?.value || 0, true) },
-        { key: 'peak', label: 'Peak', in: formatData(u.peak?.in || 0, true), out: formatData(u.peak?.out || 0, true) },
+        { key: 'current', label: t('vps.trafficUsage.current'), in: formatData(u.current?.in || 0, true), out: formatData(u.current?.out || 0, true), bold: true },
+        { key: 'average', label: t('vps.trafficUsage.average'), in: formatData(u.average?.in?.value || 0, true), out: formatData(u.average?.out?.value || 0, true) },
+        { key: 'peak', label: t('vps.trafficUsage.peak'), in: formatData(u.peak?.in || 0, true), out: formatData(u.peak?.out || 0, true) },
     ];
 });
 
@@ -156,49 +159,49 @@ onBeforeUnmount(() => {
         <div class="card-header">
             <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
-                    <h3 class="card-title py-2 mb-0"><font-awesome-icon :icon="['fas', 'tachometer-alt']" />&nbsp;Bandwidth / Traffic Usage</h3>
+                    <h3 class="card-title py-2 mb-0"><font-awesome-icon :icon="['fas', 'tachometer-alt']" />&nbsp;{{ t('vps.trafficUsage.title') }}</h3>
                     <div class="metric-toggle-container ml-4">
-                        <span class="toggle-label mr-2">Display in:</span>
+                        <span class="toggle-label mr-2">{{ t('vps.trafficUsage.displayIn') }}</span>
                         <div class="metric-toggle">
                             <input id="bits-metric" v-model="metric" type="radio" value="bits" />
-                            <label for="bits-metric">bits</label>
+                            <label for="bits-metric">{{ t('vps.trafficUsage.bits') }}</label>
                             <input id="bytes-metric" v-model="metric" type="radio" value="bytes" />
-                            <label for="bytes-metric">bytes</label>
+                            <label for="bytes-metric">{{ t('vps.trafficUsage.bytes') }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-tools">
-                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back </router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;{{ t('common.buttons.back') }} </router-link>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="alert alert-info">
-                <strong><font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp;Note:</strong>
-                This is not used for billing calculations and is an estimate only based on your virtual network cards.
+                <strong><font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp;{{ t('vps.backup.noteLabel') }}</strong>
+                {{ t('vps.trafficUsage.billingNote') }}
             </div>
             <div class="row">
                 <div class="col">
-                    <h5>Today Usage</h5>
+                    <h5>{{ t('vps.trafficUsage.todayUsage') }}</h5>
                     <canvas ref="todayCanvas"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <h5>Hourly Usage</h5>
+                    <h5>{{ t('vps.trafficUsage.hourlyUsage') }}</h5>
                     <canvas ref="hourCanvas"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <h5>Daily Usage</h5>
+                    <h5>{{ t('vps.trafficUsage.dailyUsage') }}</h5>
                     <canvas ref="dayCanvas"></canvas>
                 </div>
             </div>
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5 class="card-title text-bold"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;Statistics</h5>
+                    <h5 class="card-title text-bold"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;{{ t('vps.trafficUsage.statistics') }}</h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -206,9 +209,9 @@ onBeforeUnmount(() => {
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>History</th>
-                                        <th class="text-success">In</th>
-                                        <th class="text-danger">Out</th>
+                                        <th>{{ t('vps.trafficUsage.history') }}</th>
+                                        <th class="text-success">{{ t('vps.trafficUsage.in') }}</th>
+                                        <th class="text-danger">{{ t('vps.trafficUsage.out') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -224,9 +227,9 @@ onBeforeUnmount(() => {
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Usage</th>
-                                        <th class="text-success">In</th>
-                                        <th class="text-danger">Out</th>
+                                        <th>{{ t('vps.trafficUsage.usage') }}</th>
+                                        <th class="text-success">{{ t('vps.trafficUsage.in') }}</th>
+                                        <th class="text-danger">{{ t('vps.trafficUsage.out') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

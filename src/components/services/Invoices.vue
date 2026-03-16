@@ -3,7 +3,10 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 import $ from 'jquery';
 import iconCheckmark from '@/assets/images/myadmin/checkmark.png';
 import iconDelete from '@/assets/images/myadmin/delete.png';
@@ -482,20 +485,20 @@ loadInvoices();
         <div class="col-md-12">
             <div class="card shadow-none">
                 <div class="card-header">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'file-invoice-dollar']" />&nbsp;Invoices</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'file-invoice-dollar']" />&nbsp;{{ t('common.labels.invoices') }}</h3>
                     <div class="card-tools">
-                        <button class="btn-custom text-sm" data-toggle="tooltip" title="Go Back" @click="previous"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back&nbsp;&nbsp;</button>
+                        <button class="btn-custom text-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')" @click="previous"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</button>
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
                     <!-- filters -->
                     <div class="row mb-3 align-items-end">
                         <div class="col-md-3">
-                            <label>Search</label>
-                            <input v-model="searchText" type="text" class="form-control form-control-sm" placeholder="Search…" />
+                            <label>{{ t('common.buttons.search') }}</label>
+                            <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                         </div>
                         <div class="col-md-2">
-                            <label>Page Size</label>
+                            <label>{{ t('common.labels.pageSize') }}</label>
                             <select v-model.number="pageSize" class="form-control form-control-sm">
                                 <option :value="10">10</option>
                                 <option :value="25">25</option>
@@ -505,34 +508,34 @@ loadInvoices();
                             </select>
                         </div>
                         <div class="col-md-4 text-end">
-                            <button class="btn btn-primary btn-sm me-2" @click="exportExcel">Export Excel</button>
-                            <a :href="`https://my.interserver.net/pdf.php?choice=view_invoices&use_variable_sessionid=true&sessionid=${sessionId}`" class="btn btn-primary btn-sm">Export PDF</a>
+                            <button class="btn btn-primary btn-sm me-2" @click="exportExcel">{{ t('common.buttons.exportExcel') }}</button>
+                            <a :href="`https://my.interserver.net/pdf.php?choice=view_invoices&use_variable_sessionid=true&sessionid=${sessionId}`" class="btn btn-primary btn-sm">{{ t('common.buttons.exportPdf') }}</a>
                         </div>
                     </div>
                     <!-- table -->
                     <table class="table-bordered mt-2 table">
                         <thead>
                             <tr>
-                                <th>More Details</th>
+                                <th>{{ t('common.labels.moreDetails') }}</th>
                                 <th class="sortable" @click="setSort('invoices_id')">
-                                    ID <span class="sort-arrow">{{ sortArrow('invoices_id') }}</span>
+                                    {{ t('common.labels.id') }} <span class="sort-arrow">{{ sortArrow('invoices_id') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_date')">
-                                    Invoice Date <span class="sort-arrow">{{ sortArrow('invoices_date') }}</span>
+                                    {{ t('common.labels.invoiceDate') }} <span class="sort-arrow">{{ sortArrow('invoices_date') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_due_date')">
-                                    Due Date <span class="sort-arrow">{{ sortArrow('invoices_due_date') }}</span>
+                                    {{ t('common.labels.dueDate') }} <span class="sort-arrow">{{ sortArrow('invoices_due_date') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_description')">
-                                    Description <span class="sort-arrow">{{ sortArrow('invoices_description') }}</span>
+                                    {{ t('common.labels.description') }} <span class="sort-arrow">{{ sortArrow('invoices_description') }}</span>
                                 </th>
                                 <th class="text-end" @click="setSort('invoices_amount')">
-                                    Amount <span class="sort-arrow">{{ sortArrow('invoices_amount') }}</span>
+                                    {{ t('common.labels.amount') }} <span class="sort-arrow">{{ sortArrow('invoices_amount') }}</span>
                                 </th>
                                 <th @click="setSort('invoices_paid')">
-                                    Paid <span class="sort-arrow">{{ sortArrow('invoices_paid') }}</span>
+                                    {{ t('common.labels.paid') }} <span class="sort-arrow">{{ sortArrow('invoices_paid') }}</span>
                                 </th>
-                                <th>Links</th>
+                                <th>{{ t('common.labels.links') }}</th>
                             </tr>
                         </thead>
                         <tbody v-if="!loading">
@@ -563,12 +566,12 @@ loadInvoices();
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th>ID</th>
-                                                        <th>Paid On</th>
-                                                        <th>Description</th>
-                                                        <th>Amount</th>
-                                                        <th>Paid By</th>
-                                                        <th>Links</th>
+                                                        <th>{{ t('common.labels.id') }}</th>
+                                                        <th>{{ t('common.labels.paidOn') }}</th>
+                                                        <th>{{ t('common.labels.description') }}</th>
+                                                        <th>{{ t('common.labels.amount') }}</th>
+                                                        <th>{{ t('common.labels.paidBy') }}</th>
+                                                        <th>{{ t('common.labels.links') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -594,16 +597,16 @@ loadInvoices();
                         </tbody>
                         <tbody v-else>
                             <tr>
-                                <td colspan="10" class="text-center">Loading…</td>
+                                <td colspan="10" class="text-center">{{ t('common.labels.loading') }}</td>
                             </tr>
                         </tbody>
                     </table>
                     <!-- pagination -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <div>Page {{ currentPage }} of {{ totalPages }}</div>
+                        <div>{{ t('common.labels.page') }} {{ currentPage }} {{ t('common.labels.of') }} {{ totalPages }}</div>
                         <div>
-                            <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">Prev</button>
-                            <button class="btn btn-sm btn-secondary" :disabled="currentPage === totalPages" @click="currentPage++">Next</button>
+                            <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">{{ t('common.buttons.prev') }}</button>
+                            <button class="btn btn-sm btn-secondary" :disabled="currentPage === totalPages" @click="currentPage++">{{ t('common.buttons.next') }}</button>
                         </div>
                     </div>
                 </div>
