@@ -3,8 +3,11 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -47,7 +50,7 @@ function submitForm() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: t('vps.common.gotError', { error: error.message }),
             });
         });
 }
@@ -69,16 +72,16 @@ loadBackupsList();
 <template>
     <div>
         <div class="callout callout-info">
-            <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> Important Note</h5>
-            <p class="text-md">Backups will only work with default partitioning.</p>
+            <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> {{ t('vps.backup.importantNote') }}</h5>
+            <p class="text-md">{{ t('vps.backup.backupsPartitionNote') }}</p>
         </div>
         <div class="row justify-content-center">
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
+                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.backupTitle', { name: module_name }) }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
@@ -88,7 +91,7 @@ loadBackupsList();
                             <input type="hidden" name="backup" :value="backup" />
                             <div class="form-group mb-0">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="cur-hostname">Server</label>
+                                    <label class="col-md-3 col-form-label" for="cur-hostname">{{ t('vps.backup.server') }}</label>
                                     <div class="col-sm-6 input-group">
                                         <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
@@ -96,19 +99,19 @@ loadBackupsList();
                                 <div class="text-center">
                                     <div class="icheck-success d-inline">
                                         <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input" name="confirm" value="yes" />
-                                        <label class="more-info" for="confirm_yes">Do you really want to take backup?</label>
+                                        <label class="more-info" for="confirm_yes">{{ t('vps.backup.confirmBackup') }}</label>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="row justify-content-center">
                                     <div class="controls">
-                                        <input type="submit" name="submit" value="Continue" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm" />
+                                        <input type="submit" name="submit" :value="t('vps.insertCd.continueButton')" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm" />
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <hr />
-                        <p class="text-muted text-xs"><b>Note: </b>{{ note_text }}</p>
+                        <p class="text-muted text-xs"><b>{{ t('vps.backup.noteLabel') }} </b>{{ note_text }}</p>
                     </div>
                 </div>
             </div>
@@ -116,7 +119,7 @@ loadBackupsList();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>Current Backups</h3>
+                            <h3 class="card-title py-2"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.currentBackups') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                     <font-awesome-icon :icon="['fas', 'minus']" />
@@ -126,16 +129,16 @@ loadBackupsList();
                     </div>
                     <div class="card-body">
                         <template v-if="loading">
-                            <td colspan="10">Loading...</td>
+                            <td colspan="10">{{ t('common.labels.loading') }}</td>
                         </template>
                         <template v-else-if="backupsArr.length > 0">
                             <table class="table-sm table">
                                 <thead>
                                     <tr>
-                                        <th>Service</th>
-                                        <th>Type</th>
-                                        <th>Name</th>
-                                        <th>Size</th>
+                                        <th>{{ t('vps.backup.service') }}</th>
+                                        <th>{{ t('vps.backup.type') }}</th>
+                                        <th>{{ t('common.labels.name') }}</th>
+                                        <th>{{ t('vps.backup.size') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -148,7 +151,7 @@ loadBackupsList();
                                 </tbody>
                             </table>
                         </template>
-                        <template v-else> No backup currently exists </template>
+                        <template v-else> {{ t('vps.backup.noBackup') }} </template>
                     </div>
                 </div>
             </div>

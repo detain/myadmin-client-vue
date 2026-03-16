@@ -7,8 +7,10 @@ import { parseFaIcon } from '@/helpers/parseFaIcon';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useVpsStore } from '@/stores/vps.store';
 import { useSiteStore } from '@/stores/site.store';
+import { loadLocaleMessages } from '@/i18n';
 
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
@@ -32,6 +34,8 @@ import Vnc from '@/views/vps/Vnc.vue';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+await loadLocaleMessages('en', 'vps');
+const { t } = useI18n();
 const vpsStore = useVpsStore();
 const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, titleField, titleField2, titleField3, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
 const module = 'vps';
@@ -51,16 +55,16 @@ function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     linkDisplay.value = false;
     siteStore.setBreadcrums([
-        ['/home', 'Home'],
-        [`/${moduleLink(module)}`, 'VPS'],
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.vps')],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View VPS ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('vps.view.title', { id }));
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View VPS ${id}`);
-        siteStore.setTitle(`View VPS ${id}`);
+        siteStore.setPageHeading(t('vps.view.title', { id }));
+        siteStore.setTitle(t('vps.view.title', { id }));
     } else {
-        siteStore.setPageHeading(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`VPS ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(t('vps.view.linkTitle', { id, link: ucwords(newLink.replace('_', ' ')) }));
+        siteStore.setTitle(t('vps.view.linkTitle', { id, link: ucwords(newLink.replace('_', ' ')) }));
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (noForm.includes(newLink)) {
             vpsStore.queue(id, newLink);
@@ -72,22 +76,22 @@ function loadLink(newLink: string) {
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
-                title: '<h3>Are you sure?</h3> ',
+                title: `<h3>${t('vps.view.resendWelcomeEmail')}</h3> `,
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
-                confirmButtonText: 'Yes',
-                html: 'Are you sure want to resend welcome email?',
+                confirmButtonText: t('common.confirm.yes'),
+                html: t('vps.view.resendWelcomeEmailConfirm'),
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
-                                title: '<h3>Email Sent</h3> ',
+                                title: `<h3>${t('vps.view.emailSent')}</h3> `,
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
-                                confirmButtonText: 'Yes',
-                                html: 'The welcome email has been resent.  Check your inbox.',
+                                confirmButtonText: t('common.confirm.yes'),
+                                html: t('vps.view.emailSentMessage'),
                                 preConfirm: () => {
                                     router.push(`/${moduleLink(module)}/${id}`);
                                 },
@@ -210,11 +214,11 @@ function toggleFunc(cp: string) {
         <div class="col-md-4">
             <div class="small-box bg-secondary">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Package</h3>
+                    <h3>{{ t('vps.view.package') }}</h3>
                     <p class="m-0 py-2">{{ pkg }}</p>
                     <template v-if="billingDetails.service_next_invoice_date">
                         <p>
-                            Next Invoice Date:<b>{{ billingDetails.service_next_invoice_date }}</b>
+                            {{ t('vps.view.nextInvoiceDate') }}<b>{{ billingDetails.service_next_invoice_date }}</b>
                         </p>
                     </template>
                 </div>
@@ -233,10 +237,10 @@ function toggleFunc(cp: string) {
                     'bg-danger': serviceInfo.vps_status !== 'active' && serviceInfo.vps_status !== 'pending',
                 }">
                 <div class="inner px-3 pb-2 pt-3">
-                    <h3>Billing</h3>
+                    <h3>{{ t('vps.view.billing') }}</h3>
                     <p class="my-3 py-3">
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
-                        billed
+                        {{ t('vps.view.billed') }}
                         <b>{{ billingDetails.service_frequency }}</b>
                         <br />
                     </p>
@@ -245,7 +249,7 @@ function toggleFunc(cp: string) {
                     <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                 </div>
                 <span class="small-box-footer">
-                    VPS Status is: <b>{{ serviceInfo.vps_status }}</b>
+                    {{ t('vps.view.vpsStatus') }} <b>{{ serviceInfo.vps_status }}</b>
                 </span>
             </div>
         </div>
@@ -253,17 +257,17 @@ function toggleFunc(cp: string) {
             <div class="small-box bg-info">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>
-                        Host Server: <b>{{ serviceMaster.vps_name }}</b>
+                        {{ t('vps.view.hostServer') }} <b>{{ serviceMaster.vps_name }}</b>
                     </h3>
                     <p class="my-3 py-3">
-                        IP is: <b>{{ serviceInfo.vps_ip }}</b>
+                        {{ t('vps.view.ipIs') }} <b>{{ serviceInfo.vps_ip }}</b>
                     </p>
                 </div>
                 <div class="icon">
                     <font-awesome-icon :icon="['fas', 'info-circle']" />
                 </div>
                 <span class="small-box-footer">
-                    Vzid: <b>{{ serviceInfo.vps_vzid }}</b>
+                    {{ t('vps.view.vzid') }} <b>{{ serviceInfo.vps_vzid }}</b>
                 </span>
             </div>
         </div>
@@ -334,7 +338,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;&nbsp;VPS Information</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;&nbsp;{{ t('vps.view.vpsInformation') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
@@ -344,7 +348,7 @@ function toggleFunc(cp: string) {
                         <div class="row">
                             <div class="col-md-12">
                                 <h5 class="text-md m-0 p-2 text-center">
-                                    Power Status is:
+                                    {{ t('vps.view.powerStatus') }}
                                     <span
                                         :class="{
                                             'text-success': serviceInfo.vps_server_status === 'running',
@@ -366,7 +370,7 @@ function toggleFunc(cp: string) {
                                             'btn-danger': serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut',
                                             'btn-info': !(serviceInfo.vps_server_status === 'running' || serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended' || serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut'),
                                         }">
-                                        Select Action
+                                        {{ t('vps.view.selectAction') }}
                                     </button>
                                     <button
                                         type="button"
@@ -382,9 +386,9 @@ function toggleFunc(cp: string) {
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">Start</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">Restart</router-link>
-                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">Stop</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">{{ t('common.buttons.start') }}</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/restart'" class="dropdown-item">{{ t('common.buttons.restart') }}</router-link>
+                                        <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/stop'" class="dropdown-item">{{ t('common.buttons.stop') }}</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -394,7 +398,7 @@ function toggleFunc(cp: string) {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        Comment: {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : 'none' }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><font-awesome-icon :icon="['fas', 'pencil-alt']" class="my-2 text-sm" /></span>
+                                        {{ t('vps.view.comment') }} {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : t('vps.view.commentNone') }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><font-awesome-icon :icon="['fas', 'pencil-alt']" class="my-2 text-sm" /></span>
                                     </h5>
                                 </span>
                             </div>
@@ -406,7 +410,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'hdd']" />&nbsp;&nbsp;Disk</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'hdd']" />&nbsp;&nbsp;{{ t('vps.view.disk') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <font-awesome-icon :icon="['fas', 'minus']" />
@@ -420,15 +424,15 @@ function toggleFunc(cp: string) {
                                 <table class="table-bordered my-3 table">
                                     <tbody>
                                         <tr>
-                                            <td class="text-muted text-bold">Total Space:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.totalSpace') }}</td>
                                             <td class="text-bold text-capitalize">{{ service_disk_total }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-muted text-bold">Used Space:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.usedSpace') }}</td>
                                             <td class="text-bold text-capitalize">{{ service_disk_used }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-muted text-bold">Remaining Space:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.remainingSpace') }}</td>
                                             <td class="text-bold text-capitalize">{{ parseFloat(service_disk_total.toString()) - parseFloat(service_disk_used.toString()) }} GB</td>
                                         </tr>
                                         <tr>
@@ -450,7 +454,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'microchip']" />&nbsp;&nbsp;System Information</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'microchip']" />&nbsp;&nbsp;{{ t('vps.view.systemInformation') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <font-awesome-icon :icon="['fas', 'minus']" />
@@ -464,19 +468,19 @@ function toggleFunc(cp: string) {
                                 <table class="table-bordered my-3 table">
                                     <tbody>
                                         <tr class="col">
-                                            <td class="text-muted text-bold">Memory:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.memory') }}</td>
                                             <td class="text-bold text-capitalize">{{ memory }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-muted text-bold">Disk Drive:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.diskDrive') }}</td>
                                             <td class="text-bold text-capitalize">{{ hdd }}</td>
                                         </tr>
                                         <tr class="col">
-                                            <td class="text-muted text-bold">CPU Cores:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.cpuCores') }}</td>
                                             <td class="text-bold text-capitalize">{{ serviceInfo.vps_slices }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-muted text-bold">OS:</td>
+                                            <td class="text-muted text-bold">{{ t('vps.view.os') }}</td>
                                             <td class="text-bold text-capitalize">{{ osTemplate }}</td>
                                         </tr>
                                     </tbody>
@@ -490,7 +494,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" /> Links</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" /> {{ t('vps.view.links') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <font-awesome-icon :icon="['fas', 'minus']" />
@@ -526,7 +530,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'tachometer-alt']" /> &nbsp;Control Panel Add-on</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'tachometer-alt']" /> &nbsp;{{ t('vps.view.controlPanelAddon') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
@@ -538,8 +542,8 @@ function toggleFunc(cp: string) {
                                 <div class="alert alert-danger">
                                     <strong>Note:</strong>
                                     <span id="warning-text"></span><br />
-                                    You can reinstall from left menu
-                                    <b>Maintenance -> Re-Install Operating System</b>
+                                    {{ t('vps.view.reinstallNote') }}
+                                    <b>{{ t('vps.view.reinstallPath') }}</b>
                                 </div>
                             </div>
                         </div>
@@ -551,7 +555,7 @@ function toggleFunc(cp: string) {
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
                                                 <span class="text-sm"
-                                                    >Starting From: <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
+                                                    >{{ t('vps.view.startingFrom') }} <b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
                                                 >
                                             </span>
                                         </div>
@@ -563,9 +567,9 @@ function toggleFunc(cp: string) {
                                             <span class="text-center">
                                                 <h5 aria-hidden="true" class="text-bold">cPanel</h5>
                                                 <span class="text-sm"
-                                                    >Starting From:<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
+                                                    >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ cpData.cost.toFixed(2) }}/mo</b></span
                                                 >
-                                                <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
+                                                <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">{{ t('vps.view.notSupported') }}</span></p>
                                             </span>
                                         </div>
                                     </div>
@@ -583,7 +587,7 @@ function toggleFunc(cp: string) {
                                                         >)
                                                     </p>
                                                     <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
+                                                        >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
                                                     >
                                                 </span>
                                             </div>
@@ -603,9 +607,9 @@ function toggleFunc(cp: string) {
                                                         >)
                                                     </p>
                                                     <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
+                                                        >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ daDetails.cost.toFixed(2) }}/mo</b></span
                                                     >
-                                                    <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
+                                                    <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">{{ t('vps.view.notSupported') }}</span></p>
                                                 </span>
                                             </div>
                                         </div>
@@ -621,7 +625,7 @@ function toggleFunc(cp: string) {
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
                                                         <span class="text-sm"
-                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
+                                                            >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
                                                         >
                                                     </span>
                                                 </div>
@@ -637,9 +641,9 @@ function toggleFunc(cp: string) {
                                                     <span class="text-center">
                                                         <h5 aria-hidden="true" class="text-bold">Softaculous</h5>
                                                         <span class="text-sm"
-                                                            >Starting From:<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
+                                                            >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ rs_details.cost }}/mo</b></span
                                                         >
-                                                        <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
+                                                        <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">{{ t('vps.view.notSupported') }}</span></p>
                                                     </span>
                                                 </div>
                                             </div>
@@ -655,7 +659,7 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
                                                     <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
+                                                        >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
                                                     >
                                                 </span>
                                             </div>
@@ -671,9 +675,9 @@ function toggleFunc(cp: string) {
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold">PLESK {{ details.sub_name }}</h5>
                                                     <span class="text-sm"
-                                                        >Starting From:<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
+                                                        >{{ t('vps.view.startingFrom') }}<b>{{ custCurrencySymbol }}{{ details.cost }}/mo</b></span
                                                     >
-                                                    <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">( Not Supported )</span></p>
+                                                    <p class="m-0 text-sm"><span style="font-size: 12px" class="text-red text-center">{{ t('vps.view.notSupported') }}</span></p>
                                                 </span>
                                             </div>
                                         </div>
@@ -688,7 +692,7 @@ function toggleFunc(cp: string) {
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Order Confirmation</h4>
+                            <h4 class="modal-title">{{ t('vps.view.orderConfirmation') }}</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -696,7 +700,7 @@ function toggleFunc(cp: string) {
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-4 text-right">
-                                    <h5>Package</h5>
+                                    <h5>{{ t('vps.view.package') }}</h5>
                                 </div>
                                 <div class="col text-left">
                                     <strong>
@@ -706,7 +710,7 @@ function toggleFunc(cp: string) {
                             </div>
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-4 text-right">
-                                    <h5>Cost</h5>
+                                    <h5>{{ t('common.labels.cost') }}</h5>
                                 </div>
                                 <div class="col text-left">
                                     <strong>
@@ -714,11 +718,11 @@ function toggleFunc(cp: string) {
                                     </strong>
                                 </div>
                             </div>
-                            <div class="alert alert-warning"><strong>Note:</strong> Control panel needs to be installed on a clean OS install with no modifications. If there is any data it will be lost.</div>
+                            <div class="alert alert-warning"><strong>{{ t('vps.backup.noteLabel') }}</strong> {{ t('vps.view.cpanelNote') }}</div>
                             <br />
                             <div class="row">
                                 <div class="col">
-                                    <router-link id="cp-order-link" :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/add/cp'" class="btn btn-primary btn-block">Place Order</router-link>
+                                    <router-link id="cp-order-link" :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/add/cp'" class="btn btn-primary btn-block">{{ t('vps.view.placeOrder') }}</router-link>
                                 </div>
                             </div>
                             <br />
@@ -732,7 +736,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;CPU Usage</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;{{ t('vps.view.cpuUsage') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
                                     <font-awesome-icon :icon="['fas', 'minus']" />
@@ -799,7 +803,7 @@ function toggleFunc(cp: string) {
                             <table class="table-bordered table">
                                 <tbody>
                                     <tr v-for="row in extraInfoTables.webuzo.rows" :key="row.desc">
-                                        <td class="text-muted text-bold" style="width: 50%">Tickets {{ row.desc }}</td>
+                                        <td class="text-muted text-bold" style="width: 50%">{{ row.desc }}</td>
                                         <td class="text-muted text-xs">{{ row.value }}</td>
                                     </tr>
                                 </tbody>
@@ -823,8 +827,8 @@ function toggleFunc(cp: string) {
                             <table class="table-bordered table">
                                 <thead>
                                     <tr>
-                                        <th>Item</th>
-                                        <th>Value</th>
+                                        <th>{{ t('vps.view.item') }}</th>
+                                        <th>{{ t('vps.view.value') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -843,7 +847,7 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" />&nbsp;Attention</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" />&nbsp;{{ t('vps.view.attention') }}</h3>
                                 <div class="card-tools float-right pl-3 pt-1">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
@@ -867,7 +871,7 @@ function toggleFunc(cp: string) {
                 <div class="modal-content">
                     <form class="inline" method="post" action="#" @submit.prevent="onSubmit">
                         <div class="modal-header">
-                            <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
+                            <h5 id="exampleModalCenterTitle" class="modal-title">{{ t('vps.view.updateComment') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
@@ -875,13 +879,13 @@ function toggleFunc(cp: string) {
                             <input type="hidden" name="link" value="update_comment" />
                             <input type="hidden" name="edit_comment" value="2" />
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">Comment:</label>
+                                <label for="message-text" class="col-form-label">{{ t('vps.view.comment') }}</label>
                                 <textarea id="message-text" v-model="serviceInfo.vps_comment" class="form-control" rows="5" name="vps_comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">{{ t('common.buttons.close') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ t('vps.view.saveChanges') }}</button>
                         </div>
                     </form>
                 </div>

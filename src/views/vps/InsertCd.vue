@@ -3,8 +3,11 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -39,7 +42,7 @@ function submitForm() {
         console.log('api failed', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.message}`,
+            html: t('vps.common.gotError', { error: error.message }),
         });
     }
 }
@@ -53,10 +56,10 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2">
                             <font-awesome-icon :icon="['fas', 'compact-disc']" />&nbsp;
-                            {{ action === 'enable_cd' ? 'Enable CDROM Drive' : 'Insert ISO Image In CDROM Drive' }}
+                            {{ action === 'enable_cd' ? t('vps.insertCd.enableCdrom') : t('vps.insertCd.insertIso') }}
                         </h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -66,7 +69,7 @@ function submitForm() {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="slices" class="col-form-label">Allowed Protocols</label>
+                                    <label for="slices" class="col-form-label">{{ t('vps.insertCd.allowedProtocols') }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" readonly :value="protocols" />
@@ -75,7 +78,7 @@ function submitForm() {
                         </div>
                         <div class="form-group row">
                             <div class="col-md-3">
-                                <label for="image" class="col-form-label">Choose Image</label>
+                                <label for="image" class="col-form-label">{{ t('vps.insertCd.chooseImage') }}</label>
                             </div>
                             <div class="col-sm-9 input-group">
                                 <select id="image" name="image" class="form-control form-control-sm select2">
@@ -84,15 +87,15 @@ function submitForm() {
                             </div>
                         </div>
                         <hr />
-                        <h5 class="text-bold text-center text-sm">OR</h5>
+                        <h5 class="text-bold text-center text-sm">{{ t('vps.insertCd.or') }}</h5>
                         <hr />
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="slices" class="col-form-label">Enter URL</label>
+                                    <label for="slices" class="col-form-label">{{ t('vps.insertCd.enterUrl') }}</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input v-model="url" type="text" name="url" class="form-control form-control-sm" placeholder="Enter a CD or DVD ISO URL" />
+                                    <input v-model="url" type="text" name="url" class="form-control form-control-sm" :placeholder="t('vps.insertCd.urlPlaceholder')" />
                                 </div>
                             </div>
                         </div>
@@ -101,13 +104,13 @@ function submitForm() {
                                 <div class="col-md-3">&nbsp;</div>
                                 <div class="icheck-success col-md-9 text-bold mt-3 text-black">
                                     <input id="confirmation" type="checkbox" name="confirm" value="yes" required />
-                                    <label for="confirmation">Are you sure?</label>
+                                    <label for="confirmation">{{ t('vps.insertCd.areYouSure') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="controls">
-                                <button name="insert_cd" type="submit" class="btn btn-sm btn-order px-3 py-2">Continue</button>
+                                <button name="insert_cd" type="submit" class="btn btn-sm btn-order px-3 py-2">{{ t('vps.insertCd.continueButton') }}</button>
                             </div>
                         </div>
                     </form>
