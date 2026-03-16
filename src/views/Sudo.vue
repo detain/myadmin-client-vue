@@ -5,9 +5,7 @@ import { ref, computed, onMounted } from 'vue';
 import * as Yup from 'yup';
 import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'login');
 const { t } = useI18n();
 
 import { useRoute } from 'vue-router';

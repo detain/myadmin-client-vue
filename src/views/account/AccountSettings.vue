@@ -6,7 +6,6 @@ import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 
 import AccountFeatures from '@/components/account/AccountFeatures.vue';
 import ApiAccess from '@/components/account/ApiAccess.vue';
@@ -15,7 +14,6 @@ import LinkedAccounts from '@/components/account/LinkedAccounts.vue';
 import SshKeys from '@/components/account/SshKeys.vue';
 import TwoFactorAuth from '@/components/account/TwoFactorAuth.vue';
 
-await loadLocaleMessages('en', 'account');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

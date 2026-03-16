@@ -50,10 +50,10 @@ const i18n = createI18n({
     },
     messages: {
         en: {
-            ...common, ...dashboard, ...account, ...affiliate, ...backups,
-            ...billing, ...dns, ...domains, ...floating_ips, ...licenses,
-            ...login, ...mail, ...quickservers, ...scrub_ips, ...servers,
-            ...ssl, ...tickets, ...users, ...validation, ...vps, ...webhosting,
+            common, dashboard, account, affiliate, backups,
+            billing, dns, domains, floating_ips, licenses,
+            login, mail, quickservers, scrub_ips, servers,
+            ssl, tickets, users, validation, vps, webhosting,
         },
     },
 });

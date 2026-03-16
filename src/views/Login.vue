@@ -9,9 +9,7 @@ import { useSiteStore } from '@/stores/site.store';
 import { router } from '@/router/index';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'login');
 const { t } = useI18n();
 //import { Form, Field } from 'vee-validate';
 //import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';

@@ -6,9 +6,7 @@ import { Form, Field } from 'vee-validate';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'account');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

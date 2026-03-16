@@ -9,9 +9,7 @@ import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 
 import ClientHome from '@/views/ClientHome.vue';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'login');
 const { t } = useI18n();
 
 const authStore = useAuthStore();

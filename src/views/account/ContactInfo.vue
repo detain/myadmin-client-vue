@@ -7,9 +7,7 @@ import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'account');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

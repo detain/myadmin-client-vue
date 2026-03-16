@@ -7,9 +7,7 @@ import { useUsersStore } from '@/stores/users.store';
 import { useAlertStore } from '@/stores/alert.store';
 
 import { router } from '@/router';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'login');
 const { t } = useI18n();
 
 const schema = Yup.object().shape({

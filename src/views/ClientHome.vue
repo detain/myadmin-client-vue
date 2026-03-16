@@ -124,7 +124,7 @@ accountStore.load();
                     <div class="small-box bg-yellow">
                         <div class="inner px-3 pb-2 pt-3 text-white">
                             <h3>{{ t('dashboard.welcome', { name: full_name }) }}</h3>
-                            <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login ? d(new Date(last_login), 'long') : '' }}</p>
+                            <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login ? d(new Date(last_login.replace(' ', 'T')), 'long') : '' }}</p>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['far', 'id-card']" />

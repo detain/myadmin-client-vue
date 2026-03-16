@@ -3,7 +3,6 @@ import { ref, watch, computed, onMounted, watchEffect } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 import type { ServiceType, ServiceTypes } from '@/types/view-service-common';
 import type { CouponInfo, VpsOrderResponse, PlatformPackages, PlatformNames, PackageCosts, LocationStock, LocationNames, OsNames, Templates } from '@/types/vps_order.ts';
 import { useRoute, useRouter } from 'vue-router';
@@ -16,7 +15,6 @@ import Swal from 'sweetalert2';
 const route = useRoute();
 const router = useRouter();
 const module = 'vps';
-await loadLocaleMessages('en', 'vps');
 const { t } = useI18n();
 const siteStore = useSiteStore();
 watchEffect(() => {

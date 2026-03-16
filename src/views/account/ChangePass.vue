@@ -7,9 +7,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'account');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

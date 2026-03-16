@@ -6,9 +6,7 @@ import { ref, computed, onMounted, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'dns');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

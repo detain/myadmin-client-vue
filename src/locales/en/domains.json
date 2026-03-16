@@ -76,7 +76,7 @@
         "register": "Register",
         "transfer": "Transfer",
         "premium": "Premium",
-        "renewAt": "Renew @ {cost}",
+        "renewAt": "Renew {'@'} {cost}",
         "searchingDomain": "Please wait! Searching for this domain name.",
         "loadingDomainFields": "Please wait! Loading domain fields.",
         "gotError": "Got Error:"

@@ -5,9 +5,7 @@ import * as Yup from 'yup';
 import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 
-await loadLocaleMessages('en', 'login');
 const { t } = useI18n();
 
 const siteStore = useSiteStore();

@@ -4,11 +4,9 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
-import { loadLocaleMessages } from '@/i18n';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
-await loadLocaleMessages('en', 'webhosting');
 const { t } = useI18n();
 
 const module = 'webhosting';
