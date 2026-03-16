@@ -138,7 +138,7 @@ loadRenew();
                     </div>
                 </div>
             </div>
-            <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ ‘border-left’: ‘4px solid greenyellow’, display: ‘block ruby’ }">
+            <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
                     <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired it may have a grace period from expiry date to renew.
                     <div class="card-tools float-right">
@@ -147,9 +147,9 @@ loadRenew();
                 </div>
             </div>
             <template v-if="whoisAvailable">
-                <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ ‘border-left’: ‘4px solid greenyellow’, display: ‘block ruby’ }">
+                <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                     <div class="text-md m-0">
-                        <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant’s domain.
+                        <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant's domain.
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
