@@ -177,6 +177,18 @@ describe('auth.store', () => {
             expect(store.sessionId).toBe('signup-sess');
         });
 
+        it('stores sessionId and user in localStorage on success', async () => {
+            const mockUser = { sessionId: 'signup-sess', account_id: 2 };
+            vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
+
+            const store = useAuthStore();
+            await store.signup({ email: 'new@example.com', password: 'pass' });
+
+            expect(localStorage.getItem('remember')).not.toBeNull();
+            expect(localStorage.getItem('sessionId')).toBe('signup-sess');
+            expect(localStorage.getItem('user')).toBe(JSON.stringify(mockUser));
+        });
+
         it('sets error via alertStore on failure', async () => {
             const mockError = { message: 'Signup failed' };
             vi.mocked(fetchWrapper.post).mockRejectedValue(mockError);
@@ -187,6 +199,145 @@ describe('auth.store', () => {
             const alertStore = useAlertStore();
             expect(alertStore.alert).not.toBeNull();
             expect(alertStore.alert?.type).toBe('alert-danger');
+        });
+
+        it('sets opts.tfa when error field is tfa', async () => {
+            vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'TFA required', field: 'tfa' });
+            const store = useAuthStore();
+            await store.signup({ email: 'test@example.com', password: 'pass' });
+            expect(store.opts.tfa).toBe(true);
+        });
+
+        it('sets opts.verify when error field is email_confirmation', async () => {
+            vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Verify', field: 'email_confirmation' });
+            const store = useAuthStore();
+            await store.signup({ email: 'test@example.com', password: 'pass' });
+            expect(store.opts.verify).toBe(true);
+        });
+
+        it('sets opts.captcha when error field is captcha', async () => {
+            vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Captcha', field: 'captcha' });
+            const store = useAuthStore();
+            await store.signup({ email: 'test@example.com', password: 'pass' });
+            expect(store.opts.captcha).toBe(true);
+        });
+    });
+
+    describe('login() error field branches', () => {
+        it('sets opts.verify when error field is verify', async () => {
+            vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Verify', field: 'verify' });
+            const store = useAuthStore();
+            await store.login({ username: 'test', password: 'pass' });
+            expect(store.opts.verify).toBe(true);
+        });
+
+        it('sets opts.captcha when error field is captcha', async () => {
+            vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Captcha', field: 'captcha' });
+            const store = useAuthStore();
+            await store.login({ username: 'test', password: 'pass' });
+            expect(store.opts.captcha).toBe(true);
+        });
+
+        it('stores remember=false in localStorage', async () => {
+            const mockUser = { sessionId: 'sess123' };
+            vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
+            const store = useAuthStore();
+            store.remember = false;
+            await store.login({ username: 'test', password: 'pass' });
+            expect(localStorage.getItem('remember')).toBe('false');
+        });
+    });
+
+    describe('setOAuthSession()', () => {
+        it('sets user and sessionId from OAuth data', () => {
+            const store = useAuthStore();
+            const oauthData = {
+                sessionId: 'oauth-sess',
+                account_id: 10,
+                account_lid: 'user@example.com',
+                ima: 'client',
+                name: 'OAuth User',
+                gravatar: 'https://gravatar.com/avatar/123',
+            };
+            store.setOAuthSession(oauthData);
+            expect(store.sessionId).toBe('oauth-sess');
+            expect(store.user.account_id).toBe(10);
+            expect(store.user.account_lid).toBe('user@example.com');
+            expect(store.user.name).toBe('OAuth User');
+            expect(localStorage.getItem('sessionId')).toBe('oauth-sess');
+            expect(JSON.parse(localStorage.getItem('user') || '{}')).toMatchObject({
+                sessionId: 'oauth-sess',
+                account_id: 10,
+            });
+        });
+
+        it('uses defaults for missing oauth fields', () => {
+            const store = useAuthStore();
+            store.setOAuthSession({ sessionId: 'oauth-sess', account_id: 10, account_lid: 'user@test.com' });
+            expect(store.user.ima).toBe('client');
+            expect(store.user.name).toBe('');
+            expect(store.user.gravatar).toBe('');
+        });
+    });
+
+    describe('sudo()', () => {
+        it('sets sessionId and loads account', async () => {
+            const store = useAuthStore();
+            // accountStore.load() fetches /account and expects response.data
+            vi.mocked(fetchWrapper.get).mockResolvedValue({
+                data: {
+                    account_id: 5,
+                    account_lid: 'admin@test.com',
+                    name: 'Admin',
+                },
+                gravatar: 'https://gravatar.com/test',
+                custid: 5,
+                ima: 'client',
+            });
+            await store.sudo('sudo-session-123');
+            // Wait for the async accountStore.load().then() to complete
+            await new Promise((r) => setTimeout(r, 50));
+            expect(store.sessionId).toBe('sudo-session-123');
+            expect(localStorage.getItem('sessionId')).toBe('sudo-session-123');
+            expect(store.user.account_id).toBe(5);
+        });
+    });
+
+    describe('load() error handling', () => {
+        it('does not throw on error', async () => {
+            vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
+            const store = useAuthStore();
+            await expect(store.load()).resolves.toBeUndefined();
+        });
+    });
+
+    describe('reloadCaptcha() error handling', () => {
+        it('does not throw on error', async () => {
+            vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
+            const store = useAuthStore();
+            await expect(store.reloadCaptcha()).resolves.toBeUndefined();
+        });
+    });
+
+    describe('logout() error handling', () => {
+        it('still clears state on API error', async () => {
+            vi.mocked(fetchWrapper.getNoLogout).mockRejectedValue(new Error('Network error'));
+            const store = useAuthStore();
+            store.sessionId = 'test';
+            store.user = { sessionId: 'test' };
+            await store.logout();
+            expect(store.sessionId).toBeNull();
+            expect(store.user).toEqual({});
+        });
+    });
+
+    describe('resetStores()', () => {
+        it('resets all stores', () => {
+            const store = useAuthStore();
+            const alertStore = useAlertStore();
+            alertStore.success('test');
+            store.resetStores();
+            expect(alertStore.alert).toBeNull();
         });
     });
 });

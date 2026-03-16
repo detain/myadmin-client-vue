@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import InvoicesList from '@/views/billing/InvoicesList.vue';
 
@@ -45,14 +45,45 @@ describe('InvoicesList.vue', () => {
             plugins: [
                 createTestingPinia({
                     createSpy: vi.fn,
-                    stubActions: false,
+                    stubActions: true,
                     initialState: {
                         invoices: {
                             loading: false,
-                            rows: [],
+                            rows: [
+                                {
+                                    id: 100,
+                                    module: 'vps',
+                                    service_id: 1,
+                                    date_raw: '2024-06-15',
+                                    date: 'Jun 15, 2024',
+                                    service: 'Test VPS',
+                                    description: 'Monthly VPS',
+                                    amount: '$10.00',
+                                    paid: 'Yes',
+                                    payment_type: 'Credit Card',
+                                    payment_type_id: 11,
+                                    payment_description: 'Visa ending 1234',
+                                    paid_on: 'Jun 15, 2024',
+                                },
+                                {
+                                    id: 101,
+                                    module: 'domains',
+                                    service_id: 2,
+                                    date_raw: '2023-01-10',
+                                    date: 'Jan 10, 2023',
+                                    service: 'example.com',
+                                    description: 'Domain renewal',
+                                    amount: '$15.00',
+                                    paid: 'No',
+                                    payment_type: 'PayPal',
+                                    payment_type_id: 10,
+                                    payment_description: 'PayPal',
+                                    paid_on: '',
+                                },
+                            ],
                             table_rows: [],
                             months_arr: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                            years_arr: {},
+                            years_arr: { 2024: '2024', 2023: '2023' },
                         },
                         auth: {
                             sessionId: 'test-session',
@@ -71,8 +102,58 @@ describe('InvoicesList.vue', () => {
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('sets page heading to Invoice List', () => {
-        mount(InvoicesList, mountOptions);
-        // The component calls siteStore.setPageHeading('Invoice List')
+    it('renders invoice table with rows', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        expect(wrapper.text()).toContain('Invoices List');
+        expect(wrapper.text()).toContain('Monthly VPS');
+        expect(wrapper.text()).toContain('$10.00');
+    });
+
+    it('renders sorting headers', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        expect(wrapper.text()).toContain('ID');
+        expect(wrapper.text()).toContain('Date');
+        expect(wrapper.text()).toContain('Service');
+        expect(wrapper.text()).toContain('Description');
+        expect(wrapper.text()).toContain('Amount');
+    });
+
+    it('renders filter controls', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        expect(wrapper.text()).toContain('Month');
+        expect(wrapper.text()).toContain('Year');
+        expect(wrapper.text()).toContain('Page Size');
+    });
+
+    it('renders pagination', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        expect(wrapper.text()).toContain('Page 1 of 1');
+    });
+
+    it('sorts columns when header clicked', async () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        const headers = wrapper.findAll('th');
+        await headers[0].trigger('click');
+        await headers[0].trigger('click');
+    });
+
+    it('filters by search text', async () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        const searchInput = wrapper.find('input[type="text"]');
+        await searchInput.setValue('VPS');
+        await flushPromises();
+        expect(wrapper.text()).toContain('Monthly VPS');
+    });
+
+    it('renders Export Excel and Export PDF buttons', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        expect(wrapper.text()).toContain('Export Excel');
+        expect(wrapper.text()).toContain('Export PDF');
+    });
+
+    it('shows paid/unpaid images', () => {
+        const wrapper = mount(InvoicesList, mountOptions);
+        const images = wrapper.findAll('img');
+        expect(images.length).toBeGreaterThan(0);
     });
 });
