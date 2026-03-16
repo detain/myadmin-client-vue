@@ -2,6 +2,7 @@
 
 **Date:** 2026-03-16
 **Status:** Approved
+**vue-i18n version:** Latest (package.json specifies `"*"`, will resolve to v11+)
 
 ## Overview
 
@@ -15,13 +16,12 @@ Create a shared i18n instance:
 
 ```ts
 import { createI18n } from 'vue-i18n';
-import type { I18n } from 'vue-i18n';
 
 const i18n = createI18n({
-    legacy: false,
+    legacy: false,          // Composition API mode (default in v11, explicit for clarity)
     locale: 'en',
     fallbackLocale: 'en',
-    globalInjection: false,
+    globalInjection: false, // No $t/$d/$n on templates — use useI18n() composable only
     missingWarn: import.meta.env.DEV,
     fallbackWarn: import.meta.env.DEV,
     datetimeFormats: {
@@ -42,6 +42,8 @@ const i18n = createI18n({
 });
 ```
 
+**Note:** With `globalInjection: false`, `$t`, `$d`, `$n` are NOT available in templates. Every component must destructure from `useI18n()` to get `t`, `d`, `n` functions.
+
 Export a `loadLocaleMessages(locale, namespace)` helper:
 
 - Dynamically imports from `src/locales/{locale}/{namespace}.json`
@@ -50,9 +52,10 @@ Export a `loadLocaleMessages(locale, namespace)` helper:
 
 ### Vite Build Optimization (`vite.config.ts`)
 
-- Add `@intlify/unplugin-vue-i18n/vite` plugin with `runtimeOnly: true`, `compositionOnly: true`
-- Add resolve alias: `'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'`
-- These optimizations tree-shake the legacy API and use pre-compiled messages, reducing bundle size
+- Add `@intlify/unplugin-vue-i18n/vite` plugin — this strips unused vue-i18n code paths from the production bundle (legacy API, full compiler for SFC `<i18n>` blocks we don't use)
+- Add resolve alias: `'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'` — uses the runtime-only build that excludes the message compiler from the bundle
+- **Note:** Since locale messages are loaded as JSON at runtime (not SFC `<i18n>` blocks), they are parsed at runtime, not pre-compiled at build time. The optimization here is bundle size reduction by stripping the full compiler and legacy API, not message pre-compilation.
+- **Vite 8 / Rolldown compatibility:** Verify the `@intlify/unplugin-vue-i18n` plugin works with Vite 8's Rolldown bundler (`rolldownOptions`). If incompatible, the resolve alias alone provides the key optimization.
 
 ### Global Formats
 
@@ -76,7 +79,8 @@ Export a `loadLocaleMessages(locale, namespace)` helper:
 
 ```
 src/locales/en/
-├── common.json          # Shared: buttons, labels, table headers, validation, menu, footer
+├── common.json          # Shared: buttons, labels, table headers, menu, footer
+├── validation.json      # Form validation messages (loaded with any form-bearing route)
 ├── login.json           # Login, Register, Forgot Password, 2FA, OAuth
 ├── dashboard.json       # ClientHome (welcome, prepay, invoices, affiliate, tickets)
 ├── account.json         # Account settings, change pass/username, contact info, API, SSH, 2FA
@@ -100,16 +104,18 @@ src/locales/en/
 
 ### Key Conventions
 
-- `common.json` is loaded at app boot (always available) — contains menu labels, generic buttons ("Save", "Cancel", "Delete", "Edit", "Loading..."), validation messages, table headers, footer text
+- `common.json` is loaded at app boot (always available) — contains menu labels, generic buttons ("Save", "Cancel", "Delete", "Edit", "Loading..."), table headers ("Action", "Status", "ID"), footer text
+- `validation.json` is split from common to keep boot bundle lean — loaded by routes with forms
 - All other namespaces loaded lazily via router guard
 - Keys are flat within the namespace: `"welcome": "Welcome, {name}"`, not deeply nested
 - Pluralization: `"serviceCount": "No active services | {count} active service | {count} active services"`
+- Existing `src/locales/home.en.json` (currently empty `{}`) is removed, replaced by new structure
 
 ## 3. Router Integration & Lazy Loading
 
 ### Route Meta
 
-Each route declares its required locale namespace(s):
+Each route declares its required locale namespace(s). Every route in `src/router/index.ts` gets a `meta.i18n` field added:
 
 ```ts
 {
@@ -117,11 +123,26 @@ Each route declares its required locale namespace(s):
     component: () => import('@/views/vps/VpsList.vue'),
     meta: { i18n: ['vps'] }
 }
+{
+    path: '/login',
+    component: () => import('@/views/Login.vue'),
+    meta: { i18n: ['login', 'validation'] }
+}
 ```
+
+### Nested Routes
+
+For nested route structures (e.g., `/account` with children), `meta.i18n` goes on the **parent** route. The router guard collects namespaces from **all matched route records** via `to.matched`:
+
+```ts
+const namespaces = to.matched.flatMap((record) => (record.meta.i18n as string[]) || []);
+```
+
+This ensures child routes inherit the parent's namespaces without needing to redeclare them, while allowing children to add their own.
 
 ### Router `beforeEach` Guard
 
-- Reads `to.meta.i18n` (array of namespace strings)
+- Iterates `to.matched` and collects all `meta.i18n` arrays
 - Calls `loadLocaleMessages('en', namespace)` for each unloaded namespace
 - Awaits all loads with `Promise.all()` before proceeding
 - `common` namespace is pre-loaded during app initialization in `main.ts` before `app.mount()`
@@ -142,7 +163,11 @@ const { t, d, n } = useI18n();
 </template>
 ```
 
-Shared components (ServiceListTable, Alert, MainMenu) use keys from `common` namespace.
+### Shared Components Namespace Resolution
+
+Shared components in `src/components/` (MainMenu, Alert, ServiceListTable, etc.) use keys from the `common` namespace since it is always loaded at boot.
+
+Shared components in `src/components/services/` (Cancel.vue, Invoices.vue, Billing.vue, etc.) are rendered inside view pages whose routes load the relevant domain namespace. These components can reference keys from either `common` or the parent view's namespace — they rely on the parent route having loaded the correct namespace via `meta.i18n`.
 
 ## 4. Component Migration Strategy
 
@@ -153,7 +178,7 @@ Shared components (ServiceListTable, Alert, MainMenu) use keys from `common` nam
 | Template text | `<h3>Welcome, {{ name }}</h3>` | `<h3>{{ t('dashboard.welcome', { name }) }}</h3>` |
 | Template attributes | `title="Edit Ticket"` | `:title="t('common.edit')"` |
 | Script strings | `setPageHeading('Dashboard')` | `setPageHeading(t('dashboard.title'))` |
-| Validation | `.required('Username is required')` | `.required(t('login.usernameRequired'))` |
+| Validation | `.required('Username is required')` | `.required(t('validation.required', { field: t('login.username') }))` |
 | SweetAlert | `Swal.fire({ title: 'Are you sure?' })` | `Swal.fire({ title: t('common.confirmTitle') })` |
 | Menu items | `text: 'Dashboard'` | `text: t('common.menu.dashboard')` (computed) |
 | Currency | `` `$${amount}` `` | `n(parseFloat(amount), 'currency')` |
@@ -161,9 +186,20 @@ Shared components (ServiceListTable, Alert, MainMenu) use keys from `common` nam
 ### Every Component Gets
 
 1. `import { useI18n } from 'vue-i18n'` added to `<script setup>`
-2. `const { t, d, n } = useI18n()` destructured (only what's used)
+2. `const { t, d, n } = useI18n()` destructured (only what's used — `d`/`n` only where dates/numbers appear)
 3. All hardcoded strings replaced with `t()` calls
 4. Grammar/spelling fixes applied inline as strings are extracted
+
+### Page Heading Pattern
+
+Components that call `siteStore.setPageHeading()` should use `watchEffect` so headings re-translate on locale change:
+
+```ts
+watchEffect(() => {
+    siteStore.setPageHeading(t('dashboard.title'));
+    siteStore.setBreadcrums([['', t('common.home')]]);
+});
+```
 
 ### What Stays Untranslated
 
@@ -184,7 +220,7 @@ Shared components (ServiceListTable, Alert, MainMenu) use keys from `common` nam
 
 - `locale` is a reactive ref — when switched, all `t()` calls update automatically
 - MainMenu uses `computed()` wrapping menu data so labels re-translate on locale change
-- `setPageHeading()` calls would need re-invocation on locale switch via watching `locale` (future concern)
+- `setPageHeading()` calls use `watchEffect` so they re-run on locale change
 
 ### Pluralization Rules
 
@@ -199,25 +235,31 @@ Shared components (ServiceListTable, Alert, MainMenu) use keys from `common` nam
 
 ## 6. Dependencies
 
-### New Packages
+### Packages (Both Already in package.json as `"*"`)
 
+- `vue-i18n` — currently commented out in main.ts, needs `npm install` and activation
 - `@intlify/unplugin-vue-i18n` — build-time optimization plugin (dev dependency)
 
-### Existing Packages (Already Installed)
+### Testing Considerations
 
-- `vue-i18n` — already in package.json, currently commented out in main.ts
+- Components using `useI18n()` need the i18n plugin provided in test setup (`test/setup.ts`)
+- Add a test helper that creates a minimal i18n instance for component tests
 
 ## 7. Files Created/Modified Summary
 
 ### New Files
 
 - `src/i18n/index.ts` — i18n instance, loader helper, format configs
-- `src/locales/en/*.json` — 20 locale namespace files
+- `src/locales/en/*.json` — 21 locale namespace files (including validation.json)
 
 ### Modified Files
 
 - `src/main.ts` — import and register i18n plugin, pre-load common namespace
-- `src/router/index.ts` — add beforeEach guard for lazy locale loading
+- `src/router/index.ts` — add `meta.i18n` to all routes, add beforeEach guard for lazy loading
 - `vite.config.ts` — add intlify plugin and vue-i18n resolve alias
+- `test/setup.ts` — provide i18n instance for component tests
 - All 142 Vue component files — replace hardcoded strings with `t()`/`d()`/`n()` calls
-- `src/locales/home.en.json` — removed (replaced by new structure)
+
+### Removed Files
+
+- `src/locales/home.en.json` — replaced by new namespace structure
