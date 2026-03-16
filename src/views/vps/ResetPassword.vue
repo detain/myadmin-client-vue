@@ -75,7 +75,7 @@ function submitForm() {
                                     <label for="slices" class="col-form-label">{{ t('vps.resetPassword.importantNote') }}</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control form-control-sm" readonly style="height: 140px">{{ t('vps.resetPassword.windowsWarning') }}</textarea>
+                                    <textarea class="form-control form-control-sm" readonly style="height: 140px" :value="t('vps.resetPassword.windowsWarning')"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -76,14 +76,14 @@ jobs:
                   path: coverage/
 
             - name: Generate coverage badge
-              if: always()
+              if: success()
               uses: jaywcjlove/coverage-badges-cli@v2.1.0
               with:
                   source: coverage/coverage-summary.json
                   output: coverage/badge.svg
 
             - name: Upload coverage badge
-              if: always()
+              if: success()
               uses: actions/upload-artifact@v7
               with:
                   name: coverage-badge
