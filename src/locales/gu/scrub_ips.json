@@ -56,6 +56,7 @@
         "selectCountry": "\u0aa6\u0ac7\u0ab6 \u0aaa\u0ab8\u0a82\u0aa6 \u0a95\u0ab0\u0acb",
         "asn": "ASN",
         "block": "\u0aac\u0acd\u0ab2\u0cbe\u0a95",
-        "whitelist": "\u0ab5\u0afe\u0a87\u0a9f\u0ab2\u0abf\u0ab8\u0acd\u0a9f"
+        "whitelist": "\u0ab5\u0afe\u0a87\u0a9f\u0ab2\u0abf\u0ab8\u0acd\u0a9f",
+        "noRulesFound": "\u0a95\u0acb\u0a88 \u0aa8\u0abf\u0aaf\u0aae\u0acb \u0aae\u0ab3\u0ac0 \u0aa8\u0aa5\u0ac0!"
     }
 }

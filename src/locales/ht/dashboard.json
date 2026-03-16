@@ -1,0 +1,28 @@
+{
+    "title": "Tablo Bò",
+    "welcome": "Byenvini, {name}",
+    "lastLogin": "Dènye Koneksyon",
+    "lastLoginIp": "IP Dènye Koneksyon",
+    "prepay": {
+        "title": "Balans Prepay",
+        "remainingBalance": "Balans Prepay Rete",
+        "manageAccount": "Jere Kont",
+        "manageTooltip": "Jere Kont Prepay Ou"
+    },
+    "invoices": {
+        "title": "Fakti Ki Pa Peye",
+        "totalUnpaid": "Total Fakti Ki Pa Peye",
+        "totalAmount": "Montan Total Pou Peye",
+        "payTotalTooltip": "Peye Montan Total"
+    },
+    "callInPin": "PIN Apèl",
+    "recentTickets": "Dènye Tikè",
+    "viewAllTickets": "Wè Tout Tikè",
+    "editTicket": "Modifye Tikè",
+    "serviceCount": "Pa gen sèvis aktif | {count} sèvis aktif | {count} sèvis aktif",
+    "affiliate": {
+        "earnPerSale": "Touche {amount} Pa Vant",
+        "urlPlaceholder": "URL Afilye",
+        "shareWith": "Pataje avèk"
+    }
+}

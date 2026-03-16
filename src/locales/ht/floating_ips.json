@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lis Sèvis IP Flòtan",
+        "orderTitle": "Kòmande Anrejistreman IP Flòtan"
+    },
+    "view": {
+        "title": "Wè IP Flòtan {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture:",
+        "statusIs": "Estati se:",
+        "floatingIp": "IP Flòtan",
+        "links": "Lyen",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "order": {
+        "title": "Kòmande IP Flòtan"
+    },
+    "changeIp": {
+        "title": "Chanje IP Sib"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP Zerbitzu Zerrenda",
+        "orderTitle": "Eskatu Scrub IPak"
+    },
+    "view": {
+        "title": "Ikusi Scrub IPak",
+        "currentIp": "Uneko IPa",
+        "ipAddress": "IP Helbidea",
+        "ipFromService": "Zerbitzutik IPa"
+    },
+    "filters": {
+        "title": "Iragazkiak",
+        "createNew": "Sortu Berria",
+        "createNewFilter": "Sortu Iragazki Berria",
+        "filterType": "Iragazki Mota",
+        "selectFilterType": "Hautatu Iragazki Mota",
+        "ipAddress": "IP Helbidea",
+        "portNo": "Ataka Zk.",
+        "filter": "Iragazkia",
+        "destinationIp": "Helburu IPa",
+        "destinationPort": "Helburu Ataka",
+        "noFiltersFound": "Ez da iragazkirik aurkitu!",
+        "deleteFilterConfirm": "Ziur al zaude iragazki hau ezabatu nahi duzula?",
+        "unableToCreateFilter": "Ezin da iragazkia sortu une honetan.",
+        "unableToDeleteFilter": "Ezin da iragazkia ezabatu une honetan."
+    },
+    "firewallRules": {
+        "title": "Suebaki Arauak",
+        "createNew": "Sortu Berria",
+        "createNewFirewall": "Sortu Suebaki Arau Berria",
+        "protocol": "Protokoloa",
+        "destinationIp": "Helburu IPa",
+        "destinationPort": "Helburu Ataka",
+        "sourceIp": "Jatorri IPa",
+        "sourcePort": "Jatorri Ataka",
+        "xdpAction": "XDP Ekintza",
+        "ipRequired": "IP helbidea beharrezkoa da",
+        "block": "Blokeatu",
+        "whitelist": "Baimenen Zerrenda",
+        "noRulesFound": "Ez da araurik aurkitu!",
+        "deleteRuleConfirm": "Ziur al zaude arau hau ezabatu nahi duzula?",
+        "unableToCreateRule": "Ezin da suebaki araua sortu une honetan.",
+        "unableToDeleteRule": "Ezin da suebaki araua ezabatu une honetan."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Suebaki Arauak",
+        "createNew": "Sortu Berria",
+        "createNewGeoRule": "Sortu Geo Suebaki Arau Berria",
+        "destinationIp": "Helburu IPa",
+        "destinationPort": "Helburu Ataka",
+        "sourceCountry": "Jatorri Herrialdea",
+        "sourceAsn": "Jatorri ASN",
+        "xdpAction": "XDP Ekintza",
+        "portNo": "Ataka Zk.",
+        "selectCountry": "Hautatu Herrialdea",
+        "asn": "ASN",
+        "block": "Blokeatu",
+        "whitelist": "Baimenen Zerrenda",
+        "noRulesFound": "Ez da araurik aurkitu!",
+        "deleteGeoRuleConfirm": "Ziur al zaude geo arau hau ezabatu nahi duzula?",
+        "unableToCreateRule": "Ezin da suebaki araua sortu une honetan.",
+        "unableToDeleteRule": "Ezin da geo suebaki araua ezabatu une honetan."
+    }
+}

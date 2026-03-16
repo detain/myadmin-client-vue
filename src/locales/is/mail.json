@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Listi yfir tölvupóstþjónustur",
+        "orderTitle": "Panta tölvupóstskráningar"
+    },
+    "view": {
+        "title": "Skoða tölvupóst {id}",
+        "package": "Pakki",
+        "nextInvoiceDate": "Næsta reikningsdagsetning:",
+        "billing": "Innheimta",
+        "billed": "innheimt:",
+        "statusIs": "Staða er:",
+        "mailApi": "Tölvupósts API",
+        "usageCount": "Notkunarfjöldi:",
+        "links": "Tenglar",
+        "connectionInfo": "Tengingaupplýsingar",
+        "welcomeEmailConfirm": "Ertu viss um að þú viljir endursenda velkominn tölvupóstinn?",
+        "emailSent": "Tölvupóstur sendur",
+        "emailSentMessage": "Velkominn tölvupósturinn hefur verið endursendu. Athugaðu pósthólfið þitt."
+    },
+    "order": {
+        "title": "Panta tölvupóst"
+    },
+    "alerts": {
+        "title": "Tilkynningar",
+        "addAlert": "Bæta við tilkynningu",
+        "editAlert": "Breyta tilkynningu",
+        "noAlerts": "Engar tilkynningar fundust"
+    },
+    "delist": {
+        "title": "Fjarlægja af lista",
+        "blockedEmails": "Hindraðir tölvupóstar"
+    },
+    "denyRules": {
+        "title": "Neitarreglur",
+        "addRule": "Bæta við reglu",
+        "noRules": "Engar neitarreglur fundust"
+    },
+    "logs": {
+        "title": "Log",
+        "searchLogs": "Leita í log"
+    },
+    "stats": {
+        "title": "Tölfræði"
+    },
+    "deliverability": {
+        "title": "Afhendingarhæfni"
+    }
+}

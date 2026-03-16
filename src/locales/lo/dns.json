@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "ເພີ່ມໂດເມນ",
+        "deleteDomain": "ລົບໂດເມນ",
+        "domainName": "ຊື່ໂດເມນ",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລົບໂດເມນນີ້?",
+        "noDomains": "ບໍ່ພົບໂດເມນ"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "ເພີ່ມ Record",
+        "deleteRecord": "ລົບ Record",
+        "editRecord": "ແກ້ໄຂ Record",
+        "recordType": "ປະເພດ Record",
+        "hostname": "Hostname",
+        "address": "ທີ່ຢູ່",
+        "distance": "ໄລຍະ",
+        "weight": "ນ້ຳໜັກ",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "ການດຳເນີນງານ",
+        "confirmDelete": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລົບ Record ນີ້?"
+    }
+}

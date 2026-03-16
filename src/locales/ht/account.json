@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Paramèt Kont"
+    },
+    "changePassword": {
+        "title": "Chanje Modpas",
+        "cardTitle": "Mete Modpas Ajou",
+        "currentPassword": "Modpas Aktyèl",
+        "newPassword": "Nouvo Modpas",
+        "confirmPassword": "Konfime Modpas",
+        "updatePassword": "Mete Modpas Ajou"
+    },
+    "changeUsername": {
+        "title": "Chanje Non Itilizatè",
+        "disabled": "Chanjman non itilizatè yo te dezaktive pou kèk tan.",
+        "currentUsername": "Non Itilizatè Aktyèl",
+        "newDesiredUsername": "Nouvo Non Itilizatè Ou Vle",
+        "confirmationCode": "Kòd Konfirmasyon",
+        "pleaseWait": "Tanpri tann!",
+        "gotError": "Te jwenn erè {error}"
+    },
+    "contactInfo": {
+        "title": "Enfòmasyon Kontak",
+        "cardTitle": "Mete Enfòmasyon Kontak Ajou",
+        "headsUp": "Atansyon!",
+        "headsUpMessage": "Byenke enfòmasyon sa a opsyonèl, bay (enfòmasyon egzak) pral ede tou de enrichi entèraksyon nou yo ak bese Nivo Risk % ou a ba ou aksè pi vit ak pi fasil nan pati sit la (tankou pa bezwen otantifye yon kat kredi).",
+        "riskScore": "Nivo Risk %",
+        "personalInformation": "Enfòmasyon Pèsonèl",
+        "name": "Non",
+        "namePlaceholder": "Joe Cool",
+        "company": "Konpayi",
+        "gstinTaxId": "Nimewo Taks GSTIN",
+        "gstinPlaceholder": "Nimewo Idantifikasyon Kontribyab Machandiz ak Sèvis",
+        "addressLine1": "Liy Adrès 1",
+        "addressLine2": "Liy Adrès 2",
+        "cityState": "Vil, Eta",
+        "city": "Vil",
+        "state": "Eta",
+        "country": "Peyi",
+        "zipcode": "Kòd Postal",
+        "phoneNo": "Nimewo Telefòn",
+        "phoneNumber": "Nimewo Telefòn",
+        "language": "Lang",
+        "auto": "Otomatik",
+        "currency": "Monè",
+        "timeZone": "Zòn Lè",
+        "otherSettings": "Lòt Paramèt",
+        "disablePasswordResets": "Dezaktive Reyinisyalizasyon Modpas (Ou Bliye Modpas Ou).",
+        "disableInvoiceReminders": "Dezaktive Notifikasyon Rapeleman Fakti pa Imèl.",
+        "disableServerInvoiceReminders": "Dezaktive Notifikasyon Rapeleman Fakti Sèvè pa Imèl.",
+        "disableReinstall": "Dezaktive Reyenstale.",
+        "alternateEmailInvoices": "Imèl Altènatif pou Fakti",
+        "alternateEmailInvoicesPlaceholder": "Imèl altènatif pou voye fakti",
+        "alternateEmailAbuse": "Imèl Altènatif pou Rapò Abi",
+        "updateInfo": "Mete Enfòmasyon Ajou"
+    }
+}

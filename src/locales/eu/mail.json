@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Posta Zerbitzu Zerrenda",
+        "orderTitle": "Eskatu Posta Erregistroak"
+    },
+    "view": {
+        "title": "Ikusi Posta {id}",
+        "package": "Paketea",
+        "nextInvoiceDate": "Hurrengo Faktura Data:",
+        "billing": "Fakturaketa",
+        "billed": "fakturatua:",
+        "statusIs": "Egoera da:",
+        "mailApi": "Posta APIa",
+        "usageCount": "Erabilera Kopurua:",
+        "links": "Estekak",
+        "connectionInfo": "Konexio Informazioa",
+        "welcomeEmailConfirm": "Ziur al zaude ongi etorri mezu elektronikoa berriro bidali nahi duzula?",
+        "emailSent": "Mezu Elektronikoa Bidali Da",
+        "emailSentMessage": "Ongi etorri mezu elektronikoa berriro bidali da. Egiaztatu zure sarrerako ontzia."
+    },
+    "order": {
+        "title": "Eskatu Posta"
+    },
+    "alerts": {
+        "title": "Alertak",
+        "addAlert": "Gehitu Alerta",
+        "editAlert": "Editatu Alerta",
+        "noAlerts": "Ez da alertarik aurkitu"
+    },
+    "delist": {
+        "title": "Zerrendatik Kendu",
+        "blockedEmails": "Blokeatutako Mezu Elektronikoak"
+    },
+    "denyRules": {
+        "title": "Ukapen Arauak",
+        "addRule": "Gehitu Araua",
+        "noRules": "Ez da ukapen araurik aurkitu"
+    },
+    "logs": {
+        "title": "Erregistroak",
+        "searchLogs": "Bilatu Erregistroak"
+    },
+    "stats": {
+        "title": "Estatistikak"
+    },
+    "deliverability": {
+        "title": "Entregatze Gaitasuna"
+    }
+}

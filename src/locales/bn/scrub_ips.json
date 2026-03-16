@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "স্ক্রাব আইপি সেবা তালিকা",
+        "orderTitle": "স্ক্রাব আইপি অর্ডার করুন"
+    },
+    "view": {
+        "title": "স্ক্রাব আইপি দেখুন",
+        "currentIp": "বর্তমান আইপি",
+        "ipAddress": "আইপি ঠিকানা",
+        "ipFromService": "সেবা থেকে আইপি"
+    },
+    "filters": {
+        "title": "ফিল্টার",
+        "createNew": "নতুন তৈরি করুন",
+        "createNewFilter": "নতুন ফিল্টার তৈরি করুন",
+        "filterType": "ফিল্টারের ধরন",
+        "selectFilterType": "ফিল্টারের ধরন নির্বাচন করুন",
+        "ipAddress": "আইপি ঠিকানা",
+        "portNo": "পোর্ট নং",
+        "filter": "ফিল্টার",
+        "destinationIp": "গন্তব্য আইপি",
+        "destinationPort": "গন্তব্য পোর্ট",
+        "noFiltersFound": "কোনো ফিল্টার পাওয়া যায়নি!",
+        "deleteFilterConfirm": "আপনি কি এই ফিল্টারটি মুছতে চান?",
+        "unableToCreateFilter": "এই মুহূর্তে ফিল্টার তৈরি করা সম্ভব নয়।",
+        "unableToDeleteFilter": "এই মুহূর্তে ফিল্টার মুছা সম্ভব নয়।"
+    },
+    "firewallRules": {
+        "title": "ফায়ারওয়াল নিয়মাবলী",
+        "createNew": "নতুন তৈরি করুন",
+        "createNewFirewall": "নতুন ফায়ারওয়াল নিয়ম তৈরি করুন",
+        "protocol": "প্রোটোকল",
+        "destinationIp": "গন্তব্য আইপি",
+        "destinationPort": "গন্তব্য পোর্ট",
+        "sourceIp": "উৎস আইপি",
+        "sourcePort": "উৎস পোর্ট",
+        "xdpAction": "XDP কার্যক্রম",
+        "ipRequired": "আইপি ঠিকানা আবশ্যক",
+        "block": "ব্লক",
+        "whitelist": "হোয়াইটলিস্ট",
+        "noRulesFound": "কোনো নিয়ম পাওয়া যায়নি!",
+        "deleteRuleConfirm": "আপনি কি এই নিয়মটি মুছতে চান?",
+        "unableToCreateRule": "এই মুহূর্তে ফায়ারওয়াল নিয়ম তৈরি করা সম্ভব নয়।",
+        "unableToDeleteRule": "এই মুহূর্তে ফায়ারওয়াল নিয়ম মুছা সম্ভব নয়।"
+    },
+    "geoFirewallRules": {
+        "title": "জিও ফায়ারওয়াল নিয়মাবলী",
+        "createNew": "নতুন তৈরি করুন",
+        "createNewGeoRule": "নতুন জিও ফায়ারওয়াল নিয়ম তৈরি করুন",
+        "destinationIp": "গন্তব্য আইপি",
+        "destinationPort": "গন্তব্য পোর্ট",
+        "sourceCountry": "উৎস দেশ",
+        "sourceAsn": "উৎস ASN",
+        "xdpAction": "XDP কার্যক্রম",
+        "portNo": "পোর্ট নং",
+        "selectCountry": "দেশ নির্বাচন করুন",
+        "asn": "ASN",
+        "block": "ব্লক",
+        "whitelist": "হোয়াইটলিস্ট",
+        "noRulesFound": "কোনো নিয়ম পাওয়া যায়নি!",
+        "deleteGeoRuleConfirm": "আপনি কি এই জিও নিয়মটি মুছতে চান?",
+        "unableToCreateRule": "এই মুহূর্তে ফায়ারওয়াল নিয়ম তৈরি করা সম্ভব নয়।",
+        "unableToDeleteRule": "এই মুহূর্তে জিও ফায়ারওয়াল নিয়ম মুছা সম্ভব নয়।"
+    }
+}

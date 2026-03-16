@@ -1,0 +1,28 @@
+{
+    "title": "ড্যাশবোর্ড",
+    "welcome": "স্বাগতম, {name}",
+    "lastLogin": "সর্বশেষ লগইন",
+    "lastLoginIp": "সর্বশেষ লগইন আইপি",
+    "prepay": {
+        "title": "প্রিপে ব্যালেন্স",
+        "remainingBalance": "প্রিপে অবশিষ্ট ব্যালেন্স",
+        "manageAccount": "অ্যাকাউন্ট পরিচালনা করুন",
+        "manageTooltip": "আপনার প্রিপে অ্যাকাউন্ট পরিচালনা করুন"
+    },
+    "invoices": {
+        "title": "অপরিশোধিত চালান",
+        "totalUnpaid": "মোট অপরিশোধিত চালান",
+        "totalAmount": "পরিশোধ করার মোট পরিমাণ",
+        "payTotalTooltip": "মোট পরিমাণ পরিশোধ করুন"
+    },
+    "callInPin": "কল-ইন পিন",
+    "recentTickets": "সাম্প্রতিক টিকেট",
+    "viewAllTickets": "সব টিকেট দেখুন",
+    "editTicket": "টিকেট সম্পাদনা করুন",
+    "serviceCount": "কোনো সক্রিয় সেবা নেই | {count}টি সক্রিয় সেবা | {count}টি সক্রিয় সেবা",
+    "affiliate": {
+        "earnPerSale": "প্রতি বিক্রয়ে {amount} উপার্জন করুন",
+        "urlPlaceholder": "অ্যাফিলিয়েট URL",
+        "shareWith": "শেয়ার করুন"
+    }
+}

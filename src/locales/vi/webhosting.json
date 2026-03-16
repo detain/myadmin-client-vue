@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Danh Sách Web Hosting",
+        "orderTitle": "Đặt Mua Đăng Ký Website"
+    },
+    "view": {
+        "title": "Xem Website {id}",
+        "package": "Gói Dịch Vụ",
+        "nextInvoiceDate": "Ngày Hóa Đơn Tiếp Theo:",
+        "billing": "Thanh Toán",
+        "billed": "đã thanh toán",
+        "billingStatusIs": "Trạng Thái Thanh Toán là:",
+        "hostInfo": "Thông Tin Host",
+        "username": "Tên Đăng Nhập:",
+        "ip": "IP:",
+        "server": "Máy Chủ:",
+        "notSetYet": "Chưa được thiết lập",
+        "login": "Đăng Nhập",
+        "types": "Loại:",
+        "linksLabel": "Liên Kết:",
+        "manualLogin": "Đăng Nhập Thủ Công",
+        "automaticLogin": "Đăng Nhập Tự Động",
+        "clickHere": "Nhấn Vào Đây",
+        "defaultNameservers": "Máy Chủ Tên Mặc Định",
+        "nameservers": "Máy Chủ Tên:",
+        "externalLinks": "Liên Kết Bên Ngoài",
+        "names": "Tên:",
+        "websitePreview": "Xem Trước Website",
+        "links": "Liên Kết",
+        "welcomeEmailConfirm": "Bạn có chắc chắn muốn gửi lại email chào mừng không?",
+        "emailSent": "Email Đã Gửi",
+        "emailSentMessage": "Email chào mừng đã được gửi lại. Vui lòng kiểm tra hộp thư đến của bạn."
+    },
+    "buyIp": {
+        "title": "Mua Gói IP Bổ Sung",
+        "existingAddonIps": "IP Bổ Sung Hiện Có",
+        "additionalIp": "IP Bổ Sung",
+        "monthlyCost": "Chi Phí Hàng Tháng ({symbol})",
+        "costDescription": "Chi phí ({symbol}) mỗi tháng khi website của bạn được lập hóa đơn",
+        "confirmPurchase": "Xác Nhận Mua Hàng",
+        "confirmMessage": "Chi phí IP bổ sung: {symbol}{cost}/tháng. Bạn có chắc chắn muốn đặt mua IP bổ sung không?",
+        "placeOrder": "Đặt Hàng",
+        "orderPlaced": "Đơn Hàng Đã Được Đặt"
+    },
+    "reverseDns": {
+        "title": "DNS Ngược",
+        "updateReverseDns": "Cập Nhật DNS Ngược"
+    },
+    "downloadBackups": {
+        "title": "Tải Xuống Bản Sao Lưu",
+        "backup": "Bản Sao Lưu",
+        "size": "Kích Thước",
+        "options": "Tùy Chọn"
+    },
+    "migration": {
+        "title": "Di Chuyển Website Của Bạn",
+        "currentWebHostInfo": "Thông Tin Web Host Hiện Tại",
+        "customerPortalUrl": "URL Cổng Thông Tin Khách Hàng",
+        "portalExample": "Ví dụ: sso.godaddy.com",
+        "registeredUsername": "Tên Đăng Nhập / Email / ID Đã Đăng Ký",
+        "password": "Mật Khẩu",
+        "controlPanelUrl": "URL Bảng Điều Khiển",
+        "controlPanelExample": "Ví dụ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Tên Đăng Nhập Bảng Điều Khiển",
+        "ftpPassword": "FTP / Mật Khẩu Bảng Điều Khiển",
+        "holdingPageQuestion": "Nếu trang web đang hoạt động/bận với lưu lượng truy cập cao, chúng tôi có thể thiết lập trang chờ trong quá trình di chuyển không?",
+        "specialRequirementsQuestion": "Trang web này có yêu cầu đặc biệt như Phiên Bản PHP / Mô-đun không?",
+        "domainRegistryInfo": "Thông Tin Đăng Ký Tên Miền",
+        "transferDomainQuestion": "Bạn có muốn chúng tôi hỗ trợ chuyển đổi đăng ký tên miền không?",
+        "updateNameserversQuestion": "Bạn có muốn chúng tôi cập nhật máy chủ tên ngay khi hoàn tất di chuyển dữ liệu không?",
+        "domainRegistryPortal": "Cổng Thông Tin Khách Hàng Đăng Ký Tên Miền",
+        "importantNotes": "Lưu Ý Quan Trọng",
+        "note1": "Điền vào mẫu này sẽ mở một phiếu hỗ trợ mới cho bộ phận hỗ trợ của chúng tôi để bắt đầu quá trình di chuyển của bạn.",
+        "note2": "Vui lòng cung cấp thông tin đầy đủ và chính xác nhất có thể để tránh bất kỳ sự chậm trễ nào.",
+        "note3": "Quá trình di chuyển thông thường được hoàn thành trong vòng 48 đến 72 giờ. Đôi khi lâu hơn nếu lượng dữ liệu cần sao chép lớn.",
+        "note4": "Tài khoản hosting cũ cần phải trực tuyến và có thể truy cập trong khi chúng tôi thực hiện di chuyển, nếu không chúng tôi có thể gặp khó khăn.",
+        "note5": "Vui lòng không thực hiện bất kỳ cập nhật nào trên trang web của bạn trong khi chúng tôi thực hiện di chuyển, nếu không những dữ liệu đó có thể không được sao chép sang hosting mới."
+    },
+    "order": {
+        "title": "Đặt Mua Website"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Kudeatzailea",
+        "addDomain": "Gehitu Domeinua",
+        "deleteDomain": "Ezabatu Domeinua",
+        "domainName": "Domeinuaren Izena",
+        "dnsServers": "DNS Zerbitzariak",
+        "confirmDelete": "Ziur al zaude domeinu hau ezabatu nahi duzula?",
+        "noDomains": "Ez da domeinurik aurkitu"
+    },
+    "editor": {
+        "title": "DNS Editorea",
+        "addRecord": "Gehitu Erregistroa",
+        "deleteRecord": "Ezabatu Erregistroa",
+        "editRecord": "Editatu Erregistroa",
+        "recordType": "Erregistro Mota",
+        "hostname": "Ostalari-izena",
+        "address": "Helbidea",
+        "distance": "Distantzia",
+        "weight": "Pisua",
+        "port": "Ataka",
+        "ttl": "TTL",
+        "actions": "Ekintzak",
+        "confirmDelete": "Ziur al zaude erregistro hau ezabatu nahi duzula?"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "صارفین",
+    "addUser": "صارف شامل کریں",
+    "editUser": "صارف ترمیم کریں",
+    "firstName": "پہلا نام",
+    "lastName": "آخری نام",
+    "username": "صارف نام",
+    "password": "پاس ورڈ",
+    "keepSamePassword": "ایک جیسا پاس ورڈ رکھنے کے لیے خالی چھوڑیں",
+    "errorLoading": "صارفین لوڈ کرنے میں خطا:",
+    "errorLoadingUser": "صارف لوڈ کرنے میں خطا:"
+}

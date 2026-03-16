@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Fiókbeállítások"
+    },
+    "changePassword": {
+        "title": "Jelszó módosítása",
+        "cardTitle": "Jelszó frissítése",
+        "currentPassword": "Jelenlegi jelszó",
+        "newPassword": "Új jelszó",
+        "confirmPassword": "Jelszó megerősítése",
+        "updatePassword": "Jelszó frissítése"
+    },
+    "changeUsername": {
+        "title": "Felhasználónév módosítása",
+        "disabled": "A felhasználónév-módosítás ideiglenesen le van tiltva.",
+        "currentUsername": "Jelenlegi felhasználónév",
+        "newDesiredUsername": "Kívánt új felhasználónév",
+        "confirmationCode": "Megerősítő kód",
+        "pleaseWait": "Kérem, várjon!",
+        "gotError": "Hiba történt: {error}"
+    },
+    "contactInfo": {
+        "title": "Kapcsolati adatok",
+        "cardTitle": "Kapcsolati adatok frissítése",
+        "headsUp": "Figyelem!",
+        "headsUpMessage": "Bár ezek az adatok opcionálisak, a (pontos) adatok megadása segít gazdagítani az interakcióinkat, és csökkenti a Kockázati % Pontszámát, így gyorsabb és kényelmesebb hozzáférést biztosít a weboldal egyes részeit (például nem szükséges hitelkártya hitelesítése).",
+        "riskScore": "Kockázati % Pontszám",
+        "personalInformation": "Személyes adatok",
+        "name": "Név",
+        "namePlaceholder": "Joe Cool",
+        "company": "Vállalat",
+        "gstinTaxId": "GSTIN adóazonosító",
+        "gstinPlaceholder": "Áru- és szolgáltatásadó-azonosító szám",
+        "addressLine1": "Cím 1. sor",
+        "addressLine2": "Cím 2. sor",
+        "cityState": "Város, megye",
+        "city": "Város",
+        "state": "Megye",
+        "country": "Ország",
+        "zipcode": "Irányítószám",
+        "phoneNo": "Telefonszám",
+        "phoneNumber": "Telefonszám",
+        "language": "Nyelv",
+        "auto": "Automatikus",
+        "currency": "Pénznem",
+        "timeZone": "Időzóna",
+        "otherSettings": "Egyéb beállítások",
+        "disablePasswordResets": "Jelszó-visszaállítás letiltása (Elfelejtette jelszavát).",
+        "disableInvoiceReminders": "Számlaemlékeztető e-mail értesítések letiltása.",
+        "disableServerInvoiceReminders": "Szerver számlaemlékeztető e-mail értesítések letiltása.",
+        "disableReinstall": "Újratelepítés letiltása.",
+        "alternateEmailInvoices": "Alternatív e-mail számlákhoz",
+        "alternateEmailInvoicesPlaceholder": "Alternatív e-mail cím számlák küldéséhez",
+        "alternateEmailAbuse": "Alternatív e-mail visszaélési jelentésekhez",
+        "updateInfo": "Adatok frissítése"
+    }
+}

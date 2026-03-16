@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lebegő IP szolgáltatások listája",
+        "orderTitle": "Lebegő IP regisztrációk rendelése"
+    },
+    "view": {
+        "title": "Lebegő IP megtekintése: {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva:",
+        "statusIs": "Állapot:",
+        "floatingIp": "Lebegő IP",
+        "links": "Linkek",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "order": {
+        "title": "Lebegő IP rendelése"
+    },
+    "changeIp": {
+        "title": "Cél IP módosítása"
+    }
+}

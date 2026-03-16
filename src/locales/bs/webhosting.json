@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista web hostinga",
+        "orderTitle": "Naruči registracije web stranica"
+    },
+    "view": {
+        "title": "Pregled web stranice {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno",
+        "billingStatusIs": "Status naplate je:",
+        "hostInfo": "Informacije o hostu",
+        "username": "Korisničko ime:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Još nije postavljeno",
+        "login": "Prijava",
+        "types": "Vrste:",
+        "linksLabel": "Veze:",
+        "manualLogin": "Ručna prijava",
+        "automaticLogin": "Automatska prijava",
+        "clickHere": "Kliknite ovdje",
+        "defaultNameservers": "Zadani imenski serveri",
+        "nameservers": "Imenski serveri:",
+        "externalLinks": "Vanjske veze",
+        "names": "Nazivi:",
+        "websitePreview": "Pregled web stranice",
+        "links": "Veze",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati dobrodošlicu e-poštom?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Dobrodošlica e-poštom je ponovo poslana. Provjerite pristiglu poštu."
+    },
+    "buyIp": {
+        "title": "Kupite dodatni IP dodatak",
+        "existingAddonIps": "Postojeći dodatni IP-ovi",
+        "additionalIp": "Dodatni IP",
+        "monthlyCost": "Mjesečni trošak ({symbol})",
+        "costDescription": "Trošak ({symbol}) svaki mjesec dok se vaša web stranica fakturira",
+        "confirmPurchase": "Potvrdi kupovinu",
+        "confirmMessage": "Trošak dodatnog IP-a: {symbol}{cost}/mjesec. Jeste li sigurni da želite naručiti dodatni IP?",
+        "placeOrder": "Naruči",
+        "orderPlaced": "Narudžba izvršena"
+    },
+    "reverseDns": {
+        "title": "Obrnuti DNS",
+        "updateReverseDns": "Ažuriraj obrnuti DNS"
+    },
+    "downloadBackups": {
+        "title": "Preuzmi sigurnosne kopije",
+        "backup": "Sigurnosna kopija",
+        "size": "Veličina",
+        "options": "Opcije"
+    },
+    "migration": {
+        "title": "Migrirajte svoju web stranicu",
+        "currentWebHostInfo": "Informacije o trenutnom web hostu",
+        "customerPortalUrl": "URL portala za korisnike",
+        "portalExample": "Na primjer: sso.godaddy.com",
+        "registeredUsername": "Registrirano korisničko ime / e-pošta / ID",
+        "password": "Lozinka",
+        "controlPanelUrl": "URL kontrolne ploče",
+        "controlPanelExample": "Na primjer: vasadomena.com/cpanel",
+        "ftpUsername": "FTP / korisničko ime kontrolne ploče",
+        "ftpPassword": "FTP / lozinka kontrolne ploče",
+        "holdingPageQuestion": "Ako je stranica aktivna/zauzeta s visokim prometom, možemo li postaviti privremenu stranicu tokom migracije?",
+        "specialRequirementsQuestion": "Ima li ova stranica posebne zahtjeve kao što su PHP verzija / moduli?",
+        "domainRegistryInfo": "Informacije o registru domene",
+        "transferDomainQuestion": "Želite li da vam pomognemo i pri prijenosu registracije naziva domene?",
+        "updateNameserversQuestion": "Želite li da ažuriramo imenski servere čim završimo migraciju podataka?",
+        "domainRegistryPortal": "Portal korisnika registra domene",
+        "importantNotes": "Važne napomene",
+        "note1": "Popunjavanje ovog obrasca otvorit će novi tiket za naš odjel podrške kako bi započeli vašu migraciju.",
+        "note2": "Budite što potpuniji i precizniji kako biste izbjegli kašnjenja.",
+        "note3": "Tipična migracija se završi u roku od 48 do 72 sata. Ponekad duže ako je količina podataka za kopiranje velika.",
+        "note4": "Stari hosting račun mora biti online i dostupan dok vršimo migraciju, inače možemo naići na poteškoće.",
+        "note5": "Molimo vas da ne pravite nikakve izmjene na svojoj stranici dok vršimo migraciju, jer ti podaci možda neće biti kopirani na novi hosting."
+    },
+    "order": {
+        "title": "Naruči web stranicu"
+    }
+}

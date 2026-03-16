@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "میل سروسز فہرست",
+        "orderTitle": "میل رجسٹریشنز آرڈر کریں"
+    },
+    "view": {
+        "title": "میل {id} دیکھیں",
+        "package": "پیکج",
+        "nextInvoiceDate": "اگلی انوائس تاریخ:",
+        "billing": "بلنگ",
+        "billed": "بل کیا گیا:",
+        "statusIs": "حیثیت:",
+        "mailApi": "میل API",
+        "usageCount": "استعمال کی تعداد:",
+        "links": "روابط",
+        "connectionInfo": "کنکشن معلومات",
+        "welcomeEmailConfirm": "کیا آپ واقعی خوش آمدید ای میل دوبارہ بھیجنا چاہتے ہیں؟",
+        "emailSent": "ای میل بھیجا گیا",
+        "emailSentMessage": "خوش آمدید ای میل دوبارہ بھیجا گیا ہے۔ اپنا ان باکس چیک کریں۔"
+    },
+    "order": {
+        "title": "میل آرڈر کریں"
+    },
+    "alerts": {
+        "title": "الرٹس",
+        "addAlert": "الرٹ شامل کریں",
+        "editAlert": "الرٹ ترمیم کریں",
+        "noAlerts": "کوئی الرٹس نہیں ملے"
+    },
+    "delist": {
+        "title": "فہرست سے ہٹائیں",
+        "blockedEmails": "بلاک شدہ ای میلز"
+    },
+    "denyRules": {
+        "title": "انکار کے قواعد",
+        "addRule": "قاعدہ شامل کریں",
+        "noRules": "کوئی انکار قواعد نہیں ملے"
+    },
+    "logs": {
+        "title": "لاگز",
+        "searchLogs": "لاگز تلاش کریں"
+    },
+    "stats": {
+        "title": "اعداد و شمار"
+    },
+    "deliverability": {
+        "title": "ترسیل کی صلاحیت"
+    }
+}

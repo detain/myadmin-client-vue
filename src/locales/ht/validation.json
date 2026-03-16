@@ -1,0 +1,12 @@
+{
+    "required": "{field} obligatwa",
+    "email": "Dwe yon adrès imèl valid",
+    "minLength": "Dwe omwen {min} karaktè",
+    "maxLength": "Dwe pa plis pase {max} karaktè",
+    "passwordMatch": "Modpas yo dwe matche",
+    "invalidFormat": "Fòma envàlid",
+    "numeric": "Dwe yon nimewo",
+    "url": "Dwe yon URL valid",
+    "ipAddress": "Dwe yon adrès IP valid",
+    "hostname": "Dwe yon non òdinnatè valid"
+}

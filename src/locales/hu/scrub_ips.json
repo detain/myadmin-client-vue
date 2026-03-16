@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP szolgáltatások listája",
+        "orderTitle": "Scrub IP-k rendelése"
+    },
+    "view": {
+        "title": "Scrub IP-k megtekintése",
+        "currentIp": "Jelenlegi IP",
+        "ipAddress": "IP-cím",
+        "ipFromService": "IP a szolgáltatástól"
+    },
+    "filters": {
+        "title": "Szűrők",
+        "createNew": "Új létrehozása",
+        "createNewFilter": "Új szűrő létrehozása",
+        "filterType": "Szűrő típusa",
+        "selectFilterType": "Szűrő típus kiválasztása",
+        "ipAddress": "IP-cím",
+        "portNo": "Portszám",
+        "filter": "Szűrő",
+        "destinationIp": "Cél IP",
+        "destinationPort": "Cél port",
+        "noFiltersFound": "Nem találhatók szűrők!",
+        "deleteFilterConfirm": "Biztosan törölni szeretné ezt a szűrőt?",
+        "unableToCreateFilter": "Nem sikerült szűrőt létrehozni jelenleg.",
+        "unableToDeleteFilter": "Nem sikerült szűrőt törölni jelenleg."
+    },
+    "firewallRules": {
+        "title": "Tűzfal szabályok",
+        "createNew": "Új létrehozása",
+        "createNewFirewall": "Új tűzfal szabály létrehozása",
+        "protocol": "Protokoll",
+        "destinationIp": "Cél IP",
+        "destinationPort": "Cél port",
+        "sourceIp": "Forrás IP",
+        "sourcePort": "Forrás port",
+        "xdpAction": "XDP művelet",
+        "ipRequired": "IP-cím kötelező",
+        "block": "Blokkolás",
+        "whitelist": "Fehérlista",
+        "noRulesFound": "Nem találhatók szabályok!",
+        "deleteRuleConfirm": "Biztosan törölni szeretné ezt a szabályt?",
+        "unableToCreateRule": "Nem sikerült tűzfal szabályt létrehozni jelenleg.",
+        "unableToDeleteRule": "Nem sikerült tűzfal szabályt törölni jelenleg."
+    },
+    "geoFirewallRules": {
+        "title": "Geo tűzfal szabályok",
+        "createNew": "Új létrehozása",
+        "createNewGeoRule": "Új geo tűzfal szabály létrehozása",
+        "destinationIp": "Cél IP",
+        "destinationPort": "Cél port",
+        "sourceCountry": "Forrás ország",
+        "sourceAsn": "Forrás ASN",
+        "xdpAction": "XDP művelet",
+        "portNo": "Portszám",
+        "selectCountry": "Ország kiválasztása",
+        "asn": "ASN",
+        "block": "Blokkolás",
+        "whitelist": "Fehérlista",
+        "noRulesFound": "Nem találhatók szabályok!",
+        "deleteGeoRuleConfirm": "Biztosan törölni szeretné ezt a geo szabályt?",
+        "unableToCreateRule": "Nem sikerült tűzfal szabályt létrehozni jelenleg.",
+        "unableToDeleteRule": "Nem sikerült geo tűzfal szabályt törölni jelenleg."
+    }
+}

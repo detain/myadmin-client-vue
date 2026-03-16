@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Geymslu- / öryggisafritunarlisti",
+        "orderTitle": "Panta öryggisafritunarpantanir"
+    },
+    "view": {
+        "title": "Skoða öryggisafrit {id}",
+        "package": "Pakki",
+        "nextInvoiceDate": "Næsta reikningsdagsetning:",
+        "billing": "Innheimta",
+        "billed": "innheimt:",
+        "statusIs": "Staða er:",
+        "hostServer": "Gestþjónn",
+        "links": "Tenglar",
+        "welcomeEmailConfirm": "Ertu viss um að þú viljir endursenda velkominn tölvupóstinn?",
+        "emailSent": "Tölvupóstur sendur",
+        "emailSentMessage": "Velkominn tölvupósturinn hefur verið endursendu. Athugaðu pósthólfið þitt."
+    },
+    "order": {
+        "title": "Panta geymslu"
+    }
+}

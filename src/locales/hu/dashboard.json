@@ -1,0 +1,28 @@
+{
+    "title": "Irányítópult",
+    "welcome": "Üdvözöljük, {name}",
+    "lastLogin": "Utolsó bejelentkezés",
+    "lastLoginIp": "Utolsó bejelentkezési IP",
+    "prepay": {
+        "title": "Előrefizetési egyenleg",
+        "remainingBalance": "Fennmaradó előrefizetési egyenleg",
+        "manageAccount": "Fiók kezelése",
+        "manageTooltip": "Előrefizetési fiók kezelése"
+    },
+    "invoices": {
+        "title": "Kifizetetlen számlák",
+        "totalUnpaid": "Összes kifizetetlen számla",
+        "totalAmount": "Fizetendő teljes összeg",
+        "payTotalTooltip": "Teljes összeg fizetése"
+    },
+    "callInPin": "Telefonos PIN",
+    "recentTickets": "Legutóbbi jegyek",
+    "viewAllTickets": "Összes jegy megtekintése",
+    "editTicket": "Jegy szerkesztése",
+    "serviceCount": "Nincs aktív szolgáltatás | {count} aktív szolgáltatás | {count} aktív szolgáltatás",
+    "affiliate": {
+        "earnPerSale": "Keressen {amount}-t értékesítésenként",
+        "urlPlaceholder": "Affiliate URL",
+        "shareWith": "Megosztás"
+    }
+}

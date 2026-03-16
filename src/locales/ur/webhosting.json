@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "ویب ہوسٹنگ فہرست",
+        "orderTitle": "ویب سائٹ رجسٹریشنز آرڈر کریں"
+    },
+    "view": {
+        "title": "ویب سائٹ {id} دیکھیں",
+        "package": "پیکج",
+        "nextInvoiceDate": "اگلی انوائس تاریخ:",
+        "billing": "بلنگ",
+        "billed": "بل کیا گیا",
+        "billingStatusIs": "بلنگ حیثیت:",
+        "hostInfo": "ہوسٹ معلومات",
+        "username": "صارف نام:",
+        "ip": "IP:",
+        "server": "سرور:",
+        "notSetYet": "ابھی سیٹ نہیں",
+        "login": "لاگ ان",
+        "types": "اقسام:",
+        "linksLabel": "روابط:",
+        "manualLogin": "دستی لاگ ان",
+        "automaticLogin": "خودکار لاگ ان",
+        "clickHere": "یہاں کلک کریں",
+        "defaultNameservers": "ڈیفالٹ نیم سرورز",
+        "nameservers": "نیم سرورز:",
+        "externalLinks": "بیرونی روابط",
+        "names": "نام:",
+        "websitePreview": "ویب سائٹ پیش نظارہ",
+        "links": "روابط",
+        "welcomeEmailConfirm": "کیا آپ واقعی خوش آمدید ای میل دوبارہ بھیجنا چاہتے ہیں؟",
+        "emailSent": "ای میل بھیجا گیا",
+        "emailSentMessage": "خوش آمدید ای میل دوبارہ بھیجا گیا ہے۔ اپنا ان باکس چیک کریں۔"
+    },
+    "buyIp": {
+        "title": "اضافی IP ایڈ آن خریدیں",
+        "existingAddonIps": "موجودہ ایڈ آن IPs",
+        "additionalIp": "اضافی IP",
+        "monthlyCost": "ماہانہ لاگت ({symbol})",
+        "costDescription": "ہر مہینے آپ کی ویب سائٹ کے انوائس کے وقت لاگت ({symbol})",
+        "confirmPurchase": "خریداری کی تصدیق کریں",
+        "confirmMessage": "اضافی IP لاگت: {symbol}{cost}/ماہ۔ کیا آپ اضافی IP آرڈر کرنا چاہتے ہیں؟",
+        "placeOrder": "آرڈر دیں",
+        "orderPlaced": "آرڈر دیا گیا"
+    },
+    "reverseDns": {
+        "title": "ریورس DNS",
+        "updateReverseDns": "ریورس DNS اپ ڈیٹ کریں"
+    },
+    "downloadBackups": {
+        "title": "بیک اپس ڈاؤن لوڈ کریں",
+        "backup": "بیک اپ",
+        "size": "سائز",
+        "options": "اختیارات"
+    },
+    "migration": {
+        "title": "اپنی ویب سائٹ منتقل کریں",
+        "currentWebHostInfo": "موجودہ ویب ہوسٹ معلومات",
+        "customerPortalUrl": "کسٹمر پورٹل URL",
+        "portalExample": "مثال کے طور پر: sso.godaddy.com",
+        "registeredUsername": "رجسٹرڈ صارف نام / ای میل / ID",
+        "password": "پاس ورڈ",
+        "controlPanelUrl": "کنٹرول پینل URL",
+        "controlPanelExample": "مثال کے طور پر: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / کنٹرول پینل صارف نام",
+        "ftpPassword": "FTP / کنٹرول پینل پاس ورڈ",
+        "holdingPageQuestion": "اگر سائٹ لائیو/مصروف سائٹ ہے جس پر زیادہ ٹریفک ہے، تو کیا ہم منتقلی کے دوران ایک ہولڈنگ صفحہ سیٹ کر سکتے ہیں؟",
+        "specialRequirementsQuestion": "کیا اس سائٹ کی PHP ورژن / ماڈیولز جیسی خاص ضروریات ہیں؟",
+        "domainRegistryInfo": "ڈومین رجسٹری معلومات",
+        "transferDomainQuestion": "کیا آپ چاہتے ہیں کہ ہم ڈومین نام رجسٹریشن منتقل کرنے میں بھی مدد کریں؟",
+        "updateNameserversQuestion": "کیا آپ چاہتے ہیں کہ ہم ڈیٹا منتقلی مکمل ہونے کے بعد نیم سرورز اپ ڈیٹ کریں؟",
+        "domainRegistryPortal": "ڈومین رجسٹری کسٹمر پورٹل",
+        "importantNotes": "اہم نوٹس",
+        "note1": "یہ فارم پُر کرنے سے ہمارے سپورٹ ڈیپارٹمنٹ کے لیے آپ کی منتقلی شروع کرنے کے لیے ایک نیا ٹکٹ کھلے گا۔",
+        "note2": "کسی بھی تاخیر سے بچنے کے لیے براہ کرم جتنا ممکن ہو مکمل اور درست ہوں۔",
+        "note3": "ایک عام منتقلی 48 سے 72 گھنٹوں میں مکمل ہوتی ہے۔ کبھی کبھی اگر کاپی کرنے کا ڈیٹا بڑا ہو تو زیادہ وقت لگتا ہے۔",
+        "note4": "جب ہم منتقلی کر رہے ہوں تو پرانا ہوسٹنگ اکاؤنٹ آن لائن اور قابل رسائی ہونا چاہیے، ورنہ ہمیں مشکل پیش آ سکتی ہے۔",
+        "note5": "براہ کرم منتقلی کے دوران اپنی سائٹ پر کوئی اپ ڈیٹ نہ کریں، ورنہ وہ ڈیٹا نئی ہوسٹنگ پر کاپی نہ ہو سکے۔"
+    },
+    "order": {
+        "title": "ویب سائٹ آرڈر کریں"
+    }
+}

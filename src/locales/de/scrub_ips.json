@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liste der Scrub-IPs-Dienste",
+        "orderTitle": "Scrub-IPs bestellen"
+    },
+    "view": {
+        "title": "Scrub-IPs anzeigen",
+        "currentIp": "Aktuelle IP",
+        "ipAddress": "IP-Adresse",
+        "ipFromService": "IP vom Dienst"
+    },
+    "filters": {
+        "title": "Filter",
+        "createNew": "Neu erstellen",
+        "createNewFilter": "Neuen Filter erstellen",
+        "filterType": "Filtertyp",
+        "selectFilterType": "Filtertyp auswählen",
+        "ipAddress": "IP-Adresse",
+        "portNo": "Portnummer",
+        "filter": "Filter",
+        "destinationIp": "Ziel-IP",
+        "destinationPort": "Zielport",
+        "noFiltersFound": "Keine Filter gefunden!",
+        "deleteFilterConfirm": "Möchten Sie diesen Filter wirklich löschen?",
+        "unableToCreateFilter": "Derzeit kann kein Filter erstellt werden.",
+        "unableToDeleteFilter": "Derzeit kann der Filter nicht gelöscht werden."
+    },
+    "firewallRules": {
+        "title": "Firewallregeln",
+        "createNew": "Neu erstellen",
+        "createNewFirewall": "Neue Firewallregel erstellen",
+        "protocol": "Protokoll",
+        "destinationIp": "Ziel-IP",
+        "destinationPort": "Zielport",
+        "sourceIp": "Quell-IP",
+        "sourcePort": "Quellport",
+        "xdpAction": "XDP-Aktion",
+        "ipRequired": "IP-Adresse ist erforderlich",
+        "block": "Sperren",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Keine Regeln gefunden!",
+        "deleteRuleConfirm": "Möchten Sie diese Regel wirklich löschen?",
+        "unableToCreateRule": "Derzeit kann keine Firewallregel erstellt werden.",
+        "unableToDeleteRule": "Derzeit kann die Firewallregel nicht gelöscht werden."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-Firewallregeln",
+        "createNew": "Neu erstellen",
+        "createNewGeoRule": "Neue Geo-Firewallregel erstellen",
+        "destinationIp": "Ziel-IP",
+        "destinationPort": "Zielport",
+        "sourceCountry": "Quellland",
+        "sourceAsn": "Quell-ASN",
+        "xdpAction": "XDP-Aktion",
+        "portNo": "Portnummer",
+        "selectCountry": "Land auswählen",
+        "asn": "ASN",
+        "block": "Sperren",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Keine Regeln gefunden!",
+        "deleteGeoRuleConfirm": "Möchten Sie diese Geo-Regel wirklich löschen?",
+        "unableToCreateRule": "Derzeit kann keine Firewallregel erstellt werden.",
+        "unableToDeleteRule": "Derzeit kann die Geo-Firewallregel nicht gelöscht werden."
+    }
+}

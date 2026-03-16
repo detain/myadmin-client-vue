@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Stillingar reiknings"
+    },
+    "changePassword": {
+        "title": "Breyta lykilorði",
+        "cardTitle": "Uppfæra lykilorð",
+        "currentPassword": "Núverandi lykilorð",
+        "newPassword": "Nýtt lykilorð",
+        "confirmPassword": "Staðfesta lykilorð",
+        "updatePassword": "Uppfæra lykilorð"
+    },
+    "changeUsername": {
+        "title": "Breyta notandanafni",
+        "disabled": "Breyting á notandanafni hefur verið tekin tímabundið úr notkun.",
+        "currentUsername": "Núverandi notandanafn",
+        "newDesiredUsername": "Nýtt æskilegt notandanafn",
+        "confirmationCode": "Staðfestingarkóði",
+        "pleaseWait": "Vinsamlegast bíddu!",
+        "gotError": "Villa kom upp: {error}"
+    },
+    "contactInfo": {
+        "title": "Tengiliðaupplýsingar",
+        "cardTitle": "Uppfæra tengiliðaupplýsingar",
+        "headsUp": "Athugið!",
+        "headsUpMessage": "Þótt þessar upplýsingar séu valkvæðar mun það að gefa upp (nákvæmar) upplýsingar hjálpa til við að auðga samskipti okkar og lækka áhættuhlutfall % þitt og gefa þér hraðari og þægilegri aðgang að hlutum síðunnar (eins og að þurfa ekki að auðkenna kreditkort).",
+        "riskScore": "Áhættuhlutfall %",
+        "personalInformation": "Persónulegar upplýsingar",
+        "name": "Nafn",
+        "namePlaceholder": "Joe Cool",
+        "company": "Fyrirtæki",
+        "gstinTaxId": "GSTIN skattkennitala",
+        "gstinPlaceholder": "Kennitala skattgreiðanda vara og þjónustu",
+        "addressLine1": "Heimilisfang lína 1",
+        "addressLine2": "Heimilisfang lína 2",
+        "cityState": "Borg, ríki",
+        "city": "Borg",
+        "state": "Ríki",
+        "country": "Land",
+        "zipcode": "Póstnúmer",
+        "phoneNo": "Símanúmer",
+        "phoneNumber": "Símanúmer",
+        "language": "Tungumál",
+        "auto": "Sjálfvirkt",
+        "currency": "Gjaldmiðill",
+        "timeZone": "Tímabelti",
+        "otherSettings": "Aðrar stillingar",
+        "disablePasswordResets": "Slökkva á lykilorðsendurnaðsetningu (Gleymdirðu lykilorðinu þínu).",
+        "disableInvoiceReminders": "Slökkva á tölvupóstsfyrirminni reiknings.",
+        "disableServerInvoiceReminders": "Slökkva á tölvupóstsfyrirminni netþjónsreiknings.",
+        "disableReinstall": "Slökkva á enduruppsetning.",
+        "alternateEmailInvoices": "Varatölvupóstfang fyrir reikninga",
+        "alternateEmailInvoicesPlaceholder": "Varatölvupóstfang fyrir sendingu reikninga",
+        "alternateEmailAbuse": "Varatölvupóstfang fyrir misnotkun skýrsla",
+        "updateInfo": "Uppfæra upplýsingar"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lista de Serviços de IPs Flutuantes",
+        "orderTitle": "Solicitar Registros de IP Flutuante"
+    },
+    "view": {
+        "title": "Ver IP Flutuante {id}",
+        "package": "Pacote",
+        "nextInvoiceDate": "Data da Próxima Fatura:",
+        "billing": "Faturamento",
+        "billed": "faturado:",
+        "statusIs": "Status é:",
+        "floatingIp": "IP Flutuante",
+        "links": "Links",
+        "welcomeEmailConfirm": "Tem certeza de que deseja reenviar o e-mail de boas-vindas?",
+        "emailSent": "E-mail Enviado",
+        "emailSentMessage": "O e-mail de boas-vindas foi reenviado. Verifique sua caixa de entrada."
+    },
+    "order": {
+        "title": "Solicitar IP Flutuante"
+    },
+    "changeIp": {
+        "title": "Alterar IP de Destino"
+    }
+}

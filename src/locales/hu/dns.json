@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS kezelő",
+        "addDomain": "Domain hozzáadása",
+        "deleteDomain": "Domain törlése",
+        "domainName": "Domain név",
+        "dnsServers": "DNS szerverek",
+        "confirmDelete": "Biztosan törölni szeretné ezt a domaint?",
+        "noDomains": "Nem található domain"
+    },
+    "editor": {
+        "title": "DNS szerkesztő",
+        "addRecord": "Rekord hozzáadása",
+        "deleteRecord": "Rekord törlése",
+        "editRecord": "Rekord szerkesztése",
+        "recordType": "Rekord típusa",
+        "hostname": "Gazdagépnév",
+        "address": "Cím",
+        "distance": "Távolság",
+        "weight": "Súly",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Műveletek",
+        "confirmDelete": "Biztosan törölni szeretné ezt a rekordot?"
+    }
+}

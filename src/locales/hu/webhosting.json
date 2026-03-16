@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webtárhely lista",
+        "orderTitle": "Weboldal regisztrációk rendelése"
+    },
+    "view": {
+        "title": "Weboldal megtekintése: {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva",
+        "billingStatusIs": "Számlázási állapot:",
+        "hostInfo": "Tárhely adatok",
+        "username": "Felhasználónév:",
+        "ip": "IP:",
+        "server": "Szerver:",
+        "notSetYet": "Még nincs beállítva",
+        "login": "Bejelentkezés",
+        "types": "Típusok:",
+        "linksLabel": "Linkek:",
+        "manualLogin": "Manuális bejelentkezés",
+        "automaticLogin": "Automatikus bejelentkezés",
+        "clickHere": "Kattintson ide",
+        "defaultNameservers": "Alapértelmezett névszerverek",
+        "nameservers": "Névszerverek:",
+        "externalLinks": "Külső linkek",
+        "names": "Nevek:",
+        "websitePreview": "Weboldal előnézet",
+        "links": "Linkek",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "buyIp": {
+        "title": "További IP bővítmény vásárlása",
+        "existingAddonIps": "Meglévő bővítmény IP-k",
+        "additionalIp": "További IP",
+        "monthlyCost": "Havi díj ({symbol})",
+        "costDescription": "Díj ({symbol}) havonta, ahogy a weboldala számlázódik",
+        "confirmPurchase": "Vásárlás megerősítése",
+        "confirmMessage": "További IP díja: {symbol}{cost}/hó. Biztosan szeretne további IP-t rendelni?",
+        "placeOrder": "Rendelés leadása",
+        "orderPlaced": "Rendelés leadva"
+    },
+    "reverseDns": {
+        "title": "Fordított DNS",
+        "updateReverseDns": "Fordított DNS frissítése"
+    },
+    "downloadBackups": {
+        "title": "Biztonsági mentések letöltése",
+        "backup": "Biztonsági mentés",
+        "size": "Méret",
+        "options": "Beállítások"
+    },
+    "migration": {
+        "title": "Weboldal migrálása",
+        "currentWebHostInfo": "Jelenlegi webtárhely adatok",
+        "customerPortalUrl": "Ügyfélportál URL",
+        "portalExample": "Például: sso.godaddy.com",
+        "registeredUsername": "Regisztrált felhasználónév / E-mail / Azonosító",
+        "password": "Jelszó",
+        "controlPanelUrl": "Vezérlőpanel URL",
+        "controlPanelExample": "Például: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Vezérlőpanel felhasználónév",
+        "ftpPassword": "FTP / Vezérlőpanel jelszó",
+        "holdingPageQuestion": "Ha az oldal élő/forgalmas és nagy forgalmat bonyolít, beállíthatunk-e tartóoldalt az áttelepítés során?",
+        "specialRequirementsQuestion": "Van-e az oldalnak speciális követelménye, mint PHP verzió / modulok?",
+        "domainRegistryInfo": "Domain regisztrációs adatok",
+        "transferDomainQuestion": "Szeretné, ha segítenénk a domain névregisztráció átvitelében is?",
+        "updateNameserversQuestion": "Szeretné, ha frissítenénk a névszervereket, amint befejezzük az adatmigrálást?",
+        "domainRegistryPortal": "Domain regisztrációs ügyfélportál",
+        "importantNotes": "Fontos megjegyzések",
+        "note1": "Az űrlap kitöltése egy új jegyet nyit a támogatási részlegnek az áttelepítés megkezdéséhez.",
+        "note2": "Kérjük, legyen minél pontosabb és részletesebb a késedelmek elkerülése érdekében.",
+        "note3": "Egy tipikus áttelepítés 48-72 óra alatt befejeződik. Néha tovább tart, ha az átvitt adatok mennyisége nagy.",
+        "note4": "A régi tárhelyszolgáltatói fióknak online és hozzáférhetőnek kell lennie az áttelepítés alatt, különben nehézségeink adódhatnak.",
+        "note5": "Kérjük, ne végezzen frissítéseket az oldalán az áttelepítés alatt, különben ezek az adatok esetleg nem kerülnek át az új tárhelyre."
+    },
+    "order": {
+        "title": "Weboldal rendelése"
+    }
+}

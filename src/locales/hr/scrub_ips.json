@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Popis Scrub IP usluga",
+        "orderTitle": "Naruči Scrub IP adrese"
+    },
+    "view": {
+        "title": "Pregledaj Scrub IP adrese",
+        "currentIp": "Trenutna IP adresa",
+        "ipAddress": "IP adresa",
+        "ipFromService": "IP adresa od usluge"
+    },
+    "filters": {
+        "title": "Filtri",
+        "createNew": "Stvori novi",
+        "createNewFilter": "Stvori novi filtar",
+        "filterType": "Vrsta filtra",
+        "selectFilterType": "Odaberi vrstu filtra",
+        "ipAddress": "IP adresa",
+        "portNo": "Br. porta",
+        "filter": "Filtar",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "noFiltersFound": "Nisu pronađeni filtri!",
+        "deleteFilterConfirm": "Jeste li sigurni da želite izbrisati ovaj filtar?",
+        "unableToCreateFilter": "Trenutno nije moguće stvoriti filtar.",
+        "unableToDeleteFilter": "Trenutno nije moguće izbrisati filtar."
+    },
+    "firewallRules": {
+        "title": "Pravila vatrozida",
+        "createNew": "Stvori novo",
+        "createNewFirewall": "Stvori novo pravilo vatrozida",
+        "protocol": "Protokol",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "sourceIp": "Izvorna IP adresa",
+        "sourcePort": "Izvorni port",
+        "xdpAction": "XDP radnja",
+        "ipRequired": "IP adresa je obavezna",
+        "block": "Blokiraj",
+        "whitelist": "Bijela lista",
+        "noRulesFound": "Nisu pronađena pravila!",
+        "deleteRuleConfirm": "Jeste li sigurni da želite izbrisati ovo pravilo?",
+        "unableToCreateRule": "Trenutno nije moguće stvoriti pravilo vatrozida.",
+        "unableToDeleteRule": "Trenutno nije moguće izbrisati pravilo vatrozida."
+    },
+    "geoFirewallRules": {
+        "title": "Geo pravila vatrozida",
+        "createNew": "Stvori novo",
+        "createNewGeoRule": "Stvori novo geo pravilo vatrozida",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "sourceCountry": "Izvorna zemlja",
+        "sourceAsn": "Izvorni ASN",
+        "xdpAction": "XDP radnja",
+        "portNo": "Br. porta",
+        "selectCountry": "Odaberi zemlju",
+        "asn": "ASN",
+        "block": "Blokiraj",
+        "whitelist": "Bijela lista",
+        "noRulesFound": "Nisu pronađena pravila!",
+        "deleteGeoRuleConfirm": "Jeste li sigurni da želite izbrisati ovo geo pravilo?",
+        "unableToCreateRule": "Trenutno nije moguće stvoriti pravilo vatrozida.",
+        "unableToDeleteRule": "Trenutno nije moguće izbrisati geo pravilo vatrozida."
+    }
+}

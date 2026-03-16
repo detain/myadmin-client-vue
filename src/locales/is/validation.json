@@ -1,0 +1,12 @@
+{
+    "required": "{field} er nauðsynlegt",
+    "email": "Verður að vera gilt tölvupóstfang",
+    "minLength": "Verður að vera að minnsta kosti {min} stafir",
+    "maxLength": "Má ekki vera fleiri en {max} stafir",
+    "passwordMatch": "Lykilorð verða að passa",
+    "invalidFormat": "Ógilt snið",
+    "numeric": "Verður að vera tala",
+    "url": "Verður að vera gilt URL",
+    "ipAddress": "Verður að vera gild IP-tala",
+    "hostname": "Verður að vera gilt hýslingarheiti"
+}

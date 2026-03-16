@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS மேலாளர்",
+        "addDomain": "டொமைன் சேர்க்கவும்",
+        "deleteDomain": "டொமைன் நீக்கவும்",
+        "domainName": "டொமைன் பெயர்",
+        "dnsServers": "DNS சர்வர்கள்",
+        "confirmDelete": "இந்த டொமைனை நீக்க விரும்புகிறீர்களா?",
+        "noDomains": "டொமைன்கள் எதுவும் இல்லை"
+    },
+    "editor": {
+        "title": "DNS எடிட்டர்",
+        "addRecord": "பதிவு சேர்க்கவும்",
+        "deleteRecord": "பதிவை நீக்கவும்",
+        "editRecord": "பதிவை திருத்தவும்",
+        "recordType": "பதிவு வகை",
+        "hostname": "ஹோஸ்ட்பெயர்",
+        "address": "முகவரி",
+        "distance": "தூரம்",
+        "weight": "எடை",
+        "port": "போர்ட்",
+        "ttl": "TTL",
+        "actions": "செயல்கள்",
+        "confirmDelete": "இந்த பதிவை நீக்க விரும்புகிறீர்களா?"
+    }
+}
