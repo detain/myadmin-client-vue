@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "Список VPS",
+        "orderVps": "Заказать VPS"
+    },
+    "view": {
+        "title": "Просмотр VPS {id}",
+        "package": "Пакет",
+        "billing": "Биллинг",
+        "billed": "начислено",
+        "vpsStatus": "Статус VPS:",
+        "hostServer": "Хост-сервер:",
+        "nextInvoiceDate": "Дата следующего счёта:",
+        "vpsInformation": "Информация о VPS",
+        "powerStatus": "Статус питания:",
+        "selectAction": "Выбрать действие",
+        "disk": "Диск",
+        "totalSpace": "Общее пространство:",
+        "usedSpace": "Использованное пространство:",
+        "remainingSpace": "Оставшееся пространство:",
+        "systemInformation": "Системная информация",
+        "memory": "Память:",
+        "cpuCores": "Ядра CPU:",
+        "os": "ОС:",
+        "links": "Ссылки",
+        "updateComment": "Обновить комментарий",
+        "saveChanges": "Сохранить изменения",
+        "emailSent": "Письмо отправлено",
+        "emailSentMessage": "Приветственное письмо было повторно отправлено. Проверьте свой почтовый ящик."
+    },
+    "order": {
+        "title": "Заказать VPS",
+        "osDistribution": "Дистрибутив ОС",
+        "osVersion": "Версия ОС",
+        "hostname": "Имя хоста",
+        "rootPassword": "Root пароль",
+        "couponCode": "Код купона",
+        "continue": "Продолжить",
+        "orderSummary": "Сводка заказа",
+        "total": "Итого",
+        "tosAgree": "Я прочитал условия выше и согласен.",
+        "placeOrder": "Разместить заказ"
+    },
+    "changeHostname": {
+        "title": "Изменить имя хоста VPS",
+        "existingHostname": "Текущее имя хоста",
+        "newHostname": "Новое имя хоста",
+        "updateHostname": "Обновить имя хоста"
+    },
+    "changeRootPassword": {
+        "title": "Изменить root пароль VPS",
+        "newPassword": "Новый пароль:",
+        "confirmPassword": "Подтвердить пароль:",
+        "changePassword": "Изменить пароль",
+        "passwordMismatch": "Пароль и подтверждение пароля не совпадают"
+    },
+    "reinstallOs": {
+        "title": "Переустановить ОС",
+        "importantNote1": "Переустановка операционной системы удалит все данные.",
+        "importantNote2": "Перед переустановкой операционной системы, пожалуйста, создайте резервную копию.",
+        "osDistribution": "Дистрибутив операционной системы",
+        "confirmReinstallButton": "Подтвердить переустановку ОС"
+    },
+    "common": {
+        "goBack": "Вернуться назад",
+        "back": "Назад",
+        "pleaseWait": "Пожалуйста, подождите!",
+        "success": "Успешно{text}",
+        "gotError": "Ошибка {error}"
+    }
+}

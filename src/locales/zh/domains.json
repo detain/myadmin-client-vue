@@ -1,0 +1,9 @@
+{
+    "list": { "pageTitle": "域名注册列表", "orderTitle": "订购域名注册", "domainName": "域名", "domainExpirationDate": "域名到期日期", "active": "活跃", "pending": "待处理", "expired": "已过期", "all": "全部" },
+    "view": { "pageTitle": "查看域名 - {hostname}", "package": "套餐", "billing": "账单", "whoisPrivacy": "Whois 隐私", "nameservers": "域名服务器", "contactInformation": "联系信息", "emailSent": "邮件已发送", "welcomeEmailResent": "欢迎邮件已重新发送。请检查您的收件箱。" },
+    "order": { "pageTitle": "订购域名", "findDomain": "查找您的域名并检查可用性。", "available": "太好了！您的域名 {domain} 可用！您可以以 {cost} 注册。续费费用将为 {renewal}。", "taken": "抱歉！您的域名 {domain} 已被占用！", "registerDomain": "注册域名（{hostname}）", "contactInformation": "联系信息", "goBack": "返回", "continue": "继续", "total": "总计", "agreeCheckbox": "我已阅读并同意以上条款。", "placeOrder": "下单" },
+    "nameservers": { "title": "域名服务器", "nameservers": "域名服务器", "hostname": "主机名", "ipAddress": "IP 地址", "deleteConfirm": "您即将删除您的域名服务器。", "yesDeleteIt": "是的，删除它" },
+    "whois": { "title": "Whois 隐私", "currentlyEnabled": "{hostname} 的 Whois 隐私目前已启用。", "disableAndCancel": "禁用并取消 Whois 隐私", "orderSuccess": "Whois 隐私订单下单成功！", "whoisEnabled": "Whois 隐私现已启用。", "whoisDisabled": "Whois 隐私已禁用并取消。" },
+    "lock": { "title": "域名锁定/解锁", "lockIt": "是的，锁定它。", "unlockIt": "是的，解锁它。" },
+    "renew": { "title": "续费", "domain": "域名", "expiryDate": "到期日期", "renewCost": "续费费用", "totalCost": "总费用", "goToPayment": "前往支付" }
+}

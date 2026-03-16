@@ -1,0 +1,49 @@
+{
+    "settings": {
+        "title": "Настройки аккаунта"
+    },
+    "changePassword": {
+        "title": "Изменить пароль",
+        "cardTitle": "Обновить пароль",
+        "currentPassword": "Текущий пароль",
+        "newPassword": "Новый пароль",
+        "confirmPassword": "Подтвердить пароль",
+        "updatePassword": "Обновить пароль"
+    },
+    "changeUsername": {
+        "title": "Изменить имя пользователя",
+        "disabled": "Изменение имени пользователя временно отключено.",
+        "currentUsername": "Текущее имя пользователя",
+        "newDesiredUsername": "Желаемое новое имя пользователя",
+        "confirmationCode": "Код подтверждения",
+        "pleaseWait": "Пожалуйста, подождите!",
+        "gotError": "Ошибка {error}"
+    },
+    "contactInfo": {
+        "title": "Контактная информация",
+        "cardTitle": "Обновить контактную информацию",
+        "headsUp": "Внимание!",
+        "headsUpMessage": "Хотя эта информация необязательна, предоставление точных данных поможет снизить ваш показатель риска %.",
+        "riskScore": "Показатель риска %",
+        "personalInformation": "Личная информация",
+        "name": "Имя",
+        "company": "Компания",
+        "addressLine1": "Адрес, строка 1",
+        "addressLine2": "Адрес, строка 2",
+        "city": "Город",
+        "state": "Регион",
+        "country": "Страна",
+        "zipcode": "Почтовый индекс",
+        "phoneNumber": "Номер телефона",
+        "language": "Язык",
+        "auto": "Авто",
+        "currency": "Валюта",
+        "timeZone": "Часовой пояс",
+        "otherSettings": "Другие настройки",
+        "disablePasswordResets": "Отключить (Забыли пароль) сброс пароля.",
+        "disableInvoiceReminders": "Отключить напоминания о счетах по электронной почте.",
+        "alternateEmailInvoices": "Альтернативный email для счетов",
+        "alternateEmailAbuse": "Альтернативный email для сообщений о нарушениях",
+        "updateInfo": "Обновить информацию"
+    }
+}

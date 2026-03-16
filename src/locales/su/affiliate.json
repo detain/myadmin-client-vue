@@ -1,0 +1,37 @@
+{
+  "title": "Sistem Afiliasi",
+  "breadcrumb": "Afiliasi",
+  "attention": "Program afiliasi ieu sanes pikeun rujukan anggota kulawarga atanapi klien. Punten baca {faqLink} sateuacan neraskeun.",
+  "faqLinkText": "FAQ",
+  "earnPerSale": "Hasilkeun {amount} per penjualan pelanggan anyar!",
+  "knowMore": "Terang Langkung",
+  "affiliateUrl": "URL Afiliasi",
+  "shareUrl": "Bagikeun URL afiliasi unik anjeun sareng rerencangan",
+  "links": "Tautan",
+  "salesGraph": "Grafik Penjualan",
+  "webTrafficGraph": "Grafik Lalu Lintas Web",
+  "goBack": "Balik",
+  "back": "Balik",
+  "exportFailed": "Ekspor gagal",
+  "copiedToClipboard": "Disalin ka clipboard.",
+  "signups": {
+    "title": "Pendaptaran Afiliasi",
+    "pending": "Nunggu",
+    "paid": "Dibayar",
+    "failed": "Gagal",
+    "locked": "Dikonci",
+    "rejected": "Ditolak",
+    "noRecords": "Teu kapendak rekaman",
+    "columns": {
+      "id": "ID", "service": "Layanan", "signupDate": "Tanggal Pendaptaran",
+      "status": "Status", "paidAmount": "Jumlah Dibayar", "reason": "Alesan"
+    }
+  },
+  "paymentSetup": {
+    "title": "Setelan Pembayaran",
+    "choosePayment": "Pilih naon anu anjeun hoyong dilakukeun sareng pembayaran afiliasi anjeun",
+    "sendToPaypal": "Kirim Pembayaran ka PayPal",
+    "paypalEmail": "Email PayPal"
+  },
+  "tosPage": {"title": "Syarat Layanan", "welcome": "Wilujeng sumping ka Program Afiliasi InterServer"}
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL 인증서 목록",
+        "orderTitle": "SSL 등록 주문"
+    },
+    "view": {
+        "title": "SSL {id} 보기",
+        "package": "패키지",
+        "nextInvoiceDate": "다음 청구서 날짜:",
+        "billing": "청구",
+        "billed": "청구됨:",
+        "statusIs": "상태:",
+        "orderInfo": "주문 정보",
+        "certificateInfo": "인증서 정보",
+        "links": "링크",
+        "welcomeEmailConfirm": "환영 이메일을 다시 보내시겠습니까?",
+        "emailSent": "이메일 전송됨",
+        "emailSentMessage": "환영 이메일이 재전송되었습니다. 받은 편지함을 확인하세요."
+    },
+    "order": {
+        "title": "SSL 주문"
+    },
+    "changeApproverEmail": {
+        "title": "승인자 이메일 변경",
+        "selectApproverEmail": "승인자 이메일 선택"
+    }
+}

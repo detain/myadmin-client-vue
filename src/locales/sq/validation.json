@@ -1,0 +1,12 @@
+{
+    "required": "{field} është i detyrueshëm",
+    "email": "Duhet të jetë një adresë emaili e vlefshme",
+    "minLength": "Duhet të jetë të paktën {min} karaktere",
+    "maxLength": "Duhet të jetë jo më shumë se {max} karaktere",
+    "passwordMatch": "Fjalëkalimet duhet të përputhen",
+    "invalidFormat": "Format i pavlefshëm",
+    "numeric": "Duhet të jetë numër",
+    "url": "Duhet të jetë URL e vlefshme",
+    "ipAddress": "Duhet të jetë adresë IP e vlefshme",
+    "hostname": "Duhet të jetë emër hosti i vlefshëm"
+}

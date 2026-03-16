@@ -1,0 +1,12 @@
+{
+    "required": "{field}은(는) 필수입니다",
+    "email": "유효한 이메일 주소여야 합니다",
+    "minLength": "최소 {min}자여야 합니다",
+    "maxLength": "최대 {max}자여야 합니다",
+    "passwordMatch": "비밀번호가 일치해야 합니다",
+    "invalidFormat": "잘못된 형식",
+    "numeric": "숫자여야 합니다",
+    "url": "유효한 URL이어야 합니다",
+    "ipAddress": "유효한 IP 주소여야 합니다",
+    "hostname": "유효한 호스트명이어야 합니다"
+}

@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "VPS Жагсаалт",
+        "orderVps": "VPS захиалах"
+    },
+    "view": {
+        "title": "VPS {id} харах",
+        "package": "Багц",
+        "billing": "Төлбөр",
+        "billed": "нэхэмжлэгдсэн",
+        "vpsStatus": "VPS Төлөв:",
+        "hostServer": "Хост сервер:",
+        "nextInvoiceDate": "Дараагийн нэхэмжлэлийн огноо:",
+        "vpsInformation": "VPS Мэдээлэл",
+        "powerStatus": "Цахилгааны төлөв:",
+        "selectAction": "Үйлдэл сонгох",
+        "disk": "Диск",
+        "totalSpace": "Нийт зай:",
+        "usedSpace": "Ашигласан зай:",
+        "remainingSpace": "Үлдсэн зай:",
+        "systemInformation": "Системийн мэдээлэл",
+        "memory": "Санах ой:",
+        "cpuCores": "CPU цөм:",
+        "os": "Үйлдлийн систем:",
+        "links": "Холбоосууд",
+        "updateComment": "Сэтгэгдэл шинэчлэх",
+        "saveChanges": "Өөрчлөлтийг хадгалах",
+        "emailSent": "Имэйл илгээгдсэн",
+        "emailSentMessage": "Тавтай морил имэйл дахин илгээгдсэн. Ирсэн шуудангаа шалгана уу."
+    },
+    "order": {
+        "title": "VPS захиалах",
+        "osDistribution": "Үйлдлийн системийн тархалт",
+        "osVersion": "Үйлдлийн системийн хувилбар",
+        "hostname": "Хост нэр",
+        "rootPassword": "Root нууц үг",
+        "couponCode": "Купоны код",
+        "continue": "Үргэлжлүүлэх",
+        "orderSummary": "Захиалгын хураангуй",
+        "total": "Нийт",
+        "tosAgree": "Дээрх нөхцөлийг уншаад зөвшөөрч байна.",
+        "placeOrder": "Захиалга өгөх"
+    },
+    "changeHostname": {
+        "title": "VPS хост нэр өөрчлөх",
+        "existingHostname": "Одоогийн хост нэр",
+        "newHostname": "Шинэ хост нэр",
+        "updateHostname": "Хост нэр шинэчлэх"
+    },
+    "changeRootPassword": {
+        "title": "VPS Root нууц үг өөрчлөх",
+        "newPassword": "Шинэ нууц үг:",
+        "confirmPassword": "Нууц үгийг баталгаажуулах:",
+        "changePassword": "Нууц үг өөрчлөх",
+        "passwordMismatch": "Нууц үг болон баталгаажуулах нууц үг тохирохгүй байна"
+    },
+    "reinstallOs": {
+        "title": "Үйлдлийн систем дахин суулгах",
+        "importantNote1": "Үйлдлийн системийг дахин суулгах нь бүх өгөгдлийг устгана.",
+        "importantNote2": "Үйлдлийн системийг дахин суулгахаас өмнө нөөцлөлт хийнэ үү.",
+        "osDistribution": "Үйлдлийн системийн тархалт",
+        "confirmReinstallButton": "Дахин суулгахыг баталгаажуулах"
+    },
+    "common": {
+        "goBack": "Буцах",
+        "back": "Буцах",
+        "pleaseWait": "Хүлээнэ үү!",
+        "success": "Амжилттай{text}",
+        "gotError": "Алдаа гарлаа {error}"
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Iiseting ze-Akhawunti"
+    },
+    "changePassword": {
+        "title": "Guqula Igama lokusebenzisa",
+        "cardTitle": "Hlaziya Igama lokusebenzisa",
+        "currentPassword": "Igama lokusebenzisa langoku",
+        "newPassword": "Igama lokusebenzisa elitsha",
+        "confirmPassword": "Qinisekisa Igama lokusebenzisa",
+        "updatePassword": "Hlaziya Igama lokusebenzisa"
+    },
+    "changeUsername": {
+        "title": "Guqula Igama lomsebenzisi",
+        "disabled": "Ukuguqulwa kwegama lomsebenzisi kunqanyulwe okwexeshana.",
+        "currentUsername": "Igama lomsebenzisi langoku",
+        "newDesiredUsername": "Igama lomsebenzisi elifunwayo elitsha",
+        "confirmationCode": "Ikhodi yokuQinisekisa",
+        "pleaseWait": "Nceda ulinde!",
+        "gotError": "Impazamo ifunyenwe {error}"
+    },
+    "contactInfo": {
+        "title": "Ulwazi lokuQhagamshelana",
+        "cardTitle": "Hlaziya Ulwazi lokuyQhagamshelana",
+        "headsUp": "Lumkisa!",
+        "headsUpMessage": "Nangona le lwazi ikhethekile, ukunikezela ngolwazi (oluchanekileyo) kuya kunceda ukwenza izibonelelo zethu zibe ngcono kwaye uliphise izinga lakho le-Risk % Score zikunike ukungena ngokukhawuleza nakwimithombo yesayithi (njengokungafuneki ukuqinisekisa ikhadi loLwabelwano).",
+        "riskScore": "Izinga le-Risk %",
+        "personalInformation": "Ulwazi Lwakho Buqu",
+        "name": "Igama",
+        "namePlaceholder": "Joe Cool",
+        "company": "Inkampani",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Inombolo yokuBonwa koMhlawuli weNtlawulo yeziNtengiso nezeNkonzo",
+        "addressLine1": "Umgca wedilesi 1",
+        "addressLine2": "Umgca wedilesi 2",
+        "cityState": "Isixeko, Iphondo",
+        "city": "Isixeko",
+        "state": "Iphondo",
+        "country": "Ilizwe",
+        "zipcode": "Ikhodi yeposi",
+        "phoneNo": "Inombolo yefoni",
+        "phoneNumber": "Inombolo yefoni",
+        "language": "Ulwimi",
+        "auto": "Ngokuzenzekelayo",
+        "currency": "Imali",
+        "timeZone": "Umda wexesha",
+        "otherSettings": "Ezinye iiseting",
+        "disablePasswordResets": "Khubaza (Ulityetye igama lakho?) ukuSetiwa ngokutsha kweGama lokusebenzisa.",
+        "disableInvoiceReminders": "Khubaza izaziso ze-imeyili zokukhumbula iiFatshi.",
+        "disableServerInvoiceReminders": "Khubaza izaziso ze-imeyili zokukhumbula iiFatshi zeSeva.",
+        "disableReinstall": "Khubaza ukuFakwa ngokutsha.",
+        "alternateEmailInvoices": "I-imeyili Enye yeeiFatshi",
+        "alternateEmailInvoicesPlaceholder": "I-imeyili enye yokuthumela iifatshi",
+        "alternateEmailAbuse": "I-imeyili Enye yeziNgxelo zoNyanzelo",
+        "updateInfo": "Hlaziya Ulwazi"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Kayan IP Hizmetleri Listesi",
+        "orderTitle": "Kayan IP Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Kayan IP {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "floatingIp": "Kayan IP",
+        "links": "Bağlantılar",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "Kayan IP Siparişi"
+    },
+    "changeIp": {
+        "title": "Hedef IP'yi Değiştir"
+    }
+}

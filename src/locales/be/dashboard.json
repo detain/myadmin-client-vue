@@ -1,0 +1,28 @@
+{
+    "title": "Панэль кіравання",
+    "welcome": "Вітаем, {name}",
+    "lastLogin": "Апошні ўваход",
+    "lastLoginIp": "IP апошняга ўваходу",
+    "prepay": {
+        "title": "Баланс папярэдняй аплаты",
+        "remainingBalance": "Астатак папярэдняй аплаты",
+        "manageAccount": "Кіраваць уліковым запісам",
+        "manageTooltip": "Кіраваць уліковым запісам папярэдняй аплаты"
+    },
+    "invoices": {
+        "title": "Неаплачаныя рахункі",
+        "totalUnpaid": "Усяго неаплачаных рахункаў",
+        "totalAmount": "Агульная сума да аплаты",
+        "payTotalTooltip": "Аплаціць агульную суму"
+    },
+    "callInPin": "PIN для тэлефоннага звароту",
+    "recentTickets": "Апошнія тыкеты",
+    "viewAllTickets": "Прагляд усіх тыкетаў",
+    "editTicket": "Рэдагаваць тыкет",
+    "serviceCount": "Няма актыўных паслуг | {count} актыўная паслуга | {count} актыўных паслуг",
+    "affiliate": {
+        "earnPerSale": "Зарабіце {amount} за продаж",
+        "urlPlaceholder": "Партнёрская спасылка",
+        "shareWith": "Падзяліцца з"
+    }
+}

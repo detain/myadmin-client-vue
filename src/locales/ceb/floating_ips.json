@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Listahan sa mga Serbisyo sa Floating IP", "orderTitle": "Mag-order og Floating IP Registrations" },
+    "view": { "title": "Tan-awa ang Floating IP {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill:", "statusIs": "Ang Status mao:", "floatingIp": "Floating IP", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
+    "order": { "title": "Mag-order og Floating IP" },
+    "changeIp": { "title": "Usba ang Target IP" }
+}

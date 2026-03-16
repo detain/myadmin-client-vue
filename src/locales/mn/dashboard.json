@@ -1,0 +1,28 @@
+{
+    "title": "Хяналтын самбар",
+    "welcome": "Тавтай морил, {name}",
+    "lastLogin": "Сүүлийн нэвтрэлт",
+    "lastLoginIp": "Сүүлийн нэвтрэлтийн IP",
+    "prepay": {
+        "title": "Урьдчилгаа үлдэгдэл",
+        "remainingBalance": "Урьдчилгааны үлдэгдэл",
+        "manageAccount": "Бүртгэл удирдах",
+        "manageTooltip": "Урьдчилгааны бүртгэлийг удирдах"
+    },
+    "invoices": {
+        "title": "Төлөгдөөгүй нэхэмжлэлүүд",
+        "totalUnpaid": "Нийт төлөгдөөгүй нэхэмжлэлүүд",
+        "totalAmount": "Нийт төлөх дүн",
+        "payTotalTooltip": "Нийт дүнг төлөх"
+    },
+    "callInPin": "Дуудлагын PIN",
+    "recentTickets": "Сүүлийн тасалбарууд",
+    "viewAllTickets": "Бүх тасалбарыг харах",
+    "editTicket": "Тасалбар засах",
+    "serviceCount": "Идэвхтэй үйлчилгээ байхгүй | {count} идэвхтэй үйлчилгээ | {count} идэвхтэй үйлчилгээнүүд",
+    "affiliate": {
+        "earnPerSale": "Борлуулалт тутамд {amount} олох",
+        "urlPlaceholder": "Түнш URL",
+        "shareWith": "Хуваалцах"
+    }
+}

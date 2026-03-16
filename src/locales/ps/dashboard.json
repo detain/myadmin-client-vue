@@ -1,0 +1,28 @@
+{
+    "title": "ډشبورډ",
+    "welcome": "ښه راغلاست، {name}",
+    "lastLogin": "وروستی ننوتل",
+    "lastLoginIp": "د وروستي ننوتلو IP",
+    "prepay": {
+        "title": "د پیش تادیې بیلانس",
+        "remainingBalance": "د پیش تادیې پاتې بیلانس",
+        "manageAccount": "حساب اداره کړئ",
+        "manageTooltip": "خپل د پیش تادیې حساب اداره کړئ"
+    },
+    "invoices": {
+        "title": "نه تادیه شوي انوایسونه",
+        "totalUnpaid": "د نه تادیه شوو انوایسونو مجموعه",
+        "totalAmount": "د تادیه کیدو ټول مقدار",
+        "payTotalTooltip": "ټول مقدار تادیه کړئ"
+    },
+    "callInPin": "د تلیفون PIN",
+    "recentTickets": "وروستي ټکټونه",
+    "viewAllTickets": "ټول ټکټونه وګورئ",
+    "editTicket": "ټکټ سمون کړئ",
+    "serviceCount": "هیڅ فعال خدمتونه نشته | {count} فعال خدمت | {count} فعال خدمتونه",
+    "affiliate": {
+        "earnPerSale": "د هر خرڅلاو لپاره {amount} ترلاسه کړئ",
+        "urlPlaceholder": "د اشتراک URL",
+        "shareWith": "سره شریک کړئ"
+    }
+}

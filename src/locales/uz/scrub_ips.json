@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs xizmatlari ro'yxati",
+        "orderTitle": "Scrub IPs buyurtma qilish"
+    },
+    "view": {
+        "title": "Scrub IPs ni ko'rish",
+        "currentIp": "Joriy IP",
+        "ipAddress": "IP manzil",
+        "ipFromService": "Xizmatdan IP"
+    },
+    "filters": {
+        "title": "Filtrlar",
+        "createNew": "Yangi yaratish",
+        "createNewFilter": "Yangi filtr yaratish",
+        "filterType": "Filtr turi",
+        "selectFilterType": "Filtr turini tanlang",
+        "ipAddress": "IP manzil",
+        "portNo": "Port raqami",
+        "filter": "Filtr",
+        "destinationIp": "Maqsad IP",
+        "destinationPort": "Maqsad port",
+        "noFiltersFound": "Filtrlar topilmadi!",
+        "deleteFilterConfirm": "Bu filtrni o'chirishni xohlaysizmi?",
+        "unableToCreateFilter": "Hozirda filtr yaratib bo'lmaydi.",
+        "unableToDeleteFilter": "Hozirda filtrni o'chirib bo'lmaydi."
+    },
+    "firewallRules": {
+        "title": "Xavfsizlik devori qoidalari",
+        "createNew": "Yangi yaratish",
+        "createNewFirewall": "Yangi xavfsizlik devori qoidasini yaratish",
+        "protocol": "Protokol",
+        "destinationIp": "Maqsad IP",
+        "destinationPort": "Maqsad port",
+        "sourceIp": "Manba IP",
+        "sourcePort": "Manba port",
+        "xdpAction": "XDP amali",
+        "ipRequired": "IP manzil talab qilinadi",
+        "block": "Bloklash",
+        "whitelist": "Oq ro'yxat",
+        "noRulesFound": "Qoidalar topilmadi!",
+        "deleteRuleConfirm": "Bu qoidani o'chirishni xohlaysizmi?",
+        "unableToCreateRule": "Hozirda xavfsizlik devori qoidasini yaratib bo'lmaydi.",
+        "unableToDeleteRule": "Hozirda xavfsizlik devori qoidasini o'chirib bo'lmaydi."
+    },
+    "geoFirewallRules": {
+        "title": "Geo xavfsizlik devori qoidalari",
+        "createNew": "Yangi yaratish",
+        "createNewGeoRule": "Yangi geo xavfsizlik devori qoidasini yaratish",
+        "destinationIp": "Maqsad IP",
+        "destinationPort": "Maqsad port",
+        "sourceCountry": "Manba mamlakat",
+        "sourceAsn": "Manba ASN",
+        "xdpAction": "XDP amali",
+        "portNo": "Port raqami",
+        "selectCountry": "Mamlakatni tanlang",
+        "asn": "ASN",
+        "block": "Bloklash",
+        "whitelist": "Oq ro'yxat",
+        "noRulesFound": "Qoidalar topilmadi!",
+        "deleteGeoRuleConfirm": "Bu geo qoidasini o'chirishni xohlaysizmi?",
+        "unableToCreateRule": "Hozirda xavfsizlik devori qoidasini yaratib bo'lmaydi.",
+        "unableToDeleteRule": "Hozirda geo xavfsizlik devori qoidasini o'chirib bo'lmaydi."
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Configuración de Cuenta"
+  },
+  "changePassword": {
+    "title": "Cambiar Contraseña",
+    "cardTitle": "Actualizar Contraseña",
+    "currentPassword": "Contraseña Actual",
+    "newPassword": "Nueva Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "updatePassword": "Actualizar Contraseña"
+  },
+  "changeUsername": {
+    "title": "Cambiar Nombre de Usuario",
+    "disabled": "Los cambios de nombre de usuario han sido deshabilitados temporalmente.",
+    "currentUsername": "Nombre de Usuario Actual",
+    "newDesiredUsername": "Nuevo Nombre de Usuario Deseado",
+    "confirmationCode": "Código de Confirmación",
+    "pleaseWait": "¡Por favor espere!",
+    "gotError": "Se produjo un error {error}"
+  },
+  "contactInfo": {
+    "title": "Información de Contacto",
+    "cardTitle": "Actualizar Información de Contacto",
+    "headsUp": "¡Atención!",
+    "headsUpMessage": "Aunque esta información es opcional, proporcionar información precisa ayudará a reducir su Puntuación de Riesgo %.",
+    "riskScore": "Puntuación de Riesgo %",
+    "personalInformation": "Información Personal",
+    "name": "Nombre",
+    "company": "Empresa",
+    "addressLine1": "Línea de Dirección 1",
+    "addressLine2": "Línea de Dirección 2",
+    "city": "Ciudad",
+    "state": "Estado",
+    "country": "País",
+    "zipcode": "Código Postal",
+    "phoneNumber": "Número de Teléfono",
+    "language": "Idioma",
+    "auto": "Automático",
+    "currency": "Moneda",
+    "timeZone": "Zona Horaria",
+    "otherSettings": "Otras Configuraciones",
+    "disablePasswordResets": "Deshabilitar Restablecimiento de Contraseña (Olvidé mi Contraseña).",
+    "disableInvoiceReminders": "Deshabilitar Notificaciones de Recordatorio de Facturas por Correo Electrónico.",
+    "alternateEmailInvoices": "Correo Electrónico Alternativo para Facturas",
+    "alternateEmailAbuse": "Correo Electrónico Alternativo para Reportes de Abuso",
+    "updateInfo": "Actualizar Información"
+  }
+}

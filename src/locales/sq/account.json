@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Cilësimet e Llogarisë"
+    },
+    "changePassword": {
+        "title": "Ndrysho Fjalëkalimin",
+        "cardTitle": "Përditëso Fjalëkalimin",
+        "currentPassword": "Fjalëkalimi Aktual",
+        "newPassword": "Fjalëkalimi i Ri",
+        "confirmPassword": "Konfirmo Fjalëkalimin",
+        "updatePassword": "Përditëso Fjalëkalimin"
+    },
+    "changeUsername": {
+        "title": "Ndrysho Emrin e Përdoruesit",
+        "disabled": "Ndryshimet e emrit të përdoruesit janë çaktivizuar përkohësisht.",
+        "currentUsername": "Emri Aktual i Përdoruesit",
+        "newDesiredUsername": "Emri i Ri i Dëshiruar i Përdoruesit",
+        "confirmationCode": "Kodi i Konfirmimit",
+        "pleaseWait": "Ju lutem prisni!",
+        "gotError": "Gabim i marrë {error}"
+    },
+    "contactInfo": {
+        "title": "Informacioni i Kontaktit",
+        "cardTitle": "Përditëso Informacionin e Kontaktit",
+        "headsUp": "Kujdes!",
+        "headsUpMessage": "Edhe pse ky informacion është opsional, dhënia e informacionit (të saktë) do të ndihmojë si të pasurojë ndërveprimet tona ashtu edhe të ulë Rezultatin tuaj % të Riskut duke ju dhënë qasje më të shpejtë dhe më të përshtatshme në pjesë të faqes (si të mos keni nevojë të vërtetoni një kartë krediti).",
+        "riskScore": "Rezultati % i Riskut",
+        "personalInformation": "Informacioni Personal",
+        "name": "Emri",
+        "namePlaceholder": "Joe Cool",
+        "company": "Kompania",
+        "gstinTaxId": "ID Tatimore GSTIN",
+        "gstinPlaceholder": "Numri i Identifikimit të Tatimpaguesit të Mallrave dhe Shërbimeve",
+        "addressLine1": "Linja e Adresës 1",
+        "addressLine2": "Linja e Adresës 2",
+        "cityState": "Qyteti, Shteti",
+        "city": "Qyteti",
+        "state": "Shteti",
+        "country": "Vendi",
+        "zipcode": "Kodi Postar",
+        "phoneNo": "Nr. Telefoni",
+        "phoneNumber": "Numri i Telefonit",
+        "language": "Gjuha",
+        "auto": "Automatik",
+        "currency": "Monedha",
+        "timeZone": "Zona Kohore",
+        "otherSettings": "Cilësimet e Tjera",
+        "disablePasswordResets": "Çaktivizo Rivendosjet e Fjalëkalimit (Harruat Fjalëkalimin).",
+        "disableInvoiceReminders": "Çaktivizo Njoftimet me Email për Kujtues Fature.",
+        "disableServerInvoiceReminders": "Çaktivizo Njoftimet me Email për Kujtues Fature Serveri.",
+        "disableReinstall": "Çaktivizo Riinstalimin.",
+        "alternateEmailInvoices": "Email Alternativ për Faturat",
+        "alternateEmailInvoicesPlaceholder": "Email alternativ për dërgimin e faturave",
+        "alternateEmailAbuse": "Email Alternativ për Raportet e Abuzimit",
+        "updateInfo": "Përditëso Informacionin"
+    }
+}

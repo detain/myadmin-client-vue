@@ -1,0 +1,28 @@
+{
+    "title": "Panel",
+    "welcome": "Bienvenido, {name}",
+    "lastLogin": "Último Inicio de Sesión",
+    "lastLoginIp": "IP del Último Inicio de Sesión",
+    "prepay": {
+        "title": "Saldo Prepagado",
+        "remainingBalance": "Saldo Restante Prepagado",
+        "manageAccount": "Administrar Cuenta",
+        "manageTooltip": "Administre su Cuenta Prepagada"
+    },
+    "invoices": {
+        "title": "Facturas Sin Pagar",
+        "totalUnpaid": "Total de Facturas Sin Pagar",
+        "totalAmount": "Monto Total a Pagar",
+        "payTotalTooltip": "Pagar Monto Total"
+    },
+    "callInPin": "PIN de Llamada",
+    "recentTickets": "Tickets Recientes",
+    "viewAllTickets": "Ver Todos los Tickets",
+    "editTicket": "Editar Ticket",
+    "serviceCount": "Sin servicios activos | {count} servicio activo | {count} servicios activos",
+    "affiliate": {
+        "earnPerSale": "Gana {amount} Por Venta",
+        "urlPlaceholder": "URL de Afiliado",
+        "shareWith": "Compartir con"
+    }
+}

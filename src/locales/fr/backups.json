@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Liste de stockage / sauvegarde",
+        "orderTitle": "Commander des inscriptions de sauvegarde"
+    },
+    "view": {
+        "title": "Voir la sauvegarde {id}",
+        "package": "Forfait",
+        "nextInvoiceDate": "Date de prochaine facture :",
+        "billing": "Facturation",
+        "billed": "facturé :",
+        "statusIs": "Le statut est :",
+        "hostServer": "Serveur hôte",
+        "links": "Liens",
+        "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?",
+        "emailSent": "E-mail envoyé",
+        "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception."
+    },
+    "order": {
+        "title": "Commander un stockage"
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Dasbor",
+  "welcome": "Wilujeng sumping, {name}",
+  "lastLogin": "Login Terakhir",
+  "lastLoginIp": "IP Login Terakhir",
+  "prepay": {
+    "title": "Saldo Prabayar",
+    "remainingBalance": "Saldo Prabayar Sésana",
+    "manageAccount": "Kelola Akun",
+    "manageTooltip": "Kelola Akun Prabayar Anjeun"
+  },
+  "invoices": {
+    "title": "Invoice Anu Teu Dibayar",
+    "totalUnpaid": "Total Invoice Anu Teu Dibayar",
+    "totalAmount": "Total Jumlah Anu Kedah Dibayar",
+    "payTotalTooltip": "Bayar Total Jumlah"
+  },
+  "callInPin": "PIN Telepon",
+  "recentTickets": "Tiket Teranyar",
+  "viewAllTickets": "Tempo Sadaya Tiket",
+  "editTicket": "Édit Tiket",
+  "serviceCount": "Teu aya layanan aktip | {count} layanan aktip | {count} layanan aktip",
+  "affiliate": {
+    "earnPerSale": "Hasilkeun {amount} Per Penjualan",
+    "urlPlaceholder": "URL Afiliasi",
+    "shareWith": "Bagikeun sareng"
+  }
+}

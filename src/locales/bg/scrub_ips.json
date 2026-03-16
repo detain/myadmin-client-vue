@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Списък с услуги за почистване на IP", "orderTitle": "Поръчка на почистване на IP" },
+    "view": { "title": "Преглед на почистване на IP", "currentIp": "Текущ IP", "ipAddress": "IP адрес", "ipFromService": "IP от услугата" },
+    "filters": { "title": "Филтри", "createNew": "Създаване на нов", "createNewFilter": "Създаване на нов филтър", "filterType": "Тип на филтъра", "ipAddress": "IP адрес", "portNo": "Номер на порт", "filter": "Филтър", "destinationIp": "Целеви IP", "destinationPort": "Целеви порт", "noFiltersFound": "Не са намерени филтри!", "deleteFilterConfirm": "Сигурни ли сте, че искате да изтриете този филтър?" },
+    "firewallRules": { "title": "Правила на защитната стена", "createNewFirewall": "Създаване на ново правило за защитна стена", "protocol": "Протокол", "destinationIp": "Целеви IP", "sourceIp": "IP на източника", "block": "Блокиране", "whitelist": "Белият списък", "noRulesFound": "Не са намерени правила!", "deleteRuleConfirm": "Сигурни ли сте, че искате да изтриете това правило?" },
+    "geoFirewallRules": { "title": "Гео правила на защитната стена", "createNewGeoRule": "Създаване на ново гео правило за защитна стена", "destinationIp": "Целеви IP", "sourceCountry": "Изходна държава", "sourceAsn": "Изходен ASN", "selectCountry": "Изберете държава", "block": "Блокиране", "whitelist": "Белият списък", "noRulesFound": "Не са намерени правила!", "deleteGeoRuleConfirm": "Сигурни ли сте, че искате да изтриете това гео правило?" }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liste over mailtjenester",
+        "orderTitle": "Bestil mailregistreringer"
+    },
+    "view": {
+        "title": "Se mail {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Næste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "Faktureret:",
+        "statusIs": "Status er:",
+        "mailApi": "Mail API",
+        "usageCount": "Antal anvendelser:",
+        "links": "Links",
+        "connectionInfo": "Forbindelsesoplysninger",
+        "welcomeEmailConfirm": "Er du sikker på, at du vil gensende velkomst-e-mailen?",
+        "emailSent": "E-mail sendt",
+        "emailSentMessage": "Velkomst-e-mailen er gensendt. Tjek din indbakke."
+    },
+    "order": {
+        "title": "Bestil mail"
+    },
+    "alerts": {
+        "title": "Advarsler",
+        "addAlert": "Tilføj advarsel",
+        "editAlert": "Rediger advarsel",
+        "noAlerts": "Ingen advarsler fundet"
+    },
+    "delist": {
+        "title": "Fjern fra liste",
+        "blockedEmails": "Blokerede e-mails"
+    },
+    "denyRules": {
+        "title": "Afvisningsregler",
+        "addRule": "Tilføj regel",
+        "noRules": "Ingen afvisningsregler fundet"
+    },
+    "logs": {
+        "title": "Logge",
+        "searchLogs": "Søg i logge"
+    },
+    "stats": {
+        "title": "Statistik"
+    },
+    "deliverability": {
+        "title": "Leveringsevne"
+    }
+}

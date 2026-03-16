@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Tinye Domain",
+        "deleteDomain": "Hichapụ Domain",
+        "domainName": "Aha Domain",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "Ị dị mma ịhichapụ domain a?",
+        "noDomains": "Enweghị domain"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Tinye Ndekọ",
+        "deleteRecord": "Hichapụ Ndekọ",
+        "editRecord": "Dezie Ndekọ",
+        "recordType": "Ụdị Ndekọ",
+        "hostname": "Aha Ụlọ",
+        "address": "Adreesị",
+        "distance": "Anya",
+        "weight": "Ibu",
+        "port": "Ọnụ Ụzọ",
+        "ttl": "TTL",
+        "actions": "Omume",
+        "confirmDelete": "Ị dị mma ịhichapụ ndekọ a?"
+    }
+}

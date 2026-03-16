@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Ngā Tautuhinga Pūkete"
+    },
+    "changePassword": {
+        "title": "Huri Kupuhipa",
+        "cardTitle": "Whakahōu Kupuhipa",
+        "currentPassword": "Kupuhipa Ināianei",
+        "newPassword": "Kupuhipa Hou",
+        "confirmPassword": "Whakaū Kupuhipa",
+        "updatePassword": "Whakahōu Kupuhipa"
+    },
+    "changeUsername": {
+        "title": "Huri Ingoa Kaiwhakamahi",
+        "disabled": "Kua ārai tūāhuatia ngā hurihanga ingoa kaiwhakamahi.",
+        "currentUsername": "Ingoa Kaiwhakamahi Ināianei",
+        "newDesiredUsername": "Ingoa Kaiwhakamahi Hou E Hiahia Ana",
+        "confirmationCode": "Waehere Whakaū",
+        "pleaseWait": "Tāria!",
+        "gotError": "I whiwhi hapa {error}"
+    },
+    "contactInfo": {
+        "title": "Mōhiohio Whakapā",
+        "cardTitle": "Whakahōu Mōhiohio Whakapā",
+        "headsUp": "Kia āta mōhio!",
+        "headsUpMessage": "Ahakoa he mea whiwhiwhi tēnei mōhiohio, mā te tuku (mōhiohio tika) e āwhina ai ngā kōrero ā ka heke tō Kaute Tuarā % e tuku tere ake ai ō uru ki ētahi wāhanga o te pae (pēnei i te kore whakamana i tētahi kāri nama).",
+        "riskScore": "Kaute Tuarā %",
+        "personalInformation": "Mōhiohio Whaiaro",
+        "name": "Ingoa",
+        "namePlaceholder": "Hōhipa Māui",
+        "company": "Kamupene",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Tau Tautuhi Kaiutu Tāke Rawa me ngā Ratonga",
+        "addressLine1": "Raina Wāhitau 1",
+        "addressLine2": "Raina Wāhitau 2",
+        "cityState": "Tāone, Porowini",
+        "city": "Tāone",
+        "state": "Porowini",
+        "country": "Whenua",
+        "zipcode": "Waehere Pasta",
+        "phoneNo": "Tau Waea",
+        "phoneNumber": "Tau Waea",
+        "language": "Reo",
+        "auto": "Aunoa",
+        "currency": "Moni",
+        "timeZone": "Rohe Wā",
+        "otherSettings": "Ētahi Atu Tautuhinga",
+        "disablePasswordResets": "Whakakore (Wareware Kupuhipa) Ngā Tautuhi Anō Kupuhipa.",
+        "disableInvoiceReminders": "Whakakore Ngā Pānui Īmēra Whakamaumaharatanga Pire.",
+        "disableServerInvoiceReminders": "Whakakore Ngā Pānui Īmēra Whakamaumaharatanga Pire Tūmau.",
+        "disableReinstall": "Whakakore Tāurunga Anō.",
+        "alternateEmailInvoices": "Īmēra Huri mō Ngā Pire",
+        "alternateEmailInvoicesPlaceholder": "Īmēra huri mō te tuku ngā pire",
+        "alternateEmailAbuse": "Īmēra Huri mō Ngā Pūrongo Mahi Kino",
+        "updateInfo": "Whakahōu Mōhiohio"
+    }
+}

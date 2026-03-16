@@ -1,0 +1,12 @@
+{
+    "required": "{field} achọrọ",
+    "email": "Kwesịrị ịbụ adreesị email dị mma",
+    "minLength": "Kwesịrị inwe opekata mpe mkpụrụedemede {min}",
+    "maxLength": "Ekwesịghị ikarịa mkpụrụedemede {max}",
+    "passwordMatch": "Paswọọdụ kwesịrị ịbụ otu",
+    "invalidFormat": "Usoro ezighi ezi",
+    "numeric": "Kwesịrị ịbụ ọnụọgụ",
+    "url": "Kwesịrị ịbụ URL dị mma",
+    "ipAddress": "Kwesịrị ịbụ adreesị IP dị mma",
+    "hostname": "Kwesịrị ịbụ aha ụlọ dị mma"
+}

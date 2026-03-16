@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Webhosting-Lëscht",
+    "orderTitle": "Websäit-Registréierungen bestalln"
+  },
+  "view": {
+    "title": "Websäit {id} ukucken",
+    "package": "Pak",
+    "nextInvoiceDate": "Nächst Rechnungsdatum:",
+    "billing": "Rechnung",
+    "billed": "berechent",
+    "billingStatusIs": "Rechnungsstatus ass:",
+    "login": "Aloggen",
+    "links": "Linken",
+    "emailSent": "E-Mail geschéckt",
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+  },
+  "order": {
+    "title": "Websäit bestalln"
+  },
+  "migration": {
+    "title": "Är Websäit migréieren",
+    "password": "Passwuert",
+    "importantNotes": "Wichteg Notizen"
+  }
+}

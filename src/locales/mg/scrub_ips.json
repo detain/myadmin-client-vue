@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lisitry ny Serivisy Scrub IPs",
+        "orderTitle": "Manome baiko ny Scrub IPs"
+    },
+    "view": {
+        "title": "Jereo ny Scrub IPs",
+        "currentIp": "IP Ankehitriny",
+        "ipAddress": "Adiresy IP",
+        "ipFromService": "IP avy amin'ny serivisy"
+    },
+    "filters": {
+        "title": "Sisitry",
+        "createNew": "Mamorona Vaovao",
+        "createNewFilter": "Mamorona Sisitry Vaovao",
+        "filterType": "Karazana Sisitry",
+        "selectFilterType": "Misafidiana Karazana Sisitry",
+        "ipAddress": "Adiresy IP",
+        "portNo": "Laharana Vavahady",
+        "filter": "Sisitry",
+        "destinationIp": "IP Tanjona",
+        "destinationPort": "Vavahady Tanjona",
+        "noFiltersFound": "Tsy hita sisitry!",
+        "deleteFilterConfirm": "Tena tia hamafa ity sisitry ity ve ianao?",
+        "unableToCreateFilter": "Tsy azatao atao ny mamorona sisitry amin'izao fotoana izao.",
+        "unableToDeleteFilter": "Tsy azatao atao ny mamafa sisitry amin'izao fotoana izao."
+    },
+    "firewallRules": {
+        "title": "Fitsipiky ny Firewall",
+        "createNew": "Mamorona Vaovao",
+        "createNewFirewall": "Mamorona Fitsipiky ny Firewall Vaovao",
+        "protocol": "Protokola",
+        "destinationIp": "IP Tanjona",
+        "destinationPort": "Vavahady Tanjona",
+        "sourceIp": "IP Loharano",
+        "sourcePort": "Vavahady Loharano",
+        "xdpAction": "Hetsika XDP",
+        "ipRequired": "Ilaina ny adiresy IP",
+        "block": "Sakana",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Tsy hita fitsipika!",
+        "deleteRuleConfirm": "Tena tia hamafa ity fitsipika ity ve ianao?",
+        "unableToCreateRule": "Tsy azatao atao ny mamorona fitsipiky ny firewall amin'izao fotoana izao.",
+        "unableToDeleteRule": "Tsy azatao atao ny mamafa fitsipiky ny firewall amin'izao fotoana izao."
+    },
+    "geoFirewallRules": {
+        "title": "Fitsipiky ny Geo Firewall",
+        "createNew": "Mamorona Vaovao",
+        "createNewGeoRule": "Mamorona Fitsipiky ny Geo Firewall Vaovao",
+        "destinationIp": "IP Tanjona",
+        "destinationPort": "Vavahady Tanjona",
+        "sourceCountry": "Firenena Loharano",
+        "sourceAsn": "ASN Loharano",
+        "xdpAction": "Hetsika XDP",
+        "portNo": "Laharana Vavahady",
+        "selectCountry": "Misafidiana Firenena",
+        "asn": "ASN",
+        "block": "Sakana",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Tsy hita fitsipika!",
+        "deleteGeoRuleConfirm": "Tena tia hamafa ity fitsipika geo ity ve ianao?",
+        "unableToCreateRule": "Tsy azatao atao ny mamorona fitsipiky ny firewall amin'izao fotoana izao.",
+        "unableToDeleteRule": "Tsy azatao atao ny mamafa fitsipiky ny geo firewall amin'izao fotoana izao."
+    }
+}

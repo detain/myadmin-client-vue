@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "ድር ሆስቲንግ ዝርዝር",
+        "orderTitle": "የድር ጣቢያ ምዝገባዎችን አዝዝ"
+    },
+    "view": {
+        "title": "ድር ጣቢያ {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል",
+        "billingStatusIs": "የክፍያ ሁኔታ ነው:",
+        "login": "ግባ",
+        "links": "ሊንኮች",
+        "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።"
+    },
+    "order": {
+        "title": "ድር ጣቢያ አዝዝ"
+    },
+    "migration": {
+        "title": "ድር ጣቢያዎን ዛወሩ",
+        "password": "የይለፍ ቃል",
+        "importantNotes": "አስፈላጊ ማሳሰቢያዎች"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Рӯйхати хизматрасониҳои тозакунии IP",
+        "orderTitle": "Фармоиши тозакунии IP"
+    },
+    "view": {
+        "title": "Дидани тозакунии IP",
+        "currentIp": "IP-и кунунӣ",
+        "ipAddress": "Суроғаи IP",
+        "ipFromService": "IP аз хизматрасонӣ"
+    },
+    "filters": {
+        "title": "Филтрҳо",
+        "createNew": "Сохтани нав",
+        "createNewFilter": "Сохтани филтри нав",
+        "filterType": "Навъи филтр",
+        "selectFilterType": "Интихоби навъи филтр",
+        "ipAddress": "Суроғаи IP",
+        "portNo": "Рақами порт",
+        "filter": "Филтр",
+        "destinationIp": "IP-и мақсад",
+        "destinationPort": "Порти мақсад",
+        "noFiltersFound": "Филтр ёфт нашуд!",
+        "deleteFilterConfirm": "Оё мутмаин ҳастед, ки мехоҳед ин филтрро нест кунед?",
+        "unableToCreateFilter": "Дар ин вақт сохтани филтр имконпазир нест.",
+        "unableToDeleteFilter": "Дар ин вақт нест кардани филтр имконпазир нест."
+    },
+    "firewallRules": {
+        "title": "Қоидаҳои девори оташ",
+        "createNew": "Сохтани нав",
+        "createNewFirewall": "Сохтани қоидаи нави девори оташ",
+        "protocol": "Протокол",
+        "destinationIp": "IP-и мақсад",
+        "destinationPort": "Порти мақсад",
+        "sourceIp": "IP-и манбаъ",
+        "sourcePort": "Порти манбаъ",
+        "xdpAction": "Амали XDP",
+        "ipRequired": "Суроғаи IP зарур аст",
+        "block": "Блок кардан",
+        "whitelist": "Рӯйхати сафед",
+        "noRulesFound": "Қоидае ёфт нашуд!",
+        "deleteRuleConfirm": "Оё мутмаин ҳастед, ки мехоҳед ин қоидаро нест кунед?",
+        "unableToCreateRule": "Дар ин вақт сохтани қоидаи девори оташ имконпазир нест.",
+        "unableToDeleteRule": "Дар ин вақт нест кардани қоидаи девори оташ имконпазир нест."
+    },
+    "geoFirewallRules": {
+        "title": "Қоидаҳои девори оташи ҷуғрофӣ",
+        "createNew": "Сохтани нав",
+        "createNewGeoRule": "Сохтани қоидаи нави девори оташи ҷуғрофӣ",
+        "destinationIp": "IP-и мақсад",
+        "destinationPort": "Порти мақсад",
+        "sourceCountry": "Кишвари манбаъ",
+        "sourceAsn": "ASN-и манбаъ",
+        "xdpAction": "Амали XDP",
+        "portNo": "Рақами порт",
+        "selectCountry": "Интихоби кишвар",
+        "asn": "ASN",
+        "block": "Блок кардан",
+        "whitelist": "Рӯйхати сафед",
+        "noRulesFound": "Қоидае ёфт нашуд!",
+        "deleteGeoRuleConfirm": "Оё мутмаин ҳастед, ки мехоҳед ин қоидаи ҷуғрофиро нест кунед?",
+        "unableToCreateRule": "Дар ин вақт сохтани қоидаи девори оташ имконпазир нест.",
+        "unableToDeleteRule": "Дар ин вақт нест кардани қоидаи девори оташи ҷуғрофӣ имконпазир нест."
+    }
+}

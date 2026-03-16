@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Scrub IP ဝန်ဆောင်မှုများ စာရင်း", "orderTitle": "Scrub IP များ မှာယူရန်" },
+    "view": { "title": "Scrub IP ကြည့်ရန်", "currentIp": "လက်ရှိ IP", "ipAddress": "IP လိပ်စာ", "ipFromService": "ဝန်ဆောင်မှုမှ IP" },
+    "filters": { "title": "စစ်ထုတ်မှုများ", "createNew": "အသစ် ဖန်တီးရန်", "createNewFilter": "စစ်ထုတ်မှု အသစ် ဖန်တီးရန်", "filterType": "စစ်ထုတ်မှု အမျိုးအစား", "ipAddress": "IP လိပ်စာ", "portNo": "ပို့ နံပါတ်", "filter": "စစ်ထုတ်မှု", "destinationIp": "ပစ်မှတ် IP", "destinationPort": "ပစ်မှတ် ပို့", "noFiltersFound": "စစ်ထုတ်မှုများ မတွေ့ပါ!", "deleteFilterConfirm": "ဤစစ်ထုတ်မှုကို ဖျက်လိုသည်မှာ သေချာပါသလား?" },
+    "firewallRules": { "title": "Firewall စည်းမျဉ်းများ", "createNewFirewall": "Firewall စည်းမျဉ်း အသစ် ဖန်တီးရန်", "protocol": "ပရိုတိုကော", "destinationIp": "ပစ်မှတ် IP", "sourceIp": "ရင်းမြစ် IP", "block": "ပိတ်ဆို့ရန်", "whitelist": "ဖြူစာရင်း", "noRulesFound": "စည်းမျဉ်းများ မတွေ့ပါ!", "deleteRuleConfirm": "ဤစည်းမျဉ်းကို ဖျက်လိုသည်မှာ သေချာပါသလား?" },
+    "geoFirewallRules": { "title": "Geo Firewall စည်းမျဉ်းများ", "createNewGeoRule": "Geo Firewall စည်းမျဉ်း အသစ် ဖန်တီးရန်", "destinationIp": "ပစ်မှတ် IP", "sourceCountry": "ရင်းမြစ် နိုင်ငံ", "sourceAsn": "ရင်းမြစ် ASN", "selectCountry": "နိုင်ငံ ရွေးရန်", "block": "ပိတ်ဆို့ရန်", "whitelist": "ဖြူစာရင်း", "noRulesFound": "စည်းမျဉ်းများ မတွေ့ပါ!", "deleteGeoRuleConfirm": "ဤ Geo စည်းမျဉ်းကို ဖျက်လိုသည်မှာ သေချာပါသလား?" }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Bestuurder",
+        "addDomain": "Voeg Domein By",
+        "deleteDomain": "Verwyder Domein",
+        "domainName": "Domeinnaam",
+        "dnsServers": "DNS Bedieners",
+        "confirmDelete": "Is jy seker jy wil hierdie domein verwyder?",
+        "noDomains": "Geen domeine gevind nie"
+    },
+    "editor": {
+        "title": "DNS Redigeerder",
+        "addRecord": "Voeg Rekord By",
+        "deleteRecord": "Verwyder Rekord",
+        "editRecord": "Wysig Rekord",
+        "recordType": "Rekord Tipe",
+        "hostname": "Gasheernaam",
+        "address": "Adres",
+        "distance": "Afstand",
+        "weight": "Gewig",
+        "port": "Poort",
+        "ttl": "TTL",
+        "actions": "Aksies",
+        "confirmDelete": "Is jy seker jy wil hierdie rekord verwyder?"
+    }
+}

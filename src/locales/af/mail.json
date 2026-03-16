@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Pos Dienste Lys",
+        "orderTitle": "Bestel Pos Registrasies"
+    },
+    "view": {
+        "title": "Bekyk Pos {id}",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende Faktuurdatum:",
+        "billing": "Fakturering",
+        "billed": "gefaktureer:",
+        "statusIs": "Status is:",
+        "mailApi": "Pos API",
+        "usageCount": "Gebruikstelling:",
+        "links": "Skakels",
+        "connectionInfo": "Verbindings Inligting",
+        "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
+        "emailSent": "E-pos Gestuur",
+        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
+    },
+    "order": {
+        "title": "Bestel Pos"
+    },
+    "alerts": {
+        "title": "Waarskuwings",
+        "addAlert": "Voeg Waarskuwing By",
+        "editAlert": "Wysig Waarskuwing",
+        "noAlerts": "Geen waarskuwings gevind nie"
+    },
+    "delist": {
+        "title": "Verwyder van Lys",
+        "blockedEmails": "Geblokkeerde E-posse"
+    },
+    "denyRules": {
+        "title": "Weiering Reëls",
+        "addRule": "Voeg Reël By",
+        "noRules": "Geen weiering reëls gevind nie"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Soek Logs"
+    },
+    "stats": {
+        "title": "Statistieke"
+    },
+    "deliverability": {
+        "title": "Afleverbaarheid"
+    }
+}

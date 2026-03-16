@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Accountinstellingen"
+    },
+    "changePassword": {
+        "title": "Wachtwoord wijzigen",
+        "cardTitle": "Wachtwoord bijwerken",
+        "currentPassword": "Huidig wachtwoord",
+        "newPassword": "Nieuw wachtwoord",
+        "confirmPassword": "Wachtwoord bevestigen",
+        "updatePassword": "Wachtwoord bijwerken"
+    },
+    "changeUsername": {
+        "title": "Gebruikersnaam wijzigen",
+        "disabled": "Wijzigingen van gebruikersnaam zijn tijdelijk uitgeschakeld.",
+        "currentUsername": "Huidige gebruikersnaam",
+        "newDesiredUsername": "Gewenste nieuwe gebruikersnaam",
+        "confirmationCode": "Bevestigingscode",
+        "pleaseWait": "Even geduld!",
+        "gotError": "Fout ontvangen {error}"
+    },
+    "contactInfo": {
+        "title": "Contactinformatie",
+        "cardTitle": "Contactinformatie bijwerken",
+        "headsUp": "Let op!",
+        "headsUpMessage": "Hoewel deze informatie optioneel is, zal het verstrekken van (nauwkeurige) informatie helpen om onze interacties te verrijken en je risicoScore te verlagen, waardoor je sneller en gemakkelijker toegang krijgt tot delen van de site (zoals het niet hoeven authenticeren van een creditcard).",
+        "riskScore": "Risico %-score",
+        "personalInformation": "Persoonlijke informatie",
+        "name": "Naam",
+        "namePlaceholder": "Jan Jansen",
+        "company": "Bedrijf",
+        "gstinTaxId": "GSTIN Belasting-ID",
+        "gstinPlaceholder": "Goederen- en dienstenbeslasting identificatienummer",
+        "addressLine1": "Adresregel 1",
+        "addressLine2": "Adresregel 2",
+        "cityState": "Stad, Provincie",
+        "city": "Stad",
+        "state": "Provincie",
+        "country": "Land",
+        "zipcode": "Postcode",
+        "phoneNo": "Telefoonummer",
+        "phoneNumber": "Telefoonnummer",
+        "language": "Taal",
+        "auto": "Auto",
+        "currency": "Valuta",
+        "timeZone": "Tijdzone",
+        "otherSettings": "Overige instellingen",
+        "disablePasswordResets": "Uitschakelen (Wachtwoord vergeten) wachtwoordresets.",
+        "disableInvoiceReminders": "E-mailmeldingen voor factuurherinneringen uitschakelen.",
+        "disableServerInvoiceReminders": "E-mailmeldingen voor serverfactuurherinneringen uitschakelen.",
+        "disableReinstall": "Herinstallatie uitschakelen.",
+        "alternateEmailInvoices": "Alternatief e-mailadres voor facturen",
+        "alternateEmailInvoicesPlaceholder": "Alternatief e-mailadres voor het versturen van facturen",
+        "alternateEmailAbuse": "Alternatief e-mailadres voor misbruikrapporten",
+        "updateInfo": "Informatie bijwerken"
+    }
+}

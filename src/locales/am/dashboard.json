@@ -1,0 +1,28 @@
+{
+    "title": "ዳሽቦርድ",
+    "welcome": "እንኳን ደህና መጡ፣ {name}",
+    "lastLogin": "የመጨረሻ ግብዓት",
+    "lastLoginIp": "የመጨረሻ ግብዓት IP",
+    "prepay": {
+        "title": "ቅድሚያ ክፍያ ቀሪ ሂሳብ",
+        "remainingBalance": "የቅድሚያ ክፍያ ቀሪ ሂሳብ",
+        "manageAccount": "ሒሳብ አስተዳድር",
+        "manageTooltip": "ቅድሚያ ክፍያ ሒሳብዎን ያስተዳድሩ"
+    },
+    "invoices": {
+        "title": "ያልተከፈሉ ደረሰኞች",
+        "totalUnpaid": "ጠቅላላ ያልተከፈሉ ደረሰኞች",
+        "totalAmount": "ሊከፈል ያለ ጠቅላላ መጠን",
+        "payTotalTooltip": "ጠቅላላ መጠን ክፈል"
+    },
+    "callInPin": "የጥሪ PIN",
+    "recentTickets": "የቅርብ ጊዜ ቲኬቶች",
+    "viewAllTickets": "ሁሉም ቲኬቶች ይመልከቱ",
+    "editTicket": "ቲኬት አርትዕ",
+    "serviceCount": "ምንም ንቁ አገልግሎቶች | {count} ንቁ አገልግሎት | {count} ንቁ አገልግሎቶች",
+    "affiliate": {
+        "earnPerSale": "በእያንዳንዱ ሽያጭ {amount} ያግኙ",
+        "urlPlaceholder": "የተባባሪ URL",
+        "shareWith": "ከ ጋር ያጋሩ"
+    }
+}

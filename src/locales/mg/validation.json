@@ -1,0 +1,12 @@
+{
+    "required": "{field} ilaina",
+    "email": "Tsy maintsy adiresy email manan-kery",
+    "minLength": "Tsy maintsy fara-fahakeliny {min} litera",
+    "maxLength": "Tsy maintsy tsy mihoatra ny {max} litera",
+    "passwordMatch": "Ny tenimiafina tsy maintsy mitovy",
+    "invalidFormat": "Format tsy manan-kery",
+    "numeric": "Tsy maintsy isa",
+    "url": "Tsy maintsy URL manan-kery",
+    "ipAddress": "Tsy maintsy adiresy IP manan-kery",
+    "hostname": "Tsy maintsy anaran-trano manan-kery"
+}

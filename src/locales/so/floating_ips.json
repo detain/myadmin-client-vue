@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Liiska Adeegyada Floating IP",
+        "orderTitle": "Diiwaangelinta Floating IP Dalbo"
+    },
+    "view": {
+        "title": "Floating IP {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "Lagu xisaabiyey:",
+        "statusIs": "Xaaladdu waa:",
+        "floatingIp": "Floating IP",
+        "links": "Xiriiriyayaasha",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "order": {
+        "title": "Floating IP Dalbo"
+    },
+    "changeIp": {
+        "title": "IP-ka Bartilmaameedka Beddel"
+    }
+}

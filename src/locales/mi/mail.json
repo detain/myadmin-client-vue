@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Rārangi Ratonga Mēra",
+        "orderTitle": "Ota Ngā Rēhitatanga Mēra"
+    },
+    "view": {
+        "title": "Tiro Mēra {id}",
+        "package": "Pēke",
+        "nextInvoiceDate": "Rā Pire Panuku:",
+        "billing": "Utu",
+        "billed": "Utua:",
+        "statusIs": "Ko te Āhua:",
+        "mailApi": "API Mēra",
+        "usageCount": "Tatau Whakamahi:",
+        "links": "Ngā Hononga",
+        "connectionInfo": "Mōhiohio Hononga",
+        "welcomeEmailConfirm": "He tūturu tāu e hiahia ana ki te tono anō i te īmēra whakamihi?",
+        "emailSent": "Kua Tukuna Īmēra",
+        "emailSentMessage": "Kua tukuna anō te īmēra whakamihi. Tirohia tō pouaka tomo."
+    },
+    "order": {
+        "title": "Ota Mēra"
+    },
+    "alerts": {
+        "title": "Ngā Matohi",
+        "addAlert": "Tāpiri Matohi",
+        "editAlert": "Whakatika Matohi",
+        "noAlerts": "Kāore he matohi i kitea"
+    },
+    "delist": {
+        "title": "Tangohia i te Rārangi",
+        "blockedEmails": "Ngā Īmēra Kei Ārai"
+    },
+    "denyRules": {
+        "title": "Ngā Ture Whakakore",
+        "addRule": "Tāpiri Ture",
+        "noRules": "Kāore he ture whakakore i kitea"
+    },
+    "logs": {
+        "title": "Ngā Tuhinga",
+        "searchLogs": "Rapua Ngā Tuhinga"
+    },
+    "stats": {
+        "title": "Tatauranga"
+    },
+    "deliverability": {
+        "title": "Āhei Tuku"
+    }
+}

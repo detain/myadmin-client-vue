@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Webgasvrye Lys",
+        "orderTitle": "Bestel Webwerf Registrasies"
+    },
+    "view": {
+        "title": "Bekyk Webwerf {id}",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende Faktuurdatum:",
+        "billing": "Fakturering",
+        "billed": "gefaktureer",
+        "billingStatusIs": "Faktureringsstatus is:",
+        "login": "Aanmelding",
+        "links": "Skakels",
+        "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
+        "emailSent": "E-pos Gestuur",
+        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
+    },
+    "order": {
+        "title": "Bestel Webwerf"
+    },
+    "migration": {
+        "title": "Migreer Jou Webwerf",
+        "password": "Wagwoord",
+        "importantNotes": "Belangrike Notas"
+    }
+}

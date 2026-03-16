@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "Lenaneo la VPS",
+    "orderVps": "Oda VPS"
+  },
+  "view": {
+    "title": "Bona VPS {id}",
+    "package": "Sepalesa",
+    "billing": "Tefello",
+    "billed": "e lefisitsoeng",
+    "vpsStatus": "Boemo ba VPS ke:",
+    "hostServer": "Haolo ea Mochini:",
+    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+    "vpsInformation": "Lintlha tsa VPS",
+    "powerStatus": "Boemo ba Matla ke:",
+    "selectAction": "Khetha Ketso",
+    "disk": "Disk",
+    "totalSpace": "Sebaka Sohle:",
+    "usedSpace": "Sebaka se Sebelisitsoeng:",
+    "remainingSpace": "Sebaka se Setseng:",
+    "systemInformation": "Lintlha tsa Sisteme",
+    "memory": "Mohopolo:",
+    "cpuCores": "Licore tsa CPU:",
+    "os": "OS:",
+    "links": "Likhoele",
+    "updateComment": "Ntlafatsa Tlhaloso",
+    "saveChanges": "Boloka Liphetoho",
+    "emailSent": "Imeile e Romelitsoe",
+    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+  },
+  "order": {
+    "title": "Oda VPS",
+    "osDistribution": "Phatlalatso ea OS",
+    "osVersion": "Phetolelo ea OS",
+    "hostname": "Lebitso la Haolo",
+    "rootPassword": "Password ea Root",
+    "couponCode": "Khoutu ea Coupon",
+    "continue": "Tsoela Pele",
+    "orderSummary": "Kakaretso ea Oda",
+    "total": "Kakaretso",
+    "tosAgree": "Ke bale maemo a ka holimo 'me ke a lumela.",
+    "placeOrder": "Beha Oda"
+  },
+  "changeHostname": {
+    "title": "Fetola Lebitso la VPS",
+    "existingHostname": "Lebitso la Haolo le Leng Teng",
+    "newHostname": "Lebitso le Lecha la Haolo",
+    "updateHostname": "Ntlafatsa Lebitso la Haolo"
+  },
+  "changeRootPassword": {
+    "title": "Fetola Password ea Root ea VPS",
+    "newPassword": "Password e Ncha:",
+    "confirmPassword": "Tiisa Password:",
+    "changePassword": "Fetola Password",
+    "passwordMismatch": "Password le Tiiso ea Password ha di tshwane"
+  },
+  "reinstallOs": {
+    "title": "Beha Hape OS",
+    "importantNote1": "Ho beha hape sisteme ea tshebetso ho tla phimola data yohle.",
+    "importantNote2": "Pele o beha hape sisteme ea tshebetso, ka kopo nka backup.",
+    "osDistribution": "Phatlalatso ea Sisteme ea Tshebetso",
+    "confirmReinstallButton": "Tiisa ho Beha Hape OS"
+  },
+  "common": {
+    "goBack": "Khutlela Morao",
+    "back": "Morao",
+    "pleaseWait": "Ka kopo ema!",
+    "success": "Katleho{text}",
+    "gotError": "Ho entsoe phoso {error}"
+  }
+}

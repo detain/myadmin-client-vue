@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Спіс SSL-сертыфікатаў",
+        "orderTitle": "Замовіць рэгістрацыю SSL"
+    },
+    "view": {
+        "title": "Прагляд SSL {id}",
+        "package": "Пакет",
+        "nextInvoiceDate": "Дата наступнага рахунку:",
+        "billing": "Білінг",
+        "billed": "Выстаўлены рахунак:",
+        "statusIs": "Статус:",
+        "orderInfo": "Інфармацыя аб замове",
+        "certificateInfo": "Інфармацыя аб сертыфікаце",
+        "links": "Спасылкі",
+        "welcomeEmailConfirm": "Вы ўпэўнены, што хочаце паўторна адправіць вітальны ліст?",
+        "emailSent": "Ліст адпраўлены",
+        "emailSentMessage": "Вітальны ліст быў паўторна адпраўлены. Праверце сваю паштовую скрыню."
+    },
+    "order": {
+        "title": "Замовіць SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Змяніць email зацвярджальніка",
+        "selectApproverEmail": "Выберыце email зацвярджальніка"
+    }
+}

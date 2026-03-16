@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "स्क्रब आईपी सेवा सूची",
+        "orderTitle": "स्क्रब आईपीहरू अर्डर गर्नुहोस्"
+    },
+    "view": {
+        "title": "स्क्रब आईपीहरू हेर्नुहोस्",
+        "currentIp": "हालको आईपी",
+        "ipAddress": "आईपी ठेगाना",
+        "ipFromService": "सेवाबाट आईपी"
+    },
+    "filters": {
+        "title": "फिल्टरहरू",
+        "createNew": "नयाँ सिर्जना गर्नुहोस्",
+        "createNewFilter": "नयाँ फिल्टर सिर्जना गर्नुहोस्",
+        "filterType": "फिल्टर प्रकार",
+        "selectFilterType": "फिल्टर प्रकार छान्नुहोस्",
+        "ipAddress": "आईपी ठेगाना",
+        "portNo": "पोर्ट नं।",
+        "filter": "फिल्टर",
+        "destinationIp": "गन्तव्य आईपी",
+        "destinationPort": "गन्तव्य पोर्ट",
+        "noFiltersFound": "कुनै फिल्टर फेला परेन!",
+        "deleteFilterConfirm": "के तपाईं यो फिल्टर मेटाउन निश्चित हुनुहुन्छ?",
+        "unableToCreateFilter": "यस समयमा फिल्टर सिर्जना गर्न असमर्थ।",
+        "unableToDeleteFilter": "यस समयमा फिल्टर मेटाउन असमर्थ।"
+    },
+    "firewallRules": {
+        "title": "फायरवाल नियमहरू",
+        "createNew": "नयाँ सिर्जना गर्नुहोस्",
+        "createNewFirewall": "नयाँ फायरवाल नियम सिर्जना गर्नुहोस्",
+        "protocol": "प्रोटोकल",
+        "destinationIp": "गन्तव्य आईपी",
+        "destinationPort": "गन्तव्य पोर्ट",
+        "sourceIp": "स्रोत आईपी",
+        "sourcePort": "स्रोत पोर्ट",
+        "xdpAction": "XDP कार्य",
+        "ipRequired": "आईपी ठेगाना आवश्यक छ",
+        "block": "रोक्नुहोस्",
+        "whitelist": "श्वेतसूची",
+        "noRulesFound": "कुनै नियम फेला परेन!",
+        "deleteRuleConfirm": "के तपाईं यो नियम मेटाउन निश्चित हुनुहुन्छ?",
+        "unableToCreateRule": "यस समयमा फायरवाल नियम सिर्जना गर्न असमर्थ।",
+        "unableToDeleteRule": "यस समयमा फायरवाल नियम मेटाउन असमर्थ।"
+    },
+    "geoFirewallRules": {
+        "title": "भौगोलिक फायरवाल नियमहरू",
+        "createNew": "नयाँ सिर्जना गर्नुहोस्",
+        "createNewGeoRule": "नयाँ भौगोलिक फायरवाल नियम सिर्जना गर्नुहोस्",
+        "destinationIp": "गन्तव्य आईपी",
+        "destinationPort": "गन्तव्य पोर्ट",
+        "sourceCountry": "स्रोत देश",
+        "sourceAsn": "स्रोत ASN",
+        "xdpAction": "XDP कार्य",
+        "portNo": "पोर्ट नं।",
+        "selectCountry": "देश छान्नुहोस्",
+        "asn": "ASN",
+        "block": "रोक्नुहोस्",
+        "whitelist": "श्वेतसूची",
+        "noRulesFound": "कुनै नियम फेला परेन!",
+        "deleteGeoRuleConfirm": "के तपाईं यो भौगोलिक नियम मेटाउन निश्चित हुनुहुन्छ?",
+        "unableToCreateRule": "यस समयमा फायरवाल नियम सिर्जना गर्न असमर्थ।",
+        "unableToDeleteRule": "यस समयमा भौगोलिक फायरवाल नियम मेटाउन असमर्थ।"
+    }
+}

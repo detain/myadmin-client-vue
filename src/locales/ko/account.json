@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "계정 설정"
+    },
+    "changePassword": {
+        "title": "비밀번호 변경",
+        "cardTitle": "비밀번호 업데이트",
+        "currentPassword": "현재 비밀번호",
+        "newPassword": "새 비밀번호",
+        "confirmPassword": "비밀번호 확인",
+        "updatePassword": "비밀번호 업데이트"
+    },
+    "changeUsername": {
+        "title": "사용자명 변경",
+        "disabled": "사용자명 변경이 일시적으로 비활성화되었습니다.",
+        "currentUsername": "현재 사용자명",
+        "newDesiredUsername": "원하는 새 사용자명",
+        "confirmationCode": "확인 코드",
+        "pleaseWait": "잠시만 기다려 주세요!",
+        "gotError": "오류 발생 {error}"
+    },
+    "contactInfo": {
+        "title": "연락처 정보",
+        "cardTitle": "연락처 정보 업데이트",
+        "headsUp": "주의!",
+        "headsUpMessage": "이 정보는 선택 사항이지만, 정확한 정보를 제공하면 상호 작용이 풍부해지고 위험 % 점수가 낮아져 사이트의 일부에 더 빠르고 편리하게 접근할 수 있습니다(예: 신용카드 인증 불필요).",
+        "riskScore": "위험 % 점수",
+        "personalInformation": "개인 정보",
+        "name": "이름",
+        "namePlaceholder": "홍길동",
+        "company": "회사",
+        "gstinTaxId": "GSTIN 세금 ID",
+        "gstinPlaceholder": "재화 및 서비스 납세자 식별 번호",
+        "addressLine1": "주소 1",
+        "addressLine2": "주소 2",
+        "cityState": "시, 주",
+        "city": "시",
+        "state": "주",
+        "country": "국가",
+        "zipcode": "우편번호",
+        "phoneNo": "전화번호",
+        "phoneNumber": "전화번호",
+        "language": "언어",
+        "auto": "자동",
+        "currency": "통화",
+        "timeZone": "시간대",
+        "otherSettings": "기타 설정",
+        "disablePasswordResets": "비밀번호 재설정 비활성화 (비밀번호를 잊으셨나요?).",
+        "disableInvoiceReminders": "청구서 알림 이메일 알림 비활성화.",
+        "disableServerInvoiceReminders": "서버 청구서 알림 이메일 알림 비활성화.",
+        "disableReinstall": "재설치 비활성화.",
+        "alternateEmailInvoices": "청구서용 대체 이메일",
+        "alternateEmailInvoicesPlaceholder": "청구서 발송용 대체 이메일",
+        "alternateEmailAbuse": "신고용 대체 이메일",
+        "updateInfo": "정보 업데이트"
+    }
+}

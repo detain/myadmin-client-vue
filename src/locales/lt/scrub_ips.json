@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Scrub IPs paslaugų sąrašas",
+    "orderTitle": "Užsakyti Scrub IPs"
+  },
+  "view": {
+    "title": "Peržiūrėti Scrub IPs",
+    "currentIp": "Dabartinis IP",
+    "ipAddress": "IP adresas",
+    "ipFromService": "IP iš paslaugos"
+  },
+  "filters": {
+    "title": "Filtrai",
+    "createNew": "Sukurti naują",
+    "createNewFilter": "Sukurti naują filtrą",
+    "filterType": "Filtro tipas",
+    "ipAddress": "IP adresas",
+    "portNo": "Prievado Nr.",
+    "filter": "Filtras",
+    "destinationIp": "Paskirties IP",
+    "destinationPort": "Paskirties prievadas",
+    "noFiltersFound": "Filtrų nerasta!",
+    "deleteFilterConfirm": "Ar tikrai norite ištrinti šį filtrą?"
+  },
+  "firewallRules": {
+    "title": "Ugniasienės taisyklės",
+    "createNewFirewall": "Sukurti naują ugniasienės taisyklę",
+    "protocol": "Protokolas",
+    "destinationIp": "Paskirties IP",
+    "sourceIp": "Šaltinio IP",
+    "block": "Blokuoti",
+    "whitelist": "Baltasis sąrašas",
+    "noRulesFound": "Taisyklių nerasta!",
+    "deleteRuleConfirm": "Ar tikrai norite ištrinti šią taisyklę?"
+  },
+  "geoFirewallRules": {
+    "title": "Geografinės ugniasienės taisyklės",
+    "createNewGeoRule": "Sukurti naują geografinę ugniasienės taisyklę",
+    "destinationIp": "Paskirties IP",
+    "sourceCountry": "Šaltinio šalis",
+    "sourceAsn": "Šaltinio ASN",
+    "selectCountry": "Pasirinkti šalį",
+    "block": "Blokuoti",
+    "whitelist": "Baltasis sąrašas",
+    "noRulesFound": "Taisyklių nerasta!",
+    "deleteGeoRuleConfirm": "Ar tikrai norite ištrinti šią geografinę taisyklę?"
+  }
+}

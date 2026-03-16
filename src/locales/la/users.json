@@ -1,0 +1,12 @@
+{
+    "title": "Utentes",
+    "addUser": "Adde Utentem",
+    "editUser": "Emenda Utentem",
+    "firstName": "Praenomen",
+    "lastName": "Cognomen",
+    "username": "Nomen Utentis",
+    "password": "Tessera",
+    "keepSamePassword": "Relinque vacuum ad servandam eandem tesseram",
+    "errorLoading": "Error onerans utentes:",
+    "errorLoadingUser": "Error onerans utentem:"
+}

@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "Список VPS",
+        "orderVps": "Замовити VPS"
+    },
+    "view": {
+        "title": "Переглянути VPS {id}",
+        "package": "Пакет",
+        "billing": "Оплата",
+        "billed": "виставлено рахунок",
+        "vpsStatus": "Статус VPS:",
+        "hostServer": "Хост-сервер:",
+        "nextInvoiceDate": "Дата наступного рахунку:",
+        "vpsInformation": "Інформація про VPS",
+        "powerStatus": "Статус живлення:",
+        "selectAction": "Вибрати дію",
+        "disk": "Диск",
+        "totalSpace": "Загальний простір:",
+        "usedSpace": "Використаний простір:",
+        "remainingSpace": "Залишковий простір:",
+        "systemInformation": "Системна інформація",
+        "memory": "Пам'ять:",
+        "cpuCores": "Ядра CPU:",
+        "os": "ОС:",
+        "links": "Посилання",
+        "updateComment": "Оновити коментар",
+        "saveChanges": "Зберегти зміни",
+        "emailSent": "Лист надіслано",
+        "emailSentMessage": "Вітальний лист надіслано повторно. Перевірте свою поштову скриньку."
+    },
+    "order": {
+        "title": "Замовити VPS",
+        "osDistribution": "Дистрибутив ОС",
+        "osVersion": "Версія ОС",
+        "hostname": "Ім'я хоста",
+        "rootPassword": "Пароль root",
+        "couponCode": "Код купона",
+        "continue": "Продовжити",
+        "orderSummary": "Підсумок замовлення",
+        "total": "Всього",
+        "tosAgree": "Я прочитав(ла) умови вище і погоджуюся.",
+        "placeOrder": "Розмістити замовлення"
+    },
+    "changeHostname": {
+        "title": "Змінити ім'я хоста VPS",
+        "existingHostname": "Поточне ім'я хоста",
+        "newHostname": "Нове ім'я хоста",
+        "updateHostname": "Оновити ім'я хоста"
+    },
+    "changeRootPassword": {
+        "title": "Змінити пароль root VPS",
+        "newPassword": "Новий пароль:",
+        "confirmPassword": "Підтвердити пароль:",
+        "changePassword": "Змінити пароль",
+        "passwordMismatch": "Пароль і підтвердження пароля не збігаються"
+    },
+    "reinstallOs": {
+        "title": "Перевстановити ОС",
+        "importantNote1": "Перевстановлення операційної системи видалить усі дані.",
+        "importantNote2": "Перед перевстановленням операційної системи, будь ласка, зробіть резервну копію.",
+        "osDistribution": "Дистрибутив операційної системи",
+        "confirmReinstallButton": "Підтвердити перевстановлення ОС"
+    },
+    "common": {
+        "goBack": "Повернутися",
+        "back": "Назад",
+        "pleaseWait": "Будь ласка, зачекайте!",
+        "success": "Успішно{text}",
+        "gotError": "Отримано помилку {error}"
+    }
+}

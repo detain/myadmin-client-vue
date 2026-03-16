@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP үйлчилгээний жагсаалт",
+        "orderTitle": "Scrub IP захиалах"
+    },
+    "view": {
+        "title": "Scrub IP харах",
+        "currentIp": "Одоогийн IP",
+        "ipAddress": "IP хаяг",
+        "ipFromService": "Үйлчилгээний IP"
+    },
+    "filters": {
+        "title": "Шүүлтүүрүүд",
+        "createNew": "Шинэ үүсгэх",
+        "createNewFilter": "Шинэ шүүлтүүр үүсгэх",
+        "filterType": "Шүүлтүүрийн төрөл",
+        "selectFilterType": "Шүүлтүүрийн төрөл сонгох",
+        "ipAddress": "IP хаяг",
+        "portNo": "Порт дугаар",
+        "filter": "Шүүлтүүр",
+        "destinationIp": "Зорилтот IP",
+        "destinationPort": "Зорилтот порт",
+        "noFiltersFound": "Шүүлтүүр олдсонгүй!",
+        "deleteFilterConfirm": "Та энэ шүүлтүүрийг устгахдаа итгэлтэй байна уу?",
+        "unableToCreateFilter": "Одоогоор шүүлтүүр үүсгэх боломжгүй байна.",
+        "unableToDeleteFilter": "Одоогоор шүүлтүүр устгах боломжгүй байна."
+    },
+    "firewallRules": {
+        "title": "Галт ханын дүрмүүд",
+        "createNew": "Шинэ үүсгэх",
+        "createNewFirewall": "Шинэ галт ханын дүрэм үүсгэх",
+        "protocol": "Протокол",
+        "destinationIp": "Зорилтот IP",
+        "destinationPort": "Зорилтот порт",
+        "sourceIp": "Эх IP",
+        "sourcePort": "Эх порт",
+        "xdpAction": "XDP үйлдэл",
+        "ipRequired": "IP хаяг шаардлагатай",
+        "block": "Хаах",
+        "whitelist": "Цагаан жагсаалт",
+        "noRulesFound": "Дүрэм олдсонгүй!",
+        "deleteRuleConfirm": "Та энэ дүрмийг устгахдаа итгэлтэй байна уу?",
+        "unableToCreateRule": "Одоогоор галт ханын дүрэм үүсгэх боломжгүй байна.",
+        "unableToDeleteRule": "Одоогоор галт ханын дүрэм устгах боломжгүй байна."
+    },
+    "geoFirewallRules": {
+        "title": "Газарзүйн галт ханын дүрмүүд",
+        "createNew": "Шинэ үүсгэх",
+        "createNewGeoRule": "Шинэ газарзүйн галт ханын дүрэм үүсгэх",
+        "destinationIp": "Зорилтот IP",
+        "destinationPort": "Зорилтот порт",
+        "sourceCountry": "Эх улс",
+        "sourceAsn": "Эх ASN",
+        "xdpAction": "XDP үйлдэл",
+        "portNo": "Порт дугаар",
+        "selectCountry": "Улс сонгох",
+        "asn": "ASN",
+        "block": "Хаах",
+        "whitelist": "Цагаан жагсаалт",
+        "noRulesFound": "Дүрэм олдсонгүй!",
+        "deleteGeoRuleConfirm": "Та энэ газарзүйн дүрмийг устгахдаа итгэлтэй байна уу?",
+        "unableToCreateRule": "Одоогоор галт ханын дүрэм үүсгэх боломжгүй байна.",
+        "unableToDeleteRule": "Одоогоор газарзүйн галт ханын дүрэм устгах боломжгүй байна."
+    }
+}

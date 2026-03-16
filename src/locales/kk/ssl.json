@@ -1,0 +1,11 @@
+{
+  "list": { "title": "SSL сертификаттары тізімі", "orderTitle": "SSL тіркеулеріне тапсырыс беру" },
+  "view": {
+    "title": "SSL {id} қарау", "package": "Пакет", "nextInvoiceDate": "Келесі шот күні:",
+    "billing": "Есеп айырысу", "billed": "есептелген:", "statusIs": "Күйі:",
+    "orderInfo": "Тапсырыс ақпараты", "certificateInfo": "Сертификат ақпараты", "links": "Сілтемелер",
+    "emailSent": "Хат жіберілді", "emailSentMessage": "Қош келдіңіз хаты қайта жіберілді. Кіріс жәшігіңізді тексеріңіз."
+  },
+  "order": { "title": "SSL тапсырыс беру" },
+  "changeApproverEmail": { "title": "Бекітуші электрондық поштасын өзгерту", "selectApproverEmail": "Бекітуші электрондық поштасын таңдау" }
+}

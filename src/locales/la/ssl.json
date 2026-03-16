@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lista Certificatorum SSL",
+        "orderTitle": "Ordina Inscriptiones SSL"
+    },
+    "view": {
+        "title": "Vide SSL {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "Computatum:",
+        "statusIs": "Status est:",
+        "orderInfo": "Informationes Ordinis",
+        "certificateInfo": "Informationes Certificati",
+        "links": "Nexus",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "order": {
+        "title": "Ordina SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Muta Epistulam Approbatoris",
+        "selectApproverEmail": "Elige Epistulam Approbatoris"
+    }
+}

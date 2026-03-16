@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "Lisi VPS",
+        "orderVps": "Fa'atonuina VPS"
+    },
+    "view": {
+        "title": "Va'ai VPS {id}",
+        "package": "Fa'aopoopoga",
+        "billing": "Tupe Totogia",
+        "billed": "totogia",
+        "vpsStatus": "Tulaga VPS:",
+        "hostServer": "Server Talimalo:",
+        "nextInvoiceDate": "Aso Pili Sosoo:",
+        "vpsInformation": "Fa'amatalaga VPS",
+        "powerStatus": "Tulaga Pawa:",
+        "selectAction": "Filifili Gaoioiga",
+        "disk": "Disk",
+        "totalSpace": "Aofai Avanoa:",
+        "usedSpace": "Avanoa Fa'aaogaina:",
+        "remainingSpace": "Avanoa Totoe:",
+        "systemInformation": "Fa'amatalaga Polokalame",
+        "memory": "Mafaufau:",
+        "cpuCores": "Faiāoga CPU:",
+        "os": "OS:",
+        "links": "Feso'ota'iga",
+        "updateComment": "Fa'afouina Faamatalaga",
+        "saveChanges": "Fa'asao Suiga",
+        "emailSent": "Imeli Auina Atu",
+        "emailSentMessage": "Ua toe auina atu le imeli afio mai. Siaki lou punaoa imeli."
+    },
+    "order": {
+        "title": "Fa'atonuina VPS",
+        "osDistribution": "Fa'asoa OS",
+        "osVersion": "Fa'alavelave OS",
+        "hostname": "Igoa Server",
+        "rootPassword": "Upu Fa'aoga Root",
+        "couponCode": "Code Kuponi",
+        "continue": "Fa'aauau",
+        "orderSummary": "Aotelega Fa'atonuina",
+        "total": "Aofai",
+        "tosAgree": "Ua ou faitau tulafono i luga ma ou ioe.",
+        "placeOrder": "Tu'u Fa'atonuina"
+    },
+    "changeHostname": {
+        "title": "Suia Igoa Server VPS",
+        "existingHostname": "Igoa Server Ua Iai",
+        "newHostname": "Igoa Server Fou",
+        "updateHostname": "Fa'afouina Igoa Server"
+    },
+    "changeRootPassword": {
+        "title": "Suia Upu Fa'aoga Root VPS",
+        "newPassword": "Upu Fa'aoga Fou:",
+        "confirmPassword": "Fa'amaonia Upu Fa'aoga:",
+        "changePassword": "Suia Upu Fa'aoga",
+        "passwordMismatch": "E le tutusa le upu fa'aoga ma le fa'amaoniga"
+    },
+    "reinstallOs": {
+        "title": "Toe Fa'apipi'i OS",
+        "importantNote1": "O le toe fa'apipi'i o le polokalame o le a tape uma fa'amaumauga.",
+        "importantNote2": "A o le'i toe fa'apipi'i le polokalame, fa'amolemole teu se kopi.",
+        "osDistribution": "Fa'asoa Polokalame",
+        "confirmReinstallButton": "Fa'amaonia Toe Fa'apipi'i OS"
+    },
+    "common": {
+        "goBack": "Toe Fo'i Atu",
+        "back": "Toe Fo'i",
+        "pleaseWait": "Fa'amolemole fa'atali!",
+        "success": "Manuia{text}",
+        "gotError": "Mea sese {error}"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "list": {
+    "title": "Cov Ntawv Tso Cai",
+    "orderTitle": "Xaj Npe Nkag Rau Ntawv Tso Cai"
+  },
+  "view": {
+    "title": "Saib Ntawv Tso Cai {id}",
+    "package": "Pob Khoom",
+    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+    "billing": "Them Nqi",
+    "billed": "tau them nqi:",
+    "statusIs": "xwm txheej yog:",
+    "licenseInfo": "Ntaub Ntawv Ntawv Tso Cai",
+    "cpanelInfo": "Ntaub Ntawv cPanel",
+    "links": "Cov Txuas",
+    "emailSent": "Email Xa Lawm",
+    "emailSentMessage": "Email txais tos xa dua lawm."
+  },
+  "order": {
+    "title": "Xaj Ntawv Tso Cai"
+  },
+  "changeIp": {
+    "title": "Hloov IP"
+  },
+  "changeOs": {
+    "title": "Hloov OS",
+    "selectLicenseOs": "Xaiv OS Ntawv Tso Cai"
+  }
+}

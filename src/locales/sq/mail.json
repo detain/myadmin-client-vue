@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista e Shërbimeve të Postës",
+        "orderTitle": "Porosit Regjistrimet e Postës"
+    },
+    "view": {
+        "title": "Shiko Postën {id}",
+        "package": "Paketa",
+        "nextInvoiceDate": "Data e Faturës së Ardhshme:",
+        "billing": "Faturimi",
+        "billed": "faturuar:",
+        "statusIs": "Statusi është:",
+        "mailApi": "API e Postës",
+        "usageCount": "Numërimi i Përdorimit:",
+        "links": "Lidhjet",
+        "connectionInfo": "Informacioni i Lidhjes",
+        "welcomeEmailConfirm": "A jeni i sigurt që dëshironi të ridërgoni emailin e mirëseardhjes?",
+        "emailSent": "Email i Dërguar",
+        "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse."
+    },
+    "order": {
+        "title": "Porosit Postë"
+    },
+    "alerts": {
+        "title": "Alarmet",
+        "addAlert": "Shto Alarm",
+        "editAlert": "Ndrysho Alarmin",
+        "noAlerts": "Nuk u gjet asnjë alarm"
+    },
+    "delist": {
+        "title": "Hiq nga Lista",
+        "blockedEmails": "Emailet e Bllokuara"
+    },
+    "denyRules": {
+        "title": "Rregullat e Refuzimit",
+        "addRule": "Shto Rregull",
+        "noRules": "Nuk u gjet asnjë rregull refuzimi"
+    },
+    "logs": {
+        "title": "Regjistrat",
+        "searchLogs": "Kërko Regjistrat"
+    },
+    "stats": {
+        "title": "Statistikat"
+    },
+    "deliverability": {
+        "title": "Dorëzueshmëria"
+    }
+}

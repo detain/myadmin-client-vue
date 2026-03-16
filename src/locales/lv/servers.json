@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Dedikēto serveru saraksts",
+    "orderTitle": "Pasūtīt servera reģistrācijas"
+  },
+  "view": {
+    "title": "Skatīt serveri {id}",
+    "package": "Pakete",
+    "dedicatedServer": "Dedikētais serveris",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "billing": "Norēķini",
+    "billed": "Norēķināts:",
+    "statusIs": "Statuss ir:",
+    "orderInfo": "Pasūtījuma informācija",
+    "orderId": "Pasūtījuma ID:",
+    "links": "Saites",
+    "serverInformation": "Servera informācija",
+    "networkInformation": "Tīkla informācija",
+    "power": "Barošana",
+    "selectAction": "Izvēlēties darbību",
+    "softReboot": "Maigā pārstartēšana",
+    "paymentStatus": "Maksājuma statuss:",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt serveri",
+    "orderDedicatedServer": "Pasūtīt dedikēto serveri",
+    "orderSummary": "Pasūtījuma kopsavilkums",
+    "selectServer": "Izvēlēties serveri",
+    "serverHostname": "Servera resursdatora nosaukums",
+    "rootPassword": "Root parole",
+    "agreeToTerms": "Piekrītu piedāvājuma noteikumiem",
+    "iAgreeToTerms": "Esmu izlasījis iepriekš minētos noteikumus un piekrītu tiem.",
+    "placeOrder": "Veikt pasūtījumu",
+    "cpuSelection": "CPU izvēle",
+    "driveConfiguration": "Diska konfigurācija",
+    "addDrive": "Pievienot disku",
+    "removeDrive": "Noņemt disku",
+    "selectMemory": "Izvēlēties atmiņu",
+    "selectOs": "Izvēlēties operētājsistēmu",
+    "region": "Reģions",
+    "buyNow": "Pirkt tagad",
+    "monthly": "Mēnešmaksa",
+    "perMonth": "/mēnesī",
+    "confirmOrder": "Apstiprināt pasūtījumu"
+  }
+}

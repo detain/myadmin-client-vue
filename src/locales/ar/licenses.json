@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "قائمة التراخيص",
+        "orderTitle": "طلب تسجيلات الترخيص"
+    },
+    "view": {
+        "title": "عرض الترخيص {id}",
+        "package": "الباقة",
+        "nextInvoiceDate": "تاريخ الفاتورة التالي:",
+        "billing": "الفوترة",
+        "billed": "مُفوتَر:",
+        "statusIs": "الحالة:",
+        "licenseInfo": "معلومات الترخيص",
+        "cpanelInfo": "معلومات cPanel",
+        "links": "الروابط",
+        "welcomeEmailConfirm": "هل أنت متأكد أنك تريد إعادة إرسال بريد الترحيب؟",
+        "emailSent": "تم إرسال البريد الإلكتروني",
+        "emailSentMessage": "تمت إعادة إرسال بريد الترحيب. تحقق من صندوق الوارد."
+    },
+    "order": {
+        "title": "طلب ترخيص"
+    },
+    "changeIp": {
+        "title": "تغيير IP"
+    },
+    "changeOs": {
+        "title": "تغيير نظام التشغيل",
+        "selectLicenseOs": "اختر نظام تشغيل الترخيص"
+    }
+}

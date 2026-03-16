@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Drywende IPs Dienste Lys",
+        "orderTitle": "Bestel Drywende IP Registrasies"
+    },
+    "view": {
+        "title": "Bekyk Drywende IP {id}",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende Faktuurdatum:",
+        "billing": "Fakturering",
+        "billed": "gefaktureer:",
+        "statusIs": "Status is:",
+        "floatingIp": "Drywende IP",
+        "links": "Skakels",
+        "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
+        "emailSent": "E-pos Gestuur",
+        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
+    },
+    "order": {
+        "title": "Bestel Drywende IP"
+    },
+    "changeIp": {
+        "title": "Verander Teiken IP"
+    }
+}

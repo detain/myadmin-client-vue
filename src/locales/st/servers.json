@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Lenaneo la Lihaolo tse Itseng",
+    "orderTitle": "Oda Lirejistaro tsa Haolo"
+  },
+  "view": {
+    "title": "Bona Haolo {id}",
+    "package": "Sepalesa",
+    "dedicatedServer": "Haolo e Itseng",
+    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+    "billing": "Tefello",
+    "billed": "e lefisitsoeng:",
+    "statusIs": "Boemo ke:",
+    "orderInfo": "Lintlha tsa Oda",
+    "orderId": "ID ea Oda:",
+    "links": "Likhoele",
+    "serverInformation": "Lintlha tsa Haolo",
+    "networkInformation": "Lintlha tsa Marang-rang",
+    "power": "Matla",
+    "selectAction": "Khetha Ketso",
+    "softReboot": "Qala Hape ka Bobebe",
+    "paymentStatus": "Boemo ba Tefo:",
+    "emailSent": "Imeile e Romelitsoe",
+    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+  },
+  "order": {
+    "title": "Oda Haolo",
+    "orderDedicatedServer": "Oda Haolo e Itseng",
+    "orderSummary": "Kakaretso ea Oda",
+    "selectServer": "Khetha Haolo",
+    "serverHostname": "Lebitso la Haolo",
+    "rootPassword": "Password ea Root",
+    "agreeToTerms": "Lumela le maemo a tšebeletso",
+    "iAgreeToTerms": "Ke bale maemo a ka holimo 'me ke a lumela.",
+    "placeOrder": "Beha Oda ea Ka",
+    "cpuSelection": "Khetho ea CPU",
+    "driveConfiguration": "Tlhophiso ea Drive",
+    "addDrive": "Kenya Drive",
+    "removeDrive": "Tlosa Drive",
+    "selectMemory": "Khetha Mohopolo",
+    "selectOs": "Khetha Sisteme ea Tshebetso",
+    "region": "Sebaka",
+    "buyNow": "Reka Joale",
+    "monthly": "Kgwedi le kgwedi",
+    "perMonth": "/kgwedi",
+    "confirmOrder": "Tiisa Oda"
+  }
+}

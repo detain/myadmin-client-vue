@@ -1,0 +1,32 @@
+{
+    "settings": { "title": "账户设置" },
+    "changePassword": {
+        "title": "修改密码", "cardTitle": "更新密码",
+        "currentPassword": "当前密码", "newPassword": "新密码",
+        "confirmPassword": "确认密码", "updatePassword": "更新密码"
+    },
+    "changeUsername": {
+        "title": "修改用户名", "disabled": "用户名更改已暂时禁用。",
+        "currentUsername": "当前用户名", "newDesiredUsername": "新的期望用户名",
+        "confirmationCode": "确认码", "pleaseWait": "请稍候！", "gotError": "发生错误 {error}"
+    },
+    "contactInfo": {
+        "title": "联系信息", "cardTitle": "更新联系信息", "headsUp": "注意！",
+        "headsUpMessage": "虽然此信息是可选的，但提供（准确的）信息将有助于丰富我们的互动并降低您的风险 % 评分，让您更快速、更便捷地访问网站的某些部分（例如无需验证信用卡）。",
+        "riskScore": "风险 % 评分", "personalInformation": "个人信息",
+        "name": "姓名", "namePlaceholder": "张三", "company": "公司",
+        "gstinTaxId": "GSTIN 税务 ID", "gstinPlaceholder": "商品和服务税纳税人识别号",
+        "addressLine1": "地址行 1", "addressLine2": "地址行 2", "cityState": "城市、州",
+        "city": "城市", "state": "州", "country": "国家", "zipcode": "邮政编码",
+        "phoneNo": "电话号码", "phoneNumber": "电话号码", "language": "语言", "auto": "自动",
+        "currency": "货币", "timeZone": "时区", "otherSettings": "其他设置",
+        "disablePasswordResets": "禁用（忘记密码）密码重置。",
+        "disableInvoiceReminders": "禁用发票提醒电子邮件通知。",
+        "disableServerInvoiceReminders": "禁用服务器发票提醒电子邮件通知。",
+        "disableReinstall": "禁用重新安装。",
+        "alternateEmailInvoices": "发票的备用电子邮件",
+        "alternateEmailInvoicesPlaceholder": "用于发送发票的备用电子邮件",
+        "alternateEmailAbuse": "滥用报告的备用电子邮件",
+        "updateInfo": "更新信息"
+    }
+}

@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Dedikuotų serverių sąrašas",
+    "orderTitle": "Užsakyti serverio registracijas"
+  },
+  "view": {
+    "title": "Peržiūrėti serverį {id}",
+    "package": "Paketas",
+    "dedicatedServer": "Dedikuotas serveris",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita:",
+    "statusIs": "Būsena:",
+    "orderInfo": "Užsakymo informacija",
+    "orderId": "Užsakymo ID:",
+    "links": "Nuorodos",
+    "serverInformation": "Serverio informacija",
+    "networkInformation": "Tinklo informacija",
+    "power": "Maitinimas",
+    "selectAction": "Pasirinkti veiksmą",
+    "softReboot": "Švelnus perkrovimas",
+    "paymentStatus": "Mokėjimo būsena:",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti serverį",
+    "orderDedicatedServer": "Užsakyti dedikuotą serverį",
+    "orderSummary": "Užsakymo santrauka",
+    "selectServer": "Pasirinkti serverį",
+    "serverHostname": "Serverio pagrindinio kompiuterio vardas",
+    "rootPassword": "Root slaptažodis",
+    "agreeToTerms": "Sutikti su pasiūlymo sąlygomis",
+    "iAgreeToTerms": "Perskaičiau aukščiau esančias sąlygas ir sutinku.",
+    "placeOrder": "Pateikti užsakymą",
+    "cpuSelection": "CPU pasirinkimas",
+    "driveConfiguration": "Disko konfigūracija",
+    "addDrive": "Pridėti diską",
+    "removeDrive": "Pašalinti diską",
+    "selectMemory": "Pasirinkti atmintį",
+    "selectOs": "Pasirinkti operacinę sistemą",
+    "region": "Regionas",
+    "buyNow": "Pirkti dabar",
+    "monthly": "Mėnesinis",
+    "perMonth": "/mėn.",
+    "confirmOrder": "Patvirtinti užsakymą"
+  }
+}

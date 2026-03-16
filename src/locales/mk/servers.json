@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Листа на наменски сервери",
+    "orderTitle": "Нарачај регистрации на сервери"
+  },
+  "view": {
+    "title": "Прегледај сервер {id}",
+    "package": "Пакет",
+    "dedicatedServer": "Наменски сервер",
+    "nextInvoiceDate": "Следен датум на фактура:",
+    "billing": "Наплата",
+    "billed": "наплатено:",
+    "statusIs": "Статусот е:",
+    "orderInfo": "Информации за нарачката",
+    "orderId": "ID на нарачката:",
+    "links": "Врски",
+    "serverInformation": "Информации за серверот",
+    "networkInformation": "Мрежни информации",
+    "power": "Напојување",
+    "selectAction": "Изберете акција",
+    "softReboot": "Меко рестартирање",
+    "paymentStatus": "Статус на плаќање:",
+    "emailSent": "Е-пошта е испратена",
+    "emailSentMessage": "Добредојде е-поштата беше повторно испратена. Проверете го вашето сандаче."
+  },
+  "order": {
+    "title": "Нарачај сервер",
+    "orderDedicatedServer": "Нарачај наменски сервер",
+    "orderSummary": "Резиме на нарачката",
+    "selectServer": "Изберете сервер",
+    "serverHostname": "Hostname на серверот",
+    "rootPassword": "Root лозинка",
+    "agreeToTerms": "Се согласувам со условите на понудата",
+    "iAgreeToTerms": "Ги прочитав горенаведените услови и се согласувам.",
+    "placeOrder": "Постави нарачка",
+    "cpuSelection": "Избор на CPU",
+    "driveConfiguration": "Конфигурација на диск",
+    "addDrive": "Додај диск",
+    "removeDrive": "Отстрани диск",
+    "selectMemory": "Изберете меморија",
+    "selectOs": "Изберете оперативен систем",
+    "region": "Регион",
+    "buyNow": "Купи сега",
+    "monthly": "Месечно",
+    "perMonth": "/месец",
+    "confirmOrder": "Потврди нарачка"
+  }
+}

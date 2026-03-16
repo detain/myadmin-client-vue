@@ -1,0 +1,12 @@
+{
+    "required": "{field} ayaa loo baahan yahay",
+    "email": "Cinwaanka iimaylka ansax ah waa in la geliyaa",
+    "minLength": "Waa inuu ka kooban yahay ugu yaraan {min} xaraf",
+    "maxLength": "Waa inuusan ka badnayn {max} xaraf",
+    "passwordMatch": "Ereyada sirta waa inay isla mid yihiin",
+    "invalidFormat": "Qaabka ma saxna",
+    "numeric": "Waa inuu nambar yahay",
+    "url": "URL ansax ah waa in la geliyaa",
+    "ipAddress": "Cinwaanka IP ansax ah waa in la geliyaa",
+    "hostname": "Magaca hoyga ansax ah waa in la geliyaa"
+}

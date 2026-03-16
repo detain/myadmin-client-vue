@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Web Barındırma Listesi",
+        "orderTitle": "Web Sitesi Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Web Sitesi {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı",
+        "billingStatusIs": "Faturalama Durumu:",
+        "hostInfo": "Host Bilgisi",
+        "username": "Kullanıcı Adı:",
+        "ip": "IP:",
+        "server": "Sunucu:",
+        "notSetYet": "Henüz ayarlanmadı",
+        "login": "Giriş",
+        "types": "Türler:",
+        "linksLabel": "Bağlantılar:",
+        "manualLogin": "Manuel Giriş",
+        "automaticLogin": "Otomatik Giriş",
+        "clickHere": "Buraya Tıklayın",
+        "defaultNameservers": "Varsayılan Ad Sunucuları",
+        "nameservers": "Ad Sunucuları:",
+        "externalLinks": "Harici Bağlantılar",
+        "names": "İsimler:",
+        "websitePreview": "Web Sitesi Önizlemesi",
+        "links": "Bağlantılar",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "buyIp": {
+        "title": "Ek IP Eklentisi Satın Al",
+        "existingAddonIps": "Mevcut Eklenti IP'leri",
+        "additionalIp": "Ek IP",
+        "monthlyCost": "Aylık Maliyet ({symbol})",
+        "costDescription": "Web siteniz faturalandığında her ay {symbol} maliyet",
+        "confirmPurchase": "Satın Almayı Onayla",
+        "confirmMessage": "Ek IP maliyeti: {symbol}{cost}/ay. Ek IP sipariş etmek istediğinizden emin misiniz?",
+        "placeOrder": "Sipariş Ver",
+        "orderPlaced": "Sipariş Verildi"
+    },
+    "reverseDns": {
+        "title": "Ters DNS",
+        "updateReverseDns": "Ters DNS'i Güncelle"
+    },
+    "downloadBackups": {
+        "title": "Yedeklemeleri İndir",
+        "backup": "Yedekleme",
+        "size": "Boyut",
+        "options": "Seçenekler"
+    },
+    "migration": {
+        "title": "Web Sitenizi Taşıyın",
+        "currentWebHostInfo": "Mevcut Web Host Bilgisi",
+        "customerPortalUrl": "Müşteri Portalı URL'si",
+        "portalExample": "Örneğin: sso.godaddy.com",
+        "registeredUsername": "Kayıtlı Kullanıcı Adı / E-posta / ID",
+        "password": "Şifre",
+        "controlPanelUrl": "Kontrol Paneli URL'si",
+        "controlPanelExample": "Örneğin: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Kontrol Paneli Kullanıcı Adı",
+        "ftpPassword": "FTP / Kontrol Paneli Şifresi",
+        "holdingPageQuestion": "Site canlı/yoğun ve yüksek trafiğe sahipse, geçiş sırasında bekleme sayfası ekleyebilir miyiz?",
+        "specialRequirementsQuestion": "Bu sitede PHP Sürümü / Modülleri gibi özel gereksinimler var mı?",
+        "domainRegistryInfo": "Alan Adı Kayıt Bilgisi",
+        "transferDomainQuestion": "Alan adı kaydını transfer etmenize yardım etmemizi ister misiniz?",
+        "updateNameserversQuestion": "Veri geçişini tamamladığımızda ad sunucularını güncellemizi ister misiniz?",
+        "domainRegistryPortal": "Alan Adı Kayıt Müşteri Portalı",
+        "importantNotes": "Önemli Notlar",
+        "note1": "Bu formu doldurmak, destek departmanımızın geçişinize başlaması için yeni bir talep açacaktır.",
+        "note2": "Herhangi bir gecikmeyi önlemek için lütfen mümkün olduğunca eksiksiz ve doğru bilgi sağlayın.",
+        "note3": "Tipik bir geçiş 48 ila 72 saat içinde tamamlanır. Kopyalanacak veri miktarı büyükse bazen daha uzun sürebilir.",
+        "note4": "Eski barındırma hesabının, geçişi gerçekleştirirken çevrimiçi ve erişilebilir olması gerekir; aksi takdirde zorlukla karşılaşabiliriz.",
+        "note5": "Geçişi gerçekleştirirken lütfen sitenizde herhangi bir güncelleme yapmayın; aksi takdirde bu veriler yeni barındırmaya kopyalanmayabilir."
+    },
+    "order": {
+        "title": "Web Sitesi Siparişi"
+    }
+}

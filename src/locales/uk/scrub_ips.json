@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Список послуг Scrub IP",
+        "orderTitle": "Замовити Scrub IP"
+    },
+    "view": {
+        "title": "Переглянути Scrub IP",
+        "currentIp": "Поточний IP",
+        "ipAddress": "IP-адреса",
+        "ipFromService": "IP від послуги"
+    },
+    "filters": {
+        "title": "Фільтри",
+        "createNew": "Створити новий",
+        "createNewFilter": "Створити новий фільтр",
+        "filterType": "Тип фільтра",
+        "selectFilterType": "Вибрати тип фільтра",
+        "ipAddress": "IP-адреса",
+        "portNo": "Номер порту",
+        "filter": "Фільтр",
+        "destinationIp": "IP призначення",
+        "destinationPort": "Порт призначення",
+        "noFiltersFound": "Фільтри не знайдено!",
+        "deleteFilterConfirm": "Ви впевнені, що хочете видалити цей фільтр?",
+        "unableToCreateFilter": "Наразі не вдається створити фільтр.",
+        "unableToDeleteFilter": "Наразі не вдається видалити фільтр."
+    },
+    "firewallRules": {
+        "title": "Правила брандмауера",
+        "createNew": "Створити новий",
+        "createNewFirewall": "Створити нове правило брандмауера",
+        "protocol": "Протокол",
+        "destinationIp": "IP призначення",
+        "destinationPort": "Порт призначення",
+        "sourceIp": "IP джерела",
+        "sourcePort": "Порт джерела",
+        "xdpAction": "Дія XDP",
+        "ipRequired": "IP-адреса є обов'язковою",
+        "block": "Блокувати",
+        "whitelist": "Білий список",
+        "noRulesFound": "Правила не знайдено!",
+        "deleteRuleConfirm": "Ви впевнені, що хочете видалити це правило?",
+        "unableToCreateRule": "Наразі не вдається створити правило брандмауера.",
+        "unableToDeleteRule": "Наразі не вдається видалити правило брандмауера."
+    },
+    "geoFirewallRules": {
+        "title": "Геобрандмауерні правила",
+        "createNew": "Створити новий",
+        "createNewGeoRule": "Створити нове геобрандмауерне правило",
+        "destinationIp": "IP призначення",
+        "destinationPort": "Порт призначення",
+        "sourceCountry": "Країна джерела",
+        "sourceAsn": "ASN джерела",
+        "xdpAction": "Дія XDP",
+        "portNo": "Номер порту",
+        "selectCountry": "Вибрати країну",
+        "asn": "ASN",
+        "block": "Блокувати",
+        "whitelist": "Білий список",
+        "noRulesFound": "Правила не знайдено!",
+        "deleteGeoRuleConfirm": "Ви впевнені, що хочете видалити це геоправило?",
+        "unableToCreateRule": "Наразі не вдається створити правило брандмауера.",
+        "unableToDeleteRule": "Наразі не вдається видалити геобрандмауерне правило."
+    }
+}

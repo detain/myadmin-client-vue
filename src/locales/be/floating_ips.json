@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Спіс паслуг Floating IPs",
+        "orderTitle": "Замовіць рэгістрацыю Floating IP"
+    },
+    "view": {
+        "title": "Прагляд Floating IP {id}",
+        "package": "Пакет",
+        "nextInvoiceDate": "Дата наступнага рахунку:",
+        "billing": "Білінг",
+        "billed": "Выстаўлены рахунак:",
+        "statusIs": "Статус:",
+        "floatingIp": "Floating IP",
+        "links": "Спасылкі",
+        "welcomeEmailConfirm": "Вы ўпэўнены, што хочаце паўторна адправіць вітальны ліст?",
+        "emailSent": "Ліст адпраўлены",
+        "emailSentMessage": "Вітальны ліст быў паўторна адпраўлены. Праверце сваю паштовую скрыню."
+    },
+    "order": {
+        "title": "Замовіць Floating IP"
+    },
+    "changeIp": {
+        "title": "Змяніць мэтавы IP"
+    }
+}

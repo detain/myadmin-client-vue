@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Поставки на налогот"
+  },
+  "changePassword": {
+    "title": "Промени лозинка",
+    "cardTitle": "Ажурирај лозинка",
+    "currentPassword": "Тековна лозинка",
+    "newPassword": "Нова лозинка",
+    "confirmPassword": "Потврди лозинка",
+    "updatePassword": "Ажурирај лозинка"
+  },
+  "changeUsername": {
+    "title": "Промени корисничко име",
+    "disabled": "Промената на корисничкото име е привремено оневозможена.",
+    "currentUsername": "Тековно корисничко име",
+    "newDesiredUsername": "Ново посакувано корисничко име",
+    "confirmationCode": "Код за потврда",
+    "pleaseWait": "Ве молиме почекајте!",
+    "gotError": "Се случи грешка {error}"
+  },
+  "contactInfo": {
+    "title": "Контакт информации",
+    "cardTitle": "Ажурирај контакт информации",
+    "headsUp": "Внимание!",
+    "headsUpMessage": "Иако оваа информација е опционална, давањето точни информации ќе помогне во намалувањето на вашиот % Ризик резултат.",
+    "riskScore": "% Ризик резултат",
+    "personalInformation": "Лични информации",
+    "name": "Ime",
+    "company": "Компанија",
+    "addressLine1": "Адреса линија 1",
+    "addressLine2": "Адреса линија 2",
+    "city": "Град",
+    "state": "Држава/Регион",
+    "country": "Земја",
+    "zipcode": "Поштенски код",
+    "phoneNumber": "Телефонски број",
+    "language": "Јазик",
+    "auto": "Автоматски",
+    "currency": "Валута",
+    "timeZone": "Временска зона",
+    "otherSettings": "Други поставки",
+    "disablePasswordResets": "Оневозможи (Заборавена лозинка) ресетирање на лозинка.",
+    "disableInvoiceReminders": "Оневозможи е-пошта известувања за потсетници за фактури.",
+    "alternateEmailInvoices": "Алтернативна е-пошта за фактури",
+    "alternateEmailAbuse": "Алтернативна е-пошта за извештаи за злоупотреба",
+    "updateInfo": "Ажурирај информации"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "list": {"title": "Daptar Layanan Scrub IPs", "orderTitle": "Pesan Scrub IPs"},
+  "view": {"title": "Tempo Scrub IPs", "currentIp": "IP Ayeuna", "ipAddress": "Alamat IP", "ipFromService": "IP tina layanan"},
+  "filters": {
+    "title": "Filter", "createNew": "Jieun Anyar", "createNewFilter": "Jieun Filter Anyar",
+    "filterType": "Jenis Filter", "ipAddress": "Alamat IP", "portNo": "Nomer Port", "filter": "Filter",
+    "destinationIp": "IP Tujuan", "destinationPort": "Port Tujuan", "noFiltersFound": "Teu kapendak filter!",
+    "deleteFilterConfirm": "Naha anjeun yakin hoyong ngahapus filter ieu?"
+  },
+  "firewallRules": {
+    "title": "Aturan Firewall", "createNewFirewall": "Jieun Aturan Firewall Anyar", "protocol": "Protokol",
+    "destinationIp": "IP Tujuan", "sourceIp": "IP Sumber", "block": "Blokir", "whitelist": "Daptar Putih",
+    "noRulesFound": "Teu kapendak aturan!", "deleteRuleConfirm": "Naha anjeun yakin hoyong ngahapus aturan ieu?"
+  },
+  "geoFirewallRules": {
+    "title": "Aturan Geo Firewall", "createNewGeoRule": "Jieun Aturan Geo Firewall Anyar",
+    "destinationIp": "IP Tujuan", "sourceCountry": "Nagara Sumber", "sourceAsn": "ASN Sumber",
+    "selectCountry": "Pilih Nagara", "block": "Blokir", "whitelist": "Daptar Putih",
+    "noRulesFound": "Teu kapendak aturan!", "deleteGeoRuleConfirm": "Naha anjeun yakin hoyong ngahapus aturan geo ieu?"
+  }
+}

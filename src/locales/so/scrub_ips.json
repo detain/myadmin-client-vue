@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liiska Adeegyada Scrub IPs",
+        "orderTitle": "Scrub IPs Dalbo"
+    },
+    "view": {
+        "title": "Scrub IPs Arag",
+        "currentIp": "IP-ga Hadda",
+        "ipAddress": "Cinwaanka IP",
+        "ipFromService": "IP-ga Adeegga"
+    },
+    "filters": {
+        "title": "Shaandheeyayaasha",
+        "createNew": "Cusub Samee",
+        "createNewFilter": "Shaandheeyaha Cusub Samee",
+        "filterType": "Nooca Shaandheeyaha",
+        "selectFilterType": "Nooca Shaandheeyaha Dooro",
+        "ipAddress": "Cinwaanka IP",
+        "portNo": "Lambarka Dekedda",
+        "filter": "Shaandheeyaha",
+        "destinationIp": "IP-ga Bartilmaameedka",
+        "destinationPort": "Dekedda Bartilmaameedka",
+        "noFiltersFound": "Shaandheeyayaasha lama helin!",
+        "deleteFilterConfirm": "Ma hubtaa inaad tirtiri doonto shaandheeyahaan?",
+        "unableToCreateFilter": "Shaandheeyaha hadda lama samayn karin.",
+        "unableToDeleteFilter": "Shaandheeyaha hadda lama tirtiri karin."
+    },
+    "firewallRules": {
+        "title": "Xeerarka Derbiga-Gaashaanka",
+        "createNew": "Cusub Samee",
+        "createNewFirewall": "Xeerka Derbiga-Gaashaanka Cusub Samee",
+        "protocol": "Xeeraraha Xiriirka",
+        "destinationIp": "IP-ga Bartilmaameedka",
+        "destinationPort": "Dekedda Bartilmaameedka",
+        "sourceIp": "IP-ga Ilaha",
+        "sourcePort": "Dekedda Ilaha",
+        "xdpAction": "Falka XDP",
+        "ipRequired": "Cinwaanka IP ayaa loo baahan yahay",
+        "block": "Xidh",
+        "whitelist": "Liiska Caddaanka",
+        "noRulesFound": "Xeeraro lama helin!",
+        "deleteRuleConfirm": "Ma hubtaa inaad tirtiri doonto xeerarkaan?",
+        "unableToCreateRule": "Xeerka derbiga-gaashaanka hadda lama samayn karin.",
+        "unableToDeleteRule": "Xeerka derbiga-gaashaanka hadda lama tirtiri karin."
+    },
+    "geoFirewallRules": {
+        "title": "Xeerarka Derbiga-Gaashaanka Joog-Goobeed",
+        "createNew": "Cusub Samee",
+        "createNewGeoRule": "Xeerka Derbiga-Gaashaanka Joog-Goobeed Cusub Samee",
+        "destinationIp": "IP-ga Bartilmaameedka",
+        "destinationPort": "Dekedda Bartilmaameedka",
+        "sourceCountry": "Wadanka Ilaha",
+        "sourceAsn": "ASN Ilaha",
+        "xdpAction": "Falka XDP",
+        "portNo": "Lambarka Dekedda",
+        "selectCountry": "Wadanka Dooro",
+        "asn": "ASN",
+        "block": "Xidh",
+        "whitelist": "Liiska Caddaanka",
+        "noRulesFound": "Xeeraro lama helin!",
+        "deleteGeoRuleConfirm": "Ma hubtaa inaad tirtiri doonto xeerarkaan joog-goobeedka?",
+        "unableToCreateRule": "Xeerka derbiga-gaashaanka hadda lama samayn karin.",
+        "unableToDeleteRule": "Xeerka derbiga-gaashaanka joog-goobeedka hadda lama tirtiri karin."
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Sertifikaları Listesi",
+        "orderTitle": "SSL Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "SSL {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "orderInfo": "Sipariş Bilgisi",
+        "certificateInfo": "Sertifika Bilgisi",
+        "links": "Bağlantılar",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "SSL Siparişi"
+    },
+    "changeApproverEmail": {
+        "title": "Onaylayıcı E-postasını Değiştir",
+        "selectApproverEmail": "Onaylayıcı E-postası Seçin"
+    }
+}

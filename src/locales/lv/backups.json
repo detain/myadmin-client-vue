@@ -1,0 +1,21 @@
+{
+  "list": {
+    "title": "Krātuves / Dublēšanas saraksts",
+    "orderTitle": "Pasūtīt dublēšanas reģistrācijas"
+  },
+  "view": {
+    "title": "Skatīt dublējumu {id}",
+    "package": "Pakete",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "billing": "Norēķini",
+    "billed": "norēķināts:",
+    "statusIs": "Statuss ir:",
+    "hostServer": "Resursdatora serveris",
+    "links": "Saites",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt krātuvi"
+  }
+}

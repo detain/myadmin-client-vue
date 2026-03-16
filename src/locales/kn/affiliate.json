@@ -1,0 +1,21 @@
+{
+  "title": "ಅಫಿಲಿಯೇಟ್ ವ್ಯವಸ್ಥೆ", "breadcrumb": "ಅಫಿಲಿಯೇಟ್",
+  "attention": "ಈ ಅಫಿಲಿಯೇಟ್ ಕಾರ್ಯಕ್ರಮ 'ಕುಟುಂಬ ಸದಸ್ಯರು' ಅಥವಾ 'ಗ್ರಾಹಕರ' ಉಲ್ಲೇಖಕ್ಕಾಗಿ ಅಲ್ಲ. ಮುಂದೆ ಹೋಗುವ ಮೊದಲು {faqLink} ಓದಿ.",
+  "faqLinkText": "FAQ", "earnPerSale": "ಪ್ರತಿ ಹೊಸ ಗ್ರಾಹಕ ಮಾರಾಟಕ್ಕೆ {amount} ಗಳಿಸಿ!",
+  "knowMore": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ", "affiliateUrl": "ಅಫಿಲಿಯೇಟ್ URL",
+  "shareUrl": "ನಿಮ್ಮ ಅನನ್ಯ ಅಫಿಲಿಯೇಟ್ URL ಸ್ನೇಹಿತರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ",
+  "links": "ಲಿಂಕ್‌ಗಳು", "salesGraph": "ಮಾರಾಟ ಗ್ರಾಫ್", "webTrafficGraph": "ವೆಬ್ ಟ್ರಾಫಿಕ್ ಗ್ರಾಫ್",
+  "goBack": "ಹಿಂತಿರುಗಿ", "back": "ಹಿಂದೆ", "exportFailed": "ರಫ್ತು ವಿಫಲವಾಗಿದೆ",
+  "copiedToClipboard": "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ.",
+  "signups": {
+    "title": "ಅಫಿಲಿಯೇಟ್ ನೋಂದಣಿಗಳು", "pending": "ಬಾಕಿ", "paid": "ಪಾವತಿಸಲಾಗಿದೆ",
+    "failed": "ವಿಫಲ", "locked": "ಲಾಕ್ ಮಾಡಲಾಗಿದೆ", "rejected": "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ",
+    "noRecords": "ಯಾವುದೇ ದಾಖಲೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+    "columns": { "id": "ID", "service": "ಸೇವೆ", "signupDate": "ನೋಂದಣಿ ದಿನಾಂಕ", "status": "ಸ್ಥಿತಿ", "paidAmount": "ಪಾವತಿ ಮೊತ್ತ", "reason": "ಕಾರಣ" }
+  },
+  "paymentSetup": {
+    "title": "ಪಾವತಿ ಸೆಟಪ್", "choosePayment": "ನಿಮ್ಮ ಅಫಿಲಿಯೇಟ್ ಪಾವತಿಗಳೊಂದಿಗೆ ಏನು ಮಾಡಬೇಕು ಎಂದು ಆಯ್ಕೆಮಾಡಿ",
+    "sendToPaypal": "PayPal ಗೆ ಪಾವತಿ ಕಳುಹಿಸಿ", "paypalEmail": "PayPal ಇಮೇಲ್"
+  },
+  "tosPage": { "title": "ಸೇವಾ ನಿಯಮಗಳು", "welcome": "InterServer ಅಫಿಲಿಯೇಟ್ ಪ್ರೋಗ್ರಾಂಗೆ ಸ್ವಾಗತ" }
+}

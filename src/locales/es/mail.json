@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista de Servicios de Correo",
+        "orderTitle": "Ordenar Registros de Correo"
+    },
+    "view": {
+        "title": "Ver Correo {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Próxima Fecha de Factura:",
+        "billing": "Facturación",
+        "billed": "facturado:",
+        "statusIs": "El estado es:",
+        "mailApi": "API de Correo",
+        "usageCount": "Recuento de Uso:",
+        "links": "Enlaces",
+        "connectionInfo": "Información de Conexión",
+        "welcomeEmailConfirm": "¿Está seguro de que desea reenviar el correo de bienvenida?",
+        "emailSent": "Correo Enviado",
+        "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada."
+    },
+    "order": {
+        "title": "Ordenar Correo"
+    },
+    "alerts": {
+        "title": "Alertas",
+        "addAlert": "Agregar Alerta",
+        "editAlert": "Editar Alerta",
+        "noAlerts": "No se encontraron alertas"
+    },
+    "delist": {
+        "title": "Eliminar de Lista",
+        "blockedEmails": "Correos Bloqueados"
+    },
+    "denyRules": {
+        "title": "Reglas de Denegación",
+        "addRule": "Agregar Regla",
+        "noRules": "No se encontraron reglas de denegación"
+    },
+    "logs": {
+        "title": "Registros",
+        "searchLogs": "Buscar Registros"
+    },
+    "stats": {
+        "title": "Estadísticas"
+    },
+    "deliverability": {
+        "title": "Entregabilidad"
+    }
+}

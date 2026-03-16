@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "Lisi Server Fa'apitoa",
+        "orderTitle": "Fa'atonuina Server"
+    },
+    "view": {
+        "title": "Va'ai Server {id}",
+        "package": "Fa'aopoopoga",
+        "dedicatedServer": "Server Fa'apitoa",
+        "nextInvoiceDate": "Aso Pili Sosoo:",
+        "billing": "Tupe Totogia",
+        "billed": "totogia:",
+        "statusIs": "Tulaga:",
+        "orderInfo": "Fa'amatalaga Fa'atonuina",
+        "orderId": "ID Fa'atonuina:",
+        "links": "Feso'ota'iga",
+        "serverInformation": "Fa'amatalaga Server",
+        "networkInformation": "Fa'amatalaga Feso'ota'iga",
+        "power": "Pawa",
+        "selectAction": "Filifili Gaoioiga",
+        "softReboot": "Toe Amata Vaivai",
+        "paymentStatus": "Tulaga Totogi:",
+        "emailSent": "Imeli Auina Atu",
+        "emailSentMessage": "Ua toe auina atu le imeli afio mai. Siaki lou punaoa imeli."
+    },
+    "order": {
+        "title": "Fa'atonuina Server",
+        "orderDedicatedServer": "Fa'atonuina Server Fa'apitoa",
+        "orderSummary": "Aotelega Fa'atonuina",
+        "selectServer": "Filifili Server",
+        "serverHostname": "Igoa Server",
+        "rootPassword": "Upu Fa'aoga Root",
+        "agreeToTerms": "Ioe i tulafono o le ofo",
+        "iAgreeToTerms": "Ua ou faitau tulafono i luga ma ou ioe.",
+        "placeOrder": "Tu'u Fa'atonuina",
+        "cpuSelection": "Filifili CPU",
+        "driveConfiguration": "Fa'atulagaga Faila",
+        "addDrive": "Fa'aopoopoina Faila",
+        "removeDrive": "Aveese Faila",
+        "selectMemory": "Filifili Mafaufau",
+        "selectOs": "Filifili Polokalame",
+        "region": "Itulagi",
+        "buyNow": "Faatau Nei",
+        "monthly": "Masina Uma",
+        "perMonth": "/masina",
+        "confirmOrder": "Fa'amaonia Fa'atonuina"
+    }
+}

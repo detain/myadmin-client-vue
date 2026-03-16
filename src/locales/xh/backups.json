@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Uluhlu lwesitoreji / Ukulondoloza",
+        "orderTitle": "Odola ukubhalisa kokugcinwa"
+    },
+    "view": {
+        "title": "Jonga ukulondoloza {id}",
+        "package": "Iphakeji",
+        "nextInvoiceDate": "Umhla weFatshi elilandelayo:",
+        "billing": "Ukuhlawula",
+        "billed": "kuhlawulwe:",
+        "statusIs": "Isimo ngu:",
+        "hostServer": "Iseva esingathayo",
+        "links": "Amanxibelelwano",
+        "welcomeEmailConfirm": "Uqinisekile ukuba ufuna ukuthumela kwakhona i-imeyili yamkelo?",
+        "emailSent": "I-imeyili ithunyiwe",
+        "emailSentMessage": "I-imeyili yamkelo ithunyiwe kwakhona. Jonga ibhokisi yakho yongeno."
+    },
+    "order": {
+        "title": "Odola isitoreji"
+    }
+}

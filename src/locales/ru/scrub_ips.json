@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Список услуг Scrub IPs",
+        "orderTitle": "Заказ Scrub IPs"
+    },
+    "view": {
+        "title": "Просмотр Scrub IPs",
+        "currentIp": "Текущий IP",
+        "ipAddress": "IP-адрес",
+        "ipFromService": "IP от услуги"
+    },
+    "filters": {
+        "title": "Фильтры",
+        "createNew": "Создать новый",
+        "createNewFilter": "Создать новый фильтр",
+        "filterType": "Тип фильтра",
+        "selectFilterType": "Выбрать тип фильтра",
+        "ipAddress": "IP-адрес",
+        "portNo": "Номер порта",
+        "filter": "Фильтр",
+        "destinationIp": "Конечный IP",
+        "destinationPort": "Конечный порт",
+        "noFiltersFound": "Фильтры не найдены!",
+        "deleteFilterConfirm": "Вы уверены, что хотите удалить этот фильтр?",
+        "unableToCreateFilter": "Не удалось создать фильтр в данный момент.",
+        "unableToDeleteFilter": "Не удалось удалить фильтр в данный момент."
+    },
+    "firewallRules": {
+        "title": "Правила брандмауэра",
+        "createNew": "Создать новое",
+        "createNewFirewall": "Создать новое правило брандмауэра",
+        "protocol": "Протокол",
+        "destinationIp": "Конечный IP",
+        "destinationPort": "Конечный порт",
+        "sourceIp": "Исходный IP",
+        "sourcePort": "Исходный порт",
+        "xdpAction": "Действие XDP",
+        "ipRequired": "IP-адрес обязателен",
+        "block": "Блокировать",
+        "whitelist": "Белый список",
+        "noRulesFound": "Правила не найдены!",
+        "deleteRuleConfirm": "Вы уверены, что хотите удалить это правило?",
+        "unableToCreateRule": "Не удалось создать правило брандмауэра в данный момент.",
+        "unableToDeleteRule": "Не удалось удалить правило брандмауэра в данный момент."
+    },
+    "geoFirewallRules": {
+        "title": "Гео-правила брандмауэра",
+        "createNew": "Создать новое",
+        "createNewGeoRule": "Создать новое гео-правило брандмауэра",
+        "destinationIp": "Конечный IP",
+        "destinationPort": "Конечный порт",
+        "sourceCountry": "Страна источника",
+        "sourceAsn": "ASN источника",
+        "xdpAction": "Действие XDP",
+        "portNo": "Номер порта",
+        "selectCountry": "Выбрать страну",
+        "asn": "ASN",
+        "block": "Блокировать",
+        "whitelist": "Белый список",
+        "noRulesFound": "Правила не найдены!",
+        "deleteGeoRuleConfirm": "Вы уверены, что хотите удалить это гео-правило?",
+        "unableToCreateRule": "Не удалось создать правило брандмауэра в данный момент.",
+        "unableToDeleteRule": "Не удалось удалить гео-правило брандмауэра в данный момент."
+    }
+}

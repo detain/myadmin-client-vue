@@ -1,0 +1,34 @@
+{
+  "cart": {
+    "title": "Karanjang","payBalance": "Bayar Saldo","billingAddress": "Alamat Tagihan","currency": "Mata Uang",
+    "service": "Layanan","description": "Deskripsi","date": "Tanggal","serviceStatus": "Status Layanan",
+    "actions": "Aksi","amount": "Jumlah","deleteInvoice": "Hapus Invoice","empty": "Kosong...",
+    "all": "Sadayana","none": "Teu aya","active": "Aktip","paymentOptions": "Pilihan Pembayaran",
+    "howToPay": "Kumaha anjeun hoyong bayar?","selectAddCreditCard": "Pilih / Tambah Kartu Kredit",
+    "addNewCard": "Tambah Kartu Anyar","allUpToDate": "Anjeun geus up to date!",
+    "noUnpaidInvoices": "Teu kapendak invoice anu teu dibayar.","totalInvoices": "Total Invoice",
+    "toBePaid": "Anu Kedah Dibayar","thankYouForOrder": "Hatur nuhun pikeun pesanan anjeun."
+  },
+  "creditCard": {
+    "addCreditCard": "Tambah Kartu Kredit","cardNumber": "Nomer Kartu","expiryDate": "Tanggal Kadaluwarsa",
+    "cvv": "CVV","verified": "Diverifikasi","notVerified": "Teu Diverifikasi","verifyButton": "Verifikasi",
+    "deleteCreditCard": "Hapus Kartu Kredit",
+    "deleteConfirm": "Naha anjeun yakin hoyong ngahapus kartu kredit {card} anjeun?"
+  },
+  "invoices": {
+    "title": "Daptar Invoice","goBack": "Balik","month": "Bulan","year": "Taun","id": "ID",
+    "date": "Tanggal","service": "Layanan","description": "Deskripsi","amount": "Jumlah",
+    "paid": "Dibayar","paidOn": "Dibayar Tanggal","viewInvoice": "Tempo Invoice",
+    "page": "Kaca {current} tina {total}","prev": "Samehna","next": "Salajengna","all": "Sadayana"
+  },
+  "paymentSuccess": {
+    "title": "Pembayaran Sukses","successful": "Pembayaran Sukses!",
+    "thankYou": "Hatur nuhun pikeun pembayaran anjeun. Transaksi anjeun geus direngsekeun kalawan sukses.",
+    "backToCart": "Balik ka Karanjang","goToDashboard": "Indit ka Dasbor"
+  },
+  "prepays": {
+    "title": "Dana Prabayar","addNewPrepay": "Tambah Prabayar Anyar","balance": "Saldo: {amount}",
+    "yes": "Enya","no": "Henteu","noPrepaidFunds": "Teu aya dana prabayar nu sayogi",
+    "amountInUsd": "Jumlah dina USD","deletePrepay": "Hapus Prabayar"
+  }
+}

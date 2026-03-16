@@ -1,0 +1,12 @@
+{
+    "required": "{field} talab qilinadi",
+    "email": "To'g'ri elektron pochta manzili bo'lishi kerak",
+    "minLength": "Kamida {min} ta belgi bo'lishi kerak",
+    "maxLength": "{max} ta belgidan ko'p bo'lmasligi kerak",
+    "passwordMatch": "Parollar mos kelishi kerak",
+    "invalidFormat": "Noto'g'ri format",
+    "numeric": "Raqam bo'lishi kerak",
+    "url": "To'g'ri URL bo'lishi kerak",
+    "ipAddress": "To'g'ri IP manzil bo'lishi kerak",
+    "hostname": "To'g'ri xost nomi bo'lishi kerak"
+}

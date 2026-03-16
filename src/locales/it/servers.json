@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Elenco Server Dedicati",
+    "orderTitle": "Ordina Registrazioni Server"
+  },
+  "view": {
+    "title": "Visualizza Server {id}",
+    "package": "Pacchetto",
+    "dedicatedServer": "Server Dedicato",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturato:",
+    "statusIs": "Stato è:",
+    "orderInfo": "Informazioni Ordine",
+    "orderId": "ID Ordine:",
+    "links": "Link",
+    "serverInformation": "Informazioni Server",
+    "networkInformation": "Informazioni Rete",
+    "power": "Alimentazione",
+    "selectAction": "Seleziona Azione",
+    "softReboot": "Riavvio Soft",
+    "paymentStatus": "Stato Pagamento:",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina Server",
+    "orderDedicatedServer": "Ordina Server Dedicato",
+    "orderSummary": "Riepilogo Ordine",
+    "selectServer": "Seleziona Server",
+    "serverHostname": "Hostname Server",
+    "rootPassword": "Password Root",
+    "agreeToTerms": "Accetta i termini dell'offerta",
+    "iAgreeToTerms": "Ho letto i termini sopra e accetto.",
+    "placeOrder": "Effettua il Mio Ordine",
+    "cpuSelection": "Selezione CPU",
+    "driveConfiguration": "Configurazione Disco",
+    "addDrive": "Aggiungi Disco",
+    "removeDrive": "Rimuovi Disco",
+    "selectMemory": "Seleziona Memoria",
+    "selectOs": "Seleziona Sistema Operativo",
+    "region": "Regione",
+    "buyNow": "Acquista Ora",
+    "monthly": "Mensile",
+    "perMonth": "/mese",
+    "confirmOrder": "Conferma Ordine"
+  }
+}

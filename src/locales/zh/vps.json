@@ -1,0 +1,9 @@
+{
+    "list": { "title": "VPS 列表", "orderVps": "订购 VPS" },
+    "view": { "title": "查看 VPS {id}", "package": "套餐", "billing": "账单", "billed": "已计费", "vpsStatus": "VPS 状态：", "hostServer": "宿主服务器：", "nextInvoiceDate": "下次发票日期：", "vpsInformation": "VPS 信息", "powerStatus": "电源状态：", "selectAction": "选择操作", "disk": "磁盘", "totalSpace": "总空间：", "usedSpace": "已用空间：", "remainingSpace": "剩余空间：", "systemInformation": "系统信息", "memory": "内存：", "cpuCores": "CPU 核数：", "os": "操作系统：", "links": "链接", "updateComment": "更新备注", "saveChanges": "保存更改", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
+    "order": { "title": "订购 VPS", "osDistribution": "操作系统发行版", "osVersion": "操作系统版本", "hostname": "主机名", "rootPassword": "Root 密码", "couponCode": "优惠券代码", "continue": "继续", "orderSummary": "订单摘要", "total": "总计", "tosAgree": "我已阅读并同意以上条款。", "placeOrder": "下单" },
+    "changeHostname": { "title": "修改 VPS 主机名", "existingHostname": "现有主机名", "newHostname": "新主机名", "updateHostname": "更新主机名" },
+    "changeRootPassword": { "title": "修改 VPS Root 密码", "newPassword": "新密码：", "confirmPassword": "确认密码：", "changePassword": "修改密码", "passwordMismatch": "密码和确认密码不匹配" },
+    "reinstallOs": { "title": "重装操作系统", "importantNote1": "重装操作系统将删除所有数据。", "importantNote2": "重装操作系统前，请先进行备份。", "osDistribution": "操作系统发行版", "confirmReinstallButton": "确认重装操作系统" },
+    "common": { "goBack": "返回", "back": "返回", "pleaseWait": "请稍候！", "success": "成功{text}", "gotError": "发生错误 {error}" }
+}

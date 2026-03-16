@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "የፈቃድ ዝርዝር",
+        "orderTitle": "የፈቃድ ምዝገባዎችን አዝዝ"
+    },
+    "view": {
+        "title": "ፈቃድ {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል:",
+        "statusIs": "ሁኔታ ነው:",
+        "licenseInfo": "የፈቃድ መረጃ",
+        "cpanelInfo": "cPanel መረጃ",
+        "links": "ሊንኮች",
+        "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።"
+    },
+    "order": {
+        "title": "ፈቃድ አዝዝ"
+    },
+    "changeIp": {
+        "title": "IP ቀይር"
+    },
+    "changeOs": {
+        "title": "OS ቀይር",
+        "selectLicenseOs": "ፈቃድ OS ምረጥ"
+    }
+}

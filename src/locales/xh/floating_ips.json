@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Uluhlu weenkonzo ze-Floating IPs",
+        "orderTitle": "Odola ukubhalisa kwe-Floating IP"
+    },
+    "view": {
+        "title": "Jonga i-Floating IP {id}",
+        "package": "Iphakeji",
+        "nextInvoiceDate": "Umhla weFatshi elilandelayo:",
+        "billing": "Ukuhlawula",
+        "billed": "kuhlawulwe:",
+        "statusIs": "Isimo ngu:",
+        "floatingIp": "I-Floating IP",
+        "links": "Amanxibelelwano",
+        "welcomeEmailConfirm": "Uqinisekile ukuba ufuna ukuthumela kwakhona i-imeyili yamkelo?",
+        "emailSent": "I-imeyili ithunyiwe",
+        "emailSentMessage": "I-imeyili yamkelo ithunyiwe kwakhona. Jonga ibhokisi yakho yongeno."
+    },
+    "order": {
+        "title": "Odola i-Floating IP"
+    },
+    "changeIp": {
+        "title": "Guqula i-IP yoXesha"
+    }
+}

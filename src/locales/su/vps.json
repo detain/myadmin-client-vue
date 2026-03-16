@@ -1,0 +1,32 @@
+{
+  "list": {"title": "Daptar VPS","orderVps": "Pesan VPS"},
+  "view": {
+    "title": "Tempo VPS {id}","package": "Paket","billing": "Tagihan","billed": "ditagih",
+    "vpsStatus": "Status VPS nyaeta:","hostServer": "Server Host:","nextInvoiceDate": "Tanggal Invoice Salajengna:",
+    "vpsInformation": "Inpormasi VPS","powerStatus": "Status Daya nyaeta:","selectAction": "Pilih Aksi",
+    "disk": "Disk","totalSpace": "Total Ruang:","usedSpace": "Ruang Dipake:","remainingSpace": "Ruang Sesana:",
+    "systemInformation": "Inpormasi Sistem","memory": "Memori:","cpuCores": "Inti CPU:","os": "OS:",
+    "links": "Tautan","updateComment": "Apdet Komentar","saveChanges": "Simpen parobahan",
+    "emailSent": "Email Dikirimkeun","emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+  },
+  "order": {
+    "title": "Pesan VPS","osDistribution": "Distribusi OS","osVersion": "Versi OS","hostname": "Hostname",
+    "rootPassword": "Kecap Akses Root","couponCode": "Kode Kupon","continue": "Teraskeun",
+    "orderSummary": "Ringkesan Pesanan","total": "Total","tosAgree": "Kuring geus maca syarat di luhur sareng satuju.",
+    "placeOrder": "Pasang Pesanan"
+  },
+  "changeHostname": {
+    "title": "Ganti Hostname VPS","existingHostname": "Hostname Anu Aya","newHostname": "Hostname Anyar",
+    "updateHostname": "Apdet Hostname"
+  },
+  "changeRootPassword": {
+    "title": "Ganti Kecap Akses Root VPS","newPassword": "Kecap Akses Anyar:","confirmPassword": "Konfirmasi Kecap Akses:",
+    "changePassword": "Ganti Kecap Akses","passwordMismatch": "Kecap Akses sareng Konfirmasi Kecap Akses teu cocog"
+  },
+  "reinstallOs": {
+    "title": "Pasang Ulang OS","importantNote1": "Masang ulang sistem operasi bakal ngahapus sadaya data.",
+    "importantNote2": "Sateuacan masang ulang sistem operasi, punten laksanakeun cadangan.",
+    "osDistribution": "Distribusi Sistem Operasi","confirmReinstallButton": "Konfirmasi Pasang Ulang OS"
+  },
+  "common": {"goBack": "Balik","back": "Balik","pleaseWait": "Punten Tunggu!","success": "Sukses{text}","gotError": "Aya kasalahan {error}"}
+}

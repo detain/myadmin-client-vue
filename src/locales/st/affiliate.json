@@ -1,0 +1,44 @@
+{
+  "title": "Sisteme ea Affiliate",
+  "breadcrumb": "Affiliate",
+  "attention": "Lenaneo lena la affiliate ha le reretsoeng ho romela 'melemo ea lentsoe' kapa 'bareki.' Ka kopo bala {faqLink} pele o tsoela pele.",
+  "faqLinkText": "FAQ",
+  "earnPerSale": "Fumana {amount} ka thekiso e ncha ea moreki!",
+  "knowMore": "Tseba Haholoanyane",
+  "affiliateUrl": "URL ea Affiliate",
+  "shareUrl": "Arolelana URL ea hau e ikhethang ea affiliate le metsoalle",
+  "links": "Likhoele",
+  "salesGraph": "Sesebelisoa sa Lithekiso",
+  "webTrafficGraph": "Sesebelisoa sa Selekane sa Marang-rang",
+  "goBack": "Khutlela Morao",
+  "back": "Morao",
+  "exportFailed": "Romelo e hlolehile",
+  "copiedToClipboard": "E kopitsoe ho clipboard.",
+  "signups": {
+    "title": "Libonyane tsa Affiliate",
+    "pending": "E Emetse",
+    "paid": "E Lefiloe",
+    "failed": "E Hlolehile",
+    "locked": "E Koetsoe",
+    "rejected": "E Hantsoe",
+    "noRecords": "Ha ho lirekoto tse fumanehileng",
+    "columns": {
+      "id": "ID",
+      "service": "Tšebeletso",
+      "signupDate": "Letsatsi la Boikamahano",
+      "status": "Boemo",
+      "paidAmount": "Chelete e Lefileng",
+      "reason": "Lebaka"
+    }
+  },
+  "paymentSetup": {
+    "title": "Tlhophiso ea Tefo",
+    "choosePayment": "Khetha seo u batlang ho etsa le litefello tsa hau tsa affiliate",
+    "sendToPaypal": "Romela Litefello ho PayPal",
+    "paypalEmail": "Imeile ea PayPal"
+  },
+  "tosPage": {
+    "title": "Maemo a Tšebeletso",
+    "welcome": "Re u Amohela ho Lenaneo la Affiliate la InterServer"
+  }
+}

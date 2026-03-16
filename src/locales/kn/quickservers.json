@@ -1,0 +1,20 @@
+{
+  "list": { "title": "ತ್ವರಿತ ನಿಯೋಜನೆ ಸರ್ವರ್ ಪಟ್ಟಿ", "orderTitle": "ತ್ವರಿತ ನಿಯೋಜನೆ ಸರ್ವರ್ ನೋಂದಣಿ ಆದೇಶಿಸಿ" },
+  "view": {
+    "title": "ತ್ವರಿತ ನಿಯೋಜನೆ ಸರ್ವರ್ {id} ವೀಕ್ಷಿಸಿ", "package": "ಪ್ಯಾಕೇಜ್",
+    "nextInvoiceDate": "ಮುಂದಿನ ಇನ್‌ವಾಯ್ಸ್ ದಿನಾಂಕ:", "billing": "ಬಿಲ್ಲಿಂಗ್", "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ:",
+    "paymentStatus": "ಪಾವತಿ ಸ್ಥಿತಿ:", "statusIs": "ಸ್ಥಿತಿ:", "serverInformation": "QuickServer ಮಾಹಿತಿ",
+    "powerStatusIs": "ವಿದ್ಯುತ್ ಸ್ಥಿತಿ:", "selectAction": "ಕ್ರಿಯೆ ಆಯ್ಕೆಮಾಡಿ", "disk": "ಡಿಸ್ಕ್",
+    "totalSpace": "ಒಟ್ಟು ಜಾಗ:", "freeSpace": "ಮುಕ್ತ ಜಾಗ:", "remainingSpace": "ಉಳಿದ ಜಾಗ:",
+    "systemInformation": "ಸಿಸ್ಟಮ್ ಮಾಹಿತಿ", "os": "OS", "links": "ಲಿಂಕ್‌ಗಳು",
+    "updateComment": "ಕಾಮೆಂಟ್ ನವೀಕರಿಸಿ", "saveChanges": "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
+    "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ", "emailSentMessage": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ."
+  },
+  "order": {
+    "title": "ತ್ವರಿತ ನಿಯೋಜನೆ ಸರ್ವರ್ ಆದೇಶಿಸಿ", "orderSummary": "ಆದೇಶ ಸಾರಾಂಶ",
+    "selectServer": "ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ", "osDistribution": "OS ವಿತರಣೆ", "osVersion": "OS ಆವೃತ್ತಿ",
+    "rootPassword": "Root ಪಾಸ್‌ವರ್ಡ್", "total": "ಒಟ್ಟು", "serverName": "ಸರ್ವರ್ ಹೆಸರು",
+    "operatingSystem": "ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್", "agreeToTerms": "ಆಫರ್ ನಿಯಮಗಳಿಗೆ ಒಪ್ಪಿಗೆ",
+    "iAgreeToTerms": "ಮೇಲಿನ ನಿಯಮಗಳನ್ನು ಓದಿ ಒಪ್ಪಿಗೆ ನೀಡುತ್ತೇನೆ.", "placeOrder": "ಆದೇಶ ಇಡಿ"
+  }
+}

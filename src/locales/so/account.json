@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Goobaha Xisaabta"
+    },
+    "changePassword": {
+        "title": "Erayga Sirta Beddel",
+        "cardTitle": "Erayga Sirta Cusboonaysii",
+        "currentPassword": "Erayga Sirta Hadda",
+        "newPassword": "Erayga Sirta Cusub",
+        "confirmPassword": "Erayga Sirta Xaqiiji",
+        "updatePassword": "Erayga Sirta Cusboonaysii"
+    },
+    "changeUsername": {
+        "title": "Magaca Isticmaalaha Beddel",
+        "disabled": "Beddelka magaca isticmaalaha waa la joojiyay si ku-meel-gaar ah.",
+        "currentUsername": "Magaca Isticmaalaha Hadda",
+        "newDesiredUsername": "Magaca Isticmaalaha Cusub ee Loo Doonayo",
+        "confirmationCode": "Koodka Xaqiijinta",
+        "pleaseWait": "Fadlan sug!",
+        "gotError": "Khalad ayaa dhacay {error}"
+    },
+    "contactInfo": {
+        "title": "Macluumaadka Xiriirka",
+        "cardTitle": "Macluumaadka Xiriirka Cusboonaysii",
+        "headsUp": "Fiiro gaar ah!",
+        "headsUpMessage": "In kasta oo macluumaadkani uu ikhtiyaari yahay, bixinta macluumaad (saxda ah) ayaa gargaari doona labadayada dhexmarsiinta iyo hoos u dhigista Dhibcahaaga Khatarta % ayna siineyso galitaanka degdegga ah iyo habboon qaybaha goobta (sida in aan loo xaqiijin kaarka deynta).",
+        "riskScore": "Dhibcaha Khatarta %",
+        "personalInformation": "Macluumaadka Shakhsiga",
+        "name": "Magaca",
+        "namePlaceholder": "Maxamed Axmed",
+        "company": "Shirkadda",
+        "gstinTaxId": "Lambarka Canshuurta GSTIN",
+        "gstinPlaceholder": "Lambarka Aqoonsiga Canshuuraha Badeecadaha iyo Adeegyada",
+        "addressLine1": "Cinwaanka Xarriiqda 1",
+        "addressLine2": "Cinwaanka Xarriiqda 2",
+        "cityState": "Magaalada, Gobolka",
+        "city": "Magaalada",
+        "state": "Gobolka",
+        "country": "Wadanka",
+        "zipcode": "Koodhka Boostada",
+        "phoneNo": "Lambarka Telefoonka",
+        "phoneNumber": "Lambarka Telefoonka",
+        "language": "Luqadda",
+        "auto": "Otomaatig",
+        "currency": "Lacagta",
+        "timeZone": "Xilliga Goobta",
+        "otherSettings": "Goobaha Kale",
+        "disablePasswordResets": "Dib-u-dejinta Erayga Sirta (Eraygaaga Sirta Ma Ilowday) Jooji.",
+        "disableInvoiceReminders": "Ogeysiisyada Iimaylka Xasuusinta Qaybsashada Jooji.",
+        "disableServerInvoiceReminders": "Ogeysiisyada Iimaylka Xasuusinta Qaybsashada Server-ka Jooji.",
+        "disableReinstall": "Dib-u-rakibidda Jooji.",
+        "alternateEmailInvoices": "Iimaylka Kale ee Qaybsashada",
+        "alternateEmailInvoicesPlaceholder": "Iimaylka kale ee loogu diro qaybsashada",
+        "alternateEmailAbuse": "Iimaylka Kale ee Warbixinta Xadgudubka",
+        "updateInfo": "Macluumaadka Cusboonaysii"
+    }
+}

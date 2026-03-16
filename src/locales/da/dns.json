@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Tilføj domæne",
+        "deleteDomain": "Slet domæne",
+        "domainName": "Domænenavn",
+        "dnsServers": "DNS-servere",
+        "confirmDelete": "Er du sikker på, at du vil slette dette domæne?",
+        "noDomains": "Ingen domæner fundet"
+    },
+    "editor": {
+        "title": "DNS-editor",
+        "addRecord": "Tilføj post",
+        "deleteRecord": "Slet post",
+        "editRecord": "Rediger post",
+        "recordType": "Posttype",
+        "hostname": "Værtsnavn",
+        "address": "Adresse",
+        "distance": "Afstand",
+        "weight": "Vægt",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Handlinger",
+        "confirmDelete": "Er du sikker på, at du vil slette denne post?"
+    }
+}

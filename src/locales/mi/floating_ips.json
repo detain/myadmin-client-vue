@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Rārangi Ratonga IP Mānu",
+        "orderTitle": "Ota Ngā Rēhitatanga IP Mānu"
+    },
+    "view": {
+        "title": "Tiro IP Mānu {id}",
+        "package": "Pēke",
+        "nextInvoiceDate": "Rā Pire Panuku:",
+        "billing": "Utu",
+        "billed": "Utua:",
+        "statusIs": "Ko te Āhua:",
+        "floatingIp": "IP Mānu",
+        "links": "Ngā Hononga",
+        "welcomeEmailConfirm": "He tūturu tāu e hiahia ana ki te tono anō i te īmēra whakamihi?",
+        "emailSent": "Kua Tukuna Īmēra",
+        "emailSentMessage": "Kua tukuna anō te īmēra whakamihi. Tirohia tō pouaka tomo."
+    },
+    "order": {
+        "title": "Ota IP Mānu"
+    },
+    "changeIp": {
+        "title": "Huri IP Whāinga"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Procurator",
+        "addDomain": "Adde Dominium",
+        "deleteDomain": "Dele Dominium",
+        "domainName": "Nomen Dominii",
+        "dnsServers": "Servers DNS",
+        "confirmDelete": "Esne certus te velle hoc dominium delere?",
+        "noDomains": "Nulla dominia inventa"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Adde Actum",
+        "deleteRecord": "Dele Actum",
+        "editRecord": "Emenda Actum",
+        "recordType": "Genus Acti",
+        "hostname": "Nomen Machinae",
+        "address": "Inscriptio",
+        "distance": "Distantia",
+        "weight": "Pondus",
+        "port": "Porta",
+        "ttl": "TTL",
+        "actions": "Actiones",
+        "confirmDelete": "Esne certus te velle hunc actum delere?"
+    }
+}

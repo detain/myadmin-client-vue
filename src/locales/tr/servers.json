@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "Özel Sunucular Listesi",
+        "orderTitle": "Sunucu Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Sunucu {id} Görüntüle",
+        "package": "Paket",
+        "dedicatedServer": "Özel Sunucu",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "orderInfo": "Sipariş Bilgisi",
+        "orderId": "Sipariş ID:",
+        "links": "Bağlantılar",
+        "serverInformation": "Sunucu Bilgileri",
+        "networkInformation": "Ağ Bilgileri",
+        "power": "Güç",
+        "selectAction": "İşlem Seçin",
+        "softReboot": "Yazılımsal Yeniden Başlatma",
+        "paymentStatus": "Ödeme Durumu:",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "Sunucu Siparişi",
+        "orderDedicatedServer": "Özel Sunucu Siparişi",
+        "orderSummary": "Sipariş Özeti",
+        "selectServer": "Sunucu Seçin",
+        "serverHostname": "Sunucu Ana Makine Adı",
+        "rootPassword": "Root Şifresi",
+        "agreeToTerms": "Teklif koşullarını kabul edin",
+        "iAgreeToTerms": "Yukarıdaki koşulları okudum ve kabul ediyorum.",
+        "placeOrder": "Siparişimi Ver",
+        "cpuSelection": "CPU Seçimi",
+        "driveConfiguration": "Sürücü Yapılandırması",
+        "addDrive": "Sürücü Ekle",
+        "removeDrive": "Sürücüyü Kaldır",
+        "selectMemory": "Bellek Seçin",
+        "selectOs": "İşletim Sistemi Seçin",
+        "region": "Bölge",
+        "buyNow": "Şimdi Satın Al",
+        "monthly": "Aylık",
+        "perMonth": "/ay",
+        "confirmOrder": "Siparişi Onayla"
+    }
+}

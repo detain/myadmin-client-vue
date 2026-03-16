@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Liiska Shahaadooyinka SSL",
+        "orderTitle": "Diiwaangelinta SSL Dalbo"
+    },
+    "view": {
+        "title": "SSL {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "Lagu xisaabiyey:",
+        "statusIs": "Xaaladdu waa:",
+        "orderInfo": "Macluumaadka Dalabka",
+        "certificateInfo": "Macluumaadka Shahaadada",
+        "links": "Xiriiriyayaasha",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "order": {
+        "title": "SSL Dalbo"
+    },
+    "changeApproverEmail": {
+        "title": "Iimaylka Ansixiyaha Beddel",
+        "selectApproverEmail": "Iimaylka Ansixiyaha Dooro"
+    }
+}

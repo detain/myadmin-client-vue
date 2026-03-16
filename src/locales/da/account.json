@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontoindstillinger"
+    },
+    "changePassword": {
+        "title": "Skift adgangskode",
+        "cardTitle": "Opdater adgangskode",
+        "currentPassword": "Nuværende adgangskode",
+        "newPassword": "Ny adgangskode",
+        "confirmPassword": "Bekræft adgangskode",
+        "updatePassword": "Opdater adgangskode"
+    },
+    "changeUsername": {
+        "title": "Skift brugernavn",
+        "disabled": "Ændring af brugernavn er midlertidigt deaktiveret.",
+        "currentUsername": "Nuværende brugernavn",
+        "newDesiredUsername": "Ønsket nyt brugernavn",
+        "confirmationCode": "Bekræftelseskode",
+        "pleaseWait": "Vent venligst!",
+        "gotError": "Fik fejl {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktoplysninger",
+        "cardTitle": "Opdater kontaktoplysninger",
+        "headsUp": "Bemærk!",
+        "headsUpMessage": "Selvom disse oplysninger er valgfrie, vil det at give (nøjagtige) oplysninger hjælpe med at berige vores interaktioner og sænke din risiko %-score, hvilket giver dig hurtigere og mere bekvem adgang til dele af siden (f.eks. uden at skulle godkende et kreditkort).",
+        "riskScore": "Risiko %-score",
+        "personalInformation": "Personlige oplysninger",
+        "name": "Navn",
+        "namePlaceholder": "Jens Jensen",
+        "company": "Virksomhed",
+        "gstinTaxId": "GSTIN Skatte-ID",
+        "gstinPlaceholder": "Vare- og tjenesteydelsesskatteidentifikationsnummer",
+        "addressLine1": "Adresselinje 1",
+        "addressLine2": "Adresselinje 2",
+        "cityState": "By, Stat",
+        "city": "By",
+        "state": "Stat",
+        "country": "Land",
+        "zipcode": "Postnummer",
+        "phoneNo": "Telefonnr.",
+        "phoneNumber": "Telefonnummer",
+        "language": "Sprog",
+        "auto": "Auto",
+        "currency": "Valuta",
+        "timeZone": "Tidszone",
+        "otherSettings": "Andre indstillinger",
+        "disablePasswordResets": "Deaktiver (Glemt din adgangskode) adgangskoderesets.",
+        "disableInvoiceReminders": "Deaktiver e-mailnotifikationer om fakturapåmindelser.",
+        "disableServerInvoiceReminders": "Deaktiver e-mailnotifikationer om serverfakturapåmindelser.",
+        "disableReinstall": "Deaktiver geninstallation.",
+        "alternateEmailInvoices": "Alternativ e-mail til fakturaer",
+        "alternateEmailInvoicesPlaceholder": "Alternativ e-mail til afsendelse af fakturaer",
+        "alternateEmailAbuse": "Alternativ e-mail til misbrug rapporter",
+        "updateInfo": "Opdater oplysninger"
+    }
+}

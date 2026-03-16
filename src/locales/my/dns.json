@@ -1,0 +1,4 @@
+{
+    "manager": { "title": "DNS မန်နေဂျာ", "addDomain": "ဒိုမိန်း ထည့်ရန်", "deleteDomain": "ဒိုမိန်း ဖျက်ရန်", "domainName": "ဒိုမိန်း နာမည်", "dnsServers": "DNS ဆာဗာများ", "confirmDelete": "ဤဒိုမိန်းကို ဖျက်လိုသည်မှာ သေချာပါသလား?", "noDomains": "ဒိုမိန်း မတွေ့ပါ" },
+    "editor": { "title": "DNS တည်းဖြတ်ကိရိယာ", "addRecord": "မှတ်တမ်း ထည့်ရန်", "deleteRecord": "မှတ်တမ်း ဖျက်ရန်", "editRecord": "မှတ်တမ်း တည်းဖြတ်ရန်", "recordType": "မှတ်တမ်း အမျိုးအစား", "hostname": "ဟိုစ်နာမည်", "address": "လိပ်စာ", "distance": "အကွာအဝေး", "weight": "အလေးချိန်", "port": "ပို့", "ttl": "TTL", "actions": "လုပ်ဆောင်ချက်များ", "confirmDelete": "ဤမှတ်တမ်းကို ဖျက်လိုသည်မှာ သေချာပါသလား?" }
+}

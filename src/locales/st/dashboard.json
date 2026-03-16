@@ -1,0 +1,28 @@
+{
+  "title": "Setšoantšo",
+  "welcome": "Re u amohela, {name}",
+  "lastLogin": "Kena la Ho Qetela",
+  "lastLoginIp": "IP ea Kena la Ho Qetela",
+  "prepay": {
+    "title": "Tefo ea Prepay",
+    "remainingBalance": "Tefo e Setseng ea Prepay",
+    "manageAccount": "Laola Akhaonto",
+    "manageTooltip": "Laola Akhaonto ea Hau ea Prepay"
+  },
+  "invoices": {
+    "title": "Liinvoisi tse sa Lefoang",
+    "totalUnpaid": "Kakaretso ea Liinvoisi tse sa Lefoang",
+    "totalAmount": "Kakaretso ea Chelete e Tlamehang ho Lefoa",
+    "payTotalTooltip": "Lefa Chelete Kaofela"
+  },
+  "callInPin": "PIN ea Mohala",
+  "recentTickets": "Litiikiti tsa Morao",
+  "viewAllTickets": "Bona Litiikiti Tsohle",
+  "editTicket": "Hlophisa Tikiti",
+  "serviceCount": "Ha ho litšebeletso tse sebetsang | {count} tšebeletso e sebetsang | {count} litšebeletso tse sebetsang",
+  "affiliate": {
+    "earnPerSale": "Fumana {amount} ka Thekiso",
+    "urlPlaceholder": "URL ea Affiliate",
+    "shareWith": "Arolelana le"
+  }
+}

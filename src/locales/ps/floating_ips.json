@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "د ګرځنده IPs خدماتو لیست",
+        "orderTitle": "د ګرځنده IP ثبت نامونو امر"
+    },
+    "view": {
+        "title": "ګرځنده IP {id} وګورئ",
+        "package": "پاکیج",
+        "nextInvoiceDate": "د راتلونکي انوایس نیټه:",
+        "billing": "بیل",
+        "billed": "بیل شوی:",
+        "statusIs": "حالت دی:",
+        "floatingIp": "ګرځنده IP",
+        "links": "لینکونه",
+        "welcomeEmailConfirm": "ایا تاسو ډاډه یاست چې د هرکلي بریښنالیک بیا ولیږئ؟",
+        "emailSent": "بریښنالیک ولیږل شو",
+        "emailSentMessage": "د هرکلي بریښنالیک بیا ولیږل شو. خپل انباکس وګورئ."
+    },
+    "order": {
+        "title": "ګرځنده IP امر ورکړئ"
+    },
+    "changeIp": {
+        "title": "د هدف IP بدلول"
+    }
+}

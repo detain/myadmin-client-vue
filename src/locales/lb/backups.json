@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Späicher / Backup-Lëscht",
+        "orderTitle": "Backup-Registréierungen bestellen"
+    },
+    "view": {
+        "title": "Backup {id} uweisennt",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächst Rechnungsdatum:",
+        "billing": "Rechnungsstellung",
+        "billed": "berechent:",
+        "statusIs": "Status ass:",
+        "hostServer": "Host-Server",
+        "links": "Links",
+        "welcomeEmailConfirm": "Sidd Dir sécher datt Dir d'Wëllkommens-E-Mail erneut schécke wëllt?",
+        "emailSent": "E-Mail geschéckt",
+        "emailSentMessage": "D'Wëllkommens-E-Mail gouf erneut geschéckt. Iwwerpréift Ären Agangskaascht."
+    },
+    "order": {
+        "title": "Späicher bestellen"
+    }
+}

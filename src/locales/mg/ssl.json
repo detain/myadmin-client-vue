@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lisitry ny Sertifikat SSL",
+        "orderTitle": "Manome baiko ny Fisoratana SSL"
+    },
+    "view": {
+        "title": "Jereo ny SSL {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa:",
+        "statusIs": "Sata dia:",
+        "orderInfo": "Fampahalalana Baiko",
+        "certificateInfo": "Fampahalalana Sertifikata",
+        "links": "Rohy",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "order": {
+        "title": "Manome baiko SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Hanova ny Email Mpankaiky",
+        "selectApproverEmail": "Misafidiana Email Mpankaiky"
+    }
+}

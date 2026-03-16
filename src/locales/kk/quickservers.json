@@ -1,0 +1,20 @@
+{
+  "list": { "title": "Жылдам орналастыру серверлері тізімі", "orderTitle": "Жылдам орналастыру сервері тіркеулеріне тапсырыс беру" },
+  "view": {
+    "title": "Жылдам орналастыру сервері {id} қарау", "package": "Пакет",
+    "nextInvoiceDate": "Келесі шот күні:", "billing": "Есеп айырысу", "billed": "есептелген:",
+    "paymentStatus": "Төлем күйі:", "statusIs": "Күйі:", "serverInformation": "QuickServer ақпараты",
+    "powerStatusIs": "Қуат күйі:", "selectAction": "Әрекет таңдау", "disk": "Диск",
+    "totalSpace": "Жалпы орын:", "freeSpace": "Бос орын:", "remainingSpace": "Қалған орын:",
+    "systemInformation": "Жүйе ақпараты", "os": "OS", "links": "Сілтемелер",
+    "updateComment": "Пікірді жаңарту", "saveChanges": "Өзгерістерді сақтау",
+    "emailSent": "Хат жіберілді", "emailSentMessage": "Қош келдіңіз хаты қайта жіберілді. Кіріс жәшігіңізді тексеріңіз."
+  },
+  "order": {
+    "title": "Жылдам орналастыру сервері тапсырыс беру", "orderSummary": "Тапсырыс қорытындысы",
+    "selectServer": "Сервер таңдау", "osDistribution": "OS дистрибуциясы", "osVersion": "OS нұсқасы",
+    "rootPassword": "Root құпия сөзі", "total": "Жалпы", "serverName": "Сервер атауы",
+    "operatingSystem": "Операциялық жүйе", "agreeToTerms": "Ұсыныс шарттарымен келісу",
+    "iAgreeToTerms": "Жоғарыдағы шарттарды оқыдым және келісемін.", "placeOrder": "Тапсырыс беру"
+  }
+}

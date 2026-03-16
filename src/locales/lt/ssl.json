@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "SSL sertifikatų sąrašas",
+    "orderTitle": "Užsakyti SSL registracijas"
+  },
+  "view": {
+    "title": "Peržiūrėti SSL {id}",
+    "package": "Paketas",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita:",
+    "statusIs": "Būsena:",
+    "orderInfo": "Užsakymo informacija",
+    "certificateInfo": "Sertifikato informacija",
+    "links": "Nuorodos",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti SSL"
+  },
+  "changeApproverEmail": {
+    "title": "Keisti tvirtintojo el. paštą",
+    "selectApproverEmail": "Pasirinkti tvirtintojo el. paštą"
+  }
+}

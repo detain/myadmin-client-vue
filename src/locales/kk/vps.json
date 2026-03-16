@@ -1,0 +1,37 @@
+{
+  "list": { "title": "VPS тізімі", "orderVps": "VPS тапсырыс беру" },
+  "view": {
+    "title": "VPS {id} қарау", "package": "Пакет", "billing": "Есеп айырысу", "billed": "есептелген",
+    "vpsStatus": "VPS күйі:", "hostServer": "Хост сервері:", "nextInvoiceDate": "Келесі шот күні:",
+    "vpsInformation": "VPS ақпараты", "powerStatus": "Қуат күйі:", "selectAction": "Әрекет таңдау",
+    "disk": "Диск", "totalSpace": "Жалпы орын:", "usedSpace": "Пайдаланылған орын:",
+    "remainingSpace": "Қалған орын:", "systemInformation": "Жүйе ақпараты",
+    "memory": "Жад:", "cpuCores": "CPU ядролары:", "os": "OS:",
+    "links": "Сілтемелер", "updateComment": "Пікірді жаңарту", "saveChanges": "Өзгерістерді сақтау",
+    "emailSent": "Хат жіберілді", "emailSentMessage": "Қош келдіңіз хаты қайта жіберілді. Кіріс жәшігіңізді тексеріңіз."
+  },
+  "order": {
+    "title": "VPS тапсырыс беру", "osDistribution": "OS дистрибуциясы", "osVersion": "OS нұсқасы",
+    "hostname": "Хост атауы", "rootPassword": "Root құпия сөзі", "couponCode": "Купон коды",
+    "continue": "Жалғастыру", "orderSummary": "Тапсырыс қорытындысы", "total": "Жалпы",
+    "tosAgree": "Жоғарыдағы шарттарды оқыдым және келісемін.", "placeOrder": "Тапсырыс беру"
+  },
+  "changeHostname": {
+    "title": "VPS хост атауын өзгерту", "existingHostname": "Бар хост атауы",
+    "newHostname": "Жаңа хост атауы", "updateHostname": "Хост атауын жаңарту"
+  },
+  "changeRootPassword": {
+    "title": "VPS Root құпия сөзін өзгерту", "newPassword": "Жаңа құпия сөз:",
+    "confirmPassword": "Құпия сөзді растау:", "changePassword": "Құпия сөзді өзгерту",
+    "passwordMismatch": "Құпия сөз және Растау құпия сөзі сәйкес емес"
+  },
+  "reinstallOs": {
+    "title": "OS қайта орнату", "importantNote1": "OS қайта орнату барлық деректерді жояды.",
+    "importantNote2": "OS қайта орнатпас бұрын резервтік көшірме жасаңыз.",
+    "osDistribution": "OS дистрибуциясы", "confirmReinstallButton": "OS қайта орнатуды растау"
+  },
+  "common": {
+    "goBack": "Артқа қайту", "back": "Артқа", "pleaseWait": "Күте тұрыңыз!",
+    "success": "Сәтті{text}", "gotError": "Қате алынды {error}"
+  }
+}

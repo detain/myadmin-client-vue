@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "Elenco Registrazioni Domini",
+    "orderTitle": "Ordina Registrazioni Domini",
+    "domainName": "Nome Dominio",
+    "domainExpirationDate": "Data Scadenza Dominio",
+    "active": "Attivo",
+    "pending": "In Attesa",
+    "expired": "Scaduto",
+    "all": "Tutti"
+  },
+  "view": {
+    "pageTitle": "Visualizza Dominio - {hostname}",
+    "package": "Pacchetto",
+    "billing": "Fatturazione",
+    "whoisPrivacy": "Privacy Whois",
+    "nameservers": "Nameserver",
+    "contactInformation": "Informazioni di Contatto",
+    "emailSent": "Email Inviata",
+    "welcomeEmailResent": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "pageTitle": "Ordina Dominio",
+    "findDomain": "Trova il tuo dominio e verifica la disponibilità.",
+    "available": "Sì! Il tuo dominio {domain} è disponibile! Puoi registrarlo per {cost}. Il costo di rinnovo sarà {renewal}.",
+    "taken": "Spiacenti! Il tuo dominio {domain} è già preso!",
+    "registerDomain": "Registra Dominio ({hostname})",
+    "contactInformation": "Informazioni di Contatto",
+    "goBack": "Torna Indietro",
+    "continue": "Continua",
+    "total": "Totale",
+    "agreeCheckbox": "Ho letto i termini sopra e accetto.",
+    "placeOrder": "Effettua Ordine"
+  },
+  "nameservers": {
+    "title": "Server dei Nomi di Dominio",
+    "nameservers": "Nameserver",
+    "hostname": "Hostname",
+    "ipAddress": "Indirizzo IP",
+    "deleteConfirm": "Stai per eliminare il nameserver del tuo dominio.",
+    "yesDeleteIt": "Sì, Eliminalo"
+  },
+  "whois": {
+    "title": "Privacy Whois",
+    "currentlyEnabled": "La Privacy Whois è attualmente abilitata per {hostname}.",
+    "disableAndCancel": "Disabilita e Annulla Privacy Whois",
+    "orderSuccess": "Ordine privacy Whois effettuato con successo!",
+    "whoisEnabled": "La Privacy Whois è ora abilitata.",
+    "whoisDisabled": "La Privacy Whois è stata disabilitata e annullata."
+  },
+  "lock": {
+    "title": "Blocca/Sblocca Dominio",
+    "lockIt": "Sì, Bloccalo.",
+    "unlockIt": "Sì, Sbloccalo."
+  },
+  "renew": {
+    "title": "Rinnova",
+    "domain": "Dominio",
+    "expiryDate": "Data di Scadenza",
+    "renewCost": "Costo di Rinnovo",
+    "totalCost": "Costo Totale",
+    "goToPayment": "Vai al Pagamento"
+  }
+}

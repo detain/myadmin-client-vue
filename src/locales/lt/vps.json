@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "VPS sąrašas",
+    "orderVps": "Užsakyti VPS"
+  },
+  "view": {
+    "title": "Peržiūrėti VPS {id}",
+    "package": "Paketas",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita",
+    "vpsStatus": "VPS būsena:",
+    "hostServer": "Pagrindinis serveris:",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "vpsInformation": "VPS informacija",
+    "powerStatus": "Maitinimo būsena:",
+    "selectAction": "Pasirinkti veiksmą",
+    "disk": "Diskas",
+    "totalSpace": "Bendras plotas:",
+    "usedSpace": "Naudojamas plotas:",
+    "remainingSpace": "Likęs plotas:",
+    "systemInformation": "Sistemos informacija",
+    "memory": "Atmintis:",
+    "cpuCores": "CPU branduoliai:",
+    "os": "OS:",
+    "links": "Nuorodos",
+    "updateComment": "Atnaujinti komentarą",
+    "saveChanges": "Išsaugoti pakeitimus",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti VPS",
+    "osDistribution": "OS platinimas",
+    "osVersion": "OS versija",
+    "hostname": "Pagrindinio kompiuterio vardas",
+    "rootPassword": "Root slaptažodis",
+    "couponCode": "Kupono kodas",
+    "continue": "Tęsti",
+    "orderSummary": "Užsakymo santrauka",
+    "total": "Iš viso",
+    "tosAgree": "Perskaičiau aukščiau esančias sąlygas ir sutinku.",
+    "placeOrder": "Pateikti užsakymą"
+  },
+  "changeHostname": {
+    "title": "Keisti VPS pagrindinio kompiuterio vardą",
+    "existingHostname": "Esamas pagrindinio kompiuterio vardas",
+    "newHostname": "Naujas pagrindinio kompiuterio vardas",
+    "updateHostname": "Atnaujinti pagrindinio kompiuterio vardą"
+  },
+  "changeRootPassword": {
+    "title": "Keisti VPS root slaptažodį",
+    "newPassword": "Naujas slaptažodis:",
+    "confirmPassword": "Patvirtinti slaptažodį:",
+    "changePassword": "Keisti slaptažodį",
+    "passwordMismatch": "Slaptažodis ir patvirtinimo slaptažodis nesutampa"
+  },
+  "reinstallOs": {
+    "title": "Iš naujo įdiegti OS",
+    "importantNote1": "Operacinės sistemos įdiegimas iš naujo ištrins visus duomenis.",
+    "importantNote2": "Prieš iš naujo įdiegiant operacinę sistemą, sukurkite atsarginę kopiją.",
+    "osDistribution": "Operacinės sistemos platinimas",
+    "confirmReinstallButton": "Patvirtinti OS diegimą iš naujo"
+  },
+  "common": {
+    "goBack": "Grįžti",
+    "back": "Atgal",
+    "pleaseWait": "Palaukite!",
+    "success": "Sėkmė{text}",
+    "gotError": "Įvyko klaida {error}"
+  }
+}

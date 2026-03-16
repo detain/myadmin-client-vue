@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "Список виділених серверів",
+        "orderTitle": "Замовити реєстрацію сервера"
+    },
+    "view": {
+        "title": "Переглянути сервер {id}",
+        "package": "Пакет",
+        "dedicatedServer": "Виділений сервер",
+        "nextInvoiceDate": "Дата наступного рахунку:",
+        "billing": "Оплата",
+        "billed": "виставлено рахунок:",
+        "statusIs": "Статус:",
+        "orderInfo": "Інформація про замовлення",
+        "orderId": "ID замовлення:",
+        "links": "Посилання",
+        "serverInformation": "Інформація про сервер",
+        "networkInformation": "Інформація про мережу",
+        "power": "Живлення",
+        "selectAction": "Вибрати дію",
+        "softReboot": "М'яке перезавантаження",
+        "paymentStatus": "Статус оплати:",
+        "emailSent": "Лист надіслано",
+        "emailSentMessage": "Вітальний лист надіслано повторно. Перевірте свою поштову скриньку."
+    },
+    "order": {
+        "title": "Замовити сервер",
+        "orderDedicatedServer": "Замовити виділений сервер",
+        "orderSummary": "Підсумок замовлення",
+        "selectServer": "Вибрати сервер",
+        "serverHostname": "Ім'я хоста сервера",
+        "rootPassword": "Пароль root",
+        "agreeToTerms": "Погодитися з умовами пропозиції",
+        "iAgreeToTerms": "Я прочитав(ла) умови вище і погоджуюся.",
+        "placeOrder": "Розмістити замовлення",
+        "cpuSelection": "Вибір CPU",
+        "driveConfiguration": "Конфігурація дисків",
+        "addDrive": "Додати диск",
+        "removeDrive": "Видалити диск",
+        "selectMemory": "Вибрати пам'ять",
+        "selectOs": "Вибрати операційну систему",
+        "region": "Регіон",
+        "buyNow": "Купити зараз",
+        "monthly": "Щомісячно",
+        "perMonth": "/місяць",
+        "confirmOrder": "Підтвердити замовлення"
+    }
+}

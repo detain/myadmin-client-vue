@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Konta iestatījumi"
+  },
+  "changePassword": {
+    "title": "Mainīt paroli",
+    "cardTitle": "Atjaunināt paroli",
+    "currentPassword": "Pašreizējā parole",
+    "newPassword": "Jaunā parole",
+    "confirmPassword": "Apstiprināt paroli",
+    "updatePassword": "Atjaunināt paroli"
+  },
+  "changeUsername": {
+    "title": "Mainīt lietotājvārdu",
+    "disabled": "Lietotājvārda maiņa ir uz laiku atspējota.",
+    "currentUsername": "Pašreizējais lietotājvārds",
+    "newDesiredUsername": "Vēlamais jaunais lietotājvārds",
+    "confirmationCode": "Apstiprinājuma kods",
+    "pleaseWait": "Lūdzu, uzgaidiet!",
+    "gotError": "Radās kļūda {error}"
+  },
+  "contactInfo": {
+    "title": "Kontaktinformācija",
+    "cardTitle": "Atjaunināt kontaktinformāciju",
+    "headsUp": "Uzmanību!",
+    "headsUpMessage": "Lai gan šī informācija nav obligāta, precīzas informācijas sniegšana palīdzēs samazināt jūsu riska % rādītāju.",
+    "riskScore": "Riska % rādītājs",
+    "personalInformation": "Personiskā informācija",
+    "name": "Vārds",
+    "company": "Uzņēmums",
+    "addressLine1": "Adreses 1. rinda",
+    "addressLine2": "Adreses 2. rinda",
+    "city": "Pilsēta",
+    "state": "Štats/Novads",
+    "country": "Valsts",
+    "zipcode": "Pasta indekss",
+    "phoneNumber": "Tālruņa numurs",
+    "language": "Valoda",
+    "auto": "Automātiski",
+    "currency": "Valūta",
+    "timeZone": "Laika josla",
+    "otherSettings": "Citi iestatījumi",
+    "disablePasswordResets": "Atspējot (Aizmirsu paroli) Paroles atiestatīšanu.",
+    "disableInvoiceReminders": "Atspējot rēķinu atgādinājumu e-pasta paziņojumus.",
+    "alternateEmailInvoices": "Alternatīvais e-pasts rēķiniem",
+    "alternateEmailAbuse": "Alternatīvais e-pasts ļaunprātīgas izmantošanas ziņojumiem",
+    "updateInfo": "Atjaunināt informāciju"
+  }
+}

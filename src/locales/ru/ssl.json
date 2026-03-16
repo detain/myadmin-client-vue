@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Список SSL сертификатов",
+        "orderTitle": "Заказ SSL сертификатов"
+    },
+    "view": {
+        "title": "Просмотр SSL {id}",
+        "package": "Пакет",
+        "nextInvoiceDate": "Дата следующего счёта:",
+        "billing": "Биллинг",
+        "billed": "начислено:",
+        "statusIs": "Статус:",
+        "orderInfo": "Информация о заказе",
+        "certificateInfo": "Информация о сертификате",
+        "links": "Ссылки",
+        "welcomeEmailConfirm": "Вы уверены, что хотите повторно отправить приветственное письмо?",
+        "emailSent": "Письмо отправлено",
+        "emailSentMessage": "Приветственное письмо было повторно отправлено. Проверьте свой почтовый ящик."
+    },
+    "order": {
+        "title": "Заказать SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Изменить email утверждающего",
+        "selectApproverEmail": "Выбрать email утверждающего"
+    }
+}

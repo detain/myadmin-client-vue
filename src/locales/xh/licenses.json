@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Uluhlu lweeLayisensi",
+        "orderTitle": "Odola ukubhalisa kweeLayisensi"
+    },
+    "view": {
+        "title": "Jonga iLayisensi {id}",
+        "package": "Iphakeji",
+        "nextInvoiceDate": "Umhla weFatshi elilandelayo:",
+        "billing": "Ukuhlawula",
+        "billed": "kuhlawulwe:",
+        "statusIs": "Isimo ngu:",
+        "licenseInfo": "Ulwazi lweeLayisensi",
+        "cpanelInfo": "Ulwazi lwe-cPanel",
+        "links": "Amanxibelelwano",
+        "welcomeEmailConfirm": "Uqinisekile ukuba ufuna ukuthumela kwakhona i-imeyili yamkelo?",
+        "emailSent": "I-imeyili ithunyiwe",
+        "emailSentMessage": "I-imeyili yamkelo ithunyiwe kwakhona. Jonga ibhokisi yakho yongeno."
+    },
+    "order": {
+        "title": "Odola iLayisensi"
+    },
+    "changeIp": {
+        "title": "Guqula i-IP"
+    },
+    "changeOs": {
+        "title": "Guqula i-OS",
+        "selectLicenseOs": "Khetha i-OS yeLayisensi"
+    }
+}

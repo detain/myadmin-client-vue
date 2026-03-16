@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Salve, {name}",
+    "lastLogin": "Ultimus Introitus",
+    "lastLoginIp": "IP Ultimi Introitus",
+    "prepay": {
+        "title": "Saldulum Praesolutionis",
+        "remainingBalance": "Saldulum Residuum Praesolutionis",
+        "manageAccount": "Administra Rationem",
+        "manageTooltip": "Administra Rationem Tuam Praesolutionis"
+    },
+    "invoices": {
+        "title": "Rationes Insolutae",
+        "totalUnpaid": "Rationes Insolutae Totales",
+        "totalAmount": "Quantitas Totalis Solvenda",
+        "payTotalTooltip": "Solve Quantitatem Totalem"
+    },
+    "callInPin": "PIN Telephonicus",
+    "recentTickets": "Schedulae Recentes",
+    "viewAllTickets": "Vide Omnes Schedulas",
+    "editTicket": "Emenda Schedulam",
+    "serviceCount": "Nullum servitium activum | {count} servitium activum | {count} servitia activa",
+    "affiliate": {
+        "earnPerSale": "Lucra {amount} Pro Venditione",
+        "urlPlaceholder": "URL Affiliati",
+        "shareWith": "Divide cum"
+    }
+}

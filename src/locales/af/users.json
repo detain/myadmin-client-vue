@@ -1,0 +1,12 @@
+{
+    "title": "Gebruikers",
+    "addUser": "Voeg Gebruiker By",
+    "editUser": "Wysig Gebruiker",
+    "firstName": "Voornaam",
+    "lastName": "Van",
+    "username": "Gebruikersnaam",
+    "password": "Wagwoord",
+    "keepSamePassword": "Laat leeg om dieselfde wagwoord te behou",
+    "errorLoading": "Fout met laai van gebruikers:",
+    "errorLoadingUser": "Fout met laai van gebruiker:"
+}

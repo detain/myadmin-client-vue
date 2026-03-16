@@ -1,0 +1,24 @@
+{
+  "list": {
+    "title": "Cov Kev Pab Cuam Floating IPs",
+    "orderTitle": "Xaj Npe Nkag Rau Floating IP"
+  },
+  "view": {
+    "title": "Saib Floating IP {id}",
+    "package": "Pob Khoom",
+    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+    "billing": "Them Nqi",
+    "billed": "tau them nqi:",
+    "statusIs": "xwm txheej yog:",
+    "floatingIp": "Floating IP",
+    "links": "Cov Txuas",
+    "emailSent": "Email Xa Lawm",
+    "emailSentMessage": "Email txais tos xa dua lawm."
+  },
+  "order": {
+    "title": "Xaj Floating IP"
+  },
+  "changeIp": {
+    "title": "Hloov IP Hom Phiaj"
+  }
+}

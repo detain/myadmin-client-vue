@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Saqlash / Zaxira nusxalar ro'yxati",
+        "orderTitle": "Zaxira nusxa ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "Zaxira nusxa {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "Hisob-kitob qilindi:",
+        "statusIs": "Holat:",
+        "hostServer": "Xost server",
+        "links": "Havolalar",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "order": {
+        "title": "Saqlashni buyurtma qilish"
+    }
+}

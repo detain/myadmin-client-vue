@@ -1,0 +1,28 @@
+{
+    "title": "Панель керування",
+    "welcome": "Ласкаво просимо, {name}",
+    "lastLogin": "Останній вхід",
+    "lastLoginIp": "IP останнього входу",
+    "prepay": {
+        "title": "Передоплачений баланс",
+        "remainingBalance": "Залишок передоплаченого балансу",
+        "manageAccount": "Керувати обліковим записом",
+        "manageTooltip": "Керувати передоплаченим обліковим записом"
+    },
+    "invoices": {
+        "title": "Неоплачені рахунки",
+        "totalUnpaid": "Всього неоплачених рахунків",
+        "totalAmount": "Загальна сума до оплати",
+        "payTotalTooltip": "Сплатити загальну суму"
+    },
+    "callInPin": "PIN для дзвінка",
+    "recentTickets": "Останні заявки",
+    "viewAllTickets": "Переглянути всі заявки",
+    "editTicket": "Редагувати заявку",
+    "serviceCount": "Немає активних послуг | {count} активна послуга | {count} активних послуг",
+    "affiliate": {
+        "earnPerSale": "Заробляйте {amount} за продаж",
+        "urlPlaceholder": "Партнерське URL",
+        "shareWith": "Поділитися"
+    }
+}

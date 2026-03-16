@@ -1,0 +1,28 @@
+{
+    "title": "Fa'atonuga",
+    "welcome": "Afio mai, {name}",
+    "lastLogin": "Ulufale Mulimuli",
+    "lastLoginIp": "IP Ulufale Mulimuli",
+    "prepay": {
+        "title": "Tupe Totogi Muamua",
+        "remainingBalance": "Totoe Tupe Totogi Muamua",
+        "manageAccount": "Pulega Tala'aga",
+        "manageTooltip": "Pule Lou Tala'aga Tupe Totogi Muamua"
+    },
+    "invoices": {
+        "title": "Pili Le'i Totogi",
+        "totalUnpaid": "Aofai Pili Le'i Totogi",
+        "totalAmount": "Aofai Tupe e Totogi",
+        "payTotalTooltip": "Totogi Aofai Uma"
+    },
+    "callInPin": "PIN Telefoni",
+    "recentTickets": "Tiketi Fou",
+    "viewAllTickets": "Va'ai Tiketi Uma",
+    "editTicket": "Fa'atonutonu Tiketi",
+    "serviceCount": "Leai auaunaga fa'agaoioi | {count} auaunaga fa'agaoioi | {count} auaunaga fa'agaoioi",
+    "affiliate": {
+        "earnPerSale": "Maua {amount} i Fa'atau Tasi",
+        "urlPlaceholder": "URL Fa'atasi",
+        "shareWith": "Fa'asoa i"
+    }
+}

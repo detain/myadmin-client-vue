@@ -1,0 +1,28 @@
+{
+    "title": "Ibhodi yolawulo",
+    "welcome": "Wamkelekile, {name}",
+    "lastLogin": "Ukungena okugqibela",
+    "lastLoginIp": "I-IP yokungena okugqibela",
+    "prepay": {
+        "title": "IBhalansi ye-Prepay",
+        "remainingBalance": "IBhalansi eseleyo ye-Prepay",
+        "manageAccount": "Lawula i-Akhawunti",
+        "manageTooltip": "Lawula i-Akhawunti yakho ye-Prepay"
+    },
+    "invoices": {
+        "title": "IiFatshi ezihlawulwanga",
+        "totalUnpaid": "IiFatshi zonke ezihlawulwanga",
+        "totalAmount": "Isixa sonke esiHlawulwayo",
+        "payTotalTooltip": "Hlawula Isixa Sonke"
+    },
+    "callInPin": "I-PIN yokutshela umnxeba",
+    "recentTickets": "Iitikiti zamuva nje",
+    "viewAllTickets": "Jonga iitikiti zonke",
+    "editTicket": "Hlela itikiti",
+    "serviceCount": "Akukho nkonzo ezisebenzayo | {count} yenkonzo esebenzayo | {count} iinkonzo ezisebenzayo",
+    "affiliate": {
+        "earnPerSale": "Zuzisa {amount} kwisithengiso ngasinye",
+        "urlPlaceholder": "URL ye-Affiliate",
+        "shareWith": "Yabelana ne"
+    }
+}

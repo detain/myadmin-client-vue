@@ -1,0 +1,28 @@
+{
+    "title": "대시보드",
+    "welcome": "환영합니다, {name}",
+    "lastLogin": "마지막 로그인",
+    "lastLoginIp": "마지막 로그인 IP",
+    "prepay": {
+        "title": "선불 잔액",
+        "remainingBalance": "선불 잔여 잔액",
+        "manageAccount": "계정 관리",
+        "manageTooltip": "선불 계정 관리"
+    },
+    "invoices": {
+        "title": "미결제 청구서",
+        "totalUnpaid": "총 미결제 청구서",
+        "totalAmount": "결제 예정 총 금액",
+        "payTotalTooltip": "총 금액 결제"
+    },
+    "callInPin": "전화 PIN",
+    "recentTickets": "최근 티켓",
+    "viewAllTickets": "모든 티켓 보기",
+    "editTicket": "티켓 편집",
+    "serviceCount": "활성 서비스 없음 | {count}개 활성 서비스 | {count}개 활성 서비스",
+    "affiliate": {
+        "earnPerSale": "판매당 {amount} 수익",
+        "urlPlaceholder": "제휴 URL",
+        "shareWith": "공유하기"
+    }
+}

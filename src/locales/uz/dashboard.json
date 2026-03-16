@@ -1,0 +1,28 @@
+{
+    "title": "Boshqaruv paneli",
+    "welcome": "Xush kelibsiz, {name}",
+    "lastLogin": "Oxirgi kirish",
+    "lastLoginIp": "Oxirgi kirish IP",
+    "prepay": {
+        "title": "Oldindan to'lov balansi",
+        "remainingBalance": "Oldindan to'lov qolgan balansi",
+        "manageAccount": "Hisobni boshqarish",
+        "manageTooltip": "Oldindan to'lov hisobingizni boshqarish"
+    },
+    "invoices": {
+        "title": "To'lanmagan hisob-fakturalar",
+        "totalUnpaid": "Jami to'lanmagan hisob-fakturalar",
+        "totalAmount": "To'lanishi kerak bo'lgan jami miqdor",
+        "payTotalTooltip": "Jami miqdorni to'lash"
+    },
+    "callInPin": "Qo'ng'iroq PIN kodi",
+    "recentTickets": "So'nggi chiptalar",
+    "viewAllTickets": "Barcha chiptalarni ko'rish",
+    "editTicket": "Chiptani tahrirlash",
+    "serviceCount": "Faol xizmatlar yo'q | {count} ta faol xizmat | {count} ta faol xizmat",
+    "affiliate": {
+        "earnPerSale": "Har bir savdodan {amount} ishlang",
+        "urlPlaceholder": "Sheriklik URL",
+        "shareWith": "Ulashish"
+    }
+}

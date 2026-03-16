@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Liiska Kaydka / Kaydinta",
+        "orderTitle": "Diiwaangelinta Kaydinta Dalbo"
+    },
+    "view": {
+        "title": "Kaydinta {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "Lagu xisaabiyey:",
+        "statusIs": "Xaaladdu waa:",
+        "hostServer": "Server-ka Maraha",
+        "links": "Xiriiriyayaasha",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "order": {
+        "title": "Kaydka Dalbo"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Rārangi Rokiroki / Tiaki",
+        "orderTitle": "Ota Ngā Rēhitatanga Tiaki"
+    },
+    "view": {
+        "title": "Tiro Tiaki {id}",
+        "package": "Pēke",
+        "nextInvoiceDate": "Rā Pire Panuku:",
+        "billing": "Utu",
+        "billed": "Utua:",
+        "statusIs": "Ko te Āhua:",
+        "hostServer": "Tūmau Manaaki",
+        "links": "Ngā Hononga",
+        "welcomeEmailConfirm": "He tūturu tāu e hiahia ana ki te tono anō i te īmēra whakamihi?",
+        "emailSent": "Kua Tukuna Īmēra",
+        "emailSentMessage": "Kua tukuna anō te īmēra whakamihi. Tirohia tō pouaka tomo."
+    },
+    "order": {
+        "title": "Ota Rokiroki"
+    }
+}

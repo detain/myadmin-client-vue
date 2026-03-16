@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "Domaine-Registréierungslëscht",
+    "orderTitle": "Domaine-Registréierungen bestalln",
+    "domainName": "Domainnumm",
+    "domainExpirationDate": "Domaine-Verfallsdatum",
+    "active": "Aktiv",
+    "pending": "Waart",
+    "expired": "Ofgelaf",
+    "all": "All"
+  },
+  "view": {
+    "pageTitle": "Domaine ukucken - {hostname}",
+    "package": "Pak",
+    "billing": "Rechnung",
+    "whoisPrivacy": "Whois-Privatsphär",
+    "nameservers": "Nummserveren",
+    "contactInformation": "Kontaktinformatioun",
+    "emailSent": "E-Mail geschéckt",
+    "welcomeEmailResent": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+  },
+  "order": {
+    "pageTitle": "Domaine bestalln",
+    "findDomain": "Fannt Är Domaine a iwwerpréift d'Verfügbarkeet.",
+    "available": "Jo! Är Domaine {domain} ass disponibel! Dir kënnt se fir {cost} registréieren. De Verlängerungspräis wäert {renewal} sinn.",
+    "taken": "Pardon! Är Domaine {domain} ass schonn beleet!",
+    "registerDomain": "Domaine registréieren ({hostname})",
+    "contactInformation": "Kontaktinformatioun",
+    "goBack": "Zréckgoen",
+    "continue": "Weiderfueren",
+    "total": "Total",
+    "agreeCheckbox": "Ech hunn d'Konditiounen hei uewen gelies a stëmmen deem zou.",
+    "placeOrder": "Bestellung opgin"
+  },
+  "nameservers": {
+    "title": "Domaine-Nummserveren",
+    "nameservers": "Nummserveren",
+    "hostname": "Hostname",
+    "ipAddress": "IP-Adress",
+    "deleteConfirm": "Dir stitt am Begriff Äre Domaine-Nummserver ze läschen.",
+    "yesDeleteIt": "Jo, läschen"
+  },
+  "whois": {
+    "title": "Whois-Privatsphär",
+    "currentlyEnabled": "Whois-Privatsphär ass aktuell aktivéiert fir {hostname}.",
+    "disableAndCancel": "Whois-Privatsphär deaktivéieren an annuléieren",
+    "orderSuccess": "Whois-Privatsphär-Bestellung erfollegräich opgin!",
+    "whoisEnabled": "Whois-Privatsphär ass elo aktivéiert.",
+    "whoisDisabled": "Whois-Privatsphär gouf deaktivéiert an annuléiert."
+  },
+  "lock": {
+    "title": "Domaine-Spär/Entspär",
+    "lockIt": "Jo, sperren.",
+    "unlockIt": "Jo, entspären."
+  },
+  "renew": {
+    "title": "Verlängeren",
+    "domain": "Domaine",
+    "expiryDate": "Verfallsdatum",
+    "renewCost": "Verlängerungspräis",
+    "totalCost": "Gesamtpräis",
+    "goToPayment": "Zur Bezuelung goen"
+  }
+}

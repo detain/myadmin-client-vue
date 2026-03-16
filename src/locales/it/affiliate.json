@@ -1,0 +1,44 @@
+{
+  "title": "Sistema di Affiliazione",
+  "breadcrumb": "Affiliato",
+  "attention": "Questo programma di affiliazione non è destinato al riferimento di 'familiari' o 'clienti'. Leggi {faqLink} prima di procedere.",
+  "faqLinkText": "FAQ",
+  "earnPerSale": "Guadagna {amount} per ogni nuova vendita cliente!",
+  "knowMore": "Scopri di Più",
+  "affiliateUrl": "URL Affiliato",
+  "shareUrl": "Condividi il tuo URL affiliato univoco con gli amici",
+  "links": "Link",
+  "salesGraph": "Grafico Vendite",
+  "webTrafficGraph": "Grafico Traffico Web",
+  "goBack": "Torna Indietro",
+  "back": "Indietro",
+  "exportFailed": "Esportazione fallita",
+  "copiedToClipboard": "Copiato negli appunti.",
+  "signups": {
+    "title": "Iscrizioni Affiliati",
+    "pending": "In Attesa",
+    "paid": "Pagato",
+    "failed": "Fallito",
+    "locked": "Bloccato",
+    "rejected": "Rifiutato",
+    "noRecords": "Nessun record trovato",
+    "columns": {
+      "id": "ID",
+      "service": "Servizio",
+      "signupDate": "Data Iscrizione",
+      "status": "Stato",
+      "paidAmount": "Importo Pagato",
+      "reason": "Motivo"
+    }
+  },
+  "paymentSetup": {
+    "title": "Configurazione Pagamento",
+    "choosePayment": "Scegli cosa vuoi fare con i tuoi pagamenti affiliato",
+    "sendToPaypal": "Invia Pagamenti a PayPal",
+    "paypalEmail": "Email PayPal"
+  },
+  "tosPage": {
+    "title": "Termini di Servizio",
+    "welcome": "Benvenuto nel Programma di Affiliazione InterServer"
+  }
+}

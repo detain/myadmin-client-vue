@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Suzuvchi IP xizmatlari ro'yxati",
+        "orderTitle": "Suzuvchi IP ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "Suzuvchi IP {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "Hisob-kitob qilindi:",
+        "statusIs": "Holat:",
+        "floatingIp": "Suzuvchi IP",
+        "links": "Havolalar",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "order": {
+        "title": "Suzuvchi IP buyurtma qilish"
+    },
+    "changeIp": {
+        "title": "Maqsad IP ni o'zgartirish"
+    }
+}

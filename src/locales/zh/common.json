@@ -1,0 +1,106 @@
+{
+    "menu": {
+        "dashboard": "控制台", "domains": "域名", "dnsManager": "DNS 管理器", "vps": "VPS",
+        "storage": "存储", "mail": "邮件", "licenses": "许可证", "webhosting": "虚拟主机",
+        "floatingIps": "浮动 IP", "scrubIps": "清洗 IP", "rapidDeployServers": "快速部署服务器",
+        "servers": "服务器", "affiliateSystem": "联盟系统", "tickets": "工单",
+        "billing": "账单", "settings": "设置", "cart": "购物车", "viewInvoices": "查看发票",
+        "creditCards": "信用卡", "prePaidFunds": "预付款 / 积分",
+        "accountSettings": "账户设置", "changeLogin": "修改登录", "changePassword": "修改密码"
+    },
+    "nav": { "home": "首页", "bugsSuck": "漏洞很烦人", "users": "用户", "logout": "退出登录" },
+    "buttons": {
+        "save": "保存", "cancel": "取消", "delete": "删除", "edit": "编辑", "update": "更新",
+        "submit": "提交", "close": "关闭", "confirm": "确认", "back": "返回", "next": "下一步",
+        "order": "订购", "orderNow": "立即订购", "add": "添加", "create": "创建", "remove": "移除",
+        "search": "搜索", "reset": "重置", "refresh": "刷新", "download": "下载",
+        "upload": "上传", "copy": "复制", "print": "打印", "enable": "启用", "disable": "禁用",
+        "start": "启动", "stop": "停止", "restart": "重启", "viewAll": "查看全部",
+        "copyToClipboard": "复制到剪贴板", "addToCart": "加入购物车", "payNow": "立即支付",
+        "login": "登录", "register": "注册", "signUp": "注册", "continue": "继续",
+        "addRange": "添加范围", "goBack": "返回", "prev": "上一页", "exportExcel": "导出 Excel",
+        "exportPdf": "导出 PDF", "exportData": "导出数据", "unlink": "取消关联", "logOut": "退出登录",
+        "generateApiKey": "生成 API 密钥",
+        "generateNewApiKey": "生成新的 API 密钥替换旧密钥",
+        "updateSshKey": "更新 SSH 公钥", "setSshKey": "设置 SSH 公钥",
+        "updateAccountFeatures": "更新账户功能设置",
+        "update2fa": "更新双因素认证"
+    },
+    "labels": {
+        "id": "ID", "name": "名称", "email": "电子邮件", "status": "状态", "action": "操作",
+        "actions": "操作", "date": "日期", "cost": "费用", "amount": "金额",
+        "description": "描述", "type": "类型", "details": "详情", "server": "服务器",
+        "ip": "IP", "hostname": "主机名", "domain": "域名", "username": "用户名",
+        "password": "密码", "package": "套餐", "comments": "备注", "loading": "加载中...",
+        "noData": "暂无数据", "noActiveServices": "暂无活跃服务",
+        "controlPanel": "控制面板", "welcomeEmail": "欢迎邮件", "invoices": "发票",
+        "billingStatus": "账单状态", "client": "客户", "key": "密钥", "links": "链接",
+        "billing": "账单", "billed": "已计费：", "statusIs": "状态：",
+        "nextInvoiceDate": "下次发票日期：", "active": "活跃", "pending": "待处理",
+        "expired": "已过期", "all": "全部", "paid": "已支付", "paidOn": "支付时间", "paidBy": "支付方",
+        "moreDetails": "更多详情", "invoiceDate": "发票日期", "dueDate": "到期日",
+        "page": "页", "of": "/", "pageSize": "每页数量", "accounts": "账户",
+        "linked": "已关联", "notLinked": "未关联", "startIp": "起始 IP", "endIp": "结束 IP",
+        "restrict": "限制", "options": "选项", "yes": "是", "no": "否",
+        "noPaidInvoices": "暂无已支付发票", "noApiKey": "尚未设置 API 密钥",
+        "noSshKey": "尚未设置 SSH 密钥"
+    },
+    "table": {
+        "serviceId": "服务 ID", "ticketId": "工单 ID", "subject": "主题",
+        "lastReplier": "最后回复者", "expirationDate": "到期日期"
+    },
+    "export": {
+        "order": "订单", "xlsx": "Excel 2007+", "xlsxShort": "XLSX", "xls": "Excel 2003/BIFF",
+        "xlsShort": "XLS", "ods": "OpenDocument 电子表格", "odsShort": "ODS",
+        "pdf": "Adobe 可移植文档格式", "pdfShort": "PDF",
+        "xml": "可扩展标记语言", "xmlShort": "XML", "php": "PHP 数组",
+        "phpShort": "PHP", "csv": "逗号分隔值", "csvShort": "CSV", "json": "JSON",
+        "bbcode": "BBCode", "bbcodeShort": "BBCODE", "wiki": "Wiki 代码", "wikiShort": "WIKI",
+        "markdown": "Markdown", "markdownShort": "MARKDOWN"
+    },
+    "alerts": { "success": "成功！", "error": "错误！" },
+    "confirm": {
+        "title": "确定吗？", "delete": "此操作无法撤销。", "yes": "是", "no": "否",
+        "yesCancelIt": "是的，取消它。",
+        "cancelConfirm": "确定要取消您的 {module} {id} 吗？",
+        "cancelTitle": "取消 {module}", "cancelService": "取消 {title} 服务",
+        "yesCancelOrder": "是的，取消 {tableName} 订单",
+        "areYouSureCancelQuestion": "确定要取消吗？"
+    },
+    "footer": {
+        "copyright": "版权所有 \u00a9 {year} InterServer Inc.",
+        "allRightsReserved": "保留所有权利。"
+    },
+    "search": { "placeholder": "搜索...", "noResults": "未找到搜索结果" },
+    "breadcrumb": { "home": "首页" },
+    "profile": { "editPersonalInfo": "编辑个人信息", "profileImage": "头像" },
+    "services": {
+        "cancelService": "取消 {title} 服务", "idLabel": "{tableName} ID：",
+        "reasonForCancellation": "取消原因/备注：",
+        "viewService": "查看 {module} {id}", "moduleInvoices": "{module} 发票"
+    },
+    "account": {
+        "accountFeatures": "账户功能", "enableDarkMode": "启用深色模式",
+        "disableReinstalls": "禁用重新安装",
+        "disablePasswordResets": "禁用（忘记密码）密码重置。",
+        "apiAccess": "API 访问",
+        "apiAccessDescription": "这提供了一种通过 API 进行身份验证的替代方式。您可以使用 API 密钥代替账户密码进行 API 身份验证。",
+        "sessionIpLimits": "会话 IP 安全限制",
+        "sessionIpLimitsDescription": "这提供了一种限制您的账户可以从哪些 IP 地址登录的方式，为您的账户增加额外的安全性。",
+        "yourRemoteIp": "您的远程 IP：",
+        "ipLimitsWarning": "启用 IP 限制将阻止未在下面列出的任何人登录。请确保您的 IP 地址是静态的，不会在将来改变。",
+        "linkedAccounts": "关联账户",
+        "linkedAccountsDescription": "已关联的社交账户，可以使用它们登录。",
+        "sshKeys": "SSH 密钥",
+        "sshKeysDescription": "此 SSH 密钥将自动添加到某些服务，例如 VPS 订单，为您的服务提供替代身份验证方式。",
+        "twoFactorAuth": "双因素认证",
+        "twoFactorAuthDescription": "为您的账户提供双重身份验证以保障安全",
+        "enableGoogle2fa": "启用 Google 双因素认证",
+        "twoFactorEnabled": "双因素认证已启用",
+        "installAuthenticator": "通过输入以下代码或扫描二维码来安装并注册 {link}",
+        "googleAuthenticator": "Google Authenticator",
+        "backupCode": "您应该备份此代码以便恢复。",
+        "enterAuthCode": "输入验证器中的代码",
+        "webAndApi": "Web 和 API", "onlyApi": "仅 API"
+    }
+}

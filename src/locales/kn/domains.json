@@ -1,0 +1,37 @@
+{
+  "list": {
+    "pageTitle": "ಡೊಮೇನ್ ನೋಂದಣಿ ಪಟ್ಟಿ", "orderTitle": "ಡೊಮೇನ್ ನೋಂದಣಿ ಆದೇಶಿಸಿ",
+    "domainName": "ಡೊಮೇನ್ ಹೆಸರು", "domainExpirationDate": "ಡೊಮೇನ್ ಮೀಯಾದಿ ದಿನಾಂಕ",
+    "active": "ಸಕ್ರಿಯ", "pending": "ಬಾಕಿ", "expired": "ಮೀಯಾದಿ ಮೀರಿದ", "all": "ಎಲ್ಲಾ"
+  },
+  "view": {
+    "pageTitle": "ಡೊಮೇನ್ ವೀಕ್ಷಿಸಿ - {hostname}", "package": "ಪ್ಯಾಕೇಜ್", "billing": "ಬಿಲ್ಲಿಂಗ್",
+    "whoisPrivacy": "Whois ಗೋಪ್ಯತೆ", "nameservers": "ನೇಮ್‌ಸರ್ವರ್‌ಗಳು", "contactInformation": "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
+    "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ", "welcomeEmailResent": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ."
+  },
+  "order": {
+    "pageTitle": "ಡೊಮೇನ್ ಆದೇಶಿಸಿ", "findDomain": "ನಿಮ್ಮ ಡೊಮೇನ್ ಹುಡುಕಿ ಲಭ್ಯತೆ ಪರಿಶೀಲಿಸಿ.",
+    "available": "ಹೌದು! ನಿಮ್ಮ ಡೊಮೇನ್ {domain} ಲಭ್ಯವಿದೆ! ಅದನ್ನು {cost} ಗೆ ನೋಂದಾಯಿಸಬಹುದು. ನವೀಕರಣ ವೆಚ್ಚ {renewal} ಆಗಿರುತ್ತದೆ.",
+    "taken": "ಕ್ಷಮಿಸಿ! ನಿಮ್ಮ ಡೊಮೇನ್ {domain} ಈಗಾಗಲೇ ತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ!",
+    "registerDomain": "ಡೊಮೇನ್ ನೋಂದಾಯಿಸಿ ({hostname})", "contactInformation": "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
+    "goBack": "ಹಿಂತಿರುಗಿ", "continue": "ಮುಂದುವರಿಸಿ", "total": "ಒಟ್ಟು",
+    "agreeCheckbox": "ಮೇಲಿನ ನಿಯಮಗಳನ್ನು ಓದಿ ಒಪ್ಪಿಗೆ ನೀಡುತ್ತೇನೆ.", "placeOrder": "ಆದೇಶ ಇಡಿ"
+  },
+  "nameservers": {
+    "title": "ಡೊಮೇನ್ ನೇಮ್‌ಸರ್ವರ್‌ಗಳು", "nameservers": "ನೇಮ್‌ಸರ್ವರ್‌ಗಳು", "hostname": "ಹೋಸ್ಟ್‌ನೇಮ್",
+    "ipAddress": "IP ವಿಳಾಸ", "deleteConfirm": "ನೀವು ನಿಮ್ಮ ಡೊಮೇನ್ ನೇಮ್‌ಸರ್ವರ್ ಅಳಿಸಲು ಹೊರಟಿದ್ದೀರಿ.",
+    "yesDeleteIt": "ಹೌದು, ಅಳಿಸಿ"
+  },
+  "whois": {
+    "title": "Whois ಗೋಪ್ಯತೆ", "currentlyEnabled": "{hostname} ಗಾಗಿ Whois ಗೋಪ್ಯತೆ ಈಗ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.",
+    "disableAndCancel": "Whois ಗೋಪ್ಯತೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ ಮತ್ತು ರದ್ದು ಮಾಡಿ",
+    "orderSuccess": "Whois ಗೋಪ್ಯತೆ ಆದೇಶ ಯಶಸ್ವಿಯಾಗಿ ಇಡಲಾಗಿದೆ!",
+    "whoisEnabled": "Whois ಗೋಪ್ಯತೆ ಈಗ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.",
+    "whoisDisabled": "Whois ಗೋಪ್ಯತೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ ರದ್ದು ಮಾಡಲಾಗಿದೆ."
+  },
+  "lock": { "title": "ಡೊಮೇನ್ ಲಾಕ್/ಅನ್‌ಲಾಕ್", "lockIt": "ಹೌದು, ಲಾಕ್ ಮಾಡಿ.", "unlockIt": "ಹೌದು, ಅನ್‌ಲಾಕ್ ಮಾಡಿ." },
+  "renew": {
+    "title": "ನವೀಕರಿಸಿ", "domain": "ಡೊಮೇನ್", "expiryDate": "ಮೀಯಾದಿ ದಿನಾಂಕ",
+    "renewCost": "ನವೀಕರಣ ವೆಚ್ಚ", "totalCost": "ಒಟ್ಟು ವೆಚ್ಚ", "goToPayment": "ಪಾವತಿಗೆ ಹೋಗಿ"
+  }
+}

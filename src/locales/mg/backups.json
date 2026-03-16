@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lisitry ny Fitahirizana / Backup",
+        "orderTitle": "Manome baiko ny Fisoratana Backup"
+    },
+    "view": {
+        "title": "Jereo ny Backup {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa:",
+        "statusIs": "Sata dia:",
+        "hostServer": "Mpizara Mpiantrano",
+        "links": "Rohy",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "order": {
+        "title": "Manome baiko Fitahirizana"
+    }
+}

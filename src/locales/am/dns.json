@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS አስተዳዳሪ",
+        "addDomain": "ዶሜን ጨምር",
+        "deleteDomain": "ዶሜን ሰርዝ",
+        "domainName": "የዶሜን ስም",
+        "dnsServers": "DNS ሰርቨሮች",
+        "confirmDelete": "ይህን ዶሜን ሰርዝ እርግጠኛ ነዎት?",
+        "noDomains": "ምንም ዶሜኖች አልተገኙም"
+    },
+    "editor": {
+        "title": "DNS አርታዒ",
+        "addRecord": "መዝገብ ጨምር",
+        "deleteRecord": "መዝገብ ሰርዝ",
+        "editRecord": "መዝገብ አርትዕ",
+        "recordType": "የመዝገብ ዓይነት",
+        "hostname": "የሆስት ስም",
+        "address": "አድራሻ",
+        "distance": "ርቀት",
+        "weight": "ክብደት",
+        "port": "ፖርት",
+        "ttl": "TTL",
+        "actions": "ድርጊቶች",
+        "confirmDelete": "ይህን መዝገብ ሰርዝ እርግጠኛ ነዎት?"
+    }
+}

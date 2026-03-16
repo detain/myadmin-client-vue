@@ -1,0 +1,38 @@
+{
+  "list": { "title": "VPS ಪಟ್ಟಿ", "orderVps": "VPS ಆದೇಶಿಸಿ" },
+  "view": {
+    "title": "VPS {id} ವೀಕ್ಷಿಸಿ", "package": "ಪ್ಯಾಕೇಜ್", "billing": "ಬಿಲ್ಲಿಂಗ್", "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ",
+    "vpsStatus": "VPS ಸ್ಥಿತಿ:", "hostServer": "ಹೋಸ್ಟ್ ಸರ್ವರ್:", "nextInvoiceDate": "ಮುಂದಿನ ಇನ್‌ವಾಯ್ಸ್ ದಿನಾಂಕ:",
+    "vpsInformation": "VPS ಮಾಹಿತಿ", "powerStatus": "ವಿದ್ಯುತ್ ಸ್ಥಿತಿ:", "selectAction": "ಕ್ರಿಯೆ ಆಯ್ಕೆಮಾಡಿ",
+    "disk": "ಡಿಸ್ಕ್", "totalSpace": "ಒಟ್ಟು ಜಾಗ:", "usedSpace": "ಬಳಸಿದ ಜಾಗ:", "remainingSpace": "ಉಳಿದ ಜಾಗ:",
+    "systemInformation": "ಸಿಸ್ಟಮ್ ಮಾಹಿತಿ", "memory": "ಮೆಮೊರಿ:", "cpuCores": "CPU ಕೋರ್‌ಗಳು:", "os": "OS:",
+    "links": "ಲಿಂಕ್‌ಗಳು", "updateComment": "ಕಾಮೆಂಟ್ ನವೀಕರಿಸಿ", "saveChanges": "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
+    "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "emailSentMessage": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ."
+  },
+  "order": {
+    "title": "VPS ಆದೇಶಿಸಿ", "osDistribution": "OS ವಿತರಣೆ", "osVersion": "OS ಆವೃತ್ತಿ",
+    "hostname": "ಹೋಸ್ಟ್‌ನೇಮ್", "rootPassword": "Root ಪಾಸ್‌ವರ್ಡ್", "couponCode": "ಕೂಪನ್ ಕೋಡ್",
+    "continue": "ಮುಂದುವರಿಸಿ", "orderSummary": "ಆದೇಶ ಸಾರಾಂಶ", "total": "ಒಟ್ಟು",
+    "tosAgree": "ಮೇಲಿನ ನಿಯಮಗಳನ್ನು ಓದಿ ಒಪ್ಪಿಗೆ ನೀಡುತ್ತೇನೆ.", "placeOrder": "ಆದೇಶ ಇಡಿ"
+  },
+  "changeHostname": {
+    "title": "VPS ಹೋಸ್ಟ್‌ನೇಮ್ ಬದಲಿಸಿ", "existingHostname": "ಅಸ್ತಿತ್ವದ ಹೋಸ್ಟ್‌ನೇಮ್",
+    "newHostname": "ಹೊಸ ಹೋಸ್ಟ್‌ನೇಮ್", "updateHostname": "ಹೋಸ್ಟ್‌ನೇಮ್ ನವೀಕರಿಸಿ"
+  },
+  "changeRootPassword": {
+    "title": "VPS Root ಪಾಸ್‌ವರ್ಡ್ ಬದಲಿಸಿ", "newPassword": "ಹೊಸ ಪಾಸ್‌ವರ್ಡ್:",
+    "confirmPassword": "ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ:", "changePassword": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಿಸಿ",
+    "passwordMismatch": "ಪಾಸ್‌ವರ್ಡ್ ಮತ್ತು ದೃಢೀಕರಣ ಪಾಸ್‌ವರ್ಡ್ ಹೊಂದಾಣಿಕೆಯಾಗಲ್ಲ"
+  },
+  "reinstallOs": {
+    "title": "OS ಮರು-ಸ್ಥಾಪಿಸಿ",
+    "importantNote1": "OS ಮರು-ಸ್ಥಾಪಿಸುವಿಕೆ ಎಲ್ಲಾ ಡೇಟಾ ಅಳಿಸುತ್ತದೆ.",
+    "importantNote2": "OS ಮರು-ಸ್ಥಾಪಿಸುವ ಮೊದಲು ಬ್ಯಾಕಪ್ ತೆಗೆದುಕೊಳ್ಳಿ.",
+    "osDistribution": "OS ವಿತರಣೆ", "confirmReinstallButton": "OS ಮರು-ಸ್ಥಾಪನೆ ದೃಢೀಕರಿಸಿ"
+  },
+  "common": {
+    "goBack": "ಹಿಂತಿರುಗಿ", "back": "ಹಿಂದೆ", "pleaseWait": "ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ!",
+    "success": "ಯಶಸ್ವಿ{text}", "gotError": "ದೋಷ ಸಿಕ್ಕಿತು {error}"
+  }
+}
