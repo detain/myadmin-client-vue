@@ -7139,9 +7139,9 @@ sweetalert2@11.4.8:
   integrity sha512-BDS/+E8RwaekGSxCPUbPnsRAyQ439gtXkTF/s98vY2l9DaVEOMjGj1FaQSorfGREKsbbxGSP7UXboibL5vgTMA==
 
 sweetalert2@^11.4.0:
-  version "11.26.22"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.26.22.tgz#898838958d02d26067da1eb37f552a717cef1b2b"
-  integrity sha512-UtfV5j7gXBRLm0+6Vm+MqIpsMA7CF7lOGeBj1sc8YSb2Q2xKT6mkSV63b4kFUGNs4vYa+Nd7ufZ97ZX9hNfqsA==
+  version "11.26.23"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.26.23.tgz#4627048ba6bb7e3b714a7647f3ebc0f593e3775c"
+  integrity sha512-6Y6Auvk/gLUcVtPHWhDkJs+JCDraxAWNdITdIbOqeo3mZthVZT3XfDjrxcSHtElUz7DmF21oEqUCW2eWR15eDA==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
@@ -7211,9 +7211,9 @@ tempusdominus-bootstrap-4@*, tempusdominus-bootstrap-4@^5.39.0:
     popper.js "^1.16.1"
 
 terser@*:
-  version "5.46.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.46.0.tgz#1b81e560d584bbdd74a8ede87b4d9477b0ff9695"
-  integrity sha512-jTwoImyr/QbOWFFso3YoU3ik0jBBDJ6JTOQiy/J2YxVJdZCc+5u7skhNwiOR3FQIygFqVUPHl7qbbxtjW2K3Qg==
+  version "5.46.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.46.1.tgz#40e4b1e35d5f13130f82793a8b3eeb7ec3a92eee"
+  integrity sha512-vzCjQO/rgUuK9sf8VJZvjqiqiHFaZLnOiimmUuOKODxWL8mm/xua7viT7aqX7dgPY60otQjUotzFMmCB4VdmqQ==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.15.0"
@@ -7279,17 +7279,17 @@ tinyrainbow@^3.0.3:
   resolved "https://registry.yarnpkg.com/tinyrainbow/-/tinyrainbow-3.1.0.tgz#1d8a623893f95cf0a2ddb9e5d11150e191409421"
   integrity sha512-Bf+ILmBgretUrdJxzXM0SgXLZ3XfiaUuOj/IKQHuTXip+05Xn+uyEYdVg0kYDipTBcLrCVyUzAPz7QmArb0mmw==
 
-tldts-core@^7.0.25:
-  version "7.0.25"
-  resolved "https://registry.yarnpkg.com/tldts-core/-/tldts-core-7.0.25.tgz#eaee57facdfb5528383d961f5586d49784519de5"
-  integrity sha512-ZjCZK0rppSBu7rjHYDYsEaMOIbbT+nWF57hKkv4IUmZWBNrBWBOjIElc0mKRgLM8bm7x/BBlof6t2gi/Oq/Asw==
+tldts-core@^7.0.26:
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/tldts-core/-/tldts-core-7.0.26.tgz#070f14bc7a4deabf115c6501bc5c0bae4da74d17"
+  integrity sha512-5WJ2SqFsv4G2Dwi7ZFVRnz6b2H1od39QME1lc2y5Ew3eWiZMAeqOAfWpRP9jHvhUl881406QtZTODvjttJs+ew==
 
 tldts@^7.0.5:
-  version "7.0.25"
-  resolved "https://registry.yarnpkg.com/tldts/-/tldts-7.0.25.tgz#e9034876e09b2ad92db547a9307ae6fa65400f8d"
-  integrity sha512-keinCnPbwXEUG3ilrWQZU+CqcTTzHq9m2HhoUP2l7Xmi8l1LuijAXLpAJ5zRW+ifKTNscs4NdCkfkDCBYm352w==
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/tldts/-/tldts-7.0.26.tgz#bf2472ed84e55faaaff5c2424c03a6bab69b92c5"
+  integrity sha512-WiGwQjr0qYdNNG8KpMKlSvpxz652lqa3Rd+/hSaDcY4Uo6SKWZq2LAF+hsAhUewTtYhXlorBKgNF3Kk8hnjGoQ==
   dependencies:
-    tldts-core "^7.0.25"
+    tldts-core "^7.0.26"
 
 to-regex-range@^5.0.1:
   version "5.0.1"
