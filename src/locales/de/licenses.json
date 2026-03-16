@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lizenzliste",
+        "orderTitle": "Lizenzregistrierungen bestellen"
+    },
+    "view": {
+        "title": "Lizenz {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet:",
+        "statusIs": "Status ist:",
+        "licenseInfo": "Lizenzinformationen",
+        "cpanelInfo": "cPanel-Informationen",
+        "links": "Links",
+        "welcomeEmailConfirm": "Sind Sie sicher, dass Sie die Willkommens-E-Mail erneut senden möchten?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Überprüfen Sie Ihren Posteingang."
+    },
+    "order": {
+        "title": "Lizenz bestellen"
+    },
+    "changeIp": {
+        "title": "IP ändern"
+    },
+    "changeOs": {
+        "title": "OS ändern",
+        "selectLicenseOs": "Lizenz-OS auswählen"
+    }
+}

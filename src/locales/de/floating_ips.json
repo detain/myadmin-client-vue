@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Liste der Floating IPs-Dienste",
+        "orderTitle": "Floating IP-Registrierungen bestellen"
+    },
+    "view": {
+        "title": "Floating IP {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet:",
+        "statusIs": "Status ist:",
+        "floatingIp": "Floating IP",
+        "links": "Links",
+        "welcomeEmailConfirm": "Sind Sie sicher, dass Sie die Willkommens-E-Mail erneut senden möchten?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Überprüfen Sie Ihren Posteingang."
+    },
+    "order": {
+        "title": "Floating IP bestellen"
+    },
+    "changeIp": {
+        "title": "Ziel-IP ändern"
+    }
+}
