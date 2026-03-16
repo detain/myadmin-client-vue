@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 //import { VueQueryPlugin } from '@tanstack/vue-query';
 import { createHead } from '@unhead/vue/client';
 //import { VueRecaptchaPlugin } from 'vue-recaptcha';
-import i18n, { loadCommonMessages } from './i18n';
+import i18n, { loadCommonMessages, resolveAppLocale, setAppLocale } from './i18n';
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
@@ -120,6 +120,7 @@ app.use(i18n);
     v2SiteKey: '6LeYMVkUAAAAAOW7Nw0e9rhAxIfH5T9k-JN9pMr2',
     //  v3SiteKey: 'YOUR_V3_SITEKEY_HERE',
 });*/
+setAppLocale(resolveAppLocale());
 loadCommonMessages().then(() => {
     app.mount('#app');
 });
