@@ -11,13 +11,15 @@ import iconCheckmark from '@/assets/images/myadmin/checkmark.png';
 const module = 'webhosting';
 const route = useRoute();
 const router = useRouter();
+import { useI18n } from 'vue-i18n';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Order Website');
-siteStore.setTitle('Order Website');
+const { t } = useI18n();
+siteStore.setPageHeading(t('webhosting.order.title'));
+siteStore.setTitle(t('webhosting.order.title'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/websites', 'Websites List'],
-    ['/websites/order', 'Order Website'],
+    ['/home', t('common.breadcrumb.home')],
+    ['/websites', t('webhosting.list.title')],
+    ['/websites/order', t('webhosting.order.title')],
 ]);
 const baseUrl = siteStore.getBaseUrl();
 const searchResults = ref<SearchDomainResponse | null>(null);
