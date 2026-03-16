@@ -157,7 +157,6 @@
         "jquery-sortable": "johnny/jquery-sortable#master",
         "vite-plugin-i18n-resources": "*",
         "unplugin-auto-import": "*",
-        "@intlify/unplugin-vue-i18n": "*",
         "@ttskch/select2-bootstrap4-theme": "*"
     },
     "commitlint": {
