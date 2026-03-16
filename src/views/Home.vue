@@ -3,11 +3,16 @@ import MainMenu from '@/components/MainMenu.vue';
 
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 
 import ClientHome from '@/views/ClientHome.vue';
+import { loadLocaleMessages } from '@/i18n';
+
+await loadLocaleMessages('en', 'login');
+const { t } = useI18n();
 
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -28,7 +33,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="cart" title="Cart" class="nav-link"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
+                    <router-link to="cart" :title="t('login.home.cart')" class="nav-link"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><font-awesome-icon :icon="['fas', 'power-off']" /></button>
@@ -50,7 +55,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
-                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
+                        <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user.account_lid }}</b></span
                         >
@@ -93,7 +98,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <!-- /.content-header -->
         </div>
         <footer class="main-footer text-center">
-            <strong>Copyright &copy; {{ new Date().getFullYear() }} <a href="https://interserver.net">InterServer Inc</a>.</strong> All rights reserved.
+            <strong>{{ t('login.home.copyright', { year: new Date().getFullYear() }) }}</strong> {{ t('login.home.allRightsReserved') }}
         </footer>
     </div>
 </template>

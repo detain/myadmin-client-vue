@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
@@ -8,6 +9,10 @@ import { useSiteStore } from '@/stores/site.store';
 import { router } from '@/router/index';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { loadLocaleMessages } from '@/i18n';
+
+await loadLocaleMessages('en', 'login');
+const { t } = useI18n();
 //import { Form, Field } from 'vee-validate';
 //import { useRecaptchaProvider, Checkbox } from 'vue-recaptcha';
 const siteStore = useSiteStore();
@@ -57,8 +62,8 @@ const passwordRules = computed(() => {
 
 const loginSchema = Yup.object().shape({
     tfa: Yup.string(),
-    login: Yup.string().required('Username is required'),
-    passwd: Yup.string().required('Password is required'),
+    login: Yup.string().required(t('validation.required', { field: t('login.username') })),
+    passwd: Yup.string().required(t('validation.required', { field: t('login.password') })),
 });
 
 declare global {
@@ -168,13 +173,13 @@ function login_handler() {
     if (username == '') {
         Swal.fire({
             icon: 'warning',
-            title: 'Please enter a username',
+            title: t('login.pleaseEnterUsername'),
             html: username,
         });
     } else if (password.value == '') {
         Swal.fire({
             icon: 'warning',
-            title: 'Please enter a password',
+            title: t('login.pleaseEnterPassword'),
             html: password.value,
         });
     } else {
@@ -213,7 +218,7 @@ function login_handler() {
                         $('.popup').removeClass('hidden');
                     } else {
                         $('.popup .error-box').show();
-                        $('.popup #error-message').text('Invalid Code, Please Enter correct code.');
+                        $('.popup #error-message').text(t('login.invalidCode'));
                     }
                 } else if (html.substring(0, 6) == 'verify') {
                     $('.loginsubmit, .signupsubmit').removeAttr('disabled');
@@ -221,7 +226,7 @@ function login_handler() {
                         $('.login_email_popup').removeClass('hidden');
                     } else {
                         $('.login_email_popup .error-box').show();
-                        $('.login_email_popup #error-message').text('Invalid Code, Please Enter correct code.');
+                        $('.login_email_popup #error-message').text(t('login.invalidCode'));
                     }
                     $('.captcha_main_signup').hide();
                     $('.captcha_alt_signup').hide();
@@ -240,7 +245,7 @@ function login_handler() {
                     // $("#message").html(html);
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Error',
+                        title: t('login.error'),
                         html: html,
                     });
                 }
@@ -250,7 +255,7 @@ function login_handler() {
                 gresponse.value = '';
                 Swal.fire({
                     icon: 'warning',
-                    title: 'Error occurred!',
+                    title: t('login.errorOccurred'),
                 });
             },
             beforeSend: function () {
@@ -263,8 +268,8 @@ function login_handler() {
 
 function signup_handler() {
     Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        title: t('login.pleaseWait'),
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingSignup'),
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -279,17 +284,17 @@ function signup_handler() {
     for (i = 0, n = items.length; i < n; i++) {
         if (items[i].name != 'remember' && items[i].name != 'email_confirmation' && items[i].name != 'captcha' && items[i].value == '') {
             if (items[i].name == 'login_id') {
-                errors = `${errors}<strong>Error!</strong> Please enter an email address<br>`;
+                errors = `${errors}<strong>${t('login.error')}</strong> ${t('login.pleaseEnterEmail')}<br>`;
             } else if (items[i].name == 'passwd' || items[i].name == 'password') {
-                errors = `${errors}<strong>Error!</strong> Please enter a password<br>`;
+                errors = `${errors}<strong>${t('login.error')}</strong> ${t('login.pleaseEnterPassword')}<br>`;
             } else if (items[i].name == 'giftcard_number') {
-                errors = `${errors}<strong>Error!</strong> Please enter a giftcard number<br>`;
+                errors = `${errors}<strong>${t('login.error')}</strong> ${t('login.pleaseEnterGiftcard')}<br>`;
             } else if (items[i].name == '2fa_code') {
                 // do something
             } else if (items[i].name == 'captcha' || items[i].name == 'g-recaptcha-response') {
                 // do something
             } else {
-                errors = `${errors}<strong>Error!</strong> Please enter a ${items[i].name} (got a blank value)<br>`;
+                errors = `${errors}<strong>${t('login.error')}</strong> Please enter a ${items[i].name} (got a blank value)<br>`;
             }
         }
         if (items[i].value != '' && items[i].name != 'captcha' && items[i].name != 'g-recaptcha-response') {
@@ -325,7 +330,7 @@ function signup_handler() {
                             $('.email_popup').removeClass('hidden');
                         } else {
                             $('.email_popup .error-box').show();
-                            $('.email_popup #error-message').text('Invalid Code, Please Enter correct code.');
+                            $('.email_popup #error-message').text(t('login.invalidCode'));
                         }
                         $('.captcha_main_signup').hide();
                         $('.captcha_alt_signup').hide();
@@ -349,7 +354,7 @@ function signup_handler() {
                     gresponse.value = '';
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Error occurred!',
+                        title: t('login.errorOccurred'),
                     });
                 },
                 beforeSend: function () {
@@ -367,9 +372,9 @@ function forgot_password() {
     const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const captcha = captchaCode.value;
     if (username == '') {
-        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a email address.</div>');
+        $('#forgot-password-message').html(`<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${t('login.pleaseEnterEmail')}</div>`);
     } else if (regex.test(username) == false) {
-        $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please enter a valid email address.</div>');
+        $('#forgot-password-message').html(`<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${t('login.pleaseEnterValidEmail')}</div>`);
     } else {
         const pathArray = window.location.pathname.split('/');
         let newPath = '/';
@@ -387,10 +392,10 @@ function forgot_password() {
             },
             error: function () {
                 $('#btn-forgot').prop('disabled', false);
-                $('#forgot-password-message').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error occurred!</div>');
+                $('#forgot-password-message').html(`<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${t('login.errorOccurred')}</div>`);
             },
             beforeSend: function () {
-                $('#forgot-password-message').html('<div style="margin: 15px; text-align: center;"><i class="fas fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">Processing Information</span></div>');
+                $('#forgot-password-message').html(`<div style="margin: 15px; text-align: center;"><i class="fas fa-spinner fa-spin fa-2x"></i> <span style="margin-left: 10px;font-size: 18px;">${t('login.processingInformation')}</span></div>`);
             },
         });
     }
@@ -398,8 +403,8 @@ function forgot_password() {
 
 async function onLoginSubmit() {
     Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Login Information',
+        title: t('login.pleaseWait'),
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingLogin'),
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -454,8 +459,8 @@ async function oAuthLogin(provider: string) {
                 oauthErrorMessage.value = '';
                 break;
             case 'oauth_error':
-                oauthErrorMessage.value = data.message || 'OAuth authentication failed';
-                Swal.fire('OAuth Error', data.message || 'Authentication failed', 'error');
+                oauthErrorMessage.value = data.message || t('login.oauth.authFailed');
+                Swal.fire(t('login.oauth.error'), data.message || t('login.oauth.authFailed'), 'error');
                 break;
         }
     }, { once: true });
@@ -475,16 +480,16 @@ async function submitOAuth2FA() {
             oauthToken.value = null;
             await router.push(authStore.returnUrl || '/');
         } else {
-            Swal.fire('Invalid Code', 'Please try again', 'error');
+            Swal.fire(t('login.invalidCodeTitle'), t('login.invalidCodeRetry'), 'error');
         }
     } catch (e) {
-        Swal.fire('Error', '2FA verification failed', 'error');
+        Swal.fire(t('login.error'), t('login.twoFaVerificationFailed'), 'error');
     }
 }
 
 async function submitOAuthLink(createNew: boolean = false) {
     if (!login.value || !password.value) {
-        Swal.fire('Error', 'Please enter email and password', 'warning');
+        Swal.fire(t('login.error'), t('login.oauth.enterEmailAndPassword'), 'warning');
         return;
     }
     try {
@@ -509,22 +514,22 @@ async function submitOAuthLink(createNew: boolean = false) {
     } catch (error: any) {
         if (error?.message === 'email_verification_required') {
             // Show email verification input — the token is still valid for retry
-            Swal.fire('Verify Email', 'A verification code has been sent to your email.', 'info');
+            Swal.fire(t('login.oauth.verifyEmail'), t('login.oauth.verifyEmailSent'), 'info');
         } else if (error?.message === '2fa_required') {
             oauthLinkRequired.value = false;
             oauthNeeds2FA.value = true;
             oauthErrorMessage.value = '';
         } else {
-            oauthErrorMessage.value = error?.message || 'Failed to link account';
-            Swal.fire('Error', oauthErrorMessage.value, 'error');
+            oauthErrorMessage.value = error?.message || t('login.oauth.failedToLink');
+            Swal.fire(t('login.error'), oauthErrorMessage.value, 'error');
         }
     }
 }
 
 async function onSignupSubmit() {
     Swal.fire({
-        title: 'Please wait',
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>Processing Signup Information',
+        title: t('login.pleaseWait'),
+        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingSignup'),
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -604,7 +609,7 @@ authStore.load();
     <div class="bg-black p-3 px-3"><img src="../assets/images/logo_new.png" alt="" /></div>
     <div class="container-main flex min-h-screen flex-grow flex-col-reverse lg:flex-row">
         <div class="marketing-content min-h-full w-full bg-blue-700 lg:block lg:w-5/12">
-            <h1 class="mt-5 w-full text-center text-3xl uppercase tracking-widest text-white">Welcome back to our growing Community</h1>
+            <h1 class="mt-5 w-full text-center text-3xl uppercase tracking-widest text-white">{{ t('login.welcomeBack') }}</h1>
             <div class="mt-24 flex">
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
@@ -633,18 +638,18 @@ authStore.load();
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
                                         <font-awesome-icon :icon="['far', 'user-circle']" class="text-orange-500" style="font-size: 35px" />
-                                        <h3 class="card-title text-bold ml-3 mt-2">Sign in to start your session</h3>
+                                        <h3 class="card-title text-bold ml-3 mt-2">{{ t('login.signIn') }}</h3>
                                     </div>
                                     <div class="card-body">
                                         <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" :validation-schema="loginSchema" @submit.prevent="onLoginSubmit">
                                             <div class="input-group mb-3">
-                                                <input id="loginname" v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                                <input id="loginname" v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text"><font-awesome-icon :icon="['fas', 'envelope']" /></div>
                                                 </div>
                                             </div>
                                             <div class="input-group mb-3">
-                                                <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" placeholder="Password" autocomplete="off" required />
+                                                <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" :placeholder="t('login.password')" autocomplete="off" required />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><font-awesome-icon :icon="['fas', isPasswordVisible ? 'eye-slash' : 'eye']" /></button>
@@ -653,16 +658,16 @@ authStore.load();
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 mb-1">
-                                                    <a id="forgot_link" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#" @click.prevent="toggleForgotPass">I forgot my password</a>
+                                                    <a id="forgot_link" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" href="#" @click.prevent="toggleForgotPass">{{ t('login.forgotPassword') }}</a>
                                                 </div>
                                                 <div class="col-8">
                                                     <div class="icheck-primary">
                                                         <input id="remember" v-model="remember" class="login_info" type="checkbox" />
-                                                        <label for="remember">Remember Me</label>
+                                                        <label for="remember">{{ t('login.rememberMe') }}</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">Sign In</button>
+                                                    <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">{{ t('login.signInButton') }}</button>
                                                 </div>
                                             </div>
                                             <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
@@ -670,28 +675,28 @@ authStore.load();
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />Email Verification</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />Enter the security code sent to your email.</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />{{ t('login.emailVerification') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />{{ t('login.emailVerificationInstructions') }}</p>
                                                         <form>
                                                             <div class="mb-4">
-                                                                <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" placeholder="Security Code" autocomplete="off" required />
+                                                                <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" :placeholder="t('login.securityCode')" autocomplete="off" required />
                                                             </div>
                                                             <div class="col-8">
                                                                 <div class="icheck-primary">
                                                                     <input id="code-remember" v-model="remember" class="login_info" type="checkbox" />
-                                                                    <label for="remember">Remember Me</label>
+                                                                    <label for="remember">{{ t('login.rememberMe') }}</label>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                     <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
-                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="error-message" class="block sm:inline"></span>
                                                                     <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><font-awesome-icon :icon="['fas', 'times']" /></span>
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
-                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
+                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">{{ t('login.signInButton') }}</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -702,16 +707,16 @@ authStore.load();
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'shield-alt']" class="mr-2" />Enter Two Factor Authorization Code!</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'info-circle']" class="mr-2" />Use your configured Authenticator to get a code and enter it here.</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'shield-alt']" class="mr-2" />{{ t('login.twoFactorTitle') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'info-circle']" class="mr-2" />{{ t('login.twoFactorInstructions') }}</p>
                                                         <form>
                                                             <div class="signup_toggle twofactorauth mb-4">
-                                                                <input v-model="twoFactorAuthCode" type="text" placeholder="Enter Code from Authenticator" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                                <input v-model="twoFactorAuthCode" type="text" :placeholder="t('login.enterCodeFromAuthenticator')" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                     <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
-                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="2fa-error-message" class="block sm:inline"></span>
                                                                     <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                         <font-awesome-icon :icon="['fas', 'times']" />
@@ -721,11 +726,11 @@ authStore.load();
                                                             <div class="mb-4">
                                                                 <label class="flex items-center">
                                                                     <input id="2fa-remember" v-model="remember" type="checkbox" name="remember" class="form-checkbox h-4 w-4 rounded-sm text-indigo-500" />
-                                                                    <span class="ml-2 text-gray-800">Remember me</span>
+                                                                    <span class="ml-2 text-gray-800">{{ t('login.rememberMe') }}</span>
                                                                 </label>
                                                             </div>
                                                             <div class="text-center">
-                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">Sign In</button>
+                                                                <button type="submit" class="loginsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50" @click.prevent="onLoginSubmit">{{ t('login.signInButton') }}</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -733,43 +738,43 @@ authStore.load();
                                             </div>
                                         </form>
                                         <div class="social-auth-links mb-3 mt-2 text-center">
-                                            <h3 class="text-bold text-center text-lg">Sign in using:</h3>
-                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
+                                            <h3 class="text-bold text-center text-lg">{{ t('login.signInUsing') }}</h3>
+                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Facebook' })" @click.prevent="oAuthLogin('Facebook')">
                                                 <font-awesome-icon :icon="['fab', 'facebook']" />
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
+                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Google+' })" @click.prevent="oAuthLogin('Google')">
                                                 <font-awesome-icon :icon="['fab', 'google-plus']" />
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
+                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'GitHub' })" @click.prevent="oAuthLogin('GitHub')">
                                                 <font-awesome-icon :icon="['fab', 'github']" />
                                             </a>
-                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
+                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Twitter' })" @click.prevent="oAuthLogin('Twitter')">
                                                 <font-awesome-icon :icon="['fab', 'twitter']" />
                                             </a>
                                         </div>
                                         <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
-                                            <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
-                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
+                                            <h4 class="mb-2 text-base font-bold">{{ t('login.oauth.signIn', { provider: oauthProvider }) }}</h4>
+                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">{{ t('login.oauth.twoFactorPrompt') }}</p>
                                             <div v-if="oauthNeeds2FA" class="input-group mb-2">
-                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
+                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" :placeholder="t('login.authenticatorCode')" autocomplete="off" />
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">{{ t('login.oauth.verify') }}</button>
                                                 </div>
                                             </div>
-                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">No linked account found for <strong>{{ oauthDisplayName || oauthEmail }}</strong>. Enter your existing login credentials to link, or create a new account.</p>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">{{ t('login.oauth.noLinkedAccount', { name: oauthDisplayName || oauthEmail }) }}</p>
                                             <div v-if="oauthLinkRequired">
                                                 <div class="input-group mb-2">
-                                                    <input v-model="login" type="email" class="form-control" placeholder="Email Address" autocomplete="off" />
+                                                    <input v-model="login" type="email" class="form-control" :placeholder="t('login.emailAddress')" autocomplete="off" />
                                                 </div>
                                                 <div class="input-group mb-2">
-                                                    <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="off" />
+                                                    <input v-model="password" type="password" class="form-control" :placeholder="t('login.password')" autocomplete="off" />
                                                 </div>
                                                 <div v-if="emailCode !== ''" class="input-group mb-2">
-                                                    <input v-model="emailCode" type="text" class="form-control" placeholder="Email Verification Code" autocomplete="off" />
+                                                    <input v-model="emailCode" type="text" class="form-control" :placeholder="t('login.emailVerificationCode')" autocomplete="off" />
                                                 </div>
                                                 <div class="flex gap-2">
-                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">Link Existing Account</button>
-                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">Create New Account</button>
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">{{ t('login.oauth.linkExistingAccount') }}</button>
+                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">{{ t('login.oauth.createNewAccount') }}</button>
                                                 </div>
                                             </div>
                                             <div v-if="oauthErrorMessage" class="mt-2 text-sm text-red-600">{{ oauthErrorMessage }}</div>
@@ -785,16 +790,16 @@ authStore.load();
                         <div class="login-box m-auto" style="width: 400px">
                             <div class="card card-outline card-primary">
                                 <div class="card-header text-center">
-                                    <h3 class="card-title ml-3 mt-1">Forgot your Password?</h3>
+                                    <h3 class="card-title ml-3 mt-1">{{ t('login.forgotPasswordTitle') }}</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="text-yellow-700">
-                                        Enter the Email address you use to log in to your account<br />
-                                        We'll send you an email with instructions to choose a new password.
+                                        {{ t('login.forgotPasswordInstructions') }}<br />
+                                        {{ t('login.forgotPasswordSendEmail') }}
                                     </div>
                                     <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="submitForgotPassForm">
                                         <div class="input-group mb-3">
-                                            <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                            <input v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <font-awesome-icon :icon="['fas', 'envelope']" />
@@ -807,32 +812,32 @@ authStore.load();
                                                 <!-- <Checkbox v-model="gresponse" /> -->
                                                 <div id="turnstileDiv2" ref="containerRef2"></div>
                                                 <div id="gcaptcha-2"></div>
-                                                <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
+                                                <a href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">{{ t('login.alternateCaptcha') }}</a>
                                             </div>
                                         </Transition>
                                         <Transition name="fade-slide">
                                             <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
                                                 <div class="flex">
                                                     <img :src="captcha" style="max-width: 75%" alt="" />
-                                                    <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
+                                                    <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" :title="t('login.reloadCaptcha')" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
                                                         <font-awesome-icon :icon="['fas', 'sync']" fixed-width />
                                                     </button>
                                                 </div>
                                                 <div class="input-group my-3">
-                                                    <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                    <input v-model="captchaCode" type="text" class="form-control" :placeholder="t('login.captcha')" autofocus autocomplete="off" />
                                                     <div class="input-group-append">
                                                         <div class="input-group-text"><font-awesome-icon :icon="['fas', 'robot']" /></div>
                                                     </div>
                                                 </div>
-                                                <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
+                                                <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">{{ t('login.primaryCaptchaMethod') }}</a>
                                             </div>
                                         </Transition>
                                         <div id="forgot-password-message"></div>
-                                        <button id="btn-forgot" type="button" class="btn btn-primary btn-block text-bold" @click.prevent="forgot_password">Continue</button>
+                                        <button id="btn-forgot" type="button" class="btn btn-primary btn-block text-bold" @click.prevent="forgot_password">{{ t('login.continue') }}</button>
                                     </form>
                                     <div class="row">
                                         <div class="col-12 myadmin_forgotPwd mb-1">
-                                            <a id="access_link" href="#" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" @click.prevent="toggleForgotPass">Login to My Account</a>
+                                            <a id="access_link" href="#" class="float-right inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800" @click.prevent="toggleForgotPass">{{ t('login.loginToMyAccount') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -847,12 +852,12 @@ authStore.load();
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
                                         <font-awesome-icon :icon="['far', 'user-circle']" class="text-orange-500" style="font-size: 35px" />
-                                        <h3 class="card-title text-bold ml-3 mt-2">Create Your Account Now</h3>
+                                        <h3 class="card-title text-bold ml-3 mt-2">{{ t('login.createYourAccount') }}</h3>
                                     </div>
                                     <div class="card-body">
                                         <form class="myadmin_loginForm mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md" @submit.prevent="onSignupSubmit">
                                             <div class="input-group mb-3">
-                                                <input v-model="login" type="email" class="login_info form-control" placeholder="Email Address" required autofocus autocomplete="off" />
+                                                <input v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <font-awesome-icon :icon="['fas', 'envelope']" />
@@ -860,20 +865,20 @@ authStore.load();
                                                 </div>
                                             </div>
                                             <div class="input-group mb-3">
-                                                <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" placeholder="Password" autocomplete="off" required @focus="showPasswordInfo = true" @blur="showPasswordInfo = false" />
+                                                <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" :placeholder="t('login.password')" autocomplete="off" required @focus="showPasswordInfo = true" @blur="showPasswordInfo = false" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><font-awesome-icon :icon="['fas', isPasswordVisible ? 'eye-slash' : 'eye']" /></button>
                                                     </div>
                                                 </div>
                                                 <div v-show="showPasswordInfo" id="pswd_info">
-                                                    <p class="pp"><b>Password must have:</b></p>
+                                                    <p class="pp"><b>{{ t('login.passwordMustHave') }}</b></p>
                                                     <ul>
-                                                        <li id="length" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.length ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.length ? 'bg-green p-1' : 'bg-red px-2 py-1']" />atleast 8 characters</li>
-                                                        <li id="capital" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.letter ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.letter ? 'bg-green p-1' : 'bg-red px-2 py-1']" />atleast 1 uppercase</li>
-                                                        <li id="letter" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.capital ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.capital ? 'bg-green p-1' : 'bg-red px-2 py-1']" />atleast 1 lowercase</li>
-                                                        <li id="number" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.number ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.number ? 'bg-green p-1' : 'bg-red px-2 py-1']" />atleast 1 number</li>
-                                                        <li id="special" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.special ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.special ? 'bg-green p-1' : 'bg-red px-2 py-1']" />atleast 1 special char</li>
+                                                        <li id="length" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.length ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.length ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast8Chars') }}</li>
+                                                        <li id="capital" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.letter ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.letter ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Uppercase') }}</li>
+                                                        <li id="letter" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.capital ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.capital ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Lowercase') }}</li>
+                                                        <li id="number" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.number ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.number ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Number') }}</li>
+                                                        <li id="special" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.special ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.special ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1SpecialChar') }}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -881,7 +886,7 @@ authStore.load();
                                                 <div class="col-12">
                                                     <div class="signup_toggle twofactorauth mb-6 hidden">
                                                         <div class="input-group my-3">
-                                                            <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" placeholder="Enter Code from Authenticator" autocomplete="off" />
+                                                            <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" :placeholder="t('login.enterCodeFromAuthenticator')" autocomplete="off" />
                                                             <div class="input-group-append">
                                                                 <div class="input-group-text"><font-awesome-icon :icon="['fas', 'lock']" /></div>
                                                             </div>
@@ -892,24 +897,24 @@ authStore.load();
                                                             <!-- <Checkbox v-model="gresponse" /> -->
                                                             <div id="turnstileDiv" ref="containerRef"></div>
                                                             <div id="gcaptcha-1"></div>
-                                                            <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">Alternate Captcha</a>
+                                                            <a id="captcha_alt_link_signup" href="#" class="text-sm font-bold text-blue-500 underline hover:text-blue-800" @click.prevent="toggleCaptchaMethod">{{ t('login.alternateCaptcha') }}</a>
                                                         </div>
                                                     </Transition>
                                                     <Transition name="fade-slide">
                                                         <div v-show="!primaryCaptcha" class="captcha_alt_signup mb-6">
                                                             <div class="flex">
                                                                 <img :src="captcha" style="max-width: 75%" alt="" />
-                                                                <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" title="Reload Captcha" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
+                                                                <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" :title="t('login.reloadCaptcha')" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
                                                                     <font-awesome-icon :icon="['fas', 'sync']" fixed-width />
                                                                 </button>
                                                             </div>
                                                             <div class="input-group my-3">
-                                                                <input v-model="captchaCode" type="text" class="form-control" placeholder="Captcha" autofocus autocomplete="off" />
+                                                                <input v-model="captchaCode" type="text" class="form-control" :placeholder="t('login.captcha')" autofocus autocomplete="off" />
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text"><font-awesome-icon :icon="['fas', 'robot']" /></div>
                                                                 </div>
                                                             </div>
-                                                            <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">Primary Captcha Method</a>
+                                                            <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">{{ t('login.primaryCaptchaMethod') }}</a>
                                                         </div>
                                                     </Transition>
                                                 </div>
@@ -917,15 +922,15 @@ authStore.load();
                                                     <div class="icheck-primary">
                                                         <input id="tos" v-model="tos" type="checkbox" required />
                                                         <label for="tos">
-                                                            I agree to the
+                                                            {{ t('login.agreeToTos') }}
                                                             <span class="text-sm font-bold text-blue-500 underline hover:text-blue-800">
-                                                                <a href="https://www.interserver.net/terms-of-service.html" target="_blank">Terms of Service</a>
+                                                                <a href="https://www.interserver.net/terms-of-service.html" target="_blank">{{ t('login.termsOfService') }}</a>
                                                             </span>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 text-right">
-                                                    <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">Create Account</button>
+                                                    <button id="" type="submit" class="signupsubmit btn btn-primary btn-block text-bold">{{ t('login.createAccount') }}</button>
                                                 </div>
                                             </div>
                                             <div v-show="!isLogin && opts.verify" class="poppup email_popup fixed inset-0 z-10 flex items-center justify-center">
@@ -933,16 +938,16 @@ authStore.load();
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />Email Verification</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />Enter the security code sent to your email.</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />{{ t('login.emailVerification') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />{{ t('login.emailVerificationInstructions') }}</p>
                                                         <form @submit.prevent="onSignupSubmit">
                                                             <div class="mb-4">
-                                                                <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" placeholder="Security Code" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
+                                                                <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" :placeholder="t('login.securityCode')" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
                                                                     <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
-                                                                    <strong class="font-bold">Error!</strong>
+                                                                    <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="signup-error-message" class="block sm:inline"></span>
                                                                     <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
                                                                         <font-awesome-icon :icon="['fas', 'times']" />
@@ -950,7 +955,7 @@ authStore.load();
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
-                                                                <button type="submit" class="signupsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">Create Account</button>
+                                                                <button type="submit" class="signupsubmit rounded-lg bg-indigo-500 px-6 py-2 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-700 focus:ring-opacity-50">{{ t('login.createAccount') }}</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -958,43 +963,43 @@ authStore.load();
                                             </div>
                                         </form>
                                         <div class="social-auth-links mb-3 mt-2 text-center">
-                                            <h3 class="text-bold text-center text-lg">Sign up using:</h3>
-                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Sign in using Facebook" @click.prevent="oAuthLogin('Facebook')">
+                                            <h3 class="text-bold text-center text-lg">{{ t('login.signUpUsing') }}</h3>
+                                            <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Facebook' })" @click.prevent="oAuthLogin('Facebook')">
                                                 <font-awesome-icon :icon="['fab', 'facebook']" />
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sign in using Google+" @click.prevent="oAuthLogin('Google')">
+                                            <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Google+' })" @click.prevent="oAuthLogin('Google')">
                                                 <font-awesome-icon :icon="['fab', 'google-plus']" />
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" title="Sign in using Github" @click.prevent="oAuthLogin('GitHub')">
+                                            <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'GitHub' })" @click.prevent="oAuthLogin('GitHub')">
                                                 <font-awesome-icon :icon="['fab', 'github']" />
                                             </a>
-                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" title="Sign in using Twitter" @click.prevent="oAuthLogin('Twitter')">
+                                            <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Twitter' })" @click.prevent="oAuthLogin('Twitter')">
                                                 <font-awesome-icon :icon="['fab', 'twitter']" />
                                             </a>
                                         </div>
                                         <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
-                                            <h4 class="mb-2 text-base font-bold">OAuth Sign-in: {{ oauthProvider }}</h4>
-                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">Two-factor authentication is enabled for this account. Enter your authenticator code to finish login.</p>
+                                            <h4 class="mb-2 text-base font-bold">{{ t('login.oauth.signIn', { provider: oauthProvider }) }}</h4>
+                                            <p v-if="oauthNeeds2FA" class="mb-2 text-sm text-gray-700">{{ t('login.oauth.twoFactorPrompt') }}</p>
                                             <div v-if="oauthNeeds2FA" class="input-group mb-2">
-                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" placeholder="Authenticator code" autocomplete="off" />
+                                                <input v-model="twoFactorAuthCode" type="text" class="form-control" :placeholder="t('login.authenticatorCode')" autocomplete="off" />
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">Verify</button>
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuth2FA">{{ t('login.oauth.verify') }}</button>
                                                 </div>
                                             </div>
-                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">No linked account found for <strong>{{ oauthDisplayName || oauthEmail }}</strong>. Enter your existing login credentials to link, or create a new account.</p>
+                                            <p v-if="oauthLinkRequired" class="mb-2 text-sm text-gray-700">{{ t('login.oauth.noLinkedAccount', { name: oauthDisplayName || oauthEmail }) }}</p>
                                             <div v-if="oauthLinkRequired">
                                                 <div class="input-group mb-2">
-                                                    <input v-model="login" type="email" class="form-control" placeholder="Email Address" autocomplete="off" />
+                                                    <input v-model="login" type="email" class="form-control" :placeholder="t('login.emailAddress')" autocomplete="off" />
                                                 </div>
                                                 <div class="input-group mb-2">
-                                                    <input v-model="password" type="password" class="form-control" placeholder="Password" autocomplete="off" />
+                                                    <input v-model="password" type="password" class="form-control" :placeholder="t('login.password')" autocomplete="off" />
                                                 </div>
                                                 <div v-if="emailCode !== '' || oauthErrorMessage === 'email_verification_required'" class="input-group mb-2">
-                                                    <input v-model="emailCode" type="text" class="form-control" placeholder="Email Verification Code" autocomplete="off" />
+                                                    <input v-model="emailCode" type="text" class="form-control" :placeholder="t('login.emailVerificationCode')" autocomplete="off" />
                                                 </div>
                                                 <div class="flex gap-2">
-                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">Link Existing Account</button>
-                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">Create New Account</button>
+                                                    <button class="btn btn-primary" type="button" @click="submitOAuthLink(false)">{{ t('login.oauth.linkExistingAccount') }}</button>
+                                                    <button class="btn btn-success" type="button" @click="submitOAuthLink(true)">{{ t('login.oauth.createNewAccount') }}</button>
                                                 </div>
                                             </div>
                                             <div v-if="oauthErrorMessage" class="mt-2 text-sm text-red-600">{{ oauthErrorMessage }}</div>
@@ -1005,9 +1010,9 @@ authStore.load();
                         </div>
                     </div>
                 </Transition>
-                <div v-show="isLogin && !showForgotPass" class="sign-up-txt signup pb-5 text-center text-gray-600">Don't have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">Sign Up</a></div>
-                <div v-show="!isLogin && !showForgotPass" class="sign-up-txt pb-5 text-center text-gray-600">Already have an account? <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">Login</a></div>
-                <div class="p-1 text-center text-sm text-gray-500">Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved.</div>
+                <div v-show="isLogin && !showForgotPass" class="sign-up-txt signup pb-5 text-center text-gray-600">{{ t('login.noAccountYet') }} <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">{{ t('common.buttons.signUp') }}</a></div>
+                <div v-show="!isLogin && !showForgotPass" class="sign-up-txt pb-5 text-center text-gray-600">{{ t('login.alreadyHaveAccount') }} <a class="sign-up text-sm font-bold text-blue-500 hover:text-blue-800" @click="toggleLoginSignup">{{ t('common.buttons.login') }}</a></div>
+                <div class="p-1 text-center text-sm text-gray-500">{{ t('login.copyright', { year: new Date().getFullYear() }) }}</div>
             </div>
         </div>
     </div>
