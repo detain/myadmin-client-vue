@@ -2,7 +2,7 @@
     <div class="row mt-2">
         <Package :pkg :inv-next-date="billingDetails.service_next_invoice_date" :host="serviceInfo.scrub_ip_ip" />
         <Billing :service-status="serviceInfo.scrub_ip_status" :currency-symbol="billingDetails.service_currency_symbol" :cost="cost" :frequency="billingDetails.service_frequency" />
-        <InfoBox :heading="'Current IP'" :key1="'IP Address'" :val1="serviceInfo.scrub_ip_ip" :icon-class="'fas fa-info-circle'" :icon-name="' '" :footer-key="'IP from service'" :footer-val="footer_val ? footer_val : 'N/A'" :bg-class="'bg-info'" />
+        <InfoBox :heading="t('scrub_ips.view.currentIp')" :key1="t('scrub_ips.view.ipAddress')" :val1="serviceInfo.scrub_ip_ip" :icon-class="'fas fa-info-circle'" :icon-name="' '" :footer-key="t('scrub_ips.view.ipFromService')" :footer-val="footer_val ? footer_val : 'N/A'" :bg-class="'bg-info'" />
     </div>
     <div class="row row-flex py-4">
         <div class="col-md-6">
@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { computed, watch } from 'vue';
+import { computed, watch, watchEffect } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
@@ -76,13 +76,15 @@ const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const scrubStore = scrubIpStore.getByID(id);
-siteStore.setPageHeading(t('scrub_ips.view.title'));
-siteStore.setTitle(t('scrub_ips.view.title'));
-siteStore.setBreadcrums([
-    ['/home', t('common.breadcrumb.home')],
-    [`/${moduleLink(module)}`, t('common.menu.scrubIps')],
-]);
-siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('scrub_ips.view.title'));
+watchEffect(() => {
+    siteStore.setPageHeading(t('scrub_ips.view.title'));
+    siteStore.setTitle(t('scrub_ips.view.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.scrubIps')],
+    ]);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('scrub_ips.view.title'));
+});
 
 const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes, countries } = storeToRefs(scrubIpStore);
 

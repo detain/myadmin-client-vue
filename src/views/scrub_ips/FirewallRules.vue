@@ -1,23 +1,23 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'shield-alt']" />Firewall Rules</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'shield-alt']" />{{ t('scrub_ips.firewallRules.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> Create New</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('scrub_ips.firewallRules.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
-            <div v-if="firewallRules == undefined || !firewallRules.length" class="text-center text-danger">No rules found!</div>
+            <div v-if="firewallRules == undefined || !firewallRules.length" class="text-center text-danger">{{ t('scrub_ips.firewallRules.noRulesFound') }}</div>
             <table v-else class="table table-sm table-bordered">
                 <thead>
                     <tr>
-                        <th>Protocol</th>
-                        <th>Destination IP</th>
-                        <th>Destination<br />Port</th>
-                        <th>Source IP</th>
-                        <th>Source<br />Port</th>
-                        <th>XDP Action</th>
-                        <th>Actions</th>
+                        <th>{{ t('scrub_ips.firewallRules.protocol') }}</th>
+                        <th>{{ t('scrub_ips.firewallRules.destinationIp') }}</th>
+                        <th>{{ t('scrub_ips.firewallRules.destinationPort') }}</th>
+                        <th>{{ t('scrub_ips.firewallRules.sourceIp') }}</th>
+                        <th>{{ t('scrub_ips.firewallRules.sourcePort') }}</th>
+                        <th>{{ t('scrub_ips.firewallRules.xdpAction') }}</th>
+                        <th>{{ t('common.labels.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
                         <td>
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="rule.id" type="hidden" name="rule_id" />
-                                <button type="submit" class="border-0" data-toggle="tooltip" title="Delete Firewall Rule">
+                                <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
                                     <font-awesome-icon :icon="['fas', 'trash']" />
                                 </button>
                             </form>
@@ -47,7 +47,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 id="modal-label-firewall" class="modal-title">Create New Firewall</h5>
+                            <h5 id="modal-label-firewall" class="modal-title">{{ t('scrub_ips.firewallRules.createNewFirewall') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -55,20 +55,20 @@
                         <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
                             <div class="modal-body">
                                 <div class="form-group row">
-                                    <label for="destination" class="col-sm-3 col-form-label"> Destination IP<span class="text-red">*</span> </label>
+                                    <label for="destination" class="col-sm-3 col-form-label"> {{ t('scrub_ips.firewallRules.destinationIp') }}<span class="text-red">*</span> </label>
                                     <div class="col-sm-9">
                                         <input id="destination" type="text" class="form-control" name="destination_ip" :value="ip" readonly />
-                                        <small id="type_help_destination">IP address is required</small>
+                                        <small id="type_help_destination">{{ t('scrub_ips.firewallRules.ipRequired') }}</small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="source_ip" class="col-sm-3 col-form-label">Destination Port</label>
+                                    <label for="source_ip" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.destinationPort') }}</label>
                                     <div class="col-sm-9">
                                         <input id="destination_port" name="destination_port" class="form-control" value="80" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="protocol" class="col-sm-3 col-form-label">Protocol</label>
+                                    <label for="protocol" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.protocol') }}</label>
                                     <div class="col-sm-9">
                                         <select id="protocol" name="protocol_id" class="form-control select2" style="width: 100% !important">
                                             <option value="1">TCP</option>
@@ -77,30 +77,30 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="source_type" class="col-sm-3 col-form-label">Source IP</label>
+                                    <label for="source_type" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.sourceIp') }}</label>
                                     <div class="col-sm-9">
                                         <input id="destination" type="text" class="form-control" name="source_ip" value="0" />
                                     </div>
                                 </div>
                                 <div id="s_network" class="form-group row">
-                                    <label for="source_ip" class="col-sm-3 col-form-label">Source Port</label>
+                                    <label for="source_ip" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.sourcePort') }}</label>
                                     <div class="col-sm-9">
                                         <input id="source_port" name="source_port" class="form-control" value="0" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="action" class="col-sm-3 col-form-label">XDP Action</label>
+                                    <label for="action" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.xdpAction') }}</label>
                                     <div class="col-sm-9">
                                         <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" onchange="xdp_update()">
-                                            <option value="1">Block</option>
-                                            <option value="0">Whitelist</option>
+                                            <option value="1">{{ t('scrub_ips.firewallRules.block') }}</option>
+                                            <option value="0">{{ t('scrub_ips.firewallRules.whitelist') }}</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <button type="submit" class="btn btn-primary">Create</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
+                                <button type="submit" class="btn btn-primary">{{ t('common.buttons.create') }}</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
                             </div>
                         </form>
                     </div>
@@ -115,6 +115,9 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ref } from 'vue';
 import Dialog from '@/components/Dialog.vue';
 import Swal from 'sweetalert2';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 const firewallRules = defineModel('firewallRules', { type: Array });
 const id = defineModel('id', { type: Number });
 const baseUrl = defineModel('base_url', { type: String });
@@ -155,13 +158,13 @@ const handleSubmit = (form_id: number) => {
                     Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
                 });
         } catch (error) {
-            Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to create firewall rule at this time.' });
+            Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.firewallRules.unableToCreateRule')}` });
         }
     }
 };
 
 const handleDelete = (itemId: number) => {
-    Swal.fire({ icon: 'warning', title: 'Are you sure you want to delete this rule?', showCancelButton: true, confirmButtonText: 'Yes' }).then((result) => {
+    Swal.fire({ icon: 'warning', title: t('scrub_ips.firewallRules.deleteRuleConfirm'), showCancelButton: true, confirmButtonText: t('common.labels.yes') }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({ title: '', html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!', allowOutsideClick: false, showConfirmButton: false });
             const targetForm = forms.get(itemId);
@@ -188,7 +191,7 @@ const handleDelete = (itemId: number) => {
                         });
                 } catch (error) {
                     Swal.close();
-                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete firewall at this time.' });
+                    Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.firewallRules.unableToDeleteRule')}` });
                 }
             }
         }
