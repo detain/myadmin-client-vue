@@ -22,5 +22,8 @@ export default defineConfig({
         reporters: ['default', 'html'],
         setupFiles: ['./test/setup.ts'],
         exclude: ['**/.claude/**', '**/e2e/**', '**/node_modules/**'],
+        coverage: {
+            reporter: ['text', 'json-summary', 'html'],
+        },
     },
 });
