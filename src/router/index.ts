@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, type RouteLocationRaw, type RouteRecordNormalized } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
-import { loadLocaleMessages } from '@/i18n';
+import i18n, { defaultLocale, loadLocaleMessages } from '@/i18n';
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -318,7 +318,8 @@ router.beforeEach(async (to) => {
     // Load i18n namespaces for the target route
     const i18nNamespaces = to.matched.flatMap((record) => (record.meta.i18n as string[] | undefined) ?? []);
     if (i18nNamespaces.length > 0) {
-        await Promise.all(i18nNamespaces.map((ns) => loadLocaleMessages('en', ns)));
+        const locale = i18n.global.locale.value;
+        await Promise.all(i18nNamespaces.flatMap((ns) => [loadLocaleMessages(locale, ns), loadLocaleMessages(defaultLocale, ns)]));
     }
 
     warmRouteByLocation(to);

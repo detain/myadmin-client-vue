@@ -1,6 +1,67 @@
 import { createI18n } from 'vue-i18n';
 import type { I18nOptions } from 'vue-i18n';
 
+const DEFAULT_LOCALE = 'en';
+const localeCommonMessageLoaders = import.meta.glob('../locales/*/common.json');
+const supportedLocales = new Set(
+    Object.keys(localeCommonMessageLoaders)
+        .map((path) => path.match(/\.\.\/locales\/([^/]+)\/common\.json$/)?.[1])
+        .filter((locale): locale is string => Boolean(locale))
+);
+
+function normalizeLocale(locale: string): string {
+    return locale.trim().toLowerCase().replace(/_/g, '-');
+}
+
+function findBestSupportedLocale(locale: string): string | null {
+    const normalized = normalizeLocale(locale);
+    const candidates = [normalized, normalized.split('-')[0]];
+
+    for (const candidate of candidates) {
+        if (supportedLocales.has(candidate)) {
+            return candidate;
+        }
+    }
+
+    return null;
+}
+
+export function resolvePreferredLocale(preferredLocales: string[]): string {
+    for (const locale of preferredLocales) {
+        const matchedLocale = findBestSupportedLocale(locale);
+        if (matchedLocale) {
+            return matchedLocale;
+        }
+    }
+
+    return DEFAULT_LOCALE;
+}
+
+export function getBrowserPreferredLocales(): string[] {
+    if (typeof navigator === 'undefined') {
+        return [DEFAULT_LOCALE];
+    }
+
+    const browserLocales = navigator.languages?.length ? navigator.languages : [navigator.language];
+    return browserLocales.filter((locale): locale is string => Boolean(locale));
+}
+
+export function resolveAppLocale(accountLocale?: string | null): string {
+    const normalizedAccountLocale = accountLocale?.trim();
+
+    if (normalizedAccountLocale && normalizedAccountLocale.toLowerCase() !== 'auto') {
+        return findBestSupportedLocale(normalizedAccountLocale) ?? DEFAULT_LOCALE;
+    }
+
+    return resolvePreferredLocale(getBrowserPreferredLocales());
+}
+
+export function setAppLocale(locale: string): string {
+    const resolvedLocale = findBestSupportedLocale(locale) ?? DEFAULT_LOCALE;
+    i18n.global.locale.value = resolvedLocale;
+    return resolvedLocale;
+}
+
 const datetimeFormats: I18nOptions['datetimeFormats'] = {
     en: {
         short: {
@@ -48,8 +109,8 @@ const numberFormats: I18nOptions['numberFormats'] = {
 
 const i18n = createI18n({
     legacy: false,
-    locale: 'en',
-    fallbackLocale: 'en',
+    locale: DEFAULT_LOCALE,
+    fallbackLocale: DEFAULT_LOCALE,
     globalInjection: false,
     missingWarn: import.meta.env.DEV,
     fallbackWarn: import.meta.env.DEV,
@@ -75,7 +136,10 @@ export async function loadLocaleMessages(locale: string, namespace: string): Pro
 }
 
 export async function loadCommonMessages(): Promise<void> {
-    await loadLocaleMessages('en', 'common');
+    const locale = i18n.global.locale.value;
+    await Promise.all([loadLocaleMessages(locale, 'common'), loadLocaleMessages(DEFAULT_LOCALE, 'common')]);
 }
+
+export const defaultLocale = DEFAULT_LOCALE;
 
 export default i18n;
