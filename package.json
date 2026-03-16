@@ -82,7 +82,7 @@
         "@types/wait-on": "*",
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
-        "@unhead/vue": "^1.8",
+        "@unhead/vue": "*",
         "@vitejs/plugin-basic-ssl": "*",
         "@vitejs/plugin-vue": "*",
         "@vitest/browser-playwright": "*",
@@ -167,6 +167,7 @@
         "yup": "*"
     },
     "suggest": {
+        "vite-plugin-pwa": "*",
         "@tanstack/vue-query": "*",
         "@vitejs/plugin-legacy": "*",
         "vite-plugin-vue-devtools": "*",
