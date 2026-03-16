@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 
+const { t } = useI18n();
 const id = ref(''); // Assign the value of `$id` here
 
 onMounted(() => {
     Swal.fire({
         icon: 'question',
-        title: '<h3>Email EPP Code</h3>',
+        title: `<h3>${t('domains.eppCode.title')}</h3>`,
         showCancelButton: true,
         showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Send Me',
-        html: '<p>Are you sure want to send <span class="text-2lg">EPP Code</span> to registered email ?</p>',
+        confirmButtonText: t('domains.eppCode.confirmButton'),
+        html: `<p>${t('domains.eppCode.confirmMessage')}</p>`,
         preConfirm: () => {
             (document.getElementById('eppcodeForm') as unknown as HTMLFormElement).submit();
         },

@@ -6,9 +6,12 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useServerStore } from '@/stores/server.store';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import BandwidthGraph from '@/views/servers/BandwidthGraph.vue';
@@ -59,36 +62,36 @@ const switchports = computed(() => (networkInfo.value.switchports ? networkInfo.
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
-        ['/home', 'Home'],
-        [`/${moduleLink(module)}`, 'Servers'],
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.servers')],
     ]);
-    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Server ${id}`);
+    siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('servers.view.title', { id }));
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Server ${id}`);
-        siteStore.setTitle(`View Server ${id}`);
+        siteStore.setPageHeading(t('servers.view.title', { id }));
+        siteStore.setTitle(t('servers.view.title', { id }));
     } else {
-        siteStore.setPageHeading(`Server ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`Server ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(`${t('common.menu.servers')} ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setTitle(`${t('common.menu.servers')} ${id} ${ucwords(newLink.replace('_', ' '))}`);
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
-                title: '<h3>Are you sure?</h3> ',
+                title: `<h3>${t('common.confirm.title')}</h3> `,
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
-                confirmButtonText: 'Yes',
-                html: 'Are you sure want to resend welcome email?',
+                confirmButtonText: t('common.confirm.yes'),
+                html: t('servers.view.welcomeEmailConfirm'),
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then(() => {
                             Swal.fire({
                                 icon: 'success',
-                                title: '<h3>Email Sent</h3> ',
+                                title: `<h3>${t('servers.view.emailSent')}</h3> `,
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
-                                confirmButtonText: 'Yes',
-                                html: 'The welcome email has been resent.  Check your inbox.',
+                                confirmButtonText: t('common.confirm.yes'),
+                                html: t('servers.view.emailSentMessage'),
                                 preConfirm: () => {
                                     router.push(`/${moduleLink(module)}/${id}`);
                                 },
@@ -130,10 +133,10 @@ serverStore.getById(id);
         <div class="col-md-4">
             <div class="small-box bg-secondary">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Package</h3>
-                    <p class="m-0">Dedicated Server</p>
+                    <h3>{{ t('servers.view.package') }}</h3>
+                    <p class="m-0">{{ t('servers.view.dedicatedServer') }}</p>
                     <p>
-                        Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date || 'Un-billed' }}</b>
+                        {{ t('servers.view.nextInvoiceDate') }} <b>{{ billingDetails.service_next_invoice_date || t('servers.view.unBilled') }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'briefcase']" /></div>
@@ -143,28 +146,28 @@ serverStore.getById(id);
         <div class="col-md-4">
             <div :class="`small-box bg-${serviceInfo.server_status === 'active' ? 'success' : serviceInfo.server_status === 'pending' ? 'orange' : serviceInfo.server_status === 'expired' || serviceInfo.server_status === 'canceled' ? 'red' : ''}`">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Billing</h3>
+                    <h3>{{ t('servers.view.billing') }}</h3>
                     <p class="my-2 py-3">
-                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b>
+                        <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> {{ t('common.labels.billed') }} <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
                 <span class="small-box-footer"
-                    >Status is: <b>{{ serviceInfo.server_status }}</b></span
+                    >{{ t('common.labels.statusIs') }} <b>{{ serviceInfo.server_status }}</b></span
                 >
             </div>
         </div>
         <div class="col-md-4">
             <div class="small-box bg-info">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Order Info</h3>
+                    <h3>{{ t('servers.view.orderInfo') }}</h3>
                     <p class="my-2 py-3">
-                        Order ID: <b>{{ serviceInfo.server_id }}</b>
+                        {{ t('servers.view.orderId') }} <b>{{ serviceInfo.server_id }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'cart-plus']" /></div>
                 <div class="small-box-footer">
-                    Ordered on: <b>{{ orderedOn }}</b>
+                    {{ t('servers.view.orderedOn') }} <b>{{ orderedOn }}</b>
                 </div>
             </div>
         </div>
@@ -192,7 +195,7 @@ serverStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />Links</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />{{ t('common.labels.links') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
@@ -211,7 +214,7 @@ serverStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />Server Information</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />{{ t('servers.view.serverInformation') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
@@ -222,14 +225,14 @@ serverStore.getById(id);
                     <table v-if="assets" class="table-sm table-bordered table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Hostname</th>
-                                <th>Primary IP</th>
-                                <th>Status</th>
-                                <th>Location</th>
+                                <th>{{ t('common.labels.id') }}</th>
+                                <th>{{ t('common.labels.hostname') }}</th>
+                                <th>{{ t('common.labels.ip') }}</th>
+                                <th>{{ t('common.labels.status') }}</th>
+                                <th>{{ t('common.labels.server') }}</th>
                                 <th>Rack</th>
-                                <th v-if="ipmiAuth">Power</th>
-                                <th>More Info</th>
+                                <th v-if="ipmiAuth">{{ t('servers.view.power') }}</th>
+                                <th>{{ t('servers.view.moreInfo') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -245,19 +248,19 @@ serverStore.getById(id);
                                         {{ asset.lease.power ? 'On' : 'Off' }}
                                         <br />
                                         <div class="btn-group">
-                                            <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">Select Action</button>
+                                            <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">{{ t('servers.view.selectAction') }}</button>
                                             <button type="button" class="btn dropdown-toggle dropdown-hover dropdown-icon" :class="asset.lease.power ? 'btn-success' : 'btn-danger'" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
                                             <div class="dropdown-menu" role="menu">
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=cycle'">Cycle</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=reset'">Reset</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=on'">On</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=off'">Off</a>
-                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=soft'">Soft Reboot</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=cycle'">{{ t('servers.view.cycle') }}</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=reset'">{{ t('servers.view.reset') }}</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=on'">{{ t('servers.view.on') }}</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=off'">{{ t('servers.view.off') }}</a>
+                                                <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=soft'">{{ t('servers.view.softReboot') }}</a>
                                             </div>
                                         </div>
                                     </template>
-                                    <template v-else> Unknown </template>
-                                    <template v-if="!asset.lease"> No Lease </template>
+                                    <template v-else> {{ t('servers.view.unknown') }} </template>
+                                    <template v-if="!asset.lease"> {{ t('servers.view.noLease') }} </template>
                                 </td>
                                 <td v-html="nl2br(asset.description)"></td>
                             </tr>
@@ -270,7 +273,7 @@ serverStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'sitemap']" />Network Information</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'sitemap']" />{{ t('servers.view.networkInformation') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>

@@ -3,8 +3,10 @@ import { storeToRefs } from 'pinia';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useRoute, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
 const authStore = useAuthStore();
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
 }>();
@@ -15,7 +17,7 @@ const errorMsg = ref('');
 const id = computed(() => props.id);
 const port = ref(route.query.port);
 const graphs = ref({ daily: 1, weekly: 2, monthly: 3, yearly: 4, total: 5 });
-const graphTitle = ref('Bandwidth Graph');
+const graphTitle = computed(() => t('servers.bandwidthGraph.graphTitle'));
 const ranges = ref([0, '1d', '1w', '31d', '365d', 'all']);
 </script>
 
@@ -26,7 +28,7 @@ const ranges = ref([0, '1d', '1w', '31d', '365d', 'all']);
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'chart-line']" />Bandwidth Graphs</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'chart-line']" />{{ t('servers.bandwidthGraph.title') }}</h3>
                         <div class="card-tools float-right">
                             <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { storeToRefs } from 'pinia';
@@ -7,14 +8,20 @@ import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { useAccountStore } from '@/stores/account.store';
 import type { HomeTicket, HomeTicketStatus, HomeTicketStatusView, HomeDetails, HomeServices, HomeResponse } from '@/types/ClientHome.ts';
+
+const { t, d, n } = useI18n();
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
 const { user } = storeToRefs(authStore);
 const { data } = storeToRefs(accountStore);
-siteStore.setPageHeading('Dashboard');
-siteStore.setTitle('Dashboard');
-siteStore.setBreadcrums([['', 'Home']]);
+
+watchEffect(() => {
+    siteStore.setPageHeading(t('dashboard.title'));
+    siteStore.setTitle(t('dashboard.title'));
+    siteStore.setBreadcrums([['', t('common.breadcrumb.home')]]);
+});
+
 const baseUrl = siteStore.getBaseUrl();
 const last_login_ip = ref('');
 const last_login = ref('');
@@ -116,50 +123,50 @@ accountStore.load();
                 <div class="col-md-4">
                     <div class="small-box bg-yellow">
                         <div class="inner px-3 pb-2 pt-3 text-white">
-                            <h3>Welcome, {{ full_name }}</h3>
-                            <p class="mb-2 mt-3 py-3"><b>Last Login: </b>{{ last_login }}</p>
+                            <h3>{{ t('dashboard.welcome', { name: full_name }) }}</h3>
+                            <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login && !isNaN(new Date(last_login.replace(' ', 'T')).getTime()) ? d(new Date(last_login.replace(' ', 'T')), 'long') : last_login }}</p>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['far', 'id-card']" />
                         </div>
-                        <div class="small-box-footer"><b>Last Login IP: </b>{{ last_login_ip }}</div>
+                        <div class="small-box-footer"><b>{{ t('dashboard.lastLoginIp') }}: </b>{{ last_login_ip }}</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="small-box bg-success">
                         <div class="inner px-3 pb-2 pt-3">
-                            <h3>PrePay Balance</h3>
+                            <h3>{{ t('dashboard.prepay.title') }}</h3>
                             <p class="mb-2 mt-3 py-3" style="min-height: 3.5em">
-                                <template v-if="balance"> <b>Prepay Remaining Balance:</b> {{ balance }} </template>
+                                <template v-if="balance && !isNaN(parseFloat(balance))"> <b>{{ t('dashboard.prepay.remainingBalance') }}:</b> {{ n(parseFloat(balance), 'currency') }} </template>
                             </p>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/prepays" class="text-bold text-white" title="Manage Your PrePay Account"> Manage Account&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-sm" /></router-link>
+                            <router-link to="/prepays" class="text-bold text-white" :title="t('dashboard.prepay.manageTooltip')"> {{ t('dashboard.prepay.manageAccount') }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-sm" /></router-link>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="small-box bg-info">
                         <div class="inner px-3 pb-2 pt-3">
-                            <h3>Unpaid Invoices</h3>
-                            <div class="pt-2"><b>Total Unpaid Invoices: </b>{{ invoice_list }}</div>
-                            <div class="mb-2 mt-2"><b>Total Amount To Be Paid: </b>{{ amount }}</div>
+                            <h3>{{ t('dashboard.invoices.title') }}</h3>
+                            <div class="pt-2"><b>{{ t('dashboard.invoices.totalUnpaid') }}: </b>{{ invoice_list }}</div>
+                            <div class="mb-2 mt-2"><b>{{ t('dashboard.invoices.totalAmount') }}: </b>{{ amount && !isNaN(parseFloat(amount)) ? n(parseFloat(amount), 'currency') : '' }}</div>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['fas', 'file-invoice']" />
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" title="Pay Total Amount"> <font-awesome-icon :icon="['far', 'money-bill-alt']" class="text-sm" />&nbsp;Pay Now </router-link>
+                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" :title="t('dashboard.invoices.payTotalTooltip')"> <font-awesome-icon :icon="['far', 'money-bill-alt']" class="text-sm" />&nbsp;{{ t('common.buttons.payNow') }} </router-link>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-100 d-flex callpin mb-5 bg-white p-3">
                 <font-awesome-icon :icon="['fas', 'key']" style="font-size: 20px; padding: 5px" />
-                <h5 style="position: relative; top: 5px; left: 10px">Call in Pin:</h5>
+                <h5 style="position: relative; top: 5px; left: 10px">{{ t('dashboard.callInPin') }}:</h5>
                 <h5 style="position: relative; left: 15px; top: 5px; font-weight: bold; font-size: 20px">
                     {{ data.pin }}
                 </h5>
@@ -169,9 +176,9 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['fas', 'ticket-alt']" />Recent Tickets</h3>
+                                <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['fas', 'ticket-alt']" />{{ t('dashboard.recentTickets') }}</h3>
                                 <div class="card-tools float-right">
-                                    <router-link to="/tickets" class="btn btn-custom btn-sm" title="View All Tickets"> <font-awesome-icon :icon="['far', 'eye']" />&nbsp;&nbsp;View All&nbsp;&nbsp; </router-link>
+                                    <router-link to="/tickets" class="btn btn-custom btn-sm" :title="t('dashboard.viewAllTickets')"> <font-awesome-icon :icon="['far', 'eye']" />&nbsp;&nbsp;{{ t('common.buttons.viewAll') }}&nbsp;&nbsp; </router-link>
                                 </div>
                             </div>
                         </div>
@@ -179,11 +186,11 @@ accountStore.load();
                             <table class="table-bordered table-sm table text-center">
                                 <thead>
                                     <tr>
-                                        <th>Ticket ID</th>
-                                        <th>Subject</th>
-                                        <th>Last Replier</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>{{ t('common.table.ticketId') }}</th>
+                                        <th>{{ t('common.table.subject') }}</th>
+                                        <th>{{ t('common.table.lastReplier') }}</th>
+                                        <th>{{ t('common.labels.status') }}</th>
+                                        <th>{{ t('common.labels.action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -193,7 +200,7 @@ accountStore.load();
                                         <td>{{ ticket.lastreplier }}</td>
                                         <td>{{ ticketStatusView[ticket.ticketstatusid] }}</td>
                                         <td>
-                                            <router-link class="btn btn-primary btn-sm" title="Edit Ticket" :to="'/tickets/' + ticket.ticketid"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit </router-link>
+                                            <router-link class="btn btn-primary btn-sm" :title="t('dashboard.editTicket')" :to="'/tickets/' + ticket.ticketid"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;{{ t('common.buttons.edit') }} </router-link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -212,23 +219,23 @@ accountStore.load();
                             </h2>
                             <div class="card-tools float-right">
                                 <span class="card-subtitle text-muted float-right mb-2 mt-2">
-                                    <router-link class="badge bg-success float-right" title="View All" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
+                                    <router-link class="badge bg-success float-right" :title="t('common.buttons.viewAll')" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
                                 <template v-if="Object.keys(value.links).length === 0">
-                                    <li class="list-group-item">No Active Services</li>
+                                    <li class="list-group-item">{{ t('common.labels.noActiveServices') }}</li>
                                 </template>
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
-                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-right" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">Control Panel</router-link>
+                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-right" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">{{ t('common.labels.controlPanel') }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
-                                    <router-link :to="'/' + moduleLink(module) + '/order'" class="btn order">Order Now</router-link>
+                                    <router-link :to="'/' + moduleLink(module) + '/order'" class="btn order">{{ t('common.buttons.orderNow') }}</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -242,12 +249,12 @@ accountStore.load();
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex aff-main">
-                                        <div class="text-md aff-heading my-2">Earn {{ `$${AFFILIATE_AMOUNT}` }} Per Sale:</div>
-                                        <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" placeholder="Affiliate URL" :value="affiliateUrl" /></div>
-                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard()">Copy to Clipboard</button>
+                                        <div class="text-md aff-heading my-2">{{ t('dashboard.affiliate.earnPerSale', { amount: `$${AFFILIATE_AMOUNT}` }) }}:</div>
+                                        <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" :placeholder="t('dashboard.affiliate.urlPlaceholder')" :value="affiliateUrl" /></div>
+                                        <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard()">{{ t('common.buttons.copyToClipboard') }}</button>
                                     </div>
                                     <div class="aff-share m-2">
-                                        <h4 class="aff-social mx-2">Share with:</h4>
+                                        <h4 class="aff-social mx-2">{{ t('dashboard.affiliate.shareWith') }}:</h4>
                                         <a class="mx-2" :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(affiliateUrl) + '&amp;title=InterServer Web Hosting and VPS'" title="InterServer Web Hosting and VPS"><img class="social" alt="Share on Facebook" src="../assets/images/social_flat_rounded_rects_svg/Facebook.svg" /></a>
                                         <a class="mx-2" :href="'https://twitter.com/intent/tweet?source=' + encodeURIComponent(affiliateUrl) + '&amp;text=&quot;Write something here&quot; @interserver ' + encodeURIComponent(affiliateUrl)" title="Tweet"><img class="social" alt="Tweet" src="../assets/images/social_flat_rounded_rects_svg/Twitter.svg" /></a>
                                         <a class="mx-2" :href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + encodeURIComponent(affiliateUrl) + '&amp;title=affiliate%20link%20' + encodeURIComponent(affiliateUrl) + '&amp;summary=Very happy with the web hosting service @interserver give them a try if you have a website ' + encodeURIComponent(affiliateUrl)" title="Share on LinkedIn"><img class="social" alt="Share on LinkedIn" src="../assets/images/social_flat_rounded_rects_svg/LinkedIn.svg" /></a>

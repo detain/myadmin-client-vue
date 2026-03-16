@@ -65,7 +65,7 @@ describe('PrePays.vue', () => {
 
     it('shows "No Prepaid funds available" when no prepays', () => {
         const wrapper = mount(PrePays, createMountOptions());
-        expect(wrapper.text()).toContain('No Prepaid funds available');
+        expect(wrapper.text()).toContain('No prepaid funds available');
     });
 
     it('shows "Add New Prepay" button', () => {
@@ -123,7 +123,7 @@ describe('PrePays.vue', () => {
                 },
             },
         }));
-        expect(wrapper.text()).toContain('No History found!');
+        expect(wrapper.text()).toContain('No history found!');
     });
 
     it('renders pagination', () => {

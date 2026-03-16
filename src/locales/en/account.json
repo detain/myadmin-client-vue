@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Account Settings"
+    },
+    "changePassword": {
+        "title": "Change Password",
+        "cardTitle": "Update Password",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password",
+        "updatePassword": "Update Password"
+    },
+    "changeUsername": {
+        "title": "Change Username",
+        "disabled": "Username changes have been temporarily disabled.",
+        "currentUsername": "Current Username",
+        "newDesiredUsername": "New Desired Username",
+        "confirmationCode": "Confirmation Code",
+        "pleaseWait": "Please wait!",
+        "gotError": "Got error {error}"
+    },
+    "contactInfo": {
+        "title": "Contact Info",
+        "cardTitle": "Update Contact Info",
+        "headsUp": "Heads up!",
+        "headsUpMessage": "Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your Risk % Score giving you quicker and more convenient access to parts of the site (such as not having to authenticate a credit card).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Information",
+        "name": "Name",
+        "namePlaceholder": "Joe Cool",
+        "company": "Company",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "cityState": "City, State",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "zipcode": "Zipcode",
+        "phoneNo": "Phone No",
+        "phoneNumber": "Phone Number",
+        "language": "Language",
+        "auto": "Auto",
+        "currency": "Currency",
+        "timeZone": "Time Zone",
+        "otherSettings": "Other Settings",
+        "disablePasswordResets": "Disable (Forgot your Password) Password Resets.",
+        "disableInvoiceReminders": "Disable Invoice Reminder Email Notifications.",
+        "disableServerInvoiceReminders": "Disable Server Invoice Reminder Email Notifications.",
+        "disableReinstall": "Disable Reinstall.",
+        "alternateEmailInvoices": "Alternate Email for Invoices",
+        "alternateEmailInvoicesPlaceholder": "Alternative email for sending invoices",
+        "alternateEmailAbuse": "Alternate Email for Abuse Reports",
+        "updateInfo": "Update Info"
+    }
+}

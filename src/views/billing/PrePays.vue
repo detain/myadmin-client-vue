@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { ref, reactive, defineComponent } from 'vue';
+import { ref, reactive, defineComponent, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { usePrePayStore } from '@/stores/prepay.store';
 import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
+const { t } = useI18n();
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
 const prepayStore = usePrePayStore();
 const router = useRouter();
 const { loading, error, custid, ima, modules, prepays, total_pages, total_records, limit, page, curr_page_records, allInfo } = storeToRefs(prepayStore);
-siteStore.setPageHeading('PrePaid Funds');
-siteStore.setTitle('PrePaid Funds');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'PrePays'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('billing.prepays.title'));
+    siteStore.setTitle(t('billing.prepays.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('billing.prepays.title')],
+    ]);
+});
 /* =====================
    STATE (replace with API)
 ===================== */
@@ -145,25 +149,25 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><font-awesome-icon :icon="['fas', 'plus']" /> Add New Prepay</button>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('billing.prepays.addNewPrepay') }}</button>
             </div>
-            <div v-if="loading" class="text-center">Loading…</div>
+            <div v-if="loading" class="text-center">{{ t('common.labels.loading') }}</div>
             <template v-if="Object.keys(prepays).length">
                 <div v-for="p in prepays" :key="p.prepay.prepay_id" class="card mb-3">
                     <div class="card-body">
                         <div class="row">
                             <!-- LEFT COLUMN -->
                             <div class="col-md-3">
-                                <p>Prepay ID : {{ p.prepay.prepay_id }}</p>
+                                <p>{{ t('billing.prepays.prepayId', { id: p.prepay.prepay_id }) }}</p>
                                 <p>
-                                    Module:
-                                    <span v-if="!p.prepay.prepay_module">All</span>
+                                    {{ t('billing.prepays.module') }}
+                                    <span v-if="!p.prepay.prepay_module">{{ t('billing.prepays.allModules') }}</span>
                                     <span v-else>{{ capitalize(p.prepay.prepay_module) }}</span>
                                 </p>
-                                <p>Balance: {{ p.prepay.prepay_remaining_disp }}</p>
+                                <p>{{ t('billing.prepays.balance', { amount: p.prepay.prepay_remaining_disp }) }}</p>
                                 <p>
-                                    Automatically use on Invoices:
-                                    {{ p.prepay.prepay_automatic_use == '1' ? 'Yes' : 'No' }}
+                                    {{ t('billing.prepays.autoUseInvoices') }}
+                                    {{ p.prepay.prepay_automatic_use == '1' ? t('billing.prepays.yes') : t('billing.prepays.no') }}
                                 </p>
                             </div>
 
@@ -175,7 +179,7 @@ function submitNewPrepay() {
                                 <template v-if="p.history?.length">
                                     <div class="card card-secondary collapsed-card">
                                         <div class="card-header">
-                                            <h3 class="card-title">History Log</h3>
+                                            <h3 class="card-title">{{ t('billing.prepays.historyLog') }}</h3>
                                             <div class="card-tools">
                                                 <button class="btn btn-tool" data-card-widget="collapse" @click="toggleHistory(p.prepay.prepay_id)">
                                                     <font-awesome-icon :icon="['fas', 'plus']" />
@@ -187,9 +191,9 @@ function submitNewPrepay() {
                                             <table class="table table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th>Date</th>
-                                                        <th>Description</th>
-                                                        <th class="text-end">Amount</th>
+                                                        <th>{{ t('common.labels.date') }}</th>
+                                                        <th>{{ t('common.labels.description') }}</th>
+                                                        <th class="text-end">{{ t('common.labels.amount') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -203,7 +207,7 @@ function submitNewPrepay() {
                                         </div>
                                     </div>
                                 </template>
-                                <span v-else class="text-danger">No History found!</span>
+                                <span v-else class="text-danger">{{ t('billing.prepays.noHistoryFound') }}</span>
                             </div>
                         </div>
                     </div>
@@ -213,7 +217,7 @@ function submitNewPrepay() {
                 <div class="row py-3">
                     <div class="col text-left">
                         <h6 class="pl-3">
-                            <small> Showing page {{ page }} of {{ total_pages }} and {{ curr_page_records }} records out of {{ total_records }} </small>
+                            <small> {{ t('billing.prepays.showingPage', { page, totalPages: total_pages, records: curr_page_records, totalRecords: total_records }) }} </small>
                         </h6>
                     </div>
 
@@ -221,7 +225,7 @@ function submitNewPrepay() {
                         <nav>
                             <ul class="pagination justify-content-end">
                                 <li class="page-item" :class="{ disabled: page === 1 }">
-                                    <button class="page-link" @click="goToPage(page - 1)">Previous</button>
+                                    <button class="page-link" @click="goToPage(page - 1)">{{ t('billing.prepays.previous') }}</button>
                                 </li>
 
                                 <li v-for="i in total_pages" :key="i" class="page-item" :class="{ active: page === i }">
@@ -231,7 +235,7 @@ function submitNewPrepay() {
                                 </li>
 
                                 <li class="page-item" :class="{ disabled: page === total_pages }">
-                                    <button class="page-link" @click="goToPage(page + 1)">Next</button>
+                                    <button class="page-link" @click="goToPage(page + 1)">{{ t('billing.prepays.next') }}</button>
                                 </li>
                             </ul>
                         </nav>
@@ -241,7 +245,7 @@ function submitNewPrepay() {
 
             <template v-else>
                 <hr />
-                <div class="text-danger text-center">No Prepaid funds available</div>
+                <div class="text-danger text-center">{{ t('billing.prepays.noPrepaidFunds') }}</div>
             </template>
         </div>
     </div>
@@ -251,13 +255,13 @@ function submitNewPrepay() {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Add New Prepay</h4>
+                    <h4>{{ t('billing.prepays.addNewPrepay') }}</h4>
                 </div>
 
                 <div class="modal-body">
                     <form @submit.prevent="submitNewPrepay">
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label"> Select Module </label>
+                            <label class="col-md-6 col-form-label"> {{ t('billing.prepays.selectModule') }} </label>
                             <div class="col-sm-6">
                                 <select v-model="newPrepay.module" class="form-control" @change="updateModuleOptions">
                                     <option v-for="(name, key) in modules" :key="key" :value="key">
@@ -268,29 +272,29 @@ function submitNewPrepay() {
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label"> Amount in USD </label>
+                            <label class="col-md-6 col-form-label"> {{ t('billing.prepays.amountInUsd') }} </label>
                             <div class="col-sm-6">
                                 <input v-model.number="newPrepay.amount" type="number" class="form-control form-control-sm" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-6 col-form-label"> Automatically use on new invoices </label>
+                            <label class="col-md-6 col-form-label"> {{ t('billing.prepays.autoUseNewInvoices') }} </label>
                             <div class="col-sm-6">
                                 <label>
                                     <input v-model="newPrepay.automatic_use" type="radio" value="1" />
-                                    Yes
+                                    {{ t('billing.prepays.yes') }}
                                 </label>
                                 <label class="ms-2">
                                     <input v-model="newPrepay.automatic_use" type="radio" value="0" />
-                                    No
+                                    {{ t('billing.prepays.no') }}
                                 </label>
                             </div>
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-primary btn-sm me-2">Submit</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary btn-sm me-2">{{ t('common.buttons.submit') }}</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">{{ t('common.buttons.cancel') }}</button>
                         </div>
                     </form>
                 </div>

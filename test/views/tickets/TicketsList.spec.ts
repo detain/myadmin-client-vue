@@ -147,7 +147,7 @@ describe('TicketsList.vue', () => {
         }));
         expect(wrapper.text()).toContain('Subject');
         expect(wrapper.text()).toContain('Last Replier');
-        expect(wrapper.text()).toContain('Last Activity');
+        expect(wrapper.text()).toContain('Date');
     });
 
     it('shows period label in header', () => {

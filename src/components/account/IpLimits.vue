@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import type { AccountData, AccountLimit } from '@/types/account';
+
+const { t } = useI18n();
 const props = defineProps<{
     data: AccountData;
     limits: AccountLimit[];
@@ -70,7 +73,7 @@ export default {
     <div class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2" title="This Provides a way to limit the IP Addresses your account can login to from adding additional security to your account.">Session IP Security Limits</h3>
+                <h3 class="card-title py-2" :title="t('common.account.sessionIpLimitsDescription')">{{ t('common.account.sessionIpLimits') }}</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
                 </div>
@@ -78,27 +81,27 @@ export default {
         </div>
         <div class="card-body">
             <div class="alert alert-info">
-                Your Remote IP: <b>{{ ip }}</b>
+                {{ t('common.account.yourRemoteIp') }} <b>{{ ip }}</b>
                 <br />
-                Enabling IP limits will prevent anyone that is not listed below from logging in. Make sure your IP address is static and will not change in the future.
+                {{ t('common.account.ipLimitsWarning') }}
             </div>
             <form enctype="multipart/form-data" @submit.prevent="addRangeSubmit">
                 <table class="table-sm table">
                     <thead>
                         <tr>
-                            <th>Start IP</th>
-                            <th>End IP</th>
-                            <th>Restrict</th>
-                            <th>Options</th>
+                            <th>{{ t('common.labels.startIp') }}</th>
+                            <th>{{ t('common.labels.endIp') }}</th>
+                            <th>{{ t('common.labels.restrict') }}</th>
+                            <th>{{ t('common.labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(limit, idx) in limits" :key="'row' + idx">
                             <td>{{ limit.start }}</td>
                             <td>{{ limit.end }}</td>
-                            <td>{{ limit?.restrict == 'Only API' ? 'Only API' : 'Web & API' }}</td>
+                            <td>{{ limit?.restrict == 'Only API' ? t('common.account.onlyApi') : t('common.account.webAndApi') }}</td>
                             <td>
-                                <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fas fa-trash"></span> Remove</a>
+                                <a class="btn btn-sm btn-danger" @click.prevent="deleteRange(limit.start, limit.end)"><span class="fas fa-trash"></span> {{ t('common.buttons.remove') }}</a>
                             </td>
                         </tr>
                         <tr>
@@ -106,11 +109,11 @@ export default {
                             <td><input v-model="newLimit.end" type="text" name="end" placeholder="192.168.1.255" /></td>
                             <td>
                                 <select v-model="newLimit.restrict" name="restrict">
-                                    <option value="Web & API">Web & API</option>
-                                    <option value="Only API">Only API</option>
+                                    <option value="Web & API">{{ t('common.account.webAndApi') }}</option>
+                                    <option value="Only API">{{ t('common.account.onlyApi') }}</option>
                                 </select>
                             </td>
-                            <td><button type="submit" class="btn btn-custom btn-sm" name="submit">Add Range</button></td>
+                            <td><button type="submit" class="btn btn-custom btn-sm" name="submit">{{ t('common.buttons.addRange') }}</button></td>
                         </tr>
                     </tbody>
                 </table>

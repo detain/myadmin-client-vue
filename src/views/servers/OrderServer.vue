@@ -5,8 +5,10 @@ import { generatePassword } from '@/helpers/generatePassword';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import type { ServerOrderResponse, CpuCores, ConfigIds, FormValues, FieldLabel, ConfigLi, CpuLi, Region } from '@/types/servers_order.ts';
 const siteStore = useSiteStore();
+const { t } = useI18n();
 const country = ref('US');
 const baseUrl = siteStore.getBaseUrl();
 const currency = ref('USD');
@@ -62,12 +64,12 @@ const discountCost = ref(0);
 const totalPayable = ref(0);
 const lastOs = ref<string | number | null>(null);
 const money = (val: number) => Intl.NumberFormat(`en-${country.value}`, { style: 'currency', currency: currency.value }).format(val);
-siteStore.setPageHeading('Order Server');
-siteStore.setTitle('Order Server');
+siteStore.setPageHeading(t('servers.order.title'));
+siteStore.setTitle(t('servers.order.title'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/servers`, 'Servers List'],
-    ['/servers/order', 'Order Server'],
+    ['/home', t('common.breadcrumb.home')],
+    [`/servers`, t('servers.list.title')],
+    ['/servers/order', t('servers.order.title')],
 ]);
 
 type ComponentKey = keyof FormValues;

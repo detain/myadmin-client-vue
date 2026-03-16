@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { moduleLink } from '@/helpers/moduleLink';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 import xlsxImg from '@/assets/images/crud/xlsx.png';
 import xlsImg from '@/assets/images/crud/xls.png';
@@ -89,19 +92,19 @@ const computedOrderRoute = computed(() => {
     return `/${moduleLink(props.module)}/order`;
 });
 
-const exportFormats = [
-    { type: 'xlsx', title: 'Excel 2007+', label: 'XLSX', img: xlsxImg },
-    { type: 'xls', title: 'Excel 2003/BIFF', label: 'XLS', img: xlsImg },
-    { type: 'ods', title: 'OpenDocument SpreadSheet', label: 'ODS', img: odsImg },
-    { type: 'pdf', title: 'Adobe Portable Document Format', label: 'PDF', img: pdfImg },
-    { type: 'xml', title: 'Extensible Markup Language', label: 'XML', img: xmlImg },
-    { type: 'php', title: 'PHP Array', label: 'PHP', img: phpImg },
-    { type: 'csv', title: 'Comma-Separated Values', label: 'CSV', img: csvImg },
-    { type: 'json', title: 'JSON', label: 'JSON', img: jsonImg },
-    { type: 'bbcode', title: 'BBcode', label: 'BBCODE', img: bbcodeImg },
-    { type: 'wiki', title: 'WikiCode', label: 'WIKI', img: wikiImg },
-    { type: 'markdown', title: 'MarkDown', label: 'MARKDOWN', img: markdownImg },
-];
+const exportFormats = computed(() => [
+    { type: 'xlsx', title: t('common.export.xlsx'), label: t('common.export.xlsxShort'), img: xlsxImg },
+    { type: 'xls', title: t('common.export.xls'), label: t('common.export.xlsShort'), img: xlsImg },
+    { type: 'ods', title: t('common.export.ods'), label: t('common.export.odsShort'), img: odsImg },
+    { type: 'pdf', title: t('common.export.pdf'), label: t('common.export.pdfShort'), img: pdfImg },
+    { type: 'xml', title: t('common.export.xml'), label: t('common.export.xmlShort'), img: xmlImg },
+    { type: 'php', title: t('common.export.php'), label: t('common.export.phpShort'), img: phpImg },
+    { type: 'csv', title: t('common.export.csv'), label: t('common.export.csvShort'), img: csvImg },
+    { type: 'json', title: t('common.export.json'), label: t('common.export.json'), img: jsonImg },
+    { type: 'bbcode', title: t('common.export.bbcode'), label: t('common.export.bbcodeShort'), img: bbcodeImg },
+    { type: 'wiki', title: t('common.export.wiki'), label: t('common.export.wikiShort'), img: wikiImg },
+    { type: 'markdown', title: t('common.export.markdown'), label: t('common.export.markdownShort'), img: markdownImg },
+]);
 
 function crud_print(): void {
     window.print();
@@ -120,13 +123,13 @@ function crud_export(exportType: string): void {
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="computedOrderRoute" :title="orderTitle"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> Order</router-link>
+                                <router-link class="btn btn-primary btn-sm printer-hidden" :to="computedOrderRoute" :title="orderTitle"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> {{ t('common.buttons.order') }}</router-link>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" :title="t('common.buttons.print')" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />{{ t('common.buttons.print') }}</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('common.buttons.exportData')" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li v-for="fmt in exportFormats" :key="fmt.type" role="presentation" :data-type="fmt.type">
                                         <a href="#" data-container="body" :title="fmt.title" @click.prevent="crud_export(fmt.type)"><img :src="fmt.img" alt="" /> {{ fmt.label }}</a>
@@ -136,10 +139,10 @@ function crud_export(exportType: string): void {
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
                             <div id="limitStatusGroup" class="btn-group">
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">Active</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">Pending</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">Expired</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'all' }" @click.prevent="limitStatus = 'all'">All</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" @click.prevent="limitStatus = 'active'">{{ t('common.labels.active') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" @click.prevent="limitStatus = 'pending'">{{ t('common.labels.pending') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" @click.prevent="limitStatus = 'expired'">{{ t('common.labels.expired') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'all' }" @click.prevent="limitStatus = 'all'">{{ t('common.labels.all') }}</a>
                             </div>
                         </div>
                     </div>

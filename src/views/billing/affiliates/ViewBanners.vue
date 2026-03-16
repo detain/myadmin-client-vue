@@ -1,22 +1,28 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useAccountStore } from '@/stores/account.store';
 import { fetchWrapper } from '@/helpers/fetchWrapper.ts';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
 const { data } = storeToRefs(accountStore);
 const baseUrl = siteStore.getBaseUrl();
-siteStore.setPageHeading('Affiliate - Banners');
-siteStore.setTitle('Affiliate - Banners');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['', 'Banners'],
-]);
+
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.viewBanners.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.viewBanners.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.viewBanners.title')],
+    ]);
+});
 const banners = ref<Banner[]>([]);
 const usefulLinks = ref<UsefulLink[]>([
     { page: 'Default Home Page', link: `https://www.interserver.net/r/${data.value.account_id}` },

@@ -2,6 +2,7 @@
 import { watch, onMounted, onBeforeUnmount } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import MainMenu from '@/components/MainMenu.vue';
 import Alert from '@/components/Alert.vue';
 import Searchbox from '@/components/Searchbox.vue';
@@ -9,6 +10,8 @@ import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { useDarkMode } from '@/helpers/useDarkMode';
 import { warmFrequentlyUsedRoutes, warmRouteByLocation } from '@/router';
+
+const { t } = useI18n();
 
 function warmSidebarRouteFromEvent(event: Event) {
     const target = event.target as HTMLElement | null;
@@ -156,7 +159,7 @@ useDarkMode();
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="/cart" class="nav-link" title="Cart"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
+                    <router-link to="/cart" class="nav-link" :title="t('common.menu.cart')"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><font-awesome-icon :icon="['fas', 'power-off']" /></button>
@@ -175,9 +178,9 @@ useDarkMode();
                 <!-- Sidebar -->
                 <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" alt="Profile Image" />
+                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" :alt="t('common.profile.profileImage')" />
                     <div class="info hide-on-collapse brand-text" style="padding: 0px">
-                        <router-link to="/account/info" title="Edit Personal Info" class="d-block">{{ user?.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
+                        <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>
                         </span>
@@ -225,7 +228,7 @@ useDarkMode();
             </section>
         </div>
         <footer class="main-footer text-center">
-            <strong>Copyright &copy; {{ new Date().getFullYear() }} <a href="https://interserver.net">InterServer Inc</a>.</strong> All rights reserved.
+            <strong>{{ t('common.footer.copyright', { year: new Date().getFullYear() }) }}</strong> {{ t('common.footer.allRightsReserved') }}
         </footer>
     </div>
     <div v-else>

@@ -4,8 +4,10 @@ import { useRouter } from 'vue-router';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
     funct: string;
@@ -21,14 +23,14 @@ onMounted(() => {
     const isDisable = props.funct === 'disableCancel';
     Swal.fire({
         icon: isDisable ? 'warning' : 'question',
-        title: '<h3>Whois Privacy Addon</h3>',
+        title: `<h3>${t('domains.whoisToggle.title')}</h3>`,
         showCancelButton: true,
         showLoaderOnConfirm: true,
-        confirmButtonText: isDisable ? 'Disable & Cancel it.' : 'Enable Whois',
+        confirmButtonText: isDisable ? t('domains.whoisToggle.disableCancelConfirm') : t('domains.whoisToggle.enableConfirm'),
         confirmButtonColor: isDisable ? '#d33' : '#3085d6',
         html: `
-      <p>Your domain <span class="text-2lg"><b>${props.domain}</b></span> Whois Privacy addon is ${isDisable ? 'Enabled' : 'Disabled'}</p>
-      <p>Are you sure you want to ${isDisable ? 'Disable & Cancel it' : 'Enable Whois'}?</p>
+      <p>${isDisable ? t('domains.whoisToggle.addonEnabled', { domain: props.domain }) : t('domains.whoisToggle.addonDisabled', { domain: props.domain })}</p>
+      <p>${isDisable ? t('domains.whoisToggle.confirmDisable') : t('domains.whoisToggle.confirmEnable')}</p>
     `,
         preConfirm: () => {
             return fetchWrapper
@@ -46,7 +48,7 @@ onMounted(() => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                html: result.value.text || (isDisable ? 'Whois Privacy has been disabled and canceled.' : 'Whois Privacy has been enabled.'),
+                html: result.value.text || (isDisable ? t('domains.whois.whoisDisabled') : t('domains.whois.whoisEnabled')),
             }).then(() => {
                 router.push(`/${moduleLink(module)}/${props.id}`);
             });

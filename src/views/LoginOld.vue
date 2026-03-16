@@ -2,8 +2,11 @@
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
+import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const siteStore = useSiteStore();
 const authStore = useAuthStore();
@@ -12,8 +15,8 @@ const { breadcrums, page_heading, sidemenu } = storeToRefs(siteStore);
 
 const schema = Yup.object().shape({
     tfa: Yup.string(),
-    login: Yup.string().required('Username is required'),
-    passwd: Yup.string().required('Password is required'),
+    login: Yup.string().required(t('validation.required', { field: t('login.username') })),
+    passwd: Yup.string().required(t('validation.required', { field: t('login.password') })),
 });
 interface LoginParams {
     login: string;
@@ -40,21 +43,21 @@ async function onSubmit(values: any) {
         <div class="row">
             <div class="col-sm-8 offset-sm-2 mt-5">
                 <div class="card m-3">
-                    <h4 class="card-header">Login</h4>
+                    <h4 class="card-header">{{ t('login.title') }}</h4>
                     <div class="card-body">
                         <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema" @submit="onSubmit">
                             <div class="form-group">
-                                <label>Username</label>
+                                <label>{{ t('login.username') }}</label>
                                 <Field name="login" type="text" class="form-control" :class="{ 'is-invalid': errors.login }" />
                                 <div class="invalid-feedback">{{ errors.login }}</div>
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>{{ t('login.password') }}</label>
                                 <Field name="passwd" type="password" class="form-control" :class="{ 'is-invalid': errors.passwd }" />
                                 <div class="invalid-feedback">{{ errors.passwd }}</div>
                             </div>
                             <div v-if="opts.tfa" class="form-group">
-                                <label>2-Factor Authentication Code</label>
+                                <label>{{ t('login.twoFactorCode') }}</label>
                                 <Field name="tfa" type="text" class="form-control" :class="{ 'is-invalid': errors.tfa }" />
                                 <div class="invalid-feedback">{{ errors.tfa }}</div>
                             </div>
@@ -64,9 +67,9 @@ async function onSubmit(values: any) {
                             <div class="form-group">
                                 <button class="btn btn-primary" :disabled="isSubmitting">
                                     <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-                                    Login
+                                    {{ t('common.buttons.login') }}
                                 </button>
-                                <router-link to="register" class="btn btn-link">Register</router-link>
+                                <router-link to="register" class="btn btn-link">{{ t('common.buttons.register') }}</router-link>
                             </div>
                         </Form>
                     </div>

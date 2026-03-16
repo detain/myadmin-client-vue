@@ -3,9 +3,12 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
     module: string;
@@ -37,11 +40,11 @@ onMounted(() => {});
 function onSubmit() {
     Swal.fire({
         icon: 'error',
-        title: `<h3>Cancel ${module.value}</h3> `,
+        title: `<h3>${t('common.confirm.cancelTitle', { module: module.value })}</h3> `,
         showCancelButton: true,
         showLoaderOnConfirm: true,
-        confirmButtonText: 'Yes, Cancel it.',
-        html: `<p>Are you sure want to cancel your ${module.value} <span class="text-2lg">${id.value}</span>?</p>`,
+        confirmButtonText: t('common.confirm.yesCancelIt'),
+        html: `<p>${t('common.confirm.cancelConfirm', { module: module.value, id: id.value })}</p>`,
         preConfirm: () => {
             try {
                 fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/cancel`).then((response) => {
@@ -61,39 +64,39 @@ function onSubmit() {
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12 my-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title m-0 text-left">Cancel {{ settings?.TITLE }} Service</h4>
+                        <h4 class="card-title m-0 text-left">{{ t('common.services.cancelService', { title: settings?.TITLE }) }}</h4>
                     </div>
                     <div class="card-body">
                         <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">{{ settings?.TBLNAME }} ID:</label>
+                                <label class="col-sm-5 col-form-label">{{ t('common.services.idLabel', { tableName: settings?.TBLNAME }) }}</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ id }}</div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">Type:</label>
+                                <label class="col-sm-5 col-form-label">{{ t('common.labels.type') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ pkg }}</div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">Hostname:</label>
+                                <label class="col-sm-5 col-form-label">{{ t('common.labels.hostname') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField }}</div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label">Username:</label>
+                                <label class="col-sm-5 col-form-label">{{ t('common.labels.username') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField2 }}</div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="confirm">Are you sure you want to cancel?</label>
+                                <label class="col-sm-5 col-form-label" for="confirm">{{ t('common.confirm.areYouSureCancelQuestion') }}</label>
                                 <div class="col-sm-7" style="text-align: left">
                                     <div class="ui-select">
                                         <select id="confirm" name="confirm" class="form-control">
-                                            <option value="no">No</option>
-                                            <option value="yes">Yes, Cancel the {{ settings?.TBLNAME }} Order</option>
+                                            <option value="no">{{ t('common.confirm.no') }}</option>
+                                            <option value="yes">{{ t('common.confirm.yesCancelOrder', { tableName: settings?.TBLNAME }) }}</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="comment" style="font-weight: normal">Reason for Cancellation/Comment:</label>
+                                <label class="col-sm-5 col-form-label" for="comment" style="font-weight: normal">{{ t('common.services.reasonForCancellation') }}</label>
                                 <div class="col-sm-7" style="text-align: left">
                                     <textarea id="comment" class="form-control" rows="2"></textarea>
                                 </div>
@@ -101,7 +104,7 @@ function onSubmit() {
                             <div class="card-footer">
                                 <div class="form-group row m-0">
                                     <div class="col-sm-12 text-center">
-                                        <button class="btn btn-md btn-success" type="submit">Continue</button>
+                                        <button class="btn btn-md btn-success" type="submit">{{ t('common.buttons.continue') }}</button>
                                     </div>
                                 </div>
                             </div>

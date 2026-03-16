@@ -3,7 +3,9 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import Inspect from 'vite-plugin-inspect';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
@@ -28,6 +30,9 @@ export default defineConfig({
             script: {
                 defineModel: true,
             },
+        }),
+        VueI18nPlugin({
+            include: [resolve(dirname(fileURLToPath(import.meta.url)), './src/locales/**')],
         }),
         dts({
             insertTypesEntry: true,
@@ -78,7 +83,7 @@ export default defineConfig({
                         if (id.includes('fontawesome') || id.includes('fortawesome')) {
                             return 'fontawesome';
                         }
-                        if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+                        if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router') || id.includes('vue-i18n')) {
                             return 'framework';
                         }
                         if (id.includes('admin-lte') || id.includes('jquery') || id.includes('bootstrap') || id.includes('select2')) {
@@ -102,6 +107,7 @@ export default defineConfig({
         alias: {
             //'@': path.resolve(__dirname, './src'),
             '@': fileURLToPath(new URL('./src', import.meta.url)),
+            'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
         },
     },
     server: {

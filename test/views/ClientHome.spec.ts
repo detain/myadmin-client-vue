@@ -95,7 +95,7 @@ describe('ClientHome', () => {
 
     it('shows PrePay Balance section', () => {
         const wrapper = mount(ClientHome, mountOptions);
-        expect(wrapper.text()).toContain('PrePay Balance');
+        expect(wrapper.text()).toContain('Prepay Balance');
     });
 
     it('shows Unpaid Invoices section', () => {
@@ -105,7 +105,7 @@ describe('ClientHome', () => {
 
     it('shows Call in Pin', () => {
         const wrapper = mount(ClientHome, mountOptions);
-        expect(wrapper.text()).toContain('Call in Pin');
+        expect(wrapper.text()).toContain('Call-in PIN');
         expect(wrapper.text()).toContain('5678');
     });
 

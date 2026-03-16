@@ -3,7 +3,10 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -43,25 +46,25 @@ loadBackupsList();
         <div class="col-10">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>Manage VPS Backups</h3>
+                    <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backups.title') }}</h3>
                     <div class="card-tools text-right">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <div class="card-body mb-0">
                     <table class="table-sm display compact table">
                         <thead>
                             <tr>
-                                <th>VPS</th>
-                                <th>Type</th>
-                                <th>Backup Name</th>
-                                <th>Size</th>
-                                <th colspan="2">Options</th>
+                                <th>{{ t('vps.backups.vps') }}</th>
+                                <th>{{ t('vps.backups.type') }}</th>
+                                <th>{{ t('vps.backups.backupName') }}</th>
+                                <th>{{ t('vps.backups.size') }}</th>
+                                <th colspan="2">{{ t('vps.backups.options') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-if="loading">
-                                <td colspan="10">Loading...</td>
+                                <td colspan="10">{{ t('common.labels.loading') }}</td>
                             </tr>
                             <tr v-for="(row, index) in backupsArr" v-else :key="index">
                                 <td>
@@ -70,8 +73,8 @@ loadBackupsList();
                                 <td>{{ row.type }}</td>
                                 <td>{{ row.name }}</td>
                                 <td>{{ row.size }}</td>
-                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/delete'" class="">Delete</router-link></td>
-                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/download'" class="">Download</router-link></td>
+                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/delete'" class="">{{ t('common.buttons.delete') }}</router-link></td>
+                                <td><router-link :to="'/' + moduleLink(module) + '/' + props.id + '/backups/' + row.name + '/download'" class="">{{ t('common.buttons.download') }}</router-link></td>
                             </tr>
                         </tbody>
                     </table>

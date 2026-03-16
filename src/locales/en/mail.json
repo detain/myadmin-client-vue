@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Mail Services List",
+        "orderTitle": "Order Mail Registrations"
+    },
+    "view": {
+        "title": "View Mail {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Next Invoice Date:",
+        "billing": "Billing",
+        "billed": "billed:",
+        "statusIs": "Status is:",
+        "mailApi": "Mail API",
+        "usageCount": "Usage Count:",
+        "links": "Links",
+        "connectionInfo": "Connection Info",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome email?",
+        "emailSent": "Email Sent",
+        "emailSentMessage": "The welcome email has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Order Mail"
+    },
+    "alerts": {
+        "title": "Alerts",
+        "addAlert": "Add Alert",
+        "editAlert": "Edit Alert",
+        "noAlerts": "No alerts found"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Blocked Emails"
+    },
+    "denyRules": {
+        "title": "Deny Rules",
+        "addRule": "Add Rule",
+        "noRules": "No deny rules found"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Search Logs"
+    },
+    "stats": {
+        "title": "Statistics"
+    },
+    "deliverability": {
+        "title": "Deliverability"
+    }
+}
