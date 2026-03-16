@@ -1,6 +1,37 @@
 # InterServer MyAdmin Client Interface
 
+[![CI/CD - Web, Electron, Capacitor](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml)
+[![Playwright E2E Tests](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml/badge.svg)](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/releases/latest)
+[![GitHub last commit](https://img.shields.io/github/last-commit/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/issues)
+[![License](https://img.shields.io/github/license/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/blob/master/LICENSE)
+
 Check out the [WIKI](wiki) for documentation.
+
+## Build Artifacts
+
+Latest build artifacts are available from the [CI/CD workflow](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml):
+
+| Platform | Artifact |
+|----------|----------|
+| Web | [web](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Linux x64 | [linux-x64-appimage](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [linux-x64-deb](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [linux-x64-snap](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Linux arm64 | [linux-arm64-appimage](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [linux-arm64-deb](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Windows x64 | [installer](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [portable](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Windows arm64 | [installer](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [portable](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| macOS | [dmg](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml), [pkg](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Android | [apk](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| iOS | [app](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+
+## Testing
+
+| Suite | Command | Status |
+|-------|---------|--------|
+| Vitest Unit Tests & Coverage | `yarn test` / `yarn test:coverage` | [![CI/CD](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml) |
+| Playwright E2E Tests | `yarn test:e2e` | [![Playwright E2E Tests](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml/badge.svg)](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml) |
+
+Test results, coverage reports, and Playwright HTML reports are uploaded as artifacts on each CI run. View them in the [Actions tab](https://github.com/detain/myadmin-client-vue/actions).
 
 ## FAQ
 
