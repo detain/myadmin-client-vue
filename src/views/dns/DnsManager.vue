@@ -144,8 +144,8 @@ loadDns();
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fas fa-print crud-icon"></i>Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />Print</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
                                         <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> XLSX</a>
@@ -234,8 +234,8 @@ loadDns();
                                             <td>{{ row.name }}</td>
                                             <td>{{ row.content }}</td>
                                             <td>
-                                                <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><i class="fas fa-fw fa-cog"></i></router-link>
-                                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteDomain"><i class="far fa-fw fa-trash" :data-id="row.id"></i></a>
+                                                <router-link :to="'dns/' + row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain"><font-awesome-icon :icon="['fas', 'cog']" fixed-width /></router-link>
+                                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteDomain"><font-awesome-icon :icon="['far', 'trash-alt']" fixed-width :data-id="row.id" /></a>
                                             </td>
                                         </tr>
                                     </tbody>

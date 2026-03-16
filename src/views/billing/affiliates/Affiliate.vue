@@ -169,9 +169,9 @@ onMounted(() => {
     <div class="row justify-content-center mt-2">
         <div class="col">
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
-                <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Attention:</b>&nbsp;This affiliate program is not intended for referral of "family members" or "clients" please read <router-link class="link" :to="'/affiliate/faq'">FAQ</router-link> before proceeding.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;This affiliate program is not intended for referral of "family members" or "clients" please read <router-link class="link" :to="'/affiliate/faq'">FAQ</router-link> before proceeding.</p>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
                 <p></p>
             </div>
@@ -181,10 +181,10 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2">
-                                    <i class="fas fa-money-bill" aria-hidden="true">&nbsp;</i> Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
+                                    <font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
                                 </h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
                             </div>
                         </div>
@@ -199,9 +199,9 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fas fa-external-link-alt" aria-hidden="true">&nbsp;</i>Affiliate URL</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'external-link-alt']" />&nbsp;Affiliate URL</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
                             </div>
                         </div>
@@ -222,23 +222,23 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true">&nbsp;</i>Links</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Links</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" title="Sales Graph"><i class="fas fa-chart-line" aria-hidden="true"></i>Sales Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><i class="fas fa-chart-line" aria-hidden="true"></i>Web Traffic Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><i class="fas fa-image" aria-hidden="true"></i>View Banners & Links</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><i class="fas fa-ticket-alt" aria-hidden="true"></i>Setup Landing page & Coupons</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><i class="fas fa-money-bill" aria-hidden="true"></i>Setup Payment Method</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><i class="fas fa-file-text-o" aria-hidden="true"></i>Rich Report</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" title="Latest Web Traffic"><i class="fas fa-globe" aria-hidden="true"></i>Latest Web Traffic</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><i class="fas fa-closed-captioning" aria-hidden="true"></i>Status Legend</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" title="Frequently Asked Questions"><i class="fas fa-question" aria-hidden="true"></i>Frequently Asked Questions</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" title="Terms Of Service"><i class="fas fa-file-text" aria-hidden="true"></i>Terms Of Service</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" title="Sales Graph"><font-awesome-icon :icon="['fas', 'chart-line']" />Sales Graph</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><font-awesome-icon :icon="['fas', 'chart-line']" />Web Traffic Graph</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><font-awesome-icon :icon="['fas', 'image']" />View Banners & Links</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><font-awesome-icon :icon="['fas', 'ticket-alt']" />Setup Landing page & Coupons</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><font-awesome-icon :icon="['fas', 'money-bill']" />Setup Payment Method</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><font-awesome-icon :icon="['fas', 'file-alt']" />Rich Report</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" title="Latest Web Traffic"><font-awesome-icon :icon="['fas', 'globe']" />Latest Web Traffic</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><font-awesome-icon :icon="['fas', 'closed-captioning']" />Status Legend</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" title="Frequently Asked Questions"><font-awesome-icon :icon="['fas', 'question']" />Frequently Asked Questions</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" title="Terms Of Service"><font-awesome-icon :icon="['fas', 'file-alt']" />Terms Of Service</router-link>
                         </div>
                     </div>
                 </div>
@@ -249,9 +249,9 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="fas fa-user-plus" aria-hidden="true">&nbsp;</i>Affiliate Signups</h3>
+                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'user-plus']" />&nbsp;Affiliate Signups</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,9 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-shield-alt">&nbsp;</i>Firewall Rules</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'shield-alt']" />Firewall Rules</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true">&nbsp;</i> Create New</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> Create New</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -32,7 +32,7 @@
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="rule.id" type="hidden" name="rule_id" />
                                 <button type="submit" class="border-0" data-toggle="tooltip" title="Delete Firewall Rule">
-                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                    <font-awesome-icon :icon="['fas', 'trash']" />
                                 </button>
                             </form>
                         </td>

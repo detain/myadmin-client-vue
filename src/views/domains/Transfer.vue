@@ -59,15 +59,15 @@ loadTransfer();
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><i class="fas fa-exchange-alt">&nbsp;</i>Transfer Status</h3>
+                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'exchange-alt']" />&nbsp;Transfer Status</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="loadingDone && !isTransfer">
                         <div class="alert alert-info">
-                            <i class="fas fa-info-circle"></i>&nbsp; {{ errorMsg || 'This domain is not a transfer.' }}
+                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; {{ errorMsg || 'This domain is not a transfer.' }}
                         </div>
                     </template>
                     <template v-else-if="loadingDone && isTransfer">

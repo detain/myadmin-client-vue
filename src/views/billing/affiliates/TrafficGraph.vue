@@ -70,9 +70,9 @@ onMounted(() => {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title"><i class="far fa-chart-line" aria-hidden="true">&nbsp;</i>Web Traffic Graph</h3>
+                        <h3 class="card-title"><font-awesome-icon :icon="['fas', 'chart-line']" />&nbsp;Web Traffic Graph</h3>
                         <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

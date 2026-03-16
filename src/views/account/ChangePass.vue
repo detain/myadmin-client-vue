@@ -50,9 +50,9 @@ function changePassword() {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="far fa-id-card-o"></i>&nbsp;Update Password</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'id-card']" />&nbsp;Update Password</h3>
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                     </div>
                 </div>

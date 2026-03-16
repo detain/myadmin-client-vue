@@ -1,9 +1,9 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-link" aria-hidden="true">&nbsp;</i>Filters</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />Filters</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true">&nbsp;</i> Create New</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> Create New</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -27,7 +27,7 @@
                                 <input v-model="filter.filter_name" type="hidden" name="filter_type" />
                                 <input v-model="filter.dest" type="hidden" name="port" />
                                 <button type="submit" class="border-0" data-toggle="tooltip" title="Delete Filter">
-                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                    <font-awesome-icon :icon="['fas', 'trash']" />
                                 </button>
                             </form>
                         </td>

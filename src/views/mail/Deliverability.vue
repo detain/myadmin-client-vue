@@ -98,7 +98,7 @@ const toggleFilter = () => {
         <div class="card-header">
             <h5 class="card-title">Overall Count</h5>
             <div class="card-tools">
-                <RouterLink :to="`/view_mail?id=${id}`" class="btn btn-custom btn-sm" title="Go Back"> <i class="fas fa-arrow-left"></i>&nbsp;Back </RouterLink>
+                <RouterLink :to="`/view_mail?id=${id}`" class="btn btn-custom btn-sm" title="Go Back"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back </RouterLink>
             </div>
         </div>
 
@@ -107,7 +107,7 @@ const toggleFilter = () => {
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-info elevation-1 text-white">
-                            <i class="far fa-paper-plane"></i>
+                            <font-awesome-icon :icon="['far', 'paper-plane']" />
                         </span>
                         <div class="info-box-content">
                             <span class="info-box-text">Total Delivered</span>
@@ -121,7 +121,7 @@ const toggleFilter = () => {
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-danger elevation-1 text-white">
-                            <i class="far fa-paper-plane"></i>
+                            <font-awesome-icon :icon="['far', 'paper-plane']" />
                         </span>
                         <div class="info-box-content">
                             <span class="info-box-text">Total Bounced</span>
@@ -135,7 +135,7 @@ const toggleFilter = () => {
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-warning elevation-1 text-white">
-                            <i class="fas fa-bullhorn"></i>
+                            <font-awesome-icon :icon="['fas', 'bullhorn']" />
                         </span>
                         <div class="info-box-content">
                             <span class="info-box-text">Total Bounce Percent</span>

@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
+import { parseFaIcon } from '@/helpers/parseFaIcon';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import { useLicenseStore } from '@/stores/license.store';
@@ -97,7 +98,7 @@ licenseStore.getById(id);
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-briefcase"></i>
+                    <font-awesome-icon :icon="['fas', 'briefcase']" />
                 </div>
                 <div class="small-box-footer">
                     <b>{{ serviceInfo.license_ip }}</b>
@@ -114,7 +115,7 @@ licenseStore.getById(id);
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-dollar-sign"></i>
+                    <font-awesome-icon :icon="['fas', 'dollar-sign']" />
                 </div>
                 <div class="small-box-footer">
                     Status is: <b>{{ serviceInfo.license_status }}</b>
@@ -138,7 +139,7 @@ licenseStore.getById(id);
                     </template>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-info-circle"></i>
+                    <font-awesome-icon :icon="['fas', 'info-circle']" />
                 </div>
                 <div class="small-box-footer">
                     Key is: <b>{{ serviceInfo.license_key }}</b>
@@ -157,7 +158,7 @@ licenseStore.getById(id);
                         </template>
                     </div>
                     <div class="icon">
-                        <i class="fab fa-cpanel"></i>
+                        <font-awesome-icon :icon="['fab', 'cpanel']" />
                     </div>
                     <div class="small-box-footer text-white">Status is: <b v-html="serviceOverviewExtra.cPanel_Status"></b></div>
                 </div>
@@ -185,9 +186,9 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-map-marker-alt">&nbsp;</i>IP Information</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-marker-alt']" />IP Information</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -208,17 +209,18 @@ licenseStore.getById(id);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-link">&nbsp;</i>Links</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />Links</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
+                                <font-awesome-icon :icon="['fas', 'minus']" />
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body text-center">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
+                        <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
                 </div>
@@ -229,9 +231,9 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-book">&nbsp;</i>{{ extraInfoTables.cpanel.title }}</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'book']" />{{ extraInfoTables.cpanel.title }}</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -253,9 +255,9 @@ licenseStore.getById(id);
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-info-circle">&nbsp;</i>{{ extraInfoTables.note.title }}</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'info-circle']" />{{ extraInfoTables.note.title }}</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>

@@ -282,7 +282,7 @@ loadLicenseData();
                     <div class="p-1">
                         <img class="card-title card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
                         <div class="card-tools float-right">
-                            <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            <button style="position: relative; top: 10px" type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                     </div>
                 </div>
@@ -314,7 +314,7 @@ loadLicenseData();
                                 Order {{ getLicenses[catTag]?.name }} License
                             </h3>
                             <div class="card-tools float-right">
-                                <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative; top: 5px"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link to="/licenses/order" class="btn btn-custom text-sm" data-toggle="tooltip" title="Go Back" style="position: relative; top: 5px"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -361,9 +361,9 @@ loadLicenseData();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -390,7 +390,7 @@ loadLicenseData();
                 <div v-if="catTag == 'litespeed' || catTag == 'directadmin'" class="card">
                     <div class="p-1">
                         <div class="card-header py-2">
-                            <h3 class="card-title"><i class="fas fa-suitcase">&nbsp;</i>Package Details</h3>
+                            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'suitcase']" />Package Details</h3>
                         </div>
                     </div>
                     <div class="card-body text-md">
@@ -402,7 +402,7 @@ loadLicenseData();
                 <div v-if="catTag === 'cpanel'" class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title"><i class="fas fa-lightbulb">&nbsp;</i>Important Note</h3>
+                            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'lightbulb']" />Important Note</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -419,9 +419,9 @@ loadLicenseData();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -432,7 +432,7 @@ loadLicenseData();
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[Number(packageId)].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm()"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm()"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost"></div>
@@ -486,7 +486,7 @@ loadLicenseData();
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <router-link :to="`/licenses/order/${catTag}`" class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style=""><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Go Back&nbsp;&nbsp;</router-link>
+                                    <router-link :to="`/licenses/order/${catTag}`" class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style=""><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Go Back&nbsp;&nbsp;</router-link>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-sm btn-green px-3 py-2" />
                                 </div>
                             </div>

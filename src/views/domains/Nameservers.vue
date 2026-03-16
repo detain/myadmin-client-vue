@@ -173,7 +173,7 @@ loadNameservers();
                 >Domain Name Servers
             </h3>
             <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
@@ -253,7 +253,7 @@ loadNameservers();
                                         <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? 'Yes' : 'No' }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><i class="fas fa-trash-o"></i></a>
+                                        <a href="javascript:void(0)" title="Delete" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><font-awesome-icon :icon="['fas', 'trash']" /></a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -173,7 +173,7 @@ loadWhois();
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp; <b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>
+                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp; <b>Note:</b> &nbsp;Whois Privacy gets renewed every <b>12 months</b> from the date of activation. Whois Privacy Addon renewal cost is <b>{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</b>
                 </p>
             </div>
         </div>
@@ -182,7 +182,7 @@ loadWhois();
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle"></i>&nbsp; Whois Privacy is not available for this TLD.
+                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; Whois Privacy is not available for this TLD.
                 </div>
             </div>
         </div>
@@ -192,17 +192,17 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><i class="fas fa-user-secret">&nbsp;</i>Whois Privacy</h3>
+                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;Whois Privacy</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
                         </div>
                     </div>
                     <div class="card-body text-center">
                         <div class="alert alert-success">
-                            <i class="fas fa-check-circle"></i>&nbsp; Whois Privacy is currently <b>enabled</b> for <b>{{ hostname }}</b>.
+                            <font-awesome-icon :icon="['fas', 'check-circle']" />&nbsp; Whois Privacy is currently <b>enabled</b> for <b>{{ hostname }}</b>.
                         </div>
                         <button class="btn btn-danger mt-3" @click="disableWhois">
-                            <i class="fas fa-times-circle"></i>&nbsp; Disable & Cancel Whois Privacy
+                            <font-awesome-icon :icon="['fas', 'times-circle']" />&nbsp; Disable & Cancel Whois Privacy
                         </button>
                     </div>
                 </div>
@@ -214,9 +214,9 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><i class="fas fa-address-card">&nbsp;</i>Whois Privacy</h3>
+                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;Whois Privacy</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
                         </div>
                     </div>
                     <div class="card-body">
@@ -247,9 +247,9 @@ loadWhois();
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-lg"><i class="fas fa-user-secret">&nbsp;</i>Contact Privacy</h4>
+                        <h4 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;Contact Privacy</h4>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                     </div>
                     <div class="card-body">

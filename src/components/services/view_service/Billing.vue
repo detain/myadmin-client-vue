@@ -7,7 +7,7 @@
                     <b>{{ currencySymbol }}{{ cost }}</b> billed: <b>{{ frequency }}</b>
                 </p>
             </div>
-            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
             <span class="small-box-footer"
                 >Status is: <b>{{ ucwords(serviceStatus) }}</b></span
             >

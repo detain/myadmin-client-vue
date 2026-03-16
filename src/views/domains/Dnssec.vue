@@ -167,11 +167,11 @@ loadDnsSec();
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left text-sm"></i>&nbsp;Back</router-link>
-                    <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;DNSSEC Information</h3>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
+                    <h3 class="card-title mt-1 ml-2"><font-awesome-icon :icon="['fas', 'lock']" />&nbsp;DNSSEC Information</h3>
                     <div class="card-tools m-0">
-                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fas fa-plus-circle"></i>&nbsp;Add New Record</button>
-                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="far fa-times-circle"></i>&nbsp;Remove All DNSSEC Records</button>
+                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><font-awesome-icon :icon="['fas', 'plus-circle']" />&nbsp;Add New Record</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><font-awesome-icon :icon="['far', 'times-circle']" />&nbsp;Remove All DNSSEC Records</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
@@ -200,7 +200,7 @@ loadDnsSec();
                             <h3 class="card-title text-xl text-bold text-center">Add DNSSEC</h3>
                             <div class="card-tools pt-2 m-0">
                                 <button class="btn btn-tool" @click="showForm = false">
-                                    <i class="fas fa-times"></i>
+                                    <font-awesome-icon :icon="['fas', 'times']" />
                                 </button>
                             </div>
                         </div>
@@ -256,7 +256,7 @@ loadDnsSec();
                                         </div>
                                     </div>
                                     <div v-if="index < 2" class="text-right mb-3">
-                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><i class="fas fa-plus"></i>&nbsp;Add More</button>
+                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;Add More</button>
                                     </div>
                                 </div>
                                 <div class="text-center">

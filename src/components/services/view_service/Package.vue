@@ -8,7 +8,7 @@
                     Next Invoice Date: <b>{{ invNextDate }}</b>
                 </p>
             </div>
-            <div class="icon"><i class="fas fa-briefcase"></i></div>
+            <div class="icon"><font-awesome-icon :icon="['fas', 'briefcase']" /></div>
             <span class="small-box-footer text-bold">{{ host }}</span>
         </div>
     </div>
