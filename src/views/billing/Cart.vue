@@ -176,7 +176,7 @@ const paypalItems = computed(() => {
             category: 'DIGITAL_GOODS',
             unit_amount: {
                 currency_code: row.invoices_currency,
-                value: row.invoices_amount,
+                value: Number(row.invoices_amount).toFixed(2),
             },
         }));
 });
@@ -299,7 +299,7 @@ async function createOrderCallback() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                amount: amountAfterPrepay.value,
+                amount: amountAfterPrepay.value.toFixed(2),
                 currency: currency.value,
                 items: paypalItems.value,
                 custom: invoices.value.join(','),
@@ -308,16 +308,20 @@ async function createOrderCallback() {
             }),
         });
         const orderData = await response.json();
+        console.log('PayPal create order response:', orderData);
         if (orderData.id) {
             return orderData.id;
+        } else if (orderData.error) {
+            throw new Error(orderData.error);
         } else {
             const errorDetail = orderData?.details?.[0];
             const errorMessage = errorDetail ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})` : JSON.stringify(orderData);
             throw new Error(errorMessage);
         }
     } catch (error) {
-        console.error(error);
+        console.error('PayPal createOrder error:', error);
         resultMessage(`Could not initiate PayPal Checkout...<br><br>${error}`);
+        throw error;
     }
 }
 
