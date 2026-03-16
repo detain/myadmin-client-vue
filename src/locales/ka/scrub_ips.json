@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs სერვისების სია",
+        "orderTitle": "Scrub IPs-ის შეკვეთა"
+    },
+    "view": {
+        "title": "Scrub IPs-ის ნახვა",
+        "currentIp": "მიმდინარე IP",
+        "ipAddress": "IP მისამართი",
+        "ipFromService": "სერვისის IP"
+    },
+    "filters": {
+        "title": "ფილტრები",
+        "createNew": "ახლის შექმნა",
+        "createNewFilter": "ახალი ფილტრის შექმნა",
+        "filterType": "ფილტრის ტიპი",
+        "selectFilterType": "ფილტრის ტიპის არჩევა",
+        "ipAddress": "IP მისამართი",
+        "portNo": "პორტის №",
+        "filter": "ფილტრი",
+        "destinationIp": "დანიშნულების IP",
+        "destinationPort": "დანიშნულების პორტი",
+        "noFiltersFound": "ფილტრები ვერ მოიძებნა!",
+        "deleteFilterConfirm": "დარწმუნებული ხართ, რომ გსურთ ამ ფილტრის წაშლა?",
+        "unableToCreateFilter": "ამ დროს ფილტრის შექმნა ვერ ხერხდება.",
+        "unableToDeleteFilter": "ამ დროს ფილტრის წაშლა ვერ ხერხდება."
+    },
+    "firewallRules": {
+        "title": "Firewall წესები",
+        "createNew": "ახლის შექმნა",
+        "createNewFirewall": "ახალი Firewall წესის შექმნა",
+        "protocol": "პროტოკოლი",
+        "destinationIp": "დანიშნულების IP",
+        "destinationPort": "დანიშნულების პორტი",
+        "sourceIp": "წყაროს IP",
+        "sourcePort": "წყაროს პორტი",
+        "xdpAction": "XDP მოქმედება",
+        "ipRequired": "IP მისამართი სავალდებულოა",
+        "block": "დაბლოკვა",
+        "whitelist": "თეთრი სია",
+        "noRulesFound": "წესები ვერ მოიძებნა!",
+        "deleteRuleConfirm": "დარწმუნებული ხართ, რომ გსურთ ამ წესის წაშლა?",
+        "unableToCreateRule": "ამ დროს Firewall წესის შექმნა ვერ ხერხდება.",
+        "unableToDeleteRule": "ამ დროს Firewall წესის წაშლა ვერ ხერხდება."
+    },
+    "geoFirewallRules": {
+        "title": "გეო Firewall წესები",
+        "createNew": "ახლის შექმნა",
+        "createNewGeoRule": "ახალი გეო Firewall წესის შექმნა",
+        "destinationIp": "დანიშნულების IP",
+        "destinationPort": "დანიშნულების პორტი",
+        "sourceCountry": "წყაროს ქვეყანა",
+        "sourceAsn": "წყაროს ASN",
+        "xdpAction": "XDP მოქმედება",
+        "portNo": "პორტის №",
+        "selectCountry": "ქვეყნის არჩევა",
+        "asn": "ASN",
+        "block": "დაბლოკვა",
+        "whitelist": "თეთრი სია",
+        "noRulesFound": "წესები ვერ მოიძებნა!",
+        "deleteGeoRuleConfirm": "დარწმუნებული ხართ, რომ გსურთ ამ გეო წესის წაშლა?",
+        "unableToCreateRule": "ამ დროს Firewall წესის შექმნა ვერ ხერხდება.",
+        "unableToDeleteRule": "ამ დროს გეო Firewall წესის წაშლა ვერ ხერხდება."
+    }
+}

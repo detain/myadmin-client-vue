@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Quản lý DNS",
+        "addDomain": "Thêm tên miền",
+        "deleteDomain": "Xóa tên miền",
+        "domainName": "Tên miền",
+        "dnsServers": "Máy chủ DNS",
+        "confirmDelete": "Bạn có chắc muốn xóa tên miền này không?",
+        "noDomains": "Không tìm thấy tên miền"
+    },
+    "editor": {
+        "title": "Trình chỉnh sửa DNS",
+        "addRecord": "Thêm bản ghi",
+        "deleteRecord": "Xóa bản ghi",
+        "editRecord": "Chỉnh sửa bản ghi",
+        "recordType": "Loại bản ghi",
+        "hostname": "Tên máy chủ",
+        "address": "Địa chỉ",
+        "distance": "Khoảng cách",
+        "weight": "Trọng số",
+        "port": "Cổng",
+        "ttl": "TTL",
+        "actions": "Hành động",
+        "confirmDelete": "Bạn có chắc muốn xóa bản ghi này không?"
+    }
+}

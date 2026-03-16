@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lista pohrana / rezervnih kopija",
+        "orderTitle": "Naruči registraciju rezervnih kopija"
+    },
+    "view": {
+        "title": "Pogledaj rezervnu kopiju {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "hostServer": "Host server",
+        "links": "Linkovi",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati dobrodošlicu e-poštom?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Dobrodošlica e-poštom je ponovo poslana. Provjerite vašu pristiglu poštu."
+    },
+    "order": {
+        "title": "Naruči pohranu"
+    }
+}

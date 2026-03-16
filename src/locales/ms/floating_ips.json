@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Senarai Perkhidmatan Floating IPs",
+        "orderTitle": "Pesan Pendaftaran Floating IP"
+    },
+    "view": {
+        "title": "Lihat Floating IP {id}",
+        "package": "Pakej",
+        "nextInvoiceDate": "Tarikh Invois Seterusnya:",
+        "billing": "Pengebilan",
+        "billed": "Dibilkan:",
+        "statusIs": "Status ialah:",
+        "floatingIp": "Floating IP",
+        "links": "Pautan",
+        "welcomeEmailConfirm": "Adakah anda pasti mahu menghantar semula e-mel alu-aluan?",
+        "emailSent": "E-mel Dihantar",
+        "emailSentMessage": "E-mel alu-aluan telah dihantar semula. Semak peti masuk anda."
+    },
+    "order": {
+        "title": "Pesan Floating IP"
+    },
+    "changeIp": {
+        "title": "Tukar IP Sasaran"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista usluga Scrub IP adresa",
+        "orderTitle": "Naruči Scrub IP adrese"
+    },
+    "view": {
+        "title": "Pogledaj Scrub IP adrese",
+        "currentIp": "Trenutna IP adresa",
+        "ipAddress": "IP adresa",
+        "ipFromService": "IP adresa od usluge"
+    },
+    "filters": {
+        "title": "Filteri",
+        "createNew": "Kreiraj novi",
+        "createNewFilter": "Kreiraj novi filter",
+        "filterType": "Vrsta filtera",
+        "selectFilterType": "Odaberi vrstu filtera",
+        "ipAddress": "IP adresa",
+        "portNo": "Broj porta",
+        "filter": "Filter",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "noFiltersFound": "Filteri nisu pronađeni!",
+        "deleteFilterConfirm": "Jeste li sigurni da želite obrisati ovaj filter?",
+        "unableToCreateFilter": "Trenutno nije moguće kreirati filter.",
+        "unableToDeleteFilter": "Trenutno nije moguće obrisati filter."
+    },
+    "firewallRules": {
+        "title": "Pravila firewall-a",
+        "createNew": "Kreiraj novo",
+        "createNewFirewall": "Kreiraj novo pravilo firewall-a",
+        "protocol": "Protokol",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "sourceIp": "Izvorna IP adresa",
+        "sourcePort": "Izvorni port",
+        "xdpAction": "XDP akcija",
+        "ipRequired": "IP adresa je obavezna",
+        "block": "Blokiraj",
+        "whitelist": "Bijela lista",
+        "noRulesFound": "Pravila nisu pronađena!",
+        "deleteRuleConfirm": "Jeste li sigurni da želite obrisati ovo pravilo?",
+        "unableToCreateRule": "Trenutno nije moguće kreirati pravilo firewall-a.",
+        "unableToDeleteRule": "Trenutno nije moguće obrisati pravilo firewall-a."
+    },
+    "geoFirewallRules": {
+        "title": "Geo pravila firewall-a",
+        "createNew": "Kreiraj novo",
+        "createNewGeoRule": "Kreiraj novo geo pravilo firewall-a",
+        "destinationIp": "Odredišna IP adresa",
+        "destinationPort": "Odredišni port",
+        "sourceCountry": "Zemlja izvora",
+        "sourceAsn": "ASN izvora",
+        "xdpAction": "XDP akcija",
+        "portNo": "Broj porta",
+        "selectCountry": "Odaberi zemlju",
+        "asn": "ASN",
+        "block": "Blokiraj",
+        "whitelist": "Bijela lista",
+        "noRulesFound": "Pravila nisu pronađena!",
+        "deleteGeoRuleConfirm": "Jeste li sigurni da želite obrisati ovo geo pravilo?",
+        "unableToCreateRule": "Trenutno nije moguće kreirati pravilo firewall-a.",
+        "unableToDeleteRule": "Trenutno nije moguće obrisati geo pravilo firewall-a."
+    }
+}

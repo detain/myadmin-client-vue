@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Daftar Layanan Surel",
+        "orderTitle": "Pesan Registrasi Surel"
+    },
+    "view": {
+        "title": "Lihat Surel {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Faktur Berikutnya:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status adalah:",
+        "mailApi": "API Surel",
+        "usageCount": "Jumlah Penggunaan:",
+        "links": "Tautan",
+        "connectionInfo": "Info Koneksi",
+        "welcomeEmailConfirm": "Apakah Anda yakin ingin mengirim ulang email selamat datang?",
+        "emailSent": "Email Terkirim",
+        "emailSentMessage": "Email selamat datang telah dikirim ulang. Periksa kotak masuk Anda."
+    },
+    "order": {
+        "title": "Pesan Surel"
+    },
+    "alerts": {
+        "title": "Peringatan",
+        "addAlert": "Tambah Peringatan",
+        "editAlert": "Edit Peringatan",
+        "noAlerts": "Tidak ada peringatan ditemukan"
+    },
+    "delist": {
+        "title": "Hapus dari Daftar",
+        "blockedEmails": "Email yang Diblokir"
+    },
+    "denyRules": {
+        "title": "Aturan Tolak",
+        "addRule": "Tambah Aturan",
+        "noRules": "Tidak ada aturan tolak ditemukan"
+    },
+    "logs": {
+        "title": "Log",
+        "searchLogs": "Cari Log"
+    },
+    "stats": {
+        "title": "Statistik"
+    },
+    "deliverability": {
+        "title": "Kemampuan Pengiriman"
+    }
+}

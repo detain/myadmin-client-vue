@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lisi Tautua Scrub IPs",
+        "orderTitle": "Porosini Scrub IPs"
+    },
+    "view": {
+        "title": "Va'ai Scrub IPs",
+        "currentIp": "IP Taimi Nei",
+        "ipAddress": "Tuatusi IP",
+        "ipFromService": "IP mai le tautua"
+    },
+    "filters": {
+        "title": "Fa'amama",
+        "createNew": "Fausia Fou",
+        "createNewFilter": "Fausia Fa'amama Fou",
+        "filterType": "Ituaiga Fa'amama",
+        "selectFilterType": "Filifili Ituaiga Fa'amama",
+        "ipAddress": "Tuatusi IP",
+        "portNo": "Numera Faitotoa",
+        "filter": "Fa'amama",
+        "destinationIp": "IP Fa'amoemoega",
+        "destinationPort": "Faitotoa Fa'amoemoega",
+        "noFiltersFound": "E leai ni fa'amama maua!",
+        "deleteFilterConfirm": "E te mautinoa e te mana'o e tape lenei fa'amama?",
+        "unableToCreateFilter": "E le mafai ona fausia se fa'amama i le taimi nei.",
+        "unableToDeleteFilter": "E le mafai ona tape se fa'amama i le taimi nei."
+    },
+    "firewallRules": {
+        "title": "Tulafono Firewall",
+        "createNew": "Fausia Fou",
+        "createNewFirewall": "Fausia Tulafono Firewall Fou",
+        "protocol": "Protokolo",
+        "destinationIp": "IP Fa'amoemoega",
+        "destinationPort": "Faitotoa Fa'amoemoega",
+        "sourceIp": "IP Puna",
+        "sourcePort": "Faitotoa Puna",
+        "xdpAction": "Gaioiga XDP",
+        "ipRequired": "E mana'omia le tuatusi IP",
+        "block": "Poloka",
+        "whitelist": "Whitelist",
+        "noRulesFound": "E leai ni tulafono maua!",
+        "deleteRuleConfirm": "E te mautinoa e te mana'o e tape lenei tulafono?",
+        "unableToCreateRule": "E le mafai ona fausia se tulafono firewall i le taimi nei.",
+        "unableToDeleteRule": "E le mafai ona tape se tulafono firewall i le taimi nei."
+    },
+    "geoFirewallRules": {
+        "title": "Tulafono Geo Firewall",
+        "createNew": "Fausia Fou",
+        "createNewGeoRule": "Fausia Tulafono Geo Firewall Fou",
+        "destinationIp": "IP Fa'amoemoega",
+        "destinationPort": "Faitotoa Fa'amoemoega",
+        "sourceCountry": "Atunu'u Puna",
+        "sourceAsn": "ASN Puna",
+        "xdpAction": "Gaioiga XDP",
+        "portNo": "Numera Faitotoa",
+        "selectCountry": "Filifili Atunu'u",
+        "asn": "ASN",
+        "block": "Poloka",
+        "whitelist": "Whitelist",
+        "noRulesFound": "E leai ni tulafono maua!",
+        "deleteGeoRuleConfirm": "E te mautinoa e te mana'o e tape lenei tulafono geo?",
+        "unableToCreateRule": "E le mafai ona fausia se tulafono firewall i le taimi nei.",
+        "unableToDeleteRule": "E le mafai ona tape se tulafono geo firewall i le taimi nei."
+    }
+}

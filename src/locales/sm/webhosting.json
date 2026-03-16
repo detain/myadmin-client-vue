@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lisi Web Hosting",
+        "orderTitle": "Porosini Resitala 'Upega Tafa'ilagi"
+    },
+    "view": {
+        "title": "Va'ai 'Upega Tafa'ilagi {id}",
+        "package": "Fa'aofuofu",
+        "nextInvoiceDate": "Aso o le Pili Sosoo:",
+        "billing": "Fai Pili",
+        "billed": "fai pili",
+        "billingStatusIs": "Va'aiga Fai Pili o:",
+        "hostInfo": "Fa'amatalaga Talimalo",
+        "username": "Igoa Fa'aoga:",
+        "ip": "IP:",
+        "server": "Seva:",
+        "notSetYet": "E le'i fa'atutu",
+        "login": "Saini Ulufale",
+        "types": "Ituaiga:",
+        "linksLabel": "So'otaga:",
+        "manualLogin": "Saini Ulufale Fai Lima",
+        "automaticLogin": "Saini Ulufale Otometi",
+        "clickHere": "Kiliki Iinei",
+        "defaultNameservers": "Seva Igoa Masani",
+        "nameservers": "Seva Igoa:",
+        "externalLinks": "So'otaga i Fafo",
+        "names": "Igoa:",
+        "websitePreview": "Va'aiga Muamua 'Upega Tafa'ilagi",
+        "links": "So'otaga",
+        "welcomeEmailConfirm": "E te mautinoa e te mana'o e toe auina le imeli afio mai?",
+        "emailSent": "Imeli Auina",
+        "emailSentMessage": "Ua toe auina le imeli afio mai. Siaki lau inbox."
+    },
+    "buyIp": {
+        "title": "Faatau Addon IP Fa'aopoopoina",
+        "existingAddonIps": "Addon IPs Avanoa",
+        "additionalIp": "IP Fa'aopoopoina",
+        "monthlyCost": "Tau Masina ({symbol})",
+        "costDescription": "Tau ({symbol}) i masina ta'itasi pe a fai pili lau 'upega tafa'ilagi",
+        "confirmPurchase": "Fa'amaonia le Fa'atauina",
+        "confirmMessage": "Tau IP fa'aopoopoina: {symbol}{cost}/masina. E te mautinoa e te mana'o e porosini se IP fa'aopoopoina?",
+        "placeOrder": "Tuu le Porosini",
+        "orderPlaced": "Ua Tuu le Porosini"
+    },
+    "reverseDns": {
+        "title": "DNS Fa'afo'i",
+        "updateReverseDns": "Fa'ahou DNS Fa'afo'i"
+    },
+    "downloadBackups": {
+        "title": "Sii Mai Fa'akomikopi",
+        "backup": "Fa'akomikopi",
+        "size": "Tele",
+        "options": "Filifiliga"
+    },
+    "migration": {
+        "title": "Fa'aliliu Lau 'Upega Tafa'ilagi",
+        "currentWebHostInfo": "Fa'amatalaga Web Host Taimi Nei",
+        "customerPortalUrl": "URL Fale Talimalo Tagata Fa'atau",
+        "portalExample": "Fa'ata'ita'iga: sso.godaddy.com",
+        "registeredUsername": "Igoa Fa'aoga / Imeli / ID Resitala",
+        "password": "Upu Fa'asamoa",
+        "controlPanelUrl": "URL Pane Fa'atonutonu",
+        "controlPanelExample": "Fa'ata'ita'iga: yourdomain.com/cpanel",
+        "ftpUsername": "Igoa Fa'aoga FTP / Pane Fa'atonutonu",
+        "ftpPassword": "Upu Fa'asamoa FTP / Pane Fa'atonutonu",
+        "holdingPageQuestion": "Afai o se saite gaoioi/tele le faigata ma le tamaoaiga maualuga, e mafai ona matou fa'atutu se itulau fa'atali i le taimi o le fa'aliliu?",
+        "specialRequirementsQuestion": "E iai ni mana'oga fa'apitoa e pei o le Fa'asologa PHP / Modules mo lenei saite?",
+        "domainRegistryInfo": "Fa'amatalaga Resitala Igoa Igoa",
+        "transferDomainQuestion": "E te mana'o foi matou e fesoasoani ia te oe e fa'aliliu le resitala igoa igoa?",
+        "updateNameserversQuestion": "E te mana'o matou e fa'ahou seva igoa a'o mae'a le fa'aliliuina o fa'amaumauga?",
+        "domainRegistryPortal": "Fale Talimalo Tagata Fa'atau o le Resitala Igoa Igoa",
+        "importantNotes": "Fa'amatalaga Taua",
+        "note1": "O le fa'atumu o lenei foma o le a tatala ai se tiket fou mo la matou matagaluega lagolago e amata ai lau fa'aliliu.",
+        "note2": "Fa'amolemole ia auau ma sa'o e mafai ai e aloese mai so'o se fa'atuai.",
+        "note3": "O se fa'aliliu masani e mae'a i le va o le 48 ma le 72 itula. I nisi taimi e sili atu pe a tele fa'amaumauga e kopi.",
+        "note4": "E tatau ona iai i luga ma mafai ona ulufale atu le a'oa'oga talimalo tuai a'o tatou faia le fa'aliliu, ae le la o le a fai ai se faigata.",
+        "note5": "Fa'amolemole aua le faia so'o se fa'afouga i lau saite a'o tatou faia le fa'aliliu, ae le la o le a le kopi ia fa'amaumauga i le talimalo fou."
+    },
+    "order": {
+        "title": "Porosini 'Upega Tafa'ilagi"
+    }
+}

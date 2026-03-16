@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "חשבון סעטינגס"
+    },
+    "changePassword": {
+        "title": "טוישן פּאַראָל",
+        "cardTitle": "דערנייַערן פּאַראָל",
+        "currentPassword": "איצטיקן פּאַראָל",
+        "newPassword": "נייַ פּאַראָל",
+        "confirmPassword": "באַשטעטיקן פּאַראָל",
+        "updatePassword": "דערנייַערן פּאַראָל"
+    },
+    "changeUsername": {
+        "title": "טוישן ניצערנאָמען",
+        "disabled": "טוישן ניצערנאָמען איז צײַטלעך אויסגעשאַלט.",
+        "currentUsername": "איצטיקן ניצערנאָמען",
+        "newDesiredUsername": "נייַ דערוווּנשטן ניצערנאָמען",
+        "confirmationCode": "באַשטעטיקונג קאָד",
+        "pleaseWait": "ביטע וואַרטן!",
+        "gotError": "טעות: {error}"
+    },
+    "contactInfo": {
+        "title": "קאָנטאַקט אינפֿאָ",
+        "cardTitle": "דערנייַערן קאָנטאַקט אינפֿאָ",
+        "headsUp": "אויפֿגעפּאַסט!",
+        "headsUpMessage": "כאָטש די אינפֿאָרמאַציע איז אָפּציאָנאַל, גיט צוגעבן (פּונקטלעכע) אינפֿאָרמאַציע וועט העלפֿן בײַדע צו פאַרבעסערן אונדזערע ינטעראַקציעס און נידעריקן אייַערן ריזיקע % ניצן צוגאַנג צו טיילן פֿון דער זייַט.",
+        "riskScore": "ריזיקע % ניצן",
+        "personalInformation": "פּערזענלעכע אינפֿאָרמאַציע",
+        "name": "נאָמען",
+        "namePlaceholder": "Joe Cool",
+        "company": "קאָמפּאַניע",
+        "gstinTaxId": "GSTIN שטייַער ID",
+        "gstinPlaceholder": "סחורות און דינסטן שטייַער-צאָלער אידענטיפֿיקאַציע נומאָר",
+        "addressLine1": "אַדרעס שורה 1",
+        "addressLine2": "אַדרעס שורה 2",
+        "cityState": "שטאָט, שטאַט",
+        "city": "שטאָט",
+        "state": "שטאַט",
+        "country": "לאַנד",
+        "zipcode": "פּאָסטקאָד",
+        "phoneNo": "טעלעפֿאָן נומאָר",
+        "phoneNumber": "טעלעפֿאָן נומאָר",
+        "language": "שפּראַך",
+        "auto": "אוטאָ",
+        "currency": "וואַלוטע",
+        "timeZone": "צײַט זאָנע",
+        "otherSettings": "אַנדערע סעטינגס",
+        "disablePasswordResets": "אויסשאַלטן (פאַרגעסן פּאַראָל) פּאַראָל ריסעטן.",
+        "disableInvoiceReminders": "אויסשאַלטן חשבון דערמאָנונג E-פּאָסט מיטיילונגען.",
+        "disableServerInvoiceReminders": "אויסשאַלטן סערווער חשבון דערמאָנונג E-פּאָסט מיטיילונגען.",
+        "disableReinstall": "אויסשאַלטן ווידעראינסטאַלירן.",
+        "alternateEmailInvoices": "אַלטערנאַטיוון E-פּאָסט פֿאַר חשבונות",
+        "alternateEmailInvoicesPlaceholder": "אַלטערנאַטיוון E-פּאָסט פֿאַר שיקן חשבונות",
+        "alternateEmailAbuse": "אַלטערנאַטיוון E-פּאָסט פֿאַר מיסברויך באַריכטן",
+        "updateInfo": "דערנייַערן אינפֿאָ"
+    }
+}

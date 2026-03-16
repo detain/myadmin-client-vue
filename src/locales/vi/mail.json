@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Danh sách dịch vụ thư",
+        "orderTitle": "Đặt đăng ký thư"
+    },
+    "view": {
+        "title": "Xem thư {id}",
+        "package": "Gói",
+        "nextInvoiceDate": "Ngày hóa đơn tiếp theo:",
+        "billing": "Thanh toán",
+        "billed": "đã thanh toán:",
+        "statusIs": "Trạng thái:",
+        "mailApi": "API thư",
+        "usageCount": "Số lần sử dụng:",
+        "links": "Liên kết",
+        "connectionInfo": "Thông tin kết nối",
+        "welcomeEmailConfirm": "Bạn có chắc muốn gửi lại email chào mừng không?",
+        "emailSent": "Email đã gửi",
+        "emailSentMessage": "Email chào mừng đã được gửi lại. Kiểm tra hộp thư đến của bạn."
+    },
+    "order": {
+        "title": "Đặt thư"
+    },
+    "alerts": {
+        "title": "Cảnh báo",
+        "addAlert": "Thêm cảnh báo",
+        "editAlert": "Chỉnh sửa cảnh báo",
+        "noAlerts": "Không tìm thấy cảnh báo"
+    },
+    "delist": {
+        "title": "Xóa khỏi danh sách",
+        "blockedEmails": "Email bị chặn"
+    },
+    "denyRules": {
+        "title": "Quy tắc từ chối",
+        "addRule": "Thêm quy tắc",
+        "noRules": "Không tìm thấy quy tắc từ chối"
+    },
+    "logs": {
+        "title": "Nhật ký",
+        "searchLogs": "Tìm kiếm nhật ký"
+    },
+    "stats": {
+        "title": "Thống kê"
+    },
+    "deliverability": {
+        "title": "Khả năng gửi thư"
+    }
+}

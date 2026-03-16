@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "لیستی مۆڵەتنامەکانی SSL",
+        "orderTitle": "داواکاری تۆمارکردنی SSL"
+    },
+    "view": {
+        "title": "بینینی SSL ی {id}",
+        "package": "بستە",
+        "nextInvoiceDate": "بەرواری پسووڵەی داهاتوو:",
+        "billing": "پارەدان",
+        "billed": "پارەی پێدراوە:",
+        "statusIs": "دۆخ:",
+        "orderInfo": "زانیاری داواکاری",
+        "certificateInfo": "زانیاری مۆڵەتنامە",
+        "links": "بەستەرەکان",
+        "welcomeEmailConfirm": "دڵنیایت کە دەتەوێت ئیمەیڵی بەخێرهاتن دووبارە بنێریت؟",
+        "emailSent": "ئیمەیڵ نێردرا",
+        "emailSentMessage": "ئیمەیڵی بەخێرهاتن دووبارە نێردرا. کوندووک تەختەی هاتنی ئیمەیڵەکەت بپشکنە."
+    },
+    "order": {
+        "title": "داواکاری SSL"
+    },
+    "changeApproverEmail": {
+        "title": "گۆڕینی ئیمەیڵی پەسەندکەر",
+        "selectApproverEmail": "هەڵبژاردنی ئیمەیڵی پەسەندکەر"
+    }
+}

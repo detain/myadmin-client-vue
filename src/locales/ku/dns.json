@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "بەڕێوەبردنی DNS",
+        "addDomain": "زیادکردنی دۆمەین",
+        "deleteDomain": "سڕینەوەی دۆمەین",
+        "domainName": "ناوی دۆمەین",
+        "dnsServers": "سێرڤەرەکانی DNS",
+        "confirmDelete": "دڵنیایت کە دەتەوێت ئەم دۆمەینە بسڕیتەوە؟",
+        "noDomains": "هیچ دۆمەینێک نەدۆزرایەوە"
+    },
+    "editor": {
+        "title": "دەستکاریکەری DNS",
+        "addRecord": "زیادکردنی تۆمار",
+        "deleteRecord": "سڕینەوەی تۆمار",
+        "editRecord": "دەستکاریکردنی تۆمار",
+        "recordType": "جۆری تۆمار",
+        "hostname": "ناوی مێزبان",
+        "address": "ئادرەس",
+        "distance": "دووری",
+        "weight": "کێشە",
+        "port": "پۆرت",
+        "ttl": "TTL",
+        "actions": "کارەکان",
+        "confirmDelete": "دڵنیایت کە دەتەوێت ئەم تۆمارە بسڕیتەوە؟"
+    }
+}

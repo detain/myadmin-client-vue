@@ -1,0 +1,28 @@
+{
+    "title": "Վահանակ",
+    "welcome": "Բարի գալուստ, {name}",
+    "lastLogin": "Վերջին մուտք",
+    "lastLoginIp": "Վերջին մուտքի IP",
+    "prepay": {
+        "title": "Կանխավճարի մնացորդ",
+        "remainingBalance": "Կանխավճarի մնացյալ մnacordak",
+        "manageAccount": "Կannqavarеl Hashiv",
+        "manageTooltip": "Кannqavarеl Dzer Kankhavchari Hashivn"
+    },
+    "invoices": {
+        "title": "Voucharatsvats Hashiv-aprankagrerner",
+        "totalUnpaid": "Bolor Voucharatsvats Hashiv-aprankagrerner",
+        "totalAmount": "Vcharelu Bolor Gumar",
+        "payTotalTooltip": "Vcharelq Bolor Gumar"
+    },
+    "callInPin": "Zvarcakos PIN",
+    "recentTickets": "Verjin Tiketner",
+    "viewAllTickets": "Ditkl Bolor Tiketner",
+    "editTicket": "Khmbagrel Tiket",
+    "serviceCount": "Aktiv tsarayutyunner chhek | {count} aktiv tsarayutyun | {count} aktiv tsarayutyunner",
+    "affiliate": {
+        "earnPerSale": "Vastakelq {amount} Mek Vacharqits",
+        "urlPlaceholder": "Fokhkapaktsvals URL",
+        "shareWith": "Kaysenq"
+    }
+}

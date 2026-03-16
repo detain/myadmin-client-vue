@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Menadžer",
+        "addDomain": "Dodaj domenu",
+        "deleteDomain": "Obriši domenu",
+        "domainName": "Naziv domene",
+        "dnsServers": "DNS serveri",
+        "confirmDelete": "Jeste li sigurni da želite obrisati ovu domenu?",
+        "noDomains": "Nisu pronađene domene"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Dodaj zapis",
+        "deleteRecord": "Obriši zapis",
+        "editRecord": "Uredi zapis",
+        "recordType": "Vrsta zapisa",
+        "hostname": "Hostname",
+        "address": "Adresa",
+        "distance": "Udaljenost",
+        "weight": "Težina",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Akcije",
+        "confirmDelete": "Jeste li sigurni da želite obrisati ovaj zapis?"
+    }
+}

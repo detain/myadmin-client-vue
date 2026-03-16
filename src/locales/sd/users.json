@@ -1,0 +1,12 @@
+{
+    "title": "يوزر",
+    "addUser": "يوزر شامل ڪريو",
+    "editUser": "يوزر تبديل ڪريو",
+    "firstName": "پهريون نالو",
+    "lastName": "آخري نالو",
+    "username": "يوزر نالو",
+    "password": "پاسورڊ",
+    "keepSamePassword": "ساڳئي پاسورڊ رکڻ لاءِ خالي ڇڏيو",
+    "errorLoading": "يوزر لوڊ ڪرڻ ۾ غلطي:",
+    "errorLoadingUser": "يوزر لوڊ ڪرڻ ۾ غلطي:"
+}

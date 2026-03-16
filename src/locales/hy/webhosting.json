@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Veb Hosting Tsanak",
+        "orderTitle": "Patvirel Kaykeri Granchumner"
+    },
+    "view": {
+        "title": "Ditkl Kayk {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Hajord Hashiv-aprankagreri Amsakiv:",
+        "billing": "Vcharum",
+        "billed": "vcharvats",
+        "billingStatusIs": "Vcharman Kargavichaкn e:",
+        "hostInfo": "Host Tevgh",
+        "username": "Ogtagortsi Anun:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Han sаhmаnаvоrvaтs chi",
+        "login": "Mutq",
+        "types": "Tesaknеr:",
+        "linksLabel": "Hghumner:",
+        "manualLogin": "Dzernaki Mutq",
+        "automaticLogin": "Avtomatik Mutq",
+        "clickHere": "Sgheq Aystegh",
+        "defaultNameservers": "Lrelyan Anunov Serverneр",
+        "nameservers": "Anunov Serverneр:",
+        "externalLinks": "Arvаk Hghumner",
+        "names": "Anuннer:",
+        "websitePreview": "Kayki Nakhаditum",
+        "links": "Hghumner",
+        "welcomeEmailConfirm": "Voroshum eq? Uzeq veranerkyal ougharkel bariv gnalu el. naman?",
+        "emailSent": "El. Naman Ougharkval E",
+        "emailSentMessage": "Bariv gnalu el. naman veranerkyal e ougharkvel. Stugel dzer muts arkultern."
+    },
+    "buyIp": {
+        "title": "Gnel Lratsuchich IP Katsumatsyogh",
+        "existingAddonIps": "Goyutyun Unecogh Katsumatsyoghayin IP-ner",
+        "additionalIp": "Lratsuchich IP",
+        "monthlyCost": "Amsakayin Arjekhq ({symbol})",
+        "costDescription": "Arjekhq ({symbol}) amsakanar, мinkchev dzer kayk vcharaksvats linі",
+        "confirmPurchase": "Hastatel Gnumq",
+        "confirmMessage": "Lratsuchich IP-i arjekhq: {symbol}{cost}/amis. Voroshum eq? Uzeq patvirel lratsuchich IP?",
+        "placeOrder": "Dekhnelay Patver",
+        "orderPlaced": "Patver Dekhnevaтs"
+    },
+    "reverseDns": {
+        "title": "Harot DNS",
+        "updateReverseDns": "Tharmatsel Harot DNS"
+    },
+    "downloadBackups": {
+        "title": "Nerbernel Pahustner",
+        "backup": "Pahuст",
+        "size": "Chap",
+        "options": "Yndranknаr"
+    },
+    "migration": {
+        "title": "Teghafokhelay Dzer Kayk",
+        "currentWebHostInfo": "Yntatsik Veb Host Tevgh",
+        "customerPortalUrl": "Harachakhordayin Portal URL",
+        "portalExample": "Orіnak: sso.godaddy.com",
+        "registeredUsername": "Grancvaтs Ogtagortsi Anun / El. Naman / ID",
+        "password": "Gaghtnabari",
+        "controlPanelUrl": "Karavarvаhi Vahanаki URL",
+        "controlPanelExample": "Orіnak: dzerdomen.com/cpanel",
+        "ftpUsername": "FTP / Karavarvаhi Vahanаki Ogtagortsi Anun",
+        "ftpPassword": "FTP / Karavarvаhi Vahanаki Gaghtnabari",
+        "holdingPageQuestion": "Ete kaykn activ/ashkhataharmar kayk e barg yertevekutyamb, kareli enq sаhmanavel pahakayin ej teghafokheloumits araj?",
+        "specialRequirementsQuestion": "Ays kaykn uни hatuk pahanjkner, ayspisiq PHP Tarbераk / Modulner?",
+        "domainRegistryInfo": "Domeni Reestri Tevgheghbanutyun",
+        "transferDomainQuestion": "Uzeq naev, vor menq konutenk dzer domeni grantshmаn verabereloumits?",
+        "updateNameserversQuestion": "Uzeq, vor menq tharmatsenq anunov servernerн, аm depq avartаcnenq tveghekutyan teghafokheloumн?",
+        "domainRegistryPortal": "Domeni Reestri Harachakhordayin Portal",
+        "importantNotes": "Karevorashat Tsanarragumner",
+        "note1": "Ays dzhevаn ltsnel kel baci nor tiket mer ajaktsutyan bakhni hamar dzer teghafokheloumn skselу hamar:",
+        "note2": "Xndrum lineq gortsnerum amboghjutyan ev chovatstutyan hamadhem yetarkalutyunnerн khusafi hamar:",
+        "note3": "Bazhanakanachap teghafokheloumn avel minkchev 48-72 zham lrtsvum e: Yeremanin avel yarts, ete tveghekutyan kazmakn mets e:",
+        "note4": "Hin hosting hashivn piti linі tsаrasphana ev hasaneli, minkchev menq katarumq enq teghafokheloumn, ayl dzekhokhutyunner kel hasnenq:",
+        "note5": "Xndrum mi tharmatseq dzer kaykum teghafokheloumn katarelu yntatsqum, ayl дрan tveghekutyunnerн karogh en chi teghafokhelay nor hosting:"
+    },
+    "order": {
+        "title": "Patvirel Kayk"
+    }
+}

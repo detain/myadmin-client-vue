@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Veb-hosting ro'yxati",
+        "orderTitle": "Veb-sayt ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "Veb-sayt {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "hisob-kitob qilindi",
+        "billingStatusIs": "Hisob-kitob holati:",
+        "hostInfo": "Xost ma'lumotlari",
+        "username": "Foydalanuvchi nomi:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Hali o'rnatilmagan",
+        "login": "Kirish",
+        "types": "Turlar:",
+        "linksLabel": "Havolalar:",
+        "manualLogin": "Qo'lda kirish",
+        "automaticLogin": "Avtomatik kirish",
+        "clickHere": "Bu yerga bosing",
+        "defaultNameservers": "Standart nom serverlar",
+        "nameservers": "Nom serverlar:",
+        "externalLinks": "Tashqi havolalar",
+        "names": "Nomlar:",
+        "websitePreview": "Veb-sayt oldindan ko'rinishi",
+        "links": "Havolalar",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "buyIp": {
+        "title": "Qo'shimcha IP qo'shish",
+        "existingAddonIps": "Mavjud qo'shimcha IP lar",
+        "additionalIp": "Qo'shimcha IP",
+        "monthlyCost": "Oylik narxi ({symbol})",
+        "costDescription": "Veb-saytingiz hisob-kitob qilinganida har oy ({symbol}) to'lov",
+        "confirmPurchase": "Xaridni tasdiqlash",
+        "confirmMessage": "Qo'shimcha IP narxi: {symbol}{cost}/oy. Qo'shimcha IP buyurtma qilmoqchimisiz?",
+        "placeOrder": "Buyurtma berish",
+        "orderPlaced": "Buyurtma berildi"
+    },
+    "reverseDns": {
+        "title": "Teskari DNS",
+        "updateReverseDns": "Teskari DNS ni yangilash"
+    },
+    "downloadBackups": {
+        "title": "Zaxira nusxalarni yuklab olish",
+        "backup": "Zaxira nusxa",
+        "size": "Hajm",
+        "options": "Imkoniyatlar"
+    },
+    "migration": {
+        "title": "Veb-saytingizni ko'chirish",
+        "currentWebHostInfo": "Joriy veb-xost ma'lumotlari",
+        "customerPortalUrl": "Mijoz portali URL",
+        "portalExample": "Misol: sso.godaddy.com",
+        "registeredUsername": "Ro'yxatdan o'tgan foydalanuvchi nomi / Elektron pochta / ID",
+        "password": "Parol",
+        "controlPanelUrl": "Boshqaruv paneli URL",
+        "controlPanelExample": "Misol: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Boshqaruv paneli foydalanuvchi nomi",
+        "ftpPassword": "FTP / Boshqaruv paneli paroli",
+        "holdingPageQuestion": "Agar sayt jonli/yuqori trafikli sayt bo'lsa, ko'chirish vaqtida kutish sahifasini o'rnatishimiz mumkinmi?",
+        "specialRequirementsQuestion": "Bu saytda PHP versiyasi / modullar kabi maxsus talablar bormi?",
+        "domainRegistryInfo": "Domen reestr ma'lumotlari",
+        "transferDomainQuestion": "Domen nomi ro'yxatdan o'tishini ko'chirishda ham yordam berishimizni xohlaysizmi?",
+        "updateNameserversQuestion": "Ma'lumotlarni ko'chirishni tugatganimizdan so'ng darhol nom serverlarni yangilashimizni xohlaysizmi?",
+        "domainRegistryPortal": "Domen reestr mijoz portali",
+        "importantNotes": "Muhim eslatmalar",
+        "note1": "Bu shaklni to'ldirish qo'llab-quvvatlash bo'limiga ko'chirishingizni boshlash uchun yangi chipta ochadi.",
+        "note2": "Har qanday kechikishlardan qochish uchun imkon qadar to'liq va aniq bo'ling.",
+        "note3": "Odatdagi ko'chirish 48 dan 72 soatgacha yakunlanadi. Ko'chiriladigan ma'lumotlar hajmi katta bo'lsa ba'zan undan ham uzoq.",
+        "note4": "Biz ko'chirishni amalga oshirayotgan vaqtda eski hosting hisobi onlayn va mavjud bo'lishi kerak, aks holda qiyinchilikka duch kelishimiz mumkin.",
+        "note5": "Ko'chirishni amalga oshirayotganimizda saytingizda hech qanday yangilanishlar qilmang, aks holda bu ma'lumotlar yangi hostingga ko'chirilmasligi mumkin."
+    },
+    "order": {
+        "title": "Veb-sayt buyurtma qilish"
+    }
+}

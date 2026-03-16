@@ -1,0 +1,12 @@
+{
+    "title": "Gebruikers",
+    "addUser": "Gebruiker toevoegen",
+    "editUser": "Gebruiker bewerken",
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "keepSamePassword": "Leeg laten om hetzelfde wachtwoord te behouden",
+    "errorLoading": "Fout bij laden gebruikers:",
+    "errorLoadingUser": "Fout bij laden gebruiker:"
+}

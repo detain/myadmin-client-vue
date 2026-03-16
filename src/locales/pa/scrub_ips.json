@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs ਸੇਵਾ ਸੂਚੀ",
+        "orderTitle": "Scrub IPs ਆਰਡਰ ਕਰੋ"
+    },
+    "view": {
+        "title": "Scrub IPs ਦੇਖੋ",
+        "currentIp": "ਮੌਜੂਦਾ IP",
+        "ipAddress": "IP ਪਤਾ",
+        "ipFromService": "ਸੇਵਾ ਤੋਂ IP"
+    },
+    "filters": {
+        "title": "ਫਿਲਟਰ",
+        "createNew": "ਨਵਾਂ ਬਣਾਓ",
+        "createNewFilter": "ਨਵਾਂ ਫਿਲਟਰ ਬਣਾਓ",
+        "filterType": "ਫਿਲਟਰ ਕਿਸਮ",
+        "selectFilterType": "ਫਿਲਟਰ ਕਿਸਮ ਚੁਣੋ",
+        "ipAddress": "IP ਪਤਾ",
+        "portNo": "ਪੋਰਟ ਨੰਬਰ",
+        "filter": "ਫਿਲਟਰ",
+        "destinationIp": "ਮੰਜ਼ਿਲ IP",
+        "destinationPort": "ਮੰਜ਼ਿਲ ਪੋਰਟ",
+        "noFiltersFound": "ਕੋਈ ਫਿਲਟਰ ਨਹੀਂ ਮਿਲੇ!",
+        "deleteFilterConfirm": "ਕੀ ਤੁਸੀਂ ਇਹ ਫਿਲਟਰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "unableToCreateFilter": "ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਬਣਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।",
+        "unableToDeleteFilter": "ਇਸ ਸਮੇਂ ਫਿਲਟਰ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।"
+    },
+    "firewallRules": {
+        "title": "ਫਾਇਰਵਾਲ ਨਿਯਮ",
+        "createNew": "ਨਵਾਂ ਬਣਾਓ",
+        "createNewFirewall": "ਨਵਾਂ ਫਾਇਰਵਾਲ ਨਿਯਮ ਬਣਾਓ",
+        "protocol": "ਪ੍ਰੋਟੋਕੋਲ",
+        "destinationIp": "ਮੰਜ਼ਿਲ IP",
+        "destinationPort": "ਮੰਜ਼ਿਲ ਪੋਰਟ",
+        "sourceIp": "ਸਰੋਤ IP",
+        "sourcePort": "ਸਰੋਤ ਪੋਰਟ",
+        "xdpAction": "XDP ਕਾਰਵਾਈ",
+        "ipRequired": "IP ਪਤਾ ਜ਼ਰੂਰੀ ਹੈ",
+        "block": "ਬਲੌਕ",
+        "whitelist": "ਵਾਈਟਲਿਸਟ",
+        "noRulesFound": "ਕੋਈ ਨਿਯਮ ਨਹੀਂ ਮਿਲੇ!",
+        "deleteRuleConfirm": "ਕੀ ਤੁਸੀਂ ਇਹ ਨਿਯਮ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "unableToCreateRule": "ਇਸ ਸਮੇਂ ਫਾਇਰਵਾਲ ਨਿਯਮ ਬਣਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।",
+        "unableToDeleteRule": "ਇਸ ਸਮੇਂ ਫਾਇਰਵਾਲ ਨਿਯਮ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।"
+    },
+    "geoFirewallRules": {
+        "title": "ਭੂਗੋਲਿਕ ਫਾਇਰਵਾਲ ਨਿਯਮ",
+        "createNew": "ਨਵਾਂ ਬਣਾਓ",
+        "createNewGeoRule": "ਨਵਾਂ ਭੂਗੋਲਿਕ ਫਾਇਰਵਾਲ ਨਿਯਮ ਬਣਾਓ",
+        "destinationIp": "ਮੰਜ਼ਿਲ IP",
+        "destinationPort": "ਮੰਜ਼ਿਲ ਪੋਰਟ",
+        "sourceCountry": "ਸਰੋਤ ਦੇਸ਼",
+        "sourceAsn": "ਸਰੋਤ ASN",
+        "xdpAction": "XDP ਕਾਰਵਾਈ",
+        "portNo": "ਪੋਰਟ ਨੰਬਰ",
+        "selectCountry": "ਦੇਸ਼ ਚੁਣੋ",
+        "asn": "ASN",
+        "block": "ਬਲੌਕ",
+        "whitelist": "ਵਾਈਟਲਿਸਟ",
+        "noRulesFound": "ਕੋਈ ਨਿਯਮ ਨਹੀਂ ਮਿਲੇ!",
+        "deleteGeoRuleConfirm": "ਕੀ ਤੁਸੀਂ ਇਹ ਭੂਗੋਲਿਕ ਨਿਯਮ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "unableToCreateRule": "ਇਸ ਸਮੇਂ ਫਾਇਰਵਾਲ ਨਿਯਮ ਬਣਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।",
+        "unableToDeleteRule": "ਇਸ ਸਮੇਂ ਭੂਗੋਲਿਕ ਫਾਇਰਵਾਲ ਨਿਯਮ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਮਰੱਥ।"
+    }
+}

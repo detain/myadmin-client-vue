@@ -1,0 +1,12 @@
+{
+    "required": "{field} wajib diisi",
+    "email": "Harus berupa alamat email yang valid",
+    "minLength": "Harus minimal {min} karakter",
+    "maxLength": "Tidak boleh lebih dari {max} karakter",
+    "passwordMatch": "Kata sandi harus cocok",
+    "invalidFormat": "Format tidak valid",
+    "numeric": "Harus berupa angka",
+    "url": "Harus berupa URL yang valid",
+    "ipAddress": "Harus berupa alamat IP yang valid",
+    "hostname": "Harus berupa hostname yang valid"
+}

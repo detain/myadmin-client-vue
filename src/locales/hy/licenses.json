@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Litsenzioner Tsanak",
+        "orderTitle": "Patvirel Litsenziayin Granchumner"
+    },
+    "view": {
+        "title": "Ditkl Litsenzia {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Hajord Hashiv-aprankagreri Amsakiv:",
+        "billing": "Vcharum",
+        "billed": "vcharvats:",
+        "statusIs": "Kargavichaкn e:",
+        "licenseInfo": "Litsenziayin Tevgh",
+        "cpanelInfo": "cPanel Tevgh",
+        "links": "Hghumner",
+        "welcomeEmailConfirm": "Voroshum eq? Uzeq veranerkyal ougharkel bariv gnalu el. naman?",
+        "emailSent": "El. Naman Ougharkval E",
+        "emailSentMessage": "Bariv gnalu el. naman veranerkyal e ougharkvel. Stugel dzer muts arkultern."
+    },
+    "order": {
+        "title": "Patvirel Litsenzia"
+    },
+    "changeIp": {
+        "title": "Pokhel IP"
+    },
+    "changeOs": {
+        "title": "Pokhel OS",
+        "selectLicenseOs": "Yntrel Litsenziayin OS"
+    }
+}

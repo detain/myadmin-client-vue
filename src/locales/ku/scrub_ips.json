@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "لیستی خزمەتگوزارییەکانی Scrub IPs",
+        "orderTitle": "داواکاری Scrub IPs"
+    },
+    "view": {
+        "title": "بینینی Scrub IPs",
+        "currentIp": "ئای پیی ئێستا",
+        "ipAddress": "ئای پی ئادرەس",
+        "ipFromService": "ئای پی لە خزمەتگوزاری"
+    },
+    "filters": {
+        "title": "فیلتەرەکان",
+        "createNew": "دروستکردنی نوێ",
+        "createNewFilter": "دروستکردنی فیلتەرێکی نوێ",
+        "filterType": "جۆری فیلتەر",
+        "selectFilterType": "هەڵبژاردنی جۆری فیلتەر",
+        "ipAddress": "ئای پی ئادرەس",
+        "portNo": "ژمارەی پۆرت",
+        "filter": "فیلتەر",
+        "destinationIp": "ئای پیی ئامانج",
+        "destinationPort": "پۆرتی ئامانج",
+        "noFiltersFound": "هیچ فیلتەرێک نەدۆزرایەوە!",
+        "deleteFilterConfirm": "دڵنیایت کە دەتەوێت ئەم فیلتەرە بسڕیتەوە؟",
+        "unableToCreateFilter": "ئێستا نەتوانرا فیلتەر دروست بکرێت.",
+        "unableToDeleteFilter": "ئێستا نەتوانرا فیلتەر بسڕێتەوە."
+    },
+    "firewallRules": {
+        "title": "قائیدەکانی دیوارئاگر",
+        "createNew": "دروستکردنی نوێ",
+        "createNewFirewall": "دروستکردنی قائیدەیەکی دیوارئاگری نوێ",
+        "protocol": "پرۆتۆکۆل",
+        "destinationIp": "ئای پیی ئامانج",
+        "destinationPort": "پۆرتی ئامانج",
+        "sourceIp": "ئای پیی سەرچاوە",
+        "sourcePort": "پۆرتی سەرچاوە",
+        "xdpAction": "کاری XDP",
+        "ipRequired": "ئای پی ئادرەس پێویستە",
+        "block": "بەستن",
+        "whitelist": "لیستی سپی",
+        "noRulesFound": "هیچ قائیدەیەک نەدۆزرایەوە!",
+        "deleteRuleConfirm": "دڵنیایت کە دەتەوێت ئەم قائیدەیە بسڕیتەوە؟",
+        "unableToCreateRule": "ئێستا نەتوانرا قائیدەی دیوارئاگر دروست بکرێت.",
+        "unableToDeleteRule": "ئێستا نەتوانرا قائیدەی دیوارئاگر بسڕێتەوە."
+    },
+    "geoFirewallRules": {
+        "title": "قائیدەکانی دیوارئاگری جوگرافی",
+        "createNew": "دروستکردنی نوێ",
+        "createNewGeoRule": "دروستکردنی قائیدەیەکی دیوارئاگری جوگرافیی نوێ",
+        "destinationIp": "ئای پیی ئامانج",
+        "destinationPort": "پۆرتی ئامانج",
+        "sourceCountry": "وڵاتی سەرچاوە",
+        "sourceAsn": "ASN ی سەرچاوە",
+        "xdpAction": "کاری XDP",
+        "portNo": "ژمارەی پۆرت",
+        "selectCountry": "هەڵبژاردنی وڵات",
+        "asn": "ASN",
+        "block": "بەستن",
+        "whitelist": "لیستی سپی",
+        "noRulesFound": "هیچ قائیدەیەک نەدۆزرایەوە!",
+        "deleteGeoRuleConfirm": "دڵنیایت کە دەتەوێت ئەم قائیدەی جوگرافیە بسڕیتەوە؟",
+        "unableToCreateRule": "ئێستا نەتوانرا قائیدەی دیوارئاگر دروست بکرێت.",
+        "unableToDeleteRule": "ئێستا نەتوانرا قائیدەی دیوارئاگری جوگرافی بسڕێتەوە."
+    }
+}

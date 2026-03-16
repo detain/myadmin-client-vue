@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "ਵੈੱਬ ਹੋਸਟਿੰਗ ਸੂਚੀ",
+        "orderTitle": "ਵੈੱਬਸਾਈਟ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਆਰਡਰ ਕਰੋ"
+    },
+    "view": {
+        "title": "ਵੈੱਬਸਾਈਟ {id} ਦੇਖੋ",
+        "package": "ਪੈਕੇਜ",
+        "nextInvoiceDate": "ਅਗਲੀ ਇਨਵੌਇਸ ਮਿਤੀ:",
+        "billing": "ਬਿਲਿੰਗ",
+        "billed": "ਬਿੱਲ ਕੀਤਾ",
+        "billingStatusIs": "ਬਿਲਿੰਗ ਸਥਿਤੀ ਹੈ:",
+        "hostInfo": "ਹੋਸਟ ਜਾਣਕਾਰੀ",
+        "username": "ਉਪਭੋਗਤਾ ਨਾਮ:",
+        "ip": "IP:",
+        "server": "ਸਰਵਰ:",
+        "notSetYet": "ਅਜੇ ਸੈੱਟ ਨਹੀਂ",
+        "login": "ਲੌਗਇਨ",
+        "types": "ਕਿਸਮਾਂ:",
+        "linksLabel": "ਲਿੰਕ:",
+        "manualLogin": "ਮੈਨੁਅਲ ਲੌਗਇਨ",
+        "automaticLogin": "ਆਟੋਮੈਟਿਕ ਲੌਗਇਨ",
+        "clickHere": "ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ",
+        "defaultNameservers": "ਡਿਫੌਲਟ ਨੇਮਸਰਵਰ",
+        "nameservers": "ਨੇਮਸਰਵਰ:",
+        "externalLinks": "ਬਾਹਰੀ ਲਿੰਕ",
+        "names": "ਨਾਮ:",
+        "websitePreview": "ਵੈੱਬਸਾਈਟ ਪੂਰਵਦਰਸ਼ਨ",
+        "links": "ਲਿੰਕ",
+        "welcomeEmailConfirm": "ਕੀ ਤੁਸੀਂ ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "emailSent": "ਈਮੇਲ ਭੇਜੀ ਗਈ",
+        "emailSentMessage": "ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜੀ ਗਈ ਹੈ। ਆਪਣਾ ਇਨਬਾਕਸ ਜਾਂਚੋ।"
+    },
+    "buyIp": {
+        "title": "ਵਾਧੂ IP ਐਡ-ਆਨ ਖਰੀਦੋ",
+        "existingAddonIps": "ਮੌਜੂਦਾ ਐਡ-ਆਨ IPs",
+        "additionalIp": "ਵਾਧੂ IP",
+        "monthlyCost": "ਮਾਸਿਕ ਲਾਗਤ ({symbol})",
+        "costDescription": "ਲਾਗਤ ({symbol}) ਹਰ ਮਹੀਨੇ ਜਦੋਂ ਤੁਹਾਡੀ ਵੈੱਬਸਾਈਟ ਬਿੱਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ",
+        "confirmPurchase": "ਖਰੀਦ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+        "confirmMessage": "ਵਾਧੂ IP ਲਾਗਤ: {symbol}{cost}/ਮਹੀਨਾ। ਕੀ ਤੁਸੀਂ ਵਾਧੂ IP ਆਰਡਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "placeOrder": "ਆਰਡਰ ਦਿਓ",
+        "orderPlaced": "ਆਰਡਰ ਦਿੱਤਾ"
+    },
+    "reverseDns": {
+        "title": "ਰਿਵਰਸ DNS",
+        "updateReverseDns": "ਰਿਵਰਸ DNS ਅੱਪਡੇਟ ਕਰੋ"
+    },
+    "downloadBackups": {
+        "title": "ਬੈਕਅੱਪ ਡਾਊਨਲੋਡ ਕਰੋ",
+        "backup": "ਬੈਕਅੱਪ",
+        "size": "ਆਕਾਰ",
+        "options": "ਵਿਕਲਪ"
+    },
+    "migration": {
+        "title": "ਆਪਣੀ ਵੈੱਬਸਾਈਟ ਮਾਈਗ੍ਰੇਟ ਕਰੋ",
+        "currentWebHostInfo": "ਮੌਜੂਦਾ ਵੈੱਬ ਹੋਸਟ ਜਾਣਕਾਰੀ",
+        "customerPortalUrl": "ਗਾਹਕ ਪੋਰਟਲ URL",
+        "portalExample": "ਉਦਾਹਰਨ ਲਈ: sso.godaddy.com",
+        "registeredUsername": "ਰਜਿਸਟਰਡ ਉਪਭੋਗਤਾ ਨਾਮ / ਈਮੇਲ / ID",
+        "password": "ਪਾਸਵਰਡ",
+        "controlPanelUrl": "ਕੰਟਰੋਲ ਪੈਨਲ URL",
+        "controlPanelExample": "ਉਦਾਹਰਨ ਲਈ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / ਕੰਟਰੋਲ ਪੈਨਲ ਉਪਭੋਗਤਾ ਨਾਮ",
+        "ftpPassword": "FTP / ਕੰਟਰੋਲ ਪੈਨਲ ਪਾਸਵਰਡ",
+        "holdingPageQuestion": "ਜੇ ਸਾਈਟ ਲਾਈਵ/ਵਿਅਸਤ ਹੈ ਅਤੇ ਵਧੇਰੇ ਟ੍ਰੈਫਿਕ ਹੈ, ਕੀ ਅਸੀਂ ਮਾਈਗ੍ਰੇਸ਼ਨ ਦੌਰਾਨ ਹੋਲਡਿੰਗ ਪੇਜ ਸੈੱਟ ਕਰ ਸਕਦੇ ਹਾਂ?",
+        "specialRequirementsQuestion": "ਕੀ ਇਸ ਸਾਈਟ ਦੀਆਂ PHP ਵਰਜ਼ਨ / ਮੌਡਿਊਲਾਂ ਵਰਗੀਆਂ ਵਿਸ਼ੇਸ਼ ਲੋੜਾਂ ਹਨ?",
+        "domainRegistryInfo": "ਡੋਮੇਨ ਰਜਿਸਟ੍ਰੀ ਜਾਣਕਾਰੀ",
+        "transferDomainQuestion": "ਕੀ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ ਕਿ ਅਸੀਂ ਡੋਮੇਨ ਨਾਮ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਟ੍ਰਾਂਸਫਰ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰੀਏ?",
+        "updateNameserversQuestion": "ਕੀ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ ਕਿ ਅਸੀਂ ਡੇਟਾ ਮਾਈਗ੍ਰੇਸ਼ਨ ਪੂਰੀ ਹੋਣ ਦੇ ਨਾਲ ਹੀ ਨੇਮ ਸਰਵਰ ਅੱਪਡੇਟ ਕਰੀਏ?",
+        "domainRegistryPortal": "ਡੋਮੇਨ ਰਜਿਸਟ੍ਰੀ ਗਾਹਕ ਪੋਰਟਲ",
+        "importantNotes": "ਮਹੱਤਵਪੂਰਨ ਨੋਟ",
+        "note1": "ਇਹ ਫਾਰਮ ਭਰਨ ਨਾਲ ਸਾਡੇ ਸਹਾਇਤਾ ਵਿਭਾਗ ਲਈ ਤੁਹਾਡੀ ਮਾਈਗ੍ਰੇਸ਼ਨ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਨਵੀਂ ਟਿਕਟ ਖੁੱਲ੍ਹੇਗੀ।",
+        "note2": "ਕਿਸੇ ਵੀ ਦੇਰੀ ਤੋਂ ਬਚਣ ਲਈ ਕਿਰਪਾ ਜਿੰਨਾ ਹੋ ਸਕੇ ਪੂਰਾ ਅਤੇ ਸਹੀ ਭਰੋ।",
+        "note3": "ਆਮ ਮਾਈਗ੍ਰੇਸ਼ਨ 48 ਤੋਂ 72 ਘੰਟਿਆਂ ਵਿੱਚ ਪੂਰੀ ਹੁੰਦੀ ਹੈ। ਕਈ ਵਾਰ ਡੇਟਾ ਦੀ ਮਾਤਰਾ ਵੱਧ ਹੋਣ ਤੇ ਜ਼ਿਆਦਾ ਸਮਾਂ ਲੱਗਦਾ ਹੈ।",
+        "note4": "ਮਾਈਗ੍ਰੇਸ਼ਨ ਕਰਦੇ ਸਮੇਂ ਪੁਰਾਣਾ ਹੋਸਟਿੰਗ ਖਾਤਾ ਔਨਲਾਈਨ ਅਤੇ ਪਹੁੰਚਯੋਗ ਹੋਣਾ ਜ਼ਰੂਰੀ ਹੈ, ਨਹੀਂ ਤਾਂ ਅਸੀਂ ਮੁਸ਼ਕਲ ਦਾ ਸਾਹਮਣਾ ਕਰ ਸਕਦੇ ਹਾਂ।",
+        "note5": "ਕਿਰਪਾ ਮਾਈਗ੍ਰੇਸ਼ਨ ਦੌਰਾਨ ਆਪਣੀ ਸਾਈਟ ਤੇ ਕੋਈ ਅੱਪਡੇਟ ਨਾ ਕਰੋ, ਨਹੀਂ ਤਾਂ ਉਹ ਡੇਟਾ ਨਵੀਂ ਹੋਸਟਿੰਗ ਤੇ ਕਾਪੀ ਨਹੀਂ ਹੋ ਸਕਦਾ।"
+    },
+    "order": {
+        "title": "ਵੈੱਬਸਾਈਟ ਆਰਡਰ ਕਰੋ"
+    }
+}

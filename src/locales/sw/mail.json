@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Orodha ya Huduma za Barua pepe",
+        "orderTitle": "Agiza Usajili wa Barua pepe"
+    },
+    "view": {
+        "title": "Angalia Barua pepe {id}",
+        "package": "Pakiti",
+        "nextInvoiceDate": "Tarehe ya Ankara Inayofuata:",
+        "billing": "Bili",
+        "billed": "imelipiwa:",
+        "statusIs": "Hali ni:",
+        "mailApi": "API ya Barua pepe",
+        "usageCount": "Idadi ya Matumizi:",
+        "links": "Viungo",
+        "connectionInfo": "Maelezo ya Muunganisho",
+        "welcomeEmailConfirm": "Je, una uhakika unataka kutuma tena barua pepe ya karibu?",
+        "emailSent": "Barua pepe Imetumwa",
+        "emailSentMessage": "Barua pepe ya karibu imetumwa tena. Angalia kikasha chako."
+    },
+    "order": {
+        "title": "Agiza Barua pepe"
+    },
+    "alerts": {
+        "title": "Tahadhari",
+        "addAlert": "Ongeza Tahadhari",
+        "editAlert": "Hariri Tahadhari",
+        "noAlerts": "Hakuna tahadhari zilizopatikana"
+    },
+    "delist": {
+        "title": "Ondoa kutoka Orodha",
+        "blockedEmails": "Barua pepe Zilizozuiwa"
+    },
+    "denyRules": {
+        "title": "Sheria za Kukataa",
+        "addRule": "Ongeza Sheria",
+        "noRules": "Hakuna sheria za kukataa zilizopatikana"
+    },
+    "logs": {
+        "title": "Kumbukumbu",
+        "searchLogs": "Tafuta Kumbukumbu"
+    },
+    "stats": {
+        "title": "Takwimu"
+    },
+    "deliverability": {
+        "title": "Uwasilishaji"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lijst met mailservices",
+        "orderTitle": "Mailregistraties bestellen"
+    },
+    "view": {
+        "title": "Mail {id} bekijken",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende factuurdatum:",
+        "billing": "Facturering",
+        "billed": "gefactureerd:",
+        "statusIs": "Status is:",
+        "mailApi": "Mail API",
+        "usageCount": "Gebruiksaantal:",
+        "links": "Links",
+        "connectionInfo": "Verbindingsinformatie",
+        "welcomeEmailConfirm": "Weet je zeker dat je de welkomstmail opnieuw wilt versturen?",
+        "emailSent": "E-mail verzonden",
+        "emailSentMessage": "De welkomstmail is opnieuw verzonden. Controleer je inbox."
+    },
+    "order": {
+        "title": "Mail bestellen"
+    },
+    "alerts": {
+        "title": "Waarschuwingen",
+        "addAlert": "Waarschuwing toevoegen",
+        "editAlert": "Waarschuwing bewerken",
+        "noAlerts": "Geen waarschuwingen gevonden"
+    },
+    "delist": {
+        "title": "Verwijderen van lijst",
+        "blockedEmails": "Geblokkeerde e-mails"
+    },
+    "denyRules": {
+        "title": "Weigeringsregels",
+        "addRule": "Regel toevoegen",
+        "noRules": "Geen weigeringsregels gevonden"
+    },
+    "logs": {
+        "title": "Logboeken",
+        "searchLogs": "Logboeken doorzoeken"
+    },
+    "stats": {
+        "title": "Statistieken"
+    },
+    "deliverability": {
+        "title": "Afleverbaarheid"
+    }
+}

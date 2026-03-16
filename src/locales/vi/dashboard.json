@@ -1,0 +1,28 @@
+{
+    "title": "Bảng điều khiển",
+    "welcome": "Chào mừng, {name}",
+    "lastLogin": "Lần đăng nhập cuối",
+    "lastLoginIp": "IP đăng nhập cuối",
+    "prepay": {
+        "title": "Số dư thanh toán trước",
+        "remainingBalance": "Số dư còn lại thanh toán trước",
+        "manageAccount": "Quản lý tài khoản",
+        "manageTooltip": "Quản lý tài khoản thanh toán trước của bạn"
+    },
+    "invoices": {
+        "title": "Hóa đơn chưa thanh toán",
+        "totalUnpaid": "Tổng hóa đơn chưa thanh toán",
+        "totalAmount": "Tổng số tiền cần thanh toán",
+        "payTotalTooltip": "Thanh toán tổng số tiền"
+    },
+    "callInPin": "PIN gọi điện",
+    "recentTickets": "Phiếu gần đây",
+    "viewAllTickets": "Xem tất cả phiếu",
+    "editTicket": "Chỉnh sửa phiếu",
+    "serviceCount": "Không có dịch vụ đang hoạt động | {count} dịch vụ đang hoạt động | {count} dịch vụ đang hoạt động",
+    "affiliate": {
+        "earnPerSale": "Kiếm {amount} mỗi lần bán",
+        "urlPlaceholder": "URL liên kết",
+        "shareWith": "Chia sẻ với"
+    }
+}

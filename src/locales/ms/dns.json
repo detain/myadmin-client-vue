@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Pengurus DNS",
+        "addDomain": "Tambah Domain",
+        "deleteDomain": "Padam Domain",
+        "domainName": "Nama Domain",
+        "dnsServers": "Pelayan DNS",
+        "confirmDelete": "Adakah anda pasti mahu memadam domain ini?",
+        "noDomains": "Tiada domain ditemui"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Tambah Rekod",
+        "deleteRecord": "Padam Rekod",
+        "editRecord": "Edit Rekod",
+        "recordType": "Jenis Rekod",
+        "hostname": "Nama Host",
+        "address": "Alamat",
+        "distance": "Jarak",
+        "weight": "Berat",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Tindakan",
+        "confirmDelete": "Adakah anda pasti mahu memadam rekod ini?"
+    }
+}

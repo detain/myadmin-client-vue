@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Daftar Lisensi",
+        "orderTitle": "Pesan Registrasi Lisensi"
+    },
+    "view": {
+        "title": "Lihat Lisensi {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Faktur Berikutnya:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status adalah:",
+        "licenseInfo": "Info Lisensi",
+        "cpanelInfo": "Info cPanel",
+        "links": "Tautan",
+        "welcomeEmailConfirm": "Apakah Anda yakin ingin mengirim ulang email selamat datang?",
+        "emailSent": "Email Terkirim",
+        "emailSentMessage": "Email selamat datang telah dikirim ulang. Periksa kotak masuk Anda."
+    },
+    "order": {
+        "title": "Pesan Lisensi"
+    },
+    "changeIp": {
+        "title": "Ubah IP"
+    },
+    "changeOs": {
+        "title": "Ubah OS",
+        "selectLicenseOs": "Pilih OS Lisensi"
+    }
+}

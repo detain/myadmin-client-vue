@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL سرٽيفڪيٽ لسٽ",
+        "orderTitle": "SSL رجسٽريشن آرڊر ڪريو"
+    },
+    "view": {
+        "title": "SSL {id} ڏسو",
+        "package": "پيڪيج",
+        "nextInvoiceDate": "ايندڙ انوائس تاريخ:",
+        "billing": "بلنگ",
+        "billed": "بل ڪيو:",
+        "statusIs": "حالت آهي:",
+        "orderInfo": "آرڊر معلومات",
+        "certificateInfo": "سرٽيفڪيٽ معلومات",
+        "links": "لنڪ",
+        "welcomeEmailConfirm": "ڇا توهان پڪ آهيو ته خوش آمديد اي ميل ٻيهر موڪلڻ چاهيو ٿا؟",
+        "emailSent": "اي ميل موڪليل",
+        "emailSentMessage": "خوش آمديد اي ميل ٻيهر موڪلي ويئي آهي. پنهنجو ان باڪس چيڪ ڪريو."
+    },
+    "order": {
+        "title": "SSL آرڊر ڪريو"
+    },
+    "changeApproverEmail": {
+        "title": "منظوري ڏيندڙ اي ميل تبديل ڪريو",
+        "selectApproverEmail": "منظوري ڏيندڙ اي ميل چونڊيو"
+    }
+}

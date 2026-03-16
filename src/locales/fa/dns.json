@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "مدیریت DNS",
+        "addDomain": "افزودن دامنه",
+        "deleteDomain": "حذف دامنه",
+        "domainName": "نام دامنه",
+        "dnsServers": "سرورهای DNS",
+        "confirmDelete": "آیا مطمئن هستید که می‌خواهید این دامنه را حذف کنید؟",
+        "noDomains": "هیچ دامنه‌ای یافت نشد"
+    },
+    "editor": {
+        "title": "ویرایشگر DNS",
+        "addRecord": "افزودن رکورد",
+        "deleteRecord": "حذف رکورد",
+        "editRecord": "ویرایش رکورد",
+        "recordType": "نوع رکورد",
+        "hostname": "نام میزبان",
+        "address": "آدرس",
+        "distance": "فاصله",
+        "weight": "وزن",
+        "port": "پورت",
+        "ttl": "TTL",
+        "actions": "عملیات",
+        "confirmDelete": "آیا مطمئن هستید که می‌خواهید این رکورد را حذف کنید؟"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "ਉਪਭੋਗਤਾ",
+    "addUser": "ਉਪਭੋਗਤਾ ਜੋੜੋ",
+    "editUser": "ਉਪਭੋਗਤਾ ਸੰਪਾਦਿਤ ਕਰੋ",
+    "firstName": "ਪਹਿਲਾ ਨਾਮ",
+    "lastName": "ਆਖਰੀ ਨਾਮ",
+    "username": "ਉਪਭੋਗਤਾ ਨਾਮ",
+    "password": "ਪਾਸਵਰਡ",
+    "keepSamePassword": "ਉਹੀ ਪਾਸਵਰਡ ਰੱਖਣ ਲਈ ਖਾਲੀ ਛੱਡੋ",
+    "errorLoading": "ਉਪਭੋਗਤਾ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:",
+    "errorLoadingUser": "ਉਪਭੋਗਤਾ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:"
+}

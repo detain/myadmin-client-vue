@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Tambah Domain",
+        "deleteDomain": "Hapus Domain",
+        "domainName": "Nama Domain",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "Apakah Anda yakin ingin menghapus domain ini?",
+        "noDomains": "Tidak ada domain ditemukan"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Tambah Rekaman",
+        "deleteRecord": "Hapus Rekaman",
+        "editRecord": "Edit Rekaman",
+        "recordType": "Jenis Rekaman",
+        "hostname": "Hostname",
+        "address": "Alamat",
+        "distance": "Jarak",
+        "weight": "Bobot",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Tindakan",
+        "confirmDelete": "Apakah Anda yakin ingin menghapus rekaman ini?"
+    }
+}

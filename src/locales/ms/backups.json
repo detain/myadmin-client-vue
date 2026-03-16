@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Senarai Storan / Sandaran",
+        "orderTitle": "Pesan Pendaftaran Sandaran"
+    },
+    "view": {
+        "title": "Lihat Sandaran {id}",
+        "package": "Pakej",
+        "nextInvoiceDate": "Tarikh Invois Seterusnya:",
+        "billing": "Pengebilan",
+        "billed": "Dibilkan:",
+        "statusIs": "Status ialah:",
+        "hostServer": "Pelayan Hos",
+        "links": "Pautan",
+        "welcomeEmailConfirm": "Adakah anda pasti mahu menghantar semula e-mel alu-aluan?",
+        "emailSent": "E-mel Dihantar",
+        "emailSentMessage": "E-mel alu-aluan telah dihantar semula. Semak peti masuk anda."
+    },
+    "order": {
+        "title": "Pesan Storan"
+    }
+}
