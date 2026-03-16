@@ -63,20 +63,79 @@ function importDsRecord(record: DNSSECRecord) {
 function confirmRemoveAll() {
     Swal.fire({
         title: 'Are you sure?',
+        text: 'This will remove all DNSSEC records for this domain.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, remove them!',
     }).then((result) => {
         if (result.isConfirmed) {
-            // submit delete action here
+            Swal.fire({
+                title: '',
+                html: '<i class="fas fa-spinner fa-pulse"></i> Removing DNSSEC records...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+            fetchWrapper
+                .delete(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`)
+                .then((response) => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Removed',
+                        text: typeof response === 'string' ? response : 'DNSSEC records removed successfully!',
+                    });
+                    dnssecRecords.value = [];
+                })
+                .catch((error: any) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        html: error?.text || error?.error || 'Failed to remove DNSSEC records.',
+                    });
+                });
         }
     });
 }
 
 function submitForm() {
-    const payload = records.value.filter((r) => r.visible);
-    console.log(payload);
-    // submit payload to backend
+    const payload = records.value.filter((r) => r.visible && r.algorithm && r.digestType && r.digest);
+    if (payload.length === 0) {
+        Swal.fire({ icon: 'warning', title: 'No Records', text: 'Please fill in at least one DNSSEC record.' });
+        return;
+    }
+    const algorithm: string[] = [];
+    const digest_type: string[] = [];
+    const key_tag: (number | null)[] = [];
+    const digest: string[] = [];
+    payload.forEach((r) => {
+        algorithm.push(r.algorithm);
+        digest_type.push(r.digestType);
+        key_tag.push(r.keyTag);
+        digest.push(r.digest);
+    });
+    Swal.fire({
+        title: '',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Saving DNSSEC records...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    fetchWrapper
+        .post(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`, { algorithm, digest_type, key_tag, digest })
+        .then((response) => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: typeof response === 'string' ? response : 'DNSSEC records saved successfully!',
+            });
+            showForm.value = false;
+            loadDnsSec();
+        })
+        .catch((error: any) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                html: error?.text || error?.error || 'Failed to save DNSSEC records.',
+            });
+        });
 }
 
 function loadDnsSec() {
@@ -86,20 +145,18 @@ function loadDnsSec() {
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    try {
-        fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`).then((response) => {
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module)}/${id.value}/dnssec`)
+        .then((response) => {
             Swal.close();
-            console.log('domain dns sec', response);
-            dnssecRecords.value = response.records;
+            dnssecRecords.value = response.records || [];
+        })
+        .catch((error: any) => {
+            Swal.fire({
+                icon: 'error',
+                html: error?.text || error?.error || 'Failed to load DNSSEC records.',
+            });
         });
-    } catch (error: any) {
-        Swal.close();
-        console.log('domain dns sec', error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.text}`,
-        });
-    }
 }
 
 loadDnsSec();
