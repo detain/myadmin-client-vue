@@ -1,6 +1,18 @@
 // setup.ts
 import { vi, beforeAll, afterAll, afterEach } from 'vitest';
+import { config } from '@vue/test-utils';
+import { createI18n } from 'vue-i18n';
 import { server } from '../src/mocks/setup';
+
+const i18n = createI18n({
+    legacy: false,
+    locale: 'en',
+    fallbackLocale: 'en',
+    missingWarn: false,
+    fallbackWarn: false,
+});
+
+config.global.plugins.push(i18n);
 
 // Establish API mocking before all tests
 beforeAll(() => server.listen());
