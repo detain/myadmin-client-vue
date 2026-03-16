@@ -1,34 +1,62 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
+import { moduleLink } from '@/helpers/moduleLink';
+import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 
-const id = ref(''); // Assign the value of `$id` here
-const funct = ref(''); // Assign the value of `$funct` here
-const domain = ref(''); // Assign the value of `$domain` here
+const props = defineProps<{
+    id: number;
+    funct: string;
+    domain: string;
+}>();
+
+const module = 'domains';
+const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const router = useRouter();
 
 onMounted(() => {
+    const isDisable = props.funct === 'disableCancel';
     Swal.fire({
-        icon: 'error',
-        title: '<h3>Whois Privacy Addon</h3> ',
+        icon: isDisable ? 'warning' : 'question',
+        title: '<h3>Whois Privacy Addon</h3>',
         showCancelButton: true,
         showLoaderOnConfirm: true,
-        confirmButtonText: `${funct.value === 'disableCancel' ? 'Disable & Cancel it.' : 'Enable Whois'}`,
+        confirmButtonText: isDisable ? 'Disable & Cancel it.' : 'Enable Whois',
+        confirmButtonColor: isDisable ? '#d33' : '#3085d6',
         html: `
-      <p>Your domain <span class="text-2lg">${domain.value}</span> Whois Privacy addon is ${funct.value === 'disableCancel' ? 'Enabled' : 'Disabled'}</p>
-      <p>Are you sure want to ${funct.value === 'disableCancel' ? 'Disable & Cancel it.' : 'Enable Whois'} it?</p>
+      <p>Your domain <span class="text-2lg"><b>${props.domain}</b></span> Whois Privacy addon is ${isDisable ? 'Enabled' : 'Disabled'}</p>
+      <p>Are you sure you want to ${isDisable ? 'Disable & Cancel it' : 'Enable Whois'}?</p>
     `,
         preConfirm: () => {
-            (document.getElementById('whoisDisableForm') as unknown as HTMLFormElement).submit();
+            return fetchWrapper
+                .post(`${baseUrl}/${moduleLink(module)}/${props.id}/whois`, { action: props.funct })
+                .then((response) => {
+                    return response;
+                })
+                .catch((error: any) => {
+                    Swal.showValidationMessage(error?.text || error?.error || 'Request failed');
+                });
         },
+        allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+        if (result.isConfirmed && result.value) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                html: result.value.text || (isDisable ? 'Whois Privacy has been disabled and canceled.' : 'Whois Privacy has been enabled.'),
+            }).then(() => {
+                router.push(`/${moduleLink(module)}/${props.id}`);
+            });
+        }
     });
 });
 </script>
 
 <template>
-    <form id="whoisDisableForm" :action="`view_domain?id=${id}&link=whois`" method="POST">
-        <input id="func" type="hidden" name="func" :value="funct" />
-        <input id="link" type="hidden" name="link" value="whois" />
-    </form>
+    <div></div>
 </template>
 
 <style scoped></style>

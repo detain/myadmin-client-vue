@@ -1,50 +1,130 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useDomainStore } from '@/stores/domain.store';
+import { storeToRefs } from 'pinia';
+import Swal from 'sweetalert2';
 
 const props = defineProps<{
     id: number;
 }>();
-const successMsg = ref('');
-const cancelQueue = ref('');
-const fields = ref({});
 const siteStore = useSiteStore();
+const baseUrl = siteStore.getBaseUrl();
+const router = useRouter();
 const module: string = 'domains';
+const domainStore = useDomainStore();
+const { serviceInfo, whoisPrivacy: storeWhoisPrivacy } = storeToRefs(domainStore);
 
-const renewCost = ref('{$formValues.renewCost}');
-const whoisCost = ref('{$formValues.whoisCost}');
-const whoisPrivacy = ref<string | boolean>(false);
-const currencySymbol = ref('{$currencySymbol}');
-const formValues = ref({
-    serviceInfo: {
-        domain_hostname: '{$formValues.serviceInfo.domain_hostname}',
-    },
-    expireDate: '{if !is_null($formValues.expireDate)}{$formValues.expireDate}{/if}',
-    domain_id: '{$formValues.domain_id}',
-});
-const tldInfo = ref({
-    tld_grace_period: '{$tldInfo.tld_grace_period}',
-    tld_whois_privacy_available: '{$tldInfo.tld_whois_privacy_available}',
-});
+const renewCost = ref(0);
+const whoisCost = ref(0);
+const selectedWhoisPrivacy = ref('disable');
+const currencySymbol = ref('$');
+const currency = ref('USD');
+const expiryDate = ref('');
+const whoisAvailable = ref(false);
+const alreadyInvoiced = ref(false);
+const invoicePaid = ref(false);
+const loadingDone = ref(false);
+
 const renewCostFormatted = computed(() => {
-    return parseFloat(renewCost.value)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return renewCost.value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
 const whoisCostFormatted = computed(() => {
-    return parseFloat(whoisCost.value)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return whoisCost.value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
+const totalCost = computed(() => {
+    let total = renewCost.value;
+    if (whoisAvailable.value && selectedWhoisPrivacy.value === 'enable') {
+        total += whoisCost.value;
+    }
+    return total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+});
+
+function loadRenew() {
+    Swal.fire({
+        title: '',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Loading renewal information...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+    });
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module)}/${props.id}/renew`)
+        .then((response) => {
+            Swal.close();
+            loadingDone.value = true;
+            renewCost.value = response.renewCost;
+            whoisCost.value = response.whoisCost;
+            whoisAvailable.value = response.whoisAvailable;
+            currency.value = response.currency;
+            currencySymbol.value = response.currencySymbol;
+            expiryDate.value = response.expiryDate || '';
+            alreadyInvoiced.value = response.alreadyInvoiced;
+            invoicePaid.value = response.invoicePaid;
+            if (storeWhoisPrivacy.value === 'enabled') {
+                selectedWhoisPrivacy.value = 'enable';
+            }
+        })
+        .catch((error: any) => {
+            Swal.fire({
+                icon: 'error',
+                html: error?.text || error?.error || 'Failed to load renewal information.',
+            });
+            loadingDone.value = true;
+        });
+}
+
 function placeOrder() {
-    // Handle form submission
+    Swal.fire({
+        title: 'Confirm Renewal',
+        html: `<p>Total cost: <b>${currencySymbol.value}${totalCost.value}</b></p><p>Are you sure you want to place this renewal order?</p>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Place Order',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: '',
+                html: '<i class="fas fa-spinner fa-pulse"></i> Placing renewal order...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+            fetchWrapper
+                .post(`${baseUrl}/${moduleLink(module)}/${props.id}/renew`, {
+                    whois_privacy: selectedWhoisPrivacy.value,
+                })
+                .then((response) => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Order Placed',
+                        html: response.text || 'Domain renewal order placed successfully!',
+                        confirmButtonText: 'Go to Payment',
+                    }).then(() => {
+                        if (response.payUrl) {
+                            window.location.href = response.payUrl;
+                        } else {
+                            router.push(`/${moduleLink(module)}/${props.id}`);
+                        }
+                    });
+                })
+                .catch((error: any) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        html: error?.text || error?.error || 'Failed to place renewal order.',
+                    });
+                });
+        }
+    });
 }
+
 function renewCalculate() {
-    // Calculate renew cost
+    // Total cost is computed reactively via totalCost
 }
+
+loadRenew();
 </script>
 
 <template>
@@ -58,16 +138,16 @@ function renewCalculate() {
                     </div>
                 </div>
             </div>
-            <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
+            <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ ‘border-left’: ‘4px solid greenyellow’, display: ‘block ruby’ }">
                 <div class="text-md m-0">
-                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired and have grace period of <b>{{ tldInfo.tld_grace_period }} days</b> from expiry date to renew.
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;If domain expired it may have a grace period from expiry date to renew.
                     <div class="card-tools float-right">
                         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
             </div>
-            <template v-if="tldInfo.tld_whois_privacy_available == 'Y'">
-                <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
+            <template v-if="whoisAvailable">
+                <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ ‘border-left’: ‘4px solid greenyellow’, display: ‘block ruby’ }">
                     <div class="text-md m-0">
                         <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;Enable <b>Whois Privacy</b> to hide your Contact Information when a user does a WHOIS lookup on that Registrant’s domain.
                         <div class="card-tools float-right">
@@ -88,26 +168,36 @@ function renewCalculate() {
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @submit.prevent="placeOrder">
+                    <template v-if="alreadyInvoiced && invoicePaid">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>&nbsp; You have already renewed your domain!
+                        </div>
+                    </template>
+                    <template v-else-if="alreadyInvoiced && !invoicePaid">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>&nbsp; To renew your domain, kindly pay the existing invoice.
+                        </div>
+                    </template>
+                    <form v-else @submit.prevent="placeOrder">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="domain">Domain</label>
                             <div class="col-sm-9 input-group">
-                                <input id="hostname" type="text" class="form-control form-control-sm" name="domain" :value="formValues.serviceInfo.domain_hostname" disabled />
+                                <input id="hostname" type="text" class="form-control form-control-sm" name="domain" :value="serviceInfo.domain_hostname" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="expiry_date">Expiry Date</label>
                             <div class="col-sm-9 input-group">
-                                <input id="expiry_date" type="text" class="form-control form-control-sm" name="expiry_date" :value="formValues.expireDate || ''" disabled />
+                                <input id="expiry_date" type="text" class="form-control form-control-sm" name="expiry_date" :value="expiryDate" disabled />
                             </div>
                         </div>
-                        <template v-if="tldInfo.tld_whois_privacy_available == 'Y'">
+                        <template v-if="whoisAvailable">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="whois_privacy">Whois Privacy</label>
                                 <div class="col-sm-9 input-group">
-                                    <select id="whois_privacy" name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl" @change="renewCalculate">
-                                        <option value="enable" :selected="whoisPrivacy === 'enabled'">Enable</option>
-                                        <option value="disable" :selected="whoisPrivacy === false || !whoisPrivacy || whoisPrivacy === 'disabled' || whoisPrivacy === ''">Disable</option>
+                                    <select id="whois_privacy" v-model="selectedWhoisPrivacy" name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl">
+                                        <option value="enable">Enable</option>
+                                        <option value="disable">Disable</option>
                                     </select>
                                 </div>
                             </div>
@@ -121,13 +211,13 @@ function renewCalculate() {
                                 <input id="renew_cost" type="text" class="form-control form-control-sm" name="renew_cost" :value="renewCostFormatted" disabled />
                             </div>
                         </div>
-                        <div id="whois_row" class="form-group row">
+                        <div v-if="whoisAvailable" id="whois_row" class="form-group row">
                             <label class="col-md-3 col-form-label" for="whois_cost">Whois Cost</label>
                             <div class="col-sm-9 input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input id="whois_cost" type="text" class="form-control form-control-sm" name="whois_cost" :value="whoisCostFormatted" disabled />
+                                <input id="whois_cost" type="text" class="form-control form-control-sm" name="whois_cost" :value="selectedWhoisPrivacy === 'enable' ? whoisCostFormatted : '0.00'" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -136,7 +226,7 @@ function renewCalculate() {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
                                 </div>
-                                <input id="total_cost" type="text" class="form-control" name="total_cost" :value="renewCostFormatted" disabled />
+                                <input id="total_cost" type="text" class="form-control" name="total_cost" :value="totalCost" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
