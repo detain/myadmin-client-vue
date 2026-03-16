@@ -100,7 +100,7 @@ onMounted(loadDelist);
                 <input v-model="unblockEmail" class="form-control" type="email" placeholder="sender@domain.com" required />
             </div>
             <div class="col-sm-3">
-                <button class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i> Unblock</button>
+                <button class="btn btn-secondary btn-sm"><font-awesome-icon :icon="['fas', 'plus']" /> Unblock</button>
             </div>
         </form>
 

@@ -70,7 +70,7 @@ loadBanners();
             <!-- Info Card -->
             <div class="card shadow-none w-100 bg-white p-2 mb-4" style="border-left: 4px solid skyblue; display: block ruby">
                 <p class="m-0 text-md">
-                    <i class="fas fa-info-circle text-info" aria-hidden="true"></i>
+                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-info" />
                     &nbsp;
                     <b class="text-info">Note:</b>
                     &nbsp;For details about banner like HTML code, image size, etc. Click on any banner image that you want to use on your website.
@@ -81,8 +81,8 @@ loadBanners();
                 <!-- Useful Affiliate Links Header -->
                 <div class="card-header">
                     <div class="p-1 d-flex justify-content-between align-items-center">
-                        <h3 class="card-title py-2"><i class="fas fa-link"></i>&nbsp;Useful Affiliate Links</h3>
-                        <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Useful Affiliate Links</h3>
+                        <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@ loadBanners();
                 <!-- Banners Header -->
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="far fa-image"></i>&nbsp;Banners</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'image']" />&nbsp;Banners</h3>
                     </div>
                 </div>
 

@@ -182,9 +182,9 @@ function exportExcel() {}
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><i class="far fa-money-bill"></i>Invoices List</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['far', 'money-bill-alt']" />Invoices List</h3>
             <div v-if="id" class="card-tools mr-4 mt-2">
-                <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">

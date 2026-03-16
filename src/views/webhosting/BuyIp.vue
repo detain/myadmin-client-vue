@@ -133,17 +133,17 @@ loadBuyIp();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2">
-                            <i class="fas fa-map-marker-alt">&nbsp;</i>
+                            <font-awesome-icon :icon="['fas', 'map-marker-alt']" />&nbsp;
                             Buy Additional IP Addon
                         </h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="ipsDetailsExist">
-                        <h5 class="mb-3"><i class="fas fa-list"></i>&nbsp; Existing Addon IPs</h5>
+                        <h5 class="mb-3"><font-awesome-icon :icon="['fas', 'list']" />&nbsp; Existing Addon IPs</h5>
                         <table class="table-sm table-bordered table">
                             <tr v-for="websiteDetail in ipsDetails" :key="websiteDetail.ip">
                                 <td>Additional IP</td>

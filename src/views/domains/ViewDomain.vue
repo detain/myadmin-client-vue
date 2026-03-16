@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
+import { parseFaIcon } from '@/helpers/parseFaIcon';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
@@ -115,7 +116,7 @@ loadLink(route.params.link as string);
                         Next Invoice Date: <b>{{ formatDate(billingDetails.next_date) }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="icon"><font-awesome-icon :icon="['fas', 'briefcase']" /></div>
                 <span class="small-box-footer">{{ serviceInfo.domain_hostname }}</span>
             </div>
         </div>
@@ -131,7 +132,7 @@ loadLink(route.params.link as string);
                         Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
                 <span class="small-box-footer">
                     Domain Status: <b>{{ serviceInfo.domain_status }}</b>
                 </span>
@@ -145,10 +146,10 @@ loadLink(route.params.link as string);
                         Whois Privacy is: <b class="text-md">{{ whoisPrivacy }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-user-secret"></i></div>
+                <div class="icon"><font-awesome-icon :icon="['fas', 'user-secret']" /></div>
                 <span class="small-box-footer">
                     Status: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><i class="fas fa-pencil-alt"></i></router-link>
+                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><font-awesome-icon :icon="['fas', 'pencil-alt']" /></router-link>
                 </span>
             </div>
         </div>
@@ -184,14 +185,15 @@ loadLink(route.params.link as string);
         <div class="col-md-6">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-link">&nbsp;</i> Links</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />&nbsp; Links</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                        <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
+                        <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
                 </div>
@@ -201,12 +203,12 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title pt-2"><i class="fas fa-globe">&nbsp;</i>Nameservers</h3>
+                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Nameservers</h3>
                         <div class="card-tools float-right pl-3 pt-1">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -232,12 +234,12 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title pt-2"><i class="fas fa-id-card">&nbsp;</i>Contact Information</h3>
+                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'id-card']" />&nbsp;Contact Information</h3>
                         <div class="card-tools float-right pl-3 pt-1">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />Edit </router-link>
                         </div>
                     </div>
                 </div>
@@ -256,9 +258,9 @@ loadLink(route.params.link as string);
         <div class="col-md-3">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-newspaper">&nbsp;</i> Domain Registry logs</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'newspaper']" />&nbsp; Domain Registry logs</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
                 </div>
                 <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-secondary text-md">No domain log found.</span></div>
@@ -267,9 +269,9 @@ loadLink(route.params.link as string);
         <div class="col-md-3">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-times">&nbsp;</i> Errors in Contact Info</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'times']" />&nbsp; Errors in Contact Info</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
                 </div>
                 <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-success text-md">All good! no errors in Contact Information!</span></div>

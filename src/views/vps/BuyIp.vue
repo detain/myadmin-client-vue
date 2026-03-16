@@ -115,9 +115,9 @@ loadBuyIp();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="fas fa-map-marker-alt"></i> Additional IP Addon for your VPS</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'map-marker-alt']" /> Additional IP Addon for your VPS</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i> Back</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" /> Back</router-link>
                         </div>
                     </div>
                 </div>

@@ -305,9 +305,9 @@ updatePrice();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <router-link to="/servers" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link to="/servers" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -365,9 +365,9 @@ updatePrice();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="far fa-hand-point-right">&nbsp;</i>Recommendations</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['far', 'hand-point-right']" />Recommendations</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -424,11 +424,11 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2">
-                                <i class="far fa-thumbs-up">&nbsp;</i> Buy It Now Servers
+                                <font-awesome-icon :icon="['far', 'thumbs-up']" /> Buy It Now Servers
                                 <div><sub>Pre-configured servers ready to use!</sub></div>
                             </h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -488,9 +488,9 @@ updatePrice();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true">&nbsp;</i>Order Dedicated Server</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />Order Dedicated Server</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBack"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
+                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBack"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -538,11 +538,11 @@ updatePrice();
                                                                     <div class="text-md font-weight-light">
                                                                         <template v-if="inputName === 'hd_li'">
                                                                             <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs pb-0" :class="canRemoveDrive(Number(id)) ? 'btn-success' : 'btn-secondary'" :disabled="!canRemoveDrive(Number(id))" @click="removeDrive(Number(id))">
-                                                                                <i class="fas fa-minus"></i>
+                                                                                <font-awesome-icon :icon="['fas', 'minus']" />
                                                                             </button>
                                                                             <b>/</b>
                                                                             <button :id="'drive-add-' + id" type="button" class="add-button btn btn-xs pb-0" :class="canAddDrive(details) ? 'btn-success' : 'btn-secondary'" :disabled="!canAddDrive(details.drive_type)" @click="addDrive(Number(id))">
-                                                                                <i class="fas fa-plus"></i>
+                                                                                <font-awesome-icon :icon="['fas', 'plus']" />
                                                                             </button>
                                                                         </template>
                                                                         <span class="text-bold ml-2 text-sm">{{ details.short_desc }}</span>
@@ -615,9 +615,9 @@ updatePrice();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -707,9 +707,9 @@ updatePrice();
                 <div class="card shadow-none">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h4>
+                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBackStep2"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
+                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBackStep2"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>

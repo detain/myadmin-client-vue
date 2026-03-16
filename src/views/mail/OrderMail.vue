@@ -162,7 +162,7 @@ try {
             <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); border: 2px solid #b6b8b9; color: #00334e; border-radius: 8px">
                 <div class="d-flex align-items-center">
                     <div class="mr-4">
-                        <i class="fas fa-envelope fa-3x" style="color: #007bff"></i>
+                        <font-awesome-icon :icon="['fas', 'envelope']" size="3x" style="color: #007bff" />
                     </div>
                     <div>
                         <h4 class="alert-heading mb-2 text-bold" style="color: #007bff">Outgoing Mail Relay Service</h4>
@@ -183,9 +183,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="far fa-envelope-open" aria-hidden="true">&nbsp;</i>Order Mail</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'envelope-open']" />&nbsp;Order Mail</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@ try {
                     <div class="card-footer">
                         <div class="row text-center">
                             <div class="controls col-md-12">
-                                <b><i class="fas fa-info-circle text-info" aria-hidden="true"></i></b>
+                                <b><font-awesome-icon :icon="['fas', 'info-circle']" class="text-info" /></b>
                                 Visit <a href="https://mail.baby" class="text-info underline" target="_blank"><u>https://mail.baby</u></a> for more information.
                             </div>
                         </div>
@@ -228,9 +228,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -266,9 +266,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true">&nbsp;</i>Order Summary</h3>
+                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@ try {
                                     <tr>
                                         <th>
                                             <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[pkg].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost">{{ validateResponse?.originalCost }}</div>
