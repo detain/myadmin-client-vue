@@ -110,7 +110,7 @@ loadLocales();
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>{{ t('account.contactInfo.headsUp') }}&nbsp;</strong><span v-html="t('account.contactInfo.headsUpMessage')"></span></div>
+            <div class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>{{ t('account.contactInfo.headsUp') }}&nbsp;</strong>{{ t('account.contactInfo.headsUpMessage') }}</div>
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
