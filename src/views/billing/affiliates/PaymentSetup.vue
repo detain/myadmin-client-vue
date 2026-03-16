@@ -86,7 +86,7 @@ accountStore.loadOnce();
                                 </div>
                                 <div class="form-group w-100">
                                     <div class="icheck-success d-inline">
-                                        <input id="payment_method_inv" v-model="affiliate_paypal" type="radio" class="form-check-input" name="affiliate_payment_method" value="prepay" />
+                                        <input id="payment_method_inv" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="prepay" />
                                         <label class="more-info font-weight-normal" for="payment_method_inv">Create a PrePay with the amount to automatically use on my invoices.</label>
                                     </div>
                                 </div>

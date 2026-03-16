@@ -50,7 +50,7 @@ const paypalLoaded = ref(false);
 const paypalScriptEl = ref<HTMLScriptElement | null>(null);
 const ppButtons = ref<PayPalButtonsInstance | null>(null);
 const cartResponse = ref<CartResponse | null>(null);
-const showMethods = computed(() => invoices.value.length > 0 && selectedAmount.value > 0.01);
+const showMethods = computed(() => invoices.value.length > 0 && amountAfterPrepay.value > 0.01);
 const contFields = reactive<SimpleStringObj>({
     cc: '',
     cc_exp: '',
@@ -95,7 +95,7 @@ const operators: Record<Operator, (a: any, b: any) => boolean> = {
 const filteredPaymentMethods = computed(() => {
     const result: PaymentMethodsData = {};
     for (const [key, method] of Object.entries(paymentMethodsData.value)) {
-        if (key.startsWith('payssion') && selectedAmount.value < payssionMinAmount.value) {
+        if (key.startsWith('payssion') && amountAfterPrepay.value < payssionMinAmount.value) {
             continue;
         }
         result[key] = method;
@@ -191,33 +191,79 @@ const selectedAmount = computed(() => {
     return total;
 });
 
+// Amount after subtracting prepay balance (what actually needs to be paid)
+const amountAfterPrepay = computed(() => {
+    const hasPrepayInvoice = invrows.value.some((r) => invoices.value.includes(r.service_label) && typeof r.prepay_invoice !== 'undefined');
+    // Don't deduct prepay if paying prepay invoices themselves
+    if (hasPrepayInvoice) return selectedAmount.value;
+    const afterPrepay = selectedAmount.value - prepayAvailable.value;
+    return Math.max(afterPrepay, 0);
+});
+
+function getHdDetails(server: ServerRow): string {
+    const cart = cartResponse.value;
+    if (!cart?.hds || cart.hds.length === 0) return '';
+    const hds = cart.hds;
+    let serverExtra: { hd?: number[] } | null = null;
+    if (server.server_extra) {
+        try {
+            serverExtra = JSON.parse(server.server_extra);
+        } catch (_) {}
+    }
+    const hdDescs: string[] = [];
+    for (const hd of hds) {
+        let count = 0;
+        // Check hd1 match
+        if (hd.id === server.server_dedicated_hd1) {
+            if (!serverExtra?.hd || !serverExtra.hd.includes(hd.id)) {
+                count++;
+            }
+        }
+        // Check hd2 match
+        if (hd.id === server.server_dedicated_hd2) {
+            if (!serverExtra?.hd || !serverExtra.hd.includes(hd.id)) {
+                count++;
+            }
+        }
+        // Check server_extra.hd array
+        if (serverExtra?.hd) {
+            for (const hdId of serverExtra.hd) {
+                if (hdId === hd.id) count++;
+            }
+        }
+        if (count > 0) {
+            hdDescs.push(count > 1 ? `${count} x ${hd.short_desc}` : hd.short_desc);
+        }
+    }
+    return hdDescs.join(', ');
+}
+
 function getServerComment(invrow: InvRow): string {
     if (invrow.invoices_module !== 'servers') return '';
     const cart = cartResponse.value;
     if (!cart) return '';
     const server = cart.serverInfo?.find(s => s.server_id == invrow.invoices_service);
-    if (server) {
+    if (!server) return '';
+    const parts: string[] = [];
+    // Server comment
+    if (server.server_comment) {
         let serverComment = server.server_comment.replace(/<br>/g, '\n');
         const lines = serverComment.split('\n');
         const idx = lines.findIndex(l => l.includes('Customers IP'));
         if (idx >= 0) {
             serverComment = lines.slice(0, idx + 1).join('\n');
         }
-        return serverComment
+        const cleaned = serverComment
             .replace(/Customers IP \d+\.\d+\.\d+\.\d+/, '')
             .replace(/\n\n/g, '<br>')
             .replace(/\n/g, '<br>')
             .replace(/^<br>/, '');
+        if (cleaned) parts.push(cleaned);
     }
-    /* const hdrow = cart.hdrows?.find(hd => hd.hd_id === invrow.hd_id);
-    const serverrow = cart.serverrows?.find(sv => sv.sv_id === invrow.sv_id);
-    if (hdrow && serverrow) {
-        return `Server: ${serverrow.sv_name}, HD: ${hdrow.hd_name}`;
-    }
-    if (serverrow) {
-        return `Server: ${serverrow.sv_name}`;
-    } */
-    return '';
+    // Hard drive details
+    const hdInfo = getHdDetails(server);
+    if (hdInfo) parts.push(`<br>HD: ${hdInfo}`);
+    return parts.join('');
 }
 
 function getBtnOpts() {
@@ -246,15 +292,14 @@ async function createOrderCallback() {
         if (invoices.value.join(',').length > 570) {
             throw new Error('Too many invoices selected for PayPal.  Please choose fewer invoices.');
         }
-        const response = await fetch('/payments/paypal_sdk.php?call=create', {
+        const paypalSdkBaseUrl = baseUrl.replace(/\/apiv2$/, '');
+        const response = await fetch(`${paypalSdkBaseUrl}/payments/paypal_sdk.php?call=create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            // use the "body" param to optionally pass additional order information
-            // like product ids and quantities
             body: JSON.stringify({
-                amount: selectedAmount.value,
+                amount: amountAfterPrepay.value,
                 currency: currency.value,
                 items: paypalItems.value,
                 custom: invoices.value.join(','),
@@ -278,7 +323,8 @@ async function createOrderCallback() {
 
 async function onApproveCallback(data: any, actions: any) {
     try {
-        const response = await fetch(`/payments/paypal_sdk.php?call=capture&order=${data.orderID}`, {
+        const paypalSdkBaseUrl = baseUrl.replace(/\/apiv2$/, '');
+        const response = await fetch(`${paypalSdkBaseUrl}/payments/paypal_sdk.php?call=capture&order=${data.orderID}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -310,9 +356,10 @@ async function onApproveCallback(data: any, actions: any) {
         } else {
             // (3) Successful transaction -> Show confirmation or thank you message
             // Or go to another URL:  actions.redirect('thank_you.html');
-            resultMessage(`Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`);
+            resultMessage(`Transaction ${transaction.status}: ${transaction.id}<br><br>Payment successful! Redirecting...`);
             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-            actions.redirect(`https://${window.location.hostname}/payment_success?invoices=${orderData.purchase_units[0].payments.captures[0].custom_id}`);
+            const customId = orderData.purchase_units[0].payments.captures[0].custom_id;
+            window.location.href = `${window.location.origin}/payment_success?invoices=${customId}`;
         }
     } catch (error) {
         console.error(error);
@@ -402,6 +449,7 @@ function addCardSubmit() {
             .then((response) => {
                 console.log('add cc success', response);
                 accountStore.load();
+                $('#add-card').modal('hide');
             });
     } catch (error: any) {
         console.log('add cc failed', error);
@@ -416,6 +464,8 @@ async function editCardSubmit() {
             })
             .then((response) => {
                 console.log('edit cc success', response);
+                accountStore.load();
+                $('#edit-card').modal('hide');
             });
     } catch (error: any) {
         console.log('edit cc failed', error);
@@ -429,10 +479,17 @@ async function verifyCardSubmit() {
                 cc_ccv2: cc_ccv2.value,
             })
             .then((response) => {
-                console.log('edit cc success', response);
+                console.log('verify cc success', response);
+                accountStore.load();
+                $('#verify-card-1').modal('hide');
+                // After step 1, the card is now charged - open step 2 modal
+                if (data.value.ccs[modalCcIdx.value]) {
+                    data.value.ccs[modalCcIdx.value].verify_charged = true;
+                    $('#verify-card').modal('show');
+                }
             });
     } catch (error: any) {
-        console.log('edit cc failed', error);
+        console.log('verify cc failed', error);
     }
 }
 
@@ -440,13 +497,16 @@ async function verifyAmountSubmit() {
     try {
         fetchWrapper
             .post(`${baseUrl}/billing/creditcards/${modalCcIdx.value}/verify`, {
-                cc_exp: contFields.cc_exp,
+                cc_amount1: cc_amount1.value,
+                cc_amount2: cc_amount2.value,
             })
             .then((response) => {
-                console.log('edit cc success', response);
+                console.log('verify amounts success', response);
+                accountStore.load();
+                $('#verify-card').modal('hide');
             });
     } catch (error: any) {
-        console.log('edit cc failed', error);
+        console.log('verify amounts failed', error);
     }
 }
 
@@ -660,7 +720,16 @@ function onExpDateInput(e: any) {
     formatExpDate(e);
 }
 
-function submitForm(value: any) {
+async function submitForm(value: any) {
+    // If currency changed, persist it to the account first
+    if (currency.value && data.value?.currency !== currency.value) {
+        try {
+            await fetchWrapper.post(`${baseUrl}/account`, { currency: currency.value });
+            data.value.currency = currency.value;
+        } catch (e: any) {
+            console.log('currency update failed', e);
+        }
+    }
     loadCartData();
 }
 
@@ -697,6 +766,9 @@ async function loadCartData() {
         let query = '';
         if (invoiceDays.value != 0) {
             params.set('invoice_days', invoiceDays.value.toString());
+        }
+        if (currency.value && currency.value !== 'USD') {
+            params.set('currency', currency.value);
         }
         if (params.size > 0) {
             query = `?${params.toString()}`;
@@ -768,6 +840,13 @@ watch(invoices, (newVal, oldVal) => {
 watch([() => data.value?.country, currency], ([country]) => {
     if (country) {
         loadPayPalSdk();
+    }
+});
+
+// Re-render PayPal buttons when selected invoices change (amount changes)
+watch(selectedAmount, () => {
+    if (paypalLoaded.value && paymentMethod.value === 'paypal') {
+        initializePayPalButtons();
     }
 });
 
@@ -938,7 +1017,7 @@ pageInit();
                                 <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
                                 <span v-show="showMethods" id="payments-section">
                                     <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
-                                        <a v-if="methodData.text === 'Select Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                        <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                         <template v-else-if="methodData.text == 'PayPal'">
                                             <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                             <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">
@@ -961,9 +1040,10 @@ pageInit();
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">Select PayPal Payment Type</b>
                                 </div>
-                                <div id="" class="col-md-12 d-flex mt-3">
+                                <div class="col-md-12 d-flex mt-3">
                                     <div id="paypal-button-container" class="paypal-button-container" style="width: 300px; float: left"></div>
                                 </div>
+                                <div id="result-message" class="col-md-12 mt-2 text-danger"></div>
                             </div>
                         </div>
                         <div v-show="paymentMethod == 'cc'" id="select_card">
@@ -981,7 +1061,7 @@ pageInit();
                                             <div class="ribbon bg-success text-xs">Primary</div>
                                         </div>
                                         <form id="paymentform" :action="'/pay/cc/' + invoices.join(',')" method="post">
-                                            <div id="selected_services"></div>
+                                            <input v-for="inv in invoices" :key="inv" type="hidden" name="inv_arr[]" :value="inv" />
                                             <input type="hidden" name="balance" value="1" />
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
@@ -1018,6 +1098,16 @@ pageInit();
                                 <div v-else class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                     <h5 class="text-bold text-md text-capitalize">You Have 0 Credit Cards</h5>
                                     <span class="text-red">To Add a Credit Card, Please Click on the Add New Card Button.</span>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="card shadow-hover shadow-sm">
+                                        <div class="card-body">
+                                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                                <input id="ccAutoToggle" :checked="ccAuto === 1" type="checkbox" class="custom-control-input" @change="updatePaymentMethod('', true)" />
+                                                <label class="custom-control-label" for="ccAutoToggle">Automatically Charge Credit Card</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1096,7 +1186,7 @@ pageInit();
                             <tr>
                                 <td class="text-center" colspan="2">
                                     <div><strong>To Be Paid</strong></div>
-                                    <div class="text-success text-lg">{{ formattedCost(selectedAmount) }}</div>
+                                    <div class="text-success text-lg">{{ formattedCost(amountAfterPrepay) }}</div>
                                 </td>
                             </tr>
                         </tbody>
