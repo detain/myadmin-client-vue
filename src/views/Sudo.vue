@@ -9,7 +9,6 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const sessionId = route.params.sessionid as string;
 const authStore = useAuthStore();
-
 authStore.sudo(sessionId);
 </script>
 
