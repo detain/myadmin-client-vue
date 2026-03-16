@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Settings tal-Kont"
+    },
+    "changePassword": {
+        "title": "Ibdel il-Password",
+        "cardTitle": "Aġġorna l-Password",
+        "currentPassword": "Password Attwali",
+        "newPassword": "Password Ġdida",
+        "confirmPassword": "Ikkonferma l-Password",
+        "updatePassword": "Aġġorna l-Password"
+    },
+    "changeUsername": {
+        "title": "Ibdel l-Username",
+        "disabled": "Il-bidliet tal-username ġew diżabilitati temporanjament.",
+        "currentUsername": "Username Attwali",
+        "newDesiredUsername": "Username Ġdid Mixtieq",
+        "confirmationCode": "Kodiċi ta' Konferma",
+        "pleaseWait": "Jekk jogħġbok stenna!",
+        "gotError": "Seħħ żball {error}"
+    },
+    "contactInfo": {
+        "title": "Informazzjoni ta' Kuntatt",
+        "cardTitle": "Aġġorna l-Informazzjoni ta' Kuntatt",
+        "headsUp": "Attenzjoni!",
+        "headsUpMessage": "Għalkemm din l-informazzjoni hija fakultattiva, li tagħti informazzjoni (preċiża) tgħin biex tissaħħaħ l-interazzjonijiet tagħna u tnaqqas is-Skoru tar-Riskju % tiegħek billi tagħtik aċċess aktar malajr u aktar konvenjenti għal partijiet mis-sit.",
+        "riskScore": "Skoru tar-Riskju %",
+        "personalInformation": "Informazzjoni Personali",
+        "name": "Isem",
+        "namePlaceholder": "Joe Cool",
+        "company": "Kumpanija",
+        "gstinTaxId": "ID tat-Taxxa GSTIN",
+        "gstinPlaceholder": "Numru tal-Identifikazzjoni tat-Taxxa fuq il-Oġġetti u s-Servizzi",
+        "addressLine1": "Linja tal-Indirizz 1",
+        "addressLine2": "Linja tal-Indirizz 2",
+        "cityState": "Belt, Stat",
+        "city": "Belt",
+        "state": "Stat",
+        "country": "Pajjiż",
+        "zipcode": "Kodiċi Postali",
+        "phoneNo": "Numru tat-Telefon",
+        "phoneNumber": "Numru tat-Telefon",
+        "language": "Lingwa",
+        "auto": "Awtomatiku",
+        "currency": "Munita",
+        "timeZone": "Żona tal-Ħin",
+        "otherSettings": "Settings Oħra",
+        "disablePasswordResets": "Diżabilita (Insejt il-Password) l-Impostazzjonijiet mill-Ġdid tal-Password.",
+        "disableInvoiceReminders": "Diżabilita n-Notifiki tal-Email għat-Tifkira tal-Fattura.",
+        "disableServerInvoiceReminders": "Diżabilita n-Notifiki tal-Email għat-Tifkira tal-Fattura tas-Server.",
+        "disableReinstall": "Diżabilita r-Riinstallazzjoni.",
+        "alternateEmailInvoices": "Email Alternattiv għall-Fatturi",
+        "alternateEmailInvoicesPlaceholder": "Email alternattiv għall-invio tal-fatturi",
+        "alternateEmailAbuse": "Email Alternattiv għar-Rapporti ta' Abbuż",
+        "updateInfo": "Aġġorna l-Informazzjoni"
+    }
+}

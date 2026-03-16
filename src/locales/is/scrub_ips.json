@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Listi yfir Scrub IP þjónustur",
+        "orderTitle": "Panta Scrub IPs"
+    },
+    "view": {
+        "title": "Skoða Scrub IPs",
+        "currentIp": "Núverandi IP",
+        "ipAddress": "IP-tala",
+        "ipFromService": "IP frá þjónustu"
+    },
+    "filters": {
+        "title": "Síur",
+        "createNew": "Búa til nýtt",
+        "createNewFilter": "Búa til nýja síu",
+        "filterType": "Tegund síu",
+        "selectFilterType": "Veldu tegund síu",
+        "ipAddress": "IP-tala",
+        "portNo": "Gáttarnúmer",
+        "filter": "Sía",
+        "destinationIp": "Marks-IP",
+        "destinationPort": "Marksgátt",
+        "noFiltersFound": "Engar síur fundust!",
+        "deleteFilterConfirm": "Ertu viss um að þú viljir eyða þessari síu?",
+        "unableToCreateFilter": "Get ekki búið til síu eins og er.",
+        "unableToDeleteFilter": "Get ekki eytt síu eins og er."
+    },
+    "firewallRules": {
+        "title": "Eldveggireglur",
+        "createNew": "Búa til nýtt",
+        "createNewFirewall": "Búa til nýja eldveggisreglu",
+        "protocol": "Samskiptaregla",
+        "destinationIp": "Marks-IP",
+        "destinationPort": "Marksgátt",
+        "sourceIp": "Uppruna-IP",
+        "sourcePort": "Upprunagátt",
+        "xdpAction": "XDP-aðgerð",
+        "ipRequired": "IP-tala er nauðsynleg",
+        "block": "Loka",
+        "whitelist": "Hvítlisti",
+        "noRulesFound": "Engar reglur fundust!",
+        "deleteRuleConfirm": "Ertu viss um að þú viljir eyða þessari reglu?",
+        "unableToCreateRule": "Get ekki búið til eldveggisreglu eins og er.",
+        "unableToDeleteRule": "Get ekki eytt eldveggisreglu eins og er."
+    },
+    "geoFirewallRules": {
+        "title": "Geo eldveggireglur",
+        "createNew": "Búa til nýtt",
+        "createNewGeoRule": "Búa til nýja geo eldveggisreglu",
+        "destinationIp": "Marks-IP",
+        "destinationPort": "Marksgátt",
+        "sourceCountry": "Upprunaland",
+        "sourceAsn": "Uppruna ASN",
+        "xdpAction": "XDP-aðgerð",
+        "portNo": "Gáttarnúmer",
+        "selectCountry": "Veldu land",
+        "asn": "ASN",
+        "block": "Loka",
+        "whitelist": "Hvítlisti",
+        "noRulesFound": "Engar reglur fundust!",
+        "deleteGeoRuleConfirm": "Ertu viss um að þú viljir eyða þessari geo-reglu?",
+        "unableToCreateRule": "Get ekki búið til eldveggisreglu eins og er.",
+        "unableToDeleteRule": "Get ekki eytt geo eldveggisreglu eins og er."
+    }
+}

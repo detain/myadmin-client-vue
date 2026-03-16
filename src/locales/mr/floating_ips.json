@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "फ्लोटिंग IP सेवांची यादी",
+        "orderTitle": "फ्लोटिंग IP नोंदणी ऑर्डर करा"
+    },
+    "view": {
+        "title": "फ्लोटिंग IP {id} पहा",
+        "package": "पॅकेज",
+        "nextInvoiceDate": "पुढील बीजक तारीख:",
+        "billing": "बिलिंग",
+        "billed": "बिल केले:",
+        "statusIs": "स्थिती आहे:",
+        "floatingIp": "फ्लोटिंग IP",
+        "links": "दुवे",
+        "welcomeEmailConfirm": "तुम्हाला स्वागत ईमेल पुन्हा पाठवायचा आहे का?",
+        "emailSent": "ईमेल पाठवला",
+        "emailSentMessage": "स्वागत ईमेल पुन्हा पाठवला गेला आहे. तुमचा इनबॉक्स तपासा."
+    },
+    "order": {
+        "title": "फ्लोटिंग IP ऑर्डर करा"
+    },
+    "changeIp": {
+        "title": "लक्ष्य IP बदला"
+    }
+}

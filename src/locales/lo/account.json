@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "ການຕັ້ງຄ່າບັນຊີ"
+    },
+    "changePassword": {
+        "title": "ປ່ຽນລະຫັດຜ່ານ",
+        "cardTitle": "ອັບເດດລະຫັດຜ່ານ",
+        "currentPassword": "ລະຫັດຜ່ານປັດຈຸບັນ",
+        "newPassword": "ລະຫັດຜ່ານໃໝ່",
+        "confirmPassword": "ຢືນຢັນລະຫັດຜ່ານ",
+        "updatePassword": "ອັບເດດລະຫັດຜ່ານ"
+    },
+    "changeUsername": {
+        "title": "ປ່ຽນຊື່ຜູ້ໃຊ້",
+        "disabled": "ການປ່ຽນຊື່ຜູ້ໃຊ້ຖືກປິດຊົ່ວຄາວ.",
+        "currentUsername": "ຊື່ຜູ້ໃຊ້ປັດຈຸບັນ",
+        "newDesiredUsername": "ຊື່ຜູ້ໃຊ້ໃໝ່ທີ່ຕ້ອງການ",
+        "confirmationCode": "ລະຫັດຢືນຢັນ",
+        "pleaseWait": "ກະລຸນາລໍຖ້າ!",
+        "gotError": "ເກີດຄວາມຜິດພາດ {error}"
+    },
+    "contactInfo": {
+        "title": "ຂໍ້ມູນຕິດຕໍ່",
+        "cardTitle": "ອັບເດດຂໍ້ມູນຕິດຕໍ່",
+        "headsUp": "ໂປດໃຫ້ຄວາມສົນໃຈ!",
+        "headsUpMessage": "ເຖິງວ່າຂໍ້ມູນນີ້ຈະເປັນທາງເລືອກ, ການໃຫ້ຂໍ້ມູນທີ່ຖືກຕ້ອງຈະຊ່ວຍໃຫ້ການຕິດຕໍ່ສື່ສານຂອງເຮົາດີຂຶ້ນ ແລະ ຫຼຸດຄະແນນຄວາມສ່ຽງ % ຂອງທ່ານ ໃຫ້ທ່ານເຂົ້າເຖິງສ່ວນຕ່າງໆຂອງເວັບໄຊໄດ້ໄວ ແລະ ສະດວກກວ່າ.",
+        "riskScore": "ຄະແນນຄວາມສ່ຽງ %",
+        "personalInformation": "ຂໍ້ມູນສ່ວນຕົວ",
+        "name": "ຊື່",
+        "namePlaceholder": "ໂຈ ຄູລ",
+        "company": "ບໍລິສັດ",
+        "gstinTaxId": "ລະຫັດພາສີ GSTIN",
+        "gstinPlaceholder": "ໝາຍເລກປະຈຳຕົວຜູ້ເສຍພາສີສິນຄ້າ ແລະ ບໍລິການ",
+        "addressLine1": "ທີ່ຢູ່ ແຖວທີ 1",
+        "addressLine2": "ທີ່ຢູ່ ແຖວທີ 2",
+        "cityState": "ເມືອງ, ລັດ",
+        "city": "ເມືອງ",
+        "state": "ລັດ",
+        "country": "ປະເທດ",
+        "zipcode": "ລະຫັດໄປສະນີ",
+        "phoneNo": "ໝາຍເລກໂທລະສັບ",
+        "phoneNumber": "ໝາຍເລກໂທລະສັບ",
+        "language": "ພາສາ",
+        "auto": "ອັດຕະໂນມັດ",
+        "currency": "ສະກຸນເງິນ",
+        "timeZone": "ເຂດເວລາ",
+        "otherSettings": "ການຕັ້ງຄ່າອື່ນໆ",
+        "disablePasswordResets": "ປິດການໃຊ້ງານ (ລືມລະຫັດຜ່ານ) ການຕັ້ງລະຫັດຜ່ານໃໝ່.",
+        "disableInvoiceReminders": "ປິດການໃຊ້ງານການແຈ້ງເຕືອນທາງອີເມລ໌ກ່ຽວກັບໃບແຈ້ງໜີ້.",
+        "disableServerInvoiceReminders": "ປິດການໃຊ້ງານການແຈ້ງເຕືອນທາງອີເມລ໌ກ່ຽວກັບໃບແຈ້ງໜີ້ເຊີຟເວີ.",
+        "disableReinstall": "ປິດການໃຊ້ງານການຕິດຕັ້ງໃໝ່.",
+        "alternateEmailInvoices": "ອີເມລ໌ສຳຮອງສຳລັບໃບແຈ້ງໜີ້",
+        "alternateEmailInvoicesPlaceholder": "ອີເມລ໌ທາງເລືອກສຳລັບສົ່ງໃບແຈ້ງໜີ້",
+        "alternateEmailAbuse": "ອີເມລ໌ສຳຮອງສຳລັບລາຍງານການລ່ວງລະເມີດ",
+        "updateInfo": "ອັບເດດຂໍ້ມູນ"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lista de Armazenamento / Backup",
+        "orderTitle": "Solicitar Registros de Backup"
+    },
+    "view": {
+        "title": "Ver Backup {id}",
+        "package": "Pacote",
+        "nextInvoiceDate": "Data da Próxima Fatura:",
+        "billing": "Faturamento",
+        "billed": "faturado:",
+        "statusIs": "Status é:",
+        "hostServer": "Servidor Host",
+        "links": "Links",
+        "welcomeEmailConfirm": "Tem certeza de que deseja reenviar o e-mail de boas-vindas?",
+        "emailSent": "E-mail Enviado",
+        "emailSentMessage": "O e-mail de boas-vindas foi reenviado. Verifique sua caixa de entrada."
+    },
+    "order": {
+        "title": "Solicitar Armazenamento"
+    }
+}

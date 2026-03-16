@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista de Hospedagem Web",
+        "orderTitle": "Solicitar Registros de Website"
+    },
+    "view": {
+        "title": "Ver Website {id}",
+        "package": "Pacote",
+        "nextInvoiceDate": "Data da Próxima Fatura:",
+        "billing": "Faturamento",
+        "billed": "faturado",
+        "billingStatusIs": "Status de Faturamento é:",
+        "hostInfo": "Informações do Host",
+        "username": "Nome de Usuário:",
+        "ip": "IP:",
+        "server": "Servidor:",
+        "notSetYet": "Ainda não configurado",
+        "login": "Entrar",
+        "types": "Tipos:",
+        "linksLabel": "Links:",
+        "manualLogin": "Login Manual",
+        "automaticLogin": "Login Automático",
+        "clickHere": "Clique Aqui",
+        "defaultNameservers": "Servidores de Nome Padrão",
+        "nameservers": "Servidores de Nome:",
+        "externalLinks": "Links Externos",
+        "names": "Nomes:",
+        "websitePreview": "Pré-visualização do Website",
+        "links": "Links",
+        "welcomeEmailConfirm": "Tem certeza de que deseja reenviar o e-mail de boas-vindas?",
+        "emailSent": "E-mail Enviado",
+        "emailSentMessage": "O e-mail de boas-vindas foi reenviado. Verifique sua caixa de entrada."
+    },
+    "buyIp": {
+        "title": "Comprar Complemento de IP Adicional",
+        "existingAddonIps": "IPs de Complemento Existentes",
+        "additionalIp": "IP Adicional",
+        "monthlyCost": "Custo Mensal ({symbol})",
+        "costDescription": "Custo ({symbol}) a cada mês conforme seu website é faturado",
+        "confirmPurchase": "Confirmar Compra",
+        "confirmMessage": "Custo de IP adicional: {symbol}{cost}/mês. Tem certeza de que deseja solicitar um IP adicional?",
+        "placeOrder": "Fazer Pedido",
+        "orderPlaced": "Pedido Realizado"
+    },
+    "reverseDns": {
+        "title": "DNS Reverso",
+        "updateReverseDns": "Atualizar DNS Reverso"
+    },
+    "downloadBackups": {
+        "title": "Baixar Backups",
+        "backup": "Backup",
+        "size": "Tamanho",
+        "options": "Opções"
+    },
+    "migration": {
+        "title": "Migrar Seu Website",
+        "currentWebHostInfo": "Informações do Host Web Atual",
+        "customerPortalUrl": "URL do Portal do Cliente",
+        "portalExample": "Por exemplo: sso.godaddy.com",
+        "registeredUsername": "Nome de Usuário / E-mail / ID Registrado",
+        "password": "Senha",
+        "controlPanelUrl": "URL do Painel de Controle",
+        "controlPanelExample": "Por exemplo: seudominio.com/cpanel",
+        "ftpUsername": "Nome de Usuário FTP / Painel de Controle",
+        "ftpPassword": "Senha FTP / Painel de Controle",
+        "holdingPageQuestion": "Se o site estiver ativo/com muito tráfego, podemos definir uma página temporária durante a migração?",
+        "specialRequirementsQuestion": "Este site tem requisitos especiais como Versão do PHP / Módulos?",
+        "domainRegistryInfo": "Informações do Registro de Domínio",
+        "transferDomainQuestion": "Você também deseja que ajudemos a transferir o registro do nome de domínio?",
+        "updateNameserversQuestion": "Deseja que atualizemos os servidores de nome assim que terminarmos a migração de dados?",
+        "domainRegistryPortal": "Portal do Cliente do Registro de Domínio",
+        "importantNotes": "Notas Importantes",
+        "note1": "Preencher este formulário abrirá um novo ticket para nosso departamento de suporte iniciar sua migração.",
+        "note2": "Por favor, seja o mais completo e preciso possível para evitar atrasos.",
+        "note3": "Uma migração típica é concluída em 48 a 72 horas. Às vezes mais tempo se a quantidade de dados a copiar for grande.",
+        "note4": "A conta de hospedagem antiga precisa estar online e acessível enquanto realizamos a migração, caso contrário podemos ter dificuldades.",
+        "note5": "Por favor, não faça atualizações no seu site enquanto realizamos a migração, caso contrário esses dados podem não ser copiados para a nova hospedagem."
+    },
+    "order": {
+        "title": "Solicitar Website"
+    }
+}

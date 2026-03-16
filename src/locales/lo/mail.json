@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "ລາຍການບໍລິການອີເມລ໌",
+        "orderTitle": "ສັ່ງຊື້ການລົງທະບຽນອີເມລ໌"
+    },
+    "view": {
+        "title": "ເບິ່ງອີເມລ໌ {id}",
+        "package": "ແພັກເກັດ",
+        "nextInvoiceDate": "ວັນທີໃບແຈ້ງໜີ້ຕໍ່ໄປ:",
+        "billing": "ການເກັບເງິນ",
+        "billed": "ເກັບເງິນ:",
+        "statusIs": "ສະຖານະຄື:",
+        "mailApi": "Mail API",
+        "usageCount": "ຈຳນວນການໃຊ້:",
+        "links": "ລິງ",
+        "connectionInfo": "ຂໍ້ມູນການເຊື່ອມຕໍ່",
+        "welcomeEmailConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບຄືນ?",
+        "emailSent": "ສົ່ງອີເມລ໌ແລ້ວ",
+        "emailSentMessage": "ສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບໃໝ່ແລ້ວ. ກວດກາ inbox ຂອງທ່ານ."
+    },
+    "order": {
+        "title": "ສັ່ງຊື້ Mail"
+    },
+    "alerts": {
+        "title": "ການແຈ້ງເຕືອນ",
+        "addAlert": "ເພີ່ມການແຈ້ງເຕືອນ",
+        "editAlert": "ແກ້ໄຂການແຈ້ງເຕືອນ",
+        "noAlerts": "ບໍ່ພົບການແຈ້ງເຕືອນ"
+    },
+    "delist": {
+        "title": "ລຶບລາຍຊື່",
+        "blockedEmails": "ອີເມລ໌ທີ່ຖືກບລັອກ"
+    },
+    "denyRules": {
+        "title": "ກົດລະບຽບການປະຕິເສດ",
+        "addRule": "ເພີ່ມກົດລະບຽບ",
+        "noRules": "ບໍ່ພົບກົດລະບຽບການປະຕິເສດ"
+    },
+    "logs": {
+        "title": "ບັນທຶກ",
+        "searchLogs": "ຄົ້ນຫາບັນທຶກ"
+    },
+    "stats": {
+        "title": "ສະຖິຕິ"
+    },
+    "deliverability": {
+        "title": "ຄວາມສາມາດໃນການສົ່ງ"
+    }
+}

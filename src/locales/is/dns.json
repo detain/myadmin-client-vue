@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS-stjóri",
+        "addDomain": "Bæta við léni",
+        "deleteDomain": "Eyða léni",
+        "domainName": "Lénsheiti",
+        "dnsServers": "DNS-þjónar",
+        "confirmDelete": "Ertu viss um að þú viljir eyða þessu léni?",
+        "noDomains": "Engin lén fundust"
+    },
+    "editor": {
+        "title": "DNS-ritill",
+        "addRecord": "Bæta við færslu",
+        "deleteRecord": "Eyða færslu",
+        "editRecord": "Breyta færslu",
+        "recordType": "Tegund færslu",
+        "hostname": "Hýslingarheiti",
+        "address": "Heimilisfang",
+        "distance": "Fjarlægð",
+        "weight": "Þyngd",
+        "port": "Gátt",
+        "ttl": "TTL",
+        "actions": "Aðgerðir",
+        "confirmDelete": "Ertu viss um að þú viljir eyða þessari færslu?"
+    }
+}

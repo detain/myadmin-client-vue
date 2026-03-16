@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Ziurtagirien Zerrenda",
+        "orderTitle": "Eskatu SSL Erregistroak"
+    },
+    "view": {
+        "title": "Ikusi SSL {id}",
+        "package": "Paketea",
+        "nextInvoiceDate": "Hurrengo Faktura Data:",
+        "billing": "Fakturaketa",
+        "billed": "fakturatua:",
+        "statusIs": "Egoera da:",
+        "orderInfo": "Eskaera Informazioa",
+        "certificateInfo": "Ziurtagiri Informazioa",
+        "links": "Estekak",
+        "welcomeEmailConfirm": "Ziur al zaude ongi etorri mezu elektronikoa berriro bidali nahi duzula?",
+        "emailSent": "Mezu Elektronikoa Bidali Da",
+        "emailSentMessage": "Ongi etorri mezu elektronikoa berriro bidali da. Egiaztatu zure sarrerako ontzia."
+    },
+    "order": {
+        "title": "Eskatu SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Aldatu Onartze Posta Elektronikoa",
+        "selectApproverEmail": "Hautatu Onartze Posta Elektronikoa"
+    }
+}

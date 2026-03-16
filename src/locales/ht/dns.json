@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Jerantè DNS",
+        "addDomain": "Ajoute Domèn",
+        "deleteDomain": "Efase Domèn",
+        "domainName": "Non Domèn",
+        "dnsServers": "Sèvè DNS",
+        "confirmDelete": "Èske ou sèten ou vle efase domèn sa a?",
+        "noDomains": "Pa jwenn okenn domèn"
+    },
+    "editor": {
+        "title": "Editè DNS",
+        "addRecord": "Ajoute Dosye",
+        "deleteRecord": "Efase Dosye",
+        "editRecord": "Modifye Dosye",
+        "recordType": "Tip Dosye",
+        "hostname": "Non Òdinnatè",
+        "address": "Adrès",
+        "distance": "Distans",
+        "weight": "Pwa",
+        "port": "Pò",
+        "ttl": "TTL",
+        "actions": "Aksyon",
+        "confirmDelete": "Èske ou sèten ou vle efase dosye sa a?"
+    }
+}

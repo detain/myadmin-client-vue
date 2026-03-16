@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Web Hosting Zerrenda",
+        "orderTitle": "Eskatu Webgune Erregistroak"
+    },
+    "view": {
+        "title": "Ikusi Webgunea {id}",
+        "package": "Paketea",
+        "nextInvoiceDate": "Hurrengo Faktura Data:",
+        "billing": "Fakturaketa",
+        "billed": "fakturatua",
+        "billingStatusIs": "Fakturaketa Egoera da:",
+        "hostInfo": "Ostalari Informazioa",
+        "username": "Erabiltzaile-izena:",
+        "ip": "IPa:",
+        "server": "Zerbitzaria:",
+        "notSetYet": "Oraindik ez da ezarri",
+        "login": "Saioa Hasi",
+        "types": "Motak:",
+        "linksLabel": "Estekak:",
+        "manualLogin": "Eskuzko Saioa",
+        "automaticLogin": "Saio Automatikoa",
+        "clickHere": "Egin Klik Hemen",
+        "defaultNameservers": "Lehenetsitako Izen Zerbitzariak",
+        "nameservers": "Izen Zerbitzariak:",
+        "externalLinks": "Kanpoko Estekak",
+        "names": "Izenak:",
+        "websitePreview": "Webgunearen Aurrebista",
+        "links": "Estekak",
+        "welcomeEmailConfirm": "Ziur al zaude ongi etorri mezu elektronikoa berriro bidali nahi duzula?",
+        "emailSent": "Mezu Elektronikoa Bidali Da",
+        "emailSentMessage": "Ongi etorri mezu elektronikoa berriro bidali da. Egiaztatu zure sarrerako ontzia."
+    },
+    "buyIp": {
+        "title": "Erosi IP Gehigarri Osagarria",
+        "existingAddonIps": "Dauden Osagarri IPak",
+        "additionalIp": "IP Gehigarria",
+        "monthlyCost": "Hileko Kostua ({symbol})",
+        "costDescription": "Kostua ({symbol}) zure webgunea fakturatzen den hilero",
+        "confirmPurchase": "Berretsi Erosketa",
+        "confirmMessage": "IP gehigarriaren kostua: {symbol}{cost}/hilabete. Ziur al zaude IP gehigarri bat eskatu nahi duzula?",
+        "placeOrder": "Eskatu",
+        "orderPlaced": "Eskaera Eginda"
+    },
+    "reverseDns": {
+        "title": "DNS Alderantzizko",
+        "updateReverseDns": "Eguneratu DNS Alderantzizko"
+    },
+    "downloadBackups": {
+        "title": "Deskargatu Babeskopiak",
+        "backup": "Babeskopia",
+        "size": "Tamaina",
+        "options": "Aukerak"
+    },
+    "migration": {
+        "title": "Migratu Zure Webgunea",
+        "currentWebHostInfo": "Uneko Web Ostalariari Informazioa",
+        "customerPortalUrl": "Bezeroen Atariaren URLa",
+        "portalExample": "Adibidea: sso.godaddy.com",
+        "registeredUsername": "Erregistratutako Erabiltzaile-izena / Posta Elektronikoa / IDa",
+        "password": "Pasahitza",
+        "controlPanelUrl": "Kontrol Panelaren URLa",
+        "controlPanelExample": "Adibidea: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Kontrol Panel Erabiltzaile-izena",
+        "ftpPassword": "FTP / Kontrol Panel Pasahitza",
+        "holdingPageQuestion": "Gunea bizirik/trafikoa handia bada, migrazioan zehar itxarote orri bat ezar dezakegu?",
+        "specialRequirementsQuestion": "Gune honek PHP Bertsioa / Moduluak bezalako eskakizun bereziak al ditu?",
+        "domainRegistryInfo": "Domeinu Erregistro Informazioa",
+        "transferDomainQuestion": "Domeinu izenaren erregistroa transferitzen laguntzen lagun diezazukegun nahi al duzu?",
+        "updateNameserversQuestion": "Datu migrazioa amaitzen dugunean izen zerbitzariak eguneratzea nahi al duzu?",
+        "domainRegistryPortal": "Domeinu Erregistro Bezeroen Ataria",
+        "importantNotes": "Ohar Garrantzitsuak",
+        "note1": "Inprimaki hau betetzeak gure laguntza sailari zure migrazioa hasteko txartel berri bat irekiko du.",
+        "note2": "Mesedez izan osoa eta zehatza ahal den heinean atzerapenak ekiditeko.",
+        "note3": "Ohiko migrazio bat 48 eta 72 orduren buruan osatzen da. Batzuetan gehiago kopiatutako datu kantitatea handia bada.",
+        "note4": "Migrazioaren bitartean zaharreko hosting kontua sarean eta eskuragarri egon behar da, bestela zailtasunak aurkitu ditzakegu.",
+        "note5": "Mesedez ez egin eguneratzerik zure gunean migrazioa egiten ari garen bitartean, bestela datu horiek agian ez dira kopiatuko hosting berrira."
+    },
+    "order": {
+        "title": "Eskatu Webgunea"
+    }
+}

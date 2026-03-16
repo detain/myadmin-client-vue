@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Configurações da Conta"
+    },
+    "changePassword": {
+        "title": "Alterar Senha",
+        "cardTitle": "Atualizar Senha",
+        "currentPassword": "Senha Atual",
+        "newPassword": "Nova Senha",
+        "confirmPassword": "Confirmar Senha",
+        "updatePassword": "Atualizar Senha"
+    },
+    "changeUsername": {
+        "title": "Alterar Nome de Usuário",
+        "disabled": "Alterações de nome de usuário foram temporariamente desativadas.",
+        "currentUsername": "Nome de Usuário Atual",
+        "newDesiredUsername": "Novo Nome de Usuário Desejado",
+        "confirmationCode": "Código de Confirmação",
+        "pleaseWait": "Por favor, aguarde!",
+        "gotError": "Erro obtido {error}"
+    },
+    "contactInfo": {
+        "title": "Informações de Contato",
+        "cardTitle": "Atualizar Informações de Contato",
+        "headsUp": "Atenção!",
+        "headsUpMessage": "Embora essas informações sejam opcionais, fornecer informações (precisas) ajudará a enriquecer nossas interações e reduzir seu Percentual de Risco, dando acesso mais rápido e conveniente a partes do site (como não precisar autenticar um cartão de crédito).",
+        "riskScore": "Percentual de Risco",
+        "personalInformation": "Informações Pessoais",
+        "name": "Nome",
+        "namePlaceholder": "José Legal",
+        "company": "Empresa",
+        "gstinTaxId": "ID Fiscal GSTIN",
+        "gstinPlaceholder": "Número de Identificação do Contribuinte de Bens e Serviços",
+        "addressLine1": "Endereço Linha 1",
+        "addressLine2": "Endereço Linha 2",
+        "cityState": "Cidade, Estado",
+        "city": "Cidade",
+        "state": "Estado",
+        "country": "País",
+        "zipcode": "CEP",
+        "phoneNo": "Nº de Telefone",
+        "phoneNumber": "Número de Telefone",
+        "language": "Idioma",
+        "auto": "Automático",
+        "currency": "Moeda",
+        "timeZone": "Fuso Horário",
+        "otherSettings": "Outras Configurações",
+        "disablePasswordResets": "Desativar Redefinições de Senha (Esqueceu sua Senha).",
+        "disableInvoiceReminders": "Desativar Notificações de Lembrete de Fatura por E-mail.",
+        "disableServerInvoiceReminders": "Desativar Notificações de Lembrete de Fatura do Servidor por E-mail.",
+        "disableReinstall": "Desativar Reinstalação.",
+        "alternateEmailInvoices": "E-mail Alternativo para Faturas",
+        "alternateEmailInvoicesPlaceholder": "E-mail alternativo para envio de faturas",
+        "alternateEmailAbuse": "E-mail Alternativo para Relatórios de Abuso",
+        "updateInfo": "Atualizar Informações"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Erabiltzaileak",
+    "addUser": "Gehitu Erabiltzailea",
+    "editUser": "Editatu Erabiltzailea",
+    "firstName": "Izena",
+    "lastName": "Abizena",
+    "username": "Erabiltzaile-izena",
+    "password": "Pasahitza",
+    "keepSamePassword": "Utzi hutsik pasahitz bera mantentzeko",
+    "errorLoading": "Errorea erabiltzaileak kargatzerakoan:",
+    "errorLoadingUser": "Errorea erabiltzailea kargatzerakoan:"
+}

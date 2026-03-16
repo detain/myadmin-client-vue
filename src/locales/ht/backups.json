@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lis Estokaj / Bakòp",
+        "orderTitle": "Kòmande Anrejistreman Bakòp"
+    },
+    "view": {
+        "title": "Wè Bakòp {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture:",
+        "statusIs": "Estati se:",
+        "hostServer": "Sèvè Òt",
+        "links": "Lyen",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "order": {
+        "title": "Kòmande Estokaj"
+    }
+}

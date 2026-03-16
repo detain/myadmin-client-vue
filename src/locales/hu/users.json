@@ -1,0 +1,12 @@
+{
+    "title": "Felhasználók",
+    "addUser": "Felhasználó hozzáadása",
+    "editUser": "Felhasználó szerkesztése",
+    "firstName": "Keresztnév",
+    "lastName": "Vezetéknév",
+    "username": "Felhasználónév",
+    "password": "Jelszó",
+    "keepSamePassword": "Hagyja üresen, ha meg szeretné tartani a jelenlegi jelszót",
+    "errorLoading": "Hiba a felhasználók betöltésekor:",
+    "errorLoadingUser": "Hiba a felhasználó betöltésekor:"
+}

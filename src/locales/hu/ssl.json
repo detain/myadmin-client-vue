@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL tanúsítványok listája",
+        "orderTitle": "SSL regisztrációk rendelése"
+    },
+    "view": {
+        "title": "SSL megtekintése: {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva:",
+        "statusIs": "Állapot:",
+        "orderInfo": "Rendelési adatok",
+        "certificateInfo": "Tanúsítvány adatok",
+        "links": "Linkek",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "order": {
+        "title": "SSL rendelése"
+    },
+    "changeApproverEmail": {
+        "title": "Jóváhagyói e-mail módosítása",
+        "selectApproverEmail": "Jóváhagyói e-mail kiválasztása"
+    }
+}

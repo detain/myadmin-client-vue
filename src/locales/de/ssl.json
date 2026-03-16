@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Liste der SSL-Zertifikate",
+        "orderTitle": "SSL-Registrierungen bestellen"
+    },
+    "view": {
+        "title": "SSL {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet:",
+        "statusIs": "Status:",
+        "orderInfo": "Bestellinformationen",
+        "certificateInfo": "Zertifikatsinformationen",
+        "links": "Links",
+        "welcomeEmailConfirm": "Möchten Sie die Willkommens-E-Mail wirklich erneut senden?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Prüfen Sie Ihren Posteingang."
+    },
+    "order": {
+        "title": "SSL bestellen"
+    },
+    "changeApproverEmail": {
+        "title": "Genehmigungs-E-Mail ändern",
+        "selectApproverEmail": "Genehmigungs-E-Mail auswählen"
+    }
+}

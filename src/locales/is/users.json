@@ -1,0 +1,12 @@
+{
+    "title": "Notendur",
+    "addUser": "Bæta við notanda",
+    "editUser": "Breyta notanda",
+    "firstName": "Fornafn",
+    "lastName": "Eftirnafn",
+    "username": "Notandanafn",
+    "password": "Lykilorð",
+    "keepSamePassword": "Skildu eftir autt til að halda sama lykilorð",
+    "errorLoading": "Villa við hleðslu notenda:",
+    "errorLoadingUser": "Villa við hleðslu notanda:"
+}

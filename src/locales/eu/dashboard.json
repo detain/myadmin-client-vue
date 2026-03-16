@@ -1,0 +1,28 @@
+{
+    "title": "Aginte-panela",
+    "welcome": "Ongi etorri, {name}",
+    "lastLogin": "Azken Saioa",
+    "lastLoginIp": "Azken Saioaren IP",
+    "prepay": {
+        "title": "PrePay Saldoa",
+        "remainingBalance": "PrePay Gainerako Saldoa",
+        "manageAccount": "Kudeatu Kontua",
+        "manageTooltip": "Kudeatu Zure PrePay Kontua"
+    },
+    "invoices": {
+        "title": "Ordaindu Gabeko Fakturak",
+        "totalUnpaid": "Ordaindu Gabeko Faktura Guztiak",
+        "totalAmount": "Ordaindu Beharreko Zenbateko Osoa",
+        "payTotalTooltip": "Ordaindu Zenbateko Osoa"
+    },
+    "callInPin": "Deitzeko PIN",
+    "recentTickets": "Azken Txartelak",
+    "viewAllTickets": "Ikusi Txartel Guztiak",
+    "editTicket": "Editatu Txartela",
+    "serviceCount": "Ez dago zerbitzu aktiborik | {count} zerbitzu aktibo | {count} zerbitzu aktibo",
+    "affiliate": {
+        "earnPerSale": "Irabazi {amount} Salmenta Bakoitzeko",
+        "urlPlaceholder": "Afiliatu URLa",
+        "shareWith": "Partekatu"
+    }
+}

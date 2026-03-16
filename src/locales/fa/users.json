@@ -1,0 +1,12 @@
+{
+    "title": "کاربران",
+    "addUser": "افزودن کاربر",
+    "editUser": "ویرایش کاربر",
+    "firstName": "نام",
+    "lastName": "نام خانوادگی",
+    "username": "نام کاربری",
+    "password": "رمز عبور",
+    "keepSamePassword": "برای نگه داشتن رمز عبور فعلی خالی بگذارید",
+    "errorLoading": "خطا در بارگذاری کاربران:",
+    "errorLoadingUser": "خطا در بارگذاری کاربر:"
+}

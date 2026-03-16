@@ -1,0 +1,12 @@
+{
+    "title": "Benutzer",
+    "addUser": "Benutzer hinzufügen",
+    "editUser": "Benutzer bearbeiten",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "keepSamePassword": "Leer lassen, um dasselbe Passwort beizubehalten",
+    "errorLoading": "Fehler beim Laden der Benutzer:",
+    "errorLoadingUser": "Fehler beim Laden des Benutzers:"
+}

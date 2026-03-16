@@ -1,0 +1,12 @@
+{
+    "required": "{field} beharrezkoa da",
+    "email": "Baliozko posta elektroniko helbidea izan behar da",
+    "minLength": "Gutxienez {min} karaktere eduki behar ditu",
+    "maxLength": "Gehienez {max} karaktere eduki behar ditu",
+    "passwordMatch": "Pasahitzak bat etorri behar dute",
+    "invalidFormat": "Formatu baliogabea",
+    "numeric": "Zenbaki bat izan behar da",
+    "url": "Baliozko URLa izan behar da",
+    "ipAddress": "Baliozko IP helbidea izan behar da",
+    "hostname": "Baliozko ostalari-izena izan behar da"
+}

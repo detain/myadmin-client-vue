@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "ລາຍການ Web Hosting",
+        "orderTitle": "ສັ່ງຊື້ການລົງທະບຽນ Website"
+    },
+    "view": {
+        "title": "ເບິ່ງ Website {id}",
+        "package": "ແພັກເກັດ",
+        "nextInvoiceDate": "ວັນທີໃບແຈ້ງໜີ້ຕໍ່ໄປ:",
+        "billing": "ການເກັບເງິນ",
+        "billed": "ເກັບເງິນ",
+        "billingStatusIs": "ສະຖານະການເກັບເງິນຄື:",
+        "hostInfo": "ຂໍ້ມູນ Host",
+        "username": "ຊື່ຜູ້ໃຊ້:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "ຍັງບໍ່ໄດ້ຕັ້ງຄ່າ",
+        "login": "ເຂົ້າສູ່ລະບົບ",
+        "types": "ປະເພດ:",
+        "linksLabel": "ລິງ:",
+        "manualLogin": "ເຂົ້າສູ່ລະບົບດ້ວຍຕົນເອງ",
+        "automaticLogin": "ເຂົ້າສູ່ລະບົບອັດຕະໂນມັດ",
+        "clickHere": "ຄລິກທີ່ນີ້",
+        "defaultNameservers": "Nameservers ເລີ່ມຕົ້ນ",
+        "nameservers": "Nameservers:",
+        "externalLinks": "ລິງ External",
+        "names": "ຊື່:",
+        "websitePreview": "ຕົວຢ່າງ Website",
+        "links": "ລິງ",
+        "welcomeEmailConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບຄືນ?",
+        "emailSent": "ສົ່ງອີເມລ໌ແລ້ວ",
+        "emailSentMessage": "ສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບໃໝ່ແລ້ວ. ກວດກາ inbox ຂອງທ່ານ."
+    },
+    "buyIp": {
+        "title": "ຊື້ IP Addon ເພີ່ມເຕີມ",
+        "existingAddonIps": "Addon IPs ທີ່ມີຢູ່",
+        "additionalIp": "IP ເພີ່ມເຕີມ",
+        "monthlyCost": "ລາຄາຕໍ່ເດືອນ ({symbol})",
+        "costDescription": "ລາຄາ ({symbol}) ທຸກເດືອນຕາມທີ່ website ຂອງທ່ານຖືກເກັບເງິນ",
+        "confirmPurchase": "ຢືນຢັນການຊື້",
+        "confirmMessage": "ລາຄາ IP ເພີ່ມເຕີມ: {symbol}{cost}/ເດືອນ. ທ່ານແນ່ໃຈບໍ່ທີ່ຈະສັ່ງຊື້ IP ເພີ່ມເຕີມ?",
+        "placeOrder": "ສ້າງຄຳສັ່ງ",
+        "orderPlaced": "ສ້າງຄຳສັ່ງແລ້ວ"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "ອັບເດດ Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "ດາວໂລດ Backups",
+        "backup": "Backup",
+        "size": "ຂະໜາດ",
+        "options": "ຕົວເລືອກ"
+    },
+    "migration": {
+        "title": "ຍ້າຍ Website ຂອງທ່ານ",
+        "currentWebHostInfo": "ຂໍ້ມູນ Web Host ປັດຈຸບັນ",
+        "customerPortalUrl": "URL Customer Portal",
+        "portalExample": "ຕົວຢ່າງ: sso.godaddy.com",
+        "registeredUsername": "Username / Email / ID ທີ່ລົງທະບຽນ",
+        "password": "ລະຫັດຜ່ານ",
+        "controlPanelUrl": "URL Control Panel",
+        "controlPanelExample": "ຕົວຢ່າງ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Username",
+        "ftpPassword": "FTP / Control Panel Password",
+        "holdingPageQuestion": "ຖ້າໄຊນີ້ເປັນໄຊສົດ/ໜຸກ ທີ່ມີ traffic ສູງ, ພວກເຮົາສາມາດຕັ້ງ holding page ໃນລະຫວ່າງການຍ້າຍໄດ້ບໍ?",
+        "specialRequirementsQuestion": "ໄຊນີ້ມີຄວາມຕ້ອງການພິເສດເຊັ່ນ: PHP Version / Modules ບໍ?",
+        "domainRegistryInfo": "ຂໍ້ມູນ Domain Registry",
+        "transferDomainQuestion": "ທ່ານຕ້ອງການໃຫ້ພວກເຮົາຊ່ວຍໂອນການລົງທະບຽນໂດເມນດ້ວຍບໍ?",
+        "updateNameserversQuestion": "ທ່ານຕ້ອງການໃຫ້ພວກເຮົາອັບເດດ name servers ທັນທີທີ່ພວກເຮົາສຳເລັດການຍ້າຍຂໍ້ມູນ?",
+        "domainRegistryPortal": "Domain Registry Customer Portal",
+        "importantNotes": "ໝາຍເຫດສຳຄັນ",
+        "note1": "ການຕື່ມຟອມນີ້ຈະເປີດ ticket ໃໝ່ສຳລັບຝ່າຍ support ຂອງພວກເຮົາໃນການເລີ່ມຕົ້ນການຍ້າຍ.",
+        "note2": "ກະລຸນາໃຫ້ຄົບຖ້ວນ ແລະ ຖືກຕ້ອງເທົ່າທີ່ຈະໄດ້ເພື່ອຫຼີກລ່ຽງການລ່າຊ້າ.",
+        "note3": "ປົກກະຕິການຍ້າຍຈະສຳເລັດພາຍໃນ 48 ຫາ 72 ຊົ່ວໂມງ. ບາງຄັ້ງດົນກວ່ານີ້ຖ້າຂໍ້ມູນທີ່ຕ້ອງຄັດລອກມີຈຳນວນຫຼວງຫຼາຍ.",
+        "note4": "ບັນຊີ hosting ເກົ່າຕ້ອງ online ແລະ ສາມາດເຂົ້າເຖິງໄດ້ໃນລະຫວ່າງທີ່ພວກເຮົາດຳເນີນການຍ້າຍ, ຖ້າບໍ່ດັ່ງນັ້ນພວກເຮົາອາດຈະປະສົບຄວາມຫຍຸ້ງຍາກ.",
+        "note5": "ກະລຸນາຢ່າດຳເນີນການອັບເດດໃດໆໃນໄຊຂອງທ່ານໃນລະຫວ່າງທີ່ພວກເຮົາດຳເນີນການຍ້າຍ, ຖ້າບໍ່ດັ່ງນັ້ນຂໍ້ມູນດັ່ງກ່າວອາດຈະບໍ່ຖືກຄັດລອກໄປຍັງ hosting ໃໝ່."
+    },
+    "order": {
+        "title": "ສັ່ງຊື້ Website"
+    }
+}

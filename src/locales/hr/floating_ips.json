@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Popis usluga plutajućih IP adresa",
+        "orderTitle": "Naruči registracije plutajućih IP adresa"
+    },
+    "view": {
+        "title": "Pregledaj plutajuću IP adresu {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "floatingIp": "Plutajuća IP adresa",
+        "links": "Veze",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati e-mail dobrodošlice?",
+        "emailSent": "E-mail poslan",
+        "emailSentMessage": "E-mail dobrodošlice je ponovo poslan. Provjerite svoju poštu."
+    },
+    "order": {
+        "title": "Naruči plutajuću IP adresu"
+    },
+    "changeIp": {
+        "title": "Promijeni ciljnu IP adresu"
+    }
+}

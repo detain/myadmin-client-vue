@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Tárhely / Biztonsági mentések listája",
+        "orderTitle": "Biztonsági mentés regisztrációk rendelése"
+    },
+    "view": {
+        "title": "Biztonsági mentés megtekintése {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva:",
+        "statusIs": "Állapot:",
+        "hostServer": "Gazda szerver",
+        "links": "Linkek",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "order": {
+        "title": "Tárhely rendelése"
+    }
+}

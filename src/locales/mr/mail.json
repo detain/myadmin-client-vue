@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "मेल सेवांची यादी",
+        "orderTitle": "मेल नोंदणी ऑर्डर करा"
+    },
+    "view": {
+        "title": "मेल {id} पहा",
+        "package": "पॅकेज",
+        "nextInvoiceDate": "पुढील बीजक तारीख:",
+        "billing": "बिलिंग",
+        "billed": "बिल केले:",
+        "statusIs": "स्थिती आहे:",
+        "mailApi": "मेल API",
+        "usageCount": "वापर संख्या:",
+        "links": "दुवे",
+        "connectionInfo": "कनेक्शन माहिती",
+        "welcomeEmailConfirm": "तुम्हाला स्वागत ईमेल पुन्हा पाठवायचा आहे का?",
+        "emailSent": "ईमेल पाठवला",
+        "emailSentMessage": "स्वागत ईमेल पुन्हा पाठवला गेला आहे. तुमचा इनबॉक्स तपासा."
+    },
+    "order": {
+        "title": "मेल ऑर्डर करा"
+    },
+    "alerts": {
+        "title": "सूचना",
+        "addAlert": "सूचना जोडा",
+        "editAlert": "सूचना संपादित करा",
+        "noAlerts": "कोणत्याही सूचना आढळल्या नाहीत"
+    },
+    "delist": {
+        "title": "यादीतून काढा",
+        "blockedEmails": "अवरोधित ईमेल"
+    },
+    "denyRules": {
+        "title": "नकार नियम",
+        "addRule": "नियम जोडा",
+        "noRules": "कोणतेही नकार नियम आढळले नाहीत"
+    },
+    "logs": {
+        "title": "नोंदी",
+        "searchLogs": "नोंदी शोधा"
+    },
+    "stats": {
+        "title": "आकडेवारी"
+    },
+    "deliverability": {
+        "title": "वितरणक्षमता"
+    }
+}

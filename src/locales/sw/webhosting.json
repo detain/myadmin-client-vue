@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Orodha ya Uhifadhi wa Wavuti",
+        "orderTitle": "Agiza Usajili wa Tovuti"
+    },
+    "view": {
+        "title": "Tazama Tovuti {id}",
+        "package": "Pakiti",
+        "nextInvoiceDate": "Tarehe ya Ankara Ijayo:",
+        "billing": "Bili",
+        "billed": "imelipiwa",
+        "billingStatusIs": "Hali ya Bili ni:",
+        "hostInfo": "Maelezo ya Mwenyeji",
+        "username": "Jina la Mtumiaji:",
+        "ip": "IP:",
+        "server": "Seva:",
+        "notSetYet": "Haijawekwa bado",
+        "login": "Ingia",
+        "types": "Aina:",
+        "linksLabel": "Viungo:",
+        "manualLogin": "Kuingia kwa Mkono",
+        "automaticLogin": "Kuingia Kiotomatiki",
+        "clickHere": "Bonyeza Hapa",
+        "defaultNameservers": "Seva za Majina za Chaguo-msingi",
+        "nameservers": "Seva za Majina:",
+        "externalLinks": "Viungo vya Nje",
+        "names": "Majina:",
+        "websitePreview": "Muhtasari wa Tovuti",
+        "links": "Viungo",
+        "welcomeEmailConfirm": "Je, una uhakika unataka kutuma tena barua pepe ya karibu?",
+        "emailSent": "Barua Pepe Imetumwa",
+        "emailSentMessage": "Barua pepe ya karibu imetumwa tena. Angalia kisanduku chako cha barua pepe."
+    },
+    "buyIp": {
+        "title": "Nunua Nyongeza ya IP ya Ziada",
+        "existingAddonIps": "IP za Nyongeza Zilizopo",
+        "additionalIp": "IP ya Ziada",
+        "monthlyCost": "Gharama ya Kila Mwezi ({symbol})",
+        "costDescription": "Gharama ({symbol}) kila mwezi tovuti yako inapolipiwa",
+        "confirmPurchase": "Thibitisha Ununuzi",
+        "confirmMessage": "Gharama ya IP ya ziada: {symbol}{cost}/mwezi. Je, una uhakika unataka kuagiza IP ya ziada?",
+        "placeOrder": "Weka Agizo",
+        "orderPlaced": "Agizo Limewekwa"
+    },
+    "reverseDns": {
+        "title": "DNS ya Nyuma",
+        "updateReverseDns": "Sasisha DNS ya Nyuma"
+    },
+    "downloadBackups": {
+        "title": "Pakua Nakala Rudufu",
+        "backup": "Nakala Rudufu",
+        "size": "Ukubwa",
+        "options": "Chaguo"
+    },
+    "migration": {
+        "title": "Hamisha Tovuti Yako",
+        "currentWebHostInfo": "Maelezo ya Mwenyeji wa Wavuti wa Sasa",
+        "customerPortalUrl": "URL ya Lango la Mteja",
+        "portalExample": "Kwa Mfano: sso.godaddy.com",
+        "registeredUsername": "Jina la Mtumiaji Lililosajiliwa / Barua Pepe / ID",
+        "password": "Nywila",
+        "controlPanelUrl": "URL ya Paneli ya Udhibiti",
+        "controlPanelExample": "Kwa Mfano: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Jina la Mtumiaji la Paneli ya Udhibiti",
+        "ftpPassword": "FTP / Nywila ya Paneli ya Udhibiti",
+        "holdingPageQuestion": "Ikiwa tovuti ina trafiki nyingi, tunaweza kuweka ukurasa wa kusubiri wakati wa uhamishaji?",
+        "specialRequirementsQuestion": "Je, tovuti hii ina mahitaji maalum kama vile Toleo la PHP / Moduli?",
+        "domainRegistryInfo": "Maelezo ya Usajili wa Kikoa",
+        "transferDomainQuestion": "Je, unataka pia tukusaidie kuhamisha usajili wa jina la kikoa?",
+        "updateNameserversQuestion": "Je, unataka tusasishe seva za majina mara tu tunapomaliza uhamishaji wa data?",
+        "domainRegistryPortal": "Lango la Mteja la Usajili wa Kikoa",
+        "importantNotes": "Maelezo Muhimu",
+        "note1": "Kujaza fomu hii kutafungua tiketi mpya kwa idara yetu ya msaada kuanza uhamishaji wako.",
+        "note2": "Tafadhali kuwa kamili na sahihi iwezekanavyo ili kuepuka ucheleweshaji wowote.",
+        "note3": "Uhamishaji wa kawaida unakamilika ndani ya masaa 48 hadi 72. Wakati mwingine zaidi ikiwa kiwango cha data ya kunakiliwa ni kikubwa.",
+        "note4": "Akaunti ya zamani ya uhifadhi inapaswa kuwa mtandaoni na inayoweza kufikiwa wakati wa uhamishaji, vinginevyo tunaweza kukabiliwa na matatizo.",
+        "note5": "Tafadhali usifanye masasisho yoyote kwenye tovuti yako wakati wa uhamishaji, vinginevyo data hiyo inaweza kutakiliwa kwenye uhifadhi mpya."
+    },
+    "order": {
+        "title": "Agiza Tovuti"
+    }
+}

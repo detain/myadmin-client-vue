@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "ລາຍການບໍລິການ Floating IPs",
+        "orderTitle": "ສັ່ງຊື້ການລົງທະບຽນ Floating IP"
+    },
+    "view": {
+        "title": "ເບິ່ງ Floating IP {id}",
+        "package": "ແພັກເກັດ",
+        "nextInvoiceDate": "ວັນທີໃບແຈ້ງໜີ້ຕໍ່ໄປ:",
+        "billing": "ການເກັບເງິນ",
+        "billed": "ເກັບເງິນ:",
+        "statusIs": "ສະຖານະຄື:",
+        "floatingIp": "Floating IP",
+        "links": "ລິງ",
+        "welcomeEmailConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບຄືນ?",
+        "emailSent": "ສົ່ງອີເມລ໌ແລ້ວ",
+        "emailSentMessage": "ສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບໃໝ່ແລ້ວ. ກວດກາ inbox ຂອງທ່ານ."
+    },
+    "order": {
+        "title": "ສັ່ງຊື້ Floating IP"
+    },
+    "changeIp": {
+        "title": "ປ່ຽນ IP ເປົ້າໝາຍ"
+    }
+}

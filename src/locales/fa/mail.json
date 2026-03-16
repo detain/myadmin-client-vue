@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "فهرست سرویس‌های ایمیل",
+        "orderTitle": "سفارش ثبت ایمیل"
+    },
+    "view": {
+        "title": "مشاهده ایمیل {id}",
+        "package": "بسته",
+        "nextInvoiceDate": "تاریخ فاکتور بعدی:",
+        "billing": "صورتحساب",
+        "billed": "صورتحساب شده:",
+        "statusIs": "وضعیت:",
+        "mailApi": "API ایمیل",
+        "usageCount": "تعداد استفاده:",
+        "links": "پیوندها",
+        "connectionInfo": "اطلاعات اتصال",
+        "welcomeEmailConfirm": "آیا مطمئن هستید که می‌خواهید ایمیل خوش‌آمدگویی را دوباره ارسال کنید؟",
+        "emailSent": "ایمیل ارسال شد",
+        "emailSentMessage": "ایمیل خوش‌آمدگویی دوباره ارسال شد. صندوق ورودی خود را بررسی کنید."
+    },
+    "order": {
+        "title": "سفارش ایمیل"
+    },
+    "alerts": {
+        "title": "هشدارها",
+        "addAlert": "افزودن هشدار",
+        "editAlert": "ویرایش هشدار",
+        "noAlerts": "هیچ هشداری یافت نشد"
+    },
+    "delist": {
+        "title": "حذف از فهرست",
+        "blockedEmails": "ایمیل‌های مسدود شده"
+    },
+    "denyRules": {
+        "title": "قوانین رد کردن",
+        "addRule": "افزودن قانون",
+        "noRules": "هیچ قانون ردکردنی یافت نشد"
+    },
+    "logs": {
+        "title": "گزارش‌ها",
+        "searchLogs": "جستجو در گزارش‌ها"
+    },
+    "stats": {
+        "title": "آمار"
+    },
+    "deliverability": {
+        "title": "قابلیت تحویل"
+    }
+}

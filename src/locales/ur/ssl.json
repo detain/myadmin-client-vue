@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL سرٹیفکیٹس فہرست",
+        "orderTitle": "SSL رجسٹریشنز آرڈر کریں"
+    },
+    "view": {
+        "title": "SSL {id} دیکھیں",
+        "package": "پیکج",
+        "nextInvoiceDate": "اگلی انوائس تاریخ:",
+        "billing": "بلنگ",
+        "billed": "بل کیا گیا:",
+        "statusIs": "حیثیت:",
+        "orderInfo": "آرڈر معلومات",
+        "certificateInfo": "سرٹیفکیٹ معلومات",
+        "links": "روابط",
+        "welcomeEmailConfirm": "کیا آپ واقعی خوش آمدید ای میل دوبارہ بھیجنا چاہتے ہیں؟",
+        "emailSent": "ای میل بھیجا گیا",
+        "emailSentMessage": "خوش آمدید ای میل دوبارہ بھیجا گیا ہے۔ اپنا ان باکس چیک کریں۔"
+    },
+    "order": {
+        "title": "SSL آرڈر کریں"
+    },
+    "changeApproverEmail": {
+        "title": "منظور کنندہ ای میل تبدیل کریں",
+        "selectApproverEmail": "منظور کنندہ ای میل منتخب کریں"
+    }
+}

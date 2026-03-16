@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "E-mail szolgáltatások listája",
+        "orderTitle": "E-mail regisztrációk rendelése"
+    },
+    "view": {
+        "title": "E-mail megtekintése: {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva:",
+        "statusIs": "Állapot:",
+        "mailApi": "E-mail API",
+        "usageCount": "Felhasználások száma:",
+        "links": "Linkek",
+        "connectionInfo": "Kapcsolati adatok",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "order": {
+        "title": "E-mail rendelése"
+    },
+    "alerts": {
+        "title": "Értesítések",
+        "addAlert": "Értesítés hozzáadása",
+        "editAlert": "Értesítés szerkesztése",
+        "noAlerts": "Nem találhatók értesítések"
+    },
+    "delist": {
+        "title": "Listáról eltávolítás",
+        "blockedEmails": "Blokkolt e-mailek"
+    },
+    "denyRules": {
+        "title": "Tiltási szabályok",
+        "addRule": "Szabály hozzáadása",
+        "noRules": "Nem találhatók tiltási szabályok"
+    },
+    "logs": {
+        "title": "Naplók",
+        "searchLogs": "Naplók keresése"
+    },
+    "stats": {
+        "title": "Statisztikák"
+    },
+    "deliverability": {
+        "title": "Kézbesíthetőség"
+    }
+}

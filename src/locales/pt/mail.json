@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista de Serviços de E-mail",
+        "orderTitle": "Solicitar Registros de E-mail"
+    },
+    "view": {
+        "title": "Ver E-mail {id}",
+        "package": "Pacote",
+        "nextInvoiceDate": "Data da Próxima Fatura:",
+        "billing": "Faturamento",
+        "billed": "faturado:",
+        "statusIs": "Status é:",
+        "mailApi": "API de E-mail",
+        "usageCount": "Contagem de Uso:",
+        "links": "Links",
+        "connectionInfo": "Informações de Conexão",
+        "welcomeEmailConfirm": "Tem certeza de que deseja reenviar o e-mail de boas-vindas?",
+        "emailSent": "E-mail Enviado",
+        "emailSentMessage": "O e-mail de boas-vindas foi reenviado. Verifique sua caixa de entrada."
+    },
+    "order": {
+        "title": "Solicitar E-mail"
+    },
+    "alerts": {
+        "title": "Alertas",
+        "addAlert": "Adicionar Alerta",
+        "editAlert": "Editar Alerta",
+        "noAlerts": "Nenhum alerta encontrado"
+    },
+    "delist": {
+        "title": "Remover da Lista",
+        "blockedEmails": "E-mails Bloqueados"
+    },
+    "denyRules": {
+        "title": "Regras de Bloqueio",
+        "addRule": "Adicionar Regra",
+        "noRules": "Nenhuma regra de bloqueio encontrada"
+    },
+    "logs": {
+        "title": "Registros",
+        "searchLogs": "Pesquisar Registros"
+    },
+    "stats": {
+        "title": "Estatísticas"
+    },
+    "deliverability": {
+        "title": "Capacidade de Entrega"
+    }
+}

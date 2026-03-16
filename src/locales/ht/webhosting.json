@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lis Hébergement Web",
+        "orderTitle": "Kòmande Anrejistreman Sit Entènèt"
+    },
+    "view": {
+        "title": "Wè Sit Entènèt {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture",
+        "billingStatusIs": "Estati Faktiration se:",
+        "hostInfo": "Enfòmasyon Òt",
+        "username": "Non Itilizatè:",
+        "ip": "IP:",
+        "server": "Sèvè:",
+        "notSetYet": "Pa encore konfigire",
+        "login": "Konekte",
+        "types": "Tip:",
+        "linksLabel": "Lyen:",
+        "manualLogin": "Koneksyon Manyèl",
+        "automaticLogin": "Koneksyon Otomatik",
+        "clickHere": "Klike Isit La",
+        "defaultNameservers": "Sèvè Non Default",
+        "nameservers": "Sèvè Non:",
+        "externalLinks": "Lyen Ekstèn",
+        "names": "Non:",
+        "websitePreview": "Apèsi Sit Entènèt",
+        "links": "Lyen",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "buyIp": {
+        "title": "Achte Addon IP Siplemantè",
+        "existingAddonIps": "IP Addon Egzistan",
+        "additionalIp": "IP Siplemantè",
+        "monthlyCost": "Koute Mansyèl ({symbol})",
+        "costDescription": "Koute ({symbol}) chak mwa pandan sit entènèt ou fakture",
+        "confirmPurchase": "Konfime Acha",
+        "confirmMessage": "Koute IP siplemantè: {symbol}{cost}/mwa. Èske ou sèten ou vle kòmande yon IP siplemantè?",
+        "placeOrder": "Pase Kòmand",
+        "orderPlaced": "Kòmand Pase"
+    },
+    "reverseDns": {
+        "title": "DNS Envès",
+        "updateReverseDns": "Mete DNS Envès Ajou"
+    },
+    "downloadBackups": {
+        "title": "Telechaje Bakòp",
+        "backup": "Bakòp",
+        "size": "Gwosè",
+        "options": "Opsyon"
+    },
+    "migration": {
+        "title": "Migre Sit Entènèt Ou",
+        "currentWebHostInfo": "Enfòmasyon Òt Entènèt Aktyèl",
+        "customerPortalUrl": "URL Pòtay Kliyan",
+        "portalExample": "Pou Egzanp: sso.godaddy.com",
+        "registeredUsername": "Non Itilizatè / Imèl / ID Anrejistre",
+        "password": "Modpas",
+        "controlPanelUrl": "URL Panno Kontwòl",
+        "controlPanelExample": "Pou Egzanp: yourdomain.com/cpanel",
+        "ftpUsername": "Non Itilizatè FTP / Panno Kontwòl",
+        "ftpPassword": "Modpas FTP / Panno Kontwòl",
+        "holdingPageQuestion": "Si sit la vivan/okipe ak anpil trafik, eske nou ka konfigire yon paj atant pandan migrasyaon an?",
+        "specialRequirementsQuestion": "Eske sit sa a gen kondisyon espesyal tankou Vèsyon PHP / Modil?",
+        "domainRegistryInfo": "Enfòmasyon Rejis Domèn",
+        "transferDomainQuestion": "Eske ou vle nou ede ou tou transfere anrejistreman non domèn an?",
+        "updateNameserversQuestion": "Eske ou vle nou mete sèvè non yo ajou osi vit nou fini migrasyaon done an?",
+        "domainRegistryPortal": "Pòtay Kliyan Rejis Domèn",
+        "importantNotes": "Nòt Enpòtan",
+        "note1": "Ranpli fòm sa a pral louvri yon nouvo tikè pou depatman sipò nou an kòmanse migrasyaon ou a.",
+        "note2": "Tanpri fè sezon pou konplè ak egzakt otank posib pou evite nenpòt reta.",
+        "note3": "Yon migrasyaon tipik konplete nan 48 a 72 èdtan. Pafwa pi long si kantite done pou kopye a gwo.",
+        "note4": "Ansyen kont hébergement an bezwen anliy epi aksesib pandan nou kap fè migrasyaon an, otreman nou ka rankontre difikilte.",
+        "note5": "Tanpri pa fè okenn mize ajou sou sit ou pandan nou kap fè migrasyaon an, otreman done sa yo ka pa kopye nan nouvo hébergement an."
+    },
+    "order": {
+        "title": "Kòmande Sit Entènèt"
+    }
+}

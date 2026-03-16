@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP सेवांची यादी",
+        "orderTitle": "Scrub IP ऑर्डर करा"
+    },
+    "view": {
+        "title": "Scrub IP पहा",
+        "currentIp": "सध्याचा IP",
+        "ipAddress": "IP पत्ता",
+        "ipFromService": "सेवेतील IP"
+    },
+    "filters": {
+        "title": "फिल्टर",
+        "createNew": "नवीन तयार करा",
+        "createNewFilter": "नवीन फिल्टर तयार करा",
+        "filterType": "फिल्टर प्रकार",
+        "selectFilterType": "फिल्टर प्रकार निवडा",
+        "ipAddress": "IP पत्ता",
+        "portNo": "पोर्ट क्र.",
+        "filter": "फिल्टर",
+        "destinationIp": "गंतव्य IP",
+        "destinationPort": "गंतव्य पोर्ट",
+        "noFiltersFound": "कोणतेही फिल्टर आढळले नाहीत!",
+        "deleteFilterConfirm": "तुम्हाला हा फिल्टर हटवायचा आहे का?",
+        "unableToCreateFilter": "सध्या फिल्टर तयार करण्यात अक्षम.",
+        "unableToDeleteFilter": "सध्या फिल्टर हटवण्यात अक्षम."
+    },
+    "firewallRules": {
+        "title": "फायरवॉल नियम",
+        "createNew": "नवीन तयार करा",
+        "createNewFirewall": "नवीन फायरवॉल नियम तयार करा",
+        "protocol": "प्रोटोकॉल",
+        "destinationIp": "गंतव्य IP",
+        "destinationPort": "गंतव्य पोर्ट",
+        "sourceIp": "स्रोत IP",
+        "sourcePort": "स्रोत पोर्ट",
+        "xdpAction": "XDP क्रिया",
+        "ipRequired": "IP पत्ता आवश्यक आहे",
+        "block": "अवरोधित करा",
+        "whitelist": "श्वेतसूची",
+        "noRulesFound": "कोणतेही नियम आढळले नाहीत!",
+        "deleteRuleConfirm": "तुम्हाला हा नियम हटवायचा आहे का?",
+        "unableToCreateRule": "सध्या फायरवॉल नियम तयार करण्यात अक्षम.",
+        "unableToDeleteRule": "सध्या फायरवॉल नियम हटवण्यात अक्षम."
+    },
+    "geoFirewallRules": {
+        "title": "जिओ फायरवॉल नियम",
+        "createNew": "नवीन तयार करा",
+        "createNewGeoRule": "नवीन जिओ फायरवॉल नियम तयार करा",
+        "destinationIp": "गंतव्य IP",
+        "destinationPort": "गंतव्य पोर्ट",
+        "sourceCountry": "स्रोत देश",
+        "sourceAsn": "स्रोत ASN",
+        "xdpAction": "XDP क्रिया",
+        "portNo": "पोर्ट क्र.",
+        "selectCountry": "देश निवडा",
+        "asn": "ASN",
+        "block": "अवरोधित करा",
+        "whitelist": "श्वेतसूची",
+        "noRulesFound": "कोणतेही नियम आढळले नाहीत!",
+        "deleteGeoRuleConfirm": "तुम्हाला हा जिओ नियम हटवायचा आहे का?",
+        "unableToCreateRule": "सध्या फायरवॉल नियम तयार करण्यात अक्षम.",
+        "unableToDeleteRule": "सध्या जिओ फायरवॉल नियम हटवण्यात अक्षम."
+    }
+}

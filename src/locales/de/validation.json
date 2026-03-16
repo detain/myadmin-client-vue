@@ -1,0 +1,12 @@
+{
+    "required": "{field} ist erforderlich",
+    "email": "Muss eine gültige E-Mail-Adresse sein",
+    "minLength": "Muss mindestens {min} Zeichen haben",
+    "maxLength": "Darf nicht mehr als {max} Zeichen haben",
+    "passwordMatch": "Passwörter müssen übereinstimmen",
+    "invalidFormat": "Ungültiges Format",
+    "numeric": "Muss eine Zahl sein",
+    "url": "Muss eine gültige URL sein",
+    "ipAddress": "Muss eine gültige IP-Adresse sein",
+    "hostname": "Muss ein gültiger Hostname sein"
+}

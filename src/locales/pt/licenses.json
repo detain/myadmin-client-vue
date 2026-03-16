@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista de Licenças",
+        "orderTitle": "Solicitar Registros de Licença"
+    },
+    "view": {
+        "title": "Ver Licença {id}",
+        "package": "Pacote",
+        "nextInvoiceDate": "Data da Próxima Fatura:",
+        "billing": "Faturamento",
+        "billed": "faturado:",
+        "statusIs": "Status é:",
+        "licenseInfo": "Informações da Licença",
+        "cpanelInfo": "Informações do cPanel",
+        "links": "Links",
+        "welcomeEmailConfirm": "Tem certeza de que deseja reenviar o e-mail de boas-vindas?",
+        "emailSent": "E-mail Enviado",
+        "emailSentMessage": "O e-mail de boas-vindas foi reenviado. Verifique sua caixa de entrada."
+    },
+    "order": {
+        "title": "Solicitar Licença"
+    },
+    "changeIp": {
+        "title": "Alterar IP"
+    },
+    "changeOs": {
+        "title": "Alterar SO",
+        "selectLicenseOs": "Selecionar SO da Licença"
+    }
+}

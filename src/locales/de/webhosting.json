@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webhosting-Liste",
+        "orderTitle": "Website-Registrierungen bestellen"
+    },
+    "view": {
+        "title": "Website {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet",
+        "billingStatusIs": "Abrechnungsstatus:",
+        "hostInfo": "Host-Informationen",
+        "username": "Benutzername:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Noch nicht festgelegt",
+        "login": "Anmelden",
+        "types": "Typen:",
+        "linksLabel": "Links:",
+        "manualLogin": "Manuelles Anmelden",
+        "automaticLogin": "Automatisches Anmelden",
+        "clickHere": "Hier klicken",
+        "defaultNameservers": "Standard-Nameserver",
+        "nameservers": "Nameserver:",
+        "externalLinks": "Externe Links",
+        "names": "Namen:",
+        "websitePreview": "Website-Vorschau",
+        "links": "Links",
+        "welcomeEmailConfirm": "Möchten Sie die Willkommens-E-Mail wirklich erneut senden?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Prüfen Sie Ihren Posteingang."
+    },
+    "buyIp": {
+        "title": "Zusätzliche IP-Erweiterung kaufen",
+        "existingAddonIps": "Vorhandene Erweiterungs-IPs",
+        "additionalIp": "Zusätzliche IP",
+        "monthlyCost": "Monatliche Kosten ({symbol})",
+        "costDescription": "Kosten ({symbol}) jeden Monat, wenn Ihre Website abgerechnet wird",
+        "confirmPurchase": "Kauf bestätigen",
+        "confirmMessage": "Kosten für zusätzliche IP: {symbol}{cost}/Monat. Möchten Sie wirklich eine zusätzliche IP bestellen?",
+        "placeOrder": "Bestellung aufgeben",
+        "orderPlaced": "Bestellung aufgegeben"
+    },
+    "reverseDns": {
+        "title": "Reverse-DNS",
+        "updateReverseDns": "Reverse-DNS aktualisieren"
+    },
+    "downloadBackups": {
+        "title": "Backups herunterladen",
+        "backup": "Backup",
+        "size": "Größe",
+        "options": "Optionen"
+    },
+    "migration": {
+        "title": "Ihre Website migrieren",
+        "currentWebHostInfo": "Aktuelle Webhoster-Informationen",
+        "customerPortalUrl": "Kundenportal-URL",
+        "portalExample": "Zum Beispiel: sso.godaddy.com",
+        "registeredUsername": "Registrierter Benutzername / E-Mail / ID",
+        "password": "Passwort",
+        "controlPanelUrl": "Systemsteuerung-URL",
+        "controlPanelExample": "Zum Beispiel: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Systemsteuerung-Benutzername",
+        "ftpPassword": "FTP / Systemsteuerung-Passwort",
+        "holdingPageQuestion": "Wenn die Website live ist / hohen Datenverkehr hat, können wir während der Migration eine Halteseite einrichten?",
+        "specialRequirementsQuestion": "Hat diese Website besondere Anforderungen wie PHP-Version / Module?",
+        "domainRegistryInfo": "Domain-Registrierungsinformationen",
+        "transferDomainQuestion": "Möchten Sie, dass wir Ihnen auch beim Transfer der Domain-Registrierung helfen?",
+        "updateNameserversQuestion": "Möchten Sie, dass wir die Nameserver aktualisieren, sobald wir die Datenmigration abgeschlossen haben?",
+        "domainRegistryPortal": "Domain-Registrierungs-Kundenportal",
+        "importantNotes": "Wichtige Hinweise",
+        "note1": "Das Ausfüllen dieses Formulars öffnet ein neues Ticket für unsere Supportabteilung, um Ihre Migration zu beginnen.",
+        "note2": "Bitte seien Sie so vollständig und genau wie möglich, um Verzögerungen zu vermeiden.",
+        "note3": "Eine typische Migration wird innerhalb von 48 bis 72 Stunden abgeschlossen. Manchmal länger, wenn die zu kopierende Datenmenge groß ist.",
+        "note4": "Das alte Hosting-Konto muss online und zugänglich sein, während wir die Migration durchführen.",
+        "note5": "Bitte nehmen Sie während der Migration keine Aktualisierungen auf Ihrer Website vor, da diese Daten möglicherweise nicht auf das neue Hosting kopiert werden."
+    },
+    "order": {
+        "title": "Website bestellen"
+    }
+}

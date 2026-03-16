@@ -1,0 +1,28 @@
+{
+    "title": "Bòrd-stiùiridh",
+    "welcome": "Fàilte, {name}",
+    "lastLogin": "Logadh-a-steach Mu Dheireadh",
+    "lastLoginIp": "IP Logadh-a-steach Mu Dheireadh",
+    "prepay": {
+        "title": "Cothromachadh Ro-phàighidh",
+        "remainingBalance": "Cothromachadh Ro-phàighidh a Tha Air Fhàgail",
+        "manageAccount": "Stiùirich Cunntas",
+        "manageTooltip": "Stiùirich Do Chunntas Ro-phàighidh"
+    },
+    "invoices": {
+        "title": "Cunntasan-pàighidh Gun Phàigheadh",
+        "totalUnpaid": "Cunntasan-pàighidh Gun Phàigheadh Gu Lèir",
+        "totalAmount": "Suim Iomlan ri Phàigheadh",
+        "payTotalTooltip": "Pàigh Suim Iomlan"
+    },
+    "callInPin": "PIN Fòn",
+    "recentTickets": "Tiocaidean O Chionn Ghoirid",
+    "viewAllTickets": "Seall A h-Uile Tiocaid",
+    "editTicket": "Deasaich Tiocaid",
+    "serviceCount": "Chan eil seirbheisean gnìomhach ann | {count} seirbheis gnìomhach | {count} seirbheisean gnìomhach",
+    "affiliate": {
+        "earnPerSale": "Coisinn {amount} Gach Reic",
+        "urlPlaceholder": "URL Co-cheangailte",
+        "shareWith": "Roinn le"
+    }
+}

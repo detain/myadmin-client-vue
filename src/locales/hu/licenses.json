@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Licencek listája",
+        "orderTitle": "Licenc regisztrációk rendelése"
+    },
+    "view": {
+        "title": "Licenc megtekintése: {id}",
+        "package": "Csomag",
+        "nextInvoiceDate": "Következő számla dátuma:",
+        "billing": "Számlázás",
+        "billed": "számlázva:",
+        "statusIs": "Állapot:",
+        "licenseInfo": "Licenc adatok",
+        "cpanelInfo": "cPanel adatok",
+        "links": "Linkek",
+        "welcomeEmailConfirm": "Biztosan újra szeretné küldeni az üdvözlő e-mailt?",
+        "emailSent": "E-mail elküldve",
+        "emailSentMessage": "Az üdvözlő e-mail újra el lett küldve. Ellenőrizze a beérkező leveleket."
+    },
+    "order": {
+        "title": "Licenc rendelése"
+    },
+    "changeIp": {
+        "title": "IP módosítása"
+    },
+    "changeOs": {
+        "title": "OS módosítása",
+        "selectLicenseOs": "Licenc OS kiválasztása"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "ລາຍການບໍລິການ Scrub IPs",
+        "orderTitle": "ສັ່ງຊື້ Scrub IPs"
+    },
+    "view": {
+        "title": "ເບິ່ງ Scrub IPs",
+        "currentIp": "IP ປັດຈຸບັນ",
+        "ipAddress": "ທີ່ຢູ່ IP",
+        "ipFromService": "IP ຈາກບໍລິການ"
+    },
+    "filters": {
+        "title": "ຕົວກອງ",
+        "createNew": "ສ້າງໃໝ່",
+        "createNewFilter": "ສ້າງຕົວກອງໃໝ່",
+        "filterType": "ປະເພດຕົວກອງ",
+        "selectFilterType": "ເລືອກປະເພດຕົວກອງ",
+        "ipAddress": "ທີ່ຢູ່ IP",
+        "portNo": "ໝາຍເລກ Port",
+        "filter": "ກອງ",
+        "destinationIp": "IP ປາຍທາງ",
+        "destinationPort": "Port ປາຍທາງ",
+        "noFiltersFound": "ບໍ່ພົບຕົວກອງ!",
+        "deleteFilterConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລົບຕົວກອງນີ້?",
+        "unableToCreateFilter": "ບໍ່ສາມາດສ້າງຕົວກອງໃນຂະນະນີ້.",
+        "unableToDeleteFilter": "ບໍ່ສາມາດລົບຕົວກອງໃນຂະນະນີ້."
+    },
+    "firewallRules": {
+        "title": "ກົດລະບຽບ Firewall",
+        "createNew": "ສ້າງໃໝ່",
+        "createNewFirewall": "ສ້າງກົດລະບຽບ Firewall ໃໝ່",
+        "protocol": "Protocol",
+        "destinationIp": "IP ປາຍທາງ",
+        "destinationPort": "Port ປາຍທາງ",
+        "sourceIp": "IP ຕົ້ນທາງ",
+        "sourcePort": "Port ຕົ້ນທາງ",
+        "xdpAction": "XDP Action",
+        "ipRequired": "ຕ້ອງໃສ່ທີ່ຢູ່ IP",
+        "block": "ບລັອກ",
+        "whitelist": "Whitelist",
+        "noRulesFound": "ບໍ່ພົບກົດລະບຽບ!",
+        "deleteRuleConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລົບກົດລະບຽບນີ້?",
+        "unableToCreateRule": "ບໍ່ສາມາດສ້າງກົດລະບຽບ firewall ໃນຂະນະນີ້.",
+        "unableToDeleteRule": "ບໍ່ສາມາດລົບກົດລະບຽບ firewall ໃນຂະນະນີ້."
+    },
+    "geoFirewallRules": {
+        "title": "ກົດລະບຽບ Geo Firewall",
+        "createNew": "ສ້າງໃໝ່",
+        "createNewGeoRule": "ສ້າງກົດລະບຽບ Geo Firewall ໃໝ່",
+        "destinationIp": "IP ປາຍທາງ",
+        "destinationPort": "Port ປາຍທາງ",
+        "sourceCountry": "ປະເທດຕົ້ນທາງ",
+        "sourceAsn": "ASN ຕົ້ນທາງ",
+        "xdpAction": "XDP Action",
+        "portNo": "ໝາຍເລກ Port",
+        "selectCountry": "ເລືອກປະເທດ",
+        "asn": "ASN",
+        "block": "ບລັອກ",
+        "whitelist": "Whitelist",
+        "noRulesFound": "ບໍ່ພົບກົດລະບຽບ!",
+        "deleteGeoRuleConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລົບກົດລະບຽບ geo ນີ້?",
+        "unableToCreateRule": "ບໍ່ສາມາດສ້າງກົດລະບຽບ firewall ໃນຂະນະນີ້.",
+        "unableToDeleteRule": "ບໍ່ສາມາດລົບກົດລະບຽບ geo firewall ໃນຂະນະນີ້."
+    }
+}
