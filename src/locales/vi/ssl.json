@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Danh sách chứng chỉ SSL",
+        "orderTitle": "Đặt đăng ký SSL"
+    },
+    "view": {
+        "title": "Xem SSL {id}",
+        "package": "Gói",
+        "nextInvoiceDate": "Ngày hóa đơn tiếp theo:",
+        "billing": "Thanh toán",
+        "billed": "đã thanh toán:",
+        "statusIs": "Trạng thái:",
+        "orderInfo": "Thông tin đơn hàng",
+        "certificateInfo": "Thông tin chứng chỉ",
+        "links": "Liên kết",
+        "welcomeEmailConfirm": "Bạn có chắc muốn gửi lại email chào mừng không?",
+        "emailSent": "Email đã gửi",
+        "emailSentMessage": "Email chào mừng đã được gửi lại. Kiểm tra hộp thư đến của bạn."
+    },
+    "order": {
+        "title": "Đặt SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Thay đổi email phê duyệt",
+        "selectApproverEmail": "Chọn email phê duyệt"
+    }
+}

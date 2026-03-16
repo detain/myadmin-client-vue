@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "ويب هوسٽنگ لسٽ",
+        "orderTitle": "ويب سائيٽ رجسٽريشن آرڊر ڪريو"
+    },
+    "view": {
+        "title": "ويب سائيٽ {id} ڏسو",
+        "package": "پيڪيج",
+        "nextInvoiceDate": "ايندڙ انوائس تاريخ:",
+        "billing": "بلنگ",
+        "billed": "بل ڪيو",
+        "billingStatusIs": "بلنگ حالت آهي:",
+        "hostInfo": "هوسٽ معلومات",
+        "username": "يوزر نالو:",
+        "ip": "IP:",
+        "server": "سرور:",
+        "notSetYet": "اڃا سيٽ نه ٿيل",
+        "login": "لاگ ان",
+        "types": "قسم:",
+        "linksLabel": "لنڪ:",
+        "manualLogin": "دستي لاگ ان",
+        "automaticLogin": "خودڪار لاگ ان",
+        "clickHere": "هتي ڪلڪ ڪريو",
+        "defaultNameservers": "ڊفالٽ نيم سرورز",
+        "nameservers": "نيم سرورز:",
+        "externalLinks": "ٻاهريون لنڪ",
+        "names": "نالا:",
+        "websitePreview": "ويب سائيٽ پريويو",
+        "links": "لنڪ",
+        "welcomeEmailConfirm": "ڇا توهان پڪ آهيو ته خوش آمديد اي ميل ٻيهر موڪلڻ چاهيو ٿا؟",
+        "emailSent": "اي ميل موڪليل",
+        "emailSentMessage": "خوش آمديد اي ميل ٻيهر موڪلي ويئي آهي. پنهنجو ان باڪس چيڪ ڪريو."
+    },
+    "buyIp": {
+        "title": "اضافي IP ايڊ آن خريد ڪريو",
+        "existingAddonIps": "موجوده ايڊ آن IPs",
+        "additionalIp": "اضافي IP",
+        "monthlyCost": "ماهوار قيمت ({symbol})",
+        "costDescription": "قيمت ({symbol}) هر مهيني جيئن توهان جي ويب سائيٽ جو بل ٿئي ٿو",
+        "confirmPurchase": "خريداري جي تصديق ڪريو",
+        "confirmMessage": "اضافي IP قيمت: {symbol}{cost}/مهينو. ڇا توهان پڪ آهيو ته اضافي IP آرڊر ڪرڻ چاهيو ٿا؟",
+        "placeOrder": "آرڊر رکو",
+        "orderPlaced": "آرڊر رکيو ويو"
+    },
+    "reverseDns": {
+        "title": "ريورس DNS",
+        "updateReverseDns": "ريورس DNS اپڊيٽ ڪريو"
+    },
+    "downloadBackups": {
+        "title": "بيڪ اپ ڊائونلوڊ ڪريو",
+        "backup": "بيڪ اپ",
+        "size": "سائيز",
+        "options": "آپشن"
+    },
+    "migration": {
+        "title": "پنهنجي ويب سائيٽ کي منتقل ڪريو",
+        "currentWebHostInfo": "موجوده ويب هوسٽ معلومات",
+        "customerPortalUrl": "ڪسٽمر پورٽل URL",
+        "portalExample": "مثال طور: sso.godaddy.com",
+        "registeredUsername": "رجسٽرڊ يوزر نالو / اي ميل / ID",
+        "password": "پاسورڊ",
+        "controlPanelUrl": "ڪنٽرول پينل URL",
+        "controlPanelExample": "مثال طور: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / ڪنٽرول پينل يوزر نالو",
+        "ftpPassword": "FTP / ڪنٽرول پينل پاسورڊ",
+        "holdingPageQuestion": "جيڪڏهن سائيٽ لائيو/مصروف آهي ۽ وڌيڪ ٽريفڪ آهي، ڇا اسين منتقلي دوران هولڊنگ صفحو سيٽ ڪري سگهون ٿا؟",
+        "specialRequirementsQuestion": "ڇا هن سائيٽ جون خاص ضرورتون آهن جهڙوڪ PHP ورزن / ماڊيول؟",
+        "domainRegistryInfo": "ڊومين رجسٽري معلومات",
+        "transferDomainQuestion": "ڇا توهان پڻ چاهيو ٿا ته اسين ڊومين نالو رجسٽريشن منتقل ڪرڻ ۾ مدد ڪريون؟",
+        "updateNameserversQuestion": "ڇا توهان چاهيو ٿا ته ڊيٽا منتقلي مڪمل ٿيڻ بعد اسين نيم سرورز اپڊيٽ ڪريون؟",
+        "domainRegistryPortal": "ڊومين رجسٽري ڪسٽمر پورٽل",
+        "importantNotes": "اهم نوٽ",
+        "note1": "هي فارم ڀرڻ سان منتقلي شروع ڪرڻ لاءِ اسان جي سپورٽ شعبي لاءِ نئون ٽڪيٽ کُلندو.",
+        "note2": "ڪنهن به دير کان بچڻ لاءِ مهرباني ڪري ممڪن حد تائين مڪمل ۽ درست رهو.",
+        "note3": "عام منتقلي 48 کان 72 ڪلاڪن ۾ مڪمل ٿئي ٿي. ڪڏهن ڪڏهن وڌيڪ وقت لڳندو آهي جيڪڏهن نقل ڪرڻ لاءِ ڊيٽا گهڻو آهي.",
+        "note4": "منتقلي دوران پراڻو هوسٽنگ اڪائونٽ آن لائن ۽ رسائي لائق هجڻ گهرجي، ٻي صورت ۾ اسان کي مشڪل ٿي سگهي ٿي.",
+        "note5": "مهرباني ڪري منتقلي دوران پنهنجي سائيٽ تي ڪو به اپڊيٽ نه ڪريو، ٻي صورت ۾ اها ڊيٽا نئين هوسٽنگ تي نقل نه ٿي سگهي."
+    },
+    "order": {
+        "title": "ويب سائيٽ آرڊر ڪريو"
+    }
+}

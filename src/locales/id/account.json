@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Pengaturan Akun"
+    },
+    "changePassword": {
+        "title": "Ubah Kata Sandi",
+        "cardTitle": "Perbarui Kata Sandi",
+        "currentPassword": "Kata Sandi Saat Ini",
+        "newPassword": "Kata Sandi Baru",
+        "confirmPassword": "Konfirmasi Kata Sandi",
+        "updatePassword": "Perbarui Kata Sandi"
+    },
+    "changeUsername": {
+        "title": "Ubah Nama Pengguna",
+        "disabled": "Perubahan nama pengguna telah dinonaktifkan sementara.",
+        "currentUsername": "Nama Pengguna Saat Ini",
+        "newDesiredUsername": "Nama Pengguna Baru yang Diinginkan",
+        "confirmationCode": "Kode Konfirmasi",
+        "pleaseWait": "Harap tunggu!",
+        "gotError": "Terjadi kesalahan {error}"
+    },
+    "contactInfo": {
+        "title": "Info Kontak",
+        "cardTitle": "Perbarui Info Kontak",
+        "headsUp": "Perhatian!",
+        "headsUpMessage": "Meskipun informasi ini opsional, memberikan informasi (yang akurat) akan membantu memperkaya interaksi kami dan menurunkan Skor Risiko % Anda sehingga memberikan akses yang lebih cepat dan nyaman ke bagian-bagian situs (seperti tidak perlu mengautentikasi kartu kredit).",
+        "riskScore": "Skor Risiko %",
+        "personalInformation": "Informasi Pribadi",
+        "name": "Nama",
+        "namePlaceholder": "Joe Cool",
+        "company": "Perusahaan",
+        "gstinTaxId": "ID Pajak GSTIN",
+        "gstinPlaceholder": "Nomor Identifikasi Wajib Pajak Barang dan Jasa",
+        "addressLine1": "Alamat Baris 1",
+        "addressLine2": "Alamat Baris 2",
+        "cityState": "Kota, Provinsi",
+        "city": "Kota",
+        "state": "Provinsi",
+        "country": "Negara",
+        "zipcode": "Kode Pos",
+        "phoneNo": "No. Telepon",
+        "phoneNumber": "Nomor Telepon",
+        "language": "Bahasa",
+        "auto": "Otomatis",
+        "currency": "Mata Uang",
+        "timeZone": "Zona Waktu",
+        "otherSettings": "Pengaturan Lainnya",
+        "disablePasswordResets": "Nonaktifkan (Lupa Kata Sandi) Atur Ulang Kata Sandi.",
+        "disableInvoiceReminders": "Nonaktifkan Notifikasi Email Pengingat Faktur.",
+        "disableServerInvoiceReminders": "Nonaktifkan Notifikasi Email Pengingat Faktur Server.",
+        "disableReinstall": "Nonaktifkan Instalasi Ulang.",
+        "alternateEmailInvoices": "Email Alternatif untuk Faktur",
+        "alternateEmailInvoicesPlaceholder": "Email alternatif untuk mengirim faktur",
+        "alternateEmailAbuse": "Email Alternatif untuk Laporan Penyalahgunaan",
+        "updateInfo": "Perbarui Info"
+    }
+}

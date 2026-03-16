@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Daftar Layanan Scrub IPs",
+        "orderTitle": "Pesan Scrub IPs"
+    },
+    "view": {
+        "title": "Lihat Scrub IPs",
+        "currentIp": "IP Saat Ini",
+        "ipAddress": "Alamat IP",
+        "ipFromService": "IP dari layanan"
+    },
+    "filters": {
+        "title": "Filter",
+        "createNew": "Buat Baru",
+        "createNewFilter": "Buat Filter Baru",
+        "filterType": "Jenis Filter",
+        "selectFilterType": "Pilih Jenis Filter",
+        "ipAddress": "Alamat IP",
+        "portNo": "No. Port",
+        "filter": "Filter",
+        "destinationIp": "IP Tujuan",
+        "destinationPort": "Port Tujuan",
+        "noFiltersFound": "Tidak ada filter ditemukan!",
+        "deleteFilterConfirm": "Apakah Anda yakin ingin menghapus filter ini?",
+        "unableToCreateFilter": "Tidak dapat membuat filter saat ini.",
+        "unableToDeleteFilter": "Tidak dapat menghapus filter saat ini."
+    },
+    "firewallRules": {
+        "title": "Aturan Firewall",
+        "createNew": "Buat Baru",
+        "createNewFirewall": "Buat Aturan Firewall Baru",
+        "protocol": "Protokol",
+        "destinationIp": "IP Tujuan",
+        "destinationPort": "Port Tujuan",
+        "sourceIp": "IP Sumber",
+        "sourcePort": "Port Sumber",
+        "xdpAction": "Tindakan XDP",
+        "ipRequired": "Alamat IP diperlukan",
+        "block": "Blokir",
+        "whitelist": "Daftar Putih",
+        "noRulesFound": "Tidak ada aturan ditemukan!",
+        "deleteRuleConfirm": "Apakah Anda yakin ingin menghapus aturan ini?",
+        "unableToCreateRule": "Tidak dapat membuat aturan firewall saat ini.",
+        "unableToDeleteRule": "Tidak dapat menghapus aturan firewall saat ini."
+    },
+    "geoFirewallRules": {
+        "title": "Aturan Firewall Geo",
+        "createNew": "Buat Baru",
+        "createNewGeoRule": "Buat Aturan Firewall Geo Baru",
+        "destinationIp": "IP Tujuan",
+        "destinationPort": "Port Tujuan",
+        "sourceCountry": "Negara Sumber",
+        "sourceAsn": "ASN Sumber",
+        "xdpAction": "Tindakan XDP",
+        "portNo": "No. Port",
+        "selectCountry": "Pilih Negara",
+        "asn": "ASN",
+        "block": "Blokir",
+        "whitelist": "Daftar Putih",
+        "noRulesFound": "Tidak ada aturan ditemukan!",
+        "deleteGeoRuleConfirm": "Apakah Anda yakin ingin menghapus aturan geo ini?",
+        "unableToCreateRule": "Tidak dapat membuat aturan firewall saat ini.",
+        "unableToDeleteRule": "Tidak dapat menghapus aturan firewall geo saat ini."
+    }
+}

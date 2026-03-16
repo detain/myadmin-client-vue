@@ -1,0 +1,28 @@
+{
+    "title": "Dashibodi",
+    "welcome": "Karibu, {name}",
+    "lastLogin": "Kuingia kwa Mwisho",
+    "lastLoginIp": "IP ya Kuingia kwa Mwisho",
+    "prepay": {
+        "title": "Salio la Malipo ya Awali",
+        "remainingBalance": "Salio Lililobaki la Malipo ya Awali",
+        "manageAccount": "Simamia Akaunti",
+        "manageTooltip": "Simamia Akaunti yako ya Malipo ya Awali"
+    },
+    "invoices": {
+        "title": "Ankara Ambazo Hazijalipwa",
+        "totalUnpaid": "Ankara Zote Ambazo Hazijalipwa",
+        "totalAmount": "Jumla ya Kiasi cha Kulipwa",
+        "payTotalTooltip": "Lipa Jumla ya Kiasi"
+    },
+    "callInPin": "PIN ya Kupiga Simu",
+    "recentTickets": "Tiketi za Hivi Karibuni",
+    "viewAllTickets": "Angalia Tiketi Zote",
+    "editTicket": "Hariri Tiketi",
+    "serviceCount": "Hakuna huduma zinazofanya kazi | Huduma {count} inayofanya kazi | Huduma {count} zinazofanya kazi",
+    "affiliate": {
+        "earnPerSale": "Pata {amount} kwa kila Uuzaji",
+        "urlPlaceholder": "URL ya Washirika",
+        "shareWith": "Shiriki na"
+    }
+}

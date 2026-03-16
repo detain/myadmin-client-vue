@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Hesab Parametrləri"
+    },
+    "changePassword": {
+        "title": "Şifrəni Dəyiş",
+        "cardTitle": "Şifrəni Yenilə",
+        "currentPassword": "Cari Şifrə",
+        "newPassword": "Yeni Şifrə",
+        "confirmPassword": "Şifrəni Təsdiqlə",
+        "updatePassword": "Şifrəni Yenilə"
+    },
+    "changeUsername": {
+        "title": "İstifadəçi Adını Dəyiş",
+        "disabled": "İstifadəçi adı dəyişiklikləri müvəqqəti olaraq deaktivləşdirilib.",
+        "currentUsername": "Cari İstifadəçi Adı",
+        "newDesiredUsername": "Yeni İstənilən İstifadəçi Adı",
+        "confirmationCode": "Təsdiq Kodu",
+        "pleaseWait": "Zəhmət olmasa gözləyin!",
+        "gotError": "Xəta alındı: {error}"
+    },
+    "contactInfo": {
+        "title": "Əlaqə Məlumatları",
+        "cardTitle": "Əlaqə Məlumatlarını Yenilə",
+        "headsUp": "Diqqət!",
+        "headsUpMessage": "Bu məlumat isteğe bağlı olsa da, (dəqiq) məlumat vermək həm qarşılıqlı əlaqəmizi zənginləşdirməyə, həm də Risk % Balınızı azaltmağa kömək edəcək, saytın bəzi hissələrinə daha sürətli və rahat giriş imkanı verəcəkdir.",
+        "riskScore": "Risk % Balı",
+        "personalInformation": "Şəxsi Məlumatlar",
+        "name": "Ad",
+        "namePlaceholder": "Joe Cool",
+        "company": "Şirkət",
+        "gstinTaxId": "GSTIN Vergi ID",
+        "gstinPlaceholder": "Mal və Xidmətlər Vergi Ödəyicisinin Şəxsiyyət Nömrəsi",
+        "addressLine1": "Ünvan Sətri 1",
+        "addressLine2": "Ünvan Sətri 2",
+        "cityState": "Şəhər, Əyalət",
+        "city": "Şəhər",
+        "state": "Əyalət",
+        "country": "Ölkə",
+        "zipcode": "Poçt İndeksi",
+        "phoneNo": "Telefon Nömrəsi",
+        "phoneNumber": "Telefon Nömrəsi",
+        "language": "Dil",
+        "auto": "Avtomatik",
+        "currency": "Valyuta",
+        "timeZone": "Saat Qurşağı",
+        "otherSettings": "Digər Parametrlər",
+        "disablePasswordResets": "Şifrə Sıfırlamasını Deaktivləşdir (Şifrəni Unutdum).",
+        "disableInvoiceReminders": "Faktura Xatırlatma E-poçt Bildirişlərini Deaktivləşdir.",
+        "disableServerInvoiceReminders": "Server Faktura Xatırlatma E-poçt Bildirişlərini Deaktivləşdir.",
+        "disableReinstall": "Yenidən Qurmanı Deaktivləşdir.",
+        "alternateEmailInvoices": "Fakturalar üçün Alternativ E-poçt",
+        "alternateEmailInvoicesPlaceholder": "Faktura göndərmək üçün alternativ e-poçt",
+        "alternateEmailAbuse": "Sui-istifadə Hesabatları üçün Alternativ E-poçt",
+        "updateInfo": "Məlumatları Yenilə"
+    }
+}

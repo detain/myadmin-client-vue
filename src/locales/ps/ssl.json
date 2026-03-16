@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "د SSL سندونو لیست",
+        "orderTitle": "د SSL ثبت نامونو امر"
+    },
+    "view": {
+        "title": "SSL {id} وګورئ",
+        "package": "پاکیج",
+        "nextInvoiceDate": "د راتلونکي انوایس نیټه:",
+        "billing": "بیل",
+        "billed": "بیل شوی:",
+        "statusIs": "حالت دی:",
+        "orderInfo": "د امر معلومات",
+        "certificateInfo": "د سند معلومات",
+        "links": "لینکونه",
+        "welcomeEmailConfirm": "ایا تاسو ډاډه یاست چې د هرکلي بریښنالیک بیا ولیږئ؟",
+        "emailSent": "بریښنالیک ولیږل شو",
+        "emailSentMessage": "د هرکلي بریښنالیک بیا ولیږل شو. خپل انباکس وګورئ."
+    },
+    "order": {
+        "title": "SSL امر ورکړئ"
+    },
+    "changeApproverEmail": {
+        "title": "د تایید کوونکي بریښنالیک بدل کړئ",
+        "selectApproverEmail": "د تایید کوونکي بریښنالیک وټاکئ"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Abasebenzisi",
+    "addUser": "Yongeza umsebenzisi",
+    "editUser": "Hlela umsebenzisi",
+    "firstName": "Igama lokuqala",
+    "lastName": "Ifani",
+    "username": "Igama lomsebenzisi",
+    "password": "Igama lokusebenzisa",
+    "keepSamePassword": "Shiya libe ngenanto ukugcina igama lokusebenzisa elifanayo",
+    "errorLoading": "Impazamo ukulayisha abasebenzisi:",
+    "errorLoadingUser": "Impazamo ukulayisha umsebenzisi:"
+}

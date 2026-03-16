@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL ਸਰਟੀਫਿਕੇਟ ਸੂਚੀ",
+        "orderTitle": "SSL ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਆਰਡਰ ਕਰੋ"
+    },
+    "view": {
+        "title": "SSL {id} ਦੇਖੋ",
+        "package": "ਪੈਕੇਜ",
+        "nextInvoiceDate": "ਅਗਲੀ ਇਨਵੌਇਸ ਮਿਤੀ:",
+        "billing": "ਬਿਲਿੰਗ",
+        "billed": "ਬਿੱਲ ਕੀਤਾ:",
+        "statusIs": "ਸਥਿਤੀ ਹੈ:",
+        "orderInfo": "ਆਰਡਰ ਜਾਣਕਾਰੀ",
+        "certificateInfo": "ਸਰਟੀਫਿਕੇਟ ਜਾਣਕਾਰੀ",
+        "links": "ਲਿੰਕ",
+        "welcomeEmailConfirm": "ਕੀ ਤੁਸੀਂ ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "emailSent": "ਈਮੇਲ ਭੇਜੀ ਗਈ",
+        "emailSentMessage": "ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜੀ ਗਈ ਹੈ। ਆਪਣਾ ਇਨਬਾਕਸ ਜਾਂਚੋ।"
+    },
+    "order": {
+        "title": "SSL ਆਰਡਰ ਕਰੋ"
+    },
+    "changeApproverEmail": {
+        "title": "ਪ੍ਰਵਾਨਕਰਤਾ ਈਮੇਲ ਬਦਲੋ",
+        "selectApproverEmail": "ਪ੍ਰਵਾਨਕਰਤਾ ਈਮੇਲ ਚੁਣੋ"
+    }
+}

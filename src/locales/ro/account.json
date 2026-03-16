@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Setări cont"
+    },
+    "changePassword": {
+        "title": "Schimbare parolă",
+        "cardTitle": "Actualizare parolă",
+        "currentPassword": "Parolă curentă",
+        "newPassword": "Parolă nouă",
+        "confirmPassword": "Confirmare parolă",
+        "updatePassword": "Actualizare parolă"
+    },
+    "changeUsername": {
+        "title": "Schimbare nume utilizator",
+        "disabled": "Modificările de nume de utilizator au fost dezactivate temporar.",
+        "currentUsername": "Nume utilizator curent",
+        "newDesiredUsername": "Nume utilizator nou dorit",
+        "confirmationCode": "Cod de confirmare",
+        "pleaseWait": "Te rog așteaptă!",
+        "gotError": "Eroare: {error}"
+    },
+    "contactInfo": {
+        "title": "Informații de contact",
+        "cardTitle": "Actualizare informații de contact",
+        "headsUp": "Atenție!",
+        "headsUpMessage": "Deși aceste informații sunt opționale, furnizarea de informații (exacte) va ajuta atât la îmbogățirea interacțiunilor noastre, cât și la reducerea scorului de risc %, oferindu-ți acces mai rapid și mai convenabil la părțile site-ului.",
+        "riskScore": "Scor risc %",
+        "personalInformation": "Informații personale",
+        "name": "Nume",
+        "namePlaceholder": "Ion Popescu",
+        "company": "Companie",
+        "gstinTaxId": "ID fiscal GSTIN",
+        "gstinPlaceholder": "Număr de identificare a contribuabilului de bunuri și servicii",
+        "addressLine1": "Adresă linia 1",
+        "addressLine2": "Adresă linia 2",
+        "cityState": "Oraș, Județ",
+        "city": "Oraș",
+        "state": "Județ",
+        "country": "Țară",
+        "zipcode": "Cod poștal",
+        "phoneNo": "Nr. telefon",
+        "phoneNumber": "Număr de telefon",
+        "language": "Limbă",
+        "auto": "Auto",
+        "currency": "Monedă",
+        "timeZone": "Fus orar",
+        "otherSettings": "Alte setări",
+        "disablePasswordResets": "Dezactivare resetare parolă (Ai uitat parola).",
+        "disableInvoiceReminders": "Dezactivare notificări email cu memento factură.",
+        "disableServerInvoiceReminders": "Dezactivare notificări email cu memento factură server.",
+        "disableReinstall": "Dezactivare reinstalare.",
+        "alternateEmailInvoices": "Email alternativ pentru facturi",
+        "alternateEmailInvoicesPlaceholder": "Email alternativ pentru trimiterea facturilor",
+        "alternateEmailAbuse": "Email alternativ pentru rapoarte de abuz",
+        "updateInfo": "Actualizare informații"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Speicher / Backup-Liste",
+        "orderTitle": "Backup-Registrierungen bestellen"
+    },
+    "view": {
+        "title": "Backup {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet:",
+        "statusIs": "Status ist:",
+        "hostServer": "Host-Server",
+        "links": "Links",
+        "welcomeEmailConfirm": "Sind Sie sicher, dass Sie die Willkommens-E-Mail erneut senden möchten?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Überprüfen Sie Ihren Posteingang."
+    },
+    "order": {
+        "title": "Speicher bestellen"
+    }
+}

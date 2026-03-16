@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "اکاؤنٹ کی ترتیبات"
+    },
+    "changePassword": {
+        "title": "پاس ورڈ تبدیل کریں",
+        "cardTitle": "پاس ورڈ اپ ڈیٹ کریں",
+        "currentPassword": "موجودہ پاس ورڈ",
+        "newPassword": "نیا پاس ورڈ",
+        "confirmPassword": "پاس ورڈ کی تصدیق کریں",
+        "updatePassword": "پاس ورڈ اپ ڈیٹ کریں"
+    },
+    "changeUsername": {
+        "title": "صارف نام تبدیل کریں",
+        "disabled": "صارف نام کی تبدیلیاں عارضی طور پر غیر فعال کر دی گئی ہیں۔",
+        "currentUsername": "موجودہ صارف نام",
+        "newDesiredUsername": "نیا مطلوبہ صارف نام",
+        "confirmationCode": "تصدیقی کوڈ",
+        "pleaseWait": "براہ کرم انتظار کریں!",
+        "gotError": "خرابی ملی {error}"
+    },
+    "contactInfo": {
+        "title": "رابطہ کی معلومات",
+        "cardTitle": "رابطہ کی معلومات اپ ڈیٹ کریں",
+        "headsUp": "توجہ!",
+        "headsUpMessage": "اگرچہ یہ معلومات اختیاری ہیں، (درست) معلومات فراہم کرنے سے ہماری بات چیت کو بہتر بنانے اور آپ کے رسک % سکور کو کم کرنے میں مدد ملے گی جس سے سائٹ کے کچھ حصوں تک آپ کو تیز اور زیادہ آسان رسائی ملے گی (جیسے کریڈٹ کارڈ کی توثیق نہ کرنا پڑے)۔",
+        "riskScore": "رسک % سکور",
+        "personalInformation": "ذاتی معلومات",
+        "name": "نام",
+        "namePlaceholder": "Joe Cool",
+        "company": "کمپنی",
+        "gstinTaxId": "GSTIN ٹیکس ID",
+        "gstinPlaceholder": "اشیا اور خدمات کا ٹیکس دہندہ شناختی نمبر",
+        "addressLine1": "پتہ لائن 1",
+        "addressLine2": "پتہ لائن 2",
+        "cityState": "شہر، ریاست",
+        "city": "شہر",
+        "state": "ریاست",
+        "country": "ملک",
+        "zipcode": "زپ کوڈ",
+        "phoneNo": "فون نمبر",
+        "phoneNumber": "فون نمبر",
+        "language": "زبان",
+        "auto": "خودکار",
+        "currency": "کرنسی",
+        "timeZone": "ٹائم زون",
+        "otherSettings": "دیگر ترتیبات",
+        "disablePasswordResets": "پاس ورڈ ری سیٹ (پاس ورڈ بھول گئے) کو غیر فعال کریں۔",
+        "disableInvoiceReminders": "انوائس یاد دہانی ای میل اطلاعات کو غیر فعال کریں۔",
+        "disableServerInvoiceReminders": "سرور انوائس یاد دہانی ای میل اطلاعات کو غیر فعال کریں۔",
+        "disableReinstall": "دوبارہ انسٹال کو غیر فعال کریں۔",
+        "alternateEmailInvoices": "انوائس کے لیے متبادل ای میل",
+        "alternateEmailInvoicesPlaceholder": "انوائس بھیجنے کے لیے متبادل ای میل",
+        "alternateEmailAbuse": "غلط استعمال کی رپورٹس کے لیے متبادل ای میل",
+        "updateInfo": "معلومات اپ ڈیٹ کریں"
+    }
+}

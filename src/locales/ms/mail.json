@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Senarai Perkhidmatan Mel",
+        "orderTitle": "Pesan Pendaftaran Mel"
+    },
+    "view": {
+        "title": "Lihat Mel {id}",
+        "package": "Pakej",
+        "nextInvoiceDate": "Tarikh Invois Seterusnya:",
+        "billing": "Pengebilan",
+        "billed": "Dibilkan:",
+        "statusIs": "Status ialah:",
+        "mailApi": "API Mel",
+        "usageCount": "Kiraan Penggunaan:",
+        "links": "Pautan",
+        "connectionInfo": "Maklumat Sambungan",
+        "welcomeEmailConfirm": "Adakah anda pasti mahu menghantar semula e-mel alu-aluan?",
+        "emailSent": "E-mel Dihantar",
+        "emailSentMessage": "E-mel alu-aluan telah dihantar semula. Semak peti masuk anda."
+    },
+    "order": {
+        "title": "Pesan Mel"
+    },
+    "alerts": {
+        "title": "Amaran",
+        "addAlert": "Tambah Amaran",
+        "editAlert": "Edit Amaran",
+        "noAlerts": "Tiada amaran ditemui"
+    },
+    "delist": {
+        "title": "Senarai Semula",
+        "blockedEmails": "E-mel Disekat"
+    },
+    "denyRules": {
+        "title": "Peraturan Penolakan",
+        "addRule": "Tambah Peraturan",
+        "noRules": "Tiada peraturan penolakan ditemui"
+    },
+    "logs": {
+        "title": "Log",
+        "searchLogs": "Cari Log"
+    },
+    "stats": {
+        "title": "Statistik"
+    },
+    "deliverability": {
+        "title": "Kebolehantaran"
+    }
+}

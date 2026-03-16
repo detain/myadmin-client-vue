@@ -116,7 +116,7 @@ export default defineConfig({
             allowedHosts: true,
             cors: true,
             watch: {
-              ignored: ['**/.claude/**']
+              ignored: ['**/.claire/**', '**/.claude/**']
             }
         },
     },

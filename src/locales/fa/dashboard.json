@@ -1,0 +1,28 @@
+{
+    "title": "داشبورد",
+    "welcome": "خوش آمدید، {name}",
+    "lastLogin": "آخرین ورود",
+    "lastLoginIp": "آی‌پی آخرین ورود",
+    "prepay": {
+        "title": "موجودی پیش‌پرداخت",
+        "remainingBalance": "موجودی باقی‌مانده پیش‌پرداخت",
+        "manageAccount": "مدیریت حساب",
+        "manageTooltip": "مدیریت حساب پیش‌پرداخت شما"
+    },
+    "invoices": {
+        "title": "فاکتورهای پرداخت نشده",
+        "totalUnpaid": "مجموع فاکتورهای پرداخت نشده",
+        "totalAmount": "مجموع مبلغ باید پرداخت شود",
+        "payTotalTooltip": "پرداخت مجموع مبلغ"
+    },
+    "callInPin": "پین تماس تلفنی",
+    "recentTickets": "تیکت‌های اخیر",
+    "viewAllTickets": "مشاهده همه تیکت‌ها",
+    "editTicket": "ویرایش تیکت",
+    "serviceCount": "هیچ سرویس فعالی وجود ندارد | {count} سرویس فعال | {count} سرویس فعال",
+    "affiliate": {
+        "earnPerSale": "برای هر فروش {amount} کسب کنید",
+        "urlPlaceholder": "URL همکاری در فروش",
+        "shareWith": "اشتراک‌گذاری با"
+    }
+}

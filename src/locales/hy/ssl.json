@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Vkayagrer Tsanak",
+        "orderTitle": "Patvirel SSL Granchumner"
+    },
+    "view": {
+        "title": "Ditkl SSL {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Hajord Hashiv-aprankagreri Amsakiv:",
+        "billing": "Vcharum",
+        "billed": "vcharvats:",
+        "statusIs": "Kargavichaкn e:",
+        "orderInfo": "Patveri Tevgh",
+        "certificateInfo": "Vkayagri Tevgh",
+        "links": "Hghumner",
+        "welcomeEmailConfirm": "Voroshum eq? Uzeq veranerkyal ougharkel bariv gnalu el. naman?",
+        "emailSent": "El. Naman Ougharkval E",
+        "emailSentMessage": "Bariv gnalu el. naman veranerkyal e ougharkvel. Stugel dzer muts arkultern."
+    },
+    "order": {
+        "title": "Patvirel SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Pokhel Hastavori El. Naman",
+        "selectApproverEmail": "Yntrel Hastavori El. Naman"
+    }
+}

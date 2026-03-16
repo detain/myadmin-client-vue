@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Daftar Sertifikat SSL",
+        "orderTitle": "Pesan Registrasi SSL"
+    },
+    "view": {
+        "title": "Lihat SSL {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Faktur Berikutnya:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status adalah:",
+        "orderInfo": "Info Pesanan",
+        "certificateInfo": "Info Sertifikat",
+        "links": "Tautan",
+        "welcomeEmailConfirm": "Apakah Anda yakin ingin mengirim ulang email selamat datang?",
+        "emailSent": "Email Terkirim",
+        "emailSentMessage": "Email selamat datang telah dikirim ulang. Periksa kotak masuk Anda."
+    },
+    "order": {
+        "title": "Pesan SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Ubah Email Penyetuju",
+        "selectApproverEmail": "Pilih Email Penyetuju"
+    }
+}

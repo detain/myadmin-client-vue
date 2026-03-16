@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lisi Teuteuga / Fa'akomikopi",
+        "orderTitle": "Porosini Resitala Fa'akomikopi"
+    },
+    "view": {
+        "title": "Va'ai Fa'akomikopi {id}",
+        "package": "Fa'aofuofu",
+        "nextInvoiceDate": "Aso o le Pili Sosoo:",
+        "billing": "Fai Pili",
+        "billed": "fai pili:",
+        "statusIs": "Va'aiga o:",
+        "hostServer": "Seva Talimalo",
+        "links": "So'otaga",
+        "welcomeEmailConfirm": "E te mautinoa e te mana'o e toe auina le imeli afio mai?",
+        "emailSent": "Imeli Auina",
+        "emailSentMessage": "Ua toe auina le imeli afio mai. Siaki lau inbox."
+    },
+    "order": {
+        "title": "Porosini Teuteuga"
+    }
+}

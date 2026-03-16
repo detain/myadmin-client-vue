@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Licentielijst",
+        "orderTitle": "Licentieregistraties bestellen"
+    },
+    "view": {
+        "title": "Licentie {id} bekijken",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende factuurdatum:",
+        "billing": "Facturering",
+        "billed": "gefactureerd:",
+        "statusIs": "Status is:",
+        "licenseInfo": "Licentie-informatie",
+        "cpanelInfo": "cPanel-informatie",
+        "links": "Links",
+        "welcomeEmailConfirm": "Weet je zeker dat je de welkomstmail opnieuw wilt versturen?",
+        "emailSent": "E-mail verzonden",
+        "emailSentMessage": "De welkomstmail is opnieuw verzonden. Controleer je inbox."
+    },
+    "order": {
+        "title": "Licentie bestellen"
+    },
+    "changeIp": {
+        "title": "IP wijzigen"
+    },
+    "changeOs": {
+        "title": "OS wijzigen",
+        "selectLicenseOs": "Licentie-OS selecteren"
+    }
+}

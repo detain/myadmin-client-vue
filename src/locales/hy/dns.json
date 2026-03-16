@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Կառavarichits",
+        "addDomain": "Avelytsnel domen",
+        "deleteDomain": "Jnjel domen",
+        "domainName": "Domeni anun",
+        "dnsServers": "DNS Serverneр",
+        "confirmDelete": "Voroshum eq? Uzeq jnjel ayd domenn?",
+        "noDomains": "Domenner chi gtnvel"
+    },
+    "editor": {
+        "title": "DNS Khmbagrič",
+        "addRecord": "Avelytsnel grarrumq",
+        "deleteRecord": "Jnjel grarrumq",
+        "editRecord": "Khmbagrel grarrumq",
+        "recordType": "Grarrumi tесak",
+        "hostname": "Hostname",
+        "address": "Hashce",
+        "distance": "Hyuraskhir",
+        "weight": "Кshir",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Gortsoghutyunner",
+        "confirmDelete": "Voroshum eq? Uzeq jnjel ayd grarrumn?"
+    }
+}

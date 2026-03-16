@@ -1,0 +1,12 @@
+{
+    "required": "{field} diperlukan",
+    "email": "Mesti alamat e-mel yang sah",
+    "minLength": "Mesti sekurang-kurangnya {min} aksara",
+    "maxLength": "Mesti tidak lebih daripada {max} aksara",
+    "passwordMatch": "Kata laluan mesti sepadan",
+    "invalidFormat": "Format tidak sah",
+    "numeric": "Mesti nombor",
+    "url": "Mesti URL yang sah",
+    "ipAddress": "Mesti alamat IP yang sah",
+    "hostname": "Mesti nama host yang sah"
+}

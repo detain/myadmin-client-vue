@@ -1,0 +1,12 @@
+{
+    "title": "Pengguna",
+    "addUser": "Tambah Pengguna",
+    "editUser": "Edit Pengguna",
+    "firstName": "Nama Pertama",
+    "lastName": "Nama Akhir",
+    "username": "Nama Pengguna",
+    "password": "Kata Laluan",
+    "keepSamePassword": "Biarkan kosong untuk mengekalkan kata laluan yang sama",
+    "errorLoading": "Ralat memuatkan pengguna:",
+    "errorLoadingUser": "Ralat memuatkan pengguna:"
+}

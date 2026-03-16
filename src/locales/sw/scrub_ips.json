@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Orodha ya Huduma za Scrub IP",
+        "orderTitle": "Agiza Scrub IP"
+    },
+    "view": {
+        "title": "Angalia Scrub IP",
+        "currentIp": "IP ya Sasa",
+        "ipAddress": "Anwani ya IP",
+        "ipFromService": "IP kutoka kwa huduma"
+    },
+    "filters": {
+        "title": "Vichujio",
+        "createNew": "Unda Kipya",
+        "createNewFilter": "Unda Kichujio Kipya",
+        "filterType": "Aina ya Kichujio",
+        "selectFilterType": "Chagua Aina ya Kichujio",
+        "ipAddress": "Anwani ya IP",
+        "portNo": "Nambari ya Bandari",
+        "filter": "Kichujio",
+        "destinationIp": "IP ya Lengo",
+        "destinationPort": "Bandari ya Lengo",
+        "noFiltersFound": "Hakuna vichujio vilivyopatikana!",
+        "deleteFilterConfirm": "Je, una uhakika unataka kufuta kichujio hiki?",
+        "unableToCreateFilter": "Haiwezekani kuunda kichujio kwa sasa.",
+        "unableToDeleteFilter": "Haiwezekani kufuta kichujio kwa sasa."
+    },
+    "firewallRules": {
+        "title": "Sheria za Ukuta wa Moto",
+        "createNew": "Unda Kipya",
+        "createNewFirewall": "Unda Sheria Mpya ya Ukuta wa Moto",
+        "protocol": "Itifaki",
+        "destinationIp": "IP ya Lengo",
+        "destinationPort": "Bandari ya Lengo",
+        "sourceIp": "IP ya Chanzo",
+        "sourcePort": "Bandari ya Chanzo",
+        "xdpAction": "Hatua ya XDP",
+        "ipRequired": "Anwani ya IP inahitajika",
+        "block": "Zuia",
+        "whitelist": "Orodha ya Kuruhusiwa",
+        "noRulesFound": "Hakuna sheria zilizopatikana!",
+        "deleteRuleConfirm": "Je, una uhakika unataka kufuta sheria hii?",
+        "unableToCreateRule": "Haiwezekani kuunda sheria ya ukuta wa moto kwa sasa.",
+        "unableToDeleteRule": "Haiwezekani kufuta sheria ya ukuta wa moto kwa sasa."
+    },
+    "geoFirewallRules": {
+        "title": "Sheria za Ukuta wa Moto wa Kijiografia",
+        "createNew": "Unda Kipya",
+        "createNewGeoRule": "Unda Sheria Mpya ya Ukuta wa Moto wa Kijiografia",
+        "destinationIp": "IP ya Lengo",
+        "destinationPort": "Bandari ya Lengo",
+        "sourceCountry": "Nchi ya Chanzo",
+        "sourceAsn": "ASN ya Chanzo",
+        "xdpAction": "Hatua ya XDP",
+        "portNo": "Nambari ya Bandari",
+        "selectCountry": "Chagua Nchi",
+        "asn": "ASN",
+        "block": "Zuia",
+        "whitelist": "Orodha ya Kuruhusiwa",
+        "noRulesFound": "Hakuna sheria zilizopatikana!",
+        "deleteGeoRuleConfirm": "Je, una uhakika unataka kufuta sheria hii ya kijiografia?",
+        "unableToCreateRule": "Haiwezekani kuunda sheria ya ukuta wa moto kwa sasa.",
+        "unableToDeleteRule": "Haiwezekani kufuta sheria ya ukuta wa moto ya kijiografia kwa sasa."
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Domein toevoegen",
+        "deleteDomain": "Domein verwijderen",
+        "domainName": "Domeinnaam",
+        "dnsServers": "DNS-servers",
+        "confirmDelete": "Weet je zeker dat je dit domein wilt verwijderen?",
+        "noDomains": "Geen domeinen gevonden"
+    },
+    "editor": {
+        "title": "DNS-editor",
+        "addRecord": "Record toevoegen",
+        "deleteRecord": "Record verwijderen",
+        "editRecord": "Record bewerken",
+        "recordType": "Recordtype",
+        "hostname": "Hostnaam",
+        "address": "Adres",
+        "distance": "Afstand",
+        "weight": "Gewicht",
+        "port": "Poort",
+        "ttl": "TTL",
+        "actions": "Acties",
+        "confirmDelete": "Weet je zeker dat je dit record wilt verwijderen?"
+    }
+}

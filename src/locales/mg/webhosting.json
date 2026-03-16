@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lisitry ny Web Hosting",
+        "orderTitle": "Manome baiko ny Fisoratana Tranokala"
+    },
+    "view": {
+        "title": "Jereo ny Tranokala {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa",
+        "billingStatusIs": "Sata Faktiora dia:",
+        "hostInfo": "Fampahalalana Mpiantrano",
+        "username": "Anarana Mpampiasa:",
+        "ip": "IP:",
+        "server": "Mpizara:",
+        "notSetYet": "Tsy voametra tsara",
+        "login": "Hiditra",
+        "types": "Karazana:",
+        "linksLabel": "Rohy:",
+        "manualLogin": "Fidirana Tanana",
+        "automaticLogin": "Fidirana Ho Azy",
+        "clickHere": "Kilaoro Eto",
+        "defaultNameservers": "Nameservers Default",
+        "nameservers": "Nameservers:",
+        "externalLinks": "Rohy Ivelany",
+        "names": "Anarana:",
+        "websitePreview": "Fijery Mialoha ny Tranokala",
+        "links": "Rohy",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "buyIp": {
+        "title": "Mividy Addon IP Fanampiny",
+        "existingAddonIps": "IPs Addon Efa Misy",
+        "additionalIp": "IP Fanampiny",
+        "monthlyCost": "Vidy Isambvolana ({symbol})",
+        "costDescription": "Vidy ({symbol}) isambvolana arakaraka ny faktioran'ny tranokala anao",
+        "confirmPurchase": "Manamarina ny Fividianana",
+        "confirmMessage": "Vidin'ny IP fanampiny: {symbol}{cost}/volana. Tena tia hanome baiko IP fanampiny ve ianao?",
+        "placeOrder": "Apetraho ny Baiko",
+        "orderPlaced": "Baiko Nametraka"
+    },
+    "reverseDns": {
+        "title": "DNS Miverina",
+        "updateReverseDns": "Havao ny DNS Miverina"
+    },
+    "downloadBackups": {
+        "title": "Misitraka ny Backup",
+        "backup": "Backup",
+        "size": "Haben'ny",
+        "options": "Safidy"
+    },
+    "migration": {
+        "title": "Ampindrao ny Tranokala Anao",
+        "currentWebHostInfo": "Fampahalalana Web Host Ankehitriny",
+        "customerPortalUrl": "URL Portal Mpanjifana",
+        "portalExample": "Ohatra: sso.godaddy.com",
+        "registeredUsername": "Anarana Mpampiasa / Email / ID Voasoratra",
+        "password": "Tenimiafina",
+        "controlPanelUrl": "URL Panel Fehezana",
+        "controlPanelExample": "Ohatra: yourdomain.com/cpanel",
+        "ftpUsername": "Anarana Mpampiasa FTP / Panel Fehezana",
+        "ftpPassword": "Tenimiafina FTP / Panel Fehezana",
+        "holdingPageQuestion": "Raha miasa / tranokala maro mpitsidika ny tranokala, mety va ny nametraka pejy miandry mandritra ny fampindrana?",
+        "specialRequirementsQuestion": "Misy fepetra manokana toy ny Dikan'ny PHP / Modules ve ity tranokala ity?",
+        "domainRegistryInfo": "Fampahalalana Domain Registry",
+        "transferDomainQuestion": "Tianao koa ve ny hanampiana anao amin'ny fampindrana ny fisoratana anarana domain?",
+        "updateNameserversQuestion": "Tianao ve ny hanavaozana ny mpizara anarana raha vantany vao vita ny fampindrana angona?",
+        "domainRegistryPortal": "Portal Mpanjifana Domain Registry",
+        "importantNotes": "Fanamarihana Ilaina",
+        "note1": "Ny famenoana ity formy ity dia hanokatra ticket vaovao ho an'ny departemantray fanohana mba hanombohana ny fampindrana anao.",
+        "note2": "Azafady ho feno sy marina araka izay azo atao mba tsy hisian'ny fahatarany.",
+        "note3": "Ny fampindrana mahazatra dia vita ao anatin'ny 48 ka hatramin'ny 72 ora. Indraindray lava kokoa raha be ny angona ho kopiana.",
+        "note4": "Ny kaonty hosting taloha dia tsy maintsy miasa sy azo idirana mandritra ny fampindrana, raha tsy izany mety ho samy sahirana izahay.",
+        "note5": "Azafady aza manao fanavaozana amin'ny tranokala anao mandritra ny fampindrana, raha tsy izany mety tsy ho kopiana amin'ny hosting vaovao ireo angona ireo."
+    },
+    "order": {
+        "title": "Manome baiko Tranokala"
+    }
+}

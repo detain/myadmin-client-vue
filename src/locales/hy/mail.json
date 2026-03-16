@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Poshtayin Tsarayutyunner Tsanak",
+        "orderTitle": "Patvirel Poshtayin Granchumner"
+    },
+    "view": {
+        "title": "Ditkl Poshta {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Hajord Hashiv-aprankagreri Amsakiv:",
+        "billing": "Vcharum",
+        "billed": "vcharvats:",
+        "statusIs": "Kargavichaкn e:",
+        "mailApi": "Poshtayin API",
+        "usageCount": "Ogtagortsmany Qty:",
+        "links": "Hghumner",
+        "connectionInfo": "Kaphman Tevgh",
+        "welcomeEmailConfirm": "Voroshum eq? Uzeq veranerkyal ougharkel bariv gnalu el. naman?",
+        "emailSent": "El. Naman Ougharkval E",
+        "emailSentMessage": "Bariv gnalu el. naman veranerkyal e ougharkvel. Stugel dzer muts arkultern."
+    },
+    "order": {
+        "title": "Patvirel Poshta"
+    },
+    "alerts": {
+        "title": "Tsanarragumer",
+        "addAlert": "Avelytsnel Tsanarragum",
+        "editAlert": "Khmbagrel Tsanarragum",
+        "noAlerts": "Tsanarragumner chi gtnvel"
+    },
+    "delist": {
+        "title": "Tsankits Hanelay",
+        "blockedEmails": "Artakoglats El. Namanner"
+    },
+    "denyRules": {
+        "title": "Marman Kanonner",
+        "addRule": "Avelytsnel Kanon",
+        "noRules": "Marman kanonner chi gtnvel"
+    },
+    "logs": {
+        "title": "Matayanqner",
+        "searchLogs": "Voronel Matayanqner"
+    },
+    "stats": {
+        "title": "Vichakagirqner"
+    },
+    "deliverability": {
+        "title": "Moshorvelutyun"
+    }
+}

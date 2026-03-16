@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lijst met Scrub IPs-services",
+        "orderTitle": "Scrub IPs bestellen"
+    },
+    "view": {
+        "title": "Scrub IPs bekijken",
+        "currentIp": "Huidig IP",
+        "ipAddress": "IP-adres",
+        "ipFromService": "IP van service"
+    },
+    "filters": {
+        "title": "Filters",
+        "createNew": "Nieuw aanmaken",
+        "createNewFilter": "Nieuw filter aanmaken",
+        "filterType": "Filtertype",
+        "selectFilterType": "Filtertype selecteren",
+        "ipAddress": "IP-adres",
+        "portNo": "Poortnr.",
+        "filter": "Filter",
+        "destinationIp": "Bestemmings-IP",
+        "destinationPort": "Bestemmingspoort",
+        "noFiltersFound": "Geen filters gevonden!",
+        "deleteFilterConfirm": "Weet je zeker dat je dit filter wilt verwijderen?",
+        "unableToCreateFilter": "Op dit moment kan geen filter worden aangemaakt.",
+        "unableToDeleteFilter": "Op dit moment kan geen filter worden verwijderd."
+    },
+    "firewallRules": {
+        "title": "Firewallregels",
+        "createNew": "Nieuw aanmaken",
+        "createNewFirewall": "Nieuwe firewallregel aanmaken",
+        "protocol": "Protocol",
+        "destinationIp": "Bestemmings-IP",
+        "destinationPort": "Bestemmingspoort",
+        "sourceIp": "Bron-IP",
+        "sourcePort": "Bronpoort",
+        "xdpAction": "XDP-actie",
+        "ipRequired": "IP-adres is vereist",
+        "block": "Blokkeren",
+        "whitelist": "Witte lijst",
+        "noRulesFound": "Geen regels gevonden!",
+        "deleteRuleConfirm": "Weet je zeker dat je deze regel wilt verwijderen?",
+        "unableToCreateRule": "Op dit moment kan geen firewallregel worden aangemaakt.",
+        "unableToDeleteRule": "Op dit moment kan geen firewallregel worden verwijderd."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-firewallregels",
+        "createNew": "Nieuw aanmaken",
+        "createNewGeoRule": "Nieuwe geo-firewallregel aanmaken",
+        "destinationIp": "Bestemmings-IP",
+        "destinationPort": "Bestemmingspoort",
+        "sourceCountry": "Bronland",
+        "sourceAsn": "Bron-ASN",
+        "xdpAction": "XDP-actie",
+        "portNo": "Poortnr.",
+        "selectCountry": "Land selecteren",
+        "asn": "ASN",
+        "block": "Blokkeren",
+        "whitelist": "Witte lijst",
+        "noRulesFound": "Geen regels gevonden!",
+        "deleteGeoRuleConfirm": "Weet je zeker dat je deze geo-regel wilt verwijderen?",
+        "unableToCreateRule": "Op dit moment kan geen firewallregel worden aangemaakt.",
+        "unableToDeleteRule": "Op dit moment kan geen geo-firewallregel worden verwijderd."
+    }
+}

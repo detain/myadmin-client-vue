@@ -1,0 +1,12 @@
+{
+    "title": "Watumiaji",
+    "addUser": "Ongeza Mtumiaji",
+    "editUser": "Hariri Mtumiaji",
+    "firstName": "Jina la Kwanza",
+    "lastName": "Jina la Ukoo",
+    "username": "Jina la Mtumiaji",
+    "password": "Nywila",
+    "keepSamePassword": "Acha tupu kudumisha nywila ile ile",
+    "errorLoading": "Hitilafu ya kupakia watumiaji:",
+    "errorLoadingUser": "Hitilafu ya kupakia mtumiaji:"
+}

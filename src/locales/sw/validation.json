@@ -1,0 +1,12 @@
+{
+    "required": "{field} inahitajika",
+    "email": "Lazima iwe anwani sahihi ya barua pepe",
+    "minLength": "Lazima iwe na angalau herufi {min}",
+    "maxLength": "Lazima isiwe zaidi ya herufi {max}",
+    "passwordMatch": "Nywila lazima zilingane",
+    "invalidFormat": "Muundo batili",
+    "numeric": "Lazima iwe nambari",
+    "url": "Lazima iwe URL sahihi",
+    "ipAddress": "Lazima iwe anwani sahihi ya IP",
+    "hostname": "Lazima iwe jina sahihi la mwenyeji"
+}

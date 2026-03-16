@@ -1,0 +1,12 @@
+{
+    "required": "{field} iyafuneka",
+    "email": "Kufuneka ibe yidilesi ye-imeyili efanelekileyo",
+    "minLength": "Kufuneka ibe ubuncinane izinhlamvu eziyi-{min}",
+    "maxLength": "Kufuneka ingabi ngaphezulu kwezinhlamvu eziyi-{max}",
+    "passwordMatch": "Amagama okusebenzisa kufuneka afanane",
+    "invalidFormat": "Ifomathi ayilungile",
+    "numeric": "Kufuneka ibe yinombolo",
+    "url": "Kufuneka ibe yi-URL efanelekileyo",
+    "ipAddress": "Kufuneka ibe yidilesi ye-IP efanelekileyo",
+    "hostname": "Kufuneka ibe yigama lomamkeli elifanelekileyo"
+}
