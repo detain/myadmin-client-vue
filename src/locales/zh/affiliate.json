@@ -1,6 +1,6 @@
 {
     "title": "联盟系统", "breadcrumb": "联盟",
-    "attention": "此联盟计划不适用于推荐"家庭成员"或"客户"。在继续之前，请阅读 {faqLink}。",
+    "attention": "此联盟计划不适用于推荐\"家庭成员\"或\"客户\"。在继续之前，请阅读 {faqLink}。",
     "faqLinkText": "常见问题", "earnPerSale": "每笔新客户销售赚取 {amount}！",
     "knowMore": "了解更多", "affiliateUrl": "联盟 URL", "shareUrl": "与朋友分享您的唯一联盟 URL",
     "links": "链接", "salesGraph": "销售图表", "webTrafficGraph": "网络流量图表",
