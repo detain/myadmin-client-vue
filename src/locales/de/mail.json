@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liste der Mail-Dienste",
+        "orderTitle": "Mail-Registrierungen bestellen"
+    },
+    "view": {
+        "title": "Mail {id} anzeigen",
+        "package": "Paket",
+        "nextInvoiceDate": "Nächstes Rechnungsdatum:",
+        "billing": "Abrechnung",
+        "billed": "abgerechnet:",
+        "statusIs": "Status ist:",
+        "mailApi": "Mail API",
+        "usageCount": "Nutzungsanzahl:",
+        "links": "Links",
+        "connectionInfo": "Verbindungsinformationen",
+        "welcomeEmailConfirm": "Sind Sie sicher, dass Sie die Willkommens-E-Mail erneut senden möchten?",
+        "emailSent": "E-Mail gesendet",
+        "emailSentMessage": "Die Willkommens-E-Mail wurde erneut gesendet. Überprüfen Sie Ihren Posteingang."
+    },
+    "order": {
+        "title": "Mail bestellen"
+    },
+    "alerts": {
+        "title": "Warnungen",
+        "addAlert": "Warnung hinzufügen",
+        "editAlert": "Warnung bearbeiten",
+        "noAlerts": "Keine Warnungen gefunden"
+    },
+    "delist": {
+        "title": "Von Liste entfernen",
+        "blockedEmails": "Gesperrte E-Mails"
+    },
+    "denyRules": {
+        "title": "Ablehnungsregeln",
+        "addRule": "Regel hinzufügen",
+        "noRules": "Keine Ablehnungsregeln gefunden"
+    },
+    "logs": {
+        "title": "Protokolle",
+        "searchLogs": "Protokolle durchsuchen"
+    },
+    "stats": {
+        "title": "Statistiken"
+    },
+    "deliverability": {
+        "title": "Zustellbarkeit"
+    }
+}
