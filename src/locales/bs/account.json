@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Postavke naloga"
+    },
+    "changePassword": {
+        "title": "Promijeni lozinku",
+        "cardTitle": "Ažuriraj lozinku",
+        "currentPassword": "Trenutna lozinka",
+        "newPassword": "Nova lozinka",
+        "confirmPassword": "Potvrdi lozinku",
+        "updatePassword": "Ažuriraj lozinku"
+    },
+    "changeUsername": {
+        "title": "Promijeni korisničko ime",
+        "disabled": "Promjena korisničkog imena je privremeno onemogućena.",
+        "currentUsername": "Trenutno korisničko ime",
+        "newDesiredUsername": "Novo željeno korisničko ime",
+        "confirmationCode": "Kod za potvrdu",
+        "pleaseWait": "Molimo pričekajte!",
+        "gotError": "Došlo je do greške {error}"
+    },
+    "contactInfo": {
+        "title": "Kontakt informacije",
+        "cardTitle": "Ažuriraj kontakt informacije",
+        "headsUp": "Pažnja!",
+        "headsUpMessage": "Iako su ove informacije opcione, pružanje tačnih informacija pomoći će obogaćivanju naše interakcije i smanjenju vašeg postotka rizika, dajući vam brži i praktičniji pristup dijelovima stranice (kao što je izbjegavanje autentifikacije kreditne kartice).",
+        "riskScore": "Postotak rizika",
+        "personalInformation": "Lični podaci",
+        "name": "Ime",
+        "namePlaceholder": "Ime Prezime",
+        "company": "Kompanija",
+        "gstinTaxId": "GSTIN poreski ID",
+        "gstinPlaceholder": "Identifikacijski broj obveznika poreza na robu i usluge",
+        "addressLine1": "Adresa (redak 1)",
+        "addressLine2": "Adresa (redak 2)",
+        "cityState": "Grad, Država",
+        "city": "Grad",
+        "state": "Država/Pokrajina",
+        "country": "Zemlja",
+        "zipcode": "Poštanski broj",
+        "phoneNo": "Broj telefona",
+        "phoneNumber": "Broj telefona",
+        "language": "Jezik",
+        "auto": "Automatski",
+        "currency": "Valuta",
+        "timeZone": "Vremenska zona",
+        "otherSettings": "Ostale postavke",
+        "disablePasswordResets": "Onemogući resetovanje lozinke (Zaboravili ste lozinku).",
+        "disableInvoiceReminders": "Onemogući e-mail podsjetnice za fakture.",
+        "disableServerInvoiceReminders": "Onemogući e-mail podsjetnice za fakture servera.",
+        "disableReinstall": "Onemogući ponovnu instalaciju.",
+        "alternateEmailInvoices": "Alternativna e-pošta za fakture",
+        "alternateEmailInvoicesPlaceholder": "Alternativna e-pošta za slanje faktura",
+        "alternateEmailAbuse": "Alternativna e-pošta za prijave zloupotreba",
+        "updateInfo": "Ažuriraj informacije"
+    }
+}

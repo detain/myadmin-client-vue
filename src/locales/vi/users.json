@@ -1,0 +1,12 @@
+{
+    "title": "Người dùng",
+    "addUser": "Thêm người dùng",
+    "editUser": "Chỉnh sửa người dùng",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "username": "Tên người dùng",
+    "password": "Mật khẩu",
+    "keepSamePassword": "Để trống để giữ nguyên mật khẩu",
+    "errorLoading": "Lỗi khi tải người dùng:",
+    "errorLoadingUser": "Lỗi khi tải người dùng:"
+}

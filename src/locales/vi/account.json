@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Cài đặt tài khoản"
+    },
+    "changePassword": {
+        "title": "Đổi mật khẩu",
+        "cardTitle": "Cập nhật mật khẩu",
+        "currentPassword": "Mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "confirmPassword": "Xác nhận mật khẩu",
+        "updatePassword": "Cập nhật mật khẩu"
+    },
+    "changeUsername": {
+        "title": "Thay đổi tên người dùng",
+        "disabled": "Thay đổi tên người dùng đã tạm thời bị vô hiệu hóa.",
+        "currentUsername": "Tên người dùng hiện tại",
+        "newDesiredUsername": "Tên người dùng mới mong muốn",
+        "confirmationCode": "Mã xác nhận",
+        "pleaseWait": "Vui lòng chờ!",
+        "gotError": "Đã xảy ra lỗi {error}"
+    },
+    "contactInfo": {
+        "title": "Thông tin liên hệ",
+        "cardTitle": "Cập nhật thông tin liên hệ",
+        "headsUp": "Lưu ý!",
+        "headsUpMessage": "Mặc dù thông tin này là tùy chọn, việc cung cấp thông tin (chính xác) sẽ giúp làm phong phú thêm các tương tác của chúng tôi và giảm Điểm Rủi ro % của bạn, mang lại cho bạn quyền truy cập nhanh hơn và thuận tiện hơn vào các phần của trang web (chẳng hạn như không cần xác thực thẻ tín dụng).",
+        "riskScore": "Điểm Rủi ro %",
+        "personalInformation": "Thông tin cá nhân",
+        "name": "Tên",
+        "namePlaceholder": "Nguyễn Văn A",
+        "company": "Công ty",
+        "gstinTaxId": "Mã số thuế GSTIN",
+        "gstinPlaceholder": "Số nhận dạng người nộp thuế hàng hóa và dịch vụ",
+        "addressLine1": "Địa chỉ dòng 1",
+        "addressLine2": "Địa chỉ dòng 2",
+        "cityState": "Thành phố, Tỉnh/Thành",
+        "city": "Thành phố",
+        "state": "Tỉnh/Thành",
+        "country": "Quốc gia",
+        "zipcode": "Mã bưu chính",
+        "phoneNo": "Số điện thoại",
+        "phoneNumber": "Số điện thoại",
+        "language": "Ngôn ngữ",
+        "auto": "Tự động",
+        "currency": "Tiền tệ",
+        "timeZone": "Múi giờ",
+        "otherSettings": "Cài đặt khác",
+        "disablePasswordResets": "Tắt đặt lại mật khẩu (Quên mật khẩu?).",
+        "disableInvoiceReminders": "Tắt thông báo email nhắc nhở hóa đơn.",
+        "disableServerInvoiceReminders": "Tắt thông báo email nhắc nhở hóa đơn máy chủ.",
+        "disableReinstall": "Tắt cài đặt lại.",
+        "alternateEmailInvoices": "Email thay thế cho hóa đơn",
+        "alternateEmailInvoicesPlaceholder": "Email thay thế để gửi hóa đơn",
+        "alternateEmailAbuse": "Email thay thế cho báo cáo lạm dụng",
+        "updateInfo": "Cập nhật thông tin"
+    }
+}

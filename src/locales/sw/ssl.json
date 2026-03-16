@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Orodha ya Vyeti vya SSL",
+        "orderTitle": "Agiza Usajili wa SSL"
+    },
+    "view": {
+        "title": "Angalia SSL {id}",
+        "package": "Pakiti",
+        "nextInvoiceDate": "Tarehe ya Ankara Inayofuata:",
+        "billing": "Bili",
+        "billed": "imelipiwa:",
+        "statusIs": "Hali ni:",
+        "orderInfo": "Maelezo ya Agizo",
+        "certificateInfo": "Maelezo ya Cheti",
+        "links": "Viungo",
+        "welcomeEmailConfirm": "Je, una uhakika unataka kutuma tena barua pepe ya karibu?",
+        "emailSent": "Barua pepe Imetumwa",
+        "emailSentMessage": "Barua pepe ya karibu imetumwa tena. Angalia kikasha chako."
+    },
+    "order": {
+        "title": "Agiza SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Badilisha Barua pepe ya Muidhinishaji",
+        "selectApproverEmail": "Chagua Barua pepe ya Muidhinishaji"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "ਮੇਲ ਸੇਵਾ ਸੂਚੀ",
+        "orderTitle": "ਮੇਲ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਆਰਡਰ ਕਰੋ"
+    },
+    "view": {
+        "title": "ਮੇਲ {id} ਦੇਖੋ",
+        "package": "ਪੈਕੇਜ",
+        "nextInvoiceDate": "ਅਗਲੀ ਇਨਵੌਇਸ ਮਿਤੀ:",
+        "billing": "ਬਿਲਿੰਗ",
+        "billed": "ਬਿੱਲ ਕੀਤਾ:",
+        "statusIs": "ਸਥਿਤੀ ਹੈ:",
+        "mailApi": "ਮੇਲ API",
+        "usageCount": "ਵਰਤੋਂ ਗਿਣਤੀ:",
+        "links": "ਲਿੰਕ",
+        "connectionInfo": "ਕੁਨੈਕਸ਼ਨ ਜਾਣਕਾਰੀ",
+        "welcomeEmailConfirm": "ਕੀ ਤੁਸੀਂ ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "emailSent": "ਈਮੇਲ ਭੇਜੀ ਗਈ",
+        "emailSentMessage": "ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜੀ ਗਈ ਹੈ। ਆਪਣਾ ਇਨਬਾਕਸ ਜਾਂਚੋ।"
+    },
+    "order": {
+        "title": "ਮੇਲ ਆਰਡਰ ਕਰੋ"
+    },
+    "alerts": {
+        "title": "ਸੂਚਨਾਵਾਂ",
+        "addAlert": "ਸੂਚਨਾ ਜੋੜੋ",
+        "editAlert": "ਸੂਚਨਾ ਸੰਪਾਦਿਤ ਕਰੋ",
+        "noAlerts": "ਕੋਈ ਸੂਚਨਾਵਾਂ ਨਹੀਂ ਮਿਲੀਆਂ"
+    },
+    "delist": {
+        "title": "ਸੂਚੀ ਤੋਂ ਹਟਾਓ",
+        "blockedEmails": "ਬਲੌਕ ਕੀਤੀਆਂ ਈਮੇਲਾਂ"
+    },
+    "denyRules": {
+        "title": "ਇਨਕਾਰ ਨਿਯਮ",
+        "addRule": "ਨਿਯਮ ਜੋੜੋ",
+        "noRules": "ਕੋਈ ਇਨਕਾਰ ਨਿਯਮ ਨਹੀਂ ਮਿਲੇ"
+    },
+    "logs": {
+        "title": "ਲੌਗ",
+        "searchLogs": "ਲੌਗ ਖੋਜੋ"
+    },
+    "stats": {
+        "title": "ਅੰਕੜੇ"
+    },
+    "deliverability": {
+        "title": "ਡਿਲੀਵਰੇਬਿਲਟੀ"
+    }
+}

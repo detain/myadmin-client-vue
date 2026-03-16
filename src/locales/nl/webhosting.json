@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webhostinglijst",
+        "orderTitle": "Websiteregistraties bestellen"
+    },
+    "view": {
+        "title": "Website {id} bekijken",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende factuurdatum:",
+        "billing": "Facturering",
+        "billed": "gefactureerd",
+        "billingStatusIs": "Factureringsstatus is:",
+        "hostInfo": "Hostinformatie",
+        "username": "Gebruikersnaam:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Nog niet ingesteld",
+        "login": "Inloggen",
+        "types": "Types:",
+        "linksLabel": "Links:",
+        "manualLogin": "Handmatig inloggen",
+        "automaticLogin": "Automatisch inloggen",
+        "clickHere": "Klik hier",
+        "defaultNameservers": "Standaard naamservers",
+        "nameservers": "Naamservers:",
+        "externalLinks": "Externe links",
+        "names": "Namen:",
+        "websitePreview": "Websitevoorbeeld",
+        "links": "Links",
+        "welcomeEmailConfirm": "Weet je zeker dat je de welkomstmail opnieuw wilt versturen?",
+        "emailSent": "E-mail verzonden",
+        "emailSentMessage": "De welkomstmail is opnieuw verzonden. Controleer je inbox."
+    },
+    "buyIp": {
+        "title": "Extra IP-add-on kopen",
+        "existingAddonIps": "Bestaande add-on IPs",
+        "additionalIp": "Extra IP",
+        "monthlyCost": "Maandelijkse kosten ({symbol})",
+        "costDescription": "Kosten ({symbol}) elke maand als je website wordt gefactureerd",
+        "confirmPurchase": "Aankoop bevestigen",
+        "confirmMessage": "Extra IP-kosten: {symbol}{cost}/maand. Weet je zeker dat je een extra IP wilt bestellen?",
+        "placeOrder": "Bestelling plaatsen",
+        "orderPlaced": "Bestelling geplaatst"
+    },
+    "reverseDns": {
+        "title": "Omgekeerde DNS",
+        "updateReverseDns": "Omgekeerde DNS bijwerken"
+    },
+    "downloadBackups": {
+        "title": "Back-ups downloaden",
+        "backup": "Back-up",
+        "size": "Grootte",
+        "options": "Opties"
+    },
+    "migration": {
+        "title": "Je website migreren",
+        "currentWebHostInfo": "Huidige webhostinformatie",
+        "customerPortalUrl": "Klantenportal URL",
+        "portalExample": "Bijvoorbeeld: sso.godaddy.com",
+        "registeredUsername": "Geregistreerde gebruikersnaam / E-mail / ID",
+        "password": "Wachtwoord",
+        "controlPanelUrl": "Configuratiescherm URL",
+        "controlPanelExample": "Bijvoorbeeld: jouwdomein.com/cpanel",
+        "ftpUsername": "FTP / Configuratiescherm gebruikersnaam",
+        "ftpPassword": "FTP / Configuratiescherm wachtwoord",
+        "holdingPageQuestion": "Als de site live/druk is met veel verkeer, kunnen we een wachtpagina instellen tijdens de migratie?",
+        "specialRequirementsQuestion": "Heeft deze site speciale vereisten zoals PHP-versie / modules?",
+        "domainRegistryInfo": "Domeinregistratie-informatie",
+        "transferDomainQuestion": "Wil je ook dat we helpen met het overdragen van de domeinnaamregistratie?",
+        "updateNameserversQuestion": "Wil je dat we de naamservers bijwerken zodra we de gegevensmigratie hebben voltooid?",
+        "domainRegistryPortal": "Domeinregistratie klantenportal",
+        "importantNotes": "Belangrijke opmerkingen",
+        "note1": "Het invullen van dit formulier opent een nieuw ticket voor onze supportafdeling om je migratie te starten.",
+        "note2": "Wees zo volledig en nauwkeurig mogelijk om vertragingen te voorkomen.",
+        "note3": "Een typische migratie wordt binnen 48 tot 72 uur voltooid. Soms langer als de hoeveelheid te kopiëren gegevens groot is.",
+        "note4": "Het oude hostingaccount moet online en toegankelijk zijn terwijl we de migratie uitvoeren, anders kunnen we moeilijkheden ondervinden.",
+        "note5": "Voer geen updates uit op je site terwijl we de migratie uitvoeren, anders worden deze gegevens mogelijk niet gekopieerd naar de nieuwe hosting."
+    },
+    "order": {
+        "title": "Website bestellen"
+    }
+}

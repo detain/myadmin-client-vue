@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Tetapan Akaun"
+    },
+    "changePassword": {
+        "title": "Tukar Kata Laluan",
+        "cardTitle": "Kemaskini Kata Laluan",
+        "currentPassword": "Kata Laluan Semasa",
+        "newPassword": "Kata Laluan Baharu",
+        "confirmPassword": "Sahkan Kata Laluan",
+        "updatePassword": "Kemaskini Kata Laluan"
+    },
+    "changeUsername": {
+        "title": "Tukar Nama Pengguna",
+        "disabled": "Perubahan nama pengguna telah dilumpuhkan sementara.",
+        "currentUsername": "Nama Pengguna Semasa",
+        "newDesiredUsername": "Nama Pengguna Baharu Yang Dikehendaki",
+        "confirmationCode": "Kod Pengesahan",
+        "pleaseWait": "Sila tunggu!",
+        "gotError": "Ralat diterima {error}"
+    },
+    "contactInfo": {
+        "title": "Maklumat Hubungan",
+        "cardTitle": "Kemaskini Maklumat Hubungan",
+        "headsUp": "Perhatian!",
+        "headsUpMessage": "Walaupun maklumat ini adalah pilihan, memberikan maklumat (tepat) akan membantu memperkayakan interaksi kami dan menurunkan Skor Risiko % anda memberikan anda akses yang lebih cepat dan mudah ke bahagian tapak (seperti tidak perlu mengesahkan kad kredit).",
+        "riskScore": "Skor Risiko %",
+        "personalInformation": "Maklumat Peribadi",
+        "name": "Nama",
+        "namePlaceholder": "Ahmad Rizal",
+        "company": "Syarikat",
+        "gstinTaxId": "ID Cukai GSTIN",
+        "gstinPlaceholder": "Nombor Pengenalan Pembayar Cukai Barangan dan Perkhidmatan",
+        "addressLine1": "Baris Alamat 1",
+        "addressLine2": "Baris Alamat 2",
+        "cityState": "Bandar, Negeri",
+        "city": "Bandar",
+        "state": "Negeri",
+        "country": "Negara",
+        "zipcode": "Poskod",
+        "phoneNo": "No Telefon",
+        "phoneNumber": "Nombor Telefon",
+        "language": "Bahasa",
+        "auto": "Auto",
+        "currency": "Mata Wang",
+        "timeZone": "Zon Waktu",
+        "otherSettings": "Tetapan Lain",
+        "disablePasswordResets": "Lumpuhkan Tetapan Semula Kata Laluan (Terlupa Kata Laluan).",
+        "disableInvoiceReminders": "Lumpuhkan Pemberitahuan E-mel Peringatan Invois.",
+        "disableServerInvoiceReminders": "Lumpuhkan Pemberitahuan E-mel Peringatan Invois Pelayan.",
+        "disableReinstall": "Lumpuhkan Pemasangan Semula.",
+        "alternateEmailInvoices": "E-mel Alternatif untuk Invois",
+        "alternateEmailInvoicesPlaceholder": "E-mel alternatif untuk menghantar invois",
+        "alternateEmailAbuse": "E-mel Alternatif untuk Laporan Penyalahgunaan",
+        "updateInfo": "Kemaskini Maklumat"
+    }
+}

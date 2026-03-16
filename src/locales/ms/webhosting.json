@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Senarai Web Hosting",
+        "orderTitle": "Pesan Pendaftaran Laman Web"
+    },
+    "view": {
+        "title": "Lihat Laman Web {id}",
+        "package": "Pakej",
+        "nextInvoiceDate": "Tarikh Invois Seterusnya:",
+        "billing": "Pengebilan",
+        "billed": "dibilkan",
+        "billingStatusIs": "Status Pengebilan ialah:",
+        "hostInfo": "Maklumat Hos",
+        "username": "Nama Pengguna:",
+        "ip": "IP:",
+        "server": "Pelayan:",
+        "notSetYet": "Belum ditetapkan",
+        "login": "Log Masuk",
+        "types": "Jenis:",
+        "linksLabel": "Pautan:",
+        "manualLogin": "Log Masuk Manual",
+        "automaticLogin": "Log Masuk Automatik",
+        "clickHere": "Klik Di Sini",
+        "defaultNameservers": "Pelayan Nama Lalai",
+        "nameservers": "Pelayan Nama:",
+        "externalLinks": "Pautan Luaran",
+        "names": "Nama:",
+        "websitePreview": "Pratonton Laman Web",
+        "links": "Pautan",
+        "welcomeEmailConfirm": "Adakah anda pasti mahu menghantar semula e-mel alu-aluan?",
+        "emailSent": "E-mel Dihantar",
+        "emailSentMessage": "E-mel alu-aluan telah dihantar semula. Semak peti masuk anda."
+    },
+    "buyIp": {
+        "title": "Beli Tambahan IP",
+        "existingAddonIps": "IP Tambahan Sedia Ada",
+        "additionalIp": "IP Tambahan",
+        "monthlyCost": "Kos Bulanan ({symbol})",
+        "costDescription": "Kos ({symbol}) setiap bulan apabila laman web anda dibilkan",
+        "confirmPurchase": "Sahkan Pembelian",
+        "confirmMessage": "Kos IP tambahan: {symbol}{cost}/bulan. Adakah anda pasti mahu memesan IP tambahan?",
+        "placeOrder": "Buat Pesanan",
+        "orderPlaced": "Pesanan Dibuat"
+    },
+    "reverseDns": {
+        "title": "DNS Songsang",
+        "updateReverseDns": "Kemaskini DNS Songsang"
+    },
+    "downloadBackups": {
+        "title": "Muat Turun Sandaran",
+        "backup": "Sandaran",
+        "size": "Saiz",
+        "options": "Pilihan"
+    },
+    "migration": {
+        "title": "Migrasi Laman Web Anda",
+        "currentWebHostInfo": "Maklumat Hos Web Semasa",
+        "customerPortalUrl": "URL Portal Pelanggan",
+        "portalExample": "Contoh: sso.godaddy.com",
+        "registeredUsername": "Nama Pengguna / E-mel / ID Berdaftar",
+        "password": "Kata Laluan",
+        "controlPanelUrl": "URL Panel Kawalan",
+        "controlPanelExample": "Contoh: yourdomain.com/cpanel",
+        "ftpUsername": "Nama Pengguna FTP / Panel Kawalan",
+        "ftpPassword": "Kata Laluan FTP / Panel Kawalan",
+        "holdingPageQuestion": "Jika tapak adalah tapak aktif/sibuk dengan trafik tinggi, bolehkah kami menetapkan halaman pegangan semasa migrasi?",
+        "specialRequirementsQuestion": "Adakah tapak ini mempunyai keperluan khas seperti Versi PHP / Modul?",
+        "domainRegistryInfo": "Maklumat Pendaftaran Domain",
+        "transferDomainQuestion": "Adakah anda juga mahu kami membantu anda memindahkan pendaftaran nama domain?",
+        "updateNameserversQuestion": "Adakah anda mahu kami mengemas kini pelayan nama sebaik sahaja kami selesai migrasi data?",
+        "domainRegistryPortal": "Portal Pelanggan Pendaftaran Domain",
+        "importantNotes": "Nota Penting",
+        "note1": "Mengisi borang ini akan membuka tiket baharu untuk jabatan sokongan kami untuk memulakan migrasi anda.",
+        "note2": "Sila selengkap dan seteliti mungkin untuk mengelakkan sebarang kelewatan.",
+        "note3": "Migrasi tipikal diselesaikan dalam masa 48 hingga 72 jam. Kadangkala lebih lama jika jumlah data untuk disalin adalah besar.",
+        "note4": "Akaun pengehosan lama perlu berada dalam talian dan boleh diakses semasa kami melakukan migrasi, jika tidak kami mungkin menghadapi kesukaran.",
+        "note5": "Sila jangan buat sebarang kemas kini pada tapak anda semasa kami melakukan migrasi, jika tidak data tersebut mungkin tidak disalin ke pengehosan baharu."
+    },
+    "order": {
+        "title": "Pesan Laman Web"
+    }
+}

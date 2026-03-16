@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Ongeza Domain",
+        "deleteDomain": "Futa Domain",
+        "domainName": "Jina la Domain",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "Je, una uhakika unataka kufuta domain hii?",
+        "noDomains": "Hakuna domain zilizopatikana"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Ongeza Rekodi",
+        "deleteRecord": "Futa Rekodi",
+        "editRecord": "Hariri Rekodi",
+        "recordType": "Aina ya Rekodi",
+        "hostname": "Jina la Mwenyeji",
+        "address": "Anwani",
+        "distance": "Umbali",
+        "weight": "Uzito",
+        "port": "Bandari",
+        "ttl": "TTL",
+        "actions": "Hatua",
+        "confirmDelete": "Je, una uhakika unataka kufuta rekodi hii?"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lisi Tautua Floating IPs",
+        "orderTitle": "Porosini Resitala Floating IP"
+    },
+    "view": {
+        "title": "Va'ai Floating IP {id}",
+        "package": "Fa'aofuofu",
+        "nextInvoiceDate": "Aso o le Pili Sosoo:",
+        "billing": "Fai Pili",
+        "billed": "fai pili:",
+        "statusIs": "Va'aiga o:",
+        "floatingIp": "Floating IP",
+        "links": "So'otaga",
+        "welcomeEmailConfirm": "E te mautinoa e te mana'o e toe auina le imeli afio mai?",
+        "emailSent": "Imeli Auina",
+        "emailSentMessage": "Ua toe auina le imeli afio mai. Siaki lau inbox."
+    },
+    "order": {
+        "title": "Porosini Floating IP"
+    },
+    "changeIp": {
+        "title": "Suia le IP Fa'amoemoega"
+    }
+}

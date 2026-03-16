@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista poštanskih usluga",
+        "orderTitle": "Naruči poštansku registraciju"
+    },
+    "view": {
+        "title": "Pogledaj poštu {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "mailApi": "Poštanski API",
+        "usageCount": "Broj upotreba:",
+        "links": "Linkovi",
+        "connectionInfo": "Informacije o konekciji",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati dobrodošlicu e-poštom?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Dobrodošlica e-poštom je ponovo poslana. Provjerite vašu pristiglu poštu."
+    },
+    "order": {
+        "title": "Naruči poštu"
+    },
+    "alerts": {
+        "title": "Upozorenja",
+        "addAlert": "Dodaj upozorenje",
+        "editAlert": "Uredi upozorenje",
+        "noAlerts": "Upozorenja nisu pronađena"
+    },
+    "delist": {
+        "title": "Ukloni s crne liste",
+        "blockedEmails": "Blokirane e-mail adrese"
+    },
+    "denyRules": {
+        "title": "Pravila odbijanja",
+        "addRule": "Dodaj pravilo",
+        "noRules": "Pravila odbijanja nisu pronađena"
+    },
+    "logs": {
+        "title": "Logovi",
+        "searchLogs": "Pretraži logove"
+    },
+    "stats": {
+        "title": "Statistike"
+    },
+    "deliverability": {
+        "title": "Isporučivost"
+    }
+}

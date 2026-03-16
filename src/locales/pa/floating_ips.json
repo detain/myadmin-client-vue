@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "ਫਲੋਟਿੰਗ IPs ਸੇਵਾ ਸੂਚੀ",
+        "orderTitle": "ਫਲੋਟਿੰਗ IP ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਆਰਡਰ ਕਰੋ"
+    },
+    "view": {
+        "title": "ਫਲੋਟਿੰਗ IP {id} ਦੇਖੋ",
+        "package": "ਪੈਕੇਜ",
+        "nextInvoiceDate": "ਅਗਲੀ ਇਨਵੌਇਸ ਮਿਤੀ:",
+        "billing": "ਬਿਲਿੰਗ",
+        "billed": "ਬਿੱਲ ਕੀਤਾ:",
+        "statusIs": "ਸਥਿਤੀ ਹੈ:",
+        "floatingIp": "ਫਲੋਟਿੰਗ IP",
+        "links": "ਲਿੰਕ",
+        "welcomeEmailConfirm": "ਕੀ ਤੁਸੀਂ ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "emailSent": "ਈਮੇਲ ਭੇਜੀ ਗਈ",
+        "emailSentMessage": "ਸੁਆਗਤ ਈਮੇਲ ਦੁਬਾਰਾ ਭੇਜੀ ਗਈ ਹੈ। ਆਪਣਾ ਇਨਬਾਕਸ ਜਾਂਚੋ।"
+    },
+    "order": {
+        "title": "ਫਲੋਟਿੰਗ IP ਆਰਡਰ ਕਰੋ"
+    },
+    "changeIp": {
+        "title": "ਟਾਰਗੇਟ IP ਬਦਲੋ"
+    }
+}

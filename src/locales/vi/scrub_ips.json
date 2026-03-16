@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Danh sách dịch vụ Scrub IPs",
+        "orderTitle": "Đặt Scrub IPs"
+    },
+    "view": {
+        "title": "Xem Scrub IPs",
+        "currentIp": "IP hiện tại",
+        "ipAddress": "Địa chỉ IP",
+        "ipFromService": "IP từ dịch vụ"
+    },
+    "filters": {
+        "title": "Bộ lọc",
+        "createNew": "Tạo mới",
+        "createNewFilter": "Tạo bộ lọc mới",
+        "filterType": "Loại bộ lọc",
+        "selectFilterType": "Chọn loại bộ lọc",
+        "ipAddress": "Địa chỉ IP",
+        "portNo": "Số cổng",
+        "filter": "Bộ lọc",
+        "destinationIp": "IP đích",
+        "destinationPort": "Cổng đích",
+        "noFiltersFound": "Không tìm thấy bộ lọc!",
+        "deleteFilterConfirm": "Bạn có chắc muốn xóa bộ lọc này không?",
+        "unableToCreateFilter": "Không thể tạo bộ lọc lúc này.",
+        "unableToDeleteFilter": "Không thể xóa bộ lọc lúc này."
+    },
+    "firewallRules": {
+        "title": "Quy tắc tường lửa",
+        "createNew": "Tạo mới",
+        "createNewFirewall": "Tạo quy tắc tường lửa mới",
+        "protocol": "Giao thức",
+        "destinationIp": "IP đích",
+        "destinationPort": "Cổng đích",
+        "sourceIp": "IP nguồn",
+        "sourcePort": "Cổng nguồn",
+        "xdpAction": "Hành động XDP",
+        "ipRequired": "Cần địa chỉ IP",
+        "block": "Chặn",
+        "whitelist": "Danh sách trắng",
+        "noRulesFound": "Không tìm thấy quy tắc!",
+        "deleteRuleConfirm": "Bạn có chắc muốn xóa quy tắc này không?",
+        "unableToCreateRule": "Không thể tạo quy tắc tường lửa lúc này.",
+        "unableToDeleteRule": "Không thể xóa quy tắc tường lửa lúc này."
+    },
+    "geoFirewallRules": {
+        "title": "Quy tắc tường lửa theo vị trí địa lý",
+        "createNew": "Tạo mới",
+        "createNewGeoRule": "Tạo quy tắc tường lửa địa lý mới",
+        "destinationIp": "IP đích",
+        "destinationPort": "Cổng đích",
+        "sourceCountry": "Quốc gia nguồn",
+        "sourceAsn": "ASN nguồn",
+        "xdpAction": "Hành động XDP",
+        "portNo": "Số cổng",
+        "selectCountry": "Chọn quốc gia",
+        "asn": "ASN",
+        "block": "Chặn",
+        "whitelist": "Danh sách trắng",
+        "noRulesFound": "Không tìm thấy quy tắc!",
+        "deleteGeoRuleConfirm": "Bạn có chắc muốn xóa quy tắc địa lý này không?",
+        "unableToCreateRule": "Không thể tạo quy tắc tường lửa lúc này.",
+        "unableToDeleteRule": "Không thể xóa quy tắc tường lửa địa lý lúc này."
+    }
+}

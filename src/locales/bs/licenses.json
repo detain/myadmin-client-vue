@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista licenci",
+        "orderTitle": "Naruči registraciju licenci"
+    },
+    "view": {
+        "title": "Pogledaj licencu {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "licenseInfo": "Informacije o licenci",
+        "cpanelInfo": "cPanel informacije",
+        "links": "Linkovi",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati dobrodošlicu e-poštom?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Dobrodošlica e-poštom je ponovo poslana. Provjerite vašu pristiglu poštu."
+    },
+    "order": {
+        "title": "Naruči licencu"
+    },
+    "changeIp": {
+        "title": "Promijeni IP adresu"
+    },
+    "changeOs": {
+        "title": "Promijeni OS",
+        "selectLicenseOs": "Odaberi OS licence"
+    }
+}

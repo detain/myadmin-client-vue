@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP-neri Tsarayutyunner Tsanak",
+        "orderTitle": "Patvirel Scrub IP-ner"
+    },
+    "view": {
+        "title": "Ditkl Scrub IP-ner",
+        "currentIp": "Yntatsik IP",
+        "ipAddress": "IP Hashce",
+        "ipFromService": "IP-n tsarayutyunits"
+    },
+    "filters": {
+        "title": "Ztrаghrerь",
+        "createNew": "Stvarel Nor",
+        "createNewFilter": "Stvarel Nor Ztraghr",
+        "filterType": "Ztrаghri Tesak",
+        "selectFilterType": "Yntrel Ztrаghri Tesak",
+        "ipAddress": "IP Hashce",
+        "portNo": "Port Hamarn",
+        "filter": "Ztraghr",
+        "destinationIp": "Npatakakir IP",
+        "destinationPort": "Npatakakir Port",
+        "noFiltersFound": "Ztrаghrerь chi gtnvel!",
+        "deleteFilterConfirm": "Voroshum eq? Uzeq jnjel ayd ztraghrn?",
+        "unableToCreateFilter": "Anharavorq e ayd pahit ztraghr steghtsel.",
+        "unableToDeleteFilter": "Anharavorq e ayd pahit ztraghrn jnjel."
+    },
+    "firewallRules": {
+        "title": "Hrakadeni Kanonner",
+        "createNew": "Stvarel Nor",
+        "createNewFirewall": "Stvarel Nor Hrakadeni Kanon",
+        "protocol": "Ardzanagirq",
+        "destinationIp": "Npatakakir IP",
+        "destinationPort": "Npatakakir Port",
+        "sourceIp": "Albyuri IP",
+        "sourcePort": "Albyuri Port",
+        "xdpAction": "XDP Gortsoghutyun",
+        "ipRequired": "IP hashcen pahanjvats e",
+        "block": "Artakoghelay",
+        "whitelist": "Saferin Tsanak",
+        "noRulesFound": "Kanonner chi gtnvel!",
+        "deleteRuleConfirm": "Voroshum eq? Uzeq jnjel ayd kanоnn?",
+        "unableToCreateRule": "Anharavorq e ayd pahit hrakadeni kanon steghtsel.",
+        "unableToDeleteRule": "Anharavorq e ayd pahit hrakadeni kanоnn jnjel."
+    },
+    "geoFirewallRules": {
+        "title": "Geografiayin Hrakadeni Kanonner",
+        "createNew": "Stvarel Nor",
+        "createNewGeoRule": "Stvarel Nor Geografiayin Hrakadeni Kanon",
+        "destinationIp": "Npatakakir IP",
+        "destinationPort": "Npatakakir Port",
+        "sourceCountry": "Albyuri Yerkir",
+        "sourceAsn": "Albyuri ASN",
+        "xdpAction": "XDP Gortsoghutyun",
+        "portNo": "Port Hamarn",
+        "selectCountry": "Yntrel Yerkirn",
+        "asn": "ASN",
+        "block": "Artakoghelay",
+        "whitelist": "Saferin Tsanak",
+        "noRulesFound": "Kanonner chi gtnvel!",
+        "deleteGeoRuleConfirm": "Voroshum eq? Uzeq jnjel ayd geografiayin kanоnn?",
+        "unableToCreateRule": "Anharavorq e ayd pahit hrakadeni kanon steghtsel.",
+        "unableToDeleteRule": "Anharavorq e ayd pahit geografiayin hrakadeni kanоnn jnjel."
+    }
+}

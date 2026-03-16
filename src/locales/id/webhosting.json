@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Daftar Web Hosting",
+        "orderTitle": "Pesan Registrasi Website"
+    },
+    "view": {
+        "title": "Lihat Website {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Faktur Berikutnya:",
+        "billing": "Tagihan",
+        "billed": "ditagih",
+        "billingStatusIs": "Status Tagihan adalah:",
+        "hostInfo": "Info Host",
+        "username": "Nama Pengguna:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Belum diatur",
+        "login": "Masuk",
+        "types": "Jenis:",
+        "linksLabel": "Tautan:",
+        "manualLogin": "Login Manual",
+        "automaticLogin": "Login Otomatis",
+        "clickHere": "Klik Di Sini",
+        "defaultNameservers": "Nameserver Default",
+        "nameservers": "Nameserver:",
+        "externalLinks": "Tautan Eksternal",
+        "names": "Nama:",
+        "websitePreview": "Pratinjau Website",
+        "links": "Tautan",
+        "welcomeEmailConfirm": "Apakah Anda yakin ingin mengirim ulang email selamat datang?",
+        "emailSent": "Email Terkirim",
+        "emailSentMessage": "Email selamat datang telah dikirim ulang. Periksa kotak masuk Anda."
+    },
+    "buyIp": {
+        "title": "Beli Add-on IP Tambahan",
+        "existingAddonIps": "IP Add-on yang Ada",
+        "additionalIp": "IP Tambahan",
+        "monthlyCost": "Biaya Bulanan ({symbol})",
+        "costDescription": "Biaya ({symbol}) setiap bulan saat website Anda ditagih",
+        "confirmPurchase": "Konfirmasi Pembelian",
+        "confirmMessage": "Biaya IP tambahan: {symbol}{cost}/bulan. Apakah Anda yakin ingin memesan IP tambahan?",
+        "placeOrder": "Buat Pesanan",
+        "orderPlaced": "Pesanan Dibuat"
+    },
+    "reverseDns": {
+        "title": "DNS Balik",
+        "updateReverseDns": "Perbarui DNS Balik"
+    },
+    "downloadBackups": {
+        "title": "Unduh Cadangan",
+        "backup": "Cadangan",
+        "size": "Ukuran",
+        "options": "Opsi"
+    },
+    "migration": {
+        "title": "Migrasi Website Anda",
+        "currentWebHostInfo": "Info Web Host Saat Ini",
+        "customerPortalUrl": "URL Portal Pelanggan",
+        "portalExample": "Contoh: sso.godaddy.com",
+        "registeredUsername": "Nama Pengguna / Email / ID Terdaftar",
+        "password": "Kata Sandi",
+        "controlPanelUrl": "URL Panel Kontrol",
+        "controlPanelExample": "Contoh: yourdomain.com/cpanel",
+        "ftpUsername": "Nama Pengguna FTP / Panel Kontrol",
+        "ftpPassword": "Kata Sandi FTP / Panel Kontrol",
+        "holdingPageQuestion": "Jika situs aktif/sibuk dengan lalu lintas tinggi, dapatkah kami menetapkan halaman penahan selama migrasi?",
+        "specialRequirementsQuestion": "Apakah situs ini memiliki persyaratan khusus seperti Versi PHP / Modul?",
+        "domainRegistryInfo": "Informasi Registri Domain",
+        "transferDomainQuestion": "Apakah Anda juga ingin kami membantu mentransfer registrasi nama domain?",
+        "updateNameserversQuestion": "Apakah Anda ingin kami memperbarui nameserver segera setelah kami selesai migrasi data?",
+        "domainRegistryPortal": "Portal Pelanggan Registri Domain",
+        "importantNotes": "Catatan Penting",
+        "note1": "Mengisi formulir ini akan membuka tiket baru untuk departemen dukungan kami untuk memulai migrasi Anda.",
+        "note2": "Harap selengkap dan seakurat mungkin untuk menghindari keterlambatan.",
+        "note3": "Migrasi biasa diselesaikan dalam 48 hingga 72 jam. Terkadang lebih lama jika jumlah data yang perlu disalin besar.",
+        "note4": "Akun hosting lama harus online dan dapat diakses saat kami melakukan migrasi, jika tidak kami mungkin menghadapi kesulitan.",
+        "note5": "Jangan lakukan pembaruan apa pun di situs Anda saat kami melakukan migrasi, jika tidak data tersebut mungkin tidak disalin ke hosting baru."
+    },
+    "order": {
+        "title": "Pesan Website"
+    }
+}

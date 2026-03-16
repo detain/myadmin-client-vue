@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "د ویب هوسټینګ لیست",
+        "orderTitle": "د ویب سایټ ثبت نامونو امر"
+    },
+    "view": {
+        "title": "ویب سایټ {id} وګورئ",
+        "package": "پاکیج",
+        "nextInvoiceDate": "د راتلونکي انوایس نیټه:",
+        "billing": "بیل",
+        "billed": "بیل شوی",
+        "billingStatusIs": "د بیل حالت دی:",
+        "hostInfo": "د کوربه معلومات",
+        "username": "کارونکي نوم:",
+        "ip": "IP:",
+        "server": "سرور:",
+        "notSetYet": "لا تنظیم نه دی",
+        "login": "ننوتل",
+        "types": "ډولونه:",
+        "linksLabel": "لینکونه:",
+        "manualLogin": "لاسي ننوتل",
+        "automaticLogin": "اتوماتیک ننوتل",
+        "clickHere": "دلته کلیک وکړئ",
+        "defaultNameservers": "ډیفالټ نوم سرورونه",
+        "nameservers": "نوم سرورونه:",
+        "externalLinks": "بهرني لینکونه",
+        "names": "نومونه:",
+        "websitePreview": "د ویب سایټ مخکتنه",
+        "links": "لینکونه",
+        "welcomeEmailConfirm": "ایا تاسو ډاډه یاست چې د هرکلي بریښنالیک بیا ولیږئ؟",
+        "emailSent": "بریښنالیک ولیږل شو",
+        "emailSentMessage": "د هرکلي بریښنالیک بیا ولیږل شو. خپل انباکس وګورئ."
+    },
+    "buyIp": {
+        "title": "اضافي IP اضافه کول واخلئ",
+        "existingAddonIps": "موجوده اضافي IPs",
+        "additionalIp": "اضافي IP",
+        "monthlyCost": "میاشتنی لګښت ({symbol})",
+        "costDescription": "لګښت ({symbol}) هره میاشت کله چې ستاسو ویب سایټ بیل کیږي",
+        "confirmPurchase": "پیرود تایید کړئ",
+        "confirmMessage": "اضافي IP لګښت: {symbol}{cost}/میاشت. ایا تاسو ډاډه یاست چې اضافي IP امر ورکول غواړئ؟",
+        "placeOrder": "امر ورکړئ",
+        "orderPlaced": "امر ورکړل شو"
+    },
+    "reverseDns": {
+        "title": "معکوس DNS",
+        "updateReverseDns": "معکوس DNS تازه کړئ"
+    },
+    "downloadBackups": {
+        "title": "بیک اپونه ډاونلوډ کړئ",
+        "backup": "بیک اپ",
+        "size": "اندازه",
+        "options": "اختیارونه"
+    },
+    "migration": {
+        "title": "خپل ویب سایټ انتقال کړئ",
+        "currentWebHostInfo": "اوسني ویب هوسټ معلومات",
+        "customerPortalUrl": "د پیرودونکي پورټل URL",
+        "portalExample": "د مثال لپاره: sso.godaddy.com",
+        "registeredUsername": "ثبت شوی کارونکي نوم / بریښنالیک / ID",
+        "password": "پاسورډ",
+        "controlPanelUrl": "د کنټرول پینل URL",
+        "controlPanelExample": "د مثال لپاره: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / د کنټرول پینل کارونکي نوم",
+        "ftpPassword": "FTP / د کنټرول پینل پاسورډ",
+        "holdingPageQuestion": "که سایټ ژوندی/بوخت سایټ وي چې لوړ ترافیک لري، ایا موږ کولی شو د انتقال پرمهال د ساتلو پاڼه تنظیم کړو؟",
+        "specialRequirementsQuestion": "ایا دا سایټ ځانګړې اړتیاوې لري لکه د PHP نسخه / ماډولونه؟",
+        "domainRegistryInfo": "د ډومین ثبت معلومات",
+        "transferDomainQuestion": "ایا تاسو هم غواړئ چې موږ د ډومین نوم ثبت انتقال کې مرسته وکړو؟",
+        "updateNameserversQuestion": "ایا تاسو غواړئ چې موږ د معلوماتو انتقال بشپړولو سره سم نوم سرورونه تازه کړو؟",
+        "domainRegistryPortal": "د ډومین ثبت د پیرودونکي پورټل",
+        "importantNotes": "مهمې یادونې",
+        "note1": "دا فورم ډکول به زموږ د ملاتړ ریاست لپاره نوی ټکټ پرانیزي ترڅو ستاسو انتقال پیل کړي.",
+        "note2": "مهرباني وکړئ د هر ځنډ مخنیوي لپاره تر امکانه بشپړ او دقیق اوسئ.",
+        "note3": "یو معمول انتقال د ۴۸ تر ۷۲ ساعتو کې بشپړیږي. کله کله اوږده که چیرې د کاپي کولو معلوماتو مقدار زیات وي.",
+        "note4": "د انتقال پرمهال زوړ هوسټینګ حساب باید آنلاین او لاسرسی وړ وي، که نه موږ ممکن ستونزه ولرو.",
+        "note5": "مهرباني وکړئ د انتقال پرمهال خپل سایټ کې هیڅ تازه کارونه مه کوئ، که نه هغه معلومات ممکن نوي هوسټینګ ته کاپي نشي."
+    },
+    "order": {
+        "title": "ویب سایټ امر ورکړئ"
+    }
+}

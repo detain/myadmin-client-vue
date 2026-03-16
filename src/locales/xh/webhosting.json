@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Uluhlu lokusingathwa kwewebhu",
+        "orderTitle": "Odola ukubhalisa kwewebhusayithi"
+    },
+    "view": {
+        "title": "Jonga iwebhusayithi {id}",
+        "package": "Iphakeji",
+        "nextInvoiceDate": "Umhla weFatshi elilandelayo:",
+        "billing": "Ukuhlawula",
+        "billed": "kuhlawulwe",
+        "billingStatusIs": "Isimo sokuhlawula ngu:",
+        "hostInfo": "Ulwazi lomamkeli",
+        "username": "Igama lomsebenzisi:",
+        "ip": "I-IP:",
+        "server": "Iseva:",
+        "notSetYet": "Ayikasetwa",
+        "login": "Ngena",
+        "types": "Iindidi:",
+        "linksLabel": "Amanxibelelwano:",
+        "manualLogin": "Ukungena ngesandla",
+        "automaticLogin": "Ukungena ngokuzenzekelayo",
+        "clickHere": "Cofa Apha",
+        "defaultNameservers": "Iiseva zamagama eziQhelekileyo",
+        "nameservers": "Iiseva zamagama:",
+        "externalLinks": "Amanxibelelwano angaphandle",
+        "names": "Amagama:",
+        "websitePreview": "Siboniso sewebhusayithi",
+        "links": "Amanxibelelwano",
+        "welcomeEmailConfirm": "Uqinisekile ukuba ufuna ukuthumela kwakhona i-imeyili yamkelo?",
+        "emailSent": "I-imeyili ithunyiwe",
+        "emailSentMessage": "I-imeyili yamkelo ithunyiwe kwakhona. Jonga ibhokisi yakho yongeno."
+    },
+    "buyIp": {
+        "title": "Thenga izongezelo le-IP eNgezelelweyo",
+        "existingAddonIps": "Ii-IP zezongezelo ezikhona",
+        "additionalIp": "I-IP eNgezelelweyo",
+        "monthlyCost": "Intengo yenyanga ({symbol})",
+        "costDescription": "Intengo ({symbol}) ngenyanga ngenyanga njengoko iwebhusayithi yakho ihlawulwa",
+        "confirmPurchase": "Qinisekisa ukuthenga",
+        "confirmMessage": "Intengo ye-IP eNgezelelweyo: {symbol}{cost}/inyanga. Uqinisekile ukuba ufuna ukuodola i-IP eNgezelelweyo?",
+        "placeOrder": "Beka i-odola",
+        "orderPlaced": "I-odola ibakiwe"
+    },
+    "reverseDns": {
+        "title": "I-DNS eguqukayo",
+        "updateReverseDns": "Hlaziya i-DNS eguqukayo"
+    },
+    "downloadBackups": {
+        "title": "Khuphela ukugcinwa",
+        "backup": "Ukugcinwa",
+        "size": "Ubungakanani",
+        "options": "Iinketho"
+    },
+    "migration": {
+        "title": "Fudusa iwebhusayithi yakho",
+        "currentWebHostInfo": "Ulwazi lomamkeli wewebhu wangoku",
+        "customerPortalUrl": "I-URL yewebhu yomxhasi",
+        "portalExample": "Umzekelo: sso.godaddy.com",
+        "registeredUsername": "Igama lomsebenzisi / I-imeyili / I-ID ebhalisiweyo",
+        "password": "Igama lokusebenzisa",
+        "controlPanelUrl": "I-URL yepaneli yolawulo",
+        "controlPanelExample": "Umzekelo: yourdomain.com/cpanel",
+        "ftpUsername": "Igama lomsebenzisi le-FTP / Ipaneli yolawulo",
+        "ftpPassword": "Igama lokusebenzisa le-FTP / Ipaneli yolawulo",
+        "holdingPageQuestion": "Ukuba isayithi iphilayo/ixakekileyo ene-trafikhi ephezulu, singabeka iphepha lokubamba phakathi kokufudusa?",
+        "specialRequirementsQuestion": "Ingaba le sayithi ineemfuno ezikhethekileyo ezifana nePHP Version / Iimoduli?",
+        "domainRegistryInfo": "Ulwazi lwerekhodi yeDomain",
+        "transferDomainQuestion": "Ufuna nathi ukukunceda ukuthengisa ukubhalisa kwegama ledomain?",
+        "updateNameserversQuestion": "Ufuna asisazise iiseva zamagama ngoku nje sigqibezele ukufudusa idatha?",
+        "domainRegistryPortal": "Iwebhu yomxhasi yerekhodi yeDomain",
+        "importantNotes": "Iimpawu ezibalulekileyo",
+        "note1": "Ukuzalisa le fomu kuya kuvula itikiti entsha yesebe lethu lenkxaso ukuqala ukufudusa kwakho.",
+        "note2": "Nceda ube ngqongqo nakuchanekileyo ngokweneleyo ukuphepha ulibaziseko olunako.",
+        "note3": "Ukufudusa okuqhelekileyo kugqibezela phakathi kweeyure ezingama-48 ukuya kwama-72. Ngamanye amaxesha ndide ukuba isixa sedatha ekopishwayo sikhulu.",
+        "note4": "I-akhawunti yokusingathwa endala kufuneka ibe kwi-intanethi kwaye ifikeleleke ngelixa sisebenza ukufudusa, kungenjalo sinokujongana neengxaki.",
+        "note5": "Nceda ungavuseli izihlaziyo kwisayithi yakho ngelixa sisebenza ukufudusa, kungenjalo leyo datha ayinakukopishwa kwi-hosting entsha."
+    },
+    "order": {
+        "title": "Odola iwebhusayithi"
+    }
+}

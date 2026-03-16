@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Orodha ya Leseni",
+        "orderTitle": "Agiza Usajili wa Leseni"
+    },
+    "view": {
+        "title": "Angalia Leseni {id}",
+        "package": "Pakiti",
+        "nextInvoiceDate": "Tarehe ya Ankara Inayofuata:",
+        "billing": "Bili",
+        "billed": "imelipiwa:",
+        "statusIs": "Hali ni:",
+        "licenseInfo": "Maelezo ya Leseni",
+        "cpanelInfo": "Maelezo ya cPanel",
+        "links": "Viungo",
+        "welcomeEmailConfirm": "Je, una uhakika unataka kutuma tena barua pepe ya karibu?",
+        "emailSent": "Barua pepe Imetumwa",
+        "emailSentMessage": "Barua pepe ya karibu imetumwa tena. Angalia kikasha chako."
+    },
+    "order": {
+        "title": "Agiza Leseni"
+    },
+    "changeIp": {
+        "title": "Badilisha IP"
+    },
+    "changeOs": {
+        "title": "Badilisha Mfumo wa Uendeshaji",
+        "selectLicenseOs": "Chagua Mfumo wa Uendeshaji wa Leseni"
+    }
+}

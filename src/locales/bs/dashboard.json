@@ -1,0 +1,28 @@
+{
+    "title": "Kontrolna tabla",
+    "welcome": "Dobrodošli, {name}",
+    "lastLogin": "Posljednja prijava",
+    "lastLoginIp": "IP posljednje prijave",
+    "prepay": {
+        "title": "Saldo unaprijed plaćanja",
+        "remainingBalance": "Preostali saldo unaprijed plaćanja",
+        "manageAccount": "Upravljaj nalogom",
+        "manageTooltip": "Upravljaj nalogom unaprijed plaćanja"
+    },
+    "invoices": {
+        "title": "Neplaćene fakture",
+        "totalUnpaid": "Ukupno neplaćenih faktura",
+        "totalAmount": "Ukupni iznos za plaćanje",
+        "payTotalTooltip": "Plati ukupni iznos"
+    },
+    "callInPin": "PIN za telefonski poziv",
+    "recentTickets": "Nedavni tiketi",
+    "viewAllTickets": "Pogledaj sve tikete",
+    "editTicket": "Uredi tiket",
+    "serviceCount": "Nema aktivnih usluga | {count} aktivna usluga | {count} aktivnih usluga",
+    "affiliate": {
+        "earnPerSale": "Zaradite {amount} po prodaji",
+        "urlPlaceholder": "Partnerski URL",
+        "shareWith": "Podijelite s"
+    }
+}

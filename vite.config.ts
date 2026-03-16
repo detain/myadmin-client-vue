@@ -24,7 +24,7 @@ export default defineConfig({
         environment: 'jsdom',
         reporters: ['default', 'html'],
         setupFiles: ['./test/setup.ts'],
-        exclude: ['**/.claude/**', '**/e2e/**', '**/node_modules/**'],
+        exclude: ['**/.claire/**', '**/.claude/**', '**/e2e/**', '**/node_modules/**'],
         coverage: {
             reporter: ['text', 'json-summary', 'html'],
         },
@@ -124,7 +124,7 @@ export default defineConfig({
         allowedHosts: true,
         cors: true,
         watch: {
-          ignored: ['**/.claude/**']
+          ignored: ['**/.claire/**', '**/.claude/**']
         }
     },
 });

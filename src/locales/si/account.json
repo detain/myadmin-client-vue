@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "ගිණුම් සැකසීම්"
+    },
+    "changePassword": {
+        "title": "මුරපදය වෙනස් කරන්න",
+        "cardTitle": "මුරපදය යාවත්කාලීන කරන්න",
+        "currentPassword": "වත්මන් මුරපදය",
+        "newPassword": "නව මුරපදය",
+        "confirmPassword": "මුරපදය තහවුරු කරන්න",
+        "updatePassword": "මුරපදය යාවත්කාලීන කරන්න"
+    },
+    "changeUsername": {
+        "title": "පරිශීලක නාමය වෙනස් කරන්න",
+        "disabled": "පරිශීලක නාම වෙනස් කිරීම් තාවකාලිකව අක්‍රිය කර ඇත.",
+        "currentUsername": "වත්මන් පරිශීලක නාමය",
+        "newDesiredUsername": "අපේක්ෂිත නව පරිශීලක නාමය",
+        "confirmationCode": "තහවුරු කිරීමේ කේතය",
+        "pleaseWait": "කරුණාකර රැඳෙන්න!",
+        "gotError": "දෝෂයක් ලැබිණි {error}"
+    },
+    "contactInfo": {
+        "title": "සම්බන්ධතා තොරතුරු",
+        "cardTitle": "සම්බන්ධතා තොරතුරු යාවත්කාලීන කරන්න",
+        "headsUp": "අවධානයට!",
+        "headsUpMessage": "මෙම තොරතුරු විකල්ප වුවද, (නිවැරදි) තොරතුරු ලබා දීම අපගේ අන්තර්ක්‍රියා සমෘද්ධ කිරීමට සහ ඔබේ අවදානම් % ලකුණු අඩු කිරීමට ද උපකාරී වේ, ඔබට සෛ‍ද්ධාන්තික කොටස් වෙත වේගවත් හා පහසු ප්‍රවේශයක් ලබා දෙයි.",
+        "riskScore": "අවදානම් % ලකුණු",
+        "personalInformation": "පෞද්ගලික තොරතුරු",
+        "name": "නම",
+        "namePlaceholder": "Joe Cool",
+        "company": "සමාගම",
+        "gstinTaxId": "GSTIN බදු ID",
+        "gstinPlaceholder": "භාණ්ඩ හා සේවා බදු ගෙවන්නාගේ හඳුනාගැනීමේ අංකය",
+        "addressLine1": "ලිපිනය පේළිය 1",
+        "addressLine2": "ලිපිනය පේළිය 2",
+        "cityState": "නගරය, රාජ්‍යය",
+        "city": "නගරය",
+        "state": "රාජ්‍යය",
+        "country": "රට",
+        "zipcode": "තැපැල් කේතය",
+        "phoneNo": "දූරකථන අංකය",
+        "phoneNumber": "දූරකථන අංකය",
+        "language": "භාෂාව",
+        "auto": "ස්වයංක්‍රීය",
+        "currency": "මුදල් ඒකකය",
+        "timeZone": "වේලා කලාපය",
+        "otherSettings": "වෙනත් සැකසීම්",
+        "disablePasswordResets": "මුරපද යළි සැකසීම (මුරපදය අමතකද) අක්‍රිය කරන්න.",
+        "disableInvoiceReminders": "ඉන්වොයිස් සිහිකැඳවීම් විද්‍යුත් තැපෑල දැනුම්දීම් අක්‍රිය කරන්න.",
+        "disableServerInvoiceReminders": "සේවාදායක ඉන්වොයිස් සිහිකැඳවීම් විද්‍යුත් තැපෑල දැනුම්දීම් අක්‍රිය කරන්න.",
+        "disableReinstall": "නැවත ස්ථාපනය අක්‍රිය කරන්න.",
+        "alternateEmailInvoices": "ඉන්වොයිස් සඳහා විකල්ප විද්‍යුත් තැපෑල",
+        "alternateEmailInvoicesPlaceholder": "ඉන්වොයිස් යැවීම සඳහා විකල්ප විද්‍යුත් තැපෑල",
+        "alternateEmailAbuse": "අපයෝජන වාර්තා සඳහා විකල්ප විද්‍යුත් තැපෑල",
+        "updateInfo": "තොරතුරු යාවත්කාලීන කරන්න"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Senarai Perkhidmatan Scrub IPs",
+        "orderTitle": "Pesan Scrub IPs"
+    },
+    "view": {
+        "title": "Lihat Scrub IPs",
+        "currentIp": "IP Semasa",
+        "ipAddress": "Alamat IP",
+        "ipFromService": "IP dari perkhidmatan"
+    },
+    "filters": {
+        "title": "Penapis",
+        "createNew": "Cipta Baharu",
+        "createNewFilter": "Cipta Penapis Baharu",
+        "filterType": "Jenis Penapis",
+        "selectFilterType": "Pilih Jenis Penapis",
+        "ipAddress": "Alamat IP",
+        "portNo": "No Port",
+        "filter": "Penapis",
+        "destinationIp": "IP Destinasi",
+        "destinationPort": "Port Destinasi",
+        "noFiltersFound": "Tiada penapis ditemui!",
+        "deleteFilterConfirm": "Adakah anda pasti mahu memadam penapis ini?",
+        "unableToCreateFilter": "Tidak dapat mencipta penapis pada masa ini.",
+        "unableToDeleteFilter": "Tidak dapat memadam penapis pada masa ini."
+    },
+    "firewallRules": {
+        "title": "Peraturan Tembok Api",
+        "createNew": "Cipta Baharu",
+        "createNewFirewall": "Cipta Peraturan Tembok Api Baharu",
+        "protocol": "Protokol",
+        "destinationIp": "IP Destinasi",
+        "destinationPort": "Port Destinasi",
+        "sourceIp": "IP Sumber",
+        "sourcePort": "Port Sumber",
+        "xdpAction": "Tindakan XDP",
+        "ipRequired": "Alamat IP diperlukan",
+        "block": "Sekat",
+        "whitelist": "Senarai Putih",
+        "noRulesFound": "Tiada peraturan ditemui!",
+        "deleteRuleConfirm": "Adakah anda pasti mahu memadam peraturan ini?",
+        "unableToCreateRule": "Tidak dapat mencipta peraturan tembok api pada masa ini.",
+        "unableToDeleteRule": "Tidak dapat memadam peraturan tembok api pada masa ini."
+    },
+    "geoFirewallRules": {
+        "title": "Peraturan Tembok Api Geo",
+        "createNew": "Cipta Baharu",
+        "createNewGeoRule": "Cipta Peraturan Tembok Api Geo Baharu",
+        "destinationIp": "IP Destinasi",
+        "destinationPort": "Port Destinasi",
+        "sourceCountry": "Negara Sumber",
+        "sourceAsn": "ASN Sumber",
+        "xdpAction": "Tindakan XDP",
+        "portNo": "No Port",
+        "selectCountry": "Pilih Negara",
+        "asn": "ASN",
+        "block": "Sekat",
+        "whitelist": "Senarai Putih",
+        "noRulesFound": "Tiada peraturan ditemui!",
+        "deleteGeoRuleConfirm": "Adakah anda pasti mahu memadam peraturan geo ini?",
+        "unableToCreateRule": "Tidak dapat mencipta peraturan tembok api pada masa ini.",
+        "unableToDeleteRule": "Tidak dapat memadam peraturan tembok api geo pada masa ini."
+    }
+}

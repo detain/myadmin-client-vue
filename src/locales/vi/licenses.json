@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Danh sách giấy phép",
+        "orderTitle": "Đặt đăng ký giấy phép"
+    },
+    "view": {
+        "title": "Xem giấy phép {id}",
+        "package": "Gói",
+        "nextInvoiceDate": "Ngày hóa đơn tiếp theo:",
+        "billing": "Thanh toán",
+        "billed": "đã thanh toán:",
+        "statusIs": "Trạng thái:",
+        "licenseInfo": "Thông tin giấy phép",
+        "cpanelInfo": "Thông tin cPanel",
+        "links": "Liên kết",
+        "welcomeEmailConfirm": "Bạn có chắc muốn gửi lại email chào mừng không?",
+        "emailSent": "Email đã gửi",
+        "emailSentMessage": "Email chào mừng đã được gửi lại. Kiểm tra hộp thư đến của bạn."
+    },
+    "order": {
+        "title": "Đặt giấy phép"
+    },
+    "changeIp": {
+        "title": "Thay đổi IP"
+    },
+    "changeOs": {
+        "title": "Thay đổi hệ điều hành",
+        "selectLicenseOs": "Chọn hệ điều hành giấy phép"
+    }
+}

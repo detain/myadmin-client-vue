@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Domain hinzufügen",
+        "deleteDomain": "Domain löschen",
+        "domainName": "Domainname",
+        "dnsServers": "DNS-Server",
+        "confirmDelete": "Sind Sie sicher, dass Sie diese Domain löschen möchten?",
+        "noDomains": "Keine Domains gefunden"
+    },
+    "editor": {
+        "title": "DNS-Editor",
+        "addRecord": "Eintrag hinzufügen",
+        "deleteRecord": "Eintrag löschen",
+        "editRecord": "Eintrag bearbeiten",
+        "recordType": "Eintragstyp",
+        "hostname": "Hostname",
+        "address": "Adresse",
+        "distance": "Entfernung",
+        "weight": "Gewicht",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Aktionen",
+        "confirmDelete": "Sind Sie sicher, dass Sie diesen Eintrag löschen möchten?"
+    }
+}

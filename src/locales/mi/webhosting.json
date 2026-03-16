@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Rārangi Manaaki Tukutuku",
+        "orderTitle": "Ota Ngā Rēhitatanga Pae Tukutuku"
+    },
+    "view": {
+        "title": "Tiro Pae Tukutuku {id}",
+        "package": "Pēke",
+        "nextInvoiceDate": "Rā Pire Panuku:",
+        "billing": "Utu",
+        "billed": "utua",
+        "billingStatusIs": "Ko te Āhua Utu:",
+        "hostInfo": "Mōhiohio Manaaki",
+        "username": "Ingoa Kaiwhakamahi:",
+        "ip": "IP:",
+        "server": "Tūmau:",
+        "notSetYet": "Kāore anō i tautuhia",
+        "login": "Takiuru",
+        "types": "Ngā Momo:",
+        "linksLabel": "Ngā Hononga:",
+        "manualLogin": "Takiuru Ā-ringa",
+        "automaticLogin": "Takiuru Aunoa",
+        "clickHere": "Pāwhiria Konei",
+        "defaultNameservers": "Ngā Tūmau Ingoa Taunoa",
+        "nameservers": "Ngā Tūmau Ingoa:",
+        "externalLinks": "Ngā Hononga Waho",
+        "names": "Ngā Ingoa:",
+        "websitePreview": "Arokite Pae Tukutuku",
+        "links": "Ngā Hononga",
+        "welcomeEmailConfirm": "He tūturu tāu e hiahia ana ki te tono anō i te īmēra whakamihi?",
+        "emailSent": "Kua Tukuna Īmēra",
+        "emailSentMessage": "Kua tukuna anō te īmēra whakamihi. Tirohia tō pouaka tomo."
+    },
+    "buyIp": {
+        "title": "Hoko Āpitihanga IP Tāpiri",
+        "existingAddonIps": "Ngā IP Āpitihanga Kei Reira",
+        "additionalIp": "IP Tāpiri",
+        "monthlyCost": "Utu Maramarama ({symbol})",
+        "costDescription": "Utu ({symbol}) ia marama ina utua tō pae tukutuku",
+        "confirmPurchase": "Whakaū Hoko",
+        "confirmMessage": "Utu IP tāpiri: {symbol}{cost}/marama. He tūturu tāu e hiahia ana ki te ota i tētahi IP tāpiri?",
+        "placeOrder": "Whakatū Ota",
+        "orderPlaced": "Kua Whakatū te Ota"
+    },
+    "reverseDns": {
+        "title": "DNS Huri",
+        "updateReverseDns": "Whakahōu DNS Huri"
+    },
+    "downloadBackups": {
+        "title": "Tikiake Ngā Tiakinga",
+        "backup": "Tiakinga",
+        "size": "Rahi",
+        "options": "Ngā Kōwhiringa"
+    },
+    "migration": {
+        "title": "Neke Tō Pae Tukutuku",
+        "currentWebHostInfo": "Mōhiohio Manaaki Tukutuku Ināianei",
+        "customerPortalUrl": "URL Tūāhanga Kiritaki",
+        "portalExample": "Hei Tauira: sso.godaddy.com",
+        "registeredUsername": "Ingoa Kaiwhakamahi / Īmēra / ID Kua Rēhitatia",
+        "password": "Kupuhipa",
+        "controlPanelUrl": "URL Pane Whakahaere",
+        "controlPanelExample": "Hei Tauira: tōrohe.com/cpanel",
+        "ftpUsername": "Ingoa Kaiwhakamahi FTP / Pane Whakahaere",
+        "ftpPassword": "Kupuhipa FTP / Pane Whakahaere",
+        "holdingPageQuestion": "Ki te kei ora / mahi tonu te pae me te tikanga nui, ka taea e mātou te tautuhia he whārangi pupuri i te wā o te nekehanga?",
+        "specialRequirementsQuestion": "He whakahau motuhake tō tēnei pae pēnei i te Putanga PHP / Ngā Pūranga?",
+        "domainRegistryInfo": "Mōhiohio Rēhita Rohe",
+        "transferDomainQuestion": "Ka hiahia ana koe ki a mātou ki te āwhina i tō whakawhiti i te rēhitatanga ingoa rohe?",
+        "updateNameserversQuestion": "Ka hiahia ana koe ki a mātou ki te whakahōu i ngā tūmau ingoa i a mātou e mutu ana i te nekehanga raraunga?",
+        "domainRegistryPortal": "Tūāhanga Kiritaki Rēhita Rohe",
+        "importantNotes": "Ngā Tāpiri Hira",
+        "note1": "Ko te whakakī i tēnei puka ka whakatuwhera i tētahi tikiti hou mō tō mātou tari tautoko ki te tīmata i tō nekehanga.",
+        "note2": "Tāriria kia oti pai ā tika tonu hei ārai i ngā tārewa.",
+        "note3": "Ka oti tūāhuatia tētahi nekehanga auau i roto i ngā hāora 48 ki te 72. I ētahi wā he roa ake ki te nui o ngā raraunga ka tāruaruatia.",
+        "note4": "Me noho tonu te pūkete manaaki tawhito ā me āhei ki te uru i a mātou e mahi ana i te nekehanga, kāo ake ka āhei ana mātou ki te pāhekoheko.",
+        "note5": "Tāriria kaua e whakahōu i tō pae i a mātou e mahi ana i te nekehanga, kāo ake ko ērā raraunga pea kāore e tāruaruatia ki te manaaki hou."
+    },
+    "order": {
+        "title": "Ota Pae Tukutuku"
+    }
+}

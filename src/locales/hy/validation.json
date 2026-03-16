@@ -1,0 +1,12 @@
+{
+    "required": "{field} pahanjvaтs e",
+    "email": "Piti linі vajer el. postayin hashce",
+    "minLength": "Piti linі litsinachap {min} nish",
+    "maxLength": "Piti linі aravelyn {max} nish",
+    "passwordMatch": "Gaghtnabаrerн piti hamapataskhanen",
+    "invalidFormat": "Anvajer format",
+    "numeric": "Piti linі tiv",
+    "url": "Piti linі vajer URL",
+    "ipAddress": "Piti linі vajer IP hashce",
+    "hostname": "Piti linі vajer hostname"
+}

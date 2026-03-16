@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Selamat datang, {name}",
+    "lastLogin": "Log Masuk Terakhir",
+    "lastLoginIp": "IP Log Masuk Terakhir",
+    "prepay": {
+        "title": "Baki Prabayar",
+        "remainingBalance": "Baki Prabayar Berbaki",
+        "manageAccount": "Urus Akaun",
+        "manageTooltip": "Urus Akaun Prabayar Anda"
+    },
+    "invoices": {
+        "title": "Invois Belum Dibayar",
+        "totalUnpaid": "Jumlah Invois Belum Dibayar",
+        "totalAmount": "Jumlah Keseluruhan yang Perlu Dibayar",
+        "payTotalTooltip": "Bayar Jumlah Keseluruhan"
+    },
+    "callInPin": "PIN Panggilan Masuk",
+    "recentTickets": "Tiket Terkini",
+    "viewAllTickets": "Lihat Semua Tiket",
+    "editTicket": "Edit Tiket",
+    "serviceCount": "Tiada perkhidmatan aktif | {count} perkhidmatan aktif | {count} perkhidmatan aktif",
+    "affiliate": {
+        "earnPerSale": "Dapatkan {amount} Setiap Jualan",
+        "urlPlaceholder": "URL Ahli Gabungan",
+        "shareWith": "Kongsi dengan"
+    }
+}

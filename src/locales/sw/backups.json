@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Orodha ya Hifadhi / Nakala Rudia",
+        "orderTitle": "Agiza Usajili wa Nakala Rudia"
+    },
+    "view": {
+        "title": "Angalia Nakala Rudia {id}",
+        "package": "Pakiti",
+        "nextInvoiceDate": "Tarehe ya Ankara Inayofuata:",
+        "billing": "Bili",
+        "billed": "imelipiwa:",
+        "statusIs": "Hali ni:",
+        "hostServer": "Server ya Mwenyeji",
+        "links": "Viungo",
+        "welcomeEmailConfirm": "Je, una uhakika unataka kutuma tena barua pepe ya karibu?",
+        "emailSent": "Barua pepe Imetumwa",
+        "emailSentMessage": "Barua pepe ya karibu imetumwa tena. Angalia kikasha chako."
+    },
+    "order": {
+        "title": "Agiza Hifadhi"
+    }
+}

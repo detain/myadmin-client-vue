@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Ndepụta Web Hosting",
+        "orderTitle": "Iwu Ndebanye Weebụsaịtị"
+    },
+    "view": {
+        "title": "Lee Weebụsaịtị {id}",
+        "package": "Ngwugwu",
+        "nextInvoiceDate": "Ụbọchị Ụgwọ Ọzọ:",
+        "billing": "Ụgwọ",
+        "billed": "a kwụọ ụgwọ",
+        "billingStatusIs": "Ọnọdụ Ụgwọ bụ:",
+        "hostInfo": "Ozi Onye Nọ",
+        "username": "Aha Njirimara:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Atọọla",
+        "login": "Banyee",
+        "types": "Ụdị:",
+        "linksLabel": "Njikọ:",
+        "manualLogin": "Nbanye Aka",
+        "automaticLogin": "Nbanye Akpaaka",
+        "clickHere": "Pịa Ebe a",
+        "defaultNameservers": "Nameservers Ndabara",
+        "nameservers": "Nameservers:",
+        "externalLinks": "Njikọ Mpụga",
+        "names": "Aha:",
+        "websitePreview": "Nlele Weebụsaịtị",
+        "links": "Njikọ",
+        "welcomeEmailConfirm": "Ị dị mma ịziga ozi email nnabata ọzọ?",
+        "emailSent": "Email Ezigara",
+        "emailSentMessage": "Ezigaala ozi email nnabata ọzọ. Lelee ịgwọ gị."
+    },
+    "buyIp": {
+        "title": "Zụta Nkenwe IP Ọzọ",
+        "existingAddonIps": "IPs Nkenwe Ndị Dị",
+        "additionalIp": "IP Ọzọ",
+        "monthlyCost": "Ọnụahịa Kwa Ọnwa ({symbol})",
+        "costDescription": "Ọnụahịa ({symbol}) kwa ọnwa ka a na-ebipụta ụgwọ weebụsaịtị gị",
+        "confirmPurchase": "Kwenye Ịzụta",
+        "confirmMessage": "Ọnụahịa IP ọzọ: {symbol}{cost}/ọnwa. Ị dị mma ịwu IP ọzọ?",
+        "placeOrder": "Tụnye Iwu",
+        "orderPlaced": "Etụnyere Iwu"
+    },
+    "reverseDns": {
+        "title": "DNS Azụ",
+        "updateReverseDns": "Melite DNS Azụ"
+    },
+    "downloadBackups": {
+        "title": "Budata Ọdabara",
+        "backup": "Ọdabara",
+        "size": "Nha",
+        "options": "Nhọrọ"
+    },
+    "migration": {
+        "title": "Bugharị Weebụsaịtị Gị",
+        "currentWebHostInfo": "Ozi Web Host Ugbu a",
+        "customerPortalUrl": "URL Pọtal Onye Ahịa",
+        "portalExample": "Ihe Atụ: sso.godaddy.com",
+        "registeredUsername": "Aha Njirimara / Email / ID Edebanyere",
+        "password": "Paswọọdụ",
+        "controlPanelUrl": "URL Ngwaọrụ Njikwa",
+        "controlPanelExample": "Ihe Atụ: yourdomain.com/cpanel",
+        "ftpUsername": "Aha Njirimara FTP / Ngwaọrụ Njikwa",
+        "ftpPassword": "Paswọọdụ FTP / Ngwaọrụ Njikwa",
+        "holdingPageQuestion": "Ọ bụrụ na saịtị na-arụ ọrụ/na-ata ọkụ nwere ọsọ dị elu, anyị nwere ike itọ peeji nọchi n'oge ibugharị?",
+        "specialRequirementsQuestion": "Saịtị a nwere mkpa pụrụ iche dị ka Ụdị PHP / Modul?",
+        "domainRegistryInfo": "Ozi Ndebanye Domain",
+        "transferDomainQuestion": "Ị chọrọ na anyị nyere gị aka ibugharị ndebanye aha domain?",
+        "updateNameserversQuestion": "Ị chọrọ na anyị melite name servers ozugbo anyị mechaa ibugharị data?",
+        "domainRegistryPortal": "Pọtal Onye Ahịa Ndebanye Domain",
+        "importantNotes": "Nrọtọ Dị Mkpa",
+        "note1": "Ịjupụta foọmụ a ga-emepụta tiketi ọhụụ maka ngalaba nkwado anyị iji bido ibugharị gị.",
+        "note2": "Biko bụrụ zuru ezu ma ziri ezi iji zere mgbochi ọ bụla.",
+        "note3": "Ibugharị ndabara mechara n'ime awa 48 ruo 72. Oge ụfọdụ ogologo oge ma ọ bụrụ na data ka a ga-edepụo dị nnukwu.",
+        "note4": "Akaụntụ hosting ochie kwesịrị ịnọ n'ịntanetị ma dị n'otu oge anyị na-arụ ọrụ ibugharị, ma ọ bụghị anyị nwere ike ihu ike.",
+        "note5": "Biko emela mmelite ọ bụla na saịtị gị ka anyị na-arụ ọrụ ibugharị, ma ọ bụghị data ndị ahụ nwere ike ịghị adọghị na hosting ọhụụ."
+    },
+    "order": {
+        "title": "Iwu Weebụsaịtị"
+    }
+}

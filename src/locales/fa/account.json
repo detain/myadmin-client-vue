@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "تنظیمات حساب"
+    },
+    "changePassword": {
+        "title": "تغییر رمز عبور",
+        "cardTitle": "بروزرسانی رمز عبور",
+        "currentPassword": "رمز عبور فعلی",
+        "newPassword": "رمز عبور جدید",
+        "confirmPassword": "تأیید رمز عبور",
+        "updatePassword": "بروزرسانی رمز عبور"
+    },
+    "changeUsername": {
+        "title": "تغییر نام کاربری",
+        "disabled": "تغییر نام کاربری به طور موقت غیرفعال شده است.",
+        "currentUsername": "نام کاربری فعلی",
+        "newDesiredUsername": "نام کاربری جدید دلخواه",
+        "confirmationCode": "کد تأیید",
+        "pleaseWait": "لطفاً صبر کنید!",
+        "gotError": "خطا دریافت شد {error}"
+    },
+    "contactInfo": {
+        "title": "اطلاعات تماس",
+        "cardTitle": "بروزرسانی اطلاعات تماس",
+        "headsUp": "توجه!",
+        "headsUpMessage": "اگرچه این اطلاعات اختیاری است، ارائه اطلاعات (دقیق) هم به غنی‌سازی تعاملات ما کمک می‌کند و هم امتیاز ریسک شما را کاهش می‌دهد و دسترسی سریع‌تر و آسان‌تری به بخش‌هایی از سایت فراهم می‌کند.",
+        "riskScore": "امتیاز ریسک",
+        "personalInformation": "اطلاعات شخصی",
+        "name": "نام",
+        "namePlaceholder": "جو کول",
+        "company": "شرکت",
+        "gstinTaxId": "شناسه مالیاتی GSTIN",
+        "gstinPlaceholder": "شماره شناسایی مالیات بر کالا و خدمات",
+        "addressLine1": "خط آدرس ۱",
+        "addressLine2": "خط آدرس ۲",
+        "cityState": "شهر، استان",
+        "city": "شهر",
+        "state": "استان",
+        "country": "کشور",
+        "zipcode": "کد پستی",
+        "phoneNo": "شماره تلفن",
+        "phoneNumber": "شماره تلفن",
+        "language": "زبان",
+        "auto": "خودکار",
+        "currency": "واحد پول",
+        "timeZone": "منطقه زمانی",
+        "otherSettings": "سایر تنظیمات",
+        "disablePasswordResets": "غیرفعال‌سازی بازنشانی رمز عبور (رمز عبور خود را فراموش کرده‌اید).",
+        "disableInvoiceReminders": "غیرفعال‌سازی اطلاع‌رسانی‌های ایمیل یادآوری فاکتور.",
+        "disableServerInvoiceReminders": "غیرفعال‌سازی اطلاع‌رسانی‌های ایمیل یادآوری فاکتور سرور.",
+        "disableReinstall": "غیرفعال‌سازی نصب مجدد.",
+        "alternateEmailInvoices": "ایمیل جایگزین برای فاکتورها",
+        "alternateEmailInvoicesPlaceholder": "ایمیل جایگزین برای ارسال فاکتورها",
+        "alternateEmailAbuse": "ایمیل جایگزین برای گزارش‌های سوء استفاده",
+        "updateInfo": "بروزرسانی اطلاعات"
+    }
+}

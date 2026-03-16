@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Senarai Sijil SSL",
+        "orderTitle": "Pesan Pendaftaran SSL"
+    },
+    "view": {
+        "title": "Lihat SSL {id}",
+        "package": "Pakej",
+        "nextInvoiceDate": "Tarikh Invois Seterusnya:",
+        "billing": "Pengebilan",
+        "billed": "Dibilkan:",
+        "statusIs": "Status ialah:",
+        "orderInfo": "Maklumat Pesanan",
+        "certificateInfo": "Maklumat Sijil",
+        "links": "Pautan",
+        "welcomeEmailConfirm": "Adakah anda pasti mahu menghantar semula e-mel alu-aluan?",
+        "emailSent": "E-mel Dihantar",
+        "emailSentMessage": "E-mel alu-aluan telah dihantar semula. Semak peti masuk anda."
+    },
+    "order": {
+        "title": "Pesan SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Tukar E-mel Pelulus",
+        "selectApproverEmail": "Pilih E-mel Pelulus"
+    }
+}

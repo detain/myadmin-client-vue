@@ -1,0 +1,12 @@
+{
+    "required": "{field} là bắt buộc",
+    "email": "Phải là địa chỉ email hợp lệ",
+    "minLength": "Phải có ít nhất {min} ký tự",
+    "maxLength": "Không được nhiều hơn {max} ký tự",
+    "passwordMatch": "Mật khẩu phải khớp",
+    "invalidFormat": "Định dạng không hợp lệ",
+    "numeric": "Phải là số",
+    "url": "Phải là URL hợp lệ",
+    "ipAddress": "Phải là địa chỉ IP hợp lệ",
+    "hostname": "Phải là tên máy chủ hợp lệ"
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Mipangilio ya Akaunti"
+    },
+    "changePassword": {
+        "title": "Badilisha Nywila",
+        "cardTitle": "Sasisha Nywila",
+        "currentPassword": "Nywila ya Sasa",
+        "newPassword": "Nywila Mpya",
+        "confirmPassword": "Thibitisha Nywila",
+        "updatePassword": "Sasisha Nywila"
+    },
+    "changeUsername": {
+        "title": "Badilisha Jina la Mtumiaji",
+        "disabled": "Mabadiliko ya jina la mtumiaji yamezimwa kwa muda.",
+        "currentUsername": "Jina la Mtumiaji la Sasa",
+        "newDesiredUsername": "Jina Jipya la Mtumiaji Linalotakiwa",
+        "confirmationCode": "Msimbo wa Uthibitisho",
+        "pleaseWait": "Tafadhali subiri!",
+        "gotError": "Hitilafu imetokea {error}"
+    },
+    "contactInfo": {
+        "title": "Maelezo ya Mawasiliano",
+        "cardTitle": "Sasisha Maelezo ya Mawasiliano",
+        "headsUp": "Angalizo!",
+        "headsUpMessage": "Ingawa maelezo haya ni ya hiari, kutoa maelezo (sahihi) kutasaidia kuboresha mwingiliano wetu na kupunguza Alama yako ya Hatari % na kukupa ufikiaji wa haraka na rahisi zaidi kwa sehemu za tovuti (kama vile kutohitaji kuthibitisha kadi ya mkopo).",
+        "riskScore": "Alama ya Hatari %",
+        "personalInformation": "Maelezo ya Kibinafsi",
+        "name": "Jina",
+        "namePlaceholder": "Jina Kamili",
+        "company": "Kampuni",
+        "gstinTaxId": "Nambari ya Kodi ya GSTIN",
+        "gstinPlaceholder": "Nambari ya Utambuzi wa Mlipakodi wa Bidhaa na Huduma",
+        "addressLine1": "Mstari wa Anwani 1",
+        "addressLine2": "Mstari wa Anwani 2",
+        "cityState": "Mji, Jimbo",
+        "city": "Mji",
+        "state": "Jimbo",
+        "country": "Nchi",
+        "zipcode": "Msimbo wa Posta",
+        "phoneNo": "Nambari ya Simu",
+        "phoneNumber": "Nambari ya Simu",
+        "language": "Lugha",
+        "auto": "Otomatiki",
+        "currency": "Sarafu",
+        "timeZone": "Eneo la Saa",
+        "otherSettings": "Mipangilio Mingine",
+        "disablePasswordResets": "Zima (Umesahau Nywila yako) Upya wa Nywila.",
+        "disableInvoiceReminders": "Zima Arifa za Barua pepe za Ukumbusho wa Ankara.",
+        "disableServerInvoiceReminders": "Zima Arifa za Barua pepe za Ukumbusho wa Ankara ya Server.",
+        "disableReinstall": "Zima Usakinishaji upya.",
+        "alternateEmailInvoices": "Barua pepe Mbadala kwa Ankara",
+        "alternateEmailInvoicesPlaceholder": "Barua pepe mbadala ya kutuma ankara",
+        "alternateEmailAbuse": "Barua pepe Mbadala kwa Ripoti za Matumizi Mabaya",
+        "updateInfo": "Sasisha Maelezo"
+    }
+}

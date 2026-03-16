@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Liiska Martigelinta Shabakadda",
+        "orderTitle": "Diiwaangelinta Goobaha Dalbo"
+    },
+    "view": {
+        "title": "Goobta {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "lagu xisaabiyey",
+        "billingStatusIs": "Xaaladda Xisaabta waa:",
+        "hostInfo": "Macluumaadka Martida",
+        "username": "Magaca Isticmaalaha:",
+        "ip": "IP:",
+        "server": "Server-ka:",
+        "notSetYet": "Wali lama dejin",
+        "login": "Gal",
+        "types": "Noocyada:",
+        "linksLabel": "Xiriiriyayaasha:",
+        "manualLogin": "Galitaanka Gacanta",
+        "automaticLogin": "Galitaanka Otomaatigga",
+        "clickHere": "Halkan Guji",
+        "defaultNameservers": "Nameservers-ka Caadiga",
+        "nameservers": "Nameservers-ka:",
+        "externalLinks": "Xiriiriyayaasha Dibadda",
+        "names": "Magacyada:",
+        "websitePreview": "Muuqaalka Goobta",
+        "links": "Xiriiriyayaasha",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "buyIp": {
+        "title": "Ajaaniska IP Dheeraadka ah Iibso",
+        "existingAddonIps": "IP-yada Ajaaniska Jira",
+        "additionalIp": "IP Dheeraad ah",
+        "monthlyCost": "Kharashka Bishaha ({symbol})",
+        "costDescription": "Kharashka ({symbol}) bil kasta goobta marka la xisaabiyo",
+        "confirmPurchase": "Iibsashada Xaqiiji",
+        "confirmMessage": "Kharashka IP dheeraadka: {symbol}{cost}/bil. Ma hubtaa inaad dalban doonto IP dheeraad ah?",
+        "placeOrder": "Dalabka Deji",
+        "orderPlaced": "Dalabka Waa La Dejiyay"
+    },
+    "reverseDns": {
+        "title": "DNS Dib-u-Celinta",
+        "updateReverseDns": "DNS Dib-u-Celinta Cusboonaysii"
+    },
+    "downloadBackups": {
+        "title": "Kaydinnada Soo Dejiso",
+        "backup": "Kaydinta",
+        "size": "Cabbirka",
+        "options": "Doorashooyinka"
+    },
+    "migration": {
+        "title": "Goobtagaaga Guur",
+        "currentWebHostInfo": "Macluumaadka Martida Shabakadda Hadda",
+        "customerPortalUrl": "URL Portal-ka Macaamiisha",
+        "portalExample": "Tusaale ahaan: sso.godaddy.com",
+        "registeredUsername": "Magaca Isticmaalaha Diiwaan Gashan / Iimaylka / ID",
+        "password": "Erayga Sirta",
+        "controlPanelUrl": "URL Barnaamijka Xukumida",
+        "controlPanelExample": "Tusaale ahaan: domain-kaaga.com/cpanel",
+        "ftpUsername": "Magaca Isticmaalaha FTP / Barnaamijka Xukumida",
+        "ftpPassword": "Erayga Sirta FTP / Barnaamijka Xukumida",
+        "holdingPageQuestion": "Haddii goobtu tahay goob nool/mashquul oo taaraafikada badan leh, ma samayn karnaa bogga sugidda inta lagu jiro guuritaanka?",
+        "specialRequirementsQuestion": "Ma leedahay goobtan shuruudo gaar ah sida Nooca PHP / Modules?",
+        "domainRegistryInfo": "Macluumaadka Diiwaanka Domain-ka",
+        "transferDomainQuestion": "Ma doonaysaa sidoo kale inaanu kaa caawino wareejinta diiwaangelinta magaca domain-ka?",
+        "updateNameserversQuestion": "Ma doonaysaa inaanu cusboonaysiino nameservers-ka isla markii aan xogta guuritaanka dhamayno?",
+        "domainRegistryPortal": "Portal-ka Macaamiisha Diiwaanka Domain-ka",
+        "importantNotes": "Xusuusaha Muhiimka",
+        "note1": "Buuxinta foomkan waxay furi doontaa tigidhad cusub waaxda taageerada si ay u bilaabaan guuritaankaaga.",
+        "note2": "Fadlan noqo mid dhamaystiran oo sax ah oo suurta gal ah si aad uga fogaato wax kasta oo dib u dhac ah.",
+        "note3": "Guuritaanka caadiga ah wuxuu dhammaan doontaa 48 ilaa 72 saacadood gudahood. Marmar waa ka dheer tahay haddii xogta la koobiyo ay badan tahay.",
+        "note4": "Xisaabta martigelinta hore waa in ay noqotaa online oo la geli karo inta aan guuritaanka samaynayno, haddaan sidaas ahayn waxa laga yaabaa inaanu dhibaato la kulannno.",
+        "note5": "Fadlan ha samaynin cusboonaysiinno goobtagaaga inta aan guuritaanka samaynayno, haddaan sidaas ahayn xogtaas waxa laga yaabaa inaan la koobinuun martigelinta cusub."
+    },
+    "order": {
+        "title": "Goobta Dalbo"
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontoeinstellungen"
+    },
+    "changePassword": {
+        "title": "Passwort ändern",
+        "cardTitle": "Passwort aktualisieren",
+        "currentPassword": "Aktuelles Passwort",
+        "newPassword": "Neues Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "updatePassword": "Passwort aktualisieren"
+    },
+    "changeUsername": {
+        "title": "Benutzernamen ändern",
+        "disabled": "Benutzernamenänderungen sind vorübergehend deaktiviert.",
+        "currentUsername": "Aktueller Benutzername",
+        "newDesiredUsername": "Gewünschter neuer Benutzername",
+        "confirmationCode": "Bestätigungscode",
+        "pleaseWait": "Bitte warten!",
+        "gotError": "Fehler erhalten {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktinformationen",
+        "cardTitle": "Kontaktinformationen aktualisieren",
+        "headsUp": "Hinweis!",
+        "headsUpMessage": "Obwohl diese Informationen optional sind, hilft das Bereitstellen (genauer) Informationen dabei, unsere Interaktionen zu bereichern und Ihren Risikoprozentsatz zu senken, wodurch Sie schnelleren und bequemeren Zugang zu Teilen der Website erhalten (z. B. ohne eine Kreditkarte authentifizieren zu müssen).",
+        "riskScore": "Risikoprozentsatz",
+        "personalInformation": "Persönliche Informationen",
+        "name": "Name",
+        "namePlaceholder": "Max Mustermann",
+        "company": "Unternehmen",
+        "gstinTaxId": "GSTIN Steuer-ID",
+        "gstinPlaceholder": "Umsatzsteuer-Identifikationsnummer",
+        "addressLine1": "Adresszeile 1",
+        "addressLine2": "Adresszeile 2",
+        "cityState": "Stadt, Bundesland",
+        "city": "Stadt",
+        "state": "Bundesland",
+        "country": "Land",
+        "zipcode": "Postleitzahl",
+        "phoneNo": "Telefonnr.",
+        "phoneNumber": "Telefonnummer",
+        "language": "Sprache",
+        "auto": "Automatisch",
+        "currency": "Währung",
+        "timeZone": "Zeitzone",
+        "otherSettings": "Weitere Einstellungen",
+        "disablePasswordResets": "Passwort-Zurücksetzungen deaktivieren (Passwort vergessen).",
+        "disableInvoiceReminders": "E-Mail-Benachrichtigungen für Rechnungserinnerungen deaktivieren.",
+        "disableServerInvoiceReminders": "E-Mail-Benachrichtigungen für Server-Rechnungserinnerungen deaktivieren.",
+        "disableReinstall": "Neuinstallation deaktivieren.",
+        "alternateEmailInvoices": "Alternative E-Mail für Rechnungen",
+        "alternateEmailInvoicesPlaceholder": "Alternative E-Mail für den Versand von Rechnungen",
+        "alternateEmailAbuse": "Alternative E-Mail für Missbrauchsberichte",
+        "updateInfo": "Informationen aktualisieren"
+    }
+}

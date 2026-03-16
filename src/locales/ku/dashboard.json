@@ -1,0 +1,28 @@
+{
+    "title": "داشبۆرد",
+    "welcome": "بەخێربێیت، {name}",
+    "lastLogin": "دوایین چوونەژوورەوە",
+    "lastLoginIp": "ئای پیی دوایین چوونەژوورەوە",
+    "prepay": {
+        "title": "باڵانسی پێشپارەدان",
+        "remainingBalance": "باڵانسی ئەماوەی پێشپارەدان",
+        "manageAccount": "بەڕێوەبردنی هەژمار",
+        "manageTooltip": "بەڕێوەبردنی هەژمارەکەی پێشپارەدانت"
+    },
+    "invoices": {
+        "title": "پسووڵەکانی پارەنەدراو",
+        "totalUnpaid": "کۆی پسووڵەکانی پارەنەدراو",
+        "totalAmount": "کۆی بڕی دەبێت بدرێت",
+        "payTotalTooltip": "پارەدانی کۆی بڕ"
+    },
+    "callInPin": "PIN ی تەلەفۆن",
+    "recentTickets": "تیکێتەکانی نوێ",
+    "viewAllTickets": "بینینی هەموو تیکێتەکان",
+    "editTicket": "دەستکاریکردنی تیکێت",
+    "serviceCount": "هیچ خزمەتگوزارییەکی چالاک نییە | {count} خزمەتگوزاری چالاک | {count} خزمەتگوزاری چالاک",
+    "affiliate": {
+        "earnPerSale": "بەدەستهێنانی {amount} بۆ هەر فرۆشتن",
+        "urlPlaceholder": "URL ی هاوکارانه",
+        "shareWith": "بەشداری بکە لەگەڵ"
+    }
+}

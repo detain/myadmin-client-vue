@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Willkommen, {name}",
+    "lastLogin": "Letzte Anmeldung",
+    "lastLoginIp": "Letzte Anmeldungs-IP",
+    "prepay": {
+        "title": "Vorauszahlungsguthaben",
+        "remainingBalance": "Verbleibendes Vorauszahlungsguthaben",
+        "manageAccount": "Konto verwalten",
+        "manageTooltip": "Ihr Vorauszahlungskonto verwalten"
+    },
+    "invoices": {
+        "title": "Unbezahlte Rechnungen",
+        "totalUnpaid": "Gesamtzahl unbezahlter Rechnungen",
+        "totalAmount": "Zu zahlender Gesamtbetrag",
+        "payTotalTooltip": "Gesamtbetrag bezahlen"
+    },
+    "callInPin": "Einwahl-PIN",
+    "recentTickets": "Neueste Tickets",
+    "viewAllTickets": "Alle Tickets anzeigen",
+    "editTicket": "Ticket bearbeiten",
+    "serviceCount": "Keine aktiven Dienste | {count} aktiver Dienst | {count} aktive Dienste",
+    "affiliate": {
+        "earnPerSale": "Verdienen Sie {amount} pro Verkauf",
+        "urlPlaceholder": "Affiliate-URL",
+        "shareWith": "Teilen mit"
+    }
+}

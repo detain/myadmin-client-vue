@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Floating IPs სერვისების სია",
+        "orderTitle": "Floating IP რეგისტრაციის შეკვეთა"
+    },
+    "view": {
+        "title": "Floating IP {id}-ის ნახვა",
+        "package": "პაკეტი",
+        "nextInvoiceDate": "შემდეგი ინვოისის თარიღი:",
+        "billing": "ბილინგი",
+        "billed": "დარიცხული:",
+        "statusIs": "სტატუსი:",
+        "floatingIp": "Floating IP",
+        "links": "ბმულები",
+        "welcomeEmailConfirm": "დარწმუნებული ხართ, რომ გსურთ მისასალმებელი ელ-ფოსტის ხელახლა გაგზავნა?",
+        "emailSent": "ელ-ფოსტა გაიგზავნა",
+        "emailSentMessage": "მისასალმებელი ელ-ფოსტა ხელახლა გაიგზავნა. შეამოწმეთ თქვენი შემოსული ყუთი."
+    },
+    "order": {
+        "title": "Floating IP-ის შეკვეთა"
+    },
+    "changeIp": {
+        "title": "სამიზნე IP-ის შეცვლა"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Welkom, {name}",
+    "lastLogin": "Laatste aanmelding",
+    "lastLoginIp": "Laatste aanmeldings-IP",
+    "prepay": {
+        "title": "Vooruitbetalingssaldo",
+        "remainingBalance": "Resterend vooruitbetalingssaldo",
+        "manageAccount": "Account beheren",
+        "manageTooltip": "Beheer je vooruitbetalingsaccount"
+    },
+    "invoices": {
+        "title": "Onbetaalde facturen",
+        "totalUnpaid": "Totaal onbetaalde facturen",
+        "totalAmount": "Totaalbedrag te betalen",
+        "payTotalTooltip": "Totaalbedrag betalen"
+    },
+    "callInPin": "Inbel-PIN",
+    "recentTickets": "Recente tickets",
+    "viewAllTickets": "Alle tickets bekijken",
+    "editTicket": "Ticket bewerken",
+    "serviceCount": "Geen actieve services | {count} actieve service | {count} actieve services",
+    "affiliate": {
+        "earnPerSale": "Verdien {amount} per verkoop",
+        "urlPlaceholder": "Affiliate URL",
+        "shareWith": "Delen met"
+    }
+}
