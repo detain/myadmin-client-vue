@@ -115,5 +115,9 @@ export default defineConfig({
     },
     server: {
         allowedHosts: true,
+        cors: true,
+        watch: {
+          ignored: ['**/.claude/**']
+        }
     },
 });
