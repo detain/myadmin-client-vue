@@ -1,26 +1,20 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { RouterLink } from 'vue-router';
-import { computed } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 
 const module: string = 'webhosting';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
+const router = useRouter();
 
 const props = defineProps<{
     id: number;
-    ipsDetails?: IpDetails[];
-    buyForm?: boolean;
-    ipCurrency?: string;
-    imCost?: string;
-    ipCost?: string;
 }>();
 const id = computed(() => props.id);
-const ipsDetailsExist = computed(() => (props.ipsDetails?.length ?? 0) > 0);
-const buyForm = computed(() => props.buyForm);
 
 interface IpDetails {
     invoices_id: string;
@@ -55,31 +49,81 @@ interface IpDetails {
     ip: string;
 }
 
-function submitForm() {
+const ipsDetails = ref<IpDetails[]>([]);
+const ipCount = ref(0);
+const ipCost = ref('0.00');
+const ipCurrencySymbol = ref('$');
+const ipCurrency = ref('USD');
+const loadingDone = ref(false);
+
+const ipsDetailsExist = computed(() => ipsDetails.value.length > 0);
+const ipCostFormatted = computed(() => parseFloat(ipCost.value).toFixed(2));
+
+function loadBuyIp() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> Loading IP information...',
         allowOutsideClick: false,
         showConfirmButton: false,
     });
-    try {
-        fetchWrapper.post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, {}).then((response) => {
+    fetchWrapper
+        .get(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`)
+        .then((response) => {
             Swal.close();
-            console.log('webhosting buy ip', response);
+            loadingDone.value = true;
+            ipsDetails.value = response.ipsDetails || [];
+            ipCount.value = response.ipCount || 0;
+            ipCost.value = String(response.ipCost || 0);
+            ipCurrency.value = response.currency || 'USD';
+            ipCurrencySymbol.value = response.currencySymbol || '$';
+        })
+        .catch((error: any) => {
             Swal.fire({
-                icon: 'success',
-                html: `Success${response.text}`,
+                icon: 'error',
+                html: error?.text || error?.error || 'Failed to load IP information.',
             });
+            loadingDone.value = true;
         });
-    } catch (error: any) {
-        Swal.close();
-        console.log('webhosting buy ip', error);
-        Swal.fire({
-            icon: 'error',
-            html: `Got error ${error.text}`,
-        });
-    }
 }
+
+function submitForm() {
+    Swal.fire({
+        title: 'Confirm Purchase',
+        html: `<p>Additional IP cost: <b>${ipCurrencySymbol.value}${ipCostFormatted.value}</b>/month</p><p>Are you sure you want to order an additional IP?</p>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Place Order',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: '',
+                html: '<i class="fas fa-spinner fa-pulse"></i> Ordering additional IP...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+            fetchWrapper
+                .post(`${baseUrl}/${moduleLink(module)}/${id.value}/buy_ip`, { action: 'buy_ip' })
+                .then((response) => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Order Placed',
+                        html: response.text || 'Additional IP ordered successfully!',
+                    }).then(() => {
+                        loadBuyIp();
+                    });
+                })
+                .catch((error: any) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        html: error?.text || error?.error || 'Failed to order additional IP.',
+                    });
+                });
+        }
+    });
+}
+
+loadBuyIp();
 </script>
 
 <template>
@@ -90,8 +134,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title py-2">
                             <i class="fas fa-map-marker-alt">&nbsp;</i>
-                            <template v-if="ipsDetailsExist">Existing Addon IPs</template>
-                            <template v-else-if="buyForm">Buy Additional IP Addon</template>
+                            Buy Additional IP Addon
                         </h3>
                         <div class="card-tools float-right">
                             <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left">&nbsp;</i>&nbsp;Back&nbsp;&nbsp;</router-link>
@@ -100,6 +143,7 @@ function submitForm() {
                 </div>
                 <div class="card-body">
                     <template v-if="ipsDetailsExist">
+                        <h5 class="mb-3"><i class="fas fa-list"></i>&nbsp; Existing Addon IPs</h5>
                         <table class="table-sm table-bordered table">
                             <tr v-for="websiteDetail in ipsDetails" :key="websiteDetail.ip">
                                 <td>Additional IP</td>
@@ -109,34 +153,21 @@ function submitForm() {
                                     </template>
                                     <template v-else> - </template>
                                 </td>
-                                <td><a :href="websiteDetail.cancel_link">Cancel</a></td>
+                                <td><a :href="websiteDetail.cancel_link" class="text-danger">Cancel</a></td>
                             </tr>
                         </table>
                         <hr />
                     </template>
-                    <template v-if="buyForm">
+                    <template v-if="loadingDone">
                         <form method="POST" @submit.prevent="submitForm">
-                            <input type="hidden" name="link" value="buy_ip" />
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Immediate Cost ({{ ipCurrency }})</label>
+                                        <label class="col-form-label">Monthly Cost ({{ ipCurrencySymbol }})</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="imCost" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="amount" class="col-form-label">Renewal Cost</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <input id="amount" type="hidden" class="form-control" value="1" />
-                                        <input class="form-control form-control-sm" name="now_cost" type="text" disabled :value="ipCost" />
-                                        <small class="form-text text-muted">Cost ({{ ipCurrency }}) every month as your website invoiced</small>
+                                        <input class="form-control form-control-sm" type="text" disabled :value="ipCostFormatted" />
+                                        <small class="form-text text-muted">Cost ({{ ipCurrencySymbol }}) every month as your website is invoiced</small>
                                     </div>
                                 </div>
                             </div>
