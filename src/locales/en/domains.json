@@ -113,7 +113,7 @@
         "renewalNote": "Whois Privacy gets renewed every 12 months from the date of activation. Whois Privacy addon renewal cost is {cost}.",
         "notAvailable": "Whois Privacy is not available for this TLD.",
         "currentlyEnabled": "Whois Privacy is currently enabled for {hostname}.",
-        "disableAndCancel": "Disable & Cancel Whois Privacy",
+        "disableAndCancel": "Disable and Cancel Whois Privacy",
         "domain": "Domain",
         "whoisCost": "Whois Cost",
         "contactPrivacy": "Contact Privacy",
@@ -131,7 +131,7 @@
         "enableMessage": "Your domain {hostname} has a paid whois privacy addon that is not yet enabled. Would you like to enable it now?",
         "enablingWhois": "Enabling whois privacy...",
         "whoisEnabled": "Whois Privacy is now enabled.",
-        "disableTitle": "Disable & Cancel Whois Privacy",
+        "disableTitle": "Disable and Cancel Whois Privacy",
         "disableMessage": "Your domain {hostname} Whois Privacy addon is currently enabled. Are you sure you want to disable and cancel it?",
         "disablingWhois": "Disabling whois privacy...",
         "whoisDisabled": "Whois Privacy has been disabled and canceled."
@@ -139,11 +139,11 @@
     "whoisToggle": {
         "title": "Whois Privacy Addon",
         "enableConfirm": "Enable Whois",
-        "disableCancelConfirm": "Disable & Cancel it.",
+        "disableCancelConfirm": "Disable and Cancel it.",
         "addonEnabled": "Your domain {domain} Whois Privacy addon is Enabled",
         "addonDisabled": "Your domain {domain} Whois Privacy addon is Disabled",
         "confirmEnable": "Are you sure you want to Enable Whois?",
-        "confirmDisable": "Are you sure you want to Disable & Cancel it?"
+        "confirmDisable": "Are you sure you want to Disable and Cancel it?"
     },
     "lock": {
         "title": "Domain Lock/Unlock",
