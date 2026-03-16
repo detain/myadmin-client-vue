@@ -3,11 +3,14 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useAccountStore } from '@/stores/account.store';
 import Swal from 'sweetalert2';
 import { storeToRefs } from 'pinia';
 import { AssetRow } from '@/types/servers';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -102,17 +105,17 @@ accountStore.loadOnce();
         <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid #17a2b8; display: block ruby">
             <p class="text-md m-0">
                 <font-awesome-icon :icon="['fas', 'info-circle']" class="text-info" />
-                <b class="text-info">What this does?</b>
-                Give live IP to IPMI controller restricted to your IP and limited to 24 hours of use.
+                <b class="text-info">{{ t('servers.ipmiLive.whatThisDoes') }}</b>
+                {{ t('servers.ipmiLive.description') }}
             </p>
         </div>
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'connectdevelop']" />IPMI IP</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'connectdevelop']" />{{ t('servers.ipmiLive.title') }}</h3>
                         <div class="card-tools float-right">
-                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><font-awesome-icon :icon="['far', 'paper-plane']" />Email IPMI Credentials</a>
+                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><font-awesome-icon :icon="['far', 'paper-plane']" />{{ t('servers.ipmiLive.emailIpmiCredentials') }}</a>
                             <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
@@ -131,37 +134,37 @@ accountStore.loadOnce();
                         <input type="hidden" name="choice" value="none.view_dedicated_server" />
                         <input type="hidden" name="link" value="ipmi_live" />
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Asset ID</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.assetId') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="asset_id" type="text" class="form-control form-control-sm" name="asset_id" :value="assetInfo.id" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Server ID</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverId') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="server_id" type="text" class="form-control form-control-sm" name="server_id" :value="assetInfo.order_id" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Hostname</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.hostname') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="assetInfo.hostname" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Server IP</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverIp') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="primary_ipv4" type="text" class="form-control form-control-sm" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Server IPMI</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverIpmi') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="ipmi" type="text" class="form-control form-control-sm" name="ipmi" :value="assetInfo.ipmi_ip" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Your IP Address</label>
+                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.yourIpAddress') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="ip" v-model="clientIp" type="text" class="form-control form-control-sm" placeholder="1.2.3.4" name="ip" />
                             </div>

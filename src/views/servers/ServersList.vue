@@ -1,26 +1,33 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+import { loadLocaleMessages } from '@/i18n';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+await loadLocaleMessages('en', 'servers');
+const { t } = useI18n();
+
 const module = 'servers';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Dedicated Servers List');
-siteStore.setTitle('Dedicated Servers List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Servers'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('servers.list.title'));
+    siteStore.setTitle(t('servers.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.servers')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 const columns: ServiceListColumn[] = [
-    { key: 'server_id', label: 'ID' },
-    { key: 'account_lid', label: 'Client' },
-    { key: 'server_hostname', label: 'Server Name', link: true },
-    { key: 'server_status', label: 'Status' },
+    { key: 'server_id', label: t('common.labels.id') },
+    { key: 'account_lid', label: t('common.labels.client') },
+    { key: 'server_hostname', label: t('common.labels.hostname'), link: true },
+    { key: 'server_status', label: t('common.labels.status') },
 ];
 
 const data = ref<Record<string, any>[]>([]);
@@ -43,6 +50,6 @@ loadData();
         :columns="columns"
         id-field="server_id"
         status-field="server_status"
-        order-title="Order Server Registrations"
+        :order-title="t('servers.list.orderTitle')"
     />
 </template>
