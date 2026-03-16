@@ -208,7 +208,9 @@ function getHdDetails(server: ServerRow): string {
     if (server.server_extra) {
         try {
             serverExtra = JSON.parse(server.server_extra);
-        } catch (_) {}
+        } catch (error: any) {
+            console.log('jhson parse failed', error);
+        }
     }
     const hdDescs: string[] = [];
     for (const hd of hds) {
