@@ -2,6 +2,7 @@
     "name": "myadmin-client-vue",
     "description": "Client interface to the InterServer billing and management platform written in Vue+Vite.",
     "author": "detain",
+    "homepage": "https://interserver.net",
     "license": "LGPL-2.1-only",
     "version": "0.99.1",
     "private": true,
