@@ -3,8 +3,11 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -50,7 +53,7 @@ function submitForm() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: t('vps.common.gotError', { error: error.message }),
             });
         });
 }
@@ -74,8 +77,8 @@ loadBackupsList();
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="callout callout-info">
-                    <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> Important Note</h5>
-                    <p class="text-md">Your server will be offline while it replaces all your current files with those on the backup. Please contact support with any questions.</p>
+                    <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> {{ t('vps.restore.importantNote') }}</h5>
+                    <p class="text-md">{{ t('vps.restore.offlineNote') }}</p>
                 </div>
             </div>
         </div>
@@ -83,43 +86,43 @@ loadBackupsList();
             <div class="col-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ module_name }} Backup</h3>
+                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.restore.backupTitle', { name: module_name }) }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
                         <form @submit.prevent="submitForm">
                             <div class="form-group mb-0">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="cur-hostname">Server</label>
+                                    <label class="col-md-3 col-form-label" for="cur-hostname">{{ t('vps.restore.server') }}</label>
                                     <div class="col-sm-6 input-group">
                                         <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="backup">Restore this backup</label>
+                                    <label class="col-md-3 col-form-label" for="backup">{{ t('vps.restore.restoreThisBackup') }}</label>
                                     <div class="col-sm-9 input-group">
                                         <select id="backup" v-model="backup">
-                                            <option disabled value="">Select a backup</option>
+                                            <option disabled value="">{{ t('vps.restore.selectBackup') }}</option>
                                             <option v-for="(backupRow, backupIdx) in backupsArr" :key="backupIdx" :value="backupRow.name">{{ backupRow.type }}: {{ backupRow.service }} - {{ backupRow.name }} {{ backupRow.date }} ({{ backupRow.size }})</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="password">Enter Login Password to Validate Restore.</label>
+                                    <label class="col-md-3 col-form-label" for="password">{{ t('vps.restore.loginPasswordLabel') }}</label>
                                     <div class="col-sm-9 input-group">
                                         <input id="password" v-model="password" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="more-info col-sm-3" for="confirm_yes">Do you really want to restore this backup?</label>
+                                    <label class="more-info col-sm-3" for="confirm_yes">{{ t('vps.restore.confirmRestore') }}</label>
                                     <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input col-sm-9" name="confirm" value="yes" />
                                 </div>
                                 <hr />
                                 <div class="row justify-content-center">
                                     <div class="controls">
-                                        <input type="submit" name="submit" value="Continue" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm || backup == ''" />
+                                        <input type="submit" name="submit" :value="t('vps.insertCd.continueButton')" class="btn btn-order px-4 py-2 text-sm" :disabled="!confirm || backup == ''" />
                                     </div>
                                 </div>
                             </div>

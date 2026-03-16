@@ -3,9 +3,12 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import { DomainFields } from '@/types/domains';
 import { moduleLink } from '@/helpers/moduleLink.ts';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
 }>();
@@ -18,7 +21,7 @@ const domainFields = ref<DomainFields>({});
 const updateContact = async () => {
     await Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.contact.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -49,7 +52,7 @@ const updateContact = async () => {
 async function loadContact() {
     await Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.contact.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -78,9 +81,9 @@ loadContact();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;Contact Information</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;{{ t('domains.contact.title') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/domains/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -110,7 +113,7 @@ loadContact();
                         </div>
                         <div class="row">
                             <div class="col-sm-12 text-center">
-                                <input type="submit" name="Submit" value="Update" class="btn btn-custom btn-md px-4 py-2" />
+                                <input type="submit" name="Submit" :value="t('common.buttons.update')" class="btn btn-custom btn-md px-4 py-2" />
                             </div>
                         </div>
                     </form>

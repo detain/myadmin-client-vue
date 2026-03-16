@@ -3,10 +3,14 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { useRouter, RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
+
 const props = defineProps<{
     id: number;
     module: string;
@@ -86,7 +90,7 @@ function submitForm() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: t('vps.common.gotError', { error: error.message }),
             });
         });
 }
@@ -103,7 +107,7 @@ function loadData() {
             console.log('api failed', error);
             Swal.fire({
                 icon: 'error',
-                html: `Got error ${error.message}`,
+                html: t('vps.common.gotError', { error: error.message }),
             });
         });
 }
@@ -117,9 +121,9 @@ loadData();
             <div class="card my-3">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'upload']" />&nbsp;Upgrade / Downgrade Slices</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'upload']" />&nbsp;{{ t('vps.slices.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -130,20 +134,20 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label class="col-form-label">Upgrade / Downgrade</label>
+                                    <label class="col-form-label">{{ t('vps.slices.upgradeDowngrade') }}</label>
                                 </div>
                                 <div class="col-md-9 b-radius form-control-sm text-muted px-4" style="background: #e7ebef; border: 1px solid #ced4da">
                                     <div class="row m-0 p-0">
                                         <div class="col-md-4 text-left">
-                                            <span>CPU Cores: </span>
+                                            <span>{{ t('vps.slices.cpuCores') }} </span>
                                             <span id="slices_disp" class="text-bold">{{ Math.ceil((slices - 2) / 2 + 1) }}</span>
                                         </div>
                                         <div class="col-md-4 text-center">
-                                            <span>Memory: </span>
+                                            <span>{{ t('vps.slices.memory') }} </span>
                                             <span id="ram_disp" class="text-bold">{{ sliceData.slice_ram * slices }} GB</span>
                                         </div>
                                         <div class="col-md-4 text-right">
-                                            <span>Disk: </span>
+                                            <span>{{ t('vps.slices.disk') }} </span>
                                             <span id="hdd_disp" class="text-bold">{{ sliceData.slice_hd * slices }} GB</span>
                                         </div>
                                     </div>
@@ -154,14 +158,14 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="slices" class="col-form-label">Slices ( Count )</label>
+                                    <label for="slices" class="col-form-label">{{ t('vps.slices.slicesCount') }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="slices" v-model="slices" type="range" class="form-range form-control form-control-sm text-bold" min="1" max="16" step="1" />
-                                    <span class="text-sm text-muted">Up to 32 Slices can be attached to a VPS.</span>
+                                    <span class="text-sm text-muted">{{ t('vps.slices.slicesNote') }}</span>
                                     <span class="text-sm text-muted float-right text-bold">
                                         <span id="cur_slice">{{ slices }}</span
-                                        >/{{ sliceData.max_slices }} Slices
+                                        >/{{ sliceData.max_slices }} {{ t('vps.order.slices') }}
                                     </span>
                                 </div>
                             </div>
@@ -170,12 +174,12 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Immediate Cost ( {{ currencySymbol }} )</label>
+                                    <label for="amount" class="col-form-label">{{ t('vps.slices.immediateCost', { symbol: currencySymbol }) }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="amount" type="hidden" class="form-control" value="1" />
                                     <input id="now_cost" class="price lead form-control form-control-sm text-bold" name="now_cost" type="text" disabled :value="nowCost" />
-                                    <span class="text-muted text-sm">Prorated amount to be paid now.</span>
+                                    <span class="text-muted text-sm">{{ t('vps.slices.proratedNote') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -183,11 +187,11 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Additional Fees ( {{ currencySymbol }} )</label>
+                                    <label for="amount" class="col-form-label">{{ t('vps.slices.additionalFees', { symbol: currencySymbol }) }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="diff_cost" class="price lead form-control form-control-sm text-bold" name="diff_cost" type="text" disabled :value="diffCost" />
-                                    <span class="text-muted text-sm">Recurring Bill will change by this much</span>
+                                    <span class="text-muted text-sm">{{ t('vps.slices.recurringBillNote') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -195,18 +199,18 @@ loadData();
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="amount" class="col-form-label">Updated VPS Cost ( {{ currencySymbol }} )</label>
+                                    <label for="amount" class="col-form-label">{{ t('vps.slices.updatedVpsCost', { symbol: currencySymbol }) }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="repeat_cost" class="price lead form-control form-control-sm text-bold" name="repeat_cost" type="text" disabled :value="repeatCost" />
-                                    <span class="text-muted text-sm">New invoices will cost this much</span>
+                                    <span class="text-muted text-sm">{{ t('vps.slices.newInvoiceNote') }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="confirmation">Yes I want to do this.</label>
+                                    <label for="confirmation">{{ t('vps.slices.confirmLabel') }}</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input id="confirmation" v-model="confirm" type="checkbox" name="confirm" value="yes" required />
@@ -216,7 +220,7 @@ loadData();
                         <hr />
                         <div class="form-group">
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-order px-3 py-2 text-sm" :disabled="!confirm">Confirm</button>
+                                <button type="submit" class="btn btn-order px-3 py-2 text-sm" :disabled="!confirm">{{ t('vps.slices.confirmButton') }}</button>
                             </div>
                         </div>
                     </form>

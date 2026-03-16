@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, nextTick, onBeforeUnmount } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useSiteStore } from '@/stores/site.store';
 import { useRouter } from 'vue-router';
+
+const { t } = useI18n();
 
 interface SearchResults {
     results: (string | number | null)[][];
@@ -257,7 +260,7 @@ export default {
 
 <template>
     <div class="search-wrapper">
-        <input ref="searchInputEl" v-model="searchInput" type="text" class="new-search" @keydown="onKeydown" />
+        <input ref="searchInputEl" v-model="searchInput" type="text" class="new-search" :placeholder="t('common.search.placeholder')" @keydown="onKeydown" />
         <span ref="searchIconEl" class="search-icon" @click="onIconClick">
             {{ searchIcon }}
         </span>
@@ -288,7 +291,7 @@ export default {
                         </div>
                     </div>
                 </a>
-                <div v-if="displayRows.length === 0">No Search Results found</div>
+                <div v-if="displayRows.length === 0">{{ t('common.search.noResults') }}</div>
             </router-link>
         </div>
     </div>

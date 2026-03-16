@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Floating IPs Services List",
+        "orderTitle": "Order Floating IP Registrations"
+    },
+    "view": {
+        "title": "View Floating IP {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Next Invoice Date:",
+        "billing": "Billing",
+        "billed": "billed:",
+        "statusIs": "Status is:",
+        "floatingIp": "Floating IP",
+        "links": "Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome email?",
+        "emailSent": "Email Sent",
+        "emailSentMessage": "The welcome email has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Order Floating IP"
+    },
+    "changeIp": {
+        "title": "Change Target IP"
+    }
+}

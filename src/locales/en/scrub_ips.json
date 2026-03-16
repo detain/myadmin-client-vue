@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs Services List",
+        "orderTitle": "Order Scrub IPs"
+    },
+    "view": {
+        "title": "View Scrub IPs",
+        "currentIp": "Current IP",
+        "ipAddress": "IP Address",
+        "ipFromService": "IP from service"
+    },
+    "filters": {
+        "title": "Filters",
+        "createNew": "Create New",
+        "createNewFilter": "Create New Filter",
+        "filterType": "Filter Type",
+        "selectFilterType": "Select Filter Type",
+        "ipAddress": "IP Address",
+        "portNo": "Port No",
+        "filter": "Filter",
+        "destinationIp": "Destination IP",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "No filters found!",
+        "deleteFilterConfirm": "Are you sure you want to delete this filter?",
+        "unableToCreateFilter": "Unable to create filter at this time.",
+        "unableToDeleteFilter": "Unable to delete filter at this time."
+    },
+    "firewallRules": {
+        "title": "Firewall Rules",
+        "createNew": "Create New",
+        "createNewFirewall": "Create New Firewall Rule",
+        "protocol": "Protocol",
+        "destinationIp": "Destination IP",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source IP",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "IP address is required",
+        "block": "Block",
+        "whitelist": "Whitelist",
+        "noRulesFound": "No rules found!",
+        "deleteRuleConfirm": "Are you sure you want to delete this rule?",
+        "unableToCreateRule": "Unable to create firewall rule at this time.",
+        "unableToDeleteRule": "Unable to delete firewall rule at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Firewall Rules",
+        "createNew": "Create New",
+        "createNewGeoRule": "Create New Geo Firewall Rule",
+        "destinationIp": "Destination IP",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Country",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No",
+        "selectCountry": "Select Country",
+        "asn": "ASN",
+        "block": "Block",
+        "whitelist": "Whitelist",
+        "noRulesFound": "No rules found!",
+        "deleteGeoRuleConfirm": "Are you sure you want to delete this geo rule?",
+        "unableToCreateRule": "Unable to create firewall rule at this time.",
+        "unableToDeleteRule": "Unable to delete geo firewall rule at this time."
+    }
+}

@@ -2,12 +2,16 @@
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
 
 import Swal from 'sweetalert2';
 import ServiceActionCardHeader from '@/components/services/ServiceActionCardHeader.vue';
+
+const { t } = useI18n();
+
 const props = defineProps<{
     id: number;
     module: string;
@@ -22,7 +26,7 @@ const zones = ref<string[]>([]);
 async function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.changeTimezone.pleaseWait'),
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -36,14 +40,14 @@ async function submitForm() {
         console.log('vps change timezone success', response);
         Swal.fire({
             icon: 'success',
-            html: `Success${response.text}`,
+            html: t('vps.changeTimezone.success', { text: response.text }),
         });
     } catch (error: any) {
         Swal.close();
         console.log('vps change timezone failed', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.message}`,
+            html: t('vps.changeTimezone.gotError', { message: error.message }),
         });
     }
 }
@@ -57,7 +61,7 @@ try {
     console.log('vps fetch timezone list failed', error);
     Swal.fire({
         icon: 'error',
-        html: `Got error ${error.message}`,
+        html: t('vps.changeTimezone.gotError', { message: error.message }),
     });
 }
 </script>
@@ -67,7 +71,7 @@ try {
         <div class="col-md-12">
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
                 <p class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #1:</b>&nbsp;You should turn your <b>{{ module }}</b> off completely before changing the time zone.
+                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 1 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote1', { module: module }) }}
                 </p>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
@@ -75,14 +79,14 @@ try {
                 <p></p>
             </div>
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
-                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #2:</b>&nbsp;VPS will be <b>Powered OFF</b> and restarted during the process.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 2 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote2') }}</p>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
                 <p></p>
             </div>
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
-                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Important Note #3:</b>&nbsp;The timezone on this page will always default to <b>America/New_York</b> regardless of what your server is set to.</p>
+                <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 3 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote3') }}</p>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
                 </div>
@@ -93,13 +97,13 @@ try {
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <ServiceActionCardHeader :title="`Change ${module} Timezone`" material-icon="alarm" :back-to="'/' + moduleLink(module) + '/' + props.id" />
+                <ServiceActionCardHeader :title="t('vps.changeTimezone.title', { module: module })" material-icon="alarm" :back-to="'/' + moduleLink(module) + '/' + props.id" />
                 <div class="card-body pb-0">
                     <form class="change_timezone" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_timezone" />
                         <div class="form-group">
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right" for="os">Select Timezone</label>
+                                <label class="col-md-3 col-form-label text-right" for="os">{{ t('vps.changeTimezone.selectTimezone') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <select v-model="timezone" name="timezone" class="form-control select2">
                                         <option v-for="(zone, index) in zones" :key="index" :value="zone">{{ zone }}</option>
@@ -109,7 +113,7 @@ try {
                             <hr />
                             <div class="row justify-content-center">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <input type="submit" name="Submit" value="Change Zone" class="btn btn-sm btn-order px-3 py-2" />
+                                    <input type="submit" name="Submit" :value="t('vps.changeTimezone.changeZone')" class="btn btn-sm btn-order px-3 py-2" />
                                 </div>
                             </div>
                         </div>

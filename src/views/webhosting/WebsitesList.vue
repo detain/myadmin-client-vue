@@ -1,28 +1,35 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+import { loadLocaleMessages } from '@/i18n';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+await loadLocaleMessages('en', 'webhosting');
+const { t } = useI18n();
+
 const module = 'webhosting';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Web Hosting List');
-siteStore.setTitle('Web Hosting List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Webhosting'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('webhosting.list.title'));
+    siteStore.setTitle(t('webhosting.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('common.menu.webhosting')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 const columns: ServiceListColumn[] = [
-    { key: 'website_id', label: 'ID' },
-    { key: 'website_hostname', label: 'Hostname', link: true },
-    { key: 'repeat_invoices_cost', label: 'Cost' },
-    { key: 'website_status', label: 'Status' },
-    { key: 'services_name', label: 'Package' },
-    { key: 'website_comment', label: 'Comments' },
+    { key: 'website_id', label: t('common.labels.id') },
+    { key: 'website_hostname', label: t('common.labels.hostname'), link: true },
+    { key: 'repeat_invoices_cost', label: t('common.labels.cost') },
+    { key: 'website_status', label: t('common.labels.status') },
+    { key: 'services_name', label: t('common.labels.package') },
+    { key: 'website_comment', label: t('common.labels.comments') },
 ];
 
 const data = ref<Record<string, any>[]>([]);
@@ -45,6 +52,6 @@ loadData();
         :columns="columns"
         id-field="website_id"
         status-field="website_status"
-        order-title="Order Website Registrations"
+        :order-title="t('webhosting.list.orderTitle')"
     />
 </template>

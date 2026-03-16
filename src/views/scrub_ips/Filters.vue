@@ -1,20 +1,20 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />Filters</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />{{ t('scrub_ips.filters.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> Create New</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('scrub_ips.filters.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
-            <div v-if="filters != undefined && !filters.length" class="text-center text-danger">No filters found!</div>
+            <div v-if="filters != undefined && !filters.length" class="text-center text-danger">{{ t('scrub_ips.filters.noFiltersFound') }}</div>
             <table v-else class="table table-sm table-bordered">
                 <thead>
                     <tr>
-                        <th>Filter</th>
-                        <th>Destination IP</th>
-                        <th>Destination Port</th>
-                        <th>Actions</th>
+                        <th>{{ t('scrub_ips.filters.filter') }}</th>
+                        <th>{{ t('scrub_ips.filters.destinationIp') }}</th>
+                        <th>{{ t('scrub_ips.filters.destinationPort') }}</th>
+                        <th>{{ t('common.labels.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,7 @@
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="filter.filter_name" type="hidden" name="filter_type" />
                                 <input v-model="filter.dest" type="hidden" name="port" />
-                                <button type="submit" class="border-0" data-toggle="tooltip" title="Delete Filter">
+                                <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
                                     <font-awesome-icon :icon="['fas', 'trash']" />
                                 </button>
                             </form>
@@ -42,7 +42,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 id="modal-label" class="modal-title">Create New Filter</h5>
+                            <h5 id="modal-label" class="modal-title">{{ t('scrub_ips.filters.createNewFilter') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -50,30 +50,30 @@
                         <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
                             <div class="modal-body">
                                 <div class="form-group row">
-                                    <label for="filter_type" class="col-sm-4 col-form-label">Filter Type</label>
+                                    <label for="filter_type" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.filterType') }}</label>
                                     <div class="col-sm-8">
                                         <select id="filter_type" name="filter_type" class="form-control form-control-sm select2" style="width: 100% !important" required>
-                                            <option value="">Select Filter Type</option>
+                                            <option value="">{{ t('scrub_ips.filters.selectFilterType') }}</option>
                                             <option v-for="(type, key) in filter_types" :key="type.value" :value="key">{{ type.name }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="ip" class="col-sm-4 col-form-label">IP Address</label>
+                                    <label for="ip" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.ipAddress') }}</label>
                                     <div class="col-sm-8">
                                         <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="port" class="col-sm-4 col-form-label">Port No</label>
+                                    <label for="port" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.portNo') }}</label>
                                     <div class="col-sm-8">
                                         <input id="port" type="text" name="port" class="form-control" value="80" />
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <button type="submit" class="btn btn-primary">Create</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">Close</button>
+                                <button type="submit" class="btn btn-primary">{{ t('common.buttons.create') }}</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
                             </div>
                         </form>
                     </div>
@@ -87,6 +87,9 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import Dialog from '@/components/Dialog.vue';
 import Swal from 'sweetalert2';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 const id = defineModel('id', { type: Number });
 const filters = defineModel('filters', { type: Array });
 const baseUrl = defineModel('base_url', { type: String });
@@ -130,7 +133,7 @@ const handleSubmit = (form_id: number) => {
                     Swal.fire({ icon: 'error', html: `<strong>Error!</strong> ${error.text} <br/> ${error.errors.map((err: any) => err).join('<br/>')}` });
                 });
         } catch (error) {
-            Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to create filter at this time.' });
+            Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.filters.unableToCreateFilter')}` });
         }
     }
 };
@@ -138,9 +141,9 @@ const handleSubmit = (form_id: number) => {
 const handleDelete = (itemId: number) => {
     Swal.fire({
         icon: 'warning',
-        title: 'Are you sure you want to delete this filter?',
+        title: t('scrub_ips.filters.deleteFilterConfirm'),
         showCancelButton: true,
-        confirmButtonText: 'Yes',
+        confirmButtonText: t('common.labels.yes'),
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -173,7 +176,7 @@ const handleDelete = (itemId: number) => {
                         });
                 } catch (error) {
                     Swal.close();
-                    Swal.fire({ icon: 'error', html: '<strong>Error!</strong> Unable to delete filter at this time.' });
+                    Swal.fire({ icon: 'error', html: `<strong>${t('common.alerts.error')}</strong> ${t('scrub_ips.filters.unableToDeleteFilter')}` });
                 }
             }
         }

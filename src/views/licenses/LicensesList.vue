@@ -1,19 +1,26 @@
 <script setup lang="ts">
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+import { loadLocaleMessages } from '@/i18n';
 import ServiceListTable from '@/components/ServiceListTable.vue';
 import type { ServiceListColumn } from '@/components/ServiceListTable.vue';
 
+await loadLocaleMessages('en', 'licenses');
+const { t } = useI18n();
+
 const module = 'licenses';
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Licensing List');
-siteStore.setTitle('Licensing List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Licenses'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('licenses.list.title'));
+    siteStore.setTitle(t('licenses.list.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.licenses')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 
 const columns: ServiceListColumn[] = [
@@ -47,6 +54,6 @@ loadData();
         :columns="columns"
         id-field="license_id"
         status-field="license_status"
-        order-title="Order License Registrations"
+        :order-title="t('licenses.list.orderTitle')"
     />
 </template>

@@ -3,8 +3,9 @@ import { storeToRefs } from 'pinia';
 import { useInvoicesStore } from '@/stores/invoices.store';
 import { useSiteStore } from '@/stores/site.store';
 import { useAuthStore } from '@/stores/auth.store';
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, watchEffect } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import iconCheckmark from '@/assets/images/myadmin/checkmark.png';
 import iconDelete from '@/assets/images/myadmin/delete.png';
 import iconCashflow from '@/assets/images/myadmin/cashflow.png';
@@ -21,6 +22,7 @@ import iconPayssion from '@/assets/images/payssion.png';
 import iconPdf from '@/assets/images/myadmin/pdf.png';
 import iconViewDetails from '@/assets/images/myadmin/view-details.png';
 import { moduleLink } from '@/helpers/moduleLink';
+const { t } = useI18n();
 const route = useRoute();
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
@@ -33,12 +35,14 @@ const id = computed<number | null>(() => {
     const v = route.params.id;
     return v ? Number(v) : null;
 });
-siteStore.setPageHeading('Invoice List');
-siteStore.setTitle('Invoice List');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Invoices'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('billing.invoices.title'));
+    siteStore.setTitle(t('billing.invoices.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('common.labels.invoices')],
+    ]);
+});
 
 invoicesStore.getAll();
 
@@ -182,15 +186,15 @@ function exportExcel() {}
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><font-awesome-icon :icon="['far', 'money-bill-alt']" />Invoices List</h3>
+            <h3 class="card-title"><font-awesome-icon :icon="['far', 'money-bill-alt']" />{{ t('billing.invoices.invoicesList') }}</h3>
             <div v-if="id" class="card-tools mr-4 mt-2">
-                <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('billing.invoices.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
             <!-- invoice detail -->
             <template v-if="id">
-                <div v-if="loading" class="text-center">Loading…</div>
+                <div v-if="loading" class="text-center">{{ t('common.labels.loading') }}</div>
                 <div v-else v-html="invoiceHtml" />
             </template>
             <!-- LIST MODE -->
@@ -198,29 +202,29 @@ function exportExcel() {}
                 <!-- filters -->
                 <div class="row mb-3 align-items-end">
                     <div class="col-md-2">
-                        <label>Month</label>
+                        <label>{{ t('billing.invoices.month') }}</label>
                         <select v-model="selectedMonth" class="form-control form-control-sm">
-                            <option value="">All</option>
+                            <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in months_arr" :key="val" :value="val">
                                 {{ text }}
                             </option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label>Year</label>
+                        <label>{{ t('billing.invoices.year') }}</label>
                         <select v-model="selectedYear" class="form-control form-control-sm">
-                            <option value="">All</option>
+                            <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in years_arr" :key="val" :value="val">
                                 {{ text }}
                             </option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label>Search</label>
-                        <input v-model="searchText" type="text" class="form-control form-control-sm" placeholder="Search…" />
+                        <label>{{ t('common.buttons.search') }}</label>
+                        <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                     </div>
                     <div class="col-md-2">
-                        <label>Page Size</label>
+                        <label>{{ t('billing.invoices.pageSize') }}</label>
                         <select v-model.number="pageSize" class="form-control form-control-sm">
                             <option :value="10">10</option>
                             <option :value="25">25</option>
@@ -230,8 +234,8 @@ function exportExcel() {}
                         </select>
                     </div>
                     <div class="col-md-4 text-end">
-                        <button class="btn btn-primary btn-sm me-2" @click="exportExcel">Export Excel</button>
-                        <a :href="`https://my.interserver.net/pdf.php?choice=view_invoices&use_variable_sessionid=true&sessionid=${sessionId}`" class="btn btn-primary btn-sm">Export PDF</a>
+                        <button class="btn btn-primary btn-sm me-2" @click="exportExcel">{{ t('billing.invoices.exportExcel') }}</button>
+                        <a :href="`https://my.interserver.net/pdf.php?choice=view_invoices&use_variable_sessionid=true&sessionid=${sessionId}`" class="btn btn-primary btn-sm">{{ t('billing.invoices.exportPdf') }}</a>
                     </div>
                 </div>
 
@@ -240,33 +244,33 @@ function exportExcel() {}
                     <thead>
                         <tr>
                             <th class="sortable" @click="setSort('id')">
-                                ID <span class="sort-arrow">{{ sortArrow('id') }}</span>
+                                {{ t('billing.invoices.id') }} <span class="sort-arrow">{{ sortArrow('id') }}</span>
                             </th>
                             <th @click="setSort('date')">
-                                Date <span class="sort-arrow">{{ sortArrow('date') }}</span>
+                                {{ t('billing.invoices.date') }} <span class="sort-arrow">{{ sortArrow('date') }}</span>
                             </th>
                             <th @click="setSort('service')">
-                                Service <span class="sort-arrow">{{ sortArrow('service') }}</span>
+                                {{ t('billing.invoices.service') }} <span class="sort-arrow">{{ sortArrow('service') }}</span>
                             </th>
                             <th @click="setSort('description')">
-                                Description <span class="sort-arrow">{{ sortArrow('description') }}</span>
+                                {{ t('billing.invoices.description') }} <span class="sort-arrow">{{ sortArrow('description') }}</span>
                             </th>
                             <th class="text-end" @click="setSort('amount')">
-                                Amount <span class="sort-arrow">{{ sortArrow('amount') }}</span>
+                                {{ t('billing.invoices.amount') }} <span class="sort-arrow">{{ sortArrow('amount') }}</span>
                             </th>
                             <th @click="setSort('paid')">
-                                Paid <span class="sort-arrow">{{ sortArrow('paid') }}</span>
+                                {{ t('billing.invoices.paid') }} <span class="sort-arrow">{{ sortArrow('paid') }}</span>
                             </th>
                             <th @click="setSort('payment_type')">
-                                Payment <span class="sort-arrow">{{ sortArrow('payment_type') }}</span>
+                                {{ t('billing.invoices.payment') }} <span class="sort-arrow">{{ sortArrow('payment_type') }}</span>
                             </th>
                             <th @click="setSort('payment_description')">
-                                Payment Description <span class="sort-arrow">{{ sortArrow('payment_description') }}</span>
+                                {{ t('billing.invoices.paymentDescription') }} <span class="sort-arrow">{{ sortArrow('payment_description') }}</span>
                             </th>
                             <th @click="setSort('paid_on')">
-                                Paid On <span class="sort-arrow">{{ sortArrow('paid_on') }}</span>
+                                {{ t('billing.invoices.paidOn') }} <span class="sort-arrow">{{ sortArrow('paid_on') }}</span>
                             </th>
-                            <th>Links</th>
+                            <th>{{ t('billing.invoices.links') }}</th>
                         </tr>
                     </thead>
                     <tbody v-if="!loading">
@@ -285,23 +289,23 @@ function exportExcel() {}
                             <td>{{ row.payment_description }}</td>
                             <td>{{ row.paid_on }}</td>
                             <td>
-                                <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}&use_variable_sessionid=true&sessionid=${sessionId}`" title="PDF" class="me-2"><img :src="iconPdf" border="0" alt="PDF" style="width: 1em; height: 1em; display: inline-block" /></a>
-                                <router-link :to="'/invoices/' + row.id" title="View Invoice"><img :src="iconViewDetails" border="0" alt="View Invoice" style="width: 1em; height: 1em; display: inline-block" /></router-link>
+                                <a :href="`https://my.interserver.net/pdf.php?choice=view_invoice&module=${row.module}&id=${row.id}&use_variable_sessionid=true&sessionid=${sessionId}`" :title="t('billing.invoices.pdf')" class="me-2"><img :src="iconPdf" border="0" :alt="t('billing.invoices.pdf')" style="width: 1em; height: 1em; display: inline-block" /></a>
+                                <router-link :to="'/invoices/' + row.id" :title="t('billing.invoices.viewInvoice')"><img :src="iconViewDetails" border="0" :alt="t('billing.invoices.viewInvoice')" style="width: 1em; height: 1em; display: inline-block" /></router-link>
                             </td>
                         </tr>
                     </tbody>
                     <tbody v-else>
                         <tr>
-                            <td colspan="10" class="text-center">Loading…</td>
+                            <td colspan="10" class="text-center">{{ t('common.labels.loading') }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <!-- pagination -->
                 <div class="d-flex justify-content-between align-items-center">
-                    <div>Page {{ currentPage }} of {{ totalPages }}</div>
+                    <div>{{ t('billing.invoices.page', { current: currentPage, total: totalPages }) }}</div>
                     <div>
-                        <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">Prev</button>
-                        <button class="btn btn-sm btn-secondary" :disabled="currentPage === totalPages" @click="currentPage++">Next</button>
+                        <button class="btn btn-sm btn-secondary me-2" :disabled="currentPage === 1" @click="currentPage--">{{ t('billing.invoices.prev') }}</button>
+                        <button class="btn btn-sm btn-secondary" :disabled="currentPage === totalPages" @click="currentPage++">{{ t('billing.invoices.next') }}</button>
                     </div>
                 </div>
             </template>

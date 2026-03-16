@@ -3,7 +3,10 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -14,9 +17,8 @@ const fields = ref({});
 const module: string = 'ssl';
 const siteStore = useSiteStore();
 
-//const id = ref(''); // Replace with appropriate data or pass as props
-const approver_select = ref([]); // Replace with appropriate data or pass as props
-const selectedApproverEmail = ref(''); // Stores the selected approver email
+const approver_select = ref([]);
+const selectedApproverEmail = ref('');
 
 interface SslServiceInfo {
     ssl_id: number;
@@ -91,9 +93,9 @@ function submitForm() {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'envelope']" />&nbsp;Change Approver Email</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'envelope']" />&nbsp;{{ t('ssl.changeApproverEmail.title') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -101,13 +103,13 @@ function submitForm() {
                     <form method="POST" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_approver_email" />
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="hostname">Hostname</label>
+                            <label class="col-md-4 col-form-label text-right" for="hostname">{{ t('common.labels.hostname') }}</label>
                             <div class="col-sm-8">
                                 <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="service_info.ssl_hostname" disabled />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="approver_email">Select Approver Email</label>
+                            <label class="col-md-4 col-form-label text-right" for="approver_email">{{ t('ssl.changeApproverEmail.selectApproverEmail') }}</label>
                             <div class="col-sm-8">
                                 <select v-model="selectedApproverEmail" name="approver_email" class="form-control form-control-sm select2">
                                     <option v-for="approverEmail in approver_select" :key="approverEmail" :value="approverEmail" :selected="service_info.ssl_approver_email === approverEmail">{{ approverEmail }}</option>
@@ -117,7 +119,7 @@ function submitForm() {
                         <hr />
                         <div class="row">
                             <div class="controls col-md-12 text-center">
-                                <input type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" />
+                                <input type="submit" name="Submit" :value="t('common.buttons.submit')" class="btn btn-sm btn-order px-3 py-2" />
                             </div>
                         </div>
                     </form>

@@ -1,36 +1,39 @@
 import { createRouter, createWebHistory, type RouteLocationRaw, type RouteRecordNormalized } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
+import { loadLocaleMessages } from '@/i18n';
 
 export const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-        { path: '/', component: () => import('../views/ClientHome.vue') },
-        { path: '/login', component: () => import('../views/Login.vue') },
+        { path: '/', component: () => import('../views/ClientHome.vue'), meta: { i18n: ['dashboard'] } },
+        { path: '/login', component: () => import('../views/Login.vue'), meta: { i18n: ['login', 'validation'] } },
         {
             path: '/logout',
             component: () => import('../views/Login.vue'),
+            meta: { i18n: ['login'] },
             beforeEnter: async () => {
                 const authStore = useAuthStore();
                 await authStore.logout();
                 return '/login';
             },
         },
-        { path: '/signup', component: () => import('../views/Login.vue') },
-        { path: '/login_old', component: () => import('../views/LoginOld.vue') },
-        { path: '/register', component: () => import('../views/Register.vue') },
-        { path: '/sudo/:sessionid', component: () => import('../views/Sudo.vue') },
-        { path: '/prepays', component: () => import('../views/billing/PrePays.vue') },
-        { path: '/payment_types', component: () => import('../views/billing/PaymentTypes.vue') },
-        { path: '/cart', component: () => import('../views/billing/Cart.vue') },
-        { path: '/cart/:invoices', component: () => import('../views/billing/Cart.vue') },
-        { path: '/order_needs_payment/:invoices', component: () => import('../views/billing/OrderNeedsPayment.vue') },
-        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices/:done(done)?', component: () => import('../views/billing/Pay.vue') },
-        { path: '/payment_success', component: () => import('../views/billing/PaymentSuccess.vue') },
-        { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue') },
-        { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue') },
+        { path: '/signup', component: () => import('../views/Login.vue'), meta: { i18n: ['login', 'validation'] } },
+        { path: '/login_old', component: () => import('../views/LoginOld.vue'), meta: { i18n: ['login', 'validation'] } },
+        { path: '/register', component: () => import('../views/Register.vue'), meta: { i18n: ['login', 'validation'] } },
+        { path: '/sudo/:sessionid', component: () => import('../views/Sudo.vue'), meta: { i18n: ['login'] } },
+        { path: '/prepays', component: () => import('../views/billing/PrePays.vue'), meta: { i18n: ['billing'] } },
+        { path: '/payment_types', component: () => import('../views/billing/PaymentTypes.vue'), meta: { i18n: ['billing'] } },
+        { path: '/cart', component: () => import('../views/billing/Cart.vue'), meta: { i18n: ['billing'] } },
+        { path: '/cart/:invoices', component: () => import('../views/billing/Cart.vue'), meta: { i18n: ['billing'] } },
+        { path: '/order_needs_payment/:invoices', component: () => import('../views/billing/OrderNeedsPayment.vue'), meta: { i18n: ['billing'] } },
+        { path: '/pay/:method(cc|paypal|prepay|payza|payssion|payu|ccavenue|cashfree|coinbase|btcpay)/:invoices/:done(done)?', component: () => import('../views/billing/Pay.vue'), meta: { i18n: ['billing'] } },
+        { path: '/payment_success', component: () => import('../views/billing/PaymentSuccess.vue'), meta: { i18n: ['billing'] } },
+        { path: '/invoices', component: () => import('../views/billing/InvoicesList.vue'), meta: { i18n: ['billing'] } },
+        { path: '/invoices/:id(\\d+)', component: () => import('../views/billing/InvoicesList.vue'), meta: { i18n: ['billing'] } },
         {
             path: '/account',
+            meta: { i18n: ['account', 'validation'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 //{ path: '', component: () => import('../views/account/ContactInfo.vue') },
@@ -42,6 +45,7 @@ export const router = createRouter({
         },
         {
             path: '/users',
+            meta: { i18n: ['users', 'validation'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/users/List.vue') },
@@ -51,6 +55,7 @@ export const router = createRouter({
         },
         {
             path: '/affiliate',
+            meta: { i18n: ['affiliate'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/billing/affiliates/Affiliate.vue') },
@@ -70,6 +75,7 @@ export const router = createRouter({
         },
         {
             path: '/tickets',
+            meta: { i18n: ['tickets'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/tickets/TicketsList.vue') },
@@ -79,6 +85,7 @@ export const router = createRouter({
         },
         {
             path: '/backups',
+            meta: { i18n: ['backups'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/backups/BackupsList.vue') },
@@ -89,6 +96,7 @@ export const router = createRouter({
         },
         {
             path: '/dns',
+            meta: { i18n: ['dns'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/dns/DnsManager.vue') },
@@ -97,6 +105,7 @@ export const router = createRouter({
         },
         {
             path: '/domains',
+            meta: { i18n: ['domains'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/domains/DomainsList.vue') },
@@ -109,6 +118,7 @@ export const router = createRouter({
         },
         {
             path: '/floating_ips',
+            meta: { i18n: ['floating_ips'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/floating_ips/FloatingIpsList.vue') },
@@ -119,6 +129,7 @@ export const router = createRouter({
         },
         {
             path: '/licenses',
+            meta: { i18n: ['licenses'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/licenses/LicensesList.vue') },
@@ -131,6 +142,7 @@ export const router = createRouter({
         },
         {
             path: '/mail',
+            meta: { i18n: ['mail'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/mail/MailList.vue') },
@@ -142,6 +154,7 @@ export const router = createRouter({
         },
         {
             path: '/qs',
+            meta: { i18n: ['quickservers'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/quickservers/QsList.vue') },
@@ -152,6 +165,7 @@ export const router = createRouter({
         },
         {
             path: '/scrub_ips',
+            meta: { i18n: ['scrub_ips'] },
             children: [
                 { path: '', component: () => import('../views/scrub_ips/ScrubIpList.vue') },
                 { path: ':id(\\d+)', component: () => import('../views/scrub_ips/ViewScrubIp.vue') },
@@ -159,6 +173,7 @@ export const router = createRouter({
         },
         {
             path: '/servers',
+            meta: { i18n: ['servers'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/servers/ServersList.vue') },
@@ -170,6 +185,7 @@ export const router = createRouter({
         },
         {
             path: '/ssl',
+            meta: { i18n: ['ssl'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/ssl/SslList.vue') },
@@ -180,6 +196,7 @@ export const router = createRouter({
         },
         {
             path: '/vps',
+            meta: { i18n: ['vps'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/vps/VpsList.vue') },
@@ -190,6 +207,7 @@ export const router = createRouter({
         },
         {
             path: '/websites',
+            meta: { i18n: ['websites'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/webhosting/WebsitesList.vue') },
@@ -295,6 +313,12 @@ router.beforeEach(async (to) => {
     if (authRequired && !authStore.sessionId && !authStore.apiKey) {
         authStore.returnUrl = to.fullPath;
         return '/login';
+    }
+
+    // Load i18n namespaces for the target route
+    const i18nNamespaces = to.matched.flatMap((record) => (record.meta.i18n as string[] | undefined) ?? []);
+    if (i18nNamespaces.length > 0) {
+        await Promise.all(i18nNamespaces.map((ns) => loadLocaleMessages('en', ns)));
     }
 
     warmRouteByLocation(to);

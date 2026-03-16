@@ -3,10 +3,13 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
 import { VpsInfo } from '@/types/vps';
 import { QsInfo } from '@/types/qs';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -25,7 +28,7 @@ const module = computed(() => props.module);
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.reverseDns.pleaseWait'),
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -39,15 +42,15 @@ function submitForm() {
                 console.log('vps update reverse dns success', response);
                 Swal.fire({
                     icon: 'success',
-                    html: `Success${response.text}`,
+                    html: t('vps.reverseDns.success', { text: response.text }),
                 });
             });
     } catch (error: any) {
         Swal.close();
-        console.log('vps update reverse dns  failed', error);
+        console.log('vps update reverse dns failed', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.text}`,
+            html: t('vps.reverseDns.gotError', { text: error.text }),
         });
     }
 }
@@ -64,14 +67,14 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
             <div class="card b-radius my-3 shadow-none">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'atlas']" />&nbsp;Reverse DNS</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'atlas']" />&nbsp;{{ t('vps.reverseDns.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp; </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="alert alert-warning" role="alert">Changes to reverse DNS take up to an hour to show up.</div>
+                    <div class="alert alert-warning" role="alert">{{ t('vps.reverseDns.dnsChangeNote') }}</div>
                     <template v-if="successMsg">
                         <div class="alert alert-success">{{ successMsg }} {{ cancelQueue }}</div>
                     </template>
@@ -87,7 +90,7 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
                         </template>
                         <div class="form-group row justify-content-center m-0">
                             <div class="controls">
-                                <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-order px-3 py-2 text-sm" />
+                                <input type="submit" name="Submit" :value="t('vps.reverseDns.updateReverseDns')" class="btn btn-order px-3 py-2 text-sm" />
                             </div>
                         </div>
                     </form>

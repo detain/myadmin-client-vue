@@ -1,0 +1,12 @@
+{
+    "title": "Users",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "username": "Username",
+    "password": "Password",
+    "keepSamePassword": "Leave blank to keep the same password",
+    "errorLoading": "Error loading users:",
+    "errorLoadingUser": "Error loading user:"
+}

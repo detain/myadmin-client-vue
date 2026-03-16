@@ -9,7 +9,9 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import Swal from 'sweetalert2';
 import { useSiteStore } from '@/stores/site.store';
 import { generatePassword } from '@/helpers/generatePassword';
+import { useI18n } from 'vue-i18n';
 const siteStore = useSiteStore();
+const { t } = useI18n();
 const baseUrl = siteStore.getBaseUrl();
 const route = useRoute();
 const router = useRouter();
@@ -73,13 +75,13 @@ const orderSummary = computed(() =>
         })
         .filter(Boolean)
 );
-siteStore.setPageHeading('Order Dedicated');
-siteStore.setTitle('Order Dedicated');
+siteStore.setPageHeading(t('servers.order.orderDedicated'));
+siteStore.setTitle(t('servers.order.orderDedicated'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/servers`, 'Servers List'],
-    ['/servers/order', 'Order Server'],
-    ['/servers/order_dedicated', 'Customize Order'],
+    ['/home', t('common.breadcrumb.home')],
+    [`/servers`, t('servers.list.title')],
+    ['/servers/order', t('servers.order.title')],
+    ['/servers/order_dedicated', t('servers.order.customizeOrder')],
 ]);
 
 type LabelKey = keyof typeof labels;
@@ -282,7 +284,7 @@ onMounted(async () => {
                     <thead class="ui-widget-header">
                         <tr>
                             <td style="text-align: center" colspan="6">
-                                <h3 class="p-3 m-0">Order Dedicated Server</h3>
+                                <h3 class="p-3 m-0">{{ t('servers.order.orderDedicatedServer') }}</h3>
                                 <hr class="mt-0" />
                             </td>
                         </tr>
@@ -318,7 +320,7 @@ onMounted(async () => {
                         </template>
                         <tr>
                             <td colspan="6" style="text-align: center">
-                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">Server Region</h3></span>
+                                <span><h3 style="background: #f9f9f9" class="py-2 text-lg b-radius border">{{ t('servers.order.serverRegion') }}</h3></span>
                             </td>
                         </tr>
                         <tr v-for="region in regions" :key="region.region_id">
@@ -343,12 +345,12 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><h3 style="border: 1px solid #ccc; background: #f9f9f9" class="py-2 text-lg b-radius mt-2">Enter Server Details</h3></span>
+                                <span><h3 style="border: 1px solid #ccc; background: #f9f9f9" class="py-2 text-lg b-radius mt-2">{{ t('servers.order.enterServerDetails') }}</h3></span>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><label class="m-0" for="servername">Server Hostname</label></span>
+                                <span><label class="m-0" for="servername">{{ t('servers.order.serverHostname') }}</label></span>
                             </td>
                         </tr>
                         <tr>
@@ -360,15 +362,15 @@ onMounted(async () => {
                             <td colspan="6" style="text-align: left">
                                 <span>
                                     <small class="form-text text-muted">
-                                        <b>Example: server.hostname.com</b><br />
-                                        Use the hostname to identify the server. The domain does not need to be valid or registered. One period is required in the hostname. Other examples: database.local, web.server or your.name.
+                                        <b>{{ t('servers.order.hostnameExample') }}</b><br />
+                                        {{ t('servers.order.hostnameHelp') }}
                                     </small>
                                 </span>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><label class="m-0" for="root_pass">Root Password</label></span>
+                                <span><label class="m-0" for="root_pass">{{ t('servers.order.rootPassword') }}</label></span>
                             </td>
                         </tr>
                         <tr>
@@ -378,12 +380,12 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><small class="form-text text-muted"> Note: Password must contain atleast 8 characters,one lowercase letter, one uppercase letter, one number, a special character. </small></span>
+                                <span><small class="form-text text-muted"> {{ t('servers.order.passwordRequirement') }} </small></span>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: left">
-                                <span><label class="m-0" for="comment">Comments</label></span>
+                                <span><label class="m-0" for="comment">{{ t('servers.order.comments') }}</label></span>
                             </td>
                         </tr>
                         <tr>
@@ -396,7 +398,7 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="6" style="text-align: center">
-                                <span><input type="submit" value="Add to cart" class="btn btn-order py-2 px-3 b-radius mb-3" /></span>
+                                <span><input type="submit" :value="t('servers.order.addToCart')" class="btn btn-order py-2 px-3 b-radius mb-3" /></span>
                             </td>
                         </tr>
                     </tbody>
@@ -408,7 +410,7 @@ onMounted(async () => {
                     <thead class="ui-widget-header">
                         <tr>
                             <td style="text-align: center" colspan="3">
-                                <h3 class="p-3 m-0">Order Summary</h3>
+                                <h3 class="p-3 m-0">{{ t('servers.order.orderSummary') }}</h3>
                                 <hr class="mt-0" />
                             </td>
                         </tr>
@@ -453,7 +455,7 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: left">
-                                <span><div class="w-100 d-block pb-2 font-weight-bold">Monthly Total</div></span>
+                                <span><div class="w-100 d-block pb-2 font-weight-bold">{{ t('servers.order.monthlyTotal') }}</div></span>
                             </td>
                             <td colspan="1" style="text-align: right">
                                 <span>

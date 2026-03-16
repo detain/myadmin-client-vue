@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}",
+    "lastLogin": "Last Login",
+    "lastLoginIp": "Last Login IP",
+    "prepay": {
+        "title": "Prepay Balance",
+        "remainingBalance": "Prepay Remaining Balance",
+        "manageAccount": "Manage Account",
+        "manageTooltip": "Manage Your Prepay Account"
+    },
+    "invoices": {
+        "title": "Unpaid Invoices",
+        "totalUnpaid": "Total Unpaid Invoices",
+        "totalAmount": "Total Amount to Be Paid",
+        "payTotalTooltip": "Pay Total Amount"
+    },
+    "callInPin": "Call-in PIN",
+    "recentTickets": "Recent Tickets",
+    "viewAllTickets": "View All Tickets",
+    "editTicket": "Edit Ticket",
+    "serviceCount": "No active services | {count} active service | {count} active services",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Sale",
+        "urlPlaceholder": "Affiliate URL",
+        "shareWith": "Share with"
+    }
+}

@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useAccountStore } from '@/stores/account.store';
+
+const { t } = useI18n();
 const route = useRoute();
 const accountStore = useAccountStore();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - ViewBanner');
-siteStore.setTitle('Affiliate - ViewBanner');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate System'],
-    ['', 'Banners & Links'],
-]);
+
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.viewBanner.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.viewBanner.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.viewBanners.title')],
+    ]);
+});
 const { custid } = storeToRefs(accountStore);
 const imageFile = route.params.id as string;
 const width = route.query.w as string;
@@ -62,53 +68,53 @@ accountStore.loadOnce();
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="float-left">Banner Image</h4>
+                    <h4 class="float-left">{{ t('affiliate.viewBanner.bannerImage') }}</h4>
                     <div class="card-tools float-right">
-                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <table class="table table-sm">
                     <tr>
-                        <td>Image</td>
+                        <td>{{ t('affiliate.viewBanner.image') }}</td>
                         <td>{{ imageFile }}</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Image Size</td>
+                        <td>{{ t('affiliate.viewBanner.imageSize') }}</td>
                         <td>{{ width }} x {{ height }}</td>
                     </tr>
                     <tr>
-                        <td>SID</td>
-                        <td><textarea v-model="sid" class="form-control" cols="75" rows="2" placeholder="eg. Home Page, Mailing list" /></td>
+                        <td>{{ t('affiliate.viewBanner.sid') }}</td>
+                        <td><textarea v-model="sid" class="form-control" cols="75" rows="2" :placeholder="t('affiliate.viewBanner.sidPlaceholder')" /></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Landing Page URL</td>
+                        <td>{{ t('affiliate.viewBanner.landingPageUrl') }}</td>
                         <td>
                             <select v-model="landing" class="form-control">
-                                <option value="">Select</option>
-                                <option value="home">Home Page</option>
-                                <option value="vps">VPS Page</option>
-                                <option value="webhosting">Webhosting Page</option>
-                                <option value="custom">Custom Url</option>
+                                <option value="">{{ t('affiliate.viewBanner.select') }}</option>
+                                <option value="home">{{ t('affiliate.viewBanner.homePage') }}</option>
+                                <option value="vps">{{ t('affiliate.viewBanner.vpsPage') }}</option>
+                                <option value="webhosting">{{ t('affiliate.viewBanner.webhostingPage') }}</option>
+                                <option value="custom">{{ t('affiliate.viewBanner.customUrl') }}</option>
                             </select>
                         </td>
                         <td></td>
                     </tr>
                     <tr v-show="landing === 'custom'">
-                        <td>Custom URL</td>
+                        <td>{{ t('affiliate.viewBanner.customUrl') }}</td>
                         <td><textarea v-model="customUrl" class="form-control" cols="75" rows="4" placeholder="https://www.interserver.net/" /></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>HTML Code</td>
+                        <td>{{ t('affiliate.viewBanner.htmlCode') }}</td>
                         <td><textarea class="form-control" cols="75" rows="4" readonly :value="htmlCode" /></td>
-                        <td><button type="button" class="btn btn-primary" @click="copyHtml">Copy Code</button></td>
+                        <td><button type="button" class="btn btn-primary" @click="copyHtml">{{ t('affiliate.viewBanner.copyCode') }}</button></td>
                     </tr>
                 </table>
                 <table class="table table-sm">
                     <tr>
-                        <td>Image Preview</td>
+                        <td>{{ t('affiliate.viewBanner.imagePreview') }}</td>
                         <td><img :src="imageSrc" alt="InterServer Web Hosting and VPS" style="padding: 10px" /></td>
                     </tr>
                 </table>

@@ -3,20 +3,22 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import { useSiteStore } from '@/stores/site.store';
 
 import Swal from 'sweetalert2';
 const route = useRoute();
 const id = Number(route.params.id);
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('DNS Editor');
-siteStore.setTitle('DNS Editor');
+siteStore.setPageHeading(t('dns.editor.title'));
+siteStore.setTitle(t('dns.editor.title'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/dns', 'DNS Manager'],
+    ['/home', t('common.breadcrumb.home')],
+    ['/dns', t('dns.manager.title')],
 ]);
-siteStore.addBreadcrum(`/dns/${id}`, 'DNS Editor');
+siteStore.addBreadcrum(`/dns/${id}`, t('dns.editor.title'));
 const baseUrl = siteStore.getBaseUrl();
 const showingAddRecord = ref(false);
 /*DataTable.use(DataTablesCore);*/
@@ -221,7 +223,7 @@ loadDns();
                         </th>
                         <th>Priority</th>
                         <th>TTL</th>
-                        <th>Actopms</th>
+                        <th>{{ t('dns.editor.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>

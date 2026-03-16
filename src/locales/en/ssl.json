@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Certificates List",
+        "orderTitle": "Order SSL Registrations"
+    },
+    "view": {
+        "title": "View SSL {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Next Invoice Date:",
+        "billing": "Billing",
+        "billed": "billed:",
+        "statusIs": "Status is:",
+        "orderInfo": "Order Info",
+        "certificateInfo": "Certificate Info",
+        "links": "Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome email?",
+        "emailSent": "Email Sent",
+        "emailSentMessage": "The welcome email has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Order SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Change Approver Email",
+        "selectApproverEmail": "Select Approver Email"
+    }
+}

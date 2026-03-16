@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;Links</h3>
+                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('common.labels.links') }}</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                 </div>
@@ -20,7 +20,10 @@
 
 <script setup lang="ts">
 import { moduleLink } from '@/helpers/moduleLink';
+import { useI18n } from 'vue-i18n';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
+
+const { t } = useI18n();
 const { clientLinks, module, id } = defineProps<{
     clientLinks: Array<{
         link: string;
