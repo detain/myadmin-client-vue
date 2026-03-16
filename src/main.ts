@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 //import { VueQueryPlugin } from '@tanstack/vue-query';
-import { createHead } from '@unhead/vue';
+import { createHead } from '@unhead/vue/client';
 //import { VueRecaptchaPlugin } from 'vue-recaptcha';
 //import { createI18n } from 'vue-i18n'
 

@@ -1,7 +1,24 @@
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { vi } from 'vitest';
 import Register from '@/views/Register.vue';
+import { useUsersStore } from '@/stores/users.store';
+import { useAlertStore } from '@/stores/alert.store';
+
+vi.mock('@/helpers/fetchWrapper', () => ({
+    fetchWrapper: {
+        get: vi.fn(),
+        post: vi.fn().mockResolvedValue({}),
+        put: vi.fn(),
+        patch: vi.fn(),
+        delete: vi.fn(),
+        getNoLogout: vi.fn(),
+    },
+}));
+
+vi.mock('@/router', () => ({
+    router: { push: vi.fn() },
+}));
 
 const mountOptions = {
     global: {
@@ -48,5 +65,24 @@ describe('Register', () => {
         const feedbacks = wrapper.findAll('.invalid-feedback');
         const visibleErrors = feedbacks.filter((f) => f.text().length > 0);
         expect(visibleErrors.length).toBeGreaterThan(0);
+    });
+
+    it('calls onSubmit which registers user and redirects', async () => {
+        const wrapper = mount(Register, mountOptions);
+        const vm = wrapper.vm as any;
+        // Call the onSubmit function directly with valid data
+        await vm.onSubmit({ firstName: 'John', lastName: 'Doe', username: 'john', password: 'pass123' });
+        await flushPromises();
+    });
+
+    it('handles registration error', async () => {
+        const wrapper = mount(Register, mountOptions);
+        const usersStore = useUsersStore();
+        vi.mocked(usersStore.register).mockRejectedValue(new Error('Registration failed'));
+        const vm = wrapper.vm as any;
+        await vm.onSubmit({ firstName: 'John', lastName: 'Doe', username: 'john', password: 'pass123' });
+        await flushPromises();
+        const alertStore = useAlertStore();
+        expect(alertStore.alert?.message).toContain('Registration failed');
     });
 });

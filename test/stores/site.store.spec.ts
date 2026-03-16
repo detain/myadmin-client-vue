@@ -1,5 +1,6 @@
 import { setActivePinia, createPinia } from 'pinia';
 import { useSiteStore } from '@/stores/site.store';
+import { fetchWrapper } from '@/helpers/fetchWrapper';
 
 vi.mock('@/helpers/fetchWrapper', () => ({
     fetchWrapper: {
@@ -13,6 +14,7 @@ vi.mock('@/helpers/fetchWrapper', () => ({
 
 beforeEach(() => {
     setActivePinia(createPinia());
+    vi.clearAllMocks();
 });
 
 describe('site.store', () => {
@@ -96,6 +98,54 @@ describe('site.store', () => {
             store.setTitle('Dashboard');
             expect(store.title).toBe('Dashboard');
             expect(document.title).toBe('Dashboard | My InterServer');
+        });
+    });
+
+    describe('setSideMenu()', () => {
+        it('sets sidemenu value', () => {
+            const store = useSiteStore();
+            store.setSideMenu('collapsed');
+            expect(store.sidemenu).toBe('collapsed');
+        });
+    });
+
+    describe('checkInfoLoaded()', () => {
+        it('calls loadInfo when modules are empty', async () => {
+            const store = useSiteStore();
+            store.modules = {};
+            vi.mocked(fetchWrapper.get).mockResolvedValue({
+                modules: {},
+                services: {},
+                serviceTypes: {},
+                serviceCategories: {},
+            });
+            await store.checkInfoLoaded();
+            expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/info'));
+        });
+
+        it('does not call loadInfo when modules exist', async () => {
+            const store = useSiteStore();
+            await store.checkInfoLoaded();
+            expect(fetchWrapper.get).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('loadInfo()', () => {
+        it('fetches and sets modules, services, serviceTypes, serviceCategories', async () => {
+            const mockResponse = {
+                modules: { vps: { TITLE: 'VPS Updated' } },
+                services: { 1: { services_name: 'Test Service' } },
+                serviceTypes: { 1: { st_name: 'Type1' } },
+                serviceCategories: { 1: { category_name: 'Cat1' } },
+            };
+            vi.mocked(fetchWrapper.get).mockResolvedValue(mockResponse);
+            const store = useSiteStore();
+            await store.loadInfo();
+            await vi.waitFor(() => {
+                expect(store.services).toEqual(mockResponse.services);
+                expect(store.serviceTypes).toEqual(mockResponse.serviceTypes);
+                expect(store.serviceCategories).toEqual(mockResponse.serviceCategories);
+            });
         });
     });
 
