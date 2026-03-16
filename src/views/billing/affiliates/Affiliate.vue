@@ -181,7 +181,7 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2">
-                                    <i class="far fa-money-bill" aria-hidden="true">&nbsp;</i> Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
+                                    <i class="fas fa-money-bill" aria-hidden="true">&nbsp;</i> Earn <b>{{ '$' + affiliate_amount }}</b> per new customer sale!
                                 </h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
@@ -199,7 +199,7 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><i class="far fa-external-link-alt" aria-hidden="true">&nbsp;</i>Affiliate URL</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-external-link-alt" aria-hidden="true">&nbsp;</i>Affiliate URL</h3>
                                 <div class="card-tools float-right">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
@@ -229,16 +229,16 @@ onMounted(() => {
                             </div>
                         </div>
                         <div class="card-body">
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" title="Sales Graph"><i class="far fa-chart-line" aria-hidden="true"></i>Sales Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><i class="far fa-chart-line" aria-hidden="true"></i>Web Traffic Graph</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><i class="far fa-image" aria-hidden="true"></i>View Banners & Links</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><i class="far fa-ticket-alt" aria-hidden="true"></i>Setup Landing page & Coupons</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><i class="far fa-money-bill" aria-hidden="true"></i>Setup Payment Method</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><i class="far fa-file-text-o" aria-hidden="true"></i>Rich Report</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" title="Sales Graph"><i class="fas fa-chart-line" aria-hidden="true"></i>Sales Graph</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" title="Web Traffic Graph"><i class="fas fa-chart-line" aria-hidden="true"></i>Web Traffic Graph</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" title="View Banners & Links"><i class="fas fa-image" aria-hidden="true"></i>View Banners & Links</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" title="Setup Landing page & Coupons"><i class="fas fa-ticket-alt" aria-hidden="true"></i>Setup Landing page & Coupons</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" title="Setup Payment Method"><i class="fas fa-money-bill" aria-hidden="true"></i>Setup Payment Method</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" title="Rich Report"><i class="fas fa-file-text-o" aria-hidden="true"></i>Rich Report</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" title="Latest Web Traffic"><i class="fas fa-globe" aria-hidden="true"></i>Latest Web Traffic</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><i class="far fa-closed-captioning" aria-hidden="true"></i>Status Legend</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" title="Status Legend"><i class="fas fa-closed-captioning" aria-hidden="true"></i>Status Legend</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" title="Frequently Asked Questions"><i class="fas fa-question" aria-hidden="true"></i>Frequently Asked Questions</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" title="Terms Of Service"><i class="far fa-file-text" aria-hidden="true"></i>Terms Of Service</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" title="Terms Of Service"><i class="fas fa-file-text" aria-hidden="true"></i>Terms Of Service</router-link>
                         </div>
                     </div>
                 </div>
@@ -260,8 +260,8 @@ onMounted(() => {
                             <div class="row mb-3">
                                 <div class="col-md-4 mb-3">
                                     <span class="text-md">Export All Records: </span>
-                                    <button class="btn btn-sm btn-custom" @click="exportFile('xlsx', 'all')" title="Excel 2007+">Xlsx</button>
-                                    <button class="btn btn-sm btn-custom" @click="exportFile('xls', 'all')" title="Excel 2003/BIF">Xls</button>
+                                    <button class="btn btn-sm btn-custom" title="Excel 2007+" @click="exportFile('xlsx', 'all')">Xlsx</button>
+                                    <button class="btn btn-sm btn-custom" title="Excel 2003/BIF" @click="exportFile('xls', 'all')">Xls</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('csv', 'all')">CSV</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('pdf', 'all')">PDF</button>
                                 </div>
@@ -276,8 +276,8 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-4 mb-3 text-right">
                                     <span class="text-md">Export on Status: </span>
-                                    <button class="btn btn-sm btn-custom" @click="exportFile('xlsx', activeTab)" title="Excel 2007+">Xlsx</button>
-                                    <button class="btn btn-sm btn-custom" @click="exportFile('xls', activeTab)" title="Excel 2003/BIF">Xls</button>
+                                    <button class="btn btn-sm btn-custom" title="Excel 2007+" @click="exportFile('xlsx', activeTab)">Xlsx</button>
+                                    <button class="btn btn-sm btn-custom" title="Excel 2003/BIF" @click="exportFile('xls', activeTab)">Xls</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('csv', activeTab)">CSV</button>
                                     <button class="btn btn-sm btn-custom" @click="exportFile('pdf', activeTab)">PDF</button>
                                 </div>
