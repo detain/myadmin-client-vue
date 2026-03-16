@@ -1,41 +1,42 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { RouterLink } from 'vue-router';
-import { storeToRefs } from 'pinia';
+import { watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 
+const { t } = useI18n();
 const siteStore = useSiteStore();
-siteStore.setPageHeading('Affiliate - Status');
-siteStore.setTitle('Affiliate - Status');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['/affiliate', 'Affiliate'],
-    ['', 'Status'],
-]);
 
-onMounted(() => {});
+watchEffect(() => {
+    siteStore.setPageHeading(`${t('affiliate.title')} - ${t('affiliate.status.title')}`);
+    siteStore.setTitle(`${t('affiliate.title')} - ${t('affiliate.status.title')}`);
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['/affiliate', t('affiliate.breadcrumb')],
+        ['', t('affiliate.status.title')],
+    ]);
+});
 </script>
 
 <template>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-outline card-secondary">
-                <div class="card-body text-lg"><strong>Default -</strong> Client is registered under an affiliate but has not yet completed the requirements.</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.default') }} -</strong> {{ t('affiliate.status.defaultDesc') }}</div>
             </div>
             <div class="card card-outline card-info">
-                <div class="card-body text-lg"><strong>Pending -</strong> Client has met time and payment requirements, and is awaiting admin verification.</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.pending') }} -</strong> {{ t('affiliate.status.pendingDesc') }}</div>
             </div>
             <div class="card card-outline card-danger">
-                <div class="card-body text-lg"><strong>Failed -</strong> Client did not meet requirements or affiliate violated the terms in getting the client.</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.failed') }} -</strong> {{ t('affiliate.status.failedDesc') }}</div>
             </div>
             <div class="card card-outline card-danger">
-                <div class="card-body text-lg"><strong>Locked -</strong> Client account is locked and no longer viable.</div>
+                <div class="card-body text-lg"><strong>Locked -</strong> {{ t('affiliate.status.lockedDesc') }}</div>
             </div>
             <div class="card card-outline card-danger">
-                <div class="card-body text-lg"><strong>Rejected -</strong> Account has permanently failed to meet the requirements.</div>
+                <div class="card-body text-lg"><strong>Rejected -</strong> {{ t('affiliate.status.rejectedDesc') }}</div>
             </div>
             <div class="card card-outline card-success">
-                <div class="card-body text-lg"><strong>Paid -</strong> Affiliate has already been paid for this clients signup.</div>
+                <div class="card-body text-lg"><strong>{{ t('affiliate.signups.paid') }} -</strong> {{ t('affiliate.status.paidDesc') }}</div>
             </div>
         </div>
     </div>

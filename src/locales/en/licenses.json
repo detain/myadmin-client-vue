@@ -24,6 +24,7 @@
         "title": "Change IP"
     },
     "changeOs": {
-        "title": "Change OS"
+        "title": "Change OS",
+        "selectLicenseOs": "Select License OS"
     }
 }

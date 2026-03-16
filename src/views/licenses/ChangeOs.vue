@@ -3,7 +3,10 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     id: number;
@@ -14,7 +17,6 @@ const fields = ref({});
 const module: string = 'licenses';
 const siteStore = useSiteStore();
 
-//const id = ref('');
 const licenseType = ref('');
 const lid = ref('');
 const osList = ref({});
@@ -32,19 +34,19 @@ function submitForm() {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'linux']" />Change OS</h3>
+                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'linux']" /> {{ t('licenses.changeOs.title') }}</h3>
                         <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" /></router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" /></router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" :action="'view_licenses?id=' + id" @submit.prevent="submitForm">
+                    <form method="POST" :action="'view_licenses?id=' + props.id" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_os" />
                         <input type="hidden" name="license_type" :value="licenseType" />
                         <input type="hidden" name="lid" :value="lid" />
                         <div class="form-group row">
-                            <label class="col-md-3" for="os">Select License OS</label>
+                            <label class="col-md-3" for="os">{{ t('licenses.changeOs.selectLicenseOs') }}</label>
                             <div class="col-sm-9 input-group">
                                 <select v-model="selectedOS" name="os" class="form-control form-control-sm select2">
                                     <option v-for="(os, value) in osList" :key="value" :value="value" :selected="existingOS === value">{{ os }}</option>
@@ -54,7 +56,7 @@ function submitForm() {
                         <hr />
                         <div class="row">
                             <div class="controls col-md-12" style="text-align: center">
-                                <input type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" />
+                                <input type="submit" name="Submit" :value="t('common.buttons.submit')" class="btn btn-sm btn-order px-3 py-2" />
                             </div>
                         </div>
                     </form>

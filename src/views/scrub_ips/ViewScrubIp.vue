@@ -52,6 +52,7 @@
 import { storeToRefs } from 'pinia';
 import { computed, watch } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useScrubIpStore } from '@/stores/scrub_ips.store';
 import { moduleLink } from '@/helpers/moduleLink';
@@ -64,6 +65,7 @@ import Filters from '@/views/scrub_ips/Filters.vue';
 import FirewallRules from '@/views/scrub_ips/FirewallRules.vue';
 import GeoFirewallRules from '@/views/scrub_ips/GeoFirewallRules.vue';
 
+const { t } = useI18n();
 const scrubIpStore = useScrubIpStore();
 const module = 'scrub_ips';
 const siteStore = useSiteStore();
@@ -74,13 +76,13 @@ const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const scrubStore = scrubIpStore.getByID(id);
-siteStore.setPageHeading('View Scrub IPs');
-siteStore.setTitle('View Scrub IPs');
+siteStore.setPageHeading(t('scrub_ips.view.title'));
+siteStore.setTitle(t('scrub_ips.view.title'));
 siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    [`/${moduleLink(module)}`, 'Scrub IPs'],
+    ['/home', t('common.breadcrumb.home')],
+    [`/${moduleLink(module)}`, t('common.menu.scrubIps')],
 ]);
-siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Scrub IPs`);
+siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, t('scrub_ips.view.title'));
 
 const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes, countries } = storeToRefs(scrubIpStore);
 

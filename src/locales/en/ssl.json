@@ -21,6 +21,7 @@
         "title": "Order SSL"
     },
     "changeApproverEmail": {
-        "title": "Change Approver Email"
+        "title": "Change Approver Email",
+        "selectApproverEmail": "Select Approver Email"
     }
 }
