@@ -8,9 +8,7 @@ import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
 import { defaultLocale, loadLocaleMessages, resolveAppLocale, setAppLocale } from '@/i18n';
-
 const { t } = useI18n();
-
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();
 const authStore = useAuthStore();
@@ -20,7 +18,15 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 const { loading, error, data } = storeToRefs(accountStore);
 const timezones = ref<string[]>([]);
 const currencies = ref<string[]>([]);
-const locales = ref<Record<string, string>>({});
+const locales = ref<Record<string, LocaleInfo>>({});
+const baseUrl = siteStore.getBaseUrl();
+const countries = ref({});
+
+type LocaleInfo = {
+    name: string;
+    local_name: string;
+};
+
 watchEffect(() => {
     siteStore.setPageHeading(t('account.contactInfo.title'));
     siteStore.setTitle(t('account.contactInfo.title'));
@@ -29,19 +35,12 @@ watchEffect(() => {
         ['', t('account.contactInfo.title')],
     ]);
 });
-const baseUrl = siteStore.getBaseUrl();
-const countries = ref({});
 
 watch(
     () => data.value.locale,
     async (locale) => {
         const resolvedLocale = setAppLocale(resolveAppLocale(locale));
-        await Promise.all([
-            loadLocaleMessages(resolvedLocale, 'common'),
-            loadLocaleMessages(resolvedLocale, 'account'),
-            loadLocaleMessages(defaultLocale, 'common'),
-            loadLocaleMessages(defaultLocale, 'account'),
-        ]);
+        await Promise.all([loadLocaleMessages(resolvedLocale, 'common'), loadLocaleMessages(resolvedLocale, 'account'), loadLocaleMessages(defaultLocale, 'common'), loadLocaleMessages(defaultLocale, 'account')]);
     },
     { immediate: true }
 );
@@ -106,7 +105,7 @@ async function loadCurrencies() {
 
 async function loadLocales() {
     try {
-        await fetchWrapper.get(`${baseUrl}/account/locales`).then((response) => {
+        await fetchWrapper.get(`${baseUrl}/account/locales`).then((response: Record<string, LocaleInfo>) => {
             locales.value = response;
         });
     } catch (error: any) {
@@ -124,7 +123,9 @@ loadLocales();
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="callout callout-danger text-red text-sm"><font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>{{ t('account.contactInfo.headsUp') }}&nbsp;</strong>{{ t('account.contactInfo.headsUpMessage') }}</div>
+            <div class="callout callout-danger text-red text-sm">
+                <font-awesome-icon :icon="['fas', 'bullhorn']" />&nbsp;<strong>{{ t('account.contactInfo.headsUp') }}&nbsp;</strong>{{ t('account.contactInfo.headsUpMessage') }}
+            </div>
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
@@ -214,7 +215,7 @@ loadLocales();
                                     <div class="col-md-6">
                                         <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
                                             <option value="auto">{{ t('account.contactInfo.auto') }}</option>
-                                            <option v-for="(name, code, index) in locales" :key="index" :value="code">{{ code }} - {{ name }}</option>
+                                            <option v-for="(localeData, code, index) in locales" :key="index" :value="code">{{ code }} - {{ localeData.name }} ({{ localeData.local_name }})</option>
                                         </select>
                                     </div>
                                     <span class="form-text"></span>
