@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue';
+import { ref, reactive, computed, watch, onMounted, nextTick, watchEffect } from 'vue';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { storeToRefs } from 'pinia';
 import { RouterLink, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, HDRow, ServerRow } from '@/types/cart.ts';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+const { t } = useI18n();
 const siteStore = useSiteStore();
 const route = useRoute();
 const accountStore = useAccountStore();
@@ -62,12 +64,14 @@ const contFields = reactive<SimpleStringObj>({
     zip: '',
     country: 'US',
 });
-siteStore.setPageHeading('Cart');
-siteStore.setTitle('Cart');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Cart'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('billing.cart.title'));
+    siteStore.setTitle(t('billing.cart.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('billing.cart.title')],
+    ]);
+});
 
 interface PayPalButtonsInstance {
     render: (selector: string) => Promise<void>;
@@ -863,7 +867,7 @@ pageInit();
     <div v-if="order_msg" class="row justify-content-center mt-2">
         <div class="col-md-12">
             <div class="callout callout-success">
-                <h5>Thank you! for your order.</h5>
+                <h5>{{ t('billing.cart.thankYouForOrder') }}</h5>
                 <p class="text-md" v-html="order_msg"></p>
             </div>
         </div>
@@ -873,14 +877,14 @@ pageInit();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['far', 'money-bill-alt']" />&nbsp;Pay Balance</h3>
+                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['far', 'money-bill-alt']" />&nbsp;{{ t('billing.cart.payBalance') }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row my-2">
                         <div class="col-md-12">
                             <span class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">1</span>
-                            <b class="text-lg">Billing Address</b>
+                            <b class="text-lg">{{ t('billing.cart.billingAddress') }}</b>
                         </div>
                         <div v-if="data.address && data.address !== ' '" class="col-md-4 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)">
                             <div class="row">
@@ -891,7 +895,7 @@ pageInit();
                                     </div>
                                 </div>
                                 <div class="col-md-10 mb-3">
-                                    <b class="text-lg">Home</b><br />
+                                    <b class="text-lg">{{ t('billing.cart.home') }}</b><br />
                                     <template v-if="data.name && data.name !== ''">
                                         <b class="text-md mb-2">{{ data.name }}</b>
                                         <br />
@@ -905,16 +909,16 @@ pageInit();
                                     </template>
                                 </div>
                                 <div class="col-md-12 pr-3 text-right">
-                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" title="Update Contact Info"> <font-awesome-icon :icon="['far', 'edit']" />&nbsp;EDIT </a>
+                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" :title="t('billing.cart.updateContactInfo')"> <font-awesome-icon :icon="['far', 'edit']" />&nbsp;{{ t('billing.cart.edit') }} </a>
                                 </div>
                             </div>
                         </div>
                         <div v-else class="card my-3 ml-5 px-4 py-3">
                             <div class="card-header">
-                                <h5 class="card-title text-bold py-2">Please Add Billing Address to continue Purchase.</h5>
+                                <h5 class="card-title text-bold py-2">{{ t('billing.cart.addBillingAddressPrompt') }}</h5>
                             </div>
                             <div class="card-body mx-auto my-2">
-                                <router-link to="/account/info" class="btn btn-custom px-3 py-2" title="Add Billing Address to continue"> <font-awesome-icon :icon="['fas', 'plus']" />&nbsp;Add Billing Address </router-link>
+                                <router-link to="/account/info" class="btn btn-custom px-3 py-2" :title="t('billing.cart.addBillingAddress')"> <font-awesome-icon :icon="['fas', 'plus']" />&nbsp;{{ t('billing.cart.addBillingAddress') }} </router-link>
                             </div>
                         </div>
                     </div>
@@ -923,19 +927,19 @@ pageInit();
                         <div class="col-md-5 p-0">
                             <div class="col-md-12">
                                 <span class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">2</span>
-                                <b class="text-lg"># Of Products</b>
+                                <b class="text-lg">{{ t('billing.cart.numberOfProducts') }}</b>
                             </div>
                         </div>
                         <div class="col-md-3 text-center">
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="form-group row">
-                                    <label for="invoice_days" class="col-md-4 col-form-label">Filter</label>
+                                    <label for="invoice_days" class="col-md-4 col-form-label">{{ t('billing.cart.filter') }}</label>
                                     <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-control text-left" name="invoice_days" @change="submitForm">
-                                        <option value="-1">All Days</option>
-                                        <option value="30">30 Days</option>
-                                        <option value="60">60 Days</option>
-                                        <option value="90">90 Days</option>
-                                        <option value="365">1 Year</option>
+                                        <option value="-1">{{ t('billing.cart.allDays') }}</option>
+                                        <option value="30">{{ t('billing.cart.thirtyDays') }}</option>
+                                        <option value="60">{{ t('billing.cart.sixtyDays') }}</option>
+                                        <option value="90">{{ t('billing.cart.ninetyDays') }}</option>
+                                        <option value="365">{{ t('billing.cart.oneYear') }}</option>
                                     </select>
                                 </div>
                             </form>
@@ -943,7 +947,7 @@ pageInit();
                         <div class="col-md-3 text-center">
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="form-group row">
-                                    <label for="currency_select" class="col-md-6 col-form-label">Currency</label>
+                                    <label for="currency_select" class="col-md-6 col-form-label">{{ t('billing.cart.currency') }}</label>
                                     <select id="currency_select" v-model="currency" class="col-md-6 select2 form-control text-left" name="currency" @change="submitForm">
                                         <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
@@ -961,12 +965,12 @@ pageInit();
                                             <label for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
-                                    <th>Service</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Service Status</th>
-                                    <th>Actions</th>
-                                    <th class="text-right">Amount</th>
+                                    <th>{{ t('billing.cart.service') }}</th>
+                                    <th>{{ t('billing.cart.description') }}</th>
+                                    <th>{{ t('billing.cart.date') }}</th>
+                                    <th>{{ t('billing.cart.serviceStatus') }}</th>
+                                    <th>{{ t('billing.cart.actions') }}</th>
+                                    <th class="text-right">{{ t('billing.cart.amount') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -994,18 +998,18 @@ pageInit();
                                             <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><font-awesome-icon :icon="['far', 'trash-alt']" /></a>
                                         </template>
                                         <template v-else>
-                                            <span class="font-italic text-muted text-sm">Empty...</span>
+                                            <span class="font-italic text-muted text-sm">{{ t('billing.cart.empty') }}</span>
                                         </template>
                                     </td>
                                     <td>{{ invrow.currency_display }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Filter</td>
+                                    <td>{{ t('billing.cart.filter') }}</td>
                                     <td colspan="7">
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkAll">All</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">None</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">Past Month</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkActive">Active</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkAll">{{ t('billing.cart.all') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">{{ t('billing.cart.none') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">{{ t('billing.cart.pastMonth') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm" @click="checkActive">{{ t('billing.cart.active') }}</button>
                                         <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(String(module))">
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
@@ -1017,10 +1021,10 @@ pageInit();
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <span id="step_3" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">3</span>
-                                <b class="text-lg">Payment Options</b>
+                                <b class="text-lg">{{ t('billing.cart.paymentOptions') }}</b>
                             </div>
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
-                                <h5 class="text-bold text-md text-capitalize">How do you want to Pay?</h5>
+                                <h5 class="text-bold text-md text-capitalize">{{ t('billing.cart.howToPay') }}</h5>
                                 <span v-show="showMethods" id="payments-section">
                                     <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
                                         <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
@@ -1044,7 +1048,7 @@ pageInit();
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
-                                    <b class="text-lg">Select PayPal Payment Type</b>
+                                    <b class="text-lg">{{ t('billing.cart.selectPayPalType') }}</b>
                                 </div>
                                 <div class="col-md-12 d-flex mt-3">
                                     <div id="paypal-button-container" class="paypal-button-container" style="width: 300px; float: left"></div>
@@ -1056,15 +1060,15 @@ pageInit();
                             <div class="row my-2">
                                 <div class="col-md-12">
                                     <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
-                                    <b class="text-lg">Select / Add Credit Card</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;Add New Card</a>
+                                    <b class="text-lg">{{ t('billing.cart.selectAddCreditCard') }}</b>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;{{ t('billing.cart.addNewCard') }}</a>
                                 </div>
                                 <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
                                 <template v-if="data.ccs">
                                     <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="primaryCc === Number(cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
                                         <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
-                                            <div class="ribbon bg-success text-xs">Primary</div>
+                                            <div class="ribbon bg-success text-xs">{{ t('billing.cart.primary') }}</div>
                                         </div>
                                         <form id="paymentform" :action="'/pay/cc/' + invoices.join(',')" method="post">
                                             <input v-for="inv in invoices" :key="inv" type="hidden" name="inv_arr[]" :value="inv" />
@@ -1079,7 +1083,7 @@ pageInit();
                                                         <div class="my-2 text-sm">
                                                             <b class="text-md">{{ cc_detail.name }}</b>
                                                         </div>
-                                                        <div class="text-muted text-sm">Expires on {{ cc_detail.cc_exp }}</div>
+                                                        <div class="text-muted text-sm">{{ t('billing.cart.expiresOn', { date: cc_detail.cc_exp }) }}</div>
                                                         <div class="my-2">
                                                             <template v-if="selectedCc === Number(cc_id)">
                                                                 <input type="password" name="cc_ccv2" placeholder="cvv2" style="border-radius: 5px; width: 100%" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter Your CVV')" oninput="setCustomValidity('')" />
@@ -1102,15 +1106,15 @@ pageInit();
                                     </div>
                                 </template>
                                 <div v-else class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
-                                    <h5 class="text-bold text-md text-capitalize">You Have 0 Credit Cards</h5>
-                                    <span class="text-red">To Add a Credit Card, Please Click on the Add New Card Button.</span>
+                                    <h5 class="text-bold text-md text-capitalize">{{ t('billing.cart.zeroCreditCards') }}</h5>
+                                    <span class="text-red">{{ t('billing.cart.addCardPrompt') }}</span>
                                 </div>
                                 <div class="col-md-12 mt-4">
                                     <div class="card shadow-hover shadow-sm">
                                         <div class="card-body">
                                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                                 <input id="ccAutoToggle" :checked="ccAuto === 1" type="checkbox" class="custom-control-input" @change="updatePaymentMethod('', true)" />
-                                                <label class="custom-control-label" for="ccAutoToggle">Automatically Charge Credit Card</label>
+                                                <label class="custom-control-label" for="ccAutoToggle">{{ t('billing.cart.autoChargeCc') }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -1129,20 +1133,20 @@ pageInit();
                                             <label for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
-                                    <th>Service</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Service Status</th>
-                                    <th>Actions</th>
-                                    <th class="text-right">Amount</th>
+                                    <th>{{ t('billing.cart.service') }}</th>
+                                    <th>{{ t('billing.cart.description') }}</th>
+                                    <th>{{ t('billing.cart.date') }}</th>
+                                    <th>{{ t('billing.cart.serviceStatus') }}</th>
+                                    <th>{{ t('billing.cart.actions') }}</th>
+                                    <th class="text-right">{{ t('billing.cart.amount') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td colspan="7" class="text-bold b-radius text-center text-black" style="background: #f4f4f4">
                                         <div class="callout callout-success m-0 p-3">
-                                            <h5 class="text-success">You're all up to date!</h5>
-                                            <p class="mb-0">No unpaid invoices found.</p>
+                                            <h5 class="text-success">{{ t('billing.cart.allUpToDate') }}</h5>
+                                            <p class="mb-0">{{ t('billing.cart.noUnpaidInvoices') }}</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -1150,12 +1154,12 @@ pageInit();
                         </table>
                     </template>
                     <div v-if="currency === 'INR'" class="col-md-12 alert alert-info b-radius mb-0 mt-4 text-sm">
-                        <h4 class="text-bold text-capitalize text-lg">Manual Bank Payment Option:</h4>
+                        <h4 class="text-bold text-capitalize text-lg">{{ t('billing.cart.manualBankPayment') }}</h4>
                         <p class="form-text m-0">
-                            <b>Name:</b> ROCKSOLID INTERSERVER PRIVATE LIMITED<br />
-                            <b>Current A/C No:</b> 155605010028<br />
-                            <b>IFSC Code:</b> ICIC0001556<br />
-                            After payment is made open a support ticket with the transaction id, date, and amount paid. We will manually credit the payment.
+                            <b>Name:</b> {{ t('billing.cart.bankName') }}<br />
+                            <b>Current A/C No:</b> {{ t('billing.cart.bankAccountNo') }}<br />
+                            <b>IFSC Code:</b> {{ t('billing.cart.bankIfsc') }}<br />
+                            {{ t('billing.cart.bankPaymentNote') }}
                         </p>
                     </div>
                 </div>
@@ -1165,7 +1169,7 @@ pageInit();
             <div class="card cart-sidebar">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['fas', 'file-invoice']" />&nbsp;Balance & Invoice Info</h3>
+                        <h3 class="card-title float-left py-2"><font-awesome-icon :icon="['fas', 'file-invoice']" />&nbsp;{{ t('billing.cart.balanceInvoiceInfo') }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -1173,25 +1177,25 @@ pageInit();
                         <tbody>
                             <tr>
                                 <td class="text-center" colspan="2" style="border: none">
-                                    <div><strong>Total Invoices</strong></div>
+                                    <div><strong>{{ t('billing.cart.totalInvoices') }}</strong></div>
                                     <div class="text-success text-lg">{{ total_invoices }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center" colspan="2">
-                                    <div><strong>Invoices Total Amount</strong></div>
+                                    <div><strong>{{ t('billing.cart.invoicesTotalAmount') }}</strong></div>
                                     <div class="text-success text-lg">{{ currencySymbol }}{{ total }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center">
-                                    <div><strong>PrePay Available</strong></div>
+                                    <div><strong>{{ t('billing.cart.prepayAvailable') }}</strong></div>
                                     <div class="text-success text-lg">{{ formattedCost(prepayAvailable) }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-center" colspan="2">
-                                    <div><strong>To Be Paid</strong></div>
+                                    <div><strong>{{ t('billing.cart.toBePaid') }}</strong></div>
                                     <div class="text-success text-lg">{{ formattedCost(amountAfterPrepay) }}</div>
                                 </td>
                             </tr>
@@ -1205,7 +1209,7 @@ pageInit();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Update Contact Info</h4>
+                    <h4 class="modal-title">{{ t('billing.cart.updateContactInfo') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="EditInfo" method="post" class="form-card" @submit.prevent="updateInfoSubmit">
@@ -1266,7 +1270,7 @@ pageInit();
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
-                                <input type="submit" value="Update Info" class="btn btn-pay placeicon" />
+                                <input type="submit" :value="t('billing.cart.updateInfo')" class="btn btn-pay placeicon" />
                             </div>
                         </div>
                     </form>
@@ -1279,7 +1283,7 @@ pageInit();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Add CreditCard</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.addCreditCard') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form method="post" class="form-card" @submit.prevent="addCardSubmit">
@@ -1369,7 +1373,7 @@ pageInit();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Update CreditCard</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.updateCreditCard') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="EditForm" method="post" class="form-card" @submit.prevent="editCardSubmit">
@@ -1460,33 +1464,33 @@ pageInit();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Credit Card Verification</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.verification') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyCardSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
-                                <p>These charges will show up on your billing statement within a couple of minutes, usually under pending transactions. If you do not see these charges, please contact your credit card issuer for more details.</p>
-                                <p>These authorization charges are only for verification purposes and will be voided within 3-5 days, depending on your bank.</p>
+                                <p>{{ t('billing.creditCard.verifyIntroStep1') }}</p>
+                                <p>{{ t('billing.creditCard.verifyBillingStatement') }}</p>
+                                <p>{{ t('billing.creditCard.verifyVoidNotice') }}</p>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="cc_ccv2" type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')" />
-                                    <label class="text-md">Card Security Code (CVV / CSV)</label>
+                                    <label class="text-md">{{ t('billing.creditCard.securityCode') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <input id="tos_checkbox" name="terms" value="1" class="form-check-input ml-2" type="checkbox" style="width: auto" required />
-                                <label for="tos_checkbox" class="ml-4 pl-2"> I accept two temporary charges under $1.00 each.</label>
+                                <label for="tos_checkbox" class="ml-4 pl-2"> {{ t('billing.creditCard.acceptTempCharges') }}</label>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Send Authorization" class="btn btn-pay placeicon" /></div>
+                            <div class="col-md-12"><input type="submit" :value="t('billing.creditCard.sendAuthorization')" class="btn btn-pay placeicon" /></div>
                         </div>
                     </form>
                 </div>
@@ -1499,15 +1503,15 @@ pageInit();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Credit Card Verification</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.verification') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyAmountSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
-                                <p>Login to your credit cards online banking or call your bank to verify the two amounts charged. They often show under Pending Charges with your bank. These authorization charges will disappear in about 3-5 days depending on your bank.</p>
-                                <p>Please enter the two amounts charged to your credit card. The values must be in USD</p>
+                                <p>{{ t('billing.creditCard.verifyIntroStep1') }}</p>
+                                <p>{{ t('billing.creditCard.verifyBankLogin') }}</p>
+                                <p>{{ t('billing.creditCard.enterAmountsPrompt') }}</p>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -1516,23 +1520,23 @@ pageInit();
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount1" type="text" name="cc_amount1" />
-                                            <label class="text-md">Amount 1</label>
+                                            <label class="text-md">{{ t('billing.creditCard.amount1') }}</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount2" type="text" name="cc_amount2" />
-                                            <label class="text-md">Amount 2</label>
+                                            <label class="text-md">{{ t('billing.creditCard.amount2') }}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Complete Authorization" class="btn btn-pay placeicon" /></div>
+                            <div class="col-md-12"><input type="submit" :value="t('billing.creditCard.completeAuthorization')" class="btn btn-pay placeicon" /></div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-12"><strong>Note: </strong>Please note that the charges on your credit card statement may be in a different currency from the one required on the last confirmation page described above. If your credit card statement does not display the original transaction amounts in the required currency, you will have to contact your credit card company. They should be able to tell you the amounts of the two charges in the original currency.</div>
+                            <div class="col-12"><strong>{{ t('billing.creditCard.currencyNote') }}</strong></div>
                         </div>
                     </form>
                 </div>

@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted, watchEffect } from 'vue';
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+const { t } = useI18n();
 const siteStore = useSiteStore();
 const accountStore = useAccountStore();
-siteStore.setPageHeading('Payment Types');
-siteStore.setTitle('Payment Types');
-siteStore.setTitle('Payment Types');
-siteStore.setBreadcrums([
-    ['/home', 'Home'],
-    ['', 'Payment Types'],
-]);
+watchEffect(() => {
+    siteStore.setPageHeading(t('billing.paymentTypes.title'));
+    siteStore.setTitle(t('billing.paymentTypes.title'));
+    siteStore.setBreadcrums([
+        ['/home', t('common.breadcrumb.home')],
+        ['', t('billing.paymentTypes.title')],
+    ]);
+});
 const baseUrl = siteStore.getBaseUrl();
 const { data } = storeToRefs(accountStore);
 const paymentMethod = ref('paypal');
@@ -279,38 +282,38 @@ onMounted(() => {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card-body text-red px-0">
-                <strong class="pr-2"><font-awesome-icon :icon="['far', 'lightbulb']" /> Note: </strong> All credit cards must be verified before they can be used. To verify them click the "Verify" button.
+                <strong class="pr-2"><font-awesome-icon :icon="['far', 'lightbulb']" /> {{ t('billing.paymentTypes.ccNote') }}</strong>
             </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8 text-md">
             <div class="d-flex mb-4">
-                <h5 class="w-50">Select Preferred Payment Method</h5>
+                <h5 class="w-50">{{ t('billing.paymentTypes.selectPreferredMethod') }}</h5>
                 <div class="w-50 text-right">
-                    <router-link to="/cart" class="btn btn-custom mr-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> Cart</router-link>
-                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><font-awesome-icon :icon="['fas', 'plus']" /> Add New Card</a>
+                    <router-link to="/cart" class="btn btn-custom mr-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> {{ t('billing.cart.title') }}</router-link>
+                    <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-card" @click="addCardModal"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('billing.cart.addNewCard') }}</a>
                 </div>
             </div>
             `
             <div class="card shadow-hover shadow-sm">
                 <div class="card-body icheck-success">
                     <input id="paypal" v-model="paymentMethod" name="r_paymentMethod" value="paypal" class="form-check-input" type="radio" @change="updatePaymentMethod()" />
-                    <label for="paypal"><font-awesome-icon :icon="['fab', 'paypal']" /> Pay with Paypal</label>
+                    <label for="paypal"><font-awesome-icon :icon="['fab', 'paypal']" /> {{ t('billing.paymentTypes.payWithPaypal') }}</label>
                 </div>
             </div>
             <div v-if="data.ccs">
                 <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="card shadow-hover shadow-sm">
                     <div class="card-body icheck-success row">
                         <input :id="'cc-' + cc_id" v-model="paymentMethod" name="r_paymentMethod" :value="'cc' + cc_id" type="radio" class="form-check-input" :disabled="cc_detail.verified == false" @change="updatePaymentMethod()" />
-                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><font-awesome-icon :icon="['fas', 'credit-card']" /> Credit Card {{ cc_detail.cc }}</label>
+                        <label :for="'cc-' + cc_id" class="col-md-4 pb-2"><font-awesome-icon :icon="['fas', 'credit-card']" /> {{ t('billing.paymentTypes.creditCard', { card: cc_detail.cc }) }}</label>
                         <div class="col-md-2 pb-2">
-                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? 'This card has been authenticated and enabled for use in our system.' : 'Validate The Credit Card First'"> <font-awesome-icon :icon="['fas', cc_detail.verified == true ? 'check' : 'times']" /> {{ cc_detail.verified ? 'Verified' : 'Not Verified' }} </span>
+                            <span :class="{ 'text-green': cc_detail.verified == true, 'text-red': cc_detail.verified == false }" data-toggle="tooltip" :title="cc_detail.verified ? t('billing.creditCard.verifiedTooltip') : t('billing.creditCard.notVerifiedTooltip')"> <font-awesome-icon :icon="['fas', cc_detail.verified == true ? 'check' : 'times']" /> {{ cc_detail.verified ? t('billing.creditCard.verified') : t('billing.creditCard.notVerified') }} </span>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" title="Click here to enable this credit card for use." @click="verifyCard(Number(cc_id))"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" /> Verify</a>
-                            <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Update the Expiration Date" @click="editCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'edit']" /> Edit</a>
-                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" title="Remove this Credit Card" @click.prevent="deleteCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'trash']" /> Delete</a>
+                            <a v-if="cc_detail.verified == false" class="btn btn-custom ml-4" href="javascript:void(0);" data-toggle="tooltip" :title="t('billing.creditCard.enableCardTooltip')" @click="verifyCard(Number(cc_id))"><font-awesome-icon :icon="['fas', 'exclamation-triangle']" /> {{ t('billing.creditCard.verifyButton') }}</a>
+                            <a class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" :title="t('billing.creditCard.updateExpiration')" @click="editCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'edit']" /> {{ t('common.buttons.edit') }}</a>
+                            <a v-if="selectedCc !== Number(cc_id)" class="btn btn-custom ml-2" href="javascript:void(0);" data-toggle="tooltip" :title="t('billing.creditCard.removeCreditCard')" @click.prevent="deleteCardModal(Number(cc_id))"><font-awesome-icon :icon="['fas', 'trash']" /> {{ t('common.buttons.delete') }}</a>
                         </div>
                     </div>
                 </div>
@@ -319,7 +322,7 @@ onMounted(() => {
                 <div class="card-body">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                         <input id="customSwitch3" v-model="cc_auto_checked" type="checkbox" class="custom-control-input" @change="updatePaymentMethod()" />
-                        <label class="custom-control-label" for="customSwitch3">Automatically Charge Credit Card</label>
+                        <label class="custom-control-label" for="customSwitch3">{{ t('billing.cart.autoChargeCc') }}</label>
                     </div>
                 </div>
             </div>
@@ -330,7 +333,7 @@ onMounted(() => {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Add CreditCard</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.addCreditCard') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form method="post" class="form-card" @submit.prevent="addCardSubmit">
@@ -420,7 +423,7 @@ onMounted(() => {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Update CreditCard</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.updateCreditCard') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="EditForm" method="post" class="form-card" @submit.prevent="editCardSubmit">
@@ -511,33 +514,33 @@ onMounted(() => {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Credit Card Verification</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.verification') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyCardSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
-                                <p>These charges will show up on your billing statement within a couple of minutes, usually under pending transactions. If you do not see these charges, please contact your credit card issuer for more details.</p>
-                                <p>These authorization charges are only for verification purposes and will be voided within 3-5 days, depending on your bank.</p>
+                                <p>{{ t('billing.creditCard.verifyIntroStep1') }}</p>
+                                <p>{{ t('billing.creditCard.verifyBillingStatement') }}</p>
+                                <p>{{ t('billing.creditCard.verifyVoidNotice') }}</p>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="cc_ccv2" type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')" />
-                                    <label class="text-md">Card Security Code (CVV / CSV)</label>
+                                    <label class="text-md">{{ t('billing.creditCard.securityCode') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <input id="tos_checkbox" name="terms" value="1" class="form-check-input ml-2" type="checkbox" style="width: auto" required />
-                                <label for="tos_checkbox" class="ml-4 pl-2"> I accept two temporary charges under $1.00 each.</label>
+                                <label for="tos_checkbox" class="ml-4 pl-2"> {{ t('billing.creditCard.acceptTempCharges') }}</label>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Send Authorization" class="btn btn-pay placeicon" /></div>
+                            <div class="col-md-12"><input type="submit" :value="t('billing.creditCard.sendAuthorization')" class="btn btn-pay placeicon" /></div>
                         </div>
                     </form>
                 </div>
@@ -550,15 +553,15 @@ onMounted(() => {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mx-4">
-                    <h4 class="modal-title">Credit Card Verification</h4>
+                    <h4 class="modal-title">{{ t('billing.creditCard.verification') }}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="VerifyForm" method="post" class="form-card" @submit.prevent="verifyAmountSubmit">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <p>Verification is needed before your credit card is available for use. InterServer will charge your credit card with two amounts under $1.00 each.</p>
-                                <p>Login to your credit cards online banking or call your bank to verify the two amounts charged. They often show under Pending Charges with your bank. These authorization charges will disappear in about 3-5 days depending on your bank.</p>
-                                <p>Please enter the two amounts charged to your credit card. The values must be in USD</p>
+                                <p>{{ t('billing.creditCard.verifyIntroStep1') }}</p>
+                                <p>{{ t('billing.creditCard.verifyBankLogin') }}</p>
+                                <p>{{ t('billing.creditCard.enterAmountsPrompt') }}</p>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -567,23 +570,23 @@ onMounted(() => {
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount1" type="text" name="cc_amount1" />
-                                            <label class="text-md">Amount 1</label>
+                                            <label class="text-md">{{ t('billing.creditCard.amount1') }}</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount2" type="text" name="cc_amount2" />
-                                            <label class="text-md">Amount 2</label>
+                                            <label class="text-md">{{ t('billing.creditCard.amount2') }}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12"><input type="submit" value="Complete Authorization" class="btn btn-pay placeicon" /></div>
+                            <div class="col-md-12"><input type="submit" :value="t('billing.creditCard.completeAuthorization')" class="btn btn-pay placeicon" /></div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-12"><strong>Note: </strong>Please note that the charges on your credit card statement may be in a different currency from the one required on the last confirmation page described above. If your credit card statement does not display the original transaction amounts in the required currency, you will have to contact your credit card company. They should be able to tell you the amounts of the two charges in the original currency.</div>
+                            <div class="col-12"><strong>{{ t('billing.creditCard.currencyNote') }}</strong></div>
                         </div>
                     </form>
                 </div>
