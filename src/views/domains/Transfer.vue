@@ -3,8 +3,11 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import { moduleLink } from '@/helpers/moduleLink.ts';
 import Swal from 'sweetalert2';
+
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
 }>();
@@ -26,7 +29,7 @@ interface TransferResponse {
 function loadTransfer() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Loading transfer status...',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.transfer.loadingTransferStatus')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -59,38 +62,38 @@ loadTransfer();
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'exchange-alt']" />&nbsp;Transfer Status</h3>
+                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'exchange-alt']" />&nbsp;{{ t('domains.transfer.title') }}</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="loadingDone && !isTransfer">
                         <div class="alert alert-info">
-                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; {{ errorMsg || 'This domain is not a transfer.' }}
+                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; {{ errorMsg || t('domains.transfer.notATransfer') }}
                         </div>
                     </template>
                     <template v-else-if="loadingDone && isTransfer">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr v-if="transferInfo.status">
-                                    <td class="font-weight-bold" style="width: 200px">Status</td>
+                                    <td class="font-weight-bold" style="width: 200px">{{ t('domains.transfer.statusLabel') }}</td>
                                     <td>{{ transferInfo.status }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.statusText">
-                                    <td class="font-weight-bold">Status Details</td>
+                                    <td class="font-weight-bold">{{ t('domains.transfer.statusDetails') }}</td>
                                     <td><em>{{ transferInfo.statusText }}</em></td>
                                 </tr>
                                 <tr v-if="transferInfo.transferrable">
-                                    <td class="font-weight-bold">Transferrable</td>
+                                    <td class="font-weight-bold">{{ t('domains.transfer.transferrable') }}</td>
                                     <td>{{ transferInfo.transferrable }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.transferType">
-                                    <td class="font-weight-bold">Transfer Type</td>
+                                    <td class="font-weight-bold">{{ t('domains.transfer.transferType') }}</td>
                                     <td>{{ transferInfo.transferType }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.reason">
-                                    <td class="font-weight-bold">Reason</td>
+                                    <td class="font-weight-bold">{{ t('domains.transfer.reason') }}</td>
                                     <td>{{ transferInfo.reason }}</td>
                                 </tr>
                             </tbody>

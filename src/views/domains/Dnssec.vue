@@ -3,8 +3,11 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import { useSiteStore } from '@/stores/site.store';
+import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 import { moduleLink } from '@/helpers/moduleLink.ts';
+
+const { t } = useI18n();
 const props = defineProps<{
     id: number;
 }>();
@@ -48,8 +51,8 @@ function importDsRecord(record: DNSSECRecord) {
     if (!match) {
         Swal.fire({
             icon: 'error',
-            title: 'Invalid DS Record',
-            text: 'Unable to parse DS record format.',
+            title: t('domains.dnssec.invalidDsRecord'),
+            text: t('domains.dnssec.unableToParse'),
         });
         return;
     }
@@ -62,16 +65,16 @@ function importDsRecord(record: DNSSECRecord) {
 
 function confirmRemoveAll() {
     Swal.fire({
-        title: 'Are you sure?',
-        text: 'This will remove all DNSSEC records for this domain.',
+        title: t('common.confirm.title'),
+        text: t('domains.dnssec.confirmRemoveAll'),
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, remove them!',
+        confirmButtonText: t('domains.dnssec.yesRemoveThem'),
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: '',
-                html: '<i class="fas fa-spinner fa-pulse"></i> Removing DNSSEC records...',
+                html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.dnssec.removingRecords')}`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });
@@ -80,15 +83,15 @@ function confirmRemoveAll() {
                 .then((response) => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Removed',
-                        text: typeof response === 'string' ? response : 'DNSSEC records removed successfully!',
+                        title: t('domains.dnssec.removed'),
+                        text: typeof response === 'string' ? response : t('domains.dnssec.removeSuccess'),
                     });
                     dnssecRecords.value = [];
                 })
                 .catch((error: any) => {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
+                        title: t('common.confirm.title'),
                         html: error?.text || error?.error || 'Failed to remove DNSSEC records.',
                     });
                 });
@@ -99,7 +102,7 @@ function confirmRemoveAll() {
 function submitForm() {
     const payload = records.value.filter((r) => r.visible && r.algorithm && r.digestType && r.digest);
     if (payload.length === 0) {
-        Swal.fire({ icon: 'warning', title: 'No Records', text: 'Please fill in at least one DNSSEC record.' });
+        Swal.fire({ icon: 'warning', title: t('domains.dnssec.noRecords'), text: t('domains.dnssec.noRecordsWarning') });
         return;
     }
     const algorithm: string[] = [];
@@ -114,7 +117,7 @@ function submitForm() {
     });
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Saving DNSSEC records...',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.dnssec.savingRecords')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -124,7 +127,7 @@ function submitForm() {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: typeof response === 'string' ? response : 'DNSSEC records saved successfully!',
+                text: typeof response === 'string' ? response : t('domains.dnssec.saveSuccess'),
             });
             showForm.value = false;
             loadDnsSec();
@@ -141,7 +144,7 @@ function submitForm() {
 function loadDnsSec() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> Please wait!',
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${t('domains.contact.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
@@ -167,21 +170,21 @@ loadDnsSec();
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;Back</router-link>
-                    <h3 class="card-title mt-1 ml-2"><font-awesome-icon :icon="['fas', 'lock']" />&nbsp;DNSSEC Information</h3>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
+                    <h3 class="card-title mt-1 ml-2"><font-awesome-icon :icon="['fas', 'lock']" />&nbsp;{{ t('domains.dnssec.title') }}</h3>
                     <div class="card-tools m-0">
-                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><font-awesome-icon :icon="['fas', 'plus-circle']" />&nbsp;Add New Record</button>
-                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><font-awesome-icon :icon="['far', 'times-circle']" />&nbsp;Remove All DNSSEC Records</button>
+                        <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><font-awesome-icon :icon="['fas', 'plus-circle']" />&nbsp;{{ t('domains.dnssec.addNewRecord') }}</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><font-awesome-icon :icon="['far', 'times-circle']" />&nbsp;{{ t('domains.dnssec.removeAllRecords') }}</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
                     <table v-if="dnssecRecords.length" class="table">
                         <thead>
                             <tr>
-                                <th>Digest Type</th>
-                                <th>Algorithm</th>
-                                <th>Key Tag</th>
-                                <th>Digest</th>
+                                <th>{{ t('domains.dnssec.digestTypeHeader') }}</th>
+                                <th>{{ t('domains.dnssec.algorithmHeader') }}</th>
+                                <th>{{ t('domains.dnssec.keyTagHeader') }}</th>
+                                <th>{{ t('domains.dnssec.digestHeader') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -193,11 +196,11 @@ loadDnsSec();
                             </tr>
                         </tbody>
                     </table>
-                    <h5 v-else class="text-orange text-center w-100 py-2 text-bold">No DNSSEC Records found.</h5>
+                    <h5 v-else class="text-orange text-center w-100 py-2 text-bold">{{ t('domains.dnssec.noRecords') }}</h5>
                     <!-- ADD DNSSEC -->
                     <div v-if="showForm" class="card form-gray col-md-10 mt-5">
                         <div class="card-header p-3">
-                            <h3 class="card-title text-xl text-bold text-center">Add DNSSEC</h3>
+                            <h3 class="card-title text-xl text-bold text-center">{{ t('domains.dnssec.addDnssec') }}</h3>
                             <div class="card-tools pt-2 m-0">
                                 <button class="btn btn-tool" @click="showForm = false">
                                     <font-awesome-icon :icon="['fas', 'times']" />
@@ -209,19 +212,19 @@ loadDnsSec();
                                 <div v-for="(record, index) in records" v-show="record.visible" :key="index">
                                     <!-- IMPORT DS RECORD -->
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label">Import DS</label>
+                                        <label class="col-md-2 col-form-label">{{ t('domains.dnssec.importDs') }}</label>
                                         <div class="col-md-8">
-                                            <input v-model="record.importText" type="text" class="form-control" placeholder="host.com. IN DS 1172 13 1 26ffc7 ; ( SHA1 digest )" />
+                                            <input v-model="record.importText" type="text" class="form-control" :placeholder="t('domains.dnssec.importPlaceholder')" />
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="button" class="btn btn-primary w-100" @click="importDsRecord(record)">Import</button>
+                                            <button type="button" class="btn btn-primary w-100" @click="importDsRecord(record)">{{ t('domains.dnssec.import') }}</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label"> Digest Type #{{ index + 1 }} </label>
+                                        <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.digestType', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <select v-model="record.digestType" class="form-control" :required="index === 0">
-                                                <option value="">Select</option>
+                                                <option value="">{{ t('domains.dnssec.select') }}</option>
                                                 <option value="1">SHA-1</option>
                                                 <option value="2">SHA-256</option>
                                                 <option value="3">GOST</option>
@@ -230,10 +233,10 @@ loadDnsSec();
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label"> Algorithm #{{ index + 1 }} </label>
+                                        <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.algorithm', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <select v-model="record.algorithm" class="form-control" :required="index === 0">
-                                                <option value="">Select</option>
+                                                <option value="">{{ t('domains.dnssec.select') }}</option>
                                                 <option value="8">RSA/SHA-256</option>
                                                 <option value="13">ECDSA P-256</option>
                                                 <option value="14">ECDSA P-384</option>
@@ -241,26 +244,26 @@ loadDnsSec();
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label"> Key Tag #{{ index + 1 }} </label>
+                                        <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.keyTag', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
-                                            <input v-model.number="record.keyTag" type="number" class="form-control" placeholder="Enter Key Tag (Example: 2371)" :required="index === 0" />
+                                            <input v-model.number="record.keyTag" type="number" class="form-control" :placeholder="t('domains.dnssec.enterKeyTag')" :required="index === 0" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label"> Digest #{{ index + 1 }} </label>
+                                        <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.digest', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
-                                            <textarea v-model="record.digest" class="form-control" rows="5" placeholder="Enter Value of Digest (Must not be greater than 40 Characters)" :maxlength="record.maxLength" :required="index === 0"></textarea>
+                                            <textarea v-model="record.digest" class="form-control" rows="5" :placeholder="t('domains.dnssec.enterDigest', { max: record.maxLength })" :maxlength="record.maxLength" :required="index === 0"></textarea>
                                             <div class="text-right text-muted">
-                                                Characters left: <b>{{ record.maxLength - record.digest.length }}</b>
+                                                {{ t('domains.dnssec.charactersLeft', { count: record.maxLength - record.digest.length }) }}
                                             </div>
                                         </div>
                                     </div>
                                     <div v-if="index < 2" class="text-right mb-3">
-                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;Add More</button>
+                                        <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;{{ t('domains.dnssec.addMore') }}</button>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-custom pt-2 px-4" type="submit">Save</button>
+                                    <button class="btn btn-custom pt-2 px-4" type="submit">{{ t('common.buttons.save') }}</button>
                                 </div>
                             </form>
                         </div>

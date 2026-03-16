@@ -4,6 +4,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
+import { useI18n } from 'vue-i18n';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
@@ -20,6 +21,7 @@ import Renew from './Renew.vue';
 import Transfer from './Transfer.vue';
 import Whois from './Whois.vue';
 
+const { t, d } = useI18n();
 const module = 'domains';
 const siteStore = useSiteStore();
 const route = useRoute();
@@ -34,36 +36,36 @@ const { loading, error, pkg, linkDisplay, serviceInfo, titleField, serviceTypes,
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     siteStore.setBreadcrums([
-        ['/home', 'Home'],
-        [`/${moduleLink(module)}`, 'Domains'],
+        ['/home', t('common.breadcrumb.home')],
+        [`/${moduleLink(module)}`, t('common.menu.domains')],
     ]);
     siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, serviceInfo.value.domain_hostname);
     if (typeof newLink == 'undefined') {
-        siteStore.setPageHeading(`View Domain - ${serviceInfo.value.domain_hostname}`);
-        siteStore.setTitle(`Domain ${serviceInfo.value.domain_hostname}`);
+        siteStore.setPageHeading(t('domains.view.pageTitle', { hostname: serviceInfo.value.domain_hostname }));
+        siteStore.setTitle(t('domains.view.title', { hostname: serviceInfo.value.domain_hostname }));
     } else {
-        siteStore.setPageHeading(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
-        siteStore.setTitle(`Domain ${id} ${ucwords(newLink.replace('_', ' '))}`);
+        siteStore.setPageHeading(t('domains.view.pageTitleWithLink', { id, link: ucwords(newLink.replace('_', ' ')) }));
+        siteStore.setTitle(t('domains.view.pageTitleWithLink', { id, link: ucwords(newLink.replace('_', ' ')) }));
         siteStore.addBreadcrum(`/${moduleLink(module)}/${id}/${newLink}`, ucwords(newLink.replace('_', ' ')));
         if (newLink == 'welcome_email') {
             Swal.fire({
                 icon: 'question',
-                title: '<h3>Are you sure?</h3> ',
+                title: `<h3>${t('common.confirm.title')}</h3> `,
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
-                confirmButtonText: 'Yes',
-                html: 'Are you sure want to resend welcome email?',
+                confirmButtonText: t('common.confirm.yes'),
+                html: t('domains.view.welcomeEmailConfirm'),
                 preConfirm: () => {
                     try {
                         Swal.close();
                         fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
                             Swal.fire({
                                 icon: 'success',
-                                title: '<h3>Email Sent</h3> ',
+                                title: `<h3>${t('domains.view.emailSent')}</h3> `,
                                 showCancelButton: false,
                                 showLoaderOnConfirm: true,
-                                confirmButtonText: 'Yes',
-                                html: 'The welcome email has been resent.  Check your inbox.',
+                                confirmButtonText: t('common.confirm.yes'),
+                                html: t('domains.view.welcomeEmailResent'),
                                 preConfirm: () => {
                                     router.push(`/${moduleLink(module)}/${id}`);
                                 },
@@ -110,10 +112,10 @@ loadLink(route.params.link as string);
         <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-info">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Package</h3>
+                    <h3>{{ t('domains.view.package') }}</h3>
                     <p>{{ serviceType.services_name }}</p>
                     <p>
-                        Next Invoice Date: <b>{{ formatDate(billingDetails.next_date) }}</b>
+                        {{ t('domains.view.nextInvoiceDate', { date: '' }) }} <b>{{ formatDate(billingDetails.next_date) }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'briefcase']" /></div>
@@ -123,33 +125,33 @@ loadLink(route.params.link as string);
         <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-success">
                 <div class="inner px-3 pb-1 pt-3">
-                    <h3>Billing</h3>
+                    <h3>{{ t('domains.view.billing') }}</h3>
                     <p>
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b>
-                        billed <b>{{ billingDetails.service_frequency }}</b>
+                        {{ t('domains.view.billedFrequency', { frequency: billingDetails.service_frequency }) }}
                     </p>
                     <p>
-                        Expire Date: <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
+                        {{ t('domains.view.expireDate', { date: '' }) }} <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
                 <span class="small-box-footer">
-                    Domain Status: <b>{{ serviceInfo.domain_status }}</b>
+                    {{ t('domains.view.domainStatus', { status: serviceInfo.domain_status }) }}
                 </span>
             </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <div class="small-box bg-warning">
                 <div class="inner mb-1 px-3 pb-2 text-white">
-                    <h3>Whois Privacy</h3>
+                    <h3>{{ t('domains.view.whoisPrivacy') }}</h3>
                     <p style="padding-top: 1.3rem; padding-bottom: 1rem">
-                        Whois Privacy is: <b class="text-md">{{ whoisPrivacy }}</b>
+                        {{ t('domains.view.whoisPrivacyIs', { status: '' }) }} <b class="text-md">{{ whoisPrivacy }}</b>
                     </p>
                 </div>
                 <div class="icon"><font-awesome-icon :icon="['fas', 'user-secret']" /></div>
                 <span class="small-box-footer">
-                    Status: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" title="Edit Whois Privacy Status"><font-awesome-icon :icon="['fas', 'pencil-alt']" /></router-link>
+                    {{ t('common.labels.status') }}: <b>{{ whoisPrivacy }}</b>
+                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" :title="t('domains.view.editWhoisPrivacy')"><font-awesome-icon :icon="['fas', 'pencil-alt']" /></router-link>
                 </span>
             </div>
         </div>
@@ -185,7 +187,7 @@ loadLink(route.params.link as string);
         <div class="col-md-6">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />&nbsp; Links</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />&nbsp; {{ t('domains.view.links') }}</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
@@ -203,21 +205,21 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Nameservers</h3>
+                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;{{ t('domains.view.nameservers') }}</h3>
                         <div class="card-tools float-right pl-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" title="Edit NameServers"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" :title="t('domains.view.editNameservers')"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />{{ t('common.buttons.edit') }} </router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body pt-0" style="height: 205px">
                     <div class="row">
                         <div class="col-md-6 p-0">
-                            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-                            <h5 class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
-                            <h5 v-if="allInfo?.attributes?.nameserver_list[2]?.name" class="nameserver_heading">Nameserver #<span class="nameserver_label">3</span></h5>
+                            <h5 class="nameserver_heading">{{ t('domains.view.nameserverLabel', { number: 1 }) }}</h5>
+                            <h5 class="nameserver_heading">{{ t('domains.view.nameserverLabel', { number: 2 }) }}</h5>
+                            <h5 v-if="allInfo?.attributes?.nameserver_list[2]?.name" class="nameserver_heading">{{ t('domains.view.nameserverLabel', { number: 3 }) }}</h5>
                         </div>
                         <div class="col-md-6 p-0">
                             <h5 class="nameserver_heading">{{ allInfo?.attributes?.nameserver_list[0]?.name ?? '&nbsp;' }}</h5>
@@ -234,23 +236,23 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'id-card']" />&nbsp;Contact Information</h3>
+                        <h3 class="card-title pt-2"><font-awesome-icon :icon="['fas', 'id-card']" />&nbsp;{{ t('domains.view.contactInformation') }}</h3>
                         <div class="card-tools float-right pl-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                         </div>
                         <div class="btn-group float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" title="Edit Contact Information"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />Edit </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" :title="t('domains.view.editContactInformation')"> <font-awesome-icon :icon="['fas', 'pencil-alt']" />{{ t('common.buttons.edit') }} </router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body pt-5" style="height: 250px">
                     <p>
-                        Name: {{ serviceInfo.domain_firstname }} {{ serviceInfo.domain_lastname }} <br />
-                        Organization: {{ serviceInfo.domain_company }}<br />
-                        Address: {{ serviceInfo.domain_address }}<br />
+                        {{ t('domains.view.name') }} {{ serviceInfo.domain_firstname }} {{ serviceInfo.domain_lastname }} <br />
+                        {{ t('domains.view.organization') }} {{ serviceInfo.domain_company }}<br />
+                        {{ t('domains.view.address') }} {{ serviceInfo.domain_address }}<br />
                         {{ serviceInfo.domain_city }}, {{ serviceInfo.domain_state }}<br />
                         {{ serviceInfo.domain_country }} - {{ serviceInfo.domain_zip }}<br />
-                        Ph: <a @href="'tel:' + serviceInfo.domain_address">{{ serviceInfo.domain_phone }}</a>
+                        {{ t('domains.view.phone') }} <a @href="'tel:' + serviceInfo.domain_address">{{ serviceInfo.domain_phone }}</a>
                     </p>
                 </div>
             </div>
@@ -258,23 +260,23 @@ loadLink(route.params.link as string);
         <div class="col-md-3">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'newspaper']" />&nbsp; Domain Registry logs</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'newspaper']" />&nbsp; {{ t('domains.view.domainRegistryLogs') }}</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
                 </div>
-                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-secondary text-md">No domain log found.</span></div>
+                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-secondary text-md">{{ t('domains.view.noDomainLogFound') }}</span></div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card p-2">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'times']" />&nbsp; Errors in Contact Info</h3>
+                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'times']" />&nbsp; {{ t('domains.view.errorsInContactInfo') }}</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
                     </div>
                 </div>
-                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-success text-md">All good! no errors in Contact Information!</span></div>
+                <div class="card-body" style="height: 250px; margin: 0 auto; display: flex; align-items: center"><span class="text-success text-md">{{ t('domains.view.allGoodNoErrors') }}</span></div>
             </div>
         </div>
     </div>

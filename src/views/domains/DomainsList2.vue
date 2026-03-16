@@ -2,6 +2,9 @@
 import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 interface domainsRow {
     screenshot?: string;
@@ -74,37 +77,37 @@ function setStatusLimit(event: Event) {
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" title="Order Domain Registrations"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> Order</a>
+                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" :title="t('domains.list.orderTitle')"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> {{ t('common.buttons.order') }}</a>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" :title="t('common.buttons.print')" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />{{ t('common.buttons.print') }}</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('domains.list.exportData')" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />{{ t('common.export.order') }} <span class="caret"></span><span class="sr-only">{{ t('domains.list.toggleDropdown') }}</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
-                                        <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> XLSX</a>
+                                        <a href="#" data-container="body" :title="t('common.export.xlsx')" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> {{ t('common.export.xlsxShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="xls">
-                                        <a href="#" data-container="body" title="Excel 2003/BIFF" @click.prevent="crud_export('xls')"><img src="../../assets/images/crud/xls.png" alt="" /> XLS</a>
+                                        <a href="#" data-container="body" :title="t('common.export.xls')" @click.prevent="crud_export('xls')"><img src="../../assets/images/crud/xls.png" alt="" /> {{ t('common.export.xlsShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="ods">
-                                        <a href="#" data-container="body" title="OpenDocument SpreadSheet" @click.prevent="crud_export('ods')"><img src="../../assets/images/crud/ods.png" alt="" /> ODS</a>
+                                        <a href="#" data-container="body" :title="t('common.export.ods')" @click.prevent="crud_export('ods')"><img src="../../assets/images/crud/ods.png" alt="" /> {{ t('common.export.odsShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="pdf">
-                                        <a href="#" data-container="body" title="Adobe Portable Document Format" @click.prevent="crud_export('pdf')"><img src="../../assets/images/crud/pdf.png" alt="" /> PDF</a>
+                                        <a href="#" data-container="body" :title="t('common.export.pdf')" @click.prevent="crud_export('pdf')"><img src="../../assets/images/crud/pdf.png" alt="" /> {{ t('common.export.pdfShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="xml">
-                                        <a href="#" data-container="body" title="Extensible Markup Language" @click.prevent="crud_export('xml')"><img src="../../assets/images/crud/xml.png" alt="" /> XML</a>
+                                        <a href="#" data-container="body" :title="t('common.export.xml')" @click.prevent="crud_export('xml')"><img src="../../assets/images/crud/xml.png" alt="" /> {{ t('common.export.xmlShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="php">
-                                        <a href="#" data-container="body" title="PHP Array" @click.prevent="crud_export('php')"><img src="../../assets/images/crud/php.png" alt="" /> PHP</a>
+                                        <a href="#" data-container="body" :title="t('common.export.php')" @click.prevent="crud_export('php')"><img src="../../assets/images/crud/php.png" alt="" /> {{ t('common.export.phpShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="csv">
-                                        <a href="#" data-container="body" title="Comma-Seperated Values" @click.prevent="crud_export('csv')"><img src="../../assets/images/crud/csv.png" alt="" /> CSV</a>
+                                        <a href="#" data-container="body" :title="t('common.export.csv')" @click.prevent="crud_export('csv')"><img src="../../assets/images/crud/csv.png" alt="" /> {{ t('common.export.csvShort') }}</a>
                                     </li>
                                     <li role="presentation" data-type="json">
-                                        <a href="#" data-container="body" title="JSON" @click.prevent="crud_export('json')"><img src="../../assets/images/crud/json.png" alt="" /> JSON</a>
+                                        <a href="#" data-container="body" :title="t('common.export.json')" @click.prevent="crud_export('json')"><img src="../../assets/images/crud/json.png" alt="" /> {{ t('common.export.json') }}</a>
                                     </li>
                                     <li role="presentation" data-type="bbcode">
                                         <a href="#" data-container="body" title="BBcode" @click.prevent="crud_export('bbcode')"><img src="../../assets/images/crud/bbcode.png" alt="" /> BBCODE</a>
@@ -113,17 +116,17 @@ function setStatusLimit(event: Event) {
                                         <a href="#" data-container="body" title="WikiCode" @click.prevent="crud_export('wiki')"><img src="../../assets/images/crud/wiki.png" alt="" /> WIKI</a>
                                     </li>
                                     <li role="presentation" data-type="markdown">
-                                        <a href="#" data-container="body" title="MarkDown" @click.prevent="crud_export('markdown')"><img src="../../assets/images/crud/markdown.png" alt="" /> MARKDOWN</a>
+                                        <a href="#" data-container="body" title="Markdown" @click.prevent="crud_export('markdown')"><img src="../../assets/images/crud/markdown.png" alt="" /> MARKDOWN</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div id="title_btns" class="col-md-auto printer-hidden pl-2">
                             <div id="limitStatusGroup" class="btn-group">
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" status="active" @click.prevent="setStatusLimit">Active</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" status="pending" @click.prevent="setStatusLimit">Pending</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" status="expired" @click.prevent="setStatusLimit">Expired</a>
-                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'all' }" status="all" @click.prevent="setStatusLimit">All</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" status="active" @click.prevent="setStatusLimit">{{ t('domains.list.active') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" status="pending" @click.prevent="setStatusLimit">{{ t('domains.list.pending') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'expired' }" status="expired" @click.prevent="setStatusLimit">{{ t('domains.list.expired') }}</a>
+                                <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'all' }" status="all" @click.prevent="setStatusLimit">{{ t('domains.list.all') }}</a>
                             </div>
                         </div>
                     </div>
@@ -139,12 +142,12 @@ function setStatusLimit(event: Event) {
                                     </template>
                                     <thead>
                                         <tr>
-                                            <th>Service ID</th>
-                                            <th>Domain Name</th>
-                                            <th>Domain Expiration Date</th>
-                                            <th>Cost</th>
-                                            <th>Billing Status</th>
-                                            <th>Link</th>
+                                            <th>{{ t('common.table.serviceId') }}</th>
+                                            <th>{{ t('domains.list.domainName') }}</th>
+                                            <th>{{ t('domains.list.domainExpirationDate') }}</th>
+                                            <th>{{ t('common.labels.cost') }}</th>
+                                            <th>{{ t('common.labels.billingStatus') }}</th>
+                                            <th>{{ t('domains.list.link') }}</th>
                                         </tr>
                                     </thead>
                                 </DataTable>
