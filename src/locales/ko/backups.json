@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "스토리지 / 백업 목록",
+        "orderTitle": "백업 등록 주문"
+    },
+    "view": {
+        "title": "백업 {id} 보기",
+        "package": "패키지",
+        "nextInvoiceDate": "다음 청구서 날짜:",
+        "billing": "청구",
+        "billed": "청구됨:",
+        "statusIs": "상태:",
+        "hostServer": "호스트 서버",
+        "links": "링크",
+        "welcomeEmailConfirm": "환영 이메일을 다시 보내시겠습니까?",
+        "emailSent": "이메일 전송됨",
+        "emailSentMessage": "환영 이메일이 재전송되었습니다. 받은 편지함을 확인하세요."
+    },
+    "order": {
+        "title": "스토리지 주문"
+    }
+}

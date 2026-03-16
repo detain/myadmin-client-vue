@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "VPS-Lëscht",
+    "orderVps": "VPS bestalln"
+  },
+  "view": {
+    "title": "VPS {id} ukucken",
+    "package": "Pak",
+    "billing": "Rechnung",
+    "billed": "berechent",
+    "vpsStatus": "VPS-Status ass:",
+    "hostServer": "Host-Server:",
+    "nextInvoiceDate": "Nächst Rechnungsdatum:",
+    "vpsInformation": "VPS-Informatioun",
+    "powerStatus": "Stromstatus ass:",
+    "selectAction": "Aktioun auswiele",
+    "disk": "Festplat",
+    "totalSpace": "Gesamtraum:",
+    "usedSpace": "Benotzte Raum:",
+    "remainingSpace": "Verbleiwnde Raum:",
+    "systemInformation": "Systeminformatioun",
+    "memory": "Erënnerung:",
+    "cpuCores": "CPU-Käre:",
+    "os": "BS:",
+    "links": "Linken",
+    "updateComment": "Kommentar aktualiséieren",
+    "saveChanges": "Ännerungen späicheren",
+    "emailSent": "E-Mail geschéckt",
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+  },
+  "order": {
+    "title": "VPS bestalln",
+    "osDistribution": "BS-Distributioun",
+    "osVersion": "BS-Versioun",
+    "hostname": "Hostname",
+    "rootPassword": "Root-Passwuert",
+    "couponCode": "Coupon-Code",
+    "continue": "Weiderfueren",
+    "orderSummary": "Bestellungszesummefaassung",
+    "total": "Total",
+    "tosAgree": "Ech hunn d'Konditiounen hei uewen gelies a stëmmen deem zou.",
+    "placeOrder": "Bestellung opgin"
+  },
+  "changeHostname": {
+    "title": "VPS-Hostname änneren",
+    "existingHostname": "Existéierende Hostname",
+    "newHostname": "Neie Hostname",
+    "updateHostname": "Hostname aktualiséieren"
+  },
+  "changeRootPassword": {
+    "title": "VPS Root-Passwuert änneren",
+    "newPassword": "Neie Passwuert:",
+    "confirmPassword": "Passwuert confirméieren:",
+    "changePassword": "Passwuert änneren",
+    "passwordMismatch": "Passwuert a Passwuert-Bestätegung stimmen net iwwereen"
+  },
+  "reinstallOs": {
+    "title": "BS nei installéieren",
+    "importantNote1": "D'Nei-Installéierung vum Betribssystem läscht all Daten.",
+    "importantNote2": "Virun der Nei-Installéierung vum Betribssystem, maacht w.e.g. e Backup.",
+    "osDistribution": "Betribssystem-Distributioun",
+    "confirmReinstallButton": "BS-Nei-Installéierung confirméieren"
+  },
+  "common": {
+    "goBack": "Zréckgoen",
+    "back": "Zréck",
+    "pleaseWait": "Waart w.e.g.!",
+    "success": "Erfolleg{text}",
+    "gotError": "Fehler kritt {error}"
+  }
+}

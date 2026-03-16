@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "قائمة خدمات عناوين IP العائمة",
+        "orderTitle": "طلب تسجيلات IP العائمة"
+    },
+    "view": {
+        "title": "عرض IP العائم {id}",
+        "package": "الباقة",
+        "nextInvoiceDate": "تاريخ الفاتورة التالي:",
+        "billing": "الفوترة",
+        "billed": "مُفوتَر:",
+        "statusIs": "الحالة:",
+        "floatingIp": "IP العائم",
+        "links": "الروابط",
+        "welcomeEmailConfirm": "هل أنت متأكد أنك تريد إعادة إرسال بريد الترحيب؟",
+        "emailSent": "تم إرسال البريد الإلكتروني",
+        "emailSentMessage": "تمت إعادة إرسال بريد الترحيب. تحقق من صندوق الوارد."
+    },
+    "order": {
+        "title": "طلب IP عائم"
+    },
+    "changeIp": {
+        "title": "تغيير IP الهدف"
+    }
+}

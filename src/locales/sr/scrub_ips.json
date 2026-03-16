@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Списак услуга Scrub IP-ова",
+        "orderTitle": "Наручи Scrub IP-ове"
+    },
+    "view": {
+        "title": "Прегледај Scrub IP-ове",
+        "currentIp": "Тренутни IP",
+        "ipAddress": "IP адреса",
+        "ipFromService": "IP из услуге"
+    },
+    "filters": {
+        "title": "Филтери",
+        "createNew": "Креирај нови",
+        "createNewFilter": "Креирај нови филтер",
+        "filterType": "Врста филтера",
+        "selectFilterType": "Изабери врсту филтера",
+        "ipAddress": "IP адреса",
+        "portNo": "Број порта",
+        "filter": "Филтер",
+        "destinationIp": "Одредишни IP",
+        "destinationPort": "Одредишни порт",
+        "noFiltersFound": "Нису пронађени филтери!",
+        "deleteFilterConfirm": "Да ли сте сигурни да желите да обришете овај филтер?",
+        "unableToCreateFilter": "Тренутно није могуће креирати филтер.",
+        "unableToDeleteFilter": "Тренутно није могуће обрисати филтер."
+    },
+    "firewallRules": {
+        "title": "Правила заштитног зида",
+        "createNew": "Креирај ново",
+        "createNewFirewall": "Креирај ново правило заштитног зида",
+        "protocol": "Протокол",
+        "destinationIp": "Одредишни IP",
+        "destinationPort": "Одредишни порт",
+        "sourceIp": "Изворни IP",
+        "sourcePort": "Изворни порт",
+        "xdpAction": "XDP акција",
+        "ipRequired": "IP адреса је обавезна",
+        "block": "Блокирај",
+        "whitelist": "Бела листа",
+        "noRulesFound": "Нису пронађена правила!",
+        "deleteRuleConfirm": "Да ли сте сигурни да желите да обришете ово правило?",
+        "unableToCreateRule": "Тренутно није могуће креирати правило заштитног зида.",
+        "unableToDeleteRule": "Тренутно није могуће обрисати правило заштитног зида."
+    },
+    "geoFirewallRules": {
+        "title": "Гео правила заштитног зида",
+        "createNew": "Креирај ново",
+        "createNewGeoRule": "Креирај ново гео правило заштитног зида",
+        "destinationIp": "Одредишни IP",
+        "destinationPort": "Одредишни порт",
+        "sourceCountry": "Земља порекла",
+        "sourceAsn": "ASN порекла",
+        "xdpAction": "XDP акција",
+        "portNo": "Број порта",
+        "selectCountry": "Изабери земљу",
+        "asn": "ASN",
+        "block": "Блокирај",
+        "whitelist": "Бела листа",
+        "noRulesFound": "Нису пронађена правила!",
+        "deleteGeoRuleConfirm": "Да ли сте сигурни да желите да обришете ово гео правило?",
+        "unableToCreateRule": "Тренутно није могуће креирати правило заштитног зида.",
+        "unableToDeleteRule": "Тренутно није могуће обрисати гео правило заштитног зида."
+    }
+}

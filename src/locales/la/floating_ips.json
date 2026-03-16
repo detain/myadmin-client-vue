@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lista Servitiorum Floating IPs",
+        "orderTitle": "Ordina Inscriptiones Floating IP"
+    },
+    "view": {
+        "title": "Vide Floating IP {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "Computatum:",
+        "statusIs": "Status est:",
+        "floatingIp": "Floating IP",
+        "links": "Nexus",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "order": {
+        "title": "Ordina Floating IP"
+    },
+    "changeIp": {
+        "title": "Muta IP Destinatum"
+    }
+}

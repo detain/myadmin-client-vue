@@ -1,0 +1,12 @@
+{
+    "title": "Përdoruesit",
+    "addUser": "Shto Përdorues",
+    "editUser": "Ndrysho Përdoruesin",
+    "firstName": "Emri",
+    "lastName": "Mbiemri",
+    "username": "Emri i Përdoruesit",
+    "password": "Fjalëkalimi",
+    "keepSamePassword": "Lëreni bosh për të mbajtur të njëjtin fjalëkalim",
+    "errorLoading": "Gabim gjatë ngarkimit të përdoruesve:",
+    "errorLoadingUser": "Gabim gjatë ngarkimit të përdoruesit:"
+}

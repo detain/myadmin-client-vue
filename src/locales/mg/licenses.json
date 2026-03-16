@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisitry ny Fanamarinana",
+        "orderTitle": "Manome baiko ny Fisoratana Fanamarinana"
+    },
+    "view": {
+        "title": "Jereo ny Fanamarinana {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa:",
+        "statusIs": "Sata dia:",
+        "licenseInfo": "Fampahalalana Fanamarinana",
+        "cpanelInfo": "Fampahalalana cPanel",
+        "links": "Rohy",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "order": {
+        "title": "Manome baiko Fanamarinana"
+    },
+    "changeIp": {
+        "title": "Hanova ny IP"
+    },
+    "changeOs": {
+        "title": "Hanova ny OS",
+        "selectLicenseOs": "Misafidiana OS Fanamarinana"
+    }
+}

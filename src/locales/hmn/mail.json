@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Cov Kev Pab Cuam Ntawv Xa",
+    "orderTitle": "Xaj Npe Nkag Rau Ntawv Xa"
+  },
+  "view": {
+    "title": "Saib Ntawv Xa {id}",
+    "package": "Pob Khoom",
+    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+    "billing": "Them Nqi",
+    "billed": "tau them nqi:",
+    "statusIs": "xwm txheej yog:",
+    "mailApi": "API Ntawv Xa",
+    "usageCount": "Xauj Siv:",
+    "links": "Cov Txuas",
+    "connectionInfo": "Ntaub Ntawv Txuas",
+    "emailSent": "Email Xa Lawm",
+    "emailSentMessage": "Email txais tos xa dua lawm."
+  },
+  "order": {
+    "title": "Xaj Ntawv Xa"
+  },
+  "alerts": {
+    "title": "Cov Lus Ceeb Toom",
+    "addAlert": "Ntxiv Lus Ceeb Toom",
+    "editAlert": "Kho Lus Ceeb Toom",
+    "noAlerts": "Tsis nrhiav tau lus ceeb toom"
+  },
+  "delist": {
+    "title": "Tshem Hauv Daim Ntawv",
+    "blockedEmails": "Cov Email Thaiv"
+  },
+  "denyRules": {
+    "title": "Cov Cai Tsis Pub",
+    "addRule": "Ntxiv Cai",
+    "noRules": "Tsis nrhiav tau cov cai tsis pub"
+  },
+  "logs": {
+    "title": "Cov Ntaub Ntawv",
+    "searchLogs": "Nrhiav Cov Ntaub Ntawv"
+  },
+  "stats": {
+    "title": "Cov Zauv"
+  },
+  "deliverability": {
+    "title": "Kev Xa Tau"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisensie Lys",
+        "orderTitle": "Bestel Lisensie Registrasies"
+    },
+    "view": {
+        "title": "Bekyk Lisensie {id}",
+        "package": "Pakket",
+        "nextInvoiceDate": "Volgende Faktuurdatum:",
+        "billing": "Fakturering",
+        "billed": "gefaktureer:",
+        "statusIs": "Status is:",
+        "licenseInfo": "Lisensie Inligting",
+        "cpanelInfo": "cPanel Inligting",
+        "links": "Skakels",
+        "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
+        "emailSent": "E-pos Gestuur",
+        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
+    },
+    "order": {
+        "title": "Bestel Lisensie"
+    },
+    "changeIp": {
+        "title": "Verander IP"
+    },
+    "changeOs": {
+        "title": "Verander OS",
+        "selectLicenseOs": "Kies Lisensie OS"
+    }
+}

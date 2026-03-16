@@ -1,0 +1,22 @@
+{
+  "list": { "title": "ಸ್ಕ್ರಬ್ IPs ಸೇವೆಗಳ ಪಟ್ಟಿ", "orderTitle": "ಸ್ಕ್ರಬ್ IPs ಆದೇಶಿಸಿ" },
+  "view": { "title": "ಸ್ಕ್ರಬ್ IPs ವೀಕ್ಷಿಸಿ", "currentIp": "ಪ್ರಸ್ತುತ IP", "ipAddress": "IP ವಿಳಾಸ", "ipFromService": "ಸೇವೆಯಿಂದ IP" },
+  "filters": {
+    "title": "ಫಿಲ್ಟರ್‌ಗಳು", "createNew": "ಹೊಸದು ರಚಿಸಿ", "createNewFilter": "ಹೊಸ ಫಿಲ್ಟರ್ ರಚಿಸಿ",
+    "filterType": "ಫಿಲ್ಟರ್ ಪ್ರಕಾರ", "ipAddress": "IP ವಿಳಾಸ", "portNo": "ಪೋರ್ಟ್ ಸಂಖ್ಯೆ",
+    "filter": "ಫಿಲ್ಟರ್", "destinationIp": "ಗಮ್ಯಸ್ಥಾನ IP", "destinationPort": "ಗಮ್ಯಸ್ಥಾನ ಪೋರ್ಟ್",
+    "noFiltersFound": "ಯಾವುದೇ ಫಿಲ್ಟರ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ!", "deleteFilterConfirm": "ಈ ಫಿಲ್ಟರ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
+  },
+  "firewallRules": {
+    "title": "ಫೈರ್‌ವಾಲ್ ನಿಯಮಗಳು", "createNewFirewall": "ಹೊಸ ಫೈರ್‌ವಾಲ್ ನಿಯಮ ರಚಿಸಿ",
+    "protocol": "ಪ್ರೋಟೋಕಾಲ್", "destinationIp": "ಗಮ್ಯಸ್ಥಾನ IP", "sourceIp": "ಮೂಲ IP",
+    "block": "ತಡೆ", "whitelist": "ಬಿಳಿ ಪಟ್ಟಿ", "noRulesFound": "ಯಾವುದೇ ನಿಯಮಗಳು ಕಂಡುಬಂದಿಲ್ಲ!",
+    "deleteRuleConfirm": "ಈ ನಿಯಮ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
+  },
+  "geoFirewallRules": {
+    "title": "ಜಿಯೋ ಫೈರ್‌ವಾಲ್ ನಿಯಮಗಳು", "createNewGeoRule": "ಹೊಸ ಜಿಯೋ ಫೈರ್‌ವಾಲ್ ನಿಯಮ ರಚಿಸಿ",
+    "destinationIp": "ಗಮ್ಯಸ್ಥಾನ IP", "sourceCountry": "ಮೂಲ ದೇಶ", "sourceAsn": "ಮೂಲ ASN",
+    "selectCountry": "ದೇಶ ಆಯ್ಕೆಮಾಡಿ", "block": "ತಡೆ", "whitelist": "ಬಿಳಿ ಪಟ್ಟಿ",
+    "noRulesFound": "ಯಾವುದೇ ನಿಯಮಗಳು ಕಂಡುಬಂದಿಲ್ಲ!", "deleteGeoRuleConfirm": "ಈ ಜಿಯೋ ನಿಯಮ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
+  }
+}

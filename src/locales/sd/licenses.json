@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "لائسنس لسٽ",
+        "orderTitle": "لائسنس رجسٽريشن آرڊر ڪريو"
+    },
+    "view": {
+        "title": "لائسنس {id} ڏسو",
+        "package": "پيڪيج",
+        "nextInvoiceDate": "ايندڙ انوائس تاريخ:",
+        "billing": "بلنگ",
+        "billed": "بل ڪيو:",
+        "statusIs": "حالت آهي:",
+        "licenseInfo": "لائسنس معلومات",
+        "cpanelInfo": "cPanel معلومات",
+        "links": "لنڪ",
+        "welcomeEmailConfirm": "ڇا توهان پڪ آهيو ته خوش آمديد اي ميل ٻيهر موڪلڻ چاهيو ٿا؟",
+        "emailSent": "اي ميل موڪليل",
+        "emailSentMessage": "خوش آمديد اي ميل ٻيهر موڪلي ويئي آهي. پنهنجو ان باڪس چيڪ ڪريو."
+    },
+    "order": {
+        "title": "لائسنس آرڊر ڪريو"
+    },
+    "changeIp": {
+        "title": "IP تبديل ڪريو"
+    },
+    "changeOs": {
+        "title": "OS تبديل ڪريو",
+        "selectLicenseOs": "لائسنس OS چونڊيو"
+    }
+}

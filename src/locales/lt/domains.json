@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "Domenų registracijų sąrašas",
+    "orderTitle": "Užsakyti domenų registracijas",
+    "domainName": "Domeno pavadinimas",
+    "domainExpirationDate": "Domeno galiojimo pabaigos data",
+    "active": "Aktyvus",
+    "pending": "Laukiama",
+    "expired": "Pasibaigęs",
+    "all": "Visi"
+  },
+  "view": {
+    "pageTitle": "Peržiūrėti domeną - {hostname}",
+    "package": "Paketas",
+    "billing": "Atsiskaitymas",
+    "whoisPrivacy": "Whois privatumas",
+    "nameservers": "Vardų serveriai",
+    "contactInformation": "Kontaktinė informacija",
+    "emailSent": "El. laiškas išsiųstas",
+    "welcomeEmailResent": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "pageTitle": "Užsakyti domeną",
+    "findDomain": "Raskite savo domeną ir patikrinkite prieinamumą.",
+    "available": "Taip! Jūsų domenas {domain} yra prieinamas! Galite jį registruoti už {cost}. Atnaujinimo kaina bus {renewal}.",
+    "taken": "Apgailestaujame! Jūsų domenas {domain} jau užimtas!",
+    "registerDomain": "Registruoti domeną ({hostname})",
+    "contactInformation": "Kontaktinė informacija",
+    "goBack": "Grįžti",
+    "continue": "Tęsti",
+    "total": "Iš viso",
+    "agreeCheckbox": "Perskaičiau aukščiau esančias sąlygas ir sutinku.",
+    "placeOrder": "Pateikti užsakymą"
+  },
+  "nameservers": {
+    "title": "Domeno vardų serveriai",
+    "nameservers": "Vardų serveriai",
+    "hostname": "Pagrindinio kompiuterio vardas",
+    "ipAddress": "IP adresas",
+    "deleteConfirm": "Jūs ketinate ištrinti domeno vardų serverį.",
+    "yesDeleteIt": "Taip, ištrinti"
+  },
+  "whois": {
+    "title": "Whois privatumas",
+    "currentlyEnabled": "Whois privatumas šiuo metu įjungtas {hostname}.",
+    "disableAndCancel": "Išjungti ir atšaukti Whois privatumą",
+    "orderSuccess": "Whois privatumo užsakymas sėkmingai pateiktas!",
+    "whoisEnabled": "Whois privatumas dabar įjungtas.",
+    "whoisDisabled": "Whois privatumas išjungtas ir atšauktas."
+  },
+  "lock": {
+    "title": "Domeno užraktas/atrakinimas",
+    "lockIt": "Taip, užrakinti.",
+    "unlockIt": "Taip, atrakinti."
+  },
+  "renew": {
+    "title": "Atnaujinti",
+    "domain": "Domenas",
+    "expiryDate": "Galiojimo pabaigos data",
+    "renewCost": "Atnaujinimo kaina",
+    "totalCost": "Bendra kaina",
+    "goToPayment": "Eiti į mokėjimą"
+  }
+}

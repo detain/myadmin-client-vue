@@ -1,0 +1,75 @@
+{
+    "list": {
+        "title": "VPS ዝርዝር",
+        "orderVps": "VPS አዝዝ"
+    },
+    "view": {
+        "title": "VPS {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል",
+        "vpsStatus": "VPS ሁኔታ ነው:",
+        "hostServer": "ሆስት ሰርቨር:",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "vpsInformation": "VPS መረጃ",
+        "powerStatus": "የኃይል ሁኔታ ነው:",
+        "selectAction": "ድርጊት ምረጥ",
+        "comment": "አስተያየት:",
+        "disk": "ዲስክ",
+        "totalSpace": "ጠቅላላ ቦታ:",
+        "usedSpace": "ጥቅም ላይ ያለ ቦታ:",
+        "remainingSpace": "ቀሪ ቦታ:",
+        "systemInformation": "የስርዓት መረጃ",
+        "memory": "ማህደረ ትውስታ:",
+        "cpuCores": "CPU ዋና ክፍሎች:",
+        "os": "OS:",
+        "links": "ሊንኮች",
+        "updateComment": "አስተያየት አዘምን",
+        "saveChanges": "ለውጦች አስቀምጥ",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።"
+    },
+    "order": {
+        "title": "VPS አዝዝ",
+        "osDistribution": "OS ስርጭት",
+        "osVersion": "OS ስሪት",
+        "hostname": "የሆስት ስም",
+        "rootPassword": "Root የይለፍ ቃል",
+        "couponCode": "ኩፖን ኮድ",
+        "continue": "ቀጥል",
+        "orderSummary": "የትዕዛዝ ማጠቃለያ",
+        "total": "ጠቅላላ",
+        "agreeToTerms": "ከቅናሽ ሁኔታዎቹ ጋር ይስማሙ",
+        "tosAgree": "ከላይ ያሉ ሁኔታዎችን አንብቤያለሁ እናም እስማማለሁ።",
+        "placeOrder": "ትዕዛዝ ስጥ"
+    },
+    "changeHostname": {
+        "title": "VPS ሆስት ስም ቀይር",
+        "existingHostname": "ያለ ሆስት ስም",
+        "newHostname": "አዲስ ሆስት ስም",
+        "updateHostname": "ሆስት ስም አዘምን"
+    },
+    "changeRootPassword": {
+        "title": "VPS Root የይለፍ ቃል ቀይር",
+        "newPassword": "አዲስ የይለፍ ቃል:",
+        "confirmPassword": "የይለፍ ቃል አረጋግጥ:",
+        "changePassword": "የይለፍ ቃል ቀይር",
+        "passwordMismatch": "የይለፍ ቃሉ እና ማረጋገጫ የይለፍ ቃሉ አይዛመዱም"
+    },
+    "reinstallOs": {
+        "title": "OS ዳግም ጫን",
+        "importantNote1": "ስርዓተ ክወናውን ዳግም መጫን ሁሉንም ዳታ ይሰርዛል።",
+        "importantNote2": "ስርዓተ ክወናውን ዳግም ከመጫንዎ በፊት፣ እባክዎ ምትኬ ያስቀምጡ።",
+        "osDistribution": "የስርዓተ ክወና ስርጭት",
+        "newPassword": "አዲስ የይለፍ ቃል",
+        "confirmPassword": "የይለፍ ቃል አረጋግጥ",
+        "confirmReinstallButton": "OS ዳግም መጫን አረጋግጥ"
+    },
+    "common": {
+        "goBack": "ተመለስ",
+        "back": "ወደ ኋላ",
+        "pleaseWait": "እባክዎ ይጠብቁ!",
+        "success": "ተሳክቷል{text}",
+        "gotError": "ስህተት ተከስቷል {error}"
+    }
+}

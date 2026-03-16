@@ -1,0 +1,106 @@
+{
+    "menu": {
+        "dashboard": "Табло", "domains": "Домейни", "dnsManager": "DNS Мениджър", "vps": "VPS",
+        "storage": "Съхранение", "mail": "Поща", "licenses": "Лицензи", "webhosting": "Уеб хостинг",
+        "floatingIps": "Плаващи IP адреси", "scrubIps": "Почистване на IP", "rapidDeployServers": "Сървъри за бързо разгръщане",
+        "servers": "Сървъри", "affiliateSystem": "Партньорска система", "tickets": "Тикети",
+        "billing": "Фактуриране", "settings": "Настройки", "cart": "Количка", "viewInvoices": "Преглед на фактури",
+        "creditCards": "Кредитни карти", "prePaidFunds": "Предплатени средства / Кредит",
+        "accountSettings": "Настройки на акаунта", "changeLogin": "Промяна на вход", "changePassword": "Промяна на парола"
+    },
+    "nav": { "home": "Начало", "bugsSuck": "Грешките са лоши", "users": "Потребители", "logout": "Изход" },
+    "buttons": {
+        "save": "Запазване", "cancel": "Отказ", "delete": "Изтриване", "edit": "Редактиране", "update": "Актуализиране",
+        "submit": "Изпращане", "close": "Затваряне", "confirm": "Потвърждение", "back": "Назад", "next": "Напред",
+        "order": "Поръчка", "orderNow": "Поръчай сега", "add": "Добавяне", "create": "Създаване", "remove": "Премахване",
+        "search": "Търсене", "reset": "Нулиране", "refresh": "Обновяване", "download": "Изтегляне",
+        "upload": "Качване", "copy": "Копиране", "print": "Печат", "enable": "Активиране", "disable": "Деактивиране",
+        "start": "Старт", "stop": "Спиране", "restart": "Рестартиране", "viewAll": "Виж всички",
+        "copyToClipboard": "Копиране в клипборда", "addToCart": "Добавяне в количката", "payNow": "Плати сега",
+        "login": "Вход", "register": "Регистрация", "signUp": "Регистрация", "continue": "Продължи",
+        "addRange": "Добавяне на диапазон", "goBack": "Назад", "prev": "Предишен", "exportExcel": "Експорт в Excel",
+        "exportPdf": "Експорт в PDF", "exportData": "Експортиране на данни", "unlink": "Прекратяване на връзката", "logOut": "Изход",
+        "generateApiKey": "Генериране на API ключ",
+        "generateNewApiKey": "Генериране на нов API ключ, заместващ стария",
+        "updateSshKey": "Актуализиране на SSH публичен ключ", "setSshKey": "Задаване на SSH публичен ключ",
+        "updateAccountFeatures": "Актуализиране на настройките на функциите на акаунта",
+        "update2fa": "Актуализиране на двуфакторното удостоверяване"
+    },
+    "labels": {
+        "id": "ID", "name": "Име", "email": "Имейл", "status": "Статус", "action": "Действие",
+        "actions": "Действия", "date": "Дата", "cost": "Цена", "amount": "Сума",
+        "description": "Описание", "type": "Тип", "details": "Детайли", "server": "Сървър",
+        "ip": "IP", "hostname": "Хост име", "domain": "Домейн", "username": "Потребителско име",
+        "password": "Парола", "package": "Пакет", "comments": "Коментари", "loading": "Зареждане...",
+        "noData": "Няма налични данни", "noActiveServices": "Няма активни услуги",
+        "controlPanel": "Контролен панел", "welcomeEmail": "Приветствен имейл", "invoices": "Фактури",
+        "billingStatus": "Статус на фактуриране", "client": "Клиент", "key": "Ключ", "links": "Връзки",
+        "billing": "Фактуриране", "billed": "фактурирано:", "statusIs": "Статусът е:",
+        "nextInvoiceDate": "Дата на следваща фактура:", "active": "Активен", "pending": "В изчакване",
+        "expired": "Изтекъл", "all": "Всички", "paid": "Платено", "paidOn": "Платено на", "paidBy": "Платено от",
+        "moreDetails": "Повече детайли", "invoiceDate": "Дата на фактура", "dueDate": "Крайна дата",
+        "page": "Страница", "of": "от", "pageSize": "Размер на страница", "accounts": "Акаунти",
+        "linked": "Свързан", "notLinked": "Несвързан", "startIp": "Начален IP", "endIp": "Краен IP",
+        "restrict": "Ограничаване", "options": "Опции", "yes": "Да", "no": "Не",
+        "noPaidInvoices": "Няма налични платени фактури", "noApiKey": "Все още няма настроен API ключ",
+        "noSshKey": "Все още няма настроен SSH ключ"
+    },
+    "table": {
+        "serviceId": "ID на услуга", "ticketId": "ID на тикет", "subject": "Тема",
+        "lastReplier": "Последен отговарящ", "expirationDate": "Дата на изтичане"
+    },
+    "export": {
+        "order": "Поръчка", "xlsx": "Excel 2007+", "xlsxShort": "XLSX", "xls": "Excel 2003/BIFF",
+        "xlsShort": "XLS", "ods": "OpenDocument Електронна таблица", "odsShort": "ODS",
+        "pdf": "Adobe преносим формат на документ", "pdfShort": "PDF",
+        "xml": "Разширяем език за маркиране", "xmlShort": "XML", "php": "PHP масив",
+        "phpShort": "PHP", "csv": "Стойности, разделени със запетая", "csvShort": "CSV", "json": "JSON",
+        "bbcode": "BBCode", "bbcodeShort": "BBCODE", "wiki": "Wiki код", "wikiShort": "WIKI",
+        "markdown": "Markdown", "markdownShort": "MARKDOWN"
+    },
+    "alerts": { "success": "Успех!", "error": "Грешка!" },
+    "confirm": {
+        "title": "Сигурни ли сте?", "delete": "Това действие не може да бъде отменено.", "yes": "Да", "no": "Не",
+        "yesCancelIt": "Да, отмени го.",
+        "cancelConfirm": "Сигурни ли сте, че искате да отмените вашия {module} {id}?",
+        "cancelTitle": "Отмяна на {module}", "cancelService": "Отмяна на услуга {title}",
+        "yesCancelOrder": "Да, отмени поръчката {tableName}",
+        "areYouSureCancelQuestion": "Сигурни ли сте, че искате да отмените?"
+    },
+    "footer": {
+        "copyright": "Авторски права \u00a9 {year} InterServer Inc.",
+        "allRightsReserved": "Всички права запазени."
+    },
+    "search": { "placeholder": "Търсене...", "noResults": "Не са намерени резултати от търсенето" },
+    "breadcrumb": { "home": "Начало" },
+    "profile": { "editPersonalInfo": "Редактиране на лична информация", "profileImage": "Профилна снимка" },
+    "services": {
+        "cancelService": "Отмяна на услуга {title}", "idLabel": "{tableName} ID:",
+        "reasonForCancellation": "Причина за отмяна/Коментар:",
+        "viewService": "Преглед на {module} {id}", "moduleInvoices": "{module} Фактури"
+    },
+    "account": {
+        "accountFeatures": "Функции на акаунта", "enableDarkMode": "Активиране на тъмен режим",
+        "disableReinstalls": "Деактивиране на преинсталациите",
+        "disablePasswordResets": "Деактивиране на нулирането на паролата (Забравена парола).",
+        "apiAccess": "API достъп",
+        "apiAccessDescription": "Това осигурява алтернативен начин за удостоверяване с API. Можете да използвате API ключа вместо паролата на акаунта за API удостоверяване.",
+        "sessionIpLimits": "Ограничения за сигурност на IP сесии",
+        "sessionIpLimitsDescription": "Това осигурява начин за ограничаване на IP адресите, от които вашият акаунт може да влиза, добавяйки допълнителна сигурност към вашия акаунт.",
+        "yourRemoteIp": "Вашият отдалечен IP:",
+        "ipLimitsWarning": "Активирането на IP ограничения ще попречи на всеки, който не е изброен по-долу, да влиза в системата. Уверете се, че вашият IP адрес е статичен и няма да се промени в бъдеще.",
+        "linkedAccounts": "Свързани акаунти",
+        "linkedAccountsDescription": "Социални акаунти, свързани за влизане с тях.",
+        "sshKeys": "SSH ключове",
+        "sshKeysDescription": "Този SSH ключ автоматично ще бъде добавен към някои услуги, като например VPS поръчки, осигурявайки алтернативен начин за удостоверяване с вашите услуги.",
+        "twoFactorAuth": "Двуфакторно удостоверяване",
+        "twoFactorAuthDescription": "Двойно удостоверяване за вашия акаунт за сигурност",
+        "enableGoogle2fa": "Активиране на двуфакторното удостоверяване на Google",
+        "twoFactorEnabled": "Двуфакторното удостоверяване е активирано",
+        "installAuthenticator": "Инсталирайте и регистрирайте {link}, като въведете кода по-долу или сканирате QR изображението",
+        "googleAuthenticator": "Google Authenticator",
+        "backupCode": "Трябва да архивирате този код за възстановяване.",
+        "enterAuthCode": "Въведете код от удостоверителя",
+        "webAndApi": "Уеб и API", "onlyApi": "Само API"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "사용자",
+    "addUser": "사용자 추가",
+    "editUser": "사용자 편집",
+    "firstName": "이름",
+    "lastName": "성",
+    "username": "사용자명",
+    "password": "비밀번호",
+    "keepSamePassword": "동일한 비밀번호를 유지하려면 비워 두세요",
+    "errorLoading": "사용자 로딩 오류:",
+    "errorLoadingUser": "사용자 로딩 오류:"
+}

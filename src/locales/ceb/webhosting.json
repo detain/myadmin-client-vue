@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Listahan sa Web Hosting", "orderTitle": "Mag-order og Website Registrations" },
+    "view": { "title": "Tan-awa ang Website {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill", "billingStatusIs": "Ang Status sa Billing mao:", "login": "Login", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
+    "order": { "title": "Mag-order og Website" },
+    "migration": { "title": "I-migrate ang Imong Website", "password": "Password", "importantNotes": "Importanteng mga Tala" }
+}

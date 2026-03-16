@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontoastellungen"
+    },
+    "changePassword": {
+        "title": "Passwuert änneren",
+        "cardTitle": "Passwuert aktualiséieren",
+        "currentPassword": "Aktuellt Passwuert",
+        "newPassword": "Neiet Passwuert",
+        "confirmPassword": "Passwuert confirméieren",
+        "updatePassword": "Passwuert aktualiséieren"
+    },
+    "changeUsername": {
+        "title": "Benotzernumm änneren",
+        "disabled": "Benotzernumm-Ännerungen sinn temporär deaktivéiert.",
+        "currentUsername": "Aktuellen Benotzernumm",
+        "newDesiredUsername": "Neie gewënschte Benotzernumm",
+        "confirmationCode": "Bestätegungscode",
+        "pleaseWait": "Wielt weg!",
+        "gotError": "Fehler kritt {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktinfo",
+        "cardTitle": "Kontaktinfo aktualiséieren",
+        "headsUp": "Opgepasst!",
+        "headsUpMessage": "Och wann dës Informatioun optional ass, hëlleft d'Uginn vun (geneeë) Informatioun eise Kontakter ze verbesseren an Äre Risiko-% Score ze senken, sou datt Dir méi séier an einfach Zougang zu Deeler vun der Säit kritt (wéi z.B. keng Kreditkaart authentifizéieren mussen).",
+        "riskScore": "Risiko-% Score",
+        "personalInformation": "Perséinlech Informatioun",
+        "name": "Numm",
+        "namePlaceholder": "Joe Cool",
+        "company": "Firma",
+        "gstinTaxId": "GSTIN Steier-ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Adresszeil 1",
+        "addressLine2": "Adresszeil 2",
+        "cityState": "Stad, Staat",
+        "city": "Stad",
+        "state": "Staat",
+        "country": "Land",
+        "zipcode": "Postleitzuel",
+        "phoneNo": "Telefonsnummer",
+        "phoneNumber": "Telefonsnummer",
+        "language": "Sprooch",
+        "auto": "Automatesch",
+        "currency": "Währung",
+        "timeZone": "Zäitzon",
+        "otherSettings": "Aner Astellungen",
+        "disablePasswordResets": "Passwuert-Resets deaktivéieren (Passwuert vergiess).",
+        "disableInvoiceReminders": "E-Mail-Notifikatiounen fir Rechnungserinnerungen deaktivéieren.",
+        "disableServerInvoiceReminders": "E-Mail-Notifikatiounen fir Server-Rechnungserinnerungen deaktivéieren.",
+        "disableReinstall": "Reinstalléierung deaktivéieren.",
+        "alternateEmailInvoices": "Alternativ E-Mail fir Rechnungen",
+        "alternateEmailInvoicesPlaceholder": "Alternativ E-Mail fir Rechnunge schécken",
+        "alternateEmailAbuse": "Alternativ E-Mail fir Missbrauchsmeldungen",
+        "updateInfo": "Info aktualiséieren"
+    }
+}

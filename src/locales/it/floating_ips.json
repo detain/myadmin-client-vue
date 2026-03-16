@@ -1,0 +1,24 @@
+{
+  "list": {
+    "title": "Elenco Servizi IP Mobili",
+    "orderTitle": "Ordina Registrazioni IP Mobile"
+  },
+  "view": {
+    "title": "Visualizza IP Mobile {id}",
+    "package": "Pacchetto",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturato:",
+    "statusIs": "Stato è:",
+    "floatingIp": "IP Mobile",
+    "links": "Link",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina IP Mobile"
+  },
+  "changeIp": {
+    "title": "Cambia IP di Destinazione"
+  }
+}

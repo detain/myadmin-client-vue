@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Ndepụta Ọrụ Ozi",
+        "orderTitle": "Iwu Ndebanye Ozi"
+    },
+    "view": {
+        "title": "Lee Ozi {id}",
+        "package": "Ngwugwu",
+        "nextInvoiceDate": "Ụbọchị Ụgwọ Ọzọ:",
+        "billing": "Ụgwọ",
+        "billed": "A kwụọ ụgwọ:",
+        "statusIs": "Ọnọdụ bụ:",
+        "mailApi": "API Ozi",
+        "usageCount": "Ọnụọgụ Ojiji:",
+        "links": "Njikọ",
+        "connectionInfo": "Ozi Njikọ",
+        "welcomeEmailConfirm": "Ị dị mma ịziga ozi email nnabata ọzọ?",
+        "emailSent": "Email Ezigara",
+        "emailSentMessage": "Ezigaala ozi email nnabata ọzọ. Lelee ịgwọ gị."
+    },
+    "order": {
+        "title": "Iwu Ozi"
+    },
+    "alerts": {
+        "title": "Ọkwa",
+        "addAlert": "Tinye Ọkwa",
+        "editAlert": "Dezie Ọkwa",
+        "noAlerts": "Enweghị ọkwa"
+    },
+    "delist": {
+        "title": "Wepu na Ndepụta",
+        "blockedEmails": "Email Gbochiere"
+    },
+    "denyRules": {
+        "title": "Iwu Ikwọsa",
+        "addRule": "Tinye Iwu",
+        "noRules": "Enweghị iwu ikwọsa"
+    },
+    "logs": {
+        "title": "Ndekọ",
+        "searchLogs": "Chọọ Ndekọ"
+    },
+    "stats": {
+        "title": "Ọnụọgụ"
+    },
+    "deliverability": {
+        "title": "Ike Ibuga"
+    }
+}

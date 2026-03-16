@@ -1,0 +1,49 @@
+{
+    "settings": {
+        "title": "Подешавања налога"
+    },
+    "changePassword": {
+        "title": "Промени лозинку",
+        "cardTitle": "Ажурирај лозинку",
+        "currentPassword": "Тренутна лозинка",
+        "newPassword": "Нова лозинка",
+        "confirmPassword": "Потврди лозинку",
+        "updatePassword": "Ажурирај лозинку"
+    },
+    "changeUsername": {
+        "title": "Промени корисничко име",
+        "disabled": "Промена корисничког имена је привремено онемогућена.",
+        "currentUsername": "Тренутно корисничко име",
+        "newDesiredUsername": "Жељено ново корисничко име",
+        "confirmationCode": "Код потврде",
+        "pleaseWait": "Молимо сачекајте!",
+        "gotError": "Дошло је до грешке {error}"
+    },
+    "contactInfo": {
+        "title": "Контакт информације",
+        "cardTitle": "Ажурирај контакт информације",
+        "headsUp": "Пажња!",
+        "headsUpMessage": "Иако ове информације нису обавезне, пружање тачних информација ће помоћи у смањењу вашег % оцене ризика.",
+        "riskScore": "% Оцена ризика",
+        "personalInformation": "Личне информације",
+        "name": "Назив",
+        "company": "Компанија",
+        "addressLine1": "Адреса, ред 1",
+        "addressLine2": "Адреса, ред 2",
+        "city": "Град",
+        "state": "Општина/Покрајина",
+        "country": "Земља",
+        "zipcode": "Поштански број",
+        "phoneNumber": "Број телефона",
+        "language": "Језик",
+        "auto": "Аутоматски",
+        "currency": "Валута",
+        "timeZone": "Временска зона",
+        "otherSettings": "Остала подешавања",
+        "disablePasswordResets": "Онемогући (Заборавили сте лозинку) ресетовање лозинке.",
+        "disableInvoiceReminders": "Онемогући имејл обавештења о подсетницима за рачун.",
+        "alternateEmailInvoices": "Алтернативни имејл за рачуне",
+        "alternateEmailAbuse": "Алтернативни имејл за пријаве злоупотреба",
+        "updateInfo": "Ажурирај информације"
+    }
+}

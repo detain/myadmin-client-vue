@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "اسڪرب IPs سروسون لسٽ",
+        "orderTitle": "اسڪرب IPs آرڊر ڪريو"
+    },
+    "view": {
+        "title": "اسڪرب IPs ڏسو",
+        "currentIp": "موجوده IP",
+        "ipAddress": "IP ايڊريس",
+        "ipFromService": "سروس کان IP"
+    },
+    "filters": {
+        "title": "فلٽر",
+        "createNew": "نئون ٺاهيو",
+        "createNewFilter": "نئون فلٽر ٺاهيو",
+        "filterType": "فلٽر قسم",
+        "selectFilterType": "فلٽر قسم چونڊيو",
+        "ipAddress": "IP ايڊريس",
+        "portNo": "پورٽ نمبر",
+        "filter": "فلٽر",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٽ",
+        "noFiltersFound": "ڪو فلٽر نه مليو!",
+        "deleteFilterConfirm": "ڇا توهان پڪ آهيو ته هي فلٽر ڊليٽ ڪرڻ چاهيو ٿا؟",
+        "unableToCreateFilter": "هن وقت فلٽر ٺاهڻ ۾ ناڪامي.",
+        "unableToDeleteFilter": "هن وقت فلٽر ڊليٽ ڪرڻ ۾ ناڪامي."
+    },
+    "firewallRules": {
+        "title": "فائر وال ضابطا",
+        "createNew": "نئون ٺاهيو",
+        "createNewFirewall": "نئون فائر وال ضابطو ٺاهيو",
+        "protocol": "پروٽوڪول",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٽ",
+        "sourceIp": "ماخذ IP",
+        "sourcePort": "ماخذ پورٽ",
+        "xdpAction": "XDP عمل",
+        "ipRequired": "IP ايڊريس ضروري آهي",
+        "block": "بلاڪ",
+        "whitelist": "وائيٽ لسٽ",
+        "noRulesFound": "ڪو ضابطو نه مليو!",
+        "deleteRuleConfirm": "ڇا توهان پڪ آهيو ته هي ضابطو ڊليٽ ڪرڻ چاهيو ٿا؟",
+        "unableToCreateRule": "هن وقت فائر وال ضابطو ٺاهڻ ۾ ناڪامي.",
+        "unableToDeleteRule": "هن وقت فائر وال ضابطو ڊليٽ ڪرڻ ۾ ناڪامي."
+    },
+    "geoFirewallRules": {
+        "title": "جيو فائر وال ضابطا",
+        "createNew": "نئون ٺاهيو",
+        "createNewGeoRule": "نئون جيو فائر وال ضابطو ٺاهيو",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٽ",
+        "sourceCountry": "ماخذ ملڪ",
+        "sourceAsn": "ماخذ ASN",
+        "xdpAction": "XDP عمل",
+        "portNo": "پورٽ نمبر",
+        "selectCountry": "ملڪ چونڊيو",
+        "asn": "ASN",
+        "block": "بلاڪ",
+        "whitelist": "وائيٽ لسٽ",
+        "noRulesFound": "ڪو ضابطو نه مليو!",
+        "deleteGeoRuleConfirm": "ڇا توهان پڪ آهيو ته هي جيو ضابطو ڊليٽ ڪرڻ چاهيو ٿا؟",
+        "unableToCreateRule": "هن وقت فائر وال ضابطو ٺاهڻ ۾ ناڪامي.",
+        "unableToDeleteRule": "هن وقت جيو فائر وال ضابطو ڊليٽ ڪرڻ ۾ ناڪامي."
+    }
+}

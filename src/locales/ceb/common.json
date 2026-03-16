@@ -1,0 +1,106 @@
+{
+    "menu": {
+        "dashboard": "Dashboard", "domains": "Mga Domain", "dnsManager": "DNS Manager", "vps": "VPS",
+        "storage": "Storage", "mail": "Mail", "licenses": "Mga Lisensya", "webhosting": "Webhosting",
+        "floatingIps": "Mga Floating IP", "scrubIps": "Scrub IPs", "rapidDeployServers": "Rapid Deploy Servers",
+        "servers": "Mga Server", "affiliateSystem": "Sistema sa Affiliate", "tickets": "Mga Tiket",
+        "billing": "Billing", "settings": "Mga Setting", "cart": "Cart", "viewInvoices": "Tan-awa ang mga Invoice",
+        "creditCards": "Mga Credit Card", "prePaidFunds": "Pre-Paid Funds / Credit",
+        "accountSettings": "Mga Setting sa Account", "changeLogin": "Usba ang Login", "changePassword": "Usba ang Password"
+    },
+    "nav": { "home": "Home", "bugsSuck": "Nakakaistorbo ang mga Bug", "users": "Mga User", "logout": "Logout" },
+    "buttons": {
+        "save": "I-save", "cancel": "Kanselahin", "delete": "I-delete", "edit": "I-edit", "update": "I-update",
+        "submit": "I-submit", "close": "Isara", "confirm": "Kumpirmahin", "back": "Balik", "next": "Sunod",
+        "order": "Order", "orderNow": "Mag-order Karon", "add": "Idugang", "create": "Paghimo", "remove": "Kuhaa",
+        "search": "Pangitaa", "reset": "I-reset", "refresh": "I-refresh", "download": "I-download",
+        "upload": "I-upload", "copy": "Kopyaha", "print": "I-print", "enable": "I-enable", "disable": "I-disable",
+        "start": "Sugdi", "stop": "Undanga", "restart": "I-restart", "viewAll": "Tan-awa Tanan",
+        "copyToClipboard": "Kopyaha sa Clipboard", "addToCart": "Idugang sa Cart", "payNow": "Bayad Karon",
+        "login": "Login", "register": "Mag-rehistro", "signUp": "Mag-sign Up", "continue": "Padayon",
+        "addRange": "Idugang ang Range", "goBack": "Mobalik", "prev": "Nauna", "exportExcel": "I-export sa Excel",
+        "exportPdf": "I-export sa PDF", "exportData": "I-export ang datos", "unlink": "I-unlink", "logOut": "Log Out",
+        "generateApiKey": "Paghimo og API Key",
+        "generateNewApiKey": "Paghimo og bag-ong API Key nga makapuli sa daan",
+        "updateSshKey": "I-update ang SSH Public Key", "setSshKey": "Itakda ang SSH Public Key",
+        "updateAccountFeatures": "I-update ang mga Setting sa Account Features",
+        "update2fa": "I-update ang Two Factor Authentication"
+    },
+    "labels": {
+        "id": "ID", "name": "Ngalan", "email": "Email", "status": "Status", "action": "Aksyon",
+        "actions": "Mga Aksyon", "date": "Petsa", "cost": "Gasto", "amount": "Kantidad",
+        "description": "Deskripsyon", "type": "Klase", "details": "Mga Detalye", "server": "Server",
+        "ip": "IP", "hostname": "Hostname", "domain": "Domain", "username": "Username",
+        "password": "Password", "package": "Package", "comments": "Mga Komento", "loading": "Nag-load...",
+        "noData": "Walay datos nga magamit", "noActiveServices": "Walay Aktibong Serbisyo",
+        "controlPanel": "Control Panel", "welcomeEmail": "Welcome Email", "invoices": "Mga Invoice",
+        "billingStatus": "Status sa Billing", "client": "Kliyente", "key": "Susi", "links": "Mga Link",
+        "billing": "Billing", "billed": "na-bill:", "statusIs": "Ang Status mao:",
+        "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "active": "Aktibo", "pending": "Pending",
+        "expired": "Nag-expire", "all": "Tanan", "paid": "Bayad na", "paidOn": "Gibayaran Niadtong", "paidBy": "Gibayaran ni",
+        "moreDetails": "Dugang Detalye", "invoiceDate": "Petsa sa Invoice", "dueDate": "Due Date",
+        "page": "Pahina", "of": "sa", "pageSize": "Gidak-on sa Pahina", "accounts": "Mga Account",
+        "linked": "Nalinkahan", "notLinked": "Wala nalinkaha", "startIp": "Sugod nga IP", "endIp": "Katapusan nga IP",
+        "restrict": "Limitahan", "options": "Mga Opsyon", "yes": "Oo", "no": "Dili",
+        "noPaidInvoices": "Walay Bayad nga mga Invoice", "noApiKey": "Wala Pa'y API Key nga Na-setup",
+        "noSshKey": "Wala Pa'y SSH Key nga Na-setup"
+    },
+    "table": {
+        "serviceId": "ID sa Serbisyo", "ticketId": "ID sa Tiket", "subject": "Paksa",
+        "lastReplier": "Katapusang Nagtubag", "expirationDate": "Petsa sa Pag-expire"
+    },
+    "export": {
+        "order": "Order", "xlsx": "Excel 2007+", "xlsxShort": "XLSX", "xls": "Excel 2003/BIFF",
+        "xlsShort": "XLS", "ods": "OpenDocument Spreadsheet", "odsShort": "ODS",
+        "pdf": "Adobe Portable Document Format", "pdfShort": "PDF",
+        "xml": "Extensible Markup Language", "xmlShort": "XML", "php": "PHP Array",
+        "phpShort": "PHP", "csv": "Comma-Separated Values", "csvShort": "CSV", "json": "JSON",
+        "bbcode": "BBCode", "bbcodeShort": "BBCODE", "wiki": "Wiki Code", "wikiShort": "WIKI",
+        "markdown": "Markdown", "markdownShort": "MARKDOWN"
+    },
+    "alerts": { "success": "Nagmalampuson!", "error": "Sayop!" },
+    "confirm": {
+        "title": "Sigurado ka ba?", "delete": "Dili na mahimo undangon kini nga aksyon.", "yes": "Oo", "no": "Dili",
+        "yesCancelIt": "Oo, Kanselahin kini.",
+        "cancelConfirm": "Sigurado ka bang gusto mong kanselahin ang imong {module} {id}?",
+        "cancelTitle": "Kanselahin ang {module}", "cancelService": "Kanselahin ang {title} nga Serbisyo",
+        "yesCancelOrder": "Oo, Kanselahin ang {tableName} nga Order",
+        "areYouSureCancelQuestion": "Sigurado ka bang gusto mong kanselahin?"
+    },
+    "footer": {
+        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "allRightsReserved": "Tanan nga katungod gitagana."
+    },
+    "search": { "placeholder": "Pangitaa...", "noResults": "Walay nakit-an nga resulta sa pagpangita" },
+    "breadcrumb": { "home": "Home" },
+    "profile": { "editPersonalInfo": "I-edit ang Personal nga Impormasyon", "profileImage": "Litrato sa Profile" },
+    "services": {
+        "cancelService": "Kanselahin ang {title} nga Serbisyo", "idLabel": "{tableName} ID:",
+        "reasonForCancellation": "Rason sa Pagkansela/Komento:",
+        "viewService": "Tan-awa ang {module} {id}", "moduleInvoices": "Mga Invoice sa {module}"
+    },
+    "account": {
+        "accountFeatures": "Mga Feature sa Account", "enableDarkMode": "I-enable ang Dark Mode",
+        "disableReinstalls": "I-disable ang mga Re-install",
+        "disablePasswordResets": "I-disable ang (Nalimtan ang Password) Password Resets.",
+        "apiAccess": "API Access",
+        "apiAccessDescription": "Naghatag kini og alternatibong paagi sa pag-authenticate sa API. Mahimo mong gamiton ang API Key imbes sa password sa account para sa API authentication.",
+        "sessionIpLimits": "Mga Limitasyon sa Seguridad sa IP sa Session",
+        "sessionIpLimitsDescription": "Naghatag kini og paagi sa paglimitar sa mga IP address nga mahimo mong gamiton sa pag-login sa imong account, nagdugang og dugang seguridad sa imong account.",
+        "yourRemoteIp": "Ang imong Remote IP:",
+        "ipLimitsWarning": "Ang pag-enable sa mga limitasyon sa IP makasprinta sa bisan kinsa nga wala sa listahan sa ubos sa pag-login. Siguroha nga ang imong IP address kay static ug dili mabag-o sa umaabot.",
+        "linkedAccounts": "Mga Naka-link nga Account",
+        "linkedAccountsDescription": "Mga social account nga na-link aron makagamit sa pag-login.",
+        "sshKeys": "Mga SSH Key",
+        "sshKeysDescription": "Kini nga SSH Key awtomatikong idugang sa pipila ka serbisyo sama sa mga order sa VPS nga naghatag og alternatibong paraan sa authentication sa imong mga serbisyo.",
+        "twoFactorAuth": "Two Factor Authentication",
+        "twoFactorAuthDescription": "Dual authentication para sa imong account alang sa seguridad",
+        "enableGoogle2fa": "I-enable ang Google Two Factor Authentication",
+        "twoFactorEnabled": "Aktibo na ang Two Factor Authentication",
+        "installAuthenticator": "I-install ug i-register ang {link} pinaagi sa pagpasok sa code sa ubos o pag-scan sa QR image",
+        "googleAuthenticator": "Google Authenticator",
+        "backupCode": "Kinahanglan nimong i-backup kini nga code para sa recovery.",
+        "enterAuthCode": "Isulod ang Code gikan sa Authenticator",
+        "webAndApi": "Web ug API", "onlyApi": "API lang"
+    }
+}

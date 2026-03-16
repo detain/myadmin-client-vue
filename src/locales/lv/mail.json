@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Pasta pakalpojumu saraksts",
+    "orderTitle": "Pasūtīt pasta reģistrācijas"
+  },
+  "view": {
+    "title": "Skatīt pastu {id}",
+    "package": "Pakete",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "billing": "Norēķini",
+    "billed": "norēķināts:",
+    "statusIs": "Statuss ir:",
+    "mailApi": "Pasta API",
+    "usageCount": "Izmantošanas skaits:",
+    "links": "Saites",
+    "connectionInfo": "Savienojuma informācija",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt pastu"
+  },
+  "alerts": {
+    "title": "Brīdinājumi",
+    "addAlert": "Pievienot brīdinājumu",
+    "editAlert": "Rediģēt brīdinājumu",
+    "noAlerts": "Brīdinājumi nav atrasti"
+  },
+  "delist": {
+    "title": "Noņemt no saraksta",
+    "blockedEmails": "Bloķētie e-pasti"
+  },
+  "denyRules": {
+    "title": "Aizlieguma noteikumi",
+    "addRule": "Pievienot noteikumu",
+    "noRules": "Aizlieguma noteikumi nav atrasti"
+  },
+  "logs": {
+    "title": "Žurnāli",
+    "searchLogs": "Meklēt žurnālos"
+  },
+  "stats": {
+    "title": "Statistika"
+  },
+  "deliverability": {
+    "title": "Piegādājamība"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Licensliste",
+        "orderTitle": "Bestil licensregistreringer"
+    },
+    "view": {
+        "title": "Se licens {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Næste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "Faktureret:",
+        "statusIs": "Status er:",
+        "licenseInfo": "Licensoplysninger",
+        "cpanelInfo": "cPanel oplysninger",
+        "links": "Links",
+        "welcomeEmailConfirm": "Er du sikker på, at du vil gensende velkomst-e-mailen?",
+        "emailSent": "E-mail sendt",
+        "emailSentMessage": "Velkomst-e-mailen er gensendt. Tjek din indbakke."
+    },
+    "order": {
+        "title": "Bestil licens"
+    },
+    "changeIp": {
+        "title": "Skift IP"
+    },
+    "changeOs": {
+        "title": "Skift OS",
+        "selectLicenseOs": "Vælg licens-OS"
+    }
+}

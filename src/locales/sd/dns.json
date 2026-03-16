@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS مئنيجر",
+        "addDomain": "ڊومين شامل ڪريو",
+        "deleteDomain": "ڊومين ڊليٽ ڪريو",
+        "domainName": "ڊومين نالو",
+        "dnsServers": "DNS سرورز",
+        "confirmDelete": "ڇا توهان پڪ آهيو ته هي ڊومين ڊليٽ ڪرڻ چاهيو ٿا؟",
+        "noDomains": "ڪو ڊومين نه مليو"
+    },
+    "editor": {
+        "title": "DNS ايڊيٽر",
+        "addRecord": "رڪارڊ شامل ڪريو",
+        "deleteRecord": "رڪارڊ ڊليٽ ڪريو",
+        "editRecord": "رڪارڊ تبديل ڪريو",
+        "recordType": "رڪارڊ قسم",
+        "hostname": "هوسٽ نالو",
+        "address": "ايڊريس",
+        "distance": "فاصلو",
+        "weight": "وزن",
+        "port": "پورٽ",
+        "ttl": "TTL",
+        "actions": "عملون",
+        "confirmDelete": "ڇا توهان پڪ آهيو ته هي رڪارڊ ڊليٽ ڪرڻ چاهيو ٿا؟"
+    }
+}

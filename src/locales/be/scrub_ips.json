@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Спіс паслуг Scrub IPs",
+        "orderTitle": "Замовіць Scrub IPs"
+    },
+    "view": {
+        "title": "Прагляд Scrub IPs",
+        "currentIp": "Бягучы IP",
+        "ipAddress": "IP-адрас",
+        "ipFromService": "IP ад паслугі"
+    },
+    "filters": {
+        "title": "Фільтры",
+        "createNew": "Стварыць новы",
+        "createNewFilter": "Стварыць новы фільтр",
+        "filterType": "Тып фільтра",
+        "selectFilterType": "Выберыце тып фільтра",
+        "ipAddress": "IP-адрас",
+        "portNo": "Нумар порта",
+        "filter": "Фільтр",
+        "destinationIp": "IP прызначэння",
+        "destinationPort": "Порт прызначэння",
+        "noFiltersFound": "Фільтры не знойдзены!",
+        "deleteFilterConfirm": "Вы ўпэўнены, што хочаце выдаліць гэты фільтр?",
+        "unableToCreateFilter": "У цяперашні час не ўдалося стварыць фільтр.",
+        "unableToDeleteFilter": "У цяперашні час не ўдалося выдаліць фільтр."
+    },
+    "firewallRules": {
+        "title": "Правілы брандмаўэра",
+        "createNew": "Стварыць новы",
+        "createNewFirewall": "Стварыць новае правіла брандмаўэра",
+        "protocol": "Пратакол",
+        "destinationIp": "IP прызначэння",
+        "destinationPort": "Порт прызначэння",
+        "sourceIp": "IP крыніцы",
+        "sourcePort": "Порт крыніцы",
+        "xdpAction": "Дзеянне XDP",
+        "ipRequired": "Патрабуецца IP-адрас",
+        "block": "Заблакіраваць",
+        "whitelist": "Белы спіс",
+        "noRulesFound": "Правілы не знойдзены!",
+        "deleteRuleConfirm": "Вы ўпэўнены, што хочаце выдаліць гэтае правіла?",
+        "unableToCreateRule": "У цяперашні час не ўдалося стварыць правіла брандмаўэра.",
+        "unableToDeleteRule": "У цяперашні час не ўдалося выдаліць правіла брандмаўэра."
+    },
+    "geoFirewallRules": {
+        "title": "Геаграфічныя правілы брандмаўэра",
+        "createNew": "Стварыць новы",
+        "createNewGeoRule": "Стварыць новае геаграфічнае правіла брандмаўэра",
+        "destinationIp": "IP прызначэння",
+        "destinationPort": "Порт прызначэння",
+        "sourceCountry": "Краіна крыніцы",
+        "sourceAsn": "ASN крыніцы",
+        "xdpAction": "Дзеянне XDP",
+        "portNo": "Нумар порта",
+        "selectCountry": "Выберыце краіну",
+        "asn": "ASN",
+        "block": "Заблакіраваць",
+        "whitelist": "Белы спіс",
+        "noRulesFound": "Правілы не знойдзены!",
+        "deleteGeoRuleConfirm": "Вы ўпэўнены, што хочаце выдаліць гэтае геаграфічнае правіла?",
+        "unableToCreateRule": "У цяперашні час не ўдалося стварыць правіла брандмаўэра.",
+        "unableToDeleteRule": "У цяперашні час не ўдалося выдаліць геаграфічнае правіла брандмаўэра."
+    }
+}

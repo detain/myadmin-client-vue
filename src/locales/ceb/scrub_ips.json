@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Listahan sa Mga Serbisyo sa Scrub IPs", "orderTitle": "Mag-order og Scrub IPs" },
+    "view": { "title": "Tan-awa ang Scrub IPs", "currentIp": "Kasamtangang IP", "ipAddress": "IP Address", "ipFromService": "IP gikan sa serbisyo" },
+    "filters": { "title": "Mga Salaan", "createNew": "Paghimo og Bag-o", "createNewFilter": "Paghimo og Bag-ong Salaan", "filterType": "Klase sa Salaan", "ipAddress": "IP Address", "portNo": "Numero sa Port", "filter": "Salaan", "destinationIp": "Destination IP", "destinationPort": "Destination Port", "noFiltersFound": "Walay nakit-an nga mga salaan!", "deleteFilterConfirm": "Sigurado ka bang gusto mong i-delete kini nga salaan?" },
+    "firewallRules": { "title": "Mga Lagda sa Firewall", "createNewFirewall": "Paghimo og Bag-ong Lagda sa Firewall", "protocol": "Protocol", "destinationIp": "Destination IP", "sourceIp": "Source IP", "block": "I-block", "whitelist": "Whitelist", "noRulesFound": "Walay nakit-an nga mga lagda!", "deleteRuleConfirm": "Sigurado ka bang gusto mong i-delete kini nga lagda?" },
+    "geoFirewallRules": { "title": "Mga Lagda sa Geo Firewall", "createNewGeoRule": "Paghimo og Bag-ong Lagda sa Geo Firewall", "destinationIp": "Destination IP", "sourceCountry": "Nasod sa Tinubdan", "sourceAsn": "Source ASN", "selectCountry": "Pilia ang Nasod", "block": "I-block", "whitelist": "Whitelist", "noRulesFound": "Walay nakit-an nga mga lagda!", "deleteGeoRuleConfirm": "Sigurado ka bang gusto mong i-delete kini nga geo rule?" }
+}

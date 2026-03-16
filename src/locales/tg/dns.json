@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Менеҷери DNS",
+        "addDomain": "Илова кардани домен",
+        "deleteDomain": "Нест кардани домен",
+        "domainName": "Номи домен",
+        "dnsServers": "Серверҳои DNS",
+        "confirmDelete": "Оё мутмаин ҳастед, ки мехоҳед ин доменро нест кунед?",
+        "noDomains": "Домен ёфт нашуд"
+    },
+    "editor": {
+        "title": "Муҳаррири DNS",
+        "addRecord": "Илова кардани сабт",
+        "deleteRecord": "Нест кардани сабт",
+        "editRecord": "Таҳрири сабт",
+        "recordType": "Навъи сабт",
+        "hostname": "Номи мизбон",
+        "address": "Суроға",
+        "distance": "Масофа",
+        "weight": "Вазн",
+        "port": "Порт",
+        "ttl": "TTL",
+        "actions": "Амалҳо",
+        "confirmDelete": "Оё мутмаин ҳастед, ки мехоҳед ин сабтро нест кунед?"
+    }
+}

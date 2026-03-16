@@ -1,0 +1,28 @@
+{
+    "title": "ڊيش بورڊ",
+    "welcome": "ڀلي پڌري، {name}",
+    "lastLogin": "آخري لاگ ان",
+    "lastLoginIp": "آخري لاگ ان IP",
+    "prepay": {
+        "title": "پري پيء بيلنس",
+        "remainingBalance": "پري پيء باقي بيلنس",
+        "manageAccount": "اڪائونٽ منظم ڪريو",
+        "manageTooltip": "پنهنجو پري پيء اڪائونٽ منظم ڪريو"
+    },
+    "invoices": {
+        "title": "غير ادا ٿيل انوائس",
+        "totalUnpaid": "ڪل غير ادا ٿيل انوائس",
+        "totalAmount": "ادا ڪرڻ لاءِ ڪل رقم",
+        "payTotalTooltip": "ڪل رقم ادا ڪريو"
+    },
+    "callInPin": "ڪال ان PIN",
+    "recentTickets": "تازا ٽڪيٽ",
+    "viewAllTickets": "سڀ ٽڪيٽ ڏسو",
+    "editTicket": "ٽڪيٽ تبديل ڪريو",
+    "serviceCount": "ڪو فعال سروس ناهي | {count} فعال سروس | {count} فعال سروسون",
+    "affiliate": {
+        "earnPerSale": "في وڪري {amount} ڪمايو",
+        "urlPlaceholder": "ايفيليئيٽ URL",
+        "shareWith": "شيئر ڪريو"
+    }
+}

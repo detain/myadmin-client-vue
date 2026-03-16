@@ -1,0 +1,6 @@
+{
+    "list": { "title": "虚拟主机列表", "orderTitle": "订购网站注册" },
+    "view": { "title": "查看网站 {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费", "billingStatusIs": "账单状态：", "login": "登录", "links": "链接", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
+    "order": { "title": "订购网站" },
+    "migration": { "title": "迁移您的网站", "password": "密码", "importantNotes": "重要说明" }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS ਮੈਨੇਜਰ",
+        "addDomain": "ਡੋਮੇਨ ਜੋੜੋ",
+        "deleteDomain": "ਡੋਮੇਨ ਮਿਟਾਓ",
+        "domainName": "ਡੋਮੇਨ ਨਾਮ",
+        "dnsServers": "DNS ਸਰਵਰ",
+        "confirmDelete": "ਕੀ ਤੁਸੀਂ ਇਹ ਡੋਮੇਨ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "noDomains": "ਕੋਈ ਡੋਮੇਨ ਨਹੀਂ ਮਿਲੇ"
+    },
+    "editor": {
+        "title": "DNS ਸੰਪਾਦਕ",
+        "addRecord": "ਰਿਕਾਰਡ ਜੋੜੋ",
+        "deleteRecord": "ਰਿਕਾਰਡ ਮਿਟਾਓ",
+        "editRecord": "ਰਿਕਾਰਡ ਸੰਪਾਦਿਤ ਕਰੋ",
+        "recordType": "ਰਿਕਾਰਡ ਕਿਸਮ",
+        "hostname": "ਹੋਸਟਨਾਮ",
+        "address": "ਪਤਾ",
+        "distance": "ਦੂਰੀ",
+        "weight": "ਭਾਰ",
+        "port": "ਪੋਰਟ",
+        "ttl": "TTL",
+        "actions": "ਕਾਰਵਾਈਆਂ",
+        "confirmDelete": "ਕੀ ਤੁਸੀਂ ਇਹ ਰਿਕਾਰਡ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+    }
+}

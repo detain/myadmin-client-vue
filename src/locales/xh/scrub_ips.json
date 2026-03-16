@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Uluhlu weenkonzo ze-Scrub IPs",
+        "orderTitle": "Odola i-Scrub IPs"
+    },
+    "view": {
+        "title": "Jonga i-Scrub IPs",
+        "currentIp": "I-IP yangoku",
+        "ipAddress": "Idilesi ye-IP",
+        "ipFromService": "I-IP evela kwinkonzo"
+    },
+    "filters": {
+        "title": "Izihlalutyi",
+        "createNew": "Yenza entsha",
+        "createNewFilter": "Yenza isihlalutyi esitsha",
+        "filterType": "Uhlobo lwezihlalutyi",
+        "selectFilterType": "Khetha uhlobo lwezihlalutyi",
+        "ipAddress": "Idilesi ye-IP",
+        "portNo": "Inombolo yesango",
+        "filter": "Isihlalutyi",
+        "destinationIp": "I-IP yendawo eya kuyo",
+        "destinationPort": "Isango lendawo eya kuyo",
+        "noFiltersFound": "Akukho zihlalutyi ezifunyenweyo!",
+        "deleteFilterConfirm": "Uqinisekile ukuba ufuna ukucima le sihlalutyi?",
+        "unableToCreateFilter": "Ayikwazanga ukuyenza isihlalutyi ngeli xesha.",
+        "unableToDeleteFilter": "Ayikwazanga ukuyicima isihlalutyi ngeli xesha."
+    },
+    "firewallRules": {
+        "title": "Imimiselo yeFirewall",
+        "createNew": "Yenza entsha",
+        "createNewFirewall": "Yenza imimiselo entsha yeFirewall",
+        "protocol": "Iphrothokholi",
+        "destinationIp": "I-IP yendawo eya kuyo",
+        "destinationPort": "Isango lendawo eya kuyo",
+        "sourceIp": "I-IP yomthombo",
+        "sourcePort": "Isango lomthombo",
+        "xdpAction": "Isenzo se-XDP",
+        "ipRequired": "Idilesi ye-IP iyafuneka",
+        "block": "Vimba",
+        "whitelist": "Uluhlu olumhlophe",
+        "noRulesFound": "Akukho mimiselo efunyenweyo!",
+        "deleteRuleConfirm": "Uqinisekile ukuba ufuna ukucima le mimiselo?",
+        "unableToCreateRule": "Ayikwazanga ukuyenza imimiselo yeFirewall ngeli xesha.",
+        "unableToDeleteRule": "Ayikwazanga ukuyicima imimiselo yeFirewall ngeli xesha."
+    },
+    "geoFirewallRules": {
+        "title": "Imimiselo yeFirewall yeJiyo",
+        "createNew": "Yenza entsha",
+        "createNewGeoRule": "Yenza imimiselo entsha yeFirewall yeJiyo",
+        "destinationIp": "I-IP yendawo eya kuyo",
+        "destinationPort": "Isango lendawo eya kuyo",
+        "sourceCountry": "Ilizwe lomthombo",
+        "sourceAsn": "I-ASN yomthombo",
+        "xdpAction": "Isenzo se-XDP",
+        "portNo": "Inombolo yesango",
+        "selectCountry": "Khetha ilizwe",
+        "asn": "I-ASN",
+        "block": "Vimba",
+        "whitelist": "Uluhlu olumhlophe",
+        "noRulesFound": "Akukho mimiselo efunyenweyo!",
+        "deleteGeoRuleConfirm": "Uqinisekile ukuba ufuna ukucima le mimiselo yejiyo?",
+        "unableToCreateRule": "Ayikwazanga ukuyenza imimiselo yeFirewall ngeli xesha.",
+        "unableToDeleteRule": "Ayikwazanga ukuyicima imimiselo yeFirewall yeJiyo ngeli xesha."
+    }
+}

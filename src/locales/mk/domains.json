@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "Листа на регистрации на домени",
+    "orderTitle": "Нарачај регистрации на домени",
+    "domainName": "Ime на доменот",
+    "domainExpirationDate": "Датум на истекување на доменот",
+    "active": "Активен",
+    "pending": "Во тек",
+    "expired": "Истечен",
+    "all": "Сите"
+  },
+  "view": {
+    "pageTitle": "Прегледај домен - {hostname}",
+    "package": "Пакет",
+    "billing": "Наплата",
+    "whoisPrivacy": "Whois приватност",
+    "nameservers": "Сервери за имиња",
+    "contactInformation": "Контакт информации",
+    "emailSent": "Е-пошта е испратена",
+    "welcomeEmailResent": "Добредојде е-поштата беше повторно испратена. Проверете го вашето сандаче."
+  },
+  "order": {
+    "pageTitle": "Нарачај домен",
+    "findDomain": "Пронајдете го вашиот домен и проверете ја достапноста.",
+    "available": "Да! Вашиот домен {domain} е достапен! Можете да го регистрирате за {cost}. Цената за обновување ќе биде {renewal}.",
+    "taken": "Жал! Вашиот домен {domain} е веќе зафатен!",
+    "registerDomain": "Регистрирај домен ({hostname})",
+    "contactInformation": "Контакт информации",
+    "goBack": "Врати се",
+    "continue": "Продолжи",
+    "total": "Вкупно",
+    "agreeCheckbox": "Ги прочитав горенаведените услови и се согласувам.",
+    "placeOrder": "Постави нарачка"
+  },
+  "nameservers": {
+    "title": "Сервери за имиња на доменот",
+    "nameservers": "Сервери за имиња",
+    "hostname": "Hostname",
+    "ipAddress": "IP адреса",
+    "deleteConfirm": "Сте на пат да го избришете серверот за имиња на вашиот домен.",
+    "yesDeleteIt": "Да, избриши го"
+  },
+  "whois": {
+    "title": "Whois приватност",
+    "currentlyEnabled": "Whois приватноста е моментално овозможена за {hostname}.",
+    "disableAndCancel": "Оневозможи и откажи Whois приватност",
+    "orderSuccess": "Нарачката за Whois приватност е успешно поставена!",
+    "whoisEnabled": "Whois приватноста е сега овозможена.",
+    "whoisDisabled": "Whois приватноста е оневозможена и откажана."
+  },
+  "lock": {
+    "title": "Заклучување/отклучување на доменот",
+    "lockIt": "Да, заклучи го.",
+    "unlockIt": "Да, отклучи го."
+  },
+  "renew": {
+    "title": "Обнови",
+    "domain": "Домен",
+    "expiryDate": "Датум на истекување",
+    "renewCost": "Цена на обновување",
+    "totalCost": "Вкупна цена",
+    "goToPayment": "Одете на плаќање"
+  }
+}

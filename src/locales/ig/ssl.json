@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Ndepụta Asambodo SSL",
+        "orderTitle": "Iwu Ndebanye SSL"
+    },
+    "view": {
+        "title": "Lee SSL {id}",
+        "package": "Ngwugwu",
+        "nextInvoiceDate": "Ụbọchị Ụgwọ Ọzọ:",
+        "billing": "Ụgwọ",
+        "billed": "A kwụọ ụgwọ:",
+        "statusIs": "Ọnọdụ bụ:",
+        "orderInfo": "Ozi Iwu",
+        "certificateInfo": "Ozi Asambodo",
+        "links": "Njikọ",
+        "welcomeEmailConfirm": "Ị dị mma ịziga ozi email nnabata ọzọ?",
+        "emailSent": "Email Ezigara",
+        "emailSentMessage": "Ezigaala ozi email nnabata ọzọ. Lelee ịgwọ gị."
+    },
+    "order": {
+        "title": "Iwu SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Gbanwee Email Onye Na-akwenye",
+        "selectApproverEmail": "Họrọ Email Onye Na-akwenye"
+    }
+}

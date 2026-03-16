@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Menejeri",
+        "addDomain": "Domen qo'shish",
+        "deleteDomain": "Domenni o'chirish",
+        "domainName": "Domen nomi",
+        "dnsServers": "DNS serverlar",
+        "confirmDelete": "Bu domenni o'chirishni xohlaysizmi?",
+        "noDomains": "Domenlar topilmadi"
+    },
+    "editor": {
+        "title": "DNS Muharriri",
+        "addRecord": "Yozuv qo'shish",
+        "deleteRecord": "Yozuvni o'chirish",
+        "editRecord": "Yozuvni tahrirlash",
+        "recordType": "Yozuv turi",
+        "hostname": "Xost nomi",
+        "address": "Manzil",
+        "distance": "Masofa",
+        "weight": "Og'irlik",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Amallar",
+        "confirmDelete": "Bu yozuvni o'chirishni xohlaysizmi?"
+    }
+}

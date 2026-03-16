@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "SSL 証明書一覧",
+    "orderTitle": "SSL 登録を注文"
+  },
+  "view": {
+    "title": "SSL {id} を表示",
+    "package": "パッケージ",
+    "nextInvoiceDate": "次回請求日:",
+    "billing": "請求",
+    "billed": "請求済み:",
+    "statusIs": "ステータス:",
+    "orderInfo": "注文情報",
+    "certificateInfo": "証明書情報",
+    "links": "リンク",
+    "emailSent": "メール送信済み",
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+  },
+  "order": {
+    "title": "SSL を注文"
+  },
+  "changeApproverEmail": {
+    "title": "承認者メールを変更",
+    "selectApproverEmail": "承認者メールを選択"
+  }
+}

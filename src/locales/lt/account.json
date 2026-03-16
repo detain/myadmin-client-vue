@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Paskyros nustatymai"
+  },
+  "changePassword": {
+    "title": "Keisti slaptažodį",
+    "cardTitle": "Atnaujinti slaptažodį",
+    "currentPassword": "Dabartinis slaptažodis",
+    "newPassword": "Naujas slaptažodis",
+    "confirmPassword": "Patvirtinti slaptažodį",
+    "updatePassword": "Atnaujinti slaptažodį"
+  },
+  "changeUsername": {
+    "title": "Keisti vartotojo vardą",
+    "disabled": "Vartotojo vardo keitimas laikinai išjungtas.",
+    "currentUsername": "Dabartinis vartotojo vardas",
+    "newDesiredUsername": "Norimas naujas vartotojo vardas",
+    "confirmationCode": "Patvirtinimo kodas",
+    "pleaseWait": "Palaukite!",
+    "gotError": "Įvyko klaida {error}"
+  },
+  "contactInfo": {
+    "title": "Kontaktinė informacija",
+    "cardTitle": "Atnaujinti kontaktinę informaciją",
+    "headsUp": "Dėmesio!",
+    "headsUpMessage": "Nors ši informacija yra neprivaloma, tikslios informacijos pateikimas padės sumažinti jūsų rizikos % balą.",
+    "riskScore": "Rizikos % balas",
+    "personalInformation": "Asmeninė informacija",
+    "name": "Vardas",
+    "company": "Įmonė",
+    "addressLine1": "Adreso 1 eilutė",
+    "addressLine2": "Adreso 2 eilutė",
+    "city": "Miestas",
+    "state": "Valstija/Apskritis",
+    "country": "Šalis",
+    "zipcode": "Pašto kodas",
+    "phoneNumber": "Telefono numeris",
+    "language": "Kalba",
+    "auto": "Automatinis",
+    "currency": "Valiuta",
+    "timeZone": "Laiko juosta",
+    "otherSettings": "Kiti nustatymai",
+    "disablePasswordResets": "Išjungti (Pamiršau slaptažodį) slaptažodžio atstatymą.",
+    "disableInvoiceReminders": "Išjungti sąskaitų priminimų el. pašto pranešimus.",
+    "alternateEmailInvoices": "Alternatyvus el. paštas sąskaitoms",
+    "alternateEmailAbuse": "Alternatyvus el. paštas piktnaudžiavimo ataskaitoms",
+    "updateInfo": "Atnaujinti informaciją"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Daptar Server Dedicated",
+    "orderTitle": "Pesan Registrasi Server"
+  },
+  "view": {
+    "title": "Tempo Server {id}",
+    "package": "Paket",
+    "dedicatedServer": "Server Dedicated",
+    "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+    "billing": "Tagihan",
+    "billed": "ditagih:",
+    "statusIs": "Status nyaéta:",
+    "orderInfo": "Inpo Pesanan",
+    "orderId": "ID Pesanan:",
+    "links": "Tautan",
+    "serverInformation": "Inpormasi Server",
+    "networkInformation": "Inpormasi Jaringan",
+    "power": "Daya",
+    "selectAction": "Pilih Aksi",
+    "softReboot": "Reboot Lembut",
+    "paymentStatus": "Status Pembayaran:",
+    "emailSent": "Email Dikirimkeun",
+    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+  },
+  "order": {
+    "title": "Pesan Server",
+    "orderDedicatedServer": "Pesan Server Dedicated",
+    "orderSummary": "Ringkesan Pesanan",
+    "selectServer": "Pilih Server",
+    "serverHostname": "Hostname Server",
+    "rootPassword": "Kecap Akses Root",
+    "agreeToTerms": "Setuju kana syarat penawaran",
+    "iAgreeToTerms": "Kuring geus maca syarat di luhur sareng satuju.",
+    "placeOrder": "Pasang Pesanan Kuring",
+    "cpuSelection": "Pilihan CPU",
+    "driveConfiguration": "Konfigurasi Drive",
+    "addDrive": "Tambah Drive",
+    "removeDrive": "Cabut Drive",
+    "selectMemory": "Pilih Memori",
+    "selectOs": "Pilih Sistem Operasi",
+    "region": "Daérah",
+    "buyNow": "Beuli Ayeuna",
+    "monthly": "Bulanan",
+    "perMonth": "/bulan",
+    "confirmOrder": "Konfirmasi Pesanan"
+  }
+}

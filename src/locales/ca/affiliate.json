@@ -1,0 +1,11 @@
+{
+    "title": "Sistema d'afiliats", "breadcrumb": "Afiliat",
+    "attention": "Aquest programa d'afiliats no està pensat per a la referenciació de \"membres de la família\" o \"clients\". Si us plau, llegiu {faqLink} abans de continuar.",
+    "faqLinkText": "FAQ", "earnPerSale": "Guanya {amount} per cada venda de nou client!",
+    "knowMore": "Saber més", "affiliateUrl": "URL d'afiliació", "shareUrl": "Compartiu el vostre URL d'afiliat únic amb amics",
+    "links": "Enllaços", "salesGraph": "Gràfic de vendes", "webTrafficGraph": "Gràfic de trànsit web",
+    "goBack": "Tornar enrere", "back": "Enrere", "exportFailed": "Ha fallat l'exportació", "copiedToClipboard": "Copiat al porta-retalls.",
+    "signups": { "title": "Registres d'afiliats", "pending": "Pendent", "paid": "Pagat", "failed": "Fallat", "locked": "Bloquejat", "rejected": "Rebutjat", "noRecords": "No s'han trobat registres", "columns": { "id": "ID", "service": "Servei", "signupDate": "Data de registre", "status": "Estat", "paidAmount": "Import pagat", "reason": "Motiu" } },
+    "paymentSetup": { "title": "Configuració de pagament", "choosePayment": "Trieu què voleu fer amb els vostres pagaments d'afiliats", "sendToPaypal": "Enviar pagaments a PayPal", "paypalEmail": "Correu electrònic de PayPal" },
+    "tosPage": { "title": "Termes de servei", "welcome": "Benvingut al programa d'afiliats d'InterServer" }
+}

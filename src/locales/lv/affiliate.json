@@ -1,0 +1,44 @@
+{
+  "title": "Affiliātu sistēma",
+  "breadcrumb": "Affiliāts",
+  "attention": "Šī affiliātu programma nav paredzēta 'ģimenes locekļu' vai 'klientu' nosūtīšanai. Lūdzu, izlasiet {faqLink} pirms turpināšanas.",
+  "faqLinkText": "BUJ",
+  "earnPerSale": "Nopelniet {amount} par katru jauna klienta pārdošanu!",
+  "knowMore": "Uzzināt vairāk",
+  "affiliateUrl": "Affiliātu URL",
+  "shareUrl": "Dalieties ar savu unikālo affiliātu URL ar draugiem",
+  "links": "Saites",
+  "salesGraph": "Pārdošanas grafiks",
+  "webTrafficGraph": "Tīmekļa trafika grafiks",
+  "goBack": "Atgriezties",
+  "back": "Atpakaļ",
+  "exportFailed": "Eksports neizdevās",
+  "copiedToClipboard": "Nokopēts starpliktuvē.",
+  "signups": {
+    "title": "Affiliātu reģistrācijas",
+    "pending": "Gaida",
+    "paid": "Apmaksāts",
+    "failed": "Neizdevās",
+    "locked": "Bloķēts",
+    "rejected": "Noraidīts",
+    "noRecords": "Ieraksti nav atrasti",
+    "columns": {
+      "id": "ID",
+      "service": "Pakalpojums",
+      "signupDate": "Reģistrācijas datums",
+      "status": "Statuss",
+      "paidAmount": "Samaksātā summa",
+      "reason": "Iemesls"
+    }
+  },
+  "paymentSetup": {
+    "title": "Maksājumu iestatīšana",
+    "choosePayment": "Izvēlieties, ko vēlaties darīt ar saviem affiliātu maksājumiem",
+    "sendToPaypal": "Sūtīt maksājumus uz PayPal",
+    "paypalEmail": "PayPal e-pasts"
+  },
+  "tosPage": {
+    "title": "Pakalpojumu sniegšanas noteikumi",
+    "welcome": "Laipni lūdzam InterServer affiliātu programmā"
+  }
+}

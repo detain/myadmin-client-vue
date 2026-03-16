@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista de Alojamiento Web",
+        "orderTitle": "Ordenar Registros de Sitio Web"
+    },
+    "view": {
+        "title": "Ver Sitio Web {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Próxima Fecha de Factura:",
+        "billing": "Facturación",
+        "billed": "facturado",
+        "billingStatusIs": "El Estado de Facturación es:",
+        "hostInfo": "Información del Host",
+        "username": "Nombre de Usuario:",
+        "ip": "IP:",
+        "server": "Servidor:",
+        "notSetYet": "No configurado aún",
+        "login": "Iniciar Sesión",
+        "types": "Tipos:",
+        "linksLabel": "Enlaces:",
+        "manualLogin": "Inicio de Sesión Manual",
+        "automaticLogin": "Inicio de Sesión Automático",
+        "clickHere": "Haga Clic Aquí",
+        "defaultNameservers": "Servidores de Nombres Predeterminados",
+        "nameservers": "Servidores de Nombres:",
+        "externalLinks": "Enlaces Externos",
+        "names": "Nombres:",
+        "websitePreview": "Vista Previa del Sitio Web",
+        "links": "Enlaces",
+        "welcomeEmailConfirm": "¿Está seguro de que desea reenviar el correo de bienvenida?",
+        "emailSent": "Correo Enviado",
+        "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada."
+    },
+    "buyIp": {
+        "title": "Comprar Complemento de IP Adicional",
+        "existingAddonIps": "IPs de Complemento Existentes",
+        "additionalIp": "IP Adicional",
+        "monthlyCost": "Costo Mensual ({symbol})",
+        "costDescription": "Costo ({symbol}) cada mes cuando se factura su sitio web",
+        "confirmPurchase": "Confirmar Compra",
+        "confirmMessage": "Costo de IP adicional: {symbol}{cost}/mes. ¿Está seguro de que desea ordenar una IP adicional?",
+        "placeOrder": "Realizar Pedido",
+        "orderPlaced": "Pedido Realizado"
+    },
+    "reverseDns": {
+        "title": "DNS Inverso",
+        "updateReverseDns": "Actualizar DNS Inverso"
+    },
+    "downloadBackups": {
+        "title": "Descargar Copias de Seguridad",
+        "backup": "Copia de Seguridad",
+        "size": "Tamaño",
+        "options": "Opciones"
+    },
+    "migration": {
+        "title": "Migrar su Sitio Web",
+        "currentWebHostInfo": "Información del Host Web Actual",
+        "customerPortalUrl": "URL del Portal del Cliente",
+        "portalExample": "Por Ejemplo: sso.godaddy.com",
+        "registeredUsername": "Nombre de Usuario / Correo / ID Registrado",
+        "password": "Contraseña",
+        "controlPanelUrl": "URL del Panel de Control",
+        "controlPanelExample": "Por Ejemplo: sudominio.com/cpanel",
+        "ftpUsername": "Nombre de Usuario FTP / Panel de Control",
+        "ftpPassword": "Contraseña FTP / Panel de Control",
+        "holdingPageQuestion": "Si el sitio está activo/ocupado con mucho tráfico, ¿podemos establecer una página de espera durante la migración?",
+        "specialRequirementsQuestion": "¿Este sitio tiene requisitos especiales como Versión de PHP / Módulos?",
+        "domainRegistryInfo": "Información del Registro de Dominio",
+        "transferDomainQuestion": "¿También desea que le ayudemos a transferir el registro del nombre de dominio?",
+        "updateNameserversQuestion": "¿Desea que actualicemos los servidores de nombres tan pronto como terminemos la migración de datos?",
+        "domainRegistryPortal": "Portal del Cliente del Registro de Dominio",
+        "importantNotes": "Notas Importantes",
+        "note1": "Completar este formulario abrirá un nuevo ticket para que nuestro departamento de soporte comience su migración.",
+        "note2": "Por favor sea lo más completo y preciso posible para evitar retrasos.",
+        "note3": "Una migración típica se completa en 48 a 72 horas. A veces más tiempo si la cantidad de datos a copiar es grande.",
+        "note4": "La cuenta de alojamiento antigua debe estar en línea y accesible mientras realizamos la migración, de lo contrario podemos enfrentar dificultades.",
+        "note5": "Por favor no realice actualizaciones en su sitio mientras realizamos la migración, de lo contrario esos datos podrían no copiarse al nuevo alojamiento."
+    },
+    "order": {
+        "title": "Ordenar Sitio Web"
+    }
+}

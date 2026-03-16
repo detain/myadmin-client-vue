@@ -1,0 +1,12 @@
+{
+    "required": "{field} ያስፈልጋል",
+    "email": "ትክክለኛ ኢሜይል አድራሻ መሆን አለበት",
+    "minLength": "ቢያንስ {min} ፊደሎች መሆን አለበት",
+    "maxLength": "ከ {max} ፊደሎች ያልበለጠ መሆን አለበት",
+    "passwordMatch": "የይለፍ ቃሎች መዛመድ አለባቸው",
+    "invalidFormat": "ልቅ ቅርጸት",
+    "numeric": "ቁጥር መሆን አለበት",
+    "url": "ትክክለኛ URL መሆን አለበት",
+    "ipAddress": "ትክክለኛ IP አድራሻ መሆን አለበት",
+    "hostname": "ትክክለኛ ሆስት ስም መሆን አለበት"
+}

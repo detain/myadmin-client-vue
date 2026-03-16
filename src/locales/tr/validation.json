@@ -1,0 +1,12 @@
+{
+    "required": "{field} zorunludur",
+    "email": "Geçerli bir e-posta adresi olmalıdır",
+    "minLength": "En az {min} karakter olmalıdır",
+    "maxLength": "En fazla {max} karakter olmalıdır",
+    "passwordMatch": "Şifreler eşleşmelidir",
+    "invalidFormat": "Geçersiz format",
+    "numeric": "Sayı olmalıdır",
+    "url": "Geçerli bir URL olmalıdır",
+    "ipAddress": "Geçerli bir IP adresi olmalıdır",
+    "hostname": "Geçerli bir ana makine adı olmalıdır"
+}

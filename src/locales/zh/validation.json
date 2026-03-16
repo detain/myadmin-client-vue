@@ -1,0 +1,7 @@
+{
+    "required": "{field} 为必填项", "email": "必须是有效的电子邮件地址",
+    "minLength": "至少需要 {min} 个字符", "maxLength": "不得超过 {max} 个字符",
+    "passwordMatch": "密码必须一致", "invalidFormat": "格式无效",
+    "numeric": "必须是数字", "url": "必须是有效的 URL",
+    "ipAddress": "必须是有效的 IP 地址", "hostname": "必须是有效的主机名"
+}

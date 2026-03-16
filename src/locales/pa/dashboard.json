@@ -1,0 +1,28 @@
+{
+    "title": "ਡੈਸ਼ਬੋਰਡ",
+    "welcome": "ਸੁਆਗਤ, {name}",
+    "lastLogin": "ਆਖਰੀ ਲੌਗਇਨ",
+    "lastLoginIp": "ਆਖਰੀ ਲੌਗਇਨ IP",
+    "prepay": {
+        "title": "ਪ੍ਰੀਪੇ ਬਕਾਇਆ",
+        "remainingBalance": "ਪ੍ਰੀਪੇ ਬਾਕੀ ਬਕਾਇਆ",
+        "manageAccount": "ਖਾਤਾ ਪ੍ਰਬੰਧਿਤ ਕਰੋ",
+        "manageTooltip": "ਆਪਣਾ ਪ੍ਰੀਪੇ ਖਾਤਾ ਪ੍ਰਬੰਧਿਤ ਕਰੋ"
+    },
+    "invoices": {
+        "title": "ਭੁਗਤਾਨ ਨਾ ਕੀਤੇ ਇਨਵੌਇਸ",
+        "totalUnpaid": "ਕੁੱਲ ਭੁਗਤਾਨ ਨਾ ਕੀਤੇ ਇਨਵੌਇਸ",
+        "totalAmount": "ਭੁਗਤਾਨ ਕੀਤੀ ਜਾਣ ਵਾਲੀ ਕੁੱਲ ਰਕਮ",
+        "payTotalTooltip": "ਕੁੱਲ ਰਕਮ ਭੁਗਤਾਨ ਕਰੋ"
+    },
+    "callInPin": "ਕਾਲ-ਇਨ PIN",
+    "recentTickets": "ਤਾਜ਼ਾ ਟਿਕਟਾਂ",
+    "viewAllTickets": "ਸਾਰੀਆਂ ਟਿਕਟਾਂ ਦੇਖੋ",
+    "editTicket": "ਟਿਕਟ ਸੰਪਾਦਿਤ ਕਰੋ",
+    "serviceCount": "ਕੋਈ ਕਿਰਿਆਸ਼ੀਲ ਸੇਵਾਵਾਂ ਨਹੀਂ | {count} ਕਿਰਿਆਸ਼ੀਲ ਸੇਵਾ | {count} ਕਿਰਿਆਸ਼ੀਲ ਸੇਵਾਵਾਂ",
+    "affiliate": {
+        "earnPerSale": "ਪ੍ਰਤੀ ਵਿਕਰੀ {amount} ਕਮਾਓ",
+        "urlPlaceholder": "ਅਫੀਲੀਏਟ URL",
+        "shareWith": "ਇਸ ਨਾਲ ਸਾਂਝਾ ਕਰੋ"
+    }
+}

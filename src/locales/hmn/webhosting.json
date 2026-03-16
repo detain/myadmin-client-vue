@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Cov Webhosting",
+    "orderTitle": "Xaj Npe Nkag Rau Vev Xaib"
+  },
+  "view": {
+    "title": "Saib Vev Xaib {id}",
+    "package": "Pob Khoom",
+    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+    "billing": "Them Nqi",
+    "billed": "tau them nqi",
+    "billingStatusIs": "Xwm Txheej Them Nqi:",
+    "login": "Nkag",
+    "links": "Cov Txuas",
+    "emailSent": "Email Xa Lawm",
+    "emailSentMessage": "Email txais tos xa dua lawm."
+  },
+  "order": {
+    "title": "Xaj Vev Xaib"
+  },
+  "migration": {
+    "title": "Hloov Koj Vev Xaib",
+    "password": "Tus Lej Nkag",
+    "importantNotes": "Cov Lus Qhia Tseem Ceeb"
+  }
+}

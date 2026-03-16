@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Lenaneo la Webhosting",
+    "orderTitle": "Oda Lirejistaro tsa Websaete"
+  },
+  "view": {
+    "title": "Bona Websaete {id}",
+    "package": "Sepalesa",
+    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+    "billing": "Tefello",
+    "billed": "e lefisitsoeng",
+    "billingStatusIs": "Boemo ba Tefello ke:",
+    "login": "Kena",
+    "links": "Likhoele",
+    "emailSent": "Imeile e Romelitsoe",
+    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+  },
+  "order": {
+    "title": "Oda Websaete"
+  },
+  "migration": {
+    "title": "Fetisa Websaete ea Hau",
+    "password": "Password",
+    "importantNotes": "Lintlha tse Bohlokoa"
+  }
+}

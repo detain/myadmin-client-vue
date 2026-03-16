@@ -1,0 +1,43 @@
+{
+  "list": {
+    "title": "Ātrās izvietošanas serveru saraksts",
+    "orderTitle": "Pasūtīt ātrās izvietošanas serveru reģistrācijas"
+  },
+  "view": {
+    "title": "Skatīt ātrās izvietošanas serveri {id}",
+    "package": "Pakete",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "billing": "Norēķini",
+    "billed": "norēķināts:",
+    "paymentStatus": "Maksājuma statuss:",
+    "statusIs": "Statuss ir:",
+    "serverInformation": "QuickServer informācija",
+    "powerStatusIs": "Barošanas statuss ir:",
+    "selectAction": "Izvēlēties darbību",
+    "disk": "Disks",
+    "totalSpace": "Kopējā vieta:",
+    "freeSpace": "Brīvā vieta:",
+    "remainingSpace": "Atlikušā vieta:",
+    "systemInformation": "Sistēmas informācija",
+    "os": "OS",
+    "links": "Saites",
+    "updateComment": "Atjaunināt komentāru",
+    "saveChanges": "Saglabāt izmaiņas",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt ātrās izvietošanas serveri",
+    "orderSummary": "Pasūtījuma kopsavilkums",
+    "selectServer": "Izvēlēties serveri",
+    "osDistribution": "OS izplatījums",
+    "osVersion": "OS versija",
+    "rootPassword": "Root parole",
+    "total": "Kopā",
+    "serverName": "Servera nosaukums",
+    "operatingSystem": "Operētājsistēma",
+    "agreeToTerms": "Piekrītu piedāvājuma noteikumiem",
+    "iAgreeToTerms": "Esmu izlasījis iepriekš minētos noteikumus un piekrītu tiem.",
+    "placeOrder": "Veikt pasūtījumu"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "required": "{field} requiritur",
+    "email": "Inscriptio epistulae electronicae valida esse debet",
+    "minLength": "Saltem {min} characteres esse debent",
+    "maxLength": "Non plus quam {max} characteres esse debent",
+    "passwordMatch": "Tesserae congruere debent",
+    "invalidFormat": "Forma invalida",
+    "numeric": "Numerus esse debet",
+    "url": "URL valida esse debet",
+    "ipAddress": "Inscriptio IP valida esse debet",
+    "hostname": "Nomen machinae validum esse debet"
+}

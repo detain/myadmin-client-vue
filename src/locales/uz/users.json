@@ -1,0 +1,12 @@
+{
+    "title": "Foydalanuvchilar",
+    "addUser": "Foydalanuvchi qo'shish",
+    "editUser": "Foydalanuvchini tahrirlash",
+    "firstName": "Ism",
+    "lastName": "Familiya",
+    "username": "Foydalanuvchi nomi",
+    "password": "Parol",
+    "keepSamePassword": "Parolni o'zgartirmaslik uchun bo'sh qoldiring",
+    "errorLoading": "Foydalanuvchilarni yuklashda xato:",
+    "errorLoadingUser": "Foydalanuvchini yuklashda xato:"
+}

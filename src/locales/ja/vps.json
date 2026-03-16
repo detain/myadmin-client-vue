@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "VPS 一覧",
+    "orderVps": "VPS を注文"
+  },
+  "view": {
+    "title": "VPS {id} を表示",
+    "package": "パッケージ",
+    "billing": "請求",
+    "billed": "請求済み",
+    "vpsStatus": "VPS ステータス:",
+    "hostServer": "ホストサーバー:",
+    "nextInvoiceDate": "次回請求日:",
+    "vpsInformation": "VPS 情報",
+    "powerStatus": "電源ステータス:",
+    "selectAction": "アクションを選択",
+    "disk": "ディスク",
+    "totalSpace": "総容量:",
+    "usedSpace": "使用容量:",
+    "remainingSpace": "残り容量:",
+    "systemInformation": "システム情報",
+    "memory": "メモリ:",
+    "cpuCores": "CPU コア数:",
+    "os": "OS:",
+    "links": "リンク",
+    "updateComment": "コメントを更新",
+    "saveChanges": "変更を保存",
+    "emailSent": "メール送信済み",
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+  },
+  "order": {
+    "title": "VPS を注文",
+    "osDistribution": "OS ディストリビューション",
+    "osVersion": "OS バージョン",
+    "hostname": "ホスト名",
+    "rootPassword": "root パスワード",
+    "couponCode": "クーポンコード",
+    "continue": "続ける",
+    "orderSummary": "注文概要",
+    "total": "合計",
+    "tosAgree": "上記の条件を読み、同意します。",
+    "placeOrder": "注文を確定"
+  },
+  "changeHostname": {
+    "title": "VPS ホスト名を変更",
+    "existingHostname": "現在のホスト名",
+    "newHostname": "新しいホスト名",
+    "updateHostname": "ホスト名を更新"
+  },
+  "changeRootPassword": {
+    "title": "VPS root パスワードを変更",
+    "newPassword": "新しいパスワード:",
+    "confirmPassword": "パスワードの確認:",
+    "changePassword": "パスワードを変更",
+    "passwordMismatch": "パスワードと確認用パスワードが一致しません"
+  },
+  "reinstallOs": {
+    "title": "OS を再インストール",
+    "importantNote1": "OS を再インストールするとすべてのデータが削除されます。",
+    "importantNote2": "OS を再インストールする前に、バックアップを取ってください。",
+    "osDistribution": "OS ディストリビューション",
+    "confirmReinstallButton": "OS 再インストールを確認"
+  },
+  "common": {
+    "goBack": "戻る",
+    "back": "戻る",
+    "pleaseWait": "お待ちください!",
+    "success": "成功{text}",
+    "gotError": "エラーが発生しました: {error}"
+  }
+}

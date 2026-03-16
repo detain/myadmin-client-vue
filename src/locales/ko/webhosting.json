@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "웹 호스팅 목록",
+        "orderTitle": "웹사이트 등록 주문"
+    },
+    "view": {
+        "title": "웹사이트 {id} 보기",
+        "package": "패키지",
+        "nextInvoiceDate": "다음 청구서 날짜:",
+        "billing": "청구",
+        "billed": "청구됨",
+        "billingStatusIs": "청구 상태:",
+        "hostInfo": "호스트 정보",
+        "username": "사용자명:",
+        "ip": "IP:",
+        "server": "서버:",
+        "notSetYet": "아직 설정되지 않음",
+        "login": "로그인",
+        "types": "유형:",
+        "linksLabel": "링크:",
+        "manualLogin": "수동 로그인",
+        "automaticLogin": "자동 로그인",
+        "clickHere": "여기를 클릭하세요",
+        "defaultNameservers": "기본 네임서버",
+        "nameservers": "네임서버:",
+        "externalLinks": "외부 링크",
+        "names": "이름:",
+        "websitePreview": "웹사이트 미리보기",
+        "links": "링크",
+        "welcomeEmailConfirm": "환영 이메일을 다시 보내시겠습니까?",
+        "emailSent": "이메일 전송됨",
+        "emailSentMessage": "환영 이메일이 재전송되었습니다. 받은 편지함을 확인하세요."
+    },
+    "buyIp": {
+        "title": "추가 IP 부가 기능 구매",
+        "existingAddonIps": "기존 부가 기능 IP",
+        "additionalIp": "추가 IP",
+        "monthlyCost": "월간 비용 ({symbol})",
+        "costDescription": "웹사이트 청구 시 매월 비용 ({symbol})",
+        "confirmPurchase": "구매 확인",
+        "confirmMessage": "추가 IP 비용: {symbol}{cost}/월. 추가 IP를 주문하시겠습니까?",
+        "placeOrder": "주문하기",
+        "orderPlaced": "주문됨"
+    },
+    "reverseDns": {
+        "title": "역방향 DNS",
+        "updateReverseDns": "역방향 DNS 업데이트"
+    },
+    "downloadBackups": {
+        "title": "백업 다운로드",
+        "backup": "백업",
+        "size": "크기",
+        "options": "옵션"
+    },
+    "migration": {
+        "title": "웹사이트 이전",
+        "currentWebHostInfo": "현재 웹 호스트 정보",
+        "customerPortalUrl": "고객 포털 URL",
+        "portalExample": "예: sso.godaddy.com",
+        "registeredUsername": "등록된 사용자명 / 이메일 / ID",
+        "password": "비밀번호",
+        "controlPanelUrl": "제어판 URL",
+        "controlPanelExample": "예: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / 제어판 사용자명",
+        "ftpPassword": "FTP / 제어판 비밀번호",
+        "holdingPageQuestion": "사이트가 트래픽이 많은 라이브/바쁜 사이트인 경우 이전 중에 임시 페이지를 설정할 수 있습니까?",
+        "specialRequirementsQuestion": "이 사이트에 PHP 버전 / 모듈과 같은 특별 요구 사항이 있습니까?",
+        "domainRegistryInfo": "도메인 레지스트리 정보",
+        "transferDomainQuestion": "도메인 이름 등록 이전도 도와드릴까요?",
+        "updateNameserversQuestion": "데이터 이전이 완료되는 즉시 네임서버를 업데이트해 드릴까요?",
+        "domainRegistryPortal": "도메인 레지스트리 고객 포털",
+        "importantNotes": "중요 참고 사항",
+        "note1": "이 양식을 작성하면 이전을 시작하기 위해 지원 부서에 새 티켓이 열립니다.",
+        "note2": "지연을 피하기 위해 최대한 완전하고 정확하게 기입해 주세요.",
+        "note3": "일반적인 이전은 48~72시간 내에 완료됩니다. 복사할 데이터 양이 많은 경우 더 오래 걸릴 수 있습니다.",
+        "note4": "이전을 수행하는 동안 이전 호스팅 계정이 온라인 상태이고 접근 가능해야 합니다. 그렇지 않으면 어려움이 생길 수 있습니다.",
+        "note5": "이전을 수행하는 동안 사이트를 업데이트하지 마세요. 그렇지 않으면 해당 데이터가 새 호스팅으로 복사되지 않을 수 있습니다."
+    },
+    "order": {
+        "title": "웹사이트 주문"
+    }
+}

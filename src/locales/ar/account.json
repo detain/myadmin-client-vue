@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "إعدادات الحساب"
+    },
+    "changePassword": {
+        "title": "تغيير كلمة المرور",
+        "cardTitle": "تحديث كلمة المرور",
+        "currentPassword": "كلمة المرور الحالية",
+        "newPassword": "كلمة المرور الجديدة",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "updatePassword": "تحديث كلمة المرور"
+    },
+    "changeUsername": {
+        "title": "تغيير اسم المستخدم",
+        "disabled": "تم تعطيل تغييرات اسم المستخدم مؤقتًا.",
+        "currentUsername": "اسم المستخدم الحالي",
+        "newDesiredUsername": "اسم المستخدم الجديد المطلوب",
+        "confirmationCode": "رمز التأكيد",
+        "pleaseWait": "يرجى الانتظار!",
+        "gotError": "حدث خطأ {error}"
+    },
+    "contactInfo": {
+        "title": "معلومات الاتصال",
+        "cardTitle": "تحديث معلومات الاتصال",
+        "headsUp": "تنبيه!",
+        "headsUpMessage": "على الرغم من أن هذه المعلومات اختيارية، فإن تقديم المعلومات (الدقيقة) سيساعد على إثراء تفاعلاتنا وخفض نسبة مخاطرك مما يمنحك وصولاً أسرع وأكثر ملاءمة إلى أجزاء من الموقع (مثل عدم الحاجة إلى مصادقة بطاقة ائتمانية).",
+        "riskScore": "نسبة نقاط المخاطرة %",
+        "personalInformation": "المعلومات الشخصية",
+        "name": "الاسم",
+        "namePlaceholder": "Joe Cool",
+        "company": "الشركة",
+        "gstinTaxId": "الرقم الضريبي GSTIN",
+        "gstinPlaceholder": "رقم تعريف دافع ضريبة السلع والخدمات",
+        "addressLine1": "سطر العنوان 1",
+        "addressLine2": "سطر العنوان 2",
+        "cityState": "المدينة، الولاية",
+        "city": "المدينة",
+        "state": "الولاية",
+        "country": "البلد",
+        "zipcode": "الرمز البريدي",
+        "phoneNo": "رقم الهاتف",
+        "phoneNumber": "رقم الهاتف",
+        "language": "اللغة",
+        "auto": "تلقائي",
+        "currency": "العملة",
+        "timeZone": "المنطقة الزمنية",
+        "otherSettings": "إعدادات أخرى",
+        "disablePasswordResets": "تعطيل إعادة تعيين كلمة المرور (نسيت كلمة المرور).",
+        "disableInvoiceReminders": "تعطيل إشعارات البريد الإلكتروني لتذكير الفواتير.",
+        "disableServerInvoiceReminders": "تعطيل إشعارات البريد الإلكتروني لتذكير فواتير الخادم.",
+        "disableReinstall": "تعطيل إعادة التثبيت.",
+        "alternateEmailInvoices": "بريد إلكتروني بديل للفواتير",
+        "alternateEmailInvoicesPlaceholder": "بريد إلكتروني بديل لإرسال الفواتير",
+        "alternateEmailAbuse": "بريد إلكتروني بديل لتقارير الانتهاكات",
+        "updateInfo": "تحديث المعلومات"
+    }
+}

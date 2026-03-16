@@ -1,0 +1,12 @@
+{
+    "title": "Ngā Kaiwhakamahi",
+    "addUser": "Tāpiri Kaiwhakamahi",
+    "editUser": "Whakatika Kaiwhakamahi",
+    "firstName": "Ingoa Tuatahi",
+    "lastName": "Ingoa Whakamutunga",
+    "username": "Ingoa Kaiwhakamahi",
+    "password": "Kupuhipa",
+    "keepSamePassword": "Waiho kau ki te pupuri i te kupuhipa ōrite",
+    "errorLoading": "Hapa i te uta ngā kaiwhakamahi:",
+    "errorLoadingUser": "Hapa i te uta kaiwhakamahi:"
+}

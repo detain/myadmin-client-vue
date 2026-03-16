@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "የሒሳብ ቅንብሮች"
+    },
+    "changePassword": {
+        "title": "የይለፍ ቃል ቀይር",
+        "cardTitle": "የይለፍ ቃል አዘምን",
+        "currentPassword": "የአሁን የይለፍ ቃል",
+        "newPassword": "አዲስ የይለፍ ቃል",
+        "confirmPassword": "የይለፍ ቃል አረጋግጥ",
+        "updatePassword": "የይለፍ ቃል አዘምን"
+    },
+    "changeUsername": {
+        "title": "የተጠቃሚ ስም ቀይር",
+        "disabled": "የተጠቃሚ ስም ለውጦች ለጊዜው ተሰናክለዋል።",
+        "currentUsername": "የአሁን የተጠቃሚ ስም",
+        "newDesiredUsername": "አዲስ የሚፈለግ የተጠቃሚ ስም",
+        "confirmationCode": "የማረጋገጫ ኮድ",
+        "pleaseWait": "እባክዎ ይጠብቁ!",
+        "gotError": "ስህተት ተከስቷል {error}"
+    },
+    "contactInfo": {
+        "title": "የዕውቂያ መረጃ",
+        "cardTitle": "የዕውቂያ መረጃ አዘምን",
+        "headsUp": "ትኩረት!",
+        "headsUpMessage": "ይህ መረጃ አማራጭ ቢሆንም፣ (ትክክለኛ) መረጃ መስጠት ግንኙነቶቻችንን ያበለጽጋል እናም የስጋት % ነጥብዎን ዝቅ ያደርጋል፣ ይህም ወደ ጣቢያው ክፍሎች ፈጣን እና ምቹ ተደራሽነት ይሰጥዎታል (ለምሳሌ የክሬዲት ካርድ ማረጋገጥ ሳያስፈልግ)።",
+        "riskScore": "የስጋት % ነጥብ",
+        "personalInformation": "የግል መረጃ",
+        "name": "ስም",
+        "namePlaceholder": "Joe Cool",
+        "company": "ኩባንያ",
+        "gstinTaxId": "GSTIN የግብር መታወቂያ",
+        "gstinPlaceholder": "የዕቃዎች እና አገልግሎቶች ታክስ ከፋይ መታወቂያ ቁጥር",
+        "addressLine1": "የአድራሻ መስመር 1",
+        "addressLine2": "የአድራሻ መስመር 2",
+        "cityState": "ከተማ፣ ክልል",
+        "city": "ከተማ",
+        "state": "ክልል",
+        "country": "አገር",
+        "zipcode": "የፖስታ ኮድ",
+        "phoneNo": "ስልክ ቁጥር",
+        "phoneNumber": "ስልክ ቁጥር",
+        "language": "ቋንቋ",
+        "auto": "ራስ ሰር",
+        "currency": "ምንዛሪ",
+        "timeZone": "ሰዓት ዞን",
+        "otherSettings": "ሌሎች ቅንብሮች",
+        "disablePasswordResets": "የይለፍ ቃል ዳግም ማስጀመሪያዎችን (የይለፍ ቃሌን ረሳሁ) አሰናክል።",
+        "disableInvoiceReminders": "የደረሰኝ ማስታወሻ ኢሜይል ማሳወቂያዎችን አሰናክል።",
+        "disableServerInvoiceReminders": "የሰርቨር ደረሰኝ ማስታወሻ ኢሜይል ማሳወቂያዎችን አሰናክል።",
+        "disableReinstall": "ዳግም ጫን አሰናክል።",
+        "alternateEmailInvoices": "ለደረሰኞች አማራጭ ኢሜይል",
+        "alternateEmailInvoicesPlaceholder": "ደረሰኞችን ለመላክ አማራጭ ኢሜይል",
+        "alternateEmailAbuse": "ለጥቃት ሪፖርቶች አማራጭ ኢሜይል",
+        "updateInfo": "መረጃ አዘምን"
+    }
+}

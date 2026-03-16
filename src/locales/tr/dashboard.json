@@ -1,0 +1,28 @@
+{
+    "title": "Kontrol Paneli",
+    "welcome": "Hoş geldiniz, {name}",
+    "lastLogin": "Son Giriş",
+    "lastLoginIp": "Son Giriş IP'si",
+    "prepay": {
+        "title": "Ön Ödeme Bakiyesi",
+        "remainingBalance": "Kalan Ön Ödeme Bakiyesi",
+        "manageAccount": "Hesabı Yönet",
+        "manageTooltip": "Ön Ödeme Hesabınızı Yönetin"
+    },
+    "invoices": {
+        "title": "Ödenmemiş Faturalar",
+        "totalUnpaid": "Toplam Ödenmemiş Fatura",
+        "totalAmount": "Ödenecek Toplam Tutar",
+        "payTotalTooltip": "Toplam Tutarı Öde"
+    },
+    "callInPin": "Telefon PIN'i",
+    "recentTickets": "Son Destek Talepleri",
+    "viewAllTickets": "Tüm Talepleri Görüntüle",
+    "editTicket": "Talebi Düzenle",
+    "serviceCount": "Aktif hizmet yok | {count} aktif hizmet | {count} aktif hizmet",
+    "affiliate": {
+        "earnPerSale": "Satış Başına {amount} Kazanın",
+        "urlPlaceholder": "Ortaklık URL'si",
+        "shareWith": "Paylaş"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs አገልግሎቶች ዝርዝር",
+        "orderTitle": "Scrub IPs አዝዝ"
+    },
+    "view": {
+        "title": "Scrub IPs ይመልከቱ",
+        "currentIp": "የአሁን IP",
+        "ipAddress": "IP አድራሻ",
+        "ipFromService": "ከአገልግሎት IP"
+    },
+    "filters": {
+        "title": "ማጣሪያዎች",
+        "createNew": "አዲስ ፍጠር",
+        "createNewFilter": "አዲስ ማጣሪያ ፍጠር",
+        "filterType": "የማጣሪያ ዓይነት",
+        "selectFilterType": "የማጣሪያ ዓይነት ምረጥ",
+        "ipAddress": "IP አድራሻ",
+        "portNo": "ፖርት ቁጥር",
+        "filter": "ማጣሪያ",
+        "destinationIp": "የዒላማ IP",
+        "destinationPort": "የዒላማ ፖርት",
+        "noFiltersFound": "ምንም ማጣሪያዎች አልተገኙም!",
+        "deleteFilterConfirm": "ይህን ማጣሪያ ሰርዝ እርግጠኛ ነዎት?",
+        "unableToCreateFilter": "አሁን ማጣሪያ መፍጠር አልተቻለም።",
+        "unableToDeleteFilter": "አሁን ማጣሪያ ሰርዝ አልተቻለም።"
+    },
+    "firewallRules": {
+        "title": "የፋየርዎል ደንቦች",
+        "createNew": "አዲስ ፍጠር",
+        "createNewFirewall": "አዲስ ፋየርዎል ደንብ ፍጠር",
+        "protocol": "ፕሮቶኮል",
+        "destinationIp": "የዒላማ IP",
+        "destinationPort": "የዒላማ ፖርት",
+        "sourceIp": "ምንጭ IP",
+        "sourcePort": "ምንጭ ፖርት",
+        "xdpAction": "XDP ድርጊት",
+        "ipRequired": "IP አድራሻ ያስፈልጋል",
+        "block": "አግድ",
+        "whitelist": "ዝርዝር ፍቃዳት",
+        "noRulesFound": "ምንም ደንቦች አልተገኙም!",
+        "deleteRuleConfirm": "ይህን ደንብ ሰርዝ እርግጠኛ ነዎት?",
+        "unableToCreateRule": "አሁን ፋየርዎል ደንብ መፍጠር አልተቻለም።",
+        "unableToDeleteRule": "አሁን ፋየርዎል ደንብ ሰርዝ አልተቻለም።"
+    },
+    "geoFirewallRules": {
+        "title": "ጂኦ ፋየርዎል ደንቦች",
+        "createNew": "አዲስ ፍጠር",
+        "createNewGeoRule": "አዲስ ጂኦ ፋየርዎል ደንብ ፍጠር",
+        "destinationIp": "የዒላማ IP",
+        "destinationPort": "የዒላማ ፖርት",
+        "sourceCountry": "ምንጭ አገር",
+        "sourceAsn": "ምንጭ ASN",
+        "xdpAction": "XDP ድርጊት",
+        "portNo": "ፖርት ቁጥር",
+        "selectCountry": "አገር ምረጥ",
+        "asn": "ASN",
+        "block": "አግድ",
+        "whitelist": "ዝርዝር ፍቃዳት",
+        "noRulesFound": "ምንም ደንቦች አልተገኙም!",
+        "deleteGeoRuleConfirm": "ይህን ጂኦ ደንብ ሰርዝ እርግጠኛ ነዎት?",
+        "unableToCreateRule": "አሁን ፋየርዎል ደንብ መፍጠር አልተቻለም።",
+        "unableToDeleteRule": "አሁን ጂኦ ፋየርዎል ደንብ ሰርዝ አልተቻለም።"
+    }
+}

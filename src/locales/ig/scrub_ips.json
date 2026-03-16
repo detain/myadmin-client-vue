@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Ndepụta Ọrụ Scrub IPs",
+        "orderTitle": "Iwu Scrub IPs"
+    },
+    "view": {
+        "title": "Lee Scrub IPs",
+        "currentIp": "IP Ugbu a",
+        "ipAddress": "Adreesị IP",
+        "ipFromService": "IP site na ọrụ"
+    },
+    "filters": {
+        "title": "Nzacha",
+        "createNew": "Mepụta Ọhụụ",
+        "createNewFilter": "Mepụta Nzacha Ọhụụ",
+        "filterType": "Ụdị Nzacha",
+        "selectFilterType": "Họrọ Ụdị Nzacha",
+        "ipAddress": "Adreesị IP",
+        "portNo": "Nọ. Ọnụ Ụzọ",
+        "filter": "Nzacha",
+        "destinationIp": "IP Ebumnuche",
+        "destinationPort": "Ọnụ Ụzọ Ebumnuche",
+        "noFiltersFound": "Enweghị nzacha!",
+        "deleteFilterConfirm": "Ị dị mma ịhichapụ nzacha a?",
+        "unableToCreateFilter": "Enweghị ike imepụta nzacha ugbu a.",
+        "unableToDeleteFilter": "Enweghị ike ihichapụ nzacha ugbu a."
+    },
+    "firewallRules": {
+        "title": "Iwu Firewall",
+        "createNew": "Mepụta Ọhụụ",
+        "createNewFirewall": "Mepụta Iwu Firewall Ọhụụ",
+        "protocol": "Protocol",
+        "destinationIp": "IP Ebumnuche",
+        "destinationPort": "Ọnụ Ụzọ Ebumnuche",
+        "sourceIp": "IP Isi Mmalite",
+        "sourcePort": "Ọnụ Ụzọ Isi Mmalite",
+        "xdpAction": "Omume XDP",
+        "ipRequired": "Achọrọ adreesị IP",
+        "block": "Gbochie",
+        "whitelist": "Ndepụta Ọcha",
+        "noRulesFound": "Enweghị iwu!",
+        "deleteRuleConfirm": "Ị dị mma ịhichapụ iwu a?",
+        "unableToCreateRule": "Enweghị ike imepụta iwu firewall ugbu a.",
+        "unableToDeleteRule": "Enweghị ike ihichapụ iwu firewall ugbu a."
+    },
+    "geoFirewallRules": {
+        "title": "Iwu Firewall Geo",
+        "createNew": "Mepụta Ọhụụ",
+        "createNewGeoRule": "Mepụta Iwu Firewall Geo Ọhụụ",
+        "destinationIp": "IP Ebumnuche",
+        "destinationPort": "Ọnụ Ụzọ Ebumnuche",
+        "sourceCountry": "Mba Isi Mmalite",
+        "sourceAsn": "ASN Isi Mmalite",
+        "xdpAction": "Omume XDP",
+        "portNo": "Nọ. Ọnụ Ụzọ",
+        "selectCountry": "Họrọ Mba",
+        "asn": "ASN",
+        "block": "Gbochie",
+        "whitelist": "Ndepụta Ọcha",
+        "noRulesFound": "Enweghị iwu!",
+        "deleteGeoRuleConfirm": "Ị dị mma ịhichapụ iwu geo a?",
+        "unableToCreateRule": "Enweghị ike imepụta iwu firewall ugbu a.",
+        "unableToDeleteRule": "Enweghị ike ihichapụ iwu firewall geo ugbu a."
+    }
+}

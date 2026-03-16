@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Depolama / Yedekleme Listesi",
+        "orderTitle": "Yedekleme Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Yedekleme {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "hostServer": "Host Sunucu",
+        "links": "Bağlantılar",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "Depolama Siparişi"
+    }
+}

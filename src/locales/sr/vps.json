@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "Списак VPS-ова",
+        "orderVps": "Наручи VPS"
+    },
+    "view": {
+        "title": "Прегледај VPS {id}",
+        "package": "Пакет",
+        "billing": "Наплата",
+        "billed": "наплаћено",
+        "vpsStatus": "Статус VPS-а је:",
+        "hostServer": "Хост сервер:",
+        "nextInvoiceDate": "Датум следећег рачуна:",
+        "vpsInformation": "Информације о VPS-у",
+        "powerStatus": "Статус напајања је:",
+        "selectAction": "Изабери акцију",
+        "disk": "Диск",
+        "totalSpace": "Укупан простор:",
+        "usedSpace": "Коришћен простор:",
+        "remainingSpace": "Преостали простор:",
+        "systemInformation": "Системске информације",
+        "memory": "Меморија:",
+        "cpuCores": "CPU језгра:",
+        "os": "ОС:",
+        "links": "Везе",
+        "updateComment": "Ажурирај коментар",
+        "saveChanges": "Сачувај измене",
+        "emailSent": "Имејл је послат",
+        "emailSentMessage": "Добродошлица имејл је поново послат. Проверите пријемно сандуче."
+    },
+    "order": {
+        "title": "Наручи VPS",
+        "osDistribution": "Дистрибуција ОС-а",
+        "osVersion": "Верзија ОС-а",
+        "hostname": "Назив хоста",
+        "rootPassword": "Root лозинка",
+        "couponCode": "Код купона",
+        "continue": "Настави",
+        "orderSummary": "Преглед поруџбине",
+        "total": "Укупно",
+        "tosAgree": "Прочитао сам горе наведене услове и слажем се.",
+        "placeOrder": "Постави поруџбину"
+    },
+    "changeHostname": {
+        "title": "Промени назив хоста VPS-а",
+        "existingHostname": "Постојећи назив хоста",
+        "newHostname": "Нови назив хоста",
+        "updateHostname": "Ажурирај назив хоста"
+    },
+    "changeRootPassword": {
+        "title": "Промени root лозинку VPS-а",
+        "newPassword": "Нова лозинка:",
+        "confirmPassword": "Потврди лозинку:",
+        "changePassword": "Промени лозинку",
+        "passwordMismatch": "Лозинка и потврда лозинке се не поклапају"
+    },
+    "reinstallOs": {
+        "title": "Поново инсталирај ОС",
+        "importantNote1": "Поновна инсталација оперативног система ће избрисати све податке.",
+        "importantNote2": "Пре поновне инсталације оперативног система, направите резервну копију.",
+        "osDistribution": "Дистрибуција оперативног система",
+        "confirmReinstallButton": "Потврди поновну инсталацију ОС-а"
+    },
+    "common": {
+        "goBack": "Иди назад",
+        "back": "Назад",
+        "pleaseWait": "Молимо сачекајте!",
+        "success": "Успешно{text}",
+        "gotError": "Дошло је до грешке {error}"
+    }
+}

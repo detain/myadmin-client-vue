@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Žiniatinklio prieglobos sąrašas",
+    "orderTitle": "Užsakyti svetainių registracijas"
+  },
+  "view": {
+    "title": "Peržiūrėti svetainę {id}",
+    "package": "Paketas",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita",
+    "billingStatusIs": "Atsiskaitymo būsena:",
+    "login": "Prisijungti",
+    "links": "Nuorodos",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti svetainę"
+  },
+  "migration": {
+    "title": "Perkelti savo svetainę",
+    "password": "Slaptažodis",
+    "importantNotes": "Svarbios pastabos"
+  }
+}

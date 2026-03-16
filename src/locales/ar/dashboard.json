@@ -1,0 +1,28 @@
+{
+    "title": "لوحة التحكم",
+    "welcome": "مرحباً، {name}",
+    "lastLogin": "آخر تسجيل دخول",
+    "lastLoginIp": "IP آخر تسجيل دخول",
+    "prepay": {
+        "title": "رصيد الدفع المسبق",
+        "remainingBalance": "الرصيد المتبقي للدفع المسبق",
+        "manageAccount": "إدارة الحساب",
+        "manageTooltip": "إدارة حساب الدفع المسبق الخاص بك"
+    },
+    "invoices": {
+        "title": "الفواتير غير المدفوعة",
+        "totalUnpaid": "إجمالي الفواتير غير المدفوعة",
+        "totalAmount": "إجمالي المبلغ للدفع",
+        "payTotalTooltip": "دفع المبلغ الإجمالي"
+    },
+    "callInPin": "رمز PIN للاتصال",
+    "recentTickets": "التذاكر الأخيرة",
+    "viewAllTickets": "عرض جميع التذاكر",
+    "editTicket": "تعديل التذكرة",
+    "serviceCount": "لا توجد خدمات نشطة | {count} خدمة نشطة | {count} خدمات نشطة",
+    "affiliate": {
+        "earnPerSale": "اكسب {amount} لكل عملية بيع",
+        "urlPlaceholder": "رابط الشريك",
+        "shareWith": "مشاركة مع"
+    }
+}

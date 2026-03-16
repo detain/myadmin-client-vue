@@ -1,0 +1,12 @@
+{
+    "title": "ተጠቃሚዎች",
+    "addUser": "ተጠቃሚ ጨምር",
+    "editUser": "ተጠቃሚ አርትዕ",
+    "firstName": "የመጀመሪያ ስም",
+    "lastName": "የቤተሰብ ስም",
+    "username": "የተጠቃሚ ስም",
+    "password": "የይለፍ ቃል",
+    "keepSamePassword": "ተመሳሳዩ የይለፍ ቃል ለማቆየት ባዶ ተወው",
+    "errorLoading": "ተጠቃሚዎችን ስለጫነ ስህተት:",
+    "errorLoadingUser": "ተጠቃሚን ስለጫነ ስህተት:"
+}

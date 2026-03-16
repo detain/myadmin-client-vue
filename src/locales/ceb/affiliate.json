@@ -1,0 +1,11 @@
+{
+    "title": "Sistema sa Affiliate", "breadcrumb": "Affiliate",
+    "attention": "Kini nga programa sa affiliate dili para sa pag-refer sa \"mga miyembro sa pamilya\" o \"mga kliyente.\" Palihug basaha ang {faqLink} sa wala pa magpadayon.",
+    "faqLinkText": "FAQ", "earnPerSale": "Kumita og {amount} sa matag bag-ong benta sa customer!",
+    "knowMore": "Mahibal-an ang Dugang", "affiliateUrl": "Affiliate URL", "shareUrl": "Ipaambit ang imong natataging affiliate URL sa mga higala",
+    "links": "Mga Link", "salesGraph": "Graf sa mga Benta", "webTrafficGraph": "Graf sa Web Traffic",
+    "goBack": "Mobalik", "back": "Balik", "exportFailed": "Napakyas ang pag-export", "copiedToClipboard": "Nakopya sa clipboard.",
+    "signups": { "title": "Mga Affiliate Signup", "pending": "Pending", "paid": "Bayad na", "failed": "Napakyas", "locked": "Na-lock", "rejected": "Gitamdanan", "noRecords": "Walay nakit-an nga mga rekord", "columns": { "id": "ID", "service": "Serbisyo", "signupDate": "Petsa sa Signup", "status": "Status", "paidAmount": "Kantidad nga Gibayad", "reason": "Rason" } },
+    "paymentSetup": { "title": "Setup sa Pagbayad", "choosePayment": "Pilia kung unsa ang gusto nimong buhaton sa imong mga bayad nga affiliate", "sendToPaypal": "Ipadala ang mga Bayad sa PayPal", "paypalEmail": "PayPal Email" },
+    "tosPage": { "title": "Mga Tuntunin sa Serbisyo", "welcome": "Maligayang pagdating sa InterServer Affiliate Program" }
+}

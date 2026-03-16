@@ -1,0 +1,12 @@
+{
+    "title": "Brugere",
+    "addUser": "Tilføj bruger",
+    "editUser": "Rediger bruger",
+    "firstName": "Fornavn",
+    "lastName": "Efternavn",
+    "username": "Brugernavn",
+    "password": "Adgangskode",
+    "keepSamePassword": "Lad stå tomt for at beholde den samme adgangskode",
+    "errorLoading": "Fejl ved indlæsning af brugere:",
+    "errorLoadingUser": "Fejl ved indlæsning af bruger:"
+}

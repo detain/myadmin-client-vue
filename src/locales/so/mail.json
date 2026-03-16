@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liiska Adeegyada Boostada",
+        "orderTitle": "Diiwaangelinta Boostada Dalbo"
+    },
+    "view": {
+        "title": "Boostada {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "Lagu xisaabiyey:",
+        "statusIs": "Xaaladdu waa:",
+        "mailApi": "API Boostada",
+        "usageCount": "Tirada Isticmaalka:",
+        "links": "Xiriiriyayaasha",
+        "connectionInfo": "Macluumaadka Xiriirka",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "order": {
+        "title": "Boostada Dalbo"
+    },
+    "alerts": {
+        "title": "Digtoonnada",
+        "addAlert": "Ogeysiis Kudar",
+        "editAlert": "Ogeysiiska Wax ka beddel",
+        "noAlerts": "Ma lixin ogeysiis"
+    },
+    "delist": {
+        "title": "Liiska ka Saar",
+        "blockedEmails": "Iimaylada La Xidhaday"
+    },
+    "denyRules": {
+        "title": "Xeerarka Diidmada",
+        "addRule": "Xeer Kudar",
+        "noRules": "Xeerarka diidmada ma lixin"
+    },
+    "logs": {
+        "title": "Diiwaannada",
+        "searchLogs": "Diiwaannada Raadi"
+    },
+    "stats": {
+        "title": "Tirakoobka"
+    },
+    "deliverability": {
+        "title": "Gaarsiinta"
+    }
+}

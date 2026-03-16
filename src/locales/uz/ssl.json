@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL sertifikatlari ro'yxati",
+        "orderTitle": "SSL ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "SSL {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "Hisob-kitob qilindi:",
+        "statusIs": "Holat:",
+        "orderInfo": "Buyurtma ma'lumotlari",
+        "certificateInfo": "Sertifikat ma'lumotlari",
+        "links": "Havolalar",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "order": {
+        "title": "SSL buyurtma qilish"
+    },
+    "changeApproverEmail": {
+        "title": "Tasdiqlash elektron pochtasini o'zgartirish",
+        "selectApproverEmail": "Tasdiqlash elektron pochtasini tanlang"
+    }
+}

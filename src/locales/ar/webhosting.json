@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "قائمة استضافة المواقع",
+        "orderTitle": "طلب تسجيلات المواقع"
+    },
+    "view": {
+        "title": "عرض الموقع {id}",
+        "package": "الحزمة",
+        "nextInvoiceDate": "تاريخ الفاتورة التالية:",
+        "billing": "الفوترة",
+        "billed": "مفوتر",
+        "billingStatusIs": "حالة الفوترة:",
+        "hostInfo": "معلومات المضيف",
+        "username": "اسم المستخدم:",
+        "ip": "عنوان IP:",
+        "server": "الخادم:",
+        "notSetYet": "لم يتم التعيين بعد",
+        "login": "تسجيل الدخول",
+        "types": "الأنواع:",
+        "linksLabel": "الروابط:",
+        "manualLogin": "تسجيل دخول يدوي",
+        "automaticLogin": "تسجيل دخول تلقائي",
+        "clickHere": "انقر هنا",
+        "defaultNameservers": "خوادم الأسماء الافتراضية",
+        "nameservers": "خوادم الأسماء:",
+        "externalLinks": "الروابط الخارجية",
+        "names": "الأسماء:",
+        "websitePreview": "معاينة الموقع",
+        "links": "الروابط",
+        "welcomeEmailConfirm": "هل أنت متأكد أنك تريد إعادة إرسال رسالة الترحيب؟",
+        "emailSent": "تم إرسال البريد الإلكتروني",
+        "emailSentMessage": "تمت إعادة إرسال رسالة الترحيب. تحقق من صندوق الوارد."
+    },
+    "buyIp": {
+        "title": "شراء إضافة IP إضافي",
+        "existingAddonIps": "عناوين IP الإضافية الموجودة",
+        "additionalIp": "عنوان IP إضافي",
+        "monthlyCost": "التكلفة الشهرية ({symbol})",
+        "costDescription": "التكلفة ({symbol}) كل شهر مع فوترة موقعك",
+        "confirmPurchase": "تأكيد الشراء",
+        "confirmMessage": "تكلفة IP الإضافي: {symbol}{cost}/شهر. هل أنت متأكد أنك تريد طلب عنوان IP إضافي؟",
+        "placeOrder": "تقديم الطلب",
+        "orderPlaced": "تم تقديم الطلب"
+    },
+    "reverseDns": {
+        "title": "DNS العكسي",
+        "updateReverseDns": "تحديث DNS العكسي"
+    },
+    "downloadBackups": {
+        "title": "تنزيل النسخ الاحتياطية",
+        "backup": "النسخة الاحتياطية",
+        "size": "الحجم",
+        "options": "الخيارات"
+    },
+    "migration": {
+        "title": "ترحيل موقعك",
+        "currentWebHostInfo": "معلومات مزود الاستضافة الحالي",
+        "customerPortalUrl": "عنوان URL لبوابة العملاء",
+        "portalExample": "مثال: sso.godaddy.com",
+        "registeredUsername": "اسم المستخدم / البريد الإلكتروني / المعرف المسجل",
+        "password": "كلمة المرور",
+        "controlPanelUrl": "عنوان URL للوحة التحكم",
+        "controlPanelExample": "مثال: yourdomain.com/cpanel",
+        "ftpUsername": "اسم مستخدم FTP / لوحة التحكم",
+        "ftpPassword": "كلمة مرور FTP / لوحة التحكم",
+        "holdingPageQuestion": "إذا كان الموقع مباشراً / مشغولاً وذو حركة مرور عالية، هل يمكننا تعيين صفحة انتظار أثناء الترحيل؟",
+        "specialRequirementsQuestion": "هل يحتوي هذا الموقع على متطلبات خاصة مثل إصدار PHP / الوحدات النمطية؟",
+        "domainRegistryInfo": "معلومات سجل النطاق",
+        "transferDomainQuestion": "هل تريد أيضاً مساعدتنا في نقل تسجيل النطاق؟",
+        "updateNameserversQuestion": "هل تريد منا تحديث خوادم الأسماء فور إتمام ترحيل البيانات؟",
+        "domainRegistryPortal": "بوابة عملاء سجل النطاق",
+        "importantNotes": "ملاحظات مهمة",
+        "note1": "سيؤدي ملء هذا النموذج إلى فتح تذكرة جديدة لقسم الدعم لبدء ترحيلك.",
+        "note2": "يرجى أن تكون شاملاً ودقيقاً قدر الإمكان لتجنب أي تأخيرات.",
+        "note3": "يكتمل الترحيل النموذجي خلال 48 إلى 72 ساعة. وأحياناً أطول إذا كانت كمية البيانات المراد نسخها كبيرة.",
+        "note4": "يجب أن يكون حساب الاستضافة القديم متصلاً بالإنترنت وقابلاً للوصول أثناء إجراء الترحيل، وإلا قد نواجه صعوبات.",
+        "note5": "يرجى عدم إجراء أي تحديثات على موقعك أثناء إجراء الترحيل، وإلا قد لا يتم نسخ تلك البيانات إلى الاستضافة الجديدة."
+    },
+    "order": {
+        "title": "طلب موقع"
+    }
+}

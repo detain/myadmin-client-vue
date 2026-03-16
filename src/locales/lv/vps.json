@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "VPS saraksts",
+    "orderVps": "Pasūtīt VPS"
+  },
+  "view": {
+    "title": "Skatīt VPS {id}",
+    "package": "Pakete",
+    "billing": "Norēķini",
+    "billed": "norēķināts",
+    "vpsStatus": "VPS statuss ir:",
+    "hostServer": "Resursdatora serveris:",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "vpsInformation": "VPS informācija",
+    "powerStatus": "Barošanas statuss ir:",
+    "selectAction": "Izvēlēties darbību",
+    "disk": "Disks",
+    "totalSpace": "Kopējā vieta:",
+    "usedSpace": "Izmantotā vieta:",
+    "remainingSpace": "Atlikušā vieta:",
+    "systemInformation": "Sistēmas informācija",
+    "memory": "Atmiņa:",
+    "cpuCores": "CPU kodoli:",
+    "os": "OS:",
+    "links": "Saites",
+    "updateComment": "Atjaunināt komentāru",
+    "saveChanges": "Saglabāt izmaiņas",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt VPS",
+    "osDistribution": "OS izplatījums",
+    "osVersion": "OS versija",
+    "hostname": "Resursdatora nosaukums",
+    "rootPassword": "Root parole",
+    "couponCode": "Kupona kods",
+    "continue": "Turpināt",
+    "orderSummary": "Pasūtījuma kopsavilkums",
+    "total": "Kopā",
+    "tosAgree": "Esmu izlasījis iepriekš minētos noteikumus un piekrītu tiem.",
+    "placeOrder": "Veikt pasūtījumu"
+  },
+  "changeHostname": {
+    "title": "Mainīt VPS resursdatora nosaukumu",
+    "existingHostname": "Esošais resursdatora nosaukums",
+    "newHostname": "Jaunais resursdatora nosaukums",
+    "updateHostname": "Atjaunināt resursdatora nosaukumu"
+  },
+  "changeRootPassword": {
+    "title": "Mainīt VPS root paroli",
+    "newPassword": "Jaunā parole:",
+    "confirmPassword": "Apstiprināt paroli:",
+    "changePassword": "Mainīt paroli",
+    "passwordMismatch": "Parole un apstiprinājuma parole nesakrīt"
+  },
+  "reinstallOs": {
+    "title": "Pārinstalēt OS",
+    "importantNote1": "Operētājsistēmas pārinstalēšana dzēsīs visus datus.",
+    "importantNote2": "Pirms operētājsistēmas pārinstalēšanas, lūdzu, izveidojiet dublējumu.",
+    "osDistribution": "Operētājsistēmas izplatījums",
+    "confirmReinstallButton": "Apstiprināt OS pārinstalēšanu"
+  },
+  "common": {
+    "goBack": "Atgriezties",
+    "back": "Atpakaļ",
+    "pleaseWait": "Lūdzu, uzgaidiet!",
+    "success": "Veiksmīgi{text}",
+    "gotError": "Radās kļūda {error}"
+  }
+}

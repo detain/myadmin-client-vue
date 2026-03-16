@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lista de Certificados SSL",
+        "orderTitle": "Ordenar Registros SSL"
+    },
+    "view": {
+        "title": "Ver SSL {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Próxima Fecha de Factura:",
+        "billing": "Facturación",
+        "billed": "facturado:",
+        "statusIs": "El estado es:",
+        "orderInfo": "Información del Pedido",
+        "certificateInfo": "Información del Certificado",
+        "links": "Enlaces",
+        "welcomeEmailConfirm": "¿Está seguro de que desea reenviar el correo de bienvenida?",
+        "emailSent": "Correo Enviado",
+        "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada."
+    },
+    "order": {
+        "title": "Ordenar SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Cambiar Correo del Aprobador",
+        "selectApproverEmail": "Seleccionar Correo del Aprobador"
+    }
+}

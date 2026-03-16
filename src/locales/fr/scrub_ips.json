@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liste des services IPs de nettoyage",
+        "orderTitle": "Commander des IPs de nettoyage"
+    },
+    "view": {
+        "title": "Voir les IPs de nettoyage",
+        "currentIp": "IP actuelle",
+        "ipAddress": "Adresse IP",
+        "ipFromService": "IP du service"
+    },
+    "filters": {
+        "title": "Filtres",
+        "createNew": "Créer nouveau",
+        "createNewFilter": "Créer un nouveau filtre",
+        "filterType": "Type de filtre",
+        "selectFilterType": "Sélectionner le type de filtre",
+        "ipAddress": "Adresse IP",
+        "portNo": "N° de port",
+        "filter": "Filtre",
+        "destinationIp": "IP de destination",
+        "destinationPort": "Port de destination",
+        "noFiltersFound": "Aucun filtre trouvé !",
+        "deleteFilterConfirm": "Êtes-vous sûr de vouloir supprimer ce filtre ?",
+        "unableToCreateFilter": "Impossible de créer un filtre pour le moment.",
+        "unableToDeleteFilter": "Impossible de supprimer le filtre pour le moment."
+    },
+    "firewallRules": {
+        "title": "Règles de pare-feu",
+        "createNew": "Créer nouveau",
+        "createNewFirewall": "Créer une nouvelle règle de pare-feu",
+        "protocol": "Protocole",
+        "destinationIp": "IP de destination",
+        "destinationPort": "Port de destination",
+        "sourceIp": "IP source",
+        "sourcePort": "Port source",
+        "xdpAction": "Action XDP",
+        "ipRequired": "L'adresse IP est requise",
+        "block": "Bloquer",
+        "whitelist": "Liste blanche",
+        "noRulesFound": "Aucune règle trouvée !",
+        "deleteRuleConfirm": "Êtes-vous sûr de vouloir supprimer cette règle ?",
+        "unableToCreateRule": "Impossible de créer une règle de pare-feu pour le moment.",
+        "unableToDeleteRule": "Impossible de supprimer la règle de pare-feu pour le moment."
+    },
+    "geoFirewallRules": {
+        "title": "Règles de pare-feu géographiques",
+        "createNew": "Créer nouveau",
+        "createNewGeoRule": "Créer une nouvelle règle de pare-feu géographique",
+        "destinationIp": "IP de destination",
+        "destinationPort": "Port de destination",
+        "sourceCountry": "Pays source",
+        "sourceAsn": "ASN source",
+        "xdpAction": "Action XDP",
+        "portNo": "N° de port",
+        "selectCountry": "Sélectionner un pays",
+        "asn": "ASN",
+        "block": "Bloquer",
+        "whitelist": "Liste blanche",
+        "noRulesFound": "Aucune règle trouvée !",
+        "deleteGeoRuleConfirm": "Êtes-vous sûr de vouloir supprimer cette règle géographique ?",
+        "unableToCreateRule": "Impossible de créer une règle de pare-feu pour le moment.",
+        "unableToDeleteRule": "Impossible de supprimer la règle de pare-feu géographique pour le moment."
+    }
+}

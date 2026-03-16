@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Scrub IPs pakalpojumu saraksts",
+    "orderTitle": "Pasūtīt Scrub IPs"
+  },
+  "view": {
+    "title": "Skatīt Scrub IPs",
+    "currentIp": "Pašreizējais IP",
+    "ipAddress": "IP adrese",
+    "ipFromService": "IP no pakalpojuma"
+  },
+  "filters": {
+    "title": "Filtri",
+    "createNew": "Izveidot jaunu",
+    "createNewFilter": "Izveidot jaunu filtru",
+    "filterType": "Filtra veids",
+    "ipAddress": "IP adrese",
+    "portNo": "Porta Nr.",
+    "filter": "Filtrs",
+    "destinationIp": "Mērķa IP",
+    "destinationPort": "Mērķa ports",
+    "noFiltersFound": "Filtri nav atrasti!",
+    "deleteFilterConfirm": "Vai tiešām vēlaties dzēst šo filtru?"
+  },
+  "firewallRules": {
+    "title": "Ugunsmūra noteikumi",
+    "createNewFirewall": "Izveidot jaunu ugunsmūra noteikumu",
+    "protocol": "Protokols",
+    "destinationIp": "Mērķa IP",
+    "sourceIp": "Avota IP",
+    "block": "Bloķēt",
+    "whitelist": "Baltais saraksts",
+    "noRulesFound": "Noteikumi nav atrasti!",
+    "deleteRuleConfirm": "Vai tiešām vēlaties dzēst šo noteikumu?"
+  },
+  "geoFirewallRules": {
+    "title": "Ģeo ugunsmūra noteikumi",
+    "createNewGeoRule": "Izveidot jaunu ģeo ugunsmūra noteikumu",
+    "destinationIp": "Mērķa IP",
+    "sourceCountry": "Avota valsts",
+    "sourceAsn": "Avota ASN",
+    "selectCountry": "Izvēlēties valsti",
+    "block": "Bloķēt",
+    "whitelist": "Baltais saraksts",
+    "noRulesFound": "Noteikumi nav atrasti!",
+    "deleteGeoRuleConfirm": "Vai tiešām vēlaties dzēst šo ģeo noteikumu?"
+  }
+}

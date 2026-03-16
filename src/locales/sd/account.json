@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "اڪائونٽ سيٽنگون"
+    },
+    "changePassword": {
+        "title": "پاسورڊ تبديل ڪريو",
+        "cardTitle": "پاسورڊ اپڊيٽ ڪريو",
+        "currentPassword": "موجوده پاسورڊ",
+        "newPassword": "نئون پاسورڊ",
+        "confirmPassword": "پاسورڊ جي تصديق ڪريو",
+        "updatePassword": "پاسورڊ اپڊيٽ ڪريو"
+    },
+    "changeUsername": {
+        "title": "يوزر نالو تبديل ڪريو",
+        "disabled": "يوزر نالو تبديلين عارضي طور بند ڪيا ويا آهن.",
+        "currentUsername": "موجوده يوزر نالو",
+        "newDesiredUsername": "نئون مطلوب يوزر نالو",
+        "confirmationCode": "تصديق ڪوڊ",
+        "pleaseWait": "مهرباني ڪري انتظار ڪريو!",
+        "gotError": "غلطي آئي {error}"
+    },
+    "contactInfo": {
+        "title": "رابطي جي معلومات",
+        "cardTitle": "رابطي جي معلومات اپڊيٽ ڪريو",
+        "headsUp": "ڌيان ڏيو!",
+        "headsUpMessage": "جيتوڻيڪ هي معلومات اختياري آهي، (درست) معلومات فراهم ڪرڻ اسان جي لاڳاپن کي بهتر بڻائيندو ۽ توهان جو رسڪ % اسڪور گهٽائيندو جيڪو توهان کي سائيٽ جي حصن تائين تيز ۽ آسان رسائي ڏيندو (جهڙوڪ ڪريڊٽ ڪارڊ تصديق ڪرڻ جي ضرورت نه هجڻ).",
+        "riskScore": "رسڪ % اسڪور",
+        "personalInformation": "ذاتي معلومات",
+        "name": "نالو",
+        "namePlaceholder": "جو ڪول",
+        "company": "ڪمپني",
+        "gstinTaxId": "GSTIN ٽيڪس ID",
+        "gstinPlaceholder": "گڊز ۽ سروسز ٽيڪس ادا ڪندڙ جي سڃاڻپ نمبر",
+        "addressLine1": "ايڊريس لائن 1",
+        "addressLine2": "ايڊريس لائن 2",
+        "cityState": "شهر، رياست",
+        "city": "شهر",
+        "state": "رياست",
+        "country": "ملڪ",
+        "zipcode": "زپ ڪوڊ",
+        "phoneNo": "فون نمبر",
+        "phoneNumber": "فون نمبر",
+        "language": "ٻولي",
+        "auto": "خودڪار",
+        "currency": "ڪرنسي",
+        "timeZone": "ٽائم زون",
+        "otherSettings": "ٻيون سيٽنگون",
+        "disablePasswordResets": "پاسورڊ ري سيٽ غير فعال ڪريو (پاسورڊ وساريو).",
+        "disableInvoiceReminders": "انوائس ياد ڏهاڻ اي ميل نوٽيفيڪيشن غير فعال ڪريو.",
+        "disableServerInvoiceReminders": "سرور انوائس ياد ڏهاڻ اي ميل نوٽيفيڪيشن غير فعال ڪريو.",
+        "disableReinstall": "ري انسٽال غير فعال ڪريو.",
+        "alternateEmailInvoices": "انوائس لاءِ متبادل اي ميل",
+        "alternateEmailInvoicesPlaceholder": "انوائس موڪلڻ لاءِ متبادل اي ميل",
+        "alternateEmailAbuse": "ڏاڍائي رپورٽ لاءِ متبادل اي ميل",
+        "updateInfo": "معلومات اپڊيٽ ڪريو"
+    }
+}

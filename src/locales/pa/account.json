@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "ਖਾਤਾ ਸੈਟਿੰਗਾਂ"
+    },
+    "changePassword": {
+        "title": "ਪਾਸਵਰਡ ਬਦਲੋ",
+        "cardTitle": "ਪਾਸਵਰਡ ਅੱਪਡੇਟ ਕਰੋ",
+        "currentPassword": "ਮੌਜੂਦਾ ਪਾਸਵਰਡ",
+        "newPassword": "ਨਵਾਂ ਪਾਸਵਰਡ",
+        "confirmPassword": "ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+        "updatePassword": "ਪਾਸਵਰਡ ਅੱਪਡੇਟ ਕਰੋ"
+    },
+    "changeUsername": {
+        "title": "ਉਪਭੋਗਤਾ ਨਾਮ ਬਦਲੋ",
+        "disabled": "ਉਪਭੋਗਤਾ ਨਾਮ ਤਬਦੀਲੀਆਂ ਅਸਥਾਈ ਤੌਰ ਤੇ ਅਯੋਗ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ।",
+        "currentUsername": "ਮੌਜੂਦਾ ਉਪਭੋਗਤਾ ਨਾਮ",
+        "newDesiredUsername": "ਨਵਾਂ ਲੋੜੀਂਦਾ ਉਪਭੋਗਤਾ ਨਾਮ",
+        "confirmationCode": "ਪੁਸ਼ਟੀਕਰਨ ਕੋਡ",
+        "pleaseWait": "ਕਿਰਪਾ ਉਡੀਕ ਕਰੋ!",
+        "gotError": "ਗਲਤੀ ਆਈ {error}"
+    },
+    "contactInfo": {
+        "title": "ਸੰਪਰਕ ਜਾਣਕਾਰੀ",
+        "cardTitle": "ਸੰਪਰਕ ਜਾਣਕਾਰੀ ਅੱਪਡੇਟ ਕਰੋ",
+        "headsUp": "ਧਿਆਨ ਦਿਓ!",
+        "headsUpMessage": "ਹਾਲਾਂਕਿ ਇਹ ਜਾਣਕਾਰੀ ਵਿਕਲਪਿਕ ਹੈ, (ਸਹੀ) ਜਾਣਕਾਰੀ ਪ੍ਰਦਾਨ ਕਰਨ ਨਾਲ ਸਾਡੀਆਂ ਗੱਲਬਾਤਾਂ ਨੂੰ ਅਮੀਰ ਬਣਾਉਣ ਅਤੇ ਤੁਹਾਡੇ ਜੋਖਮ % ਸਕੋਰ ਨੂੰ ਘਟਾਉਣ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ ਜਿਸ ਨਾਲ ਸਾਈਟ ਦੇ ਹਿੱਸਿਆਂ ਤੱਕ ਤੇਜ਼ ਅਤੇ ਵਧੇਰੇ ਸੁਵਿਧਾਜਨਕ ਪਹੁੰਚ ਮਿਲੇਗੀ।",
+        "riskScore": "ਜੋਖਮ % ਸਕੋਰ",
+        "personalInformation": "ਨਿੱਜੀ ਜਾਣਕਾਰੀ",
+        "name": "ਨਾਮ",
+        "namePlaceholder": "Joe Cool",
+        "company": "ਕੰਪਨੀ",
+        "gstinTaxId": "GSTIN ਟੈਕਸ ID",
+        "gstinPlaceholder": "ਮਾਲ ਅਤੇ ਸੇਵਾ ਟੈਕਸਦਾਤਾ ਪਛਾਣ ਨੰਬਰ",
+        "addressLine1": "ਪਤਾ ਲਾਈਨ 1",
+        "addressLine2": "ਪਤਾ ਲਾਈਨ 2",
+        "cityState": "ਸ਼ਹਿਰ, ਸੂਬਾ",
+        "city": "ਸ਼ਹਿਰ",
+        "state": "ਸੂਬਾ",
+        "country": "ਦੇਸ਼",
+        "zipcode": "ਪਿੰਨ ਕੋਡ",
+        "phoneNo": "ਫੋਨ ਨੰਬਰ",
+        "phoneNumber": "ਫੋਨ ਨੰਬਰ",
+        "language": "ਭਾਸ਼ਾ",
+        "auto": "ਆਟੋ",
+        "currency": "ਮੁਦਰਾ",
+        "timeZone": "ਸਮਾਂ ਖੇਤਰ",
+        "otherSettings": "ਹੋਰ ਸੈਟਿੰਗਾਂ",
+        "disablePasswordResets": "ਪਾਸਵਰਡ ਰੀਸੈਟ (ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ) ਬੰਦ ਕਰੋ।",
+        "disableInvoiceReminders": "ਇਨਵੌਇਸ ਰੀਮਾਈਂਡਰ ਈਮੇਲ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰੋ।",
+        "disableServerInvoiceReminders": "ਸਰਵਰ ਇਨਵੌਇਸ ਰੀਮਾਈਂਡਰ ਈਮੇਲ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰੋ।",
+        "disableReinstall": "ਮੁੜ-ਇੰਸਟਾਲ ਬੰਦ ਕਰੋ।",
+        "alternateEmailInvoices": "ਇਨਵੌਇਸ ਲਈ ਵਿਕਲਪਿਕ ਈਮੇਲ",
+        "alternateEmailInvoicesPlaceholder": "ਇਨਵੌਇਸ ਭੇਜਣ ਲਈ ਵਿਕਲਪਿਕ ਈਮੇਲ",
+        "alternateEmailAbuse": "ਦੁਰਵਰਤੋਂ ਰਿਪੋਰਟਾਂ ਲਈ ਵਿਕਲਪਿਕ ਈਮੇਲ",
+        "updateInfo": "ਜਾਣਕਾਰੀ ਅੱਪਡੇਟ ਕਰੋ"
+    }
+}

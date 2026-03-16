@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Fitantanana DNS",
+        "addDomain": "Ampio Domain",
+        "deleteDomain": "Fafao ny Domain",
+        "domainName": "Anaran'ny Domain",
+        "dnsServers": "Mpizara DNS",
+        "confirmDelete": "Tena tia hamafa ity domain ity ve ianao?",
+        "noDomains": "Tsy hita domain"
+    },
+    "editor": {
+        "title": "Mpanova DNS",
+        "addRecord": "Ampio Rakitsoratra",
+        "deleteRecord": "Fafao ny Rakitsoratra",
+        "editRecord": "Hanova ny Rakitsoratra",
+        "recordType": "Karazana Rakitsoratra",
+        "hostname": "Anaran-trano",
+        "address": "Adiresy",
+        "distance": "Elanelana",
+        "weight": "Lanja",
+        "port": "Vavahady",
+        "ttl": "TTL",
+        "actions": "Hetsika",
+        "confirmDelete": "Tena tia hamafa ity rakitsoratra ity ve ianao?"
+    }
+}

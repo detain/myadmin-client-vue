@@ -1,0 +1,28 @@
+{
+    "title": "Панели идоракунӣ",
+    "welcome": "Хуш омадед, {name}",
+    "lastLogin": "Вуруди охирин",
+    "lastLoginIp": "IP-и вуруди охирин",
+    "prepay": {
+        "title": "Мондии пешпардохт",
+        "remainingBalance": "Мондии боқимондаи пешпардохт",
+        "manageAccount": "Идоракунии ҳисоб",
+        "manageTooltip": "Идоракунии ҳисоби пешпардохти шумо"
+    },
+    "invoices": {
+        "title": "Ҳисобномаҳои нопардохт",
+        "totalUnpaid": "Ҷамъи ҳисобномаҳои нопардохт",
+        "totalAmount": "Маблағи умумии бояд пардохт шавад",
+        "payTotalTooltip": "Пардохти маблағи умумӣ"
+    },
+    "callInPin": "PIN-и занги телефон",
+    "recentTickets": "Дархостҳои охирин",
+    "viewAllTickets": "Дидани ҳамаи дархостҳо",
+    "editTicket": "Таҳрири дархост",
+    "serviceCount": "Хизматрасониҳои фаъол нест | {count} хизматрасонии фаъол | {count} хизматрасониҳои фаъол",
+    "affiliate": {
+        "earnPerSale": "Аз ҳар фурӯш {amount} ба даст оред",
+        "urlPlaceholder": "URL-и шарик",
+        "shareWith": "Мубодила бо"
+    }
+}

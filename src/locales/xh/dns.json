@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Umphathi we-DNS",
+        "addDomain": "Yongeza iDomain",
+        "deleteDomain": "Cima iDomain",
+        "domainName": "Igama leDomain",
+        "dnsServers": "Iiseva ze-DNS",
+        "confirmDelete": "Uqinisekile ukuba ufuna ukucima le domain?",
+        "noDomains": "Akukho idomain efunyenweyo"
+    },
+    "editor": {
+        "title": "Umhleli we-DNS",
+        "addRecord": "Yongeza irekhodi",
+        "deleteRecord": "Cima irekhodi",
+        "editRecord": "Hlela irekhodi",
+        "recordType": "Uhlobo lwerekhodi",
+        "hostname": "Igama lomamkeli",
+        "address": "Idilesi",
+        "distance": "Umgama",
+        "weight": "Ubunzima",
+        "port": "Isango",
+        "ttl": "TTL",
+        "actions": "Izenzo",
+        "confirmDelete": "Uqinisekile ukuba ufuna ukucima le rekhodi?"
+    }
+}

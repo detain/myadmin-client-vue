@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Elenco Web Hosting",
+    "orderTitle": "Ordina Registrazioni Siti Web"
+  },
+  "view": {
+    "title": "Visualizza Sito Web {id}",
+    "package": "Pacchetto",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturato",
+    "billingStatusIs": "Stato Fatturazione è:",
+    "login": "Accedi",
+    "links": "Link",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina Sito Web"
+  },
+  "migration": {
+    "title": "Migra il Tuo Sito Web",
+    "password": "Password",
+    "importantNotes": "Note Importanti"
+  }
+}

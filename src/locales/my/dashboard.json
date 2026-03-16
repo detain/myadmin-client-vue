@@ -1,0 +1,8 @@
+{
+    "title": "ဒက်ရှ်ဘုတ်", "welcome": "ကြိုဆိုပါသည်၊ {name}", "lastLogin": "နောက်ဆုံး လော့ဂ်အင်", "lastLoginIp": "နောက်ဆုံး လော့ဂ်အင် IP",
+    "prepay": { "title": "ကြိုပေးငွေ လက်ကျန်", "remainingBalance": "ကြိုပေးငွေ ကျန်ရှိသော လက်ကျန်", "manageAccount": "အကောင့် စီမံရန်", "manageTooltip": "သင်၏ ကြိုပေးငွေ အကောင့် စီမံရန်" },
+    "invoices": { "title": "မပေးချေရသေးသော ငွေတောင်းခံလွှာများ", "totalUnpaid": "စုစုပေါင်း မပေးချေရသေးသော ငွေတောင်းခံလွှာများ", "totalAmount": "ပေးချေရမည့် စုစုပေါင်း ပမာဏ", "payTotalTooltip": "စုစုပေါင်း ပမာဏ ပေးချေရန်" },
+    "callInPin": "ဖုန်းဆင်းရန် PIN", "recentTickets": "မကြာသေးမီ တိကစ်များ", "viewAllTickets": "တိကစ်အားလုံး ကြည့်ရန်", "editTicket": "တိကစ် တည်းဖြတ်ရန်",
+    "serviceCount": "တက်ကြွသော ဝန်ဆောင်မှု မရှိပါ | {count} တက်ကြွသော ဝန်ဆောင်မှု | {count} တက်ကြွသော ဝန်ဆောင်မှုများ",
+    "affiliate": { "earnPerSale": "ရောင်းချမှု တစ်ခုလျှင် {amount} ရယူပါ", "urlPlaceholder": "မိတ်ဖက် URL", "shareWith": "မျှဝေရန်" }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista de Servicios de IPs de Limpieza",
+        "orderTitle": "Ordenar IPs de Limpieza"
+    },
+    "view": {
+        "title": "Ver IPs de Limpieza",
+        "currentIp": "IP Actual",
+        "ipAddress": "Dirección IP",
+        "ipFromService": "IP del servicio"
+    },
+    "filters": {
+        "title": "Filtros",
+        "createNew": "Crear Nuevo",
+        "createNewFilter": "Crear Nuevo Filtro",
+        "filterType": "Tipo de Filtro",
+        "selectFilterType": "Seleccionar Tipo de Filtro",
+        "ipAddress": "Dirección IP",
+        "portNo": "Núm. de Puerto",
+        "filter": "Filtro",
+        "destinationIp": "IP de Destino",
+        "destinationPort": "Puerto de Destino",
+        "noFiltersFound": "¡No se encontraron filtros!",
+        "deleteFilterConfirm": "¿Está seguro de que desea eliminar este filtro?",
+        "unableToCreateFilter": "No se puede crear el filtro en este momento.",
+        "unableToDeleteFilter": "No se puede eliminar el filtro en este momento."
+    },
+    "firewallRules": {
+        "title": "Reglas de Firewall",
+        "createNew": "Crear Nuevo",
+        "createNewFirewall": "Crear Nueva Regla de Firewall",
+        "protocol": "Protocolo",
+        "destinationIp": "IP de Destino",
+        "destinationPort": "Puerto de Destino",
+        "sourceIp": "IP de Origen",
+        "sourcePort": "Puerto de Origen",
+        "xdpAction": "Acción XDP",
+        "ipRequired": "La dirección IP es requerida",
+        "block": "Bloquear",
+        "whitelist": "Lista Blanca",
+        "noRulesFound": "¡No se encontraron reglas!",
+        "deleteRuleConfirm": "¿Está seguro de que desea eliminar esta regla?",
+        "unableToCreateRule": "No se puede crear la regla de firewall en este momento.",
+        "unableToDeleteRule": "No se puede eliminar la regla de firewall en este momento."
+    },
+    "geoFirewallRules": {
+        "title": "Reglas de Firewall Geográfico",
+        "createNew": "Crear Nuevo",
+        "createNewGeoRule": "Crear Nueva Regla de Firewall Geográfico",
+        "destinationIp": "IP de Destino",
+        "destinationPort": "Puerto de Destino",
+        "sourceCountry": "País de Origen",
+        "sourceAsn": "ASN de Origen",
+        "xdpAction": "Acción XDP",
+        "portNo": "Núm. de Puerto",
+        "selectCountry": "Seleccionar País",
+        "asn": "ASN",
+        "block": "Bloquear",
+        "whitelist": "Lista Blanca",
+        "noRulesFound": "¡No se encontraron reglas!",
+        "deleteGeoRuleConfirm": "¿Está seguro de que desea eliminar esta regla geográfica?",
+        "unableToCreateRule": "No se puede crear la regla de firewall en este momento.",
+        "unableToDeleteRule": "No se puede eliminar la regla de firewall geográfico en este momento."
+    }
+}

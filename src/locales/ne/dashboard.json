@@ -1,0 +1,28 @@
+{
+    "title": "ड्यासबोर्ड",
+    "welcome": "स्वागत छ, {name}",
+    "lastLogin": "अन्तिम लगइन",
+    "lastLoginIp": "अन्तिम लगइन आईपी",
+    "prepay": {
+        "title": "पूर्वभुक्तान ब्यालेन्स",
+        "remainingBalance": "पूर्वभुक्तान बाँकी ब्यालेन्स",
+        "manageAccount": "खाता व्यवस्थापन गर्नुहोस्",
+        "manageTooltip": "आफ्नो पूर्वभुक्तान खाता व्यवस्थापन गर्नुहोस्"
+    },
+    "invoices": {
+        "title": "अदत्त इनभ्वाइसहरू",
+        "totalUnpaid": "कुल अदत्त इनभ्वाइसहरू",
+        "totalAmount": "भुक्तान गर्नुपर्ने कुल रकम",
+        "payTotalTooltip": "कुल रकम भुक्तान गर्नुहोस्"
+    },
+    "callInPin": "कल-इन PIN",
+    "recentTickets": "हालका टिकेटहरू",
+    "viewAllTickets": "सबै टिकेटहरू हेर्नुहोस्",
+    "editTicket": "टिकेट सम्पादन गर्नुहोस्",
+    "serviceCount": "कुनै सक्रिय सेवाहरू छैनन् | {count} सक्रिय सेवा | {count} सक्रिय सेवाहरू",
+    "affiliate": {
+        "earnPerSale": "प्रति बिक्री {amount} कमाउनुहोस्",
+        "urlPlaceholder": "एफिलिएट URL",
+        "shareWith": "साझा गर्नुहोस्"
+    }
+}

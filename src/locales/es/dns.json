@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Administrador DNS",
+        "addDomain": "Agregar Dominio",
+        "deleteDomain": "Eliminar Dominio",
+        "domainName": "Nombre de Dominio",
+        "dnsServers": "Servidores DNS",
+        "confirmDelete": "¿Está seguro de que desea eliminar este dominio?",
+        "noDomains": "No se encontraron dominios"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Agregar Registro",
+        "deleteRecord": "Eliminar Registro",
+        "editRecord": "Editar Registro",
+        "recordType": "Tipo de Registro",
+        "hostname": "Nombre de Host",
+        "address": "Dirección",
+        "distance": "Distancia",
+        "weight": "Peso",
+        "port": "Puerto",
+        "ttl": "TTL",
+        "actions": "Acciones",
+        "confirmDelete": "¿Está seguro de que desea eliminar este registro?"
+    }
+}

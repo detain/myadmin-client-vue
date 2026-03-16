@@ -1,0 +1,11 @@
+{
+    "title": "联盟系统", "breadcrumb": "联盟",
+    "attention": "此联盟计划不适用于推荐"家庭成员"或"客户"。在继续之前，请阅读 {faqLink}。",
+    "faqLinkText": "常见问题", "earnPerSale": "每笔新客户销售赚取 {amount}！",
+    "knowMore": "了解更多", "affiliateUrl": "联盟 URL", "shareUrl": "与朋友分享您的唯一联盟 URL",
+    "links": "链接", "salesGraph": "销售图表", "webTrafficGraph": "网络流量图表",
+    "goBack": "返回", "back": "返回", "exportFailed": "导出失败", "copiedToClipboard": "已复制到剪贴板。",
+    "signups": { "title": "联盟注册", "pending": "待处理", "paid": "已支付", "failed": "失败", "locked": "已锁定", "rejected": "已拒绝", "noRecords": "未找到记录", "columns": { "id": "ID", "service": "服务", "signupDate": "注册日期", "status": "状态", "paidAmount": "已支付金额", "reason": "原因" } },
+    "paymentSetup": { "title": "支付设置", "choosePayment": "选择您想如何处理联盟付款", "sendToPaypal": "通过 PayPal 发送付款", "paypalEmail": "PayPal 电子邮件" },
+    "tosPage": { "title": "服务条款", "welcome": "欢迎加入 InterServer 联盟计划" }
+}

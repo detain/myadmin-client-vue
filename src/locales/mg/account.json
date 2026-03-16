@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Fameperana ny Kaonty"
+    },
+    "changePassword": {
+        "title": "Hanova Tenimiafina",
+        "cardTitle": "Havao ny Tenimiafina",
+        "currentPassword": "Tenimiafina Ankehitriny",
+        "newPassword": "Tenimiafina Vaovao",
+        "confirmPassword": "Manamarina ny Tenimiafina",
+        "updatePassword": "Havao ny Tenimiafina"
+    },
+    "changeUsername": {
+        "title": "Hanova Anarana mpampiasa",
+        "disabled": "Voarakotra vonjimaika ny fanovana anarana mpampiasa.",
+        "currentUsername": "Anarana mpampiasa ankehitriny",
+        "newDesiredUsername": "Anarana mpampiasa vaovao ilaozana",
+        "confirmationCode": "Kaody Fanamarinana",
+        "pleaseWait": "Miandrasa azafady!",
+        "gotError": "Nahazo hadisoana {error}"
+    },
+    "contactInfo": {
+        "title": "Fampahalalana Fifandraisana",
+        "cardTitle": "Havao ny Fampahalalana Fifandraisana",
+        "headsUp": "Tandremo!",
+        "headsUpMessage": "Na dia tsy voatery aza ity fampahalalana ity, ny fanomezana fampahalalana (marina) dia hanampy amin'ny fanatsarana ny fifandraisantsika ary hanamaivana ny Risk % Score anao ka hanome anao fidirana haingana sy mora kokoa amin'ny ampahany amin'ny tranokala (toy ny tsy mila manamarina karetam-bola).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Fampahalalana Manokana",
+        "name": "Anarana",
+        "namePlaceholder": "Joe Cool",
+        "company": "Orinasa",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Laharana Adiresy 1",
+        "addressLine2": "Laharana Adiresy 2",
+        "cityState": "Tanàna, Fanjakana",
+        "city": "Tanàna",
+        "state": "Fanjakana",
+        "country": "Firenena",
+        "zipcode": "Kaody Paositra",
+        "phoneNo": "Nomeran-telefaona",
+        "phoneNumber": "Nomeran-telefaona",
+        "language": "Fiteny",
+        "auto": "Amin'ny tena azy",
+        "currency": "Vola",
+        "timeZone": "Faritra Ora",
+        "otherSettings": "Fameperana hafa",
+        "disablePasswordResets": "Manakana ny famerenana tenimiafina (Nahadino ny Tenimiafina).",
+        "disableInvoiceReminders": "Manakana ny Fampahafantarana Email Fampahatsiahivana Faktiora.",
+        "disableServerInvoiceReminders": "Manakana ny Fampahafantarana Email Fampahatsiahivana Faktiora Mpizara.",
+        "disableReinstall": "Manakana ny Fametrahana indray.",
+        "alternateEmailInvoices": "Email hafa ho an'ny Faktiora",
+        "alternateEmailInvoicesPlaceholder": "Email hafa ho an'ny fanatitrana faktiora",
+        "alternateEmailAbuse": "Email hafa ho an'ny Tatitry ny Fanampiasana ratsy",
+        "updateInfo": "Havao ny Fampahalalana"
+    }
+}

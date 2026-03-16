@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lisitry ny Serivisy Floating IPs",
+        "orderTitle": "Manome baiko ny Fisoratana Floating IP"
+    },
+    "view": {
+        "title": "Jereo ny Floating IP {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa:",
+        "statusIs": "Sata dia:",
+        "floatingIp": "Floating IP",
+        "links": "Rohy",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "order": {
+        "title": "Manome baiko Floating IP"
+    },
+    "changeIp": {
+        "title": "Hanova ny IP Tanjona"
+    }
+}

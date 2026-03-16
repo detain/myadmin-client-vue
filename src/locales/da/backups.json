@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lager / Sikkerhedskopiliste",
+        "orderTitle": "Bestil sikkerhedskopiregsitreringer"
+    },
+    "view": {
+        "title": "Se sikkerhedskopi {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Næste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "Faktureret:",
+        "statusIs": "Status er:",
+        "hostServer": "Hostserver",
+        "links": "Links",
+        "welcomeEmailConfirm": "Er du sikker på, at du vil gensende velkomst-e-mailen?",
+        "emailSent": "E-mail sendt",
+        "emailSentMessage": "Velkomst-e-mailen er gensendt. Tjek din indbakke."
+    },
+    "order": {
+        "title": "Bestil lager"
+    }
+}

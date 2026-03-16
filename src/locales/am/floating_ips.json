@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "ተንሳፋፊ IPs አገልግሎቶች ዝርዝር",
+        "orderTitle": "ተንሳፋፊ IP ምዝገባዎችን አዝዝ"
+    },
+    "view": {
+        "title": "ተንሳፋፊ IP {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል:",
+        "statusIs": "ሁኔታ ነው:",
+        "floatingIp": "ተንሳፋፊ IP",
+        "links": "ሊንኮች",
+        "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።"
+    },
+    "order": {
+        "title": "ተንሳፋፊ IP አዝዝ"
+    },
+    "changeIp": {
+        "title": "ዒላማ IP ቀይር"
+    }
+}

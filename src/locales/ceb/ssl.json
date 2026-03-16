@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Listahan sa Mga SSL Certificate", "orderTitle": "Mag-order og SSL Registrations" },
+    "view": { "title": "Tan-awa ang SSL {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill:", "statusIs": "Ang Status mao:", "orderInfo": "Impormasyon sa Order", "certificateInfo": "Impormasyon sa Certificate", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
+    "order": { "title": "Mag-order og SSL" },
+    "changeApproverEmail": { "title": "Usba ang Email sa Approver", "selectApproverEmail": "Pilia ang Email sa Approver" }
+}

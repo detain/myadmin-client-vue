@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Configuratio Rationis"
+    },
+    "changePassword": {
+        "title": "Muta Tesseram",
+        "cardTitle": "Renova Tesseram",
+        "currentPassword": "Tessera Praesens",
+        "newPassword": "Nova Tessera",
+        "confirmPassword": "Confirma Tesseram",
+        "updatePassword": "Renova Tesseram"
+    },
+    "changeUsername": {
+        "title": "Muta Nomen Utentis",
+        "disabled": "Mutationes nominis utentis temporarie prohibitae sunt.",
+        "currentUsername": "Nomen Utentis Praesens",
+        "newDesiredUsername": "Novum Nomen Utentis Desideratum",
+        "confirmationCode": "Codex Confirmationis",
+        "pleaseWait": "Quaeso exspecta!",
+        "gotError": "Error acceptus {error}"
+    },
+    "contactInfo": {
+        "title": "Informationes Contactus",
+        "cardTitle": "Renova Informationes Contactus",
+        "headsUp": "Attende!",
+        "headsUpMessage": "Quamquam haec informatio optionalis est, praebere informationes (accuratas) adiuvabit tam colloquia nostra ditare quam Censum % Periculi tuum minuere tibi celeriorem et commodiorem accessum ad partes situs dans (velut non necesse habere chartam nummarian authenticare).",
+        "riskScore": "Census % Periculi",
+        "personalInformation": "Informationes Personales",
+        "name": "Nomen",
+        "namePlaceholder": "Marcus Tullius",
+        "company": "Societas",
+        "gstinTaxId": "Numerus Tributarius GSTIN",
+        "gstinPlaceholder": "Numerus Identificationis Contribuentis Bonorum et Servitiorum",
+        "addressLine1": "Inscriptio Linea 1",
+        "addressLine2": "Inscriptio Linea 2",
+        "cityState": "Urbs, Provincia",
+        "city": "Urbs",
+        "state": "Provincia",
+        "country": "Patria",
+        "zipcode": "Codex Postalis",
+        "phoneNo": "Numerus Telephonicus",
+        "phoneNumber": "Numerus Telephonicus",
+        "language": "Lingua",
+        "auto": "Automatice",
+        "currency": "Moneta",
+        "timeZone": "Zona Temporis",
+        "otherSettings": "Aliae Configurationes",
+        "disablePasswordResets": "Prohibe (Oblitus Tesserae) Restitutionem Tesserae.",
+        "disableInvoiceReminders": "Prohibe Notificationes Epistulae de Memoria Rationis.",
+        "disableServerInvoiceReminders": "Prohibe Notificationes Epistulae de Memoria Rationis Serveri.",
+        "disableReinstall": "Prohibe Reinstallationem.",
+        "alternateEmailInvoices": "Epistula Alternativa pro Rationibus",
+        "alternateEmailInvoicesPlaceholder": "Epistula alternativa pro mittendis rationibus",
+        "alternateEmailAbuse": "Epistula Alternativa pro Relationibus Abusus",
+        "updateInfo": "Renova Informationes"
+    }
+}

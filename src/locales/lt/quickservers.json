@@ -1,0 +1,43 @@
+{
+  "list": {
+    "title": "Greito diegimo serverių sąrašas",
+    "orderTitle": "Užsakyti greito diegimo serverių registracijas"
+  },
+  "view": {
+    "title": "Peržiūrėti greito diegimo serverį {id}",
+    "package": "Paketas",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita:",
+    "paymentStatus": "Mokėjimo būsena:",
+    "statusIs": "Būsena:",
+    "serverInformation": "QuickServer informacija",
+    "powerStatusIs": "Maitinimo būsena:",
+    "selectAction": "Pasirinkti veiksmą",
+    "disk": "Diskas",
+    "totalSpace": "Bendras plotas:",
+    "freeSpace": "Laisvas plotas:",
+    "remainingSpace": "Likęs plotas:",
+    "systemInformation": "Sistemos informacija",
+    "os": "OS",
+    "links": "Nuorodos",
+    "updateComment": "Atnaujinti komentarą",
+    "saveChanges": "Išsaugoti pakeitimus",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti greito diegimo serverį",
+    "orderSummary": "Užsakymo santrauka",
+    "selectServer": "Pasirinkti serverį",
+    "osDistribution": "OS platinimas",
+    "osVersion": "OS versija",
+    "rootPassword": "Root slaptažodis",
+    "total": "Iš viso",
+    "serverName": "Serverio pavadinimas",
+    "operatingSystem": "Operacinė sistema",
+    "agreeToTerms": "Sutikti su pasiūlymo sąlygomis",
+    "iAgreeToTerms": "Perskaičiau aukščiau esančias sąlygas ir sutinku.",
+    "placeOrder": "Pateikti užsakymą"
+  }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liste over Scrub IPs-tjenester",
+        "orderTitle": "Bestil Scrub IPs"
+    },
+    "view": {
+        "title": "Se Scrub IPs",
+        "currentIp": "Nuværende IP",
+        "ipAddress": "IP-adresse",
+        "ipFromService": "IP fra tjeneste"
+    },
+    "filters": {
+        "title": "Filtre",
+        "createNew": "Opret ny",
+        "createNewFilter": "Opret nyt filter",
+        "filterType": "Filtertype",
+        "selectFilterType": "Vælg filtertype",
+        "ipAddress": "IP-adresse",
+        "portNo": "Portnr.",
+        "filter": "Filter",
+        "destinationIp": "Destinations-IP",
+        "destinationPort": "Destinationsport",
+        "noFiltersFound": "Ingen filtre fundet!",
+        "deleteFilterConfirm": "Er du sikker på, at du vil slette dette filter?",
+        "unableToCreateFilter": "Kan ikke oprette filter på nuværende tidspunkt.",
+        "unableToDeleteFilter": "Kan ikke slette filter på nuværende tidspunkt."
+    },
+    "firewallRules": {
+        "title": "Firewall-regler",
+        "createNew": "Opret ny",
+        "createNewFirewall": "Opret ny firewall-regel",
+        "protocol": "Protokol",
+        "destinationIp": "Destinations-IP",
+        "destinationPort": "Destinationsport",
+        "sourceIp": "Kilde-IP",
+        "sourcePort": "Kildeport",
+        "xdpAction": "XDP-handling",
+        "ipRequired": "IP-adresse er påkrævet",
+        "block": "Bloker",
+        "whitelist": "Hvidliste",
+        "noRulesFound": "Ingen regler fundet!",
+        "deleteRuleConfirm": "Er du sikker på, at du vil slette denne regel?",
+        "unableToCreateRule": "Kan ikke oprette firewall-regel på nuværende tidspunkt.",
+        "unableToDeleteRule": "Kan ikke slette firewall-regel på nuværende tidspunkt."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-firewall-regler",
+        "createNew": "Opret ny",
+        "createNewGeoRule": "Opret ny geo-firewall-regel",
+        "destinationIp": "Destinations-IP",
+        "destinationPort": "Destinationsport",
+        "sourceCountry": "Kildeland",
+        "sourceAsn": "Kilde-ASN",
+        "xdpAction": "XDP-handling",
+        "portNo": "Portnr.",
+        "selectCountry": "Vælg land",
+        "asn": "ASN",
+        "block": "Bloker",
+        "whitelist": "Hvidliste",
+        "noRulesFound": "Ingen regler fundet!",
+        "deleteGeoRuleConfirm": "Er du sikker på, at du vil slette denne geo-regel?",
+        "unableToCreateRule": "Kan ikke oprette firewall-regel på nuværende tidspunkt.",
+        "unableToDeleteRule": "Kan ikke slette geo-firewall-regel på nuværende tidspunkt."
+    }
+}

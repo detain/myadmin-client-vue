@@ -1,0 +1,13 @@
+{
+  "manager": {
+    "title": "DNS басқарушысы", "addDomain": "Домен қосу", "deleteDomain": "Доменді жою",
+    "domainName": "Домен атауы", "dnsServers": "DNS серверлері",
+    "confirmDelete": "Бұл доменді жойғыңыз келе ме?", "noDomains": "Домендер табылмады"
+  },
+  "editor": {
+    "title": "DNS редакторы", "addRecord": "Жазба қосу", "deleteRecord": "Жазбаны жою",
+    "editRecord": "Жазбаны өңдеу", "recordType": "Жазба түрі", "hostname": "Хост атауы",
+    "address": "Мекенжай", "distance": "Қашықтық", "weight": "Салмақ", "port": "Порт",
+    "ttl": "TTL", "actions": "Әрекеттер", "confirmDelete": "Бұл жазбаны жойғыңыз келе ме?"
+  }
+}

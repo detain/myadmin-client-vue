@@ -1,0 +1,12 @@
+{
+    "required": "{field} es requerido",
+    "email": "Debe ser una dirección de correo electrónico válida",
+    "minLength": "Debe tener al menos {min} caracteres",
+    "maxLength": "No debe tener más de {max} caracteres",
+    "passwordMatch": "Las contraseñas deben coincidir",
+    "invalidFormat": "Formato inválido",
+    "numeric": "Debe ser un número",
+    "url": "Debe ser una URL válida",
+    "ipAddress": "Debe ser una dirección IP válida",
+    "hostname": "Debe ser un nombre de host válido"
+}

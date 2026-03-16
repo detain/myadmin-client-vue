@@ -1,0 +1,5 @@
+{
+    "list": { "title": "Lista di almacenazione / backup", "orderTitle": "Ordinate registrazioni di backup" },
+    "view": { "title": "Vede backup {id}", "package": "Pacchettu", "nextInvoiceDate": "Data di a prossima fattura:", "billing": "Fatturazione", "billed": "fatturatu:", "statusIs": "U statu hè:", "hostServer": "Servore ospite", "links": "Ligami", "emailSent": "Email mandata", "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella." },
+    "order": { "title": "Ordinate almacenazione" }
+}

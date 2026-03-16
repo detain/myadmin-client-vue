@@ -1,0 +1,28 @@
+{
+    "title": "Paneli",
+    "welcome": "Mirë se vini, {name}",
+    "lastLogin": "Hyrja e Fundit",
+    "lastLoginIp": "IP e Hyrjes së Fundit",
+    "prepay": {
+        "title": "Balanca e Parapagesës",
+        "remainingBalance": "Balanca e Mbetur e Parapagesës",
+        "manageAccount": "Menaxho Llogarinë",
+        "manageTooltip": "Menaxhoni Llogarinë tuaj të Parapagesës"
+    },
+    "invoices": {
+        "title": "Faturat e Papaguara",
+        "totalUnpaid": "Totali i Faturave të Papaguara",
+        "totalAmount": "Shuma Totale për t'u Paguar",
+        "payTotalTooltip": "Paguaj Shumën Totale"
+    },
+    "callInPin": "PIN i Thirrjes",
+    "recentTickets": "Biletat e Fundit",
+    "viewAllTickets": "Shiko Të Gjitha Biletat",
+    "editTicket": "Ndrysho Biletën",
+    "serviceCount": "Nuk ka shërbime aktive | {count} shërbim aktiv | {count} shërbime aktive",
+    "affiliate": {
+        "earnPerSale": "Fitoni {amount} për Çdo Shitje",
+        "urlPlaceholder": "URL e Filialit",
+        "shareWith": "Ndaj me"
+    }
+}

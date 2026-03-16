@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Litlhophiso tsa Akhaonto"
+  },
+  "changePassword": {
+    "title": "Fetola Password",
+    "cardTitle": "Ntlafatsa Password",
+    "currentPassword": "Password ea Hajoale",
+    "newPassword": "Password e Ncha",
+    "confirmPassword": "Tiisa Password",
+    "updatePassword": "Ntlafatsa Password"
+  },
+  "changeUsername": {
+    "title": "Fetola Lebitso la Mosebedisi",
+    "disabled": "Ho fetola lebitso la mosebedisi ho emisitsoe nakwana.",
+    "currentUsername": "Lebitso la Mosebedisi la Hajoale",
+    "newDesiredUsername": "Lebitso le Lecha la Mosebedisi le Batlehang",
+    "confirmationCode": "Khoutu ea Tiiso",
+    "pleaseWait": "Ka kopo ema!",
+    "gotError": "Ho entsoe phoso {error}"
+  },
+  "contactInfo": {
+    "title": "Lintlha tsa Ts'ebisano",
+    "cardTitle": "Ntlafatsa Lintlha tsa Ts'ebisano",
+    "headsUp": "Ela hloko!",
+    "headsUpMessage": "Le hoja lintlha tsena li sa tlameha, ho fana ka lintlha tse nepahetseng ho tla thusa ho theola Liperesente tsa Kotsi ea Hau.",
+    "riskScore": "Liperesente tsa Kotsi",
+    "personalInformation": "Lintlha tsa Botho",
+    "name": "Lebitso",
+    "company": "Khampani",
+    "addressLine1": "Mola oa Aterese 1",
+    "addressLine2": "Mola oa Aterese 2",
+    "city": "Toropo",
+    "state": "Setereke",
+    "country": "Naha",
+    "zipcode": "Khoutu ea Poso",
+    "phoneNumber": "Nomoro ea Mohala",
+    "language": "Puo",
+    "auto": "Itsamaele",
+    "currency": "Tjhelete",
+    "timeZone": "Sebaka sa Nako",
+    "otherSettings": "Litlhophiso tse Ling",
+    "disablePasswordResets": "Thibela (U lebetse Password ea Hau) Ho Hlapholla Password.",
+    "disableInvoiceReminders": "Thibela Liitsiso tsa Imeile ea Invoice.",
+    "alternateEmailInvoices": "Imeile e Nngwe bakeng sa Liinvoisi",
+    "alternateEmailAbuse": "Imeile e Nngwe bakeng sa Lipuisano tsa Koluoa",
+    "updateInfo": "Ntlafatsa Lintlha"
+  }
+}

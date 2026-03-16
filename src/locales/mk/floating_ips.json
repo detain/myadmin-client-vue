@@ -1,0 +1,24 @@
+{
+  "list": {
+    "title": "Листа на Floating IPs услуги",
+    "orderTitle": "Нарачај Floating IP регистрации"
+  },
+  "view": {
+    "title": "Прегледај Floating IP {id}",
+    "package": "Пакет",
+    "nextInvoiceDate": "Следен датум на фактура:",
+    "billing": "Наплата",
+    "billed": "наплатено:",
+    "statusIs": "Статусот е:",
+    "floatingIp": "Floating IP",
+    "links": "Врски",
+    "emailSent": "Е-пошта е испратена",
+    "emailSentMessage": "Добредојде е-поштата беше повторно испратена. Проверете го вашето сандаче."
+  },
+  "order": {
+    "title": "Нарачај Floating IP"
+  },
+  "changeIp": {
+    "title": "Промени целна IP"
+  }
+}

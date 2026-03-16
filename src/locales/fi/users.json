@@ -1,0 +1,1 @@
+{ "title": "Käyttäjät", "addUser": "Lisää käyttäjä", "editUser": "Muokkaa käyttäjää", "firstName": "Etunimi", "lastName": "Sukunimi", "username": "Käyttäjänimi", "password": "Salasana", "keepSamePassword": "Jätä tyhjäksi pitääksesi saman salasanan", "errorLoading": "Virhe ladattaessa käyttäjiä:", "errorLoadingUser": "Virhe ladattaessa käyttäjää:" }

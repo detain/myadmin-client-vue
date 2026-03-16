@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Ndepụta Licenses",
+        "orderTitle": "Iwu Ndebanye License"
+    },
+    "view": {
+        "title": "Lee License {id}",
+        "package": "Ngwugwu",
+        "nextInvoiceDate": "Ụbọchị Ụgwọ Ọzọ:",
+        "billing": "Ụgwọ",
+        "billed": "A kwụọ ụgwọ:",
+        "statusIs": "Ọnọdụ bụ:",
+        "licenseInfo": "Ozi License",
+        "cpanelInfo": "Ozi cPanel",
+        "links": "Njikọ",
+        "welcomeEmailConfirm": "Ị dị mma ịziga ozi email nnabata ọzọ?",
+        "emailSent": "Email Ezigara",
+        "emailSentMessage": "Ezigaala ozi email nnabata ọzọ. Lelee ịgwọ gị."
+    },
+    "order": {
+        "title": "Iwu License"
+    },
+    "changeIp": {
+        "title": "Gbanwee IP"
+    },
+    "changeOs": {
+        "title": "Gbanwee OS",
+        "selectLicenseOs": "Họrọ OS License"
+    }
+}

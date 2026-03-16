@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "د حساب ترتیبات"
+    },
+    "changePassword": {
+        "title": "پاسورډ بدل کړئ",
+        "cardTitle": "پاسورډ تازه کړئ",
+        "currentPassword": "اوسنی پاسورډ",
+        "newPassword": "نوی پاسورډ",
+        "confirmPassword": "پاسورډ تایید کړئ",
+        "updatePassword": "پاسورډ تازه کړئ"
+    },
+    "changeUsername": {
+        "title": "کارونکي نوم بدل کړئ",
+        "disabled": "د کارونکي نوم بدلول لنډمهاله غیر فعال شوي.",
+        "currentUsername": "اوسنی کارونکي نوم",
+        "newDesiredUsername": "نوی مطلوب کارونکي نوم",
+        "confirmationCode": "د تایید کوډ",
+        "pleaseWait": "مهرباني وکړئ انتظار وکړئ!",
+        "gotError": "تېروتنه ترلاسه شوه {error}"
+    },
+    "contactInfo": {
+        "title": "د اتصال معلومات",
+        "cardTitle": "د اتصال معلومات تازه کړئ",
+        "headsUp": "پام وکړئ!",
+        "headsUpMessage": "که څه هم دا معلومات اختیاري دي، (دقیق) معلومات چمتو کول به زموږ اړیکې بهتره کړي او ستاسو د خطر سلنه ټيټه کړي، ستاسو لپاره د سایټ برخو ته چټک او اسانه لاسرسی ممکن کوي (لکه د کریډیټ کارت تصدیق اړتیا نلرل).",
+        "riskScore": "د خطر سلنه",
+        "personalInformation": "شخصي معلومات",
+        "name": "نوم",
+        "namePlaceholder": "جو کول",
+        "company": "شرکت",
+        "gstinTaxId": "GSTIN مالیاتي ID",
+        "gstinPlaceholder": "د توکو او خدماتو د مالیاتو پیژندنه شمیره",
+        "addressLine1": "د پته کرښه ۱",
+        "addressLine2": "د پته کرښه ۲",
+        "cityState": "ښار، ایالت",
+        "city": "ښار",
+        "state": "ایالت",
+        "country": "هیواد",
+        "zipcode": "پوستي کوډ",
+        "phoneNo": "د تلیفون شمیره",
+        "phoneNumber": "د تلیفون شمیره",
+        "language": "ژبه",
+        "auto": "اتومات",
+        "currency": "اسعار",
+        "timeZone": "د وخت سیمه",
+        "otherSettings": "نور ترتیبات",
+        "disablePasswordResets": "د پاسورډ بیا تنظیم غیر فعال کړئ (پاسورډ مو هیر شو).",
+        "disableInvoiceReminders": "د انوایس یادونې بریښنالیک خبرتیاوې غیر فعال کړئ.",
+        "disableServerInvoiceReminders": "د سرور انوایس یادونې بریښنالیک خبرتیاوې غیر فعال کړئ.",
+        "disableReinstall": "بیا نصب کول غیر فعال کړئ.",
+        "alternateEmailInvoices": "د انوایسونو لپاره بدیل بریښنالیک",
+        "alternateEmailInvoicesPlaceholder": "د انوایسونو لیږلو لپاره بدیل بریښنالیک",
+        "alternateEmailAbuse": "د ناوړه ګټې اخیستنې راپورونو لپاره بدیل بریښنالیک",
+        "updateInfo": "معلومات تازه کړئ"
+    }
+}

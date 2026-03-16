@@ -1,0 +1,28 @@
+{
+    "title": "Панель управления",
+    "welcome": "Добро пожаловать, {name}",
+    "lastLogin": "Последний вход",
+    "lastLoginIp": "IP последнего входа",
+    "prepay": {
+        "title": "Баланс предоплаты",
+        "remainingBalance": "Остаток предоплаты",
+        "manageAccount": "Управление аккаунтом",
+        "manageTooltip": "Управление вашим аккаунтом предоплаты"
+    },
+    "invoices": {
+        "title": "Неоплаченные счета",
+        "totalUnpaid": "Всего неоплаченных счетов",
+        "totalAmount": "Общая сумма к оплате",
+        "payTotalTooltip": "Оплатить общую сумму"
+    },
+    "callInPin": "PIN для звонка",
+    "recentTickets": "Последние тикеты",
+    "viewAllTickets": "Просмотреть все тикеты",
+    "editTicket": "Редактировать тикет",
+    "serviceCount": "Нет активных услуг | {count} активная услуга | {count} активных услуги",
+    "affiliate": {
+        "earnPerSale": "Зарабатывайте {amount} за продажу",
+        "urlPlaceholder": "Партнёрский URL",
+        "shareWith": "Поделиться с"
+    }
+}

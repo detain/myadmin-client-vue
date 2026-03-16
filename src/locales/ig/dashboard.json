@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Nnọọ, {name}",
+    "lastLogin": "Nbanye Ikpeazụ",
+    "lastLoginIp": "IP Nbanye Ikpeazụ",
+    "prepay": {
+        "title": "Ọtụtụ Prepay",
+        "remainingBalance": "Ọtụtụ Prepay Fọdụrụ",
+        "manageAccount": "Njikwa Akaụntụ",
+        "manageTooltip": "Jikwaa Akaụntụ Prepay Gị"
+    },
+    "invoices": {
+        "title": "Ụgwọ Akwụọghị",
+        "totalUnpaid": "Ụgwọ Niile Akwụọghị",
+        "totalAmount": "Ọnụọgụ Niile Ka A Kwụọ Ụgwọ",
+        "payTotalTooltip": "Kwụọ Ọnụọgụ Niile"
+    },
+    "callInPin": "PIN Ịkpọ Ekwentị",
+    "recentTickets": "Tiketi Ọhụụ",
+    "viewAllTickets": "Lee Tiketi Niile",
+    "editTicket": "Dezie Tiketi",
+    "serviceCount": "Enweghị ọrụ na-arụ ọrụ | Ọrụ {count} na-arụ ọrụ | Ọrụ {count} na-arụ ọrụ",
+    "affiliate": {
+        "earnPerSale": "Nweta {amount} Maka Ahịa Ọ Bụla",
+        "urlPlaceholder": "URL Mmekọrịta",
+        "shareWith": "Kesaa na"
+    }
+}

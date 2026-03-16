@@ -1,0 +1,26 @@
+{
+  "list": {
+    "title": "Tīmekļa hostinga saraksts",
+    "orderTitle": "Pasūtīt vietnes reģistrācijas"
+  },
+  "view": {
+    "title": "Skatīt vietni {id}",
+    "package": "Pakete",
+    "nextInvoiceDate": "Nākamā rēķina datums:",
+    "billing": "Norēķini",
+    "billed": "norēķināts",
+    "billingStatusIs": "Norēķinu statuss ir:",
+    "login": "Pieteikties",
+    "links": "Saites",
+    "emailSent": "E-pasts nosūtīts",
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "title": "Pasūtīt vietni"
+  },
+  "migration": {
+    "title": "Migrēt savu vietni",
+    "password": "Parole",
+    "importantNotes": "Svarīgas piezīmes"
+  }
+}

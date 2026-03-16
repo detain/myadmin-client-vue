@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "Domēnu reģistrāciju saraksts",
+    "orderTitle": "Pasūtīt domēnu reģistrācijas",
+    "domainName": "Domēna nosaukums",
+    "domainExpirationDate": "Domēna derīguma termiņš",
+    "active": "Aktīvs",
+    "pending": "Gaida",
+    "expired": "Beidzies",
+    "all": "Visi"
+  },
+  "view": {
+    "pageTitle": "Skatīt domēnu - {hostname}",
+    "package": "Pakete",
+    "billing": "Norēķini",
+    "whoisPrivacy": "Whois privātums",
+    "nameservers": "Nosaukumu serveri",
+    "contactInformation": "Kontaktinformācija",
+    "emailSent": "E-pasts nosūtīts",
+    "welcomeEmailResent": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+  },
+  "order": {
+    "pageTitle": "Pasūtīt domēnu",
+    "findDomain": "Atrodiet savu domēnu un pārbaudiet pieejamību.",
+    "available": "Jā! Jūsu domēns {domain} ir pieejams! Varat to reģistrēt par {cost}. Atjaunošanas izmaksas būs {renewal}.",
+    "taken": "Atvainojiet! Jūsu domēns {domain} jau ir aizņemts!",
+    "registerDomain": "Reģistrēt domēnu ({hostname})",
+    "contactInformation": "Kontaktinformācija",
+    "goBack": "Atgriezties",
+    "continue": "Turpināt",
+    "total": "Kopā",
+    "agreeCheckbox": "Esmu izlasījis iepriekš minētos noteikumus un piekrītu tiem.",
+    "placeOrder": "Veikt pasūtījumu"
+  },
+  "nameservers": {
+    "title": "Domēna nosaukumu serveri",
+    "nameservers": "Nosaukumu serveri",
+    "hostname": "Resursdatora nosaukums",
+    "ipAddress": "IP adrese",
+    "deleteConfirm": "Jūs gatavojaties dzēst sava domēna nosaukumu serveri.",
+    "yesDeleteIt": "Jā, dzēst to"
+  },
+  "whois": {
+    "title": "Whois privātums",
+    "currentlyEnabled": "Whois privātums ir pašlaik iespējots {hostname}.",
+    "disableAndCancel": "Atspējot un atcelt Whois privātumu",
+    "orderSuccess": "Whois privātuma pasūtījums veiksmīgi veikts!",
+    "whoisEnabled": "Whois privātums tagad ir iespējots.",
+    "whoisDisabled": "Whois privātums ir atspējots un atcelts."
+  },
+  "lock": {
+    "title": "Domēna bloķēšana/atbloķēšana",
+    "lockIt": "Jā, bloķēt to.",
+    "unlockIt": "Jā, atbloķēt to."
+  },
+  "renew": {
+    "title": "Atjaunot",
+    "domain": "Domēns",
+    "expiryDate": "Derīguma termiņš",
+    "renewCost": "Atjaunošanas izmaksas",
+    "totalCost": "Kopējās izmaksas",
+    "goToPayment": "Doties uz maksājumu"
+  }
+}

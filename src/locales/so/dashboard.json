@@ -1,0 +1,28 @@
+{
+    "title": "Diiwaanka",
+    "welcome": "Ku soo dhawow, {name}",
+    "lastLogin": "Galitaankii Ugu Dambeeyay",
+    "lastLoginIp": "IP Galitaankii Ugu Dambeeyay",
+    "prepay": {
+        "title": "Haraagga Hordhac-bixinta",
+        "remainingBalance": "Haraagga Dhintay ee Hordhac-bixinta",
+        "manageAccount": "Xisaabta Maamul",
+        "manageTooltip": "Xisaabta Hordhac-bixintaaga Maamul"
+    },
+    "invoices": {
+        "title": "Qaybsashada aan La Bixin",
+        "totalUnpaid": "Wadarta Qaybsashada aan La Bixin",
+        "totalAmount": "Wadarta Xaddiga Waa La Bixin Doonaa",
+        "payTotalTooltip": "Wadarta Xaddiga Bixo"
+    },
+    "callInPin": "Lambarka PIN-ka Wicitaanka",
+    "recentTickets": "Tigidhadda Dhowaan",
+    "viewAllTickets": "Dhammaan Tigidhadda Arag",
+    "editTicket": "Tigidhada Wax ka beddel",
+    "serviceCount": "Ma jiraan adeeg firfircoon | {count} adeeg firfircoon | {count} adeeg firfircoon",
+    "affiliate": {
+        "earnPerSale": "Kasb {amount} Iibsi Kasta",
+        "urlPlaceholder": "URL-ka Xulafada",
+        "shareWith": "La wadaag"
+    }
+}

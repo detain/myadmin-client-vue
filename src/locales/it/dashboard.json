@@ -1,0 +1,28 @@
+{
+  "title": "Dashboard",
+  "welcome": "Benvenuto, {name}",
+  "lastLogin": "Ultimo Accesso",
+  "lastLoginIp": "IP Ultimo Accesso",
+  "prepay": {
+    "title": "Saldo Prepagato",
+    "remainingBalance": "Saldo Prepagato Rimanente",
+    "manageAccount": "Gestisci Account",
+    "manageTooltip": "Gestisci il Tuo Account Prepagato"
+  },
+  "invoices": {
+    "title": "Fatture Non Pagate",
+    "totalUnpaid": "Totale Fatture Non Pagate",
+    "totalAmount": "Importo Totale da Pagare",
+    "payTotalTooltip": "Paga Importo Totale"
+  },
+  "callInPin": "PIN di Chiamata",
+  "recentTickets": "Ticket Recenti",
+  "viewAllTickets": "Visualizza Tutti i Ticket",
+  "editTicket": "Modifica Ticket",
+  "serviceCount": "Nessun servizio attivo | {count} servizio attivo | {count} servizi attivi",
+  "affiliate": {
+    "earnPerSale": "Guadagna {amount} per vendita",
+    "urlPlaceholder": "URL Affiliato",
+    "shareWith": "Condividi con"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Lista d'ospitalità web", "orderTitle": "Ordinate registrazioni di situ web" },
+    "view": { "title": "Vede situ web {id}", "package": "Pacchettu", "nextInvoiceDate": "Data di a prossima fattura:", "billing": "Fatturazione", "billed": "fatturatu", "billingStatusIs": "U statu di fatturazione hè:", "login": "Accede", "links": "Ligami", "emailSent": "Email mandata", "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella." },
+    "order": { "title": "Ordinate un situ web" },
+    "migration": { "title": "Migrate u vostru situ web", "password": "Password", "importantNotes": "Note impurtanti" }
+}

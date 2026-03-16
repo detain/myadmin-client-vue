@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Llista de certificats SSL", "orderTitle": "Comandar registres SSL" },
+    "view": { "title": "Veure SSL {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat:", "statusIs": "L'estat és:", "orderInfo": "Informació de la comanda", "certificateInfo": "Informació del certificat", "links": "Enllaços", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
+    "order": { "title": "Comandar SSL" },
+    "changeApproverEmail": { "title": "Canviar el correu electrònic de l'aprovador", "selectApproverEmail": "Seleccionar el correu electrònic de l'aprovador" }
+}

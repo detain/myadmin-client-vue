@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Dedicéierte Serverlëscht",
+    "orderTitle": "Server-Registréierungen bestalln"
+  },
+  "view": {
+    "title": "Server {id} ukucken",
+    "package": "Pak",
+    "dedicatedServer": "Dedicéierte Server",
+    "nextInvoiceDate": "Nächst Rechnungsdatum:",
+    "billing": "Rechnung",
+    "billed": "berechent:",
+    "statusIs": "Status ass:",
+    "orderInfo": "Bestellungsinformatioun",
+    "orderId": "Bestellungs-ID:",
+    "links": "Linken",
+    "serverInformation": "Serverinformatioun",
+    "networkInformation": "Netzwierk-Informatioun",
+    "power": "Stroum",
+    "selectAction": "Aktioun auswiele",
+    "softReboot": "Soft Reboot",
+    "paymentStatus": "Bezuelungsstatus:",
+    "emailSent": "E-Mail geschéckt",
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+  },
+  "order": {
+    "title": "Server bestalln",
+    "orderDedicatedServer": "Dedicéierte Server bestalln",
+    "orderSummary": "Bestellungszesummefaassung",
+    "selectServer": "Server auswiele",
+    "serverHostname": "Server-Hostname",
+    "rootPassword": "Root-Passwuert",
+    "agreeToTerms": "Mat de Konditiounen averstane sinn",
+    "iAgreeToTerms": "Ech hunn d'Konditiounen hei uewen gelies a stëmmen deem zou.",
+    "placeOrder": "Bestellung opgin",
+    "cpuSelection": "CPU-Auswiel",
+    "driveConfiguration": "Laufwerkkonfiguratioun",
+    "addDrive": "Laufwerk dobäisetzen",
+    "removeDrive": "Laufwerk ewechhuelen",
+    "selectMemory": "Speicher auswiele",
+    "selectOs": "Betribssystem auswiele",
+    "region": "Regioun",
+    "buyNow": "Elo kafen",
+    "monthly": "Monatlech",
+    "perMonth": "/Mount",
+    "confirmOrder": "Bestellung confirméieren"
+  }
+}

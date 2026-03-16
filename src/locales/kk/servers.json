@@ -1,0 +1,22 @@
+{
+  "list": { "title": "Арнайы серверлер тізімі", "orderTitle": "Сервер тіркеулеріне тапсырыс беру" },
+  "view": {
+    "title": "Сервер {id} қарау", "package": "Пакет", "dedicatedServer": "Арнайы сервер",
+    "nextInvoiceDate": "Келесі шот күні:", "billing": "Есеп айырысу", "billed": "есептелген:",
+    "statusIs": "Күйі:", "orderInfo": "Тапсырыс ақпараты", "orderId": "Тапсырыс ID:",
+    "links": "Сілтемелер", "serverInformation": "Сервер ақпараты", "networkInformation": "Желі ақпараты",
+    "power": "Қуат", "selectAction": "Әрекет таңдау", "softReboot": "Жұмсақ қайта іске қосу",
+    "paymentStatus": "Төлем күйі:", "emailSent": "Хат жіберілді",
+    "emailSentMessage": "Қош келдіңіз хаты қайта жіберілді. Кіріс жәшігіңізді тексеріңіз."
+  },
+  "order": {
+    "title": "Сервер тапсырыс беру", "orderDedicatedServer": "Арнайы сервер тапсырыс беру",
+    "orderSummary": "Тапсырыс қорытындысы", "selectServer": "Сервер таңдау",
+    "serverHostname": "Сервер хост атауы", "rootPassword": "Root құпия сөзі",
+    "agreeToTerms": "Ұсыныс шарттарымен келісу", "iAgreeToTerms": "Жоғарыдағы шарттарды оқыдым және келісемін.",
+    "placeOrder": "Тапсырысымды беру", "cpuSelection": "CPU таңдау", "driveConfiguration": "Диск конфигурациясы",
+    "addDrive": "Диск қосу", "removeDrive": "Дискіні алып тастау", "selectMemory": "Жадты таңдау",
+    "selectOs": "OS таңдау", "region": "Аймақ", "buyNow": "Қазір сатып алу",
+    "monthly": "Ай сайын", "perMonth": "/ай", "confirmOrder": "Тапсырысты растау"
+  }
+}

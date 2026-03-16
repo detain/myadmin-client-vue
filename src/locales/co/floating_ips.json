@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Lista di servizii IP flotanti", "orderTitle": "Ordinate registrazioni IP flotante" },
+    "view": { "title": "Vede IP flotante {id}", "package": "Pacchettu", "nextInvoiceDate": "Data di a prossima fattura:", "billing": "Fatturazione", "billed": "fatturatu:", "statusIs": "U statu hè:", "floatingIp": "IP flotante", "links": "Ligami", "emailSent": "Email mandata", "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella." },
+    "order": { "title": "Ordinate IP flotante" },
+    "changeIp": { "title": "Cambià l'IP destinazione" }
+}

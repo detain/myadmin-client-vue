@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista e Shërbimeve të IP-ve Pastrim",
+        "orderTitle": "Porosit IP-të Pastrim"
+    },
+    "view": {
+        "title": "Shiko IP-të Pastrim",
+        "currentIp": "IP Aktuale",
+        "ipAddress": "Adresa IP",
+        "ipFromService": "IP nga shërbimi"
+    },
+    "filters": {
+        "title": "Filtrat",
+        "createNew": "Krijo të Re",
+        "createNewFilter": "Krijo Filtër të Ri",
+        "filterType": "Lloji i Filtrit",
+        "selectFilterType": "Zgjidh Llojin e Filtrit",
+        "ipAddress": "Adresa IP",
+        "portNo": "Nr. Portës",
+        "filter": "Filtri",
+        "destinationIp": "IP e Destinacionit",
+        "destinationPort": "Porta e Destinacionit",
+        "noFiltersFound": "Nuk u gjet asnjë filtër!",
+        "deleteFilterConfirm": "A jeni i sigurt që dëshironi të fshini këtë filtër?",
+        "unableToCreateFilter": "Nuk mund të krijohet filtri në këtë moment.",
+        "unableToDeleteFilter": "Nuk mund të fshihet filtri në këtë moment."
+    },
+    "firewallRules": {
+        "title": "Rregullat e Murit të Zjarrit",
+        "createNew": "Krijo të Re",
+        "createNewFirewall": "Krijo Rregull të Ri të Murit të Zjarrit",
+        "protocol": "Protokolli",
+        "destinationIp": "IP e Destinacionit",
+        "destinationPort": "Porta e Destinacionit",
+        "sourceIp": "IP Burimore",
+        "sourcePort": "Porta Burimore",
+        "xdpAction": "Veprimi XDP",
+        "ipRequired": "Adresa IP është e detyrueshme",
+        "block": "Blloko",
+        "whitelist": "Lista e Bardhë",
+        "noRulesFound": "Nuk u gjet asnjë rregull!",
+        "deleteRuleConfirm": "A jeni i sigurt që dëshironi të fshini këtë rregull?",
+        "unableToCreateRule": "Nuk mund të krijohet rregulli i murit të zjarrit në këtë moment.",
+        "unableToDeleteRule": "Nuk mund të fshihet rregulli i murit të zjarrit në këtë moment."
+    },
+    "geoFirewallRules": {
+        "title": "Rregullat Gjeografike të Murit të Zjarrit",
+        "createNew": "Krijo të Re",
+        "createNewGeoRule": "Krijo Rregull të Ri Gjeografik të Murit të Zjarrit",
+        "destinationIp": "IP e Destinacionit",
+        "destinationPort": "Porta e Destinacionit",
+        "sourceCountry": "Vendi Burimor",
+        "sourceAsn": "ASN Burimor",
+        "xdpAction": "Veprimi XDP",
+        "portNo": "Nr. Portës",
+        "selectCountry": "Zgjidh Vendin",
+        "asn": "ASN",
+        "block": "Blloko",
+        "whitelist": "Lista e Bardhë",
+        "noRulesFound": "Nuk u gjet asnjë rregull!",
+        "deleteGeoRuleConfirm": "A jeni i sigurt që dëshironi të fshini këtë rregull gjeografik?",
+        "unableToCreateRule": "Nuk mund të krijohet rregulli i murit të zjarrit në këtë moment.",
+        "unableToDeleteRule": "Nuk mund të fshihet rregulli gjeografik i murit të zjarrit në këtë moment."
+    }
+}
