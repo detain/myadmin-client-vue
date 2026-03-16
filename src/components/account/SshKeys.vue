@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import type { AccountData } from '@/types/account';
+
+const { t } = useI18n();
 
 const props = defineProps<{
     data: AccountData;
@@ -45,7 +48,7 @@ export default {
     <div class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2" :title="'This SSH Key will automatically get added to some services such as VPS orders providing an alternative means of authentication with your services.'">SSH Keys</h3>
+                <h3 class="card-title py-2" :title="t('common.account.sshKeysDescription')">{{ t('common.account.sshKeys') }}</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
                 </div>
@@ -54,16 +57,16 @@ export default {
         <div class="card-body">
             <form method="post" enctype="multipart/form-data" action="account_settings" @submit.prevent="updateSshPublicKey">
                 <div class="row">
-                    <textarea id="ssh_key" v-model="data.ssh_key" class="form-control" rows="6" name="ssh_key" placeholder="No SSH Key Setup Yet"></textarea>
+                    <textarea id="ssh_key" v-model="data.ssh_key" class="form-control" rows="6" name="ssh_key" :placeholder="t('common.labels.noSshKey')"></textarea>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <template v-if="data.ssh_key">
-                            <input type="submit" class="btn btn-sm btn-green px-3 py-2" name="submit" value="Update SSH Public Key" />
+                            <input type="submit" class="btn btn-sm btn-green px-3 py-2" name="submit" :value="t('common.buttons.updateSshKey')" />
                         </template>
                         <template v-else>
-                            <input type="submit" class="btn btn-sm btn-green px-3 py-2" name="submit" value="Set SSH Public Key" />
+                            <input type="submit" class="btn btn-sm btn-green px-3 py-2" name="submit" :value="t('common.buttons.setSshKey')" />
                         </template>
                         <br />
                     </div>

@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
+
+const { t } = useI18n();
 defineProps<{
     heading: string;
     key1: string;

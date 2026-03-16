@@ -2,10 +2,10 @@
     <div class="col-md-4">
         <div class="small-box bg-secondary b-radius">
             <div class="inner px-3 pb-1 pt-3">
-                <h3>Package</h3>
+                <h3>{{ t('common.labels.package') }}</h3>
                 <p class="m-0 py-2">{{ pkg }}</p>
                 <p>
-                    Next Invoice Date: <b>{{ invNextDate }}</b>
+                    {{ t('common.labels.nextInvoiceDate') }} <b>{{ invNextDate }}</b>
                 </p>
             </div>
             <div class="icon"><font-awesome-icon :icon="['fas', 'briefcase']" /></div>
@@ -14,6 +14,9 @@
     </div>
 </template>
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 defineProps<{
     pkg: string;
     invNextDate: string;

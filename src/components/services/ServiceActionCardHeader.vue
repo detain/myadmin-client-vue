@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { parseFaIcon } from '@/helpers/parseFaIcon';
+
+const { t } = useI18n();
 
 withDefaults(
     defineProps<{
@@ -26,7 +29,7 @@ withDefaults(
                 {{ title }}
             </h3>
             <div class="card-tools text-right">
-                <router-link :to="backTo" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Back&nbsp;&nbsp; </router-link>
+                <router-link :to="backTo" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
             </div>
         </div>
     </div>

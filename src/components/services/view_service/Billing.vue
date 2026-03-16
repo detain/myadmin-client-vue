@@ -2,21 +2,24 @@
     <div class="col-md-4">
         <div :class="statusClass">
             <div class="inner px-3 pb-2 pt-3">
-                <h3>Billing</h3>
+                <h3>{{ t('common.labels.billing') }}</h3>
                 <p class="my-3 py-3">
-                    <b>{{ currencySymbol }}{{ cost }}</b> billed: <b>{{ frequency }}</b>
+                    <b>{{ currencySymbol }}{{ cost }}</b> {{ t('common.labels.billed') }} <b>{{ frequency }}</b>
                 </p>
             </div>
             <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
             <span class="small-box-footer"
-                >Status is: <b>{{ ucwords(serviceStatus) }}</b></span
+                >{{ t('common.labels.statusIs') }} <b>{{ ucwords(serviceStatus) }}</b></span
             >
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { ucwords } from '@/helpers/ucwords';
+
+const { t } = useI18n();
 const { serviceStatus, currencySymbol, cost, frequency } = defineProps<{
     frequency: string;
     currencySymbol: string;

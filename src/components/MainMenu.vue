@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
+
+const { t } = useI18n();
 
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);
@@ -18,37 +21,37 @@ interface MenuGroup {
     [key: string]: MenuLink[];
 }
 
-const menus = ref<MenuGroup>({
+const menus = computed<MenuGroup>(() => ({
     main: [
-        { link: '/', icon: ['fas', 'tachometer-alt'], text: 'Dashboard' },
-        { link: '/domains', icon: ['fas', 'globe'], text: 'Domains' },
-        { link: '/dns', icon: ['fas', 'atom'], text: 'DNS Manager' },
-        { link: '/vps', icon: ['fas', 'cloud-meatball'], text: 'VPS' },
-        { link: '/backups', icon: ['fas', 'warehouse'], text: 'Storage' },
-        { link: '/mail', icon: ['fas', 'envelope-open-text'], text: 'Mail' },
-        { link: '/licenses', icon: ['fas', 'id-card'], text: 'Licenses' },
-        { link: '/websites', icon: ['far', 'window-maximize'], text: 'Webhosting' },
-        { link: '/floating_ips', icon: ['fas', 'cloud-meatball'], text: 'Floating IPs' },
-        { link: '/scrub_ips', icon: ['fas', 'filter'], text: 'Scrub IPs' },
-        { link: '/qs', icon: ['fas', 'cloud'], text: 'Rapid Deploy Servers' },
-        { link: '/servers', icon: ['fas', 'server'], text: 'Servers' },
-        { link: '/affiliate', icon: ['fas', 'handshake'], text: 'Affiliate System' },
-        { link: '/tickets', icon: ['fas', 'ticket-alt'], text: 'Tickets' },
-        { menu: 'billing', icon: ['fas', 'file-invoice'], text: 'Billing', activecheck: ['cart', 'invoices', 'payment_types', 'prepays'] },
-        { menu: 'settings', icon: ['fas', 'cog'], text: 'Settings', activecheck: ['account/settings', 'account/username', 'account/pass'] },
+        { link: '/', icon: ['fas', 'tachometer-alt'], text: t('common.menu.dashboard') },
+        { link: '/domains', icon: ['fas', 'globe'], text: t('common.menu.domains') },
+        { link: '/dns', icon: ['fas', 'atom'], text: t('common.menu.dnsManager') },
+        { link: '/vps', icon: ['fas', 'cloud-meatball'], text: t('common.menu.vps') },
+        { link: '/backups', icon: ['fas', 'warehouse'], text: t('common.menu.storage') },
+        { link: '/mail', icon: ['fas', 'envelope-open-text'], text: t('common.menu.mail') },
+        { link: '/licenses', icon: ['fas', 'id-card'], text: t('common.menu.licenses') },
+        { link: '/websites', icon: ['far', 'window-maximize'], text: t('common.menu.webhosting') },
+        { link: '/floating_ips', icon: ['fas', 'cloud-meatball'], text: t('common.menu.floatingIps') },
+        { link: '/scrub_ips', icon: ['fas', 'filter'], text: t('common.menu.scrubIps') },
+        { link: '/qs', icon: ['fas', 'cloud'], text: t('common.menu.rapidDeployServers') },
+        { link: '/servers', icon: ['fas', 'server'], text: t('common.menu.servers') },
+        { link: '/affiliate', icon: ['fas', 'handshake'], text: t('common.menu.affiliateSystem') },
+        { link: '/tickets', icon: ['fas', 'ticket-alt'], text: t('common.menu.tickets') },
+        { menu: 'billing', icon: ['fas', 'file-invoice'], text: t('common.menu.billing'), activecheck: ['cart', 'invoices', 'payment_types', 'prepays'] },
+        { menu: 'settings', icon: ['fas', 'cog'], text: t('common.menu.settings'), activecheck: ['account/settings', 'account/username', 'account/pass'] },
     ],
     billing: [
-        { link: '/cart', icon: ['fas', 'shopping-cart'], text: 'Cart' },
-        { link: '/invoices', icon: ['fas', 'receipt'], text: 'View Invoices' },
-        { link: '/payment_types', icon: ['fas', 'credit-card'], text: 'Credit Cards' },
-        { link: '/prepays', icon: ['fas', 'cash-register'], text: 'Pre-Paid Funds / Credit' },
+        { link: '/cart', icon: ['fas', 'shopping-cart'], text: t('common.menu.cart') },
+        { link: '/invoices', icon: ['fas', 'receipt'], text: t('common.menu.viewInvoices') },
+        { link: '/payment_types', icon: ['fas', 'credit-card'], text: t('common.menu.creditCards') },
+        { link: '/prepays', icon: ['fas', 'cash-register'], text: t('common.menu.prePaidFunds') },
     ],
     settings: [
-        { link: '/account/settings', icon: ['fas', 'user-shield'], text: 'Account Settings' },
-        { link: '/account/username', icon: ['fas', 'user-edit'], text: 'Change Login' },
-        { link: '/account/pass', icon: ['fas', 'user-lock'], text: 'Change Password' },
+        { link: '/account/settings', icon: ['fas', 'user-shield'], text: t('common.menu.accountSettings') },
+        { link: '/account/username', icon: ['fas', 'user-edit'], text: t('common.menu.changeLogin') },
+        { link: '/account/pass', icon: ['fas', 'user-lock'], text: t('common.menu.changePassword') },
     ],
-});
+}));
 
 function isActive(key: string[] | undefined) {
     // You need to implement your translation logic here
