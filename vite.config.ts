@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import Inspect from 'vite-plugin-inspect';
-import { VitePWA } from 'vite-plugin-pwa';
+//import { VitePWA } from 'vite-plugin-pwa';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
@@ -52,13 +52,13 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }), */
         VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }),
+        }), 
+        legacy({ targets: ["defaults", "not IE 11"] }),  */
         Inspect(),
         Inspector(),
         //vueDevTools(),
@@ -102,7 +102,6 @@ export default defineConfig({
             },
         },
     },
-    /**/
     resolve: {
         alias: {
             //'@': path.resolve(__dirname, './src'),
