@@ -269,7 +269,7 @@ function login_handler() {
 function signup_handler() {
     Swal.fire({
         title: t('login.pleaseWait'),
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingSignup'),
+        html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>${  t('login.processingSignup')}`,
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -404,7 +404,7 @@ function forgot_password() {
 async function onLoginSubmit() {
     Swal.fire({
         title: t('login.pleaseWait'),
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingLogin'),
+        html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>${  t('login.processingLogin')}`,
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -529,7 +529,7 @@ async function submitOAuthLink(createNew: boolean = false) {
 async function onSignupSubmit() {
     Swal.fire({
         title: t('login.pleaseWait'),
-        html: '<i class="fas fa-spinner fa-spin fa-2x"></i><br/>' + t('login.processingSignup'),
+        html: `<i class="fas fa-spinner fa-spin fa-2x"></i><br/>${  t('login.processingSignup')}`,
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,

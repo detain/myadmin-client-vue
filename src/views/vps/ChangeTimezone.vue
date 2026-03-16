@@ -26,7 +26,7 @@ const zones = ref<string[]>([]);
 async function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.changeTimezone.pleaseWait'),
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${  t('vps.changeTimezone.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });

@@ -28,7 +28,7 @@ const module = computed(() => props.module);
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.reverseDns.pleaseWait'),
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${  t('vps.reverseDns.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });

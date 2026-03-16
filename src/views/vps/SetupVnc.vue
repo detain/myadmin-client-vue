@@ -54,7 +54,7 @@ const myip = ref(ip.value);
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.setupVnc.pleaseWait'),
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${  t('vps.setupVnc.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });

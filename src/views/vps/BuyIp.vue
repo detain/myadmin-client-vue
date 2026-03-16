@@ -67,7 +67,7 @@ interface IpDetails {
 function submitForm() {
     Swal.fire({
         title: '',
-        html: '<i class="fas fa-spinner fa-pulse"></i> ' + t('vps.buyIp.pleaseWait'),
+        html: `<i class="fas fa-spinner fa-pulse"></i> ${  t('vps.buyIp.pleaseWait')}`,
         allowOutsideClick: false,
         showConfirmButton: false,
     });
