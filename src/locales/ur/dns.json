@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS مینیجر",
+        "addDomain": "ڈومین شامل کریں",
+        "deleteDomain": "ڈومین حذف کریں",
+        "domainName": "ڈومین نام",
+        "dnsServers": "DNS سرورز",
+        "confirmDelete": "کیا آپ واقعی اس ڈومین کو حذف کرنا چاہتے ہیں؟",
+        "noDomains": "کوئی ڈومین نہیں ملا"
+    },
+    "editor": {
+        "title": "DNS ایڈیٹر",
+        "addRecord": "ریکارڈ شامل کریں",
+        "deleteRecord": "ریکارڈ حذف کریں",
+        "editRecord": "ریکارڈ ترمیم کریں",
+        "recordType": "ریکارڈ کی قسم",
+        "hostname": "ہوسٹ نام",
+        "address": "پتہ",
+        "distance": "فاصلہ",
+        "weight": "وزن",
+        "port": "پورٹ",
+        "ttl": "TTL",
+        "actions": "اقدامات",
+        "confirmDelete": "کیا آپ واقعی اس ریکارڈ کو حذف کرنا چاہتے ہیں؟"
+    }
+}

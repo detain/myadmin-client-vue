@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Npe Daim Ntawv Pov Thawj SSL",
+        "orderTitle": "Txiav Txim Kev Sau Npe SSL"
+    },
+    "view": {
+        "title": "Saib SSL {id}",
+        "package": "Pob",
+        "nextInvoiceDate": "Hnub Nqi Tau Ntxiv:",
+        "billing": "Them Nqi",
+        "billed": "them:",
+        "statusIs": "Xwm Txheej:",
+        "orderInfo": "Cov Ntaub Ntawv Txiav Txim",
+        "certificateInfo": "Cov Ntaub Ntawv Daim Ntawv Pov Thawj",
+        "links": "Txuas",
+        "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?",
+        "emailSent": "Email Xa Lawm",
+        "emailSentMessage": "Email txais tos tau xa dua. Mus tshuaj xyuas koj inbox."
+    },
+    "order": {
+        "title": "Txiav Txim SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Hloov Email Tus Pom Zoo",
+        "selectApproverEmail": "Xaiv Email Tus Pom Zoo"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "فهرست مجوزها",
+        "orderTitle": "سفارش ثبت مجوز"
+    },
+    "view": {
+        "title": "مشاهده مجوز {id}",
+        "package": "بسته",
+        "nextInvoiceDate": "تاریخ فاکتور بعدی:",
+        "billing": "صورتحساب",
+        "billed": "صورتحساب شده:",
+        "statusIs": "وضعیت:",
+        "licenseInfo": "اطلاعات مجوز",
+        "cpanelInfo": "اطلاعات cPanel",
+        "links": "پیوندها",
+        "welcomeEmailConfirm": "آیا مطمئن هستید که می‌خواهید ایمیل خوش‌آمدگویی را دوباره ارسال کنید؟",
+        "emailSent": "ایمیل ارسال شد",
+        "emailSentMessage": "ایمیل خوش‌آمدگویی دوباره ارسال شد. صندوق ورودی خود را بررسی کنید."
+    },
+    "order": {
+        "title": "سفارش مجوز"
+    },
+    "changeIp": {
+        "title": "تغییر IP"
+    },
+    "changeOs": {
+        "title": "تغییر سیستم‌عامل",
+        "selectLicenseOs": "انتخاب سیستم‌عامل مجوز"
+    }
+}

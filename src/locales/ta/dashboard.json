@@ -1,0 +1,28 @@
+{
+    "title": "டாஷ்போர்டு",
+    "welcome": "வரவேற்கிறோம், {name}",
+    "lastLogin": "கடைசி உள்நுழைவு",
+    "lastLoginIp": "கடைசி உள்நுழைவு IP",
+    "prepay": {
+        "title": "முன்பணம் இருப்பு",
+        "remainingBalance": "முன்பணம் மீதமுள்ள இருப்பு",
+        "manageAccount": "கணக்கை நிர்வகி",
+        "manageTooltip": "உங்கள் முன்பண கணக்கை நிர்வகிக்கவும்"
+    },
+    "invoices": {
+        "title": "செலுத்தப்படாத இன்வாய்ஸ்கள்",
+        "totalUnpaid": "மொத்த செலுத்தப்படாத இன்வாய்ஸ்கள்",
+        "totalAmount": "செலுத்த வேண்டிய மொத்த தொகை",
+        "payTotalTooltip": "மொத்த தொகையை செலுத்து"
+    },
+    "callInPin": "அழைப்பு PIN",
+    "recentTickets": "சமீபத்திய டிக்கெட்டுகள்",
+    "viewAllTickets": "அனைத்து டிக்கெட்டுகளையும் காண்க",
+    "editTicket": "டிக்கெட்டை திருத்து",
+    "serviceCount": "செயலில் உள்ள சேவைகள் இல்லை | {count} செயலில் உள்ள சேவை | {count} செயலில் உள்ள சேவைகள்",
+    "affiliate": {
+        "earnPerSale": "ஒவ்வொரு விற்பனைக்கும் {amount} சம்பாதிக்கவும்",
+        "urlPlaceholder": "துணை URL",
+        "shareWith": "பகிர்"
+    }
+}

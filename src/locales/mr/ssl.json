@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL प्रमाणपत्र यादी",
+        "orderTitle": "SSL नोंदणी ऑर्डर करा"
+    },
+    "view": {
+        "title": "SSL {id} पहा",
+        "package": "पॅकेज",
+        "nextInvoiceDate": "पुढील बीजक तारीख:",
+        "billing": "बिलिंग",
+        "billed": "बिल केले:",
+        "statusIs": "स्थिती आहे:",
+        "orderInfo": "ऑर्डर माहिती",
+        "certificateInfo": "प्रमाणपत्र माहिती",
+        "links": "दुवे",
+        "welcomeEmailConfirm": "तुम्हाला स्वागत ईमेल पुन्हा पाठवायचा आहे का?",
+        "emailSent": "ईमेल पाठवला",
+        "emailSentMessage": "स्वागत ईमेल पुन्हा पाठवला गेला आहे. तुमचा इनबॉक्स तपासा."
+    },
+    "order": {
+        "title": "SSL ऑर्डर करा"
+    },
+    "changeApproverEmail": {
+        "title": "मंजूरकर्ता ईमेल बदला",
+        "selectApproverEmail": "मंजूरकर्ता ईमेल निवडा"
+    }
+}

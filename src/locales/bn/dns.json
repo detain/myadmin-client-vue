@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS ম্যানেজার",
+        "addDomain": "ডোমেইন যোগ করুন",
+        "deleteDomain": "ডোমেইন মুছুন",
+        "domainName": "ডোমেইনের নাম",
+        "dnsServers": "DNS সার্ভার",
+        "confirmDelete": "আপনি কি এই ডোমেইনটি মুছতে চান?",
+        "noDomains": "কোনো ডোমেইন পাওয়া যায়নি"
+    },
+    "editor": {
+        "title": "DNS সম্পাদক",
+        "addRecord": "রেকর্ড যোগ করুন",
+        "deleteRecord": "রেকর্ড মুছুন",
+        "editRecord": "রেকর্ড সম্পাদনা করুন",
+        "recordType": "রেকর্ডের ধরন",
+        "hostname": "হোস্টনেম",
+        "address": "ঠিকানা",
+        "distance": "দূরত্ব",
+        "weight": "ওজন",
+        "port": "পোর্ট",
+        "ttl": "TTL",
+        "actions": "কার্যক্রম",
+        "confirmDelete": "আপনি কি এই রেকর্ডটি মুছতে চান?"
+    }
+}

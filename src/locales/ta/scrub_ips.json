@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP சேவைகள் பட்டியல்",
+        "orderTitle": "Scrub IP ஆர்டர் செய்யவும்"
+    },
+    "view": {
+        "title": "Scrub IP காண்க",
+        "currentIp": "தற்போதைய IP",
+        "ipAddress": "IP முகவரி",
+        "ipFromService": "சேவையிலிருந்து IP"
+    },
+    "filters": {
+        "title": "வடிகட்டிகள்",
+        "createNew": "புதியதை உருவாக்கவும்",
+        "createNewFilter": "புதிய வடிகட்டியை உருவாக்கவும்",
+        "filterType": "வடிகட்டி வகை",
+        "selectFilterType": "வடிகட்டி வகையை தேர்ந்தெடுக்கவும்",
+        "ipAddress": "IP முகவரி",
+        "portNo": "போர்ட் எண்",
+        "filter": "வடிகட்டி",
+        "destinationIp": "இலக்கு IP",
+        "destinationPort": "இலக்கு போர்ட்",
+        "noFiltersFound": "வடிகட்டிகள் எதுவும் இல்லை!",
+        "deleteFilterConfirm": "இந்த வடிகட்டியை நீக்க விரும்புகிறீர்களா?",
+        "unableToCreateFilter": "தற்போது வடிகட்டி உருவாக்க முடியவில்லை.",
+        "unableToDeleteFilter": "தற்போது வடிகட்டியை நீக்க முடியவில்லை."
+    },
+    "firewallRules": {
+        "title": "ஃபயர்வால் விதிகள்",
+        "createNew": "புதியதை உருவாக்கவும்",
+        "createNewFirewall": "புதிய ஃபயர்வால் விதியை உருவாக்கவும்",
+        "protocol": "நெறிமுறை",
+        "destinationIp": "இலக்கு IP",
+        "destinationPort": "இலக்கு போர்ட்",
+        "sourceIp": "மூல IP",
+        "sourcePort": "மூல போர்ட்",
+        "xdpAction": "XDP செயல்",
+        "ipRequired": "IP முகவரி தேவை",
+        "block": "தடு",
+        "whitelist": "வெள்ளைப் பட்டியல்",
+        "noRulesFound": "விதிகள் எதுவும் இல்லை!",
+        "deleteRuleConfirm": "இந்த விதியை நீக்க விரும்புகிறீர்களா?",
+        "unableToCreateRule": "தற்போது ஃபயர்வால் விதி உருவாக்க முடியவில்லை.",
+        "unableToDeleteRule": "தற்போது ஃபயர்வால் விதியை நீக்க முடியவில்லை."
+    },
+    "geoFirewallRules": {
+        "title": "புவியியல் ஃபயர்வால் விதிகள்",
+        "createNew": "புதியதை உருவாக்கவும்",
+        "createNewGeoRule": "புதிய புவியியல் ஃபயர்வால் விதியை உருவாக்கவும்",
+        "destinationIp": "இலக்கு IP",
+        "destinationPort": "இலக்கு போர்ட்",
+        "sourceCountry": "மூல நாடு",
+        "sourceAsn": "மூல ASN",
+        "xdpAction": "XDP செயல்",
+        "portNo": "போர்ட் எண்",
+        "selectCountry": "நாட்டை தேர்ந்தெடுக்கவும்",
+        "asn": "ASN",
+        "block": "தடு",
+        "whitelist": "வெள்ளைப் பட்டியல்",
+        "noRulesFound": "விதிகள் எதுவும் இல்லை!",
+        "deleteGeoRuleConfirm": "இந்த புவியியல் விதியை நீக்க விரும்புகிறீர்களா?",
+        "unableToCreateRule": "தற்போது ஃபயர்வால் விதி உருவாக்க முடியவில்லை.",
+        "unableToDeleteRule": "தற்போது புவியியல் ஃபயர்வால் விதியை நீக்க முடியவில்லை."
+    }
+}

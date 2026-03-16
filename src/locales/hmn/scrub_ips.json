@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Npe Kev Pab Scrub IPs",
+        "orderTitle": "Txiav Txim Scrub IPs"
+    },
+    "view": {
+        "title": "Saib Scrub IPs",
+        "currentIp": "IP Tam Sim No",
+        "ipAddress": "Chaw Nyob IP",
+        "ipFromService": "IP Los Ntawm Kev Pab"
+    },
+    "filters": {
+        "title": "Cov Lim",
+        "createNew": "Tsim Tshiab",
+        "createNewFilter": "Tsim Lim Tshiab",
+        "filterType": "Hom Lim",
+        "selectFilterType": "Xaiv Hom Lim",
+        "ipAddress": "Chaw Nyob IP",
+        "portNo": "Xov Tooj Chaw",
+        "filter": "Lim",
+        "destinationIp": "IP Ntxov Tshiab",
+        "destinationPort": "Chaw Ntxov Tshiab",
+        "noFiltersFound": "Tsis pom lim!",
+        "deleteFilterConfirm": "Koj puas ntseeg tias koj xav rho tawm lim no?",
+        "unableToCreateFilter": "Tsis tuaj yeem tsim lim tam sim no.",
+        "unableToDeleteFilter": "Tsis tuaj yeem rho tawm lim tam sim no."
+    },
+    "firewallRules": {
+        "title": "Cov Cai Firewall",
+        "createNew": "Tsim Tshiab",
+        "createNewFirewall": "Tsim Cai Firewall Tshiab",
+        "protocol": "Txheej Txheem",
+        "destinationIp": "IP Ntxov Tshiab",
+        "destinationPort": "Chaw Ntxov Tshiab",
+        "sourceIp": "IP Lub Hauv Paus",
+        "sourcePort": "Chaw Lub Hauv Paus",
+        "xdpAction": "Kev Ua XDP",
+        "ipRequired": "Chaw Nyob IP yuav tsum muaj",
+        "block": "Thaiv",
+        "whitelist": "Daim Ntawv Dawb",
+        "noRulesFound": "Tsis pom cov cai!",
+        "deleteRuleConfirm": "Koj puas ntseeg tias koj xav rho tawm cai no?",
+        "unableToCreateRule": "Tsis tuaj yeem tsim cai firewall tam sim no.",
+        "unableToDeleteRule": "Tsis tuaj yeem rho tawm cai firewall tam sim no."
+    },
+    "geoFirewallRules": {
+        "title": "Cov Cai Geo Firewall",
+        "createNew": "Tsim Tshiab",
+        "createNewGeoRule": "Tsim Cai Geo Firewall Tshiab",
+        "destinationIp": "IP Ntxov Tshiab",
+        "destinationPort": "Chaw Ntxov Tshiab",
+        "sourceCountry": "Teb Chaws Lub Hauv Paus",
+        "sourceAsn": "ASN Lub Hauv Paus",
+        "xdpAction": "Kev Ua XDP",
+        "portNo": "Xov Tooj Chaw",
+        "selectCountry": "Xaiv Teb Chaws",
+        "asn": "ASN",
+        "block": "Thaiv",
+        "whitelist": "Daim Ntawv Dawb",
+        "noRulesFound": "Tsis pom cov cai!",
+        "deleteGeoRuleConfirm": "Koj puas ntseeg tias koj xav rho tawm cai geo no?",
+        "unableToCreateRule": "Tsis tuaj yeem tsim cai firewall tam sim no.",
+        "unableToDeleteRule": "Tsis tuaj yeem rho tawm cai geo firewall tam sim no."
+    }
+}

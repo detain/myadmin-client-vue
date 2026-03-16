@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontuaren Ezarpenak"
+    },
+    "changePassword": {
+        "title": "Pasahitza Aldatu",
+        "cardTitle": "Pasahitza Eguneratu",
+        "currentPassword": "Uneko Pasahitza",
+        "newPassword": "Pasahitz Berria",
+        "confirmPassword": "Pasahitza Berretsi",
+        "updatePassword": "Pasahitza Eguneratu"
+    },
+    "changeUsername": {
+        "title": "Erabiltzaile-izena Aldatu",
+        "disabled": "Erabiltzaile-izenen aldaketak aldi baterako desgaitu dira.",
+        "currentUsername": "Uneko Erabiltzaile-izena",
+        "newDesiredUsername": "Nahi den Erabiltzaile-izen Berria",
+        "confirmationCode": "Berrespenkodea",
+        "pleaseWait": "Itxaron mesedez!",
+        "gotError": "Errorea gertatu da {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktu-informazioa",
+        "cardTitle": "Kontaktu-informazioa Eguneratu",
+        "headsUp": "Arreta!",
+        "headsUpMessage": "Informazio hau hautazkoa bada ere, informazio zehatza ematea gure elkarrekintza aberastu eta zure Arrisku % Puntuazioa murrizten lagunduko du, guneko atal batzuetara sarbide azkarragoa eta erosoagoa emanez (kreditu-txartela autentifikatu gabe, esaterako).",
+        "riskScore": "Arrisku % Puntuazioa",
+        "personalInformation": "Informazio Pertsonala",
+        "name": "Izena",
+        "namePlaceholder": "Joe Cool",
+        "company": "Enpresa",
+        "gstinTaxId": "GSTIN Zerga IDa",
+        "gstinPlaceholder": "Ondasun eta Zerbitzuen Zerga Ordaindaren Identifikazio Zenbakia",
+        "addressLine1": "Helbidea 1. Lerroa",
+        "addressLine2": "Helbidea 2. Lerroa",
+        "cityState": "Hiria, Estatua",
+        "city": "Hiria",
+        "state": "Estatua",
+        "country": "Herrialdea",
+        "zipcode": "Posta Kodea",
+        "phoneNo": "Telefono Zenbakia",
+        "phoneNumber": "Telefono Zenbakia",
+        "language": "Hizkuntza",
+        "auto": "Automatikoa",
+        "currency": "Moneta",
+        "timeZone": "Ordu-zona",
+        "otherSettings": "Beste Ezarpenak",
+        "disablePasswordResets": "Desgaitu (Pasahitza ahaztu duzu) Pasahitz Berrezarketak.",
+        "disableInvoiceReminders": "Desgaitu Faktura Gogorarazpen Posta Elektronikoen Jakinarazpenak.",
+        "disableServerInvoiceReminders": "Desgaitu Zerbitzari Faktura Gogorarazpen Posta Elektronikoen Jakinarazpenak.",
+        "disableReinstall": "Desgaitu Berrezkuratzea.",
+        "alternateEmailInvoices": "Fakturetarako Posta Elektroniko Alternatiboa",
+        "alternateEmailInvoicesPlaceholder": "Fakturak bidaltzeko posta elektroniko alternatiboa",
+        "alternateEmailAbuse": "Abusuen Txostenetarako Posta Elektroniko Alternatiboa",
+        "updateInfo": "Informazioa Eguneratu"
+    }
+}

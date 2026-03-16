@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Popis usluga e-pošte",
+        "orderTitle": "Naruči registracije e-pošte"
+    },
+    "view": {
+        "title": "Pregledaj e-poštu {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "mailApi": "API e-pošte",
+        "usageCount": "Broj korištenja:",
+        "links": "Veze",
+        "connectionInfo": "Informacije o vezi",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati e-mail dobrodošlice?",
+        "emailSent": "E-mail poslan",
+        "emailSentMessage": "E-mail dobrodošlice je ponovo poslan. Provjerite svoju poštu."
+    },
+    "order": {
+        "title": "Naruči e-poštu"
+    },
+    "alerts": {
+        "title": "Upozorenja",
+        "addAlert": "Dodaj upozorenje",
+        "editAlert": "Uredi upozorenje",
+        "noAlerts": "Nisu pronađena upozorenja"
+    },
+    "delist": {
+        "title": "Ukloni s popisa",
+        "blockedEmails": "Blokirane e-mail adrese"
+    },
+    "denyRules": {
+        "title": "Pravila odbijanja",
+        "addRule": "Dodaj pravilo",
+        "noRules": "Nisu pronađena pravila odbijanja"
+    },
+    "logs": {
+        "title": "Zapisi",
+        "searchLogs": "Pretraži zapise"
+    },
+    "stats": {
+        "title": "Statistike"
+    },
+    "deliverability": {
+        "title": "Isporuka"
+    }
+}

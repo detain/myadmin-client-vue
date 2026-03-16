@@ -1,0 +1,12 @@
+{
+    "title": "ຜູ້ໃຊ້",
+    "addUser": "ເພີ່ມຜູ້ໃຊ້",
+    "editUser": "ແກ້ໄຂຜູ້ໃຊ້",
+    "firstName": "ຊື່",
+    "lastName": "ນາມສະກຸນ",
+    "username": "ຊື່ຜູ້ໃຊ້",
+    "password": "ລະຫັດຜ່ານ",
+    "keepSamePassword": "ປ່ອຍຫວ່າງໄວ້ເພື່ອຮັກສາລະຫັດຜ່ານເດີມ",
+    "errorLoading": "ຜິດພາດໃນການໂຫຼດຜູ້ໃຊ້:",
+    "errorLoadingUser": "ຜິດພາດໃນການໂຫຼດຜູ້ໃຊ້:"
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lista tal-Ħażna / Backup",
+        "orderTitle": "Ordna Reġistrazzjonijiet tal-Backup"
+    },
+    "view": {
+        "title": "Ara Backup {id}",
+        "package": "Pakkett",
+        "nextInvoiceDate": "Data tal-Fattura Li Jmiss:",
+        "billing": "Fatturar",
+        "billed": "Fatturat:",
+        "statusIs": "L-Istat huwa:",
+        "hostServer": "Server Host",
+        "links": "Links",
+        "welcomeEmailConfirm": "Ċert li trid terġa' tibgħat l-email tal-merħba?",
+        "emailSent": "Email Mibgħut",
+        "emailSentMessage": "L-email tal-merħba ntbagħtet mill-ġdid. Iċċekkja l-inbox tiegħek."
+    },
+    "order": {
+        "title": "Ordna Ħażna"
+    }
+}

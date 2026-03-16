@@ -1,0 +1,12 @@
+{
+    "required": "{field} kötelező",
+    "email": "Érvényes e-mail cím szükséges",
+    "minLength": "Legalább {min} karakternek kell lennie",
+    "maxLength": "Legfeljebb {max} karakter lehet",
+    "passwordMatch": "A jelszavaknak egyezniük kell",
+    "invalidFormat": "Érvénytelen formátum",
+    "numeric": "Számnak kell lennie",
+    "url": "Érvényes URL szükséges",
+    "ipAddress": "Érvényes IP-cím szükséges",
+    "hostname": "Érvényes gazdagépnév szükséges"
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Listi yfir SSL-skírteini",
+        "orderTitle": "Panta SSL-skráningar"
+    },
+    "view": {
+        "title": "Skoða SSL {id}",
+        "package": "Pakki",
+        "nextInvoiceDate": "Næsta reikningsdagsetning:",
+        "billing": "Innheimta",
+        "billed": "innheimt:",
+        "statusIs": "Staða er:",
+        "orderInfo": "Pöntunarupplýsingar",
+        "certificateInfo": "Skírteiniupplýsingar",
+        "links": "Tenglar",
+        "welcomeEmailConfirm": "Ertu viss um að þú viljir endursenda velkominn tölvupóstinn?",
+        "emailSent": "Tölvupóstur sendur",
+        "emailSentMessage": "Velkominn tölvupósturinn hefur verið endursendu. Athugaðu pósthólfið þitt."
+    },
+    "order": {
+        "title": "Panta SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Breyta samþykktartölvupósti",
+        "selectApproverEmail": "Veldu samþykktartölvupóst"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Liosta Stòraidh / Cùl-taic",
+        "orderTitle": "Òrdaich Clàraidhean Cùl-taic"
+    },
+    "view": {
+        "title": "Seall Cùl-taic {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an Ath-chunntas-pàighidh:",
+        "billing": "Billeadh",
+        "billed": "air a bhilleadh:",
+        "statusIs": "Is e an inbhe:",
+        "hostServer": "Frithealaiche Aoigheachd",
+        "links": "Ceanglaichean",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilte a chuir a-rithist?",
+        "emailSent": "Chaidh Post-d a Chuir",
+        "emailSentMessage": "Chaidh am post-d fàilte a chuir a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "order": {
+        "title": "Òrdaich Stòradh"
+    }
+}

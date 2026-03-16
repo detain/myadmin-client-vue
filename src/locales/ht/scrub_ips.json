@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lis Sèvis Scrub IPs",
+        "orderTitle": "Kòmande Scrub IPs"
+    },
+    "view": {
+        "title": "Wè Scrub IPs",
+        "currentIp": "IP Aktyèl",
+        "ipAddress": "Adrès IP",
+        "ipFromService": "IP nan sèvis"
+    },
+    "filters": {
+        "title": "Filtre",
+        "createNew": "Kreye Nouvo",
+        "createNewFilter": "Kreye Nouvo Filtre",
+        "filterType": "Tip Filtre",
+        "selectFilterType": "Chwazi Tip Filtre",
+        "ipAddress": "Adrès IP",
+        "portNo": "Nimewo Pò",
+        "filter": "Filtre",
+        "destinationIp": "IP Destinasyon",
+        "destinationPort": "Pò Destinasyon",
+        "noFiltersFound": "Pa jwenn okenn filtre!",
+        "deleteFilterConfirm": "Èske ou sèten ou vle efase filtre sa a?",
+        "unableToCreateFilter": "Enkapab kreye filtre an pou kounye a.",
+        "unableToDeleteFilter": "Enkapab efase filtre an pou kounye a."
+    },
+    "firewallRules": {
+        "title": "Règ Firewall",
+        "createNew": "Kreye Nouvo",
+        "createNewFirewall": "Kreye Nouvo Règ Firewall",
+        "protocol": "Pwotokòl",
+        "destinationIp": "IP Destinasyon",
+        "destinationPort": "Pò Destinasyon",
+        "sourceIp": "IP Sous",
+        "sourcePort": "Pò Sous",
+        "xdpAction": "Aksyon XDP",
+        "ipRequired": "Adrès IP obligatwa",
+        "block": "Bloke",
+        "whitelist": "Lis Blanch",
+        "noRulesFound": "Pa jwenn okenn règ!",
+        "deleteRuleConfirm": "Èske ou sèten ou vle efase règ sa a?",
+        "unableToCreateRule": "Enkapab kreye règ firewall an pou kounye a.",
+        "unableToDeleteRule": "Enkapab efase règ firewall an pou kounye a."
+    },
+    "geoFirewallRules": {
+        "title": "Règ Firewall Geo",
+        "createNew": "Kreye Nouvo",
+        "createNewGeoRule": "Kreye Nouvo Règ Firewall Geo",
+        "destinationIp": "IP Destinasyon",
+        "destinationPort": "Pò Destinasyon",
+        "sourceCountry": "Peyi Sous",
+        "sourceAsn": "ASN Sous",
+        "xdpAction": "Aksyon XDP",
+        "portNo": "Nimewo Pò",
+        "selectCountry": "Chwazi Peyi",
+        "asn": "ASN",
+        "block": "Bloke",
+        "whitelist": "Lis Blanch",
+        "noRulesFound": "Pa jwenn okenn règ!",
+        "deleteGeoRuleConfirm": "Èske ou sèten ou vle efase règ geo sa a?",
+        "unableToCreateRule": "Enkapab kreye règ firewall an pou kounye a.",
+        "unableToDeleteRule": "Enkapab efase règ firewall geo an pou kounye a."
+    }
+}

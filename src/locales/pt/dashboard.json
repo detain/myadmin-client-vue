@@ -1,0 +1,28 @@
+{
+    "title": "Painel",
+    "welcome": "Bem-vindo, {name}",
+    "lastLogin": "Último Login",
+    "lastLoginIp": "IP do Último Login",
+    "prepay": {
+        "title": "Saldo de Pré-pagamento",
+        "remainingBalance": "Saldo Restante de Pré-pagamento",
+        "manageAccount": "Gerenciar Conta",
+        "manageTooltip": "Gerenciar Sua Conta de Pré-pagamento"
+    },
+    "invoices": {
+        "title": "Faturas Não Pagas",
+        "totalUnpaid": "Total de Faturas Não Pagas",
+        "totalAmount": "Valor Total a Pagar",
+        "payTotalTooltip": "Pagar Valor Total"
+    },
+    "callInPin": "PIN de Chamada",
+    "recentTickets": "Tickets Recentes",
+    "viewAllTickets": "Ver Todos os Tickets",
+    "editTicket": "Editar Ticket",
+    "serviceCount": "Nenhum serviço ativo | {count} serviço ativo | {count} serviços ativos",
+    "affiliate": {
+        "earnPerSale": "Ganhe {amount} Por Venda",
+        "urlPlaceholder": "URL de Afiliado",
+        "shareWith": "Compartilhar com"
+    }
+}

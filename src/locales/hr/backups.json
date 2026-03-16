@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Popis pohrane / sigurnosnih kopija",
+        "orderTitle": "Naruči registracije sigurnosnih kopija"
+    },
+    "view": {
+        "title": "Pregledaj sigurnosnu kopiju {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedeće fakture:",
+        "billing": "Naplata",
+        "billed": "naplaćeno:",
+        "statusIs": "Status je:",
+        "hostServer": "Poslužitelj domaćin",
+        "links": "Veze",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovo poslati e-mail dobrodošlice?",
+        "emailSent": "E-mail poslan",
+        "emailSentMessage": "E-mail dobrodošlice je ponovo poslan. Provjerite svoju poštu."
+    },
+    "order": {
+        "title": "Naruči pohranu"
+    }
+}

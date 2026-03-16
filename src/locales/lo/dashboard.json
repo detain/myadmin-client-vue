@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "ຍິນດີຕ້ອນຮັບ, {name}",
+    "lastLogin": "ເຂົ້າສູ່ລະບົບລ່າສຸດ",
+    "lastLoginIp": "IP ເຂົ້າສູ່ລະບົບລ່າສຸດ",
+    "prepay": {
+        "title": "ຍອດຄ້າງ Prepay",
+        "remainingBalance": "ຍອດຄ້າງ Prepay ທີ່ຍັງເຫຼືອ",
+        "manageAccount": "ຈັດການບັນຊີ",
+        "manageTooltip": "ຈັດການບັນຊີ Prepay ຂອງທ່ານ"
+    },
+    "invoices": {
+        "title": "ໃບແຈ້ງໜີ້ທີ່ຍັງບໍ່ຊຳລະ",
+        "totalUnpaid": "ໃບແຈ້ງໜີ້ທີ່ຍັງບໍ່ຊຳລະທັງໝົດ",
+        "totalAmount": "ຈຳນວນທັງໝົດທີ່ຕ້ອງຊຳລະ",
+        "payTotalTooltip": "ຊຳລະຈຳນວນທັງໝົດ"
+    },
+    "callInPin": "PIN ສຳລັບໂທ",
+    "recentTickets": "Tickets ລ່າສຸດ",
+    "viewAllTickets": "ເບິ່ງ Tickets ທັງໝົດ",
+    "editTicket": "ແກ້ໄຂ Ticket",
+    "serviceCount": "ບໍ່ມີບໍລິການທີ່ໃຊ້ງານ | {count} ບໍລິການທີ່ໃຊ້ງານ | {count} ບໍລິການທີ່ໃຊ້ງານ",
+    "affiliate": {
+        "earnPerSale": "ໄດ້ຮັບ {amount} ຕໍ່ການຂາຍ",
+        "urlPlaceholder": "URL ພັນທະມິດ",
+        "shareWith": "ແບ່ງປັນກັບ"
+    }
+}

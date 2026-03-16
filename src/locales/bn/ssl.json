@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL সার্টিফিকেট তালিকা",
+        "orderTitle": "SSL নিবন্ধন অর্ডার করুন"
+    },
+    "view": {
+        "title": "SSL {id} দেখুন",
+        "package": "প্যাকেজ",
+        "nextInvoiceDate": "পরবর্তী চালানের তারিখ:",
+        "billing": "বিলিং",
+        "billed": "বিল হয়েছে:",
+        "statusIs": "স্ট্যাটাস হল:",
+        "orderInfo": "অর্ডার তথ্য",
+        "certificateInfo": "সার্টিফিকেট তথ্য",
+        "links": "লিঙ্কসমূহ",
+        "welcomeEmailConfirm": "আপনি কি স্বাগত ইমেইলটি পুনরায় পাঠাতে চান?",
+        "emailSent": "ইমেইল পাঠানো হয়েছে",
+        "emailSentMessage": "স্বাগত ইমেইলটি পুনরায় পাঠানো হয়েছে। আপনার ইনবক্স চেক করুন।"
+    },
+    "order": {
+        "title": "SSL অর্ডার করুন"
+    },
+    "changeApproverEmail": {
+        "title": "অনুমোদনকারী ইমেইল পরিবর্তন করুন",
+        "selectApproverEmail": "অনুমোদনকারী ইমেইল নির্বাচন করুন"
+    }
+}

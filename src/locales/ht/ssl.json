@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lis Sètifika SSL",
+        "orderTitle": "Kòmande Anrejistreman SSL"
+    },
+    "view": {
+        "title": "Wè SSL {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture:",
+        "statusIs": "Estati se:",
+        "orderInfo": "Enfòmasyon Kòmand",
+        "certificateInfo": "Enfòmasyon Sètifika",
+        "links": "Lyen",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "order": {
+        "title": "Kòmande SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Chanje Imèl Apwovatè",
+        "selectApproverEmail": "Chwazi Imèl Apwovatè"
+    }
+}

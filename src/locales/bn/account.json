@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "অ্যাকাউন্ট সেটিংস"
+    },
+    "changePassword": {
+        "title": "পাসওয়ার্ড পরিবর্তন করুন",
+        "cardTitle": "পাসওয়ার্ড আপডেট করুন",
+        "currentPassword": "বর্তমান পাসওয়ার্ড",
+        "newPassword": "নতুন পাসওয়ার্ড",
+        "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
+        "updatePassword": "পাসওয়ার্ড আপডেট করুন"
+    },
+    "changeUsername": {
+        "title": "ব্যবহারকারীর নাম পরিবর্তন করুন",
+        "disabled": "ব্যবহারকারীর নাম পরিবর্তন সাময়িকভাবে নিষ্ক্রিয় করা হয়েছে।",
+        "currentUsername": "বর্তমান ব্যবহারকারীর নাম",
+        "newDesiredUsername": "নতুন কাঙ্ক্ষিত ব্যবহারকারীর নাম",
+        "confirmationCode": "নিশ্চিতকরণ কোড",
+        "pleaseWait": "অনুগ্রহ করে অপেক্ষা করুন!",
+        "gotError": "ত্রুটি হয়েছে {error}"
+    },
+    "contactInfo": {
+        "title": "যোগাযোগের তথ্য",
+        "cardTitle": "যোগাযোগের তথ্য আপডেট করুন",
+        "headsUp": "মনোযোগ দিন!",
+        "headsUpMessage": "যদিও এই তথ্য ঐচ্ছিক, সঠিক তথ্য প্রদান করলে আমাদের মধ্যে যোগাযোগ সমৃদ্ধ হবে এবং আপনার ঝুঁকি % স্কোর কমবে, যা সাইটের কিছু অংশে দ্রুত ও সুবিধাজনক প্রবেশাধিকার দেবে (যেমন ক্রেডিট কার্ড প্রমাণীকরণ না করেই)।",
+        "riskScore": "ঝুঁকি % স্কোর",
+        "personalInformation": "ব্যক্তিগত তথ্য",
+        "name": "নাম",
+        "namePlaceholder": "জো কুল",
+        "company": "কোম্পানি",
+        "gstinTaxId": "GSTIN ট্যাক্স আইডি",
+        "gstinPlaceholder": "পণ্য ও পরিষেবা করদাতা সনাক্তকরণ নম্বর",
+        "addressLine1": "ঠিকানা লাইন ১",
+        "addressLine2": "ঠিকানা লাইন ২",
+        "cityState": "শহর, রাজ্য",
+        "city": "শহর",
+        "state": "রাজ্য",
+        "country": "দেশ",
+        "zipcode": "জিপ কোড",
+        "phoneNo": "ফোন নম্বর",
+        "phoneNumber": "ফোন নম্বর",
+        "language": "ভাষা",
+        "auto": "স্বয়ংক্রিয়",
+        "currency": "মুদ্রা",
+        "timeZone": "সময় অঞ্চল",
+        "otherSettings": "অন্যান্য সেটিংস",
+        "disablePasswordResets": "পাসওয়ার্ড রিসেট (পাসওয়ার্ড ভুলে গেছেন) নিষ্ক্রিয় করুন।",
+        "disableInvoiceReminders": "চালান অনুস্মারক ইমেইল বিজ্ঞপ্তি নিষ্ক্রিয় করুন।",
+        "disableServerInvoiceReminders": "সার্ভার চালান অনুস্মারক ইমেইল বিজ্ঞপ্তি নিষ্ক্রিয় করুন।",
+        "disableReinstall": "পুনরায় ইনস্টল নিষ্ক্রিয় করুন।",
+        "alternateEmailInvoices": "চালানের জন্য বিকল্প ইমেইল",
+        "alternateEmailInvoicesPlaceholder": "চালান পাঠানোর জন্য বিকল্প ইমেইল",
+        "alternateEmailAbuse": "অপব্যবহার রিপোর্টের জন্য বিকল্প ইমেইল",
+        "updateInfo": "তথ্য আপডেট করুন"
+    }
+}

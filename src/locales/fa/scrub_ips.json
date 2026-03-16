@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "فهرست سرویس‌های Scrub IP",
+        "orderTitle": "سفارش Scrub IP"
+    },
+    "view": {
+        "title": "مشاهده Scrub IP",
+        "currentIp": "IP فعلی",
+        "ipAddress": "آدرس IP",
+        "ipFromService": "IP از سرویس"
+    },
+    "filters": {
+        "title": "فیلترها",
+        "createNew": "ایجاد جدید",
+        "createNewFilter": "ایجاد فیلتر جدید",
+        "filterType": "نوع فیلتر",
+        "selectFilterType": "انتخاب نوع فیلتر",
+        "ipAddress": "آدرس IP",
+        "portNo": "شماره پورت",
+        "filter": "فیلتر",
+        "destinationIp": "IP مقصد",
+        "destinationPort": "پورت مقصد",
+        "noFiltersFound": "هیچ فیلتری یافت نشد!",
+        "deleteFilterConfirm": "آیا مطمئن هستید که می‌خواهید این فیلتر را حذف کنید؟",
+        "unableToCreateFilter": "در حال حاضر امکان ایجاد فیلتر وجود ندارد.",
+        "unableToDeleteFilter": "در حال حاضر امکان حذف فیلتر وجود ندارد."
+    },
+    "firewallRules": {
+        "title": "قوانین فایروال",
+        "createNew": "ایجاد جدید",
+        "createNewFirewall": "ایجاد قانون فایروال جدید",
+        "protocol": "پروتکل",
+        "destinationIp": "IP مقصد",
+        "destinationPort": "پورت مقصد",
+        "sourceIp": "IP منبع",
+        "sourcePort": "پورت منبع",
+        "xdpAction": "عملیات XDP",
+        "ipRequired": "آدرس IP الزامی است",
+        "block": "مسدود کردن",
+        "whitelist": "لیست سفید",
+        "noRulesFound": "هیچ قانونی یافت نشد!",
+        "deleteRuleConfirm": "آیا مطمئن هستید که می‌خواهید این قانون را حذف کنید؟",
+        "unableToCreateRule": "در حال حاضر امکان ایجاد قانون فایروال وجود ندارد.",
+        "unableToDeleteRule": "در حال حاضر امکان حذف قانون فایروال وجود ندارد."
+    },
+    "geoFirewallRules": {
+        "title": "قوانین فایروال جغرافیایی",
+        "createNew": "ایجاد جدید",
+        "createNewGeoRule": "ایجاد قانون فایروال جغرافیایی جدید",
+        "destinationIp": "IP مقصد",
+        "destinationPort": "پورت مقصد",
+        "sourceCountry": "کشور مبدأ",
+        "sourceAsn": "ASN مبدأ",
+        "xdpAction": "عملیات XDP",
+        "portNo": "شماره پورت",
+        "selectCountry": "انتخاب کشور",
+        "asn": "ASN",
+        "block": "مسدود کردن",
+        "whitelist": "لیست سفید",
+        "noRulesFound": "هیچ قانونی یافت نشد!",
+        "deleteGeoRuleConfirm": "آیا مطمئن هستید که می‌خواهید این قانون جغرافیایی را حذف کنید؟",
+        "unableToCreateRule": "در حال حاضر امکان ایجاد قانون فایروال وجود ندارد.",
+        "unableToDeleteRule": "در حال حاضر امکان حذف قانون فایروال جغرافیایی وجود ندارد."
+    }
+}

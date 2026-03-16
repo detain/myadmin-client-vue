@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "ລາຍການ ທີ່ເກັບຂໍ້ມູນ / ສຳຮອງ",
+        "orderTitle": "ສັ່ງຊື້ການລົງທະບຽນ Backup"
+    },
+    "view": {
+        "title": "ເບິ່ງ Backup {id}",
+        "package": "ແພັກເກັດ",
+        "nextInvoiceDate": "ວັນທີໃບແຈ້ງໜີ້ຕໍ່ໄປ:",
+        "billing": "ການເກັບເງິນ",
+        "billed": "ເກັບເງິນ:",
+        "statusIs": "ສະຖານະຄື:",
+        "hostServer": "ເຊີຟເວີ Host",
+        "links": "ລິງ",
+        "welcomeEmailConfirm": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບຄືນ?",
+        "emailSent": "ສົ່ງອີເມລ໌ແລ້ວ",
+        "emailSentMessage": "ສົ່ງອີເມລ໌ຍິນດີຕ້ອນຮັບໃໝ່ແລ້ວ. ກວດກາ inbox ຂອງທ່ານ."
+    },
+    "order": {
+        "title": "ສັ່ງຊື້ ທີ່ເກັບຂໍ້ມູນ"
+    }
+}

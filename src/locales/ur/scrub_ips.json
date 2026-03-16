@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP سروسز فہرست",
+        "orderTitle": "Scrub IPs آرڈر کریں"
+    },
+    "view": {
+        "title": "Scrub IPs دیکھیں",
+        "currentIp": "موجودہ IP",
+        "ipAddress": "IP پتہ",
+        "ipFromService": "سروس سے IP"
+    },
+    "filters": {
+        "title": "فلٹرز",
+        "createNew": "نیا بنائیں",
+        "createNewFilter": "نیا فلٹر بنائیں",
+        "filterType": "فلٹر کی قسم",
+        "selectFilterType": "فلٹر کی قسم منتخب کریں",
+        "ipAddress": "IP پتہ",
+        "portNo": "پورٹ نمبر",
+        "filter": "فلٹر",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٹ",
+        "noFiltersFound": "کوئی فلٹرز نہیں ملے!",
+        "deleteFilterConfirm": "کیا آپ واقعی اس فلٹر کو حذف کرنا چاہتے ہیں؟",
+        "unableToCreateFilter": "اس وقت فلٹر بنانے میں ناکام۔",
+        "unableToDeleteFilter": "اس وقت فلٹر حذف کرنے میں ناکام۔"
+    },
+    "firewallRules": {
+        "title": "فائر وال قواعد",
+        "createNew": "نیا بنائیں",
+        "createNewFirewall": "نیا فائر وال قاعدہ بنائیں",
+        "protocol": "پروٹوکول",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٹ",
+        "sourceIp": "ماخذ IP",
+        "sourcePort": "ماخذ پورٹ",
+        "xdpAction": "XDP عمل",
+        "ipRequired": "IP پتہ ضروری ہے",
+        "block": "بلاک",
+        "whitelist": "وائٹ لسٹ",
+        "noRulesFound": "کوئی قواعد نہیں ملے!",
+        "deleteRuleConfirm": "کیا آپ واقعی اس قاعدے کو حذف کرنا چاہتے ہیں؟",
+        "unableToCreateRule": "اس وقت فائر وال قاعدہ بنانے میں ناکام۔",
+        "unableToDeleteRule": "اس وقت فائر وال قاعدہ حذف کرنے میں ناکام۔"
+    },
+    "geoFirewallRules": {
+        "title": "جیو فائر وال قواعد",
+        "createNew": "نیا بنائیں",
+        "createNewGeoRule": "نیا جیو فائر وال قاعدہ بنائیں",
+        "destinationIp": "منزل IP",
+        "destinationPort": "منزل پورٹ",
+        "sourceCountry": "ماخذ ملک",
+        "sourceAsn": "ماخذ ASN",
+        "xdpAction": "XDP عمل",
+        "portNo": "پورٹ نمبر",
+        "selectCountry": "ملک منتخب کریں",
+        "asn": "ASN",
+        "block": "بلاک",
+        "whitelist": "وائٹ لسٹ",
+        "noRulesFound": "کوئی قواعد نہیں ملے!",
+        "deleteGeoRuleConfirm": "کیا آپ واقعی اس جیو قاعدے کو حذف کرنا چاہتے ہیں؟",
+        "unableToCreateRule": "اس وقت فائر وال قاعدہ بنانے میں ناکام۔",
+        "unableToDeleteRule": "اس وقت جیو فائر وال قاعدہ حذف کرنے میں ناکام۔"
+    }
+}

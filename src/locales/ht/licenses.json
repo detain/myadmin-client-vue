@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lis Lisans",
+        "orderTitle": "Kòmande Anrejistreman Lisans"
+    },
+    "view": {
+        "title": "Wè Lisans {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture:",
+        "statusIs": "Estati se:",
+        "licenseInfo": "Enfòmasyon Lisans",
+        "cpanelInfo": "Enfòmasyon cPanel",
+        "links": "Lyen",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "order": {
+        "title": "Kòmande Lisans"
+    },
+    "changeIp": {
+        "title": "Chanje IP"
+    },
+    "changeOs": {
+        "title": "Chanje OS",
+        "selectLicenseOs": "Chwazi OS Lisans"
+    }
+}

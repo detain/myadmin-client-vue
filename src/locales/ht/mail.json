@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lis Sèvis Imèl",
+        "orderTitle": "Kòmande Anrejistreman Imèl"
+    },
+    "view": {
+        "title": "Wè Imèl {id}",
+        "package": "Pakè",
+        "nextInvoiceDate": "Pwochen Dat Fakti:",
+        "billing": "Faktiration",
+        "billed": "fakture:",
+        "statusIs": "Estati se:",
+        "mailApi": "API Imèl",
+        "usageCount": "Kont Itilizasyon:",
+        "links": "Lyen",
+        "connectionInfo": "Enfòmasyon Koneksyon",
+        "welcomeEmailConfirm": "Èske ou sèten ou vle renvoye imèl byenvini an?",
+        "emailSent": "Imèl Voye",
+        "emailSentMessage": "Imèl byenvini an te renvoye. Verifye bwat imèl ou a."
+    },
+    "order": {
+        "title": "Kòmande Imèl"
+    },
+    "alerts": {
+        "title": "Alèt",
+        "addAlert": "Ajoute Alèt",
+        "editAlert": "Modifye Alèt",
+        "noAlerts": "Pa jwenn okenn alèt"
+    },
+    "delist": {
+        "title": "Retire nan Lis",
+        "blockedEmails": "Imèl Bloke"
+    },
+    "denyRules": {
+        "title": "Règ Refize",
+        "addRule": "Ajoute Règ",
+        "noRules": "Pa jwenn okenn règ refize"
+    },
+    "logs": {
+        "title": "Jounal",
+        "searchLogs": "Chèche Jounal"
+    },
+    "stats": {
+        "title": "Estatistik"
+    },
+    "deliverability": {
+        "title": "Kapasit Livrezon"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "परवाना यादी",
+        "orderTitle": "परवाना नोंदणी ऑर्डर करा"
+    },
+    "view": {
+        "title": "परवाना {id} पहा",
+        "package": "पॅकेज",
+        "nextInvoiceDate": "पुढील बीजक तारीख:",
+        "billing": "बिलिंग",
+        "billed": "बिल केले:",
+        "statusIs": "स्थिती आहे:",
+        "licenseInfo": "परवाना माहिती",
+        "cpanelInfo": "cPanel माहिती",
+        "links": "दुवे",
+        "welcomeEmailConfirm": "तुम्हाला स्वागत ईमेल पुन्हा पाठवायचा आहे का?",
+        "emailSent": "ईमेल पाठवला",
+        "emailSentMessage": "स्वागत ईमेल पुन्हा पाठवला गेला आहे. तुमचा इनबॉक्स तपासा."
+    },
+    "order": {
+        "title": "परवाना ऑर्डर करा"
+    },
+    "changeIp": {
+        "title": "IP बदला"
+    },
+    "changeOs": {
+        "title": "OS बदला",
+        "selectLicenseOs": "परवाना OS निवडा"
+    }
+}

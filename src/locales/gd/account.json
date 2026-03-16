@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Roghainnean Cunntais"
+    },
+    "changePassword": {
+        "title": "Atharraich Facal-faire",
+        "cardTitle": "Ùraich Facal-faire",
+        "currentPassword": "Facal-faire Làithreach",
+        "newPassword": "Facal-faire Ùr",
+        "confirmPassword": "Dearbhaich Facal-faire",
+        "updatePassword": "Ùraich Facal-faire"
+    },
+    "changeUsername": {
+        "title": "Atharraich Ainm-cleachdaiche",
+        "disabled": "Chaidh atharrachaidhean ainm-cleachdaiche a chuir dheth gu sealadach.",
+        "currentUsername": "Ainm-cleachdaiche Làithreach",
+        "newDesiredUsername": "Ainm-cleachdaiche Ùr a Tha Thu ag Iarraidh",
+        "confirmationCode": "Còd Dearbhaidh",
+        "pleaseWait": "Feuch an fuirich thu!",
+        "gotError": "Fhuair mearachd {error}"
+    },
+    "contactInfo": {
+        "title": "Fiosrachadh Conaltraidh",
+        "cardTitle": "Ùraich Fiosrachadh Conaltraidh",
+        "headsUp": "Aire!",
+        "headsUpMessage": "Ged a tha am fiosrachadh seo roghainneil, le bhith a' toirt seachad fiosrachadh (ceart) cuidichidh e le ar co-obrachadh agus leigidh e sìos do Sgòr % Riosga, a' toirt seachad inntrigeadh nas luaithe agus nas goirisiche do phàirtean den làrach (mar gun fheum cairt-creideis a dhearbhadh).",
+        "riskScore": "Sgòr % Riosga",
+        "personalInformation": "Fiosrachadh Pearsanta",
+        "name": "Ainm",
+        "namePlaceholder": "Seumas Friseal",
+        "company": "Companaidh",
+        "gstinTaxId": "ID Cìse GSTIN",
+        "gstinPlaceholder": "Àireamh Dearbhaidh Cìs-pàighear Bathar agus Seirbheisean",
+        "addressLine1": "Loidhne Seòladh 1",
+        "addressLine2": "Loidhne Seòladh 2",
+        "cityState": "Baile, Stàit",
+        "city": "Baile",
+        "state": "Stàit",
+        "country": "Dùthaich",
+        "zipcode": "Còd-puist",
+        "phoneNo": "Àireamh Fòn",
+        "phoneNumber": "Àireamh Fòn",
+        "language": "Cànan",
+        "auto": "Fèin-ghluasadach",
+        "currency": "Airgead-crìche",
+        "timeZone": "Crios-ama",
+        "otherSettings": "Roghainnean Eile",
+        "disablePasswordResets": "Cuir dheth Ath-shuidhichean Facal-faire (Dhìochuimhnich thu do Fhacal-faire).",
+        "disableInvoiceReminders": "Cuir dheth Fios-cuimhneachaidh Cunntas-pàighidh tro Phost-d.",
+        "disableServerInvoiceReminders": "Cuir dheth Fios-cuimhneachaidh Cunntas-pàighidh Frithealaiche tro Phost-d.",
+        "disableReinstall": "Cuir dheth Ath-stàladh.",
+        "alternateEmailInvoices": "Post-d Eile airson Cunntasan-pàighidh",
+        "alternateEmailInvoicesPlaceholder": "Post-d eile airson cunntasan-pàighidh a chuir",
+        "alternateEmailAbuse": "Post-d Eile airson Aithisgean Mì-ghníomh",
+        "updateInfo": "Ùraich Fiosrachadh"
+    }
+}

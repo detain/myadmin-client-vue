@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Manaidsear DNS",
+        "addDomain": "Cuir Àrainn Ris",
+        "deleteDomain": "Sguab às Àrainn",
+        "domainName": "Ainm Àrainne",
+        "dnsServers": "Frithealaichean DNS",
+        "confirmDelete": "A bheil thu cinnteach gu bheil thu airson an àrainn seo a sguabadh às?",
+        "noDomains": "Cha deach àrainn a lorg"
+    },
+    "editor": {
+        "title": "Deasaiche DNS",
+        "addRecord": "Cuir Clàr Ris",
+        "deleteRecord": "Sguab às Clàr",
+        "editRecord": "Deasaich Clàr",
+        "recordType": "Seòrsa Clàir",
+        "hostname": "Ainm-òstaig",
+        "address": "Seòladh",
+        "distance": "Astar",
+        "weight": "Cudrom",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Gnìomhan",
+        "confirmDelete": "A bheil thu cinnteach gu bheil thu airson an clàr seo a sguabadh às?"
+    }
+}

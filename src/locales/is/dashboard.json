@@ -1,0 +1,28 @@
+{
+    "title": "Mælaborð",
+    "welcome": "Velkomin(n), {name}",
+    "lastLogin": "Síðasta innskráning",
+    "lastLoginIp": "Síðasta innskráningar-IP",
+    "prepay": {
+        "title": "ForGreiðslujafnvægi",
+        "remainingBalance": "Eftirstandandi ForGreiðslujafnvægi",
+        "manageAccount": "Stjórna reikningi",
+        "manageTooltip": "Stjórna ForGreiðslureikningnum þínum"
+    },
+    "invoices": {
+        "title": "Ógreiddir reikningar",
+        "totalUnpaid": "Heildarfjöldi ógreiddra reikninga",
+        "totalAmount": "Heildarupphæð til greiðslu",
+        "payTotalTooltip": "Greiða heildarupphæð"
+    },
+    "callInPin": "PIN-númer símtals",
+    "recentTickets": "Nýlegir miðar",
+    "viewAllTickets": "Skoða alla miða",
+    "editTicket": "Breyta miða",
+    "serviceCount": "Engar virkar þjónustur | {count} virk þjónusta | {count} virkar þjónustur",
+    "affiliate": {
+        "earnPerSale": "Þjáðu {amount} á hverja sölu",
+        "urlPlaceholder": "Tengla-URL",
+        "shareWith": "Deila með"
+    }
+}

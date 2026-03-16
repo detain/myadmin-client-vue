@@ -1,0 +1,12 @@
+{
+    "title": "Korisnici",
+    "addUser": "Dodaj korisnika",
+    "editUser": "Uredi korisnika",
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "keepSamePassword": "Ostavite prazno za zadržavanje iste lozinke",
+    "errorLoading": "Pogreška pri učitavanju korisnika:",
+    "errorLoadingUser": "Pogreška pri učitavanju korisnika:"
+}

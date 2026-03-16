@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "વેબ હૉસ્ટિંગ સૂચિ",
+        "orderTitle": "વેબસાઇટ નોંધણી ઓર્ડર કરો"
+    },
+    "view": {
+        "title": "વેબસાઇટ {id} જુઓ",
+        "package": "પેકેજ",
+        "nextInvoiceDate": "આગળની ઇન્વૉઇસ તારીખ:",
+        "billing": "બિલિંગ",
+        "billed": "બિલ",
+        "billingStatusIs": "બિલિંગ સ્થિતિ:",
+        "hostInfo": "હૉસ્ટ માહિતી",
+        "username": "ઉપયોગકર્તા નામ:",
+        "ip": "IP:",
+        "server": "સર્વર:",
+        "notSetYet": "હજુ સેટ નથી",
+        "login": "લૉગિન",
+        "types": "પ્રકારો:",
+        "linksLabel": "લિંક્સ:",
+        "manualLogin": "મૅન્યૂઅલ લૉગિન",
+        "automaticLogin": "ઑટૉમૅટિક લૉગિન",
+        "clickHere": "અહીં ક્લિક કરો",
+        "defaultNameservers": "ડિફૉલ્ટ નેમ સર્વર્સ",
+        "nameservers": "નેમ સર્વર્સ:",
+        "externalLinks": "બાહ્ય લિંક્સ",
+        "names": "નામો:",
+        "websitePreview": "વેબસાઇટ પૂર્વ-દૃશ્ય",
+        "links": "લિંક્સ",
+        "welcomeEmailConfirm": "શું તમે ખરેખર સ્વાગત ઈમેઈલ ફરી મોકલવા માંગો છો?",
+        "emailSent": "ઈમેઈલ મોકલ્યો",
+        "emailSentMessage": "સ્વાગત ઈમેઈલ ફરી મોકલ્યો. તમારો ઇનબૉક્સ તપાસો."
+    },
+    "buyIp": {
+        "title": "વધારાની IP ઍડ-ઑન ખરીદો",
+        "existingAddonIps": "હાલની ઍડ-ઑન IPs",
+        "additionalIp": "વધારાની IP",
+        "monthlyCost": "માસિક ખર્ચ ({symbol})",
+        "costDescription": "ખર્ચ ({symbol}) દર મહિને જ્યારે વેબસાઇટ ઇન્વૉઇસ થાય",
+        "confirmPurchase": "ખરીદી પુષ્ટિ",
+        "confirmMessage": "વધારાની IP ખર્ચ: {symbol}{cost}/મહિનો. શું તમે વધારાની IP ઓર્ડર કરવા માંગો છો?",
+        "placeOrder": "ઓર્ડર આપો",
+        "orderPlaced": "ઓર્ડર આપ્યો"
+    },
+    "reverseDns": {
+        "title": "રિવર્સ DNS",
+        "updateReverseDns": "રિવર્સ DNS અપડેટ કરો"
+    },
+    "downloadBackups": {
+        "title": "બૅકઅપ ડાઉનલૉડ કરો",
+        "backup": "બૅકઅપ",
+        "size": "કદ",
+        "options": "વિકલ્પો"
+    },
+    "migration": {
+        "title": "તમારી વેબસાઇટ સ્થળાંતર કરો",
+        "currentWebHostInfo": "વર્તમાન વેબ હૉસ્ટ માહિતી",
+        "customerPortalUrl": "ગ્રાહક પોર્ટલ URL",
+        "portalExample": "ઉદાહરણ: sso.godaddy.com",
+        "registeredUsername": "નોંધાયેલ ઉપયોગકર્તા નામ / ઈમેઈલ / ID",
+        "password": "પાસવર્ડ",
+        "controlPanelUrl": "કંટ્રોલ પેનલ URL",
+        "controlPanelExample": "ઉદાહરણ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / કંટ્રોલ પેનલ ઉપયોગકર્તા નામ",
+        "ftpPassword": "FTP / કંટ્રોલ પેનલ પાસવર્ડ",
+        "holdingPageQuestion": "જો સાઇટ લાઇવ/વ્યસ્ત હૉઇ અને ઉચ્ચ ટ્રૅફિક ધરાવતી હૉઇ, તો શું આપણે સ્થળાંતર દરમ્યાન હૉલ્ડિંગ પૅઇજ સ્થાપિત કરી શકીએ?",
+        "specialRequirementsQuestion": "શું આ સાઇટ PHP આવૃત્તિ / મૉડ્યૂલ્સ જેવી વિશેષ આવશ્યકતાઓ ધરાવે છે?",
+        "domainRegistryInfo": "ડોમૈન રજિસ્ટ્રી માહિતી",
+        "transferDomainQuestion": "શું તમે ડોમૈન નામ નોંધણી સ્થળાંતર કરવામાં અમારી સહાય ઇચ્છો છો?",
+        "updateNameserversQuestion": "ડેટા સ્થળાંતર પૂર્ણ થતાં જ શું તમે નેમ સર્વર્સ અપડેટ કરવા ઇચ્છો છો?",
+        "domainRegistryPortal": "ડોમૈન રજિસ્ટ્રી ગ્રાહક પોર્ટલ",
+        "importantNotes": "મહત્ત્વની નૉંધો",
+        "note1": "આ ફૉર્મ ભરવાથી અમારા સહાય વિભાગ માટે સ્થળાંતર શરૂ કરવા નવી ટિકિટ ખૂલશે.",
+        "note2": "કોઈ વિલંબ ટાળવા માટે શક્ય તેટલું સંપૂર્ણ અને સચોટ ભરો.",
+        "note3": "સામાન્ય સ્થળાંતર 48 થી 72 કલાકમાં પૂર્ણ થાય. ડેટા મોટો હૉઇ તો વધુ સમય.",
+        "note4": "સ્થળાંતર દરમ્યાન જૂનું હૉસ્ટિંગ ઑનલાઇન અને ઍક્સેસ યોગ્ય હોવું જોઈએ.",
+        "note5": "સ્થળાંતર દરમ્યાન સાઇટ પર કૉઈ અપડેટ ન કરો, નહીં તો ડેટા ન ઝડ઼ી શકે."
+    },
+    "order": {
+        "title": "વેબસાઇટ ઓર્ડર કરો"
+    }
+}

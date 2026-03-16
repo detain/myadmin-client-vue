@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "فهرست میزبانی وب",
+        "orderTitle": "سفارش ثبت وبسایت"
+    },
+    "view": {
+        "title": "مشاهده وبسایت {id}",
+        "package": "بسته",
+        "nextInvoiceDate": "تاریخ فاکتور بعدی:",
+        "billing": "صورتحساب",
+        "billed": "صورتحساب شده",
+        "billingStatusIs": "وضعیت صورتحساب:",
+        "hostInfo": "اطلاعات میزبان",
+        "username": "نام کاربری:",
+        "ip": "IP:",
+        "server": "سرور:",
+        "notSetYet": "هنوز تنظیم نشده",
+        "login": "ورود",
+        "types": "انواع:",
+        "linksLabel": "پیوندها:",
+        "manualLogin": "ورود دستی",
+        "automaticLogin": "ورود خودکار",
+        "clickHere": "اینجا کلیک کنید",
+        "defaultNameservers": "نیم‌سرورهای پیش‌فرض",
+        "nameservers": "نیم‌سرورها:",
+        "externalLinks": "پیوندهای خارجی",
+        "names": "نام‌ها:",
+        "websitePreview": "پیش‌نمایش وبسایت",
+        "links": "پیوندها",
+        "welcomeEmailConfirm": "آیا مطمئن هستید که می‌خواهید ایمیل خوش‌آمدگویی را دوباره ارسال کنید؟",
+        "emailSent": "ایمیل ارسال شد",
+        "emailSentMessage": "ایمیل خوش‌آمدگویی دوباره ارسال شد. صندوق ورودی خود را بررسی کنید."
+    },
+    "buyIp": {
+        "title": "خرید افزونه IP اضافی",
+        "existingAddonIps": "IP‌های افزونه موجود",
+        "additionalIp": "IP اضافی",
+        "monthlyCost": "هزینه ماهانه ({symbol})",
+        "costDescription": "هزینه ({symbol}) هر ماه در صورتحساب وبسایت شما",
+        "confirmPurchase": "تأیید خرید",
+        "confirmMessage": "هزینه IP اضافی: {symbol}{cost}/ماه. آیا مطمئن هستید که می‌خواهید یک IP اضافی سفارش دهید؟",
+        "placeOrder": "ثبت سفارش",
+        "orderPlaced": "سفارش ثبت شد"
+    },
+    "reverseDns": {
+        "title": "DNS معکوس",
+        "updateReverseDns": "به‌روزرسانی DNS معکوس"
+    },
+    "downloadBackups": {
+        "title": "دانلود پشتیبان‌ها",
+        "backup": "پشتیبان",
+        "size": "اندازه",
+        "options": "گزینه‌ها"
+    },
+    "migration": {
+        "title": "انتقال وبسایت شما",
+        "currentWebHostInfo": "اطلاعات میزبان وب فعلی",
+        "customerPortalUrl": "URL پورتال مشتری",
+        "portalExample": "مثال: sso.godaddy.com",
+        "registeredUsername": "نام کاربری / ایمیل / شناسه ثبت شده",
+        "password": "رمز عبور",
+        "controlPanelUrl": "URL پنل کنترل",
+        "controlPanelExample": "مثال: yourdomain.com/cpanel",
+        "ftpUsername": "نام کاربری FTP / پنل کنترل",
+        "ftpPassword": "رمز عبور FTP / پنل کنترل",
+        "holdingPageQuestion": "اگر سایت یک سایت زنده/پرترافیک است، آیا می‌توانیم در طول مهاجرت یک صفحه موقت تنظیم کنیم؟",
+        "specialRequirementsQuestion": "آیا این سایت نیازمندی‌های خاصی مثل نسخه PHP / ماژول‌ها دارد؟",
+        "domainRegistryInfo": "اطلاعات رجیستری دامنه",
+        "transferDomainQuestion": "آیا می‌خواهید در انتقال ثبت نام دامنه هم کمک کنیم؟",
+        "updateNameserversQuestion": "آیا می‌خواهید پس از اتمام انتقال داده، نیم‌سرورها را به‌روزرسانی کنیم؟",
+        "domainRegistryPortal": "پورتال مشتری رجیستری دامنه",
+        "importantNotes": "نکات مهم",
+        "note1": "پر کردن این فرم یک تیکت جدید برای بخش پشتیبانی ما باز می‌کند تا انتقال شما را آغاز کند.",
+        "note2": "لطفاً تا حد امکان کامل و دقیق باشید تا از هرگونه تأخیر جلوگیری شود.",
+        "note3": "یک انتقال معمولی ظرف ۴۸ تا ۷۲ ساعت کامل می‌شود. گاهی اوقات اگر مقدار داده برای کپی زیاد باشد، بیشتر طول می‌کشد.",
+        "note4": "حساب میزبانی قدیمی باید در طول انتقال آنلاین و قابل دسترس باشد، در غیر این صورت ممکن است با مشکل مواجه شویم.",
+        "note5": "لطفاً در حین انتقال هیچ به‌روزرسانی روی سایت خود انجام ندهید، در غیر این صورت آن داده‌ها ممکن است به میزبانی جدید کپی نشوند."
+    },
+    "order": {
+        "title": "سفارش وبسایت"
+    }
+}
