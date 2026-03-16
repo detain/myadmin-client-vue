@@ -34,7 +34,7 @@ import {
     faTable, faTachometerAlt, faThumbsDown, faThumbsUp, faTicketAlt, faTimes, faTimesCircle, faTrash, faTrashAlt, faTv,
     faUpload, faUser, faUserEdit, faUserLock, faUserPlus, faUserSecret, faUserShield, faUsersCog,
     faVideo,
-    faWallet, faWarehouse,
+    faWallet, faWarehouse, faWindowMaximize,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faBell as farBell, faChartBar as farChartBar, faCheckSquare as farCheckSquare,
@@ -79,7 +79,7 @@ addIcons(
 addIcons(
     faTable, faTachometerAlt, faThumbsDown, faThumbsUp, faTicketAlt, faTimes, faTimesCircle, faTrash, faTrashAlt, faTv,
     faUpload, faUser, faUserEdit, faUserLock, faUserPlus, faUserSecret, faUserShield, faUsersCog,
-    faVideo, faWallet, faWarehouse,
+    faVideo, faWallet, faWarehouse, faWindowMaximize,
 );
 // regular icons
 addIcons(

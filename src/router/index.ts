@@ -207,7 +207,7 @@ export const router = createRouter({
         },
         {
             path: '/websites',
-            meta: { i18n: ['websites'] },
+            meta: { i18n: ['webhosting'] },
             //component: () => import('../views/billing/affiliates/Layout.vue'),
             children: [
                 { path: '', component: () => import('../views/webhosting/WebsitesList.vue') },

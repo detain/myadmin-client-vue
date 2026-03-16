@@ -124,7 +124,7 @@ accountStore.load();
                     <div class="small-box bg-yellow">
                         <div class="inner px-3 pb-2 pt-3 text-white">
                             <h3>{{ t('dashboard.welcome', { name: full_name }) }}</h3>
-                            <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login ? d(new Date(last_login.replace(' ', 'T')), 'long') : '' }}</p>
+                            <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login && !isNaN(new Date(last_login.replace(' ', 'T')).getTime()) ? d(new Date(last_login.replace(' ', 'T')), 'long') : last_login }}</p>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['far', 'id-card']" />
@@ -137,7 +137,7 @@ accountStore.load();
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>{{ t('dashboard.prepay.title') }}</h3>
                             <p class="mb-2 mt-3 py-3" style="min-height: 3.5em">
-                                <template v-if="balance"> <b>{{ t('dashboard.prepay.remainingBalance') }}:</b> {{ n(parseFloat(balance), 'currency') }} </template>
+                                <template v-if="balance && !isNaN(parseFloat(balance))"> <b>{{ t('dashboard.prepay.remainingBalance') }}:</b> {{ n(parseFloat(balance), 'currency') }} </template>
                             </p>
                         </div>
                         <div class="icon">
@@ -153,7 +153,7 @@ accountStore.load();
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>{{ t('dashboard.invoices.title') }}</h3>
                             <div class="pt-2"><b>{{ t('dashboard.invoices.totalUnpaid') }}: </b>{{ invoice_list }}</div>
-                            <div class="mb-2 mt-2"><b>{{ t('dashboard.invoices.totalAmount') }}: </b>{{ amount ? n(parseFloat(amount), 'currency') : '' }}</div>
+                            <div class="mb-2 mt-2"><b>{{ t('dashboard.invoices.totalAmount') }}: </b>{{ amount && !isNaN(parseFloat(amount)) ? n(parseFloat(amount), 'currency') : '' }}</div>
                         </div>
                         <div class="icon">
                             <font-awesome-icon :icon="['fas', 'file-invoice']" />
