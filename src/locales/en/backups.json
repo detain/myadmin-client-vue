@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Storage / Backup List",
+        "orderTitle": "Order Backup Registrations"
+    },
+    "view": {
+        "title": "View Backup {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Next Invoice Date:",
+        "billing": "Billing",
+        "billed": "billed:",
+        "statusIs": "Status is:",
+        "hostServer": "Host Server",
+        "links": "Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome email?",
+        "emailSent": "Email Sent",
+        "emailSentMessage": "The welcome email has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Order Storage"
+    }
+}
