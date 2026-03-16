@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista de Licencias",
+        "orderTitle": "Ordenar Registros de Licencia"
+    },
+    "view": {
+        "title": "Ver Licencia {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Próxima Fecha de Factura:",
+        "billing": "Facturación",
+        "billed": "facturado:",
+        "statusIs": "El estado es:",
+        "licenseInfo": "Información de Licencia",
+        "cpanelInfo": "Información de cPanel",
+        "links": "Enlaces",
+        "welcomeEmailConfirm": "¿Está seguro de que desea reenviar el correo de bienvenida?",
+        "emailSent": "Correo Enviado",
+        "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada."
+    },
+    "order": {
+        "title": "Ordenar Licencia"
+    },
+    "changeIp": {
+        "title": "Cambiar IP"
+    },
+    "changeOs": {
+        "title": "Cambiar SO",
+        "selectLicenseOs": "Seleccionar SO de Licencia"
+    }
+}

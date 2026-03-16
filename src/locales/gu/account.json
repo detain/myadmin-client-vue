@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "એકાઉન્ટ સેટિંગ્સ"
+    },
+    "changePassword": {
+        "title": "પાસવર્ડ બદલો",
+        "cardTitle": "પાસવર્ડ અપડેટ કરો",
+        "currentPassword": "વર્તમાન પાસવર્ડ",
+        "newPassword": "નવો પાસવર્ડ",
+        "confirmPassword": "પાસવર્ડ પુષ્ટિ કરો",
+        "updatePassword": "પાસવર્ડ અપડેટ કરો"
+    },
+    "changeUsername": {
+        "title": "વપરાશકર્તા નામ બદલો",
+        "disabled": "વપરાશકર્તા નામ ફેરફારો અસ્થાયી રૂપે અક્ષમ કરવામાં આવ્યા છે.",
+        "currentUsername": "વર્તમાન વપરાશકર્તા નામ",
+        "newDesiredUsername": "નવું ઇચ્છિત વપરાશકર્તા નામ",
+        "confirmationCode": "પુષ્ટિ કોડ",
+        "pleaseWait": "કૃપા રાહ જુઓ!",
+        "gotError": "ભૂલ મળી {error}"
+    },
+    "contactInfo": {
+        "title": "સંપર્ક માહિતી",
+        "cardTitle": "સંપર્ક માહિતી અપડેટ કરો",
+        "headsUp": "ધ્યાન આપો!",
+        "headsUpMessage": "જોકે આ માહિતી વૈકલ્પિક છે, (સચોટ) માહિતી આપવી અમારી ક્રિયા-પ્રતિક્રિયાને સমૃद्ध  કરવામાં અને તમારો જોખમ % સ્કોર ઘટાડવામાં મદદ કરશે, સાઇટના ભાગો (જેમ કે ક્રેડિટ કાર્ડ ઑથેન્ટિકેટ ન  કરવો) ઝડપથી અને વધુ અનુકૂળ ઍક્સેસ આપશે.",
+        "riskScore": "જોખમ % સ્કોર",
+        "personalInformation": "વ્યક્તિગત માહિતી",
+        "name": "નામ",
+        "namePlaceholder": "Joe Cool",
+        "company": "કંપની",
+        "gstinTaxId": "GSTIN ટૅક્સ ID",
+        "gstinPlaceholder": "માલ અને સેવા કરદાતા ઓળખ નંબર",
+        "addressLine1": "સરનામું લાઇન 1",
+        "addressLine2": "સરનામું લાઇન 2",
+        "cityState": "શહેર, રાજ્ય",
+        "city": "શહેર",
+        "state": "રાજ્ય",
+        "country": "દેશ",
+        "zipcode": "ઝિપ કોડ",
+        "phoneNo": "ફ઼ોન નં.",
+        "phoneNumber": "ફ઼ોન નંબર",
+        "language": "ભાષા",
+        "auto": "ઑટો",
+        "currency": "ચલણ",
+        "timeZone": "સમય ઝોન",
+        "otherSettings": "અન્ય સેટિંગ્સ",
+        "disablePasswordResets": "પાસવર્ડ રીસેટ અક્ષમ કરો (પાસવર્ડ ભૂલ્યા).",
+        "disableInvoiceReminders": "ઇન્વૉઇસ રીમાઇન્ડર ઇ-મેઇલ સૂચનાઓ અક્ષમ કરો.",
+        "disableServerInvoiceReminders": "સર્વર ઇન્વૉઇસ રીમાઇન્ડર ઇ-મેઇલ સૂચનાઓ અક્ષમ કરો.",
+        "disableReinstall": "ફરીથી ઇન્સ્ટૉલ અક્ષમ કરો.",
+        "alternateEmailInvoices": "ઇન્વૉઇસ માટે વૈકલ્પિક ઇ-મેઇલ",
+        "alternateEmailInvoicesPlaceholder": "ઇન્વૉઇસ મોકલવા માટે વૈકલ્પિક ઇ-મેઇલ",
+        "alternateEmailAbuse": "દુરૂપયોગ રિપૉર્ટ્સ માટે વૈકલ્પિક ઇ-મેઇલ",
+        "updateInfo": "માહિતી અپ ડેટ કરો"
+    }
+}

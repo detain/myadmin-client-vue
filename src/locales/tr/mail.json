@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Posta Hizmetleri Listesi",
+        "orderTitle": "Posta Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Posta {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "mailApi": "Posta API'si",
+        "usageCount": "Kullanım Sayısı:",
+        "links": "Bağlantılar",
+        "connectionInfo": "Bağlantı Bilgisi",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "Posta Siparişi"
+    },
+    "alerts": {
+        "title": "Uyarılar",
+        "addAlert": "Uyarı Ekle",
+        "editAlert": "Uyarıyı Düzenle",
+        "noAlerts": "Uyarı bulunamadı"
+    },
+    "delist": {
+        "title": "Listeden Çıkar",
+        "blockedEmails": "Engellenen E-postalar"
+    },
+    "denyRules": {
+        "title": "Reddetme Kuralları",
+        "addRule": "Kural Ekle",
+        "noRules": "Reddetme kuralı bulunamadı"
+    },
+    "logs": {
+        "title": "Günlükler",
+        "searchLogs": "Günlüklerde Ara"
+    },
+    "stats": {
+        "title": "İstatistikler"
+    },
+    "deliverability": {
+        "title": "Teslimat Edilebilirlik"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "required": "{field} is verpligtend",
+    "email": "Moet 'n geldige e-posadres wees",
+    "minLength": "Moet ten minste {min} karakters wees",
+    "maxLength": "Moet nie meer as {max} karakters wees nie",
+    "passwordMatch": "Wagwoorde moet ooreenstem",
+    "invalidFormat": "Ongeldige formaat",
+    "numeric": "Moet 'n nommer wees",
+    "url": "Moet 'n geldige URL wees",
+    "ipAddress": "Moet 'n geldige IP-adres wees",
+    "hostname": "Moet 'n geldige gasheernaam wees"
+}

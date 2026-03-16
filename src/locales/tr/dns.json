@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Yöneticisi",
+        "addDomain": "Alan Adı Ekle",
+        "deleteDomain": "Alan Adını Sil",
+        "domainName": "Alan Adı",
+        "dnsServers": "DNS Sunucuları",
+        "confirmDelete": "Bu alan adını silmek istediğinizden emin misiniz?",
+        "noDomains": "Alan adı bulunamadı"
+    },
+    "editor": {
+        "title": "DNS Düzenleyici",
+        "addRecord": "Kayıt Ekle",
+        "deleteRecord": "Kaydı Sil",
+        "editRecord": "Kaydı Düzenle",
+        "recordType": "Kayıt Türü",
+        "hostname": "Ana Makine Adı",
+        "address": "Adres",
+        "distance": "Uzaklık",
+        "weight": "Ağırlık",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "İşlemler",
+        "confirmDelete": "Bu kaydı silmek istediğinizden emin misiniz?"
+    }
+}

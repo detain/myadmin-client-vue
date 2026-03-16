@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "قائمة خدمات عناوين IP التنقية",
+        "orderTitle": "طلب عناوين IP التنقية"
+    },
+    "view": {
+        "title": "عرض عناوين IP التنقية",
+        "currentIp": "IP الحالي",
+        "ipAddress": "عنوان IP",
+        "ipFromService": "IP من الخدمة"
+    },
+    "filters": {
+        "title": "المرشحات",
+        "createNew": "إنشاء جديد",
+        "createNewFilter": "إنشاء مرشح جديد",
+        "filterType": "نوع المرشح",
+        "selectFilterType": "اختر نوع المرشح",
+        "ipAddress": "عنوان IP",
+        "portNo": "رقم المنفذ",
+        "filter": "المرشح",
+        "destinationIp": "IP الوجهة",
+        "destinationPort": "منفذ الوجهة",
+        "noFiltersFound": "لم يتم العثور على مرشحات!",
+        "deleteFilterConfirm": "هل أنت متأكد أنك تريد حذف هذا المرشح؟",
+        "unableToCreateFilter": "غير قادر على إنشاء مرشح في الوقت الحالي.",
+        "unableToDeleteFilter": "غير قادر على حذف المرشح في الوقت الحالي."
+    },
+    "firewallRules": {
+        "title": "قواعد جدار الحماية",
+        "createNew": "إنشاء جديد",
+        "createNewFirewall": "إنشاء قاعدة جدار حماية جديدة",
+        "protocol": "البروتوكول",
+        "destinationIp": "IP الوجهة",
+        "destinationPort": "منفذ الوجهة",
+        "sourceIp": "IP المصدر",
+        "sourcePort": "منفذ المصدر",
+        "xdpAction": "إجراء XDP",
+        "ipRequired": "عنوان IP مطلوب",
+        "block": "حجب",
+        "whitelist": "القائمة البيضاء",
+        "noRulesFound": "لم يتم العثور على قواعد!",
+        "deleteRuleConfirm": "هل أنت متأكد أنك تريد حذف هذه القاعدة؟",
+        "unableToCreateRule": "غير قادر على إنشاء قاعدة جدار حماية في الوقت الحالي.",
+        "unableToDeleteRule": "غير قادر على حذف قاعدة جدار الحماية في الوقت الحالي."
+    },
+    "geoFirewallRules": {
+        "title": "قواعد جدار الحماية الجغرافي",
+        "createNew": "إنشاء جديد",
+        "createNewGeoRule": "إنشاء قاعدة جدار حماية جغرافي جديدة",
+        "destinationIp": "IP الوجهة",
+        "destinationPort": "منفذ الوجهة",
+        "sourceCountry": "البلد المصدر",
+        "sourceAsn": "ASN المصدر",
+        "xdpAction": "إجراء XDP",
+        "portNo": "رقم المنفذ",
+        "selectCountry": "اختر البلد",
+        "asn": "ASN",
+        "block": "حجب",
+        "whitelist": "القائمة البيضاء",
+        "noRulesFound": "لم يتم العثور على قواعد!",
+        "deleteGeoRuleConfirm": "هل أنت متأكد أنك تريد حذف هذه القاعدة الجغرافية؟",
+        "unableToCreateRule": "غير قادر على إنشاء قاعدة جدار حماية في الوقت الحالي.",
+        "unableToDeleteRule": "غير قادر على حذف قاعدة جدار الحماية الجغرافي في الوقت الحالي."
+    }
+}

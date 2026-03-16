@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Menaxheri DNS",
+        "addDomain": "Shto Domen",
+        "deleteDomain": "Fshi Domenin",
+        "domainName": "Emri i Domenit",
+        "dnsServers": "Serverët DNS",
+        "confirmDelete": "A jeni i sigurt që dëshironi të fshini këtë domen?",
+        "noDomains": "Nuk u gjet asnjë domen"
+    },
+    "editor": {
+        "title": "Redaktori DNS",
+        "addRecord": "Shto Regjistrim",
+        "deleteRecord": "Fshi Regjistrimin",
+        "editRecord": "Ndrysho Regjistrimin",
+        "recordType": "Lloji i Regjistrimit",
+        "hostname": "Emri i Hostit",
+        "address": "Adresa",
+        "distance": "Distanca",
+        "weight": "Pesha",
+        "port": "Porta",
+        "ttl": "TTL",
+        "actions": "Veprimet",
+        "confirmDelete": "A jeni i sigurt që dëshironi të fshini këtë regjistrim?"
+    }
+}

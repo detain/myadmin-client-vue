@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS प्रबन्धक",
+        "addDomain": "डोमेन थप्नुहोस्",
+        "deleteDomain": "डोमेन मेटाउनुहोस्",
+        "domainName": "डोमेन नाम",
+        "dnsServers": "DNS सर्भरहरू",
+        "confirmDelete": "के तपाईं यो डोमेन मेटाउन निश्चित हुनुहुन्छ?",
+        "noDomains": "कुनै डोमेन फेला परेन"
+    },
+    "editor": {
+        "title": "DNS सम्पादक",
+        "addRecord": "रेकर्ड थप्नुहोस्",
+        "deleteRecord": "रेकर्ड मेटाउनुहोस्",
+        "editRecord": "रेकर्ड सम्पादन गर्नुहोस्",
+        "recordType": "रेकर्ड प्रकार",
+        "hostname": "होस्टनाम",
+        "address": "ठेगाना",
+        "distance": "दूरी",
+        "weight": "वजन",
+        "port": "पोर्ट",
+        "ttl": "TTL",
+        "actions": "कार्यहरू",
+        "confirmDelete": "के तपाईं यो रेकर्ड मेटाउन निश्चित हुनुहुन्छ?"
+    }
+}

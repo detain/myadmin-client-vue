@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "専用サーバー一覧",
+    "orderTitle": "サーバー登録を注文"
+  },
+  "view": {
+    "title": "サーバー {id} を表示",
+    "package": "パッケージ",
+    "dedicatedServer": "専用サーバー",
+    "nextInvoiceDate": "次回請求日:",
+    "billing": "請求",
+    "billed": "請求済み:",
+    "statusIs": "ステータス:",
+    "orderInfo": "注文情報",
+    "orderId": "注文 ID:",
+    "links": "リンク",
+    "serverInformation": "サーバー情報",
+    "networkInformation": "ネットワーク情報",
+    "power": "電源",
+    "selectAction": "アクションを選択",
+    "softReboot": "ソフト再起動",
+    "paymentStatus": "支払いステータス:",
+    "emailSent": "メール送信済み",
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+  },
+  "order": {
+    "title": "サーバーを注文",
+    "orderDedicatedServer": "専用サーバーを注文",
+    "orderSummary": "注文概要",
+    "selectServer": "サーバーを選択",
+    "serverHostname": "サーバーホスト名",
+    "rootPassword": "root パスワード",
+    "agreeToTerms": "オファー条件に同意",
+    "iAgreeToTerms": "上記の条件を読み、同意します。",
+    "placeOrder": "注文を確定",
+    "cpuSelection": "CPU 選択",
+    "driveConfiguration": "ドライブ構成",
+    "addDrive": "ドライブを追加",
+    "removeDrive": "ドライブを削除",
+    "selectMemory": "メモリを選択",
+    "selectOs": "OS を選択",
+    "region": "地域",
+    "buyNow": "今すぐ購入",
+    "monthly": "月額",
+    "perMonth": "/月",
+    "confirmOrder": "注文を確認"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "قائمة شهادات SSL",
+        "orderTitle": "طلب تسجيلات SSL"
+    },
+    "view": {
+        "title": "عرض SSL {id}",
+        "package": "الحزمة",
+        "nextInvoiceDate": "تاريخ الفاتورة التالية:",
+        "billing": "الفوترة",
+        "billed": "مفوتر:",
+        "statusIs": "الحالة:",
+        "orderInfo": "معلومات الطلب",
+        "certificateInfo": "معلومات الشهادة",
+        "links": "الروابط",
+        "welcomeEmailConfirm": "هل أنت متأكد أنك تريد إعادة إرسال رسالة الترحيب؟",
+        "emailSent": "تم إرسال البريد الإلكتروني",
+        "emailSentMessage": "تمت إعادة إرسال رسالة الترحيب. تحقق من صندوق الوارد."
+    },
+    "order": {
+        "title": "طلب SSL"
+    },
+    "changeApproverEmail": {
+        "title": "تغيير بريد المعتمد الإلكتروني",
+        "selectApproverEmail": "اختر بريد المعتمد الإلكتروني"
+    }
+}

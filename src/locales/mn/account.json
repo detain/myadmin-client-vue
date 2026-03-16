@@ -1,0 +1,49 @@
+{
+    "settings": {
+        "title": "Бүртгэлийн тохиргоо"
+    },
+    "changePassword": {
+        "title": "Нууц үг өөрчлөх",
+        "cardTitle": "Нууц үг шинэчлэх",
+        "currentPassword": "Одоогийн нууц үг",
+        "newPassword": "Шинэ нууц үг",
+        "confirmPassword": "Нууц үгийг баталгаажуулах",
+        "updatePassword": "Нууц үг шинэчлэх"
+    },
+    "changeUsername": {
+        "title": "Хэрэглэгчийн нэр өөрчлөх",
+        "disabled": "Хэрэглэгчийн нэр өөрчлөх түр хугацаагаар идэвхгүй болгогдсон.",
+        "currentUsername": "Одоогийн хэрэглэгчийн нэр",
+        "newDesiredUsername": "Шинэ хэрэглэгчийн нэр",
+        "confirmationCode": "Баталгаажуулалтын код",
+        "pleaseWait": "Хүлээнэ үү!",
+        "gotError": "Алдаа гарлаа {error}"
+    },
+    "contactInfo": {
+        "title": "Холбоо барих мэдээлэл",
+        "cardTitle": "Холбоо барих мэдээлэл шинэчлэх",
+        "headsUp": "Анхаарал!",
+        "headsUpMessage": "Энэ мэдээлэл заавал биш боловч зөв мэдээлэл өгснөөр эрсдэлийн хувийг бууруулахад тусална.",
+        "riskScore": "Эрсдэлийн хувь",
+        "personalInformation": "Хувийн мэдээлэл",
+        "name": "Нэр",
+        "company": "Компани",
+        "addressLine1": "Хаяг 1",
+        "addressLine2": "Хаяг 2",
+        "city": "Хот",
+        "state": "Муж",
+        "country": "Улс",
+        "zipcode": "Шуудангийн индекс",
+        "phoneNumber": "Утасны дугаар",
+        "language": "Хэл",
+        "auto": "Автомат",
+        "currency": "Валют",
+        "timeZone": "Цагийн бүс",
+        "otherSettings": "Бусад тохиргоо",
+        "disablePasswordResets": "Нууц үг сэргээхийг хаах (Нууц үгээ мартсан уу?).",
+        "disableInvoiceReminders": "Нэхэмжлэлийн сануулга имэйл мэдэгдлийг хаах.",
+        "alternateEmailInvoices": "Нэхэмжлэлийн өөр имэйл",
+        "alternateEmailAbuse": "Зөрчлийн мэдэгдлийн өөр имэйл",
+        "updateInfo": "Мэдээлэл шинэчлэх"
+    }
+}

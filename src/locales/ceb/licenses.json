@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Listahan sa mga Lisensya", "orderTitle": "Mag-order og License Registrations" },
+    "view": { "title": "Tan-awa ang Lisensya {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill:", "statusIs": "Ang Status mao:", "licenseInfo": "Impormasyon sa Lisensya", "cpanelInfo": "Impormasyon sa cPanel", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
+    "order": { "title": "Mag-order og Lisensya" },
+    "changeIp": { "title": "Usba ang IP" },
+    "changeOs": { "title": "Usba ang OS", "selectLicenseOs": "Pilia ang License OS" }
+}

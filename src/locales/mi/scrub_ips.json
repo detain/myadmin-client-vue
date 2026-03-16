@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Rārangi Ratonga Scrub IPs",
+        "orderTitle": "Ota Scrub IPs"
+    },
+    "view": {
+        "title": "Tiro Scrub IPs",
+        "currentIp": "IP Ināianei",
+        "ipAddress": "Wāhitau IP",
+        "ipFromService": "IP mai i te ratonga"
+    },
+    "filters": {
+        "title": "Ngā Tātari",
+        "createNew": "Waihanga Hou",
+        "createNewFilter": "Waihanga Tātari Hou",
+        "filterType": "Momo Tātari",
+        "selectFilterType": "Kōwhiri Momo Tātari",
+        "ipAddress": "Wāhitau IP",
+        "portNo": "Nama Tatau",
+        "filter": "Tātari",
+        "destinationIp": "IP Whāinga",
+        "destinationPort": "Tatau Whāinga",
+        "noFiltersFound": "Kāore he tātari i kitea!",
+        "deleteFilterConfirm": "He tūturu tāu e hiahia ana ki te muku i tēnei tātari?",
+        "unableToCreateFilter": "Kāore i āhei ki te waihanga tātari i tēnei wā.",
+        "unableToDeleteFilter": "Kāore i āhei ki te muku tātari i tēnei wā."
+    },
+    "firewallRules": {
+        "title": "Ngā Ture Āhuru Ahi",
+        "createNew": "Waihanga Hou",
+        "createNewFirewall": "Waihanga Ture Āhuru Ahi Hou",
+        "protocol": "Tikanga",
+        "destinationIp": "IP Whāinga",
+        "destinationPort": "Tatau Whāinga",
+        "sourceIp": "IP Puna",
+        "sourcePort": "Tatau Puna",
+        "xdpAction": "Mahi XDP",
+        "ipRequired": "Me whai te wāhitau IP",
+        "block": "Ārai",
+        "whitelist": "Rārangi Mā",
+        "noRulesFound": "Kāore he ture i kitea!",
+        "deleteRuleConfirm": "He tūturu tāu e hiahia ana ki te muku i tēnei ture?",
+        "unableToCreateRule": "Kāore i āhei ki te waihanga ture āhuru ahi i tēnei wā.",
+        "unableToDeleteRule": "Kāore i āhei ki te muku ture āhuru ahi i tēnei wā."
+    },
+    "geoFirewallRules": {
+        "title": "Ngā Ture Āhuru Ahi Geo",
+        "createNew": "Waihanga Hou",
+        "createNewGeoRule": "Waihanga Ture Āhuru Ahi Geo Hou",
+        "destinationIp": "IP Whāinga",
+        "destinationPort": "Tatau Whāinga",
+        "sourceCountry": "Whenua Puna",
+        "sourceAsn": "ASN Puna",
+        "xdpAction": "Mahi XDP",
+        "portNo": "Nama Tatau",
+        "selectCountry": "Kōwhiri Whenua",
+        "asn": "ASN",
+        "block": "Ārai",
+        "whitelist": "Rārangi Mā",
+        "noRulesFound": "Kāore he ture i kitea!",
+        "deleteGeoRuleConfirm": "He tūturu tāu e hiahia ana ki te muku i tēnei ture geo?",
+        "unableToCreateRule": "Kāore i āhei ki te waihanga ture āhuru ahi i tēnei wā.",
+        "unableToDeleteRule": "Kāore i āhei ki te muku ture āhuru ahi geo i tēnei wā."
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Paramètres du compte"
+    },
+    "changePassword": {
+        "title": "Changer le mot de passe",
+        "cardTitle": "Mettre à jour le mot de passe",
+        "currentPassword": "Mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "updatePassword": "Mettre à jour le mot de passe"
+    },
+    "changeUsername": {
+        "title": "Changer le nom d'utilisateur",
+        "disabled": "Les changements de nom d'utilisateur ont été temporairement désactivés.",
+        "currentUsername": "Nom d'utilisateur actuel",
+        "newDesiredUsername": "Nouveau nom d'utilisateur souhaité",
+        "confirmationCode": "Code de confirmation",
+        "pleaseWait": "Veuillez patienter !",
+        "gotError": "Erreur obtenue {error}"
+    },
+    "contactInfo": {
+        "title": "Informations de contact",
+        "cardTitle": "Mettre à jour les informations de contact",
+        "headsUp": "Attention !",
+        "headsUpMessage": "Bien que ces informations soient facultatives, fournir des informations (précises) aidera à enrichir nos interactions et à réduire votre score de risque %, vous donnant un accès plus rapide et plus pratique à certaines parties du site (comme ne pas avoir à authentifier une carte de crédit).",
+        "riskScore": "Score de risque %",
+        "personalInformation": "Informations personnelles",
+        "name": "Nom",
+        "namePlaceholder": "Jean Dupont",
+        "company": "Entreprise",
+        "gstinTaxId": "Numéro de taxe GSTIN",
+        "gstinPlaceholder": "Numéro d'identification du contribuable aux biens et services",
+        "addressLine1": "Adresse ligne 1",
+        "addressLine2": "Adresse ligne 2",
+        "cityState": "Ville, État",
+        "city": "Ville",
+        "state": "État",
+        "country": "Pays",
+        "zipcode": "Code postal",
+        "phoneNo": "Numéro de téléphone",
+        "phoneNumber": "Numéro de téléphone",
+        "language": "Langue",
+        "auto": "Auto",
+        "currency": "Devise",
+        "timeZone": "Fuseau horaire",
+        "otherSettings": "Autres paramètres",
+        "disablePasswordResets": "Désactiver les réinitialisations de mot de passe (mot de passe oublié).",
+        "disableInvoiceReminders": "Désactiver les notifications de rappel de facture par e-mail.",
+        "disableServerInvoiceReminders": "Désactiver les notifications de rappel de facture de serveur par e-mail.",
+        "disableReinstall": "Désactiver la réinstallation.",
+        "alternateEmailInvoices": "E-mail alternatif pour les factures",
+        "alternateEmailInvoicesPlaceholder": "E-mail alternatif pour l'envoi des factures",
+        "alternateEmailAbuse": "E-mail alternatif pour les rapports d'abus",
+        "updateInfo": "Mettre à jour les informations"
+    }
+}

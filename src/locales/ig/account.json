@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Ntọala Akaụntụ"
+    },
+    "changePassword": {
+        "title": "Gbanwee Paswọọdụ",
+        "cardTitle": "Melite Paswọọdụ",
+        "currentPassword": "Paswọọdụ Ugbu a",
+        "newPassword": "Paswọọdụ Ọhụụ",
+        "confirmPassword": "Kwenye Paswọọdụ",
+        "updatePassword": "Melite Paswọọdụ"
+    },
+    "changeUsername": {
+        "title": "Gbanwee Aha Njirimara",
+        "disabled": "Agbanyụọla mgbanwe aha njirimara oge ntakịrị.",
+        "currentUsername": "Aha Njirimara Ugbu a",
+        "newDesiredUsername": "Aha Njirimara Ọhụụ Achọrọ",
+        "confirmationCode": "Koodu Nkwenye",
+        "pleaseWait": "Biko chere!",
+        "gotError": "Nwetara mperi {error}"
+    },
+    "contactInfo": {
+        "title": "Ozi Kọntaktị",
+        "cardTitle": "Melite Ozi Kọntaktị",
+        "headsUp": "Uche!",
+        "headsUpMessage": "Ọ bụ ezie na ozi a ọ bụghị ihe dị mkpa, inye ozi (ziri ezi) ga-enyere aka mejuputa mmekọrịta anyị ma belata Ọnụọgụ % Ihe Ize ndụ gị na-enye gị nnweta ngwa ngwa na mfe na akụkụ ebe nke saịtị (dị ka ịghị achọ ikwenye kaadị kredit).",
+        "riskScore": "Ọnụọgụ % Ihe Ize ndụ",
+        "personalInformation": "Ozi Nkeonwe",
+        "name": "Aha",
+        "namePlaceholder": "Joe Cool",
+        "company": "Ụlọ Ọrụ",
+        "gstinTaxId": "ID Ụtụ Isi GSTIN",
+        "gstinPlaceholder": "Nọmba Njirimara Onye Nwụlita Ngwaahịa na Ọrụ",
+        "addressLine1": "Adreesị Ahịrị 1",
+        "addressLine2": "Adreesị Ahịrị 2",
+        "cityState": "Obodo, Steeti",
+        "city": "Obodo",
+        "state": "Steeti",
+        "country": "Mba",
+        "zipcode": "Koodu ZIP",
+        "phoneNo": "Nọmba Ekwentị",
+        "phoneNumber": "Nọmba Ekwentị",
+        "language": "Asụsụ",
+        "auto": "Akpaaka",
+        "currency": "Ego",
+        "timeZone": "Mpaghara Oge",
+        "otherSettings": "Ntọala Ndị Ọzọ",
+        "disablePasswordResets": "Gbanyụọ (Echefuola Paswọọdụ gị) Ntọgharia Paswọọdụ.",
+        "disableInvoiceReminders": "Gbanyụọ Ozi Email Ndị Na-echo Banyere Ụgwọ.",
+        "disableServerInvoiceReminders": "Gbanyụọ Ozi Email Ndị Na-echo Banyere Ụgwọ Server.",
+        "disableReinstall": "Gbanyụọ Ntinye Ọzọ.",
+        "alternateEmailInvoices": "Email Ọzọ maka Ụgwọ",
+        "alternateEmailInvoicesPlaceholder": "Email ọzọ maka izipu ụgwọ",
+        "alternateEmailAbuse": "Email Ọzọ maka Akụkọ Ihe Ọjọọ",
+        "updateInfo": "Melite Ozi"
+    }
+}

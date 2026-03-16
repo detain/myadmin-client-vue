@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Llista de llicències", "orderTitle": "Comandar registres de llicències" },
+    "view": { "title": "Veure llicència {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat:", "statusIs": "L'estat és:", "licenseInfo": "Informació de la llicència", "cpanelInfo": "Informació de cPanel", "links": "Enllaços", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
+    "order": { "title": "Comandar llicència" },
+    "changeIp": { "title": "Canviar IP" },
+    "changeOs": { "title": "Canviar SO", "selectLicenseOs": "Seleccionar SO de la llicència" }
+}

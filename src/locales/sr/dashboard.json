@@ -1,0 +1,28 @@
+{
+    "title": "Контролна табла",
+    "welcome": "Добродошли, {name}",
+    "lastLogin": "Последња пријава",
+    "lastLoginIp": "IP последње пријаве",
+    "prepay": {
+        "title": "Предплатни салдо",
+        "remainingBalance": "Преостали предплатни салдо",
+        "manageAccount": "Управљање налогом",
+        "manageTooltip": "Управљајте вашим предплатним налогом"
+    },
+    "invoices": {
+        "title": "Неплаћени рачуни",
+        "totalUnpaid": "Укупно неплаћених рачуна",
+        "totalAmount": "Укупан износ за плаћање",
+        "payTotalTooltip": "Плати укупан износ"
+    },
+    "callInPin": "PIN за позив",
+    "recentTickets": "Недавни тикети",
+    "viewAllTickets": "Прикажи све тикете",
+    "editTicket": "Уреди тикет",
+    "serviceCount": "Нема активних услуга | {count} активна услуга | {count} активних услуга",
+    "affiliate": {
+        "earnPerSale": "Зарадите {amount} по продаји",
+        "urlPlaceholder": "Партнерски URL",
+        "shareWith": "Подели са"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "ڈیش بورڈ",
+    "welcome": "خوش آمدید، {name}",
+    "lastLogin": "آخری لاگ ان",
+    "lastLoginIp": "آخری لاگ ان IP",
+    "prepay": {
+        "title": "پری پے بیلنس",
+        "remainingBalance": "باقی پری پے بیلنس",
+        "manageAccount": "اکاؤنٹ منظم کریں",
+        "manageTooltip": "اپنا پری پے اکاؤنٹ منظم کریں"
+    },
+    "invoices": {
+        "title": "ادا نہ شدہ انوائسز",
+        "totalUnpaid": "کل ادا نہ شدہ انوائسز",
+        "totalAmount": "کل قابل ادا رقم",
+        "payTotalTooltip": "کل رقم ادا کریں"
+    },
+    "callInPin": "کال ان PIN",
+    "recentTickets": "حالیہ ٹکٹس",
+    "viewAllTickets": "تمام ٹکٹس دیکھیں",
+    "editTicket": "ٹکٹ ترمیم کریں",
+    "serviceCount": "کوئی فعال سروس نہیں | {count} فعال سروس | {count} فعال سروسز",
+    "affiliate": {
+        "earnPerSale": "فی سیل {amount} کمائیں",
+        "urlPlaceholder": "ایفیلیٹ URL",
+        "shareWith": "شیئر کریں"
+    }
+}

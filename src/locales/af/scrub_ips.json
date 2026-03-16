@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Skrop IPs Dienste Lys",
+        "orderTitle": "Bestel Skrop IPs"
+    },
+    "view": {
+        "title": "Bekyk Skrop IPs",
+        "currentIp": "Huidige IP",
+        "ipAddress": "IP Adres",
+        "ipFromService": "IP van diens"
+    },
+    "filters": {
+        "title": "Filters",
+        "createNew": "Skep Nuwe",
+        "createNewFilter": "Skep Nuwe Filter",
+        "filterType": "Filter Tipe",
+        "selectFilterType": "Kies Filter Tipe",
+        "ipAddress": "IP Adres",
+        "portNo": "Poortnr",
+        "filter": "Filter",
+        "destinationIp": "Bestemming IP",
+        "destinationPort": "Bestemming Poort",
+        "noFiltersFound": "Geen filters gevind nie!",
+        "deleteFilterConfirm": "Is jy seker jy wil hierdie filter verwyder?",
+        "unableToCreateFilter": "Kan nie tans 'n filter skep nie.",
+        "unableToDeleteFilter": "Kan nie tans 'n filter verwyder nie."
+    },
+    "firewallRules": {
+        "title": "Brandmuur Reëls",
+        "createNew": "Skep Nuwe",
+        "createNewFirewall": "Skep Nuwe Brandmuur Reël",
+        "protocol": "Protokol",
+        "destinationIp": "Bestemming IP",
+        "destinationPort": "Bestemming Poort",
+        "sourceIp": "Bron IP",
+        "sourcePort": "Bron Poort",
+        "xdpAction": "XDP Aksie",
+        "ipRequired": "IP adres is verpligtend",
+        "block": "Blokkeer",
+        "whitelist": "Witlys",
+        "noRulesFound": "Geen reëls gevind nie!",
+        "deleteRuleConfirm": "Is jy seker jy wil hierdie reël verwyder?",
+        "unableToCreateRule": "Kan nie tans 'n brandmuur reël skep nie.",
+        "unableToDeleteRule": "Kan nie tans 'n brandmuur reël verwyder nie."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Brandmuur Reëls",
+        "createNew": "Skep Nuwe",
+        "createNewGeoRule": "Skep Nuwe Geo Brandmuur Reël",
+        "destinationIp": "Bestemming IP",
+        "destinationPort": "Bestemming Poort",
+        "sourceCountry": "Bron Land",
+        "sourceAsn": "Bron ASN",
+        "xdpAction": "XDP Aksie",
+        "portNo": "Poortnr",
+        "selectCountry": "Kies Land",
+        "asn": "ASN",
+        "block": "Blokkeer",
+        "whitelist": "Witlys",
+        "noRulesFound": "Geen reëls gevind nie!",
+        "deleteGeoRuleConfirm": "Is jy seker jy wil hierdie geo reël verwyder?",
+        "unableToCreateRule": "Kan nie tans 'n brandmuur reël skep nie.",
+        "unableToDeleteRule": "Kan nie tans 'n geo brandmuur reël verwyder nie."
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Pochta xizmatlari ro'yxati",
+        "orderTitle": "Pochta ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "Pochta {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "Hisob-kitob qilindi:",
+        "statusIs": "Holat:",
+        "mailApi": "Pochta API",
+        "usageCount": "Foydalanish soni:",
+        "links": "Havolalar",
+        "connectionInfo": "Ulanish ma'lumotlari",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "order": {
+        "title": "Pochta buyurtma qilish"
+    },
+    "alerts": {
+        "title": "Ogohlantirishlar",
+        "addAlert": "Ogohlantirish qo'shish",
+        "editAlert": "Ogohlantirishni tahrirlash",
+        "noAlerts": "Ogohlantirishlar topilmadi"
+    },
+    "delist": {
+        "title": "Ro'yxatdan chiqarish",
+        "blockedEmails": "Bloklangan elektron pochta manzillari"
+    },
+    "denyRules": {
+        "title": "Rad etish qoidalari",
+        "addRule": "Qoida qo'shish",
+        "noRules": "Rad etish qoidalari topilmadi"
+    },
+    "logs": {
+        "title": "Jurnallar",
+        "searchLogs": "Jurnallarni qidirish"
+    },
+    "stats": {
+        "title": "Statistika"
+    },
+    "deliverability": {
+        "title": "Yetkazib berish qobiliyati"
+    }
+}

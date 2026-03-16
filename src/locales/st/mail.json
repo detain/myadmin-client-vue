@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Lenaneo la Litšebeletso tsa Poso",
+    "orderTitle": "Oda Lirejistaro tsa Poso"
+  },
+  "view": {
+    "title": "Bona Poso {id}",
+    "package": "Sepalesa",
+    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+    "billing": "Tefello",
+    "billed": "e lefisitsoeng:",
+    "statusIs": "Boemo ke:",
+    "mailApi": "API ea Poso",
+    "usageCount": "Palo ea Tšebeliso:",
+    "links": "Likhoele",
+    "connectionInfo": "Lintlha tsa Khokahano",
+    "emailSent": "Imeile e Romelitsoe",
+    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+  },
+  "order": {
+    "title": "Oda Poso"
+  },
+  "alerts": {
+    "title": "Litsebiso",
+    "addAlert": "Kenya Tsebiso",
+    "editAlert": "Hlophisa Tsebiso",
+    "noAlerts": "Ha ho litsebiso tse fumanehileng"
+  },
+  "delist": {
+    "title": "Tlosa ho Lenaneo",
+    "blockedEmails": "Liimeile tse Thibeloang"
+  },
+  "denyRules": {
+    "title": "Melao ea ho Hana",
+    "addRule": "Kenya Molao",
+    "noRules": "Ha ho melao ea ho hana e fumanehileng"
+  },
+  "logs": {
+    "title": "Lilog",
+    "searchLogs": "Batla Lilog"
+  },
+  "stats": {
+    "title": "Lipalo"
+  },
+  "deliverability": {
+    "title": "Matla a Ho Fana"
+  }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP Hizmetleri Listesi",
+        "orderTitle": "Scrub IP Siparişi Ver"
+    },
+    "view": {
+        "title": "Scrub IP'leri Görüntüle",
+        "currentIp": "Mevcut IP",
+        "ipAddress": "IP Adresi",
+        "ipFromService": "Hizmetten IP"
+    },
+    "filters": {
+        "title": "Filtreler",
+        "createNew": "Yeni Oluştur",
+        "createNewFilter": "Yeni Filtre Oluştur",
+        "filterType": "Filtre Türü",
+        "selectFilterType": "Filtre Türü Seçin",
+        "ipAddress": "IP Adresi",
+        "portNo": "Port No",
+        "filter": "Filtre",
+        "destinationIp": "Hedef IP",
+        "destinationPort": "Hedef Port",
+        "noFiltersFound": "Filtre bulunamadı!",
+        "deleteFilterConfirm": "Bu filtreyi silmek istediğinizden emin misiniz?",
+        "unableToCreateFilter": "Şu anda filtre oluşturulamıyor.",
+        "unableToDeleteFilter": "Şu anda filtre silinemiyor."
+    },
+    "firewallRules": {
+        "title": "Güvenlik Duvarı Kuralları",
+        "createNew": "Yeni Oluştur",
+        "createNewFirewall": "Yeni Güvenlik Duvarı Kuralı Oluştur",
+        "protocol": "Protokol",
+        "destinationIp": "Hedef IP",
+        "destinationPort": "Hedef Port",
+        "sourceIp": "Kaynak IP",
+        "sourcePort": "Kaynak Port",
+        "xdpAction": "XDP Eylemi",
+        "ipRequired": "IP adresi zorunludur",
+        "block": "Engelle",
+        "whitelist": "Beyaz Liste",
+        "noRulesFound": "Kural bulunamadı!",
+        "deleteRuleConfirm": "Bu kuralı silmek istediğinizden emin misiniz?",
+        "unableToCreateRule": "Şu anda güvenlik duvarı kuralı oluşturulamıyor.",
+        "unableToDeleteRule": "Şu anda güvenlik duvarı kuralı silinemiyor."
+    },
+    "geoFirewallRules": {
+        "title": "Coğrafi Güvenlik Duvarı Kuralları",
+        "createNew": "Yeni Oluştur",
+        "createNewGeoRule": "Yeni Coğrafi Güvenlik Duvarı Kuralı Oluştur",
+        "destinationIp": "Hedef IP",
+        "destinationPort": "Hedef Port",
+        "sourceCountry": "Kaynak Ülke",
+        "sourceAsn": "Kaynak ASN",
+        "xdpAction": "XDP Eylemi",
+        "portNo": "Port No",
+        "selectCountry": "Ülke Seçin",
+        "asn": "ASN",
+        "block": "Engelle",
+        "whitelist": "Beyaz Liste",
+        "noRulesFound": "Kural bulunamadı!",
+        "deleteGeoRuleConfirm": "Bu coğrafi kuralı silmek istediğinizden emin misiniz?",
+        "unableToCreateRule": "Şu anda güvenlik duvarı kuralı oluşturulamıyor.",
+        "unableToDeleteRule": "Şu anda coğrafi güvenlik duvarı kuralı silinemiyor."
+    }
+}

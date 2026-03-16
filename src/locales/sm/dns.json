@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Pule DNS",
+        "addDomain": "Fa'aopoopoina Igoa Fa'asamoa",
+        "deleteDomain": "Tapes Igoa Fa'asamoa",
+        "domainName": "Igoa Fa'asamoa",
+        "dnsServers": "Server DNS",
+        "confirmDelete": "E mautinoa oe e tapes lenei igoa fa'asamoa?",
+        "noDomains": "Leai igoa fa'asamoa na maua"
+    },
+    "editor": {
+        "title": "Fa'atonutonu DNS",
+        "addRecord": "Fa'aopoopoina Fa'amaumauga",
+        "deleteRecord": "Tapes Fa'amaumauga",
+        "editRecord": "Fa'atonutonu Fa'amaumauga",
+        "recordType": "Ituaiga Fa'amaumauga",
+        "hostname": "Igoa Server",
+        "address": "Tuatusi",
+        "distance": "Mamao",
+        "weight": "Mamafa",
+        "port": "Punavai",
+        "ttl": "TTL",
+        "actions": "Gaoioiga",
+        "confirmDelete": "E mautinoa oe e tapes lenei fa'amaumauga?"
+    }
+}

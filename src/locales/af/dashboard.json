@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Welkom, {name}",
+    "lastLogin": "Laaste Aanmelding",
+    "lastLoginIp": "Laaste Aanmelding IP",
+    "prepay": {
+        "title": "Vooruitbetaling Balans",
+        "remainingBalance": "Vooruitbetaling Oorblywende Balans",
+        "manageAccount": "Bestuur Rekening",
+        "manageTooltip": "Bestuur Jou Vooruitbetaling Rekening"
+    },
+    "invoices": {
+        "title": "Onbetaalde Fakture",
+        "totalUnpaid": "Totale Onbetaalde Fakture",
+        "totalAmount": "Totale Bedrag om te Betaal",
+        "payTotalTooltip": "Betaal Totale Bedrag"
+    },
+    "callInPin": "Bel-in PIN",
+    "recentTickets": "Onlangse Kaartjies",
+    "viewAllTickets": "Bekyk Alle Kaartjies",
+    "editTicket": "Wysig Kaartjie",
+    "serviceCount": "Geen aktiewe dienste | {count} aktiewe diens | {count} aktiewe dienste",
+    "affiliate": {
+        "earnPerSale": "Verdien {amount} Per Verkoop",
+        "urlPlaceholder": "Gelieerde URL",
+        "shareWith": "Deel met"
+    }
+}

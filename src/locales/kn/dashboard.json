@@ -1,0 +1,28 @@
+{
+  "title": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+  "welcome": "ಸ್ವಾಗತ, {name}",
+  "lastLogin": "ಕೊನೆಯ ಲಾಗಿನ್",
+  "lastLoginIp": "ಕೊನೆಯ ಲಾಗಿನ್ IP",
+  "prepay": {
+    "title": "ಪೂರ್ವ-ಪಾವತಿ ಬ್ಯಾಲೆನ್ಸ್",
+    "remainingBalance": "ಉಳಿದ ಪ್ರಿಪೇ ಬ್ಯಾಲೆನ್ಸ್",
+    "manageAccount": "ಖಾತೆ ನಿರ್ವಹಿಸಿ",
+    "manageTooltip": "ನಿಮ್ಮ ಪ್ರಿಪೇ ಖಾತೆ ನಿರ್ವಹಿಸಿ"
+  },
+  "invoices": {
+    "title": "ಬಾಕಿ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು",
+    "totalUnpaid": "ಒಟ್ಟು ಬಾಕಿ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು",
+    "totalAmount": "ಪಾವತಿಸಬೇಕಾದ ಒಟ್ಟು ಮೊತ್ತ",
+    "payTotalTooltip": "ಒಟ್ಟು ಮೊತ್ತ ಪಾವತಿಸಿ"
+  },
+  "callInPin": "ಕಾಲ್-ಇನ್ PIN",
+  "recentTickets": "ಇತ್ತೀಚಿನ ಟಿಕೆಟ್‌ಗಳು",
+  "viewAllTickets": "ಎಲ್ಲಾ ಟಿಕೆಟ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+  "editTicket": "ಟಿಕೆಟ್ ಸಂಪಾದಿಸಿ",
+  "serviceCount": "ಯಾವುದೇ ಸಕ್ರಿಯ ಸೇವೆಗಳಿಲ್ಲ | {count} ಸಕ್ರಿಯ ಸೇವೆ | {count} ಸಕ್ರಿಯ ಸೇವೆಗಳು",
+  "affiliate": {
+    "earnPerSale": "ಪ್ರತಿ ಮಾರಾಟಕ್ಕೆ {amount} ಗಳಿಸಿ",
+    "urlPlaceholder": "ಅಫಿಲಿಯೇಟ್ URL",
+    "shareWith": "ಹಂಚಿಕೊಳ್ಳಿ"
+  }
+}

@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista Hostingi Interretialis",
+        "orderTitle": "Ordina Inscriptiones Situum"
+    },
+    "view": {
+        "title": "Vide Situm {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "computatum",
+        "billingStatusIs": "Status Rationis est:",
+        "hostInfo": "Informationes Hospitis",
+        "username": "Nomen Utentis:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Nondum constitutum",
+        "login": "Introitus",
+        "types": "Genera:",
+        "linksLabel": "Nexus:",
+        "manualLogin": "Introitus Manualis",
+        "automaticLogin": "Introitus Automaticus",
+        "clickHere": "Clicca Hic",
+        "defaultNameservers": "Servers Nominum Praedefiniti",
+        "nameservers": "Servers Nominum:",
+        "externalLinks": "Nexus Externi",
+        "names": "Nomina:",
+        "websitePreview": "Praevisio Situs",
+        "links": "Nexus",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "buyIp": {
+        "title": "Eme Additamentum IP",
+        "existingAddonIps": "IPs Additamentorum Existentium",
+        "additionalIp": "IP Additionale",
+        "monthlyCost": "Pretium Mensuale ({symbol})",
+        "costDescription": "Pretium ({symbol}) singulis mensibus ut situs tuus ratiocinatur",
+        "confirmPurchase": "Confirma Emptionem",
+        "confirmMessage": "Pretium IP additionalis: {symbol}{cost}/mense. Esne certus te velle IP additionale ordinare?",
+        "placeOrder": "Pone Ordinem",
+        "orderPlaced": "Ordo Positus"
+    },
+    "reverseDns": {
+        "title": "DNS Inversus",
+        "updateReverseDns": "Renova DNS Inversum"
+    },
+    "downloadBackups": {
+        "title": "Depone Copias",
+        "backup": "Copia",
+        "size": "Magnitudo",
+        "options": "Optiones"
+    },
+    "migration": {
+        "title": "Migra Situm Tuum",
+        "currentWebHostInfo": "Informationes Hospitis Interretialis Praesentes",
+        "customerPortalUrl": "URL Portalis Clientis",
+        "portalExample": "Exempli Gratia: sso.godaddy.com",
+        "registeredUsername": "Nomen Utentis / Epistula Electronica / ID Inscriptum",
+        "password": "Tessera",
+        "controlPanelUrl": "URL Tabulae Moderatricis",
+        "controlPanelExample": "Exempli Gratia: yourdomain.com/cpanel",
+        "ftpUsername": "Nomen Utentis FTP / Tabulae Moderatricis",
+        "ftpPassword": "Tessera FTP / Tabulae Moderatricis",
+        "holdingPageQuestion": "Si situs vivus/occupatus est multum transitum habens, possumus paginam tenentem constituere in migratione?",
+        "specialRequirementsQuestion": "Habet hic situs requisita specialia sicut Versionem PHP / Modulos?",
+        "domainRegistryInfo": "Informationes Tabularii Dominii",
+        "transferDomainQuestion": "Visne nos etiam tibi adiuvare transferre inscriptionem nominis dominii?",
+        "updateNameserversQuestion": "Visne nos servers nominum renovare statim ac migrationem datorum finimus?",
+        "domainRegistryPortal": "Portale Clientis Tabularii Dominii",
+        "importantNotes": "Notae Importantes",
+        "note1": "Implendo hunc formularium nova schedula pro departamento auxilii nostri aperietur ad migrationem tuam inchoandam.",
+        "note2": "Quaeso esto quam completissimus et accuratissimus ut moras evites.",
+        "note3": "Migratio typica intra 48 ad 72 horas completur. Interdum longius si magnitudo datorum copiandorum magna est.",
+        "note4": "Ratio hostingi antiqua debet esse in linea et accessibilis dum migrationem facimus, alioquin difficultatem experiri possumus.",
+        "note5": "Quaeso nullas renovationes in situ tuo facias dum migrationem facimus, alioquin ea data in novum hostingum copia non ferentur."
+    },
+    "order": {
+        "title": "Ordina Situm"
+    }
+}

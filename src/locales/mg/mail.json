@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lisitry ny Serivisy Mail",
+        "orderTitle": "Manome baiko ny Fisoratana Mail"
+    },
+    "view": {
+        "title": "Jereo ny Mail {id}",
+        "package": "Fonosana",
+        "nextInvoiceDate": "Datin'ny Faktiora Manaraka:",
+        "billing": "Faktiora",
+        "billed": "voaefa:",
+        "statusIs": "Sata dia:",
+        "mailApi": "Mail API",
+        "usageCount": "Isan'ny Fampiasana:",
+        "links": "Rohy",
+        "connectionInfo": "Fampahalalana Fifandraisana",
+        "welcomeEmailConfirm": "Tena tia hamerina ny email fiarahabana ve ianao?",
+        "emailSent": "Email Nalefaka",
+        "emailSentMessage": "Nalefaka indray ny email fiarahabana. Jereo ny inbox anao."
+    },
+    "order": {
+        "title": "Manome baiko Mail"
+    },
+    "alerts": {
+        "title": "Fampitandremana",
+        "addAlert": "Ampio Fampitandremana",
+        "editAlert": "Hanova ny Fampitandremana",
+        "noAlerts": "Tsy hita fampitandremana"
+    },
+    "delist": {
+        "title": "Esory amin'ny Lisitra",
+        "blockedEmails": "Email Voarara"
+    },
+    "denyRules": {
+        "title": "Fitsipiky ny Fanariana",
+        "addRule": "Ampio Fitsipika",
+        "noRules": "Tsy hita fitsipiky ny fanariana"
+    },
+    "logs": {
+        "title": "Tantara",
+        "searchLogs": "Mitady Tantara"
+    },
+    "stats": {
+        "title": "Antontan'isa"
+    },
+    "deliverability": {
+        "title": "Fahafahana Manondrana"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Liiska Ruqsadaha",
+        "orderTitle": "Diiwaangelinta Ruqsadda Dalbo"
+    },
+    "view": {
+        "title": "Ruqsadda {id} Arag",
+        "package": "Xidhmada",
+        "nextInvoiceDate": "Taariikhda Qaybsashada Ee Xigta:",
+        "billing": "Xisaabta",
+        "billed": "Lagu xisaabiyey:",
+        "statusIs": "Xaaladdu waa:",
+        "licenseInfo": "Macluumaadka Ruqsadda",
+        "cpanelInfo": "Macluumaadka cPanel",
+        "links": "Xiriiriyayaasha",
+        "welcomeEmailConfirm": "Ma hubtaa inaad dib u diri doonto iimaylka soo-dhawaynta?",
+        "emailSent": "Iimaysha Waa La Diray",
+        "emailSentMessage": "Iimaylka soo-dhawaynta dib ayaa loo diray. Sanduuqaaga ka hubi."
+    },
+    "order": {
+        "title": "Ruqsadda Dalbo"
+    },
+    "changeIp": {
+        "title": "IP-ka Beddel"
+    },
+    "changeOs": {
+        "title": "Nidaamka Hawlgalka Beddel",
+        "selectLicenseOs": "Nidaamka Hawlgalka Ruqsadda Dooro"
+    }
+}

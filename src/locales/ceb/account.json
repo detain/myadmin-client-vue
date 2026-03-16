@@ -1,0 +1,32 @@
+{
+    "settings": { "title": "Mga Setting sa Account" },
+    "changePassword": {
+        "title": "Usba ang Password", "cardTitle": "I-update ang Password",
+        "currentPassword": "Karon nga Password", "newPassword": "Bag-ong Password",
+        "confirmPassword": "Kumpirmahin ang Password", "updatePassword": "I-update ang Password"
+    },
+    "changeUsername": {
+        "title": "Usba ang Username", "disabled": "Pansamantalang na-disable ang pagbag-o sa username.",
+        "currentUsername": "Karon nga Username", "newDesiredUsername": "Bag-ong Gusto nga Username",
+        "confirmationCode": "Confirmation Code", "pleaseWait": "Palihug hulata!", "gotError": "Nahitabo ang sayop {error}"
+    },
+    "contactInfo": {
+        "title": "Impormasyon sa Kontak", "cardTitle": "I-update ang Impormasyon sa Kontak", "headsUp": "Pansipuna!",
+        "headsUpMessage": "Bisan kung opsyonal kini nga impormasyon, ang paghatag og (tino) nga impormasyon maka-tabang sa pagpauswag sa atong mga interaksyon ug makapababa sa imong Risk % Score nga mohatag kanimo og mas dali ug maayong access sa mga bahin sa site.",
+        "riskScore": "Risk % Score", "personalInformation": "Personal nga Impormasyon",
+        "name": "Ngalan", "namePlaceholder": "Juan dela Cruz", "company": "Kumpanya",
+        "gstinTaxId": "GSTIN Tax ID", "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Linya sa Adres 1", "addressLine2": "Linya sa Adres 2", "cityState": "Lungsod, Estado",
+        "city": "Lungsod", "state": "Estado", "country": "Nasod", "zipcode": "Zip Code",
+        "phoneNo": "Numero sa Telepono", "phoneNumber": "Numero sa Telepono", "language": "Pinulongan", "auto": "Awtomatiko",
+        "currency": "Salapi", "timeZone": "Time Zone", "otherSettings": "Uban pang mga Setting",
+        "disablePasswordResets": "I-disable ang (Nalimtan ang Password) Password Resets.",
+        "disableInvoiceReminders": "I-disable ang Invoice Reminder Email Notifications.",
+        "disableServerInvoiceReminders": "I-disable ang Server Invoice Reminder Email Notifications.",
+        "disableReinstall": "I-disable ang Reinstall.",
+        "alternateEmailInvoices": "Alternatibong Email para sa mga Invoice",
+        "alternateEmailInvoicesPlaceholder": "Alternatibong email para sa pagpadala og mga invoice",
+        "alternateEmailAbuse": "Alternatibong Email para sa mga Abuse Report",
+        "updateInfo": "I-update ang Impormasyon"
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "list": { "title": "快速部署服务器列表", "orderTitle": "订购快速部署服务器注册" },
+    "view": { "title": "查看快速部署服务器 {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费：", "paymentStatus": "支付状态：", "statusIs": "状态：", "serverInformation": "QuickServer 信息", "powerStatusIs": "电源状态：", "selectAction": "选择操作", "disk": "磁盘", "totalSpace": "总空间：", "freeSpace": "可用空间：", "remainingSpace": "剩余空间：", "systemInformation": "系统信息", "os": "操作系统", "links": "链接", "updateComment": "更新备注", "saveChanges": "保存更改", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
+    "order": { "title": "订购快速部署服务器", "orderSummary": "订单摘要", "selectServer": "选择服务器", "osDistribution": "操作系统发行版", "osVersion": "操作系统版本", "rootPassword": "Root 密码", "total": "总计", "serverName": "服务器名称", "operatingSystem": "操作系统", "agreeToTerms": "同意报价条款", "iAgreeToTerms": "我已阅读并同意以上条款。", "placeOrder": "下单" }
+}

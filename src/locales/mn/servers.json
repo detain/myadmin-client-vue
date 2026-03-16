@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "Тусгай серверийн жагсаалт",
+        "orderTitle": "Сервер бүртгэл захиалах"
+    },
+    "view": {
+        "title": "Сервер {id} харах",
+        "package": "Багц",
+        "dedicatedServer": "Тусгай сервер",
+        "nextInvoiceDate": "Дараагийн нэхэмжлэлийн огноо:",
+        "billing": "Төлбөр",
+        "billed": "нэхэмжлэгдсэн:",
+        "statusIs": "Төлөв:",
+        "orderInfo": "Захиалгын мэдээлэл",
+        "orderId": "Захиалгын дугаар:",
+        "links": "Холбоосууд",
+        "serverInformation": "Серверийн мэдээлэл",
+        "networkInformation": "Сүлжээний мэдээлэл",
+        "power": "Цахилгаан",
+        "selectAction": "Үйлдэл сонгох",
+        "softReboot": "Зөөлөн дахин эхлүүлэх",
+        "paymentStatus": "Төлбөрийн төлөв:",
+        "emailSent": "Имэйл илгээгдсэн",
+        "emailSentMessage": "Тавтай морил имэйл дахин илгээгдсэн. Ирсэн шуудангаа шалгана уу."
+    },
+    "order": {
+        "title": "Сервер захиалах",
+        "orderDedicatedServer": "Тусгай сервер захиалах",
+        "orderSummary": "Захиалгын хураангуй",
+        "selectServer": "Сервер сонгох",
+        "serverHostname": "Серверийн хост нэр",
+        "rootPassword": "Root нууц үг",
+        "agreeToTerms": "Санал болгох нөхцөлтэй зөвшөөрөх",
+        "iAgreeToTerms": "Дээрх нөхцөлийг уншаад зөвшөөрч байна.",
+        "placeOrder": "Захиалга өгөх",
+        "cpuSelection": "CPU сонголт",
+        "driveConfiguration": "Диск тохиргоо",
+        "addDrive": "Диск нэмэх",
+        "removeDrive": "Диск хасах",
+        "selectMemory": "Санах ой сонгох",
+        "selectOs": "Үйлдлийн систем сонгох",
+        "region": "Бүс",
+        "buyNow": "Одоо худалдаж авах",
+        "monthly": "Сард",
+        "perMonth": "/сар",
+        "confirmOrder": "Захиалга баталгаажуулах"
+    }
+}

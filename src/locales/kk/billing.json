@@ -1,0 +1,35 @@
+{
+  "cart": {
+    "title": "Себет", "payBalance": "Балансты төлеу", "billingAddress": "Есеп айырысу мекенжайы",
+    "currency": "Валюта", "service": "Қызмет", "description": "Сипаттама", "date": "Күні",
+    "serviceStatus": "Қызмет күйі", "actions": "Әрекеттер", "amount": "Сома",
+    "deleteInvoice": "Шотты жою", "empty": "Бос...", "all": "Барлығы", "none": "Ешқайсысы",
+    "active": "Белсенді", "paymentOptions": "Төлем параметрлері", "howToPay": "Қалай төлегіңіз келеді?",
+    "selectAddCreditCard": "Несие картасын таңдау / Қосу", "addNewCard": "Жаңа карта қосу",
+    "allUpToDate": "Барлығы жаңартылды!", "noUnpaidInvoices": "Төленбеген шоттар табылмады.",
+    "totalInvoices": "Жалпы шоттар", "toBePaid": "Төленуі тиіс", "thankYouForOrder": "Тапсырысыңыз үшін рахмет."
+  },
+  "creditCard": {
+    "addCreditCard": "Несие картасын қосу", "cardNumber": "Карта нөмірі", "expiryDate": "Мерзімі",
+    "cvv": "CVV", "verified": "Расталды", "notVerified": "Расталмады", "verifyButton": "Растау",
+    "deleteCreditCard": "Несие картасын жою",
+    "deleteConfirm": "Несие картасын {card} жойғыңыз келе ме?"
+  },
+  "invoices": {
+    "title": "Шоттар тізімі", "goBack": "Артқа қайту", "month": "Ай", "year": "Жыл",
+    "id": "ID", "date": "Күні", "service": "Қызмет", "description": "Сипаттама",
+    "amount": "Сома", "paid": "Төленді", "paidOn": "Төленген күні", "viewInvoice": "Шотты қарау",
+    "page": "{current} / {total} бет", "prev": "Алдыңғы", "next": "Келесі", "all": "Барлығы"
+  },
+  "paymentSuccess": {
+    "title": "Төлем сәтті", "successful": "Төлем сәтті аяқталды!",
+    "thankYou": "Төлемінгізге рахмет. Транзакцияңыз сәтті аяқталды.",
+    "backToCart": "Себетке қайту", "goToDashboard": "Басқару тақтасына өту"
+  },
+  "prepays": {
+    "title": "Алдын ала төленген қаражат", "addNewPrepay": "Жаңа алдын ала төлем қосу",
+    "balance": "Баланс: {amount}", "yes": "Иә", "no": "Жоқ",
+    "noPrepaidFunds": "Алдын ала төленген қаражат жоқ", "amountInUsd": "USD сомасы",
+    "deletePrepay": "Алдын ала төлемді жою"
+  }
+}

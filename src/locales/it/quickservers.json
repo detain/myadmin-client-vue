@@ -1,0 +1,43 @@
+{
+  "list": {
+    "title": "Elenco Server a Distribuzione Rapida",
+    "orderTitle": "Ordina Registrazioni Server a Distribuzione Rapida"
+  },
+  "view": {
+    "title": "Visualizza Server a Distribuzione Rapida {id}",
+    "package": "Pacchetto",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturato:",
+    "paymentStatus": "Stato Pagamento:",
+    "statusIs": "Stato è:",
+    "serverInformation": "Informazioni QuickServer",
+    "powerStatusIs": "Stato Alimentazione è:",
+    "selectAction": "Seleziona Azione",
+    "disk": "Disco",
+    "totalSpace": "Spazio Totale:",
+    "freeSpace": "Spazio Libero:",
+    "remainingSpace": "Spazio Rimanente:",
+    "systemInformation": "Informazioni Sistema",
+    "os": "OS",
+    "links": "Link",
+    "updateComment": "Aggiorna Commento",
+    "saveChanges": "Salva modifiche",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina Server a Distribuzione Rapida",
+    "orderSummary": "Riepilogo Ordine",
+    "selectServer": "Seleziona Server",
+    "osDistribution": "Distribuzione OS",
+    "osVersion": "Versione OS",
+    "rootPassword": "Password Root",
+    "total": "Totale",
+    "serverName": "Nome Server",
+    "operatingSystem": "Sistema Operativo",
+    "agreeToTerms": "Accetta i termini dell'offerta",
+    "iAgreeToTerms": "Ho letto i termini sopra e accetto.",
+    "placeOrder": "Effettua Ordine"
+  }
+}

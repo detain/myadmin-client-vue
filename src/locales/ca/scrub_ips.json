@@ -1,0 +1,7 @@
+{
+    "list": { "title": "Llista de serveis de neteja d'IPs", "orderTitle": "Comandar neteja d'IPs" },
+    "view": { "title": "Veure neteja d'IPs", "currentIp": "IP actual", "ipAddress": "Adreça IP", "ipFromService": "IP del servei" },
+    "filters": { "title": "Filtres", "createNew": "Crear nou", "createNewFilter": "Crear nou filtre", "filterType": "Tipus de filtre", "ipAddress": "Adreça IP", "portNo": "Número de port", "filter": "Filtre", "destinationIp": "IP de destinació", "destinationPort": "Port de destinació", "noFiltersFound": "No s'han trobat filtres!", "deleteFilterConfirm": "Esteu segur que voleu eliminar aquest filtre?" },
+    "firewallRules": { "title": "Regles de tallafoc", "createNewFirewall": "Crear nova regla de tallafoc", "protocol": "Protocol", "destinationIp": "IP de destinació", "sourceIp": "IP d'origen", "block": "Bloquejar", "whitelist": "Llista blanca", "noRulesFound": "No s'han trobat regles!", "deleteRuleConfirm": "Esteu segur que voleu eliminar aquesta regla?" },
+    "geoFirewallRules": { "title": "Regles de tallafoc geogràfic", "createNewGeoRule": "Crear nova regla de tallafoc geogràfic", "destinationIp": "IP de destinació", "sourceCountry": "País d'origen", "sourceAsn": "ASN d'origen", "selectCountry": "Seleccionar país", "block": "Bloquejar", "whitelist": "Llista blanca", "noRulesFound": "No s'han trobat regles!", "deleteGeoRuleConfirm": "Esteu segur que voleu eliminar aquesta regla geogràfica?" }
+}

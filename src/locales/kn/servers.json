@@ -1,0 +1,22 @@
+{
+  "list": { "title": "ಸಮರ್ಪಿತ ಸರ್ವರ್ ಪಟ್ಟಿ", "orderTitle": "ಸರ್ವರ್ ನೋಂದಣಿ ಆದೇಶಿಸಿ" },
+  "view": {
+    "title": "ಸರ್ವರ್ {id} ವೀಕ್ಷಿಸಿ", "package": "ಪ್ಯಾಕೇಜ್", "dedicatedServer": "ಸಮರ್ಪಿತ ಸರ್ವರ್",
+    "nextInvoiceDate": "ಮುಂದಿನ ಇನ್‌ವಾಯ್ಸ್ ದಿನಾಂಕ:", "billing": "ಬಿಲ್ಲಿಂಗ್", "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ:",
+    "statusIs": "ಸ್ಥಿತಿ:", "orderInfo": "ಆದೇಶ ಮಾಹಿತಿ", "orderId": "ಆದೇಶ ID:",
+    "links": "ಲಿಂಕ್‌ಗಳು", "serverInformation": "ಸರ್ವರ್ ಮಾಹಿತಿ", "networkInformation": "ನೆಟ್‌ವರ್ಕ್ ಮಾಹಿತಿ",
+    "power": "ವಿದ್ಯುತ್", "selectAction": "ಕ್ರಿಯೆ ಆಯ್ಕೆಮಾಡಿ", "softReboot": "ಸಾಫ್ಟ್ ರೀಬೂಟ್",
+    "paymentStatus": "ಪಾವತಿ ಸ್ಥಿತಿ:", "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "emailSentMessage": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ."
+  },
+  "order": {
+    "title": "ಸರ್ವರ್ ಆದೇಶಿಸಿ", "orderDedicatedServer": "ಸಮರ್ಪಿತ ಸರ್ವರ್ ಆದೇಶಿಸಿ",
+    "orderSummary": "ಆದೇಶ ಸಾರಾಂಶ", "selectServer": "ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ",
+    "serverHostname": "ಸರ್ವರ್ ಹೋಸ್ಟ್‌ನೇಮ್", "rootPassword": "Root ಪಾಸ್‌ವರ್ಡ್",
+    "agreeToTerms": "ಆಫರ್ ನಿಯಮಗಳಿಗೆ ಒಪ್ಪಿಗೆ", "iAgreeToTerms": "ಮೇಲಿನ ನಿಯಮಗಳನ್ನು ಓದಿ ಒಪ್ಪಿಗೆ ನೀಡುತ್ತೇನೆ.",
+    "placeOrder": "ನನ್ನ ಆದೇಶ ಇಡಿ", "cpuSelection": "CPU ಆಯ್ಕೆ", "driveConfiguration": "ಡ್ರೈವ್ ಕಾನ್ಫಿಗರೇಶನ್",
+    "addDrive": "ಡ್ರೈವ್ ಸೇರಿಸಿ", "removeDrive": "ಡ್ರೈವ್ ತೆಗೆದುಹಾಕಿ", "selectMemory": "ಮೆಮೊರಿ ಆಯ್ಕೆಮಾಡಿ",
+    "selectOs": "OS ಆಯ್ಕೆಮಾಡಿ", "region": "ಪ್ರದೇಶ", "buyNow": "ಈಗ ಖರೀದಿಸಿ",
+    "monthly": "ಮಾಸಿಕ", "perMonth": "/ತಿಂಗಳು", "confirmOrder": "ಆದೇಶ ದೃಢೀಕರಿಸಿ"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "list": {"title": "Daptar Sertifikat SSL", "orderTitle": "Pesan Registrasi SSL"},
+  "view": {
+    "title": "Tempo SSL {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+    "billing": "Tagihan", "billed": "ditagih:", "statusIs": "Status nyaeta:", "orderInfo": "Inpo Pesanan",
+    "certificateInfo": "Inpo Sertifikat", "links": "Tautan", "emailSent": "Email Dikirimkeun",
+    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+  },
+  "order": {"title": "Pesan SSL"},
+  "changeApproverEmail": {"title": "Ganti Email Penyetuju", "selectApproverEmail": "Pilih Email Penyetuju"}
+}

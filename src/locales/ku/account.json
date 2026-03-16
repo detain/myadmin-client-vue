@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "ڕێکخستنەکانی هەژمار"
+    },
+    "changePassword": {
+        "title": "گۆڕینی وشەی تێپەڕ",
+        "cardTitle": "نوێکردنەوەی وشەی تێپەڕ",
+        "currentPassword": "وشەی تێپەڕی ئێستا",
+        "newPassword": "وشەی تێپەڕی نوێ",
+        "confirmPassword": "پشتڕاستکردنەوەی وشەی تێپەڕ",
+        "updatePassword": "نوێکردنەوەی وشەی تێپەڕ"
+    },
+    "changeUsername": {
+        "title": "گۆڕینی ناوی بەکارهێنەر",
+        "disabled": "گۆڕینی ناوی بەکارهێنەر بە کاتی ناچالاككراوە.",
+        "currentUsername": "ناوی بەکارهێنەری ئێستا",
+        "newDesiredUsername": "ناوی بەکارهێنەری نوێی داواکراو",
+        "confirmationCode": "کۆدی پشتڕاستکردنەوە",
+        "pleaseWait": "تکایە چاوەڕوان بە!",
+        "gotError": "هەڵەی {error} ڕووی دا"
+    },
+    "contactInfo": {
+        "title": "زانیاری پەیوەندی",
+        "cardTitle": "نوێکردنەوەی زانیاری پەیوەندی",
+        "headsUp": "سەرنج بدە!",
+        "headsUpMessage": "تەوەر ئەم زانیاریە ئارەزوومەندانەیە، بەلام پێدانی زانیاری (وردەکاری) هم پەیوەندیەکانمان بەھێزتر دەکات و هم ئەمتیازی ئەمنیەتی تۆ دەبەزێنێت و دەستڕاگەیشتنت خێراتر دەبێت.",
+        "riskScore": "ئەمتیازی ئەمنیەت٪",
+        "personalInformation": "زانیاری کەسی",
+        "name": "ناو",
+        "namePlaceholder": "ئەحمەد عومەر",
+        "company": "کۆمپانیا",
+        "gstinTaxId": "ناسنامەی باجی GSTIN",
+        "gstinPlaceholder": "ژمارەی ناسنامەی باجدەری کاڵا و خزمەتگوزاری",
+        "addressLine1": "ئادرەسی ١",
+        "addressLine2": "ئادرەسی ٢",
+        "cityState": "شار، پارێزگا",
+        "city": "شار",
+        "state": "پارێزگا",
+        "country": "وڵات",
+        "zipcode": "کۆدی پۆستە",
+        "phoneNo": "ژمارەی تەلەفۆن",
+        "phoneNumber": "ژمارەی تەلەفۆن",
+        "language": "زمان",
+        "auto": "خۆکار",
+        "currency": "دراو",
+        "timeZone": "کاتی ناوچە",
+        "otherSettings": "ڕێکخستنەکانی تری",
+        "disablePasswordResets": "ناچالاككردنی ڕیسێتکردنی وشەی تێپەڕ (وشەی تێپەڕت بیرت چوو؟).",
+        "disableInvoiceReminders": "ناچالاككردنی ئیمەیڵ ئاگادارکردنەوەی پسووڵە.",
+        "disableServerInvoiceReminders": "ناچالاككردنی ئیمەیڵ ئاگادارکردنەوەی پسووڵەی سێرڤەر.",
+        "disableReinstall": "ناچالاككردنی دووبارە دامەزراندن.",
+        "alternateEmailInvoices": "ئیمەیڵی جایگزین بۆ پسووڵەکان",
+        "alternateEmailInvoicesPlaceholder": "ئیمەیڵی جایگزین بۆ ناردنی پسووڵەکان",
+        "alternateEmailAbuse": "ئیمەیڵی جایگزین بۆ ڕاپۆرتەکانی دەستدرێژی",
+        "updateInfo": "نوێکردنەوەی زانیاری"
+    }
+}

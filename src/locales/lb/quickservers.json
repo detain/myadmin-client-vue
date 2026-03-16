@@ -1,0 +1,43 @@
+{
+  "list": {
+    "title": "Rapid Deploy Serverlëscht",
+    "orderTitle": "Rapid Deploy Server-Registréierungen bestalln"
+  },
+  "view": {
+    "title": "Rapid Deploy Server {id} ukucken",
+    "package": "Pak",
+    "nextInvoiceDate": "Nächst Rechnungsdatum:",
+    "billing": "Rechnung",
+    "billed": "berechent:",
+    "paymentStatus": "Bezuelungsstatus:",
+    "statusIs": "Status ass:",
+    "serverInformation": "QuickServer-Informatioun",
+    "powerStatusIs": "Stromstatus ass:",
+    "selectAction": "Aktioun auswiele",
+    "disk": "Festplat",
+    "totalSpace": "Gesamtraum:",
+    "freeSpace": "Fräie Raum:",
+    "remainingSpace": "Verbleiwnde Raum:",
+    "systemInformation": "Systeminformatioun",
+    "os": "BS",
+    "links": "Linken",
+    "updateComment": "Kommentar aktualiséieren",
+    "saveChanges": "Ännerungen späicheren",
+    "emailSent": "E-Mail geschéckt",
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+  },
+  "order": {
+    "title": "Rapid Deploy Server bestalln",
+    "orderSummary": "Bestellungszesummefaassung",
+    "selectServer": "Server auswiele",
+    "osDistribution": "BS-Distributioun",
+    "osVersion": "BS-Versioun",
+    "rootPassword": "Root-Passwuert",
+    "total": "Total",
+    "serverName": "Servernumm",
+    "operatingSystem": "Betribssystem",
+    "agreeToTerms": "Mat de Konditiounen averstane sinn",
+    "iAgreeToTerms": "Ech hunn d'Konditiounen hei uewen gelies a stëmmen deem zou.",
+    "placeOrder": "Bestellung opgin"
+  }
+}

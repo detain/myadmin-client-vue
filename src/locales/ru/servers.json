@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "Список выделенных серверов",
+        "orderTitle": "Заказ серверов"
+    },
+    "view": {
+        "title": "Просмотр сервера {id}",
+        "package": "Пакет",
+        "dedicatedServer": "Выделенный сервер",
+        "nextInvoiceDate": "Дата следующего счёта:",
+        "billing": "Биллинг",
+        "billed": "начислено:",
+        "statusIs": "Статус:",
+        "orderInfo": "Информация о заказе",
+        "orderId": "ID заказа:",
+        "links": "Ссылки",
+        "serverInformation": "Информация о сервере",
+        "networkInformation": "Информация о сети",
+        "power": "Питание",
+        "selectAction": "Выбрать действие",
+        "softReboot": "Программная перезагрузка",
+        "paymentStatus": "Статус оплаты:",
+        "emailSent": "Письмо отправлено",
+        "emailSentMessage": "Приветственное письмо было повторно отправлено. Проверьте свой почтовый ящик."
+    },
+    "order": {
+        "title": "Заказать сервер",
+        "orderDedicatedServer": "Заказать выделенный сервер",
+        "orderSummary": "Сводка заказа",
+        "selectServer": "Выбрать сервер",
+        "serverHostname": "Имя хоста сервера",
+        "rootPassword": "Root пароль",
+        "agreeToTerms": "Согласиться с условиями предложения",
+        "iAgreeToTerms": "Я прочитал условия выше и согласен.",
+        "placeOrder": "Разместить заказ",
+        "cpuSelection": "Выбор процессора",
+        "driveConfiguration": "Конфигурация дисков",
+        "addDrive": "Добавить диск",
+        "removeDrive": "Удалить диск",
+        "selectMemory": "Выбрать память",
+        "selectOs": "Выбрать операционную систему",
+        "region": "Регион",
+        "buyNow": "Купить сейчас",
+        "monthly": "Ежемесячно",
+        "perMonth": "/месяц",
+        "confirmOrder": "Подтвердить заказ"
+    }
+}

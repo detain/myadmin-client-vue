@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "د جوازونو لیست",
+        "orderTitle": "د جواز ثبت نامونو امر"
+    },
+    "view": {
+        "title": "جواز {id} وګورئ",
+        "package": "پاکیج",
+        "nextInvoiceDate": "د راتلونکي انوایس نیټه:",
+        "billing": "بیل",
+        "billed": "بیل شوی:",
+        "statusIs": "حالت دی:",
+        "licenseInfo": "د جواز معلومات",
+        "cpanelInfo": "cPanel معلومات",
+        "links": "لینکونه",
+        "welcomeEmailConfirm": "ایا تاسو ډاډه یاست چې د هرکلي بریښنالیک بیا ولیږئ؟",
+        "emailSent": "بریښنالیک ولیږل شو",
+        "emailSentMessage": "د هرکلي بریښنالیک بیا ولیږل شو. خپل انباکس وګورئ."
+    },
+    "order": {
+        "title": "جواز امر ورکړئ"
+    },
+    "changeIp": {
+        "title": "IP بدل کړئ"
+    },
+    "changeOs": {
+        "title": "OS بدل کړئ",
+        "selectLicenseOs": "د جواز OS وټاکئ"
+    }
+}

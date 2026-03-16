@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Менежер",
+        "addDomain": "Домэйн нэмэх",
+        "deleteDomain": "Домэйн устгах",
+        "domainName": "Домэйн нэр",
+        "dnsServers": "DNS Серверүүд",
+        "confirmDelete": "Та энэ домэйнийг устгахдаа итгэлтэй байна уу?",
+        "noDomains": "Домэйн олдсонгүй"
+    },
+    "editor": {
+        "title": "DNS Засварлагч",
+        "addRecord": "Бичлэг нэмэх",
+        "deleteRecord": "Бичлэг устгах",
+        "editRecord": "Бичлэг засах",
+        "recordType": "Бичлэгийн төрөл",
+        "hostname": "Хост нэр",
+        "address": "Хаяг",
+        "distance": "Зай",
+        "weight": "Жин",
+        "port": "Порт",
+        "ttl": "TTL",
+        "actions": "Үйлдлүүд",
+        "confirmDelete": "Та энэ бичлэгийг устгахдаа итгэлтэй байна уу?"
+    }
+}

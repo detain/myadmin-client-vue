@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Elenco Servizi Scrub IPs",
+    "orderTitle": "Ordina Scrub IPs"
+  },
+  "view": {
+    "title": "Visualizza Scrub IPs",
+    "currentIp": "IP Attuale",
+    "ipAddress": "Indirizzo IP",
+    "ipFromService": "IP dal servizio"
+  },
+  "filters": {
+    "title": "Filtri",
+    "createNew": "Crea Nuovo",
+    "createNewFilter": "Crea Nuovo Filtro",
+    "filterType": "Tipo Filtro",
+    "ipAddress": "Indirizzo IP",
+    "portNo": "Numero Porta",
+    "filter": "Filtro",
+    "destinationIp": "IP di Destinazione",
+    "destinationPort": "Porta di Destinazione",
+    "noFiltersFound": "Nessun filtro trovato!",
+    "deleteFilterConfirm": "Sei sicuro di voler eliminare questo filtro?"
+  },
+  "firewallRules": {
+    "title": "Regole Firewall",
+    "createNewFirewall": "Crea Nuova Regola Firewall",
+    "protocol": "Protocollo",
+    "destinationIp": "IP di Destinazione",
+    "sourceIp": "IP Sorgente",
+    "block": "Blocca",
+    "whitelist": "Lista Bianca",
+    "noRulesFound": "Nessuna regola trovata!",
+    "deleteRuleConfirm": "Sei sicuro di voler eliminare questa regola?"
+  },
+  "geoFirewallRules": {
+    "title": "Regole Geo Firewall",
+    "createNewGeoRule": "Crea Nuova Regola Geo Firewall",
+    "destinationIp": "IP di Destinazione",
+    "sourceCountry": "Paese Sorgente",
+    "sourceAsn": "ASN Sorgente",
+    "selectCountry": "Seleziona Paese",
+    "block": "Blocca",
+    "whitelist": "Lista Bianca",
+    "noRulesFound": "Nessuna regola trovata!",
+    "deleteGeoRuleConfirm": "Sei sicuro di voler eliminare questa regola geo?"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisans Listesi",
+        "orderTitle": "Lisans Kaydı Siparişi Ver"
+    },
+    "view": {
+        "title": "Lisans {id} Görüntüle",
+        "package": "Paket",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "billing": "Faturalama",
+        "billed": "faturalandı:",
+        "statusIs": "Durum:",
+        "licenseInfo": "Lisans Bilgisi",
+        "cpanelInfo": "cPanel Bilgisi",
+        "links": "Bağlantılar",
+        "welcomeEmailConfirm": "Hoş geldiniz e-postasını yeniden göndermek istediğinizden emin misiniz?",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "Lisans Siparişi"
+    },
+    "changeIp": {
+        "title": "IP'yi Değiştir"
+    },
+    "changeOs": {
+        "title": "İşletim Sistemini Değiştir",
+        "selectLicenseOs": "Lisans İşletim Sistemi Seçin"
+    }
+}

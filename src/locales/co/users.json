@@ -1,0 +1,6 @@
+{
+    "title": "Utilizatori", "addUser": "Aghjunghje utilizatore", "editUser": "Mudificà utilizatore",
+    "firstName": "Nome", "lastName": "Cugnome", "username": "Nome d'utilizatore", "password": "Password",
+    "keepSamePassword": "Lasciate viotu per mantene a stessa password",
+    "errorLoading": "Errore in u caricamentu di l'utilizatori:", "errorLoadingUser": "Errore in u caricamentu di l'utilizatore:"
+}

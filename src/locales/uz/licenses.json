@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Litsenziyalar ro'yxati",
+        "orderTitle": "Litsenziya ro'yxatdan o'tishlarini buyurtma qilish"
+    },
+    "view": {
+        "title": "Litsenziya {id} ni ko'rish",
+        "package": "Paket",
+        "nextInvoiceDate": "Keyingi hisob-faktura sanasi:",
+        "billing": "Hisob-kitob",
+        "billed": "Hisob-kitob qilindi:",
+        "statusIs": "Holat:",
+        "licenseInfo": "Litsenziya ma'lumotlari",
+        "cpanelInfo": "cPanel ma'lumotlari",
+        "links": "Havolalar",
+        "welcomeEmailConfirm": "Xush kelibsiz elektron pochtasini qayta yuborishni xohlaysizmi?",
+        "emailSent": "Elektron pochta yuborildi",
+        "emailSentMessage": "Xush kelibsiz elektron pochtasi qayta yuborildi. Kiruvchi qutingizni tekshiring."
+    },
+    "order": {
+        "title": "Litsenziya buyurtma qilish"
+    },
+    "changeIp": {
+        "title": "IP ni o'zgartirish"
+    },
+    "changeOs": {
+        "title": "OT ni o'zgartirish",
+        "selectLicenseOs": "Litsenziya OT ni tanlang"
+    }
+}

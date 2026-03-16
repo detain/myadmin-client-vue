@@ -1,0 +1,19 @@
+{
+  "list": {"title": "Daptar Server Deploy Gancang", "orderTitle": "Pesan Registrasi Server Deploy Gancang"},
+  "view": {
+    "title": "Tempo Server Deploy Gancang {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+    "billing": "Tagihan", "billed": "ditagih:", "paymentStatus": "Status Pembayaran:", "statusIs": "Status nyaeta:",
+    "serverInformation": "Inpormasi QuickServer", "powerStatusIs": "Status Daya nyaeta:", "selectAction": "Pilih Aksi",
+    "disk": "Disk", "totalSpace": "Total Ruang:", "freeSpace": "Ruang Bebas:", "remainingSpace": "Ruang Sesana:",
+    "systemInformation": "Inpormasi Sistem", "os": "OS", "links": "Tautan", "updateComment": "Apdet Komentar",
+    "saveChanges": "Simpen parobahan", "emailSent": "Email Dikirimkeun",
+    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+  },
+  "order": {
+    "title": "Pesan Server Deploy Gancang", "orderSummary": "Ringkesan Pesanan", "selectServer": "Pilih Server",
+    "osDistribution": "Distribusi OS", "osVersion": "Versi OS", "rootPassword": "Kecap Akses Root",
+    "total": "Total", "serverName": "Ngaran Server", "operatingSystem": "Sistem Operasi",
+    "agreeToTerms": "Satuju kana syarat penawaran", "iAgreeToTerms": "Kuring geus maca syarat di luhur sareng satuju.",
+    "placeOrder": "Pasang Pesanan"
+  }
+}

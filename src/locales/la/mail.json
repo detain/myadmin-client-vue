@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista Servitiorum Epistulae",
+        "orderTitle": "Ordina Inscriptiones Epistulae"
+    },
+    "view": {
+        "title": "Vide Epistulam {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "Computatum:",
+        "statusIs": "Status est:",
+        "mailApi": "API Epistulae",
+        "usageCount": "Numerus Usus:",
+        "links": "Nexus",
+        "connectionInfo": "Informationes Connexionis",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "order": {
+        "title": "Ordina Epistulam"
+    },
+    "alerts": {
+        "title": "Admonitiones",
+        "addAlert": "Adde Admonitionem",
+        "editAlert": "Emenda Admonitionem",
+        "noAlerts": "Nullae admonitiones inventae"
+    },
+    "delist": {
+        "title": "Remove ex Lista",
+        "blockedEmails": "Epistulae Obstructae"
+    },
+    "denyRules": {
+        "title": "Regulae Negationis",
+        "addRule": "Adde Regulam",
+        "noRules": "Nullae regulae negationis inventae"
+    },
+    "logs": {
+        "title": "Registra",
+        "searchLogs": "Quaere Registra"
+    },
+    "stats": {
+        "title": "Statistica"
+    },
+    "deliverability": {
+        "title": "Capacitas Tradendi"
+    }
+}

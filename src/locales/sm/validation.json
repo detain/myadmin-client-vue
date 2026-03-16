@@ -1,0 +1,12 @@
+{
+    "required": "E mana'omia le {field}",
+    "email": "E tatau ona se tuatusi imeli aoga",
+    "minLength": "E tatau ona le itiiti ifo ma le {min} mau",
+    "maxLength": "E tatau ona le sili atu ma le {max} mau",
+    "passwordMatch": "E tatau ona tutusa upu fa'aoga",
+    "invalidFormat": "Fa'asologa sese",
+    "numeric": "E tatau ona se numera",
+    "url": "E tatau ona se URL aoga",
+    "ipAddress": "E tatau ona se tuatusi IP aoga",
+    "hostname": "E tatau ona se igoa server aoga"
+}

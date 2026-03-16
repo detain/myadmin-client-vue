@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Hisob sozlamalari"
+    },
+    "changePassword": {
+        "title": "Parolni o'zgartirish",
+        "cardTitle": "Parolni yangilash",
+        "currentPassword": "Joriy parol",
+        "newPassword": "Yangi parol",
+        "confirmPassword": "Parolni tasdiqlash",
+        "updatePassword": "Parolni yangilash"
+    },
+    "changeUsername": {
+        "title": "Foydalanuvchi nomini o'zgartirish",
+        "disabled": "Foydalanuvchi nomini o'zgartirish vaqtincha o'chirilgan.",
+        "currentUsername": "Joriy foydalanuvchi nomi",
+        "newDesiredUsername": "Yangi foydalanuvchi nomi",
+        "confirmationCode": "Tasdiqlash kodi",
+        "pleaseWait": "Iltimos, kuting!",
+        "gotError": "Xato yuz berdi {error}"
+    },
+    "contactInfo": {
+        "title": "Aloqa ma'lumotlari",
+        "cardTitle": "Aloqa ma'lumotlarini yangilash",
+        "headsUp": "Diqqat!",
+        "headsUpMessage": "Garchi bu ma'lumot ixtiyoriy bo'lsa-da, (to'g'ri) ma'lumot taqdim etish o'zaro munosabatlarimizni boyitishga va Xavf % Balingizni pasaytirishga yordam beradi, bu esa sizga saytning ba'zi qismlariga tezroq va qulay kirish imkonini beradi (masalan, kredit kartani autentifikatsiya qilmaslik).",
+        "riskScore": "Xavf % Ball",
+        "personalInformation": "Shaxsiy ma'lumotlar",
+        "name": "Ism",
+        "namePlaceholder": "Ism Familiya",
+        "company": "Kompaniya",
+        "gstinTaxId": "GSTIN Soliq ID",
+        "gstinPlaceholder": "Tovar va xizmatlar soliq to'lovchining identifikatsiya raqami",
+        "addressLine1": "Manzil 1-qator",
+        "addressLine2": "Manzil 2-qator",
+        "cityState": "Shahar, Viloyat",
+        "city": "Shahar",
+        "state": "Viloyat",
+        "country": "Mamlakat",
+        "zipcode": "Pochta indeksi",
+        "phoneNo": "Telefon raqami",
+        "phoneNumber": "Telefon raqami",
+        "language": "Til",
+        "auto": "Avtomatik",
+        "currency": "Valyuta",
+        "timeZone": "Vaqt mintaqasi",
+        "otherSettings": "Boshqa sozlamalar",
+        "disablePasswordResets": "Parolni tiklashni o'chirish (Parolingizni unutdingizmi?).",
+        "disableInvoiceReminders": "Hisob-faktura eslatma elektron pochta bildirishnomalarini o'chirish.",
+        "disableServerInvoiceReminders": "Server hisob-faktura eslatma elektron pochta bildirishnomalarini o'chirish.",
+        "disableReinstall": "Qayta o'rnatishni o'chirish.",
+        "alternateEmailInvoices": "Hisob-fakturalar uchun muqobil elektron pochta",
+        "alternateEmailInvoicesPlaceholder": "Hisob-fakturalar yuborish uchun muqobil elektron pochta",
+        "alternateEmailAbuse": "Suiiste'mol hisobotlari uchun muqobil elektron pochta",
+        "updateInfo": "Ma'lumotlarni yangilash"
+    }
+}

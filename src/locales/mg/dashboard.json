@@ -1,0 +1,28 @@
+{
+    "title": "Dasibory",
+    "welcome": "Tongasoa, {name}",
+    "lastLogin": "Fidirana Farany",
+    "lastLoginIp": "IP Fidirana Farany",
+    "prepay": {
+        "title": "Saldo Prepay",
+        "remainingBalance": "Saldo Sisa Prepay",
+        "manageAccount": "Mitantana ny Kaonty",
+        "manageTooltip": "Mitantana ny Kaonty Prepay anao"
+    },
+    "invoices": {
+        "title": "Faktiora Tsy Voaloa",
+        "totalUnpaid": "Faktiora Rehetra Tsy Voaloa",
+        "totalAmount": "Totalin'ny Vola Ho Aloa",
+        "payTotalTooltip": "Alao ny Vola Totaly"
+    },
+    "callInPin": "PIN Antso",
+    "recentTickets": "Ticket Farany",
+    "viewAllTickets": "Jereo ny Ticket Rehetra",
+    "editTicket": "Hanova ny Ticket",
+    "serviceCount": "Tsy misy serivisy miasa | {count} serivisy miasa | {count} serivisy miasa",
+    "affiliate": {
+        "earnPerSale": "Mahazo {amount} isaky ny Varotra",
+        "urlPlaceholder": "URL Affiliate",
+        "shareWith": "Zarao amin'ny"
+    }
+}

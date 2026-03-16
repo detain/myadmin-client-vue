@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "VPS सूची",
+        "orderVps": "VPS अर्डर गर्नुहोस्"
+    },
+    "view": {
+        "title": "VPS {id} हेर्नुहोस्",
+        "package": "प्याकेज",
+        "billing": "बिलिङ",
+        "billed": "बिल गरिएको",
+        "vpsStatus": "VPS स्थिति:",
+        "hostServer": "होस्ट सर्भर:",
+        "nextInvoiceDate": "अर्को इनभ्वाइस मिति:",
+        "vpsInformation": "VPS जानकारी",
+        "powerStatus": "शक्ति स्थिति:",
+        "selectAction": "कार्य छान्नुहोस्",
+        "disk": "डिस्क",
+        "totalSpace": "कुल स्थान:",
+        "usedSpace": "प्रयुक्त स्थान:",
+        "remainingSpace": "बाँकी स्थान:",
+        "systemInformation": "प्रणाली जानकारी",
+        "memory": "मेमोरी:",
+        "cpuCores": "CPU कोरहरू:",
+        "os": "OS:",
+        "links": "लिङ्कहरू",
+        "updateComment": "टिप्पणी अद्यावधिक गर्नुहोस्",
+        "saveChanges": "परिवर्तनहरू सुरक्षित गर्नुहोस्",
+        "emailSent": "इमेल पठाइयो",
+        "emailSentMessage": "स्वागत इमेल पुनः पठाइएको छ। आफ्नो इनबक्स जाँच गर्नुहोस्।"
+    },
+    "order": {
+        "title": "VPS अर्डर गर्नुहोस्",
+        "osDistribution": "OS वितरण",
+        "osVersion": "OS संस्करण",
+        "hostname": "होस्टनाम",
+        "rootPassword": "Root पासवर्ड",
+        "couponCode": "कुपन कोड",
+        "continue": "जारी राख्नुहोस्",
+        "orderSummary": "अर्डर सारांश",
+        "total": "कुल",
+        "tosAgree": "मैले माथिका सर्तहरू पढेको छु र सहमत छु।",
+        "placeOrder": "अर्डर राख्नुहोस्"
+    },
+    "changeHostname": {
+        "title": "VPS होस्टनाम परिवर्तन गर्नुहोस्",
+        "existingHostname": "अवस्थित होस्टनाम",
+        "newHostname": "नयाँ होस्टनाम",
+        "updateHostname": "होस्टनाम अद्यावधिक गर्नुहोस्"
+    },
+    "changeRootPassword": {
+        "title": "VPS Root पासवर्ड परिवर्तन गर्नुहोस्",
+        "newPassword": "नयाँ पासवर्ड:",
+        "confirmPassword": "पासवर्ड पुष्टि गर्नुहोस्:",
+        "changePassword": "पासवर्ड परिवर्तन गर्नुहोस्",
+        "passwordMismatch": "पासवर्ड र पुष्टि पासवर्ड मेल खाँदैन"
+    },
+    "reinstallOs": {
+        "title": "OS पुनर्स्थापना गर्नुहोस्",
+        "importantNote1": "अपरेटिङ सिस्टम पुनर्स्थापना गर्दा सबै डेटा मेटाइनेछ।",
+        "importantNote2": "अपरेटिङ सिस्टम पुनर्स्थापना गर्नु अघि, कृपया ब्याकअप लिनुहोस्।",
+        "osDistribution": "अपरेटिङ सिस्टम वितरण",
+        "confirmReinstallButton": "OS पुनर्स्थापना पुष्टि गर्नुहोस्"
+    },
+    "common": {
+        "goBack": "फिर्ता जानुहोस्",
+        "back": "फिर्ता",
+        "pleaseWait": "कृपया प्रतीक्षा गर्नुहोस्!",
+        "success": "सफल{text}",
+        "gotError": "त्रुटि भयो {error}"
+    }
+}

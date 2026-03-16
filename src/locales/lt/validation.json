@@ -1,0 +1,12 @@
+{
+  "required": "{field} yra privalomas",
+  "email": "Turi būti galiojantis el. pašto adresas",
+  "minLength": "Turi būti bent {min} simboliai",
+  "maxLength": "Negali viršyti {max} simbolių",
+  "passwordMatch": "Slaptažodžiai turi sutapti",
+  "invalidFormat": "Neteisingas formatas",
+  "numeric": "Turi būti skaičius",
+  "url": "Turi būti galiojantis URL",
+  "ipAddress": "Turi būti galiojantis IP adresas",
+  "hostname": "Turi būti galiojantis pagrindinio kompiuterio vardas"
+}

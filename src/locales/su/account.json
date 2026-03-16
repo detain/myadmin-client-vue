@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "Setelan Akun"
+  },
+  "changePassword": {
+    "title": "Ganti Kecap Akses",
+    "cardTitle": "Apdet Kecap Akses",
+    "currentPassword": "Kecap Akses Ayeuna",
+    "newPassword": "Kecap Akses Anyar",
+    "confirmPassword": "Konfirmasi Kecap Akses",
+    "updatePassword": "Apdet Kecap Akses"
+  },
+  "changeUsername": {
+    "title": "Ganti Ngaran Pamaké",
+    "disabled": "Parobahan ngaran pamaké geus dinonaktipkeun samentawis.",
+    "currentUsername": "Ngaran Pamaké Ayeuna",
+    "newDesiredUsername": "Ngaran Pamaké Anyar Anu Dipikahayang",
+    "confirmationCode": "Kode Konfirmasi",
+    "pleaseWait": "Punten Tunggu!",
+    "gotError": "Aya kasalahan {error}"
+  },
+  "contactInfo": {
+    "title": "Inpo Kontak",
+    "cardTitle": "Apdet Inpo Kontak",
+    "headsUp": "Perhatian!",
+    "headsUpMessage": "Sanaos inpo ieu teu wajib, nyayogikeun inpo anu akurat bakal ngabantosan ngirangan Skor Résiko % anjeun.",
+    "riskScore": "Skor Résiko %",
+    "personalInformation": "Inpormasi Pribadi",
+    "name": "Ngaran",
+    "company": "Perusahaan",
+    "addressLine1": "Baris Alamat 1",
+    "addressLine2": "Baris Alamat 2",
+    "city": "Kota",
+    "state": "Propinsi",
+    "country": "Nagara",
+    "zipcode": "Kode Pos",
+    "phoneNumber": "Nomer Telepon",
+    "language": "Basa",
+    "auto": "Otomatis",
+    "currency": "Mata Uang",
+    "timeZone": "Zona Waktu",
+    "otherSettings": "Setelan Séjén",
+    "disablePasswordResets": "Nonaktipkeun Reset Kecap Akses (Poho Kecap Akses Anjeun).",
+    "disableInvoiceReminders": "Nonaktipkeun Notifikasi Email Pengingat Invoice.",
+    "alternateEmailInvoices": "Email Alternatip pikeun Invoice",
+    "alternateEmailAbuse": "Email Alternatip pikeun Laporan Penyalahgunaan",
+    "updateInfo": "Apdet Inpo"
+  }
+}

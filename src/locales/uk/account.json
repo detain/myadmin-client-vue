@@ -1,0 +1,49 @@
+{
+    "settings": {
+        "title": "Налаштування облікового запису"
+    },
+    "changePassword": {
+        "title": "Змінити пароль",
+        "cardTitle": "Оновити пароль",
+        "currentPassword": "Поточний пароль",
+        "newPassword": "Новий пароль",
+        "confirmPassword": "Підтвердити пароль",
+        "updatePassword": "Оновити пароль"
+    },
+    "changeUsername": {
+        "title": "Змінити ім'я користувача",
+        "disabled": "Зміна імені користувача тимчасово вимкнена.",
+        "currentUsername": "Поточне ім'я користувача",
+        "newDesiredUsername": "Нове бажане ім'я користувача",
+        "confirmationCode": "Код підтвердження",
+        "pleaseWait": "Будь ласка, зачекайте!",
+        "gotError": "Отримано помилку {error}"
+    },
+    "contactInfo": {
+        "title": "Контактна інформація",
+        "cardTitle": "Оновити контактну інформацію",
+        "headsUp": "Увага!",
+        "headsUpMessage": "Хоча ця інформація є необов'язковою, надання точних даних допоможе знизити ваш показник ризику %.",
+        "riskScore": "Показник ризику %",
+        "personalInformation": "Особиста інформація",
+        "name": "Ім'я",
+        "company": "Компанія",
+        "addressLine1": "Адресний рядок 1",
+        "addressLine2": "Адресний рядок 2",
+        "city": "Місто",
+        "state": "Область/Штат",
+        "country": "Країна",
+        "zipcode": "Поштовий індекс",
+        "phoneNumber": "Номер телефону",
+        "language": "Мова",
+        "auto": "Автоматично",
+        "currency": "Валюта",
+        "timeZone": "Часовий пояс",
+        "otherSettings": "Інші налаштування",
+        "disablePasswordResets": "Вимкнути скидання пароля (Забули пароль).",
+        "disableInvoiceReminders": "Вимкнути сповіщення про нагадування рахунків.",
+        "alternateEmailInvoices": "Альтернативна електронна пошта для рахунків",
+        "alternateEmailAbuse": "Альтернативна електронна пошта для звітів про порушення",
+        "updateInfo": "Оновити інформацію"
+    }
+}

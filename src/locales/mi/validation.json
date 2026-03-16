@@ -1,0 +1,12 @@
+{
+    "required": "Me whai {field}",
+    "email": "Me he wāhitau īmēra tika",
+    "minLength": "Me ōrite ki te {min} pūāhua",
+    "maxLength": "Me kaua e nui ake i {max} pūāhua",
+    "passwordMatch": "Me ōrite ngā kupuhipa",
+    "invalidFormat": "Hōputanga hē",
+    "numeric": "Me he tau",
+    "url": "Me he URL tika",
+    "ipAddress": "Me he wāhitau IP tika",
+    "hostname": "Me he ingoa tūmau tika"
+}

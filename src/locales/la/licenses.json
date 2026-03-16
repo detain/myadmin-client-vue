@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista Licentiarum",
+        "orderTitle": "Ordina Inscriptiones Licentiarum"
+    },
+    "view": {
+        "title": "Vide Licentiam {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "Computatum:",
+        "statusIs": "Status est:",
+        "licenseInfo": "Informationes Licentiae",
+        "cpanelInfo": "Informationes cPanel",
+        "links": "Nexus",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "order": {
+        "title": "Ordina Licentiam"
+    },
+    "changeIp": {
+        "title": "Muta IP"
+    },
+    "changeOs": {
+        "title": "Muta OS",
+        "selectLicenseOs": "Elige OS Licentiae"
+    }
+}

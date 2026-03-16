@@ -1,0 +1,8 @@
+{
+    "title": "Tauler", "welcome": "Benvingut, {name}", "lastLogin": "Últim inici de sessió", "lastLoginIp": "IP de l'últim inici de sessió",
+    "prepay": { "title": "Saldo prepagat", "remainingBalance": "Saldo prepagat restant", "manageAccount": "Gestionar compte", "manageTooltip": "Gestiona el teu compte prepagat" },
+    "invoices": { "title": "Factures pendents", "totalUnpaid": "Total de factures pendents", "totalAmount": "Import total a pagar", "payTotalTooltip": "Pagar l'import total" },
+    "callInPin": "PIN de trucada", "recentTickets": "Tiquets recents", "viewAllTickets": "Veure tots els tiquets", "editTicket": "Editar tiquet",
+    "serviceCount": "Cap servei actiu | {count} servei actiu | {count} serveis actius",
+    "affiliate": { "earnPerSale": "Guanya {amount} per venda", "urlPlaceholder": "URL d'afiliació", "shareWith": "Compartir amb" }
+}

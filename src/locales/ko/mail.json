@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "메일 서비스 목록",
+        "orderTitle": "메일 등록 주문"
+    },
+    "view": {
+        "title": "메일 {id} 보기",
+        "package": "패키지",
+        "nextInvoiceDate": "다음 청구서 날짜:",
+        "billing": "청구",
+        "billed": "청구됨:",
+        "statusIs": "상태:",
+        "mailApi": "메일 API",
+        "usageCount": "사용 횟수:",
+        "links": "링크",
+        "connectionInfo": "연결 정보",
+        "welcomeEmailConfirm": "환영 이메일을 다시 보내시겠습니까?",
+        "emailSent": "이메일 전송됨",
+        "emailSentMessage": "환영 이메일이 재전송되었습니다. 받은 편지함을 확인하세요."
+    },
+    "order": {
+        "title": "메일 주문"
+    },
+    "alerts": {
+        "title": "알림",
+        "addAlert": "알림 추가",
+        "editAlert": "알림 편집",
+        "noAlerts": "알림을 찾을 수 없습니다"
+    },
+    "delist": {
+        "title": "목록 제거",
+        "blockedEmails": "차단된 이메일"
+    },
+    "denyRules": {
+        "title": "거부 규칙",
+        "addRule": "규칙 추가",
+        "noRules": "거부 규칙을 찾을 수 없습니다"
+    },
+    "logs": {
+        "title": "로그",
+        "searchLogs": "로그 검색"
+    },
+    "stats": {
+        "title": "통계"
+    },
+    "deliverability": {
+        "title": "전달성"
+    }
+}

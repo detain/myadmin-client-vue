@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lista e Certifikatave SSL",
+        "orderTitle": "Porosit Regjistrimet SSL"
+    },
+    "view": {
+        "title": "Shiko SSL {id}",
+        "package": "Paketa",
+        "nextInvoiceDate": "Data e Faturës së Ardhshme:",
+        "billing": "Faturimi",
+        "billed": "faturuar:",
+        "statusIs": "Statusi është:",
+        "orderInfo": "Informacioni i Porosisë",
+        "certificateInfo": "Informacioni i Certifikatës",
+        "links": "Lidhjet",
+        "welcomeEmailConfirm": "A jeni i sigurt që dëshironi të ridërgoni emailin e mirëseardhjes?",
+        "emailSent": "Email i Dërguar",
+        "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse."
+    },
+    "order": {
+        "title": "Porosit SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Ndrysho Emailin e Miratuesit",
+        "selectApproverEmail": "Zgjidh Emailin e Miratuesit"
+    }
+}

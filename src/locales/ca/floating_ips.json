@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Llista de serveis d'IPs flotants", "orderTitle": "Comandar registres d'IP flotant" },
+    "view": { "title": "Veure IP flotant {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat:", "statusIs": "L'estat és:", "floatingIp": "IP flotant", "links": "Enllaços", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
+    "order": { "title": "Comandar IP flotant" },
+    "changeIp": { "title": "Canviar IP de destinació" }
+}

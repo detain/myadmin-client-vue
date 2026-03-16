@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "ميل سروسون لسٽ",
+        "orderTitle": "ميل رجسٽريشن آرڊر ڪريو"
+    },
+    "view": {
+        "title": "ميل {id} ڏسو",
+        "package": "پيڪيج",
+        "nextInvoiceDate": "ايندڙ انوائس تاريخ:",
+        "billing": "بلنگ",
+        "billed": "بل ڪيو:",
+        "statusIs": "حالت آهي:",
+        "mailApi": "ميل API",
+        "usageCount": "استعمال ڳڻتي:",
+        "links": "لنڪ",
+        "connectionInfo": "ڪنيڪشن معلومات",
+        "welcomeEmailConfirm": "ڇا توهان پڪ آهيو ته خوش آمديد اي ميل ٻيهر موڪلڻ چاهيو ٿا؟",
+        "emailSent": "اي ميل موڪليل",
+        "emailSentMessage": "خوش آمديد اي ميل ٻيهر موڪلي ويئي آهي. پنهنجو ان باڪس چيڪ ڪريو."
+    },
+    "order": {
+        "title": "ميل آرڊر ڪريو"
+    },
+    "alerts": {
+        "title": "الرٽ",
+        "addAlert": "الرٽ شامل ڪريو",
+        "editAlert": "الرٽ تبديل ڪريو",
+        "noAlerts": "ڪو الرٽ نه مليو"
+    },
+    "delist": {
+        "title": "ڊيلسٽ",
+        "blockedEmails": "بلاڪ ٿيل اي ميل"
+    },
+    "denyRules": {
+        "title": "انڪار ضابطا",
+        "addRule": "ضابطو شامل ڪريو",
+        "noRules": "ڪو انڪار ضابطو نه مليو"
+    },
+    "logs": {
+        "title": "لاگ",
+        "searchLogs": "لاگ ڳوليو"
+    },
+    "stats": {
+        "title": "انگ اکر"
+    },
+    "deliverability": {
+        "title": "ڊيليوري صلاحيت"
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "manager": { "title": "Gestione DNS", "addDomain": "Aghjunghje duminiu", "deleteDomain": "Sguassà duminiu", "domainName": "Nome di duminiu", "dnsServers": "Servori DNS", "confirmDelete": "Sì sicuru di vulè sguassà stu duminiu?", "noDomains": "Nisciun duminiu trovu" },
+    "editor": { "title": "Editore DNS", "addRecord": "Aghjunghje registru", "deleteRecord": "Sguassà registru", "editRecord": "Mudificà registru", "recordType": "Tipu di registru", "hostname": "Nome d'ospite", "address": "Indirizzu", "distance": "Distanza", "weight": "Pesu", "port": "Portu", "ttl": "TTL", "actions": "Azzioni", "confirmDelete": "Sì sicuru di vulè sguassà stu registru?" }
+}

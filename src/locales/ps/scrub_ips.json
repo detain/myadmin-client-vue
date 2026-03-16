@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "د Scrub IPs خدماتو لیست",
+        "orderTitle": "Scrub IPs امر ورکړئ"
+    },
+    "view": {
+        "title": "Scrub IPs وګورئ",
+        "currentIp": "اوسنی IP",
+        "ipAddress": "IP پته",
+        "ipFromService": "د خدمت IP"
+    },
+    "filters": {
+        "title": "فلټرونه",
+        "createNew": "نوی جوړ کړئ",
+        "createNewFilter": "نوی فلټر جوړ کړئ",
+        "filterType": "د فلټر ډول",
+        "selectFilterType": "د فلټر ډول وټاکئ",
+        "ipAddress": "IP پته",
+        "portNo": "د پورټ شمیره",
+        "filter": "فلټر",
+        "destinationIp": "د مقصد IP",
+        "destinationPort": "د مقصد پورټ",
+        "noFiltersFound": "هیڅ فلټرونه ونه موندل شو!",
+        "deleteFilterConfirm": "ایا تاسو ډاډه یاست چې دا فلټر ړنګول غواړئ؟",
+        "unableToCreateFilter": "اوسمهال فلټر جوړ کول ممکن نه دي.",
+        "unableToDeleteFilter": "اوسمهال فلټر ړنګ کول ممکن نه دي."
+    },
+    "firewallRules": {
+        "title": "د فایروال قواعد",
+        "createNew": "نوی جوړ کړئ",
+        "createNewFirewall": "نوی د فایروال قاعده جوړ کړئ",
+        "protocol": "پروتوکول",
+        "destinationIp": "د مقصد IP",
+        "destinationPort": "د مقصد پورټ",
+        "sourceIp": "د سرچینې IP",
+        "sourcePort": "د سرچینې پورټ",
+        "xdpAction": "XDP عمل",
+        "ipRequired": "IP پته اړینه ده",
+        "block": "بلاک کړئ",
+        "whitelist": "سپینه لیست",
+        "noRulesFound": "هیڅ قواعد ونه موندل شو!",
+        "deleteRuleConfirm": "ایا تاسو ډاډه یاست چې دا قاعده ړنګول غواړئ؟",
+        "unableToCreateRule": "اوسمهال د فایروال قاعده جوړ کول ممکن نه دي.",
+        "unableToDeleteRule": "اوسمهال د فایروال قاعده ړنګ کول ممکن نه دي."
+    },
+    "geoFirewallRules": {
+        "title": "د جغرافیایي فایروال قواعد",
+        "createNew": "نوی جوړ کړئ",
+        "createNewGeoRule": "نوی د جغرافیایي فایروال قاعده جوړ کړئ",
+        "destinationIp": "د مقصد IP",
+        "destinationPort": "د مقصد پورټ",
+        "sourceCountry": "د سرچینې هیواد",
+        "sourceAsn": "د سرچینې ASN",
+        "xdpAction": "XDP عمل",
+        "portNo": "د پورټ شمیره",
+        "selectCountry": "هیواد وټاکئ",
+        "asn": "ASN",
+        "block": "بلاک کړئ",
+        "whitelist": "سپینه لیست",
+        "noRulesFound": "هیڅ قواعد ونه موندل شو!",
+        "deleteGeoRuleConfirm": "ایا تاسو ډاډه یاست چې دا جغرافیایي قاعده ړنګول غواړئ؟",
+        "unableToCreateRule": "اوسمهال د فایروال قاعده جوړ کول ممکن نه دي.",
+        "unableToDeleteRule": "اوسمهال د جغرافیایي فایروال قاعده ړنګ کول ممکن نه دي."
+    }
+}

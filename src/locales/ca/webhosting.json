@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Llista d'allotjament web", "orderTitle": "Comandar registres de lloc web" },
+    "view": { "title": "Veure lloc web {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat", "billingStatusIs": "L'estat de facturació és:", "login": "Iniciar sessió", "links": "Enllaços", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
+    "order": { "title": "Comandar lloc web" },
+    "migration": { "title": "Migrar el vostre lloc web", "password": "Contrasenya", "importantNotes": "Notes importants" }
+}

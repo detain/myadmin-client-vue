@@ -1,0 +1,7 @@
+{
+    "cart": { "title": "购物车", "payBalance": "支付余额", "billingAddress": "账单地址", "addBillingAddress": "添加账单地址", "currency": "货币", "service": "服务", "description": "描述", "date": "日期", "serviceStatus": "服务状态", "actions": "操作", "amount": "金额", "deleteInvoice": "删除发票", "empty": "空...", "all": "全部", "none": "无", "active": "活跃", "paymentOptions": "支付选项", "howToPay": "您想如何支付？", "selectAddCreditCard": "选择 / 添加信用卡", "addNewCard": "添加新卡", "allUpToDate": "一切都是最新的！", "noUnpaidInvoices": "未找到未付发票。", "totalInvoices": "总发票数", "toBePaid": "待支付", "thankYouForOrder": "感谢您的订单。" },
+    "creditCard": { "addCreditCard": "添加信用卡", "cardNumber": "卡号", "expiryDate": "到期日期", "cvv": "CVV", "verified": "已验证", "notVerified": "未验证", "verifyButton": "验证", "deleteCreditCard": "删除信用卡", "deleteConfirm": "确定要删除您的信用卡 {card} 吗？" },
+    "invoices": { "title": "发票列表", "goBack": "返回", "month": "月", "year": "年", "id": "ID", "date": "日期", "service": "服务", "description": "描述", "amount": "金额", "paid": "已支付", "paidOn": "支付时间", "viewInvoice": "查看发票", "page": "第 {current} 页，共 {total} 页", "prev": "上一页", "next": "下一页", "all": "全部" },
+    "paymentSuccess": { "title": "支付成功", "successful": "支付成功！", "thankYou": "感谢您的支付。您的交易已成功完成。", "backToCart": "返回购物车", "goToDashboard": "前往控制台" },
+    "prepays": { "title": "预付款", "addNewPrepay": "添加新预付款", "balance": "余额：{amount}", "yes": "是", "no": "否", "noPrepaidFunds": "暂无预付款", "amountInUsd": "金额（美元）", "deletePrepay": "删除预付款" }
+}

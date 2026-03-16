@@ -1,0 +1,44 @@
+{
+  "title": "Partnerių sistema",
+  "breadcrumb": "Partneris",
+  "attention": "Ši partnerių programa nėra skirta 'šeimos narių' ar 'klientų' siuntimui. Prieš tęsdami, perskaitykite {faqLink}.",
+  "faqLinkText": "DUK",
+  "earnPerSale": "Uždirbkite {amount} už kiekvieną naujo kliento pardavimą!",
+  "knowMore": "Sužinoti daugiau",
+  "affiliateUrl": "Partnerio URL",
+  "shareUrl": "Pasidalinkite savo unikaliu partnerio URL su draugais",
+  "links": "Nuorodos",
+  "salesGraph": "Pardavimų grafikas",
+  "webTrafficGraph": "Žiniatinklio srauto grafikas",
+  "goBack": "Grįžti",
+  "back": "Atgal",
+  "exportFailed": "Eksportas nepavyko",
+  "copiedToClipboard": "Nukopijuota į iškarpinę.",
+  "signups": {
+    "title": "Partnerių registracijos",
+    "pending": "Laukiama",
+    "paid": "Apmokėta",
+    "failed": "Nepavyko",
+    "locked": "Užrakinta",
+    "rejected": "Atmesta",
+    "noRecords": "Įrašų nerasta",
+    "columns": {
+      "id": "ID",
+      "service": "Paslauga",
+      "signupDate": "Registracijos data",
+      "status": "Būsena",
+      "paidAmount": "Sumokėta suma",
+      "reason": "Priežastis"
+    }
+  },
+  "paymentSetup": {
+    "title": "Mokėjimo nustatymas",
+    "choosePayment": "Pasirinkite, ką norite daryti su savo partnerių mokėjimais",
+    "sendToPaypal": "Siųsti mokėjimus į PayPal",
+    "paypalEmail": "PayPal el. paštas"
+  },
+  "tosPage": {
+    "title": "Paslaugų teikimo sąlygos",
+    "welcome": "Sveiki atvykę į InterServer partnerių programą"
+  }
+}

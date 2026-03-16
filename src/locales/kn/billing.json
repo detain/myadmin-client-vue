@@ -1,0 +1,34 @@
+{
+  "cart": {
+    "title": "ಕಾರ್ಟ್", "payBalance": "ಬ್ಯಾಲೆನ್ಸ್ ಪಾವತಿಸಿ", "billingAddress": "ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ",
+    "currency": "ಕರೆನ್ಸಿ", "service": "ಸೇವೆ", "description": "ವಿವರಣೆ", "date": "ದಿನಾಂಕ",
+    "serviceStatus": "ಸೇವೆ ಸ್ಥಿತಿ", "actions": "ಕ್ರಿಯೆಗಳು", "amount": "ಮೊತ್ತ",
+    "deleteInvoice": "ಇನ್‌ವಾಯ್ಸ್ ಅಳಿಸಿ", "empty": "ಖಾಲಿ...", "all": "ಎಲ್ಲಾ", "none": "ಯಾವುದೂ ಇಲ್ಲ",
+    "active": "ಸಕ್ರಿಯ", "paymentOptions": "ಪಾವತಿ ಆಯ್ಕೆಗಳು", "howToPay": "ಹೇಗೆ ಪಾವತಿ ಮಾಡಲು ಬಯಸುತ್ತೀರಿ?",
+    "selectAddCreditCard": "ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ಆಯ್ಕೆ / ಸೇರಿಸಿ", "addNewCard": "ಹೊಸ ಕಾರ್ಡ್ ಸೇರಿಸಿ",
+    "allUpToDate": "ನೀವು ಸಂಪೂರ್ಣ ನವೀಕೃತರಾಗಿದ್ದೀರಿ!", "noUnpaidInvoices": "ಯಾವುದೇ ಬಾಕಿ ಇನ್‌ವಾಯ್ಸ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+    "totalInvoices": "ಒಟ್ಟು ಇನ್‌ವಾಯ್ಸ್‌ಗಳು", "toBePaid": "ಪಾವತಿಸಬೇಕು", "thankYouForOrder": "ನಿಮ್ಮ ಆದೇಶಕ್ಕೆ ಧನ್ಯವಾದ."
+  },
+  "creditCard": {
+    "addCreditCard": "ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ಸೇರಿಸಿ", "cardNumber": "ಕಾರ್ಡ್ ಸಂಖ್ಯೆ", "expiryDate": "ಮೀಯಾದಿ ದಿನಾಂಕ",
+    "cvv": "CVV", "verified": "ಪರಿಶೀಲಿಸಲಾಗಿದೆ", "notVerified": "ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ", "verifyButton": "ಪರಿಶೀಲಿಸಿ",
+    "deleteCreditCard": "ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ಅಳಿಸಿ",
+    "deleteConfirm": "ನಿಮ್ಮ ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ {card} ತೆಗೆದುಹಾಕಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
+  },
+  "invoices": {
+    "title": "ಇನ್‌ವಾಯ್ಸ್ ಪಟ್ಟಿ", "goBack": "ಹಿಂತಿರುಗಿ", "month": "ತಿಂಗಳು", "year": "ವರ್ಷ",
+    "id": "ID", "date": "ದಿನಾಂಕ", "service": "ಸೇವೆ", "description": "ವಿವರಣೆ",
+    "amount": "ಮೊತ್ತ", "paid": "ಪಾವತಿಸಲಾಗಿದೆ", "paidOn": "ಪಾವತಿ ದಿನಾಂಕ",
+    "viewInvoice": "ಇನ್‌ವಾಯ್ಸ್ ವೀಕ್ಷಿಸಿ", "page": "ಪುಟ {current} / {total}", "prev": "ಹಿಂದಿನ", "next": "ಮುಂದಿನ", "all": "ಎಲ್ಲಾ"
+  },
+  "paymentSuccess": {
+    "title": "ಪಾವತಿ ಯಶಸ್ವಿ", "successful": "ಪಾವತಿ ಯಶಸ್ವಿಯಾಗಿದೆ!",
+    "thankYou": "ನಿಮ್ಮ ಪಾವತಿಗೆ ಧನ್ಯವಾದ. ನಿಮ್ಮ ವ್ಯವಹಾರ ಯಶಸ್ವಿಯಾಗಿ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+    "backToCart": "ಕಾರ್ಟ್‌ಗೆ ಹಿಂತಿರುಗಿ", "goToDashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹೋಗಿ"
+  },
+  "prepays": {
+    "title": "ಪ್ರಿಪೇಡ್ ನಿಧಿ", "addNewPrepay": "ಹೊಸ ಪ್ರಿಪೇ ಸೇರಿಸಿ", "balance": "ಬ್ಯಾಲೆನ್ಸ್: {amount}",
+    "yes": "ಹೌದು", "no": "ಇಲ್ಲ", "noPrepaidFunds": "ಯಾವುದೇ ಪ್ರಿಪೇಡ್ ನಿಧಿ ಲಭ್ಯವಿಲ್ಲ",
+    "amountInUsd": "USD ನಲ್ಲಿ ಮೊತ್ತ", "deletePrepay": "ಪ್ರಿಪೇ ಅಳಿಸಿ"
+  }
+}

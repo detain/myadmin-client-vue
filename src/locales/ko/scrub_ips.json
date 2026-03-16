@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs 서비스 목록",
+        "orderTitle": "Scrub IPs 주문"
+    },
+    "view": {
+        "title": "Scrub IPs 보기",
+        "currentIp": "현재 IP",
+        "ipAddress": "IP 주소",
+        "ipFromService": "서비스의 IP"
+    },
+    "filters": {
+        "title": "필터",
+        "createNew": "새로 만들기",
+        "createNewFilter": "새 필터 만들기",
+        "filterType": "필터 유형",
+        "selectFilterType": "필터 유형 선택",
+        "ipAddress": "IP 주소",
+        "portNo": "포트 번호",
+        "filter": "필터",
+        "destinationIp": "대상 IP",
+        "destinationPort": "대상 포트",
+        "noFiltersFound": "필터를 찾을 수 없습니다!",
+        "deleteFilterConfirm": "이 필터를 정말 삭제하시겠습니까?",
+        "unableToCreateFilter": "현재 필터를 생성할 수 없습니다.",
+        "unableToDeleteFilter": "현재 필터를 삭제할 수 없습니다."
+    },
+    "firewallRules": {
+        "title": "방화벽 규칙",
+        "createNew": "새로 만들기",
+        "createNewFirewall": "새 방화벽 규칙 만들기",
+        "protocol": "프로토콜",
+        "destinationIp": "대상 IP",
+        "destinationPort": "대상 포트",
+        "sourceIp": "소스 IP",
+        "sourcePort": "소스 포트",
+        "xdpAction": "XDP 작업",
+        "ipRequired": "IP 주소가 필요합니다",
+        "block": "차단",
+        "whitelist": "화이트리스트",
+        "noRulesFound": "규칙을 찾을 수 없습니다!",
+        "deleteRuleConfirm": "이 규칙을 정말 삭제하시겠습니까?",
+        "unableToCreateRule": "현재 방화벽 규칙을 생성할 수 없습니다.",
+        "unableToDeleteRule": "현재 방화벽 규칙을 삭제할 수 없습니다."
+    },
+    "geoFirewallRules": {
+        "title": "지역 방화벽 규칙",
+        "createNew": "새로 만들기",
+        "createNewGeoRule": "새 지역 방화벽 규칙 만들기",
+        "destinationIp": "대상 IP",
+        "destinationPort": "대상 포트",
+        "sourceCountry": "소스 국가",
+        "sourceAsn": "소스 ASN",
+        "xdpAction": "XDP 작업",
+        "portNo": "포트 번호",
+        "selectCountry": "국가 선택",
+        "asn": "ASN",
+        "block": "차단",
+        "whitelist": "화이트리스트",
+        "noRulesFound": "규칙을 찾을 수 없습니다!",
+        "deleteGeoRuleConfirm": "이 지역 규칙을 정말 삭제하시겠습니까?",
+        "unableToCreateRule": "현재 방화벽 규칙을 생성할 수 없습니다.",
+        "unableToDeleteRule": "현재 지역 방화벽 규칙을 삭제할 수 없습니다."
+    }
+}

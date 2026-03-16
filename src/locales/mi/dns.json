@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Kaiwhakahaere DNS",
+        "addDomain": "Tāpiri Rohe",
+        "deleteDomain": "Muku Rohe",
+        "domainName": "Ingoa Rohe",
+        "dnsServers": "Ngā Tūmau DNS",
+        "confirmDelete": "He tūturu tāu e hiahia ana ki te muku i tēnei rohe?",
+        "noDomains": "Kāore he rohe i kitea"
+    },
+    "editor": {
+        "title": "Ētita DNS",
+        "addRecord": "Tāpiri Rekoata",
+        "deleteRecord": "Muku Rekoata",
+        "editRecord": "Whakatika Rekoata",
+        "recordType": "Momo Rekoata",
+        "hostname": "Ingoa Tūmau",
+        "address": "Wāhitau",
+        "distance": "Tawhiti",
+        "weight": "Taumaha",
+        "port": "Tatau",
+        "ttl": "TTL",
+        "actions": "Ngā Mahi",
+        "confirmDelete": "He tūturu tāu e hiahia ana ki te muku i tēnei rekoata?"
+    }
+}

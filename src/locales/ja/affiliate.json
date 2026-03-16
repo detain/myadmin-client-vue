@@ -1,0 +1,44 @@
+{
+  "title": "アフィリエイトシステム",
+  "breadcrumb": "アフィリエイト",
+  "attention": "このアフィリエイトプログラムは「家族」や「クライアント」の紹介を目的としていません。続ける前に {faqLink} をお読みください。",
+  "faqLinkText": "FAQ",
+  "earnPerSale": "新規顧客の販売ごとに {amount} 獲得！",
+  "knowMore": "詳細を見る",
+  "affiliateUrl": "アフィリエイト URL",
+  "shareUrl": "ユニークなアフィリエイト URL を友人と共有",
+  "links": "リンク",
+  "salesGraph": "販売グラフ",
+  "webTrafficGraph": "ウェブトラフィックグラフ",
+  "goBack": "戻る",
+  "back": "戻る",
+  "exportFailed": "エクスポートに失敗しました",
+  "copiedToClipboard": "クリップボードにコピーしました。",
+  "signups": {
+    "title": "アフィリエイト登録",
+    "pending": "保留中",
+    "paid": "支払済み",
+    "failed": "失敗",
+    "locked": "ロック済み",
+    "rejected": "拒否",
+    "noRecords": "レコードが見つかりません",
+    "columns": {
+      "id": "ID",
+      "service": "サービス",
+      "signupDate": "登録日",
+      "status": "ステータス",
+      "paidAmount": "支払い金額",
+      "reason": "理由"
+    }
+  },
+  "paymentSetup": {
+    "title": "支払い設定",
+    "choosePayment": "アフィリエイト支払いの処理方法を選択",
+    "sendToPaypal": "PayPal に支払いを送る",
+    "paypalEmail": "PayPal メール"
+  },
+  "tosPage": {
+    "title": "利用規約",
+    "welcome": "InterServer アフィリエイトプログラムへようこそ"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "list": {
+    "title": "Saugyklos / Atsarginių kopijų sąrašas",
+    "orderTitle": "Užsakyti atsarginių kopijų registracijas"
+  },
+  "view": {
+    "title": "Peržiūrėti atsarginę kopiją {id}",
+    "package": "Paketas",
+    "nextInvoiceDate": "Kita sąskaitos data:",
+    "billing": "Atsiskaitymas",
+    "billed": "išrašyta sąskaita:",
+    "statusIs": "Būsena:",
+    "hostServer": "Pagrindinis serveris",
+    "links": "Nuorodos",
+    "emailSent": "El. laiškas išsiųstas",
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+  },
+  "order": {
+    "title": "Užsakyti saugyklą"
+  }
+}

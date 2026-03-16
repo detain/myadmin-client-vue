@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webhostingliste",
+        "orderTitle": "Bestil hjemmesideregistreringer"
+    },
+    "view": {
+        "title": "Se hjemmeside {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Næste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "faktureret",
+        "billingStatusIs": "Faktureringsstatus er:",
+        "hostInfo": "Hostoplysninger",
+        "username": "Brugernavn:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Ikke indstillet endnu",
+        "login": "Log ind",
+        "types": "Typer:",
+        "linksLabel": "Links:",
+        "manualLogin": "Manuelt login",
+        "automaticLogin": "Automatisk login",
+        "clickHere": "Klik her",
+        "defaultNameservers": "Standard navneservere",
+        "nameservers": "Navneservere:",
+        "externalLinks": "Eksterne links",
+        "names": "Navne:",
+        "websitePreview": "Hjemmesideeksempel",
+        "links": "Links",
+        "welcomeEmailConfirm": "Er du sikker på, at du vil gensende velkomst-e-mailen?",
+        "emailSent": "E-mail sendt",
+        "emailSentMessage": "Velkomst-e-mailen er gensendt. Tjek din indbakke."
+    },
+    "buyIp": {
+        "title": "Køb yderligere IP-tilføjelse",
+        "existingAddonIps": "Eksisterende tilføjelses-IPs",
+        "additionalIp": "Yderligere IP",
+        "monthlyCost": "Månedlig omkostning ({symbol})",
+        "costDescription": "Omkostning ({symbol}) hver måned som din hjemmeside faktureres",
+        "confirmPurchase": "Bekræft køb",
+        "confirmMessage": "Yderligere IP-omkostning: {symbol}{cost}/måned. Er du sikker på, at du vil bestille en yderligere IP?",
+        "placeOrder": "Afgiv bestilling",
+        "orderPlaced": "Bestilling afgivet"
+    },
+    "reverseDns": {
+        "title": "Omvendt DNS",
+        "updateReverseDns": "Opdater omvendt DNS"
+    },
+    "downloadBackups": {
+        "title": "Download sikkerhedskopier",
+        "backup": "Sikkerhedskopi",
+        "size": "Størrelse",
+        "options": "Indstillinger"
+    },
+    "migration": {
+        "title": "Migrer din hjemmeside",
+        "currentWebHostInfo": "Nuværende webhostoplysninger",
+        "customerPortalUrl": "Kundeportal URL",
+        "portalExample": "Eksempel: sso.godaddy.com",
+        "registeredUsername": "Registreret brugernavn / E-mail / ID",
+        "password": "Adgangskode",
+        "controlPanelUrl": "Kontrolpanel URL",
+        "controlPanelExample": "Eksempel: ditdomæne.com/cpanel",
+        "ftpUsername": "FTP / Kontrolpanel brugernavn",
+        "ftpPassword": "FTP / Kontrolpanel adgangskode",
+        "holdingPageQuestion": "Hvis siden er live/travl med høj trafik, kan vi sætte en venteside under migreringen?",
+        "specialRequirementsQuestion": "Har dette websted særlige krav som PHP-version / moduler?",
+        "domainRegistryInfo": "Domæneregistreringsoplysninger",
+        "transferDomainQuestion": "Ønsker du også, at vi hjælper dig med at overføre domænenavnsregistreringen?",
+        "updateNameserversQuestion": "Ønsker du, at vi opdaterer navneserverne, så snart vi er færdige med datamigrerinen?",
+        "domainRegistryPortal": "Domæneregistrerings kundeportal",
+        "importantNotes": "Vigtige bemærkninger",
+        "note1": "Udfyldning af denne formular vil åbne en ny ticket for vores supportafdeling til at begynde din migrering.",
+        "note2": "Vær venligst så fuldstændig og præcis som muligt for at undgå forsinkelser.",
+        "note3": "En typisk migrering gennemføres inden for 48 til 72 timer. Nogle gange længere, hvis mængden af data, der skal kopieres, er stor.",
+        "note4": "Den gamle hostingkonto skal være online og tilgængelig, mens vi udfører migreringen, ellers kan vi støde på vanskeligheder.",
+        "note5": "Foretag venligst ingen opdateringer på dit websted, mens vi udfører migreringen, ellers kopieres disse data muligvis ikke til den nye hosting."
+    },
+    "order": {
+        "title": "Bestil hjemmeside"
+    }
+}

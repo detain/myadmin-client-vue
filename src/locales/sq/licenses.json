@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista e Licencave",
+        "orderTitle": "Porosit Regjistrimet e Licencave"
+    },
+    "view": {
+        "title": "Shiko Licencën {id}",
+        "package": "Paketa",
+        "nextInvoiceDate": "Data e Faturës së Ardhshme:",
+        "billing": "Faturimi",
+        "billed": "faturuar:",
+        "statusIs": "Statusi është:",
+        "licenseInfo": "Informacioni i Licencës",
+        "cpanelInfo": "Informacioni cPanel",
+        "links": "Lidhjet",
+        "welcomeEmailConfirm": "A jeni i sigurt që dëshironi të ridërgoni emailin e mirëseardhjes?",
+        "emailSent": "Email i Dërguar",
+        "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse."
+    },
+    "order": {
+        "title": "Porosit Licencë"
+    },
+    "changeIp": {
+        "title": "Ndrysho IP-në"
+    },
+    "changeOs": {
+        "title": "Ndrysho OS-in",
+        "selectLicenseOs": "Zgjidh OS-in e Licencës"
+    }
+}

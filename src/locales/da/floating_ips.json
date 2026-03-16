@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Liste over Floating IPs-tjenester",
+        "orderTitle": "Bestil Floating IP-registreringer"
+    },
+    "view": {
+        "title": "Se Floating IP {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Næste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "Faktureret:",
+        "statusIs": "Status er:",
+        "floatingIp": "Floating IP",
+        "links": "Links",
+        "welcomeEmailConfirm": "Er du sikker på, at du vil gensende velkomst-e-mailen?",
+        "emailSent": "E-mail sendt",
+        "emailSentMessage": "Velkomst-e-mailen er gensendt. Tjek din indbakke."
+    },
+    "order": {
+        "title": "Bestil Floating IP"
+    },
+    "changeIp": {
+        "title": "Skift mål-IP"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Պահեստ / Պահուստային ցանկ",
+        "orderTitle": "Պատvireл Pahestain Grantshumner"
+    },
+    "view": {
+        "title": "Ditkel Pahest {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Hajord Hashiv-aprankagreri Amsakiv:",
+        "billing": "Vcharum",
+        "billed": "Vcharvats:",
+        "statusIs": "Kargavichakn e:",
+        "hostServer": "Host Server",
+        "links": "Hghumner",
+        "welcomeEmailConfirm": "Voroshum eq? Uzum eq krknel ougharkvel bariv gnalu el. naman?",
+        "emailSent": "El. naman ougharkval e",
+        "emailSentMessage": "Bariv gnalu el. naman krkhal e ougharkvel: Stugel dzer muts arkultern:"
+    },
+    "order": {
+        "title": "Patvirel Pahest"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "የደብዳቤ አገልግሎቶች ዝርዝር",
+        "orderTitle": "የደብዳቤ ምዝገባዎችን አዝዝ"
+    },
+    "view": {
+        "title": "ደብዳቤ {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል:",
+        "statusIs": "ሁኔታ ነው:",
+        "mailApi": "የደብዳቤ API",
+        "usageCount": "የጥቅም ብዛት:",
+        "links": "ሊንኮች",
+        "connectionInfo": "የግንኙነት መረጃ",
+        "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።"
+    },
+    "order": {
+        "title": "ደብዳቤ አዝዝ"
+    },
+    "alerts": {
+        "title": "ማንቂያዎች",
+        "addAlert": "ማንቂያ ጨምር",
+        "editAlert": "ማንቂያ አርትዕ",
+        "noAlerts": "ምንም ማንቂያዎች አልተገኙም"
+    },
+    "delist": {
+        "title": "ከዝርዝር አውጣ",
+        "blockedEmails": "የተዘጉ ኢሜይሎች"
+    },
+    "denyRules": {
+        "title": "የእምቢ ደንቦች",
+        "addRule": "ደንብ ጨምር",
+        "noRules": "ምንም የእምቢ ደንቦች አልተገኙም"
+    },
+    "logs": {
+        "title": "ምዝቦች",
+        "searchLogs": "ምዝቦች ፈልግ"
+    },
+    "stats": {
+        "title": "ስታቲስቲክስ"
+    },
+    "deliverability": {
+        "title": "የማድረስ ችሎታ"
+    }
+}

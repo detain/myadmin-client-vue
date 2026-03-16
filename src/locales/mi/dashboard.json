@@ -1,0 +1,28 @@
+{
+    "title": "Papatohu",
+    "welcome": "Nau mai, {name}",
+    "lastLogin": "Takiuru Whakamutunga",
+    "lastLoginIp": "IP Takiuru Whakamutunga",
+    "prepay": {
+        "title": "Tōpūtanga Utu Ā-mua",
+        "remainingBalance": "Tōpūtanga Utu Ā-mua Toe Ana",
+        "manageAccount": "Whakahaere Pūkete",
+        "manageTooltip": "Whakahaere Tō Pūkete Utu Ā-mua"
+    },
+    "invoices": {
+        "title": "Ngā Pire Kīhai i Utua",
+        "totalUnpaid": "Katoa Ngā Pire Kīhai i Utua",
+        "totalAmount": "Katoa Te Rahinga Ka Utua",
+        "payTotalTooltip": "Utu Katoa Te Rahinga"
+    },
+    "callInPin": "PIN Waea",
+    "recentTickets": "Ngā Tikiti Tata",
+    "viewAllTickets": "Titiro Ngā Tikiti Katoa",
+    "editTicket": "Whakatika Tikiti",
+    "serviceCount": "Kāore he ratonga hohe | {count} ratonga hohe | {count} ratonga hohe",
+    "affiliate": {
+        "earnPerSale": "Whiwhi {amount} Mō Ia Hokohoko",
+        "urlPlaceholder": "URL Hoa",
+        "shareWith": "Tohaina ki"
+    }
+}

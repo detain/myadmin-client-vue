@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Scrub IPs Service-Lëscht",
+    "orderTitle": "Scrub IPs bestalln"
+  },
+  "view": {
+    "title": "Scrub IPs ukucken",
+    "currentIp": "Aktuell IP",
+    "ipAddress": "IP-Adress",
+    "ipFromService": "IP vum Service"
+  },
+  "filters": {
+    "title": "Filter",
+    "createNew": "Neien erstellen",
+    "createNewFilter": "Neie Filter erstellen",
+    "filterType": "Filtertyp",
+    "ipAddress": "IP-Adress",
+    "portNo": "Port-Nr.",
+    "filter": "Filter",
+    "destinationIp": "Zil-IP",
+    "destinationPort": "Zil-Port",
+    "noFiltersFound": "Keng Filter fonnt!",
+    "deleteFilterConfirm": "Sidd Dir sécher, datt Dir dëse Filter wëllt läschen?"
+  },
+  "firewallRules": {
+    "title": "Firewall-Regelen",
+    "createNewFirewall": "Nei Firewall-Regel erstellen",
+    "protocol": "Protokoll",
+    "destinationIp": "Zil-IP",
+    "sourceIp": "Quell-IP",
+    "block": "Blockéieren",
+    "whitelist": "Wäisslëscht",
+    "noRulesFound": "Keng Regelen fonnt!",
+    "deleteRuleConfirm": "Sidd Dir sécher, datt Dir dës Regel wëllt läschen?"
+  },
+  "geoFirewallRules": {
+    "title": "Geo-Firewall-Regelen",
+    "createNewGeoRule": "Nei Geo-Firewall-Regel erstellen",
+    "destinationIp": "Zil-IP",
+    "sourceCountry": "Quelland",
+    "sourceAsn": "Quell-ASN",
+    "selectCountry": "Land auswiele",
+    "block": "Blockéieren",
+    "whitelist": "Wäisslëscht",
+    "noRulesFound": "Keng Regelen fonnt!",
+    "deleteGeoRuleConfirm": "Sidd Dir sécher, datt Dir dës Geo-Regel wëllt läschen?"
+  }
+}

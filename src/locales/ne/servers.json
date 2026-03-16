@@ -1,0 +1,48 @@
+{
+    "list": {
+        "title": "समर्पित सर्भर सूची",
+        "orderTitle": "सर्भर दर्ता अर्डर गर्नुहोस्"
+    },
+    "view": {
+        "title": "सर्भर {id} हेर्नुहोस्",
+        "package": "प्याकेज",
+        "dedicatedServer": "समर्पित सर्भर",
+        "nextInvoiceDate": "अर्को इनभ्वाइस मिति:",
+        "billing": "बिलिङ",
+        "billed": "बिल गरिएको:",
+        "statusIs": "स्थिति:",
+        "orderInfo": "अर्डर जानकारी",
+        "orderId": "अर्डर आईडी:",
+        "links": "लिङ्कहरू",
+        "serverInformation": "सर्भर जानकारी",
+        "networkInformation": "नेटवर्क जानकारी",
+        "power": "विद्युत",
+        "selectAction": "कार्य छान्नुहोस्",
+        "softReboot": "सफ्ट रिबुट",
+        "paymentStatus": "भुक्तान स्थिति:",
+        "emailSent": "इमेल पठाइयो",
+        "emailSentMessage": "स्वागत इमेल पुनः पठाइएको छ। आफ्नो इनबक्स जाँच गर्नुहोस्।"
+    },
+    "order": {
+        "title": "सर्भर अर्डर गर्नुहोस्",
+        "orderDedicatedServer": "समर्पित सर्भर अर्डर गर्नुहोस्",
+        "orderSummary": "अर्डर सारांश",
+        "selectServer": "सर्भर छान्नुहोस्",
+        "serverHostname": "सर्भर होस्टनाम",
+        "rootPassword": "Root पासवर्ड",
+        "agreeToTerms": "प्रस्ताव सर्तहरूसँग सहमत हुनुहोस्",
+        "iAgreeToTerms": "मैले माथिका सर्तहरू पढेको छु र सहमत छु।",
+        "placeOrder": "मेरो अर्डर राख्नुहोस्",
+        "cpuSelection": "CPU छनोट",
+        "driveConfiguration": "ड्राइभ कन्फिगरेसन",
+        "addDrive": "ड्राइभ थप्नुहोस्",
+        "removeDrive": "ड्राइभ हटाउनुहोस्",
+        "selectMemory": "मेमोरी छान्नुहोस्",
+        "selectOs": "अपरेटिङ सिस्टम छान्नुहोस्",
+        "region": "क्षेत्र",
+        "buyNow": "अहिले किन्नुहोस्",
+        "monthly": "मासिक",
+        "perMonth": "/महिना",
+        "confirmOrder": "अर्डर पुष्टि गर्नुहोस्"
+    }
+}

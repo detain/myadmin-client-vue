@@ -1,0 +1,4 @@
+{
+    "manager": { "title": "DNS Manager", "addDomain": "Idugang ang Domain", "deleteDomain": "I-delete ang Domain", "domainName": "Ngalan sa Domain", "dnsServers": "Mga DNS Server", "confirmDelete": "Sigurado ka bang gusto mong i-delete kini nga domain?", "noDomains": "Walay nakit-an nga mga domain" },
+    "editor": { "title": "DNS Editor", "addRecord": "Idugang ang Record", "deleteRecord": "I-delete ang Record", "editRecord": "I-edit ang Record", "recordType": "Klase sa Record", "hostname": "Hostname", "address": "Address", "distance": "Distansya", "weight": "Timbang", "port": "Port", "ttl": "TTL", "actions": "Mga Aksyon", "confirmDelete": "Sigurado ka bang gusto mong i-delete kini nga record?" }
+}

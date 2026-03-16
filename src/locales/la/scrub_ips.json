@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista Servitiorum Scrub IPs",
+        "orderTitle": "Ordina Scrub IPs"
+    },
+    "view": {
+        "title": "Vide Scrub IPs",
+        "currentIp": "IP Praesens",
+        "ipAddress": "Inscriptio IP",
+        "ipFromService": "IP ex servitio"
+    },
+    "filters": {
+        "title": "Filtri",
+        "createNew": "Crea Novum",
+        "createNewFilter": "Crea Novum Filtrum",
+        "filterType": "Genus Filtri",
+        "selectFilterType": "Elige Genus Filtri",
+        "ipAddress": "Inscriptio IP",
+        "portNo": "Nr. Portae",
+        "filter": "Filtrum",
+        "destinationIp": "IP Destinationis",
+        "destinationPort": "Porta Destinationis",
+        "noFiltersFound": "Nulla filtri inventa!",
+        "deleteFilterConfirm": "Esne certus te velle hoc filtrum delere?",
+        "unableToCreateFilter": "Non potuit filtrum hoc tempore creare.",
+        "unableToDeleteFilter": "Non potuit filtrum hoc tempore delere."
+    },
+    "firewallRules": {
+        "title": "Regulae Muri Ignis",
+        "createNew": "Crea Novum",
+        "createNewFirewall": "Crea Novam Regulam Muri Ignis",
+        "protocol": "Protocollum",
+        "destinationIp": "IP Destinationis",
+        "destinationPort": "Porta Destinationis",
+        "sourceIp": "IP Fontis",
+        "sourcePort": "Porta Fontis",
+        "xdpAction": "Actio XDP",
+        "ipRequired": "Inscriptio IP requiritur",
+        "block": "Obstrui",
+        "whitelist": "Lista Alba",
+        "noRulesFound": "Nullae regulae inventae!",
+        "deleteRuleConfirm": "Esne certus te velle hanc regulam delere?",
+        "unableToCreateRule": "Non potuit regulam muri ignis hoc tempore creare.",
+        "unableToDeleteRule": "Non potuit regulam muri ignis hoc tempore delere."
+    },
+    "geoFirewallRules": {
+        "title": "Regulae Muri Ignis Geographici",
+        "createNew": "Crea Novum",
+        "createNewGeoRule": "Crea Novam Regulam Muri Ignis Geographici",
+        "destinationIp": "IP Destinationis",
+        "destinationPort": "Porta Destinationis",
+        "sourceCountry": "Patria Fontis",
+        "sourceAsn": "ASN Fontis",
+        "xdpAction": "Actio XDP",
+        "portNo": "Nr. Portae",
+        "selectCountry": "Elige Patriam",
+        "asn": "ASN",
+        "block": "Obstrui",
+        "whitelist": "Lista Alba",
+        "noRulesFound": "Nullae regulae inventae!",
+        "deleteGeoRuleConfirm": "Esne certus te velle hanc regulam geographicam delere?",
+        "unableToCreateRule": "Non potuit regulam muri ignis hoc tempore creare.",
+        "unableToDeleteRule": "Non potuit regulam muri ignis geographici hoc tempore delere."
+    }
+}

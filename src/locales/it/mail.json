@@ -1,0 +1,48 @@
+{
+  "list": {
+    "title": "Elenco Servizi Mail",
+    "orderTitle": "Ordina Registrazioni Mail"
+  },
+  "view": {
+    "title": "Visualizza Mail {id}",
+    "package": "Pacchetto",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturato:",
+    "statusIs": "Stato è:",
+    "mailApi": "API Mail",
+    "usageCount": "Conteggio Utilizzo:",
+    "links": "Link",
+    "connectionInfo": "Informazioni Connessione",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina Mail"
+  },
+  "alerts": {
+    "title": "Avvisi",
+    "addAlert": "Aggiungi Avviso",
+    "editAlert": "Modifica Avviso",
+    "noAlerts": "Nessun avviso trovato"
+  },
+  "delist": {
+    "title": "Delist",
+    "blockedEmails": "Email Bloccate"
+  },
+  "denyRules": {
+    "title": "Regole di Negazione",
+    "addRule": "Aggiungi Regola",
+    "noRules": "Nessuna regola di negazione trovata"
+  },
+  "logs": {
+    "title": "Log",
+    "searchLogs": "Cerca Log"
+  },
+  "stats": {
+    "title": "Statistiche"
+  },
+  "deliverability": {
+    "title": "Consegnabilità"
+  }
+}

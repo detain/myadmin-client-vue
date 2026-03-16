@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Domain Kudar",
+        "deleteDomain": "Domain Tirtir",
+        "domainName": "Magaca Domain-ka",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "Ma hubtaa inaad tirtiri doonto domain-kan?",
+        "noDomains": "Domain ma lixin"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Diiwaanka Kudar",
+        "deleteRecord": "Diiwaanka Tirtir",
+        "editRecord": "Diiwaanka Wax ka beddel",
+        "recordType": "Nooca Diiwaanka",
+        "hostname": "Magaca Hoyga",
+        "address": "Cinwaanka",
+        "distance": "Fogaanshaha",
+        "weight": "Culeyska",
+        "port": "Dekedda",
+        "ttl": "TTL",
+        "actions": "Falalka",
+        "confirmDelete": "Ma hubtaa inaad tirtiri doonto diiwaankaan?"
+    }
+}

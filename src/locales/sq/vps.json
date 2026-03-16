@@ -1,0 +1,75 @@
+{
+    "list": {
+        "title": "Lista VPS",
+        "orderVps": "Porosit VPS"
+    },
+    "view": {
+        "title": "Shiko VPS {id}",
+        "package": "Paketa",
+        "billing": "Faturimi",
+        "billed": "faturuar",
+        "vpsStatus": "Statusi VPS është:",
+        "hostServer": "Serveri Pritës:",
+        "nextInvoiceDate": "Data e Faturës së Ardhshme:",
+        "vpsInformation": "Informacioni VPS",
+        "powerStatus": "Statusi i Energjisë është:",
+        "selectAction": "Zgjidh Veprimin",
+        "comment": "Komenti:",
+        "disk": "Disku",
+        "totalSpace": "Hapësira Totale:",
+        "usedSpace": "Hapësira e Përdorur:",
+        "remainingSpace": "Hapësira e Mbetur:",
+        "systemInformation": "Informacioni i Sistemit",
+        "memory": "Memoria:",
+        "cpuCores": "Bërthamat CPU:",
+        "os": "OS:",
+        "links": "Lidhjet",
+        "updateComment": "Përditëso Komentin",
+        "saveChanges": "Ruaj ndryshimet",
+        "emailSent": "Email i Dërguar",
+        "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse."
+    },
+    "order": {
+        "title": "Porosit VPS",
+        "osDistribution": "Distribucioni OS",
+        "osVersion": "Versioni OS",
+        "hostname": "Emri i Hostit",
+        "rootPassword": "Fjalëkalimi Root",
+        "couponCode": "Kodi i Kuponit",
+        "continue": "Vazhdo",
+        "orderSummary": "Përmbledhja e Porosisë",
+        "total": "Totali",
+        "agreeToTerms": "Bini dakord me kushtet e ofertës",
+        "tosAgree": "Kam lexuar kushtet e mësipërme dhe jam dakord.",
+        "placeOrder": "Bëj Porosinë"
+    },
+    "changeHostname": {
+        "title": "Ndrysho Emrin e Hostit VPS",
+        "existingHostname": "Emri Ekzistues i Hostit",
+        "newHostname": "Emri i Ri i Hostit",
+        "updateHostname": "Përditëso Emrin e Hostit"
+    },
+    "changeRootPassword": {
+        "title": "Ndrysho Fjalëkalimin Root të VPS",
+        "newPassword": "Fjalëkalimi i Ri:",
+        "confirmPassword": "Konfirmo Fjalëkalimin:",
+        "changePassword": "Ndrysho Fjalëkalimin",
+        "passwordMismatch": "Fjalëkalimi dhe Konfirmo Fjalëkalimin nuk përputhen"
+    },
+    "reinstallOs": {
+        "title": "Riinstalo OS-in",
+        "importantNote1": "Riinstalimi i sistemit operativ do të fshijë të gjitha të dhënat.",
+        "importantNote2": "Para riinstalimit të sistemit operativ, ju lutem bëni një kopje rezervë.",
+        "osDistribution": "Distribucioni i Sistemit Operativ",
+        "newPassword": "Fjalëkalimi i Ri",
+        "confirmPassword": "Konfirmo Fjalëkalimin",
+        "confirmReinstallButton": "Konfirmo Riinstalimin e OS"
+    },
+    "common": {
+        "goBack": "Kthehu",
+        "back": "Mbrapa",
+        "pleaseWait": "Ju lutem prisni!",
+        "success": "Sukses{text}",
+        "gotError": "Gabim i marrë {error}"
+    }
+}

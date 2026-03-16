@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Uluhlu weenkonzo zeposi",
+        "orderTitle": "Odola ukubhalisa kweposi"
+    },
+    "view": {
+        "title": "Jonga iposi {id}",
+        "package": "Iphakeji",
+        "nextInvoiceDate": "Umhla weFatshi elilandelayo:",
+        "billing": "Ukuhlawula",
+        "billed": "kuhlawulwe:",
+        "statusIs": "Isimo ngu:",
+        "mailApi": "I-API yeposi",
+        "usageCount": "Inani lokusebenzisa:",
+        "links": "Amanxibelelwano",
+        "connectionInfo": "Ulwazi lonxibelelwano",
+        "welcomeEmailConfirm": "Uqinisekile ukuba ufuna ukuthumela kwakhona i-imeyili yamkelo?",
+        "emailSent": "I-imeyili ithunyiwe",
+        "emailSentMessage": "I-imeyili yamkelo ithunyiwe kwakhona. Jonga ibhokisi yakho yongeno."
+    },
+    "order": {
+        "title": "Odola iposi"
+    },
+    "alerts": {
+        "title": "Izaziso",
+        "addAlert": "Yongeza isaziso",
+        "editAlert": "Hlela isaziso",
+        "noAlerts": "Akukho zizaziso ezifunyenweyo"
+    },
+    "delist": {
+        "title": "Susa kuluhlu",
+        "blockedEmails": "Iimeyili ezikhonkxiweyo"
+    },
+    "denyRules": {
+        "title": "Imimiselo yokuNqaba",
+        "addRule": "Yongeza imimiselo",
+        "noRules": "Akukho mimiselo yokuNqaba efunyenweyo"
+    },
+    "logs": {
+        "title": "Iilogi",
+        "searchLogs": "Khangela Iilogi"
+    },
+    "stats": {
+        "title": "Izibalo"
+    },
+    "deliverability": {
+        "title": "Ukufunyanwa"
+    }
+}

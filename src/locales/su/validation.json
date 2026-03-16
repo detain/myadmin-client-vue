@@ -1,0 +1,12 @@
+{
+  "required": "{field} diperyogikeun",
+  "email": "Kedah alamat email anu valid",
+  "minLength": "Kedah sahenteuna {min} karakter",
+  "maxLength": "Kedah henteu langkung ti {max} karakter",
+  "passwordMatch": "Kecap akses kedah cocog",
+  "invalidFormat": "Format teu valid",
+  "numeric": "Kedah angka",
+  "url": "Kedah URL anu valid",
+  "ipAddress": "Kedah alamat IP anu valid",
+  "hostname": "Kedah hostname anu valid"
+}

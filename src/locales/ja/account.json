@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "title": "アカウント設定"
+  },
+  "changePassword": {
+    "title": "パスワード変更",
+    "cardTitle": "パスワードを更新",
+    "currentPassword": "現在のパスワード",
+    "newPassword": "新しいパスワード",
+    "confirmPassword": "パスワードの確認",
+    "updatePassword": "パスワードを更新"
+  },
+  "changeUsername": {
+    "title": "ユーザー名変更",
+    "disabled": "ユーザー名の変更は一時的に無効化されています。",
+    "currentUsername": "現在のユーザー名",
+    "newDesiredUsername": "希望する新しいユーザー名",
+    "confirmationCode": "確認コード",
+    "pleaseWait": "お待ちください!",
+    "gotError": "エラーが発生しました: {error}"
+  },
+  "contactInfo": {
+    "title": "連絡先情報",
+    "cardTitle": "連絡先情報を更新",
+    "headsUp": "ご注意!",
+    "headsUpMessage": "この情報は任意ですが、正確な情報を入力するとリスクスコアの低下に役立ちます。",
+    "riskScore": "リスクスコア",
+    "personalInformation": "個人情報",
+    "name": "名前",
+    "company": "会社",
+    "addressLine1": "住所1",
+    "addressLine2": "住所2",
+    "city": "市区町村",
+    "state": "都道府県",
+    "country": "国",
+    "zipcode": "郵便番号",
+    "phoneNumber": "電話番号",
+    "language": "言語",
+    "auto": "自動",
+    "currency": "通貨",
+    "timeZone": "タイムゾーン",
+    "otherSettings": "その他の設定",
+    "disablePasswordResets": "パスワードリセット（パスワードを忘れた場合）を無効化。",
+    "disableInvoiceReminders": "請求書リマインダーメール通知を無効化。",
+    "alternateEmailInvoices": "請求書の代替メール",
+    "alternateEmailAbuse": "不正使用報告の代替メール",
+    "updateInfo": "情報を更新"
+  }
+}

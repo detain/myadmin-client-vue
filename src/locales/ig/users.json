@@ -1,0 +1,12 @@
+{
+    "title": "Ndị Ọrụ",
+    "addUser": "Tinye Onye Ọrụ",
+    "editUser": "Dezie Onye Ọrụ",
+    "firstName": "Aha Mbụ",
+    "lastName": "Aha Ikpeazụ",
+    "username": "Aha Njirimara",
+    "password": "Paswọọdụ",
+    "keepSamePassword": "Hapụ ọcha iji nọ na otu paswọọdụ",
+    "errorLoading": "Njehie n'ibudata ndị ọrụ:",
+    "errorLoadingUser": "Njehie n'ibudata onye ọrụ:"
+}

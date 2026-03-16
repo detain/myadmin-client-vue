@@ -1,0 +1,12 @@
+{
+  "title": "Vartotojai",
+  "addUser": "Pridėti vartotoją",
+  "editUser": "Redaguoti vartotoją",
+  "firstName": "Vardas",
+  "lastName": "Pavardė",
+  "username": "Vartotojo vardas",
+  "password": "Slaptažodis",
+  "keepSamePassword": "Palikite tuščią, kad išlaikytumėte tą patį slaptažodį",
+  "errorLoading": "Klaida kraunant vartotojus:",
+  "errorLoadingUser": "Klaida kraunant vartotoją:"
+}

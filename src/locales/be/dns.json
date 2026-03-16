@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Менеджар",
+        "addDomain": "Дадаць дамен",
+        "deleteDomain": "Выдаліць дамен",
+        "domainName": "Назва дамена",
+        "dnsServers": "DNS Серверы",
+        "confirmDelete": "Вы ўпэўнены, што хочаце выдаліць гэты дамен?",
+        "noDomains": "Дамены не знойдзены"
+    },
+    "editor": {
+        "title": "Рэдактар DNS",
+        "addRecord": "Дадаць запіс",
+        "deleteRecord": "Выдаліць запіс",
+        "editRecord": "Рэдагаваць запіс",
+        "recordType": "Тып запісу",
+        "hostname": "Імя хоста",
+        "address": "Адрас",
+        "distance": "Адлегласць",
+        "weight": "Вага",
+        "port": "Порт",
+        "ttl": "TTL",
+        "actions": "Дзеянні",
+        "confirmDelete": "Вы ўпэўнены, што хочаце выдаліць гэты запіс?"
+    }
+}

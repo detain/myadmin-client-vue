@@ -1,0 +1,64 @@
+{
+  "list": {
+    "pageTitle": "ドメイン登録一覧",
+    "orderTitle": "ドメイン登録を注文",
+    "domainName": "ドメイン名",
+    "domainExpirationDate": "ドメイン有効期限",
+    "active": "アクティブ",
+    "pending": "保留中",
+    "expired": "期限切れ",
+    "all": "すべて"
+  },
+  "view": {
+    "pageTitle": "ドメインを表示 - {hostname}",
+    "package": "パッケージ",
+    "billing": "請求",
+    "whoisPrivacy": "Whois プライバシー",
+    "nameservers": "ネームサーバー",
+    "contactInformation": "連絡先情報",
+    "emailSent": "メール送信済み",
+    "welcomeEmailResent": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+  },
+  "order": {
+    "pageTitle": "ドメインを注文",
+    "findDomain": "ドメインを検索して可用性を確認してください。",
+    "available": "はい！ドメイン {domain} は利用可能です！{cost} で登録できます。更新費用は {renewal} になります。",
+    "taken": "申し訳ありません！ドメイン {domain} はすでに使用されています！",
+    "registerDomain": "ドメインを登録 ({hostname})",
+    "contactInformation": "連絡先情報",
+    "goBack": "戻る",
+    "continue": "続ける",
+    "total": "合計",
+    "agreeCheckbox": "上記の条件を読み、同意します。",
+    "placeOrder": "注文を確定"
+  },
+  "nameservers": {
+    "title": "ドメインネームサーバー",
+    "nameservers": "ネームサーバー",
+    "hostname": "ホスト名",
+    "ipAddress": "IP アドレス",
+    "deleteConfirm": "ドメインのネームサーバーを削除しようとしています。",
+    "yesDeleteIt": "はい、削除します"
+  },
+  "whois": {
+    "title": "Whois プライバシー",
+    "currentlyEnabled": "{hostname} の Whois プライバシーは現在有効です。",
+    "disableAndCancel": "Whois プライバシーを無効化してキャンセル",
+    "orderSuccess": "Whois プライバシーの注文が正常に完了しました！",
+    "whoisEnabled": "Whois プライバシーが有効になりました。",
+    "whoisDisabled": "Whois プライバシーが無効化されキャンセルされました。"
+  },
+  "lock": {
+    "title": "ドメインロック/ロック解除",
+    "lockIt": "はい、ロックします。",
+    "unlockIt": "はい、ロック解除します。"
+  },
+  "renew": {
+    "title": "更新",
+    "domain": "ドメイン",
+    "expiryDate": "有効期限",
+    "renewCost": "更新費用",
+    "totalCost": "合計費用",
+    "goToPayment": "支払いへ"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Benotzer",
+  "addUser": "Benotzer dobäisetzen",
+  "editUser": "Benotzer editéieren",
+  "firstName": "Virnumm",
+  "lastName": "Familljennumm",
+  "username": "Benotzernumm",
+  "password": "Passwuert",
+  "keepSamePassword": "Eidel loossen fir dat selwecht Passwuert ze behalen",
+  "errorLoading": "Fehler beim Lueden vun de Benotzer:",
+  "errorLoadingUser": "Fehler beim Lueden vum Benotzer:"
+}

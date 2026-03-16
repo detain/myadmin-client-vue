@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "Elenco VPS",
+    "orderVps": "Ordina VPS"
+  },
+  "view": {
+    "title": "Visualizza VPS {id}",
+    "package": "Pacchetto",
+    "billing": "Fatturazione",
+    "billed": "fatturato",
+    "vpsStatus": "Stato VPS è:",
+    "hostServer": "Server Host:",
+    "nextInvoiceDate": "Data Prossima Fattura:",
+    "vpsInformation": "Informazioni VPS",
+    "powerStatus": "Stato Alimentazione è:",
+    "selectAction": "Seleziona Azione",
+    "disk": "Disco",
+    "totalSpace": "Spazio Totale:",
+    "usedSpace": "Spazio Usato:",
+    "remainingSpace": "Spazio Rimanente:",
+    "systemInformation": "Informazioni Sistema",
+    "memory": "Memoria:",
+    "cpuCores": "Core CPU:",
+    "os": "OS:",
+    "links": "Link",
+    "updateComment": "Aggiorna Commento",
+    "saveChanges": "Salva modifiche",
+    "emailSent": "Email Inviata",
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+  },
+  "order": {
+    "title": "Ordina VPS",
+    "osDistribution": "Distribuzione OS",
+    "osVersion": "Versione OS",
+    "hostname": "Hostname",
+    "rootPassword": "Password Root",
+    "couponCode": "Codice Coupon",
+    "continue": "Continua",
+    "orderSummary": "Riepilogo Ordine",
+    "total": "Totale",
+    "tosAgree": "Ho letto i termini sopra e accetto.",
+    "placeOrder": "Effettua Ordine"
+  },
+  "changeHostname": {
+    "title": "Cambia Hostname VPS",
+    "existingHostname": "Hostname Esistente",
+    "newHostname": "Nuovo Hostname",
+    "updateHostname": "Aggiorna Hostname"
+  },
+  "changeRootPassword": {
+    "title": "Cambia Password Root VPS",
+    "newPassword": "Nuova Password:",
+    "confirmPassword": "Conferma Password:",
+    "changePassword": "Cambia Password",
+    "passwordMismatch": "Password e Conferma Password non corrispondono"
+  },
+  "reinstallOs": {
+    "title": "Reinstalla OS",
+    "importantNote1": "La reinstallazione del sistema operativo eliminerà tutti i dati.",
+    "importantNote2": "Prima di reinstallare il sistema operativo, esegui un backup.",
+    "osDistribution": "Distribuzione Sistema Operativo",
+    "confirmReinstallButton": "Conferma Reinstallazione OS"
+  },
+  "common": {
+    "goBack": "Torna Indietro",
+    "back": "Indietro",
+    "pleaseWait": "Attendere prego!",
+    "success": "Successo{text}",
+    "gotError": "Errore ricevuto {error}"
+  }
+}

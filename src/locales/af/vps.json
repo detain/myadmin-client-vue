@@ -1,0 +1,75 @@
+{
+    "list": {
+        "title": "VPS Lys",
+        "orderVps": "Bestel VPS"
+    },
+    "view": {
+        "title": "Bekyk VPS {id}",
+        "package": "Pakket",
+        "billing": "Fakturering",
+        "billed": "gefaktureer",
+        "vpsStatus": "VPS Status is:",
+        "hostServer": "Gasheer Bediener:",
+        "nextInvoiceDate": "Volgende Faktuurdatum:",
+        "vpsInformation": "VPS Inligting",
+        "powerStatus": "Krag Status is:",
+        "selectAction": "Kies Aksie",
+        "comment": "Kommentaar:",
+        "disk": "Skyf",
+        "totalSpace": "Totale Spasie:",
+        "usedSpace": "Gebruikte Spasie:",
+        "remainingSpace": "Oorblywende Spasie:",
+        "systemInformation": "Stelsel Inligting",
+        "memory": "Geheue:",
+        "cpuCores": "SVE Kerne:",
+        "os": "OS:",
+        "links": "Skakels",
+        "updateComment": "Opdateer Kommentaar",
+        "saveChanges": "Stoor wysigings",
+        "emailSent": "E-pos Gestuur",
+        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
+    },
+    "order": {
+        "title": "Bestel VPS",
+        "osDistribution": "OS Verspreiding",
+        "osVersion": "OS Weergawe",
+        "hostname": "Gasheernaam",
+        "rootPassword": "Wortel Wagwoord",
+        "couponCode": "Koepon Kode",
+        "continue": "Gaan Voort",
+        "orderSummary": "Bestelling Opsomming",
+        "total": "Totaal",
+        "agreeToTerms": "Stem saam met die aanbodvoorwaardes",
+        "tosAgree": "Ek het die bostaande voorwaardes gelees en ek stem saam.",
+        "placeOrder": "Plaas Bestelling"
+    },
+    "changeHostname": {
+        "title": "Verander VPS Gasheernaam",
+        "existingHostname": "Bestaande Gasheernaam",
+        "newHostname": "Nuwe Gasheernaam",
+        "updateHostname": "Opdateer Gasheernaam"
+    },
+    "changeRootPassword": {
+        "title": "Verander VPS Wortel Wagwoord",
+        "newPassword": "Nuwe Wagwoord:",
+        "confirmPassword": "Bevestig Wagwoord:",
+        "changePassword": "Verander Wagwoord",
+        "passwordMismatch": "Wagwoord en Bevestig Wagwoord stem nie ooreen nie"
+    },
+    "reinstallOs": {
+        "title": "Herinstalleer OS",
+        "importantNote1": "Die herinstallasie van die bedryfstelsel sal alle data uitvee.",
+        "importantNote2": "Voordat jy die bedryfstelsel herinstalleer, maak asseblief 'n rugsteun.",
+        "osDistribution": "Bedryfstelsel Verspreiding",
+        "newPassword": "Nuwe Wagwoord",
+        "confirmPassword": "Bevestig Wagwoord",
+        "confirmReinstallButton": "Bevestig Herinstalleer OS"
+    },
+    "common": {
+        "goBack": "Gaan Terug",
+        "back": "Terug",
+        "pleaseWait": "Wag asseblief!",
+        "success": "Sukses{text}",
+        "gotError": "Fout ontvang {error}"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS مدیر",
+        "addDomain": "ډومین اضافه کړئ",
+        "deleteDomain": "ډومین ړنګ کړئ",
+        "domainName": "د ډومین نوم",
+        "dnsServers": "DNS سرورونه",
+        "confirmDelete": "ایا تاسو ډاډه یاست چې دا ډومین ړنګول غواړئ؟",
+        "noDomains": "هیڅ ډومینونه ونه موندل شو"
+    },
+    "editor": {
+        "title": "DNS ایډیټر",
+        "addRecord": "ریکارډ اضافه کړئ",
+        "deleteRecord": "ریکارډ ړنګ کړئ",
+        "editRecord": "ریکارډ سمون کړئ",
+        "recordType": "د ریکارډ ډول",
+        "hostname": "د کوربه نوم",
+        "address": "پته",
+        "distance": "واټن",
+        "weight": "وزن",
+        "port": "پورټ",
+        "ttl": "TTL",
+        "actions": "عملونه",
+        "confirmDelete": "ایا تاسو ډاډه یاست چې دا ریکارډ ړنګول غواړئ؟"
+    }
+}

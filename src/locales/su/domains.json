@@ -1,0 +1,34 @@
+{
+  "list": {
+    "pageTitle": "Daptar Registrasi Domain", "orderTitle": "Pesan Registrasi Domain", "domainName": "Ngaran Domain",
+    "domainExpirationDate": "Tanggal Kadaluwarsa Domain", "active": "Aktip", "pending": "Nunggu",
+    "expired": "Kadaluwarsa", "all": "Sadayana"
+  },
+  "view": {
+    "pageTitle": "Tempo Domain - {hostname}", "package": "Paket", "billing": "Tagihan",
+    "whoisPrivacy": "Privasi Whois", "nameservers": "Server Ngaran", "contactInformation": "Inpo Kontak",
+    "emailSent": "Email Dikirimkeun", "welcomeEmailResent": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+  },
+  "order": {
+    "pageTitle": "Pesan Domain", "findDomain": "Panggihan domain anjeun sareng pariksa kasadiaan.",
+    "available": "Enya! Domain {domain} anjeun sayogi! Anjeun tiasa ngaregisterkeunana ku {cost}. Biaya perpanjangan bakal {renewal}.",
+    "taken": "Hapunten! Domain {domain} anjeun geus diambil!", "registerDomain": "Daptarkeun Domain ({hostname})",
+    "contactInformation": "Inpo Kontak", "goBack": "Balik", "continue": "Teraskeun", "total": "Total",
+    "agreeCheckbox": "Kuring geus maca syarat di luhur sareng satuju.", "placeOrder": "Pasang Pesanan"
+  },
+  "nameservers": {
+    "title": "Server Ngaran Domain", "nameservers": "Server Ngaran", "hostname": "Hostname", "ipAddress": "Alamat IP",
+    "deleteConfirm": "Anjeun bade ngahapus server ngaran domain anjeun.", "yesDeleteIt": "Enya, Hapus"
+  },
+  "whois": {
+    "title": "Privasi Whois", "currentlyEnabled": "Privasi Whois ayeuna diaktipkeun pikeun {hostname}.",
+    "disableAndCancel": "Nonaktipkeun sareng Batalkeun Privasi Whois",
+    "orderSuccess": "Pesanan privasi whois geus dipasang kalawan sukses!",
+    "whoisEnabled": "Privasi Whois ayeuna diaktipkeun.", "whoisDisabled": "Privasi Whois geus dinonaktipkeun sareng dibatalkeun."
+  },
+  "lock": {"title": "Konci/Buka Konci Domain", "lockIt": "Enya, Konci.", "unlockIt": "Enya, Buka Konci."},
+  "renew": {
+    "title": "Perpanjang", "domain": "Domain", "expiryDate": "Tanggal Kadaluwarsa",
+    "renewCost": "Biaya Perpanjangan", "totalCost": "Total Biaya", "goToPayment": "Indit ka Pembayaran"
+  }
+}

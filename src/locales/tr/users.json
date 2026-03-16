@@ -1,0 +1,12 @@
+{
+    "title": "Kullanıcılar",
+    "addUser": "Kullanıcı Ekle",
+    "editUser": "Kullanıcıyı Düzenle",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "username": "Kullanıcı Adı",
+    "password": "Şifre",
+    "keepSamePassword": "Aynı şifreyi korumak için boş bırakın",
+    "errorLoading": "Kullanıcılar yüklenirken hata:",
+    "errorLoadingUser": "Kullanıcı yüklenirken hata:"
+}

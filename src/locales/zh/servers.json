@@ -1,0 +1,5 @@
+{
+    "list": { "title": "独立服务器列表", "orderTitle": "订购服务器注册" },
+    "view": { "title": "查看服务器 {id}", "package": "套餐", "dedicatedServer": "独立服务器", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费：", "statusIs": "状态：", "orderInfo": "订单信息", "orderId": "订单 ID：", "orderedOn": "订购时间：", "links": "链接", "serverInformation": "服务器信息", "networkInformation": "网络信息", "power": "电源", "selectAction": "选择操作", "softReboot": "软重启", "paymentStatus": "支付状态：", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
+    "order": { "title": "订购服务器", "orderDedicatedServer": "订购独立服务器", "orderSummary": "订单摘要", "selectServer": "选择服务器", "serverHostname": "服务器主机名", "rootPassword": "Root 密码", "agreeToTerms": "同意报价条款", "iAgreeToTerms": "我已阅读并同意以上条款。", "placeOrder": "下单", "cpuSelection": "CPU 选择", "driveConfiguration": "硬盘配置", "addDrive": "添加硬盘", "removeDrive": "移除硬盘", "selectMemory": "选择内存", "selectOs": "选择操作系统", "region": "区域", "buyNow": "立即购买", "monthly": "按月", "perMonth": "/月", "confirmOrder": "确认订单" }
+}

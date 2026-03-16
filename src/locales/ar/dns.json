@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "مدير DNS",
+        "addDomain": "إضافة نطاق",
+        "deleteDomain": "حذف النطاق",
+        "domainName": "اسم النطاق",
+        "dnsServers": "خوادم DNS",
+        "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا النطاق؟",
+        "noDomains": "لم يتم العثور على نطاقات"
+    },
+    "editor": {
+        "title": "محرر DNS",
+        "addRecord": "إضافة سجل",
+        "deleteRecord": "حذف السجل",
+        "editRecord": "تعديل السجل",
+        "recordType": "نوع السجل",
+        "hostname": "اسم المضيف",
+        "address": "العنوان",
+        "distance": "المسافة",
+        "weight": "الوزن",
+        "port": "المنفذ",
+        "ttl": "TTL",
+        "actions": "الإجراءات",
+        "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا السجل؟"
+    }
+}

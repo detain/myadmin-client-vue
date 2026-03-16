@@ -1,0 +1,44 @@
+{
+  "title": "Sistema de Afiliados",
+  "breadcrumb": "Afiliado",
+  "attention": "Este programa de afiliados no está destinado para referencias de \"familiares\" o \"clientes\". Por favor lea {faqLink} antes de continuar.",
+  "faqLinkText": "FAQ",
+  "earnPerSale": "¡Gane {amount} por cada nueva venta de cliente!",
+  "knowMore": "Saber Más",
+  "affiliateUrl": "URL de Afiliado",
+  "shareUrl": "Comparte tu URL única de afiliado con amigos",
+  "links": "Enlaces",
+  "salesGraph": "Gráfico de Ventas",
+  "webTrafficGraph": "Gráfico de Tráfico Web",
+  "goBack": "Volver",
+  "back": "Atrás",
+  "exportFailed": "Exportación fallida",
+  "copiedToClipboard": "Copiado al portapapeles.",
+  "signups": {
+    "title": "Registros de Afiliados",
+    "pending": "Pendiente",
+    "paid": "Pagado",
+    "failed": "Fallido",
+    "locked": "Bloqueado",
+    "rejected": "Rechazado",
+    "noRecords": "No se encontraron registros",
+    "columns": {
+      "id": "ID",
+      "service": "Servicio",
+      "signupDate": "Fecha de Registro",
+      "status": "Estado",
+      "paidAmount": "Monto Pagado",
+      "reason": "Motivo"
+    }
+  },
+  "paymentSetup": {
+    "title": "Configuración de Pago",
+    "choosePayment": "Elija qué desea hacer con sus pagos de afiliado",
+    "sendToPaypal": "Enviar Pagos a PayPal",
+    "paypalEmail": "Correo de PayPal"
+  },
+  "tosPage": {
+    "title": "Términos de Servicio",
+    "welcome": "Bienvenido al Programa de Afiliados de InterServer"
+  }
+}

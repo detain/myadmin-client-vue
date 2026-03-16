@@ -1,0 +1,38 @@
+{
+  "list": {
+    "pageTitle": "Домен тіркеулері тізімі", "orderTitle": "Домен тіркеулеріне тапсырыс беру",
+    "domainName": "Домен атауы", "domainExpirationDate": "Домен мерзімі",
+    "active": "Белсенді", "pending": "Күтуде", "expired": "Мерзімі өтті", "all": "Барлығы"
+  },
+  "view": {
+    "pageTitle": "Доменді қарау - {hostname}", "package": "Пакет", "billing": "Есеп айырысу",
+    "whoisPrivacy": "Whois құпиялылығы", "nameservers": "Атаулар серверлері",
+    "contactInformation": "Байланыс ақпараты", "emailSent": "Хат жіберілді",
+    "welcomeEmailResent": "Қош келдіңіз хаты қайта жіберілді. Кіріс жәшігіңізді тексеріңіз."
+  },
+  "order": {
+    "pageTitle": "Домен тапсырыс беру", "findDomain": "Доменіңізді табып, қолжетімділікті тексеріңіз.",
+    "available": "Иә! {domain} домені қолжетімді! Оны {cost} бағасына тіркей аласыз. Жаңарту құны {renewal} болады.",
+    "taken": "Кешіріңіз! {domain} домені алынып қойылған!",
+    "registerDomain": "Доменді тіркеу ({hostname})", "contactInformation": "Байланыс ақпараты",
+    "goBack": "Артқа қайту", "continue": "Жалғастыру", "total": "Жалпы",
+    "agreeCheckbox": "Жоғарыдағы шарттарды оқыдым және келісемін.", "placeOrder": "Тапсырыс беру"
+  },
+  "nameservers": {
+    "title": "Домен атаулар серверлері", "nameservers": "Атаулар серверлері",
+    "hostname": "Хост атауы", "ipAddress": "IP мекенжайы",
+    "deleteConfirm": "Домен атаулар серверін жойып жатырсыз.", "yesDeleteIt": "Иә, жою"
+  },
+  "whois": {
+    "title": "Whois құпиялылығы", "currentlyEnabled": "{hostname} үшін Whois құпиялылығы қазір қосылған.",
+    "disableAndCancel": "Whois құпиялылығын өшіру және болдырмау",
+    "orderSuccess": "Whois құпиялылығы тапсырысы сәтті берілді!",
+    "whoisEnabled": "Whois құпиялылығы қазір қосылды.",
+    "whoisDisabled": "Whois құпиялылығы өшіріліп болдырылмады."
+  },
+  "lock": { "title": "Доменді бекіту/ашу", "lockIt": "Иә, бекіту.", "unlockIt": "Иә, ашу." },
+  "renew": {
+    "title": "Жаңарту", "domain": "Домен", "expiryDate": "Мерзімі",
+    "renewCost": "Жаңарту құны", "totalCost": "Жалпы құн", "goToPayment": "Төлемге өту"
+  }
+}

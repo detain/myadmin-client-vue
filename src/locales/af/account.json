@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Rekening Instellings"
+    },
+    "changePassword": {
+        "title": "Verander Wagwoord",
+        "cardTitle": "Opdateer Wagwoord",
+        "currentPassword": "Huidige Wagwoord",
+        "newPassword": "Nuwe Wagwoord",
+        "confirmPassword": "Bevestig Wagwoord",
+        "updatePassword": "Opdateer Wagwoord"
+    },
+    "changeUsername": {
+        "title": "Verander Gebruikersnaam",
+        "disabled": "Gebruikersnaam veranderings is tydelik gedeaktiveer.",
+        "currentUsername": "Huidige Gebruikersnaam",
+        "newDesiredUsername": "Nuwe Gewenste Gebruikersnaam",
+        "confirmationCode": "Bevestigingskode",
+        "pleaseWait": "Wag asseblief!",
+        "gotError": "Fout ontvang {error}"
+    },
+    "contactInfo": {
+        "title": "Kontakinligting",
+        "cardTitle": "Opdateer Kontakinligting",
+        "headsUp": "Let op!",
+        "headsUpMessage": "Alhoewel hierdie inligting opsioneel is, sal die verskaffing van (akkurate) inligting beide ons interaksies verryk en jou Risiko % Telling verlaag, wat jou vinniger en meer gerieflike toegang tot dele van die webwerf gee (soos om nie 'n kredietkaart te hoef te verifieer nie).",
+        "riskScore": "Risiko % Telling",
+        "personalInformation": "Persoonlike Inligting",
+        "name": "Naam",
+        "namePlaceholder": "Joe Cool",
+        "company": "Maatskappy",
+        "gstinTaxId": "GSTIN Belasting ID",
+        "gstinPlaceholder": "Goedere en Dienste Belastingbetaleridentifikasienommer",
+        "addressLine1": "Adreslyn 1",
+        "addressLine2": "Adreslyn 2",
+        "cityState": "Stad, Provinsie",
+        "city": "Stad",
+        "state": "Provinsie",
+        "country": "Land",
+        "zipcode": "Poskode",
+        "phoneNo": "Telefoonnr",
+        "phoneNumber": "Telefoonnommer",
+        "language": "Taal",
+        "auto": "Outomaties",
+        "currency": "Geldeenheid",
+        "timeZone": "Tydsone",
+        "otherSettings": "Ander Instellings",
+        "disablePasswordResets": "Deaktiveer (Wagwoord Vergeet) Wagwoord Herstel.",
+        "disableInvoiceReminders": "Deaktiveer Faktuur Herinnering E-pos Kennisgewings.",
+        "disableServerInvoiceReminders": "Deaktiveer Bediener Faktuur Herinnering E-pos Kennisgewings.",
+        "disableReinstall": "Deaktiveer Herinstallasie.",
+        "alternateEmailInvoices": "Alternatiewe E-pos vir Fakture",
+        "alternateEmailInvoicesPlaceholder": "Alternatiewe e-posadres vir die stuur van fakture",
+        "alternateEmailAbuse": "Alternatiewe E-pos vir Misbruikverslae",
+        "updateInfo": "Opdateer Inligting"
+    }
+}

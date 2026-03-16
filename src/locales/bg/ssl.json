@@ -1,0 +1,6 @@
+{
+    "list": { "title": "Списък с SSL сертификати", "orderTitle": "Поръчка на SSL регистрации" },
+    "view": { "title": "Преглед на SSL {id}", "package": "Пакет", "nextInvoiceDate": "Дата на следваща фактура:", "billing": "Фактуриране", "billed": "фактурирано:", "statusIs": "Статусът е:", "orderInfo": "Информация за поръчката", "certificateInfo": "Информация за сертификата", "links": "Връзки", "emailSent": "Имейлът е изпратен", "emailSentMessage": "Приветственият имейл е изпратен отново. Проверете пощата си." },
+    "order": { "title": "Поръчка на SSL" },
+    "changeApproverEmail": { "title": "Промяна на имейл на одобряващия", "selectApproverEmail": "Изберете имейл на одобряващия" }
+}

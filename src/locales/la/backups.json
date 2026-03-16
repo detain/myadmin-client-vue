@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lista Repositorii / Copiarum",
+        "orderTitle": "Ordina Inscriptiones Copiarum"
+    },
+    "view": {
+        "title": "Vide Copiam {id}",
+        "package": "Fasciculus",
+        "nextInvoiceDate": "Dies Rationis Proximae:",
+        "billing": "Ratio",
+        "billed": "Computatum:",
+        "statusIs": "Status est:",
+        "hostServer": "Server Hospes",
+        "links": "Nexus",
+        "welcomeEmailConfirm": "Esne certus te velle epistulam salutationis remittere?",
+        "emailSent": "Epistula Missa",
+        "emailSentMessage": "Epistula salutationis remissa est. Inspice cubiculum tuum."
+    },
+    "order": {
+        "title": "Ordina Repositorium"
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "list": {
+        "title": "VPS Listesi",
+        "orderVps": "VPS Siparişi"
+    },
+    "view": {
+        "title": "VPS {id} Görüntüle",
+        "package": "Paket",
+        "billing": "Faturalama",
+        "billed": "faturalandı",
+        "vpsStatus": "VPS Durumu:",
+        "hostServer": "Host Sunucu:",
+        "nextInvoiceDate": "Sonraki Fatura Tarihi:",
+        "vpsInformation": "VPS Bilgileri",
+        "powerStatus": "Güç Durumu:",
+        "selectAction": "İşlem Seçin",
+        "disk": "Disk",
+        "totalSpace": "Toplam Alan:",
+        "usedSpace": "Kullanılan Alan:",
+        "remainingSpace": "Kalan Alan:",
+        "systemInformation": "Sistem Bilgileri",
+        "memory": "Bellek:",
+        "cpuCores": "CPU Çekirdekleri:",
+        "os": "İşletim Sistemi:",
+        "links": "Bağlantılar",
+        "updateComment": "Yorumu Güncelle",
+        "saveChanges": "Değişiklikleri Kaydet",
+        "emailSent": "E-posta Gönderildi",
+        "emailSentMessage": "Hoş geldiniz e-postası yeniden gönderildi. Gelen kutunuzu kontrol edin."
+    },
+    "order": {
+        "title": "VPS Siparişi",
+        "osDistribution": "İşletim Sistemi Dağıtımı",
+        "osVersion": "İşletim Sistemi Sürümü",
+        "hostname": "Ana Makine Adı",
+        "rootPassword": "Root Şifresi",
+        "couponCode": "Kupon Kodu",
+        "continue": "Devam Et",
+        "orderSummary": "Sipariş Özeti",
+        "total": "Toplam",
+        "tosAgree": "Yukarıdaki koşulları okudum ve kabul ediyorum.",
+        "placeOrder": "Sipariş Ver"
+    },
+    "changeHostname": {
+        "title": "VPS Ana Makine Adını Değiştir",
+        "existingHostname": "Mevcut Ana Makine Adı",
+        "newHostname": "Yeni Ana Makine Adı",
+        "updateHostname": "Ana Makine Adını Güncelle"
+    },
+    "changeRootPassword": {
+        "title": "VPS Root Şifresini Değiştir",
+        "newPassword": "Yeni Şifre:",
+        "confirmPassword": "Şifreyi Onayla:",
+        "changePassword": "Şifreyi Değiştir",
+        "passwordMismatch": "Şifre ve Şifreyi Onayla eşleşmiyor"
+    },
+    "reinstallOs": {
+        "title": "İşletim Sistemini Yeniden Kur",
+        "importantNote1": "İşletim sistemini yeniden kurmak tüm verileri silecektir.",
+        "importantNote2": "İşletim sistemini yeniden kurmadan önce lütfen yedek alın.",
+        "osDistribution": "İşletim Sistemi Dağıtımı",
+        "confirmReinstallButton": "İşletim Sistemi Yeniden Kurulumunu Onayla"
+    },
+    "common": {
+        "goBack": "Geri Dön",
+        "back": "Geri",
+        "pleaseWait": "Lütfen bekleyin!",
+        "success": "Başarılı{text}",
+        "gotError": "Hata alındı {error}"
+    }
+}

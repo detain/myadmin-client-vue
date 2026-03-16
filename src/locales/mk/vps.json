@@ -1,0 +1,71 @@
+{
+  "list": {
+    "title": "Листа на VPS",
+    "orderVps": "Нарачај VPS"
+  },
+  "view": {
+    "title": "Прегледај VPS {id}",
+    "package": "Пакет",
+    "billing": "Наплата",
+    "billed": "наплатено",
+    "vpsStatus": "Статусот на VPS е:",
+    "hostServer": "Host сервер:",
+    "nextInvoiceDate": "Следен датум на фактура:",
+    "vpsInformation": "Информации за VPS",
+    "powerStatus": "Статусот на напојување е:",
+    "selectAction": "Изберете акција",
+    "disk": "Диск",
+    "totalSpace": "Вкупен простор:",
+    "usedSpace": "Искористен простор:",
+    "remainingSpace": "Преостанат простор:",
+    "systemInformation": "Системски информации",
+    "memory": "Меморија:",
+    "cpuCores": "CPU јадра:",
+    "os": "OS:",
+    "links": "Врски",
+    "updateComment": "Ажурирај коментар",
+    "saveChanges": "Зачувај промени",
+    "emailSent": "Е-пошта е испратена",
+    "emailSentMessage": "Добредојде е-поштата беше повторно испратена. Проверете го вашето сандаче."
+  },
+  "order": {
+    "title": "Нарачај VPS",
+    "osDistribution": "OS дистрибуција",
+    "osVersion": "OS верзија",
+    "hostname": "Hostname",
+    "rootPassword": "Root лозинка",
+    "couponCode": "Код на купон",
+    "continue": "Продолжи",
+    "orderSummary": "Резиме на нарачката",
+    "total": "Вкупно",
+    "tosAgree": "Ги прочитав горенаведените услови и се согласувам.",
+    "placeOrder": "Постави нарачка"
+  },
+  "changeHostname": {
+    "title": "Промени VPS hostname",
+    "existingHostname": "Постоечки hostname",
+    "newHostname": "Нов hostname",
+    "updateHostname": "Ажурирај hostname"
+  },
+  "changeRootPassword": {
+    "title": "Промени VPS root лозинка",
+    "newPassword": "Нова лозинка:",
+    "confirmPassword": "Потврди лозинка:",
+    "changePassword": "Промени лозинка",
+    "passwordMismatch": "Лозинката и потврдата на лозинката не се совпаднуваат"
+  },
+  "reinstallOs": {
+    "title": "Реинсталирај OS",
+    "importantNote1": "Реинсталирањето на оперативниот систем ќе ги избрише сите податоци.",
+    "importantNote2": "Пред реинсталирањето на оперативниот систем, направете резервна копија.",
+    "osDistribution": "Дистрибуција на оперативниот систем",
+    "confirmReinstallButton": "Потврди реинсталација на OS"
+  },
+  "common": {
+    "goBack": "Врати се",
+    "back": "Назад",
+    "pleaseWait": "Ве молиме почекајте!",
+    "success": "Успех{text}",
+    "gotError": "Се случи грешка {error}"
+  }
+}
