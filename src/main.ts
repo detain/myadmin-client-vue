@@ -108,7 +108,7 @@ import 'admin-lte/dist/js/adminlte.js';
 import './assets/css/admin_darkmode.css';
 
 const app = createApp(App);
-app.component('FontAwesomeIcon', FontAwesomeIcon);
+app.component('font-awesome-icon', FontAwesomeIcon);
 const pinia = createPinia();
 const head = createHead();
 app.use(pinia);
