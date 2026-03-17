@@ -13,7 +13,8 @@
     "floatingIp": "Floating IP",
     "links": "Nuorodos",
     "emailSent": "El. laiškas išsiųstas",
-    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
+    "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
   },
   "order": {
     "title": "Užsakyti Floating IP"

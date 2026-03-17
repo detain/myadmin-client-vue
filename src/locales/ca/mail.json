@@ -1,11 +1,49 @@
 {
-    "list": { "title": "Llista de serveis de correu", "orderTitle": "Comandar registres de correu" },
-    "view": { "title": "Veure correu {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat:", "statusIs": "L'estat és:", "mailApi": "API de correu", "usageCount": "Comptador d'ús:", "links": "Enllaços", "connectionInfo": "Informació de connexió", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
-    "order": { "title": "Comandar correu" },
-    "alerts": { "title": "Alertes", "addAlert": "Afegir alerta", "editAlert": "Editar alerta", "noAlerts": "No s'han trobat alertes" },
-    "delist": { "title": "Eliminar de la llista", "blockedEmails": "Correus electrònics bloquejats" },
-    "denyRules": { "title": "Regles de denegació", "addRule": "Afegir regla", "noRules": "No s'han trobat regles de denegació" },
-    "logs": { "title": "Registres", "searchLogs": "Cercar registres" },
-    "stats": { "title": "Estadístiques" },
-    "deliverability": { "title": "Lliurabilitat" }
+  "list": {
+    "title": "Llista de serveis de correu",
+    "orderTitle": "Comandar registres de correu"
+  },
+  "view": {
+    "title": "Veure correu {id}",
+    "package": "Paquet",
+    "nextInvoiceDate": "Data de la pròxima factura:",
+    "billing": "Facturació",
+    "billed": "facturat:",
+    "statusIs": "L'estat és:",
+    "mailApi": "API de correu",
+    "usageCount": "Comptador d'ús:",
+    "links": "Enllaços",
+    "connectionInfo": "Informació de connexió",
+    "emailSent": "Correu electrònic enviat",
+    "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada.",
+    "welcomeEmailConfirm": "Esteu segur que voleu tornar a enviar el correu electrònic de benvinguda?"
+  },
+  "order": {
+    "title": "Comandar correu"
+  },
+  "alerts": {
+    "title": "Alertes",
+    "addAlert": "Afegir alerta",
+    "editAlert": "Editar alerta",
+    "noAlerts": "No s'han trobat alertes"
+  },
+  "delist": {
+    "title": "Eliminar de la llista",
+    "blockedEmails": "Correus electrònics bloquejats"
+  },
+  "denyRules": {
+    "title": "Regles de denegació",
+    "addRule": "Afegir regla",
+    "noRules": "No s'han trobat regles de denegació"
+  },
+  "logs": {
+    "title": "Registres",
+    "searchLogs": "Cercar registres"
+  },
+  "stats": {
+    "title": "Estadístiques"
+  },
+  "deliverability": {
+    "title": "Lliurabilitat"
+  }
 }

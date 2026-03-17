@@ -1,1 +1,49 @@
-{ "list": { "title": "Meiliteenuste loend", "orderTitle": "Telli meili registreeringud" }, "view": { "title": "Vaata meili {id}", "package": "Pakett", "nextInvoiceDate": "Järgmise arve kuupäev:", "billing": "Arveldus", "billed": "arveldatud:", "statusIs": "Olek on:", "mailApi": "Meili API", "usageCount": "Kasutuskord:", "links": "Lingid", "connectionInfo": "Ühenduse teave", "emailSent": "E-post saadetud", "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti." }, "order": { "title": "Telli meil" }, "alerts": { "title": "Hoiatused", "addAlert": "Lisa hoiatus", "editAlert": "Muuda hoiatust", "noAlerts": "Hoiatusi ei leitud" }, "delist": { "title": "Eemaldamine loendist", "blockedEmails": "Blokeeritud meilid" }, "denyRules": { "title": "Keelamisreeglid", "addRule": "Lisa reegel", "noRules": "Keelamisreegleid ei leitud" }, "logs": { "title": "Logid", "searchLogs": "Otsi logisid" }, "stats": { "title": "Statistika" }, "deliverability": { "title": "Kohaletoimetamine" } }
+{
+  "list": {
+    "title": "Meiliteenuste loend",
+    "orderTitle": "Telli meili registreeringud"
+  },
+  "view": {
+    "title": "Vaata meili {id}",
+    "package": "Pakett",
+    "nextInvoiceDate": "Järgmise arve kuupäev:",
+    "billing": "Arveldus",
+    "billed": "arveldatud:",
+    "statusIs": "Olek on:",
+    "mailApi": "Meili API",
+    "usageCount": "Kasutuskord:",
+    "links": "Lingid",
+    "connectionInfo": "Ühenduse teave",
+    "emailSent": "E-post saadetud",
+    "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti.",
+    "welcomeEmailConfirm": "Kas olete kindel, et soovite tervitusmeili uuesti saata?"
+  },
+  "order": {
+    "title": "Telli meil"
+  },
+  "alerts": {
+    "title": "Hoiatused",
+    "addAlert": "Lisa hoiatus",
+    "editAlert": "Muuda hoiatust",
+    "noAlerts": "Hoiatusi ei leitud"
+  },
+  "delist": {
+    "title": "Eemaldamine loendist",
+    "blockedEmails": "Blokeeritud meilid"
+  },
+  "denyRules": {
+    "title": "Keelamisreeglid",
+    "addRule": "Lisa reegel",
+    "noRules": "Keelamisreegleid ei leitud"
+  },
+  "logs": {
+    "title": "Logid",
+    "searchLogs": "Otsi logisid"
+  },
+  "stats": {
+    "title": "Statistika"
+  },
+  "deliverability": {
+    "title": "Kohaletoimetamine"
+  }
+}

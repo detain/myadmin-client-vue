@@ -20,7 +20,10 @@
     "destinationIp": "Mērķa IP",
     "destinationPort": "Mērķa ports",
     "noFiltersFound": "Filtri nav atrasti!",
-    "deleteFilterConfirm": "Vai tiešām vēlaties dzēst šo filtru?"
+    "deleteFilterConfirm": "Vai tiešām vēlaties dzēst šo filtru?",
+    "selectFilterType": "Izvēlēties filtra tipu",
+    "unableToCreateFilter": "Pašlaik nevar izveidot filtru.",
+    "unableToDeleteFilter": "Pašlaik nevar dzēst filtru."
   },
   "firewallRules": {
     "title": "Ugunsmūra noteikumi",
@@ -31,7 +34,14 @@
     "block": "Bloķēt",
     "whitelist": "Baltais saraksts",
     "noRulesFound": "Noteikumi nav atrasti!",
-    "deleteRuleConfirm": "Vai tiešām vēlaties dzēst šo noteikumu?"
+    "deleteRuleConfirm": "Vai tiešām vēlaties dzēst šo noteikumu?",
+    "createNew": "Izveidot jaunu",
+    "destinationPort": "Galamērķa ports",
+    "sourcePort": "Avota ports",
+    "xdpAction": "XDP darbība",
+    "ipRequired": "IP adrese ir obligāta",
+    "unableToCreateRule": "Pašlaik nevar izveidot ugunsmūra kārtulu.",
+    "unableToDeleteRule": "Pašlaik nevar dzēst ugunsmūra kārtulu."
   },
   "geoFirewallRules": {
     "title": "Ģeo ugunsmūra noteikumi",
@@ -43,6 +53,13 @@
     "block": "Bloķēt",
     "whitelist": "Baltais saraksts",
     "noRulesFound": "Noteikumi nav atrasti!",
-    "deleteGeoRuleConfirm": "Vai tiešām vēlaties dzēst šo ģeo noteikumu?"
+    "deleteGeoRuleConfirm": "Vai tiešām vēlaties dzēst šo ģeo noteikumu?",
+    "createNew": "Izveidot jaunu",
+    "destinationPort": "Galamērķa ports",
+    "xdpAction": "XDP darbība",
+    "portNo": "Porta nr.",
+    "asn": "ASN",
+    "unableToCreateRule": "Pašlaik nevar izveidot ugunsmūra kārtulu.",
+    "unableToDeleteRule": "Pašlaik nevar dzēst ģeo ugunsmūra kārtulu."
   }
 }

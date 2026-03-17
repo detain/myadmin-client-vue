@@ -1,1 +1,57 @@
-{ "settings": { "title": "Konto seaded" }, "changePassword": { "title": "Muuda parooli", "cardTitle": "Uuenda parool", "currentPassword": "Praegune parool", "newPassword": "Uus parool", "confirmPassword": "Kinnita parool", "updatePassword": "Uuenda parool" }, "changeUsername": { "title": "Muuda kasutajanime", "disabled": "Kasutajanime muutmine on ajutiselt keelatud.", "currentUsername": "Praegune kasutajanimi", "newDesiredUsername": "Soovitud uus kasutajanimi", "confirmationCode": "Kinnituskood", "pleaseWait": "Palun oodake!", "gotError": "Tekkis viga {error}" }, "contactInfo": { "title": "Kontaktandmed", "cardTitle": "Uuenda kontaktandmed", "headsUp": "Tähelepanu!", "headsUpMessage": "Kuigi see teave on vabatahtlik, aitab (täpse) teabe esitamine rikastada meie suhtlust ja langetada teie riskiprotsendi skoori.", "riskScore": "Riski % skoor", "personalInformation": "Isikuandmed", "name": "Nimi", "company": "Ettevõte", "addressLine1": "Aadressi rida 1", "addressLine2": "Aadressi rida 2", "city": "Linn", "state": "Maakond", "country": "Riik", "zipcode": "Sihtnumber", "phoneNumber": "Telefoninumber", "language": "Keel", "auto": "Automaatne", "currency": "Valuuta", "timeZone": "Ajavöönd", "otherSettings": "Muud seaded", "disablePasswordResets": "Keela (unustasid parooli) parooli lähtestamine.", "disableInvoiceReminders": "Keela arve meeldetuletuse e-posti teavitused.", "alternateEmailInvoices": "Alternatiivne e-post arvete jaoks", "alternateEmailAbuse": "Alternatiivne e-post kuritarvituse aruannete jaoks", "updateInfo": "Uuenda andmed" } }
+{
+  "settings": {
+    "title": "Konto seaded"
+  },
+  "changePassword": {
+    "title": "Muuda parooli",
+    "cardTitle": "Uuenda parool",
+    "currentPassword": "Praegune parool",
+    "newPassword": "Uus parool",
+    "confirmPassword": "Kinnita parool",
+    "updatePassword": "Uuenda parool"
+  },
+  "changeUsername": {
+    "title": "Muuda kasutajanime",
+    "disabled": "Kasutajanime muutmine on ajutiselt keelatud.",
+    "currentUsername": "Praegune kasutajanimi",
+    "newDesiredUsername": "Soovitud uus kasutajanimi",
+    "confirmationCode": "Kinnituskood",
+    "pleaseWait": "Palun oodake!",
+    "gotError": "Tekkis viga {error}"
+  },
+  "contactInfo": {
+    "title": "Kontaktandmed",
+    "cardTitle": "Uuenda kontaktandmed",
+    "headsUp": "Tähelepanu!",
+    "headsUpMessage": "Kuigi see teave on vabatahtlik, aitab (täpse) teabe esitamine rikastada meie suhtlust ja langetada teie riskiprotsendi skoori.",
+    "riskScore": "Riski % skoor",
+    "personalInformation": "Isikuandmed",
+    "name": "Nimi",
+    "company": "Ettevõte",
+    "addressLine1": "Aadressi rida 1",
+    "addressLine2": "Aadressi rida 2",
+    "city": "Linn",
+    "state": "Maakond",
+    "country": "Riik",
+    "zipcode": "Sihtnumber",
+    "phoneNumber": "Telefoninumber",
+    "language": "Keel",
+    "auto": "Automaatne",
+    "currency": "Valuuta",
+    "timeZone": "Ajavöönd",
+    "otherSettings": "Muud seaded",
+    "disablePasswordResets": "Keela (unustasid parooli) parooli lähtestamine.",
+    "disableInvoiceReminders": "Keela arve meeldetuletuse e-posti teavitused.",
+    "alternateEmailInvoices": "Alternatiivne e-post arvete jaoks",
+    "alternateEmailAbuse": "Alternatiivne e-post kuritarvituse aruannete jaoks",
+    "updateInfo": "Uuenda andmed",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN maksu ID",
+    "gstinPlaceholder": "Kaupade ja teenuste maksumaksja identifitseerimisnumber",
+    "cityState": "Linn, maakond",
+    "phoneNo": "Telefon nr",
+    "disableServerInvoiceReminders": "Keela serveri arve meeldetuletuse e-posti teavitused.",
+    "disableReinstall": "Keela uuesti installimine.",
+    "alternateEmailInvoicesPlaceholder": "Alternatiivne e-posti aadress arvete saatmiseks"
+  }
+}

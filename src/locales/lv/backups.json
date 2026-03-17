@@ -13,7 +13,8 @@
     "hostServer": "Resursdatora serveris",
     "links": "Saites",
     "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
   },
   "order": {
     "title": "Pasūtīt krātuvi"

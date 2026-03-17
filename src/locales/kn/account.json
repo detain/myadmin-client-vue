@@ -1,5 +1,7 @@
 {
-  "settings": { "title": "ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು" },
+  "settings": {
+    "title": "ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
+  },
   "changePassword": {
     "title": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಿಸಿ",
     "cardTitle": "ಪಾಸ್‌ವರ್ಡ್ ನವೀಕರಿಸಿ",
@@ -42,6 +44,14 @@
     "disableInvoiceReminders": "ಇನ್‌ವಾಯ್ಸ್ ಜ್ಞಾಪಕ ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.",
     "alternateEmailInvoices": "ಇನ್‌ವಾಯ್ಸ್‌ಗಾಗಿ ಪರ್ಯಾಯ ಇಮೇಲ್",
     "alternateEmailAbuse": "ದುರ್ಬಳಕೆ ವರದಿಗಳಿಗಾಗಿ ಪರ್ಯಾಯ ಇಮೇಲ್",
-    "updateInfo": "ಮಾಹಿತಿ ನವೀಕರಿಸಿ"
+    "updateInfo": "ಮಾಹಿತಿ ನವೀಕರಿಸಿ",
+    "namePlaceholder": "ಜೋ ಕೂಲ್",
+    "gstinTaxId": "GSTIN ತೆರಿಗೆ ಐಡಿ",
+    "gstinPlaceholder": "ಸರಕು ಮತ್ತು ಸೇವಾ ತೆರಿಗೆ ಪಾವತಿದಾರ ಗುರುತಿನ ಸಂಖ್ಯೆ",
+    "cityState": "ನಗರ, ರಾಜ್ಯ",
+    "phoneNo": "ಫೋನ್ ಸಂಖ್ಯೆ",
+    "disableServerInvoiceReminders": "ಸರ್ವರ್ ಇನ್‌ವಾಯ್ಸ್ ರಿಮೈಂಡರ್ ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.",
+    "disableReinstall": "ಮರು-ಸ್ಥಾಪನೆಯನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.",
+    "alternateEmailInvoicesPlaceholder": "ಇನ್‌ವಾಯ್ಸ್‌ಗಳನ್ನು ಕಳುಹಿಸಲು ಪರ್ಯಾಯ ಇಮೇಲ್"
   }
 }

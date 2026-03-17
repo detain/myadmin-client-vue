@@ -13,7 +13,23 @@
     "login": "ログイン",
     "links": "リンク",
     "emailSent": "メール送信済み",
-    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
+    "hostInfo": "ホスト情報",
+    "username": "ユーザー名:",
+    "ip": "IP:",
+    "server": "サーバー:",
+    "notSetYet": "未設定",
+    "types": "タイプ:",
+    "linksLabel": "リンク:",
+    "manualLogin": "手動ログイン",
+    "automaticLogin": "自動ログイン",
+    "clickHere": "こちらをクリック",
+    "defaultNameservers": "デフォルトネームサーバー",
+    "nameservers": "ネームサーバー:",
+    "externalLinks": "外部リンク",
+    "names": "名前:",
+    "websitePreview": "ウェブサイトプレビュー",
+    "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
   },
   "order": {
     "title": "ウェブサイトを注文"
@@ -21,6 +37,46 @@
   "migration": {
     "title": "ウェブサイトを移行",
     "password": "パスワード",
-    "importantNotes": "重要なお知らせ"
+    "importantNotes": "重要なお知らせ",
+    "currentWebHostInfo": "現在のウェブホスト情報",
+    "customerPortalUrl": "顧客ポータルURL",
+    "portalExample": "例：sso.godaddy.com",
+    "registeredUsername": "登録ユーザー名 / メール / ID",
+    "controlPanelUrl": "コントロールパネルURL",
+    "controlPanelExample": "例：yourdomain.com/cpanel",
+    "ftpUsername": "FTP / コントロールパネルユーザー名",
+    "ftpPassword": "FTP / コントロールパネルパスワード",
+    "holdingPageQuestion": "サイトがライブ/高トラフィックの場合、移行中にホールディングページを設定できますか？",
+    "specialRequirementsQuestion": "このサイトにはPHPバージョン / モジュールなどの特別な要件がありますか？",
+    "domainRegistryInfo": "ドメインレジストリ情報",
+    "transferDomainQuestion": "ドメイン名の登録転送もお手伝いしますか？",
+    "updateNameserversQuestion": "データ移行が完了し次第、ネームサーバーを更新しますか？",
+    "domainRegistryPortal": "ドメインレジストリ顧客ポータル",
+    "note1": "このフォームを記入すると、移行を開始するためのサポート部門への新しいチケットが開かれます。",
+    "note2": "遅延を避けるために、できる限り完全かつ正確に入力してください。",
+    "note3": "典型的な移行は48〜72時間以内に完了します。コピーするデータ量が多い場合は時間がかかることがあります。",
+    "note4": "移行中は古いホスティングアカウントがオンラインでアクセス可能な状態である必要があります。そうでないと困難が生じる可能性があります。",
+    "note5": "移行中はサイトの更新を行わないでください。そうでないとデータが新しいホスティングにコピーされない可能性があります。"
+  },
+  "buyIp": {
+    "title": "追加IPアドオンを購入",
+    "existingAddonIps": "既存のアドオンIP",
+    "additionalIp": "追加IP",
+    "monthlyCost": "月額費用（{symbol}）",
+    "costDescription": "ウェブサイトに請求される毎月の費用（{symbol}）",
+    "confirmPurchase": "購入を確認",
+    "confirmMessage": "追加IP費用: {symbol}{cost}/月。追加IPを注文してもよろしいですか？",
+    "placeOrder": "注文を確定",
+    "orderPlaced": "注文完了"
+  },
+  "reverseDns": {
+    "title": "逆引きDNS",
+    "updateReverseDns": "逆引きDNSを更新"
+  },
+  "downloadBackups": {
+    "title": "バックアップをダウンロード",
+    "backup": "バックアップ",
+    "size": "サイズ",
+    "options": "オプション"
   }
 }

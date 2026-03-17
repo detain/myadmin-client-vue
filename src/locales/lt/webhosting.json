@@ -13,7 +13,23 @@
     "login": "Prisijungti",
     "links": "Nuorodos",
     "emailSent": "El. laiškas išsiųstas",
-    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius."
+    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
+    "hostInfo": "Prieglobos informacija",
+    "username": "Vartotojo vardas:",
+    "ip": "IP:",
+    "server": "Serveris:",
+    "notSetYet": "Dar nenustatyta",
+    "types": "Tipai:",
+    "linksLabel": "Nuorodos:",
+    "manualLogin": "Prisijungimas rankiniu būdu",
+    "automaticLogin": "Automatinis prisijungimas",
+    "clickHere": "Spustelėkite čia",
+    "defaultNameservers": "Numatytieji vardų serveriai",
+    "nameservers": "Vardų serveriai:",
+    "externalLinks": "Išorinės nuorodos",
+    "names": "Pavadinimai:",
+    "websitePreview": "Svetainės peržiūra",
+    "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
   },
   "order": {
     "title": "Užsakyti svetainę"
@@ -21,6 +37,46 @@
   "migration": {
     "title": "Perkelti savo svetainę",
     "password": "Slaptažodis",
-    "importantNotes": "Svarbios pastabos"
+    "importantNotes": "Svarbios pastabos",
+    "currentWebHostInfo": "Dabartinio žiniatinklio prieglobos informacija",
+    "customerPortalUrl": "Klientų portalo URL",
+    "portalExample": "Pavyzdžiui: sso.godaddy.com",
+    "registeredUsername": "Registruotas vartotojo vardas / El. paštas / ID",
+    "controlPanelUrl": "Valdymo skydelio URL",
+    "controlPanelExample": "Pavyzdžiui: jusudomenas.com/cpanel",
+    "ftpUsername": "FTP / Valdymo skydelio vartotojo vardas",
+    "ftpPassword": "FTP / Valdymo skydelio slaptažodis",
+    "holdingPageQuestion": "Jei svetainė yra gyva ir didelės apkrovos, ar galime nustatyti laikino laikymo puslapį migrацijos metu?",
+    "specialRequirementsQuestion": "Ar ši svetainė turi specialių reikalavimų, pvz., PHP versija / moduliai?",
+    "domainRegistryInfo": "Domeno registro informacija",
+    "transferDomainQuestion": "Ar norite, kad mes taip pat padėtume perkelti domeno vardo registraciją?",
+    "updateNameserversQuestion": "Ar norite, kad atnaujintume vardų serverius, kai tik baigsime duomenų migraciją?",
+    "domainRegistryPortal": "Domeno registro klientų portalas",
+    "note1": "Užpildžius šią formą bus atidarytas naujas bilietas mūsų palaikymo skyriui pradėti jūsų migraciją.",
+    "note2": "Prašome būti kuo išsamesni ir tikslesni, kad išvengtumėte vėlavimų.",
+    "note3": "Įprasta migracija baigiama per 48–72 valandas. Kartais ilgiau, jei kopijuojamų duomenų kiekis yra didelis.",
+    "note4": "Senoji prieglobos paskyra turi būti veikianti ir pasiekiama atliekant migraciją, kitaip galime susidurti su sunkumais.",
+    "note5": "Prašome neatnaujinti svetainės, kol atliekame migraciją, kitaip tie duomenys gali būti neperkelti į naują prieglobą."
+  },
+  "buyIp": {
+    "title": "Pirkti papildomo IP priedą",
+    "existingAddonIps": "Esami priedo IP",
+    "additionalIp": "Papildomas IP",
+    "monthlyCost": "Mėnesio kaina ({symbol})",
+    "costDescription": "Kaina ({symbol}) kiekvieną mėnesį, kai išrašoma jūsų svetainės sąskaita",
+    "confirmPurchase": "Patvirtinti pirkimą",
+    "confirmMessage": "Papildomo IP kaina: {symbol}{cost}/mėn. Ar tikrai norite užsakyti papildomą IP?",
+    "placeOrder": "Pateikti užsakymą",
+    "orderPlaced": "Užsakymas pateiktas"
+  },
+  "reverseDns": {
+    "title": "Atvirkštinis DNS",
+    "updateReverseDns": "Atnaujinti atvirkštinį DNS"
+  },
+  "downloadBackups": {
+    "title": "Atsisiųsti atsargines kopijas",
+    "backup": "Atsarginė kopija",
+    "size": "Dydis",
+    "options": "Parinktys"
   }
 }

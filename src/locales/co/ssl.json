@@ -1,6 +1,27 @@
 {
-    "list": { "title": "Lista di certificati SSL", "orderTitle": "Ordinate registrazioni SSL" },
-    "view": { "title": "Vede SSL {id}", "package": "Pacchettu", "nextInvoiceDate": "Data di a prossima fattura:", "billing": "Fatturazione", "billed": "fatturatu:", "statusIs": "U statu hè:", "orderInfo": "Infurmazioni di ordine", "certificateInfo": "Infurmazioni di certificatu", "links": "Ligami", "emailSent": "Email mandata", "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella." },
-    "order": { "title": "Ordinate SSL" },
-    "changeApproverEmail": { "title": "Cambià l'email di l'approvatore", "selectApproverEmail": "Sceglite l'email di l'approvatore" }
+  "list": {
+    "title": "Lista di certificati SSL",
+    "orderTitle": "Ordinate registrazioni SSL"
+  },
+  "view": {
+    "title": "Vede SSL {id}",
+    "package": "Pacchettu",
+    "nextInvoiceDate": "Data di a prossima fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturatu:",
+    "statusIs": "U statu hè:",
+    "orderInfo": "Infurmazioni di ordine",
+    "certificateInfo": "Infurmazioni di certificatu",
+    "links": "Ligami",
+    "emailSent": "Email mandata",
+    "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
+    "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
+  },
+  "order": {
+    "title": "Ordinate SSL"
+  },
+  "changeApproverEmail": {
+    "title": "Cambià l'email di l'approvatore",
+    "selectApproverEmail": "Sceglite l'email di l'approvatore"
+  }
 }

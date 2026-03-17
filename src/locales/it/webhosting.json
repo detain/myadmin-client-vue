@@ -13,7 +13,23 @@
     "login": "Accedi",
     "links": "Link",
     "emailSent": "Email Inviata",
-    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
+    "hostInfo": "Informazioni host",
+    "username": "Nome utente:",
+    "ip": "IP:",
+    "server": "Server:",
+    "notSetYet": "Non ancora impostato",
+    "types": "Tipi:",
+    "linksLabel": "Link:",
+    "manualLogin": "Accesso manuale",
+    "automaticLogin": "Accesso automatico",
+    "clickHere": "Clicca qui",
+    "defaultNameservers": "Nameserver predefiniti",
+    "nameservers": "Nameserver:",
+    "externalLinks": "Link esterni",
+    "names": "Nomi:",
+    "websitePreview": "Anteprima sito web",
+    "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
   },
   "order": {
     "title": "Ordina Sito Web"
@@ -21,6 +37,46 @@
   "migration": {
     "title": "Migra il Tuo Sito Web",
     "password": "Password",
-    "importantNotes": "Note Importanti"
+    "importantNotes": "Note Importanti",
+    "currentWebHostInfo": "Informazioni host web attuale",
+    "customerPortalUrl": "URL portale clienti",
+    "portalExample": "Esempio: sso.godaddy.com",
+    "registeredUsername": "Nome utente / Email / ID registrato",
+    "controlPanelUrl": "URL pannello di controllo",
+    "controlPanelExample": "Esempio: yourdomain.com/cpanel",
+    "ftpUsername": "Nome utente FTP / Pannello di controllo",
+    "ftpPassword": "Password FTP / Pannello di controllo",
+    "holdingPageQuestion": "Se il sito è attivo/occupato con traffico elevato, possiamo impostare una pagina di attesa durante la migrazione?",
+    "specialRequirementsQuestion": "Questo sito ha requisiti speciali come versione PHP / moduli?",
+    "domainRegistryInfo": "Informazioni registro dominio",
+    "transferDomainQuestion": "Vuoi anche che ti aiutiamo a trasferire la registrazione del nome di dominio?",
+    "updateNameserversQuestion": "Vuoi che aggiorniamo i nameserver non appena terminiamo la migrazione dei dati?",
+    "domainRegistryPortal": "Portale clienti registro dominio",
+    "note1": "Compilare questo modulo aprirà un nuovo ticket per il nostro reparto supporto per avviare la tua migrazione.",
+    "note2": "Sii il più completo e accurato possibile per evitare ritardi.",
+    "note3": "Una migrazione tipica viene completata entro 48-72 ore.",
+    "note4": "Il vecchio account di hosting deve essere online e accessibile durante la migrazione.",
+    "note5": "Non apportare aggiornamenti al tuo sito durante la migrazione."
+  },
+  "buyIp": {
+    "title": "Acquista add-on IP aggiuntivo",
+    "existingAddonIps": "IP add-on esistenti",
+    "additionalIp": "IP aggiuntivo",
+    "monthlyCost": "Costo mensile ({symbol})",
+    "costDescription": "Costo ({symbol}) ogni mese quando il sito viene fatturato",
+    "confirmPurchase": "Conferma acquisto",
+    "confirmMessage": "Costo IP aggiuntivo: {symbol}{cost}/mese. Sei sicuro di voler ordinare un IP aggiuntivo?",
+    "placeOrder": "Effettua ordine",
+    "orderPlaced": "Ordine effettuato"
+  },
+  "reverseDns": {
+    "title": "DNS inverso",
+    "updateReverseDns": "Aggiorna DNS inverso"
+  },
+  "downloadBackups": {
+    "title": "Scarica backup",
+    "backup": "Backup",
+    "size": "Dimensione",
+    "options": "Opzioni"
   }
 }

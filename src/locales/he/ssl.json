@@ -1,1 +1,27 @@
-{ "list": { "title": "רשימת אישורי SSL", "orderTitle": "הזמן רישומי SSL" }, "view": { "title": "הצג SSL {id}", "package": "חבילה", "nextInvoiceDate": "תאריך חשבונית הבא:", "billing": "חיוב", "billed": "חויב:", "statusIs": "הסטטוס הוא:", "orderInfo": "מידע הזמנה", "certificateInfo": "מידע אישור", "links": "קישורים", "emailSent": "הדואר האלקטרוני נשלח", "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך." }, "order": { "title": "הזמן SSL" }, "changeApproverEmail": { "title": "שנה דואר מאשר", "selectApproverEmail": "בחר דואר מאשר" } }
+{
+  "list": {
+    "title": "רשימת אישורי SSL",
+    "orderTitle": "הזמן רישומי SSL"
+  },
+  "view": {
+    "title": "הצג SSL {id}",
+    "package": "חבילה",
+    "nextInvoiceDate": "תאריך חשבונית הבא:",
+    "billing": "חיוב",
+    "billed": "חויב:",
+    "statusIs": "הסטטוס הוא:",
+    "orderInfo": "מידע הזמנה",
+    "certificateInfo": "מידע אישור",
+    "links": "קישורים",
+    "emailSent": "הדואר האלקטרוני נשלח",
+    "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
+    "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
+  },
+  "order": {
+    "title": "הזמן SSL"
+  },
+  "changeApproverEmail": {
+    "title": "שנה דואר מאשר",
+    "selectApproverEmail": "בחר דואר מאשר"
+  }
+}

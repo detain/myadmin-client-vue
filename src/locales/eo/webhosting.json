@@ -1,1 +1,82 @@
-{ "list": { "title": "Retgastigada Listo", "orderTitle": "Mendi Reteja Registradojn" }, "view": { "title": "Vidi Retejon {id}", "package": "Pakaĵo", "nextInvoiceDate": "Sekva Faktura Dato:", "billing": "Fakturado", "billed": "fakturita", "billingStatusIs": "Fakturada Statuso estas:", "login": "Ensaluti", "links": "Ligiloj", "emailSent": "Retpoŝto Sendita", "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston." }, "order": { "title": "Mendi Retejon" }, "migration": { "title": "Migri Vian Retejon", "password": "Pasvorto", "importantNotes": "Gravaj Notoj" } }
+{
+  "list": {
+    "title": "Retgastigada Listo",
+    "orderTitle": "Mendi Reteja Registradojn"
+  },
+  "view": {
+    "title": "Vidi Retejon {id}",
+    "package": "Pakaĵo",
+    "nextInvoiceDate": "Sekva Faktura Dato:",
+    "billing": "Fakturado",
+    "billed": "fakturita",
+    "billingStatusIs": "Fakturada Statuso estas:",
+    "login": "Ensaluti",
+    "links": "Ligiloj",
+    "emailSent": "Retpoŝto Sendita",
+    "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
+    "hostInfo": "Gastiganta Informo",
+    "username": "Uzantonomo:",
+    "ip": "IP:",
+    "server": "Servilo:",
+    "notSetYet": "Ankoraŭ ne agordita",
+    "types": "Tipoj:",
+    "linksLabel": "Ligiloj:",
+    "manualLogin": "Mana Ensaluto",
+    "automaticLogin": "Aŭtomata Ensaluto",
+    "clickHere": "Klaku Ĉi Tie",
+    "defaultNameservers": "Defaŭltaj Nomserviloj",
+    "nameservers": "Nomserviloj:",
+    "externalLinks": "Eksteraj Ligiloj",
+    "names": "Nomoj:",
+    "websitePreview": "Reteja Antaŭvido",
+    "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
+  },
+  "order": {
+    "title": "Mendi Retejon"
+  },
+  "migration": {
+    "title": "Migri Vian Retejon",
+    "password": "Pasvorto",
+    "importantNotes": "Gravaj Notoj",
+    "currentWebHostInfo": "Nuna Retgastiga Informo",
+    "customerPortalUrl": "Klienta Portala URL",
+    "portalExample": "Ekzemple: sso.godaddy.com",
+    "registeredUsername": "Registrita Uzantonomo / Retpoŝto / ID",
+    "controlPanelUrl": "Kontrolpanela URL",
+    "controlPanelExample": "Ekzemple: yourdomain.com/cpanel",
+    "ftpUsername": "FTP / Kontrolpanela Uzantonomo",
+    "ftpPassword": "FTP / Kontrolpanela Pasvorto",
+    "holdingPageQuestion": "Se la retejo estas aktiva/vigla retejo kun alta trafiko, ĉu ni povas agordi atendpaĝon dum la migrado?",
+    "specialRequirementsQuestion": "Ĉu ĉi tiu retejo havas specialajn postulojn kiel PHP-Versio / Moduloj?",
+    "domainRegistryInfo": "Domajnoregistreja Informo",
+    "transferDomainQuestion": "Ĉu vi volas, ke ni helpu vin transdoni la domajnonomregistradon?",
+    "updateNameserversQuestion": "Ĉu vi volas, ke ni ĝisdatigu la nomservilojn tuj kiam ni finas la datenmigrandon?",
+    "domainRegistryPortal": "Domajnoregistreja Klienta Portalo",
+    "note1": "Plenigi ĉi tiun formularon malfermos novan bileton por nia subtenadepartamento por komenci vian migrandon.",
+    "note2": "Bonvolu esti kiel kompleta kaj preciza kiel ebla por eviti ajnajn prokrastojn.",
+    "note3": "Tipika migrado estas kompletita ene de 48 ĝis 72 horoj. Foje pli longe se la kvanto de datumoj por kopii estas granda.",
+    "note4": "La malnova gastigadkonto devas esti enrete kaj atingebla dum ni faras la migrandon, alie ni eble renkontos malfacilaĵojn.",
+    "note5": "Bonvolu ne fari ajnajn ĝisdatigojn sur via retejo dum ni faras la migrandon, alie tiuj datumoj eble ne estos kopiitaj al la nova gastigado."
+  },
+  "buyIp": {
+    "title": "Aĉeti Aldonan IP-Aldonon",
+    "existingAddonIps": "Ekzistantaj Aldono-IP-oj",
+    "additionalIp": "Aldona IP",
+    "monthlyCost": "Monata Kosto ({symbol})",
+    "costDescription": "Kosto ({symbol}) ĉiun monaton kiam via retejo estas fakturita",
+    "confirmPurchase": "Konfirmi Aĉeton",
+    "confirmMessage": "Aldona IP-kosto: {symbol}{cost}/monato. Ĉu vi certe volas mendi aldonan IP?",
+    "placeOrder": "Metu Mendon",
+    "orderPlaced": "Mendo Metita"
+  },
+  "reverseDns": {
+    "title": "Inversa DNS",
+    "updateReverseDns": "Ĝisdatigi Inversan DNS"
+  },
+  "downloadBackups": {
+    "title": "Elŝuti Rezervkopiojn",
+    "backup": "Rezervkopion",
+    "size": "Grando",
+    "options": "Opcioj"
+  }
+}

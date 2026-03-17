@@ -36,7 +36,23 @@
     "postedOn": "Publicēts:",
     "closeConfirmButton": "Jā, aizvērt to!",
     "ticketClosed2": "Pieteikums aizvērts",
-    "replyPosted": "Atbilde publicēta"
+    "replyPosted": "Atbilde publicēta",
+    "titleSuffix": "Skatīt biļeti",
+    "emailDisabled": "Jūsu e-pasts ({email}) ir atspējots. Lūdzu, sazinieties ar",
+    "support": "ATBALSTU",
+    "ipHelpText": "Ja savienojums nāk no citas IP adreses, lūdzu, mainiet to.",
+    "rootPasswordPlaceholder": "VPS / Dedikēts serveris",
+    "passwordEncrypted": "Paroles tiek glabātas atsevišķā šifrētā datubāzē.",
+    "ticketClosed": "Šī biļete ir slēgta, tādēļ atbildes ir atspējotas. Ja jums joprojām nepieciešama palīdzība, atveriet jaunu biļeti.",
+    "replyPlaceholder": "Detalizēts problēmas apraksts",
+    "replyHint": "Atsevišķu biļešu veidošana jaunām problēmām palīdz mūsu komandai noteikt prioritātes.",
+    "participant": "Dalībnieks",
+    "userLikedReply": "Lietotājam patika jūsu atbilde",
+    "userDislikedReply": "Lietotājam nepatika jūsu atbilde",
+    "email": "E-pasts:",
+    "closeConfirmTitle": "Vai esat pārliecināts?",
+    "closeConfirmText": "Vai vēlaties slēgt šo biļeti?",
+    "ticketSettingsUpdated": "Biļetes iestatījumi atjaunināti"
   },
   "new": {
     "title": "Jauns pieteikums",
@@ -52,6 +68,13 @@
     "sudoUser": "Sudo lietotājs",
     "sudoPassword": "Sudo parole",
     "sshPort": "SSH ports",
-    "termsOfUse": "Lietošanas noteikumi"
+    "termsOfUse": "Lietošanas noteikumi",
+    "subjectPlaceholder": "Tēma",
+    "subjectValidation": "Lūdzu, ievadiet īsu problēmas aprakstu.",
+    "descriptionPlaceholder": "Paldies, ka palīdzat uzturēt vienmērīgu atbalsta sistēmu, iesniedzot vienu pieprasījumu katrai biļetei.",
+    "descriptionValidation": "Lūdzu, ievadiet detalizētu problēmas aprakstu.",
+    "fileNote": "Piezīme: atļauti tikai attēlu faili – gif/jpeg/png veidi.",
+    "allowAccessLabel": "Es atļauju InterServer piekļūt manam serverim un veikt izmaiņas",
+    "accessNote": "Lūdzu, ņemiet vērā: atverot atbalsta pieprasījumu, InterServer var nepieciešama piekļuve, atkļūdošana vai failu modificēšana jūsu kontā. Tas nepieciešams tehniskajam atbalstam."
   }
 }

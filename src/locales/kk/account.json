@@ -1,29 +1,57 @@
 {
-  "settings": { "title": "Аккаунт параметрлері" },
+  "settings": {
+    "title": "Аккаунт параметрлері"
+  },
   "changePassword": {
-    "title": "Құпия сөзді өзгерту", "cardTitle": "Құпия сөзді жаңарту",
-    "currentPassword": "Ағымдағы құпия сөз", "newPassword": "Жаңа құпия сөз",
-    "confirmPassword": "Құпия сөзді растау", "updatePassword": "Құпия сөзді жаңарту"
+    "title": "Құпия сөзді өзгерту",
+    "cardTitle": "Құпия сөзді жаңарту",
+    "currentPassword": "Ағымдағы құпия сөз",
+    "newPassword": "Жаңа құпия сөз",
+    "confirmPassword": "Құпия сөзді растау",
+    "updatePassword": "Құпия сөзді жаңарту"
   },
   "changeUsername": {
     "title": "Пайдаланушы атын өзгерту",
     "disabled": "Пайдаланушы атын өзгерту уақытша өшірілді.",
     "currentUsername": "Ағымдағы пайдаланушы аты",
     "newDesiredUsername": "Жаңа қажетті пайдаланушы аты",
-    "confirmationCode": "Растау коды", "pleaseWait": "Күте тұрыңыз!", "gotError": "Қате алынды {error}"
+    "confirmationCode": "Растау коды",
+    "pleaseWait": "Күте тұрыңыз!",
+    "gotError": "Қате алынды {error}"
   },
   "contactInfo": {
-    "title": "Байланыс ақпараты", "cardTitle": "Байланыс ақпаратын жаңарту",
-    "headsUp": "Назар аударыңыз!", "headsUpMessage": "Бұл ақпарат міндетті болмаса да, дәл ақпарат беру тәуекел % баллын төмендетуге көмектеседі.",
-    "riskScore": "Тәуекел % балл", "personalInformation": "Жеке ақпарат",
-    "name": "Аты", "company": "Компания", "addressLine1": "Мекенжай 1-жол", "addressLine2": "Мекенжай 2-жол",
-    "city": "Қала", "state": "Облыс", "country": "Ел", "zipcode": "Пошта индексі",
-    "phoneNumber": "Телефон нөмірі", "language": "Тіл", "auto": "Автоматты",
-    "currency": "Валюта", "timeZone": "Уақыт белдеуі", "otherSettings": "Басқа параметрлер",
+    "title": "Байланыс ақпараты",
+    "cardTitle": "Байланыс ақпаратын жаңарту",
+    "headsUp": "Назар аударыңыз!",
+    "headsUpMessage": "Бұл ақпарат міндетті болмаса да, дәл ақпарат беру тәуекел % баллын төмендетуге көмектеседі.",
+    "riskScore": "Тәуекел % балл",
+    "personalInformation": "Жеке ақпарат",
+    "name": "Аты",
+    "company": "Компания",
+    "addressLine1": "Мекенжай 1-жол",
+    "addressLine2": "Мекенжай 2-жол",
+    "city": "Қала",
+    "state": "Облыс",
+    "country": "Ел",
+    "zipcode": "Пошта индексі",
+    "phoneNumber": "Телефон нөмірі",
+    "language": "Тіл",
+    "auto": "Автоматты",
+    "currency": "Валюта",
+    "timeZone": "Уақыт белдеуі",
+    "otherSettings": "Басқа параметрлер",
     "disablePasswordResets": "Құпия сөзді қалпына келтіруді өшіру (Құпия сөзді ұмыттыңыз).",
     "disableInvoiceReminders": "Шот еске салу электрондық пошта хабарландыруларын өшіру.",
     "alternateEmailInvoices": "Шоттарға арналған балама электрондық пошта",
     "alternateEmailAbuse": "Теріс пайдалану туралы хабарлауға арналған балама электрондық пошта",
-    "updateInfo": "Ақпаратты жаңарту"
+    "updateInfo": "Ақпаратты жаңарту",
+    "namePlaceholder": "Айдар Беков",
+    "gstinTaxId": "GSTIN салық идентификаторы",
+    "gstinPlaceholder": "Тауарлар мен қызметтерге салық төлеушінің сәйкестендіру нөмірі",
+    "cityState": "Қала, облыс",
+    "phoneNo": "Телефон нөмірі",
+    "disableServerInvoiceReminders": "Сервер шот-фактурасы еске салу электрондық пошта хабарламаларын өшіру.",
+    "disableReinstall": "Қайта орнатуды өшіру.",
+    "alternateEmailInvoicesPlaceholder": "Шот-фактураларды жіберу үшін балама электрондық пошта"
   }
 }

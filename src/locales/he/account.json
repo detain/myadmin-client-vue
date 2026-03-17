@@ -1,1 +1,57 @@
-{ "settings": { "title": "הגדרות חשבון" }, "changePassword": { "title": "שנה סיסמה", "cardTitle": "עדכן סיסמה", "currentPassword": "סיסמה נוכחית", "newPassword": "סיסמה חדשה", "confirmPassword": "אשר סיסמה", "updatePassword": "עדכן סיסמה" }, "changeUsername": { "title": "שנה שם משתמש", "disabled": "שינוי שם משתמש הושהה זמנית.", "currentUsername": "שם משתמש נוכחי", "newDesiredUsername": "שם משתמש חדש רצוי", "confirmationCode": "קוד אישור", "pleaseWait": "אנא המתן!", "gotError": "אירעה שגיאה {error}" }, "contactInfo": { "title": "פרטי יצירת קשר", "cardTitle": "עדכן פרטי יצירת קשר", "headsUp": "שים לב!", "headsUpMessage": "למרות שמידע זה הוא אופציונלי, מתן מידע מדויק יעזור להפחית את % ציון הסיכון שלך.", "riskScore": "% ציון סיכון", "personalInformation": "מידע אישי", "name": "שם", "company": "חברה", "addressLine1": "שורת כתובת 1", "addressLine2": "שורת כתובת 2", "city": "עיר", "state": "מדינה/מחוז", "country": "ארץ", "zipcode": "מיקוד", "phoneNumber": "מספר טלפון", "language": "שפה", "auto": "אוטומטי", "currency": "מטבע", "timeZone": "אזור זמן", "otherSettings": "הגדרות אחרות", "disablePasswordResets": "השבת (שכחת סיסמה) איפוס סיסמה.", "disableInvoiceReminders": "השבת תזכורות דואר אלקטרוני לחשבוניות.", "alternateEmailInvoices": "דואר אלקטרוני חלופי לחשבוניות", "alternateEmailAbuse": "דואר אלקטרוני חלופי לדוחות ניצול לרעה", "updateInfo": "עדכן מידע" } }
+{
+  "settings": {
+    "title": "הגדרות חשבון"
+  },
+  "changePassword": {
+    "title": "שנה סיסמה",
+    "cardTitle": "עדכן סיסמה",
+    "currentPassword": "סיסמה נוכחית",
+    "newPassword": "סיסמה חדשה",
+    "confirmPassword": "אשר סיסמה",
+    "updatePassword": "עדכן סיסמה"
+  },
+  "changeUsername": {
+    "title": "שנה שם משתמש",
+    "disabled": "שינוי שם משתמש הושהה זמנית.",
+    "currentUsername": "שם משתמש נוכחי",
+    "newDesiredUsername": "שם משתמש חדש רצוי",
+    "confirmationCode": "קוד אישור",
+    "pleaseWait": "אנא המתן!",
+    "gotError": "אירעה שגיאה {error}"
+  },
+  "contactInfo": {
+    "title": "פרטי יצירת קשר",
+    "cardTitle": "עדכן פרטי יצירת קשר",
+    "headsUp": "שים לב!",
+    "headsUpMessage": "למרות שמידע זה הוא אופציונלי, מתן מידע מדויק יעזור להפחית את % ציון הסיכון שלך.",
+    "riskScore": "% ציון סיכון",
+    "personalInformation": "מידע אישי",
+    "name": "שם",
+    "company": "חברה",
+    "addressLine1": "שורת כתובת 1",
+    "addressLine2": "שורת כתובת 2",
+    "city": "עיר",
+    "state": "מדינה/מחוז",
+    "country": "ארץ",
+    "zipcode": "מיקוד",
+    "phoneNumber": "מספר טלפון",
+    "language": "שפה",
+    "auto": "אוטומטי",
+    "currency": "מטבע",
+    "timeZone": "אזור זמן",
+    "otherSettings": "הגדרות אחרות",
+    "disablePasswordResets": "השבת (שכחת סיסמה) איפוס סיסמה.",
+    "disableInvoiceReminders": "השבת תזכורות דואר אלקטרוני לחשבוניות.",
+    "alternateEmailInvoices": "דואר אלקטרוני חלופי לחשבוניות",
+    "alternateEmailAbuse": "דואר אלקטרוני חלופי לדוחות ניצול לרעה",
+    "updateInfo": "עדכן מידע",
+    "namePlaceholder": "ג'ו קול",
+    "gstinTaxId": "מזהה מס GSTIN",
+    "gstinPlaceholder": "מספר זיהוי משלם מס סחורות ושירותים",
+    "cityState": "עיר, מדינה",
+    "phoneNo": "מספר טלפון",
+    "disableServerInvoiceReminders": "השבת התראות דוא\"ל לתזכורת חשבונית שרת.",
+    "disableReinstall": "השבת התקנה מחדש.",
+    "alternateEmailInvoicesPlaceholder": "כתובת דוא\"ל חלופית לשליחת חשבוניות"
+  }
+}

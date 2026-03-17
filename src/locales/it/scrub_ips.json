@@ -10,7 +10,7 @@
     "ipFromService": "IP dal servizio"
   },
   "filters": {
-    "title": "Filtri",
+    "title": "Filtri IP",
     "createNew": "Crea Nuovo",
     "createNewFilter": "Crea Nuovo Filtro",
     "filterType": "Tipo Filtro",
@@ -20,10 +20,21 @@
     "destinationIp": "IP di Destinazione",
     "destinationPort": "Porta di Destinazione",
     "noFiltersFound": "Nessun filtro trovato!",
-    "deleteFilterConfirm": "Sei sicuro di voler eliminare questo filtro?"
+    "deleteFilterConfirm": "Sei sicuro di voler eliminare questo filtro?",
+    "addFilter": "Aggiungi filtro",
+    "protocol": "Protocollo",
+    "srcIp": "IP sorgente",
+    "dstIp": "IP destinazione",
+    "srcPort": "Porta sorgente",
+    "dstPort": "Porta destinazione",
+    "action": "Azione",
+    "delete": "Elimina",
+    "selectFilterType": "Seleziona tipo filtro",
+    "unableToCreateFilter": "Impossibile creare il filtro in questo momento.",
+    "unableToDeleteFilter": "Impossibile eliminare il filtro in questo momento."
   },
   "firewallRules": {
-    "title": "Regole Firewall",
+    "title": "Regole firewall",
     "createNewFirewall": "Crea Nuova Regola Firewall",
     "protocol": "Protocollo",
     "destinationIp": "IP di Destinazione",
@@ -31,10 +42,24 @@
     "block": "Blocca",
     "whitelist": "Lista Bianca",
     "noRulesFound": "Nessuna regola trovata!",
-    "deleteRuleConfirm": "Sei sicuro di voler eliminare questa regola?"
+    "deleteRuleConfirm": "Sei sicuro di voler eliminare questa regola?",
+    "addRule": "Aggiungi regola",
+    "srcIp": "IP sorgente",
+    "dstIp": "IP destinazione",
+    "srcPort": "Porta sorgente",
+    "dstPort": "Porta destinazione",
+    "action": "Azione",
+    "delete": "Elimina",
+    "createNew": "Crea nuovo",
+    "destinationPort": "Porta di destinazione",
+    "sourcePort": "Porta sorgente",
+    "xdpAction": "Azione XDP",
+    "ipRequired": "È richiesto un indirizzo IP",
+    "unableToCreateRule": "Impossibile creare la regola firewall in questo momento.",
+    "unableToDeleteRule": "Impossibile eliminare la regola firewall in questo momento."
   },
   "geoFirewallRules": {
-    "title": "Regole Geo Firewall",
+    "title": "Regole firewall geografico",
     "createNewGeoRule": "Crea Nuova Regola Geo Firewall",
     "destinationIp": "IP di Destinazione",
     "sourceCountry": "Paese Sorgente",
@@ -43,6 +68,17 @@
     "block": "Blocca",
     "whitelist": "Lista Bianca",
     "noRulesFound": "Nessuna regola trovata!",
-    "deleteGeoRuleConfirm": "Sei sicuro di voler eliminare questa regola geo?"
+    "deleteGeoRuleConfirm": "Sei sicuro di voler eliminare questa regola geo?",
+    "addRule": "Aggiungi regola",
+    "country": "Paese",
+    "action": "Azione",
+    "delete": "Elimina",
+    "createNew": "Crea nuovo",
+    "destinationPort": "Porta di destinazione",
+    "xdpAction": "Azione XDP",
+    "portNo": "Numero porta",
+    "asn": "ASN",
+    "unableToCreateRule": "Impossibile creare la regola firewall in questo momento.",
+    "unableToDeleteRule": "Impossibile eliminare la regola firewall geografico in questo momento."
   }
 }

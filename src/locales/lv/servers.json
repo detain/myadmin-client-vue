@@ -21,7 +21,17 @@
     "softReboot": "Maigā pārstartēšana",
     "paymentStatus": "Maksājuma statuss:",
     "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+    "unBilled": "Neapmaksāts",
+    "orderedOn": "Pasūtīts:",
+    "moreInfo": "Vairāk informācijas",
+    "cycle": "Cikls",
+    "reset": "Atiestatīt",
+    "on": "Ieslēgts",
+    "off": "Izslēgts",
+    "unknown": "Nezināms",
+    "noLease": "Nav nomas",
+    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
   },
   "order": {
     "title": "Pasūtīt serveri",
@@ -43,6 +53,58 @@
     "buyNow": "Pirkt tagad",
     "monthly": "Mēnešmaksa",
     "perMonth": "/mēnesī",
-    "confirmOrder": "Apstiprināt pasūtījumu"
+    "confirmOrder": "Apstiprināt pasūtījumu",
+    "orderDedicated": "Pasūtīt dedikētu",
+    "customizeOrder": "Pielāgot pasūtījumu",
+    "hostnameExample": "Piemērs: server.hostname.com",
+    "hostnameHelp": "Izmantojiet hosta nosaukumu servera identifikācijai. Domēnam nav jābūt derīgam vai reģistrētam. Hosta nosaukumā nepieciešams viens punkts.",
+    "passwordRequirement": "Piezīme: parolei jāsatur vismaz 8 rakstzīmes, viens mazais burts, viens lielais burts, viens cipars un speciāla rakstzīme.",
+    "comments": "Komentāri",
+    "addToCart": "Pievienot grozam",
+    "monthlyTotal": "Mēneša kopsumma",
+    "serverRegion": "Servera reģions",
+    "enterServerDetails": "Ievadīt servera datus",
+    "currentlySoldOut": "Pašlaik izpārdots!",
+    "contactSales": "Lūdzu, sazinieties ar pārdošanas nodaļu.",
+    "autoRenewNotice": "Abonements automātiski atjaunosies katru mēnesi par {cost} līdz atcelšanai.",
+    "tosAcknowledgement": "Atzīmējot šo izvēles rūtiņu, jūs apstiprināt, ka iegādājaties abonēšanas produktu, kas automātiski atjaunojas un tiek debetēts no norādītās kredītkartes. Lai atceltu automātisko atjaunošanu, atveriet klientu portālu vai nosūtiet e-pastu: billing{'@'}interserver.net.",
+    "continue": "Turpināt",
+    "selectCpu": "Izvēlēties CPU",
+    "selectDrives": "Izvēlēties diskus",
+    "selectedDrives": "Izvēlētie diski",
+    "noDrivesSelected": "Diski nav izvēlēti",
+    "totalDrives": "Kopā diski",
+    "selectBandwidth": "Izvēlēties joslas platumu",
+    "selectIps": "Izvēlēties IP",
+    "selectControlPanel": "Izvēlēties vadības paneli",
+    "selectRaid": "Izvēlēties RAID",
+    "setupTime": "Iestatīšanas laiks",
+    "showMore": "Rādīt vairāk",
+    "showLess": "Rādīt mazāk",
+    "editDetails": "Rediģēt datus",
+    "backToOptions": "Atpakaļ uz opcijām"
+  },
+  "reverseDns": {
+    "title": "Apgrieztā DNS iestatījumi",
+    "changeWarning": "Apgrieztā DNS izmaiņas var parādīties līdz stundai.",
+    "ipAddresses": "IP adreses",
+    "hostnames": "Hosta nosaukumi",
+    "updateReverseDns": "Atjaunināt apgriezto DNS"
+  },
+  "bandwidthGraph": {
+    "title": "Joslas platuma grafiki",
+    "graphTitle": "Joslas platuma grafiks"
+  },
+  "ipmiLive": {
+    "title": "IPMI IP",
+    "whatThisDoes": "Ko tas dara?",
+    "description": "Piešķir tiešraides IP IPMI kontrollerim, ierobežotu ar jūsu IP un 24 stundu lietošanu.",
+    "emailIpmiCredentials": "Nosūtīt IPMI akreditācijas datus e-pastā",
+    "assetId": "Aktīva ID",
+    "serverId": "Servera ID",
+    "hostname": "Hosta nosaukums",
+    "serverIp": "Servera IP",
+    "serverIpmi": "Servera IPMI",
+    "yourIpAddress": "Jūsu IP adrese"
   }
 }

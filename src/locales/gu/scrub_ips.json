@@ -1,62 +1,65 @@
 {
-    "list": {
-        "title": "\u0ab8\u0acd\u0a95\u0acd\u0ab0\u0aac IP \u0ab8\u0ac7\u0ab5\u0afe\u0a93 \u0ab8\u0ac2\u0a9a\u0abf",
-        "orderTitle": "\u0ab8\u0acd\u0a95\u0acd\u0ab0\u0aac IP \u0a91\u0ab0\u0acd\u0aa1\u0ab0 \u0a95\u0ab0\u0acb"
-    },
-    "view": {
-        "title": "\u0ab8\u0acd\u0a95\u0acd\u0ab0\u0aac IPs \u0a9c\u0ac1\u0a93",
-        "currentIp": "\u0ab5\u0ab0\u0acd\u0aa4\u0aae\u0afe\u0aa8 IP",
-        "ipAddress": "IP \u0ab8\u0ab0\u0aa8\u0afe\u0aae\u0ac1\u0a82",
-        "ipFromService": "\u0ab8\u0ac7\u0ab5\u0afe\u0aa5\u0ac0 IP"
-    },
-    "filters": {
-        "title": "\u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0\u0acd\u0ab8",
-        "createNew": "\u0aa8\u0ab5\u0ac1\u0a82 \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "createNewFilter": "\u0aa8\u0ab5\u0ac1\u0a82 \u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "filterType": "\u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0aaa\u0acd\u0ab0\u0a95\u0afe\u0ab0",
-        "selectFilterType": "\u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0aaa\u0acd\u0ab0\u0a95\u0afe\u0ab0 \u0aaa\u0ab8\u0a82\u0aa6 \u0a95\u0ab0\u0acb",
-        "ipAddress": "IP \u0ab8\u0ab0\u0aa8\u0afe\u0aae\u0ac1\u0a82",
-        "portNo": "\u0aaa\u0acb\u0ab0\u0acd\u0a9f \u0aa8\u0a82.",
-        "filter": "\u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0",
-        "destinationIp": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf IP",
-        "destinationPort": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf \u0aaa\u0acb\u0ab0\u0acd\u0a9f",
-        "noFiltersFound": "\u0a95\u0acb\u0a88 \u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0\u0acd\u0ab8 \u0aae\u0ab3\u0ac0 \u0aa8\u0aa5\u0ac0!",
-        "deleteFilterConfirm": "\u0ab6\u0ac1\u0a82 \u0aa4\u0aae\u0ac7 \u0a96\u0ab0\u0ac7\u0a96\u0ab0 \u0a86 \u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0a95\u0afe\u0aa2\u0ac0 \u0aa8\u0afe\u0a96\u0ab5\u0afe \u0aae\u0afe\u0a82\u0a97\u0acb \u0a9b\u0acb?",
-        "unableToCreateFilter": "\u0a85\u0aa4\u0acd\u0aaf\u0afe\u0ab0\u0ac7 \u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0aac\u0aa8\u0afe\u0ab5\u0ab5\u0afe\u0aae\u0afe\u0a82 \u0a85\u0ab6\u0a95\u0acd\u0aaf.",
-        "unableToDeleteFilter": "\u0a85\u0aa4\u0acd\u0aaf\u0afe\u0ab0\u0ac7 \u0aab\u0abf\u0ab2\u0acd\u0a9f\u0ab0 \u0a95\u0afe\u0aa2\u0ac0 \u0aa8\u0afe\u0a96\u0ab5\u0afe\u0aae\u0afe\u0a82 \u0a85\u0ab6\u0a95\u0acd\u0aaf."
-    },
-    "firewallRules": {
-        "title": "\u0aab\u0abe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae\u0acb",
-        "createNew": "\u0aa8\u0ab5\u0ac1\u0a82 \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "createNewFirewall": "\u0aa8\u0ab5\u0ac1\u0a82 \u0aab\u0afe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "protocol": "\u0aaa\u0acd\u0ab0\u0acb\u0a9f\u0acb\u0a95\u0cbe\u0ab2",
-        "destinationIp": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf IP",
-        "destinationPort": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf \u0aaa\u0acb\u0ab0\u0acd\u0a9f",
-        "sourceIp": "\u0ab8\u0cde\u0ab0\u0acd\u0ab8 IP",
-        "sourcePort": "\u0ab8\u0cde\u0ab0\u0acd\u0ab8 \u0aaa\u0acb\u0ab0\u0acd\u0a9f",
-        "xdpAction": "XDP \u0a95\u0acd\u0ab0\u0abf\u0aaf\u0afe",
-        "ipRequired": "IP \u0ab8\u0ab0\u0aa8\u0afe\u0aae\u0ac1\u0a82 \u0a9c\u0ab0\u0ac2\u0ab0\u0ac0 \u0a9b\u0ac7",
-        "block": "\u0aac\u0acd\u0ab2\u0cbe\u0a95",
-        "whitelist": "\u0ab5\u0afe\u0a87\u0a9f\u0ab2\u0abf\u0ab8\u0acd\u0a9f",
-        "noRulesFound": "\u0a95\u0acb\u0a88 \u0aa8\u0abf\u0aaf\u0aae\u0acb \u0aae\u0ab3\u0ac0 \u0aa8\u0aa5\u0ac0!",
-        "deleteRuleConfirm": "\u0ab6\u0ac1\u0a82 \u0aa4\u0aae\u0ac7 \u0a96\u0ab0\u0ac7\u0a96\u0ab0 \u0a86 \u0aa8\u0abf\u0aaf\u0aae \u0a95\u0afe\u0aa2\u0ac0 \u0aa8\u0afe\u0a96\u0ab5\u0afe \u0aae\u0afe\u0a82\u0a97\u0acb \u0a9b\u0acb?",
-        "unableToCreateRule": "\u0a85\u0aa4\u0acd\u0aaf\u0afe\u0ab0\u0ac7 \u0aab\u0afe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae \u0aac\u0aa8\u0afe\u0ab5\u0ab5\u0afe\u0aae\u0afe\u0a82 \u0a85\u0ab6\u0a95\u0acd\u0aaf.",
-        "unableToDeleteRule": "\u0a85\u0aa4\u0acd\u0aaf\u0afe\u0ab0\u0ac7 \u0aab\u0afe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae \u0a95\u0afe\u0aa2\u0ac0 \u0aa8\u0afe\u0a96\u0ab5\u0afe\u0aae\u0afe\u0a82 \u0a85\u0ab6\u0a95\u0acd\u0aaf."
-    },
-    "geoFirewallRules": {
-        "title": "\u0a9c\u0abf\u0a93 \u0aab\u0afe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae\u0acb",
-        "createNew": "\u0aa8\u0ab5\u0ac1\u0a82 \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "createNewGeoRule": "\u0aa8\u0ab5\u0ac1\u0a82 \u0a9c\u0abf\u0a93 \u0aab\u0afe\u0aaf\u0ab0\u0ab5\u0cbe\u0ab2 \u0aa8\u0abf\u0aaf\u0aae \u0aac\u0aa8\u0afe\u0ab5\u0acb",
-        "destinationIp": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf IP",
-        "destinationPort": "\u0a97\u0a82\u0aa4\u0ab5\u0acd\u0aaf \u0aaa\u0acb\u0ab0\u0acd\u0a9f",
-        "sourceCountry": "\u0ab8\u0cde\u0ab0\u0acd\u0ab8 \u0aa6\u0ac7\u0ab6",
-        "sourceAsn": "\u0ab8\u0cde\u0ab0\u0acd\u0ab8 ASN",
-        "xdpAction": "XDP \u0a95\u0acd\u0ab0\u0abf\u0aaf\u0afe",
-        "portNo": "\u0aaa\u0acb\u0ab0\u0acd\u0a9f \u0aa8\u0a82.",
-        "selectCountry": "\u0aa6\u0ac7\u0ab6 \u0aaa\u0ab8\u0a82\u0aa6 \u0a95\u0ab0\u0acb",
-        "asn": "ASN",
-        "block": "\u0aac\u0acd\u0ab2\u0cbe\u0a95",
-        "whitelist": "\u0ab5\u0afe\u0a87\u0a9f\u0ab2\u0abf\u0ab8\u0acd\u0a9f",
-        "noRulesFound": "\u0a95\u0acb\u0a88 \u0aa8\u0abf\u0aaf\u0aae\u0acb \u0aae\u0ab3\u0ac0 \u0aa8\u0aa5\u0ac0!"
-    }
+  "list": {
+    "title": "સ્ક્રબ IP સેવ૾ઓ સૂચિ",
+    "orderTitle": "સ્ક્રબ IP ઑર્ડર કરો"
+  },
+  "view": {
+    "title": "સ્ક્રબ IPs જુઓ",
+    "currentIp": "વર્તમ૾ન IP",
+    "ipAddress": "IP સરન૾મું",
+    "ipFromService": "સેવ૾થી IP"
+  },
+  "filters": {
+    "title": "ફિલ્ટર્સ",
+    "createNew": "નવું બન૾વો",
+    "createNewFilter": "નવું ફિલ્ટર બન૾વો",
+    "filterType": "ફિલ્ટર પ્રક૾ર",
+    "selectFilterType": "ફિલ્ટર પ્રક૾ર પસંદ કરો",
+    "ipAddress": "IP સરન૾મું",
+    "portNo": "પોર્ટ નં.",
+    "filter": "ફિલ્ટર",
+    "destinationIp": "ગંતવ્ય IP",
+    "destinationPort": "ગંતવ્ય પોર્ટ",
+    "noFiltersFound": "કોઈ ફિલ્ટર્સ મળી નથી!",
+    "deleteFilterConfirm": "શું તમે ખરેખર આ ફિલ્ટર ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
+    "unableToCreateFilter": "અત્ય૾રે ફિલ્ટર બન૾વવ૾મ૾ં અશક્ય.",
+    "unableToDeleteFilter": "અત્ય૾રે ફિલ્ટર ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
+  },
+  "firewallRules": {
+    "title": "ફાયરવಾલ નિયમો",
+    "createNew": "નવું બન૾વો",
+    "createNewFirewall": "નવું ફ૾યરવಾલ નિયમ બન૾વો",
+    "protocol": "પ્રોટોકಾલ",
+    "destinationIp": "ગંતવ્ય IP",
+    "destinationPort": "ગંતવ્ય પોર્ટ",
+    "sourceIp": "સೞર્સ IP",
+    "sourcePort": "સೞર્સ પોર્ટ",
+    "xdpAction": "XDP ક્રિય૾",
+    "ipRequired": "IP સરન૾મું જરૂરી છે",
+    "block": "બ્લಾક",
+    "whitelist": "વ૾ઇટલિસ્ટ",
+    "noRulesFound": "કોઈ નિયમો મળી નથી!",
+    "deleteRuleConfirm": "શું તમે ખરેખર આ નિયમ ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
+    "unableToCreateRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ બન૾વવ૾મ૾ં અશક્ય.",
+    "unableToDeleteRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
+  },
+  "geoFirewallRules": {
+    "title": "જિઓ ફ૾યરવಾલ નિયમો",
+    "createNew": "નવું બન૾વો",
+    "createNewGeoRule": "નવું જિઓ ફ૾યરવಾલ નિયમ બન૾વો",
+    "destinationIp": "ગંતવ્ય IP",
+    "destinationPort": "ગંતવ્ય પોર્ટ",
+    "sourceCountry": "સೞર્સ દેશ",
+    "sourceAsn": "સೞર્સ ASN",
+    "xdpAction": "XDP ક્રિય૾",
+    "portNo": "પોર્ટ નં.",
+    "selectCountry": "દેશ પસંદ કરો",
+    "asn": "ASN",
+    "block": "બ્લಾક",
+    "whitelist": "વ૾ઇટલિસ્ટ",
+    "noRulesFound": "કોઈ નિયમો મળી નથી!",
+    "deleteGeoRuleConfirm": "શું તમે ખરેખર આ ભૌગોલિક નિયમ કાઢી નાખવા માંગો છો?",
+    "unableToCreateRule": "આ સમયે ફાયરવૉલ નિયમ બનાવવા અસમર્થ.",
+    "unableToDeleteRule": "આ સમયે ભૌગોલિક ફાયરવૉલ નિયમ કાઢી નાખવા અસમર્થ."
+  }
 }

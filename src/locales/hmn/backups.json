@@ -13,7 +13,8 @@
     "hostServer": "Server Tuav",
     "links": "Cov Txuas",
     "emailSent": "Email Xa Lawm",
-    "emailSentMessage": "Email txais tos xa dua lawm."
+    "emailSentMessage": "Email txais tos xa dua lawm.",
+    "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?"
   },
   "order": {
     "title": "Xaj Chaw Cia"

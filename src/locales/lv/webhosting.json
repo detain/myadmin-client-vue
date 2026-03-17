@@ -13,7 +13,23 @@
     "login": "Pieteikties",
     "links": "Saites",
     "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+    "hostInfo": "Resursdatora informācija",
+    "username": "Lietotājvārds:",
+    "ip": "IP:",
+    "server": "Serveris:",
+    "notSetYet": "Vēl nav iestatīts",
+    "types": "Veidi:",
+    "linksLabel": "Saites:",
+    "manualLogin": "Manuāla pieteikšanās",
+    "automaticLogin": "Automātiska pieteikšanās",
+    "clickHere": "Noklikšķiniet šeit",
+    "defaultNameservers": "Noklusētie nosaukumu serveri",
+    "nameservers": "Nosaukumu serveri:",
+    "externalLinks": "Ārējās saites",
+    "names": "Nosaukumi:",
+    "websitePreview": "Vietnes priekšskatījums",
+    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
   },
   "order": {
     "title": "Pasūtīt vietni"
@@ -21,6 +37,46 @@
   "migration": {
     "title": "Migrēt savu vietni",
     "password": "Parole",
-    "importantNotes": "Svarīgas piezīmes"
+    "importantNotes": "Svarīgas piezīmes",
+    "currentWebHostInfo": "Pašreizējā tīmekļa resursdatora informācija",
+    "customerPortalUrl": "Klientu portāla URL",
+    "portalExample": "Piemēram: sso.godaddy.com",
+    "registeredUsername": "Reģistrētais lietotājvārds / E-pasts / ID",
+    "controlPanelUrl": "Vadības paneļa URL",
+    "controlPanelExample": "Piemēram: jusudomens.com/cpanel",
+    "ftpUsername": "FTP / Vadības paneļa lietotājvārds",
+    "ftpPassword": "FTP / Vadības paneļa parole",
+    "holdingPageQuestion": "Ja vietne ir aktīva un apmeklēta ar lielu trafiku, vai varam iestatīt pagaidu lapu migrācijas laikā?",
+    "specialRequirementsQuestion": "Vai šai vietnei ir īpašas prasības, piemēram, PHP versija / moduļi?",
+    "domainRegistryInfo": "Domēna reģistra informācija",
+    "transferDomainQuestion": "Vai vēlaties, lai mēs arī palīdzētu pārsūtīt domēna vārda reģistrāciju?",
+    "updateNameserversQuestion": "Vai vēlaties, lai mēs atjauninātu nosaukumu serverus, tiklīdz pabeigsim datu migrāciju?",
+    "domainRegistryPortal": "Domēna reģistra klientu portāls",
+    "note1": "Aizpildot šo veidlapu, tiks atvērts jauns biļets mūsu atbalsta nodaļai, lai sāktu jūsu migrāciju.",
+    "note2": "Lūdzu, esiet pēc iespējas pilnīgāks un precīzāks, lai izvairītos no kavējumiem.",
+    "note3": "Tipiska migrācija tiek pabeigta 48 līdz 72 stundu laikā. Dažreiz ilgāk, ja kopējamo datu apjoms ir liels.",
+    "note4": "Vecajai hostinga kontam jābūt tiešsaistē un pieejamam migrācijas laikā, pretējā gadījumā mēs varam saskarties ar grūtībām.",
+    "note5": "Lūdzu, neveiciet nekādus vietnes atjauninājumus, kamēr mēs veicam migrāciju, pretējā gadījumā šie dati var netikt pārkopēti uz jauno hostingu."
+  },
+  "buyIp": {
+    "title": "Iegādāties papildu IP papildinājumu",
+    "existingAddonIps": "Esošie papildinājuma IP",
+    "additionalIp": "Papildu IP",
+    "monthlyCost": "Mēneša izmaksas ({symbol})",
+    "costDescription": "Izmaksas ({symbol}) katru mēnesi, kad tiek izrakstīts jūsu vietnes rēķins",
+    "confirmPurchase": "Apstiprināt pirkumu",
+    "confirmMessage": "Papildu IP izmaksas: {symbol}{cost}/mēnesī. Vai tiešām vēlaties pasūtīt papildu IP?",
+    "placeOrder": "Iesniegt pasūtījumu",
+    "orderPlaced": "Pasūtījums iesniegts"
+  },
+  "reverseDns": {
+    "title": "Apgrieztais DNS",
+    "updateReverseDns": "Atjaunināt apgriezto DNS"
+  },
+  "downloadBackups": {
+    "title": "Lejupielādēt dublējumus",
+    "backup": "Dublējums",
+    "size": "Izmērs",
+    "options": "Opcijas"
   }
 }

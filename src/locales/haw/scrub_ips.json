@@ -1,1 +1,65 @@
-{ "list": { "title": "Papa Lawelawe Scrub IPs", "orderTitle": "Kauoha Scrub IPs" }, "view": { "title": "Nānā Scrub IPs", "currentIp": "IP o Kēia Wā", "ipAddress": "Helu IP", "ipFromService": "IP mai ka Lawelawe" }, "filters": { "title": "Mau Koho", "createNew": "Hana Hou", "createNewFilter": "Hana Koho Hou", "filterType": "ʻAno Koho", "ipAddress": "Helu IP", "portNo": "Helu Port", "filter": "Koho", "destinationIp": "IP Pahuhopu", "destinationPort": "Port Pahuhopu", "noFiltersFound": "ʻAʻohe koho i loaʻa!", "deleteFilterConfirm": "Ua maopopo iā ʻoe e holoi i kēia koho?" }, "firewallRules": { "title": "Mau Lula Pākini", "createNewFirewall": "Hana Lula Pākini Hou", "protocol": "Kaʻina", "destinationIp": "IP Pahuhopu", "sourceIp": "IP Kumu", "block": "Pale", "whitelist": "Papa Keʻokeʻo", "noRulesFound": "ʻAʻohe mau lula i loaʻa!", "deleteRuleConfirm": "Ua maopopo iā ʻoe e holoi i kēia lula?" }, "geoFirewallRules": { "title": "Mau Lula Pākini ʻĀina", "createNewGeoRule": "Hana Lula Pākini ʻĀina Hou", "destinationIp": "IP Pahuhopu", "sourceCountry": "ʻĀina Kumu", "sourceAsn": "ASN Kumu", "selectCountry": "Koho ʻĀina", "block": "Pale", "whitelist": "Papa Keʻokeʻo", "noRulesFound": "ʻAʻohe mau lula i loaʻa!", "deleteGeoRuleConfirm": "Ua maopopo iā ʻoe e holoi i kēia lula ʻāina?" } }
+{
+  "list": {
+    "title": "Papa Lawelawe Scrub IPs",
+    "orderTitle": "Kauoha Scrub IPs"
+  },
+  "view": {
+    "title": "Nānā Scrub IPs",
+    "currentIp": "IP o Kēia Wā",
+    "ipAddress": "Helu IP",
+    "ipFromService": "IP mai ka Lawelawe"
+  },
+  "filters": {
+    "title": "Mau Koho",
+    "createNew": "Hana Hou",
+    "createNewFilter": "Hana Koho Hou",
+    "filterType": "ʻAno Koho",
+    "ipAddress": "Helu IP",
+    "portNo": "Helu Port",
+    "filter": "Koho",
+    "destinationIp": "IP Pahuhopu",
+    "destinationPort": "Port Pahuhopu",
+    "noFiltersFound": "ʻAʻohe koho i loaʻa!",
+    "deleteFilterConfirm": "Ua maopopo iā ʻoe e holoi i kēia koho?",
+    "selectFilterType": "E koho i ke ʻano kānana",
+    "unableToCreateFilter": "ʻAʻohe hiki ke hana i kānana i kēia manawa.",
+    "unableToDeleteFilter": "ʻAʻohe hiki ke holoi i kānana i kēia manawa."
+  },
+  "firewallRules": {
+    "title": "Mau Lula Pākini",
+    "createNewFirewall": "Hana Lula Pākini Hou",
+    "protocol": "Kaʻina",
+    "destinationIp": "IP Pahuhopu",
+    "sourceIp": "IP Kumu",
+    "block": "Pale",
+    "whitelist": "Papa Keʻokeʻo",
+    "noRulesFound": "ʻAʻohe mau lula i loaʻa!",
+    "deleteRuleConfirm": "Ua maopopo iā ʻoe e holoi i kēia lula?",
+    "createNew": "E hana hou",
+    "destinationPort": "Awa i hiki ai",
+    "sourcePort": "Awa kumu",
+    "xdpAction": "Hana XDP",
+    "ipRequired": "Pono ka helu IP",
+    "unableToCreateRule": "ʻAʻohe hiki ke hana i lula pā ahi i kēia manawa.",
+    "unableToDeleteRule": "ʻAʻohe hiki ke holoi i lula pā ahi i kēia manawa."
+  },
+  "geoFirewallRules": {
+    "title": "Mau Lula Pākini ʻĀina",
+    "createNewGeoRule": "Hana Lula Pākini ʻĀina Hou",
+    "destinationIp": "IP Pahuhopu",
+    "sourceCountry": "ʻĀina Kumu",
+    "sourceAsn": "ASN Kumu",
+    "selectCountry": "Koho ʻĀina",
+    "block": "Pale",
+    "whitelist": "Papa Keʻokeʻo",
+    "noRulesFound": "ʻAʻohe mau lula i loaʻa!",
+    "deleteGeoRuleConfirm": "Ua maopopo iā ʻoe e holoi i kēia lula ʻāina?",
+    "createNew": "E hana hou",
+    "destinationPort": "Awa i hiki ai",
+    "xdpAction": "Hana XDP",
+    "portNo": "Helu awa",
+    "asn": "ASN",
+    "unableToCreateRule": "ʻAʻohe hiki ke hana i lula pā ahi i kēia manawa.",
+    "unableToDeleteRule": "ʻAʻohe hiki ke holoi i lula pā ahi ʻāina i kēia manawa."
+  }
+}
