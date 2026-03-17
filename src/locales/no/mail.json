@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liste over e-posttjenester",
+        "orderTitle": "Bestill e-postregistreringer"
+    },
+    "view": {
+        "title": "Vis e-post {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Neste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "fakturert:",
+        "statusIs": "Status er:",
+        "mailApi": "E-post-API",
+        "usageCount": "Bruksantall:",
+        "links": "Lenker",
+        "connectionInfo": "Tilkoblingsinformasjon",
+        "welcomeEmailConfirm": "Er du sikker på at du vil sende velkomst-e-posten på nytt?",
+        "emailSent": "E-post sendt",
+        "emailSentMessage": "Velkomst-e-posten har blitt sendt på nytt. Sjekk innboksen din."
+    },
+    "order": {
+        "title": "Bestill e-post"
+    },
+    "alerts": {
+        "title": "Varsler",
+        "addAlert": "Legg til varsel",
+        "editAlert": "Rediger varsel",
+        "noAlerts": "Ingen varsler funnet"
+    },
+    "delist": {
+        "title": "Fjern fra liste",
+        "blockedEmails": "Blokkerte e-poster"
+    },
+    "denyRules": {
+        "title": "Nektelsesregler",
+        "addRule": "Legg til regel",
+        "noRules": "Ingen nektelsesregler funnet"
+    },
+    "logs": {
+        "title": "Logger",
+        "searchLogs": "Søk i logger"
+    },
+    "stats": {
+        "title": "Statistikk"
+    },
+    "deliverability": {
+        "title": "Leverbarhet"
+    }
+}

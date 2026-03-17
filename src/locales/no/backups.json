@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Lagring / Sikkerhetskopiliste",
+        "orderTitle": "Bestill sikkerhetskopieringsregistreringer"
+    },
+    "view": {
+        "title": "Vis sikkerhetskopiering {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Neste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "fakturert:",
+        "statusIs": "Status er:",
+        "hostServer": "Vertsserver",
+        "links": "Lenker",
+        "welcomeEmailConfirm": "Er du sikker på at du vil sende velkomst-e-posten på nytt?",
+        "emailSent": "E-post sendt",
+        "emailSentMessage": "Velkomst-e-posten har blitt sendt på nytt. Sjekk innboksen din."
+    },
+    "order": {
+        "title": "Bestill lagring"
+    }
+}

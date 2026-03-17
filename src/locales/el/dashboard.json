@@ -1,0 +1,28 @@
+{
+    "title": "Πίνακας Ελέγχου",
+    "welcome": "Καλώς ήρθατε, {name}",
+    "lastLogin": "Τελευταία Σύνδεση",
+    "lastLoginIp": "IP Τελευταίας Σύνδεσης",
+    "prepay": {
+        "title": "Υπόλοιπο Προπληρωμής",
+        "remainingBalance": "Εναπομένον Υπόλοιπο Προπληρωμής",
+        "manageAccount": "Διαχείριση Λογαριασμού",
+        "manageTooltip": "Διαχειριστείτε τον Λογαριασμό Προπληρωμής σας"
+    },
+    "invoices": {
+        "title": "Ανεξόφλητα Τιμολόγια",
+        "totalUnpaid": "Σύνολο Ανεξόφλητων Τιμολογίων",
+        "totalAmount": "Συνολικό Ποσό προς Πληρωμή",
+        "payTotalTooltip": "Πληρωμή Συνολικού Ποσού"
+    },
+    "callInPin": "PIN Τηλεφωνικής Κλήσης",
+    "recentTickets": "Πρόσφατα Tickets",
+    "viewAllTickets": "Προβολή Όλων των Tickets",
+    "editTicket": "Επεξεργασία Ticket",
+    "serviceCount": "Δεν υπάρχουν ενεργές υπηρεσίες | {count} ενεργή υπηρεσία | {count} ενεργές υπηρεσίες",
+    "affiliate": {
+        "earnPerSale": "Κερδίστε {amount} Ανά Πώληση",
+        "urlPlaceholder": "URL Θυγατρικού",
+        "shareWith": "Μοιραστείτε με"
+    }
+}

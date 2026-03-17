@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Listă Licențe",
+        "orderTitle": "Comandă Înregistrări Licențe"
+    },
+    "view": {
+        "title": "Vizualizare Licență {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat:",
+        "statusIs": "Starea este:",
+        "licenseInfo": "Informații Licență",
+        "cpanelInfo": "Informații cPanel",
+        "links": "Linkuri",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "order": {
+        "title": "Comandă Licență"
+    },
+    "changeIp": {
+        "title": "Schimbare IP"
+    },
+    "changeOs": {
+        "title": "Schimbare OS",
+        "selectLicenseOs": "Selectați OS-ul Licenței"
+    }
+}

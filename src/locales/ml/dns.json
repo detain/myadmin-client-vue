@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS മാനേജർ",
+        "addDomain": "ഡൊമൈൻ ചേർക്കുക",
+        "deleteDomain": "ഡൊമൈൻ ഇല്ലാതാക്കുക",
+        "domainName": "ഡൊമൈൻ നാമം",
+        "dnsServers": "DNS സെർവറുകൾ",
+        "confirmDelete": "ഈ ഡൊമൈൻ ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
+        "noDomains": "ഡൊമൈനുകൾ കണ്ടെത്തിയില്ല"
+    },
+    "editor": {
+        "title": "DNS എഡിറ്റർ",
+        "addRecord": "റെക്കോർഡ് ചേർക്കുക",
+        "deleteRecord": "റെക്കോർഡ് ഇല്ലാതാക്കുക",
+        "editRecord": "റെക്കോർഡ് എഡിറ്റ് ചെയ്യുക",
+        "recordType": "റെക്കോർഡ് തരം",
+        "hostname": "ഹോസ്റ്റ്‌നെയിം",
+        "address": "വിലാസം",
+        "distance": "ദൂരം",
+        "weight": "ഭാരം",
+        "port": "പോർട്ട്",
+        "ttl": "TTL",
+        "actions": "പ്രവർത്തനങ്ങൾ",
+        "confirmDelete": "ഈ റെക്കോർഡ് ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?"
+    }
+}

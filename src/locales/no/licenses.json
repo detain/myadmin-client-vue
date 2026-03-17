@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisensliste",
+        "orderTitle": "Bestill lisensregistreringer"
+    },
+    "view": {
+        "title": "Vis lisens {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Neste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "fakturert:",
+        "statusIs": "Status er:",
+        "licenseInfo": "Lisensinformasjon",
+        "cpanelInfo": "cPanel-informasjon",
+        "links": "Lenker",
+        "welcomeEmailConfirm": "Er du sikker på at du vil sende velkomst-e-posten på nytt?",
+        "emailSent": "E-post sendt",
+        "emailSentMessage": "Velkomst-e-posten har blitt sendt på nytt. Sjekk innboksen din."
+    },
+    "order": {
+        "title": "Bestill lisens"
+    },
+    "changeIp": {
+        "title": "Endre IP"
+    },
+    "changeOs": {
+        "title": "Endre OS",
+        "selectLicenseOs": "Velg lisens-OS"
+    }
+}

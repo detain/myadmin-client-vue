@@ -1,0 +1,28 @@
+{
+    "title": "דאַשבאָרד",
+    "welcome": "ברוך הבא, {name}",
+    "lastLogin": "לעצטע איינלאָגירונג",
+    "lastLoginIp": "לעצטע איינלאָגירונג IP",
+    "prepay": {
+        "title": "פֿאָראויסצאָלונג באַלאַנס",
+        "remainingBalance": "פֿאָראויסצאָלונג איבריקער באַלאַנס",
+        "manageAccount": "פאַרוואַלטן קאָנטאָ",
+        "manageTooltip": "פאַרוואַלטן אייַער פֿאָראויסצאָלונג קאָנטאָ"
+    },
+    "invoices": {
+        "title": "אַנבאַצאָלטע חשבונות",
+        "totalUnpaid": "גאַנץ אַנבאַצאָלטע חשבונות",
+        "totalAmount": "גאַנצע סומע צו צאָלן",
+        "payTotalTooltip": "צאָלן גאַנצע סומע"
+    },
+    "callInPin": "טעלעפֿאָן PIN",
+    "recentTickets": "לעצטע טיקעטן",
+    "viewAllTickets": "זען אַלע טיקעטן",
+    "editTicket": "רעדאַגירן טיקעט",
+    "serviceCount": "קיין אַקטיווע סערוויסן | {count} אַקטיווע סערוויס | {count} אַקטיווע סערוויסן",
+    "affiliate": {
+        "earnPerSale": "פאַרדינט {amount} פֿאַר יעדן פאַרקויף",
+        "urlPlaceholder": "אַפֿיליאַט URL",
+        "shareWith": "טיילן מיט"
+    }
+}

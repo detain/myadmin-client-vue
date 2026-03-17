@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL සහතිකයන් ලැයිස්තුව",
+        "orderTitle": "SSL ලියාපදිංචිය ඇණවුම් කරන්න"
+    },
+    "view": {
+        "title": "SSL {id} බලන්න",
+        "package": "පැකේජය",
+        "nextInvoiceDate": "ඊළඟ Invoice දිනය:",
+        "billing": "බිල්කිරීම",
+        "billed": "බිල් කළ:",
+        "statusIs": "තත්ත්වය:",
+        "orderInfo": "ඇණවුම් තොරතුරු",
+        "certificateInfo": "සහතිකය තොරතුරු",
+        "links": "සබැඳි",
+        "welcomeEmailConfirm": "ඔබ ආයේ ආයුබෝවන් email එවීමට නිශ්චිතද?",
+        "emailSent": "Email යවා ඇත",
+        "emailSentMessage": "ආයුබෝවන් email නැවත යවා ඇත. ඔබේ inbox පරීක්ෂා කරන්න."
+    },
+    "order": {
+        "title": "SSL ඇණවුම් කරන්න"
+    },
+    "changeApproverEmail": {
+        "title": "අනුමත Email වෙනස් කරන්න",
+        "selectApproverEmail": "අනුමත Email තෝරන්න"
+    }
+}

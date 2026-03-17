@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista tal-Liċenzji",
+        "orderTitle": "Ordna Reġistrazzjonijiet ta' Liċenzja"
+    },
+    "view": {
+        "title": "Ara l-Liċenzja {id}",
+        "package": "Pakkett",
+        "nextInvoiceDate": "Data tal-Fattura li Jmiss:",
+        "billing": "Fatturazzjoni",
+        "billed": "fatturata:",
+        "statusIs": "L-istat huwa:",
+        "licenseInfo": "Informazzjoni tal-Liċenzja",
+        "cpanelInfo": "Informazzjoni cPanel",
+        "links": "Links",
+        "welcomeEmailConfirm": "Ċert li trid tibgħat mill-ġdid l-email ta' merħba?",
+        "emailSent": "Email Mibgħut",
+        "emailSentMessage": "L-email ta' merħba ntbagħtet mill-ġdid. Iċċekkja l-inbox tiegħek."
+    },
+    "order": {
+        "title": "Ordna Liċenzja"
+    },
+    "changeIp": {
+        "title": "Ibdel l-IP"
+    },
+    "changeOs": {
+        "title": "Ibdel l-OS",
+        "selectLicenseOs": "Agħżel l-OS tal-Liċenzja"
+    }
+}

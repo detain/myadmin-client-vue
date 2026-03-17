@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP Xidmətlər Siyahısı",
+        "orderTitle": "Scrub IP Sifariş Et"
+    },
+    "view": {
+        "title": "Scrub IP-ə Bax",
+        "currentIp": "Cari IP",
+        "ipAddress": "IP Ünvanı",
+        "ipFromService": "Xidmətdən IP"
+    },
+    "filters": {
+        "title": "Filtrlər",
+        "createNew": "Yeni Yarat",
+        "createNewFilter": "Yeni Filtr Yarat",
+        "filterType": "Filtr Növü",
+        "selectFilterType": "Filtr Növü Seçin",
+        "ipAddress": "IP Ünvanı",
+        "portNo": "Port Nömrəsi",
+        "filter": "Filtr",
+        "destinationIp": "Təyinat IP",
+        "destinationPort": "Təyinat Port",
+        "noFiltersFound": "Filtr tapılmadı!",
+        "deleteFilterConfirm": "Bu filtri silmək istədiyinizə əminsiniz?",
+        "unableToCreateFilter": "Bu anda filtr yaratmaq mümkün deyil.",
+        "unableToDeleteFilter": "Bu anda filtri silmək mümkün deyil."
+    },
+    "firewallRules": {
+        "title": "Firewall Qaydaları",
+        "createNew": "Yeni Yarat",
+        "createNewFirewall": "Yeni Firewall Qaydası Yarat",
+        "protocol": "Protokol",
+        "destinationIp": "Təyinat IP",
+        "destinationPort": "Təyinat Port",
+        "sourceIp": "Mənbə IP",
+        "sourcePort": "Mənbə Port",
+        "xdpAction": "XDP Əməliyyatı",
+        "ipRequired": "IP ünvanı tələb olunur",
+        "block": "Blokla",
+        "whitelist": "Ağ Siyahı",
+        "noRulesFound": "Qayda tapılmadı!",
+        "deleteRuleConfirm": "Bu qaydanı silmək istədiyinizə əminsiniz?",
+        "unableToCreateRule": "Bu anda firewall qaydası yaratmaq mümkün deyil.",
+        "unableToDeleteRule": "Bu anda firewall qaydasını silmək mümkün deyil."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Firewall Qaydaları",
+        "createNew": "Yeni Yarat",
+        "createNewGeoRule": "Yeni Geo Firewall Qaydası Yarat",
+        "destinationIp": "Təyinat IP",
+        "destinationPort": "Təyinat Port",
+        "sourceCountry": "Mənbə Ölkəsi",
+        "sourceAsn": "Mənbə ASN",
+        "xdpAction": "XDP Əməliyyatı",
+        "portNo": "Port Nömrəsi",
+        "selectCountry": "Ölkə Seçin",
+        "asn": "ASN",
+        "block": "Blokla",
+        "whitelist": "Ağ Siyahı",
+        "noRulesFound": "Qayda tapılmadı!",
+        "deleteGeoRuleConfirm": "Bu geo qaydanı silmək istədiyinizə əminsiniz?",
+        "unableToCreateRule": "Bu anda firewall qaydası yaratmaq mümkün deyil.",
+        "unableToDeleteRule": "Bu anda geo firewall qaydasını silmək mümkün deyil."
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Uživatelé",
+    "addUser": "Přidat uživatele",
+    "editUser": "Upravit uživatele",
+    "firstName": "Křestní jméno",
+    "lastName": "Příjmení",
+    "username": "Uživatelské jméno",
+    "password": "Heslo",
+    "keepSamePassword": "Ponechte prázdné pro zachování stejného hesla",
+    "errorLoading": "Chyba při načítání uživatelů:",
+    "errorLoadingUser": "Chyba při načítání uživatele:"
+}

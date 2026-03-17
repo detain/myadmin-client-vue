@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Λίστα Υπηρεσιών Floating IPs",
+        "orderTitle": "Παραγγελία Εγγραφών Floating IP"
+    },
+    "view": {
+        "title": "Προβολή Floating IP {id}",
+        "package": "Πακέτο",
+        "nextInvoiceDate": "Επόμενη Ημερομηνία Τιμολογίου:",
+        "billing": "Χρέωση",
+        "billed": "χρεώθηκε:",
+        "statusIs": "Η κατάσταση είναι:",
+        "floatingIp": "Floating IP",
+        "links": "Σύνδεσμοι",
+        "welcomeEmailConfirm": "Είστε σίγουροι ότι θέλετε να στείλετε ξανά το email καλωσορίσματος;",
+        "emailSent": "Το Email Εστάλη",
+        "emailSentMessage": "Το email καλωσορίσματος εστάλη εκ νέου. Ελέγξτε τα εισερχόμενά σας."
+    },
+    "order": {
+        "title": "Παραγγελία Floating IP"
+    },
+    "changeIp": {
+        "title": "Αλλαγή Διεύθυνσης IP Στόχου"
+    }
+}

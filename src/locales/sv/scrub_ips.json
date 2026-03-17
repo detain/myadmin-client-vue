@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista över Scrub IPs-tjänster",
+        "orderTitle": "Beställ Scrub IPs"
+    },
+    "view": {
+        "title": "Visa Scrub IPs",
+        "currentIp": "Nuvarande IP",
+        "ipAddress": "IP-adress",
+        "ipFromService": "IP från tjänst"
+    },
+    "filters": {
+        "title": "Filter",
+        "createNew": "Skapa ny",
+        "createNewFilter": "Skapa nytt filter",
+        "filterType": "Filtertyp",
+        "selectFilterType": "Välj filtertyp",
+        "ipAddress": "IP-adress",
+        "portNo": "Portnummer",
+        "filter": "Filter",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "noFiltersFound": "Inga filter hittades!",
+        "deleteFilterConfirm": "Är du säker på att du vill ta bort det här filtret?",
+        "unableToCreateFilter": "Det gick inte att skapa filter just nu.",
+        "unableToDeleteFilter": "Det gick inte att ta bort filter just nu."
+    },
+    "firewallRules": {
+        "title": "Brandväggsregler",
+        "createNew": "Skapa ny",
+        "createNewFirewall": "Skapa ny brandväggsregel",
+        "protocol": "Protokoll",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "sourceIp": "Käll-IP",
+        "sourcePort": "Källport",
+        "xdpAction": "XDP-åtgärd",
+        "ipRequired": "IP-adress krävs",
+        "block": "Blockera",
+        "whitelist": "Vitlista",
+        "noRulesFound": "Inga regler hittades!",
+        "deleteRuleConfirm": "Är du säker på att du vill ta bort den här regeln?",
+        "unableToCreateRule": "Det gick inte att skapa brandväggsregel just nu.",
+        "unableToDeleteRule": "Det gick inte att ta bort brandväggsregel just nu."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-brandväggsregler",
+        "createNew": "Skapa ny",
+        "createNewGeoRule": "Skapa ny geo-brandväggsregel",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "sourceCountry": "Källland",
+        "sourceAsn": "Källans ASN",
+        "xdpAction": "XDP-åtgärd",
+        "portNo": "Portnummer",
+        "selectCountry": "Välj land",
+        "asn": "ASN",
+        "block": "Blockera",
+        "whitelist": "Vitlista",
+        "noRulesFound": "Inga regler hittades!",
+        "deleteGeoRuleConfirm": "Är du säker på att du vill ta bort den här geo-regeln?",
+        "unableToCreateRule": "Det gick inte att skapa brandväggsregel just nu.",
+        "unableToDeleteRule": "Det gick inte att ta bort geo-brandväggsregel just nu."
+    }
+}

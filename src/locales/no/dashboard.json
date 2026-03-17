@@ -1,0 +1,28 @@
+{
+    "title": "Dashbord",
+    "welcome": "Velkommen, {name}",
+    "lastLogin": "Siste innlogging",
+    "lastLoginIp": "Siste innloggings-IP",
+    "prepay": {
+        "title": "Forhåndsbetalingssaldo",
+        "remainingBalance": "Gjenværende forhåndsbetalingssaldo",
+        "manageAccount": "Administrer konto",
+        "manageTooltip": "Administrer forhåndsbetalingskontoen din"
+    },
+    "invoices": {
+        "title": "Ubetalte fakturaer",
+        "totalUnpaid": "Totalt ubetalte fakturaer",
+        "totalAmount": "Totalt beløp som skal betales",
+        "payTotalTooltip": "Betal totalt beløp"
+    },
+    "callInPin": "Innringins-PIN",
+    "recentTickets": "Nylige saker",
+    "viewAllTickets": "Vis alle saker",
+    "editTicket": "Rediger sak",
+    "serviceCount": "Ingen aktive tjenester | {count} aktiv tjeneste | {count} aktive tjenester",
+    "affiliate": {
+        "earnPerSale": "Tjen {amount} per salg",
+        "urlPlaceholder": "Affiliate-URL",
+        "shareWith": "Del med"
+    }
+}

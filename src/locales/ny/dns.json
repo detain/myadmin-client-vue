@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Woyang'anira DNS",
+        "addDomain": "Wonjezani Domeni",
+        "deleteDomain": "Fufutani Domeni",
+        "domainName": "Dzina la Domeni",
+        "dnsServers": "Maseva a DNS",
+        "confirmDelete": "Muli ndi chitsimikiziro chofufuta domeni iyi?",
+        "noDomains": "Palibe madomeni apezeka"
+    },
+    "editor": {
+        "title": "Wolemba DNS",
+        "addRecord": "Wonjezani Zolemba",
+        "deleteRecord": "Fufutani Zolemba",
+        "editRecord": "Sinthani Zolemba",
+        "recordType": "Mtundu wa Zolemba",
+        "hostname": "Dzina la Seva",
+        "address": "Adilesi",
+        "distance": "Mtali",
+        "weight": "Kaumande",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Zochita",
+        "confirmDelete": "Muli ndi chitsimikiziro chofufuta zolemba izi?"
+    }
+}

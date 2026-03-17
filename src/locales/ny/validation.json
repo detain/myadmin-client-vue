@@ -1,0 +1,12 @@
+{
+    "required": "{field} ikufunikira",
+    "email": "Iyenera kukhala adilesi yoona ya imelo",
+    "minLength": "Iyenera kukhala ndi maulembo osachepera {min}",
+    "maxLength": "Iyenera kukhala ndi maulembo opitirira {max} ayi",
+    "passwordMatch": "Zinsinsi ziyenera kugwirizana",
+    "invalidFormat": "Mtundu wosavomerezeka",
+    "numeric": "Iyenera kukhala nambala",
+    "url": "Iyenera kukhala URL yoona",
+    "ipAddress": "Iyenera kukhala adilesi yoona ya IP",
+    "hostname": "Iyenera kukhala dzina yoona la seva"
+}

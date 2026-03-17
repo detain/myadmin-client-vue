@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Post Tsjinsten List",
+        "orderTitle": "Post Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "Post {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare:",
+        "statusIs": "Status is:",
+        "mailApi": "Post API",
+        "usageCount": "Gebrûkstelling:",
+        "links": "Keppelingen",
+        "connectionInfo": "Ferbiningsynfo",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "order": {
+        "title": "Post Bestelle"
+    },
+    "alerts": {
+        "title": "Warskôgingen",
+        "addAlert": "Warskôging Tafoegje",
+        "editAlert": "Warskôging Bewurkje",
+        "noAlerts": "Gjin warskôgingen fûn"
+    },
+    "delist": {
+        "title": "Listferwidering",
+        "blockedEmails": "Blokkeare E-posten"
+    },
+    "denyRules": {
+        "title": "Weigeringsregels",
+        "addRule": "Regel Tafoegje",
+        "noRules": "Gjin weigeringsregels fûn"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Logs Sykje"
+    },
+    "stats": {
+        "title": "Statistiken"
+    },
+    "deliverability": {
+        "title": "Leverberheid"
+    }
+}

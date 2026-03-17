@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Λίστα Υπηρεσιών Mail",
+        "orderTitle": "Παραγγελία Εγγραφών Mail"
+    },
+    "view": {
+        "title": "Προβολή Mail {id}",
+        "package": "Πακέτο",
+        "nextInvoiceDate": "Επόμενη Ημερομηνία Τιμολογίου:",
+        "billing": "Χρέωση",
+        "billed": "χρεώθηκε:",
+        "statusIs": "Η κατάσταση είναι:",
+        "mailApi": "Mail API",
+        "usageCount": "Πλήθος Χρήσεων:",
+        "links": "Σύνδεσμοι",
+        "connectionInfo": "Πληροφορίες Σύνδεσης",
+        "welcomeEmailConfirm": "Είστε σίγουροι ότι θέλετε να στείλετε ξανά το email καλωσορίσματος;",
+        "emailSent": "Το Email Εστάλη",
+        "emailSentMessage": "Το email καλωσορίσματος εστάλη εκ νέου. Ελέγξτε τα εισερχόμενά σας."
+    },
+    "order": {
+        "title": "Παραγγελία Mail"
+    },
+    "alerts": {
+        "title": "Ειδοποιήσεις",
+        "addAlert": "Προσθήκη Ειδοποίησης",
+        "editAlert": "Επεξεργασία Ειδοποίησης",
+        "noAlerts": "Δεν βρέθηκαν ειδοποιήσεις"
+    },
+    "delist": {
+        "title": "Αφαίρεση από Λίστα",
+        "blockedEmails": "Αποκλεισμένα Emails"
+    },
+    "denyRules": {
+        "title": "Κανόνες Απόρριψης",
+        "addRule": "Προσθήκη Κανόνα",
+        "noRules": "Δεν βρέθηκαν κανόνες απόρριψης"
+    },
+    "logs": {
+        "title": "Αρχεία Καταγραφής",
+        "searchLogs": "Αναζήτηση Αρχείων Καταγραφής"
+    },
+    "stats": {
+        "title": "Στατιστικά"
+    },
+    "deliverability": {
+        "title": "Παραδοσιμότητα"
+    }
+}

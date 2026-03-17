@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Popis web hostinga",
+        "orderTitle": "Naruči web hosting registracije"
+    },
+    "view": {
+        "title": "Pregled web stranice {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum sljedećeg računa:",
+        "billing": "Naplata",
+        "billed": "naplaćeno",
+        "billingStatusIs": "Status naplate je:",
+        "hostInfo": "Informacije o hostu",
+        "username": "Korisničko ime:",
+        "ip": "IP:",
+        "server": "Poslužitelj:",
+        "notSetYet": "Još nije postavljeno",
+        "login": "Prijava",
+        "types": "Vrste:",
+        "linksLabel": "Poveznice:",
+        "manualLogin": "Ručna prijava",
+        "automaticLogin": "Automatska prijava",
+        "clickHere": "Kliknite ovdje",
+        "defaultNameservers": "Zadani poslužitelji imena",
+        "nameservers": "Poslužitelji imena:",
+        "externalLinks": "Vanjske poveznice",
+        "names": "Nazivi:",
+        "websitePreview": "Pregled web stranice",
+        "links": "Poveznice",
+        "welcomeEmailConfirm": "Jeste li sigurni da želite ponovno poslati e-mail dobrodošlice?",
+        "emailSent": "E-mail poslan",
+        "emailSentMessage": "E-mail dobrodošlice je ponovo poslan. Provjerite svoju pristiglu poštu."
+    },
+    "buyIp": {
+        "title": "Kupi dodatni IP dodatak",
+        "existingAddonIps": "Postojeće dodatne IP adrese",
+        "additionalIp": "Dodatna IP adresa",
+        "monthlyCost": "Mjesečni trošak ({symbol})",
+        "costDescription": "Trošak ({symbol}) svaki mjesec dok se web stranica fakturira",
+        "confirmPurchase": "Potvrdi kupnju",
+        "confirmMessage": "Trošak dodatne IP adrese: {symbol}{cost}/mjesec. Jeste li sigurni da želite naručiti dodatnu IP adresu?",
+        "placeOrder": "Naruči",
+        "orderPlaced": "Narudžba postavljena"
+    },
+    "reverseDns": {
+        "title": "Obrnuti DNS",
+        "updateReverseDns": "Ažuriraj obrnuti DNS"
+    },
+    "downloadBackups": {
+        "title": "Preuzmi sigurnosne kopije",
+        "backup": "Sigurnosna kopija",
+        "size": "Veličina",
+        "options": "Opcije"
+    },
+    "migration": {
+        "title": "Migriraj svoju web stranicu",
+        "currentWebHostInfo": "Informacije o trenutačnom web hostu",
+        "customerPortalUrl": "URL korisničkog portala",
+        "portalExample": "Na primjer: sso.godaddy.com",
+        "registeredUsername": "Registrirano korisničko ime / E-mail / ID",
+        "password": "Lozinka",
+        "controlPanelUrl": "URL upravljačke ploče",
+        "controlPanelExample": "Na primjer: vasadomena.com/cpanel",
+        "ftpUsername": "FTP / Korisničko ime upravljačke ploče",
+        "ftpPassword": "FTP / Lozinka upravljačke ploče",
+        "holdingPageQuestion": "Ako je stranica aktivna/zauzeta s velikim prometom, možemo li postaviti privremenu stranicu za vrijeme migracije?",
+        "specialRequirementsQuestion": "Ima li ova stranica posebne zahtjeve poput verzije PHP-a / modula?",
+        "domainRegistryInfo": "Informacije o registru domene",
+        "transferDomainQuestion": "Želite li da vam pomognemo i s transferom registracije domene?",
+        "updateNameserversQuestion": "Želite li da ažuriramo poslužitelje imena čim završimo migraciju podataka?",
+        "domainRegistryPortal": "Korisnički portal registra domene",
+        "importantNotes": "Važne napomene",
+        "note1": "Ispunjavanje ovog obrasca otvorit će novi ticket za naš odjel podrške koji će pokrenuti vašu migraciju.",
+        "note2": "Molimo budite što potpuniji i točniji kako biste izbjegli kašnjenja.",
+        "note3": "Tipična migracija završi u roku od 48 do 72 sata. Ponekad duže ako je količina podataka za kopiranje velika.",
+        "note4": "Stari hosting račun mora biti online i dostupan dok obavljamo migraciju, inače možemo naići na poteškoće.",
+        "note5": "Molimo ne mijenjajte ništa na svojoj stranici dok obavljamo migraciju, jer ti podaci možda neće biti kopirani na novi hosting."
+    },
+    "order": {
+        "title": "Naruči web stranicu"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Behearder",
+        "addDomain": "Domein Tafoegje",
+        "deleteDomain": "Domein Wiskje",
+        "domainName": "Domeinnamme",
+        "dnsServers": "DNS Servers",
+        "confirmDelete": "Binne jo wis dat jo dit domein wiskje wolle?",
+        "noDomains": "Gjin domeinen fûn"
+    },
+    "editor": {
+        "title": "DNS Bewurker",
+        "addRecord": "Record Tafoegje",
+        "deleteRecord": "Record Wiskje",
+        "editRecord": "Record Bewurkje",
+        "recordType": "Record Type",
+        "hostname": "Hostnamme",
+        "address": "Adres",
+        "distance": "Ôfstân",
+        "weight": "Gewicht",
+        "port": "Poarte",
+        "ttl": "TTL",
+        "actions": "Aksjes",
+        "confirmDelete": "Binne jo wis dat jo dit record wiskje wolle?"
+    }
+}

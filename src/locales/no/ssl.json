@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Liste over SSL-sertifikater",
+        "orderTitle": "Bestill SSL-registreringer"
+    },
+    "view": {
+        "title": "Vis SSL {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Neste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "fakturert:",
+        "statusIs": "Status er:",
+        "orderInfo": "Bestillingsinformasjon",
+        "certificateInfo": "Sertifikatinformasjon",
+        "links": "Lenker",
+        "welcomeEmailConfirm": "Er du sikker på at du vil sende velkomst-e-posten på nytt?",
+        "emailSent": "E-post sendt",
+        "emailSentMessage": "Velkomst-e-posten har blitt sendt på nytt. Sjekk innboksen din."
+    },
+    "order": {
+        "title": "Bestill SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Endre godkjenner-e-post",
+        "selectApproverEmail": "Velg godkjenner-e-post"
+    }
+}

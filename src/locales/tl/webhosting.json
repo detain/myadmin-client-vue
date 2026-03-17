@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Listahan ng Web Hosting",
+        "orderTitle": "Mag-order ng mga Rehistrasyon ng Website"
+    },
+    "view": {
+        "title": "Tingnan ang Website {id}",
+        "package": "Pakete",
+        "nextInvoiceDate": "Susunod na Petsa ng Invoice:",
+        "billing": "Pagsingil",
+        "billed": "sinisingil",
+        "billingStatusIs": "Status ng Pagsingil ay:",
+        "hostInfo": "Impormasyon ng Host",
+        "username": "Username:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Hindi pa itinakda",
+        "login": "Mag-login",
+        "types": "Mga Uri:",
+        "linksLabel": "Mga Link:",
+        "manualLogin": "Manual na Pag-login",
+        "automaticLogin": "Awtomatikong Pag-login",
+        "clickHere": "I-click Dito",
+        "defaultNameservers": "Mga Default na Nameserver",
+        "nameservers": "Mga Nameserver:",
+        "externalLinks": "Mga External na Link",
+        "names": "Mga Pangalan:",
+        "websitePreview": "Preview ng Website",
+        "links": "Mga Link",
+        "welcomeEmailConfirm": "Sigurado ba kayong nais ninyong muling ipadala ang welcome email?",
+        "emailSent": "Naipadala ang Email",
+        "emailSentMessage": "Muling naipadala ang welcome email. Suriin ang inyong inbox."
+    },
+    "buyIp": {
+        "title": "Bilhin ang Karagdagang IP Addon",
+        "existingAddonIps": "Mga Kasalukuyang Addon IP",
+        "additionalIp": "Karagdagang IP",
+        "monthlyCost": "Buwanang Gastos ({symbol})",
+        "costDescription": "Gastos ({symbol}) bawat buwan habang sinisingil ang inyong website",
+        "confirmPurchase": "Kumpirmahin ang Pagbili",
+        "confirmMessage": "Gastos ng karagdagang IP: {symbol}{cost}/buwan. Sigurado ba kayong nais ninyong mag-order ng karagdagang IP?",
+        "placeOrder": "Ilagay ang Order",
+        "orderPlaced": "Nailagay ang Order"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "I-update ang Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "I-download ang mga Backup",
+        "backup": "Backup",
+        "size": "Sukat",
+        "options": "Mga Opsyon"
+    },
+    "migration": {
+        "title": "I-migrate ang Inyong Website",
+        "currentWebHostInfo": "Impormasyon ng Kasalukuyang Web Host",
+        "customerPortalUrl": "URL ng Customer Portal",
+        "portalExample": "Halimbawa: sso.godaddy.com",
+        "registeredUsername": "Nakarehistrong Username / Email / ID",
+        "password": "Password",
+        "controlPanelUrl": "URL ng Control Panel",
+        "controlPanelExample": "Halimbawa: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Username ng Control Panel",
+        "ftpPassword": "FTP / Password ng Control Panel",
+        "holdingPageQuestion": "Kung ang site ay live/abalang site na may mataas na trapiko, maaari ba kaming magtakda ng holding page sa panahon ng migration?",
+        "specialRequirementsQuestion": "Mayroon ba ang site na ito ng mga espesyal na kinakailangan tulad ng Bersyon ng PHP / Mga Module?",
+        "domainRegistryInfo": "Impormasyon ng Domain Registry",
+        "transferDomainQuestion": "Nais ba rin ninyong matulungan kayo ng aming tulong sa pag-transfer ng rehistrasyon ng pangalan ng domain?",
+        "updateNameserversQuestion": "Nais ba ninyong i-update namin ang mga name server sa sandaling matatapos na namin ang migration ng data?",
+        "domainRegistryPortal": "Customer Portal ng Domain Registry",
+        "importantNotes": "Mga Mahalagang Tala",
+        "note1": "Ang pagpuno ng form na ito ay magbubukas ng bagong tiket para sa aming departamento ng suporta para magsimula ng inyong migration.",
+        "note2": "Mangyaring maging kumplikado at tumpak hangga't maaari para maiwasan ang anumang pagkaantala.",
+        "note3": "Ang isang tipikal na migration ay nakumpleto sa loob ng 48 hanggang 72 na oras. Minsan mas matagal kung malaki ang dami ng data na kokopyahin.",
+        "note4": "Ang lumang hosting account ay kailangang online at accessible habang ginagawa namin ang migration, kung hindi ay maaari kaming makaharap ng kahirapan.",
+        "note5": "Mangyaring huwag gumawa ng mga update sa inyong site habang ginagawa namin ang migration, kung hindi ang mga data na iyon ay maaaring hindi makopya sa bagong hosting."
+    },
+    "order": {
+        "title": "Mag-order ng Website"
+    }
+}

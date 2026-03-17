@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Uhlu Lwezinkonzo Zeposi",
+        "orderTitle": "Nika Umyalelo Wokubhalisa Kweposi"
+    },
+    "view": {
+        "title": "Buka Iposi {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwekheli Lokulandelayo:",
+        "billing": "Ukubhilela",
+        "billed": "ibhilwe:",
+        "statusIs": "Isimo siyini:",
+        "mailApi": "I-API Yeposi",
+        "usageCount": "Inani Lokusetshenziswa:",
+        "links": "Izixhumanisi",
+        "connectionInfo": "Ulwazi Lokuxhumana",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthumela kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungena."
+    },
+    "order": {
+        "title": "Nika Umyalelo Weposi"
+    },
+    "alerts": {
+        "title": "Izexwayiso",
+        "addAlert": "Engeza Isexwayiso",
+        "editAlert": "Hlela Isexwayiso",
+        "noAlerts": "Azikho izexwayiso ezitholiwe"
+    },
+    "delist": {
+        "title": "Susa Kuluhlu",
+        "blockedEmails": "Ama-imeyili Avaliwe"
+    },
+    "denyRules": {
+        "title": "Imithetho Yokwenqaba",
+        "addRule": "Engeza Umthetho",
+        "noRules": "Ayikho imithetho yokwenqaba etholiwe"
+    },
+    "logs": {
+        "title": "Amarekhodi",
+        "searchLogs": "Sesha Amarekhodi"
+    },
+    "stats": {
+        "title": "Izibalo"
+    },
+    "deliverability": {
+        "title": "Ukuhanjiswa"
+    }
+}

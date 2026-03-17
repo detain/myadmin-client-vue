@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "ലൈസൻസ് പട്ടിക",
+        "orderTitle": "ലൈസൻസ് രജിസ്‌ട്രേഷൻ ഓർഡർ ചെയ്യുക"
+    },
+    "view": {
+        "title": "ലൈസൻസ് {id} കാണുക",
+        "package": "പാക്കേജ്",
+        "nextInvoiceDate": "അടുത്ത ഇൻവോയ്‌സ് തീയതി:",
+        "billing": "ബില്ലിംഗ്",
+        "billed": "ബിൽ ചെയ്തു:",
+        "statusIs": "സ്ഥിതി:",
+        "licenseInfo": "ലൈസൻസ് വിവരം",
+        "cpanelInfo": "cPanel വിവരം",
+        "links": "ലിങ്കുകൾ",
+        "welcomeEmailConfirm": "സ്വാഗത ഇമെയിൽ വീണ്ടും അയക്കണമെന്ന് തീർച്ചയാണോ?",
+        "emailSent": "ഇമെയിൽ അയച്ചു",
+        "emailSentMessage": "സ്വാഗത ഇമെയിൽ വീണ്ടും അയച്ചു. നിങ്ങളുടെ ഇൻബോക്‌സ് പരിശോധിക്കുക."
+    },
+    "order": {
+        "title": "ലൈസൻസ് ഓർഡർ ചെയ്യുക"
+    },
+    "changeIp": {
+        "title": "IP മാറ്റുക"
+    },
+    "changeOs": {
+        "title": "OS മാറ്റുക",
+        "selectLicenseOs": "ലൈസൻസ് OS തിരഞ്ഞെടുക്കൂ"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Uhlu Lwezimvume",
+        "orderTitle": "Nika Umyalelo Wokubhalisa Kwezimvume"
+    },
+    "view": {
+        "title": "Buka Imvume {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwekheli Lokulandelayo:",
+        "billing": "Ukubhilela",
+        "billed": "ibhilwe:",
+        "statusIs": "Isimo siyini:",
+        "licenseInfo": "Ulwazi Lwemvume",
+        "cpanelInfo": "Ulwazi lwe-cPanel",
+        "links": "Izixhumanisi",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthumela kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungena."
+    },
+    "order": {
+        "title": "Nika Umyalelo Wemvume"
+    },
+    "changeIp": {
+        "title": "Shintsha I-IP"
+    },
+    "changeOs": {
+        "title": "Shintsha i-OS",
+        "selectLicenseOs": "Khetha i-OS Yemvume"
+    }
+}

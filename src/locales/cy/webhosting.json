@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Rhestr Gwesteia Gwe",
+        "orderTitle": "Archebu Cofrestriadau Gwefan"
+    },
+    "view": {
+        "title": "Gweld Gwefan {id}",
+        "package": "Pecyn",
+        "nextInvoiceDate": "Dyddiad Anfoneb Nesaf:",
+        "billing": "Bilio",
+        "billed": "wedi'i filio",
+        "billingStatusIs": "Mae Statws Bilio yn:",
+        "hostInfo": "Gwybodaeth Gwesteia",
+        "username": "Enw Defnyddiwr:",
+        "ip": "IP:",
+        "server": "Gweinydd:",
+        "notSetYet": "Heb ei osod eto",
+        "login": "Mewngofnodi",
+        "types": "Mathau:",
+        "linksLabel": "Dolenni:",
+        "manualLogin": "Mewngofnodi â Llaw",
+        "automaticLogin": "Mewngofnodi'n Awtomatig",
+        "clickHere": "Cliciwch Yma",
+        "defaultNameservers": "Gweinyddion Enw Rhagosodiad",
+        "nameservers": "Gweinyddion Enw:",
+        "externalLinks": "Dolenni Allanol",
+        "names": "Enwau:",
+        "websitePreview": "Rhagolwg Gwefan",
+        "links": "Dolenni",
+        "welcomeEmailConfirm": "Ydych chi'n siŵr eich bod am ailanfon yr e-bost croeso?",
+        "emailSent": "E-bost Wedi'i Anfon",
+        "emailSentMessage": "Mae'r e-bost croeso wedi'i ailanfon. Gwiriwch eich blwch derbyn."
+    },
+    "buyIp": {
+        "title": "Prynu Ychwanegyn IP Ychwanegol",
+        "existingAddonIps": "IPau Ychwanegyn Presennol",
+        "additionalIp": "IP Ychwanegol",
+        "monthlyCost": "Cost Fisol ({symbol})",
+        "costDescription": "Cost ({symbol}) bob mis wrth i'ch gwefan gael ei bilio",
+        "confirmPurchase": "Cadarnhau Pryniant",
+        "confirmMessage": "Cost IP ychwanegol: {symbol}{cost}/mis. Ydych chi'n siŵr eich bod am archebu IP ychwanegol?",
+        "placeOrder": "Gosod Archeb",
+        "orderPlaced": "Archeb wedi'i Gosod"
+    },
+    "reverseDns": {
+        "title": "DNS Gwrthdro",
+        "updateReverseDns": "Diweddaru DNS Gwrthdro"
+    },
+    "downloadBackups": {
+        "title": "Lawrlwytho Copïau Wrth Gefn",
+        "backup": "Copi Wrth Gefn",
+        "size": "Maint",
+        "options": "Opsiynau"
+    },
+    "migration": {
+        "title": "Mudo Eich Gwefan",
+        "currentWebHostInfo": "Gwybodaeth Gwesteia Gwe Cyfredol",
+        "customerPortalUrl": "URL Porth Cwsmer",
+        "portalExample": "Er Enghraifft: sso.godaddy.com",
+        "registeredUsername": "Enw Defnyddiwr / E-bost / ID Cofrestredig",
+        "password": "Cyfrinair",
+        "controlPanelUrl": "URL Panel Rheoli",
+        "controlPanelExample": "Er Enghraifft: yourdomain.com/cpanel",
+        "ftpUsername": "Enw Defnyddiwr FTP / Panel Rheoli",
+        "ftpPassword": "Cyfrinair FTP / Panel Rheoli",
+        "holdingPageQuestion": "Os yw'r safle'n fyw/prysur gyda llawer o draffig, a allwn ni osod tudalen gynnal yn ystod y mudo?",
+        "specialRequirementsQuestion": "A oes gan y safle hwn ofynion arbennig fel Fersiwn PHP / Modiwlau?",
+        "domainRegistryInfo": "Gwybodaeth Cofrestrfa Parth",
+        "transferDomainQuestion": "Ydych chi hefyd am i ni helpu i drosglwyddo cofrestriad enw'r parth?",
+        "updateNameserversQuestion": "Ydych chi am i ni ddiweddaru'r gweinyddion enw cyn gynted ag y byddwn yn gorffen y mudo data?",
+        "domainRegistryPortal": "Porth Cwsmer Cofrestrfa Parth",
+        "importantNotes": "Nodiadau Pwysig",
+        "note1": "Bydd llenwi'r ffurflen hon yn agor tocyn newydd i'n hadran cymorth ddechrau eich mudo.",
+        "note2": "Byddwch mor gyflawn a chywir â phosibl i osgoi unrhyw oedi.",
+        "note3": "Cwblheir mudo nodweddiadol o fewn 48 i 72 awr. Weithiau'n hirach os yw swm y data i'w gopïo yn fawr.",
+        "note4": "Mae angen i'r hen gyfrif gwesteia fod ar-lein ac yn hygyrch tra byddwn yn cynnal y mudo, fel arall efallai y byddwn yn wynebu anawsterau.",
+        "note5": "Peidiwch â gwneud unrhyw ddiweddariadau ar eich safle tra byddwn yn cynnal y mudo, fel arall efallai na chaiff y data hwnnw ei gopïo i'r gwesteia newydd."
+    },
+    "order": {
+        "title": "Archebu Gwefan"
+    }
+}

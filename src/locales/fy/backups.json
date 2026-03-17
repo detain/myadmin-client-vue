@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Opslach / Reservekopy List",
+        "orderTitle": "Reservekopy Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "Reservekopy {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare:",
+        "statusIs": "Status is:",
+        "hostServer": "Host Server",
+        "links": "Keppelingen",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "order": {
+        "title": "Opslach Bestelle"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Liosta Ceadúnais",
+        "orderTitle": "Ordaigh Clárúcháin Ceadúnais"
+    },
+    "view": {
+        "title": "Féach ar Cheadúnas {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonraisc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte:",
+        "statusIs": "Is é an stádas:",
+        "licenseInfo": "Eolas Ceadúnais",
+        "cpanelInfo": "Eolas cPanel",
+        "links": "Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheolachán?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Seoladh an ríomhphost fáilte arís. Seiceáil do bhosca isteach."
+    },
+    "order": {
+        "title": "Ordaigh Ceadúnas"
+    },
+    "changeIp": {
+        "title": "Athraigh IP"
+    },
+    "changeOs": {
+        "title": "Athraigh OS",
+        "selectLicenseOs": "Roghnaigh OS Ceadúnais"
+    }
+}

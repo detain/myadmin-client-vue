@@ -1,0 +1,12 @@
+{
+    "required": "{field} is fereaske",
+    "email": "Moat in jildich e-postadres wêze",
+    "minLength": "Moat op syn minst {min} tekens wêze",
+    "maxLength": "Mei net mear as {max} tekens wêze",
+    "passwordMatch": "Wachtwurden moatte oerienkomme",
+    "invalidFormat": "Unjildich formaat",
+    "numeric": "Moat in getal wêze",
+    "url": "Moat in jildige URL wêze",
+    "ipAddress": "Moat in jildich IP-adres wêze",
+    "hostname": "Moat in jildige hostnamme wêze"
+}

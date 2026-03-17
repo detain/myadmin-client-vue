@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Zoznam licencií",
+        "orderTitle": "Objednať registrácie licencií"
+    },
+    "view": {
+        "title": "Zobraziť licenciu {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované:",
+        "statusIs": "Stav je:",
+        "licenseInfo": "Informácie o licencii",
+        "cpanelInfo": "Informácie cPanel",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Ste si istý, že chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "order": {
+        "title": "Objednať licenciu"
+    },
+    "changeIp": {
+        "title": "Zmeniť IP"
+    },
+    "changeOs": {
+        "title": "Zmeniť OS",
+        "selectLicenseOs": "Vyberte OS licencie"
+    }
+}

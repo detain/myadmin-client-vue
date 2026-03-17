@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Maligayang pagdating, {name}",
+    "lastLogin": "Huling Login",
+    "lastLoginIp": "IP ng Huling Login",
+    "prepay": {
+        "title": "Balanse ng Prepay",
+        "remainingBalance": "Natitira pang Balanse ng Prepay",
+        "manageAccount": "Pamahalaan ang Account",
+        "manageTooltip": "Pamahalaan ang Inyong Prepay Account"
+    },
+    "invoices": {
+        "title": "Mga Hindi Nabayarang Invoice",
+        "totalUnpaid": "Kabuuang Hindi Nabayarang Invoice",
+        "totalAmount": "Kabuuang Halagang Babayaran",
+        "payTotalTooltip": "Bayaran ang Kabuuang Halaga"
+    },
+    "callInPin": "Call-in PIN",
+    "recentTickets": "Mga Kamakailang Tiket",
+    "viewAllTickets": "Tingnan ang Lahat ng Tiket",
+    "editTicket": "Baguhin ang Tiket",
+    "serviceCount": "Walang aktibong serbisyo | {count} aktibong serbisyo | {count} aktibong serbisyo",
+    "affiliate": {
+        "earnPerSale": "Kumita ng {amount} Bawat Benta",
+        "urlPlaceholder": "URL ng Affiliate",
+        "shareWith": "Ibahagi sa"
+    }
+}

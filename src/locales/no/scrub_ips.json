@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liste over Scrub IP-tjenester",
+        "orderTitle": "Bestill Scrub IP-er"
+    },
+    "view": {
+        "title": "Vis Scrub IP-er",
+        "currentIp": "Gjeldende IP",
+        "ipAddress": "IP-adresse",
+        "ipFromService": "IP fra tjenesten"
+    },
+    "filters": {
+        "title": "Filtre",
+        "createNew": "Opprett ny",
+        "createNewFilter": "Opprett nytt filter",
+        "filterType": "Filtertype",
+        "selectFilterType": "Velg filtertype",
+        "ipAddress": "IP-adresse",
+        "portNo": "Portnummer",
+        "filter": "Filter",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "noFiltersFound": "Ingen filtre funnet!",
+        "deleteFilterConfirm": "Er du sikker på at du vil slette dette filteret?",
+        "unableToCreateFilter": "Kan ikke opprette filter for øyeblikket.",
+        "unableToDeleteFilter": "Kan ikke slette filter for øyeblikket."
+    },
+    "firewallRules": {
+        "title": "Brannmurregler",
+        "createNew": "Opprett ny",
+        "createNewFirewall": "Opprett ny brannmurregel",
+        "protocol": "Protokoll",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "sourceIp": "Kilde-IP",
+        "sourcePort": "Kildeport",
+        "xdpAction": "XDP-handling",
+        "ipRequired": "IP-adresse er påkrevd",
+        "block": "Blokker",
+        "whitelist": "Hviteliste",
+        "noRulesFound": "Ingen regler funnet!",
+        "deleteRuleConfirm": "Er du sikker på at du vil slette denne regelen?",
+        "unableToCreateRule": "Kan ikke opprette brannmurregel for øyeblikket.",
+        "unableToDeleteRule": "Kan ikke slette brannmurregel for øyeblikket."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-brannmurregler",
+        "createNew": "Opprett ny",
+        "createNewGeoRule": "Opprett ny geo-brannmurregel",
+        "destinationIp": "Mål-IP",
+        "destinationPort": "Målport",
+        "sourceCountry": "Kildeland",
+        "sourceAsn": "Kilde-ASN",
+        "xdpAction": "XDP-handling",
+        "portNo": "Portnummer",
+        "selectCountry": "Velg land",
+        "asn": "ASN",
+        "block": "Blokker",
+        "whitelist": "Hviteliste",
+        "noRulesFound": "Ingen regler funnet!",
+        "deleteGeoRuleConfirm": "Er du sikker på at du vil slette denne geo-regelen?",
+        "unableToCreateRule": "Kan ikke opprette brannmurregel for øyeblikket.",
+        "unableToDeleteRule": "Kan ikke slette geo-brannmurregel for øyeblikket."
+    }
+}

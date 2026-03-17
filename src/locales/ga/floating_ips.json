@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Liosta Seirbhísí IP Snámhach",
+        "orderTitle": "Ordaigh Clárúcháin IP Snámhach"
+    },
+    "view": {
+        "title": "Féach ar IP Snámhach {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonraisc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte:",
+        "statusIs": "Is é an stádas:",
+        "floatingIp": "IP Snámhach",
+        "links": "Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheolachán?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Seoladh an ríomhphost fáilte arís. Seiceáil do bhosca isteach."
+    },
+    "order": {
+        "title": "Ordaigh IP Snámhach"
+    },
+    "changeIp": {
+        "title": "Athraigh IP Sprice"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Zoznam SSL certifikátov",
+        "orderTitle": "Objednať registrácie SSL"
+    },
+    "view": {
+        "title": "Zobraziť SSL {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované:",
+        "statusIs": "Stav je:",
+        "orderInfo": "Informácie o objednávke",
+        "certificateInfo": "Informácie o certifikáte",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Ste si istý, že chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "order": {
+        "title": "Objednať SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Zmeniť e-mail schvaľovateľa",
+        "selectApproverEmail": "Vybrať e-mail schvaľovateľa"
+    }
+}

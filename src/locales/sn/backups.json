@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Rondedzero yeStorage / Backup",
+        "orderTitle": "Oda Kurejistra kwekuBackup"
+    },
+    "view": {
+        "title": "Ona Backup {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Zuva reInvoice Rinotevera:",
+        "billing": "Kubhadhara",
+        "billed": "kubhadhara:",
+        "statusIs": "Status ndeyo:",
+        "hostServer": "Seva yeHost",
+        "links": "Rondedzero",
+        "welcomeEmailConfirm": "Unoda kutumira email yokugamuchira zvakare here?",
+        "emailSent": "Email Yatumirwa",
+        "emailSentMessage": "Email yokugamuchira yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "order": {
+        "title": "Oda Storage"
+    }
+}

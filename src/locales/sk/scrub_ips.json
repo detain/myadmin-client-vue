@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Zoznam služieb čistenia IP",
+        "orderTitle": "Objednať čistenie IP"
+    },
+    "view": {
+        "title": "Zobraziť čistenie IP",
+        "currentIp": "Aktuálna IP",
+        "ipAddress": "IP adresa",
+        "ipFromService": "IP zo služby"
+    },
+    "filters": {
+        "title": "Filtre",
+        "createNew": "Vytvoriť nový",
+        "createNewFilter": "Vytvoriť nový filter",
+        "filterType": "Typ filtra",
+        "selectFilterType": "Vybrať typ filtra",
+        "ipAddress": "IP adresa",
+        "portNo": "Číslo portu",
+        "filter": "Filter",
+        "destinationIp": "Cieľová IP",
+        "destinationPort": "Cieľový port",
+        "noFiltersFound": "Nenašli sa žiadne filtre!",
+        "deleteFilterConfirm": "Ste si istý, že chcete odstrániť tento filter?",
+        "unableToCreateFilter": "Momentálne nie je možné vytvoriť filter.",
+        "unableToDeleteFilter": "Momentálne nie je možné odstrániť filter."
+    },
+    "firewallRules": {
+        "title": "Pravidlá brány firewall",
+        "createNew": "Vytvoriť nové",
+        "createNewFirewall": "Vytvoriť nové pravidlo brány firewall",
+        "protocol": "Protokol",
+        "destinationIp": "Cieľová IP",
+        "destinationPort": "Cieľový port",
+        "sourceIp": "Zdrojová IP",
+        "sourcePort": "Zdrojový port",
+        "xdpAction": "Akcia XDP",
+        "ipRequired": "IP adresa je povinná",
+        "block": "Blokovať",
+        "whitelist": "Biela listina",
+        "noRulesFound": "Nenašli sa žiadne pravidlá!",
+        "deleteRuleConfirm": "Ste si istý, že chcete odstrániť toto pravidlo?",
+        "unableToCreateRule": "Momentálne nie je možné vytvoriť pravidlo brány firewall.",
+        "unableToDeleteRule": "Momentálne nie je možné odstrániť pravidlo brány firewall."
+    },
+    "geoFirewallRules": {
+        "title": "Geografické pravidlá brány firewall",
+        "createNew": "Vytvoriť nové",
+        "createNewGeoRule": "Vytvoriť nové geografické pravidlo brány firewall",
+        "destinationIp": "Cieľová IP",
+        "destinationPort": "Cieľový port",
+        "sourceCountry": "Zdrojová krajina",
+        "sourceAsn": "Zdrojový ASN",
+        "xdpAction": "Akcia XDP",
+        "portNo": "Číslo portu",
+        "selectCountry": "Vybrať krajinu",
+        "asn": "ASN",
+        "block": "Blokovať",
+        "whitelist": "Biela listina",
+        "noRulesFound": "Nenašli sa žiadne pravidlá!",
+        "deleteGeoRuleConfirm": "Ste si istý, že chcete odstrániť toto geografické pravidlo?",
+        "unableToCreateRule": "Momentálne nie je možné vytvoriť pravidlo brány firewall.",
+        "unableToDeleteRule": "Momentálne nie je možné odstrániť geografické pravidlo brány firewall."
+    }
+}

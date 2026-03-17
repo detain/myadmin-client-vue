@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Seznam shramb / varnostnih kopij",
+        "orderTitle": "Naroči registracije varnostnih kopij"
+    },
+    "view": {
+        "title": "Ogled varnostne kopije {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum naslednjega računa:",
+        "billing": "Zaračunavanje",
+        "billed": "zaračunano:",
+        "statusIs": "Status je:",
+        "hostServer": "Gostiteljski strežnik",
+        "links": "Povezave",
+        "welcomeEmailConfirm": "Ali ste prepričani, da želite znova poslati pozdravno e-pošto?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Pozdravna e-pošta je bila znova poslana. Preverite svojo nabiralno."
+    },
+    "order": {
+        "title": "Naroči shrambo"
+    }
+}

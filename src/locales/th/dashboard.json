@@ -1,0 +1,28 @@
+{
+    "title": "แดชบอร์ด",
+    "welcome": "ยินดีต้อนรับ, {name}",
+    "lastLogin": "เข้าสู่ระบบล่าสุด",
+    "lastLoginIp": "IP เข้าสู่ระบบล่าสุด",
+    "prepay": {
+        "title": "ยอดชำระล่วงหน้า",
+        "remainingBalance": "ยอดชำระล่วงหน้าคงเหลือ",
+        "manageAccount": "จัดการบัญชี",
+        "manageTooltip": "จัดการบัญชีชำระล่วงหน้าของคุณ"
+    },
+    "invoices": {
+        "title": "ใบแจ้งหนี้ที่ยังไม่ได้ชำระ",
+        "totalUnpaid": "ใบแจ้งหนี้ที่ยังไม่ได้ชำระทั้งหมด",
+        "totalAmount": "จำนวนเงินรวมที่ต้องชำระ",
+        "payTotalTooltip": "ชำระยอดรวม"
+    },
+    "callInPin": "PIN สำหรับโทรเข้า",
+    "recentTickets": "ตั๋วล่าสุด",
+    "viewAllTickets": "ดูตั๋วทั้งหมด",
+    "editTicket": "แก้ไขตั๋ว",
+    "serviceCount": "ไม่มีบริการที่ใช้งานอยู่ | {count} บริการที่ใช้งานอยู่ | {count} บริการที่ใช้งานอยู่",
+    "affiliate": {
+        "earnPerSale": "รับ {amount} ต่อการขาย",
+        "urlPlaceholder": "URL พันธมิตร",
+        "shareWith": "แชร์กับ"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Vitajte, {name}",
+    "lastLogin": "Posledné prihlásenie",
+    "lastLoginIp": "IP posledného prihlásenia",
+    "prepay": {
+        "title": "Zostatok predplatby",
+        "remainingBalance": "Zostatok predplatby",
+        "manageAccount": "Spravovať účet",
+        "manageTooltip": "Spravujte svoj účet predplatby"
+    },
+    "invoices": {
+        "title": "Nezaplatené faktúry",
+        "totalUnpaid": "Celkový počet nezaplatených faktúr",
+        "totalAmount": "Celková suma na zaplatenie",
+        "payTotalTooltip": "Zaplatiť celkovú sumu"
+    },
+    "callInPin": "PIN pre telefonické volanie",
+    "recentTickets": "Nedávne tikety",
+    "viewAllTickets": "Zobraziť všetky tikety",
+    "editTicket": "Upraviť tiket",
+    "serviceCount": "Žiadne aktívne služby | {count} aktívna služba | {count} aktívne služby",
+    "affiliate": {
+        "earnPerSale": "Zarobiť {amount} za predaj",
+        "urlPlaceholder": "Affiliate URL",
+        "shareWith": "Zdieľať s"
+    }
+}

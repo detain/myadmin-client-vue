@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lista licencji",
+        "orderTitle": "Zamów rejestracje licencji"
+    },
+    "view": {
+        "title": "Wyświetl licencję {id}",
+        "package": "Pakiet",
+        "nextInvoiceDate": "Data następnej faktury:",
+        "billing": "Rozliczenie",
+        "billed": "rozliczane:",
+        "statusIs": "Status:",
+        "licenseInfo": "Informacje o licencji",
+        "cpanelInfo": "Informacje o cPanel",
+        "links": "Linki",
+        "welcomeEmailConfirm": "Czy na pewno chcesz ponownie wysłać e-mail powitalny?",
+        "emailSent": "E-mail wysłany",
+        "emailSentMessage": "E-mail powitalny został ponownie wysłany. Sprawdź swoją skrzynkę odbiorczą."
+    },
+    "order": {
+        "title": "Zamów licencję"
+    },
+    "changeIp": {
+        "title": "Zmień IP"
+    },
+    "changeOs": {
+        "title": "Zmień system operacyjny",
+        "selectLicenseOs": "Wybierz system operacyjny licencji"
+    }
+}

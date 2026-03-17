@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Nastavitve računa"
+    },
+    "changePassword": {
+        "title": "Sprememba gesla",
+        "cardTitle": "Posodobi geslo",
+        "currentPassword": "Trenutno geslo",
+        "newPassword": "Novo geslo",
+        "confirmPassword": "Potrdi geslo",
+        "updatePassword": "Posodobi geslo"
+    },
+    "changeUsername": {
+        "title": "Sprememba uporabniškega imena",
+        "disabled": "Spremembe uporabniškega imena so začasno onemogočene.",
+        "currentUsername": "Trenutno uporabniško ime",
+        "newDesiredUsername": "Novo želeno uporabniško ime",
+        "confirmationCode": "Potrditvena koda",
+        "pleaseWait": "Prosimo, počakajte!",
+        "gotError": "Prišlo je do napake {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktni podatki",
+        "cardTitle": "Posodobi kontaktne podatke",
+        "headsUp": "Pozor!",
+        "headsUpMessage": "Čeprav so ti podatki neobvezni, nam bo zagotavljanje (točnih) informacij pomagalo obogatiti naše interakcije in znižati vaš odstotek tveganja, kar vam bo omogočilo hitrejši in bolj priročen dostop do delov spletnega mesta (npr. brez potrebe po avtentikaciji kreditne kartice).",
+        "riskScore": "Odstotek tveganja",
+        "personalInformation": "Osebni podatki",
+        "name": "Ime",
+        "namePlaceholder": "Janez Novak",
+        "company": "Podjetje",
+        "gstinTaxId": "GSTIN davčna ID",
+        "gstinPlaceholder": "Identifikacijska številka davkoplačevalca za blago in storitve",
+        "addressLine1": "Naslovnica 1",
+        "addressLine2": "Naslovnica 2",
+        "cityState": "Mesto, Država",
+        "city": "Mesto",
+        "state": "Država",
+        "country": "Država",
+        "zipcode": "Poštna številka",
+        "phoneNo": "Telefonska št.",
+        "phoneNumber": "Telefonska številka",
+        "language": "Jezik",
+        "auto": "Samodejno",
+        "currency": "Valuta",
+        "timeZone": "Časovni pas",
+        "otherSettings": "Druge nastavitve",
+        "disablePasswordResets": "Onemogoči (Pozabljeno geslo) ponastavitve gesla.",
+        "disableInvoiceReminders": "Onemogoči e-poštna obvestila o opominih za račune.",
+        "disableServerInvoiceReminders": "Onemogoči e-poštna obvestila o opominih za račune strežnika.",
+        "disableReinstall": "Onemogoči ponovno namestitev.",
+        "alternateEmailInvoices": "Nadomestni e-naslov za račune",
+        "alternateEmailInvoicesPlaceholder": "Nadomestni e-naslov za pošiljanje računov",
+        "alternateEmailAbuse": "Nadomestni e-naslov za poročila o zlorabah",
+        "updateInfo": "Posodobi podatke"
+    }
+}

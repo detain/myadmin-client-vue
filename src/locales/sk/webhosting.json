@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Zoznam webhostingov",
+        "orderTitle": "Objednať registrácie webových stránok"
+    },
+    "view": {
+        "title": "Zobraziť webovú stránku {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované",
+        "billingStatusIs": "Stav fakturácie je:",
+        "hostInfo": "Informácie o hostiteľovi",
+        "username": "Používateľské meno:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Zatiaľ nenastavené",
+        "login": "Prihlásiť sa",
+        "types": "Typy:",
+        "linksLabel": "Odkazy:",
+        "manualLogin": "Manuálne prihlásenie",
+        "automaticLogin": "Automatické prihlásenie",
+        "clickHere": "Kliknite tu",
+        "defaultNameservers": "Predvolené menné servery",
+        "nameservers": "Menné servery:",
+        "externalLinks": "Externé odkazy",
+        "names": "Názvy:",
+        "websitePreview": "Ukážka webovej stránky",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Ste si istý, že chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "buyIp": {
+        "title": "Kúpiť doplnkovú IP",
+        "existingAddonIps": "Existujúce doplnkové IP",
+        "additionalIp": "Doplnková IP",
+        "monthlyCost": "Mesačná cena ({symbol})",
+        "costDescription": "Cena ({symbol}) každý mesiac ako je vaša webová stránka fakturovaná",
+        "confirmPurchase": "Potvrdiť nákup",
+        "confirmMessage": "Cena doplnkovej IP: {symbol}{cost}/mesiac. Ste si istý, že chcete objednať doplnkovú IP?",
+        "placeOrder": "Umiestniť objednávku",
+        "orderPlaced": "Objednávka zadaná"
+    },
+    "reverseDns": {
+        "title": "Reverzný DNS",
+        "updateReverseDns": "Aktualizovať reverzný DNS"
+    },
+    "downloadBackups": {
+        "title": "Stiahnuť zálohy",
+        "backup": "Záloha",
+        "size": "Veľkosť",
+        "options": "Možnosti"
+    },
+    "migration": {
+        "title": "Migrovať svoju webovú stránku",
+        "currentWebHostInfo": "Informácie o aktuálnom webhostingu",
+        "customerPortalUrl": "URL zákazníckeho portálu",
+        "portalExample": "Napríklad: sso.godaddy.com",
+        "registeredUsername": "Registrované používateľské meno / E-mail / ID",
+        "password": "Heslo",
+        "controlPanelUrl": "URL ovládacieho panela",
+        "controlPanelExample": "Napríklad: yourdomain.com/cpanel",
+        "ftpUsername": "Používateľské meno FTP / Ovládacieho panela",
+        "ftpPassword": "Heslo FTP / Ovládacieho panela",
+        "holdingPageQuestion": "Ak je stránka živá alebo zaneprázdnená s vysokou návštevnosťou, môžeme počas migrácie nastaviť dočasnú stránku?",
+        "specialRequirementsQuestion": "Má táto stránka špeciálne požiadavky, ako je verzia PHP / moduly?",
+        "domainRegistryInfo": "Informácie o registri domén",
+        "transferDomainQuestion": "Chcete, aby sme vám tiež pomohli s prenosom registrácie doménového mena?",
+        "updateNameserversQuestion": "Chcete, aby sme aktualizovali menné servery hneď po dokončení migrácie dát?",
+        "domainRegistryPortal": "Zákaznícky portál registra domén",
+        "importantNotes": "Dôležité poznámky",
+        "note1": "Vyplnením tohto formulára sa otvorí nový tiket pre náš tím podpory, aby začal vašu migráciu.",
+        "note2": "Buďte čo najúplnejší a najpresnejší, aby ste predišli akýmkoľvek oneskoreniam.",
+        "note3": "Typická migrácia je dokončená do 48 až 72 hodín. Niekedy dlhšie, ak je množstvo dát na kopírovanie veľké.",
+        "note4": "Starý hostingový účet musí byť online a dostupný, kým vykonávame migráciu, inak môžeme čeliť ťažkostiam.",
+        "note5": "Počas migrácie nevykonávajte žiadne aktualizácie na svojej stránke, inak sa tieto dáta nemusia skopírovať na nový hosting."
+    },
+    "order": {
+        "title": "Objednať webovú stránku"
+    }
+}

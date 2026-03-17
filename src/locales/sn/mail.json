@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Rondedzero yemasevhisi eImeli",
+        "orderTitle": "Oda Magwaro eImeli"
+    },
+    "view": {
+        "title": "Ona Imeli {id}",
+        "package": "Paketi",
+        "nextInvoiceDate": "Zuva Reimboti Rinouya:",
+        "billing": "Kubhadharisa",
+        "billed": "kubhadhariswa:",
+        "statusIs": "Mamiriro:",
+        "mailApi": "Mail API",
+        "usageCount": "Nhamba yekushandiswa:",
+        "links": "Misungo",
+        "connectionInfo": "Ruzivo rwekubatana",
+        "welcomeEmailConfirm": "Unoda kutumira zvakare email yemutsauko here?",
+        "emailSent": "Email Yatumirwa",
+        "emailSentMessage": "Email yemutsauko yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "order": {
+        "title": "Oda Imeli"
+    },
+    "alerts": {
+        "title": "Zviratidzo",
+        "addAlert": "Wedzera Chiratidzo",
+        "editAlert": "Shandura Chiratidzo",
+        "noAlerts": "Hapana zviratidzo zvakawanikwa"
+    },
+    "delist": {
+        "title": "Bvisa paMutezo",
+        "blockedEmails": "Maimeli Akabharwa"
+    },
+    "denyRules": {
+        "title": "Mitemo yeKurambwa",
+        "addRule": "Wedzera Mutemo",
+        "noRules": "Hapana mitemo yekurambwa yakawanikwa"
+    },
+    "logs": {
+        "title": "Zvinyorwa",
+        "searchLogs": "Tsvaga Zvinyorwa"
+    },
+    "stats": {
+        "title": "Nhamba"
+    },
+    "deliverability": {
+        "title": "Kusvika"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Liosta Stórála / Cúltaca",
+        "orderTitle": "Ordaigh Clárúcháin Cúltaca"
+    },
+    "view": {
+        "title": "Féach ar Chúltaca {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonrasc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte:",
+        "statusIs": "Is é an Stádas:",
+        "hostServer": "Freastalaí Óstála",
+        "links": "Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheoladh?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Athadh an ríomhphost fáilte. Seiceáil do bhosca isteach."
+    },
+    "order": {
+        "title": "Ordaigh Stóráil"
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Liosta lìon-aoigheachd",
+        "orderTitle": "Òrdaich clàrachaidhean lìon-aoigheachd"
+    },
+    "view": {
+        "title": "Seall làrach-lìn {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an ath-chunntas:",
+        "billing": "Cunntas",
+        "billed": "air a chunntas",
+        "billingStatusIs": "Staid cunntais:",
+        "hostInfo": "Fiosrachadh ostaig",
+        "username": "Ainm cleachdaiche:",
+        "ip": "IP:",
+        "server": "Frithealadair:",
+        "notSetYet": "Gun suidheachadh fhathast",
+        "login": "Clàraich a-steach",
+        "types": "Seòrsaichean:",
+        "linksLabel": "Ceanglaichean:",
+        "manualLogin": "Clàradh a-steach làimhe",
+        "automaticLogin": "Clàradh a-steach fèin-ghluasadach",
+        "clickHere": "Briog an seo",
+        "defaultNameservers": "Frithealaichean ainm bunaiteach",
+        "nameservers": "Frithealaichean ainm:",
+        "externalLinks": "Ceanglaichean taobh a-muigh",
+        "names": "Ainmean:",
+        "websitePreview": "Ro-shealladh làraich-lìn",
+        "links": "Ceanglaichean",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilteachaidh a chur a-rithist?",
+        "emailSent": "Chaidh post-d a chur",
+        "emailSentMessage": "Chaidh am post-d fàilteachaidh a chur a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "buyIp": {
+        "title": "Ceannaich viðbót IP a bharrachd",
+        "existingAddonIps": "IP-thannan viðbót a th' ann",
+        "additionalIp": "IP a bharrachd",
+        "monthlyCost": "Cosgais mhìosail ({symbol})",
+        "costDescription": "Cosgais ({symbol}) gach mìos mar a thathar a' cunntais an làrach-lìn agad",
+        "confirmPurchase": "Dearbhaich ceannach",
+        "confirmMessage": "Cosgais IP a bharrachd: {symbol}{cost}/mìos. A bheil thu cinnteach gu bheil thu airson IP a bharrachd òrdachadh?",
+        "placeOrder": "Cuir òrdugh",
+        "orderPlaced": "Chaidh òrdugh a chur"
+    },
+    "reverseDns": {
+        "title": "DNS cùil",
+        "updateReverseDns": "Ùraich DNS cùil"
+    },
+    "downloadBackups": {
+        "title": "Luchdaich sìos lethbhreacan glèidhidh",
+        "backup": "Lethbhreac glèidhidh",
+        "size": "Meud",
+        "options": "Roghainnean"
+    },
+    "migration": {
+        "title": "Gluais an làrach-lìn agad",
+        "currentWebHostInfo": "Fiosrachadh ostaig-lìn gnàthach",
+        "customerPortalUrl": "URL pòrtail chliaint",
+        "portalExample": "Mar eisimpleir: sso.godaddy.com",
+        "registeredUsername": "Ainm cleachdaiche / Post-d / ID clàraichte",
+        "password": "Facal-faire",
+        "controlPanelUrl": "URL pannail smachd",
+        "controlPanelExample": "Mar eisimpleir: do-àrainn.com/cpanel",
+        "ftpUsername": "Ainm cleachdaiche FTP / Pannail smachd",
+        "ftpPassword": "Facal-faire FTP / Pannail smachd",
+        "holdingPageQuestion": "Ma tha an làrach beò / trang le trafaig mhòr, faodaidh sinn duilleag cumail a shuidheachadh rè an gluasaid?",
+        "specialRequirementsQuestion": "A bheil riatanasan sònraichte aig an làrach seo leithid tionndadh PHP / mòidealan?",
+        "domainRegistryInfo": "Fiosrachadh clàr àrainn",
+        "transferDomainQuestion": "A bheil thu airson cuideachadh gus clàrachadh ainm àrainn a ghluasad cuideachd?",
+        "updateNameserversQuestion": "A bheil thu airson gum bi sinn ag ùrachadh nan frithealaichean ainm cho luath 's a chrìochnaicheas sinn gluasad nan dàta?",
+        "domainRegistryPortal": "Pòrtal cliaint clàr àrainn",
+        "importantNotes": "Notaichean cudromach",
+        "note1": "Le bhith a' lìonadh a-mach an fhoirm seo fosgailidh ticket ùr airson roinn taic againn gus gluasad agad a thòiseachadh.",
+        "note2": "Feuch an bi thu cho iomlan agus mionaideach 's a ghabhas gus cuir bacadh air dàilean.",
+        "note3": "Crìochnaichidh gluasad àbhaisteach taobh a-staigh 48 gu 72 uairean. Uaireannan nas fhaide ma tha dàta mòr ri lethbhreacadh.",
+        "note4": "Feumaidh am seann chunntas aoigheachd a bhith air-loidhne agus ruigsinneach fhad 's a tha sinn a' coileanadh a' ghluasaid, no dh'fhaodadh duilgheadasan tachairt.",
+        "note5": "Feuch nach dèan thu ùrachaidhean air an làrach agad fhad 's a tha sinn a' coileanadh a' ghluasaid, no dh'fhaodadh na dàta sin gun a bhith air an lethbhreacadh don aoigheachd ùr."
+    },
+    "order": {
+        "title": "Òrdaich làrach-lìn"
+    }
+}

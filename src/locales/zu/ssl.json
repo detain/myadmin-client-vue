@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Uhlu Lezitifiketi ze-SSL",
+        "orderTitle": "Oda Ukubhalisa kwe-SSL"
+    },
+    "view": {
+        "title": "Buka SSL {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwe-Invoice Elandelayo:",
+        "billing": "Ukubhadala",
+        "billed": "kubhalelwe:",
+        "statusIs": "Isimo Siyini:",
+        "orderInfo": "Ulwazi Lwesikhungo",
+        "certificateInfo": "Ulwazi Lwesitifiketi",
+        "links": "Izixhumanisi",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthuma kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-Imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungenayo."
+    },
+    "order": {
+        "title": "Oda SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Shintsha I-Imeyili Yomvuni",
+        "selectApproverEmail": "Khetha I-Imeyili Yomvuni"
+    }
+}

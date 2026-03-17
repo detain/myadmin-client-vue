@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Uhlu Lwesitoreji / Isipele",
+        "orderTitle": "Nika Umyalelo Wokubhalisa Kwesipele"
+    },
+    "view": {
+        "title": "Buka Isipele {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwekheli Lokulandelayo:",
+        "billing": "Ukubhilela",
+        "billed": "ibhilwe:",
+        "statusIs": "Isimo siyini:",
+        "hostServer": "Iseva Esisinqe",
+        "links": "Izixhumanisi",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthumela kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungena."
+    },
+    "order": {
+        "title": "Nika Umyalelo Wesitoreji"
+    }
+}

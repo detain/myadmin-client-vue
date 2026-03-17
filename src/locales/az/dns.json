@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Meneceri",
+        "addDomain": "Domen Əlavə Et",
+        "deleteDomain": "Domeni Sil",
+        "domainName": "Domen Adı",
+        "dnsServers": "DNS Serverləri",
+        "confirmDelete": "Bu domeni silmək istədiyinizə əminsiniz?",
+        "noDomains": "Domen tapılmadı"
+    },
+    "editor": {
+        "title": "DNS Redaktoru",
+        "addRecord": "Qeyd Əlavə Et",
+        "deleteRecord": "Qeydi Sil",
+        "editRecord": "Qeydi Redaktə Et",
+        "recordType": "Qeyd Növü",
+        "hostname": "Host Adı",
+        "address": "Ünvan",
+        "distance": "Məsafə",
+        "weight": "Çəki",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Əməliyyatlar",
+        "confirmDelete": "Bu qeydi silmək istədiyinizə əminsiniz?"
+    }
+}

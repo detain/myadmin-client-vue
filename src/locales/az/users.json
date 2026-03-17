@@ -1,0 +1,12 @@
+{
+    "title": "İstifadəçilər",
+    "addUser": "İstifadəçi Əlavə Et",
+    "editUser": "İstifadəçini Redaktə Et",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "username": "İstifadəçi Adı",
+    "password": "Şifrə",
+    "keepSamePassword": "Eyni şifrəni saxlamaq üçün boş buraxın",
+    "errorLoading": "İstifadəçilər yüklənərkən xəta:",
+    "errorLoadingUser": "İstifadəçi yüklənərkən xəta:"
+}

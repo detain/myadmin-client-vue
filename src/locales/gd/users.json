@@ -1,0 +1,12 @@
+{
+    "title": "Cleachdaichean",
+    "addUser": "Cuir cleachdaiche ris",
+    "editUser": "Deasaich cleachdaiche",
+    "firstName": "Ciad ainm",
+    "lastName": "Sloinneadh",
+    "username": "Ainm cleachdaiche",
+    "password": "Facal-faire",
+    "keepSamePassword": "Fàg bàn gus an aon fhacal-faire a chumail",
+    "errorLoading": "Mearachd a' luchdachadh chleachdaichean:",
+    "errorLoadingUser": "Mearachd a' luchdachadh cleachdaiche:"
+}

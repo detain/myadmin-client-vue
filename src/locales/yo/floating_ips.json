@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Atokọ Awọn Iṣẹ IP Lilefoofo",
+        "orderTitle": "Paṣẹ Awọn Iforukọsilẹ IP Lilefoofo"
+    },
+    "view": {
+        "title": "Wo IP Lilefoofo {id}",
+        "package": "Idii",
+        "nextInvoiceDate": "Ọjọ Iwe Isan Atẹle:",
+        "billing": "Isan",
+        "billed": "ti isan:",
+        "statusIs": "Ipo ni:",
+        "floatingIp": "IP Lilefoofo",
+        "links": "Awọn Ọna Asopọ",
+        "welcomeEmailConfirm": "Ṣe o da ọ loju pe o fẹ tun fi imeeli kaabọ ranṣẹ?",
+        "emailSent": "Imeeli Ti Ranṣẹ",
+        "emailSentMessage": "Imeeli kaabọ ti tun ranṣẹ. Ṣayẹwo apamọwọ rẹ."
+    },
+    "order": {
+        "title": "Paṣẹ IP Lilefoofo"
+    },
+    "changeIp": {
+        "title": "Yipada IP Ibi-afẹde"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "required": "{field} iyafuneka",
+    "email": "Kufanele kube ikheli le-imeyili elivumelekile",
+    "minLength": "Kufanele kube nezinhlamvu ezingekho ngaphansi kwa-{min}",
+    "maxLength": "Kufanele kube nezinhlamvu ezingadluli {max}",
+    "passwordMatch": "Amaphasiwedi kufanele afanane",
+    "invalidFormat": "Ifomethi engavumelekile",
+    "numeric": "Kufanele kube inombolo",
+    "url": "Kufanele kube i-URL evumelekile",
+    "ipAddress": "Kufanele kube ikheli le-IP elivumelekile",
+    "hostname": "Kufanele kube igama lomphathi elivumelekile"
+}

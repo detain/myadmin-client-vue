@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Mndandanda wa Malayisense",
+        "orderTitle": "Ika Dongosolo la Kulemba Malayisense"
+    },
+    "view": {
+        "title": "Onani Layisense {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira:",
+        "statusIs": "Mkhalidwe ndi:",
+        "licenseInfo": "Zambiri za Layisense",
+        "cpanelInfo": "Zambiri za cPanel",
+        "links": "Maulalo",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "order": {
+        "title": "Ika Dongosolo la Layisense"
+    },
+    "changeIp": {
+        "title": "Sinthani IP"
+    },
+    "changeOs": {
+        "title": "Sinthani OS",
+        "selectLicenseOs": "Sankhani OS ya Layisense"
+    }
+}

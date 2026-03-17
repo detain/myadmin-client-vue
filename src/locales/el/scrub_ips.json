@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Λίστα Υπηρεσιών Scrub IPs",
+        "orderTitle": "Παραγγελία Scrub IPs"
+    },
+    "view": {
+        "title": "Προβολή Scrub IPs",
+        "currentIp": "Τρέχουσα IP",
+        "ipAddress": "Διεύθυνση IP",
+        "ipFromService": "IP από υπηρεσία"
+    },
+    "filters": {
+        "title": "Φίλτρα",
+        "createNew": "Δημιουργία Νέου",
+        "createNewFilter": "Δημιουργία Νέου Φίλτρου",
+        "filterType": "Τύπος Φίλτρου",
+        "selectFilterType": "Επιλέξτε Τύπο Φίλτρου",
+        "ipAddress": "Διεύθυνση IP",
+        "portNo": "Αρ. Θύρας",
+        "filter": "Φίλτρο",
+        "destinationIp": "IP Προορισμού",
+        "destinationPort": "Θύρα Προορισμού",
+        "noFiltersFound": "Δεν βρέθηκαν φίλτρα!",
+        "deleteFilterConfirm": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το φίλτρο;",
+        "unableToCreateFilter": "Αδυναμία δημιουργίας φίλτρου αυτή τη στιγμή.",
+        "unableToDeleteFilter": "Αδυναμία διαγραφής φίλτρου αυτή τη στιγμή."
+    },
+    "firewallRules": {
+        "title": "Κανόνες Τείχους Προστασίας",
+        "createNew": "Δημιουργία Νέου",
+        "createNewFirewall": "Δημιουργία Νέου Κανόνα Τείχους Προστασίας",
+        "protocol": "Πρωτόκολλο",
+        "destinationIp": "IP Προορισμού",
+        "destinationPort": "Θύρα Προορισμού",
+        "sourceIp": "IP Πηγής",
+        "sourcePort": "Θύρα Πηγής",
+        "xdpAction": "Ενέργεια XDP",
+        "ipRequired": "Απαιτείται διεύθυνση IP",
+        "block": "Αποκλεισμός",
+        "whitelist": "Λευκή Λίστα",
+        "noRulesFound": "Δεν βρέθηκαν κανόνες!",
+        "deleteRuleConfirm": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον κανόνα;",
+        "unableToCreateRule": "Αδυναμία δημιουργίας κανόνα τείχους προστασίας αυτή τη στιγμή.",
+        "unableToDeleteRule": "Αδυναμία διαγραφής κανόνα τείχους προστασίας αυτή τη στιγμή."
+    },
+    "geoFirewallRules": {
+        "title": "Γεωγραφικοί Κανόνες Τείχους Προστασίας",
+        "createNew": "Δημιουργία Νέου",
+        "createNewGeoRule": "Δημιουργία Νέου Γεωγραφικού Κανόνα Τείχους Προστασίας",
+        "destinationIp": "IP Προορισμού",
+        "destinationPort": "Θύρα Προορισμού",
+        "sourceCountry": "Χώρα Πηγής",
+        "sourceAsn": "ASN Πηγής",
+        "xdpAction": "Ενέργεια XDP",
+        "portNo": "Αρ. Θύρας",
+        "selectCountry": "Επιλέξτε Χώρα",
+        "asn": "ASN",
+        "block": "Αποκλεισμός",
+        "whitelist": "Λευκή Λίστα",
+        "noRulesFound": "Δεν βρέθηκαν κανόνες!",
+        "deleteGeoRuleConfirm": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον γεωγραφικό κανόνα;",
+        "unableToCreateRule": "Αδυναμία δημιουργίας κανόνα τείχους προστασίας αυτή τη στιγμή.",
+        "unableToDeleteRule": "Αδυναμία διαγραφής γεωγραφικού κανόνα τείχους προστασίας αυτή τη στιγμή."
+    }
+}

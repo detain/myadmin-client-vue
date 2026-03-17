@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "បញ្ជីសេវាកម្ម Scrub IPs",
+        "orderTitle": "បញ្ជាទិញ Scrub IPs"
+    },
+    "view": {
+        "title": "មើល Scrub IPs",
+        "currentIp": "IP បច្ចុប្បន្ន",
+        "ipAddress": "អាសយដ្ឋាន IP",
+        "ipFromService": "IP ពីសេវាកម្ម"
+    },
+    "filters": {
+        "title": "តម្រង",
+        "createNew": "បង្កើតថ្មី",
+        "createNewFilter": "បង្កើតតម្រងថ្មី",
+        "filterType": "ប្រភេទតម្រង",
+        "selectFilterType": "ជ្រើសរើសប្រភេទតម្រង",
+        "ipAddress": "អាសយដ្ឋាន IP",
+        "portNo": "លេខច្រក",
+        "filter": "តម្រង",
+        "destinationIp": "IP គោលដៅ",
+        "destinationPort": "ច្រកគោលដៅ",
+        "noFiltersFound": "រកមិនឃើញតម្រង!",
+        "deleteFilterConfirm": "តើអ្នកប្រាកដជាចង់លុបតម្រងនេះទេ?",
+        "unableToCreateFilter": "មិនអាចបង្កើតតម្រងបានទេនៅពេលនេះ។",
+        "unableToDeleteFilter": "មិនអាចលុបតម្រងបានទេនៅពេលនេះ។"
+    },
+    "firewallRules": {
+        "title": "វិធានជញ្ជាំងភ្លើង",
+        "createNew": "បង្កើតថ្មី",
+        "createNewFirewall": "បង្កើតវិធានជញ្ជាំងភ្លើងថ្មី",
+        "protocol": "ពិធីការ",
+        "destinationIp": "IP គោលដៅ",
+        "destinationPort": "ច្រកគោលដៅ",
+        "sourceIp": "IP ប្រភព",
+        "sourcePort": "ច្រកប្រភព",
+        "xdpAction": "សកម្មភាព XDP",
+        "ipRequired": "អាសយដ្ឋាន IP ចាំបាច់",
+        "block": "រារាំង",
+        "whitelist": "បញ្ជីស",
+        "noRulesFound": "រកមិនឃើញវិធាន!",
+        "deleteRuleConfirm": "តើអ្នកប្រាកដជាចង់លុបវិធាននេះទេ?",
+        "unableToCreateRule": "មិនអាចបង្កើតវិធានជញ្ជាំងភ្លើងបានទេនៅពេលនេះ។",
+        "unableToDeleteRule": "មិនអាចលុបវិធានជញ្ជាំងភ្លើងបានទេនៅពេលនេះ។"
+    },
+    "geoFirewallRules": {
+        "title": "វិធានជញ្ជាំងភ្លើង Geo",
+        "createNew": "បង្កើតថ្មី",
+        "createNewGeoRule": "បង្កើតវិធានជញ្ជាំងភ្លើង Geo ថ្មី",
+        "destinationIp": "IP គោលដៅ",
+        "destinationPort": "ច្រកគោលដៅ",
+        "sourceCountry": "ប្រទេសប្រភព",
+        "sourceAsn": "ASN ប្រភព",
+        "xdpAction": "សកម្មភាព XDP",
+        "portNo": "លេខច្រក",
+        "selectCountry": "ជ្រើសរើសប្រទេស",
+        "asn": "ASN",
+        "block": "រារាំង",
+        "whitelist": "បញ្ជីស",
+        "noRulesFound": "រកមិនឃើញវិធាន!",
+        "deleteGeoRuleConfirm": "តើអ្នកប្រាកដជាចង់លុបវិធាន Geo នេះទេ?",
+        "unableToCreateRule": "មិនអាចបង្កើតវិធានជញ្ជាំងភ្លើងបានទេនៅពេលនេះ។",
+        "unableToDeleteRule": "មិនអាចលុបវិធានជញ្ជាំងភ្លើង Geo បានទេនៅពេលនេះ។"
+    }
+}

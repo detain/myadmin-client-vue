@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Yaddaş / Ehtiyat Nüsxə Siyahısı",
+        "orderTitle": "Ehtiyat Nüsxə Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "Ehtiyat Nüsxə {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi:",
+        "statusIs": "Status:",
+        "hostServer": "Host Server",
+        "links": "Keçidlər",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "order": {
+        "title": "Yaddaş Sifariş Et"
+    }
+}

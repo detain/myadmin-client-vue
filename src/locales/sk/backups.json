@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Zoznam úložísk / záloh",
+        "orderTitle": "Objednať registrácie záloh"
+    },
+    "view": {
+        "title": "Zobraziť zálohu {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované:",
+        "statusIs": "Stav je:",
+        "hostServer": "Hostiteľský server",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Naozaj chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "order": {
+        "title": "Objednať úložisko"
+    }
+}

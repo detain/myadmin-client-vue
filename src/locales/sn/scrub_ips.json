@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Rondedzero yemasevhisi eScrub IPs",
+        "orderTitle": "Oda Scrub IPs"
+    },
+    "view": {
+        "title": "Ona Scrub IPs",
+        "currentIp": "IP Yazvino",
+        "ipAddress": "Kero yeIP",
+        "ipFromService": "IP kubva kusevhisi"
+    },
+    "filters": {
+        "title": "Zvinyoreso",
+        "createNew": "Gadzira Itsva",
+        "createNewFilter": "Gadzira Chinyoreso Itsva",
+        "filterType": "Mhando yeChinyoreso",
+        "selectFilterType": "Sarudza Mhando yeChinyoreso",
+        "ipAddress": "Kero yeIP",
+        "portNo": "Nhamba yePort",
+        "filter": "Chinyoreso",
+        "destinationIp": "IP Yekuenda",
+        "destinationPort": "Port Yekuenda",
+        "noFiltersFound": "Hapana zvinyoreso zvakawanikwa!",
+        "deleteFilterConfirm": "Une chokwadi here kuti uchida kudzima chinyoreso ichi?",
+        "unableToCreateFilter": "Hazvibviri kugadzira chinyoreso panguva ino.",
+        "unableToDeleteFilter": "Hazvibviri kudzima chinyoreso panguva ino."
+    },
+    "firewallRules": {
+        "title": "Mitemo yeFirewall",
+        "createNew": "Gadzira Itsva",
+        "createNewFirewall": "Gadzira Mutemo Mutsva weFirewall",
+        "protocol": "Nzira",
+        "destinationIp": "IP Yekuenda",
+        "destinationPort": "Port Yekuenda",
+        "sourceIp": "IP Yekutanga",
+        "sourcePort": "Port Yekutanga",
+        "xdpAction": "Chiito cheXDP",
+        "ipRequired": "Kero yeIP inodiwa",
+        "block": "Bvira",
+        "whitelist": "Mutezo Wechena",
+        "noRulesFound": "Hapana mitemo yakawanikwa!",
+        "deleteRuleConfirm": "Une chokwadi here kuti uchida kudzima mutemo uyu?",
+        "unableToCreateRule": "Hazvibviri kugadzira mutemo wefirewall panguva ino.",
+        "unableToDeleteRule": "Hazvibviri kudzima mutemo wefirewall panguva ino."
+    },
+    "geoFirewallRules": {
+        "title": "Mitemo yeGeo Firewall",
+        "createNew": "Gadzira Itsva",
+        "createNewGeoRule": "Gadzira Mutemo Mutsva weGeo Firewall",
+        "destinationIp": "IP Yekuenda",
+        "destinationPort": "Port Yekuenda",
+        "sourceCountry": "Nyika Yekutanga",
+        "sourceAsn": "ASN Yekutanga",
+        "xdpAction": "Chiito cheXDP",
+        "portNo": "Nhamba yePort",
+        "selectCountry": "Sarudza Nyika",
+        "asn": "ASN",
+        "block": "Bvira",
+        "whitelist": "Mutezo Wechena",
+        "noRulesFound": "Hapana mitemo yakawanikwa!",
+        "deleteGeoRuleConfirm": "Une chokwadi here kuti uchida kudzima mutemo wegeo uyu?",
+        "unableToCreateRule": "Hazvibviri kugadzira mutemo wefirewall panguva ino.",
+        "unableToDeleteRule": "Hazvibviri kudzima mutemo wegeo firewall panguva ino."
+    }
+}

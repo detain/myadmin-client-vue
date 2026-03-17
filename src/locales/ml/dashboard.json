@@ -1,0 +1,28 @@
+{
+    "title": "ഡാഷ്‌ബോർഡ്",
+    "welcome": "സ്വാഗതം, {name}",
+    "lastLogin": "അവസാന ലോഗിൻ",
+    "lastLoginIp": "അവസാന ലോഗിൻ IP",
+    "prepay": {
+        "title": "Prepay ബാലൻസ്",
+        "remainingBalance": "Prepay ശേഷിക്കുന്ന ബാലൻസ്",
+        "manageAccount": "അക്കൗണ്ട് നിയന്ത്രിക്കുക",
+        "manageTooltip": "നിങ്ങളുടെ Prepay അക്കൗണ്ട് നിയന്ത്രിക്കുക"
+    },
+    "invoices": {
+        "title": "പണം നൽകാത്ത ഇൻവോയ്‌സുകൾ",
+        "totalUnpaid": "ആകെ പണം നൽകാത്ത ഇൻവോയ്‌സുകൾ",
+        "totalAmount": "അടയ്ക്കേണ്ട ആകെ തുക",
+        "payTotalTooltip": "ആകെ തുക അടയ്ക്കുക"
+    },
+    "callInPin": "കോൾ-ഇൻ PIN",
+    "recentTickets": "സമീപകാല ടിക്കറ്റുകൾ",
+    "viewAllTickets": "എല്ലാ ടിക്കറ്റുകളും കാണുക",
+    "editTicket": "ടിക്കറ്റ് എഡിറ്റ് ചെയ്യുക",
+    "serviceCount": "സജീവ സേവനങ്ങളൊന്നുമില്ല | {count} സജീവ സേവനം | {count} സജീവ സേവനങ്ങൾ",
+    "affiliate": {
+        "earnPerSale": "ഓരോ വിൽപ്പനയ്ക്കും {amount} നേടുക",
+        "urlPlaceholder": "അഫിലിയേറ്റ് URL",
+        "shareWith": "ഇതുമായി പങ്കിടുക"
+    }
+}

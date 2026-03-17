@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Seznam storitev čiščenja IP-jev",
+        "orderTitle": "Naroči čiščenje IP-jev"
+    },
+    "view": {
+        "title": "Ogled čiščenja IP-jev",
+        "currentIp": "Trenutni IP",
+        "ipAddress": "IP naslov",
+        "ipFromService": "IP iz storitve"
+    },
+    "filters": {
+        "title": "Filtri",
+        "createNew": "Ustvari nov",
+        "createNewFilter": "Ustvari nov filter",
+        "filterType": "Vrsta filtra",
+        "selectFilterType": "Izberi vrsto filtra",
+        "ipAddress": "IP naslov",
+        "portNo": "Št. vrat",
+        "filter": "Filter",
+        "destinationIp": "Ciljni IP",
+        "destinationPort": "Ciljna vrata",
+        "noFiltersFound": "Ni najdenih filtrov!",
+        "deleteFilterConfirm": "Ali ste prepričani, da želite izbrisati ta filter?",
+        "unableToCreateFilter": "Filtra trenutno ni mogoče ustvariti.",
+        "unableToDeleteFilter": "Filtra trenutno ni mogoče izbrisati."
+    },
+    "firewallRules": {
+        "title": "Pravila požarnega zidu",
+        "createNew": "Ustvari nov",
+        "createNewFirewall": "Ustvari novo pravilo požarnega zidu",
+        "protocol": "Protokol",
+        "destinationIp": "Ciljni IP",
+        "destinationPort": "Ciljna vrata",
+        "sourceIp": "Izvorni IP",
+        "sourcePort": "Izvorna vrata",
+        "xdpAction": "Dejanje XDP",
+        "ipRequired": "IP naslov je zahtevan",
+        "block": "Blokiraj",
+        "whitelist": "Beli seznam",
+        "noRulesFound": "Ni najdenih pravil!",
+        "deleteRuleConfirm": "Ali ste prepričani, da želite izbrisati to pravilo?",
+        "unableToCreateRule": "Pravila požarnega zidu trenutno ni mogoče ustvariti.",
+        "unableToDeleteRule": "Pravila požarnega zidu trenutno ni mogoče izbrisati."
+    },
+    "geoFirewallRules": {
+        "title": "Geografska pravila požarnega zidu",
+        "createNew": "Ustvari nov",
+        "createNewGeoRule": "Ustvari novo geografsko pravilo požarnega zidu",
+        "destinationIp": "Ciljni IP",
+        "destinationPort": "Ciljna vrata",
+        "sourceCountry": "Izvorna država",
+        "sourceAsn": "Izvorni ASN",
+        "xdpAction": "Dejanje XDP",
+        "portNo": "Št. vrat",
+        "selectCountry": "Izberi državo",
+        "asn": "ASN",
+        "block": "Blokiraj",
+        "whitelist": "Beli seznam",
+        "noRulesFound": "Ni najdenih pravil!",
+        "deleteGeoRuleConfirm": "Ali ste prepričani, da želite izbrisati to geografsko pravilo?",
+        "unableToCreateRule": "Pravila požarnega zidu trenutno ni mogoče ustvariti.",
+        "unableToDeleteRule": "Geografskega pravila požarnega zidu trenutno ni mogoče izbrisati."
+    }
+}

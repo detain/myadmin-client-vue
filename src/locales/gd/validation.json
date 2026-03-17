@@ -1,0 +1,12 @@
+{
+    "required": "Tha {field} riatanach",
+    "email": "Feumaidh e bhith na sheòladh puist-d dligheach",
+    "minLength": "Feumaidh e bhith co-dhiù {min} carachtar",
+    "maxLength": "Chan fhaod e a bhith nas motha na {max} carachtar",
+    "passwordMatch": "Feumaidh na faclan-faire a bhith mar an ceudna",
+    "invalidFormat": "Cruth neo-dhligheach",
+    "numeric": "Feumaidh e bhith na àireamh",
+    "url": "Feumaidh e bhith na URL dligheach",
+    "ipAddress": "Feumaidh e bhith na sheòladh IP dligheach",
+    "hostname": "Feumaidh e bhith na ainm-ostaig dligheach"
+}

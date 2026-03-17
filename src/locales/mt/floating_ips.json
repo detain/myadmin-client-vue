@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lista tas-Servizzi tal-IPs Floating",
+        "orderTitle": "Ordna Reġistrazzjonijiet ta' IP Floating"
+    },
+    "view": {
+        "title": "Ara IP Floating {id}",
+        "package": "Pakkett",
+        "nextInvoiceDate": "Data tal-Fattura li Jmiss:",
+        "billing": "Fatturazzjoni",
+        "billed": "fatturata:",
+        "statusIs": "L-istat huwa:",
+        "floatingIp": "IP Floating",
+        "links": "Links",
+        "welcomeEmailConfirm": "Ċert li trid tibgħat mill-ġdid l-email ta' merħba?",
+        "emailSent": "Email Mibgħut",
+        "emailSentMessage": "L-email ta' merħba ntbagħtet mill-ġdid. Iċċekkja l-inbox tiegħek."
+    },
+    "order": {
+        "title": "Ordna IP Floating"
+    },
+    "changeIp": {
+        "title": "Ibdel l-IP Mira"
+    }
+}

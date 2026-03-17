@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Mndandanda wa Utumiki wa Imelo",
+        "orderTitle": "Ika Dongosolo la Kulemba Imelo"
+    },
+    "view": {
+        "title": "Onani Imelo {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira:",
+        "statusIs": "Mkhalidwe ndi:",
+        "mailApi": "API ya Imelo",
+        "usageCount": "Kuchuluka kwa Kugwiritsa Ntchito:",
+        "links": "Maulalo",
+        "connectionInfo": "Zambiri za Kulumikizika",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "order": {
+        "title": "Ika Dongosolo la Imelo"
+    },
+    "alerts": {
+        "title": "Zodziwitsa",
+        "addAlert": "Wonjezani Chodziwitsa",
+        "editAlert": "Sinthani Chodziwitsa",
+        "noAlerts": "Palibe zodziwitsa zapezeka"
+    },
+    "delist": {
+        "title": "Chotsani pa Mndandanda",
+        "blockedEmails": "Imelo Zotsekeredwa"
+    },
+    "denyRules": {
+        "title": "Malamulo Oletsa",
+        "addRule": "Wonjezani Lamulo",
+        "noRules": "Palibe malamulo oletsa apezeka"
+    },
+    "logs": {
+        "title": "Mbiri ya Zochitika",
+        "searchLogs": "Sakani Mbiri ya Zochitika"
+    },
+    "stats": {
+        "title": "Ziwerengero"
+    },
+    "deliverability": {
+        "title": "Kufika Kwa Imelo"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Менеджер",
+        "addDomain": "Домен Кошуу",
+        "deleteDomain": "Домен Жок Кылуу",
+        "domainName": "Домен Аты",
+        "dnsServers": "DNS Серверлери",
+        "confirmDelete": "Бул доменди жок кылгыңыз келгенине ишенесизби?",
+        "noDomains": "Домендер табылган жок"
+    },
+    "editor": {
+        "title": "DNS Редактору",
+        "addRecord": "Жазуу Кошуу",
+        "deleteRecord": "Жазуу Жок Кылуу",
+        "editRecord": "Жазуу Өзгөртүү",
+        "recordType": "Жазуу Түрү",
+        "hostname": "Хост Аты",
+        "address": "Дарек",
+        "distance": "Аралык",
+        "weight": "Салмак",
+        "port": "Порт",
+        "ttl": "TTL",
+        "actions": "Аракеттер",
+        "confirmDelete": "Бул жазуусун жок кылгыңыз келгенине ишенесизби?"
+    }
+}

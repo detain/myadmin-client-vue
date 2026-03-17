@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs സേവന പട്ടിക",
+        "orderTitle": "Scrub IPs ഓർഡർ ചെയ്യുക"
+    },
+    "view": {
+        "title": "Scrub IPs കാണുക",
+        "currentIp": "നിലവിലെ IP",
+        "ipAddress": "IP വിലാസം",
+        "ipFromService": "സേവനത്തിൽ നിന്നുള്ള IP"
+    },
+    "filters": {
+        "title": "ഫിൽട്ടറുകൾ",
+        "createNew": "പുതിയത് സൃഷ്ടിക്കുക",
+        "createNewFilter": "പുതിയ ഫിൽട്ടർ സൃഷ്ടിക്കുക",
+        "filterType": "ഫിൽട്ടർ തരം",
+        "selectFilterType": "ഫിൽട്ടർ തരം തിരഞ്ഞെടുക്കൂ",
+        "ipAddress": "IP വിലാസം",
+        "portNo": "പോർട്ട് നം.",
+        "filter": "ഫിൽട്ടർ",
+        "destinationIp": "ഡെസ്റ്റിനേഷൻ IP",
+        "destinationPort": "ഡെസ്റ്റിനേഷൻ പോർട്ട്",
+        "noFiltersFound": "ഫിൽട്ടറുകൾ കണ്ടെത്തിയില്ല!",
+        "deleteFilterConfirm": "ഈ ഫിൽട്ടർ ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
+        "unableToCreateFilter": "ഇപ്പോൾ ഫിൽട്ടർ സൃഷ്ടിക്കാൻ കഴിയില്ല.",
+        "unableToDeleteFilter": "ഇപ്പോൾ ഫിൽട്ടർ ഇല്ലാതാക്കാൻ കഴിയില്ല."
+    },
+    "firewallRules": {
+        "title": "ഫയർവാൾ നിയമങ്ങൾ",
+        "createNew": "പുതിയത് സൃഷ്ടിക്കുക",
+        "createNewFirewall": "പുതിയ ഫയർവാൾ നിയമം സൃഷ്ടിക്കുക",
+        "protocol": "പ്രോട്ടോക്കോൾ",
+        "destinationIp": "ഡെസ്റ്റിനേഷൻ IP",
+        "destinationPort": "ഡെസ്റ്റിനേഷൻ പോർട്ട്",
+        "sourceIp": "ഉറവിട IP",
+        "sourcePort": "ഉറവിട പോർട്ട്",
+        "xdpAction": "XDP പ്രവർത്തനം",
+        "ipRequired": "IP വിലാസം ആവശ്യമാണ്",
+        "block": "തടയുക",
+        "whitelist": "വൈറ്റ്‌ലിസ്റ്റ്",
+        "noRulesFound": "നിയമങ്ങൾ കണ്ടെത്തിയില്ല!",
+        "deleteRuleConfirm": "ഈ നിയമം ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
+        "unableToCreateRule": "ഇപ്പോൾ ഫയർവാൾ നിയമം സൃഷ്ടിക്കാൻ കഴിയില്ല.",
+        "unableToDeleteRule": "ഇപ്പോൾ ഫയർവാൾ നിയമം ഇല്ലാതാക്കാൻ കഴിയില്ല."
+    },
+    "geoFirewallRules": {
+        "title": "ജിയോ ഫയർവാൾ നിയമങ്ങൾ",
+        "createNew": "പുതിയത് സൃഷ്ടിക്കുക",
+        "createNewGeoRule": "പുതിയ ജിയോ ഫയർവാൾ നിയമം സൃഷ്ടിക്കുക",
+        "destinationIp": "ഡെസ്റ്റിനേഷൻ IP",
+        "destinationPort": "ഡെസ്റ്റിനേഷൻ പോർട്ട്",
+        "sourceCountry": "ഉറവിട രാജ്യം",
+        "sourceAsn": "ഉറവിട ASN",
+        "xdpAction": "XDP പ്രവർത്തനം",
+        "portNo": "പോർട്ട് നം.",
+        "selectCountry": "രാജ്യം തിരഞ്ഞെടുക്കൂ",
+        "asn": "ASN",
+        "block": "തടയുക",
+        "whitelist": "വൈറ്റ്‌ലിസ്റ്റ്",
+        "noRulesFound": "നിയമങ്ങൾ കണ്ടെത്തിയില്ല!",
+        "deleteGeoRuleConfirm": "ഈ ജിയോ നിയമം ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
+        "unableToCreateRule": "ഇപ്പോൾ ഫയർവാൾ നിയമം സൃഷ്ടിക്കാൻ കഴിയില്ല.",
+        "unableToDeleteRule": "ഇപ്പോൾ ജിയോ ഫയർവാൾ നിയമം ഇല്ലാതാക്കാൻ കഴിയില്ല."
+    }
+}

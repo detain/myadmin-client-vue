@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Licenslista",
+        "orderTitle": "Beställ licensregistreringar"
+    },
+    "view": {
+        "title": "Visa licens {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Nästa fakturadatum:",
+        "billing": "Fakturering",
+        "billed": "fakturerad:",
+        "statusIs": "Status är:",
+        "licenseInfo": "Licensinformation",
+        "cpanelInfo": "cPanel-information",
+        "links": "Länkar",
+        "welcomeEmailConfirm": "Är du säker på att du vill skicka om välkomstmejlet?",
+        "emailSent": "E-post skickad",
+        "emailSentMessage": "Välkomstmejlet har skickats om. Kontrollera din inkorg."
+    },
+    "order": {
+        "title": "Beställ licens"
+    },
+    "changeIp": {
+        "title": "Ändra IP"
+    },
+    "changeOs": {
+        "title": "Ändra OS",
+        "selectLicenseOs": "Välj licens-OS"
+    }
+}

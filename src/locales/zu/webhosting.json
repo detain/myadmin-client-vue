@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Uhlu Lokusingatha Iwebhusayithi",
+        "orderTitle": "Oda Ukubhalisa Kwewebhusayithi"
+    },
+    "view": {
+        "title": "Buka iWebhusayithi {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwe-Invoice Elandelayo:",
+        "billing": "Ukubhadala",
+        "billed": "kubhalelwe",
+        "billingStatusIs": "Isimo Sokubhadala Siyini:",
+        "hostInfo": "Ulwazi Lomphathi",
+        "username": "Igama Lomsebenzisi:",
+        "ip": "I-IP:",
+        "server": "ISeva:",
+        "notSetYet": "Akukasethi okwamanje",
+        "login": "Ngena",
+        "types": "Ohlobo:",
+        "linksLabel": "Izixhumanisi:",
+        "manualLogin": "Ukungena Ngesandla",
+        "automaticLogin": "Ukungena Ngokwenzakala",
+        "clickHere": "Chofoza Lapha",
+        "defaultNameservers": "Amaseva Amagama Azenzakalelayo",
+        "nameservers": "Amaseva Amagama:",
+        "externalLinks": "Izixhumanisi Zangaphandle",
+        "names": "Amagama:",
+        "websitePreview": "Isibonelo Sewebhusayithi",
+        "links": "Izixhumanisi",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthuma kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-Imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungenayo."
+    },
+    "buyIp": {
+        "title": "Thenga Isithasiselo Se-IP Esengeziwe",
+        "existingAddonIps": "Ama-IP Azithasiselo Akhona",
+        "additionalIp": "I-IP Ezengeziwe",
+        "monthlyCost": "Intengo Yanyanga ({symbol})",
+        "costDescription": "Intengo ({symbol}) nyanga zonke njengoba iwebhusayithi yakho ibhalelwa",
+        "confirmPurchase": "Qinisekisa Ukuthenga",
+        "confirmMessage": "Intengo ye-IP ezengeziwe: {symbol}{cost}/inyanga. Uqinisekile ukuthi ufuna ukuoda i-IP ezengeziwe?",
+        "placeOrder": "Beka Isikhungo",
+        "orderPlaced": "Isikhungo Sibekiwe"
+    },
+    "reverseDns": {
+        "title": "I-Reverse DNS",
+        "updateReverseDns": "Buyekeza i-Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "Landa Izipele",
+        "backup": "Isipele",
+        "size": "Ubukhulu",
+        "options": "Izinketho"
+    },
+    "migration": {
+        "title": "Fudukisa Iwebhusayithi Yakho",
+        "currentWebHostInfo": "Ulwazi Lomphathi Wewebhu Wamanje",
+        "customerPortalUrl": "I-URL Yeportal Yamakhasimende",
+        "portalExample": "Isibonelo: sso.godaddy.com",
+        "registeredUsername": "Igama Lomsebenzisi Lobhalisiwe / I-Imeyili / I-ID",
+        "password": "Iphasiwedi",
+        "controlPanelUrl": "I-URL Yephaneli Yokulawula",
+        "controlPanelExample": "Isibonelo: yourdomain.com/cpanel",
+        "ftpUsername": "Igama Lomsebenzisi le-FTP / Iphaneli Yokulawula",
+        "ftpPassword": "Iphasiwedi ye-FTP / Iphaneli Yokulawula",
+        "holdingPageQuestion": "Uma isayithi iphila / isayithi ebaningi enethrafikhi ephezulu, singabeka ikhasi lokuhlala ngesikhathi sokufudukiswa?",
+        "specialRequirementsQuestion": "Ingabe le sayithi inaizidingo ezikhethekile njenge-PHP Version / Modules?",
+        "domainRegistryInfo": "Ulwazi Lwerejistrari Yedomeini",
+        "transferDomainQuestion": "Uyafuna futhi ukusisiza ukudlulisa ukubhalisa igama ledomeini?",
+        "updateNameserversQuestion": "Uyafuna ukubuyekeza amaseva amagama ngokushesha ngemuva kokuphetha ukufudukiswa kwedatha?",
+        "domainRegistryPortal": "Iportal Yamakhasimende Yerejistrari Yedomeini",
+        "importantNotes": "Amanothi Abalulekile",
+        "note1": "Ukugcwalisa leli fomu kuzovula ithikithi elisha lomnyango wethu wosekelo ukuqala ukufudukiswa kwakho.",
+        "note2": "Sicela ube ephelele nangokuqinisekile ukukugwema izibambezelo.",
+        "note3": "Ukufudukiswa okujwayelekile kuphothulwa phakathi ngehora eli-48 kuya ku-72. Ngezinye izikhathi isikhathi esingaphezu kwalokho uma ubungako bedatha okukhopyiwa bukhulu.",
+        "note4": "I-akhawunti endala yokusingatha idinga ukuba ku-intanethi futhi itholakale ngesikhathi sokukhokha ukufudukiswa, ngaphandle kwalokho singabhekkana nobunzima.",
+        "note5": "Sicela ungabi nezibuyekezo kusayithi yakho ngesikhathi sokukhokha ukufudukiswa, ngaphandle kwalokho leyo datha ingeke ikhopyiwe esingathweni esisha."
+    },
+    "order": {
+        "title": "Oda Iwebhusayithi"
+    }
+}

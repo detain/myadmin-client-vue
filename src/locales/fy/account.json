@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Akkount Ynstellingen"
+    },
+    "changePassword": {
+        "title": "Wachtwurd Wizigje",
+        "cardTitle": "Wachtwurd Bywurkje",
+        "currentPassword": "Huidig Wachtwurd",
+        "newPassword": "Nij Wachtwurd",
+        "confirmPassword": "Wachtwurd Befêstigje",
+        "updatePassword": "Wachtwurd Bywurkje"
+    },
+    "changeUsername": {
+        "title": "Brûkersnamme Wizigje",
+        "disabled": "Brûkersnamme wizigingen binne tydlik útskeakele.",
+        "currentUsername": "Huidige Brûkersnamme",
+        "newDesiredUsername": "Nije Winske Brûkersnamme",
+        "confirmationCode": "Befêstigingskoade",
+        "pleaseWait": "Even wachtsje!",
+        "gotError": "Flater krigen {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktynfo",
+        "cardTitle": "Kontaktynfo Bywurkje",
+        "headsUp": "Let op!",
+        "headsUpMessage": "Hoewol dizze ynformaasje opsjoneel is, sil it leverjen fan (krekte) ynformaasje sawol ús ynteraksjes ferrikje as jo Risiko % Skoar ferleegje, wêrtroch jo flugger en handiger tagong krije ta dielen fan de site (lykas it net hoeven te autentisearjen fan in kreditkaart).",
+        "riskScore": "Risiko % Skoar",
+        "personalInformation": "Persoanlike Ynformaasje",
+        "name": "Namme",
+        "namePlaceholder": "Jan Jansen",
+        "company": "Bedriuw",
+        "gstinTaxId": "GSTIN Belesting-ID",
+        "gstinPlaceholder": "Guod en Tsjinsten Belestingplichtige Identifikaasjenûmer",
+        "addressLine1": "Adresrigel 1",
+        "addressLine2": "Adresrigel 2",
+        "cityState": "Stêd, Provinsje",
+        "city": "Stêd",
+        "state": "Provinsje",
+        "country": "Lân",
+        "zipcode": "Postkoade",
+        "phoneNo": "Tillefoan Nr",
+        "phoneNumber": "Tillefoannûmer",
+        "language": "Taal",
+        "auto": "Auto",
+        "currency": "Munt",
+        "timeZone": "Tiidsône",
+        "otherSettings": "Oare Ynstellingen",
+        "disablePasswordResets": "Wachtwurd werynstellen (Wachtwurd fergetten) útskeakelje.",
+        "disableInvoiceReminders": "Faktuerbetinkings E-postnotifikaasjes útskeakelje.",
+        "disableServerInvoiceReminders": "Server Faktuerbetinkings E-postnotifikaasjes útskeakelje.",
+        "disableReinstall": "Werynstalleare útskeakelje.",
+        "alternateEmailInvoices": "Alternatyf E-postadres foar Fakturen",
+        "alternateEmailInvoicesPlaceholder": "Alternatyf e-postadres foar it ferstjoeren fan fakturen",
+        "alternateEmailAbuse": "Alternatyf E-postadres foar Misbrûkrapporten",
+        "updateInfo": "Ynfo Bywurkje"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Listahan ng mga Serbisyo ng Mail",
+        "orderTitle": "Mag-order ng mga Rehistrasyon ng Mail"
+    },
+    "view": {
+        "title": "Tingnan ang Mail {id}",
+        "package": "Pakete",
+        "nextInvoiceDate": "Susunod na Petsa ng Invoice:",
+        "billing": "Pagsingil",
+        "billed": "sinisingil:",
+        "statusIs": "Status ay:",
+        "mailApi": "Mail API",
+        "usageCount": "Bilang ng Paggamit:",
+        "links": "Mga Link",
+        "connectionInfo": "Impormasyon ng Koneksyon",
+        "welcomeEmailConfirm": "Sigurado ba kayong nais ninyong muling ipadala ang welcome email?",
+        "emailSent": "Naipadala ang Email",
+        "emailSentMessage": "Muling naipadala ang welcome email. Suriin ang inyong inbox."
+    },
+    "order": {
+        "title": "Mag-order ng Mail"
+    },
+    "alerts": {
+        "title": "Mga Alerto",
+        "addAlert": "Magdagdag ng Alerto",
+        "editAlert": "Baguhin ang Alerto",
+        "noAlerts": "Walang nahanap na alerto"
+    },
+    "delist": {
+        "title": "I-delist",
+        "blockedEmails": "Mga Naka-block na Email"
+    },
+    "denyRules": {
+        "title": "Mga Patakaran ng Pagtanggi",
+        "addRule": "Magdagdag ng Patakaran",
+        "noRules": "Walang nahanap na mga patakaran ng pagtanggi"
+    },
+    "logs": {
+        "title": "Mga Log",
+        "searchLogs": "Maghanap ng Mga Log"
+    },
+    "stats": {
+        "title": "Mga Estadistika"
+    },
+    "deliverability": {
+        "title": "Kakayahang Maihatid"
+    }
+}

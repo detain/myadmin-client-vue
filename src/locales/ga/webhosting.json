@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Liosta Óstála Gréasáin",
+        "orderTitle": "Ordaigh Clárúcháin Suíomh Gréasáin"
+    },
+    "view": {
+        "title": "Féach ar Shuíomh Gréasáin {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonraisc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte",
+        "billingStatusIs": "Is é Stádas Billeála:",
+        "hostInfo": "Eolas Óstaigh",
+        "username": "Ainm Úsáideora:",
+        "ip": "IP:",
+        "server": "Freastalaí:",
+        "notSetYet": "Gan socrú fós",
+        "login": "Logáil Isteach",
+        "types": "Cineálacha:",
+        "linksLabel": "Naisc:",
+        "manualLogin": "Logáil Isteach de Láimh",
+        "automaticLogin": "Logáil Isteach Uathoibríoch",
+        "clickHere": "Cliceáil Anseo",
+        "defaultNameservers": "Freastalaithe Ainmneacha Réamhshocraithe",
+        "nameservers": "Freastalaithe Ainmneacha:",
+        "externalLinks": "Naisc Seachtracha",
+        "names": "Ainmneacha:",
+        "websitePreview": "Réamhamharc Suímh Gréasáin",
+        "links": "Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheolachán?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Seoladh an ríomhphost fáilte arís. Seiceáil do bhosca isteach."
+    },
+    "buyIp": {
+        "title": "Ceannaigh Breiseán IP Breise",
+        "existingAddonIps": "IPs Breiseán Atá Ann",
+        "additionalIp": "IP Breise",
+        "monthlyCost": "Costas Míosúil ({symbol})",
+        "costDescription": "Costas ({symbol}) gach mí de réir mar a bhíonn do shuíomh gréasáin billeáilte",
+        "confirmPurchase": "Dearbhaigh Ceannach",
+        "confirmMessage": "Costas IP breise: {symbol}{cost}/mí. An bhfuil tú cinnte gur mhaith leat IP breise a ordú?",
+        "placeOrder": "Cuir Ordú",
+        "orderPlaced": "Cuireadh Ordú"
+    },
+    "reverseDns": {
+        "title": "DNS Droim ar Ais",
+        "updateReverseDns": "Nuashonraigh DNS Droim ar Ais"
+    },
+    "downloadBackups": {
+        "title": "Íoslódáil Cúlchoipeanna",
+        "backup": "Cúlchóip",
+        "size": "Méid",
+        "options": "Roghanna"
+    },
+    "migration": {
+        "title": "Eisimirce do Shuíomh Gréasáin",
+        "currentWebHostInfo": "Eolas an Óstaigh Gréasáin Reatha",
+        "customerPortalUrl": "URL Tairseach Cliaint",
+        "portalExample": "Mar Shampla: sso.godaddy.com",
+        "registeredUsername": "Ainm Úsáideora / Ríomhphost / ID Cláraithe",
+        "password": "Pasfhocal",
+        "controlPanelUrl": "URL Painéal Rialaithe",
+        "controlPanelExample": "Mar Shampla: dofhearann.com/cpanel",
+        "ftpUsername": "Ainm Úsáideora FTP / Painéal Rialaithe",
+        "ftpPassword": "Pasfhocal FTP / Painéal Rialaithe",
+        "holdingPageQuestion": "Más suíomh beo/gnóthach é an suíomh le trácht ard, an féidir linn leathanach sealbhaithe a shocrú le linn na eisimirce?",
+        "specialRequirementsQuestion": "An bhfuil ceanglais speisialta ag an suíomh seo cosúil le Leagan PHP / Modúil?",
+        "domainRegistryInfo": "Eolas Chlár Fearann",
+        "transferDomainQuestion": "Ar mhaith leat freisin go gcabhróimis leat clárú an ainm fearainn a aistriú?",
+        "updateNameserversQuestion": "Ar mhaith leat go nuashonróimis na freastalaithe ainmneacha a luaithe a chríochnaímid eisimirce na sonraí?",
+        "domainRegistryPortal": "Tairseach Cliaint Chlár Fearann",
+        "importantNotes": "Nótaí Tábhachtacha",
+        "note1": "Má líonann tú an foirm seo, osclófar ticéad nua dár rannóg tacaíochta chun tosú ar do chuid eisimirce.",
+        "note2": "Bí chomh hiomlán agus cruinn agus is féidir le do thoil chun moilleanna a sheachaint.",
+        "note3": "De ghnáth críochnaítear eisimirce tipiciúil laistigh de 48 go 72 uair an chloig. Uaireanta níos faide má tá méid mór sonraí le cóipeáil.",
+        "note4": "Ní mór don seanchuntas óstála a bheith ar líne agus inrochtana fad is a bhímid ag déanamh na heisimirce, nó féadfaimid deacracht a thabhairt.",
+        "note5": "Ná déan aon nuashonruithe ar do shuíomh fad is a dhéanaimid an eisimirce, nó seans nach gcóipeofar na sonraí sin chuig an óstáil nua."
+    },
+    "order": {
+        "title": "Ordaigh Suíomh Gréasáin"
+    }
+}

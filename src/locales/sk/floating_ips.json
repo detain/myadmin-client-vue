@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Zoznam služieb plávajúcich IP",
+        "orderTitle": "Objednať registrácie plávajúcich IP"
+    },
+    "view": {
+        "title": "Zobraziť plávajúcu IP {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované:",
+        "statusIs": "Stav je:",
+        "floatingIp": "Plávajúca IP",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Ste si istý, že chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "order": {
+        "title": "Objednať plávajúcu IP"
+    },
+    "changeIp": {
+        "title": "Zmeniť cieľovú IP"
+    }
+}

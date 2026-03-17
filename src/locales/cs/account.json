@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Nastavení účtu"
+    },
+    "changePassword": {
+        "title": "Změnit heslo",
+        "cardTitle": "Aktualizovat heslo",
+        "currentPassword": "Aktuální heslo",
+        "newPassword": "Nové heslo",
+        "confirmPassword": "Potvrdit heslo",
+        "updatePassword": "Aktualizovat heslo"
+    },
+    "changeUsername": {
+        "title": "Změnit uživatelské jméno",
+        "disabled": "Změny uživatelského jména byly dočasně zakázány.",
+        "currentUsername": "Aktuální uživatelské jméno",
+        "newDesiredUsername": "Nové požadované uživatelské jméno",
+        "confirmationCode": "Potvrzovací kód",
+        "pleaseWait": "Prosím čekejte!",
+        "gotError": "Došlo k chybě {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktní informace",
+        "cardTitle": "Aktualizovat kontaktní informace",
+        "headsUp": "Pozor!",
+        "headsUpMessage": "Ačkoli jsou tyto informace nepovinné, poskytnutí (přesných) informací pomůže obohatit naše interakce a snížit vaše rizikové skóre, čímž získáte rychlejší a pohodlnější přístup k částem webu (například bez nutnosti ověřování kreditní karty).",
+        "riskScore": "Rizikové skóre %",
+        "personalInformation": "Osobní údaje",
+        "name": "Jméno",
+        "namePlaceholder": "Jan Novák",
+        "company": "Společnost",
+        "gstinTaxId": "DIČ GSTIN",
+        "gstinPlaceholder": "Identifikační číslo plátce daně zboží a služeb",
+        "addressLine1": "Adresa řádek 1",
+        "addressLine2": "Adresa řádek 2",
+        "cityState": "Město, kraj",
+        "city": "Město",
+        "state": "Kraj",
+        "country": "Země",
+        "zipcode": "PSČ",
+        "phoneNo": "Telefon",
+        "phoneNumber": "Telefonní číslo",
+        "language": "Jazyk",
+        "auto": "Automaticky",
+        "currency": "Měna",
+        "timeZone": "Časové pásmo",
+        "otherSettings": "Ostatní nastavení",
+        "disablePasswordResets": "Zakázat obnovení hesla (Zapomněli jste heslo?).",
+        "disableInvoiceReminders": "Zakázat e-mailová upozornění na faktury.",
+        "disableServerInvoiceReminders": "Zakázat e-mailová upozornění na faktury serveru.",
+        "disableReinstall": "Zakázat přeinstalaci.",
+        "alternateEmailInvoices": "Alternativní e-mail pro faktury",
+        "alternateEmailInvoicesPlaceholder": "Alternativní e-mail pro zasílání faktur",
+        "alternateEmailAbuse": "Alternativní e-mail pro hlášení zneužití",
+        "updateInfo": "Aktualizovat informace"
+    }
+}

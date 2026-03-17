@@ -1,0 +1,12 @@
+{
+    "title": "පරිශීලකයින්",
+    "addUser": "පරිශීලකයකු එකතු කරන්න",
+    "editUser": "පරිශීලකයා සංස්කරණය කරන්න",
+    "firstName": "මුල් නම",
+    "lastName": "අවසාන නම",
+    "username": "පරිශීලක නාමය",
+    "password": "Password",
+    "keepSamePassword": "එකම password රඳවා ගැනීමට හිස් තබන්න",
+    "errorLoading": "පරිශීලකයින් load කිරීමේ දෝෂය:",
+    "errorLoadingUser": "පරිශීලකයා load කිරීමේ දෝෂය:"
+}

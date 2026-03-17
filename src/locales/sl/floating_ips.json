@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Seznam storitev plavajoči IP-ji",
+        "orderTitle": "Naroči registracije plavajoči IP"
+    },
+    "view": {
+        "title": "Ogled plavajoči IP {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum naslednjega računa:",
+        "billing": "Zaračunavanje",
+        "billed": "zaračunano:",
+        "statusIs": "Status je:",
+        "floatingIp": "Plavajoči IP",
+        "links": "Povezave",
+        "welcomeEmailConfirm": "Ali ste prepričani, da želite znova poslati pozdravno e-pošto?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Pozdravna e-pošta je bila znova poslana. Preverite svojo nabiralo."
+    },
+    "order": {
+        "title": "Naroči plavajoči IP"
+    },
+    "changeIp": {
+        "title": "Spremeni ciljni IP"
+    }
+}

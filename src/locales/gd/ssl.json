@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Liosta theisteanas SSL",
+        "orderTitle": "Òrdaich clàrachaidhean SSL"
+    },
+    "view": {
+        "title": "Seall SSL {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an ath-chunntas:",
+        "billing": "Cunntas",
+        "billed": "air a chunntas:",
+        "statusIs": "An staid a th' ann:",
+        "orderInfo": "Fiosrachadh òrdugh",
+        "certificateInfo": "Fiosrachadh teisteanais",
+        "links": "Ceanglaichean",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilteachaidh a chur a-rithist?",
+        "emailSent": "Chaidh post-d a chur",
+        "emailSentMessage": "Chaidh am post-d fàilteachaidh a chur a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "order": {
+        "title": "Òrdaich SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Atharraich post-d an neach-aontachaidh",
+        "selectApproverEmail": "Tagh post-d an neach-aontachaidh"
+    }
+}

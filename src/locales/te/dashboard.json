@@ -1,0 +1,28 @@
+{
+    "title": "డాష్‌బోర్డ్",
+    "welcome": "స్వాగతం, {name}",
+    "lastLogin": "చివరి లాగిన్",
+    "lastLoginIp": "చివరి లాగిన్ IP",
+    "prepay": {
+        "title": "ప్రీపే బాలెన్స్",
+        "remainingBalance": "ప్రీపే మిగిలిన బాలెన్స్",
+        "manageAccount": "అకౌంట్ నిర్వహించు",
+        "manageTooltip": "మీ ప్రీపే అకౌంట్ నిర్వహించండి"
+    },
+    "invoices": {
+        "title": "చెల్లించని ఇన్వాయిస్‌లు",
+        "totalUnpaid": "మొత్తం చెల్లించని ఇన్వాయిస్‌లు",
+        "totalAmount": "చెల్లించాల్సిన మొత్తం మొత్తం",
+        "payTotalTooltip": "మొత్తం మొత్తం చెల్లించు"
+    },
+    "callInPin": "కాల్-ఇన్ PIN",
+    "recentTickets": "ఇటీవలి టికెట్లు",
+    "viewAllTickets": "అన్ని టికెట్లు చూడు",
+    "editTicket": "టికెట్ సవరించు",
+    "serviceCount": "చురుకైన సేవలు లేవు | {count} చురుకైన సేవ | {count} చురుకైన సేవలు",
+    "affiliate": {
+        "earnPerSale": "అమ్మకానికి {amount} సంపాదించు",
+        "urlPlaceholder": "అఫిలియేట్ URL",
+        "shareWith": "వీరితో పంచుకోండి"
+    }
+}
